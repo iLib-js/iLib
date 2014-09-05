@@ -22,6 +22,7 @@
 // !data norm ctype_m
 
 /**
+ * @class
  * Create a new glyph string instance. This string inherits from 
  * the ilib.String class, and adds methods that allow you to access
  * whole glyphs at a time. <p>
@@ -89,7 +90,6 @@
  * 
  * Depends directive: !depends glyphstring.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  * @param {Object=} options options governing the way this instance works

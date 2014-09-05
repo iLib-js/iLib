@@ -23,6 +23,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -71,8 +72,7 @@ julianday.js
  * 
  * Depends directive: !depends ratadie.js
  * 
- * @protected
- * @class
+ * @private
  * @constructor
  * @param {Object=} params parameters that govern the settings and behaviour of this RD date
  */

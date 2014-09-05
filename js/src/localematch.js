@@ -21,6 +21,7 @@
 // !data likelylocales
 
 /**
+ * @class
  * Create a new locale matcher instance. This is used
  * to see which locales can be matched with each other in
  * various ways.<p>
@@ -51,7 +52,6 @@
  * 
  * Depends directive: !depends localematch.js
  * 
- * @class
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
  */

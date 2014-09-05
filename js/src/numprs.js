@@ -27,6 +27,7 @@ ctype.isspace.js
 */
 
 /**
+ * @class
  * Parse a string as a number, ignoring all locale-specific formatting.<p>
  * 
  * This class is different from the standard Javascript parseInt() and parseFloat() 
@@ -78,7 +79,6 @@ ctype.isspace.js
  * 
  * Depends directive: !depends numprs.js
  * 
- * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
  * @param {Object=} options Options controlling how the instance should be created 

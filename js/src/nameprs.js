@@ -37,6 +37,7 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 /**
+ * @class
  * A class to parse names of people. Different locales have different conventions when it
  * comes to naming people.<p>
  *
@@ -88,9 +89,7 @@ util/jsutils.js
  *
  * Depends directive: !depends nameprs.js
  *
- * @class
  * @constructor
- * @dict
  * @param {string|ilib.Name=} name the name to parse
  * @param {Object=} options Options governing the construction of this name instance
  */

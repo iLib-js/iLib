@@ -29,6 +29,7 @@ timezone.js
 */
 
 /**
+ * @class
  * Construct a new Gregorian date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -102,7 +103,6 @@ timezone.js
  * 
  * Depends directive: !depends gregoriandate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date

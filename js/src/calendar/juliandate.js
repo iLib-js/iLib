@@ -27,6 +27,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Julian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -70,7 +71,6 @@ julianday.js
  * Depends directive: !depends juliandate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
@@ -125,6 +125,7 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
+ * @class
  * Construct a new date object for the Julian Calendar. The constructor can be called
  * with a parameter object that contains any of the following properties:
  * 
@@ -179,7 +180,6 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends juliandate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian date
@@ -270,7 +270,7 @@ ilib.Date.JulDate = function(params) {
 	}
 };
 
-ilib.Date.JulDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.JulDate.prototype = new ilib.Date();
 ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 

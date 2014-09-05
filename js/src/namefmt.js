@@ -28,6 +28,7 @@ ctype.ispunct.js
 // !data name
 
 /**
+ * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to
  * a user. The options may contain the following properties:
  * 
@@ -109,7 +110,6 @@ ctype.ispunct.js
  * 
  * Depends directive: !depends namefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */

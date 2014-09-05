@@ -30,6 +30,7 @@ ctype.isdigit.js
 // !data address countries nativecountries ctrynames
 
 /**
+ * @class
  * Create a new Address instance and parse a physical address.<p>
  * 
  * This function parses a physical address written in a free-form string. 
@@ -91,8 +92,6 @@ ctype.isdigit.js
  * Depends directive: !depends addressprs.js
  * 
  * @constructor
- * @class
- * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields
  * @param {Object} options options to the parser

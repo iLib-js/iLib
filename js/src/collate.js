@@ -22,13 +22,14 @@
 // !data collation
 
 /**
+ * @class
  * Represents a buffered source of code points. The input string is first
  * normalized so that combining characters come out in a standardized order.
  * If the "ignorePunctuation" flag is turned on, then punctuation 
  * characters are skipped.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.NormString|string} str a string to get code points from
  * @param {boolean} ignorePunctuation whether or not to ignore punctuation
  * characters
@@ -85,13 +86,14 @@ ilib.CodePointSource.prototype.consume = function(num) {
 
 
 /**
+ * @class
  * An iterator through a sequence of collation elements. This
  * iterator takes a source of code points, converts them into
  * collation elements, and allows the caller to get single
  * elements at a time.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.CodePointSource} source source of code points to 
  * convert to collation elements
  * @param {Object} map mapping from sequences of code points to
@@ -169,6 +171,7 @@ ilib.ElementIterator.prototype.next = function () {
 
 
 /**
+ * @class
  * A class that implements a locale-sensitive comparator function 
  * for use with sorting function. The comparator function
  * assumes that the strings it is comparing contain Unicode characters
@@ -406,7 +409,6 @@ ilib.ElementIterator.prototype.next = function () {
  * characters, the Japanese names will sort at the end of the list after all German names,
  * and will sort according to the Unicode values of the characters.
  * 
- * @class
  * @constructor
  * @param {Object} options options governing how the resulting comparator 
  * function will operate

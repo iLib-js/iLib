@@ -30,6 +30,7 @@ phone/handler.js
 // !data states idd mnc
 
 /**
+ * @class
  * Create a new phone number instance that parses the phone number parameter for its 
  * constituent parts, and store them as separate fields in the returned object.
  * 
@@ -151,7 +152,6 @@ phone/handler.js
  * <li>Korea
  * </ul>
  * 
- * @class
  * @constructor
  * @param {!string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
  * number instance to copy
@@ -217,25 +217,42 @@ ilib.PhoneNumber = function(number, options) {
 		/** @type {string|undefined} */
 		this.extension = number.extension;
 		
-		/** @type {boolean} */
+		/**
+		 * @protected
+		 * @type {boolean} 
+		 */
 		this.invalid = number.invalid;
-		
-		/** @type {ilib.NumPlan} */
-		this.destinationPlan = number.destinationPlan;
-		
-		/** @type {ilib.Locale.PhoneLoc} */
-		this.destinationLocale = number.destinationLocale;
 
-		/** @type {ilib.NumPlan} */
-		this.plan = number.plan;
-		
-		/** @type {ilib.Locale.PhoneLoc} */
-		this.locale = number.locale;
-
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
+		if (number.plan && number.locale) {
+			/** 
+			 * @protected
+			 * @type {ilib.NumPlan} 
+			 */
+			this.plan = number.plan;
+			
+			/** 
+			 * @protected
+			 * @type {ilib.Locale.PhoneLoc} 
+			 */
+			this.locale = number.locale;
+	
+			/** 
+			 * @protected
+			 * @type {ilib.NumPlan} 
+			 */
+			this.destinationPlan = number.destinationPlan;
+			
+			/** 
+			 * @protected
+			 * @type {ilib.Locale.PhoneLoc} 
+			 */
+			this.destinationLocale = number.destinationLocale;
+	
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+			return;
 		}
-		return;
 	}
 
 	new ilib.Locale.PhoneLoc({
@@ -244,29 +261,34 @@ ilib.PhoneNumber = function(number, options) {
 		sync: this.sync,
 		loadParams: this.loadParams,
 		onLoad: ilib.bind(this, function(loc) {
-			/** @type {ilib.Locale.PhoneLoc} */
 			this.locale = this.destinationLocale = loc;
-			ilib.loadData({
-				name: "states.json",
-				object: ilib.PhoneNumber,
+			new ilib.NumPlan({
 				locale: this.locale,
 				sync: this.sync,
-				loadParams: ilib.merge(this.loadParams, {
-					returnOne: true
-				}),
-				callback: ilib.bind(this, function (stdata) {
-					if (!stdata) {
-						stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+				loadParms: this.loadParams,
+				onLoad: ilib.bind(this, function (plan) {
+					this.plan = this.destinationPlan = plan;
+			
+					if (typeof number === "object") {
+						// the copy constructor code above did not find the locale 
+						// or plan before, but now they are loaded, so we can return 
+						// already without going further
+						return;
 					}
-
-					stateData = stdata;
-					new ilib.NumPlan({
+					ilib.loadData({
+						name: "states.json",
+						object: ilib.PhoneNumber,
 						locale: this.locale,
 						sync: this.sync,
-						loadParms: this.loadParams,
-						onLoad: ilib.bind(this, function (plan) {
-							/** @type {ilib.NumPlan} */
-							this.plan = this.destinationPlan = plan;
+						loadParams: ilib.merge(this.loadParams, {
+							returnOne: true
+						}),
+						callback: ilib.bind(this, function (stdata) {
+							if (!stdata) {
+								stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+							}
+		
+							stateData = stdata;
 
 							regionSettings = {
 								stateData: stateData,

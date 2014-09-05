@@ -49,7 +49,8 @@ function testParseBogusPrefix(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		subscriberNumber: "969812345"
+		subscriberNumber: "969812345",
+		invalid: true
 	}, {locale: "en-AU"});
 	
 	assertTrue(parsed.equals(expected));
@@ -388,7 +389,8 @@ function testParsePartial11(){
 	var expected = new ilib.PhoneNumber({
 			trunkAccess: "0",
 			areaCode: "2",
-			subscriberNumber: "234567890"
+			subscriberNumber: "234567890",
+			invalid: true
 	}, {locale: "en-AU"});
 	
 	assertTrue(parsed.equals(expected));

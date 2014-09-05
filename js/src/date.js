@@ -20,6 +20,7 @@
 /* !depends ilibglobal.js localeinfo.js */
 
 /**
+ * @class
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
@@ -30,7 +31,6 @@
  * 
  * Depends directive: !depends date.js
  * 
- * @class
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */

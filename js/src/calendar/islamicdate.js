@@ -28,6 +28,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Islamic RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -71,7 +72,6 @@ julianday.js
  * Depends directive: !depends islamicdate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
@@ -122,6 +122,7 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
+ * @class
  * Construct a new civil Islamic date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -163,7 +164,6 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends islamicdate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
@@ -260,7 +260,7 @@ ilib.Date.IslamicDate = function(params) {
 	}
 };
 
-ilib.Date.IslamicDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.IslamicDate.prototype = new ilib.Date();
 ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 

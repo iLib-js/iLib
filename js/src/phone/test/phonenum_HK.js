@@ -290,7 +290,8 @@ function testParsePartial9(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "212345678"
+		subscriberNumber: "212345678",
+		invalid: true
 	}, {locale: "en-HK"});
 	
 	assertTrue(parsed.equals(expected));

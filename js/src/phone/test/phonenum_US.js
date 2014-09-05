@@ -334,7 +334,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial2(){
 	var parsed = new ilib.PhoneNumber("+4", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -346,7 +346,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial3(){
 	var parsed = new ilib.PhoneNumber("+44", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -358,7 +358,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial4(){
 	var parsed = new ilib.PhoneNumber("+442", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -371,7 +371,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial5(){
 	var parsed = new ilib.PhoneNumber("+4420", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -384,7 +384,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial6(){
 	var parsed = new ilib.PhoneNumber("+44201", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -398,7 +398,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial7(){
 	var parsed = new ilib.PhoneNumber("+442012", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -412,7 +412,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial8(){
 	var parsed = new ilib.PhoneNumber("+4420123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -426,7 +426,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial9(){
 	var parsed = new ilib.PhoneNumber("+44201234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -440,7 +440,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial10(){
 	var parsed = new ilib.PhoneNumber("+442012345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -454,7 +454,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial11(){
 	var parsed = new ilib.PhoneNumber("+4420123456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -468,7 +468,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial12(){
 	var parsed = new ilib.PhoneNumber("+44201234567", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -482,7 +482,7 @@ function testParseUSPlusIDDToGBPartial1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseUSPlusIDDToGBPartial1(){
+function testParseUSPlusIDDToGBPartial13(){
 	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -645,7 +645,8 @@ function testParseUSPartial11(){
 	
 	var expected = new ilib.PhoneNumber({
 		areaCode: "456",
-		subscriberNumber: "34534345"
+		subscriberNumber: "34534345",
+		invalid: true
 	});
 	
 	assertTrue(parsed.equals(expected));
@@ -799,7 +800,8 @@ function testParseUSPartialTrunk11(){
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
-		subscriberNumber: "34534345"
+		subscriberNumber: "34534345",
+		invalid: true
 	});
 	
 	assertTrue(parsed.equals(expected));

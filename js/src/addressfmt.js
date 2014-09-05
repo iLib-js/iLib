@@ -26,6 +26,7 @@ addressprs.js
 // !data address
 
 /**
+ * @class
  * Create a new formatter object to format physical addresses in a particular way.
  *
  * The options object may contain the following properties, both of which are optional:
@@ -59,7 +60,6 @@ addressprs.js
  * Depends directive: !depends addressfmt.js
  * 
  * @constructor
- * @class
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
  */

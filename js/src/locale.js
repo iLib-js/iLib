@@ -20,6 +20,7 @@
 // !depends ilibglobal.js
 
 /**
+ * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
@@ -58,7 +59,6 @@
  * 
  * Depends directive: !depends locale.js
  * 
- * @class
  * @constructor
  * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format, or another ilib.Locale instance to copy from

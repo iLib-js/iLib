@@ -21,12 +21,12 @@
 /* !depends calendar.js locale.js date.js julianday.js calendar/gregorian.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
  * 
  * Depends directive: !depends thaisolar.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */

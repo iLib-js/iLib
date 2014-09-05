@@ -22,6 +22,7 @@
 // !data plurals
 
 /**
+ * @class
  * Create a new string instance. This string inherits from the Javascript
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
@@ -30,7 +31,6 @@
  * 
  * Depends directive: !depends strings.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */

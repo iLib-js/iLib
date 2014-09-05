@@ -24,6 +24,7 @@ util/jsutils.js
 */
 
 /**
+ * @class
  * Construct a new Thai solar date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -81,7 +82,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends thaisolardate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date

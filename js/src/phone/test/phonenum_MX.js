@@ -148,7 +148,8 @@ function testParseMXServiceNumber(){
 	
 	var expected = new ilib.PhoneNumber({
 		serviceCode: "02",
-		subscriberNumber: "6241234567"
+		subscriberNumber: "6241234567",
+		invalid: true
 	}, {locale: "es-MX"});
 	
 	assertTrue(parsed.equals(expected));
@@ -161,7 +162,8 @@ function testParseMXServiceNumber2(){
 	
 	var expected = new ilib.PhoneNumber({
 		serviceCode: "800",
-		subscriberNumber: "6241234567"
+		subscriberNumber: "6241234567",
+		invalid: true
 	}, {locale: "es-MX"});
 	
 	assertTrue(parsed.equals(expected));

@@ -30,7 +30,7 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-  		"testaddress_AE.js",
+        "testaddress_AE.js",
 		"testaddress_AF.js",
 		"testaddress_AL.js",
 		//"testaddress_AM.js",
@@ -310,7 +310,7 @@ function suite() {
 		"testjulianday.js",
 		"testlocaleinfo.js",
 		"testlocale.js",
-	    "testname.js",
+		"testname.js",
 	    "testnamefmt.js",
 	    "testname_ar.js",
 		"testname_bg.js",

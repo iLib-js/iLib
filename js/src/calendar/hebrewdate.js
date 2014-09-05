@@ -26,6 +26,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Hebrew RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -72,7 +73,6 @@ julianday.js
  * Depends directive: !depends hebrewdate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
@@ -186,6 +186,7 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 };
 
 /**
+ * @class
  * Construct a new civil Hebrew date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -229,7 +230,6 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * 
  * Depends directive: !depends hebrewdate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
@@ -341,7 +341,7 @@ ilib.Date.HebrewDate = function(params) {
 	}
 };
 
-ilib.Date.HebrewDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.HebrewDate.prototype = new ilib.Date();
 ilib.Date.HebrewDate.prototype.parent = ilib.Date;
 ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
 

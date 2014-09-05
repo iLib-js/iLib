@@ -29,6 +29,7 @@ phone/phonenum.js
 // !data phonefmt
 
 /**
+ * @class
  * Create a new phone number formatter object that formats numbers according to the parameters.<p>
  * 
  * The options object can contain zero or more of the following parameters:
@@ -69,7 +70,6 @@ phone/phonenum.js
  * the country in the locale will be used. If neither the locale or MCC are not given,
  * then the country of the current ilib locale is used. 
  *
- * @class
  * @constructor
  * @param {Object} options properties that control how this formatter behaves
  */
@@ -210,10 +210,8 @@ ilib.PhoneFmt.prototype = {
 			fieldName, 
 			countryCode, 
 			isWhole, 
-			field,
 			style,
 			formatted = "",
-			styles,
 			styleTemplates;
 	
 		if (options) {
@@ -373,32 +371,10 @@ ilib.PhoneFmt.prototype = {
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
 	format: function (number, options) {
-		var sync = true,
-			loadParams = {},
-			temp, 
-			templates, 
-			fieldName, 
-			countryCode, 
-			isWhole, 
-			style,
-			field,
-			formatted = "",
-			styles,
-			locale,
-			styleTemplates,
-			callback;
+		var formatted = "",
+		    callback;
 
-		if (options) {
-			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);				
-			}
-		
-			if (options.loadParams) {
-				loadParams = options.loadParams;
-			}
-			
-			callback = options.onLoad;
-		}
+		callback = options && options.onLoad;
 
 		try {
 			this._doFormat(number, options, 0, this.locale, this.fmtdata, function (fmt) {
@@ -413,7 +389,7 @@ ilib.PhoneFmt.prototype = {
 				// console.warn("caught exception: " + e + ". Using last resort rule.");
 				// if there was some exception, use this last resort rule
 				formatted = "";
-				for (field in ilib.PhoneNumber._fieldOrder) {
+				for (var field in ilib.PhoneNumber._fieldOrder) {
 					if (typeof field === 'string' && typeof ilib.PhoneNumber._fieldOrder[field] === 'string' && number[ilib.PhoneNumber._fieldOrder[field]] !== undefined) {
 						// just concatenate without any formatting
 						formatted += number[ilib.PhoneNumber._fieldOrder[field]];

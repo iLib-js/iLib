@@ -20,13 +20,13 @@
 // !depends strings.js glyphstring.js
 
 /**
+ * @class
  * Create a new normalized string instance. This string inherits from 
  * the ilib.GlyphString class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  */

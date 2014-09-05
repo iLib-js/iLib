@@ -33,6 +33,7 @@ util/jsutils.js
 // !data localeinfo currency
 
 /**
+ * @class
  * Create a new number formatter instance. Locales differ in the way that digits
  * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
@@ -119,7 +120,6 @@ util/jsutils.js
  *
  * Depends directive: !depends numfmt.js
  *
- * @class
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */

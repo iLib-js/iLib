@@ -30,6 +30,7 @@ phone/phonenum.js
 // !data iddarea area extarea extstates phoneres
 
 /**
+ * @class
  * Create an instance that can geographically locate a phone number.<p>
  * 
  * The location of the number is calculated according to the following rules:
@@ -96,7 +97,6 @@ phone/phonenum.js
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * @class
  * @constructor
  * @param {Object} options parameters controlling the geolocation of the phone number.
  */

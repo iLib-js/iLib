@@ -30,6 +30,7 @@ calendar/gregratadie.js
 // !data localeinfo zoneinfo
 
 /**
+ * @class
  * Create a time zone instance. 
  * 
  * This class reports and transforms
@@ -118,7 +119,6 @@ calendar/gregratadie.js
  * 
  * Depends directive: !depends timezone.js
  * 
- * @class 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance
  */

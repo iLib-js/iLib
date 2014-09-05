@@ -27,10 +27,11 @@ localeinfo.js
 // !data phoneloc
 
 /**
+ * @class
  *
  * @param {Object} options Options that govern how this phone locale works
  * @constructor
- * @class
+ * @private
  * @extends ilib.Locale
  */
 ilib.Locale.PhoneLoc = function(options) {

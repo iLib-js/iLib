@@ -34,6 +34,7 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
+ * @class
  * Create a new date formatter instance. The date formatter is immutable once
  * it is created, but can format as many different dates as needed with the same
  * options. Create different date formatter instances for different purposes
@@ -272,7 +273,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends datefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */
