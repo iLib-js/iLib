@@ -189,6 +189,7 @@ ilib.PhoneFmt.prototype = {
 	 * Returns the style with the given name, or the default style if there
 	 * is no style with that name.
 	 * @protected
+	 * @return {{example:string,whole:Object.<string,string>,partial:Object.<string,string>}|Object.<string,string>}
 	 */
 	_getStyle: function (name, fmtdata) {
 		return fmtdata[name] || fmtdata["default"];
@@ -199,7 +200,15 @@ ilib.PhoneFmt.prototype = {
 	 * field in the regular field order.
 	 * 
 	 * @param {!ilib.PhoneNumber} number
-	 * @param {Object} options
+	 * @param {{
+	 *   partial:boolean,
+	 *   style:string,
+	 *   mcc:string,
+	 *   locale:(string|ilib.Locale),
+	 *   sync:boolean,
+	 *   loadParams:Object,
+	 *   onLoad:function(string)
+	 * }} options Parameters which control how to format the number
 	 * @param {number} startField
 	 */
 	_doFormat: function(number, options, startField, locale, fmtdata, callback) {
@@ -367,7 +376,15 @@ ilib.PhoneFmt.prototype = {
 	 * leave the partial flag out of the parameters entirely. 
 	 * 
 	 * @param {!ilib.PhoneNumber} number object containing the phone number to format
-	 * @param {Object} options Parameters which control how to format the number
+	 * @param {{
+	 *   partial:boolean,
+	 *   style:string,
+	 *   mcc:string,
+	 *   locale:(string|ilib.Locale),
+	 *   sync:boolean,
+	 *   loadParams:Object,
+	 *   onLoad:function(string)
+	 * }} options Parameters which control how to format the number
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
 	format: function (number, options) {

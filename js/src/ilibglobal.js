@@ -36,7 +36,6 @@ ilib.getVersion = function () {
 
 /**
  * Place where resources and such are eventually assigned.
- * @dict
  */
 ilib.data = {
     norm: {
@@ -48,7 +47,15 @@ ilib.data = {
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
-    }
+    },
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_c: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_l: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_m: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_p: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
+    /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null
 };
 
 if (typeof(window) !== 'undefined') {

@@ -76,7 +76,7 @@ ilib.CType = {
 	 */
 	_inRange: function(ch, rangeName, obj) {
 		var range, i, num;
-		if (!ch || ch.length === 0 || !rangeName || typeof(obj) === 'undefined') {
+		if (!ch || ch.length === 0 || !rangeName || !obj) {
 			return false;
 		}
 		

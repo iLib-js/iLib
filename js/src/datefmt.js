@@ -441,7 +441,7 @@ ilib.DateFmt = function(options) {
 							loadParams: loadParams, 
 							callback: ilib.bind(this, function (formats) {
 								if (!formats) {
-									formats = ilib.DateFmt.defaultFmt;
+									formats = ilib.data.dateformats || ilib.DateFmt.defaultFmt;
 									var spec = this.locale.getSpec().replace(/-/g, '_');
 									ilib.DateFmt.cache[spec] = formats;
 								}
@@ -478,7 +478,7 @@ ilib.DateFmt.lenmap = {
 
 ilib.DateFmt.zeros = "0000";
 
-ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
+ilib.DateFmt.defaultFmt = {
 	"gregorian": {
 		"order": "{date} {time}",
 		"date": {
