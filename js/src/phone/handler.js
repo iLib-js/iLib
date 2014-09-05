@@ -74,7 +74,7 @@ ilib.StateHandler.prototype = {
 	 * @param {boolean} noExtractTrunk 
 	 */
 	processFieldWithSubscriberNumber: function(fieldName, length, number, currentChar, fields, regionSettings, noExtractTrunk) {
-		var ret, end, last;
+		var ret, end;
 		
 		last = number.search(/[xwtp]/i);	// last digit of the local number
 		
@@ -247,7 +247,7 @@ ilib.StateHandler.prototype = {
 	 * @param {Object} regionSettings settings used to parse the rest of the number
 	 */	
 	country: function(number, currentChar, fields, regionSettings) {
-		var ret, cc, locale;
+		var ret, cc;
 		
 		// found the country code of an IDD number, so save it and cause the function to 
 		// parse the rest of the number with the regular table for this locale
