@@ -71,7 +71,6 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
 	"C": "celsius",
 	"centegrade": "celsius",
 	"Centegrade": "celsius",
-	"feet": "foot",
 	"fahrenheit": "fahrenheit",
 	"Fahrenheit": "fahrenheit",
 	"F": "fahrenheit",
@@ -94,6 +93,9 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
  */
 ilib.Measurement.Temperature.convert = function(to, from, temperature) {
         var result;
+        from = this.aliases[from] || from;
+        to = this.aliases[to] || to;
+        
 	if(from === "celsius") {
             if(to === "fahrenheit") 
                 result = ((temperature * 9/5)+32);
@@ -124,5 +126,6 @@ ilib.Measurement.Temperature.getMeasures = function () {
         ret.push("fahrenheit");
 	return ret;
 };
+
 //register with the factory method
 ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;

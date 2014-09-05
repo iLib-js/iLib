@@ -261,7 +261,8 @@ function suite() {
 		"testresources.js",
 		"testscriptinfo.js",
 		"teststrings.js",
-		"testtimezone.js"
+		"testtimezone.js",
+		"testunits.js"
 	];
 
     suites.forEach(function (path) {

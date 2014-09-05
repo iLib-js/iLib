@@ -106,52 +106,67 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 
 ilib.Measurement.Length.aliases = {
 	"miles": "mile",
+        "mile":"mile",
 	"nauticalmiles": "nauticalmile",
 	"nautical mile": "nauticalmile",
 	"nautical miles": "nauticalmile",
+        "nauticalmile":"nauticalmile",
 	"yards": "yard",
+        "yard": "yard",
 	"feet": "foot",
+        "foot": "foot",
 	"inches": "inch",
+        "inch": "inch",
 	"meters": "meter",
 	"metre": "meter",
 	"metres": "meter",
 	"m": "meter",
+        "meter": "meter",        
 	"micrometers": "micrometer",
 	"micrometres": "micrometer",
 	"micrometre": "micrometer",
 	"µm": "micrometer",
+        "micrometer": "micrometer",
 	"millimeters": "millimeter",
 	"millimetres": "millimeter",
 	"millimetre": "millimeter",
 	"mm": "millimeter",
+        "millimeter": "millimeter",
 	"centimeters": "centimeter",
 	"centimetres": "centimeter",
 	"centimetre": "centimeter",
 	"cm": "centimeter",
+        "centimeter": "centimeter",
 	"decimeters": "decimeter",
 	"decimetres": "decimeter",
 	"decimetre": "decimeter",
 	"dm": "decimeter",
+        "decimeter": "decimeter",
 	"decameters": "decameter",
 	"decametres": "decameter",
 	"decametre": "decameter",
 	"dam": "decameter",
+        "decameter": "decameter",
 	"hectometers": "hectometer",
 	"hectometres": "hectometer",
 	"hectometre": "hectometer",
 	"hm": "hectometer",
+        "hectometer": "hectometer",
 	"kilometers": "kilometer",
 	"kilometres": "kilometer",
 	"kilometre": "kilometer",
 	"km": "kilometer",
+        "kilometer": "kilometer",
 	"megameters": "megameter",
 	"megametres": "megameter",
 	"megametre": "megameter",
 	"Mm": "megameter",
+        "megameter": "megameter",
 	"gigameters": "gigameter",
 	"gigametres": "gigameter",
 	"gigametre": "gigameter",
-	"Gm": "gigameter"
+	"Gm": "gigameter",
+        "gigameter": "gigameter"
 };
 
 /**
@@ -170,8 +185,6 @@ ilib.Measurement.Length.convert = function(to, from, length) {
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
 	}
-	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
-	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
 	return length * fromRow[toRow[0]];
 };
 

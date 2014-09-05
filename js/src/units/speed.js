@@ -99,6 +99,7 @@ ilib.Measurement.Speed.aliases = {
     "foot/s":"feet/sec",
     "feet/s":"feet/sec",
     "f/s":"feet/sec",
+    "feet/sec" : "feet/sec",
     "meter/sec":"meters/sec",
     "meter/s":"meters/sec",
     "meters/s":"meters/sec",
@@ -110,6 +111,7 @@ ilib.Measurement.Speed.aliases = {
     "mt/s":"meters/sec",
     "m/s":"meters/sec",
     "mps":"meters/sec",
+    "meters/sec":"meters/sec",
     "kilometer/hour":"km/hour",
     "kilometers/hour":"km/hour",
     "kmh":"km/hour",
@@ -119,12 +121,14 @@ ilib.Measurement.Speed.aliases = {
     "km/hr":"km/hour",
     "kilometer/hr":"km/hour",
     "kilometers/hr":"km/hour",
+    "km/hour":"km/hour",
     "mph": "miles/hour",
     "mile/hour": "miles/hour",
     "mile/hr": "miles/hour",
     "mile/h": "miles/hour",
     "miles/h": "miles/hour",
     "miles/hr": "miles/hour",
+    "miles/hour":"miles/hour",
     "kn": "knot",
     "kt": "knot",
     "kts": "knot",
@@ -135,7 +139,8 @@ ilib.Measurement.Speed.aliases = {
     "nauticalmile/hr": "knot",
     "nauticalmile/hour": "knot",
     "nauticalmiles/hr": "knot",
-    "nauticalmiles/hour": "knot"
+    "nauticalmiles/hour": "knot",
+    "knot":"knot"
 };
 
 /**
@@ -153,9 +158,7 @@ ilib.Measurement.Speed.convert = function(to, from, speed) {
 	var toRow = ilib.Measurement.Speed.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
-	}
-	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
-	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
+	}	
 	var result = speed * fromRow[toRow[0]];
         result = + result.toFixed(5);
         return result;

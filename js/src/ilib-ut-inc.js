@@ -78,5 +78,6 @@ maps/casemapper.js
 unit.js
 unitfmt.js
 units/length.js
+units/speed.js
 units/temperature.js
 */

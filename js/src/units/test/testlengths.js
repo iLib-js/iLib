@@ -18,6 +18,11 @@
  */
 
 function testLengthConstructor() {
+    
+    var s = new ilib.Measurement({
+        unit: "meter",
+        amount: 2
+    });
 	var m = new ilib.Measurement.Length({
 		unit: "meter",
 		amount: 2

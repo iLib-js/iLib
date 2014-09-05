@@ -1,7 +1,7 @@
 <!--
-testSuite.js - Run all tests
+testLengths.html - Test a length object.
 
-Copyright © 2012, JEDLSoft
+Copyright © 2014, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,21 +19,8 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
-<script language="JavaScript">
-
-function suite() {
-    var calSuite = new JsUnitTestSuite();
-    
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengthsCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testSpeed.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-    
-    return calSuite;
-}
-</script>
+<script language="JavaScript" src="../../ilib-ut.js"></script>
+<script language="JavaScript" src="testtemp.js"></script>
 </head>
 </html>

@@ -88,10 +88,20 @@ ilib.Measurement = function(options) {
 	}
 	
 	this.amount = options.amount || 0;
-	
-	// map the requested units to the normalized form
-	
-	var measure = "speed"; // temporary
+        var measure;
+        
+        for (var c in ilib.Measurement._constructors) {
+            var measurement = ilib.Measurement._constructors[c];
+            var unit = measurement.aliases[options.unit];
+            if (typeof(unit) !== 'undefined') {
+                measure = measurement.prototype.getMeasure();
+                break;
+            }
+        }
+        
+        if (!measure || typeof(measure) === 'undefined') {
+            throw  options.unit + " is not supported" 
+        }
 	
 	return new ilib.Measurement._constructors[measure](options);
 };
@@ -206,5 +216,5 @@ ilib.Measurement.prototype = {
 	 * or undefined if the requested units are for a different
 	 * measurement type
 	 */
-	convert: function(to) {}
+	convert: function(to) {}      
 };
