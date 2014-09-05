@@ -86,23 +86,23 @@ ilib.Measurement = function(options) {
 	if (!options || typeof(options.unit) === 'undefined') {
 		return undefined;
 	}
-	
+
 	this.amount = options.amount || 0;
-        var measure;
-        
-        for (var c in ilib.Measurement._constructors) {
-            var measurement = ilib.Measurement._constructors[c];
-            var unit = measurement.aliases[options.unit];
-            if (typeof(unit) !== 'undefined') {
-                measure = measurement.prototype.getMeasure();
-                break;
-            }
-        }
-        
-        if (!measure || typeof(measure) === 'undefined') {
-            throw  options.unit + " is not supported" 
-        }
-	
+	var measure;
+
+	for (var c in ilib.Measurement._constructors) {
+		var measurement = ilib.Measurement._constructors[c];
+		var unit = measurement.aliases[options.unit];
+		if (typeof(unit) !== 'undefined') {
+			measure = c;
+			break;
+		}
+	}
+
+	if (!measure || typeof(measure) === 'undefined') {
+		throw  options.unit + " is not supported" 
+	}
+
 	return new ilib.Measurement._constructors[measure](options);
 };
 

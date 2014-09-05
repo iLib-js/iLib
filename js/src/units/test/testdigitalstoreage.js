@@ -19,11 +19,11 @@
 
 function testDSConstructor() {
 
-    var m = new ilib.Measurement.DigitalStorage({
-        unit: "mb",
-	amount: 2
-    });
-	
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "mb",
+		amount: 2
+	});
+
 	assertNotNull(m);
 }
 
@@ -36,59 +36,59 @@ function testDSConvertKbToMb() {
 		unit: "mb",
 		amount: m1
 	});
-	
+
 	assertNotNull(m1);
 	assertNotNull(m2);
-	
+
 	assertEquals(100, m2.getAmount());
 }
 
 function testStaticConvert1() {
 	var m = ilib.Measurement.DigitalStorage.convert("bit", "kilobits", 12024);
-	
+
 	assertEquals(12312576, m);
 }
 
 function testStaticConvertWithString() {
 	var m = ilib.Measurement.DigitalStorage.convert("gigabyte", "petabyte", "1");
-	
+
 	assertEquals(1.049e+6, m);
 }
 
 function testStaticConvert2() {
 	var m = ilib.Measurement.DigitalStorage.convert("tB", "gB", 10240);
-	
+
 	assertEquals(10, m);
 }
 
 function testStaticConvert3() {
 	var m = ilib.Measurement.DigitalStorage.convert("mb", "byte", 1048576);
-	
+
 	assertEquals(8, m);
 }
 
 function testStaticConvert4() {
 	var m = ilib.Measurement.DigitalStorage.convert("Pb", "tb", 1024);
-	
+
 	assertEquals(1, m);
 }
 
 function testGetMeasures() {
 	var measures = ilib.Measurement.DigitalStorage.getMeasures();
 	var expected = [
-    	"Bit",
-    	"Byte",
-    	"Kilobit",
-    	"Kilobyte",
-    	"Megabit",
-    	"Megabyte",
-    	"Gigabit",
-    	"Gigabyte",
-    	"Terabit",
-    	"Terabyte",
-    	"Petabit",
-    	"Petabyte"
-	];
-	
+        "Bit",
+        "Byte",
+        "Kilobit",
+        "Kilobyte",
+        "Megabit",
+        "Megabyte",
+        "Gigabit",
+        "Gigabyte",
+        "Terabit",
+        "Terabyte",
+        "Petabit",
+        "Petabyte"
+    ];
+
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

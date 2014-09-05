@@ -65,7 +65,7 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
 	return "temperature";
 };
 
-    ilib.Measurement.Temperature.aliases = {
+ilib.Measurement.Temperature.aliases = {
 	"Celsius": "celsius",
 	"celsius": "celsius",
 	"C": "celsius",
@@ -77,11 +77,11 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
 	"kelvin": "kelvin",
 	"K": "kelvin",
 	"Kelvin": "kelvin",
-        "°F": "fahrenheit",
-        "℉" : "fahrenheit",
-        "℃": "celsius",
-        "°C": "celsius"
-    };
+    "°F": "fahrenheit",
+    "℉" : "fahrenheit",
+    "℃": "celsius",
+    "°C": "celsius"
+};
 
 /**
  * Convert a temperature to another measure.
@@ -93,8 +93,8 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
  */
 ilib.Measurement.Temperature.convert = function(to, from, temperature) {
         var result;
-        from = this.aliases[from] || from;
-        to = this.aliases[to] || to;
+        from = ilib.Measurement.Temperature.aliases[from] || from;
+        to = ilib.Measurement.Temperature.aliases[to] || to;
         
 	if(from === "celsius") {
             if(to === "fahrenheit") 
@@ -121,9 +121,9 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
  */
 ilib.Measurement.Temperature.getMeasures = function () {
 	var ret = [];
-        ret.push("celsius");
-        ret.push("kelvin");
-        ret.push("fahrenheit");
+    ret.push("celsius");
+    ret.push("kelvin");
+    ret.push("fahrenheit");
 	return ret;
 };
 

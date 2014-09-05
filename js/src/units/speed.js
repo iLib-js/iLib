@@ -152,8 +152,8 @@ ilib.Measurement.Speed.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Speed.convert = function(to, from, speed) {
-        from = this.aliases[from] || from;
-        to = this.aliases[to] || to;
+    from = ilib.Measurement.Speed.aliases[from] || from;
+    to = ilib.Measurement.Speed.aliases[to] || to;
 	var fromRow = ilib.Measurement.Speed.ratios[from];
 	var toRow = ilib.Measurement.Speed.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {

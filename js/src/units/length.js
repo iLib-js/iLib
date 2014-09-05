@@ -106,67 +106,67 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 
 ilib.Measurement.Length.aliases = {
 	"miles": "mile",
-        "mile":"mile",
+	"mile":"mile",
 	"nauticalmiles": "nauticalmile",
 	"nautical mile": "nauticalmile",
 	"nautical miles": "nauticalmile",
-        "nauticalmile":"nauticalmile",
+	"nauticalmile":"nauticalmile",
 	"yards": "yard",
-        "yard": "yard",
+	"yard": "yard",
 	"feet": "foot",
-        "foot": "foot",
+	"foot": "foot",
 	"inches": "inch",
-        "inch": "inch",
+	"inch": "inch",
 	"meters": "meter",
 	"metre": "meter",
 	"metres": "meter",
 	"m": "meter",
-        "meter": "meter",        
+	"meter": "meter",        
 	"micrometers": "micrometer",
 	"micrometres": "micrometer",
 	"micrometre": "micrometer",
 	"µm": "micrometer",
-        "micrometer": "micrometer",
+	"micrometer": "micrometer",
 	"millimeters": "millimeter",
 	"millimetres": "millimeter",
 	"millimetre": "millimeter",
 	"mm": "millimeter",
-        "millimeter": "millimeter",
+	"millimeter": "millimeter",
 	"centimeters": "centimeter",
 	"centimetres": "centimeter",
 	"centimetre": "centimeter",
 	"cm": "centimeter",
-        "centimeter": "centimeter",
+	"centimeter": "centimeter",
 	"decimeters": "decimeter",
 	"decimetres": "decimeter",
 	"decimetre": "decimeter",
 	"dm": "decimeter",
-        "decimeter": "decimeter",
+	"decimeter": "decimeter",
 	"decameters": "decameter",
 	"decametres": "decameter",
 	"decametre": "decameter",
 	"dam": "decameter",
-        "decameter": "decameter",
+	"decameter": "decameter",
 	"hectometers": "hectometer",
 	"hectometres": "hectometer",
 	"hectometre": "hectometer",
 	"hm": "hectometer",
-        "hectometer": "hectometer",
+	"hectometer": "hectometer",
 	"kilometers": "kilometer",
 	"kilometres": "kilometer",
 	"kilometre": "kilometer",
 	"km": "kilometer",
-        "kilometer": "kilometer",
+	"kilometer": "kilometer",
 	"megameters": "megameter",
 	"megametres": "megameter",
 	"megametre": "megameter",
 	"Mm": "megameter",
-        "megameter": "megameter",
+	"megameter": "megameter",
 	"gigameters": "gigameter",
 	"gigametres": "gigameter",
 	"gigametre": "gigameter",
 	"Gm": "gigameter",
-        "gigameter": "gigameter"
+	"gigameter": "gigameter"
 };
 
 /**
@@ -178,8 +178,8 @@ ilib.Measurement.Length.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Length.convert = function(to, from, length) {
-        from = this.aliases[from] || from;
-        to = this.aliases[to] || to;
+    from = ilib.Measurement.Length.aliases[from] || from;
+    to = ilib.Measurement.Length.aliases[to] || to;
 	var fromRow = ilib.Measurement.Length.ratios[from];
 	var toRow = ilib.Measurement.Length.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
