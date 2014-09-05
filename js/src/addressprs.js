@@ -378,7 +378,6 @@ ilib.Address.prototype = {
 			for (var j = 0; j < this.lines.length; j++) {
 				var line = new ilib.String(this.lines[j]);
 				var it = line.charIterator();
-				// TODO: use a char iterator here
 				while (it.hasNext()) {
 					var c = it.next();
 					if (ilib.CType.isIdeo(c) || ilib.CType.withinRange(c, "Hangul")) {
