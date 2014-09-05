@@ -58,18 +58,20 @@ $(function() {
     });
 
     $.each(locales, function(i,locale) {
-    	var li = new ilib.LocaleInfo(locale);
-		name = li.getLanguageName();
-        var script = li.getLocale().getScript();
-        if (script) {
-            var si = new ilib.ScriptInfo(script);
-            name += " - " + si.getName(); 
-        }
-		if (li.getRegionName()) {
-			name += " - " + li.getRegionName(); 
+    	name = res.getString(locale);
+    	if (!name || name === locale) {
+	    	var li = new ilib.LocaleInfo(locale);
+			name = li.getLanguageName();
+	        var script = li.getLocale().getScript();
+	        if (script) {
+	            var si = new ilib.ScriptInfo(script);
+	            name += " - " + si.getName(); 
+	        }
+			if (li.getRegionName()) {
+				name += " - " + li.getRegionName(); 
+			}
 		}
-        console.log("locale is " + locale + " and name is " + name);
-        localeMap.push({id: locale, name: name});
+	    localeMap.push({id: locale, name: name});
     });
     
     localeMap.sort(function (left, right) {
@@ -164,6 +166,12 @@ $(function() {
             break;
         case 'AddressFmt':
             setupAddressPicker();
+            break;
+        case 'PhonePrs':
+            setupPhoneParsingPicker(res);
+            break;
+        case 'PhoneFmt':
+            setupPhonePicker(localeName);
             break;
         default:
 			alert(convertName + ": to be implemented");
@@ -1073,6 +1081,104 @@ $(function() {
             $('.testSubject').html('<b>' + output + '</b><br />');
             break;
 
+        case 'PhonePrs':
+            var phoneStr = $('#textBox').val();
+            
+            options = {
+            	locale: localeName,
+            	mcc: $('#mcc').val()
+            };
+            
+            var phone = new ilib.PhoneNumber(phoneStr, options);
+            output = res.getString("Parsed phone number is:") + "<br>";
+            if (phone.vsc) {
+            	output += res.getString("Vertical Service Code: ") + phone.vsc + "<br>";
+            }
+            if (phone.iddPrefix) {
+            	output += res.getString("IDD Prefix: ") + phone.iddPrefix + "<br>";
+            }
+            if (phone.countryCode) {
+            	output += res.getString("Country Code: ") + phone.countryCode + "<br>";
+            }
+            if (phone.trunkAccess) {
+            	output += res.getString("Trunk Access Code: ") + phone.trunkAccess + "<br>";
+            }
+            if (phone.cic) {
+            	output += res.getString("Carrier Identification Code: ") + phone.cic + "<br>";
+            } 
+            if (phone.emergency) {
+            	output += res.getString("Emergency Code: ") + phone.emergency + "<br>";
+            } 
+            if (phone.mobilePrefix) {
+            	output += res.getString("Mobile Prefix: ") + phone.mobilePrefix + "<br>";
+            } 
+            if (phone.serviceCode) {
+            	output += res.getString("Service Code: ") + phone.serviceCode + "<br>";
+            } 
+            if (phone.areaCode) {
+            	output += res.getString("Area Code: ") + phone.areaCode + "<br>";
+            } 
+            if (phone.subscriberNumber) {
+            	output += res.getString("Subscriber Number: ") + phone.subscriberNumber + "<br>";
+            } 
+            if (phone.extension) {
+            	output += res.getString("Extension: ") + phone.extension + "<br>";
+            } 
+            if (phone.invalid) {
+            	output += res.getString("This phone number invalid. That is, does not conform to the numbering plan rules.<br>");
+            } 
+            output += '<br />';
+            if (phone.emergency || phone.mobilePrefix || phone.serviceCode || phone.areaCode) {
+            	output += res.getString("The geo-location of this phone number is:") + "<br>";
+            	var locator = new ilib.GeoLocator(options);
+            	var location = locator.locate(phone);
+            	if (location.country) {
+            		output += res.getString("Country: ") + location.country.ln + "<br>" + res.getString("Country ISO Code: ") + locator.country(phone) + "<br>";
+            	}
+            	if (location.area) {
+            		output += res.getString("Area: ") + location.area.ln + "<br>";
+            	}
+            }
+            
+            $('.testSubject').html(output);
+            break;
+            
+		case 'PhoneFmt':
+            options = {
+                locale: localeName,
+                partial: $('[name="partialPhoneNum"]:checked').val() == "partial",
+                style: $('#phoneStyle').val(),
+                mcc: $('#mcc').val()
+            };
+            function getValue(val) {
+            	var v = $('#' + val).val();
+            	if (v && v.length > 0) {
+            		return v;
+            	}
+            	return undefined;
+            }
+            var pn = new ilib.PhoneNumber({
+	            vsc: getValue("vsc"),
+	        	iddPrefix: getValue("iddPrefix"),
+	        	countryCode: getValue("countryCode"),
+	        	trunkAccess: getValue("trunkAccess"),
+	        	cic: getValue("cic"),
+	        	emergency: getValue("emergency"),
+	        	mobilePrefix: getValue("mobilePrefix"),
+	        	serviceCode: getValue("serviceCode"),
+	        	areaCode: getValue("areaCode"),
+	        	subscriberNumber: getValue("subscriberNumber"),
+	        	extension: getValue("extension")
+            }, options);
+
+            var fmt = new ilib.PhoneFmt(options);
+            
+            var str1 = res.getString("The phone number is:<p>{num}");
+            output = str1.format({num: fmt.format(pn, options)});
+            output = output.replace(/\n/g, "<br>");
+            $('.testSubject').html('<b>' + output + '</b><br />');
+            break;
+
 		case 'CalendarInfo':
             var output = "",
             	calName = $('#calendarName').val(),
@@ -1215,10 +1321,12 @@ $(document).ready(function () {
                             <option value="NumPrs">Number Parsing</option>
                             <option value="NamePrs">Name Parsing</option>
                             <option value="AddressPrs">Address Parsing</option>
+                            <option value="PhonePrs">Phone Number Parsing</option>
                             <option value="">-------- Formatting Classes --------</option>
                             <option value="NumFmt">Number Formatting</option>
                             <option value="NameFmt">Name Formatting</option>
                             <option value="AddressFmt">Address Formatting</option>
+                            <option value="PhoneFmt">Phone Number Formatting</option>
 <!--
                             <option value="ShowCalendar">Show Calendar</option>
                             <option value="GetString">Translation</option>
@@ -1565,6 +1673,63 @@ $(document).ready(function () {
                         <div>
                             <label for="country">Country:</label>
                             <input type="text" name="country" id="country"/>
+                        </div>
+                    </div>
+                    <div id='phonePicker' style="display: none">
+	                    <div id="wholePhoneNum">
+	                        <label>Length:</label>
+	                        <input type="radio" name="partialPhoneNum" id="phoneLengthWhole" value="whole" class="partialPhoneNum" checked="checked"/>Whole
+	                        <input type="radio" name="partialPhoneNum" id="phoneLengthPartial" value="partial" class="partialPhoneNum"/>Partial
+	                    </div>
+                        <div id="stylePicker">
+                        	<label for="phoneStyle">Style:</label> 
+                        	<select id="phoneStyle">
+                        	</select>
+                        </div>
+                        <span id="errmsg"></span>
+                        <div>
+                            <label for="vsc">VSC:</label>
+                            <input type="text" name="vsc" id="vsc"/>
+                        </div>
+                        <div>
+                            <label for="iddPrefix">IDD prefix:</label>
+                            <input type="text" name="iddPrefix" id="iddPrefix" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="countryCode">Country Code:</label>
+                            <input type="text" name="countryCode" id="countryCode" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="trunkAccess">Trunk Access:</label>
+                            <input type="text" name="trunkAccess" id="trunkAccess" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="cic">CIC:</label>
+                            <input type="text" name="cic" id="cic" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="emergency">Emergency:</label>
+                            <input type="text" name="emergency" id="emergency" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="mobilePrefix">Mobile Prefix:</label>
+                            <input type="text" name="mobilePrefix" id="mobilePrefix" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="serviceCode">Service Code:</label>
+                            <input type="text" name="serviceCode" id="serviceCode" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="areaCode">Area Code:</label>
+                            <input type="text" name="areaCode" id="areaCode" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="subscriberNumber">Subscriber Num:</label>
+                            <input type="text" name="subscriberNumber" id="subscriberNumber" class="phoneDigits"/>
+                        </div>
+                        <div>
+                            <label for="extension">Extension:</label>
+                            <input type="text" name="extension" id="extension" class="phoneDigits"/>
                         </div>
                     </div>
                     

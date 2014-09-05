@@ -36,7 +36,6 @@ ilib.getVersion = function () {
 
 /**
  * Place where resources and such are eventually assigned.
- * @dict
  */
 ilib.data = {
     norm: {
@@ -48,7 +47,15 @@ ilib.data = {
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
-    }
+    },
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_c: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_l: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_m: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_p: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
+    /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null
 };
 
 if (typeof(window) !== 'undefined') {
@@ -430,6 +437,7 @@ ilib.setLoaderCallback = function(loader) {
 // !depends ilibglobal.js
 
 /**
+ * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
@@ -468,7 +476,6 @@ ilib.setLoaderCallback = function(loader) {
  * 
  * Depends directive: !depends locale.js
  * 
- * @class
  * @constructor
  * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
@@ -1246,7 +1253,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"aa-DJ","af-NA","af-ZA","agq-CM","ak-GH","am-ET","ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","asa-TZ","as-IN","az-AZ","bas-CM","be-BY","bem-ZM","bg-BG","bh-IN","bm-ML","bn-IN","br-FR","bs-Cyrl-BA","bs-Latn-BA","bs-ME","ca-FR","cs-CZ","da-DK","de-AT","de-CH","de-DE","el-GR","en-AU","en-CA","en-Latn-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-KE","en-LK","en-LR","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SG","en-SL","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-SV","es-UY","es-VE","et-EE","fa-AF","fa-IR","ff-SN","fi-FI","fj-FJ","fr-AD","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG","fr-CH","fr-CI","fr-CM","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-MG","fr-ML","fr-RW","fr-SN","fr-TG","fr-YT","ga-IE","gl-ES","ha-Latn-NG","he-IL","hi-IN","hr-HR","hr-ME","hu-HU","hy-AZ","id-ID","id-MY","it-CH","it-IT","it-SM","ja-JP","ka-IR","kk-Cyrl-KZ","kn-IN","ko-KR","ks-Arab-IN","ku-IR","lg-UG","ln-CF","lt-LT","lv-LV","mi-CK","mk-MK","ml-IN","mn-CN","mr-IN","ms-BN","ms-MY","nb-NO","ne-IN","nl-BE","nl-CW","nl-GF","nl-NL","nl-SR","no-BV","no-NO","no-SJ","om-ET","or-IN","os-RU","pa-Arab-PK","pl-PL","pt-AO","pt-BR","pt-CV","pt-GW","pt-MO","pt-MZ","pt-PT","pt-ST","pt-TL","ro-RO","ro-RS","ru-KG","ru-KZ","ru-RU","ru-TM","si-LK","sk-SK","sl-SI","so-ET","so-SO","sq-AL","sq-ME","sq-MK","sr-Cyrl-BA","sr-Latn-BA","sr-Latn-ME","sr-RS","sr-Latn-RS","ss-ZA","st-LS","sv-FI","sv-SE","sw-UG","ta-LK","ta-MY","ta-SG","te-IN","th-TH","tr-TR","uk-UA","ur-IN","ur-PK","uz-AF","uz-Arab-AF","uz-Cyrl-UZ","uz-Latn-UZ","vai-Latn-LR","vi-VN","zh-CN","zh-Hans-CN","zh-Hant-MY","zh-HK","zh-Hans-HK","zh-MO","zh-Hant-MO","zh-SG","zh-Hans-SG","zh-TW","zh-Hant-TW","zh-Hant-US","zu-ZA","zxx-Cyrl-XX","zxx-Hans-XX","zxx-Hebr-XX","zxx-XX"
+	"aa-DJ","af-NA","af-ZA","agq-CM","ak-GH","am-ET","ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","asa-TZ","as-IN","az-AZ","bas-CM","be-BY","bem-ZM","bg-BG","bh-IN","bm-ML","bn-IN","br-FR","bs-Cyrl-BA","bs-Latn-BA","bs-ME","ca-FR","cs-CZ","da-DK","de-AT","de-CH","de-DE","el-GR","en-AU","en-CA","en-Latn-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-KE","en-LK","en-LR","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SG","en-SL","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-SV","es-UY","es-VE","et-EE","fa-AF","fa-IR","ff-SN","fi-FI","fj-FJ","fr-AD","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG","fr-CH","fr-CI","fr-CM","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-MG","fr-ML","fr-RW","fr-SN","fr-TG","fr-YT","ga-IE","gl-ES","ha-Latn-NG","he-IL","hi-IN","hr-HR","hr-ME","hu-HU","hy-AZ","id-ID","id-MY","it-CH","it-IT","it-SM","ja-JP","ka-IR","kk-Cyrl-KZ","kn-IN","ko-KR","ks-Arab-IN","ku-IR","lg-UG","ln-CF","lt-LT","lv-LV","mi-CK","mk-MK","ml-IN","mn-CN","mr-IN","ms-BN","ms-MY","nb-NO","ne-IN","nl-BE","nl-CW","nl-GF","nl-NL","nl-SR","no-BV","no-NO","no-SJ","om-ET","or-IN","os-RU","pa-Arab-PK","pl-PL","pt-AO","pt-BR","pt-CV","pt-GW","pt-MO","pt-MZ","pt-PT","pt-ST","pt-TL","ro-RO","ro-RS","ru-KG","ru-KZ","ru-RU","ru-TM","si-LK","sk-SK","sl-SI","so-ET","so-SO","sq-AL","sq-ME","sq-MK","sr-Cyrl-BA","sr-Latn-BA","sr-Latn-ME","sr-RS","sr-Latn-RS","ss-ZA","st-LS","sv-FI","sv-SE","sw-UG","ta-LK","ta-MY","ta-SG","te-IN","th-TH","tr-TR","uk-UA","ur-IN","ur-PK","uz-AF","uz-Arab-AF","uz-Cyrl-UZ","uz-Latn-UZ","vai-Latn-LR","vi-VN","zh-Hans-CN","zh-Hans-MY","zh-Hant-HK","zh-Hans-MO","zh-Hans-SG","zh-Hant-TW","zh-Hant-US","zu-ZA","zxx-Cyrl-XX","zxx-Hans-XX","zxx-Hebr-XX","zxx-XX"
 ];
 
 /**
@@ -1538,9 +1545,9 @@ ilib.data.localeinfo_vai = {"clock":"12","language.name":"Vai","native_numfmt":{
 ilib.data.localeinfo_vi = {"language.name":"Vietnamese","numfmt":{"exponential":"E","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn","Hani"],"locale":"vi"};
 ilib.data.localeinfo_VN = {"currency":"VND","firstDayOfWeek":1,"region.name":"Vietnam","timezone":"Asia/Ho_Chi_Minh","locale":"VN"};
 ilib.data.localeinfo_zh = {"clock":"12","language.name":"Chinese","native_numfmt":{"script":"Hani","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","useNative":true,"digits":"〇一二三四五六七八九"},"numfmt":{"decimalChar":".","groupChar":",","exponential":"E","useNative":false,"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Hans","Hant","Bopo","Phag"],"locale":"zh"};
-ilib.data.localeinfo_zh_Hant_MO = {"delimiter":{"quotationStart":"「","quotationEnd":"」","alternateQuotationStart":"『","alternateQuotationEnd":"』"},"locale":"zh-Hant-MO"};
-ilib.data.localeinfo_TW = {"currency":"TWD","firstDayOfWeek":0,"region.name":"Taiwan","timezone":"Asia/Taipei","locale":"TW"};
+ilib.data.localeinfo_zh_Hant_HK = {"delimiter":{"quotationStart":"「","quotationEnd":"」","alternateQuotationStart":"『","alternateQuotationEnd":"』"},"locale":"zh-Hant-HK"};
 ilib.data.localeinfo_zh_Hant_TW = {"delimiter":{"quotationStart":"「","quotationEnd":"」","alternateQuotationStart":"『","alternateQuotationEnd":"』"},"locale":"zh-Hant-TW"};
+ilib.data.localeinfo_TW = {"currency":"TWD","firstDayOfWeek":0,"region.name":"Taiwan","timezone":"Asia/Taipei","locale":"TW"};
 ilib.data.localeinfo_zu = {"clock":"12","language.name":"Zulu","numfmt":{"decimalChar":".","groupChar":",","exponential":"E","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"zu"};
 ilib.data.localeinfo_zxx = {"currency":"USD","language.name":"No linguistic content","paperSizes":{"regular":"8x11","photo":"3x5"},"scripts":["Latn"],"locale":"zxx"};
 ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
@@ -1568,6 +1575,7 @@ ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
 // !data localeinfo
 
 /**
+ * @class
  * Create a new locale info instance. Locale info instances give information about
  * the default settings for a particular locale. These settings may be overridden
  * by various parts of the code, and should be used as a fall-back setting of last
@@ -1604,7 +1612,6 @@ ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
  * 
  * Depends directive: !depends localeinfo.js
  * 
- * @class
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback
  * function
@@ -2091,6 +2098,7 @@ ilib.LocaleInfo.prototype = {
 /* !depends ilibglobal.js localeinfo.js */
 
 /**
+ * @class
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
@@ -2101,7 +2109,6 @@ ilib.LocaleInfo.prototype = {
  * 
  * Depends directive: !depends date.js
  * 
- * @class
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */
@@ -3302,6 +3309,7 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
 // !data plurals
 
 /**
+ * @class
  * Create a new string instance. This string inherits from the Javascript
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
@@ -3310,7 +3318,6 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
  * 
  * Depends directive: !depends strings.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
@@ -4649,6 +4656,7 @@ ilib._roundFnc = {
 /* !depends locale.js */
 
 /**
+ * @class
  * A Julian Day class. A Julian Day is a date based on the Julian Day count
  * of time invented by Joseph Scaliger in 1583 for use with astronomical calculations. 
  * Do not confuse it with a date in the Julian calendar, which it has very
@@ -4656,7 +4664,6 @@ ilib._roundFnc = {
  * 
  * Depends directive: !depends julianday.js
  * 
- * @class
  * @constructor
  * @param {number} num the Julian Day expressed as a floating point number 
  */
@@ -4765,12 +4772,12 @@ ilib.JulianDay.prototype = {
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Gregorian calendar object. This class encodes information about
  * a Gregorian calendar.<p>
  * 
  * Depends directive: !depends gregorian.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -4889,6 +4896,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -4937,8 +4945,7 @@ julianday.js
  * 
  * Depends directive: !depends ratadie.js
  * 
- * @protected
- * @class
+ * @private
  * @constructor
  * @param {Object=} params parameters that govern the settings and behaviour of this RD date
  */
@@ -5161,6 +5168,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Gregorian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -5203,8 +5211,7 @@ julianday.js
  * 
  * Depends directive: !depends gregratadie.js
  * 
- * @protected
- * @class
+ * @private
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
@@ -5657,6 +5664,7 @@ calendar/gregratadie.js
 // !data localeinfo zoneinfo
 
 /**
+ * @class
  * Create a time zone instance. 
  * 
  * This class reports and transforms
@@ -5745,7 +5753,6 @@ calendar/gregratadie.js
  * 
  * Depends directive: !depends timezone.js
  * 
- * @class 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance
  */
@@ -6509,6 +6516,7 @@ ilib.data.pseudomap_zxx_Hebr = {"a":"ַ","b":"בּ","c":"ק","d":"ד","e":"ֶ","
 // !data pseudomap
 
 /**
+ * @class
  * Create a new resource bundle instance. The resource bundle loads strings
  * appropriate for a particular locale and provides them via the getString 
  * method.<p>
@@ -6690,7 +6698,6 @@ ilib.data.pseudomap_zxx_Hebr = {"a":"ַ","b":"בּ","c":"ק","d":"ד","e":"ֶ","
  * 
  * Depends directive: !depends resources.js
  * 
- * @class
  * @constructor
  * @param {?Object} options Options controlling how the bundle is created
  */
@@ -7334,11 +7341,8 @@ ilib.data.dateformats_vai = {"gregorian":{"order":"{time} {date}","date":{"dm":{
 ilib.data.dateformats_vai_Latn_LR = {"gregorian":{"date":{"dmy":{"s":"M/d/yy","l":"MMM d yyyy"},"dmwy":{"m":"EE, M/d/yy"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","l":"{st} – {et} {sm} {sd} {sy}"}}},"generated":true};
 ilib.data.dateformats_vi = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"E dd/MM/yy","m":"EE dd/MM/yyyy","l":"EEE dd MMM yyyy","f":"EEEE 'ngày' dd MMMM 'năm' yyyy"},"dmy":{"s":"d/M/yy","m":"dd/MM/yyyy","l":"dd MMM yyyy","f":"'ngày' dd MMMM 'năm' yyyy"},"dmw":{"s":"E d/M","m":"EE dd/MM","l":"EEE dd MMM","f":"EEEE 'ngày' dd MMMM"},"dw":{"s":"E dd","m":"EE dd","l":"EEE dd","f":"EEEE 'ngày' dd"},"dm":{"s":"d/M","m":"dd/MM","l":"dd MMM","f":"'ngày' dd MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM 'năm' yyyy"},"d":{"s":"dd","m":"dd","l":"dd","f":"'ngày' dd"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"'năm' yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh'h'mm:ss a Z","ahms":"hh'h'mm:ss a","hmsz":"hh'h'mm:ss Z","ahmz":"hh'h'mm a Z","hms":"hh'h'mm:ss","ahm":"hh'h'mm a","hmz":"hh'h'mm Z","ah":"hh a","hm":"hh'h'mm","h":"hh"},"24":{"ahmsz":"HH'h'mm:ss Z","ahms":"HH'h'mm:ss","hmsz":"HH'h'mm:ss Z","ahmz":"HH'h'mm Z","hms":"HH'h'mm:ss","ahm":"HH'h'mm","hmz":"HH'h'mm Z","ah":"HH","hm":"HH'h'mm","h":"HH"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}/{sm}/{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"vào lúc {st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","f":"vào lúc {st} {sd} – vào lúc {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}","f":"vào lúc {st} {sd} {sm} – vào lúc {et} {ed} {em} {ey}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"vào lúc {st} {sd} {sm} {sy} – vào lúc {et} {ed} {em} {ey}"},"c10":{"s":"{sd} – {ed}/{em}/{ey}","m":"{sd} – {ed}/{em}/{ey}","l":"{sd} – {ed} {sm} {sy}","f":"{sd} – {ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} – {ed}/{em}/{ey}","m":"{sd}/{sm} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {sy}","f":"{sd} {sm} – {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":{"s":"{sy} – {ey}","m":"{sy} – {ey}","l":"{sy} – {ey}","f":"{sy} – {ey}"}}}};
 ilib.data.dateformats_zh = {"gregorian":{"order":{"s":"{date} {time}","m":"{date} {time}","l":"{date}{time}","f":"{date}{time}"},"date":{"dmwy":{"s":"yy-MM-dd(E)","m":"yyyy-MM-dd(EE)","l":"yyyy年MMM月d日(EEE)","f":"yyyy年MMMM月d日(EEEE)"},"dmy":{"s":"yy-MM-dd","m":"yyyy-MM-dd","l":"yyyy年MMM月d日","f":"yyyy年MMMM月d日"},"dmw":{"s":"MM-dd(E)","m":"MM-dd(EE)","l":"MMM月d日(EEE)","f":"MMMM月d日(EEEE)"},"dm":{"s":"MM-dd","m":"MM-dd","l":"MMM月d日","f":"MMMM月d日"},"my":{"s":"yy-MM","m":"yyyy-MM","l":"yyyy年MMM月","f":"yyyy年MMMM月"},"dw":{"s":"d日(E)","m":"d日(EE)","l":"d日(EEE)","f":"d日(EEEE)"},"d":{"s":"d","m":"dd","l":"d日","f":"d日"},"m":{"s":"M","m":"MM","l":"MMM月","f":"MMMM月"},"y":{"s":"yy","m":"yyyy","l":"yyyy年","f":"yyyy年"},"n":{"s":"N","m":"NN","l":"MMM月","f":"MMMM月"}},"time":{"12":{"ahmsz":"ahh:mm:ssz","ahms":"ahh:mm:ss","hmsz":"hh:mm:ssz","hms":"hh:mm:ss","ahmz":"ahh:mmz","ahm":"ahh:mm","hmz":"hh:mmz","ah":"ahh","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ssz","ahms":"HH:mm:ss","hmsz":"HH:mm:ssz","hms":"HH:mm:ss","ahmz":"HH:mmz","ahm":"HH:mm","hmz":"HH:mmz","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sy}-{sm}-{sd}，{st}至{et}","m":"{sy}-{sm}-{sd}，{st}至{et}","l":"{sy}{sm}{sd}，{st}至{et}","f":"{sy}{sm}{sd}，{st}至{et}"},"c01":{"s":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","m":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","l":"{sy}{sm}{sd}{st}至{ed}{et}","f":"{sy}{sm}{sd}{st}至{ed}{et}"},"c02":{"s":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","m":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","l":"{sy}{sm}{sd}，{st}至{em}{ed}日，{et}","f":"{sy}{sm}{sd}，{st}至{em}{ed}日，{et}"},"c03":{"s":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","m":"{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}","l":"{sy}{sm}{sd}，{st}至{ey}{em}{ed}，{et}","f":"{sy}{sm}{sd}，{st}至{ey}{em}{ed}，{et}"},"c10":{"s":"{sy}-{sm}-{sd}至{ed}","m":"{sy}-{sm}-{sd}至{ed}","l":"{sy}{sm}{sd}至{ed}","f":"{sy}{sm}{sd}至{ed}"},"c11":{"s":"{sy}-{sm}-{sd}至{em}-{ed}","m":"{sy}-{sm}-{sd}至{em}-{ed}","l":"{sy}{sm}{sd}至{em}{ed}","f":"{sy}{sm}{sd}至{em}{ed}"},"c12":{"s":"{sy}-{sm}-{sd}至{ey}-{em}-{ed}","m":"{sy}-{sm}-{sd}至{ey}-{em}-{ed}","l":"{sy}{sm}{sd}至{ey}{em}{ed}","f":"{sy}{sm}{sd}至{ey}{em}{ed}"},"c20":{"s":"{sy}-{sm}至{ey}-{em}","m":"{sy}-{sm}至{ey}-{em}","l":"{sy}{sm}至{ey}{em}","f":"{sy}{sm}至{ey}{em}"},"c30":"{sy}至{ey}"}}};
-ilib.data.dateformats_zh_HK = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
-ilib.data.dateformats_zh_Hans_HK = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
-ilib.data.dateformats_zh_MO = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
-ilib.data.dateformats_zh_Hant_MO = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
-ilib.data.dateformats_zh_TW = {"gregorian":{"date":{"dmwy":{"s":"yyyy-MM-dd(E)","l":"yyyy年MMM月d日(EEE)"},"dmy":{"s":"yyyy-MM-dd","l":"yyyy年MMM月d日"},"my":{"s":"yyyy-MM","l":"yyyy年MMM月"},"y":{"s":"yyyy","l":"yyyy年"}}}};
+ilib.data.dateformats_zh_Hant_HK = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
+ilib.data.dateformats_zh_Hans_MO = {"gregorian":{"date":{"dmwy":{"s":"dd.MM.yy(E)","m":"dd.MM.yyyy(EE)"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy"},"dmw":{"s":"dd.MM(E)","m":"dd.MM(EE)"},"dm":{"s":"dd.MM","m":"dd.MM"},"my":{"s":"MM.yy","m":"MM.yyyy"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st}至{et}","m":"{sd}.{sm}.{sy} {st}至{et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}至{ed}.{sm}.{sy}","m":"{sd}至{ed}.{sm}.{sy}"},"c11":{"s":"{sd}.{sm}至{ed}.{em}.{sy}","m":"{sd}.{sm}至{ed}.{em}.{sy}"},"c12":{"s":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}至{ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy}至{em}.{ey}","m":"{sm}.{sy}至{em}.{ey}"}}}};
 ilib.data.dateformats_zh_Hant_TW = {"gregorian":{"date":{"dmwy":{"s":"yyyy-MM-dd(E)","l":"yyyy年MMM月d日(EEE)"},"dmy":{"s":"yyyy-MM-dd","l":"yyyy年MMM月d日"},"my":{"s":"yyyy-MM","l":"yyyy年MMM月"},"y":{"s":"yyyy","l":"yyyy年"}}}};
 ilib.data.dateformats_zh_Hant_US = {"gregorian":{"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","h":"h"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","hm":"H:mm","h":"H"}}}};
 ilib.data.dateformats_zu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d"},"dmy":{"s":"M/d/yy","m":"d MMM yy","l":"MMM d, yyyy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sm} {sd}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sm} {sd} – {et} {ed} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -7455,9 +7459,6 @@ ilib.data.sysres_vai_Latn_LR = {"generated":true,"NN1":"lu","NN2":"ɓa","NN3":"v
 ilib.data.sysres_vi = {"N1":"1","N2":"2","N3":"3","N4":"4","N5":"5","N6":"6","N7":"7","N8":"8","N9":"9","N10":"10","N11":"11","N12":"12","NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"th.1","MMM2":"th.2","MMM3":"th.3","MMM4":"th.4","MMM5":"th.5","MMM6":"th.6","MMM7":"th.7","MMM8":"th.8","MMM9":"th.9","MMM10":"th.10","MMM11":"th.11","MMM12":"th.12","MMMM1":"tháng một","MMMM2":"tháng hai","MMMM3":"tháng ba","MMMM4":"tháng tư","MMMM5":"tháng năm","MMMM6":"tháng sáu","MMMM7":"tháng bảy","MMMM8":"tháng tám","MMMM9":"tháng chín","MMMM10":"tháng mười","MMMM11":"tháng mười một","MMMM12":"tháng mười hai","E0":"cn","E1":"t2","E2":"t3","E3":"t4","E4":"t5","E5":"t6","E6":"t7","EE0":"cn","EE1":"t2","EE2":"t3","EE3":"t4","EE4":"t5","EE5":"t6","EE6":"t7","EEE0":"cnh","EEE1":"hai","EEE2":"ba","EEE3":"tư","EEE4":"năm","EEE5":"sáu","EEE6":"bảy","EEEE0":"chủ nhật","EEEE1":"thứ hai","EEEE2":"thứ ba","EEEE3":"thứ tư","EEEE4":"thứ năm","EEEE5":"thứ sáu","EEEE6":"thứ bảy","a0":"SA","a1":"CH","G-1":"tr. CN","G1":"sau CN","in {duration}":"trong {duration}","{duration} ago":"{duration} trước","1#1 year|#{num} years":"#{num} năm","1#1 month|#{num} months":"#{num} tháng","1#1 week|#{num} weeks":"#{num} tuần","1#1 day|#{num} days":"#{num} ngày","1#1 hour|#{num} hours":"#{num} giờ","1#1 minute|#{num} minutes":"#{num} phút","1#1 second|#{num} seconds":"#{num} giây","1#1 yr|#{num} yrs":"#{num} năm","1#1 mon|#{num} mons":"#{num} thá","1#1 wk|#{num} wks":"#{num} tuần","durationLongDays":"#{num} ngày","1#1 hr|#{num} hrs":"#{num} giờ","1#1 min|#{num} min":"#{num} phút","1#1 sec|#{num} sec":"#{num} giây","durationMediumYears":"#{num} năm","1#1 mo|#{num} mos":"#{num} th","durationMediumWeeks":"#{num} tu","1#1 dy|#{num} dys":"#{num} ng","durationMediumHours":"#{num} giờ","1#1 mi|#{num} min":"#{num} ph","1#1 se|#{num} sec":"#{num} gi","#{num}y":"#{num}n","durationShortMonths":"#{num}t","#{num}w":"#{num}t","#{num}d":"#{num}n","#{num}h":"#{num}g","durationShortMinutes":"#{num}p","#{num}s":"#{num}g","separatorShort":" ","separatorMedium":" ","separatorLong":", ","separatorFull":", ","finalSeparatorFull":" và "};
 ilib.data.sysres_zh = {"MMMM1":"1","MMM1":"1","NN1":"01","N1":"1","MMMM2":"2","MMM2":"2","NN2":"02","N2":"2","MMMM3":"3","MMM3":"3","NN3":"03","N3":"3","MMMM4":"4","MMM4":"4","NN4":"04","N4":"4","MMMM5":"5","MMM5":"5","NN5":"05","N5":"5","MMMM6":"6","MMM6":"6","NN6":"06","N6":"6","MMMM7":"7","MMM7":"7","NN7":"07","N7":"7","MMMM8":"8","MMM8":"8","NN8":"08","N8":"8","MMMM9":"9","MMM9":"9","NN9":"09","N9":"9","MMMM10":"10","MMM10":"10","NN10":"10","N10":"1O","MMMM11":"11","MMM11":"11","NN11":"11","N11":"11","MMMM12":"12","MMM12":"12","NN12":"12","N12":"12","EEEE0":"星期日","EEE0":"周日","EE0":"周日","E0":"日","EEEE1":"星期一","EEE1":"周一","EE1":"周一","E1":"一","EEEE2":"星期二","EEE2":"周二","EE2":"周二","E2":"二","EEEE3":"星期三","EEE3":"周三","EE3":"周三","E3":"三","EEEE4":"星期四","EEE4":"周四","EE4":"周四","E4":"四","EEEE5":"星期五","EEE5":"周五","EE5":"周五","E5":"五","EEEE6":"星期六","EEE6":"周六","EE6":"周六","E6":"六","ordinalChoice":"#{num}天","a0":"上午","a1":"下午","azh0":"凌晨","azh1":"早上","azh2":"上午","azh3":"中午","azh4":"下午","azh5":"傍晚","azh6":"晚上","G-1":"公元前","G1":"公元","durationShortMillis":"#{num}毫秒","#{num}s":"#{num}秒","durationShortMinutes":"#{num}分钟","#{num}h":"#{num}小时","#{num}d":"#{num}天","#{num}w":"#{num}周","durationShortMonths":"#{num}个月","#{num}y":"#{num}年","#{num} ms":"#{num}毫秒","1#1 se|#{num} sec":"#{num}秒","1#1 mi|#{num} min":"#{num}分钟","durationMediumHours":"#{num}小时","1#1 dy|#{num} dys":"#{num}天","durationMediumWeeks":"#{num}周","1#1 mo|#{num} mos":"#{num}个月","durationMediumYears":"#{num}年","1#1 sec|#{num} sec":"#{num}秒","1#1 min|#{num} min":"#{num}分钟","1#1 hr|#{num} hrs":"#{num}小时","durationLongDays":"#{num}天","1#1 wk|#{num} wks":"#{num}周","1#1 mon|#{num} mons":"#{num}个月","1#1 yr|#{num} yrs":"#{num}年","1#1 millisecond|#{num} milliseconds":"#{num}毫秒","1#1 second|#{num} seconds":"#{num}秒","1#1 minute|#{num} minutes":"#{num}分钟","1#1 hour|#{num} hours":"#{num}小时","1#1 day|#{num} days":"#{num}天","1#1 week|#{num} weeks":"#{num}周","1#1 month|#{num} months":"#{num}个月","1#1 year|#{num} years":"#{num}年","{duration} ago":"{duration}前","in {duration}":"{duration}后","separatorShort":"","separatorMedium":"","separatorLong":"、","separatorFull":"、","finalSeparatorFull":"和"};
 ilib.data.sysres_zh_Hant = {"EEE0":"週日","EE0":"週日","E0":"週日","EEE1":"週一","EE1":"週一","E1":"週一","EEE2":"週二","EE2":"週二","E2":"週二","EEE3":"週三","EE3":"週三","E3":"週三","EEE4":"週四","EE4":"週四","E4":"週四","EEE5":"週五","EE5":"週五","E5":"週五","EEE6":"週六","EE6":"週六","E6":"週六","azh3":"正午","durationShortMinutes":"#{num}分鐘","#{num}h":"#{num}小時","#{num}w":"#{num}週","durationShortMonths":"#{num}個月","1#1 mi|#{num} min":"#{num}分鐘","durationMediumHours":"#{num}小時","1#1 wk|#{num} wks":"#{num}週","1#1 mo|#{num} mos":"#{num}個月","1#1 min|#{num} min":"#{num}分鐘","1#1 hr|#{num} hrs":"#{num}小時","1#1 mon|#{num} mons":"#{num}個月","1#1 minute|#{num} minutes":"#{num}分鐘","1#1 hour|#{num} hours":"#{num}小時","1#1 week|#{num} weeks":"#{num}週","1#1 month|#{num} months":"#{num}個月"};
-ilib.data.sysres_zh_HK = {"EEE0":"週日","EE0":"週日","E0":"週日","EEE1":"週一","EE1":"週一","E1":"週一","EEE2":"週二","EE2":"週二","E2":"週二","EEE3":"週三","EE3":"週三","E3":"週三","EEE4":"週四","EE4":"週四","E4":"週四","EEE5":"週五","EE5":"週五","E5":"週五","EEE6":"週六","EE6":"週六","E6":"週六","azh3":"正午","durationShortMinutes":"#{num}分鐘","#{num}h":"#{num}小時","#{num}w":"#{num}週","durationShortMonths":"#{num}個月","1#1 mi|#{num} min":"#{num}分鐘","durationMediumHours":"#{num}小時","1#1 wk|#{num} wks":"#{num}週","1#1 mo|#{num} mos":"#{num}個月","1#1 min|#{num} min":"#{num}分鐘","1#1 hr|#{num} hrs":"#{num}小時","1#1 mon|#{num} mons":"#{num}個月","1#1 minute|#{num} minutes":"#{num}分鐘","1#1 hour|#{num} hours":"#{num}小時","1#1 week|#{num} weeks":"#{num}週","1#1 month|#{num} months":"#{num}個月"};
-ilib.data.sysres_zh_MO = {"EEE0":"週日","EE0":"週日","E0":"週日","EEE1":"週一","EE1":"週一","E1":"週一","EEE2":"週二","EE2":"週二","E2":"週二","EEE3":"週三","EE3":"週三","E3":"週三","EEE4":"週四","EE4":"週四","E4":"週四","EEE5":"週五","EE5":"週五","E5":"週五","EEE6":"週六","EE6":"週六","E6":"週六","azh3":"正午","durationShortMinutes":"#{num}分鐘","#{num}h":"#{num}小時","#{num}w":"#{num}週","durationShortMonths":"#{num}個月","1#1 mi|#{num} min":"#{num}分鐘","durationMediumHours":"#{num}小時","1#1 wk|#{num} wks":"#{num}週","1#1 mo|#{num} mos":"#{num}個月","1#1 min|#{num} min":"#{num}分鐘","1#1 hr|#{num} hrs":"#{num}小時","1#1 mon|#{num} mons":"#{num}個月","1#1 minute|#{num} minutes":"#{num}分鐘","1#1 hour|#{num} hours":"#{num}小時","1#1 week|#{num} weeks":"#{num}週","1#1 month|#{num} months":"#{num}個月"};
-ilib.data.sysres_zh_TW = {"EEE0":"週日","EE0":"週日","E0":"週日","EEE1":"週一","EE1":"週一","E1":"週一","EEE2":"週二","EE2":"週二","E2":"週二","EEE3":"週三","EE3":"週三","E3":"週三","EEE4":"週四","EE4":"週四","E4":"週四","EEE5":"週五","EE5":"週五","E5":"週五","EEE6":"週六","EE6":"週六","E6":"週六","azh3":"正午","durationShortMinutes":"#{num}分鐘","#{num}h":"#{num}小時","#{num}w":"#{num}週","durationShortMonths":"#{num}個月","1#1 mi|#{num} min":"#{num}分鐘","durationMediumHours":"#{num}小時","1#1 wk|#{num} wks":"#{num}週","1#1 mo|#{num} mos":"#{num}個月","1#1 min|#{num} min":"#{num}分鐘","1#1 hr|#{num} hrs":"#{num}小時","1#1 mon|#{num} mons":"#{num}個月","1#1 minute|#{num} minutes":"#{num}分鐘","1#1 hour|#{num} hours":"#{num}小時","1#1 week|#{num} weeks":"#{num}週","1#1 month|#{num} months":"#{num}個月"};
 ilib.data.sysres_zu = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","NN12":"Di","MMM3":"Mas","MMM5":"Mey","MMM8":"Aga","MMM10":"Okt","MMM12":"Dis","MMMM1":"Januwari","MMMM2":"Februwari","MMMM3":"Mashi","MMMM4":"Apreli","MMMM5":"Meyi","MMMM6":"Juni","MMMM7":"Julayi","MMMM8":"Agasti","MMMM9":"Septhemba","MMMM10":"Okthoba","MMMM11":"Novemba","MMMM12":"Disemba","E2":"B","E3":"T","E4":"S","E5":"H","E6":"M","EE0":"Is","EE1":"Um","EE2":"Ul","EE3":"Ul","EE4":"Ul","EE5":"Ul","EE6":"Um","EEE0":"Son","EEE1":"Mso","EEE2":"Bil","EEE3":"Tha","EEE4":"Sin","EEE5":"Hla","EEE6":"Mgq","EEEE0":"Sonto","EEEE1":"Msombuluko","EEEE2":"Lwesibili","EEEE3":"Lwesithathu","EEEE4":"ULwesine","EEEE5":"Lwesihlanu","EEEE6":"Mgqibelo","a0":"Ekuseni","a1":"Ntambama","G-1":"BC","G1":"AD","#{num}s":"#i{num}","1#1 se|#{num} sec":"one#isekhondi elingu-{num}|#{num} am","1#1 sec|#{num} sec":"one#isekhondi elingu-{num}|#{num} ama","1#1 second|#{num} seconds":"one#isekhondi elingu-{num}|#{num} amasekhondi","durationShortMinutes":"#i{num}","1#1 mi|#{num} min":"one#iminithi elingu-{num}|#{num} am","1#1 min|#{num} min":"one#iminithi elingu-{num}|#{num} ama","1#1 minute|#{num} minutes":"one#iminithi elingu-{num}|#{num} amaminithi","#{num}h":"#i{num}","durationMediumHours":"one#ihora elingu-{num}|#{num} am","1#1 hr|#{num} hrs":"one#ihora elingu-{num}|#{num} ama","1#1 hour|#{num} hours":"one#ihora elingu-{num}|#{num} amahora","#{num}d":"#u{num}","1#1 dy|#{num} dys":"one#usuku olungu-{num}|#{num} iz","durationLongDays":"one#usuku olungu-{num}|#{num} izi","1#1 day|#{num} days":"one#usuku olungu-{num}|#{num} izinsuku","#{num}w":"#i{num}","durationMediumWeeks":"one#iviki elingu-{num}|#{num} am","1#1 wk|#{num} wks":"one#iviki elingu-{num}|#{num} ama","1#1 week|#{num} weeks":"one#iviki elingu-{num}|#{num} amaviki","durationShortMonths":"#i{num}","1#1 mo|#{num} mos":"one#inyanga engu-{num}|#{num} iz","1#1 mon|#{num} mons":"one#inyana engu-{num}|#{num} izi","1#1 month|#{num} months":"one#inyana engu-{num}|#{num} izinyanga","#{num}y":"#u{num}","durationMediumYears":"one#unyaka ongu-{num}|#{num} im","1#1 yr|#{num} yrs":"one#unyaka ongu-{num}|#{num} imi","1#1 year|#{num} years":"one#unyaka ongu-{num}|#{num} iminyaka","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", no-","separatorLong":" "};
 /*
  * datefmt.js - Date formatter definition
@@ -7495,6 +7496,7 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
+ * @class
  * Create a new date formatter instance. The date formatter is immutable once
  * it is created, but can format as many different dates as needed with the same
  * options. Create different date formatter instances for different purposes
@@ -7733,7 +7735,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends datefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */
@@ -7902,7 +7903,7 @@ ilib.DateFmt = function(options) {
 							loadParams: loadParams, 
 							callback: ilib.bind(this, function (formats) {
 								if (!formats) {
-									formats = ilib.DateFmt.defaultFmt;
+									formats = ilib.data.dateformats || ilib.DateFmt.defaultFmt;
 									var spec = this.locale.getSpec().replace(/-/g, '_');
 									ilib.DateFmt.cache[spec] = formats;
 								}
@@ -7939,7 +7940,7 @@ ilib.DateFmt.lenmap = {
 
 ilib.DateFmt.zeros = "0000";
 
-ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
+ilib.DateFmt.defaultFmt = {
 	"gregorian": {
 		"order": "{date} {time}",
 		"date": {
@@ -8820,6 +8821,7 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
+ * @class
  * Create a new date range formatter instance. The date range formatter is immutable once
  * it is created, but can format as many different date ranges as needed with the same
  * options. Create different date range formatter instances for different purposes
@@ -8896,7 +8898,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends daterangefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options options governing the way this date range formatter instance works
  */
@@ -9167,6 +9168,7 @@ ilib.DateRngFmt.prototype = {
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Hebrew calendar object. This class encodes information about
  * the Hebrew (Jewish) calendar. The Hebrew calendar is a tabular hebrew 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -9181,7 +9183,6 @@ ilib.DateRngFmt.prototype = {
  * 
  * Depends directive: !depends hebrew.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -9404,6 +9405,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Hebrew RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -9450,7 +9452,6 @@ julianday.js
  * Depends directive: !depends hebrewdate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
@@ -9564,6 +9565,7 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 };
 
 /**
+ * @class
  * Construct a new civil Hebrew date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -9607,7 +9609,6 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * 
  * Depends directive: !depends hebrewdate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
@@ -9719,7 +9720,7 @@ ilib.Date.HebrewDate = function(params) {
 	}
 };
 
-ilib.Date.HebrewDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.HebrewDate.prototype = new ilib.Date();
 ilib.Date.HebrewDate.prototype.parent = ilib.Date;
 ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
 
@@ -10109,6 +10110,7 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Islamic calendar object. This class encodes information about
  * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -10123,7 +10125,6 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
  * 
  * Depends directive: !depends islamic.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -10332,6 +10333,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Islamic RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -10375,7 +10377,6 @@ julianday.js
  * Depends directive: !depends islamicdate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
@@ -10426,6 +10427,7 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
+ * @class
  * Construct a new civil Islamic date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -10467,7 +10469,6 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends islamicdate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
@@ -10564,7 +10565,7 @@ ilib.Date.IslamicDate = function(params) {
 	}
 };
 
-ilib.Date.IslamicDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.IslamicDate.prototype = new ilib.Date();
 ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 
@@ -10755,12 +10756,12 @@ ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
  * Depends directive: !depends julian.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -10875,6 +10876,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Julian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -10918,7 +10920,6 @@ julianday.js
  * Depends directive: !depends juliandate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
@@ -10973,6 +10974,7 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
+ * @class
  * Construct a new date object for the Julian Calendar. The constructor can be called
  * with a parameter object that contains any of the following properties:
  * 
@@ -11027,7 +11029,6 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends juliandate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian date
@@ -11118,7 +11119,7 @@ ilib.Date.JulDate = function(params) {
 	}
 };
 
-ilib.Date.JulDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.JulDate.prototype = new ilib.Date();
 ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 
@@ -11303,6 +11304,7 @@ timezone.js
 */
 
 /**
+ * @class
  * Construct a new Gregorian date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -11376,7 +11378,6 @@ timezone.js
  * 
  * Depends directive: !depends gregoriandate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
@@ -11670,12 +11671,12 @@ ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
 /* !depends calendar.js locale.js date.js julianday.js calendar/gregorian.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
  * 
  * Depends directive: !depends thaisolar.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -11739,6 +11740,7 @@ util/jsutils.js
 */
 
 /**
+ * @class
  * Construct a new Thai solar date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -11796,7 +11798,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends thaisolardate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
@@ -13843,7 +13844,7 @@ ilib.CType = {
 	 */
 	_inRange: function(ch, rangeName, obj) {
 		var range, i, num;
-		if (!ch || ch.length === 0 || !rangeName || typeof(obj) === 'undefined') {
+		if (!ch || ch.length === 0 || !rangeName || !obj) {
 			return false;
 		}
 		
@@ -14194,6 +14195,7 @@ ctype.isspace.js
 */
 
 /**
+ * @class
  * Parse a string as a number, ignoring all locale-specific formatting.<p>
  * 
  * This class is different from the standard Javascript parseInt() and parseFloat() 
@@ -14245,7 +14247,6 @@ ctype.isspace.js
  * 
  * Depends directive: !depends numprs.js
  * 
- * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
  * @param {Object=} options Options controlling how the instance should be created 
@@ -14453,6 +14454,7 @@ ilib.data.currency = {"USD":{"name":"US Dollar","decimals":2,"sign":"$"},"CHF":{
 // !data currency
 
 /**
+ * @class
  * Create a new currency information instance. Instances of this class encode 
  * information about a particular currency.<p>
  * 
@@ -14513,7 +14515,6 @@ ilib.data.currency = {"USD":{"name":"US Dollar","decimals":2,"sign":"$"},"CHF":{
  * 
  * Depends directive: !depends currency.js
  * 
- * @class
  * @constructor
  * @param options {Object} a set of properties to govern how this instance is constructed.
  * @throws "currency xxx is unknown" when the given currency code is not in the list of 
@@ -14718,6 +14719,7 @@ util/jsutils.js
 // !data localeinfo currency
 
 /**
+ * @class
  * Create a new number formatter instance. Locales differ in the way that digits
  * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
@@ -14804,7 +14806,6 @@ util/jsutils.js
  *
  * Depends directive: !depends numfmt.js
  *
- * @class
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
@@ -15295,6 +15296,7 @@ util/jsutils.js
 // !resbundle sysres
 
 /**
+ * @class
  * Create a new duration formatter instance. The duration formatter is immutable once
  * it is created, but can format as many different durations as needed with the same
  * options. Create different duration formatter instances for different purposes
@@ -15355,7 +15357,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends durfmt.js
  * 
- * @class
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works
  */
@@ -16308,6 +16309,7 @@ ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":2
 // !data scripts
 
 /**
+ * @class
  * Create a new script info instance. This class encodes information about
  * scripts, which are sets of characters used in a writing system.<p>
  * 
@@ -16335,7 +16337,6 @@ ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":2
  * 
  * Depends directive: !depends scriptinfo.js
  * 
- * @class
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script
  * @param {Object} options parameters to initialize this matcher 
@@ -16573,6 +16574,7 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 /**
+ * @class
  * A class to parse names of people. Different locales have different conventions when it
  * comes to naming people.<p>
  *
@@ -16624,9 +16626,7 @@ util/jsutils.js
  *
  * Depends directive: !depends nameprs.js
  *
- * @class
  * @constructor
- * @dict
  * @param {string|ilib.Name=} name the name to parse
  * @param {Object=} options Options governing the construction of this name instance
  */
@@ -17565,6 +17565,7 @@ ctype.ispunct.js
 // !data name
 
 /**
+ * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to
  * a user. The options may contain the following properties:
  * 
@@ -17646,7 +17647,6 @@ ctype.ispunct.js
  * 
  * Depends directive: !depends namefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */
@@ -18123,8 +18123,6 @@ ilib.data.ctrynames_vai_Latn_LR = {"Aŋdóra":"AD","Yunaitɛ Arabhi Ɛmire":"AE"
 ilib.data.ctrynames_vi = {"Châu Á":"142","Trung Á":"143","Tây Á":"145","Âu Châu":"150","Đông Âu":"151","Miền Bắc Châu Âu":"154","Tây Âu":"155","Châu Mỹ La-tinh":"419","Thế giới":"001","Châu Phi":"002","Bắc Mỹ":"003","Nam Mỹ":"005","Châu Đại Dương":"009","Tây Phi":"011","Trung Mỹ":"013","Đông Phi":"014","Bắc Phi":"015","Trung Phi":"017","Miền Nam Châu Phi":"018","Châu Mỹ":"019","Miền Bắc Châu Mỹ":"021","Ca-ri-bê":"029","Đông Á":"030","Nam Á":"034","Đông Nam Á":"035","Nam Âu":"039","Úc và New Zealand":"053","Melanesia":"054","Vùng Micronesian":"057","Polynesia":"061","Đảo Ascension":"AC","Andorra":"AD","Các Tiểu Vương quốc A-rập Thống nhất":"AE","Afghanistan":"AF","Antigua và Barbuda":"AG","Anguilla":"AI","Albani":"AL","Armenia":"AM","Tây Ấn Hà Lan":"AN","Angola":"AO","Nam Cực":"AQ","Argentina":"AR","Đảo Somoa thuộc Mỹ":"AS","Áo":"AT","Úc":"AU","Aruba":"AW","Quần đảo Aland":"AX","Azerbaijan":"AZ","Bô-xni-a Héc-xê-gô-vi-na":"BA","Barbados":"BB","Bangladesh":"BD","Bỉ":"BE","Burkina Faso":"BF","Bungari":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Bra-xin":"BR","Bahamas":"BS","Bhutan":"BT","Đảo Bouvet":"BV","Botswana":"BW","Belarus":"BY","Bê-li-xê":"BZ","Ca-na-đa":"CA","Quần đảo Cocos":"CC","Congo - Kinshasa":"CD","Cộng hòa Trung Phi":"CF","Công-gô":"CG","Thụy Sĩ":"CH","Bờ Biển Ngà":"CI","Quần Đảo Cook":"CK","Chile":"CL","Ca-mơ-run":"CM","Trung Quốc":"CN","Colombia":"CO","Đảo Clipperton":"CP","Cốt-xta Ri-ca":"CR","Cu Ba":"CU","Cape Verde":"CV","Curaçao":"CW","Đảo Giáng Sinh":"CX","Síp":"CY","Cộng hòa Séc":"CZ","Đức":"DE","Diego Garcia":"DG","Djibouti":"DJ","Đan Mạch":"DK","Dominica":"DM","Cộng hòa Dominica":"DO","Algeria":"DZ","Ceuta và Melilla":"EA","Ecuador":"EC","Estonia":"EE","Ai Cập":"EG","Tây Sahara":"EH","Eritrea":"ER","Tây Ban Nha":"ES","Ethiopia":"ET","Liên Minh Châu Âu":"EU","Phần Lan":"FI","Fiji":"FJ","Quần Đảo Falkland":"FK","Micronesia":"FM","Quần Đảo Faroe":"FO","Pháp":"FR","Gabon":"GA","Vương quốc Anh":"GB","Grenada":"GD","Georgia":"GE","Quiana thuộc Pháp":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Băng Đảo":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Xích Đạo":"GQ","Hy Lạp":"GR","Quần đảo Nam Georgia và Nam Sandwich":"GS","Goa-tê-ma-la":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Đặc khu hành chính Hồng Kông thuộc CHND Trung Hoa":"HK","Đảo Heard và Quần đảo McDonald":"HM","Hôn-đu-rát":"HN","Croatia":"HR","Haiti":"HT","Hungari":"HU","Quần đảo Canary":"IC","Indonesia":"ID","Ai-len":"IE","Israel":"IL","Đảo Man":"IM","Ấn Độ":"IN","Thuộc địa Anh tại Ấn Độ Dương":"IO","I-rắc":"IQ","I-ran":"IR","Ai-xơ-len":"IS","Ý":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Nhật Bản":"JP","Kenya":"KE","Kyrgyzstan":"KG","Campuchia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts và Nevis":"KN","Bắc Triều Tiên":"KP","Hàn Quốc":"KR","Cô-oét":"KW","Quần Đảo Cayman":"KY","Kazakhstan":"KZ","Lào":"LA","Li-băng":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","LIberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Li-bi":"LY","Ma-rốc":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Quần đảo Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Miến Điện]":"MM","Mông Cổ":"MN","Đặc khu hành chính Macao thuộc CHND Trung Hoa":"MO","Quần Đảo Bắc Mariana":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mê-hi-cô":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Đảo Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Hà Lan":"NL","Na Uy":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Pa-na-ma":"PA","Peru":"PE","Polynesia thuộc Pháp":"PF","Papua New Guinea":"PG","Philippin":"PH","Pakistan":"PK","Ba Lan":"PL","Saint Pierre và Miquelon":"PM","Quần đảo Pitcairn":"PN","Puerto Rico":"PR","Lãnh thổ Palestine":"PS","Bồ Đào Nha":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Vùng xa xôi thuộc Châu Đại Dương":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Nga":"RU","Rwanda":"RW","A-rập Xê-út":"SA","Quần đảo Solomon":"SB","Seychelles":"SC","Xu-đăng":"SD","Thụy Điển":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard và Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Suriname":"SR","Nam Sudan":"SS","São Tomé và Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Quần Đảo Turk và Caicos":"TC","Chad":"TD","Thuộc Địa Nam của Pháp":"TF","Togo":"TG","Thái Lan":"TH","Tajikistan":"TJ","Tokelau":"TK","Đông Ti-mo":"TL","Turkmenistan":"TM","Tuy-ni-di":"TN","Tonga":"TO","Thổ Nhĩ Kỳ":"TR","Trinidad và Tobago":"TT","Tuvalu":"TV","Đài Loan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Các đảo nhỏ xa trung tâm thuộc Mỹ":"UM","Hoa Kỳ":"US","Uruguay":"UY","Uzbekistan":"UZ","Va-ti-căng":"VA","Saint Vincent và Grenadines":"VC","Venezuela":"VE","Quần đảo Virgin thuộc Anh":"VG","Quần đảo Virgin thuộc Mỹ":"VI","Việt Nam":"VN","Vanuatu":"VU","Wallis và Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Nam Phi":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Vùng Chưa biết hoặc không Hợp lệ":"ZZ"};
 ilib.data.ctrynames_zh = {"generated":false,"阿富汗":"AF","阿尔巴尼亚":"AL","阿尔及利亚":"DZ","美属萨摩亚":"AS","安道尔":"AD","安哥拉":"AO","安圭拉":"AI","阿根廷":"AR","亚美尼亚":"AM","阿鲁巴":"AW","阿森松":"SH","阿森松岛":"AC","澳大利亚":"AU","奥地利":"AT","阿塞拜疆":"AZ","英属维尔京群岛":"VG","巴哈马":"BS","巴林":"BH","孟加拉国":"BD","巴巴多斯":"BB","白俄罗斯":"BY","比利时":"BE","伯利兹":"BZ","贝宁":"BJ","百慕大":"BM","不丹":"BT","玻利维亚":"BO","博茨瓦纳":"BW","巴西":"BR","英属印度洋领地":"IO","文莱":"BN","文莱达鲁萨兰国":"BN","保加利亚":"BG","布基纳法索":"BF","缅甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麦隆":"CM","佛得角":"CV","开曼":"KY","中非共和国":"CF","乍得":"TD","智利":"CL","中国":"CN","哥伦比亚":"CO","科摩罗":"KM","库克群岛":"CK","哥斯达黎加":"CR","克罗地亚":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和国":"CZ","科特迪瓦":"CI","多米尼加共和国":"DO","刚果民主共和国":"CD","丹麦":"DK","吉布提":"DJ","多米尼克":"DM","东帝汶":"TL","厄瓜多尔":"EC","埃及":"EG","萨尔瓦多":"SV","赤道几内亚":"GQ","厄立特里亚":"ER","爱沙尼亚":"EE","埃塞俄比亚":"ET","马其顿共和国（前南斯拉夫）":"MK","福克兰群岛":"FK","法罗群岛":"FO","密克罗尼西亚联邦":"FM","斐济":"FJ","芬兰":"FI","法国":"FR","法属圭亚那":"GF","法属波利尼西亚":"PF","加蓬":"GA","冈比亚":"GM","乔治亚州":"GE","德国":"DE","加纳":"GH","直布罗陀":"GI","希腊":"GR","格陵兰":"GL","格林纳达":"GD","瓜德罗普岛":"GP","关岛":"GU","危地马拉":"GT","几内亚":"GN","几内亚比绍":"GW","圭亚那":"GY","海地":"HT","洪都拉斯":"HN","香港":"HK","匈牙利":"HU","冰岛":"IS","印度":"IN","印度尼西亚":"ID","伊朗":"IR","伊拉克":"IQ","爱尔兰":"IE","以色列":"IL","意大利":"IT","牙买加":"JM","日本":"JP","约旦":"JO","肯尼亚":"KE","基里巴斯":"KI","科威特":"KW","吉尔吉斯斯坦":"KG","老挝":"LA","拉脱维亚":"LV","黎巴嫩":"LB","莱索托":"LS","利比里亚":"LR","利比亚":"LY","列支敦士登":"LI","立陶宛":"LT","卢森堡":"LU","澳门":"MO","马达加斯加":"MG","马拉维":"MW","马来西亚":"MY","马尔代夫":"MV","马里":"ML","马耳他":"MT","马绍尔群岛":"MH","马提尼克":"MQ","马提尼克岛":"MQ","毛里塔尼亚":"MR","毛里求斯":"MU","墨西哥":"MX","密克罗尼西亚":"FM","摩尔多瓦":"MD","摩纳哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","纳米比亚":"NA","瑙鲁":"NR","尼泊尔":"NP","荷兰":"NL","荷属安的列斯":"AN","新喀里多尼亚":"NC","新西兰":"NZ","尼加拉瓜":"NI","尼日尔":"NE","尼日利亚":"NG","诺福克岛":"NF","朝鲜":"KP","北马里亚纳群岛":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕劳":"PW","巴勒斯坦民族权力机构":"PS","巴拿马":"PA","巴布亚新几内亚":"PG","巴拉圭":"PY","中华人民共和国":"CN","秘鲁":"PE","菲律宾":"PH","皮特凯恩":"PN","波兰":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔尔":"QA","台湾":"TW","爱尔兰共和国":"IE","罗马尼亚":"RO","俄罗斯":"RU","卢旺达":"RW","留尼汪":"RE","圣海伦娜":"SH","圣卢西亚":"LC","圣皮埃尔和密克隆岛":"PM","萨摩亚":"WS","圣马力诺":"SM","沙特阿拉伯":"SA","塞内加尔":"SN","塞尔维亚":"RS","塞舌尔":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亚":"SI","所罗门群岛":"SB","索马里":"SO","南非":"ZA","韩国":"KR","西班牙":"ES","斯里兰卡":"LK","苏丹":"SD","苏里南":"SR","斯威士兰":"SZ","瑞典":"SE","瑞士":"CH","叙利亚":"SY","塔吉克斯坦":"TJ","坦桑尼亚":"TZ","泰国":"TH","开曼群岛":"KY","美属维尔京群岛":"VI","多哥":"TG","托克劳":"TK","汤加":"TO","突尼斯":"TN","土耳其":"TR","土库曼斯坦":"TM","图瓦卢":"TV","阿联酋":"AE","乌干达":"UG","乌克兰":"UA","阿拉伯联合酋长国":"AE","英国":"GB","乌拉圭":"UY","乌兹别克斯坦":"UZ","瓦努阿图":"VU","梵蒂冈城":"VA","委内瑞拉":"VE","越南":"VN","瓦利斯和富图纳群岛":"WF","也门":"YE","赞比亚":"ZM","津巴布韦":"ZW","奥兰群岛":"AX","安提瓜":"AG","巴布达":"AG","委内瑞拉玻利瓦尔共和国":"VE","多民族玻利维亚国":"BO","波斯尼亚":"BA","布维岛":"BV","汶莱":"BN","凯科斯群岛":"TC","加拿大":"CA","圣诞岛":"CX","茯苓和基林群岛":"CC","茯苓群岛":"CC","刚果":"CD","朝鲜民主人民共和国":"KP","多米尼加":"DM","法罗":"FO","法国南部领土":"TF","富图纳":"WF","格鲁吉亚":"GE","大不列颠":"GB","格林纳丁斯":"VC","根西岛":"GG","赫德岛和麦当劳群岛":"HM","赫德岛":"HM","黑塞哥维那":"BA","教廷":"VA","伊朗共和国":"IR","马恩岛":"IM","象牙海岸":"CI","扬马延":"SJ","哈萨克斯坦":"KZ","大韩民国":"KR","老挝人民民主共和国":"LA","阿拉伯利比亚民众国":"LY","马其顿":"MK","马尔维纳斯":"FK","马里亚纳":"MP","马约特":"YT","麦当劳群岛":"HM","密克隆":"PM","摩尔多瓦共和国":"MD","蒙特内格罗":"ME","蒙特塞拉特":"MS","尼维斯":"KN","北朝鲜":"KP","巴勒斯坦":"PS","巴勒斯坦领土":"PS","被占领的巴勒斯坦领土":"PS","普林西比":"ST","新加坡共和國":"SG","俄罗斯联邦":"RU","圣巴泰勒米":"BL","圣赫勒拿":"SH","圣赫勒拿，阿森松岛和特里斯坦达库尼亚":"SH","圣基茨":"KN","圣马丁":"MF","圣皮埃尔":"PM","圣文森特":"VC","圣多美":"ST","南格鲁吉亚":"GS","南格鲁吉亚和南桑威奇群岛":"GS","南桑威奇群岛":"GS","斯瓦尔巴岛":"SJ","斯瓦尔巴岛和扬马延岛":"SJ","阿拉伯叙利亚共和国":"SY","坦桑尼亚联合共和国":"TZ","多巴哥":"TT","特立尼达":"TT","特里斯坦达库尼亚":"SH","特克斯群岛":"TC","美国":"US","美利坚合众国":"US","梵帝冈":"VA","瓦利斯":"WF","西撒哈拉":"EH","阿拉伯半岛":"SA","佛得角群岛":"CV","科科斯(奇林)群岛":"CC","刚果，民主共和国":"CD","朝鲜民主主义人民共和国":"KP","迪拜":"AE","英格兰":"GB","巴勒斯坦被占领土":"PS","波利尼西亚":"PF","圣巴特岛":"BL","苏格兰":"GB","圣巴尔德勒米":"BL","南德桑威奇群岛":"GS","梵蒂冈城国":"VA","维尔京群岛":"VI","威尔士":"GB","亚洲":"142","中亚":"143","西亚":"145","欧洲":"150","东欧":"151","北欧":"154","西欧":"155","拉丁美洲":"419","世界":"001","非洲":"002","北美洲":"003","南美洲":"005","大洋洲":"009","西非":"011","中美洲":"013","东非":"014","北非":"015","中非":"017","南部非洲":"018","美洲":"019","美洲北部":"021","加勒比地区":"029","东亚":"030","南亚":"034","东南亚":"035","南欧":"039","澳大拉西亚":"053","美拉尼西亚":"054","密克罗尼西亚地区":"057","玻利尼西亚":"061","安提瓜和巴布达":"AG","荷属安的列斯群岛":"AN","南极洲":"AQ","波斯尼亚和黑塞哥维那":"BA","荷兰加勒比":"BQ","布维特岛":"BV","科科斯群岛":"CC","刚果（金）":"CD","刚果（布）":"CG","克利珀顿岛":"CP","库拉索":"CW","迪戈加西亚岛":"DG","休达及梅利利亚":"EA","欧盟":"EU","南乔治亚岛和南桑威齐群岛":"GS","中国香港特别行政区":"HK","赫德与麦克唐纳群岛":"HM","加纳利群岛":"IC","曼岛":"IM","泽西岛":"JE","圣基茨和尼维斯":"KN","黑山共和国":"ME","法属圣马丁":"MF","中国澳门特别行政区":"MO","蒙塞拉特":"MS","纽埃":"NU","圣皮埃尔和密克隆群岛":"PM","皮特凯恩群岛":"PN","大洋洲边远群岛":"QO","斯瓦尔巴特和扬马延":"SJ","南苏丹":"SS","圣多美和普林西比":"ST","荷属圣马丁":"SX","特里斯坦-达库尼亚群岛":"TA","特克斯和凯科斯群岛":"TC","法属南部领土":"TF","突尼西亞":"TN","特立尼达和多巴哥":"TT","美国边远小岛":"UM","梵蒂冈":"VA","圣文森特和格林纳丁斯":"VC","英属维京群岛":"VG","美属维京群岛":"VI","瓦利斯和富图纳":"WF","未知地区":"ZZ"};
 ilib.data.ctrynames_zh_Hant = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
-ilib.data.ctrynames_zh_HK = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
-ilib.data.ctrynames_zh_TW = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
 ilib.data.ctrynames_zu = {"i-Asia":"142","i-Central Asia":"143","e-Western Asia":"145","i-Europe":"150","e-Eastern Europe":"151","e-Northern Europe":"154","e-Western Europe":"155","i-Latin America":"419","Umhlaba":"001","i-Africa":"002","e-North America":"003","i-South America":"005","i-Oceania":"009","e-Western Africa":"011","i-Central America":"013","e-Eastern Africa":"014","e-Northern Africa":"015","e-Middle Africa":"017","e-Southern Africa":"018","Americas":"019","e-Northern America":"021","i-Caribbean":"029","e-Eastern Asia":"030","e-Southern Asia":"034","e-South-Eastern Asia":"035","e-Southern Europe":"039","I-Australasia":"053","i-Melanesia":"054","e-Micronesian Region":"057","i-Polynesia":"061","i-Ascension Island":"AC","i-Andorra":"AD","i-United Arab Emirates":"AE","i-Afghanistan":"AF","i-Antigua and Barbuda":"AG","i-Anguilla":"AI","i-Albania":"AL","i-Armenia":"AM","i-Netherlands Antilles":"AN","i-Angola":"AO","i-Antarctica":"AQ","i-Argentina":"AR","i-American Samoa":"AS","i-Austria":"AT","i-Australia":"AU","i-Aruba":"AW","i-Åland Islands":"AX","i-Azerbaijan":"AZ","i-Bosnia ne-Herzegovina":"BA","i-Barbados":"BB","i-Bangladesh":"BD","i-Belgium":"BE","i-Burkina Faso":"BF","i-Bulgaria":"BG","i-Bahrain":"BH","i-Burundi":"BI","i-Benin":"BJ","i-Saint Barthélemy":"BL","i-Bermuda":"BM","i-Brunei":"BN","i-Bolivia":"BO","I-Caribbean Netherlands":"BQ","i-Brazil":"BR","i-Bahamas":"BS","i-Bhutan":"BT","i-Bouvet Island":"BV","i-Botswana":"BW","i-Belarus":"BY","i-Belize":"BZ","i-Canada":"CA","i-Cocos (Keeling) Islands":"CC","e-Congo - Kinshasa":"CD","i-Central African Republic":"CF","e-Congo - Brazzaville":"CG","i-Switzerland":"CH","i-Côte d’Ivoire":"CI","i-Cook Islands":"CK","i-Chile":"CL","i-Cameroon":"CM","i-China":"CN","i-Colombia":"CO","i-Clipperton Island":"CP","i-Costa Rica":"CR","i-Cuba":"CU","i-Cape Verde":"CV","I-Curaçao":"CW","i-Christmas Island":"CX","i-Cyprus":"CY","i-Czech Republic":"CZ","i-Germany":"DE","e-Diego Garcia":"DG","i-Djibouti":"DJ","i-Denmark":"DK","i-Dominica":"DM","i-Dominican Republic":"DO","i-Algeria":"DZ","i-Cueta ne-Melilla":"EA","i-Ecuador":"EC","i-Estonia":"EE","i-Egypt":"EG","i-Western Sahara":"EH","i-Eritrea":"ER","i-Spain":"ES","i-Ethiopia":"ET","i-European Union":"EU","i-Finland":"FI","i-Fiji":"FJ","i-Falkland Islands":"FK","i-Micronesia":"FM","i-Faroe Islands":"FO","i-France":"FR","i-Gabon":"GA","i-United Kingdom":"GB","i-Grenada":"GD","i-Georgia":"GE","isi-French Guiana":"GF","I-Guernsey":"GG","i-Ghana":"GH","i-Gibraltar":"GI","i-Greenland":"GL","i-Gambia":"GM","i-Guinea":"GN","i-Guadeloupe":"GP","i-Equatorial Guinea":"GQ","i-Greece":"GR","i-South Georgia ne-South Sandwich Islands":"GS","i-Guatemala":"GT","i-Guam":"GU","i-Guinea-Bissau":"GW","i-Guyana":"GY","e-Hong Kong SAR China":"HK","i-Heard Island ne-McDonald Islands":"HM","i-Honduras":"HN","i-Croatia":"HR","i-Haiti":"HT","i-Hungary":"HU","i-Canary Islands":"IC","i-Indonesia":"ID","i-Ireland":"IE","i-Israel":"IL","i-Isle of Man":"IM","i-India":"IN","i-British Indian Ocean Territory":"IO","i-Iraq":"IQ","i-Iran":"IR","i-Iceland":"IS","i-Italy":"IT","isi-Jersey":"JE","i-Jamaica":"JM","i-Jordan":"JO","i-Japan":"JP","i-Kenya":"KE","i-Kyrgyzstan":"KG","i-Cambodia":"KH","i-Kiribati":"KI","i-Comoros":"KM","i-Saint Kitts ne-Nevis":"KN","i-North Korea":"KP","i-South Korea":"KR","i-Kuwait":"KW","i-Cayman Islands":"KY","i-Kazakhstan":"KZ","i-Laos":"LA","i-Lebanon":"LB","i-Saint Lucia":"LC","i-Liechtenstein":"LI","i-Sri Lanka":"LK","i-Liberia":"LR","i-Lesotho":"LS","i-Lithuania":"LT","i-Luxembourg":"LU","i-Latvia":"LV","i-Libya":"LY","i-Morocco":"MA","i-Monaco":"MC","i-Moldova":"MD","i-Montenegro":"ME","i-Saint Martin":"MF","i-Madagascar":"MG","i-Marshall Islands":"MH","I-Macedonia":"MK","i-Mali":"ML","e-Myanmar [Burma]":"MM","i-Mongolia":"MN","i-Macau SAR China":"MO","i-Northern Mariana Islands":"MP","i-Martinique":"MQ","i-Mauritania":"MR","i-Montserrat":"MS","i-Malta":"MT","i-Mauritius":"MU","i-Maldives":"MV","i-Malawi":"MW","i-Mexico":"MX","i-Malaysia":"MY","i-Mozambique":"MZ","i-Namibia":"NA","i-New Caledonia":"NC","i-Niger":"NE","i-Norfolk Island":"NF","i-Nigeria":"NG","i-Nicaragua":"NI","i-Netherlands":"NL","i-Norway":"NO","i-Nepal":"NP","i-Nauru":"NR","i-Niue":"NU","i-New Zealand":"NZ","i-Oman":"OM","i-Panama":"PA","i-Peru":"PE","i-French Polynesia":"PF","i-Papua New Guinea":"PG","i-Philippines":"PH","i-Pakistan":"PK","i-Poland":"PL","i-Saint Pierre kanye ne-Miquelon":"PM","i-Pitcairn Islands":"PN","i-Puerto Rico":"PR","i-Palestinian Territories":"PS","i-Portugal":"PT","i-Palau":"PW","i-Paraguay":"PY","i-Qatar":"QA","i-Outlying Oceania":"QO","i-Réunion":"RE","i-Romania":"RO","i-Serbia":"RS","i-Russia":"RU","i-Rwanda":"RW","i-Saudi Arabia":"SA","i-Solomon Islands":"SB","i-Seychelles":"SC","i-Sudan":"SD","i-Sweden":"SE","i-Singapore":"SG","i-Saint Helena":"SH","i-Slovenia":"SI","I-Svalbard ne-Jan Mayen":"SJ","i-Slovakia":"SK","i-Sierra Leone":"SL","i-San Marino":"SM","i-Senegal":"SN","i-Somalia":"SO","i-Suriname":"SR","Iningizimu Sudan":"SS","i-São Tomé kanye ne-Príncipe":"ST","i-El Salvador":"SV","I-Sint Maarten":"SX","i-Syria":"SY","i-Swaziland":"SZ","i-Tristan da Cunha":"TA","i-Turks and Caicos Islands":"TC","i-Chad":"TD","e-French Southern Territories":"TF","i-Togo":"TG","i-Thailand":"TH","i-Tajikistan":"TJ","i-Tokelau":"TK","i-Timor-Leste":"TL","i-Turkmenistan":"TM","i-Tunisia":"TN","i-Tonga":"TO","i-Turkey":"TR","i-Trinidad ne-Tobago":"TT","i-Tuvalu":"TV","i-Taiwan":"TW","i-Tanzania":"TZ","i-Ukraine":"UA","i-Uganda":"UG","e-U.S. Minor Outlying Islands":"UM","i-United States":"US","i-Uruguay":"UY","i-Uzbekistan":"UZ","i-Vatican City":"VA","i-Saint Vincent ne-Grenadines":"VC","i-Venezuela":"VE","i-British Virgin Islands":"VG","i-U.S. Virgin Islands":"VI","i-Vietnam":"VN","i-Vanuatu":"VU","i-Wallis ne-Futuna":"WF","i-Samoa":"WS","i-Yemen":"YE","i-Mayotte":"YT","iNingizimu Afrika":"ZA","i-Zambia":"ZM","i-Zimbabwe":"ZW","Isifunda esingaziwa":"ZZ"};
 /**
  * addressprs.js - Represent a mailing address
@@ -18158,6 +18156,7 @@ ctype.isdigit.js
 // !data address countries nativecountries ctrynames
 
 /**
+ * @class
  * Create a new Address instance and parse a physical address.<p>
  * 
  * This function parses a physical address written in a free-form string. 
@@ -18219,8 +18218,6 @@ ctype.isdigit.js
  * Depends directive: !depends addressprs.js
  * 
  * @constructor
- * @class
- * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields
  * @param {Object} options options to the parser
@@ -18507,7 +18504,6 @@ ilib.Address.prototype = {
 			for (var j = 0; j < this.lines.length; j++) {
 				var line = new ilib.String(this.lines[j]);
 				var it = line.charIterator();
-				// TODO: use a char iterator here
 				while (it.hasNext()) {
 					var c = it.next();
 					if (ilib.CType.isIdeo(c) || ilib.CType.withinRange(c, "Hangul")) {
@@ -18767,6 +18763,7 @@ addressprs.js
 // !data address
 
 /**
+ * @class
  * Create a new formatter object to format physical addresses in a particular way.
  *
  * The options object may contain the following properties, both of which are optional:
@@ -18800,7 +18797,6 @@ addressprs.js
  * Depends directive: !depends addressfmt.js
  * 
  * @constructor
- * @class
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
  */
@@ -18964,6 +18960,7 @@ ilib.data.ctype_m = {"Mn":[[768,879],[1155,1159],[1425,1469],[1471],[1473,1474],
 // !data norm ctype_m
 
 /**
+ * @class
  * Create a new glyph string instance. This string inherits from 
  * the ilib.String class, and adds methods that allow you to access
  * whole glyphs at a time. <p>
@@ -19031,7 +19028,6 @@ ilib.data.ctype_m = {"Mn":[[768,879],[1155,1159],[1425,1469],[1471],[1473,1474],
  * 
  * Depends directive: !depends glyphstring.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  * @param {Object=} options options governing the way this instance works
@@ -19359,13 +19355,13 @@ ilib.GlyphString.prototype.ellipsize = function(length) {
 // !depends strings.js glyphstring.js
 
 /**
+ * @class
  * Create a new normalized string instance. This string inherits from 
  * the ilib.GlyphString class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  */
@@ -19895,13 +19891,14 @@ ilib.data.collation_lv = {"standard":{"scripts":["Latn"],"bits":[6,3,1,1],"map":
 // !data collation
 
 /**
+ * @class
  * Represents a buffered source of code points. The input string is first
  * normalized so that combining characters come out in a standardized order.
  * If the "ignorePunctuation" flag is turned on, then punctuation 
  * characters are skipped.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.NormString|string} str a string to get code points from
  * @param {boolean} ignorePunctuation whether or not to ignore punctuation
  * characters
@@ -19958,13 +19955,14 @@ ilib.CodePointSource.prototype.consume = function(num) {
 
 
 /**
+ * @class
  * An iterator through a sequence of collation elements. This
  * iterator takes a source of code points, converts them into
  * collation elements, and allows the caller to get single
  * elements at a time.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.CodePointSource} source source of code points to 
  * convert to collation elements
  * @param {Object} map mapping from sequences of code points to
@@ -20042,6 +20040,7 @@ ilib.ElementIterator.prototype.next = function () {
 
 
 /**
+ * @class
  * A class that implements a locale-sensitive comparator function 
  * for use with sorting function. The comparator function
  * assumes that the strings it is comparing contain Unicode characters
@@ -20279,7 +20278,6 @@ ilib.ElementIterator.prototype.next = function () {
  * characters, the Japanese names will sort at the end of the list after all German names,
  * and will sort according to the Unicode values of the characters.
  * 
- * @class
  * @constructor
  * @param {Object} options options governing how the resulting comparator 
  * function will operate
@@ -20793,6 +20791,7 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
 // !data likelylocales
 
 /**
+ * @class
  * Create a new locale matcher instance. This is used
  * to see which locales can be matched with each other in
  * various ways.<p>
@@ -20823,7 +20822,6 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
  * 
  * Depends directive: !depends localematch.js
  * 
- * @class
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
  */
@@ -20932,6 +20930,7 @@ ilib.LocaleMatcher.prototype = {
 // !depends locale.js util/utils.js
 
 /**
+ * @class
  * Create a new string mapper instance that maps strings to upper or
  * lower case. This mapping will work for any string as characters 
  * that have no case will be returned unchanged.<p>
@@ -20949,7 +20948,6 @@ ilib.LocaleMatcher.prototype = {
  * 
  * Depends directive: !depends casemapper.js
  * 
- * @class
  * @constructor
  * @param {Object=} options options to initialize this mapper 
  */
@@ -21268,6 +21266,7 @@ localeinfo.js
 // !data numplan
 
 /**
+ * @class
  * Create a numbering plan information instance for a particular country's plan.<p>
  * 
  * The options may contain any of the following properties:
@@ -21298,8 +21297,8 @@ localeinfo.js
  * 
  * Depends directive: !depends phone/numplan.js
  * 
- * @class
  * @constructor
+ * @package
  * @param {Object} options options governing the way this plan is loaded
  */
 ilib.NumPlan = function (options) {
@@ -21346,6 +21345,21 @@ ilib.NumPlan = function (options) {
 				};
 			}
 
+			/** 
+			 * @type {{
+			 *   region:string,
+			 *   skipTrunk:boolean,
+			 *   trunkCode:string,
+			 *   iddCode:string,
+			 *   dialingPlan:string,
+			 *   commonFormatChars:string,
+			 *   fieldLengths:Object.<string,number>,
+			 *   contextFree:boolean,
+			 *   findExtensions:boolean,
+			 *   trunkRequired:boolean,
+			 *   extendedAreaCodes:boolean
+			 * }}
+			 */
 			this.npdata = npdata;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
@@ -21493,10 +21507,11 @@ localeinfo.js
 // !data phoneloc
 
 /**
+ * @class
  *
  * @param {Object} options Options that govern how this phone locale works
  * @constructor
- * @class
+ * @private
  * @extends ilib.Locale
  */
 ilib.Locale.PhoneLoc = function(options) {
@@ -21538,6 +21553,7 @@ ilib.Locale.PhoneLoc = function(options) {
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (data) {
+			/** @type {{mcc2reg:Object.<string,string>,cc2reg:Object.<string,string>,reg2cc:Object.<string,string>,area2reg:Object.<string,string>}} */
 			this.mappings = data;
 			
 			if (typeof(mcc) !== 'undefined') {
@@ -21570,59 +21586,60 @@ ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
  * Map a mobile carrier code to a region code.
  *
  * @static
- * @protected
- * @param {string} mcc MCC string to parse
- * @return {Object} components of the MCC number
+ * @package
+ * @param {string|undefined} mcc the MCC to map
+ * @return {string|undefined} the region code
  */
 
 ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.mcc2reg && this.mappings.mcc2reg[mcc] || "XX";
 };
 
 /**
- * Map a Country code to a region code.
+ * Map a country code to a region code.
  *
  * @static
- * @protected
- * @param {string} cc CC string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @return {string|undefined} the region code
  */
 ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.cc2reg && this.mappings.cc2reg[cc] || "XX";
 };
 
 /**
- * Map a Region code to a dialing code.
+ * Map a region code to a country code.
  *
  * @static
- * @protected
- * @param {string} region Region string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} region the region code to map
+ * @return {string|undefined} the country code
  */
 ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.reg2cc && this.mappings.reg2cc[region] || "0";
 };
 
 /**
- * Map a Country code to a region code.
+ * Map a country code to a region code.
  *
  * @static
- * @protected
- * @param {string} cc CC string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @param {string|undefined} area the area code within the country code's numbering plan
+ * @return {string|undefined} the region code
  */
 ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	if (!cc) {
-		return null;
+		return undefined;
 	}
 	if (cc in this.mappings.area2reg) {
 		return this.mappings.area2reg[cc][area] || this.mappings.area2reg[cc]["default"];
@@ -21631,10 +21648,15 @@ ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	}
 };
 
-/*
-* Return the region that controls the dialing plan in the given
-* region. (ie. the "normalized phone region".)
-*/
+/**
+ * Return the region that controls the dialing plan in the given
+ * region. (ie. the "normalized phone region".)
+ * 
+ * @static
+ * @package
+ * @param {string} region the region code to normalize
+ * @return {string} the normalized region code
+ */
 ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 	var norm;
 	
@@ -21718,9 +21740,10 @@ phone/phoneloc.js
 */
 
 /**
+ * @class
  * [Need Comments] globals console ilib PhoneLoc 
  *
- * @class
+ * @private
  * @constructor
  */
 ilib.StateHandler = function _StateHandler () {
@@ -21940,7 +21963,7 @@ ilib.StateHandler.prototype = {
 	 * @param {Object} regionSettings settings used to parse the rest of the number
 	 */	
 	country: function(number, currentChar, fields, regionSettings) {
-		var ret, cc, locale;
+		var ret, cc;
 		
 		// found the country code of an IDD number, so save it and cause the function to 
 		// parse the rest of the number with the regular table for this locale
@@ -22249,6 +22272,11 @@ ilib.StateHandler.prototype = {
 };
 
 // context-sensitive handler
+/**
+ * @class
+ * @private
+ * @constructor
+ */
 ilib.CSStateHandler = function () {
 	return this;
 };
@@ -22275,6 +22303,11 @@ ilib.CSStateHandler.prototype.special = function (number, currentChar, fields, r
 	return ret;
 };
 
+/**
+ * @class
+ * @private
+ * @constructor
+ */
 ilib.USStateHandler = function () {
 	return this;
 };
@@ -22294,6 +22327,10 @@ ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regio
 	return ret;
 };
 
+/**
+ * @protected
+ * @static
+ */
 ilib._handlerFactory = function (locale, plan) {
 	if (plan.getContextFree() !== undefined && typeof(plan.getContextFree()) === 'boolean' && plan.getContextFree() === false) {
 		return new ilib.CSStateHandler();
@@ -22361,6 +22398,7 @@ phone/handler.js
 // !data states idd mnc
 
 /**
+ * @class
  * Create a new phone number instance that parses the phone number parameter for its 
  * constituent parts, and store them as separate fields in the returned object.
  * 
@@ -22482,12 +22520,10 @@ phone/handler.js
  * <li>Korea
  * </ul>
  * 
- * @class
  * @constructor
- * @param {string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
+ * @param {!string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
  * number instance to copy
- * @param {Object=} options options that guide the parser in parsing the number 
-
+ * @param {Object=} options options that guide the parser in parsing the number
  */
 ilib.PhoneNumber = function(number, options) {
 	var stateData,
@@ -22510,7 +22546,80 @@ ilib.PhoneNumber = function(number, options) {
 		}
 
 		if (typeof(options.onLoad) === 'function') {
+			/** @type {function(ilib.PhoneNumber)} */
 			this.onLoad = options.onLoad;
+		}
+	}
+
+	if (typeof number === "object") {
+		/** @type {string|undefined} */
+		this.vsc = number.vsc;
+
+		/** @type {string} */
+		this.iddPrefix = number.iddPrefix;
+		
+		/** @type {string|undefined} */
+		this.countryCode = number.countryCode;
+		
+		/** @type {string|undefined} */
+		this.trunkAccess = number.trunkAccess;
+		
+		/** @type {string|undefined} */
+		this.cic = number.cic;
+		
+		/** @type {string|undefined} */
+		this.emergency = number.emergency;
+		
+		/** @type {string|undefined} */
+		this.mobilePrefix = number.mobilePrefix;
+		
+		/** @type {string|undefined} */
+		this.serviceCode = number.serviceCode;
+		
+		/** @type {string|undefined} */
+		this.areaCode = number.areaCode;
+		
+		/** @type {string|undefined} */
+		this.subscriberNumber = number.subscriberNumber;
+		
+		/** @type {string|undefined} */
+		this.extension = number.extension;
+		
+		/**
+		 * @protected
+		 * @type {boolean} 
+		 */
+		this.invalid = number.invalid;
+
+		if (number.plan && number.locale) {
+			/** 
+			 * @protected
+			 * @type {ilib.NumPlan} 
+			 */
+			this.plan = number.plan;
+			
+			/** 
+			 * @protected
+			 * @type {ilib.Locale.PhoneLoc} 
+			 */
+			this.locale = number.locale;
+	
+			/** 
+			 * @protected
+			 * @type {ilib.NumPlan} 
+			 */
+			this.destinationPlan = number.destinationPlan;
+			
+			/** 
+			 * @protected
+			 * @type {ilib.Locale.PhoneLoc} 
+			 */
+			this.destinationLocale = number.destinationLocale;
+	
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+			return;
 		}
 	}
 
@@ -22521,33 +22630,33 @@ ilib.PhoneNumber = function(number, options) {
 		loadParams: this.loadParams,
 		onLoad: ilib.bind(this, function(loc) {
 			this.locale = this.destinationLocale = loc;
-			
-			if (typeof number === "object") {
-				ilib.deepCopy(number, this);
-				return;
-			}
-			
-			ilib.loadData({
-				name: "states.json",
-				object: ilib.PhoneNumber,
+			new ilib.NumPlan({
 				locale: this.locale,
 				sync: this.sync,
-				loadParams: ilib.merge(this.loadParams, {
-					returnOne: true
-				}),
-				callback: ilib.bind(this, function (stdata) {
-					if (!stdata) {
-						stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+				loadParms: this.loadParams,
+				onLoad: ilib.bind(this, function (plan) {
+					this.plan = this.destinationPlan = plan;
+			
+					if (typeof number === "object") {
+						// the copy constructor code above did not find the locale 
+						// or plan before, but now they are loaded, so we can return 
+						// already without going further
+						return;
 					}
-
-					stateData = stdata;
-					new ilib.NumPlan({
+					ilib.loadData({
+						name: "states.json",
+						object: ilib.PhoneNumber,
 						locale: this.locale,
 						sync: this.sync,
-						loadParms: this.loadParams,
-						onLoad: ilib.bind(this, function (plan) {
-							/** @type {ilib.NumPlan} */
-							this.plan = this.destinationPlan = plan;
+						loadParams: ilib.merge(this.loadParams, {
+							returnOne: true
+						}),
+						callback: ilib.bind(this, function (stdata) {
+							if (!stdata) {
+								stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+							}
+		
+							stateData = stdata;
 
 							regionSettings = {
 								stateData: stateData,
@@ -22600,7 +22709,7 @@ ilib.PhoneNumber = function(number, options) {
  * @static
  * @param {string} imsi IMSI number to parse
  * @param {Object} options options controlling the loading of the locale data
- * @return {{mcc:string,mnc:string,msin:string}} components of the IMSI number, when the locale data
+ * @return {{mcc:string,mnc:string,msin:string}|undefined} components of the IMSI number, when the locale data
  * is loaded synchronously, or undefined if asynchronous
  */
 ilib.PhoneNumber.parseImsi = function(imsi, options) {
@@ -22622,21 +22731,29 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		}
 	}	
 
-	ilib.loadData({
-		name: "mnc.json", 
-		object: ilib.PhoneNumber, 
-		nonlocale: true, 
-		sync: sync, 
-		loadParams: loadParams, 
-		callback: ilib.bind(this, function(data) {
-			this.mncdata = data;
-			fields = this._parseImsi(this.mncdata, imsi);
-			
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(fields);
-			}
-		})
-	});
+	if (ilib.data.mnc) {
+		fields = ilib.PhoneNumber._parseImsi(ilib.data.mnc, imsi);
+		
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(fields);
+		}
+	} else {
+		ilib.loadData({
+			name: "mnc.json", 
+			object: ilib.PhoneNumber, 
+			nonlocale: true, 
+			sync: sync, 
+			loadParams: loadParams, 
+			callback: ilib.bind(this, function(data) {
+				ilib.data.mnc = data;
+				fields = ilib.PhoneNumber._parseImsi(data, imsi);
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(fields);
+				}
+			})
+		});
+	}
 	return fields;
 };
 
@@ -23282,8 +23399,25 @@ ilib.PhoneNumber.prototype = {
 
 	/**
 	 * @private
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
+	 * @param {ilib.PhoneNumber} norm
+	 * @param {ilib.Locale.PhoneLoc} homeLocale
+	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.NumPlan} currentPlan
+	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.NumPlan} destinationPlan
+	 * @param {boolean} sync
+	 * @param {Object|undefined} loadParams
 	 */
-	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
+	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams) {
 		var formatted = "";
 		
 		if (!norm.invalid && options && options.assistedDialing) {
@@ -23423,6 +23557,24 @@ ilib.PhoneNumber.prototype = {
 	
 	/**
 	 * @private
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
+	 * @param {ilib.PhoneNumber} norm
+	 * @param {ilib.Locale.PhoneLoc} homeLocale
+	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.NumPlan} currentPlan
+	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.NumPlan} destinationPlan
+	 * @param {boolean} sync
+	 * @param {Object|undefined} loadParams
+	 * @param {function(string)} callback
 	 */
 	_doReparse: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
 		var formatted, 
@@ -23619,7 +23771,15 @@ ilib.PhoneNumber.prototype = {
 	 * returned from thhomeLocaleis method is simply an uninterrupted and unformatted string 
 	 * of dialable digits.
 	 * 
-	 * @param {Object} options an object containing options to help in normalizing. 
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
 	 * @return {string|undefined} the normalized string, or undefined if the number
 	 * could not be normalized
 	 */
@@ -23734,6 +23894,7 @@ phone/phonenum.js
 // !data phonefmt
 
 /**
+ * @class
  * Create a new phone number formatter object that formats numbers according to the parameters.<p>
  * 
  * The options object can contain zero or more of the following parameters:
@@ -23774,7 +23935,6 @@ phone/phonenum.js
  * the country in the locale will be used. If neither the locale or MCC are not given,
  * then the country of the current ilib locale is used. 
  *
- * @class
  * @constructor
  * @param {Object} options properties that control how this formatter behaves
  */
@@ -23894,6 +24054,7 @@ ilib.PhoneFmt.prototype = {
 	 * Returns the style with the given name, or the default style if there
 	 * is no style with that name.
 	 * @protected
+	 * @return {{example:string,whole:Object.<string,string>,partial:Object.<string,string>}|Object.<string,string>}
 	 */
 	_getStyle: function (name, fmtdata) {
 		return fmtdata[name] || fmtdata["default"];
@@ -23903,8 +24064,16 @@ ilib.PhoneFmt.prototype = {
 	 * Do the actual work of formatting the phone number starting at the given
 	 * field in the regular field order.
 	 * 
-	 * @param {ilib.PhoneNumber} number
-	 * @param {Object} options
+	 * @param {!ilib.PhoneNumber} number
+	 * @param {{
+	 *   partial:boolean,
+	 *   style:string,
+	 *   mcc:string,
+	 *   locale:(string|ilib.Locale),
+	 *   sync:boolean,
+	 *   loadParams:Object,
+	 *   onLoad:function(string)
+	 * }} options Parameters which control how to format the number
 	 * @param {number} startField
 	 */
 	_doFormat: function(number, options, startField, locale, fmtdata, callback) {
@@ -23915,10 +24084,8 @@ ilib.PhoneFmt.prototype = {
 			fieldName, 
 			countryCode, 
 			isWhole, 
-			field,
 			style,
 			formatted = "",
-			styles,
 			styleTemplates;
 	
 		if (options) {
@@ -24073,38 +24240,23 @@ ilib.PhoneFmt.prototype = {
 	 * places, such as the call log in the phone app, should pass in partial: false, or 
 	 * leave the partial flag out of the parameters entirely. 
 	 * 
-	 * @param {string|ilib.PhoneNumber} number object containing the phone number to format, or a 
-	 * string containing a phone number to parse and then reformat
-	 * @param {Object} options Parameters which control how to format the number
+	 * @param {!ilib.PhoneNumber} number object containing the phone number to format
+	 * @param {{
+	 *   partial:boolean,
+	 *   style:string,
+	 *   mcc:string,
+	 *   locale:(string|ilib.Locale),
+	 *   sync:boolean,
+	 *   loadParams:Object,
+	 *   onLoad:function(string)
+	 * }} options Parameters which control how to format the number
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
 	format: function (number, options) {
-		var sync = true,
-			loadParams = {},
-			temp, 
-			templates, 
-			fieldName, 
-			countryCode, 
-			isWhole, 
-			style,
-			field,
-			formatted = "",
-			styles,
-			locale,
-			styleTemplates,
-			callback;
+		var formatted = "",
+		    callback;
 
-		if (options) {
-			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);				
-			}
-		
-			if (options.loadParams) {
-				loadParams = options.loadParams;
-			}
-			
-			callback = options.onLoad;
-		}
+		callback = options && options.onLoad;
 
 		try {
 			this._doFormat(number, options, 0, this.locale, this.fmtdata, function (fmt) {
@@ -24119,7 +24271,7 @@ ilib.PhoneFmt.prototype = {
 				// console.warn("caught exception: " + e + ". Using last resort rule.");
 				// if there was some exception, use this last resort rule
 				formatted = "";
-				for (field in ilib.PhoneNumber._fieldOrder) {
+				for (var field in ilib.PhoneNumber._fieldOrder) {
 					if (typeof field === 'string' && typeof ilib.PhoneNumber._fieldOrder[field] === 'string' && number[ilib.PhoneNumber._fieldOrder[field]] !== undefined) {
 						// just concatenate without any formatting
 						formatted += number[ilib.PhoneNumber._fieldOrder[field]];
@@ -24171,6 +24323,7 @@ ilib.PhoneFmt.prototype = {
 		return this.fmtdata[style].example || undefined;
 	}
 };
+
 ilib.data.iddarea = {"1":{"sn":"North America","ln":"North America and the Caribbean Islands"},"7":{"sn":"Russia","ln":"Russia, Kazakhstan"},"20":{"sn":"Egypt","ln":"Egypt"},"27":{"sn":"South Africa","ln":"South Africa"},"28":{"sn":"Unknown Country","ln":"Unknown Country"},"30":{"sn":"Greece","ln":"Greece"},"31":{"sn":"Netherlands","ln":"Netherlands"},"32":{"sn":"Belgium","ln":"Belgium"},"33":{"sn":"France","ln":"France"},"34":{"sn":"Spain","ln":"Spain"},"36":{"sn":"Hungary","ln":"Hungary"},"39":{"sn":"Italy","ln":"Italy, Vatican City"},"40":{"sn":"Romania","ln":"Romania"},"41":{"sn":"Switzerland","ln":"Switzerland"},"43":{"sn":"Austria","ln":"Austria"},"44":{"sn":"United Kingdom","ln":"United Kingdom, Guernsey, Isle of Man, Jersey"},"45":{"sn":"Denmark","ln":"Denmark"},"46":{"sn":"Sweden","ln":"Sweden"},"47":{"sn":"Norway","ln":"Norway, Svalbard and Jan Mayen"},"48":{"sn":"Poland","ln":"Poland"},"49":{"sn":"Germany","ln":"Germany"},"51":{"sn":"Peru","ln":"Peru"},"52":{"sn":"Mexico","ln":"Mexico"},"53":{"sn":"Cuba","ln":"Cuba"},"54":{"sn":"Argentina","ln":"Argentina"},"55":{"sn":"Brazil","ln":"Brazil"},"56":{"sn":"Chile","ln":"Chile"},"57":{"sn":"Colombia","ln":"Colombia"},"58":{"sn":"Venezuela","ln":"Venezuela"},"60":{"sn":"Malaysia","ln":"Malaysia"},"61":{"sn":"Australia","ln":"Australia, Christmas Island, Cocos Islands"},"62":{"sn":"Indonesia","ln":"Indonesia"},"63":{"sn":"Philippines","ln":"Philippines"},"64":{"sn":"New Zealand","ln":"New Zealand"},"65":{"sn":"Singapore","ln":"Republic of Singapore"},"66":{"sn":"Thailand","ln":"Thailand"},"81":{"sn":"Japan","ln":"Japan"},"82":{"sn":"South Korea","ln":"South Korea"},"83":{"sn":"Unknown Country","ln":"Unknown Country"},"84":{"sn":"Vietnam","ln":"Vietnam"},"86":{"sn":"China","ln":"People's Republic of China"},"89":{"sn":"Unknown Country","ln":"Unknown Country"},"90":{"sn":"Turkey","ln":"Turkey, Turkish Republic of Northern Cyprus"},"91":{"sn":"India","ln":"India"},"92":{"sn":"Pakistan","ln":"Pakistan"},"93":{"sn":"Afghanistan","ln":"Afghanistan"},"94":{"sn":"Sri Lanka","ln":"Sri Lanka"},"95":{"sn":"Burma","ln":"Burma"},"98":{"sn":"Iran","ln":"Iran"},"210":{"sn":"Unknown Country","ln":"Unknown Country"},"211":{"sn":"Unknown Country","ln":"Unknown Country"},"212":{"sn":"Morocco","ln":"Morocco, Western Sahara"},"213":{"sn":"Algeria","ln":"Algeria"},"214":{"sn":"Unknown Country","ln":"Unknown Country"},"215":{"sn":"Unknown Country","ln":"Unknown Country"},"216":{"sn":"Tunisia","ln":"Tunisia"},"217":{"sn":"Unknown Country","ln":"Unknown Country"},"218":{"sn":"Libya","ln":"Libya"},"219":{"sn":"Unknown Country","ln":"Unknown Country"},"220":{"sn":"Gambia","ln":"The Gambia"},"221":{"sn":"Senegal","ln":"Senegal"},"222":{"sn":"Mauritania","ln":"Mauritania"},"223":{"sn":"Mali","ln":"Mali"},"224":{"sn":"Guinea","ln":"Guinea"},"225":{"sn":"Côte d'Ivoire","ln":"Côte d'Ivoire"},"226":{"sn":"Burkina Faso","ln":"Burkina Faso"},"227":{"sn":"Niger","ln":"Niger"},"228":{"sn":"Togo","ln":"Togo"},"229":{"sn":"Benin","ln":"Benin"},"230":{"sn":"Mauritius","ln":"Mauritius"},"231":{"sn":"Liberia","ln":"Liberia"},"232":{"sn":"Sierra Leone","ln":"Sierra Leone"},"233":{"sn":"Ghana","ln":"Ghana"},"234":{"sn":"Nigeria","ln":"Nigeria"},"235":{"sn":"Chad","ln":"Chad"},"236":{"sn":"Central African Republic","ln":"Central African Republic"},"237":{"sn":"Cameroon","ln":"Cameroon"},"238":{"sn":"Cape Verde","ln":"Cape Verde"},"239":{"sn":"São Tomé and Príncipe","ln":"São Tomé and Príncipe"},"240":{"sn":"Equatorial Guinea","ln":"Equatorial Guinea"},"241":{"sn":"Gabon","ln":"Gabon"},"242":{"sn":"Republic of Congo","ln":"Republic of Congo"},"243":{"sn":"DRC","ln":"Democratic Republic of the Congo"},"244":{"sn":"Angola","ln":"Angola"},"245":{"sn":"Guinea-Bissau","ln":"Guinea-Bissau"},"246":{"sn":"British Indian Ocean","ln":"British Indian Ocean Territory"},"247":{"sn":"Ascension","ln":"Ascension Island"},"248":{"sn":"Seychelles","ln":"Seychelles"},"249":{"sn":"Sudan","ln":"Sudan"},"250":{"sn":"Rwanda","ln":"Rwanda"},"251":{"sn":"Ethiopia","ln":"Ethiopia"},"252":{"sn":"Somalia","ln":"Somalia, Somaliland"},"253":{"sn":"Djibouti","ln":"Djibouti"},"254":{"sn":"Kenya","ln":"Kenya"},"255":{"sn":"Tanzania","ln":"Tanzania"},"256":{"sn":"Uganda","ln":"Uganda"},"257":{"sn":"Burundi","ln":"Burundi"},"258":{"sn":"Mozambique","ln":"Mozambique"},"259":{"sn":"Unknown Country","ln":"Unknown Country"},"260":{"sn":"Zambia","ln":"Zambia"},"261":{"sn":"Madagascar","ln":"Madagascar"},"262":{"sn":"Réunion","ln":"Réunion, Mayotte"},"263":{"sn":"Zimbabwe","ln":"Zimbabwe"},"264":{"sn":"Namibia","ln":"Namibia"},"265":{"sn":"Malawi","ln":"Malawi"},"266":{"sn":"Lesotho","ln":"Lesotho"},"267":{"sn":"Botswana","ln":"Botswana"},"268":{"sn":"Swaziland","ln":"Swaziland"},"269":{"sn":"Comoros","ln":"Comoros"},"290":{"sn":"Saint Helena","ln":"Saint Helena, Tristan da Cunha"},"291":{"sn":"Eritrea","ln":"Eritrea"},"292":{"sn":"Unknown Country","ln":"Unknown Country"},"293":{"sn":"Unknown Country","ln":"Unknown Country"},"294":{"sn":"Unknown Country","ln":"Unknown Country"},"295":{"sn":"Unknown Country","ln":"Unknown Country"},"296":{"sn":"Unknown Country","ln":"Unknown Country"},"297":{"sn":"Aruba","ln":"Aruba"},"298":{"sn":"Faroe Islands","ln":"Faroe Islands"},"299":{"sn":"Greenland","ln":"Greenland"},"350":{"sn":"Gibraltar","ln":"Gibraltar"},"351":{"sn":"Portugal","ln":"Portugal"},"352":{"sn":"Luxembourg","ln":"Luxembourg"},"353":{"sn":"Ireland","ln":"Republic of Ireland"},"354":{"sn":"Iceland","ln":"Iceland"},"355":{"sn":"Albania","ln":"Albania"},"356":{"sn":"Malta","ln":"Malta"},"357":{"sn":"Cyprus","ln":"Cyprus"},"358":{"sn":"Finland","ln":"Finland, Åland Islands"},"359":{"sn":"Bulgaria","ln":"Bulgaria"},"370":{"sn":"Lithuania","ln":"Lithuania"},"371":{"sn":"Latvia","ln":"Latvia"},"372":{"sn":"Estonia","ln":"Estonia"},"373":{"sn":"Moldova","ln":"Moldova"},"374":{"sn":"Armenia","ln":"Armenia, Nagorno-Karabakh"},"375":{"sn":"Belarus","ln":"Belarus"},"376":{"sn":"Andorra","ln":"Andorra"},"377":{"sn":"Monaco","ln":"Monaco"},"378":{"sn":"San Marino","ln":"San Marino"},"379":{"sn":"Vatican City","ln":"Vatican City"},"380":{"sn":"Ukraine","ln":"Ukraine"},"381":{"sn":"Serbia","ln":"Serbia"},"382":{"sn":"Montenegro","ln":"Montenegro"},"383":{"sn":"Unknown Country","ln":"Unknown Country"},"384":{"sn":"Unknown Country","ln":"Unknown Country"},"385":{"sn":"Croatia","ln":"Croatia"},"386":{"sn":"Slovenia","ln":"Slovenia"},"387":{"sn":"Bosnia and Herzegovina","ln":"Bosnia and Herzegovina"},"388":{"sn":"European Telephony","ln":"European Telephony Numbering Space"},"389":{"sn":"FYRoM","ln":"Former Yugoslav Republic of Macedonia"},"420":{"sn":"Czech Republic","ln":"Czech Republic"},"421":{"sn":"Slovakia","ln":"Slovakia"},"422":{"sn":"Unknown Country","ln":"Unknown Country"},"423":{"sn":"Liechtenstein","ln":"Liechtenstein"},"424":{"sn":"Unknown Country","ln":"Unknown Country"},"425":{"sn":"Unknown Country","ln":"Unknown Country"},"426":{"sn":"Unknown Country","ln":"Unknown Country"},"427":{"sn":"Unknown Country","ln":"Unknown Country"},"428":{"sn":"Unknown Country","ln":"Unknown Country"},"429":{"sn":"Unknown Country","ln":"Unknown Country"},"500":{"sn":"Falklands","ln":"Falkland Islands"},"501":{"sn":"Belize","ln":"Belize"},"502":{"sn":"Guatemala","ln":"Guatemala"},"503":{"sn":"El Salvador","ln":"El Salvador"},"504":{"sn":"Honduras","ln":"Honduras"},"505":{"sn":"Nicaragua","ln":"Nicaragua"},"506":{"sn":"Costa Rica","ln":"Costa Rica"},"507":{"sn":"Panama","ln":"Panama"},"508":{"sn":"St. Pierre and Miquelon","ln":"St. Pierre and Miquelon"},"509":{"sn":"Haiti","ln":"Haiti"},"590":{"sn":"Guadeloupe","ln":"Guadeloupe, Saint Barthélemy, Saint Martin"},"591":{"sn":"Bolivia","ln":"Bolivia"},"592":{"sn":"Guyana","ln":"Guyana"},"593":{"sn":"Ecuador","ln":"Ecuador"},"594":{"sn":"French Guiana","ln":"French Guiana"},"595":{"sn":"Paraguay","ln":"Paraguay"},"596":{"sn":"Martinique","ln":"Martinique"},"597":{"sn":"Suriname","ln":"Suriname"},"598":{"sn":"Uruguay","ln":"Uruguay"},"599":{"sn":"Netherlands Antilles","ln":"Netherlands Antilles"},"670":{"sn":"East Timor","ln":"East Timor"},"671":{"sn":"Unknown Country","ln":"Unknown Country"},"672":{"sn":"Norfolk Island","ln":"Norfolk Island, Australian Antarctic Territory"},"673":{"sn":"Brunei","ln":"Brunei Darussalam"},"674":{"sn":"Nauru","ln":"Nauru"},"675":{"sn":"Papua New Guinea","ln":"Papua New Guinea"},"676":{"sn":"Tonga","ln":"Tonga"},"677":{"sn":"Solomon Islands","ln":"Solomon Islands"},"678":{"sn":"Vanuatu","ln":"Vanuatu"},"679":{"sn":"Fiji","ln":"Fiji"},"680":{"sn":"Palau","ln":"Palau"},"681":{"sn":"Wallis and Futuna","ln":"Wallis and Futuna"},"682":{"sn":"Cook Islands","ln":"Cook Islands"},"683":{"sn":"Niue","ln":"Niue"},"684":{"sn":"Unknown Country","ln":"Unknown Country"},"685":{"sn":"Samoa","ln":"Samoa"},"686":{"sn":"Kiribati","ln":"Kiribati"},"687":{"sn":"New Caledonia","ln":"New Caledonia"},"688":{"sn":"Tuvalu","ln":"Tuvalu"},"689":{"sn":"French Polynesia","ln":"French Polynesia"},"690":{"sn":"Tokelau","ln":"Tokelau"},"691":{"sn":"Micronesia","ln":"Federated States of Micronesia"},"692":{"sn":"Marshall Islands","ln":"Marshall Islands"},"693":{"sn":"Unknown Country","ln":"Unknown Country"},"694":{"sn":"Unknown Country","ln":"Unknown Country"},"695":{"sn":"Unknown Country","ln":"Unknown Country"},"696":{"sn":"Unknown Country","ln":"Unknown Country"},"697":{"sn":"Unknown Country","ln":"Unknown Country"},"698":{"sn":"Unknown Country","ln":"Unknown Country"},"699":{"sn":"Unknown Country","ln":"Unknown Country"},"800":{"sn":"Freephone","ln":"Universal international freephone number"},"801":{"sn":"Unknown Country","ln":"Unknown Country"},"802":{"sn":"Unknown Country","ln":"Unknown Country"},"803":{"sn":"Unknown Country","ln":"Unknown Country"},"804":{"sn":"Unknown Country","ln":"Unknown Country"},"805":{"sn":"Unknown Country","ln":"Unknown Country"},"806":{"sn":"Unknown Country","ln":"Unknown Country"},"807":{"sn":"Unknown Country","ln":"Unknown Country"},"808":{"sn":"Shared Cost","ln":"Shared Cost Service"},"809":{"sn":"Unknown Country","ln":"Unknown Country"},"850":{"sn":"North Korea","ln":"North Korea"},"851":{"sn":"Unknown Country","ln":"Unknown Country"},"852":{"sn":"Hong Kong","ln":"Hong Kong"},"853":{"sn":"Macau","ln":"Macau"},"854":{"sn":"Unknown Country","ln":"Unknown Country"},"855":{"sn":"Cambodia","ln":"Cambodia"},"856":{"sn":"Laos","ln":"Laos"},"857":{"sn":"Unknown Country","ln":"Unknown Country"},"858":{"sn":"Unknown Country","ln":"Unknown Country"},"859":{"sn":"Unknown Country","ln":"Unknown Country"},"870":{"sn":"Inmarsat","ln":"Inmarsat"},"871":{"sn":"Unknown Country","ln":"Unknown Country"},"872":{"sn":"Pitcairn","ln":"Pitcairn"},"873":{"sn":"Unknown Country","ln":"Unknown Country"},"874":{"sn":"Unknown Country","ln":"Unknown Country"},"875":{"sn":"Unknown Country","ln":"Unknown Country"},"876":{"sn":"Unknown Country","ln":"Unknown Country"},"877":{"sn":"Unknown Country","ln":"Unknown Country"},"878":{"sn":"Universal Personal","ln":"Universal Personal Telecommunications"},"879":{"sn":"Unknown Country","ln":"Unknown Country"},"880":{"sn":"Bangladesh","ln":"Bangladesh"},"881":{"sn":"Global Satellite","ln":"Global Mobile Satellite System"},"882":{"sn":"International Networks","ln":"International Networks (country code)"},"883":{"sn":"National Rate","ln":"International National Rate Service"},"884":{"sn":"Unknown Country","ln":"Unknown Country"},"885":{"sn":"Unknown Country","ln":"Unknown Country"},"886":{"sn":"Taiwan","ln":"Republic of China"},"887":{"sn":"Unknown Country","ln":"Unknown Country"},"888":{"sn":"OCHA","ln":"OCHA"},"889":{"sn":"Unknown Country","ln":"Unknown Country"},"960":{"sn":"Maldives","ln":"Maldives"},"961":{"sn":"Lebanon","ln":"Lebanon"},"962":{"sn":"Jordan","ln":"Jordan"},"963":{"sn":"Syria","ln":"Syria"},"964":{"sn":"Iraq","ln":"Iraq"},"965":{"sn":"Kuwait","ln":"Kuwait"},"966":{"sn":"Saudi Arabia","ln":"Saudi Arabia"},"967":{"sn":"Yemen","ln":"Yemen"},"968":{"sn":"Oman","ln":"Oman"},"969":{"sn":"Unknown Country","ln":"Unknown Country"},"970":{"sn":"Palestinian Authority","ln":"Palestinian Authority"},"971":{"sn":"UAE","ln":"United Arab Emirates"},"972":{"sn":"Israel","ln":"Israel, Palestinian Authority"},"973":{"sn":"Bahrain","ln":"Bahrain"},"974":{"sn":"Qatar","ln":"Qatar"},"975":{"sn":"Bhutan","ln":"Bhutan"},"976":{"sn":"Mongolia","ln":"Mongolia"},"977":{"sn":"Nepal","ln":"Nepal"},"978":{"sn":"Unknown Country","ln":"Unknown Country"},"979":{"sn":"Premium Rate","ln":"International Premium Rate Service"},"990":{"sn":"Unknown Country","ln":"Unknown Country"},"991":{"sn":"ITPCS","ln":"ITPCS"},"992":{"sn":"Tajikistan","ln":"Tajikistan"},"993":{"sn":"Turkmenistan","ln":"Turkmenistan"},"994":{"sn":"Azerbaijan","ln":"Azerbaijan, Nagorno-Karabakh"},"995":{"sn":"Georgia","ln":"Georgia"},"996":{"sn":"Kyrgyzstan","ln":"Kyrgyzstan"},"997":{"sn":"Unknown Country","ln":"Unknown Country"},"998":{"sn":"Uzbekistan","ln":"Uzbekistan"},"999":{"sn":"Unknown Country","ln":"Unknown Country"}};
 ilib.data.area_IN = {"11":{"ln":"New Delhi, New Delhi","sn":"New Delhi"},"20":{"ln":"Pune, Pune","sn":"Pune"},"22":{"ln":"Mumbai, Mumbai","sn":"Mumbai"},"33":{"ln":"Kolkata, Kolkata","sn":"Kolkata"},"40":{"ln":"Hyderabad Loc, Hyderabad","sn":"Hyderabad Loc"},"44":{"ln":"Chennai, Chennai","sn":"Chennai"},"79":{"ln":"Ahemdabad Local, Ahmedabad","sn":"Ahemdabad"},"80":{"ln":"Bangalore, Bangalore","sn":"Bangalore"},"120":{"ln":"Ghaziabad+Dadri, Ghaziabad","sn":"Ghaziabad+Dadri"},"121":{"ln":"Meerut, Meerut","sn":"Meerut"},"122":{"ln":"Hapur, Ghaziabad","sn":"Hapur"},"124":{"ln":"Gurgaon, Gurgaon","sn":"Gurgaon"},"129":{"ln":"Faridabad, Gurgaon","sn":"Faridabad"},"130":{"ln":"Sonipat, Sonipat","sn":"Sonipat"},"131":{"ln":"Muzaffar Nagar, Muzaffarnagar","sn":"Muzaffar Nagar"},"132":{"ln":"Saharanpur, Saharanpur","sn":"Saharanpur"},"135":{"ln":"Dehradun, Dehradun","sn":"Dehradun"},"141":{"ln":"Jaipur, Jaipur","sn":"Jaipur"},"144":{"ln":"Alwar, Alwar","sn":"Alwar"},"145":{"ln":"Ajmer, Ajmer","sn":"Ajmer"},"151":{"ln":"Bikaner (S), Bikaner","sn":"Bikaner (S)"},"154":{"ln":"Sriganganagar, Sriganganagar","sn":"Sriganganagar"},"160":{"ln":"Kharar, Ropar","sn":"Kharar"},"161":{"ln":"Ludhiana, Ludhiana","sn":"Ludhiana"},"164":{"ln":"Bhatinda, Bhatinda","sn":"Bhatinda"},"171":{"ln":"Ambala, Ambala","sn":"Ambala"},"172":{"ln":"Chandigarh, Chandigarh","sn":"Chandigarh"},"175":{"ln":"Patiala, Patiala","sn":"Patiala"},"177":{"ln":"Shimla, Shimla","sn":"Shimla"},"180":{"ln":"Panipat, Karnal","sn":"Panipat"},"181":{"ln":"Jallandhar, Jalandhar","sn":"Jallandhar"},"183":{"ln":"Amritsar, Amritsar","sn":"Amritsar"},"184":{"ln":"Karnal, Karnal","sn":"Karnal"},"186":{"ln":"Pathankot, Pathankot","sn":"Pathankot"},"191":{"ln":"Jammu, Jammu","sn":"Jammu"},"194":{"ln":"Srinagar, Srinagar","sn":"Srinagar"},"212":{"ln":"Chinchwad, Pune","sn":"Chinchwad"},"215":{"ln":"Navi Mumbai (Turbhe), Mumbai","sn":"Navi Mumbai"},"217":{"ln":"Sholapur, Sholapur","sn":"Sholapur"},"230":{"ln":"Khadakwasala, Pune","sn":"Khadakwasala"},"231":{"ln":"Kolhapur, Kolhapur","sn":"Kolhapur"},"233":{"ln":"Sangli, Sangli","sn":"Sangli"},"241":{"ln":"Ahmednagar, Ahmednagar","sn":"Ahmednagar"},"250":{"ln":"Bassein, Kalyan","sn":"Bassein"},"251":{"ln":"Kalyan, Kalyan","sn":"Kalyan"},"253":{"ln":"Nasikcity, Nasik","sn":"Nasikcity"},"257":{"ln":"Jalgaon, Jalgaon","sn":"Jalgaon"},"260":{"ln":"Vapi, Valsad","sn":"Vapi"},"261":{"ln":"Surat, Surat","sn":"Surat"},"265":{"ln":"Vadodara, Vadodara","sn":"Vadodara"},"268":{"ln":"Nadiad, Nadiad","sn":"Nadiad"},"278":{"ln":"Bhavnagar, Bhavnagar","sn":"Bhavnagar"},"281":{"ln":"Rajkot, Rajkot","sn":"Rajkot"},"285":{"ln":"Junagarh, Junagarh","sn":"Junagarh"},"286":{"ln":"Porbander, Junagarh","sn":"Porbander"},"288":{"ln":"Jamnagar, Jamnagar","sn":"Jamnagar"},"291":{"ln":"Jodhpur (E), Jodhpur","sn":"Jodhpur (E)"},"294":{"ln":"Girwa (Udaipur), Udaipur","sn":"Girwa"},"326":{"ln":"Dhanbad, Dhanbad","sn":"Dhanbad"},"341":{"ln":"Asansol, Asansol","sn":"Asansol"},"342":{"ln":"Burdwan, Asansol","sn":"Burdwan"},"343":{"ln":"Durgapur, Asansol","sn":"Durgapur"},"353":{"ln":"Siliguri, Darjeeling (Siliguri)","sn":"Siliguri"},"354":{"ln":"Darjeeling, Darjeeling (Siliguri)","sn":"Darjeeling"},"360":{"ln":"Itanagar, Arunachal-Pradesh (Zero)","sn":"Itanagar"},"361":{"ln":"Guwahati, Guwahati","sn":"Guwahati"},"364":{"ln":"Shillong, Meghalaya (Shillong)","sn":"Shillong"},"368":{"ln":"Passighat, Arunachal-Pradesh (Zero)","sn":"Passighat"},"369":{"ln":"Mokokchung, Nagaland (Kohima)","sn":"Mokokchung"},"370":{"ln":"Kohima, Nagaland (Kohima)","sn":"Kohima"},"372":{"ln":"Lungleh, Mizoram (Aizwal)","sn":"Lungleh"},"373":{"ln":"Dibrugarh, Tinsukia (Dibrugarh)","sn":"Dibrugarh"},"374":{"ln":"Tinsukhia, Tinsukia (Dibrugarh)","sn":"Tinsukhia"},"376":{"ln":"Jorhat, Jorhat","sn":"Jorhat"},"381":{"ln":"Agartala, Tripura (Agartala)","sn":"Agartala"},"385":{"ln":"Imphal, Manipur (Imphal)","sn":"Imphal"},"389":{"ln":"Aizawal-I, Mizoram (Aizwal)","sn":"Aizawal"},"413":{"ln":"Pondicherry, Pondichery","sn":"Pondicherry"},"416":{"ln":"Vellore, Vellore","sn":"Vellore"},"421":{"ln":"Tirupur, Coimbatore","sn":"Tirupur"},"422":{"ln":"Coimbatore, Coimbatore","sn":"Coimbatore"},"423":{"ln":"Ootacamund, Ooty","sn":"Ootacamund"},"424":{"ln":"Erode, Erode","sn":"Erode"},"427":{"ln":"Salem, Salem","sn":"Salem"},"431":{"ln":"Trichy, Trichy","sn":"Trichy"},"435":{"ln":"Kumbakonam, Thanjavur","sn":"Kumbakonam"},"451":{"ln":"Dindigul, Madurai","sn":"Dindigul"},"452":{"ln":"Madurai, Madurai","sn":"Madurai"},"461":{"ln":"Tuticorin, Tuticorin","sn":"Tuticorin"},"462":{"ln":"Tirunelvelli, Tirunelvelli","sn":"Tirunelvelli"},"469":{"ln":"Tiruvalla, Tiruvalla","sn":"Tiruvalla"},"470":{"ln":"Attingal, Thiruvananthapuram","sn":"Attingal"},"471":{"ln":"Thiruvananthapuram, Thiruvananthapuram","sn":"Thiruvananthapuram"},"474":{"ln":"Quilon, Quilon","sn":"Quilon"},"475":{"ln":"Punalur, Quilon","sn":"Punalur"},"476":{"ln":"Karunagapally, Quilon","sn":"Karunagapally"},"477":{"ln":"Alleppey, Alleppy","sn":"Alleppey"},"478":{"ln":"Shertallai, Alleppy","sn":"Shertallai"},"479":{"ln":"Mavelikkara, Alleppy","sn":"Mavelikkara"},"480":{"ln":"Irinjalakuda, Trichur","sn":"Irinjalakuda"},"481":{"ln":"Kottayam, Kottayam","sn":"Kottayam"},"483":{"ln":"Manjeri, Calicut (Kozhikode)","sn":"Manjeri"},"484":{"ln":"Ernakulam, Ernakulam","sn":"Ernakulam"},"485":{"ln":"Muvattupuzha, Ernakulam","sn":"Muvattupuzha"},"487":{"ln":"Trichur, Trichur","sn":"Trichur"},"490":{"ln":"Tellicherry, Cannanore","sn":"Tellicherry"},"491":{"ln":"Palghat, Palghat","sn":"Palghat"},"494":{"ln":"Tirur, Calicut (Kozhikode)","sn":"Tirur"},"495":{"ln":"Calicut, Calicut (Kozhikode)","sn":"Calicut"},"496":{"ln":"Badagara, Calicut (Kozhikode)","sn":"Badagara"},"497":{"ln":"Cannanore, Cannanore","sn":"Cannanore"},"512":{"ln":"Kanpur, Kanpur","sn":"Kanpur"},"515":{"ln":"Unnao, Unnao","sn":"Unnao"},"522":{"ln":"Lucknow, Lucknow","sn":"Lucknow"},"532":{"ln":"Allahabad, Allahabad","sn":"Allahabad"},"535":{"ln":"Raibareli, Raibareilly","sn":"Raibareli"},"542":{"ln":"Varansi, Varansi","sn":"Varansi"},"548":{"ln":"Ghazipur, Ghazipur","sn":"Ghazipur"},"551":{"ln":"Gorakhpur, Gorakhpur","sn":"Gorakhpur"},"562":{"ln":"Agra, Agra","sn":"Agra"},"565":{"ln":"Mathura, Mathura","sn":"Mathura"},"571":{"ln":"Aligarh, Aligarh","sn":"Aligarh"},"581":{"ln":"Bareilly, Bareilly","sn":"Bareilly"},"591":{"ln":"Moradabad, Moradabad","sn":"Moradabad"},"595":{"ln":"Rampur, Rampur","sn":"Rampur"},"612":{"ln":"Patna, Patna","sn":"Patna"},"621":{"ln":"Muzaffarpur, Muzaffarpur","sn":"Muzaffarpur"},"631":{"ln":"Gaya, Gaya","sn":"Gaya"},"641":{"ln":"Bhagalpur, Bhagalpur","sn":"Bhagalpur"},"651":{"ln":"Ranchi, Ranchi","sn":"Ranchi"},"657":{"ln":"Jamshedpur, Jamshedpur","sn":"Jamshedpur"},"661":{"ln":"Rourkela, Sundargarh (Rourkela)","sn":"Rourkela"},"663":{"ln":"Sambalpur, Sambalpur","sn":"Sambalpur"},"671":{"ln":"Cuttack, Cuttack","sn":"Cuttack"},"674":{"ln":"Bhubaneshwar, Bhubaneswar (Puri)","sn":"Bhubaneshwar"},"680":{"ln":"Berhampur, Berhampur","sn":"Berhampur"},"712":{"ln":"Nagpur, Nagpur","sn":"Nagpur"},"721":{"ln":"Amravati, Amravati","sn":"Amravati"},"724":{"ln":"Akola, Akola","sn":"Akola"},"731":{"ln":"Indore, Indore","sn":"Indore"},"733":{"ln":"Khandwa, Khandwa","sn":"Khandwa"},"734":{"ln":"Ujjain, Ujjain","sn":"Ujjain"},"744":{"ln":"Ladpura (Kota), Kota","sn":"Ladpura"},"747":{"ln":"Bundi, Bundi","sn":"Bundi"},"751":{"ln":"Gwalior, Gwalior","sn":"Gwalior"},"755":{"ln":"Bhopal, Bhopal","sn":"Bhopal"},"761":{"ln":"Jabalpur, Jabalpur","sn":"Jabalpur"},"771":{"ln":"Raipur, Raipur","sn":"Raipur"},"788":{"ln":"Durg, Durg","sn":"Durg"},"816":{"ln":"Tumkur, Tumkur","sn":"Tumkur"},"820":{"ln":"Udupi, Dakshin-Kanada (Mangalore)","sn":"Udupi"},"821":{"ln":"Mysore, Mysore","sn":"Mysore"},"824":{"ln":"Mangalore, Dakshin-Kanada (Mangalore)","sn":"Mangalore"},"831":{"ln":"Belgaum, Belgaum","sn":"Belgaum"},"832":{"ln":"Panji, Panji","sn":"Panji"},"836":{"ln":"Hubli, Hubli","sn":"Hubli"},"861":{"ln":"Nellore, Nellore","sn":"Nellore"},"863":{"ln":"Guntur, Guntur","sn":"Guntur"},"866":{"ln":"Vijayawada, Vijayawada","sn":"Vijayawada"},"870":{"ln":"Warangal, Warangal","sn":"Warangal"},"877":{"ln":"Tirupathi, Chittoor","sn":"Tirupathi"},"878":{"ln":"Karimnagar, Karimnagar","sn":"Karimnagar"},"883":{"ln":"Rajahmundri, Rajahmundri","sn":"Rajahmundri"},"884":{"ln":"Kakinada, Rajahmundri","sn":"Kakinada"},"891":{"ln":"Visakhapatnam, Visakhapatnam","sn":"Visakhapatnam"},"1232":{"ln":"Modinagar, Ghaziabad","sn":"Modinagar"},"1233":{"ln":"Mawana, Meerut","sn":"Mawana"},"1234":{"ln":"Baghpat-II (Baraut), Meerut","sn":"Baghpat"},"1237":{"ln":"Sardhana, Meerut","sn":"Sardhana"},"1250":{"ln":"Charkhidadri, Rohtak","sn":"Charkhidadri"},"1251":{"ln":"Jhajjar, Rohtak","sn":"Jhajjar"},"1252":{"ln":"Loharu, Rohtak","sn":"Loharu"},"1253":{"ln":"Tohsham, Rohtak","sn":"Tohsham"},"1254":{"ln":"Bawanikhera, Rohtak","sn":"Bawanikhera"},"1255":{"ln":"Siwani, Rohtak","sn":"Siwani"},"1257":{"ln":"Meham, Rohtak","sn":"Meham"},"1258":{"ln":"Kalanaur, Rohtak","sn":"Kalanaur"},"1259":{"ln":"Kosli, Narnaul","sn":"Kosli"},"1262":{"ln":"Rohtak, Rohtak","sn":"Rohtak"},"1263":{"ln":"Gohana, Sonipat","sn":"Gohana"},"1267":{"ln":"Nuh, Gurgaon","sn":"Nuh"},"1268":{"ln":"Ferojpur, Gurgaon","sn":"Ferojpur"},"1274":{"ln":"Rewari, Narnaul","sn":"Rewari"},"1275":{"ln":"Palwal, Gurgaon","sn":"Palwal"},"1276":{"ln":"Bahadurgarh, Rohtak","sn":"Bahadurgarh"},"1281":{"ln":"Jatusana, Narnaul","sn":"Jatusana"},"1282":{"ln":"Narnaul, Narnaul","sn":"Narnaul"},"1284":{"ln":"Bawal, Narnaul","sn":"Bawal"},"1285":{"ln":"Mohindergarh, Narnaul","sn":"Mohindergarh"},"1331":{"ln":"Nakur (Gangoh), Saharanpur","sn":"Nakur"},"1332":{"ln":"Roorkee-I, Saharanpur","sn":"Roorkee"},"1334":{"ln":"Roorkee-II (Hardwar), Saharanpur","sn":"Roorkee"},"1336":{"ln":"Deoband, Saharanpur","sn":"Deoband"},"1341":{"ln":"Najibabad, Bijnore","sn":"Najibabad"},"1342":{"ln":"Bijnore-I, Bijnore","sn":"Bijnore"},"1343":{"ln":"Nagina, Bijnore","sn":"Nagina"},"1344":{"ln":"Dhampur, Bijnore","sn":"Dhampur"},"1345":{"ln":"Bijnore-II (Chandpur), Bijnore","sn":"Bijnore"},"1346":{"ln":"Pauri-II (Bubakhal), Kotdwara","sn":"Pauri"},"1348":{"ln":"Lansdown-III (Syunsi), Kotdwara","sn":"Lansdown"},"1360":{"ln":"Chakrata (Dakpather), Dehradun","sn":"Chakrata"},"1363":{"ln":"Karan Prayag, Kotdwara","sn":"Karan Prayag"},"1364":{"ln":"Ukhimath (Guptkashi), Kotdwara","sn":"Ukhimath"},"1368":{"ln":"Pauri-I, Kotdwara","sn":"Pauri"},"1370":{"ln":"Deoprayag-II (Jakholi), Uttarkashi","sn":"Deoprayag"},"1371":{"ln":"Dunda, Uttarkashi","sn":"Dunda"},"1372":{"ln":"Chamoli, Kotdwara","sn":"Chamoli"},"1373":{"ln":"Purola, Uttarkashi","sn":"Purola"},"1374":{"ln":"Bhatwari-I (Uttarkashi), Uttarkashi","sn":"Bhatwari"},"1375":{"ln":"Rajgarhi, Uttarkashi","sn":"Rajgarhi"},"1376":{"ln":"Tehri, Uttarkashi","sn":"Tehri"},"1377":{"ln":"Bhatwari-I (Gangotri), Uttarkashi","sn":"Bhatwari"},"1378":{"ln":"Deoprayag-I, Uttarkashi","sn":"Deoprayag"},"1379":{"ln":"Partapnagar, Uttarkashi","sn":"Partapnagar"},"1381":{"ln":"Joshimath-II (Badrinath), Kotdwara","sn":"Joshimath"},"1382":{"ln":"Lansdown-II (Kotdwara), Kotdwara","sn":"Lansdown"},"1386":{"ln":"Lansdown-I, Kotdwara","sn":"Lansdown"},"1389":{"ln":"Joshimath-I, Kotdwara","sn":"Joshimath"},"1392":{"ln":"Budhana, Muzaffarnagar","sn":"Budhana"},"1396":{"ln":"Jansath (Khatauli), Muzaffarnagar","sn":"Jansath"},"1398":{"ln":"Kairana (Shamli), Muzaffarnagar","sn":"Kairana"},"1420":{"ln":"Baswa (Bandikui), Jaipur","sn":"Baswa"},"1421":{"ln":"Kotputli, Jaipur","sn":"Kotputli"},"1422":{"ln":"Viratnagar (Shahpura), Jaipur","sn":"Viratnagar"},"1423":{"ln":"Amber (Chomu), Jaipur","sn":"Amber"},"1424":{"ln":"Phulera (E) (Renwal), Jaipur","sn":"Phulera (E)"},"1425":{"ln":"Phulera (W) (Sambhar), Jaipur","sn":"Phulera (W)"},"1426":{"ln":"Jamwa-Ramgarh (Achrol), Jaipur","sn":"Jamwa-Ramgarh"},"1427":{"ln":"Dausa, Jaipur","sn":"Dausa"},"1428":{"ln":"Dudu, Jaipur","sn":"Dudu"},"1429":{"ln":"Bassi, Jaipur","sn":"Bassi"},"1430":{"ln":"Phagi, Jaipur","sn":"Phagi"},"1431":{"ln":"Lalsot, Jaipur","sn":"Lalsot"},"1432":{"ln":"Tonk (S), Tonk","sn":"Tonk (S)"},"1433":{"ln":"Todaraisingh, Tonk","sn":"Todaraisingh"},"1434":{"ln":"Deoli, Tonk","sn":"Deoli"},"1435":{"ln":"Tonk (N) (Piploo), Tonk","sn":"Tonk (N)"},"1436":{"ln":"Uniayara, Tonk","sn":"Uniayara"},"1437":{"ln":"Malpura, Tonk","sn":"Malpura"},"1438":{"ln":"Newai, Tonk","sn":"Newai"},"1460":{"ln":"Kishangarhbas (Khairthal), Alwar","sn":"Kishangarhbas"},"1461":{"ln":"Bansur, Alwar","sn":"Bansur"},"1462":{"ln":"Beawar, Ajmer","sn":"Beawar"},"1463":{"ln":"Kishangarh (S), Ajmer","sn":"Kishangarh (S)"},"1464":{"ln":"Rajgarh, Alwar","sn":"Rajgarh"},"1465":{"ln":"Thanaghazi, Alwar","sn":"Thanaghazi"},"1466":{"ln":"Kekri (W) (Bhinai), Ajmer","sn":"Kekri (W)"},"1467":{"ln":"Kekri (E), Ajmer","sn":"Kekri (E)"},"1468":{"ln":"Ramgarh, Alwar","sn":"Ramgarh"},"1469":{"ln":"Tijara (S), Alwar","sn":"Tijara (S)"},"1470":{"ln":"Dungla, Chittorgarh","sn":"Dungla"},"1471":{"ln":"Rashmi, Chittorgarh","sn":"Rashmi"},"1472":{"ln":"Chittorgarh, Chittorgarh","sn":"Chittorgarh"},"1473":{"ln":"Barisadri, Chittorgarh","sn":"Barisadri"},"1474":{"ln":"Begun (N), Chittorgarh","sn":"Begun (N)"},"1475":{"ln":"Begun (S) (Rawatbhata), Chittorgarh","sn":"Begun (S)"},"1476":{"ln":"Kapasan, Chittorgarh","sn":"Kapasan"},"1477":{"ln":"Nimbahera, Chittorgarh","sn":"Nimbahera"},"1478":{"ln":"Pratapgarh (N), Chittorgarh","sn":"Pratapgarh (N)"},"1479":{"ln":"Pratapgarh (S) (Arnod), Chittorgarh","sn":"Pratapgarh (S)"},"1480":{"ln":"Asind, Bhilwara","sn":"Asind"},"1481":{"ln":"Raipur, Bhilwara","sn":"Raipur"},"1482":{"ln":"Bhilwara, Bhilwara","sn":"Bhilwara"},"1483":{"ln":"Hurda (Gulabpura), Bhilwara","sn":"Hurda"},"1484":{"ln":"Shahapura, Bhilwara","sn":"Shahapura"},"1485":{"ln":"Jahazpur, Bhilwara","sn":"Jahazpur"},"1486":{"ln":"Mandal, Bhilwara","sn":"Mandal"},"1487":{"ln":"Banera, Bhilwara","sn":"Banera"},"1488":{"ln":"Kotri, Bhilwara","sn":"Kotri"},"1489":{"ln":"Mandalgarh, Bhilwara","sn":"Mandalgarh"},"1491":{"ln":"Nasirabad, Ajmer","sn":"Nasirabad"},"1492":{"ln":"Laxmangarh (Kherli), Alwar","sn":"Laxmangarh"},"1493":{"ln":"Tijara (N) (Bhiwadi), Alwar","sn":"Tijara (N)"},"1494":{"ln":"Behror, Alwar","sn":"Behror"},"1495":{"ln":"Mandawar, Alwar","sn":"Mandawar"},"1496":{"ln":"Sarwar, Ajmer","sn":"Sarwar"},"1497":{"ln":"Kishangarh (N) (Roopangarh), Ajmer","sn":"Kishangarh (N)"},"1498":{"ln":"Anupgarh (E), Sriganganagar","sn":"Anupgarh (E)"},"1499":{"ln":"Sangaria, Sriganganagar","sn":"Sangaria"},"1501":{"ln":"Srikaranpur, Sriganganagar","sn":"Srikaranpur"},"1502":{"ln":"Nohar (W) (Jedasar), Sriganganagar","sn":"Nohar (W)"},"1503":{"ln":"Sadulshahar, Sriganganagar","sn":"Sadulshahar"},"1504":{"ln":"Bhadra, Sriganganagar","sn":"Bhadra"},"1505":{"ln":"Padampur, Sriganganagar","sn":"Padampur"},"1506":{"ln":"Anupgarh (W) (Gharsana), Sriganganagar","sn":"Anupgarh (W)"},"1507":{"ln":"Raisinghnagar, Sriganganagar","sn":"Raisinghnagar"},"1508":{"ln":"Suratgarh (N) (Goluwala), Sriganganagar","sn":"Suratgarh (N)"},"1509":{"ln":"Suratgarh (S), Sriganganagar","sn":"Suratgarh (S)"},"1520":{"ln":"Bikaner (N) (Chhatargarh), Bikaner","sn":"Bikaner (N)"},"1521":{"ln":"Bikaner (C) (Jaimalsar), Bikaner","sn":"Bikaner (C)"},"1522":{"ln":"Bikaner(E) (Jamsar), Bikaner","sn":"Bikaner (E)"},"1523":{"ln":"Bikaner (W) (Poogal), Bikaner","sn":"Bikaner (W)"},"1526":{"ln":"Lunkaransar-II (Mahajan), Bikaner","sn":"Lunkaransar"},"1527":{"ln":"Lunkaransar-III (Rajasarb), Bikaner","sn":"Lunkaransar"},"1528":{"ln":"Lunkaransar-IV, Bikaner","sn":"Lunkaransar"},"1529":{"ln":"Lunkaransar-IV and -I (Kanholi), Bikaner","sn":"Lunkaransar"},"1531":{"ln":"Nokha (E), Bikaner","sn":"Nokha (E)"},"1532":{"ln":"Nokha (W) (Nathusar), Bikaner","sn":"Nokha (W)"},"1533":{"ln":"Kolayat-I (Goddo), Bikaner","sn":"Kolayat"},"1534":{"ln":"Kolayat-II, Bikaner","sn":"Kolayat"},"1535":{"ln":"Kolayat-II and -III (Bajju), Bikaner","sn":"Kolayat"},"1536":{"ln":"Kolayat-IV (Daitra), Bikaner","sn":"Kolayat"},"1537":{"ln":"Nohar (C) (Rawatsar), Sriganganagar","sn":"Nohar (C)"},"1539":{"ln":"Tibbi, Sriganganagar","sn":"Tibbi"},"1552":{"ln":"Hanumangarh, Sriganganagar","sn":"Hanumangarh"},"1555":{"ln":"Nohar (E), Sriganganagar","sn":"Nohar (E)"},"1559":{"ln":"Rajgarh, Churu","sn":"Rajgarh"},"1560":{"ln":"Sujangarh (C) (Bidasar), Churu","sn":"Sujangarh (C)"},"1561":{"ln":"Taranagar, Churu","sn":"Taranagar"},"1562":{"ln":"Churu, Churu","sn":"Churu"},"1563":{"ln":"Sardarshahar (N)-Jaitsisar, Churu","sn":"Sardarshahar (N)"},"1564":{"ln":"Sardarshahar (S), Churu","sn":"Sardarshahar (S)"},"1565":{"ln":"Sridungargarh (N)-Dungargh, Churu","sn":"Sridungargarh (N)"},"1566":{"ln":"Sridungargarh (S) (Sudsar), Churu","sn":"Sridungargarh (S)"},"1567":{"ln":"Ratangarh, Churu","sn":"Ratangarh"},"1568":{"ln":"Sujangarh (E), Churu","sn":"Sujangarh (E)"},"1569":{"ln":"Sujangarh (W) (Lalgarh), Churu","sn":"Sujangarh (W)"},"1570":{"ln":"Laxmangarh (W) (Nechwa), Sikar","sn":"Laxmangarh (W)"},"1571":{"ln":"Fatehpur, Sikar","sn":"Fatehpur"},"1572":{"ln":"Sikar, Sikar","sn":"Sikar"},"1573":{"ln":"Laxmangarh (E), Sikar","sn":"Laxmangarh (E)"},"1574":{"ln":"Neem Ka Thana, Sikar","sn":"Neem Ka Thana"},"1575":{"ln":"Srimadhopur, Sikar","sn":"Srimadhopur"},"1576":{"ln":"Dantaramgarh (E) (Shyamji), Sikar","sn":"Dantaramgarh (E)"},"1577":{"ln":"Dantaramgarh (W), Sikar","sn":"Dantaramgarh (W)"},"1580":{"ln":"Deedwana, Nagaur","sn":"Deedwana"},"1581":{"ln":"Ladnun, Nagaur","sn":"Ladnun"},"1582":{"ln":"Nagaur (N), Nagaur","sn":"Nagaur (N)"},"1583":{"ln":"Jayal, Nagaur","sn":"Jayal"},"1584":{"ln":"Nagaur (E) (Mundwa Marwar), Nagaur","sn":"Nagaur (E)"},"1585":{"ln":"Nagaur (W) (Khinwsar), Naguar","sn":"Nagaur (W)"},"1586":{"ln":"Nawa (Kuchamancity), Nagaur","sn":"Nawa"},"1587":{"ln":"Degana, Nagaur","sn":"Degana"},"1588":{"ln":"Parbatsar (N) (Makrana), Nagaur","sn":"Parbatsar (N)"},"1589":{"ln":"Parbatsar (S), Nagaur","sn":"Parbatsar (S)"},"1590":{"ln":"Merta (E) (Merta-City), Nagaur","sn":"Merta (E)"},"1591":{"ln":"Merta (W) (Gotan), Nagaur","sn":"Merta (W)"},"1592":{"ln":"Jhunjhunu (S), Jhunjhunu","sn":"Jhunjhunu (S)"},"1593":{"ln":"Khetri, Jhunjhunu","sn":"Khetri"},"1594":{"ln":"Udaipurwati, Jhunjhunu","sn":"Udaipurwati"},"1595":{"ln":"Jhunjhunu (N) (Bissau), Jhunjhunu","sn":"Jhunjhunu (N)"},"1596":{"ln":"Chirawa, Jhunjhunu","sn":"Chirawa"},"1624":{"ln":"Jagraon, Ludhiana","sn":"Jagraon"},"1628":{"ln":"Samrala, Ludhiana","sn":"Samrala"},"1632":{"ln":"Ferozepur, Ferozepur","sn":"Ferozepur"},"1633":{"ln":"Muktasar, Ferozepur","sn":"Muktasar"},"1634":{"ln":"Abohar, Ferozepur","sn":"Abohar"},"1635":{"ln":"Kotkapura, Ferozepur","sn":"Kotkapura"},"1636":{"ln":"Moga, Ferozepur","sn":"Moga"},"1637":{"ln":"Malaut, Ferozepur","sn":"Malaut"},"1638":{"ln":"Fazilka, Ferozepur","sn":"Fazilka"},"1639":{"ln":"Faridakot, Ferozepur","sn":"Faridakot"},"1651":{"ln":"Phulmandi, Bhatinda","sn":"Phulmandi"},"1652":{"ln":"Mansa, Bhatinda","sn":"Mansa"},"1655":{"ln":"Raman, Bhatinda","sn":"Raman"},"1659":{"ln":"Sardulgarh, Bhatinda","sn":"Sardulgarh"},"1662":{"ln":"Hissar, Hissar","sn":"Hissar"},"1663":{"ln":"Hansi, Hissar","sn":"Hansi"},"1664":{"ln":"Bhiwani, Rohtak","sn":"Bhiwani"},"1666":{"ln":"Sirsa, Hissar","sn":"Sirsa"},"1667":{"ln":"Fatehabad, Hissar","sn":"Fatehabad"},"1668":{"ln":"Dabwali, Hissar","sn":"Dabwali"},"1669":{"ln":"Adampur Mandi, Hissar","sn":"Adampur Mandi"},"1672":{"ln":"Sangrur, Sangrur","sn":"Sangrur"},"1675":{"ln":"Malerkotla, Sangrur","sn":"Malerkotla"},"1676":{"ln":"Sunam, Sangrur","sn":"Sunam"},"1679":{"ln":"Barnala, Sangrur","sn":"Barnala"},"1681":{"ln":"Jind, Jind","sn":"Jind"},"1682":{"ln":"Zira, Ferozepur","sn":"Zira"},"1683":{"ln":"Julana, Jind","sn":"Julana"},"1684":{"ln":"Narwana, Jind","sn":"Narwana"},"1685":{"ln":"Guruharsahai, Ferozepur","sn":"Guruharsahai"},"1686":{"ln":"Safidon, Jind","sn":"Safidon"},"1692":{"ln":"Tohana, Hissar","sn":"Tohana"},"1693":{"ln":"Barwala, Hissar","sn":"Barwala"},"1696":{"ln":"Kalanwali, Hissar","sn":"Kalanwali"},"1697":{"ln":"Ratia, Hissar","sn":"Ratia"},"1698":{"ln":"Ellenabad, Hissar","sn":"Ellenabad"},"1702":{"ln":"Nahan, Solan","sn":"Nahan"},"1704":{"ln":"Paonta, Solan","sn":"Paonta"},"1731":{"ln":"Barara, Ambala","sn":"Barara"},"1732":{"ln":"Jagadhari, Ambala","sn":"Jagadhari"},"1733":{"ln":"Kalka, Ambala","sn":"Kalka"},"1734":{"ln":"Naraingarh, Ambala","sn":"Naraingarh"},"1735":{"ln":"Chaaharauli, Ambala","sn":"Chaaharauli"},"1741":{"ln":"Pehowa, Karnal","sn":"Pehowa"},"1743":{"ln":"Cheeka, Karnal","sn":"Cheeka"},"1744":{"ln":"Kurukshetra, Karnal","sn":"Kurukshetra"},"1745":{"ln":"Nilokheri, Karnal","sn":"Nilokheri"},"1746":{"ln":"Kaithal, Karnal","sn":"Kaithal"},"1748":{"ln":"Gharaunda, Karnal","sn":"Gharaunda"},"1749":{"ln":"Assandh, Karnal","sn":"Assandh"},"1762":{"ln":"Rajpura, Patiala","sn":"Rajpura"},"1763":{"ln":"Sarhind, Patiala","sn":"Sarhind"},"1764":{"ln":"Samana, Patiala","sn":"Samana"},"1765":{"ln":"Nabha, Patiala","sn":"Nabha"},"1781":{"ln":"Rohru, Shimla","sn":"Rohru"},"1782":{"ln":"Rampur Bushahar, Shimla","sn":"Rampur Bushahar"},"1783":{"ln":"Theog, Shimla","sn":"Theog"},"1785":{"ln":"Pooh, Shimla","sn":"Pooh"},"1786":{"ln":"Kalpa, Shimla","sn":"Kalpa"},"1792":{"ln":"Solan, Solan","sn":"Solan"},"1795":{"ln":"Nalagarh, Solan","sn":"Nalagarh"},"1796":{"ln":"Arki, Solan","sn":"Arki"},"1799":{"ln":"Rajgarh, Solan","sn":"Rajgarh"},"1821":{"ln":"Nakodar, Jalandhar","sn":"Nakodar"},"1822":{"ln":"Kapurthala, Jalandhar","sn":"Kapurthala"},"1823":{"ln":"Nawanshahar, Jalandhar","sn":"Nawanshahar"},"1824":{"ln":"Phagwara, Jalandhar","sn":"Phagwara"},"1826":{"ln":"Phillaur, Jalandhar","sn":"Phillaur"},"1828":{"ln":"Sultanpur Lodhi, Jalandhar","sn":"Sultanpur Lodhi"},"1851":{"ln":"Patti, Amritsar","sn":"Patti"},"1852":{"ln":"Taran Taran, Amritsar","sn":"Taran Taran"},"1853":{"ln":"Rayya, Amritsar","sn":"Rayya"},"1858":{"ln":"Ajnala, Amritsar","sn":"Ajnala"},"1859":{"ln":"Goindwal, Amritsar","sn":"Goindwal"},"1870":{"ln":"Jugial, Pathankot","sn":"Jugial"},"1871":{"ln":"Batala, Pathankot","sn":"Batala"},"1872":{"ln":"Quadian, Pathankot","sn":"Quadian"},"1874":{"ln":"Gurdaspur, Pathankot","sn":"Gurdaspur"},"1875":{"ln":"Dinanagar, Pathankot","sn":"Dinanagar"},"1881":{"ln":"Ropar, Ropar","sn":"Ropar"},"1882":{"ln":"Hoshiarpur, Hosiarpur","sn":"Hoshiarpur"},"1883":{"ln":"Dasua, Hosiarpur","sn":"Dasua"},"1884":{"ln":"Garhashanker, Hosiarpur","sn":"Garhashanker"},"1885":{"ln":"Balachaur, Hosiarpur","sn":"Balachaur"},"1886":{"ln":"Tanda Urmar, Hosiarpur","sn":"Tanda Urmar"},"1887":{"ln":"Nangal, Ropar","sn":"Nangal"},"1892":{"ln":"Kangra (Dharamsala), Kangra (Dharamsala)","sn":"Kangra"},"1893":{"ln":"Nurpur, Kangra (Dharamsala)","sn":"Nurpur"},"1894":{"ln":"Palampur, Kangra (Dharamsala)","sn":"Palampur"},"1895":{"ln":"Bharmour, Kangra (Dharamsala)","sn":"Bharmour"},"1896":{"ln":"Churah (Tissa), Kangra (Dharamsala)","sn":"Churah"},"1897":{"ln":"Pangi (Killar), Kandra (Dharamsala)","sn":"Pangi"},"1899":{"ln":"Chamba, Kangra (Dharamsala)","sn":"Chamba"},"1900":{"ln":"Lahul (Keylong), Kullu","sn":"Lahul"},"1902":{"ln":"Kullu, Kullu","sn":"Kullu"},"1903":{"ln":"Banjar, Kullu","sn":"Banjar"},"1904":{"ln":"Nirmand, Kullu","sn":"Nirmand"},"1905":{"ln":"Mandi, Mandi","sn":"Mandi"},"1906":{"ln":"Spiti (Kaza), Kullu","sn":"Spiti"},"1907":{"ln":"Sundernagar, Mandi","sn":"Sundernagar"},"1908":{"ln":"Jogindernagar, Mandi","sn":"Jogindernagar"},"1909":{"ln":"Udaipur, Kullu","sn":"Udaipur"},"1921":{"ln":"Basholi, Jammu","sn":"Basholi"},"1922":{"ln":"Kathua, Jammu","sn":"Kathua"},"1923":{"ln":"Samba, Jammu","sn":"Samba"},"1924":{"ln":"Akhnoor, Jammu","sn":"Akhnoor"},"1931":{"ln":"Kulgam, Srinagar","sn":"Kulgam"},"1932":{"ln":"Anantnag, Srinagar","sn":"Anantnag"},"1933":{"ln":"Pulwama, Srinagar","sn":"Pulwama"},"1936":{"ln":"Pahalgam, Srinagar","sn":"Pahalgam"},"1951":{"ln":"Badgam, Srinagar","sn":"Badgam"},"1952":{"ln":"Baramulla, Srinagar","sn":"Baramulla"},"1954":{"ln":"Sopore, Srinagar","sn":"Sopore"},"1955":{"ln":"Kupwara, Srinagar","sn":"Kupwara"},"1956":{"ln":"Uri, Srinagar","sn":"Uri"},"1957":{"ln":"Bandipur, Srinagar","sn":"Bandipur"},"1958":{"ln":"Karnah, Srinagar","sn":"Karnah"},"1960":{"ln":"Nowshera, Rajouri","sn":"Nowshera"},"1962":{"ln":"Rajouri, Rajouri","sn":"Rajouri"},"1964":{"ln":"Kalakot, Rajouri","sn":"Kalakot"},"1965":{"ln":"Poonch, Rajouri","sn":"Poonch"},"1970":{"ln":"Dehra Gopipur, Kangra (Dharamsala)","sn":"Dehra Gopipur"},"1972":{"ln":"Hamirpur, Hamirpur","sn":"Hamirpur"},"1975":{"ln":"Una, Hamirpur","sn":"Una"},"1976":{"ln":"Amb, Hamirpur","sn":"Amb"},"1978":{"ln":"Bilaspur, Hamirpur","sn":"Bilaspur"},"1980":{"ln":"Nobra, Leh","sn":"Nobra"},"1981":{"ln":"Nyoma, Leh","sn":"Nyoma"},"1982":{"ln":"Leh, Leh","sn":"Leh"},"1983":{"ln":"Zanaskar, Leh","sn":"Zanaskar"},"1985":{"ln":"Kargil, Leh","sn":"Kargil"},"1990":{"ln":"Ramnagar, Udhampur","sn":"Ramnagar"},"1991":{"ln":"Reasi, Udhampur","sn":"Reasi"},"1992":{"ln":"Udhampur, Udhampur","sn":"Udhampur"},"1995":{"ln":"Kishtwar, Udhampur","sn":"Kishtwar"},"1996":{"ln":"Doda, Udhampur","sn":"Doda"},"1997":{"ln":"Bedarwah, Udhampur","sn":"Bedarwah"},"1998":{"ln":"Ramban, Udhampur","sn":"Ramban"},"1999":{"ln":"Mahore, Udhampur","sn":"Mahore"},"2111":{"ln":"Indapur, Pune","sn":"Indapur"},"2112":{"ln":"Baramati, Pune","sn":"Baramati"},"2113":{"ln":"Bhor, Pune","sn":"Bhor"},"2114":{"ln":"Lonavala, Pune","sn":"Lonavala"},"2115":{"ln":"Saswad, Pune","sn":"Saswad"},"2117":{"ln":"Daund, Pune","sn":"Daund"},"2118":{"ln":"Walchandnagar, Pune","sn":"Walchandnagar"},"2119":{"ln":"Kedgaon, Pune","sn":"Kedgaon"},"2130":{"ln":"Velhe, Pune","sn":"Velhe"},"2132":{"ln":"Junnar, Pune","sn":"Junnar"},"2133":{"ln":"Manchar, Pune","sn":"Manchar"},"2135":{"ln":"Rajgurunagar, Pune","sn":"Rajgurunagar"},"2136":{"ln":"Urlikanchan, Pune","sn":"Urlikanchan"},"2137":{"ln":"Nahavara, Pune","sn":"Nahavara"},"2138":{"ln":"Shirur, Pune","sn":"Shirur"},"2139":{"ln":"Pirangut, Pune","sn":"Pirangut"},"2140":{"ln":"Mangaon, Pen","sn":"Mangaon"},"2141":{"ln":"Alibagh, Pen","sn":"Alibagh"},"2142":{"ln":"Pali, Pen","sn":"Pali"},"2143":{"ln":"Pen, Pen","sn":"Pen"},"2144":{"ln":"Murud, Pen","sn":"Murud"},"2145":{"ln":"Mahad, Pen","sn":"Mahad"},"2147":{"ln":"Shrivardhan, Pen","sn":"Shrivardhan"},"2148":{"ln":"Karjat, Pen","sn":"Karjat"},"2149":{"ln":"Mahasala, Pen","sn":"Mahasala"},"2160":{"ln":"Sakarwadi, Satara","sn":"Sakarwadi"},"2161":{"ln":"Vaduj, Satara","sn":"Vaduj"},"2162":{"ln":"Satara, Satara","sn":"Satara"},"2163":{"ln":"Koregaon, Satara","sn":"Koregaon"},"2164":{"ln":"Karad, Satara","sn":"Karad"},"2165":{"ln":"Dhiwadi, Satara","sn":"Dhiwadi"},"2166":{"ln":"Phaltan, Satara","sn":"Phaltan"},"2167":{"ln":"Wai, Satara","sn":"Wai"},"2168":{"ln":"Mahabaleswar, Satara","sn":"Mahabaleswar"},"2169":{"ln":"Shirwal, Satara","sn":"Shirwal"},"2181":{"ln":"Akkalkot, Sholapur","sn":"Akkalkot"},"2182":{"ln":"Karmala, Sholapur","sn":"Karmala"},"2183":{"ln":"Madha, Sholapur","sn":"Madha"},"2184":{"ln":"Barsi, Sholapur","sn":"Barsi"},"2185":{"ln":"Malsuras, Sholapur","sn":"Malsuras"},"2186":{"ln":"Pandharpur, Sholapur","sn":"Pandharpur"},"2187":{"ln":"Sangola, Sholapur","sn":"Sangola"},"2188":{"ln":"Mangalwedha, Sholapur","sn":"Mangalwedha"},"2189":{"ln":"Mohol, Sholapur","sn":"Mohol"},"2191":{"ln":"Poladpur, Pen","sn":"Poladpur"},"2192":{"ln":"Khopoli, Pen","sn":"Khopoli"},"2194":{"ln":"Roha, Pen","sn":"Roha"},"2320":{"ln":"Chandgad, Kolhapur","sn":"Chandgad"},"2321":{"ln":"Radhanagar, Kolhapur","sn":"Radhanagar"},"2322":{"ln":"Shirol (Jalsingpur), Kolhapur","sn":"Shirol"},"2323":{"ln":"Ajara, Kolhapur","sn":"Ajara"},"2324":{"ln":"Hatkangale (Ichalkaranji), Kolhapur","sn":"Hatkangale"},"2325":{"ln":"Kagal (Murgud), Kolhapur","sn":"Kagal"},"2326":{"ln":"Gaganbavada, Kolhapur","sn":"Gaganbavada"},"2327":{"ln":"Gadhinglaj, Kolhapur","sn":"Gadhinglaj"},"2328":{"ln":"Panhala, Kolhapur","sn":"Panhala"},"2329":{"ln":"Shahuwadi (Malakapur), Kolhapur","sn":"Shahuwadi"},"2341":{"ln":"Kavathemankal, Sangli","sn":"Kavathemankal"},"2342":{"ln":"Islampur, Sangli","sn":"Islampur"},"2343":{"ln":"Atpadi, Sangli","sn":"Atpadi"},"2344":{"ln":"Jath, Sangli","sn":"Jath"},"2345":{"ln":"Shirala, Sangli","sn":"Shirala"},"2346":{"ln":"Tasgaon, Sangli","sn":"Tasgaon"},"2347":{"ln":"Vita, Sangli","sn":"Vita"},"2350":{"ln":"Madangad, Ratnagiri","sn":"Madangad"},"2351":{"ln":"Langa, Ratnagiri","sn":"Langa"},"2352":{"ln":"Ratnagiri, Ratnagiri","sn":"Ratnagiri"},"2353":{"ln":"Rajapur, Ratnagiri","sn":"Rajapur"},"2354":{"ln":"Sanganeshwar (Deorukh), Ratnagiri","sn":"Sanganeshwar"},"2355":{"ln":"Chiplun, Ratnagiri","sn":"Chiplun"},"2356":{"ln":"Khed, Ratnagiri","sn":"Khed"},"2357":{"ln":"Malgund, Ratnagiri","sn":"Malgund"},"2358":{"ln":"Dapoli, Ratnagiri","sn":"Dapoli"},"2359":{"ln":"Guhagar, Ratnagiri","sn":"Guhagar"},"2362":{"ln":"Kudal, Kudal","sn":"Kudal"},"2363":{"ln":"Sawantwadi, Kudal","sn":"Sawantwadi"},"2364":{"ln":"Deogad, Kudal","sn":"Deogad"},"2365":{"ln":"Malwan, Kudal","sn":"Malwan"},"2366":{"ln":"Vengurla, Kudal","sn":"Vengurla"},"2367":{"ln":"Kankavali, Kudal","sn":"Kankavali"},"2371":{"ln":"Wathar, Satara","sn":"Wathar"},"2372":{"ln":"Patan, Satara","sn":"Patan"},"2373":{"ln":"Mahaswad, Satara","sn":"Mahaswad"},"2375":{"ln":"Pusegaon, Satara","sn":"Pusegaon"},"2378":{"ln":"Medha, Satara","sn":"Medha"},"2381":{"ln":"Ahmedpur, Latur","sn":"Ahmedpur"},"2382":{"ln":"Latur, Latur","sn":"Latur"},"2383":{"ln":"Ausa, Latur","sn":"Ausa"},"2384":{"ln":"Nilanga, Latur","sn":"Nilanga"},"2385":{"ln":"Udgir, Latur","sn":"Udgir"},"2421":{"ln":"Jamkhed, Ahmednagar","sn":"Jamkhed"},"2422":{"ln":"Shri Rampur, Ahmednagar","sn":"Shri Rampur"},"2423":{"ln":"Koparagon, Ahmednagar","sn":"Koparagon"},"2424":{"ln":"Akole, Ahmednagar","sn":"Akole"},"2425":{"ln":"Sangamner, Ahmednagar","sn":"Sangamner"},"2426":{"ln":"Rahuri, Ahmednagar","sn":"Rahuri"},"2427":{"ln":"Newasa, Ahmednagar","sn":"Newasa"},"2428":{"ln":"Pathardi, Ahmednagar","sn":"Pathardi"},"2429":{"ln":"Shevgaon, Ahmednagar","sn":"Shevgaon"},"2430":{"ln":"Sillod, Aurangabad","sn":"Sillod"},"2431":{"ln":"Paithan, Aurangabad","sn":"Paithan"},"2432":{"ln":"Aurangabad, Aurangabad","sn":"Aurangabad"},"2433":{"ln":"Gangapur, Aurangabad","sn":"Gangapur"},"2435":{"ln":"Kannad, Aurangabad","sn":"Kannad"},"2436":{"ln":"Vijapur, Aurangabad","sn":"Vijapur"},"2437":{"ln":"Khultabad, Aurangabad","sn":"Khultabad"},"2438":{"ln":"Soyegaon, Aurangabad","sn":"Soyegaon"},"2439":{"ln":"Golegaon, Aurangabad","sn":"Golegaon"},"2441":{"ln":"Ashti, Bhir","sn":"Ashti"},"2442":{"ln":"Bhir, Bhir","sn":"Bhir"},"2443":{"ln":"Manjalegaon, Bhir","sn":"Manjalegaon"},"2444":{"ln":"Patoda, Bhir","sn":"Patoda"},"2445":{"ln":"Kaij, Bhir","sn":"Kaij"},"2446":{"ln":"Ambejogai, Bhir","sn":"Ambejogai"},"2447":{"ln":"Gevrai, Bhir","sn":"Gevrai"},"2451":{"ln":"Pathari, Parbhani","sn":"Pathari"},"2452":{"ln":"Parbhani, Parbhani","sn":"Parbhani"},"2453":{"ln":"Gangakhed, Parbhani","sn":"Gangakhed"},"2454":{"ln":"Basmatnagar, Parbhani","sn":"Basmatnagar"},"2455":{"ln":"Kalamnuri, Parbhani","sn":"Kalamnuri"},"2456":{"ln":"Hingoli, Parbhani","sn":"Hingoli"},"2457":{"ln":"Jintdor, Parbhani","sn":"Jintdor"},"2460":{"ln":"Delhi Tanda, Nanded","sn":"Delhi Tanda"},"2461":{"ln":"Mukhed, Nanded","sn":"Mukhed"},"2462":{"ln":"Nanded, Nanded","sn":"Nanded"},"2463":{"ln":"Degloor, Nanded","sn":"Degloor"},"2465":{"ln":"Billoli, Nanded","sn":"Billoli"},"2466":{"ln":"Kandhar, Nanded","sn":"Kandhar"},"2467":{"ln":"Bhokar, Nanded","sn":"Bhokar"},"2468":{"ln":"Hadgaon, Nanded","sn":"Hadgaon"},"2469":{"ln":"Kinwat, Nanded","sn":"Kinwat"},"2471":{"ln":"Tuljapur, Osmanabad","sn":"Tuljapur"},"2472":{"ln":"Osmanabad, Osmanabad","sn":"Osmanabad"},"2473":{"ln":"Kallam, Osmanabad","sn":"Kallam"},"2475":{"ln":"Omerga, Osmanabad","sn":"Omerga"},"2477":{"ln":"Paranda, Osmanabad","sn":"Paranda"},"2478":{"ln":"Bhoom, Osmanabad","sn":"Bhoom"},"2481":{"ln":"Ner, Jalna","sn":"Ner"},"2482":{"ln":"Jalna, Jalna","sn":"Jalna"},"2483":{"ln":"Ambad, Jalna","sn":"Ambad"},"2484":{"ln":"Partur, Jalna","sn":"Partur"},"2485":{"ln":"Bhokardan, Jalna","sn":"Bhokardan"},"2487":{"ln":"Shrigonda, Ahmednagar","sn":"Shrigonda"},"2488":{"ln":"Parner, Ahmednagar","sn":"Parner"},"2489":{"ln":"Karjat, Ahmednagar","sn":"Karjat"},"2520":{"ln":"Jawahar, Kalyan","sn":"Jawahar"},"2521":{"ln":"Talasari, Kalyan","sn":"Talasari"},"2522":{"ln":"Bhiwandi, Kalyan","sn":"Bhiwandi"},"2524":{"ln":"Murbad, Kalyan","sn":"Murbad"},"2525":{"ln":"Palghar, Kalyan","sn":"Palghar"},"2526":{"ln":"Wada, Kalyan","sn":"Wada"},"2527":{"ln":"Shahapur, Kalyan","sn":"Shahapur"},"2528":{"ln":"Dahanu, Kalyan","sn":"Dahanu"},"2529":{"ln":"Mokhada, Kalyan","sn":"Mokhada"},"2550":{"ln":"Niphad, Nasik","sn":"Niphad"},"2551":{"ln":"Sinnar, Nasik","sn":"Sinnar"},"2552":{"ln":"Nandgaon, Nasik","sn":"Nandgaon"},"2553":{"ln":"Igatpuri, Nasik","sn":"Igatpuri"},"2554":{"ln":"Malegaon, Nasik","sn":"Malegaon"},"2555":{"ln":"Satana, Nasik","sn":"Satana"},"2556":{"ln":"Chanwad, Nasik","sn":"Chanwad"},"2557":{"ln":"Dindori, Nasik","sn":"Dindori"},"2558":{"ln":"Peint, Nasik","sn":"Peint"},"2559":{"ln":"Yeola, Nasik","sn":"Yeola"},"2560":{"ln":"Kusumba, Dhulia","sn":"Kusumba"},"2561":{"ln":"Pimpalner, Dhulia","sn":"Pimpalner"},"2562":{"ln":"Dhule, Dhulia","sn":"Dhule"},"2563":{"ln":"Shirpur, Dhulia","sn":"Shirpur"},"2564":{"ln":"Nandurbar, Dhulia","sn":"Nandurbar"},"2565":{"ln":"Shahada, Dhulia","sn":"Shahada"},"2566":{"ln":"Sindkheda, Dhulia","sn":"Sindkheda"},"2567":{"ln":"Taloda, Dhulia","sn":"Taloda"},"2568":{"ln":"Sakri, Dhulia","sn":"Sakri"},"2569":{"ln":"Navapur, Dhulia","sn":"Navapur"},"2580":{"ln":"Jamner, Jalgaon","sn":"Jamner"},"2582":{"ln":"Bhusawal, Jalgaon","sn":"Bhusawal"},"2583":{"ln":"Edalabad, Jalgaon","sn":"Edalabad"},"2584":{"ln":"Raver, Jalgaon","sn":"Raver"},"2585":{"ln":"Yawal, Jalgaon","sn":"Yawal"},"2586":{"ln":"Chopda, Jalgaon","sn":"Chopda"},"2587":{"ln":"Amalner, Jalgaon","sn":"Amalner"},"2588":{"ln":"Erandul, Jalgaon","sn":"Erandul"},"2589":{"ln":"Chalisgaon, Jalgaon","sn":"Chalisgaon"},"2591":{"ln":"Manmad, Nasik","sn":"Manmad"},"2592":{"ln":"Kalwan, Nasik","sn":"Kalwan"},"2593":{"ln":"Surgena, Nasik","sn":"Surgena"},"2594":{"ln":"Trimbak, Nasik","sn":"Trimbak"},"2595":{"ln":"Dhadgaon, Dhulia","sn":"Dhadgaon"},"2596":{"ln":"Pachora, Jalgaon","sn":"Pachora"},"2597":{"ln":"Parola, Jalgaon","sn":"Parola"},"2598":{"ln":"Umrane, Nasik","sn":"Umrane"},"2599":{"ln":"Bhudargad (Gargoti), Kolhapur","sn":"Bhudargad"},"2621":{"ln":"Sayan, Surat","sn":"Sayan"},"2622":{"ln":"Bardoli, Surat","sn":"Bardoli"},"2623":{"ln":"Mandvi, Surat","sn":"Mandvi"},"2624":{"ln":"Fortsongadh, Surat","sn":"Fortsongadh"},"2625":{"ln":"Valod, Surat","sn":"Valod"},"2626":{"ln":"Vyara, Surat","sn":"Vyara"},"2628":{"ln":"Nizar, Surat","sn":"Nizar"},"2629":{"ln":"M. M. Mangrol, Surat","sn":"M. M. Mangrol"},"2630":{"ln":"Bansada, Valsad","sn":"Bansada"},"2631":{"ln":"Ahwa, Valsad","sn":"Ahwa"},"2632":{"ln":"Valsad, Valsad","sn":"Valsad"},"2633":{"ln":"Dharampur, Valsad","sn":"Dharampur"},"2634":{"ln":"Billimora, Valsad","sn":"Billimora"},"2637":{"ln":"Navsari, Valsad","sn":"Navsari"},"2640":{"ln":"Rajpipla, Bharuch","sn":"Rajpipla"},"2641":{"ln":"Amod, Bharuch","sn":"Amod"},"2642":{"ln":"Bharuch, Bharuch","sn":"Bharuch"},"2643":{"ln":"Valia, Bharuch","sn":"Valia"},"2644":{"ln":"Jambusar, Bharuch","sn":"Jambusar"},"2645":{"ln":"Jhagadia, Bharuch","sn":"Jhagadia"},"2646":{"ln":"Ankleshwar, Bharuch","sn":"Ankleshwar"},"2649":{"ln":"Dediapada, Bharuch","sn":"Dediapada"},"2661":{"ln":"Naswadi, Vadodara","sn":"Naswadi"},"2662":{"ln":"Padra, Vadodara","sn":"Padra"},"2663":{"ln":"Dabhoi, Vadodara","sn":"Dabhoi"},"2664":{"ln":"Pavijetpur, Vadodara","sn":"Pavijetpur"},"2665":{"ln":"Sankheda, Vadodara","sn":"Sankheda"},"2666":{"ln":"Miyagam, Vadodara","sn":"Miyagam"},"2667":{"ln":"Savli, Vadodara","sn":"Savli"},"2668":{"ln":"Waghodia, Vadodara","sn":"Waghodia"},"2669":{"ln":"Chhota Udaipur, Vadodara","sn":"Chhota Udaipur"},"2670":{"ln":"Shehra, Godhra","sn":"Shehra"},"2672":{"ln":"Godhra, Godhra","sn":"Godhra"},"2673":{"ln":"Dahod, Godhra","sn":"Dahod"},"2674":{"ln":"Lunavada, Godhra","sn":"Lunavada"},"2675":{"ln":"Santrampur, Godhra","sn":"Santrampur"},"2676":{"ln":"Halol, Godhra","sn":"Halol"},"2677":{"ln":"Limkheda, Godhra","sn":"Limkheda"},"2678":{"ln":"Devgadhbaria, Godhra","sn":"Devgadhbaria"},"2679":{"ln":"Jhalod, Godhra","sn":"Jhalod"},"2690":{"ln":"Balasinor, Nadiad","sn":"Balasinor"},"2691":{"ln":"Kapad Wanj, Nadiad","sn":"Kapad Wanj"},"2692":{"ln":"Anand, Nadiad","sn":"Anand"},"2694":{"ln":"Kheda, Nadiad","sn":"Kheda"},"2696":{"ln":"Borsad, Nadiad","sn":"Borsad"},"2697":{"ln":"Retlad, Nadiad","sn":"Retlad"},"2698":{"ln":"Khambat, Nadiad","sn":"Khambat"},"2699":{"ln":"Thasra, Nadiad","sn":"Thasra"},"2711":{"ln":"Barwala, Ahmedabad","sn":"Barwala"},"2712":{"ln":"Gandhi Nagar, Ahmedabad","sn":"Gandhi Nagar"},"2713":{"ln":"Dhandhuka, Ahmedabad","sn":"Dhandhuka"},"2714":{"ln":"Dholka, Ahmedabad","sn":"Dholka"},"2715":{"ln":"Viramgam, Ahmedabad","sn":"Viramgam"},"2716":{"ln":"Dehgam, Ahmedabad","sn":"Dehgam"},"2717":{"ln":"Sanand, Ahmedabad","sn":"Sanand"},"2718":{"ln":"Bareja, Ahmedabad","sn":"Bareja"},"2733":{"ln":"Harij, Mehsana","sn":"Harij"},"2734":{"ln":"Chanasma, Mehsana","sn":"Chanasma"},"2735":{"ln":"Deodar, Palanpur","sn":"Deodar"},"2737":{"ln":"Tharad, Palanpur","sn":"Tharad"},"2738":{"ln":"Santalpur, Palanpur","sn":"Santalpur"},"2739":{"ln":"Vadgam, Palanpur","sn":"Vadgam"},"2740":{"ln":"Vav, Palanpur","sn":"Vav"},"2742":{"ln":"Palanpur, Palanpur","sn":"Palanpur"},"2744":{"ln":"Deesa, Palanpur","sn":"Deesa"},"2746":{"ln":"Radhanpur, Palanpur","sn":"Radhanpur"},"2747":{"ln":"Thara, Palanpur","sn":"Thara"},"2748":{"ln":"Dhanera, Palanpur","sn":"Dhanera"},"2749":{"ln":"Danta, Palanpur","sn":"Danta"},"2751":{"ln":"Chotila, Surendranagar","sn":"Chotila"},"2752":{"ln":"Surendranagar, Surendranagar","sn":"Surendranagar"},"2753":{"ln":"Limbdi, Surendranagar","sn":"Limbdi"},"2754":{"ln":"Dhrangadhra, Surendranagar","sn":"Dhrangadhra"},"2755":{"ln":"Sayla, Surendranagar","sn":"Sayla"},"2756":{"ln":"Muli, Surendranagar","sn":"Muli"},"2757":{"ln":"Dasada, Surendranagar","sn":"Dasada"},"2758":{"ln":"Halvad, Surendranagar","sn":"Halvad"},"2759":{"ln":"Lakhtar, Surendranagar","sn":"Lakhtar"},"2761":{"ln":"Kheralu, Mehsana","sn":"Kheralu"},"2762":{"ln":"Mehsana, Mehsana","sn":"Mehsana"},"2763":{"ln":"Vijapur, Mehsana","sn":"Vijapur"},"2764":{"ln":"Kalol, Mehsana","sn":"Kalol"},"2765":{"ln":"Visnagar, Mehsana","sn":"Visnagar"},"2766":{"ln":"Patan, Mehsana","sn":"Patan"},"2767":{"ln":"Sidhpur, Mehsana","sn":"Sidhpur"},"2770":{"ln":"Prantij, Himatnagar","sn":"Prantij"},"2771":{"ln":"Bhiloda, Himatnagar","sn":"Bhiloda"},"2772":{"ln":"Himatnagar, Himatnagar","sn":"Himatnagar"},"2773":{"ln":"Malpur, Himatnagar","sn":"Malpur"},"2774":{"ln":"Modasa, Himatnagar","sn":"Modasa"},"2775":{"ln":"Khedbrahma, Himatnagar","sn":"Khedbrahma"},"2778":{"ln":"Idar, Himatnagar","sn":"Idar"},"2779":{"ln":"Bayad, Himatnagar","sn":"Bayad"},"2791":{"ln":"Babra, Amreli","sn":"Babra"},"2792":{"ln":"Amreli, Amreli","sn":"Amreli"},"2793":{"ln":"Damnagar, Amreli","sn":"Damnagar"},"2794":{"ln":"Rajula, Amreli","sn":"Rajula"},"2795":{"ln":"Kodinar, Junagarh","sn":"Kodinar"},"2796":{"ln":"Kunkawav, Amreli","sn":"Kunkawav"},"2797":{"ln":"Dhari, Amreli","sn":"Dhari"},"2801":{"ln":"Ranavav, Junagarh","sn":"Ranavav"},"2803":{"ln":"Khavda, Bhuj","sn":"Khavda"},"2804":{"ln":"Kutiyana, Junagarh","sn":"Kutiyana"},"2806":{"ln":"Gogodar, Bhuj","sn":"Gogodar"},"2808":{"ln":"Sumrasar, Bhuj","sn":"Sumrasar"},"2820":{"ln":"Paddhari, Rajkot","sn":"Paddhari"},"2821":{"ln":"Jasdan, Rajkot","sn":"Jasdan"},"2822":{"ln":"Morvi, Rajkot","sn":"Morvi"},"2823":{"ln":"Jetpur, Rajkot","sn":"Jetpur"},"2824":{"ln":"Dhoraji, Rajkot","sn":"Dhoraji"},"2825":{"ln":"Gondal, Rajkot","sn":"Gondal"},"2826":{"ln":"Upleta, Rajkot","sn":"Upleta"},"2827":{"ln":"Kotdasanghani, Rajkot","sn":"Kotdasanghani"},"2828":{"ln":"Wankaner, Rajkot","sn":"Wankaner"},"2829":{"ln":"Maliya Miyana, Rajkot","sn":"Maliya Miyana"},"2830":{"ln":"Rahpar, Bhuj","sn":"Rahpar"},"2831":{"ln":"Nalia, Bhuj","sn":"Nalia"},"2832":{"ln":"Bhuj, Bhuj","sn":"Bhuj"},"2833":{"ln":"Khambhalia, Jamnagar","sn":"Khambhalia"},"2834":{"ln":"Kutchmandvi, Bhuj","sn":"Kutchmandvi"},"2835":{"ln":"Nakhatrana, Bhuj","sn":"Nakhatrana"},"2836":{"ln":"Anjar (Gandhidham), Bhuj","sn":"Anjar"},"2837":{"ln":"Bhachav, Bhuj","sn":"Bhachav"},"2838":{"ln":"Mundra, Bhuj","sn":"Mundra"},"2839":{"ln":"Lakhpat, Bhuj","sn":"Lakhpat"},"2841":{"ln":"Vallabhipur, Bhavnagar","sn":"Vallabhipur"},"2842":{"ln":"Talaja, Bhavnagar","sn":"Talaja"},"2843":{"ln":"Gariadhar, Bhavnagar","sn":"Gariadhar"},"2844":{"ln":"Mahuva, Bhavnagar","sn":"Mahuva"},"2845":{"ln":"Savarkundla, Amreli","sn":"Savarkundla"},"2846":{"ln":"Sihor, Bhavnagar","sn":"Sihor"},"2847":{"ln":"Gadhada, Bhavnagar","sn":"Gadhada"},"2848":{"ln":"Palitana, Bhavnagar","sn":"Palitana"},"2849":{"ln":"Botad, Bhavnagar","sn":"Botad"},"2870":{"ln":"Malia-Hatina, Junagarh","sn":"Malia-Hatina"},"2871":{"ln":"Keshod, Junagarh","sn":"Keshod"},"2872":{"ln":"Vanthali, Junagarh","sn":"Vanthali"},"2873":{"ln":"Visavadar, Junagarh","sn":"Visavadar"},"2874":{"ln":"Manavadar, Junagarh","sn":"Manavadar"},"2875":{"ln":"Una-Diu, Junagarh","sn":"Una-Diu"},"2876":{"ln":"Veraval, Junagarh","sn":"Veraval"},"2877":{"ln":"Talala, Junagarh","sn":"Talala"},"2878":{"ln":"Mangrol, Junagarh","sn":"Mangrol"},"2891":{"ln":"Jamkalyanpur, Jamnagar","sn":"Jamkalyanpur"},"2892":{"ln":"Okha, Jamnagar","sn":"Okha"},"2893":{"ln":"Jodia, Jamnagar","sn":"Jodia"},"2894":{"ln":"Kalawad, Jamnagar","sn":"Kalawad"},"2895":{"ln":"Lalpur, Jamnagar","sn":"Lalpur"},"2896":{"ln":"Bhanvad, Jamnagar","sn":"Bhanvad"},"2897":{"ln":"Dhrol, Jamnagar","sn":"Dhrol"},"2898":{"ln":"Jamjodhpur, Jamnagar","sn":"Jamjodhpur"},"2900":{"ln":"Siwana (E) (Samdari), Barmer","sn":"Siwana (E)"},"2901":{"ln":"Siwana (W), Barmer","sn":"Siwana (W)"},"2902":{"ln":"Barmer (N) (Kanot), Barmer","sn":"Barmer (N)"},"2903":{"ln":"Chohtan (S) (Gangasar), Barmer","sn":"Chohtan (S)"},"2904":{"ln":"Deogarh, Udaipur","sn":"Deogarh"},"2905":{"ln":"Sarada (Chawand), Udaipur","sn":"Sarada"},"2906":{"ln":"Salumber, Udaipur","sn":"Salumber"},"2907":{"ln":"Kherwara, Udaipur","sn":"Kherwara"},"2908":{"ln":"Amet, Udaipur","sn":"Amet"},"2909":{"ln":"Bhim (S) (Dawer), Udaipur","sn":"Bhim (S)"},"2920":{"ln":"Bilara (N) (Bhopalgarh), Jodhpur","sn":"Bilara (N)"},"2921":{"ln":"Phalodi (N) (Bap), Jodhpur","sn":"Phalodi (N)"},"2922":{"ln":"Osian (N), Jodhpur","sn":"Osian (N)"},"2923":{"ln":"Phalodi (E) (Lohawat), Jodhpur","sn":"Phalodi (E)"},"2924":{"ln":"Phalodi (W) (Baroo), Jodhpur","sn":"Phalodi (W)"},"2925":{"ln":"Phalodi (S), Jodhpur","sn":"Phalodi (S)"},"2926":{"ln":"Osian (S) (Mathania), Jodhpur","sn":"Osian (S)"},"2927":{"ln":"Osian (E) (Dhanwara), Jodhpur","sn":"Osian (E)"},"2928":{"ln":"Shergarh (N) (Deechu), Jodhpur","sn":"Shergarh (N)"},"2929":{"ln":"Shergarh (N) (Balesar), Jodhpur","sn":"Shergarh (N)"},"2930":{"ln":"Bilara (S) (Piparcity), Jodhpur","sn":"Bilara (S)"},"2931":{"ln":"Jodhpur (W) (Jhanwar), Jodhpur","sn":"Jodhpur (W)"},"2932":{"ln":"Pali (S), Pali (Marwar)","sn":"Pali (S)"},"2933":{"ln":"Bali (N) (Sumerpur), Pali (Marwar)","sn":"Bali (N)"},"2934":{"ln":"Desuri (Rani), Pali (Marwar)","sn":"Desuri"},"2935":{"ln":"Marwar-JN, Pali (Marwar)","sn":"Marwar-JN"},"2936":{"ln":"Pali (N) (Rohat), Pali (Marwar)","sn":"Pali (N)"},"2937":{"ln":"Raipur, Pali (Marwar)","sn":"Raipur"},"2938":{"ln":"Bali (S), Pali (Marwar)","sn":"Bali (S)"},"2939":{"ln":"Jaitaran, Pali (Marwar)","sn":"Jaitaran"},"2950":{"ln":"Dhariawad, Udaipur","sn":"Dhariawad"},"2951":{"ln":"Bhim (N), Udaipur","sn":"Bhim (N)"},"2952":{"ln":"Rajsamand (Kankorli), Udaipur","sn":"Rajsamand"},"2953":{"ln":"Nathdwara, Udaipur","sn":"Nathdwara"},"2954":{"ln":"Kumbalgarh (Charbhujaji), Udaipur","sn":"Kumbalgarh"},"2955":{"ln":"Malvi (Fatehnagar), Udaipur","sn":"Malvi"},"2956":{"ln":"Gogunda, Udaipur","sn":"Gogunda"},"2957":{"ln":"Vallabhnagar, Udaipur","sn":"Vallabhnagar"},"2958":{"ln":"Kotra, Udaipur","sn":"Kotra"},"2959":{"ln":"Jhadol, Udaipur","sn":"Jhadol"},"2960":{"ln":"Sojat (Sojat-City), Pali (Marwar)","sn":"Sojat"},"2961":{"ln":"Ghatol, Banswara","sn":"Ghatol"},"2962":{"ln":"Banswara, Banswara","sn":"Banswara"},"2963":{"ln":"Gerhi (Partapur), Banswara","sn":"Gerhi"},"2964":{"ln":"Dungarpur, Banswara","sn":"Dungarpur"},"2965":{"ln":"Kushalgarh, Banswara","sn":"Kushalgarh"},"2966":{"ln":"Sagwara, Banswara","sn":"Sagwara"},"2967":{"ln":"Aspur, Banswara","sn":"Aspur"},"2968":{"ln":"Bagidora, Banswara","sn":"Bagidora"},"2969":{"ln":"Bhinmal (N), Sirohi (Abu-Road)","sn":"Bhinmal (N)"},"2970":{"ln":"Sanchore (W) (Hadecha), Sirohi (Abu-Road)","sn":"Sanchore (W)"},"2971":{"ln":"Pindwara, Sirohi (Abu-Road)","sn":"Pindwara"},"2972":{"ln":"Sirohi, Sirohi (Abu-Road)","sn":"Sirohi"},"2973":{"ln":"Jalore, Sirohi (Abu-Road)","sn":"Jalore"},"2974":{"ln":"Abu Road, Sirohi (Abu-Road)","sn":"Abu Road"},"2975":{"ln":"Reodar, Sirohi (Abu-Road)","sn":"Reodar"},"2976":{"ln":"Sheoganj (Posaliyan), Sirohi (Abu-Road)","sn":"Sheoganj"},"2977":{"ln":"Jalore (W) (Sayla), Sirohi (Abu-Road)","sn":"Jalore (W)"},"2978":{"ln":"Ahore, Sirohi (Abu-Road)","sn":"Ahore"},"2979":{"ln":"Sanchore (E), Sirohi (Abu-Road)","sn":"Sanchore (E)"},"2980":{"ln":"Pachpadra (E) (Korna), Barmer","sn":"Pachpadra (E)"},"2981":{"ln":"Sheo (W) (Harsani), Barmer","sn":"Sheo (W)"},"2982":{"ln":"Barmer (C), Barmer","sn":"Barmer (C)"},"2983":{"ln":"Barmer (E) (Gudda), Barmer","sn":"Barmer (E)"},"2984":{"ln":"Barmer (S) Sindari, Barmer","sn":"Barmer (S)"},"2985":{"ln":"Barmer (W) (Ramsar), Barmer","sn":"Barmer (W)"},"2986":{"ln":"Barmer (SW) (Dhorimanna), Barmer","sn":"Barmer (SW)"},"2987":{"ln":"Sheo (E), Barmer","sn":"Sheo (E)"},"2988":{"ln":"Pachpadra (W) (Balotra), Barmer","sn":"Pachpadra (W)"},"2989":{"ln":"Chohtan (N), Barmer","sn":"Chohtan (N)"},"2990":{"ln":"Bhinmal (S) (Jasawantpura), Sirohi (Abu-Road)","sn":"Bhinmal (S)"},"2991":{"ln":"Jaisalmer-1 (Ramgarh), Jaisalmer","sn":"Jaisalmer"},"2992":{"ln":"Jaisalmer-11 (Jaisalmer), Jaisalmer","sn":"Jaisalmer"},"2993":{"ln":"Jaisalmer-12 (Devikot), Jaisalmer","sn":"Jaisalmer"},"2994":{"ln":"Pokran-4 (Pokran), Jaisalmer","sn":"Pokran"},"2995":{"ln":"Pokran-1 (Nachna), Jaisalmer","sn":"Pokran"},"2996":{"ln":"Pokran-3 (Loharki), Jaisalmer","sn":"Pokran"},"2997":{"ln":"Jaisalmer-7 (Mohargarh), Jaisalmer","sn":"Jaisalmer"},"2998":{"ln":"Jaisalmer-5 (Khuiyals), Jaisalmer","sn":"Jaisalmer"},"2999":{"ln":"Jaisalmer-3 (Nehdai), Jaisalmer","sn":"Jaisalmer"},"3010":{"ln":"Jaisalmer-4 (Shahgarh), Jaisalmer","sn":"Jaisalmer"},"3011":{"ln":"Jaisalmer-6 (Pasewar), Jaisalmer","sn":"Jaisalmer"},"3012":{"ln":"Jaisalmer-8 (Mehsana), Jaisalmer","sn":"Jaisalmer"},"3013":{"ln":"Jaisalmer-9 (Dhanaua), Jaisalmer","sn":"Jaisalmer"},"3014":{"ln":"Jaisalmer-10 (Khuri), Jaisalmer","sn":"Jaisalmer"},"3015":{"ln":"Jaisalmer-13 (Myajlar), Jaisalmer","sn":"Jaisalmer"},"3016":{"ln":"Jaisalmer-14 (Jheenjaniyali), Jaisalmer","sn":"Jaisalmer"},"3017":{"ln":"Pokran-2 (Madasar), Jaisalmer","sn":"Pokran"},"3018":{"ln":"Jaisalmer-2 (Sadhna), Jaisalmer","sn":"Jaisalmer"},"3019":{"ln":"Pokran-5 (Phalsoond), Jaisalmer","sn":"Pokran"},"3174":{"ln":"Diamond Harbour, Kolkata","sn":"Diamond Harbour"},"3192":{"ln":"Andaman Islands, Andaman & Nicobar Islands","sn":"Andaman Islands"},"3193":{"ln":"Nicobar Islands, Andaman & Nicobar Islands","sn":"Nicobar Islands"},"3210":{"ln":"Kakdwip, Kolkata","sn":"Kakdwip"},"3211":{"ln":"Arambag, Kolkata","sn":"Arambag"},"3212":{"ln":"Champadanga, Kolkata","sn":"Champadanga"},"3213":{"ln":"Dhaniakhali, Kolkata","sn":"Dhaniakhali"},"3214":{"ln":"Jagatballavpur, Kolkata","sn":"Jagatballavpur"},"3215":{"ln":"Bongoan, Kolkata","sn":"Bongoan"},"3216":{"ln":"Habra, Kolkata","sn":"Habra"},"3217":{"ln":"Basirhat, Kolkata","sn":"Basirhat"},"3218":{"ln":"Canning, Kolkata","sn":"Canning"},"3220":{"ln":"Contai, Midnapur (Kharagpur)","sn":"Contai"},"3221":{"ln":"Jhargram, Midnapur (Kharagpur)","sn":"Jhargram"},"3222":{"ln":"Kharagpur, Midnapur (Kharagpur)","sn":"Kharagpur"},"3223":{"ln":"Nayagarh (Kultikri), Midnapur (Kharagpur)","sn":"Nayagarh"},"3224":{"ln":"Haldia, Midnapur (Kharagpur)","sn":"Haldia"},"3225":{"ln":"Ghatal, Midnapur (Kharagpur)","sn":"Ghatal"},"3227":{"ln":"Amlagora, Midnapur (Kharagpur)","sn":"Amlagora"},"3228":{"ln":"Tamluk, Midnapur (Kharagpur)","sn":"Tamluk"},"3229":{"ln":"Dantan, Midnapur (Kharagpur)","sn":"Dantan"},"3241":{"ln":"Gangajalghati, Bankura","sn":"Gangajalghati"},"3242":{"ln":"Bankura, Bankura","sn":"Bankura"},"3243":{"ln":"Khatra, Bankura","sn":"Khatra"},"3244":{"ln":"Bishnupur, Bankura","sn":"Bishnupur"},"3251":{"ln":"Adra, Purulia","sn":"Adra"},"3252":{"ln":"Purulia, Purulia","sn":"Purulia"},"3253":{"ln":"Manbazar, Purulia","sn":"Manbazar"},"3254":{"ln":"Jhalda, Purulia","sn":"Jhalda"},"3451":{"ln":"Seharabazar, Asansol","sn":"Seharabazar"},"3452":{"ln":"Guskara, Asansol","sn":"Guskara"},"3453":{"ln":"Katwa, Asansol","sn":"Katwa"},"3454":{"ln":"Kalna, Asansol","sn":"Kalna"},"3461":{"ln":"Rampur Hat, Suri","sn":"Rampur Hat"},"3462":{"ln":"Suri, Suri","sn":"Suri"},"3463":{"ln":"Bolpur, Suri","sn":"Bolpur"},"3465":{"ln":"Nalhati, Suri","sn":"Nalhati"},"3471":{"ln":"Karimpur, Krishnanagar","sn":"Karimpur"},"3472":{"ln":"Krishna Nagar, Krishnanagar","sn":"Krishna Nagar"},"3473":{"ln":"Ranaghat, Krishnanagar","sn":"Ranaghat"},"3474":{"ln":"Bethuadahari, Krishnanagar","sn":"Bethuadahari"},"3481":{"ln":"Islampur (M), Berhampur","sn":"Islampur (M)"},"3482":{"ln":"Berhampur, Berhampur","sn":"Berhampur"},"3483":{"ln":"Murshidabad (Jiaganj), Berhampur","sn":"Murshidabad"},"3484":{"ln":"Kandi, Berhampur","sn":"Kandi"},"3485":{"ln":"Dhuliyan, Berhampur","sn":"Dhuliyan"},"3511":{"ln":"Bubulchandi, Malda","sn":"Bubulchandi"},"3512":{"ln":"Malda, Malda","sn":"Malda"},"3513":{"ln":"Harishchandrapur, Malda","sn":"Harishchandrapur"},"3521":{"ln":"Gangarampur, Balurghat (Raiganj)","sn":"Gangarampur"},"3522":{"ln":"Balurghat, Balurghat (Raiganj)","sn":"Balurghat"},"3523":{"ln":"Raiganj, Balurghat (Raiganj)","sn":"Raiganj"},"3524":{"ln":"Harirampur, Balurghat (Raiganj)","sn":"Harirampur"},"3525":{"ln":"Dalkhola, Balurghat (Raiganj)","sn":"Dalkhola"},"3526":{"ln":"Islampur (Nd), Balurghat (Raiganj)","sn":"Islampur"},"3552":{"ln":"Kalimpong, Darjeeling (Siliguri)","sn":"Kalimpong"},"3561":{"ln":"Jalpaiguri, Jalpaiguri","sn":"Jalpaiguri"},"3562":{"ln":"Mal Bazar, Jalpaiguri","sn":"Mal Bazar"},"3563":{"ln":"Birpara, Jalpaiguri","sn":"Birpara"},"3564":{"ln":"Alipurduar, Jalpaiguri","sn":"Alipurduar"},"3565":{"ln":"Nagarakata, Jalpaiguri","sn":"Nagarakata"},"3566":{"ln":"Kalchini, Jalpaiguri","sn":"Kalchini"},"3581":{"ln":"Dinhata, Coochbehar","sn":"Dinhata"},"3582":{"ln":"Coochbehar, Coochbehar","sn":"Coochbehar"},"3583":{"ln":"Mathabhanga, Coochbehar","sn":"Mathabhanga"},"3584":{"ln":"Mekhliganj, Coochbehar","sn":"Mekhliganj"},"3592":{"ln":"Gangtok, Gangtok","sn":"Gangtok"},"3595":{"ln":"Gauzing (Nayabazar), Gangtok","sn":"Gauzing"},"3621":{"ln":"Boko, Guwahati","sn":"Boko"},"3623":{"ln":"Barama, Guwahati","sn":"Barama"},"3624":{"ln":"Nalbari, Guwahati","sn":"Nalbari"},"3637":{"ln":"Cherrapunjee, Meghalaya (Shillong)","sn":"Cherrapunjee"},"3638":{"ln":"Nongpoh, Meghalaya (Shillong)","sn":"Nongpoh"},"3639":{"ln":"Baghmara, Meghalaya (Shillong)","sn":"Baghmara"},"3650":{"ln":"Dadengiri (Phulbari), Meghalaya (Shillong)","sn":"Dadengiri"},"3651":{"ln":"Tura, Meghalaya (Shillong)","sn":"Tura"},"3652":{"ln":"Jowai, Meghalaya (Shillong)","sn":"Jowai"},"3653":{"ln":"Amlaren (Dawki), Meghalaya (Shillong)","sn":"Amlaren"},"3654":{"ln":"Nongstoin, Meghalaya (Shillong)","sn":"Nongstoin"},"3655":{"ln":"Khliehriat, Meghalaya (Shillong)","sn":"Khliehriat"},"3656":{"ln":"Mawkyrwat, Meghalaya (Shillong)","sn":"Mawkyrwat"},"3657":{"ln":"Mairang, Meghalaya (Shillong)","sn":"Mairang"},"3658":{"ln":"Williamnagar, Meghalaya (Shillong)","sn":"Williamnagar"},"3659":{"ln":"Resubelpara (Mendipathar), Meghalaya (Shillong)","sn":"Resubelpara"},"3661":{"ln":"Kokrajhar, Bongaigaon (Kokrajhar)","sn":"Kokrajhar"},"3662":{"ln":"Dhubri, Bongaigaon (Kokrajhar)","sn":"Dhubri"},"3663":{"ln":"Goalpara, Bongaigaon (Kokrajhar)","sn":"Goalpara"},"3664":{"ln":"Hajo, Guwahati","sn":"Hajo"},"3665":{"ln":"Tarabarihat, Guwahati","sn":"Tarabarihat"},"3666":{"ln":"Barpeta Road, Guwahati","sn":"Barpeta Road"},"3667":{"ln":"Bilasipara, Bongaigaon (Kokrajhar)","sn":"Bilasipara"},"3668":{"ln":"Bijni, Bongaigaon (Kokrajhar)","sn":"Bijni"},"3669":{"ln":"Abhayapuri, Bongaigaon (Kokrajhar)","sn":"Abhayapuri"},"3670":{"ln":"Maibong, Nagaon","sn":"Maibong"},"3671":{"ln":"Diphu, Nagaon","sn":"Diphu"},"3672":{"ln":"Nagaon, Nagaon","sn":"Nagaon"},"3673":{"ln":"Haflong, Nagaon","sn":"Haflong"},"3674":{"ln":"Hojai, Nagaon","sn":"Hojai"},"3675":{"ln":"Bokajan, Nagaon","sn":"Bokajan"},"3676":{"ln":"Howraghat, Nagaon","sn":"Howraghat"},"3677":{"ln":"Baithalangshu, Nagaon","sn":"Baithalangshu"},"3678":{"ln":"Morigaon, Nagaon","sn":"Morigaon"},"3711":{"ln":"Udalguri, Tezpur","sn":"Udalguri"},"3712":{"ln":"Tezpur, Tezpur","sn":"Tezpur"},"3713":{"ln":"Mangaldoi, Tezpur","sn":"Mangaldoi"},"3714":{"ln":"Rangapara, Tezpur","sn":"Rangapara"},"3715":{"ln":"Gohpur, Tezpur","sn":"Gohpur"},"3751":{"ln":"Digboi, Tinsukia (Dibrugarh)","sn":"Digboi"},"3752":{"ln":"North Lakhimpur, Tinsukia (Dibrugarh)","sn":"North Lakhimpur"},"3753":{"ln":"Dhemaji, Tinsukia (Dibrugarh)","sn":"Dhemaji"},"3754":{"ln":"Moranhat, Tinsukia (Dibrugarh)","sn":"Moranhat"},"3756":{"ln":"Sadiya, Tinsukia (Dibrugarh)","sn":"Sadiya"},"3758":{"ln":"Dhakuakhana, Tinsukia (Dibrugarh)","sn":"Dhakuakhana"},"3759":{"ln":"Bihupuria, Tinsukia (Dibrugarh)","sn":"Bihupuria"},"3771":{"ln":"Mariani, Jorhat","sn":"Mariani"},"3772":{"ln":"Sibsagar, Jorhat","sn":"Sibsagar"},"3774":{"ln":"Golaghat, Jorhat","sn":"Golaghat"},"3775":{"ln":"Majuli, Jorhat","sn":"Majuli"},"3776":{"ln":"Bokakhat, Jorhat","sn":"Bokakhat"},"3777":{"ln":"Yangkiyang, Arunachal-Pradesh (Zero)","sn":"Yangkiyang"},"3778":{"ln":"Pakkekesang, Arunachal-Pradesh (Zero)","sn":"Pakkekesang"},"3779":{"ln":"Roing-III (Mariso), Arunachal-Pradesh (Zero)","sn":"Roing"},"3780":{"ln":"Dirang, Arunachal-Pradesh (Zero)","sn":"Dirang"},"3782":{"ln":"Kalaktung (Bomdila), Arunachal-Pradesh (Zero)","sn":"Kalaktung"},"3783":{"ln":"Along, Arunachal-Pradesh (Zero)","sn":"Along"},"3784":{"ln":"Nefra, Arunachal-Pradesh (Zero)","sn":"Nefra"},"3785":{"ln":"Bameng, Arunachal-Pradesh (Zero)","sn":"Bameng"},"3786":{"ln":"Khonsa, Arunachal-Pradesh (Zero)","sn":"Khonsa"},"3787":{"ln":"Seppa, Arunachal-Pradesh (Zero)","sn":"Seppa"},"3788":{"ln":"Kolaring, Arunachal-Pradesh (Zero)","sn":"Kolaring"},"3789":{"ln":"Huri, Arunachal-Pradesh (Zero)","sn":"Huri"},"3790":{"ln":"Tali, Arunachal-Pradesh (Zero)","sn":"Tali"},"3791":{"ln":"Taliha, Arunachal-Pradesh (Zero)","sn":"Taliha"},"3792":{"ln":"Daporizo, Arunachal-Pradesh (Zero)","sn":"Daporizo"},"3793":{"ln":"Mechuka, Arunachal-Pradesh (Zero","sn":"Mechuka"},"3794":{"ln":"Tawang, Arunachal-Pradesh (Zero)","sn":"Tawang"},"3795":{"ln":"Basar, Arunachal-Pradesh (Zero)","sn":"Basar"},"3797":{"ln":"Pangin, Arunachal-Pradesh (Zero)","sn":"Pangin"},"3798":{"ln":"Mariyang, Arunachal-Pradesh (Zero)","sn":"Mariyang"},"3799":{"ln":"Tuting, Arunachal-Pradesh (Zero)","sn":"Tuting"},"3800":{"ln":"Jairampur, Arunachal-Pradesh (Zero)","sn":"Jairampur"},"3801":{"ln":"Anini, Arunachal-Pradesh (Zero)","sn":"Anini"},"3802":{"ln":"Roing-II (Arda), Arunachal-Pradesh (Zero)","sn":"Roing"},"3803":{"ln":"Roing-I, Arunachal-Pradesh (Zero)","sn":"Roing"},"3804":{"ln":"Tezu, Arunachal-Pradesh (Zero)","sn":"Tezu"},"3805":{"ln":"Hayuliang, Arunachal-Pradesh (Zero)","sn":"Hayuliang"},"3806":{"ln":"Chowkhem, Arunachal-Pradesh (Zero)","sn":"Chowkhem"},"3807":{"ln":"Miao, Arunachal-Pradesh (Zero)","sn":"Miao"},"3808":{"ln":"Changlang, Arunachal-Pradesh (Zero)","sn":"Changlang"},"3809":{"ln":"Sagalee, Arunachal-Pradesh (Zero)","sn":"Sagalee"},"3821":{"ln":"R. K. Pur, Tripura (Agartala)","sn":"R. K. Pur"},"3822":{"ln":"Dharam Nagar, Tripura (Agartala)","sn":"Dharam Nagar"},"3823":{"ln":"Belonia, Tripura (Agartala)","sn":"Belonia"},"3824":{"ln":"Kailsahar, Tripura (Agartala)","sn":"Kailsahar"},"3825":{"ln":"Khowai, Tripura (Agartala)","sn":"Khowai"},"3826":{"ln":"Ambasa, Tripura (Agartala)","sn":"Ambasa"},"3830":{"ln":"Champai-II (Chiapui), Mizoram (Aizwal)","sn":"Champai"},"3831":{"ln":"Champa-I, Mizoram (Aizwal)","sn":"Champa"},"3834":{"ln":"Demagiri, Mizoram (Aizwal)","sn":"Demagiri"},"3835":{"ln":"Saiha-I, Mizoram (Aizwal)","sn":"Saiha"},"3836":{"ln":"Saiha-II (Tuipang), Mizoram (Aizwal)","sn":"Saiha"},"3837":{"ln":"Kolasib, Mizoram (Aizwal)","sn":"Kolasib"},"3838":{"ln":"Aizwal-II (Serchip), Mizoram (Aizwal)","sn":"Aizwal"},"3839":{"ln":"Jalukie, Nagaland (Kohima)","sn":"Jalukie"},"3841":{"ln":"Vdarbondh, Silchar","sn":"Vdarbondh"},"3842":{"ln":"Silchar, Silchar","sn":"Silchar"},"3843":{"ln":"Karimganj, Silchar","sn":"Karimganj"},"3844":{"ln":"Hailakandi, Silchar","sn":"Hailakandi"},"3845":{"ln":"Ukhrul Central, Manipur (Imphal)","sn":"Ukhrul Central"},"3848":{"ln":"Thonbal, Manipur (Imphal)","sn":"Thonbal"},"3860":{"ln":"Wokha, Nagaland (Kohima)","sn":"Wokha"},"3861":{"ln":"Tuengsang, Nagaland (Kohima)","sn":"Tuengsang"},"3862":{"ln":"Dimapur, Nagaland (Kohima)","sn":"Dimapur"},"3863":{"ln":"Kiphire, Nagaland (Kohima)","sn":"Kiphire"},"3865":{"ln":"Phek, Nagaland (Kohima)","sn":"Phek"},"3867":{"ln":"Zuenheboto, Nagaland (Kohima)","sn":"Zuenheboto"},"3869":{"ln":"Mon, Nagaland (Kohima)","sn":"Mon"},"3870":{"ln":"Ukhrursouth (Kassemkhulen), Manipur (Imphal)","sn":"Ukhrursouth"},"3871":{"ln":"Mao (Korang), Manipur (Imphal)","sn":"Mao"},"3872":{"ln":"Chandel, Manipur (Imphal)","sn":"Chandel"},"3873":{"ln":"Thinghat, Manipur (Imphal)","sn":"Thinghat"},"3874":{"ln":"Churchandpur, Manipur (Imphal)","sn":"Churchandpur"},"3876":{"ln":"Jiribam, Manipur (Imphal)","sn":"Jiribam"},"3877":{"ln":"Tamenglong, Manipur (Imphal)","sn":"Tamenglong"},"3878":{"ln":"Chakpikarong, Manipur (Imphal)","sn":"Chakpikarong"},"3879":{"ln":"Bishenpur, Manipur (Imphal)","sn":"Bishenpur"},"3880":{"ln":"Sadarhills (Kangpokai), Manipur (Imphal)","sn":"Sadarhills"},"4111":{"ln":"Sriperumpudur, Chengalpattu (Kancheepuram)","sn":"Sriperumpudur"},"4112":{"ln":"Kancheepuram, Chengalpattu (Kancheepuram)","sn":"Kancheepuram"},"4114":{"ln":"Chengalpattu, Chengalpattu (Kancheepuram)","sn":"Chengalpattu"},"4115":{"ln":"Madurantagam, Chengalpattu (Kancheepuram)","sn":"Madurantagam"},"4116":{"ln":"Tiruvellore, Chengalpattu (Kancheepuram)","sn":"Tiruvellore"},"4118":{"ln":"Tiruttani, Chengalpattu (Kancheepuram)","sn":"Tiruttani"},"4119":{"ln":"Ponneri, Chengalpattu (Kancheepuram)","sn":"Ponneri"},"4142":{"ln":"Cuddalore, Cuddalore","sn":"Cuddalore"},"4143":{"ln":"Virudhachalam, Cuddalore","sn":"Virudhachalam"},"4144":{"ln":"Chidambaram, Cuddalore","sn":"Chidambaram"},"4145":{"ln":"Gingee, Cuddalore","sn":"Gingee"},"4146":{"ln":"Villupuram, Cuddalore","sn":"Villupuram"},"4147":{"ln":"Tindivanam, Cuddalore","sn":"Tindivanam"},"4149":{"ln":"Ulundurpet, Cuddalore","sn":"Ulundurpet"},"4151":{"ln":"Kallkurichi, Cuddalore","sn":"Kallkurichi"},"4153":{"ln":"Arakandanallur, Cuddalore","sn":"Arakandanallur"},"4171":{"ln":"Gudiyatham, Vellore","sn":"Gudiyatham"},"4172":{"ln":"Ranipet, Vellore","sn":"Ranipet"},"4173":{"ln":"Arni, Vellore","sn":"Arni"},"4174":{"ln":"Vaniyambadi, Vellore","sn":"Vaniyambadi"},"4175":{"ln":"Tiruvannamalai, Vellore","sn":"Tiruvannamalai"},"4177":{"ln":"Arkonam, Vellore","sn":"Arkonam"},"4179":{"ln":"Tirupattur, Vellore","sn":"Tirupattur"},"4181":{"ln":"Polur, Vellore","sn":"Polur"},"4182":{"ln":"Tiruvettipuram, Vellore","sn":"Tiruvettipuram"},"4183":{"ln":"Wandiwash, Vellore","sn":"Wandiwash"},"4188":{"ln":"Chengam, Vellore","sn":"Chengam"},"4202":{"ln":"Mulanur, Erode","sn":"Mulanur"},"4204":{"ln":"Kodumudi, Erode","sn":"Kodumudi"},"4252":{"ln":"Udumalpet, Coimbatore","sn":"Udumalpet"},"4253":{"ln":"Anamalai, Coimbatore","sn":"Anamalai"},"4254":{"ln":"Mettupalayam, Coimbatore","sn":"Mettupalayam"},"4255":{"ln":"Palladum, Coimbatore","sn":"Palladum"},"4256":{"ln":"Bhavani, Erode","sn":"Bhavani"},"4257":{"ln":"Kangayam, Erode","sn":"Kangayam"},"4258":{"ln":"Dharampuram, Erode","sn":"Dharampuram"},"4259":{"ln":"Pollachi, Coimbatore","sn":"Pollachi"},"4262":{"ln":"Gudalur, Ooty","sn":"Gudalur"},"4266":{"ln":"Kotagiri, Ooty","sn":"Kotagiri"},"4268":{"ln":"Velur, Salem","sn":"Velur"},"4281":{"ln":"Yercaud, Salem","sn":"Yercaud"},"4282":{"ln":"Attur, Salem","sn":"Attur"},"4283":{"ln":"Sankagiri, Salem","sn":"Sankagiri"},"4285":{"ln":"Gobichettipalayam, Erode","sn":"Gobichettipalayam"},"4286":{"ln":"Namakkal, Salem","sn":"Namakkal"},"4287":{"ln":"Rasipuram, Salem","sn":"Rasipuram"},"4288":{"ln":"Tiruchengode, Salem","sn":"Tiruchengode"},"4290":{"ln":"Omalur, Salem","sn":"Omalur"},"4292":{"ln":"Valapady, Salem","sn":"Valapady"},"4294":{"ln":"Perundurai, Erode","sn":"Perundurai"},"4295":{"ln":"Sathiyamangalam, Erode","sn":"Sathiyamangalam"},"4296":{"ln":"Avanashi, Coimbatore","sn":"Avanashi"},"4298":{"ln":"Metturdam, Salem","sn":"Metturdam"},"4320":{"ln":"Aravakurichi, Trichy","sn":"Aravakurichi"},"4322":{"ln":"Pudukkottai, Trichy","sn":"Pudukkottai"},"4323":{"ln":"Kulithalai, Trichy","sn":"Kulithalai"},"4324":{"ln":"Karur, Trichy","sn":"Karur"},"4326":{"ln":"Musiri, Trichy","sn":"Musiri"},"4327":{"ln":"Thuraiyure, Trichy","sn":"Thuraiyure"},"4328":{"ln":"Perambalur, Trichy","sn":"Perambalur"},"4329":{"ln":"Ariyalur, Trichy","sn":"Ariyalur"},"4331":{"ln":"Jayamkondan, Trichy","sn":"Jayamkondan"},"4332":{"ln":"Manaparai, Trichy","sn":"Manaparai"},"4333":{"ln":"Ponnamaravathi, Trichy","sn":"Ponnamaravathi"},"4339":{"ln":"Keeranur, Trichy","sn":"Keeranur"},"4341":{"ln":"Uthangarai, Dharmapuri","sn":"Uthangarai"},"4342":{"ln":"Dharmapuri, Dharmapuri","sn":"Dharmapuri"},"4343":{"ln":"Krishnagiri, Dharmapuri","sn":"Krishnagiri"},"4344":{"ln":"Hosur, Dharmapuri","sn":"Hosur"},"4346":{"ln":"Harur, Dharmapuri","sn":"Harur"},"4347":{"ln":"Denkanikoitah, Dharmapuri","sn":"Denkanikoitah"},"4348":{"ln":"Palacode, Dharmapuri","sn":"Palacode"},"4362":{"ln":"Thanjavur, Thanjavur","sn":"Thanjavur"},"4364":{"ln":"Mayiladuthurai, Thanjavur","sn":"Mayiladuthurai"},"4365":{"ln":"Nagapattinam, Thanjavur","sn":"Nagapattinam"},"4366":{"ln":"Tiruvarur, Thanjavur","sn":"Tiruvarur"},"4367":{"ln":"Mannargudi, Thanjavur","sn":"Mannargudi"},"4368":{"ln":"Karaikal, Thanjavur","sn":"Karaikal"},"4369":{"ln":"Thiruraipoondi, Thanjavur","sn":"Thiruraipoondi"},"4371":{"ln":"Arantangi, Trichy","sn":"Arantangi"},"4372":{"ln":"Orathanad, Thanjavur","sn":"Orathanad"},"4373":{"ln":"Pattukottai, Thanjavur","sn":"Pattukottai"},"4374":{"ln":"Papanasam, Thanjavur","sn":"Papanasam"},"4542":{"ln":"Kodaikanal, Madurai","sn":"Kodaikanal"},"4543":{"ln":"Batlagundu, Madurai","sn":"Batlagundu"},"4544":{"ln":"Natham, Madurai","sn":"Natham"},"4545":{"ln":"Palani, Madurai","sn":"Palani"},"4546":{"ln":"Theni, Madurai","sn":"Theni"},"4549":{"ln":"Thirumanglam, Madurai","sn":"Thirumanglam"},"4551":{"ln":"Vedasandur, Madurai","sn":"Vedasandur"},"4552":{"ln":"Usiliampatti, Madurai","sn":"Usiliampatti"},"4553":{"ln":"Oddanchatram, Madurai","sn":"Oddanchatram"},"4554":{"ln":"Cumbum, Madurai","sn":"Cumbum"},"4561":{"ln":"Devakottai, Karaikudi","sn":"Devakottai"},"4562":{"ln":"Virudhunagar, Virudhunagar","sn":"Virudhunagar"},"4563":{"ln":"Rajapalayam, Virudhunagar","sn":"Rajapalayam"},"4564":{"ln":"Paramakudi, Karaikudi","sn":"Paramakudi"},"4565":{"ln":"Karaikudi, Karaikudi","sn":"Karaikudi"},"4566":{"ln":"Aruppukottai, Virudhunagar","sn":"Aruppukottai"},"4567":{"ln":"Ramanathpuram, Karaikudi","sn":"Ramanathpuram"},"4573":{"ln":"Rameshwaram, Karaikudi","sn":"Rameshwaram"},"4574":{"ln":"Manamadurai, Karaikudi","sn":"Manamadurai"},"4575":{"ln":"Sivaganga, Karaikudi","sn":"Sivaganga"},"4576":{"ln":"Mudukulathur, Karaikudi","sn":"Mudukulathur"},"4577":{"ln":"Tirupathur, Karaikudi","sn":"Tirupathur"},"4630":{"ln":"Srivaikundam, Tuticorin","sn":"Srivaikundam"},"4632":{"ln":"Kovilpatti, Tuticorin","sn":"Kovilpatti"},"4633":{"ln":"Tenkasi, Tirunelvelli","sn":"Tenkasi"},"4634":{"ln":"Ambasamudram, Tirunelvelli","sn":"Ambasamudram"},"4635":{"ln":"Nanguneri, Tirunelvelli","sn":"Nanguneri"},"4636":{"ln":"Sankaran Koil, Tirunelvelli","sn":"Sankaran Koil"},"4637":{"ln":"Valliyoor, Tirunelvelli","sn":"Valliyoor"},"4638":{"ln":"Vilathikulam, Tuticorin","sn":"Vilathikulam"},"4639":{"ln":"Tiruchendur, Tuticorin","sn":"Tiruchendur"},"4651":{"ln":"Kuzhithurai, Nagarcoil","sn":"Kuzhithurai"},"4652":{"ln":"Nagercoil, Nagarcoil","sn":"Nagercoil"},"4728":{"ln":"Nedumandad, Thiruvananthapuram","sn":"Nedumandad"},"4733":{"ln":"Pathanamthitta, Tiruvalla","sn":"Pathanamthitta"},"4734":{"ln":"Adoor, Tiruvalla","sn":"Adoor"},"4735":{"ln":"Ranni, Tiruvalla","sn":"Ranni"},"4822":{"ln":"Palai, Kottayam","sn":"Palai"},"4828":{"ln":"Kanjirapally, Kottayam","sn":"Kanjirapally"},"4829":{"ln":"Vaikom, Kottayam","sn":"Vaikom"},"4862":{"ln":"Thodupuzha, Ernakulam","sn":"Thodupuzha"},"4864":{"ln":"Adimaly, Ernakulam","sn":"Adimaly"},"4865":{"ln":"Munnar, Ernakulam","sn":"Munnar"},"4868":{"ln":"Nedumgandam, Ernakulam","sn":"Nedumgandam"},"4869":{"ln":"Peermedu, Ernakulam","sn":"Peermedu"},"4884":{"ln":"Vadakkanchery, Trichur","sn":"Vadakkanchery"},"4885":{"ln":"Kunnamkulam, Trichur","sn":"Kunnamkulam"},"4890":{"ln":"Bitra, Kavarathy","sn":"Bitra"},"4891":{"ln":"Amini, Kavarathy","sn":"Amini"},"4892":{"ln":"Minicoy, Kavarathy","sn":"Minicoy"},"4893":{"ln":"Androth, Kavarathy","sn":"Androth"},"4894":{"ln":"Agathy, Kavarathy","sn":"Agathy"},"4895":{"ln":"Kalpeni, Kavarathy","sn":"Kalpeni"},"4896":{"ln":"Kavarathy, Kavarathy","sn":"Kavarathy"},"4897":{"ln":"Kadamath, Kavarathy","sn":"Kadamath"},"4898":{"ln":"Kiltan, Kavarathy","sn":"Kiltan"},"4899":{"ln":"Chetlat, Kavarathy","sn":"Chetlat"},"4922":{"ln":"Alathur, Palghat","sn":"Alathur"},"4923":{"ln":"Koduvayur, Palghat","sn":"Koduvayur"},"4924":{"ln":"Mannarghat, Palghat","sn":"Mannarghat"},"4926":{"ln":"Shoranur, Palghat","sn":"Shoranur"},"4931":{"ln":"Nilambur, Calicut (Kozhikode)","sn":"Nilambur"},"4933":{"ln":"Perinthalmanna, Calicut (Kozhikode)","sn":"Perinthalmanna"},"4935":{"ln":"Mananthody, Calicut (Kozhikode)","sn":"Mananthody"},"4936":{"ln":"Kalpetta, Calicut (Kozhikode)","sn":"Kalpetta"},"4982":{"ln":"Taliparamba, Cannanore","sn":"Taliparamba"},"4985":{"ln":"Payyanur, Cannanore","sn":"Payyanur"},"4994":{"ln":"Kasargode, Cannanore","sn":"Kasargode"},"4997":{"ln":"Kanhangad, Cannanore","sn":"Kanhangad"},"4998":{"ln":"Uppala, Cannanore","sn":"Uppala"},"5111":{"ln":"Akbarpur, Kanpur","sn":"Akbarpur"},"5112":{"ln":"Bilhaur, Kanpur","sn":"Bilhaur"},"5113":{"ln":"Bhognipur (Pakhrayan), Kanpur","sn":"Bhognipur"},"5114":{"ln":"Derapur (Jhinjak), Kanpur","sn":"Derapur"},"5115":{"ln":"Ghatampur, Kanpur","sn":"Ghatampur"},"5142":{"ln":"Purwa (Bighapur), Unnao","sn":"Purwa"},"5143":{"ln":"Hasanganj, Unnao","sn":"Hasanganj"},"5144":{"ln":"Safipur, Unnao","sn":"Safipur"},"5162":{"ln":"Orai, Orai","sn":"Orai"},"5164":{"ln":"Kalpi, Orai","sn":"Kalpi"},"5165":{"ln":"Konch, Orai","sn":"Konch"},"5168":{"ln":"Jalaun, Orai","sn":"Jalaun"},"5170":{"ln":"Chirgaon (Moth), Jhansi","sn":"Chirgaon"},"5171":{"ln":"Garauth, Jhansi","sn":"Garauth"},"5172":{"ln":"Mehraun, Jhansi","sn":"Mehraun"},"5174":{"ln":"Jhansi, Jhansi","sn":"Jhansi"},"5175":{"ln":"Lalitpur-II (Talbehat), Jhansi","sn":"Lalitpur"},"5176":{"ln":"Lalitpur-I (Lalitpur), Jhansi","sn":"Lalitpur"},"5178":{"ln":"Mauranipur, Jhansi","sn":"Mauranipur"},"5180":{"ln":"Fateh-Pur-I (Fatehpur), Fatehpur","sn":"Fateh-Pur"},"5181":{"ln":"Bindki, Fatehpur","sn":"Bindki"},"5182":{"ln":"Khaga, Fatehpur","sn":"Khaga"},"5183":{"ln":"Fatehpur-II (Gazipur), Fatehpur","sn":"Fatehpur"},"5190":{"ln":"Baberu, Banda","sn":"Baberu"},"5191":{"ln":"Naraini (Attarra), Banda","sn":"Naraini"},"5192":{"ln":"Banda, Banda","sn":"Banda"},"5194":{"ln":"Karvi-II (Manikpur), Banda","sn":"Karvi"},"5195":{"ln":"Mau (Rajapur), Banda","sn":"Mau"},"5198":{"ln":"Karvi -I (Karvi), Banda","sn":"Karvi "},"5212":{"ln":"Malihabad, Lucknow","sn":"Malihabad"},"5240":{"ln":"Fatehpur, Barabanki","sn":"Fatehpur"},"5241":{"ln":"Ramsanehi Ghat, Barabanki","sn":"Ramsanehi Ghat"},"5244":{"ln":"Haidergarh, Barabanki","sn":"Haidergarh"},"5248":{"ln":"Barabanki, Barabanki","sn":"Barabanki"},"5250":{"ln":"Bahraich-II (Bhinga), Bahraich","sn":"Bahraich"},"5251":{"ln":"Kaisarganj-I (Kaiserganj), Bahraich","sn":"Kaisarganj"},"5252":{"ln":"Bahraich-I (Bahrailh), Bahraich","sn":"Bahraich"},"5253":{"ln":"Nanpara-I (Nanpara), Bahraich","sn":"Nanpara"},"5254":{"ln":"Nanparah-II (Mihinpurwa), Bahraich","sn":"Nanparah"},"5255":{"ln":"Kaisarganh-II (Mahasi), Bahraich","sn":"Kaisarganh"},"5260":{"ln":"Tarabganj-I (Terabganj), Gonda","sn":"Tarabganj"},"5261":{"ln":"Tarabganj-II (Colonelganj), Gonda","sn":"Tarabganj"},"5262":{"ln":"Gonda, Gonda","sn":"Gonda"},"5263":{"ln":"Balarampur-I (Balrampur), Gonda","sn":"Balarampur"},"5264":{"ln":"Balarampur-II (Tulsipur), Gonda","sn":"Balarampur"},"5265":{"ln":"Utraula, Gonda","sn":"Utraula"},"5270":{"ln":"Bikapur, Faizabad","sn":"Bikapur"},"5271":{"ln":"Akbarpur-I (Akbarpur), Faizabad","sn":"Akbarpur"},"5273":{"ln":"Tandai-I (Tanda), Faizabad","sn":"Tandai"},"5274":{"ln":"Tanda-II (Baskhari), Faizabad","sn":"Tanda"},"5275":{"ln":"Akbarpur-II (Jalalpur), Faizabad","sn":"Akbarpur"},"5278":{"ln":"Faizabad, Faizabad","sn":"Faizabad"},"5280":{"ln":"Rath, Hamirpur","sn":"Rath"},"5281":{"ln":"Mahoba, Hamirpur","sn":"Mahoba"},"5282":{"ln":"Hamirpur, Hamirpur","sn":"Hamirpur"},"5283":{"ln":"Charkhari, Hamirpur","sn":"Charkhari"},"5284":{"ln":"Maudaha, Hamirpur","sn":"Maudaha"},"5311":{"ln":"Salon -I (Salon), Raibareilly","sn":"Salon "},"5313":{"ln":"Salon-II (Jais), Raibareilly","sn":"Salon"},"5315":{"ln":"Dalmau-II (Lalganj), Raibareilly","sn":"Dalmau"},"5317":{"ln":"Dalmau-I (Dalmau), Raibareilly","sn":"Dalmau"},"5331":{"ln":"Bharwari, Allahabad","sn":"Bharwari"},"5332":{"ln":"Phoolpur, Allahabad","sn":"Phoolpur"},"5333":{"ln":"Karchhana (Shankergarh), Allahabad","sn":"Karchhana"},"5334":{"ln":"Meja (Sirsa), Allahabad","sn":"Meja"},"5335":{"ln":"Soraon, Allahabad","sn":"Soraon"},"5341":{"ln":"Kunda, Pratapgarh","sn":"Kunda"},"5342":{"ln":"Pratapgarh, Pratapgarh","sn":"Pratapgarh"},"5343":{"ln":"Patti, Pratapgarh","sn":"Patti"},"5361":{"ln":"Musafirkhana, Sultanpur","sn":"Musafirkhana"},"5362":{"ln":"Sultanpur, Sultanpur","sn":"Sultanpur"},"5364":{"ln":"Kadipur, Sultanpur","sn":"Kadipur"},"5368":{"ln":"Amethi, Sultanpur","sn":"Amethi"},"5412":{"ln":"Chandauli (Mugalsarai), Varansi","sn":"Chandauli"},"5413":{"ln":"Chakia, Varansi","sn":"Chakia"},"5414":{"ln":"Bhadohi, Varansi","sn":"Bhadohi"},"5440":{"ln":"Mirzapur-II (Hallia), Mirzapur","sn":"Mirzapur"},"5442":{"ln":"Mirzapur-I (Mirzapur), Mirzapur","sn":"Mirzapur"},"5443":{"ln":"Chunur, Mirzapur","sn":"Chunur"},"5444":{"ln":"Robertsganj-I, Mirzapur","sn":"Robertsganj"},"5445":{"ln":"Robertsganj -II (Obra), Mirzapur","sn":"Robertsganj "},"5446":{"ln":"Dudhi-II (Pipri), Mirzapur","sn":"Dudhi"},"5447":{"ln":"Dudhi-I (Dudhi), Mirzapur","sn":"Dudhi"},"5450":{"ln":"Kerakat, Jaunpur","sn":"Kerakat"},"5451":{"ln":"Mariyahu, Jaunpur","sn":"Mariyahu"},"5452":{"ln":"Jaunpur, Jaunpur","sn":"Jaunpur"},"5453":{"ln":"Shahganj, Jaunpur","sn":"Shahganj"},"5454":{"ln":"Machlishahar, Jaunpur","sn":"Machlishahar"},"5460":{"ln":"Phulpur-I (Phulpur), Azamgarh","sn":"Phulpur"},"5461":{"ln":"Ghosi, Azamgarh","sn":"Ghosi"},"5462":{"ln":"Azamgarh, Azamgarh","sn":"Azamgarh"},"5463":{"ln":"Lalganj, Azamgarh","sn":"Lalganj"},"5464":{"ln":"Maunathbhanjan, Azamgarh","sn":"Maunathbhanjan"},"5465":{"ln":"Phulpur-II (Atrawlia), Azamgarh","sn":"Phulpur"},"5466":{"ln":"Sagri, Azamgarh","sn":"Sagri"},"5491":{"ln":"Rasara, Ballia","sn":"Rasara"},"5493":{"ln":"Mohamdabad, Ghazipur","sn":"Mohamdabad"},"5494":{"ln":"Bansdeeh, Ballia","sn":"Bansdeeh"},"5495":{"ln":"Saidpur, Ghazipur","sn":"Saidpur"},"5496":{"ln":"Ballia-II (Raniganj), Ballia","sn":"Ballia"},"5497":{"ln":"Zamania, Ghazipur","sn":"Zamania"},"5498":{"ln":"Ballia-I (Ballia), Ballia","sn":"Ballia"},"5521":{"ln":"Bansgaon-II (Barhal Ganj), Gorakhpur","sn":"Bansgaon"},"5522":{"ln":"Pharenda-I (Compierganj), Gorakhpur","sn":"Pharenda"},"5523":{"ln":"Maharajganj, Gorakhpur","sn":"Maharajganj"},"5524":{"ln":"Pharenda-II (Anand Nagar), Gorakhpur","sn":"Pharenda"},"5525":{"ln":"Bansgaon -I (Bansgaon), Gorakhpur","sn":"Bansgaon "},"5541":{"ln":"Domariyaganj, Basti","sn":"Domariyaganj"},"5542":{"ln":"Basti, Basti","sn":"Basti"},"5543":{"ln":"Naugarh-II (Barhani), Basti","sn":"Naugarh"},"5544":{"ln":"Naugarh-I (Tetribazar), Basti","sn":"Naugarh"},"5545":{"ln":"Bansi, Basti","sn":"Bansi"},"5546":{"ln":"Harraiya, Basti","sn":"Harraiya"},"5547":{"ln":"Khalilabad -I, Basti","sn":"Khalilabad "},"5548":{"ln":"Khalilabad-II (Mehdawal), Basti","sn":"Khalilabad"},"5561":{"ln":"Salempur-II (Barhaj), Deoria","sn":"Salempur"},"5563":{"ln":"Captanganj (Khadda), Deoria","sn":"Captanganj"},"5564":{"ln":"Padrauna, Deoria","sn":"Padrauna"},"5566":{"ln":"Salempur-I (Salempur), Deoria","sn":"Salempur"},"5567":{"ln":"Captanganj-I (Captanganj), Deoria","sn":"Captanganj"},"5568":{"ln":"Deoria, Deoria","sn":"Deoria"},"5612":{"ln":"Ferozabad, Agra","sn":"Ferozabad"},"5613":{"ln":"Achhnera, Agra","sn":"Achhnera"},"5614":{"ln":"Jarar, Agra","sn":"Jarar"},"5640":{"ln":"Kaman, Bharatpur","sn":"Kaman"},"5641":{"ln":"Deeg, Bharatpur","sn":"Deeg"},"5642":{"ln":"Dholpur, Bharatpur","sn":"Dholpur"},"5643":{"ln":"Nadbai, Bharatpur","sn":"Nadbai"},"5644":{"ln":"Bharatpur, Bharatpur","sn":"Bharatpur"},"5645":{"ln":"Rupbas, Bharatpur","sn":"Rupbas"},"5646":{"ln":"Baseri, Bharatpur","sn":"Baseri"},"5647":{"ln":"Bari, Bharatpur","sn":"Bari"},"5648":{"ln":"Bayana, Bharatpur","sn":"Bayana"},"5661":{"ln":"Sadabad, Mathura","sn":"Sadabad"},"5662":{"ln":"Chhata (Kosikalan), Mathura","sn":"Chhata"},"5664":{"ln":"Mant (Vrindavan), Mathura","sn":"Mant"},"5671":{"ln":"Jasrana, Mainpuri","sn":"Jasrana"},"5672":{"ln":"Mainpuri, Mainpuri","sn":"Mainpuri"},"5673":{"ln":"Bhogaon, Mainpuri","sn":"Bhogaon"},"5676":{"ln":"Shikohabad, Mainpuri","sn":"Shikohabad"},"5677":{"ln":"Karhal, Mainpuri","sn":"Karhal"},"5680":{"ln":"Bharthana, Etawah","sn":"Bharthana"},"5681":{"ln":"Bidhuna, Etawah","sn":"Bidhuna"},"5683":{"ln":"Auraiya, Etawah","sn":"Auraiya"},"5688":{"ln":"Etawah, Etawah","sn":"Etawah"},"5690":{"ln":"Kaimganj, Farrukhabad","sn":"Kaimganj"},"5691":{"ln":"Chhibramau, Farrukhabad","sn":"Chhibramau"},"5692":{"ln":"Farrukhabad (Fategarh), Farrukhabad","sn":"Farrukhabad"},"5694":{"ln":"Kannauj, Farrukhabad","sn":"Kannauj"},"5721":{"ln":"Sikandra Rao, Aligarh","sn":"Sikandra Rao"},"5722":{"ln":"Hathras, Aligarh","sn":"Hathras"},"5723":{"ln":"Atrauli, Aligarh","sn":"Atrauli"},"5724":{"ln":"Khair, Aligarh","sn":"Khair"},"5731":{"ln":"Garhmukteshwar, Ghaziabad","sn":"Garhmukteshwar"},"5732":{"ln":"Bulandshahr, Ghaziabad","sn":"Bulandshahr"},"5733":{"ln":"Pahasu, Ghaziabad","sn":"Pahasu"},"5734":{"ln":"Debai, Ghaziabad","sn":"Debai"},"5735":{"ln":"Sikandrabad, Ghaziabad","sn":"Sikandrabad"},"5736":{"ln":"Siyana, Ghaziabad","sn":"Siyana"},"5738":{"ln":"Khurja, Ghaziabad","sn":"Khurja"},"5740":{"ln":"Aliganj (Ganjdundwara), Etah","sn":"Aliganj"},"5742":{"ln":"Etah, Etah","sn":"Etah"},"5744":{"ln":"Kasganj, Etah","sn":"Kasganj"},"5745":{"ln":"Jalesar, Etah","sn":"Jalesar"},"5821":{"ln":"Pitamberpur, Bareilly","sn":"Pitamberpur"},"5822":{"ln":"Baheri, Bareilly","sn":"Baheri"},"5823":{"ln":"Aonla -I, Bareilly","sn":"Aonla "},"5824":{"ln":"Aonla-II (Ramnagar), Bareilly","sn":"Aonla"},"5825":{"ln":"Nawabganj, Bareilly","sn":"Nawabganj"},"5831":{"ln":"Dataganj, Badaun","sn":"Dataganj"},"5832":{"ln":"Badaun, Badaun","sn":"Badaun"},"5833":{"ln":"Sahaswan, Badaun","sn":"Sahaswan"},"5834":{"ln":"Bisauli, Badaun","sn":"Bisauli"},"5836":{"ln":"Gunnaur, Badaun","sn":"Gunnaur"},"5841":{"ln":"Tilhar, Sahjahanpur","sn":"Tilhar"},"5842":{"ln":"Shahjahanpur, Sahjahanpur","sn":"Shahjahanpur"},"5843":{"ln":"Jalalabad, Sahjahanpur","sn":"Jalalabad"},"5844":{"ln":"Powayan, Sahjahanpur","sn":"Powayan"},"5850":{"ln":"Hardoi-II (Baghavli), Hardoi","sn":"Hardoi"},"5851":{"ln":"Bilgam-I (Madhoganj), Hardoi","sn":"Bilgam"},"5852":{"ln":"Hardoi-I (Hardoi), Hardoi","sn":"Hardoi"},"5853":{"ln":"Shahabad, Hardoi","sn":"Shahabad"},"5854":{"ln":"Sandila, Hardoi","sn":"Sandila"},"5855":{"ln":"Bilgram-II (Sandi), Hardoi","sn":"Bilgram"},"5861":{"ln":"Misrikh-II (Aurangabad), Sitapur","sn":"Misrikh"},"5862":{"ln":"Sitapur, Sitapur","sn":"Sitapur"},"5863":{"ln":"Biswan, Sitapur","sn":"Biswan"},"5864":{"ln":"Sidhauli (Mahmodabad), Sitapur","sn":"Sidhauli"},"5865":{"ln":"Misrikh -I (Misrikh), Sitapur","sn":"Misrikh "},"5870":{"ln":"Kheri-II (Bhira), Lakhimpur-Kheri","sn":"Kheri"},"5871":{"ln":"Nighasan-I (Palliakalan), Lakhimpur-Kheri","sn":"Nighasan"},"5872":{"ln":"Kheri-I (Kheri), Lakhimpur-Kheri","sn":"Kheri"},"5873":{"ln":"Nighasan-II (Tikonia), Lakhimpur-Kheri","sn":"Nighasan"},"5874":{"ln":"Nighasan-III (Dhaurahra), Lakhimpur-Kheri","sn":"Nighasan"},"5875":{"ln":"Mohamdi-II (Maigalganj), Lakhimpur-Kheri","sn":"Mohamdi"},"5876":{"ln":"Mohamdi-I (Mohamdi), Lakhimpur-Kheri","sn":"Mohamdi"},"5880":{"ln":"Puranpur, Pilibhit","sn":"Puranpur"},"5881":{"ln":"Bisalpur, Pilibhit","sn":"Bisalpur"},"5882":{"ln":"Pilibhit, Pilibhit","sn":"Pilibhit"},"5921":{"ln":"Bilari, Moradabad","sn":"Bilari"},"5922":{"ln":"Amroha, Moradabad","sn":"Amroha"},"5923":{"ln":"Sambhal, Moradabad","sn":"Sambhal"},"5924":{"ln":"Hasanpur, Moradabad","sn":"Hasanpur"},"5942":{"ln":"Nainital, Nainital","sn":"Nainital"},"5943":{"ln":"Khatima, Nainital","sn":"Khatima"},"5944":{"ln":"Kichha-I (Rudrapur), Nainital","sn":"Kichha"},"5945":{"ln":"Haldwani-II (Chorgalian), Nainital","sn":"Haldwani"},"5946":{"ln":"Haldwani-I, Nainital","sn":"Haldwani"},"5947":{"ln":"Kashipur, Nainital","sn":"Kashipur"},"5948":{"ln":"Khatima-II (Sitarganj), Nainital","sn":"Khatima"},"5949":{"ln":"Kichha-II (Bazpur), Nainital","sn":"Kichha"},"5960":{"ln":"Shahabad, Rampur","sn":"Shahabad"},"5961":{"ln":"Munsiari, Almora","sn":"Munsiari"},"5962":{"ln":"Almora, Almora","sn":"Almora"},"5963":{"ln":"Bageshwar, Almora","sn":"Bageshwar"},"5964":{"ln":"Pithoragarh, Almora","sn":"Pithoragarh"},"5965":{"ln":"Champawat, Almora","sn":"Champawat"},"5966":{"ln":"Ranikhet, Almora","sn":"Ranikhet"},"5967":{"ln":"Dharchula, Almora","sn":"Dharchula"},"6111":{"ln":"Hilsa, Patna","sn":"Hilsa"},"6112":{"ln":"Biharsharif, Patna","sn":"Biharsharif"},"6114":{"ln":"Jahanabad, Gaya","sn":"Jahanabad"},"6115":{"ln":"Danapur, Patna","sn":"Danapur"},"6132":{"ln":"Barh, Patna","sn":"Barh"},"6135":{"ln":"Bikram, Patna","sn":"Bikram"},"6150":{"ln":"Hathua, Chapra","sn":"Hathua"},"6151":{"ln":"Sidhawalia, Chapra","sn":"Sidhawalia"},"6152":{"ln":"Chapra, Chapra","sn":"Chapra"},"6153":{"ln":"Maharajganj, Chapra","sn":"Maharajganj"},"6154":{"ln":"Siwan, Chapra","sn":"Siwan"},"6155":{"ln":"Ekma, Chapra","sn":"Ekma"},"6156":{"ln":"Gopalganj, Chapra","sn":"Gopalganj"},"6157":{"ln":"Mairwa, Chapra","sn":"Mairwa"},"6158":{"ln":"Sonepur, Chapra","sn":"Sonepur"},"6159":{"ln":"Masrakh, Chapra","sn":"Masrakh"},"6180":{"ln":"Adhaura, Sasaram","sn":"Adhaura"},"6181":{"ln":"Piro, Arrah","sn":"Piro"},"6182":{"ln":"Arrah, Arrah","sn":"Arrah"},"6183":{"ln":"Buxar, Arrah","sn":"Buxar"},"6184":{"ln":"Sasaram, Sasaram","sn":"Sasaram"},"6185":{"ln":"Bikramganj, Sasaram","sn":"Bikramganj"},"6186":{"ln":"Aurangabad, Gaya","sn":"Aurangabad"},"6187":{"ln":"Mohania, Sasaram","sn":"Mohania"},"6188":{"ln":"Rohtas, Sasaram","sn":"Rohtas"},"6189":{"ln":"Bhabhua, Sasaram","sn":"Bhabhua"},"6222":{"ln":"Sheohar, Muzaffarpur","sn":"Sheohar"},"6223":{"ln":"Motipur, Muzaffarpur","sn":"Motipur"},"6224":{"ln":"Hajipur, Muzaffarpur","sn":"Hajipur"},"6226":{"ln":"Sitamarhi, Muzaffarpur","sn":"Sitamarhi"},"6227":{"ln":"Mahua, Muzaffarpur","sn":"Mahua"},"6228":{"ln":"Pupri, Muzaffarpur","sn":"Pupri"},"6229":{"ln":"Bidupur, Muzaffarpur","sn":"Bidupur"},"6242":{"ln":"Benipur, Darbhanga","sn":"Benipur"},"6243":{"ln":"Begusarai, Darbhanga","sn":"Begusarai"},"6244":{"ln":"Khagaria, Darbhanga","sn":"Khagaria"},"6245":{"ln":"Gogri, Darbhanga","sn":"Gogri"},"6246":{"ln":"Jainagar, Darbhanga","sn":"Jainagar"},"6247":{"ln":"Singhwara, Darbhanga","sn":"Singhwara"},"6250":{"ln":"Dhaka, Motihari","sn":"Dhaka"},"6251":{"ln":"Bagaha, Motihari","sn":"Bagaha"},"6252":{"ln":"Motihari, Motihari","sn":"Motihari"},"6253":{"ln":"Narkatiaganj, Motihari","sn":"Narkatiaganj"},"6254":{"ln":"Bettiah, Motihari","sn":"Bettiah"},"6255":{"ln":"Raxaul, Motihari","sn":"Raxaul"},"6256":{"ln":"Ramnagar, Motihari","sn":"Ramnagar"},"6257":{"ln":"Barachakia, Motihari","sn":"Barachakia"},"6258":{"ln":"Areraj, Motihari","sn":"Areraj"},"6259":{"ln":"Pakridayal, Motihari","sn":"Pakridayal"},"6271":{"ln":"Benipatti, Darbhanga","sn":"Benipatti"},"6272":{"ln":"Darbhanga, Darbhanga","sn":"Darbhanga"},"6273":{"ln":"Jhajharpur, Darbhanga","sn":"Jhajharpur"},"6274":{"ln":"Samastipur, Darbhanga","sn":"Samastipur"},"6275":{"ln":"Rosera, Darbhanga","sn":"Rosera"},"6276":{"ln":"Madhubani, Darbhanga","sn":"Madhubani"},"6277":{"ln":"Phulparas, Darbhanga","sn":"Phulparas"},"6278":{"ln":"Dalsinghsarai, Darbhanga","sn":"Dalsinghsarai"},"6279":{"ln":"Barauni, Darbhanga","sn":"Barauni"},"6322":{"ln":"Wazirganj, Gaya","sn":"Wazirganj"},"6323":{"ln":"Dumraon, Arrah","sn":"Dumraon"},"6324":{"ln":"Nawada, Gaya","sn":"Nawada"},"6325":{"ln":"Pakribarwan, Gaya","sn":"Pakribarwan"},"6326":{"ln":"Sherghati, Gaya","sn":"Sherghati"},"6327":{"ln":"Rafiganj, Gaya","sn":"Rafiganj"},"6328":{"ln":"Daudnagar, Gaya","sn":"Daudnagar"},"6331":{"ln":"Imamganj, Gaya","sn":"Imamganj"},"6332":{"ln":"Nabinagar, Gaya","sn":"Nabinagar"},"6336":{"ln":"Rajauli, Gaya","sn":"Rajauli"},"6337":{"ln":"Arwal, Gaya","sn":"Arwal"},"6341":{"ln":"Seikhpura, Monghyr","sn":"Seikhpura"},"6342":{"ln":"H. Kharagpur, Monghyr","sn":"H. Kharagpur"},"6344":{"ln":"Monghyr, Monghyr","sn":"Monghyr"},"6345":{"ln":"Jamui, Monghyr","sn":"Jamui"},"6346":{"ln":"Lakhisarai, Monghyr","sn":"Lakhisarai"},"6347":{"ln":"Chakai, Monghyr","sn":"Chakai"},"6348":{"ln":"Mallehpur, Monghyr","sn":"Mallehpur"},"6349":{"ln":"Jhajha, Monghyr","sn":"Jhajha"},"6420":{"ln":"Amarpur, Bhagalpur","sn":"Amarpur"},"6421":{"ln":"Naugachia, Bhagalpur","sn":"Naugachia"},"6422":{"ln":"Godda, Deoghar (Dumka)","sn":"Godda"},"6423":{"ln":"Maheshpur Raj, Deoghar (Dumka)","sn":"Maheshpur Raj"},"6424":{"ln":"Banka, Bhagalpur","sn":"Banka"},"6425":{"ln":"Katoria, Bhagalpur","sn":"Katoria"},"6426":{"ln":"Rajmahal, Deoghar (Dumka)","sn":"Rajmahal"},"6427":{"ln":"Kathikund, Deoghar (Dumka)","sn":"Kathikund"},"6428":{"ln":"Nala, Deoghar (Dumka)","sn":"Nala"},"6429":{"ln":"Kahalgaon, Bhagalpur","sn":"Kahalgaon"},"6431":{"ln":"Jharmundi, Deoghar (Dumka)","sn":"Jharmundi"},"6432":{"ln":"Deoghar, Deoghar (Dumka)","sn":"Deoghar"},"6433":{"ln":"Jamtara, Deoghar (Dumka)","sn":"Jamtara"},"6434":{"ln":"Dumka, Deoghar (Dumka)","sn":"Dumka"},"6435":{"ln":"Pakur, Deoghar (Dumka)","sn":"Pakur"},"6436":{"ln":"Sahibganj, Deoghar (Dumka)","sn":"Sahibganj"},"6437":{"ln":"Mahagama, Deoghar (Dumka)","sn":"Mahagama"},"6438":{"ln":"Madhupur, Deoghar (Dumka)","sn":"Madhupur"},"6451":{"ln":"Barsoi, Katihar","sn":"Barsoi"},"6452":{"ln":"Katihar, Katihar","sn":"Katihar"},"6453":{"ln":"Araria, Katihar","sn":"Araria"},"6454":{"ln":"Purnea, Katihar","sn":"Purnea"},"6455":{"ln":"Forbesganj, Katihar","sn":"Forbesganj"},"6457":{"ln":"Korha, Katihar","sn":"Korha"},"6459":{"ln":"Thakurganj, Katihar","sn":"Thakurganj"},"6461":{"ln":"Raniganj, Katihar","sn":"Raniganj"},"6462":{"ln":"Dhamdaha, Katihar","sn":"Dhamdaha"},"6466":{"ln":"Kishanganj, Katihar","sn":"Kishanganj"},"6467":{"ln":"Banmankhi, Katihar","sn":"Banmankhi"},"6471":{"ln":"Birpur, Saharsa","sn":"Birpur"},"6473":{"ln":"Supaul, Saharsa","sn":"Supaul"},"6475":{"ln":"S. Bakhtiarpur, Saharsa","sn":"S. Bakhtiarpur"},"6476":{"ln":"Madhepura, Saharsa","sn":"Madhepura"},"6477":{"ln":"Triveniganj, Saharsa","sn":"Triveniganj"},"6478":{"ln":"Saharsa, Saharsa","sn":"Saharsa"},"6479":{"ln":"Udakishanganj, Saharsa","sn":"Udakishanganj"},"6522":{"ln":"Muri, Ranchi","sn":"Muri"},"6523":{"ln":"Ghaghra, Ranchi","sn":"Ghaghra"},"6524":{"ln":"Gumla, Ranchi","sn":"Gumla"},"6525":{"ln":"Simdega, Ranchi","sn":"Simdega"},"6526":{"ln":"Lohardaga, Ranchi","sn":"Lohardaga"},"6527":{"ln":"Kolebira, Ranchi","sn":"Kolebira"},"6528":{"ln":"Khunti, Ranchi","sn":"Khunti"},"6529":{"ln":"Itki, Ranchi","sn":"Itki"},"6530":{"ln":"Bundu, Ranchi","sn":"Bundu"},"6531":{"ln":"Mandar, Ranchi","sn":"Mandar"},"6532":{"ln":"Giridih, Hazaribagh","sn":"Giridih"},"6533":{"ln":"Basia, Ranchi","sn":"Basia"},"6534":{"ln":"Jhumaritalaiya, Hazaribagh","sn":"Jhumaritalaiya"},"6535":{"ln":"Chainpur, Ranchi","sn":"Chainpur"},"6536":{"ln":"Palkot, Ranchi","sn":"Palkot"},"6538":{"ln":"Torpa, Ranchi","sn":"Torpa"},"6539":{"ln":"Bolwa, Ranchi","sn":"Bolwa"},"6540":{"ln":"Govindpur, Dhanbad","sn":"Govindpur"},"6541":{"ln":"Chatra, Hazaribagh","sn":"Chatra"},"6542":{"ln":"Bokaro, Dhanbad","sn":"Bokaro"},"6543":{"ln":"Barhi, Hazaribagh","sn":"Barhi"},"6544":{"ln":"Gomia, Dhanbad","sn":"Gomia"},"6545":{"ln":"Mandu, Hazaribagh","sn":"Mandu"},"6546":{"ln":"Hazaribagh, Hazaribagh","sn":"Hazaribagh"},"6547":{"ln":"Chavparan, Hazaribagh","sn":"Chavparan"},"6548":{"ln":"Ichak, Hazaribagh","sn":"Ichak"},"6549":{"ln":"Bermo, Dhanbad","sn":"Bermo"},"6550":{"ln":"Hunterganj, Hazaribagh","sn":"Hunterganj"},"6551":{"ln":"Barkagaon, Hazaribagh","sn":"Barkagaon"},"6553":{"ln":"Ramgarh, Hazaribagh","sn":"Ramgarh"},"6554":{"ln":"Rajdhanwar, Hazaribagh","sn":"Rajdhanwar"},"6556":{"ln":"Tisri, Hazaribagh","sn":"Tisri"},"6557":{"ln":"Bagodar, Hazaribagh","sn":"Bagodar"},"6558":{"ln":"Dumri (Isribazar), Hazaribagh","sn":"Dumri"},"6559":{"ln":"Simaria, Hazaribagh","sn":"Simaria"},"6560":{"ln":"Patan, Daltonganj","sn":"Patan"},"6561":{"ln":"Garhwa, Daltonganj","sn":"Garhwa"},"6562":{"ln":"Daltonganj, Daltonganj","sn":"Daltonganj"},"6563":{"ln":"Bhawanathpur, Daltonganj","sn":"Bhawanathpur"},"6564":{"ln":"Nagarutari, Daltonganj","sn":"Nagarutari"},"6565":{"ln":"Latehar, Daltonganj","sn":"Latehar"},"6566":{"ln":"Japla, Daltonganj","sn":"Japla"},"6567":{"ln":"Barwadih, Daltonganj","sn":"Barwadih"},"6568":{"ln":"Balumath, Daltonganj","sn":"Balumath"},"6569":{"ln":"Garu, Daltonganj","sn":"Garu"},"6581":{"ln":"Bhandaria, Daltonganj","sn":"Bhandaria"},"6582":{"ln":"Chaibasa, Jamshedpur","sn":"Chaibasa"},"6583":{"ln":"Kharsawa, Jamshedpur","sn":"Kharsawa"},"6584":{"ln":"Bishrampur, Daltonganj","sn":"Bishrampur"},"6585":{"ln":"Ghatsila, Jamshedpur","sn":"Ghatsila"},"6586":{"ln":"Chainpur, Daltonganj","sn":"Chainpur"},"6587":{"ln":"Chakardharpur, Jamshedpur","sn":"Chakardharpur"},"6588":{"ln":"Jagarnathpur, Jamshedpur","sn":"Jagarnathpur"},"6589":{"ln":"Jhinkpani, Jamshedpur","sn":"Jhinkpani"},"6591":{"ln":"Chandil, Jamshedpur","sn":"Chandil"},"6593":{"ln":"Manoharpur, Jamshedpur","sn":"Manoharpur"},"6594":{"ln":"Baharagora, Jamshedpur","sn":"Baharagora"},"6596":{"ln":"Noamundi, Jamshedpur","sn":"Noamundi"},"6597":{"ln":"Saraikela (Adstyapur), Jamshedpur","sn":"Saraikela"},"6621":{"ln":"Hemgiri, Sundargarh (Rourkela)","sn":"Hemgiri"},"6622":{"ln":"Sundargarh, Sundargarh (Rourkela)","sn":"Sundargarh"},"6624":{"ln":"Rajgangpur, Sundargarh (Rourkela)","sn":"Rajgangpur"},"6625":{"ln":"Lahunipara, Sundargarh (Rourkela)","sn":"Lahunipara"},"6626":{"ln":"Banaigarh, Sundargarh (Rourkela)","sn":"Banaigarh"},"6640":{"ln":"Bagdihi, Sambalpur","sn":"Bagdihi"},"6641":{"ln":"Deodgarh, Sambalpur","sn":"Deodgarh"},"6642":{"ln":"Kuchinda, Sambalpur","sn":"Kuchinda"},"6643":{"ln":"Barkot, Sambalpur","sn":"Barkot"},"6644":{"ln":"Rairakhol, Sambalpur","sn":"Rairakhol"},"6645":{"ln":"Jharsuguda, Sambalpur","sn":"Jharsuguda"},"6646":{"ln":"Bargarh, Sambalpur","sn":"Bargarh"},"6647":{"ln":"Naktideul, Sambalpur","sn":"Naktideul"},"6648":{"ln":"Patnagarh, Balangir","sn":"Patnagarh"},"6649":{"ln":"Jamankira, Sambalpur","sn":"Jamankira"},"6651":{"ln":"Birmaharajpur, Balangir","sn":"Birmaharajpur"},"6652":{"ln":"Balangir, Balangir","sn":"Balangir"},"6653":{"ln":"Dunguripali, Balangir","sn":"Dunguripali"},"6654":{"ln":"Sonapur, Balangir","sn":"Sonapur"},"6655":{"ln":"Titlagarh, Balangir","sn":"Titlagarh"},"6657":{"ln":"Kantabhanji, Balangir","sn":"Kantabhanji"},"6670":{"ln":"Bhawanipatna, Bhawanipatna","sn":"Bhawanipatna"},"6671":{"ln":"Rajkhariar, Bhawanipatna","sn":"Rajkhariar"},"6672":{"ln":"Dharamgarh, Bhawanipatna","sn":"Dharamgarh"},"6673":{"ln":"Jayapatna, Bhawanipatna","sn":"Jayapatna"},"6675":{"ln":"T. Rampur, Bhawanipatna","sn":"T. Rampur"},"6676":{"ln":"M. Rampur, Bhawanipatna","sn":"M. Rampur"},"6677":{"ln":"Narlaroad, Bhawanipatna","sn":"Narlaroad"},"6678":{"ln":"Nowparatan, Bhawanipatna","sn":"Nowparatan"},"6679":{"ln":"Komana, Bhawanipatna","sn":"Komana"},"6681":{"ln":"Jujumura, Sambalpur","sn":"Jujumura"},"6682":{"ln":"Attabira, Sambalpur","sn":"Attabira"},"6683":{"ln":"Padmapur, Sambalpur","sn":"Padmapur"},"6684":{"ln":"Paikamal, Sambalpur","sn":"Paikamal"},"6685":{"ln":"Sohela, Sambalpur","sn":"Sohela"},"6721":{"ln":"Narsinghpur, Cuttack","sn":"Narsinghpur"},"6722":{"ln":"Pardip, Cuttack","sn":"Pardip"},"6723":{"ln":"Athgarh, Cuttack","sn":"Athgarh"},"6724":{"ln":"Jagatsinghpur, Cuttack","sn":"Jagatsinghpur"},"6725":{"ln":"Dhanmandal, Cuttack","sn":"Dhanmandal"},"6726":{"ln":"Jajapur Road, Cuttack","sn":"Jajapur Road"},"6727":{"ln":"Kendrapara, Cuttack","sn":"Kendrapara"},"6728":{"ln":"Jajapur Town, Cuttack","sn":"Jajapur Town"},"6729":{"ln":"Pattamundai, Cuttack","sn":"Pattamundai"},"6731":{"ln":"Anandapur, Dhenkanal","sn":"Anandapur"},"6732":{"ln":"Hindol, Dhenkanal","sn":"Hindol"},"6733":{"ln":"Ghatgaon, Dhenkanal","sn":"Ghatgaon"},"6735":{"ln":"Telkoi, Dhenkanal","sn":"Telkoi"},"6752":{"ln":"Puri, Bhubaneswar (Puri)","sn":"Puri"},"6753":{"ln":"Nayagarh, Bhubaneswar (Puri)","sn":"Nayagarh"},"6755":{"ln":"Khurda, Bhubaneswar (Puri)","sn":"Khurda"},"6756":{"ln":"Balugaon, Bhubaneswar (Puri)","sn":"Balugaon"},"6757":{"ln":"Daspalla, Bhubaneswar (Puri)","sn":"Daspalla"},"6758":{"ln":"Nimapara, Bhubaneswar (Puri)","sn":"Nimapara"},"6760":{"ln":"Talcher, Dhenkanal","sn":"Talcher"},"6761":{"ln":"Chhendipada, Dhenkanal","sn":"Chhendipada"},"6762":{"ln":"Dhenkanal, Dhenkanal","sn":"Dhenkanal"},"6763":{"ln":"Athmallik, Dhenkanal","sn":"Athmallik"},"6764":{"ln":"Anugul, Dhenkanal","sn":"Anugul"},"6765":{"ln":"Palla Hara, Dhenkanal","sn":"Palla Hara"},"6766":{"ln":"Keonjhar, Dhenkanal","sn":"Keonjhar"},"6767":{"ln":"Barbil, Dhenkanal","sn":"Barbil"},"6768":{"ln":"Parajang, Dhenkanal","sn":"Parajang"},"6769":{"ln":"Kamakhyanagar, Dhenkanal","sn":"Kamakhyanagar"},"6781":{"ln":"Basta, Balasore","sn":"Basta"},"6782":{"ln":"Balasore, Balasore","sn":"Balasore"},"6784":{"ln":"Bhadrak, Balasore","sn":"Bhadrak"},"6786":{"ln":"Chandbali, Balasore","sn":"Chandbali"},"6788":{"ln":"Soro, Balasore","sn":"Soro"},"6791":{"ln":"Bangiriposi, Baripada","sn":"Bangiriposi"},"6792":{"ln":"Baripada, Baripada","sn":"Baripada"},"6793":{"ln":"Betanati, Baripada","sn":"Betanati"},"6794":{"ln":"Rairangpur, Baripada","sn":"Rairangpur"},"6795":{"ln":"Udala, Baripada","sn":"Udala"},"6796":{"ln":"Karanjia, Baripada","sn":"Karanjia"},"6797":{"ln":"Jashipur, Baripada","sn":"Jashipur"},"6810":{"ln":"Khalikote, Berhampur","sn":"Khalikote"},"6811":{"ln":"Chhatrapur, Berhampur","sn":"Chhatrapur"},"6814":{"ln":"Digapahandi, Berhampur","sn":"Digapahandi"},"6815":{"ln":"Parlakhemundi, Berhampur","sn":"Parlakhemundi"},"6816":{"ln":"Mohana, Berhampur","sn":"Mohana"},"6817":{"ln":"R. Udayigiri, Berhampur","sn":"R. Udayigiri"},"6818":{"ln":"Buguda, Berhampur","sn":"Buguda"},"6819":{"ln":"Surada, Berhampur","sn":"Surada"},"6821":{"ln":"Bhanjanagar, Berhampur","sn":"Bhanjanagar"},"6822":{"ln":"Aska, Berhampur","sn":"Aska"},"6840":{"ln":"Tumudibandha, Phulbani","sn":"Tumudibandha"},"6841":{"ln":"Boudh, Phulbani","sn":"Boudh"},"6842":{"ln":"Phulbani, Phulbani","sn":"Phulbani"},"6843":{"ln":"Puruna Katak, Phulbani","sn":"Puruna Katak"},"6844":{"ln":"Kantamal, Phulbani","sn":"Kantamal"},"6845":{"ln":"Phiringia, Phulbani","sn":"Phiringia"},"6846":{"ln":"Baliguda, Phulbani","sn":"Baliguda"},"6847":{"ln":"G. Udayagiri, Phulbani","sn":"G. Udayagiri"},"6848":{"ln":"Kotagarh, Phulbani","sn":"Kotagarh"},"6849":{"ln":"Daringbadi, Phulbani","sn":"Daringbadi"},"6850":{"ln":"Kalimela, Koraput","sn":"Kalimela"},"6852":{"ln":"Koraput, Koraput","sn":"Koraput"},"6853":{"ln":"Sunabeda, Koraput","sn":"Sunabeda"},"6854":{"ln":"Jeypore, Koraput","sn":"Jeypore"},"6855":{"ln":"Laxmipur, Koraput","sn":"Laxmipur"},"6856":{"ln":"Rayagada, Koraput","sn":"Rayagada"},"6857":{"ln":"Gunupur, Koraput","sn":"Gunupur"},"6858":{"ln":"Nowrangapur, Koraput","sn":"Nowrangapur"},"6859":{"ln":"Motu, Koraput","sn":"Motu"},"6860":{"ln":"Boriguma, Koraput","sn":"Boriguma"},"6861":{"ln":"Malkangiri, Koraput","sn":"Malkangiri"},"6862":{"ln":"Gudari, Koraput","sn":"Gudari"},"6863":{"ln":"Bisam Cuttack, Koraput","sn":"Bisam Cuttack"},"6864":{"ln":"Mathili, Koraput","sn":"Mathili"},"6865":{"ln":"Kashipur, Koraput","sn":"Kashipur"},"6866":{"ln":"Umerkote, Koraput","sn":"Umerkote"},"6867":{"ln":"Jharigan, Koraput","sn":"Jharigan"},"6868":{"ln":"Nandapur, Koraput","sn":"Nandapur"},"6869":{"ln":"Papadhandi, Koraput","sn":"Papadhandi"},"7100":{"ln":"Kuhi, Nagpur","sn":"Kuhi"},"7102":{"ln":"Parseoni, Nagpur","sn":"Parseoni"},"7103":{"ln":"Butibori, Nagpur","sn":"Butibori"},"7104":{"ln":"Hingua, Nagpur","sn":"Hingua"},"7105":{"ln":"Narkhed, Nagpur","sn":"Narkhed"},"7106":{"ln":"Bhiwapur, Nagpur","sn":"Bhiwapur"},"7109":{"ln":"Kamptee, Nagpur","sn":"Kamptee"},"7112":{"ln":"Katol, Nagpur","sn":"Katol"},"7113":{"ln":"Saoner, Nagpur","sn":"Saoner"},"7114":{"ln":"Ramtek, Nagpur","sn":"Ramtek"},"7115":{"ln":"Mouda, Nagpur","sn":"Mouda"},"7116":{"ln":"Umrer, Nagpur","sn":"Umrer"},"7118":{"ln":"Kalmeshwar, Nagpur","sn":"Kalmeshwar"},"7131":{"ln":"Sironcha, Gadchiroli","sn":"Sironcha"},"7132":{"ln":"Gadchiroli, Gadchiroli","sn":"Gadchiroli"},"7133":{"ln":"Aheri, Gadchiroli","sn":"Aheri"},"7134":{"ln":"Bhamregadh, Gadchiroli","sn":"Bhamregadh"},"7135":{"ln":"Chamorshi, Gadchiroli","sn":"Chamorshi"},"7136":{"ln":"Etapalli, Gadchiroli","sn":"Etapalli"},"7137":{"ln":"Desaiganj, Gadchiroli","sn":"Desaiganj"},"7138":{"ln":"Dhanora, Gadchiroli","sn":"Dhanora"},"7139":{"ln":"Kurkheda, Gadchiroli","sn":"Kurkheda"},"7141":{"ln":"Betul, Betul","sn":"Betul"},"7142":{"ln":"Bhimpur, Betul","sn":"Bhimpur"},"7143":{"ln":"Bhainsdehi, Betul","sn":"Bhainsdehi"},"7144":{"ln":"Atner, Betul","sn":"Atner"},"7145":{"ln":"Chicholi, Betul","sn":"Chicholi"},"7146":{"ln":"Ghorandogri, Betul","sn":"Ghorandogri"},"7147":{"ln":"Multai, Betul","sn":"Multai"},"7148":{"ln":"Prabha Pattan, Betul","sn":"Prabha Pattan"},"7149":{"ln":"Tamia, Chhindwara","sn":"Tamia"},"7151":{"ln":"Samudrapur, Wardha","sn":"Samudrapur"},"7152":{"ln":"Wardha, Wardha","sn":"Wardha"},"7153":{"ln":"Hinganghat, Wardha","sn":"Hinganghat"},"7155":{"ln":"Seloo, Wardha","sn":"Seloo"},"7156":{"ln":"Talegaokarangal, Wardha","sn":"Talegaokarangal"},"7157":{"ln":"Arvi, Wardha","sn":"Arvi"},"7158":{"ln":"Deoli, Wardha","sn":"Deoli"},"7160":{"ln":"Jamai, Chhindwara","sn":"Jamai"},"7161":{"ln":"Parasia, Chhindwara","sn":"Parasia"},"7162":{"ln":"Chhindwara, Chhindwara","sn":"Chhindwara"},"7164":{"ln":"Pandhurna, Chhindwara","sn":"Pandhurna"},"7165":{"ln":"Saunsar, Chhindwara","sn":"Saunsar"},"7166":{"ln":"Chaurai, Chhindwara","sn":"Chaurai"},"7167":{"ln":"Amarwada, Chhindwara","sn":"Amarwada"},"7168":{"ln":"Harrai, Chhindwara","sn":"Harrai"},"7169":{"ln":"Batkakhapa, Chhindwara","sn":"Batkakhapa"},"7170":{"ln":"Chumur, Chandrapur","sn":"Chumur"},"7171":{"ln":"Gond Pipri, Chandrapur","sn":"Gond Pipri"},"7172":{"ln":"Chandrapur, Chandrapur","sn":"Chandrapur"},"7173":{"ln":"Rajura, Chandrapur","sn":"Rajura"},"7174":{"ln":"Mul, Chandrapur","sn":"Mul"},"7175":{"ln":"Bhadrawati, Chandrapur","sn":"Bhadrawati"},"7176":{"ln":"Warora, Chandrapur","sn":"Warora"},"7177":{"ln":"Brahmapuri, Chandrapur","sn":"Brahmapuri"},"7178":{"ln":"Sinderwahi, Chandrapur","sn":"Sinderwahi"},"7179":{"ln":"Nagbhir, Chandrapur","sn":"Nagbhir"},"7180":{"ln":"Salekasa, Bhandara","sn":"Salekasa"},"7181":{"ln":"Lakhandur, Bhandara","sn":"Lakhandur"},"7182":{"ln":"Gondia, Bhandara","sn":"Gondia"},"7183":{"ln":"Tumsar, Bhandara","sn":"Tumsar"},"7184":{"ln":"Bhandara, Bhandara","sn":"Bhandara"},"7185":{"ln":"Pauni, Bhandara","sn":"Pauni"},"7186":{"ln":"Sakoli, Bhandara","sn":"Sakoli"},"7187":{"ln":"Goregaon, Bhandara","sn":"Goregaon"},"7189":{"ln":"Amagaon, Bhandara","sn":"Amagaon"},"7196":{"ln":"Arjuni-Merogaon, Bhandara","sn":"Arjuni-Merogaon"},"7197":{"ln":"Mohadi, Bhandara","sn":"Mohadi"},"7198":{"ln":"Tirora, Bhandara","sn":"Tirora"},"7199":{"ln":"Deori, Bhandara","sn":"Deori"},"7201":{"ln":"Kalamb, Yeotmal","sn":"Kalamb"},"7202":{"ln":"Ralegaon, Yeotmal","sn":"Ralegaon"},"7203":{"ln":"Babhulgaon, Yeotmal","sn":"Babhulgaon"},"7220":{"ln":"Chhikaldara, Amravati","sn":"Chhikaldara"},"7221":{"ln":"Nandgaon, Amravati","sn":"Nandgaon"},"7222":{"ln":"Chandurrly, Amravati","sn":"Chandurrly"},"7223":{"ln":"Achalpur, Amravati","sn":"Achalpur"},"7224":{"ln":"Daryapur, Amravati","sn":"Daryapur"},"7225":{"ln":"Tiwasa, Amravati","sn":"Tiwasa"},"7226":{"ln":"Dharani, Amravati","sn":"Dharani"},"7227":{"ln":"Chandurbazar, Amravati","sn":"Chandurbazar"},"7228":{"ln":"Morshi, Amravati","sn":"Morshi"},"7229":{"ln":"Warlydwarud, Amravati","sn":"Warlydwarud"},"7230":{"ln":"Ghatanji, Yeotmal","sn":"Ghatanji"},"7231":{"ln":"Umarkhed, Yeotmal","sn":"Umarkhed"},"7232":{"ln":"Yeotmal, Yeotmal","sn":"Yeotmal"},"7233":{"ln":"Pusad, Yeotmal","sn":"Pusad"},"7234":{"ln":"Digras, Yeotmal","sn":"Digras"},"7235":{"ln":"Pandharkawada, Yeotmal","sn":"Pandharkawada"},"7236":{"ln":"Maregaon, Yeotmal","sn":"Maregaon"},"7237":{"ln":"Marigaon, Yeotmal","sn":"Marigaon"},"7238":{"ln":"Darwaha, Yeotmal","sn":"Darwaha"},"7239":{"ln":"Wani, Yeotmal","sn":"Wani"},"7251":{"ln":"Risod, Akola","sn":"Risod"},"7252":{"ln":"Washim, Akola","sn":"Washim"},"7253":{"ln":"Mangrulpur, Akola","sn":"Mangrulpur"},"7254":{"ln":"Malgaon, Akola","sn":"Malgaon"},"7255":{"ln":"Barshi Takli, Akola","sn":"Barshi Takli"},"7256":{"ln":"Murtizapur, Akola","sn":"Murtizapur"},"7257":{"ln":"Balapur, Akola","sn":"Balapur"},"7258":{"ln":"Akot, Akola","sn":"Akot"},"7260":{"ln":"Lonar, Buldhana","sn":"Lonar"},"7261":{"ln":"Deolgaonraja, Buldhana","sn":"Deolgaonraja"},"7262":{"ln":"Buldhana, Buldhana","sn":"Buldhana"},"7263":{"ln":"Khamgaon, Buldhana","sn":"Khamgaon"},"7264":{"ln":"Chikhali, Buldhana","sn":"Chikhali"},"7266":{"ln":"Jalgaonjamod, Buldhana","sn":"Jalgaonjamod"},"7267":{"ln":"Malkapur, Buldhana","sn":"Malkapur"},"7268":{"ln":"Mekhar, Buldhana","sn":"Mekhar"},"7269":{"ln":"Sindkhedaraja, Buldhana","sn":"Sindkhedaraja"},"7270":{"ln":"Sonkatch, Dewas","sn":"Sonkatch"},"7271":{"ln":"Bagli, Dewas","sn":"Bagli"},"7272":{"ln":"Dewas, Dewas","sn":"Dewas"},"7273":{"ln":"Kannod, Dewas","sn":"Kannod"},"7274":{"ln":"Khategaon, Dewas","sn":"Khategaon"},"7279":{"ln":"Nandnva, Buldhana","sn":"Nandnva"},"7280":{"ln":"Barwaha, Khargone","sn":"Barwaha"},"7281":{"ln":"Sendhwa, Khargone","sn":"Sendhwa"},"7282":{"ln":"Khargone, Khargone","sn":"Khargone"},"7283":{"ln":"Maheshwar, Khargone","sn":"Maheshwar"},"7284":{"ln":"Rajpur, Khargone","sn":"Rajpur"},"7285":{"ln":"Kasrawad, Khargone","sn":"Kasrawad"},"7286":{"ln":"Khetia, Khargone","sn":"Khetia"},"7287":{"ln":"Gogaon, Khargone","sn":"Gogaon"},"7288":{"ln":"Bhikangaon, Khargone","sn":"Bhikangaon"},"7289":{"ln":"Zhirnia, Khargone","sn":"Zhirnia"},"7290":{"ln":"Badwani, Khargone","sn":"Badwani"},"7291":{"ln":"Manawar, Dhar","sn":"Manawar"},"7292":{"ln":"Dhar, Dhar","sn":"Dhar"},"7294":{"ln":"Dharampuri, Dhar","sn":"Dharampuri"},"7295":{"ln":"Badnawar, Dhar","sn":"Badnawar"},"7296":{"ln":"Sardarpur, Dhar","sn":"Sardarpur"},"7297":{"ln":"Kukshi, Dhar","sn":"Kukshi"},"7320":{"ln":"Pandhana, Khandwa","sn":"Pandhana"},"7321":{"ln":"Sanwer, Indore","sn":"Sanwer"},"7322":{"ln":"Depalpur, Indore","sn":"Depalpur"},"7323":{"ln":"Punasa, Khandwa","sn":"Punasa"},"7324":{"ln":"Mhow, Indore","sn":"Mhow"},"7325":{"ln":"Burhanpur, Khandwa","sn":"Burhanpur"},"7326":{"ln":"Baldi, Khandwa","sn":"Baldi"},"7327":{"ln":"Harsud, Khandwa","sn":"Harsud"},"7328":{"ln":"Khalwa, Khandwa","sn":"Khalwa"},"7329":{"ln":"Khakner, Khandwa","sn":"Khakner"},"7360":{"ln":"Shujalpur, Shajapur","sn":"Shujalpur"},"7361":{"ln":"Susner, Shajapur","sn":"Susner"},"7362":{"ln":"Agar, Shajapur","sn":"Agar"},"7363":{"ln":"Berchha, Shajapur","sn":"Berchha"},"7364":{"ln":"Shajapur, Shajapur","sn":"Shajapur"},"7365":{"ln":"Mahidpurcity, Ujjain","sn":"Mahidpurcity"},"7366":{"ln":"Khachrod, Ujjain","sn":"Khachrod"},"7367":{"ln":"Badnagar, Ujjain","sn":"Badnagar"},"7368":{"ln":"Ghatia, Ujjain","sn":"Ghatia"},"7369":{"ln":"Tarana, Ujjain","sn":"Tarana"},"7370":{"ln":"Khilchipur, Rajgarh","sn":"Khilchipur"},"7371":{"ln":"Sarangpur, Rajgarh","sn":"Sarangpur"},"7372":{"ln":"Rajgarh, Rajgarh","sn":"Rajgarh"},"7374":{"ln":"Biaora, Rajgarh","sn":"Biaora"},"7375":{"ln":"Narsingharh, Rajgarh","sn":"Narsingharh"},"7390":{"ln":"Thandla, Jhabua","sn":"Thandla"},"7391":{"ln":"Petlawad, Jhabua","sn":"Petlawad"},"7392":{"ln":"Jhabua, Jhabua","sn":"Jhabua"},"7393":{"ln":"Jobat, Jhabua","sn":"Jobat"},"7394":{"ln":"Alirajpur, Jhabua","sn":"Alirajpur"},"7395":{"ln":"Sondhwa, Jhabua","sn":"Sondhwa"},"7410":{"ln":"Alot, Ratlam","sn":"Alot"},"7412":{"ln":"Ratlam, Ratlam","sn":"Ratlam"},"7413":{"ln":"Sailana, Ratlam","sn":"Sailana"},"7414":{"ln":"Jaora, Ratlam","sn":"Jaora"},"7420":{"ln":"Jawad, Mandsaur","sn":"Jawad"},"7421":{"ln":"Manasa, Mandsaur","sn":"Manasa"},"7422":{"ln":"Mandsaur, Mandsaur","sn":"Mandsaur"},"7423":{"ln":"Neemuch, Mandsaur","sn":"Neemuch"},"7424":{"ln":"Malhargarh, Mandsaur","sn":"Malhargarh"},"7425":{"ln":"Garoth, Mandsaur","sn":"Garoth"},"7426":{"ln":"Sitamau, Mandsaur","sn":"Sitamau"},"7427":{"ln":"Bhanpura, Mandsaur","sn":"Bhanpura"},"7430":{"ln":"Khanpur, Jhalawar","sn":"Khanpur"},"7431":{"ln":"Aklera, Jhalawar","sn":"Aklera"},"7432":{"ln":"Jhalawar, Jhalawar","sn":"Jhalawar"},"7433":{"ln":"Pachpahar (Bhawanimandi), Jhalawar","sn":"Pachpahar"},"7434":{"ln":"Pirawa (Raipur), Jhalawar","sn":"Pirawa"},"7435":{"ln":"Gangdhar, Jhalawar","sn":"Gangdhar"},"7436":{"ln":"Hindoli, Bundi","sn":"Hindoli"},"7437":{"ln":"Nainwa, Bundi","sn":"Nainwa"},"7438":{"ln":"Keshoraipatan (Patan), Bundi","sn":"Keshoraipatan"},"7450":{"ln":"Sangod, Kota","sn":"Sangod"},"7451":{"ln":"Atru, Kota","sn":"Atru"},"7452":{"ln":"Chhabra, Kota","sn":"Chhabra"},"7453":{"ln":"Baran, Kota","sn":"Baran"},"7454":{"ln":"Chhipaborad, Kota","sn":"Chhipaborad"},"7455":{"ln":"Digod (Sultanpur), Kota","sn":"Digod"},"7456":{"ln":"Kishanganj (Bhanwargarh), Kota","sn":"Kishanganj"},"7457":{"ln":"Mangrol, Kota","sn":"Mangrol"},"7458":{"ln":"Pipalda (Sumerganj Mandi), Kota","sn":"Pipalda"},"7459":{"ln":"Ramganj Mandi, Kota","sn":"Ramganj Mandi"},"7460":{"ln":"Sahabad, Kota","sn":"Sahabad"},"7461":{"ln":"Mahuwa, Sawaimadhopur","sn":"Mahuwa"},"7462":{"ln":"Sawaimadhopur, Sawaimadhopur","sn":"Sawaimadhopur"},"7463":{"ln":"Gangapur, Sawaimadhopur","sn":"Gangapur"},"7464":{"ln":"Karauli, Sawaimadhopur","sn":"Karauli"},"7465":{"ln":"Sapotra, Sawaimadhopur","sn":"Sapotra"},"7466":{"ln":"Bonli, Sawaimadhopur","sn":"Bonli"},"7467":{"ln":"Bamanwas, Sawaimadhopur","sn":"Bamanwas"},"7468":{"ln":"Khandar, Sawaimadhopur","sn":"Khandar"},"7469":{"ln":"Hindaun, Sawaimadhopur","sn":"Hindaun"},"7480":{"ln":"Goharganj, Raisen","sn":"Goharganj"},"7481":{"ln":"Gairatganj, Raisen","sn":"Gairatganj"},"7482":{"ln":"Raisen, Raisen","sn":"Raisen"},"7484":{"ln":"Silwani, Raisen","sn":"Silwani"},"7485":{"ln":"Udaipura, Raisen","sn":"Udaipura"},"7486":{"ln":"Bareli, Raisen","sn":"Bareli"},"7487":{"ln":"Begamganj, Raisen","sn":"Begamganj"},"7490":{"ln":"Pohari, Shivpuri","sn":"Pohari"},"7491":{"ln":"Narwar, Shivpuri","sn":"Narwar"},"7492":{"ln":"Shivpuri, Shivpuri","sn":"Shivpuri"},"7493":{"ln":"Karera, Shivpuri","sn":"Karera"},"7494":{"ln":"Kolaras, Shivpuri","sn":"Kolaras"},"7495":{"ln":"Badarwas, Shivpuri","sn":"Badarwas"},"7496":{"ln":"Pichhore, Shivpuri","sn":"Pichhore"},"7497":{"ln":"Khaniadhana, Shivpuri","sn":"Khaniadhana"},"7521":{"ln":"Seondha, Gwalior","sn":"Seondha"},"7522":{"ln":"Datia, Gwalior","sn":"Datia"},"7523":{"ln":"Bhander, Gwalior","sn":"Bhander"},"7524":{"ln":"Dabra, Gwalior","sn":"Dabra"},"7525":{"ln":"Bhitarwar, Gwalior","sn":"Bhitarwar"},"7526":{"ln":"Ghatigaon, Gwalior","sn":"Ghatigaon"},"7527":{"ln":"Mehgaon, Morena","sn":"Mehgaon"},"7528":{"ln":"Bijaypur, Morena","sn":"Bijaypur"},"7529":{"ln":"Laher, Morena","sn":"Laher"},"7530":{"ln":"Sheopurkalan, Morena","sn":"Sheopurkalan"},"7531":{"ln":"Baroda, Morena","sn":"Baroda"},"7532":{"ln":"Morena, Morena","sn":"Morena"},"7533":{"ln":"Karhal, Morena","sn":"Karhal"},"7534":{"ln":"Bhind, Morena","sn":"Bhind"},"7535":{"ln":"Raghunathpur, Morena","sn":"Raghunathpur"},"7536":{"ln":"Sabalgarh, Morena","sn":"Sabalgarh"},"7537":{"ln":"Jora, Morena","sn":"Jora"},"7538":{"ln":"Ambah, Morena","sn":"Ambah"},"7539":{"ln":"Gohad, Morena","sn":"Gohad"},"7540":{"ln":"Bamori, Guna","sn":"Bamori"},"7541":{"ln":"Isagarh, Guna","sn":"Isagarh"},"7542":{"ln":"Guna, Guna","sn":"Guna"},"7543":{"ln":"Ashoknagar, Guna","sn":"Ashoknagar"},"7544":{"ln":"Raghogarh, Guna","sn":"Raghogarh"},"7545":{"ln":"Arone, Guna","sn":"Arone"},"7546":{"ln":"Chachaura, Guna","sn":"Chachaura"},"7547":{"ln":"Chanderi, Guna","sn":"Chanderi"},"7548":{"ln":"Mungaoli, Guna","sn":"Mungaoli"},"7560":{"ln":"Ashta, Bhopal","sn":"Ashta"},"7561":{"ln":"Ichhawar, Bhopal","sn":"Ichhawar"},"7562":{"ln":"Sehore, Bhopal","sn":"Sehore"},"7563":{"ln":"Nasrullaganj, Bhopal","sn":"Nasrullaganj"},"7564":{"ln":"Budhni, Bhopal","sn":"Budhni"},"7565":{"ln":"Berasia, Bhopal","sn":"Berasia"},"7570":{"ln":"Seonimalwa, Itarsi","sn":"Seonimalwa"},"7571":{"ln":"Khirkiya, Itarsi","sn":"Khirkiya"},"7572":{"ln":"Itarsi, Itarsi","sn":"Itarsi"},"7573":{"ln":"Timarani, Itarsi","sn":"Timarani"},"7574":{"ln":"Hoshangabad, Itarsi","sn":"Hoshangabad"},"7575":{"ln":"Sohagpur, Itarsi","sn":"Sohagpur"},"7576":{"ln":"Piparia, Itarsi","sn":"Piparia"},"7577":{"ln":"Harda, Itarsi","sn":"Harda"},"7578":{"ln":"Pachmarhi, Itarsi","sn":"Pachmarhi"},"7580":{"ln":"Bina, Sagar","sn":"Bina"},"7581":{"ln":"Khurai, Sagar","sn":"Khurai"},"7582":{"ln":"Sagar, Sagar","sn":"Sagar"},"7583":{"ln":"Banda, Sagar","sn":"Banda"},"7584":{"ln":"Rahatgarh, Sagar","sn":"Rahatgarh"},"7585":{"ln":"Rehli, Sagar","sn":"Rehli"},"7586":{"ln":"Deori, Sagar","sn":"Deori"},"7590":{"ln":"Lateri, Vidisha","sn":"Lateri"},"7591":{"ln":"Sironj, Vidisha","sn":"Sironj"},"7592":{"ln":"Vidisha, Vidisha","sn":"Vidisha"},"7593":{"ln":"Kurwai, Vidisha","sn":"Kurwai"},"7594":{"ln":"Ganjbasoda, Vidisha","sn":"Ganjbasoda"},"7595":{"ln":"Nateran, Vidisha","sn":"Nateran"},"7596":{"ln":"Gyraspur, Vidisha","sn":"Gyraspur"},"7601":{"ln":"Patharia, Damoh","sn":"Patharia"},"7603":{"ln":"Tendukheda, Damoh","sn":"Tendukheda"},"7604":{"ln":"Hatta, Damoh","sn":"Hatta"},"7605":{"ln":"Patera, Damoh","sn":"Patera"},"7606":{"ln":"Jabera, Damoh","sn":"Jabera"},"7608":{"ln":"Bijawar, Chhatarpur","sn":"Bijawar"},"7609":{"ln":"Buxwaha, Chhatarpur","sn":"Buxwaha"},"7621":{"ln":"Patan, Jabalpur","sn":"Patan"},"7622":{"ln":"Katni, Jabalpur","sn":"Katni"},"7623":{"ln":"Kundam, Jabalpur","sn":"Kundam"},"7624":{"ln":"Sihora, Jabalpur","sn":"Sihora"},"7625":{"ln":"Umariapan, Jabalpur","sn":"Umariapan"},"7626":{"ln":"Vijayraghogarh, Jabalpur","sn":"Vijayraghogarh"},"7627":{"ln":"Manpur, Shahdol","sn":"Manpur"},"7628":{"ln":"Karpa, Shahdol","sn":"Karpa"},"7629":{"ln":"Pushprajgarh, Shahdol","sn":"Pushprajgarh"},"7630":{"ln":"Katangi, Balaghat","sn":"Katangi"},"7632":{"ln":"Balaghat, Balaghat","sn":"Balaghat"},"7633":{"ln":"Waraseoni, Balaghat","sn":"Waraseoni"},"7634":{"ln":"Lamta, Balaghat","sn":"Lamta"},"7635":{"ln":"Lanji, Balaghat","sn":"Lanji"},"7636":{"ln":"Baihar, Balaghat","sn":"Baihar"},"7637":{"ln":"Birsa, Balaghat","sn":"Birsa"},"7638":{"ln":"Damoh, Balaghat","sn":"Damoh"},"7640":{"ln":"Shahpur, Mandla","sn":"Shahpur"},"7641":{"ln":"Niwas, Mandla","sn":"Niwas"},"7642":{"ln":"Mandla, Mandla","sn":"Mandla"},"7643":{"ln":"Bijadandi, Mandla","sn":"Bijadandi"},"7644":{"ln":"Dindori, Mandla","sn":"Dindori"},"7645":{"ln":"Karanjia, Mandla","sn":"Karanjia"},"7646":{"ln":"Nainpur, Mandla","sn":"Nainpur"},"7647":{"ln":"Ghughari, Mandla","sn":"Ghughari"},"7648":{"ln":"Mawai, Mandla","sn":"Mawai"},"7649":{"ln":"Kakaiya, Mandla","sn":"Kakaiya"},"7650":{"ln":"Beohari, Shahdol","sn":"Beohari"},"7651":{"ln":"Jaisinghnagar, Shahdol","sn":"Jaisinghnagar"},"7652":{"ln":"Shahdol, Shahdol","sn":"Shahdol"},"7653":{"ln":"Bandhavgarh, Shahdol","sn":"Bandhavgarh"},"7655":{"ln":"Birsinghpur, Shahdol","sn":"Birsinghpur"},"7656":{"ln":"Kannodi, Shahdol","sn":"Kannodi"},"7657":{"ln":"Jaitpur, Shahdol","sn":"Jaitpur"},"7658":{"ln":"Kotma, Shahdol","sn":"Kotma"},"7659":{"ln":"Jaithari, Shahdol","sn":"Jaithari"},"7660":{"ln":"Sirmour, Rewa","sn":"Sirmour"},"7661":{"ln":"Teonthar, Rewa","sn":"Teonthar"},"7662":{"ln":"Rewa, Rewa","sn":"Rewa"},"7663":{"ln":"Mauganj, Rewa","sn":"Mauganj"},"7664":{"ln":"Hanumana, Rewa","sn":"Hanumana"},"7670":{"ln":"Majhagwan, Satna","sn":"Majhagwan"},"7671":{"ln":"Jaitwara, Satna","sn":"Jaitwara"},"7672":{"ln":"Satna, Satna","sn":"Satna"},"7673":{"ln":"Nagod, Satna","sn":"Nagod"},"7674":{"ln":"Maihar, Satna","sn":"Maihar"},"7675":{"ln":"Amarpatan, Satna","sn":"Amarpatan"},"7680":{"ln":"Niwari, Chhatarpur","sn":"Niwari"},"7681":{"ln":"Jatara, Chhatarpur","sn":"Jatara"},"7682":{"ln":"Chhatarpur, Chhatarpur","sn":"Chhatarpur"},"7683":{"ln":"Tikamgarh, Chhatarpur","sn":"Tikamgarh"},"7684":{"ln":"Baldeogarh, Chhatarpur","sn":"Baldeogarh"},"7685":{"ln":"Nowgaon, Chhatarpur","sn":"Nowgaon"},"7686":{"ln":"Khajuraho, Chhatarpur","sn":"Khajuraho"},"7687":{"ln":"Laundi, Chhatarpur","sn":"Laundi"},"7688":{"ln":"Gourihar, Chhatarpur","sn":"Gourihar"},"7689":{"ln":"Badamalhera, Chhatarpur","sn":"Badamalhera"},"7690":{"ln":"Lakhnadon, Seoni","sn":"Lakhnadon"},"7691":{"ln":"Chhapara, Seoni","sn":"Chhapara"},"7692":{"ln":"Seoni, Seoni","sn":"Seoni"},"7693":{"ln":"Ghansour, Seoni","sn":"Ghansour"},"7694":{"ln":"Keolari, Seoni","sn":"Keolari"},"7695":{"ln":"Gopalganj, Seoni","sn":"Gopalganj"},"7700":{"ln":"Nagri, Raipur","sn":"Nagri"},"7701":{"ln":"Pingeshwar, Raipur","sn":"Pingeshwar"},"7703":{"ln":"Manpur, Raipur","sn":"Manpur"},"7704":{"ln":"Deobhog, Raipur","sn":"Deobhog"},"7705":{"ln":"Kurud, Raipur","sn":"Kurud"},"7706":{"ln":"Gariaband, Raipur","sn":"Gariaband"},"7707":{"ln":"Bagbahera, Raipur","sn":"Bagbahera"},"7720":{"ln":"Arang, Raipur","sn":"Arang"},"7721":{"ln":"Neora, Raipur","sn":"Neora"},"7722":{"ln":"Dhamtari, Raipur","sn":"Dhamtari"},"7723":{"ln":"Mahasamund, Raipur","sn":"Mahasamund"},"7724":{"ln":"Basana, Raipur","sn":"Basana"},"7725":{"ln":"Saraipali, Raipur","sn":"Saraipali"},"7726":{"ln":"Bhatapara, Raipur","sn":"Bhatapara"},"7727":{"ln":"Balodabazar, Raipur","sn":"Balodabazar"},"7728":{"ln":"Kasdol, Raipur","sn":"Kasdol"},"7729":{"ln":"Bhilaigarh, Raipur","sn":"Bhilaigarh"},"7730":{"ln":"Ajaigarh, Panna","sn":"Ajaigarh"},"7731":{"ln":"Gunnore, Panna","sn":"Gunnore"},"7732":{"ln":"Panna, Panna","sn":"Panna"},"7733":{"ln":"Pawai, Panna","sn":"Pawai"},"7734":{"ln":"Shahnagar, Panna","sn":"Shahnagar"},"7740":{"ln":"Bodla, Durg","sn":"Bodla"},"7741":{"ln":"Kawardha, Durg","sn":"Kawardha"},"7743":{"ln":"Chuikhadan, Durg","sn":"Chuikhadan"},"7744":{"ln":"Rajandgaon, Durg","sn":"Rajandgaon"},"7745":{"ln":"Chhuriakala, Durg","sn":"Chhuriakala"},"7746":{"ln":"Manpur, Durg","sn":"Manpur"},"7747":{"ln":"Mohla, Durg","sn":"Mohla"},"7748":{"ln":"Dallirajhara, Durg","sn":"Dallirajhara"},"7749":{"ln":"Balod, Durg","sn":"Balod"},"7750":{"ln":"Marwahi, Bilaspur","sn":"Marwahi"},"7751":{"ln":"Pendra, Bilaspur","sn":"Pendra"},"7752":{"ln":"Bilaspur, Bilaspur","sn":"Bilaspur"},"7753":{"ln":"Kota, Bilaspur","sn":"Kota"},"7754":{"ln":"Pandaria, Bilaspur","sn":"Pandaria"},"7755":{"ln":"Mungeli, Bilaspur","sn":"Mungeli"},"7756":{"ln":"Lormi, Bilaspur","sn":"Lormi"},"7757":{"ln":"Shakti, Bilaspur","sn":"Shakti"},"7758":{"ln":"Dabhara, Bilaspur","sn":"Dabhara"},"7759":{"ln":"Korba, Bilaspur","sn":"Korba"},"7761":{"ln":"Tapkara, Raigarh","sn":"Tapkara"},"7762":{"ln":"Raigarh, Raigarh","sn":"Raigarh"},"7763":{"ln":"Jashpurnagar, Raigarh","sn":"Jashpurnagar"},"7764":{"ln":"Kunkuri, Raigarh","sn":"Kunkuri"},"7765":{"ln":"Pathalgaon, Raigarh","sn":"Pathalgaon"},"7766":{"ln":"Dharamjaigarh, Raigarh","sn":"Dharamjaigarh"},"7767":{"ln":"Gharghoda, Raigarh","sn":"Gharghoda"},"7768":{"ln":"Saranggarh, Raigarh","sn":"Saranggarh"},"7769":{"ln":"Bagicha, Raigarh","sn":"Bagicha"},"7770":{"ln":"Kathdol, Sarguja (Ambikapur)","sn":"Kathdol"},"7771":{"ln":"Manendragarh, Sarguja (Ambikapur)","sn":"Manendragarh"},"7772":{"ln":"Wadrainagar, Sarguja (Ambikapur)","sn":"Wadrainagar"},"7773":{"ln":"Odgi, Sarguja (Ambikapur)","sn":"Odgi"},"7774":{"ln":"Ambikapur, Sarguja (Ambikapur)","sn":"Ambikapur"},"7775":{"ln":"Surajpur, Sarguja (Ambikapur)","sn":"Surajpur"},"7776":{"ln":"Premnagar, Sarguja (Ambikapur)","sn":"Premnagar"},"7777":{"ln":"Pratappur, Sarguja (Ambikapur)","sn":"Pratappur"},"7778":{"ln":"Semaria, Sarguja (Ambikapur)","sn":"Semaria"},"7779":{"ln":"Ramchandrapur, Sarguja (Ambikapur)","sn":"Ramchandrapur"},"7781":{"ln":"Narainpur, Jagdalpur","sn":"Narainpur"},"7782":{"ln":"Jagdalpur, Jagdalpur","sn":"Jagdalpur"},"7783":{"ln":"Padamkot, Jagdalpur","sn":"Padamkot"},"7784":{"ln":"Parasgaon, Jagdalpur","sn":"Parasgaon"},"7785":{"ln":"Makodi, Jagdalpur","sn":"Makodi"},"7786":{"ln":"Kondagaon, Jagdalpur","sn":"Kondagaon"},"7787":{"ln":"Jarwa, Jagdalpur","sn":"Jarwa"},"7788":{"ln":"Luckwada, Jagdalpur","sn":"Luckwada"},"7789":{"ln":"Bhairongarh, Jagdalpur","sn":"Bhairongarh"},"7790":{"ln":"Babaichichli, Narsinghpur","sn":"Babaichichli"},"7791":{"ln":"Gadarwara, Narsinghpur","sn":"Gadarwara"},"7792":{"ln":"Narsinghpur, Narsinghpur","sn":"Narsinghpur"},"7793":{"ln":"Kareli, Narsinghpur","sn":"Kareli"},"7794":{"ln":"Gotegaon, Narsinghpur","sn":"Gotegaon"},"7801":{"ln":"Deosar, Sidhi","sn":"Deosar"},"7802":{"ln":"Churhat, Sidhi","sn":"Churhat"},"7803":{"ln":"Majholi, Sidhi","sn":"Majholi"},"7804":{"ln":"Kusmi, Sidhi","sn":"Kusmi"},"7805":{"ln":"Singrauli, Sidhi","sn":"Singrauli"},"7806":{"ln":"Chitrangi, Sidhi","sn":"Chitrangi"},"7810":{"ln":"Uproda, Bilaspur","sn":"Uproda"},"7811":{"ln":"Pasan, Bilaspur","sn":"Pasan"},"7812":{"ln":"Damoh, Damoh","sn":"Damoh"},"7813":{"ln":"Barpalli, Bilaspur","sn":"Barpalli"},"7815":{"ln":"Kathghora, Bilaspur","sn":"Kathghora"},"7816":{"ln":"Pali, Bilaspur","sn":"Pali"},"7817":{"ln":"Janjgir, Bilaspur","sn":"Janjgir"},"7818":{"ln":"Chandipara, Bilaspur","sn":"Chandipara"},"7819":{"ln":"Pandishankar, Bilaspur","sn":"Pandishankar"},"7820":{"ln":"Khairagarh, Durg","sn":"Khairagarh"},"7821":{"ln":"Dhamda, Durg","sn":"Dhamda"},"7822":{"ln":"Sidhi, Sidhi","sn":"Sidhi"},"7823":{"ln":"Dongargarh, Durg","sn":"Dongargarh"},"7824":{"ln":"Bemetara, Durg","sn":"Bemetara"},"7825":{"ln":"Berla, Durg","sn":"Berla"},"7826":{"ln":"Patan, Durg","sn":"Patan"},"7831":{"ln":"Balrampur, Sarguja (Ambikapur)","sn":"Balrampur"},"7832":{"ln":"Rajpur, Sarguja (Ambikapur)","sn":"Rajpur"},"7833":{"ln":"Udaipur, Sarguja (Ambikapur)","sn":"Udaipur"},"7834":{"ln":"Sitapur, Sarguja (Ambikapur)","sn":"Sitapur"},"7835":{"ln":"Bharathpur, Sarguja (Ambikapur)","sn":"Bharathpur"},"7836":{"ln":"Baikunthpur, Sarguja (Ambikapur)","sn":"Baikunthpur"},"7840":{"ln":"Koyelibeda, Jagdalpur","sn":"Koyelibeda"},"7841":{"ln":"Sarona, Jagdalpur","sn":"Sarona"},"7843":{"ln":"Durgakondal, Jagdalpur","sn":"Durgakondal"},"7844":{"ln":"Pakhanjur, Jagdalpur","sn":"Pakhanjur"},"7846":{"ln":"Garpa, Jagdalpur","sn":"Garpa"},"7847":{"ln":"Antagarh, Jagdalpur","sn":"Antagarh"},"7848":{"ln":"Keskal, Jagdalpur","sn":"Keskal"},"7849":{"ln":"Baderajpur, Jagdalpur","sn":"Baderajpur"},"7850":{"ln":"Bhanupratappur, Jagdalpur","sn":"Bhanupratappur"},"7851":{"ln":"Bhopalpatnam, Jagdalpur","sn":"Bhopalpatnam"},"7852":{"ln":"Toynar, Jagdalpur","sn":"Toynar"},"7853":{"ln":"Bijapur, Jagdalpur","sn":"Bijapur"},"7854":{"ln":"Ilamidi, Jagdalpur","sn":"Ilamidi"},"7855":{"ln":"Chingmut, Jagdalpur","sn":"Chingmut"},"7856":{"ln":"Dantewada, Jagdalpur","sn":"Dantewada"},"7857":{"ln":"Bacheli, Jagdalpur","sn":"Bacheli"},"7858":{"ln":"Kuakunda, Jagdalpur","sn":"Kuakunda"},"7859":{"ln":"Lohadigundah, Jagdalpur","sn":"Lohadigundah"},"7861":{"ln":"Netanar, Jagdalpur","sn":"Netanar"},"7862":{"ln":"Bastanar, Jagdalpur","sn":"Bastanar"},"7863":{"ln":"Chingamut, Jagdalpur","sn":"Chingamut"},"7864":{"ln":"Sukma, Jagdalpur","sn":"Sukma"},"7865":{"ln":"Gogunda, Jagdalpur","sn":"Gogunda"},"7866":{"ln":"Konta, Jagdalpur","sn":"Konta"},"7867":{"ln":"Bokaband, Jagdalpur","sn":"Bokaband"},"7868":{"ln":"Kanker, Jagdalpur","sn":"Kanker"},"8110":{"ln":"Anekal, Bangalore","sn":"Anekal"},"8111":{"ln":"Hosakote, Bangalore","sn":"Hosakote"},"8113":{"ln":"Channapatna, Bangalore","sn":"Channapatna"},"8117":{"ln":"Kanakapura, Bangalore","sn":"Kanakapura"},"8118":{"ln":"Nelamangala, Bangalore","sn":"Nelamangala"},"8119":{"ln":"Doddaballapur, Bangalore","sn":"Doddaballapur"},"8131":{"ln":"Gubbi, Tumkur","sn":"Gubbi"},"8132":{"ln":"Kunigal, Tumkur","sn":"Kunigal"},"8133":{"ln":"Chikkanayakanahalli, Tumkur","sn":"Chikkanayakanahalli"},"8134":{"ln":"Tiptur, Tumkur","sn":"Tiptur"},"8135":{"ln":"Sira, Tumkur","sn":"Sira"},"8136":{"ln":"Pavagada, Tumkur","sn":"Pavagada"},"8137":{"ln":"Madugiri, Tumkur","sn":"Madugiri"},"8138":{"ln":"Koratageri, Tumkur","sn":"Koratageri"},"8139":{"ln":"Turuvekere, Tumkur","sn":"Turuvekere"},"8150":{"ln":"Bagepalli, Kolar","sn":"Bagepalli"},"8151":{"ln":"Malur, Kolar","sn":"Malur"},"8152":{"ln":"Kolar, Kolar","sn":"Kolar"},"8153":{"ln":"Bangarpet, Kolar","sn":"Bangarpet"},"8154":{"ln":"Chintamani, Kolar","sn":"Chintamani"},"8155":{"ln":"Gowribidanur, Kolar","sn":"Gowribidanur"},"8156":{"ln":"Chikkaballapur, Kolar","sn":"Chikkaballapur"},"8157":{"ln":"Srinivasapur, Kolar","sn":"Srinivasapur"},"8158":{"ln":"Sidlaghatta, Kolar","sn":"Sidlaghatta"},"8159":{"ln":"Mulbagal, Kolar","sn":"Mulbagal"},"8170":{"ln":"Alur, Hassan","sn":"Alur"},"8172":{"ln":"Hassan, Hassan","sn":"Hassan"},"8173":{"ln":"Sakleshpur, Hassan","sn":"Sakleshpur"},"8174":{"ln":"Arsikere, Hassan","sn":"Arsikere"},"8175":{"ln":"Holenarasipur, Hassan","sn":"Holenarasipur"},"8176":{"ln":"Cannarayapatna, Hassan","sn":"Cannarayapatna"},"8177":{"ln":"Belur, Hassan","sn":"Belur"},"8180":{"ln":"Basavapatna, Shimoga","sn":"Basavapatna"},"8181":{"ln":"Thirthahalli, Shimoga","sn":"Thirthahalli"},"8182":{"ln":"Shimoga, Shimoga","sn":"Shimoga"},"8183":{"ln":"Sagar, Shimoga","sn":"Sagar"},"8184":{"ln":"Sorab, Shimoga","sn":"Sorab"},"8185":{"ln":"Hosanagara, Shimoga","sn":"Hosanagara"},"8186":{"ln":"Kargal, Shimoga","sn":"Kargal"},"8187":{"ln":"Shikaripura, Shimoga","sn":"Shikaripura"},"8188":{"ln":"Honnali, Shimoga","sn":"Honnali"},"8189":{"ln":"Channagiri, Shimoga","sn":"Channagiri"},"8190":{"ln":"Tallak, Devangere","sn":"Tallak"},"8191":{"ln":"Holalkere, Devangere","sn":"Holalkere"},"8192":{"ln":"Davangere, Devangere","sn":"Davangere"},"8193":{"ln":"Hiriyur, Devangere","sn":"Hiriyur"},"8194":{"ln":"Chitradurga, Devangere","sn":"Chitradurga"},"8195":{"ln":"Challakere, Devangere","sn":"Challakere"},"8196":{"ln":"Jagalur, Devangere","sn":"Jagalur"},"8198":{"ln":"Molkalmuru, Devangere","sn":"Molkalmuru"},"8199":{"ln":"Hosadurga, Devangere","sn":"Hosadurga"},"8221":{"ln":"Nanjangud, Mysore","sn":"Nanjangud"},"8222":{"ln":"Hunsur, Mysore","sn":"Hunsur"},"8223":{"ln":"K. R. Nagar, Mysore","sn":"K. R. Nagar"},"8224":{"ln":"Kollegal, Mysore","sn":"Kollegal"},"8225":{"ln":"Cowdahalli, Mysore","sn":"Cowdahalli"},"8226":{"ln":"Chamrajnagar, Mysore","sn":"Chamrajnagar"},"8227":{"ln":"T. Narsipur, Mysore","sn":"T. Narsipur"},"8228":{"ln":"H. D. Kote, Mysore","sn":"H. D. Kote"},"8229":{"ln":"Gundlupet, Mysore","sn":"Gundlupet"},"8230":{"ln":"Krishnarajapet, Mandya","sn":"Krishnarajapet"},"8231":{"ln":"Malavalli, Mandya","sn":"Malavalli"},"8232":{"ln":"Mandya, Mandya","sn":"Mandya"},"8234":{"ln":"Nagamangala, Mandya","sn":"Nagamangala"},"8236":{"ln":"Pandavpura, Mandya","sn":"Pandavpura"},"8251":{"ln":"Puttur, Dakshin-Kanada (Mangalore)","sn":"Puttur"},"8253":{"ln":"Hebri, Dakshin-Kanada (Mangalore)","sn":"Hebri"},"8254":{"ln":"Kundapur, Dakshin-Kanada (Mangalore)","sn":"Kundapur"},"8255":{"ln":"Bantwal, Dakshin-Kanada (Mangalore)","sn":"Bantwal"},"8256":{"ln":"Belthangady, Dakshin-Kanada (Mangalore)","sn":"Belthangady"},"8257":{"ln":"Sullia, Dakshin-Kanada (Mangalore)","sn":"Sullia"},"8258":{"ln":"Karkala, Dakshin-Kanada (Mangalore)","sn":"Karkala"},"8259":{"ln":"Shankarnarayana, Dakshin-Kanada (Mangalore)","sn":"Shankarnarayana"},"8261":{"ln":"Tarikere, Chikmagalur","sn":"Tarikere"},"8262":{"ln":"Chikmagalur, Chikmagalur","sn":"Chikmagalur"},"8263":{"ln":"Mudigere, Chikmagalur","sn":"Mudigere"},"8265":{"ln":"Koppa, Chikmagalur","sn":"Koppa"},"8266":{"ln":"Narsimharajapur, Chikmagalur","sn":"Narsimharajapur"},"8267":{"ln":"Kadur, Chikmagalur","sn":"Kadur"},"8272":{"ln":"Madikeri, Kodagu (Madikera)","sn":"Madikeri"},"8274":{"ln":"Virajpet, Kodagu (Madikera)","sn":"Virajpet"},"8276":{"ln":"Somwarpet, Kodagu (Madikera)","sn":"Somwarpet"},"8282":{"ln":"Bhadravati, Shimoga","sn":"Bhadravati"},"8283":{"ln":"Salkani, Uttar-Kanada (Karwar)","sn":"Salkani"},"8284":{"ln":"Haliyal, Uttar-Kanada (Karwar)","sn":"Haliyal"},"8288":{"ln":"Bailhongal, Belgaum","sn":"Bailhongal"},"8289":{"ln":"Athani, Belgaum","sn":"Athani"},"8301":{"ln":"Mundagod, Uttar-Kanada (Karwar)","sn":"Mundagod"},"8304":{"ln":"Kundgol, Hubli","sn":"Kundgol"},"8330":{"ln":"Saundatti, Belgaum","sn":"Saundatti"},"8331":{"ln":"Raibag (Kudchi), Belgaum","sn":"Raibag"},"8332":{"ln":"Gokak, Belgaum","sn":"Gokak"},"8333":{"ln":"Hukkeri (Sankeshwar), Belgaum","sn":"Hukkeri"},"8334":{"ln":"Mudalgi, Belgaum","sn":"Mudalgi"},"8335":{"ln":"Ramdurg, Belgaum","sn":"Ramdurg"},"8336":{"ln":"Khanapur, Belgaum","sn":"Khanapur"},"8337":{"ln":"Murugod, Belgaum","sn":"Murugod"},"8338":{"ln":"Chikkodi, Belgaum","sn":"Chikkodi"},"8339":{"ln":"Ainapur, Belgaum","sn":"Ainapur"},"8342":{"ln":"Margao, Panji","sn":"Margao"},"8343":{"ln":"Ponda, Panji","sn":"Ponda"},"8345":{"ln":"Sanguem, Panji","sn":"Sanguem"},"8346":{"ln":"Canacona (Quepem), Panji","sn":"Canacona"},"8350":{"ln":"Mudhol, Bijapur","sn":"Mudhol"},"8351":{"ln":"Hungund, Bijapur","sn":"Hungund"},"8352":{"ln":"Bijapur, Bijapur","sn":"Bijapur"},"8353":{"ln":"Jamkhandi, Bijapur","sn":"Jamkhandi"},"8354":{"ln":"Bagalkot, Bijapur","sn":"Bagalkot"},"8355":{"ln":"Bableshwar, Bijapur","sn":"Bableshwar"},"8356":{"ln":"Muddebihal, Bijapur","sn":"Muddebihal"},"8357":{"ln":"Badami, Bijapur","sn":"Badami"},"8358":{"ln":"Basavanabagewadi, Bijapur","sn":"Basavanabagewadi"},"8359":{"ln":"Indi, Bijapur","sn":"Indi"},"8370":{"ln":"Kalghatagi, Hubli","sn":"Kalghatagi"},"8371":{"ln":"Mundargi, Hubli","sn":"Mundargi"},"8372":{"ln":"Gadag, Hubli","sn":"Gadag"},"8373":{"ln":"Ranebennur, Hubli","sn":"Ranebennur"},"8375":{"ln":"Haveri, Hubli","sn":"Haveri"},"8376":{"ln":"Hirekerur, Hubli","sn":"Hirekerur"},"8377":{"ln":"Nargund, Hubli","sn":"Nargund"},"8378":{"ln":"Savanur, Hubli","sn":"Savanur"},"8379":{"ln":"Hangal, Hubli","sn":"Hangal"},"8380":{"ln":"Navalgund, Hubli","sn":"Navalgund"},"8381":{"ln":"Ron, Hubli","sn":"Ron"},"8382":{"ln":"Karwar, Uttar-Kanada (Karwar)","sn":"Karwar"},"8383":{"ln":"Joida, Uttar-Kanada (Karwar)","sn":"Joida"},"8384":{"ln":"Sirsi, Uttar-Kanada (Karwar)","sn":"Sirsi"},"8385":{"ln":"Bhatkal, Uttar-Kanada (Karwar)","sn":"Bhatkal"},"8386":{"ln":"Kumta, Uttar-Kanada (Karwar)","sn":"Kumta"},"8387":{"ln":"Honnavar, Uttar-Kanada (Karwar)","sn":"Honnavar"},"8388":{"ln":"Ankola, Uttar-Kanada (Karwar)","sn":"Ankola"},"8389":{"ln":"Siddapur, Uttar-Kanada (Karwar)","sn":"Siddapur"},"8391":{"ln":"Kudligi, Bellary","sn":"Kudligi"},"8392":{"ln":"Bellary, Bellary","sn":"Bellary"},"8393":{"ln":"Kurugodu, Bellary","sn":"Kurugodu"},"8394":{"ln":"Hospet, Bellary","sn":"Hospet"},"8395":{"ln":"Sandur, Bellary","sn":"Sandur"},"8396":{"ln":"Siruguppa, Bellary","sn":"Siruguppa"},"8397":{"ln":"H. B. Halli, Bellary","sn":"H. B. Halli"},"8398":{"ln":"Harapanahalli, Bellary","sn":"Harapanahalli"},"8399":{"ln":"Huvinahadagali, Bellary","sn":"Huvinahadagali"},"8402":{"ln":"Kanigiri, Ongole","sn":"Kanigiri"},"8403":{"ln":"Yerragondapalem, Ongole","sn":"Yerragondapalem"},"8404":{"ln":"Marturu, Ongole","sn":"Marturu"},"8405":{"ln":"Giddalur, Ongole","sn":"Giddalur"},"8406":{"ln":"Cumbum, Ongole","sn":"Cumbum"},"8407":{"ln":"Darsi, Ongole","sn":"Darsi"},"8408":{"ln":"Donakonda, Ongole","sn":"Donakonda"},"8411":{"ln":"Tanduru, Hyderabad","sn":"Tanduru"},"8412":{"ln":"Pargi, Hyderabad","sn":"Pargi"},"8413":{"ln":"Hyderabad West (Shamshabad), Hyderabad","sn":"Hyderabad"},"8414":{"ln":"Ibrahimpatnam, Hyderabad","sn":"Ibrahimpatnam"},"8415":{"ln":"Hyderabad East (Ghatkeswar), Hyderabad","sn":"Hyderabad"},"8416":{"ln":"Vikrabad, Hyderabad","sn":"Vikrabad"},"8417":{"ln":"Chevella, Hyderabad","sn":"Chevella"},"8418":{"ln":"Medchal, Hyderabad","sn":"Medchal"},"8419":{"ln":"Yellapur, Uttar-Kanada (Karwar)","sn":"Yellapur"},"8422":{"ln":"Chadchan, Bijapur","sn":"Chadchan"},"8424":{"ln":"Devarahippargi, Bijapur","sn":"Devarahippargi"},"8425":{"ln":"Biligi, Bijapur","sn":"Biligi"},"8426":{"ln":"Telgi, Bijapur","sn":"Telgi"},"8440":{"ln":"Nimburga, Gulbarga","sn":"Nimburga"},"8441":{"ln":"Sedam, Gulbarga","sn":"Sedam"},"8442":{"ln":"Jewargi, Gulbarga","sn":"Jewargi"},"8443":{"ln":"Shorapur, Gulbarga","sn":"Shorapur"},"8444":{"ln":"Hunsagi, Gulbarga","sn":"Hunsagi"},"8450":{"ln":"Andole (Jogipet), Sangareddy","sn":"Andole"},"8451":{"ln":"Zahirabad, Sangareddy","sn":"Zahirabad"},"8452":{"ln":"Medak, Sangareddy","sn":"Medak"},"8454":{"ln":"Gajwel, Sangareddy","sn":"Gajwel"},"8455":{"ln":"Sangareddy, Sangareddy","sn":"Sangareddy"},"8456":{"ln":"Narayankhed, Sangareddy","sn":"Narayankhed"},"8457":{"ln":"Siddipet, Sangareddy","sn":"Siddipet"},"8458":{"ln":"Narsapur, Sangareddy","sn":"Narsapur"},"8461":{"ln":"Dichpalli, Nizamabad","sn":"Dichpalli"},"8462":{"ln":"Nizamabad, Nizamabad","sn":"Nizamabad"},"8463":{"ln":"Armoor, Nizamabad","sn":"Armoor"},"8464":{"ln":"Madnur, Nizamabad","sn":"Madnur"},"8465":{"ln":"Yellareddy, Nizamabad","sn":"Yellareddy"},"8466":{"ln":"Banswada, Nizamabad","sn":"Banswada"},"8467":{"ln":"Bodhan, Nizamabad","sn":"Bodhan"},"8468":{"ln":"Kamareddy, Nizamabad","sn":"Kamareddy"},"8470":{"ln":"Afzalpur, Gulbarga","sn":"Afzalpur"},"8471":{"ln":"Mashal, Gulbarga","sn":"Mashal"},"8472":{"ln":"Gulbarga, Gulbarga","sn":"Gulbarga"},"8473":{"ln":"Yadgiri, Gulbarga","sn":"Yadgiri"},"8474":{"ln":"Chittapur, Gulbarga","sn":"Chittapur"},"8475":{"ln":"Chincholi, Gulbarga","sn":"Chincholi"},"8476":{"ln":"Wadi, Gulbarga","sn":"Wadi"},"8477":{"ln":"Aland, Gulbarga","sn":"Aland"},"8478":{"ln":"Kamalapur, Gulbarga","sn":"Kamalapur"},"8479":{"ln":"Shahapur, Gulbarga","sn":"Shahapur"},"8481":{"ln":"Basavakalyan, Bidar","sn":"Basavakalyan"},"8482":{"ln":"Bidar, Bidar","sn":"Bidar"},"8483":{"ln":"Humnabad, Bidar","sn":"Humnabad"},"8484":{"ln":"Bhalki, Bidar","sn":"Bhalki"},"8485":{"ln":"Aurad, Bidar","sn":"Aurad"},"8487":{"ln":"Shirahatti, Hubli","sn":"Shirahatti"},"8488":{"ln":"Sindagi, Bijapur","sn":"Sindagi"},"8490":{"ln":"Pamuru, Ongole","sn":"Pamuru"},"8491":{"ln":"Kanaganapalle, Anantpur (Guntakal)","sn":"Kanaganapalle"},"8492":{"ln":"Kambadur, Anantpur (Guntakal)","sn":"Kambadur"},"8493":{"ln":"Madakasira, Anantpur (Guntakal)","sn":"Madakasira"},"8494":{"ln":"Kadiri, Anantpur (Guntakal)","sn":"Kadiri"},"8495":{"ln":"Rayadurg, Anantpur (Guntakal)","sn":"Rayadurg"},"8496":{"ln":"Uravakonda, Anantpur (Guntakal)","sn":"Uravakonda"},"8497":{"ln":"Kalyandurg, Anantpur (Guntakal)","sn":"Kalyandurg"},"8498":{"ln":"Nallacheruvu (Tanakallu), Anantpur (Guntakal)","sn":"Nallacheruvu"},"8499":{"ln":"Podili, Ongole","sn":"Podili"},"8501":{"ln":"Kollapur, Mahabubnagar","sn":"Kollapur"},"8502":{"ln":"Alampur, Mahabubnagar","sn":"Alampur"},"8503":{"ln":"Makthal, Mahabubnagar","sn":"Makthal"},"8504":{"ln":"Atmakur, Mahabubnagar","sn":"Atmakur"},"8505":{"ln":"Kodangal, Mahabubnagar","sn":"Kodangal"},"8506":{"ln":"Narayanpet, Mahabubnagar","sn":"Narayanpet"},"8510":{"ln":"Koilkuntla, Kurnool","sn":"Koilkuntla"},"8512":{"ln":"Adoni, Kurnool","sn":"Adoni"},"8513":{"ln":"Nandikotkur, Kurnool","sn":"Nandikotkur"},"8514":{"ln":"Nandyal, Kurnool","sn":"Nandyal"},"8515":{"ln":"Banaganapalle, Kurnool","sn":"Banaganapalle"},"8516":{"ln":"Dronachalam, Kurnool","sn":"Dronachalam"},"8517":{"ln":"Atmakur, Kurnool","sn":"Atmakur"},"8518":{"ln":"Kurnool, Kurnool","sn":"Kurnool"},"8519":{"ln":"Allagadda, Kurnool","sn":"Allagadda"},"8520":{"ln":"Pattikonda, Kurnool","sn":"Pattikonda"},"8522":{"ln":"Peapalle, Kurnool","sn":"Peapalle"},"8523":{"ln":"Alur, Kurnool","sn":"Alur"},"8524":{"ln":"Srisailam, Kurnool","sn":"Srisailam"},"8525":{"ln":"Gudur (Kodumur), Kurnool","sn":"Gudur"},"8531":{"ln":"Deodurga, Raichur","sn":"Deodurga"},"8532":{"ln":"Raichur, Raichur","sn":"Raichur"},"8533":{"ln":"Gangavathi, Raichur","sn":"Gangavathi"},"8534":{"ln":"Yelburga, Raichur","sn":"Yelburga"},"8535":{"ln":"Sindhanur, Raichur","sn":"Sindhanur"},"8536":{"ln":"Kustagi, Raichur","sn":"Kustagi"},"8537":{"ln":"Lingsugur, Raichur","sn":"Lingsugur"},"8538":{"ln":"Manvi, Raichur","sn":"Manvi"},"8539":{"ln":"Koppal, Raichur","sn":"Koppal"},"8540":{"ln":"Nagarkurnool, Mahabubnagar","sn":"Nagarkurnool"},"8541":{"ln":"Achampet, Mahabubnagar","sn":"Achampet"},"8542":{"ln":"Mahabubnagar, Mahabubnagar","sn":"Mahabubnagar"},"8543":{"ln":"Wanaparthy, Mahabubnagar","sn":"Wanaparthy"},"8545":{"ln":"Amangallu, Mahabubnagar","sn":"Amangallu"},"8546":{"ln":"Gadwal, Mahabubnagar","sn":"Gadwal"},"8548":{"ln":"Shadnagar, Mahabubnagar","sn":"Shadnagar"},"8549":{"ln":"Kalwakurthy, Mahabubnagar","sn":"Kalwakurthy"},"8550":{"ln":"Yellanuru, Anantpur (Guntakal)","sn":"Yellanuru"},"8551":{"ln":"Garladinne, Anantpur (Guntakal)","sn":"Garladinne"},"8552":{"ln":"Gooty (Guntakal), Anantpur (Guntakal)","sn":"Gooty"},"8554":{"ln":"Anantapur, Anantpur (Guntakal)","sn":"Anantapur"},"8556":{"ln":"Hindupur, Anantpur (Guntakal)","sn":"Hindupur"},"8557":{"ln":"Penukonda, Anantpur (Guntakal)","sn":"Penukonda"},"8558":{"ln":"Tadipatri, Anantpur (Guntakal)","sn":"Tadipatri"},"8559":{"ln":"Dharmavaram, Anantpur (Guntakal)","sn":"Dharmavaram"},"8560":{"ln":"Jammalamadugu, Cuddapah","sn":"Jammalamadugu"},"8561":{"ln":"Rayachoti, Cuddapah","sn":"Rayachoti"},"8562":{"ln":"Cuddapah, Cuddapah","sn":"Cuddapah"},"8563":{"ln":"Kamalapuram (Yerraguntala), Cuddapah","sn":"Kamalapuram"},"8564":{"ln":"Proddatur, Cuddapah","sn":"Proddatur"},"8565":{"ln":"Rajampeta, Cuddapah","sn":"Rajampeta"},"8566":{"ln":"Koduru, Cuddapah","sn":"Koduru"},"8567":{"ln":"Lakkireddipalli, Cuddapah","sn":"Lakkireddipalli"},"8568":{"ln":"Pulivendla, Cuddapah","sn":"Pulivendla"},"8569":{"ln":"Badvel, Cuddapah","sn":"Badvel"},"8570":{"ln":"Kuppam, Chittoor","sn":"Kuppam"},"8571":{"ln":"Madanapalli, Chittoor","sn":"Madanapalli"},"8572":{"ln":"Chittoor, Chittoor","sn":"Chittoor"},"8573":{"ln":"Bangarupalem, Chittoor","sn":"Bangarupalem"},"8576":{"ln":"Satyavedu, Chittoor","sn":"Satyavedu"},"8577":{"ln":"Putturu, Chittoor","sn":"Putturu"},"8578":{"ln":"Srikalahasthi, Chittoor","sn":"Srikalahasthi"},"8579":{"ln":"Palmaneru, Chittoor","sn":"Palmaneru"},"8581":{"ln":"Punganur, Chittoor","sn":"Punganur"},"8582":{"ln":"B. Kothakota, Chittoor","sn":"B. Kothakota"},"8583":{"ln":"Sodam, Chittoor","sn":"Sodam"},"8584":{"ln":"Piler, Chittoor","sn":"Piler"},"8585":{"ln":"Pakala, Chittoor","sn":"Pakala"},"8586":{"ln":"Vayalpad, Chittoor","sn":"Vayalpad"},"8587":{"ln":"Venkatgirikota, Chittoor","sn":"Venkatgirikota"},"8588":{"ln":"Vaimpalli, Cuddapah","sn":"Vaimpalli"},"8589":{"ln":"Siddavattam, Cuddapah","sn":"Siddavattam"},"8592":{"ln":"Ongole, Ongole","sn":"Ongole"},"8593":{"ln":"Medarmetla, Ongole","sn":"Medarmetla"},"8594":{"ln":"Chirala, Ongole","sn":"Chirala"},"8596":{"ln":"Markapur, Ongole","sn":"Markapur"},"8598":{"ln":"Kandukuru, Ongole","sn":"Kandukuru"},"8599":{"ln":"Ulvapadu, Ongole","sn":"Ulvapadu"},"8620":{"ln":"Udaygiri, Nellore","sn":"Udaygiri"},"8621":{"ln":"Rapur (Podalakur), Nellore","sn":"Rapur"},"8622":{"ln":"Kovvur, Nellore","sn":"Kovvur"},"8623":{"ln":"Sullurpet, Nellore","sn":"Sullurpet"},"8624":{"ln":"Gudur, Nellore","sn":"Gudur"},"8625":{"ln":"Venkatgiri, Nellore","sn":"Venkatgiri"},"8626":{"ln":"Kavali, Nellore","sn":"Kavali"},"8627":{"ln":"Atmakur, Nellore","sn":"Atmakur"},"8628":{"ln":"Chejerla, Nellore","sn":"Chejerla"},"8629":{"ln":"Vinjamuru, Nellore","sn":"Vinjamuru"},"8640":{"ln":"Krosuru, Guntur","sn":"Krosuru"},"8641":{"ln":"Sattenapalli, Guntur","sn":"Sattenapalli"},"8642":{"ln":"Palnad (Macherala), Guntur","sn":"Palnad"},"8643":{"ln":"Bapatla, Guntur","sn":"Bapatla"},"8644":{"ln":"Tenali, Guntur","sn":"Tenali"},"8645":{"ln":"Mangalagiri, Guntur","sn":"Mangalagiri"},"8646":{"ln":"Vinukonda, Guntur","sn":"Vinukonda"},"8647":{"ln":"Narsaraopet, Guntur","sn":"Narsaraopet"},"8648":{"ln":"Repalle, Guntur","sn":"Repalle"},"8649":{"ln":"Piduguralla, Guntur","sn":"Piduguralla"},"8654":{"ln":"Jaggayyapet, Vijayawada","sn":"Jaggayyapet"},"8656":{"ln":"Nuzvidu, Vijayawada","sn":"Nuzvidu"},"8659":{"ln":"Mylavaram, Vijayawada","sn":"Mylavaram"},"8671":{"ln":"Divi (Challapalli), Vijayawada","sn":"Divi"},"8672":{"ln":"Bandar (Machilipatnam), Vijayawada","sn":"Bandar"},"8673":{"ln":"Tirivuru, Vijayawada","sn":"Tirivuru"},"8674":{"ln":"Gudivada, Vijayawada","sn":"Gudivada"},"8676":{"ln":"Vuyyuru, Vijayawada","sn":"Vuyyuru"},"8677":{"ln":"Kaikaluru, Vijayawada","sn":"Kaikaluru"},"8678":{"ln":"Nandigama, Vijayawada","sn":"Nandigama"},"8680":{"ln":"Nidamanur (Hillcolony), Nalgonda","sn":"Nidamanur"},"8681":{"ln":"Chandoor, Nalgonda","sn":"Chandoor"},"8682":{"ln":"Nalgonda, Nalgonda","sn":"Nalgonda"},"8683":{"ln":"Hazurnagar, Nalgonda","sn":"Hazurnagar"},"8684":{"ln":"Suryapet, Nalgonda","sn":"Suryapet"},"8685":{"ln":"Bhongir, Nalgonda","sn":"Bhongir"},"8689":{"ln":"Miryalguda, Nalgonda","sn":"Miryalguda"},"8691":{"ln":"Devarakonda, Nalgonda","sn":"Devarakonda"},"8692":{"ln":"Nampalle, Nalgonda","sn":"Nampalle"},"8693":{"ln":"Thungaturthy, Nalgonda","sn":"Thungaturthy"},"8694":{"ln":"Ramannapet, Nalgonda","sn":"Ramannapet"},"8710":{"ln":"Cherial, Warangal","sn":"Cherial"},"8711":{"ln":"Wardhannapet (Ghanapur), Warangal","sn":"Wardhannapet"},"8713":{"ln":"Parkal, Warangal","sn":"Parkal"},"8715":{"ln":"Mulug, Warangal","sn":"Mulug"},"8716":{"ln":"Jangaon, Warangal","sn":"Jangaon"},"8717":{"ln":"Eturnagaram, Warangal","sn":"Eturnagaram"},"8718":{"ln":"Narasampet, Warangal","sn":"Narasampet"},"8719":{"ln":"Mahabubbad, Warangal","sn":"Mahabubbad"},"8720":{"ln":"Mahadevapur, Karimnagar","sn":"Mahadevapur"},"8721":{"ln":"Husnabad, Karimnagar","sn":"Husnabad"},"8723":{"ln":"Sircilla, Karimnagar","sn":"Sircilla"},"8724":{"ln":"Jagtial, Karimnagar","sn":"Jagtial"},"8725":{"ln":"Metpalli, Karimnagar","sn":"Metpalli"},"8727":{"ln":"Huzurabad, Karimnagar","sn":"Huzurabad"},"8728":{"ln":"Peddapalli, Karimnagar","sn":"Peddapalli"},"8729":{"ln":"Manthani, Karimnagar","sn":"Manthani"},"8730":{"ln":"Khanapur (Ap), Adilabad","sn":"Khanapur"},"8731":{"ln":"Utnor, Adilabad","sn":"Utnor"},"8732":{"ln":"Adilabad, Adilabad","sn":"Adilabad"},"8733":{"ln":"Asifabad, Adilabad","sn":"Asifabad"},"8734":{"ln":"Nirmal, Adilabad","sn":"Nirmal"},"8735":{"ln":"Bellampalli, Adilabad","sn":"Bellampalli"},"8736":{"ln":"Mancherial, Adilabad","sn":"Mancherial"},"8737":{"ln":"Chinnor, Adilabad","sn":"Chinnor"},"8738":{"ln":"Sirpurkagaznagar, Adilabad","sn":"Sirpurkagaznagar"},"8739":{"ln":"Jannaram (Luxittipet), Adilabad","sn":"Jannaram"},"8740":{"ln":"Aswaraopet, Khammam","sn":"Aswaraopet"},"8741":{"ln":"Sudhimalla (Tekulapalli), Khammam","sn":"Sudhimalla"},"8742":{"ln":"Khammam, Khammam","sn":"Khammam"},"8743":{"ln":"Bhadrachalam, Khammam","sn":"Bhadrachalam"},"8744":{"ln":"Kothagudem, Khammam","sn":"Kothagudem"},"8745":{"ln":"Yellandu, Khammam","sn":"Yellandu"},"8746":{"ln":"Bhooragamphad (Manuguru), Khammam","sn":"Bhooragamphad"},"8747":{"ln":"Nuguru (Cherla), Khammam","sn":"Nuguru"},"8748":{"ln":"V. R. Puram, Khammam","sn":"V. R. Puram"},"8749":{"ln":"Madhira, Khammam","sn":"Madhira"},"8751":{"ln":"Boath (Echoda), Adilabad","sn":"Boath"},"8752":{"ln":"Bhainsa, Adilabad","sn":"Bhainsa"},"8753":{"ln":"Outsarangapalle, Adilabad","sn":"Outsarangapalle"},"8761":{"ln":"Sathupalli, Khammam","sn":"Sathupalli"},"8811":{"ln":"Polavaram, Eluru","sn":"Polavaram"},"8812":{"ln":"Eluru, Eluru","sn":"Eluru"},"8813":{"ln":"Kovvur (Nidadavolu), Eluru","sn":"Kovvur"},"8814":{"ln":"Narsapur (Palakole), Eluru","sn":"Narsapur"},"8816":{"ln":"Bhimavaram, Eluru","sn":"Bhimavaram"},"8818":{"ln":"Tadepalligudem, Eluru","sn":"Tadepalligudem"},"8819":{"ln":"Tanuku, Eluru","sn":"Tanuku"},"8821":{"ln":"Jangareddygudem, Eluru","sn":"Jangareddygudem"},"8823":{"ln":"Chintalapudi, Eluru","sn":"Chintalapudi"},"8829":{"ln":"Bhimadole, Eluru","sn":"Bhimadole"},"8852":{"ln":"Peddapuram, Rajahmundri","sn":"Peddapuram"},"8854":{"ln":"Tuni, Rajahmundri","sn":"Tuni"},"8855":{"ln":"Mandapeta (Ravulapalem), Rajahmundri","sn":"Mandapeta"},"8856":{"ln":"Amalapuram, Rajahmundri","sn":"Amalapuram"},"8857":{"ln":"Ramachandrapuram, Rajahmundri","sn":"Ramachandrapuram"},"8862":{"ln":"Razole, Rajahmundri","sn":"Razole"},"8863":{"ln":"Chavitidibbalu, Rajahmundri","sn":"Chavitidibbalu"},"8864":{"ln":"Rampachodavaram, Rajahmundri","sn":"Rampachodavaram"},"8865":{"ln":"Yelavaram, Rajahmundri","sn":"Yelavaram"},"8868":{"ln":"Yeleswaram, Rajahmundri","sn":"Yeleswaram"},"8869":{"ln":"Pithapuram, Rajahmundri","sn":"Pithapuram"},"8922":{"ln":"Vizayanagaram, Vizayanagaram","sn":"Vizayanagaram"},"8924":{"ln":"Anakapalle, Visakhapatnam","sn":"Anakapalle"},"8931":{"ln":"Yelamanchili, Visakhapatnam","sn":"Yelamanchili"},"8932":{"ln":"Narsipatnam, Visakhapatnam","sn":"Narsipatnam"},"8933":{"ln":"Bheemunipatnam, Visakhapatnam","sn":"Bheemunipatnam"},"8934":{"ln":"Chodavaram, Visakhapatnam","sn":"Chodavaram"},"8935":{"ln":"Paderu, Visakhapatnam","sn":"Paderu"},"8936":{"ln":"Araku, Visakhapatnam","sn":"Araku"},"8937":{"ln":"Chintapalle, Visakhapatnam","sn":"Chintapalle"},"8938":{"ln":"Sileru, Visakhapatnam","sn":"Sileru"},"8941":{"ln":"Palakonda (Rajam), Srikakulam","sn":"Palakonda"},"8942":{"ln":"Srikakulam, Srikakulam","sn":"Srikakulam"},"8944":{"ln":"Bobbili, Vizayanagaram","sn":"Bobbili"},"8945":{"ln":"Tekkali (Palasa), Srikakulam","sn":"Tekkali"},"8946":{"ln":"Pathapatnam (Hiramandalam), Srikakulam","sn":"Pathapatnam"},"8947":{"ln":"Sompeta, Srikakulam","sn":"Sompeta"},"8952":{"ln":"Chepurupalli (Garividi), Vizayanagaram","sn":"Chepurupalli"},"8963":{"ln":"Parvathipuram, Vizayanagaram","sn":"Parvathipuram"},"8964":{"ln":"Saluru, Vizayanagaram","sn":"Saluru"},"8965":{"ln":"Gajapathinagaram, Vizayanagaram","sn":"Gajapathinagaram"},"8966":{"ln":"Srungavarapukota (Kothvls), Vizayanagaram","sn":"Srungavarapukota"}};
 ilib.data.area_FR = {"1":{"ln":"Paris (Ile-de-France area)","sn":"Paris"},"3":{"ln":"Northeast France","sn":"Northeast France"},"4":{"ln":"Southeast France","sn":"Southeast France"},"9":{"ln":"Voice over IP services","sn":"Voice over IP"},"262":{"ln":"Islands of Réunion and Mayotte","sn":"Réunion"},"508":{"ln":"Saint Pierre and Miquelon Islands","sn":"Saint Pierre and Miquelon"},"590":{"ln":"Guadaloupe Island","sn":"Guadaloupe"},"594":{"ln":"French Guiana","sn":"French Guiana"},"596":{"ln":"Martinique Island","sn":"Martinique"},"2.":{"ln":"Northwest France","sn":"Northwest France"},"26.":{"ln":"Northwest France","sn":"Northwest France"},"5.":{"ln":"Southwest France","sn":"Southwest France"},"50.":{"ln":"Southwest France","sn":"Southwest France"},"59.":{"ln":"Southwest France","sn":"Southwest France"}};
@@ -24236,6 +24389,7 @@ phone/phonenum.js
 // !data iddarea area extarea extstates phoneres
 
 /**
+ * @class
  * Create an instance that can geographically locate a phone number.<p>
  * 
  * The location of the number is calculated according to the following rules:
@@ -24302,7 +24456,6 @@ phone/phonenum.js
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * @class
  * @constructor
  * @param {Object} options parameters controlling the geolocation of the phone number.
  */
