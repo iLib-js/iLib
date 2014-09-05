@@ -77,3 +77,23 @@ function testMeasurementTemperature2() {
     assertEquals("temperature", measurement.getMeasure());
 }
 
+function testMeasurementDigitalStorage1() {
+    var measurement = new ilib.Measurement({
+	amount: 100,
+	unit: "mb"
+    });
+    
+    assertNotNull(measurement);
+    assertEquals("digitalStorage", measurement.getMeasure());
+}
+
+function testMeasurementDigitalStorage2() {
+    var measurement = new ilib.Measurement({
+	amount: 1204,
+	unit: "tB"
+    });
+    
+    assertNotNull(measurement);
+    assertEquals("digitalStorage", measurement.getMeasure());
+}
+

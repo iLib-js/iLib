@@ -18,17 +18,13 @@
  */
 
 function testLengthConstructor() {
-    
-    var s = new ilib.Measurement({
+
+    var m = new ilib.Measurement.Length({
         unit: "meter",
-        amount: 2
+	amount: 2
     });
-	var m = new ilib.Measurement.Length({
-		unit: "meter",
-		amount: 2
-	});
 	
-	assertNotNull(m);
+    assertNotNull(m);
 }
 
 function testLengthConvertMetersToMiles() {

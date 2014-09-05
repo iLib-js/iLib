@@ -80,4 +80,5 @@ unitfmt.js
 units/length.js
 units/speed.js
 units/temperature.js
+units/digitalStorage.js
 */

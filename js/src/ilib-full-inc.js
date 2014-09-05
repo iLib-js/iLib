@@ -76,4 +76,6 @@ unit.js
 unitfmt.js
 units/length.js
 units/speed.js
+units/digitalStorage.js
+units/temperature.js
 */
