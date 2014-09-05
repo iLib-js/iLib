@@ -646,9 +646,7 @@ ilib.PhoneNumber.prototype = {
 			newState,
 			dot,
 			handlerMethod,
-			result,
-			loadName,
-			loadLocale;
+			result;
 
 		regionSettings = regionData;
 		stateData = regionSettings.stateData;
