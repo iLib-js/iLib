@@ -29,9 +29,9 @@ function suite() {
     
     var suites = [
         "testlengths.js",
-	"testspeeds.js",
-	"testtemp.js",
-	"testdigitalstoreage.js"
+		"testspeeds.js",
+		"testtemp.js",
+		"testdigitalstoreage.js"
     ];
     
     suites.forEach(function (path) {
