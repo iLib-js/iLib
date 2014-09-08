@@ -83,7 +83,7 @@ ilib.List.prototype = {
 		if (this.lastElement) {
 			this.lastElement.next = {
 				value: obj,
-				next: undefined,
+				next: null,
 				prev: this.lastElement
 			};
 			this.lastElement = this.lastElement.next;
@@ -94,17 +94,57 @@ ilib.List.prototype = {
 	},
 	
 	/**
+	 * Deep compare of objects.
+	 * 
+	 * @param {*} left
+	 * @param {*} right
+	 * @returns {boolean} true if equal, false otherwise
+	 */
+	_compare: function(left, right) {
+		if (typeof(left) === 'object' && typeof(right) === 'object') {
+			for (var p in left) {
+				if (typeof(left[p]) !== 'undefined') {
+					if (typeof(right[p]) === 'undefined' || !this._compare(left[p], right[p])) {
+						return false;
+					}
+				}
+			}
+			for (var p in right) {
+				if (typeof(right[p]) !== 'undefined') {
+					if (typeof(left[p]) === 'undefined' || !this._compare(left[p], right[p])) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else {
+			return left === right;
+		}
+	},
+	
+	/**
 	 * @protected
 	 */
-	find: function(obj) {
+	_find: function(obj) {
 		var element = this.firstElement;
 		while (element) {
-			if (element.value === obj) {
+			if (this._compare(element.value, obj)) {
 				return element;
 			}
 			element = element.next;
 		}
 		return undefined;
+	},
+	
+	/**
+	 * Find the given element in the list. If it is there, this
+	 * method returns true, otherwise it returns false.
+	 * 
+	 * @param {*} obj object to find
+	 * @return {boolean} true if the object is in the list, false otherwise
+	 */
+	contains: function(obj) {
+		return !!this._find(obj);
 	},
 	
 	/**
@@ -126,11 +166,11 @@ ilib.List.prototype = {
 			var newElement = {
 				value: obj,
 				next: this.firstElement,
-				prev: undefined
+				prev: null
 			};
 			this.firstElement = newElement;
 		} else {
-			var refElement = this.find(reference);
+			var refElement = this._find(reference);
 			
 			if (!refElement) {
 				return false;
@@ -171,12 +211,12 @@ ilib.List.prototype = {
 		if (this.lastElement.value === reference) {
 			this.lastElement.next = {
 				value: obj,
-				next: undefined,
+				next: null,
 				prev: this.lastElement
 			};
 			this.lastElement = this.lastElement.next;
 		} else {
-			var refElement = this.find(reference);
+			var refElement = this._find(reference);
 			
 			if (!refElement) {
 				return false;
@@ -195,7 +235,8 @@ ilib.List.prototype = {
 
 	/**
 	 * Remove the first element of the list and return it.
-	 * @returns {*} Object at the beginning of the list
+	 * @returns {*} Object at the beginning of the list, or undefined
+	 * if the list is empty
 	 */
 	removeFirst: function () {
 		if (!this.firstElement) {
@@ -209,7 +250,7 @@ ilib.List.prototype = {
 			this.lastElement = undefined;
 		} else {
 			this.firstElement = this.firstElement.next;
-			this.firstElement.prev = undefined;
+			this.firstElement.prev = null;
 		}
 		
 		this.count--;
@@ -218,7 +259,8 @@ ilib.List.prototype = {
 
 	/**
 	 * Remove the last element of the list and return it.
-	 * @returns {*} Object at the end of the list
+	 * @returns {*} Object at the end of the list, or undefined
+	 * if the list is empty
 	 */
 	removeLast: function () {
 		if (!this.lastElement) {
@@ -232,7 +274,7 @@ ilib.List.prototype = {
 			this.lastElement = undefined;
 		} else {
 			this.lastElement = this.lastElement.prev;
-			this.lastElement.next = undefined;
+			this.lastElement.next = null;
 		}
 		
 		this.count--;
@@ -297,7 +339,7 @@ ilib.List.prototype = {
 				if (ret) {
 					this.pointer = ret.next;
 				}
-				return ret && ret.value;
+				return ret ? ret.value : undefined;
 			};
 		};
 		

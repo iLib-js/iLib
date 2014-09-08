@@ -97,12 +97,12 @@ function testListConstructorStringElements() {
 }
 
 function testListConstructorMixedElements() {
-    var arr = ["a", 0, "b", 1, "c", 2, "d", 3, true, false, {a:1,b:2}, function() {return 4;}];
+    var arr = ["a", 0, "b", 1, "c", 2, "d", 3, true, false, {a:1,b:2}, ["a", "b", "c"], function() {return 4;}];
     
     var ll = new ilib.List(arr);
 	assertNotUndefined(ll);
 	
-	assertEquals(12, ll.length());
+	assertEquals(13, ll.length());
 	assertEquals("a", ll.removeFirst());
 	assertEquals(0, ll.removeFirst());
 	assertEquals("b", ll.removeFirst());
@@ -114,6 +114,7 @@ function testListConstructorMixedElements() {
 	assertEquals(true, ll.removeFirst());
 	assertEquals(false, ll.removeFirst());
 	assertObjectEquals({a:1,b:2}, ll.removeFirst());
+	assertObjectEquals(["a", "b", "c"], ll.removeFirst());
 	assertEquals("function", typeof(ll.removeFirst()));
 	assertUndefined(ll.removeFirst());
 }
@@ -798,4 +799,68 @@ function testListInsertAfterUndefinedObj() {
 	assertFalse(ll.insertAfter("a", undefined));
 	
 	assertEquals(4, ll.length());
+}
+
+function testListContains() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.contains("b"));
+}
+
+function testListContainsNotThere() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.contains("x"));
+}
+
+function testListContainsFalse() {
+    var arr = ["a", 0, "b", false, 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.contains(false));
+}
+
+function testListContainsObject() {
+    var arr = ["a", 0, "b", {a:1, b:2}, 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.contains({a:1, b:2}));
+}
+
+function testListContainsUndefined() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.contains(undefined));
+}
+
+function testListContainsEmpty() {
+    var ll = new ilib.List();
+	assertNotUndefined(ll);
+	
+	assertEquals(0, ll.length());
+	
+	assertFalse(ll.contains("b"));
 }
