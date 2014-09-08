@@ -32,7 +32,7 @@ function suite() {
 		"testspeeds.js",
 		"testtemp.js",
 		"testdigitalstoreage.js",
-		"testUniknown.js"
+		"testUnknown.js"
 		
     ];
     
