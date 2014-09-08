@@ -18880,14 +18880,26 @@ ilib.Measurement = function(options) {
 	if (!options || typeof(options.unit) === 'undefined') {
 		return undefined;
 	}
-	
+
 	this.amount = options.amount || 0;
-	
-	// map the requested units to the normalized form
-	
-	var measure = "speed"; // temporary
-	
-	return new ilib.Measurement._constructors[measure](options);
+	var measure;
+
+	for (var c in ilib.Measurement._constructors) {
+		var measurement = ilib.Measurement._constructors[c];
+		var unit = measurement.aliases[options.unit];
+		if (typeof(unit) !== 'undefined') {
+			measure = c;
+			break;
+		}
+	}
+
+	if (!measure || typeof(measure) === 'undefined') {
+		return new ilib.Measurement.Unknown({
+                    unit: options.unit,
+                    amount: options.amount
+                });                
+	} else 
+            return new ilib.Measurement._constructors[measure](options);
 };
 
 /**
@@ -19000,8 +19012,9 @@ ilib.Measurement.prototype = {
 	 * or undefined if the requested units are for a different
 	 * measurement type
 	 */
-	convert: function(to) {}
+	convert: function(to) {}      
 };
+
 /*
  * unitfmt.js - Unit formatter class
  * 
@@ -19299,7 +19312,7 @@ ilib.Measurement.Length = function (options) {
 			if (options.amount.getMeasure() === "length") {
 				this.amount = ilib.Measurement.Length.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
-				throw "Cannot convert units " + options.unit + " to a length";
+				throw "Cannot convert unit " + options.amount.unit + " to a length";
 			}
 		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);
@@ -19360,52 +19373,67 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 
 ilib.Measurement.Length.aliases = {
 	"miles": "mile",
+	"mile":"mile",
 	"nauticalmiles": "nauticalmile",
 	"nautical mile": "nauticalmile",
 	"nautical miles": "nauticalmile",
+	"nauticalmile":"nauticalmile",
 	"yards": "yard",
+	"yard": "yard",
 	"feet": "foot",
+	"foot": "foot",
 	"inches": "inch",
+	"inch": "inch",
 	"meters": "meter",
 	"metre": "meter",
 	"metres": "meter",
 	"m": "meter",
+	"meter": "meter",        
 	"micrometers": "micrometer",
 	"micrometres": "micrometer",
 	"micrometre": "micrometer",
 	"µm": "micrometer",
+	"micrometer": "micrometer",
 	"millimeters": "millimeter",
 	"millimetres": "millimeter",
 	"millimetre": "millimeter",
 	"mm": "millimeter",
+	"millimeter": "millimeter",
 	"centimeters": "centimeter",
 	"centimetres": "centimeter",
 	"centimetre": "centimeter",
 	"cm": "centimeter",
+	"centimeter": "centimeter",
 	"decimeters": "decimeter",
 	"decimetres": "decimeter",
 	"decimetre": "decimeter",
 	"dm": "decimeter",
+	"decimeter": "decimeter",
 	"decameters": "decameter",
 	"decametres": "decameter",
 	"decametre": "decameter",
 	"dam": "decameter",
+	"decameter": "decameter",
 	"hectometers": "hectometer",
 	"hectometres": "hectometer",
 	"hectometre": "hectometer",
 	"hm": "hectometer",
+	"hectometer": "hectometer",
 	"kilometers": "kilometer",
 	"kilometres": "kilometer",
 	"kilometre": "kilometer",
 	"km": "kilometer",
+	"kilometer": "kilometer",
 	"megameters": "megameter",
 	"megametres": "megameter",
 	"megametre": "megameter",
 	"Mm": "megameter",
+	"megameter": "megameter",
 	"gigameters": "gigameter",
 	"gigametres": "gigameter",
 	"gigametre": "gigameter",
-	"Gm": "gigameter"
+	"Gm": "gigameter",
+	"gigameter": "gigameter"
 };
 
 /**
@@ -19417,15 +19445,13 @@ ilib.Measurement.Length.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Length.convert = function(to, from, length) {
-        from = this.aliases[from] || from;
-        to = this.aliases[to] || to;
+    from = ilib.Measurement.Length.aliases[from] || from;
+    to = ilib.Measurement.Length.aliases[to] || to;
 	var fromRow = ilib.Measurement.Length.ratios[from];
 	var toRow = ilib.Measurement.Length.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
 	}
-	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
-	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
 	return length * fromRow[toRow[0]];
 };
 
@@ -19443,6 +19469,7 @@ ilib.Measurement.Length.getMeasures = function () {
 
 //register with the factory method
 ilib.Measurement._constructors["length"] = ilib.Measurement.Length;
+
 /*
  * Speed.js - Unit conversions for Speeds/speeds
  * 
@@ -19490,7 +19517,7 @@ ilib.Measurement.Speed = function (options) {
 			if (options.amount.getMeasure() === "speed") {
 				this.amount = ilib.Measurement.Speed.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
-				throw "Cannot convert units " + options.unit + " to a speed";
+				throw "Cannot convert units " + options.amount.unit + " to a speed";
 			}
 		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);
@@ -19540,35 +19567,52 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Speed.aliases = {
-        "foot/sec":"feet/sec",
-        "foot/s":"feet/sec",
-        "feet/s":"feet/sec",
-        "f/s":"feet/sec",
-        "meter/sec":"meters/sec",
-        "meter/s":"meters/sec",
-        "meters/s":"meters/sec",
-        "metre/sec":"meters/sec",
-        "metre/s":"meters/sec",
-        "metres/s":"meters/sec",
-        "mt/sec":"meters/sec",
-        "m/sec":"meters/sec",
-        "mt/s":"meters/sec",
-        "m/s":"meters/sec",
-        "kilometer/hour":"km/hour",
-        "kilometers/hour":"km/hour",
-        "km/h":"km/hour",
-        "kilometer/h":"km/hour",
-        "kilometers/h":"km/hour",
-        "km/hr":"km/hour",
-        "kilometer/hr":"km/hour",
-        "kilometers/hr":"km/hour",
-	"mile/hour": "miles/hour",
-        "mile/hr": "miles/hour",
-        "mile/h": "miles/hour",
-        "miles/h": "miles/hour",
-        "miles/hr": "miles/hour",
-        "kn":"knot",
-        "kt":"knot"        
+    "foot/sec":"feet/sec",
+    "foot/s":"feet/sec",
+    "feet/s":"feet/sec",
+    "f/s":"feet/sec",
+    "feet/sec" : "feet/sec",
+    "meter/sec":"meters/sec",
+    "meter/s":"meters/sec",
+    "meters/s":"meters/sec",
+    "metre/sec":"meters/sec",
+    "metre/s":"meters/sec",
+    "metres/s":"meters/sec",
+    "mt/sec":"meters/sec",
+    "m/sec":"meters/sec",
+    "mt/s":"meters/sec",
+    "m/s":"meters/sec",
+    "mps":"meters/sec",
+    "meters/sec":"meters/sec",
+    "kilometer/hour":"km/hour",
+    "kilometers/hour":"km/hour",
+    "kmh":"km/hour",
+    "km/h":"km/hour",
+    "kilometer/h":"km/hour",
+    "kilometers/h":"km/hour",
+    "km/hr":"km/hour",
+    "kilometer/hr":"km/hour",
+    "kilometers/hr":"km/hour",
+    "km/hour":"km/hour",
+    "mph": "miles/hour",
+    "mile/hour": "miles/hour",
+    "mile/hr": "miles/hour",
+    "mile/h": "miles/hour",
+    "miles/h": "miles/hour",
+    "miles/hr": "miles/hour",
+    "miles/hour":"miles/hour",
+    "kn": "knot",
+    "kt": "knot",
+    "kts": "knot",
+    "knots": "knot",
+    "nm/h": "knot",
+    "nm/hr": "knot",
+    "nauticalmile/h": "knot",
+    "nauticalmile/hr": "knot",
+    "nauticalmile/hour": "knot",
+    "nauticalmiles/hr": "knot",
+    "nauticalmiles/hour": "knot",
+    "knot":"knot"
 };
 
 /**
@@ -19580,15 +19624,13 @@ ilib.Measurement.Speed.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Speed.convert = function(to, from, speed) {
-        from = this.aliases[from] || from;
-        to = this.aliases[to] || to;
+    from = ilib.Measurement.Speed.aliases[from] || from;
+    to = ilib.Measurement.Speed.aliases[to] || to;
 	var fromRow = ilib.Measurement.Speed.ratios[from];
 	var toRow = ilib.Measurement.Speed.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
-	}
-	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
-	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
+	}	
 	var result = speed * fromRow[toRow[0]];
         result = + result.toFixed(5);
         return result;
@@ -19608,6 +19650,478 @@ ilib.Measurement.Speed.getMeasures = function () {
 
 //register with the factory method
 ilib.Measurement._constructors["speed"] = ilib.Measurement.Speed;
+
+/*
+ * digitalStorage.js - Unit conversions for Digital Storage
+ * 
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new DigitalStorage measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.DigitalStorage = function (options) {
+	this.unit = "Bit";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.DigitalStorage.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "digitalStorage") {
+				this.amount = ilib.Measurement.DigitalStorage.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert unit " + options.amount.unit + " to a digitalStorage";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.DigitalStorage.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.DigitalStorage.ratios = {
+    /*                bit          byte         kb             kB           mb           mB              gb           gB            tb            tB             pb            pB   */           
+    "Bit":      [ 1,   1,          0.125,      0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,     9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13,   8.8818e-16,   1.1102e-16  ],
+    "Byte":     [ 2,   8,          1,          0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,     7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13,   7.1054e-15,   8.8818e-16  ],  
+    "Kilobit":  [ 3,   1024,       128,        1,            0.125,        0.000976563,  0.00012207,    9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13  ],
+    "Kilobyte": [ 4,   8192,       1024,       8,            1,            0.0078125,    0.0009765631,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13  ],
+    "Megabit":  [ 5,   1.049e+6,   131072,     1024,         128,          1,            0.125,         0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10  ],
+    "Megabyte": [ 6,   8.389e+6,   1.049e+6,   8192,         1024,         8,            1,             0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10  ],
+    "Gigabit":  [ 7,   1.074e+9,   1.342e+8,   1.049e+6,     131072,       1024,         128,           1,            0.125,        0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7   ],
+    "Gigabyte": [ 8,   8.59e+9,    1.074e+9,   8.389e+6,     1.049e+6,     8192,         1024,          8,            1,            0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7   ],
+    "Terabit":  [ 9,   1.1e+12,    1.374e+11,  1.074e+9,     1.342e+8,     1.049e+6,     131072,        1024,         128,          1,            0.125,        0.000976563,  0.00012207  ],
+    "Terabyte": [ 10,  8.796e+12,  1.1e+12,    8.59e+9,      1.074e+9,     8.389e+6,     1.049e+6,      8192,         1024,         8,            1,            0.0078125,    0.000976563 ],
+    "Petabit":  [ 11,  1.126e+15,  1.407e+14,  1.1e+12,      1.374e+11,    1.074e+9,     1.342e+8,      1.049e+6,     131072,       1024,         128,          1,            0.125       ],
+    "Petabyte": [ 12,  9.007e+15,  1.126e+15,  8.796e+12,    1.1e+12,      8.59e+9,      1.074e+9,      8.389e+6,     1.049e+6,     8192,         1024,         8,            1           ] 
+};
+
+ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
+ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
+ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
+
+/**
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
+	return "digitalStorage";
+};
+
+/**
+ * Convert the current digitalStorage to another measure.
+ * 
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.DigitalStorage.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.DigitalStorage.aliases = {
+    "bits":"Bit",
+    "bit":"Bit",
+    "Bits":"Bit",
+    "Bit":"Bit",
+    "byte":"Byte",
+    "bytes":"Byte",
+    "Byte":"Byte",
+    "Bytes":"Byte",
+    "kilobits":"Kilobit",
+    "Kilobits":"Kilobit",
+    "KiloBits":"Kilobit",
+    "kiloBits":"Kilobit",
+    "kilobit":"Kilobit",
+    "Kilobit":"Kilobit",
+    "kiloBit":"Kilobit",
+    "KiloBit":"Kilobit",
+    "kb":"Kilobit",
+    "Kb":"Kilobit",
+    "kilobyte":"Kilobyte",
+    "Kilobyte":"Kilobyte",
+    "kiloByte":"Kilobyte",
+    "KiloByte":"Kilobyte",
+    "kilobytes":"Kilobyte",
+    "Kilobytes":"Kilobyte",
+    "kiloBytes":"Kilobyte",
+    "KiloBytes":"Kilobyte",
+    "kB":"Kilobyte",
+    "KB":"Kilobyte",
+    "megabit":"Megabit",
+    "Megabit":"Megabit",
+    "megaBit":"Megabit",
+    "MegaBit":"Megabit",
+    "megabits":"Megabit",
+    "Megabits":"Megabit",
+    "megaBits":"Megabit",
+    "MegaBits":"Megabit",
+    "Mb":"Megabit",
+    "mb":"Megabit",
+    "megabyte":"Megabyte",
+    "Megabyte":"Megabyte",
+    "megaByte":"Megabyte",
+    "MegaByte":"Megabyte",
+    "megabytes":"Megabyte",
+    "Megabytes":"Megabyte",
+    "megaBytes":"Megabyte",
+    "MegaBytes":"Megabyte",
+    "MB":"Megabyte",
+    "mB":"Megabyte",
+    "gigabit":"Gigabit",
+    "Gigabit":"Gigabit",
+    "gigaBit":"Gigabit",
+    "GigaBit":"Gigabit",
+    "gigabits":"Gigabit",
+    "Gigabits":"Gigabit",
+    "gigaBits":"Gigabyte",
+    "GigaBits":"Gigabit",
+    "Gb":"Gigabit",
+    "gb":"Gigabit",        
+    "gigabyte":"Gigabyte",
+    "Gigabyte":"Gigabyte",
+    "gigaByte":"Gigabyte",
+    "GigaByte":"Gigabyte",
+    "gigabytes":"Gigabyte",
+    "Gigabytes":"Gigabyte",
+    "gigaBytes":"Gigabyte",
+    "GigaBytes":"Gigabyte",
+    "GB":"Gigabyte",
+    "gB":"Gigabyte",
+    "terabit":"Terabit",
+    "Terabit":"Terabit",
+    "teraBit":"Terabit",
+    "TeraBit":"Terabit",
+    "terabits":"Terabit",
+    "Terabits":"Terabit",
+    "teraBits":"Terabit",
+    "TeraBits":"Terabit",
+    "tb":"Terabit",
+    "Tb":"Terabit",
+    "terabyte":"Terabyte",
+    "Terabyte":"Terabyte",
+    "teraByte":"Terabyte",
+    "TeraByte":"Terabyte",
+    "terabytes":"Terabyte",
+    "Terabytes":"Terabyte",
+    "teraBytes":"Terabyte",
+    "TeraBytes":"Terabyte",
+    "TB":"Terabyte",
+    "tB":"Terabyte",
+    "petabit":"Petabit",
+    "Petabit":"Petabit",
+    "petaBit":"Petabit",
+    "PetaBit":"Petabit",
+    "petabits":"Petabit",
+    "Petabits":"Petabit",
+    "petaBits":"Petabit",
+    "PetaBits":"Petabit",
+    "pb":"Petabit",
+    "Pb":"Petabit",
+    "petabyte":"Petabyte",
+    "Petabyte":"Petabyte",
+    "petaByte":"Petabyte",
+    "PetaByte":"Petabyte",
+    "petabytes":"Petabyte",
+    "Petabytes":"Petabyte",
+    "petaBytes":"Petabyte",
+    "PetaBytes":"Petabyte",
+    "PB":"Petabyte",
+    "pB":"Petabyte"
+};
+
+/**
+ * Convert a digitalStorage to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param digitalStorage {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.DigitalStorage.convert = function(to, from, digitalStorage) {
+    from = ilib.Measurement.DigitalStorage.aliases[from] || from;
+    to = ilib.Measurement.DigitalStorage.aliases[to] || to;
+	var fromRow = ilib.Measurement.DigitalStorage.ratios[from];
+	var toRow = ilib.Measurement.DigitalStorage.ratios[to];
+	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+		return undefined;
+	}	
+	var result = digitalStorage * fromRow[toRow[0]];
+        result = + result.toFixed(3);
+        return result;
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.DigitalStorage.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.DigitalStorage.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["digitalStorage"] = ilib.Measurement.DigitalStorage;
+
+/*
+ * temperature.js - Unit conversions for Temperature/temperature
+ * 
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new Temperature measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Temperature = function (options) {
+    this.unit = "celsius";
+	this.amount = 0;
+    this.aliases = ilib.Measurement.Temperature.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+                    if (options.amount.getMeasure() === "temperature") {
+                        this.amount = ilib.Measurement.Temperature.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+                    } else {
+                        throw "Cannot convert unit " + options.amount.unit + " to a temperature";
+                    }
+                } else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+                    }
+                }
+            };
+
+ilib.Measurement.Temperature.prototype = new ilib.Measurement({});
+ilib.Measurement.Temperature.prototype.parent = ilib.Measurement;
+ilib.Measurement.Temperature.prototype.constructor = ilib.Measurement.Temperature;
+
+/**
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Temperature.prototype.getMeasure = function() {
+	return "temperature";
+};
+
+ilib.Measurement.Temperature.aliases = {
+	"Celsius": "celsius",
+	"celsius": "celsius",
+	"C": "celsius",
+	"centegrade": "celsius",
+	"Centegrade": "celsius",
+	"fahrenheit": "fahrenheit",
+	"Fahrenheit": "fahrenheit",
+	"F": "fahrenheit",
+	"kelvin": "kelvin",
+	"K": "kelvin",
+	"Kelvin": "kelvin",
+    "°F": "fahrenheit",
+    "℉" : "fahrenheit",
+    "℃": "celsius",
+    "°C": "celsius"
+};
+
+/**
+ * Convert a temperature to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param temperature {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Temperature.convert = function(to, from, temperature) {
+        var result;
+        from = ilib.Measurement.Temperature.aliases[from] || from;
+        to = ilib.Measurement.Temperature.aliases[to] || to;
+        
+	if(from === "celsius") {
+            if(to === "fahrenheit") 
+                result = ((temperature * 9/5)+32);
+            else if (to === "kelvin")
+                result = (temperature + 273.15);
+        } else if( from === "fahrenheit") {
+            if (to === "celsius") 
+                result = ((5/9*(temperature - 32)));
+            else if ( to === "kelvin")
+                result = ((temperature+459.67)*5/9);
+        } else if ( from === "kelvin") {
+            if(to === "celsius")
+                result =  (temperature - 273.15);
+            else if (to === "fahrenheit")
+                result = ((temperature *9/5)-459.67);
+        }
+        result = +result.toFixed(2);
+        return result;
+};
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Temperature.getMeasures = function () {
+	var ret = [];
+    ret.push("celsius");
+    ret.push("kelvin");
+    ret.push("fahrenheit");
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;
+
+/*
+ * Unknown.js - Unit conversions for Unknowns/Unknowns
+ * 
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new Unknown measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Unknown = function (options) {
+	this.unit = options.unit;
+	this.amount = options.amount;
+};
+
+ilib.Measurement.Unknown.prototype = new ilib.Measurement({});
+ilib.Measurement.Unknown.prototype.parent = ilib.Measurement;
+ilib.Measurement.Unknown.prototype.constructor = ilib.Measurement.Unknown;
+
+ilib.Measurement.Unknown.aliases = {
+	"unknown":"unknown"
+}
+
+
+/**
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Unknown.prototype.getMeasure = function() {
+	return "unknown";
+};
+
+/**
+ * Convert the current Unknown to another measure.
+ * 
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Unknown.prototype.convert = function(to) {
+	return undefined;
+};
+
+/**
+ * Convert a Unknown to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param Unknown {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Unknown.convert = function(to, from, Unknown) {
+    return undefined;
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Unknown.getMeasures = function () {
+	var ret = [];
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["unknown"] = ilib.Measurement.Unknown;
+
+
 /**
  * @license
  * Copyright © 2012-2013, JEDLSoft
@@ -19686,5 +20200,8 @@ unit.js
 unitfmt.js
 units/length.js
 units/speed.js
+units/digitalStorage.js
+units/temperature.js
+units/unknown.js
 */
 

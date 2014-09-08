@@ -1,7 +1,7 @@
 /*
- * testSuite.js - test suite for this directory
+ * testtemp.js - test the temperature object
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,28 +17,25 @@
  * limitations under the License.
  */
 
-var cli = require('../testcli/runner.js');
-
-function newSuite(path, include) {
-	var suite = new cli.TestSuite("units/test/" + path);
-	return suite;
-}
-
-function suite() {
-    var s = new cli.TestSuite();
-    
-    var suites = [
-        "testlengths.js",
-		"testspeeds.js",
-		"testtemp.js",
-		"testdigitalstoreage.js",
-		"testUniknown.js"
-		
-    ];
-    
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path));
+function testMeasurementUnknownUnitPreserved() {
+    var m = new ilib.Measurement({
+    	unit: "krunghoonfoop",
+    	amount: 2
     });
     
-    return s;
+    assertNotNull(m);
+
+    assertEquals("krunghoonfoop", m.getUnit());
+    assertEquals(2, m.getAmount());
+}
+
+function testMeasurementUnknownUnitUnknownMeasureType() {
+    var m = new ilib.Measurement({
+    	unit: "krunghoonfoop",
+    	amount: 2
+    });
+    
+    assertNotNull(m);
+
+    assertEquals("unknown", m.getMeasure());
 }

@@ -45,7 +45,7 @@ ilib.Measurement.Temperature = function (options) {
                     if (options.amount.getMeasure() === "temperature") {
                         this.amount = ilib.Measurement.Temperature.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
                     } else {
-                        throw "Cannot convert units " + options.unit + " to a Temperature";
+                        throw "Cannot convert unit " + options.amount.unit + " to a temperature";
                     }
                 } else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);

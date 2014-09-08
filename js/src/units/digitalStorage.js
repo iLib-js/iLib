@@ -45,7 +45,7 @@ ilib.Measurement.DigitalStorage = function (options) {
 			if (options.amount.getMeasure() === "digitalStorage") {
 				this.amount = ilib.Measurement.DigitalStorage.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
-				throw "Cannot convert units " + options.unit + " to a digitalStorage";
+				throw "Cannot convert unit " + options.amount.unit + " to a digitalStorage";
 			}
 		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);

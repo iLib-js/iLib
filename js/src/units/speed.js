@@ -45,7 +45,7 @@ ilib.Measurement.Speed = function (options) {
 			if (options.amount.getMeasure() === "speed") {
 				this.amount = ilib.Measurement.Speed.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
-				throw "Cannot convert units " + options.unit + " to a speed";
+				throw "Cannot convert units " + options.amount.unit + " to a speed";
 			}
 		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);

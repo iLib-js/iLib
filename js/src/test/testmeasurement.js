@@ -362,7 +362,7 @@ function testMeasurementConvert() {
     assertNotNull(m2);
 
     assertEquals("meter", m2.getUnit());
-    assertEquals(3218.69, m2.getAmount());
+    assertEquals(3218.68, m2.getAmount());
 }
 
 function testMeasurementConvertToMetricScale() {
@@ -379,7 +379,7 @@ function testMeasurementConvertToMetricScale() {
     assertNotNull(m2);
 
     assertEquals("kilometer", m2.getUnit());
-    assertEquals(3.21869, m2.getAmount());
+    assertEquals(3.21868, m2.getAmount());
 }
 
 function testMeasurementConvertToMetricScaleWithAlias() {
@@ -396,7 +396,7 @@ function testMeasurementConvertToMetricScaleWithAlias() {
     assertNotNull(m2);
 
     assertEquals("kilometer", m2.getUnit());
-    assertEquals(3.21869, m2.getAmount());
+    assertEquals(3.21868, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetric() {
@@ -413,7 +413,7 @@ function testMeasurementConvertFromMetric() {
     assertNotNull(m2);
 
     assertEquals("mile", m2.getUnit());
-    assertEquals(1.242742, m2.getAmount());
+    assertEquals(1.2427424, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetricWithScale() {
@@ -430,7 +430,7 @@ function testMeasurementConvertFromMetricWithScale() {
     assertNotNull(m2);
 
     assertEquals("mile", m2.getUnit());
-    assertEquals(1.242742, m2.getAmount());
+    assertEquals(1.242746, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetricWithScaleAndAlias() {
@@ -447,7 +447,7 @@ function testMeasurementConvertFromMetricWithScaleAndAlias() {
     assertNotNull(m2);
 
     assertEquals("mile", m2.getUnit());
-    assertEquals(1.242742, m2.getAmount());
+    assertEquals(1.242746, m2.getAmount());
 }
 
 function testMeasurementCannotConvertBetweenMeasureTypes() {
@@ -457,12 +457,12 @@ function testMeasurementCannotConvertBetweenMeasureTypes() {
 	    	amount: 2
 	    });
 	    var m2 = new ilib.Measurement({
-	    	unit: "celcius",
+	    	unit: "celsius",
 	    	amount: m1
 	    });
 	    fail();
 	} catch (e) {
-		assertEquals("Cannot convert unit celcius to a length", e);
+		assertEquals("Cannot convert unit meter to a temperature", e);
 	}
 }
 

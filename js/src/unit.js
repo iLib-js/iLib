@@ -100,10 +100,12 @@ ilib.Measurement = function(options) {
 	}
 
 	if (!measure || typeof(measure) === 'undefined') {
-		throw  options.unit + " is not supported" 
-	}
-
-	return new ilib.Measurement._constructors[measure](options);
+		return new ilib.Measurement.Unknown({
+                    unit: options.unit,
+                    amount: options.amount
+                });                
+	} else 
+            return new ilib.Measurement._constructors[measure](options);
 };
 
 /**

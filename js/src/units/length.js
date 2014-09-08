@@ -45,7 +45,7 @@ ilib.Measurement.Length = function (options) {
 			if (options.amount.getMeasure() === "length") {
 				this.amount = ilib.Measurement.Length.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
-				throw "Cannot convert units " + options.unit + " to a length";
+				throw "Cannot convert unit " + options.amount.unit + " to a length";
 			}
 		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);
