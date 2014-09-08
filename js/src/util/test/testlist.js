@@ -97,12 +97,12 @@ function testListConstructorStringElements() {
 }
 
 function testListConstructorMixedElements() {
-    var arr = ["a", 0, "b", 1, "c", 2, "d", 3, true, false, function() {return 4;}];
+    var arr = ["a", 0, "b", 1, "c", 2, "d", 3, true, false, {a:1,b:2}, function() {return 4;}];
     
     var ll = new ilib.List(arr);
 	assertNotUndefined(ll);
 	
-	assertEquals(11, ll.length());
+	assertEquals(12, ll.length());
 	assertEquals("a", ll.removeFirst());
 	assertEquals(0, ll.removeFirst());
 	assertEquals("b", ll.removeFirst());
@@ -113,6 +113,7 @@ function testListConstructorMixedElements() {
 	assertEquals(3, ll.removeFirst());
 	assertEquals(true, ll.removeFirst());
 	assertEquals(false, ll.removeFirst());
+	assertObjectEquals({a:1,b:2}, ll.removeFirst());
 	assertEquals("function", typeof(ll.removeFirst()));
 	assertUndefined(ll.removeFirst());
 }
@@ -430,4 +431,371 @@ function testListIteratorEmpty() {
 	assertNotUndefined(it);
 	assertFalse(it.hasNext());
 	assertUndefined(it.next());
+}
+
+function testListInsertBefore() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertBefore("b", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertBeforeRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertBefore("b", "c"));
+	
+	assertEquals(5, ll.length());
+}
+
+function testListInsertBeforeBeginning() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertBefore("a", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertBeforeBeginningRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertBefore("a", "c"));
+	
+	assertEquals(5, ll.length());
+}
+
+function testListInsertBeforeFirstOne() {
+    var arr = ["a", 1, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertBefore(1, "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertBeforeNoReferenceRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertBefore("x", "c"));
+	
+	assertEquals(4, ll.length());
+}
+
+function testListInsertBeforeNoReference() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertBefore("x", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertBeforeEmpty() {
+    var ll = new ilib.List();
+	assertNotUndefined(ll);
+	
+	assertEquals(0, ll.length());
+	
+	assertFalse(ll.insertBefore("a", "c"));
+
+	// nowhere to insert
+	assertEquals(0, ll.length());
+}
+
+function testListInsertBeforeUndefinedReference() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertBefore(undefined, "c"));
+	
+	assertEquals(4, ll.length());
+}
+
+function testListInsertBeforeUndefinedObj() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertBefore("a", undefined));
+	
+	assertEquals(4, ll.length());
+}
+
+
+function testListInsertAfter() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertAfter("b", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertAfterRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertAfter("b", "c"));
+	
+	assertEquals(5, ll.length());
+}
+
+function testListInsertAfterEnd() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertAfter(1, "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertUndefined(it.next());
+	assertFalse(it.hasNext());
+}
+
+function testListInsertAfterEndRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertAfter(1, "c"));
+	
+	assertEquals(5, ll.length());
+}
+
+function testListInsertAfterFirstOne() {
+    var arr = ["a", 0, "a", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertTrue(ll.insertAfter("a", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("c", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertAfterNoReferenceRightCount() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertAfter("x", "c"));
+	
+	assertEquals(4, ll.length());
+}
+
+function testListInsertAfterNoReference() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertAfter("x", "c"));
+	
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(0, it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals(1, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testListInsertAfterEmpty() {
+    var ll = new ilib.List();
+	assertNotUndefined(ll);
+	
+	assertEquals(0, ll.length());
+	
+	assertFalse(ll.insertAfter("a", "c"));
+
+	// nowhere to insert
+	assertEquals(0, ll.length());
+}
+
+function testListInsertAfterUndefinedReference() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertAfter(undefined, "c"));
+	
+	assertEquals(4, ll.length());
+}
+
+function testListInsertAfterUndefinedObj() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.List(arr);
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+	
+	assertFalse(ll.insertAfter("a", undefined));
+	
+	assertEquals(4, ll.length());
 }

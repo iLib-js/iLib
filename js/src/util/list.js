@@ -92,6 +92,106 @@ ilib.List.prototype = {
 			this.addFirst(obj);
 		}
 	},
+	
+	/**
+	 * @protected
+	 */
+	find: function(obj) {
+		var element = this.firstElement;
+		while (element) {
+			if (element.value === obj) {
+				return element;
+			}
+			element = element.next;
+		}
+		return undefined;
+	},
+	
+	/**
+	 * Insert a new element before the given reference
+	 * element. If the reference element is already the
+	 * beginning of the list, the new element will become
+	 * the new beginning of the list.
+	 * 
+	 * @param {*} reference
+	 * @param {*} obj
+	 * @return {boolean} true if the object was successfully added before
+	 * the reference, or false if the reference object could not be found
+	 */
+	insertBefore: function(reference, obj) {
+		if (this.count === 0 || typeof(reference) === 'undefined' || typeof(obj) === 'undefined') {
+			return false;
+		}
+		if (this.firstElement.value === reference) {
+			var newElement = {
+				value: obj,
+				next: this.firstElement,
+				prev: undefined
+			};
+			this.firstElement = newElement;
+		} else {
+			var refElement = this.find(reference);
+			
+			if (!refElement) {
+				return false;
+			}
+
+			var newElement = {
+				value: obj,
+				next: refElement,
+				previous: refElement.prev
+			};
+			refElement.prev.next = newElement;
+			refElement.prev = newElement;
+		}
+		this.count++;
+		return true;
+	},
+
+	/**
+	 * Insert a new element after the given reference
+	 * element. If the reference element is already the
+	 * end of the list, the new element will become
+	 * the new end of the list.
+	 * 
+	 * @param {*} reference
+	 * @param {*} obj
+	 * @return {boolean} true if the object was successfully added before
+	 * the reference, or false if the reference object could not be found
+	 */
+	insertAfter: function(reference, obj) {
+		if (this.count === 0 || typeof(reference) === 'undefined' || typeof(obj) === 'undefined') {
+			return false;
+		}
+		if (this.count === 0) {
+			this.addFirst(obj);
+			return true;
+		}
+		
+		if (this.lastElement.value === reference) {
+			this.lastElement.next = {
+				value: obj,
+				next: undefined,
+				prev: this.lastElement
+			};
+			this.lastElement = this.lastElement.next;
+		} else {
+			var refElement = this.find(reference);
+			
+			if (!refElement) {
+				return false;
+			}
+			var newElement = {
+				value: obj,
+				next: refElement.next,
+				previous: refElement
+			};
+			refElement.next.previous = newElement;
+			refElement.next = newElement;
+		}
+		this.count++;
+		return true;
+	},
 
 	/**
 	 * Remove the first element of the list and return it.
