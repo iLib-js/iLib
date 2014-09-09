@@ -225,6 +225,6 @@ function testMeasurementConstructorDigitalStorageCaseInsensitive() {
 		assertNotUndefined(measurement);
 		assertEquals("digitalStorage", measurement.getMeasure());
 		assertEquals(100, measurement.getAmount());
-		assertEquals(measures[measure], measurement.getUnit());
+		assertEquals(measures[measure], measurement.getUnit().toLowerCase());
 	}
 }
