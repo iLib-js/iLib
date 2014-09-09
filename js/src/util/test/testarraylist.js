@@ -866,3 +866,255 @@ function testArrayListContainsEmpty() {
 	
 	assertFalse(ll.contains("b"));
 }
+
+function testArrayListContainsWithComparator() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"}
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.contains({key: "d", value: 243, foo: "bar"}));
+}
+
+function testArrayListContainsWithComparatorMissingKeyInElement() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {value: "4"},
+       {key: "e", value: "5"}
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.contains({key: "e", value: 243, foo: "bar"}));
+}
+
+function testArrayListContainsWithComparatorMissingElement() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"}
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertFalse(ll.contains({key: "g", value: 243, foo: "bar"}));
+}
+
+function testArrayListInsertBeforeWithComparator() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.insertBefore({key:"d", value: "1231"}, {key: "z", value: 243, foo: "bar"}));
+	
+	assertEquals(6, ll.length());
+}
+
+function testArrayListInsertBeforeWithComparatorRightContents() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.insertBefore({key:"d", value: "1231"}, {key: "z", value: 243, foo: "bar"}));
+	
+	assertEquals(6, ll.length());
+
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "a", value: "1"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "b", value: "2"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "c", value: "3"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "z", value: 243, foo: "bar"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "d", value: "4"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "e", value: "5"}, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+}
+
+function testArrayListInsertAfterWithComparator() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.insertAfter({key:"d", value: "1231"}, {key: "z", value: 243, foo: "bar"}));
+	
+	assertEquals(6, ll.length());
+}
+
+function testArrayListInsertAfterWithComparatorRightContents() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.ArrayList({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	assertTrue(ll.insertAfter({key:"d", value: "1231"}, {key: "z", value: 243, foo: "bar"}));
+	
+	assertEquals(6, ll.length());
+
+	var it = ll.iterator();
+
+	assertNotUndefined(it);
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "a", value: "1"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "b", value: "2"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "c", value: "3"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "d", value: "4"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "z", value: 243, foo: "bar"}, it.next());
+	assertTrue(it.hasNext());
+	assertObjectEquals({key: "e", value: "5"}, it.next());
+	assertFalse(it.hasNext());
+	assertUndefined(it.next());
+
+}
+
+function testArrayListGet() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.ArrayList({init: arr});
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+
+	assertEquals("a", ll.get(0));
+	assertEquals(0, ll.get(1));
+	assertEquals("b", ll.get(2));
+	assertEquals(1, ll.get(3));
+	assertUndefined(ll.get(4));
+}
+
+function testArrayListGetEmpty() {
+    var ll = new ilib.ArrayList();
+	assertNotUndefined(ll);
+	
+	assertEquals(0, ll.length());
+
+	assertUndefined(ll.get(0));
+	assertUndefined(ll.get(4));
+}
+
+function testArrayListGetNegative() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.ArrayList({init: arr});
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+
+	// gets from the end
+	assertEquals("a", ll.get(-4));
+	assertEquals(0, ll.get(-3));
+	assertEquals("b", ll.get(-2));
+	assertEquals(1, ll.get(-1));
+	assertUndefined(ll.get(-5));
+}
+
+function testArrayListGetUndefined() {
+    var arr = ["a", 0, "b", 1];
+    
+    var ll = new ilib.ArrayList({init: arr});
+	assertNotUndefined(ll);
+	
+	assertEquals(4, ll.length());
+
+	assertUndefined(ll.get(undefined));
+}
+

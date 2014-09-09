@@ -155,13 +155,19 @@ ilib.ArrayList.prototype.removeLast = function() {
 };
 
 /**
- * Return the element at the given index.
+ * Return the element at the given index. If the index is a
+ * negative number, then it indicates the number of positions 
+ * from the end of the list rather than the index from the
+ * beginning of the list.
  * 
  * @param {number} index the index of the element being sought
  * @return {*} the object at the given index, or undefined if
  * the index is invalid
  */
 ilib.ArrayList.prototype.get = function(index) {
+	if (index < 0) {
+		index = this.elements.length + index;
+	}
 	return this.elements[index];
 };
 
