@@ -1,5 +1,5 @@
 /*
- * testlist.js - test the basic linked list utility class
+ * testarraylist.js - test the basic linked list utility class
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -17,26 +17,26 @@
  * limitations under the License.
  */
 
-function testListConstructorEmpty() {
-	var ll = new ilib.List();
+function testArrayListConstructorEmpty() {
+	var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
 }
 
-function testListConstructorArray() {
+function testArrayListConstructorArray() {
     var arr = [0, 1, 2, 3];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
 }
 
-function testListConstructorArrayRightElements() {
+function testArrayListConstructorArrayRightElements() {
     var arr = [0, 1, 2, 3];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.removeFirst());
@@ -45,10 +45,10 @@ function testListConstructorArrayRightElements() {
 	assertEquals(3, ll.removeFirst());
 }
 
-function testListConstructorRemoveAllElements() {
+function testArrayListConstructorRemoveAllElements() {
     var arr = [0, 1, 2, 3];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.removeFirst());
@@ -58,25 +58,25 @@ function testListConstructorRemoveAllElements() {
 	assertUndefined(ll.removeFirst());
 }
 
-function testListConstructorOtherList() {
+function testArrayListConstructorOtherList() {
     var arr = [0, 1, 2, 3];
     
-    var list1 = new ilib.List({init: arr});
+    var list1 = new ilib.ArrayList({init: arr});
 	assertNotUndefined(list1);
 
-	var list2 = new ilib.List({init: list1});
+	var list2 = new ilib.ArrayList({init: list1});
 	assertNotUndefined(list2);
 	
 	assertEquals(4, list2.length());
 }
 
-function testListConstructorOtherListRightElements() {
+function testArrayListConstructorOtherListRightElements() {
     var arr = [0, 1, 2, 3];
     
-    var list1 = new ilib.List({init: arr});
+    var list1 = new ilib.ArrayList({init: arr});
 	assertNotUndefined(list1);
 
-	var list2 = new ilib.List({init: list1});
+	var list2 = new ilib.ArrayList({init: list1});
 	assertNotUndefined(list2);
 	
 	assertEquals(0, list2.removeFirst());
@@ -85,10 +85,10 @@ function testListConstructorOtherListRightElements() {
 	assertEquals(3, list2.removeFirst());
 }
 
-function testListConstructorStringElements() {
+function testArrayListConstructorStringElements() {
     var arr = ["a", "b", "c", "d"];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals("a", ll.removeFirst());
@@ -98,10 +98,10 @@ function testListConstructorStringElements() {
 	assertUndefined(ll.removeFirst());
 }
 
-function testListConstructorMixedElements() {
+function testArrayListConstructorMixedElements() {
     var arr = ["a", 0, "b", 1, "c", 2, "d", 3, true, false, {a:1,b:2}, ["a", "b", "c"], function() {return 4;}];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(13, ll.length());
@@ -121,19 +121,19 @@ function testListConstructorMixedElements() {
 	assertUndefined(ll.removeFirst());
 }
 
-function testListFirst() {
+function testArrayListFirst() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals("a", ll.first());
 }
 
-function testListFirstNoRemove() {
+function testArrayListFirstNoRemove() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -141,10 +141,10 @@ function testListFirstNoRemove() {
 	assertEquals(4, ll.length());
 }
 
-function testListRemoveFirst() {
+function testArrayListRemoveFirst() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -152,10 +152,10 @@ function testListRemoveFirst() {
 	assertEquals(3, ll.length());
 }
 
-function testListRemoveFirstMultiple() {
+function testArrayListRemoveFirstMultiple() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -169,10 +169,10 @@ function testListRemoveFirstMultiple() {
 	assertEquals(0, ll.length());
 }
 
-function testListRemoveFirstEmpty() {
+function testArrayListRemoveFirstEmpty() {
     var arr = ["a"];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(1, ll.length());
@@ -181,10 +181,10 @@ function testListRemoveFirstEmpty() {
 	assertUndefined(ll.removeFirst());
 }
 
-function testListRemoveFirstEmptyLengthOkay() {
+function testArrayListRemoveFirstEmptyLengthOkay() {
     var arr = ["a"];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals("a", ll.removeFirst());
@@ -193,19 +193,19 @@ function testListRemoveFirstEmptyLengthOkay() {
 	assertEquals(0, ll.length());
 }
 
-function testListLast() {
+function testArrayListLast() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(1, ll.last());
 }
 
-function testListLastNoRemove() {
+function testArrayListLastNoRemove() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -213,10 +213,10 @@ function testListLastNoRemove() {
 	assertEquals(4, ll.length());
 }
 
-function testListRemoveLast() {
+function testArrayListRemoveLast() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -224,10 +224,10 @@ function testListRemoveLast() {
 	assertEquals(3, ll.length());
 }
 
-function testListRemoveLastMultiple() {
+function testArrayListRemoveLastMultiple() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -237,10 +237,10 @@ function testListRemoveLastMultiple() {
 	assertEquals(2, ll.length());
 }
 
-function testListRemoveLastEmpty() {
+function testArrayListRemoveLastEmpty() {
     var arr = ["a"];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(1, ll.length());
@@ -249,10 +249,10 @@ function testListRemoveLastEmpty() {
 	assertUndefined(ll.removeLast());
 }
 
-function testListRemoveLastEmptyLengthOkay() {
+function testArrayListRemoveLastEmptyLengthOkay() {
     var arr = ["a"];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals("a", ll.removeLast());
@@ -261,10 +261,10 @@ function testListRemoveLastEmptyLengthOkay() {
 	assertEquals(0, ll.length());
 }
 
-function testListAddLast() {
+function testArrayListAddLast() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -272,10 +272,10 @@ function testListAddLast() {
 	assertEquals(5, ll.length());
 }
 
-function testListAddLastRightElement() {
+function testArrayListAddLastRightElement() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -283,10 +283,10 @@ function testListAddLastRightElement() {
 	assertEquals("c", ll.last());
 }
 
-function testListAddLastRightEnd() {
+function testArrayListAddLastRightEnd() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -297,8 +297,8 @@ function testListAddLastRightEnd() {
 	assertEquals("a", ll.first());
 }
 
-function testListAddLastEmpty() {
-    var ll = new ilib.List();
+function testArrayListAddLastEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -306,8 +306,8 @@ function testListAddLastEmpty() {
 	assertEquals(1, ll.length());
 }
 
-function testListAddLastEmptyRightElement() {
-    var ll = new ilib.List();
+function testArrayListAddLastEmptyRightElement() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -317,10 +317,10 @@ function testListAddLastEmptyRightElement() {
 	assertEquals("c", ll.last());
 }
 
-function testListAddFirst() {
+function testArrayListAddFirst() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -328,10 +328,10 @@ function testListAddFirst() {
 	assertEquals(5, ll.length());
 }
 
-function testListAddFirstRightElement() {
+function testArrayListAddFirstRightElement() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -339,10 +339,10 @@ function testListAddFirstRightElement() {
 	assertEquals("c", ll.first());
 }
 
-function testListAddFirstRightEnd() {
+function testArrayListAddFirstRightEnd() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -353,8 +353,8 @@ function testListAddFirstRightEnd() {
 	assertEquals("c", ll.first());
 }
 
-function testListAddFirstEmpty() {
-    var ll = new ilib.List();
+function testArrayListAddFirstEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -362,8 +362,8 @@ function testListAddFirstEmpty() {
 	assertEquals(1, ll.length());
 }
 
-function testListAddFirstEmptyRightElement() {
-    var ll = new ilib.List();
+function testArrayListAddFirstEmptyRightElement() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -373,10 +373,10 @@ function testListAddFirstEmptyRightElement() {
 	assertEquals("c", ll.last());
 }
 
-function testListClearLength() {
+function testArrayListClearLength() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -384,10 +384,10 @@ function testListClearLength() {
 	assertEquals(0, ll.length());
 }
 
-function testListClearNoFirst() {
+function testArrayListClearNoFirst() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals("a", ll.first());
@@ -395,10 +395,10 @@ function testListClearNoFirst() {
 	assertUndefined(ll.first());
 }
 
-function testListClearNoLast() {
+function testArrayListClearNoLast() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(1, ll.last());
@@ -406,10 +406,10 @@ function testListClearNoLast() {
 	assertUndefined(ll.last());
 }
 
-function testListIterator() {
+function testArrayListIterator() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	var it = ll.iterator();
@@ -426,8 +426,8 @@ function testListIterator() {
 	assertUndefined(it.next());
 }
 
-function testListIteratorEmpty() {
-    var ll = new ilib.List();
+function testArrayListIteratorEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	var it = ll.iterator();
@@ -436,10 +436,10 @@ function testListIteratorEmpty() {
 	assertUndefined(it.next());
 }
 
-function testListInsertBefore() {
+function testArrayListInsertBefore() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -463,10 +463,10 @@ function testListInsertBefore() {
 	assertUndefined(it.next());
 }
 
-function testListInsertBeforeRightCount() {
+function testArrayListInsertBeforeRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -476,10 +476,10 @@ function testListInsertBeforeRightCount() {
 	assertEquals(5, ll.length());
 }
 
-function testListInsertBeforeBeginning() {
+function testArrayListInsertBeforeBeginning() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -503,10 +503,10 @@ function testListInsertBeforeBeginning() {
 	assertUndefined(it.next());
 }
 
-function testListInsertBeforeBeginningRightCount() {
+function testArrayListInsertBeforeBeginningRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -516,10 +516,10 @@ function testListInsertBeforeBeginningRightCount() {
 	assertEquals(5, ll.length());
 }
 
-function testListInsertBeforeFirstOne() {
+function testArrayListInsertBeforeFirstOne() {
     var arr = ["a", 1, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -543,10 +543,10 @@ function testListInsertBeforeFirstOne() {
 	assertUndefined(it.next());
 }
 
-function testListInsertBeforeNoReferenceRightCount() {
+function testArrayListInsertBeforeNoReferenceRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -556,10 +556,10 @@ function testListInsertBeforeNoReferenceRightCount() {
 	assertEquals(4, ll.length());
 }
 
-function testListInsertBeforeNoReference() {
+function testArrayListInsertBeforeNoReference() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -581,8 +581,8 @@ function testListInsertBeforeNoReference() {
 	assertUndefined(it.next());
 }
 
-function testListInsertBeforeEmpty() {
-    var ll = new ilib.List();
+function testArrayListInsertBeforeEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -593,10 +593,10 @@ function testListInsertBeforeEmpty() {
 	assertEquals(0, ll.length());
 }
 
-function testListInsertBeforeUndefinedReference() {
+function testArrayListInsertBeforeUndefinedReference() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -606,10 +606,10 @@ function testListInsertBeforeUndefinedReference() {
 	assertEquals(4, ll.length());
 }
 
-function testListInsertBeforeUndefinedObj() {
+function testArrayListInsertBeforeUndefinedObj() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -620,10 +620,10 @@ function testListInsertBeforeUndefinedObj() {
 }
 
 
-function testListInsertAfter() {
+function testArrayListInsertAfter() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -647,10 +647,10 @@ function testListInsertAfter() {
 	assertUndefined(it.next());
 }
 
-function testListInsertAfterRightCount() {
+function testArrayListInsertAfterRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -660,10 +660,10 @@ function testListInsertAfterRightCount() {
 	assertEquals(5, ll.length());
 }
 
-function testListInsertAfterEnd() {
+function testArrayListInsertAfterEnd() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -687,10 +687,10 @@ function testListInsertAfterEnd() {
 	assertFalse(it.hasNext());
 }
 
-function testListInsertAfterEndRightCount() {
+function testArrayListInsertAfterEndRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -700,10 +700,10 @@ function testListInsertAfterEndRightCount() {
 	assertEquals(5, ll.length());
 }
 
-function testListInsertAfterFirstOne() {
+function testArrayListInsertAfterFirstOne() {
     var arr = ["a", 0, "a", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -727,10 +727,10 @@ function testListInsertAfterFirstOne() {
 	assertUndefined(it.next());
 }
 
-function testListInsertAfterNoReferenceRightCount() {
+function testArrayListInsertAfterNoReferenceRightCount() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -740,10 +740,10 @@ function testListInsertAfterNoReferenceRightCount() {
 	assertEquals(4, ll.length());
 }
 
-function testListInsertAfterNoReference() {
+function testArrayListInsertAfterNoReference() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -765,8 +765,8 @@ function testListInsertAfterNoReference() {
 	assertUndefined(it.next());
 }
 
-function testListInsertAfterEmpty() {
-    var ll = new ilib.List();
+function testArrayListInsertAfterEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
@@ -777,10 +777,10 @@ function testListInsertAfterEmpty() {
 	assertEquals(0, ll.length());
 }
 
-function testListInsertAfterUndefinedReference() {
+function testArrayListInsertAfterUndefinedReference() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -790,10 +790,10 @@ function testListInsertAfterUndefinedReference() {
 	assertEquals(4, ll.length());
 }
 
-function testListInsertAfterUndefinedObj() {
+function testArrayListInsertAfterUndefinedObj() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -803,10 +803,10 @@ function testListInsertAfterUndefinedObj() {
 	assertEquals(4, ll.length());
 }
 
-function testListContains() {
+function testArrayListContains() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -814,10 +814,10 @@ function testListContains() {
 	assertTrue(ll.contains("b"));
 }
 
-function testListContainsNotThere() {
+function testArrayListContainsNotThere() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -825,10 +825,10 @@ function testListContainsNotThere() {
 	assertFalse(ll.contains("x"));
 }
 
-function testListContainsFalse() {
+function testArrayListContainsFalse() {
     var arr = ["a", 0, "b", false, 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(5, ll.length());
@@ -836,10 +836,10 @@ function testListContainsFalse() {
 	assertTrue(ll.contains(false));
 }
 
-function testListContainsObject() {
+function testArrayListContainsObject() {
     var arr = ["a", 0, "b", {a:1, b:2}, 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(5, ll.length());
@@ -847,10 +847,10 @@ function testListContainsObject() {
 	assertTrue(ll.contains({a:1, b:2}));
 }
 
-function testListContainsUndefined() {
+function testArrayListContainsUndefined() {
     var arr = ["a", 0, "b", 1];
     
-    var ll = new ilib.List({init: arr});
+    var ll = new ilib.ArrayList({init: arr});
 	assertNotUndefined(ll);
 	
 	assertEquals(4, ll.length());
@@ -858,12 +858,11 @@ function testListContainsUndefined() {
 	assertFalse(ll.contains(undefined));
 }
 
-function testListContainsEmpty() {
-    var ll = new ilib.List();
+function testArrayListContainsEmpty() {
+    var ll = new ilib.ArrayList();
 	assertNotUndefined(ll);
 	
 	assertEquals(0, ll.length());
 	
 	assertFalse(ll.contains("b"));
 }
-

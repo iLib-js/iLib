@@ -20,33 +20,47 @@
 // !depends ilibglobal.js
 
 /**
- * Create a new linked list, optionally initialized with the items in
- * the given array.
+ * Create a new linked list. The options parameter may contain any
+ * of the following properties:
+ * 
+ * <ul>
+ * <li><i>init</i> - an array of objects to initialize the list
+ * <li><i>comparator</i> - a function that knows how to compare two objects 
+ * in the list. The function should return true for equals, or false for
+ * not equals.
+ * </ul> 
  * 
  * @class
  * @constructor
- * @param {Array.<*>|ilib.List=} arr an optional array 
- * or list to initialize this list with
+ * @param {{comparator:function(*,*),init:(Array.<*>|ilib.List)}=} options options 
+ * controlling the operation of this list 
  */
-ilib.List = function(arr) {
+ilib.List = function(options) {
 	this.count = 0;
+	this.compare = this._compare;
 	
-	if (arr) {
-		if (typeof(arr) === "object") {
-			if (arr instanceof Array) {
-				for (var i = 0; i < arr.length; i++) {
-					this.addLast(arr[i]);
-				}
-			} else if (arr instanceof ilib.List) {
-				var it = arr.iterator();
-				while (it.hasNext()) {
-					this.addLast(it.next());
+	if (options) {
+		if (options.init) {
+			if (typeof(options.init) === "object") {
+				if (options.init instanceof Array) {
+					for (var i = 0; i < options.init.length; i++) {
+						this.addLast(options.init[i]);
+					}
+				} else if (options.init instanceof ilib.List) {
+					var it = options.init.iterator();
+					while (it.hasNext()) {
+						this.addLast(it.next());
+					}
+				} else {
+					this.addFirst(options.init);
 				}
 			} else {
-				this.addFirst(arr);
+				this.addFirst(options.init);
 			}
-		} else {
-			this.addFirst(arr);
+		}
+		
+		if (options.comparator) {
+			this._compare = options.comparator;
 		}
 	}
 };

@@ -43,6 +43,7 @@ datefmt.js
 calendar.js
 util/utils.js
 util/list.js
+util/arraylist.js
 locale.js
 nfkc/all.js
 strings.js
