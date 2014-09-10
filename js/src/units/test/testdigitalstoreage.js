@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testDSConstructor() {
+function testDSDSConstructor() {
 
 	var m = new ilib.Measurement.DigitalStorage({
 		unit: "mb",
@@ -27,7 +27,7 @@ function testDSConstructor() {
 	assertNotNull(m);
 }
 
-function testDSConvertKbToMb() {
+function testDSDSConvertKbToMb() {
 	var m1 = new ilib.Measurement.DigitalStorage({
 		unit: "kb",
 		amount: 102400
@@ -40,54 +40,60 @@ function testDSConvertKbToMb() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 
-	assertEquals(100, m2.getAmount());
+	assertRoughlyEquals(100, m2.getAmount(), 1e-7);
 }
 
-function testStaticConvert1() {
+function testDSStaticConvert1() {
 	var m = ilib.Measurement.DigitalStorage.convert("bit", "kilobits", 12024);
 
-	assertEquals(12312576, m);
+	assertRoughlyEquals(12312576, m, 0.01);
 }
 
-function testStaticConvertWithString() {
+function testDSStaticConvertWithString() {
 	var m = ilib.Measurement.DigitalStorage.convert("gigabyte", "petabyte", "1");
 
-	assertEquals(1.049e+6, m);
+	assertRoughlyEquals(1048576, m, 0.001);
 }
 
-function testStaticConvert2() {
+function testDSStaticConvert2() {
 	var m = ilib.Measurement.DigitalStorage.convert("tB", "gB", 10240);
 
-	assertEquals(10, m);
+	assertRoughlyEquals(10, m, 1e-8);
 }
 
-function testStaticConvert3() {
+function testDSStaticConvert3() {
 	var m = ilib.Measurement.DigitalStorage.convert("mb", "byte", 1048576);
 
-	assertEquals(8, m);
+	assertRoughlyEquals(8, m, 1e-9);
 }
 
-function testStaticConvert4() {
+function testDSStaticConvert4() {
 	var m = ilib.Measurement.DigitalStorage.convert("Pb", "tb", 1024);
 
-	assertEquals(1, m);
+	assertRoughlyEquals(1, m, 1e-9);
 }
 
-function testGetMeasures() {
+function testDSStaticConvert5() {
+	var m = ilib.Measurement.DigitalStorage.convert("megabyte", "byte", 10);
+
+	assertRoughlyEquals(9.536743164e-6, m, 1e-15);
+}
+
+function testDSGetMeasures() {
 	var measures = ilib.Measurement.DigitalStorage.getMeasures();
 	var expected = [
-        "Bit",
-        "Byte",
-        "Kilobit",
-        "Kilobyte",
-        "Megabit",
-        "Megabyte",
-        "Gigabit",
-        "Gigabyte",
-        "Terabit",
-        "Terabyte",
-        "Petabit",
-        "Petabyte"
+        "bit",
+        "byte",
+        "kilobit",
+        "kilobyte",
+        "megabit",
+        "megabyte",
+        "gigabit",
+        "gigabyte",
+        "terabit",
+        "terabyte",
+        "petabit",
+        "petabyte"
     ];
 
 	assertArrayEqualsIgnoringOrder(expected, measures);

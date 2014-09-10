@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testSpeedConstructor() {
+function testSpeedSpeedConstructor() {
 	var m = new ilib.Measurement.Speed({
 		unit: "meters/sec",
 		amount: 2
@@ -26,7 +26,7 @@ function testSpeedConstructor() {
 	assertNotNull(m);
 }
 
-function testSpeedConvertMetersPerSecToMilesPerHour() {
+function testSpeedSpeedConvertMetersPerSecToMilesPerHour() {
 	var m1 = new ilib.Measurement.Speed({
 		unit: "meters/sec",
 		amount: 5000
@@ -42,37 +42,37 @@ function testSpeedConvertMetersPerSecToMilesPerHour() {
 	assertEquals(11184.68, m2.getAmount());
 }
 
-function testStaticConvert1() {
+function testSpeedStaticConvert1() {
 	var m = ilib.Measurement.Speed.convert("feet/sec", "meters/sec", 2.0);
 	
 	assertEquals(6.56168, m);
 }
 
-function testStaticConvertWithString() {
+function testSpeedStaticConvertWithString() {
 	var m = ilib.Measurement.Speed.convert("feet/sec", "meters/sec", "2");
 	
 	assertEquals(6.56168, m);
 }
 
-function testStaticConvert2() {
+function testSpeedStaticConvert2() {
 	var m = ilib.Measurement.Speed.convert("meters/sec", "km/hour", 720);
 	
-	assertEquals(200.00016, m);
+	assertRoughlyEquals(200.00016, m, 0.00001);
 }
 
-function testStaticConvert3() {
+function testSpeedStaticConvert3() {
 	var m = ilib.Measurement.Speed.convert("mile/hour", "knot", 200);
 	
-	assertEquals(230.156, m);
+	assertRoughlyEquals(230.156, m, 0.001);
 }
 
-function testStaticConvert4() {
+function testSpeedStaticConvert4() {
 	var m = ilib.Measurement.Speed.convert("kn", "feet/sec", 200.0);
 	
-	assertEquals(118.4968, m);
+	assertRoughlyEquals(118.4968, m, 0.0001);
 }
 
-function testGetMeasures() {
+function testSpeedGetMeasures() {
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [
     	"feet/sec",

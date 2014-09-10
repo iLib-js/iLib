@@ -173,18 +173,18 @@ function testMeasurementConstructorTemperature() {
 
 function testMeasurementConstructorDigitalStorage() {
 	var measures = [
-	    "Bit",
-	    "Byte",
-	    "Kilobit",
-	    "Kilobyte",
-	    "Megabit",
-	    "Megabyte",
-	    "Gigabit",
-	    "Gigabyte",
-	    "Terabit",
-	    "Terabyte",
-	    "Petabit",
-	    "Petabyte"
+	    "bit",
+	    "byte",
+	    "kilobit",
+	    "kilobyte",
+	    "megabit",
+	    "megabyte",
+	    "gigabit",
+	    "gigabyte",
+	    "terabit",
+	    "terabyte",
+	    "petabit",
+	    "petabyte"
 	];
 
 	for (var measure in measures) {

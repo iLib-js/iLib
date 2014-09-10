@@ -1,7 +1,7 @@
 /*
  * Length.js - Unit conversions for Lengths/lengths
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,6 @@ ilib.Measurement.Length.prototype.parent = ilib.Measurement;
 ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.getMeasure = function() {
@@ -91,7 +90,6 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 /**
  * Convert the current length to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.convert = function(to) {

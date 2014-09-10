@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testLengthConstructor() {
+function testLengthLengthConstructor() {
 
     var m = new ilib.Measurement.Length({
         unit: "meter",
@@ -27,7 +27,7 @@ function testLengthConstructor() {
     assertNotNull(m);
 }
 
-function testLengthConvertMetersToMiles() {
+function testLengthLengthConvertMetersToMiles() {
 	var m1 = new ilib.Measurement.Length({
 		unit: "meter",
 		amount: 5000
@@ -43,37 +43,37 @@ function testLengthConvertMetersToMiles() {
 	assertEquals(3.106856, m2.getAmount());
 }
 
-function testStaticConvert1() {
+function testLengthStaticConvert1() {
 	var m = ilib.Measurement.Length.convert("feet", "meter", 2.0);
 	
 	assertEquals(6.56168, m);
 }
 
-function testStaticConvertWithString() {
+function testLengthStaticConvertWithString() {
 	var m = ilib.Measurement.Length.convert("feet", "meter", "2");
 	
 	assertEquals(6.56168, m);
 }
 
-function testStaticConvert2() {
+function testLengthStaticConvert2() {
 	var m = ilib.Measurement.Length.convert("meter", "millimeter", 200000);
 	
 	assertEquals(200, m);
 }
 
-function testStaticConvert3() {
+function testLengthStaticConvert3() {
 	var m = ilib.Measurement.Length.convert("mile", "yard", 7495);
 	
 	assertEquals(4.25852409, m);
 }
 
-function testStaticConvert4() {
+function testLengthStaticConvert4() {
 	var m = ilib.Measurement.Length.convert("millimeter", "meter", 2.0);
 	
 	assertEquals(2000, m);
 }
 
-function testGetMeasures() {
+function testLengthGetMeasures() {
 	var measures = ilib.Measurement.Length.getMeasures();
 	var expected = [
     	"micrometer",

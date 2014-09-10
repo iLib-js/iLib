@@ -39,7 +39,7 @@ function testTemperatureConvertCelciusToFahrenheit1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(32, m2.getAmount());
+	assertRoughlyEquals(32, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertCelciusToFahrenheit2() {
@@ -55,7 +55,7 @@ function testTemperatureConvertCelciusToFahrenheit2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(212, m2.getAmount());
+	assertRoughlyEquals(212, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertCelciusToFahrenheit3() {
@@ -71,7 +71,7 @@ function testTemperatureConvertCelciusToFahrenheit3() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(86, m2.getAmount());
+	assertRoughlyEquals(86, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertFahrenheitToCelcius1() {
@@ -87,7 +87,7 @@ function testTemperatureConvertFahrenheitToCelcius1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(10, m2.getAmount());
+	assertRoughlyEquals(10, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertFahrenheitToCelcius2() {
@@ -103,7 +103,7 @@ function testTemperatureConvertFahrenheitToCelcius2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(37.78, m2.getAmount());
+	assertRoughlyEquals(37.778, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertCelciusToKelvin1() {
@@ -119,7 +119,7 @@ function testTemperatureConvertCelciusToKelvin1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(273.15, m2.getAmount());
+	assertRoughlyEquals(273.15, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertCelciusToKelvin2() {
@@ -135,7 +135,7 @@ function testTemperatureConvertCelciusToKelvin2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(373.15, m2.getAmount());
+	assertRoughlyEquals(373.15, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertKelvinToCelcius1() {
@@ -151,7 +151,7 @@ function testTemperatureConvertKelvinToCelcius1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(-273.15, m2.getAmount());
+	assertRoughlyEquals(-273.15, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertKelvinToCelcius2() {
@@ -167,7 +167,7 @@ function testTemperatureConvertKelvinToCelcius2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(12.15, m2.getAmount());
+	assertRoughlyEquals(12.15, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertFahrenheitToKelvin1() {
@@ -183,7 +183,7 @@ function testTemperatureConvertFahrenheitToKelvin1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(255.37, m2.getAmount());
+	assertRoughlyEquals(255.372, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertFahrenheitToKelvin2() {
@@ -199,7 +199,7 @@ function testTemperatureConvertFahrenheitToKelvin2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(310.93, m2.getAmount());
+	assertRoughlyEquals(310.928, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertKelvinToFahrenheit1() {
@@ -215,7 +215,7 @@ function testTemperatureConvertKelvinToFahrenheit1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(-459.67, m2.getAmount());
+	assertRoughlyEquals(-459.67, m2.getAmount(), 0.001);
 }
 
 function testTemperatureConvertKelvinToFahrenheit2() {
@@ -231,7 +231,7 @@ function testTemperatureConvertKelvinToFahrenheit2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(53.87, m2.getAmount());
+	assertRoughlyEquals(53.87, m2.getAmount(), 0.001);
 }
 
 function testTemperatureAliasCelcius1() {
@@ -350,6 +350,6 @@ function testGetMeasures() {
     	"celsius",
     	"fahrenheit",
     	"kelvin"
-        ];
-		assertArrayEqualsIgnoringOrder(expected, measures);
+    ];
+	assertArrayEqualsIgnoringOrder(expected, measures);
 }

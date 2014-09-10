@@ -88,12 +88,11 @@ ilib.Measurement = function(options) {
 	}
 
 	this.amount = options.amount || 0;
-	var measure;
+	var measure = undefined;
 
 	for (var c in ilib.Measurement._constructors) {
 		var measurement = ilib.Measurement._constructors[c];
-		var unit = measurement.aliases[options.unit];
-		if (typeof(unit) !== 'undefined') {
+		if (typeof(measurement.aliases[options.unit]) !== 'undefined') {
 			measure = c;
 			break;
 		}
@@ -101,11 +100,12 @@ ilib.Measurement = function(options) {
 
 	if (!measure || typeof(measure) === 'undefined') {
 		return new ilib.Measurement.Unknown({
-                    unit: options.unit,
-                    amount: options.amount
-                });                
-	} else 
-            return new ilib.Measurement._constructors[measure](options);
+			unit: options.unit,
+			amount: options.amount
+		});                
+	} else {
+		return new ilib.Measurement._constructors[measure](options);
+	}
 };
 
 /**

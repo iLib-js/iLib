@@ -1,7 +1,7 @@
 /*
  * Speed.js - Unit conversions for Speeds/speeds
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,6 @@ ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
 ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Speed.prototype.getMeasure = function() {
@@ -81,7 +80,6 @@ ilib.Measurement.Speed.prototype.getMeasure = function() {
 /**
  * Convert the current speed to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Speed.prototype.convert = function(to) {
@@ -160,8 +158,7 @@ ilib.Measurement.Speed.convert = function(to, from, speed) {
 		return undefined;
 	}	
 	var result = speed * fromRow[toRow[0]];
-        result = + result.toFixed(5);
-        return result;
+    return result;
 };
 
 /**

@@ -1,5 +1,5 @@
 /*
- * testtemp.js - test the temperature object
+ * testUnknown.js - test the unknown object
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -16,6 +16,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+function testMeasurementUnknownEmpty() {
+    var m = new ilib.Measurement.Unknown();
+    
+    assertNotNull(m);
+}
 
 function testMeasurementUnknownUnitPreserved() {
     var m = new ilib.Measurement({

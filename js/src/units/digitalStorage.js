@@ -1,7 +1,7 @@
 /*
  * digitalStorage.js - Unit conversions for Digital Storage
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.DigitalStorage = function (options) {
-	this.unit = "Bit";
+	this.unit = "bit";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.DigitalStorage.aliases; // share this table in all instances
 	
@@ -58,19 +58,19 @@ ilib.Measurement.DigitalStorage = function (options) {
 };
 
 ilib.Measurement.DigitalStorage.ratios = {
-    /*                bit          byte         kb             kB           mb           mB              gb           gB            tb            tB             pb            pB   */           
-    "Bit":      [ 1,   1,          0.125,      0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,     9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13,   8.8818e-16,   1.1102e-16  ],
-    "Byte":     [ 2,   8,          1,          0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,     7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13,   7.1054e-15,   8.8818e-16  ],  
-    "Kilobit":  [ 3,   1024,       128,        1,            0.125,        0.000976563,  0.00012207,    9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13  ],
-    "Kilobyte": [ 4,   8192,       1024,       8,            1,            0.0078125,    0.0009765631,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13  ],
-    "Megabit":  [ 5,   1.049e+6,   131072,     1024,         128,          1,            0.125,         0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10  ],
-    "Megabyte": [ 6,   8.389e+6,   1.049e+6,   8192,         1024,         8,            1,             0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10  ],
-    "Gigabit":  [ 7,   1.074e+9,   1.342e+8,   1.049e+6,     131072,       1024,         128,           1,            0.125,        0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7   ],
-    "Gigabyte": [ 8,   8.59e+9,    1.074e+9,   8.389e+6,     1.049e+6,     8192,         1024,          8,            1,            0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7   ],
-    "Terabit":  [ 9,   1.1e+12,    1.374e+11,  1.074e+9,     1.342e+8,     1.049e+6,     131072,        1024,         128,          1,            0.125,        0.000976563,  0.00012207  ],
-    "Terabyte": [ 10,  8.796e+12,  1.1e+12,    8.59e+9,      1.074e+9,     8.389e+6,     1.049e+6,      8192,         1024,         8,            1,            0.0078125,    0.000976563 ],
-    "Petabit":  [ 11,  1.126e+15,  1.407e+14,  1.1e+12,      1.374e+11,    1.074e+9,     1.342e+8,      1.049e+6,     131072,       1024,         128,          1,            0.125       ],
-    "Petabyte": [ 12,  9.007e+15,  1.126e+15,  8.796e+12,    1.1e+12,      8.59e+9,      1.074e+9,      8.389e+6,     1.049e+6,     8192,         1024,         8,            1           ] 
+    /*                 bit             byte            kb              kB              mb              mB              gb               gB               tb               tB               pb               pB   */           
+    "bit":      [ 1,   1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7, 1.192092896e-7, 9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13, 8.881784197e-16, 1.110223025e-16 ],
+    "byte":     [ 2,   8,              1,              0.0078125,      0.0009765625,   7.629394531e-6, 9.536743164e-7, 7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13, 7.105427358e-15, 8.881784197e-16 ],  
+    "kilobit":  [ 3,   1024,           128,            1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13 ],
+    "kilobyte": [ 4,   8192,           1024,           8,              1,              0.0078125,      0.0009765625,   7.629394531e-6,  9.536743164e-7,  7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13 ],
+    "megabit":  [ 5,   1048576,        131072,         1024,           128,            1,              0.125,          0.0009765625,    1.220703125e-4,  9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10 ],
+    "megabyte": [ 6,   8388608,        1048576,        8192,           1024,           8,              1,              0.0078125,       0.0009765625,    7.629394531e-6,  9.536743164e-7,  7.450580597e-9,  9.313225746e-10 ],
+    "gigabit":  [ 7,   1073741824,     134217728,      1048576,        131072,         1024,           128,            1,               0.125,           0.0009765625,    1.220703125e-4,  9.536743164e-7,  1.192092896e-7  ],
+    "gigabyte": [ 8,   8589934592,     1073741824,     8388608,        1048576,        8192,           1024,           8,               1,               0.0078125,       0.0009765625,    7.629394531e-6,  9.536743164e-7  ],
+    "terabit":  [ 9,   1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,        131072,         1024,            128,             1,               0.125,           0.0009765625,    1.220703125e-4  ],
+    "terabyte": [ 10,  8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,        1048576,        8192,            1024,            8,               1,               0.0078125,       0.0009765625    ],
+    "petabit":  [ 11,  1.125899907e15, 1.407374884e14, 1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,         131072,          1024,            128,             1,               0.125           ],
+    "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
 
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
@@ -78,7 +78,6 @@ ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
 ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
@@ -88,7 +87,6 @@ ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
 /**
  * Convert the current digitalStorage to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
@@ -102,114 +100,114 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 };
 
 ilib.Measurement.DigitalStorage.aliases = {
-    "bits":"Bit",
-    "bit":"Bit",
-    "Bits":"Bit",
-    "Bit":"Bit",
-    "byte":"Byte",
-    "bytes":"Byte",
-    "Byte":"Byte",
-    "Bytes":"Byte",
-    "kilobits":"Kilobit",
-    "Kilobits":"Kilobit",
-    "KiloBits":"Kilobit",
-    "kiloBits":"Kilobit",
-    "kilobit":"Kilobit",
-    "Kilobit":"Kilobit",
-    "kiloBit":"Kilobit",
-    "KiloBit":"Kilobit",
-    "kb":"Kilobit",
-    "Kb":"Kilobit",
-    "kilobyte":"Kilobyte",
-    "Kilobyte":"Kilobyte",
-    "kiloByte":"Kilobyte",
-    "KiloByte":"Kilobyte",
-    "kilobytes":"Kilobyte",
-    "Kilobytes":"Kilobyte",
-    "kiloBytes":"Kilobyte",
-    "KiloBytes":"Kilobyte",
-    "kB":"Kilobyte",
-    "KB":"Kilobyte",
-    "megabit":"Megabit",
-    "Megabit":"Megabit",
-    "megaBit":"Megabit",
-    "MegaBit":"Megabit",
-    "megabits":"Megabit",
-    "Megabits":"Megabit",
-    "megaBits":"Megabit",
-    "MegaBits":"Megabit",
-    "Mb":"Megabit",
-    "mb":"Megabit",
-    "megabyte":"Megabyte",
-    "Megabyte":"Megabyte",
-    "megaByte":"Megabyte",
-    "MegaByte":"Megabyte",
-    "megabytes":"Megabyte",
-    "Megabytes":"Megabyte",
-    "megaBytes":"Megabyte",
-    "MegaBytes":"Megabyte",
-    "MB":"Megabyte",
-    "mB":"Megabyte",
-    "gigabit":"Gigabit",
-    "Gigabit":"Gigabit",
-    "gigaBit":"Gigabit",
-    "GigaBit":"Gigabit",
-    "gigabits":"Gigabit",
-    "Gigabits":"Gigabit",
-    "gigaBits":"Gigabyte",
-    "GigaBits":"Gigabit",
-    "Gb":"Gigabit",
-    "gb":"Gigabit",        
-    "gigabyte":"Gigabyte",
-    "Gigabyte":"Gigabyte",
-    "gigaByte":"Gigabyte",
-    "GigaByte":"Gigabyte",
-    "gigabytes":"Gigabyte",
-    "Gigabytes":"Gigabyte",
-    "gigaBytes":"Gigabyte",
-    "GigaBytes":"Gigabyte",
-    "GB":"Gigabyte",
-    "gB":"Gigabyte",
-    "terabit":"Terabit",
-    "Terabit":"Terabit",
-    "teraBit":"Terabit",
-    "TeraBit":"Terabit",
-    "terabits":"Terabit",
-    "Terabits":"Terabit",
-    "teraBits":"Terabit",
-    "TeraBits":"Terabit",
-    "tb":"Terabit",
-    "Tb":"Terabit",
-    "terabyte":"Terabyte",
-    "Terabyte":"Terabyte",
-    "teraByte":"Terabyte",
-    "TeraByte":"Terabyte",
-    "terabytes":"Terabyte",
-    "Terabytes":"Terabyte",
-    "teraBytes":"Terabyte",
-    "TeraBytes":"Terabyte",
-    "TB":"Terabyte",
-    "tB":"Terabyte",
-    "petabit":"Petabit",
-    "Petabit":"Petabit",
-    "petaBit":"Petabit",
-    "PetaBit":"Petabit",
-    "petabits":"Petabit",
-    "Petabits":"Petabit",
-    "petaBits":"Petabit",
-    "PetaBits":"Petabit",
-    "pb":"Petabit",
-    "Pb":"Petabit",
-    "petabyte":"Petabyte",
-    "Petabyte":"Petabyte",
-    "petaByte":"Petabyte",
-    "PetaByte":"Petabyte",
-    "petabytes":"Petabyte",
-    "Petabytes":"Petabyte",
-    "petaBytes":"Petabyte",
-    "PetaBytes":"Petabyte",
-    "PB":"Petabyte",
-    "pB":"Petabyte"
+    "bits":"bit",
+    "bit":"bit",
+    "Bits":"bit",
+    "Bit":"bit",
+    "byte":"byte",
+    "bytes":"byte",
+    "Byte":"byte",
+    "Bytes":"byte",
+    "kilobits":"kilobit",
+    "Kilobits":"kilobit",
+    "KiloBits":"kilobit",
+    "kiloBits":"kilobit",
+    "kilobit":"kilobit",
+    "Kilobit":"kilobit",
+    "kiloBit":"kilobit",
+    "KiloBit":"kilobit",
+    "kb":"kilobit",
+    "Kb":"kilobit",
+    "kilobyte":"kilobyte",
+    "Kilobyte":"kilobyte",
+    "kiloByte":"kilobyte",
+    "KiloByte":"kilobyte",
+    "kilobytes":"kilobyte",
+    "Kilobytes":"kilobyte",
+    "kiloBytes":"kilobyte",
+    "KiloBytes":"kilobyte",
+    "kB":"kilobyte",
+    "KB":"kilobyte",
+    "megabit":"megabit",
+    "Megabit":"megabit",
+    "megaBit":"megabit",
+    "MegaBit":"megabit",
+    "megabits":"megabit",
+    "Megabits":"megabit",
+    "megaBits":"megabit",
+    "MegaBits":"megabit",
+    "Mb":"megabit",
+    "mb":"megabit",
+    "megabyte":"megabyte",
+    "Megabyte":"megabyte",
+    "megaByte":"megabyte",
+    "MegaByte":"megabyte",
+    "megabytes":"megabyte",
+    "Megabytes":"megabyte",
+    "megaBytes":"megabyte",
+    "MegaBytes":"megabyte",
+    "MB":"megabyte",
+    "mB":"megabyte",
+    "gigabit":"gigabit",
+    "Gigabit":"gigabit",
+    "gigaBit":"gigabit",
+    "GigaBit":"gigabit",
+    "gigabits":"gigabit",
+    "Gigabits":"gigabit",
+    "gigaBits":"gigabyte",
+    "GigaBits":"gigabit",
+    "Gb":"gigabit",
+    "gb":"gigabit",        
+    "gigabyte":"gigabyte",
+    "Gigabyte":"gigabyte",
+    "gigaByte":"gigabyte",
+    "GigaByte":"gigabyte",
+    "gigabytes":"gigabyte",
+    "Gigabytes":"gigabyte",
+    "gigaBytes":"gigabyte",
+    "GigaBytes":"gigabyte",
+    "GB":"gigabyte",
+    "gB":"gigabyte",
+    "terabit":"terabit",
+    "Terabit":"terabit",
+    "teraBit":"terabit",
+    "TeraBit":"terabit",
+    "terabits":"terabit",
+    "Terabits":"terabit",
+    "teraBits":"terabit",
+    "TeraBits":"terabit",
+    "tb":"terabit",
+    "Tb":"terabit",
+    "terabyte":"terabyte",
+    "Terabyte":"terabyte",
+    "teraByte":"terabyte",
+    "TeraByte":"terabyte",
+    "terabytes":"terabyte",
+    "Terabytes":"terabyte",
+    "teraBytes":"terabyte",
+    "TeraBytes":"terabyte",
+    "TB":"terabyte",
+    "tB":"terabyte",
+    "petabit":"petabit",
+    "Petabit":"petabit",
+    "petaBit":"petabit",
+    "PetaBit":"petabit",
+    "petabits":"petabit",
+    "Petabits":"petabit",
+    "petaBits":"petabit",
+    "PetaBits":"petabit",
+    "pb":"petabit",
+    "Pb":"petabit",
+    "petabyte":"petabyte",
+    "Petabyte":"petabyte",
+    "petaByte":"petabyte",
+    "PetaByte":"petabyte",
+    "petabytes":"petabyte",
+    "Petabytes":"petabyte",
+    "petaBytes":"petabyte",
+    "PetaBytes":"petabyte",
+    "PB":"petabyte",
+    "pB":"petabyte"
 };
 
 /**
@@ -229,8 +227,7 @@ ilib.Measurement.DigitalStorage.convert = function(to, from, digitalStorage) {
 		return undefined;
 	}	
 	var result = digitalStorage * fromRow[toRow[0]];
-        result = + result.toFixed(3);
-        return result;
+    return result;
 };
 
 /**

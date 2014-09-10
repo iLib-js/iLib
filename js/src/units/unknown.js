@@ -1,7 +1,7 @@
 /*
- * Unknown.js - Unit conversions for Unknowns/Unknowns
+ * Unknown.js - Dummy unit conversions for unknown types
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ ilibglobal.js
 */
 
 /**
- * Create a new Unknown measurement.
+ * Create a new unknown measurement.
  * 
  * @class
  * @constructor
@@ -31,8 +31,10 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Unknown = function (options) {
-	this.unit = options.unit;
-	this.amount = options.amount;
+	if (options) {
+		this.unit = options.unit;
+		this.amount = options.amount;
+	}
 };
 
 ilib.Measurement.Unknown.prototype = new ilib.Measurement({});
@@ -41,11 +43,10 @@ ilib.Measurement.Unknown.prototype.constructor = ilib.Measurement.Unknown;
 
 ilib.Measurement.Unknown.aliases = {
 	"unknown":"unknown"
-}
+};
 
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Unknown.prototype.getMeasure = function() {
@@ -55,7 +56,6 @@ ilib.Measurement.Unknown.prototype.getMeasure = function() {
 /**
  * Convert the current Unknown to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Unknown.prototype.convert = function(to) {
@@ -63,14 +63,14 @@ ilib.Measurement.Unknown.prototype.convert = function(to) {
 };
 
 /**
- * Convert a Unknown to another measure.
+ * Convert a unknown to another measure.
  * @static
- * @param to {string} unit to convert to
- * @param from {string} unit to convert from
- * @param Unknown {number} amount to be convert
+ * @param {string} to unit to convert to
+ * @param {string} from unit to convert from
+ * @param {number} unknown amount to be convert
  * @returns {number} the converted amount
  */
-ilib.Measurement.Unknown.convert = function(to, from, Unknown) {
+ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;
 };
 
@@ -79,8 +79,7 @@ ilib.Measurement.Unknown.convert = function(to, from, Unknown) {
  * @static
  */
 ilib.Measurement.Unknown.getMeasures = function () {
-	var ret = [];
-	return ret;
+	return [];
 };
 
 //register with the factory method
