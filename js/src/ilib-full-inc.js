@@ -79,4 +79,5 @@ units/speed.js
 units/digitalStorage.js
 units/temperature.js
 units/unknown.js
+units/time.js
 */

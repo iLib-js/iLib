@@ -18882,12 +18882,11 @@ ilib.Measurement = function(options) {
 	}
 
 	this.amount = options.amount || 0;
-	var measure;
+	var measure = undefined;
 
 	for (var c in ilib.Measurement._constructors) {
 		var measurement = ilib.Measurement._constructors[c];
-		var unit = measurement.aliases[options.unit];
-		if (typeof(unit) !== 'undefined') {
+		if (typeof(measurement.aliases[options.unit]) !== 'undefined') {
 			measure = c;
 			break;
 		}
@@ -18895,11 +18894,12 @@ ilib.Measurement = function(options) {
 
 	if (!measure || typeof(measure) === 'undefined') {
 		return new ilib.Measurement.Unknown({
-                    unit: options.unit,
-                    amount: options.amount
-                });                
-	} else 
-            return new ilib.Measurement._constructors[measure](options);
+			unit: options.unit,
+			amount: options.amount
+		});                
+	} else {
+		return new ilib.Measurement._constructors[measure](options);
+	}
 };
 
 /**
@@ -19268,7 +19268,7 @@ ilib.UnitFmt.prototype = {
 /*
  * Length.js - Unit conversions for Lengths/lengths
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19348,7 +19348,6 @@ ilib.Measurement.Length.prototype.parent = ilib.Measurement;
 ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.getMeasure = function() {
@@ -19358,7 +19357,6 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 /**
  * Convert the current length to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.convert = function(to) {
@@ -19473,7 +19471,7 @@ ilib.Measurement._constructors["length"] = ilib.Measurement.Length;
 /*
  * Speed.js - Unit conversions for Speeds/speeds
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19543,7 +19541,6 @@ ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
 ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Speed.prototype.getMeasure = function() {
@@ -19553,7 +19550,6 @@ ilib.Measurement.Speed.prototype.getMeasure = function() {
 /**
  * Convert the current speed to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Speed.prototype.convert = function(to) {
@@ -19632,8 +19628,7 @@ ilib.Measurement.Speed.convert = function(to, from, speed) {
 		return undefined;
 	}	
 	var result = speed * fromRow[toRow[0]];
-        result = + result.toFixed(5);
-        return result;
+    return result;
 };
 
 /**
@@ -19654,7 +19649,7 @@ ilib.Measurement._constructors["speed"] = ilib.Measurement.Speed;
 /*
  * digitalStorage.js - Unit conversions for Digital Storage
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19684,7 +19679,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.DigitalStorage = function (options) {
-	this.unit = "Bit";
+	this.unit = "bit";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.DigitalStorage.aliases; // share this table in all instances
 	
@@ -19711,19 +19706,19 @@ ilib.Measurement.DigitalStorage = function (options) {
 };
 
 ilib.Measurement.DigitalStorage.ratios = {
-    /*                bit          byte         kb             kB           mb           mB              gb           gB            tb            tB             pb            pB   */           
-    "Bit":      [ 1,   1,          0.125,      0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,     9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13,   8.8818e-16,   1.1102e-16  ],
-    "Byte":     [ 2,   8,          1,          0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,     7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13,   7.1054e-15,   8.8818e-16  ],  
-    "Kilobit":  [ 3,   1024,       128,        1,            0.125,        0.000976563,  0.00012207,    9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10,   9.0949e-13,   1.1369e-13  ],
-    "Kilobyte": [ 4,   8192,       1024,       8,            1,            0.0078125,    0.0009765631,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10,   7.276e-12,    9.0949e-13  ],
-    "Megabit":  [ 5,   1.049e+6,   131072,     1024,         128,          1,            0.125,         0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7,    9.3132e-10,   1.1642e-10  ],
-    "Megabyte": [ 6,   8.389e+6,   1.049e+6,   8192,         1024,         8,            1,             0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7,    7.4506e-9,    9.3132e-10  ],
-    "Gigabit":  [ 7,   1.074e+9,   1.342e+8,   1.049e+6,     131072,       1024,         128,           1,            0.125,        0.000976563,  0.00012207,   9.5367e-7,    1.1921e-7   ],
-    "Gigabyte": [ 8,   8.59e+9,    1.074e+9,   8.389e+6,     1.049e+6,     8192,         1024,          8,            1,            0.0078125,    0.000976563,  7.6294e-6,    9.5367e-7   ],
-    "Terabit":  [ 9,   1.1e+12,    1.374e+11,  1.074e+9,     1.342e+8,     1.049e+6,     131072,        1024,         128,          1,            0.125,        0.000976563,  0.00012207  ],
-    "Terabyte": [ 10,  8.796e+12,  1.1e+12,    8.59e+9,      1.074e+9,     8.389e+6,     1.049e+6,      8192,         1024,         8,            1,            0.0078125,    0.000976563 ],
-    "Petabit":  [ 11,  1.126e+15,  1.407e+14,  1.1e+12,      1.374e+11,    1.074e+9,     1.342e+8,      1.049e+6,     131072,       1024,         128,          1,            0.125       ],
-    "Petabyte": [ 12,  9.007e+15,  1.126e+15,  8.796e+12,    1.1e+12,      8.59e+9,      1.074e+9,      8.389e+6,     1.049e+6,     8192,         1024,         8,            1           ] 
+    /*                 bit             byte            kb              kB              mb              mB              gb               gB               tb               tB               pb               pB   */           
+    "bit":      [ 1,   1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7, 1.192092896e-7, 9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13, 8.881784197e-16, 1.110223025e-16 ],
+    "byte":     [ 2,   8,              1,              0.0078125,      0.0009765625,   7.629394531e-6, 9.536743164e-7, 7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13, 7.105427358e-15, 8.881784197e-16 ],  
+    "kilobit":  [ 3,   1024,           128,            1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13 ],
+    "kilobyte": [ 4,   8192,           1024,           8,              1,              0.0078125,      0.0009765625,   7.629394531e-6,  9.536743164e-7,  7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13 ],
+    "megabit":  [ 5,   1048576,        131072,         1024,           128,            1,              0.125,          0.0009765625,    1.220703125e-4,  9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10 ],
+    "megabyte": [ 6,   8388608,        1048576,        8192,           1024,           8,              1,              0.0078125,       0.0009765625,    7.629394531e-6,  9.536743164e-7,  7.450580597e-9,  9.313225746e-10 ],
+    "gigabit":  [ 7,   1073741824,     134217728,      1048576,        131072,         1024,           128,            1,               0.125,           0.0009765625,    1.220703125e-4,  9.536743164e-7,  1.192092896e-7  ],
+    "gigabyte": [ 8,   8589934592,     1073741824,     8388608,        1048576,        8192,           1024,           8,               1,               0.0078125,       0.0009765625,    7.629394531e-6,  9.536743164e-7  ],
+    "terabit":  [ 9,   1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,        131072,         1024,            128,             1,               0.125,           0.0009765625,    1.220703125e-4  ],
+    "terabyte": [ 10,  8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,        1048576,        8192,            1024,            8,               1,               0.0078125,       0.0009765625    ],
+    "petabit":  [ 11,  1.125899907e15, 1.407374884e14, 1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,         131072,          1024,            128,             1,               0.125           ],
+    "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
 
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
@@ -19731,7 +19726,6 @@ ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
 ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
@@ -19741,7 +19735,6 @@ ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
 /**
  * Convert the current digitalStorage to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
@@ -19755,114 +19748,114 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 };
 
 ilib.Measurement.DigitalStorage.aliases = {
-    "bits":"Bit",
-    "bit":"Bit",
-    "Bits":"Bit",
-    "Bit":"Bit",
-    "byte":"Byte",
-    "bytes":"Byte",
-    "Byte":"Byte",
-    "Bytes":"Byte",
-    "kilobits":"Kilobit",
-    "Kilobits":"Kilobit",
-    "KiloBits":"Kilobit",
-    "kiloBits":"Kilobit",
-    "kilobit":"Kilobit",
-    "Kilobit":"Kilobit",
-    "kiloBit":"Kilobit",
-    "KiloBit":"Kilobit",
-    "kb":"Kilobit",
-    "Kb":"Kilobit",
-    "kilobyte":"Kilobyte",
-    "Kilobyte":"Kilobyte",
-    "kiloByte":"Kilobyte",
-    "KiloByte":"Kilobyte",
-    "kilobytes":"Kilobyte",
-    "Kilobytes":"Kilobyte",
-    "kiloBytes":"Kilobyte",
-    "KiloBytes":"Kilobyte",
-    "kB":"Kilobyte",
-    "KB":"Kilobyte",
-    "megabit":"Megabit",
-    "Megabit":"Megabit",
-    "megaBit":"Megabit",
-    "MegaBit":"Megabit",
-    "megabits":"Megabit",
-    "Megabits":"Megabit",
-    "megaBits":"Megabit",
-    "MegaBits":"Megabit",
-    "Mb":"Megabit",
-    "mb":"Megabit",
-    "megabyte":"Megabyte",
-    "Megabyte":"Megabyte",
-    "megaByte":"Megabyte",
-    "MegaByte":"Megabyte",
-    "megabytes":"Megabyte",
-    "Megabytes":"Megabyte",
-    "megaBytes":"Megabyte",
-    "MegaBytes":"Megabyte",
-    "MB":"Megabyte",
-    "mB":"Megabyte",
-    "gigabit":"Gigabit",
-    "Gigabit":"Gigabit",
-    "gigaBit":"Gigabit",
-    "GigaBit":"Gigabit",
-    "gigabits":"Gigabit",
-    "Gigabits":"Gigabit",
-    "gigaBits":"Gigabyte",
-    "GigaBits":"Gigabit",
-    "Gb":"Gigabit",
-    "gb":"Gigabit",        
-    "gigabyte":"Gigabyte",
-    "Gigabyte":"Gigabyte",
-    "gigaByte":"Gigabyte",
-    "GigaByte":"Gigabyte",
-    "gigabytes":"Gigabyte",
-    "Gigabytes":"Gigabyte",
-    "gigaBytes":"Gigabyte",
-    "GigaBytes":"Gigabyte",
-    "GB":"Gigabyte",
-    "gB":"Gigabyte",
-    "terabit":"Terabit",
-    "Terabit":"Terabit",
-    "teraBit":"Terabit",
-    "TeraBit":"Terabit",
-    "terabits":"Terabit",
-    "Terabits":"Terabit",
-    "teraBits":"Terabit",
-    "TeraBits":"Terabit",
-    "tb":"Terabit",
-    "Tb":"Terabit",
-    "terabyte":"Terabyte",
-    "Terabyte":"Terabyte",
-    "teraByte":"Terabyte",
-    "TeraByte":"Terabyte",
-    "terabytes":"Terabyte",
-    "Terabytes":"Terabyte",
-    "teraBytes":"Terabyte",
-    "TeraBytes":"Terabyte",
-    "TB":"Terabyte",
-    "tB":"Terabyte",
-    "petabit":"Petabit",
-    "Petabit":"Petabit",
-    "petaBit":"Petabit",
-    "PetaBit":"Petabit",
-    "petabits":"Petabit",
-    "Petabits":"Petabit",
-    "petaBits":"Petabit",
-    "PetaBits":"Petabit",
-    "pb":"Petabit",
-    "Pb":"Petabit",
-    "petabyte":"Petabyte",
-    "Petabyte":"Petabyte",
-    "petaByte":"Petabyte",
-    "PetaByte":"Petabyte",
-    "petabytes":"Petabyte",
-    "Petabytes":"Petabyte",
-    "petaBytes":"Petabyte",
-    "PetaBytes":"Petabyte",
-    "PB":"Petabyte",
-    "pB":"Petabyte"
+    "bits":"bit",
+    "bit":"bit",
+    "Bits":"bit",
+    "Bit":"bit",
+    "byte":"byte",
+    "bytes":"byte",
+    "Byte":"byte",
+    "Bytes":"byte",
+    "kilobits":"kilobit",
+    "Kilobits":"kilobit",
+    "KiloBits":"kilobit",
+    "kiloBits":"kilobit",
+    "kilobit":"kilobit",
+    "Kilobit":"kilobit",
+    "kiloBit":"kilobit",
+    "KiloBit":"kilobit",
+    "kb":"kilobit",
+    "Kb":"kilobit",
+    "kilobyte":"kilobyte",
+    "Kilobyte":"kilobyte",
+    "kiloByte":"kilobyte",
+    "KiloByte":"kilobyte",
+    "kilobytes":"kilobyte",
+    "Kilobytes":"kilobyte",
+    "kiloBytes":"kilobyte",
+    "KiloBytes":"kilobyte",
+    "kB":"kilobyte",
+    "KB":"kilobyte",
+    "megabit":"megabit",
+    "Megabit":"megabit",
+    "megaBit":"megabit",
+    "MegaBit":"megabit",
+    "megabits":"megabit",
+    "Megabits":"megabit",
+    "megaBits":"megabit",
+    "MegaBits":"megabit",
+    "Mb":"megabit",
+    "mb":"megabit",
+    "megabyte":"megabyte",
+    "Megabyte":"megabyte",
+    "megaByte":"megabyte",
+    "MegaByte":"megabyte",
+    "megabytes":"megabyte",
+    "Megabytes":"megabyte",
+    "megaBytes":"megabyte",
+    "MegaBytes":"megabyte",
+    "MB":"megabyte",
+    "mB":"megabyte",
+    "gigabit":"gigabit",
+    "Gigabit":"gigabit",
+    "gigaBit":"gigabit",
+    "GigaBit":"gigabit",
+    "gigabits":"gigabit",
+    "Gigabits":"gigabit",
+    "gigaBits":"gigabyte",
+    "GigaBits":"gigabit",
+    "Gb":"gigabit",
+    "gb":"gigabit",        
+    "gigabyte":"gigabyte",
+    "Gigabyte":"gigabyte",
+    "gigaByte":"gigabyte",
+    "GigaByte":"gigabyte",
+    "gigabytes":"gigabyte",
+    "Gigabytes":"gigabyte",
+    "gigaBytes":"gigabyte",
+    "GigaBytes":"gigabyte",
+    "GB":"gigabyte",
+    "gB":"gigabyte",
+    "terabit":"terabit",
+    "Terabit":"terabit",
+    "teraBit":"terabit",
+    "TeraBit":"terabit",
+    "terabits":"terabit",
+    "Terabits":"terabit",
+    "teraBits":"terabit",
+    "TeraBits":"terabit",
+    "tb":"terabit",
+    "Tb":"terabit",
+    "terabyte":"terabyte",
+    "Terabyte":"terabyte",
+    "teraByte":"terabyte",
+    "TeraByte":"terabyte",
+    "terabytes":"terabyte",
+    "Terabytes":"terabyte",
+    "teraBytes":"terabyte",
+    "TeraBytes":"terabyte",
+    "TB":"terabyte",
+    "tB":"terabyte",
+    "petabit":"petabit",
+    "Petabit":"petabit",
+    "petaBit":"petabit",
+    "PetaBit":"petabit",
+    "petabits":"petabit",
+    "Petabits":"petabit",
+    "petaBits":"petabit",
+    "PetaBits":"petabit",
+    "pb":"petabit",
+    "Pb":"petabit",
+    "petabyte":"petabyte",
+    "Petabyte":"petabyte",
+    "petaByte":"petabyte",
+    "PetaByte":"petabyte",
+    "petabytes":"petabyte",
+    "Petabytes":"petabyte",
+    "petaBytes":"petabyte",
+    "PetaBytes":"petabyte",
+    "PB":"petabyte",
+    "pB":"petabyte"
 };
 
 /**
@@ -19882,8 +19875,7 @@ ilib.Measurement.DigitalStorage.convert = function(to, from, digitalStorage) {
 		return undefined;
 	}	
 	var result = digitalStorage * fromRow[toRow[0]];
-        result = + result.toFixed(3);
-        return result;
+    return result;
 };
 
 /**
@@ -19904,7 +19896,7 @@ ilib.Measurement._constructors["digitalStorage"] = ilib.Measurement.DigitalStora
 /*
  * temperature.js - Unit conversions for Temperature/temperature
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19934,34 +19926,33 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Temperature = function (options) {
-    this.unit = "celsius";
+	this.unit = "celsius";
 	this.amount = 0;
-    this.aliases = ilib.Measurement.Temperature.aliases; // share this table in all instances
-	
+	this.aliases = ilib.Measurement.Temperature.aliases; // share this table in all instances
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.aliases[options.unit] || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
-                    if (options.amount.getMeasure() === "temperature") {
-                        this.amount = ilib.Measurement.Temperature.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-                    } else {
-                        throw "Cannot convert unit " + options.amount.unit + " to a temperature";
-                    }
-                } else if (typeof(options.amount) !== 'undefined') {
+			if (options.amount.getMeasure() === "temperature") {
+				this.amount = ilib.Measurement.Temperature.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert unit " + options.amount.unit + " to a temperature";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
 			this.amount = parseFloat(options.amount);
-                    }
-                }
-            };
+		}
+	}
+};
 
 ilib.Measurement.Temperature.prototype = new ilib.Measurement({});
 ilib.Measurement.Temperature.prototype.parent = ilib.Measurement;
 ilib.Measurement.Temperature.prototype.constructor = ilib.Measurement.Temperature;
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Temperature.prototype.getMeasure = function() {
@@ -19974,6 +19965,8 @@ ilib.Measurement.Temperature.aliases = {
 	"C": "celsius",
 	"centegrade": "celsius",
 	"Centegrade": "celsius",
+	"centigrade": "celsius",
+	"Centigrade": "celsius",
 	"fahrenheit": "fahrenheit",
 	"Fahrenheit": "fahrenheit",
 	"F": "fahrenheit",
@@ -19995,48 +19988,47 @@ ilib.Measurement.Temperature.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Temperature.convert = function(to, from, temperature) {
-        var result;
-        from = ilib.Measurement.Temperature.aliases[from] || from;
-        to = ilib.Measurement.Temperature.aliases[to] || to;
-        
-	if(from === "celsius") {
-            if(to === "fahrenheit") 
-                result = ((temperature * 9/5)+32);
-            else if (to === "kelvin")
-                result = (temperature + 273.15);
-        } else if( from === "fahrenheit") {
-            if (to === "celsius") 
-                result = ((5/9*(temperature - 32)));
-            else if ( to === "kelvin")
-                result = ((temperature+459.67)*5/9);
-        } else if ( from === "kelvin") {
-            if(to === "celsius")
-                result =  (temperature - 273.15);
-            else if (to === "fahrenheit")
-                result = ((temperature *9/5)-459.67);
-        }
-        result = +result.toFixed(2);
-        return result;
+	var result = 0;
+	from = ilib.Measurement.Temperature.aliases[from] || from;
+	to = ilib.Measurement.Temperature.aliases[to] || to;
+
+	if (from === "celsius") {
+		if (to === "fahrenheit") {
+			result = ((temperature * 9 / 5) + 32);
+		} else if (to === "kelvin") {
+			result = (temperature + 273.15);
+		}
+	} else if (from === "fahrenheit") {
+		if (to === "celsius") {
+			result = ((5 / 9 * (temperature - 32)));
+		} else if (to === "kelvin") {
+			result = ((temperature + 459.67) * 5 / 9);
+		}
+	} else if (from === "kelvin") {
+		if (to === "celsius") {
+			result = (temperature - 273.15);
+		} else if (to === "fahrenheit") {
+			result = ((temperature * 9 / 5) - 459.67);
+		}
+	}
+	
+	return result;
 };
 /**
  * @private
  * @static
  */
 ilib.Measurement.Temperature.getMeasures = function () {
-	var ret = [];
-    ret.push("celsius");
-    ret.push("kelvin");
-    ret.push("fahrenheit");
-	return ret;
+	return ["celsius", "kelvin", "fahrenheit"];
 };
 
 //register with the factory method
 ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;
 
 /*
- * Unknown.js - Unit conversions for Unknowns/Unknowns
+ * Unknown.js - Dummy unit conversions for unknown types
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20058,7 +20050,7 @@ ilibglobal.js
 */
 
 /**
- * Create a new Unknown measurement.
+ * Create a new unknown measurement.
  * 
  * @class
  * @constructor
@@ -20066,8 +20058,10 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Unknown = function (options) {
-	this.unit = options.unit;
-	this.amount = options.amount;
+	if (options) {
+		this.unit = options.unit;
+		this.amount = options.amount;
+	}
 };
 
 ilib.Measurement.Unknown.prototype = new ilib.Measurement({});
@@ -20076,11 +20070,10 @@ ilib.Measurement.Unknown.prototype.constructor = ilib.Measurement.Unknown;
 
 ilib.Measurement.Unknown.aliases = {
 	"unknown":"unknown"
-}
+};
 
 
 /**
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Unknown.prototype.getMeasure = function() {
@@ -20090,7 +20083,6 @@ ilib.Measurement.Unknown.prototype.getMeasure = function() {
 /**
  * Convert the current Unknown to another measure.
  * 
- * @override
  * @inheritDoc
  */
 ilib.Measurement.Unknown.prototype.convert = function(to) {
@@ -20098,14 +20090,14 @@ ilib.Measurement.Unknown.prototype.convert = function(to) {
 };
 
 /**
- * Convert a Unknown to another measure.
+ * Convert a unknown to another measure.
  * @static
- * @param to {string} unit to convert to
- * @param from {string} unit to convert from
- * @param Unknown {number} amount to be convert
+ * @param {string} to unit to convert to
+ * @param {string} from unit to convert from
+ * @param {number} unknown amount to be convert
  * @returns {number} the converted amount
  */
-ilib.Measurement.Unknown.convert = function(to, from, Unknown) {
+ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;
 };
 
@@ -20114,13 +20106,232 @@ ilib.Measurement.Unknown.convert = function(to, from, Unknown) {
  * @static
  */
 ilib.Measurement.Unknown.getMeasures = function () {
-	var ret = [];
-	return ret;
+	return [];
 };
 
 //register with the factory method
 ilib.Measurement._constructors["unknown"] = ilib.Measurement.Unknown;
 
+
+/*
+ * Time.js - Unit conversions for Times/times
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new time measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Time = function (options) {
+	this.unit = "ns";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.Time.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "time") {
+				this.amount = ilib.Measurement.Time.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert units " + options.amount.unit + " to a time";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.Time.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.Time.ratios = {
+	/*          index  nsec        msec        mlsec       sec        min          hour          day           week          month          year       decade        century    */           
+	"ns":       [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],  
+	"μs":       [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],  
+	"ms":       [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
+	"s":        [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
+	"min":      [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
+        "h":        [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
+        "day":      [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
+        "week":     [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
+        "month":    [ 9,   2.63e+15,   2.63e+12,   2.63e+9,    2.63e+6,   43829.1,     730.484,      30.4368,      4.34812,     1,           0.0833333,   0.00833333,   0.000833333 ],
+        "year":     [ 10,  3.156e+16,  3.156e+13,  3.156e+10,  3.156e+7,  525949,      8765.81,      365.242,      52.1775,     12,          1,           0.1,          0.01        ],
+        "decade":   [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
+        "century":  [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
+};
+
+ilib.Measurement.Time.prototype = new ilib.Measurement({});
+ilib.Measurement.Time.prototype.parent = ilib.Measurement;
+ilib.Measurement.Time.prototype.constructor = ilib.Measurement.Time;
+
+/**
+ * @inheritDoc
+ */
+ilib.Measurement.Time.prototype.getMeasure = function() {
+	return "time";
+};
+
+/**
+ * Convert the current time to another measure.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Time.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Time.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.Time.aliases = {
+    "ns":"ns",
+    "NS":"ns",
+    "nS":"ns",
+    "Ns":"ns",
+    "Nanosecond":"ns",
+    "Nanoseconds":"ns",
+    "nanosecond":"ns",
+    "nanoseconds":"ns",
+    "NanoSecond":"ns",
+    "NanoSeconds":"ns",
+    "μs":"μs",
+    "μS":"μs",
+    "microsecond":"μs",
+    "microseconds":"μs",
+    "Microsecond":"μs",
+    "Microseconds":"μs",
+    "MicroSecond":"μs",
+    "MicroSeconds":"μs",
+    "ms":"ms",
+    "MS":"ms",
+    "mS":"ms",
+    "Ms":"ms",
+    "millisecond":"ms",
+    "milliseconds":"ms",
+    "Millisecond":"ms",
+    "Milliseconds":"ms",
+    "MilliSecond":"ms",
+    "MilliSeconds":"ms",
+    "s":"s",
+    "S":"s",
+    "sec":"s",
+    "second":"s",
+    "seconds":"s",
+    "Second":"s",
+    "Seconds":"s",
+    "min":"min",
+    "Min":"min",
+    "minute":"min",
+    "minutes":"min",
+    "Minute":"min",
+    "Minutes":"min",
+    "h":"h",
+    "H":"h",
+    "hr":"h",
+    "Hr":"h",
+    "hR":"h",
+    "HR":"h",
+    "hour":"h",
+    "hours":"h",
+    "Hour":"h",
+    "Hours":"h",
+    "Hrs":"h",
+    "hrs":"h",
+    "day":"day",
+    "days":"day",
+    "Day":"day",
+    "Days":"day",
+    "week":"week",
+    "weeks":"week",
+    "Week":"week",
+    "Weeks":"week",
+    "month":"month",
+    "Month":"month",
+    "months":"month",
+    "Months":"month",
+    "year":"year",
+    "years":"year",
+    "Year":"year",
+    "Years":"year",
+    "yr":"year",
+    "Yr":"year",
+    "yrs":"year",
+    "Yrs":"year",
+    "decade":"decade",
+    "decades":"decade",
+    "Decade":"decade",
+    "Decades":"decade",
+    "century":"century",
+    "centuries":"century",
+    "Century":"century",
+    "Centuries":"century"
+};
+
+/**
+ * Convert a time to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param time {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Time.convert = function(to, from, time) {
+    from = ilib.Measurement.Time.aliases[from] || from;
+    to = ilib.Measurement.Time.aliases[to] || to;
+	var fromRow = ilib.Measurement.Time.ratios[from];
+	var toRow = ilib.Measurement.Time.ratios[to];
+	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+		return undefined;
+	}	
+	var result = time * fromRow[toRow[0]];
+    return result;
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Time.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.Time.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["time"] = ilib.Measurement.Time;
 
 /**
  * @license
@@ -20203,5 +20414,6 @@ units/speed.js
 units/digitalStorage.js
 units/temperature.js
 units/unknown.js
+units/time.js
 */
 
