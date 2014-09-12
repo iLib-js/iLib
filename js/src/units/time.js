@@ -194,13 +194,12 @@ ilib.Measurement.Time.aliases = {
 ilib.Measurement.Time.convert = function(to, from, time) {
     from = ilib.Measurement.Time.aliases[from] || from;
     to = ilib.Measurement.Time.aliases[to] || to;
-	var fromRow = ilib.Measurement.Time.ratios[from];
-	var toRow = ilib.Measurement.Time.ratios[to];
-	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
-		return undefined;
-	}	
-	var result = time * fromRow[toRow[0]];
-    return result;
+    var fromRow = ilib.Measurement.Time.ratios[from];
+    var toRow = ilib.Measurement.Time.ratios[to];
+    if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+        return undefined;
+    }	
+    return time * fromRow[toRow[0]];
 };
 
 /**

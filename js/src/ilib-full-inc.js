@@ -80,4 +80,6 @@ units/digitalStorage.js
 units/temperature.js
 units/unknown.js
 units/time.js
+units/mass.js
+units/area.js
 */

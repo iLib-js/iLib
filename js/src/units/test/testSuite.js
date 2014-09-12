@@ -33,7 +33,9 @@ function suite() {
 		"testtemp.js",
 		"testdigitalstoreage.js",
 		"testUnknown.js",
-		"testtime.js"		
+		"testtime.js",		
+		"testmass.js",
+		"testarea.js"
     ];
     
     suites.forEach(function (path) {
