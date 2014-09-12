@@ -5490,49 +5490,49 @@ ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West A
 ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
 ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
 ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
-ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
+ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
 ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
 ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
-ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
-ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
-ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
-ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
-ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
-ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
-ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
-ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
-ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
-ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
-ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
-ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
-ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
-ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
-ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
-ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
-ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
-ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
+ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -20527,6 +20527,417 @@ ilib.Measurement.Mass.getMeasures = function () {
 //register with the factory method
 ilib.Measurement._constructors["mass"] = ilib.Measurement.Mass;
 
+/*
+ * area.js - Unit conversions for Area
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new area measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Area = function (options) {
+	this.unit = "Square km";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.Area.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "area") {
+				this.amount = ilib.Measurement.Area.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert unit " + options.amount.unit + " to area";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.Area.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.Area.ratios = {
+/*index	   : 	Square km, 	Hectare,	Square meter,	Square mile,     Acre,	 Square yard,	Square foot,	Square inch */ 
+
+"Square km":	[1, 1	       	, 	100       , 	1e+6        , 	0.386102   ,	247.105    ,	1.196e+6  , 1.076e+7   , 1.55e+9 ],
+"Hectare"  :	[2, 0.01       	, 	1         , 	10000       , 	0.00386102 ,	2.47105    ,	11959.9   , 107639     , 1.55e+7 ],
+"Square meter": [3, 1e-6	, 	1e-4      , 	1	    , 	3.861e-7   ,	0.000247105,	1.19599   , 10.7639    , 1550    ],
+"Square mile" : [4, 2.58999    	,	258.999   , 	2.59e+6     , 	1	   ,	640	   ,  	3.098e+6  , 2.788e+7   , 4.014e+9],
+"Acre"	   :	[5, 0.00404686 	, 	0.404686  ,	4046.86     ,	0.0015625  , 	1          ,  	4840	  , 43560      , 6.273e+6],
+"Square yard":	[6, 8.3613e-7  	, 	8.3613e-5 ,	0.836127    ,	3.2283e-7  ,	0.000206612,    1	  , 9          , 1296    ],
+"Square foot":  [7, 9.2903e-8  	,  	9.2903e-6 ,	0.092903    ,	3.587e-8   ,	2.2957e-5  ,	0.111111  , 1	       , 144	 ],
+"Square inch":	[8, 6.4516e-10 	,	6.4516e-8 ,	0.00064516  ,	2.491e-10  ,	1.5942e-7  ,	0.000771605, 0.000771605, 1	 ]
+
+}
+
+ilib.Measurement.Area.prototype = new ilib.Measurement({});
+ilib.Measurement.Area.prototype.parent = ilib.Measurement;
+ilib.Measurement.Area.prototype.constructor = ilib.Measurement.Area;
+
+/**
+ * @inheritDoc
+ */ 
+ilib.Measurement.Area.prototype.getMeasure = function() {
+	return "area";
+}; 
+
+/**
+ * Convert the current Area to another measure.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Area.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Area.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to, 
+		amount: this
+	});
+};
+
+ilib.Measurement.Area.aliases = {
+	"Square km": "Square km",
+	"Square kilometre":"Square km",
+	"square kilometer":"Square km",
+	"square kilometre":"Square km",
+	"square kilometers":"Square km",
+	"square kilometres":"Square km",
+	"sq km":"Square km",
+	"km2":"Square km",
+
+	"Hectare":"Hectare",
+	"hectare":"Hectare",
+	"ha":"Hectare",
+
+	"Square meter": "Square meter",
+	"Square meters":"Square meter",
+	"square meter": "Square meter",
+	"square meters":"Square meter",
+	"Square metre": "Square meter",
+	"Square metres":"Square meter",
+	"square metres": "Square meter",
+	"square metres":"Square meter",
+	"sqm":"Square meter",
+	"m2": "Square meter",
+
+	"Square mile":"Square mile",
+	"Square miles":"Square mile",
+	"square mile":"Square mile",
+	"square miles":"Square mile",
+	"square mi":"Square mile",
+	"Square mi":"Square mile",
+	"sq mi":"Square mile",
+	"mi2":"Square mile",
+
+	"Acre": "Acre",
+	"acre": "Acre",
+	"Acres":"Acre",
+	"acres":"Acre",
+
+	"Square yard": "Square yard",
+	"Square yards":"Square yard",
+	"square yard": "Square yard",
+	"square yards":"Square yard",
+	"yd2":"Square yard",
+
+	"Square foot": "Square foot",
+	"square foot": "Square foot",
+	"Square feet": "Square foot",
+	"Square feet": "Square foot",
+	"sq ft":"Square foot",
+	"ft2":"Square foot",
+
+	"Square inch":"Square inch",
+	"square inch":"Square inch",
+	"Square inches":"Square inch",
+	"square inches":"Square inch",
+	"in2":"Square inch"
+};
+
+/**
+ * Convert a Area to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param area {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Area.convert = function(to, from, area) {
+    from = ilib.Measurement.Area.aliases[from] || from;
+    to = ilib.Measurement.Area.aliases[to] || to;
+	var fromRow = ilib.Measurement.Area.ratios[from];
+	var toRow = ilib.Measurement.Area.ratios[to];
+	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+		return undefined;
+	}
+	return area* fromRow[toRow[0]];
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Area.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.Area.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["area"] = ilib.Measurement.Area;
+
+/*
+ * fuelconsumption.js - Unit conversions for FuelConsumption
+ *
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/*
+!depends 
+ilibglobal.js 
+*/
+/**
+ * Create a new fuelconsumption measurement.
+ *
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
+ * the construction of this instance
+ */
+ilib.Measurement.FuelConsumption = function(options) {
+    this.unit = "Km/liter";
+    this.amount = 0;
+    this.aliases = ilib.Measurement.FuelConsumption.aliases; // share this table in all instances
+
+    if (options) {
+        if (typeof(options.unit) !== 'undefined') {
+            this.originalUnit = options.unit;
+            this.unit = this.aliases[options.unit] || options.unit;
+        }
+
+        if (typeof(options.amount) === 'object') {
+            if (options.amount.getMeasure() === "fuelconsumption") {
+                this.amount = ilib.Measurement.FuelConsumption.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+            } else {
+                throw "Cannot convert unit " + options.amount.unit + " to fuelconsumption";
+            }
+        } else if (typeof(options.amount) !== 'undefined') {
+            this.amount = parseFloat(options.amount);
+        }
+    }
+};
+
+ilib.Measurement.FuelConsumption.ratios = ["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"];
+
+ilib.Measurement.FuelConsumption.prototype = new ilib.Measurement({});
+ilib.Measurement.FuelConsumption.prototype.parent = ilib.Measurement;
+ilib.Measurement.FuelConsumption.prototype.constructor = ilib.Measurement.FuelConsumption;
+
+/**
+ * @inheritDoc
+ */
+ilib.Measurement.FuelConsumption.prototype.getMeasure = function() {
+    return "fuelconsumption";
+};
+
+/**
+ * Convert the current FuelConsumption to another measure.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.FuelConsumption.prototype.convert = function(to) {
+    if (!to || typeof(ilib.Measurement.FuelConsumption.ratios[this.normalizeUnits(to)]) === 'undefined') {
+        return undefined;
+    }
+    return new ilib.Measurement({
+        unit: to,
+        amount: this
+    });
+};
+/*["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"*/
+ilib.Measurement.FuelConsumption.aliases = {
+	"Km/liter": "Km/liter",
+	"KM/Liter": "Km/liter",
+	"KM/L": "Km/liter",
+	"Kilometers Per Liter": "Km/liter",
+	"kilometers per liter": "Km/liter",
+	"km/l": "Km/liter",
+	"Kilometers/Liter": "Km/liter",
+	"Kilometer/Liter": "Km/liter",
+	"kilometers/liter": "Km/liter",
+	"kilometer/liter": "Km/liter",
+
+	"Liter/100km":"Liter/100km",
+	"Liters/100km":"Liter/100km",
+	"Liter/100kms":"Liter/100km",
+	"Liters/100kms":"Liter/100km",
+	"liter/100km":"Liter/100km",
+	"liters/100kms":"Liter/100km",
+	"liters/100km":"Liter/100km",
+	"liter/100kms":"Liter/100km",
+	"Liter/100KM":"Liter/100km",
+	"Liters/100KM":"Liter/100km",
+	"L/100km":"Liter/100km",
+	"L/100KM":"Liter/100km",
+	"l/100KM":"Liter/100km",
+	"l/100km":"Liter/100km",
+	"l/100kms":"Liter/100km",
+
+	"MPG(US)":"MPG(US)",
+    	"USMPG ": "MPG(US)",
+	"mpgUS":"MPG(US)",
+	"mpg(US)":"MPG(US)",
+	"mpg(us)":"MPG(US)",
+	"mpg-us":"MPG(US)",
+	"mpg Imp":"MPG(US)",
+	
+	"MPG(imp)":"MPG(imp)",
+	"mpg(imp)":"MPG(imp)",
+	"mpg-imp":"MPG(imp)"
+};
+
+/**
+ * Convert a FuelConsumption to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param fuelConsumption {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
+    from = ilib.Measurement.FuelConsumption.aliases[from] || from;
+    to = ilib.Measurement.FuelConsumption.aliases[to] || to;
+    var returnValue = 0;
+
+    switch (from) {
+        case "Km/liter":
+            switch (to) {
+                case "Km/liter":
+                    returnValue = fuelConsumption * 1;
+                    break;
+                case "Liter/100km":
+                    returnValue = 100 / fuelConsumption;
+                    break;
+                case "MPG(US)":
+                    returnValue = fuelConsumption * 2.35215;
+                    break;
+                case "MPG(imp)":
+                    returnValue = fuelConsumption * 2.82481;
+                    break;
+            }
+            break;
+        case "Liter/100km":
+            switch (to) {
+                case "Km/liter":
+                    returnValue = 100 / fuelConsumption;
+                    break;
+                case "Liter/100km":
+                    returnValue = fuelConsumption * 1;
+                    break;
+                case "MPG(US)":
+                    returnValue = 235.215 / fuelConsumption;
+                    break;
+                case "MPG(imp)":
+                    returnValue = 282.481 / fuelConsumption;
+                    break;
+            }
+            break;
+        case "MPG(US)":
+            switch (to) {
+                case "Km/liter":
+                    returnValue = fuelConsumption * 0.425144;
+                    break;
+                case "Liter/100km":
+                    returnValue = 235.215 / fuelConsumption;
+                    break;
+                case "MPG(US)":
+                    returnValue = 1 * fuelConsumption;
+                    break;
+                case "MPG(imp)":
+                    returnValue = 1.20095 * fuelConsumption;
+                    break;
+            }
+            break;
+        case "MPG(imp)":
+            switch (to) {
+                case "Km/liter":
+                    returnValue = fuelConsumption * 0.354006;
+                    break;
+                case "Liter/100km":
+                    returnValue = 282.481 / fuelConsumption;
+                    break;
+                case "MPG(US)":
+                    returnValue = 0.832674 * fuelConsumption;
+                    break;
+                case "MPG(imp)":
+                    returnValue = 1 * fuelConsumption;
+                    break;
+            }
+            break;
+    }
+    return returnValue;
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.FuelConsumption.getMeasures = function() {
+    var ret = [];
+    for (var m in ilib.Measurement.FuelConsumption.ratios) {
+        ret.push(m);
+    }
+    return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["fuelconsumption"] = ilib.Measurement.FuelConsumption;
+
 /**
  * @license
  * Copyright © 2012-2013, JEDLSoft
@@ -20610,5 +21021,7 @@ units/temperature.js
 units/unknown.js
 units/time.js
 units/mass.js
+units/area.js
+units/fuelConsumption.js		
 */
 
