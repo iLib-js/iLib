@@ -29,15 +29,16 @@ function suite() {
     
     var suites = [
         "testlengths.js",
-		"testspeeds.js",
-		"testtemp.js",
-		"testdigitalstoreage.js",
-		"testUnknown.js",
-		"testtime.js",		
-		"testmass.js",
-		"testarea.js",
-		"testFuelConsumption.js",
-		"testVolume.js"		
+	"testspeeds.js",
+	"testtemp.js",
+	"testdigitalstoreage.js",
+	"testUnknown.js",
+	"testtime.js",		
+	"testmass.js",
+	"testarea.js",
+	"testFuelConsumption.js",
+	"testVolume.js",	
+	"testenergy.js"		
     ];
     
     suites.forEach(function (path) {

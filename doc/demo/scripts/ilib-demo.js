@@ -5490,49 +5490,49 @@ ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West A
 ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
-ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
-ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
-ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
-ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
-ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
-ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
 ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
 ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
-ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
-ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
-ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
-ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
 ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
 ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
-ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
-ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
-ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
-ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
-ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
-ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
-ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
 ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -21018,7 +21018,7 @@ ilib.Measurement.Volume.ratios = {
  "Imperial oz":	[14,0.00750594	, 0.0300238	, 0.0600475	, 0.120095	, 0.96076	, 1.92152	, 5.76456  , 2.8413e-5, 0.0284131	, 28.4131	, 0.00625	, 0.025		, 0.05		, 1		, 1.6		, 4.8		, 0.0010034	, 1.73387],
  "Imperial tbsp":[15,0.00469121	, 0.0187649	, 0.0375297	, 0.0750594	, 0.600475	, 1.20095	, 3.60285  , 1.7758e-5, 0.0177582	, 17.7582	, 0.00390625	, 0.015625	, 0.03125	, 0.625		, 1		, 3		, 0.000627124	, 1.08367],
  "Imperial tsp":[16,0.00156374	, 0.00625495	, 0.0125099	, 0.0250198	, 0.600475	, 0.200158	, 1.20095  , 5.9194e-6, 0.00591939	, 5.91939	, 0.00130208	, 0.00520833	, 0.0104167	, 0.208333	, 0.333333	, 1		, 0.000209041	, 0.361223],
- " Cubic foot":	[17, 7.48052	, 29.9221	, 59.8442	, 119.688	, 957.506	, 1915.01	, 5745.04  , 0.0283168	, 28.3168	, 28316.8	, 6.22883	,24.9153	, 49.8307	, 996.613	, 1594.58	, 4783.74	, 1		, 1728],
+ "Cubic foot":	[17, 7.48052	, 29.9221	, 59.8442	, 119.688	, 957.506	, 1915.01	, 5745.04  , 0.0283168	, 28.3168	, 28316.8	, 6.22883	,24.9153	, 49.8307	, 996.613	, 1594.58	, 4783.74	, 1		, 1728],
 "Cubic inch":	[18, 0.004329	, 0.017316	, 0.034632	, 0.0692641	, 0.554113	, 1.10823	, 3.32468  , 1.6387e-5	, 0.0163871	, 16.3871	, 0.00360465	,0.0144186	, 0.0288372	, 0.576744	, 0.92279	, 2.76837	, 0.000578704	, 1]	 		
 }; 
   
@@ -21049,12 +21049,12 @@ ilib.Measurement.Volume.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Volume.aliases = {
-	"US gal":" US gal",
-	"US gallon":" US gal",
-	"US Gal":" US gal",
-	"US Gallons":" US gal",
-	"Gal(US)":" US gal",
-	"gal(US)":" US gal",	    
+	"US gal":"US gal",
+	"US gallon":"US gal",
+	"US Gal":"US gal",
+	"US Gallons":"US gal",
+	"Gal(US)":"US gal",
+	"gal(US)":"US gal",	    
 	"US quart":"US quart",
 	"US quarts":"US quart",
 	"US Quart":"US quart",
@@ -21170,6 +21170,211 @@ ilib.Measurement.Volume.getMeasures = function () {
 //register with the factory method
 ilib.Measurement._constructors["volume"] = ilib.Measurement.Volume;
 
+/*
+ * Energy.js - Unit conversions for Energys/energys
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new energy measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Energy = function (options) {
+	this.unit = "ns";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.Energy.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "energy") {
+				this.amount = ilib.Measurement.Energy.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert units " + options.amount.unit + " to a energy";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.Energy.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.Energy.ratios = {
+	/*      index  mJ           J          BTU                kJ           Wh               Cal                MJ              kWh                gJ               MWh                  gWh         */           
+        "mJ":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],  
+	"J":    [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],  
+	"BTU":  [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
+	"kJ":   [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
+        "Wh":   [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
+        "Cal":  [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
+        "MJ":   [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
+        "kWh":  [ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
+        "gJ":   [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
+        "MWh":  [ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
+        "gWh":  [ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
+};
+
+ilib.Measurement.Energy.prototype = new ilib.Measurement({});
+ilib.Measurement.Energy.prototype.parent = ilib.Measurement;
+ilib.Measurement.Energy.prototype.constructor = ilib.Measurement.Energy;
+
+/**
+ * @inheritDoc
+ */
+ilib.Measurement.Energy.prototype.getMeasure = function() {
+	return "energy";
+};
+
+/**
+ * Convert the current energy to another measure.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Energy.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Energy.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.Energy.aliases = {
+    "mJ":"mJ",
+    "millijoule":"mJ",
+    "MilliJoule":"mJ",
+    "milliJ":"mJ",
+    "J":"J",
+    "j":"J",
+    "Joule":"J",
+    "joule":"J",
+    "Joules":"J",
+    "joules":"J",
+    "BTU":"BTU",
+    "btu":"BTU",
+    "British thermal unit":"BTU",
+    "british thermal unit":"BTU",
+    "kJ":"kJ",
+    "kj":"kJ",
+    "Kj":"kJ",
+    "kiloJoule":"kJ",
+    "kilojoule":"kJ",
+    "kjoule":"kJ",
+    "Wh":"Wh",
+    "wh":"Wh",
+    "watt-hour":"Wh",
+    "Cal":"Cal",
+    "cal":"Cal",
+    "Calorie":"Cal",
+    "calorie":"Cal",
+    "Calories":"Cal",
+    "calories":"Cal",
+    "MJ":"MJ",
+    "megajoule":"MJ",
+    "megajoules":"MJ",
+    "Megajoules":"MJ",
+    "megaJoules":"MJ",
+    "MegaJoules":"MJ",
+    "megaJoule":"MJ",
+    "MegaJoule":"MJ",
+    "kWh":"kWh",
+    "kiloWh":"kWh",
+    "KiloWh":"kWh",
+    "KiloWatt-hour":"kWh",
+    "KiloWatt-hours":"kWh",
+    "Kilo Watt-hour":"kWh",
+    "Kilo Watt-hours":"kWh",
+    "gJ":"gJ",
+    "GJ":"gJ",
+    "GigaJoule":"gJ",
+    "gigaJoule":"gJ",
+    "gigajoule":"gJ",
+    "GigaJoules":"gJ",
+    "gigaJoules":"gJ",
+    "Gigajoules":"gJ",
+    "gigajoules":"gJ",
+    "MWh":"MWh",
+    "MegaWh":"MWh",
+    "megaWh":"MWh",
+    "megaWatthour":"MWh",
+    "megaWatt-hour":"MWh",
+    "mega Watt-hour":"MWh",
+    "megaWatt hour":"MWh",
+    "megawatt hour":"MWh",
+    "mega Watt hour":"MWh",
+    "gWh":"gWh",
+    "gigaWh":"gWh",
+    "gigaWatt-hour":"gWh",
+    "gigaWatt hour":"gWh",
+    "gigawatt hour":"gWh",
+    "gigawatthour":"gWh"
+};
+
+/**
+ * Convert a energy to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param energy {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Energy.convert = function(to, from, energy) {
+    from = ilib.Measurement.Energy.aliases[from] || from;
+    to = ilib.Measurement.Energy.aliases[to] || to;
+    var fromRow = ilib.Measurement.Energy.ratios[from];
+    var toRow = ilib.Measurement.Energy.ratios[to];
+    if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+        return undefined;
+    }	
+    return energy * fromRow[toRow[0]];
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Energy.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.Energy.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["energy"] = ilib.Measurement.Energy;
+
 /**
  * @license
  * Copyright © 2012-2013, JEDLSoft
@@ -21256,5 +21461,6 @@ units/mass.js
 units/area.js
 units/fuelConsumption.js
 units/volume.js	
+units/energy.js
 */
 
