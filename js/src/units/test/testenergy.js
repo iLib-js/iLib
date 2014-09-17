@@ -88,17 +88,17 @@ function testEnergyStaticConvert6() {
 function testEnergyGetMeasures() {
 	var measures = ilib.Measurement.Energy.getMeasures();
 	var expected = [
-    	 "mJ",  
-  	 "J",  
-	 "BTU",
-	 "kJ",
-         "Wh",
-         "Cal",
-         "MJ",
-         "kWh",
-        "gJ",
-         "MWh",
-         "gWh"
+        "mJ",  
+		"J",  
+		"BTU",
+		"kJ",
+		"Wh",
+		"Cal",
+		"MJ",
+		"kWh",
+		"gJ",
+		"MWh",
+		"gWh"
 	];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

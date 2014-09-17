@@ -83,10 +83,10 @@ function testMassGetMeasures() {
 	var measures = ilib.Measurement.Mass.getMeasures();
 	var expected = [
     	"µg",  
-	"mg",  
-	"g",
-	"oz",
-	"lb",
+	    "mg",  
+	    "g",
+	    "oz",
+	    "lb",
         "kg",
         "st",
         "short ton",

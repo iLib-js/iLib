@@ -29,7 +29,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.FuelConsumption = function(options) {
-    this.unit = "Km/liter";
+    this.unit = "km/liter";
     this.amount = 0;
     this.aliases = ilib.Measurement.FuelConsumption.aliases; // share this table in all instances
 
@@ -51,7 +51,7 @@ ilib.Measurement.FuelConsumption = function(options) {
     }
 };
 
-ilib.Measurement.FuelConsumption.ratios = ["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"];
+ilib.Measurement.FuelConsumption.ratios = ["km/liter", "liter/100km", "mpg", "mpg(imp)"];
 
 ilib.Measurement.FuelConsumption.prototype = new ilib.Measurement({});
 ilib.Measurement.FuelConsumption.prototype.parent = ilib.Measurement;
@@ -78,46 +78,43 @@ ilib.Measurement.FuelConsumption.prototype.convert = function(to) {
         amount: this
     });
 };
-/*["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"*/
+/*["km/liter", "liter/100km", "mpg", "mpg(imp)"*/
 ilib.Measurement.FuelConsumption.aliases = {
-	"Km/liter": "Km/liter",
-	"KM/Liter": "Km/liter",
-	"KM/L": "Km/liter",
-	"Kilometers Per Liter": "Km/liter",
-	"kilometers per liter": "Km/liter",
-	"km/l": "Km/liter",
-	"Kilometers/Liter": "Km/liter",
-	"Kilometer/Liter": "Km/liter",
-	"kilometers/liter": "Km/liter",
-	"kilometer/liter": "Km/liter",
-
-	"Liter/100km":"Liter/100km",
-	"Liters/100km":"Liter/100km",
-	"Liter/100kms":"Liter/100km",
-	"Liters/100kms":"Liter/100km",
-	"liter/100km":"Liter/100km",
-	"liters/100kms":"Liter/100km",
-	"liters/100km":"Liter/100km",
-	"liter/100kms":"Liter/100km",
-	"Liter/100KM":"Liter/100km",
-	"Liters/100KM":"Liter/100km",
-	"L/100km":"Liter/100km",
-	"L/100KM":"Liter/100km",
-	"l/100KM":"Liter/100km",
-	"l/100km":"Liter/100km",
-	"l/100kms":"Liter/100km",
-
-	"MPG(US)":"MPG(US)",
-    	"USMPG ": "MPG(US)",
-	"mpgUS":"MPG(US)",
-	"mpg(US)":"MPG(US)",
-	"mpg(us)":"MPG(US)",
-	"mpg-us":"MPG(US)",
-	"mpg Imp":"MPG(US)",
-	
-	"MPG(imp)":"MPG(imp)",
-	"mpg(imp)":"MPG(imp)",
-	"mpg-imp":"MPG(imp)"
+	"Km/liter": "km/liter",
+	"KM/Liter": "km/liter",
+	"KM/L": "km/liter",
+	"Kilometers Per Liter": "km/liter",
+	"kilometers per liter": "km/liter",
+	"km/l": "km/liter",
+	"Kilometers/Liter": "km/liter",
+	"Kilometer/Liter": "km/liter",
+	"kilometers/liter": "km/liter",
+	"kilometer/liter": "km/liter",
+	"Liter/100km":"liter/100km",
+	"Liters/100km":"liter/100km",
+	"Liter/100kms":"liter/100km",
+	"Liters/100kms":"liter/100km",
+	"liter/100km":"liter/100km",
+	"liters/100kms":"liter/100km",
+	"liters/100km":"liter/100km",
+	"liter/100kms":"liter/100km",
+	"Liter/100KM":"liter/100km",
+	"Liters/100KM":"liter/100km",
+	"L/100km":"liter/100km",
+	"L/100KM":"liter/100km",
+	"l/100KM":"liter/100km",
+	"l/100km":"liter/100km",
+	"l/100kms":"liter/100km",
+	"MPG(US)":"mpg",
+    "USMPG ": "mpg",
+	"mpgUS":"mpg",
+	"mpg(US)":"mpg",
+	"mpg(us)":"mpg",
+	"mpg-us":"mpg",
+	"mpg Imp":"mpg(imp)",
+	"MPG(imp)":"mpg(imp)",
+	"mpg(imp)":"mpg(imp)",
+	"mpg-imp":"mpg(imp)"
 };
 
 /**
@@ -134,66 +131,66 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
     var returnValue = 0;
 
     switch (from) {
-        case "Km/liter":
+        case "km/liter":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 1;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 100 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = fuelConsumption * 2.35215;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = fuelConsumption * 2.82481;
                     break;
             }
             break;
-        case "Liter/100km":
+        case "liter/100km":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = 100 / fuelConsumption;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = fuelConsumption * 1;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 235.215 / fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 282.481 / fuelConsumption;
                     break;
             }
             break;
-        case "MPG(US)":
+        case "mpg":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 0.425144;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 235.215 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 1 * fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 1.20095 * fuelConsumption;
                     break;
             }
             break;
-        case "MPG(imp)":
+        case "mpg(imp)":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 0.354006;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 282.481 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 0.832674 * fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 1 * fuelConsumption;
                     break;
             }
@@ -208,10 +205,10 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
  */
 ilib.Measurement.FuelConsumption.getMeasures = function() {
     var ret = [];
-    ret.push("Km/liter");
-    ret.push("Liter/100km");
-    ret.push("MPG(US)");
-    ret.push("MPG(imp)");
+    ret.push("km/liter");
+    ret.push("liter/100km");
+    ret.push("mpg");
+    ret.push("mpg(imp)");
     
     return ret;
 };

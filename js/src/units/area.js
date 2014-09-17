@@ -31,7 +31,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Area = function (options) {
-	this.unit = "Square km";
+	this.unit = "square km";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Area.aliases; // share this table in all instances
 	
@@ -58,17 +58,15 @@ ilib.Measurement.Area = function (options) {
 };
 
 ilib.Measurement.Area.ratios = {
-/*index	   : 	Square km, 	Hectare,	Square meter,	Square mile,     Acre,	 Square yard,	Square foot,	Square inch */ 
-
-"Square km":	[1, 1	       	, 	100       , 	1e+6        , 	0.386102   ,	247.105    ,	1.196e+6  , 1.076e+7   , 1.55e+9 ],
-"Hectare"  :	[2, 0.01       	, 	1         , 	10000       , 	0.00386102 ,	2.47105    ,	11959.9   , 107639     , 1.55e+7 ],
-"Square meter": [3, 1e-6	, 	1e-4      , 	1	    , 	3.861e-7   ,	0.000247105,	1.19599   , 10.7639    , 1550    ],
-"Square mile" : [4, 2.58999    	,	258.999   , 	2.59e+6     , 	1	   ,	640	   ,  	3.098e+6  , 2.788e+7   , 4.014e+9],
-"Acre"	   :	[5, 0.00404686 	, 	0.404686  ,	4046.86     ,	0.0015625  , 	1          ,  	4840	  , 43560      , 6.273e+6],
-"Square yard":	[6, 8.3613e-7  	, 	8.3613e-5 ,	0.836127    ,	3.2283e-7  ,	0.000206612,    1	  , 9          , 1296    ],
-"Square foot":  [7, 9.2903e-8  	,  	9.2903e-6 ,	0.092903    ,	3.587e-8   ,	2.2957e-5  ,	0.111111  , 1	       , 144	 ],
-"Square inch":	[8, 6.4516e-10 	,	6.4516e-8 ,	0.00064516  ,	2.491e-10  ,	1.5942e-7  ,	0.000771605, 0.000771605, 1	 ]
-
+	/*               index	square km, 	hectare,   square meter,  square mile, acre,	    square yard, square foot, square inch */ 
+	"square km":    [1,     1,	        100,       1e+6,          0.386102,    247.105,     1.196e+6,    1.076e+7,    1.55e+9 ],
+    "hectare":      [2,     0.01,       1,         10000,         0.00386102,  2.47105,     11959.9,     107639,      1.55e+7 ],
+    "square meter": [3,     1e-6,       1e-4,      1,             3.861e-7,    0.000247105, 1.19599,     10.7639,     1550    ],
+    "square mile":  [4,     2.58999,    258.999,   2.59e+6,       1,           640,         3.098e+6,    2.788e+7,    4.014e+9],
+    "acre":         [5,     0.00404686, 0.404686,  4046.86,       0.0015625,   1,           4840,        43560,       6.273e+6],
+    "square yard":  [6,     8.3613e-7,  8.3613e-5, 0.836127,      3.2283e-7,   0.000206612, 1,           9,           1296    ],
+    "square foot":  [7,     9.2903e-8,  9.2903e-6, 0.092903,      3.587e-8,    2.2957e-5,   0.111111,    1,           144     ],
+    "square inch":  [8,     6.4516e-10, 6.4516e-8, 0.00064516,    2.491e-10,   1.5942e-7,   0.000771605, 0.000771605, 1       ]
 }
 
 ilib.Measurement.Area.prototype = new ilib.Measurement({});
@@ -98,62 +96,55 @@ ilib.Measurement.Area.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Area.aliases = {
-	"Square km": "Square km",
-	"Square kilometre":"Square km",
-	"square kilometer":"Square km",
-	"square kilometre":"Square km",
-	"square kilometers":"Square km",
-	"square kilometres":"Square km",
-	"sq km":"Square km",
-	"km2":"Square km",
-
-	"Hectare":"Hectare",
-	"hectare":"Hectare",
-	"ha":"Hectare",
-
-	"Square meter": "Square meter",
-	"Square meters":"Square meter",
-	"square meter": "Square meter",
-	"square meters":"Square meter",
-	"Square metre": "Square meter",
-	"Square metres":"Square meter",
-	"square metres": "Square meter",
-	"square metres":"Square meter",
-	"sqm":"Square meter",
-	"m2": "Square meter",
-
-	"Square mile":"Square mile",
-	"Square miles":"Square mile",
-	"square mile":"Square mile",
-	"square miles":"Square mile",
-	"square mi":"Square mile",
-	"Square mi":"Square mile",
-	"sq mi":"Square mile",
-	"mi2":"Square mile",
-
-	"Acre": "Acre",
-	"acre": "Acre",
-	"Acres":"Acre",
-	"acres":"Acre",
-
-	"Square yard": "Square yard",
-	"Square yards":"Square yard",
-	"square yard": "Square yard",
-	"square yards":"Square yard",
-	"yd2":"Square yard",
-
-	"Square foot": "Square foot",
-	"square foot": "Square foot",
-	"Square feet": "Square foot",
-	"Square feet": "Square foot",
-	"sq ft":"Square foot",
-	"ft2":"Square foot",
-
-	"Square inch":"Square inch",
-	"square inch":"Square inch",
-	"Square inches":"Square inch",
-	"square inches":"Square inch",
-	"in2":"Square inch"
+	"Square km": "square km",
+	"Square kilometre":"square km",
+	"square kilometer":"square km",
+	"square kilometre":"square km",
+	"square kilometers":"square km",
+	"square kilometres":"square km",
+	"sq km":"square km",
+	"km2":"square km",
+	"Hectare":"hectare",
+	"hectare":"hectare",
+	"ha":"hectare",
+	"Square meter": "square meter",
+	"Square meters":"square meter",
+	"square meter": "square meter",
+	"square meters":"square meter",
+	"Square metre": "square meter",
+	"Square metres":"square meter",
+	"square metres": "square meter",
+	"square metres":"square meter",
+	"sqm":"square meter",
+	"m2": "square meter",
+	"Square mile":"square mile",
+	"Square miles":"square mile",
+	"square mile":"square mile",
+	"square miles":"square mile",
+	"square mi":"square mile",
+	"Square mi":"square mile",
+	"sq mi":"square mile",
+	"mi2":"square mile",
+	"Acre": "acre",
+	"acre": "acre",
+	"Acres":"acre",
+	"acres":"acre",
+	"Square yard": "square yard",
+	"Square yards":"square yard",
+	"square yard": "square yard",
+	"square yards":"square yard",
+	"yd2":"square yard",
+	"Square foot": "square foot",
+	"square foot": "square foot",
+	"Square feet": "square foot",
+	"Square feet": "square foot",
+	"sq ft":"square foot",
+	"ft2":"square foot",
+	"Square inch":"square inch",
+	"square inch":"square inch",
+	"Square inches":"square inch",
+	"square inches":"square inch",
+	"in2":"square inch"
 };
 
 /**

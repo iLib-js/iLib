@@ -76,10 +76,10 @@ function testTimeGetMeasures() {
 	var measures = ilib.Measurement.Time.getMeasures();
 	var expected = [
     	"ns",  
-	"μs",  
-	"ms",
-	"s",
-	"min",
+		"μs",  
+		"ms",
+		"s",
+		"min",
         "h",
         "day",
         "week",
