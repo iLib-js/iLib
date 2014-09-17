@@ -189,7 +189,7 @@ ilib.Measurement.Time.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param time {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Time.convert = function(to, from, time) {
     from = ilib.Measurement.Time.aliases[from] || from;

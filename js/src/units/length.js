@@ -173,7 +173,7 @@ ilib.Measurement.Length.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param length {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Length.convert = function(to, from, length) {
     from = ilib.Measurement.Length.aliases[from] || from;

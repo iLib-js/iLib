@@ -153,7 +153,7 @@ ilib.Measurement.Area.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param area {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Area.convert = function(to, from, area) {
     from = ilib.Measurement.Area.aliases[from] || from;

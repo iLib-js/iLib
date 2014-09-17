@@ -68,7 +68,7 @@ ilib.Measurement.Unknown.prototype.convert = function(to) {
  * @param {string} to unit to convert to
  * @param {string} from unit to convert from
  * @param {number} unknown amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;

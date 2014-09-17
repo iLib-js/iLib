@@ -90,7 +90,7 @@ ilib.Measurement.Temperature.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param temperature {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	var result = 0;

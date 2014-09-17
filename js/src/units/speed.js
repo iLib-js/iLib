@@ -147,7 +147,7 @@ ilib.Measurement.Speed.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param speed {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Speed.convert = function(to, from, speed) {
     from = ilib.Measurement.Speed.aliases[from] || from;

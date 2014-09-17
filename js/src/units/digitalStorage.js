@@ -216,7 +216,7 @@ ilib.Measurement.DigitalStorage.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param digitalStorage {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.DigitalStorage.convert = function(to, from, digitalStorage) {
     from = ilib.Measurement.DigitalStorage.aliases[from] || from;

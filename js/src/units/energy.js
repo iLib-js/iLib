@@ -175,7 +175,7 @@ ilib.Measurement.Energy.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param energy {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Energy.convert = function(to, from, energy) {
     from = ilib.Measurement.Energy.aliases[from] || from;

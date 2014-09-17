@@ -165,7 +165,7 @@ ilib.Measurement.Mass.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param mass {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Mass.convert = function(to, from, mass) {
     from = ilib.Measurement.Mass.aliases[from] || from;

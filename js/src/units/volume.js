@@ -198,7 +198,7 @@ ilib.Measurement.Volume.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param volume {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Volume.convert = function(to, from, volume) {
     from = ilib.Measurement.Volume.aliases[from] || from;
