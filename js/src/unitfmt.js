@@ -41,25 +41,36 @@ localeinfo.js
  * controls the translation of the names of the units. If the locale is
  * not specified, then the default locale of the app or web page will be used.
  * 
- * <li><i>type</i> - Specify the type of units to format. Valid values are:
- * <ul>
- * <li><i>length</i>
- * <li><i>area</i>
- * <li><i>volume</i>
- * <li><i>time</i>
- * <li><i>speed</i>
- * <li><i>temperature</i>
- * <li><i>pressure</i>
- * <li><i>flow</i>
- * <li><i>electricity</i>
- * <li><i>energy</i>
- * <li><i>amounts of computer memory or storage</i>
- * </ul>
+ * <li><i>autoScale</i> - when true, automatically scale the amount to get the smallest
+ * number greater than 1, where possible, possibly by converting units within the locale's
+ * measurement system. For example, if the current locale is "en-US", and we have
+ * a measurement containing 278 fluid ounces, then the number "278" can be scaled down
+ * by converting the units to a larger one such as gallons. The scaled size would be
+ * 2.17188 gallons. Since iLib does not have a US customary measure larger than gallons,
+ * it cannot scale it down any further. If the amount is less than the smallest measure
+ * already, it cannot be scaled down any further and no autoscaling will be applied.
+ * Default for the autoScale property is "true", so it only needs to be specified when
+ * you want to turn off autoscaling.
+ * 
+ * <li><i>autoConvert</i> - automatically convert the units to the nearest appropriate
+ * measure of the same type in the measurement system used by the locale. For example, 
+ * if a measurement of length is given in meters, but the current locale is "en-US" 
+ * which uses the US Customary system, then the nearest appropriate measure would be 
+ * "yards", and the amount would be converted from meters to yards automatically before
+ * being formatted. Default for the autoConvert property is "true", so it only needs to 
+ * be specified when you want to turn off autoconversion.
  * 
  * <li><i>useNative</i> - when true, use native digits to format the amount. If this
  * property is not specified, this formatter will default to the preference for the
  * current locale.
  * 
+ * <li><i>maxFractionDigits</i> - specify the maximum number of fractional digits allowed
+ * in the final amount. 
+ * 
+ * <li><i>minFractionDigits</i> - specify the minimum number of fractional digits to 
+ * format in the final amount. If the digits are zero, then zeros are formatted until
+ * minFractionDigits digits is reached.
+ *  
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
