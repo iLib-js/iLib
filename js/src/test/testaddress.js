@@ -313,3 +313,17 @@ function testFormatAddressUnknownLocaleHK() {
 	var formatter = new ilib.AddressFmt({locale: 'en-HK', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
+
+function testFormatAddressDefaultEverythingButForeignAddress() {
+	var parsedAddress = new ilib.Address({
+	    country: "Hong Kong",
+	    countryCode: "HK",
+	    locality: "North Point",
+	    streetAddress: "5F, 633 King's Road"
+	});
+	
+	var expected = "5F, 633 King's Road\nNorth Point\nHong Kong";
+	var formatter = new ilib.AddressFmt();
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+

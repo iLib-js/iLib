@@ -67,6 +67,7 @@ ilib.AddressFmt = function(options) {
 	this.sync = true;
 	this.styleName = 'default';
 	this.loadParams = {};
+	this.locale = new ilib.Locale();
 	
 	if (options) {
 		if (options.locale) {
@@ -85,7 +86,7 @@ ilib.AddressFmt = function(options) {
 			this.loadParams = options.loadParams;
 		}
 	}
-
+	
 	// console.log("Creating formatter for region: " + this.locale.region);
 	ilib.loadData({
 		name: "address.json",
@@ -105,7 +106,7 @@ ilib.AddressFmt = function(options) {
 					callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 						this.info = info;
 						this._init();
-						if (typeof(options.onLoad) === 'function') {
+						if (options && typeof(options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
 					})
@@ -113,7 +114,7 @@ ilib.AddressFmt = function(options) {
 			} else {
 				this.info = info;
 				this._init();
-				if (typeof(options.onLoad) === 'function') {
+				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
 			}
