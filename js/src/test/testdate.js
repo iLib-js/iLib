@@ -293,5 +293,5 @@ function testDateGetJSDateBeyond32Bits() {
 	assertNotUndefined(jsd);
 	assertEquals(2040, jsd.getFullYear());
 	assertEquals(0, jsd.getMonth());
-	assertEquals(1, jsd.getDay());
+	assertEquals(1, jsd.getDate());
 }
