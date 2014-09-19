@@ -13,7 +13,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
- * See the License for the specific day_of_week governing permissions and
+ * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 /*
@@ -58,7 +58,7 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genpapaersizes - generate the localeinfo papaersize.jf files.\n" +
+util.print("genpapersizes - generate the localeinfo papersize.jf files.\n" +
 	"Copyright (c) 2013 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDir + "\n");
