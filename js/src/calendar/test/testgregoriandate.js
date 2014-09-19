@@ -798,6 +798,92 @@ function testGregDateTestGetTimeTooLate() {
     assertEquals(-1, gd.getTime());
 }
 
+function testGregDateTestGetTimeExtendedZero() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1970, 
+    	month: 1, 
+    	day: 1,
+    	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(0, gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtendedCalifornia() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1970, 
+    	month: 1, 
+    	day: 1,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(28800000, gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtended() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1970, 
+    	month: 1, 
+    	day: 3,
+	   	hour: 8,
+	   	minute: 30,
+	   	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(203400000, gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtendedTooEarlyForRegularUnixTime() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1969, 
+    	month: 12, 
+    	day: 31,
+    	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(-86400000, gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtendedTooEarlyForExtendedUnixTime() {
+    var gd = new ilib.Date.GregDate({
+    	year: -271821, 
+    	month: 4, 
+    	day: 18,
+    	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertNaN(gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtendedTooLateForRegularUnixTime() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2038, 
+    	month: 1, 
+    	day: 20,
+    	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(2147558400000, gd.getTimeExtended());
+}
+
+function testGregDateTestGetTimeExtendedTooLateForExtendedUnixTime() {
+    var gd = new ilib.Date.GregDate({
+    	year: 275760, 
+    	month: 9, 
+    	day: 20,
+    	timezone: "Etc/UTC"
+    });
+    assertNotNull(gd);
+    
+    assertNaN(gd.getTimeExtended());
+}
+
 function testGregDateTestSetTime1() {
     var gd = new ilib.Date.GregDate({
     	year: 1970, 

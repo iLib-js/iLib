@@ -762,7 +762,7 @@ ilib.TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 			offset = this.dstSavings * 60000;
 		}
 		
-		var d = new Date(date ? date.getTime() + offset: undefined);
+		var d = new Date(date ? date.getTimeExtended() + offset: undefined);
 		// the DST offset is always the one that is closest to positive infinity, no matter 
 		// if you are in the northern or southern hemisphere, east or west
 		var dst = Math.max(this.offsetJan1, this.offsetJun1);
