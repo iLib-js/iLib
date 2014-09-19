@@ -280,3 +280,18 @@ function testDateToIlibIlibDate() {
     var ildMyBday = ilib.Date.newInstance({unixtime: 1234657890000});
     assertObjectEquals(ildMyBday, ilib.Date._dateToIlib(ildMyBday));
 }
+
+function testDateGetJSDateBeyond32Bits() {
+	var d = ilib.Date.newInstance({
+		year: 2040,  // beyond the end of 32-bit unix time
+		month: 1,
+		day: 1
+	});
+	
+	var jsd = d.getJSDate();
+	
+	assertNotUndefined(jsd);
+	assertEquals(2040, jsd.getFullYear());
+	assertEquals(0, jsd.getMonth());
+	assertEquals(1, jsd.getDay());
+}
