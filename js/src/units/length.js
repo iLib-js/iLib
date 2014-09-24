@@ -76,6 +76,10 @@ ilib.Measurement.Length.ratios = {
         "gigameter":    [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]	
 };
 
+ilib.Measurement.Length.metricSystem      = {"micrometer":1,"millimeter":2,"centimeter":3,"decimeter":5,"meter":8,"decameter":9,"hectometer":10,"kilometer":11,"megameter":14,"gigameter":15}; 
+ilib.Measurement.Length.imperialSystem    = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
+ilib.Measurement.Length.uscustomerySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
+
 ilib.Measurement.Length.prototype = new ilib.Measurement({});
 ilib.Measurement.Length.prototype.parent = ilib.Measurement;
 ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
@@ -100,6 +104,36 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 		unit: to,
 		amount: this
 	});
+};
+
+/**
+ * Sclae the current length.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
+        var fromRow = ilib.Measurement.Length.ratios[this.unit];
+        var mSystem;
+        
+        if (measurementsystem === "metric")
+            mSystem = ilib.Measurement.Length.metricSystem;
+        if (measurementsystem === "imperial")
+            mSystem = ilib.Measurement.Length.imperialSystem;
+        if (measurementsystem === "uscustomery")
+            mSystem = ilib.Measurement.Length.uscustomerySystem;
+        
+        var length;
+        var munit;
+        
+        for (var m in mSystem) {
+            var tmp = this.amount * fromRow[mSystem[m]];
+            if (tmp < 1) break;
+            length = tmp;
+            munit = m;
+        }
+        
+        this.amount = length;
+        this.unit = munit;
 };
 
 ilib.Measurement.Length.aliases = {

@@ -116,6 +116,90 @@ function testLengthStaticConvert11() {
         assertRoughlyEquals(152400, m, 0.1);
 }
 
+function testLengthStaticConvert12() {
+        var m = new ilib.Measurement.Length({
+            unit: "mm",
+            amount: 1000
+        });
+    
+	m.scale("metric");
+        
+        assertEquals(1, m.amount);
+        assertEquals("meter", m.unit);
+}
+
+function testLengthStaticConvert13() {
+        var m = new ilib.Measurement.Length({
+            unit: "m",
+            amount: 0.001
+        });
+    
+	m.scale("metric");
+        
+        assertEquals(1, m.amount);
+        assertEquals("millimeter", m.unit);
+}
+
+function testLengthStaticConvert14() {
+        var m = new ilib.Measurement.Length({
+            unit: "mm",
+            amount: 3000
+        });
+    
+	m.scale("imperial");
+        
+        assertRoughlyEquals(3.28084, m.amount, 0.00001);
+        assertEquals("yard", m.unit);
+}
+
+function testLengthStaticConvert15() {
+        var m = new ilib.Measurement.Length({
+            unit: "miles",
+            amount: 0.003
+        });
+    
+	m.scale("imperial");
+        
+        assertEquals(5.28, m.amount);
+        assertEquals("yard", m.unit);
+}
+
+function testLengthStaticConvert16() {
+        var m = new ilib.Measurement.Length({
+            unit: "inch",
+            amount: 200000
+        });
+    
+	m.scale("uscustomery");
+        
+        assertRoughlyEquals(2.743, m.amount, 0.001)
+        assertEquals("nauticalmile", m.unit);
+}
+
+function testLengthStaticConvert17() {
+        var m = new ilib.Measurement.Length({
+            unit: "nauticalmile",
+            amount: 0.00002
+        });
+    
+	m.scale("uscustomery");
+
+        assertRoughlyEquals(1.458268, m.amount, 0.000001)
+        assertEquals("inch", m.unit);
+}
+
+function testLengthStaticConvert18() {
+        var m = new ilib.Measurement.Length({
+            unit: "decimeter",
+            amount: 8
+        });
+    
+	m.scale("metric");
+
+        assertEquals(8, m.amount);
+        assertEquals("decimeter", m.unit);
+}
+
 function testLengthGetMeasures() {
 	var measures = ilib.Measurement.Length.getMeasures();
 	var expected = [
