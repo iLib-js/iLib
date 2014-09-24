@@ -75,7 +75,6 @@ if (!fs.existsSync(toDir)) {
 	usage();
 }
 
-
 /* Defines the numerical order of the states */
 var states = [
 	"none",
@@ -129,43 +128,132 @@ function getCharacterCode(ch) {
 	return -2;
 };
 
+var areaCodes = {};
+var a = 'a'.charCodeAt(0);
+var zero = '0'.charCodeAt(0);
+
+function addHash(hash, newValue) {
+	// co-prime numbers creates a nicely distributed hash
+	hash *= 65543;
+	hash += newValue;
+	hash %= 2147483647; 
+	return hash;
+}
+
+
+function addAreaCode(name) {
+	if (name && !areaCodes[name]) {
+		// compute a hash as the unique id for this string
+		var hash = 0;
+		for (var i = 0; i < name.length; i++) {
+			hash = addHash(hash, name.charCodeAt(i));
+		}
+		var base26 = hash.toString(26);
+		var hashString = "";
+		for (var i = 0; i < base26.length; i++) {
+			var ch = base26.charCodeAt(i);
+			hashString += String.fromCharCode(ch < a ? ch - zero + a : ch + 10); 
+		}
+		areaCodes[name] = "ilib.geo." + hashString;
+	}
+}
+
 function processFile(file) {
 	var f = new UnicodeFile({
 		path: file, 
 		splitChar: '\t'
 	});
-	var trie = [], current;
+	var trie = {}, current;
 	var area = {};
+	var ch;
 	
+	util.print("processing file " + file + "\n");
 	for (var i = 0; i < f.length(); i++) {
 		var fields = f.get(i);
 		if (fields.length > 1) {
 			var digits = fields[0];
 			var state = states.indexOf(fields[1]);
 			current = trie;
-			util.print("Encoding " + digits + "\n");
+			// util.print("Encoding " + digits + " in state " + state + "(" + fields[1] + ")\n");
 			for (var j = 0; j < digits.length-1; j++) {
-				var ch = getCharacterCode(digits.charAt(j));
+				ch = getCharacterCode(digits.charAt(j));
 				if (ch >= 0) {
-					util.print("doing " + ch + "\n");
-					if (!current[ch]) {
-						current[ch] = [];
+					// util.print("doing " + ch + "\n");
+					if (typeof(current.s) === 'undefined') {
+						current.s = [];
 					}
-					current = current[ch];
+					if (!current.s[ch]) {
+						current.s[ch] = {
+							//digits: digits.substring(0,digits.length-1),
+							s: []
+						};
+					} else if (typeof(current.s[ch]) === 'number') {
+						// transform it into a node instead
+						var node = {
+							//digits: digits.substring(0,digits.length-1),
+							l: current.s[ch],
+							s: []
+						};
+						current.s[ch] = node;
+					}
+					current = current.s[ch];
 				}
 			}
+			// if (!current) {
+			// 	util.print("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4) + "\n");
+			// }
 			// now we have reached the final state
-			var ch = getCharacterCode(digits.charAt(digits.length - 1));
-			current[ch] = state;
+			ch = getCharacterCode(digits.charAt(digits.length - 1));
+			if (typeof(current.s) === 'undefined') {
+				current.s = [];
+			}
+			if (!current.s[ch]) {
+				current.s[ch] = state;
+			} else {
+				//current.s[ch].digits = digits;
+				current.s[ch].l = state;
+			}
 			if (state === 7) {
 				area[digits] = {
 					sn: fields[2],
 					ln: fields[3]
+				};
+			}
+			
+			addAreaCode(fields[2]);
+			addAreaCode(fields[3]);
+		}
+	}
+
+	function deNullify(arr) {
+		// util.print("denullifying an object\n");
+		var node = {};
+		if (typeof(arr.digits) !== 'undefined') {
+			node.digits = arr.digits;
+		}
+		if (typeof(arr.l) !== 'undefined') {
+			node.l = arr.l;
+		}
+		if (typeof(arr.s) !== 'undefined') {
+			// util.print("denullifying an array\n");
+			node.s = [];
+			for (var i = 0; i < arr.s.length; i++) {
+				var value = arr.s[i];
+				// util.print("value " + i + " is " + value + "\n");
+				if (value === null || typeof(value) === 'undefined') {
+					node.s.push(0);
+				} else if (typeof(value) === 'number') {
+					node.s.push(value);
+				} else {
+					node.s.push(deNullify(value));	
 				}
 			}
 		}
+		return node;
 	}
 	
+	trie = deNullify(trie);
+
 	var baseDir = path.join(toDir, "und", path.basename(file, ".txt"));
 	mkdirs(baseDir);
 	var stateFileName = path.join(baseDir, "states.json");
@@ -181,3 +269,14 @@ list.forEach(function (file) {
 		processFile(path.join(phoneDir, file));
 	}
 });
+
+// now produce file for localization
+
+var output = "";
+for (var code in areaCodes) {
+	if (code && areaCodes[code]) {
+		output += areaCodes[code] + "\t" + code + "\n";
+	}
+}
+
+fs.writeFileSync(path.join(toDir, "areaCodes.csv"), output, "utf-8");
