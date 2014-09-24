@@ -218,5 +218,19 @@ ilib.Measurement.prototype = {
 	 * or undefined if the requested units are for a different
 	 * measurement type
 	 */
-	convert: function(to) {}      
+	convert: function(to) {},     
+        
+        /**
+	 * Return a new measurement instance that is scaled to a new
+	 * measurement unit. Measurements can only be scaled
+	 * to measurements of the same type.<p>
+	 * 
+	 * @abstract
+	 * @param {ilib.Measurement} measurement unit to be scaled
+         * @param {String} measurement system used (uscustomary|imperial|metric)
+	 * @return {ilib.Measurement|undefined} the converted measurement
+	 * or undefined if the requested units are for a different
+	 * measurement type
+	 */
+	scale: function(unit, measurementsystem) {}     
 };

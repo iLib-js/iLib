@@ -73,6 +73,49 @@ function testLengthStaticConvert4() {
 	assertEquals(2000, m);
 }
 
+function testLengthStaticConvert5() {
+	var m = ilib.Measurement.Length.convert("inch", "micrometer", 200000);
+	
+        assertRoughlyEquals(7.87402, m, 0.00001)
+}
+
+
+function testLengthStaticConvert6() {
+	var m = ilib.Measurement.Length.convert("yard", "cm", 100);
+	
+	assertEquals(1.09361, m);
+}
+
+function testLengthStaticConvert7() {
+	var m = ilib.Measurement.Length.convert("mile", "decimeter", 100000);
+	
+        assertRoughlyEquals(6.21373, m, 0.00001);
+}
+
+function testLengthStaticConvert8() {
+	var m = ilib.Measurement.Length.convert("nauticalmile", "meter", 1000);
+	
+	assertEquals(0.539957, m);
+}
+
+function testLengthStaticConvert9() {
+	var m = ilib.Measurement.Length.convert("inch", "yard", 1000);
+	
+	assertEquals(36000, m);
+}
+
+function testLengthStaticConvert10() {
+	var m = ilib.Measurement.Length.convert("nauticalmile", "feet", 100000);
+	
+        assertRoughlyEquals(16.4579, m, 0.0001);
+}
+
+function testLengthStaticConvert11() {
+	var m = ilib.Measurement.Length.convert("mm", "feet", 500);
+	
+        assertRoughlyEquals(152400, m, 0.1);
+}
+
 function testLengthGetMeasures() {
 	var measures = ilib.Measurement.Length.getMeasures();
 	var expected = [

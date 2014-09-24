@@ -19012,7 +19012,21 @@ ilib.Measurement.prototype = {
 	 * or undefined if the requested units are for a different
 	 * measurement type
 	 */
-	convert: function(to) {}      
+	convert: function(to) {},     
+        
+        /**
+	 * Return a new measurement instance that is scaled to a new
+	 * measurement unit. Measurements can only be scaled
+	 * to measurements of the same type.<p>
+	 * 
+	 * @abstract
+	 * @param {ilib.Measurement} measurement unit to be scaled
+         * @param {String} measurement system used (uscustomary|imperial|metric)
+	 * @return {ilib.Measurement|undefined} the converted measurement
+	 * or undefined if the requested units are for a different
+	 * measurement type
+	 */
+	scale: function(unit, measurementsystem) {}     
 };
 
 /*
@@ -19058,25 +19072,36 @@ localeinfo.js
  * controls the translation of the names of the units. If the locale is
  * not specified, then the default locale of the app or web page will be used.
  * 
- * <li><i>type</i> - Specify the type of units to format. Valid values are:
- * <ul>
- * <li><i>length</i>
- * <li><i>area</i>
- * <li><i>volume</i>
- * <li><i>time</i>
- * <li><i>speed</i>
- * <li><i>temperature</i>
- * <li><i>pressure</i>
- * <li><i>flow</i>
- * <li><i>electricity</i>
- * <li><i>energy</i>
- * <li><i>amounts of computer memory or storage</i>
- * </ul>
+ * <li><i>autoScale</i> - when true, automatically scale the amount to get the smallest
+ * number greater than 1, where possible, possibly by converting units within the locale's
+ * measurement system. For example, if the current locale is "en-US", and we have
+ * a measurement containing 278 fluid ounces, then the number "278" can be scaled down
+ * by converting the units to a larger one such as gallons. The scaled size would be
+ * 2.17188 gallons. Since iLib does not have a US customary measure larger than gallons,
+ * it cannot scale it down any further. If the amount is less than the smallest measure
+ * already, it cannot be scaled down any further and no autoscaling will be applied.
+ * Default for the autoScale property is "true", so it only needs to be specified when
+ * you want to turn off autoscaling.
+ * 
+ * <li><i>autoConvert</i> - automatically convert the units to the nearest appropriate
+ * measure of the same type in the measurement system used by the locale. For example, 
+ * if a measurement of length is given in meters, but the current locale is "en-US" 
+ * which uses the US Customary system, then the nearest appropriate measure would be 
+ * "yards", and the amount would be converted from meters to yards automatically before
+ * being formatted. Default for the autoConvert property is "true", so it only needs to 
+ * be specified when you want to turn off autoconversion.
  * 
  * <li><i>useNative</i> - when true, use native digits to format the amount. If this
  * property is not specified, this formatter will default to the preference for the
  * current locale.
  * 
+ * <li><i>maxFractionDigits</i> - specify the maximum number of fractional digits allowed
+ * in the final amount. 
+ * 
+ * <li><i>minFractionDigits</i> - specify the minimum number of fractional digits to 
+ * format in the final amount. If the digits are zero, then zeros are formatted until
+ * minFractionDigits digits is reached.
+ *  
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -19325,22 +19350,22 @@ ilib.Measurement.Length = function (options) {
 };
 
 ilib.Measurement.Length.ratios = {
-	/*                index, µm          mm          cm           dm          m            dam           hm             km             Mm             Gm              n.m.         mile         yard         foot         inch */ 
-	"micrometer":   [ 1,     1,          1e-3,       1e-4,        1e-5,       1e-6,        1e-7,         1e-8,          1e-9,          1e-12,         1e-15,          5.39957e-10, 6.21373e-10, 1.09361e-6,  3.28084e-6,  3.93701e-5 ],
-	"millimeter":   [ 2,     1000,       1,          0.1,         0.01,       0.001,       1e-4,         1e-5,          1e-6,          1e-9,          1e-12,          5.39957e-7,  6.21373e-7,  1.09361e-3,  0.00328084,  0.0393701  ],
-	"centimeter":   [ 3,     1e4,        10,         1,           0.1,        0.01,        0.001,        1e-4,          1e-5,          1e-8,          1e-9,           5.39957e-6,  6.21373e-6,  0.0109361,   0.0328084,   0.393701   ],
-	"decimeter":    [ 4,     1e5,        100,        10,          1,          0.1,         0.01,         0.001,         1e-4,          1e-7,          1e-8,           5.39957e-5,  6.21373e-5,  0.109361,    0.328084,    3.93701    ],
-	"meter":        [ 5,     1e6,        1000,       100,         10,         1,           0.1,          0.01,          0.001,         1e-6,          1e-7,           5.39957e-4,  6.213712e-4 ,  1.09361,     3.28084,     39.3701    ],
-	"decameter":    [ 6,     1e7,        1e4,        1000,        100,        10,          1,            0.1,           0.01,          1e-5,          1e-6,           5.39957e-3,  6.21373e-3,  10.9361,     32.8084,     393.701    ],
-	"hectometer":   [ 7,     1e8,        1e5,        1e4,         1000,       100,         10,           1,             0.1,           1e-4,          1e-5,           0.0539957,   0.0621373,   109.361,     328.084,     3937.01    ],
-	"kilometer":    [ 8,     1e9,        1e6,        1e5,         1e4,        1000,        100,          10,            1,             0.001,         1e-4,           0.539957,    0.621373,    1093.61,     3280.84,     39370.1    ],
-	"megameter":    [ 9,     1e12,       1e9,        1e6,         1e5,        1e4,         1000,         100,           10,            1,             0.001,          539.957,     621.373,     1.09361e6,   3.28084e6,   3.93701e7  ],
-	"gigameter":    [ 10,    1e15,       1e12,       1e9,         1e8,        1e7,         1e6,          1e5,           1e4,           1000,          1,              539957.0,    621373.0,    1.09361e9,   3.28084e9,   3.93701e10 ],
-	"nauticalmile": [ 11,    1.852e9,    1.852e6,    1.852e5,     1.852e4,    1852,        185.2,        18.52,         1.852,         1.852e-3,      1.852e-6,       1,           0.868976,    2025.37,     6076.12,     72913.4    ],
-	"mile":         [ 12,    1.60934e9,  1.60934e6,  1.60934e5,   1.60934e4,  1609.34,     160.934,      16.0934,       1.60934,       1.60934e-3,    1.60934e-6,     1.15078,     1,           1760,        5280,        63360      ],
-	"yard":         [ 13,    914402.758, 914.402758, 91.4402758,  9.14402758, 0.914402758, 0.0914402758, 9.14402758e-3, 9.14402758e-4, 9.14402758e-7, 9.14402758e-10, 4.93737e-4,  5.68182e-4,  1,           3,           36         ],
-	"foot":         [ 14,    304799.99,  304.79999,  30.479999,   3.0479999,  0.30479999,  0.030479999,  3.0479999e-3,  3.0479999e-4,  3.0479999e-7,  3.0479999e-10,  1.64579e-4,  1.89394e-4,  0.33333333,  1,           12         ],
-	"inch":         [ 15,    25399.986,  25.399986,  2.5399986,   0.25399986, 0.025399986, 2.5399986e-3, 2.5399986e-4,  2.5399986e-5,  2.5399986e-8,  2.5399986e-11,  1.3715e-5,   1.5783e-5,   0.027777778, 0.083333333, 1          ]
+	/*              index, µm           mm           cm           inch         dm           foot          yard          m             dam            hm              km              mile            nm            Mm             Gm             */ 
+	"micrometer":   [ 1,   1,           1e-3,        1e-4,        3.93701e-5,  1e-5,        3.28084e-6,   1.09361e-6,   1e-6,         1e-7,          1e-8,           1e-9,           6.21373e-10,  5.39957e-10,  1e-12,          1e-15           ],
+	"millimeter":   [ 2,   1000,        1,           0.1,         0.0393701,   0.01,        0.00328084,   1.09361e-3,   0.001,        1e-4,          1e-5,           1e-6,           6.21373e-7,   5.39957e-7,   1e-9,           1e-12           ],
+	"centimeter":   [ 3,   1e4,         10,          1,           0.393701,    0.1,         0.0328084,    0.0109361,    0.01,         0.001,         1e-4,           1e-5,           6.21373e-6,   5.39957e-6,   1e-8,           1e-9            ],
+        "inch":         [ 4,   25399.986,   25.399986,   2.5399986,   1,           0.25399986,  0.083333333,  0.027777778,  0.025399986,  2.5399986e-3,  2.5399986e-4,   2.5399986e-5,   1.5783e-5,    1.3715e-5,    2.5399986e-8,   2.5399986e-11   ],
+        "decimeter":    [ 5,   1e5,         100,         10,          3.93701,     1,           0.328084,     0.109361,     0.1,          0.01,          0.001,          1e-4,           6.21373e-5,   5.39957e-5,   1e-7,           1e-8            ],
+        "foot":         [ 6,   304799.99,   304.79999,   30.479999,   12,          3.0479999,   1,            0.33333333,   0.30479999,   0.030479999,   3.0479999e-3,   3.0479999e-4,   1.89394e-4,   1.64579e-4,   3.0479999e-7,   3.0479999e-10   ],
+        "yard":         [ 7,   914402.758,  914.402758,  91.4402758,  36,          9.14402758,  3,            1,            0.914402758,  0.0914402758,  9.14402758e-3,  9.14402758e-4,  5.68182e-4,   4.93737e-4,   9.14402758e-7,  9.14402758e-10  ],
+	"meter":        [ 8,   1e6,         1000,        100,         39.3701,     10,          3.28084,      1.09361,      1,            0.1,           0.01,           0.001,          6.213712e-4,  5.39957e-4,   1e-6,           1e-7            ],
+	"decameter":    [ 9,   1e7,         1e4,         1000,        393.701,     100,         32.8084,      10.9361,      10,           1,             0.1,            0.01,           6.21373e-3,   5.39957e-3,   1e-5,           1e-6            ],
+	"hectometer":   [ 10,  1e8,         1e5,         1e4,         3937.01,     1000,        328.084,      109.361,      100,          10,            1,              0.1,            0.0621373,    0.0539957,    1e-4,           1e-5            ],
+	"kilometer":    [ 11,  1e9,         1e6,         1e5,         39370.1,     1e4,         3280.84,      1093.61,      1000,         100,           10,             1,              0.621373,     0.539957,     0.001,          1e-4            ],
+        "mile":         [ 12,  1.60934e9,   1.60934e6,   1.60934e5,   63360,       1.60934e4,   5280,         1760,         1609.34,      160.934,       16.0934,        1.60934,        1,            0.868976,     1.60934e-3,     1.60934e-6      ],
+        "nauticalmile": [ 13,  1.852e9,     1.852e6,     1.852e5,     72913.4,     1.852e4,     6076.12,      2025.37,      1852,         185.2,         18.52,          1.852,          1.15078,      1,            1.852e-3,       1.852e-6        ],
+	"megameter":    [ 14,  1e12,        1e9,         1e6,         3.93701e7,   1e5,         3.28084e6,    1.09361e6,    1e4,          1000,          100,            10,             621.373,      539.957,      1,              0.001           ],        
+        "gigameter":    [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]	
 };
 
 ilib.Measurement.Length.prototype = new ilib.Measurement({});
@@ -19440,7 +19465,7 @@ ilib.Measurement.Length.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param length {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Length.convert = function(to, from, length) {
     from = ilib.Measurement.Length.aliases[from] || from;
@@ -19617,7 +19642,7 @@ ilib.Measurement.Speed.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param speed {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Speed.convert = function(to, from, speed) {
     from = ilib.Measurement.Speed.aliases[from] || from;
@@ -19864,7 +19889,7 @@ ilib.Measurement.DigitalStorage.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param digitalStorage {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.DigitalStorage.convert = function(to, from, digitalStorage) {
     from = ilib.Measurement.DigitalStorage.aliases[from] || from;
@@ -19985,7 +20010,7 @@ ilib.Measurement.Temperature.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param temperature {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	var result = 0;
@@ -20095,7 +20120,7 @@ ilib.Measurement.Unknown.prototype.convert = function(to) {
  * @param {string} to unit to convert to
  * @param {string} from unit to convert from
  * @param {number} unknown amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;
@@ -20173,19 +20198,19 @@ ilib.Measurement.Time = function (options) {
 };
 
 ilib.Measurement.Time.ratios = {
-	/*          index  nsec        msec        mlsec       sec        min          hour          day           week          month          year       decade        century    */           
+	/*          index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */           
 	"ns":       [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],  
 	"μs":       [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],  
 	"ms":       [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
 	"s":        [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
 	"min":      [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
-        "h":        [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
-        "day":      [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
-        "week":     [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
-        "month":    [ 9,   2.63e+15,   2.63e+12,   2.63e+9,    2.63e+6,   43829.1,     730.484,      30.4368,      4.34812,     1,           0.0833333,   0.00833333,   0.000833333 ],
-        "year":     [ 10,  3.156e+16,  3.156e+13,  3.156e+10,  3.156e+7,  525949,      8765.81,      365.242,      52.1775,     12,          1,           0.1,          0.01        ],
-        "decade":   [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
-        "century":  [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
+    "h":        [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
+    "day":      [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
+    "week":     [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
+    "month":    [ 9,   2.63e+15,   2.63e+12,   2.63e+9,    2.63e+6,   43829.1,     730.484,      30.4368,      4.34812,     1,           0.0833333,   0.00833333,   0.000833333 ],
+    "year":     [ 10,  3.156e+16,  3.156e+13,  3.156e+10,  3.156e+7,  525949,      8765.81,      365.242,      52.1775,     12,          1,           0.1,          0.01        ],
+    "decade":   [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
+    "century":  [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
 };
 
 ilib.Measurement.Time.prototype = new ilib.Measurement({});
@@ -20304,7 +20329,7 @@ ilib.Measurement.Time.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param time {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Time.convert = function(to, from, time) {
     from = ilib.Measurement.Time.aliases[from] || from;
@@ -20392,14 +20417,14 @@ ilib.Measurement.Mass = function (options) {
 };
 
 ilib.Measurement.Mass.ratios = {
-	/*             index  µg          mg         g          oz          lb           kg          st           sh ton       mt ton        ln ton      */           
+	/*             index  µg          mg         g          oz          lb           kg          st            sh ton       mt ton        ln ton      */           
 	"µg":          [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],  
 	"mg":          [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],  
 	"g":           [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
 	"oz":          [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
 	"lb":          [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
         "kg":          [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
-        "st":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
+        "st":          [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
         "short ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
         "metric ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
         "long ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
@@ -20499,7 +20524,7 @@ ilib.Measurement.Mass.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param mass {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Mass.convert = function(to, from, mass) {
     from = ilib.Measurement.Mass.aliases[from] || from;
@@ -20560,7 +20585,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Area = function (options) {
-	this.unit = "Square km";
+	this.unit = "square km";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Area.aliases; // share this table in all instances
 	
@@ -20587,17 +20612,15 @@ ilib.Measurement.Area = function (options) {
 };
 
 ilib.Measurement.Area.ratios = {
-/*index	   : 	Square km, 	Hectare,	Square meter,	Square mile,     Acre,	 Square yard,	Square foot,	Square inch */ 
-
-"Square km":	[1, 1	       	, 	100       , 	1e+6        , 	0.386102   ,	247.105    ,	1.196e+6  , 1.076e+7   , 1.55e+9 ],
-"Hectare"  :	[2, 0.01       	, 	1         , 	10000       , 	0.00386102 ,	2.47105    ,	11959.9   , 107639     , 1.55e+7 ],
-"Square meter": [3, 1e-6	, 	1e-4      , 	1	    , 	3.861e-7   ,	0.000247105,	1.19599   , 10.7639    , 1550    ],
-"Square mile" : [4, 2.58999    	,	258.999   , 	2.59e+6     , 	1	   ,	640	   ,  	3.098e+6  , 2.788e+7   , 4.014e+9],
-"Acre"	   :	[5, 0.00404686 	, 	0.404686  ,	4046.86     ,	0.0015625  , 	1          ,  	4840	  , 43560      , 6.273e+6],
-"Square yard":	[6, 8.3613e-7  	, 	8.3613e-5 ,	0.836127    ,	3.2283e-7  ,	0.000206612,    1	  , 9          , 1296    ],
-"Square foot":  [7, 9.2903e-8  	,  	9.2903e-6 ,	0.092903    ,	3.587e-8   ,	2.2957e-5  ,	0.111111  , 1	       , 144	 ],
-"Square inch":	[8, 6.4516e-10 	,	6.4516e-8 ,	0.00064516  ,	2.491e-10  ,	1.5942e-7  ,	0.000771605, 0.000771605, 1	 ]
-
+	/*               index	square km, 	hectare,   square meter,  square mile, acre,	    square yard, square foot, square inch */ 
+	"square km":    [1,     1,	        100,       1e+6,          0.386102,    247.105,     1.196e+6,    1.076e+7,    1.55e+9 ],
+    "hectare":      [2,     0.01,       1,         10000,         0.00386102,  2.47105,     11959.9,     107639,      1.55e+7 ],
+    "square meter": [3,     1e-6,       1e-4,      1,             3.861e-7,    0.000247105, 1.19599,     10.7639,     1550    ],
+    "square mile":  [4,     2.58999,    258.999,   2.59e+6,       1,           640,         3.098e+6,    2.788e+7,    4.014e+9],
+    "acre":         [5,     0.00404686, 0.404686,  4046.86,       0.0015625,   1,           4840,        43560,       6.273e+6],
+    "square yard":  [6,     8.3613e-7,  8.3613e-5, 0.836127,      3.2283e-7,   0.000206612, 1,           9,           1296    ],
+    "square foot":  [7,     9.2903e-8,  9.2903e-6, 0.092903,      3.587e-8,    2.2957e-5,   0.111111,    1,           144     ],
+    "square inch":  [8,     6.4516e-10, 6.4516e-8, 0.00064516,    2.491e-10,   1.5942e-7,   0.000771605, 0.000771605, 1       ]
 }
 
 ilib.Measurement.Area.prototype = new ilib.Measurement({});
@@ -20627,62 +20650,55 @@ ilib.Measurement.Area.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Area.aliases = {
-	"Square km": "Square km",
-	"Square kilometre":"Square km",
-	"square kilometer":"Square km",
-	"square kilometre":"Square km",
-	"square kilometers":"Square km",
-	"square kilometres":"Square km",
-	"sq km":"Square km",
-	"km2":"Square km",
-
-	"Hectare":"Hectare",
-	"hectare":"Hectare",
-	"ha":"Hectare",
-
-	"Square meter": "Square meter",
-	"Square meters":"Square meter",
-	"square meter": "Square meter",
-	"square meters":"Square meter",
-	"Square metre": "Square meter",
-	"Square metres":"Square meter",
-	"square metres": "Square meter",
-	"square metres":"Square meter",
-	"sqm":"Square meter",
-	"m2": "Square meter",
-
-	"Square mile":"Square mile",
-	"Square miles":"Square mile",
-	"square mile":"Square mile",
-	"square miles":"Square mile",
-	"square mi":"Square mile",
-	"Square mi":"Square mile",
-	"sq mi":"Square mile",
-	"mi2":"Square mile",
-
-	"Acre": "Acre",
-	"acre": "Acre",
-	"Acres":"Acre",
-	"acres":"Acre",
-
-	"Square yard": "Square yard",
-	"Square yards":"Square yard",
-	"square yard": "Square yard",
-	"square yards":"Square yard",
-	"yd2":"Square yard",
-
-	"Square foot": "Square foot",
-	"square foot": "Square foot",
-	"Square feet": "Square foot",
-	"Square feet": "Square foot",
-	"sq ft":"Square foot",
-	"ft2":"Square foot",
-
-	"Square inch":"Square inch",
-	"square inch":"Square inch",
-	"Square inches":"Square inch",
-	"square inches":"Square inch",
-	"in2":"Square inch"
+	"Square km": "square km",
+	"Square kilometre":"square km",
+	"square kilometer":"square km",
+	"square kilometre":"square km",
+	"square kilometers":"square km",
+	"square kilometres":"square km",
+	"sq km":"square km",
+	"km2":"square km",
+	"Hectare":"hectare",
+	"hectare":"hectare",
+	"ha":"hectare",
+	"Square meter": "square meter",
+	"Square meters":"square meter",
+	"square meter": "square meter",
+	"square meters":"square meter",
+	"Square metre": "square meter",
+	"Square metres":"square meter",
+	"square metres": "square meter",
+	"square metres":"square meter",
+	"sqm":"square meter",
+	"m2": "square meter",
+	"Square mile":"square mile",
+	"Square miles":"square mile",
+	"square mile":"square mile",
+	"square miles":"square mile",
+	"square mi":"square mile",
+	"Square mi":"square mile",
+	"sq mi":"square mile",
+	"mi2":"square mile",
+	"Acre": "acre",
+	"acre": "acre",
+	"Acres":"acre",
+	"acres":"acre",
+	"Square yard": "square yard",
+	"Square yards":"square yard",
+	"square yard": "square yard",
+	"square yards":"square yard",
+	"yd2":"square yard",
+	"Square foot": "square foot",
+	"square foot": "square foot",
+	"Square feet": "square foot",
+	"Square feet": "square foot",
+	"sq ft":"square foot",
+	"ft2":"square foot",
+	"Square inch":"square inch",
+	"square inch":"square inch",
+	"Square inches":"square inch",
+	"square inches":"square inch",
+	"in2":"square inch"
 };
 
 /**
@@ -20691,7 +20707,7 @@ ilib.Measurement.Area.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param area {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Area.convert = function(to, from, area) {
     from = ilib.Measurement.Area.aliases[from] || from;
@@ -20750,7 +20766,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.FuelConsumption = function(options) {
-    this.unit = "Km/liter";
+    this.unit = "km/liter";
     this.amount = 0;
     this.aliases = ilib.Measurement.FuelConsumption.aliases; // share this table in all instances
 
@@ -20772,7 +20788,7 @@ ilib.Measurement.FuelConsumption = function(options) {
     }
 };
 
-ilib.Measurement.FuelConsumption.ratios = ["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"];
+ilib.Measurement.FuelConsumption.ratios = ["km/liter", "liter/100km", "mpg", "mpg(imp)"];
 
 ilib.Measurement.FuelConsumption.prototype = new ilib.Measurement({});
 ilib.Measurement.FuelConsumption.prototype.parent = ilib.Measurement;
@@ -20799,46 +20815,43 @@ ilib.Measurement.FuelConsumption.prototype.convert = function(to) {
         amount: this
     });
 };
-/*["Km/liter", "Liter/100km", "MPG(US)", "MPG(imp)"*/
+/*["km/liter", "liter/100km", "mpg", "mpg(imp)"*/
 ilib.Measurement.FuelConsumption.aliases = {
-	"Km/liter": "Km/liter",
-	"KM/Liter": "Km/liter",
-	"KM/L": "Km/liter",
-	"Kilometers Per Liter": "Km/liter",
-	"kilometers per liter": "Km/liter",
-	"km/l": "Km/liter",
-	"Kilometers/Liter": "Km/liter",
-	"Kilometer/Liter": "Km/liter",
-	"kilometers/liter": "Km/liter",
-	"kilometer/liter": "Km/liter",
-
-	"Liter/100km":"Liter/100km",
-	"Liters/100km":"Liter/100km",
-	"Liter/100kms":"Liter/100km",
-	"Liters/100kms":"Liter/100km",
-	"liter/100km":"Liter/100km",
-	"liters/100kms":"Liter/100km",
-	"liters/100km":"Liter/100km",
-	"liter/100kms":"Liter/100km",
-	"Liter/100KM":"Liter/100km",
-	"Liters/100KM":"Liter/100km",
-	"L/100km":"Liter/100km",
-	"L/100KM":"Liter/100km",
-	"l/100KM":"Liter/100km",
-	"l/100km":"Liter/100km",
-	"l/100kms":"Liter/100km",
-
-	"MPG(US)":"MPG(US)",
-    	"USMPG ": "MPG(US)",
-	"mpgUS":"MPG(US)",
-	"mpg(US)":"MPG(US)",
-	"mpg(us)":"MPG(US)",
-	"mpg-us":"MPG(US)",
-	"mpg Imp":"MPG(US)",
-	
-	"MPG(imp)":"MPG(imp)",
-	"mpg(imp)":"MPG(imp)",
-	"mpg-imp":"MPG(imp)"
+	"Km/liter": "km/liter",
+	"KM/Liter": "km/liter",
+	"KM/L": "km/liter",
+	"Kilometers Per Liter": "km/liter",
+	"kilometers per liter": "km/liter",
+	"km/l": "km/liter",
+	"Kilometers/Liter": "km/liter",
+	"Kilometer/Liter": "km/liter",
+	"kilometers/liter": "km/liter",
+	"kilometer/liter": "km/liter",
+	"Liter/100km":"liter/100km",
+	"Liters/100km":"liter/100km",
+	"Liter/100kms":"liter/100km",
+	"Liters/100kms":"liter/100km",
+	"liter/100km":"liter/100km",
+	"liters/100kms":"liter/100km",
+	"liters/100km":"liter/100km",
+	"liter/100kms":"liter/100km",
+	"Liter/100KM":"liter/100km",
+	"Liters/100KM":"liter/100km",
+	"L/100km":"liter/100km",
+	"L/100KM":"liter/100km",
+	"l/100KM":"liter/100km",
+	"l/100km":"liter/100km",
+	"l/100kms":"liter/100km",
+	"MPG(US)":"mpg",
+    "USMPG ": "mpg",
+	"mpgUS":"mpg",
+	"mpg(US)":"mpg",
+	"mpg(us)":"mpg",
+	"mpg-us":"mpg",
+	"mpg Imp":"mpg(imp)",
+	"MPG(imp)":"mpg(imp)",
+	"mpg(imp)":"mpg(imp)",
+	"mpg-imp":"mpg(imp)"
 };
 
 /**
@@ -20847,7 +20860,7 @@ ilib.Measurement.FuelConsumption.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param fuelConsumption {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
     from = ilib.Measurement.FuelConsumption.aliases[from] || from;
@@ -20855,66 +20868,66 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
     var returnValue = 0;
 
     switch (from) {
-        case "Km/liter":
+        case "km/liter":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 1;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 100 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = fuelConsumption * 2.35215;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = fuelConsumption * 2.82481;
                     break;
             }
             break;
-        case "Liter/100km":
+        case "liter/100km":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = 100 / fuelConsumption;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = fuelConsumption * 1;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 235.215 / fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 282.481 / fuelConsumption;
                     break;
             }
             break;
-        case "MPG(US)":
+        case "mpg":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 0.425144;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 235.215 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 1 * fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 1.20095 * fuelConsumption;
                     break;
             }
             break;
-        case "MPG(imp)":
+        case "mpg(imp)":
             switch (to) {
-                case "Km/liter":
+                case "km/liter":
                     returnValue = fuelConsumption * 0.354006;
                     break;
-                case "Liter/100km":
+                case "liter/100km":
                     returnValue = 282.481 / fuelConsumption;
                     break;
-                case "MPG(US)":
+                case "mpg":
                     returnValue = 0.832674 * fuelConsumption;
                     break;
-                case "MPG(imp)":
+                case "mpg(imp)":
                     returnValue = 1 * fuelConsumption;
                     break;
             }
@@ -20929,10 +20942,10 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
  */
 ilib.Measurement.FuelConsumption.getMeasures = function() {
     var ret = [];
-    ret.push("Km/liter");
-    ret.push("Liter/100km");
-    ret.push("MPG(US)");
-    ret.push("MPG(imp)");
+    ret.push("km/liter");
+    ret.push("liter/100km");
+    ret.push("mpg");
+    ret.push("mpg(imp)");
     
     return ret;
 };
@@ -20973,7 +20986,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Volume = function (options) {
-	this.unit = "Cubic meter";
+	this.unit = "cubic meter";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Volume.aliases; // share this table in all instances
 	
@@ -21000,26 +21013,25 @@ ilib.Measurement.Volume = function (options) {
 };
 
 ilib.Measurement.Volume.ratios = {
-    /* 	     index, US gal	,US quart	,US pint	, US cup	, US oz		, US tbsp	, US tsp, Cubic meter	, Liter		, Milliliter	, Imperial gal	, Imperial quart,Imperial pint	, Imperial oz	, Imperial tbsp	, Imperial tsp	, Cubic foot , Cubic inch*/    
-       
- "US gal":	[1, 1		, 4		, 8		, 16		, 128		, 256		, 768	, 0.00378541	, 3.78541	, 3785.41	, 0.832674	, 3.3307	, 6.66139	, 133.228	, 213.165	, 639.494	, 0.133681	, 231 	],
- "US quart":	[2, 0.25	, 1		, 2		, 4		, 32		, 64		, 192	, 0.000946353	, 0.946353	, 946.353	, 0.208168	, 0.832674	, 1.66535	, 33.307	, 53.2911	, 159.873	, 0.0334201	, 57.75	],
- "US pint":	[3, 0.125	, 0.5		, 1		, 2		, 16		, 32		, 96	, 0.000473176	, 0.473176	, 473.176	, 0.104084	, 0.416337	, 0.832674	, 16.6535	, 26.6456	, 79.9367	, 0.0167101	, 28.875 ],
- "US cup":	[4, 0.0625	, 0.25		, 0.5		, 1		, 8		, 16		, 48	, 0.000236588	, 0.236588	, 236.588	, 0.0520421	, 0.208168	, 0.416337	, 8.32674	, 13.3228	, 39.9683  	, 0.00835503	, 14.4375],
- "US oz":	[5, 0.0078125	, 0.0078125	, 0.0625	, 0.125		, 1		, 2		, 6	, 2.9574e-5	, 0.0295735	, 29.5735	, 0.00650526	, 0.0260211	, 0.0520421	, 1.04084	, 1.04084	, 4.99604  	, 0.00104438	, 1.80469],
- "US tbsp":	[6, 0.00390625	, 0.015625	, 0.0312	, 0.0625	, 0.5		, 1		, 3	, 1.4787e-5	, 0.0147868	, 14.7868	, 0.00325263	, 0.0130105	, 0.0260211	, 0.520421	, 0.832674	, 2.49802	, 0.00052219	, 0.902344],
- "US tsp" :	[7, 0.00130208	, 0.00130208	, 0.0104167	, 0.0208333	, 0.166667	, 0.333333	, 1	, 4.9289e-6	, 0.00492892	, 4.92892	, 0.00108421	, 0.00433684	, 0.00867369	, 0.173474	, 0.277558	, 0.832674	, 0.000174063	, 0.300781],
- "Cubic meter": [8, 264.172	, 1056.69	, 2113.38	, 4226.75	, 33814		, 67628		, 202884, 1		, 1000		, 1e+6		, 219.969	, 879.877	, 1759.75	, 35195.1	, 56312.1	, 168936	, 35.3147	, 61023.7],
- "Liter":	[9, 0.264172	, 1.05669	, 2.11338	, 4.22675	, 33.814	, 67.628	, 202.884, 0.001	, 1		, 1000		, 0.219969	, 0.879877	, 1.75975	, 35.191	, 56.3121	, 56.3121	, 0.0353147	, 61.0237],
- "Milliliter":	[10,0.000264172	, 0.00105669	, 0.00211338	, 0.00422675	, 0.033814	, 0.067628	, 0.202884, 1e-6	, 0.001		, 1		, 0.000219969	, 0.000879877	, 0.00175975	, 0.0351951	, 0.0563121	, 0.168936	, 3.5315e-5	, 0.0610237],
- "Imperial gal":[11, 1.20095	, 4.8038	, 9.6076	, 19.2152	, 153.722	, 307.443	, 922.33   , 0.00454609 , 4.54609	, 4546.09	, 1		, 4		, 8		, 160		, 256		, 768		, 0.160544	, 277.42 ],
- "Imperial quart":[12,0.300238	, 1.20095	, 2.4019	, 4.8038	, 38.4304	, 76.8608	, 230.582  , 0.00113652	, 1.13652	, 1136.52	, 0.25		, 1		, 2		, 40		, 64		, 192		, 0.0401359	, 69.3549],
- "Imperial pint":[13,0.150119	, 0.600475	, 1.20095	, 2.4019	, 19.2152	, 38.4304	, 115.291  , 0.000568261, 0.568261	, 568.261	, 0.125		, 0.5		, 1		, 20		, 32		, 96		, 0.020068	, 34.6774],
- "Imperial oz":	[14,0.00750594	, 0.0300238	, 0.0600475	, 0.120095	, 0.96076	, 1.92152	, 5.76456  , 2.8413e-5, 0.0284131	, 28.4131	, 0.00625	, 0.025		, 0.05		, 1		, 1.6		, 4.8		, 0.0010034	, 1.73387],
- "Imperial tbsp":[15,0.00469121	, 0.0187649	, 0.0375297	, 0.0750594	, 0.600475	, 1.20095	, 3.60285  , 1.7758e-5, 0.0177582	, 17.7582	, 0.00390625	, 0.015625	, 0.03125	, 0.625		, 1		, 3		, 0.000627124	, 1.08367],
- "Imperial tsp":[16,0.00156374	, 0.00625495	, 0.0125099	, 0.0250198	, 0.600475	, 0.200158	, 1.20095  , 5.9194e-6, 0.00591939	, 5.91939	, 0.00130208	, 0.00520833	, 0.0104167	, 0.208333	, 0.333333	, 1		, 0.000209041	, 0.361223],
- "Cubic foot":	[17, 7.48052	, 29.9221	, 59.8442	, 119.688	, 957.506	, 1915.01	, 5745.04  , 0.0283168	, 28.3168	, 28316.8	, 6.22883	,24.9153	, 49.8307	, 996.613	, 1594.58	, 4783.74	, 1		, 1728],
-"Cubic inch":	[18, 0.004329	, 0.017316	, 0.034632	, 0.0692641	, 0.554113	, 1.10823	, 3.32468  , 1.6387e-5	, 0.0163871	, 16.3871	, 0.00360465	,0.0144186	, 0.0288372	, 0.576744	, 0.92279	, 2.76837	, 0.000578704	, 1]	 		
+    /* 	                index, gallon,      quart,      pint,       cup,        ounce,       tbsp,     tsp,      cubic meter, liter,      milliliter, imperial gal, imperial quart,imperial pint, imperial ounce, imperial tbsp, imperial tsp, cubic foot,  cubic inch*/    
+	"gallon":	       [1,     1,           4,          8,          16,         128,      256,      768,      0.00378541,  3.78541,    3785.41,    0.832674,     3.3307,        6.66139,       133.228,     213.165,       639.494,      0.133681,    231 	  ],
+	"quart":	       [2,     0.25,        1,          2,          4,          32,       64,       192,      0.000946353, 0.946353,   946.353,    0.208168,     0.832674,      1.66535,       33.307,      53.2911,       159.873,      0.0334201,   57.75	  ],
+	"pint":	           [3,     0.125,       0.5,        1,          2,          16,       32,       96,       0.000473176, 0.473176,   473.176,    0.104084,     0.416337,      0.832674,      16.6535,     26.6456,       79.9367,      0.0167101,   28.875   ],
+	"cup":	           [4,     0.0625,      0.25,       0.5,        1,          8,        16,       48,       0.000236588, 0.236588,   236.588,    0.0520421,    0.208168,      0.416337,      8.32674,     13.3228,       39.9683,      0.00835503,  14.4375  ],
+	"ounce":	       [5,     0.0078125,   0.0078125,  0.0625,     0.125,      1,        2,        6,        2.9574e-5,   0.0295735,  29.5735,    0.00650526,   0.0260211,     0.0520421,     1.04084,     1.04084,       4.99604,      0.00104438,  1.80469  ],
+	"tbsp":	           [6,     0.00390625,  0.015625,   0.0312,     0.0625,     0.5,      1,        3,        1.4787e-5,   0.0147868,  14.7868,    0.00325263,   0.0130105,     0.0260211,     0.520421,    0.832674,      2.49802,      0.00052219,  0.902344 ],
+	"tsp" :	           [7,     0.00130208,  0.00130208, 0.0104167,  0.0208333,  0.166667, 0.333333, 1,        4.9289e-6,   0.00492892, 4.92892,    0.00108421,   0.00433684,    0.00867369,    0.173474,    0.277558,      0.832674,     0.000174063, 0.300781 ],
+	"cubic meter":     [8,     264.172,     1056.69,    2113.38,    4226.75,    33814,    67628,    202884,   1,           1000,       1e+6,       219.969,      879.877,       1759.75,       35195.1,     56312.1,       168936,       35.3147,     61023.7  ],
+	"liter":	       [9,     0.264172,    1.05669,    2.11338,    4.22675,    33.814,   67.628,   202.884,  0.001,       1,          1000,       0.219969,     0.879877,      1.75975,       35.191,      56.3121,       56.3121,      0.0353147,   61.0237  ],
+	"milliliter":	   [10,    0.000264172, 0.00105669, 0.00211338, 0.00422675, 0.033814, 0.067628, 0.202884, 1e-6,        0.001,      1,          0.000219969,  0.000879877,   0.00175975,    0.0351951,   0.0563121,     0.168936,     3.5315e-5,   0.0610237],
+	"imperial gallon": [11,    1.20095,     4.8038,     9.6076,     19.2152,    153.722,  307.443,  922.33,   0.00454609,  4.54609,    4546.09,    1,            4,             8,             160,         256,           768,          0.160544,    277.42   ],
+	"imperial quart":  [12,    0.300238,    1.20095,    2.4019,     4.8038,     38.4304,  76.8608,  230.582,  0.00113652,  1.13652,    1136.52,    0.25,         1,             2,             40,          64,            192,          0.0401359,   69.3549  ],
+	"imperial pint":   [13,    0.150119,    0.600475,   1.20095,    2.4019,     19.2152,  38.4304,  115.291,  0.000568261, 0.568261,   568.261,    0.125,        0.5,           1,             20,          32,            96,           0.020068,    34.6774  ],
+	"imperial ounce":	   [14,    0.00750594,  0.0300238,  0.0600475,  0.120095,   0.96076,  1.92152,  5.76456,  2.8413e-5,   0.0284131,  28.4131,    0.00625,      0.025,         0.05,          1,           1.6,           4.8,          0.0010034,   1.73387  ],
+	"imperial tbsp":   [15,    0.00469121,  0.0187649,  0.0375297,  0.0750594,  0.600475, 1.20095,  3.60285,  1.7758e-5,   0.0177582,  17.7582,    0.00390625,   0.015625,      0.03125,       0.625,       1,             3,            0.000627124, 1.08367  ],
+	"imperial tsp":    [16,    0.00156374,  0.00625495, 0.0125099,  0.0250198,  0.600475, 0.200158, 1.20095,  5.9194e-6,   0.00591939, 5.91939,    0.00130208,   0.00520833,    0.0104167,     0.208333,    0.333333,      1,            0.000209041, 0.361223 ],
+	"cubic foot":	   [17,    7.48052,     29.9221,    59.8442,    119.688,    957.506,  1915.01,  5745.04,  0.0283168,   28.3168,    28316.8,    6.22883,      24.9153,       49.8307,       996.613,     1594.58,       4783.74,      1,           1728     ],
+	"cubic inch":	   [18,    0.004329,    0.017316,   0.034632,   0.0692641,  0.554113, 1.10823,  3.32468,  1.6387e-5,   0.0163871,  16.3871,    0.00360465,   0.0144186,     0.0288372,     0.576744,    0.92279,       2.76837,      0.000578704, 1        ]	 		
 }; 
   
 ilib.Measurement.Volume.prototype = new ilib.Measurement({});
@@ -21049,90 +21061,90 @@ ilib.Measurement.Volume.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Volume.aliases = {
-	"US gal":"US gal",
-	"US gallon":"US gal",
-	"US Gal":"US gal",
-	"US Gallons":"US gal",
-	"Gal(US)":"US gal",
-	"gal(US)":"US gal",	    
-	"US quart":"US quart",
-	"US quarts":"US quart",
-	"US Quart":"US quart",
-	"US Quarts":"US quart",
-	"US qt":"US quart",
-	"Qt(US)":"US quart",
-	"qt(US)":"US quart",
-	"US pint":"US pint",
-	"US Pint":"US pint",
-	"pint(US)":"US pint",
-	"Pint(US)":"US pint",
-	"US cup":"US cup", 
-	"US Cup":"US cup",
-	"cup(US)":"US cup",
-	"Cup(US)":"US cup",
-	"US oz":"US oz",
-	"℥":"US oz",
-	"US Oz":"US oz",
-	"oz(US)":"US oz",
-	"Oz(US)":"US oz",
-        "US tbsp":"US tbsp",
-	"tbsp(US)":"US tbsp",
-	"US tablespoon":"US tbsp",
-	"US tsp":"US tsp",
-	"tsp(US)":"US tsp",
-	"Cubic meter":"Cubic meter",
-	"cubic meter":"Cubic meter",
-       	"Cubic metre":"Cubic meter", 
-       	"cubic metre":"Cubic meter", 
-       	"m3":"Cubic meter",
-	"Liter":"Liter",
-	"Liters":"Liter",
-	"liter":"Liter",
-	"L":"Liter",
-	"l":"Liter",
-	"Milliliter":"Milliliter",
-	"ML":"Milliliter",
-	"ml":"Milliliter",
-	"milliliter":"Milliliter",
-	"mL":"Milliliter",
-	"Imperial gal":"Imperial gal",
-	"Imperial gallon":"Imperial gal",
-	"gallon(imperial)":"Imperial gal",
-	"gal(imperial)":"Imperial gal",
-	"Imperial quart":"Imperial quart",
-	"Imperial Quart":"Imperial quart",
-	"IMperial qt":"Imperial quart",
-	"qt(Imperial)":"Imperial quart",
-	"quart(Imperial)":"Imperial quart",
-	"Imperial pint":"Imperial pint",
-	"pint(Imperial)":"Imperial pint",
-	"Imperial oz":"Imperial oz",
-	"Imperial ounce":"Imperial oz",
-	"Imperial Ounce":"Imperial oz",
-	"Imperial tbsp":"Imperial tbsp",
-	"tbsp(Imperial)":"Imperial tbsp",
-	"Imperial tsp":"Imperial tsp",
-	"tsp(Imperial)":"Imperial tsp",
-	"Cubic foot":"Cubic foot",
-	"Cubic Foot":"Cubic foot",
-	"Cubic feet":"Cubic foot",
-	"Cubic Feet":"Cubic foot",
-	"Cubic ft":"Cubic foot",
-	"ft3":"Cubic foot",
-	"Cubic inch":"Cubic inch",
-	"Cubic inches":"Cubic inch",
-	"cubic inches":"Cubic inch",
-	"cubic inches":"Cubic inch",
-	"cubic in":"Cubic inch",
-	"cu in":"Cubic inch",
-	"cu inch":"Cubic inch",
-	"inch³":"Cubic inch",
-	"in³":"Cubic inch",
-	"inch^3":"Cubic inch",
-	"in^3":"Cubic inch",
-	"c.i":"Cubic inch",
-	"CI":"Cubic inch",
-	"cui":"Cubic inch"
+	"US gal":"gallon",
+	"US gallon":"gallon",
+	"US Gal":"gallon",
+	"US Gallons":"gallon",
+	"Gal(US)":"gallon",
+	"gal(US)":"gallon",	    
+	"US quart":"quart",
+	"US quarts":"quart",
+	"US Quart":"quart",
+	"US Quarts":"quart",
+	"US qt":"quart",
+	"Qt(US)":"quart",
+	"qt(US)":"quart",
+	"US pint":"pint",
+	"US Pint":"pint",
+	"pint(US)":"pint",
+	"Pint(US)":"pint",
+	"US cup":"cup", 
+	"US Cup":"cup",
+	"cup(US)":"cup",
+	"Cup(US)":"cup",
+	"US ounce":"ounce",
+	"℥":"ounce",
+	"US Oz":"ounce",
+	"oz(US)":"ounce",
+	"Oz(US)":"ounce",
+    "US tbsp":"tbsp",
+	"tbsp(US)":"tbsp",
+	"US tablespoon":"tbsp",
+	"US tsp":"tsp",
+	"tsp(US)":"tsp",
+	"Cubic meter":"cubic meter",
+	"cubic meter":"cubic meter",
+    "Cubic metre":"cubic meter", 
+    "cubic metre":"cubic meter", 
+    "m3":"cubic meter",
+	"Liter":"liter",
+	"Liters":"liter",
+	"liter":"liter",
+	"L":"liter",
+	"l":"liter",
+	"Milliliter":"milliliter",
+	"ML":"milliliter",
+	"ml":"milliliter",
+	"milliliter":"milliliter",
+	"mL":"milliliter",
+	"Imperial gal":"imperial gallon",
+	"Imperial gallon":"imperial gallon",
+	"gallon(imperial)":"imperial gallon",
+	"gal(imperial)":"imperial gallon",
+	"Imperial quart":"imperial quart",
+	"Imperial Quart":"imperial quart",
+	"IMperial qt":"imperial quart",
+	"qt(Imperial)":"imperial quart",
+	"quart(imperial)":"imperial quart",
+	"Imperial pint":"imperial pint",
+	"pint(Imperial)":"imperial pint",
+	"imperial oz":"imperial ounce",
+	"imperial ounce":"imperial ounce",
+	"Imperial Ounce":"imperial ounce",
+	"Imperial tbsp":"imperial tbsp",
+	"tbsp(Imperial)":"imperial tbsp",
+	"Imperial tsp":"imperial tsp",
+	"tsp(Imperial)":"imperial tsp",
+	"Cubic foot":"cubic foot",
+	"Cubic Foot":"cubic foot",
+	"Cubic feet":"cubic foot",
+	"cubic Feet":"cubic foot",
+	"cubic ft":"cubic foot",
+	"ft3":"cubic foot",
+	"Cubic inch":"cubic inch",
+	"Cubic inches":"cubic inch",
+	"cubic inches":"cubic inch",
+	"cubic inches":"cubic inch",
+	"cubic in":"cubic inch",
+	"cu in":"cubic inch",
+	"cu inch":"cubic inch",
+	"inch³":"cubic inch",
+	"in³":"cubic inch",
+	"inch^3":"cubic inch",
+	"in^3":"cubic inch",
+	"c.i":"cubic inch",
+	"CI":"cubic inch",
+	"cui":"cubic inch"
 };
 
 /**
@@ -21141,7 +21153,7 @@ ilib.Measurement.Volume.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param volume {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Volume.convert = function(to, from, volume) {
     from = ilib.Measurement.Volume.aliases[from] || from;
@@ -21230,11 +21242,11 @@ ilib.Measurement.Energy = function (options) {
 };
 
 ilib.Measurement.Energy.ratios = {
-	/*      index  mJ           J          BTU                kJ           Wh               Cal                MJ              kWh                gJ               MWh                  gWh         */           
+		/*      index  mJ          J           BTU               kJ          Wh                Cal               MJ             kWh                gJ             MWh                 gWh         */           
         "mJ":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],  
-	"J":    [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],  
-	"BTU":  [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
-	"kJ":   [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
+        "J":    [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],  
+        "BTU":  [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
+        "kJ":   [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
         "Wh":   [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
         "Cal":  [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
         "MJ":   [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
@@ -21347,7 +21359,7 @@ ilib.Measurement.Energy.aliases = {
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from
  * @param energy {number} amount to be convert
- * @returns {number} the converted amount
+ * @returns {number|undefined} the converted amount
  */
 ilib.Measurement.Energy.convert = function(to, from, energy) {
     from = ilib.Measurement.Energy.aliases[from] || from;
