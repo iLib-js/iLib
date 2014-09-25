@@ -73,8 +73,6 @@ ilib.Measurement.DigitalStorage.ratios = {
     "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
 
-ilib.Measurement.DigitalStorage.indexArr  = [1,2,3,4,5,6,7,8,9,10,11,12];
-
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
 ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
 ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
