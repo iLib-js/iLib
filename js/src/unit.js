@@ -220,14 +220,19 @@ ilib.Measurement.prototype = {
 	 */
 	convert: function(to) {},     
         
-        /**
-	 * scale the measurement unit to acceptable level. Measurements can 
-         * only be scaled to measurements of the same type.<p>
+    /**
+	 * Scale the measurement unit to an acceptable level. The scaling
+	 * happens so that the integer part of the amount is as small as
+	 * possible without being below zero. This will result in the 
+	 * largest units that can represent this measurement without
+	 * fractions. Measurements can only be scaled to other measurements 
+	 * of the same type.
 	 * 
 	 * @abstract
-	 * @param {String} measurementsystem used (uscustomary|imperial|metric)
-	 * or undefined if the requested units are for a different
-	 * measurement type
+	 * @param {string=} measurementsystem used (uscustomary|imperial|metric)
+	 * or undefined if the system can be inferred from the current measure
+	 * @return {ilib.Measurement} a new instance that is scaled to the 
+	 * right level
 	 */
 	scale: function(measurementsystem) {}     
 };
