@@ -112,28 +112,31 @@ ilib.Measurement.Length.prototype.convert = function(to) {
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
-        var fromRow = ilib.Measurement.Length.ratios[this.unit];
-        var mSystem;
-        
-        if (measurementsystem === "metric")
-            mSystem = ilib.Measurement.Length.metricSystem;
-        if (measurementsystem === "imperial")
-            mSystem = ilib.Measurement.Length.imperialSystem;
-        if (measurementsystem === "uscustomary")
-            mSystem = ilib.Measurement.Length.uscustomarySystem;
-        
-        var length;
-        var munit;
-        
-        for (var m in mSystem) {
-            var tmp = this.amount * fromRow[mSystem[m]];
-            if (tmp < 1) break;
-            length = tmp;
-            munit = m;
-        }
-        
-        this.amount = length;
-        this.unit = munit;
+    var fromRow = ilib.Measurement.Length.ratios[this.unit];
+    var mSystem;
+    
+    if (measurementsystem === "metric") {
+        mSystem = ilib.Measurement.Length.metricSystem;
+    }
+    if (measurementsystem === "imperial") {
+        mSystem = ilib.Measurement.Length.imperialSystem;
+    }
+    if (measurementsystem === "uscustomary") {
+        mSystem = ilib.Measurement.Length.uscustomarySystem;
+    }
+    
+    var length;
+    var munit;
+    
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        length = tmp;
+        munit = m;
+    }
+    
+    this.amount = length;
+    this.unit = munit;
 };
 
 ilib.Measurement.Length.aliases = {
