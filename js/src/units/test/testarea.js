@@ -145,6 +145,50 @@ function testAreaStaticConvert16() {
 	
 	assertEquals(2592, m);
 }
+
+function testAreaStaticConvert17() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square meter",
+        amount: 100
+    });
+    m1.scale("metric");
+
+    assertEquals(100, m1.amount);
+    assertEquals("square meter", m1.unit);
+}
+
+function testAreaStaticConvert18() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square inch",
+        amount: 100
+    });
+    m1.scale("uscustomary");
+
+    assertEquals(100, m1.amount);
+    assertEquals("square inch", m1.unit);
+}
+
+function testAreaStaticConvert19() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square km",
+        amount: 100
+    });
+    m1.scale("metric");
+
+    assertEquals(100, m1.amount);
+    assertEquals("square km", m1.unit);
+}
+
+function testAreaStaticConvert20() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "acre",
+        amount: 100
+    });
+    m1.scale("uscustomary");
+
+    assertEquals(100, m1.amount);
+    assertEquals("acre", m1.unit);
+}
 function testAreaGetMeasures() {
 	var measures = ilib.Measurement.Area.getMeasures();
 	var expected = [

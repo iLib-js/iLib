@@ -58,17 +58,17 @@ ilib.Measurement.Area = function (options) {
 };
 
 ilib.Measurement.Area.ratios = {
-	/*               index	square km, 	hectare,   square meter,  square mile, acre,	    square yard, square foot, square inch */ 
-	"square km":    [1,     1,	        100,       1e+6,          0.386102,    247.105,     1.196e+6,    1.076e+7,    1.55e+9 ],
-    "hectare":      [2,     0.01,       1,         10000,         0.00386102,  2.47105,     11959.9,     107639,      1.55e+7 ],
-    "square meter": [3,     1e-6,       1e-4,      1,             3.861e-7,    0.000247105, 1.19599,     10.7639,     1550    ],
-    "square mile":  [4,     2.58999,    258.999,   2.59e+6,       1,           640,         3.098e+6,    2.788e+7,    4.014e+9],
-    "acre":         [5,     0.00404686, 0.404686,  4046.86,       0.0015625,   1,           4840,        43560,       6.273e+6],
-    "square yard":  [6,     8.3613e-7,  8.3613e-5, 0.836127,      3.2283e-7,   0.000206612, 1,           9,           1296    ],
-    "square foot":  [7,     9.2903e-8,  9.2903e-6, 0.092903,      3.587e-8,    2.2957e-5,   0.111111,    1,           144     ],
-    "square inch":  [8,     6.4516e-10, 6.4516e-8, 0.00064516,    2.491e-10,   1.5942e-7,   0.000771605, 0.000771605, 1       ]
-}
+    /*               index	square meter,   hectare,   	square km, 	, square inch 	square foot, 	square yard, 	  	  		acre,			square mile			        */
+    "square meter": [1,   	1,              1e-4,       1e-6,         1550,    	 	10.7639,    	  	1.19599,   				0.000247105,	3.861e-7     	    ],
+    "hectare":      [2,   	10000,          1,          0.01,         1.55e+7, 	  	107639,     	 	11959.9,   				2.47105	,		0.00386102    	    ],
+    "square km":    [3,   	1e+6,           100,        1,	          1.55e+9, 	  	1.076e+7,   	 	1.196e+6,  				247.105 ,   	0.386102     	    ],
+    "square inch":  [4,   	0.00064516,     6.4516e-8,  6.4516e-10,   1,			0.000771605,	  	0.0007716051, 			1.5942e-7,		2.491e-10    	    ],
+    "square foot":  [5,   	0.092903,       9.2903e-6,  9.2903e-8,    144,			1,          	  	0.111111,  				2.2957e-5,		3.587e-8    		],
+    "square yard":  [6,   	0.836127,       8.3613e-5,  8.3613e-7,    1296,    	  	9,          	  	1,         				0.000206612,	3.2283e-7    	    ],
+    "acre":         [7,   	4046.86,        0.404686,   0.00404686,   6.273e+6,	  	43560,      	  	4840,      				1,		    	0.0015625    	    ],
+    "square mile":  [8,   	2.59e+6,        258.999,    2.58999,      4.014e+9,	 	2.788e+7,   	  	3.098e+6,  				640,     		1   	     		]
 
+}
 ilib.Measurement.Area.prototype = new ilib.Measurement({});
 ilib.Measurement.Area.prototype.parent = ilib.Measurement;
 ilib.Measurement.Area.prototype.constructor = ilib.Measurement.Area;
@@ -177,6 +177,46 @@ ilib.Measurement.Area.getMeasures = function () {
 	}
 	return ret;
 };
+
+ilib.Measurement.Area.metricSystem      = {"square meter":1,"hectare":2,"square km":3};
+ilib.Measurement.Area.imperialSystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+ilib.Measurement.Area.uscustomarySystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+
+
+/**
+ * Sclae the current area.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
+    var fromRow = ilib.Measurement.Area.ratios[this.unit];
+    var mSystem;
+
+    if (measurementsystem === "metric")
+        mSystem = ilib.Measurement.Area.metricSystem;
+
+    else  if (measurementsystem === "uscustomary")
+        mSystem = ilib.Measurement.Area.uscustomarySystem;
+
+    else if (measurementsystem === "imperial")
+        mSystem = ilib.Measurement.Area.imperialSystem;
+    
+    var area;
+    var munit;
+
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        area = tmp;
+        munit = m;
+    }
+
+    this.amount = area;
+    this.unit = munit;
+};
+
+
+
 
 //register with the factory method
 ilib.Measurement._constructors["area"] = ilib.Measurement.Area;
