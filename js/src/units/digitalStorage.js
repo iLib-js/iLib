@@ -73,6 +73,8 @@ ilib.Measurement.DigitalStorage.ratios = {
     "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
 
+ilib.Measurement.DigitalStorage.indexArr  = [1,2,3,4,5,6,7,8,9,10,11,12];
+
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
 ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
 ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
@@ -97,6 +99,32 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 		unit: to,
 		amount: this
 	});
+};
+
+/**
+ * Scale the current DigitalStorage and return it in new DigitalStorage unit.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
+    
+    var fromRow = ilib.Measurement.DigitalStorage.ratios[this.unit];    
+    var dStorage;
+    var munit;
+    var i=1;
+    
+    for (var m in ilib.Measurement.DigitalStorage.ratios) {
+        var tmp = this.amount * fromRow[i];
+        if (tmp < 1) break;
+        dStorage = tmp;
+        munit = m;
+        ++i
+    }
+    
+    return new ilib.Measurement.DigitalStorage({
+	unit: munit,
+	amount: dStorage
+    });    
 };
 
 ilib.Measurement.DigitalStorage.aliases = {

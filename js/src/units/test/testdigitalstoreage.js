@@ -79,6 +79,78 @@ function testDSStaticConvert5() {
 	assertRoughlyEquals(9.536743164e-6, m, 1e-15);
 }
 
+function testDSScale1() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "bit",
+		amount: 1024
+	});
+        
+        m = m.scale();
+        
+        assertEquals(1,m.amount);
+        assertEquals("kilobit",m.unit);
+}
+
+function testDSScale2() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "kilobit",
+		amount: 0.125
+	});
+        
+        m = m.scale();
+        
+        assertEquals(16,m.amount);
+        assertEquals("byte",m.unit);
+}
+
+function testDSScale3() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "bit",
+		amount: 1048576000
+	});
+        
+        m = m.scale();
+        
+        assertRoughlyEquals(125, m.amount, 0.1);
+        assertEquals("megabyte",m.unit);
+}
+
+function testDSScale4() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "kilobit",
+		amount: 10000000
+	});
+        
+        m = m.scale();
+        
+        assertRoughlyEquals(1.192, m.amount, 0.001);
+        assertEquals("gigabyte",m.unit);
+}
+
+function testDSScale5() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "petabyte",
+		amount: 9.3132e-8
+	});
+        
+        m = m.scale();
+        
+        assertRoughlyEquals(100, m.amount, 0.001);
+        assertEquals("megabyte",m.unit);
+}
+
+function testDSScale6() {
+	var m = new ilib.Measurement.DigitalStorage({
+		unit: "MB",
+		amount: 100
+	});
+        
+        m = m.scale();
+        
+        assertEquals(100, m.amount);
+        assertEquals("megabyte",m.unit);
+}
+
 function testDSGetMeasures() {
 	var measures = ilib.Measurement.DigitalStorage.getMeasures();
 	var expected = [

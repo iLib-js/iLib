@@ -107,7 +107,7 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current length.
+ * Scale the current length and return it in new length unit.
  * 
  * @inheritDoc
  */

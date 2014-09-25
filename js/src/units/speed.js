@@ -66,6 +66,10 @@ ilib.Measurement.Speed.ratios = {
 	"knot":         [ 5,     1.68781,    0.514444,   1.852,       1.15078,    1        ]
 };
 
+ilib.Measurement.Speed.metricSystem      = {"meters/sec":2,"km/hour":3};
+ilib.Measurement.Speed.imperialSystem    = {"feet/sec":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.uscustomarySystem = {"feet/sec":1,"miles/hour":4,"knot":5};
+
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
 ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
@@ -90,6 +94,48 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 		unit: to,
 		amount: this
 	});
+};
+
+/**
+ * Scale the current speed and return it in new speed unit.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
+    var mSystem;    
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.metricSystem;
+    } else
+    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.imperialSystem;
+    } else
+    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.uscustomarySystem;
+    } else {
+        return new ilib.Measurement.Speed({
+		unit: this.unit,
+		amount: this.amount
+	});
+    }
+    
+    var speed;
+    var munit;
+    var fromRow = ilib.Measurement.Speed.ratios[this.unit];
+    
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        speed = tmp;
+        munit = m;
+    }
+    
+    return new ilib.Measurement.Speed({
+	unit: munit,
+	amount: speed
+    });    
 };
 
 ilib.Measurement.Speed.aliases = {

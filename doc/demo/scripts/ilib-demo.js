@@ -19401,7 +19401,7 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current length.
+ * Scale the current length and return it in new length unit.
  * 
  * @inheritDoc
  */
@@ -19609,6 +19609,10 @@ ilib.Measurement.Speed.ratios = {
 	"knot":         [ 5,     1.68781,    0.514444,   1.852,       1.15078,    1        ]
 };
 
+ilib.Measurement.Speed.metricSystem      = {"meters/sec":2,"km/hour":3};
+ilib.Measurement.Speed.imperialSystem    = {"feet/sec":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.uscustomarySystem = {"feet/sec":1,"miles/hour":4,"knot":5};
+
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
 ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
@@ -19633,6 +19637,48 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 		unit: to,
 		amount: this
 	});
+};
+
+/**
+ * Scale the current speed and return it in new speed unit.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
+    var mSystem;    
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.metricSystem;
+    } else
+    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.imperialSystem;
+    } else
+    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Speed.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Speed.uscustomarySystem;
+    } else {
+        return new ilib.Measurement.Speed({
+		unit: this.unit,
+		amount: this.amount
+	});
+    }
+    
+    var speed;
+    var munit;
+    var fromRow = ilib.Measurement.Speed.ratios[this.unit];
+    
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        speed = tmp;
+        munit = m;
+    }
+    
+    return new ilib.Measurement.Speed({
+	unit: munit,
+	amount: speed
+    });    
 };
 
 ilib.Measurement.Speed.aliases = {
@@ -19794,6 +19840,8 @@ ilib.Measurement.DigitalStorage.ratios = {
     "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
 
+ilib.Measurement.DigitalStorage.indexArr  = [1,2,3,4,5,6,7,8,9,10,11,12];
+
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
 ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
 ilib.Measurement.DigitalStorage.prototype.constructor = ilib.Measurement.DigitalStorage;
@@ -19818,6 +19866,32 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 		unit: to,
 		amount: this
 	});
+};
+
+/**
+ * Scale the current DigitalStorage and return it in new DigitalStorage unit.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
+    
+    var fromRow = ilib.Measurement.DigitalStorage.ratios[this.unit];    
+    var dStorage;
+    var munit;
+    var i=1;
+    
+    for (var m in ilib.Measurement.DigitalStorage.ratios) {
+        var tmp = this.amount * fromRow[i];
+        if (tmp < 1) break;
+        dStorage = tmp;
+        munit = m;
+        ++i
+    }
+    
+    return new ilib.Measurement.DigitalStorage({
+	unit: munit,
+	amount: dStorage
+    });    
 };
 
 ilib.Measurement.DigitalStorage.aliases = {
@@ -20794,15 +20868,21 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];
     var mSystem;
 
-    if (measurementsystem === "metric")
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.metricSystem;
+    }
 
-    else  if (measurementsystem === "uscustomary")
+    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.uscustomarySystem;
+    }
 
-    else if (measurementsystem === "imperial")
+    else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.imperialSystem;
-    
+    }
+
     var area;
     var munit;
 
@@ -21052,6 +21132,7 @@ ilib.Measurement._constructors["fuelconsumption"] = ilib.Measurement.FuelConsump
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21101,27 +21182,27 @@ ilib.Measurement.Volume = function (options) {
 };
 
 ilib.Measurement.Volume.ratios = {
-    /* 	                index, gallon,      quart,      pint,       cup,        ounce,       tbsp,     tsp,      cubic meter, liter,      milliliter, imperial gal, imperial quart,imperial pint, imperial ounce, imperial tbsp, imperial tsp, cubic foot,  cubic inch*/    
-	"gallon":	       [1,     1,           4,          8,          16,         128,      256,      768,      0.00378541,  3.78541,    3785.41,    0.832674,     3.3307,        6.66139,       133.228,     213.165,       639.494,      0.133681,    231 	  ],
-	"quart":	       [2,     0.25,        1,          2,          4,          32,       64,       192,      0.000946353, 0.946353,   946.353,    0.208168,     0.832674,      1.66535,       33.307,      53.2911,       159.873,      0.0334201,   57.75	  ],
-	"pint":	           [3,     0.125,       0.5,        1,          2,          16,       32,       96,       0.000473176, 0.473176,   473.176,    0.104084,     0.416337,      0.832674,      16.6535,     26.6456,       79.9367,      0.0167101,   28.875   ],
-	"cup":	           [4,     0.0625,      0.25,       0.5,        1,          8,        16,       48,       0.000236588, 0.236588,   236.588,    0.0520421,    0.208168,      0.416337,      8.32674,     13.3228,       39.9683,      0.00835503,  14.4375  ],
-	"ounce":	       [5,     0.0078125,   0.0078125,  0.0625,     0.125,      1,        2,        6,        2.9574e-5,   0.0295735,  29.5735,    0.00650526,   0.0260211,     0.0520421,     1.04084,     1.04084,       4.99604,      0.00104438,  1.80469  ],
-	"tbsp":	           [6,     0.00390625,  0.015625,   0.0312,     0.0625,     0.5,      1,        3,        1.4787e-5,   0.0147868,  14.7868,    0.00325263,   0.0130105,     0.0260211,     0.520421,    0.832674,      2.49802,      0.00052219,  0.902344 ],
-	"tsp" :	           [7,     0.00130208,  0.00130208, 0.0104167,  0.0208333,  0.166667, 0.333333, 1,        4.9289e-6,   0.00492892, 4.92892,    0.00108421,   0.00433684,    0.00867369,    0.173474,    0.277558,      0.832674,     0.000174063, 0.300781 ],
-	"cubic meter":     [8,     264.172,     1056.69,    2113.38,    4226.75,    33814,    67628,    202884,   1,           1000,       1e+6,       219.969,      879.877,       1759.75,       35195.1,     56312.1,       168936,       35.3147,     61023.7  ],
-	"liter":	       [9,     0.264172,    1.05669,    2.11338,    4.22675,    33.814,   67.628,   202.884,  0.001,       1,          1000,       0.219969,     0.879877,      1.75975,       35.191,      56.3121,       56.3121,      0.0353147,   61.0237  ],
-	"milliliter":	   [10,    0.000264172, 0.00105669, 0.00211338, 0.00422675, 0.033814, 0.067628, 0.202884, 1e-6,        0.001,      1,          0.000219969,  0.000879877,   0.00175975,    0.0351951,   0.0563121,     0.168936,     3.5315e-5,   0.0610237],
-	"imperial gallon": [11,    1.20095,     4.8038,     9.6076,     19.2152,    153.722,  307.443,  922.33,   0.00454609,  4.54609,    4546.09,    1,            4,             8,             160,         256,           768,          0.160544,    277.42   ],
-	"imperial quart":  [12,    0.300238,    1.20095,    2.4019,     4.8038,     38.4304,  76.8608,  230.582,  0.00113652,  1.13652,    1136.52,    0.25,         1,             2,             40,          64,            192,          0.0401359,   69.3549  ],
-	"imperial pint":   [13,    0.150119,    0.600475,   1.20095,    2.4019,     19.2152,  38.4304,  115.291,  0.000568261, 0.568261,   568.261,    0.125,        0.5,           1,             20,          32,            96,           0.020068,    34.6774  ],
-	"imperial ounce":	   [14,    0.00750594,  0.0300238,  0.0600475,  0.120095,   0.96076,  1.92152,  5.76456,  2.8413e-5,   0.0284131,  28.4131,    0.00625,      0.025,         0.05,          1,           1.6,           4.8,          0.0010034,   1.73387  ],
-	"imperial tbsp":   [15,    0.00469121,  0.0187649,  0.0375297,  0.0750594,  0.600475, 1.20095,  3.60285,  1.7758e-5,   0.0177582,  17.7582,    0.00390625,   0.015625,      0.03125,       0.625,       1,             3,            0.000627124, 1.08367  ],
-	"imperial tsp":    [16,    0.00156374,  0.00625495, 0.0125099,  0.0250198,  0.600475, 0.200158, 1.20095,  5.9194e-6,   0.00591939, 5.91939,    0.00130208,   0.00520833,    0.0104167,     0.208333,    0.333333,      1,            0.000209041, 0.361223 ],
-	"cubic foot":	   [17,    7.48052,     29.9221,    59.8442,    119.688,    957.506,  1915.01,  5745.04,  0.0283168,   28.3168,    28316.8,    6.22883,      24.9153,       49.8307,       996.613,     1594.58,       4783.74,      1,           1728     ],
-	"cubic inch":	   [18,    0.004329,    0.017316,   0.034632,   0.0692641,  0.554113, 1.10823,  3.32468,  1.6387e-5,   0.0163871,  16.3871,    0.00360465,   0.0144186,     0.0288372,     0.576744,    0.92279,       2.76837,      0.000578704, 1        ]	 		
-}; 
-  
+    /* 	                index,tsp,  	tbsp,      	cubic inch			 ounce,    cup,       	pint,       quart,      		gallon,    		cubic foot,  	milliliter   liter,     cubic meter, imperial tsp, 	imperial tbsp,imperial ounce,  	imperial pint, 	imperial quart,	imperial gal, */
+    "tsp" :	           [1,    1,        0.333333,  	0.300781 ,			0.166667, 0.0208333, 	0.0104167,  0.00130208,  		0.00130208, 	0.000174063, 	4.92892,    0.00492892, 4.9289e-6,   0.832674,     	0.277558,      0.173474,    	 0.00867369,     0.00433684,    0.00108421 			],
+    "tbsp":	           [2,    3,        1,         	0.902344 ,			0.5,      0.0625,    	0.0312,     0.015625,    		0.00390625, 	0.00052219,  	14.7868,    0.0147868,  1.4787e-5,   2.49802,      	0.832674,      0.520421,    	 0.0260211,      0.0130105,     0.00325263  		],
+    "cubic inch":	   [3,    3.32468,  1.10823,  	1        ,			0.554113, 0.0692641, 	0.034632,   0.017316,    		0.004329,   	0.000578704, 	16.3871,    0.0163871,  1.6387e-5,   2.76837,      	0.92279,       0.576744,    	 0.0288372,      0.0144186,     0.00360465  		],
+    "ounce":	       [4,    6,        2,         	1.80469 , 			1,        0.125,     	0.0625,     0.0078125,   		0.0078125,  	0.00104438,  	29.5735,    0.0295735,  2.9574e-5,   4.99604,      	1.04084,       1.04084,     	 0.0520421,      0.0260211,     0.00650526  		],
+    "cup":	           [5,    48,     	16,        	14.4375 ,			8,        1,         	0.5,        0.25,        	 	0.0625,     	0.00835503,  	236.588,    0.236588,   0.000236588, 39.9683,      	13.3228,       8.32674,     	 0.416337,       0.208168,      0.0520421   		],
+    "pint":	           [6,    96,       32,        	28.875   ,			16,       2,         	1,          0.5,         		0.125,      	0.0167101,   	473.176,    0.473176,   0.000473176, 79.9367,     	26.6456,       16.6535,     	 0.832674,       0.416337,      0.104084    		],
+    "quart":	       [7,    192,     	64,       	57.75	 , 			32,       4,         	2,          1,           		0.25,       	0.0334201,  	946.353,    0.946353,   0.000946353, 159.873,      	53.2911,       33.307,      	 1.66535,        0.832674,      0.208168    		],
+    "gallon":	       [8,    768,      256,       	231 	  ,			128,      16,        	8,          4,           		1,          	0.133681,    	3785.41,    3.78541,    0.00378541,  639.494,      	213.165,       133.228,     	 6.66139,        3.3307,        0.832674    		],
+    "cubic foot":	   [9,    5745.04,  1915.01,   	1728    , 			957.506,  119.688,   	59.8442,    29.9221,     		7.48052,    	1,           	28316.8,    28.3168,    0.0283168,   4783.74,      	1594.58,       996.613,     	 49.8307,        24.9153,       6.22883     		],
+    "milliliter":	   [10,   0.202884, 0.067628,  	0.0610237,			0.033814, 0.00422675, 	0.00211338, 0.00105669,   		0.000264172,	3.5315e-5,   	1,         	0.001,      1e-6,        0.168936,     	0.0563121,     0.0351951,   	 0.00175975,     0.000879877,   0.000219969 		],
+    "liter":	       [11,   202.884,  67.628,    	61.0237  ,			33.814,   4.22675,    	2.11338,    1.05669,     		0.264172,   	0.0353147,   	1000,       1,          0.001,       56.3121,      	56.3121,       35.191,      	 1.75975,        0.879877,      0.219969  			],
+    "cubic meter":     [12,   202884,   67628,     	61023.7  ,			33814,    4226.75,  	2113.38,    1056.69,     		264.172,    	35.3147, 		1e+6,       1000,       1,           168936,        56312.1,        35195.1,     	  1759.75,        879.877,       219.969    	  	],
+    "imperial tsp":    [13,   1.20095, 	0.200158,  	0.361223 ,			0.600475, 0.0250198, 	0.0125099,  0.00625495,  		0.00156374, 	0.000209041,  	5.91939,    0.00591939, 5.9194e-6,   1,            	0.333333,      0.208333,    	 0.0104167,      0.00520833,    0.00130208  		],
+    "imperial tbsp":   [14,   3.60285,  1.20095,   	1.08367 , 			0.600475, 0.0750594, 	0.0375297,  0.0187649,   		0.00469121, 	0.000627124, 	17.7582,    0.0177582,  1.7758e-5,   3,            	1,             0.625,       	 0.03125,        0.015625,     0.00390625  		    ],
+    "imperial ounce":  [15,   5.76456,  1.92152,   	1.73387 , 			0.96076,  0.120095,  	0.0600475,  0.0300238,   		0.00750594, 	0.0010034,   	28.4131,    0.0284131,  2.8413e-5,   4.8,          	1.6,           1,           	 0.05,           0.025,         0.00625     		],
+    "imperial pint":   [16,   115.291,  38.4304,   	34.6774 , 			19.2152,  2.4019,    	1.20095,    0.600475,    		0.150119,   	0.020068,    	568.261,    0.568261,   0.000568261, 96,           	32,            20,          	 1,              0.5,           0.125       		],
+    "imperial quart":  [17,   230.582,  76.8608,   	69.3549 , 			38.4304,  4.8038,    	2.4019,     1.20095,     		0.300238,   	0.0401359,   	1136.52,    1.13652,    0.00113652,  192,          	64,            40,          	 2,              1,             0.25        		],
+    "imperial gallon": [18,   922.33,   307.443,   	277.42  , 			153.722,  19.2152,   	9.6076,     4.8038,      		1.20095,    	0.160544,    	4546.09,    4.54609,    0.00454609,  768,          	256,           160,         	 8,              4,             1           		]
+};
+
 ilib.Measurement.Volume.prototype = new ilib.Measurement({});
 ilib.Measurement.Volume.prototype.parent = ilib.Measurement;
 ilib.Measurement.Volume.prototype.constructor = ilib.Measurement.Volume;
@@ -21266,6 +21347,49 @@ ilib.Measurement.Volume.getMeasures = function () {
 	}
 	return ret;
 };
+ilib.Measurement.Volume.metricSystem	= {"milliliter":10, "liter":11,"cubic meter":12};
+ilib.Measurement.Volume.imperialSystem	= {"imperial tsp":13,"imperial tbsp":14,"imperial ounce":15,"imperial pint":16,"imperial quart":17,"imperial gallon":18};
+ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"ounce":4,"cup":5,"pint":6,"quart":7,"gallon":8,"cubic foot":9};
+
+
+/**
+ * Sclae the current volume.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
+    var fromRow = ilib.Measurement.Volume.ratios[this.unit];
+    var mSystem;
+
+    if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Volume.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Volume.metricSystem;
+    }
+
+    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Volume.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Volume.uscustomarySystem;
+    }
+    else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Volume.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Volume.imperialSystem;
+    }
+
+    var volume;
+    var munit;
+
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        volume = tmp;
+        munit = m;
+    }
+
+    this.amount = volume;
+    this.unit = munit;
+};
+
+
 
 //register with the factory method
 ilib.Measurement._constructors["volume"] = ilib.Measurement.Volume;
