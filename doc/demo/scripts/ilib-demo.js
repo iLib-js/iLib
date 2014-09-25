@@ -19014,19 +19014,21 @@ ilib.Measurement.prototype = {
 	 */
 	convert: function(to) {},     
         
-        /**
-	 * Return a new measurement instance that is scaled to a new
-	 * measurement unit. Measurements can only be scaled
-	 * to measurements of the same type.<p>
+    /**
+	 * Scale the measurement unit to an acceptable level. The scaling
+	 * happens so that the integer part of the amount is as small as
+	 * possible without being below zero. This will result in the 
+	 * largest units that can represent this measurement without
+	 * fractions. Measurements can only be scaled to other measurements 
+	 * of the same type.
 	 * 
 	 * @abstract
-	 * @param {ilib.Measurement} unit measurement to be scaled
-         * @param {String} measurementsystem used (uscustomary|imperial|metric)
-	 * @return {ilib.Measurement|undefined} the converted measurement
-	 * or undefined if the requested units are for a different
-	 * measurement type
+	 * @param {string=} measurementsystem used (uscustomary|imperial|metric)
+	 * or undefined if the system can be inferred from the current measure
+	 * @return {ilib.Measurement} a new instance that is scaled to the 
+	 * right level
 	 */
-	scale: function(unit, measurementsystem) {}     
+	scale: function(measurementsystem) {}     
 };
 
 /*
@@ -19354,23 +19356,23 @@ ilib.Measurement.Length.ratios = {
 	"micrometer":   [ 1,   1,           1e-3,        1e-4,        3.93701e-5,  1e-5,        3.28084e-6,   1.09361e-6,   1e-6,         1e-7,          1e-8,           1e-9,           6.21373e-10,  5.39957e-10,  1e-12,          1e-15           ],
 	"millimeter":   [ 2,   1000,        1,           0.1,         0.0393701,   0.01,        0.00328084,   1.09361e-3,   0.001,        1e-4,          1e-5,           1e-6,           6.21373e-7,   5.39957e-7,   1e-9,           1e-12           ],
 	"centimeter":   [ 3,   1e4,         10,          1,           0.393701,    0.1,         0.0328084,    0.0109361,    0.01,         0.001,         1e-4,           1e-5,           6.21373e-6,   5.39957e-6,   1e-8,           1e-9            ],
-        "inch":         [ 4,   25399.986,   25.399986,   2.5399986,   1,           0.25399986,  0.083333333,  0.027777778,  0.025399986,  2.5399986e-3,  2.5399986e-4,   2.5399986e-5,   1.5783e-5,    1.3715e-5,    2.5399986e-8,   2.5399986e-11   ],
-        "decimeter":    [ 5,   1e5,         100,         10,          3.93701,     1,           0.328084,     0.109361,     0.1,          0.01,          0.001,          1e-4,           6.21373e-5,   5.39957e-5,   1e-7,           1e-8            ],
-        "foot":         [ 6,   304799.99,   304.79999,   30.479999,   12,          3.0479999,   1,            0.33333333,   0.30479999,   0.030479999,   3.0479999e-3,   3.0479999e-4,   1.89394e-4,   1.64579e-4,   3.0479999e-7,   3.0479999e-10   ],
-        "yard":         [ 7,   914402.758,  914.402758,  91.4402758,  36,          9.14402758,  3,            1,            0.914402758,  0.0914402758,  9.14402758e-3,  9.14402758e-4,  5.68182e-4,   4.93737e-4,   9.14402758e-7,  9.14402758e-10  ],
+    "inch":         [ 4,   25399.986,   25.399986,   2.5399986,   1,           0.25399986,  0.083333333,  0.027777778,  0.025399986,  2.5399986e-3,  2.5399986e-4,   2.5399986e-5,   1.5783e-5,    1.3715e-5,    2.5399986e-8,   2.5399986e-11   ],
+    "decimeter":    [ 5,   1e5,         100,         10,          3.93701,     1,           0.328084,     0.109361,     0.1,          0.01,          0.001,          1e-4,           6.21373e-5,   5.39957e-5,   1e-7,           1e-8            ],
+    "foot":         [ 6,   304799.99,   304.79999,   30.479999,   12,          3.0479999,   1,            0.33333333,   0.30479999,   0.030479999,   3.0479999e-3,   3.0479999e-4,   1.89394e-4,   1.64579e-4,   3.0479999e-7,   3.0479999e-10   ],
+    "yard":         [ 7,   914402.758,  914.402758,  91.4402758,  36,          9.14402758,  3,            1,            0.914402758,  0.0914402758,  9.14402758e-3,  9.14402758e-4,  5.68182e-4,   4.93737e-4,   9.14402758e-7,  9.14402758e-10  ],
 	"meter":        [ 8,   1e6,         1000,        100,         39.3701,     10,          3.28084,      1.09361,      1,            0.1,           0.01,           0.001,          6.213712e-4,  5.39957e-4,   1e-6,           1e-7            ],
 	"decameter":    [ 9,   1e7,         1e4,         1000,        393.701,     100,         32.8084,      10.9361,      10,           1,             0.1,            0.01,           6.21373e-3,   5.39957e-3,   1e-5,           1e-6            ],
 	"hectometer":   [ 10,  1e8,         1e5,         1e4,         3937.01,     1000,        328.084,      109.361,      100,          10,            1,              0.1,            0.0621373,    0.0539957,    1e-4,           1e-5            ],
 	"kilometer":    [ 11,  1e9,         1e6,         1e5,         39370.1,     1e4,         3280.84,      1093.61,      1000,         100,           10,             1,              0.621373,     0.539957,     0.001,          1e-4            ],
-        "mile":         [ 12,  1.60934e9,   1.60934e6,   1.60934e5,   63360,       1.60934e4,   5280,         1760,         1609.34,      160.934,       16.0934,        1.60934,        1,            0.868976,     1.60934e-3,     1.60934e-6      ],
-        "nauticalmile": [ 13,  1.852e9,     1.852e6,     1.852e5,     72913.4,     1.852e4,     6076.12,      2025.37,      1852,         185.2,         18.52,          1.852,          1.15078,      1,            1.852e-3,       1.852e-6        ],
+    "mile":         [ 12,  1.60934e9,   1.60934e6,   1.60934e5,   63360,       1.60934e4,   5280,         1760,         1609.34,      160.934,       16.0934,        1.60934,        1,            0.868976,     1.60934e-3,     1.60934e-6      ],
+    "nauticalmile": [ 13,  1.852e9,     1.852e6,     1.852e5,     72913.4,     1.852e4,     6076.12,      2025.37,      1852,         185.2,         18.52,          1.852,          1.15078,      1,            1.852e-3,       1.852e-6        ],
 	"megameter":    [ 14,  1e12,        1e9,         1e6,         3.93701e7,   1e5,         3.28084e6,    1.09361e6,    1e4,          1000,          100,            10,             621.373,      539.957,      1,              0.001           ],        
-        "gigameter":    [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]	
+    "gigameter":    [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]	
 };
 
 ilib.Measurement.Length.metricSystem      = {"micrometer":1,"millimeter":2,"centimeter":3,"decimeter":5,"meter":8,"decameter":9,"hectometer":10,"kilometer":11,"megameter":14,"gigameter":15}; 
 ilib.Measurement.Length.imperialSystem    = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
-ilib.Measurement.Length.uscustomerySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
+ilib.Measurement.Length.uscustomarySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
 
 ilib.Measurement.Length.prototype = new ilib.Measurement({});
 ilib.Measurement.Length.prototype.parent = ilib.Measurement;
@@ -19399,34 +19401,45 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 };
 
 /**
- * Sclae the current length.
+ * Scale the current length.
  * 
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
-        var fromRow = ilib.Measurement.Length.ratios[this.unit];
-        var mSystem;
-        
-        if (measurementsystem === "metric")
-            mSystem = ilib.Measurement.Length.metricSystem;
-        if (measurementsystem === "imperial")
-            mSystem = ilib.Measurement.Length.imperialSystem;
-        if (measurementsystem === "uscustomery")
-            mSystem = ilib.Measurement.Length.uscustomerySystem;
-        
-        var length;
-        var munit;
-        
-        for (var m in mSystem) {
-            var tmp = this.amount * fromRow[mSystem[m]];
-            if (tmp < 1) break;
-            //if ((this.amount > 1 && tmp < 1)||(this.amount < 1 && tmp > 1)) break;
-            length = tmp;
-            munit = m;
-        }
-        
-        this.amount = length;
-        this.unit = munit;
+    var mSystem;    
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Length.metricSystem;
+    } else
+    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Length.imperialSystem;
+    } else
+    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Length.uscustomarySystem;
+    } else {
+        return new ilib.Measurement.Length({
+		unit: this.unit,
+		amount: this.amount
+	});
+    }    
+    
+    var length;
+    var munit;
+    var fromRow = ilib.Measurement.Length.ratios[this.unit];
+    
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        length = tmp;
+        munit = m;
+    }
+    
+    return new ilib.Measurement.Length({
+	unit: munit,
+	amount: length
+    });
 };
 
 ilib.Measurement.Length.aliases = {
@@ -20647,17 +20660,17 @@ ilib.Measurement.Area = function (options) {
 };
 
 ilib.Measurement.Area.ratios = {
-	/*               index	square km, 	hectare,   square meter,  square mile, acre,	    square yard, square foot, square inch */ 
-	"square km":    [1,     1,	        100,       1e+6,          0.386102,    247.105,     1.196e+6,    1.076e+7,    1.55e+9 ],
-    "hectare":      [2,     0.01,       1,         10000,         0.00386102,  2.47105,     11959.9,     107639,      1.55e+7 ],
-    "square meter": [3,     1e-6,       1e-4,      1,             3.861e-7,    0.000247105, 1.19599,     10.7639,     1550    ],
-    "square mile":  [4,     2.58999,    258.999,   2.59e+6,       1,           640,         3.098e+6,    2.788e+7,    4.014e+9],
-    "acre":         [5,     0.00404686, 0.404686,  4046.86,       0.0015625,   1,           4840,        43560,       6.273e+6],
-    "square yard":  [6,     8.3613e-7,  8.3613e-5, 0.836127,      3.2283e-7,   0.000206612, 1,           9,           1296    ],
-    "square foot":  [7,     9.2903e-8,  9.2903e-6, 0.092903,      3.587e-8,    2.2957e-5,   0.111111,    1,           144     ],
-    "square inch":  [8,     6.4516e-10, 6.4516e-8, 0.00064516,    2.491e-10,   1.5942e-7,   0.000771605, 0.000771605, 1       ]
-}
+    /*               index	square meter,   hectare,   	square km, 	, square inch 	square foot, 	square yard, 	  	  		acre,			square mile			        */
+    "square meter": [1,   	1,              1e-4,       1e-6,         1550,    	 	10.7639,    	  	1.19599,   				0.000247105,	3.861e-7     	    ],
+    "hectare":      [2,   	10000,          1,          0.01,         1.55e+7, 	  	107639,     	 	11959.9,   				2.47105	,		0.00386102    	    ],
+    "square km":    [3,   	1e+6,           100,        1,	          1.55e+9, 	  	1.076e+7,   	 	1.196e+6,  				247.105 ,   	0.386102     	    ],
+    "square inch":  [4,   	0.00064516,     6.4516e-8,  6.4516e-10,   1,			0.000771605,	  	0.0007716051, 			1.5942e-7,		2.491e-10    	    ],
+    "square foot":  [5,   	0.092903,       9.2903e-6,  9.2903e-8,    144,			1,          	  	0.111111,  				2.2957e-5,		3.587e-8    		],
+    "square yard":  [6,   	0.836127,       8.3613e-5,  8.3613e-7,    1296,    	  	9,          	  	1,         				0.000206612,	3.2283e-7    	    ],
+    "acre":         [7,   	4046.86,        0.404686,   0.00404686,   6.273e+6,	  	43560,      	  	4840,      				1,		    	0.0015625    	    ],
+    "square mile":  [8,   	2.59e+6,        258.999,    2.58999,      4.014e+9,	 	2.788e+7,   	  	3.098e+6,  				640,     		1   	     		]
 
+}
 ilib.Measurement.Area.prototype = new ilib.Measurement({});
 ilib.Measurement.Area.prototype.parent = ilib.Measurement;
 ilib.Measurement.Area.prototype.constructor = ilib.Measurement.Area;
@@ -20766,6 +20779,46 @@ ilib.Measurement.Area.getMeasures = function () {
 	}
 	return ret;
 };
+
+ilib.Measurement.Area.metricSystem      = {"square meter":1,"hectare":2,"square km":3};
+ilib.Measurement.Area.imperialSystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+ilib.Measurement.Area.uscustomarySystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+
+
+/**
+ * Sclae the current area.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
+    var fromRow = ilib.Measurement.Area.ratios[this.unit];
+    var mSystem;
+
+    if (measurementsystem === "metric")
+        mSystem = ilib.Measurement.Area.metricSystem;
+
+    else  if (measurementsystem === "uscustomary")
+        mSystem = ilib.Measurement.Area.uscustomarySystem;
+
+    else if (measurementsystem === "imperial")
+        mSystem = ilib.Measurement.Area.imperialSystem;
+    
+    var area;
+    var munit;
+
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        area = tmp;
+        munit = m;
+    }
+
+    this.amount = area;
+    this.unit = munit;
+};
+
+
+
 
 //register with the factory method
 ilib.Measurement._constructors["area"] = ilib.Measurement.Area;

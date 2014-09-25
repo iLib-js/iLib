@@ -122,7 +122,7 @@ function testLengthScale1() {
 		amount: 1000
 	});
 
-	m.scale("metric");
+	m = m.scale("metric");
 
 	assertEquals(1, m.amount);
 	assertEquals("meter", m.unit);
@@ -134,7 +134,7 @@ function testLengthScale2() {
 		amount: 0.001
 	});
 
-	m.scale("metric");
+	m = m.scale("metric");
 
 	assertEquals(1, m.amount);
 	assertEquals("millimeter", m.unit);
@@ -142,13 +142,13 @@ function testLengthScale2() {
 
 function testLengthScale3() {
 	var m = new ilib.Measurement.Length({
-		unit: "mm",
-		amount: 3000
+		unit: "inch",
+		amount: 2000
 	});
 
-	m.scale("imperial");
+	m = m.scale("imperial");
 
-	assertRoughlyEquals(3.28084, m.amount, 0.00001);
+	assertRoughlyEquals(55.55556, m.amount, 0.00001);
 	assertEquals("yard", m.unit);
 }
 
@@ -158,7 +158,7 @@ function testLengthScale4() {
 		amount: 0.003
 	});
 
-	m.scale("imperial");
+	m = m.scale("imperial");
 
 	assertEquals(5.28, m.amount);
 	assertEquals("yard", m.unit);
@@ -170,7 +170,7 @@ function testLengthScale5() {
 		amount: 200000
 	});
 
-	m.scale("uscustomary");
+	m = m.scale("uscustomary");
 
 	assertRoughlyEquals(2.743, m.amount, 0.001)
 	assertEquals("nauticalmile", m.unit);
@@ -182,7 +182,7 @@ function testLengthScale6() {
 		amount: 0.00002
 	});
 
-	m.scale("uscustomary");
+	m = m.scale("uscustomary");
 
 	assertRoughlyEquals(1.458268, m.amount, 0.000001)
 	assertEquals("inch", m.unit);
@@ -194,10 +194,58 @@ function testLengthScale7() {
 		amount: 8
 	});
 
-	m.scale("metric");
+	m = m.scale("metric");
 
 	assertEquals(8, m.amount);
 	assertEquals("decimeter", m.unit);
+}
+
+function testLengthScale8() {
+	var m = new ilib.Measurement.Length({
+		unit: "mm",
+		amount: 1000
+	});
+
+	m = m.scale();
+
+	assertEquals(1, m.amount);
+	assertEquals("meter", m.unit);
+}
+
+function testLengthScale9() {
+	var m = new ilib.Measurement.Length({
+		unit: "m",
+		amount: 0.001
+	});
+
+	m = m.scale();
+
+	assertEquals(1, m.amount);
+	assertEquals("millimeter", m.unit);
+}
+
+function testLengthScale10() {
+	var m = new ilib.Measurement.Length({
+		unit: "inch",
+		amount: 200000
+	});
+
+	m = m.scale();
+
+	assertRoughlyEquals(2.743, m.amount, 0.001)
+	assertEquals("nauticalmile", m.unit);
+}
+
+function testLengthScale11() {
+	var m = new ilib.Measurement.Length({
+		unit: "nauticalmile",
+		amount: 0.00002
+	});
+
+	m = m.scale();
+
+	assertRoughlyEquals(1.458268, m.amount, 0.000001)
+	assertEquals("inch", m.unit);
 }
 
 function testLengthGetMeasures() {

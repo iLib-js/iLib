@@ -112,21 +112,28 @@ ilib.Measurement.Length.prototype.convert = function(to) {
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
-    var fromRow = ilib.Measurement.Length.ratios[this.unit];
-    var mSystem;
-    
-    if (measurementsystem === "metric") {
+    var mSystem;    
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.metricSystem;
-    }
-    if (measurementsystem === "imperial") {
+    } else
+    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.imperialSystem;
-    }
-    if (measurementsystem === "uscustomary") {
+    } else
+    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Length.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.uscustomarySystem;
-    }
+    } else {
+        return new ilib.Measurement.Length({
+		unit: this.unit,
+		amount: this.amount
+	});
+    }    
     
     var length;
     var munit;
+    var fromRow = ilib.Measurement.Length.ratios[this.unit];
     
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
@@ -135,8 +142,10 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
         munit = m;
     }
     
-    this.amount = length;
-    this.unit = munit;
+    return new ilib.Measurement.Length({
+	unit: munit,
+	amount: length
+    });
 };
 
 ilib.Measurement.Length.aliases = {
