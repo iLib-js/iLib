@@ -78,7 +78,7 @@ ilib.Measurement.Length.ratios = {
 
 ilib.Measurement.Length.metricSystem      = {"micrometer":1,"millimeter":2,"centimeter":3,"decimeter":5,"meter":8,"decameter":9,"hectometer":10,"kilometer":11,"megameter":14,"gigameter":15}; 
 ilib.Measurement.Length.imperialSystem    = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
-ilib.Measurement.Length.uscustomerySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
+ilib.Measurement.Length.uscustomarySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
 
 ilib.Measurement.Length.prototype = new ilib.Measurement({});
 ilib.Measurement.Length.prototype.parent = ilib.Measurement;
@@ -119,8 +119,8 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
             mSystem = ilib.Measurement.Length.metricSystem;
         if (measurementsystem === "imperial")
             mSystem = ilib.Measurement.Length.imperialSystem;
-        if (measurementsystem === "uscustomery")
-            mSystem = ilib.Measurement.Length.uscustomerySystem;
+        if (measurementsystem === "uscustomary")
+            mSystem = ilib.Measurement.Length.uscustomarySystem;
         
         var length;
         var munit;
