@@ -192,15 +192,21 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];
     var mSystem;
 
-    if (measurementsystem === "metric")
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.metricSystem;
+    }
 
-    else  if (measurementsystem === "uscustomary")
+    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.uscustomarySystem;
+    }
 
-    else if (measurementsystem === "imperial")
+    else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.imperialSystem;
-    
+    }
+
     var area;
     var munit;
 

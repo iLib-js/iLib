@@ -640,7 +640,71 @@ function testVolumeStaticConvert335() {
 	assertRoughlyEquals(3.46774, m,0.1);
 }
 
+function testVolumeStaticConvert351() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "tsp",
+        amount: 1000
+    });
+    m1.scale("uscustomary");
 
+    assertRoughlyEquals(1.30208, m1.amount, 0.00001);
+    assertEquals("gallon", m1.unit);
+}
+
+function testVolumeStaticConvert352() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "Milliliter",
+        amount: 1500
+    });
+    m1.scale("metric");
+
+    assertEquals(1.5, m1.amount);
+    assertEquals("liter", m1.unit);
+}
+
+function testVolumeStaticConvert353() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "imperial ounce",
+        amount: 1500
+    });
+    m1.scale("imperial");
+
+    assertRoughlyEquals(9.375, m1.amount,0.01);
+    assertEquals("imperial gallon", m1.unit);
+}
+
+function testVolumeStaticConvert354() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "imperial gallon",
+        amount: 100
+    });
+    m1.scale("imperial");
+
+    assertRoughlyEquals(100, m1.amount,0.01);
+    assertEquals("imperial gallon", m1.unit);
+}
+
+function testVolumeStaticConvert355() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "ounce",
+        amount: 1500
+    });
+    m1.scale("uscustomary");
+
+    assertRoughlyEquals(1.566569, m1.amount,0.000001);
+    assertEquals("cubic foot", m1.unit);
+}
+
+function testVolumeStaticConvert356() {
+    var m1 = new ilib.Measurement.Volume({
+        unit: "liter",
+        amount: 1570
+    });
+    m1.scale("metric");
+
+    assertRoughlyEquals(1.57, m1.amount,0.01);
+    assertEquals("cubic meter", m1.unit);
+}
 function testVolumeGetMeasures() {
 	var measures = ilib.Measurement.Volume.getMeasures();
 	var expected = [

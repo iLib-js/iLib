@@ -121,8 +121,8 @@ function testAreaStaticConvert12() {
 
 function testAreaStaticConvert13() {
 	var m = ilib.Measurement.Area.convert( "square yard","square inch", 2.0);
-	
-	assertEquals(0.00154321, m);
+
+    assertRoughlyEquals(0.00154321, m, 00000001);
 }
 function testAreaStaticConvert14() {
 	var m = ilib.Measurement.Area.convert( "acre", "square foot",2.0);
