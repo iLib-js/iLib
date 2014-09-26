@@ -131,9 +131,9 @@ function testMeasurementConstructorLengths() {
 
 function testMeasurementConstructorSpeeds() {
 	var measures = [
-    	"feet/sec",
-    	"meters/sec",
-    	"km/hour",
+    	"feet/second",
+    	"meters/second",
+    	"kilometer/hour",
     	"miles/hour",
     	"knot"    	
 	];

@@ -31,7 +31,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Speed = function (options) {
-	this.unit = "meters/sec";
+	this.unit = "meters/second";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Speed.aliases; // share this table in all instances
 	
@@ -58,17 +58,17 @@ ilib.Measurement.Speed = function (options) {
 };
 
 ilib.Measurement.Speed.ratios = {
-	/*                index, f/s          m/s        k/h          miles/h     knot  */           
-	"feet/sec":     [ 1,     1,          0.3048,     1.09728,     0.681818,   0.592484 ],  
-	"meters/sec":   [ 2,     3.28084,    1,          3.6,         2.236936,   1.94384  ],  
-	"km/hour":      [ 3,     0.911344,   0.277778,   1,           0.621371,   0.539957 ],
-	"miles/hour":   [ 4,     1.46667,    0.44704,    1.60934,     1,          0.868976 ],
-	"knot":         [ 5,     1.68781,    0.514444,   1.852,       1.15078,    1        ]
+	/*                index, f/s     m/s           k/h       miles/h    knot  */           
+	"feet/second":     [ 1,  1,         0.3048,    1.09728,  0.681818,  0.592484 ],  
+	"meters/second":   [ 2,  3.28084,   1,         3.6,      2.236936,  1.94384  ],  
+	"kilometer/hour":  [ 3,  0.911344,  0.277778,  1,        0.621371,  0.539957 ],
+	"miles/hour":      [ 4,  1.46667,   0.44704,   1.60934,  1,         0.868976 ],
+	"knot":            [ 5,  1.68781,   0.514444,  1.852,    1.15078,   1        ]
 };
 
-ilib.Measurement.Speed.metricSystem      = {"meters/sec":2,"km/hour":3};
-ilib.Measurement.Speed.imperialSystem    = {"feet/sec":1,"miles/hour":4,"knot":5};
-ilib.Measurement.Speed.uscustomarySystem = {"feet/sec":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.metricSystem      = {"meters/second":2,"kilometer/hour":3};
+ilib.Measurement.Speed.imperialSystem    = {"feet/second":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.uscustomarySystem = {"feet/second":1,"miles/hour":4,"knot":5};
 
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
@@ -121,13 +121,13 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 	});
     }
     
-    var speed;
+    var speed = 0;
     var munit;
     var fromRow = ilib.Measurement.Speed.ratios[this.unit];
     
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
+        if (tmp < 1 && speed !== 0) break;
         speed = tmp;
         munit = m;
     }
@@ -139,33 +139,36 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 };
 
 ilib.Measurement.Speed.aliases = {
-    "foot/sec":"feet/sec",
-    "foot/s":"feet/sec",
-    "feet/s":"feet/sec",
-    "f/s":"feet/sec",
-    "feet/sec" : "feet/sec",
-    "meter/sec":"meters/sec",
-    "meter/s":"meters/sec",
-    "meters/s":"meters/sec",
-    "metre/sec":"meters/sec",
-    "metre/s":"meters/sec",
-    "metres/s":"meters/sec",
-    "mt/sec":"meters/sec",
-    "m/sec":"meters/sec",
-    "mt/s":"meters/sec",
-    "m/s":"meters/sec",
-    "mps":"meters/sec",
-    "meters/sec":"meters/sec",
-    "kilometer/hour":"km/hour",
-    "kilometers/hour":"km/hour",
-    "kmh":"km/hour",
-    "km/h":"km/hour",
-    "kilometer/h":"km/hour",
-    "kilometers/h":"km/hour",
-    "km/hr":"km/hour",
-    "kilometer/hr":"km/hour",
-    "kilometers/hr":"km/hour",
-    "km/hour":"km/hour",
+    "foot/sec":"feet/second",
+    "foot/s":"feet/second",
+    "feet/s":"feet/second",
+    "f/s":"feet/second",
+    "feet/second" : "feet/second",
+    "feet/sec" : "feet/second",
+    "meter/sec":"meters/second",
+    "meter/s":"meters/second",
+    "meters/s":"meters/second",
+    "metre/sec":"meters/second",
+    "metre/s":"meters/second",
+    "metres/s":"meters/second",
+    "mt/sec":"meters/second",
+    "m/sec":"meters/second",
+    "mt/s":"meters/second",
+    "m/s":"meters/second",
+    "mps":"meters/second",
+    "meters/second":"meters/second",
+    "meters/sec":"meters/second",
+    "kilometer/hour":"kilometer/hour",
+    "km/hour":"kilometer/hour",
+    "kilometers/hour":"kilometer/hour",
+    "kmh":"kilometer/hour",
+    "km/h":"kilometer/hour",
+    "kilometer/h":"kilometer/hour",
+    "kilometers/h":"kilometer/hour",
+    "km/hr":"kilometer/hour",
+    "kilometer/hr":"kilometer/hour",
+    "kilometers/hr":"kilometer/hour",
+    "kilometre/hour":"kilometer/hour",
     "mph": "miles/hour",
     "mile/hour": "miles/hour",
     "mile/hr": "miles/hour",

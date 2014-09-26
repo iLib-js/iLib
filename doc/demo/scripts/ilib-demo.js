@@ -19574,7 +19574,7 @@ ilibglobal.js
  * the construction of this instance
  */
 ilib.Measurement.Speed = function (options) {
-	this.unit = "meters/sec";
+	this.unit = "meters/second";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Speed.aliases; // share this table in all instances
 	
@@ -19601,17 +19601,17 @@ ilib.Measurement.Speed = function (options) {
 };
 
 ilib.Measurement.Speed.ratios = {
-	/*                index, f/s          m/s        k/h          miles/h     knot  */           
-	"feet/sec":     [ 1,     1,          0.3048,     1.09728,     0.681818,   0.592484 ],  
-	"meters/sec":   [ 2,     3.28084,    1,          3.6,         2.236936,   1.94384  ],  
-	"km/hour":      [ 3,     0.911344,   0.277778,   1,           0.621371,   0.539957 ],
-	"miles/hour":   [ 4,     1.46667,    0.44704,    1.60934,     1,          0.868976 ],
-	"knot":         [ 5,     1.68781,    0.514444,   1.852,       1.15078,    1        ]
+	/*                index, f/s     m/s           k/h       miles/h    knot  */           
+	"feet/second":     [ 1,  1,         0.3048,    1.09728,  0.681818,  0.592484 ],  
+	"meters/second":   [ 2,  3.28084,   1,         3.6,      2.236936,  1.94384  ],  
+	"kilometer/hour":  [ 3,  0.911344,  0.277778,  1,        0.621371,  0.539957 ],
+	"miles/hour":      [ 4,  1.46667,   0.44704,   1.60934,  1,         0.868976 ],
+	"knot":            [ 5,  1.68781,   0.514444,  1.852,    1.15078,   1        ]
 };
 
-ilib.Measurement.Speed.metricSystem      = {"meters/sec":2,"km/hour":3};
-ilib.Measurement.Speed.imperialSystem    = {"feet/sec":1,"miles/hour":4,"knot":5};
-ilib.Measurement.Speed.uscustomarySystem = {"feet/sec":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.metricSystem      = {"meters/second":2,"kilometer/hour":3};
+ilib.Measurement.Speed.imperialSystem    = {"feet/second":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.uscustomarySystem = {"feet/second":1,"miles/hour":4,"knot":5};
 
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
@@ -19664,13 +19664,13 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 	});
     }
     
-    var speed;
+    var speed = 0;
     var munit;
     var fromRow = ilib.Measurement.Speed.ratios[this.unit];
     
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
+        if (tmp < 1 && speed !== 0) break;
         speed = tmp;
         munit = m;
     }
@@ -19682,33 +19682,36 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 };
 
 ilib.Measurement.Speed.aliases = {
-    "foot/sec":"feet/sec",
-    "foot/s":"feet/sec",
-    "feet/s":"feet/sec",
-    "f/s":"feet/sec",
-    "feet/sec" : "feet/sec",
-    "meter/sec":"meters/sec",
-    "meter/s":"meters/sec",
-    "meters/s":"meters/sec",
-    "metre/sec":"meters/sec",
-    "metre/s":"meters/sec",
-    "metres/s":"meters/sec",
-    "mt/sec":"meters/sec",
-    "m/sec":"meters/sec",
-    "mt/s":"meters/sec",
-    "m/s":"meters/sec",
-    "mps":"meters/sec",
-    "meters/sec":"meters/sec",
-    "kilometer/hour":"km/hour",
-    "kilometers/hour":"km/hour",
-    "kmh":"km/hour",
-    "km/h":"km/hour",
-    "kilometer/h":"km/hour",
-    "kilometers/h":"km/hour",
-    "km/hr":"km/hour",
-    "kilometer/hr":"km/hour",
-    "kilometers/hr":"km/hour",
-    "km/hour":"km/hour",
+    "foot/sec":"feet/second",
+    "foot/s":"feet/second",
+    "feet/s":"feet/second",
+    "f/s":"feet/second",
+    "feet/second" : "feet/second",
+    "feet/sec" : "feet/second",
+    "meter/sec":"meters/second",
+    "meter/s":"meters/second",
+    "meters/s":"meters/second",
+    "metre/sec":"meters/second",
+    "metre/s":"meters/second",
+    "metres/s":"meters/second",
+    "mt/sec":"meters/second",
+    "m/sec":"meters/second",
+    "mt/s":"meters/second",
+    "m/s":"meters/second",
+    "mps":"meters/second",
+    "meters/second":"meters/second",
+    "meters/sec":"meters/second",
+    "kilometer/hour":"kilometer/hour",
+    "km/hour":"kilometer/hour",
+    "kilometers/hour":"kilometer/hour",
+    "kmh":"kilometer/hour",
+    "km/h":"kilometer/hour",
+    "kilometer/h":"kilometer/hour",
+    "kilometers/h":"kilometer/hour",
+    "km/hr":"kilometer/hour",
+    "kilometer/hr":"kilometer/hour",
+    "kilometers/hr":"kilometer/hour",
+    "kilometre/hour":"kilometer/hour",
     "mph": "miles/hour",
     "mile/hour": "miles/hour",
     "mile/hr": "miles/hour",
@@ -19839,8 +19842,6 @@ ilib.Measurement.DigitalStorage.ratios = {
     "petabit":  [ 11,  1.125899907e15, 1.407374884e14, 1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,         131072,          1024,            128,             1,               0.125           ],
     "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ] 
 };
-
-ilib.Measurement.DigitalStorage.indexArr  = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 ilib.Measurement.DigitalStorage.prototype = new ilib.Measurement({});
 ilib.Measurement.DigitalStorage.prototype.parent = ilib.Measurement;
@@ -20465,6 +20466,31 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 };
 
 /**
+ * Scale the current Time and return it in new Time unit.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
+
+    var fromRow = ilib.Measurement.Time.ratios[this.unit];
+    var time;
+    var munit;
+    var i=1;
+
+    for (var m in ilib.Measurement.Time.ratios) {
+        var tmp = this.amount * fromRow[i];
+        if (tmp < 1) break;
+        time = tmp;
+        munit = m;
+        ++i
+    }
+
+    return new ilib.Measurement.Time({
+        unit: munit,
+        amount: time
+    });
+};
+/**
  * @private
  * @static
  */
@@ -20539,18 +20565,22 @@ ilib.Measurement.Mass = function (options) {
 };
 
 ilib.Measurement.Mass.ratios = {
-	/*             index  µg          mg         g          oz          lb           kg          st            sh ton       mt ton        ln ton      */           
-	"µg":          [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],  
-	"mg":          [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],  
-	"g":           [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
-	"oz":          [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
-	"lb":          [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
-        "kg":          [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
-        "st":          [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
+	/*             index  µg          mg         g          oz          lp           kg          st            sh ton       mt ton        ln ton      */           
+	"microgram":   [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],  
+	"milligram":   [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],  
+	"gram":        [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
+	"ounce":       [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
+	"pound":       [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
+        "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
+        "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
         "short ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
         "metric ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
         "long ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
+
+ilib.Measurement.Mass.metricSystem      = {"microgram":1,"milligram":2,"gram":3,"kilogram":6,"metric ton":9};
+ilib.Measurement.Mass.imperialSystem    = {"ounce":4,"pound":5,"stone":7,"long ton":10};
+ilib.Measurement.Mass.uscustomarySystem = {"ounce":4,"pound":5,"short ton":8};
 
 ilib.Measurement.Mass.prototype = new ilib.Measurement({});
 ilib.Measurement.Mass.prototype.parent = ilib.Measurement;
@@ -20579,48 +20609,49 @@ ilib.Measurement.Mass.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Mass.aliases = {
-    "µg":"µg",
-    "mcg":"µg",  
-    "mg":"mg",
-    "milligram":"mg",
-    "milligrams":"mg",
-    "Milligram":"mg",
-    "Milligrams":"mg",
-    "MilliGram":"mg",
-    "MilliGrams":"mg",
-    "g":"g",
-    "gram":"g",
-    "grams":"g",
-    "Gram":"g",
-    "Grams":"g",
-    "oz":"oz",
-    "ounce":"oz",
-    "Ounce":"oz",
-    "℥":"oz",
-    "lb":"lb",
-    "lbm":"lb",
-    "℔":"lb",
-    "pound":"lb",
-    "pounds":"lb",
-    "Pound":"lb",
-    "Pounds":"lb",
-    "kg":"kg",
-    "kilogram":"kg",
-    "kilograms":"kg",
-    "kilo grams":"kg",
-    "kilo gram":"kg",
-    "Kilogram":"kg",    
-    "Kilograms":"kg",
-    "KiloGram":"kg",
-    "KiloGrams":"kg",
-    "Kilo gram":"kg",
-    "Kilo grams":"kg",
-    "Kilo Gram":"kg",
-    "Kilo Grams":"kg",
-    "st":"st",
-    "stone":"st",
-    "stones":"st",
-    "Stone":"st",
+    "µg":"microgram",
+    "microgram":"microgram",
+    "mcg":"microgram",  
+    "milligram":"milligram",
+    "mg":"milligram",
+    "milligrams":"milligram",
+    "Milligram":"milligram",
+    "Milligrams":"milligram",
+    "MilliGram":"milligram",
+    "MilliGrams":"milligram",
+    "g":"gram",
+    "gram":"gram",
+    "grams":"gram",
+    "Gram":"gram",
+    "Grams":"gram",
+    "ounce":"ounce",
+    "oz":"ounce",
+    "Ounce":"ounce",
+    "℥":"ounce",
+    "pound":"pound",
+    "poundm":"pound",
+    "℔":"pound",
+    "lb":"pound",
+    "pounds":"pound",
+    "Pound":"pound",
+    "Pounds":"pound",
+    "kilogram":"kilogram",
+    "kg":"kilogram",
+    "kilograms":"kilogram",
+    "kilo grams":"kilogram",
+    "kilo gram":"kilogram",
+    "Kilogram":"kilogram",    
+    "Kilograms":"kilogram",
+    "KiloGram":"kilogram",
+    "KiloGrams":"kilogram",
+    "Kilo gram":"kilogram",
+    "Kilo grams":"kilogram",
+    "Kilo Gram":"kilogram",
+    "Kilo Grams":"kilogram",
+    "stone":"stone",
+    "st":"stone",
+    "stones":"stone",
+    "Stone":"stone",
     "short ton":"short ton",
     "Short ton":"short ton",
     "Short Ton":"short ton",
@@ -20657,6 +20688,48 @@ ilib.Measurement.Mass.convert = function(to, from, mass) {
         return undefined;
     }	
     return mass * fromRow[toRow[0]];    
+};
+
+/**
+ * Scale the current mass and return it in new mass unit.
+ * 
+ * @inheritDoc
+ */
+ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
+    var mSystem;    
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Mass.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Mass.metricSystem;
+    } else
+    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Mass.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Mass.imperialSystem;
+    } else
+    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+            && typeof(ilib.Measurement.Mass.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Mass.uscustomarySystem;
+    } else {
+        return new ilib.Measurement.Mass({
+		unit: this.unit,
+		amount: this.amount
+	});
+    }    
+    
+    var mass;
+    var munit;
+    var fromRow = ilib.Measurement.Mass.ratios[this.unit];
+    
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        mass = tmp;
+        munit = m;
+    }
+    
+    return new ilib.Measurement.Mass({
+	unit: munit,
+	amount: mass
+    });
 };
 
 /**
@@ -20893,8 +20966,10 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
         munit = m;
     }
 
-    this.amount = area;
-    this.unit = munit;
+    return new ilib.Measurement.Area({
+        unit: munit,
+        amount: area
+    });
 };
 
 
@@ -21385,8 +21460,10 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
         munit = m;
     }
 
-    this.amount = volume;
-    this.unit = munit;
+    return new ilib.Measurement.Volume({
+        unit: munit,
+        amount: volume
+    });
 };
 
 

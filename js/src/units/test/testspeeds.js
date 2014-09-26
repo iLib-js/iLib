@@ -72,12 +72,60 @@ function testSpeedStaticConvert4() {
 	assertRoughlyEquals(118.4968, m, 0.0001);
 }
 
+function testSpeedScale1() {
+	var m = new ilib.Measurement.Speed({
+		unit: "m/sec",
+		amount: 0.277778
+	});
+
+	m = m.scale("metric");
+
+        assertRoughlyEquals(1, m.amount, 0.1);
+	assertEquals("kilometer/hour", m.unit);
+}
+
+function testSpeedScale2() {
+	var m = new ilib.Measurement.Speed({
+		unit: "feet/sec",
+		amount: 60
+	});
+
+	m = m.scale("imperial");
+
+        assertRoughlyEquals(35.54904, m.amount, 0.0001);
+	assertEquals("knot", m.unit);
+}
+
+function testSpeedScale3() {
+	var m = new ilib.Measurement.Speed({
+		unit: "feet/sec",
+		amount: 1000
+	});
+
+	m = m.scale("imperial");
+
+        assertRoughlyEquals(592.484, m.amount, 0.001);
+	assertEquals("knot", m.unit);
+}
+
+function testSpeedScale4() {
+	var m = new ilib.Measurement.Speed({
+		unit: "feet/sec",
+		amount: 1000
+	});
+
+	m = m.scale("imperial");
+
+        assertRoughlyEquals(592.484, m.amount, 0.001);
+	assertEquals("knot", m.unit);
+}
+
 function testSpeedGetMeasures() {
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [
-    	"feet/sec",
-    	"meters/sec",
-    	"km/hour",
+    	"feet/second",
+    	"meters/second",
+    	"kilometer/hour",
     	"miles/hour",
     	"knot"    	
 	];	
