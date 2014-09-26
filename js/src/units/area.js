@@ -217,8 +217,10 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
         munit = m;
     }
 
-    this.amount = area;
-    this.unit = munit;
+    return new ilib.Measurement.Area({
+        unit: munit,
+        amount: area
+    });
 };
 
 

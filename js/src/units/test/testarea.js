@@ -151,10 +151,10 @@ function testAreaStaticConvert17() {
         unit: "square meter",
         amount: 100
     });
-    m1.scale("metric");
+    var m2 = m1.scale("metric");
 
-    assertEquals(100, m1.amount);
-    assertEquals("square meter", m1.unit);
+    assertEquals(100, m2.amount);
+    assertEquals("square meter", m2.unit);
 }
 
 function testAreaStaticConvert18() {
@@ -162,10 +162,10 @@ function testAreaStaticConvert18() {
         unit: "square inch",
         amount: 100
     });
-    m1.scale("uscustomary");
+    var m2 = m1.scale("uscustomary");
 
-    assertEquals(100, m1.amount);
-    assertEquals("square inch", m1.unit);
+    assertEquals(100, m2.amount);
+    assertEquals("square inch", m2.unit);
 }
 
 function testAreaStaticConvert19() {
@@ -173,10 +173,10 @@ function testAreaStaticConvert19() {
         unit: "square km",
         amount: 100
     });
-    m1.scale("metric");
+    var m2 = m1.scale("metric");
 
-    assertEquals(100, m1.amount);
-    assertEquals("square km", m1.unit);
+    assertEquals(100, m2.amount);
+    assertEquals("square km", m2.unit);
 }
 
 function testAreaStaticConvert20() {
@@ -184,10 +184,10 @@ function testAreaStaticConvert20() {
         unit: "acre",
         amount: 100
     });
-    m1.scale("uscustomary");
+    var m2 = m1.scale("uscustomary");
 
-    assertEquals(100, m1.amount);
-    assertEquals("acre", m1.unit);
+    assertEquals(100, m2.amount);
+    assertEquals("acre", m2.unit);
 }
 function testAreaGetMeasures() {
 	var measures = ilib.Measurement.Area.getMeasures();

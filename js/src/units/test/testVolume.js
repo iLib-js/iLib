@@ -645,10 +645,10 @@ function testVolumeStaticConvert351() {
         unit: "tsp",
         amount: 1000
     });
-    m1.scale("uscustomary");
+    var m2 = m1.scale("uscustomary");
 
-    assertRoughlyEquals(1.30208, m1.amount, 0.00001);
-    assertEquals("gallon", m1.unit);
+    assertRoughlyEquals(1.30208, m2.amount, 0.00001);
+    assertEquals("gallon", m2.unit);
 }
 
 function testVolumeStaticConvert352() {
@@ -656,10 +656,10 @@ function testVolumeStaticConvert352() {
         unit: "Milliliter",
         amount: 1500
     });
-    m1.scale("metric");
+    var m2 = m1.scale("metric");
 
-    assertEquals(1.5, m1.amount);
-    assertEquals("liter", m1.unit);
+    assertEquals(1.5, m2.amount);
+    assertEquals("liter", m2.unit);
 }
 
 function testVolumeStaticConvert353() {
@@ -667,10 +667,10 @@ function testVolumeStaticConvert353() {
         unit: "imperial ounce",
         amount: 1500
     });
-    m1.scale("imperial");
+    var m2 = m1.scale("imperial");
 
-    assertRoughlyEquals(9.375, m1.amount,0.01);
-    assertEquals("imperial gallon", m1.unit);
+    assertRoughlyEquals(9.375, m2.amount,0.01);
+    assertEquals("imperial gallon", m2.unit);
 }
 
 function testVolumeStaticConvert354() {
@@ -678,10 +678,10 @@ function testVolumeStaticConvert354() {
         unit: "imperial gallon",
         amount: 100
     });
-    m1.scale("imperial");
+    var m2 = m1.scale("imperial");
 
-    assertRoughlyEquals(100, m1.amount,0.01);
-    assertEquals("imperial gallon", m1.unit);
+    assertRoughlyEquals(100, m2.amount,0.01);
+    assertEquals("imperial gallon", m2.unit);
 }
 
 function testVolumeStaticConvert355() {
@@ -689,10 +689,10 @@ function testVolumeStaticConvert355() {
         unit: "ounce",
         amount: 1500
     });
-    m1.scale("uscustomary");
+    var m2 =m1.scale("uscustomary");
 
-    assertRoughlyEquals(1.566569, m1.amount,0.000001);
-    assertEquals("cubic foot", m1.unit);
+    assertRoughlyEquals(1.566569, m2.amount,0.000001);
+    assertEquals("cubic foot", m2.unit);
 }
 
 function testVolumeStaticConvert356() {
@@ -700,10 +700,10 @@ function testVolumeStaticConvert356() {
         unit: "liter",
         amount: 1570
     });
-    m1.scale("metric");
+    var m2 =m1.scale("metric");
 
-    assertRoughlyEquals(1.57, m1.amount,0.01);
-    assertEquals("cubic meter", m1.unit);
+    assertRoughlyEquals(1.57, m2.amount,0.01);
+    assertEquals("cubic meter", m2.unit);
 }
 function testVolumeGetMeasures() {
 	var measures = ilib.Measurement.Volume.getMeasures();

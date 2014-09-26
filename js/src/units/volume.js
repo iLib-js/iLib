@@ -262,8 +262,10 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
         munit = m;
     }
 
-    this.amount = volume;
-    this.unit = munit;
+    return new ilib.Measurement.Volume({
+        unit: munit,
+        amount: volume
+    });
 };
 
 
