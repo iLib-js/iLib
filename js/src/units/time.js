@@ -203,6 +203,31 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 };
 
 /**
+ * Scale the current Time and return it in new Time unit.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
+
+    var fromRow = ilib.Measurement.Time.ratios[this.unit];
+    var time;
+    var munit;
+    var i=1;
+
+    for (var m in ilib.Measurement.Time.ratios) {
+        var tmp = this.amount * fromRow[i];
+        if (tmp < 1) break;
+        time = tmp;
+        munit = m;
+        ++i
+    }
+
+    return new ilib.Measurement.Time({
+        unit: munit,
+        amount: time
+    });
+};
+/**
  * @private
  * @static
  */

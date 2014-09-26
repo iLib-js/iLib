@@ -71,7 +71,65 @@ function testTimeStaticConvert4() {
 	
 	assertEquals(70, m);
 }
+function testTimeScaling1() {
+    var m = new ilib.Measurement.Time({
+        unit: "ns",
+        amount: 1024
+    });
 
+   var  m1 = m.scale();
+
+    assertEquals(1.024,m1.amount);
+    assertEquals("μs",m1.unit);
+}
+
+function testTimeScaling2() {
+    var m = new ilib.Measurement.Time({
+        unit: "ms",
+        amount: 12000
+    });
+
+    m = m.scale();
+
+    assertEquals(12,m.amount);
+    assertEquals("s",m.unit);
+}
+
+function testTimeScaling3() {
+    var m = new ilib.Measurement.Time({
+        unit: "day",
+        amount: 10485
+    });
+
+    m = m.scale();
+
+    assertRoughlyEquals(2.8706979, m.amount, 0.1);
+    assertEquals("decade",m.unit);
+}
+
+function testTimeScaling4() {
+    var m = new ilib.Measurement.Time({
+        unit: "year",
+        amount: 1000
+    });
+
+    m = m.scale();
+
+    assertRoughlyEquals(10, m.amount, 0.001);
+    assertEquals("century",m.unit);
+}
+
+function testTimeScaling5() {
+    var m = new ilib.Measurement.Time({
+        unit: "h",
+        amount: 120
+    });
+
+    m = m.scale();
+
+    assertRoughlyEquals(5, m.amount, 0.001);
+    assertEquals("day",m.unit);
+}
 function testTimeGetMeasures() {
 	var measures = ilib.Measurement.Time.getMeasures();
 	var expected = [
