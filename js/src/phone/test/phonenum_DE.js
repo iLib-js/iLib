@@ -95,7 +95,7 @@ function testParseDEZerosIDDToUS(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseIDDToIEMobile(){
+function testParseDEIDDToIEMobile(){
 	var parsed = new ilib.PhoneNumber("+353 86 8223689", {locale: "de-DE"});
 	assertNotUndefined(parsed);
 	
@@ -149,7 +149,7 @@ function testParseDEInvalidLocalNumber(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseLocalWithPauseChars(){
+function testParseDELocalWithPauseChars(){
 	var parsed = new ilib.PhoneNumber("4156568w1234", {locale: "de-DE"});
 	assertNotUndefined(parsed);
 	
@@ -161,7 +161,7 @@ function testParseLocalWithPauseChars(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseLDWithPauseChars(){
+function testParseDELDWithPauseChars(){
 	var parsed = new ilib.PhoneNumber("02360/ 123456w1234", {locale: "de-DE"});
 	assertNotUndefined(parsed);
 	
@@ -203,7 +203,7 @@ function testParseDEZerosIDDToGB(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseEmergencyNumber(){
+function testParseDEEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("112", {locale: "de-DE"});
 	assertNotUndefined(parsed);
 	
@@ -213,7 +213,7 @@ function testParseEmergencyNumber(){
 	
 	assertTrue(parsed.equals(expected));
 };
-function testParseEmergencyNumberPlus(){
+function testParseDEEmergencyNumberPlus(){
 	var parsed = new ilib.PhoneNumber("19222115", {locale: "de-DE"});
 	assertNotUndefined(parsed);
 	

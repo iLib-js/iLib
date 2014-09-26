@@ -288,7 +288,7 @@ function testParseESPartial9(){
 	
 };
 
-function testParseDialIDD00International1(){
+function testParseESDialIDD00International1(){
 	var parsed = new ilib.PhoneNumber("0", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -299,7 +299,7 @@ function testParseDialIDD00International1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International2(){
+function testParseESDialIDD00International2(){
 	var parsed = new ilib.PhoneNumber("00", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -310,7 +310,7 @@ function testParseDialIDD00International2(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International3(){
+function testParseESDialIDD00International3(){
 	var parsed = new ilib.PhoneNumber("001", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -322,7 +322,7 @@ function testParseDialIDD00International3(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International4(){
+function testParseESDialIDD00International4(){
 	var parsed = new ilib.PhoneNumber("0016", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -335,7 +335,7 @@ function testParseDialIDD00International4(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International5(){
+function testParseESDialIDD00International5(){
 	var parsed = new ilib.PhoneNumber("00165", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -348,7 +348,7 @@ function testParseDialIDD00International5(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International6(){
+function testParseESDialIDD00International6(){
 	var parsed = new ilib.PhoneNumber("001650", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -361,7 +361,7 @@ function testParseDialIDD00International6(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International7(){
+function testParseESDialIDD00International7(){
 	var parsed = new ilib.PhoneNumber("0016505", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -375,7 +375,7 @@ function testParseDialIDD00International7(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International8(){
+function testParseESDialIDD00International8(){
 	var parsed = new ilib.PhoneNumber("00165055", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -389,7 +389,7 @@ function testParseDialIDD00International8(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International9(){
+function testParseESDialIDD00International9(){
 	var parsed = new ilib.PhoneNumber("001650555", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -403,7 +403,7 @@ function testParseDialIDD00International9(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International10(){
+function testParseESDialIDD00International10(){
 	var parsed = new ilib.PhoneNumber("0016505551", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -417,7 +417,7 @@ function testParseDialIDD00International10(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International11(){
+function testParseESDialIDD00International11(){
 	var parsed = new ilib.PhoneNumber("00165055512", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -431,7 +431,7 @@ function testParseDialIDD00International11(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International12(){
+function testParseESDialIDD00International12(){
 	var parsed = new ilib.PhoneNumber("001650555123", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -445,7 +445,7 @@ function testParseDialIDD00International12(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialIDD00International13(){
+function testParseESDialIDD00International13(){
 	var parsed = new ilib.PhoneNumber("0016505551234", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -461,7 +461,7 @@ function testParseDialIDD00International13(){
 };
 
 
-function testParseFromInternational(){
+function testParseESFromInternational(){
 	var parsed = new ilib.PhoneNumber("+34912123456", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	
@@ -477,7 +477,7 @@ function testParseFromInternational(){
 };
 
 //for CFISH-7040
-function testParseMobileNumber() {
+function testParseESMobileNumber() {
 	var parsed = new ilib.PhoneNumber("665 545 880", {locale: "es-ES"});
 	assertNotUndefined(parsed);
 	

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseFull(){
+function testParseNZFull(){
 	var parsed = new ilib.PhoneNumber("03 456-7890", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -31,7 +31,7 @@ function testParseFull(){
 	
 };
 
-function testParseLocalNumber(){
+function testParseNZLocalNumber(){
 	var parsed = new ilib.PhoneNumber("3456789", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -43,7 +43,7 @@ function testParseLocalNumber(){
 	
 };
 
-function testParseBogusPrefix(){
+function testParseNZBogusPrefix(){
 	var parsed = new ilib.PhoneNumber("05 9812345", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -57,7 +57,7 @@ function testParseBogusPrefix(){
 	
 };
 
-function testParseIgnoreFormatting(){
+function testParseNZIgnoreFormatting(){
 	var parsed = new ilib.PhoneNumber("(03) 123-5678", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -71,7 +71,7 @@ function testParseIgnoreFormatting(){
 	
 };
 
-function testParseIgnoreCrap(){
+function testParseNZIgnoreCrap(){
 	var parsed = new ilib.PhoneNumber("$03@1234&567-", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -85,7 +85,7 @@ function testParseIgnoreCrap(){
 	
 };
 
-function testParseNoAreaCode(){
+function testParseNZNoAreaCode(){
 	var parsed = new ilib.PhoneNumber("91234567", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -97,7 +97,7 @@ function testParseNoAreaCode(){
 	
 };
 
-function testParseServiceCode(){
+function testParseNZServiceCode(){
 	var parsed = new ilib.PhoneNumber("080098765", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -111,7 +111,7 @@ function testParseServiceCode(){
 	
 };
 
-function testParseWithVSC(){
+function testParseNZWithVSC(){
 	var parsed = new ilib.PhoneNumber("*222", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -123,7 +123,7 @@ function testParseWithVSC(){
 	
 };
 
-function testParseMobileNumber(){
+function testParseNZMobileNumber(){
 	var parsed = new ilib.PhoneNumber("02112345678", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -137,7 +137,7 @@ function testParseMobileNumber(){
 	
 };
 
-function testParsePlusIDDToUS(){
+function testParseNZPlusIDDToUS(){
 	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -152,7 +152,7 @@ function testParsePlusIDDToUS(){
 	
 };
 
-function testParseZerosIDDToUS(){
+function testParseNZZerosIDDToUS(){
 	var parsed = new ilib.PhoneNumber("0012028675309", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -167,7 +167,7 @@ function testParseZerosIDDToUS(){
 	
 };
 
-function testParseEmergencyNumber(){
+function testParseNZEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("111", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -179,7 +179,7 @@ function testParseEmergencyNumber(){
 	
 };
 
-function testParsePartial1(){
+function testParseNZPartial1(){
 	var parsed = new ilib.PhoneNumber("0", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -191,7 +191,7 @@ function testParsePartial1(){
 	
 };
 
-function testParsePartial2(){
+function testParseNZPartial2(){
 	var parsed = new ilib.PhoneNumber("03", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -203,7 +203,7 @@ function testParsePartial2(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial3(){
+function testParseNZPartial3(){
 	var parsed = new ilib.PhoneNumber("039", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -216,7 +216,7 @@ function testParsePartial3(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial4(){
+function testParseNZPartial4(){
 	var parsed = new ilib.PhoneNumber("0399", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -229,7 +229,7 @@ function testParsePartial4(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial5(){
+function testParseNZPartial5(){
 	var parsed = new ilib.PhoneNumber("03999", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -242,7 +242,7 @@ function testParsePartial5(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial6(){
+function testParseNZPartial6(){
 	var parsed = new ilib.PhoneNumber("039991", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -255,7 +255,7 @@ function testParsePartial6(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial7(){
+function testParseNZPartial7(){
 	var parsed = new ilib.PhoneNumber("0399912", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -268,7 +268,7 @@ function testParsePartial7(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial8(){
+function testParseNZPartial8(){
 	var parsed = new ilib.PhoneNumber("03999123", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -281,7 +281,7 @@ function testParsePartial8(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial9(){
+function testParseNZPartial9(){
 	var parsed = new ilib.PhoneNumber("039991234", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -294,7 +294,7 @@ function testParsePartial9(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial10(){
+function testParseNZPartial10(){
 	var parsed = new ilib.PhoneNumber("0399912345", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
@@ -308,7 +308,7 @@ function testParsePartial10(){
 	
 };
 
-function testParseWithUSMCC(){
+function testParseNZWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -321,7 +321,7 @@ function testParseWithUSMCC(){
 	
 };
 
-function testParseWithFRMCC(){
+function testParseNZWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -333,7 +333,7 @@ function testParseWithFRMCC(){
 	
 };
 
-function testParseWithMXMCC(){
+function testParseNZWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -346,7 +346,7 @@ function testParseWithMXMCC(){
 	
 };
 
-function testParseWithDEMCC(){
+function testParseNZWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -358,7 +358,7 @@ function testParseWithDEMCC(){
 	
 };
 
-function testParseWithNZMCC(){
+function testParseNZWithNZMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "530"});
 	assertNotUndefined(parsed);
 	

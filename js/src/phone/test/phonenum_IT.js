@@ -137,7 +137,7 @@ function testParseITZerosIDDToGB(){
 	
 };
 
-function testParseEmergencyNumber(){
+function testParseITEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("112", {locale: "it-IT"});
 	assertNotUndefined(parsed);
 	
@@ -149,7 +149,7 @@ function testParseEmergencyNumber(){
 	
 };
 
-function testParseEmergencyNumberPlus(){
+function testParseITEmergencyNumberPlus(){
 	var parsed = new ilib.PhoneNumber("112115", {locale: "it-IT"});
 	assertNotUndefined(parsed);
 	
@@ -342,7 +342,7 @@ function testParseITPartial10(){
 };
 
 // for bug NOV-115337
-function testParseIntlToMobile(){
+function testParseITIntlToMobile(){
 	var parsed = new ilib.PhoneNumber("+3939012345678", {locale: "it-IT"});
 	assertNotUndefined(parsed);
 	
@@ -356,7 +356,7 @@ function testParseIntlToMobile(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseIntlToAreaCode(){
+function testParseITIntlToAreaCode(){
 	var parsed = new ilib.PhoneNumber("+3903912345678", {locale: "it-IT"});
 	assertNotUndefined(parsed);
 	

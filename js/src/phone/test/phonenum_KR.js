@@ -91,7 +91,7 @@ function testParseKRNoAreaCode(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseInvalidLocalNumber(){
+function testParseKRInvalidLocalNumber(){
 	// local number is too long
 	var parsed = new ilib.PhoneNumber("2345678888", {locale: "ko-KR"});
 	assertNotUndefined(parsed);
@@ -344,7 +344,7 @@ function testParseKRPartial10(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseWithUSMCC(){
+function testParseKRWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "ko-KR", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -356,7 +356,7 @@ function testParseWithUSMCC(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseWithFRMCC(){
+function testParseKRWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "ko-KR", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -367,7 +367,7 @@ function testParseWithFRMCC(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseWithMXMCC(){
+function testParseKRWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "ko-KR", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -379,7 +379,7 @@ function testParseWithMXMCC(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseWithDEMCC(){
+function testParseKRWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "ko-KR", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -390,7 +390,7 @@ function testParseWithDEMCC(){
 	assertTrue(parsed.equals(expected));
 };
 
-function testParseWithKRMCC(){
+function testParseKRWithKRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "ko-KR", mcc: "450"});
 	assertNotUndefined(parsed);
 	

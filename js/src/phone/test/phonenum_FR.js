@@ -86,7 +86,7 @@ function testParseFRPlusIDDToUS(){
 	
 };
 
-function testParseIDDToIEMobile(){
+function testParseFRIDDToIEMobile(){
 	var parsed = new ilib.PhoneNumber("+353 86 8223689", {locale: "fr-FR"});
 	assertNotUndefined(parsed);
 	
@@ -349,7 +349,7 @@ function testParseFRPartial10(){
 
 
 // for NOV-113777
-function testParseLocalNumber(){
+function testParseFRLocalNumber(){
 	var parsed = new ilib.PhoneNumber("41551735", {locale: "fr-FR"});
 	assertNotUndefined(parsed);
 	

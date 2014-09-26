@@ -160,7 +160,7 @@ function testParseUSWithVSCandTrunk(){
 	
 };
 
-function testParseWithAlternateVSC(){
+function testParseUSWithAlternateVSC(){
 	var parsed = new ilib.PhoneNumber("112 (456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -172,7 +172,7 @@ function testParseWithAlternateVSC(){
 	
 };
 
-function testParseWithAlternateVSCBogusCode(){
+function testParseUSWithAlternateVSCBogusCode(){
 	var parsed = new ilib.PhoneNumber("111111111", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -184,7 +184,7 @@ function testParseWithAlternateVSCBogusCode(){
 	
 };
 
-function testParseEmergencyNumber(){
+function testParseUSEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("911", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -196,7 +196,7 @@ function testParseEmergencyNumber(){
 	
 };
 
-function testParseEmergencyNumberExtended(){
+function testParseUSEmergencyNumberExtended(){
 	var parsed = new ilib.PhoneNumber("911 123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -209,7 +209,7 @@ function testParseEmergencyNumberExtended(){
 	
 };
 
-function testParseLocalWithPauseChars(){
+function testParseUSLocalWithPauseChars(){
 	var parsed = new ilib.PhoneNumber("6175568w1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -222,7 +222,7 @@ function testParseLocalWithPauseChars(){
 	
 };
 
-function testParseLDWithPauseChars(){
+function testParseUSLDWithPauseChars(){
 	var parsed = new ilib.PhoneNumber("4156175568w1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -236,7 +236,7 @@ function testParseLDWithPauseChars(){
 	
 };
 
-function testParseLDWithPauseCharsAndTrunk(){
+function testParseUSLDWithPauseCharsAndTrunk(){
 	var parsed = new ilib.PhoneNumber("1-415-617-5568 w 1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -251,7 +251,7 @@ function testParseLDWithPauseCharsAndTrunk(){
 	
 };
 
-function testParseLocalWithExtension(){
+function testParseUSLocalWithExtension(){
 	var parsed = new ilib.PhoneNumber("617-5568x1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -264,7 +264,7 @@ function testParseLocalWithExtension(){
 	
 };
 
-function testParseLDWithExtension(){
+function testParseUSLDWithExtension(){
 	var parsed = new ilib.PhoneNumber("415-617-5568 x1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1087,7 +1087,7 @@ function testParseUSPartialIDDtoPreserveZeroCountry7(){
 	
 };
 
-function testParseWithUSMCC(){
+function testParseUSWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -1100,7 +1100,7 @@ function testParseWithUSMCC(){
 	
 };
 
-function testParseWithFRMCC(){
+function testParseUSWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -1112,7 +1112,7 @@ function testParseWithFRMCC(){
 	
 };
 
-function testParseWithMXMCC(){
+function testParseUSWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -1125,7 +1125,7 @@ function testParseWithMXMCC(){
 	
 };
 
-function testParseWithDEMCC(){
+function testParseUSWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -1138,7 +1138,7 @@ function testParseWithDEMCC(){
 };
 
 
-function testParseWithUSMCCNoLocale(){
+function testParseUSWithUSMCCNoLocale(){
 	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -1151,7 +1151,7 @@ function testParseWithUSMCCNoLocale(){
 	
 };
 
-function testParseWithFRMCCNoLocale(){
+function testParseUSWithFRMCCNoLocale(){
 	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -1163,7 +1163,7 @@ function testParseWithFRMCCNoLocale(){
 	
 };
 
-function testParseWithMXMCCNoLocale(){
+function testParseUSWithMXMCCNoLocale(){
 	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -1176,7 +1176,7 @@ function testParseWithMXMCCNoLocale(){
 	
 };
 
-function testParseWithDEMCCNoLocale(){
+function testParseUSWithDEMCCNoLocale(){
 	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -1190,7 +1190,7 @@ function testParseWithDEMCCNoLocale(){
 
 
 // for NOV-108200
-function testParseBogusSpecialChars(){
+function testParseUSBogusSpecialChars(){
 	var parsed = new ilib.PhoneNumber("+P13817803573", {mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -1205,7 +1205,7 @@ function testParseBogusSpecialChars(){
 	
 };
 
-function testParse555Number(){
+function testParseUS555Number(){
 	var parsed = new ilib.PhoneNumber("(408) 555-1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1218,7 +1218,7 @@ function testParse555Number(){
 	
 };
 
-function testParseHtmlGarbage(){
+function testParseUSHtmlGarbage(){
 	var parsed = new ilib.PhoneNumber("<button>t1</button>", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1230,7 +1230,7 @@ function testParseHtmlGarbage(){
 	
 };
 
-function testParseIntermediateSizedNumber(){
+function testParseUSIntermediateSizedNumber(){
 	var parsed = new ilib.PhoneNumber("56765432", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1243,7 +1243,7 @@ function testParseIntermediateSizedNumber(){
 	
 };
 
-function testParseEmergencyLikeServiceNumber(){
+function testParseUSEmergencyLikeServiceNumber(){
 	var parsed = new ilib.PhoneNumber("411", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1443,7 +1443,7 @@ function testVSCCDMALong(){
 };
 
 //for CFISH-6444
-function testParseWithForeignIDD(){
+function testParseUSWithForeignIDD(){
 	var parsed = new ilib.PhoneNumber("0044209876543", {mcc: "310"}); // US but with a foreign IDD
 	assertNotUndefined(parsed);
 	
@@ -1459,7 +1459,7 @@ function testParseWithForeignIDD(){
 };
 
 // for CFISH-6845
-function testParseWithChinaIDD(){
+function testParseUSWithChinaIDD(){
 	var parsed = new ilib.PhoneNumber("00861098765432"); // US home locale but using a foreign IDD
 	assertNotUndefined(parsed);
 	
