@@ -1,1538 +1,1538 @@
 {
     "233": {
-        "ln": "Gosford, Central Coast",
-        "sn": "Central Coast"
+        "sn": "Central Coast",
+        "ln": "Gosford, Central Coast"
     },
     "238": {
-        "ln": "Bowral, Crookwell, Goulburn, Marulan",
-        "sn": "Bowral"
+        "sn": "Bowral",
+        "ln": "Bowral, Crookwell, Goulburn, Marulan"
     },
     "240": {
-        "ln": "Newcastle, Lower Hunter",
-        "sn": "Lower Hunter"
+        "sn": "Lower Hunter",
+        "ln": "Newcastle, Lower Hunter"
     },
     "241": {
-        "ln": "Newcastle, Lower Hunter",
-        "sn": "Lower Hunter"
+        "sn": "Lower Hunter",
+        "ln": "Newcastle, Lower Hunter"
     },
     "242": {
-        "ln": "Wollongong",
-        "sn": "Wollongong"
+        "sn": "Wollongong",
+        "ln": "Wollongong"
     },
     "243": {
-        "ln": "Gosford, Central Coast",
-        "sn": "Central Coast"
+        "sn": "Central Coast",
+        "ln": "Gosford, Central Coast"
     },
     "244": {
-        "ln": "Moruya, Nowra",
-        "sn": "Nowra"
+        "sn": "Nowra",
+        "ln": "Moruya, Nowra"
     },
     "245": {
-        "ln": "Windsor, Richmond",
-        "sn": "Windsor"
+        "sn": "Windsor",
+        "ln": "Windsor, Richmond"
     },
     "246": {
-        "ln": "Campbelltown",
-        "sn": "Campbelltown"
+        "sn": "Campbelltown",
+        "ln": "Campbelltown"
     },
     "247": {
-        "ln": "Penrith, Blue Mountains",
-        "sn": "Blue Mountains"
+        "sn": "Blue Mountains",
+        "ln": "Penrith, Blue Mountains"
     },
     "248": {
-        "ln": "Bowral, Crookwell, Goulburn, Marulan",
-        "sn": "Bowral"
+        "sn": "Bowral",
+        "ln": "Bowral, Crookwell, Goulburn, Marulan"
     },
     "249": {
-        "ln": "Newcastle, Lower Hunter",
-        "sn": "Lower Hunter"
+        "sn": "Lower Hunter",
+        "ln": "Newcastle, Lower Hunter"
     },
     "250": {
-        "ln": "Albury, Corryong, Wodonga",
-        "sn": "Albury"
+        "sn": "Albury",
+        "ln": "Albury, Corryong, Wodonga"
     },
     "251": {
-        "ln": "Canberra, Queanbeyan, Yass",
-        "sn": "Canberra"
+        "sn": "Canberra",
+        "ln": "Canberra, Queanbeyan, Yass"
     },
     "252": {
-        "ln": "Canberra, Queanbeyan, Yass",
-        "sn": "Canberra"
+        "sn": "Canberra",
+        "ln": "Canberra, Queanbeyan, Yass"
     },
     "253": {
-        "ln": "Bathurst, Orange",
-        "sn": "Bathurst"
-    },
-    "255.": {
-        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook",
-        "sn": "Kempsey"
-    },
-    "2555.": {
-        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook",
-        "sn": "Kempsey"
-    },
-    "25551": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Bathurst",
+        "ln": "Bathurst, Orange"
     },
     "256": {
-        "ln": "Coffs Harbour, Grafton, Lismore",
-        "sn": "Grafton"
+        "sn": "Grafton",
+        "ln": "Coffs Harbour, Grafton, Lismore"
     },
     "257": {
-        "ln": "Armidale, Tamworth, Northern Tablelands",
-        "sn": "Armidale"
+        "sn": "Armidale",
+        "ln": "Armidale, Tamworth, Northern Tablelands"
     },
     "258": {
-        "ln": "Bourke, Dubbo, Far West",
-        "sn": "Far West"
+        "sn": "Far West",
+        "ln": "Bourke, Dubbo, Far West"
     },
     "259": {
-        "ln": "Griffith, Wagga Wagga, Riverina",
-        "sn": "Griffith"
+        "sn": "Griffith",
+        "ln": "Griffith, Wagga Wagga, Riverina"
     },
     "260": {
-        "ln": "Albury, Corryong, Wodonga",
-        "sn": "Albury"
+        "sn": "Albury",
+        "ln": "Albury, Corryong, Wodonga"
     },
     "261": {
-        "ln": "Canberra, Queanbeyan, Yass",
-        "sn": "Canberra"
+        "sn": "Canberra",
+        "ln": "Canberra, Queanbeyan, Yass"
     },
     "262": {
-        "ln": "Canberra, Queanbeyan, Yass",
-        "sn": "Canberra"
+        "sn": "Canberra",
+        "ln": "Canberra, Queanbeyan, Yass"
     },
     "263": {
-        "ln": "Bathurst, Orange",
-        "sn": "Bathurst"
+        "sn": "Bathurst",
+        "ln": "Bathurst, Orange"
     },
     "264": {
-        "ln": "Bega, Cooma",
-        "sn": "Cooma"
+        "sn": "Cooma",
+        "ln": "Bega, Cooma"
     },
     "265": {
-        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook",
-        "sn": "Kempsey"
+        "sn": "Kempsey",
+        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook"
     },
     "266": {
-        "ln": "Coffs Harbour, Grafton, Lismore",
-        "sn": "Grafton"
+        "sn": "Grafton",
+        "ln": "Coffs Harbour, Grafton, Lismore"
     },
     "267": {
-        "ln": "Armidale, Glen Innes, Gunnedah, Inverell, Moree, Narrabri, Tamworth",
-        "sn": "Armidale"
+        "sn": "Armidale",
+        "ln": "Armidale, Glen Innes, Gunnedah, Inverell, Moree, Narrabri, Tamworth"
     },
     "268": {
-        "ln": "Bourke, Dubbo, Far West",
-        "sn": "Far West"
+        "sn": "Far West",
+        "ln": "Bourke, Dubbo, Far West"
     },
     "269": {
-        "ln": "Griffith, Wagga Wagga, Riverina",
-        "sn": "Griffith"
-    },
-    "270.": {
-        "ln": "Sydney",
-        "sn": "Sydney"
-    },
-    "2701.": {
-        "ln": "Sydney",
-        "sn": "Sydney"
-    },
-    "27010": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Griffith",
+        "ln": "Griffith, Wagga Wagga, Riverina"
     },
     "273": {
-        "ln": "Sydney South/Southeast",
-        "sn": "Sydney South/Southeast"
+        "sn": "Sydney South/Southeast",
+        "ln": "Sydney South/Southeast"
     },
     "274": {
-        "ln": "Avalon Beach, Dural, Sydney",
-        "sn": "Avalon Beach"
+        "sn": "Avalon Beach",
+        "ln": "Avalon Beach, Dural, Sydney"
     },
     "275": {
-        "ln": "Sutherland Shire",
-        "sn": "Sutherland Shire"
+        "sn": "Sutherland Shire",
+        "ln": "Sutherland Shire"
     },
     "277": {
-        "ln": "Liverpool",
-        "sn": "Liverpool"
+        "sn": "Liverpool",
+        "ln": "Liverpool"
     },
     "278": {
-        "ln": "Blacktown",
-        "sn": "Blacktown"
+        "sn": "Blacktown",
+        "ln": "Blacktown"
     },
     "280": {
-        "ln": "Sydney City Centre",
-        "sn": "Sydney"
+        "sn": "Sydney",
+        "ln": "Sydney City Centre"
     },
     "281": {
-        "ln": "Liverpool",
-        "sn": "Liverpool"
+        "sn": "Liverpool",
+        "ln": "Liverpool"
     },
     "282": {
-        "ln": "Sydney City Centre",
-        "sn": "Sydney"
+        "sn": "Sydney",
+        "ln": "Sydney City Centre"
     },
     "283": {
-        "ln": "Sydney South/Southeast",
-        "sn": "Sydney South/Southeast"
+        "sn": "Sydney South/Southeast",
+        "ln": "Sydney South/Southeast"
     },
     "284": {
-        "ln": "Avalon Beach",
-        "sn": "Avalon Beach"
+        "sn": "Avalon Beach",
+        "ln": "Avalon Beach"
     },
     "285": {
-        "ln": "Sutherland Shire",
-        "sn": "Sutherland Shire"
+        "sn": "Sutherland Shire",
+        "ln": "Sutherland Shire"
     },
     "286": {
-        "ln": "Blacktown",
-        "sn": "Blacktown"
+        "sn": "Blacktown",
+        "ln": "Blacktown"
     },
     "287": {
-        "ln": "Liverpool",
-        "sn": "Liverpool"
+        "sn": "Liverpool",
+        "ln": "Liverpool"
     },
     "288": {
-        "ln": "Blacktown",
-        "sn": "Blacktown"
+        "sn": "Blacktown",
+        "ln": "Blacktown"
     },
     "289": {
-        "ln": "Avalon Beach, Dural, Sydney",
-        "sn": "Avalon Beach"
+        "sn": "Avalon Beach",
+        "ln": "Avalon Beach, Dural, Sydney"
     },
     "290": {
-        "ln": "Sydney City Centre",
-        "sn": "Sydney"
-    },
-    "291.": {
-        "ln": "Sydney",
-        "sn": "Sydney"
-    },
-    "2913": {
-        "ln": "Sydney South/Southeast",
-        "sn": "Sydney South/Southeast"
-    },
-    "2914": {
-        "ln": "Sydney North",
-        "sn": "Sydney North"
-    },
-    "2915": {
-        "ln": "Sydney Southwest",
-        "sn": "Sydney Southwest"
-    },
-    "2918": {
-        "ln": "Sydney Northwest",
-        "sn": "Sydney Northwest"
+        "sn": "Sydney",
+        "ln": "Sydney City Centre"
     },
     "292": {
-        "ln": "Sydney City Centre",
-        "sn": "Sydney"
+        "sn": "Sydney",
+        "ln": "Sydney City Centre"
     },
     "293": {
-        "ln": "Sydney South/Southeast",
-        "sn": "Sydney South/Southeast"
+        "sn": "Sydney South/Southeast",
+        "ln": "Sydney South/Southeast"
     },
     "294": {
-        "ln": "Avalon Beach, Dural, Sydney North",
-        "sn": "Avalon Beach"
+        "sn": "Avalon Beach",
+        "ln": "Avalon Beach, Dural, Sydney North"
     },
     "295": {
-        "ln": "Sutherland Shire",
-        "sn": "Sutherland Shire"
-    },
-    "296.": {
-        "ln": "Sydney City Centre",
-        "sn": "Sydney"
-    },
-    "2960": {
-        "ln": "Liverpool",
-        "sn": "Liverpool"
-    },
-    "2961": {
-        "ln": "Liverpool",
-        "sn": "Liverpool"
-    },
-    "2962": {
-        "ln": "Blacktown",
-        "sn": "Blacktown"
-    },
-    "2965": {
-        "ln": "Dural",
-        "sn": "Dural"
+        "sn": "Sutherland Shire",
+        "ln": "Sutherland Shire"
     },
     "297": {
-        "ln": "Liverpool, Sydney West",
-        "sn": "Liverpool"
+        "sn": "Liverpool",
+        "ln": "Liverpool, Sydney West"
     },
     "298": {
-        "ln": "Blacktown, Sydney Northwest",
-        "sn": "Blacktown"
+        "sn": "Blacktown",
+        "ln": "Blacktown, Sydney Northwest"
     },
     "299": {
-        "ln": "Avalon Beach, Dural, Sydney North",
-        "sn": "Avalon Beach"
+        "sn": "Avalon Beach",
+        "ln": "Avalon Beach, Dural, Sydney North"
     },
     "340": {
-        "ln": "Mildura, Balranald",
-        "sn": "Mildura"
+        "sn": "Mildura",
+        "ln": "Mildura, Balranald"
     },
     "341": {
-        "ln": "Bairnsdale",
-        "sn": "Bairnsdale"
+        "sn": "Bairnsdale",
+        "ln": "Bairnsdale"
     },
     "342": {
-        "ln": "Colac, Geelong",
-        "sn": "Colac"
+        "sn": "Colac",
+        "ln": "Colac, Geelong"
     },
     "343": {
-        "ln": "Ballarat",
-        "sn": "Ballarat"
+        "sn": "Ballarat",
+        "ln": "Ballarat"
     },
     "344": {
-        "ln": "Bendigo",
-        "sn": "Bendigo"
+        "sn": "Bendigo",
+        "ln": "Bendigo"
     },
     "345": {
-        "ln": "Warrnambool",
-        "sn": "Warrnambool"
+        "sn": "Warrnambool",
+        "ln": "Warrnambool"
     },
     "347": {
-        "ln": "Wangaratta",
-        "sn": "Wangaratta"
+        "sn": "Wangaratta",
+        "ln": "Wangaratta"
     },
     "348": {
-        "ln": "Deniliquin, Numurkah, Shepparton",
-        "sn": "Deniliquin"
+        "sn": "Deniliquin",
+        "ln": "Deniliquin, Numurkah, Shepparton"
     },
     "349": {
-        "ln": "Mornington",
-        "sn": "Mornington"
+        "sn": "Mornington",
+        "ln": "Mornington"
     },
     "350": {
-        "ln": "Mildura, Balranald",
-        "sn": "Mildura"
+        "sn": "Mildura",
+        "ln": "Mildura, Balranald"
     },
     "351": {
-        "ln": "Bairnsdale",
-        "sn": "Bairnsdale"
+        "sn": "Bairnsdale",
+        "ln": "Bairnsdale"
     },
     "352": {
-        "ln": "Colac, Geelong",
-        "sn": "Colac, Geelong"
+        "sn": "Colac, Geelong",
+        "ln": "Colac, Geelong"
     },
     "353": {
-        "ln": "Ballarat",
-        "sn": "Ballarat"
+        "sn": "Ballarat",
+        "ln": "Ballarat"
     },
     "354": {
-        "ln": "Bendigo",
-        "sn": "Bendigo"
+        "sn": "Bendigo",
+        "ln": "Bendigo"
     },
     "355": {
-        "ln": "Warrnambool",
-        "sn": "Warrnambool"
+        "sn": "Warrnambool",
+        "ln": "Warrnambool"
     },
     "356": {
-        "ln": "Foster, Warragul, Drouin",
-        "sn": "Foster"
+        "sn": "Foster",
+        "ln": "Foster, Warragul, Drouin"
     },
     "357": {
-        "ln": "Wangaratta",
-        "sn": "Wangaratta"
+        "sn": "Wangaratta",
+        "ln": "Wangaratta"
     },
     "358": {
-        "ln": "Deniliquin, Shepparton",
-        "sn": "Deniliquin"
+        "sn": "Deniliquin",
+        "ln": "Deniliquin, Shepparton"
     },
     "359": {
-        "ln": "Mornington, Pakenham, Rosebud",
-        "sn": "Mornington"
+        "sn": "Mornington",
+        "ln": "Mornington, Pakenham, Rosebud"
     },
     "361": {
-        "ln": "Hobart",
-        "sn": "Hobart"
+        "sn": "Hobart",
+        "ln": "Hobart"
     },
     "362": {
-        "ln": "Hobart",
-        "sn": "Hobart"
+        "sn": "Hobart",
+        "ln": "Hobart"
     },
     "363": {
-        "ln": "Launceston",
-        "sn": "Launceston"
+        "sn": "Launceston",
+        "ln": "Launceston"
     },
     "364": {
-        "ln": "Devonport, Burnie, Queenstown",
-        "sn": "Devonport"
+        "sn": "Devonport",
+        "ln": "Devonport, Burnie, Queenstown"
     },
     "365": {
-        "ln": "Devonport, Burnie, Queenstown",
-        "sn": "Devonport"
+        "sn": "Devonport",
+        "ln": "Devonport, Burnie, Queenstown"
     },
     "367": {
-        "ln": "Launceston",
-        "sn": "Launceston"
-    },
-    "370.": {
-        "ln": "Melbourne",
-        "sn": "Melbourne"
-    },
-    "3701.": {
-        "ln": "Melbourne",
-        "sn": "Melbourne"
-    },
-    "37010": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Launceston",
+        "ln": "Launceston"
     },
     "371": {
-        "ln": "Kalkallo, Whittlesea, Melbourne",
-        "sn": "Kalkallo"
+        "sn": "Kalkallo",
+        "ln": "Kalkallo, Whittlesea, Melbourne"
     },
     "372": {
-        "ln": "Croydon, Melbourne",
-        "sn": "Croydon"
+        "sn": "Croydon",
+        "ln": "Croydon, Melbourne"
     },
     "373": {
-        "ln": "Melbourne West, Melbourne",
-        "sn": "Melbourne West"
+        "sn": "Melbourne West",
+        "ln": "Melbourne West, Melbourne"
     },
     "375": {
-        "ln": "Melbourne Southeast, Melbourne",
-        "sn": "Melbourne Southeast"
+        "sn": "Melbourne Southeast",
+        "ln": "Melbourne Southeast, Melbourne"
     },
     "377": {
-        "ln": "Werribee, Sunbury, Melbourne",
-        "sn": "Sunbury"
+        "sn": "Sunbury",
+        "ln": "Werribee, Sunbury, Melbourne"
     },
     "378": {
-        "ln": "Melbourne East",
-        "sn": "Melbourne East"
+        "sn": "Melbourne East",
+        "ln": "Melbourne East"
     },
     "379": {
-        "ln": "Dandenong, Melbourne",
-        "sn": "Dandenong"
+        "sn": "Dandenong",
+        "ln": "Dandenong, Melbourne"
     },
     "380": {
-        "ln": "Werribee, Sunbury, Melbourne",
-        "sn": "Sunbury"
+        "sn": "Sunbury",
+        "ln": "Werribee, Sunbury, Melbourne"
     },
     "381": {
-        "ln": "Kalkallo, Whittlesea, Melbourne",
-        "sn": "Kalkallo"
+        "sn": "Kalkallo",
+        "ln": "Kalkallo, Whittlesea, Melbourne"
     },
     "382": {
-        "ln": "Croydon, Melbourne",
-        "sn": "Croydon"
+        "sn": "Croydon",
+        "ln": "Croydon, Melbourne"
     },
     "383": {
-        "ln": "Melbourne West",
-        "sn": "Melbourne West"
+        "sn": "Melbourne West",
+        "ln": "Melbourne West"
     },
     "384": {
-        "ln": "Melbourne Northeast",
-        "sn": "Melbourne Northeast"
+        "sn": "Melbourne Northeast",
+        "ln": "Melbourne Northeast"
     },
     "385": {
-        "ln": "Melbourne Southeast",
-        "sn": "Melbourne Southeast"
+        "sn": "Melbourne Southeast",
+        "ln": "Melbourne Southeast"
     },
     "386": {
-        "ln": "Melbourne City & South",
-        "sn": "Melbourne City & South"
+        "sn": "Melbourne City & South",
+        "ln": "Melbourne City & South"
     },
     "387": {
-        "ln": "Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East",
-        "sn": "Melbourne East"
+        "sn": "Melbourne East",
+        "ln": "Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East"
     },
     "389": {
-        "ln": "Dandenong, Melbourne",
-        "sn": "Dandenong"
+        "sn": "Dandenong",
+        "ln": "Dandenong, Melbourne"
     },
     "390": {
-        "ln": "Melbourne City & South",
-        "sn": "Melbourne"
+        "sn": "Melbourne",
+        "ln": "Melbourne City & South"
     },
     "391": {
-        "ln": "Melbourne City & South",
-        "sn": "Melbourne City & South"
+        "sn": "Melbourne City & South",
+        "ln": "Melbourne City & South"
     },
     "392": {
-        "ln": "Melbourne",
-        "sn": "Melbourne"
+        "sn": "Melbourne",
+        "ln": "Melbourne"
     },
     "393": {
-        "ln": "Melbourne West",
-        "sn": "Melbourne West"
+        "sn": "Melbourne West",
+        "ln": "Melbourne West"
     },
     "394": {
-        "ln": "Melbourne Northeast",
-        "sn": "Melbourne Northeast"
+        "sn": "Melbourne Northeast",
+        "ln": "Melbourne Northeast"
     },
     "395": {
-        "ln": "Melbourne Southeast",
-        "sn": "Melbourne Southeast"
+        "sn": "Melbourne Southeast",
+        "ln": "Melbourne Southeast"
     },
     "396": {
-        "ln": "Melbourne City & South",
-        "sn": "Melbourne City & South"
+        "sn": "Melbourne City & South",
+        "ln": "Melbourne City & South"
     },
     "397": {
-        "ln": "Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East",
-        "sn": "Melbourne East"
+        "sn": "Melbourne East",
+        "ln": "Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East"
     },
     "398": {
-        "ln": "Melbourne East",
-        "sn": "Melbourne East"
+        "sn": "Melbourne East",
+        "ln": "Melbourne East"
     },
     "399": {
-        "ln": "Melbourne",
-        "sn": "Melbourne"
+        "sn": "Melbourne",
+        "ln": "Melbourne"
     },
     "704": {
-        "ln": "Brisbane Southeast",
-        "sn": "Brisbane Southeast"
-    },
-    "72.": {
-        "ln": "Brisbane, Bribie Island",
-        "sn": "Brisbane"
+        "sn": "Brisbane Southeast",
+        "ln": "Brisbane Southeast"
     },
     "721": {
-        "ln": "Brisbane",
-        "sn": "Brisbane"
+        "sn": "Brisbane",
+        "ln": "Brisbane"
     },
     "722": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
     },
     "724": {
-        "ln": "Brisbane Southeast",
-        "sn": "Brisbane Southeast"
+        "sn": "Brisbane Southeast",
+        "ln": "Brisbane Southeast"
     },
     "728": {
-        "ln": "Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "73.": {
-        "ln": "Brisbane, Bribie Island",
-        "sn": "Brisbane"
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre"
     },
     "730": {
-        "ln": "Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre",
-        "sn": "Brisbane"
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre"
     },
     "731": {
-        "ln": "Brisbane",
-        "sn": "Brisbane"
-    },
-    "7320": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7321": {
-        "ln": "Brisbane",
-        "sn": "Brisbane"
-    },
-    "7322": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7323": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7324": {
-        "ln": "Brisbane Southeast",
-        "sn": "Brisbane Southeast"
-    },
-    "7325": {
-        "ln": "Brisbane North/Northwest",
-        "sn": "Brisbane North/Northwest"
-    },
-    "7326": {
-        "ln": "Brisbane North/Northwest",
-        "sn": "Brisbane North/Northwest"
-    },
-    "7327": {
-        "ln": "Brisbane West/Southwest",
-        "sn": "Brisbane West/Southwest"
-    },
-    "7328": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7329": {
-        "ln": "Brisbane East",
-        "sn": "Brisbane East"
-    },
-    "7330": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7331": {
-        "ln": "Brisbane",
-        "sn": "Brisbane"
-    },
-    "7332": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7333": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7334": {
-        "ln": "Brisbane Southeast",
-        "sn": "Brisbane Southeast"
-    },
-    "7335": {
-        "ln": "Brisbane North/Northwest",
-        "sn": "Brisbane North/Northwest"
-    },
-    "7336": {
-        "ln": "Brisbane Northeast",
-        "sn": "Brisbane Northeast"
-    },
-    "7337": {
-        "ln": "Brisbane West/Southwest",
-        "sn": "Brisbane West/Southwest"
-    },
-    "7338": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7339": {
-        "ln": "Brisbane East",
-        "sn": "Brisbane East"
+        "sn": "Brisbane",
+        "ln": "Brisbane"
     },
     "734": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane Southeast",
-        "sn": "Brisbane"
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane Southeast"
     },
     "735": {
-        "ln": "Brisbane North/Northwest",
-        "sn": "Brisbane North/Northwest"
+        "sn": "Brisbane North/Northwest",
+        "ln": "Brisbane North/Northwest"
     },
     "736": {
-        "ln": "Brisbane Northeast",
-        "sn": "Brisbane Northeast"
+        "sn": "Brisbane Northeast",
+        "ln": "Brisbane Northeast"
     },
     "737": {
-        "ln": "Brisbane West/Southwest",
-        "sn": "Brisbane West/Southwest"
-    },
-    "7380": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7381": {
-        "ln": "Brisbane",
-        "sn": "Brisbane"
-    },
-    "7382": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7383": {
-        "ln": "Brisbane City Centre",
-        "sn": "Brisbane"
-    },
-    "7384": {
-        "ln": "Brisbane Southeast",
-        "sn": "Brisbane Southeast"
-    },
-    "7385": {
-        "ln": "Brisbane North/Northwest",
-        "sn": "Brisbane North/Northwest"
-    },
-    "7386": {
-        "ln": "Brisbane Northeast",
-        "sn": "Brisbane Northeast"
-    },
-    "7387": {
-        "ln": "Brisbane West/Southwest",
-        "sn": "Brisbane West/Southwest"
-    },
-    "7388": {
-        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane",
-        "sn": "Brisbane"
-    },
-    "7389": {
-        "ln": "Brisbane East",
-        "sn": "Brisbane East"
+        "sn": "Brisbane West/Southwest",
+        "ln": "Brisbane West/Southwest"
     },
     "739": {
-        "ln": "Brisbane East",
-        "sn": "Brisbane East"
+        "sn": "Brisbane East",
+        "ln": "Brisbane East"
     },
     "740": {
-        "ln": "Cairns, Far North Queensland",
-        "sn": "Far North Queensland"
+        "sn": "Far North Queensland",
+        "ln": "Cairns, Far North Queensland"
     },
     "741": {
-        "ln": "Bundaberg, Kingaroy",
-        "sn": "Bundaberg"
+        "sn": "Bundaberg",
+        "ln": "Bundaberg, Kingaroy"
     },
     "742": {
-        "ln": "Cairns",
-        "sn": "Cairns"
+        "sn": "Cairns",
+        "ln": "Cairns"
     },
     "743": {
-        "ln": "Bundaberg, Kingaroy",
-        "sn": "Bundaberg"
+        "sn": "Bundaberg",
+        "ln": "Bundaberg, Kingaroy"
     },
     "744": {
-        "ln": "Townsville",
-        "sn": "Townsville"
+        "sn": "Townsville",
+        "ln": "Townsville"
     },
     "745": {
-        "ln": "Toowoomba, Roma, Southwest Australia",
-        "sn": "Toowoomba"
+        "sn": "Toowoomba",
+        "ln": "Toowoomba, Roma, Southwest Australia"
     },
     "746": {
-        "ln": "Toowoomba, Roma, Southwest Australia",
-        "sn": "Toowoomba"
+        "sn": "Toowoomba",
+        "ln": "Toowoomba, Roma, Southwest Australia"
     },
     "747": {
-        "ln": "Townsville",
-        "sn": "Townsville"
+        "sn": "Townsville",
+        "ln": "Townsville"
     },
     "748": {
-        "ln": "Rockhampton, Mackay",
-        "sn": "Rockhampton"
+        "sn": "Rockhampton",
+        "ln": "Rockhampton, Mackay"
     },
     "749": {
-        "ln": "Rockhampton, Mackay",
-        "sn": "Rockhampton"
+        "sn": "Rockhampton",
+        "ln": "Rockhampton, Mackay"
     },
     "752": {
-        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture",
-        "sn": "Sunshine Coast"
+        "sn": "Sunshine Coast",
+        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture"
     },
     "753": {
-        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture",
-        "sn": "Sunshine Coast"
+        "sn": "Sunshine Coast",
+        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture"
     },
     "754": {
-        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture",
-        "sn": "Sunshine Coast"
-    },
-    "755.": {
-        "ln": "Gold Coast, Beaudesert",
-        "sn": "Gold Coast"
-    },
-    "7555.": {
-        "ln": "Gold Coast, Beaudesert",
-        "sn": "Gold Coast"
-    },
-    "75551": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Sunshine Coast",
+        "ln": "Sunshine Coast, Esk, Nambour, Gatton, Caboolture"
     },
     "756": {
-        "ln": "Gold Coast, Beaudesert",
-        "sn": "Gold Coast"
+        "sn": "Gold Coast",
+        "ln": "Gold Coast, Beaudesert"
     },
     "757": {
-        "ln": "Gold Coast, Beaudesert",
-        "sn": "Gold Coast"
-    },
-    "770.": {
-        "ln": "North-eastern Australia (QLD)",
-        "sn": "North-east"
-    },
-    "7701.": {
-        "ln": "North-eastern Australia (QLD)",
-        "sn": "North-east"
-    },
-    "77010": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Gold Coast",
+        "ln": "Gold Coast, Beaudesert"
     },
     "776": {
-        "ln": "Inglewood, Toowoomba",
-        "sn": "Inglewood"
+        "sn": "Inglewood",
+        "ln": "Inglewood, Toowoomba"
     },
     "851": {
-        "ln": "Port Hedland",
-        "sn": "Port Hedland"
-    },
-    "8520": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8521": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8522": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8523": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8527": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8529": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8530": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8531": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8532": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8533": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8537": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8539": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8540": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8541": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8542": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8543": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8547": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8549": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "855.": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8555.": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "85551": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
+        "sn": "Port Hedland",
+        "ln": "Port Hedland"
     },
     "860": {
-        "ln": "Bruce Rock, Great Victoria, Kalgoorlie, Merredin, Perth",
-        "sn": "Perth"
-    },
-    "861.": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8611": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8612": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8613": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8619": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8620": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8621": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8622": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8623": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth"
-    },
-    "8624": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North"
-    },
-    "8625": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East"
-    },
-    "8626": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8627": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8628": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8629": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8630": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8631": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8632": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8633": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8634": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North/Northwest"
-    },
-    "8635": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East/Southeast"
-    },
-    "8636": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8637": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8638": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8639": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8640": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8641": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8642": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8643": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8644": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North/Northwest"
-    },
-    "8645": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East/Southeast"
-    },
-    "8646": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8647": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8648": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8649": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "865.": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8659": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
+        "sn": "Perth",
+        "ln": "Bruce Rock, Great Victoria, Kalgoorlie, Merredin, Perth"
     },
     "867": {
-        "ln": "Bridgetown, Bunbury",
-        "sn": "Bridgetown"
+        "sn": "Bridgetown",
+        "ln": "Bridgetown, Bunbury"
     },
     "868": {
-        "ln": "Albany",
-        "sn": "Albany"
-    },
-    "870.": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8701.": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "87010": {
-        "ln": "Fictitious use",
-        "sn": "Fictitious use"
-    },
-    "8710": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8711": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8712": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8713": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8714": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8715": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8716": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8717": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8718": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8719": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8720": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8721": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8722": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8723": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8724": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8725": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8726": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8727": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8728": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8729": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8730": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8731": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8732": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8733": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8734": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8735": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8736": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8737": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8738": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8739": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8740": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8741": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8742": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8743": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8744": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8745": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8746": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8747": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8748": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8749": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
+        "sn": "Albany",
+        "ln": "Albany"
     },
     "875": {
-        "ln": "Riverland, Murraylands",
-        "sn": "Riverland"
+        "sn": "Riverland",
+        "ln": "Riverland, Murraylands"
     },
     "876": {
-        "ln": "Ceduna",
-        "sn": "Ceduna"
+        "sn": "Ceduna",
+        "ln": "Ceduna"
     },
     "877": {
-        "ln": "Southeast Australia",
-        "sn": "Southeast"
+        "sn": "Southeast",
+        "ln": "Southeast Australia"
     },
     "878": {
-        "ln": "Mid North Australia",
-        "sn": "Mid North"
+        "sn": "Mid North",
+        "ln": "Mid North Australia"
     },
     "879": {
-        "ln": "Northern Territory (Alice Springs, Darwin)",
-        "sn": "Northern Territory"
+        "sn": "Northern Territory",
+        "ln": "Northern Territory (Alice Springs, Darwin)"
     },
     "880": {
-        "ln": "Broken Hill",
-        "sn": "Broken Hill"
-    },
-    "8810": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8811": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8812": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8813": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8814": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8815": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8816": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8817": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8818": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8819": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8820": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8821": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8822": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8823": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8824": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8825": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8826": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8827": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8828": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8829": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8830": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8831": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8832": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8833": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8834": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8835": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8836": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8837": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8838": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8839": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8840": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8841": {
-        "ln": "Adelaide City Centre",
-        "sn": "Adelaide"
-    },
-    "8842": {
-        "ln": "Adelaide",
-        "sn": "Adelaide"
-    },
-    "8843": {
-        "ln": "Adelaide East",
-        "sn": "Adelaide East"
-    },
-    "8844": {
-        "ln": "Adelaide Northwest",
-        "sn": "Adelaide Northwest"
-    },
-    "8845": {
-        "ln": "Adelaide West",
-        "sn": "Adelaide West"
-    },
-    "8846": {
-        "ln": "Adelaide Northeast",
-        "sn": "Adelaide Northeast"
-    },
-    "8847": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
-    },
-    "8848": {
-        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide",
-        "sn": "Adelaide"
-    },
-    "8849": {
-        "ln": "Adelaide South",
-        "sn": "Adelaide South"
+        "sn": "Broken Hill",
+        "ln": "Broken Hill"
     },
     "885": {
-        "ln": "Riverland, Murraylands",
-        "sn": "Riverland"
+        "sn": "Riverland",
+        "ln": "Riverland, Murraylands"
     },
     "886": {
-        "ln": "Ceduna",
-        "sn": "Ceduna"
+        "sn": "Ceduna",
+        "ln": "Ceduna"
     },
     "887": {
-        "ln": "Southeast",
-        "sn": "Southeast"
+        "sn": "Southeast",
+        "ln": "Southeast"
     },
     "888": {
-        "ln": "Mid North",
-        "sn": "Mid North"
+        "sn": "Mid North",
+        "ln": "Mid North"
     },
     "889": {
-        "ln": "Northern Territory (Alice Springs, Darwin)",
-        "sn": "Northern Territory"
+        "sn": "Northern Territory",
+        "ln": "Northern Territory (Alice Springs, Darwin)"
     },
     "890": {
-        "ln": "Kalgoorlie",
-        "sn": "Kalgoorlie"
-    },
-    "891.": {
-        "ln": "Derby (including Cocos & Christmas Islands)",
-        "sn": "Derby"
-    },
-    "89162": {
-        "ln": "Christmas Island",
-        "sn": "Christmas Island"
-    },
-    "89164": {
-        "ln": "Cocos/Keeling Islands",
-        "sn": "Cocos/Keeling Islands"
-    },
-    "8920": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8921": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8922": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8923": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8924": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North/Northwest"
-    },
-    "8925": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East/Southeast"
-    },
-    "8926": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8927": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8928": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8929": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8930": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8931": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8932": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8933": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8934": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North/Northwest"
-    },
-    "8935": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East/Southeast"
-    },
-    "8936": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8937": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8938": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8939": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
-    },
-    "8940": {
-        "ln": "Wanneroo, Perth North/Northwest",
-        "sn": "Perth"
-    },
-    "8941": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8942": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8943": {
-        "ln": "Perth City & Southwest",
-        "sn": "Perth City & Southwest"
-    },
-    "8944": {
-        "ln": "Perth North/Northwest",
-        "sn": "Perth North/Northwest"
-    },
-    "8945": {
-        "ln": "Perth East/Southeast",
-        "sn": "Perth East/Southeast"
-    },
-    "8946": {
-        "ln": "Perth",
-        "sn": "Perth"
-    },
-    "8947": {
-        "ln": "Perth Northeast",
-        "sn": "Perth Northeast"
-    },
-    "8948": {
-        "ln": "Perth West",
-        "sn": "Perth West"
-    },
-    "8949": {
-        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth",
-        "sn": "Perth"
+        "sn": "Kalgoorlie",
+        "ln": "Kalgoorlie"
     },
     "895": {
-        "ln": "Bullsbrook East",
-        "sn": "Bullsbrook East"
+        "sn": "Bullsbrook East",
+        "ln": "Bullsbrook East"
     },
     "896": {
-        "ln": "Moora",
-        "sn": "Moora"
+        "sn": "Moora",
+        "ln": "Moora"
     },
     "897": {
-        "ln": "Bridgetown",
-        "sn": "Bridgetown"
+        "sn": "Bridgetown",
+        "ln": "Bridgetown"
     },
     "898": {
-        "ln": "Albany",
-        "sn": "Albany"
+        "sn": "Albany",
+        "ln": "Albany"
     },
     "899": {
-        "ln": "Geraldton",
-        "sn": "Geraldton"
+        "sn": "Geraldton",
+        "ln": "Geraldton"
+    },
+    "2913": {
+        "sn": "Sydney South/Southeast",
+        "ln": "Sydney South/Southeast"
+    },
+    "2914": {
+        "sn": "Sydney North",
+        "ln": "Sydney North"
+    },
+    "2915": {
+        "sn": "Sydney Southwest",
+        "ln": "Sydney Southwest"
+    },
+    "2918": {
+        "sn": "Sydney Northwest",
+        "ln": "Sydney Northwest"
+    },
+    "2960": {
+        "sn": "Liverpool",
+        "ln": "Liverpool"
+    },
+    "2961": {
+        "sn": "Liverpool",
+        "ln": "Liverpool"
+    },
+    "2962": {
+        "sn": "Blacktown",
+        "ln": "Blacktown"
+    },
+    "2965": {
+        "sn": "Dural",
+        "ln": "Dural"
+    },
+    "7320": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7321": {
+        "sn": "Brisbane",
+        "ln": "Brisbane"
+    },
+    "7322": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7323": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7324": {
+        "sn": "Brisbane Southeast",
+        "ln": "Brisbane Southeast"
+    },
+    "7325": {
+        "sn": "Brisbane North/Northwest",
+        "ln": "Brisbane North/Northwest"
+    },
+    "7326": {
+        "sn": "Brisbane North/Northwest",
+        "ln": "Brisbane North/Northwest"
+    },
+    "7327": {
+        "sn": "Brisbane West/Southwest",
+        "ln": "Brisbane West/Southwest"
+    },
+    "7328": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7329": {
+        "sn": "Brisbane East",
+        "ln": "Brisbane East"
+    },
+    "7330": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7331": {
+        "sn": "Brisbane",
+        "ln": "Brisbane"
+    },
+    "7332": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7333": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7334": {
+        "sn": "Brisbane Southeast",
+        "ln": "Brisbane Southeast"
+    },
+    "7335": {
+        "sn": "Brisbane North/Northwest",
+        "ln": "Brisbane North/Northwest"
+    },
+    "7336": {
+        "sn": "Brisbane Northeast",
+        "ln": "Brisbane Northeast"
+    },
+    "7337": {
+        "sn": "Brisbane West/Southwest",
+        "ln": "Brisbane West/Southwest"
+    },
+    "7338": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7339": {
+        "sn": "Brisbane East",
+        "ln": "Brisbane East"
+    },
+    "7380": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7381": {
+        "sn": "Brisbane",
+        "ln": "Brisbane"
+    },
+    "7382": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7383": {
+        "sn": "Brisbane",
+        "ln": "Brisbane City Centre"
+    },
+    "7384": {
+        "sn": "Brisbane Southeast",
+        "ln": "Brisbane Southeast"
+    },
+    "7385": {
+        "sn": "Brisbane North/Northwest",
+        "ln": "Brisbane North/Northwest"
+    },
+    "7386": {
+        "sn": "Brisbane Northeast",
+        "ln": "Brisbane Northeast"
+    },
+    "7387": {
+        "sn": "Brisbane West/Southwest",
+        "ln": "Brisbane West/Southwest"
+    },
+    "7388": {
+        "sn": "Brisbane",
+        "ln": "Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane"
+    },
+    "7389": {
+        "sn": "Brisbane East",
+        "ln": "Brisbane East"
+    },
+    "8520": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8521": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8522": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8523": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8527": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8529": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8530": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8531": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8532": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8533": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8537": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8539": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8540": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8541": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8542": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8543": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8547": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8549": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8611": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8612": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8613": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8619": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8620": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8621": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8622": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8623": {
+        "sn": "Perth",
+        "ln": "Perth City & Southwest"
+    },
+    "8624": {
+        "sn": "Perth North",
+        "ln": "Perth North/Northwest"
+    },
+    "8625": {
+        "sn": "Perth East",
+        "ln": "Perth East/Southeast"
+    },
+    "8626": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8627": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8628": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8629": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8630": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8631": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8632": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8633": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8634": {
+        "sn": "Perth North/Northwest",
+        "ln": "Perth North/Northwest"
+    },
+    "8635": {
+        "sn": "Perth East/Southeast",
+        "ln": "Perth East/Southeast"
+    },
+    "8636": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8637": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8638": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8639": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8640": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8641": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8642": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8643": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8644": {
+        "sn": "Perth North/Northwest",
+        "ln": "Perth North/Northwest"
+    },
+    "8645": {
+        "sn": "Perth East/Southeast",
+        "ln": "Perth East/Southeast"
+    },
+    "8646": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8647": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8648": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8649": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8659": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8710": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8711": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8712": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8713": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8714": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8715": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8716": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8717": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8718": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8719": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8720": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8721": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8722": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8723": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8724": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8725": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8726": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8727": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8728": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8729": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8730": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8731": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8732": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8733": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8734": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8735": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8736": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8737": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8738": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8739": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8740": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8741": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8742": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8743": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8744": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8745": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8746": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8747": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8748": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8749": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8810": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8811": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8812": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8813": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8814": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8815": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8816": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8817": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8818": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8819": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8820": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8821": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8822": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8823": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8824": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8825": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8826": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8827": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8828": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8829": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8830": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8831": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8832": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8833": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8834": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8835": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8836": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8837": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8838": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8839": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8840": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8841": {
+        "sn": "Adelaide",
+        "ln": "Adelaide City Centre"
+    },
+    "8842": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "8843": {
+        "sn": "Adelaide East",
+        "ln": "Adelaide East"
+    },
+    "8844": {
+        "sn": "Adelaide Northwest",
+        "ln": "Adelaide Northwest"
+    },
+    "8845": {
+        "sn": "Adelaide West",
+        "ln": "Adelaide West"
+    },
+    "8846": {
+        "sn": "Adelaide Northeast",
+        "ln": "Adelaide Northeast"
+    },
+    "8847": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8848": {
+        "sn": "Adelaide",
+        "ln": "McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide"
+    },
+    "8849": {
+        "sn": "Adelaide South",
+        "ln": "Adelaide South"
+    },
+    "8920": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8921": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8922": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8923": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8924": {
+        "sn": "Perth North/Northwest",
+        "ln": "Perth North/Northwest"
+    },
+    "8925": {
+        "sn": "Perth East/Southeast",
+        "ln": "Perth East/Southeast"
+    },
+    "8926": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8927": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8928": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8929": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8930": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8931": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8932": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8933": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8934": {
+        "sn": "Perth North/Northwest",
+        "ln": "Perth North/Northwest"
+    },
+    "8935": {
+        "sn": "Perth East/Southeast",
+        "ln": "Perth East/Southeast"
+    },
+    "8936": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8937": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8938": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8939": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "8940": {
+        "sn": "Perth",
+        "ln": "Wanneroo, Perth North/Northwest"
+    },
+    "8941": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8942": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8943": {
+        "sn": "Perth City & Southwest",
+        "ln": "Perth City & Southwest"
+    },
+    "8944": {
+        "sn": "Perth North/Northwest",
+        "ln": "Perth North/Northwest"
+    },
+    "8945": {
+        "sn": "Perth East/Southeast",
+        "ln": "Perth East/Southeast"
+    },
+    "8946": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8947": {
+        "sn": "Perth Northeast",
+        "ln": "Perth Northeast"
+    },
+    "8948": {
+        "sn": "Perth West",
+        "ln": "Perth West"
+    },
+    "8949": {
+        "sn": "Perth",
+        "ln": "Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth"
+    },
+    "25551": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "27010": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "37010": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "75551": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "77010": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "85551": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "87010": {
+        "sn": "Fictitious use",
+        "ln": "Fictitious use"
+    },
+    "89162": {
+        "sn": "Christmas Island",
+        "ln": "Christmas Island"
+    },
+    "89164": {
+        "sn": "Cocos/Keeling Islands",
+        "ln": "Cocos/Keeling Islands"
+    },
+    "2555.": {
+        "sn": "Kempsey",
+        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook"
+    },
+    "255.": {
+        "sn": "Kempsey",
+        "ln": "Kempsey, Taree, Lord Howe Island, Muswellbrook"
+    },
+    "2701.": {
+        "sn": "Sydney",
+        "ln": "Sydney"
+    },
+    "270.": {
+        "sn": "Sydney",
+        "ln": "Sydney"
+    },
+    "291.": {
+        "sn": "Sydney",
+        "ln": "Sydney"
+    },
+    "296.": {
+        "sn": "Sydney",
+        "ln": "Sydney City Centre"
+    },
+    "3701.": {
+        "sn": "Melbourne",
+        "ln": "Melbourne"
+    },
+    "370.": {
+        "sn": "Melbourne",
+        "ln": "Melbourne"
+    },
+    "72.": {
+        "sn": "Brisbane",
+        "ln": "Brisbane, Bribie Island"
+    },
+    "73.": {
+        "sn": "Brisbane",
+        "ln": "Brisbane, Bribie Island"
+    },
+    "7555.": {
+        "sn": "Gold Coast",
+        "ln": "Gold Coast, Beaudesert"
+    },
+    "755.": {
+        "sn": "Gold Coast",
+        "ln": "Gold Coast, Beaudesert"
+    },
+    "7701.": {
+        "sn": "North-east",
+        "ln": "North-eastern Australia (QLD)"
+    },
+    "770.": {
+        "sn": "North-east",
+        "ln": "North-eastern Australia (QLD)"
+    },
+    "855.": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8555.": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "861.": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "865.": {
+        "sn": "Perth",
+        "ln": "Perth"
+    },
+    "8701.": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "870.": {
+        "sn": "Adelaide",
+        "ln": "Adelaide"
+    },
+    "891.": {
+        "sn": "Derby",
+        "ln": "Derby (including Cocos & Christmas Islands)"
     }
 }

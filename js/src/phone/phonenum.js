@@ -285,7 +285,7 @@ ilib.PhoneNumber = function(number, options) {
 						}),
 						callback: ilib.bind(this, function (stdata) {
 							if (!stdata) {
-								stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+								stdata = ilib.PhoneNumber._defaultStates;
 							}
 		
 							stateData = stdata;
@@ -397,55 +397,73 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 ilib.PhoneNumber._parseImsi = function(data, imsi) {
 	var ch, 
 		i,
-		stateTable, 
+		currentState, 
 		end, 
 		handlerMethod,
 		state = 0,
 		newState,
-		fields = {};
+		fields = {},
+		lastLeaf,
+		consumed = 0;
 	
-	stateTable = data;
-	if (!stateTable) {
+	currentState = data;
+	if (!currentState) {
 		// can't parse anything
 		return undefined;
 	}
+	
 	i = 0;
-	while ( i < imsi.length ) {
+	while (i < imsi.length) {
 		ch = ilib.PhoneNumber._getCharacterCode(imsi.charAt(i));
 		// console.info("parsing char " + imsi.charAt(i) + " code: " + ch);
 		if (ch >= 0) {
-			newState = stateTable.states[state][ch];
+			newState = currentState.s && currentState.s[ch];
 			
-			if (newState < 0) {
-				// reached a final state. First convert the state to a positive array index
-				// in order to look up the name of the handler function name in the array
-				state = newState;
-				newState = -newState - 1;
-				handlerMethod = ilib.PhoneNumber._states[newState];
-				// console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
-
-				// deal with syntactic ambiguity by using the "special" end state instead of "area"
-				if ( handlerMethod === "area" ) {
-					end = i+1;
-				} else if ( handlerMethod === "special" ) {
-					end = i;
-				} else {
-					// unrecognized imsi, so just assume the mnc is 3 digits
-					end = 6;
+			if (typeof(newState) === 'object') {
+				if (typeof(newState.f) !== 'undefined') {
+					// save for latter if needed
+					lastLeaf = newState;
+					consumed = i;
+				}
+				// console.info("recognized digit " + ch + " continuing...");
+				// recognized digit, so continue parsing
+				currentState = newState;
+				i++;
+			} else {
+				if (typeof(newState) === 'undefined' || newState === 0) {
+					// this is possibly a look-ahead and it didn't work... 
+					// so fall back to the last leaf and use that as the
+					// final state
+					newState = lastLeaf;
+					i = consumed;
 				}
 				
-				fields.mcc = imsi.substring(0,3);
-				fields.mnc = imsi.substring(3,end);
-				fields.msin = imsi.substring(end);
+				if ((typeof(newState) === 'number' && newState) ||
+					(typeof(newState) === 'object' && typeof(newState.f) !== 'undefined')) {
+					// final state
+					var stateNumber = typeof(newState) === 'number' ? newState : newState.f;
+					handlerMethod = ilib.PhoneNumber._states[stateNumber];
 
-				break;
-			} else {
-				// console.info("recognized digit " + optionalch + " continuing...");
-				// recognized digit, so continue parsing
-				state = newState;
-				i++;
+					// console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
+	
+					// deal with syntactic ambiguity by using the "special" end state instead of "area"
+					if ( handlerMethod === "area" ) {
+						end = i+1;
+					} else {
+						// unrecognized imsi, so just assume the mnc is 3 digits
+						end = 6;
+					}
+					
+					fields.mcc = imsi.substring(0,3);
+					fields.mnc = imsi.substring(3,end);
+					fields.msin = imsi.substring(end);
+	
+					break;
+				} else {
+					break; // error
+				}
 			}
-		} else if ( ch === -1 ) {
+		} else if (ch === -1) {
 			// non-transition character, continue parsing in the same state
 			i++;
 		} else {
@@ -456,8 +474,8 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 		}
 	}
 		
-	if ( state > 0 ) {
-		if ( i >= imsi.length && i >= 6 ) {
+	if (state > 0) {
+		if (i >= imsi.length && i >= 6) {
 			// we reached the end of the imsi, but did not finish recognizing anything. 
 			// Default to last resort and assume 3 digit mnc
 			fields.mcc = imsi.substring(0,3);
@@ -565,6 +583,22 @@ ilib.PhoneNumber._fieldOrder = [
 	"extension"
 ];
 
+ilib.PhoneNumber._defaultStates = {
+	"s": [
+		0,0,0,0,0,0,0,0,0,0,0,0,0,
+		{  // ^
+			"s": [
+				{ // ^0
+					"s": [3], // ^00 -> idd
+					"l": 12   // ^0  -> trunk
+				},
+				0,0,0,0,0,0,0,0,0,
+				2 // ^+ -> plus
+			]
+		}
+	]
+};
+
 ilib.PhoneNumber.prototype = {
 	/**
 	 * @protected
@@ -598,34 +632,7 @@ ilib.PhoneNumber.prototype = {
 					}),
 					callback: ilib.bind(this, function (stateData) {
 						if (!stateData) {
-							// stateData = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
-							stateData = {
-								"s": [
-								      0, // 0
-							          0,
-							          0, // 2
-							          0,
-							          0, // 4
-							          0,
-							          0, // 6
-							          0,
-							          0, // 8
-							          0,
-							          0, // +
-							          0, // *
-							          0, // #
-							          {  // ^
-							              "s": [
-							                  {
-							                      "s": [
-							                          3
-							                      ]
-							                  },
-							                  0,0,0,0,0,0,0,0,0,2
-							              ]
-							          }
-							      ]
-							  };
+							stateData = ilib.PhoneNumber._defaultStates;
 						}
 						
 						new ilib.NumPlan({
@@ -666,89 +673,107 @@ ilib.PhoneNumber.prototype = {
 	 * @param {Object} options
 	 */
 	_parseNumber: function(number, regionData, options) {
-		var stateData,
-			i, ch,
+		var i, ch,
 			regionSettings,
-			state = 0, //begin state
 			newState,
 			dot,
 			handlerMethod,
-			result;
+			result,
+			currentState = regionData.stateData,
+			lastLeaf = undefined,
+			consumed = 0;
 
 		regionSettings = regionData;
-		stateData = regionSettings.stateData;
 		dot = 14; // special transition which matches all characters. See AreaCodeTableMaker.java
 
 		i = 0;
 		while (i < number.length) {
 			ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
 			if (ch >= 0) {
-				newState = stateData.states[state][ch];
-	
-				if (newState === -1 && stateData.states[state][dot] !== -1 ) {
-					// check if this character can match the dot instead
-					newState = stateData.states[state][dot];
-					//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
+				// newState = stateData.states[state][ch];
+				newState = currentState.s && currentState.s[ch];
+				
+				if (!newState && currentState.s && currentState.s[dot]) {
+					newState = currentState.s[dot];
 				}
-	
-				if (newState < 0) {
-					// this final state. First convert the state to a positive array index
-					// in order to look up the name of the handler function name in the array
-					newState = -newState -1;
-					handlerMethod = ilib.PhoneNumber._states[newState];
-
-					if (number.charAt(0) === '^') {
-						result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
-					} else {
-						result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
+				
+				if (typeof(newState) === 'object') {
+					if (typeof(newState.f) !== 'undefined') {
+						// save for latter if needed
+						lastLeaf = newState;
+						consumed = i;
 					}
-	
-					// reparse whatever is left
-					number = result.number;
-					i= 0;
-					//console.log("reparsing with new number: " +  number);
-					state = 0;
-					// if the handler requested a special sub-table, use it for this round of parsing,
-					// otherwise, set it back to the regular table to continue parsing
-
-					if (result.countryCode !== undefined) {
-						this._parseOtherCountry(number, regionData, options, result.countryCode);
-						// don't process any further -- let the work be done in the onLoad callbacks
-						return;
-					} else if (result.table !== undefined) {
-						ilib.loadData({
-							name: result.table + ".json",
-							object: ilib.PhoneNumber,
-							nonlocale: true,
-							sync: this.sync,
-							loadParams: this.loadParams,
-							callback: ilib.bind(this, function (data) {
-								if (!data) {
-									data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
-								}
-
-								regionSettings = {
-									stateData : data,
-									plan: regionSettings.plan,
-									handler: regionSettings.handler
-								};
-								
-								// recursively call the parser with the new states data
-								// to finish the parsing
-								this._parseNumber(number, regionSettings, options);
-							})
-						});
-						// don't process any further -- let the work be done in the onLoad callbacks
-						return;
-					} else if (result.skipTrunk !== undefined) {
-						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
-						state = stateData[state][ch];
-					}
-				} else {
 					// console.info("recognized digit " + ch + " continuing...");
 					// recognized digit, so continue parsing
-					state = newState;
+					currentState = newState;
 					i++;
+				} else {
+					if (typeof(newState) === 'undefined' || newState === 0) {
+						// this is possibly a look-ahead and it didn't work... 
+						// so fall back to the last leaf and use that as the
+						// final state
+						newState = lastLeaf;
+						i = consumed;
+					}
+					
+					if ((typeof(newState) === 'number' && newState) ||
+						(typeof(newState) === 'object' && typeof(newState.f) !== 'undefined')) {
+						// final state
+						var stateNumber = typeof(newState) === 'number' ? newState : newState.f;
+						handlerMethod = ilib.PhoneNumber._states[stateNumber];
+						
+						if (number.charAt(0) === '^') {
+							result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
+						} else {
+							result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
+						}
+		
+						// reparse whatever is left
+						number = result.number;
+						i = 0;
+						//console.log("reparsing with new number: " +  number);
+						currentState = regionSettings.stateData;
+						// if the handler requested a special sub-table, use it for this round of parsing,
+						// otherwise, set it back to the regular table to continue parsing
+	
+						if (result.countryCode !== undefined) {
+							this._parseOtherCountry(number, regionData, options, result.countryCode);
+							// don't process any further -- let the work be done in the onLoad callbacks
+							return;
+						} else if (result.table !== undefined) {
+							ilib.loadData({
+								name: result.table + ".json",
+								object: ilib.PhoneNumber,
+								nonlocale: true,
+								sync: this.sync,
+								loadParams: this.loadParams,
+								callback: ilib.bind(this, function (data) {
+									if (!data) {
+										data = ilib.PhoneNumber._defaultStates;
+									}
+	
+									regionSettings = {
+										stateData: data,
+										plan: regionSettings.plan,
+										handler: regionSettings.handler
+									};
+									
+									// recursively call the parser with the new states data
+									// to finish the parsing
+									this._parseNumber(number, regionSettings, options);
+								})
+							});
+							// don't process any further -- let the work be done in the onLoad callbacks
+							return;
+						} else if (result.skipTrunk !== undefined) {
+							ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
+							currentState = currentState.s && currentState.s[ch];
+						}
+					} else {
+						// failed parse. Either no last leaf to fall back to, or there was an explicit
+						// zero in the table
+						break;
+					}
 				}
 			} else if (ch === -1) {
 				// non-transition character, continue parsing in the same state
@@ -760,7 +785,7 @@ ilib.PhoneNumber.prototype = {
 				i++;
 			}
 		}
-		if (state > 0 && i > 0) {
+		if (currentState && i > 0) {
 			// we reached the end of the phone number, but did not finish recognizing anything. 
 			// Default to last resort and put everything that is left into the subscriber number
 			//console.log("Reached end of number before parsing was complete. Using handler for method none.")

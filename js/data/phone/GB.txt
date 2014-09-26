@@ -37,13 +37,13 @@
 34.	service
 37.	service
 
-55	service	// for corporate numbering
-56	service	// for corporate numbering
+55	service	for corporate numbering
+56	service	for corporate numbering
 500	service
 
 800	service
 808	service
-820	service	//Internet for Schools
+820	service	Internet for Schools
 845	service
 844	service
 843	service
@@ -53,7 +53,7 @@
 872	service
 873	service
 
-//	area codes
+#	area codes
 20	area	London	London
 121	area	Birmingham	Birmingham
 23	area	Southampton	Southampton, Portsmouth

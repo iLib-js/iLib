@@ -4,13 +4,13 @@
 ^0.	trunk
 ^000	emergency	Emergency Services (Police, Fire, Ambulance)
 
-14		service3	Satellite phone services // 01471 12345 or 0145123456
-16		service	Paging
-18.		cell	Analogue mobile phones
+14	service3	Satellite phone services // 01471 12345 or 0145123456
+16	service	Paging
+18.	cell	Analogue mobile phones
 198	service	Data networks // 0198 379 000
 500	personal	"Find me anywhere" call diversion
 550	service	VOIP Range
-59		service	Enum testing numbers
+59	service	Enum testing numbers
 ^106	emergency	TTY emergency
 ^1100	service	Dial before you dig
 ^112	emergency	Emergency from GSM phones only

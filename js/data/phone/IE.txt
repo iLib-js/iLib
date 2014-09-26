@@ -9,7 +9,7 @@
 ^116	emergency
 ^999	emergency
 
-^10	service national operator
+^10	service	national operator
 ^114	service	international operator
 ^118..	service	directory assistance
 

@@ -1,226 +1,154 @@
 {
-    "10": {
-        "ln": "Wavre",
-        "sn": "Wavre"
-    },
-    "11": {
-        "ln": "Hasselt",
-        "sn": "Hasselt"
-    },
-    "12": {
-        "ln": "Tongeren",
-        "sn": "Tongeren"
-    },
-    "13": {
-        "ln": "Diest",
-        "sn": "Diest"
-    },
-    "14": {
-        "ln": "Herentals, Turnhout",
-        "sn": "Herentals"
-    },
-    "15": {
-        "ln": "Mechelen (Malines)",
-        "sn": "Mechelen"
-    },
-    "16": {
-        "ln": "Leuven (Louvain), Tienen",
-        "sn": "Leuven"
-    },
-    "19": {
-        "ln": "Waremme (Borgworm)",
-        "sn": "Waremme"
-    },
     "2": {
-        "ln": "Brussels (Bruxelles)",
-        "sn": "Brussels"
+        "sn": "Brussels",
+        "ln": "Brussels (Bruxelles)"
     },
     "3": {
-        "ln": "Antwerp (Antwerpen, Anvers), St Niklaas",
-        "sn": "Antwerp"
+        "sn": "Antwerp",
+        "ln": "Antwerp (Antwerpen, Anvers), St Niklaas"
+    },
+    "10": {
+        "sn": "Wavre",
+        "ln": "Wavre"
+    },
+    "11": {
+        "sn": "Hasselt",
+        "ln": "Hasselt"
+    },
+    "12": {
+        "sn": "Tongeren",
+        "ln": "Tongeren"
+    },
+    "13": {
+        "sn": "Diest",
+        "ln": "Diest"
+    },
+    "14": {
+        "sn": "Herentals",
+        "ln": "Herentals, Turnhout"
+    },
+    "15": {
+        "sn": "Mechelen",
+        "ln": "Mechelen (Malines)"
+    },
+    "16": {
+        "sn": "Leuven",
+        "ln": "Leuven (Louvain), Tienen"
+    },
+    "19": {
+        "sn": "Waremme",
+        "ln": "Waremme (Borgworm)"
     },
     "41": {
-        "ln": "Liege (Luik), Fourons",
-        "sn": "Liege"
+        "sn": "Liege",
+        "ln": "Liege (Luik), Fourons"
     },
     "50": {
-        "ln": "Brugge (Bruges), Zeebrugge",
-        "sn": "Brugge"
+        "sn": "Brugge",
+        "ln": "Brugge (Bruges), Zeebrugge"
     },
     "51": {
-        "ln": "Roeselare (Roulers)",
-        "sn": "Roeselare"
+        "sn": "Roeselare",
+        "ln": "Roeselare (Roulers)"
     },
     "52": {
-        "ln": "Dendermonde (Termonde)",
-        "sn": "Dendermonde"
+        "sn": "Dendermonde",
+        "ln": "Dendermonde (Termonde)"
     },
     "53": {
-        "ln": "Aalst (Alost)",
-        "sn": "Aalst"
+        "sn": "Aalst",
+        "ln": "Aalst (Alost)"
     },
     "54": {
-        "ln": "Ninove",
-        "sn": "Ninove"
+        "sn": "Ninove",
+        "ln": "Ninove"
     },
     "55": {
-        "ln": "Ronse-Renaix",
-        "sn": "Ronse-Renaix"
+        "sn": "Ronse-Renaix",
+        "ln": "Ronse-Renaix"
     },
     "56": {
-        "ln": "Kortrijk (Courtai), Comines-Warneton",
-        "sn": "Kortrijk"
+        "sn": "Kortrijk",
+        "ln": "Kortrijk (Courtai), Comines-Warneton"
     },
     "57": {
-        "ln": "Ieper (Ypres)",
-        "sn": "Ieper"
+        "sn": "Ieper",
+        "ln": "Ieper (Ypres)"
     },
     "58": {
-        "ln": "Veurne (Furnes)",
-        "sn": "Veurne"
+        "sn": "Veurne",
+        "ln": "Veurne (Furnes)"
     },
     "59": {
-        "ln": "Oostende (Ostende)",
-        "sn": "Oostende"
+        "sn": "Oostende",
+        "ln": "Oostende (Ostende)"
     },
     "60": {
-        "ln": "Chimay",
-        "sn": "Chimay"
+        "sn": "Chimay",
+        "ln": "Chimay"
     },
     "61": {
-        "ln": "Bastogne, Libramont-Chevigny",
-        "sn": "Bastogne"
+        "sn": "Bastogne",
+        "ln": "Bastogne, Libramont-Chevigny"
     },
     "63": {
-        "ln": "Arlon (Aarlen)",
-        "sn": "Arlon"
+        "sn": "Arlon",
+        "ln": "Arlon (Aarlen)"
     },
     "64": {
-        "ln": "La Louviere",
-        "sn": "La Louviere"
+        "sn": "La Louviere",
+        "ln": "La Louviere"
     },
     "65": {
-        "ln": "Mons (Bergen)",
-        "sn": "Mons"
+        "sn": "Mons",
+        "ln": "Mons (Bergen)"
     },
     "67": {
-        "ln": "Nivelles (Nijvel)",
-        "sn": "Nivelles"
+        "sn": "Nivelles",
+        "ln": "Nivelles (Nijvel)"
     },
     "68": {
-        "ln": "Ath (Aat)",
-        "sn": "Ath"
+        "sn": "Ath",
+        "ln": "Ath (Aat)"
     },
     "69": {
-        "ln": "Tournai (Doornik)",
-        "sn": "Tournai"
+        "sn": "Tournai",
+        "ln": "Tournai (Doornik)"
     },
     "71": {
-        "ln": "Charleroi",
-        "sn": "Charleroi"
-    },
-    "801": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "802": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "803": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "804": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "805": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "806": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "807": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "808": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
-    },
-    "809": {
-        "ln": "Stavelot",
-        "sn": "Stavelot"
+        "sn": "Charleroi",
+        "ln": "Charleroi"
     },
     "81": {
-        "ln": "Namur (Namen)",
-        "sn": "Namur"
+        "sn": "Namur",
+        "ln": "Namur (Namen)"
     },
     "82": {
-        "ln": "Dinant",
-        "sn": "Dinant"
+        "sn": "Dinant",
+        "ln": "Dinant"
     },
     "83": {
-        "ln": "Ciney",
-        "sn": "Ciney"
+        "sn": "Ciney",
+        "ln": "Ciney"
     },
     "84": {
-        "ln": "Jemelle, Marche-en-Famenne",
-        "sn": "Jemelle"
+        "sn": "Jemelle",
+        "ln": "Jemelle, Marche-en-Famenne"
     },
     "85": {
-        "ln": "Huy",
-        "sn": "Huy"
+        "sn": "Huy",
+        "ln": "Huy"
     },
     "86": {
-        "ln": "Durbuy",
-        "sn": "Durbuy"
+        "sn": "Durbuy",
+        "ln": "Durbuy"
     },
     "87": {
-        "ln": "Verviers",
-        "sn": "Verviers"
+        "sn": "Verviers",
+        "ln": "Verviers"
     },
     "89": {
-        "ln": "Genk",
-        "sn": "Genk"
-    },
-    "91": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "92": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "93": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "94": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "95": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "96": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "97": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "98": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
-    },
-    "99": {
-        "ln": "Gent (Ghent, Gand)",
-        "sn": "Gent"
+        "sn": "Genk",
+        "ln": "Genk"
     }
 }

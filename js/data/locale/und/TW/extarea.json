@@ -1,114 +1,117 @@
 {
     "2": {
-        "ln": "Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong",
-        "sn": "Taipei"
-    },
-    "3.": {
-        "ln": "Taoyuan, Tachi",
-        "sn": "Taoyuan"
-    },
-    "32": {
-        "ln": "Ilan County, Ruifang",
-        "sn": "Ilan"
-    },
-    "33": {
-        "ln": "Taoyuan County, Daxi",
-        "sn": "Taoyuan"
-    },
-    "34": {
-        "ln": "Taoyuan County, Zhongli",
-        "sn": "Taoyuan"
-    },
-    "36": {
-        "ln": "Hsinchu County, Hukou, Zhudong",
-        "sn": "Hsinchu"
-    },
-    "37": {
-        "ln": "Miaoli County, Zhunan, Miaoli",
-        "sn": "Miaoli"
-    },
-    "38": {
-        "ln": "Hualian County",
-        "sn": "Hualian"
-    },
-    "39": {
-        "ln": "Ilan County, Jiaoqi, Su'ao, Luodong",
-        "sn": "Ilan"
-    },
-    "4.": {
-        "ln": "Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin",
-        "sn": "Taichung"
-    },
-    "45": {
-        "ln": "Taizhong County, Houli, Lishan",
-        "sn": "Taichung"
-    },
-    "46": {
-        "ln": "Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi",
-        "sn": "Dadu"
-    },
-    "47": {
-        "ln": "Changhua County, Lugang",
-        "sn": "Changhua"
-    },
-    "48": {
-        "ln": "Shetou Tianzhong Yongjing Yuanlin",
-        "sn": "Shetou"
-    },
-    "49": {
-        "ln": "Nantou County, Buli, Riyuetan, Xincun, Zhongxing",
-        "sn": "Nantou"
-    },
-    "5.": {
-        "ln": "Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu",
-        "sn": "Yunlin"
-    },
-    "56": {
-        "ln": "Huwei",
-        "sn": "Huwei"
-    },
-    "6.": {
-        "ln": "Tainan County, Chiali, Makung, Shanhua",
-        "sn": "Tainan"
-    },
-    "62": {
-        "ln": "Tainan County, Tainan",
-        "sn": "Tainan"
-    },
-    "66": {
-        "ln": "Tainan County, Xinying",
-        "sn": "Tainan"
-    },
-    "69": {
-        "ln": "Tainan County, Penghu",
-        "sn": "Tainan"
+        "sn": "Taipei",
+        "ln": "Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong"
     },
     "7": {
-        "ln": " Kaohsiung County, Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying",
-        "sn": "Kaohsiung"
+        "sn": "Kaohsiung",
+        "ln": " Kaohsiung County, Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying"
     },
-    "8.": {
-        "ln": "Pingtung County, Chaozhou, Pingdong, Matzu Dao",
-        "sn": "Pingtung"
+    "32": {
+        "sn": "Ilan",
+        "ln": "Ilan County, Ruifang"
     },
-    "8..": {
-        "ln": "Matzu Dao, Kinmen",
-        "sn": "Matzu Dao"
+    "33": {
+        "sn": "Taoyuan",
+        "ln": "Taoyuan County, Daxi"
     },
-    "823": {
-        "ln": "Kinmen",
-        "sn": "Kinmen"
+    "34": {
+        "sn": "Taoyuan",
+        "ln": "Taoyuan County, Zhongli"
     },
-    "836": {
-        "ln": "Matzu",
-        "sn": "Matzu"
+    "35": {
+        "sn": "Hsinchu Hsinchu County, Chubei"
+    },
+    "36": {
+        "sn": "Hsinchu",
+        "ln": "Hsinchu County, Hukou, Zhudong"
+    },
+    "37": {
+        "sn": "Miaoli",
+        "ln": "Miaoli County, Zhunan, Miaoli"
+    },
+    "38": {
+        "sn": "Hualian",
+        "ln": "Hualian County"
+    },
+    "39": {
+        "sn": "Ilan",
+        "ln": "Ilan County, Jiaoqi, Su'ao, Luodong"
+    },
+    "45": {
+        "sn": "Taichung",
+        "ln": "Taizhong County, Houli, Lishan"
+    },
+    "46": {
+        "sn": "Dadu",
+        "ln": "Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi"
+    },
+    "47": {
+        "sn": "Changhua",
+        "ln": "Changhua County, Lugang"
+    },
+    "48": {
+        "sn": "Shetou",
+        "ln": "Shetou Tianzhong Yongjing Yuanlin"
+    },
+    "49": {
+        "sn": "Nantou",
+        "ln": "Nantou County, Buli, Riyuetan, Xincun, Zhongxing"
+    },
+    "56": {
+        "sn": "Huwei",
+        "ln": "Huwei"
+    },
+    "62": {
+        "sn": "Tainan",
+        "ln": "Tainan County, Tainan"
+    },
+    "66": {
+        "sn": "Tainan",
+        "ln": "Tainan County, Xinying"
+    },
+    "69": {
+        "sn": "Tainan",
+        "ln": "Tainan County, Penghu"
     },
     "88": {
-        "ln": "Donggang",
-        "sn": "Donggang"
+        "sn": "Donggang",
+        "ln": "Donggang"
     },
     "89": {
-        "ln": "Taitung County",
-        "sn": "Taitung"
+        "sn": "Taitung",
+        "ln": "Taitung County"
+    },
+    "823": {
+        "sn": "Kinmen",
+        "ln": "Kinmen"
+    },
+    "836": {
+        "sn": "Matzu",
+        "ln": "Matzu"
+    },
+    "3.": {
+        "sn": "Taoyuan",
+        "ln": "Taoyuan, Tachi"
+    },
+    "4.": {
+        "sn": "Taichung",
+        "ln": "Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin"
+    },
+    "5.": {
+        "sn": "Yunlin",
+        "ln": "Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu"
+    },
+    "6.": {
+        "sn": "Tainan",
+        "ln": "Tainan County, Chiali, Makung, Shanhua"
+    },
+    "8.": {
+        "sn": "Pingtung",
+        "ln": "Pingtung County, Chaozhou, Pingdong, Matzu Dao"
+    },
+    "8..": {
+        "sn": "Matzu Dao",
+        "ln": "Matzu Dao, Kinmen"
     }
 }

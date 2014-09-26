@@ -98,5 +98,14 @@ exports.UnicodeFile.prototype = {
 	get: function (index) {
 		var row = (index >= 0 && index < this.rows.length) ? this.rows[index] : undefined;
 		return row && row.split(this.splitChar); 
+	},
+
+	/**
+	 * Return the whole line at the given index
+	 * @param index line number to get
+	 * @returns {string} the whole line at the given index
+	 */
+	getLine: function (index) {
+		return (index >= 0 && index < this.rows.length) ? this.rows[index] : undefined;
 	}
 };

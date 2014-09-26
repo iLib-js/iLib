@@ -1,233 +1,275 @@
-010	area	Genoa	Genoa, Moncalieri
-011	area	Turin	Turin
-0121	area	Pinerolo	Pinerolo
-0122	area	Susa	Susa
-0123	area	Lanzo Torinese	Lanzo Torinese
-0124	area	Rivarolo Canavese	Rivarolo Canavese
-0125	area	Ivrea	Ivrea
-0131	area	Alessandria	Alessandria
-0141	area	Asti	Asti
-0142	area	Casale Monferrato	Casale Monferrato
-0143	area	Novi Ligure	Novi Ligure
-0144	area	Acqui Terme	Acqui Terme
-015	area	Biella	Biella
-0161	area	Vercelli	Vercelli
-0163	area	Borgosesia	Borgosesia
-0165	area	Aosta	Aosta
-0166	area	Saint Vincent 	Saint Vincent 
-0171	area	Cuneo	Cuneo
-0172	area	Savigliano	Savigliano
-0173	area	Alba	Alba
-0174	area	Mondovì	Mondovì
-0175	area	Saluzzo	Saluzzo
-0182	area	Albenga	Albenga
-0183	area	Imperia	Imperia
-0184	area	San Remo	San Remo
-0185	area	Rapallo	Rapallo & Portofino
-0187	area	La Spezia	La Spezia
-019	area	Savona	Savona
-02	area	Milan	Milan, Rho, Saronno
-030	area	Brescia	Brescia
-031	area	Como	Como
-0321	area	Novara	Novara
-0322	area	Arona	Arona
-0323	area	Baveno	Baveno
-0324	area	Domodossola	Domodossola
-0331	area	Busto Arsizio	Busto Arsizio
-0332	area	Varese	Varese
-0341	area	Lecco	Lecco
-0342	area	Sondrio	Sondrio
-0343	area	Chiavenna	Chiavenna
-0344	area	Menaggio	Menaggio
-0345	area	S. Pellegrino Terme	San Pellegrino Terme
-0346	area	Clusone	Clusone
-035	area	Bergamo	Bergamo
-0362	area	Seregno	Seregno
-0363	area	Treviglio	Treviglio
-0364	area	Breno	Breno
-0365	area	Salò	Salò
-0371	area	Lodi	Lodi
-0372	area	Cremona	Cremona
-0373	area	Crema	Crema
-0374	area	Soresina	Soresina
-0375	area	Casalmaggiore	Casalmaggiore
-0376	area	Mantova	Mantova
-0377	area	Codogno	Codogno
-0381	area	Vigevano	Vigevano
-0382	area	Pavia	Pavia
-0383	area	Voghera	Voghera
-0384	area	Mortara	Mortara
-0385	area	Stradella	Stradella
-0386	area	Ostiglia	Ostiglia
-039	area	Monza	Monza
-040	area	Trieste	Trieste
-041	area	Venice	Venice
-0421	area	S. Donà di Piave	San Donà di Piave
-0422	area	Treviso	Treviso
-0423	area	Montebelluna	Montebelluna
-0424	area	Bassano Del Grappa	Bassano Del Grappa
-0425	area	Rovigo	Rovigo
-0426	area	Adria	Adria
-0427	area	Spilimbergo	Spilimbergo
-0428	area	Tarvisio	Tarvisio
-0429	area	Este	Este
-0431	area	Cervinagno Del Friuli	Cervinagno Del Friuli
-0432	area	Udine	Udine
-0433	area	Tolmezzo	Tolmezzo
-0434	area	Pordenone	Pordenone
-0435	area	Pieve di Cadore	Pieve di Cadore
-0436	area	Cortina d'Ampezzo	Cortina d'Ampezzo
-0437	area	Belluno	Belluno
-0438	area	Conegliano	Conegliano
-0439	area	Feltre	Feltre
-0442	area	Legnano	Legnano
-0444	area	Vicenza	Vicenza
-0445	area	Schio	Schio
-045	area	Verona	Verona
-0461	area	Trento	Trento
-0462	area	Cavalese	Cavalese
-0463	area	Cles	Cles
-0464	area	Rovereto	Rovereto
-0465	area	Madonna de Campiglio	Madonna de Campiglio, Tione Di Trento
-0471	area	Bolzano	Bolzano
-0472	area	Bressanone	Bressanone
-0473	area	Merano	Merano
-0474	area	Brunico	Brunico
-0481	area	Gorizia	Gorizia
-049	area	Padua	Padua
-050	area	Pisa	Pisa
-051	area	Bologna	Bologna
-0521	area	Parma	Parma
-0522	area	Reggio Emilia	Reggio Emilia
-0523	area	Piacenza	Piacenza
-0524	area	Fidenza	Fidenza
-0525	area	Fornovo Di Taro	Fornovo Di Taro
-0532	area	Ferrara	Ferrara
-0533	area	Comacchio	Comacchio
-0534	area	Porretta Terme	Porretta Terme
-0535	area	Mirandola	Mirandola
-0536	area	Pavullo Nel Frignano	Pavullo Nel Frignano, Sassuolo
-0541	area	Rímini 	Rímini 
-0542	area	Imola	Imola
-0543	area	Forlì	Forlì
-0544	area	Ravenna	Ravenna
-0545	area	Lugo	Lugo, Lungro
-0546	area	Faenza	Faenza
-0547	area	Cesena	Cesena
-0549	area	S. Marino	San Marino
-055	area	Florence	Florence, Sesto Fiorentino
-0564	area	Grosseto	Grosseto
-0565	area	Piombino	Piombino
-0566	area	Follonica	Follonica
-0571	area	Empoli	Empoli
-0572	area	Montecatini Terme	Montecatini Terme
-0573	area	Pistoia	Pistoia
-0574	area	Prato	Prato
-0575	area	Arezzo	Arezzo
-0577	area	Siena	Siena
-0578	area	Chianciano Terme	Chianciano Terme
-0583	area	Lucca	Lucca
-0584	area	Viareggio	Viareggio
-0585	area	Carrara	Carrara, Massa
-0586	area	Livorno	Livorno
-0587	area	Pontedera	Pontedera
-0588	area	Volterra	Volterra
-059	area	Módena 	Módena, Carpi 
-06	area	Rome	Rome, Vatican City
-070	area	Cagliari	Cagliari
-071	area	Ancona	Ancona
-0721	area	Pesaro	Pesaro
-0722	area	Urbino	Urbino
-0731	area	Jesi	Jesi
-0732	area	Fabriano	Fabriano
-0733	area	Macerata	Macerata
-0734	area	Fermo	Fermo
-0735	area	S. Benedetto Del Tronto	San Benedetto Del Tronto
-0736	area	Ascoli Piceno	Ascoli Piceno
-0737	area	Camerino	Camerino
-0742	area	Foligno	Foligno
-0743	area	Spoleto	Spoleto
-0744	area	Terni	Terni
-0746	area	Rieti	Rieti
-075	area	Perugia	Perugia
-0761	area	Viterbo	Viterbo
-0763	area	Orvieto	Orvieto
-0765	area	Poggio Mirteto	Poggio Mirteto, Poggio San Lorenzo
-0766	area	Civitavecchia	Civitavecchia
-0771	area	Formia	Formia
-0773	area	Latina	Latina
-0774	area	Tívoli 	Tívoli 
-0775	area	Frosinone	Frosinone
-0776	area	Cassino	Cassino
-0781	area	Iglesias	Iglesias
-0782	area	Lanusei	Lanusei
-0783	area	Oristano	Oristano
-0784	area	Nuoro	Nuoro
-0785	area	Macomer	Macomer
-0789	area	Olbia	Olbia
-079	area	Sassari	Sassari
-080	area	Bari	Bari, Altamura, Bisceglie, Bitonto, Corato, Molfetta
-081	area	Naples 	Naples, Capri, Aversa, Castellamare Di Stabia, Nocera Inferiore, Pompei, Pozzuoli, Sorrento, Torre Annunziata, Torre Dei Greco 
-0823	area	Caserta	Caserta
-0824	area	Benevento	Benevento
-0825	area	Avellino	Avellino
-0827	area	S. Angelo Del Lombardi	Sant'Angelo Del Lombardi
-0828	area	Battipaglia	Battipaglia
-0831	area	Brindisi	Brindisi
-0832	area	Lecce	Lecce
-0833	area	Gallipoli	Gallipoli
-0835	area	Matera	Matera
-0836	area	Maglie	Maglie
-085	area	Pescara	Pescara
-0861	area	Teramo	Teramo
-0862	area	L'Aquila 	L'Aquila 
-0863	area	Avezzano	Avezzano
-0864	area	Sulmona	Sulmona
-0865	area	Isernia	Isernia
-0871	area	Chieti	Chieti
-0872	area	Lanciano	Lanciano
-0873	area	Vasto	Vasto
-0874	area	Campobasso	Campobasso, Ilsi
-0875	area	Termoli	Termoli
-0881	area	Foggia	Foggia
-0882	area	S. Severo	San Severo
-0883	area	Andria	Andria, Barletta, Trani
-0884	area	Manfredonia	Manfredonia
-0885	area	Cerignola	Cerignola
-089	area	Salerno	Salerno, Cava Dei Tirreni
-090	area	Messina	Messina, Barcellona Pozzo Digotto
-091	area	Palermo	Palermo
-0921	area	Cefalù	Cefalù
-0922	area	Agrigento	Agrigento, Licata
-0923	area	Trapani	Trapani, Marsala, Mazara Del Vallo, Pantelleria
-0924	area	Alcamo	Alcamo
-0925	area	Sciacca	Sciacca
-0931	area	Siracusa	Siracusa, Augusta
-0932	area	Vittoria	Vittoria, Ragusa
-0933	area	Caltagirone	Caltagirone, Gela
-0934	area	Caltanissetta	Caltanissetta
-0935	area	Enna	Enna
-0941	area	Patti	Patti
-0942	area	Taormina	Taormina
-0958	area	Lamezia Terme	Lamezia Terme
-095	area	Catania	Catania, Acireale, Adrano, Lentini, Paterno
-0961	area	Catanzaro	Catanzaro
-0962	area	Crotone	Crotone
-0963	area	Vibo Valentia	Vibo Valentia
-0964	area	Locri	Locri
-0965	area	Reggio Calabria	Reggio Calabria
-0966	area	Palmi	Palmi
-0967	area	Soverato	Soverato
-0968	area	Lamezia Terme	Lamezia Terme
-0971	area	Potenza	Potenza
-0972	area	Melfi	Melfi
-0973	area	Lagonegro	Lagonegro
-0974	area	Vallo Della Lucania 	Vallo Della Lucania 
-0975	area	Sala Consilina	Sala Consilina
-0976	area	Muro Lucano	Muro Lucano
-0981	area	Castrovillari	Castrovillari
-0982	area	Paola	Paola
-0983	area	Rossano	Rossano
-0984	area	Cosenza	Cosenza
-0985	area	Scalea	Scalea
-099	area	Taranto	Taranto
+^+	plus
+^00	idd
+^0	trunk
+
+0	trunk
+
+878	service	mass calls phone number (polls, television programs, etc.)
+
+^1	service	Service and emergency numbers
+^112	service	Gendarmerie (Carabinieri)
+^113	service	Police (Polizia di Stato)
+^115	service	Fire brigade (Vigili del Fuoco)
+^116	service	Road help (ACI)
+^117	service	Italian Customs/Financial/Border Police Guardia di Finanza 
+^118	service	Ambulance (Italian Red Cross included)
+
+^12..	service	Premium rate services 
+^144.	service	Premium rate services
+^15..	service	Other emergency and information services
+^1515	service	Forest and environmental emergency (Corpo Forestale dello Stato)
+^1518	service	Road information service (CCISS)
+^1530	service	Coast Guard (Corps of the Port Captaincies – Coast Guard)
+^166	service	Premium rate services
+^178	service	Premium rate services
+^18	service	Customer care services
+^19	service	Customer care services
+^199	service	Premium rate services
+
+^3	cell	mobile phones
+
+^4	service	internal phone net service numbers
+
+^5	service	Voip numbers
+
+^7..	service	internet service numbers
+^70.	service	dial-up internet access numbers
+
+^80.	service	toll free number (within Italy)
+^84.	service	shared rate (information services)
+^89.	service	Premium rate services (information and adult services)
+^892	service	Premium rate services
+
+10	area	Genoa	Genoa, Moncalieri
+11	area	Turin	Turin
+121	area	Pinerolo	Pinerolo
+122	area	Susa	Susa
+123	area	Lanzo Torinese	Lanzo Torinese
+124	area	Rivarolo Canavese	Rivarolo Canavese
+125	area	Ivrea	Ivrea
+131	area	Alessandria	Alessandria
+141	area	Asti	Asti
+142	area	Casale Monferrato	Casale Monferrato
+143	area	Novi Ligure	Novi Ligure
+144	area	Acqui Terme	Acqui Terme
+15	area	Biella	Biella
+161	area	Vercelli	Vercelli
+163	area	Borgosesia	Borgosesia
+165	area	Aosta	Aosta
+166	area	Saint Vincent 	Saint Vincent 
+171	area	Cuneo	Cuneo
+172	area	Savigliano	Savigliano
+173	area	Alba	Alba
+174	area	Mondovì	Mondovì
+175	area	Saluzzo	Saluzzo
+182	area	Albenga	Albenga
+183	area	Imperia	Imperia
+184	area	San Remo	San Remo
+185	area	Rapallo	Rapallo & Portofino
+187	area	La Spezia	La Spezia
+19	area	Savona	Savona
+2	area	Milan	Milan, Rho, Saronno
+30	area	Brescia	Brescia
+31	area	Como	Como
+321	area	Novara	Novara
+322	area	Arona	Arona
+323	area	Baveno	Baveno
+324	area	Domodossola	Domodossola
+331	area	Busto Arsizio	Busto Arsizio
+332	area	Varese	Varese
+341	area	Lecco	Lecco
+342	area	Sondrio	Sondrio
+343	area	Chiavenna	Chiavenna
+344	area	Menaggio	Menaggio
+345	area	S. Pellegrino Terme	San Pellegrino Terme
+346	area	Clusone	Clusone
+35	area	Bergamo	Bergamo
+362	area	Seregno	Seregno
+363	area	Treviglio	Treviglio
+364	area	Breno	Breno
+365	area	Salò	Salò
+371	area	Lodi	Lodi
+372	area	Cremona	Cremona
+373	area	Crema	Crema
+374	area	Soresina	Soresina
+375	area	Casalmaggiore	Casalmaggiore
+376	area	Mantova	Mantova
+377	area	Codogno	Codogno
+381	area	Vigevano	Vigevano
+382	area	Pavia	Pavia
+383	area	Voghera	Voghera
+384	area	Mortara	Mortara
+385	area	Stradella	Stradella
+386	area	Ostiglia	Ostiglia
+39	area	Monza	Monza
+40	area	Trieste	Trieste
+41	area	Venice	Venice
+421	area	S. Donà di Piave	San Donà di Piave
+422	area	Treviso	Treviso
+423	area	Montebelluna	Montebelluna
+424	area	Bassano Del Grappa	Bassano Del Grappa
+425	area	Rovigo	Rovigo
+426	area	Adria	Adria
+427	area	Spilimbergo	Spilimbergo
+428	area	Tarvisio	Tarvisio
+429	area	Este	Este
+431	area	Cervinagno Del Friuli	Cervinagno Del Friuli
+432	area	Udine	Udine
+433	area	Tolmezzo	Tolmezzo
+434	area	Pordenone	Pordenone
+435	area	Pieve di Cadore	Pieve di Cadore
+436	area	Cortina d'Ampezzo	Cortina d'Ampezzo
+437	area	Belluno	Belluno
+438	area	Conegliano	Conegliano
+439	area	Feltre	Feltre
+442	area	Legnano	Legnano
+444	area	Vicenza	Vicenza
+445	area	Schio	Schio
+45	area	Verona	Verona
+461	area	Trento	Trento
+462	area	Cavalese	Cavalese
+463	area	Cles	Cles
+464	area	Rovereto	Rovereto
+465	area	Madonna de Campiglio	Madonna de Campiglio, Tione Di Trento
+471	area	Bolzano	Bolzano
+472	area	Bressanone	Bressanone
+473	area	Merano	Merano
+474	area	Brunico	Brunico
+481	area	Gorizia	Gorizia
+49	area	Padua	Padua
+50	area	Pisa	Pisa
+51	area	Bologna	Bologna
+521	area	Parma	Parma
+522	area	Reggio Emilia	Reggio Emilia
+523	area	Piacenza	Piacenza
+524	area	Fidenza	Fidenza
+525	area	Fornovo Di Taro	Fornovo Di Taro
+532	area	Ferrara	Ferrara
+533	area	Comacchio	Comacchio
+534	area	Porretta Terme	Porretta Terme
+535	area	Mirandola	Mirandola
+536	area	Pavullo Nel Frignano	Pavullo Nel Frignano, Sassuolo
+541	area	Rímini 	Rímini 
+542	area	Imola	Imola
+543	area	Forlì	Forlì
+544	area	Ravenna	Ravenna
+545	area	Lugo	Lugo, Lungro
+546	area	Faenza	Faenza
+547	area	Cesena	Cesena
+549	area	S. Marino	San Marino
+55	area	Florence	Florence, Sesto Fiorentino
+564	area	Grosseto	Grosseto
+565	area	Piombino	Piombino
+566	area	Follonica	Follonica
+571	area	Empoli	Empoli
+572	area	Montecatini Terme	Montecatini Terme
+573	area	Pistoia	Pistoia
+574	area	Prato	Prato
+575	area	Arezzo	Arezzo
+577	area	Siena	Siena
+578	area	Chianciano Terme	Chianciano Terme
+583	area	Lucca	Lucca
+584	area	Viareggio	Viareggio
+585	area	Carrara	Carrara, Massa
+586	area	Livorno	Livorno
+587	area	Pontedera	Pontedera
+588	area	Volterra	Volterra
+59	area	Módena 	Módena, Carpi 
+6	area	Rome	Rome, Vatican City
+70	area	Cagliari	Cagliari
+71	area	Ancona	Ancona
+721	area	Pesaro	Pesaro
+722	area	Urbino	Urbino
+731	area	Jesi	Jesi
+732	area	Fabriano	Fabriano
+733	area	Macerata	Macerata
+734	area	Fermo	Fermo
+735	area	S. Benedetto Del Tronto	San Benedetto Del Tronto
+736	area	Ascoli Piceno	Ascoli Piceno
+737	area	Camerino	Camerino
+742	area	Foligno	Foligno
+743	area	Spoleto	Spoleto
+744	area	Terni	Terni
+746	area	Rieti	Rieti
+75	area	Perugia	Perugia
+761	area	Viterbo	Viterbo
+763	area	Orvieto	Orvieto
+765	area	Poggio Mirteto	Poggio Mirteto, Poggio San Lorenzo
+766	area	Civitavecchia	Civitavecchia
+771	area	Formia	Formia
+773	area	Latina	Latina
+774	area	Tívoli 	Tívoli 
+775	area	Frosinone	Frosinone
+776	area	Cassino	Cassino
+781	area	Iglesias	Iglesias
+782	area	Lanusei	Lanusei
+783	area	Oristano	Oristano
+784	area	Nuoro	Nuoro
+785	area	Macomer	Macomer
+789	area	Olbia	Olbia
+79	area	Sassari	Sassari
+80	area	Bari	Bari, Altamura, Bisceglie, Bitonto, Corato, Molfetta
+81	area	Naples 	Naples, Capri, Aversa, Castellamare Di Stabia, Nocera Inferiore, Pompei, Pozzuoli, Sorrento, Torre Annunziata, Torre Dei Greco 
+823	area	Caserta	Caserta
+824	area	Benevento	Benevento
+825	area	Avellino	Avellino
+827	area	S. Angelo Del Lombardi	Sant'Angelo Del Lombardi
+828	area	Battipaglia	Battipaglia
+831	area	Brindisi	Brindisi
+832	area	Lecce	Lecce
+833	area	Gallipoli	Gallipoli
+835	area	Matera	Matera
+836	area	Maglie	Maglie
+85	area	Pescara	Pescara
+861	area	Teramo	Teramo
+862	area	L'Aquila 	L'Aquila 
+863	area	Avezzano	Avezzano
+864	area	Sulmona	Sulmona
+865	area	Isernia	Isernia
+871	area	Chieti	Chieti
+872	area	Lanciano	Lanciano
+873	area	Vasto	Vasto
+874	area	Campobasso	Campobasso, Ilsi
+875	area	Termoli	Termoli
+881	area	Foggia	Foggia
+882	area	S. Severo	San Severo
+883	area	Andria	Andria, Barletta, Trani
+884	area	Manfredonia	Manfredonia
+885	area	Cerignola	Cerignola
+89	area	Salerno	Salerno, Cava Dei Tirreni
+90	area	Messina	Messina, Barcellona Pozzo Digotto
+91	area	Palermo	Palermo
+921	area	Cefalù	Cefalù
+922	area	Agrigento	Agrigento, Licata
+923	area	Trapani	Trapani, Marsala, Mazara Del Vallo, Pantelleria
+924	area	Alcamo	Alcamo
+925	area	Sciacca	Sciacca
+931	area	Siracusa	Siracusa, Augusta
+932	area	Vittoria	Vittoria, Ragusa
+933	area	Caltagirone	Caltagirone, Gela
+934	area	Caltanissetta	Caltanissetta
+935	area	Enna	Enna
+941	area	Patti	Patti
+942	area	Taormina	Taormina
+958	area	Lamezia Terme	Lamezia Terme
+95	area	Catania	Catania, Acireale, Adrano, Lentini, Paterno
+961	area	Catanzaro	Catanzaro
+962	area	Crotone	Crotone
+963	area	Vibo Valentia	Vibo Valentia
+964	area	Locri	Locri
+965	area	Reggio Calabria	Reggio Calabria
+966	area	Palmi	Palmi
+967	area	Soverato	Soverato
+968	area	Lamezia Terme	Lamezia Terme
+971	area	Potenza	Potenza
+972	area	Melfi	Melfi
+973	area	Lagonegro	Lagonegro
+974	area	Vallo Della Lucania 	Vallo Della Lucania 
+975	area	Sala Consilina	Sala Consilina
+976	area	Muro Lucano	Muro Lucano
+981	area	Castrovillari	Castrovillari
+982	area	Paola	Paola
+983	area	Rossano	Rossano
+984	area	Cosenza	Cosenza
+985	area	Scalea	Scalea
+99	area	Taranto	Taranto
