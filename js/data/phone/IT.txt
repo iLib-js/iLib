@@ -33,7 +33,6 @@
 ^5	service	Voip numbers
 
 ^7..	service	internet service numbers
-^70.	service	dial-up internet access numbers
 
 ^80.	service	toll free number (within Italy)
 ^84.	service	shared rate (information services)

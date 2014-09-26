@@ -97,6 +97,16 @@
 188	cell	China Mobile TD-SCDMA
 189	cell	China Telecom  CDMA
 
+^1	local
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local
+
 550	area	Chuzhou	Chuzhou 滁州市
 551	area	Hefei	Hefei 合肥市
 552	area	Bengbu	Bengbu 蚌埠市

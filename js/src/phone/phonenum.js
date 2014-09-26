@@ -420,7 +420,7 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 			newState = currentState.s && currentState.s[ch];
 			
 			if (typeof(newState) === 'object') {
-				if (typeof(newState.f) !== 'undefined') {
+				if (typeof(newState.l) !== 'undefined') {
 					// save for latter if needed
 					lastLeaf = newState;
 					consumed = i;
@@ -439,9 +439,9 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 				}
 				
 				if ((typeof(newState) === 'number' && newState) ||
-					(typeof(newState) === 'object' && typeof(newState.f) !== 'undefined')) {
+					(typeof(newState) === 'object' && typeof(newState.l) !== 'undefined')) {
 					// final state
-					var stateNumber = typeof(newState) === 'number' ? newState : newState.f;
+					var stateNumber = typeof(newState) === 'number' ? newState : newState.l;
 					handlerMethod = ilib.PhoneNumber._states[stateNumber];
 
 					// console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
@@ -698,7 +698,7 @@ ilib.PhoneNumber.prototype = {
 				}
 				
 				if (typeof(newState) === 'object') {
-					if (typeof(newState.f) !== 'undefined') {
+					if (typeof(newState.l) !== 'undefined') {
 						// save for latter if needed
 						lastLeaf = newState;
 						consumed = i;
@@ -717,9 +717,9 @@ ilib.PhoneNumber.prototype = {
 					}
 					
 					if ((typeof(newState) === 'number' && newState) ||
-						(typeof(newState) === 'object' && typeof(newState.f) !== 'undefined')) {
+						(typeof(newState) === 'object' && typeof(newState.l) !== 'undefined')) {
 						// final state
-						var stateNumber = typeof(newState) === 'number' ? newState : newState.f;
+						var stateNumber = typeof(newState) === 'number' ? newState : newState.l;
 						handlerMethod = ilib.PhoneNumber._states[stateNumber];
 						
 						if (number.charAt(0) === '^') {
