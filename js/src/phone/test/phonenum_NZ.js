@@ -49,8 +49,7 @@ function testParseNZBogusPrefix(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		subscriberNumber: "59812345",
-		invalid: true
+		subscriberNumber: "59812345"
 	}, {locale: "en-NZ"});
 	
 	assertTrue(parsed.equals(expected));
@@ -363,7 +362,8 @@ function testParseNZWithNZMCC(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "6153222313"
+		subscriberNumber: "6153222313",
+		invalid: true
 	}, {locale: "en-NZ"});
 	
 	assertTrue(parsed.equals(expected));

@@ -1,6 +1,6 @@
 ^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 0	trunk
 
@@ -53,7 +53,7 @@
 872	service
 873	service
 
-#	area codes
+//	area codes
 20	area	London	London
 121	area	Birmingham	Birmingham
 23	area	Southampton	Southampton, Portsmouth

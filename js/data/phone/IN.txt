@@ -1,9 +1,9 @@
-# mostly taken from http://www.dot.gov.in/numbering_plan/nnp2003.pdf
-# and http://en.wikipedia.org/wiki/Telephone_numbers_in_India
+// mostly taken from http://www.dot.gov.in/numbering_plan/nnp2003.pdf
+// and http://en.wikipedia.org/wiki/Telephone_numbers_in_India
 
 ^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 ^9	cell
 

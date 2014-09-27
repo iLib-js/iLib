@@ -190,12 +190,13 @@ ilib.GeoLocator.prototype = {
 		var ch,
 			i,
 			handlerMethod,
-			state = 0,
 			newState,
 			prefix = "",
+			consumed,
+			lastLeaf,
+			currentState,
 			dot = 14;	// special transition which matches all characters. See AreaCodeTableMaker.java
 
-		i = 0;
 		if (!number || !stateTable) {
 			// can't parse anything
 			return undefined;
@@ -203,35 +204,51 @@ ilib.GeoLocator.prototype = {
 
 		//console.log("GeoLocator._parseAreaAndSubscriber: parsing number " + number);
 
+		currentState = stateTable;
+		i = 0;
 		while (i < number.length) {
 			ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
-			//console.info("parsing char " + number.charAt(i) + " code: " + ch);
 			if (ch >= 0) {
-				newState = stateTable.states[state][ch];
-
-				if (newState === -1 && stateTable.states[state][dot] !== -1) {
-					// check if this character can match the dot instead
-					newState = stateTable.states[state][dot];
-					//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
-					prefix += '.';
-				} else {
-					prefix += ch;
+				// newState = stateData.states[state][ch];
+				newState = currentState.s && currentState.s[ch];
+				
+				if (!newState && currentState.s && currentState.s[dot]) {
+					newState = currentState.s[dot];
 				}
 				
-				if (newState < 0) {
-					// reached a final state. First convert the state to a positive array index
-					// in order to look up the name of the handler function name in the array
-					state = newState;
-					newState = -newState - 1;
-					handlerMethod = ilib.PhoneNumber._states[newState];
-					//console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
-
-					return (handlerMethod === "area") ? prefix : undefined;
-				} else {
-					//console.info("recognized digit " + ch + " continuing...");
+				if (typeof(newState) === 'object') {
+					if (typeof(newState.l) !== 'undefined') {
+						// save for latter if needed
+						lastLeaf = newState;
+						consumed = i;
+					}
+					// console.info("recognized digit " + ch + " continuing...");
 					// recognized digit, so continue parsing
-					state = newState;
+					currentState = newState;
 					i++;
+				} else {
+					if (typeof(newState) === 'undefined' || newState === 0) {
+						// this is possibly a look-ahead and it didn't work... 
+						// so fall back to the last leaf and use that as the
+						// final state
+						newState = lastLeaf;
+						i = consumed;
+					}
+					
+					if ((typeof(newState) === 'number' && newState) ||
+						(typeof(newState) === 'object' && typeof(newState.l) !== 'undefined')) {
+						// final state
+						var stateNumber = typeof(newState) === 'number' ? newState : newState.l;
+						handlerMethod = ilib.PhoneNumber._states[stateNumber];
+
+						//console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
+	
+						return (handlerMethod === "area") ? number.substring(0, i) : undefined;
+					} else {
+						// failed parse. Either no last leaf to fall back to, or there was an explicit
+						// zero in the table
+						break;
+					}
 				}
 			} else if (ch === -1) {
 				// non-transition character, continue parsing in the same state

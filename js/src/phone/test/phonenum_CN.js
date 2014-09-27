@@ -348,7 +348,7 @@ function testParseCNPlusIDDToUnknown(){
 	
 	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
-		countryCode: "506",
+		countryCode: "506",  // Costa Rica
 		subscriberNumber: "2012345678"
 	}, {locale: "zh-CN"});
 	

@@ -1,6 +1,6 @@
 ^+	plus
 
-^0.	trunk
+^0	trunk
 
 10	idd
 

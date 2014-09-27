@@ -293,7 +293,7 @@ function testParseESDialIDD00International1(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-			trunkAccess: "0"
+		serviceCode: "0"
 	}, {locale: "es-ES"});
 	
 	assertTrue(parsed.equals(expected));

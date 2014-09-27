@@ -46,15 +46,17 @@ ilib.StateHandler.prototype = {
 		
 		last = number.search(/[xwtp]/i);	// last digit of the local number
 
-		if ( last > -1 ) {
-			if ( last > 0 ) {
+		if (last > -1) {
+			if (last > 0) {
 				fields.subscriberNumber = number.substring(0, last);
 			}
 			// strip x's which are there to indicate a break between the local subscriber number and the extension, but
 			// are not themselves a dialable character
 			fields.extension = number.substring(last).replace('x', '');
 		} else {
-			fields.subscriberNumber = number;
+			if (number.length) {
+				fields.subscriberNumber = number;
+			}
 		}
 		
 		if (regionSettings.plan.getFieldLength('maxLocalLength') &&
@@ -74,14 +76,12 @@ ilib.StateHandler.prototype = {
 	 * @param {boolean} noExtractTrunk 
 	 */
 	processFieldWithSubscriberNumber: function(fieldName, length, number, currentChar, fields, regionSettings, noExtractTrunk) {
-		var ret, end, last;
+		var ret, end;
 		
-		last = number.search(/[xwtp]/i);	// last digit of the local number
-		
-		if ( length !== undefined && length > 0 ) {
+		if (length !== undefined && length > 0) {
 			// fixed length
 			end = length;
-			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+			if (regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
 				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
 			}
 		} else {
@@ -90,21 +90,21 @@ ilib.StateHandler.prototype = {
 			end = currentChar + 1 - length;
 		}
 		
-		if ( fields[fieldName] !== undefined ) {
+		if (fields[fieldName] !== undefined) {
 			// we have a spurious recognition, because this number already contains that field! So, just put
 			// everything into the subscriberNumber as the default
 			this.processSubscriberNumber(number, fields, regionSettings);
 		} else {
 			// substring() extracts the part of the string up to but not including the end character,
 			// so add one to compensate
-			if ( !noExtractTrunk && regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+			if (!noExtractTrunk && regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
 				fields.trunkAccess = number.charAt(0);
 				fields[fieldName] = number.substring(1, end);
 			} else {
 				fields[fieldName] = number.substring(0, end);
 			}
 			
-			if ( number.length > end ) {
+			if (number.length > end) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
 		}
@@ -127,10 +127,10 @@ ilib.StateHandler.prototype = {
 	processField: function(fieldName, length, number, currentChar, fields, regionSettings) {
 		var ret = {}, end;
 		
-		if ( length !== undefined && length > 0 ) {
+		if (length !== undefined && length > 0) {
 			// fixed length
 			end = length;
-			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+			if (regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
 				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
 			}
 		} else {
@@ -139,7 +139,7 @@ ilib.StateHandler.prototype = {
 			end = currentChar + 1 - length;
 		}
 		
-		if ( fields[fieldName] !== undefined ) {
+		if (fields[fieldName] !== undefined) {
 			// we have a spurious recognition, because this number already contains that field! So, just put
 			// everything into the subscriberNumber as the default
 			this.processSubscriberNumber(number, fields, regionSettings);
@@ -147,7 +147,7 @@ ilib.StateHandler.prototype = {
 		} else {
 			// substring() extracts the part of the string up to but not including the end character,
 			// so add one to compensate
-			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+			if (regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
 				fields.trunkAccess = number.charAt(0);
 				fields[fieldName] = number.substring(1, end);
 				ret.skipTrunk = true;
@@ -170,7 +170,7 @@ ilib.StateHandler.prototype = {
 	trunk: function(number, currentChar, fields, regionSettings) {
 		var ret, trunkLength;
 		
-		if ( fields.trunkAccess !== undefined ) {
+		if (fields.trunkAccess !== undefined) {
 			// What? We already have one? Okay, put the rest of this in the subscriber number as the default behaviour then.
 			this.processSubscriberNumber(number, fields, regionSettings);
 			number = "";
@@ -196,7 +196,7 @@ ilib.StateHandler.prototype = {
 	plus: function(number, currentChar, fields, regionSettings) {
 		var ret = {};
 		
-		if ( fields.iddPrefix !== undefined ) {
+		if (fields.iddPrefix !== undefined) {
 			// What? We already have one? Okay, put the rest of this in the subscriber number as the default behaviour then.
 			this.processSubscriberNumber(number, fields, regionSettings);
 			ret.number = "";
@@ -222,7 +222,7 @@ ilib.StateHandler.prototype = {
 	idd: function(number, currentChar, fields, regionSettings) {
 		var ret = {};
 		
-		if ( fields.iddPrefix !== undefined ) {
+		if (fields.iddPrefix !== undefined) {
 			// What? We already have one? Okay, put the rest of this in the subscriber number as the default behaviour then.
 			this.processSubscriberNumber(number, fields, regionSettings);
 			ret.number = "";
@@ -295,10 +295,10 @@ ilib.StateHandler.prototype = {
 		last = number.search(/[xwtp]/i);	// last digit of the local number
 		localLength = (last > -1) ? last : number.length;
 
-		if ( regionSettings.plan.getFieldLength('areaCode') > 0 ) {
+		if (regionSettings.plan.getFieldLength('areaCode') > 0) {
 			// fixed length
 			end = regionSettings.plan.getFieldLength('areaCode');
-			if ( regionSettings.plan.getTrunkCode() === number.charAt(0) ) {
+			if (regionSettings.plan.getTrunkCode() === number.charAt(0)) {
 				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
 				localLength -= regionSettings.plan.getTrunkCode().length;
 			}
@@ -310,22 +310,22 @@ ilib.StateHandler.prototype = {
 		
 		// substring() extracts the part of the string up to but not including the end character,
 		// so add one to compensate
-		if ( regionSettings.plan.getTrunkCode() === number.charAt(0) ) {
+		if (regionSettings.plan.getTrunkCode() === number.charAt(0)) {
 			fields.trunkAccess = number.charAt(0);
-			if ( number.length > 1 ) {
+			if (number.length > 1) {
 				fields.areaCode = number.substring(1, end);
 			}
-			if ( number.length > end ) {
+			if (number.length > end) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
-		} else if ( regionSettings.plan.getFieldLength('maxLocalLength') !== undefined ) {
-			if ( fields.trunkAccess !== undefined || fields.mobilePrefix !== undefined ||
+		} else if (regionSettings.plan.getFieldLength('maxLocalLength') !== undefined) {
+			if (fields.trunkAccess !== undefined || fields.mobilePrefix !== undefined ||
 					fields.countryCode !== undefined ||
-					localLength > regionSettings.plan.getFieldLength('maxLocalLength') ) {
+					localLength > regionSettings.plan.getFieldLength('maxLocalLength')) {
 				// too long for a local number by itself, or a different final state already parsed out the trunk
 				// or mobile prefix, then consider the rest of this number to be an area code + part of the subscriber number
 				fields.areaCode = number.substring(0, end);
-				if ( number.length > end ) {
+				if (number.length > end) {
 					this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 				}
 			} else {
@@ -334,7 +334,7 @@ ilib.StateHandler.prototype = {
 			}
 		} else {
 			fields.areaCode = number.substring(0, end);
-			if ( number.length > end ) {
+			if (number.length > end) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
 		}
@@ -366,7 +366,7 @@ ilib.StateHandler.prototype = {
 		
 		// this is a last resort function that is called when nothing is recognized.
 		// When this happens, just put the whole stripped number into the subscriber number
-		if ( regionSettings.plan && number.charAt(0) === regionSettings.plan.getTrunkCode()) {
+		if (regionSettings.plan && number.charAt(0) === regionSettings.plan.getTrunkCode()) {
 			fields.trunkAccess = number.charAt(0);
 			number = number.substring(1);
 			//currentChar--;
@@ -374,7 +374,7 @@ ilib.StateHandler.prototype = {
 			
 		if (number.length > 0) {
 			this.processSubscriberNumber(number, fields, regionSettings);
-			if ( currentChar > 0 && currentChar < number.length ) {
+			if (currentChar > 0 && currentChar < number.length) {
 				// if we were part-way through parsing, and we hit an invalid digit,
 				// indicate that the number could not be parsed properly
 				fields.invalid = true;
@@ -397,9 +397,9 @@ ilib.StateHandler.prototype = {
 	vsc: function(number, currentChar, fields, regionSettings) {
 		var ret, length, end;
 
-		if ( fields.vsc === undefined ) {
+		if (fields.vsc === undefined) {
 			length = regionSettings.plan.getFieldLength('vsc') || 0;
-			if ( length !== undefined && length > 0 ) {
+			if (length !== undefined && length > 0) {
 				// fixed length
 				end = length;
 			} else {
@@ -598,7 +598,7 @@ ilib.USStateHandler = function () {
 
 ilib.USStateHandler.prototype = new ilib.StateHandler();
 ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regionSettings) {
-	var ret, length, end;
+	var ret;
 
 	// found a VSC code (ie. a "star code")
 	fields.vsc = number;

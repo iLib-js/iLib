@@ -313,7 +313,8 @@ function testParseSGWithGBMCC(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "6153222313"
+		subscriberNumber: "6153222313",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));

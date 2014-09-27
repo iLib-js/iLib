@@ -13,6 +13,7 @@
         "serviceCode": 0,
         "emergency": 0,
         "vsc": 0,
-        "minLocalLength": 7
+        "minLocalLength": 7,
+        "maxLocalLength": 9
     }
 }

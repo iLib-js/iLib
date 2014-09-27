@@ -49,7 +49,8 @@ function testParseGBBogusPrefix(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		subscriberNumber: "669812345"
+		subscriberNumber: "669812345",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));
@@ -472,7 +473,8 @@ function testParseGBWithGBMCC(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "6153222313"
+		subscriberNumber: "6153222313",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));

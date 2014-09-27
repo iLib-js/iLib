@@ -585,17 +585,35 @@ ilib.PhoneNumber._fieldOrder = [
 
 ilib.PhoneNumber._defaultStates = {
 	"s": [
-		0,0,0,0,0,0,0,0,0,0,0,0,0,
-		{  // ^
-			"s": [
+        0,
+		21,  // 1 -> local
+        21,  // 2 -> local
+        21,  // 3 -> local
+        21,  // 4 -> local
+        21,  // 5 -> local
+        21,  // 6 -> local
+        21,  // 7 -> local
+        21,  // 8 -> local
+        21,  // 9 -> local
+        0,0,0,
+	    { // ^
+	    	"s": [
 				{ // ^0
 					"s": [3], // ^00 -> idd
 					"l": 12   // ^0  -> trunk
 				},
-				0,0,0,0,0,0,0,0,0,
-				2 // ^+ -> plus
-			]
-		}
+				21,  // ^1 -> local
+	            21,  // ^2 -> local
+	            21,  // ^3 -> local
+	            21,  // ^4 -> local
+	            21,  // ^5 -> local
+	            21,  // ^6 -> local
+	            21,  // ^7 -> local
+	            21,  // ^8 -> local
+	            21,  // ^9 -> local
+	            2    // ^+ -> plus
+	        ]
+	    }
 	]
 };
 
@@ -655,6 +673,15 @@ ilib.PhoneNumber.prototype = {
 									handler: ilib._handlerFactory(this.destinationLocale, plan)
 								};
 								
+								// for plans that do not skip the trunk code when dialing from
+								// abroad, we need to treat the number from here on in as if it 
+								// were parsing a local number from scratch. That way, the parser
+								// does not get confused between parts of the number at the
+								// beginning of the number, and parts in the middle.
+								if (!plan.getSkipTrunk()) {
+									number = '^' + number;
+								}
+									
 								// recursively call the parser with the new states data
 								// to finish the parsing
 								this._parseNumber(number, regionSettings, options);
@@ -697,9 +724,9 @@ ilib.PhoneNumber.prototype = {
 					newState = currentState.s[dot];
 				}
 				
-				if (typeof(newState) === 'object') {
+				if (typeof(newState) === 'object' && i+1 < number.length) {
 					if (typeof(newState.l) !== 'undefined') {
-						// save for latter if needed
+						// this is a leaf node, so save that for later if needed
 						lastLeaf = newState;
 						consumed = i;
 					}
@@ -708,12 +735,16 @@ ilib.PhoneNumber.prototype = {
 					currentState = newState;
 					i++;
 				} else {
-					if (typeof(newState) === 'undefined' || newState === 0) {
+					if ((typeof(newState) === 'undefined' || newState === 0 ||
+						(typeof(newState) === 'object' && typeof(newState.l) === 'undefined')) &&
+						 lastLeaf) {
 						// this is possibly a look-ahead and it didn't work... 
 						// so fall back to the last leaf and use that as the
 						// final state
 						newState = lastLeaf;
 						i = consumed;
+						consumed = 0;
+						lastLeaf = undefined;
 					}
 					
 					if ((typeof(newState) === 'number' && newState) ||
@@ -730,7 +761,9 @@ ilib.PhoneNumber.prototype = {
 		
 						// reparse whatever is left
 						number = result.number;
-						i = 0;
+						i = consumed = 0;
+						lastLeaf = undefined;
+						
 						//console.log("reparsing with new number: " +  number);
 						currentState = regionSettings.stateData;
 						// if the handler requested a special sub-table, use it for this round of parsing,
@@ -770,8 +803,15 @@ ilib.PhoneNumber.prototype = {
 							currentState = currentState.s && currentState.s[ch];
 						}
 					} else {
+						handlerMethod = (typeof(newState) === 'number') ? "none" : "local";
 						// failed parse. Either no last leaf to fall back to, or there was an explicit
-						// zero in the table
+						// zero in the table. Put everything else in the subscriberNumber field as the
+						// default place
+						if (number.charAt(0) === '^') {
+							result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
+						} else {
+							result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
+						}
 						break;
 					}
 				}
@@ -785,14 +825,15 @@ ilib.PhoneNumber.prototype = {
 				i++;
 			}
 		}
-		if (currentState && i > 0) {
+		if (i >= number.length && currentState !== regionData.stateData) {
+			handlerMethod = (typeof(currentState.l) === 'undefined' || currentState === 0) ? "none" : "local";
 			// we reached the end of the phone number, but did not finish recognizing anything. 
 			// Default to last resort and put everything that is left into the subscriber number
 			//console.log("Reached end of number before parsing was complete. Using handler for method none.")
 			if (number.charAt(0) === '^') {
-				result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
+				result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
 			} else {
-				result = regionSettings.handler.none(number, i, this, regionSettings);
+				result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
 			}
 		}
 

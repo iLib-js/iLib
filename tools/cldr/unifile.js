@@ -39,14 +39,25 @@ var fs = require('fs');
  * <li>string - The actual in-memory text of the file
  * </ul>
  * 
+ * The options can also contain zero or more of the following properties:
+ * 
+ * <ul>
+ * <li>splitChar - defines the field separator. This can be a character or 
+ * regular expression to split each line on. Default is semi-colon ';'
+ * <li>commentString - defines the string that introduces a line comment.
+ * Everything after this string to the end of the line is ignored as a comment.
+ * Default is the hash char '#'.
+ * </ul>
+ * 
  * @constructor
- * @param {Object.<path:string,string:string>} options options governing the construction of this file
+ * @param {Object.<path:string,string:string,splitChar:string,commentString:string>} options options governing the construction of this file
  */
 exports.UnicodeFile = function (options) {
 	var data;
 	
 	this.rows = [];
 	this.splitChar = ';';
+	this.commentString = '#';
 
 	if (options) {
 		if (options.path) {
@@ -57,6 +68,9 @@ exports.UnicodeFile = function (options) {
 		}
 		if (options.splitChar) {
 			this.splitChar = options.splitChar;
+		}
+		if (options.commentString) {
+			this.commentString = options.commentString;
 		}
 	}
 	
@@ -70,7 +84,7 @@ exports.UnicodeFile = function (options) {
 	
 	for (var i = 0; i < rows.length; i++) {
 		if (rows[i].trim().charAt(0) !== '@') {
-			var commentStart = rows[i].indexOf("#");
+			var commentStart = rows[i].indexOf(this.commentString);
 			row = (commentStart === -1) ? rows[i] : rows[i].substring(0, commentStart);
 			row = row.trim();
 			if (row.length > 0) {

@@ -1,4 +1,4 @@
-# list taken from http://en.wikipedia.org/wiki/Mobile_Network_Code
+// list taken from http://en.wikipedia.org/wiki/Mobile_Network_Code
 
 00101	area	TEST	Test Network
 41201	area	AWCC	Afghan Wireless Communication Company

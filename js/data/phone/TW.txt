@@ -6,7 +6,7 @@
 ^007	idd
 ^009	idd
 ^019	idd
-^0.	trunk
+^0	trunk
 
 9	cell
 

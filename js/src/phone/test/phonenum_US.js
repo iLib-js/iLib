@@ -1255,7 +1255,7 @@ function testParseUSEmergencyLikeServiceNumber(){
 	
 };
 
-function testBogusInternationalNumber(){
+function testUSBogusInternationalNumber(){
 	var parsed = new ilib.PhoneNumber("+33112345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1271,7 +1271,7 @@ function testBogusInternationalNumber(){
 };
 
 
-function testFictitousNumberLocale(){
+function testUSFictitousNumberLocale(){
 	var parsed = new ilib.PhoneNumber("5555555", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1283,7 +1283,7 @@ function testFictitousNumberLocale(){
 	
 };
 
-function testFictitousNumberLD(){
+function testUSFictitousNumberLD(){
 	var parsed = new ilib.PhoneNumber("5555555555", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1297,7 +1297,7 @@ function testFictitousNumberLD(){
 };
 
 // for NOV-113367
-function testCrazyIntlCall(){
+function testUSCrazyIntlCall(){
 	var parsed = new ilib.PhoneNumber("+1123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1313,7 +1313,7 @@ function testCrazyIntlCall(){
 };
 
 //for NOV-109333
-function testWierdVSC(){
+function testUSWierdVSC(){
 	var parsed = new ilib.PhoneNumber("*#43#", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1325,7 +1325,7 @@ function testWierdVSC(){
 	
 };
 
-function testSSCode(){
+function testUSSSCode(){
 	var parsed = new ilib.PhoneNumber("*646#", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1338,7 +1338,7 @@ function testSSCode(){
 };
 
 // for CFISH-5088
-function testVSCUMTS1(){
+function testUSVSCUMTS1(){
 	var parsed = new ilib.PhoneNumber("#*06", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1349,7 +1349,7 @@ function testVSCUMTS1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCUMTS2(){
+function testUSVSCUMTS2(){
 	var parsed = new ilib.PhoneNumber("*#06#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1360,7 +1360,7 @@ function testVSCUMTS2(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCUMTS3(){
+function testUSVSCUMTS3(){
 	var parsed = new ilib.PhoneNumber("*#062#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1371,7 +1371,7 @@ function testVSCUMTS3(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCUMTS4(){
+function testUSVSCUMTS4(){
 	var parsed = new ilib.PhoneNumber("#62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1382,7 +1382,7 @@ function testVSCUMTS4(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCUMTS5(){
+function testUSVSCUMTS5(){
 	var parsed = new ilib.PhoneNumber("*##62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1393,7 +1393,7 @@ function testVSCUMTS5(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCUMTS6(){
+function testUSVSCUMTS6(){
 	var parsed = new ilib.PhoneNumber("##62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1406,7 +1406,7 @@ function testVSCUMTS6(){
 };
 
 // for CFISH-6022
-function testVSCVerizon(){
+function testUSVSCVerizon(){
 	var parsed = new ilib.PhoneNumber("*228", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
@@ -1417,7 +1417,7 @@ function testVSCVerizon(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testVSCVerizon2(){
+function testUSVSCVerizon2(){
 	var parsed = new ilib.PhoneNumber("*844752224458", {mcc: "310"}); // US
 	assertNotUndefined(parsed);
 	
@@ -1430,7 +1430,7 @@ function testVSCVerizon2(){
 };
 
 // for CFISH-6362
-function testVSCCDMALong(){
+function testUSVSCCDMALong(){
 	var parsed = new ilib.PhoneNumber("1123456", {mcc: "310"}); // US
 	assertNotUndefined(parsed);
 	

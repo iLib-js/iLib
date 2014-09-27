@@ -82,7 +82,7 @@ function testParseINLocalNumber(){
 	
 };
 
-function testParseInvalidLocalNumber(){
+function testParseINInvalidLocalNumber(){
 	var parsed = new ilib.PhoneNumber("8765432100", {locale: "en-IN"});
 	assertNotUndefined(parsed);
 	

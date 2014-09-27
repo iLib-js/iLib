@@ -1,5 +1,5 @@
 2	area	Taipei	Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong 
-3.	area	Taoyuan	Taoyuan, Tachi
+3	area	Taoyuan	Taoyuan, Tachi
 32	area	Ilan	Ilan County, Ruifang
 33	area	Taoyuan	Taoyuan County, Daxi 
 34	area	Taoyuan	Taoyuan County, Zhongli
@@ -8,22 +8,22 @@
 37	area	Miaoli	Miaoli County, Zhunan, Miaoli
 38	area	Hualian	Hualian County
 39	area	Ilan	Ilan County, Jiaoqi, Su'ao, Luodong 
-4.	area	Taichung	Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin 
+4	area	Taichung	Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin 
 45	area	Taichung	Taizhong County, Houli, Lishan 
 46	area	Dadu	Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi
 47	area	Changhua	Changhua County, Lugang 
 48	area	Shetou	Shetou Tianzhong Yongjing Yuanlin 
 49	area	Nantou	Nantou County, Buli, Riyuetan, Xincun, Zhongxing 
-5.	area	Yunlin	Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu
+5	area	Yunlin	Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu
 56	area	Huwei	Huwei
-6.	area	Tainan	Tainan County, Chiali, Makung, Shanhua 
+6	area	Tainan	Tainan County, Chiali, Makung, Shanhua 
 62	area	Tainan	Tainan County, Tainan
 66	area	Tainan	Tainan County, Xinying 
 69	area	Tainan	Tainan County, Penghu 
 7	area	Kaohsiung	 Kaohsiung County, Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying 
-8.	area	Pingtung	Pingtung County, Chaozhou, Pingdong, Matzu Dao
+8	area	Pingtung	Pingtung County, Chaozhou, Pingdong, Matzu Dao
 823	area	Kinmen	Kinmen
 836	area	Matzu	Matzu
-8..	area	Matzu Dao	Matzu Dao, Kinmen
+8	area	Matzu Dao	Matzu Dao, Kinmen
 88	area	Donggang	Donggang
 89	area	Taitung	Taitung County 

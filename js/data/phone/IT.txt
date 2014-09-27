@@ -7,12 +7,12 @@
 878	service	mass calls phone number (polls, television programs, etc.)
 
 ^1	service	Service and emergency numbers
-^112	service	Gendarmerie (Carabinieri)
-^113	service	Police (Polizia di Stato)
-^115	service	Fire brigade (Vigili del Fuoco)
-^116	service	Road help (ACI)
-^117	service	Italian Customs/Financial/Border Police Guardia di Finanza 
-^118	service	Ambulance (Italian Red Cross included)
+^112	emergency	Gendarmerie (Carabinieri)
+^113	emergency	Police (Polizia di Stato)
+^115	emergency	Fire brigade (Vigili del Fuoco)
+^116	emergency	Road help (ACI)
+^117	emergency	Italian Customs/Financial/Border Police Guardia di Finanza 
+^118	emergency	Ambulance (Italian Red Cross included)
 
 ^12..	service	Premium rate services 
 ^144.	service	Premium rate services

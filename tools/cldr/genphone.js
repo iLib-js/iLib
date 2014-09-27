@@ -163,7 +163,8 @@ function addAreaCode(name) {
 function processFile(file) {
 	var f = new UnicodeFile({
 		path: file, 
-		splitChar: '\t'
+		splitChar: '\t',
+		commentString: "//"
 	});
 	var trie = {}, current;
 	var area = {};

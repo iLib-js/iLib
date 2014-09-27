@@ -3,9 +3,29 @@
         "sn": "Taipei",
         "ln": "Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong"
     },
+    "3": {
+        "sn": "Taoyuan",
+        "ln": "Taoyuan, Tachi"
+    },
+    "4": {
+        "sn": "Taichung",
+        "ln": "Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin"
+    },
+    "5": {
+        "sn": "Yunlin",
+        "ln": "Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu"
+    },
+    "6": {
+        "sn": "Tainan",
+        "ln": "Tainan County, Chiali, Makung, Shanhua"
+    },
     "7": {
         "sn": "Kaohsiung",
         "ln": " Kaohsiung County, Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying"
+    },
+    "8": {
+        "sn": "Matzu Dao",
+        "ln": "Matzu Dao, Kinmen"
     },
     "32": {
         "sn": "Ilan",
@@ -89,29 +109,5 @@
     "836": {
         "sn": "Matzu",
         "ln": "Matzu"
-    },
-    "3.": {
-        "sn": "Taoyuan",
-        "ln": "Taoyuan, Tachi"
-    },
-    "4.": {
-        "sn": "Taichung",
-        "ln": "Taizhong County, Wurim, Wufeng, Fengyuan, Shalong, Yuanlin"
-    },
-    "5.": {
-        "sn": "Yunlin",
-        "ln": "Yunlin County, Dalin, Jiayi, Minxiong, Beigang, Douliu"
-    },
-    "6.": {
-        "sn": "Tainan",
-        "ln": "Tainan County, Chiali, Makung, Shanhua"
-    },
-    "8.": {
-        "sn": "Pingtung",
-        "ln": "Pingtung County, Chaozhou, Pingdong, Matzu Dao"
-    },
-    "8..": {
-        "sn": "Matzu Dao",
-        "ln": "Matzu Dao, Kinmen"
     }
 }

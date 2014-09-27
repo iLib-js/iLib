@@ -1,6 +1,6 @@
 ﻿^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 10	area	Rotterdam	Rotterdam
 111	area	Zierikzee	Zierikzee
