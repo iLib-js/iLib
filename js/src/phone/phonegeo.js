@@ -243,7 +243,7 @@ ilib.GeoLocator.prototype = {
 
 						//console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
 	
-						return (handlerMethod === "area") ? number.substring(0, i) : undefined;
+						return (handlerMethod === "area") ? number.substring(0, i+1) : undefined;
 					} else {
 						// failed parse. Either no last leaf to fall back to, or there was an explicit
 						// zero in the table
@@ -262,6 +262,12 @@ ilib.GeoLocator.prototype = {
 		}
 		return undefined;
 	},
+	/**
+	 * @private
+	 * @param prefix
+	 * @param table
+	 * @returns
+	 */
 	_matchPrefix: function(prefix, table)  {
 		var i, matchedDot, matchesWithDots = [];
 
@@ -300,6 +306,15 @@ ilib.GeoLocator.prototype = {
 		
 		return undefined;
 	},
+	/**
+	 * @private
+	 * @param number
+	 * @param data
+	 * @param locale
+	 * @param plan
+	 * @param options
+	 * @returns {Object}
+	 */
 	_getAreaInfo: function(number, data, locale, plan, options) {
 		var sync = true,
 			ret = {}, 

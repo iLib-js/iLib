@@ -3,6 +3,10 @@
         "sn": "Paris",
         "ln": "Paris (Ile-de-France area)"
     },
+    "2": {
+        "sn": "Northwest France",
+        "ln": "Northwest France"
+    },
     "3": {
         "sn": "Northeast France",
         "ln": "Northeast France"
@@ -11,27 +15,7 @@
         "sn": "Southeast France",
         "ln": "Southeast France"
     },
-    "9": {
-        "sn": "Voice over IP",
-        "ln": "Voice over IP services"
-    },
-    "2.": {
-        "sn": "Northwest France",
-        "ln": "Northwest France"
-    },
-    "26.": {
-        "sn": "Northwest France",
-        "ln": "Northwest France"
-    },
-    "50.": {
-        "sn": "Southwest France",
-        "ln": "Southwest France"
-    },
-    "5.": {
-        "sn": "Southwest France",
-        "ln": "Southwest France"
-    },
-    "59.": {
+    "5": {
         "sn": "Southwest France",
         "ln": "Southwest France"
     }

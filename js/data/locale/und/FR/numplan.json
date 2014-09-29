@@ -6,6 +6,7 @@
     "dialingPlan": "closed",
     "trunkRequired": true,
     "commonFormatChars": " ().-",
+    "extendedAreaCodes": true,
     "fieldLengths": {
         "areaCode": 1,
         "cic": 0,

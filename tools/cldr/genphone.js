@@ -59,8 +59,8 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genpapaersizes - generate the localeinfo papaersize.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+util.print("genphone - generate the phone parsing/geolocation data files.\n" +
+	"Copyright (c) 2014 JEDLSoft\n");
 
 util.print("Phone data dir: " + phoneDir + "\n");
 util.print("output dir: " + toDir + "\n");
