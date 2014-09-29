@@ -58,17 +58,19 @@ ilib.Measurement.Speed = function (options) {
 };
 
 ilib.Measurement.Speed.ratios = {
-	/*                index, f/s     m/s           k/h       miles/h    knot  */           
-	"feet/second":     [ 1,  1,         0.3048,    1.09728,  0.681818,  0.592484 ],  
-	"meters/second":   [ 2,  3.28084,   1,         3.6,      2.236936,  1.94384  ],  
-	"kilometer/hour":  [ 3,  0.911344,  0.277778,  1,        0.621371,  0.539957 ],
-	"miles/hour":      [ 4,  1.46667,   0.44704,   1.60934,  1,         0.868976 ],
-	"knot":            [ 5,  1.68781,   0.514444,  1.852,    1.15078,   1        ]
+	/*                 index, k/h         f/s         miles/h      knot         m/s        km/s         miles/s */
+        "kilometer/hour":   [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
+	"feet/second":      [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],  
+        "miles/hour":       [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
+        "knot":             [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
+      	"meters/second":    [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],	
+        "kilometer/second": [ 6,  3600,       3280.8399,  2236.93629,  1943.84449,  1000,      1,           0.621371192   ],
+        "miles/second":     [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
 };
 
-ilib.Measurement.Speed.metricSystem      = {"meters/second":2,"kilometer/hour":3};
-ilib.Measurement.Speed.imperialSystem    = {"feet/second":1,"miles/hour":4,"knot":5};
-ilib.Measurement.Speed.uscustomarySystem = {"feet/second":1,"miles/hour":4,"knot":5};
+ilib.Measurement.Speed.metricSystem      = {"kilometer/hour":1,"meters/second":5,"kilometer/second":6};
+ilib.Measurement.Speed.imperialSystem    = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
+ilib.Measurement.Speed.uscustomarySystem = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
 
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
@@ -127,7 +129,7 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1 && speed !== 0) break;
+        if (tmp < 1) break;
         speed = tmp;
         munit = m;
     }
@@ -187,7 +189,24 @@ ilib.Measurement.Speed.aliases = {
     "nauticalmile/hour": "knot",
     "nauticalmiles/hr": "knot",
     "nauticalmiles/hour": "knot",
-    "knot":"knot"
+    "knot":"knot",
+    "kilometer/second":"kilometer/second",
+    "kilometer/sec":"kilometer/second",
+    "kilometre/sec":"kilometer/second",
+    "Kilometre/sec":"kilometer/second",
+    "kilometers/second":"kilometer/second",
+    "kilometers/sec":"kilometer/second",
+    "kilometres/sec":"kilometer/second",
+    "Kilometres/sec":"kilometer/second",
+    "km/sec":"kilometer/second",
+    "Km/s":"kilometer/second",
+    "km/s":"kilometer/second",
+    "miles/second": "miles/second",
+    "miles/sec": "miles/second",
+    "miles/s": "miles/second",
+    "mile/s": "miles/second",
+    "mile/sec": "miles/second",
+    "Mile/s": "miles/second"
 };
 
 /**

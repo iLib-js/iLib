@@ -123,11 +123,14 @@ function testSpeedScale4() {
 function testSpeedGetMeasures() {
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [
+        "kilometer/hour",
     	"feet/second",
+        "miles/hour",
+        "knot",
     	"meters/second",
-    	"kilometer/hour",
-    	"miles/hour",
-    	"knot"    	
+    	"kilometer/second",
+    	"miles/second",
+    	  	
 	];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }
