@@ -430,7 +430,9 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 				currentState = newState;
 				i++;
 			} else {
-				if (typeof(newState) === 'undefined' || newState === 0) {
+				if ((typeof(newState) === 'undefined' || newState === 0 ||
+					(typeof(newState) === 'object' && typeof(newState.l) === 'undefined')) &&
+					 lastLeaf) {
 					// this is possibly a look-ahead and it didn't work... 
 					// so fall back to the last leaf and use that as the
 					// final state
@@ -458,9 +460,15 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 					fields.mnc = imsi.substring(3,end);
 					fields.msin = imsi.substring(end);
 	
-					break;
+					return fields;
 				} else {
-					break; // error
+					// parse error
+					if (imsi.length >= 6) {
+						fields.mcc = imsi.substring(0,3);
+						fields.mnc = imsi.substring(3,6);
+						fields.msin = imsi.substring(6);
+					}
+					return fields;
 				}
 			}
 		} else if (ch === -1) {
@@ -474,17 +482,15 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 		}
 	}
 		
-	if (state > 0) {
-		if (i >= imsi.length && i >= 6) {
-			// we reached the end of the imsi, but did not finish recognizing anything. 
-			// Default to last resort and assume 3 digit mnc
-			fields.mcc = imsi.substring(0,3);
-			fields.mnc = imsi.substring(3,6);
-			fields.msin = imsi.substring(6);
-		} else {
-			// unknown or not enough characters for a real imsi 
-			fields = undefined;
-		}
+	if (i >= imsi.length && imsi.length >= 6) {
+		// we reached the end of the imsi, but did not finish recognizing anything. 
+		// Default to last resort and assume 3 digit mnc
+		fields.mcc = imsi.substring(0,3);
+		fields.mnc = imsi.substring(3,6);
+		fields.msin = imsi.substring(6);
+	} else {
+		// unknown or not enough characters for a real imsi 
+		fields = undefined;
 	}
 		
 	// console.info("Globalization.Phone.parseImsi: final result is: " + JSON.stringify(fields));

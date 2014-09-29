@@ -181,8 +181,8 @@ function testParseFRDepartments(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		serviceCode: "590",
-		subscriberNumber: "123456"
+		serviceCode: "5",
+		subscriberNumber: "90123456"
 	}, {locale: "fr-FR"});
 	
 	assertTrue(parsed.equals(expected));
@@ -196,8 +196,8 @@ function testParseFRInternationalToDepartments(){
 	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
-		serviceCode: "590",
-		subscriberNumber: "123456"
+		serviceCode: "5",
+		subscriberNumber: "90123456"
 	}, {locale: "fr-FR"});
 	
 	assertTrue(parsed.equals(expected));
@@ -236,7 +236,7 @@ function testParseFRPartial2(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		subscriberNumber: "5"
+		areaCode: "5"
 	}, {locale: "fr-FR"});
 	
 	assertTrue(parsed.equals(expected));
@@ -273,9 +273,9 @@ function testParseFRPartial5(){
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-			trunkAccess: "0",
-			areaCode: "5",
-			subscriberNumber: "123"
+		trunkAccess: "0",
+		areaCode: "5",
+		subscriberNumber: "123"
 	}, {locale: "fr-FR"});
 	
 	assertTrue(parsed.equals(expected));

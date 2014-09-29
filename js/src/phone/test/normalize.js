@@ -715,7 +715,7 @@ function testAssistedDialingThreeLocalesUMTS() {
 
 // for CFISH-5258
 function testAssistedDialNormalizeBogusNumberNonVerizon(){
-	var left = new ilib.PhoneNumber("449876543211", {locale: 'de-DE'});
+	var left = new ilib.PhoneNumber("442076543211", {locale: 'de-DE'});
 	
 	var hints = {
 		homeLocale: 'de-DE',
@@ -724,13 +724,13 @@ function testAssistedDialNormalizeBogusNumberNonVerizon(){
 		defaultAreaCode: "30",	// phone is a German phone
 		assistedDialing: true
 	};
-	var expectedString = "449876543211"; // don't assume it is international and add the bogus plus
+	var expectedString = "442076543211"; // don't assume it is international and add the bogus plus
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialNormalizeBogusNumberForVerizonUMTS(){
-	var left = new ilib.PhoneNumber("449876543211"); // number is too long, so try with a + prefix
+	var left = new ilib.PhoneNumber("442076543211"); // number is too long, so try with a + prefix
 	
 	var hints = {
 		mcc: "310",
@@ -738,13 +738,13 @@ function testAssistedDialNormalizeBogusNumberForVerizonUMTS(){
 		defaultAreaCode: "650",	// phone is a US phone
 		assistedDialing: true
 	};
-	var expectedString = "+449876543211"; // assumed to be an international call
+	var expectedString = "+442076543211"; // assumed to be an international call
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
 };
 
 function testAssistedDialNormalizeBogusNumberForVerizonCDMA(){
-	var left = new ilib.PhoneNumber("449876543211"); // number is too long, so try with a + prefix
+	var left = new ilib.PhoneNumber("442076543211"); // number is too long, so try with a + prefix
 	
 	var hints = {
 		mcc: "310",  // US
@@ -752,13 +752,13 @@ function testAssistedDialNormalizeBogusNumberForVerizonCDMA(){
 		defaultAreaCode: "650",	// phone is a US phone
 		assistedDialing: true
 	};
-	var expectedString = "011449876543211"; // the plus gets converted to 011 for cdma
+	var expectedString = "011442076543211"; // the plus gets converted to 011 for cdma
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
 };
 
 function testAssistedDialNormalizeBogusNumberForVerizonAlreadyPlus(){
-	var left = new ilib.PhoneNumber("+449876543211");
+	var left = new ilib.PhoneNumber("+442076543211");
 	
 	var hints = {
 		mcc: "310",  // US
@@ -766,13 +766,13 @@ function testAssistedDialNormalizeBogusNumberForVerizonAlreadyPlus(){
 		defaultAreaCode: "650",	// phone is a US phone
 		assistedDialing: true
 	};
-	var expectedString = "011449876543211"; // plus gets converted to 011 for cdma
+	var expectedString = "011442076543211"; // plus gets converted to 011 for cdma
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
 };
 
 function testAssistedDialNormalizeBogusNumberForVerizonAlreadyIDD(){
-	var left = new ilib.PhoneNumber("011449876543211");
+	var left = new ilib.PhoneNumber("011442076543211");
 	
 	var hints = {
 		mcc: "310",  // US
@@ -780,13 +780,13 @@ function testAssistedDialNormalizeBogusNumberForVerizonAlreadyIDD(){
 		defaultAreaCode: "650",	// phone is a US phone
 		assistedDialing: true
 	};
-	var expectedString = "011449876543211";
+	var expectedString = "011442076543211";
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
 };
 
 function testAssistedDialNormalizeBogusNumberForVerizonWithTrunk(){
-	var left = new ilib.PhoneNumber("1449876543233");
+	var left = new ilib.PhoneNumber("1442076543233");
 	
 	var hints = {
 		mcc: "310",  // US
@@ -794,7 +794,7 @@ function testAssistedDialNormalizeBogusNumberForVerizonWithTrunk(){
 		defaultAreaCode: "650",	// phone is a US phone
 		assistedDialing: true
 	};
-	var expectedString = "1449876543233"; // don't touch things that already have a trunk prefix
+	var expectedString = "1442076543233"; // don't touch things that already have a trunk prefix
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
 };
@@ -842,14 +842,14 @@ function testDoAddDefaultAreaCodeAtHome() {
 
 // for CFISH-5217
 function testDefaultAreaCodeOnlyAtHome() {
-	var phone = new ilib.PhoneNumber("+449876543211", {locale: 'en-US'}); // number is invalid in the UK with no valid area code
+	var phone = new ilib.PhoneNumber("+442076543211", {locale: 'en-US'}); // number is invalid in the UK with no valid area code
 	var hints = {
 		mcc: "310", // currently located in the US
 		networkType: "cdma",
 		defaultAreaCode: "650",	// phone is a US phone, so this default area code only applies to calls to US numbers
 		assistedDialing: true
 	};
-	var expectedString = "011449876543211"; // should not add default area code, which is for the US, not the UK
+	var expectedString = "011442076543211"; // should not add default area code, which is for the US, not the UK
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
 };
@@ -1283,14 +1283,14 @@ function testAssistedDialingCN1() {
 };
 
 function testAssistedDialingCN2() {
-	var parsed = new ilib.PhoneNumber("011 44 9876543211");
+	var parsed = new ilib.PhoneNumber("011 44 20 76543211");
 	var hints = {
 		assistedDialing: true,
 		networkType: "cdma",
 		mcc: "460", // from China
 		defaultAreaCode: "408"
 	};
-	var expected = "00449876543211";
+	var expected = "00442076543211";
 
 	assertEquals(expected, parsed.normalize(hints));	
 };
