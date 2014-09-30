@@ -85,20 +85,65 @@ function testEnergyStaticConvert6() {
 }
 
 
+function testEnergyScale1() {
+    var m1 = new ilib.Measurement.Energy({
+        unit: "watt hour",
+        amount: 10000
+    });
+    var m2 = m1.scale("metric");
+
+    assertEquals(10, m2.amount);
+    assertEquals("kilo watt hour", m2.unit);
+}
+
+function testEnergyScale2() {
+    var m1 = new ilib.Measurement.Energy({
+        unit: "kilo watt hour",
+        amount: 1233453
+    });
+    var m2 = m1.scale("metric");
+
+    assertEquals(1.233453, m2.amount);
+    assertEquals("giga watt hour", m2.unit);
+}
+
+function testEnergyScale3() {
+    var m1 = new ilib.Measurement.Energy({
+        unit: "micro joule",
+        amount: 5254578
+    });
+    var m2 = m1.scale("metric");
+
+    assertRoughlyEquals(5.254578, m2.amount,0.000001);
+    assertEquals("kilo joule", m2.unit);
+}
+
+function testEnergyScale4() {
+    var m1 = new ilib.Measurement.Energy({
+        unit: "mega joule",
+        amount: 5254578
+    });
+    var m2 = m1.scale("metric");
+
+    assertEquals(5254.578, m2.amount);
+    assertEquals("giga joule", m2.unit);
+}
+
 function testEnergyGetMeasures() {
 	var measures = ilib.Measurement.Energy.getMeasures();
 	var expected = [
-        "mJ",  
-		"J",  
-		"BTU",
-		"kJ",
-		"Wh",
-		"Cal",
-		"MJ",
-		"kWh",
-		"gJ",
-		"MWh",
-		"gWh"
-	];	
+        "micro joule",
+        "joule",
+        "BTU",
+        "kilo joule",
+        "watt hour",
+        "calorie",
+        "mega joule",
+        "kilo watt hour",
+        "giga joule",
+        "mega watt hour",
+        "giga watt hour"
+
+    ];
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

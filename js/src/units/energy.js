@@ -1,6 +1,6 @@
 /*
  * Energy.js - Unit conversions for Energys/energys
- * 
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,29 +18,29 @@
  */
 
 /*
-!depends 
-ilibglobal.js 
+!depends
+ilibglobal.js
 */
 
 /**
  * Create a new energy measurement.
- * 
+ *
  * @class
  * @constructor
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 ilib.Measurement.Energy = function (options) {
 	this.unit = "ns";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Energy.aliases; // share this table in all instances
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.aliases[options.unit] || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "energy") {
 				this.amount = ilib.Measurement.Energy.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -51,25 +51,25 @@ ilib.Measurement.Energy = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(ilib.Measurement.Energy.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
 };
 
 ilib.Measurement.Energy.ratios = {
-		/*      index  mJ          J           BTU               kJ          Wh                Cal               MJ             kWh                gJ             MWh                 gWh         */           
-        "mJ":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],  
-        "J":    [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],  
-        "BTU":  [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
-        "kJ":   [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
-        "Wh":   [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
-        "Cal":  [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
-        "MJ":   [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
-        "kWh":  [ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
-        "gJ":   [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
-        "MWh":  [ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
-        "gWh":  [ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
+		/*      index  mJ          J           BTU               kJ          Wh                Cal               MJ             kWh                gJ             MWh                 gWh         */
+        "micro joule":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],
+        "joule":         [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],
+        "BTU":           [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
+        "kilo joule":    [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
+        "watt hour":     [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
+        "calorie":       [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
+        "mega joule":    [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
+        "kilo watt hour":[ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
+        "giga joule":    [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
+        "mega watt hour":[ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
+        "giga watt hour":[ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
 };
 
 ilib.Measurement.Energy.prototype = new ilib.Measurement({});
@@ -85,7 +85,7 @@ ilib.Measurement.Energy.prototype.getMeasure = function() {
 
 /**
  * Convert the current energy to another measure.
- * 
+ *
  * @inheritDoc
  */
 ilib.Measurement.Energy.prototype.convert = function(to) {
@@ -99,74 +99,84 @@ ilib.Measurement.Energy.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Energy.aliases = {
-    "mJ":"mJ",
-    "millijoule":"mJ",
-    "MilliJoule":"mJ",
-    "milliJ":"mJ",
-    "J":"J",
-    "j":"J",
-    "Joule":"J",
-    "joule":"J",
-    "Joules":"J",
-    "joules":"J",
+    "micro joule":"micro joule",
+    "micro joule":"micro joule",
+    "millijoule":"micro joule",
+    "MilliJoule":"micro joule",
+    "milliJ":"micro joule",
+    "joule":"joule",
+    "J":"joule",
+    "j":"joule",
+    "Joule":"joule",
+    "joule":"joule",
+    "Joules":"joule",
+    "joules":"joule",
     "BTU":"BTU",
     "btu":"BTU",
     "British thermal unit":"BTU",
     "british thermal unit":"BTU",
-    "kJ":"kJ",
-    "kj":"kJ",
-    "Kj":"kJ",
-    "kiloJoule":"kJ",
-    "kilojoule":"kJ",
-    "kjoule":"kJ",
-    "Wh":"Wh",
-    "wh":"Wh",
-    "watt-hour":"Wh",
-    "Cal":"Cal",
-    "cal":"Cal",
-    "Calorie":"Cal",
-    "calorie":"Cal",
-    "Calories":"Cal",
-    "calories":"Cal",
-    "MJ":"MJ",
-    "megajoule":"MJ",
-    "megajoules":"MJ",
-    "Megajoules":"MJ",
-    "megaJoules":"MJ",
-    "MegaJoules":"MJ",
-    "megaJoule":"MJ",
-    "MegaJoule":"MJ",
-    "kWh":"kWh",
-    "kiloWh":"kWh",
-    "KiloWh":"kWh",
-    "KiloWatt-hour":"kWh",
-    "KiloWatt-hours":"kWh",
-    "Kilo Watt-hour":"kWh",
-    "Kilo Watt-hours":"kWh",
-    "gJ":"gJ",
-    "GJ":"gJ",
-    "GigaJoule":"gJ",
-    "gigaJoule":"gJ",
-    "gigajoule":"gJ",
-    "GigaJoules":"gJ",
-    "gigaJoules":"gJ",
-    "Gigajoules":"gJ",
-    "gigajoules":"gJ",
-    "MWh":"MWh",
-    "MegaWh":"MWh",
-    "megaWh":"MWh",
-    "megaWatthour":"MWh",
-    "megaWatt-hour":"MWh",
-    "mega Watt-hour":"MWh",
-    "megaWatt hour":"MWh",
-    "megawatt hour":"MWh",
-    "mega Watt hour":"MWh",
-    "gWh":"gWh",
-    "gigaWh":"gWh",
-    "gigaWatt-hour":"gWh",
-    "gigaWatt hour":"gWh",
-    "gigawatt hour":"gWh",
-    "gigawatthour":"gWh"
+    "kilo joule":"kilo joule",
+    "kJ":"kilo joule",
+    "kj":"kilo joule",
+    "Kj":"kilo joule",
+    "kiloJoule":"kilo joule",
+    "kilojoule":"kilo joule",
+    "kjoule":"kilo joule",
+    "watt hour":"watt hour",
+    "Wh":"watt hour",
+    "wh":"watt hour",
+    "watt-hour":"watt hour",
+    "calorie":"calorie",
+    "Cal":"calorie",
+    "cal":"calorie",
+    "Calorie":"calorie",
+    "calorie":"calorie",
+    "Calories":"calorie",
+    "calories":"calorie",
+    "mega joule":"mega joule",
+    "MJ":"mega joule",
+    "megajoule":"mega joule",
+    "megajoules":"mega joule",
+    "Megajoules":"mega joule",
+    "megaJoules":"mega joule",
+    "MegaJoules":"mega joule",
+    "megaJoule":"mega joule",
+    "MegaJoule":"mega joule",
+    "kilo Watt hour": "kilo Watt hour",
+    "kWh":"kilo Watt hour",
+    "kiloWh":"kilo Watt hour",
+    "KiloWh":"kilo Watt hour",
+    "KiloWatt-hour":"kilo Watt hour",
+    "KiloWatt-hours":"kilo Watt hour",
+    "Kilo Watt-hour":"kilo Watt hour",
+    "Kilo Watt-hours":"kilo Watt hour",
+    "giga joule":"giga joule",
+    "gJ":"giga joule",
+    "GJ":"giga joule",
+    "GigaJoule":"giga joule",
+    "gigaJoule":"giga joule",
+    "gigajoule":"giga joule",
+    "GigaJoules":"giga joule",
+    "gigaJoules":"giga joule",
+    "Gigajoules":"giga joule",
+    "gigajoules":"giga joule",
+    "mega watt hour":"mega watt hour",
+    "MWh":"mega watt hour",
+    "MegaWh":"mega watt hour",
+    "megaWh":"mega watt hour",
+    "megaWatthour":"mega watt hour",
+    "megaWatt-hour":"mega watt hour",
+    "mega Watt-hour":"mega watt hour",
+    "megaWatt hour":"mega watt hour",
+    "megawatt hour":"mega watt hour",
+    "mega Watt hour":"mega watt hour",
+    "giga watt hour":"giga watt hour",
+    "gWh":"giga watt hour",
+    "gigaWh":"giga watt hour",
+    "gigaWatt-hour":"giga watt hour",
+    "gigaWatt hour":"giga watt hour",
+    "gigawatt hour":"giga watt hour",
+    "gigawatthour":"giga watt hour"
 };
 
 /**
@@ -184,7 +194,7 @@ ilib.Measurement.Energy.convert = function(to, from, energy) {
     var toRow = ilib.Measurement.Energy.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
         return undefined;
-    }	
+    }
     return energy * fromRow[toRow[0]];
 };
 
@@ -200,5 +210,54 @@ ilib.Measurement.Energy.getMeasures = function () {
 	return ret;
 };
 
+ilib.Measurement.Energy.metricJouleSystem	= {"micro joule":1, "joule":2,"kilo joule":4,"mega joule":7,"giga joule":9};
+ilib.Measurement.Energy.metricWattHourSystem = {"watt hour":5,"kilo watt hour":8,"mega watt hour":10,"giga watt hour":11};
+
+ilib.Measurement.Energy.imperialSystem	= {"BTU":3};
+ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
+
+
+/**
+ * Sclae the current energy.
+ *
+ * @inheritDoc
+ */
+ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
+    var fromRow = ilib.Measurement.Energy.ratios[this.unit];
+    var mSystem;
+
+    if ((measurementsystem === "metric" && typeof(ilib.Measurement.Energy.metricJouleSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.metricJouleSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.metricJouleSystem;
+    }
+    else if ((measurementsystem === "metric" && typeof(ilib.Measurement.Energy.metricWattHourSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.metricWattHourSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.metricWattHourSystem;
+    }
+
+    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.uscustomarySystem;
+    }
+    else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.imperialSystem;
+    }
+
+    var energy;
+    var munit;
+
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        energy = tmp;
+        munit = m;
+    }
+
+    return new ilib.Measurement.Energy({
+        unit: munit,
+        amount: energy
+    });
+};
 //register with the factory method
 ilib.Measurement._constructors["energy"] = ilib.Measurement.Energy;
