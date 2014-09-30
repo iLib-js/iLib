@@ -640,7 +640,7 @@ function testVolumeStaticConvert335() {
 	assertRoughlyEquals(3.46774, m,0.1);
 }
 
-function testVolumeStaticConvert351() {
+function testVolumeScale1() {
     var m1 = new ilib.Measurement.Volume({
         unit: "tsp",
         amount: 1000
@@ -651,7 +651,7 @@ function testVolumeStaticConvert351() {
     assertEquals("gallon", m2.unit);
 }
 
-function testVolumeStaticConvert352() {
+function testVolumeScale2() {
     var m1 = new ilib.Measurement.Volume({
         unit: "Milliliter",
         amount: 1500
@@ -662,7 +662,7 @@ function testVolumeStaticConvert352() {
     assertEquals("liter", m2.unit);
 }
 
-function testVolumeStaticConvert353() {
+function testVolumeScale3() {
     var m1 = new ilib.Measurement.Volume({
         unit: "imperial ounce",
         amount: 1500
@@ -673,7 +673,7 @@ function testVolumeStaticConvert353() {
     assertEquals("imperial gallon", m2.unit);
 }
 
-function testVolumeStaticConvert354() {
+function testVolumeScale4() {
     var m1 = new ilib.Measurement.Volume({
         unit: "imperial gallon",
         amount: 100
@@ -684,27 +684,28 @@ function testVolumeStaticConvert354() {
     assertEquals("imperial gallon", m2.unit);
 }
 
-function testVolumeStaticConvert355() {
+function testVolumeScale5() {
     var m1 = new ilib.Measurement.Volume({
         unit: "ounce",
         amount: 1500
     });
-    var m2 =m1.scale("uscustomary");
+    var m2 = m1.scale("uscustomary");
 
     assertRoughlyEquals(1.566569, m2.amount,0.000001);
     assertEquals("cubic foot", m2.unit);
 }
 
-function testVolumeStaticConvert356() {
+function testVolumeScale6() {
     var m1 = new ilib.Measurement.Volume({
         unit: "liter",
         amount: 1570
     });
-    var m2 =m1.scale("metric");
+    var m2 = m1.scale("metric");
 
     assertRoughlyEquals(1.57, m2.amount,0.01);
     assertEquals("cubic meter", m2.unit);
 }
+
 function testVolumeGetMeasures() {
 	var measures = ilib.Measurement.Volume.getMeasures();
 	var expected = [

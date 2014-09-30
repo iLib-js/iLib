@@ -116,19 +116,17 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.metricSystem;
-    } else
-    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.imperialSystem;
-    } else
-    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.uscustomarySystem;
     } else {
         return new ilib.Measurement.Length({
-		unit: this.unit,
-		amount: this.amount
-	});
+			unit: this.unit,
+			amount: this.amount
+		});
     }    
     
     var length;
@@ -143,8 +141,8 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     }
     
     return new ilib.Measurement.Length({
-	unit: munit,
-	amount: length
+		unit: munit,
+		amount: length
     });
 };
 

@@ -80,7 +80,7 @@ function testSpeedScale1() {
 
 	m = m.scale("metric");
 
-        assertRoughlyEquals(1, m.amount, 0.1);
+    assertRoughlyEquals(1, m.amount, 0.1);
 	assertEquals("kilometer/hour", m.unit);
 }
 
@@ -92,7 +92,7 @@ function testSpeedScale2() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(35.54904, m.amount, 0.0001);
+    assertRoughlyEquals(35.54904, m.amount, 0.0001);
 	assertEquals("knot", m.unit);
 }
 
@@ -104,7 +104,7 @@ function testSpeedScale3() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(592.484, m.amount, 0.001);
+	assertRoughlyEquals(592.484, m.amount, 0.001);
 	assertEquals("knot", m.unit);
 }
 
@@ -116,7 +116,7 @@ function testSpeedScale4() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(592.484, m.amount, 0.001);
+	assertRoughlyEquals(592.484, m.amount, 0.001);
 	assertEquals("knot", m.unit);
 }
 
@@ -124,13 +124,12 @@ function testSpeedGetMeasures() {
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [
         "kilometer/hour",
-    	"feet/second",
+        "feet/second",
         "miles/hour",
         "knot",
-    	"meters/second",
-    	"kilometer/second",
-    	"miles/second",
-    	  	
-	];	
+        "meters/second",
+        "kilometer/second",
+        "miles/second",
+    ];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

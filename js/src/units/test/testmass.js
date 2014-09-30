@@ -134,7 +134,7 @@ function testMassScale5() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(4.46429, m.amount, 0.00001);
+	assertRoughlyEquals(4.46429, m.amount, 0.00001);
 	assertEquals("stone", m.unit);
 }
 
@@ -146,7 +146,7 @@ function testMassScale6() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(1.4, m.amount, 0.01);
+	assertRoughlyEquals(1.4, m.amount, 0.01);
 	assertEquals("pound", m.unit);
 }
 
@@ -158,7 +158,7 @@ function testMassScale7() {
 
 	m = m.scale("imperial");
 
-        assertRoughlyEquals(13.9508929, m.amount, 0.001);
+	assertRoughlyEquals(13.9508929, m.amount, 0.001);
 	assertEquals("long ton", m.unit);
 }
 
@@ -170,7 +170,7 @@ function testMassScale8() {
 
 	m = m.scale("imperial");
 
-        assertEquals(10, m.amount);
+	assertEquals(10, m.amount);
 	assertEquals("pound", m.unit);
 }
 
@@ -182,7 +182,7 @@ function testMassScale9() {
 
 	m = m.scale("uscustomary");
 
-        assertRoughlyEquals(3.125, m.amount, 0.001);
+	assertRoughlyEquals(3.125, m.amount, 0.001);
 	assertEquals("short ton", m.unit);
 }
 
@@ -194,16 +194,16 @@ function testMassScale10() {
 
 	m = m.scale("uscustomary");
 
-        assertRoughlyEquals(2, m.amount, 0.001);
+	assertRoughlyEquals(2, m.amount, 0.001);
 	assertEquals("pound", m.unit);
 }
 
 function testMassGetMeasures() {
 	var measures = ilib.Measurement.Mass.getMeasures();
 	var expected = [
-    	"microgram",  
+        "microgram",  
         "milligram",  
-	"gram",
+        "gram",
         "ounce",
         "pound",
         "kilogram",
@@ -211,6 +211,6 @@ function testMassGetMeasures() {
         "short ton",
         "metric ton",
         "long ton"
-	];	
+    ];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }
