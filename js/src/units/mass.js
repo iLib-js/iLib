@@ -184,9 +184,9 @@ ilib.Measurement.Mass.convert = function(to, from, mass) {
 };
 
 /**
- * Scale the current mass and return it in new mass unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     var mSystem;    

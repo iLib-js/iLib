@@ -1,7 +1,7 @@
 /*
- * testunits.js - test the String object
+ * testunits.js - test the units formatter object
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@
 
 function testUnitFormat1() {
 	var m = new ilib.Measurement({
-    		amount: 10,
-   		unit: "micrometer"
+		amount: 10,
+		unit: "micrometer"
 	});
 	var uf = new ilib.UnitFmt();  
 	var str = uf.format(m);	
@@ -29,8 +29,8 @@ function testUnitFormat1() {
 
 function testUnitFormatWithScale1() {
 	var m = new ilib.Measurement({
-    		amount: 3000,
-   		unit: "meter"
+		amount: 3000,
+		unit: "meter"
 	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);	
@@ -39,8 +39,8 @@ function testUnitFormatWithScale1() {
 
 function testUnitFormatWithoutScale1() {
 	var m = new ilib.Measurement({
-    		amount: 3000,
-   		unit: "meter"
+		amount: 3000,
+		unit: "meter"
 	});
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
@@ -98,9 +98,9 @@ function testUnitFormatWithMeasurementSystem() {
 	});
 
 	var uf = new ilib.UnitFmt({
-			autoScale: true,
-			measurementSystem: "metric"
-		}); 
+		autoScale: true,
+		measurementSystem: "metric"
+	}); 
 	var str = uf.format(m);	
 	assertEquals("10 gram", str);
 }

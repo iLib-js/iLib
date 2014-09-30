@@ -100,9 +100,9 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current DigitalStorage and return it in new DigitalStorage unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     

@@ -203,9 +203,9 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 };
 
 /**
- * Scale the current Time and return it in new Time unit.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 

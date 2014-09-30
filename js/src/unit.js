@@ -229,7 +229,7 @@ ilib.Measurement.prototype = {
 	 * of the same type.
 	 * 
 	 * @abstract
-	 * @param {string=} measurementsystem used (uscustomary|imperial|metric)
+	 * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
 	 * or undefined if the system can be inferred from the current measure
 	 * @return {ilib.Measurement} a new instance that is scaled to the 
 	 * right level

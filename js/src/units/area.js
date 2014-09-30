@@ -184,9 +184,9 @@ ilib.Measurement.Area.uscustomarySystem = {"square inch":4,"square foot":5,"squa
 
 
 /**
- * Sclae the current area.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];

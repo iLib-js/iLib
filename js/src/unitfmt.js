@@ -90,7 +90,7 @@ localeinfo.js
  */
 ilib.UnitFmt = function(options) {
 	var sync = true, 
-	loadParams = undefined;
+		loadParams = undefined;
         var length = "long";
         this.scale  = true;
         this.measurementType = 'undefined';
@@ -108,17 +108,17 @@ ilib.UnitFmt = function(options) {
 		
 		loadParams = options.loadParams;
                 
-                if (options.length) {
-                    length = options.length;
-                }
-                
-                if (!options.autoScale) {
-                    this.scale = false;
-                }
-                
-                if (options.measurementSystem) {
-                    this.measurementSystem = options.measurementSystem;
-                }
+        if (options.length) {
+            length = options.length;
+        }
+        
+        if (typeof(options.autoScale) === 'boolean') {
+            this.scale = options.autoScale;
+        }
+        
+        if (options.measurementSystem) {
+            this.measurementSystem = options.measurementSystem;
+        }
 	}
         
 	if (!ilib.UnitFmt.cache) {
@@ -129,14 +129,14 @@ ilib.UnitFmt = function(options) {
 		sync: sync,
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			this.localeInfo = li;
-                        var templates = this.localeInfo.getUnitFormat();
-                        this.template = new ilib.String(templates[length])
+			var templates = {"long": "{n} {u}", "short": "{n}{u}"};
+			if (li) {
+				this.localeInfo = li;
+				templates = this.localeInfo.getUnitFormat();
+			}
+            this.template = new ilib.String(templates[length]);
 		})
 	});
-};
-
-ilib.UnitFmt.defaultFmt = ilib.data.unitformats || {
 };
 
 ilib.UnitFmt.prototype = {
@@ -171,24 +171,35 @@ ilib.UnitFmt.prototype = {
 	toString: function() {
 		return this.getTemplate();
 	},
-        
-        getScale: function() {
-                return this.scale;
-        },
-        
-        getMeasurementSystem: function() {
-                return this.measurementSystem;
-        },
+    
+	/**
+	 * Return whether or not this formatter will auto-scale the units while formatting.
+	 * @returns {boolean} true if auto-scaling is turned on
+	 */
+    getScale: function() {
+    	return this.scale;
+    },
+    
+    /**
+     * Return the measurement system that is used for this formatter.
+     * @returns {string} the measurement system used in this formatter
+     */
+    getMeasurementSystem: function() {
+        return this.measurementSystem;
+    },
 	
 	/**
 	 * Format a particular unit instance according to the settings of this
 	 * formatter object.
 	 * 
-	 * @param {string} unit units to format	 
+	 * @param {ilib.Measurement} measurement measurement to format	 
 	 * @return {string} the formatted version of the given date instance
 	 */
-	format: function (unit) {
-                var u = this.scale ? unit.scale(this.measurementSystem) : unit;            
-                return this.template.format({n:u.amount,u:u.unit});
+	format: function (measurement) {
+		var u = this.scale ? measurement.scale(this.measurementSystem) : measurement;            
+		return this.template.format({
+			n: u.amount,
+			u: u.unit
+		});
 	}
 };

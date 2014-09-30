@@ -230,9 +230,9 @@ ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"ou
 
 
 /**
- * Sclae the current volume.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Volume.ratios[this.unit];

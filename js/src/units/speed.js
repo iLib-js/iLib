@@ -99,9 +99,9 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current speed and return it in new speed unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     var mSystem;    

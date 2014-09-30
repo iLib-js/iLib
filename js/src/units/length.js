@@ -92,8 +92,6 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current length to another measure.
- * 
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.convert = function(to) {
@@ -107,9 +105,9 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current length and return it in new length unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     var mSystem;    

@@ -218,9 +218,9 @@ ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
 
 
 /**
- * Sclae the current energy.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Energy.ratios[this.unit];
