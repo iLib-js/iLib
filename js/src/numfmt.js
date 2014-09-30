@@ -115,6 +115,12 @@ util/jsutils.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * <p>
  *
@@ -128,6 +134,7 @@ ilib.NumFmt = function (options) {
 	this.locale = new ilib.Locale();
 	/** @type {string} */
 	this.type = "number";
+	var loadParams = undefined;
 
 	if (options) {
 		if (options.locale) {
@@ -169,6 +176,8 @@ ilib.NumFmt = function (options) {
 			/** @type {boolean} */
 			sync = (options.sync == true);
 		}
+		
+		loadParams = options.loadParams;
 	}
 
 	/** @type {ilib.LocaleInfo|undefined} */
@@ -176,6 +185,7 @@ ilib.NumFmt = function (options) {
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
+		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
 			/** @type {ilib.LocaleInfo|undefined} */
 			this.localeInfo = li;
@@ -193,6 +203,7 @@ ilib.NumFmt = function (options) {
 					locale: this.locale,
 					code: this.currency,
 					sync: sync,
+					loadParams: loadParams,
 					onLoad: ilib.bind(this, function (cur) {
 						this.currencyInfo = cur;
 						if (this.style !== "common" && this.style !== "iso") {
