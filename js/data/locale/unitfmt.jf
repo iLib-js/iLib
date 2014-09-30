@@ -1,0 +1,6 @@
+{
+	"unitfmt": {
+		"long": "{n} {u}",
+		"short": "{n}{u}"
+	}
+}

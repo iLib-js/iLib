@@ -59,17 +59,6 @@ localeinfo.js
  * "yards", and the amount would be converted from meters to yards automatically before
  * being formatted. Default for the autoConvert property is "true", so it only needs to 
  * be specified when you want to turn off autoconversion.
- * 
- * <li><i>useNative</i> - when true, use native digits to format the amount. If this
- * property is not specified, this formatter will default to the preference for the
- * current locale.
- * 
- * <li><i>maxFractionDigits</i> - specify the maximum number of fractional digits allowed
- * in the final amount. 
- * 
- * <li><i>minFractionDigits</i> - specify the minimum number of fractional digits to 
- * format in the final amount. If the digits are zero, then zeros are formatted until
- * minFractionDigits digits is reached.
  *  
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
@@ -101,7 +90,10 @@ localeinfo.js
  */
 ilib.UnitFmt = function(options) {
 	var sync = true, 
-		loadParams = undefined;
+	loadParams = undefined;
+        var length = "long";
+        this.scale  = true;
+        this.measurementType = 'undefined';
 	
 	this.locale = new ilib.Locale();
 	
@@ -110,25 +102,25 @@ ilib.UnitFmt = function(options) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
 		}
 		
-		if (options.type) {
-			if (options.type === 'date' || 
-			    options.type === 'time' || 
-			    options.type === 'datetime') {
-				this.type = options.type;
-			}
-		}
-				
-		if (typeof(options.useNative) === 'boolean') {
-			this.useNative = options.useNative;
-		}
-		
 		if (typeof(options.sync) === 'boolean') {
 			sync = options.sync;
 		}
 		
 		loadParams = options.loadParams;
+                
+                if (options.length) {
+                    length = options.length;
+                }
+                
+                if (!options.autoScale) {
+                    this.scale = false;
+                }
+                
+                if (options.measurementSystem) {
+                    this.measurementSystem = options.measurementSystem;
+                }
 	}
-
+        
 	if (!ilib.UnitFmt.cache) {
 		ilib.UnitFmt.cache = {};
 	}
@@ -137,43 +129,9 @@ ilib.UnitFmt = function(options) {
 		sync: sync,
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			this.locinfo = li;
-			
-			// load the strings used to translate the components
-			new ilib.ResBundle({
-				locale: this.locale,
-				name: "sysres",
-				sync: sync,
-				loadParams: loadParams, 
-				onLoad: ilib.bind(this, function (rb) {
-					this.sysres = rb;
-					
-					if (!this.template) {
-						ilib.loadData({
-							object: ilib.UnitFmt, 
-							locale: this.locale, 
-							name: "unitformats.json", 
-							sync: sync, 
-							loadParams: loadParams, 
-							callback: ilib.bind(this, function (formats) {
-								if (!formats) {
-									formats = ilib.UnitFmt.defaultFmt;
-									var spec = this.locale.getSpec().replace(/-/g, '_');
-									ilib.UnitFmt.cache[spec] = formats;
-								}
-								this._initTemplate(formats);
-								if (options && typeof(options.onLoad) === 'function') {
-									options.onLoad(this);
-								}
-							})
-						});
-					} else {
-						if (options && typeof(options.onLoad) === 'function') {
-							options.onLoad(this);
-						}
-					}
-				})
-			});	
+			this.localeInfo = li;
+                        var templates = this.localeInfo.getUnitFormat();
+                        this.template = new ilib.String(templates[length])
 		})
 	});
 };
@@ -182,28 +140,7 @@ ilib.UnitFmt.defaultFmt = ilib.data.unitformats || {
 };
 
 ilib.UnitFmt.prototype = {
-	/**
-	 * @protected
-	 */
-	_initTemplate: function (formats) {
-		var digits;
-		// set up the mapping to native or alternate digits if necessary
-		if (typeof(this.useNative) === "boolean") {
-			if (this.useNative) {
-				digits = this.locinfo.getNativeDigits();
-				if (digits) {
-					this.digits = digits;
-				}
-			}
-		} else if (this.locinfo.getDigitsStyle() === "native") {
-			digits = this.locinfo.getNativeDigits();
-			if (digits) {
-				this.useNative = true;
-				this.digits = digits;
-			}
-		}
-	},
-    
+	
 	/**
 	 * Return the locale used with this formatter instance.
 	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
@@ -226,15 +163,6 @@ ilib.UnitFmt.prototype = {
 	},
 	
 	/**
-	 * Return the type of this formatter. The type is a string that has one of the following
-	 * values: "time", "date", "datetime".
-	 * @return {string} the type of the formatter
-	 */
-	getType: function() {
-		return this.type;
-	},
-	
-	/**
 	 * Convert this formatter to a string representation by returning the
 	 * format template. This method delegates to getTemplate.
 	 * 
@@ -243,18 +171,24 @@ ilib.UnitFmt.prototype = {
 	toString: function() {
 		return this.getTemplate();
 	},
+        
+        getScale: function() {
+                return this.scale;
+        },
+        
+        getMeasurementSystem: function() {
+                return this.measurementSystem;
+        },
 	
 	/**
-	 * Format a particular date instance according to the settings of this
-	 * formatter object. The type of the date instance being formatted must 
-	 * correspond exactly to the calendar type with which this formatter was 
-	 * constructed. If the types are not compatible, this formatter will
-	 * produce bogus results.
+	 * Format a particular unit instance according to the settings of this
+	 * formatter object.
 	 * 
-	 * @param {string} unit units to format
-	 * @param {Object} options
+	 * @param {string} unit units to format	 
 	 * @return {string} the formatted version of the given date instance
 	 */
-	format: function (unit, options) {
-	}	
+	format: function (unit) {
+                var u = this.scale ? unit.scale(this.measurementSystem) : unit;            
+                return this.template.format({n:u.amount,u:u.unit});
+	}
 };

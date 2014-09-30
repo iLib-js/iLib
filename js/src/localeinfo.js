@@ -248,6 +248,10 @@ ilib.LocaleInfo.prototype = {
 	getUnits: function () {
 		return this.info.units;
 	},
+        
+        getUnitFormat: function () {
+                return this.info.unitfmt;
+        },
 	
 	/**
 	 * Return the name of the calendar that is commonly used in the given locale.

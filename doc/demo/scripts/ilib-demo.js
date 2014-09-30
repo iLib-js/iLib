@@ -1785,6 +1785,10 @@ ilib.LocaleInfo.prototype = {
 	getUnits: function () {
 		return this.info.units;
 	},
+        
+        getUnitFormat: function () {
+                return this.info.unitfmt;
+        },
 	
 	/**
 	 * Return the name of the calendar that is commonly used in the given locale.
@@ -19092,17 +19096,6 @@ localeinfo.js
  * "yards", and the amount would be converted from meters to yards automatically before
  * being formatted. Default for the autoConvert property is "true", so it only needs to 
  * be specified when you want to turn off autoconversion.
- * 
- * <li><i>useNative</i> - when true, use native digits to format the amount. If this
- * property is not specified, this formatter will default to the preference for the
- * current locale.
- * 
- * <li><i>maxFractionDigits</i> - specify the maximum number of fractional digits allowed
- * in the final amount. 
- * 
- * <li><i>minFractionDigits</i> - specify the minimum number of fractional digits to 
- * format in the final amount. If the digits are zero, then zeros are formatted until
- * minFractionDigits digits is reached.
  *  
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
@@ -19134,7 +19127,10 @@ localeinfo.js
  */
 ilib.UnitFmt = function(options) {
 	var sync = true, 
-		loadParams = undefined;
+	loadParams = undefined;
+        var length = "long";
+        this.scale  = true;
+        this.measurementType = 'undefined';
 	
 	this.locale = new ilib.Locale();
 	
@@ -19143,25 +19139,25 @@ ilib.UnitFmt = function(options) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
 		}
 		
-		if (options.type) {
-			if (options.type === 'date' || 
-			    options.type === 'time' || 
-			    options.type === 'datetime') {
-				this.type = options.type;
-			}
-		}
-				
-		if (typeof(options.useNative) === 'boolean') {
-			this.useNative = options.useNative;
-		}
-		
 		if (typeof(options.sync) === 'boolean') {
 			sync = options.sync;
 		}
 		
 		loadParams = options.loadParams;
+                
+                if (options.length) {
+                    length = options.length;
+                }
+                
+                if (!options.autoScale) {
+                    this.scale = false;
+                }
+                
+                if (options.measurementSystem) {
+                    this.measurementSystem = options.measurementSystem;
+                }
 	}
-
+        
 	if (!ilib.UnitFmt.cache) {
 		ilib.UnitFmt.cache = {};
 	}
@@ -19170,43 +19166,9 @@ ilib.UnitFmt = function(options) {
 		sync: sync,
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			this.locinfo = li;
-			
-			// load the strings used to translate the components
-			new ilib.ResBundle({
-				locale: this.locale,
-				name: "sysres",
-				sync: sync,
-				loadParams: loadParams, 
-				onLoad: ilib.bind(this, function (rb) {
-					this.sysres = rb;
-					
-					if (!this.template) {
-						ilib.loadData({
-							object: ilib.UnitFmt, 
-							locale: this.locale, 
-							name: "unitformats.json", 
-							sync: sync, 
-							loadParams: loadParams, 
-							callback: ilib.bind(this, function (formats) {
-								if (!formats) {
-									formats = ilib.UnitFmt.defaultFmt;
-									var spec = this.locale.getSpec().replace(/-/g, '_');
-									ilib.UnitFmt.cache[spec] = formats;
-								}
-								this._initTemplate(formats);
-								if (options && typeof(options.onLoad) === 'function') {
-									options.onLoad(this);
-								}
-							})
-						});
-					} else {
-						if (options && typeof(options.onLoad) === 'function') {
-							options.onLoad(this);
-						}
-					}
-				})
-			});	
+			this.localeInfo = li;
+                        var templates = this.localeInfo.getUnitFormat();
+                        this.template = new ilib.String(templates[length])
 		})
 	});
 };
@@ -19215,28 +19177,7 @@ ilib.UnitFmt.defaultFmt = ilib.data.unitformats || {
 };
 
 ilib.UnitFmt.prototype = {
-	/**
-	 * @protected
-	 */
-	_initTemplate: function (formats) {
-		var digits;
-		// set up the mapping to native or alternate digits if necessary
-		if (typeof(this.useNative) === "boolean") {
-			if (this.useNative) {
-				digits = this.locinfo.getNativeDigits();
-				if (digits) {
-					this.digits = digits;
-				}
-			}
-		} else if (this.locinfo.getDigitsStyle() === "native") {
-			digits = this.locinfo.getNativeDigits();
-			if (digits) {
-				this.useNative = true;
-				this.digits = digits;
-			}
-		}
-	},
-    
+	
 	/**
 	 * Return the locale used with this formatter instance.
 	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
@@ -19259,15 +19200,6 @@ ilib.UnitFmt.prototype = {
 	},
 	
 	/**
-	 * Return the type of this formatter. The type is a string that has one of the following
-	 * values: "time", "date", "datetime".
-	 * @return {string} the type of the formatter
-	 */
-	getType: function() {
-		return this.type;
-	},
-	
-	/**
 	 * Convert this formatter to a string representation by returning the
 	 * format template. This method delegates to getTemplate.
 	 * 
@@ -19276,20 +19208,26 @@ ilib.UnitFmt.prototype = {
 	toString: function() {
 		return this.getTemplate();
 	},
+        
+        getScale: function() {
+                return this.scale;
+        },
+        
+        getMeasurementSystem: function() {
+                return this.measurementSystem;
+        },
 	
 	/**
-	 * Format a particular date instance according to the settings of this
-	 * formatter object. The type of the date instance being formatted must 
-	 * correspond exactly to the calendar type with which this formatter was 
-	 * constructed. If the types are not compatible, this formatter will
-	 * produce bogus results.
+	 * Format a particular unit instance according to the settings of this
+	 * formatter object.
 	 * 
-	 * @param {string} unit units to format
-	 * @param {Object} options
+	 * @param {string} unit units to format	 
 	 * @return {string} the formatted version of the given date instance
 	 */
-	format: function (unit, options) {
-	}	
+	format: function (unit) {
+                var u = this.scale ? unit.scale(this.measurementSystem) : unit;            
+                return this.template.format({n:u.amount,u:u.unit});
+	}
 };
 
 /*
@@ -19410,19 +19348,17 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.metricSystem;
-    } else
-    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.imperialSystem;
-    } else
-    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Length.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Length.uscustomarySystem;
     } else {
         return new ilib.Measurement.Length({
-		unit: this.unit,
-		amount: this.amount
-	});
+			unit: this.unit,
+			amount: this.amount
+		});
     }    
     
     var length;
@@ -19437,8 +19373,8 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     }
     
     return new ilib.Measurement.Length({
-	unit: munit,
-	amount: length
+		unit: munit,
+		amount: length
     });
 };
 
@@ -19602,13 +19538,13 @@ ilib.Measurement.Speed = function (options) {
 
 ilib.Measurement.Speed.ratios = {
 	/*                 index, k/h         f/s         miles/h      knot         m/s        km/s         miles/s */
-        "kilometer/hour":   [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
+    "kilometer/hour":   [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
 	"feet/second":      [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],  
-        "miles/hour":       [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
-        "knot":             [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
-      	"meters/second":    [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],	
-        "kilometer/second": [ 6,  3600,       3280.8399,  2236.93629,  1943.84449,  1000,      1,           0.621371192   ],
-        "miles/second":     [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
+    "miles/hour":       [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
+    "knot":             [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
+  	"meters/second":    [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],	
+    "kilometer/second": [ 6,  3600,       3280.8399,  2236.93629,  1943.84449,  1000,      1,           0.621371192   ],
+    "miles/second":     [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
 };
 
 ilib.Measurement.Speed.metricSystem      = {"kilometer/hour":1,"meters/second":5,"kilometer/second":6};
@@ -19651,19 +19587,17 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Speed.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Speed.metricSystem;
-    } else
-    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Speed.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Speed.imperialSystem;
-    } else
-    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Speed.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Speed.uscustomarySystem;
     } else {
         return new ilib.Measurement.Speed({
-		unit: this.unit,
-		amount: this.amount
-	});
+			unit: this.unit,
+			amount: this.amount
+		});
     }
     
     var speed = 0;
@@ -19672,15 +19606,14 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        //if (tmp < 1 && speed !== 0) break;
         if (tmp < 1) break;
         speed = tmp;
         munit = m;
     }
     
     return new ilib.Measurement.Speed({
-	unit: munit,
-	amount: speed
+		unit: munit,
+		amount: speed
     });    
 };
 
@@ -20591,11 +20524,11 @@ ilib.Measurement.Mass.ratios = {
 	"gram":        [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
 	"ounce":       [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
 	"pound":       [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
-        "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
-        "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
-        "short ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
-        "metric ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
-        "long ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
+    "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
+    "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
+    "short ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
+    "metric ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
+    "long ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
 
 ilib.Measurement.Mass.metricSystem      = {"microgram":1,"milligram":2,"gram":3,"kilogram":6,"metric ton":9};
@@ -20720,19 +20653,17 @@ ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Mass.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Mass.metricSystem;
-    } else
-    if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Mass.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Mass.imperialSystem;
-    } else
-    if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
             && typeof(ilib.Measurement.Mass.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Mass.uscustomarySystem;
     } else {
         return new ilib.Measurement.Mass({
-		unit: this.unit,
-		amount: this.amount
-	});
+			unit: this.unit,
+			amount: this.amount
+		});
     }    
     
     var mass;
@@ -20747,8 +20678,8 @@ ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     }
     
     return new ilib.Measurement.Mass({
-	unit: munit,
-	amount: mass
+		unit: munit,
+		amount: mass
     });
 };
 
@@ -21459,13 +21390,10 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Volume.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Volume.metricSystem;
-    }
-
-    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+    } else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Volume.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Volume.uscustomarySystem;
-    }
-    else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
+    } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Volume.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Volume.imperialSystem;
     }
