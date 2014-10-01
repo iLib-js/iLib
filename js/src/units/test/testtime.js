@@ -81,7 +81,7 @@ function testTimeScaling1() {
     var  m1 = m.scale();
 
     assertEquals(1.024,m1.amount);
-    assertEquals("μs",m1.unit);
+    assertEquals("microsecond",m1.unit);
 }
 
 function testTimeScaling2() {
@@ -93,7 +93,7 @@ function testTimeScaling2() {
     m = m.scale();
 
     assertEquals(12,m.amount);
-    assertEquals("s",m.unit);
+    assertEquals("second",m.unit);
 }
 
 function testTimeScaling3() {
@@ -135,18 +135,18 @@ function testTimeScaling5() {
 function testTimeGetMeasures() {
 	var measures = ilib.Measurement.Time.getMeasures();
 	var expected = [
-    	"ns",  
-		"μs",  
-		"ms",
-		"s",
-		"min",
-        "h",
-        "day",
-        "week",
-        "month",
-        "year",
-        "decade",
-        "century" 	
+                "nanosecond",  
+		"microsecond",  
+		"millisecond",
+		"second",
+		"minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "year",
+                "decade",
+                "century" 	
 	];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

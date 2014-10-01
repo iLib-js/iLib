@@ -137,16 +137,16 @@ function testAreaStaticConvert15() {
 function testAreaStaticConvert16() {
 	var m = ilib.Measurement.Area.convert( "square inch","acre", 2.0);
 	
-	assertEquals(1.255e+7, m);
+        assertRoughlyEquals(1.255e+7, m, 1e+7);
 }
 
-function testAreaStaticConvert16() {
+function testAreaStaticConvert17() {
 	var m = ilib.Measurement.Area.convert( "square inch","square yard", 2.0);
 	
 	assertEquals(2592, m);
 }
 
-function testAreaStaticConvert17() {
+function testAreaScale1() {
     var m1 = new ilib.Measurement.Area({
         unit: "square meter",
         amount: 100
@@ -157,7 +157,7 @@ function testAreaStaticConvert17() {
     assertEquals("square meter", m2.unit);
 }
 
-function testAreaStaticConvert18() {
+function testAreaScale2() {
     var m1 = new ilib.Measurement.Area({
         unit: "square inch",
         amount: 100
@@ -168,7 +168,7 @@ function testAreaStaticConvert18() {
     assertEquals("square inch", m2.unit);
 }
 
-function testAreaStaticConvert19() {
+function testAreaScale3() {
     var m1 = new ilib.Measurement.Area({
         unit: "square km",
         amount: 100
@@ -179,7 +179,7 @@ function testAreaStaticConvert19() {
     assertEquals("square km", m2.unit);
 }
 
-function testAreaStaticConvert20() {
+function testAreaScale4() {
     var m1 = new ilib.Measurement.Area({
         unit: "acre",
         amount: 100
@@ -189,6 +189,49 @@ function testAreaStaticConvert20() {
     assertEquals(100, m2.amount);
     assertEquals("acre", m2.unit);
 }
+
+function testAreaScale5() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "hectare",
+        amount: 100
+    });
+    var m2 = m1.scale("metric");
+
+    assertEquals(1, m2.amount);
+    assertEquals("square km", m2.unit);
+}
+
+function testAreaScale6() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square foot",
+        amount: 30000000
+    });
+    var m2 = m1.scale("uscustomary");
+    assertRoughlyEquals(1.0761, m2.amount,0.0001);
+    assertEquals("square mile", m2.unit);
+}
+
+function testAreaScale7() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square km",
+        amount: 0.0001
+    });
+    var m2 = m1.scale("metric");
+
+    assertEquals(100, m2.amount);
+    assertEquals("square meter", m2.unit);
+}
+
+function testAreaScale8() {
+    var m1 = new ilib.Measurement.Area({
+        unit: "square mile",
+        amount: 0.01
+    });
+    var m2 = m1.scale("uscustomary");
+    assertRoughlyEquals(6.4, m2.amount,0.01);
+    assertEquals("acre", m2.unit);
+}
+
 function testAreaGetMeasures() {
 	var measures = ilib.Measurement.Area.getMeasures();
 	var expected = [

@@ -1616,6 +1616,7 @@ ilib.LocaleInfo = function(locale, options) {
 		clock:string,
 		currency:string,
 		firstDayOfWeek:number,
+		unitfmt: {long:string,short:string},
 		numfmt:Object.<{
 			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
 			script:string,
@@ -1689,6 +1690,7 @@ ilib.LocaleInfo.defaultInfo = /** @type {{
 	clock:string,
 	currency:string,
 	firstDayOfWeek:number,
+	unitfmt: {long:string,short:string},
 	numfmt:Object.<{
 		currencyFormats:Object.<{
 			common:string,
@@ -19027,7 +19029,7 @@ ilib.Measurement.prototype = {
 	 * of the same type.
 	 * 
 	 * @abstract
-	 * @param {string=} measurementsystem used (uscustomary|imperial|metric)
+	 * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
 	 * or undefined if the system can be inferred from the current measure
 	 * @return {ilib.Measurement} a new instance that is scaled to the 
 	 * right level
@@ -19127,7 +19129,7 @@ localeinfo.js
  */
 ilib.UnitFmt = function(options) {
 	var sync = true, 
-	loadParams = undefined;
+		loadParams = undefined;
         var length = "long";
         this.scale  = true;
         this.measurementType = 'undefined';
@@ -19145,17 +19147,17 @@ ilib.UnitFmt = function(options) {
 		
 		loadParams = options.loadParams;
                 
-                if (options.length) {
-                    length = options.length;
-                }
-                
-                if (!options.autoScale) {
-                    this.scale = false;
-                }
-                
-                if (options.measurementSystem) {
-                    this.measurementSystem = options.measurementSystem;
-                }
+        if (options.length) {
+            length = options.length;
+        }
+        
+        if (typeof(options.autoScale) === 'boolean') {
+            this.scale = options.autoScale;
+        }
+        
+        if (options.measurementSystem) {
+            this.measurementSystem = options.measurementSystem;
+        }
 	}
         
 	if (!ilib.UnitFmt.cache) {
@@ -19166,14 +19168,14 @@ ilib.UnitFmt = function(options) {
 		sync: sync,
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			this.localeInfo = li;
-                        var templates = this.localeInfo.getUnitFormat();
-                        this.template = new ilib.String(templates[length])
+			var templates = {"long": "{n} {u}", "short": "{n}{u}"};
+			if (li) {
+				this.localeInfo = li;
+				templates = this.localeInfo.getUnitFormat();
+			}
+            this.template = new ilib.String(templates[length]);
 		})
 	});
-};
-
-ilib.UnitFmt.defaultFmt = ilib.data.unitformats || {
 };
 
 ilib.UnitFmt.prototype = {
@@ -19208,25 +19210,36 @@ ilib.UnitFmt.prototype = {
 	toString: function() {
 		return this.getTemplate();
 	},
-        
-        getScale: function() {
-                return this.scale;
-        },
-        
-        getMeasurementSystem: function() {
-                return this.measurementSystem;
-        },
+    
+	/**
+	 * Return whether or not this formatter will auto-scale the units while formatting.
+	 * @returns {boolean} true if auto-scaling is turned on
+	 */
+    getScale: function() {
+    	return this.scale;
+    },
+    
+    /**
+     * Return the measurement system that is used for this formatter.
+     * @returns {string} the measurement system used in this formatter
+     */
+    getMeasurementSystem: function() {
+        return this.measurementSystem;
+    },
 	
 	/**
 	 * Format a particular unit instance according to the settings of this
 	 * formatter object.
 	 * 
-	 * @param {string} unit units to format	 
+	 * @param {ilib.Measurement} measurement measurement to format	 
 	 * @return {string} the formatted version of the given date instance
 	 */
-	format: function (unit) {
-                var u = this.scale ? unit.scale(this.measurementSystem) : unit;            
-                return this.template.format({n:u.amount,u:u.unit});
+	format: function (measurement) {
+		var u = this.scale ? measurement.scale(this.measurementSystem) : measurement;            
+		return this.template.format({
+			n: u.amount,
+			u: u.unit
+		});
 	}
 };
 
@@ -19324,8 +19337,6 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current length to another measure.
- * 
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.convert = function(to) {
@@ -19339,9 +19350,9 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current length and return it in new length unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     var mSystem;    
@@ -19578,9 +19589,9 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current speed and return it in new speed unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     var mSystem;    
@@ -19823,9 +19834,9 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 };
 
 /**
- * Scale the current DigitalStorage and return it in new DigitalStorage unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     
@@ -20274,19 +20285,19 @@ ilib.Measurement.Time = function (options) {
 };
 
 ilib.Measurement.Time.ratios = {
-	/*          index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */           
-	"ns":       [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],  
-	"μs":       [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],  
-	"ms":       [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
-	"s":        [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
-	"min":      [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
-    "h":        [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
-    "day":      [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
-    "week":     [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
-    "month":    [ 9,   2.63e+15,   2.63e+12,   2.63e+9,    2.63e+6,   43829.1,     730.484,      30.4368,      4.34812,     1,           0.0833333,   0.00833333,   0.000833333 ],
-    "year":     [ 10,  3.156e+16,  3.156e+13,  3.156e+10,  3.156e+7,  525949,      8765.81,      365.242,      52.1775,     12,          1,           0.1,          0.01        ],
-    "decade":   [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
-    "century":  [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
+	/*              index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */           
+	"nanosecond":   [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],  
+	"microsecond":  [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],  
+	"millisecond":  [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
+	"second":       [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
+	"minute":       [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
+        "hour":         [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
+        "day":          [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
+        "week":         [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
+        "month":        [ 9,   2.63e+15,   2.63e+12,   2.63e+9,    2.63e+6,   43829.1,     730.484,      30.4368,      4.34812,     1,           0.0833333,   0.00833333,   0.000833333 ],
+        "year":         [ 10,  3.156e+16,  3.156e+13,  3.156e+10,  3.156e+7,  525949,      8765.81,      365.242,      52.1775,     12,          1,           0.1,          0.01        ],
+        "decade":       [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
+        "century":      [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
 };
 
 ilib.Measurement.Time.prototype = new ilib.Measurement({});
@@ -20316,59 +20327,59 @@ ilib.Measurement.Time.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Time.aliases = {
-    "ns":"ns",
-    "NS":"ns",
-    "nS":"ns",
-    "Ns":"ns",
-    "Nanosecond":"ns",
-    "Nanoseconds":"ns",
-    "nanosecond":"ns",
-    "nanoseconds":"ns",
-    "NanoSecond":"ns",
-    "NanoSeconds":"ns",
-    "μs":"μs",
-    "μS":"μs",
-    "microsecond":"μs",
-    "microseconds":"μs",
-    "Microsecond":"μs",
-    "Microseconds":"μs",
-    "MicroSecond":"μs",
-    "MicroSeconds":"μs",
-    "ms":"ms",
-    "MS":"ms",
-    "mS":"ms",
-    "Ms":"ms",
-    "millisecond":"ms",
-    "milliseconds":"ms",
-    "Millisecond":"ms",
-    "Milliseconds":"ms",
-    "MilliSecond":"ms",
-    "MilliSeconds":"ms",
-    "s":"s",
-    "S":"s",
-    "sec":"s",
-    "second":"s",
-    "seconds":"s",
-    "Second":"s",
-    "Seconds":"s",
-    "min":"min",
-    "Min":"min",
-    "minute":"min",
-    "minutes":"min",
-    "Minute":"min",
-    "Minutes":"min",
-    "h":"h",
-    "H":"h",
-    "hr":"h",
-    "Hr":"h",
-    "hR":"h",
-    "HR":"h",
-    "hour":"h",
-    "hours":"h",
-    "Hour":"h",
-    "Hours":"h",
-    "Hrs":"h",
-    "hrs":"h",
+    "ns":"nanosecond",
+    "NS":"nanosecond",
+    "nS":"nanosecond",
+    "Ns":"nanosecond",
+    "Nanosecond":"nanosecond",
+    "Nanoseconds":"nanosecond",
+    "nanosecond":"nanosecond",
+    "nanoseconds":"nanosecond",
+    "NanoSecond":"nanosecond",
+    "NanoSeconds":"nanosecond",
+    "μs":"microsecond",
+    "μS":"microsecond",
+    "microsecond":"microsecond",
+    "microseconds":"microsecond",
+    "Microsecond":"microsecond",
+    "Microseconds":"microsecond",
+    "MicroSecond":"microsecond",
+    "MicroSeconds":"microsecond",
+    "ms":"millisecond",
+    "MS":"millisecond",
+    "mS":"millisecond",
+    "Ms":"millisecond",
+    "millisecond":"millisecond",
+    "milliseconds":"millisecond",
+    "Millisecond":"millisecond",
+    "Milliseconds":"millisecond",
+    "MilliSecond":"millisecond",
+    "MilliSeconds":"millisecond",
+    "s":"second",
+    "S":"second",
+    "sec":"second",
+    "second":"second",
+    "seconds":"second",
+    "Second":"second",
+    "Seconds":"second",
+    "min":"minute",
+    "Min":"minute",
+    "minute":"minute",
+    "minutes":"minute",
+    "Minute":"minute",
+    "Minutes":"minute",
+    "h":"hour",
+    "H":"hour",
+    "hr":"hour",
+    "Hr":"hour",
+    "hR":"hour",
+    "HR":"hour",
+    "hour":"hour",
+    "hours":"hour",
+    "Hour":"hour",
+    "Hours":"hour",
+    "Hrs":"hour",
+    "hrs":"hour",
     "day":"day",
     "days":"day",
     "Day":"day",
@@ -20419,9 +20430,9 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 };
 
 /**
- * Scale the current Time and return it in new Time unit.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 
@@ -20644,9 +20655,9 @@ ilib.Measurement.Mass.convert = function(to, from, mass) {
 };
 
 /**
- * Scale the current mass and return it in new mass unit.
- * 
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     var mSystem;    
@@ -20879,14 +20890,14 @@ ilib.Measurement.Area.getMeasures = function () {
 };
 
 ilib.Measurement.Area.metricSystem      = {"square meter":1,"hectare":2,"square km":3};
-ilib.Measurement.Area.imperialSystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+ilib.Measurement.Area.imperialSystem    = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
 ilib.Measurement.Area.uscustomarySystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
 
 
 /**
- * Sclae the current area.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];
@@ -21379,9 +21390,9 @@ ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"ou
 
 
 /**
- * Sclae the current volume.
- *
  * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
  */
 ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Volume.ratios[this.unit];
@@ -21421,7 +21432,7 @@ ilib.Measurement._constructors["volume"] = ilib.Measurement.Volume;
 
 /*
  * Energy.js - Unit conversions for Energys/energys
- * 
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21439,29 +21450,29 @@ ilib.Measurement._constructors["volume"] = ilib.Measurement.Volume;
  */
 
 /*
-!depends 
-ilibglobal.js 
+!depends
+ilibglobal.js
 */
 
 /**
  * Create a new energy measurement.
- * 
+ *
  * @class
  * @constructor
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 ilib.Measurement.Energy = function (options) {
 	this.unit = "ns";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Energy.aliases; // share this table in all instances
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.aliases[options.unit] || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "energy") {
 				this.amount = ilib.Measurement.Energy.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -21472,25 +21483,25 @@ ilib.Measurement.Energy = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(ilib.Measurement.Energy.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
 };
 
 ilib.Measurement.Energy.ratios = {
-		/*      index  mJ          J           BTU               kJ          Wh                Cal               MJ             kWh                gJ             MWh                 gWh         */           
-        "mJ":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],  
-        "J":    [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],  
-        "BTU":  [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
-        "kJ":   [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
-        "Wh":   [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
-        "Cal":  [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
-        "MJ":   [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
-        "kWh":  [ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
-        "gJ":   [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
-        "MWh":  [ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
-        "gWh":  [ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
+		/*      index  mJ          J           BTU               kJ          Wh                Cal               MJ             kWh                gJ             MWh                 gWh         */
+        "micro joule":   [ 1,   1,          0.001,      9.4781707775e-7,  1e-6,       2.7777777778e-7,  2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],
+        "joule":         [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],
+        "BTU":           [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
+        "kilo joule":    [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
+        "watt hour":     [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
+        "calorie":       [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
+        "mega joule":    [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
+        "kilo watt hour":[ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
+        "giga joule":    [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
+        "mega watt hour":[ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
+        "giga watt hour":[ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
 };
 
 ilib.Measurement.Energy.prototype = new ilib.Measurement({});
@@ -21506,7 +21517,7 @@ ilib.Measurement.Energy.prototype.getMeasure = function() {
 
 /**
  * Convert the current energy to another measure.
- * 
+ *
  * @inheritDoc
  */
 ilib.Measurement.Energy.prototype.convert = function(to) {
@@ -21520,74 +21531,84 @@ ilib.Measurement.Energy.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Energy.aliases = {
-    "mJ":"mJ",
-    "millijoule":"mJ",
-    "MilliJoule":"mJ",
-    "milliJ":"mJ",
-    "J":"J",
-    "j":"J",
-    "Joule":"J",
-    "joule":"J",
-    "Joules":"J",
-    "joules":"J",
+    "micro joule":"micro joule",
+    "micro joule":"micro joule",
+    "millijoule":"micro joule",
+    "MilliJoule":"micro joule",
+    "milliJ":"micro joule",
+    "joule":"joule",
+    "J":"joule",
+    "j":"joule",
+    "Joule":"joule",
+    "joule":"joule",
+    "Joules":"joule",
+    "joules":"joule",
     "BTU":"BTU",
     "btu":"BTU",
     "British thermal unit":"BTU",
     "british thermal unit":"BTU",
-    "kJ":"kJ",
-    "kj":"kJ",
-    "Kj":"kJ",
-    "kiloJoule":"kJ",
-    "kilojoule":"kJ",
-    "kjoule":"kJ",
-    "Wh":"Wh",
-    "wh":"Wh",
-    "watt-hour":"Wh",
-    "Cal":"Cal",
-    "cal":"Cal",
-    "Calorie":"Cal",
-    "calorie":"Cal",
-    "Calories":"Cal",
-    "calories":"Cal",
-    "MJ":"MJ",
-    "megajoule":"MJ",
-    "megajoules":"MJ",
-    "Megajoules":"MJ",
-    "megaJoules":"MJ",
-    "MegaJoules":"MJ",
-    "megaJoule":"MJ",
-    "MegaJoule":"MJ",
-    "kWh":"kWh",
-    "kiloWh":"kWh",
-    "KiloWh":"kWh",
-    "KiloWatt-hour":"kWh",
-    "KiloWatt-hours":"kWh",
-    "Kilo Watt-hour":"kWh",
-    "Kilo Watt-hours":"kWh",
-    "gJ":"gJ",
-    "GJ":"gJ",
-    "GigaJoule":"gJ",
-    "gigaJoule":"gJ",
-    "gigajoule":"gJ",
-    "GigaJoules":"gJ",
-    "gigaJoules":"gJ",
-    "Gigajoules":"gJ",
-    "gigajoules":"gJ",
-    "MWh":"MWh",
-    "MegaWh":"MWh",
-    "megaWh":"MWh",
-    "megaWatthour":"MWh",
-    "megaWatt-hour":"MWh",
-    "mega Watt-hour":"MWh",
-    "megaWatt hour":"MWh",
-    "megawatt hour":"MWh",
-    "mega Watt hour":"MWh",
-    "gWh":"gWh",
-    "gigaWh":"gWh",
-    "gigaWatt-hour":"gWh",
-    "gigaWatt hour":"gWh",
-    "gigawatt hour":"gWh",
-    "gigawatthour":"gWh"
+    "kilo joule":"kilo joule",
+    "kJ":"kilo joule",
+    "kj":"kilo joule",
+    "Kj":"kilo joule",
+    "kiloJoule":"kilo joule",
+    "kilojoule":"kilo joule",
+    "kjoule":"kilo joule",
+    "watt hour":"watt hour",
+    "Wh":"watt hour",
+    "wh":"watt hour",
+    "watt-hour":"watt hour",
+    "calorie":"calorie",
+    "Cal":"calorie",
+    "cal":"calorie",
+    "Calorie":"calorie",
+    "calorie":"calorie",
+    "Calories":"calorie",
+    "calories":"calorie",
+    "mega joule":"mega joule",
+    "MJ":"mega joule",
+    "megajoule":"mega joule",
+    "megajoules":"mega joule",
+    "Megajoules":"mega joule",
+    "megaJoules":"mega joule",
+    "MegaJoules":"mega joule",
+    "megaJoule":"mega joule",
+    "MegaJoule":"mega joule",
+    "kilo Watt hour": "kilo Watt hour",
+    "kWh":"kilo Watt hour",
+    "kiloWh":"kilo Watt hour",
+    "KiloWh":"kilo Watt hour",
+    "KiloWatt-hour":"kilo Watt hour",
+    "KiloWatt-hours":"kilo Watt hour",
+    "Kilo Watt-hour":"kilo Watt hour",
+    "Kilo Watt-hours":"kilo Watt hour",
+    "giga joule":"giga joule",
+    "gJ":"giga joule",
+    "GJ":"giga joule",
+    "GigaJoule":"giga joule",
+    "gigaJoule":"giga joule",
+    "gigajoule":"giga joule",
+    "GigaJoules":"giga joule",
+    "gigaJoules":"giga joule",
+    "Gigajoules":"giga joule",
+    "gigajoules":"giga joule",
+    "mega watt hour":"mega watt hour",
+    "MWh":"mega watt hour",
+    "MegaWh":"mega watt hour",
+    "megaWh":"mega watt hour",
+    "megaWatthour":"mega watt hour",
+    "megaWatt-hour":"mega watt hour",
+    "mega Watt-hour":"mega watt hour",
+    "megaWatt hour":"mega watt hour",
+    "megawatt hour":"mega watt hour",
+    "mega Watt hour":"mega watt hour",
+    "giga watt hour":"giga watt hour",
+    "gWh":"giga watt hour",
+    "gigaWh":"giga watt hour",
+    "gigaWatt-hour":"giga watt hour",
+    "gigaWatt hour":"giga watt hour",
+    "gigawatt hour":"giga watt hour",
+    "gigawatthour":"giga watt hour"
 };
 
 /**
@@ -21605,7 +21626,7 @@ ilib.Measurement.Energy.convert = function(to, from, energy) {
     var toRow = ilib.Measurement.Energy.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
         return undefined;
-    }	
+    }
     return energy * fromRow[toRow[0]];
 };
 
@@ -21621,6 +21642,55 @@ ilib.Measurement.Energy.getMeasures = function () {
 	return ret;
 };
 
+ilib.Measurement.Energy.metricJouleSystem	= {"micro joule":1, "joule":2,"kilo joule":4,"mega joule":7,"giga joule":9};
+ilib.Measurement.Energy.metricWattHourSystem = {"watt hour":5,"kilo watt hour":8,"mega watt hour":10,"giga watt hour":11};
+
+ilib.Measurement.Energy.imperialSystem	= {"BTU":3};
+ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
+
+
+/**
+ * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
+ */
+ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
+    var fromRow = ilib.Measurement.Energy.ratios[this.unit];
+    var mSystem;
+
+    if ((measurementsystem === "metric" && typeof(ilib.Measurement.Energy.metricJouleSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.metricJouleSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.metricJouleSystem;
+    }
+    else if ((measurementsystem === "metric" && typeof(ilib.Measurement.Energy.metricWattHourSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.metricWattHourSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.metricWattHourSystem;
+    }
+
+    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.uscustomarySystem;
+    }
+    else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Energy.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = ilib.Measurement.Energy.imperialSystem;
+    }
+
+    var energy;
+    var munit;
+
+    for (var m in mSystem) {
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp < 1) break;
+        energy = tmp;
+        munit = m;
+    }
+
+    return new ilib.Measurement.Energy({
+        unit: munit,
+        amount: energy
+    });
+};
 //register with the factory method
 ilib.Measurement._constructors["energy"] = ilib.Measurement.Energy;
 

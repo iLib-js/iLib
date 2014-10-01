@@ -179,7 +179,7 @@ ilib.Measurement.Area.getMeasures = function () {
 };
 
 ilib.Measurement.Area.metricSystem      = {"square meter":1,"hectare":2,"square km":3};
-ilib.Measurement.Area.imperialSystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
+ilib.Measurement.Area.imperialSystem    = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
 ilib.Measurement.Area.uscustomarySystem = {"square inch":4,"square foot":5,"square yard":6,"acre":7,"square mile":8};
 
 
