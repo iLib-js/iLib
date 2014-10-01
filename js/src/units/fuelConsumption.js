@@ -200,6 +200,18 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
 };
 
 /**
+ * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
+ */
+ilib.Measurement.FuelConsumption.prototype.scale = function(measurementsystem) {
+    return new ilib.Measurement.FuelConsumption({
+        unit: this.unit,
+        amount: this.amount
+    }); 
+};
+
+/**
  * @private
  * @static
  */

@@ -119,6 +119,19 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	
 	return result;
 };
+
+/**
+ * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
+ */
+ilib.Measurement.Temperature.prototype.scale = function(measurementsystem) {
+    return new ilib.Measurement.Temperature({
+        unit: this.unit,
+        amount: this.amount
+    }); 
+};
+
 /**
  * @private
  * @static

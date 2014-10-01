@@ -333,7 +333,7 @@ function testTemperatureAliasKelvin1() {
 	assertEquals("kelvin", m.getUnit());
 }
 
-function testTemperatureAliasKelvin1() {
+function testTemperatureAliasKelvin2() {
     var m = new ilib.Measurement.Temperature({
 		unit: "K",
 		amount: 0

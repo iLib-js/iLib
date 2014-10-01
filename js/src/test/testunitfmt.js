@@ -268,3 +268,35 @@ function testUnitFormatWithMeasurementSystem8() {
 	assertEquals("6.25 pound", str);
 }
 
+function testUnitFormatWithScale9() {
+        var m1 = new ilib.Measurement({
+		unit: "km/liter",
+		amount:5000
+	});
+
+	var uf = new ilib.UnitFmt(); 
+	var str = uf.format(m1);
+	assertEquals("5000 km/liter", str);
+}
+
+function testUnitFormatWithScale10() {
+        var m1 = new ilib.Measurement({
+		unit: "kelvin",
+		amount: 285.3
+	});
+
+	var uf = new ilib.UnitFmt(); 
+	var str = uf.format(m1);
+	assertEquals("285.3 kelvin", str);
+}
+
+function testUnitFormatWithScale11() {
+        var m1 = new ilib.Measurement({
+                unit: "krunghoonfoop",
+                amount: 2
+        });
+
+	var uf = new ilib.UnitFmt(); 
+	var str = uf.format(m1);
+	assertEquals("2 krunghoonfoop", str);
+}

@@ -100,7 +100,7 @@ ilib.Measurement.Energy.prototype.convert = function(to) {
 
 ilib.Measurement.Energy.aliases = {
     "micro joule":"micro joule",
-    "micro joule":"micro joule",
+    "Micro joule":"micro joule",
     "millijoule":"micro joule",
     "MilliJoule":"micro joule",
     "milliJ":"micro joule",
@@ -108,7 +108,6 @@ ilib.Measurement.Energy.aliases = {
     "J":"joule",
     "j":"joule",
     "Joule":"joule",
-    "joule":"joule",
     "Joules":"joule",
     "joules":"joule",
     "BTU":"BTU",
@@ -130,8 +129,6 @@ ilib.Measurement.Energy.aliases = {
     "Cal":"calorie",
     "cal":"calorie",
     "Calorie":"calorie",
-    "calorie":"calorie",
-    "Calories":"calorie",
     "calories":"calorie",
     "mega joule":"mega joule",
     "MJ":"mega joule",

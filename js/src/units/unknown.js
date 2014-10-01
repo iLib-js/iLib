@@ -75,6 +75,18 @@ ilib.Measurement.Unknown.convert = function(to, from, unknown) {
 };
 
 /**
+ * @inheritDoc
+ * @param {string=} measurementsystem
+ * @return {ilib.Measurement}
+ */
+ilib.Measurement.Unknown.prototype.scale = function(measurementsystem) {
+    return new ilib.Measurement.Unknown({
+        unit: this.unit,
+        amount: this.amount
+    }); 
+};
+
+/**
  * @private
  * @static
  */
