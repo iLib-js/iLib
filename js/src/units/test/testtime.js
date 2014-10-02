@@ -81,7 +81,7 @@ function testTimeScaling1() {
     var  m1 = m.scale();
 
     assertEquals(1.024,m1.amount);
-    assertEquals("microsecond",m1.unit);
+    assertEquals("microsecond", m1.unit);
 }
 
 function testTimeScaling2() {
@@ -93,7 +93,7 @@ function testTimeScaling2() {
     m = m.scale();
 
     assertEquals(12,m.amount);
-    assertEquals("second",m.unit);
+    assertEquals("second", m.unit);
 }
 
 function testTimeScaling3() {
@@ -105,7 +105,7 @@ function testTimeScaling3() {
     m = m.scale();
 
     assertRoughlyEquals(2.8706979, m.amount, 0.1);
-    assertEquals("decade",m.unit);
+    assertEquals("decade", m.unit);
 }
 
 function testTimeScaling4() {
@@ -117,7 +117,7 @@ function testTimeScaling4() {
     m = m.scale();
 
     assertRoughlyEquals(10, m.amount, 0.001);
-    assertEquals("century",m.unit);
+    assertEquals("century", m.unit);
 }
 
 function testTimeScaling5() {
@@ -129,24 +129,24 @@ function testTimeScaling5() {
     m = m.scale();
 
     assertRoughlyEquals(5, m.amount, 0.001);
-    assertEquals("day",m.unit);
+    assertEquals("day", m.unit);
 }
 
 function testTimeGetMeasures() {
 	var measures = ilib.Measurement.Time.getMeasures();
 	var expected = [
-                "nanosecond",  
+		"nanosecond",  
 		"microsecond",  
 		"millisecond",
 		"second",
 		"minute",
-                "hour",
-                "day",
-                "week",
-                "month",
-                "year",
-                "decade",
-                "century" 	
+		"hour",
+		"day",
+		"week",
+		"month",
+		"year",
+		"decade",
+        "century" 	
 	];	
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

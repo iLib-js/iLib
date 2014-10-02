@@ -22,7 +22,7 @@ function testMassMassConstructor() {
 		unit: "kg",
 		amount: 2
 	});
-	
+
 	assertNotNull(m);
 }
 
@@ -35,40 +35,40 @@ function testMassMassConvertGramToKG() {
 		unit: "kg",
 		amount: m1
 	});
-	
+
 	assertNotNull(m1);
 	assertNotNull(m2);
-	
+
 	assertEquals(3, m2.getAmount());
 }
 
 function testMassStaticConvert1() {
 	var m = ilib.Measurement.Mass.convert("long ton", "kg", 10000);
-		
-        assertRoughlyEquals(9.842065, m, 0.00001);
+
+	assertRoughlyEquals(9.842065, m, 0.00001);
 }
 
 function testMassStaticConvertWithString() {
 	var m = ilib.Measurement.Mass.convert("tonne", "pound", "1000");
-	
+
 	assertEquals(0.453592, m);
 }
 
 function testMassStaticConvert2() {
 	var m = ilib.Measurement.Mass.convert("short ton", "ounce", 10000);
-	
+
 	assertEquals(0.3125, m);
 }
 
 function testMassStaticConvert3() {
 	var m = ilib.Measurement.Mass.convert("st", "gram", 10000);
-        
-        assertEquals(1.57473, m);
+
+	assertEquals(1.57473, m);
 }
 
 function testMassStaticConvert4() {
 	var m = ilib.Measurement.Mass.convert("kg", "mg", 1000000);
-	
+
 	assertEquals(1, m);
 }
 

@@ -93,29 +93,29 @@ function testEnergyScale1() {
     var m2 = m1.scale("metric");
 
     assertEquals(10, m2.amount);
-    assertEquals("kilo watt hour", m2.unit);
+    assertEquals("kilowatt hour", m2.unit);
 }
 
 function testEnergyScale2() {
     var m1 = new ilib.Measurement.Energy({
-        unit: "kilo watt hour",
+        unit: "kilowatt hour",
         amount: 1233453
     });
     var m2 = m1.scale("metric");
 
     assertEquals(1.233453, m2.amount);
-    assertEquals("giga watt hour", m2.unit);
+    assertEquals("gigawatt hour", m2.unit);
 }
 
 function testEnergyScale3() {
     var m1 = new ilib.Measurement.Energy({
-        unit: "micro joule",
+        unit: "milli joule",
         amount: 5254578
     });
     var m2 = m1.scale("metric");
 
     assertRoughlyEquals(5.254578, m2.amount,0.000001);
-    assertEquals("kilo joule", m2.unit);
+    assertEquals("kilojoule", m2.unit);
 }
 
 function testEnergyScale4() {
@@ -126,23 +126,23 @@ function testEnergyScale4() {
     var m2 = m1.scale("metric");
 
     assertEquals(5254.578, m2.amount);
-    assertEquals("giga joule", m2.unit);
+    assertEquals("gigajoule", m2.unit);
 }
 
 function testEnergyGetMeasures() {
 	var measures = ilib.Measurement.Energy.getMeasures();
 	var expected = [
-        "micro joule",
+        "microjoule",
         "joule",
         "BTU",
-        "kilo joule",
+        "kilojoule",
         "watt hour",
         "calorie",
-        "mega joule",
-        "kilo watt hour",
-        "giga joule",
-        "mega watt hour",
-        "giga watt hour"
+        "megajoule",
+        "kilowatt hour",
+        "gigajoule",
+        "megawatt hour",
+        "gigawatt hour"
 
     ];
 	assertArrayEqualsIgnoringOrder(expected, measures);
