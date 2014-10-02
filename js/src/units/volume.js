@@ -241,7 +241,7 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Volume.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Volume.metricSystem;
-    } else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Volume.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Volume.uscustomarySystem;
     } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'

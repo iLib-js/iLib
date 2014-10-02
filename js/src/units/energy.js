@@ -99,7 +99,8 @@ ilib.Measurement.Energy.prototype.convert = function(to) {
 };
 
 ilib.Measurement.Energy.aliases = {
-    "millijoule":"millijoule",
+	"milli joule":"millijoule",
+	"millijoule":"millijoule",
     "MilliJoule":"millijoule",
     "milliJ":"millijoule",
     "joule":"joule",

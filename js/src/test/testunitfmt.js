@@ -106,10 +106,10 @@ function testUnitFormatWithMeasurementSystem3() {
 }
 
 function testUnitFormatWithScale4() {
-        var m1 = new ilib.Measurement({
-                unit: "hectare",
-                amount: 100
-        });
+	var m1 = new ilib.Measurement({
+		unit: "hectare",
+		amount: 100
+	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);	
 	assertEquals("1 square km", str);
@@ -117,9 +117,9 @@ function testUnitFormatWithScale4() {
 
 function testUnitFormatWithoutScale4() {
 	var m1 = new ilib.Measurement({
-                unit: "hectare",
-                amount: 100
-        });
+		unit: "hectare",
+		amount: 100
+	});
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m1);	
@@ -141,42 +141,42 @@ function testUnitFormatWithMeasurementSystem4() {
 }
 
 function testUnitFormatWithScale5() {
-       var m1 = new ilib.Measurement({
-                unit: "watt hour",
-                amount: 10000
-        });
+	var m1 = new ilib.Measurement({
+		unit: "watt hour",
+		amount: 10000
+	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);
-	assertEquals("10 kilo watt hour", str);
+	assertEquals("10 kilowatt hour", str);
 }
 
 function testUnitFormatWithoutScale5() {
 	var m1 = new ilib.Measurement.Energy({
-                unit: "kilo watt hour",
-                amount: 1233453
-        });
+		unit: "kilowatt hour",
+		amount: 1233453
+	});
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m1);	
-	assertEquals("1233453 kilo watt hour", str);
+	assertEquals("1233453 kilowatt hour", str);
 }
 
 function testUnitFormatWithMeasurementSystem5() {
 	var m1 = new ilib.Measurement.Energy({
-                unit: "kilo watt hour",
-                amount: 1233453
-        });
+		unit: "kilowatt hour",
+		amount: 1233453
+	});
 
 	var uf = new ilib.UnitFmt({
 		autoScale: true,
 		measurementSystem: "metric"
 	}); 
 	var str = uf.format(m1);	
-	assertEquals("1.233453 giga watt hour", str);
+	assertEquals("1.233453 gigawatt hour", str);
 }
 
 function testUnitFormatWithScale6() {
-       var m = new ilib.Measurement({
+	var m = new ilib.Measurement({
 		unit: "km/h",
 		amount: 6000
 	});
@@ -198,9 +198,9 @@ function testUnitFormatWithoutScale6() {
 
 function testUnitFormatWithMeasurementSystem6() {
 	var m1 = new ilib.Measurement({
-                unit: "feet/sec",
-                amount: 10
-        });
+		unit: "feet/sec",
+		amount: 10
+	});
 
 	var uf = new ilib.UnitFmt({
 		autoScale: true,
@@ -211,10 +211,10 @@ function testUnitFormatWithMeasurementSystem6() {
 }
 
 function testUnitFormatWithScale7() {
-        var m = new ilib.Measurement({
-                unit: "ms",
-                amount: 12000
-        });
+	var m = new ilib.Measurement({
+		unit: "ms",
+		amount: 12000
+	});
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);
@@ -223,9 +223,9 @@ function testUnitFormatWithScale7() {
 
 function testUnitFormatWithoutScale7() {
 	var m = new ilib.Measurement({
-                unit: "ms",
-                amount: 12000
-        });
+		unit: "ms",
+		amount: 12000
+	});
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
@@ -233,10 +233,10 @@ function testUnitFormatWithoutScale7() {
 }
 
 function testUnitFormatWithScale8() {
-        var m1 = new ilib.Measurement({
-            unit: "Milliliter",
-            amount: 1500
-        });
+	var m1 = new ilib.Measurement({
+		unit: "Milliliter",
+		amount: 1500
+	});
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);
@@ -244,10 +244,10 @@ function testUnitFormatWithScale8() {
 }
 
 function testUnitFormatWithoutScale8() {
-	 var m = new ilib.Measurement({
-            unit: "Milliliter",
-            amount: 1500
-        });
+	var m = new ilib.Measurement({
+		unit: "Milliliter",
+		amount: 1500
+	});
 
 	var uf = new ilib.UnitFmt({autoScale: false});
 	var str = uf.format(m);	
@@ -256,9 +256,9 @@ function testUnitFormatWithoutScale8() {
 
 function testUnitFormatWithMeasurementSystem8() {
 	var m1 = new ilib.Measurement({
-            unit: "ounce",
-            amount: 100
-        });
+		unit: "ounce",
+		amount: 100
+	});
 
 	var uf = new ilib.UnitFmt({
 		autoScale: true,
@@ -269,7 +269,7 @@ function testUnitFormatWithMeasurementSystem8() {
 }
 
 function testUnitFormatWithScale9() {
-        var m1 = new ilib.Measurement({
+	var m1 = new ilib.Measurement({
 		unit: "km/liter",
 		amount:5000
 	});
@@ -280,7 +280,7 @@ function testUnitFormatWithScale9() {
 }
 
 function testUnitFormatWithScale10() {
-        var m1 = new ilib.Measurement({
+	var m1 = new ilib.Measurement({
 		unit: "kelvin",
 		amount: 285.3
 	});
@@ -291,10 +291,10 @@ function testUnitFormatWithScale10() {
 }
 
 function testUnitFormatWithScale11() {
-        var m1 = new ilib.Measurement({
-                unit: "krunghoonfoop",
-                amount: 2
-        });
+	var m1 = new ilib.Measurement({
+		unit: "krunghoonfoop",
+		amount: 2
+	});
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);

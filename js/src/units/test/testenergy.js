@@ -132,7 +132,7 @@ function testEnergyScale4() {
 function testEnergyGetMeasures() {
 	var measures = ilib.Measurement.Energy.getMeasures();
 	var expected = [
-        "microjoule",
+        "millijoule",
         "joule",
         "BTU",
         "kilojoule",
