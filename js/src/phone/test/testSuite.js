@@ -61,6 +61,7 @@ function suite() {
 		"phonefmt_ES.js",
 		"phonefmt_FR.js",
 		"phonefmt_GB.js",
+        "phonefmt_JP.js",
 		"phonefmt_HK.js",
 		"phonefmt_IE.js",
 		"phonefmt_IN.js",
