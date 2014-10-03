@@ -111,6 +111,28 @@ function testFormatService() {
 	assertEquals(expected, formatted);
 };
 
+function testFormatEmergency1() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("116", {locale: "ja-JP"});
+	var expected = "116 ";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatEmergency2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("136", {locale: "ja-JP"});
+	var expected = "136 ";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
 function testFormatIEIDD() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("+35311234567", {locale: "ja-JP"});
@@ -445,7 +467,7 @@ function testFormatStyle1Partial6() {
 function testFormatStyle1Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("07512345", {locale: "ja-JP"});
-	var expected = "(075) 123-45";
+	var expected = "(075) 12-345";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -455,7 +477,7 @@ function testFormatStyle1Partial7() {
 function testFormatStyle1Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("075123456", {locale: "ja-JP"});
-	var expected = "(075) 123-456";
+	var expected = "(075) 12-3456";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
 	formatted = fmt.format(parsed, {partial: true});

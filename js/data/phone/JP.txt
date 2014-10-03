@@ -12,19 +12,19 @@
 ^119	emergency	Ambulance, Fire brigade
 ^171	emergency	Earthquake assistance
 
-^100	service	NTT operator
-^106	service	Operator assisted collect call service
-^108	service	Automated collect call service
-^113	service	NTT technical faults hotline
-^116	service	NTT customer service and general enquiries
+^100	emergency	NTT operator
+^106	emergency	Operator assisted collect call service
+^108	emergency	Automated collect call service
+^113	emergency	NTT technical faults hotline
+^116	emergency	NTT customer service and general enquiries
 
-^104	service	NTT national directory enquiries
+^104	emergency	NTT national directory enquiries
 
-^114	service	Automated number-busy check
-^115	service	Telegram service
-^117	service	Speaking clock
-^136	service	Information on last incoming call
-^177	service	Weather forecast
+^114	emergency	Automated number-busy check
+^115	emergency	Telegram service
+^117	emergency	Speaking clock
+^136	emergency	Information on last incoming call
+^177	emergency	Weather forecast
 
 01	cic	KDDI (international)
 033	cic	NTT Communications
@@ -45,29 +45,25 @@
 089	cic	T-Systems
 091	cic	Brastel
 
-// TODO do the following need a ^ at the beginning? or do these come after the 0 trunk code?
 120	service	NTT Freedial, toll free services
 130	service	Automated information services
 140	service	Disaster relief wireless communications
 160	service	Disaster relief satellite communications
 170	service	NTT Dengon Dial, chat line services
-// TODO
-180	service	NTT Telegong, TV/Radio show feedback dial-in
-180	service	NTT Teledome, automated information services
-// TODO
-190	service	NTT Angel Line, automated directory services via PC/modem
-190	service	NTT Annai Jozu, automated directory services via telephone
+180	service	NTT (Telegong, TV/Radio show feedback dial-in / Teledome, automated information services)
+190	service	NTT (Angel Line, automated directory services via PC/modem / Annai Jozu, automated directory services via telephone)
 570	service	Navi Dial
 800	service	Other toll free services
-20	service	Paging services
-30	service	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
-40	service	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+
 50	service	IP telephony service (via internet service providers)
 570	service	Navi Dial, non-geographic wireline
 60	service	Universal personal number services
 910	service	Private circuit access, local rate services
 990	service	NTT DialQ2, premium rate services
 
+20	cell	Paging services
+30	cell	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+40	cell	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
 70	cell	Mobile telephony and data services (PHS)
 701	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
 80	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)

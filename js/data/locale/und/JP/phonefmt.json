@@ -41,7 +41,7 @@
 			"trunkAccess":       "X",
 			"mobilePrefix":      "XX-",
 			"areaCode":         ["X-", "XX-","XXX-", "XXXX-", "XXXXX-"],
-			"serviceCode":      ["X", "XX", "XXX-", "XXXX-"],
+			"serviceCode":      ["X", "XX-", "XXX-", "XXXX-"],
 			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		},
@@ -53,7 +53,7 @@
 			"trunkAccess":       "X",
 			"mobilePrefix":      "XX-",
 			"areaCode":         ["X-", "XX-", "XXX-", "XXX-", "XXXXX-"],
-			"serviceCode":      ["X", "XX", "XXX", "XXXX-"],
+			"serviceCode":      ["X", "XX-", "XXX-", "XXXX-"],
 			"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XX-XXX", "XX-XXXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
