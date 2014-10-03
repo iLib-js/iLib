@@ -45,33 +45,33 @@
 089	cic	T-Systems
 091	cic	Brastel
 
+// TODO do the following need a ^ at the beginning? or do these come after the 0 trunk code?
 120	service	NTT Freedial, toll free services
 130	service	Automated information services
 140	service	Disaster relief wireless communications
 160	service	Disaster relief satellite communications
 170	service	NTT Dengon Dial, chat line services
+// TODO
 180	service	NTT Telegong, TV/Radio show feedback dial-in
 180	service	NTT Teledome, automated information services
+// TODO
 190	service	NTT Angel Line, automated directory services via PC/modem
 190	service	NTT Annai Jozu, automated directory services via telephone
 570	service	Navi Dial
 800	service	Other toll free services
-20	service	 Paging services
-30	service	 Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
-40	service	 Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
-50	service	 IP telephony service (via internet service providers)
+20	service	Paging services
+30	service	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+40	service	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+50	service	IP telephony service (via internet service providers)
 570	service	Navi Dial, non-geographic wireline
-60	service	 Universal personal number services
-70	service	 Mobile telephony and data services (PHS)
-701	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
-80	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
-90	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
+60	service	Universal personal number services
 910	service	Private circuit access, local rate services
 990	service	NTT DialQ2, premium rate services
 
-070	cell	
-080	cell
-090	cell
+70	cell	Mobile telephony and data services (PHS)
+701	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
+80	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
+90	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
 
 11	area	Sappro
 123	area	Chitose, and Yubari and Kuriyama

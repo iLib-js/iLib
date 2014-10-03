@@ -5,7 +5,7 @@
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
 		"mobilePrefix":     ["X-", "XX-"],
-		"areaCode":         ["X ", "XX "],
+		"areaCode":         ["X ", "XX ", "XXX ", "XXXX ", "XXXXX "],
 		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
 		"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
@@ -26,7 +26,7 @@
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
 		"mobilePrefix":     ["X ", "XX "],
-		"areaCode":         ["X ", "XX "],
+		"areaCode":         ["X ", "XX ", "XXX ", "XXXX ", "XXXXX "],
 		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
 		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
@@ -40,8 +40,8 @@
 			"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
 			"trunkAccess":       "X",
 			"mobilePrefix":      "XX-",
-			"areaCode":         ["X-", "XX-","XXX-", "XXX-"],
-			"serviceCode":      ["X-", "XX-", "XXX-", "XXXX-"],
+			"areaCode":         ["X-", "XX-","XXX-", "XXXX-", "XXXXX-"],
+			"serviceCode":      ["X", "XX", "XXX-", "XXXX-"],
 			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		},
@@ -52,8 +52,8 @@
 			"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
 			"trunkAccess":       "X",
 			"mobilePrefix":      "XX-",
-			"areaCode":         ["X-", "XX-", "XXX-", "XXX-"],
-			"serviceCode":      ["X-", "XX-", "XXX-", "XXXX-"],
+			"areaCode":         ["X-", "XX-", "XXX-", "XXX-", "XXXXX-"],
+			"serviceCode":      ["X", "XX", "XXX", "XXXX-"],
 			"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XX-XXX", "XX-XXXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
@@ -65,10 +65,10 @@
 		"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
 		"trunkAccess":       "(X",
 		"mobilePrefix":      "XX)",
-		"areaCode":         ["X) ", "XX) ", "XXX)", "XXXX)"],
+		"areaCode":         ["X) ", "XX) ", "XXX) ", "XXXX) ", "XXXXX) "],
 		"serviceCode":      ["X) ", "XX) "],
 		"cic":              ["X) ", "XX) ", "XXX) ", "XXXX) "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
+		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XX-XXX", "XX-XXXX", "XXX-XXXX", "XXXX-XXXX"],
 		"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 	}
 }
