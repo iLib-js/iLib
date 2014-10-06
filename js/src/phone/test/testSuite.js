@@ -1,6 +1,3 @@
-
-
-
 /*
  * testSuite.js - test suite for this directory
  * 
@@ -48,6 +45,7 @@ function suite() {
 		"phonenum_IE.js",
 		"phonenum_IN.js",
 		"phonenum_IT.js",
+		"phonenum_JP.js",
 		"phonenum_KR.js",
 		"phonenum_LU.js",
 		"phonenum_MX.js",
