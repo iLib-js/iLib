@@ -1,15 +1,15 @@
-# from http://www.comreg.ie/publications/national_numbering_conventions_v6_0.583.102910.p.html
-# see especially annex 4, and 6.3
+// from http://www.comreg.ie/publications/national_numbering_conventions_v6_0.583.102910.p.html
+// see especially annex 4, and 6.3
 
 ^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 ^112	emergency	// emergency
 ^116	emergency
 ^999	emergency
 
-^10	service national operator
+^10	service	national operator
 ^114	service	international operator
 ^118..	service	directory assistance
 

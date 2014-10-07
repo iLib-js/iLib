@@ -1,1566 +1,1982 @@
 {
     "201": {
-        "ln": "New Jersey: Hackensack, Jersey City, Hoboken, Bayonne, Ridgewood, Union City, Teaneck, New Milford, and northeast New Jersey",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "New Jersey: Hackensack, Jersey City, Hoboken, Bayonne, Ridgewood, Union City, Teaneck, New Milford, and northeast New Jersey"
     },
     "202": {
-        "ln": "Washington D.C.",
-        "sn": "Washington"
+        "sn": "Washington",
+        "ln": "Washington D.C."
     },
     "203": {
-        "ln": "Connecticut: Bridgeport, Danbury, New Haven, Waterbury, Southwestern Connecticut",
-        "sn": "Connecticut"
+        "sn": "Connecticut",
+        "ln": "Connecticut: Bridgeport, Danbury, New Haven, Waterbury, Southwestern Connecticut"
     },
     "204": {
-        "ln": "Manitoba, Canada",
-        "sn": "Manitoba"
+        "sn": "Manitoba",
+        "ln": "Manitoba, Canada"
     },
     "205": {
-        "ln": "Alabama: Birmingham; Tuscaloosa; western and central Alabama",
-        "sn": "Alabama"
+        "sn": "Alabama",
+        "ln": "Alabama: Birmingham; Tuscaloosa; western and central Alabama"
     },
     "206": {
-        "ln": "Washington: Seattle",
-        "sn": "Washington"
+        "sn": "Washington",
+        "ln": "Washington: Seattle"
     },
     "207": {
-        "ln": "Maine",
-        "sn": "Maine"
+        "sn": "Maine",
+        "ln": "Maine"
     },
     "208": {
-        "ln": "Idaho",
-        "sn": "Idaho"
+        "sn": "Idaho",
+        "ln": "Idaho"
     },
     "209": {
-        "ln": "California: Stockton, Modesto, Merced, Tracy, San Andreas and central California",
-        "sn": "California"
+        "sn": "California",
+        "ln": "California: Stockton, Modesto, Merced, Tracy, San Andreas and central California"
     },
     "210": {
-        "ln": "Texas: San Antonio area",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: San Antonio area"
     },
     "212": {
-        "ln": "New York: Manhattan except for Marble Hill",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Manhattan except for Marble Hill"
     },
     "213": {
-        "ln": "Southern California: Central Los Angeles",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Central Los Angeles"
     },
     "214": {
-        "ln": "Texas: Dallas area",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Dallas area"
     },
     "215": {
-        "ln": "Pennsylvania: Philadelphia",
-        "sn": "Pennsylvania"
+        "sn": "Pennsylvania",
+        "ln": "Pennsylvania: Philadelphia"
     },
     "216": {
-        "ln": "Ohio: Cleveland",
-        "sn": "Ohio"
+        "sn": "Ohio",
+        "ln": "Ohio: Cleveland"
     },
     "217": {
-        "ln": "Central Illinois: Springfield, Champaign Decatur, Urbana, Lincoln",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Central Illinois: Springfield, Champaign Decatur, Urbana, Lincoln"
     },
     "218": {
-        "ln": "Northern Minnesota: Duluth, Thief River Falls, Brainerd, International Falls",
-        "sn": "N Minnesota"
+        "sn": "N Minnesota",
+        "ln": "Northern Minnesota: Duluth, Thief River Falls, Brainerd, International Falls"
     },
     "219": {
-        "ln": "Northwest Indiana: Gary, Chesterton, Crown Point, East Chicago, Hammond, Hobart, Merrillville, Michigan City, Portage, Valparaiso",
-        "sn": "NW Indiana"
+        "sn": "NW Indiana",
+        "ln": "Northwest Indiana: Gary, Chesterton, Crown Point, East Chicago, Hammond, Hobart, Merrillville, Michigan City, Portage, Valparaiso"
     },
+    "220": {},
+    "221": {},
+    "222": {},
+    "223": {},
     "224": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
     "225": {
-        "ln": "Central Eastern Louisiana: Baton Rouge, Donaldsonville, New Roads, White Castle",
-        "sn": "E Louisiana"
+        "sn": "E Louisiana",
+        "ln": "Central Eastern Louisiana: Baton Rouge, Donaldsonville, New Roads, White Castle"
     },
     "226": {
-        "ln": "Ontario, Canada",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Ontario, Canada"
     },
     "227": {
-        "ln": "Maryland",
-        "sn": "Maryland"
+        "sn": "Maryland",
+        "ln": "Maryland"
     },
     "228": {
-        "ln": "Southern Mississippi: Gulfport, Biloxi, Pascagoula, Bay St Louis",
-        "sn": "S Mississippi"
+        "sn": "S Mississippi",
+        "ln": "Southern Mississippi: Gulfport, Biloxi, Pascagoula, Bay St Louis"
     },
     "229": {
-        "ln": "Southwestern Georgia: Albany, Valdosta, Bainbridge, Americus, Fitzgerald",
-        "sn": "SW Georgia"
+        "sn": "SW Georgia",
+        "ln": "Southwestern Georgia: Albany, Valdosta, Bainbridge, Americus, Fitzgerald"
     },
+    "230": {},
     "231": {
-        "ln": "Northwestern Michigan: Muskegon, Traverse City, Ludington, Petoskey",
-        "sn": "NW Michigan"
+        "sn": "NW Michigan",
+        "ln": "Northwestern Michigan: Muskegon, Traverse City, Ludington, Petoskey"
     },
+    "232": {},
+    "233": {},
     "234": {
-        "ln": "Ohio",
-        "sn": "Ohio"
+        "sn": "Ohio",
+        "ln": "Ohio"
     },
+    "235": {},
     "236": {
-        "ln": "British Columbia, Canada",
-        "sn": "British Columbia"
+        "sn": "British Columbia",
+        "ln": "British Columbia, Canada"
     },
+    "237": {},
+    "238": {},
     "239": {
-        "ln": "Southwestern Florida: Lee, Collier, and Monroe Counties; Cape Coral, Fort Myers, Naples, Everglades",
-        "sn": "SW Florida"
+        "sn": "SW Florida",
+        "ln": "Southwestern Florida: Lee, Collier, and Monroe Counties; Cape Coral, Fort Myers, Naples, Everglades"
     },
     "240": {
-        "ln": "Maryland",
-        "sn": "Maryland"
+        "sn": "Maryland",
+        "ln": "Maryland"
     },
+    "241": {},
     "242": {
-        "ln": "The Bahamas",
-        "sn": "Bahamas"
+        "sn": "Bahamas",
+        "ln": "The Bahamas"
     },
+    "243": {},
+    "244": {},
+    "245": {},
     "246": {
-        "ln": "Barbados",
-        "sn": "Barbados"
+        "sn": "Barbados",
+        "ln": "Barbados"
     },
+    "247": {},
     "248": {
-        "ln": "Michigan: Oakland County",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan: Oakland County"
     },
     "249": {
-        "ln": "Ontario, Canada",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Ontario, Canada"
     },
     "250": {
-        "ln": "British Columbia: Victoria, Prince George, Prince Rupert, Kelowna; also Hyder, Alaska.",
-        "sn": "British Columbia"
+        "sn": "British Columbia",
+        "ln": "British Columbia: Victoria, Prince George, Prince Rupert, Kelowna; also Hyder, Alaska."
     },
     "251": {
-        "ln": "Southwestern Alabama: Mobile, Jackson, Brewton",
-        "sn": "SW Alabama"
+        "sn": "SW Alabama",
+        "ln": "Southwestern Alabama: Mobile, Jackson, Brewton"
     },
     "252": {
-        "ln": "Northeastern North Carolina: Greenville, Kitty Hawk, Rocky Mount",
-        "sn": "NE North Carolina"
+        "sn": "NE North Carolina",
+        "ln": "Northeastern North Carolina: Greenville, Kitty Hawk, Rocky Mount"
     },
     "253": {
-        "ln": "Washington: Tacoma, Lakewood, Auburn, Puyallup, Enumclaw, Spanaway and south Seattle suburbs",
-        "sn": "Washington"
+        "sn": "Washington",
+        "ln": "Washington: Tacoma, Lakewood, Auburn, Puyallup, Enumclaw, Spanaway and south Seattle suburbs"
     },
     "254": {
-        "ln": "Texas: Waco, Killeen, Temple, Belton, and Stephenville",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Waco, Killeen, Temple, Belton, and Stephenville"
     },
+    "255": {},
     "256": {
-        "ln": "Northern and Eastern Alabama: Huntsville, Decatur, Cullman, Gadsden, Florence, Anniston",
-        "sn": "NE Alabama"
+        "sn": "NE Alabama",
+        "ln": "Northern and Eastern Alabama: Huntsville, Decatur, Cullman, Gadsden, Florence, Anniston"
     },
+    "257": {},
+    "258": {},
+    "259": {},
     "260": {
-        "ln": "Northeastern Indiana: Fort Wayne, New Haven, Decatur, Angola, Huntington, Wabash",
-        "sn": "NE Indiana"
+        "sn": "NE Indiana",
+        "ln": "Northeastern Indiana: Fort Wayne, New Haven, Decatur, Angola, Huntington, Wabash"
     },
+    "261": {},
     "262": {
-        "ln": "Southeastern Wisconsin: Racine, Kenosha, Menomonee Falls, Waukesha",
-        "sn": "SE Wisconsin"
+        "sn": "SE Wisconsin",
+        "ln": "Southeastern Wisconsin: Racine, Kenosha, Menomonee Falls, Waukesha"
     },
+    "263": {},
     "264": {
-        "ln": "Anguilla",
-        "sn": "Anguilla"
+        "sn": "Anguilla",
+        "ln": "Anguilla"
     },
+    "265": {},
+    "266": {},
     "267": {
-        "ln": "Pennsylvania",
-        "sn": "Pennsylvania"
+        "sn": "Pennsylvania",
+        "ln": "Pennsylvania"
     },
     "268": {
-        "ln": "Antigua and Barbuda",
-        "sn": "Antigua/Barbuda"
+        "sn": "Antigua/Barbuda",
+        "ln": "Antigua and Barbuda"
     },
     "269": {
-        "ln": "Southwestern Michigan: Battle Creek, Kalamazoo, Benton Harbor, Allegan, Hastings, St Joseph",
-        "sn": "SW Michigan"
+        "sn": "SW Michigan",
+        "ln": "Southwestern Michigan: Battle Creek, Kalamazoo, Benton Harbor, Allegan, Hastings, St Joseph"
     },
     "270": {
-        "ln": "Western Kentucky: Owensboro, Paducah, Bowling Green, Hopkinsville, Henderson, Elizabethtown",
-        "sn": "W Kentucky"
+        "sn": "W Kentucky",
+        "ln": "Western Kentucky: Owensboro, Paducah, Bowling Green, Hopkinsville, Henderson, Elizabethtown"
     },
+    "271": {},
+    "272": {},
+    "273": {},
     "274": {
-        "ln": "Wisconsin",
-        "sn": "Wisconsin"
+        "sn": "Wisconsin",
+        "ln": "Wisconsin"
     },
+    "275": {},
     "276": {
-        "ln": "Southwestern Virginia: Bristol, Abingdon, Wytheville, Martinsville, Bluefield",
-        "sn": "SW Virginia"
+        "sn": "SW Virginia",
+        "ln": "Southwestern Virginia: Bristol, Abingdon, Wytheville, Martinsville, Bluefield"
     },
+    "277": {},
+    "278": {},
+    "279": {},
+    "280": {},
     "281": {
-        "ln": "Texas: Houston",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Houston"
     },
+    "282": {},
     "283": {
-        "ln": "Southwestern Ohio",
-        "sn": "SW Ohio"
+        "sn": "SW Ohio",
+        "ln": "Southwestern Ohio"
     },
     "284": {
-        "ln": "The British Virgin Islands",
-        "sn": "BVIs"
+        "sn": "BVIs",
+        "ln": "The British Virgin Islands"
     },
+    "285": {},
+    "286": {},
+    "287": {},
+    "288": {},
     "289": {
-        "ln": "Ontario, Canada",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Ontario, Canada"
     },
+    "290": {},
+    "291": {},
+    "292": {},
+    "293": {},
+    "294": {},
+    "295": {},
+    "296": {},
+    "297": {},
+    "298": {},
+    "299": {},
+    "300": {},
     "301": {
-        "ln": "Western Maryland: Silver Spring, DC suburbs, Hagerstown, Frederick, Rockville, Cumberland",
-        "sn": "W Maryland"
+        "sn": "W Maryland",
+        "ln": "Western Maryland: Silver Spring, DC suburbs, Hagerstown, Frederick, Rockville, Cumberland"
     },
     "302": {
-        "ln": "Delaware",
-        "sn": "Delaware"
+        "sn": "Delaware",
+        "ln": "Delaware"
     },
     "303": {
-        "ln": "Central Colorado: Denver, Boulder, Longmont, Aurora",
-        "sn": "Colorado"
+        "sn": "Colorado",
+        "ln": "Central Colorado: Denver, Boulder, Longmont, Aurora"
     },
     "304": {
-        "ln": "West Virginia",
-        "sn": "West Virginia"
+        "sn": "West Virginia",
+        "ln": "West Virginia"
     },
     "305": {
-        "ln": "Southern Florida: Miami-Dade, Florida Keys, Miami, Homestead, Coral Gables, Key West",
-        "sn": "S Florida"
+        "sn": "S Florida",
+        "ln": "Southern Florida: Miami-Dade, Florida Keys, Miami, Homestead, Coral Gables, Key West"
     },
     "306": {
-        "ln": "Saskatchewan, Canada",
-        "sn": "Saskatchewan"
+        "sn": "Saskatchewan",
+        "ln": "Saskatchewan, Canada"
     },
     "307": {
-        "ln": "Wyoming",
-        "sn": "Wyoming"
+        "sn": "Wyoming",
+        "ln": "Wyoming"
     },
     "308": {
-        "ln": "Western Nebraska: North Platte, Scottsbluff, McCook, Kearney, Grand Island",
-        "sn": "W Nebraska"
+        "sn": "W Nebraska",
+        "ln": "Western Nebraska: North Platte, Scottsbluff, McCook, Kearney, Grand Island"
     },
     "309": {
-        "ln": "Central Western Illinois: Peoria, Bloomington-Normal, Moline, Rock Island, Galesburg",
-        "sn": "W Illinois"
+        "sn": "W Illinois",
+        "ln": "Central Western Illinois: Peoria, Bloomington-Normal, Moline, Rock Island, Galesburg"
     },
     "310": {
-        "ln": "Southern California: Santa Monica, Malibu, Torrance, South Bay, Beverly Hills, Catalina Island, the Los Angeles Westside",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Santa Monica, Malibu, Torrance, South Bay, Beverly Hills, Catalina Island, the Los Angeles Westside"
     },
     "312": {
-        "ln": "Illinois: Chicago",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois: Chicago"
     },
     "313": {
-        "ln": "Michigan: Dearborn, Detroit, Hamtramck, Highland Park",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan: Dearborn, Detroit, Hamtramck, Highland Park"
     },
     "314": {
-        "ln": "Missouri: St. Louis, Florissant, Crestwood, Affton",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "Missouri: St. Louis, Florissant, Crestwood, Affton"
     },
     "315": {
-        "ln": "North Central New York: Syracuse, New York, Utica, Watertown",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "North Central New York: Syracuse, New York, Utica, Watertown"
     },
     "316": {
-        "ln": "Kansas: Wichita, Augusta, El Dorado, Mulvane",
-        "sn": "Kansas"
+        "sn": "Kansas",
+        "ln": "Kansas: Wichita, Augusta, El Dorado, Mulvane"
     },
     "317": {
-        "ln": "Central Indiana: Indianapolis, Carmel, Fishers, Noblesville, Greenwood, Mooresville, Beech Grove",
-        "sn": "Indiana"
+        "sn": "Indiana",
+        "ln": "Central Indiana: Indianapolis, Carmel, Fishers, Noblesville, Greenwood, Mooresville, Beech Grove"
     },
     "318": {
-        "ln": "Northern Louisiana: Shreveport, Monroe, Alexandria, Fisher, Tallulah",
-        "sn": "N Louisiana"
+        "sn": "N Louisiana",
+        "ln": "Northern Louisiana: Shreveport, Monroe, Alexandria, Fisher, Tallulah"
     },
     "319": {
-        "ln": "Eastern Iowa: Cedar Rapids, Waterloo, Burlington, Iowa City",
-        "sn": "E Iowa"
+        "sn": "E Iowa",
+        "ln": "Eastern Iowa: Cedar Rapids, Waterloo, Burlington, Iowa City"
     },
     "320": {
-        "ln": "Central Minnesota: St. Cloud, Alexandria, Morris, Hutchinson, Sandstone, Appleton",
-        "sn": "Minnesota"
+        "sn": "Minnesota",
+        "ln": "Central Minnesota: St. Cloud, Alexandria, Morris, Hutchinson, Sandstone, Appleton"
     },
     "321": {
-        "ln": "Central Eastern Florida: Orlando, Cocoa Beach, St Cloud",
-        "sn": "E Florida"
+        "sn": "E Florida",
+        "ln": "Central Eastern Florida: Orlando, Cocoa Beach, St Cloud"
     },
+    "322": {},
     "323": {
-        "ln": "Southern California: Los Angeles, West LA, San Fernando Valley, Florence, Montebello",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Los Angeles, West LA, San Fernando Valley, Florence, Montebello"
     },
+    "324": {},
     "325": {
-        "ln": "Texas: Abilene, San Angelo, Sweetwater, Snyder",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Abilene, San Angelo, Sweetwater, Snyder"
     },
+    "326": {},
     "327": {
-        "ln": "Eastern Arkansas: Texarkana, Jonesboro, Pine Bluff",
-        "sn": "E Arkansas"
+        "sn": "E Arkansas",
+        "ln": "Eastern Arkansas: Texarkana, Jonesboro, Pine Bluff"
     },
+    "328": {},
+    "329": {},
     "330": {
-        "ln": "Northeastern Ohio: Akron, Canton, Youngstown, Warren",
-        "sn": "NE Ohio"
+        "sn": "NE Ohio",
+        "ln": "Northeastern Ohio: Akron, Canton, Youngstown, Warren"
     },
     "331": {
-        "ln": "Illinois: Aurora, Naperville, western Chicago",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois: Aurora, Naperville, western Chicago"
     },
+    "332": {},
+    "333": {},
     "334": {
-        "ln": "Southeastern Alabama: Montgomery, Auburn, Opelika, Dothan, Selma",
-        "sn": "SE Alabama"
+        "sn": "SE Alabama",
+        "ln": "Southeastern Alabama: Montgomery, Auburn, Opelika, Dothan, Selma"
     },
+    "335": {},
     "336": {
-        "ln": "North Carolina: Greensboro, Winston-Salem, Wilkesboro, Roxboro, and northwest North Carolina",
-        "sn": "North Carolina"
+        "sn": "North Carolina",
+        "ln": "North Carolina: Greensboro, Winston-Salem, Wilkesboro, Roxboro, and northwest North Carolina"
     },
     "337": {
-        "ln": "Southwestern Louisiana: Lafayette, Lake Charles, Leesville, New Iberia, Opelousas, De Ridder",
-        "sn": "SW Louisiana"
+        "sn": "SW Louisiana",
+        "ln": "Southwestern Louisiana: Lafayette, Lake Charles, Leesville, New Iberia, Opelousas, De Ridder"
     },
+    "338": {},
     "339": {
-        "ln": "Massachusetts",
-        "sn": "Massachusetts"
+        "sn": "Massachusetts",
+        "ln": "Massachusetts"
     },
     "340": {
-        "ln": "The U.S. Virgin Islands",
-        "sn": "U.S. Virgins"
+        "sn": "U.S. Virgins",
+        "ln": "The U.S. Virgin Islands"
     },
     "341": {
-        "ln": "California: East Bay Area, Oakland, Berkeley, Alameda",
-        "sn": "California"
+        "sn": "California",
+        "ln": "California: East Bay Area, Oakland, Berkeley, Alameda"
     },
+    "342": {},
     "343": {
-        "ln": "Eastern Ontario, Canada: Ottawa",
-        "sn": "E Ontario"
+        "sn": "E Ontario",
+        "ln": "Eastern Ontario, Canada: Ottawa"
     },
+    "344": {},
     "345": {
-        "ln": "The Cayman Islands",
-        "sn": "Caymans"
+        "sn": "Caymans",
+        "ln": "The Cayman Islands"
     },
+    "346": {},
     "347": {
-        "ln": "New York: The \"Outer Boroughs\"",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: The \"Outer Boroughs\""
     },
+    "348": {},
+    "349": {},
+    "350": {},
     "351": {
-        "ln": "Massachusetts",
-        "sn": "Massachusetts"
+        "sn": "Massachusetts",
+        "ln": "Massachusetts"
     },
     "352": {
-        "ln": "Central Florida: Gainesville, Ocala, Inverness, Dunnellon",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Central Florida: Gainesville, Ocala, Inverness, Dunnellon"
     },
+    "353": {},
+    "354": {},
+    "355": {},
+    "356": {},
+    "357": {},
+    "358": {},
+    "359": {},
     "360": {
-        "ln": "Western Washington: Olympia, Vancouver, Bellingham, Bremerton, Port Angeles, Aberdeen",
-        "sn": "W Washington"
+        "sn": "W Washington",
+        "ln": "Western Washington: Olympia, Vancouver, Bellingham, Bremerton, Port Angeles, Aberdeen"
     },
     "361": {
-        "ln": "Western and Southern Texas: Corpus Christi, Victoria, George",
-        "sn": "SW Texas"
+        "sn": "SW Texas",
+        "ln": "Western and Southern Texas: Corpus Christi, Victoria, George"
     },
+    "362": {},
+    "363": {},
     "364": {
-        "ln": "Kentucky: west of the Pennyrile Parkway, including Fort Campbell, Henderson, Hopkinsville, Madisonville, Murray, and Paducah",
-        "sn": "Kentucky"
+        "sn": "Kentucky",
+        "ln": "Kentucky: west of the Pennyrile Parkway, including Fort Campbell, Henderson, Hopkinsville, Madisonville, Murray, and Paducah"
     },
+    "365": {},
+    "366": {},
+    "367": {},
+    "368": {},
     "369": {
-        "ln": "Northwest California",
-        "sn": "NW California"
+        "sn": "NW California",
+        "ln": "Northwest California"
     },
+    "370": {},
+    "371": {},
+    "372": {},
+    "373": {},
+    "374": {},
+    "375": {},
+    "376": {},
+    "377": {},
+    "378": {},
+    "379": {},
     "380": {
-        "ln": "Ohio",
-        "sn": "Ohio"
+        "sn": "Ohio",
+        "ln": "Ohio"
     },
+    "381": {},
+    "382": {},
+    "383": {},
+    "384": {},
     "385": {
-        "ln": "Utah",
-        "sn": "Utah"
+        "sn": "Utah",
+        "ln": "Utah"
     },
     "386": {
-        "ln": "Northern and Eastern Florida: Daytona Beach, Lake City, Live Oak, Crescent City",
-        "sn": "NE Florida"
+        "sn": "NE Florida",
+        "ln": "Northern and Eastern Florida: Daytona Beach, Lake City, Live Oak, Crescent City"
     },
+    "387": {},
+    "388": {},
+    "389": {},
+    "390": {},
+    "391": {},
+    "392": {},
+    "393": {},
+    "394": {},
+    "395": {},
+    "396": {},
+    "397": {},
+    "398": {},
+    "399": {},
+    "400": {},
     "401": {
-        "ln": "Rhode Island",
-        "sn": "Rhode Island"
+        "sn": "Rhode Island",
+        "ln": "Rhode Island"
     },
     "402": {
-        "ln": "Eastern Nebraska: Omaha, Lincoln, Norfolk, Superior",
-        "sn": "E Nebraska"
+        "sn": "E Nebraska",
+        "ln": "Eastern Nebraska: Omaha, Lincoln, Norfolk, Superior"
     },
     "403": {
-        "ln": "Southern Alberta, Canada: Calgary, Banff, Red Deer, Medicine Hat, Lethbridge, Brooks",
-        "sn": "S Alberta"
+        "sn": "S Alberta",
+        "ln": "Southern Alberta, Canada: Calgary, Banff, Red Deer, Medicine Hat, Lethbridge, Brooks"
     },
     "404": {
-        "ln": "Georgia: Atlanta",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "Georgia: Atlanta"
     },
     "405": {
-        "ln": "Central Oklahoma: Oklahoma City, Stillwater, Edmond, Norman, Shawnee, Chickasha",
-        "sn": "Oklahoma"
+        "sn": "Oklahoma",
+        "ln": "Central Oklahoma: Oklahoma City, Stillwater, Edmond, Norman, Shawnee, Chickasha"
     },
     "406": {
-        "ln": "Montana",
-        "sn": "Montana"
+        "sn": "Montana",
+        "ln": "Montana"
     },
     "407": {
-        "ln": "Central Eastern Florida: Orlando, Florida, St. Cloud",
-        "sn": "E Florida"
+        "sn": "E Florida",
+        "ln": "Central Eastern Florida: Orlando, Florida, St. Cloud"
     },
     "408": {
-        "ln": "Central California: San Jose, Los Gatos, Milpitas, Sunnyvale, Cupertino, Gilroy",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: San Jose, Los Gatos, Milpitas, Sunnyvale, Cupertino, Gilroy"
     },
     "409": {
-        "ln": "Southeastern Texas: Beaumont, Galveston, Port Arthur, Jasper",
-        "sn": "SE Texas"
+        "sn": "SE Texas",
+        "ln": "Southeastern Texas: Beaumont, Galveston, Port Arthur, Jasper"
     },
     "410": {
-        "ln": "Eastern Maryland: Baltimore, Annapolis, Salisbury",
-        "sn": "E Maryland"
+        "sn": "E Maryland",
+        "ln": "Eastern Maryland: Baltimore, Annapolis, Salisbury"
     },
     "412": {
-        "ln": "Western Pennsylvania: Pittsburgh area, McKeesport, Braddock, Duquesne",
-        "sn": "W Pennsylvania"
+        "sn": "W Pennsylvania",
+        "ln": "Western Pennsylvania: Pittsburgh area, McKeesport, Braddock, Duquesne"
     },
     "413": {
-        "ln": "Western Massachusetts: Springfield, Pittsfield, Holyoke, Greenfield",
-        "sn": "W Massachusetts"
+        "sn": "W Massachusetts",
+        "ln": "Western Massachusetts: Springfield, Pittsfield, Holyoke, Greenfield"
     },
     "414": {
-        "ln": "Wisconsin: Milwaukee",
-        "sn": "Wisconsin"
+        "sn": "Wisconsin",
+        "ln": "Wisconsin: Milwaukee"
     },
     "415": {
-        "ln": "Central California: San Francisco, Marin County",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: San Francisco, Marin County"
     },
     "416": {
-        "ln": "Ontario: Toronto",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Ontario: Toronto"
     },
     "417": {
-        "ln": "Southwestern Missouri: Springfield, Joplin, Branson, West Plains, Lamar, Lebanon",
-        "sn": "SW Missouri"
+        "sn": "SW Missouri",
+        "ln": "Southwestern Missouri: Springfield, Joplin, Branson, West Plains, Lamar, Lebanon"
     },
     "418": {
-        "ln": "Quebec, Canada: Quebec City, Saguenay, Gaspé Peninsula, Côte-Nord, Chibougamau, St-Georges",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada: Quebec City, Saguenay, Gaspé Peninsula, Côte-Nord, Chibougamau, St-Georges"
     },
     "419": {
-        "ln": "Northwestern Ohio: Toledo, Sylvania, Mansfield, Lima, Findlay, Bryan, Sandusky, Bowling Green",
-        "sn": "NW Ohio"
+        "sn": "NW Ohio",
+        "ln": "Northwestern Ohio: Toledo, Sylvania, Mansfield, Lima, Findlay, Bryan, Sandusky, Bowling Green"
     },
+    "420": {},
+    "421": {},
+    "422": {},
     "423": {
-        "ln": "Eastern Tennessee: Bristol, Johnson City, Kingsport; Chattanooga, Cleveland",
-        "sn": "E Tennessee"
+        "sn": "E Tennessee",
+        "ln": "Eastern Tennessee: Bristol, Johnson City, Kingsport; Chattanooga, Cleveland"
     },
     "424": {
-        "ln": "California",
-        "sn": "California"
+        "sn": "California",
+        "ln": "California"
     },
     "425": {
-        "ln": "Washington: Seattle suburbs, Bellevue, Everett, Redmond, Renton, Kirkland, Bothell, Sammamish, Issaquah, Edmonds, Lynnwood and Mountlake Terrace",
-        "sn": "Washington"
+        "sn": "Washington",
+        "ln": "Washington: Seattle suburbs, Bellevue, Everett, Redmond, Renton, Kirkland, Bothell, Sammamish, Issaquah, Edmonds, Lynnwood and Mountlake Terrace"
     },
+    "426": {},
+    "427": {},
+    "428": {},
+    "429": {},
     "430": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
+    "431": {},
     "432": {
-        "ln": "West Texas: Midland, Odessa, Big Spring, Alpine",
-        "sn": "W Texas"
+        "sn": "W Texas",
+        "ln": "West Texas: Midland, Odessa, Big Spring, Alpine"
     },
+    "433": {},
     "434": {
-        "ln": "Southern Virginia: Charlottesville, Lynchburg, Danville, Farmville, South Hill",
-        "sn": "S Virginia"
+        "sn": "S Virginia",
+        "ln": "Southern Virginia: Charlottesville, Lynchburg, Danville, Farmville, South Hill"
     },
     "435": {
-        "ln": "Utah: Cedar City, Logan, Moab, Park City, St. George, Moab",
-        "sn": "Utah"
+        "sn": "Utah",
+        "ln": "Utah: Cedar City, Logan, Moab, Park City, St. George, Moab"
     },
+    "436": {},
+    "437": {},
     "438": {
-        "ln": "Quebec, Canada",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada"
     },
+    "439": {},
     "440": {
-        "ln": "Northern Ohio: Cleveland suburbs, Elyria, Lorain, Oberlin, Ashtabula",
-        "sn": "N Ohio"
+        "sn": "N Ohio",
+        "ln": "Northern Ohio: Cleveland suburbs, Elyria, Lorain, Oberlin, Ashtabula"
     },
     "441": {
-        "ln": "Bermuda",
-        "sn": "Bermuda"
+        "sn": "Bermuda",
+        "ln": "Bermuda"
     },
     "442": {
-        "ln": "California",
-        "sn": "California"
+        "sn": "California",
+        "ln": "California"
     },
     "443": {
-        "ln": "Maryland",
-        "sn": "Maryland"
+        "sn": "Maryland",
+        "ln": "Maryland"
     },
+    "444": {},
+    "445": {},
+    "446": {},
     "447": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
+    "448": {},
+    "449": {},
     "450": {
-        "ln": "Central Southern Quebec, Canada: Laval, Montreal suburbs",
-        "sn": "S Quebec"
+        "sn": "S Quebec",
+        "ln": "Central Southern Quebec, Canada: Laval, Montreal suburbs"
     },
+    "451": {},
+    "452": {},
+    "453": {},
+    "454": {},
+    "455": {},
     "456": {
-        "ln": "Inbound international calls for carrier-specific services",
-        "sn": "Inbound Intl."
+        "sn": "Inbound Intl.",
+        "ln": "Inbound international calls for carrier-specific services"
     },
+    "457": {},
     "458": {
-        "ln": "Oregon: Eugene, Medford, Bend, Pendleton, Corvallis, Ontario, Burns",
-        "sn": "Oregon"
+        "sn": "Oregon",
+        "ln": "Oregon: Eugene, Medford, Bend, Pendleton, Corvallis, Ontario, Burns"
     },
+    "459": {},
+    "460": {},
+    "461": {},
+    "462": {},
+    "463": {},
     "464": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
+    "465": {},
+    "466": {},
+    "467": {},
+    "468": {},
     "469": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
     "470": {
-        "ln": "Georgia",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "Georgia"
     },
+    "471": {},
+    "472": {},
     "473": {
-        "ln": "Grenada",
-        "sn": "Grenada"
+        "sn": "Grenada",
+        "ln": "Grenada"
     },
+    "474": {},
     "475": {
-        "ln": "Connecticut",
-        "sn": "Connecticut"
+        "sn": "Connecticut",
+        "ln": "Connecticut"
     },
+    "476": {},
+    "477": {},
     "478": {
-        "ln": "Central Georgia: Macon, Warner Robins, Swainsboro, Wadley, Milledgeville, Perry",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "Central Georgia: Macon, Warner Robins, Swainsboro, Wadley, Milledgeville, Perry"
     },
     "479": {
-        "ln": "Northwestern Arkansas: Fort Smith, Fayetteville",
-        "sn": "NW Arkansas"
+        "sn": "NW Arkansas",
+        "ln": "Northwestern Arkansas: Fort Smith, Fayetteville"
     },
     "480": {
-        "ln": "Arizona: Mesa, Scottsdale, Chandler, Gilbert, Tempe, Queen Creek, eastern Phoenix suburbs",
-        "sn": "Arizona"
+        "sn": "Arizona",
+        "ln": "Arizona: Mesa, Scottsdale, Chandler, Gilbert, Tempe, Queen Creek, eastern Phoenix suburbs"
     },
+    "481": {},
+    "482": {},
+    "483": {},
     "484": {
-        "ln": "Pennsylvania",
-        "sn": "Pennsylvania"
+        "sn": "Pennsylvania",
+        "ln": "Pennsylvania"
     },
+    "485": {},
+    "486": {},
+    "487": {},
+    "488": {},
+    "489": {},
+    "490": {},
+    "491": {},
+    "492": {},
+    "493": {},
+    "494": {},
+    "495": {},
+    "496": {},
+    "497": {},
+    "498": {},
+    "499": {},
     "500": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
     "501": {
-        "ln": "Central Arkansas: Little Rock, Hot Springs",
-        "sn": "Arkansas"
+        "sn": "Arkansas",
+        "ln": "Central Arkansas: Little Rock, Hot Springs"
     },
     "502": {
-        "ln": "Northern Kentucky: Louisville, Frankfort, Shelbyville, Bardstown",
-        "sn": "N Kentucky"
+        "sn": "N Kentucky",
+        "ln": "Northern Kentucky: Louisville, Frankfort, Shelbyville, Bardstown"
     },
     "503": {
-        "ln": "Northwestern Oregon: Portland, Salem, Hillsboro, St. Helens, Tillamook, Astoria",
-        "sn": "NW Oregon"
+        "sn": "NW Oregon",
+        "ln": "Northwestern Oregon: Portland, Salem, Hillsboro, St. Helens, Tillamook, Astoria"
     },
     "504": {
-        "ln": "Louisiana: New Orleans, Metairie, Kenner",
-        "sn": "Louisiana"
+        "sn": "Louisiana",
+        "ln": "Louisiana: New Orleans, Metairie, Kenner"
     },
     "505": {
-        "ln": "Northwestern New Mexico: Albuquerque, Santa Fe, Farmington, Gallup",
-        "sn": "NW New Mexico"
+        "sn": "NW New Mexico",
+        "ln": "Northwestern New Mexico: Albuquerque, Santa Fe, Farmington, Gallup"
     },
     "506": {
-        "ln": "New Brunswick, Canada",
-        "sn": "New Brunswick"
+        "sn": "New Brunswick",
+        "ln": "New Brunswick, Canada"
     },
     "507": {
-        "ln": "Southern Minnesota: Rochester, Mankato, Worthington, Marshall",
-        "sn": "S Minnesota"
+        "sn": "S Minnesota",
+        "ln": "Southern Minnesota: Rochester, Mankato, Worthington, Marshall"
     },
     "508": {
-        "ln": "Southeastern Massachusetts: Worcester, New Bedford",
-        "sn": "SE Massachusetts"
+        "sn": "SE Massachusetts",
+        "ln": "Southeastern Massachusetts: Worcester, New Bedford"
     },
     "509": {
-        "ln": "Eastern Washington: Spokane, the Tri-Cities, Yakima, Wenatchee, Walla Walla, Pullman, Ellensburg",
-        "sn": "E Washington"
+        "sn": "E Washington",
+        "ln": "Eastern Washington: Spokane, the Tri-Cities, Yakima, Wenatchee, Walla Walla, Pullman, Ellensburg"
     },
     "510": {
-        "ln": "Central California: Oakland, Fremont, Hayward, Castro Valley, Alameda, Berkeley, Richmond",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Oakland, Fremont, Hayward, Castro Valley, Alameda, Berkeley, Richmond"
     },
     "512": {
-        "ln": "Central Texas: Austin, San Marcos, Lampasas, Bastrop, Milam",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Central Texas: Austin, San Marcos, Lampasas, Bastrop, Milam"
     },
     "513": {
-        "ln": "Southwestern Ohio: Cincinnati, Middletown, Hamilton, Norwood, Lebanon",
-        "sn": "SW Ohio"
+        "sn": "SW Ohio",
+        "ln": "Southwestern Ohio: Cincinnati, Middletown, Hamilton, Norwood, Lebanon"
     },
     "514": {
-        "ln": "Quebec, Canada: Montreal, Île Perrot,  Île Bizard",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada: Montreal, Île Perrot,  Île Bizard"
     },
     "515": {
-        "ln": "North Central Iowa: Des Moines, Ames, Fort Dodge, Jefferson, Algona, Indianola",
-        "sn": "Iowa"
+        "sn": "Iowa",
+        "ln": "North Central Iowa: Des Moines, Ames, Fort Dodge, Jefferson, Algona, Indianola"
     },
     "516": {
-        "ln": "New York: Nassau County, Hempstead, Elmont",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Nassau County, Hempstead, Elmont"
     },
     "517": {
-        "ln": "South Central Michigan: Lansing, Jackson, Charlotte, Coldwater, Howell, Deerfield, Addison",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "South Central Michigan: Lansing, Jackson, Charlotte, Coldwater, Howell, Deerfield, Addison"
     },
     "518": {
-        "ln": "Northeastern New York: Albany, Schenectady, Plattsburgh, Saranac Lake",
-        "sn": "NE New York"
+        "sn": "NE New York",
+        "ln": "Northeastern New York: Albany, Schenectady, Plattsburgh, Saranac Lake"
     },
     "519": {
-        "ln": "Southwestern Ontario, Canada: London, Windsor, Kitchener-Waterloo, Cambridge",
-        "sn": "SW Ontario"
+        "sn": "SW Ontario",
+        "ln": "Southwestern Ontario, Canada: London, Windsor, Kitchener-Waterloo, Cambridge"
     },
     "520": {
-        "ln": "Southeastern Arizona: Tucson, Nogales",
-        "sn": "SE Arizona"
+        "sn": "SE Arizona",
+        "ln": "Southeastern Arizona: Tucson, Nogales"
     },
+    "521": {},
     "522": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
+    "523": {},
+    "524": {},
+    "525": {},
+    "526": {},
+    "527": {},
+    "528": {},
+    "529": {},
     "530": {
-        "ln": "Northerneastern California: Redding, Chico, Davis, Placerville, Lake Tahoe, Susanville, Alturas, Truckee",
-        "sn": "NE California"
+        "sn": "NE California",
+        "ln": "Northerneastern California: Redding, Chico, Davis, Placerville, Lake Tahoe, Susanville, Alturas, Truckee"
     },
     "531": {
-        "ln": "Nebraska",
-        "sn": "Nebraska"
+        "sn": "Nebraska",
+        "ln": "Nebraska"
     },
+    "532": {},
     "533": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
     "534": {
-        "ln": "Wisconsin",
-        "sn": "Wisconsin"
+        "sn": "Wisconsin",
+        "ln": "Wisconsin"
     },
+    "535": {},
+    "536": {},
+    "537": {},
+    "538": {},
     "539": {
-        "ln": "Oklahoma",
-        "sn": "Oklahoma"
+        "sn": "Oklahoma",
+        "ln": "Oklahoma"
     },
     "540": {
-        "ln": "North Central Virginia: Roanoke, Fredericksburg, Blacksburg, Harrisonburg, Winchester",
-        "sn": "Virginia"
+        "sn": "Virginia",
+        "ln": "North Central Virginia: Roanoke, Fredericksburg, Blacksburg, Harrisonburg, Winchester"
     },
     "541": {
-        "ln": "Oregon: Eugene, Medford, Bend, Pendleton, Corvallis, Ontario, Burns",
-        "sn": "Oregon"
+        "sn": "Oregon",
+        "ln": "Oregon: Eugene, Medford, Bend, Pendleton, Corvallis, Ontario, Burns"
     },
+    "542": {},
+    "543": {},
     "544": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
+    "545": {},
+    "546": {},
+    "547": {},
+    "548": {},
+    "549": {},
+    "550": {},
     "551": {
-        "ln": "New Jersey",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "New Jersey"
     },
+    "552": {},
+    "553": {},
+    "554": {},
     "555": {
-        "ln": "Directory Assistance Applications",
-        "sn": "Dir. Assistance"
+        "sn": "Dir. Assistance",
+        "ln": "Directory Assistance Applications"
     },
+    "556": {},
     "557": {
-        "ln": "Missouri",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "Missouri"
     },
+    "558": {},
     "559": {
-        "ln": "Central California: Fresno, Visalia, Madera, Hanford, Tulare",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Fresno, Visalia, Madera, Hanford, Tulare"
     },
+    "560": {},
     "561": {
-        "ln": "Florida: Palm Beach, West Palm Beach, Boca Raton, Boynton Beach, Delray Beach, Belle Glade",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Florida: Palm Beach, West Palm Beach, Boca Raton, Boynton Beach, Delray Beach, Belle Glade"
     },
     "562": {
-        "ln": "Southern California: Long Beach, Whittier, Norwalk, La Habra Lakewood, Bellflower",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Long Beach, Whittier, Norwalk, La Habra Lakewood, Bellflower"
     },
     "563": {
-        "ln": "Eastern Iowa: Davenport, Dubuque, Bettendorf, Decorah, Clinton",
-        "sn": "E Iowa"
+        "sn": "E Iowa",
+        "ln": "Eastern Iowa: Davenport, Dubuque, Bettendorf, Decorah, Clinton"
     },
     "564": {
-        "ln": "Washington: Western Washington",
-        "sn": "Washington"
+        "sn": "Washington",
+        "ln": "Washington: Western Washington"
     },
+    "565": {},
     "566": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
     "567": {
-        "ln": "Ohio",
-        "sn": "Ohio"
+        "sn": "Ohio",
+        "ln": "Ohio"
     },
+    "568": {},
+    "569": {},
     "570": {
-        "ln": "Northeastern Pennsylvania: Scranton, Williamsport, Wilkes-Barre, Nanticoke, Hazleton, Pottsville, Sunbury, Danville, Bloomsburg, Stroudsburg",
-        "sn": "NE Pennsylvania"
+        "sn": "NE Pennsylvania",
+        "ln": "Northeastern Pennsylvania: Scranton, Williamsport, Wilkes-Barre, Nanticoke, Hazleton, Pottsville, Sunbury, Danville, Bloomsburg, Stroudsburg"
     },
     "571": {
-        "ln": "Virginia",
-        "sn": "Virginia"
+        "sn": "Virginia",
+        "ln": "Virginia"
     },
+    "572": {},
     "573": {
-        "ln": "Missouri: Columbia, Jefferson City, Hannibal, Cape Girardeau, Poplar Bluff, Farmington, Park Hills, Lake Ozark and eastern Missouri excluding St. Louis",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "Missouri: Columbia, Jefferson City, Hannibal, Cape Girardeau, Poplar Bluff, Farmington, Park Hills, Lake Ozark and eastern Missouri excluding St. Louis"
     },
     "574": {
-        "ln": "North Central Indiana: South Bend, Logansport, Elkhart, Warsaw, Nappanee",
-        "sn": "Indiana"
+        "sn": "Indiana",
+        "ln": "North Central Indiana: South Bend, Logansport, Elkhart, Warsaw, Nappanee"
     },
     "575": {
-        "ln": "New Mexico: Las Cruces, Roswell, Carlsbad, Taos",
-        "sn": "New Mexico"
+        "sn": "New Mexico",
+        "ln": "New Mexico: Las Cruces, Roswell, Carlsbad, Taos"
     },
+    "576": {},
     "577": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm. Services"
+        "sn": "Personal Comm. Services",
+        "ln": "Personal Communications Services"
     },
+    "578": {},
     "579": {
-        "ln": "Quebec, Canada",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada"
     },
     "580": {
-        "ln": "Southern and Western Oklahoma: Enid, Lawton, Ponca City, Guymon, Ardmore, Sayre, Elk City",
-        "sn": "SW Oklahoma"
+        "sn": "SW Oklahoma",
+        "ln": "Southern and Western Oklahoma: Enid, Lawton, Ponca City, Guymon, Ardmore, Sayre, Elk City"
     },
     "581": {
-        "ln": "Quebec, Canada",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada"
     },
+    "582": {},
+    "583": {},
+    "584": {},
     "585": {
-        "ln": "Western New York: Rochester, Wellsville, Batavia",
-        "sn": "W New York"
+        "sn": "W New York",
+        "ln": "Western New York: Rochester, Wellsville, Batavia"
     },
     "586": {
-        "ln": "Michigan: Warren, Sterling Heights, Macomb County",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan: Warren, Sterling Heights, Macomb County"
     },
     "587": {
-        "ln": "Alberta, Canada",
-        "sn": "Alberta"
+        "sn": "Alberta",
+        "ln": "Alberta, Canada"
     },
     "588": {
-        "ln": "Personal Communications Services",
-        "sn": "Personal Comm."
+        "sn": "Personal Comm.",
+        "ln": "Personal Communications Services"
     },
+    "589": {},
+    "590": {},
+    "591": {},
+    "592": {},
+    "593": {},
+    "594": {},
+    "595": {},
+    "596": {},
+    "597": {},
+    "598": {},
+    "599": {},
     "600": {
-        "ln": "Special Telecommunications Needs in Canada",
-        "sn": "Special Telecom."
+        "sn": "Special Telecom.",
+        "ln": "Special Telecommunications Needs in Canada"
     },
     "601": {
-        "ln": "Central Mississippi: Jackson, Meridian, Natchez, McComb, Hattiesburg",
-        "sn": "Mississippi"
+        "sn": "Mississippi",
+        "ln": "Central Mississippi: Jackson, Meridian, Natchez, McComb, Hattiesburg"
     },
     "602": {
-        "ln": "Arizona: Phoenix",
-        "sn": "Arizona"
+        "sn": "Arizona",
+        "ln": "Arizona: Phoenix"
     },
     "603": {
-        "ln": "New Hampshire",
-        "sn": "New Hampshire"
+        "sn": "New Hampshire",
+        "ln": "New Hampshire"
     },
     "604": {
-        "ln": "British Columbia: Vancouver, Abbotsford, Whistler, Chilliwack",
-        "sn": "British Columbia"
+        "sn": "British Columbia",
+        "ln": "British Columbia: Vancouver, Abbotsford, Whistler, Chilliwack"
     },
     "605": {
-        "ln": "South Dakota",
-        "sn": "South Dakota"
+        "sn": "South Dakota",
+        "ln": "South Dakota"
     },
     "606": {
-        "ln": "Eastern Kentucky: Ashland, Hazard, Somerset, London, Corbin, Pikeville, Maysville",
-        "sn": "E Kentucky"
+        "sn": "E Kentucky",
+        "ln": "Eastern Kentucky: Ashland, Hazard, Somerset, London, Corbin, Pikeville, Maysville"
     },
     "607": {
-        "ln": "New York: Binghamton, Elmira, Bath, Norwich, Oneonta, Ithaca",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Binghamton, Elmira, Bath, Norwich, Oneonta, Ithaca"
     },
     "608": {
-        "ln": "Southwestern Wisconsin: Madison, La Crosse, Platteville, Beloit",
-        "sn": "SW Wisconsin"
+        "sn": "SW Wisconsin",
+        "ln": "Southwestern Wisconsin: Madison, La Crosse, Platteville, Beloit"
     },
     "609": {
-        "ln": "Central and Southeastern New Jersey: Atlantic City, Trenton",
-        "sn": "SE New Jersey"
+        "sn": "SE New Jersey",
+        "ln": "Central and Southeastern New Jersey: Atlantic City, Trenton"
     },
     "610": {
-        "ln": "Southeastern Pennsylvania: Allentown, Reading, Norristown, Chester",
-        "sn": "SE Pennsylvania"
+        "sn": "SE Pennsylvania",
+        "ln": "Southeastern Pennsylvania: Allentown, Reading, Norristown, Chester"
     },
     "612": {
-        "ln": "Minnesota: Minneapolis, Fort Snelling, St Anthony, Richfield",
-        "sn": "Minnesota"
+        "sn": "Minnesota",
+        "ln": "Minnesota: Minneapolis, Fort Snelling, St Anthony, Richfield"
     },
     "613": {
-        "ln": "Eastern Ontario, Canada: Ottawa, Kingston",
-        "sn": "E Ontario"
+        "sn": "E Ontario",
+        "ln": "Eastern Ontario, Canada: Ottawa, Kingston"
     },
     "614": {
-        "ln": "Ohio: Columbus",
-        "sn": "Ohio"
+        "sn": "Ohio",
+        "ln": "Ohio: Columbus"
     },
     "615": {
-        "ln": "North Central Tennessee: Nashville, Murfreesboro, Springfield, Lebanon, Dickson",
-        "sn": "Tennessee"
+        "sn": "Tennessee",
+        "ln": "North Central Tennessee: Nashville, Murfreesboro, Springfield, Lebanon, Dickson"
     },
     "616": {
-        "ln": "Southwestern Michigan: Grand Rapids, Holland, Greenville, Grand Haven, Zeeland, Ionia",
-        "sn": "SW Michigan"
+        "sn": "SW Michigan",
+        "ln": "Southwestern Michigan: Grand Rapids, Holland, Greenville, Grand Haven, Zeeland, Ionia"
     },
     "617": {
-        "ln": "Eastern Massachusetts: Boston, Cambridge",
-        "sn": "E Massachusetts"
+        "sn": "E Massachusetts",
+        "ln": "Eastern Massachusetts: Boston, Cambridge"
     },
     "618": {
-        "ln": "Southern Illinois: Alton, Belleville, Carbondale, Centralia, East Saint Louis, Mount Vernon",
-        "sn": "S Illinois"
+        "sn": "S Illinois",
+        "ln": "Southern Illinois: Alton, Belleville, Carbondale, Centralia, East Saint Louis, Mount Vernon"
     },
     "619": {
-        "ln": "Southern California: San Diego, Chula Vista",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: San Diego, Chula Vista"
     },
     "620": {
-        "ln": "Southern Kansas: Dodge City, Emporia, Geat Bend, Parsons, Liberal",
-        "sn": "S Kansas"
+        "sn": "S Kansas",
+        "ln": "Southern Kansas: Dodge City, Emporia, Geat Bend, Parsons, Liberal"
     },
+    "621": {},
+    "622": {},
     "623": {
-        "ln": "Arizona: Glendale, Sun City, Buckeye, Peoria, western Phoenix suburbs",
-        "sn": "Arizona"
+        "sn": "Arizona",
+        "ln": "Arizona: Glendale, Sun City, Buckeye, Peoria, western Phoenix suburbs"
     },
+    "624": {},
+    "625": {},
     "626": {
-        "ln": "Southern California: Pasadena, West Covina, El Monte, La Puente, Arcadia, San Gabriel Valley, eastern Los Angeles suburbs",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Pasadena, West Covina, El Monte, La Puente, Arcadia, San Gabriel Valley, eastern Los Angeles suburbs"
     },
     "627": {
-        "ln": "Northern California coast",
-        "sn": "N California"
+        "sn": "N California",
+        "ln": "Northern California coast"
     },
     "628": {
-        "ln": "Central California: San Francisco",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: San Francisco"
     },
+    "629": {},
     "630": {
-        "ln": "Illinois: Aurora, Naperville, western Chicago suburbs",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois: Aurora, Naperville, western Chicago suburbs"
     },
     "631": {
-        "ln": "New York: Suffolk County",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Suffolk County"
     },
+    "632": {},
+    "633": {},
+    "634": {},
+    "635": {},
     "636": {
-        "ln": "East Central Missouri: St. Charles, Chesterfield, Union, De Soto, Troy",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "East Central Missouri: St. Charles, Chesterfield, Union, De Soto, Troy"
     },
+    "637": {},
+    "638": {},
+    "639": {},
+    "640": {},
     "641": {
-        "ln": "Central Iowa: Mason City, Oskaloosa, Creston, Pella, Ottumwa, Britt, Clear Lake, Fairfield",
-        "sn": "Iowa"
+        "sn": "Iowa",
+        "ln": "Central Iowa: Mason City, Oskaloosa, Creston, Pella, Ottumwa, Britt, Clear Lake, Fairfield"
     },
+    "642": {},
+    "643": {},
+    "644": {},
+    "645": {},
     "646": {
-        "ln": "New York: Manhattan",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Manhattan"
     },
     "647": {
-        "ln": "Ontario, Canada",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Ontario, Canada"
     },
+    "648": {},
     "649": {
-        "ln": "The Turks and Caicos Islands",
-        "sn": "Turks/Caicos"
+        "sn": "Turks/Caicos",
+        "ln": "The Turks and Caicos Islands"
     },
     "650": {
-        "ln": "Central California: San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, southern San Francisco suburbs",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, southern San Francisco suburbs"
     },
     "651": {
-        "ln": "East Central Minnesota: St Paul, Lindstrom, Red Wing, Hastings",
-        "sn": "Minnesota"
+        "sn": "Minnesota",
+        "ln": "East Central Minnesota: St Paul, Lindstrom, Red Wing, Hastings"
     },
+    "652": {},
+    "653": {},
+    "654": {},
+    "655": {},
+    "656": {},
     "657": {
-        "ln": "California",
-        "sn": "California"
+        "sn": "California",
+        "ln": "California"
     },
+    "658": {},
     "659": {
-        "ln": "Alabama",
-        "sn": "Alabama"
+        "sn": "Alabama",
+        "ln": "Alabama"
     },
     "660": {
-        "ln": "North Central Missouri: Sedalia, Kirksville, Macon, Marshall, Trenton, Maryville, Bethany",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "North Central Missouri: Sedalia, Kirksville, Macon, Marshall, Trenton, Maryville, Bethany"
     },
     "661": {
-        "ln": "South Central California: Bakersfield, Lancaster, Santa Clarita, Palmdale, Mojave",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "South Central California: Bakersfield, Lancaster, Santa Clarita, Palmdale, Mojave"
     },
     "662": {
-        "ln": "Northern Mississippi: Greenville, Tupelo, Winona, Columbus, Holly Springs",
-        "sn": "N Mississippi"
+        "sn": "N Mississippi",
+        "ln": "Northern Mississippi: Greenville, Tupelo, Winona, Columbus, Holly Springs"
     },
+    "663": {},
     "664": {
-        "ln": "Montserrat",
-        "sn": "Montserrat"
+        "sn": "Montserrat",
+        "ln": "Montserrat"
     },
+    "665": {},
+    "666": {},
     "667": {
-        "ln": "Maryland",
-        "sn": "Maryland"
+        "sn": "Maryland",
+        "ln": "Maryland"
     },
+    "668": {},
     "669": {
-        "ln": "Central California: San Jose",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: San Jose"
     },
     "670": {
-        "ln": "Northern Mariana Islands",
-        "sn": "Marianas"
+        "sn": "Marianas",
+        "ln": "Northern Mariana Islands"
     },
     "671": {
-        "ln": "Guam",
-        "sn": "Guam"
+        "sn": "Guam",
+        "ln": "Guam"
     },
+    "672": {},
+    "673": {},
+    "674": {},
+    "675": {},
+    "676": {},
+    "677": {},
     "678": {
-        "ln": "Georgia",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "Georgia"
     },
     "679": {
-        "ln": "Michigan",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan"
     },
+    "680": {},
     "681": {
-        "ln": "West Virginia",
-        "sn": "West Virginia"
+        "sn": "West Virginia",
+        "ln": "West Virginia"
     },
     "682": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
+    "683": {},
     "684": {
-        "ln": "American Samoa",
-        "sn": "Amer. Samoa"
+        "sn": "Amer. Samoa",
+        "ln": "American Samoa"
     },
+    "685": {},
+    "686": {},
+    "687": {},
+    "688": {},
     "689": {
-        "ln": "Florida",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Florida"
     },
+    "690": {},
+    "691": {},
+    "692": {},
+    "693": {},
+    "694": {},
+    "695": {},
+    "696": {},
+    "697": {},
+    "698": {},
+    "699": {},
     "700": {
-        "ln": "Long Distance Carrier Use",
-        "sn": "LD Carrier"
+        "sn": "LD Carrier",
+        "ln": "Long Distance Carrier Use"
     },
     "701": {
-        "ln": "North Dakota",
-        "sn": "North Dakota"
+        "sn": "North Dakota",
+        "ln": "North Dakota"
     },
     "702": {
-        "ln": "Nevada: Clark County, Las Vegas, Henderson, Boulder City",
-        "sn": "Nevada"
+        "sn": "Nevada",
+        "ln": "Nevada: Clark County, Las Vegas, Henderson, Boulder City"
     },
     "703": {
-        "ln": "Northern Virginia: Alexandria, Arlington, Fairfax, Prince William, eastern Loudoun counties",
-        "sn": "N Virginia"
+        "sn": "N Virginia",
+        "ln": "Northern Virginia: Alexandria, Arlington, Fairfax, Prince William, eastern Loudoun counties"
     },
     "704": {
-        "ln": "South Central North Carolina: Charlotte, Gastonia, Concord, Salisbury",
-        "sn": "North Carolina"
+        "sn": "North Carolina",
+        "ln": "South Central North Carolina: Charlotte, Gastonia, Concord, Salisbury"
     },
     "705": {
-        "ln": "Central Ontario, Canada: Sudbury, Sault Ste. Marie, North Bay, Timmins, Barrie",
-        "sn": "Ontario"
+        "sn": "Ontario",
+        "ln": "Central Ontario, Canada: Sudbury, Sault Ste. Marie, North Bay, Timmins, Barrie"
     },
     "706": {
-        "ln": "West Central Georgia: Augusta, Lincolnton, Columbus, LaGrange, Rome, Dalton, Thomaston",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "West Central Georgia: Augusta, Lincolnton, Columbus, LaGrange, Rome, Dalton, Thomaston"
     },
     "707": {
-        "ln": "Northwestern California: Napa, Vallejo, Santa Rosa, Ukiah, Crescent City, Eureka, Ukiah",
-        "sn": "NW California"
+        "sn": "NW California",
+        "ln": "Northwestern California: Napa, Vallejo, Santa Rosa, Ukiah, Crescent City, Eureka, Ukiah"
     },
     "708": {
-        "ln": "Illinois: Chicago Heights, Evergreen Park, Tinley Park, Elmwood Park, Cicero, Oak Forest, Oak Park, Berwyn, western Chicago suburbs",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois: Chicago Heights, Evergreen Park, Tinley Park, Elmwood Park, Cicero, Oak Forest, Oak Park, Berwyn, western Chicago suburbs"
     },
     "709": {
-        "ln": "Newfoundland and Labrador, Canada: St. John's",
-        "sn": "Newfoundland"
+        "sn": "Newfoundland",
+        "ln": "Newfoundland and Labrador, Canada: St. John's"
     },
     "710": {
-        "ln": "U.S. Government Special Services",
-        "sn": "U.S. Government"
+        "sn": "U.S. Government",
+        "ln": "U.S. Government Special Services"
     },
     "712": {
-        "ln": "Western Iowa: Sioux City, Council Bluffs, Sheldon, Denison, Estherville",
-        "sn": "W Iowa"
+        "sn": "W Iowa",
+        "ln": "Western Iowa: Sioux City, Council Bluffs, Sheldon, Denison, Estherville"
     },
     "713": {
-        "ln": "Texas: Houston",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Houston"
     },
     "714": {
-        "ln": "Southern California: Anaheim, Santa Ana, Huntington Beach, Orange, Garden Grove, Fullerton, Orange County",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Anaheim, Santa Ana, Huntington Beach, Orange, Garden Grove, Fullerton, Orange County"
     },
     "715": {
-        "ln": "Northern Wisconsin: Wausau, Eau Claire, Rice Lake, Rhinelander, Ashland",
-        "sn": "N Wisconsin"
+        "sn": "N Wisconsin",
+        "ln": "Northern Wisconsin: Wausau, Eau Claire, Rice Lake, Rhinelander, Ashland"
     },
     "716": {
-        "ln": "Western New York: Buffalo, Jamestown, Niagara Falls, Tonawanda, Olean",
-        "sn": "W New York"
+        "sn": "W New York",
+        "ln": "Western New York: Buffalo, Jamestown, Niagara Falls, Tonawanda, Olean"
     },
     "717": {
-        "ln": "South Central Pennsylvania: Harrisburg, Gettysburg, Lancaster, York",
-        "sn": "Pennsylvania"
+        "sn": "Pennsylvania",
+        "ln": "South Central Pennsylvania: Harrisburg, Gettysburg, Lancaster, York"
     },
     "718": {
-        "ln": "New York: New York City, Marble Hill",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: New York City, Marble Hill"
     },
     "719": {
-        "ln": "Southeastern Colorado: Colorado Springs, Pueblo, Leadville, Trinidad, Rocky Ford, La Junta",
-        "sn": "SE Colorado"
+        "sn": "SE Colorado",
+        "ln": "Southeastern Colorado: Colorado Springs, Pueblo, Leadville, Trinidad, Rocky Ford, La Junta"
     },
     "720": {
-        "ln": "Colorado",
-        "sn": "Colorado"
+        "sn": "Colorado",
+        "ln": "Colorado"
     },
     "721": {
-        "ln": "Sint Maarten",
-        "sn": "Sint Maarten"
+        "sn": "Sint Maarten",
+        "ln": "Sint Maarten"
     },
+    "722": {},
+    "723": {},
     "724": {
-        "ln": "Southwestern Pennsylvania: New Castle, Washington, Indiana, Uniontown",
-        "sn": "SW Pennsylvania"
+        "sn": "SW Pennsylvania",
+        "ln": "Southwestern Pennsylvania: New Castle, Washington, Indiana, Uniontown"
     },
+    "725": {},
+    "726": {},
     "727": {
-        "ln": "Central Florida: St Petersburg, Dunedin",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Central Florida: St Petersburg, Dunedin"
     },
+    "728": {},
+    "729": {},
     "730": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
     "731": {
-        "ln": "Western Tennessee: Union City, Jackson, Dyersburg, Martin, Brownsville, Paris, Bolivar",
-        "sn": "W Tennessee"
+        "sn": "W Tennessee",
+        "ln": "Western Tennessee: Union City, Jackson, Dyersburg, Martin, Brownsville, Paris, Bolivar"
     },
     "732": {
-        "ln": "East Central New Jersey: New Brunswick, Neptune, Freehold, Lakewood",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "East Central New Jersey: New Brunswick, Neptune, Freehold, Lakewood"
     },
+    "733": {},
     "734": {
-        "ln": "Southwestern Michigan: Ann Arbor, Canton, Plymouth, Monroe, Wayne, Ypsilanti, Romulus, Detroit suburbs",
-        "sn": "SW Michigan"
+        "sn": "SW Michigan",
+        "ln": "Southwestern Michigan: Ann Arbor, Canton, Plymouth, Monroe, Wayne, Ypsilanti, Romulus, Detroit suburbs"
     },
+    "735": {},
+    "736": {},
     "737": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
+    "738": {},
+    "739": {},
     "740": {
-        "ln": "Central and Southeastern Ohio: Columbus, Newark, Lancaster, Delaware, Mt. Vernon, Marion, Washington C.H., Marietta, Portsmouth, Cambridge, Zanesville, Coshocton, Stuebenville, Athens",
-        "sn": "SE Ohio"
+        "sn": "SE Ohio",
+        "ln": "Central and Southeastern Ohio: Columbus, Newark, Lancaster, Delaware, Mt. Vernon, Marion, Washington C.H., Marietta, Portsmouth, Cambridge, Zanesville, Coshocton, Stuebenville, Athens"
     },
+    "741": {},
+    "742": {},
+    "743": {},
+    "744": {},
+    "745": {},
+    "746": {},
     "747": {
-        "ln": "Southern California: San Fernando Valley",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: San Fernando Valley"
     },
+    "748": {},
+    "749": {},
+    "750": {},
+    "751": {},
+    "752": {},
+    "753": {},
     "754": {
-        "ln": "Florida",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Florida"
     },
+    "755": {},
+    "756": {},
     "757": {
-        "ln": "Virginia: Hampton Roads, Eastern Shore",
-        "sn": "Virginia"
+        "sn": "Virginia",
+        "ln": "Virginia: Hampton Roads, Eastern Shore"
     },
     "758": {
-        "ln": "Saint Lucia",
-        "sn": "St. Lucia"
+        "sn": "St. Lucia",
+        "ln": "Saint Lucia"
     },
+    "759": {},
     "760": {
-        "ln": "Southeastern California: Bishop, Ridgecrest, Barstow, Palm Springs, Indio, Imperial County",
-        "sn": "SE California"
+        "sn": "SE California",
+        "ln": "Southeastern California: Bishop, Ridgecrest, Barstow, Palm Springs, Indio, Imperial County"
     },
+    "761": {},
     "762": {
-        "ln": "Georgia",
-        "sn": "Georgia"
+        "sn": "Georgia",
+        "ln": "Georgia"
     },
     "763": {
-        "ln": "Minnesota: Maple Grove, Monticello, Elk River, Fridley, Blaine, northwest Minneapolis",
-        "sn": "Minnesota"
+        "sn": "Minnesota",
+        "ln": "Minnesota: Maple Grove, Monticello, Elk River, Fridley, Blaine, northwest Minneapolis"
     },
     "764": {
-        "ln": "Central California: Oakland, Berkeley, Alameda",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Oakland, Berkeley, Alameda"
     },
     "765": {
-        "ln": "Central Indiana: Lafayette, Marion, Muncie, Richmond",
-        "sn": "Indiana"
+        "sn": "Indiana",
+        "ln": "Central Indiana: Lafayette, Marion, Muncie, Richmond"
     },
+    "766": {},
     "767": {
-        "ln": "Commonwealth of Dominica",
-        "sn": "Dominica"
+        "sn": "Dominica",
+        "ln": "Commonwealth of Dominica"
     },
+    "768": {},
     "769": {
-        "ln": "Mississippi",
-        "sn": "Mississippi"
+        "sn": "Mississippi",
+        "ln": "Mississippi"
     },
     "770": {
-        "ln": "Central North Georgia: Marietta, Cedartown, Gainesville, Atlanta suburbs",
-        "sn": "N Georgia"
+        "sn": "N Georgia",
+        "ln": "Central North Georgia: Marietta, Cedartown, Gainesville, Atlanta suburbs"
     },
+    "771": {},
     "772": {
-        "ln": "Central Eastern Florida: Vero Beach, Port Saint Lucie, Fort Pierce, Sebastian, Stuart",
-        "sn": "E Florida"
+        "sn": "E Florida",
+        "ln": "Central Eastern Florida: Vero Beach, Port Saint Lucie, Fort Pierce, Sebastian, Stuart"
     },
     "773": {
-        "ln": "Illinois: Chicago",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois: Chicago"
     },
     "774": {
-        "ln": "Massachusetts",
-        "sn": "Massachusetts"
+        "sn": "Massachusetts",
+        "ln": "Massachusetts"
     },
     "775": {
-        "ln": "Nevada: Reno, Elko, Ely",
-        "sn": "Nevada"
+        "sn": "Nevada",
+        "ln": "Nevada: Reno, Elko, Ely"
     },
+    "776": {},
+    "777": {},
     "778": {
-        "ln": "British Columbia",
-        "sn": "British Columbia"
+        "sn": "British Columbia",
+        "ln": "British Columbia"
     },
     "779": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
     "780": {
-        "ln": "Northern Alberta, Canada: Edmonton, Jasper, Grande Prairie, Peace River",
-        "sn": "N Alberta"
+        "sn": "N Alberta",
+        "ln": "Northern Alberta, Canada: Edmonton, Jasper, Grande Prairie, Peace River"
     },
     "781": {
-        "ln": "Eastern Massachusetts: Saugus, Norwood, Waltham, Woburn, Boston suburbs",
-        "sn": "E Massachusetts"
+        "sn": "E Massachusetts",
+        "ln": "Eastern Massachusetts: Saugus, Norwood, Waltham, Woburn, Boston suburbs"
     },
+    "782": {},
+    "783": {},
     "784": {
-        "ln": "Saint Vincent and the Grenadines",
-        "sn": "St. Vincent/Grenadines"
+        "sn": "St. Vincent/Grenadines",
+        "ln": "Saint Vincent and the Grenadines"
     },
     "785": {
-        "ln": "Northern Kansas: Colby, Topeka, Salina, Manhattan, Lawrence",
-        "sn": "N Kansas"
+        "sn": "N Kansas",
+        "ln": "Northern Kansas: Colby, Topeka, Salina, Manhattan, Lawrence"
     },
     "786": {
-        "ln": "Florida: Miami-Dade County, Florida Keys",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Florida: Miami-Dade County, Florida Keys"
     },
     "787": {
-        "ln": "Puerto Rico",
-        "sn": "Puerto Rico"
+        "sn": "Puerto Rico",
+        "ln": "Puerto Rico"
     },
+    "788": {},
+    "789": {},
+    "790": {},
+    "791": {},
+    "792": {},
+    "793": {},
+    "794": {},
+    "795": {},
+    "796": {},
+    "797": {},
+    "798": {},
+    "799": {},
     "800": {
-        "ln": "Toll-free Telephone Service",
-        "sn": "Toll-free"
+        "sn": "Toll-free",
+        "ln": "Toll-free Telephone Service"
     },
     "801": {
-        "ln": "Utah: Wasatch Front",
-        "sn": "Utah"
+        "sn": "Utah",
+        "ln": "Utah: Wasatch Front"
     },
     "802": {
-        "ln": "Vermont",
-        "sn": "Vermont"
+        "sn": "Vermont",
+        "ln": "Vermont"
     },
     "803": {
-        "ln": "Central South Carolina: Columbia, Rock Hill, Sumter, Aiken",
-        "sn": "South Carolina"
+        "sn": "South Carolina",
+        "ln": "Central South Carolina: Columbia, Rock Hill, Sumter, Aiken"
     },
     "804": {
-        "ln": "Virginia: Richmond, Petersburg",
-        "sn": "Virginia"
+        "sn": "Virginia",
+        "ln": "Virginia: Richmond, Petersburg"
     },
     "805": {
-        "ln": "Central Coastal California: Ventura, San Luis Obispo, Santa Barbara, Oxnard, Simi Valley",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central Coastal California: Ventura, San Luis Obispo, Santa Barbara, Oxnard, Simi Valley"
     },
     "806": {
-        "ln": "Texas: Amarillo, Lubbock, Canadian, Perryton, Shamrock, Dalhart, Texas Panhandle",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Amarillo, Lubbock, Canadian, Perryton, Shamrock, Dalhart, Texas Panhandle"
     },
     "807": {
-        "ln": "Northwestern Ontario, Canada: Thunder Bay, Kenora, Dryden, Greenstone",
-        "sn": "NW Ontario"
+        "sn": "NW Ontario",
+        "ln": "Northwestern Ontario, Canada: Thunder Bay, Kenora, Dryden, Greenstone"
     },
     "808": {
-        "ln": "Hawaii",
-        "sn": "Hawaii"
+        "sn": "Hawaii",
+        "ln": "Hawaii"
     },
     "809": {
-        "ln": "Dominican Republic",
-        "sn": "D.R."
+        "sn": "D.R.",
+        "ln": "Dominican Republic"
     },
     "810": {
-        "ln": "Michigan: Port Huron, Flint, Lapeer, and Michigan \"Thumb\"",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan: Port Huron, Flint, Lapeer, and Michigan \"Thumb\""
     },
     "812": {
-        "ln": "Indiana: Southern Indiana, including Bloomington, Evansville, Jeffersonville, New Albany, and Terre Haute).",
-        "sn": "Indiana"
+        "sn": "Indiana",
+        "ln": "Indiana: Southern Indiana, including Bloomington, Evansville, Jeffersonville, New Albany, and Terre Haute)."
     },
     "813": {
-        "ln": "Central Florida: Tampa, Temple Terrace, Plant City, Pasco County, Oldsmar",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "Central Florida: Tampa, Temple Terrace, Plant City, Pasco County, Oldsmar"
     },
     "814": {
-        "ln": "Northwestern and Central Pennsylvania: Erie, Warren, State College, Altoona, Johnstown, Meyersdale, Johnsonburg, St. Marys, Ridgway, DuBois, Emporium",
-        "sn": "NW Pennsylvania"
+        "sn": "NW Pennsylvania",
+        "ln": "Northwestern and Central Pennsylvania: Erie, Warren, State College, Altoona, Johnstown, Meyersdale, Johnsonburg, St. Marys, Ridgway, DuBois, Emporium"
     },
     "815": {
-        "ln": "Northern Illinois: Rockford, La Salle, De Kalb, Freeport, Joliet, Plainfield, Crystal Lake",
-        "sn": "N Illinois"
+        "sn": "N Illinois",
+        "ln": "Northern Illinois: Rockford, La Salle, De Kalb, Freeport, Joliet, Plainfield, Crystal Lake"
     },
     "816": {
-        "ln": "West Central Missouri: Kansas City, St Joseph, Independence, Harrisonville",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "West Central Missouri: Kansas City, St Joseph, Independence, Harrisonville"
     },
     "817": {
-        "ln": "Texas: Fort Worth, Arlington, Grandview, Weatherford, Rhome",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: Fort Worth, Arlington, Grandview, Weatherford, Rhome"
     },
     "818": {
-        "ln": "Southern California: San Fernando Valley, including Glendale, San Fernando, Northridge, Burbank, Los Angeles suburbs",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: San Fernando Valley, including Glendale, San Fernando, Northridge, Burbank, Los Angeles suburbs"
     },
     "819": {
-        "ln": "Quebec, Canada: Sherbrooke, Trois-Rivieres, Abitibi-Témiscamingue, Mauricie, Outaouais, Estrie",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada: Sherbrooke, Trois-Rivieres, Abitibi-Témiscamingue, Mauricie, Outaouais, Estrie"
     },
+    "820": {},
+    "821": {},
+    "822": {},
+    "823": {},
+    "824": {},
     "825": {
-        "ln": "Alberta, Canada",
-        "sn": "Alberta"
+        "sn": "Alberta",
+        "ln": "Alberta, Canada"
     },
+    "826": {},
+    "827": {},
     "828": {
-        "ln": "Western North Carolina: Hickory, Asheville, Waynesville, Franklin, Murphy",
-        "sn": "W North Carolina"
+        "sn": "W North Carolina",
+        "ln": "Western North Carolina: Hickory, Asheville, Waynesville, Franklin, Murphy"
     },
     "829": {
-        "ln": "The Dominican Republic",
-        "sn": "D.R."
+        "sn": "D.R.",
+        "ln": "The Dominican Republic"
     },
     "830": {
-        "ln": "Southwestern Texas: Del Rio, Uvalde, New Braunfels, Kerrville, Eagle Pass",
-        "sn": "SW Texas"
+        "sn": "SW Texas",
+        "ln": "Southwestern Texas: Del Rio, Uvalde, New Braunfels, Kerrville, Eagle Pass"
     },
     "831": {
-        "ln": "Central California: Salinas, Hollister, Monterey, Carmel, Santa Cruz",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Salinas, Hollister, Monterey, Carmel, Santa Cruz"
     },
     "832": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
+    "833": {},
+    "834": {},
+    "835": {},
+    "836": {},
+    "837": {},
+    "838": {},
+    "839": {},
+    "840": {},
+    "841": {},
+    "842": {},
     "843": {
-        "ln": "Eastern South Carolina: Florence, Myrtle Beach, Charleston, Isle of Palms, Hilton Head Island",
-        "sn": "E South Carolina"
+        "sn": "E South Carolina",
+        "ln": "Eastern South Carolina: Florence, Myrtle Beach, Charleston, Isle of Palms, Hilton Head Island"
     },
+    "844": {},
     "845": {
-        "ln": "Southeastern New York: Rockland, Poughkeepsie, Middletown, West Point, Newburgh, Catskills, Margaretville",
-        "sn": "SE New York"
+        "sn": "SE New York",
+        "ln": "Southeastern New York: Rockland, Poughkeepsie, Middletown, West Point, Newburgh, Catskills, Margaretville"
     },
+    "846": {},
     "847": {
-        "ln": "Northeastern Illinois: Arlington Heights, Buffalo Grove, Wauconda, Waukegan, Des Plaines, Chicago suburbs",
-        "sn": "NE Illinois"
+        "sn": "NE Illinois",
+        "ln": "Northeastern Illinois: Arlington Heights, Buffalo Grove, Wauconda, Waukegan, Des Plaines, Chicago suburbs"
     },
     "848": {
-        "ln": "New Jersey",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "New Jersey"
     },
     "849": {
-        "ln": "The Dominican Republic",
-        "sn": "D.R."
+        "sn": "D.R.",
+        "ln": "The Dominican Republic"
     },
     "850": {
-        "ln": "Northwestern Florida: Pensacola, Tallahassee, Panama City, the Florida panhandle",
-        "sn": "NW Florida"
+        "sn": "NW Florida",
+        "ln": "Northwestern Florida: Pensacola, Tallahassee, Panama City, the Florida panhandle"
     },
+    "851": {},
+    "852": {},
+    "853": {},
+    "854": {},
+    "855": {},
     "856": {
-        "ln": "Southwestern New Jersey: Vineland, Cherry Hill, Camden, Millville",
-        "sn": "SW New Jersey"
+        "sn": "SW New Jersey",
+        "ln": "Southwestern New Jersey: Vineland, Cherry Hill, Camden, Millville"
     },
     "857": {
-        "ln": "Massachusetts",
-        "sn": "Massachusetts"
+        "sn": "Massachusetts",
+        "ln": "Massachusetts"
     },
     "858": {
-        "ln": "Southern California: Del Mar, La Jolla, San Diego",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Del Mar, La Jolla, San Diego"
     },
     "859": {
-        "ln": "North Central Kentucky: Lexington, Richmond, Danville, Covington, Florence, Mount Sterling",
-        "sn": "Kentucky"
+        "sn": "Kentucky",
+        "ln": "North Central Kentucky: Lexington, Richmond, Danville, Covington, Florence, Mount Sterling"
     },
     "860": {
-        "ln": "Connecticut: Bristol, Hartford, Norwich and northern and eastern Connecticut",
-        "sn": "Connecticut"
+        "sn": "Connecticut",
+        "ln": "Connecticut: Bristol, Hartford, Norwich and northern and eastern Connecticut"
     },
+    "861": {},
     "862": {
-        "ln": "New Jersey",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "New Jersey"
     },
     "863": {
-        "ln": "South Central Florida: Auburndale, Lakeland, Avon Park, Clewiston, Bartow, Sebring, Winter Haven",
-        "sn": "Florida"
+        "sn": "Florida",
+        "ln": "South Central Florida: Auburndale, Lakeland, Avon Park, Clewiston, Bartow, Sebring, Winter Haven"
     },
     "864": {
-        "ln": "South Carolina: Greenville, Spartanburg, Anderson, Upstate South Carolina",
-        "sn": "South Carolina"
+        "sn": "South Carolina",
+        "ln": "South Carolina: Greenville, Spartanburg, Anderson, Upstate South Carolina"
     },
     "865": {
-        "ln": "Central Eastern Tennessee: Knoxville, Gatlinburg, Newport, Jefferson City, Oak Ridge, Rockwood",
-        "sn": "E Tennessee"
+        "sn": "E Tennessee",
+        "ln": "Central Eastern Tennessee: Knoxville, Gatlinburg, Newport, Jefferson City, Oak Ridge, Rockwood"
     },
+    "866": {},
     "867": {
-        "ln": "Yukon, Northwest Territories, and Nunavut, Canada",
-        "sn": "Yukon"
+        "sn": "Yukon",
+        "ln": "Yukon, Northwest Territories, and Nunavut, Canada"
     },
     "868": {
-        "ln": "Trinidad and Tobago",
-        "sn": "Trinidad/Tobago"
+        "sn": "Trinidad/Tobago",
+        "ln": "Trinidad and Tobago"
     },
     "869": {
-        "ln": "Saint Kitts and Nevis",
-        "sn": "St. Kitts/Nevis"
+        "sn": "St. Kitts/Nevis",
+        "ln": "Saint Kitts and Nevis"
     },
     "870": {
-        "ln": "Southern and Eastern Arkansas: Texarkana, Jonesboro, Pine Bluff",
-        "sn": "S Arkansas"
+        "sn": "S Arkansas",
+        "ln": "Southern and Eastern Arkansas: Texarkana, Jonesboro, Pine Bluff"
     },
+    "871": {},
     "872": {
-        "ln": "Illinois",
-        "sn": "Illinois"
+        "sn": "Illinois",
+        "ln": "Illinois"
     },
     "873": {
-        "ln": "Quebec, Canada",
-        "sn": "Quebec"
+        "sn": "Quebec",
+        "ln": "Quebec, Canada"
     },
+    "874": {},
+    "875": {},
     "876": {
-        "ln": "Jamaica",
-        "sn": "Jamaica"
+        "sn": "Jamaica",
+        "ln": "Jamaica"
     },
+    "877": {},
     "878": {
-        "ln": "Pennsylvania",
-        "sn": "Pennsylvania"
+        "sn": "Pennsylvania",
+        "ln": "Pennsylvania"
     },
+    "879": {},
+    "880": {},
+    "881": {},
+    "882": {},
+    "883": {},
+    "884": {},
+    "885": {},
+    "886": {},
+    "887": {},
     "888": {
-        "ln": "Toll-free Telephone Service",
-        "sn": "Toll-free"
+        "sn": "Toll-free",
+        "ln": "Toll-free Telephone Service"
     },
+    "889": {},
+    "890": {},
+    "891": {},
+    "892": {},
+    "893": {},
+    "894": {},
+    "895": {},
+    "896": {},
+    "897": {},
+    "898": {},
+    "899": {},
     "900": {
-        "ln": "Premium-rate Telephone Service",
-        "sn": "Premium-rate"
+        "sn": "Premium-rate",
+        "ln": "Premium-rate Telephone Service"
     },
     "901": {
-        "ln": "Southwestern Tennessee: Memphis, Covington, Somerville",
-        "sn": "SW Tennessee"
+        "sn": "SW Tennessee",
+        "ln": "Southwestern Tennessee: Memphis, Covington, Somerville"
     },
     "902": {
-        "ln": "Nova Scotia and Prince Edward Island, Canada",
-        "sn": "Nova Scotia/PEI"
+        "sn": "Nova Scotia/PEI",
+        "ln": "Nova Scotia and Prince Edward Island, Canada"
     },
     "903": {
-        "ln": "Northeastern Texas: Tyler, Sherman, Longview, Marshall, Palestine, Jacksonville, Carthage",
-        "sn": "NE Texas"
+        "sn": "NE Texas",
+        "ln": "Northeastern Texas: Tyler, Sherman, Longview, Marshall, Palestine, Jacksonville, Carthage"
     },
     "904": {
-        "ln": "Northeastern Florida: Jacksonville, St. Augustine, Starke, Green Cove Springs",
-        "sn": "NE Florida"
+        "sn": "NE Florida",
+        "ln": "Northeastern Florida: Jacksonville, St. Augustine, Starke, Green Cove Springs"
     },
     "905": {
-        "ln": "Southwestern Ontario, Canada: Niagara Region, Hamilton, Toronto suburbs",
-        "sn": "SW Ontario"
+        "sn": "SW Ontario",
+        "ln": "Southwestern Ontario, Canada: Niagara Region, Hamilton, Toronto suburbs"
     },
     "906": {
-        "ln": "Northern Michigan: Escanaba, Houghton, Iron Mountain, Marquette, Menominee, Sault Ste. Marie, Upper Peninsula",
-        "sn": "N Michigan"
+        "sn": "N Michigan",
+        "ln": "Northern Michigan: Escanaba, Houghton, Iron Mountain, Marquette, Menominee, Sault Ste. Marie, Upper Peninsula"
     },
     "907": {
-        "ln": "Alaska: Anchorage, Juneau, Fairbanks",
-        "sn": "Alaska"
+        "sn": "Alaska",
+        "ln": "Alaska: Anchorage, Juneau, Fairbanks"
     },
     "908": {
-        "ln": "West Central New Jersey: Alpha, Washington, Elizabeth, Warren, Plainfield",
-        "sn": "New Jersey"
+        "sn": "New Jersey",
+        "ln": "West Central New Jersey: Alpha, Washington, Elizabeth, Warren, Plainfield"
     },
     "909": {
-        "ln": "Southern California: Colton, Grand Terrace, Ontario, Claremont, Pomona, Chino, Redlands, Fontana",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Colton, Grand Terrace, Ontario, Claremont, Pomona, Chino, Redlands, Fontana"
     },
     "910": {
-        "ln": "Southeastern North Carolina: Fayetteville, Wilmington, Jacksonville, Lumberton",
-        "sn": "SE North Carolina"
+        "sn": "SE North Carolina",
+        "ln": "Southeastern North Carolina: Fayetteville, Wilmington, Jacksonville, Lumberton"
     },
     "912": {
-        "ln": "Southeastern Georgia: Savannah, Statesboro, Vidalia, Waycross, Brunswick, Douglas",
-        "sn": "SE Georgia"
+        "sn": "SE Georgia",
+        "ln": "Southeastern Georgia: Savannah, Statesboro, Vidalia, Waycross, Brunswick, Douglas"
     },
     "913": {
-        "ln": "Eastern Kansas: Kansas City, Overland Park, Paola, Leavenworth",
-        "sn": "E Kansas"
+        "sn": "E Kansas",
+        "ln": "Eastern Kansas: Kansas City, Overland Park, Paola, Leavenworth"
     },
     "914": {
-        "ln": "New York: Westchester County",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: Westchester County"
     },
     "915": {
-        "ln": "Texas: El Paso County, Hudspeth County",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas: El Paso County, Hudspeth County"
     },
     "916": {
-        "ln": "Central California: Sacramento, Davis, Roseville",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Sacramento, Davis, Roseville"
     },
     "917": {
-        "ln": "New York: New York City",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York: New York City"
     },
     "918": {
-        "ln": "Northeastern Oklahoma: Tulsa, Bartlesville, McAlester, Muskogee, Henryetta",
-        "sn": "NE Oklahoma"
+        "sn": "NE Oklahoma",
+        "ln": "Northeastern Oklahoma: Tulsa, Bartlesville, McAlester, Muskogee, Henryetta"
     },
     "919": {
-        "ln": "North Central North Carolina: Raleigh, Durham, Chapel Hill, Oxford, Goldsboro",
-        "sn": "North Carolina"
+        "sn": "North Carolina",
+        "ln": "North Central North Carolina: Raleigh, Durham, Chapel Hill, Oxford, Goldsboro"
     },
     "920": {
-        "ln": "Eastern Wisconsin: Appleton, Sheboygan, Oshkosh, Green Bay, Manitowoc, Fond du Lac",
-        "sn": "E Wisconsin"
+        "sn": "E Wisconsin",
+        "ln": "Eastern Wisconsin: Appleton, Sheboygan, Oshkosh, Green Bay, Manitowoc, Fond du Lac"
     },
+    "921": {},
+    "922": {},
+    "923": {},
+    "924": {},
     "925": {
-        "ln": "Central California: Concord, Pleasant Hill, Walnut Creek, Martinez, Livermore, Pleasanton, Dublin",
-        "sn": "California"
+        "sn": "California",
+        "ln": "Central California: Concord, Pleasant Hill, Walnut Creek, Martinez, Livermore, Pleasanton, Dublin"
     },
+    "926": {},
+    "927": {},
     "928": {
-        "ln": "Northern and Western Arizona: Flagstaff, Kingman, Prescott, Yuma",
-        "sn": "NW Arizona"
+        "sn": "NW Arizona",
+        "ln": "Northern and Western Arizona: Flagstaff, Kingman, Prescott, Yuma"
     },
     "929": {
-        "ln": "New York",
-        "sn": "New York"
+        "sn": "New York",
+        "ln": "New York"
     },
+    "930": {},
     "931": {
-        "ln": "Tennessee: Clarksville, Columbia, Manchester, Cookeville",
-        "sn": "Tennessee"
+        "sn": "Tennessee",
+        "ln": "Tennessee: Clarksville, Columbia, Manchester, Cookeville"
     },
+    "932": {},
+    "933": {},
+    "934": {},
     "935": {
-        "ln": "Southern California: San Diego",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: San Diego"
     },
     "936": {
-        "ln": "Central and Southeastern Texas: Nacogdoches, Lufkin, Conroe, Huntsville",
-        "sn": "SE Texas"
+        "sn": "SE Texas",
+        "ln": "Central and Southeastern Texas: Nacogdoches, Lufkin, Conroe, Huntsville"
     },
     "937": {
-        "ln": "Southwestern Ohio: Marysville, Springfield, Dayton, Hillsboro",
-        "sn": "SW Ohio"
+        "sn": "SW Ohio",
+        "ln": "Southwestern Ohio: Marysville, Springfield, Dayton, Hillsboro"
     },
     "938": {
-        "ln": "Alabama: Huntsville",
-        "sn": "Alabama"
+        "sn": "Alabama",
+        "ln": "Alabama: Huntsville"
     },
     "939": {
-        "ln": "Puerto Rico",
-        "sn": "Puerto Rico"
+        "sn": "Puerto Rico",
+        "ln": "Puerto Rico"
     },
     "940": {
-        "ln": "Northern Texas: Vernon, Wichita Falls, Denton, Gainesville, Decatur",
-        "sn": "N Texas"
+        "sn": "N Texas",
+        "ln": "Northern Texas: Vernon, Wichita Falls, Denton, Gainesville, Decatur"
     },
     "941": {
-        "ln": "Southwestern Florida: Tampa Bay,Manatee County, Sarasota County, Charlotte County; Bradenton, Port Charlotte, Sarasota, Punta Gorda",
-        "sn": "SW Florida"
+        "sn": "SW Florida",
+        "ln": "Southwestern Florida: Tampa Bay,Manatee County, Sarasota County, Charlotte County; Bradenton, Port Charlotte, Sarasota, Punta Gorda"
     },
+    "942": {},
+    "943": {},
+    "944": {},
+    "945": {},
+    "946": {},
     "947": {
-        "ln": "Michigan",
-        "sn": "Michigan"
+        "sn": "Michigan",
+        "ln": "Michigan"
     },
+    "948": {},
     "949": {
-        "ln": "Southern California: Laguna Niguel, Irvine, Lake Forest, Newport Beach, Corona Del Mar",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Laguna Niguel, Irvine, Lake Forest, Newport Beach, Corona Del Mar"
     },
     "950": {
-        "ln": "Carrier Access",
-        "sn": "Carrier Access"
+        "sn": "Carrier Access",
+        "ln": "Carrier Access"
     },
     "951": {
-        "ln": "Southern California: Corona, Riverside, Temescal Canyon, Lake Elsinore, Mira Loma, Moreno Valley, Perris, Sun City, Murrieta, Temecula, Hemet, Winchester, Lakeview, Nuevo, Beaumont, Banning, Idyllwild",
-        "sn": "S California"
+        "sn": "S California",
+        "ln": "Southern California: Corona, Riverside, Temescal Canyon, Lake Elsinore, Mira Loma, Moreno Valley, Perris, Sun City, Murrieta, Temecula, Hemet, Winchester, Lakeview, Nuevo, Beaumont, Banning, Idyllwild"
     },
     "952": {
-        "ln": "Minnesota: Bloomington, Minnetonka, Chaska, Minneapolis",
-        "sn": "Minnesota"
+        "sn": "Minnesota",
+        "ln": "Minnesota: Bloomington, Minnetonka, Chaska, Minneapolis"
     },
+    "953": {},
     "954": {
-        "ln": "Southern Florida: Fort Lauderdale, Hollywood, Coral Springs",
-        "sn": "S Florida"
+        "sn": "S Florida",
+        "ln": "Southern Florida: Fort Lauderdale, Hollywood, Coral Springs"
     },
+    "955": {},
     "956": {
-        "ln": "Southern Texas: Laredo, Brownsville, McAllen, Harlingen",
-        "sn": "S Texas"
+        "sn": "S Texas",
+        "ln": "Southern Texas: Laredo, Brownsville, McAllen, Harlingen"
     },
+    "957": {},
+    "958": {},
     "959": {
-        "ln": "Connecticut",
-        "sn": "Connecticut"
+        "sn": "Connecticut",
+        "ln": "Connecticut"
     },
+    "960": {},
+    "961": {},
+    "962": {},
+    "963": {},
+    "964": {},
+    "965": {},
+    "966": {},
+    "967": {},
+    "968": {},
+    "969": {},
     "970": {
-        "ln": "Northern and Western Colorado: Aspen, Durango, Grand Junction, Fort Collins",
-        "sn": "NW Colorado"
+        "sn": "NW Colorado",
+        "ln": "Northern and Western Colorado: Aspen, Durango, Grand Junction, Fort Collins"
     },
     "971": {
-        "ln": "Northwestern Oregon: Portland, Salem, Hillsboro, Beaverton",
-        "sn": "NW Oregon"
+        "sn": "NW Oregon",
+        "ln": "Northwestern Oregon: Portland, Salem, Hillsboro, Beaverton"
     },
     "972": {
-        "ln": "Texas",
-        "sn": "Texas"
+        "sn": "Texas",
+        "ln": "Texas"
     },
     "973": {
-        "ln": "Northwestern New Jersey: Newark, Paterson",
-        "sn": "NW New Jersey"
+        "sn": "NW New Jersey",
+        "ln": "Northwestern New Jersey: Newark, Paterson"
     },
+    "974": {},
     "975": {
-        "ln": "Missouri",
-        "sn": "Missouri"
+        "sn": "Missouri",
+        "ln": "Missouri"
     },
+    "976": {},
+    "977": {},
     "978": {
-        "ln": "Northeastern Massachusetts: Fitchburg, Peabody",
-        "sn": "NE Massachusetts"
+        "sn": "NE Massachusetts",
+        "ln": "Northeastern Massachusetts: Fitchburg, Peabody"
     },
     "979": {
-        "ln": "Southeastern Texas: Wharton, Bryan, Bay City, College Station, Lake Jackson, La Grange",
-        "sn": "SE Texas"
+        "sn": "SE Texas",
+        "ln": "Southeastern Texas: Wharton, Bryan, Bay City, College Station, Lake Jackson, La Grange"
     },
     "980": {
-        "ln": "North Carolina",
-        "sn": "North Carolina"
+        "sn": "North Carolina",
+        "ln": "North Carolina"
     },
+    "981": {},
+    "982": {},
+    "983": {},
     "984": {
-        "ln": "North Carolina",
-        "sn": "North Carolina"
+        "sn": "North Carolina",
+        "ln": "North Carolina"
     },
     "985": {
-        "ln": "Southeastern Louisiana: Houma, Slidell",
-        "sn": "SE Louisiana"
+        "sn": "SE Louisiana",
+        "ln": "Southeastern Louisiana: Houma, Slidell"
     },
+    "986": {},
+    "987": {},
+    "988": {},
     "989": {
-        "ln": "Central Michigan: Alpena, Mt. Pleasant, Bay City, Saginaw, Midland, Owosso",
-        "sn": "Michigan"
-    }
+        "sn": "Michigan",
+        "ln": "Central Michigan: Alpena, Mt. Pleasant, Bay City, Saginaw, Midland, Owosso"
+    },
+    "990": {},
+    "991": {},
+    "992": {},
+    "993": {},
+    "994": {},
+    "995": {},
+    "996": {},
+    "997": {},
+    "998": {},
+    "999": {},
+    "^12..": {},
+    "^13..": {},
+    "^14..": {},
+    "^15..": {},
+    "^16..": {},
+    "^17..": {},
+    "^18..": {},
+    "^19..": {},
+    "2..": {},
+    "3..": {},
+    "4..": {},
+    "5..": {},
+    "6..": {},
+    "7..": {},
+    "8..": {},
+    "9..": {}
 }

@@ -1011,3 +1011,256 @@ function testPhoneNumLoadLocaleDataSynch() {
 	assertEquals(100, left.compare(right));
     ilib.setLoaderCallback(undefined);
 };
+
+var lookAheadStates = {
+    "s": [
+        0,
+        0,
+        0,
+        0,
+        {	// 4 -> area
+            "l": 7,
+            "s": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                { // 45 -> area
+                    "l": 7,
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        7	// 456 -> area
+                    ]
+                },
+                {  // 46
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        { // 465
+                            "s": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                { // 4655
+                                    "s": [
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        7	// 46555 -> area
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        { // ^
+            "s": [
+                12 // ^0 -> trunk
+            ]
+        }
+    ]
+};
+
+function testPhoneNumLookaheadRoot() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^04", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("4", left.areaCode);
+};
+
+function testPhoneNumLookaheadSubleaf1() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^045", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("45", left.areaCode);
+};
+
+function testPhoneNumLookaheadSubleaf2() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^0456", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("456", left.areaCode);
+};
+
+function testPhoneNumLookaheadSubleaf3() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^046555", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("46555", left.areaCode);
+};
+
+function testPhoneNumLookaheadFallback1() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	left.subscriberNumber = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^047", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("4", left.areaCode);
+	assertEquals("7", left.subscriberNumber);
+};
+
+function testPhoneNumLookaheadFallback2() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	left.subscriberNumber = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^046", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("4", left.areaCode);
+	assertEquals("6", left.subscriberNumber);
+};
+
+function testPhoneNumLookaheadFallback3() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	left.subscriberNumber = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^04655", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("4", left.areaCode);
+	assertEquals("655", left.subscriberNumber);
+};
+
+function testPhoneNumLookaheadFallback4() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	left.subscriberNumber = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^0457", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("45", left.areaCode);
+	assertEquals("7", left.subscriberNumber);
+};
+
+function testPhoneNumLookaheadFallback5() {
+	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	
+	left.trunkAccess = undefined;
+	left.areaCode = undefined;
+	left.subscriberNumber = undefined;
+	
+	// use custom states data to test lookahead parsing
+	regionData = { 
+		stateData: lookAheadStates,
+		plan: left.plan,
+		handler: ilib._handlerFactory(left.locale, left.plan)
+	};
+	
+	left._parseNumber("^0477", regionData, {sync: true});
+	
+	assertEquals("0", left.trunkAccess);
+	assertEquals("4", left.areaCode);
+	assertEquals("77", left.subscriberNumber);
+};

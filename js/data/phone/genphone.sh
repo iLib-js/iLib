@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export ILIB_HOME=../../..
 DEST=../locale
 
 rm localize.js

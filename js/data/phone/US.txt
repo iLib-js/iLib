@@ -1,7 +1,7 @@
 ^+	plus
 ^011	idd
-^00	idd	# for CFISH-6444, accept this foreign IDD, even though it is not valid so we can normalize it with assisted dialing
-^1.	trunk
+^00	idd	// for CFISH-6444, accept this foreign IDD, even though it is not valid so we can normalize it with assisted dialing
+^1	trunk
 
 ^101	cic
 

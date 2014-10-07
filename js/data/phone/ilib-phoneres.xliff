@@ -62211,20 +62211,28 @@
    <file datatype="javascript" original="ilib-phoneres" source-language="en-KR" target-language="fr-FR">
       <body>
          <trans-unit id="5446">
-            <source>Freephone services (Numéros Vert)</source>
-            <target>Services Freephone (Numéros Vert)</target>
+            <source>Freephone services (Numéros Verts)</source>
+            <target>Services Freephone (Numéros Verts)</target>
+         </trans-unit>
+         <trans-unit id="5447">
+            <source>Toll-free Number</source>
+            <target>Numéro gratuit</target>
+         </trans-unit>
+         <trans-unit id="5448">
+            <source>Toll-free Service (Numéros Verts)</source>
+            <target>Numéro gratuit (Numéros Verts)</target>
          </trans-unit>
          <trans-unit id="5457">
             <source>Toll call</source>
             <target>Appel payant</target>
          </trans-unit>
          <trans-unit id="5468">
-            <source>Toll calls (Numéros Azur)</source>
-            <target>Appel payant (Numéros Azur)</target>
+            <source>Toll call at local rates (Numéros Azurs)</source>
+            <target>Appel payant au tarif local (Numéros Azurs)</target>
          </trans-unit>
          <trans-unit id="5479">
-            <source>Toll calls (Numéros Indigo)</source>
-            <target>Appel payant (Numéros Indigo)</target>
+            <source>Toll call (Numéros Indigos)</source>
+            <target>Appel payant (Numéros Indigos)</target>
          </trans-unit>
          <trans-unit id="5576">
             <source>Genoa, Moncalieri</source>
@@ -62289,6 +62297,26 @@
          <trans-unit id="82790">
             <source>Mobile Number</source>
             <target>Numéro de mobile</target>
+         </trans-unit>
+         <trans-unit id="82791">
+            <source>Mobile Number in Mayotte</source>
+            <target>Numéro de mobile en Mayotte</target>
+         </trans-unit>
+         <trans-unit id="82792">
+            <source>Mobile Number in Guadeloupe, Saint-Barthélemy or Saint-Martin Islands</source>
+            <target>Numéro de mobile en les Îles de Guadeloupe, Saint-Barthélemy ou Saint-Martin</target>
+         </trans-unit>
+         <trans-unit id="82793">
+            <source>Mobile Number in Réunion</source>
+            <target>Numéro de mobile en Réunion</target>
+         </trans-unit>
+         <trans-unit id="82794">
+            <source>Mobile Number in French Guiana</source>
+            <target>Numéro de mobile en Guyane</target>
+         </trans-unit>
+         <trans-unit id="82795">
+            <source>Mobile Number in Martinique</source>
+            <target>Numéro de mobile en Martinique</target>
          </trans-unit>
          <trans-unit id="82801">
             <source>Service Number</source>

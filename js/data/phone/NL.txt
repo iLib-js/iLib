@@ -1,6 +1,6 @@
 ﻿^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 10	area	Rotterdam	Rotterdam
 111	area	Zierikzee	Zierikzee
@@ -159,7 +159,7 @@
 900	premium
 906	premium
 909	premium
-91		premium
+91	premium
 
 ^10	service	open services
 ^112	emergency

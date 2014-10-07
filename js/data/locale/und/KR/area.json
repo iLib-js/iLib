@@ -1,74 +1,74 @@
 {
     "2": {
-        "ln": "Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)",
-        "sn": "Seoul"
+        "sn": "Seoul",
+        "ln": "Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)"
     },
     "31": {
-        "ln": "Gyeonggi-do",
-        "sn": "Gyeonggi-do"
+        "sn": "Gyeonggi-do",
+        "ln": "Gyeonggi-do"
     },
     "32": {
-        "ln": "Incheon and parts of Gyeonggi-do (Bucheon and some insular communities of Ansan)",
-        "sn": "Incheon"
+        "sn": "Incheon",
+        "ln": "Incheon and parts of Gyeonggi-do (Bucheon and some insular communities of Ansan)"
     },
     "33": {
-        "ln": "Gangwon-do",
-        "sn": "Gangwon-do"
+        "sn": "Gangwon-do",
+        "ln": "Gangwon-do"
     },
     "41": {
-        "ln": "Chungcheongnam-do",
-        "sn": "Chungcheongnam-do"
+        "sn": "Chungcheongnam-do",
+        "ln": "Chungcheongnam-do"
     },
     "42": {
-        "ln": "Daejeon and a part of Chungcheongnam-do (Gyeryong)",
-        "sn": "Daejeon"
+        "sn": "Daejeon",
+        "ln": "Daejeon and a part of Chungcheongnam-do (Gyeryong)"
     },
     "43": {
-        "ln": "Chungcheongbuk-do",
-        "sn": "Chungcheongbuk-do"
+        "sn": "Chungcheongbuk-do",
+        "ln": "Chungcheongbuk-do"
     },
     "44": {
-        "ln": "Sejong City",
-        "sn": "Sejong City"
+        "sn": "Sejong City",
+        "ln": "Sejong City"
     },
     "49": {
-        "ln": "Kaesong Industrial Region",
-        "sn": "Kaesong"
+        "sn": "Kaesong",
+        "ln": "Kaesong Industrial Region"
     },
     "51": {
-        "ln": "Busan",
-        "sn": "Busan"
+        "sn": "Busan",
+        "ln": "Busan"
     },
     "52": {
-        "ln": "Ulsan",
-        "sn": "Ulsan"
+        "sn": "Ulsan",
+        "ln": "Ulsan"
     },
     "53": {
-        "ln": "Daegu and a part of Gyeongsangbuk-do (Gyeongsan)",
-        "sn": "Daegu"
+        "sn": "Daegu",
+        "ln": "Daegu and a part of Gyeongsangbuk-do (Gyeongsan)"
     },
     "54": {
-        "ln": "Gyeongsangbuk-do",
-        "sn": "Gyeongsangbuk-do"
+        "sn": "Gyeongsangbuk-do",
+        "ln": "Gyeongsangbuk-do"
     },
     "55": {
-        "ln": "Gyeongsangnam-do and a few neighborhoods of Ulsan",
-        "sn": "Gyeongsangnam-do"
+        "sn": "Gyeongsangnam-do",
+        "ln": "Gyeongsangnam-do and a few neighborhoods of Ulsan"
     },
     "61": {
-        "ln": "Jeollanam-do",
-        "sn": "Jeollanam-do"
+        "sn": "Jeollanam-do",
+        "ln": "Jeollanam-do"
     },
     "62": {
-        "ln": "Gwangju",
-        "sn": "Gwangju"
+        "sn": "Gwangju",
+        "ln": "Gwangju"
     },
     "63": {
-        "ln": "Jeollabuk-do",
-        "sn": "Jeollabuk-do"
+        "sn": "Jeollabuk-do",
+        "ln": "Jeollabuk-do"
     },
     "64": {
-        "ln": "Jeju-do",
-        "sn": "Jeju-do"
+        "sn": "Jeju-do",
+        "ln": "Jeju-do"
     }
 }

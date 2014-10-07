@@ -70,7 +70,7 @@ function testParseINIgnoreCrap(){
 	
 };
 
-function testParseLocalNumber(){
+function testParseINLocalNumber(){
 	var parsed = new ilib.PhoneNumber("37654321", {locale: "en-IN"});
 	assertNotUndefined(parsed);
 	
@@ -82,7 +82,7 @@ function testParseLocalNumber(){
 	
 };
 
-function testParseInvalidLocalNumber(){
+function testParseINInvalidLocalNumber(){
 	var parsed = new ilib.PhoneNumber("8765432100", {locale: "en-IN"});
 	assertNotUndefined(parsed);
 	
@@ -124,7 +124,7 @@ function testParseINMobileNumberFromIntl(){
 	
 };
 
-function testParseCic(){
+function testParseINCic(){
 	var parsed = new ilib.PhoneNumber("01054 80123 45678", {locale: "en-IN"});
 	assertNotUndefined(parsed);
 	

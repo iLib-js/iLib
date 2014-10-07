@@ -1,6 +1,6 @@
 ^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 0	trunk
 
@@ -37,13 +37,13 @@
 34.	service
 37.	service
 
-55	service	// for corporate numbering
-56	service	// for corporate numbering
+55	service	for corporate numbering
+56	service	for corporate numbering
 500	service
 
 800	service
 808	service
-820	service	//Internet for Schools
+820	service	Internet for Schools
 845	service
 844	service
 843	service

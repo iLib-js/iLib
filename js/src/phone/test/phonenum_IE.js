@@ -85,7 +85,7 @@ function testParseIENoAreaCode(){
 	
 };
 
-function testParseLocalInvalidNumber(){
+function testParseIELocalInvalidNumber(){
 	var parsed = new ilib.PhoneNumber("12345678", {locale: "en-IE"});
 	assertNotUndefined(parsed);
 	
@@ -356,7 +356,7 @@ function testParseIEPartial9(){
 };
 
 // for CFISH-5426
-function testParseEmergencyNumber(){
+function testParseIEEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("999", {locale: "en-IE"});
 	assertNotUndefined(parsed);
 	

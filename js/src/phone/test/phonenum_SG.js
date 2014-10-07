@@ -18,7 +18,7 @@
  */
 
 // for bug NOV-118901
-function testLocalNumber(){
+function testSGLocalNumber(){
 	var parsed = new ilib.PhoneNumber("93897077", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -29,7 +29,7 @@ function testLocalNumber(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testFromIntl(){
+function testSGFromIntl(){
 	var parsed = new ilib.PhoneNumber("+6593897077", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -42,7 +42,7 @@ function testFromIntl(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testLocalNumberWithMCC(){
+function testSGLocalNumberWithMCC(){
 	var parsed = new ilib.PhoneNumber("83897077", {locale: "en-US", mcc: "525"});
 	assertNotUndefined(parsed);
 	
@@ -54,7 +54,7 @@ function testLocalNumberWithMCC(){
 	
 };
 
-function testParseLocalNumber(){
+function testParseSGLocalNumber(){
 	var parsed = new ilib.PhoneNumber("6123 4567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -66,7 +66,7 @@ function testParseLocalNumber(){
 	
 };
 
-function testParseIgnoreFormatting(){
+function testParseSGIgnoreFormatting(){
 	var parsed = new ilib.PhoneNumber("62-34-56-78", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -78,7 +78,7 @@ function testParseIgnoreFormatting(){
 	
 };
 
-function testParseIgnoreCrap(){
+function testParseSGIgnoreCrap(){
 	var parsed = new ilib.PhoneNumber("6!1@2$3-^4&5(6)7", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -90,7 +90,7 @@ function testParseIgnoreCrap(){
 	
 };
 
-function testParseServiceCode(){
+function testParseSGServiceCode(){
 	var parsed = new ilib.PhoneNumber("1800 345 6789", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -103,7 +103,7 @@ function testParseServiceCode(){
 	
 };
 
-function testParseMobileNumber(){
+function testParseSGMobileNumber(){
 	var parsed = new ilib.PhoneNumber("81234567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -115,7 +115,7 @@ function testParseMobileNumber(){
 	
 };
 
-function testParsePlusIDDToUS(){
+function testParseSGPlusIDDToUS(){
 	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -130,7 +130,7 @@ function testParsePlusIDDToUS(){
 	
 };
 
-function testParseZerosIDDToUS(){
+function testParseSGZerosIDDToUS(){
 	var parsed = new ilib.PhoneNumber("00112028675309", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -145,7 +145,7 @@ function testParseZerosIDDToUS(){
 	
 };
 
-function testParseEmergencyNumber(){
+function testParseSGEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("999", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -157,7 +157,7 @@ function testParseEmergencyNumber(){
 	
 };
 
-function testParsePartial1(){
+function testParseSGPartial1(){
 	var parsed = new ilib.PhoneNumber("6", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -169,7 +169,7 @@ function testParsePartial1(){
 	
 };
 
-function testParsePartial2(){
+function testParseSGPartial2(){
 	var parsed = new ilib.PhoneNumber("61", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -180,7 +180,7 @@ function testParsePartial2(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial3(){
+function testParseSGPartial3(){
 	var parsed = new ilib.PhoneNumber("612", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -191,7 +191,7 @@ function testParsePartial3(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial4(){
+function testParseSGPartial4(){
 	var parsed = new ilib.PhoneNumber("6123", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -202,7 +202,7 @@ function testParsePartial4(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial5(){
+function testParseSGPartial5(){
 	var parsed = new ilib.PhoneNumber("6123 4", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -213,7 +213,7 @@ function testParsePartial5(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial6(){
+function testParseSGPartial6(){
 	var parsed = new ilib.PhoneNumber("6123 45", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -224,7 +224,7 @@ function testParsePartial6(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial7(){
+function testParseSGPartial7(){
 	var parsed = new ilib.PhoneNumber("6123 456", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -235,7 +235,7 @@ function testParsePartial7(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial8(){
+function testParseSGPartial8(){
 	var parsed = new ilib.PhoneNumber("6123 4567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -246,7 +246,7 @@ function testParsePartial8(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial9(){
+function testParseSGPartial9(){
 	var parsed = new ilib.PhoneNumber("6123 4567 8", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
@@ -258,7 +258,7 @@ function testParsePartial9(){
 	
 };
 
-function testParseWithUSMCC(){
+function testParseSGWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -271,7 +271,7 @@ function testParseWithUSMCC(){
 	
 };
 
-function testParseWithFRMCC(){
+function testParseSGWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -283,7 +283,7 @@ function testParseWithFRMCC(){
 	
 };
 
-function testParseWithMXMCC(){
+function testParseSGWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -296,7 +296,7 @@ function testParseWithMXMCC(){
 	
 };
 
-function testParseWithDEMCC(){
+function testParseSGWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -308,12 +308,13 @@ function testParseWithDEMCC(){
 	
 };
 
-function testParseWithGBMCC(){
+function testParseSGWithGBMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "235"});
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "6153222313"
+		subscriberNumber: "6153222313",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));

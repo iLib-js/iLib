@@ -1,842 +1,838 @@
 {
-    "320.": {
-        "ln": "Gore",
-        "sn": "Gore"
-    },
-    "3206": {
-        "ln": "Edendale",
-        "sn": "Edendale"
-    },
-    "321": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "322.": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "3225": {
-        "ln": "Otautau",
-        "sn": "Otautau"
-    },
-    "3226": {
-        "ln": "Otautau",
-        "sn": "Otautau"
-    },
-    "323.": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "3234": {
-        "ln": "Riverton",
-        "sn": "Riverton"
-    },
-    "3236.": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "32362.": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "323620": {
-        "ln": "Winton",
-        "sn": "Winton"
-    },
-    "324621": {
-        "ln": "Tokanui",
-        "sn": "Tokanui"
-    },
-    "3248": {
-        "ln": "Lumsden",
-        "sn": "Lumsden"
-    },
-    "3249": {
-        "ln": "Te Anau",
-        "sn": "Te Anau"
-    },
-    "33.": {
-        "ln": "Christchurch",
-        "sn": "Christchurch"
-    },
-    "330.": {
-        "ln": "Ashburton",
-        "sn": "Ashburton"
-    },
-    "3304": {
-        "ln": "Akaroa",
-        "sn": "Akaroa"
-    },
-    "3305": {
-        "ln": "Waitangi",
-        "sn": "Waitangi"
-    },
-    "331.": {
-        "ln": "Rangiora",
-        "sn": "Rangiora"
-    },
-    "3314": {
-        "ln": "Amberley",
-        "sn": "Amberley"
-    },
-    "3315": {
-        "ln": "Culverden",
-        "sn": "Culverden"
-    },
-    "3317": {
-        "ln": "Darfield",
-        "sn": "Darfield"
-    },
-    "3318": {
-        "ln": "Darfield",
-        "sn": "Darfield"
-    },
-    "3319": {
-        "ln": "Cheviot",
-        "sn": "Cheviot"
-    },
-    "341.": {
-        "ln": "Balclutha",
-        "sn": "Balclutha"
-    },
-    "3417": {
-        "ln": "Milton",
-        "sn": "Milton"
-    },
-    "343.": {
-        "ln": "Oamaru",
-        "sn": "Oamaru"
-    },
-    "3430": {
-        "ln": "Mount Cook",
-        "sn": "Mount Cook"
-    },
-    "3435": {
-        "ln": "Twizel",
-        "sn": "Twizel"
-    },
-    "3436": {
-        "ln": "Kurow",
-        "sn": "Kurow"
-    },
-    "3438": {
-        "ln": "Kurow",
-        "sn": "Kurow"
-    },
-    "344.": {
-        "ln": "Alexandra",
-        "sn": "Alexandra"
-    },
-    "3441": {
-        "ln": "Queenstown",
-        "sn": "Queenstown"
-    },
-    "3442": {
-        "ln": "Queenstown",
-        "sn": "Queenstown"
-    },
-    "3443": {
-        "ln": "Wanaka",
-        "sn": "Wanaka"
-    },
-    "3444": {
-        "ln": "Ranfurly",
-        "sn": "Ranfurly"
-    },
-    "3445": {
-        "ln": "Cromwell",
-        "sn": "Cromwell"
-    },
-    "3446": {
-        "ln": "Roxburgh",
-        "sn": "Roxburgh"
-    },
-    "345": {
-        "ln": "Dunedin",
-        "sn": "Dunedin"
-    },
-    "346.": {
-        "ln": "Dunedin",
-        "sn": "Dunedin"
-    },
-    "3465": {
-        "ln": "Palmerston",
-        "sn": "Palmerston"
-    },
-    "347": {
-        "ln": "Dunedin",
-        "sn": "Dunedin"
-    },
-    "348.": {
-        "ln": "Dunedin",
-        "sn": "Dunedin"
-    },
-    "3485": {
-        "ln": "Lawrence",
-        "sn": "Lawrence"
-    },
-    "3520": {
-        "ln": "Blenheim",
-        "sn": "Blenheim"
-    },
-    "3521": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "3522": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "3523": {
-        "ln": "Murchison",
-        "sn": "Murchison"
-    },
-    "3524": {
-        "ln": "Takaka",
-        "sn": "Takaka"
-    },
-    "3525": {
-        "ln": "Takaka",
-        "sn": "Takaka"
-    },
-    "3526": {
-        "ln": "Motueka",
-        "sn": "Motueka"
-    },
-    "3527": {
-        "ln": "Motueka",
-        "sn": "Motueka"
-    },
-    "3528": {
-        "ln": "Motueka",
-        "sn": "Motueka"
-    },
-    "3529": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "353": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "354": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "357.": {
-        "ln": "Blenheim",
-        "sn": "Blenheim"
-    },
-    "3571": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "3576": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "361": {
-        "ln": "Timaru",
-        "sn": "Timaru"
-    },
-    "368.": {
-        "ln": "Timaru",
-        "sn": "Timaru"
-    },
-    "3680": {
-        "ln": "Fairlie",
-        "sn": "Fairlie"
-    },
-    "3685": {
-        "ln": "Fairlie",
-        "sn": "Fairlie"
-    },
-    "3689": {
-        "ln": "Waimate",
-        "sn": "Waimate"
-    },
-    "369": {
-        "ln": "Geraldine",
-        "sn": "Geraldine"
-    },
-    "373": {
-        "ln": "Greymouth",
-        "sn": "Greymouth"
-    },
-    "375.": {
-        "ln": "Hokitika",
-        "sn": "Hokitika"
-    },
-    "3750": {
-        "ln": "Haast",
-        "sn": "Haast"
-    },
-    "3751": {
-        "ln": "Fox Glacier",
-        "sn": "Fox Glacier"
-    },
-    "3752": {
-        "ln": "Franz Josef",
-        "sn": "Franz Josef"
-    },
-    "376": {
-        "ln": "Greymouth",
-        "sn": "Greymouth"
-    },
-    "378": {
-        "ln": "Westport",
-        "sn": "Westport"
-    },
-    "394": {
-        "ln": "Invercargill",
-        "sn": "Invercargill"
-    },
-    "395.": {
-        "ln": "Dunedin",
-        "sn": "Dunedin"
-    },
-    "3956": {
-        "ln": "Timaru",
-        "sn": "Timaru"
-    },
-    "396": {
-        "ln": "Christchurch",
-        "sn": "Christchurch"
-    },
-    "397": {
-        "ln": "Christchurch",
-        "sn": "Christchurch"
-    },
-    "398.": {
-        "ln": "Christchurch",
-        "sn": "Christchurch"
-    },
-    "3984": {
-        "ln": "Blenheim",
-        "sn": "Blenheim"
-    },
-    "3989": {
-        "ln": "Nelson",
-        "sn": "Nelson"
-    },
-    "420.": {
-        "ln": "Wellington",
-        "sn": "Wellington"
-    },
-    "4201": {
-        "ln": "Paraparaumu",
-        "sn": "Paraparaumu"
-    },
-    "423": {
-        "ln": "Wellington",
-        "sn": "Wellington"
-    },
-    "429": {
-        "ln": "Paraparaumu",
-        "sn": "Paraparaumu"
+    "33": {
+        "sn": "Christchurch",
+        "ln": "Christchurch"
     },
     "43": {
-        "ln": "Wellington",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
     "44": {
-        "ln": "Wellington",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
     "45": {
-        "ln": "Wellington",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
     "46": {
-        "ln": "Wellington",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
     "48": {
-        "ln": "Wellington",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
-    "49.": {
-        "ln": "Wellington",
-        "sn": "Wellington"
-    },
-    "490": {
-        "ln": "Paraparaumu",
-        "sn": "Paraparaumu"
+    "49": {
+        "sn": "Wellington",
+        "ln": "Wellington"
     },
     "62": {
-        "ln": "Hawera",
-        "sn": "Hawera"
+        "sn": "Hawera",
+        "ln": "Hawera"
     },
-    "630": {
-        "ln": "Featherston",
-        "sn": "Featherston"
-    },
-    "6321": {
-        "ln": "Marton",
-        "sn": "Marton"
-    },
-    "6322": {
-        "ln": "Marton",
-        "sn": "Marton"
-    },
-    "6323": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6324": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6325": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6326": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6327": {
-        "ln": "Marton",
-        "sn": "Marton"
-    },
-    "6328": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6329": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "634": {
-        "ln": "Wanganui",
-        "sn": "Wanganui"
-    },
-    "635": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "636.": {
-        "ln": "Levin",
-        "sn": "Levin"
-    },
-    "6362": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "637.": {
-        "ln": "Masterton",
-        "sn": "Masterton"
-    },
-    "6374": {
-        "ln": "Dannevirke",
-        "sn": "Dannevirke"
-    },
-    "6375": {
-        "ln": "Pahiatua",
-        "sn": "Pahiatua"
-    },
-    "6376": {
-        "ln": "Pahiatua",
-        "sn": "Pahiatua"
-    },
-    "638.": {
-        "ln": "Taihape",
-        "sn": "Taihape"
-    },
-    "6385": {
-        "ln": "Ohakune",
-        "sn": "Ohakune"
-    },
-    "6387": {
-        "ln": "Waiouru",
-        "sn": "Waiouru"
-    },
-    "675.": {
-        "ln": "New Plymouth",
-        "sn": "New Plymouth"
-    },
-    "6750": {
-        "ln": "Mokau",
-        "sn": "Mokau"
-    },
-    "676.": {
-        "ln": "Stratford",
-        "sn": "Stratford"
-    },
-    "6761": {
-        "ln": "Opunake",
-        "sn": "Opunake"
-    },
-    "6763": {
-        "ln": "Opunake",
-        "sn": "Opunake"
-    },
-    "6769": {
-        "ln": "New Plymouth",
-        "sn": "New Plymouth"
-    },
-    "683": {
-        "ln": "Napier",
-        "sn": "Napier"
-    },
-    "684": {
-        "ln": "Napier",
-        "sn": "Napier"
-    },
-    "685": {
-        "ln": "Waipukurau",
-        "sn": "Waipukurau"
-    },
-    "686.": {
-        "ln": "Gisborne",
-        "sn": "Gisborne"
-    },
-    "6864": {
-        "ln": "Ruatoria",
-        "sn": "Ruatoria"
-    },
-    "687": {
-        "ln": "Napier",
-        "sn": "Napier"
-    },
-    "6946": {
-        "ln": "Masterton",
-        "sn": "Masterton"
-    },
-    "6949": {
-        "ln": "Levin",
-        "sn": "Levin"
-    },
-    "695": {
-        "ln": "Palmerston North",
-        "sn": "Palmerston North"
-    },
-    "6965": {
-        "ln": "Wanganui",
-        "sn": "Wanganui"
-    },
-    "6968": {
-        "ln": "New Plymouth",
-        "sn": "New Plymouth"
-    },
-    "6970": {
-        "ln": "New Plymouth",
-        "sn": "New Plymouth"
-    },
-    "6974": {
-        "ln": "Napier",
-        "sn": "Napier"
-    },
-    "6980": {
-        "ln": "Napier",
-        "sn": "Napier"
-    },
-    "6986": {
-        "ln": "Gisborne",
-        "sn": "Gisborne"
-    },
-    "73.": {
-        "ln": "Rotorua",
-        "sn": "Rotorua"
-    },
-    "730": {
-        "ln": "Whakatane",
-        "sn": "Whakatane"
-    },
-    "7312": {
-        "ln": "Whakatane",
-        "sn": "Whakatane"
-    },
-    "7315": {
-        "ln": "Opotiki",
-        "sn": "Opotiki"
-    },
-    "732.": {
-        "ln": "Whakatane",
-        "sn": "Whakatane"
-    },
-    "7325": {
-        "ln": "Opotiki",
-        "sn": "Opotiki"
-    },
-    "737": {
-        "ln": "Taupo",
-        "sn": "Taupo"
-    },
-    "738": {
-        "ln": "Taupo",
-        "sn": "Taupo"
+    "73": {
+        "sn": "Rotorua",
+        "ln": "Rotorua"
     },
     "75": {
-        "ln": "Tauranga",
-        "sn": "Tauranga"
+        "sn": "Tauranga",
+        "ln": "Tauranga"
     },
-    "782.": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "7826": {
-        "ln": "Huntly",
-        "sn": "Huntly"
-    },
-    "7828": {
-        "ln": "Huntly",
-        "sn": "Huntly"
-    },
-    "783": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "784": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "785": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "786.": {
-        "ln": "Thames",
-        "sn": "Thames"
-    },
-    "7862": {
-        "ln": "Paeroa",
-        "sn": "Paeroa"
-    },
-    "7863": {
-        "ln": "Waihi",
-        "sn": "Waihi"
-    },
-    "7865": {
-        "ln": "Whangamata",
-        "sn": "Whangamata"
-    },
-    "787": {
-        "ln": "Te Kuiti",
-        "sn": "Te Kuiti"
-    },
-    "787.": {
-        "ln": "Te Awamutu",
-        "sn": "Te Awamutu"
-    },
-    "7873": {
-        "ln": "Otorohanga",
-        "sn": "Otorohanga"
-    },
-    "7880": {
-        "ln": "Matamata",
-        "sn": "Matamata"
-    },
-    "7881": {
-        "ln": "Matamata",
-        "sn": "Matamata"
-    },
-    "7882": {
-        "ln": "Putaruru",
-        "sn": "Putaruru"
-    },
-    "7883": {
-        "ln": "Putaruru",
-        "sn": "Putaruru"
-    },
-    "7884": {
-        "ln": "Morrinsville",
-        "sn": "Morrinsville"
-    },
-    "7885": {
-        "ln": "Putaruru",
-        "sn": "Putaruru"
-    },
-    "7886": {
-        "ln": "Putaruru",
-        "sn": "Putaruru"
-    },
-    "7887": {
-        "ln": "Morrinsville",
-        "sn": "Morrinsville"
-    },
-    "7888": {
-        "ln": "Matamata",
-        "sn": "Matamata"
-    },
-    "7889": {
-        "ln": "Morrinsville",
-        "sn": "Morrinsville"
-    },
-    "789": {
-        "ln": "Taumarunui",
-        "sn": "Taumarunui"
-    },
-    "790": {
-        "ln": "Taupo",
-        "sn": "Taupo"
-    },
-    "791": {
-        "ln": "Rotorua",
-        "sn": "Rotorua"
-    },
-    "792.": {
-        "ln": "Rotorua",
-        "sn": "Rotorua"
-    },
-    "7922": {
-        "ln": "Whakatane",
-        "sn": "Whakatane"
-    },
-    "7928": {
-        "ln": "Tauranga",
-        "sn": "Tauranga"
-    },
-    "793": {
-        "ln": "Tauranga",
-        "sn": "Tauranga"
-    },
-    "795": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "797": {
-        "ln": "Hamilton",
-        "sn": "Hamilton"
-    },
-    "92.": {
-        "ln": "Auckland",
-        "sn": "Auckland"
-    },
-    "923": {
-        "ln": "Pukekohe",
-        "sn": "Pukekohe"
+    "92": {
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
     "93": {
-        "ln": "Auckland",
-        "sn": "Auckland"
-    },
-    "9401": {
-        "ln": "Kaikohe",
-        "sn": "Kaikohe"
-    },
-    "9402": {
-        "ln": "Kawakawa",
-        "sn": "Kawakawa"
-    },
-    "9403": {
-        "ln": "Kawakawa",
-        "sn": "Kawakawa"
-    },
-    "9404": {
-        "ln": "Kawakawa",
-        "sn": "Kawakawa"
-    },
-    "9405": {
-        "ln": "Kaikohe",
-        "sn": "Kaikohe"
-    },
-    "9406": {
-        "ln": "Kaitaia",
-        "sn": "Kaitaia"
-    },
-    "9407": {
-        "ln": "Kaikohe",
-        "sn": "Kaikohe"
-    },
-    "9408": {
-        "ln": "Kaitaia",
-        "sn": "Kaitaia"
-    },
-    "9409": {
-        "ln": "Kaitaia",
-        "sn": "Kaitaia"
-    },
-    "941": {
-        "ln": "Auckland",
-        "sn": "Auckland"
-    },
-    "9420": {
-        "ln": "Helensville",
-        "sn": "Helensville"
-    },
-    "9422": {
-        "ln": "Warkworth",
-        "sn": "Warkworth"
-    },
-    "9423": {
-        "ln": "Warkworth",
-        "sn": "Warkworth"
-    },
-    "9424": {
-        "ln": "Hibiscus Coast",
-        "sn": "Hibiscus Coast"
-    },
-    "9425": {
-        "ln": "Warkworth",
-        "sn": "Warkworth"
-    },
-    "9426": {
-        "ln": "Hibiscus Coast",
-        "sn": "Hibiscus Coast"
-    },
-    "9427": {
-        "ln": "Hibiscus Coast",
-        "sn": "Hibiscus Coast"
-    },
-    "9428": {
-        "ln": "Hibiscus Coast",
-        "sn": "Hibiscus Coast"
-    },
-    "9429": {
-        "ln": "Great Barrier Island",
-        "sn": "Great Barrier Island"
-    },
-    "943.": {
-        "ln": "Whangarei",
-        "sn": "Whangarei"
-    },
-    "9431": {
-        "ln": "Maungaturoto",
-        "sn": "Maungaturoto"
-    },
-    "9439": {
-        "ln": "Dargaville",
-        "sn": "Dargaville"
-    },
-    "944": {
-        "ln": "Auckland",
-        "sn": "Auckland"
-    },
-    "945": {
-        "ln": "Whangarei",
-        "sn": "Whangarei"
-    },
-    "947": {
-        "ln": "Auckland",
-        "sn": "Auckland"
-    },
-    "948": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
     "95": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
     "96": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
     "98": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
-    "99.": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+    "99": {
+        "sn": "Auckland",
+        "ln": "Auckland"
     },
-    "998.": {
-        "ln": "Auckland",
-        "sn": "Auckland"
+    "320": {
+        "sn": "Gore",
+        "ln": "Gore"
+    },
+    "321": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "322": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "323": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "330": {
+        "sn": "Ashburton",
+        "ln": "Ashburton"
+    },
+    "331": {
+        "sn": "Rangiora",
+        "ln": "Rangiora"
+    },
+    "341": {
+        "sn": "Balclutha",
+        "ln": "Balclutha"
+    },
+    "343": {
+        "sn": "Oamaru",
+        "ln": "Oamaru"
+    },
+    "344": {
+        "sn": "Alexandra",
+        "ln": "Alexandra"
+    },
+    "345": {
+        "sn": "Dunedin",
+        "ln": "Dunedin"
+    },
+    "346": {
+        "sn": "Dunedin",
+        "ln": "Dunedin"
+    },
+    "347": {
+        "sn": "Dunedin",
+        "ln": "Dunedin"
+    },
+    "348": {
+        "sn": "Dunedin",
+        "ln": "Dunedin"
+    },
+    "353": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "354": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "357": {
+        "sn": "Blenheim",
+        "ln": "Blenheim"
+    },
+    "361": {
+        "sn": "Timaru",
+        "ln": "Timaru"
+    },
+    "368": {
+        "sn": "Timaru",
+        "ln": "Timaru"
+    },
+    "369": {
+        "sn": "Geraldine",
+        "ln": "Geraldine"
+    },
+    "373": {
+        "sn": "Greymouth",
+        "ln": "Greymouth"
+    },
+    "375": {
+        "sn": "Hokitika",
+        "ln": "Hokitika"
+    },
+    "376": {
+        "sn": "Greymouth",
+        "ln": "Greymouth"
+    },
+    "378": {
+        "sn": "Westport",
+        "ln": "Westport"
+    },
+    "394": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "395": {
+        "sn": "Dunedin",
+        "ln": "Dunedin"
+    },
+    "396": {
+        "sn": "Christchurch",
+        "ln": "Christchurch"
+    },
+    "397": {
+        "sn": "Christchurch",
+        "ln": "Christchurch"
+    },
+    "398": {
+        "sn": "Christchurch",
+        "ln": "Christchurch"
+    },
+    "420": {
+        "sn": "Wellington",
+        "ln": "Wellington"
+    },
+    "423": {
+        "sn": "Wellington",
+        "ln": "Wellington"
+    },
+    "429": {
+        "sn": "Paraparaumu",
+        "ln": "Paraparaumu"
+    },
+    "490": {
+        "sn": "Paraparaumu",
+        "ln": "Paraparaumu"
+    },
+    "630": {
+        "sn": "Featherston",
+        "ln": "Featherston"
+    },
+    "634": {
+        "sn": "Wanganui",
+        "ln": "Wanganui"
+    },
+    "635": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "636": {
+        "sn": "Levin",
+        "ln": "Levin"
+    },
+    "637": {
+        "sn": "Masterton",
+        "ln": "Masterton"
+    },
+    "638": {
+        "sn": "Taihape",
+        "ln": "Taihape"
+    },
+    "675": {
+        "sn": "New Plymouth",
+        "ln": "New Plymouth"
+    },
+    "676": {
+        "sn": "Stratford",
+        "ln": "Stratford"
+    },
+    "683": {
+        "sn": "Napier",
+        "ln": "Napier"
+    },
+    "684": {
+        "sn": "Napier",
+        "ln": "Napier"
+    },
+    "685": {
+        "sn": "Waipukurau",
+        "ln": "Waipukurau"
+    },
+    "686": {
+        "sn": "Gisborne",
+        "ln": "Gisborne"
+    },
+    "687": {
+        "sn": "Napier",
+        "ln": "Napier"
+    },
+    "695": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "730": {
+        "sn": "Whakatane",
+        "ln": "Whakatane"
+    },
+    "732": {
+        "sn": "Whakatane",
+        "ln": "Whakatane"
+    },
+    "737": {
+        "sn": "Taupo",
+        "ln": "Taupo"
+    },
+    "738": {
+        "sn": "Taupo",
+        "ln": "Taupo"
+    },
+    "782": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "783": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "784": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "785": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "786": {
+        "sn": "Thames",
+        "ln": "Thames"
+    },
+    "787": {
+        "sn": "Te Kuiti",
+        "ln": "Te Kuiti"
+    },
+    "789": {
+        "sn": "Taumarunui",
+        "ln": "Taumarunui"
+    },
+    "790": {
+        "sn": "Taupo",
+        "ln": "Taupo"
+    },
+    "791": {
+        "sn": "Rotorua",
+        "ln": "Rotorua"
+    },
+    "792": {
+        "sn": "Rotorua",
+        "ln": "Rotorua"
+    },
+    "793": {
+        "sn": "Tauranga",
+        "ln": "Tauranga"
+    },
+    "795": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "797": {
+        "sn": "Hamilton",
+        "ln": "Hamilton"
+    },
+    "923": {
+        "sn": "Pukekohe",
+        "ln": "Pukekohe"
+    },
+    "941": {
+        "sn": "Auckland",
+        "ln": "Auckland"
+    },
+    "943": {
+        "sn": "Whangarei",
+        "ln": "Whangarei"
+    },
+    "944": {
+        "sn": "Auckland",
+        "ln": "Auckland"
+    },
+    "945": {
+        "sn": "Whangarei",
+        "ln": "Whangarei"
+    },
+    "947": {
+        "sn": "Auckland",
+        "ln": "Auckland"
+    },
+    "948": {
+        "sn": "Auckland",
+        "ln": "Auckland"
+    },
+    "998": {
+        "sn": "Auckland",
+        "ln": "Auckland"
+    },
+    "3206": {
+        "sn": "Edendale",
+        "ln": "Edendale"
+    },
+    "3225": {
+        "sn": "Otautau",
+        "ln": "Otautau"
+    },
+    "3226": {
+        "sn": "Otautau",
+        "ln": "Otautau"
+    },
+    "3234": {
+        "sn": "Riverton",
+        "ln": "Riverton"
+    },
+    "3236": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "3248": {
+        "sn": "Lumsden",
+        "ln": "Lumsden"
+    },
+    "3249": {
+        "sn": "Te Anau",
+        "ln": "Te Anau"
+    },
+    "3304": {
+        "sn": "Akaroa",
+        "ln": "Akaroa"
+    },
+    "3305": {
+        "sn": "Waitangi",
+        "ln": "Waitangi"
+    },
+    "3314": {
+        "sn": "Amberley",
+        "ln": "Amberley"
+    },
+    "3315": {
+        "sn": "Culverden",
+        "ln": "Culverden"
+    },
+    "3317": {
+        "sn": "Darfield",
+        "ln": "Darfield"
+    },
+    "3318": {
+        "sn": "Darfield",
+        "ln": "Darfield"
+    },
+    "3319": {
+        "sn": "Cheviot",
+        "ln": "Cheviot"
+    },
+    "3417": {
+        "sn": "Milton",
+        "ln": "Milton"
+    },
+    "3430": {
+        "sn": "Mount Cook",
+        "ln": "Mount Cook"
+    },
+    "3435": {
+        "sn": "Twizel",
+        "ln": "Twizel"
+    },
+    "3436": {
+        "sn": "Kurow",
+        "ln": "Kurow"
+    },
+    "3438": {
+        "sn": "Kurow",
+        "ln": "Kurow"
+    },
+    "3441": {
+        "sn": "Queenstown",
+        "ln": "Queenstown"
+    },
+    "3442": {
+        "sn": "Queenstown",
+        "ln": "Queenstown"
+    },
+    "3443": {
+        "sn": "Wanaka",
+        "ln": "Wanaka"
+    },
+    "3444": {
+        "sn": "Ranfurly",
+        "ln": "Ranfurly"
+    },
+    "3445": {
+        "sn": "Cromwell",
+        "ln": "Cromwell"
+    },
+    "3446": {
+        "sn": "Roxburgh",
+        "ln": "Roxburgh"
+    },
+    "3465": {
+        "sn": "Palmerston",
+        "ln": "Palmerston"
+    },
+    "3485": {
+        "sn": "Lawrence",
+        "ln": "Lawrence"
+    },
+    "3520": {
+        "sn": "Blenheim",
+        "ln": "Blenheim"
+    },
+    "3521": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "3522": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "3523": {
+        "sn": "Murchison",
+        "ln": "Murchison"
+    },
+    "3524": {
+        "sn": "Takaka",
+        "ln": "Takaka"
+    },
+    "3525": {
+        "sn": "Takaka",
+        "ln": "Takaka"
+    },
+    "3526": {
+        "sn": "Motueka",
+        "ln": "Motueka"
+    },
+    "3527": {
+        "sn": "Motueka",
+        "ln": "Motueka"
+    },
+    "3528": {
+        "sn": "Motueka",
+        "ln": "Motueka"
+    },
+    "3529": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "3571": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "3576": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "3680": {
+        "sn": "Fairlie",
+        "ln": "Fairlie"
+    },
+    "3685": {
+        "sn": "Fairlie",
+        "ln": "Fairlie"
+    },
+    "3689": {
+        "sn": "Waimate",
+        "ln": "Waimate"
+    },
+    "3750": {
+        "sn": "Haast",
+        "ln": "Haast"
+    },
+    "3751": {
+        "sn": "Fox Glacier",
+        "ln": "Fox Glacier"
+    },
+    "3752": {
+        "sn": "Franz Josef",
+        "ln": "Franz Josef"
+    },
+    "3956": {
+        "sn": "Timaru",
+        "ln": "Timaru"
+    },
+    "3984": {
+        "sn": "Blenheim",
+        "ln": "Blenheim"
+    },
+    "3989": {
+        "sn": "Nelson",
+        "ln": "Nelson"
+    },
+    "4201": {
+        "sn": "Paraparaumu",
+        "ln": "Paraparaumu"
+    },
+    "6321": {
+        "sn": "Marton",
+        "ln": "Marton"
+    },
+    "6322": {
+        "sn": "Marton",
+        "ln": "Marton"
+    },
+    "6323": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6324": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6325": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6326": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6327": {
+        "sn": "Marton",
+        "ln": "Marton"
+    },
+    "6328": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6329": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6362": {
+        "sn": "Palmerston North",
+        "ln": "Palmerston North"
+    },
+    "6374": {
+        "sn": "Dannevirke",
+        "ln": "Dannevirke"
+    },
+    "6375": {
+        "sn": "Pahiatua",
+        "ln": "Pahiatua"
+    },
+    "6376": {
+        "sn": "Pahiatua",
+        "ln": "Pahiatua"
+    },
+    "6385": {
+        "sn": "Ohakune",
+        "ln": "Ohakune"
+    },
+    "6387": {
+        "sn": "Waiouru",
+        "ln": "Waiouru"
+    },
+    "6750": {
+        "sn": "Mokau",
+        "ln": "Mokau"
+    },
+    "6761": {
+        "sn": "Opunake",
+        "ln": "Opunake"
+    },
+    "6763": {
+        "sn": "Opunake",
+        "ln": "Opunake"
+    },
+    "6769": {
+        "sn": "New Plymouth",
+        "ln": "New Plymouth"
+    },
+    "6864": {
+        "sn": "Ruatoria",
+        "ln": "Ruatoria"
+    },
+    "6946": {
+        "sn": "Masterton",
+        "ln": "Masterton"
+    },
+    "6949": {
+        "sn": "Levin",
+        "ln": "Levin"
+    },
+    "6965": {
+        "sn": "Wanganui",
+        "ln": "Wanganui"
+    },
+    "6968": {
+        "sn": "New Plymouth",
+        "ln": "New Plymouth"
+    },
+    "6970": {
+        "sn": "New Plymouth",
+        "ln": "New Plymouth"
+    },
+    "6974": {
+        "sn": "Napier",
+        "ln": "Napier"
+    },
+    "6980": {
+        "sn": "Napier",
+        "ln": "Napier"
+    },
+    "6986": {
+        "sn": "Gisborne",
+        "ln": "Gisborne"
+    },
+    "7312": {
+        "sn": "Whakatane",
+        "ln": "Whakatane"
+    },
+    "7315": {
+        "sn": "Opotiki",
+        "ln": "Opotiki"
+    },
+    "7325": {
+        "sn": "Opotiki",
+        "ln": "Opotiki"
+    },
+    "7826": {
+        "sn": "Huntly",
+        "ln": "Huntly"
+    },
+    "7828": {
+        "sn": "Huntly",
+        "ln": "Huntly"
+    },
+    "7862": {
+        "sn": "Paeroa",
+        "ln": "Paeroa"
+    },
+    "7863": {
+        "sn": "Waihi",
+        "ln": "Waihi"
+    },
+    "7865": {
+        "sn": "Whangamata",
+        "ln": "Whangamata"
+    },
+    "7873": {
+        "sn": "Otorohanga",
+        "ln": "Otorohanga"
+    },
+    "7880": {
+        "sn": "Matamata",
+        "ln": "Matamata"
+    },
+    "7881": {
+        "sn": "Matamata",
+        "ln": "Matamata"
+    },
+    "7882": {
+        "sn": "Putaruru",
+        "ln": "Putaruru"
+    },
+    "7883": {
+        "sn": "Putaruru",
+        "ln": "Putaruru"
+    },
+    "7884": {
+        "sn": "Morrinsville",
+        "ln": "Morrinsville"
+    },
+    "7885": {
+        "sn": "Putaruru",
+        "ln": "Putaruru"
+    },
+    "7886": {
+        "sn": "Putaruru",
+        "ln": "Putaruru"
+    },
+    "7887": {
+        "sn": "Morrinsville",
+        "ln": "Morrinsville"
+    },
+    "7888": {
+        "sn": "Matamata",
+        "ln": "Matamata"
+    },
+    "7889": {
+        "sn": "Morrinsville",
+        "ln": "Morrinsville"
+    },
+    "7922": {
+        "sn": "Whakatane",
+        "ln": "Whakatane"
+    },
+    "7928": {
+        "sn": "Tauranga",
+        "ln": "Tauranga"
+    },
+    "9401": {
+        "sn": "Kaikohe",
+        "ln": "Kaikohe"
+    },
+    "9402": {
+        "sn": "Kawakawa",
+        "ln": "Kawakawa"
+    },
+    "9403": {
+        "sn": "Kawakawa",
+        "ln": "Kawakawa"
+    },
+    "9404": {
+        "sn": "Kawakawa",
+        "ln": "Kawakawa"
+    },
+    "9405": {
+        "sn": "Kaikohe",
+        "ln": "Kaikohe"
+    },
+    "9406": {
+        "sn": "Kaitaia",
+        "ln": "Kaitaia"
+    },
+    "9407": {
+        "sn": "Kaikohe",
+        "ln": "Kaikohe"
+    },
+    "9408": {
+        "sn": "Kaitaia",
+        "ln": "Kaitaia"
+    },
+    "9409": {
+        "sn": "Kaitaia",
+        "ln": "Kaitaia"
+    },
+    "9420": {
+        "sn": "Helensville",
+        "ln": "Helensville"
+    },
+    "9422": {
+        "sn": "Warkworth",
+        "ln": "Warkworth"
+    },
+    "9423": {
+        "sn": "Warkworth",
+        "ln": "Warkworth"
+    },
+    "9424": {
+        "sn": "Hibiscus Coast",
+        "ln": "Hibiscus Coast"
+    },
+    "9425": {
+        "sn": "Warkworth",
+        "ln": "Warkworth"
+    },
+    "9426": {
+        "sn": "Hibiscus Coast",
+        "ln": "Hibiscus Coast"
+    },
+    "9427": {
+        "sn": "Hibiscus Coast",
+        "ln": "Hibiscus Coast"
+    },
+    "9428": {
+        "sn": "Hibiscus Coast",
+        "ln": "Hibiscus Coast"
+    },
+    "9429": {
+        "sn": "Great Barrier Island",
+        "ln": "Great Barrier Island"
+    },
+    "9431": {
+        "sn": "Maungaturoto",
+        "ln": "Maungaturoto"
+    },
+    "9439": {
+        "sn": "Dargaville",
+        "ln": "Dargaville"
     },
     "9983": {
-        "ln": "Whangarei",
-        "sn": "Whangarei"
+        "sn": "Whangarei",
+        "ln": "Whangarei"
+    },
+    "32362": {
+        "sn": "Invercargill",
+        "ln": "Invercargill"
+    },
+    "323620": {
+        "sn": "Winton",
+        "ln": "Winton"
+    },
+    "324621": {
+        "sn": "Tokanui",
+        "ln": "Tokanui"
     }
 }

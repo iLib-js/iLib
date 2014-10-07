@@ -59,8 +59,8 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genpapaersizes - generate the localeinfo papaersize.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+util.print("genphone - generate the phone parsing/geolocation data files.\n" +
+	"Copyright (c) 2014 JEDLSoft\n");
 
 util.print("Phone data dir: " + phoneDir + "\n");
 util.print("output dir: " + toDir + "\n");
@@ -114,6 +114,8 @@ function getCharacterCode(ch) {
 		return 12;
 	case '^':
 		return 13;
+	case '.':
+		return 14;
 	case 'p':		// pause chars
 	case 'P':
 	case 't':
@@ -161,7 +163,8 @@ function addAreaCode(name) {
 function processFile(file) {
 	var f = new UnicodeFile({
 		path: file, 
-		splitChar: '\t'
+		splitChar: '\t',
+		commentString: "//"
 	});
 	var trie = {}, current;
 	var area = {};
@@ -173,55 +176,59 @@ function processFile(file) {
 		if (fields.length > 1) {
 			var digits = fields[0];
 			var state = states.indexOf(fields[1]);
-			current = trie;
-			// util.print("Encoding " + digits + " in state " + state + "(" + fields[1] + ")\n");
-			for (var j = 0; j < digits.length-1; j++) {
-				ch = getCharacterCode(digits.charAt(j));
-				if (ch >= 0) {
-					// util.print("doing " + ch + "\n");
-					if (typeof(current.s) === 'undefined') {
-						current.s = [];
-					}
-					if (!current.s[ch]) {
-						current.s[ch] = {
-							//digits: digits.substring(0,digits.length-1),
-							s: []
-						};
-					} else if (typeof(current.s[ch]) === 'number') {
-						// transform it into a node instead
-						var node = {
-							//digits: digits.substring(0,digits.length-1),
-							l: current.s[ch],
-							s: []
-						};
-						current.s[ch] = node;
-					}
-					current = current.s[ch];
-				}
-			}
-			// if (!current) {
-			// 	util.print("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4) + "\n");
-			// }
-			// now we have reached the final state
-			ch = getCharacterCode(digits.charAt(digits.length - 1));
-			if (typeof(current.s) === 'undefined') {
-				current.s = [];
-			}
-			if (!current.s[ch]) {
-				current.s[ch] = state;
+			if (state === -1) {
+				util.print("Error: could not get type in line " + i + ": " + f.getLine(i) + "\n");
 			} else {
-				//current.s[ch].digits = digits;
-				current.s[ch].l = state;
+				current = trie;
+				//util.print("Encoding " + digits + " in state " + state + "(" + fields[1] + ")\n");
+				for (var j = 0; j < digits.length-1; j++) {
+					ch = getCharacterCode(digits.charAt(j));
+					if (ch >= 0) {
+						// util.print("doing " + ch + "\n");
+						if (typeof(current.s) === 'undefined') {
+							current.s = [];
+						}
+						if (!current.s[ch]) {
+							current.s[ch] = {
+								//digits: digits.substring(0,digits.length-1),
+								s: []
+							};
+						} else if (typeof(current.s[ch]) === 'number') {
+							// transform it into a node instead
+							var node = {
+								//digits: digits.substring(0,digits.length-1),
+								l: current.s[ch],
+								s: []
+							};
+							current.s[ch] = node;
+						}
+						current = current.s[ch];
+					}
+				}
+				// if (!current) {
+				// 	util.print("current is undefined. trie is\n" + JSON.stringify(trie, undefined, 4) + "\n");
+				// }
+				// now we have reached the final state
+				ch = getCharacterCode(digits.charAt(digits.length - 1));
+				if (typeof(current.s) === 'undefined') {
+					current.s = [];
+				}
+				if (!current.s[ch]) {
+					current.s[ch] = state;
+				} else {
+					//current.s[ch].digits = digits;
+					current.s[ch].l = state;
+				}
+				if (state === 7 || state === 9) {
+					area[digits] = {
+						sn: fields[2],
+						ln: fields[3]
+					};
+				}
+				
+				addAreaCode(fields[2]);
+				addAreaCode(fields[3]);
 			}
-			if (state === 7) {
-				area[digits] = {
-					sn: fields[2],
-					ln: fields[3]
-				};
-			}
-			
-			addAreaCode(fields[2]);
-			addAreaCode(fields[3]);
 		}
 	}
 
@@ -253,11 +260,22 @@ function processFile(file) {
 	}
 	
 	trie = deNullify(trie);
-
-	var baseDir = path.join(toDir, "und", path.basename(file, ".txt"));
+	var extended = file.match(/.geo.txt$/);
+	var basename = path.basename(file,  extended ? ".geo.txt" : ".txt");
+	var baseDir;
+	var stateFileName;
+	var areaFileName;
+	if (basename.length === 2) {
+		// region name
+		baseDir = path.join(toDir, "und", basename);
+		stateFileName = path.join(baseDir, extended ? "extstates.json" : "states.json");
+		areaFileName = path.join(baseDir, extended ? "extarea.json" : "area.json");
+	} else {
+		baseDir = toDir;
+		stateFileName = path.join(toDir, basename + ".json");
+		areaFileName = path.join(toDir, basename + "area.json");
+	}
 	mkdirs(baseDir);
-	var stateFileName = path.join(baseDir, "states.json");
-	var areaFileName = path.join(baseDir, "area.json");
 	
 	fs.writeFileSync(stateFileName, JSON.stringify(trie, undefined, 4), "utf-8");
 	fs.writeFileSync(areaFileName, JSON.stringify(area, undefined, 4), "utf-8");

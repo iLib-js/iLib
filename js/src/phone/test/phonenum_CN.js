@@ -130,7 +130,7 @@ function testParseCNPlusIDDToGBLongArea(){
 	
 };
 
-function testParseMobileNumber(){
+function testParseCNMobileNumber(){
 	var parsed = new ilib.PhoneNumber("15005179573", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
@@ -143,7 +143,7 @@ function testParseMobileNumber(){
 	
 };
 
-function testParseIDDToMobile(){
+function testParseCNIDDToMobile(){
 	var parsed = new ilib.PhoneNumber("+8615005179573", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
@@ -318,7 +318,7 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 
-function testParseEmergencyNumber(){
+function testParseCNEmergencyNumber(){
 	var parsed = new ilib.PhoneNumber("110", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
@@ -329,7 +329,7 @@ function testParseEmergencyNumber(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseEmergencyNumberPlus(){
+function testParseCNEmergencyNumberPlus(){
 	var parsed = new ilib.PhoneNumber("120115", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
@@ -348,7 +348,7 @@ function testParseCNPlusIDDToUnknown(){
 	
 	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
-		countryCode: "506",
+		countryCode: "506",  // Costa Rica
 		subscriberNumber: "2012345678"
 	}, {locale: "zh-CN"});
 	
@@ -601,7 +601,7 @@ function testParseCNPartialLocal8(){
 };
 
 //for DFISH-26683
-function testParseNewMobilePrefix1(){
+function testParseCNNewMobilePrefix1(){
 	var parsed = new ilib.PhoneNumber("14782808075", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
@@ -613,7 +613,7 @@ function testParseNewMobilePrefix1(){
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseNewMobilePrefix2(){
+function testParseCNNewMobilePrefix2(){
 	var parsed = new ilib.PhoneNumber("18721083400", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	

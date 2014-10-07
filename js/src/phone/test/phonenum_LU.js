@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseFull() {
+function testParseLUFull() {
 	var parsed = new ilib.PhoneNumber("26 26 45 45", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -29,7 +29,7 @@ function testParseFull() {
 	
 };
 
-function testParseIgnoreFormatting() {
+function testParseLUIgnoreFormatting() {
 	var parsed = new ilib.PhoneNumber("26.26.45.45", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -41,7 +41,7 @@ function testParseIgnoreFormatting() {
 	
 };
 
-function testParseIgnoreCrap() {
+function testParseLUIgnoreCrap() {
 	var parsed = new ilib.PhoneNumber("@23!60$12^34(", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -53,7 +53,7 @@ function testParseIgnoreCrap() {
 	
 };
 
-function testParsePlusIDDToUS() {
+function testParseLUPlusIDDToUS() {
 	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -68,7 +68,7 @@ function testParsePlusIDDToUS() {
 	
 };
 
-function testParseZerosIDDToUS() {
+function testParseLUZerosIDDToUS() {
 	var parsed = new ilib.PhoneNumber("0012028675309", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -83,7 +83,7 @@ function testParseZerosIDDToUS() {
 	
 };
 
-function testParsePlusIDDToGB() {
+function testParseLUPlusIDDToGB() {
 	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -98,7 +98,7 @@ function testParsePlusIDDToGB() {
 	
 };
 
-function testParseZerosIDDToGB() {
+function testParseLUZerosIDDToGB() {
 	var parsed = new ilib.PhoneNumber("00442012345678", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -113,7 +113,7 @@ function testParseZerosIDDToGB() {
 	
 };
 
-function testParseEmergencyNumber() {
+function testParseLUEmergencyNumber() {
 	var parsed = new ilib.PhoneNumber("112", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -124,7 +124,7 @@ function testParseEmergencyNumber() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseEmergencyNumberPlus() {
+function testParseLUEmergencyNumberPlus() {
 	var parsed = new ilib.PhoneNumber("112115", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -137,7 +137,7 @@ function testParseEmergencyNumberPlus() {
 	
 };
 
-function testParseMobileNumber() {
+function testParseLUMobileNumber() {
 	var parsed = new ilib.PhoneNumber("621123456", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -149,7 +149,7 @@ function testParseMobileNumber() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParseDialAround() {
+function testParseLUDialAround() {
 	var parsed = new ilib.PhoneNumber("15232 360 12 34", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -162,7 +162,7 @@ function testParseDialAround() {
 	
 };
 
-function testParseService() {
+function testParseLUService() {
 	var parsed = new ilib.PhoneNumber("80069123456", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -175,7 +175,7 @@ function testParseService() {
 	
 };
 
-function testParsePremium() {
+function testParseLUPremium() {
 	var parsed = new ilib.PhoneNumber("908-8765-4321", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -188,7 +188,7 @@ function testParsePremium() {
 	
 };
 
-function testParsePartial1() {
+function testParseLUPartial1() {
 	var parsed = new ilib.PhoneNumber("2", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -200,7 +200,7 @@ function testParsePartial1() {
 	
 };
 
-function testParsePartial2() {
+function testParseLUPartial2() {
 	var parsed = new ilib.PhoneNumber("26", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -211,7 +211,7 @@ function testParsePartial2() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial3() {
+function testParseLUPartial3() {
 	var parsed = new ilib.PhoneNumber("266", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -222,7 +222,7 @@ function testParsePartial3() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial4() {
+function testParseLUPartial4() {
 	var parsed = new ilib.PhoneNumber("2662", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -233,7 +233,7 @@ function testParsePartial4() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial5() {
+function testParseLUPartial5() {
 	var parsed = new ilib.PhoneNumber("26621", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -244,7 +244,7 @@ function testParsePartial5() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial6() {
+function testParseLUPartial6() {
 	var parsed = new ilib.PhoneNumber("266212", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -255,7 +255,7 @@ function testParsePartial6() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial7() {
+function testParseLUPartial7() {
 	var parsed = new ilib.PhoneNumber("2662123", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -266,7 +266,7 @@ function testParsePartial7() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial8() {
+function testParseLUPartial8() {
 	var parsed = new ilib.PhoneNumber("26621234", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -277,7 +277,7 @@ function testParsePartial8() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial9() {
+function testParseLUPartial9() {
 	var parsed = new ilib.PhoneNumber("266212345", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	
@@ -288,7 +288,7 @@ function testParsePartial9() {
 	assertTrue(parsed.equals(expected));
 	
 };
-function testParsePartial10() {
+function testParseLUPartial10() {
 	var parsed = new ilib.PhoneNumber("2662123456", {locale: "de-LU"});
 	assertNotUndefined(parsed);
 	

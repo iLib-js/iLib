@@ -448,7 +448,7 @@ function testParseMXPartialTrunk11(){
 	
 };
 
-function testParseWithUSMCC(){
+function testParseMXWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "es-MX", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -461,7 +461,7 @@ function testParseWithUSMCC(){
 	
 };
 
-function testParseWithFRMCC(){
+function testParseMXWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "es-MX", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -473,7 +473,7 @@ function testParseWithFRMCC(){
 	
 };
 
-function testParseWithMXMCC(){
+function testParseMXWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "es-MX", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -486,7 +486,7 @@ function testParseWithMXMCC(){
 	
 };
 
-function testParseWithDEMCC(){
+function testParseMXWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "es-MX", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -499,7 +499,7 @@ function testParseWithDEMCC(){
 };
 
 // for bug NOV-119557
-function testParseTollFree(){
+function testParseMXTollFree(){
 	var parsed = new ilib.PhoneNumber("01 800 022 0606", {locale: "es-MX"});
 	assertNotUndefined(parsed);
 	

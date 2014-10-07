@@ -4,5 +4,13 @@
     "iddCode": "810",
     "trunkCode": "8",
     "skipTrunk": true,
-    "dialingPlan": "open"
+    "dialingPlan": "open",
+    "fieldLengths": {
+        "areaCode": 3,
+        "cic": 0,
+        "mobilePrefix": 3,
+        "serviceCode": 3,
+        "minLocalLength": 5,
+        "maxLocalLength": 7
+    }
 }

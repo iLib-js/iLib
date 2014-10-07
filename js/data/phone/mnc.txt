@@ -1,4 +1,4 @@
-# list taken from http://en.wikipedia.org/wiki/Mobile_Network_Code
+// list taken from http://en.wikipedia.org/wiki/Mobile_Network_Code
 
 00101	area	TEST	Test Network
 41201	area	AWCC	Afghan Wireless Communication Company
@@ -1054,7 +1054,7 @@
 41308	area	Hutch	Hutchison Telecommunications Lanka
 63401	area	Zain SD	Zain Group - Sudan
 63402	area	MTN	MTN Sudan
-634	Sudani One	Sudatel Group	Operational	GSM / UMTS / CDMA / HSDPA	Sudani One	Sudatel Group	Operational	GSM / UMTS / CDMA / HSDPA
+634	area	Sudani One	Sudatel Group	Operational	GSM / UMTS / CDMA / HSDPA	Sudani One	Sudatel Group	Operational	GSM / UMTS / CDMA / HSDPA
 63405	area	Vivacell	Wawat Securities
 74602	area	Telesur (GSM)	Telesur (GSM)
 65310	area	Swazi MTN	Swazi MTN
@@ -1184,16 +1184,9 @@
 200053	area	Virgin Mobile US	Virgin Mobile US
 200054	area	Alltel US	Alltel US
 200066	area	U.S. Cellular	U.S. Cellular
+31000	area	nTelos	nTelos
 310000	area	Mid-Tex Cellular	Mid-Tex Cellular
-310001	special	nTelos	nTelos
-310002	special	nTelos	nTelos
-310003	special	nTelos	nTelos
 310004	area	Verizon	Verizon Wireless
-310005	special	nTelos	nTelos
-310006	special	nTelos	nTelos
-310007	special	nTelos	nTelos
-310008	special	nTelos	nTelos
-310009	special	nTelos	nTelos
 310010	area	MCI	MCI
 310012	area	Verizon	Verizon Wireless
 310013	area	MobileTel	MobileTel

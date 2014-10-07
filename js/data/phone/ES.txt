@@ -3,8 +3,10 @@
 ^10	cic
 ^112	emergency
 ^118	emergency
-^1.	service
+^0	service2	short number
+^1	service2	short number
 ^.	start
+
 
 2	area
 3	area

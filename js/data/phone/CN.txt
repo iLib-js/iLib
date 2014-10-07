@@ -1,6 +1,6 @@
 ^+	plus
 ^00	idd
-^0.	trunk
+^0	trunk
 
 ^110	emergency	Police
 ^119	emergency	Fire
@@ -52,10 +52,10 @@
 ^188	cell	China Mobile TD-SCDMA
 ^189	cell	China Telecom  CDMA
 
-# this is a hack -- mobile code do not start with a trunk access prefix, but when calling from international, you 
-# have to skip the trunk access prefix, so these below allow you to pretend that you are skipping the trunk while
-# calling the cell from international. The disadvantage is that it will format 0130 from inside the country as a 
-# mobile number too, but that should rarely happen.
+// this is a hack -- mobile code do not start with a trunk access prefix, but when calling from international, you 
+// have to skip the trunk access prefix, so these below allow you to pretend that you are skipping the trunk while
+// calling the cell from international. The disadvantage is that it will format 0130 from inside the country as a 
+// mobile number too, but that should rarely happen.
 130	cell	China Unicom GSM
 131	cell	China Unicom GSM
 132	cell	China Unicom GSM
@@ -96,6 +96,16 @@
 187	cell	China Mobile GSM
 188	cell	China Mobile TD-SCDMA
 189	cell	China Telecom  CDMA
+
+^1	local
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local
 
 550	area	Chuzhou	Chuzhou 滁州市
 551	area	Hefei	Hefei 合肥市

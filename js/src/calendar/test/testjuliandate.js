@@ -728,7 +728,7 @@ function testJulDateCurrentTimeWithTimeZone() {
     var d = new Date();
     assertNotNull(jul);
     
-    assertRoughlyEquals(d.getTime(), jul.getTime(), 30);
+    assertRoughlyEquals(d.getTime(), jul.getTime(), 50);
 }
 
 function testJulDateSetTimeZone() {

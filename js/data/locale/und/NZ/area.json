@@ -1,22 +1,22 @@
 {
     "3": {
-        "ln": "South Island, Chatham Islands",
-        "sn": "South Island"
+        "sn": "South Island",
+        "ln": "South Island, Chatham Islands"
     },
     "4": {
-        "ln": "Wellington Region to Kapiti",
-        "sn": "Wellington"
+        "sn": "Wellington",
+        "ln": "Wellington Region to Kapiti"
     },
     "6": {
-        "ln": "Southern and Eastern North Island, Taranaki, Manawatu-Wanganui (excluding Taumarunui), Hawke's Bay, Gisborne, the Wairarapa, and Otaki",
-        "sn": "North Island"
+        "sn": "North Island",
+        "ln": "Southern and Eastern North Island, Taranaki, Manawatu-Wanganui (excluding Taumarunui), Hawke's Bay, Gisborne, the Wairarapa, and Otaki"
     },
     "7": {
-        "ln": "Waikato, The Bay of Plenty, and Taumarunui",
-        "sn": "Waikato"
+        "sn": "Waikato",
+        "ln": "Waikato, The Bay of Plenty, and Taumarunui"
     },
     "9.": {
-        "ln": "Auckland and Northland",
-        "sn": "Auckland"
+        "sn": "Auckland",
+        "ln": "Auckland and Northland"
     }
 }

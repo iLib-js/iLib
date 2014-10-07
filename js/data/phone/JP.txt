@@ -1,6 +1,6 @@
 ^+	plus
 
-^0.	trunk
+^0	trunk
 
 10	idd
 
@@ -12,19 +12,19 @@
 ^119	emergency	Ambulance, Fire brigade
 ^171	emergency	Earthquake assistance
 
-^100	service	NTT operator
-^106	service	Operator assisted collect call service
-^108	service	Automated collect call service
-^113	service	NTT technical faults hotline
-^116	service	NTT customer service and general enquiries
+^100	emergency	NTT operator
+^106	emergency	Operator assisted collect call service
+^108	emergency	Automated collect call service
+^113	emergency	NTT technical faults hotline
+^116	emergency	NTT customer service and general enquiries
 
-^104	service	NTT national directory enquiries
+^104	emergency	NTT national directory enquiries
 
-^114	service	Automated number-busy check
-^115	service	Telegram service
-^117	service	Speaking clock
-^136	service	Information on last incoming call
-^177	service	Weather forecast
+^114	emergency	Automated number-busy check
+^115	emergency	Telegram service
+^117	emergency	Speaking clock
+^136	emergency	Information on last incoming call
+^177	emergency	Weather forecast
 
 01	cic	KDDI (international)
 033	cic	NTT Communications
@@ -50,590 +50,609 @@
 140	service	Disaster relief wireless communications
 160	service	Disaster relief satellite communications
 170	service	NTT Dengon Dial, chat line services
-180	service	NTT Telegong, TV/Radio show feedback dial-in
-180	service	NTT Teledome, automated information services
-190	service	NTT Angel Line, automated directory services via PC/modem
-190	service	NTT Annai Jozu, automated directory services via telephone
+180	service	NTT (Telegong, TV/Radio show feedback dial-in / Teledome, automated information services)
+190	service	NTT (Angel Line, automated directory services via PC/modem / Annai Jozu, automated directory services via telephone)
 570	service	Navi Dial
 800	service	Other toll free services
-20	service	 Paging services
-30	service	 Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
-40	service	 Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
-50	service	 IP telephony service (via internet service providers)
+
+50	service	IP telephony service (via internet service providers)
 570	service	Navi Dial, non-geographic wireline
-60	service	 Universal personal number services
-70	service	 Mobile telephony and data services (PHS)
-701	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
-80	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
-90	service	 Mobile telephony and data services (PDC, J-CDMA, UMTS)
+60	service	Universal personal number services
 910	service	Private circuit access, local rate services
 990	service	NTT DialQ2, premium rate services
 
-070	cell	
-080	cell
-090	cell
+20	cell	Paging services
+30	cell	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+40	cell	Mobile telephony services (legacy systems, PDC, J-CDMA, UMTS) - currently not used
+70	cell	Mobile telephony and data services (PHS)
+701	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
+80	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
+90	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
 
-11	area	Ebetsu, Kitahiroshima, Sapporo, Sorachi District, Hokkaidō
-1235	area	Yūbari, Hokkaidō
-1237	area	Yūbari District, Yūbari, Hokkaidō
-1238	area	Yūbari District, Hokkaidō
-123	area	Chitose, Eniwa, Tomakomai, Hokkaidō
-1242	area	Ashibetsu, Hokkaidō
-125	area	Akabira, Kabato District, Sorachi District, Sunagawa, Takikawa, Uryū District, Utashinai, Hokkaidō
-1266	area	Bibai, Hokkaidō
-1267	area	Iwamizawa, Mikasa, Hokkaidō
-126	area	Ishikari District, Iwamizawa, Kabato District, Sorachi District, Hokkaidō
-1332	area	Ishikari District, Hokkaidō
-13379	area	Hamamasu District, Hokkaidō
-1337	area	Atsuta District, Hokkaidō
-133	area	Atsuta District, Ishikari District, Ishikari, Otaru, Hokkaidō
-134	area	Otaru, Hokkaidō
-135	area	Furuu District, Iwanai District, Shakotan District, Yoichi District, Hokkaidō
-136	area	Abuta District, Isoya District, Shimamaki District, Suttsu District, Usu District, Hokkaidō
-1372	area	Kayabe District, Hokkaidō
-1374	area	Kayabe District, Hokkaidō
-1376	area	Yamakoshi District, Hokkaidō
-1377	area	Yamakoshi District, Hokkaidō
-1378	area	Setana District, Hokkaidō
-138	area	Hakodate, Kameda District, Kamiiso District, Hokkaidō
-1392	area	Kamiiso District, Hokkaidō
-1394	area	Matsumae District, Hokkaidō
-1395	area	Hiyama District, Hokkaidō
-1396	area	Hiyama District, Nishi District, Hokkaidō
-1397	area	Okushiri District, Hokkaidō
-1398	area	Kudō District, Nishi District, Hokkaidō
-142	area	Abuta District, Date, Usu District, Hokkaidō
-143	area	Muroran, Noboribetsu, Hokkaidō
-144	area	Shiraoi District, Tomakomai, Hokkaidō
-1452	area	Chitose, Tomakomai, Yūfutsu District, Hokkaidō
-1454	area	Yūfutsu District, Hokkaidō
-1456	area	Niikappu District, Saru District, Hokkaidō
-1457	area	Saru District, Hokkaidō
-1462	area	Urakawa District, Hokkaidō
-1463	area	Mitsuishi District, Samani District, Urakawa District, Hokkaidō
-1464	area	Niikappu District, Shizunai District, Hokkaidō
-1466	area	Horoizumi District, Hokkaidō
-1522	area	Shari District, Hokkaidō
-1527	area	Abashiri District, Hokkaidō
-152	area	Abashiri District, Shari District, Tokoro District, Hokkaidō
-1532	area	Nemuro, Hokkaidō
-1537	area	Notsuke District, Shibetsu District, Hokkaidō
-1538	area	Menashi District, Notsuke District, Shibetsu District, Hokkaidō
-153	area	Akkeshi District, Hokkaidō
-1547	area	Shiranuka District, Hokkaidō
-1548	area	Kamikawa District, Hokkaidō
-154	area	Akan District, Kushiro District, Kushiro, Hokkaidō
-1557	area	Nakagawa District, Tokachi District, Hokkaidō
-1558	area	Hiroo District, Hokkaidō
-155	area	Kasai District, Katō District, Nakagawa District, Obihiro, Hokkaidō
-1562	area	Ashoro District, Nakagawa District, Hokkaidō
-1564	area	Katō District, Hokkaidō
-1566	area	Kamikawa District, Katō District, Hokkaidō
-157	area	Kitami, Tokoro District, Hokkaidō
-15829	area	Monbetsu District, Hokkaidō
-1582	area	Monbetsu, Hokkaidō
-1584	area	Monbetsu District, Hokkaidō
-1586	area	Monbetsu District, Hokkaidō
-1587	area	Monbetsu District, Hokkaidō
-1588	area	Monbetsu District, Hokkaidō
-162	area	Teshio District, Wakkanai, Hokkaidō
-1632	area	Teshio District, Hokkaidō
-1634	area	Esashi District, Hokkaidō
-1635	area	Sōya District, Wakkanai, Hokkaidō
-1636	area	Esashi District, Hokkaidō
-1638	area	Rebun District, Rishiri District, Hokkaidō
-1645	area	Rumoi District, Hokkaidō
-1646	area	Tomamae District, Hokkaidō
-1648	area	Tomamae District, Hokkaidō
-164	area	Fukagawa, Mashike District, Rumoi, Uryū District, Hokkaidō
-16528	area	Kamikawa District, Hokkaidō
-1652	area	Shibetsu, Hokkaidō
-16532	area	Kamikawa District, Hokkaidō
-16534	area	Kamikawa District, Hokkaidō
-1653	area	Uryū District, Hokkaidō
-1654	area	Nayoro, Hokkaidō
-1655	area	Kamikawa District, Hokkaidō
-1656	area	Nakagawa District, Hokkaidō
-1658	area	Kamikawa District, Hokkaidō
-166	area	Asahikawa, Kamikawa District, Hokkaidō
-167	area	Ashibetsu, Furano, Sorachi District, Yūfutsu District, Hokkaidō
-172	area	Aomori District, Hirosaki, Kitatsugaru District, Kuroishi, Minamitsugaru District, Nakatsugaru District, Aomori
-173	area	Goshogawara, Kitatsugaru District, Nishitsugaru District, Aomori
-174	area	Higashitsugaru District, Aomori
-175	area	Mutsu, Shimokita District, Aomori
-176	area	Kamikita District, Kazuno District, Akita, Sannohe District, Towada, Aomori
-177	area	Aomori, Higashitsugaru District, Aomori
-178	area	Hachinohe, Kamikita District, Sannohe District, Aomori
-179	area	Sannohe District, Aomori
-182	area	Hiraka District, Ogachi District, Senboku District, Yokote, Akita
-183	area	Ogachi District, Yuzawa, Akita
-184	area	Honjo, Yuri District, Akita
-185	area	Minamiakita District, Noshiro, Oga, Yamamoto District, Akita
-186	area	Kazuno, Kitaakita District, Ōdate, Akita
-187	area	Omagari, Senboku District, Akita
-188	area	Akita, Kawabe District, Minamiakita District, Senboku District, Akita
-191	area	Ichinoseki, Kesen District, Nishiiwai District, Iwate
-192	area	Kesen District, Ōfunato, Rikuzentakata, Iwate
-193	area	Kamaishi, Kamihei District, Miyako, Iwate
-194	area	Kamihei District, Kuji, Kunohe District, Iwate
-195	area	Iwate District, Kunohe District, Ninohe District, Ninohe, Iwate
-197	area	Esashi, Isawa District, Kesen District, Kitakami, Mizusawa, Waga District, Iwate
-198	area	Hanamaki, Hienuki District, Kamihei District, Tōno, Waga District, Iwate
-19	area	Iwate District, Morioka, Shiwa District, Iwate
-220	area	Tome District, Miyagi
-223	area	Iwanuma, Natori, Watari District, Miyagi
-224	area	Igu District, Kakuda, Katta District, Shibata District, Shiroishi, Miyagi
-225	area	Ishinomaki, Monou District, Motoyoshi District, Oshika District, Tōda District, Tome District, Miyagi
-226	area	Kesennuma, Motoyoshi District, Miyagi
-228	area	Kurihara District, Tome District, Miyagi
-229	area	Furukawa, Kami District, Shida District, Tamatsukuri District, Tōda District, Miyagi
-22	area	Kurokawa District, Miyagi District, Natori, Sendai, Shiogama, Tagajō, Miyagi
-233	area	Shinjō, Yamagata
-234	area	Akumi District, Higashitagawa District, Mogami District, Sakata, Yamagata
-235	area	Higashitagawa District, Iwafune District, Niigata, Nishitagawa District, Tsuruoka, Yamagata
-236	area	Higashimurayama District, Yamagata
-237	area	Higashimurayama District, Higashine, Kitamurayama District, Murayama, Nishimurayama District, Obanazawa, Sagae, Tendō, Yamagata
-238	area	Higashiokitama District, Nagai, Nan'yō, Nishiokitama District, Yonezawa, Yamagata
-23	area	Higashimurayama District, Kaminoyama, Mogami District, Natori, Miyagi, Tendō, Yamagata
-240	area	Futaba District, Fukushima
-241	area	Kawanuma District, Kitakata, Minamiaizu District, Ōnuma District, Yama District, Fukushima
-242	area	Aizuwakamatsu, Fukushima, Kawanuma District, Kitaaizu District, Ōnuma District, Yama District, Fukushima
-243	area	Adachi District, Fukushima, Nihonmatsu, Fukushima
-244	area	Haramachi, Igu District, Miyagi, Sōma District, Souma, Fukushima
-246	area	Iwaki, Fukushima
-247	area	Higashishirakawa District, Ishikawa District, Tamura District, Fukushima
-248	area	Iwase District, Nishishirakawa District, Shirakawa, Sukagawa, Fukushima
-249	area	Kōriyama, Sukagawa, Tamura District, Fukushima
-24	area	Adachi District, Date District, Fukushima
-250	area	Gosen, Nakakanbara District, Niitsu, Niigata
-2549	area	Higashikanbara District, Niigata
-254	area	Iwafune District, Kitakanbara District, Murakami, Shibata, Niigata
-2559	area	Higashikubiki District, Niigata
-255	area	Arai, Higashikubiki District, Itoigawa, Jōetsu, Kitaazumi District, Nagano, Nakakubiki District, Nishikubiki District, Niigata
-256	area	Kamo, Minamikanbara District, Sanjō, Sato District, Tsubame, Niigata
-2579	area	Kitauonuma District, Niigata
-257	area	Kariwa District, Kashiwazaki, Minamiuonuma District, Nakauonuma District, Shimominochi District, Nagano, Tōkamachi, Niigata
-258	area	Kariwa District, Kitauonuma District, Koshi District, Minamiuonuma District, Mitsuke, Nagaoka, Ojiya, Santō District, Tochio, Niigata
-259	area	Ryotsu, Sado, Niigata
-25	area	Kitakanbara District, Niigata, Nishikanbara District, Shirone, Toyosaka, Niigata
-260	area	Shimoina District, Nagano
-261	area	Kitaazumi District, Ōmachi, Nagano
-263	area	Higashichikuma District, Matsumoto, Minamiazumi District, Shiojiri, Nagano
-264	area	Kiso District, Nagano
-265	area	Iida, Ina, Kamiina District, Komagane, Shimoina District, Nagano
-266	area	Chino, Kamiina District, Kitakoma District, Yamanashi, Okaya, Shiojiri, Suwa District, Suwa, Nagano
-267	area	Agatsuma District, Annaka, Chiisagata District, Nagano, Gunma District, Kanra District, Kitasaku District, Komoro, Minamisaku District, Saku, Nagano, Usui District, Gunma
-268	area	Chiisagata District, Hanishina District, Kitasaku District, Sarashina District, Ueda, Nagano
-269	area	Iiyama, Nakano, Shimominochi District, Shimotakai District, Nagano
-26	area	Hanishina District, Kamiminochi District, Kamitakai District, Koshoku, Nagano, Sarashina District, Suzaka, Nagano
-270	area	Isesaki, Sawa District, Gunma
-273	area	Usui District, Gunma
-274	area	Chichibu District, Fujioka, Kanra District, Gunma, Kodama District, Minamisaku District, Nagano, Tano District, Tomioka, Gunma, Saitama
-276	area	Nitta District, Ohta, Ōra District, Ōsato District, Saitama, Tatebayashi, Gunma
-277	area	Kiryū, Nitta District, Seta District, Yamada District, Gunma
-278	area	Numata, Tone District, Gunma
-279	area	Agatsuma District, Kitagunma District, Seta District, Shibukawa, Gunma
-27	area	Kitagunma District, Maebashi, Seta District, Takasaki, Tano District, Gunma
-280	area	Kitasaitama District, Koga, Ibaraki, Oyama, Sashima District, Ibaraki, Shimotsuga District, Tochigi, Saitama
-282	area	Kamitsuga District, Oyama, Shimotsuga District, Tochigi
-283	area	Aso District, Sano, Tochigi
-284	area	Ashikaga, Ohta, Gunma, Tochigi
-285	area	Haga District, Kawachi District, Mooka, Oyama, Shimotsuga District, Tochigi
-287	area	Agatsuma District, Kuroiso, Nasu District, Ōtawara, Shioya District, Yaita, Tochigi, Gunma
-288	area	Imaichi, Kamitsuga District, Nikkō, Shioya District, Tochigi
-289	area	Kamitsuga District, Kanuma, Tochigi
-28	area	Haga District, Kawachi District, Shioya District, Utsunomiya, Tochigi
-291	area	Kashima District, Namegata District, Ibaraki
-292	area	Naka District, Ibaraki
-293	area	Kitaibaraki, Taga District, Takahagi, Ibaraki
-294	area	Hitachi, Hitachiōta, Kuji District, Naka District, Ibaraki
-2955	area	Higashiibaraki District, Naka District, Ibaraki
-2957	area	Kuji District, Ibaraki
-296	area	Kasama, Makabe District, Nishiibaraki District, Oyama, Tochigi, Shimodate, Shimotsuma, Yūki District, Yuki, Ibaraki
-297	area	Inashiki District, Iwai, Kitasouma District, Mitsukaido, Ryūgasaki, Toride, Tsukuba District, Yūki District, Ibaraki
-298	area	Inashiki District, Niihari District, Tsuchiura, Tsukuba, Ushiku, Ibaraki
-299	area	Inashiki District, Ishioka, Kashima District, Kashima, Namegata District, Niihari District, Nishiibaraki District, Ibaraki
-29	area	Higashiibaraki District, Hitachinaka, Mito, Naka District, Ibaraki
-3	area	Tokyo
-422	area	Chōfu, Hoya, Koganei, Mitaka, Musashino, Tokyo
-423	area	Fuchu, Higashimurayama, Inagi, Kodaira, Koganei, Kokubunji, Tama, Tokyo
-424	area	Chōfu, Fuchu, Higashikurume, Hoya, Kiyose, Kodaira, Konoe, Niiza, Saitama, Tanashi, Tokyo
-426	area	Hachiōji, Tsukui District, Kanagawa, Tokyo
-427	area	Kawasaki, Machida, Tokyo, Minamitsuru District, Sagamihara, Tsukui District, Yokohama, Zama, Kanagawa, Yamanashi
-428	area	Kitatsuru District, Nishitama, Ōme, Tokyo, Yamanashi
-429	area	Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama
-42	area	Akiruno, Akishima, Fuchu, Fussa, Hachiōji, Hamura, Higashiyamato, Hino, Kokubunji, Kokuritsu, Musashimurayama, Nishitama, Tachikawa, Tokyo
+11	area	Sappro
+123	area	Chitose, and Yubari and Kuriyama
+124	area	Ashibetsu 
+125	area	Takigawa 
+126	area	Iwamizawa
+1235	area	Hokkaidō	Yūbari, Hokkaidō
+1237	area	Hokkaidō	Yūbari District, Yūbari, Hokkaidō
+1238	area	Hokkaidō	Yūbari District, Hokkaidō
+1242	area	Hokkaidō	Ashibetsu, Hokkaidō
+1266	area	Hokkaidō	Bibai, Hokkaidō
+1267	area	Iwamizawa 
+133	area	Ishikari and Tobetsu
+1337	area	Hokkaidō	Atsuta District, Hokkaidō
+13379	area	Hokkaidō	Hamamasu District, Hokkaidō
+134	area	Otaru 
+135	area	Yoichi and Iwanai 
+136	area	Kutchan and Suttsu 
+137	area	Yakumo and Imakane 
+1332	area	Hokkaidō	Ishikari District, Hokkaidō
+1337	area	Hokkaidō	Atsuta District, Hokkaidō
+1372	area	Shikabe
+1374	area	Mori
+1376	area	Hokkaidō	Yamakoshi District, Hokkaidō
+1377	area	Yakumo
+1378	area	Hokkaidō	Setana District, Hokkaidō
+138	area	Hakodate 
+139	area	Matsumae and Esashi
+1394	area	Hokkaidō	Matsumae District, Hokkaidō
+1395	area	Hokkaidō	Hiyama District, Hokkaidō
+1396	area	Hokkaidō	Hiyama District, Nishi District, Hokkaidō
+1392	area	Kikonai 
+1397	area	Okushiri 
+1398	area	Kumaishi 
+142	area	Date 
+143	area	Muroran 
+144	area	Tomakomai
+145	area	Hayakita and Mukawa
+1452	area	Hokkaidō	Chitose, Tomakomai, Yūfutsu District, Hokkaidō
+1454	area	Hokkaidō	Yūfutsu District, Hokkaidō
+1456	area	Monbetsutomikawa 
+1457	area	Monbetsutomikawa 
+146	area	Urakawa and Shizunai
+1462	area	Hokkaidō	Urakawa Dßistrict, Hokkaidō
+1463	area	Hokkaidō	Mitsuishi District, Samani District, Urakawa District, Hokkaidō
+1464	area	Hokkaidō	Niikappu District, Shizunai District, Hokkaidō
+1466	area	Erimo 
+15	area	Teshikaga and Tokachiikeda 
+152	area	Abashiri and Shari and Bihoro
+1522	area	Hokkaidō	Shari District, Hokkaidō
+1527	area	Hokkaidō	Abashiri District, Hokkaidō
+153	area	Akkeshi and Nemuro and Nakashibetsu and Nemuroshibetsu
+1532	area	Hokkaidō	Nemuro, Hokkaidō
+1537	area	Hokkaidō	Notsuke District, Shibetsu District, Hokkaidō
+1538	area	Hokkaidō	Menashi District, Notsuke District, Shibetsu District, Hokkaidō
+1548	area	Hokkaidō	Kamikawa District, Hokkaidō
+154	area	Kushiro 
+1547	area	Shiranuka 
+155	area	Obihiro
+1557	area	Hokkaidō	Nakagawa District, Tokachi District, Hokkaidō
+1558	area	Hiroo 
+156	area	Honbetsu and Tokachishimizu
+1562	area	Hokkaidō	Ashoro District, Nakagawa District, Hokkaidō
+1564	area	Kamishihoro
+1566	area	Hokkaidō	Kamikawa District, Katō District, Hokkaidō
+157	area	Kitami 
+158	area	Monbetsu and Engaru and Okoppe
+1582	area	Hokkaidō	Monbetsu, Hokkaidō
+1584	area	Hokkaidō	Monbetsu District, Hokkaidō
+1586	area	Nakayubetsu
+1587	area	Nakayubetsu
+1587	area	Hokkaidō	Monbetsu District, Hokkaidō
+1588	area	Hokkaidō	Monbetsu District, Hokkaidō
+15829	area	Hokkaidō	Monbetsu District, Hokkaidō
+162	area	Wakkanai 
+163	area	Kitamiesashi and Rishirirebun 
+1632	area	Teshio 
+1634	area	Hamatonbetsu 
+1635	area	Hamatonbetsu
+1638	area	Hokkaidō	Rebun District, Rishiri District, Hokkaidō
+164	area	Rumoi and Ishikarifukagawa and Haboro
+1645	area	Hokkaidō	Rumoi District, Hokkaidō
+1646	area	Hokkaidō	Tomamae District, Hokkaidō
+1648	area	Yagisiri 
+165	area	Shibetsu
+1652	area	Hokkaidō	Shibetsu, Hokkaidō
+16528	area	Hokkaidō	Kamikawa District, Hokkaidō
+1653	area	Hokkaidō	Uryū District, Hokkaidō
+1654	area	Nayoro 
+1655	area	Nayoro 
+1656	area	Bifuka 
+1658	area	Kamikawa 
+166	area	Asahikawa 
+167	area	Furano 
+17	area	Aomori 
+172	area	Hirosaki 
+173	area	Goshogawara and Ajigasawa 
+174	area	Kanita 
+175	area	Mutsu and Noheji 
+176	area	Towada 
+178	area	Hachinohe 
+179	area	Sannohe 
+18	area	Akita 
+182	area	Yokote 
+183	area	Yuzawa
+184	area	Honjo 
+185	area	Oga and Noshiro 
+186	area	Kazuno and Odate and Takanosu 
+187	area	Omagari and Kakunodate
+188	area	Akita	Akita, Kawabe District, Minamiakita District, Senboku District, Akita
+19	area	Morioka 
+191	area	Ichinoseki 
+192	area	Ofunato 
+193	area	Miyako and Kamaishi 
+194	area	Kuji and Iwaizumi 
+195	area	Iwate and Ninohe 
+197	area	Mizusawa and Kitakami 
+198	area	Hanamaki and Tono
+22	area	Sendai
+220	area	Hasama 
+223	area	Iwanuma 
+224	area	Ogawara and Shiroishi 
+225	area	Ishinomaki 
+226	area	Kesennuma 
+228	area	Tsukidate 
+229	area	Furukawa 
+23	area	Yamagata 
+233	area	Shinjo 
+234	area	Sakata 
+235	area	Tsuruoka
+236	area	Yamagata	Higashimurayama District, Yamagata
+237	area	Sagae and Murayama 
+238	area	Yonezawa and Nagai 
+24	area	Fukushima and Koriyama
+240	area	Iwakitomioka 
+241	area	Kitakata and Tajima and Aizuyamaguchi and Yanaizu 
+242	area	Aizuwakamatsu 
+243	area	Nihonmatsu 
+244	area	Haramachi 
+246	area	Iwaki 
+247	area	Ishikawa and Miharu 
+248	area	Sukagawa and Shirakawa 
+25	area	Niigata and joetsu and Itoigawa and Yasuzuka and Tokamachi and Muikamachi and Koide 
+250	area	Niitsu 
+254	area	Shibata and Murakami and Tsugawa
+2549	area	Niigata	Higashikanbara District, Niigata 
+255	area	Arai
+2559	area	Niigata	Higashikubiki District, Niigata
+256	area	Maki and Sanjo 
+257	area	Kashiwazaki
+2579	area	Niigata	Kitauonuma District, Niigata
+258	area	Nagaoka 
+259	area	Sado 
+26	area	Nagano 
+260	area	Anancho 
+261	area	Omachi 
+263	area	Matsumoto 
+264	area	Kisofukushima 
+265	area	Ina and Iida 
+266	area	Suwa 
+267	area	Komoro and Saku 
+268	area	Ueda 
+269	area	Nakano and Iiyama 
+27	area	Maebashi and Takasaki 
+270	area	Isesaki
+273	area	Gunma	Usui District, Gunma
+274	area	Tomioka and Fujioka 
+276	area	Ota 
+277	area	Kiryu 
+278	area	Numata 
+279	area	Shibukawa and Naganohara 
+28	area	Utsunomiya 
+280	area	Furukawa 
+282	area	Tochigi 
+283	area	Sano 
+284	area	Ashikaga 
+285	area	Mooka and Oyama 
+287	area	Kuroiso and Otawara and Karasuyana 
+288	area	Imaichi 
+289	area	Kanuma 
+29	area	Mito and Tsuchiura
+291	area	Hokota 
+292	area	Ibaraki	Naka District, Ibaraki
+293	area	Takahagi 
+294	area	Hitachiota 
+295	area	Hitachiomiya and Daigo
+2955	area	Ibaraki	Higashiibaraki District, Naka District, Ibaraki
+2957	area	Ibaraki	Kuji District, Ibaraki
+296	area	Kasama and Shimodate 
+297	area	Ryugasaki and Mitsukaido
+298	area	Ibaraki	Inashiki District, Niihari District, Tsuchiura, Tsukuba, Ushiku, Ibaraki
+299	area	Ishioka and Itako 
+3	area	Tokyo 
+4	area	Tokorozawa and Kashiwa and Kamogawa 
+42	area	Kokubunji and Musashinomitaka and Tachikawa and Hachioji and Sagamihara and Hanno 
+422	area	Musashinomitaka
+423	area	Tokyo	Fuchu, Higashimurayama, Inagi, Kodaira, Koganei, Kokubunji, Tama, Tokyo
+424	area	Tokyo	Chōfu, Fuchu, Higashikurume, Hoya, Kiyose, Kodaira, Konoe, Niiza, Saitama, Tanashi, Tokyo
+426	area	Tokyo	Hachiōji, Tsukui District, Kanagawa, Tokyo
+427	area	Yamanashi	Kawasaki, Machida, Tokyo, Minamitsuru District, Sagamihara, Tsukui District, Yokohama, Zama, Kanagawa, Yamanashi
+428	area	Ome
+429	area	Saitama	Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama
+43	area	Chiba
 434	area	Chiba
-436	area	Ichihara, Chiba
-438	area	Kisarazu, Sodegaura, Chiba
-439	area	Futtsu, Kimitsu, Chiba
-43	area	Chiba, Ichihara, Inba District, Sakura, Sanbu District, Yachimata, Yotsukaidō, Chiba
-44	area	Kawasaki, Machida, Tokyo, Yokohama, Kanagawa
-45	area	Yokohama, Kanagawa
-460	area	Ashigarashimo District, Kanagawa
-462	area	Aikō District, Atsugi, Ebina, Sagamihara, Yamato, Zama, Kanagawa
-463	area	Hadano, Hiratsuka, Isehara, Naka District, Kanagawa
-465	area	Ashigarashimo District, Atami, Shizuoka, Minamiashigara, Naka District, Odawara, Kanagawa
-466	area	Fujisawa, Kanagawa
-467	area	Ayase, Chigasaki, Kamakura, Koza District, Zushi, Kanagawa
-468	area	Miura District, Miura, Yokosuka, Zushi, Kanagawa
-470	area	Awa District, Isumi District, Kamogawa, Katsuura, Tateyama, Chiba
-471	area	Abiko, Higashikatsushika District, Kashiwa, Nagareyama, Noda, Toride, Ibaraki, Chiba
-474	area	Chiba, Funabashi, Inba District, Kamagaya, Narashino, Yachiyo, Chiba
-475	area	Chōsei District, Mobara, Sanbu District, Chiba
-476	area	Inba District, Inzai, Katori District, Narita, Chiba
-478	area	Kashima District, Katori District, Chiba, Namegata District, Sawara, Chiba, Ibaraki
-479	area	Asahi, Chōshi, Kaijo District, Katori District, Sanbu District, Sōsa District, Yōkaichiba, Chiba
-47	area	Funabashi, Higashikatsushika District, Ichikawa, Kamagaya, Matsudo, Urayasu, Chiba
-480	area	Kazo, Kitakatsushika District, Kitasaitama District, Kuki, Minamisaitama District, Satte, Saitama
-485	area	Fukaya, Gyōda, Hanyū, Kitaadachi District, Kitamoto, Kitasaitama District, Konosu, Kumagaya, Nitta District, Gunma, Ōsato District, Saitama
-489	area	Kitakatsushika District, Koshigaya, Misato, Sōka, Yashio, Yoshikawa, Saitama
-48	area	Ageo, Asaka, Fujimi, Hasuda, Hatogaya, Iwatsuki, Kasukabe, Kawagoe, Kawaguchi, Kitaadachi District, Kitakatsushika District, Niiza, Okegawa, Omiya, Shiki, Toda, Urawa, Wakō, Warabi, Yono, Saitama
-492	area	Fujimi, Hiki District, Iruma District, Kamifukuoka, Kawagoe, Sakado, Tsurugashima, Saitama
-493	area	Chichibu District, Higashimatsuyama, Hiki District, Ōsato, Saitama
-494	area	Chichibu District, Chichibu, Saitama
-495	area	Honjō, Kodama District, Saitama
-4992	area	Ōshima, Tokyocho
-4994	area	Miyake, Tokyocho
-4996	area	Hachiōji, Tokyo
-4998	area	Ogasawara, Tokyo
-52	area	Aichi District, Ama District, Nagoya, Nishikasugai District, Nisshin, Owariasahi, Tōkai, Toyoake, Aichi
-5312	area	Atsumi District, Aichi
-5313	area	Atsumi District, Aichi
-53145	area	Atsumi District, Aichi
-532	area	Toyohashi, Aichi
-533	area	Gamagori, Hoi District, Toyokawa, Aichi
-5362	area	Shinshiro, Aichi
-5363	area	Minamishitara District, Aichi
-5366	area	Kitashitara District, Aichi
-5367	area	Kitashitara District, Aichi
-53683	area	Kitashitara District, Aichi
-5368	area	Kitashitara District, Aichi
-537	area	Kakegawa, Ogasa District, Shizuoka
-538	area	Fukuroi, Iwata District, Iwata, Ogasa District, Shuchi District, Shizuoka
-539	area	Iwata District, Shuchi District, Tenryū, Shizuoka
-53	area	Hamamatsu, Hamana District, Inasa District, Kosai, Shizuoka
-543	area	Ihara District, Shimizu, Shizuoka
-544	area	Fujinomiya, Shizuoka
-545	area	Fuji, Ihara District, Shizuoka
-547	area	Haibara District, Ogasa District, Shimada, Shizuoka
-548	area	Haibara District, Ogasa District, Shizuoka
-54	area	Fuji District, Fujieda, Shida District, Yaizu, Shizuoka
-550	area	Gotemba, Sunto District, Shizuoka
-551	area	Kitakoma District, Nirasaki, Yamanashi
-552	area	Higashiyatsushiro District, Kōfu, Nakakoma District, Nishiyatsushiro District, Yamanashi
-553	area	Enzan, Higashiyamanashi District, Yamanashi
-554	area	Minamitsuru District, Ōtsuki, Tsuru, Yamanashi
-555	area	Fujiyoshida, Minamitsuru District, Nishiyatsushiro District, Yamanashi
-556	area	Minamikoma District, Nishiyatsushiro District, Yamanashi
-557	area	Atami, Ito, Kamo District, Tagata District, Shizuoka
-558	area	Kamo District, Shimoda, Tagata District, Shizuoka
-559	area	Mishima, Numazu, Sunto District, Susono, Tagata District, Shizuoka
-5613	area	Aichi District, Nishikamo District, Aichi
-5617	area	Aichi District, Nisshin, Aichi
-561	area	Aichi District, Owariasahi, Seto, Aichi
-562	area	Chita, Chita District, Obu, Tōkai, Toyoake, Aichi
-563	area	Nishio, Aichi hazu District, Aichi
-564	area	Higashikamo District, Nukata District, Okazaki, Aichi
-565	area	Higashikamo District, Nishikamo District, Toyota, Aichi
-566	area	Anjo, Chiryu, Hekinan, Kariya, Takahama, Aichi
-5675	area	Ama District, Aichi
-5679	area	Ama District, Aichi
-567	area	Ama District, Kuwana District, Mie, Nakashima District, Tsushima, Aichi
-568	area	Inuyama, Kasugai, Komaki, Nishikasugai District, Seto, Aichi
-569	area	Chita, Chita District, Handa, Tokoname, Aichi
-572	area	Ena District, Mizunami, Tajimi, Toki District, Toki, Gifu
-573	area	Ena District, Ena, Kiso District, Nagano, Mizunami, Nakatsugawa, Gifu
-5747	area	Kamo District, Gifu
-574	area	Kamo District, Kani District, Kani, Minokamo, Mizunami, Gifu
-575	area	Gujo District, Mino, Mugi District, Seki, Gifu
-5769	area	Ōno District, Gifu
-576	area	Mashita District, Ōno District, Gifu
-577	area	Ōno District, Takayama, Yoshiki District, Gifu
-578	area	Yoshiki District, Gifu
-58138	area	Motosu District, Gifu
-58139	area	Ibi District, Gifu
-58157	area	Mugi District, Gifu
-58158	area	Mugi District, Gifu
-581	area	Motosu District, Yamagata District, Gifu
-583	area	Kakamigahara, Gifu
-584	area	Anpachi District, Fuwa District, Ibi District, Kaizu District, Motosu District, Ogaki, Yoro District, Gifu
-585	area	Anpachi District, Ibi District, Motosu District, Gifu
-58689	area	Hashima District, Gifu
-586	area	Haguri District, Ichinomiya, Inazawa, Nishio, Aichi
-587	area	Inazawa, Iwakura, Konan, Nakashima District, Niwa District, Aichi
-58	area	Gifu, Hashima District, Hashima, Motosu District, Gifu
-593	area	Mie District, Suzuka, Yokkaichi, Mie
-594	area	Inabe District, Kuwana District, Kuwana, Mie
-5958	area	Kameyama, Mie
-5959	area	Suzuka District, Mie
-595	area	Ayama District, Nabari, Naga District, Ueno, Mie
-596	area	Ise, Taki District, Mie
-5972	area	Owase, Mie
-5973	area	Kitamuro District, Mie
-5974	area	Kitamuro District, Mie
-5978	area	Kumano, Mie
-5979	area	Higashimuro District, Minamimuro District, Mie, Wakayama
-59832	area	Iinan District, Mie
-5983	area	Taki District, Mie
-59849	area	Taki District, Mie
-5984	area	Ichishi District, Iinan District, Mie
-59856	area	Ichishi District, Mie
-59872	area	Watarai District, Mie
-5987	area	Taki District, Watarai District, Mie
-5988	area	Taki District, Watarai District, Mie
-598	area	Ichishi District, Matsusaka, Mie
-5994	area	Shima District, Mie
-5995	area	Shima District, Toba, Mie
-5996	area	Watarai District, Mie
-5997	area	Shima District, Mie
-5998	area	Shima District, Mie
-599	area	Ise, Toba, Mie
-59	area	Age District, Hisai, Ichishi District, Tsu, Uda District, Nara, Mie
-6	area	Amagasaki, Higashiōsaka, Ibaraki, Ikeda, Osaka, Itami, Kadoma, Moriguchi, Osaka, Settsu, Suita, Toyonaka, Yao, Osaka, Hyōgo
-721	area	Gose, Kawachinagano, Minamikawachi District, Tondabayashi, Osaka, Nara
-722	area	Sakai, Takaishi, Osaka
-723	area	Matsubara, Minamikawachi District, Osaka, Ōsakasayama, Tondabayashi, Osaka
-724	area	Senboku District, Osaka
-725	area	Izumi, Izumiōtsu, Senboku District, Osaka
-726	area	Ibaraki, Kyoto, Settsu, Takatsuki, Osaka
-727	area	Ikeda, Itami, Kawabe District, Kawanishi, Hyōgo, Minoh, Takarazuka, Hyōgo, Toyonaka, Toyono District, Osaka
-729	area	Fujiidera, Habikino, Higashiōsaka District, Kashiwara, Yao, Osaka
-72	area	Daitō, Hannan, Higashiōsaka, Hirakata, Izumisano, Kadoma, Kaizuka, Katano, Kishiwada, Neyagawa, Sennan District, Sennan, Shijōnawate, Osaka
-734	area	Kainan, Kaiso District, Wakayama
-73549	area	Higashimuro District, Wakayama
-7354	area	Higashimuro District, Minamimuro District, Mie, Yoshino District, Nara, Wakayama
-7355	area	Higashimuro District, Wakayama
-7356	area	Nishimuro District, Wakayama
-7357	area	Higashimuro District, Wakayama
-735	area	Minamimuro District, Shingū, Wakayama, Mie
-736	area	Hashimoto, Ito District, Naga District, Wakayama
-737	area	Arida District, Arida, Ito District, Wakayama
-738	area	Gobō, Hidaka District, Wakayama
-739	area	Hidaka District, Nishimuro District, Tanabe, Wakayama
-740	area	Takashima District, Shiga
-742	area	Nara
-7437	area	Shijōnawate, Osaka
-74395	area	Soraku District, Kyoto
-7439	area	Soekami District, Soraku District, Kyoto, Nara
-743	area	Ikoma District, Ikoma, Shiki District, Tenri, Uda District, Yamabe District, Yamatokōriyama, Nara
-7443	area	Shiki District, Nara
-744	area	Kashihara, Sakurai, Takaichi District, Yoshino District, Nara
-745	area	Gose, Ikoma District, Kashiba, Kitakatsuragi District, Shiki District, Takaichi District, Uda District, Yamatotakada, Yoshino District, Nara
-7463	area	Yoshino District, Nara
-7472	area	Gojō, Nara
-7473	area	Yoshino District, Nara
-747	area	Yoshino District, Nara
-748	area	Echi District, Gamo District, Kanzaki District, Koka District, Ōmihachiman, Yokaichi, Shiga
-749	area	Echi District, Higashiazai District, Hikone, Ika District, Inukami District, Nagahama, Sakata District, Shiga
-75	area	Kuse District, Mishima District, Osaka, Mukō, Nagaokakyō, Otokuni District, Yawata, Kyoto
-7617	area	Enuma District, Kaga, Ishikawa
-7619	area	Ishikawa District, Nomi District, Ishikawa
-761	area	Komatsu, Nomi District, Ishikawa
-763	area	Higashitonami District, Nishitonami District, Ōno District, Gifu, Tonami, Toyama
-764	area	Kaminiikawa District, Nakaniikawa District, Namerikawa, Nei District, Toyama, Toyama
-765	area	Kurobe, Shimoniikawa District, Uozu, Toyama
-766	area	Hakui, Himi, Imizu District, Nishitonami District, Oyabe, Shinminato, Takaoka, Toyama, Ishikawa
-767	area	Hakui, Kashima District, Nanao, Ishikawa
-768	area	Fugeshi District, Suzu District, Suzu, Wajima, Ishikawa
-76	area	Ishikawa District, Kahoku District, Kanazawa, Matto, Nomi District, Ishikawa
-770	area	Mikata District, Obama, Ōi District, Onyu District, Tsuruga, Fukui
-771	area	Funai District, Kameoka, Kitakuwada District, Kyoto
-772	area	Kumano District, Miyazu, Naka District, Takeno District, Yosa District, Kyoto
-773	area	Amata District, Ayabe, Fukuchiyama, Kasa District, Maizuru, Kyoto
-774	area	Jōyō, Kuse District, Kyōtanabe, Soraku District, Tsuzuki District, Uji, Kyoto
-775	area	Kyoto
-776	area	Fukui, Nyū District, Sakai District, Yoshida District, Fukui
-778	area	Imadate District, Nanjō District, Nyū District, Sabae, Takefu, Fukui
-7797	area	Asuwa District, Fukui
-779	area	Katsuyama, Ōno District, Ono, Yoshida District, Fukui
-77	area	Kurita District, Kusatsu, Moriyama, Ōtsu, Shiga District, Yasu District, Shiga
-78	area	Akashi, Kako District, Kakogawa, Kobe, Nishinomiya, Hyōgo
-790	area	Kanzaki District, Kasai, Sayō District, Shisō District, Hyōgo
-7912	area	Aioi, Hyōgo
-7914	area	Ako, Hyōgo
-7915	area	Akō District, Hyōgo
-791	area	Ibo District, Tatsuno, Hyōgo
-792	area	Himeji, Ibo District, Kanzaki District, Hyōgo
-7932	area	Ibo District, Shikama District, Hyōgo
-7933	area	Shikama District, Hyōgo
-794	area	Kako District, Kakogawa, Miki, Mino District, Ono, Takasago, Hyōgo
-795	area	Hikami District, Kako District, Nishiwaki, Ono, Sanda, Taka District, Hyōgo
-796	area	Asago District, Izushi District, Kinosaki District, Mikata District, Toyooka, Yabu District, Hyōgo
-797	area	Ashiya, Kobe, Nishinomiya, Takarazuka, Hyōgo
-798	area	Ashiya, Nishinomiya, Takarazuka, Hyōgo
-799	area	Mihara District, Sumoto, Tsuna District, Hyōgo
-8207	area	Ōshima District, Yamaguchi
-820	area	Kuga District, Kumage District, Yanai, Yamaguchi
-823	area	Aki District, Kamo District, Kure, Saeki District, Toyota District, Hiroshima
-8247	area	Shōbara, Hiroshima
-82485	area	Hiba District, Hiroshima
-82486	area	Hiba District, Hiroshima
-82488	area	Kōnu District, Shōbara, Hiroshima
-8248	area	Hiba District, Hiroshima
-824	area	Futami District, Higashihiroshima, Kamo District, Miyoshi, Takata District, Toyota District, Hiroshima
-8262	area	Saeki District, Yamagata District, Hiroshima
-826	area	Miyoshi, Takata District, Yamagata District, Hiroshima
-8275	area	Iwakuni, Kuga District, Ōtake, Saeki District, Hiroshima, Yamaguchi
-827	area	Iwakuni, Kuga District, Yamaguchi
-829	area	Saeki District, Hiroshima
-82	area	Aki District, Hatsukaichi, Hiroshima
-832	area	Shimonoseki, Toyora District, Yamaguchi
-833	area	Hikari, Kumage District, Shimonoseki, Yamaguchi
-834	area	Shinnan'yō, Tokuyama, Tsuno District, Yamaguchi
-835	area	Hōfu, Saba District, Yamaguchi
-836	area	Asa District, Onoda, Ube, Yoshiki District, Yamaguchi
-8375	area	Mine, Yamaguchi
-8376	area	Mine District, Toyora District, Yamaguchi
-837	area	Nagato, Otsu District, Toyora District, Yamaguchi
-8387	area	Abu District, Yamaguchi
-8388	area	Abu District, Yamaguchi
-838	area	Abu District, Hagi, Yamaguchi
-8395	area	Abu District, Yamaguchi
-8396	area	Mine District, Yamaguchi
-839	area	Yamaguchi, Yoshiki District, Yamaguchi
-8452	area	Innoshima, Toyota District, Hiroshima
-8466	area	Toyota District, Hiroshima
-846	area	Takehara, Toyota District, Hiroshima
-8472	area	Sera District, Hiroshima
-84732	area	Mitsugi District, Toyota District, Hiroshima
-8473	area	Kamo District, Sera District, Hiroshima
-84762	area	Kōnu District, Hiroshima
-84767	area	Kōnu District, Hiroshima
-8477	area	Hiba District, Hiroshima
-8478	area	Jinseki District, Hiroshima
-847	area	Ashina District, Fuchuu, Fukuyama, Hiroshima
-8487	area	Mitsugi District, Hiroshima
-848	area	Mihara, Mitsugi District, Onomichi, Toyota District, Hiroshima
-849	area	Fukayasu District, Fukuyama, Numakuma District, Hiroshima
-8514	area	Oki District, Shimane
-852	area	Matsue, Yatsuka District, Shimane
-853	area	Hikawa District, Hirata, Izumo, Shimane
-8548	area	Nima District, Ōda, Shimane
-854	area	Iishi District, Nita District, Nogi District, Ohara District, Yasugi, Shimane
-855	area	Gōtsu, Hamada, Naka District, Nima District, Ōchi District, Shimane
-8567	area	Kanoashi District, Shimane
-856	area	Masuda, Mino District, Shimane
-857	area	Iwami District, Ketaka District, Tottori
-858	area	Kurayoshi, Saihaku District, Tōhaku District, Yazu District, Tottori
-859	area	Hino District, Saihaku District, Sakaiminato, Yonago, Tottori
-8636	area	Kojima District, Okayama
-863	area	Tamano, Okayama
-86542	area	Asakuchi District, Okayama
-8654	area	Asakuchi District, Okayama
-86554	area	Asakuchi District, Okayama
-865	area	Asakuchi District, Kasaoka, Okayama
-866	area	Ibara, Jobo District, Kawakami District, Kibi District, Mitsu District, Oda District, Shitsuki District, Soja, Takahashi, Tsukubo District, Okayama
-867	area	Atetsu District, Kume District, Maniwa District, Mitsu District, Niimi, Tomata District, Okayama
-8687	area	Aida District, Katsuta District, Kume District, Okayama
-868	area	Katsuta District, Kume District, Tomata District, Tsuyama, Okayama
-86926	area	Oku District, Okayama
-8692	area	Oku District, Okayama
-8695	area	Akaiwa District, Kume District, Wake District, Okayama
-8699	area	Akaiwa District, Okayama
-869	area	Bizen, Oku District, Wake District, Okayama
-86	area	Akaiwa District, Asakuchi District, Kibi District, Kojima District, Kurashiki, Okayama, Oku District, Tamano, Tsukubo District, Okayama
-875	area	Kanonji, Mitoyo District, Kagawa
-877	area	Ayauta District, Marugame, Nakatado District, Sakaide, Zentsuji, Kagawa
-879	area	Okawa District, Shozu District, Kagawa
-87	area	Ayauta District, Kagawa District, Kita District, Okawa District, Takamatsu, Kagawa
-8802	area	Hata District, Takaoka District, Kōchi
-8808	area	Tosashimizu, Kōchi
-880	area	Hata District, Nakamura, Sukumo, Tosashimizu, Kōchi
-883	area	Awa District, Mima District, Miyoshi District, Oe District, Tokushima
-8846	area	Naka District, Tokushima
-8847	area	Kaifu District, Tokushima
-884	area	Anan, Naka District, Tokushima
-8853	area	Komatsushima, Naka District, Tokushima District, Tokushima
-8854	area	Katsura District, Tokushima
-886	area	Itano District, Komatsushima, Miyoshi District, Myodo District, Myozai District, Naruto, Tokushima
-8872	area	Aki District, Muroto, Kōchi
-8873	area	Aki District, Aki, Kōchi
-8874	area	Aki District, Kōchi
-8875	area	Kami District, Nagaoka District, Kōchi
-887	area	Nagaoka District, Tosa District, Kōchi
-888	area	Agawa District, Kami District, Kōchi, Nankoku, Susaki, Tosa District, Tosa, Kōchi
-889	area	Agawa District, Susaki, Takaoka District, Kōchi
-892	area	Kamiukena District, Ehime
-893	area	Kita District, Ōzu, Ehime
-894	area	Higashiuwa District, Nishiuwa District, Yawatahama, Ehime
-895	area	Kitauwa District, Minamiuwa District, Uwajima, Ehime
-896	area	Iyomishima, Kawanoe, Mitoyo District, Kagawa, Uma District, Ehime
-897	area	Niihama, Ochi District, Saijō, Shūsō District, Uma District, Ehime
-898	area	Imabari, Ochi District, Shūsō District, Tōyo, Ehime
-89	area	Hōjō, Iyo District, Iyo, Kamiukena District, Matsuyama, Onsen District, Ehime
-9204	area	Iki, Nagasaki
-9205	area	Shimoagata District, Nagasaki
-9208	area	Kamiagata District, Nagasaki
-92	area	Asakura District, Chikushi District, Chikushino, Dazaifu, Fukuoka, Itoshima District, Kanzaki District, Saga, Kasuga, Kasuya District, Koga, Maebaru, Ogori, Onojo, Fukuoka
-9302	area	Miyako District, Fukuoka
-93032	area	Miyako District, Fukuoka
-93033	area	Miyako District, Fukuoka
-9304	area	Miyako District, Fukuoka
-9305	area	Chikujo District, Fukuoka
-930	area	Yukuhashi, Fukuoka
-933	area	Kawanabe District, Kagoshima
-93	area	akeako District, Kitakyushu, Nakama, Onga District, Fukuoka
-940	area	Fukutsu, Munakata, Fukuoka
-942	area	Chikugo, Kurume, Mii District, Miyaki District, Saga, Miyama, Mizuma District, Ogori, Tosu, Saga, Yame District, Fukuoka
-9437	area	Asakura District, Hita District, Ōita, Ukiha District, Fukuoka
-943	area	Yame District, Yame, Fukuoka
-944	area	Arao, Chikugo, Miike District, Miyama, Mizuma District, Okawa, Omuta, Yanagawa, Fukuoka, Kumamoto
-946	area	Amagi, Asakura District, Ukiha District, Fukuoka
-947	area	Nogata, Tagawa District, Tagawa, Fukuoka
-948	area	Iizuka, Kaho District, Yamada, Fukuoka
-9492	area	Kurate District, Nogata, Fukuoka
-9493	area	Kurate District, Fukuoka
-9496	area	Iizuka, Kaho District, Fukuoka
-950	area	Hirado, Kitamatsuura District, Nagasaki
-952	area	Kanzaki District, Kishima District, Miyaki District, Ogi District, Saga District, Saga, Taku, Saga
-9546	area	Fujitsu District, Kashima, Kishima District, Saga
-954	area	Fujitsu District, Kishima District, Takeo, Saga
-955	area	Higashimatsuura District, Imari, Karatsu, Nishimatsuura District, Saga
-956	area	Higashisonogi District, Kitamatsuura District, Matsuura, Sasebo, Nagasaki
-957	area	Higashisonogi District, Isahaya, Kitatakaki District, Minamitakaki District, Nishisonogi District, Omura, Shimabara, Nagasaki
-959	area	Fukue, Kitamatsuura District, Minamimatsura District, Nishisonogi District, Nagasaki
-95	area	Nagasaki, Nishisonogi District, Nagasaki
-964	area	Amakusa District, Shimomashiki District, Uto District, Uto, Yatsushiro District, Kumamoto
-965	area	Yatsushiro, Kumamoto
-966	area	Ashikita District, Hitoyoshi, Koyu District, Miyazaki, Kuma District, Minamata, Kumamoto
-9676	area	Aso District, Kumamoto
-967	area	Aso District, Kamimashiki District, Kumamoto
-968	area	Kamoto District, Kikuchi District, Kikuchi, Tamana District, Tamana, Yamaga, Kumamoto
-9697	area	Amakusa District, Ushibuka, Kumamoto
-969	area	Amakusa District, Hondo, Kumamoto
-96	area	Aso District, Kamimashiki District, Kamoto District, Kikuchi District, Kumamoto, Shimomashiki District, Kumamoto
-972	area	Minamiamabe District, Saiki, Tsukumi, Usuki, Ōita
-9737	area	Kusu District, Ōita
-973	area	Aso District, Hita District, Hita, Ōita, Kumamoto
-974	area	Naoiri District, Ono District, Taketa, Ōita
-975	area	Kitaamabe District, Ōita District, Ōita, Ono District, Ōita
-977	area	Beppu, Hayami District, Ōita District, Ōita
-9786	area	Higashikunisaki District, Kitsuki, Ōita
-978	area	Bungotakada, Nishikunisaki District, Usa District, Usa, Ōita
-979	area	Buzen, Chikujo District, Nakatsu, Shimoge District, Ōita, Fukuoka
-9802	area	Shimajiri District, Okinawa
-9807	area	Hirara, Miyako District, Okinawa
-9808	area	Ishigaki, Yaeyama District, Okinawa
-980	area	Kunigami District, Nago, Shimajiri District, Okinawa
-982	area	Higashiusuki District, Hyuuga, Koyu District, Minamiamabe District, Ōita, Nishiusuki District, Nobeoka, Miyazaki
-983	area	Higashiusuki District, Koyu District, Saito, Miyazaki
-984	area	Ebino, Higashimorokata District, Kobayashi, Nishimorokata District, Miyazaki
-985	area	Higashimorokata District, Koyu District, Miyazaki District, Saito, Miyazaki
-986	area	Kitamorokata District, Miyakonojo, Soo District, Kagoshima, Miyazaki
-987	area	Kushima, Minaminaka District, Nichinan, Miyazaki
-98	area	Ginowan, Gushikawa, Ishikawa, Itoman, Kunigami District, Naha, Nakagami District, Shimajiri District, Urasoe, Okinawa
-9912	area	Kagoshima District, Kagoshima
-9913	area	Kagoshima District, Kagoshima
-993	area	Hioki District, Ibusuki District, Ibusuki, Kaseda, Kawanabe District, Makurazaki, Kagoshima
-9942	area	Kimotsuki District, Kagoshima
-994	area	Kanoya, Kimotsuki District, Soo District, Tarumizu, Kagoshima
-9952	area	Isa District, Okuchi, Kagoshima
-995	area	Aira District, Kokubu, Kagoshima
-9969	area	Satsuma District, Kagoshima
-996	area	Akune, Hioki District, Izumi District, Izumi, Kushikino, Satsuma District, Sendai, Kagoshima
-9972	area	Kumage District, Nishinoomote, Kagoshima
-9974	area	Kumage District, Kagoshima
-9977	area	Ōshima District, Kagoshima
-997	area	Naze, Ōshima District, Kagoshima
-99	area	Aira District, Hioki District, Kagoshima District, Kagoshima
+436	area	Ichikawa 
+438	area	Kisarazu 
+439	area	Kisarazu 
+44	area	Kawasaki 
+45	area	Yokohama 
+46	area	Atsugi and Yokosuka 
+460	area	Odawara 
+463	area	Hiratsuka 
+465	area	Odawara 
+466	area	Fujisawa 
+467	area	Fujisawa
+468	area	Kanagawa	Miura District, Miura, Yokosuka, Zushi, Kanagawa
+47	area	Ichikawa and Funabashi 
+470	area	Tateyama and Ohara
+474	area	Chiba	Chiba, Funabashi, Inba District, Kamagaya, Narashino, Yachiyo, Chiba 
+475	area	Togane and Mobara 
+476	area	Narita 
+478	area	Sawara 
+479	area	Choshi and Youkaichiba 
+48	area	Urawa and Kawaguchi and Kumagaya and Soka 
+480	area	Kuki
+485	area	Saitama	Fukaya, Gyōda, Hanyū, Kitaadachi District, Kitamoto, Kitasaitama District, Konosu, Kumagaya, Nitta District, Gunma, Ōsato District, Saitama
+489	area	Saitama	Kitakatsushika District, Koshigaya, Misato, Sōka, Yashio, Yoshikawa, Saitama
+49	area	Kawagoe
+492	area	Saitama	Fujimi, Hiki District, Iruma District, Kamifukuoka, Kawagoe, Sakado, Tsurugashima, Saitama 
+493	area	Higashimatsuyama 
+494	area	Chichibu 
+495	area	Honjo 
+4992	area	Izu oshima 
+4994	area	Miyake 
+4996	area	Hachijojima 
+4998	area	Ogasawara 
+52	area	Nagoya 
+53	area	Hamamatsu 
+531	area	Tahara
+5312	area	Aichi	Atsumi District, Aichi
+5313	area	Aichi	Atsumi District, Aichi
+53145	area	Aichi	Atsumi District, Aichi
+532	area	Toyohashi 
+533	area	Toyohashi 
+536	area	Shinshiro and Shitara
+5362	area	Aichi	Shinshiro, Aichi
+5363	area	Aichi	Minamishitara District, Aichi
+5366	area	Aichi	Kitashitara District, Aichi
+5367	area	Aichi	Kitashitara District, Aichi
+5368	area	Aichi	Kitashitara District, Aichi
+53683	area	Aichi	Kitashitara District, Aichi
+537	area	Kakegawa
+538	area	Iwata 
+539	area	Tenryu 
+54	area	Shizuoka
+543	area	Shizuoka	Ihara District, Shimizu, Shizuoka 
+544	area	Fujinomiya 
+545	area	Fuji 
+547	area	Shimada 
+548	area	Haibara 
+55	area	Kofu and Numazu 
+550	area	Gotenba 
+551	area	Nirasaki
+552	area	Yamanashi	Higashiyatsushiro District, Kōfu, Nakakoma District, Nishiyatsushiro District, Yamanashi 
+553	area	Yamanashi 
+554	area	Otsuki 
+555	area	Yoshida 
+556	area	Kajikazawaaoyagi and Minobu 
+557	area	Ito 
+558	area	Syuzenjiohito and Shimoda
+559	area	Shizuoka	Mishima, Numazu, Sunto District, Susono, Tagata District, Shizuoka
+56	area	Seto
+561	area	Aichi	Aichi District, Owariasahi, Seto, Aichi
+5613	area	Aichi	Aichi District, Nishikamo District, Aichi
+5617	area	Aichi	Aichi District, Nisshin, Aichi
+562	area	Owariyokosuka 
+563	area	Nishio 
+564	area	Okazaki 
+565	area	Toyota 
+566	area	Kariya 
+567	area	Tsushima
+5675	area	Aichi	Ama District, Aichi
+5679	area	Aichi	Ama District, Aichi 
+568	area	Kasugai 
+569	area	Handa 
+572	area	Tajimi 
+573	area	Ena and Nakatsugawa
+574	area	Minokamo and Minoshirakawa 
+575	area	Seki and Gujoyahata 
+576	area	Gero 
+5769	area	Shoukawa 
+577	area	Takayama 
+578	area	Kamioka 
+58	area	Gifu 
+581	area	Takatomi
+58138	area	Gifu	Motosu District, Gifu
+58139	area	Gifu	Ibi District, Gifu
+58157	area	Gifu	Mugi District, Gifu
+58158	area	Gifu	Mugi District, Gifu
+583	area	Gifu	Kakamigahara, Gifu
+584	area	Ogaki 
+585	area	Ibigawa
+5958	area	Mie	Kameyama, Mie
+5959	area	Mie	Suzuka District, Mie
+586	area	Ichinomiya
+58689	area	Gifu	Hashima District, Gifu 
+587	area	Ichinomiya 
+59	area	Tsu and Yokkaichi
+593	area	Mie	Mie District, Suzuka, Yokkaichi, Mie
+594	area	Kuwana 
+595	area	Ueno and Kameyama 
+596	area	Ise 
+597	area	Owase and Kumano
+5972	area	Mie	Owase, Mie
+5973	area	Mie	Kitamuro District, Mie
+5974	area	Mie	Kitamuro District, Mie
+5978	area	Mie	Kumano, Mie
+5979	area	Kumano 
+598	area	Matsuzaka and Misedani
+5983	area	Mie	Taki District, Mie
+59832	area	Mie	Iinan District, Mie
+5984	area	Mie	Ichishi District, Iinan District, Mie
+59849	area	Mie	Taki District, Mie
+59856	area	Mie	Ichishi District, Mie
+5987	area	Mie	Taki District, Watarai District, Mie
+59872	area	Mie	Watarai District, Mie
+598	area	Mie	Ichishi District, Matsusaka, Mie
+5988	area	Mie	Taki District, Watarai District, 
+599	area	Ago
+5994	area	Mie	Shima District, Mie
+5995	area	Mie	Shima District, Toba, Mie
+5996	area	Mie	Watarai District, Mie
+5997	area	Mie	Shima District, Mie
+5998	area	Mie	Shima District, Mie
+6	area	Osaka 
+72	area	Neyagawa and Sakai and Kishiwadakaizuka and Ibaraki and Ikeda and Yao 
+721	area	Tondabayashi
+722	area	Osaka	Sakai, Takaishi, Osaka
+723	area	Osaka	Matsubara, Minamikawachi District, Osaka, Ōsakasayama, Tondabayashi, Osaka
+724	area	Osaka	Senboku District, Osaka 
+725	area	Izumi
+726	area	Osaka	Ibaraki, Kyoto, Settsu, Takatsuki, Osaka
+727	area	Osaka	Ikeda, Itami, Kawabe District, Kawanishi, Hyōgo, Minoh, Takarazuka, Hyōgo, Toyonaka, Toyono District, Osaka
+729	area	Osaka	Fujiidera, Habikino, Higashiōsaka District, Kashiwara, Yao, Osaka 
+73	area	Wakayama
+734	area	Wakayama	Kainan, Kaiso District, Wakayama
+735	area	Shingu and Kushimoto
+7354	area	Wakayama	Higashimuro District, Minamimuro District, Mie, Yoshino District, Nara, Wakayama
+73549	area	Wakayama	Higashimuro District, Wakayama
+7355	area	Wakayama	Higashimuro District, Wakayama
+7356	area	Wakayama	Nishimuro District, Wakayama
+7357	area	Wakayama	Higashimuro District, Wakayama 
+736	area	Iwade and Wakayamahashimoto 
+737	area	Yuasa 
+738	area	Gobo 
+739	area	Tanabe 
+740	area	Imazu 
+742	area	Nara 
+743	area	Nara
+7437	area	Osaka	Shijōnawate, Osaka
+7439	area	Nara	Soekami District, Soraku District, Kyoto, Nara
+74395	area	Kyoto	Soraku District, Kyoto
+744	area	Yamatotakada
+7443	area	Nara	Shiki District, Nara  
+745	area	Yamatotakada and Yamatohaibara 
+746	area	Yoshino and Totsukawa
+7463	area	Nara	Yoshino District, Nara 
+7468	area	Kamikitayama 
+747	area	Gojo and Shimoichi
+7472	area	Nara	Gojō, Nara
+7473	area	Nara	Yoshino District, Nara 
+748	area	Yokaichi and Minakuchi 
+749	area	Hikone and Nagahama 
+75	area	Kyoto 
+76	area	Kanazawa and Toyama 
+761	area	Kaga
+7617	area	Ishikawa	Enuma District, Kaga, Ishikawa
+7619	area	Ishikawa	Ishikawa District, Nomi District, Ishikawa 
+763	area	Fukuno
+764	area	Toyama	Kaminiikawa District, Nakaniikawa District, Namerikawa, Nei District, Toyama, Toyama 
+765	area	Uozu 
+766	area	Takaoka 
+767	area	Nanao and Hakui 
+768	area	Wajima and Noto 
+77	area	Otsu 
+770	area	Tsuruga and Obama 
+771	area	Kameoka and Sonobe 
+772	area	Miyazu and Mineyama 
+773	area	Fukuchiyama and Maizuru 
+774	area	Uji
+775	area	Kyoto 
+776	area	Fukui 
+778	area	Takefu 
+779	area	Ono
+7797	area	Fukui	Asuwa District, Fukui 
+78	area	Kobe 
+79	area	Himeji and Kakogawa and Mita and Yoka 
+790	area	Harimayamasaki and Fukusaki 
+791	area	Tatsuno and Aioi
+7912	area	Hyōgo	Aioi, Hyōgo
+7914	area	Hyōgo	Ako, Hyōgo
+7915	area	Hyōgo	Akō District, Hyōgo
+792	area	Hyōgo	Himeji, Ibo District, Kanzaki District, Hyōgo
+7932	area	Hyōgo	Ibo District, Shikama District, Hyōgo
+7933	area	Hyōgo	Shikama District, Hyōgo
+794	area	Miki 
+795	area	Nishiwaki and Tanbakaibara 
+796	area	Toyooka and Hamasaka 
+797	area	Nishinomiya 
+798	area	Nishinomiya 
+799	area	Sumoto and Tsuna 
+82	area	Hiroshima and Higashihiroshima 
+820	area	Yanai and Kuka
+8207	area	Yamaguchi	Ōshima District, Yamaguchi 
+823	area	Kure 
+824	area	Miyoshi and Shobara
+8247	area	Hiroshima	Shōbara, Hiroshima
+8248	area	Hiroshima	Hiba District, Hiroshima
+82485	area	Hiroshima	Hiba District, Hiroshima
+82486	area	Hiroshima	Hiba District, Hiroshima
+82488	area	Hiroshima	Kōnu District, Shōbara, Hiroshima 
+826	area	Chiyoda and Akiyoshida and Kake
+8262	area	Hiroshima	Saeki District, Yamagata District, Hiroshima
+827	area	Iwakuni 
+829	area	Hatsukaichi 
+83	area	Shimonoseki and Yamaguchi
+832	area	Yamaguchi	Shimonoseki, Toyora District, Yamaguchi 
+833	area	Kudamatsu 
+834	area	Tokuyama 
+835	area	Hofu 
+836	area	Ube 
+837	area	Nagato and Mine
+8375	area	Yamaguchi	Mine, Yamaguchi
+8376	area	Yamaguchi	Mine District, Toyora District, Yamaguchi 
+838	area	Hagi
+8387	area	Tamagawa 
+8388	area	Tamagawa
+839	area	Yamaguchi	Yamaguchi, Yoshiki District, Yamaguchi
+8395	area	Yamaguchi	Abu District, Yamaguchi 
+8396	area	Yamaguti 
+84	area	Onomichi and Fukuyama 
+845	area	Innoshima
+8452	area	Hiroshima	Innoshima, Toyota District, Hiroshima
+8466	area	Hiroshima	Toyota District, Hiroshima 
+846	area	Takehara and Kinoe 
+847	area	Fuchu and Kozan and Tojo
+8472	area	Hiroshima	Sera District, Hiroshima
+8473	area	Hiroshima	Kamo District, Sera District, Hiroshima
+84732	area	Hiroshima	Mitsugi District, Toyota District, Hiroshima
+84762	area	Hiroshima	Kōnu District, Hiroshima
+84767	area	Hiroshima	Kōnu District, Hiroshima 
+8477	area	Tojo
+8478	area	Hiroshima	Jinseki District, Hiroshima 
+848	area	Onomichi
+8487	area	Hiroshima	Mitsugi District, Hiroshima
+849	area	Hiroshima	Fukayasu District, Fukuyama, Numakuma District, Hiroshima 
+8512	area	Saigo 
+8514	area	Ama 
+852	area	Matsue 
+853	area	Izumo 
+854	area	Yasugi and Kisuki and Kakeya and Iwamioda
+8548	area	Shimane	Nima District, Ōda, Shimane 
+855	area	Hamada and Gotsu and Kawamoto 
+856	area	Masuta and Tsuwano
+8567	area	Shimane	Kanoashi District, Shimane 
+857	area	Tottori 
+858	area	Koge and Kurayoshi 
+859	area	Yonago and Neu 
+86	area	Akaiwa and Kurashiki and Okayama 
+863	area	Tamano
+8636	area	Okayama	Kojima District, Okayama 
+865	area	Kamogata and Kasaoka
+8654	area	Okayama	Asakuchi District, Okayama
+86542	area	Okayama	Asakuchi District, Okayama 
+866	area	Takahashi and Ibara and Soja 
+867	area	Niimi and Kamogawa and Kuse 
+868	area	Tsuyama and Mimasaka
+8687	area	Okayama	Aida District, Katsuta District, Kume District, Okayama 
+869	area	Bizen and Oku
+8692	area	Okayama	Oku District, Okayama
+8695	area	Okayama	Akaiwa District, Kume District, Wake District, Okayama
+8699	area	Okayama	Akaiwa District, Okayama
+86926	area	Okayama	Oku District, Okayama 
+87	area	Takamatsu 
+875	area	Kanonji 
+877	area	Marugame 
+879	area	Sanbonmatsu and Tonosho 
+88	area	Tokushima and Kochi 
+880	area	Tosanakamura and Sukumo and Kubokawa and Tosashimizu 
+883	area	Kamojima and Wakimachi and Awaikeda 
+884	area	Anan and Nyudani and Mugi
+8846	area	Tokushima	Naka District, Tokushima
+8847	area	Tokushima	Kaifu District, Tokushima 
+885	area	Komatsushima
+8853	area	Tokushima	Komatsushima, Naka District, Tokushima District, Tokushima
+8854	area	Tokushima	Katsura District, Tokushima
+886	area	Tokushima	Itano District, Komatsushima, Miyoshi District, Myodo District, Myozai District, Naruto, Tokushima 
+887	area	Reihoku and Muroto and Aki and Tosayamada
+8872	area	Kōchi	Aki District, Muroto, Kōchi
+8873	area	Kōchi	Aki District, Aki, Kōchi
+8874	area	Kōchi	Aki District, Kōchi
+8875	area	Kōchi	Kami District, Nagaoka District, Kōchi 
+888	area	Kōchi	Agawa District, Kami District, Kōchi, Nankoku, Susaki, Tosa District, Tosa, Kōchi
+889	area	Sakawa and Susaki 
+89	area	Matsuyama 
+892	area	Kuma 
+893	area	Ozu 
+894	area	Yawatahama and Uwa 
+895	area	Uwajima and Misho 
+896	area	Iyomishima 
+897	area	Hakata and Nihama 
+898	area	Imabari 
+92	area	Maebaru and Fukuoka 
+920	area	Gonoura and Izuhara and Tsushimasaga
+9204	area	Nagasaki	Iki, Nagasaki
+9205	area	Nagasaki	Shimoagata District, Nagasaki
+9208	area	Nagasaki	Kamiagata District, Nagasaki 
+93	area	Kitakyushu 
+930	area	Yukuhashi
+9302	area	Fukuoka	Miyako District, Fukuoka
+93032	area	Fukuoka	Miyako District, Fukuoka
+93033	area	Fukuoka	Miyako District, Fukuoka
+9304	area	Fukuoka	Miyako District, Fukuoka
+9305	area	Fukuoka	Chikujo District, Fukuoka
+933	area	Kagoshima	Kawanabe District, Kagoshima 
+940	area	Munakata 
+942	area	Kurume 
+943	area	Yame and Tanushimaru 
+944	area	Setaka 
+946	area	Amagi 
+947	area	Tagawa 
+948	area	Iizuka 
+949	area	Nogata
+9492	area	Fukuoka	Kurate District, Nogata, Fukuoka
+9493	area	Fukuoka	Kurate District, Fukuoka 
+9496	area	Nogata 
+95	area	Nagasaki 
+950	area	Hirado 
+952	area	Saga 
+954	area	Takeo and Kashima
+9546	area	Saga	Fujitsu District, Kashima, Kishima District, Saga 
+955	area	Karatsu and Imari 
+956	area	Sasebo 
+957	area	Isahaya and Shimabara 
+959	area	Oseto and Fukue and Arikawa 
+96	area	Kumamoto 
+964	area	Matsubase 
+965	area	Yatsushiro 
+966	area	Hitoyoshi and Minamata 
+967	area	Kumamotoichinomiya and Yabe and Takamori
+9676	area	Kumamoto	Aso District, Kumamoto 
+968	area	Yamaga and Tamana 
+969	area	Amakusa
+9697	area	Kumamoto	Amakusa District, Ushibuka, Kumamoto 
+97	area	Oita 
+972	area	Saeki and Usuki 
+973	area	Hita and Kusu
+9737	area	Ōita	Kusu District, Ōita 
+974	area	Mie and Taketa
+975	area	Ōita	Kitaamabe District, Ōita District, Ōita, Ono District, Ōita 
+977	area	Beppu 
+978	area	Kunisaki and Bungotakada and Kitsuki 
+979	area	Nakatsu 
+98	area	Naha 
+980	area	Nago and Okinawamiyako and Yaeyama 
+9802	area	Minamidaito
+9807	area	Okinawa	Hirara, Miyako District, Okinawa
+9808	area	Okinawa	Ishigaki, Yaeyama District, Okinawa 
+982	area	Nobeoka and Hyuga and Takachiho 
+983	area	Takanabe 
+984	area	Kobayashi 
+985	area	Miyazaki 
+986	area	Miyakonojo 
+987	area	Nichinan 
+99	area	Kagoshima and Shibushi 
+9912	area	Nakanoshima 
+9913	area	Iojima 
+993	area	Ibusuki and Kaseda 
+994	area	Kanoya and Onejime
+9942	area	Kagoshima	Kimotsuki District, Kagoshima 
+995	area	Kajiki and Okuchi
+9952	area	Kagoshima	Isa District, Okuchi, Kagoshima 
+996	area	Izumi and Sendai 
+9969	area	Nakakoshiki 
+997	area	Naze and Tokunoshima and Tanegashima and Yakushima and Setouchi
+9972	area	Kagoshima	Kumage District, Nishinoomote, Kagoshima
+9974	area	Kagoshima	Kumage District, Kagoshima
+9977	area	Kagoshima	Ōshima District, Kagoshima 

@@ -656,8 +656,8 @@ function testFRService() {
 			code: "FR"
 		},
 		area: {
-			sn: "Numéro de service",
-			ln: "Numéro de service"
+			sn: "Numéro de mobile",
+			ln: "Numéro de mobile en les Îles de Guadeloupe, Saint-Barthélemy ou Saint-Martin"
 		}
 	};
 	
@@ -706,8 +706,8 @@ function testFRFreephone() {
 			code: "FR"
 		},
 		area: {
-			sn: "Numéro de service",
-			ln: "Numéro de service"
+			sn: "Numéro gratuit",
+			ln: "Numéro gratuit (Numéros Verts)"
 		}
 	};
 	
@@ -731,8 +731,8 @@ function testFRToll() {
 			code: "FR"
 		},
 		area: {
-			sn: "Numéro de service",
-			ln: "Numéro de service"
+			sn: "Appel payant",
+			ln: "Appel payant au tarif local (Numéros Azurs)"
 		}
 	};
 	

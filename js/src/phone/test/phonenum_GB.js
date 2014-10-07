@@ -49,7 +49,8 @@ function testParseGBBogusPrefix(){
 	
 	var expected = new ilib.PhoneNumber({
 		trunkAccess: "0",
-		subscriberNumber: "669812345"
+		subscriberNumber: "669812345",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));
@@ -139,7 +140,7 @@ function testParseGBNoAreaCode(){
 	
 };
 
-function testParseInvalidLocalNumber(){
+function testParseGBInvalidLocalNumber(){
 	var parsed = new ilib.PhoneNumber("12345678", {locale: "en-GB"});
 	assertNotUndefined(parsed);
 	
@@ -417,7 +418,7 @@ function testParseGBPartial11(){
 	
 };
 
-function testParseWithUSMCC(){
+function testParseGBWithUSMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-GB", mcc: "316"});
 	assertNotUndefined(parsed);
 	
@@ -430,7 +431,7 @@ function testParseWithUSMCC(){
 	
 };
 
-function testParseWithFRMCC(){
+function testParseGBWithFRMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-GB", mcc: "208"});
 	assertNotUndefined(parsed);
 	
@@ -442,7 +443,7 @@ function testParseWithFRMCC(){
 	
 };
 
-function testParseWithMXMCC(){
+function testParseGBWithMXMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-GB", mcc: "334"});
 	assertNotUndefined(parsed);
 	
@@ -455,7 +456,7 @@ function testParseWithMXMCC(){
 	
 };
 
-function testParseWithDEMCC(){
+function testParseGBWithDEMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-GB", mcc: "262"});
 	assertNotUndefined(parsed);
 	
@@ -467,12 +468,13 @@ function testParseWithDEMCC(){
 	
 };
 
-function testParseWithGBMCC(){
+function testParseGBWithGBMCC(){
 	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-GB", mcc: "235"});
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		subscriberNumber: "6153222313"
+		subscriberNumber: "6153222313",
+		invalid: true
 	}, {locale: "en-GB"});
 	
 	assertTrue(parsed.equals(expected));

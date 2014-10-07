@@ -1,7 +1,7 @@
 {
     "region": "ES",
     "skipTrunk": true,
-    "trunkCode": "0",
+    "trunkCode": "",
     "iddCode": "00",
     "dialingPlan": "closed",
     "commonFormatChars": " ()-",
@@ -12,6 +12,7 @@
         "serviceCode": 3,
         "emergency": 0,
         "minLocalLength": 9,
-        "personal": 3
+        "personal": 3,
+        "service2": 3
     }
 }
