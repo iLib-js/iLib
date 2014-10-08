@@ -58,7 +58,7 @@
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
 	},
-	"브라켓": {
+	"괄호": {
 		"example":          "(033) 1234-5678",
 		"iddPrefix":        ["X", "XX ", "XXX "],
 		"countryCode":      ["X ", "XX ", "XXX "],

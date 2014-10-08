@@ -41,7 +41,7 @@ function testFormatStyle1() {
 	});
 	var expected = "(02) 3452-3434";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -467,7 +467,7 @@ function testFormatStyle1Partial0() {
 	});
 	var expected = "0";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -480,7 +480,7 @@ function testFormatStyle1Partial1() {
 	});
 	var expected = "03";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -493,7 +493,7 @@ function testFormatStyle1Partial2() {
 	});
 	var expected = "(033) ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -507,7 +507,7 @@ function testFormatStyle1Partial3() {
 	});
 	var expected = "(033) 1";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -521,7 +521,7 @@ function testFormatStyle1Partial4() {
 	});
 	var expected = "(033) 12";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -535,7 +535,7 @@ function testFormatStyle1Partial5() {
 	});
 	var expected = "(033) 123";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -549,7 +549,7 @@ function testFormatStyle1Partial6() {
 	});
 	var expected = "(033) 123-4";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -563,7 +563,7 @@ function testFormatStyle1Partial7() {
 	});
 	var expected = "(033) 123-45";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -577,7 +577,7 @@ function testFormatStyle1Partial8() {
 	});
 	var expected = "(033) 123-456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -591,7 +591,7 @@ function testFormatStyle1Partial9() {
 	});
 	var expected = "(033) 123-4567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -605,7 +605,7 @@ function testFormatStyle1Partial10() {
 	});
 	var expected = "(033) 1234-5678";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "브라켓"});
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "괄호"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
