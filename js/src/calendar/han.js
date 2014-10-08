@@ -35,27 +35,6 @@ ilib.Cal.Han = function() {
 };
 
 /**
- * @private
- * @const
- * @type Array.<number> 
- * the lengths of each month 
- */
-ilib.Cal.Han.monthLengths = [
-	31,  // Farvardin
-	31,  // Ordibehesht
-	31,  // Khordad
-	31,  // Tir
-	31,  // Mordad
-	31,  // Shahrivar
-	30,  // Mehr
-	30,  // Aban
-	30,  // Azar
-	30,  // Dey
-	30,  // Bahman
-	29   // Esfand
-];
-
-/**
  * Return the number of months in the given year. The number of months in a year varies
  * for some luni-solar calendars because in some years, an extra month is needed to extend the 
  * days in a year to an entire solar year. The month is represented as a 1-based number
@@ -65,7 +44,7 @@ ilib.Cal.Han.monthLengths = [
  * @return {number} The number of months in the given year
  */
 ilib.Cal.Han.prototype.getNumMonths = function(year) {
-	return 12;
+	return this.isLeapYear(year) ? 13 : 12;
 };
 
 /**
@@ -78,12 +57,8 @@ ilib.Cal.Han.prototype.getNumMonths = function(year) {
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Han.prototype.getMonLength = function(month, year) {
-	if (month !== 12 || !this.isLeapYear(year)) {
-		return ilib.Cal.Han.monthLengths[month-1];
-	} else {
-		// Month 12, Esfand, has 30 days instead of 29 in leap years
-		return 30;
-	}
+	// distance between two new moons in Nanjing China
+	return 30;
 };
 
 /**
