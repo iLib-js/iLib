@@ -98,27 +98,27 @@ ilib.UnitFmt = function(options) {
 	this.locale = new ilib.Locale();
 	
 	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (typeof(options.sync) === 'boolean') {
-			sync = options.sync;
-		}
-		
-		loadParams = options.loadParams;
+            if (options.locale) {
+                    this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+            }
+
+            if (typeof(options.sync) === 'boolean') {
+                    sync = options.sync;
+            }
+
+            loadParams = options.loadParams;
                 
-        if (options.length) {
-            length = options.length;
-        }
-        
-        if (typeof(options.autoScale) === 'boolean') {
-            this.scale = options.autoScale;
-        }
-        
-        if (options.measurementSystem) {
-            this.measurementSystem = options.measurementSystem;
-        }
+            if (options.length) {
+                length = options.length;
+            }
+
+            if (typeof(options.autoScale) === 'boolean') {
+                this.scale = options.autoScale;
+            }
+
+            if (options.measurementSystem) {
+                this.measurementSystem = options.measurementSystem;
+            }
 	}
         
 	if (!ilib.UnitFmt.cache) {

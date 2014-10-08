@@ -72,6 +72,9 @@ ilib.Measurement.Speed.metricSystem      = {"kilometer/hour":1,"meters/second":5
 ilib.Measurement.Speed.imperialSystem    = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
 ilib.Measurement.Speed.uscustomarySystem = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
 
+ilib.Measurement.Speed.metricToUScustomary = {"kilometer/hour":"miles/hour","meters/second":"feet/second","kilometer/second":"miles/second"};
+ilib.Measurement.Speed.UScustomaryTometric = {"miles/hour":"kilometer/hour","feet/second":"meters/second","miles/second":"kilometer/second","knot":"kilometer/hour"};
+
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
 ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
@@ -136,6 +139,19 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 		unit: munit,
 		amount: speed
     });    
+};
+
+ilib.Measurement.Speed.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US" || locale === "en-UK") {
+        to = ilib.Measurement.Speed.metricToUScustomary[this.unit] || this.unit;
+    } else {
+        to = ilib.Measurement.Speed.UScustomaryTometric[this.unit] || this.unit;
+    }
+    return new ilib.Measurement.Speed({
+		unit: to,
+		amount: this
+    });
 };
 
 ilib.Measurement.Speed.aliases = {

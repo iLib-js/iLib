@@ -120,6 +120,42 @@ function testSpeedScale4() {
 	assertEquals("knot", m.unit);
 }
 
+function testSpeedLocalize1() {
+	var m = new ilib.Measurement.Speed({
+		unit: "miles/hour",
+		amount: 1000
+	});
+
+	m = m.localize("en-IN");
+
+	assertRoughlyEquals(1609.34, m.amount, 0.01);
+	assertEquals("kilometer/hour", m.unit);
+}
+
+function testSpeedLocalize2() {
+	var m = new ilib.Measurement.Speed({
+		unit: "kilometer/hour",
+		amount: 1000
+	});
+
+	m = m.localize("en-US");
+
+	assertRoughlyEquals(621.371, m.amount, 0.001);
+	assertEquals("miles/hour", m.unit);
+}
+
+function testSpeedLocalize3() {
+	var m = new ilib.Measurement.Speed({
+		unit: "miles/hour",
+		amount: 1000
+	});
+
+	m = m.localize("en-UK");
+
+	assertEquals(1000, m.amount);
+	assertEquals("miles/hour", m.unit);
+}
+
 function testSpeedGetMeasures() {
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [

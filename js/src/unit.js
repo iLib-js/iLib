@@ -220,7 +220,7 @@ ilib.Measurement.prototype = {
 	 */
 	convert: function(to) {},     
         
-    /**
+        /**
 	 * Scale the measurement unit to an acceptable level. The scaling
 	 * happens so that the integer part of the amount is as small as
 	 * possible without being below zero. This will result in the 
@@ -234,5 +234,7 @@ ilib.Measurement.prototype = {
 	 * @return {ilib.Measurement} a new instance that is scaled to the 
 	 * right level
 	 */
-	scale: function(measurementsystem) {}     
+	scale: function(measurementsystem) {},
+        
+        localize: function(locale) {}
 };
