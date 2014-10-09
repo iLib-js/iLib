@@ -62,10 +62,19 @@ ilib.Date._dcos = function(d) {
 /**
  * Return the sine of an angle given in degrees.
  * @param {number} d angle in degrees
- * @return {number} cosine of the angle.
+ * @return {number} sine of the angle.
  */  
 ilib.Date._dsin = function(d) {
 	return Math.sin(ilib.Date._dtr(d));
+};
+
+/**
+ * Return the tan of an angle given in degrees.
+ * @param {number} d angle in degrees
+ * @return {number} tan of the angle.
+ */  
+ilib.Date._dtan = function(d) {
+	return Math.tan(ilib.Date._dtr(d));
 };
 
 /**
@@ -659,30 +668,27 @@ ilib.Date._obliqeq = function (jd) {
  */
 ilib.Date._sunpos = function(jd) {
 	var ret = {}, 
-		T, T2, Omega, epsilon, epsilon0;
+		T, T2, T3, Omega, epsilon, epsilon0;
 
 	T = (jd - 2451545.0) / 36525.0;
 	//document.debug.log.value += "Sunpos.  T = " + T + "\n";
 	T2 = T * T;
-	ret.meanLongitude = 280.46646 + (36000.76983 * T) + (0.0003032 * T2);
+	T3 = T * T2;
+	ret.meanLongitude = ilib.Date._fixangle(280.46646 + 36000.76983 * T + 0.0003032 * T2);
 	//document.debug.log.value += "ret.meanLongitude = " + ret.meanLongitude + "\n";
-	ret.meanLongitude = ilib.Date._fixangle(ret.meanLongitude);
-	//document.debug.log.value += "ret.meanLongitude = " + ret.meanLongitude + "\n";
-	ret.meanAnomaly = 357.52911 + (35999.05029 * T) + (-0.0001537 * T2);
+	ret.meanAnomaly = ilib.Date._fixangle(357.52911 + (35999.05029 * T) - 0.0001537 * T2 - 0.00000048 * T3);
 	//document.debug.log.value += "ret.meanAnomaly = " + ret.meanAnomaly + "\n";
-	ret.meanAnomaly = ilib.Date._fixangle(ret.meanAnomaly);
-	//document.debug.log.value += "ret.meanAnomaly = " + ret.meanAnomaly + "\n";
-	ret.eccentricity = 0.016708634 + (-0.000042037 * T) + (-0.0000001267 * T2);
+	ret.eccentricity = 0.016708634 - 0.000042037 * T - 0.0000001267 * T2;
 	//document.debug.log.value += "e = " + e + "\n";
-	ret.equationOfCenter = ((1.914602 + (-0.004817 * T) + (-0.000014 * T2)) * ilib.Date._dsin(ret.meanAnomaly))
-			+ ((0.019993 - (0.000101 * T)) * ilib.Date._dsin(2 * ret.meanAnomaly))
+	ret.equationOfCenter = ((1.914602 - 0.004817 * T - 0.000014 * T2) * ilib.Date._dsin(ret.meanAnomaly))
+			+ ((0.019993 - 0.000101 * T) * ilib.Date._dsin(2 * ret.meanAnomaly))
 			+ (0.000289 * ilib.Date._dsin(3 * ret.meanAnomaly));
 	//document.debug.log.value += "ret.equationOfCenter = " + ret.equationOfCenter + "\n";
 	ret.sunLongitude = ret.meanLongitude + ret.equationOfCenter;
 	//document.debug.log.value += "ret.sunLongitude = " + ret.sunLongitude + "\n";
-	ret.sunAnomaly = ret.meanAnomaly + ret.equationOfCenter;
+	//ret.sunAnomaly = ret.meanAnomaly + ret.equationOfCenter;
 	//document.debug.log.value += "ret.sunAnomaly = " + ret.sunAnomaly + "\n";
-	ret.sunRadius = (1.000001018 * (1 - (ret.eccentricity * ret.eccentricity))) / (1 + (ret.eccentricity * ilib.Date._dcos(ret.sunAnomaly)));
+	// ret.sunRadius = (1.000001018 * (1 - (ret.eccentricity * ret.eccentricity))) / (1 + (ret.eccentricity * ilib.Date._dcos(ret.sunAnomaly)));
 	//document.debug.log.value += "ret.sunRadius = " + ret.sunRadius + "\n";
 	Omega = 125.04 - (1934.136 * T);
 	//document.debug.log.value += "Omega = " + Omega + "\n";
@@ -692,38 +698,18 @@ ilib.Date._sunpos = function(jd) {
 	//document.debug.log.value += "epsilon0 = " + epsilon0 + "\n";
 	epsilon = epsilon0 + (0.00256 * ilib.Date._dcos(Omega));
 	//document.debug.log.value += "epsilon = " + epsilon + "\n";
-	ret.rightAscension = ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon0) * ilib.Date._dsin(ret.sunLongitude), ilib.Date._dcos(ret.sunLongitude)));
+	//ret.rightAscension = ilib.Date._fixangle(ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon0) * ilib.Date._dsin(ret.sunLongitude), ilib.Date._dcos(ret.sunLongitude))));
 	//document.debug.log.value += "ret.rightAscension = " + ret.rightAscension + "\n";
-	ret.rightAscension = ilib.Date._fixangle(ret.rightAscension);
-	////document.debug.log.value += "ret.rightAscension = " + ret.rightAscension + "\n";
-	ret.decliation = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon0) * ilib.Date._dsin(ret.sunLongitude)));
-	////document.debug.log.value += "ret.decliation = " + ret.decliation + "\n";
-	ret.apparentRightAscension = ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon) * ilib.Date._dsin(ret.apparentLong), ilib.Date._dcos(ret.apparentLong)));
+	// ret.declination = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon0) * ilib.Date._dsin(ret.sunLongitude)));
+	////document.debug.log.value += "ret.declination = " + ret.declination + "\n";
+	ret.inclination = ilib.Date._fixangle(23.4392911 - 0.013004167 * T - 0.00000016389 * T2 + 0.0000005036 * T3);
+	ret.apparentRightAscension = ilib.Date._fixangle(ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon) * ilib.Date._dsin(ret.apparentLong), ilib.Date._dcos(ret.apparentLong))));
 	//document.debug.log.value += "ret.apparentRightAscension = " + ret.apparentRightAscension + "\n";
-	ret.apparentRightAscension = ilib.Date._fixangle(ret.apparentRightAscension);
-	//document.debug.log.value += "ret.apparentRightAscension = " + ret.apparentRightAscension + "\n";
-	ret.apparentDecliation = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon) * ilib.Date._dsin(ret.apparentLong)));
+	//ret.apparentDeclination = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon) * ilib.Date._dsin(ret.apparentLong)));
 	//document.debug.log.value += "ret.apparentDecliation = " + ret.apparentDecliation + "\n";
 
 	// Angular quantities are expressed in decimal degrees
 	return ret;
-	
-	/*
-	return {
-		meanLongitude: L0, //  [0] Geometric mean longitude of the Sun
-		meanAnomaly: M, //  [1] Mean anomaly of the Sun
-		eccentricity: e, //  [2] Eccentricity of the Earth's orbit
-		equationOfCenter: C, //  [3] Sun's equation of the Centre
-		sunLongitude: sunLong, //  [4] Sun's true longitude
-		sunAnomaly: sunAnomaly, //  [5] Sun's true anomaly
-		sunRadius: sunR, //  [6] Sun's radius vector in AU
-		apparentLong: Lambda, //  [7] Sun's apparent longitude at true equinox of the date
-		rightAscension: Alpha, //  [8] Sun's true right ascension
-		declination: Delta, //  [9] Sun's true declination
-		apparentRightAscension: AlphaApp, // [10] Sun's apparent right ascension
-		apparentDecliation: DeltaApp // [11] Sun's apparent declination
-	};
-	*/
 };
 
 ilib.Date._nutArgMult = [ 
@@ -914,4 +900,17 @@ ilib.Date._equationOfTime = function(jd) {
 	//document.debug.log.value += "Eday = " + E + "\n";
 
 	return E;
+};
+
+ilib.Date._eot = function(jd) {
+	var pos = ilib.Date._sunpos(jd);
+	var y = ilib.Date._dtan(pos.inclination/2);
+	y = y * y;
+	var anomalousEccentricity = 2 * pos.eccentricity * ilib.Date._dsin(pos.meanAnomaly);
+
+	return (y * Math.sin(2 * pos.meanLongitude) - 
+			anomalousEccentricity * (2 + 2 * y * ilib.Date._dcos(pos.meanLongitude)) -
+			0.5 * y * y * ilib.Date._dsin(4 * pos.meanLongitude) -
+			1.25 * pos.eccentricity * pos.eccentricity * ilib.Date._dsin(2 * pos.meanAnomaly)) /
+			(2 * Math.PI);
 };
