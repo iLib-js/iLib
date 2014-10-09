@@ -232,9 +232,45 @@ function testAreaScale8() {
 	assertEquals("acre", m2.unit);
 }
 
+function testAreaLocalize1() {
+    var m = new ilib.Measurement.Area({
+        unit: "square miles",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(2589.99, m.amount, 0.01);
+    assertEquals("square km", m.unit);
+}
+
+function testAreaLocalize2() {
+    var m = new ilib.Measurement.Area({
+        unit: "square km",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(386.102, m.amount, 0.001);
+    assertEquals("square mile", m.unit);
+}
+
+function testAreaLocalize3() {
+    var m = new ilib.Measurement.Area({
+        unit: "square mile",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertEquals(1000, m.amount);
+    assertEquals("square mile", m.unit);
+}
 function testAreaGetMeasures() {
 	var measures = ilib.Measurement.Area.getMeasures();
 	var expected = [
+        "square centimeter",
         "square km",
         "square inch",
         "square foot",
