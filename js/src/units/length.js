@@ -80,6 +80,10 @@ ilib.Measurement.Length.metricSystem      = {"micrometer":1,"millimeter":2,"cent
 ilib.Measurement.Length.imperialSystem    = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
 ilib.Measurement.Length.uscustomarySystem = {"inch":4,"foot":6,"yard":7,"mile":12,"nauticalmile":13};
 
+ilib.Measurement.Length.metricToUScustomary = {"micrometer":"inch","millimeter":"inch","centimeter":"inch","decimeter":"inch","meter":"yard","decameter":"yard","hectometer":"mile","kilometer":"mile","megameter":"nauticalmile","gigameter":"nauticalmile"};
+ilib.Measurement.Length.usCustomaryToMetric = {"inch":"centimeter","foot":"centimeter","yard":"meter","mile":"kilometer","nauticalmile":"kilometer"};
+
+
 ilib.Measurement.Length.prototype = new ilib.Measurement({});
 ilib.Measurement.Length.prototype.parent = ilib.Measurement;
 ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
@@ -89,6 +93,19 @@ ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
  */
 ilib.Measurement.Length.prototype.getMeasure = function() {
 	return "length";
+};
+
+ilib.Measurement.Length.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US" || locale === "en-UK") {
+        to = ilib.Measurement.Length.metricToUScustomary[this.unit] || this.unit;
+    } else {
+        to = ilib.Measurement.Length.usCustomaryToMetric[this.unit] || this.unit;
+    }
+    return new ilib.Measurement.Length({
+        unit: to,
+        amount: this
+    });
 };
 
 /**

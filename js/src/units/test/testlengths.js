@@ -248,6 +248,42 @@ function testLengthScale11() {
 	assertEquals("inch", m.unit);
 }
 
+function testLengthLocalize1() {
+    var m = new ilib.Measurement.Length({
+        unit: "miles",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(1609.34, m.amount, 0.01);
+    assertEquals("kilometer", m.unit);
+}
+
+function testLengthLocalize2() {
+    var m = new ilib.Measurement.Length({
+        unit: "kilometer",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(621.371, m.amount, 0.01);
+    assertEquals("mile", m.unit);
+}
+
+function testLengthLocalize3() {
+    var m = new ilib.Measurement.Length({
+        unit: "mile",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertEquals(1000, m.amount);
+    assertEquals("mile", m.unit);
+}
+
 function testLengthGetMeasures() {
 	var measures = ilib.Measurement.Length.getMeasures();
 	var expected = [
