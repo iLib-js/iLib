@@ -120,10 +120,10 @@ ilib._isGlobal = function(name) {
  * Depends directive: !depends ilibglobal.js
  * 
  * @static
- * @param {string} spec the locale specifier for the default locale
+ * @param {string|undefined|null} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-    if (typeof(spec) === 'string') {
+    if (typeof(spec) === 'string' || spec == undefined) {
         ilib.locale = spec;
     }
     // else ignore other data types, as we don't have the dependencies
