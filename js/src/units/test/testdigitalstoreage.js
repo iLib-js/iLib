@@ -151,6 +151,41 @@ function testDSScale6() {
         assertEquals("megabyte",m.unit);
 }
 
+function testDSaLocalize1() {
+    var m = new ilib.Measurement.DigitalStorage({
+        unit: "petaByte",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(1000, m.amount, 0.01);
+    assertEquals("petabyte", m.unit);
+}
+
+function testDSLocalize2() {
+    var m = new ilib.Measurement.DigitalStorage({
+        unit: "Kilobit",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(1000, m.amount, 0.001);
+    assertEquals("kilobit", m.unit);
+}
+
+function testDSLocalize3() {
+    var m = new ilib.Measurement.DigitalStorage({
+        unit: "Mb",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(1000, m.amount, 0.001);
+    assertEquals("megabit", m.unit);
+}
 function testDSGetMeasures() {
 	var measures = ilib.Measurement.DigitalStorage.getMeasures();
 	var expected = [

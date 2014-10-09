@@ -268,5 +268,12 @@ ilib.Measurement.DigitalStorage.getMeasures = function () {
 	return ret;
 };
 
+ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
+
+    return new ilib.Measurement.DigitalStorage({
+        unit: this.unit,
+        amount: this
+    });
+};
 //register with the factory method
 ilib.Measurement._constructors["digitalStorage"] = ilib.Measurement.DigitalStorage;
