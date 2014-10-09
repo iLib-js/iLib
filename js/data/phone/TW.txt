@@ -12,13 +12,39 @@
 
 162	service	Ring test
 
-119	emergency	Emergency Service
-110	emergency	Police Service
+^100	emergency	International Operator Assistance
+^104	emergency	Directory Assistance (Local)
+^105	emergency	Directory Assistance (Long distance)
+^106	emergency	Directory Assistance (English-speaking)
+^110	emergency	Police Service
+^112	emergency	Telephone Repair
+^117	emergency	Master Clock Time
+^119	emergency	Emergency Service (toll-free) Fire, Ambulance
+^166	emergency	Master Clock Time
+^168	emergency	Traffic Report
 
-2	area	Taipei	Taipei County 
-3	area	Taoyuan	Taoyuan, Ilan, Hsinchu, Miaoli, Hualian Counties
-4	area	Taichung	Taichung, Changhua, Nantou Counties 
-5	area	Yunlin	Yunlin County, Huwei
-6	area	Tainan	Tainan County 
-7	area	Kaohsiung	 Kaohsiung County 
-8	area	Pingtung	Pingtung and Taitung Counties
+2	area	Panchiao, Sanchung, Taipei, Yingge, Yungho, Jilong
+3	area	Tachi, Taoyuan, Zhongli
+32	area	Ruifang
+33	area	Daxi
+35	area	Xinzhu, Zhubei
+36	area	Hukou, Zhudong
+37	area	Zhunan, Miaoli
+38	area	Hualian
+39	area	Jiaoqi, Su'ao, Yilan, Luodong
+4	area	Taizhong, Wuri, Wufeng, Fengyuan, Shalong, Zhanghua, Yuanlin
+45	area	Houli, Lishan
+46	area	Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi
+47	area	Lugang
+48	area	Shetou, Tianzhong, Yongjing
+49	area	Buli, Nantou, Riyuetan, Xincun, Zhongxing
+5	area	Dalin, Jiayi, Minxiong, Beigang, Douliu 
+56	area	Huwei
+6	area	Chiali, Makung, Tainan, Shanhua
+66	area	Xinying
+69	area	Penghu
+7	area	Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying
+8	area	Chaozhou, Pingdong, Mazu
+88	area	Donggang
+89	area	Taidong
+823	area	Jinmen
