@@ -114,6 +114,18 @@ function testFuelConsumptionStaticConvert11() {
 
 }
 
+function testFuelConsumptionLocalize4() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "mpg(imp)",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertEquals(832.674, m.amount);
+    assertEquals("mpg", m.unit);
+}
+
 function testFuelConsumptionLocalize1() {
     var m = new ilib.Measurement.FuelConsumption({
         unit: "km/liter",
@@ -148,18 +160,6 @@ function testFuelConsumptionLocalize3() {
 
     assertEquals(2824.81, m.amount);
     assertEquals("mpg(imp)", m.unit);
-}
-
-function testFuelConsumptionLocalize4() {
-    var m = new ilib.Measurement.FuelConsumption({
-        unit: "mpg(imp)",
-        amount: 1000
-    });
-
-    m = m.localize("en-US");
-
-    assertEquals(832.674, m.amount);
-    assertEquals("mpg", m.unit);
 }
 
 function testFuelConsumptionLocalize5() {

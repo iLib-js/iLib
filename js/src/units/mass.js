@@ -75,9 +75,37 @@ ilib.Measurement.Mass.metricSystem      = {"microgram":1,"milligram":2,"gram":3,
 ilib.Measurement.Mass.imperialSystem    = {"ounce":4,"pound":5,"stone":7,"long ton":10};
 ilib.Measurement.Mass.uscustomarySystem = {"ounce":4,"pound":5,"short ton":8};
 
+ilib.Measurement.Mass.metricToUScustomary =   {"microgram":"ounce","milligram":"ounce","gram":"ounce","kilogram":"pound","metric ton":"long ton"};
+ilib.Measurement.Mass.metricToImperial    =   {"microgram":"ounce","milligram":"ounce","gram":"ounce","kilogram":"pound","metric ton":"short ton"};
+
+ilib.Measurement.Mass.imperialToMetric      = {"ounce":"gram","pound":"kilogram","stone":"kilogram","short ton":"metric ton"};
+ilib.Measurement.Mass.imperialToUScustomary = {"ounce":"ounce","pound":"pound","stone":"stone","short ton":"long ton"};
+
+
+ilib.Measurement.Mass.uScustomaryToImperial   = {"ounce":"ounce","pound":"pound","stone":"stone","long ton":"short ton"};
+ilib.Measurement.Mass.uScustomarylToMetric    = {"ounce":"gram","pound":"kilogram","stone":"kilogram","long ton":"metric ton"};
+
+
 ilib.Measurement.Mass.prototype = new ilib.Measurement({});
 ilib.Measurement.Mass.prototype.parent = ilib.Measurement;
 ilib.Measurement.Mass.prototype.constructor = ilib.Measurement.Mass;
+
+
+ilib.Measurement.Mass.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US") {
+        to = ilib.Measurement.Mass.metricToUScustomary[this.unit] || ilib.Measurement.Mass.imperialToUScustomary[this.unit] || this.unit;
+    } else if (locale === "en-UK") {
+        to = ilib.Measurement.Mass.metricToImperial[this.unit] || ilib.Measurement.Mass.uScustomaryToImperial[this.unit] || this.unit;
+    }
+    else
+        to = ilib.Measurement.Mass.uScustomarylToMetric[this.unit] || ilib.Measurement.Mass.imperialToUScustomary[this.unit] || this.unit;
+
+    return new ilib.Measurement.Mass({
+        unit: to,
+        amount: this
+    });
+};
 
 /**
  * @inheritDoc

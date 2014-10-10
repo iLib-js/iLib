@@ -198,6 +198,55 @@ function testMassScale10() {
 	assertEquals("pound", m.unit);
 }
 
+
+function testMassLocalize1() {
+    var m = new ilib.Measurement.Mass({
+        unit: "ounce",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(28349.5, m.amount, 0.01);
+    assertEquals("gram", m.unit);
+}
+
+function testMassLocalize2() {
+    var m = new ilib.Measurement.Mass({
+        unit: "gram",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(35.274, m.amount, 0.001);
+    assertEquals("ounce", m.unit);
+}
+
+function testMassLocalize3() {
+    var m = new ilib.Measurement.Mass({
+        unit: "long ton",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertEquals(1120, m.amount);
+    assertEquals("short ton", m.unit);
+}
+
+function testMassLocalize5() {
+    var m = new ilib.Measurement.Mass({
+        unit: "metric ton",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertRoughlyEquals(1102.31, m.amount, 0.001);
+    assertEquals("short ton", m.unit);
+}
+
 function testMassGetMeasures() {
 	var measures = ilib.Measurement.Mass.getMeasures();
 	var expected = [
