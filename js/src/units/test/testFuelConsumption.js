@@ -114,6 +114,65 @@ function testFuelConsumptionStaticConvert11() {
 
 }
 
+function testFuelConsumptionLocalize1() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(1000, m.amount, 0.01);
+    assertEquals("km/liter", m.unit);
+}
+
+function testFuelConsumptionLocalize2() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(2352.15, m.amount, 0.001);
+    assertEquals("mpg", m.unit);
+}
+
+function testFuelConsumptionLocalize3() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertEquals(2824.81, m.amount);
+    assertEquals("mpg(imp)", m.unit);
+}
+
+function testFuelConsumptionLocalize4() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "mpg(imp)",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertEquals(832.674, m.amount);
+    assertEquals("mpg", m.unit);
+}
+
+function testFuelConsumptionLocalize5() {
+    var m = new ilib.Measurement.FuelConsumption({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertRoughlyEquals(2824.81, m.amount, 0.001);
+    assertEquals("mpg(imp)", m.unit);
+}
 
 function testFuelConsumptionGetMeasures() {
 	var measures = ilib.Measurement.FuelConsumption.getMeasures();

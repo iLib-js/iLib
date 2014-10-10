@@ -117,6 +117,35 @@ ilib.Measurement.FuelConsumption.aliases = {
 	"mpg-imp":"mpg(imp)"
 };
 
+ilib.Measurement.FuelConsumption.metricToUScustomary =   {"km/liter":"mpg","liter/100km":"mpg"};
+ilib.Measurement.FuelConsumption.metricToImperial    =   {"km/liter":"mpg(imp)","liter/100km":"mpg(imp)"};
+
+ilib.Measurement.FuelConsumption.imperialToMetric      = {"mpg(imp)":"km/liter"};
+ilib.Measurement.FuelConsumption.imperialToUScustomary = {"mpg(imp)":"mpg"};
+
+
+ilib.Measurement.FuelConsumption.uScustomaryToImperial   = {"mpg":"mpg(imp)"};
+ilib.Measurement.FuelConsumption.uScustomarylToMetric    = {"mpg":"km/liter"};
+
+
+
+ilib.Measurement.FuelConsumption.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US") {
+        to = ilib.Measurement.FuelConsumption.metricToUScustomary[this.unit] || ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] || this.unit;
+    } else if (locale === "en-UK") {
+        to = ilib.Measurement.FuelConsumption.metricToImperial[this.unit] || ilib.Measurement.FuelConsumption.uScustomaryToImperial[this.unit] || this.unit;
+    }
+    else
+        to = ilib.Measurement.FuelConsumption.uScustomarylToMetric[this.unit] || ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] || this.unit;
+
+    return new ilib.Measurement.FuelConsumption({
+        unit: to,
+        amount: this
+    });
+};
+
+
 /**
  * Convert a FuelConsumption to another measure.
  * @static
