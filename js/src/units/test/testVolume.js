@@ -706,6 +706,55 @@ function testVolumeScale6() {
     assertEquals("cubic meter", m2.unit);
 }
 
+function testVolumeLocalize1() {
+    var m = new ilib.Measurement.Volume({
+        unit: "tsp",
+        amount: 1000
+    });
+
+    m = m.localize("en-IN");
+
+    assertRoughlyEquals(4928.92, m.amount, 0.01);
+    assertEquals("milliliter", m.unit);
+}
+
+function testVolumeLocalize2() {
+    var m = new ilib.Measurement.Volume({
+        unit: "liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-US");
+
+    assertRoughlyEquals(1056.69, m.amount, 0.001);
+    assertEquals("quart", m.unit);
+}
+
+function testVolumeLocalize3() {
+    var m = new ilib.Measurement.Volume({
+        unit: "liter",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertRoughlyEquals(879.877, m.amount,0.0001);
+    assertEquals("imperial quart", m.unit);
+}
+
+function testVolumeLocalize5() {
+    var m = new ilib.Measurement.Volume({
+        unit: "ounce",
+        amount: 1000
+    });
+
+    m = m.localize("en-UK");
+
+    assertRoughlyEquals(1040.84, m.amount, 0.001);
+    assertEquals("imperial ounce", m.unit);
+}
+
+
 function testVolumeGetMeasures() {
 	var measures = ilib.Measurement.Volume.getMeasures();
 	var expected = [

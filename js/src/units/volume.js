@@ -112,7 +112,8 @@ ilib.Measurement.Volume.aliases = {
 	"US Gal":"gallon",
 	"US Gallons":"gallon",
 	"Gal(US)":"gallon",
-	"gal(US)":"gallon",	    
+	"gal(US)":"gallon",
+    "quart":"quart",
 	"US quart":"quart",
 	"US quarts":"quart",
 	"US Quart":"quart",
@@ -128,6 +129,7 @@ ilib.Measurement.Volume.aliases = {
 	"US Cup":"cup",
 	"cup(US)":"cup",
 	"Cup(US)":"cup",
+    "ounce":"ounce",
 	"US ounce":"ounce",
 	"℥":"ounce",
 	"US Oz":"ounce",
@@ -138,6 +140,7 @@ ilib.Measurement.Volume.aliases = {
 	"US tablespoon":"tbsp",
 	"US tsp":"tsp",
 	"tsp(US)":"tsp",
+    "tsp":"tsp",
 	"Cubic meter":"cubic meter",
 	"cubic meter":"cubic meter",
     "Cubic metre":"cubic meter", 
@@ -228,6 +231,33 @@ ilib.Measurement.Volume.metricSystem	= {"milliliter":10, "liter":11,"cubic meter
 ilib.Measurement.Volume.imperialSystem	= {"imperial tsp":13,"imperial tbsp":14,"imperial ounce":15,"imperial pint":16,"imperial quart":17,"imperial gallon":18};
 ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"ounce":4,"cup":5,"pint":6,"quart":7,"gallon":8,"cubic foot":9};
 
+ilib.Measurement.Volume.metricToUScustomary =   {"milliliter":"tsp","liter":"quart","cubic meter":"cubic foot"};
+ilib.Measurement.Volume.metricToImperial    =   {"milliliter":"imperial tsp","liter":"imperial quart","cubic meter":"imperial gallon"}
+
+ilib.Measurement.Volume.imperialToMetric      = {"imperial tsp":"milliliter","imperial tbsp":"milliliter","imperial ounce":"milliliter","imperial pint":"liter","imperial quart":"liter","imperial gallon":"cubic meter"};
+ilib.Measurement.Volume.imperialToUScustomary = {"imperial tsp":"tsp","imperial tbsp":"tbsp","imperial ounce":"ounce","imperial pint":"pint","imperial quart":"quart","imperial gallon":"gallon"};
+
+
+ilib.Measurement.Volume.uScustomaryToImperial   = {"tsp":"imperial tsp","tbsp":"imperial tbsp","cubic inch":"imperial tbsp","ounce":"imperial ounce","cup":"imperial ounce","pint":"imperial pint","quart":"imperial quart","gallon":"imperial gallon","cubic foot":"imperial gallon"};
+ilib.Measurement.Volume.uScustomarylToMetric    = {"tsp":"milliliter","tbsp":"milliliter","cubic inch":"milliliter","ounce":"milliliter","cup":"milliliter","pint":"liter","quart":"liter","gallon":"cubic meter","cubic foot":"cubic meter"};
+
+
+
+ilib.Measurement.Volume.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US") {
+        to = ilib.Measurement.Volume.metricToUScustomary[this.unit] || ilib.Measurement.Volume.imperialToUScustomary[this.unit] || this.unit;
+    } else if (locale === "en-UK") {
+        to = ilib.Measurement.Volume.metricToImperial[this.unit] || ilib.Measurement.Volume.uScustomaryToImperial[this.unit] || this.unit;
+    }
+    else
+        to = ilib.Measurement.Volume.uScustomarylToMetric[this.unit] || ilib.Measurement.Volume.imperialToUScustomary[this.unit] || this.unit;
+
+    return new ilib.Measurement.Volume({
+        unit: to,
+        amount: this
+    });
+};
 
 /**
  * @inheritDoc
