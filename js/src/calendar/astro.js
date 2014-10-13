@@ -894,7 +894,8 @@ ilib.Date._equationOfTime = function(jd) {
 	//document.debug.log.value += "epsilon = " + epsilon + "\n";
 	E = L0 + (-0.0057183) + (-alpha) + (deltaPsi * ilib.Date._dcos(epsilon));
 	//document.debug.log.value += "E = " + E + "\n";
-	E = E - 20.0 * (Math.floor(E / 20.0));
+	// E = E - 20.0 * (Math.floor(E / 20.0));
+	E = E * 4;
 	//document.debug.log.value += "Efixed = " + E + "\n";
 	E = E / (24 * 60);
 	//document.debug.log.value += "Eday = " + E + "\n";
@@ -902,15 +903,29 @@ ilib.Date._equationOfTime = function(jd) {
 	return E;
 };
 
-ilib.Date._eot = function(jd) {
-	var pos = ilib.Date._sunpos(jd);
-	var y = ilib.Date._dtan(pos.inclination/2);
-	y = y * y;
-	var anomalousEccentricity = 2 * pos.eccentricity * ilib.Date._dsin(pos.meanAnomaly);
+/*
+ilib.Date._equationOfTime2 = function(jd) {
+    var alpha, deltaPsi, E, epsilon, L0, tau
 
-	return (y * Math.sin(2 * pos.meanLongitude) - 
-			anomalousEccentricity * (2 + 2 * y * ilib.Date._dcos(pos.meanLongitude)) -
-			0.5 * y * y * ilib.Date._dsin(4 * pos.meanLongitude) -
-			1.25 * pos.eccentricity * pos.eccentricity * ilib.Date._dsin(2 * pos.meanAnomaly)) /
-			(2 * Math.PI);
+    tau = (jd - 2451545.0) / 365250.0;
+    L0 = 280.4664567 + (360007.6982779 * tau) +
+         (0.03032028 * tau * tau) +
+         ((tau * tau * tau) / 49931) +
+         (-((tau * tau * tau * tau) / 15300)) +
+         (-((tau * tau * tau * tau * tau) / 2000000));
+    L0 = ilib.Date._fixangle(L0);
+    var pos = ilib.Date._sunpos(jd);
+	alpha = pos.apparentRightAscension;
+	// alpha = sunpos(jd)[10];
+	var nut = ilib.Date._nutation(jd);
+	deltaPsi = nut.deltaPsi;
+	// deltaPsi = nutation(jd)[0];
+	epsilon = ilib.Date._obliqeq(jd) + nut.deltaEpsilon;
+	// epsilon = obliqeq(jd) + nutation(jd)[1];
+    E = L0 + (-0.0057183) + (-alpha) + (deltaPsi * ilib.Date._dcos(epsilon));
+    E = E * 4; 
+    E = E / (24 * 60);
+
+    return E;
 };
+*/
