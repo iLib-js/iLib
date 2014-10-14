@@ -876,29 +876,38 @@ ilib.Date._equationOfTime = function(jd) {
 	// 2451545.0 is the Julian day of J2000 epoch
 	// 365250.0 is the number of days in a Julian millenium
 	tau = (jd - 2451545.0) / 365250.0;
-	//document.debug.log.value += "equationOfTime.  tau = " + tau + "\n";
+	//console.log("equationOfTime.  tau = " + tau);
 	L0 = 280.4664567 + (360007.6982779 * tau) + (0.03032028 * tau * tau)
 			+ ((tau * tau * tau) / 49931)
 			+ (-((tau * tau * tau * tau) / 15300))
 			+ (-((tau * tau * tau * tau * tau) / 2000000));
-	//document.debug.log.value += "L0 = " + L0 + "\n";
+	//console.log("L0 = " + L0);
 	L0 = ilib.Date._fixangle(L0);
-	//document.debug.log.value += "L0 = " + L0 + "\n";
+	//console.log("L0 = " + L0);
 	pos = ilib.Date._sunpos(jd);
 	alpha = pos.apparentRightAscension;
-	//document.debug.log.value += "alpha = " + alpha + "\n";
+	//console.log("alpha = " + alpha);
 	var nut = ilib.Date._nutation(jd);
 	deltaPsi = nut.deltaPsi;
-	//document.debug.log.value += "deltaPsi = " + deltaPsi + "\n";
+	//console.log("deltaPsi = " + deltaPsi);
 	epsilon = ilib.Date._obliqeq(jd) + nut.deltaEpsilon;
-	//document.debug.log.value += "epsilon = " + epsilon + "\n";
-	E = L0 + (-0.0057183) + (-alpha) + (deltaPsi * ilib.Date._dcos(epsilon));
-	//document.debug.log.value += "E = " + E + "\n";
+	//console.log("epsilon = " + epsilon);
+	//console.log("L0 - 0.0057183 = " + (L0 - 0.0057183));
+	//console.log("L0 - 0.0057183 - alpha = " + (L0 - 0.0057183 - alpha));
+	//console.log("deltaPsi * cos(epsilon) = " + deltaPsi * ilib.Date._dcos(epsilon));
+	
+	E = L0 - 0.0057183 - alpha + deltaPsi * ilib.Date._dcos(epsilon);
+	// if alpha and L0 are in different quadrants, then renormalize
+	// so that the difference between them is in the right range
+	if (E > 180) {
+		E -= 360;
+	}
+	//console.log("E = " + E);
 	// E = E - 20.0 * (Math.floor(E / 20.0));
 	E = E * 4;
-	//document.debug.log.value += "Efixed = " + E + "\n";
+	//console.log("Efixed = " + E);
 	E = E / (24 * 60);
-	//document.debug.log.value += "Eday = " + E + "\n";
+	//console.log("Eday = " + E);
 
 	return E;
 };
