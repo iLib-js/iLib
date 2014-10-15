@@ -18,8 +18,9 @@
  */
 
 /* !depends 
-date.js 
-calendar/han.js 
+date.js
+calendar/gregoriandate.js 
+calendar/han.js
 util/utils.js
 util/search.js 
 localeinfo.js 
@@ -36,6 +37,12 @@ julianday.js
  * 
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>cycle</i> - any integer giving the number of 60-year cycle in which the date is located.
+ * If the cycle is not given but the year is, it is assumed that the year parameter is a fictitious 
+ * linear count of years since the beginning of the epoch, much like other calendars. This linear
+ * count is never used. If both the cycle and year are given, the year is wrapped to the range 0 
+ * to 60 and treated as if it were a year in the regular 60-year cycle.
  * 
  * <li><i>year</i> - any integer, including 0
  * 
@@ -87,11 +94,12 @@ ilib.Date.HanRataDie.prototype.constructor = ilib.Date.HanRataDie;
 
 /**
  * The difference between a zero Julian day and the first Han date
+ * which is February 15, -2636 (Gregorian).
  * @private
  * @const
  * @type number
  */
-ilib.Date.HanRataDie.prototype.epoch = 1948319.5;
+ilib.Date.HanRataDie.prototype.epoch = 758325.5;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
@@ -149,6 +157,12 @@ ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * 
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>cycle</i> - any integer giving the number of 60-year cycle in which the date is located.
+ * If the cycle is not given but the year is, it is assumed that the year parameter is a fictitious 
+ * linear count of years since the beginning of the epoch, much like other calendars. This linear
+ * count is never used. If both the cycle and year are given, the year is wrapped to the range 0 
+ * to 60 and treated as if it were a year in the regular 60-year cycle.
  * 
  * <li><i>year</i> - any integer, including 0
  * 
@@ -218,13 +232,23 @@ ilib.Date.HanDate = function(params) {
 		}
 		
 		if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond ) {
+				params.minute || params.second || params.millisecond || params.cycle) {
+			/**
+			 * Cycle number in the Han calendar.
+			 * @type number
+			 */
+			this.cycle = parseInt(params.cycle, 10) || 0;
+
 			/**
 			 * Year in the Han calendar.
 			 * @type number
 			 */
 			this.year = parseInt(params.year, 10) || 0;
 
+			if (typeof(params.cycle) !== 'undefined' && typeof(params.year) !== 'undefined') {
+				this.year %= 60;
+			}
+			
 			/**
 			 * The month number, ranging from 1 to 12
 			 * @type number
@@ -301,28 +325,6 @@ ilib.Date.HanDate.prototype.parent = ilib.Date;
 ilib.Date.HanDate.prototype.constructor = ilib.Date.HanDate;
 
 /**
- * @private
- * @const
- * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
- */
-ilib.Date.HanDate.cumMonthLengths = [
-    0,    // Farvardin
-	31,   // Ordibehesht
-	62,   // Khordad
-	93,   // Tir
-	124,  // Mordad
-	155,  // Shahrivar
-	186,  // Mehr
-	216,  // Aban
-	246,  // Azar
-	276,  // Dey
-	306,  // Bahman
-	336,  // Esfand
-	365
-];
-
-/**
  * Return a new RD for this date type using the given params.
  * @protected
  * @param {Object=} params the parameters used to create this rata die instance
@@ -333,18 +335,92 @@ ilib.Date.HanDate.prototype.newRd = function (params) {
 };
 
 /**
+ * @protected
+ * @param {number} rd RD to calculate from
+ * @returns {number} the current major solar term
+ */
+ilib.Date.HanDate.prototype._chineseTZ = function(rd) {
+	var gregdate = new ilib.Date.GregDate({julianday: rd + this.epoch, timezone: "Etc/UTC"});
+	return gregdate.year < 1929 ? 465.6666666666666666 : 480;
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from
+ * @returns {number} the current major solar term
+ */
+ilib.Date.HanDate.prototype._currentMajorST = function(rd) {
+	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd + this.epoch, this._chineseTZ(rd)));
+	return ilib.mod(2 + Math.floor(s/30), 12);
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from
+ * @returns {boolean} true if there is no major solar term in the same year
+ */
+ilib.Date.HanDate.prototype._noMajorST = function(rd) {
+	return this._currentMajorST(rd) === this._currentMajorST(this._newMoonOnOrAfter(rd+1));
+};
+
+/**
+ * @protected
+ * @param {number} rd1  
+ * @param {number} rd2  
+ * @returns {boolean} true if there is a leap month earlier in the same year 
+ * as the given months 
+ */
+ilib.Date.HanDate.prototype._priorLeapMonth = function(rd1, rd2) {
+	return rd2 >= rd1 &&
+		(this._priorLeapMonth(rd1, this._newMoonBefore(rd2)) ||
+		 this._noMajorST(rd2));
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the rd of previous new moon before the given RD date
+ */
+ilib.Date.HanDate.prototype._newMoonBefore = function(rd) {
+	
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the rd of next new moon on or after the given RD date
+ */
+ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
+	
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the major solar term for the RD
+ */
+ilib.Date.HanDate.prototype._majorSTOnOrAfter = function(rd) {
+	
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the minor solar term for the RD
+ */
+ilib.Date.HanDate.prototype._minorSTOnOrAfter = function(rd) {
+	
+};
+
+/**
  * Return the year for the given RD
  * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
 ilib.Date.HanDate.prototype._calcYear = function(rd) {
-	var shiftedRd = rd - 173126;
-	var numberOfCycles = Math.floor(shiftedRd / 1029983);
-	var shiftedDayInCycle = ilib.mod(shiftedRd, 1029983);
-	var yearInCycle = (shiftedDayInCycle === 1029982) ? 2820 : Math.floor((2816 * shiftedDayInCycle + 1031337) / 1028522);
-	var year = 474 + 2820 * numberOfCycles + yearInCycle;
-	return (year > 0) ? year : year - 1;
+	var gregdate = new ilib.Date.GregDate({julianday: rd + this.epoch, timezone: "Etc/UTC"});
+	
 };
 
 /**

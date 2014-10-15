@@ -713,21 +713,69 @@ ilib.Date._sunpos = function(jd) {
 };
 
 ilib.Date._nutArgMult = [ 
-    0, 0, 0, 0, 1, -2, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0,
-	0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, -2, 1, 0, 2, 2, 0, 0, 0, 2, 1,
-	0, 0, 1, 2, 2, -2, -1, 0, 2, 2, -2, 0, 1, 0, 0, -2, 0, 0, 2, 1, 0, 0,
-	-1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, -1, 2, 2, 0, 0, -1, 0, 1,
-	0, 0, 1, 2, 1, -2, 0, 2, 0, 0, 0, 0, -2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2,
-	2, 2, 0, 0, 2, 0, 0, -2, 0, 1, 2, 2, 0, 0, 0, 2, 0, -2, 0, 0, 2, 0, 0,
-	0, -1, 2, 1, 0, 2, 0, 0, 0, 2, 0, -1, 0, 1, -2, 2, 0, 2, 2, 0, 1, 0, 0,
-	1, -2, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 0, 2, -2, 0, 2, 0, -1, 2, 1, 2,
-	0, 1, 2, 2, 0, 1, 0, 2, 2, -2, 1, 1, 0, 0, 0, -1, 0, 2, 2, 2, 0, 0, 2,
-	1, 2, 0, 1, 0, 0, -2, 0, 2, 2, 2, -2, 0, 1, 2, 1, 2, 0, -2, 0, 1, 2, 0,
-	0, 0, 1, 0, -1, 1, 0, 0, -2, -1, 0, 2, 1, -2, 0, 0, 0, 1, 0, 0, 2, 2,
-	1, -2, 0, 2, 0, 1, -2, 1, 0, 2, 1, 0, 0, 1, -2, 0, -1, 0, 1, 0, 0, -2,
-	1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, -1, -1, 1, 0, 0, 0, 1, 1, 0,
-	0, 0, -1, 1, 2, 2, 2, -1, -1, 2, 2, 0, 0, -2, 2, 2, 0, 0, 3, 2, 2, 2,
-	-1, 0, 2, 2 
+     0,  0,  0,  0,  1, 
+    -2,  0,  0,  2,  2,
+     0,  0,  0,  2,  2, 
+     0,  0,  0,  0,  2, 
+     0,  1,  0,  0,  0, 
+     0,  0,  1,  0,  0, 
+    -2,  1,  0,  2,  2, 
+     0,  0,  0,  2,  1,
+	 0,  0,  1,  2,  2, 
+	-2, -1,  0,  2,  2, 
+	-2,  0,  1,  0,  0, 
+	-2,  0,  0,  2,  1, 
+	 0,  0, -1,  2,  2, 
+	 2,  0,  0,  0,  0, 
+	 0,  0,  1,  0,  1, 
+	 2,  0, -1,  2,  2, 
+	 0,  0, -1,  0,  1,
+	 0,  0,  1,  2,  1, 
+	-2,  0,  2,  0,  0, 
+	 0,  0, -2,  2,  1, 
+	 2,  0,  0,  2,  2, 
+	 0,  0,  2,  2,  2, 
+	 0,  0,  2,  0,  0, 
+	-2,  0,  1,  2,  2, 
+	 0,  0,  0,  2,  0, 
+	-2,  0,  0,  2,  0, 
+	 0,  0, -1,  2,  1, 
+	 0,  2,  0,  0,  0, 
+	 2,  0, -1,  0,  1,
+	-2,  2,  0,  2,  2, 
+	 0,  1,  0,  0,  1, 
+	-2,  0,  1,  0,  1, 
+	 0, -1,  0,  0,  1, 
+	 0,  0,  2, -2,  0, 
+	 2,  0, -1,  2,  1, 
+	 2,  0,  1,  2,  2, 
+	 0,  1,  0,  2,  2, 
+	-2,  1,  1,  0,  0, 
+	 0, -1,  0,  2,  2, 
+	 2,  0,  0,  2,  1, 
+	 2,  0,  1,  0,  0, 
+	-2,  0,  2,  2,  2, 
+	-2,  0,  1,  2,  1, 
+	 2,  0, -2,  0,  1, 
+	 2,  0,  0,  0,  1, 
+	 0, -1,  1,  0,  0, 
+	-2, -1,  0,  2,  1, 
+	-2,  0,  0,  0,  1, 
+	 0,  0,  2,  2,  1, 
+	-2,  0,  2,  0,  1, 
+	-2,  1,  0,  2,  1, 
+	 0,  0,  1, -2,  0, 
+	-1,  0,  1,  0,  0, 
+	-2,	 1,  0,  0,  0, 
+	 1,  0,  0,  0,  0, 
+	 0,  0,  1,  2,  0, 
+	-1, -1,  1,  0,  0, 
+	 0,  1,  1,  0,  0, 
+	 0, -1,  1,  2,  2, 
+	 2, -1, -1,  2,  2, 
+	 0,  0, -2,  2,  2, 
+	 0,  0,  3,  2,  2, 
+	 2, -1,  0,  2,  2 
 ];
 
 ilib.Date._nutArgCoeff = [ 
@@ -912,29 +960,40 @@ ilib.Date._equationOfTime = function(jd) {
 	return E;
 };
 
-/*
-ilib.Date._equationOfTime2 = function(jd) {
-    var alpha, deltaPsi, E, epsilon, L0, tau
-
-    tau = (jd - 2451545.0) / 365250.0;
-    L0 = 280.4664567 + (360007.6982779 * tau) +
-         (0.03032028 * tau * tau) +
-         ((tau * tau * tau) / 49931) +
-         (-((tau * tau * tau * tau) / 15300)) +
-         (-((tau * tau * tau * tau * tau) / 2000000));
-    L0 = ilib.Date._fixangle(L0);
-    var pos = ilib.Date._sunpos(jd);
-	alpha = pos.apparentRightAscension;
-	// alpha = sunpos(jd)[10];
-	var nut = ilib.Date._nutation(jd);
-	deltaPsi = nut.deltaPsi;
-	// deltaPsi = nutation(jd)[0];
-	epsilon = ilib.Date._obliqeq(jd) + nut.deltaEpsilon;
-	// epsilon = obliqeq(jd) + nutation(jd)[1];
-    E = L0 + (-0.0057183) + (-alpha) + (deltaPsi * ilib.Date._dcos(epsilon));
-    E = E * 4; 
-    E = E / (24 * 60);
-
-    return E;
+/**
+ * Calculate the UTC RD from the local RD given "zone" number of minutes
+ * worth of offset.
+ * 
+ * @static
+ * @param {number} local RD of the locale time, given in any calendar
+ * @param {number} zone number of minutes of offset from UTC for the time zone 
+ * @return {number} the UTC equivalent of the local RD
+ */
+ilib.Date._universalFromLocal = function(local, zone) {
+	return local - zone / 1440;
 };
-*/
+
+/**
+ * Calculate the local RD from the UTC RD given "zone" number of minutes
+ * worth of offset.
+ * 
+ * @static
+ * @param {number} local RD of the locale time, given in any calendar
+ * @param {number} zone number of minutes of offset from UTC for the time zone 
+ * @return {number} the UTC equivalent of the local RD
+ */
+ilib.Date._localFromUniversal = function(local, zone) {
+	return local + zone / 1440;
+};
+
+/**
+ * Calculate the offset for a given location.
+ * 
+ * @static
+ * @param {number} longitude longitude of the location in degrees
+ * @param {number} zone number of minutes of offset from UTC for the time zone 
+ * @return {number} the offset in minutes of the given location
+ */
+ilib.Date._localFromUniversal = function(longitude, zone) {
+	return longitude * 4 + zone;
+};

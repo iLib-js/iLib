@@ -91,7 +91,7 @@ ilib.Date.RataDie = function(params) {
 			// JD time is defined to be UTC
 			this._setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.parts) {
+				params.minute || params.second || params.millisecond || params.parts || params.cycle) {
 			this._setDateComponents(params);
 		} else if (typeof(params.rd) !== 'undefined') {
 			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.Date.RataDie) ? params.rd.rd : params.rd;
