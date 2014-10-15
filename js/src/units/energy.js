@@ -217,6 +217,12 @@ ilib.Measurement.Energy.metricWattHourSystem = {"watt hour":5,"kilowatt hour":8,
 ilib.Measurement.Energy.imperialSystem	= {"BTU":3};
 ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
 
+ilib.Measurement.Energy.prototype.localize = function(locale) {
+    return new ilib.Measurement.Energy({
+        unit: this.unit,
+        amount: this.amount
+    });
+};
 
 /**
  * @inheritDoc

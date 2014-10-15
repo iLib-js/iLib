@@ -174,6 +174,10 @@ ilib.Measurement.prototype = {
 	getUnit: function() {
 		return this.unit;
 	},
+        
+        getUnitLong: function() {},
+        
+        getUnitShort: function() {},
 	
 	/**
 	 * Return the units originally used to construct this measurement

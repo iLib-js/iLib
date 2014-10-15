@@ -120,6 +120,13 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	return result;
 };
 
+ilib.Measurement.Temperature.prototype.localize = function(locale) {
+    return new ilib.Measurement.Temperature({
+        unit: this.unit,
+        amount: this.amount
+    });
+};
+
 /**
  * @inheritDoc
  * @param {string=} measurementsystem

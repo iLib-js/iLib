@@ -25,7 +25,7 @@ resources.js
 localeinfo.js
 */
 
-// !data unitformats sysres
+// !data unitfmt
 
 /**
  * Create a new unit formatter instance. The unit formatter is immutable once
@@ -91,7 +91,7 @@ localeinfo.js
 ilib.UnitFmt = function(options) {
 	var sync = true, 
 		loadParams = undefined;
-        var length = "long";
+        this.length = "long";
         this.scale  = true;
         this.measurementType = 'undefined';
 	
@@ -106,14 +106,20 @@ ilib.UnitFmt = function(options) {
                     sync = options.sync;
             }
 
-            loadParams = options.loadParams;
+            if (typeof(options.loadParams) !== 'undefined') {
+                    loadParams = options.loadParams;
+            }
                 
             if (options.length) {
-                length = options.length;
+                this.length = options.length;
             }
 
             if (typeof(options.autoScale) === 'boolean') {
                 this.scale = options.autoScale;
+            }
+            
+            if (typeof(options.autoConvert) === 'boolean') {
+                this.convert = options.autoConvert;
             }
 
             if (options.measurementSystem) {
@@ -125,16 +131,18 @@ ilib.UnitFmt = function(options) {
 		ilib.UnitFmt.cache = {};
 	}
 
-	new ilib.LocaleInfo(this.locale, {
-		sync: sync,
-		loadParams: loadParams,
-		onLoad: ilib.bind(this, function (li) {
-			var templates = {"long": "{n} {u}", "short": "{n}{u}"};
-			if (li) {
-				this.localeInfo = li;
-				templates = this.localeInfo.getUnitFormat();
+        ilib.loadData({
+		object: ilib.UnitFmt, 
+		locale: this.locale, 
+		name: "unitfmt.json", 
+		sync: sync, 
+		loadParams: loadParams, 
+		callback: ilib.bind(this, function (format) {                      
+			var formatted = format;
+                        this.template = formatted["unitfmt"][this.length];
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-            this.template = new ilib.String(templates[length]);
 		})
 	});
 };
@@ -176,18 +184,18 @@ ilib.UnitFmt.prototype = {
 	 * Return whether or not this formatter will auto-scale the units while formatting.
 	 * @returns {boolean} true if auto-scaling is turned on
 	 */
-    getScale: function() {
-    	return this.scale;
-    },
-    
-    /**
-     * Return the measurement system that is used for this formatter.
-     * @returns {string} the measurement system used in this formatter
-     */
-    getMeasurementSystem: function() {
-        return this.measurementSystem;
-    },
-	
+        getScale: function() {
+            return this.scale;
+        },
+
+        /**
+         * Return the measurement system that is used for this formatter.
+         * @returns {string} the measurement system used in this formatter
+         */
+        getMeasurementSystem: function() {
+            return this.measurementSystem;
+        },
+
 	/**
 	 * Format a particular unit instance according to the settings of this
 	 * formatter object.
@@ -196,10 +204,10 @@ ilib.UnitFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (measurement) {
-		var u = this.scale ? measurement.scale(this.measurementSystem) : measurement;            
-		return this.template.format({
-			n: u.amount,
-			u: u.unit
-		});
+                var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
+		u = this.scale ? u.scale(this.measurementSystem) : u;
+                var formatted = new ilib.String(this.template[u.getUnit()]);
+		formatted = formatted.formatChoice(u.amount,{n:u.amount});
+                return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
 	}
 };

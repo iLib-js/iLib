@@ -24,7 +24,7 @@ function testUnitFormat1() {
 	});
 	var uf = new ilib.UnitFmt();  
 	var str = uf.format(m);	
-	assertEquals("10 micrometer", str);
+	assertEquals("10 micrometers", str);
 }
 
 function testUnitFormatWithScale1() {
@@ -34,7 +34,7 @@ function testUnitFormatWithScale1() {
 	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);	
-	assertEquals("3 kilometer", str);
+	assertEquals("3 kilometers", str);
 }
 
 function testUnitFormatWithoutScale1() {
@@ -44,7 +44,7 @@ function testUnitFormatWithoutScale1() {
 	});
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
-	assertEquals("3000 meter", str);
+	assertEquals("3000 meters", str);
 }
 
 function testUnitFormatWithScale2() {
@@ -66,7 +66,7 @@ function testUnitFormatWithoutScale2() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
-	assertEquals("1048576000 bit", str);
+	assertEquals("1048576000 bits", str);
 }
 
 function testUnitFormatWithScale3() {
@@ -77,7 +77,7 @@ function testUnitFormatWithScale3() {
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);	
-	assertEquals("10 gram", str);
+	assertEquals("10 grams", str);
 }
 
 function testUnitFormatWithoutScale3() {
@@ -88,7 +88,7 @@ function testUnitFormatWithoutScale3() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
-	assertEquals("10000000 microgram", str);
+	assertEquals("10000000 micrograms", str);
 }
 
 function testUnitFormatWithMeasurementSystem3() {
@@ -102,7 +102,7 @@ function testUnitFormatWithMeasurementSystem3() {
 		measurementSystem: "metric"
 	}); 
 	var str = uf.format(m);	
-	assertEquals("10 gram", str);
+	assertEquals("10 grams", str);
 }
 
 function testUnitFormatWithScale4() {
@@ -112,7 +112,7 @@ function testUnitFormatWithScale4() {
 	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);	
-	assertEquals("1 square km", str);
+	assertEquals("1 square kilometer", str);
 }
 
 function testUnitFormatWithoutScale4() {
@@ -123,7 +123,7 @@ function testUnitFormatWithoutScale4() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m1);	
-	assertEquals("100 hectare", str);
+	assertEquals("100 hectares", str);
 }
 
 function testUnitFormatWithMeasurementSystem4() {
@@ -147,7 +147,7 @@ function testUnitFormatWithScale5() {
 	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);
-	assertEquals("10 kilowatt hour", str);
+	assertEquals("10 kilowatt-hours", str);
 }
 
 function testUnitFormatWithoutScale5() {
@@ -158,7 +158,7 @@ function testUnitFormatWithoutScale5() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m1);	
-	assertEquals("1233453 kilowatt hour", str);
+	assertEquals("1233453 kilowatt-hours", str);
 }
 
 function testUnitFormatWithMeasurementSystem5() {
@@ -182,7 +182,7 @@ function testUnitFormatWithScale6() {
 	});
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);
-	assertEquals("1.666668 kilometer/second", str);
+	assertEquals("1.666668 kilometer per second", str);
 }
 
 function testUnitFormatWithoutScale6() {
@@ -193,7 +193,7 @@ function testUnitFormatWithoutScale6() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
-	assertEquals("36 kilometer/hour", str);
+	assertEquals("36 kilometers per hour", str);
 }
 
 function testUnitFormatWithMeasurementSystem6() {
@@ -207,7 +207,7 @@ function testUnitFormatWithMeasurementSystem6() {
 		measurementSystem: "imperial"
 	}); 
 	var str = uf.format(m1);	
-	assertEquals("5.92484 knot", str);
+	assertEquals("5.92484 knots", str);
 }
 
 function testUnitFormatWithScale7() {
@@ -218,7 +218,7 @@ function testUnitFormatWithScale7() {
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m);
-	assertEquals("12 second", str);
+	assertEquals("12 seconds", str);
 }
 
 function testUnitFormatWithoutScale7() {
@@ -229,7 +229,7 @@ function testUnitFormatWithoutScale7() {
 
 	var uf = new ilib.UnitFmt({autoScale: false}); 
 	var str = uf.format(m);	
-	assertEquals("12000 millisecond", str);
+	assertEquals("12000 milliseconds", str);
 }
 
 function testUnitFormatWithScale8() {
@@ -251,7 +251,7 @@ function testUnitFormatWithoutScale8() {
 
 	var uf = new ilib.UnitFmt({autoScale: false});
 	var str = uf.format(m);	
-	assertEquals("1500 milliliter", str);
+	assertEquals("1500 milliliters", str);
 }
 
 function testUnitFormatWithMeasurementSystem8() {
@@ -265,7 +265,7 @@ function testUnitFormatWithMeasurementSystem8() {
 		measurementSystem: "imperial"
 	}); 
 	var str = uf.format(m1);	
-	assertEquals("6.25 pound", str);
+	assertEquals("6.25 pounds", str);
 }
 
 function testUnitFormatWithScale9() {
@@ -276,7 +276,7 @@ function testUnitFormatWithScale9() {
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);
-	assertEquals("5000 km/liter", str);
+	assertEquals("5000 kilometers per liter", str);
 }
 
 function testUnitFormatWithScale10() {
@@ -287,7 +287,7 @@ function testUnitFormatWithScale10() {
 
 	var uf = new ilib.UnitFmt(); 
 	var str = uf.format(m1);
-	assertEquals("285.3 kelvin", str);
+	assertEquals("285.3 kelvins", str);
 }
 
 function testUnitFormatWithScale11() {

@@ -99,6 +99,13 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 	});
 };
 
+ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
+    return new ilib.Measurement.DigitalStorage({
+        unit: this.unit,
+        amount: this.amount
+    });
+};
+
 /**
  * @inheritDoc
  * @param {string=} measurementsystem

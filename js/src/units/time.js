@@ -202,6 +202,13 @@ ilib.Measurement.Time.convert = function(to, from, time) {
     return time * fromRow[toRow[0]];
 };
 
+ilib.Measurement.Time.prototype.localize = function(locale) {
+    return new ilib.Measurement.Time({
+        unit: this.unit,
+        amount: this.amount
+    });
+};
+
 /**
  * @inheritDoc
  * @param {string=} measurementsystem

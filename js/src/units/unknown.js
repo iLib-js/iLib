@@ -74,6 +74,12 @@ ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;
 };
 
+ilib.Measurement.Unknown.prototype.localize = function(locale) {
+    return new ilib.Measurement.Unknown({
+        unit: this.unit,
+        amount: this.amount
+    });
+};
 /**
  * @inheritDoc
  * @param {string=} measurementsystem
