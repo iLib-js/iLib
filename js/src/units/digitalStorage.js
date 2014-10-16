@@ -114,8 +114,8 @@ ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
 ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     
     var fromRow = ilib.Measurement.DigitalStorage.ratios[this.unit];    
-    var dStorage;
-    var munit;
+    var dStorage = this.amount;
+    var munit = this.unit;
     var i=1;
     
     for (var m in ilib.Measurement.DigitalStorage.ratios) {

@@ -143,8 +143,8 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
 		});
     }    
     
-    var length;
-    var munit;
+    var length = this.amount;
+    var munit = this.unit;
     var fromRow = ilib.Measurement.Length.ratios[this.unit];
     
     for (var m in mSystem) {

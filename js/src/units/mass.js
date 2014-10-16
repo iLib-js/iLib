@@ -234,8 +234,8 @@ ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
 		});
     }    
     
-    var mass;
-    var munit;
+    var mass = this.amount;
+    var munit = this.amount;
     var fromRow = ilib.Measurement.Mass.ratios[this.unit];
     
     for (var m in mSystem) {

@@ -124,8 +124,8 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 		});
     }
     
-    var speed = 0;
-    var munit;
+    var speed = this.amount;
+    var munit = this.unit;
     var fromRow = ilib.Measurement.Speed.ratios[this.unit];
     
     for (var m in mSystem) {

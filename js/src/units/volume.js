@@ -279,8 +279,8 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
         mSystem = ilib.Measurement.Volume.imperialSystem;
     }
 
-    var volume;
-    var munit;
+    var volume = this.amount;
+    var munit = this.unit;
 
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];

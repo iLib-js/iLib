@@ -220,8 +220,8 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
         mSystem = ilib.Measurement.Area.imperialSystem;
     }
 
-    var area;
-    var munit;
+    var area = this.amount;
+    var munit = this.unit;
 
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];

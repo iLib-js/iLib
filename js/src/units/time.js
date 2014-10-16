@@ -217,8 +217,8 @@ ilib.Measurement.Time.prototype.localize = function(locale) {
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 
     var fromRow = ilib.Measurement.Time.ratios[this.unit];
-    var time;
-    var munit;
+    var time = this.amount;
+    var munit = this.unit;
     var i=1;
 
     for (var m in ilib.Measurement.Time.ratios) {

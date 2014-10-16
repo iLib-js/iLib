@@ -251,8 +251,8 @@ ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
         mSystem = ilib.Measurement.Energy.imperialSystem;
     }
 
-    var energy;
-    var munit;
+    var energy = this.amount;
+    var munit = this.unit;
 
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
