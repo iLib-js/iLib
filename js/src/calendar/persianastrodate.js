@@ -22,7 +22,8 @@ date.js
 calendar/persratadie.js
 calendar/persianastro.js 
 util/utils.js
-util/search.js 
+util/search.js
+util/math.js
 localeinfo.js 
 julianday.js 
 */

@@ -20,6 +20,7 @@
 /* !depends 
 date.js
 util/utils.js
+util/math.js
 calendar/ratadie.js
 calendar/astro.js
 calendar/gregoriandate.js

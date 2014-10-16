@@ -21,7 +21,8 @@
 date.js 
 calendar/gregorian.js 
 util/utils.js
-util/search.js 
+util/search.js
+util/math.js
 localeinfo.js 
 julianday.js
 calendar/gregratadie.js

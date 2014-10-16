@@ -22,7 +22,8 @@ date.js
 calendar/gregoriandate.js 
 calendar/han.js
 util/utils.js
-util/search.js 
+util/search.js
+util/math.js
 localeinfo.js 
 julianday.js 
 */
@@ -351,7 +352,7 @@ ilib.Date.HanDate.prototype._chineseTZ = function(rd) {
  */
 ilib.Date.HanDate.prototype._currentMajorST = function(rd) {
 	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd + this.epoch, this._chineseTZ(rd)));
-	return ilib.mod(2 + Math.floor(s/30), 12);
+	return ilib.amod(2 + Math.floor(s/30), 12);
 };
 
 /**
@@ -396,11 +397,35 @@ ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
 
 /**
  * @protected
+ * @param {number} jd JD to calculate from
+ * @param {number} longitude longitude to seek 
+ * @returns {number} the JD of the next time that the solar longitude 
+ * is a multiple of the given longitude
+ */
+ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
+	
+};
+
+/**
+ * @protected
+ * @param {number} rd RD to calculate from
+ * @param {number} longitude longitude to seek 
+ * @returns {number} the RD of the next time that the solar longitude 
+ * is a multiple of the given longitude
+ */
+ilib.Date.HanDate.prototype._hanNextSolarLongitude = function(rd, longitude) {
+	var tz = this._chineseTZ(rd);
+	var temp = ilib.Date._localFromUniversal(this._nextSolarLongitude(ilib.Date._universalFromLocal(rd + this.epoch, tz), longitude), tz);
+	return temp - this.epoch;
+};
+
+/**
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the major solar term for the RD
  */
 ilib.Date.HanDate.prototype._majorSTOnOrAfter = function(rd) {
-	
+	return this._hanNextSolarLongitude(rd, 30);
 };
 
 /**
@@ -419,8 +444,7 @@ ilib.Date.HanDate.prototype._minorSTOnOrAfter = function(rd) {
  * @returns {number} the year for the RD
  */
 ilib.Date.HanDate.prototype._calcYear = function(rd) {
-	var gregdate = new ilib.Date.GregDate({julianday: rd + this.epoch, timezone: "Etc/UTC"});
-	
+	return this.year;
 };
 
 /**
@@ -430,9 +454,9 @@ ilib.Date.HanDate.prototype._calcYear = function(rd) {
 ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	var remainder,
 		rd = this.rd.getRataDie();
-	
-	this.year = this._calcYear(rd);
-	
+
+	console.log("HanDate._calcDateComponents: calculating for rd " + rd);
+
 	if (typeof(this.offset) === "undefined") {
 		// now offset the RD by the time zone, then recalculate in case we were 
 		// near the year boundary
@@ -444,35 +468,75 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	
 	if (this.offset !== 0) {
 		rd += this.offset;
-		this.year = this._calcYear(rd);
 	}
+
+	// use the Gregorian calendar objects as a convenient way to short-cut some
+	// of the date calculations
 	
-	//console.log("HanDate.calcComponent: calculating for rd " + rd);
-	//console.log("HanDate.calcComponent: year is " + ret.year);
-	var yearStart = this.newRd({
-		year: this.year,
-		month: 1,
+	var gregdate = new ilib.Date.GregDate({
+		julianday: this.rd.getJulianDay() + this.offset, 
+		timezone: "Etc/UTC"
+	});
+	var lastYearsST = new ilib.Date.GregRataDie({
+		year: gregdate.year - 1,
+		month: 12,
+		day: 15,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var thisYearsST = new ilib.Date.GregRataDie({
+		year: gregdate.year,
+		month: 12,
+		day: 15,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var nextYearsST = new ilib.Date.GregRataDie({
+		year: gregdate.year + 1,
+		month: 12,
+		day: 15,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var thisYearJul1 = new ilib.Date.GregRataDie({
+		year: gregdate.year,
+		month: 7,
 		day: 1,
 		hour: 0,
 		minute: 0,
 		second: 0,
 		millisecond: 0
 	});
-	remainder = rd - yearStart.getRataDie() + 1;
+	var s1 = this._majorSTOnOrAfter(lastYearsST.getRd());
+	var s2 = this._majorSTOnOrAfter(thisYearsST.getRd());
+	var m1 = (s1 <= rd && rd < s2) ? this._newMoonOnOrAfter(s1 + 1) : this._newMoonOnOrAfter(s2 + 1);
+	var m2 = (s1 <= rd && rd < s2) ? this._newMoonBefore(s2 + 1) : this._newMoonBefore(this._majorSTOnOrAfter(nextYearsST.getRd()) + 1);
+	var m = this._newMoonBefore(rd + 1);
+	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853) === 12);
+	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853) - (this.isLeapYear && this._priorLeapMonth(m1, m)) ? 1 : 0, 12);
+	this.isLeapMonth = (this.isLeapYear && this._noMajorST(m) && !this._priorLeapMonth(m1, this._newMoonBefore(m)));
+	this.year = gregdate.year + 2636 + (this.month < 11 || rd > thisYearJul1.getRd()) ? 1 : 0;
+	this.cycle = Math.floor((this.year - 1) / 60) + 1;
+	this.cycleYear = ilib.amod(this.year, 60);
+	this.day = rd - m + 1;
+
+	console.log("HanDate._calcDateComponents: year is " + this.year);
+	console.log("HanDate._calcDateComponents: isLeapYear is " + this.isLeapYear);
+	console.log("HanDate._calcDateComponents: cycle is " + this.cycle);
+	console.log("HanDate._calcDateComponents: cycleYear is " + this.cycleYear);
+	console.log("HanDate._calcDateComponents: month is " + this.month);
+	console.log("HanDate._calcDateComponents: isLeapMonth is " + this.isLeapMonth);
+	console.log("HanDate._calcDateComponents: day is " + this.day);
 	
-	this.dayOfYear = remainder;
+	remainder = rd - Math.floor(rd);
 	
-	//console.log("HanDate.calcComponent: remainder is " + remainder);
-	
-	this.month = ilib.bsearch(remainder, ilib.Date.HanDate.cumMonthLengths);
-	remainder -= ilib.Date.HanDate.cumMonthLengths[this.month-1];
-	
-	//console.log("HanDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
-	
-	this.day = Math.floor(remainder);
-	remainder -= this.day;
-	
-	//console.log("HanDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
+	console.log("HanDate._calcDateComponents: time remainder is " + remainder);
 	
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);

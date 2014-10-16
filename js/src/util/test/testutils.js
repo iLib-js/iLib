@@ -163,6 +163,36 @@ function testModRealNeg() {
     assertRoughlyEquals(1.7, ilib.mod(-6.3, 4), 0.0000001);
 }
 
+function testAmodSimple() {
+    assertObjectEquals(2, ilib.amod(2, 4));
+}
+
+function testAmodWrap() {
+    assertObjectEquals(2, ilib.amod(6, 4));
+}
+
+function testAmodWrapNeg() {
+    assertObjectEquals(2, ilib.amod(-6, 4));
+}
+
+function testAmodZeroModulus() {
+    assertObjectEquals(0, ilib.amod(6, 0));
+}
+
+function testAmodZeroNum() {
+    assertObjectEquals(6, ilib.amod(0, 6));
+}
+
+function testAmodReal() {
+    assertRoughlyEquals(2.234231, ilib.amod(2.234231, 4), 0.0000001);
+}
+function testAmodRealWrap() {
+    assertRoughlyEquals(2.234231, ilib.amod(6.234231, 4), 0.0000001);
+}
+function testAmodRealNeg() {
+    assertRoughlyEquals(1.7, ilib.amod(-6.3, 4), 0.0000001);
+}
+
 function testMergeSimple() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"c": "C", "d": "D"};

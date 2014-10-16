@@ -664,7 +664,7 @@ ilib.Date._obliqeq = function (jd) {
  * variety of other contexts.
  * @param {number} jd find the position of sun on this Julian Day
  * @return {Object} the position of the sun and many intermediate
- * values   
+ * values
  */
 ilib.Date._sunpos = function(jd) {
 	var ret = {}, 
@@ -987,13 +987,81 @@ ilib.Date._localFromUniversal = function(local, zone) {
 };
 
 /**
- * Calculate the offset for a given location.
+ * @private
+ * @static
+ * @param {number} c julian centuries of the date to calculate
+ * @return {number} the aberration
+ */
+ilib.Date._aberration = function(c) {
+	return 0.0000017 * ilib.Date._dcos(177.93 + 35999.01848 * c) - 0.0000973;
+};
+
+/**
+ * @private
+ * @static
+ * @param {number} c julian centuries of the date to calculate
+ * @return {number} the nutation for the given julian century in radians
+ */
+ilib.Date._nutation2 = function(c) {
+	var c2 = c * c;
+	var a = 124.90 - 1934.134 * c + 0.002063 * c2;
+	var b = 201.11 + 72001.5377 * c + 0.00057 * c2;
+	return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
+};
+
+/**
+ * @private
+ */
+ilib.Date._solarLongCoeff = [
+    [403406,	4.721964,	0.01621043],	[195207,	5.937458,	628.30348067],
+    [119433,	1.115589,	628.30821524],	[112392,	5.781616,	628.29634302],
+    [3891,		5.5474,		1256.605691],	[2819,		1.512,		1256.60984],
+    [1721,		4.1897,		628.324766],	[0,			1.163,		0.00813],
+    [660,		5.415,		1256.5931],		[350,		4.315,		575.3385],
+    [334,		4.553,		-0.33931],		[314,		5.198,		7771.37715],
+    [268,		5.989,		786.04191],		[242,		2.911,		0.05412],
+    [234,		1.423,		393.02098],		[158,		0.061,		-0.34861],
+    [132,		2.317,		1150.67698],	[129,		3.193,		157.74337],
+    [114,		2.828,		52.9667],		[99,		0.52,		588.4927],
+    [93,		4.65,		52.9611],		[86,		4.35,		-39.807],
+    [78,		2.75,		522.3769],		[72,		4.5,		550.7647],
+    [68,		3.23,		2.6108],		[64,		1.22,		157.7385],
+    [46,		0.14,		1884.9103],		[38,		3.44,		-77.5655],
+    [37,		4.37,		2.6489],		[32,		1.14,		1179.0627],
+    [29,		2.84,		550.7575],		[28,		5.96,		-79.6139],
+    [27,		5.09,		1884.8981],		[27,		1.72,		21.3219],
+    [25,		2.56,		1097.7103],		[24,		1.92,		548.6856],
+    [21,		0.09,		254.4393],		[21,		5.98,		-557.3143],
+    [20,		4.03,		606.9774],		[18,		4.47,		21.3279],
+    [17,		0.79,		1097.7163],		[14,		4.24,		-77.5282],
+    [13,		2.01,		1884.9191],		[13,		2.65,		2.0781],
+    [13,		4.98,		294.2463],		[12,		0.93,		-0.0799],
+    [10,		2.21,		469.4114],		[10,		3.59,		-0.6829],
+    [10,		1.5,		214.6325],		[10,		2.55,		1572.084]
+];
+
+/**
+ * Calculate the solar longitude
  * 
  * @static
- * @param {number} longitude longitude of the location in degrees
- * @param {number} zone number of minutes of offset from UTC for the time zone 
- * @return {number} the offset in minutes of the given location
+ * @param {number} jd julian day of the date to calculate the longitude for 
+ * @return {number} the solar longitude in degrees
  */
-ilib.Date._localFromUniversal = function(longitude, zone) {
-	return longitude * 4 + zone;
+ilib.Date._solarLongitude = function(jd) {
+	// 2451545.0 is the Julian day of J2000 epoch
+	// 36525.0 is the number of days in a Julian century
+	var c = (jd - 2451545.0) / 365250.0,
+		longitude = 0,
+		len = ilib.Date._solarLongCoeff.length,
+		row;
+	
+	for (var i = 0; i < len; i++) {
+		row = ilib.Date._solarLongCoeff[i];
+		// take the sine with radians
+		longitude += row[0] * Math.sin(row[1] + row[2] * c);
+	}
+	longitude *= 0.0000001;
+	longitude += 4.9353929 + 628.33196168 * c;
+	longitude += ilib.Date._aberration(c) + ilib.Date._nutation2(c);
+	return ilib.Date._fixangle(ilib.Date._rtd(longitude));
 };

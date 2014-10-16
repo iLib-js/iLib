@@ -22,6 +22,7 @@ date.js
 calendar/julian.js 
 util/utils.js
 util/search.js 
+util/math.js
 localeinfo.js 
 julianday.js 
 */

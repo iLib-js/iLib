@@ -64,26 +64,6 @@ ilib.bind = function(scope, method/*, bound arguments*/){
 };
 
 /**
- * Do a proper modulo function. The Javascript % operator will give the truncated
- * division algorithm, but for calendrical calculations, we need the Euclidean
- * division algorithm where the remainder of any division, whether the dividend
- * is negative or not, is always a positive number between 0 and the modulus.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {number} dividend the number being divided
- * @param {number} modulus the number dividing the dividend. This should always be a positive number.
- * @return the remainder of dividing the dividend by the modulus.  
- */
-ilib.mod = function (dividend, modulus) {
-	if (modulus == 0) {
-		return 0;
-	}
-	var x = dividend % modulus;
-	return (x < 0) ? x + modulus : x;
-};
-
-/**
  * Merge the properties of object2 into object1 in a deep manner and return a merged
  * object. If the property exists in both objects, the value in object2 will overwrite 
  * the value in object1. If a property exists in object1, but not in object2, its value

@@ -490,7 +490,7 @@ ilib.Date.prototype = {
 		
 		var first = this.newRd({
 			year: this._calcYear(this.rd.getRataDie()+this.offset),
-			month: this.month,
+			month: this.getMonths(),
 			day: 1,
 			hour: 0,
 			minute: 0,

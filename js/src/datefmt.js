@@ -515,7 +515,8 @@ ilib.DateFmt.defaultFmt = {
 	"julian": "gregorian",
 	"buddhist": "gregorian",
 	"persian": "gregorian",
-	"persian-algo": "gregorian"
+	"persian-algo": "gregorian",
+	"han": "gregorian"
 };
 
 /**
