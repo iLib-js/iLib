@@ -94,6 +94,7 @@ ilib.UnitFmt = function(options) {
         this.length = "long";
         this.scale  = true;
         this.measurementType = 'undefined';
+        this.convert = true;
 	
 	this.locale = new ilib.Locale();
 	
