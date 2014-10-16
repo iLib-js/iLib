@@ -71,6 +71,7 @@ function suite() {
 		"phonefmt_NL.js",
 		"phonefmt_NZ.js",
 		"phonefmt_SG.js",
+		"phonefmt_TW.js",
 		"phonefmt_US.js"
     ];
     
