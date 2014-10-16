@@ -118,176 +118,29 @@ function frameUnitsString(data) {
     return ufStr.substr(0, ufStr.length - 1).replace(/\{0\}/g, "{n}");
 }
 
-var longUnitMap = {
-        "micrometers":"micrometer",
-        "micrometre":"micrometer",
-        "millimeters":"millimeter",
-        "millimetres":"millimeter",
-        "centimeters":"centimeter",
-        "centimetres":"centimeter",
-        "inches":"inch",
-        "decimeters":"decimeters",
-        "decimetre":"decimeters",
-        "feet":"foot",
-        "yards":"yard",
-        "meters":"meter",
-        "metres":"meter",
-        "decameters":"decameter",
-        "decametres":"decameter",
-        "hectometers":"hectometer",
-        "hectometres":"hectometer",
-        "kilometers":"kilometer",
-        "kilometres":"kilometer",
-        "miles":"mile",
-        "nautical miles":"nauticalmile",
-        "megameters":"megameter",
-        "megametres":"megameter",
-        "gigameters":"gigameter" ,
-        "gigametres":"gigameter" ,
-        "square centimeters":"square centimeter",
-        "square centimetres":"square centimeter",
-        "square meters":"square meter",
-        "square metres":"square meter",
-        "hectares":"hectare",
-        "square kilometers":"square km",
-        "square kilometres":"square km",
-        "square inches":"square inch",
-        "square feet":"square foot",
-        "square yards":"square yard",
-        "acres":"acre",
-        "square miles":"square mile",
-        "bits":"bit",
-        "bytes":"byte",
-        "kilobits":"kilobit",
-        "kilobytes":"kilobyte",
-        "megabits":"megabit",
-        "megabytes":"megabyte",
-        "gigabits":"gigabit",
-        "gigabytes":"gigabyte",
-        "terabits":"terabit",
-        "terabytes":"terabyte",
-        "joules": "joule",
-        "kilojoules":"kilojoule",
-        "calories":"calorie",
-        "kilowatt-hours": "kilowatt hour",
-        "miles per gallon":"mpg",
-        "micrograms": "microgram",
-        "milligrams": "milligram",
-        "grams":"gram",
-        "ounces":"ounce",
-        "pounds":"pound",
-        "kilograms":"kilogram",
-        "stones":"stone",
-        "metric tons":"metric ton",
-        "tons":"long ton",
-        "kilometers per hour":"kilometer/hour",
-        "kilometres per hour":"kilometer/hour",
-        "miles per hour":"miles/hour",
-        "meters per second":"meters/second",
-        "metres per second":"meters/second",
-        "degrees Celsius":"celsius",
-        "kelvins":"kelvin",
-        "degrees Fahrenheit":"fahrenheit",
-        "nanoseconds":"nanosecond",
-        "microseconds":"microsecond",
-        "milliseconds":"millisecond",
-        "seconds":"second",
-        "minute":"minute",
-        "hours":"hour",
-        "days":"day",
-        "weeks":"week",
-        "months":"month",
-        "years":"year",
-        "teaspoons":"tsp" ,
-        "tablespoons":"tbsp",
-        "cubic inches": "cubic inch",
-        "fluid ounces":"ounce",
-        "cups":"cup",
-        "pints":"pint",
-        "quarts":"quart",
-        "gallons":"gallon",
-        "cubic feet":"cubic foot",
-        "milliliters":"milliliter",
-        "liters":"liter",
-        "cubic meters":"cubic meter",
-        "cubic meter":"cubic meter",
-        "cubic metre":"cubic meter"        
-};
-
-var shortUnitMap = {
-        "µmeters":"micrometer",
-        "mm":"millimeter",
-        "cm":"centimeter",
-        "inches":"inch",
-        "dm":"decimeters",
-        "feet":"foot",
-        "yards":"yard",
-        "meters":"meter",
-        "dam":"decameter",
-        "hm":"hectometer",
-        "km":"kilometer",
-        "miles":"mile",
-        "nmi":"nauticalmile",
-        "Mm":"megameter",
-        "Gm":"gigameter" ,
-        "cm²":"square centimeter",
-        "meters²":"square meter",
-        "hectares":"hectare",
-        "km²":"square km",
-        "inches²":"square inch",
-        "sq feet":"square foot",
-        "yards²":"square yard",
-        "acres":"acre",
-        "sq miles":"square mile",
-        "bit":"bit",
-        "byte":"byte",
-        "kbit":"kilobit",
-        "kByte":"kilobyte",
-        "Mbit":"megabit",
-        "MByte":"megabyte",
-        "Gbit":"gigabit",
-        "GByte":"gigabyte",
-        "Tbit":"terabit",
-        "TByte":"terabyte",
-        "miles/gal":"mpg",
-        "µg": "microgram",
-        "mg": "milligram",
-        "grams":"gram",
-        "oz":"ounce",
-        "pounds":"pound",
-        "kg":"kilogram" ,
-        "stones":"stone",
-        "t":"metric ton",
-        "tons":"long ton",
-        "km/hour": "kilometer/hour",
-        "miles/hour":"miles/hour",
-        "meters/sec":"meters/second",
-        "metres/sec":"meters/second",
-        "deg. C":"celsius",
-        "K":"kelvin",
-        "deg. F":"fahrenheit",
-        "nanosecs":"nanosecond",
-        "μsecs": "microsecond",
-        "millisecs":"millisecond",
-        "seconds":"second",
-        "mins":"minute",
-        "hours":"hour",
-        "days":"day",
-        "weeks":"week",
-        "months":"month",
-        "years":"year",
-        "tsp":"tsp" ,
-        "tbsp":"tbsp",
-        "inches³":"cubic inch",
-        "fl oz":"ounce",
-        "cups":"cup",
-        "pints":"pint",
-        "qts":"quart",
-        "gal":"gallon",
-        "feet³":"cubic foot",
-        "mL":"milliliter",
-        "liters":"liter",
-        "m³":"cubic meter"
+var unitMap = {
+        "nautical-mile":"nauticalmile",
+        "square-centimeter":"square centimeter",
+        "square-meter":"square meter",
+        "square-kilometer":"square km",
+        "square-inch":"square inch",
+        "square-foot":"square foot",
+        "square-yard":"square yard",
+        "square-mile":"square mile",
+        "foodcalorie":"calorie",
+        "kilowatt-hour": "kilowatt hour",
+        "mile-per-gallon":"mpg",
+        "metric-ton":"metric ton",
+        "ton":"long ton",
+        "kilometer-per-hour":"kilometer/hour",
+        "mile-per-hour":"miles/hour",
+        "meter-per-second":"meters/second",
+        "teaspoon":"tsp" ,
+        "tablespoon":"tbsp",
+        "cubic-inch": "cubic inch",
+        "fluid-ounce":"ounce", 
+        "cubic-foot":"cubic foot",
+        "cubic-meter":"cubic meter"      
 };
 
 function frameUnits(data, language, localeData) {
@@ -302,19 +155,25 @@ function frameUnits(data, language, localeData) {
     }
     for (var ufl in data["main"][language]["units"]["long"]) {
         if (ufl !== "per") {
-            var dispname = data["main"][language]["units"]["long"][ufl].displayName;
-            dispname = longUnitMap[dispname] || dispname;
+            var index = ufl.indexOf("-");
+            var dispname = ufl.substr(index+1,ufl.length);
+            dispname = unitMap[dispname] || dispname;
             localeData["unitfmt"]["long"][dispname] = frameUnitsString(data["main"][language]["units"]["long"][ufl]);
         }
     }
     for (var ufs in data["main"][language]["units"]["short"]) {
         if (ufs !== "per") {
-            var dispname = data["main"][language]["units"]["short"][ufs].displayName;
-            dispname = shortUnitMap[dispname] || dispname;
+            var index = ufs.indexOf("-");
+            var dispname = ufs.substr(index+1,ufs.length);
+            dispname = unitMap[dispname] || dispname;
             localeData["unitfmt"]["short"][dispname] = frameUnitsString(data["main"][language]["units"]["short"][ufs]);
         }
     }
 
+    localeData["unitfmt"]["long"]["decameter"] = "1#{n} decameter|#{n} decameters";
+    localeData["unitfmt"]["long"]["hectometer"] = "1#{n} hectometer|#{n} hectometers";  
+    localeData["unitfmt"]["long"]["megameter"] = "1#{n} megameter|#{n} megameters"; 
+    localeData["unitfmt"]["long"]["gigameter"] = "1#{n} gigameter|#{n} gigameters";    
     localeData["unitfmt"]["long"]["petabit"] = "1#{n} petabit|#{n} petabits";
     localeData["unitfmt"]["long"]["petabyte"] = "1#{n} petabyte|#{n} petabytes";
     localeData["unitfmt"]["long"]["BTU"] = "1#{n} BTU|#{n} BTU";
@@ -341,6 +200,10 @@ function frameUnits(data, language, localeData) {
     localeData["unitfmt"]["long"]["imperial quart"] = "1#{n} imperial quart|#{n} imperial quarts";
     localeData["unitfmt"]["long"]["imperial gallon"] = "1#{n} imperial gallon|#{n} imperial gallons";
 
+    localeData["unitfmt"]["short"]["decameter"] = "1#{n} dam|#{n} dam";
+    localeData["unitfmt"]["short"]["hectometer"] = "1#{n} hm|#{n} hm";
+    localeData["unitfmt"]["short"]["megameter"] = "1#{n} Mm|#{n} Mm";
+    localeData["unitfmt"]["short"]["gigameter"] = "1#{n} Gm|#{n} Gm"; 
     localeData["unitfmt"]["short"]["petabit"] = "1#{n} pb|#{n} pb";
     localeData["unitfmt"]["short"]["petabyte"] = "1#{n} pB|#{n} pB";
     localeData["unitfmt"]["short"]["BTU"] = "1#{n} BTU|#{n} BTU";
