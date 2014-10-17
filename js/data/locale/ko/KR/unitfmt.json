@@ -9,7 +9,7 @@
             "radian": "#{n}라디안",
             "acre": "#{n}에이커",
             "hectare": "#{n}헥타르",
-            "square centimeter": "#{n} 제곱센티미터",
+            "square centimeter": "#{n}제곱센티미터",
             "square foot": "#{n}제곱피트",
             "square inch": "#{n}제곱인치",
             "square km": "#{n}제곱킬로미터",
