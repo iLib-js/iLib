@@ -403,7 +403,14 @@ ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
  * is a multiple of the given longitude
  */
 ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
+	var next,
+		start = jd,
+		end = jd + longitude * 10 / 9;
 	
+	while (end - start >= 0.00001) {
+		next = ilib.Date._fixangle(longitude * Math.ceiling(ilib.Date._solarLongitude(jd) / longitude));
+		
+	}
 };
 
 /**

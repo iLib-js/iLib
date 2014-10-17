@@ -354,7 +354,7 @@ function testHanDateAfterLeapYear() {
     assertEquals(0, pd.getMilliseconds());
 }
 
-var testDatesPersian = [
+var testDatesHan = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -1208, 5,     1,   0,    0,      0,      0,           0],
     [1660037.5, -790,  9,     14,  0,    0,      0,      0,           3],
@@ -394,44 +394,44 @@ var testDatesPersian = [
 function testHanDateConvert() {
     var pd;
     
-    for (var i = 0; i < testDatesPersian.length; i++) {
-        pd = new ilib.Date.HanDate({julianday: testDatesPersian[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesHan.length; i++) {
+        pd = new ilib.Date.HanDate({julianday: testDatesHan[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDatesPersian[i][0]);
+        info("testing jd=" + testDatesHan[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing rd for " + testDatesPersian[i][0], (testDatesPersian[i][0] - 1948319.5), pd.getRataDie());
-        assertEquals("testing year for " + testDatesPersian[i][0], testDatesPersian[i][1], pd.getYears());
-        assertEquals("testing month for " + testDatesPersian[i][0], testDatesPersian[i][2], pd.getMonths());
-        assertEquals("testing day for " + testDatesPersian[i][0], testDatesPersian[i][3], pd.getDays());
-        assertEquals("testing hour for " + testDatesPersian[i][0], testDatesPersian[i][4], pd.getHours());
-        assertEquals("testing minute for " + testDatesPersian[i][0], testDatesPersian[i][5], pd.getMinutes());
-        assertEquals("testing second for " + testDatesPersian[i][0], testDatesPersian[i][6], pd.getSeconds());
-        assertEquals("testing millisecond for " + testDatesPersian[i][0], testDatesPersian[i][7], pd.getMilliseconds());
-        assertEquals("testing day of week for " + testDatesPersian[i][0], testDatesPersian[i][8], pd.getDayOfWeek());
+        assertEquals("testing rd for " + testDatesHan[i][0], (testDatesHan[i][0] - 1948319.5), pd.getRataDie());
+        assertEquals("testing year for " + testDatesHan[i][0], testDatesHan[i][1], pd.getYears());
+        assertEquals("testing month for " + testDatesHan[i][0], testDatesHan[i][2], pd.getMonths());
+        assertEquals("testing day for " + testDatesHan[i][0], testDatesHan[i][3], pd.getDays());
+        assertEquals("testing hour for " + testDatesHan[i][0], testDatesHan[i][4], pd.getHours());
+        assertEquals("testing minute for " + testDatesHan[i][0], testDatesHan[i][5], pd.getMinutes());
+        assertEquals("testing second for " + testDatesHan[i][0], testDatesHan[i][6], pd.getSeconds());
+        assertEquals("testing millisecond for " + testDatesHan[i][0], testDatesHan[i][7], pd.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesHan[i][0], testDatesHan[i][8], pd.getDayOfWeek());
     }
 }
 
 function testHanDateGetJulianDay() {
 	var pd;
 	
-    for (var i = 0; i < testDatesPersian.length; i++) {
+    for (var i = 0; i < testDatesHan.length; i++) {
         pd = new ilib.Date.HanDate({
-            year: testDatesPersian[i][1], 
-            month: testDatesPersian[i][2], 
-            day: testDatesPersian[i][3],
-            hour: testDatesPersian[i][4],
-            minute: testDatesPersian[i][5],
-            second: testDatesPersian[i][6],
-            millisecond: testDatesPersian[i][7],
+            year: testDatesHan[i][1], 
+            month: testDatesHan[i][2], 
+            day: testDatesHan[i][3],
+            hour: testDatesHan[i][4],
+            minute: testDatesHan[i][5],
+            second: testDatesHan[i][6],
+            millisecond: testDatesHan[i][7],
             timezone: "Etc/UTC"
     	});
     
-        info("testing jd=" + testDatesPersian[i][0]);
+        info("testing jd=" + testDatesHan[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing row " + testDatesPersian[i][0], testDatesPersian[i][0], pd.getJulianDay());
-        assertEquals(testDatesPersian[i][8], pd.getDayOfWeek());
+        assertEquals("testing row " + testDatesHan[i][0], testDatesHan[i][0], pd.getJulianDay());
+        assertEquals(testDatesHan[i][8], pd.getDayOfWeek());
     }
 }
 
