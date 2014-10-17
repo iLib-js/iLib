@@ -33,7 +33,7 @@ function testFormatStyle1() {
 	var parsed = new ilib.PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "039 606 537";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -44,7 +44,7 @@ function testFormatStyle2() {
 	var parsed = new ilib.PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "039-606-537";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -55,7 +55,7 @@ function testFormatStyle3() {
 	var parsed = new ilib.PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "(039) 606537";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -124,7 +124,7 @@ function testFormatService() {
 	var parsed = new ilib.PhoneNumber("0800011765", {locale: "zh-TW"});
 	var expected = "0800-011-765";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -438,7 +438,7 @@ function testFormatStyle1Partial0() {
 	});
 	var expected = "0";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -449,7 +449,7 @@ function testFormatStyle1Partial1() {
 	var parsed = new ilib.PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "03 ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -460,7 +460,7 @@ function testFormatStyle1Partial2() {
 	var parsed = new ilib.PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "039 ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -471,7 +471,7 @@ function testFormatStyle1Partial3() {
 	var parsed = new ilib.PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "039 6";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -482,7 +482,7 @@ function testFormatStyle1Partial4() {
 	var parsed = new ilib.PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "039 61";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -493,7 +493,7 @@ function testFormatStyle1Partial5() {
 	var parsed = new ilib.PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "039 612";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -504,7 +504,7 @@ function testFormatStyle1Partial6() {
 	var parsed = new ilib.PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "039 612 3";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -515,7 +515,7 @@ function testFormatStyle1Partial7() {
 	var parsed = new ilib.PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "039 612 34";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -526,7 +526,7 @@ function testFormatStyle1Partial8() {
 	var parsed = new ilib.PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "039 612 345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -537,7 +537,7 @@ function testFormatStyle1Partial9() {
 	var parsed = new ilib.PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "039 612 3456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -548,7 +548,7 @@ function testFormatStyle1Partial10() {
 	var parsed = new ilib.PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "039 6123 4567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -559,7 +559,7 @@ function testFormatStyle1Partial11() {
 	var parsed = new ilib.PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nobracket"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "括號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -572,7 +572,7 @@ function testFormatStyle2Partial0() {
 	});
 	var expected = "0";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -583,7 +583,7 @@ function testFormatStyle2Partial1() {
 	var parsed = new ilib.PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "03-";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -594,7 +594,7 @@ function testFormatStyle2Partial2() {
 	var parsed = new ilib.PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "039-";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -605,7 +605,7 @@ function testFormatStyle2Partial3() {
 	var parsed = new ilib.PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "039-6";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -616,7 +616,7 @@ function testFormatStyle2Partial4() {
 	var parsed = new ilib.PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "039-61";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -627,7 +627,7 @@ function testFormatStyle2Partial5() {
 	var parsed = new ilib.PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "039-612";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -638,7 +638,7 @@ function testFormatStyle2Partial6() {
 	var parsed = new ilib.PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "039-612-3";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -649,7 +649,7 @@ function testFormatStyle2Partial7() {
 	var parsed = new ilib.PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "039-612-34";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -660,7 +660,7 @@ function testFormatStyle2Partial8() {
 	var parsed = new ilib.PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "039-612-345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -671,7 +671,7 @@ function testFormatStyle2Partial9() {
 	var parsed = new ilib.PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "039-612-3456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -682,7 +682,7 @@ function testFormatStyle2Partial10() {
 	var parsed = new ilib.PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "039-6123-4567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -693,7 +693,7 @@ function testFormatStyle2Partial11() {
 	var parsed = new ilib.PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "dash"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "破折號"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -706,7 +706,7 @@ function testFormatStyle3Partial0() {
 	});
 	var expected = "0";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -717,7 +717,7 @@ function testFormatStyle3Partial1() {
 	var parsed = new ilib.PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "(03) ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -728,7 +728,7 @@ function testFormatStyle3Partial2() {
 	var parsed = new ilib.PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "(039) ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -739,7 +739,7 @@ function testFormatStyle3Partial3() {
 	var parsed = new ilib.PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "(039) 6";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -750,7 +750,7 @@ function testFormatStyle3Partial4() {
 	var parsed = new ilib.PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "(039) 61";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -761,7 +761,7 @@ function testFormatStyle3Partial5() {
 	var parsed = new ilib.PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "(039) 612";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -772,7 +772,7 @@ function testFormatStyle3Partial6() {
 	var parsed = new ilib.PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "(039) 6123";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -783,7 +783,7 @@ function testFormatStyle3Partial7() {
 	var parsed = new ilib.PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "(039) 61234";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -794,7 +794,7 @@ function testFormatStyle3Partial8() {
 	var parsed = new ilib.PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "(039) 612345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -805,7 +805,7 @@ function testFormatStyle3Partial9() {
 	var parsed = new ilib.PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "(039) 6123456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -816,7 +816,7 @@ function testFormatStyle3Partial10() {
 	var parsed = new ilib.PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "(039) 61234567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -827,7 +827,7 @@ function testFormatStyle3Partial11() {
 	var parsed = new ilib.PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
 	
-	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "nospace"});
+	var fmt = new ilib.PhoneFmt({locale: "zh-TW", style: "沒有空格"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);

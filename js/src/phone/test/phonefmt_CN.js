@@ -92,11 +92,11 @@ function testFormatCNInternationalAccessCode() {
 function testFormatCNPlusIDDtoUnknownCountry() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "872",	// pitcairn island
+		trunkCode: "0",
+		areaCode: "123",
 		subscriberNumber: "987654321"
 	});
-	var expected = "+872 987654321";	// use last resort rule for subscriber number
+	var expected = "0123-987654321";	// use last resort rule for subscriber number
 	
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN", style: "破折号"});
 	formatted = fmt.format(parsed);
@@ -536,11 +536,11 @@ function testFormatWithParamsInternationalAccessCode() {
 function testFormatWithParamsPlusIDDtoUnknownCountry() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "872",	// pitcairn island
+		trunkCode: "0",
+		areaCode: "123",
 		subscriberNumber: "987654321"
 	});
-	var expected = "+872 987654321";	// use last resort rule for subscriber number
+	var expected = "0123-987654321";
 	
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN", style: "破折号"});
 	formatted = fmt.format(parsed);
