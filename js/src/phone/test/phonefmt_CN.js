@@ -30,8 +30,6 @@
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatCNInternational() {
@@ -48,8 +46,6 @@ function testFormatCNInternational() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatCNInternationalLongArea() {
@@ -65,9 +61,7 @@ function testFormatCNInternationalLongArea() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
 
 function testFormatCNInternationalAccessCode() {
@@ -84,26 +78,21 @@ function testFormatCNInternationalAccessCode() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
-
 
 function testFormatCNPlusIDDtoUnknownCountry() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-		trunkCode: "0",
-		areaCode: "123",
+		iddPrefix: "+",
+		countryCode: "123",
 		subscriberNumber: "987654321"
 	});
-	var expected = "0123-987654321";	// use last resort rule for subscriber number
+	var expected = "+123 987654321";	// use last resort rule for subscriber number
 	
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN", style: "破折号"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatMobile() {
@@ -118,8 +107,6 @@ function testFormatMobile() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatMobileInternational() {
@@ -136,8 +123,6 @@ function testFormatMobileInternational() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatCNStyle0Partial1() {
@@ -151,9 +136,8 @@ function testFormatCNStyle0Partial1() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatCNStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -166,9 +150,8 @@ function testFormatCNStyle0Partial2() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatCNStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -180,10 +163,9 @@ function testFormatCNStyle0Partial3() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -196,10 +178,9 @@ function testFormatCNStyle0Partial4() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -212,10 +193,9 @@ function testFormatCNStyle0Partial5() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -228,10 +208,9 @@ function testFormatCNStyle0Partial6() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -245,9 +224,8 @@ function testFormatCNStyle0Partial7() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatCNStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -260,10 +238,9 @@ function testFormatCNStyle0Partial8() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -276,10 +253,9 @@ function testFormatCNStyle0Partial9() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -292,10 +268,9 @@ function testFormatCNStyle0Partial10() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -308,10 +283,9 @@ function testFormatCNStyle0Partial11() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0Partial12() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -324,9 +298,7 @@ function testFormatCNStyle0Partial12() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
 
 function testFormatCNStyle0PartialLocal1() {
@@ -340,9 +312,8 @@ function testFormatCNStyle0PartialLocal1() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatCNStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -353,10 +324,9 @@ function testFormatCNStyle0PartialLocal2() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -367,10 +337,9 @@ function testFormatCNStyle0PartialLocal3() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -381,10 +350,9 @@ function testFormatCNStyle0PartialLocal4() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -395,10 +363,9 @@ function testFormatCNStyle0PartialLocal5() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -409,10 +376,9 @@ function testFormatCNStyle0PartialLocal6() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -423,10 +389,9 @@ function testFormatCNStyle0PartialLocal7() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -437,10 +402,9 @@ function testFormatCNStyle0PartialLocal8() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatCNStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -452,14 +416,7 @@ function testFormatCNStyle0PartialLocal9() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
-
-
-
-
-
 
 function testFormatWithParamsStyle0() {
 	var formatted;
@@ -474,8 +431,6 @@ function testFormatWithParamsStyle0() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatWithParamsInternational() {
@@ -492,8 +447,6 @@ function testFormatWithParamsInternational() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatWithParamsInternationalLongArea() {
@@ -510,8 +463,6 @@ function testFormatWithParamsInternationalLongArea() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatWithParamsInternationalAccessCode() {
@@ -528,26 +479,21 @@ function testFormatWithParamsInternationalAccessCode() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
-
 
 function testFormatWithParamsPlusIDDtoUnknownCountry() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-		trunkCode: "0",
-		areaCode: "123",
+		iddPrefix: "+",
+		countryCode: "123",
 		subscriberNumber: "987654321"
 	});
-	var expected = "0123-987654321";
+	var expected = "+123 987654321";
 	
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN", style: "破折号"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatMobile() {
@@ -562,8 +508,6 @@ function testFormatMobile() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatMobileInternational() {
@@ -580,8 +524,6 @@ function testFormatMobileInternational() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatWithParamsStyle0Partial1() {
@@ -594,10 +536,9 @@ function testFormatWithParamsStyle0Partial1() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatWithParamsStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -610,9 +551,8 @@ function testFormatWithParamsStyle0Partial2() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -625,9 +565,8 @@ function testFormatWithParamsStyle0Partial3() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -641,9 +580,8 @@ function testFormatWithParamsStyle0Partial4() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -657,9 +595,8 @@ function testFormatWithParamsStyle0Partial5() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -673,9 +610,8 @@ function testFormatWithParamsStyle0Partial6() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -688,10 +624,9 @@ function testFormatWithParamsStyle0Partial7() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
+
 function testFormatWithParamsStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -705,9 +640,8 @@ function testFormatWithParamsStyle0Partial8() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -721,9 +655,8 @@ function testFormatWithParamsStyle0Partial9() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -737,9 +670,8 @@ function testFormatWithParamsStyle0Partial10() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -753,9 +685,8 @@ function testFormatWithParamsStyle0Partial11() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0Partial12() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -769,8 +700,6 @@ function testFormatWithParamsStyle0Partial12() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
 
 function testFormatWithParamsStyle0PartialLocal1() {
@@ -784,9 +713,8 @@ function testFormatWithParamsStyle0PartialLocal1() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -798,9 +726,8 @@ function testFormatWithParamsStyle0PartialLocal2() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -812,9 +739,8 @@ function testFormatWithParamsStyle0PartialLocal3() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -826,9 +752,8 @@ function testFormatWithParamsStyle0PartialLocal4() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -840,9 +765,8 @@ function testFormatWithParamsStyle0PartialLocal5() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -854,9 +778,8 @@ function testFormatWithParamsStyle0PartialLocal6() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -868,9 +791,8 @@ function testFormatWithParamsStyle0PartialLocal7() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -882,9 +804,8 @@ function testFormatWithParamsStyle0PartialLocal8() {
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
-	
-	
 };
+
 function testFormatWithParamsStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -895,7 +816,5 @@ function testFormatWithParamsStyle0PartialLocal9() {
 	var fmt = new ilib.PhoneFmt({locale: "zh-CN"});
 	formatted = fmt.format(parsed);
 	
-	assertEquals(expected, formatted);
-	
-	
+	assertEquals(expected, formatted);	
 };
