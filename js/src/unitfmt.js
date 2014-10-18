@@ -97,43 +97,43 @@ ilib.UnitFmt = function(options) {
         this.measurementType = 'undefined';
         this.convert = true;
 	
-	this.locale = new ilib.Locale();
-	
-	if (options) {
-            if (options.locale) {
-                    this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-            }
+    this.locale = new ilib.Locale();
 
-            if (typeof(options.sync) === 'boolean') {
-                    sync = options.sync;
-            }
+    if (options) {
+    	if (options.locale) {
+    		this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+    	}
 
-            if (typeof(options.loadParams) !== 'undefined') {
-                    loadParams = options.loadParams;
-            }
-                
-            if (options.length) {
-                this.length = options.length;
-            }
+    	if (typeof(options.sync) === 'boolean') {
+    		sync = options.sync;
+    	}
 
-            if (typeof(options.autoScale) === 'boolean') {
-                this.scale = options.autoScale;
-            }
-            
-            if (typeof(options.autoConvert) === 'boolean') {
-                this.convert = options.autoConvert;
-            }
+    	if (typeof(options.loadParams) !== 'undefined') {
+    		loadParams = options.loadParams;
+    	}
 
-            if (options.measurementSystem) {
-                this.measurementSystem = options.measurementSystem;
-            }
-	}
-        
-	if (!ilib.UnitFmt.cache) {
-		ilib.UnitFmt.cache = {};
-	}
+    	if (options.length) {
+    		this.length = options.length;
+    	}
 
-        ilib.loadData({
+    	if (typeof(options.autoScale) === 'boolean') {
+    		this.scale = options.autoScale;
+    	}
+
+    	if (typeof(options.autoConvert) === 'boolean') {
+    		this.convert = options.autoConvert;
+    	}
+
+    	if (options.measurementSystem) {
+    		this.measurementSystem = options.measurementSystem;
+    	}
+    }
+
+    if (!ilib.UnitFmt.cache) {
+    	ilib.UnitFmt.cache = {};
+    }
+
+	ilib.loadData({
 		object: ilib.UnitFmt, 
 		locale: this.locale, 
 		name: "unitfmt.json", 
@@ -141,7 +141,7 @@ ilib.UnitFmt = function(options) {
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (format) {                      
 			var formatted = format;
-                        this.template = formatted["unitfmt"][this.length];
+			this.template = formatted["unitfmt"][this.length];
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
@@ -186,17 +186,17 @@ ilib.UnitFmt.prototype = {
 	 * Return whether or not this formatter will auto-scale the units while formatting.
 	 * @returns {boolean} true if auto-scaling is turned on
 	 */
-        getScale: function() {
-            return this.scale;
-        },
+    getScale: function() {
+        return this.scale;
+    },
 
-        /**
-         * Return the measurement system that is used for this formatter.
-         * @returns {string} the measurement system used in this formatter
-         */
-        getMeasurementSystem: function() {
-            return this.measurementSystem;
-        },
+    /**
+     * Return the measurement system that is used for this formatter.
+     * @returns {string} the measurement system used in this formatter
+     */
+    getMeasurementSystem: function() {
+        return this.measurementSystem;
+    },
 
 	/**
 	 * Format a particular unit instance according to the settings of this
