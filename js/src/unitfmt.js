@@ -23,6 +23,7 @@ ilibglobal.js
 locale.js 
 resources.js 
 localeinfo.js
+strings.js
 */
 
 // !data unitfmt
@@ -205,10 +206,12 @@ ilib.UnitFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (measurement) {
-                var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
+		var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
 		u = this.scale ? u.scale(this.measurementSystem) : u;
-                var formatted = new ilib.String(this.template[u.getUnit()]);
+		var formatted = new ilib.String(this.template[u.getUnit()]);
+		// make sure to use the right plural rules
+		formatted.setLocale(this.locale, true, undefined, undefined);
 		formatted = formatted.formatChoice(u.amount,{n:u.amount});
-                return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
+		return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
 	}
 };

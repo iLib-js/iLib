@@ -322,34 +322,28 @@ function testUnitFormatArea2() {
     var m1 = new ilib.Measurement({
         unit: "square centimeter",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
     var str = uf.format(m1);
-    assertEquals("2 квадратного сантиметра", str);
+    assertEquals("2 квадратных сантиметра", str);
 }
 
 function testUnitFormatArea3() {
     var m1 = new ilib.Measurement({
         unit: "square centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
     var str = uf.format(m1);
-    assertEquals("1000 квадратного сантиметра", str);
+    assertEquals("1000 квадратных сантиметров", str);
 }
 
 function testUnitFormatArea4() {
     var m1 = new ilib.Measurement({
         unit: "square centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false});
@@ -361,8 +355,6 @@ function testUnitFormatArea5() {
     var m1 = new ilib.Measurement({
         unit: "square centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false});
@@ -385,8 +377,6 @@ function testUnitFormatArea7() {
     var m1 = new ilib.Measurement({
         unit: "square centimeter",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -398,21 +388,17 @@ function testUnitFormatArea8() {
     var m1 = new ilib.Measurement({
         unit: "hectare",
         amount: 1000
-
-
     });
 
-    var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
+    var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
-    assertEquals("1000 га", str);
+    assertEquals("1000 гектар", str);
 }
 
 function testUnitFormatArea9() {
     var m1 = new ilib.Measurement({
         unit: "square yard",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false});
@@ -424,8 +410,6 @@ function testUnitFormatArea10() {
     var m1 = new ilib.Measurement({
         unit: "square yard",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false});
@@ -450,8 +434,6 @@ function testUnitFormatDigitalStorage2() {
     var m1 = new ilib.Measurement({
         unit: "kilobyte",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -459,25 +441,25 @@ function testUnitFormatDigitalStorage2() {
     assertEquals("2 килобайта", str);
 }
 
+/*
+this should scale from kilobytes to megabyte, not kilobits
+
 function testUnitFormatDigitalStorage3() {
     var m1 = new ilib.Measurement({
         unit: "kilobyte",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
     var str = uf.format(m1);
     assertEquals("7.8125 мегабита", str);
 }
+*/
 
 function testUnitFormatDigitalStorage4() {
     var m1 = new ilib.Measurement({
         unit: "kilobyte",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -489,8 +471,6 @@ function testUnitFormatDigitalStorage5() {
     var m1 = new ilib.Measurement({
         unit: "kilobyte",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -513,8 +493,6 @@ function testUnitFormatDigitalStorage7() {
     var m1 = new ilib.Measurement({
         unit: "gigabit",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -526,21 +504,17 @@ function testUnitFormatDigitalStorage8() {
     var m1 = new ilib.Measurement({
         unit: "bit",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
-    assertEquals("1000 бита", str);
+    assertEquals("1000 бит", str);
 }
 
 function testUnitFormatDigitalStorage9() {
     var m1 = new ilib.Measurement({
         unit: "gigabit",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -552,8 +526,6 @@ function testUnitFormatDigitalStorage10() {
     var m1 = new ilib.Measurement({
         unit: "gigabit",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -577,8 +549,6 @@ function testUnitFormatEnergy2() {
     var m1 = new ilib.Measurement({
         unit: "joule",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -590,8 +560,6 @@ function testUnitFormatEnergy3() {
     var m1 = new ilib.Measurement({
         unit: "joule",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true});
@@ -603,8 +571,6 @@ function testUnitFormatEnergy4() {
     var m1 = new ilib.Measurement({
         unit: "joule",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
@@ -616,8 +582,6 @@ function testUnitFormatEnergy5() {
     var m1 = new ilib.Measurement({
         unit: "joule",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -640,8 +604,6 @@ function testUnitFormatEnergy7() {
     var m1 = new ilib.Measurement({
         unit: "kilowatt hour",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -653,21 +615,17 @@ function testUnitFormatEnergy8() {
     var m1 = new ilib.Measurement({
         unit: "calorie",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
-    assertEquals("1000 кал", str);
+    assertEquals("1000 калорий", str);
 }
 
 function testUnitFormatEnergy9() {
     var m1 = new ilib.Measurement({
         unit: "gigabit",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -679,8 +637,6 @@ function testUnitFormatEnergy10() {
     var m1 = new ilib.Measurement({
         unit: "joule",
         amount: 2000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
@@ -704,8 +660,6 @@ function testUnitFormatFuelConsumption2() {
     var m1 = new ilib.Measurement({
         unit: "mpg",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -717,21 +671,17 @@ function testUnitFormatFuelConsumption3() {
     var m1 = new ilib.Measurement({
         unit: "mpg",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
     var str = uf.format(m1);
-    assertEquals("1000 мили/галл.", str);
+    assertEquals("1000 миль/галл.", str);
 }
 
 function testUnitFormatFuelConsumption4() {
     var m1 = new ilib.Measurement({
         unit: "km/liter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
@@ -743,8 +693,6 @@ function testUnitFormatFuelConsumption5() {
     var m1 = new ilib.Measurement({
         unit: "mpg",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -768,8 +716,6 @@ function testUnitFormatLength2() {
     var m1 = new ilib.Measurement({
         unit: "inch",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -781,8 +727,6 @@ function testUnitFormatLength3() {
     var m1 = new ilib.Measurement({
         unit: "meter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
@@ -794,8 +738,6 @@ function testUnitFormatLength4() {
     var m1 = new ilib.Measurement({
         unit: "meter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
@@ -807,8 +749,6 @@ function testUnitFormatLength5() {
     var m1 = new ilib.Measurement({
         unit: "meter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -831,8 +771,6 @@ function testUnitFormatLength7() {
     var m1 = new ilib.Measurement({
         unit: "mile",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -844,21 +782,17 @@ function testUnitFormatLength8() {
     var m1 = new ilib.Measurement({
         unit: "centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
-    assertEquals("1000 мили", str);
+    assertEquals("1000 сантиметров", str);
 }
 
 function testUnitFormatLength9() {
     var m1 = new ilib.Measurement({
         unit: "centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -870,8 +804,6 @@ function testUnitFormatLength10() {
     var m1 = new ilib.Measurement({
         unit: "centimeter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:false});
@@ -894,8 +826,6 @@ function testUnitFormatMass2() {
     var m1 = new ilib.Measurement({
         unit: "microgram",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -907,8 +837,6 @@ function testUnitFormatMass3() {
     var m1 = new ilib.Measurement({
         unit: "microgram",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
@@ -920,8 +848,6 @@ function testUnitFormatMass4() {
     var m1 = new ilib.Measurement({
         unit: "microgram",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
@@ -933,8 +859,6 @@ function testUnitFormatMass5() {
     var m1 = new ilib.Measurement({
         unit: "microgram",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -957,8 +881,6 @@ function testUnitFormatMass7() {
     var m1 = new ilib.Measurement({
         unit: "stone",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -970,21 +892,17 @@ function testUnitFormatMass8() {
     var m1 = new ilib.Measurement({
         unit: "metric ton",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
-    assertEquals("1000 тонны", str);
+    assertEquals("1000 тонн", str);
 }
 
 function testUnitFormatMass9() {
     var m1 = new ilib.Measurement({
         unit: "metric ton",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -996,8 +914,6 @@ function testUnitFormatMass10() {
     var m1 = new ilib.Measurement({
         unit: "gram",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
@@ -1021,8 +937,6 @@ function testUnitFormatSpeed2() {
     var m1 = new ilib.Measurement({
         unit: "kilometer/hour",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false});
@@ -1034,8 +948,6 @@ function testUnitFormatSpeed3() {
     var m1 = new ilib.Measurement({
         unit: "kilometer/hour",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
@@ -1047,8 +959,6 @@ function testUnitFormatSpeed4() {
     var m1 = new ilib.Measurement({
         unit: "feet/second",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1060,8 +970,6 @@ function testUnitFormatSpeed5() {
     var m1 = new ilib.Measurement({
         unit: "miles/hour",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -1084,8 +992,6 @@ function testUnitFormatSpeed7() {
     var m1 = new ilib.Measurement({
         unit: "miles/hour",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
@@ -1097,8 +1003,6 @@ function testUnitFormatSpeed8() {
     var m1 = new ilib.Measurement({
         unit: "knot",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
@@ -1110,8 +1014,6 @@ function testUnitFormatSpeed9() {
     var m1 = new ilib.Measurement({
         unit: "miles/hour",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1123,8 +1025,6 @@ function testUnitFormatSpeed10() {
     var m1 = new ilib.Measurement({
         unit: "miles/hour",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
@@ -1147,8 +1047,6 @@ function testUnitFormatTemperature2() {
     var m1 = new ilib.Measurement({
         unit: "Celsius",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({autoConvert:false,length:"short"});
@@ -1160,8 +1058,6 @@ function testUnitFormatTemperature3() {
     var m1 = new ilib.Measurement({
         unit: "Celsius",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"long"});
@@ -1173,8 +1069,6 @@ function testUnitFormatTemperature4() {
     var m1 = new ilib.Measurement({
         unit: "kelvin",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1186,8 +1080,6 @@ function testUnitFormatTemperature5() {
     var m1 = new ilib.Measurement({
         unit: "kelvin",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"en-US",autoConvert:false,autoScale:false});
@@ -1210,8 +1102,6 @@ function testUnitFormatTemperature7() {
     var m1 = new ilib.Measurement({
         unit: "fahrenheit",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
@@ -1223,8 +1113,6 @@ function testUnitFormatTemperature8() {
     var m1 = new ilib.Measurement({
         unit: "kelvin",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
@@ -1236,8 +1124,6 @@ function testUnitFormatTemperature9() {
     var m1 = new ilib.Measurement({
         unit: "fahrenheit",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1249,8 +1135,6 @@ function testUnitFormatTemperature10() {
     var m1 = new ilib.Measurement({
         unit: "celsius",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",length:"long"});
@@ -1273,8 +1157,6 @@ function testUnitFormatTime2() {
     var m1 = new ilib.Measurement({
         unit: "nanoseconds",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({autoConvert:false,length:"short"});
@@ -1286,8 +1168,6 @@ function testUnitFormatTime3() {
     var m1 = new ilib.Measurement({
         unit: "nanoseconds",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
@@ -1299,8 +1179,6 @@ function testUnitFormatTime4() {
     var m1 = new ilib.Measurement({
         unit: "millisecond",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1312,8 +1190,6 @@ function testUnitFormatTime5() {
     var m1 = new ilib.Measurement({
         unit: "millisecond",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -1336,8 +1212,6 @@ function testUnitFormatTime7() {
     var m1 = new ilib.Measurement({
         unit: "year",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
@@ -1349,21 +1223,17 @@ function testUnitFormatTime8() {
     var m1 = new ilib.Measurement({
         unit: "minute",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
     var str = uf.format(m1);
-    assertEquals("1000 минут", str);
+    assertEquals("1000 мин", str);
 }
 
 function testUnitFormatTime9() {
     var m1 = new ilib.Measurement({
         unit: "minute",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1375,8 +1245,6 @@ function testUnitFormatTime10() {
     var m1 = new ilib.Measurement({
         unit: "month",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",length:"long",autoConvert:false,autoScale:false});
@@ -1399,8 +1267,6 @@ function testUnitFormatVolume2() {
     var m1 = new ilib.Measurement({
         unit: "tsp",
         amount: 2
-
-
     });
 
     var uf = new ilib.UnitFmt({autoConvert:false,length:"short"});
@@ -1412,21 +1278,17 @@ function testUnitFormatVolume3() {
     var m1 = new ilib.Measurement({
         unit: "ounce",
         amount: 1000
-
-
     });
 
-    var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+    var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
     var str = uf.format(m1);
-    assertEquals("1000 кг", str);
+    assertEquals("1000 жидк. унц.", str);
 }
 
 function testUnitFormatVolume4() {
     var m1 = new ilib.Measurement({
         unit: "millisecond",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1438,8 +1300,6 @@ function testUnitFormatVolume5() {
     var m1 = new ilib.Measurement({
         unit: "liter",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
@@ -1462,8 +1322,6 @@ function testUnitFormatVolume7() {
     var m1 = new ilib.Measurement({
         unit: "gallon",
         amount: 1
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"long"});
@@ -1475,8 +1333,6 @@ function testUnitFormatVolume8() {
     var m1 = new ilib.Measurement({
         unit: "gallon",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
@@ -1488,8 +1344,6 @@ function testUnitFormatVolume9() {
     var m1 = new ilib.Measurement({
         unit: "cubic foot",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
@@ -1501,8 +1355,6 @@ function testUnitFormatVolume10() {
     var m1 = new ilib.Measurement({
         unit: "cubic foot",
         amount: 1000
-
-
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",length:"long"});
