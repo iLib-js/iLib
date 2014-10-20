@@ -399,7 +399,7 @@ function testFormatStyle1Partial0() {
 	});
 	var expected = "0";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -409,7 +409,7 @@ function testFormatStyle1Partial1() {
 	var parsed = new ilib.PhoneNumber("03", {locale: "ja-JP"});
 	var expected = "(03) ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -419,7 +419,7 @@ function testFormatStyle1Partial2() {
 	var parsed = new ilib.PhoneNumber("075", {locale: "ja-JP"});
 	var expected = "(075) ";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -429,7 +429,7 @@ function testFormatStyle1Partial3() {
 	var parsed = new ilib.PhoneNumber("0751", {locale: "ja-JP"});
 	var expected = "(075) 1";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -439,7 +439,7 @@ function testFormatStyle1Partial4() {
 	var parsed = new ilib.PhoneNumber("07512", {locale: "ja-JP"});
 	var expected = "(075) 12";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -449,7 +449,7 @@ function testFormatStyle1Partial5() {
 	var parsed = new ilib.PhoneNumber("075123", {locale: "ja-JP"});
 	var expected = "(075) 123";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -459,7 +459,7 @@ function testFormatStyle1Partial6() {
 	var parsed = new ilib.PhoneNumber("0751234", {locale: "ja-JP"});
 	var expected = "(075) 123-4";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -469,7 +469,7 @@ function testFormatStyle1Partial7() {
 	var parsed = new ilib.PhoneNumber("07512345", {locale: "ja-JP"});
 	var expected = "(075) 12-345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -479,7 +479,7 @@ function testFormatStyle1Partial8() {
 	var parsed = new ilib.PhoneNumber("075123456", {locale: "ja-JP"});
 	var expected = "(075) 12-3456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -489,7 +489,7 @@ function testFormatStyle1Partial9() {
 	var parsed = new ilib.PhoneNumber("0751234567", {locale: "ja-JP"});
 	var expected = "(075) 123-4567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -499,7 +499,7 @@ function testFormatStyle1Partial10() {
 	var parsed = new ilib.PhoneNumber("07512345678", {locale: "ja-JP"});
 	var expected = "(075) 1234-5678";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ja-JP", style: "かっこ"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);

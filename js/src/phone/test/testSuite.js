@@ -25,16 +25,16 @@ function newSuite(path, include) {
 }
 
 function suite() {
-    var s = new cli.TestSuite();
-    
-    var suites = [
-        "numplan.js",
-        "phoneloc.js",
-        "phonenum.js",
-        "phonegeo.js",
-        "normalize.js",
-        "imsi.js",		
-  		"phonenum_AU.js",
+	var s = new cli.TestSuite();
+	
+	var suites = [
+		"numplan.js",
+		"phoneloc.js",
+		"phonenum.js",
+		"phonegeo.js",
+		"normalize.js",
+		"imsi.js",
+		"phonenum_AU.js",
 		"phonenum_BE.js",
 		"phonenum_CN.js",
 		"phonenum_DE.js",
@@ -52,30 +52,33 @@ function suite() {
 		"phonenum_NL.js",
 		"phonenum_NZ.js",
 		"phonenum_SG.js",
+		"phonenum_TW.js",
 		"phonenum_US.js",
 		"phonefmt_AU.js",
 		"phonefmt_BE.js",
+		"phonefmt_CN.js",
 		"phonefmt_DE.js",
 		"phonefmt_ES.js",
 		"phonefmt_FR.js",
 		"phonefmt_GB.js",
-        "phonefmt_JP.js",
 		"phonefmt_HK.js",
 		"phonefmt_IE.js",
 		"phonefmt_IN.js",
 		"phonefmt_IT.js",
+		"phonefmt_JP.js",
 		"phonefmt_KR.js",
 		"phonefmt_LU.js",
 		"phonefmt_MX.js",
 		"phonefmt_NL.js",
 		"phonefmt_NZ.js",
 		"phonefmt_SG.js",
+		"phonefmt_TW.js",
 		"phonefmt_US.js"
-    ];
-    
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path));
-    });
-    
-    return s;
+	];
+	
+	suites.forEach(function (path) {
+		s.addSuite(newSuite(path));
+	});
+	
+	return s;
 }
