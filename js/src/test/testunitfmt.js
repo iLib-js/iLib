@@ -1383,3 +1383,174 @@ function testUnitFormatVolume12() {
     var str = uf.format(m1);
     assertEquals("1000 ft³", str);
 }
+
+function testUnitFormatArea11() {
+    var m1 = new ilib.Measurement({
+        unit: "square centimeter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 square centimeters", str);
+}
+
+function testUnitFormatArea12() {
+    var m1 = new ilib.Measurement({
+        unit: "square centimeter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 cm²", str);
+}
+
+function testUnitFormatDigitalStorage11() {
+    var m1 = new ilib.Measurement({
+        unit: "kilobyte",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kilobytes", str);
+}
+
+function testUnitFormatDigitalStorage12() {
+    var m1 = new ilib.Measurement({
+        unit: "kilobyte",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kB", str);
+}
+function testUnitFormatEnergy11() {
+    var m1 = new ilib.Measurement({
+        unit: "kilowatt hour",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kilowatt-hours", str);
+}
+
+function testUnitFormatEnergy12() {
+    var m1 = new ilib.Measurement({
+        unit: "kilowatt hour",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kWh", str);
+}
+
+function testUnitFormatFuelConsumption11() {
+    var m1 = new ilib.Measurement({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kilometers per liter", str);
+}
+
+function testUnitFormatFuelConsumption12() {
+    var m1 = new ilib.Measurement({
+        unit: "km/liter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 km/l", str);
+}
+function testUnitFormatLength11() {
+    var m1 = new ilib.Measurement({
+        unit: "decimeter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 decimeters", str);
+}
+
+function testUnitFormatLength12() {
+    var m1 = new ilib.Measurement({
+        unit: "decimeter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 dm", str);
+}
+function testUnitFormatSpeed11() {
+    var m1 = new ilib.Measurement({
+        unit: "kilometer/second",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 kilometers per second", str);
+}
+
+function testUnitFormatSpeed12() {
+    var m1 = new ilib.Measurement({
+        unit: "kilometer/second",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000  km/s", str);
+}
+function testUnitFormatTemperature11() {
+    var m1 = new ilib.Measurement({
+        unit: "fahrenheit",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 degrees Fahrenheit", str);
+}
+
+function testUnitFormatTemperature12() {
+    var m1 = new ilib.Measurement({
+        unit: "fahrenheit",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000°F", str);
+}
+function testUnitFormatTime11() {
+    var m1 = new ilib.Measurement({
+        unit: "millisecond",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 milliseconds", str);
+}
+
+function testUnitFormatTime12() {
+    var m1 = new ilib.Measurement({
+        unit: "millisecond",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short",autoConvert:false,autoScale: false});
+    var str = uf.format(m1);
+    assertEquals("1000 ms", str);
+}
