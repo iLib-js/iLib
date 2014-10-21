@@ -1361,3 +1361,25 @@ function testUnitFormatVolume10() {
     var str = uf.format(m1);
     assertEquals("1000 pieds cubes", str);
 }
+
+function testUnitFormatVolume11() {
+    var m1 = new ilib.Measurement({
+        unit: "cubic foot",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"long"});
+    var str = uf.format(m1);
+    assertEquals("1000 cubic feet", str);
+}
+
+function testUnitFormatVolume12() {
+    var m1 = new ilib.Measurement({
+        unit: "cubic foot",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({length:"short"});
+    var str = uf.format(m1);
+    assertEquals("1000 ft³", str);
+}
