@@ -306,9 +306,8 @@ ilib.NameFmt.prototype = {
 			return undefined;
 		}
 		
-		if ((!name.givenName || ilib.Name._isEuroName(name.givenName)) &&
-				 (!name.middleName || ilib.Name._isEuroName(name.middleName)) &&
-				 (!name.familyName || ilib.Name._isEuroName(name.familyName))) {
+		if ((typeof(name.isAsianName) === 'boolean' && !name.isAsianName) ||
+				ilib.Name._isEuroName([name.givenName, name.middleName, name.familyName].join(""))) {
 			isAsianName = false;	// this is a euro name, even if the locale is asian
 			modified = name.clone();
 			

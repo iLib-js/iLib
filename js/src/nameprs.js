@@ -96,6 +96,9 @@ util/jsutils.js
 ilib.Name = function (name, options) {
     var sync = true;
 
+    if (!name || name.length === 0) {
+    	return;
+    }
     if (typeof (name) === 'object') {
         // copy constructor
         /**
@@ -132,6 +135,7 @@ ilib.Name = function (name, options) {
         this.style = name.style;
         this.order = name.order;
         this.useSpaces = name.useSpaces;
+        this.isAsianName = name.isAsianName;
         return;
     }
 
@@ -363,7 +367,7 @@ ilib.Name.prototype = {
     _init: function (name) {
         var parts, prefixArray, prefix, prefixLower,
             suffixArray, suffix, suffixLower,
-            asianName, i, info, hpSuffix;
+            i, info, hpSuffix;
 
         if (name) {
             // for DFISH-12905, pick off the part that the LDAP server automatically adds to our names in HP emails
@@ -382,14 +386,14 @@ ilib.Name.prototype = {
             }
 
             if (this.info.nameStyle === "asian" || this.info.order === "fmg" || this.info.order === "fgm") {
-                asianName = !ilib.Name._isEuroName(name);
-                info = asianName ? this.info : ilib.data.name;
+                this.isAsianName = !ilib.Name._isEuroName(name);
+                info = this.isAsianName ? this.info : ilib.data.name;
             } else {
-                asianName = ilib.Name._isAsianName(name);
-                info = asianName ? ilib.data.name : this.info;
+                this.isAsianName = ilib.Name._isAsianName(name);
+                info = this.isAsianName ? ilib.data.name : this.info;
             }
 
-            if (asianName) {
+            if (this.isAsianName) {
                 // all-asian names
                 if (this.useSpaces == false) {
                     name = name.replace(/\s+/g, ''); // eliminate all whitespaces
@@ -407,13 +411,13 @@ ilib.Name.prototype = {
             if (parts.length > 1) {
                 for (i = parts.length; i > 0; i--) {
                     prefixArray = parts.slice(0, i);
-                    prefix = prefixArray.join(asianName ? '' : ' ');
+                    prefix = prefixArray.join(this.isAsianName ? '' : ' ');
                     prefixLower = prefix.toLowerCase();
                     prefixLower = prefixLower.replace(/[,\.]/g, ''); // ignore commas and periods
                     if (this.info.prefixes &&
                         (this.info.prefixes.indexOf(prefixLower) > -1 || this._isConjunction(prefixLower))) {
                         if (this.prefix) {
-                            if (!asianName) {
+                            if (!this.isAsianName) {
                                 this.prefix += ' ';
                             }
                             this.prefix += prefix;
@@ -429,12 +433,12 @@ ilib.Name.prototype = {
             if (parts.length > 1) {
                 for (i = parts.length; i > 0; i--) {
                     suffixArray = parts.slice(-i);
-                    suffix = suffixArray.join(asianName ? '' : ' ');
+                    suffix = suffixArray.join(this.isAsianName ? '' : ' ');
                     suffixLower = suffix.toLowerCase();
                     suffixLower = suffixLower.replace(/[\.]/g, ''); // ignore periods
                     if (this.info.suffixes && this.info.suffixes.indexOf(suffixLower) > -1) {
                         if (this.suffix) {
-                            if (!asianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
+                            if (!this.isAsianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
                                 this.suffix = ' ' + this.suffix;
                             }
                             this.suffix = suffix + this.suffix;
@@ -452,11 +456,11 @@ ilib.Name.prototype = {
             }
 
             // adjoin auxillary words to their headwords
-            if (parts.length > 1 && !asianName) {
-                parts = this._joinAuxillaries(parts, asianName);
+            if (parts.length > 1 && !this.isAsianName) {
+                parts = this._joinAuxillaries(parts, this.isAsianName);
             }
 
-            if (asianName) {
+            if (this.isAsianName) {
                 this._parseAsianName(parts);
             } else {
                 this._parseWesternName(parts);
@@ -992,8 +996,6 @@ ilib.Name.prototype = {
      * Return a shallow copy of the current instance.
      */
     clone: function () {
-        var other = new ilib.Name();
-        ilib.shallowCopy(this, other);
-        return other;
+        return new ilib.Name(this);
     }
 };

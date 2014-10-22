@@ -120,11 +120,11 @@ function testDKParseHonorific() {
 };
 
 function testDKParseEverything() {
-	var parsed = new ilib.Name("President Jan Michael Jürgen Jensdatter Jr.", {locale: 'da-DK'});
+	var parsed = new ilib.Name("Præsident Jan Michael Jürgen Jensdatter Jr.", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "President",
+		prefix: "Præsident",
 		givenName: "Jan",
 		middleName: "Michael Jürgen",
 		familyName: "Jensdatter",
