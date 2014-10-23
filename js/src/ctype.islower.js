@@ -28,11 +28,12 @@
  * 
  * Depends directive: !depends ctype.islower.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is lower-case.
  */
 ilib.CType.isLower = function (ch) {
-	return ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'Ll', ilib.data.ctype_l);
 };
 
 /**

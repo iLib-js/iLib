@@ -26,15 +26,16 @@
  * 
  * Depends directive: !depends ctype.isideo.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is an ideographic character.
  */
 ilib.CType.isIdeo = function (ch) {
-	return ilib.CType._inRange(ch, 'cjk', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkradicals', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'enclosedcjk', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkpunct', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkcompatibility', ilib.data.ctype);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'cjk', ilib.data.ctype) ||
+		ilib.CType._inRange(str, 'cjkradicals', ilib.data.ctype) ||
+		ilib.CType._inRange(str, 'enclosedcjk', ilib.data.ctype) ||
+		ilib.CType._inRange(str, 'cjkpunct', ilib.data.ctype) ||
+		ilib.CType._inRange(str, 'cjkcompatibility', ilib.data.ctype);
 	
 };
 

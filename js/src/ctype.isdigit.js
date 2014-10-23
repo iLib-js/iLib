@@ -27,12 +27,13 @@
  * 
  * Depends directive: !depends ctype.isdigit.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is a digit character in the
  * Latin script. 
  */
 ilib.CType.isDigit = function (ch) {
-	return ilib.CType._inRange(ch, 'digit', ilib.data.ctype);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'digit', ilib.data.ctype);
 };
 
 /**

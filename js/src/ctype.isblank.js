@@ -27,11 +27,12 @@
  * Depends directive: !depends ctype.isblank.js
  * 
  * ie. a space or a tab.
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is a blank character.
  */
 ilib.CType.isBlank = function (ch) {
-	return ilib.CType._inRange(ch, 'blank', ilib.data.ctype);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'blank', ilib.data.ctype);
 };
 
 /**

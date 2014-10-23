@@ -28,13 +28,14 @@
  * 
  * Depends directive: !depends ctype.isscript.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @param {string} script the 4-letter ISO 15924 to query against
  * @return {boolean} true if the first character is in the given script, and
  * false otherwise
  */
 ilib.CType.isScript = function (ch, script) {
-	return ilib.CType._inRange(ch, script, ilib.data.scriptToRange);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, script, ilib.data.scriptToRange);
 };
 
 /**

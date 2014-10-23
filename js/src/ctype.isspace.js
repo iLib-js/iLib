@@ -26,14 +26,15 @@
  * 
  * Depends directive: !depends ctype.isspace.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is a whitespace character.
  */
 ilib.CType.isSpace = function (ch) {
-	return ilib.CType._inRange(ch, 'space', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'Zs', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'Zl', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'Zp', ilib.data.ctype_z);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'space', ilib.data.ctype) ||
+		ilib.CType._inRange(str, 'Zs', ilib.data.ctype_z) ||
+		ilib.CType._inRange(str, 'Zl', ilib.data.ctype_z) ||
+		ilib.CType._inRange(str, 'Zp', ilib.data.ctype_z);
 };
 
 /**

@@ -25,12 +25,13 @@
  * 
  * Depends directive: !depends ctype.isgraph.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is any printable character
  * other than space. 
  */
 ilib.CType.isGraph = function (ch) {
-	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isSpace(ch) && !ilib.CType.isCntrl(ch);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isSpace(str) && !ilib.CType.isCntrl(str);
 };
 
 /**

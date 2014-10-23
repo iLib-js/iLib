@@ -28,11 +28,12 @@
  * 
  * Depends directive: !depends ctype.isupper.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is upper-case.
  */
 ilib.CType.isUpper = function (ch) {
-	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType._inRange(str, 'Lu', ilib.data.ctype_l);
 };
 
 /**

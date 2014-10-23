@@ -24,11 +24,12 @@
  * 
  * Depends directive: !depends ctype.isalnum.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String} ch character to examine
  * @return {boolean} true if the first character is alphabetic or numeric
  */
 ilib.CType.isAlnum = function isAlnum(ch) {
-	return ilib.CType.isAlpha(ch) || ilib.CType.isDigit(ch);
+	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
+	return ilib.CType.isAlpha(str) || ilib.CType.isDigit(str);
 };
 
 /**
