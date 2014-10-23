@@ -184,8 +184,9 @@ ilib.Date.GregDate.prototype.newRd = function (params) {
 /**
  * Calculates the Gregorian year for a given rd number.
  * @private
+ * @static
  */
-ilib.Date.GregDate.prototype._calcYear = function(rd) {
+ilib.Date.GregDate._calcYear = function(rd) {
 	var days400,
 		days100,
 		days4,
@@ -208,6 +209,13 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
 		year++;
 	}
 	return year;
+};
+
+/**
+ * @private
+ */
+ilib.Date.GregDate.prototype._calcYear = function(rd) {
+	return ilib.Date.GregDate._calcYear(rd);
 };
 
 /**

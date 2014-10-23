@@ -993,7 +993,7 @@ ilib.Date._localFromUniversal = function(local, zone) {
  * @return {number} the aberration
  */
 ilib.Date._aberration = function(c) {
-	return 0.0000017 * ilib.Date._dcos(177.93 + 35999.01848 * c) - 0.0000973;
+	return 0.0000017 * Math.cos(177.93 + 35999.01848 * c) - 0.0000973;
 };
 
 /**
@@ -1006,7 +1006,99 @@ ilib.Date._nutation2 = function(c) {
 	var c2 = c * c;
 	var a = 124.90 - 1934.134 * c + 0.002063 * c2;
 	var b = 201.11 + 72001.5377 * c + 0.00057 * c2;
-	return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
+	// return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
+	return -0.0000834 * Math.sin(a) - 0.0000064 * Math.sin(b);
+};
+
+
+/**
+ * @private
+ */
+ilib.Date._coeff18th = [
+    -0.00002,
+    0.000297,
+    0.025184,
+    -0.181133,
+    0.553040,
+    -0.861938,
+    0.677066,
+    -0.212591
+];
+
+/**
+ * @private
+ */
+ilib.Date._coeff19th = [
+    -0.000009,
+    0.003844,
+    0.083563,
+    0.865736,
+    4.867575,
+    15.845535,
+    31.332267,
+    28.316289,
+    11.636204,
+    2.043794
+];
+
+/**
+ * @private
+ */
+ilib.Date._ephemerisCorrection = function(rd) {
+	var year = ilib.Date.GregDate._calcYear(rd);
+	
+	if (1988 <= year && year <= 2019) {
+		return (year - 1933) / 86400;
+	}
+	
+	// 693596 is the rd of Jan 1, 1900
+	var theta = (rd - 693596) / 36525;
+	
+	if (1900 <= year && year <= 1987) {
+		var thetapow = theta;
+		var ret = 0;
+		for (var i = 0; i < ilib.Date._coeff19th.length; i++) {
+			ret += ilib.Date._coeff19th[i] * thetapow;
+			thetapow *= theta;
+		}
+		return ret;
+	}
+
+	if (1800 <= year && year <= 1899) {
+		var thetapow = theta;
+		var ret = 0;
+		for (var i = 0; i < ilib.Date._coeff18th.length; i++) {
+			ret += ilib.Date._coeff18th[i] * thetapow;
+			thetapow *= theta;
+		}
+		return ret;
+	}
+	
+	if (1620 <= year && year <= 1799) {
+		year -= 1600;
+		return (196.58333 - 4.0675 * year + 0.0219167 * year * year) / 86400;
+	}
+	
+	// 660724 is the rd of Jan 1, 1810
+	var x = 0.5 + (rd - 660724);
+	
+	return ((x * x / 41048480) - 15) / 86400;
+};
+
+/**
+ * @private
+ */
+ilib.Date._ephemerisFromUniversal = function(jd) {
+	return jd + ilib.Date._ephemerisCorrection(jd - 1721424.5);
+};
+
+/**
+ * @private
+ */
+ilib.Date._julianCenturies = function(jd) {
+	// 2451545.0 is the Julian day of J2000 epoch
+	// 36525.0 is the number of days in a Julian century
+	return (ilib.Date._ephemerisFromUniversal(jd) - 2451545.0) / 36525.0;
 };
 
 /**
@@ -1048,9 +1140,7 @@ ilib.Date._solarLongCoeff = [
  * @return {number} the solar longitude in degrees
  */
 ilib.Date._solarLongitude = function(jd) {
-	// 2451545.0 is the Julian day of J2000 epoch
-	// 36525.0 is the number of days in a Julian century
-	var c = (jd - 2451545.0) / 365250.0,
+	var c = ilib.Date._julianCenturies(jd),
 		longitude = 0,
 		len = ilib.Date._solarLongCoeff.length,
 		row;
