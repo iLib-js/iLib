@@ -36,8 +36,7 @@ ilib.CType.isCntrl = function (ch) {
 			num = ch;
 			break;
 		case 'string':
-			var str = new ilib.String(ch);
-			num = str._toCodePoint(0);
+			num = ilib.String.toCodePoint(ch, 0);
 			break;
 		case 'undefined':
 			return false;

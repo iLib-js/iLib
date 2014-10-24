@@ -100,6 +100,36 @@ ilib.String.fromCodePoint = function (codepoint) {
 };
 
 /**
+ * Convert the character or the surrogate pair at the given
+ * index into the intrinsic Javascript string to a Unicode 
+ * UCS-4 code point.
+ * 
+ * @param {string} str string to get the code point from
+ * @param {number} index index into the string
+ * @return {number} code point of the character at the
+ * given index into the string
+ */
+ilib.String.toCodePoint = function(str, index) {
+	if (!str || str.length === 0) {
+		return -1;
+	}
+	var code = -1, high = str.charCodeAt(index);
+	if (high >= 0xD800 && high <= 0xDBFF) {
+		if (str.length > index+1) {
+			var low = str.charCodeAt(index+1);
+			if (low >= 0xDC00 && low <= 0xDFFF) {
+				code = (((high & 0x3C0) >> 6) + 1) << 16 |
+					(((high & 0x3F) << 10) | (low & 0x3FF));
+			}
+		}
+	} else {
+		code = high;
+	}
+	
+	return code;
+};
+
+/**
  * Load the plural the definitions of plurals for the locale.
  * @param {ilib.Locale|string} locale
  * @param {boolean} sync
@@ -813,23 +843,7 @@ ilib.String.prototype = {
 	 * given index into the string
 	 */
 	_toCodePoint: function (index) {
-		if (this.str.length === 0) {
-			return -1;
-		}
-		var code = -1, high = this.str.charCodeAt(index);
-		if (high >= 0xD800 && high <= 0xDBFF) {
-			if (this.str.length > index+1) {
-				var low = this.str.charCodeAt(index+1);
-				if (low >= 0xDC00 && low <= 0xDFFF) {
-					code = (((high & 0x3C0) >> 6) + 1) << 16 |
-						(((high & 0x3F) << 10) | (low & 0x3FF));
-				}
-			}
-		} else {
-			code = high;
-		}
-		
-		return code;
+		return ilib.String.toCodePoint(this.str, index);
 	},
 	
 	/**

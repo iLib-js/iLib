@@ -308,7 +308,7 @@ ilib.GlyphString.prototype.charIterator = function() {
 				while (it.hasNext() && notdone) {
 					this.nextChar = it.next();
 					nextCcc = ilib.data.norm.ccc[this.nextChar];
-					var codePoint = (new ilib.String(this.nextChar))._toCodePoint(0);
+					var codePoint = ilib.String.toCodePoint(this.nextChar, 0);
 					// Mn characters are Marks that are non-spacing. These do not take more room than an accent, so they should be 
 					// considered part of the on-screen glyph, even if they are non-combining. Mc are marks that are spacing
 					// and combining, which means they are part of the glyph, but they cause the glyph to use up more space than
