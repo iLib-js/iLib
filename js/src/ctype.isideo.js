@@ -26,17 +26,31 @@
  * 
  * Depends directive: !depends ctype.isideo.js
  * 
- * @param {string|ilib.String} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is an ideographic character.
  */
 ilib.CType.isIdeo = function (ch) {
-	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
-	return ilib.CType._inRange(str, 'cjk', ilib.data.ctype) ||
-		ilib.CType._inRange(str, 'cjkradicals', ilib.data.ctype) ||
-		ilib.CType._inRange(str, 'enclosedcjk', ilib.data.ctype) ||
-		ilib.CType._inRange(str, 'cjkpunct', ilib.data.ctype) ||
-		ilib.CType._inRange(str, 'cjkcompatibility', ilib.data.ctype);
-	
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			var str = new ilib.String(ch);
+			num = str._toCodePoint(0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+
+	return ilib.CType._inRange(num, 'cjk', ilib.data.ctype) ||
+		ilib.CType._inRange(num, 'cjkradicals', ilib.data.ctype) ||
+		ilib.CType._inRange(num, 'enclosedcjk', ilib.data.ctype) ||
+		ilib.CType._inRange(num, 'cjkpunct', ilib.data.ctype) ||
+		ilib.CType._inRange(num, 'cjkcompatibility', ilib.data.ctype);
 };
 
 /**

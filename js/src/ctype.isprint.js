@@ -25,11 +25,10 @@
  * 
  * Depends directive: !depends ctype.isprint.js
  * 
- * @param {string|ilib.String} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is printable.
  */
 ilib.CType.isPrint = function (ch) {
-	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isCntrl(ch);
 };
 

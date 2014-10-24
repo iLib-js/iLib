@@ -26,18 +26,33 @@
  * 
  * Depends directive: !depends ctype.isprint.js
  * 
- * @param {string|ilib.String} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is punctuation.
  */
 ilib.CType.isPunct = function (ch) {
-	var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
-	return ilib.CType._inRange(str, 'Pd', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Ps', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Pe', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Pc', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Po', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Pi', ilib.data.ctype_p) ||
-		ilib.CType._inRange(str, 'Pf', ilib.data.ctype_p);
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			var str = new ilib.String(ch);
+			num = str._toCodePoint(0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+
+	return ilib.CType._inRange(num, 'Pd', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Ps', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Pe', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Pc', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Po', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Pi', ilib.data.ctype_p) ||
+		ilib.CType._inRange(num, 'Pf', ilib.data.ctype_p);
 };
 
 /**

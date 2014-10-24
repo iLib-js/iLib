@@ -68,19 +68,18 @@ ilib.CType = {
 	 * </ul>
 	 * 
 	 * @protected
-	 * @param {ilib.String} ch character to examine
+	 * @param {number} num code point of the character to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @param {Object} obj object containing the character range data
 	 * @return {boolean} true if the first character is within the named
 	 * range
 	 */
-	_inRange: function(ch, rangeName, obj) {
-		var range, i, num;
-		if (!ch || ch.length === 0 || !rangeName || !obj) {
+	_inRange: function(num, rangeName, obj) {
+		var range, i;
+		if (num < 0 || !rangeName || !obj) {
 			return false;
 		}
 		
-		num = ch.codePointAt(0);
 		range = obj[rangeName];
 		if (!range) {
 			return false;
@@ -245,7 +244,7 @@ ilib.CType = {
 	 * 
 	 * Depends directive: !depends ctype.js
 	 * 
-	 * @param {string|ilib.String} ch character to examine
+	 * @param {string|ilib.String|number} ch character or code point to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @return {boolean} true if the first character is within the named
 	 * range
@@ -254,8 +253,23 @@ ilib.CType = {
 		if (!rangeName) {
 			return false;
 		}
-		var str = (typeof(ch) === 'string') ? new ilib.String(ch) : ch;
-		return ilib.CType._inRange(str, rangeName.toLowerCase(), ilib.data.ctype);
+		var num;
+		switch (typeof(ch)) {
+			case 'number':
+				num = ch;
+				break;
+			case 'string':
+				var str = new ilib.String(ch);
+				num = str._toCodePoint(0);
+				break;
+			case 'undefined':
+				return false;
+			default:
+				num = ch._toCodePoint(0);
+				break;
+		}
+
+		return ilib.CType._inRange(num, rangeName.toLowerCase(), ilib.data.ctype);
 	},
 	
 	/**
