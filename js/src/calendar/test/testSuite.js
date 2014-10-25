@@ -42,7 +42,8 @@ function suite() {
 	    "testpersian.js",
 	    "testpersiandate.js",
 	    "testpersianastro.js",
-	    "testpersiandateastro.js"
+	    "testpersiandateastro.js",
+	    "testastro.js"
     ];
     
     suites.forEach(function (path) {

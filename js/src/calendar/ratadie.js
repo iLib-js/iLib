@@ -35,6 +35,12 @@ julianday.js
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
  * 
+ * <li><i>cycle</i> - any integer giving the number of 60-year cycle in which the date is located.
+ * If the cycle is not given but the year is, it is assumed that the year parameter is a fictitious 
+ * linear count of years since the beginning of the epoch, much like other calendars. This linear
+ * count is never used. If both the cycle and year are given, the year is wrapped to the range 0 
+ * to 60 and treated as if it were a year in the regular 60-year cycle.
+ * 
  * <li><i>year</i> - any integer, including 0
  * 
  * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.

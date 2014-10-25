@@ -19,7 +19,9 @@
 
 /* !depends
 ilibglobal.js
-date.js 
+date.js
+calendar/gregoriandate.js
+calendar/gregratadie.js
 */
 
 /*
@@ -993,7 +995,7 @@ ilib.Date._localFromUniversal = function(local, zone) {
  * @return {number} the aberration
  */
 ilib.Date._aberration = function(c) {
-	return 0.0000017 * Math.cos(177.93 + 35999.01848 * c) - 0.0000973;
+	return 0.0000017 * ilib.Date._dcos(177.63 + 35999.01848 * c) - 0.0000973;
 };
 
 /**
@@ -1007,7 +1009,7 @@ ilib.Date._nutation2 = function(c) {
 	var a = 124.90 - 1934.134 * c + 0.002063 * c2;
 	var b = 201.11 + 72001.5377 * c + 0.00057 * c2;
 	// return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
-	return -0.0000834 * Math.sin(a) - 0.0000064 * Math.sin(b);
+	return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
 };
 
 
@@ -1036,6 +1038,7 @@ ilib.Date._coeff19th = [
     4.867575,
     15.845535,
     31.332267,
+    38.291999,
     28.316289,
     11.636204,
     2.043794
@@ -1051,24 +1054,22 @@ ilib.Date._ephemerisCorrection = function(rd) {
 		return (year - 1933) / 86400;
 	}
 	
-	// 693596 is the rd of Jan 1, 1900
-	var theta = (rd - 693596) / 36525;
-	
-	if (1900 <= year && year <= 1987) {
-		var thetapow = theta;
+	if (1800 <= year && year <= 1987) {
+		var jul1 = new ilib.Date.GregRataDie({
+			year: year,
+			month: 7,
+			day: 1,
+			hour: 0,
+			minute: 0,
+			second: 0
+		});
+		// 693596 is the rd of Jan 1, 1900
+		var theta = (jul1.getRataDie() - 693596) / 36525;
+		var thetapow = 1;
 		var ret = 0;
-		for (var i = 0; i < ilib.Date._coeff19th.length; i++) {
-			ret += ilib.Date._coeff19th[i] * thetapow;
-			thetapow *= theta;
-		}
-		return ret;
-	}
-
-	if (1800 <= year && year <= 1899) {
-		var thetapow = theta;
-		var ret = 0;
-		for (var i = 0; i < ilib.Date._coeff18th.length; i++) {
-			ret += ilib.Date._coeff18th[i] * thetapow;
+		var coeffArray = (1900 <= year) ? ilib.Date._coeff19th : ilib.Date._coeff18th;
+		for (var i = 0; i < coeffArray.length; i++) {
+			ret += coeffArray[i] * thetapow;
 			thetapow *= theta;
 		}
 		return ret;
@@ -1080,7 +1081,16 @@ ilib.Date._ephemerisCorrection = function(rd) {
 	}
 	
 	// 660724 is the rd of Jan 1, 1810
-	var x = 0.5 + (rd - 660724);
+	var jan1 = new ilib.Date.GregRataDie({
+		year: year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0
+	});
+	// var x = 0.5 + (jan1.getRataDie() - 660724);
+	var x = 0.5 + (jan1.getRataDie() - 660724);
 	
 	return ((x * x / 41048480) - 15) / 86400;
 };
