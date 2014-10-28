@@ -96,6 +96,7 @@ ilib.UnitFmt = function(options) {
         this.scale  = true;
         this.measurementType = 'undefined';
         this.convert = true;
+        this.useNative = true;
 	
     this.locale = new ilib.Locale();
 
@@ -122,6 +123,10 @@ ilib.UnitFmt = function(options) {
 
     	if (typeof(options.autoConvert) === 'boolean') {
     		this.convert = options.autoConvert;
+    	}
+        
+        if (typeof(options.useNative) === 'boolean') {
+    		this.useNative = options.useNative;
     	}
 
     	if (options.measurementSystem) {
@@ -211,7 +216,12 @@ ilib.UnitFmt.prototype = {
 		var formatted = new ilib.String(this.template[u.getUnit()]);
 		// make sure to use the right plural rules
 		formatted.setLocale(this.locale, true, undefined, undefined);
-		formatted = formatted.formatChoice(u.amount,{n:u.amount});
+                var numFmt = new ilib.NumFmt({
+                    locale: this.locale,
+                    useNative: this.useNative
+                });
+		//formatted = formatted.formatChoice(u.amount,{n:u.amount});
+                formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
 		return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
 	}
 };
