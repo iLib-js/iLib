@@ -220,7 +220,6 @@ ilib.UnitFmt.prototype = {
                     locale: this.locale,
                     useNative: this.useNative
                 });
-		//formatted = formatted.formatChoice(u.amount,{n:u.amount});
                 formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
 		return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
 	}
