@@ -362,6 +362,17 @@ function testUnitFormatArea5() {
     assertEquals("1 000 centimètres carrés", str);
 }
 
+function testUnitFormatArea5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "square centimeter",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false});
+    var str = uf.format(m1);
+    assertEquals("1.000 Quadratzentimeter", str);
+}
+
 function testUnitFormatArea6() {
     var m1 = new ilib.Measurement({
         unit: "acre",
@@ -461,6 +472,17 @@ function testUnitFormatDigitalStorage5() {
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1 000 kilooctets", str);
+}
+
+function testUnitFormatDigitalStorage5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "kilobyte",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+    var str = uf.format(m1);
+    assertEquals("1.000 Kilobytes", str);
 }
 
 function testUnitFormatDigitalStorage6() {
@@ -685,6 +707,16 @@ function testUnitFormatFuelConsumption5() {
     assertEquals("1 000 miles par gallon", str);
 }
 
+function testUnitFormatFuelConsumption5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "mpg",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+    var str = uf.format(m1);
+    assertEquals("1.000 Meilen pro Gallone", str);
+}
 
 function testUnitFormatLength1() {
     var m1 = new ilib.Measurement({
@@ -739,6 +771,17 @@ function testUnitFormatLength5() {
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1 000 mètres", str);
+}
+
+function testUnitFormatLength5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "meter",
+        amount: 1234.45
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+    var str = uf.format(m1);
+    assertEquals("1.234,45 Meter", str);
 }
 
 function testUnitFormatLength6() {
@@ -862,6 +905,28 @@ function testUnitFormatMass6() {
     assertEquals("2 000 lb", str);
 }
 
+function testUnitFormatMass5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "microgram",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+    var str = uf.format(m1);
+    assertEquals("1.000 Mikrogramm", str);
+}
+
+function testUnitFormatMass6DE() {
+    var m1 = new ilib.Measurement({
+        unit: "pound",
+        amount: 2000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false,length:"short"});
+    var str = uf.format(m1);
+    assertEquals("2.000 lb", str);
+}
+
 function testUnitFormatMass7() {
     var m1 = new ilib.Measurement({
         unit: "stone",
@@ -962,6 +1027,17 @@ function testUnitFormatSpeed5() {
     assertEquals("1 000 milles anglais par heure", str);
 }
 
+function testUnitFormatSpeed5DE() {
+    var m1 = new ilib.Measurement({
+        unit: "miles/hour",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+    var str = uf.format(m1);
+    assertEquals("1.000 Meilen pro Stunde", str);
+}
+
 function testUnitFormatSpeed6() {
     var m1 = new ilib.Measurement({
         unit: "meters/second",
@@ -970,7 +1046,7 @@ function testUnitFormatSpeed6() {
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
     var str = uf.format(m1);
-    assertEquals("2  km/s", str);
+    assertEquals("2 km/s", str);
 }
 
 function testUnitFormatSpeed7() {
@@ -1013,6 +1089,17 @@ function testUnitFormatSpeed10() {
     });
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+    var str = uf.format(m1);
+    assertEquals("447,03924652 m/s", str);
+}
+
+function testUnitFormatSpeed10DE() {
+    var m1 = new ilib.Measurement({
+        unit: "miles/hour",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({locale:"de-DE",autoConvert:true,autoScale:true,length:"short"});
     var str = uf.format(m1);
     assertEquals("447,03924652 m/s", str);
 }
