@@ -40,7 +40,51 @@
 6	area	Kazahkstan	Kazahkstan
 7	area	Kazahkstan	Kazahkstan
 
-9	cell
+^901	cell
+^902	cell
+^903	cell
+^910	cell
+^911	cell
+^912	cell
+^914	cell
+^916	cell
+^918	cell
+^921	cell
+^922	cell
+^923	cell
+^924	cell
+^926	cell
+^927	cell
+^928	cell
+^929	cell
+^930	cell
+^931	cell
+^932	cell
+^933	cell
+^934	cell
+^936	cell
+^937	cell
+^938	cell
+^950	cell
+^951	cell
+^952	cell
+^953	cell
+^960	cell
+^961	cell
+^962	cell
+^963	cell
+^964	cell
+^965	cell
+^980	cell
+^981	cell
+^982	cell
+^983	cell
+^984	cell
+^985	cell
+^987	cell
+^988	cell
+^989	cell
+^997	cell
 
 301	area	Buryatia	Republic of Buryatia
 302	area	Zabaykalsky	Zabaykalsky Krai

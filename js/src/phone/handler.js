@@ -310,7 +310,7 @@ ilib.StateHandler.prototype = {
 		
 		// substring() extracts the part of the string up to but not including the end character,
 		// so add one to compensate
-		if (regionSettings.plan.getTrunkCode() === number.charAt(0)) {
+		/*if (regionSettings.plan.getTrunkCode() === number.charAt(0)) {
 			fields.trunkAccess = number.charAt(0);
 			if (number.length > 1) {
 				fields.areaCode = number.substring(1, end);
@@ -318,7 +318,7 @@ ilib.StateHandler.prototype = {
 			if (number.length > end) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
-		} else if (regionSettings.plan.getFieldLength('maxLocalLength') !== undefined) {
+		} else */if (regionSettings.plan.getFieldLength('maxLocalLength') !== undefined) {
 			if (fields.trunkAccess !== undefined || fields.mobilePrefix !== undefined ||
 					fields.countryCode !== undefined ||
 					localLength > regionSettings.plan.getFieldLength('maxLocalLength')) {
