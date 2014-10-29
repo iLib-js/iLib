@@ -20,7 +20,7 @@
 function testFormatStyle0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345678", {locale:"ru-RU"});
-	var expected = "8.812.234-56-78";
+	var expected = "8 (812) 234-56-78";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed);
@@ -31,7 +31,7 @@ function testFormatStyle0() {
 function testFormatStyle1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("83852234567", {locale: "ru-RU"});
-	var expected = "8.3852.23-45-67";
+	var expected = "8 (3852) 23-45-67";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed);
@@ -67,7 +67,7 @@ function testFormatInternationalAccessCode() {
 function testFormatLongAreaCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("84132234567", {locale:"ru-RU"});
-	var expected = "8.41322.3-45-67";
+	var expected = "8 (41322) 3-45-67";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed);
@@ -101,7 +101,7 @@ function testFormatMobileInternational() {
 function testFormatService() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88001234567", {locale: "ru-RU"});
-	var expected = "8.800.123-45-67";
+	var expected = "8 (800) 123-45-67";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed);
@@ -179,7 +179,7 @@ function testFormatStyle0Partial2() {
 function testFormatStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812", {locale:"ru-RU"});
-	var expected = "8.812.";
+	var expected = "8 (812) ";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -190,7 +190,7 @@ function testFormatStyle0Partial3() {
 function testFormatStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122", {locale: "ru-RU"});
-	var expected = "8.812.2";
+	var expected = "8 (812) 2";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -201,7 +201,7 @@ function testFormatStyle0Partial4() {
 function testFormatStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223", {locale: "ru-RU"});
-	var expected = "8.812.23";
+	var expected = "8 (812) 23";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -212,7 +212,7 @@ function testFormatStyle0Partial5() {
 function testFormatStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234", {locale: "ru-RU"});
-	var expected = "8.812.234";
+	var expected = "8 (812) 234";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -223,7 +223,7 @@ function testFormatStyle0Partial6() {
 function testFormatStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345", {locale: "ru-RU"});
-	var expected = "8.812.234-5";
+	var expected = "8 (812) 234-5";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -234,7 +234,7 @@ function testFormatStyle0Partial7() {
 function testFormatStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223456", {locale: "ru-RU"});
-	var expected = "8.812.2-34-56";
+	var expected = "8 (812) 2-34-56";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -245,7 +245,7 @@ function testFormatStyle0Partial8() {
 function testFormatStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234567", {locale: "ru-RU"});
-	var expected = "8.812.23-45-67";
+	var expected = "8 (812) 23-45-67";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -256,7 +256,7 @@ function testFormatStyle0Partial9() {
 function testFormatStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345678", {locale: "ru-RU"});
-	var expected = "8.812.234-56-78";
+	var expected = "8 (812) 234-56-78";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -313,7 +313,7 @@ function testFormatStyle0Whole2() {
 function testFormatStyle0Whole3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812", {locale: "ru-RU"});
-	var expected = "8.812.";
+	var expected = "8 (812) ";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -325,7 +325,7 @@ function testFormatStyle0Whole4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122", {locale: "ru-RU"});
 		
-	var expected = "8.812.2";
+	var expected = "8 (812) 2";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -336,7 +336,7 @@ function testFormatStyle0Whole4() {
 function testFormatStyle0Whole5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223", {locale: "ru-RU"});
-	var expected = "8.812.23";
+	var expected = "8 (812) 23";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -347,7 +347,7 @@ function testFormatStyle0Whole5() {
 function testFormatStyle0Whole6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234", {locale: "ru-RU"});
-	var expected = "8.812.234";
+	var expected = "8 (812) 234";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -358,7 +358,7 @@ function testFormatStyle0Whole6() {
 function testFormatStyle0Whole7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345", {locale: "ru-RU"});
-	var expected = "8.812.234-5";
+	var expected = "8 (812) 234-5";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -369,7 +369,7 @@ function testFormatStyle0Whole7() {
 function testFormatStyle0Whole8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223456", {locale: "ru-RU"});
-	var expected = "8.812.2-34-56";
+	var expected = "8 (812) 2-34-56";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -380,7 +380,7 @@ function testFormatStyle0Whole8() {
 function testFormatStyle0Whole9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234567", {locale: "ru-RU"});
-	var expected = "8.812.23-45-67";
+	var expected = "8 (812) 23-45-67";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -391,7 +391,7 @@ function testFormatStyle0Whole9() {
 function testFormatStyle0Whole10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345678", {locale: "ru-RU"});
-	var expected = "8.812.234-56-78";
+	var expected = "8 (812) 234-56-78";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -417,7 +417,7 @@ function testFormatStyle1Partial0() {
 	});
 	var expected = "8";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -428,7 +428,7 @@ function testFormatStyle1Partial1() {
 	var parsed = new ilib.PhoneNumber("88", {locale: "ru-RU"});
 	var expected = "88";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -439,7 +439,7 @@ function testFormatStyle1Partial2() {
 	var parsed = new ilib.PhoneNumber("881", {locale: "ru-RU"});
 	var expected = "881";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -448,9 +448,9 @@ function testFormatStyle1Partial2() {
 function testFormatStyle1Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812", {locale: "ru-RU"});
-	var expected = "8 (812) ";
+	var expected = "8.812.";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -459,9 +459,9 @@ function testFormatStyle1Partial3() {
 function testFormatStyle1Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122", {locale: "ru-RU"});
-	var expected = "8 (812) 2";
+	var expected = "8.812.2";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -470,9 +470,9 @@ function testFormatStyle1Partial4() {
 function testFormatStyle1Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223", {locale: "ru-RU"});
-	var expected = "8 (812) 23";
+	var expected = "8.812.23";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -481,9 +481,9 @@ function testFormatStyle1Partial5() {
 function testFormatStyle1Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234", {locale: "ru-RU"});
-	var expected = "8 (812) 234";
+	var expected = "8.812.234";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -492,9 +492,9 @@ function testFormatStyle1Partial6() {
 function testFormatStyle1Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345", {locale: "ru-RU"});
-	var expected = "8 (812) 234-5";
+	var expected = "8.812.234-5";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -503,9 +503,9 @@ function testFormatStyle1Partial7() {
 function testFormatStyle1Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("881223456", {locale: "ru-RU"});
-	var expected = "8 (812) 2-34-56";
+	var expected = "8.812.2-34-56";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -514,9 +514,9 @@ function testFormatStyle1Partial8() {
 function testFormatStyle1Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("8812234567", {locale: "ru-RU"});
-	var expected = "8 (812) 23-45-67";
+	var expected = "8.812.23-45-67";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -525,9 +525,9 @@ function testFormatStyle1Partial9() {
 function testFormatStyle1Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("88122345678", {locale: "ru-RU"});
-	var expected = "8 (812) 234-56-78";
+	var expected = "8.812.234-56-78";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -538,7 +538,7 @@ function testFormatStyle1Partial10() {
 	var parsed = new ilib.PhoneNumber("881223456789", {locale: "ru-RU"});
 	var expected = "881223456789";
 	
-	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "bracket"});
+	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "точка"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
