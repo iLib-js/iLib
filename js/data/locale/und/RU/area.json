@@ -23,10 +23,6 @@
         "sn": "Udmurtia",
         "ln": "Republic of Udmurtia"
     },
-    "342": {
-        "sn": "Perm",
-        "ln": "Perm Krai"
-    },
     "343": {
         "sn": "Sverdlovsk",
         "ln": "Sverdlovsk Oblast"
@@ -55,21 +51,9 @@
         "sn": "Kurgan",
         "ln": "Kurgan Oblast"
     },
-    "353": {
-        "sn": "Orenburg",
-        "ln": "Orenburg Oblast"
-    },
     "365": {
         "sn": "Crimea",
         "ln": "Republic of Crimea"
-    },
-    "381": {
-        "sn": "Omsk",
-        "ln": "Omsk Oblast"
-    },
-    "382": {
-        "sn": "Tomsk",
-        "ln": "Tomsk Oblast"
     },
     "383": {
         "sn": "Novosibirsk",
@@ -231,14 +215,6 @@
         "sn": "Karelia",
         "ln": "Republic of Karelia"
     },
-    "815": {
-        "sn": "Murmansk",
-        "ln": "Murmansk Oblast"
-    },
-    "816": {
-        "sn": "Novgorod",
-        "ln": "Novgorod Oblast"
-    },
     "817": {
         "sn": "Vologda",
         "ln": "Vologda Oblast"
@@ -246,6 +222,10 @@
     "818": {
         "sn": "Arkhangelsk",
         "ln": "Arkhangelsk Oblast and Nenets Autonomous Okrug"
+    },
+    "820": {
+        "sn": "Cherepovets",
+        "ln": "Cherepovets"
     },
     "821": {
         "sn": "Komi Republic",
@@ -271,10 +251,6 @@
         "sn": "Mari El",
         "ln": "Republic of Mari El"
     },
-    "841": {
-        "sn": "Penza",
-        "ln": "Penza Oblast"
-    },
     "842": {
         "sn": "Ulyanovsk",
         "ln": "Ulyanovsk Oblast"
@@ -282,18 +258,6 @@
     "843": {
         "sn": "Tatarstan",
         "ln": "Republic of Tatarstan"
-    },
-    "844": {
-        "sn": "Volgograd",
-        "ln": "Volgograd Oblast"
-    },
-    "845": {
-        "sn": "Saratov",
-        "ln": "Saratov Oblast"
-    },
-    "846": {
-        "sn": "Samara",
-        "ln": "Samara Oblast"
     },
     "847": {
         "sn": "Kalmykia",
@@ -307,13 +271,13 @@
         "sn": "Krasnodar",
         "ln": "Krasnodar Krai"
     },
+    "862": {
+        "sn": "Sochi",
+        "ln": "Sochi"
+    },
     "863": {
         "sn": "Rostov",
         "ln": "Rostov Oblast"
-    },
-    "865": {
-        "sn": "Stavropol",
-        "ln": "Stavropol Krai"
     },
     "866": {
         "sn": "Kabardino-Balkaria",
@@ -346,5 +310,153 @@
     "878": {
         "sn": "Karachay–Cherkessia",
         "ln": "Republic of Karachay–Cherkessia"
+    },
+    "879": {
+        "sn": "Mineral nyye Vody",
+        "ln": "Mineral nyye Vody"
+    },
+    "3012": {
+        "sn": "Ulan Ude",
+        "ln": "Ulan Ude"
+    },
+    "3412": {
+        "sn": "Izhevsk",
+        "ln": "Izhevsk"
+    },
+    "3422": {
+        "sn": "Perm",
+        "ln": "Perm Krai"
+    },
+    "3462": {
+        "sn": "Surgut",
+        "ln": "Surgut"
+    },
+    "3472": {
+        "sn": "Ufa",
+        "ln": "Ufa"
+    },
+    "3532": {
+        "sn": "Orenburg",
+        "ln": "Orenburg Oblast"
+    },
+    "3812": {
+        "sn": "Omsk",
+        "ln": "Omsk Oblast"
+    },
+    "3822": {
+        "sn": "Tomsk",
+        "ln": "Tomsk Oblast"
+    },
+    "3842": {
+        "sn": "Kemerovo",
+        "ln": "Kemerovo Oblast"
+    },
+    "3852": {
+        "sn": "Barnaul",
+        "ln": "Barnaul"
+    },
+    "3912": {
+        "sn": "Krasnoyarsk",
+        "ln": "Krasnoyarsk Krai"
+    },
+    "3952": {
+        "sn": "Irkutsk",
+        "ln": "Irkutsk Oblast"
+    },
+    "4112": {
+        "sn": "Yakutsk",
+        "ln": "Yakutsk"
+    },
+    "4152": {
+        "sn": "Petropavlovsk Kamchatskiy",
+        "ln": "Petropavlovsk Kamchatskiy"
+    },
+    "4212": {
+        "sn": "Khabarovsk",
+        "ln": "Khabarovsk Krai"
+    },
+    "4232": {
+        "sn": "Vladivostok",
+        "ln": "Vladivostok"
+    },
+    "8152": {
+        "sn": "Murmansk",
+        "ln": "Murmansk Oblast"
+    },
+    "8182": {
+        "sn": "Arkhangelsk",
+        "ln": "Arkhangelsk"
+    },
+    "8262": {
+        "sn": "Orel",
+        "ln": "Orel"
+    },
+    "8352": {
+        "sn": "Cheboksary",
+        "ln": "Cheboksary"
+    },
+    "8412": {
+        "sn": "Penza",
+        "ln": "Penza Oblast"
+    },
+    "8422": {
+        "sn": "Ulyanovsk",
+        "ln": "Ulyanovsk Oblast"
+    },
+    "8442": {
+        "sn": "Volgograd",
+        "ln": "Volgograd Oblast"
+    },
+    "8452": {
+        "sn": "Saratov",
+        "ln": "Saratov Oblast"
+    },
+    "8462": {
+        "sn": "Samara",
+        "ln": "Samara Oblast"
+    },
+    "8512": {
+        "sn": "Astrakhan",
+        "ln": "Astrakhan Oblast"
+    },
+    "8552": {
+        "sn": "Naberezhnye Chelny",
+        "ln": "Naberezhnye Chelny"
+    },
+    "8612": {
+        "sn": "Krasnodar",
+        "ln": "Krasnodar Krai"
+    },
+    "8652": {
+        "sn": "Stavropol",
+        "ln": "Stavropol Krai"
+    },
+    "39113": {
+        "sn": "Tura",
+        "ln": "Tura"
+    },
+    "39152": {
+        "sn": "Norilsk",
+        "ln": "Norilsk"
+    },
+    "41322": {
+        "sn": "Magadan",
+        "ln": "Magadan Oblast"
+    },
+    "42722": {
+        "sn": "Anadyr",
+        "ln": "Anadyr"
+    },
+    "81622": {
+        "sn": "Novgorod",
+        "ln": "Novgorod Oblast"
+    },
+    "86117": {
+        "sn": "Novorossiysk",
+        "ln": "Novorossiysk"
+    },
+    "87822": {
+        "sn": "Cherkessk",
+        "ln": "Cherkessk"
     }
 }

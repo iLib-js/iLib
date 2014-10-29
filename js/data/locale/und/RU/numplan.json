@@ -12,8 +12,8 @@
         "cic": 0,
         "mobilePrefix": 0,
         "serviceCode": 0,
-        "minLocalLength": 10,
-        "maxLocalLength": 10,
+        "minLocalLength": 11,
+        "maxLocalLength": 11,
         "emergency": 0,
         "special": 0
     }
