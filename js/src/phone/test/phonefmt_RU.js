@@ -77,8 +77,8 @@ function testFormatLongAreaCode() {
 
 function testFormatMobile() {
 	var formatted;
-	var parsed = new ilib.PhoneNumber("9012345678", {locale: "ru-RU"});
-	var expected = "901-234-5678";
+	var parsed = new ilib.PhoneNumber("89012345678", {locale: "ru-RU"});
+	var expected = "8-901-234-5678";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ru-RU", style: "default"});
 	formatted = fmt.format(parsed);

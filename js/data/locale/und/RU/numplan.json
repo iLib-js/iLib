@@ -5,7 +5,7 @@
     "trunkCode": "8",
     "skipTrunk": true,
     "dialingPlan": "closed",
-    "commonFormatChars": " ()-",
+    "commonFormatChars": " ()-.",
     "fieldLengths": {
         "areaCode": 0,
         "vsc": 0,

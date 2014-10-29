@@ -118,12 +118,13 @@ function testParseRUServiceCode(){
 };
 
 function testParseRUMobileNumber(){
-	var parsed = new ilib.PhoneNumber("9105551234", {locale: "ru-RU"});
+	var parsed = new ilib.PhoneNumber("89105551234", {locale: "ru-RU"});
 	assertNotUndefined(parsed);
 	
 	var expected = new ilib.PhoneNumber({
-		mobilePrefix: "910",
-		subscriberNumber: "5551234"
+		trunkAccess: "8",
+		mobilePrefix: "9",
+		subscriberNumber: "105551234"
 	}, {locale: "ru-RU"});
 	
 	assertTrue(parsed.equals(expected));

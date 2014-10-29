@@ -15,20 +15,20 @@
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
-		"trunkAccess":       "X",
-		"mobilePrefix":     ["X-", "XX-", "XXX-"],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX"],
+		"trunkAccess":       "X-",
+		"mobilePrefix":     ["X", "XX-", "XXX-"],
+		"subscriberNumber": ["X", "XX", "XX-X", "XX-XX", "XX-XXX", "XX-XXX-X", "XX-XXX-XX", "XX-XXX-XXX", "XX-XXX-XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
 	}, 
 	"internationalmobile": {
-		"iddPrefix":        ["X.", "XX.", "XXX."],
+		"iddPrefix":        ["X", "XX", "XXX"],
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX ", "XXXXX "],
-		"mobilePrefix":     ["X ", "XX ", "XXX "],
+		"mobilePrefix":     ["X", "XX ", "XXX "],
 		"areaCode":         ["X ", "XX "],
 		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
+		"subscriberNumber": ["X", "XX", "XX-X", "XX-XX", "XX-XXX", "XX-XXX-X", "XX-XXX-XX", "XX-XXX-XXX", "XX-XXX-XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
 	},
 	"default": {
