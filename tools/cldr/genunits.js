@@ -140,7 +140,8 @@ var unitMap = {
         "cubic-inch": "cubic inch",
         "fluid-ounce":"ounce", 
         "cubic-foot":"cubic foot",
-        "cubic-meter":"cubic meter"      
+        "cubic-meter":"cubic meter",
+	"fluid-ounce":"us ounce"     
 };
 
 function frameUnits(data, language, localeData) {

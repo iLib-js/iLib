@@ -682,7 +682,7 @@ function testUnitFormatFuelConsumption3() {
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
     var str = uf.format(m1);
-    assertEquals("1 000 миль/галл.", str);
+    assertEquals("425,144 km/l", str);
 }
 
 function testUnitFormatFuelConsumption4() {
@@ -1046,7 +1046,7 @@ function testUnitFormatSpeed6() {
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
     var str = uf.format(m1);
-    assertEquals("2 km/s", str);
+    assertEquals("2  km/s", str);
 }
 
 function testUnitFormatSpeed7() {
@@ -1354,7 +1354,7 @@ function testUnitFormatVolume3() {
 
     var uf = new ilib.UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
     var str = uf.format(m1);
-    assertEquals("1 000 жидк. унц.", str);
+    assertEquals("1 000 унц.", str);
 }
 
 function testUnitFormatVolume4() {
@@ -1431,7 +1431,7 @@ function testUnitFormatVolume10() {
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",length:"long"});
     var str = uf.format(m1);
-    assertEquals("1 000 pieds cubes", str);
+    assertEquals("28,3168 mètres cubes", str);
 }
 
 function testUnitFormatVolume11() {

@@ -125,7 +125,7 @@ ilib.Measurement.getAvailableUnits = function () {
 	var units = [];
 	for (var c in ilib.Measurement._constructors) {
 		var measure = ilib.Measurement._constructors[c];
-		units.concat(measure.getMeasures());
+		units = units.concat(measure.getMeasures());
 	}
 	return units;
 };

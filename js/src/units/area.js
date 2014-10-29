@@ -112,6 +112,7 @@ ilib.Measurement.Area.aliases = {
 	"square kilometre":"square km",
 	"square kilometers":"square km",
 	"square kilometres":"square km",
+        "square km":"square km",
 	"sq km":"square km",
 	"km2":"square km",
 	"Hectare":"hectare",

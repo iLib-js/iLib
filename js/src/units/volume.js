@@ -59,11 +59,11 @@ ilib.Measurement.Volume = function (options) {
 };
 
 ilib.Measurement.Volume.ratios = {
-    /* 	              index, tsp,  	tbsp,      	cubic inch			 ounce,    cup,       	pint,       quart,      		gallon,    		cubic foot,  	milliliter   liter,     cubic meter, imperial tsp, 	imperial tbsp,imperial ounce,  	imperial pint, 	imperial quart,	imperial gal, */
+    /* 	              index, tsp,  	tbsp,      	cubic inch			 us ounce,    cup,       	pint,       quart,      		gallon,    		cubic foot,  	milliliter   liter,     cubic meter, imperial tsp, 	imperial tbsp,imperial ounce,  	imperial pint, 	imperial quart,	imperial gal, */
     "tsp" :	       [1,    1,        0.333333,  	0.300781 ,			0.166667, 0.0208333, 	0.0104167,  0.00130208,  		0.00130208, 	0.000174063, 	4.92892,    0.00492892, 4.9289e-6,   0.832674,     	0.277558,      0.173474,    	 0.00867369,     0.00433684,    0.00108421 			],
     "tbsp":	       [2,    3,        1,         	0.902344 ,			0.5,      0.0625,    	0.0312,     0.015625,    		0.00390625, 	0.00052219,  	14.7868,    0.0147868,  1.4787e-5,   2.49802,      	0.832674,      0.520421,    	 0.0260211,      0.0130105,     0.00325263  		],
     "cubic inch":      [3,    3.32468,  1.10823,  	1        ,			0.554113, 0.0692641, 	0.034632,   0.017316,    		0.004329,   	0.000578704, 	16.3871,    0.0163871,  1.6387e-5,   2.76837,      	0.92279,       0.576744,    	 0.0288372,      0.0144186,     0.00360465  		],
-    "ounce":	       [4,    6,        2,         	1.80469 , 			1,        0.125,     	0.0625,     0.0078125,   		0.0078125,  	0.00104438,  	29.5735,    0.0295735,  2.9574e-5,   4.99604,      	1.04084,       1.04084,     	 0.0520421,      0.0260211,     0.00650526  		],
+    "us ounce":	       [4,    6,        2,         	1.80469 , 			1,        0.125,     	0.0625,     0.0078125,   		0.0078125,  	0.00104438,  	29.5735,    0.0295735,  2.9574e-5,   4.99604,      	1.04084,       1.04084,     	 0.0520421,      0.0260211,     0.00650526  		],
     "cup":	       [5,    48,     	16,        	14.4375 ,			8,        1,         	0.5,        0.25,        	 	0.0625,     	0.00835503,  	236.588,    0.236588,   0.000236588, 39.9683,      	13.3228,       8.32674,     	 0.416337,       0.208168,      0.0520421   		],
     "pint":	       [6,    96,       32,        	28.875   ,			16,       2,         	1,          0.5,         		0.125,      	0.0167101,   	473.176,    0.473176,   0.000473176, 79.9367,     	26.6456,       16.6535,     	 0.832674,       0.416337,      0.104084    		],
     "quart":	       [7,    192,     	64,       	57.75	 , 			32,       4,         	2,          1,           		0.25,       	0.0334201,  	946.353,    0.946353,   0.000946353, 159.873,      	53.2911,       33.307,      	 1.66535,        0.832674,      0.208168    		],
@@ -113,6 +113,7 @@ ilib.Measurement.Volume.aliases = {
 	"US Gallons":"gallon",
 	"Gal(US)":"gallon",
 	"gal(US)":"gallon",
+        "gallon":"gallon",
     "quart":"quart",
 	"US quart":"quart",
 	"US quarts":"quart",
@@ -123,29 +124,32 @@ ilib.Measurement.Volume.aliases = {
 	"qt(US)":"quart",
 	"US pint":"pint",
 	"US Pint":"pint",
+        "pint":"pint",
 	"pint(US)":"pint",
 	"Pint(US)":"pint",
 	"US cup":"cup", 
 	"US Cup":"cup",
 	"cup(US)":"cup",
 	"Cup(US)":"cup",
-    "ounce":"ounce",
-	"US ounce":"ounce",
-	"℥":"ounce",
-	"US Oz":"ounce",
-	"oz(US)":"ounce",
-	"Oz(US)":"ounce",
-    "US tbsp":"tbsp",
+        "cup":"cup",
+        "us ounce":"us ounce",
+	"US ounce":"us ounce",
+	"℥":"us ounce",
+	"US Oz":"us ounce",
+	"oz(US)":"us ounce",
+	"Oz(US)":"us ounce",
+        "US tbsp":"tbsp",
+        "tbsp":"tbsp",
 	"tbsp(US)":"tbsp",
 	"US tablespoon":"tbsp",
 	"US tsp":"tsp",
 	"tsp(US)":"tsp",
-    "tsp":"tsp",
+        "tsp":"tsp",
 	"Cubic meter":"cubic meter",
 	"cubic meter":"cubic meter",
-    "Cubic metre":"cubic meter", 
-    "cubic metre":"cubic meter", 
-    "m3":"cubic meter",
+        "Cubic metre":"cubic meter", 
+        "cubic metre":"cubic meter", 
+        "m3":"cubic meter",
 	"Liter":"liter",
 	"Liters":"liter",
 	"liter":"liter",
@@ -157,24 +161,30 @@ ilib.Measurement.Volume.aliases = {
 	"milliliter":"milliliter",
 	"mL":"milliliter",
 	"Imperial gal":"imperial gallon",
+        "imperial gallon":"imperial gallon",
 	"Imperial gallon":"imperial gallon",
 	"gallon(imperial)":"imperial gallon",
 	"gal(imperial)":"imperial gallon",
 	"Imperial quart":"imperial quart",
+        "imperial quart":"imperial quart",
 	"Imperial Quart":"imperial quart",
 	"IMperial qt":"imperial quart",
 	"qt(Imperial)":"imperial quart",
 	"quart(imperial)":"imperial quart",
 	"Imperial pint":"imperial pint",
+        "imperial pint":"imperial pint",
 	"pint(Imperial)":"imperial pint",
 	"imperial oz":"imperial ounce",
 	"imperial ounce":"imperial ounce",
 	"Imperial Ounce":"imperial ounce",
 	"Imperial tbsp":"imperial tbsp",
+        "imperial tbsp":"imperial tbsp",
 	"tbsp(Imperial)":"imperial tbsp",
 	"Imperial tsp":"imperial tsp",
+        "imperial tsp":"imperial tsp",
 	"tsp(Imperial)":"imperial tsp",
 	"Cubic foot":"cubic foot",
+        "cubic foot":"cubic foot",
 	"Cubic Foot":"cubic foot",
 	"Cubic feet":"cubic foot",
 	"cubic Feet":"cubic foot",
@@ -183,7 +193,7 @@ ilib.Measurement.Volume.aliases = {
 	"Cubic inch":"cubic inch",
 	"Cubic inches":"cubic inch",
 	"cubic inches":"cubic inch",
-	"cubic inches":"cubic inch",
+	"cubic inch":"cubic inch",
 	"cubic in":"cubic inch",
 	"cu in":"cubic inch",
 	"cu inch":"cubic inch",
@@ -229,17 +239,17 @@ ilib.Measurement.Volume.getMeasures = function () {
 };
 ilib.Measurement.Volume.metricSystem	= {"milliliter":10, "liter":11,"cubic meter":12};
 ilib.Measurement.Volume.imperialSystem	= {"imperial tsp":13,"imperial tbsp":14,"imperial ounce":15,"imperial pint":16,"imperial quart":17,"imperial gallon":18};
-ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"ounce":4,"cup":5,"pint":6,"quart":7,"gallon":8,"cubic foot":9};
+ilib.Measurement.Volume.uscustomarySystem = {"tsp":1,"tbsp":2,"cubic inch":3,"us ounce":4,"cup":5,"pint":6,"quart":7,"gallon":8,"cubic foot":9};
 
 ilib.Measurement.Volume.metricToUScustomary =   {"milliliter":"tsp","liter":"quart","cubic meter":"cubic foot"};
-ilib.Measurement.Volume.metricToImperial    =   {"milliliter":"imperial tsp","liter":"imperial quart","cubic meter":"imperial gallon"}
+ilib.Measurement.Volume.metricToImperial    =   {"milliliter":"imperial tsp","liter":"imperial quart","cubic meter":"imperial gallon"};
 
 ilib.Measurement.Volume.imperialToMetric      = {"imperial tsp":"milliliter","imperial tbsp":"milliliter","imperial ounce":"milliliter","imperial pint":"liter","imperial quart":"liter","imperial gallon":"cubic meter"};
-ilib.Measurement.Volume.imperialToUScustomary = {"imperial tsp":"tsp","imperial tbsp":"tbsp","imperial ounce":"ounce","imperial pint":"pint","imperial quart":"quart","imperial gallon":"gallon"};
+ilib.Measurement.Volume.imperialToUScustomary = {"imperial tsp":"tsp","imperial tbsp":"tbsp","imperial ounce":"us ounce","imperial pint":"pint","imperial quart":"quart","imperial gallon":"gallon"};
 
 
-ilib.Measurement.Volume.uScustomaryToImperial   = {"tsp":"imperial tsp","tbsp":"imperial tbsp","cubic inch":"imperial tbsp","ounce":"imperial ounce","cup":"imperial ounce","pint":"imperial pint","quart":"imperial quart","gallon":"imperial gallon","cubic foot":"imperial gallon"};
-ilib.Measurement.Volume.uScustomarylToMetric    = {"tsp":"milliliter","tbsp":"milliliter","cubic inch":"milliliter","ounce":"milliliter","cup":"milliliter","pint":"liter","quart":"liter","gallon":"cubic meter","cubic foot":"cubic meter"};
+ilib.Measurement.Volume.uScustomaryToImperial   = {"tsp":"imperial tsp","tbsp":"imperial tbsp","cubic inch":"imperial tbsp","us ounce":"imperial ounce","cup":"imperial ounce","pint":"imperial pint","quart":"imperial quart","gallon":"imperial gallon","cubic foot":"imperial gallon"};
+ilib.Measurement.Volume.uScustomarylToMetric    = {"tsp":"milliliter","tbsp":"milliliter","cubic inch":"milliliter","us ounce":"milliliter","cup":"milliliter","pint":"liter","quart":"liter","gallon":"cubic meter","cubic foot":"cubic meter"};
 
 
 

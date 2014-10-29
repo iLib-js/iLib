@@ -63,7 +63,7 @@ function testVolumeStaticConvert3() {
 }
 
 function testVolumeStaticConvert4() {
-	var m = ilib.Measurement.Volume.convert("ounce", "gallon", 2.0);
+	var m = ilib.Measurement.Volume.convert("us ounce", "gallon", 2.0);
 	
 	assertEquals(256, m);
 }
@@ -163,7 +163,7 @@ function testVolumeStaticConvert21() {
 }
 
 function testVolumeStaticConvert22() {
-	var m = ilib.Measurement.Volume.convert("ounce","quart", 2.0);
+	var m = ilib.Measurement.Volume.convert("us ounce","quart", 2.0);
 	
 	assertEquals(64, m);
 }
@@ -263,7 +263,7 @@ function testVolumeStaticConvert39() {
 }
 
 function testVolumeStaticConvert40() {
-	var m = ilib.Measurement.Volume.convert("ounce","pint", 2.0);
+	var m = ilib.Measurement.Volume.convert("us ounce","pint", 2.0);
 	
 	assertEquals(32, m);
 }
@@ -371,28 +371,28 @@ function testVolumeStaticConvert65() {
 }
 
 function testVolumeStaticConvert91() {
-	var m = ilib.Measurement.Volume.convert("gallon","ounce", 2.0);
+	var m = ilib.Measurement.Volume.convert("gallon","us ounce", 2.0);
 	
 	assertRoughlyEquals(0.015625, m,0.01);
 }
 function testVolumeStaticConvert92() {
-	var m = ilib.Measurement.Volume.convert("cubic meter","ounce", 2.0);
+	var m = ilib.Measurement.Volume.convert("cubic meter","us ounce", 2.0);
 	
 	assertRoughlyEquals(5.9147e-5, m,0.0001);
 }
 function testVolumeStaticConvert93() {
-	var m = ilib.Measurement.Volume.convert("imperial pint","ounce", 2.0);
+	var m = ilib.Measurement.Volume.convert("imperial pint","us ounce", 2.0);
 	
 	assertRoughlyEquals(0.104084, m,0.0001);
 }
 function testVolumeStaticConvert94() {
-	var m = ilib.Measurement.Volume.convert("in^3","ounce", 2.0);
+	var m = ilib.Measurement.Volume.convert("in^3","us ounce", 2.0);
 	
 	assertRoughlyEquals(3.60938, m,0.1);
 }
 
 function testVolumeStaticConvert95() {
-	var m = ilib.Measurement.Volume.convert("cubic inch","ounce", 2.0);
+	var m = ilib.Measurement.Volume.convert("cubic inch","us ounce", 2.0);
 	
 	assertRoughlyEquals(3.60938, m,0.1);
 }
@@ -686,7 +686,7 @@ function testVolumeScale4() {
 
 function testVolumeScale5() {
     var m1 = new ilib.Measurement.Volume({
-        unit: "ounce",
+        unit: "us ounce",
         amount: 1500
     });
     var m2 = m1.scale("uscustomary");
@@ -744,7 +744,7 @@ function testVolumeLocalize3() {
 
 function testVolumeLocalize5() {
     var m = new ilib.Measurement.Volume({
-        unit: "ounce",
+        unit: "us ounce",
         amount: 1000
     });
 
@@ -762,7 +762,7 @@ function testVolumeGetMeasures() {
 		"quart",
 		"pint",
 		"cup",
-		"ounce",
+		"us ounce",
 		"tbsp",
 		"tsp", 
 		"cubic meter",

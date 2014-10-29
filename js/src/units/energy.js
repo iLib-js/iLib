@@ -143,6 +143,7 @@ ilib.Measurement.Energy.aliases = {
     "kiloWh":"kilowatt hour",
     "KiloWh":"kilowatt hour",
     "KiloWatt-hour":"kilowatt hour",
+    "kilowatt hour":"kilowatt hour",
     "kilowatt-hour":"kilowatt hour",
     "KiloWatt-hours":"kilowatt hour",
     "kilowatt-hours":"kilowatt hour",
