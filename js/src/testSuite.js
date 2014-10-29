@@ -28,7 +28,8 @@ var suites = [
 	"test/testSuite.js",
 	"calendar/test/testSuite.js",
 	"maps/test/testSuite.js",
-	"phone/test/testSuite.js"
+	"phone/test/testSuite.js",
+	"units/test/testSuite.js"
 ];
 
 // override the possible node environment to make the tests uniform

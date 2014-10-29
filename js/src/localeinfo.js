@@ -79,6 +79,7 @@ ilib.LocaleInfo = function(locale, options) {
 		clock:string,
 		currency:string,
 		firstDayOfWeek:number,
+		unitfmt: {long:string,short:string},
 		numfmt:Object.<{
 			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
 			script:string,
@@ -152,6 +153,7 @@ ilib.LocaleInfo.defaultInfo = /** @type {{
 	clock:string,
 	currency:string,
 	firstDayOfWeek:number,
+	unitfmt: {long:string,short:string},
 	numfmt:Object.<{
 		currencyFormats:Object.<{
 			common:string,
@@ -248,6 +250,10 @@ ilib.LocaleInfo.prototype = {
 	getUnits: function () {
 		return this.info.units;
 	},
+        
+        getUnitFormat: function () {
+                return this.info.unitfmt;
+        },
 	
 	/**
 	 * Return the name of the calendar that is commonly used in the given locale.

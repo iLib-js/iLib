@@ -310,7 +310,8 @@ function suite() {
 		"testjulianday.js",
 		"testlocaleinfo.js",
 		"testlocale.js",
-		"testname.js",
+		"testmeasurement.js",
+	    "testname.js",
 	    "testnamefmt.js",
 	    "testname_ar.js",
 	    "testname_bg.js",
@@ -372,7 +373,9 @@ function suite() {
 		"testresources.js",
 		"testscriptinfo.js",
 		"teststrings.js",
-		"testtimezone.js"
+		"testtimezone.js",
+		"testunits.js",
+		"testunitfmt.js"
 	];
 
     suites.forEach(function (path) {

@@ -173,6 +173,12 @@ $(function() {
         case 'PhoneFmt':
             setupPhonePicker(localeName);
             break;
+        case 'UnitFmt':
+            setupUnitFmtPicker();
+            break;
+        case 'UnitConv':
+            setupUnitConvPicker();
+            break;
         default:
 			alert(convertName + ": to be implemented");
             break;
@@ -235,7 +241,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
             }
             
@@ -1218,6 +1225,35 @@ $(function() {
             
             $('.testSubject').html(output);
             break;
+            
+        case 'UnitFmt':
+            var m = new ilib.Measurement({
+				amount: $('#amount').val(),
+				unit: $('#unit').val()
+            });
+            var uf = new ilib.UnitFmt({
+                locale: localeName,
+                autoConvert:$('#autoConv').is(':checked'),
+                useNative:$('#uNative').is(':checked'),
+                autoScale:$('#scale').is(':checked'),
+                length:$('[name="unitLength"]:checked').val()
+            });
+            var output = uf.format(m);
+            $('.testSubject').html(output);
+            break;
+        case 'UnitConv':
+            var m1 = new ilib.Measurement({
+				unit: $('#fUnit').val(),
+				amount: $('#fromAmount').val()
+            });
+            var m2 = new ilib.Measurement({
+				unit: $('#tUnit').val(),
+				amount: m1
+            });
+            var output = m2.getAmount() +" " + m2.getUnit();
+            $('.testSubject').html(output);
+            $('#toAmount').prop('value',m2.getAmount());
+            break;
 
 		default: ;
 		}
@@ -1327,16 +1363,20 @@ $(document).ready(function () {
                             <option value="NameFmt">Name Formatting</option>
                             <option value="AddressFmt">Address Formatting</option>
                             <option value="PhoneFmt">Phone Number Formatting</option>
+                            <option value="UnitFmt">Unit Formatting</option>
 <!--
                             <option value="ShowCalendar">Show Calendar</option>
                             <option value="GetString">Translation</option>
                             <option value="StringFmt">String Formatting</option>
                             <option value="FormatChoice">Choice Formatting</option>
--->            
+                            
+-->
+				            <option value="">-------- Conversion Classes --------</option>
+                            <option value="UnitConv">Unit Conversion</option>
                         </select>
                     </div>
 
-					<div>
+					<div id="locCtrl" style="display: none">
 						<label for="localeControl">Locale:</label> 
                         <select id="localeControl"></select>
 					</div>
@@ -1731,6 +1771,50 @@ $(document).ready(function () {
                             <label for="extension">Extension:</label>
                             <input type="text" name="extension" id="extension" class="phoneDigits"/>
                         </div>
+                    </div>
+                    <div id='unitFmtPicker' style="display: none">
+                        <div id="unitslengthPane">
+                            <label>Length:</label>
+                            <input type="radio" name="unitLength" id="unitShort" class="unitLength" value="short"/>Short
+                            <input type="radio" name="unitLength" id="unitLong"  class="unitLength" value="long"/>Long
+                        </div>
+                        <div id="unitFmtOptions">
+                            <label>Options:</label>
+                            <input type="checkbox" id="autoConv" value="ac" class="unitFmtOpt"/>Auto Convert
+                            <input type="checkbox" id="uNative" value="un" class="unitFmtOpt"/>Use Native
+                            <input type="checkbox" id="scale" value="sc" class="unitFmtOpt"/>Scale
+                        </div>
+                        <div>
+                            <label for="amount">Amount:</label>
+                            <input type="text" name="amount" id="amount"/>
+                        </div>
+                        <div id="unitpicker">
+                            <label for="unit">Unit:</label>
+                            <select name="unit" id="unit"></select>
+                        </div>
+                    </div>
+                    <div id='unitConvPicker' style="display: none">                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th id='funitname'>From</th>
+                                    <th id='tunitname'>To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td><input type="text" name="fromAmount" id="fromAmount"/></td>
+                                    <td><input type="text" name="toAmount" id="toAmount" readonly/></td>
+                                </tr>
+                                <tr>
+                                    <td>Unit</td>
+                                    <td><select name="fUnit" id="fUnit" onchange="fromUnitSelected()"/></td>
+                                    <td><select name="tUnit" id="tUnit"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     
 					<div id="buttonBar">

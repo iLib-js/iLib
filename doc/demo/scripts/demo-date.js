@@ -654,6 +654,55 @@ function setupPhonePicker(locale) {
 	$('#phonePicker').show();
 };
 
+function setMeasurementValues(element, u) {
+	var units = ilib.Measurement.getAvailableUnits();
+	units.sort();
+	$.each(units, function(key, value) {
+		element.append($("<option></option>").attr({
+			value: value,
+			"selected": (value == u)
+		}).text(value));
+	});
+};
+
+function setupUnitFmtPicker() {
+    var unitElement = $('#unit');
+    setMeasurementValues(unitElement);
+    $('#unitFmtPicker').show();
+    $('#unitLong').prop('checked', true);
+    $('#autoConv').prop('checked', true);
+    $('#uNative').prop('checked', true);
+    $('#scale').prop('checked', true);
+}
+
+function fromUnitSelected() {
+    var unit = $('#fUnit').val();
+    var toUnitElement = $('#tUnit');
+    toUnitElement.find('option').remove().end();
+    var measurement;
+    for (var c in ilib.Measurement._constructors) {
+        measurement = ilib.Measurement._constructors[c];
+        if (typeof(measurement.aliases[unit]) !== 'undefined') {                
+                break;
+        }
+        measurement = 'undefined';
+    }
+    var units = typeof(measurement) !== 'undefined' ? measurement.getMeasures() : "unknown";
+    $.each(units, function(key, value) {
+        toUnitElement.append($("<option></option>").attr({
+                value: value              
+        }).text(value));
+    });    
+}
+
+function setupUnitConvPicker() {
+    var unitElement = $('#fUnit');
+    setMeasurementValues(unitElement);
+    fromUnitSelected();
+    $('#locCtrl').hide();
+    $('#unitConvPicker').show();
+}
+
 function hideAllPickers() {
 	$('#calendarPane').hide();
 	$('#lengthPane').hide();
@@ -675,4 +724,7 @@ function hideAllPickers() {
 	$('#addressPicker').hide();
 	$('#phonePicker').hide();
 	$('#textBoxPicker').hide();
+    $('#unitFmtPicker').hide();
+    $('#unitConvPicker').hide();
+    $('#locCtrl').show();
 };

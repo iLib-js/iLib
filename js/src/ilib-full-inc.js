@@ -80,4 +80,17 @@ glyphstring.js
 phone/phonefmt.js
 phone/phonegeo.js
 phone/phonenum.js
+unit.js
+unitfmt.js
+units/length.js
+units/speed.js
+units/digitalStorage.js
+units/temperature.js
+units/unknown.js
+units/time.js
+units/mass.js
+units/area.js
+units/fuelConsumption.js
+units/volume.js	
+units/energy.js
 */

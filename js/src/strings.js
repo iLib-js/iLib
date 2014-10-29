@@ -131,10 +131,10 @@ ilib.String.toCodePoint = function(str, index) {
 
 /**
  * Load the plural the definitions of plurals for the locale.
- * @param {ilib.Locale|string} locale
- * @param {boolean} sync
- * @param {Object} loadParams
- * @param {function(*)|undefined} onLoad
+ * @param {boolean=} sync
+ * @param {ilib.Locale|string=} locale
+ * @param {Object=} loadParams
+ * @param {function(*)=} onLoad
  */
 ilib.String.loadPlurals = function (sync, locale, loadParams, onLoad) {
 	var loc;
@@ -1026,9 +1026,9 @@ ilib.String.prototype = {
 	 * 3 or 4".
 	 * @param {ilib.Locale|string} locale locale to use when processing choice
 	 * formats with this string
-	 * @param {boolean} sync [optional] whether to load the locale data synchronously 
+	 * @param {boolean=} sync [optional] whether to load the locale data synchronously 
 	 * or not
-	 * @param {Object} loadParams [optional] parameters to pass to the loader function
+	 * @param {Object=} loadParams [optional] parameters to pass to the loader function
 	 * @param {function(*)=} onLoad [optional] function to call when the loading is done
 	 */
 	setLocale: function (locale, sync, loadParams, onLoad) {
