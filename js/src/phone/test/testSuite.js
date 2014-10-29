@@ -51,6 +51,7 @@ function suite() {
 		"phonenum_MX.js",
 		"phonenum_NL.js",
 		"phonenum_NZ.js",
+		"phonenum_RU.js",
 		"phonenum_SG.js",
 		"phonenum_TW.js",
 		"phonenum_US.js",
@@ -71,6 +72,7 @@ function suite() {
 		"phonefmt_MX.js",
 		"phonefmt_NL.js",
 		"phonefmt_NZ.js",
+		"phonefmt_RU.js",
 		"phonefmt_SG.js",
 		"phonefmt_TW.js",
 		"phonefmt_US.js"

@@ -43,38 +43,54 @@
 9	cell
 
 301	area	Buryatia	Republic of Buryatia
+3012	area	Ulan Ude	Ulan Ude
 302	area	Zabaykalsky	Zabaykalsky Krai
 341	area	Udmurtia	Republic of Udmurtia
-342	area	Perm	Perm Krai
+3412	area	Izhevsk	Izhevsk
+3422	area	Perm	Perm Krai
 343	area	Sverdlovsk	Sverdlovsk Oblast
 345	area	Tyumen	Tyumen Oblast
 346	area	Khanty–Mansi	Khanty–Mansi Autonomous Okrug
+3462	area	Surgut	Surgut
 347	area	Bashkortostan	Republic of Bashkortostan
+3472	area	Ufa	Ufa
 349	area	Yamalo-Nenets	Yamalo-Nenets Autonomous Okrug
 351	area	Chelyabinsk	Chelyabinsk Oblast
 352	area	Kurgan	Kurgan Oblast
-353	area	Orenburg	Orenburg Oblast
+3532	area	Orenburg	Orenburg Oblast
 365	area	Crimea	Republic of Crimea
-381	area	Omsk	Omsk Oblast
-382	area	Tomsk	Tomsk Oblast
+3812	area	Omsk	Omsk Oblast
+3822	area	Tomsk	Tomsk Oblast
 383	area	Novosibirsk	Novosibirsk Oblast
 384	area	Kemerovo	Kemerovo Oblast
+3842	area	Kemerovo	Kemerovo Oblast
 385	area	Altai	Altai Krai
+3852	area	Barnaul	Barnaul
 388	area	Altai	Altai Republic
 390	area	Khakassia	Republic of Khakassia
 391	area	Krasnoyarsk	Krasnoyarsk Krai
+39113	area	Tura	Tura
+3912	area	Krasnoyarsk	Krasnoyarsk Krai
+39152	area	Norilsk	Norilsk
 394	area	Tyva	Republic of Tyva (Tuva)
 395	area	Irkutsk	Irkutsk Oblast
+3952	area	Irkutsk	Irkutsk Oblast
 401	area	Kaliningrad	Kaliningrad Oblast
 411	area	Sakha	Sakha Republic (Yakutia)
+4112	area	Yakutsk	Yakutsk
 413	area	Magadan	Magadan Oblast
+41322	area	Magadan	Magadan Oblast
 415	area	Kamchatka	Kamchatka Krai
+4152	area	Petropavlovsk Kamchatskiy	Petropavlovsk Kamchatskiy
 416	area	Amur	Amur Oblast
 421	area	Khabarovsk	Khabarovsk Krai
+4212	area	Khabarovsk	Khabarovsk Krai
 423	area	Primorsky	Primorsky Krai
+4232	area	Vladivostok	Vladivostok
 424	area	Sakhalin	Sakhalin Oblast
 426	area	Jewish Autonomous Oblast	Jewish Autonomous Oblast
 427	area	Chukotka	Chukotka Autonomous Okrug
+42722	area	Anadyr	Anadyr
 471	area	Kursk	Kursk Oblast
 472	area	Belgorod	Belgorod Oblast
 473	area	Voronezh	Voronezh Oblast
@@ -97,27 +113,37 @@
 812	area	Saint Petersburg	Saint Petersburg
 813	area	Leningrad	Leningrad Oblast
 814	area	Karelia	Republic of Karelia
-815	area	Murmansk	Murmansk Oblast
-816	area	Novgorod	Novgorod Oblast
+8152	area	Murmansk	Murmansk Oblast
+81622	area	Novgorod	Novgorod Oblast
 817	area	Vologda	Vologda Oblast
 818	area	Arkhangelsk	Arkhangelsk Oblast and Nenets Autonomous Okrug
+8182	area	Arkhangelsk	Arkhangelsk
+820	area	Cherepovets	Cherepovets
 821	area	Komi Republic	Komi Republic
+8262	area	Orel	Orel
 831	area	Nizhny Novgorod	Nizhny Novgorod Oblast
 833	area	Kirov	Kirov Oblast
 834	area	Mordovia	Republic of Mordovia
 835	area	Chuvashia	Republic of Chuvashia
+8352	area	Cheboksary	Cheboksary
 836	area	Mari El	Republic of Mari El
-841	area	Penza	Penza Oblast
+8412	area	Penza	Penza Oblast
 842	area	Ulyanovsk	Ulyanovsk Oblast
+8422	area	Ulyanovsk	Ulyanovsk Oblast
 843	area	Tatarstan	Republic of Tatarstan
-844	area	Volgograd	Volgograd Oblast
-845	area	Saratov	Saratov Oblast
-846	area	Samara	Samara Oblast
+8442	area	Volgograd	Volgograd Oblast
+8452	area	Saratov	Saratov Oblast
+8462	area	Samara	Samara Oblast
 847	area	Kalmykia	Republic of Kalmykia
 851	area	Astrakhan	Astrakhan Oblast
+8512	area	Astrakhan	Astrakhan Oblast
+8552	area	Naberezhnye Chelny	Naberezhnye Chelny
 861	area	Krasnodar	Krasnodar Krai
+86117	area	Novorossiysk	Novorossiysk
+8612	area	Krasnodar	Krasnodar Krai
+862	area	Sochi	Sochi
 863	area	Rostov	Rostov Oblast
-865	area	Stavropol	Stavropol Krai
+8652	area	Stavropol	Stavropol Krai
 866	area	Kabardino-Balkaria	Republic of Kabardino-Balkaria
 867	area	North Ossetia–Alania	Republic of North Ossetia–Alania
 869	area	Sevastopol	City of Sevastopol
@@ -126,6 +152,8 @@
 873	area	Ingushetia	Republic of Ingushetia
 877	area	Adygea	Republic of Adygea
 878	area	Karachay–Cherkessia	Republic of Karachay–Cherkessia
+879	area	Mineral nyye Vody	Mineral nyye Vody
+87822	area	Cherkessk	Cherkessk
 
 800	service	Freephone
 801	service	Automatic alternative billing
