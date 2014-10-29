@@ -963,6 +963,19 @@ ilib.Date._equationOfTime = function(jd) {
 };
 
 /**
+ * @private
+ */
+ilib.Date._poly = function(x, coefficients) {
+	var result = coefficients[0];
+	var xpow = x;
+	for (var i = 1; i < coefficients.length; i++) {
+		result += coefficients[i] * xpow;
+		xpow *= x;
+	}
+	return result;
+};
+
+/**
  * Calculate the UTC RD from the local RD given "zone" number of minutes
  * worth of offset.
  * 
@@ -995,8 +1008,14 @@ ilib.Date._localFromUniversal = function(local, zone) {
  * @return {number} the aberration
  */
 ilib.Date._aberration = function(c) {
-	return 0.0000017 * ilib.Date._dcos(177.63 + 35999.01848 * c) - 0.0000973;
+	return 9.74E-05 * ilib.Date._dcos(177.63 + 35999.01847999999 * c) - 0.005575;
 };
+
+/**
+ * @private
+ */
+ilib.Date._nutCoeffA = [124.90, 1934.134, 0.002063];
+ilib.Date._nutCoeffB = [201.11, 72001.5377, 0.00057];
 
 /**
  * @private
@@ -1005,18 +1024,17 @@ ilib.Date._aberration = function(c) {
  * @return {number} the nutation for the given julian century in radians
  */
 ilib.Date._nutation2 = function(c) {
-	var c2 = c * c;
-	var a = 124.90 - 1934.134 * c + 0.002063 * c2;
-	var b = 201.11 + 72001.5377 * c + 0.00057 * c2;
+	var a = ilib.Date._poly(c, ilib.Date._nutCoeffA);
+	var b = ilib.Date._poly(c, ilib.Date._nutCoeffB);
 	// return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
-	return -0.0000834 * ilib.Date._dsin(a) - 0.0000064 * ilib.Date._dsin(b);
+	return -0.004778 * ilib.Date._dsin(a) - 0.0003667 * ilib.Date._dsin(b);
 };
 
 
 /**
  * @private
  */
-ilib.Date._coeff18th = [
+ilib.Date._coeff19th = [
     -0.00002,
     0.000297,
     0.025184,
@@ -1030,25 +1048,25 @@ ilib.Date._coeff18th = [
 /**
  * @private
  */
-ilib.Date._coeff19th = [
+ilib.Date._coeff18th = [
     -0.000009,
     0.003844,
     0.083563,
     0.865736,
     4.867575,
     15.845535,
-    31.332267,
-    38.291999,
-    28.316289,
-    11.636204,
+    31.332267000000002,
+    38.291998999999997, 
+    28.316289000000001,
+    11.636203999999999,
     2.043794
 ];
 
 /**
  * @private
  */
-ilib.Date._ephemerisCorrection = function(rd) {
-	var year = ilib.Date.GregDate._calcYear(rd);
+ilib.Date._ephemerisCorrection = function(jd) {
+	var year = ilib.Date.GregDate._calcYear(jd - 1721424.5);
 	
 	if (1988 <= year && year <= 2019) {
 		return (year - 1933) / 86400;
@@ -1065,14 +1083,7 @@ ilib.Date._ephemerisCorrection = function(rd) {
 		});
 		// 693596 is the rd of Jan 1, 1900
 		var theta = (jul1.getRataDie() - 693596) / 36525;
-		var thetapow = 1;
-		var ret = 0;
-		var coeffArray = (1900 <= year) ? ilib.Date._coeff19th : ilib.Date._coeff18th;
-		for (var i = 0; i < coeffArray.length; i++) {
-			ret += coeffArray[i] * thetapow;
-			thetapow *= theta;
-		}
-		return ret;
+		return ilib.Date._poly(theta, (1900 <= year) ? ilib.Date._coeff19th : ilib.Date._coeff18th);
 	}
 	
 	if (1620 <= year && year <= 1799) {
@@ -1099,7 +1110,7 @@ ilib.Date._ephemerisCorrection = function(rd) {
  * @private
  */
 ilib.Date._ephemerisFromUniversal = function(jd) {
-	return jd + ilib.Date._ephemerisCorrection(jd - 1721424.5);
+	return jd + ilib.Date._ephemerisCorrection(jd);
 };
 
 /**
@@ -1107,6 +1118,7 @@ ilib.Date._ephemerisFromUniversal = function(jd) {
  */
 ilib.Date._julianCenturies = function(jd) {
 	// 2451545.0 is the Julian day of J2000 epoch
+	// 730119.5 is the Gregorian RD of J2000 epoch
 	// 36525.0 is the number of days in a Julian century
 	return (ilib.Date._ephemerisFromUniversal(jd) - 2451545.0) / 36525.0;
 };
