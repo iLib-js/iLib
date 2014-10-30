@@ -1627,6 +1627,87 @@ function testUnitFormatTime12() {
     assertEquals("1,000 ms", str);
 }
 
+function testUnitFormatLength13() {
+    var m1 = new ilib.Measurement({
+        unit: "km",
+        amount: 12345000000000000000000000000.0
+    });
+
+    var uf = new ilib.UnitFmt({
+        length:"short",
+        autoConvert:false,
+        autoScale: false,
+        maxFractionDigits: 3,
+        roundingMode: "halfdown"
+    });
+    var str = uf.format(m1);
+    assertEquals("1.2345e+28 km", str);
+}
+
+function testUnitFormatLength14() {
+    var m1 = new ilib.Measurement({
+        unit: "km",
+        amount: 1.7453
+    });
+
+    var uf = new ilib.UnitFmt({
+        length:"short",
+        autoConvert:false,
+        autoScale: false,
+        maxFractionDigits: 2        
+    });
+    var str = uf.format(m1);
+    assertEquals("1.75 km", str);
+}
+
+function testUnitFormatLength15() {
+    var m1 = new ilib.Measurement({
+        unit: "m",
+        amount: 1.74475
+    });
+
+    var uf = new ilib.UnitFmt({
+        autoConvert:false,
+        autoScale: false,        
+	maxFractionDigits: 2,
+	roundingMode: "up"       
+    });
+    var str = uf.format(m1);
+    assertEquals("1.75 meter", str);
+}
+
+function testUnitFormatLength16() {
+    var m1 = new ilib.Measurement({
+        unit: "m",
+        amount: 1.74475
+    });
+
+    var uf = new ilib.UnitFmt({
+        autoConvert:false,
+        autoScale: false,
+        maxFractionDigits: 2,
+	roundingMode: "down" 
+    });
+    var str = uf.format(m1);
+    assertEquals("1.74 meter", str);
+}
+
+function testUnitFormatLength17() {
+    var m1 = new ilib.Measurement({
+        unit: "m",
+        amount: 1.74475
+    });
+
+    var uf = new ilib.UnitFmt({
+        autoConvert:false,
+        autoScale: false,
+        minFractionDigits: 3,
+	maxFractionDigits: 3
+    });
+    var str = uf.format(m1);
+    assertEquals("1.745 meter", str);
+}
+
 function testUnitFormatUseNativeFalse() {
     var m1 = new ilib.Measurement({
         unit: "cm",

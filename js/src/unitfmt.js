@@ -60,7 +60,29 @@ strings.js
  * "yards", and the amount would be converted from meters to yards automatically before
  * being formatted. Default for the autoConvert property is "true", so it only needs to 
  * be specified when you want to turn off autoconversion.
- *  
+ * 
+ * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
+ * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
+ * the integral part of the number.
+ * 
+ * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
+ * appear in the formatted output. If the number does not have enough fractional digits
+ * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+ * 
+ * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
+ * this property governs how the least significant digits are rounded to conform to that
+ * maximum. The value of this property is a string with one of the following values:
+ * <ul>
+ *   <li><i>up</i> - round away from zero
+ *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
+ *   <li><i>ceiling</i> - round towards positive infinity
+ *   <li><i>floor</i> - round towards negative infinity
+ *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
+ *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
+ *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
+ *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
+ * </ul>
+ * 
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -131,6 +153,17 @@ ilib.UnitFmt = function(options) {
     	if (options.measurementSystem) {
     		this.measurementSystem = options.measurementSystem;
     	}
+        
+        if (typeof (options.maxFractionDigits) === 'number') {
+                /** @type {number|undefined} */
+                this.maxFractionDigits = options.maxFractionDigits;
+        }
+        if (typeof (options.minFractionDigits) === 'number') {
+                /** @type {number|undefined} */
+                this.minFractionDigits = options.minFractionDigits;
+        }
+        /** @type {string} */
+        this.roundingMode = options.roundingMode;
     }
 
     if (!ilib.UnitFmt.cache) {
@@ -217,7 +250,10 @@ ilib.UnitFmt.prototype = {
     	formatted.setLocale(this.locale, true, undefined, undefined);
     	var numFmt = new ilib.NumFmt({
     		locale: this.locale,
-    		useNative: this.useNative
+    		useNative: this.useNative,
+                maxFractionDigits: this.maxFractionDigits,
+                minFractionDigits: this.minFractionDigits,
+                roundingMode: this.roundingMode
     	});
     	formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
     	return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
