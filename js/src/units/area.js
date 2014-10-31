@@ -239,7 +239,7 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
 
 ilib.Measurement.Area.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-UK") {
+    if (locale === "en-US" || locale === "en-GB") {
         to = ilib.Measurement.Area.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = ilib.Measurement.Area.usCustomaryToMetric[this.unit] || this.unit;

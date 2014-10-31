@@ -96,7 +96,7 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 
 ilib.Measurement.Length.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-UK") {
+    if (locale === "en-US" || locale === "en-GB") {
         to = ilib.Measurement.Length.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = ilib.Measurement.Length.usCustomaryToMetric[this.unit] || this.unit;

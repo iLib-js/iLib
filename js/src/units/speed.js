@@ -143,7 +143,7 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 
 ilib.Measurement.Speed.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-UK") {
+    if (locale === "en-US" || locale === "en-GB") {
         to = ilib.Measurement.Speed.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = ilib.Measurement.Speed.UScustomaryTometric[this.unit] || this.unit;

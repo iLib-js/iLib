@@ -95,7 +95,7 @@ ilib.Measurement.Mass.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US") {
         to = ilib.Measurement.Mass.metricToUScustomary[this.unit] || ilib.Measurement.Mass.imperialToUScustomary[this.unit] || this.unit;
-    } else if (locale === "en-UK") {
+    } else if (locale === "en-GB") {
         to = ilib.Measurement.Mass.metricToImperial[this.unit] || ilib.Measurement.Mass.uScustomaryToImperial[this.unit] || this.unit;
     }
     else

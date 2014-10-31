@@ -135,7 +135,7 @@ ilib.Measurement.FuelConsumption.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US") {
         to = ilib.Measurement.FuelConsumption.metricToUScustomary[this.unit] || ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] || this.unit;
-    } else if (locale === "en-UK") {
+    } else if (locale === "en-GB") {
         to = ilib.Measurement.FuelConsumption.metricToImperial[this.unit] || ilib.Measurement.FuelConsumption.uScustomaryToImperial[this.unit] || this.unit;
     }
     else
