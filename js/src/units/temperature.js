@@ -96,13 +96,16 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	var result = 0;
 	from = ilib.Measurement.Temperature.aliases[from] || from;
 	to = ilib.Measurement.Temperature.aliases[to] || to;
-
-	if (from === "celsius") {
+        if(from === to)
+            return temperature;
+        
+	else if (from === "celsius") {
 		if (to === "fahrenheit") {
 			result = ((temperature * 9 / 5) + 32);
 		} else if (to === "kelvin") {
 			result = (temperature + 273.15);
 		}
+                
 	} else if (from === "fahrenheit") {
 		if (to === "celsius") {
 			result = ((5 / 9 * (temperature - 32)));
@@ -118,13 +121,6 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	}
 	
 	return result;
-};
-
-ilib.Measurement.Temperature.prototype.localize = function(locale) {
-    return new ilib.Measurement.Temperature({
-        unit: this.unit,
-        amount: this.amount
-    });
 };
 
 /**
@@ -146,6 +142,20 @@ ilib.Measurement.Temperature.prototype.scale = function(measurementsystem) {
 ilib.Measurement.Temperature.getMeasures = function () {
 	return ["celsius", "kelvin", "fahrenheit"];
 };
+ilib.Measurement.Temperature.metricToUScustomary = {"celsius":"fahrenheit"};
+ilib.Measurement.Temperature.usCustomaryToMetric = {"fahrenheit":"celsius"};
 
+ilib.Measurement.Temperature.prototype.localize = function(locale) {
+    var to;
+    if (locale === "en-US" ) {
+        to = ilib.Measurement.Temperature.metricToUScustomary[this.unit] || this.unit;
+    } else {
+        to = ilib.Measurement.Temperature.usCustomaryToMetric[this.unit] || this.unit;
+    }
+    return new ilib.Measurement.Temperature({
+        unit: to,
+        amount: this
+    });
+};
 //register with the factory method
 ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;

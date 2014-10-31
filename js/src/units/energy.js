@@ -218,12 +218,23 @@ ilib.Measurement.Energy.metricWattHourSystem = {"watt hour":5,"kilowatt hour":8,
 ilib.Measurement.Energy.imperialSystem	= {"BTU":3};
 ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
 
+ilib.Measurement.Energy.metricToImperial = {"millijoule":"BTU","joule":"BTU","kilojoule":"BTU","megajoule":"BTU","gigajoule":"BTU"};
+ilib.Measurement.Energy.imperialToMetric = {"BTU":"joule"};
+
 ilib.Measurement.Energy.prototype.localize = function(locale) {
+    var to;
+     if (locale === "en-GB") {
+        to = ilib.Measurement.Energy.metricToImperial[this.unit] || this.unit;
+    }
+    else
+        to = ilib.Measurement.Energy.imperialToMetric[this.unit] || this.unit;
+
     return new ilib.Measurement.Energy({
-        unit: this.unit,
-        amount: this.amount
+        unit: to,
+        amount: this
     });
-};
+    
+  };
 
 /**
  * @inheritDoc

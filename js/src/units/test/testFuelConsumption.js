@@ -156,7 +156,7 @@ function testFuelConsumptionLocalize3() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertEquals(2824.81, m.amount);
     assertEquals("mpg(imp)", m.unit);
@@ -168,7 +168,7 @@ function testFuelConsumptionLocalize5() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertRoughlyEquals(2824.81, m.amount, 0.001);
     assertEquals("mpg(imp)", m.unit);

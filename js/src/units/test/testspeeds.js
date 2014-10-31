@@ -150,7 +150,7 @@ function testSpeedLocalize3() {
 		amount: 1000
 	});
 
-	m = m.localize("en-UK");
+	m = m.localize("en-GB");
 
 	assertEquals(1000, m.amount);
 	assertEquals("miles/hour", m.unit);

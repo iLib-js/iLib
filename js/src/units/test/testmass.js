@@ -229,7 +229,7 @@ function testMassLocalize3() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertEquals(1120, m.amount);
     assertEquals("short ton", m.unit);
@@ -241,7 +241,7 @@ function testMassLocalize5() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertRoughlyEquals(1102.31, m.amount, 0.001);
     assertEquals("short ton", m.unit);

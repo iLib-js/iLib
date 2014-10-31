@@ -1167,7 +1167,7 @@ function testUnitFormatTemperature6() {
 
     var uf = new ilib.UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
     var str = uf.format(m1);
-    assertEquals("2 000 °F", str);
+    assertEquals("1 093,3333333333335 °C", str);
 }
 
 function testUnitFormatTemperature7() {

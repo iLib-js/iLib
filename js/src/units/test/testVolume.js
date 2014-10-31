@@ -736,7 +736,7 @@ function testVolumeLocalize3() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertRoughlyEquals(879.877, m.amount,0.0001);
     assertEquals("imperial quart", m.unit);
@@ -748,7 +748,7 @@ function testVolumeLocalize5() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertRoughlyEquals(1040.84, m.amount, 0.001);
     assertEquals("imperial ounce", m.unit);

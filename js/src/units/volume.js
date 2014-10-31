@@ -257,7 +257,7 @@ ilib.Measurement.Volume.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US") {
         to = ilib.Measurement.Volume.metricToUScustomary[this.unit] || ilib.Measurement.Volume.imperialToUScustomary[this.unit] || this.unit;
-    } else if (locale === "en-UK") {
+    } else if (locale === "en-GB") {
         to = ilib.Measurement.Volume.metricToImperial[this.unit] || ilib.Measurement.Volume.uScustomaryToImperial[this.unit] || this.unit;
     }
     else

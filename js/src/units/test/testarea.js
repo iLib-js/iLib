@@ -262,7 +262,7 @@ function testAreaLocalize3() {
         amount: 1000
     });
 
-    m = m.localize("en-UK");
+    m = m.localize("en-GB");
 
     assertEquals(1000, m.amount);
     assertEquals("square mile", m.unit);
