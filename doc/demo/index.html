@@ -1227,28 +1227,42 @@ $(function() {
             break;
             
         case 'UnitFmt':
-            var m = new ilib.Measurement({
-				amount: $('#amount').val(),
-				unit: $('#unit').val()
-            });
-            var uf = new ilib.UnitFmt({
+            
+            options = {            	
                 locale: localeName,
-                autoConvert:$('#autoConv').is(':checked'),
-                useNative:$('#uNative').is(':checked'),
-                autoScale:$('#scale').is(':checked'),
-                length:$('[name="unitLength"]:checked').val()
+                autoConvert: $('#autoConv').is(':checked'),
+                useNative: $('#uNative').is(':checked'),
+                autoScale: $('#scale').is(':checked'),
+                length: $('[name="unitLength"]:checked').val(),
+                roundingMode: $('#roundMode').val(),
+            };
+            
+            var max = $('#maxFD').val(), min = $('#minFD').val();
+            
+            if (max && parseInt(max) !== 0) {
+            	options.maxFractionDigits = parseInt(max);
+            }
+            if (min && parseInt(min) !== 0) {
+            	options.minFractionDigits = parseInt(min);
+            }
+            
+            var m = new ilib.Measurement({
+                amount: $('#amount').val(),
+                unit: $('#unit').val()
             });
+            var uf = new ilib.UnitFmt(options);
             var output = uf.format(m);
             $('.testSubject').html(output);
             break;
+            
         case 'UnitConv':
             var m1 = new ilib.Measurement({
-				unit: $('#fUnit').val(),
-				amount: $('#fromAmount').val()
+                unit: $('#fUnit').val(),
+                amount: $('#fromAmount').val()
             });
             var m2 = new ilib.Measurement({
-				unit: $('#tUnit').val(),
-				amount: m1
+                unit: $('#tUnit').val(),
+                amount: m1
             });
             var output = m2.getAmount() +" " + m2.getUnit();
             $('.testSubject').html(output);
@@ -1773,6 +1787,27 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div id='unitFmtPicker' style="display: none">
+                        <div>
+                            <label>Max Fraction Digits:</label>
+                            <input type="text" name="maxFD" id="maxFD"/>
+                        </div> 
+                        <div>
+                            <label>Min Fraction Digits:</label>
+                            <input type="text" name="minFD" id="minFD"/>
+                        </div>
+                        <div>
+                            <label>Rounding Mode:</label>
+                            <select id="roundMode">
+                                <option>up</option>
+                                <option>down</option>
+                                <option>ceiling</option>
+                                <option>floor</option>
+                                <option>halfup</option>
+                                <option>halfdown</option>
+                                <option>halfeven</option>
+                                <option>halfodd</option>
+                            </select>
+                        </div>
                         <div id="unitslengthPane">
                             <label>Length:</label>
                             <input type="radio" name="unitLength" id="unitShort" class="unitLength" value="short"/>Short
