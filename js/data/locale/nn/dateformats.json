@@ -59,10 +59,15 @@
                 "ah": "h a"
             },
             "24": {
-                "ahmsz": "HH:mm:ss z",
-                "hmsz": "HH:mm:ss z",
-                "ahmz": "HH:mm z",
-                "hmz": "HH:mm z"
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm"
             }
         },
         "range": {
