@@ -191,6 +191,7 @@ ilib.CType = {
 	 * <li><i>cjkstrokes</i> - CJK strokes
 	 * <li><i>hiragana</i>
 	 * <li><i>katakana</i> - Katakana, Katakana Phonetic Extensions, Kana Supplement
+         * <li><i>kanji</i>
 	 * <li><i>kanbun</i>
 	 * <li><i>lisu</i>
 	 * <li><i>yi</i> - Yi Syllables, Yi Radicals

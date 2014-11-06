@@ -90,29 +90,29 @@ function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 
 
 
-function testParseCompoundHonorific_ja_JP() {
-	var parsed = new ilib.Name("高橋教授", {locale: 'ja-JP'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		suffix: "教授",
-		familyName: "高橋"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
+//function testParseCompoundHonorific_ja_JP() {
+//	var parsed = new ilib.Name("高橋教授", {locale: 'ja-JP'});
+//	assertNotUndefined(parsed);
+//	
+//	var expected = {
+//		suffix: "教授",
+//		familyName: "高橋"
+//	};
+//	
+//	assertObjectContains(expected, parsed);
+//};
 
-function testParseCompoundHonorific_ja_JP1() {
-	var parsed = new ilib.Name("高橋総裁.", {locale: 'ja-JP'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		suffix : "総裁.",
-		familyName: "高橋"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
+//function testParseCompoundHonorific_ja_JP1() {
+//	var parsed = new ilib.Name("高橋総裁.", {locale: 'ja-JP'});
+//	assertNotUndefined(parsed);
+//	
+//	var expected = {
+//		suffix : "総裁.",
+//		familyName: "高橋"
+//	};
+//	
+//	assertObjectContains(expected, parsed);
+//};
 /*
  * Format Tests
  */
