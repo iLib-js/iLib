@@ -726,10 +726,19 @@ ilib.Name.prototype = {
      * @protected
      */
     _parseJapaneseName: function (parts) {
-//        if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
-//            this.familyName = parts.slice(0,parts.length).join("");
-//            return;
-//        }
+       if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
+           if (parts.length === 1) {
+                if (ilib.CType.withinRange(parts[i], "kanji")) {
+                    this.familyName = parts[0];
+                } else {
+                    this.givenName = parts[0];
+                }
+                return;
+           } else if (parts.length === 2) {
+               this.familyName = parts.slice(0,parts.length).join("")
+               return;
+           }
+        }
         if (parts.length > 1) {
             var fn = "";                                                                    
             for (var i = 0; i < parts.length; i++) {
