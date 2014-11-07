@@ -20,7 +20,7 @@
 	"files": [
 		"./testglue.js",
 		"./ilib-dyn-full-compiled.js",
-		"../data/temp",
+		"../data/localetemp",
 		"README.md"
 	]
 }

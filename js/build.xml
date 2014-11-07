@@ -2,7 +2,7 @@
 <!--
 build.xml - build the javascript parts
 
-Copyright © 2012-2013, JEDLSoft
+Copyright © 2012-2014, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -483,6 +483,24 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/locale"/>
 		<copy todir="${build.export}/locale">
+			<fileset dir="${build.localetemp}">
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/package/locale"/>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.base}">
+				<include name="package.json"/>
+				<include name="README.md"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.src}">
+				<include name="nodeglue.js"/>
+				<include name="ilib-dyn-full-compiled.js"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package/locale">
 			<fileset dir="${build.localetemp}">
 				<include name="**/*.json"/>
 			</fileset>
