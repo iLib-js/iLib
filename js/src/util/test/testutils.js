@@ -133,6 +133,37 @@ function testBsearchStringsAfter() {
     assertEquals(10, ilib.bsearch("zucchini", array, strcmp));
 }
 
+function testBisectionSearchSimple() {
+    assertRoughlyEquals(5.5, ilib.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
+    	return 2 * x + 5;
+    }), 1e-12);
+}
+
+function testBisectionSearchMoreComplex() {
+    assertRoughlyEquals(4, ilib.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
+    	return x * x;
+    }), 1e-12);
+}
+
+function testBisectionSearchTrig() {
+    assertRoughlyEquals(30, ilib.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
+    	return Math.sin(x * Math.PI / 180);
+    }), 1e-9);
+}
+
+function testBisectionSearchVeryComplex() {
+    assertRoughlyEquals(-0.66666666666666, ilib.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
+    	var coeff = [2, 5, 3];
+    	var xpow = 1;
+    	var ret = 0;
+    	for (var i = 0; i < coeff.length; i++) {
+    		ret += coeff[i] * xpow;
+    		xpow *= x;
+    	}
+    	return ret;
+    }), 1e-13);
+}
+
 function testModSimple() {
     assertObjectEquals(2, ilib.mod(2, 4));
 }

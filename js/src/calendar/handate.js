@@ -147,7 +147,7 @@ ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 
 
 /**
- * @class
+ * @class30/Oct/14 2:30 PM
  * 
  * Construct a new Han date object. The constructor parameters can 
  * contain any of the following properties:
@@ -403,14 +403,14 @@ ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
  * is a multiple of the given longitude
  */
 ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
-	var next,
-		start = jd,
-		end = jd + longitude * 10 / 9;
+	var rate = 365.242189D / deg(360.0);
+	var tau = jd + rate * ilib.Date._fixangle(longitude - ilib.Date._solarLongitude(jd));
+	var start = Math.max(tee, tau - 5.0);
+	var end = tau + 5.0;
 	
-	while (end - start >= 0.00001) {
-		next = ilib.Date._fixangle(longitude * Math.ceiling(ilib.Date._solarLongitude(jd) / longitude));
-		
-	}
+	return ilib.bisectionSearch(0, start, end, 1e-6, function (l) {
+		return ilib.Date._fixangle(Math.ceiling(ilib.Date._solarLongitude(l) - jd)) - 180;
+	});
 };
 
 /**

@@ -84,3 +84,58 @@ ilib.bsearch = function(target, arr, comparator) {
 ilib.bsearch.numbers = function(element, target) {
 	return element - target;
 };
+
+/**
+ * Do a bisection search of a function for a particular target value.<p> 
+ * 
+ * The function to search is a function that takes a numeric parameter, 
+ * does calculations, and returns gives a numeric result. The 
+ * function should should be smooth and not have any discontinuities 
+ * between the low and high values of the parameter.
+ *  
+ * Depends directive: !depends utils.js
+ * 
+ * @static
+ * @param {number} target value being sought
+ * @param {number} low the lower bounds to start searching
+ * @param {number} high the upper bounds to start searching
+ * @param {number} precision minimum precision to support. Use 0 if you want to use the default.
+ * @param {?function(number)=} func function to search 
+ * @return an approximation of the input value to the function that gives the desired
+ * target output value, correct to within the error range of Javascript floating point 
+ * arithmetic, or NaN if there was some error
+ */
+ilib.bisectionSearch = function(target, low, high, precision, func) {
+	if (typeof(target) !== 'number' || 
+			typeof(low) !== 'number' || 
+			typeof(high) !== 'number' || 
+			typeof(func) !== 'function') {
+		return NaN;
+	}
+	
+	var mid = 0,
+		value,
+		pre = precision > 0 ? precision : 1e-13;
+	
+	function compareSignificantDigits(a, b) {
+		var leftParts = a.toExponential().split('e');
+		var rightParts = b.toExponential().split('e');
+		var left = new Number(leftParts[0]);
+		var right = new Number(rightParts[0]);
+		
+		return leftParts[1] === rightParts[1] && Math.abs(left - right) < pre; 
+	}
+	
+	do {
+		mid = (high+low)/2;
+		value = func(mid);
+		if (value > target) {
+			high = mid;
+		} else if (value < target) {
+			low = mid;
+		}
+	} while (!compareSignificantDigits(high, low));
+	
+	return mid;
+};
+
