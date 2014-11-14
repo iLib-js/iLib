@@ -7,17 +7,17 @@
 ^.	start
 
 ^1	service
-^100	service	Human Rights Secretariat
-^128	service	standard emergency number in Mercosul
-^181	service	anonymous crime tip (some areas only, others may use different, more miscellaneous numbers)
-^190	service	military police
-^191	service	Federal Highway Police
-^192	service	ambulance
-^193	service	firefighters
-^194	service	federal police
-^197	service	civil police
-^198	service	state highway patrol
-^199	service	civil defense
+^100	emergency	Human Rights Secretariat
+^128	emergency	standard emergency number in Mercosul
+^181	emergency	anonymous crime tip (some areas only, others may use different, more miscellaneous numbers)
+^190	emergency	military police
+^191	emergency	Federal Highway Police
+^192	emergency	ambulance
+^193	emergency	firefighters
+^194	emergency	federal police
+^197	emergency	civil police
+^198	emergency	state highway patrol
+^199	emergency	civil defense
 
 // long distance calls must select particular carriers
 ^021	cic	Aerotech
