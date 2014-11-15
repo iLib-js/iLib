@@ -829,7 +829,7 @@ function testFormatKRStyle1PartialLocal9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatBREmergency1() {
+function testFormatKREmergency1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("111", {locale: "ko-KR"});
 	var expected = "111";
