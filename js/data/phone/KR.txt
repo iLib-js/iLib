@@ -75,36 +75,26 @@
 ^107	service	LG U+ report
 ^108	service	SK Broadband business customer center
 ^109	service	KT report
-^111	service	NIS
-^113	service	Spy Reporting
+
+
 ^115	service	KT Telegram
 ^116	service	KT standard time service
-^117	service	School Violence Hotline (from 2012, previously: report sexual trafficking of women)
 ^118	service	Cyber terrorism report
-^120	service	Lifestyle service
-^121	service	Water utility report
 ^123	service	KEPCO Electric report
-^125	service	Smuggling report
-^127	service	Narcotics report
-^128	service	Pollution report
-^129	service	Coordination with social welfare service (after October 2005)
 ^1300	service	Postal services
-^1301	service	Prosecutor service
+
 ^132	service	Civil Action (Korea Legal Aid Corporation - for contract disputes)
-^1330	service	KNTO tourist information (bus·train schedule, hotel·inn information, free translation service)
-^1331	service	Human Rights Board
+
 ^1332	service	Finance Board
 ^1333	service	Transport information
 ^1335	service	Information communication service center
 ^1336	service	Infringement of personal information board
-^1337	service	Military Safety Board
+
 ^1338	service	Communications service center and report
 ^134	service	Tourist information
 ^1350	service	Labor Board
 ^1355	service	National Pension Service
 ^1357	service	Small and medium enterprise support
-^1365	service	Volunteering information
-^1366	service	Domestic abuse report
 ^1369	service	Financial Information Inquiry
 ^1377	service	Food bank
 ^1379	service	Unreasonable infringement of livelihood report
@@ -114,13 +104,32 @@
 ^1389	service	Elderly abuse hotline and board
 ^1390	service	Election information and infringement hotline
 ^1391	service	Baby abuse hotline
-^1398	service	Child abuse hotline
+
 ^1399	service	Unclean grocery report
 ^141	service	Contact room (KT)
-^182	service	Missing child report hotline
+
 ^188	service	National Board of Audit and Inspection
 
+^110	emergency	Government Information call Center
+^111	emergency	NIS
 ^112	emergency	Police
+^113	emergency	Spy Reporting
+^117	emergency	School Violence Hotline (from 2012, previously: report sexual trafficking of women)
+^118	emergency	Cyber terrorism report
 ^119	emergency	General emergency telephone number
+^120	emergency	Lifestyle service
+^121	emergency	Water utility report
 ^122	emergency	Coast guard emergency telephone number
+^125	emergency	Smuggling report
+^127	emergency	Narcotics report
+^128	emergency	Pollution report
+^129	emergency	Coordination with social welfare service (after October 2005)
+^1301	emergency	Prosecutor service
+^1330	emergency	KNTO tourist information (bus·train schedule, hotel·inn information, free translation service)
+^1331	emergency	Human Rights Board
+^1337	emergency	Military Safety Board
 ^1339	emergency	Emergency medical treatment
+^1365	emergency	Volunteering information
+^1366	emergency	Domestic abuse report
+^1398	emergency	Child abuse hotline
+^182	emergency	Missing child report hotline

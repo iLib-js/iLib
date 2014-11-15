@@ -17,7 +17,7 @@
  * limitations under the License.
  */
  
-function testFormatStyle0() {
+function testFormatKRStyle0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -32,7 +32,7 @@ function testFormatStyle0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1() {
+function testFormatKRStyle1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -47,7 +47,7 @@ function testFormatStyle1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternational() {
+function testFormatKRInternational() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -63,7 +63,7 @@ function testFormatInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternationalAccessCode() {
+function testFormatKRInternationalAccessCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "002",
@@ -79,7 +79,7 @@ function testFormatInternationalAccessCode() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLongAreaCode() {
+function testFormatKRLongAreaCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -95,7 +95,7 @@ function testFormatLongAreaCode() {
 };
 
 
-function testFormatMobile() {
+function testFormatKRMobile() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -110,7 +110,7 @@ function testFormatMobile() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatMobileInternational() {
+function testFormatKRMobileInternational() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -126,7 +126,7 @@ function testFormatMobileInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatService() {
+function testFormatKRService() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -141,7 +141,7 @@ function testFormatService() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatIEIDD() {
+function testFormatKRIEIDD() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -158,7 +158,7 @@ function testFormatIEIDD() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial0() {
+function testFormatKRStyle0Partial0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0"
@@ -170,7 +170,7 @@ function testFormatStyle0Partial0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial1() {
+function testFormatKRStyle0Partial1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -183,7 +183,7 @@ function testFormatStyle0Partial1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial2() {
+function testFormatKRStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -196,7 +196,7 @@ function testFormatStyle0Partial2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial3() {
+function testFormatKRStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -210,7 +210,7 @@ function testFormatStyle0Partial3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial4() {
+function testFormatKRStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -224,7 +224,7 @@ function testFormatStyle0Partial4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial5() {
+function testFormatKRStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -238,7 +238,7 @@ function testFormatStyle0Partial5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial6() {
+function testFormatKRStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -252,7 +252,7 @@ function testFormatStyle0Partial6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial7() {
+function testFormatKRStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -266,7 +266,7 @@ function testFormatStyle0Partial7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial8() {
+function testFormatKRStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -280,7 +280,7 @@ function testFormatStyle0Partial8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial9() {
+function testFormatKRStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -294,7 +294,7 @@ function testFormatStyle0Partial9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial10() {
+function testFormatKRStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -309,7 +309,7 @@ function testFormatStyle0Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole0() {
+function testFormatKRStyle0Whole0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0"
@@ -321,7 +321,7 @@ function testFormatStyle0Whole0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole1() {
+function testFormatKRStyle0Whole1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -334,7 +334,7 @@ function testFormatStyle0Whole1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole2() {
+function testFormatKRStyle0Whole2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -347,7 +347,7 @@ function testFormatStyle0Whole2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole3() {
+function testFormatKRStyle0Whole3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -361,7 +361,7 @@ function testFormatStyle0Whole3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole4() {
+function testFormatKRStyle0Whole4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -375,7 +375,7 @@ function testFormatStyle0Whole4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole5() {
+function testFormatKRStyle0Whole5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -389,7 +389,7 @@ function testFormatStyle0Whole5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole6() {
+function testFormatKRStyle0Whole6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -403,7 +403,7 @@ function testFormatStyle0Whole6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole7() {
+function testFormatKRStyle0Whole7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -417,7 +417,7 @@ function testFormatStyle0Whole7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole8() {
+function testFormatKRStyle0Whole8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -431,7 +431,7 @@ function testFormatStyle0Whole8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole9() {
+function testFormatKRStyle0Whole9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -445,7 +445,7 @@ function testFormatStyle0Whole9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole10() {
+function testFormatKRStyle0Whole10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -460,7 +460,7 @@ function testFormatStyle0Whole10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial0() {
+function testFormatKRStyle1Partial0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0"
@@ -472,7 +472,7 @@ function testFormatStyle1Partial0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial1() {
+function testFormatKRStyle1Partial1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -485,7 +485,7 @@ function testFormatStyle1Partial1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial2() {
+function testFormatKRStyle1Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -498,7 +498,7 @@ function testFormatStyle1Partial2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial3() {
+function testFormatKRStyle1Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -512,7 +512,7 @@ function testFormatStyle1Partial3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial4() {
+function testFormatKRStyle1Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -526,7 +526,7 @@ function testFormatStyle1Partial4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial5() {
+function testFormatKRStyle1Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -540,7 +540,7 @@ function testFormatStyle1Partial5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial6() {
+function testFormatKRStyle1Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -554,7 +554,7 @@ function testFormatStyle1Partial6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial7() {
+function testFormatKRStyle1Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -568,7 +568,7 @@ function testFormatStyle1Partial7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial8() {
+function testFormatKRStyle1Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -582,7 +582,7 @@ function testFormatStyle1Partial8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial9() {
+function testFormatKRStyle1Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -596,7 +596,7 @@ function testFormatStyle1Partial9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial10() {
+function testFormatKRStyle1Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -611,7 +611,7 @@ function testFormatStyle1Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal1() {
+function testFormatKRStyle0PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4"
@@ -623,7 +623,7 @@ function testFormatStyle0PartialLocal1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal2() {
+function testFormatKRStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45"
@@ -635,7 +635,7 @@ function testFormatStyle0PartialLocal2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal3() {
+function testFormatKRStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456"
@@ -647,7 +647,7 @@ function testFormatStyle0PartialLocal3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal4() {
+function testFormatKRStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4563"
@@ -659,7 +659,7 @@ function testFormatStyle0PartialLocal4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal5() {
+function testFormatKRStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45634"
@@ -671,7 +671,7 @@ function testFormatStyle0PartialLocal5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal6() {
+function testFormatKRStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345"
@@ -683,7 +683,7 @@ function testFormatStyle0PartialLocal6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal7() {
+function testFormatKRStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4563453"
@@ -695,7 +695,7 @@ function testFormatStyle0PartialLocal7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal8() {
+function testFormatKRStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45634535"
@@ -707,7 +707,7 @@ function testFormatStyle0PartialLocal8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal9() {
+function testFormatKRStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345352"	// too long
@@ -720,7 +720,7 @@ function testFormatStyle0PartialLocal9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1PartialLocal1() {
+function testFormatKRStyle1PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4"
@@ -732,7 +732,7 @@ function testFormatStyle1PartialLocal1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal2() {
+function testFormatKRStyle1PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45"
@@ -744,7 +744,7 @@ function testFormatStyle1PartialLocal2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal3() {
+function testFormatKRStyle1PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456"
@@ -756,7 +756,7 @@ function testFormatStyle1PartialLocal3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal4() {
+function testFormatKRStyle1PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4563"
@@ -768,7 +768,7 @@ function testFormatStyle1PartialLocal4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal5() {
+function testFormatKRStyle1PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45634"
@@ -780,7 +780,7 @@ function testFormatStyle1PartialLocal5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal6() {
+function testFormatKRStyle1PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345"
@@ -792,7 +792,7 @@ function testFormatStyle1PartialLocal6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal7() {
+function testFormatKRStyle1PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "4563453"
@@ -804,7 +804,7 @@ function testFormatStyle1PartialLocal7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal8() {
+function testFormatKRStyle1PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "45634534"
@@ -816,7 +816,7 @@ function testFormatStyle1PartialLocal8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1PartialLocal9() {
+function testFormatKRStyle1PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345345"	// too long
@@ -825,6 +825,17 @@ function testFormatStyle1PartialLocal9() {
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "점"});
 	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatBREmergency1() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("111", {locale: "ko-KR"});
+	var expected = "111";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
 };
