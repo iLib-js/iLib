@@ -839,3 +839,14 @@ function testFormatKREmergency1() {
 	
 	assertEquals(expected, formatted);
 };
+
+function testFormatKREmergency2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("1355", {locale: "ko-KR"});
+	var expected = "1355";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
