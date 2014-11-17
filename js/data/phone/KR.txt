@@ -68,8 +68,6 @@
 85..	cic	Domestic long-distance Value Added Service (VAS)
 86	cic	SK Telink
 
-
-
 ^100	emergency	KT customer center
 ^101	emergency	LG U+ customer center
 ^106	emergency	SK Broadband customer center
