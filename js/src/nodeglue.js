@@ -10,12 +10,19 @@ var path = require("path"),
 var nodeLoader = function () {
 	// util.print("new nodeLoader instance\n");
 
-	// for use from within a check-out of ilib
-	this.base = path.normalize(process.cwd() + "/../data");  
-	
-	// for use on-device
-	if (!fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
-		this.base = "/usr/share/javascript/ilib";
+	if (typeof(module) !== 'undefined' && module.filename) {
+		// this was loaded via a nodejs require() call, so find the parent
+		// dir of this file to find where the locale dir is
+		this.base = path.dirname(module.filename);
+	} else {
+		var relpath = path.normalize(path.join(process.cwd(), "/../data"));
+		if (fs.existsSync(relpath) && fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
+			// for use from within a development check-out of ilib
+			this.base = relpath;
+		} else {
+			// standard install location
+			this.base = "/usr/share/javascript/ilib";
+		}
 	}
 	
 	// util.print("base is defined as " + this.base + "\n");
