@@ -51,7 +51,12 @@ ilib.Measurement.FuelConsumption = function(options) {
     }
 };
 
-ilib.Measurement.FuelConsumption.ratios = ["km/liter", "liter/100km", "mpg", "mpg(imp)"];
+ilib.Measurement.FuelConsumption.ratios = [
+    "km/liter",
+    "liter/100km",
+    "mpg",
+    "mpg(imp)"
+];
 
 ilib.Measurement.FuelConsumption.prototype = new ilib.Measurement({});
 ilib.Measurement.FuelConsumption.prototype.parent = ilib.Measurement;
@@ -80,55 +85,67 @@ ilib.Measurement.FuelConsumption.prototype.convert = function(to) {
 };
 /*["km/liter", "liter/100km", "mpg", "mpg(imp)"*/
 ilib.Measurement.FuelConsumption.aliases = {
-	"Km/liter": "km/liter",
-	"KM/Liter": "km/liter",
-	"KM/L": "km/liter",
-	"Kilometers Per Liter": "km/liter",
-	"kilometers per liter": "km/liter",
-	"km/l": "km/liter",
-	"Kilometers/Liter": "km/liter",
-	"Kilometer/Liter": "km/liter",
-	"kilometers/liter": "km/liter",
-	"kilometer/liter": "km/liter",
-        "km/liter":"km/liter",
-	"Liter/100km":"liter/100km",
-	"Liters/100km":"liter/100km",
-	"Liter/100kms":"liter/100km",
-	"Liters/100kms":"liter/100km",
-	"liter/100km":"liter/100km",
-	"liters/100kms":"liter/100km",
-	"liters/100km":"liter/100km",
-	"liter/100kms":"liter/100km",
-	"Liter/100KM":"liter/100km",
-	"Liters/100KM":"liter/100km",
-	"L/100km":"liter/100km",
-	"L/100KM":"liter/100km",
-	"l/100KM":"liter/100km",
-	"l/100km":"liter/100km",
-	"l/100kms":"liter/100km",
-	"MPG(US)":"mpg",
-        "USMPG ": "mpg",
-        "mpg":"mpg",
-	"mpgUS":"mpg",
-	"mpg(US)":"mpg",
-	"mpg(us)":"mpg",
-	"mpg-us":"mpg",
-	"mpg Imp":"mpg(imp)",
-	"MPG(imp)":"mpg(imp)",
-	"mpg(imp)":"mpg(imp)",
-	"mpg-imp":"mpg(imp)"
+    "Km/liter": "km/liter",
+    "KM/Liter": "km/liter",
+    "KM/L": "km/liter",
+    "Kilometers Per Liter": "km/liter",
+    "kilometers per liter": "km/liter",
+    "km/l": "km/liter",
+    "Kilometers/Liter": "km/liter",
+    "Kilometer/Liter": "km/liter",
+    "kilometers/liter": "km/liter",
+    "kilometer/liter": "km/liter",
+    "km/liter": "km/liter",
+    "Liter/100km": "liter/100km",
+    "Liters/100km": "liter/100km",
+    "Liter/100kms": "liter/100km",
+    "Liters/100kms": "liter/100km",
+    "liter/100km": "liter/100km",
+    "liters/100kms": "liter/100km",
+    "liters/100km": "liter/100km",
+    "liter/100kms": "liter/100km",
+    "Liter/100KM": "liter/100km",
+    "Liters/100KM": "liter/100km",
+    "L/100km": "liter/100km",
+    "L/100KM": "liter/100km",
+    "l/100KM": "liter/100km",
+    "l/100km": "liter/100km",
+    "l/100kms": "liter/100km",
+    "MPG(US)": "mpg",
+    "USMPG ": "mpg",
+    "mpg": "mpg",
+    "mpgUS": "mpg",
+    "mpg(US)": "mpg",
+    "mpg(us)": "mpg",
+    "mpg-us": "mpg",
+    "mpg Imp": "mpg(imp)",
+    "MPG(imp)": "mpg(imp)",
+    "mpg(imp)": "mpg(imp)",
+    "mpg-imp": "mpg(imp)"
 };
 
-ilib.Measurement.FuelConsumption.metricToUScustomary =   {"km/liter":"mpg","liter/100km":"mpg"};
-ilib.Measurement.FuelConsumption.metricToImperial    =   {"km/liter":"mpg(imp)","liter/100km":"mpg(imp)"};
+ilib.Measurement.FuelConsumption.metricToUScustomary = {
+    "km/liter": "mpg",
+    "liter/100km": "mpg"
+};
+ilib.Measurement.FuelConsumption.metricToImperial = {
+    "km/liter": "mpg(imp)",
+    "liter/100km": "mpg(imp)"
+};
 
-ilib.Measurement.FuelConsumption.imperialToMetric      = {"mpg(imp)":"km/liter"};
-ilib.Measurement.FuelConsumption.imperialToUScustomary = {"mpg(imp)":"mpg"};
+ilib.Measurement.FuelConsumption.imperialToMetric = {
+	"mpg(imp)": "km/liter"
+};
+ilib.Measurement.FuelConsumption.imperialToUScustomary = {
+	"mpg(imp)": "mpg"
+};
 
-
-ilib.Measurement.FuelConsumption.uScustomaryToImperial   = {"mpg":"mpg(imp)"};
-ilib.Measurement.FuelConsumption.uScustomarylToMetric    = {"mpg":"km/liter"};
-
+ilib.Measurement.FuelConsumption.uScustomaryToImperial = {
+	"mpg": "mpg(imp)"
+};
+ilib.Measurement.FuelConsumption.uScustomarylToMetric = {
+	"mpg": "km/liter"
+};
 
 /**
  * @inheritDoc
@@ -136,24 +153,29 @@ ilib.Measurement.FuelConsumption.uScustomarylToMetric    = {"mpg":"km/liter"};
  * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.FuelConsumption.prototype.localize = function(locale) {
-    var to;
-    if (locale === "en-US") {
-        to = ilib.Measurement.FuelConsumption.metricToUScustomary[this.unit] || ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] || this.unit;
-    } else if (locale === "en-GB") {
-        to = ilib.Measurement.FuelConsumption.metricToImperial[this.unit] || ilib.Measurement.FuelConsumption.uScustomaryToImperial[this.unit] || this.unit;
-    }
-    else
-        to = ilib.Measurement.FuelConsumption.uScustomarylToMetric[this.unit] || ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] || this.unit;
-
-    return new ilib.Measurement.FuelConsumption({
-        unit: to,
-        amount: this
-    });
+	var to;
+	if (locale === "en-US") {
+		to = ilib.Measurement.FuelConsumption.metricToUScustomary[this.unit] ||
+		    ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] ||
+		    this.unit;
+	} else if (locale === "en-GB") {
+		to = ilib.Measurement.FuelConsumption.metricToImperial[this.unit] ||
+		    ilib.Measurement.FuelConsumption.uScustomaryToImperial[this.unit] ||
+		    this.unit;
+	} else {
+		to = ilib.Measurement.FuelConsumption.uScustomarylToMetric[this.unit] ||
+		    ilib.Measurement.FuelConsumption.imperialToUScustomary[this.unit] ||
+		    this.unit;
+	}
+	return new ilib.Measurement.FuelConsumption({
+	    unit: to,
+	    amount: this
+	});
 };
-
 
 /**
  * Convert a FuelConsumption to another measure.
+ * 
  * @static
  * @param to {string} unit to convert to
  * @param from {string} unit to convert from

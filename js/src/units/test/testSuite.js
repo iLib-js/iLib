@@ -25,25 +25,25 @@ function newSuite(path, include) {
 }
 
 function suite() {
-    var s = new cli.TestSuite();
-    
-    var suites = [
-        "testlengths.js",
-		"testspeeds.js",
-		"testtemp.js",
-		"testdigitalstoreage.js",
-		"testUnknown.js",
-		"testtime.js",		
-		"testmass.js",
-		"testarea.js",
-		"testFuelConsumption.js",
-		"testVolume.js",	
-		"testenergy.js"		
-    ];
-    
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path));
-    });
-    
-    return s;
+	var s = new cli.TestSuite();
+
+	var suites = [
+	    "testlengths.js",
+	    "testspeeds.js",
+	    "testtemp.js",
+	    "testdigitalstoreage.js",
+	    "testUnknown.js",
+	    "testtime.js",
+	    "testmass.js",
+	    "testarea.js",
+	    "testFuelConsumption.js",
+	    "testVolume.js",
+	    "testenergy.js"
+	];
+
+	suites.forEach(function(path) {
+		s.addSuite(newSuite(path));
+	});
+
+	return s;
 }

@@ -68,12 +68,35 @@ ilib.Measurement.Speed.ratios = {
     "miles/second":     [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
 };
 
-ilib.Measurement.Speed.metricSystem      = {"kilometer/hour":1,"meters/second":5,"kilometer/second":6};
-ilib.Measurement.Speed.imperialSystem    = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
-ilib.Measurement.Speed.uscustomarySystem = {"feet/second":2,"miles/hour":3,"knot":4,"miles/second":7};
+ilib.Measurement.Speed.metricSystem = {
+    "kilometer/hour": 1,
+    "meters/second": 5,
+    "kilometer/second": 6
+};
+ilib.Measurement.Speed.imperialSystem = {
+    "feet/second": 2,
+    "miles/hour": 3,
+    "knot": 4,
+    "miles/second": 7
+};
+ilib.Measurement.Speed.uscustomarySystem = {
+    "feet/second": 2,
+    "miles/hour": 3,
+    "knot": 4,
+    "miles/second": 7
+};
 
-ilib.Measurement.Speed.metricToUScustomary = {"kilometer/hour":"miles/hour","meters/second":"feet/second","kilometer/second":"miles/second"};
-ilib.Measurement.Speed.UScustomaryTometric = {"miles/hour":"kilometer/hour","feet/second":"meters/second","miles/second":"kilometer/second","knot":"kilometer/hour"};
+ilib.Measurement.Speed.metricToUScustomary = {
+    "kilometer/hour": "miles/hour",
+    "meters/second": "feet/second",
+    "kilometer/second": "miles/second"
+};
+ilib.Measurement.Speed.UScustomaryTometric = {
+    "miles/hour": "kilometer/hour",
+    "feet/second": "meters/second",
+    "miles/second": "kilometer/second",
+    "knot": "kilometer/hour"
+};
 
 ilib.Measurement.Speed.prototype = new ilib.Measurement({});
 ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
@@ -107,38 +130,39 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
  * @return {ilib.Measurement}
  */
 ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
-    var mSystem;    
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
-            && typeof(ilib.Measurement.Speed.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = ilib.Measurement.Speed.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
-            && typeof(ilib.Measurement.Speed.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = ilib.Measurement.Speed.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
-            && typeof(ilib.Measurement.Speed.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = ilib.Measurement.Speed.uscustomarySystem;
-    } else {
-        return new ilib.Measurement.Speed({
-			unit: this.unit,
-			amount: this.amount
+	var mSystem;
+	if (measurementsystem === "metric" ||
+	    (typeof (measurementsystem) === 'undefined' && typeof (ilib.Measurement.Speed.metricSystem[this.unit]) !== 'undefined')) {
+		mSystem = ilib.Measurement.Speed.metricSystem;
+	} else if (measurementsystem === "imperial" ||
+	    (typeof (measurementsystem) === 'undefined' && typeof (ilib.Measurement.Speed.imperialSystem[this.unit]) !== 'undefined')) {
+		mSystem = ilib.Measurement.Speed.imperialSystem;
+	} else if (measurementsystem === "uscustomary" ||
+	    (typeof (measurementsystem) === 'undefined' && typeof (ilib.Measurement.Speed.uscustomarySystem[this.unit]) !== 'undefined')) {
+		mSystem = ilib.Measurement.Speed.uscustomarySystem;
+	} else {
+		return new ilib.Measurement.Speed({
+		    unit: this.unit,
+		    amount: this.amount
 		});
-    }
-    
-    var speed = this.amount;
-    var munit = this.unit;
-    var fromRow = ilib.Measurement.Speed.ratios[this.unit];
-    
-    for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        speed = tmp;
-        munit = m;
-    }
-    
-    return new ilib.Measurement.Speed({
-		unit: munit,
-		amount: speed
-    });    
+	}
+
+	var speed = this.amount;
+	var munit = this.unit;
+	var fromRow = ilib.Measurement.Speed.ratios[this.unit];
+
+	for ( var m in mSystem) {
+		var tmp = this.amount * fromRow[mSystem[m]];
+		if (tmp < 1)
+			break;
+		speed = tmp;
+		munit = m;
+	}
+
+	return new ilib.Measurement.Speed({
+	    unit: munit,
+	    amount: speed
+	});
 };
 
 /**
@@ -160,43 +184,43 @@ ilib.Measurement.Speed.prototype.localize = function(locale) {
 };
 
 ilib.Measurement.Speed.aliases = {
-    "foot/sec":"feet/second",
-    "foot/s":"feet/second",
-    "feet/s":"feet/second",
-    "f/s":"feet/second",
-    "feet/second" : "feet/second",
-    "feet/sec" : "feet/second",
-    "meter/sec":"meters/second",
-    "meter/s":"meters/second",
-    "meters/s":"meters/second",
-    "metre/sec":"meters/second",
-    "metre/s":"meters/second",
-    "metres/s":"meters/second",
-    "mt/sec":"meters/second",
-    "m/sec":"meters/second",
-    "mt/s":"meters/second",
-    "m/s":"meters/second",
-    "mps":"meters/second",
-    "meters/second":"meters/second",
-    "meters/sec":"meters/second",
-    "kilometer/hour":"kilometer/hour",
-    "km/hour":"kilometer/hour",
-    "kilometers/hour":"kilometer/hour",
-    "kmh":"kilometer/hour",
-    "km/h":"kilometer/hour",
-    "kilometer/h":"kilometer/hour",
-    "kilometers/h":"kilometer/hour",
-    "km/hr":"kilometer/hour",
-    "kilometer/hr":"kilometer/hour",
-    "kilometers/hr":"kilometer/hour",
-    "kilometre/hour":"kilometer/hour",
+    "foot/sec": "feet/second",
+    "foot/s": "feet/second",
+    "feet/s": "feet/second",
+    "f/s": "feet/second",
+    "feet/second": "feet/second",
+    "feet/sec": "feet/second",
+    "meter/sec": "meters/second",
+    "meter/s": "meters/second",
+    "meters/s": "meters/second",
+    "metre/sec": "meters/second",
+    "metre/s": "meters/second",
+    "metres/s": "meters/second",
+    "mt/sec": "meters/second",
+    "m/sec": "meters/second",
+    "mt/s": "meters/second",
+    "m/s": "meters/second",
+    "mps": "meters/second",
+    "meters/second": "meters/second",
+    "meters/sec": "meters/second",
+    "kilometer/hour": "kilometer/hour",
+    "km/hour": "kilometer/hour",
+    "kilometers/hour": "kilometer/hour",
+    "kmh": "kilometer/hour",
+    "km/h": "kilometer/hour",
+    "kilometer/h": "kilometer/hour",
+    "kilometers/h": "kilometer/hour",
+    "km/hr": "kilometer/hour",
+    "kilometer/hr": "kilometer/hour",
+    "kilometers/hr": "kilometer/hour",
+    "kilometre/hour": "kilometer/hour",
     "mph": "miles/hour",
     "mile/hour": "miles/hour",
     "mile/hr": "miles/hour",
     "mile/h": "miles/hour",
     "miles/h": "miles/hour",
     "miles/hr": "miles/hour",
-    "miles/hour":"miles/hour",
+    "miles/hour": "miles/hour",
     "kn": "knot",
     "kt": "knot",
     "kts": "knot",
@@ -208,18 +232,18 @@ ilib.Measurement.Speed.aliases = {
     "nauticalmile/hour": "knot",
     "nauticalmiles/hr": "knot",
     "nauticalmiles/hour": "knot",
-    "knot":"knot",
-    "kilometer/second":"kilometer/second",
-    "kilometer/sec":"kilometer/second",
-    "kilometre/sec":"kilometer/second",
-    "Kilometre/sec":"kilometer/second",
-    "kilometers/second":"kilometer/second",
-    "kilometers/sec":"kilometer/second",
-    "kilometres/sec":"kilometer/second",
-    "Kilometres/sec":"kilometer/second",
-    "km/sec":"kilometer/second",
-    "Km/s":"kilometer/second",
-    "km/s":"kilometer/second",
+    "knot": "knot",
+    "kilometer/second": "kilometer/second",
+    "kilometer/sec": "kilometer/second",
+    "kilometre/sec": "kilometer/second",
+    "Kilometre/sec": "kilometer/second",
+    "kilometers/second": "kilometer/second",
+    "kilometers/sec": "kilometer/second",
+    "kilometres/sec": "kilometer/second",
+    "Kilometres/sec": "kilometer/second",
+    "km/sec": "kilometer/second",
+    "Km/s": "kilometer/second",
+    "km/s": "kilometer/second",
     "miles/second": "miles/second",
     "miles/sec": "miles/second",
     "miles/s": "miles/second",

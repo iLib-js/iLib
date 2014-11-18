@@ -65,21 +65,21 @@ ilib.Measurement.Temperature.prototype.getMeasure = function() {
 };
 
 ilib.Measurement.Temperature.aliases = {
-	"Celsius": "celsius",
-	"celsius": "celsius",
-	"C": "celsius",
-	"centegrade": "celsius",
-	"Centegrade": "celsius",
-	"centigrade": "celsius",
-	"Centigrade": "celsius",
-	"fahrenheit": "fahrenheit",
-	"Fahrenheit": "fahrenheit",
-	"F": "fahrenheit",
-	"kelvin": "kelvin",
-	"K": "kelvin",
-	"Kelvin": "kelvin",
+    "Celsius": "celsius",
+    "celsius": "celsius",
+    "C": "celsius",
+    "centegrade": "celsius",
+    "Centegrade": "celsius",
+    "centigrade": "celsius",
+    "Centigrade": "celsius",
+    "fahrenheit": "fahrenheit",
+    "Fahrenheit": "fahrenheit",
+    "F": "fahrenheit",
+    "kelvin": "kelvin",
+    "K": "kelvin",
+    "Kelvin": "kelvin",
     "°F": "fahrenheit",
-    "℉" : "fahrenheit",
+    "℉": "fahrenheit",
     "℃": "celsius",
     "°C": "celsius"
 };
@@ -96,16 +96,16 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 	var result = 0;
 	from = ilib.Measurement.Temperature.aliases[from] || from;
 	to = ilib.Measurement.Temperature.aliases[to] || to;
-        if(from === to)
-            return temperature;
-        
+	if (from === to)
+		return temperature;
+
 	else if (from === "celsius") {
 		if (to === "fahrenheit") {
 			result = ((temperature * 9 / 5) + 32);
 		} else if (to === "kelvin") {
 			result = (temperature + 273.15);
 		}
-                
+
 	} else if (from === "fahrenheit") {
 		if (to === "celsius") {
 			result = ((5 / 9 * (temperature - 32)));
@@ -119,7 +119,7 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 			result = ((temperature * 9 / 5) - 459.67);
 		}
 	}
-	
+
 	return result;
 };
 
@@ -142,8 +142,12 @@ ilib.Measurement.Temperature.prototype.scale = function(measurementsystem) {
 ilib.Measurement.Temperature.getMeasures = function () {
 	return ["celsius", "kelvin", "fahrenheit"];
 };
-ilib.Measurement.Temperature.metricToUScustomary = {"celsius":"fahrenheit"};
-ilib.Measurement.Temperature.usCustomaryToMetric = {"fahrenheit":"celsius"};
+ilib.Measurement.Temperature.metricToUScustomary = {
+	"celsius": "fahrenheit"
+};
+ilib.Measurement.Temperature.usCustomaryToMetric = {
+	"fahrenheit": "celsius"
+};
 
 /**
  * @inheritDoc

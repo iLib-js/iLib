@@ -19,8 +19,8 @@
 
 function testMassMassConstructor() {
 	var m = new ilib.Measurement.Mass({
-		unit: "kg",
-		amount: 2
+	    unit: "kg",
+	    amount: 2
 	});
 
 	assertNotNull(m);
@@ -28,12 +28,12 @@ function testMassMassConstructor() {
 
 function testMassMassConvertGramToKG() {
 	var m1 = new ilib.Measurement.Mass({
-		unit: "g",
-		amount: 3000
+	    unit: "g",
+	    amount: 3000
 	});
 	var m2 = new ilib.Measurement.Mass({
-		unit: "kg",
-		amount: m1
+	    unit: "kg",
+	    amount: m1
 	});
 
 	assertNotNull(m1);
@@ -80,8 +80,8 @@ function testMassStaticConvert5() {
 
 function testMassScale1() {
 	var m = new ilib.Measurement.Mass({
-		unit: "mcg",
-		amount: 10000000
+	    unit: "mcg",
+	    amount: 10000000
 	});
 
 	m = m.scale("metric");
@@ -92,8 +92,8 @@ function testMassScale1() {
 
 function testMassScale2() {
 	var m = new ilib.Measurement.Mass({
-		unit: "g",
-		amount: 0.00001
+	    unit: "g",
+	    amount: 0.00001
 	});
 
 	m = m.scale("metric");
@@ -104,8 +104,8 @@ function testMassScale2() {
 
 function testMassScale3() {
 	var m = new ilib.Measurement.Mass({
-		unit: "mg",
-		amount: 1000000
+	    unit: "mg",
+	    amount: 1000000
 	});
 
 	m = m.scale("metric");
@@ -116,8 +116,8 @@ function testMassScale3() {
 
 function testMassScale4() {
 	var m = new ilib.Measurement.Mass({
-		unit: "t",
-		amount: 0.0001
+	    unit: "t",
+	    amount: 0.0001
 	});
 
 	m = m.scale("metric");
@@ -128,8 +128,8 @@ function testMassScale4() {
 
 function testMassScale5() {
 	var m = new ilib.Measurement.Mass({
-		unit: "oz",
-		amount: 1000
+	    unit: "oz",
+	    amount: 1000
 	});
 
 	m = m.scale("imperial");
@@ -140,8 +140,8 @@ function testMassScale5() {
 
 function testMassScale6() {
 	var m = new ilib.Measurement.Mass({
-		unit: "st",
-		amount: 0.1
+	    unit: "st",
+	    amount: 0.1
 	});
 
 	m = m.scale("imperial");
@@ -152,8 +152,8 @@ function testMassScale6() {
 
 function testMassScale7() {
 	var m = new ilib.Measurement.Mass({
-		unit: "oz",
-		amount: 500000
+	    unit: "oz",
+	    amount: 500000
 	});
 
 	m = m.scale("imperial");
@@ -164,8 +164,8 @@ function testMassScale7() {
 
 function testMassScale8() {
 	var m = new ilib.Measurement.Mass({
-		unit: "lb",
-		amount: 10
+	    unit: "lb",
+	    amount: 10
 	});
 
 	m = m.scale("imperial");
@@ -176,8 +176,8 @@ function testMassScale8() {
 
 function testMassScale9() {
 	var m = new ilib.Measurement.Mass({
-		unit: "oz",
-		amount: 100000
+	    unit: "oz",
+	    amount: 100000
 	});
 
 	m = m.scale("uscustomary");
@@ -188,8 +188,8 @@ function testMassScale9() {
 
 function testMassScale10() {
 	var m = new ilib.Measurement.Mass({
-		unit: "short ton",
-		amount: 0.001
+	    unit: "short ton",
+	    amount: 0.001
 	});
 
 	m = m.scale("uscustomary");
@@ -198,68 +198,67 @@ function testMassScale10() {
 	assertEquals("pound", m.unit);
 }
 
-
 function testMassLocalize1() {
-    var m = new ilib.Measurement.Mass({
-        unit: "ounce",
-        amount: 1000
-    });
+	var m = new ilib.Measurement.Mass({
+	    unit: "ounce",
+	    amount: 1000
+	});
 
-    m = m.localize("en-IN");
+	m = m.localize("en-IN");
 
-    assertRoughlyEquals(28349.5, m.amount, 0.01);
-    assertEquals("gram", m.unit);
+	assertRoughlyEquals(28349.5, m.amount, 0.01);
+	assertEquals("gram", m.unit);
 }
 
 function testMassLocalize2() {
-    var m = new ilib.Measurement.Mass({
-        unit: "gram",
-        amount: 1000
-    });
+	var m = new ilib.Measurement.Mass({
+	    unit: "gram",
+	    amount: 1000
+	});
 
-    m = m.localize("en-US");
+	m = m.localize("en-US");
 
-    assertRoughlyEquals(35.274, m.amount, 0.001);
-    assertEquals("ounce", m.unit);
+	assertRoughlyEquals(35.274, m.amount, 0.001);
+	assertEquals("ounce", m.unit);
 }
 
 function testMassLocalize3() {
-    var m = new ilib.Measurement.Mass({
-        unit: "long ton",
-        amount: 1000
-    });
+	var m = new ilib.Measurement.Mass({
+	    unit: "long ton",
+	    amount: 1000
+	});
 
-    m = m.localize("en-GB");
+	m = m.localize("en-GB");
 
-    assertEquals(1120, m.amount);
-    assertEquals("short ton", m.unit);
+	assertEquals(1120, m.amount);
+	assertEquals("short ton", m.unit);
 }
 
 function testMassLocalize5() {
-    var m = new ilib.Measurement.Mass({
-        unit: "metric ton",
-        amount: 1000
-    });
+	var m = new ilib.Measurement.Mass({
+	    unit: "metric ton",
+	    amount: 1000
+	});
 
-    m = m.localize("en-GB");
+	m = m.localize("en-GB");
 
-    assertRoughlyEquals(1102.31, m.amount, 0.001);
-    assertEquals("short ton", m.unit);
+	assertRoughlyEquals(1102.31, m.amount, 0.001);
+	assertEquals("short ton", m.unit);
 }
 
 function testMassGetMeasures() {
 	var measures = ilib.Measurement.Mass.getMeasures();
 	var expected = [
-        "microgram",  
-        "milligram",  
-        "gram",
-        "ounce",
-        "pound",
-        "kilogram",
-        "stone",
-        "short ton",
-        "metric ton",
-        "long ton"
-    ];	
+	    "microgram",
+	    "milligram",
+	    "gram",
+	    "ounce",
+	    "pound",
+	    "kilogram",
+	    "stone",
+	    "short ton",
+	    "metric ton",
+	    "long ton"
+	];
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }

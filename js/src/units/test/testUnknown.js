@@ -18,30 +18,30 @@
  */
 
 function testMeasurementUnknownEmpty() {
-    var m = new ilib.Measurement.Unknown();
-    
-    assertNotNull(m);
+	var m = new ilib.Measurement.Unknown();
+
+	assertNotNull(m);
 }
 
 function testMeasurementUnknownUnitPreserved() {
-    var m = new ilib.Measurement({
-    	unit: "krunghoonfoop",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
+	var m = new ilib.Measurement({
+	    unit: "krunghoonfoop",
+	    amount: 2
+	});
 
-    assertEquals("krunghoonfoop", m.getUnit());
-    assertEquals(2, m.getAmount());
+	assertNotNull(m);
+
+	assertEquals("krunghoonfoop", m.getUnit());
+	assertEquals(2, m.getAmount());
 }
 
 function testMeasurementUnknownUnitUnknownMeasureType() {
-    var m = new ilib.Measurement({
-    	unit: "krunghoonfoop",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
+	var m = new ilib.Measurement({
+	    unit: "krunghoonfoop",
+	    amount: 2
+	});
 
-    assertEquals("unknown", m.getMeasure());
+	assertNotNull(m);
+
+	assertEquals("unknown", m.getMeasure());
 }
