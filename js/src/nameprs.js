@@ -1032,18 +1032,8 @@ ilib.Name.prototype = {
      * @return 
      * */ 
     _parseRussianName: function (parts) {
-        /* Western names are parsed as follows, and rules are applied in this 
-         * order:
-         *
-         * G
-         * G F
-         * G M F
-         * G M M F
-         * P F
-         * P G F
-         */
         var conjunctionIndex, familyIndex = -1;
-
+        
         if (parts.length === 1) {
             if (this.prefix || typeof (parts[0]) === 'object') {
                 // already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
@@ -1150,8 +1140,7 @@ ilib.Name.prototype = {
              * or family-given. Use the value of the "order" property of the
              * constructor options to give the default when the order is ambiguous.
              */
-            // TODO: this._parseRussianName(parts);
-        	this._parseRussianName(parts); // for now, just do western names
+            this._parseRussianName(parts);
         } else if (this.locale.getLanguage() === "id") {
             // in indonesia, we parse names differently than in the rest of the world 
             // because names don't have family names usually.
