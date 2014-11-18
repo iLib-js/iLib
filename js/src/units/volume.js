@@ -252,7 +252,11 @@ ilib.Measurement.Volume.uScustomaryToImperial   = {"tsp":"imperial tsp","tbsp":"
 ilib.Measurement.Volume.uScustomarylToMetric    = {"tsp":"milliliter","tbsp":"milliliter","cubic inch":"milliliter","us ounce":"milliliter","cup":"milliliter","pint":"liter","quart":"liter","gallon":"cubic meter","cubic foot":"cubic meter"};
 
 
-
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Volume.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US") {

@@ -174,11 +174,7 @@ ilib.Measurement.prototype = {
 	getUnit: function() {
 		return this.unit;
 	},
-        
-        getUnitLong: function() {},
-        
-        getUnitShort: function() {},
-	
+     
 	/**
 	 * Return the units originally used to construct this measurement
 	 * before it was normalized.
@@ -240,5 +236,16 @@ ilib.Measurement.prototype = {
 	 */
 	scale: function(measurementsystem) {},
         
+        /**
+         * Localize the measurement to the commonly used measurement in that locale, for example
+         * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
+         * the formatted number should be automatically converted to the most appropriate 
+         * measure in the other system, in this case, mph. The formatted result should
+         * appear as "37.3 mph". 
+         * 
+         * @abstract
+         * @param {String} locale current locale string
+         * @returns {ilib.Measurement} a new instance that is converted to locale
+         */
         localize: function(locale) {}
 };

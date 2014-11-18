@@ -114,6 +114,18 @@ function testParseCompoundHonorific_ja_JP1() {
 	assertObjectContains(expected, parsed);
 };
 
+function testParseFamilyName_ja_JP1() {
+	var parsed = new ilib.Name("佐々木主浩", {locale: 'ja-JP'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName : "主浩",
+		familyName: "佐々木"
+	};
+	
+	assertObjectContains(expected, parsed);
+};
+
 /*
  * Format Tests
  */

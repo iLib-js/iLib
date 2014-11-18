@@ -704,10 +704,7 @@ ilib.Name.prototype = {
      * @protected
      */
     _parseAsianName: function (parts) {
-        if (this.locale.getLanguage() === "ja") {
-            this._parseJapaneseName(parts);
-            return;
-        }
+        
         var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
 
         if (familyNameArray && familyNameArray.length > 0) {
@@ -715,6 +712,9 @@ ilib.Name.prototype = {
 
             this.givenName = parts.slice(this.familyName.length).join('');
 
+        } else if (this.locale.getLanguage() === "ja") {
+            this._parseJapaneseName(parts);
+            
         } else if (this.suffix || this.prefix) {
             this.familyName = parts.join('');
 
@@ -730,7 +730,7 @@ ilib.Name.prototype = {
     _parseJapaneseName: function (parts) {
        if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
            if (parts.length === 1) {
-                if (ilib.CType.withinRange(parts[i], "kanji")) {
+                if (ilib.CType.withinRange(parts[i], "cjk")) {
                     this.familyName = parts[0];
                 } else {
                     this.givenName = parts[0];

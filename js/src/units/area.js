@@ -237,6 +237,11 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     });
 };
 
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Area.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US" || locale === "en-GB") {

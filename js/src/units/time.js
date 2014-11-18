@@ -78,7 +78,7 @@ ilib.Measurement.Time.prototype.parent = ilib.Measurement;
 ilib.Measurement.Time.prototype.constructor = ilib.Measurement.Time;
 
 /**
- * @inheritDoc
+ * {@inheritDoc}
  */
 ilib.Measurement.Time.prototype.getMeasure = function() {
 	return "time";
@@ -202,6 +202,11 @@ ilib.Measurement.Time.convert = function(to, from, time) {
     return time * fromRow[toRow[0]];
 };
 
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Time.prototype.localize = function(locale) {
     return new ilib.Measurement.Time({
         unit: this.unit,

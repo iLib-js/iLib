@@ -74,6 +74,11 @@ ilib.Measurement.Unknown.convert = function(to, from, unknown) {
     return undefined;
 };
 
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Unknown.prototype.localize = function(locale) {
     return new ilib.Measurement.Unknown({
         unit: this.unit,

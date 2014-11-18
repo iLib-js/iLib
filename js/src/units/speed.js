@@ -141,6 +141,11 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
     });    
 };
 
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Speed.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US" || locale === "en-GB") {

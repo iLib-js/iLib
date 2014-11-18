@@ -221,6 +221,11 @@ ilib.Measurement.Energy.uscustomarySystem = {"calorie":6};
 ilib.Measurement.Energy.metricToImperial = {"millijoule":"BTU","joule":"BTU","kilojoule":"BTU","megajoule":"BTU","gigajoule":"BTU"};
 ilib.Measurement.Energy.imperialToMetric = {"BTU":"joule"};
 
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.Energy.prototype.localize = function(locale) {
     var to;
      if (locale === "en-GB") {

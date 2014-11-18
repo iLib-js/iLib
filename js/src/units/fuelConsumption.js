@@ -130,7 +130,11 @@ ilib.Measurement.FuelConsumption.uScustomaryToImperial   = {"mpg":"mpg(imp)"};
 ilib.Measurement.FuelConsumption.uScustomarylToMetric    = {"mpg":"km/liter"};
 
 
-
+/**
+ * @inheritDoc
+ * @param {String} locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
+ */
 ilib.Measurement.FuelConsumption.prototype.localize = function(locale) {
     var to;
     if (locale === "en-US") {
