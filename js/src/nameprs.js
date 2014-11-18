@@ -1009,16 +1009,28 @@ ilib.Name.prototype = {
      * @return boolean  true if patronymic, false otherwise
      * */ 
     _findFamilyName: function (parts) {
-        var index, part;
+        var index, part, substring;
         for (index = 0; index < parts.length; index++) {
             part = parts[index];
+
             if (typeof (part) === 'string') {
                 part = part.toLowerCase();
+                var length = part.length - 1;
 
-                var subLength = this.info.familyName.length;
-                while (subLength--) {
-                    if (part.indexOf(this.info.familyName[subLength]) !== -1)
+                if (this.info.familyName.indexOf(part) !== -1) {
+                    return index;
+                } else if (part[length] === 'в' || part[length] === 'н' || part[length] === 'й') {
+                    substring = part.slice(0, -1);
+                    if (this.info.familyName.indexOf(substring) !== -1) {
                         return index;
+                    }
+                } else if ((part[length - 1] === 'в' && part[length] === 'а') ||
+                        (part[length - 1] === 'н' && part[length] === 'а') ||
+                        (part[length - 1] === 'а' && part[length] === 'я')) {
+                    substring = part.slice(0, -2);
+                    if (this.info.familyName.indexOf(substring) !== -1) {
+                        return index;
+                    }
                 }
             }
         }

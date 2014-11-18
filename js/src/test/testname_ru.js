@@ -243,22 +243,87 @@ function testRUName12() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName13() {
-	var parsed = new ilib.Name("Филатовa Филатовa", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Филатовa",
-                familyName: "Филатовa"   
+		givenName: "Филатова",
+                familyName: "Филатова"   
 	};
 	assertObjectContains(expected, parsed);
 };
 function testRUName14() {
-	var parsed = new ilib.Name("Филатовa Филатовa", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Филатовa",
-                familyName: "Филатовa"   
+		givenName: "Филатова",
+                familyName: "Филатова"   
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testRUName15() {
+	var parsed = new ilib.Name("Екатерина Таттар", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Екатерина",
+                familyName: "Таттар"   
+	};
+	assertObjectContains(expected, parsed);
+};
+function testRUName16() {
+	var parsed = new ilib.Name("Таттар Екатерина", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Екатерина",
+                familyName: "Таттар"   
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testRUName17() {
+	var parsed = new ilib.Name("Валерия Твардовскиая", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Валерия",
+                familyName: "Твардовскиая"   
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testRUName18() {
+	var parsed = new ilib.Name("Твардовскиая Валерия", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Валерия",
+                familyName: "Твардовскиая"   
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testRUName19() {
+	var parsed = new ilib.Name("Анатолы Полищук", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Анатолы",
+                familyName: "Полищук"   
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testRUName20() {
+	var parsed = new ilib.Name("Полищук Анатолы", {locale: 'ru-RU'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Анатолы",
+                familyName: "Полищук"   
 	};
 	assertObjectContains(expected, parsed);
 };
