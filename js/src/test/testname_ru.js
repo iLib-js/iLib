@@ -124,7 +124,7 @@ function testRUName1() {
 	var expected = {
 		givenName: "Иван",
 		middleName: "Иванович",
-                familyName: "Иванов"
+        familyName: "Иванов"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -137,7 +137,7 @@ function testRUName2() {
 	var expected = {
 		givenName: "Иван",
 		middleName: "Иванович"
-              };
+    };
 	
 	assertObjectContains(expected, parsed);
 };
@@ -148,7 +148,7 @@ function testRUName3() {
 	
 	var expected = {
 		givenName: "Иван",
-	        familyName: "Иванов"
+	    familyName: "Иванов"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -160,7 +160,7 @@ function testRUName4() {
 	
 	var expected = {
 		givenName: "Иван",
-	        familyName: "Иванов"
+	    familyName: "Иванов"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -171,8 +171,8 @@ function testRUName5() {
 	
 	var expected = {
 		givenName: "Владимир",
-                middleName: "Андреевич",
-                familyName: "Филатов"
+        middleName: "Андреевич",
+        familyName: "Филатов"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -183,7 +183,7 @@ function testRUName6() {
 	
 	var expected = {
 		givenName: "Владимир",
-                middleName: "Андреевич"
+        middleName: "Андреевич"
  	};
 	assertObjectContains(expected, parsed);
 };
@@ -193,7 +193,7 @@ function testRUName7() {
 	
 	var expected = {
 		givenName: "Владимир",
-                familyName: "Филатов"
+        familyName: "Филатов"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -203,7 +203,7 @@ function testRUName8() {
 	
 	var expected = {
 		givenName: "Владимир",
-                familyName: "Филатов"
+        familyName: "Филатов"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -215,7 +215,7 @@ function testRUName10() {
 	
 	var expected = {
 		middleName: "Андреевич",
-                givenName: "Филатов"
+        givenName: "Филатов"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -223,11 +223,11 @@ function testRUName10() {
 function testRUName11() {
 	var parsed = new ilib.Name("Владимир Андреевич Филатовa", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Владимир",
-                middleName: "Андреевич",
-                familyName: "Филатовa"
+		middleName: "Андреевич",
+		familyName: "Филатовa"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -235,30 +235,30 @@ function testRUName11() {
 function testRUName12() {
 	var parsed = new ilib.Name("Владимир Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Владимир",
-                middleName: "Андреевич"   
+		middleName: "Андреевич"   
 	};
 	assertObjectContains(expected, parsed);
 };
 function testRUName13() {
 	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Филатова",
-                familyName: "Филатова"   
+		familyName: "Филатова"   
 	};
 	assertObjectContains(expected, parsed);
 };
 function testRUName14() {
 	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Филатова",
-                familyName: "Филатова"   
+		familyName: "Филатова"   
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -266,20 +266,20 @@ function testRUName14() {
 function testRUName15() {
 	var parsed = new ilib.Name("Екатерина Таттар", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Екатерина",
-                familyName: "Таттар"   
+		familyName: "Таттар"   
 	};
 	assertObjectContains(expected, parsed);
 };
 function testRUName16() {
 	var parsed = new ilib.Name("Таттар Екатерина", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Екатерина",
-                familyName: "Таттар"   
+		familyName: "Таттар"   
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -287,10 +287,10 @@ function testRUName16() {
 function testRUName17() {
 	var parsed = new ilib.Name("Валерия Твардовскиая", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Валерия",
-                familyName: "Твардовскиая"   
+		familyName: "Твардовскиая"   
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -298,10 +298,10 @@ function testRUName17() {
 function testRUName18() {
 	var parsed = new ilib.Name("Твардовскиая Валерия", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Валерия",
-                familyName: "Твардовскиая"   
+		familyName: "Твардовскиая"   
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -309,10 +309,10 @@ function testRUName18() {
 function testRUName19() {
 	var parsed = new ilib.Name("Анатолы Полищук", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Анатолы",
-                familyName: "Полищук"   
+		familyName: "Полищук"   
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -320,22 +320,22 @@ function testRUName19() {
 function testRUName20() {
 	var parsed = new ilib.Name("Полищук Анатолы", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Анатолы",
-                familyName: "Полищук"   
+		familyName: "Полищук"   
 	};
 	assertObjectContains(expected, parsed);
 };
 function testRUParseEverything() {
 	var parsed = new ilib.Name("Pavel Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
-	
+
 	var expected = {
 		givenName: "Pavel",
 		middleName: "Андреевич"
 	};
-	
+
 	assertObjectContains(expected, parsed);
 };
 
@@ -351,9 +351,9 @@ function testRUFormatSimpleNameShort() {
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -365,9 +365,9 @@ function testRUFormatSimpleNameMedium() {
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -379,9 +379,9 @@ function testRUFormatSimpleNameLong() {
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -394,9 +394,9 @@ function testRUFormatSimpleNameFull() {
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -409,9 +409,9 @@ function testRUFormatComplexNameShort() {
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -424,9 +424,9 @@ function testRUFormatComplexNameMedium() {
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -439,9 +439,9 @@ function testRUFormatComplexNameLong() {
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Доктор Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -454,9 +454,9 @@ function testRUFormatComplexNameFull() {
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "Доктор Андрей Николаевич";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -470,9 +470,9 @@ function testRUFormatAsianNameShort() {
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "地獸";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -486,9 +486,9 @@ function testRUFormatAsianNameMedium() {
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "地獸";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -502,9 +502,9 @@ function testRUFormatAsianNameLong() {
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "小地獸";
-	
+
 	assertEquals(expected, formatted);
 };
 
@@ -518,8 +518,8 @@ function testRUFormatAsianNameFull() {
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
-	
+
 	var expected = "小地獸太太";
-	
+
 	assertEquals(expected, formatted);
 };

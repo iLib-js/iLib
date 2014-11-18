@@ -711,62 +711,58 @@ ilib.Name.prototype = {
             this.familyName = familyNameArray.join('');
 
             this.givenName = parts.slice(this.familyName.length).join('');
-
         } else if (this.locale.getLanguage() === "ja") {
             this._parseJapaneseName(parts);
-            
         } else if (this.suffix || this.prefix) {
             this.familyName = parts.join('');
-
         } else {
             this.givenName = parts.join('');
         }
     },
     
-    
     /**
      * @protected
      */
     _parseJapaneseName: function (parts) {
-       if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
-           if (parts.length === 1) {
-                if (ilib.CType.withinRange(parts[i], "cjk")) {
-                    this.familyName = parts[0];
-                } else {
-                    this.givenName = parts[0];
-                }
-                return;
-           } else if (parts.length === 2) {
-               this.familyName = parts.slice(0,parts.length).join("")
-               return;
-           }
-        }
-        if (parts.length > 1) {
-            var fn = "";                                                                    
-            for (var i = 0; i < parts.length; i++) {
-                if (ilib.CType.withinRange(parts[i], "kanji")) {
-                    fn += parts[i];
-                } else if (fn.length > 1 && ilib.CType.withinRange(parts[i], "hiragana")) {
-                    this.familyName = fn;
-                    this.givenName = parts.slice(i,parts.length).join("");
-                    return;
-                } else {
-                    break;
-                }
-            }
-        }
-        if (parts.length === 1) {
-            this.familyName = parts[0];
-        } else if (parts.length === 2) {
-            this.familyName = parts[0];
-            this.givenName = parts[1];
-        } else if (parts.length === 3) {
-            this.familyName = parts[0];
-            this.givenName = parts.slice(1,parts.length).join("");
-        } else if (parts.length > 3) {
-            this.familyName = parts.slice(0,2).join("")
-            this.givenName = parts.slice(2,parts.length).join("");
-        }      
+    	if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
+    		if (parts.length === 1) {
+    			if (ilib.CType.withinRange(parts[i], "cjk")) {
+    				this.familyName = parts[0];
+    			} else {
+    				this.givenName = parts[0];
+    			}
+    			return;
+    		} else if (parts.length === 2) {
+    			this.familyName = parts.slice(0,parts.length).join("")
+    			return;
+    		}
+    	}
+    	if (parts.length > 1) {
+    		var fn = "";                                                                    
+    		for (var i = 0; i < parts.length; i++) {
+    			if (ilib.CType.withinRange(parts[i], "kanji")) {
+    				fn += parts[i];
+    			} else if (fn.length > 1 && ilib.CType.withinRange(parts[i], "hiragana")) {
+    				this.familyName = fn;
+    				this.givenName = parts.slice(i,parts.length).join("");
+    				return;
+    			} else {
+    				break;
+    			}
+    		}
+    	}
+    	if (parts.length === 1) {
+    		this.familyName = parts[0];
+    	} else if (parts.length === 2) {
+    		this.familyName = parts[0];
+    		this.givenName = parts[1];
+    	} else if (parts.length === 3) {
+    		this.familyName = parts[0];
+    		this.givenName = parts.slice(1,parts.length).join("");
+    	} else if (parts.length > 3) {
+    		this.familyName = parts.slice(0,2).join("")
+    		this.givenName = parts.slice(2,parts.length).join("");
+    	}      
     },
 
     /**
@@ -963,177 +959,184 @@ ilib.Name.prototype = {
      * @protected
      * @param {Array.<string>} parts the current array of name parts
      * @return number  index of the part which contains patronymic name
-     * */
-   
+     */
     _findPatronymicName: function(parts) {
-        var index, part;
-        for (index = 0; index < parts.length; index++) {
-            part = parts[index];
-            if (typeof (part) === 'string') {
-                part = part.toLowerCase();
+    	var index, part;
+    	for (index = 0; index < parts.length; index++) {
+    		part = parts[index];
+    		if (typeof (part) === 'string') {
+    			part = part.toLowerCase();
 
-                var subLength = this.info.patronymicName.length;
-                while(subLength--) {
-                   if(part.indexOf(this.info.patronymicName[subLength])!== -1 )
-                       return index;
-               }
-           }
-       }
-       return -1;
-   },
-
-   /**
-     *find if the given part is patronymic name 
-     * @protected
-     *  @param {string} part string from name parts
-     * @ @return number  index of the part which contains familyName
-     * */
-    _isPatronymicName: function(part) {
-       var pName;
-            if (typeof (part) === 'string') {
-                pName = part.toLowerCase();
-
-                var subLength = this.info.patronymicName.length;
-                while(subLength--) {
-                   if(pName.indexOf(this.info.patronymicName[subLength])!== -1 )
-                       return true;
-               }
-           }
-           return false;
-       },
-       
-     /**
-     *find family name from the russian name 
-     * @protected
-     * @param {Array.<string>} parts the current array of name parts
-     * @return boolean  true if patronymic, false otherwise
-     * */ 
-    _findFamilyName: function (parts) {
-        var index, part, substring;
-        for (index = 0; index < parts.length; index++) {
-            part = parts[index];
-
-            if (typeof (part) === 'string') {
-                part = part.toLowerCase();
-                var length = part.length - 1;
-
-                if (this.info.familyName.indexOf(part) !== -1) {
-                    return index;
-                } else if (part[length] === 'в' || part[length] === 'н' || part[length] === 'й') {
-                    substring = part.slice(0, -1);
-                    if (this.info.familyName.indexOf(substring) !== -1) {
-                        return index;
-                    }
-                } else if ((part[length - 1] === 'в' && part[length] === 'а') ||
-                        (part[length - 1] === 'н' && part[length] === 'а') ||
-                        (part[length - 1] === 'а' && part[length] === 'я')) {
-                    substring = part.slice(0, -2);
-                    if (this.info.familyName.indexOf(substring) !== -1) {
-                        return index;
-                    }
-                }
-            }
-        }
-        return -1;
+    			var subLength = this.info.patronymicName.length;
+    			while(subLength--) {
+    				if(part.indexOf(this.info.patronymicName[subLength])!== -1 )
+    					return index;
+    			}
+    		}
+    	}
+    	return -1;
     },
 
     /**
-     *parse russian name
-     * @protected
-     * @param {Array.<string>} parts the current array of name parts
-     * @return 
-     * */ 
-    _parseRussianName: function (parts) {
-        var conjunctionIndex, familyIndex = -1;
-        
-        if (parts.length === 1) {
-            if (this.prefix || typeof (parts[0]) === 'object') {
-                // already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
-                // it is a name with auxillaries, which is almost always a family name
-                this.familyName = parts[0];
-            } else {
-                this.givenName = parts[0];
-            }
-        } else if (parts.length === 2) {
-            // we do G F
-            if (this.info.order === 'fgm') {
-                this.givenName = parts[1];
-                this.familyName = parts[0];
-            } else if (this.info.order === "gmf" ) {
-                this.givenName = parts[0];
-                this.familyName = parts[1];
-            } else if (typeof (this.info.order) === 'undefined') {
-                 if(this._isPatronymicName(parts[1])  === true ) {
-                     this.middleName = parts[1];
-                     this.givenName  = parts[0];                     
-                 } else if ((familyIndex = this._findFamilyName(parts)) !== -1) {
-                     if(familyIndex ===  1 ) {
-                        this.givenName = parts[0];
-                        this.familyName = parts[1];
-                     } else {
-                         this.familyName = parts[0];
-                         this.givenName = parts[1];
-                     }
-                     
-                 } else {
-                     this.givenName = parts[0];
-                     this.familyName = parts[1];
-                 }
-                      
-            }
-        } else if (parts.length >= 3) {
-            //find the first instance of 'and' in the name
-            conjunctionIndex = this._findLastConjunction(parts);
-            var patronymicNameIndex = this._findPatronymicName(parts);
-            if (conjunctionIndex > 0) {
-                // if there's a conjunction that's not the first token, put everything up to and 
-                // including the token after it into the first name, the last token into
-                // the family name (if it exists) and everything else in to the middle name
-                // 0 1 2 3 4 5
-                // G A G M M F
-                // G G A G M F
-                // G G G A G F
-                // G G G G A G
-                //if(this.order == "gmf") {
-                this.givenName = parts.slice(0, conjunctionIndex + 2);
+	 * find if the given part is patronymic name
+	 * 
+	 * @protected
+	 * @param {string} part string from name parts @
+	 * @return number index of the part which contains familyName
+	 */
+    _isPatronymicName: function(part) {
+	    var pName;
+	    if ( typeof (part) === 'string') {
+		    pName = part.toLowerCase();
 
-                if (conjunctionIndex + 1 < parts.length - 1) {
-                    this.familyName = parts.splice(parts.length - 1, 1);
-                    ////console.log(this.familyName);
-                    if (conjunctionIndex + 2 < parts.length - 1) {
-                        this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
-                    }
-                } else if (this.order == "fgm") {
-                    this.familyName = parts.slice(0, conjunctionIndex + 2);
-                    if (conjunctionIndex + 1 < parts.length - 1) {
-                        this.middleName = parts.splice(parts.length - 1, 1);
-                        if (conjunctionIndex + 2 < parts.length - 1) {
-                            this.givenName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
-                        }
-                    }
-                }
-            } else if (patronymicNameIndex !== -1 ) {
-                                       
-                    this.middleName = parts[patronymicNameIndex];
-                    
-                    if(patronymicNameIndex ===( parts.length - 1 )) 
-                    {
-                        this.familyName = parts[0];
-                         this.givenName = parts.slice(1,patronymicNameIndex);
-                    } else {
-                        this.givenName = parts.slice(0,patronymicNameIndex);
-                        
-                        this.familyName = parts[parts.length-1];
-                    }
-                    
-            } else {
-                this.givenName = parts[0];
+		    var subLength = this.info.patronymicName.length;
+		    while (subLength--) {
+			    if (pName.indexOf(this.info.patronymicName[subLength]) !== -1)
+				    return true;
+		    }
+	    }
+	    return false;
+    },
 
-                this.middleName = parts.slice(1, parts.length - 1);
+    /**
+	 * find family name from the russian name
+	 * 
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @return boolean true if patronymic, false otherwise
+	 */
+    _findFamilyName: function(parts) {
+	    var index, part, substring;
+	    for (index = 0; index < parts.length; index++) {
+		    part = parts[index];
 
-                this.familyName = parts[parts.length - 1];
-            }
-        }
+		    if ( typeof (part) === 'string') {
+			    part = part.toLowerCase();
+			    var length = part.length - 1;
+
+			    if (this.info.familyName.indexOf(part) !== -1) {
+				    return index;
+			    } else if (part[length] === 'в' || part[length] === 'н' ||
+			        part[length] === 'й') {
+				    substring = part.slice(0, -1);
+				    if (this.info.familyName.indexOf(substring) !== -1) {
+					    return index;
+				    }
+			    } else if ((part[length - 1] === 'в' && part[length] === 'а') ||
+			        (part[length - 1] === 'н' && part[length] === 'а') ||
+			        (part[length - 1] === 'а' && part[length] === 'я')) {
+				    substring = part.slice(0, -2);
+				    if (this.info.familyName.indexOf(substring) !== -1) {
+					    return index;
+				    }
+			    }
+		    }
+	    }
+	    return -1;
+    },
+
+    /**
+	 * parse russian name
+	 * 
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @return
+	 */
+    _parseRussianName: function(parts) {
+	    var conjunctionIndex, familyIndex = -1;
+
+	    if (parts.length === 1) {
+		    if (this.prefix || typeof (parts[0]) === 'object') {
+			    // already has a prefix, so assume it goes with the family name
+				// like "Dr. Roberts" or
+			    // it is a name with auxillaries, which is almost always a
+				// family name
+			    this.familyName = parts[0];
+		    } else {
+			    this.givenName = parts[0];
+		    }
+	    } else if (parts.length === 2) {
+		    // we do G F
+		    if (this.info.order === 'fgm') {
+			    this.givenName = parts[1];
+			    this.familyName = parts[0];
+		    } else if (this.info.order === "gmf") {
+			    this.givenName = parts[0];
+			    this.familyName = parts[1];
+		    } else if ( typeof (this.info.order) === 'undefined') {
+			    if (this._isPatronymicName(parts[1]) === true) {
+				    this.middleName = parts[1];
+				    this.givenName = parts[0];
+			    } else if ((familyIndex = this._findFamilyName(parts)) !== -1) {
+				    if (familyIndex === 1) {
+					    this.givenName = parts[0];
+					    this.familyName = parts[1];
+				    } else {
+					    this.familyName = parts[0];
+					    this.givenName = parts[1];
+				    }
+
+			    } else {
+				    this.givenName = parts[0];
+				    this.familyName = parts[1];
+			    }
+
+		    }
+	    } else if (parts.length >= 3) {
+		    // find the first instance of 'and' in the name
+		    conjunctionIndex = this._findLastConjunction(parts);
+		    var patronymicNameIndex = this._findPatronymicName(parts);
+		    if (conjunctionIndex > 0) {
+			    // if there's a conjunction that's not the first token, put
+				// everything up to and
+			    // including the token after it into the first name, the last
+				// token into
+			    // the family name (if it exists) and everything else in to the
+				// middle name
+			    // 0 1 2 3 4 5
+			    // G A G M M F
+			    // G G A G M F
+			    // G G G A G F
+			    // G G G G A G
+			    // if(this.order == "gmf") {
+			    this.givenName = parts.slice(0, conjunctionIndex + 2);
+
+			    if (conjunctionIndex + 1 < parts.length - 1) {
+				    this.familyName = parts.splice(parts.length - 1, 1);
+				    // //console.log(this.familyName);
+				    if (conjunctionIndex + 2 < parts.length - 1) {
+					    this.middleName = parts.slice(conjunctionIndex + 2,
+					        parts.length - conjunctionIndex - 3);
+				    }
+			    } else if (this.order == "fgm") {
+				    this.familyName = parts.slice(0, conjunctionIndex + 2);
+				    if (conjunctionIndex + 1 < parts.length - 1) {
+					    this.middleName = parts.splice(parts.length - 1, 1);
+					    if (conjunctionIndex + 2 < parts.length - 1) {
+						    this.givenName = parts.slice(conjunctionIndex + 2,
+						        parts.length - conjunctionIndex - 3);
+					    }
+				    }
+			    }
+		    } else if (patronymicNameIndex !== -1) {
+			    this.middleName = parts[patronymicNameIndex];
+
+			    if (patronymicNameIndex === (parts.length - 1)) {
+				    this.familyName = parts[0];
+				    this.givenName = parts.slice(1, patronymicNameIndex);
+			    } else {
+				    this.givenName = parts.slice(0, patronymicNameIndex);
+
+				    this.familyName = parts[parts.length - 1];
+			    }
+		    } else {
+			    this.givenName = parts[0];
+
+			    this.middleName = parts.slice(1, parts.length - 1);
+
+			    this.familyName = parts[parts.length - 1];
+		    }
+	    }
     },
     
     
