@@ -136,8 +136,6 @@ ilib.Measurement.Length.prototype.getMeasure = function() {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Length.prototype.localize = function(locale) {
     var to;

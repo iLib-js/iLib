@@ -51,6 +51,7 @@ ilib.Measurement.FuelConsumption = function(options) {
     }
 };
 
+/** @static @private */
 ilib.Measurement.FuelConsumption.ratios = [
     "km/liter",
     "liter/100km",
@@ -70,8 +71,6 @@ ilib.Measurement.FuelConsumption.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current FuelConsumption to another measure.
- *
  * @inheritDoc
  */
 ilib.Measurement.FuelConsumption.prototype.convert = function(to) {
@@ -149,8 +148,6 @@ ilib.Measurement.FuelConsumption.uScustomarylToMetric = {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.FuelConsumption.prototype.localize = function(locale) {
 	var to;
@@ -258,8 +255,6 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.FuelConsumption.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.FuelConsumption({

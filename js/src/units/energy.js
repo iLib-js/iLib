@@ -246,8 +246,6 @@ ilib.Measurement.Energy.imperialToMetric = {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Energy.prototype.localize = function(locale) {
 	var to;
@@ -265,8 +263,6 @@ ilib.Measurement.Energy.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Energy.ratios[this.unit];

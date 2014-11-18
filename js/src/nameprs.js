@@ -103,30 +103,30 @@ ilib.Name = function (name, options) {
         // copy constructor
         /**
          * The prefixes for this name
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.prefix = name.prefix;
         /**
          * The given (personal) name in this name.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.givenName = name.givenName;
         /**
          * The middle names used in this name. If there are multiple middle names, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.middleName = name.middleName;
         /**
          * The family names in this name. If there are multiple family names, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.familyName = name.familyName;
         /**
          * The suffixes for this name. If there are multiple suffixes, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.suffix = name.suffix;
 
@@ -726,7 +726,7 @@ ilib.Name.prototype = {
     _parseJapaneseName: function (parts) {
     	if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
     		if (parts.length === 1) {
-    			if (ilib.CType.withinRange(parts[i], "cjk")) {
+    			if (ilib.CType.withinRange(parts[0], "cjk")) {
     				this.familyName = parts[0];
     			} else {
     				this.givenName = parts[0];
@@ -740,7 +740,7 @@ ilib.Name.prototype = {
     	if (parts.length > 1) {
     		var fn = "";                                                                    
     		for (var i = 0; i < parts.length; i++) {
-    			if (ilib.CType.withinRange(parts[i], "kanji")) {
+    			if (ilib.CType.withinRange(parts[i], "cjk")) {
     				fn += parts[i];
     			} else if (fn.length > 1 && ilib.CType.withinRange(parts[i], "hiragana")) {
     				this.familyName = fn;

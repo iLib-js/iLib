@@ -138,8 +138,6 @@ ilib.Measurement.Mass.prototype.constructor = ilib.Measurement.Mass;
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Mass.prototype.localize = function(locale) {
 	var to;

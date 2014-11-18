@@ -20,6 +20,7 @@
 /*
 !depends 
 ilibglobal.js 
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -54,8 +56,6 @@ ilib.Measurement.Unknown.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current Unknown to another measure.
- * 
  * @inheritDoc
  */
 ilib.Measurement.Unknown.prototype.convert = function(to) {
@@ -76,8 +76,6 @@ ilib.Measurement.Unknown.convert = function(to, from, unknown) {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Unknown.prototype.localize = function(locale) {
     return new ilib.Measurement.Unknown({
@@ -87,8 +85,6 @@ ilib.Measurement.Unknown.prototype.localize = function(locale) {
 };
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Unknown.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.Unknown({

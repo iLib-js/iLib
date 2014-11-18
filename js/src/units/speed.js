@@ -19,7 +19,8 @@
 
 /*
 !depends 
-ilibglobal.js 
+ilibglobal.js
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -110,8 +112,6 @@ ilib.Measurement.Speed.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current speed to another measure.
- * 
  * @inheritDoc
  */
 ilib.Measurement.Speed.prototype.convert = function(to) {
@@ -126,8 +126,6 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 	var mSystem;
@@ -167,8 +165,6 @@ ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Speed.prototype.localize = function(locale) {
     var to;

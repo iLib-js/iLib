@@ -20,6 +20,7 @@
 /*
 !depends 
 ilibglobal.js 
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -204,8 +206,6 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Time.prototype.localize = function(locale) {
     return new ilib.Measurement.Time({
@@ -216,8 +216,6 @@ ilib.Measurement.Time.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 

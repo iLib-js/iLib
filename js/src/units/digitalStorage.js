@@ -20,6 +20,7 @@
 /*
 !depends 
 ilibglobal.js 
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -84,8 +86,6 @@ ilib.Measurement.DigitalStorage.prototype.getMeasure = function() {
 };
 
 /**
- * Convert the current digitalStorage to another measure.
- * 
  * @inheritDoc
  */
 ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
@@ -98,6 +98,9 @@ ilib.Measurement.DigitalStorage.prototype.convert = function(to) {
 	});
 };
 
+/**
+ * @inheritDoc
+ */
 ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
     return new ilib.Measurement.DigitalStorage({
         unit: this.unit,
@@ -107,8 +110,6 @@ ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     
@@ -274,14 +275,5 @@ ilib.Measurement.DigitalStorage.getMeasures = function () {
 	return ret;
 };
 
-/**
- * @inheritDoc
- */
-ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
-    return new ilib.Measurement.DigitalStorage({
-        unit: this.unit,
-        amount: this
-    });
-};
 //register with the factory method
 ilib.Measurement._constructors["digitalStorage"] = ilib.Measurement.DigitalStorage;

@@ -21,6 +21,7 @@
 /*
 !depends 
 ilibglobal.js 
+unit.js
 */
 
 /**
@@ -28,6 +29,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -315,8 +317,6 @@ ilib.Measurement.Volume.uScustomarylToMetric = {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Volume.prototype.localize = function(locale) {
 	var to;
@@ -341,8 +341,6 @@ ilib.Measurement.Volume.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Volume.ratios[this.unit];

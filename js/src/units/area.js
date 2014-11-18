@@ -19,7 +19,8 @@
 
 /*
 !depends 
-ilibglobal.js 
+ilibglobal.js
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -199,8 +201,6 @@ ilib.Measurement.Area.usCustomaryToMetric = {"square inch":"square centimeter","
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];

@@ -19,7 +19,8 @@
 
 /*
 !depends 
-ilibglobal.js 
+ilibglobal.js
+unit.js
 */
 
 /**
@@ -27,6 +28,7 @@ ilibglobal.js
  * 
  * @class
  * @constructor
+ * @extends {ilib.Measurement}
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */
@@ -125,8 +127,6 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
  */
 ilib.Measurement.Temperature.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.Temperature({
@@ -151,8 +151,6 @@ ilib.Measurement.Temperature.usCustomaryToMetric = {
 
 /**
  * @inheritDoc
- * @param {String} locale string
- * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Temperature.prototype.localize = function(locale) {
     var to;
