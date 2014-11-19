@@ -254,6 +254,61 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
     assertEquals("1.235e+28", fmt.format(12345000000000000000000000000.0));
 }
 
+function testNumFmtNumberStyleNogroupingInteger() {
+    var fmt = new ilib.NumFmt({
+        style: "nogrouping"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123456789", fmt.format(123456789));
+}
+
+function testNumFmtNumberStyleNogroupingFloat() {
+    var fmt = new ilib.NumFmt({
+        style: "nogrouping"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123456789.345345", fmt.format(123456789.345345));
+}
+
+function testNumFmtNumberStyleNogroupingWithLocale() {
+    var fmt = new ilib.NumFmt({
+    	locale: "fa-IR",
+        style: "nogrouping",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("2014", fmt.format(2014));
+}
+
+function testNumFmtNumberStyleNogroupingWithNative() {
+    var fmt = new ilib.NumFmt({
+    	locale: "fa-IR",
+        style: "nogrouping",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("۱۳۹۳", fmt.format(1393));
+}
+
+function testNumFmtNumberStyleNogroupingWithMaxFrac() {
+    var fmt = new ilib.NumFmt({
+        style: "nogrouping",
+        maxFractionDigits: 3
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123456789.346", fmt.format(123456789.345945345));
+}
+
 function testNumFmtNumberFormatRoundingCeiling() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,

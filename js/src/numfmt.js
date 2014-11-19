@@ -305,9 +305,13 @@ ilib.NumFmt.prototype = {
 			this.round = ilib._roundFnc[this.roundingMode];
 		}
 		
-		this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
-		this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-		this.groupingSeparator = this.getUseNative() ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		if (this.style === "nogrouping") {
+			this.prigroupSize = this.secgroupSize = 0;
+		} else {
+			this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits();
+			this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits();
+			this.groupingSeparator = this.getUseNative() ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		} 
 		this.decimalSeparator = this.getUseNative() ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
 		
 		if (this.getUseNative()) {
