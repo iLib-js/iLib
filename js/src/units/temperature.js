@@ -127,6 +127,7 @@ ilib.Measurement.Temperature.convert = function(to, from, temperature) {
 
 /**
  * @inheritDoc
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Temperature.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.Temperature({

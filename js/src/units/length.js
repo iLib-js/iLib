@@ -165,7 +165,7 @@ ilib.Measurement.Length.prototype.convert = function(to) {
 
 /**
  * @inheritDoc
- * @param {string|undefined} measurementsystem
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     var mSystem;    

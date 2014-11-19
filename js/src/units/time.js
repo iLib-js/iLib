@@ -216,6 +216,7 @@ ilib.Measurement.Time.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 

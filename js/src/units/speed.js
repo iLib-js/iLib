@@ -126,6 +126,7 @@ ilib.Measurement.Speed.prototype.convert = function(to) {
 
 /**
  * @inheritDoc
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Speed.prototype.scale = function(measurementsystem) {
 	var mSystem;

@@ -229,7 +229,7 @@ ilib.Measurement.Area.usCustomaryToMetric = {
 
 /**
  * @inheritDoc
- * @param {string|undefined} measurementsystem
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];

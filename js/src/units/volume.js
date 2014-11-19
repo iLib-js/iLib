@@ -341,6 +341,7 @@ ilib.Measurement.Volume.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Volume.ratios[this.unit];

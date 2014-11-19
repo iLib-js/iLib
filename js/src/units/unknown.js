@@ -85,6 +85,7 @@ ilib.Measurement.Unknown.prototype.localize = function(locale) {
 };
 /**
  * @inheritDoc
+ * @param {string=} measurementsystem
  */
 ilib.Measurement.Unknown.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.Unknown({
