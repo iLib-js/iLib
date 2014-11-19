@@ -95,15 +95,7 @@ ilib.StateHandler.prototype = {
 			// everything into the subscriberNumber as the default
 			this.processSubscriberNumber(number, fields, regionSettings);
 		} else {
-			// substring() extracts the part of the string up to but not including the end character,
-			// so add one to compensate
-			if (!noExtractTrunk && regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
-				fields.trunkAccess = number.charAt(0);
-				fields[fieldName] = number.substring(1, end);
-			} else {
-				fields[fieldName] = number.substring(0, end);
-			}
-			
+			fields[fieldName] = number.substring(0, end);
 			if (number.length > end) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
@@ -145,16 +137,7 @@ ilib.StateHandler.prototype = {
 			this.processSubscriberNumber(number, fields, regionSettings);
 			ret.number = "";
 		} else {
-			// substring() extracts the part of the string up to but not including the end character,
-			// so add one to compensate
-			if (regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0") {
-				fields.trunkAccess = number.charAt(0);
-				fields[fieldName] = number.substring(1, end);
-				ret.skipTrunk = true;
-			} else {
-				fields[fieldName] = number.substring(0, end);
-			}
-			
+			fields[fieldName] = number.substring(0, end);			
 			ret.number = (number.length > end) ? number.substring(end) : "";
 		}
 		

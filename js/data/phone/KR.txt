@@ -68,59 +68,50 @@
 85..	cic	Domestic long-distance Value Added Service (VAS)
 86	cic	SK Telink
 
-^100	service	KT customer center
-^101	service	LG U+ customer center
-^105	service	Ship wireless service
-^106	service	SK Broadband customer center
-^107	service	LG U+ report
-^108	service	SK Broadband business customer center
-^109	service	KT report
-^111	service	NIS
-^113	service	Spy Reporting
-^115	service	KT Telegram
-^116	service	KT standard time service
-^117	service	School Violence Hotline (from 2012, previously: report sexual trafficking of women)
-^118	service	Cyber terrorism report
-^120	service	Lifestyle service
-^121	service	Water utility report
-^123	service	KEPCO Electric report
-^125	service	Smuggling report
-^127	service	Narcotics report
-^128	service	Pollution report
-^129	service	Coordination with social welfare service (after October 2005)
-^1300	service	Postal services
-^1301	service	Prosecutor service
-^132	service	Civil Action (Korea Legal Aid Corporation - for contract disputes)
-^1330	service	KNTO tourist information (bus·train schedule, hotel·inn information, free translation service)
-^1331	service	Human Rights Board
-^1332	service	Finance Board
-^1333	service	Transport information
-^1335	service	Information communication service center
-^1336	service	Infringement of personal information board
-^1337	service	Military Safety Board
-^1338	service	Communications service center and report
-^134	service	Tourist information
-^1350	service	Labor Board
-^1355	service	National Pension Service
-^1357	service	Small and medium enterprise support
-^1365	service	Volunteering information
-^1366	service	Domestic abuse report
-^1369	service	Financial Information Inquiry
-^1377	service	Food bank
-^1379	service	Unreasonable infringement of livelihood report
-^1382	service	Citizen Registry Confirmation
-^1385	service	Business discomfort report and board
-^1388	service	Minor mistreatment report
-^1389	service	Elderly abuse hotline and board
-^1390	service	Election information and infringement hotline
-^1391	service	Baby abuse hotline
-^1398	service	Child abuse hotline
-^1399	service	Unclean grocery report
-^141	service	Contact room (KT)
-^182	service	Missing child report hotline
-^188	service	National Board of Audit and Inspection
-
+^100	emergency	KT customer center
+^101	emergency	LG U+ customer center
+^106	emergency	SK Broadband customer center
+^107	emergency	LG U+ report
+^110	emergency	Government Information call Center
+^111	emergency	NIS
 ^112	emergency	Police
+^113	emergency	Spy Reporting
+^115	emergency	KT Telegram
+^117	emergency	School Violence Hotline (from 2012, previously: report sexual trafficking of women)
+^118	emergency	Cyber terrorism report
 ^119	emergency	General emergency telephone number
+^120	emergency	Lifestyle service
+^121	emergency	Water utility report
 ^122	emergency	Coast guard emergency telephone number
+^123	emergency	KEPCO Electric report
+^125	emergency	Smuggling report
+^127	emergency	Narcotics report
+^128	emergency	Pollution report
+^129	emergency	Coordination with social welfare service (after October 2005)
+^1300	emergency	Postal services
+^1301	emergency	Prosecutor service
+^132	emergency	Civil Action (Korea Legal Aid Corporation - for contract disputes)
+^1330	emergency	KNTO tourist information (bus·train schedule, hotel·inn information, free translation service)
+^1332	emergency	Finance Board
+^1333	emergency	Transport information
+^1335	emergency	Information communication service center
+^1336	emergency	Infringement of personal information board
+^1331	emergency	Human Rights Board
+^1350	emergency	Labor Board
+^1355	emergency	National Pension Service
+^1357	emergency	Small and medium enterprise support
+^1369	emergency	Financial Information Inquiry
+^1377	emergency	Food bank
+^1379	emergency	Unreasonable infringement of livelihood report
+^1382	emergency	Citizen Registry Confirmation
+^1385	emergency	Business discomfort report and board
+^1388	emergency	Minor mistreatment report
+^1390	emergency	Election information and infringement hotline
+^1399	emergency	Unclean grocery report
+^1337	emergency	Military Safety Board
 ^1339	emergency	Emergency medical treatment
+^1365	emergency	Volunteering information
+^1366	emergency	Domestic abuse report
+^1398	emergency	Child abuse hotline
+^182	emergency	Missing child report hotline
+^188	emergency	National Board of Audit and Inspection
