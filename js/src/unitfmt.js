@@ -155,12 +155,12 @@ ilib.UnitFmt = function(options) {
     	}
         
         if (typeof (options.maxFractionDigits) === 'number') {
-                /** @type {number|undefined} */
-                this.maxFractionDigits = options.maxFractionDigits;
+            /** @type {number|undefined} */
+            this.maxFractionDigits = options.maxFractionDigits;
         }
         if (typeof (options.minFractionDigits) === 'number') {
-                /** @type {number|undefined} */
-                this.minFractionDigits = options.minFractionDigits;
+            /** @type {number|undefined} */
+            this.minFractionDigits = options.minFractionDigits;
         }
         /** @type {string} */
         this.roundingMode = options.roundingMode;
@@ -251,9 +251,9 @@ ilib.UnitFmt.prototype = {
     	var numFmt = new ilib.NumFmt({
     		locale: this.locale,
     		useNative: this.useNative,
-                maxFractionDigits: this.maxFractionDigits,
-                minFractionDigits: this.minFractionDigits,
-                roundingMode: this.roundingMode
+            maxFractionDigits: this.maxFractionDigits,
+            minFractionDigits: this.minFractionDigits,
+            roundingMode: this.roundingMode
     	});
     	formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
     	return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
