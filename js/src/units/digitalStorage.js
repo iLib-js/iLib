@@ -110,6 +110,7 @@ ilib.Measurement.DigitalStorage.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
+ * @param {string|undefined} measurementsystem
  */
 ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     

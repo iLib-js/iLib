@@ -255,6 +255,7 @@ ilib.Measurement.FuelConsumption.convert = function(to, from, fuelConsumption) {
 
 /**
  * @inheritDoc
+ * @param {string|undefined} measurementsystem
  */
 ilib.Measurement.FuelConsumption.prototype.scale = function(measurementsystem) {
     return new ilib.Measurement.FuelConsumption({

@@ -191,16 +191,45 @@ ilib.Measurement.Area.getMeasures = function () {
 	return ret;
 };
 
-ilib.Measurement.Area.metricSystem      = {"square centimeter":1,"square meter":2,"hectare":3,"square km":4};
-ilib.Measurement.Area.imperialSystem    = {"square inch":5,"square foot":6,"square yard":7,"acre":8,"square mile":9};
-ilib.Measurement.Area.uscustomarySystem = {"square inch":5,"square foot":6,"square yard":7,"acre":8,"square mile":9};
+ilib.Measurement.Area.metricSystem = {
+	"square centimeter" : 1,
+	"square meter" : 2,
+	"hectare" : 3,
+	"square km" : 4
+};
+ilib.Measurement.Area.imperialSystem = {
+	"square inch" : 5,
+	"square foot" : 6,
+	"square yard" : 7,
+	"acre" : 8,
+	"square mile" : 9
+};
+ilib.Measurement.Area.uscustomarySystem = {
+	"square inch" : 5,
+	"square foot" : 6,
+	"square yard" : 7,
+	"acre" : 8,
+	"square mile" : 9
+};
 
-ilib.Measurement.Area.metricToUScustomary = {"square centimeter":"square inch","square meter":"square yard","hectare":"acre","square km":"square mile"};
-ilib.Measurement.Area.usCustomaryToMetric = {"square inch":"square centimeter","square foot":"square meter","square yard":"square meter","acre":"hectare","square mile":"square km"};
+ilib.Measurement.Area.metricToUScustomary = {
+	"square centimeter" : "square inch",
+	"square meter" : "square yard",
+	"hectare" : "acre",
+	"square km" : "square mile"
+};
+ilib.Measurement.Area.usCustomaryToMetric = {
+	"square inch" : "square centimeter",
+	"square foot" : "square meter",
+	"square yard" : "square meter",
+	"acre" : "hectare",
+	"square mile" : "square km"
+};
 
 
 /**
  * @inheritDoc
+ * @param {string|undefined} measurementsystem
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];

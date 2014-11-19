@@ -263,6 +263,7 @@ ilib.Measurement.Energy.prototype.localize = function(locale) {
 
 /**
  * @inheritDoc
+ * @param {string|undefined} measurementsystem
  */
 ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Energy.ratios[this.unit];

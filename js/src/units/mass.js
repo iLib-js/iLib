@@ -263,8 +263,7 @@ ilib.Measurement.Mass.convert = function(to, from, mass) {
 
 /**
  * @inheritDoc
- * @param {string=} measurementsystem
- * @return {ilib.Measurement}
+ * @param {string|undefined} measurementsystem
  */
 ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     var mSystem;    
