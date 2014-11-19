@@ -192,6 +192,7 @@ ilib.Name = function (name, options) {
 							 *   prefixes:Array.<string>,
 							 *   suffixes:Array.<string>,
 							 *   auxillaries:Array.<string>,
+							 *   honorifics:Array.<string>,
 							 *   knownFamilyNames:Array.<string>,
 							 *   noCompoundFamilyNames:boolean,
 							 *   sortByHeadWord:boolean
