@@ -155,14 +155,23 @@ ilib.UnitFmt = function(options) {
     	}
         
         if (typeof (options.maxFractionDigits) === 'number') {
-            /** @type {number|undefined} */
+            /** 
+             * @private
+             * @type {number|undefined} 
+             */
             this.maxFractionDigits = options.maxFractionDigits;
         }
         if (typeof (options.minFractionDigits) === 'number') {
-            /** @type {number|undefined} */
+            /** 
+             * @private
+             * @type {number|undefined} 
+             */
             this.minFractionDigits = options.minFractionDigits;
         }
-        /** @type {string} */
+        /** 
+         * @private
+         * @type {string} 
+         */
         this.roundingMode = options.roundingMode;
     }
 

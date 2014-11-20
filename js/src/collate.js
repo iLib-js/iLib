@@ -419,15 +419,28 @@ ilib.Collator = function(options) {
 		useNative = true;
 
 	// defaults
-	/** @type ilib.Locale */
+	/** 
+	 * @private
+	 * @type {ilib.Locale} 
+	 */
 	this.locale = new ilib.Locale(ilib.getLocale());
+	
+	/** @private */
 	this.caseFirst = "upper";
+	/** @private */
 	this.sensitivity = "variant";
+	/** @private */
 	this.level = 4;
+	/** @private */
 	this.usage = "sort";
+	/** @private */
 	this.reverse = false;
+	/** @private */
 	this.numeric = false;
+	/** @private */
 	this.style = "standard";
+	/** @private */
+	this.ignorePunctuation = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -458,12 +471,10 @@ ilib.Collator = function(options) {
 			}
 		}
 		if (typeof(options.upperFirst) !== 'undefined') {
-			/** @type string */
 			this.caseFirst = options.upperFirst ? "upper" : "lower"; 
 		}
 		
 		if (typeof(options.ignorePunctuation) !== 'undefined') {
-			/** @type boolean */
 			this.ignorePunctuation = options.ignorePunctuation;
 		}
 		if (typeof(options.sync) !== 'undefined') {
@@ -500,7 +511,10 @@ ilib.Collator = function(options) {
 	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
-		/** @type {{compare:function(string,string)}} */
+		/** 
+		 * @private
+		 * @type {{compare:function(string,string)}} 
+		 */
 		this.collator = new Intl.Collator(this.locale.getSpec(), this);
 		
 		if (options && typeof(options.onLoad) === 'function') {
@@ -599,7 +613,10 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
-    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}} */
+    	/** 
+    	 * @private
+    	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
+    	 */
     	this.collation = rules[this.style];
     	this.map = {};
     	this.keysize = 0;

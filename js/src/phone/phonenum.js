@@ -150,6 +150,9 @@ phone/handler.js
  * <li>New Zealand
  * <li>Singapore
  * <li>Korea
+ * <li>Japan
+ * <li>Russia
+ * <li>Brazil
  * </ul>
  * 
  * @constructor
@@ -178,72 +181,118 @@ ilib.PhoneNumber = function(number, options) {
 		}
 
 		if (typeof(options.onLoad) === 'function') {
-			/** @type {function(ilib.PhoneNumber)} */
+			/** 
+			 * @private
+			 * @type {function(ilib.PhoneNumber)} 
+			 */
 			this.onLoad = options.onLoad;
 		}
 	}
 
 	if (typeof number === "object") {
-		/** @type {string|undefined} */
+		/**
+		 * The vertical service code. These are codes that typically
+		 * start with a star or hash, like "*69" for "dial back the 
+		 * last number that called me".
+		 * @type {string|undefined} 
+		 */
 		this.vsc = number.vsc;
 
-		/** @type {string} */
+		/**
+		 * The international direct dialing prefix. This is always
+		 * followed by the country code. 
+		 * @type {string} 
+		 */
 		this.iddPrefix = number.iddPrefix;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The unique IDD country code for the country where the
+		 * phone number is serviced. 
+		 * @type {string|undefined} 
+		 */
 		this.countryCode = number.countryCode;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The digits required to access the trunk. 
+		 * @type {string|undefined} 
+		 */
 		this.trunkAccess = number.trunkAccess;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The carrier identification code used to identify 
+		 * alternate long distance or international carriers. 
+		 * @type {string|undefined} 
+		 */
 		this.cic = number.cic;
 		
-		/** @type {string|undefined} */
+		/**
+		 * Identifies an emergency number that is typically
+		 * short, such as "911" in North America or "112" in
+		 * many other places in the world. 
+		 * @type {string|undefined} 
+		 */
 		this.emergency = number.emergency;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The prefix of the subscriber number that indicates
+		 * that this is the number of a mobile phone. 
+		 * @type {string|undefined} 
+		 */
 		this.mobilePrefix = number.mobilePrefix;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The prefix that identifies this number as commercial
+		 * service number. 
+		 * @type {string|undefined} 
+		 */
 		this.serviceCode = number.serviceCode;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The area code prefix of a land line number. 
+		 * @type {string|undefined} 
+		 */
 		this.areaCode = number.areaCode;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The unique number associated with the subscriber
+		 * of this phone. 
+		 * @type {string|undefined} 
+		 */
 		this.subscriberNumber = number.subscriberNumber;
 		
-		/** @type {string|undefined} */
+		/**
+		 * The direct dial extension number. 
+		 * @type {string|undefined} 
+		 */
 		this.extension = number.extension;
 		
 		/**
-		 * @protected
+		 * @private
 		 * @type {boolean} 
 		 */
 		this.invalid = number.invalid;
 
 		if (number.plan && number.locale) {
 			/** 
-			 * @protected
+			 * @private
 			 * @type {ilib.NumPlan} 
 			 */
 			this.plan = number.plan;
 			
 			/** 
-			 * @protected
+			 * @private
 			 * @type {ilib.Locale.PhoneLoc} 
 			 */
 			this.locale = number.locale;
 	
 			/** 
-			 * @protected
+			 * @private
 			 * @type {ilib.NumPlan} 
 			 */
 			this.destinationPlan = number.destinationPlan;
 			
 			/** 
-			 * @protected
+			 * @private
 			 * @type {ilib.Locale.PhoneLoc} 
 			 */
 			this.destinationLocale = number.destinationLocale;

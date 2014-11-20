@@ -71,7 +71,9 @@ ilib.LocaleInfo = function(locale, options) {
 	    loadParams = undefined;
 	
 	/* these are all the defaults. Essentially, en-US */
-	/** @type {{
+	/**
+	  @private 
+	  @type {{
 		scripts:Array.<string>,
 		timezone:string,
 		units:string,
@@ -95,7 +97,8 @@ ilib.LocaleInfo = function(locale, options) {
 			exponential:string,
 			digits:string
 		}>
-	}}*/
+	  }}
+	*/
 	this.info = ilib.LocaleInfo.defaultInfo;
 	
 	switch (typeof(locale)) {

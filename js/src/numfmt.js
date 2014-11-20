@@ -136,7 +136,10 @@ util/jsutils.js
 ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
-	/** @type {string} */
+	/** 
+	 * @private
+	 * @type {string} 
+	 */
 	this.type = "number";
 	var loadParams = undefined;
 
@@ -154,26 +157,45 @@ ilib.NumFmt = function (options) {
 		}
 
 		if (options.currency) {
-			/** @type {string} */
+			/** 
+			 * @private 
+			 * @type {string} 
+			 */
 			this.currency = options.currency;
 		}
 
 		if (typeof (options.maxFractionDigits) === 'number') {
-			/** @type {number|undefined} */
+			/** 
+			 * @private 
+			 * @type {number|undefined} 
+			 */
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
 		if (typeof (options.minFractionDigits) === 'number') {
-			/** @type {number|undefined} */
+			/** 
+			 * @private 
+			 * @type {number|undefined} 
+			 */
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
-			/** @type {string} */
+			/** 
+			 * @private 
+			 * @type {string} 
+			 */
 			this.style = options.style;
 		}
 		if (typeof(options.useNative) === 'boolean') {
+			/** 
+			 * @private 
+			 * @type {boolean} 
+			 * */
 			this.useNative = options.useNative;
 		}
-		/** @type {string} */
+		/** 
+		 * @private 
+		 * @type {string} 
+		 */
 		this.roundingMode = options.roundingMode;
 
 		if (typeof (options.sync) !== 'undefined') {
@@ -184,14 +206,20 @@ ilib.NumFmt = function (options) {
 		loadParams = options.loadParams;
 	}
 
-	/** @type {ilib.LocaleInfo|undefined} */
+	/** 
+	 * @private 
+	 * @type {ilib.LocaleInfo|undefined} 
+	 */
 	this.localeInfo = undefined;
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			/** @type {ilib.LocaleInfo|undefined} */
+			/** 
+			 * @private 
+			 * @type {ilib.LocaleInfo|undefined} 
+			 */
 			this.localeInfo = li;
 
 			if (this.type === "number") {

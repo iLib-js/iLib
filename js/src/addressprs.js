@@ -171,7 +171,7 @@ ilib.Address = function (freeformAddress, options) {
 		}
 		if (freeformAddress.format) {
 			/**
-			 * @protected
+			 * private
 			 * @type {string}
 			 */
 			this.format = freeformAddress.format;
