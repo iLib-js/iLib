@@ -17,12 +17,24 @@
  * limitations under the License.
  */
 
+function testParseAddressSimple() {
+	var parsedAddress = new ilib.Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("5-2-1 Ginza", parsedAddress.streetAddress);
+	assertEquals("Chuo-ku", parsedAddress.locality);
+	assertEquals("Tokyo", parsedAddress.region);
+	assertEquals("170-3293", parsedAddress.postalCode);
+	assertEquals("Japan", parsedAddress.country);
+	assertEquals("JP", parsedAddress.countryCode);
+};
+
 function testParseAddressJPLatinNormal() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3, Yaesu 1-Chome\nChuo-ku, Tokyo 100-8994\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Tokyo Central Post Office, 208 5-3, Yaesu 1-Chome", parsedAddress.streetAddress);
-	assertEquals("Chuo-ku,", parsedAddress.locality);
+	assertEquals("Chuo-ku", parsedAddress.locality);
 	assertEquals("Tokyo", parsedAddress.region);
 	assertEquals("100-8994", parsedAddress.postalCode);
 	assertEquals("Japan", parsedAddress.country);
@@ -34,7 +46,7 @@ function testParseAddressJPLatinNoZip() {
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Tokyo Central Post Office, 208 5-3, Yaesu 1-Chome", parsedAddress.streetAddress);
-	assertEquals("Chuo-ku,", parsedAddress.locality);
+	assertEquals("Chuo-ku", parsedAddress.locality);
 	assertEquals("Tokyo", parsedAddress.region);
 	assertEquals("Japan", parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
@@ -46,50 +58,68 @@ function testParseAddressJPLatinNoCountry() {
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Tokyo Central Post Office, 208 5-3, Yaesu 1-Chome", parsedAddress.streetAddress);
-	assertEquals("Chuo-ku,", parsedAddress.locality);
-	assertEquals("TokyoTokyo", parsedAddress.region);
+	assertEquals("Chuo-ku", parsedAddress.locality);
+	assertEquals("Tokyo", parsedAddress.region);
 	assertEquals("100-8994", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressJPAsianNormal() {
-	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京 100-8994\n日本", {locale: 'ja-JP'});
+function testParseAddressJPAsianNormal1() {
+	var parsedAddress = new ilib.Address("〒150-2345 東京都渋谷区本町2丁目4-7サニーマンション203", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("東京中央郵便局、2085-3、八重洲1丁目", parsedAddress.streetAddress);
-	assertEquals("中央区,", parsedAddress.locality);
-	assertEquals("東京",parsedAddress.region);
-	assertEquals("100-8994", parsedAddress.postalCode);
-	assertEquals("日本", parsedAddress.country);
+	assertEquals("本町2丁目4-7サニーマンション203", parsedAddress.streetAddress);
+	assertEquals("渋谷区", parsedAddress.locality);
+	assertEquals("東京都",parsedAddress.region);
+	assertEquals("〒150-2345", parsedAddress.postalCode);
+	assertEquals("JP", parsedAddress.countryCode);
+};
+
+function testParseAddressJPAsianNormal2() {
+	var parsedAddress = new ilib.Address("〒108-8282\n東京都港区港南2-16-1\n品川イーストワンタワー", {locale: 'ja-JP'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("港南2-16-1品川イーストワンタワー", parsedAddress.streetAddress);
+	assertEquals("港区", parsedAddress.locality);
+	assertEquals("東京都",parsedAddress.region);
+	assertEquals("〒108-8282", parsedAddress.postalCode);
+	assertEquals("JP", parsedAddress.countryCode);
+};
+
+function testParseAddressJPAsianNormal3() {
+	var parsedAddress = new ilib.Address("623-0006京都府綾部市有岡町田坂１６", {locale: 'ja-JP'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("有岡町田坂１６", parsedAddress.streetAddress);
+	assertEquals("綾部市", parsedAddress.locality);
+	assertEquals("京都府",parsedAddress.region);
+	assertEquals("623-0006", parsedAddress.postalCode);
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
 function testParseAddressJPAsianNoZip() {
-	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京\n日本", {locale: 'ja-JP'});
+	var parsedAddress = new ilib.Address("東京都港区港南2-16-1n品川イーストワンタワー", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("東京中央郵便局、2085-3、八重洲1丁目", parsedAddress.streetAddress);
-	assertEquals("中央区,", parsedAddress.locality);
-	assertEquals("東京",parsedAddress.region);
-	assertEquals("日本", parsedAddress.country);
+	assertEquals("港南2-16-1n品川イーストワンタワー", parsedAddress.streetAddress);
+	assertEquals("港区", parsedAddress.locality);
+	assertEquals("東京都",parsedAddress.region);
 	assertEquals("JP", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressJPAsianNoCountry() {
-	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京 100-8994", {locale: 'ja-JP'});
+function testParseAddressJPAsianNoCountry() {	
+	var parsedAddress = new ilib.Address("100-8994東京都中央区\n東京中央郵便局、2085-3、八重洲1丁目", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("東京中央郵便局、2085-3、八重洲1丁目", parsedAddress.streetAddress);
-	assertEquals("中央区,", parsedAddress.locality);
-	assertEquals("東京",parsedAddress.region);
+	assertEquals("中央区", parsedAddress.locality);
+	assertEquals("東京都",parsedAddress.region);
 	assertEquals("100-8994", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
-
-
 
 function testParseAddressJPManyLines() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3\nYaesu 1-Chome\nChuo-ku\nTokyo\n100-8994\nJapan\n\n\n", {locale: 'en-JP'});
@@ -104,63 +134,51 @@ function testParseAddressJPManyLines() {
 };
 
 function testParseAddressJPOneLine() {
-	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA, KOYASU-CHO, HACHIOJI-SHI, TOKYO-TO 192-0993, JAPAN", {locale: 'en-JP'});
+	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA, KOYASU-CHO, HACHIOJI, TOKYO 192-0993, JAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("6-11 SHIMOHONDA, KOYASU-CHO", parsedAddress.streetAddress);
-	assertEquals("HACHIOJI-SHI", parsedAddress.locality);
-	assertEquals("TOKYO-TO",parsedAddress.region);
+	assertEquals("HACHIOJI", parsedAddress.locality);
+	assertEquals("TOKYO",parsedAddress.region);
 	assertEquals("192-0993", parsedAddress.postalCode);
 	assertEquals("JAPAN", parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
 function testParseAddressJPSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t6-11 SHIMOHONDA \r\t   \tKOYASU-CHO\t\t\n\t, HACHIOJI-SHI \r\tTOKYO-TO 192-0993\t\n\n\nJAPAN", {locale: 'en-JP'});
+	var parsedAddress = new ilib.Address("\t\t\t6-11 SHIMOHONDA \r\t   \tKOYASU-CHO\t\t\t, HACHIOJI-SHI \r\tTOKYO 192-0993\t\n\n\nJAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("6-11 SHIMOHONDA, KOYASU-CHO", parsedAddress.streetAddress);
+	assertEquals("6-11 SHIMOHONDA KOYASU-CHO", parsedAddress.streetAddress);
 	assertEquals("HACHIOJI-SHI", parsedAddress.locality);
-	assertEquals("TOKYO-TO",parsedAddress.region);
+	assertEquals("TOKYO",parsedAddress.region);
 	assertEquals("192-0993", parsedAddress.postalCode);
 	assertEquals("JAPAN", parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
 function testParseAddressJPNoDelimiters() {
-	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA KOYASU-CHO HACHIOJI-SHI TOKYO-TO 192-0993 JAPAN", {locale: 'en-JP'});
+	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA KOYASU-CHO HACHIOJI-SHI TOKYO 192-0993 JAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("6-11 SHIMOHONDA KOYASU-CHO", parsedAddress.streetAddress);
 	assertEquals("HACHIOJI-SHI", parsedAddress.locality);
-	assertEquals("TOKYO-TO",parsedAddress.region);
+	assertEquals("TOKYO",parsedAddress.region);
 	assertEquals("192-0993", parsedAddress.postalCode);
 	assertEquals("JAPAN", parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressJPSpecialChars() {
-	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngjaōu, Guǎngdōng 510620\nJapan", {locale: 'en-JP'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("208 Tianhe Road, Tianhe District", parsedAddress.streetAddress);
-	assertEquals("Guǎngjaōu", parsedAddress.locality);
-	assertEquals("Guǎngdōng", parsedAddress.region);
-	assertEquals("510620", parsedAddress.postalCode);
-	assertEquals("Japan", parsedAddress.country);
-	assertEquals("JP", parsedAddress.countryCode);
-};
-
 function testParseAddressJPFromUS() {
-	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngjaōu, Guǎngdōng 510620\nJapan", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nChūō, Tōkyō 192-0993\nJapan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("208 Tianhe Road, Tianhe District", parsedAddress.streetAddress);
-	assertEquals("Guǎngjaōu", parsedAddress.locality);
-	assertEquals("Guǎngdōng", parsedAddress.region);
-	assertEquals("510620", parsedAddress.postalCode);
+	assertEquals("Chūō", parsedAddress.locality);
+	assertEquals("Tōkyō", parsedAddress.region);
+	assertEquals("192-0993", parsedAddress.postalCode);
 	assertEquals("Japan", parsedAddress.country);
 	assertEquals("JP", parsedAddress.countryCode);
 };
@@ -168,15 +186,15 @@ function testParseAddressJPFromUS() {
 function testFormatAddressJPLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
-		locality: "Guǎngjaōu",
-		region: "Guǎngdōng",
-		postalCode: "510620",
+		locality: "Chūō",
+		region: "Tōkyō",
+		postalCode: "192-0993",
 		country: "Japan",
 		countryCode: "JP",
 		format: "latin"
 	}, {locale: 'en-JP'});
 	
-	var expected = "208 Tianhe Road, Tianhe District\nGuǎngjaōu, Guǎngdōng 510620\nJapan";
+	var expected = "208 Tianhe Road, Tianhe District\nChūō, Tōkyō 192-0993\nJapan";
 	var formatter = new ilib.AddressFmt({locale: 'en-JP'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -184,15 +202,15 @@ function testFormatAddressJPLatin() {
 function testFormatAddressJPFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
-		locality: "Guǎngjaōu",
-		region: "Guǎngdōng",
-		postalCode: "510620",
+		locality: "Chūō",
+		region: "Tōkyō",
+		postalCode: "192-0993",
 		country: "Japan",
 		countryCode: "JP",
 		format: "latin"
 	}, {locale: 'en-US'});
 	
-	var expected = "208 Tianhe Road, Tianhe District\nGuǎngjaōu, Guǎngdōng 510620\nJapan";
+	var expected = "208 Tianhe Road, Tianhe District\nChūō, Tōkyō 192-0993\nJapan";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

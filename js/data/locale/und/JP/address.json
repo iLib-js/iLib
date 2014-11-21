@@ -19,7 +19,7 @@
 			{
 				"name": "postalCode",
 				"line": "startAtLast",
-				"pattern": "[0-9]{6}$"
+				"pattern": "[0-9]{3}-[0-9]{4}$"
 			},
 			{
 				"name": "region",
@@ -38,6 +38,7 @@
 					"Saitama",
 					"Chiba",
 					"Tōkyō",
+					"Tokyo",
 					"Kanagawa",
 					"Niigata",
 					 "Toyama",
@@ -55,7 +56,6 @@
 					 "Nagano",
 					 "Gifu",
 					 "Shizuoka",
-					 "Aichi",
 					 "Mie",
 					 "Shiga",
 					 "Kyōto",
@@ -89,18 +89,18 @@
 			{
 				"name": "postalCode",
 				"line": "startAtLast",
-				"pattern": "[0-9]{6}$"
+				"pattern": "[〒]?[0-9]{3}-[0-9]{4}\\b"
 			},
 			{
 				"name": "region",
-				"line": "startAtFirst",
-				"pattern": "^\\S{2}省(\\w{2}县)?",
+				"line": "startAtFirst",				
+				"pattern":"\\S*(県|道|府|都)+",
 				"matchGroup": 0
 			},
 			{
 				"name": "locality",
 				"line": "startAtFirst",
-				"pattern": "^(\\S{1,5}[市鎮鄉])",
+				"pattern":"\\S*(市|区)+",				
 				"matchGroup": 0
 			}
 		]

@@ -42,6 +42,18 @@ function testParseAddressSimple2() {
 	assertEquals("US", parsedAddress.countryCode);
 };
 
+function testParseAddressSimple3() {
+	var parsedAddress = new ilib.Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("5-2-1 Ginza", parsedAddress.streetAddress);
+	assertEquals("Chuo-ku", parsedAddress.locality);
+	assertEquals("Tokyo", parsedAddress.region);
+	assertEquals("170-3293", parsedAddress.postalCode);
+	assertEquals("Japan", parsedAddress.country);
+	assertEquals("JP", parsedAddress.countryCode);
+};
+
 function testParseAddressMoreComplex() {
 	var parsedAddress = new ilib.Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {locale: 'en-US'});
 	
