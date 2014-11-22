@@ -19,6 +19,7 @@
 
 /* !depends 
 date.js
+calendar/gregratadie.js 
 calendar/gregoriandate.js 
 calendar/han.js
 util/utils.js
@@ -100,7 +101,7 @@ ilib.Date.HanRataDie.prototype.constructor = ilib.Date.HanRataDie;
  * @const
  * @type number
  */
-ilib.Date.HanRataDie.prototype.epoch = 758325.5;
+ilib.Date.HanRataDie.epoch = 758325.5;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
@@ -341,7 +342,7 @@ ilib.Date.HanDate.prototype.newRd = function (params) {
  * @returns {number} the current major solar term
  */
 ilib.Date.HanDate.prototype._chineseTZ = function(rd) {
-	var gregdate = new ilib.Date.GregDate({julianday: rd + this.epoch, timezone: "Etc/UTC"});
+	var gregdate = new ilib.Date.GregDate({julianday: rd + ilib.Date.HanRataDie.epoch, timezone: "Etc/UTC"});
 	return gregdate.year < 1929 ? 465.6666666666666666 : 480;
 };
 
@@ -351,7 +352,7 @@ ilib.Date.HanDate.prototype._chineseTZ = function(rd) {
  * @returns {number} the current major solar term
  */
 ilib.Date.HanDate.prototype._currentMajorST = function(rd) {
-	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd + this.epoch, this._chineseTZ(rd)));
+	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, this._chineseTZ(rd)));
 	return ilib.amod(2 + Math.floor(s/30), 12);
 };
 
@@ -403,13 +404,13 @@ ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
  * is a multiple of the given longitude
  */
 ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
-	var rate = 365.242189D / deg(360.0);
+	var rate = 365.242189 / 360.0;
 	var tau = jd + rate * ilib.Date._fixangle(longitude - ilib.Date._solarLongitude(jd));
-	var start = Math.max(tee, tau - 5.0);
+	var start = Math.max(jd, tau - 5.0);
 	var end = tau + 5.0;
 	
 	return ilib.bisectionSearch(0, start, end, 1e-6, function (l) {
-		return ilib.Date._fixangle(Math.ceiling(ilib.Date._solarLongitude(l) - jd)) - 180;
+		return ilib.Date._fixangle(Math.ceil(ilib.Date._solarLongitude(l) - jd)) - 180;
 	});
 };
 
@@ -422,8 +423,8 @@ ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
  */
 ilib.Date.HanDate.prototype._hanNextSolarLongitude = function(rd, longitude) {
 	var tz = this._chineseTZ(rd);
-	var temp = ilib.Date._localFromUniversal(this._nextSolarLongitude(ilib.Date._universalFromLocal(rd + this.epoch, tz), longitude), tz);
-	return temp - this.epoch;
+	var temp = ilib.Date._localFromUniversal(this._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, tz), longitude), tz);
+	return temp - ilib.Date.HanRataDie.epoch;
 };
 
 /**
@@ -520,15 +521,15 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 		second: 0,
 		millisecond: 0
 	});
-	var s1 = this._majorSTOnOrAfter(lastYearsST.getRd());
-	var s2 = this._majorSTOnOrAfter(thisYearsST.getRd());
+	var s1 = this._majorSTOnOrAfter(lastYearsST.getRataDie());
+	var s2 = this._majorSTOnOrAfter(thisYearsST.getRataDie());
 	var m1 = (s1 <= rd && rd < s2) ? this._newMoonOnOrAfter(s1 + 1) : this._newMoonOnOrAfter(s2 + 1);
-	var m2 = (s1 <= rd && rd < s2) ? this._newMoonBefore(s2 + 1) : this._newMoonBefore(this._majorSTOnOrAfter(nextYearsST.getRd()) + 1);
+	var m2 = (s1 <= rd && rd < s2) ? this._newMoonBefore(s2 + 1) : this._newMoonBefore(this._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
 	var m = this._newMoonBefore(rd + 1);
 	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853) === 12);
 	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853) - (this.isLeapYear && this._priorLeapMonth(m1, m)) ? 1 : 0, 12);
 	this.isLeapMonth = (this.isLeapYear && this._noMajorST(m) && !this._priorLeapMonth(m1, this._newMoonBefore(m)));
-	this.year = gregdate.year + 2636 + (this.month < 11 || rd > thisYearJul1.getRd()) ? 1 : 0;
+	this.year = gregdate.year + 2636 + (this.month < 11 || rd > thisYearJul1.getRataDie()) ? 1 : 0;
 	this.cycle = Math.floor((this.year - 1) / 60) + 1;
 	this.cycleYear = ilib.amod(this.year, 60);
 	this.day = rd - m + 1;
