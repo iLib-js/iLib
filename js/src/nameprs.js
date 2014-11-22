@@ -327,15 +327,14 @@ ilib.Name._isAsianName = function (name, language) {
     if (name && name.length > 0) {
         for (i = 0; i < name.length; i++) {
         	var c = name.charAt(i);
-             
+
             if (ilib.Name._isAsianChar(c)) {
                 if (language =="ko" || language =="ja" || language =="zh") {
                     return true;
                 }
                 asian++;
-
             } else if (ilib.CType.isAlpha(c)) {
-                if (language =="en") {
+                if (!language =="ko" || !language =="ja" || !language =="zh") {
                     return false;
                 }
                 latin++;

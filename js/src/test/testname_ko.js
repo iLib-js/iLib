@@ -132,23 +132,23 @@ function testParseWithLongMixedName_ko_KR() {
 
 
 function testParseWithLongMixedName2_ko_KR() {
-	var parsed = new ilib.Name("홍길동/Sofrware Engineer", {locale: "ko-KR"});
+	var parsed = new ilib.Name("홍길동/Software Engineer", {locale: "ko-KR"});
 	assertNotUndefined(parsed);	
 	var expected = {
 		familyName: "홍",
 		givenName: "길동",
-		suffix: "/Sofrware Engineer"
+		suffix: "/Software Engineer"
 	};
 	assertObjectContains(expected, parsed);
 };
 
 function testParseWithLongMixedName2_ko_KR() {
-	var parsed = new ilib.Name("김Jinah/Sofrware Engineer", {locale: "ko-KR"});
+	var parsed = new ilib.Name("김Jinah/Software Engineer", {locale: "ko-KR"});
 	assertNotUndefined(parsed);	
 	var expected = {
 		familyName: "김",
 		givenName: "Jinah",
-		suffix: "/Sofrware Engineer"
+		suffix: "/Software Engineer"
 	};
 	assertObjectContains(expected, parsed);
 };
@@ -169,7 +169,6 @@ function testParseSuffixWithComma_ko_KR() {
 };
 
 
-
 function testLastNames_ko_KR() {
 	var parsed = new ilib.Name("미스터강", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
@@ -182,6 +181,16 @@ function testLastNames_ko_KR() {
 	assertObjectContains(expected, parsed);
 };
 
+/*function testParsePunctInSuffix_ko_KR() {
+	var parsed = new ilib.Name("홍길동 선임연구원", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	var expected = {
+		familyName: "홍",
+		givenName: "길동",
+		suffix: "선임연구원"
+	};
+	assertObjectContains(expected, parsed);
+};*/
 
 /*
  * Format tests
@@ -351,21 +360,6 @@ function testFormatWithNulls_ko_KR() {
 	assertNotUndefined(formatted);
 	
 	var expected = "김경";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatCommasInSuffix_ko_KR() {
-	var name = new ilib.Name({
-		givenName: "길동",
-		familyName: "홍",
-		suffix: "/선임연구원/MC연구소 A실 1팀 1파트"
-	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "홍길동/선임연구원/MC연구소 A실 1팀 1파트";
 	
 	assertEquals(expected, formatted);
 };

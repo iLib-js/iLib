@@ -118,12 +118,12 @@ function testParseFamilyName_ja_JP1() {
 
 
 function testParseWithLongMixedName_ja_JP() {
-	var parsed = new ilib.Name("佐々木主浩/Sofrware Engineer", {locale: "ja-JP"});
+	var parsed = new ilib.Name("佐々木主浩/Software Engineer", {locale: "ja-JP"});
 	assertNotUndefined(parsed);	
 	var expected = {
 		givenName : "主浩",
 		familyName: "佐々木",
-		suffix: "/Sofrware Engineer"
+		suffix: "/Software Engineer"
 	};
 	assertObjectContains(expected, parsed);
 };
