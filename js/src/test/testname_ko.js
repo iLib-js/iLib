@@ -119,18 +119,6 @@ function testParseSuffix_ko_KR() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseSuffix_ko_KR1() {
-	var parsed = new ilib.Name("김동경주니어", {locale: 'ko-KR'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		givenName: "동경",
-		familyName: "김",
-		suffix: "주니어"
-	};
-	assertObjectContains(expected, parsed);
-}
-
 function testParseWithLongMixedName_ko_KR() {
 	var parsed = new ilib.Name("홍길동/선임연구원/MC연구소 A실 1팀 1파트", {locale: "ko-KR"});
 	assertNotUndefined(parsed);	
