@@ -21,6 +21,7 @@
  */
 
 /* !depends
+util/jsutils.js
 strings.js
 resources.js
 scriptinfo.js
