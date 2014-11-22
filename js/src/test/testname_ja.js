@@ -29,8 +29,6 @@ function testParseSimpleNameEuro_ja_JP() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseSimpleNameAsian_ja_JP() {
 	var parsed = new ilib.Name("高橋弘樹", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
@@ -42,8 +40,6 @@ function testParseSimpleNameAsian_ja_JP() {
 
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 	var parsed = new ilib.Name("高橋弘樹さん", {locale: 'ja-JP'});
@@ -58,7 +54,6 @@ function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 	assertObjectContains(expected, parsed);
 };
 
-
 function testParseTitle_ja_JP1() {
 	var parsed = new ilib.Name("高橋弘樹知事", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
@@ -72,8 +67,6 @@ function testParseTitle_ja_JP1() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 	var parsed = new ilib.Name("高橋弘樹教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
@@ -86,9 +79,6 @@ function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 
 	assertObjectContains(expected, parsed);
 };
-
-
-
 
 function testParseCompoundHonorific_ja_JP() {
 	var parsed = new ilib.Name("高橋教授", {locale: 'ja-JP'});
@@ -123,6 +113,18 @@ function testParseFamilyName_ja_JP1() {
 		familyName: "佐々木"
 	};
 
+	assertObjectContains(expected, parsed);
+};
+
+
+function testParseWithLongMixedName_ja_JP() {
+	var parsed = new ilib.Name("佐々木主浩/Sofrware Engineer", {locale: "ja-JP"});
+	assertNotUndefined(parsed);	
+	var expected = {
+		givenName : "主浩",
+		familyName: "佐々木",
+		suffix: "/Sofrware Engineer"
+	};
 	assertObjectContains(expected, parsed);
 };
 
@@ -238,6 +240,3 @@ function testFormatAsianNameLong_ja_JP() {
 
 	assertEquals(expected, formatted);
 };
-
-
-

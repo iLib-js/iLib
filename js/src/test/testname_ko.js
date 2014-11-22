@@ -119,6 +119,53 @@ function testParseSuffix_ko_KR() {
 	assertObjectContains(expected, parsed);
 };
 
+function testParseSuffix_ko_KR1() {
+	var parsed = new ilib.Name("김동경주니어", {locale: 'ko-KR'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "동경",
+		familyName: "김",
+		suffix: "주니어"
+	};
+	assertObjectContains(expected, parsed);
+}
+
+function testParseWithLongMixedName_ko_KR() {
+	var parsed = new ilib.Name("홍길동/선임연구원/MC연구소 A실 1팀 1파트", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	var expected = {
+		familyName: "홍",
+		givenName: "길동",
+		suffix: "/선임연구원/MC연구소 A실 1팀 1파트"
+	};
+	assertObjectContains(expected, parsed);
+};
+
+
+function testParseWithLongMixedName2_ko_KR() {
+	var parsed = new ilib.Name("홍길동/Sofrware Engineer", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	var expected = {
+		familyName: "홍",
+		givenName: "길동",
+		suffix: "/Sofrware Engineer"
+	};
+	assertObjectContains(expected, parsed);
+};
+
+function testParseWithLongMixedName2_ko_KR() {
+	var parsed = new ilib.Name("김Jinah/Sofrware Engineer", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	var expected = {
+		familyName: "김",
+		givenName: "Jinah",
+		suffix: "/Sofrware Engineer"
+	};
+	assertObjectContains(expected, parsed);
+};
+
+
 // for DFISH-25146
 function testParseSuffixWithComma_ko_KR() {
 	var parsed = new ilib.Name("김동경, 박사", {locale: 'ko-KR'});
@@ -316,6 +363,21 @@ function testFormatWithNulls_ko_KR() {
 	assertNotUndefined(formatted);
 	
 	var expected = "김경";
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatCommasInSuffix_ko_KR() {
+	var name = new ilib.Name({
+		givenName: "길동",
+		familyName: "홍",
+		suffix: "/선임연구원/MC연구소 A실 1팀 1파트"
+	});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동/선임연구원/MC연구소 A실 1팀 1파트";
 	
 	assertEquals(expected, formatted);
 };

@@ -316,7 +316,7 @@ ilib.Name._isAsianChar = function(c) {
  * @static
  * @protected
  */
-ilib.Name._isAsianName = function (name) {
+ilib.Name._isAsianName = function (name, language) {
     // the idea is to count the number of asian chars and the number
     // of latin chars. If one is greater than the other, choose
     // that style.
@@ -329,8 +329,15 @@ ilib.Name._isAsianName = function (name) {
         	var c = name.charAt(i);
              
             if (ilib.Name._isAsianChar(c)) {
+                if (language =="ko" || language =="ja" || language =="zh") {
+                    return true;
+                }
                 asian++;
+
             } else if (ilib.CType.isAlpha(c)) {
+                if (language =="en") {
+                    return false;
+                }
                 latin++;
             }
         }
@@ -371,10 +378,12 @@ ilib.Name.prototype = {
         var parts, prefixArray, prefix, prefixLower,
             suffixArray, suffix, suffixLower,
             i, info, hpSuffix;
+        var currentLanguage = this.locale.getLanguage();
 
         if (name) {
             // for DFISH-12905, pick off the part that the LDAP server automatically adds to our names in HP emails
-            i = name.search(/\s*[,\(\[\{<]/);
+            //i = name.search(/\s*[,\(\[\{<]/);
+            i = name.search(/\s*[,\/\(\[\{<]/);
             if (i !== -1) {
                 hpSuffix = name.substring(i);
                 hpSuffix = hpSuffix.replace(/\s+/g, ' '); // compress multiple whitespaces
@@ -388,11 +397,10 @@ ilib.Name.prototype = {
                 }
             }
 
+            this.isAsianName = ilib.Name._isAsianName(name, currentLanguage);
             if (this.info.nameStyle === "asian" || this.info.order === "fmg" || this.info.order === "fgm") {
-                this.isAsianName = !ilib.Name._isEuroName(name);
                 info = this.isAsianName ? this.info : ilib.data.name;
             } else {
-                this.isAsianName = ilib.Name._isAsianName(name);
                 info = this.isAsianName ? ilib.data.name : this.info;
             }
 
