@@ -382,7 +382,6 @@ ilib.Name.prototype = {
 
         if (name) {
             // for DFISH-12905, pick off the part that the LDAP server automatically adds to our names in HP emails
-            //i = name.search(/\s*[,\(\[\{<]/);
             i = name.search(/\s*[,\/\(\[\{<]/);
             if (i !== -1) {
                 hpSuffix = name.substring(i);
