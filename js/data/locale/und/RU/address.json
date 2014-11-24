@@ -1,8 +1,9 @@
 {
 	"formats":{
-		"default":"{streetAddress}\n{locality}\n{region}\n{postalCode}\n{country}",
+		"default":"{streetAddress}\n{locality}\n{region}\n{country}\n{postalCode}",
 		"nocountry":"{streetAddress}\n{locality}\n{region}\n{postalCode}"
 	},
+
 	"startAt":"end",
 	"fields":[
 
@@ -12,12 +13,19 @@
 			"pattern":"([0-9]{6})$"
 		},
 
-		
+		{
+			"name":"country",
+			"line":"last",
+			"pattern":[
+					"Россия",
+					"Российская Федерация"
+				  ]
+		},
 
 		{
 			"name":"region",
 			"line":"last",
-			"pattern":[
+			"pattern":[ 
 		                   	"Москва",
 					"Тюменская область",
 					"Ханты-Мансийский автономный округ",
