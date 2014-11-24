@@ -18,11 +18,13 @@
  */
 
 var util = require("util");
+var path = require("path");
 
 var JsUnit = require("./testcli/runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 
+/*
 var suites = [
 	"util/test/testSuite.js",
 	"test/testSuite.js",
@@ -31,62 +33,96 @@ var suites = [
 	"phone/test/testSuite.js",
 	"units/test/testSuite.js"
 ];
+*/
+
+var suiteDefinitions = {
+	"core": [
+        "util",
+        "."
+	],
+	"standard": [
+	    "util",
+	    ".",
+	    "calendar",
+	    "date",
+	    "number",
+	    "maps",
+	    "ctype"
+	],
+	"full": [
+	    "util",
+	    ".",
+	    "calendar",
+	    "date",
+	    "number",
+	    "maps",
+	    "ctype",
+	    "strings-ext",
+	    "phone",
+	    "units",
+	    "name",
+	    "address",
+	    "collate"
+    ]
+};
 
 // override the possible node environment to make the tests uniform
 process.env.TZ = "";
 process.env.LANG = "";
 process.env.LC_ALL = "";
 
-var functions = {
-	dynamic_uncompiled: function dynamic_uncompiled() {
-		var ts;
-		for (suite in suites) {
-			ts = new JsUnit.TestSuite(suites[suite]);
-			ts.include("ilib-dyn-ut.js");
-			ts.include("testglue.js");
-			runner.addSuite(ts);
-		}
-	},
-	
-	dynamic_compiled: function dynamic_compiled() {
-		var ts;
-		for (suite in suites) {
-			ts = new JsUnit.TestSuite(suites[suite]);
-			ts.include("ilib-dyn-ut-compiled.js");
-			ts.include("testglue.js");
-			runner.addSuite(ts);
-		}
-	},
-	
-	assembled_uncompiled: function assembled_uncompiled() {
-		var ts;
-		for (suite in suites) {
-			ts = new JsUnit.TestSuite(suites[suite]);
-			ts.include("ilib-ut.js");
-			runner.addSuite(ts);
-		}
-	},
-	
-	assembled_compiled: function assembled_compiled() {
-		var ts;
-		for (suite in suites) {
-			ts = new JsUnit.TestSuite(suites[suite]);
-			ts.include("ilib-ut-compiled.js");
-			runner.addSuite(ts);
-		}
-	}
-};
+var assembly = "dynamic";
+var compilation = "uncompiled";
+var size = "full";
+var suite = suiteDefinitions.full;
 
 if (process.argv.length > 2) {
-	util.print("Only running test " + process.argv[2] + "\n");
-	functions[process.argv[2]]();
-} else {
-	// do all of them
-	util.print("Running all tests\n");
-	functions.assembled_compiled();
-	functions.assembled_uncompiled();
-	functions.dynamic_compiled();
-	functions.dynamic_uncompiled();
+	if (process.argv.length > 3) {
+		if (process.argv.length > 4) {
+			size = process.argv[4];
+			switch (size) {
+				case "core":
+				case "standard":
+				case "full":
+					suite = suiteDefinitions[size];
+					break;
+				default:
+					suite = size;
+					if (suiteDefinitions.full.indexOf(suite) === -1 && suite !== "all") {
+						util.print("Suite " + suite + " is unrecognized. Testing all suites by default.\n");
+						suite = suiteDefinitions.full;
+					} else {
+						util.print("Only running test " + suite + "\n");
+						suite = [ suite ];
+					}
+					break;
+			}
+		}
+		compilation = process.argv[3];
+		if (compilation !== "uncompiled" && compilation !== "compiled") {
+			util.print("Compilation " + compilation + " is unknown. Using 'compiled' by default.\n");
+			compilation = "compiled";
+		}
+	}
+	assembly = process.argv[2];
+	if (assembly !== "assembled" && assembly !== "dynamic") {
+		util.print("Assembly " + assembly + " is unknown. Using 'dynamic' by default.\n");
+		compilation = "dynamic";
+	}
+}
+
+util.print("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite) + "\n");
+
+for (s in suite) {
+	var ts;
+	
+	ts = new JsUnit.TestSuite(path.join(suite[s], "test", "testSuite.js"));
+	// ts.addToContext({ilib: require("./ilib-dyn-ut.js").ilib});
+	var inc = "./ilib" + ((assembly === "dynamic") ? "-dyn" : "") + "-ut" + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+	ts.include(inc); 
+	ts.include("testglue.js");
+	runner.addSuite(ts);
+	// util.print("Adding suite " + suite[s] + " and including ilib file " + inc + "\n");
 }
 
 runner.runTests();

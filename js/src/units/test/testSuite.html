@@ -24,19 +24,22 @@ limitations under the License.
 <script language="JavaScript">
 
 function suite() {
-    var calSuite = new JsUnitTestSuite();
+    var s = new JsUnitTestSuite();
     
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengthsCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testSpeed.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testTemp.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testDigitalStorage.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testTime.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testMass.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/units/test/testArea.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengthsCompiled.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testSpeed.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testTemp.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testDigitalStorage.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testTime.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testMass.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testArea.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testMeasurement.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testUnits.html");
+    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testUnitFmt.html");
     
-    return calSuite;
+    return s;
 }
 </script>
 </head>

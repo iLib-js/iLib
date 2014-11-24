@@ -26,87 +26,19 @@ limitations under the License.
 function suite() {
     var s = new JsUnitTestSuite();
     
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCalendar.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCurrency.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_de_DE.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_en.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_es_ES.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_fr.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_it_IT.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_id_ID.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_ja_JP.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_ko_KR.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_pt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_ru_RU.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmt_zh_CN.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDate.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testJulianDay.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testLocale.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleInfo.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNumFmt.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testResources.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testStrings.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testUnits.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testUnitFmt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testTimeZone.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtRange.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameFmt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCType.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDurFmt.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testGlobal.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testScriptInfo.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testUnitFmt.html");
-    /*
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameFmt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName_de.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName_en.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName_es.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName_nl.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testName_zh_CN.html");
-    */
 
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCalendarCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCurrencyCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_de_DE.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_en.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_es_ES.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_fr.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_id_ID.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_it_IT.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_ja_JP.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_ko_KR.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_pt.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_ru_RU.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtCompiled_zh_CN.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testJulianDayCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleInfoCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNumFmtCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testResourcesCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testStringsCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testTimeZoneCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDateFmtRangeCompiled.html");
-    //s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled.html");
-    //s.addTestPage("file://" + ilibDir + "/js/src/test/testNameFmtCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testCTypeCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testDurFmtCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testGlobalCompiled.html");
     s.addTestPage("file://" + ilibDir + "/js/src/test/testScriptInfoCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testUnitFmtCompiled.html");
-    /*
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameFmtCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled_de.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled_en.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled_es.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled_nl.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testNameCompiled_zh_CN.html");
-    */
     return s;
 }
 

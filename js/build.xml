@@ -585,84 +585,92 @@ limitations under the License.
 		</checksum>
 	</target -->
 
+	<macrodef name="runtests">
+        <attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="suite"/>
+		<sequential>
+			<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+				<arg value="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target depends="assemble.dyn.unittest" name="test.util">
+		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.root">
+		<runtests suite="." assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.calendar">
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.date">
+		<runtests suite="date" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.number">
+		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.maps">
+		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.ctype">
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.strings-ext">
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.phone">
+		<runtests suite="phone" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.units">
+		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.name">
+		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.address">
+		<runtests suite="address" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.collate">
+		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
+	</target>
+	
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<echo>Testing the core classes in the assembled and compiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="assembled_compiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
+		<runtests suite="full" assembly="assembled" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<echo>Testing the core classes in the assembled and uncompiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="assembled_uncompiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
+		<runtests suite="full" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
-		<echo>Testing the core classes in the dynamic and compiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="dynamic_compiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
+		<runtests suite="full" assembly="dynamic" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
-		<echo>Testing the core classes in the dynamic and uncompiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
+		<runtests suite="full" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
 	<target name="bench.core" depends="assemble.unittest,assemble.dyn.unittest"

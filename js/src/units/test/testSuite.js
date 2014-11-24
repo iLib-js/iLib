@@ -28,6 +28,7 @@ function suite() {
 	var s = new cli.TestSuite();
 
 	var suites = [
+	    "testmeasurement.js",
 	    "testlengths.js",
 	    "testspeeds.js",
 	    "testtemp.js",
@@ -38,7 +39,9 @@ function suite() {
 	    "testarea.js",
 	    "testFuelConsumption.js",
 	    "testVolume.js",
-	    "testenergy.js"
+	    "testenergy.js",
+	    "testunits.js",
+	    "testunitfmt.js"
 	];
 
 	suites.forEach(function(path) {

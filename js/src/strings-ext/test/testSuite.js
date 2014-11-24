@@ -1,7 +1,7 @@
 /*
- * testSuite.js - test suite for this directory
+ * testSuite.js - test suite for the extended strings tests
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,37 +20,24 @@
 var cli = require('../testcli/runner.js');
 
 function newSuite(path, include) {
-	var suite = new cli.TestSuite("calendar/test/" + path);
+	var suite = new cli.TestSuite("strings-ext/test/" + path);
+	suite.include("strings-ext/test/normdata.js");
+	suite.include("test/testUtils.js");
 	return suite;
-}
+};
 
 function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        "testcalendar.js",
-        "testjulianday.js",
-        "testgregratadie.js",
-	    "testgregoriandate.js",
-	    "testgregorian.js",
-	    "testjuliandate.js",
-	    "testjulian.js",
-	    "testislamicdate.js",
-	    "testislamic.js",
-	    "testhebrew.js",
-	    "testhebrewdate.js",
-	    "testthaisolar.js",
-	    "testthaisolardate.js",
-	    "testpersian.js",
-	    "testpersiandate.js",
-	    "testpersianastro.js",
-	    "testpersiandateastro.js",
-	    "testtimezone.js"
-    ];
-    
+		"testnorm.js",
+		"testglyphstr.js"
+	];
+
     suites.forEach(function (path) {
     	s.addSuite(newSuite(path));
     });
     
     return s;
 }
+
