@@ -363,3 +363,18 @@ function testFormatWithNulls_ko_KR() {
 	
 	assertEquals(expected, formatted);
 };
+
+
+function testFormatWithLongMixedName_ko_KR() {
+	var name = new ilib.Name({
+		givenName: "연구소 A실 1팀 1파트",
+		familyName: "홍길동/선임연구원/MC",
+	});	
+	var fmt = new ilib.NameFmt({style: "long", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동/선임연구원/MC연구소 A실 1팀 1파트";
+	
+	assertEquals(expected, formatted);
+};

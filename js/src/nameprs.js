@@ -353,7 +353,7 @@ ilib.Name._isAsianName = function (name, language) {
  * @static
  * @protected
  */
-ilib.Name._isEuroName = function (name) {
+ilib.Name._isEuroName = function (name, language) {
     var c,
         n = new ilib.String(name),
         it = n.charIterator();
@@ -363,9 +363,10 @@ ilib.Name._isEuroName = function (name) {
 
         if (!ilib.Name._isAsianChar(c) && !ilib.CType.isPunct(c) && !ilib.CType.isSpace(c)) {
             return true;
+        } else if (ilib.Name._isAsianChar(c) && (language =="ko" || language =="ja" || language =="zh")) {
+            return false;
         }
     }
-
     return false;
 };
 
@@ -716,7 +717,6 @@ ilib.Name.prototype = {
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
-
             this.givenName = parts.slice(this.familyName.length).join('');
         } else if (this.locale.getLanguage() === "ja") {
             this._parseJapaneseName(parts);
@@ -726,7 +726,7 @@ ilib.Name.prototype = {
             this.givenName = parts.join('');
         }
     },
-    
+
     /**
      * @protected
      */

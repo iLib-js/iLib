@@ -301,13 +301,14 @@ ilib.NameFmt.prototype = {
 	 */
 	format: function(name) {
 		var formatted, temp, modified, isAsianName;
-		
+		 var currentLanguage = this.locale.getLanguage();
+		 
 		if (!name || typeof(name) !== 'object') {
 			return undefined;
 		}
 		
 		if ((typeof(name.isAsianName) === 'boolean' && !name.isAsianName) ||
-				ilib.Name._isEuroName([name.givenName, name.middleName, name.familyName].join(""))) {
+				ilib.Name._isEuroName([name.givenName, name.middleName, name.familyName].join(""), currentLanguage)) {
 			isAsianName = false;	// this is a euro name, even if the locale is asian
 			modified = name.clone();
 			
