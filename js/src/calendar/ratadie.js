@@ -114,14 +114,21 @@ ilib.Date.RataDie = function(params) {
 	}
 };
 
+/**
+ * @private
+ * @const
+ * @type {number}
+ */
+ilib.Date.RataDie.gregorianEpoch = 1721424.5;
+
 ilib.Date.RataDie.prototype = {
 	/**
 	 * @protected
 	 * @const
-	 * @type number
+	 * @type {number}
 	 * the difference between a zero Julian day and the zero Gregorian date. 
 	 */
-	epoch: 1721424.5,
+	epoch: ilib.Date.RataDie.gregorianEpoch,
 	
 	/**
 	 * Set the RD of this instance according to the given unix time. Unix time is
