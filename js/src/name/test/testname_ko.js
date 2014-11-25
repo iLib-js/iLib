@@ -261,7 +261,7 @@ function testFormatSimpleNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터김동경, 박사";
+	var expected = "미스터김동경 , 박사";
 	
 	assertEquals(expected, formatted);
 };
@@ -374,6 +374,88 @@ function testFormatWithLongMixedName_ko_KR() {
 	assertNotUndefined(formatted);
 	
 	var expected = "홍길동/선임연구원/MC연구소 A실 1팀 1파트";
+	
+	assertEquals(expected, formatted);
+};
+
+
+function testFormatWithHonorifix_ko_KR() {
+	var parsed = new ilib.Name("정훈교씨", {locale: 'ko-KR'});
+	assertNotUndefined(parsed);
+
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(parsed);
+	assertNotUndefined(formatted);
+	
+	var expected = "정훈교씨";
+	
+	assertEquals(expected, formatted);
+};
+
+
+function testFormatWithSuffix_ko_KR() {
+	var parsed = new ilib.Name("홍길동선배", {locale: 'ko-KR'});
+	assertNotUndefined(parsed);
+
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(parsed);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동 선배";
+	
+	assertEquals(expected, formatted);
+};
+
+function testParsePunctInSuffix_ko_KR() {
+	var parsed = new ilib.Name("홍길동 선임 연구원", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(parsed);
+	assertNotUndefined(formatted);
+
+	var expected = "홍길동 선임 연구원";
+	assertEquals(expected, formatted);
+};
+
+function testParsePunctInSuffix1_ko_KR() {
+	var parsed = new ilib.Name("홍길동 회장", {locale: "ko-KR"});
+	assertNotUndefined(parsed);	
+	
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(parsed);
+	assertNotUndefined(formatted);
+
+	var expected = "홍길동 회장";
+	assertEquals(expected, formatted);
+};
+
+function testFormatWithSuffix2_ko_KR() {
+	var name = new ilib.Name({
+		givenName: "길동",
+		familyName: "홍",
+		suffix: "주임"
+	});	
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동 주임";
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatWithSuffix3_ko_KR() {
+	var name = new ilib.Name({
+		givenName: "길동",
+		familyName: "홍",
+		suffix: "선생님"
+	});	
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동 선생님";
 	
 	assertEquals(expected, formatted);
 };

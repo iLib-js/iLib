@@ -301,7 +301,7 @@ ilib.NameFmt.prototype = {
 	 */
 	format: function(name) {
 		var formatted, temp, modified, isAsianName;
-		 var currentLanguage = this.locale.getLanguage();
+		var currentLanguage = this.locale.getLanguage();
 		 
 		if (!name || typeof(name) !== 'object') {
 			return undefined;
@@ -338,6 +338,9 @@ ilib.NameFmt.prototype = {
 		} else {
 			isAsianName = true;
 			modified = name;
+			if (currentLanguage === "ko" && this.info.honorifics.indexOf(name.suffix) == -1) {
+				modified.suffix = ' ' + modified.suffix; 
+			}
 		}
 		
 		if (!this.template || isAsianName !== this.isAsianLocale) {

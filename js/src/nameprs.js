@@ -471,7 +471,7 @@ ilib.Name.prototype = {
             }
 
             if (this.isAsianName) {
-                this._parseAsianName(parts);
+                this._parseAsianName(parts, currentLanguage);
             } else {
                 this._parseWesternName(parts);
             }
@@ -711,13 +711,15 @@ ilib.Name.prototype = {
     /**
      * @protected
      */
-    _parseAsianName: function (parts) {
-        
+    _parseAsianName: function (parts, language) {
         var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
             this.givenName = parts.slice(this.familyName.length).join('');
+            if (language === "ko" && this.givenName.search(/\s*[/\s]/) > -1) {
+                this._parseKoreanName(parts);
+            }
         } else if (this.locale.getLanguage() === "ja") {
             this._parseJapaneseName(parts);
         } else if (this.suffix || this.prefix) {
@@ -725,6 +727,18 @@ ilib.Name.prototype = {
         } else {
             this.givenName = parts.join('');
         }
+    },
+
+    /**
+     * @protected
+     */
+    _parseKoreanName: function (parts) {
+        var index = this.givenName.indexOf(" ");
+        var temp = this.givenName.substr(0, index);
+        if (!this.suffix) {
+            this.suffix = this.givenName.substr(index + 1);     
+        }
+        this.givenName = temp;
     },
 
     /**
