@@ -156,13 +156,13 @@ function testParseWithLongMixedName2_ko_KR() {
 
 // for DFISH-25146
 function testParseSuffixWithComma_ko_KR() {
-	var parsed = new ilib.Name("김동경, 박사", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("김동경,박사", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		givenName: "동경",
 		familyName: "김",
-		suffix: ", 박사"
+		suffix: ",박사"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -181,7 +181,7 @@ function testLastNames_ko_KR() {
 	assertObjectContains(expected, parsed);
 };
 
-/*function testParsePunctInSuffix_ko_KR() {
+function testParsePunctInSuffix_ko_KR() {
 	var parsed = new ilib.Name("홍길동 선임연구원", {locale: "ko-KR"});
 	assertNotUndefined(parsed);	
 	var expected = {
@@ -190,7 +190,7 @@ function testLastNames_ko_KR() {
 		suffix: "선임연구원"
 	};
 	assertObjectContains(expected, parsed);
-};*/
+};
 
 /*
  * Format tests
