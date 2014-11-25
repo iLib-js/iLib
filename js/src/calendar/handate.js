@@ -338,72 +338,79 @@ ilib.Date.HanDate.prototype.newRd = function (params) {
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from
  * @returns {number} the current major solar term
  */
-ilib.Date.HanDate.prototype._chineseTZ = function(rd) {
-	var gregdate = new ilib.Date.GregDate({julianday: rd + ilib.Date.HanRataDie.epoch, timezone: "Etc/UTC"});
-	return gregdate.year < 1929 ? 465.6666666666666666 : 480;
+ilib.Date.HanDate._chineseTZ = function(rd) {
+	var year = ilib.Date.GregDate._calcYear(rd);
+	return year < 1929 ? 465.6666666666666666 : 480;
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from
  * @returns {number} the current major solar term
  */
-ilib.Date.HanDate.prototype._currentMajorST = function(rd) {
-	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, this._chineseTZ(rd)));
+ilib.Date.HanDate._currentMajorST = function(rd) {
+	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd, ilib.Date.HanDate._chineseTZ(rd)) + ilib.Date.RataDie.gregorianEpoch);
 	return ilib.amod(2 + Math.floor(s/30), 12);
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from
  * @returns {boolean} true if there is no major solar term in the same year
  */
-ilib.Date.HanDate.prototype._noMajorST = function(rd) {
-	return this._currentMajorST(rd) === this._currentMajorST(this._newMoonOnOrAfter(rd+1));
+ilib.Date.HanDate._noMajorST = function(rd) {
+	return ilib.Date.HanDate._currentMajorST(rd) === ilib.Date.HanDate._currentMajorST(ilib.Date.HanDate._newMoonOnOrAfter(rd+1));
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd1  
  * @param {number} rd2  
  * @returns {boolean} true if there is a leap month earlier in the same year 
  * as the given months 
  */
-ilib.Date.HanDate.prototype._priorLeapMonth = function(rd1, rd2) {
+ilib.Date.HanDate._priorLeapMonth = function(rd1, rd2) {
 	return rd2 >= rd1 &&
-		(this._priorLeapMonth(rd1, this._newMoonBefore(rd2)) ||
-		 this._noMajorST(rd2));
+		(ilib.Date.HanDate._priorLeapMonth(rd1, ilib.Date.HanDate._newMoonBefore(rd2)) ||
+				ilib.Date.HanDate._noMajorST(rd2));
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from 
  * @returns {number} the rd of previous new moon before the given RD date
  */
-ilib.Date.HanDate.prototype._newMoonBefore = function(rd) {
+ilib.Date.HanDate._newMoonBefore = function(rd) {
 	
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from 
  * @returns {number} the rd of next new moon on or after the given RD date
  */
-ilib.Date.HanDate.prototype._newMoonOnOrAfter = function(rd) {
+ilib.Date.HanDate._newMoonOnOrAfter = function(rd) {
 	
 };
 
 /**
  * @protected
+ * @static
  * @param {number} jd JD to calculate from
  * @param {number} longitude longitude to seek 
  * @returns {number} the JD of the next time that the solar longitude 
  * is a multiple of the given longitude
  */
-ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
+ilib.Date.HanDate._nextSolarLongitude = function(jd, longitude) {
 	var rate = 365.242189 / 360.0;
 	var tau = jd + rate * ilib.Date._fixangle(longitude - ilib.Date._solarLongitude(jd));
 	var start = Math.max(jd, tau - 5.0);
@@ -416,32 +423,35 @@ ilib.Date.HanDate.prototype._nextSolarLongitude = function(jd, longitude) {
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from
  * @param {number} longitude longitude to seek 
  * @returns {number} the RD of the next time that the solar longitude 
  * is a multiple of the given longitude
  */
-ilib.Date.HanDate.prototype._hanNextSolarLongitude = function(rd, longitude) {
-	var tz = this._chineseTZ(rd);
-	var temp = ilib.Date._localFromUniversal(this._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, tz), longitude), tz);
+ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
+	var tz = ilib.Date.HanDate._chineseTZ(rd);
+	var temp = ilib.Date._localFromUniversal(ilib.Date.HanDate._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, tz), longitude), tz);
 	return temp - ilib.Date.HanRataDie.epoch;
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from 
  * @returns {number} the major solar term for the RD
  */
-ilib.Date.HanDate.prototype._majorSTOnOrAfter = function(rd) {
-	return this._hanNextSolarLongitude(rd, 30);
+ilib.Date.HanDate._majorSTOnOrAfter = function(rd) {
+	return ilib.Date.HanDate._hanNextSolarLongitude(rd, 30);
 };
 
 /**
  * @protected
+ * @static
  * @param {number} rd RD to calculate from 
  * @returns {number} the minor solar term for the RD
  */
-ilib.Date.HanDate.prototype._minorSTOnOrAfter = function(rd) {
+ilib.Date.HanDate._minorSTOnOrAfter = function(rd) {
 	
 };
 
@@ -521,14 +531,14 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 		second: 0,
 		millisecond: 0
 	});
-	var s1 = this._majorSTOnOrAfter(lastYearsST.getRataDie());
-	var s2 = this._majorSTOnOrAfter(thisYearsST.getRataDie());
-	var m1 = (s1 <= rd && rd < s2) ? this._newMoonOnOrAfter(s1 + 1) : this._newMoonOnOrAfter(s2 + 1);
-	var m2 = (s1 <= rd && rd < s2) ? this._newMoonBefore(s2 + 1) : this._newMoonBefore(this._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
-	var m = this._newMoonBefore(rd + 1);
+	var s1 = ilib.Date.HanDate._majorSTOnOrAfter(lastYearsST.getRataDie());
+	var s2 = ilib.Date.HanDate._majorSTOnOrAfter(thisYearsST.getRataDie());
+	var m1 = (s1 <= rd && rd < s2) ? ilib.Date.HanDate._newMoonOnOrAfter(s1 + 1) : ilib.Date.HanDate._newMoonOnOrAfter(s2 + 1);
+	var m2 = (s1 <= rd && rd < s2) ? ilib.Date.HanDate._newMoonBefore(s2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
+	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
 	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853) === 12);
-	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853) - (this.isLeapYear && this._priorLeapMonth(m1, m)) ? 1 : 0, 12);
-	this.isLeapMonth = (this.isLeapYear && this._noMajorST(m) && !this._priorLeapMonth(m1, this._newMoonBefore(m)));
+	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m)) ? 1 : 0, 12);
+	this.isLeapMonth = (this.isLeapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
 	this.year = gregdate.year + 2636 + (this.month < 11 || rd > thisYearJul1.getRataDie()) ? 1 : 0;
 	this.cycle = Math.floor((this.year - 1) / 60) + 1;
 	this.cycleYear = ilib.amod(this.year, 60);
