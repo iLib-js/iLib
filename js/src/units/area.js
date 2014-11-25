@@ -77,16 +77,31 @@ ilib.Measurement.Area.prototype.parent = ilib.Measurement;
 ilib.Measurement.Area.prototype.constructor = ilib.Measurement.Area;
 
 /**
- * @inheritDoc
- */ 
+ * Return the type of this measurement. Examples are "mass",
+ * "length", "speed", etc. Measurements can only be converted
+ * to measurements of the same type.<p>
+ * 
+ * The type of the units is determined automatically from the 
+ * units. For example, the unit "grams" is type "mass". Use the 
+ * static call {@link ilib.Measurement.getAvailableUnits}
+ * to find out what units this version of ilib supports.
+ *  
+ * @return {string} the name of the type of this measurement
+ */
 ilib.Measurement.Area.prototype.getMeasure = function() {
 	return "area";
 }; 
 
 /**
- * Convert the current Area to another measure.
+ * Return a new measurement instance that is converted to a new
+ * measurement unit. Measurements can only be converted
+ * to measurements of the same type.<p>
+ *  
+ * @param {string} to The name of the units to convert to
+ * @return {ilib.Measurement|undefined} the converted measurement
+ * or undefined if the requested units are for a different
+ * measurement type
  * 
- * @inheritDoc
  */
 ilib.Measurement.Area.prototype.convert = function(to) {
 	if (!to || typeof(ilib.Measurement.Area.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -127,7 +142,7 @@ ilib.Measurement.Area.aliases = {
 	"Square metre": "square meter",
 	"Square metres":"square meter",
 	"square metres": "square meter",
-	"square metres":"square meter",
+	"Square Metres":"square meter",
 	"sqm":"square meter",
 	"m2": "square meter",
 	"Square mile":"square mile",
@@ -150,7 +165,7 @@ ilib.Measurement.Area.aliases = {
 	"Square foot": "square foot",
 	"square foot": "square foot",
 	"Square feet": "square foot",
-	"Square feet": "square foot",
+	"Square Feet": "square foot",
 	"sq ft":"square foot",
 	"ft2":"square foot",
 	"Square inch":"square inch",
@@ -228,8 +243,17 @@ ilib.Measurement.Area.usCustomaryToMetric = {
 
 
 /**
- * @inheritDoc
- * @param {string=} measurementsystem
+ * Scale the measurement unit to an acceptable level. The scaling
+ * happens so that the integer part of the amount is as small as
+ * possible without being below zero. This will result in the 
+ * largest units that can represent this measurement without
+ * fractions. Measurements can only be scaled to other measurements 
+ * of the same type.
+ * 
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {ilib.Measurement} a new instance that is scaled to the 
+ * right level
  */
 ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Area.ratios[this.unit];
@@ -267,7 +291,15 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
 };
 
 /**
- * @inheritDoc
+ * Localize the measurement to the commonly used measurement in that locale. For example
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
+ * the formatted number should be automatically converted to the most appropriate 
+ * measure in the other system, in this case, mph. The formatted result should
+ * appear as "37.3 mph". 
+ * 
+ * @abstract
+ * @param {string} locale current locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Area.prototype.localize = function(locale) {
     var to;

@@ -80,16 +80,30 @@ ilib.Measurement.Time.prototype.parent = ilib.Measurement;
 ilib.Measurement.Time.prototype.constructor = ilib.Measurement.Time;
 
 /**
- * {@inheritDoc}
+ * Return the type of this measurement. Examples are "mass",
+ * "length", "speed", etc. Measurements can only be converted
+ * to measurements of the same type.<p>
+ * 
+ * The type of the units is determined automatically from the 
+ * units. For example, the unit "grams" is type "mass". Use the 
+ * static call {@link ilib.Measurement.getAvailableUnits}
+ * to find out what units this version of ilib supports.
+ *  
+ * @return {string} the name of the type of this measurement
  */
 ilib.Measurement.Time.prototype.getMeasure = function() {
 	return "time";
 };
 
 /**
- * Convert the current time to another measure.
- * 
- * @inheritDoc
+ * Return a new measurement instance that is converted to a new
+ * measurement unit. Measurements can only be converted
+ * to measurements of the same type.<p>
+ *  
+ * @param {string} to The name of the units to convert to
+ * @return {ilib.Measurement|undefined} the converted measurement
+ * or undefined if the requested units are for a different
+ * measurement type 
  */
 ilib.Measurement.Time.prototype.convert = function(to) {
 	if (!to || typeof(ilib.Measurement.Time.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -205,7 +219,15 @@ ilib.Measurement.Time.convert = function(to, from, time) {
 };
 
 /**
- * @inheritDoc
+ * Localize the measurement to the commonly used measurement in that locale. For example
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
+ * the formatted number should be automatically converted to the most appropriate 
+ * measure in the other system, in this case, mph. The formatted result should
+ * appear as "37.3 mph". 
+ * 
+ * @abstract
+ * @param {string} locale current locale string
+ * @returns {ilib.Measurement} a new instance that is converted to locale
  */
 ilib.Measurement.Time.prototype.localize = function(locale) {
     return new ilib.Measurement.Time({
@@ -215,8 +237,17 @@ ilib.Measurement.Time.prototype.localize = function(locale) {
 };
 
 /**
- * @inheritDoc
- * @param {string=} measurementsystem
+ * Scale the measurement unit to an acceptable level. The scaling
+ * happens so that the integer part of the amount is as small as
+ * possible without being below zero. This will result in the 
+ * largest units that can represent this measurement without
+ * fractions. Measurements can only be scaled to other measurements 
+ * of the same type.
+ * 
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {ilib.Measurement} a new instance that is scaled to the 
+ * right level
  */
 ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
 
