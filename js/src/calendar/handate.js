@@ -431,8 +431,8 @@ ilib.Date.HanDate._nextSolarLongitude = function(jd, longitude) {
  */
 ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
 	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var temp = ilib.Date._localFromUniversal(ilib.Date.HanDate._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.HanRataDie.epoch, tz), longitude), tz);
-	return temp - ilib.Date.HanRataDie.epoch;
+	var temp = ilib.Date._localFromUniversal(ilib.Date.HanDate._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.RataDie.gregorianEpoch, tz), longitude), tz);
+	return temp - ilib.Date.RataDie.gregorianEpoch;
 };
 
 /**
