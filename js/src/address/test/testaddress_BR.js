@@ -68,7 +68,7 @@ function testParseAddressBROneLine() {
 };
 
 function testParseAddressBRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP \t\n 04642-000,\n\n\n BRAZIL  \n  \t\t\t", {locale: 'pt-BR'});
+	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP\n\n\n BRAZIL  \n  \t\n 04642-000 \t\t\t", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Visconde de Porto Seguro 1238", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressBRSuperfluousWhitespace() {
 };
 
 function testParseAddressBRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro Sao Paulo - SP 04642-000 BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro Sao Paulo - SP BRAZIL  04642-000 ", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Visconde de Porto Seguro", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressBRNoDelimiters() {
 };
 
 function testParseAddressBRSpecialChars() {
-	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,05315-970,BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,BRAZIL,05315-970", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SOCIEDADE BRASILEIRA DE FÍSICA, Caixa Postal 66328", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressBRSpecialChars() {
 };
 
 function testParseAddressBRFromUS() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, 04642-000, BRAZIL", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, Brasil, 04642-000", {locale: 'pt-BR'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -113,7 +113,7 @@ function testParseAddressBRFromUS() {
 	assertEquals("Sao Paulo", parsedAddress.locality);
 	assertEquals("SP",parsedAddress.region);
 	assertEquals("04642-000", parsedAddress.postalCode);
-	assertEquals("BRAZIL", parsedAddress.country);
+	assertEquals("Brasil", parsedAddress.country);
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
@@ -127,7 +127,7 @@ function testFormatAddressBR() {
 		countryCode: "BR"
 	}, {locale: 'pt-BR'});
 	
-	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\n04642-000\nBRAZIL";
+	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
 	var formatter = new ilib.AddressFmt({locale: 'pt-BR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -142,7 +142,49 @@ function testFormatAddressBRFromUS() {
 		countryCode: "BR"
 	}, {locale: 'en-US'});
 	
-	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\n04642-000\nBRAZIL";
+	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testParseAddressBR1() {
+	var parsedAddress = new ilib.Address("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista, São Paulo - SP, Brasil, 01310-000", {locale: 'pt-BR'});
+	
+	// the country name is in English because this address is for a contact in a US database
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista", parsedAddress.streetAddress);
+	assertEquals("São Paulo", parsedAddress.locality);
+	assertEquals("SP",parsedAddress.region);
+	assertEquals("01310-000", parsedAddress.postalCode);
+	assertEquals("Brasil", parsedAddress.country);
+	assertEquals("BR", parsedAddress.countryCode);
+};
+
+function testParseAddressBR2() {
+	var parsedAddress = new ilib.Address("Rua Afonso Canargo, 805, Santana, Guarapuava - PR, 85070-200", {locale: 'pt-BR'});
+	
+	// the country name is in English because this address is for a contact in a US database
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Rua Afonso Canargo, 805, Santana", parsedAddress.streetAddress);
+	assertEquals("Guarapuava", parsedAddress.locality);
+	assertEquals("PR",parsedAddress.region);
+	assertEquals("85070-200", parsedAddress.postalCode);
+
+	assertEquals("BR", parsedAddress.countryCode);
+};
+
+function testParseAddressBR3() {
+	var parsedAddress = new ilib.Address("Boulevard das Flores 255,	SALVADOR - BA, BRAZIL, 40301-110", {locale: 'pt-BR'});
+	
+	// the country name is in English because this address is for a contact in a US database
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Boulevard das Flores 255", parsedAddress.streetAddress);
+	assertEquals("SALVADOR", parsedAddress.locality);
+	assertEquals("BA",parsedAddress.region);
+	assertEquals("40301-110", parsedAddress.postalCode);
+	assertEquals("BRAZIL", parsedAddress.country);
+	assertEquals("BR", parsedAddress.countryCode);
 };

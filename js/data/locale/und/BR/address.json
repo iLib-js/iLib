@@ -1,6 +1,6 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{locality}-{region}\n{postalCode}\n{country}",
+        "default": "{streetAddress}\n{locality}-{region}\n{country}\n{postalCode}",
         "nocountry": "{streetAddress}\n{locality}-{region}\n{postalCode}"
     },
     "startAt": "end",
@@ -9,6 +9,14 @@
             "name": "postalCode",
             "line": "startAtLast",
             "pattern": "[0-9]{5}-[0-9]{3}"
+        },
+         {
+            "name": "country",
+            "line": "startAtLast",
+            "pattern": [
+		"Brazil",
+		"Brasil"
+		]
         },
         {
             "name": "region",
