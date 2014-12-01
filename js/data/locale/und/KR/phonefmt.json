@@ -54,7 +54,7 @@
 			"mobilePrefix":      "XX-",
 			"areaCode":         ["X-", "XX-"],
 			"serviceCode":      ["X-", "XX-", "XXX-", "XXXX-"],
-			"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX", "XXX-XXXX", "XXXX-XXXX"],
+			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
 	},

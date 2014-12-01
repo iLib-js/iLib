@@ -396,7 +396,7 @@ function testFormatKRStyle0Whole6() {
 		areaCode: "33",
 		subscriberNumber: "1234"
 	});
-	var expected = "033-1234";
+	var expected = "033-123-4";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -410,7 +410,7 @@ function testFormatKRStyle0Whole7() {
 		areaCode: "33",
 		subscriberNumber: "12345"
 	});
-	var expected = "033-12345";
+	var expected = "033-123-45";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -424,7 +424,7 @@ function testFormatKRStyle0Whole8() {
 		areaCode: "33",
 		subscriberNumber: "123456"
 	});
-	var expected = "033-123456";
+	var expected = "033-123-456";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -844,6 +844,28 @@ function testFormatKREmergency2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("1355", {locale: "ko-KR"});
 	var expected = "1355";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRWithTrunkAccessNumber() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("00", {locale: "ko-KR"});
+	var expected = "00";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRWithAreaNumber() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("032348431", {locale: "ko-KR"});
+	var expected = "032-348-431";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed);

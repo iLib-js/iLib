@@ -401,3 +401,15 @@ function testParseKRWithKRMCC(){
 	
 	assertTrue(parsed.equals(expected));
 };
+
+function testParseKRWithTrunkAccess(){
+	var parsed = new ilib.PhoneNumber("00", {locale: "ko-KR"});
+	assertNotUndefined(parsed);
+	
+	var expected = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		subscriberNumber: "0"
+	}, {locale: "ko-KR"});
+	
+	assertTrue(parsed.equals(expected));
+};

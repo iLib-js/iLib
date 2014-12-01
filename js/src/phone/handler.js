@@ -341,11 +341,6 @@ ilib.StateHandler.prototype = {
 		
 		// this is a last resort function that is called when nothing is recognized.
 		// When this happens, just put the whole stripped number into the subscriber number
-		if (regionSettings.plan && number.charAt(0) === regionSettings.plan.getTrunkCode()) {
-			fields.trunkAccess = number.charAt(0);
-			number = number.substring(1);
-			//currentChar--;
-		} 
 			
 		if (number.length > 0) {
 			this.processSubscriberNumber(number, fields, regionSettings);

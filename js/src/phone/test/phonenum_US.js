@@ -1304,12 +1304,10 @@ function testUSCrazyIntlCall(){
 	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
-		trunkAccess: "1",
-		subscriberNumber: "23"
+		subscriberNumber: "123"
 	});
 	
 	assertTrue(parsed.equals(expected));
-	
 };
 
 //for NOV-109333
