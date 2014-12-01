@@ -598,10 +598,14 @@ ilib.Address.prototype = {
 		for (j = 0; j < pattern.length; j++) {
 			start = address.compare(line, pattern[j]); 
 			if (start !== -1) {
-				ret.match = line.substring(start, start+pattern[j].length);
-				ret.line = line.substring(0,start).trim();
+                            ret.match = line.substring(start, start+pattern[j].length);
+                            if (start !== 0) {
+                                ret.line = line.substring(0,start).trim();
+                            } else {
+                                ret.line = line.substring(pattern[j].length).trim();
+                            }
 				//console.log("found match " + ret.match + " and rest of line is " + ret.line);
-				return ret;
+                            return ret;
 			}
 		}
 		

@@ -24,11 +24,10 @@ unit.js
 */
 
 /**
- * Create a new area measurement.
- * 
  * @class
+ * Create a new area measurement instance.
  * @constructor
- * @extends {ilib.Measurement}
+ * @extends ilib.Measurement
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */

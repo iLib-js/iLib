@@ -23,10 +23,11 @@ ilibglobal.js
 */
 
 /**
- * Create a new length measurement.
- * 
  * @class
+ * Create a new length measurement instance.
+ *  
  * @constructor
+ * @extends ilib.Measurement
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */

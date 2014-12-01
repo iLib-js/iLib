@@ -29,6 +29,7 @@ strings.js
 // !data unitfmt
 
 /**
+ * @class
  * Create a new unit formatter instance. The unit formatter is immutable once
  * it is created, but can format as many different strings with different values
  * as needed with the same options. Create different unit formatter instances 
@@ -106,8 +107,7 @@ strings.js
  * the correct units.<p>
  * 
  * Depends directive: !depends unitfmt.js
- * 
- * @class
+ *  
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */

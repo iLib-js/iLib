@@ -21,10 +21,11 @@
 ilibglobal.js 
 */
 /**
- * Create a new fuelconsumption measurement.
- *
  * @class
+ * Create a new fuelconsumption measurement instance.
+ * 
  * @constructor
+ * @extends ilib.Measurement
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */

@@ -24,11 +24,11 @@ unit.js
 */
 
 /**
- * Create a new DigitalStorage measurement.
- * 
  * @class
+ * Create a new DigitalStorage measurement instance.
+ *  
  * @constructor
- * @extends {ilib.Measurement}
+ * @extends ilib.Measurement
  * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
  * the construction of this instance
  */

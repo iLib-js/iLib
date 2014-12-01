@@ -57,9 +57,9 @@ function testParseAddressCNAsianNormal() {
 	var parsedAddress = new ilib.Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("朝阳区建国路112号 中国惠普大厦", parsedAddress.streetAddress);
-	assertEquals("北京市", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
+	assertEquals("建国路112号 中国惠普大厦", parsedAddress.streetAddress);
+	assertEquals("朝阳区", parsedAddress.locality);
+	assertEquals("北京市", parsedAddress.region);
 	assertEquals("100022", parsedAddress.postalCode);
 	assertEquals("中国", parsedAddress.country);
 	assertEquals("CN", parsedAddress.countryCode);
@@ -81,11 +81,23 @@ function testParseAddressCNAsianNoCountry() {
 	var parsedAddress = new ilib.Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("朝阳区北四环中路 27号盘古大观 A 座 23层", parsedAddress.streetAddress);
-	assertEquals("北京市", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
+	assertEquals("北四环中路 27号盘古大观 A 座 23层", parsedAddress.streetAddress);
+	assertEquals("北京市", parsedAddress.region);
+	assertEquals("朝阳区", parsedAddress.locality);
 	assertEquals("200001", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
+	assertEquals("CN", parsedAddress.countryCode);
+};
+
+function testParseAddressCNAsianNOExplicitCityDistrict() {
+	var parsedAddress = new ilib.Address("中国四川成都领事馆路4号,邮编 610041", {locale: 'zh-CN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("领事馆路4号邮编", parsedAddress.streetAddress);
+	assertEquals("四川", parsedAddress.region);
+	assertEquals("成都", parsedAddress.locality);
+	assertEquals("610041", parsedAddress.postalCode);
+	assertEquals("中国", parsedAddress.country);
 	assertEquals("CN", parsedAddress.countryCode);
 };
 

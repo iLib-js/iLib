@@ -26,6 +26,7 @@ localeinfo.js
 
 
 /**
+ * @class
  * Create a measurement instance. The measurement is immutable once
  * it is created, but can be converted to other measurements later.<p>
  * 
@@ -52,7 +53,7 @@ localeinfo.js
  * Here are some examples of converting a length into new units. The first method
  * is via the constructor by passing the old measurement in as the amount property.
  * 
- * <code>
+ * <pre>
  * var measurement1 = new ilib.Measurement({
  *   amount: 5,
  *   units: "kilometers"
@@ -61,25 +62,24 @@ localeinfo.js
  *   amount: measurement1,
  *   units: "miles"
  * });
- * </code>
+ * </pre>
  * 
  * The value in measurement2 will end up being about 3.125 miles.
  * 
  * The second method will be using the convert method.
  * 
- * <code>
+ * <pre>
  * var measurement1 = new ilib.Measurement({
  *   amount: 5,
  *   units: "kilometers"
  * });
  * var measurement2 = measurement1.convert("miles");
  * });
- * </code>
+ * </pre>
  *
  * The value in measurement2 will again end up being about 3.125 miles.
  * 
- * @constructor
- * @class
+ * @constructor 
  * @param {Object} options options that control the construction of this instance
  */
 ilib.Measurement = function(options) {
@@ -220,7 +220,7 @@ ilib.Measurement.prototype = {
 	 */
 	convert: function(to) {},     
         
-    /**
+        /**
 	 * Scale the measurement unit to an acceptable level. The scaling
 	 * happens so that the integer part of the amount is as small as
 	 * possible without being below zero. This will result in the 
