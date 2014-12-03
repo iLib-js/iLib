@@ -143,12 +143,12 @@ ilib.PhoneFmt.prototype = {
 	 * @param {string} part
 	 * @param {Object} formats
 	 * @param {boolean} mustUseAll
-	 * @param {boolean|undefined} useSuffix
 	 */
-	_substituteDigits: function(part, formats, mustUseAll, useSuffix) {
+	_substituteDigits: function(part, formats, mustUseAll) {
 		var formatString,
 			formatted = "",
 			partIndex = 0,
+			templates,
 			i;
 
 		// console.info("Globalization.Phone._substituteDigits: typeof(formats) is " + typeof(formats));
@@ -157,19 +157,14 @@ ilib.PhoneFmt.prototype = {
 		}
 
 		if (typeof(formats) === "object") {
-			if (part.length > formats.length) {
+			templates = (typeof(formats.template) !== 'undefined') ? formats.template : formats;
+			if (part.length > templates.length) {
 				// too big, so just use last resort rule.
 				throw "part " + part + " is too big. We do not have a format template to format it.";
-			} else if (formats.suffix) {
-				formatString = formats.template[part.length-1];
-				if(useSuffix) {
-					formatString += formats.suffix;
-				}
-			} else {
-				// use the format in this array that corresponds to the digit length of this
-				// part of the phone number
-				formatString = formats[part.length-1];	
 			}
+			// use the format in this array that corresponds to the digit length of this
+			// part of the phone number
+			formatString =  templates[part.length-1];
 			// console.info("Globalization.Phone._substituteDigits: formats is an Array: " + JSON.stringify(formats));
 		} else {
 			formatString = formats;
@@ -229,7 +224,7 @@ ilib.PhoneFmt.prototype = {
 			style,
 			formatted = "",
 			styleTemplates,
-			useSuffix;
+			lastFieldName;
 	
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
@@ -270,12 +265,15 @@ ilib.PhoneFmt.prototype = {
 					if (fieldName === "trunkAccess") {
 						if (number.areaCode === undefined && number.serviceCode === undefined && number.mobilePrefix === undefined) {
 							templates = "X";
-						} else if (number.subscriberNumber !== undefined || number.extension !== undefined) {
-							useSuffix = true;
 						}
 					}
+					if (lastFieldName && typeof(styleTemplates[lastFieldName].suffix) !== 'undefined') {
+						formatted += styleTemplates[lastFieldName].suffix;
+					}
+					lastFieldName = fieldName;
+					
 					// console.info("format: formatting field " + fieldName + " with templates " + JSON.stringify(templates));
-					temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"), useSuffix);
+					temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"));
 					// console.info("format: formatted is: " + temp);
 					formatted += temp;
 	
