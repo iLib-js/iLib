@@ -282,11 +282,13 @@ ilib.TimeZone.getAvailableIds = function (country) {
 			var hash = ilib._load.listAvailableFiles();
 			for (var dir in hash) {
 				var files = hash[dir];
-				files.forEach(function (filename) {
-					if (filename && filename.match(/^zoneinfo/)) {
-						ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
-					}
-				});
+				if (typeof(files) === 'object' && files instanceof Array) {
+					files.forEach(function (filename) {
+						if (filename && filename.match(/^zoneinfo/)) {
+							ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+						}
+					});
+				}
 			}
 		} else {
 			for (tz in ilib.data.zoneinfo) {

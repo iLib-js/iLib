@@ -818,6 +818,34 @@ function testTZGetAvailableIdsNoFilterContainsLocal() {
     assertTrue(zones.indexOf("local") != -1);
 }
 
+function getAvailableMocker(paths, sync, params, callback) {
+}
+getAvailableMocker.prototype = new ilib.Loader();
+getAvailableMocker.prototype.constructor = getAvailableMocker;
+getAvailableMocker.prototype.listAvailableFiles = function() {
+	return {"resources": "*"};
+};
+
+function testGetAvailableTimeZonesWithLoader() {
+	var temp = ilib._load;
+	ilib.setLoaderCallback(new getAvailableMocker());
+	ilib.LocaleInfo.cache = {}; // clear the locale info cache
+	ilib.TimeZone.cache = {}; // clear the cache
+	ilib.data.timezone.list = undefined; // clear the timezone list cache
+	
+	try {
+		var zones = ilib.TimeZone.getAvailableIds();
+		assertEquals(1, zones.length);
+		assertContains("local", zones);
+	} finally {
+		// clean up
+		ilib.LocaleInfo.cache = {}; // clear the locale info cache
+		ilib.TimeZone.cache = {}; // clear the cache
+		ilib.data.timezone.list = undefined; // clear the timezone list cache
+		ilib._load = temp;
+	}
+}
+
 function testTZGetAvailableIdsByCountryRightLength() {
     var zones = ilib.TimeZone.getAvailableIds("US");
     assertNotNull(zones);
