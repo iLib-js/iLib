@@ -143,8 +143,9 @@ ilib.PhoneFmt.prototype = {
 	 * @param {string} part
 	 * @param {Object} formats
 	 * @param {boolean} mustUseAll
+	 * @param {boolean|undefined} useSuffix
 	 */
-	_substituteDigits: function(part, formats, mustUseAll) {
+	_substituteDigits: function(part, formats, mustUseAll, useSuffix) {
 		var formatString,
 			formatted = "",
 			partIndex = 0,
@@ -159,10 +160,16 @@ ilib.PhoneFmt.prototype = {
 			if (part.length > formats.length) {
 				// too big, so just use last resort rule.
 				throw "part " + part + " is too big. We do not have a format template to format it.";
+			} else if (formats.suffix) {
+				formatString = formats.template[part.length-1];
+				if(useSuffix) {
+					formatString += formats.suffix;
+				}
+			} else {
+				// use the format in this array that corresponds to the digit length of this
+				// part of the phone number
+				formatString = formats[part.length-1];	
 			}
-			// use the format in this array that corresponds to the digit length of this
-			// part of the phone number
-			formatString = formats[part.length-1];
 			// console.info("Globalization.Phone._substituteDigits: formats is an Array: " + JSON.stringify(formats));
 		} else {
 			formatString = formats;
@@ -221,7 +228,8 @@ ilib.PhoneFmt.prototype = {
 			isWhole, 
 			style,
 			formatted = "",
-			styleTemplates;
+			styleTemplates,
+			useSuffix;
 	
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
@@ -262,10 +270,12 @@ ilib.PhoneFmt.prototype = {
 					if (fieldName === "trunkAccess") {
 						if (number.areaCode === undefined && number.serviceCode === undefined && number.mobilePrefix === undefined) {
 							templates = "X";
+						} else if (number.subscriberNumber !== undefined || number.extension !== undefined) {
+							useSuffix = true;
 						}
 					}
 					// console.info("format: formatting field " + fieldName + " with templates " + JSON.stringify(templates));
-					temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"));
+					temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"), useSuffix);
 					// console.info("format: formatted is: " + temp);
 					formatted += temp;
 	

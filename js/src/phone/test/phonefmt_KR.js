@@ -183,19 +183,21 @@ function testFormatKRStyle0Partial1() {
 	
 	assertEquals(expected, formatted);
 };
+
 function testFormatKRStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "33"
 	});
-	var expected = "033-";
+	var expected = "033";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
 };
+
 function testFormatKRStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -340,7 +342,7 @@ function testFormatKRStyle0Whole2() {
 		trunkAccess: "0",
 		areaCode: "33"
 	});
-	var expected = "033-";
+	var expected = "033";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -858,6 +860,88 @@ function testFormatKRWithTrunkAccessNumber() {
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle0WithMobilePrefix() {
+	var formatted;
+
+	var parsed = new ilib.PhoneNumber("010", {locale: "ko-KR"});
+	
+	var expected = "010";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle0WithMobilePrefix2() {
+	var formatted;
+
+	var parsed = new ilib.PhoneNumber("0109", {locale: "ko-KR"});
+	
+	var expected = "010-9";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+
+function testFormatKRStyle1WithAreaNumber() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("031", {locale: "ko-KR"});
+	var expected = "031";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "점"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithAreaNumber2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("0317", {locale: "ko-KR"});
+	var expected = "031.7";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "점"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithServiceNumber() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("030", {locale: "ko-KR"});
+	var expected = "070";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithServiceNumber2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("0301", {locale: "ko-KR"});
+	var expected = "070-1";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithServiceNumber3() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("03012345677", {locale: "ko-KR"});
+	var expected = "030-1234-5677";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
 	
 	assertEquals(expected, formatted);
 };

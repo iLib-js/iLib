@@ -4,19 +4,22 @@
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX "],
-		"mobilePrefix":     ["X-", "XX-"],
+		"mobilePrefix":     ["X ", "XX "],
 		"areaCode":         ["X ", "XX "],
 		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
 		"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
 	},
 	"mobile": {
-		"iddPrefix":        ["X", "XX", "XXX-"],
+		"iddPrefix":        ["X", "XX", "XXX"],
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX "],
 		"trunkAccess":       "X",
-		"mobilePrefix":     ["X-", "XX-"],
+		"mobilePrefix":     {
+								"template":["X", "XX"],
+								"suffix":"-"
+							},
 		"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
 	}, 
@@ -34,26 +37,56 @@
 	"default": {
 		"example":           "033-1234-5678",
 		"partial": {
-			"iddPrefix":        ["X", "XX-", "XXX-"],
+			"iddPrefix":        {
+									"template":["X", "XX", "XXX"],
+									"suffix":"-"
+								},
 			"countryCode":      ["X ", "XX ", "XXX "],
-			"cic":              ["X", "XX-", "XXX-", "XXXX-"],
+			"cic":              {
+									"template":["X", "XX", "XXX", "XXXX"],
+									"suffix":"-"
+								},
 			"emergency":        ["X", "XX", "XXX", "XXXX"],
 			"trunkAccess":       "X",
-			"mobilePrefix":      "XX-",
-			"areaCode":         ["X-", "XX-"],
-			"serviceCode":      ["X-", "XX-", "XXX-", "XXXX-"],
+			"mobilePrefix":     {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
+			"areaCode":         {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
+			"serviceCode":      {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
 			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		},
 		"whole": {
-			"iddPrefix":        ["X", "XX-", "XXX-"],
+			"iddPrefix":        {
+									"template":["X", "XX", "XXX"],
+									"suffix":"-"
+								},
 			"countryCode":      ["X ", "XX ", "XXX "],
-			"cic":              ["X", "XX-", "XXX-", "XXXX-"],
+			"cic":              {
+									"template":["X", "XX", "XXX", "XXXX"],
+									"suffix":"-"
+								},
 			"emergency":        ["X", "XX", "XXX", "XXXX"],
 			"trunkAccess":       "X",
-			"mobilePrefix":      "XX-",
-			"areaCode":         ["X-", "XX-"],
-			"serviceCode":      ["X-", "XX-", "XXX-", "XXXX-"],
+			"mobilePrefix":     {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
+			"areaCode":         {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
+			"serviceCode":      {
+									"template":["X", "XX"],
+									"suffix":"-"
+								},
 			"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX", "XXX-XXXX", "XXXX-XXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
@@ -73,14 +106,29 @@
 	},
 	"점": {
 		"example":          "033.1234.5678",
-		"iddPrefix":        ["X", "XX.", "XXX."],
+		"iddPrefix":        {
+								"template":["X", "XX", "XXX"],
+								"suffix":"."
+							},
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"emergency":        ["X", "XX", "XXX", "XXXX"],
 		"trunkAccess":       "X",
-		"mobilePrefix":      "XX.",
-		"areaCode":         ["X.", "XX."],
-		"serviceCode":      ["X.", "XX."],
-		"cic":              ["X.", "XX.", "XXX.", "XXXX."],
+		"mobilePrefix":     {
+								"template":["X", "XX"],
+								"suffix":"."
+							},
+		"areaCode":         {
+								"template":["X", "XX"],
+								"suffix":"."
+							},
+		"serviceCode":      {
+								"template":["X", "XX"],
+								"suffix":"."
+							},
+		"cic":              {
+								"template":["X", "XX", "XXX", "XXXX"],
+								"suffix":"."
+							},
 		"subscriberNumber": ["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX"],
 		"extension":        [".X", ".XX", ".XXX", ".XXXX", ".XXXXX"]
 	},
