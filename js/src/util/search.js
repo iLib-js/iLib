@@ -134,7 +134,7 @@ ilib.bisectionSearch = function(target, low, high, precision, func) {
 		} else if (value < target) {
 			low = mid;
 		}
-	} while (!compareSignificantDigits(high, low));
+	} while (high - low > pre);
 	
 	return mid;
 };
