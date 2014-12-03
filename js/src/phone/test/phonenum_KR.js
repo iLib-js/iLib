@@ -413,3 +413,28 @@ function testParseKRWithTrunkAccess(){
 	
 	assertTrue(parsed.equals(expected));
 };
+
+function testParseKRWithExtensionCharacter(){
+	var parsed = new ilib.PhoneNumber("5551212,1234", {locale: "ko-KR"});
+	assertNotUndefined(parsed);
+	
+	var expected = new ilib.PhoneNumber({
+		subscriberNumber: "5551212",
+		extension:",1234"
+	}, {locale: "ko-KR"});
+	
+	assertTrue(parsed.equals(expected));
+};
+
+function testParseKRWithExtensionCharacter2(){
+	var parsed = new ilib.PhoneNumber("35850950777;12345", {locale: "ko-KR"});
+	assertNotUndefined(parsed);
+	
+	var expected = new ilib.PhoneNumber({
+		subscriberNumber: "35850950777",
+		invalid:true,
+		extension:";12345"
+	}, {locale: "ko-KR"});
+	
+	assertTrue(parsed.equals(expected));
+};

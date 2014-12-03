@@ -44,7 +44,7 @@ ilib.StateHandler.prototype = {
 	processSubscriberNumber: function(number, fields, regionSettings) {
 		var last;
 		
-		last = number.search(/[xwtp]/i);	// last digit of the local number
+		last = number.search(/[xwtp,;]/i);	// last digit of the local number
 
 		if (last > -1) {
 			if (last > 0) {

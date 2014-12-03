@@ -587,7 +587,9 @@ ilib.PhoneNumber._getCharacterCode = function(ch) {
 	case 'W':
 		return -1;
 	case 'x':
-	case 'X':		// extension char
+	case 'X':
+	case ',':
+	case ';':		// extension char
 		return -1;
 	}
 	return -2;
