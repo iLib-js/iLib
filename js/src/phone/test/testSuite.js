@@ -32,6 +32,7 @@ function suite() {
 		"phoneloc.js",
 		"phonenum.js",
 		"phonegeo.js",
+		"phonegeo_KR.js",
 		"normalize.js",
 		"imsi.js",
 		"phonenum_AU.js",
