@@ -915,7 +915,7 @@ function testFormatKRStyle1WithAreaNumber2() {
 
 function testFormatKRStyle1WithServiceNumber() {
 	var formatted;
-	var parsed = new ilib.PhoneNumber("030", {locale: "ko-KR"});
+	var parsed = new ilib.PhoneNumber("070", {locale: "ko-KR"});
 	var expected = "070";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
@@ -926,7 +926,7 @@ function testFormatKRStyle1WithServiceNumber() {
 
 function testFormatKRStyle1WithServiceNumber2() {
 	var formatted;
-	var parsed = new ilib.PhoneNumber("0301", {locale: "ko-KR"});
+	var parsed = new ilib.PhoneNumber("0701", {locale: "ko-KR"});
 	var expected = "070-1";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
