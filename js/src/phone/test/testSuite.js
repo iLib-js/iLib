@@ -78,7 +78,8 @@ function suite() {
 		"phonefmt_RU.js",
 		"phonefmt_SG.js",
 		"phonefmt_TW.js",
-		"phonefmt_US.js"
+		"phonefmt_US.js",
+		"phonegeo_RU.js"
 	];
 	
 	suites.forEach(function (path) {
