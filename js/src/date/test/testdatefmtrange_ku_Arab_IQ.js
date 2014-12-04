@@ -1,8 +1,9 @@
 /*
- * testdatefmtrange_ko_KR.js - test the date range formatter object in Korean/Korea
+ * testdatefmtrange_ku_Arab_IQ.js - test the date range formatter object in 
+ * Kurdish for Iraq in Arabic script
  * 
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tkos file except in compliance with the License.
@@ -18,7 +19,7 @@
  * limitations under the License.
  */
 
-function testDateRngFmtKRRangeInDayShort() {
+function testDateRngFmtKuRangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -42,7 +43,7 @@ function testDateRngFmtKRRangeInDayShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeInDayMedium() {
+function testDateRngFmtKuRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -66,7 +67,7 @@ function testDateRngFmtKRRangeInDayMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeInDayLong() {
+function testDateRngFmtKuRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -90,7 +91,7 @@ function testDateRngFmtKRRangeInDayLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeInDayFull() {
+function testDateRngFmtKuRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -115,7 +116,7 @@ function testDateRngFmtKRRangeInDayFull() {
     assertEquals("", fmt.format(start, end));
 }
 
-function testDateRngFmtKRRangeNextDayShort() {
+function testDateRngFmtKuRangeNextDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -139,7 +140,7 @@ function testDateRngFmtKRRangeNextDayShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextDayMedium() {
+function testDateRngFmtKuRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -163,7 +164,7 @@ function testDateRngFmtKRRangeNextDayMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextDayLong() {
+function testDateRngFmtKuRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -187,7 +188,7 @@ function testDateRngFmtKRRangeNextDayLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextDayFull() {
+function testDateRngFmtKuRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -212,7 +213,7 @@ function testDateRngFmtKRRangeNextDayFull() {
     assertEquals("", fmt.format(start, end));
 }
 
-function testDateRngFmtKRRangeMultiDayShort() {
+function testDateRngFmtKuRangeMultiDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -236,7 +237,7 @@ function testDateRngFmtKRRangeMultiDayShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiDayMedium() {
+function testDateRngFmtKuRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -260,7 +261,7 @@ function testDateRngFmtKRRangeMultiDayMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiDayLong() {
+function testDateRngFmtKuRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -284,7 +285,7 @@ function testDateRngFmtKRRangeMultiDayLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiDayFull() {
+function testDateRngFmtKuRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -309,7 +310,7 @@ function testDateRngFmtKRRangeMultiDayFull() {
     assertEquals("", fmt.format(start, end));
 }
 
-function testDateRngFmtKRRangeNextMonthShort() {
+function testDateRngFmtKuRangeNextMonthShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -333,7 +334,7 @@ function testDateRngFmtKRRangeNextMonthShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextMonthMedium() {
+function testDateRngFmtKuRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -357,7 +358,7 @@ function testDateRngFmtKRRangeNextMonthMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextMonthLong() {
+function testDateRngFmtKuRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -381,7 +382,7 @@ function testDateRngFmtKRRangeNextMonthLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextMonthFull() {
+function testDateRngFmtKuRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -406,7 +407,7 @@ function testDateRngFmtKRRangeNextMonthFull() {
     assertEquals("", fmt.format(start, end));
 }
 
-function testDateRngFmtKRRangeNextYearShort() {
+function testDateRngFmtKuRangeNextYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -430,7 +431,7 @@ function testDateRngFmtKRRangeNextYearShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextYearMedium() {
+function testDateRngFmtKuRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -454,7 +455,7 @@ function testDateRngFmtKRRangeNextYearMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextYearLong() {
+function testDateRngFmtKuRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -478,7 +479,7 @@ function testDateRngFmtKRRangeNextYearLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeNextYearFull() {
+function testDateRngFmtKuRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -503,7 +504,7 @@ function testDateRngFmtKRRangeNextYearFull() {
     assertEquals("", fmt.format(start, end));
 }
 
-function testDateRngFmtKRRangeMultiYearShort() {
+function testDateRngFmtKuRangeMultiYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
     assertNotNull(fmt);
     
@@ -527,7 +528,7 @@ function testDateRngFmtKRRangeMultiYearShort() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiYearMedium() {
+function testDateRngFmtKuRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
     assertNotNull(fmt);
     
@@ -551,7 +552,7 @@ function testDateRngFmtKRRangeMultiYearMedium() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiYearLong() {
+function testDateRngFmtKuRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
     assertNotNull(fmt);
     
@@ -575,7 +576,7 @@ function testDateRngFmtKRRangeMultiYearLong() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRRangeMultiYearFull() {
+function testDateRngFmtKuRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
@@ -599,7 +600,7 @@ function testDateRngFmtKRRangeMultiYearFull() {
 	});
     assertEquals("", fmt.format(start, end));
 }
-function testDateRngFmtKRManyYearsFull() {
+function testDateRngFmtKuManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
     assertNotNull(fmt);
     
