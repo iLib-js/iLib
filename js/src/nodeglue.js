@@ -11,18 +11,28 @@ var nodeLoader = function () {
 	// util.print("new nodeLoader instance\n");
 
 	if (typeof(module) !== 'undefined' && module.filename) {
-		// this was loaded via a nodejs require() call, so find the parent
-		// dir of this file to find where the locale dir is
-		this.base = path.dirname(module.filename);
-	} else {
-		var relpath = path.normalize(path.join(process.cwd(), "/../data"));
-		if (fs.existsSync(relpath) && fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
-			// for use from within a development check-out of ilib
-			this.base = relpath;
-		} else {
-			// standard install location
-			this.base = "/usr/share/javascript/ilib";
+		// loaded under nodejs
+		var base = path.dirname(module.filename);
+		var localeDir = path.normalize(path.join(base, "locale"));
+		if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
+			// this was loaded via a nodejs require() call in an npm module, so the parent
+			// dir of this file is where the locale dir is
+			this.base = base;
+		} 
+		
+		if (!this.base) {
+			base = path.normalize(path.join(base, "/../data"));
+			localeDir = path.normalize(path.join(base, "localetemp"));
+			if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
+				// loaded from a development check-out of the ilib sources
+				this.base = base;
+			}
 		}
+	}
+
+	if (!this.base) {
+		// standard install location
+		this.base = "/usr/share/javascript/ilib";
 	}
 	
 	// util.print("base is defined as " + this.base + "\n");
