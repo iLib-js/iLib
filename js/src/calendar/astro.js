@@ -1612,5 +1612,5 @@ ilib.Date._lunarLongitude = function (jd) {
 	var jupiter = 318.0 / 1000000 * ilib.Date._dsin(53.090000000000003 + c * 479264.28999999998);
 	var flatEarth = 1962.0 / 1000000 * ilib.Date._dsin(meanMoon - moonNode);
 	
-	return ilib.Date._fixangle(meanMoon + longitude + venus + jupiter + flatEarth + ilib.Date._nutation2(jd));
+	return ilib.Date._fixangle(meanMoon + longitude + venus + jupiter + flatEarth + ilib.Date._nutation2(c));
 };
