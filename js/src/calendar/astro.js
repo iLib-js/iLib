@@ -1607,10 +1607,10 @@ ilib.Date._lunarLongitude = function (jd) {
 				ilib.Date._lunarAnomalyLongCoeff[i] * lunarAnomaly + 
 				ilib.Date._moonFromNodeLongCoeff[i] * moonNode);
 	}
-	var correction = sum / 1000000;
+	var longitude = sum / 1000000;
 	var venus = 3958.0 / 1000000 * ilib.Date._dsin(119.75 + c * 131.84899999999999);
 	var jupiter = 318.0 / 1000000 * ilib.Date._dsin(53.090000000000003 + c * 479264.28999999998);
 	var flatEarth = 1962.0 / 1000000 * ilib.Date._dsin(meanMoon - moonNode);
 	
-	return ilib.Date._fixangle(meanMoon + correction + venus + jupiter + flatEarth + ilib.Date._nutation2(jd));
+	return ilib.Date._fixangle(meanMoon + longitude + venus + jupiter + flatEarth + ilib.Date._nutation2(jd));
 };
