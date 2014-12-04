@@ -33,6 +33,7 @@ function suite() {
 		"phonenum.js",
 		"phonegeo.js",
 		"phonegeo_KR.js",
+		"phonegeo_JP.js",
 		"normalize.js",
 		"imsi.js",
 		"phonenum_AU.js",

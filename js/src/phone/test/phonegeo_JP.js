@@ -1,5 +1,5 @@
 /*
- * phonegeo_KR.js - Test the GeoLocator Object.
+ * phonegeo_JP.js - Test the GeoLocator Object.
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -17,17 +17,17 @@
  * limitations under the License.
  */
 
-function testKRLocalNumber1() {
-	var parsed = new ilib.PhoneNumber("312 3456",{locale: "ko-KR"});
+function testJPLocalNumber1() {
+	var parsed = new ilib.PhoneNumber("3111 1111",{locale: "ja-JP"});
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -36,40 +36,21 @@ function testKRLocalNumber1() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 };
 
-function testKRLocalNumber2() {
-	var parsed = new ilib.PhoneNumber("212-3456",{locale: "ko-KR"});
+function testJPNumberWithAreaCode1() {
+	var parsed = new ilib.PhoneNumber("056-5-3111-1111",{locale: "ja-JP"});
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
-		}		
-	};
-
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
-	var geoInfo = locator.locate(parsed);
-	
-	assertNotUndefined(locator);
-	assertEquals(expected.country.code, geoInfo.country.code);
-	assertEquals(expected.country.sn, geoInfo.country.sn);
-	assertEquals(expected.country.ln, geoInfo.country.ln);
-};
-
-function testKRNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("02-312-3456",{locale: "ko-KR"});
-	var expected = {
-		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "서울",
-			ln: "서울 그리고 경기도 일부(과천, 광명 그리고 고양시 하남시)"
+			sn: "Aichi",
+			ln: "Higashikamo District, Nishikamo District, Toyota, Aichi"
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new ilib.GeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -79,21 +60,21 @@ function testKRNumberWithAreaCode1() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("051-212-3456",{locale: "ko-KR"});
+function testJPNumberWithAreaCode2() {
+	var parsed = new ilib.PhoneNumber("03-3262-2391",{locale: "ja-JP"});
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "부산",
-			ln: "부산"
+			sn: "Tokyo",
+			ln: "Tokyo"
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -103,21 +84,21 @@ function testKRNumberWithAreaCode2() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+82-2-312-3456");
+function testJPNumberWithAreaCodeAndCountry1() {
+	var parsed = new ilib.PhoneNumber("+81-3-2122-3456");
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "서울",
-			ln: "서울 그리고 경기도 일부(과천, 광명 그리고 고양시 하남시)"
+			sn: "Tokyo",
+			ln: "Tokyo"
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -127,17 +108,17 @@ function testKRNumberWithAreaCodeAndCountry1() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+82-2-312-3456");
+function testJPNumberWithAreaCodeAndCountry2() {
+	var parsed = new ilib.PhoneNumber("+81-56-5-2122-3456");
 	var expected = {
 		country: {
-			sn: "South Korea",
-			ln: "South Korea",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "Seoul",
-			ln: "Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)"
+			sn: "Aichi",
+			ln: "Higashikamo District, Nishikamo District, Toyota, Aichi"
 		}
 	};
 	
@@ -151,17 +132,17 @@ function testKRNumberWithAreaCodeAndCountry2() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+82-51-212-3456");
+function testJPNumberWithAreaCodeAndCountry3() {
+	var parsed = new ilib.PhoneNumber("+81-4-29-2123-3456");
 	var expected = {
 		country: {
-			sn: "South Korea",
-			ln: "South Korea",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "Busan",
-			ln: "Busan"
+			sn: "Saitama",
+			ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
 		}
 	};
 	
@@ -175,17 +156,17 @@ function testKRNumberWithAreaCodeAndCountry3() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 82-51-212-3456");
+function testJPNumberCallFromUS() {
+	var parsed = new ilib.PhoneNumber("011 81-4-29-2123-3456");
 	var expected = {
 		country: {
-			sn: "South Korea",
-			ln: "South Korea",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
-			sn: "Busan",
-			ln: "Busan"
+			sn: "Saitama",
+			ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
 		}
 	};
 	
@@ -199,17 +180,17 @@ function testKRNumberCallFromUS() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRNumberWithAreaCodeAndCountry4() {
-	var parsed = new ilib.PhoneNumber("+82-51-212-3456");
+function testJPNumberWithAreaCodeAndCountry4() {
+	var parsed = new ilib.PhoneNumber("+81-4-29-2123-3456");
 	var expected = {
 		country: {
-			sn: "Corée du Sud",
-			ln: "Corée du Sud",
-			code: "KR"
+			sn: "Japon",
+			ln: "Japon",
+			code: "JP"
 		},
 		area: {
-			sn: "Busan",
-			ln: "Busan"
+			sn: "Saitama",
+			ln: "Hannō, Hidaka, Iruma District, Iruma, Sayama, Tokorozawa, Saitama"
 		}
 	};
 	
@@ -223,20 +204,20 @@ function testKRNumberWithAreaCodeAndCountry4() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRPolice() {
-	var parsed = new ilib.PhoneNumber("112",{locale: "ko-KR"});
+function testJPPolice() {
+	var parsed = new ilib.PhoneNumber("110",{locale: "ja-JP"});
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
 			sn: "Emergency Services Number",
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new ilib.GeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -247,20 +228,20 @@ function testKRPolice() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testKRFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("119",{locale: "ko-KR"});
+function testJPFireAndAmbulance() {
+	var parsed = new ilib.PhoneNumber("119",{locale: "ja-JP"});
 	var expected = {
 		country: {
-			sn: "남한",
-			ln: "남한",
-			code: "KR"
+			sn: "Japan",
+			ln: "Japan",
+			code: "JP"
 		},
 		area: {
 			sn: "Emergency Services Number",
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new ilib.GeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
