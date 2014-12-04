@@ -14,6 +14,8 @@
 424	area	Taichung	Taichung City
 425	area	Taichung	Fengyuan, including Zhuolan, Miaoli, Taichung City
 426	area	Taichung	Dajia and Shalu, Taichung City
+43	area	Taichung	Taichung City
+44	area	Taichung	Taichung City
 45	area	Taichung	Houli, Lishan, Taichung City 
 46	area	Dadu	Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi
 47	area	Changhua	Lugang, Changhua City 
@@ -40,6 +42,7 @@
 8235	area	Kinmen	Jinsha, Kinmen County
 8236	area	Kinmen	Lieyu, Kinmen County
 826	area	Wuqiu	Wuqiu Township
+827	area	Tung-Sha	Tung-Sha Island
 8362	area	Matsu	Nangan, Matsu, Lienchiang County
 8365	area	Matsu	Beigan, Matsu, Lienchiang County
 8367	area	Matsu	Dongyin, Matsu, Lienchiang County
@@ -47,3 +50,4 @@
 87	area	Pingtung	Pingtung City and Chaozhou, Pingtung County 
 88	area	Pingtung	Donggang and Kenting, Pingtung County 
 89	area	Taitung	Taitung County 
+

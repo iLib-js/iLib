@@ -58,6 +58,14 @@
         "sn": "Ilan",
         "ln": "Ilan County, Jiaoqi, Su'ao, Luodong"
     },
+    "43": {
+        "sn": "Taichung",
+        "ln": "Taichung City"
+    },
+    "44": {
+        "sn": "Taichung",
+        "ln": "Taichung City"
+    },
     "45": {
         "sn": "Taichung",
         "ln": "Houli, Lishan, Taichung City"
@@ -161,6 +169,10 @@
     "826": {
         "sn": "Wuqiu",
         "ln": "Wuqiu Township"
+    },
+    "827": {
+        "sn": "Tung-Sha",
+        "ln": "Tung-Sha Island"
     },
     "8232": {
         "sn": "Kinmen",
