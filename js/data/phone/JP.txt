@@ -69,7 +69,7 @@
 80	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
 90	cell	Mobile telephony and data services (PDC, J-CDMA, UMTS)
 
-11	area	Sappro
+11	area	Sapporo
 123	area	Chitose, and Yubari and Kuriyama
 124	area	Ashibetsu 
 125	area	Takigawa 
