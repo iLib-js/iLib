@@ -1116,6 +1116,13 @@ ilib.Date._ephemerisFromUniversal = function(jd) {
 /**
  * @private
  */
+ilib.Date._universalFromEphemeris = function(jd) {
+	return jd - ilib.Date._ephemerisCorrection(jd);
+};
+
+/**
+ * @private
+ */
 ilib.Date._julianCenturies = function(jd) {
 	// 2451545.0 is the Julian day of J2000 epoch
 	// 730119.5 is the Gregorian RD of J2000 epoch
@@ -1615,41 +1622,230 @@ ilib.Date._lunarLongitude = function (jd) {
 	return ilib.Date._fixangle(meanMoon + longitude + venus + jupiter + flatEarth + ilib.Date._nutation2(c));
 };
 
-ilib.Date._nmApproxCoeff = [ 730125.59765000001, 36524.908822833051, 0.0001337,
-		-1.5e-07, 7.3e-10 ];
-ilib.Date._nmCapECoeff = [ 1.0, -0.002516, -7.4e-06 ];
-ilib.Date._nmSolarAnomalyCoeff = [ 2.5534, 35998.960422026496, -2.18e-05,
-		-1.1e-07 ];
-ilib.Date._nmLunarAnomalyCoeff = [ 201.5643, 477197.67640106793, 0.0107438,
-		1.239e-05, -5.8e-08 ];
-ilib.Date._nmMoonArgumentCoeff = [ 160.71080000000001, 483200.81131396897,
-		-0.0016341, -2.27e-06, 1.1e-08 ];
-ilib.Date._nmCapOmegaCoeff = [ 124.77460000000001, -1934.1313612299998,
-		0.0020691, 2.15e-06 ];
-ilib.Date._nmEFactor = [ 0, 1, 0, 0, 1, 1, 2, 0, 0, 1, 0, 1, 1, 1 ];
-ilib.Date._nmSolarCoeff = [ 0, 1, 0, 0, -1, 1, 2, 0, 0, 1, 0, 1, 1, -1, 2, 0, 3,
-		1, 0, 1, -1, -1, 1 ];
-ilib.Date._nmLunarCoeff = [ 1, 0, 2, 0, 1, 1, 0, 1, 1, 2, 3, 0, 0, 2, 1, 2, 0, 1,
-		2, 1, 1, 1, 3, 4 ];
-ilib.Date._nmMoonCoeff = [ 0, 0, 0, 2, 0, 0, 0, -2, 2, 0, 0, 2, -2, 0, 0, -2, 0,
-		-2, 2, 2, 2, -2 ];
-ilib.Date._nmSineCoeff = [ -0.4072, 0.17241, 0.01608, 0.01039, 0.00739, -0.00514,
-		0.00208, -0.00111, -0.00057, 0.00056, -0.00042, 0.00042, 0.00038,
-		-0.00024, -6.999999999999999e-05, 4e-05, 4e-05, 3e-05, 3e-05, -3e-05,
-		3e-05, -2e-05, -2e-05, 2e-05 ];
-ilib.Date._nmAddConst = [ 251.88, 251.83000000000001, 349.42000000000002,
-		84.659999999999997, 141.74000000000001, 207.13999999999999, 154.84,
-		34.520000000000003, 207.19, 291.33999999999997, 161.72, 239.56,
-		331.55000000000001 ];
-ilib.Date._nmAddCoeff = [ 0.016321, 26.641886, 36.412478, 18.206239,
-		53.303770999999998, 2.453732, 7.30686, 27.261239, 0.121824, 1.844379,
-		24.198153999999999, 25.513099, 3.592518 ];
-ilib.Date._nmAddFactor = [ 0.000165, 0.000164, 0.000126, 0.00011, 6.2e-05, 6e-05,
-		5.6e-05, 4.7e-05, 4.2e-05, 4e-05, 3.7e-05, 3.5e-05, 2.3e-05 ];
-ilib.Date._nmExtra = [ 299.76999999999998, 132.84758479999999,
-		-0.009173000000000001 ];
+ilib.Date._nmApproxCoeff = [
+    730125.59765000001,
+    36524.908822833051,
+    0.0001337,
+    -1.5e-07,
+    7.3e-10
+];
+ilib.Date._nmCapECoeff = [
+    1.0,
+    -0.002516,
+    -7.4e-06
+];
+ilib.Date._nmSolarAnomalyCoeff = [
+    2.5534,
+    35998.960422026496,
+    -2.18e-05,
+    -1.1e-07
+];
+ilib.Date._nmLunarAnomalyCoeff = [
+    201.5643,
+    477197.67640106793,
+    0.0107438,
+    1.239e-05,
+    -5.8e-08
+];
+ilib.Date._nmMoonArgumentCoeff = [
+    160.71080000000001,
+    483200.81131396897,
+    -0.0016341,
+    -2.27e-06,
+    1.1e-08
+];
+ilib.Date._nmCapOmegaCoeff = [
+    124.77460000000001,
+    -1934.1313612299998,
+    0.0020691,
+    2.15e-06
+];
+ilib.Date._nmEFactor = [
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+];
+ilib.Date._nmSolarCoeff = [
+    0,
+    1,
+    0,
+    0,
+    -1,
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    -1,
+    2,
+    0,
+    3,
+    1,
+    0,
+    1,
+    -1,
+    -1,
+    1,
+    0
+];
+ilib.Date._nmLunarCoeff = [
+    1,
+    0,
+    2,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    2,
+    3,
+    0,
+    0,
+    2,
+    1,
+    2,
+    0,
+    1,
+    2,
+    1,
+    1,
+    1,
+    3,
+    4
+];
+ilib.Date._nmMoonCoeff = [
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    -2,
+    2,
+    0,
+    0,
+    2,
+    -2,
+    0,
+    0,
+    -2,
+    0,
+    -2,
+    2,
+    2,
+    2,
+    -2,
+    0,
+    0
+];
+ilib.Date._nmSineCoeff = [
+    -0.4072,
+    0.17241,
+    0.01608,
+    0.01039,
+    0.00739,
+    -0.00514,
+    0.00208,
+    -0.00111,
+    -0.00057,
+    0.00056,
+    -0.00042,
+    0.00042,
+    0.00038,
+    -0.00024,
+    -6.999999999999999e-05,
+    4e-05,
+    4e-05,
+    3e-05,
+    3e-05,
+    -3e-05,
+    3e-05,
+    -2e-05,
+    -2e-05,
+    2e-05
+];
+ilib.Date._nmAddConst = [
+    251.88,
+    251.83000000000001,
+    349.42000000000002,
+    84.659999999999997,
+    141.74000000000001,
+    207.13999999999999,
+    154.84,
+    34.520000000000003,
+    207.19,
+    291.33999999999997,
+    161.72,
+    239.56,
+    331.55000000000001
+];
+ilib.Date._nmAddCoeff = [
+    0.016321,
+    26.641886,
+    36.412478,
+    18.206239,
+    53.303770999999998,
+    2.453732,
+    7.30686,
+    27.261239,
+    0.121824,
+    1.844379,
+    24.198153999999999,
+    25.513099,
+    3.592518
+];
+ilib.Date._nmAddFactor = [
+    0.000165,
+    0.000164,
+    0.000126,
+    0.00011,
+    6.2e-05,
+    6e-05,
+    5.6e-05,
+    4.7e-05,
+    4.2e-05,
+    4e-05,
+    3.7e-05,
+    3.5e-05,
+    2.3e-05
+];
+ilib.Date._nmExtra = [
+    299.76999999999998,
+    132.84758479999999,
+    -0.009173000000000001
+];
 
-ilib.Date.newMoonTime = function(n) {
+/**
+ * @param {number} n
+ * @return {number} julian day of the n'th new moon
+ */
+ilib.Date._newMoonTime = function(n) {
 	var k = n - 24724;
 	var c = k / 1236.8499999999999;
 	var approx = ilib.Date._poly(c, ilib.Date._nmApproxCoeff);
@@ -1659,19 +1855,17 @@ ilib.Date.newMoonTime = function(n) {
 	var moonArgument = ilib.Date._poly(c, ilib.Date._nmMoonArgumentCoeff);
 	var capOmega = ilib.Date._poly(c, ilib.Date._nmCapOmegaCoeff);
 	var correction = -0.00017 * ilib.Date._dsin(capOmega);
-	for (var ix = 0; ix < ilib.Date._nmSineCoeff.length; ix++)
-	{
-		correction = correction + ilib.Date._nmSineCoeff[ix] * Math.pow(capE, ilib.Date._nmEFactor[ix]) * 
-		ilib.Date._dsin(ilib.Date._nmSolarCoeff[ix] * solarAnomaly + 
-				ilib.Date._nmLunarCoeff[ix] * lunarAnomaly + 
-				ilib.Date._nmMoonCoeff[ix] * moonArgument);
+	for (var i = 0; i < ilib.Date._nmSineCoeff.length; i++) {
+		correction = correction + ilib.Date._nmSineCoeff[i] * Math.pow(capE, ilib.Date._nmEFactor[i]) * 
+		ilib.Date._dsin(ilib.Date._nmSolarCoeff[i] * solarAnomaly + 
+				ilib.Date._nmLunarCoeff[i] * lunarAnomaly + 
+				ilib.Date._nmMoonCoeff[i] * moonArgument);
 	}
 	var additional = 0;
-	for (var ix = 0; ix < ilib.Date._nmAddConst.length; ix++)
-	{
-		additional = additional + ilib.Date._nmAddFactor[ix] * 
-		ilib.Date._dsin(ilib.Date._nmAddConst[ix] + ilib.Date._nmAddCoeff[ix] * k);
+	for (var i = 0; i < ilib.Date._nmAddConst.length; i++) {
+		additional = additional + ilib.Date._nmAddFactor[i] * 
+		ilib.Date._dsin(ilib.Date._nmAddConst[i] + ilib.Date._nmAddCoeff[i] * k);
 	}
 	var extra = 0.000325 * ilib.Date._dsin(ilib.Date._poly(c, ilib.Date._nmExtra));
-	return ilib.Date._universalFromEmphemeris(approx + correction + extra + additional);
+	return ilib.Date._universalFromEphemeris(approx + correction + extra + additional + ilib.Date.RataDie.gregorianEpoch);
 };
