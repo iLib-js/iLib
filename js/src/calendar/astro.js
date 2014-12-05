@@ -1869,3 +1869,48 @@ ilib.Date._newMoonTime = function(n) {
 	var extra = 0.000325 * ilib.Date._dsin(ilib.Date._poly(c, ilib.Date._nmExtra));
 	return ilib.Date._universalFromEphemeris(approx + correction + extra + additional + ilib.Date.RataDie.gregorianEpoch);
 };
+
+/**
+ * @param {number} jd
+ * @return {number}
+ */
+ilib.Date._lunarSolarAngle = function(jd) {
+	var lunar = ilib.Date._lunarLongitude(jd);
+	var solar = ilib.Date._solarLongitude(jd)
+	return ilib.Date._fixangle(lunar - solar);
+};
+
+/**
+ * @param {number} jd
+ * @return {number}
+ */
+ilib.Date._newMoonBefore = function (jd) {
+	var phase = ilib.Date._lunarSolarAngle(jd);
+	// 11.450086114414322 is the julian day of the 0th full moon
+	// 29.530588853000001 is the average length of a month
+	var guess = Math.round((jd - 11.450086114414322 - ilib.Date.RataDie.gregorianEpoch) / 29.530588853000001 - phase / 360) - 1;
+	var current, last;
+	current = last = ilib.Date._newMoonTime(guess);
+	while (current < jd) {
+		guess++;
+		last = current;
+		current = ilib.Date._newMoonTime(guess);
+	}
+	return last;
+};
+
+/**
+ * @param {number} jd
+ * @return {number}
+ */
+ilib.Date._newMoonAtOrAfter = function (jd) {
+	var phase = ilib.Date._lunarSolarAngle(jd);
+	// 11.450086114414322 is the julian day of the 0th full moon
+	// 29.530588853000001 is the average length of a month
+	var guess = Math.round((jd - 11.450086114414322 - ilib.Date.RataDie.gregorianEpoch) / 29.530588853000001 - phase / 360);
+	var current;
+	while ((current = ilib.Date._newMoonTime(guess)) < jd) {
+		guess++;
+	}
+	return current;
+};
