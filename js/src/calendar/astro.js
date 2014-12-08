@@ -54,6 +54,7 @@ ilib.Date._rtd = function(r) {
 
 /**
  * Return the cosine of an angle given in degrees.
+ * @static
  * @param {number} d angle in degrees
  * @return {number} cosine of the angle.
  */  
@@ -63,6 +64,7 @@ ilib.Date._dcos = function(d) {
 
 /**
  * Return the sine of an angle given in degrees.
+ * @static
  * @param {number} d angle in degrees
  * @return {number} sine of the angle.
  */  
@@ -72,6 +74,7 @@ ilib.Date._dsin = function(d) {
 
 /**
  * Return the tan of an angle given in degrees.
+ * @static
  * @param {number} d angle in degrees
  * @return {number} tan of the angle.
  */  
@@ -664,6 +667,7 @@ ilib.Date._obliqeq = function (jd) {
  * Return the position of the sun.  We return
  * intermediate values because they are useful in a
  * variety of other contexts.
+ * @static
  * @param {number} jd find the position of sun on this Julian Day
  * @return {Object} the position of the sun and many intermediate
  * values
@@ -964,6 +968,7 @@ ilib.Date._equationOfTime = function(jd) {
 
 /**
  * @private
+ * @static
  */
 ilib.Date._poly = function(x, coefficients) {
 	var result = coefficients[0];
@@ -1063,6 +1068,7 @@ ilib.Date._coeff18th = [
 ];
 
 /**
+ * @static
  * @private
  */
 ilib.Date._ephemerisCorrection = function(jd) {
@@ -1107,6 +1113,7 @@ ilib.Date._ephemerisCorrection = function(jd) {
 };
 
 /**
+ * @static
  * @private
  */
 ilib.Date._ephemerisFromUniversal = function(jd) {
@@ -1114,6 +1121,7 @@ ilib.Date._ephemerisFromUniversal = function(jd) {
 };
 
 /**
+ * @static
  * @private
  */
 ilib.Date._universalFromEphemeris = function(jd) {
@@ -1121,6 +1129,7 @@ ilib.Date._universalFromEphemeris = function(jd) {
 };
 
 /**
+ * @static
  * @private
  */
 ilib.Date._julianCenturies = function(jd) {
@@ -1592,6 +1601,7 @@ ilib.Date._sineCoeff = [
 ];
 
 /**
+ * @static
  * @protected
  * @param {number} jd
  * @return {number}
@@ -1842,6 +1852,7 @@ ilib.Date._nmExtra = [
 ];
 
 /**
+ * @static
  * @param {number} n
  * @return {number} julian day of the n'th new moon
  */
@@ -1871,6 +1882,7 @@ ilib.Date._newMoonTime = function(n) {
 };
 
 /**
+ * @static
  * @param {number} jd
  * @return {number}
  */
@@ -1881,6 +1893,7 @@ ilib.Date._lunarSolarAngle = function(jd) {
 };
 
 /**
+ * @static
  * @param {number} jd
  * @return {number}
  */
@@ -1900,6 +1913,7 @@ ilib.Date._newMoonBefore = function (jd) {
 };
 
 /**
+ * @static
  * @param {number} jd
  * @return {number}
  */
@@ -1914,3 +1928,22 @@ ilib.Date._newMoonAtOrAfter = function (jd) {
 	}
 	return current;
 };
+
+/**
+ * @static
+ * @param {number} jd JD to calculate from
+ * @param {number} longitude longitude to seek 
+ * @returns {number} the JD of the next time that the solar longitude 
+ * is a multiple of the given longitude
+ */
+ilib.Date._nextSolarLongitude = function(jd, longitude) {
+	var rate = 365.242189 / 360.0;
+	var tau = jd + rate * ilib.Date._fixangle(longitude - ilib.Date._solarLongitude(jd));
+	var start = Math.max(jd, tau - 5.0);
+	var end = tau + 5.0;
+	
+	return ilib.bisectionSearch(0, start, end, 1e-5, function (l) {
+		return 180 - ilib.Date._fixangle(ilib.Date._solarLongitude(l) - longitude);
+	});
+};
+

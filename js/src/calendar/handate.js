@@ -405,25 +405,6 @@ ilib.Date.HanDate._newMoonOnOrAfter = function(rd) {
 /**
  * @protected
  * @static
- * @param {number} jd JD to calculate from
- * @param {number} longitude longitude to seek 
- * @returns {number} the JD of the next time that the solar longitude 
- * is a multiple of the given longitude
- */
-ilib.Date.HanDate._nextSolarLongitude = function(jd, longitude) {
-	var rate = 365.242189 / 360.0;
-	var tau = jd + rate * ilib.Date._fixangle(longitude - ilib.Date._solarLongitude(jd));
-	var start = Math.max(jd, tau - 5.0);
-	var end = tau + 5.0;
-	
-	return ilib.bisectionSearch(0, start, end, 1e-5, function (l) {
-		return 180 - ilib.Date._fixangle(ilib.Date._solarLongitude(l) - longitude);
-	});
-};
-
-/**
- * @protected
- * @static
  * @param {number} rd RD to calculate from
  * @param {number} longitude longitude to seek 
  * @returns {number} the RD of the next time that the solar longitude 
@@ -431,7 +412,7 @@ ilib.Date.HanDate._nextSolarLongitude = function(jd, longitude) {
  */
 ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
 	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var temp = ilib.Date._localFromUniversal(ilib.Date.HanDate._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.RataDie.gregorianEpoch, tz), longitude), tz);
+	var temp = ilib.Date._localFromUniversal(ilib.Date._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.RataDie.gregorianEpoch, tz), longitude), tz);
 	return temp - ilib.Date.RataDie.gregorianEpoch;
 };
 

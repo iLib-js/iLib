@@ -17,6 +17,88 @@
  * limitations under the License.
  */
 
+var testDatesChineseAstro1 = [
+  	// jd			deg					current major ST		han next solar long.
+  	[ 1507231.5,	-214193.32337962964,	5.0,	-213920.51787281086],
+  	[ 1660037.5,	-61387.323379629626,	10.0,	-61249.369028268404],
+  	[ 1746893.5,	25468.67662037037,	8.0,	25678.2304087151],
+  	[ 1770641.5,	49216.676620370374,	8.0,	49418.95965836868],
+  	[ 1892731.5,	171306.67662037036,	11.0,	171409.78696368195],
+  	[ 1931579.5,	210154.67662037036,	3.0,	210490.67934626466],
+  	[ 1974851.5,	253426.67662037036,	9.0,	253589.24372347264],
+  	[ 2091164.5,	369739.67662037036,	3.0,	370101.44639907114],
+  	[ 2121509.5,	400084.67662037036,	4.0,	400416.52726409596],
+  	[ 2155779.5,	434354.67662037036,	2.0,	434384.0303209763],
+  	[ 2174029.5,	452604.67662037036,	1.0,	452646.1461670075],
+  	[ 2191584.5,	470159.67662037036,	2.0,	470177.7557296877],
+  	[ 2195261.5,	473836.67662037036,	3.0,	474195.4159466373],
+  	[ 2229274.5,	507849.67662037036,	4.0,	508162.92789982166],
+  	[ 2245580.5,	524155.67662037036,	12.0,	524233.57768617425],
+  	[ 2266100.5,	544675.6766203704,	2.0,	544687.133715068],
+  	[ 2288542.5,	567117.6766203704,	7.0,	567332.142340577],
+  	[ 2290901.5,	569476.6766203704,	1.0,	569523.588568101],
+  	[ 2323140.5,	601715.6766203704,	4.0,	602030.1358997995],
+  	[ 2334848.5,	613423.6766203704,	5.0,	613717.8814901164],
+  	[ 2348020.5,	626595.6766203704,	6.0,	626866.5906548423],
+  	[ 2366978.5,	645553.6766203704,	4.0,	645859.1712437994],
+  	[ 2385648.5,	664223.6766203704,	6.0,	664486.5195703104],
+  	[ 2392825.5,	671400.6766203704,	2.0,	671426.1243360509],
+  	[ 2416223.5,	694798.6766203704,	2.0,	694801.6142626695],
+  	[ 2425848.5,	704423.6666666666,	7.0,	704663.1707556676],
+  	[ 2430266.5,	708841.6666666666,	8.0,	709046.0684573387],
+  	[ 2430833.5,	709408.6666666666,	2.0,	709411.3133945792],
+  	[ 2431004.5,	709579.6666666666,	8.0,	709776.5535893324],
+  	[ 2448698.5,	727273.6666666666,	1.0,	727308.1644219602],
+  	[ 2450138.5,	728713.6666666666,	1.0,	728769.131665963],
+  	[ 2465737.5,	744312.6666666666,	9.0,	744474.5530561531],
+  	[ 2486076.5,	764651.6666666666,	5.0,	764928.1072765427],
+];
+
+function testDegreesInBeijing() {
+	var l;
+	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
+    
+        info("testing jd=" + testDatesChineseAstro1[i][0]);
+        //try {
+        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
+        var deg = ilib.Date._universalFromLocal(rd, ilib.Date.HanDate._chineseTZ(rd))
+        assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][1], deg, 1e-9);
+    	//} catch (e) {
+        //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
+        //}
+    } 
+}
+
+function testCurrentMajorSolarTerm() {
+	var l;
+	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
+    
+        info("testing jd=" + testDatesChineseAstro1[i][0]);
+        //try {
+        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
+        l = ilib.Date.HanDate._currentMajorST(rd);
+        assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][2], l, 1e-9);
+    	//} catch (e) {
+        //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
+        //}
+    } 
+}
+
+function testHanNextSolarLongitude() {
+	var l;
+	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
+    
+        info("testing jd=" + testDatesChineseAstro1[i][0]);
+        //try {
+        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
+        l = ilib.Date.HanDate._hanNextSolarLongitude(rd, 30.0);
+        assertRoughlyEquals("testing next solar longitude for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][3], l, 1e-5);
+    	//} catch (e) {
+        //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
+        //}
+    } 
+}
+
 function testHanDateConstructor() {
     var pd = new ilib.Date.HanDate();
     
@@ -26,8 +108,7 @@ function testHanDateConstructor() {
 function testHanDateCalcYearPositive1() {
     var pd = new ilib.Date.HanDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(1, pd._calcYear(1));
-}
+    assertEquals(1, pd._calcYear(1));}
 
 function testHanDateCalcYearPositive2() {
     var pd = new ilib.Date.HanDate({rd: 0, timezone: "Etc/UTC"});
