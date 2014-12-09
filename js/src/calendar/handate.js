@@ -430,10 +430,26 @@ ilib.Date.HanDate._majorSTOnOrAfter = function(rd) {
  * @protected
  * @static
  * @param {number} rd RD to calculate from 
- * @returns {number} the minor solar term for the RD
+ * @returns {number} the current minor solar term for the RD
+ */
+ilib.Date.HanDate._currentMinorST = function(rd) {
+	var slong = ilib.Date._solarLongitude(rd + ilib.Date.RataDie.gregorianEpoch);
+	return ilib.amod(3 + Math.floor((slong - 15) / 30), 12);
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the next minor solar term for the RD
  */
 ilib.Date.HanDate._minorSTOnOrAfter = function(rd) {
-	
+	var chineseDate = ilib.Date._universalFromLocal(rd, ilib.Date.HanDate._chineseTZ(rd)); 
+	var longitude = ilib.Date._fixangle(
+		30 * 
+		Math.ceil((ilib.Date._solarLongitude(chineseDate + ilib.Date.RataDie.gregorianEpoch) - 15) / 30) + 15
+	);
+	return ilib.Date.HanDate._hanNextSolarLongitude(rd, longitude);
 };
 
 /**
