@@ -130,40 +130,40 @@ function testMinorSolarTermOnOrAfter() {
 }
 
 var testDatesChineseAstro2 = [
-  	// jd			new moon before		new moon on or after
-  	[ 1507231.5,	-214204.0,	-214175.0],
-  	[ 1660037.5,	-61413.0,	-61383.0],
-  	[ 1746893.5,	25466.0,	25496.0],
-  	[ 1770641.5,	49209.0,	49238.0],
-  	[ 1892731.5,	171288.0,	171318.0],
-  	[ 1931579.5,	210151.0,	210181.0],
-  	[ 1974851.5,	253413.0,	253443.0],
-  	[ 2091164.5,	369734.0,	369764.0],
-  	[ 2121509.5,	400062.0,	400091.0],
-  	[ 2155779.5,	434347.0,	434376.0],
-  	[ 2174029.5,	452597.0,	452627.0],
-  	[ 2191584.5,	470138.0,	470167.0],
-  	[ 2195261.5,	473829.0,	473859.0],
-  	[ 2229274.5,	507849.0,	507878.0],
-  	[ 2245580.5,	524149.0,	524179.0],
-  	[ 2266100.5,	544673.0,	544703.0],
-  	[ 2288542.5,	567117.0,	567146.0],
-  	[ 2290901.5,	569449.0,	569479.0],
-  	[ 2323140.5,	601697.0,	601727.0],
-  	[ 2334848.5,	613420.0,	613450.0],
-  	[ 2348020.5,	626591.0,	626620.0],
-  	[ 2366978.5,	645550.0,	645579.0],
-  	[ 2385648.5,	664213.0,	664243.0],
-  	[ 2392825.5,	671389.0,	671419.0],
-  	[ 2416223.5,	694778.0,	694807.0],
-  	[ 2425848.5,	704404.0,	704433.0],
-  	[ 2430266.5,	708834.0,	708863.0],
-  	[ 2430833.5,	709395.0,	709424.0],
-  	[ 2431004.5,	709572.0,	709602.0],
-  	[ 2448698.5,	727261.0,	727291.0],
-  	[ 2450138.5,	728708.0,	728737.0],
-  	[ 2465737.5,	744300.0,	744329.0],
-  	[ 2486076.5,	764646.0,	764676.0],
+  	// jd			new moon before		new moon on or after	no major ST
+	[ 1507231.5,	-214204.0,			-214175.0,		false],
+	[ 1660037.5,	-61413.0,			-61383.0,		true],
+	[ 1746893.5,	25466.0,			25496.0,		true],
+	[ 1770641.5,	49209.0,			49238.0,		true],
+	[ 1892731.5,	171288.0,			171318.0,		true],
+	[ 1931579.5,	210151.0,			210181.0,		false],
+	[ 1974851.5,	253413.0,			253443.0,		false],
+	[ 2091164.5,	369734.0,			369764.0,		true],
+	[ 2121509.5,	400062.0,			400091.0,		true],
+	[ 2155779.5,	434347.0,			434376.0,		true],
+	[ 2174029.5,	452597.0,			452627.0,		false],
+	[ 2191584.5,	470138.0,			470167.0,		true],
+	[ 2195261.5,	473829.0,			473859.0,		true],
+	[ 2229274.5,	507849.0,			507878.0,		false],
+	[ 2245580.5,	524149.0,			524179.0,		false],
+	[ 2266100.5,	544673.0,			544703.0,		false],
+	[ 2288542.5,	567117.0,			567146.0,		false],
+	[ 2290901.5,	569449.0,			569479.0,		true],
+	[ 2323140.5,	601697.0,			601727.0,		true],
+	[ 2334848.5,	613420.0,			613450.0,		false],
+	[ 2348020.5,	626591.0,			626620.0,		true],
+	[ 2366978.5,	645550.0,			645579.0,		false],
+	[ 2385648.5,	664213.0,			664243.0,		true],
+	[ 2392825.5,	671389.0,			671419.0,		true],
+	[ 2416223.5,	694778.0,			694807.0,		false],
+	[ 2425848.5,	704404.0,			704433.0,		true],
+	[ 2430266.5,	708834.0,			708863.0,		true],
+	[ 2430833.5,	709395.0,			709424.0,		false],
+	[ 2431004.5,	709572.0,			709602.0,		false],
+	[ 2448698.5,	727261.0,			727291.0,		false],
+	[ 2450138.5,	728708.0,			728737.0,		true],
+	[ 2465737.5,	744300.0,			744329.0,		false],
+	[ 2486076.5,	764646.0,			764676.0,		false],
 ];
 
 function testNewMoonBefore() {
@@ -174,7 +174,7 @@ function testNewMoonBefore() {
         //try {
         var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
         l = ilib.Date.HanDate._newMoonBefore(rd);
-        assertRoughlyEquals("testing new moon ater " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][1], l, 1e-5);
+        assertRoughlyEquals("testing new moon before " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][1], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
         //}
@@ -190,6 +190,21 @@ function testNewMoonOnOrAfter() {
         var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
         l = ilib.Date.HanDate._newMoonOnOrAfter(rd);
         assertRoughlyEquals("testing new moon on or after " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][2], l, 1e-5);
+    	//} catch (e) {
+        //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
+        //}
+    } 
+}
+
+function testNoMajorST() {
+	var l;
+	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
+    
+        info("testing jd=" + testDatesChineseAstro2[i][0]);
+        //try {
+        var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
+        l = ilib.Date.HanDate._noMajorST(rd);
+        assertEquals("testing no major solar term for " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][3], l);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
         //}
