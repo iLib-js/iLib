@@ -386,10 +386,24 @@ ilib.Date.HanDate._priorLeapMonth = function(rd1, rd2) {
  * @protected
  * @static
  * @param {number} rd RD to calculate from 
+ * @returns {number} the same RD at midnight in China
+ */
+ilib.Date.HanDate._chinaRD = function(rd) {
+	var tz = ilib.Date.HanDate._chineseTZ(rd);
+	return ilib.Date._universalFromLocal(rd, tz)
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from 
  * @returns {number} the rd of previous new moon before the given RD date
  */
 ilib.Date.HanDate._newMoonBefore = function(rd) {
-	
+	var tz = ilib.Date.HanDate._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var moon = ilib.Date._newMoonBefore(uni + ilib.Date.RataDie.gregorianEpoch);
+	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
 };
 
 /**
@@ -399,7 +413,10 @@ ilib.Date.HanDate._newMoonBefore = function(rd) {
  * @returns {number} the rd of next new moon on or after the given RD date
  */
 ilib.Date.HanDate._newMoonOnOrAfter = function(rd) {
-	
+	var tz = ilib.Date.HanDate._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var moon = ilib.Date._newMoonAtOrAfter(uni + ilib.Date.RataDie.gregorianEpoch);
+	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
 };
 
 /**
@@ -412,8 +429,9 @@ ilib.Date.HanDate._newMoonOnOrAfter = function(rd) {
  */
 ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
 	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var temp = ilib.Date._localFromUniversal(ilib.Date._nextSolarLongitude(ilib.Date._universalFromLocal(rd + ilib.Date.RataDie.gregorianEpoch, tz), longitude), tz);
-	return temp - ilib.Date.RataDie.gregorianEpoch;
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var sol = ilib.Date._nextSolarLongitude(uni + ilib.Date.RataDie.gregorianEpoch, longitude);
+	return ilib.Date._localFromUniversal(sol - ilib.Date.RataDie.gregorianEpoch, tz);
 };
 
 /**
