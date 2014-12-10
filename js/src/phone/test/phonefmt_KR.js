@@ -316,7 +316,8 @@ function testFormatKRStyle0Partial10() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "33",
-		subscriberNumber: "123456781234"
+		subscriberNumber: "123456781234",
+		invalid: true
 	});
 	var expected = "033-1234-56781234";
 	
@@ -962,7 +963,7 @@ function testFormatKRStyle1WithServiceNumber3() {
 	assertEquals(expected, formatted);
 };
 
-/*Added this phonenumber formatting template to meet LG's request. Should be removed*/
+/*Add this phonenumber formatting template temporarily */
 function testFormatKRStyle1WithlongSubscribeNumber0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("031123456778", {locale: "ko-KR"});
