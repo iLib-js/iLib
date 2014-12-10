@@ -5,6 +5,7 @@
     "trunkCode": "0",
     "skipTrunk": true,
     "commonFormatChars": " ()-",
+    "extendedAreaCode": "true",
     "fieldLengths": {
         "areaCode": 0,
         "vsc": 0,
