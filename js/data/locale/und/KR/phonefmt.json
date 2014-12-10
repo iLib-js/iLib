@@ -60,7 +60,7 @@
 									"template":["X", "XX"],
 									"suffix":"-"
 								},
-			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
+			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		},
 		"whole": {
@@ -87,7 +87,7 @@
 									"template":["X", "XX"],
 									"suffix":"-"
 								},
-			"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX", "XXX-XXXX", "XXXX-XXXX"],
+			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
 			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 		}
 	},
@@ -101,7 +101,7 @@
 		"areaCode":         ["X) ", "XX) "],
 		"serviceCode":      ["X) ", "XX) "],
 		"cic":              ["X) ", "XX) ", "XXX) ", "XXXX) "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
+		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
 		"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 	},
 	"점": {
@@ -129,7 +129,7 @@
 								"template":["X", "XX", "XXX", "XXXX"],
 								"suffix":"."
 							},
-		"subscriberNumber": ["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX"],
+		"subscriberNumber": ["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX", "XXXX.XXXXX", "XXXX.XXXXXX", "XXXX.XXXXXXX", "XXXX.XXXXXXXX"],
 		"extension":        [".X", ".XX", ".XXX", ".XXXX", ".XXXXX"]
 	},
 	"공간": {
@@ -142,7 +142,7 @@
 		"areaCode":         ["X ", "XX "],
 		"serviceCode":      ["X ", "XX "],
 		"cic":              ["X ", "XX ", "XXX ", "XXXX "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
+		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX", "XXXX XXXXX", "XXXX XXXXXX", "XXXX XXXXXXX", "XXXX XXXXXXXX"],
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
 	}
 }

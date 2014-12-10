@@ -311,6 +311,22 @@ function testFormatKRStyle0Partial10() {
 	assertEquals(expected, formatted);
 };
 
+function testFormatKRStyle0Partial10() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		areaCode: "33",
+		subscriberNumber: "123456781234"
+	});
+	var expected = "033-1234-56781234";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+
 function testFormatKRStyle0Whole0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -398,7 +414,7 @@ function testFormatKRStyle0Whole6() {
 		areaCode: "33",
 		subscriberNumber: "1234"
 	});
-	var expected = "033-1234";
+	var expected = "033-123-4";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -412,7 +428,7 @@ function testFormatKRStyle0Whole7() {
 		areaCode: "33",
 		subscriberNumber: "12345"
 	});
-	var expected = "033-12345";
+	var expected = "033-123-45";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -426,7 +442,7 @@ function testFormatKRStyle0Whole8() {
 		areaCode: "33",
 		subscriberNumber: "123456"
 	});
-	var expected = "033-123456";
+	var expected = "033-123-456";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
@@ -714,7 +730,7 @@ function testFormatKRStyle0PartialLocal9() {
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345352"	// too long
 	});
-	var expected = "456345352";	// use last resort rule
+	var expected = "4563-45352";	// use last resort rule
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -823,7 +839,7 @@ function testFormatKRStyle1PartialLocal9() {
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "456345345"	// too long
 	});
-	var expected = "456345345"; // use last resort rule
+	var expected = "4563.45345"; // use last resort rule
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "점"});
 	formatted = fmt.format(parsed, {partial: true});
@@ -939,6 +955,51 @@ function testFormatKRStyle1WithServiceNumber3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("03012345677", {locale: "ko-KR"});
 	var expected = "030-1234-5677";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+/*Added this phonenumber formatting template to meet LG's request. Should be removed*/
+function testFormatKRStyle1WithlongSubscribeNumber0() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("031123456778", {locale: "ko-KR"});
+	var expected = "031-1234-56778";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithlongSubscribeNumber1() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("0311234567781", {locale: "ko-KR"});
+	var expected = "031-1234-567781";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithlongSubscribeNumber2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("03112345677812", {locale: "ko-KR"});
+	var expected = "031-1234-5677812";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithlongSubscribeNumber3() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("031123456778123", {locale: "ko-KR"});
+	var expected = "031-1234-56778123";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
