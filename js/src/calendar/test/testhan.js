@@ -17,125 +17,136 @@
  * limitations under the License.
  */
 
-function testHanGetNumMonths() {
+function testHanGetNumMonths4650() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(12, cal.getNumMonths(1392));
+    assertEquals(12, cal.getNumMonths(4650));
 }
 
 function testHanGetMonLength1() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(1, 1392));
+    assertEquals(30, cal.getMonLength(1, 4650));
 }
 
 function testHanGetMonLength2() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(2, 1392));
+    assertEquals(30, cal.getMonLength(2, 4650));
 }
 
 function testHanGetMonLength3() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(3, 1392));
+    assertEquals(30, cal.getMonLength(3, 4650));
 }
 
 function testHanGetMonLength4() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(4, 1392));
+    assertEquals(30, cal.getMonLength(4, 4650));
 }
 
 function testHanGetMonLength5() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(5, 1392));
+    assertEquals(30, cal.getMonLength(5, 4650));
 }
 
 function testHanGetMonLength6() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(31, cal.getMonLength(6, 1392));
+    assertEquals(30, cal.getMonLength(6, 4650));
 }
 
 function testHanGetMonLength7() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(30, cal.getMonLength(7, 1392));
+    assertEquals(30, cal.getMonLength(7, 4650));
 }
 
 function testHanGetMonLength8() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(30, cal.getMonLength(8, 1392));
+    assertEquals(30, cal.getMonLength(8, 4650));
 }
 
 function testHanGetMonLength9() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(30, cal.getMonLength(9, 1392));
+    assertEquals(30, cal.getMonLength(9, 4650));
 }
 
 function testHanGetMonLength10() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(30, cal.getMonLength(10, 1392));
+    assertEquals(30, cal.getMonLength(10, 4650));
 }
 
 function testHanGetMonLength11() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(30, cal.getMonLength(11, 1392));
+    assertEquals(30, cal.getMonLength(11, 4650));
 }
 
 function testHanGetMonLength12() {
     var cal = new ilib.Cal.Han();
     
-    assertEquals(29, cal.getMonLength(12, 1392));
+    assertEquals(30, cal.getMonLength(12, 4650));
 }
 
-function testHanGetMonLength12LeapYear() {
-    var cal = new ilib.Cal.Han();
-    
-    assertEquals(30, cal.getMonLength(12, 1391));
-}
-
+var hanLeapYears = {
+	"4697": {months: 12, leapMonth: -1}, // 2000
+	"4698": {months: 13, leapMonth: 4},  // 2001
+	"4699": {months: 12, leapMonth: -1}, // 2002
+	"4700": {months: 12, leapMonth: -1}, // 2003
+	"4701": {months: 13, leapMonth: 2},  // 2004
+	"4702": {months: 12, leapMonth: -1}, // 2005
+	"4703": {months: 13, leapMonth: 7},  // 2006
+	"4704": {months: 12, leapMonth: -1}, // 2007
+	"4705": {months: 12, leapMonth: -1}, // 2008
+	"4706": {months: 13, leapMonth: 5},  // 2009
+	"4707": {months: 12, leapMonth: -1}, // 2010
+	"4708": {months: 12, leapMonth: -1}, // 2011
+	"4709": {months: 13, leapMonth: 4},  // 2012
+	"4710": {months: 12, leapMonth: -1}, // 2013
+	"4711": {months: 13, leapMonth: 9},  // 2014
+	"4712": {months: 12, leapMonth: -1}, // 2015
+	"4713": {months: 12, leapMonth: -1}, // 2016
+	"4714": {months: 13, leapMonth: 6}   // 2017
+};
 
 function testHanIsLeapYear() {
     var cal = new ilib.Cal.Han();
     
-    assertTrue(cal.isLeapYear(1391));
+    for (i in hanLeapYears) {
+    	var n = parseInt(i);
+    	assertEquals(hanLeapYears[i].months === 13, cal.isLeapYear(n));
+    }
 }
 
-function testHanIsLeapYearNot() {
+function testHanGetNumMonths() {
     var cal = new ilib.Cal.Han();
     
-    assertFalse(cal.isLeapYear(1392));
+    for (i in hanLeapYears) {
+    	var n = parseInt(i);
+    	assertEquals(hanLeapYears[i].months, cal.getNumMonths(n));
+    }
 }
 
-function testHanIsLeapYear1() {
+function testHanGetLeapMonth() {
     var cal = new ilib.Cal.Han();
     
-    assertFalse(cal.isLeapYear(1393));
-}
-
-function testHanIsLeapYear2() {
-    var cal = new ilib.Cal.Han();
-    
-    assertFalse(cal.isLeapYear(1394));
-}
-
-function testHanIsLeapYear3() {
-    var cal = new ilib.Cal.Han();
-    
-    assertTrue(cal.isLeapYear(1395));
+    for (i in hanLeapYears) {
+    	var n = parseInt(i);
+    	assertEquals(hanLeapYears[i].leapMonth, cal.getLeapMonth(n));
+    }
 }
 
 function testHanNewDateInstance() {
     var cal = new ilib.Cal.Han();
     var d = cal.newDateInstance({
-    	year: 1392,
+    	year: 4650,
     	month: 6,
     	day: 1
     });

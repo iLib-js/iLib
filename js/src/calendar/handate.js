@@ -148,7 +148,7 @@ ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 
 
 /**
- * @class30/Oct/14 2:30 PM
+ * @class
  * 
  * Construct a new Han date object. The constructor parameters can 
  * contain any of the following properties:
@@ -248,7 +248,7 @@ ilib.Date.HanDate = function(params) {
 			this.year = parseInt(params.year, 10) || 0;
 
 			if (typeof(params.cycle) !== 'undefined' && typeof(params.year) !== 'undefined') {
-				this.year %= 60;
+				this.year = ilib.amod(this.year, 60);
 			}
 			
 			/**

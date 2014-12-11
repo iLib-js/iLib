@@ -35,16 +35,34 @@ ilib.Cal.Han = function() {
 };
 
 /**
+ * @protected
+ * @static
+ * @param {number} year
+ * @param {number=} cycle
+ * @return {number}
+ */
+ilib.Cal.Han._getElapsedYear = function(year, cycle) {
+	var elapsedYear = year;
+	if (year > 60 && typeof(cycle) !== 'undefined') {
+		elapsedYear = 60 * (cycle - 1) + year;
+	}
+	return elapsedYear;
+};
+
+/**
  * Return the number of months in the given year. The number of months in a year varies
  * for some luni-solar calendars because in some years, an extra month is needed to extend the 
  * days in a year to an entire solar year. The month is represented as a 1-based number
  * where 1=first month, 2=second month, etc.
  * 
  * @param {number} year a year for which the number of months is sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
  * @return {number} The number of months in the given year
  */
-ilib.Cal.Han.prototype.getNumMonths = function(year) {
-	return this.isLeapYear(year) ? 13 : 12;
+ilib.Cal.Han.prototype.getNumMonths = function(year, cycle) {
+	return this.isLeapYear(ilib.Cal.Han._getElapsedYear(year, cycle)) ? 13 : 12;
 };
 
 /**
@@ -77,12 +95,52 @@ ilib.Cal.Han.prototype.equivalentCycleYear = function(year) {
 
 /**
  * Return true if the given year is a leap year in the Han calendar.
- * The year parameter may be given as a number, or as a PersAlgoDate object.
+ * If the year is given as a year/cycle combination, then the year should be in the 
+ * range [1,60] and the given cycle is the cycle in which the year is located. If 
+ * the year is greater than 60, then
+ * it represents the total number of years elapsed in the proleptic calendar since
+ * the beginning of the Chinese epoch in on 15 Feb, -2636 (Gregorian). In this 
+ * case, the cycle parameter is ignored.
+ * 
  * @param {number} year the year for which the leap year information is being sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
  * @return {boolean} true if the given year is a leap year
  */
-ilib.Cal.Han.prototype.isLeapYear = function(year) {
-	return (ilib.mod((this.equivalentCycleYear(year) + 38) * 682, 2816) < 682);
+ilib.Cal.Han.prototype.isLeapYear = function(year, cycle) {
+	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
+	var gregyear = elapsedYear - 2697;
+	var rd = new ilib.Date.GregRataDie({
+		year: gregyear-1, 
+		month: 12, 
+		day: 15, 
+		hour: 0, 
+		minute: 0, 
+		second: 0, 
+		millisecond: 0
+	});
+	var solstice1 = ilib.Date.HanDate._hanNextSolarLongitude(rd.getRataDie(), 270); // 270 is the winter solstice
+	var solstice2 = ilib.Date.HanDate._hanNextSolarLongitude(rd.getRataDie() + 365, 270); // 270 is the winter solstice
+	var m1 = ilib.Date.HanDate._newMoonOnOrAfter(solstice1);
+	var m2 = ilib.Date.HanDate._newMoonBefore(solstice2);
+	return Math.round((m2 - m1) / 29.530588853000001) === 12;
+};
+
+/**
+ * Return the month of the year that is the leap month. If the given year is
+ * not a leap year, then this method will return -1.
+ * 
+ * @param {number} year the year for which the leap year information is being sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
+ * @return {number} the number of the month that is doubled in this leap year, or -1
+ * if this is not a leap year
+ */
+ilib.Cal.Han.prototype.getLeapMonth = function(year, cycle) {
+	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
+	return -1;
 };
 
 /**
