@@ -253,7 +253,7 @@ function testTWPolice() {
 };
 
 function testTWFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("0800-024-111",{locale: "tw-TW"});
+	var parsed = new ilib.PhoneNumber("119",{locale: "tw-TW"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
