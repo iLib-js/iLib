@@ -109,7 +109,7 @@ ilib.GlyphString = function (str, options) {
 	}
 	
 	ilib.CType._load("ctype_m", sync, loadParams, function() {
-		if (typeof(ilib.data.norm.ccc) === 'undefined') {
+		if (typeof(ilib.data.norm) === 'undefined' || typeof(ilib.data.norm.ccc) === 'undefined') {
 			ilib.loadData({
 				object: ilib.GlyphString, 
 				locale: "-", 
