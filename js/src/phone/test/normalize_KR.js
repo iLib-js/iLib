@@ -123,7 +123,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ko-KR'	
 };
 
-function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
+function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	var phone = new ilib.PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -148,7 +148,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
+function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 	var phone = new ilib.PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",

@@ -4,6 +4,7 @@
     "iddCode": "010",
     "trunkCode": "0",
     "skipTrunk": true,
+    "dialingPlan": "open",
     "extendedAreaCodes": true,
     "commonFormatChars": " ()-―",
     "fieldLengths": {
