@@ -85,7 +85,9 @@ function suite() {
 		"phonegeo_BR.js",
 		"phonegeo_TW.js",
 		"normalize_BR.js",
-		"normalize_JP.js"
+		"normalize_JP.js",
+		"normalize_RU.js"
+
 	];
 	
 	suites.forEach(function (path) {
