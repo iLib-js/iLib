@@ -586,7 +586,7 @@ function testDateFmtShortDateComponentsWDM_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Б 9.29", fmt.format(date));
+    assertEquals("П 9.29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
@@ -603,7 +603,7 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Б 9.29.2011", fmt.format(date));
+    assertEquals("П 9.29.2011", fmt.format(date));
 }
 
 
@@ -723,7 +723,7 @@ function testDateFmtFullDateComponentsWDM_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Баасан, 09 дугаар сарын 29", fmt.format(date));
+    assertEquals("Пүрэв, 09 дугаар сарын 29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY() {
@@ -740,7 +740,7 @@ function testDateFmtFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Баасан, 2011 оны 09 дугаар сарын 29", fmt.format(date));
+    assertEquals("Пүрэв, 2011 оны 09 дугаар сарын 29", fmt.format(date));
 }
 
 
