@@ -13,7 +13,7 @@
         {
             "name": "locality",
             "line": "startAtFirst",
-            "pattern": "[AÁBCCSDDZDZSEÉFGGYHIÍJKLLYMNNYOÓÖŐPQRSSZTTYUÚÜÛVWXYZZSaábccsddzdzseéfggyhiíjkllymnnyoóöőpqrsszttyuúüûvwxyzzs//.-/s']+"
+            "pattern": "[AÁÄBCCSDǱǲEÉFGYHIÍJKLMNOÓÖŐPQRSSZTYUÚÜÛVWXYZaábccsdǳeéfghiíjklmnoóöőpqrstuúüûvwxyz\\.\\-']+"
         }
         
     ]
