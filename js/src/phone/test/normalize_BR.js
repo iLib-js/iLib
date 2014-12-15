@@ -165,7 +165,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 	};
 	var expectedString = "+556232012325";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'pt-BR'})); 
+	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
 function testAssistedDialingIntlToLDUMTS() {
@@ -178,7 +178,7 @@ function testAssistedDialingIntlToLDUMTS() {
 	};
 	var expectedString = "+557932012325";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'pt-BR'})); 	
+	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
@@ -191,7 +191,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 	};
 	var expectedString = "0011558532012325";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'pt-BR'})); 	
+	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
 function testAssistedDialingIntlToLDCDMA() {
@@ -204,6 +204,6 @@ function testAssistedDialingIntlToLDCDMA() {
 	};
 	var expectedString = "0055992123456";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'pt-BR'})); 	
+	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 

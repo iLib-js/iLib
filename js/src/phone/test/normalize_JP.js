@@ -209,6 +209,6 @@ function testAssistedDialingIntlToLDCDMA() {
 	};
 	var expectedString = "008156531111111";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'ko-KR'})); // 'ja-JP'	
+	assertEquals(expectedString, phone.normalize(hints)); // 'ja-JP'	
 };
 

@@ -169,7 +169,7 @@ function testRUAssistedDialingIntlToLocalUMTS() {
 	};
 	var expectedString = "+7495223344";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'ru-RU'})); 
+	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
 function testRUAssistedDialingIntlToLDUMTS() {
@@ -182,7 +182,7 @@ function testRUAssistedDialingIntlToLDUMTS() {
 	};
 	var expectedString = "+73022212345";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'ru-RU'})); // 'ru-RU'	
+	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
 function testAssistedDialingIntlToLocalCDMARU() {
@@ -195,7 +195,7 @@ function testAssistedDialingIntlToLocalCDMARU() {
 	};
 	var expectedString = "001174952123456";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'ru-RU'})); // 'ru-RU'	
+	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
 function testAssistedDialingIntlToLDCDMARU() {
@@ -208,6 +208,6 @@ function testAssistedDialingIntlToLDCDMARU() {
 	};
 	var expectedString = "0074952123456";
 
-	assertEquals(expectedString, phone.normalize(hints,{locale: 'ru-RU'})); // 'ru-RU'	
+	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
