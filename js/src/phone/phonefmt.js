@@ -268,7 +268,9 @@ ilib.PhoneFmt.prototype = {
 						}
 					}
 					if (lastFieldName && typeof(styleTemplates[lastFieldName].suffix) !== 'undefined') {
-						formatted += styleTemplates[lastFieldName].suffix;
+						if (fieldName !== "extension" && number[fieldName].search(/[xwtp,;]/i) <= -1) {
+							formatted += styleTemplates[lastFieldName].suffix;	
+						}
 					}
 					lastFieldName = fieldName;
 					

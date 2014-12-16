@@ -3,36 +3,45 @@
 		"iddPrefix":        ["X", "XX ", "XXX "],
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
-		"emergency":        ["X", "XX", "XXX ", "XXXX "],
+		"emergency":        ["X", "XX", "XXX", "XXXX"],
 		"mobilePrefix":     ["X ", "XX "],
-		"areaCode":         ["X ", "XX "],
-		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXXXX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
-		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
+		"areaCode":         {
+								"template":["X", "XX"],
+								"suffix":"-"
+							},
+		"serviceCode":      {
+								"template":["X", "XX"],
+								"suffix":"-"
+							},
+		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
+		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
 	},
 	"mobile": {
 		"iddPrefix":        ["X", "XX", "XXX"],
 		"countryCode":      ["X ", "XX ", "XXX "],
-		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
-		"emergency":        ["X", "XX", "XXX ", "XXXX "],
+		"cic":              ["X", "XX", "XXX", "XXXX", "XXXXX"],
+		"emergency":        ["X", "XX", "XXX", "XXXX"],
 		"trunkAccess":       "X",
 		"mobilePrefix":     {
 								"template":["X", "XX"],
 								"suffix":"-"
 							},
 		"subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
-		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
+		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
 	}, 
 	"internationalmobile": {
 		"iddPrefix":        ["X", "XX ", "XXX "],
 		"countryCode":      ["X ", "XX ", "XXX "],
 		"cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
 		"emergency":        ["X", "XX", "XXX ", "XXXX "],
-		"mobilePrefix":     ["X ", "XX "],
+		"mobilePrefix":     {
+								"template":["X", "XX"],
+								"suffix":"-"
+							},
 		"areaCode":         ["X ", "XX "],
 		"serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
-		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
+		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
+		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
 	},
 	"default": {
 		"example":           "033-1234-5678",
@@ -60,8 +69,11 @@
 									"template":["X", "XX"],
 									"suffix":"-"
 								},
-			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
-			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
+			"subscriberNumber": {
+									"template":["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
+									"suffix":"-"
+								},
+			"extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
 		},
 		"whole": {
 			"iddPrefix":        {
@@ -87,8 +99,11 @@
 									"template":["X", "XX"],
 									"suffix":"-"
 								},
-			"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
-			"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
+			"subscriberNumber": {
+									"template":["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
+									"suffix":"-"
+								},
+			"extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
 		}
 	},
 	"괄호": {
@@ -101,7 +116,7 @@
 		"areaCode":         ["X) ", "XX) "],
 		"serviceCode":      ["X) ", "XX) "],
 		"cic":              ["X) ", "XX) ", "XXX) ", "XXXX) "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX"],
+		"subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
 		"extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
 	},
 	"점": {
@@ -129,8 +144,11 @@
 								"template":["X", "XX", "XXX", "XXXX"],
 								"suffix":"."
 							},
-		"subscriberNumber": ["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX", "XXXX.XXXXX", "XXXX.XXXXXX", "XXXX.XXXXXXX", "XXXX.XXXXXXXX"],
-		"extension":        [".X", ".XX", ".XXX", ".XXXX", ".XXXXX"]
+		"subscriberNumber": {
+								"template":["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX", "XXXX.XXXXX", "XXXX.XXXXXX", "XXXX.XXXXXXX", "XXXX.XXXXXXXX", "XXXX.XXXXXXXXX", "XXXX.XXXXXXXXXX", "XXXX.XXXXXXXXXXX"],
+								"suffix":"."
+							},							
+		"extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
 	},
 	"공간": {
 		"example":          "033 1234 5678",
@@ -142,7 +160,10 @@
 		"areaCode":         ["X ", "XX "],
 		"serviceCode":      ["X ", "XX "],
 		"cic":              ["X ", "XX ", "XXX ", "XXXX "],
-		"subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX", "XXXX XXXXX", "XXXX XXXXXX", "XXXX XXXXXXX", "XXXX XXXXXXXX"],
-		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
+		"subscriberNumber": {
+								"template":["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX", "XXXX XXXXX", "XXXX XXXXXX", "XXXX XXXXXXX", "XXXX XXXXXXXX", "XXXX XXXXXXXXX", "XXXX XXXXXXXXXX", "XXXX XXXXXXXXXXX"],
+								"suffix":" "
+							},									
+		"extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
 	}
 }

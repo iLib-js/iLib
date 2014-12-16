@@ -1,3 +1,4 @@
+
 /*
  * phonefmt_KR.js - Test the phonefmt_KR Style.
  * 
@@ -63,6 +64,18 @@ function testFormatKRInternational() {
 	assertEquals(expected, formatted);
 };
 
+
+function testFormatKRInternational2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("+61212345678", {locale:"ko-KR"});
+	var expected = "+61 2 1234 5678";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
 function testFormatKRInternationalAccessCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
@@ -118,7 +131,7 @@ function testFormatKRMobileInternational() {
 		mobilePrefix: "16",
 		subscriberNumber: "12345678"
 	});
-	var expected = "+82 16 1234 5678";
+	var expected = "+82 16-1234-5678";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed);
@@ -1004,6 +1017,50 @@ function testFormatKRStyle1WithlongSubscribeNumber3() {
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: false});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle0WithExtensionCharacter() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("5551212,1234", {locale: "ko-KR"});
+	var expected = "555-1212,1234";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithExtensionCharacter() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("5551212,1234", {locale: "ko-KR"});
+	var expected = "555.1212,1234";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "점"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle2WithExtensionCharacter() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("5551212,1234", {locale: "ko-KR"});
+	var expected = "555 1212,1234";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "공간"});
+	formatted = fmt.format(parsed, {partial: true});
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatKRStyle1WithExtensionCharacter2() {
+	var formatted;
+	var parsed = new ilib.PhoneNumber("35850950777;12345", {locale: "ko-KR"});
+	var expected = "35850950777;12345";
+	
+	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
+	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
 };

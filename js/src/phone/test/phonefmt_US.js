@@ -20,8 +20,8 @@
 function testFormatUSNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "(456) 345-3434";
 	
@@ -35,8 +35,8 @@ function testFormatUSNoLocale() {
 function testFormatUSStyle0() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "(456) 345-3434";
 	
@@ -49,8 +49,8 @@ function testFormatUSStyle0() {
 function testFormatUSStyle1() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "456-345-3434";
 	
@@ -63,8 +63,8 @@ function testFormatUSStyle1() {
 function testFormatUSFull0() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "415",
-			subscriberNumber: "4154155"
+		areaCode: "415",
+		subscriberNumber: "4154155"
 	});
 	var expected = "(415) 415-4155";
 	
@@ -77,10 +77,10 @@ function testFormatUSFull0() {
 function testFormatUSInternational() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "+",
-			countryCode: "33",
-			areaCode: "1",
-			subscriberNumber: "12345678"
+		iddPrefix: "+",
+		countryCode: "33",
+		areaCode: "1",
+		subscriberNumber: "12345678"
 	});
 	var expected = "+33 1 12 34 56 78";
 	
@@ -90,13 +90,26 @@ function testFormatUSInternational() {
 	assertEquals(expected, formatted);
 };
 
+
+function testFormatUSInternational2() { 
+	var formatted;
+	var parsed = new ilib.PhoneNumber("+82317105678", {locale:"en-US"});
+	var expected = "+82 31-710-5678";
+	
+	var fmt = new ilib.PhoneFmt({locale: "en-US", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+
 function testFormatUSInternationalLongArea() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "+",
-			countryCode: "44",
-			areaCode: "1997",
-			subscriberNumber: "123456"
+		iddPrefix: "+",
+		countryCode: "44",
+		areaCode: "1997",
+		subscriberNumber: "123456"
 	});
 	var expected = "+44 1997 123456";
 	
@@ -109,12 +122,24 @@ function testFormatUSInternationalLongArea() {
 function testFormatUSInternationalAccessCode() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "011",
-			countryCode: "33",
-			areaCode: "1",
-			subscriberNumber: "12345678"
+		iddPrefix: "011",
+		countryCode: "33",
+		areaCode: "1",
+		subscriberNumber: "12345678"
 	});
 	var expected = "011 33 1 12 34 56 78";
+	
+	var fmt = new ilib.PhoneFmt({locale: "en-US", style: "default"});
+	formatted = fmt.format(parsed);
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatUSInternationalAccessCode2() { 
+	var formatted;
+	var parsed = new ilib.PhoneNumber("011821045670923", {locale:"en-US"});
+			
+	var expected = "011 82 10-4567-0923";
 	
 	var fmt = new ilib.PhoneFmt({locale: "en-US", style: "default"});
 	formatted = fmt.format(parsed);
@@ -140,9 +165,9 @@ function testFormatUSPlusIDDtoUnknownCountry() {
 function testFormatUSStyle0DialAround() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			cic: "1010321",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		cic: "1010321",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "10-10-321 (456) 345-3434";
 	
@@ -155,9 +180,9 @@ function testFormatUSStyle0DialAround() {
 function testFormatUSStyle1DialAround() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			cic: "1010321",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		cic: "1010321",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "10-10-321-456-345-3434";
 	
@@ -170,9 +195,9 @@ function testFormatUSStyle1DialAround() {
 function testFormatUSStyle0Vertical() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			vsc: "*55",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		vsc: "*55",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "*55 (456) 345-3434";
 	
@@ -185,9 +210,9 @@ function testFormatUSStyle0Vertical() {
 function testFormatUSStyle0OldVertical() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			vsc: "115",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		vsc: "115",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "115 (456) 345-3434";
 	
@@ -197,7 +222,7 @@ function testFormatUSStyle0OldVertical() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalWithPauseChars() { 
+function testFormatUSLocalWithPauseChars() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "6175568",
@@ -211,7 +236,7 @@ function testFormatLocalWithPauseChars() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLDWithPauseChars() { 
+function testFormatUSLDWithPauseChars() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "415",
@@ -226,7 +251,7 @@ function testFormatLDWithPauseChars() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalWithExtension() { 
+function testFormatUSLocalWithExtension() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "6175568",
@@ -240,7 +265,7 @@ function testFormatLocalWithExtension() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLDWithExtension() { 
+function testFormatUSLDWithExtension() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "415",
@@ -255,7 +280,7 @@ function testFormatLDWithExtension() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLDWithTrunkAndExtension() { 
+function testFormatUSLDWithTrunkAndExtension() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -274,7 +299,7 @@ function testFormatLDWithTrunkAndExtension() {
 function testFormatUSStyle0Emergency() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			emergency: "911"
+		emergency: "911"
 	});
 	var expected = "911 ";
 	
@@ -284,10 +309,10 @@ function testFormatUSStyle0Emergency() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEmergencyLikeServiceNumber() { 
+function testFormatUSEmergencyLikeServiceNumber() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			emergency: "411"
+		emergency: "411"
 	});
 	var expected = "411 ";
 	
@@ -300,8 +325,8 @@ function testFormatEmergencyLikeServiceNumber() {
 function testFormatUSStyle0EmergencyExtended() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			emergency: "911",
-			subscriberNumber: "123"
+		emergency: "911",
+		subscriberNumber: "123"
 	});
 	var expected = "911 123";
 	
@@ -311,7 +336,7 @@ function testFormatUSStyle0EmergencyExtended() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithUSMCC() { 
+function testFormatUSNumberWithUSMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
@@ -325,7 +350,7 @@ function testFormatNumberWithUSMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithUSMCCNoLocale() { 
+function testFormatUSNumberWithUSMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
@@ -339,7 +364,7 @@ function testFormatNumberWithUSMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithUSMCC() { 
+function testFormatUSLocalNumberWithUSMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
@@ -352,7 +377,7 @@ function testFormatLocalNumberWithUSMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithUSMCCNoLocale() { 
+function testFormatUSLocalNumberWithUSMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
@@ -366,7 +391,7 @@ function testFormatLocalNumberWithUSMCCNoLocale() {
 };
 
 
-function testFormatNumberWithFRMCC() { 
+function testFormatUSNumberWithFRMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -381,7 +406,7 @@ function testFormatNumberWithFRMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithFRMCCNoLocale() { 
+function testFormatUSNumberWithFRMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -396,7 +421,7 @@ function testFormatNumberWithFRMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithFRMCC() { 
+function testFormatUSLocalNumberWithFRMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "15987654"
@@ -409,7 +434,7 @@ function testFormatLocalNumberWithFRMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithFRMCCNoLocale() { 
+function testFormatUSLocalNumberWithFRMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "15987654"
@@ -422,7 +447,7 @@ function testFormatLocalNumberWithFRMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithDEMCC() { 
+function testFormatUSNumberWithDEMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -437,7 +462,7 @@ function testFormatNumberWithDEMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithDEMCCNoLocale() { 
+function testFormatUSNumberWithDEMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -452,7 +477,7 @@ function testFormatNumberWithDEMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithFRMCC() { 
+function testFormatUSLocalNumberWithFRMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "98765432"
@@ -465,7 +490,7 @@ function testFormatLocalNumberWithFRMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithFRMCCNoLocale() { 
+function testFormatUSLocalNumberWithFRMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "98765432"
@@ -478,7 +503,7 @@ function testFormatLocalNumberWithFRMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithMXMCC() { 
+function testFormatUSNumberWithMXMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
@@ -492,7 +517,7 @@ function testFormatNumberWithMXMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithMXMCCNoLocale() { 
+function testFormatUSNumberWithMXMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
@@ -506,7 +531,7 @@ function testFormatNumberWithMXMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithMXMCC() { 
+function testFormatUSLocalNumberWithMXMCC() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
@@ -519,7 +544,7 @@ function testFormatLocalNumberWithMXMCC() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLocalNumberWithMXMCCNoLocale() { 
+function testFormatUSLocalNumberWithMXMCCNoLocale() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
@@ -533,7 +558,7 @@ function testFormatLocalNumberWithMXMCCNoLocale() {
 };
 
 //for NOV-108200
-function testFormatWithBogusSpecialChars() {
+function testFormatUSWithBogusSpecialChars() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -552,8 +577,8 @@ function testFormatWithBogusSpecialChars() {
 function testWithParamsFormatUSNoLocale() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "(456) 345-3434";
 	
@@ -567,8 +592,8 @@ function testWithParamsFormatUSNoLocale() {
 function testWithParamsFormatUSStyle0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "(456) 345-3434";
 	
@@ -581,8 +606,8 @@ function testWithParamsFormatUSStyle0() {
 function testWithParamsFormatUSStyle1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "456-345-3434";
 	
@@ -595,8 +620,8 @@ function testWithParamsFormatUSStyle1() {
 function testWithParamsFormatUSFull0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "415",
-			subscriberNumber: "4154155"
+		areaCode: "415",
+		subscriberNumber: "4154155"
 	});
 	var expected = "(415) 415-4155";
 	
@@ -609,7 +634,7 @@ function testWithParamsFormatUSFull0() {
 function testWithParamsFormatPartialSMS() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "34534"
+		subscriberNumber: "34534"
 	});
 	var expected = "345-34";
 	
@@ -622,7 +647,7 @@ function testWithParamsFormatPartialSMS() {
 function testWithParamsFormatWholeSMS() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "34534"
+		subscriberNumber: "34534"
 	});
 	var expected = "34534";
 	
@@ -635,10 +660,10 @@ function testWithParamsFormatWholeSMS() {
 function testWithParamsFormatUSInternational() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "+",
-			countryCode: "33",
-			areaCode: "1",
-			subscriberNumber: "12345678"
+		iddPrefix: "+",
+		countryCode: "33",
+		areaCode: "1",
+		subscriberNumber: "12345678"
 	});
 	var expected = "+33 1 12 34 56 78";
 	
@@ -651,10 +676,10 @@ function testWithParamsFormatUSInternational() {
 function testWithParamsFormatUSInternationalLongArea() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "+",
-			countryCode: "44",
-			areaCode: "1997",
-			subscriberNumber: "123456"
+		iddPrefix: "+",
+		countryCode: "44",
+		areaCode: "1997",
+		subscriberNumber: "123456"
 	});
 	var expected = "+44 1997 123456";
 	
@@ -667,10 +692,10 @@ function testWithParamsFormatUSInternationalLongArea() {
 function testWithParamsFormatUSInternationalAccessCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			iddPrefix: "011",
-			countryCode: "33",
-			areaCode: "1",
-			subscriberNumber: "12345678"
+		iddPrefix: "011",
+		countryCode: "33",
+		areaCode: "1",
+		subscriberNumber: "12345678"
 	});
 	var expected = "011 33 1 12 34 56 78";
 	
@@ -698,9 +723,9 @@ function testWithParamsFormatUSPlusIDDtoUnknownCountry() {
 function testWithParamsFormatUSStyle0DialAround() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			cic: "1010321",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		cic: "1010321",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "10-10-321 (456) 345-3434";
 	
@@ -713,9 +738,9 @@ function testWithParamsFormatUSStyle0DialAround() {
 function testWithParamsFormatUSStyle1DialAround() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			cic: "1010321",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		cic: "1010321",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "10-10-321-456-345-3434";
 	
@@ -728,9 +753,9 @@ function testWithParamsFormatUSStyle1DialAround() {
 function testWithParamsFormatUSStyle0Vertical() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			vsc: "*55",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		vsc: "*55",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "*55 (456) 345-3434";
 	
@@ -743,9 +768,9 @@ function testWithParamsFormatUSStyle0Vertical() {
 function testWithParamsFormatUSStyle0OldVertical() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			vsc: "115",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		vsc: "115",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "115 (456) 345-3434";
 	
@@ -845,8 +870,8 @@ function testWithParamsFormatUSStyle0Emergency() {
 function testWithParamsFormatUSStyle0EmergencyExtended() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			emergency: "911",
-			subscriberNumber: "123"
+		emergency: "911",
+		subscriberNumber: "123"
 	});
 	var expected = "911 123";
 	
@@ -859,7 +884,7 @@ function testWithParamsFormatUSStyle0EmergencyExtended() {
 function testWithParamsFormatUSStyle0Partial1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "4"
+		areaCode: "4"
 	});
 	var expected = "(4)";
 	
@@ -872,7 +897,7 @@ function testWithParamsFormatUSStyle0Partial1() {
 function testWithParamsFormatUSStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "45"
+		areaCode: "45"
 	});
 	var expected = "(45)";
 	
@@ -885,7 +910,7 @@ function testWithParamsFormatUSStyle0Partial2() {
 function testWithParamsFormatUSStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456"
+		areaCode: "456"
 	});
 	var expected = "(456) ";
 	
@@ -898,8 +923,8 @@ function testWithParamsFormatUSStyle0Partial3() {
 function testWithParamsFormatUSStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3"
+		areaCode: "456",
+		subscriberNumber: "3"
 	});
 	var expected = "(456) 3";
 	
@@ -912,8 +937,8 @@ function testWithParamsFormatUSStyle0Partial4() {
 function testWithParamsFormatUSStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34"
+		areaCode: "456",
+		subscriberNumber: "34"
 	});
 	var expected = "(456) 34";
 	
@@ -926,8 +951,8 @@ function testWithParamsFormatUSStyle0Partial5() {
 function testWithParamsFormatUSStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "345"
+		areaCode: "456",
+		subscriberNumber: "345"
 	});
 	var expected = "(456) 345";
 	
@@ -940,8 +965,8 @@ function testWithParamsFormatUSStyle0Partial6() {
 function testWithParamsFormatUSStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453"
+		areaCode: "456",
+		subscriberNumber: "3453"
 	});
 	var expected = "(456) 345-3";
 	
@@ -954,8 +979,8 @@ function testWithParamsFormatUSStyle0Partial7() {
 function testWithParamsFormatUSStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34534"
+		areaCode: "456",
+		subscriberNumber: "34534"
 	});
 	var expected = "(456) 345-34";
 	
@@ -968,8 +993,8 @@ function testWithParamsFormatUSStyle0Partial8() {
 function testWithParamsFormatUSStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "345343"
+		areaCode: "456",
+		subscriberNumber: "345343"
 	});
 	var expected = "(456) 345-343";
 	
@@ -982,8 +1007,8 @@ function testWithParamsFormatUSStyle0Partial9() {
 function testWithParamsFormatUSStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "(456) 345-3434";
 	
@@ -996,8 +1021,8 @@ function testWithParamsFormatUSStyle0Partial10() {
 function testWithParamsFormatUSStyle0Partial11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34534345" // too long
+		areaCode: "456",
+		subscriberNumber: "34534345" // too long
 	});
 	var expected = "45634534345"; // use last resort rule
 	
@@ -1010,7 +1035,7 @@ function testWithParamsFormatUSStyle0Partial11() {
 function testWithParamsFormatUSStyle0PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4"
+		subscriberNumber: "4"
 	});
 	var expected = "4";
 	
@@ -1023,7 +1048,7 @@ function testWithParamsFormatUSStyle0PartialLocal1() {
 function testWithParamsFormatUSStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45"
+		subscriberNumber: "45"
 	});
 	var expected = "45";
 	
@@ -1036,7 +1061,7 @@ function testWithParamsFormatUSStyle0PartialLocal2() {
 function testWithParamsFormatUSStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "456"
+		subscriberNumber: "456"
 	});
 	var expected = "456";
 	
@@ -1049,7 +1074,7 @@ function testWithParamsFormatUSStyle0PartialLocal3() {
 function testWithParamsFormatUSStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4563"
+		subscriberNumber: "4563"
 	});
 	var expected = "456-3";
 	
@@ -1062,7 +1087,7 @@ function testWithParamsFormatUSStyle0PartialLocal4() {
 function testWithParamsFormatUSStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45634"
+		subscriberNumber: "45634"
 	});
 	var expected = "456-34";
 	
@@ -1075,7 +1100,7 @@ function testWithParamsFormatUSStyle0PartialLocal5() {
 function testWithParamsFormatUSStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "456345"
+		subscriberNumber: "456345"
 	});
 	var expected = "456-345";
 	
@@ -1088,7 +1113,7 @@ function testWithParamsFormatUSStyle0PartialLocal6() {
 function testWithParamsFormatUSStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4563453"
+		subscriberNumber: "4563453"
 	});
 	var expected = "456-3453";
 	
@@ -1101,7 +1126,7 @@ function testWithParamsFormatUSStyle0PartialLocal7() {
 function testWithParamsFormatUSStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45634535"  // too long
+		subscriberNumber: "45634535"  // too long
 	});
 	var expected = "45634535";  // use last resort rule
 	
@@ -1114,7 +1139,7 @@ function testWithParamsFormatUSStyle0PartialLocal8() {
 function testWithParamsFormatUSStyle0PartialTrunk1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1"
+		trunkAccess: "1"
 	});
 	var expected = "1";
 	
@@ -1127,8 +1152,8 @@ function testWithParamsFormatUSStyle0PartialTrunk1() {
 function testWithParamsFormatUSStyle0PartialTrunk1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "4"
+		trunkAccess: "1",
+		areaCode: "4"
 	});
 	var expected = "1 (4)";
 	
@@ -1141,8 +1166,8 @@ function testWithParamsFormatUSStyle0PartialTrunk1() {
 function testWithParamsFormatUSStyle0PartialTrunk2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "45"
+		trunkAccess: "1",
+		areaCode: "45"
 	});
 	var expected = "1 (45)";
 	
@@ -1155,8 +1180,8 @@ function testWithParamsFormatUSStyle0PartialTrunk2() {
 function testWithParamsFormatUSStyle0PartialTrunk3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456"
+		trunkAccess: "1",
+		areaCode: "456"
 	});
 	var expected = "1 (456) ";
 	
@@ -1169,9 +1194,9 @@ function testWithParamsFormatUSStyle0PartialTrunk3() {
 function testWithParamsFormatUSStyle0PartialTrunk4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3"
 	});
 	var expected = "1 (456) 3";
 	
@@ -1184,9 +1209,9 @@ function testWithParamsFormatUSStyle0PartialTrunk4() {
 function testWithParamsFormatUSStyle0PartialTrunk5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34"
 	});
 	var expected = "1 (456) 34";
 	
@@ -1199,9 +1224,9 @@ function testWithParamsFormatUSStyle0PartialTrunk5() {
 function testWithParamsFormatUSStyle0PartialTrunk6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "345"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "345"
 	});
 	var expected = "1 (456) 345";
 	
@@ -1214,9 +1239,9 @@ function testWithParamsFormatUSStyle0PartialTrunk6() {
 function testWithParamsFormatUSStyle0PartialTrunk7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3453"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3453"
 	});
 	var expected = "1 (456) 345-3";
 	
@@ -1229,9 +1254,9 @@ function testWithParamsFormatUSStyle0PartialTrunk7() {
 function testWithParamsFormatUSStyle0PartialTrunk8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34534"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34534"
 	});
 	var expected = "1 (456) 345-34";
 	
@@ -1244,9 +1269,9 @@ function testWithParamsFormatUSStyle0PartialTrunk8() {
 function testWithParamsFormatUSStyle0PartialTrunk9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "345343"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "345343"
 	});
 	var expected = "1 (456) 345-343";
 	
@@ -1259,9 +1284,9 @@ function testWithParamsFormatUSStyle0PartialTrunk9() {
 function testWithParamsFormatUSStyle0PartialTrunk10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "1 (456) 345-3434";
 	
@@ -1274,9 +1299,9 @@ function testWithParamsFormatUSStyle0PartialTrunk10() {
 function testWithParamsFormatUSStyle0PartialTrunk11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34534345" // too long
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34534345" // too long
 	});
 	var expected = "145634534345";	// use last resort rule
 	
@@ -1289,7 +1314,7 @@ function testWithParamsFormatUSStyle0PartialTrunk11() {
 function testWithParamsFormatUSStyle1Partial1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "4"
+		areaCode: "4"
 	});
 	var expected = "4";
 	
@@ -1302,7 +1327,7 @@ function testWithParamsFormatUSStyle1Partial1() {
 function testWithParamsFormatUSStyle1Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "45"
+		areaCode: "45"
 	});
 	var expected = "45";
 	
@@ -1315,7 +1340,7 @@ function testWithParamsFormatUSStyle1Partial2() {
 function testWithParamsFormatUSStyle1Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456"
+		areaCode: "456"
 	});
 	var expected = "456-";
 	
@@ -1328,8 +1353,8 @@ function testWithParamsFormatUSStyle1Partial3() {
 function testWithParamsFormatUSStyle1Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3"
+		areaCode: "456",
+		subscriberNumber: "3"
 	});
 	var expected = "456-3";
 	
@@ -1342,8 +1367,8 @@ function testWithParamsFormatUSStyle1Partial4() {
 function testWithParamsFormatUSStyle1Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34"
+		areaCode: "456",
+		subscriberNumber: "34"
 	});
 	var expected = "456-34";
 	
@@ -1356,8 +1381,8 @@ function testWithParamsFormatUSStyle1Partial5() {
 function testWithParamsFormatUSStyle1Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "345"
+		areaCode: "456",
+		subscriberNumber: "345"
 	});
 	var expected = "456-345";
 	
@@ -1370,8 +1395,8 @@ function testWithParamsFormatUSStyle1Partial6() {
 function testWithParamsFormatUSStyle1Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453"
+		areaCode: "456",
+		subscriberNumber: "3453"
 	});
 	var expected = "456-345-3";
 	
@@ -1384,8 +1409,8 @@ function testWithParamsFormatUSStyle1Partial7() {
 function testWithParamsFormatUSStyle1Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34534"
+		areaCode: "456",
+		subscriberNumber: "34534"
 	});
 	var expected = "456-345-34";
 	
@@ -1398,8 +1423,8 @@ function testWithParamsFormatUSStyle1Partial8() {
 function testWithParamsFormatUSStyle1Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "345343"
+		areaCode: "456",
+		subscriberNumber: "345343"
 	});
 	var expected = "456-345-343";
 	
@@ -1412,8 +1437,8 @@ function testWithParamsFormatUSStyle1Partial9() {
 function testWithParamsFormatUSStyle1Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "456-345-3434";
 	
@@ -1426,8 +1451,8 @@ function testWithParamsFormatUSStyle1Partial10() {
 function testWithParamsFormatUSStyle1Partial11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			areaCode: "456",
-			subscriberNumber: "34534345"
+		areaCode: "456",
+		subscriberNumber: "34534345"
 	});
 	var expected = "45634534345";
 	
@@ -1440,7 +1465,7 @@ function testWithParamsFormatUSStyle1Partial11() {
 function testWithParamsFormatUSStyle1PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4"
+		subscriberNumber: "4"
 	});
 	var expected = "4";
 	
@@ -1453,7 +1478,7 @@ function testWithParamsFormatUSStyle1PartialLocal1() {
 function testWithParamsFormatUSStyle1PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45"
+		subscriberNumber: "45"
 	});
 	var expected = "45";
 	
@@ -1466,7 +1491,7 @@ function testWithParamsFormatUSStyle1PartialLocal2() {
 function testWithParamsFormatUSStyle1PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "456"
+		subscriberNumber: "456"
 	});
 	var expected = "456";
 	
@@ -1479,7 +1504,7 @@ function testWithParamsFormatUSStyle1PartialLocal3() {
 function testWithParamsFormatUSStyle1PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4563"
+		subscriberNumber: "4563"
 	});
 	var expected = "456-3";
 	
@@ -1492,7 +1517,7 @@ function testWithParamsFormatUSStyle1PartialLocal4() {
 function testWithParamsFormatUSStyle1PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45634"
+		subscriberNumber: "45634"
 	});
 	var expected = "456-34";
 	
@@ -1505,7 +1530,7 @@ function testWithParamsFormatUSStyle1PartialLocal5() {
 function testWithParamsFormatUSStyle1PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "456345"
+		subscriberNumber: "456345"
 	});
 	var expected = "456-345";
 	
@@ -1518,7 +1543,7 @@ function testWithParamsFormatUSStyle1PartialLocal6() {
 function testWithParamsFormatUSStyle1PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "4563453"
+		subscriberNumber: "4563453"
 	});
 	var expected = "456-3453";
 	
@@ -1531,7 +1556,7 @@ function testWithParamsFormatUSStyle1PartialLocal7() {
 function testWithParamsFormatUSStyle1PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			subscriberNumber: "45634534" // too long
+		subscriberNumber: "45634534" // too long
 	});
 	var expected = "45634534";  // use last resort rule
 	
@@ -1544,7 +1569,7 @@ function testWithParamsFormatUSStyle1PartialLocal8() {
 function testWithParamsFormatUSStyle1PartialTrunk1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1"
+		trunkAccess: "1"
 	});
 	var expected = "1-";
 	
@@ -1557,8 +1582,8 @@ function testWithParamsFormatUSStyle1PartialTrunk1() {
 function testWithParamsFormatUSStyle1PartialTrunk1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "4"
+		trunkAccess: "1",
+		areaCode: "4"
 	});
 	var expected = "1-4";
 	
@@ -1571,8 +1596,8 @@ function testWithParamsFormatUSStyle1PartialTrunk1() {
 function testWithParamsFormatUSStyle1PartialTrunk2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "45"
+		trunkAccess: "1",
+		areaCode: "45"
 	});
 	var expected = "1-45";
 	
@@ -1585,8 +1610,8 @@ function testWithParamsFormatUSStyle1PartialTrunk2() {
 function testWithParamsFormatUSStyle1PartialTrunk3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456"
+		trunkAccess: "1",
+		areaCode: "456"
 	});
 	var expected = "1-456-";
 	
@@ -1599,9 +1624,9 @@ function testWithParamsFormatUSStyle1PartialTrunk3() {
 function testWithParamsFormatUSStyle1PartialTrunk4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3"
 	});
 	var expected = "1-456-3";
 	
@@ -1614,9 +1639,9 @@ function testWithParamsFormatUSStyle1PartialTrunk4() {
 function testWithParamsFormatUSStyle1PartialTrunk5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34"
 	});
 	var expected = "1-456-34";
 	
@@ -1629,9 +1654,9 @@ function testWithParamsFormatUSStyle1PartialTrunk5() {
 function testWithParamsFormatUSStyle1PartialTrunk6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "345"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "345"
 	});
 	var expected = "1-456-345";
 	
@@ -1644,9 +1669,9 @@ function testWithParamsFormatUSStyle1PartialTrunk6() {
 function testWithParamsFormatUSStyle1PartialTrunk7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3453"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3453"
 	});
 	var expected = "1-456-345-3";
 	
@@ -1659,9 +1684,9 @@ function testWithParamsFormatUSStyle1PartialTrunk7() {
 function testWithParamsFormatUSStyle1PartialTrunk8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34534"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34534"
 	});
 	var expected = "1-456-345-34";
 	
@@ -1674,9 +1699,9 @@ function testWithParamsFormatUSStyle1PartialTrunk8() {
 function testWithParamsFormatUSStyle1PartialTrunk9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "345343"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "345343"
 	});
 	var expected = "1-456-345-343";
 	
@@ -1689,9 +1714,9 @@ function testWithParamsFormatUSStyle1PartialTrunk9() {
 function testWithParamsFormatUSStyle1PartialTrunk10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "3453434"
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "3453434"
 	});
 	var expected = "1-456-345-3434";
 	
@@ -1704,9 +1729,9 @@ function testWithParamsFormatUSStyle1PartialTrunk10() {
 function testWithParamsFormatUSStyle1PartialTrunk11() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
-			trunkAccess: "1",
-			areaCode: "456",
-			subscriberNumber: "34534343" // too long
+		trunkAccess: "1",
+		areaCode: "456",
+		subscriberNumber: "34534343" // too long
 	});
 	var expected = "145634534343";  // use last resort rule
 	
@@ -2004,7 +2029,7 @@ function testWithParamsFormatLocalNumberWithFRMCCNoLocale() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNumberWithMXMCC() {
+function testFormatUSNumberWithMXMCC() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
