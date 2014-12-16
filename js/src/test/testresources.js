@@ -1458,3 +1458,20 @@ function testResBundleGetStringCompressSpacesBeginning() {
     
     assertEquals("test3", rb.getString("     This    is     a     test.").toString());
 }
+
+function testResBundlePsuedo_euES() {
+    ilib.setAsPseudoLocale("eu-ES");
+    var rb = new ilib.ResBundle({
+	locale:'eu-ES'
+    });
+    assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
+}
+
+function testResBundlePsuedo_psAF() {
+    ilib.setAsPseudoLocale("ps-AF");
+    var rb = new ilib.ResBundle({
+	locale:'ps-AF'
+    });
+    assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
+    //assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
+}

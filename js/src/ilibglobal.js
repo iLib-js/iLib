@@ -67,6 +67,12 @@ if (typeof(exports) !== 'undefined') {
     exports.ilib = ilib;
 }
 
+ilib.pseudoLocales = ["zxx-XX"];
+
+ilib.setAsPseudoLocale = function (localename) {
+   ilib.pseudoLocales.push(localename)
+};
+
 /**
  * Return the name of the platform
  * @private
