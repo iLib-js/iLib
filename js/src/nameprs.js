@@ -37,6 +37,7 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 /**
+ * @class
  * A class to parse names of people. Different locales have different conventions when it
  * comes to naming people.<p>
  *
@@ -88,43 +89,44 @@ util/jsutils.js
  *
  * Depends directive: !depends nameprs.js
  *
- * @class
  * @constructor
- * @dict
  * @param {string|ilib.Name=} name the name to parse
  * @param {Object=} options Options governing the construction of this name instance
  */
 ilib.Name = function (name, options) {
     var sync = true;
 
+    if (!name || name.length === 0) {
+    	return;
+    }
     if (typeof (name) === 'object') {
         // copy constructor
         /**
          * The prefixes for this name
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.prefix = name.prefix;
         /**
          * The given (personal) name in this name.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.givenName = name.givenName;
         /**
          * The middle names used in this name. If there are multiple middle names, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.middleName = name.middleName;
         /**
          * The family names in this name. If there are multiple family names, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.familyName = name.familyName;
         /**
          * The suffixes for this name. If there are multiple suffixes, they all
          * appear in this field separated by spaces.
-         * @type string
+         * @type {string|Array.<string>}
          */
         this.suffix = name.suffix;
 
@@ -133,6 +135,7 @@ ilib.Name = function (name, options) {
         this.style = name.style;
         this.order = name.order;
         this.useSpaces = name.useSpaces;
+        this.isAsianName = name.isAsianName;
         return;
     }
 
@@ -182,6 +185,18 @@ ilib.Name = function (name, options) {
 								var spec = this.locale.getSpec().replace(/-/g, "_");
 								ilib.Name.cache[spec] = info;
 							}
+							/** 
+							 * @type {{
+							 *   nameStyle:string,
+							 *   order:string,
+							 *   prefixes:Array.<string>,
+							 *   suffixes:Array.<string>,
+							 *   auxillaries:Array.<string>,
+							 *   honorifics:Array.<string>,
+							 *   knownFamilyNames:Array.<string>,
+							 *   noCompoundFamilyNames:boolean,
+							 *   sortByHeadWord:boolean
+							 * }} */
 							this.info = info;
 							this._init(name);
 							if (options && typeof(options.onLoad) === 'function') {
@@ -278,7 +293,9 @@ ilib.Name.defaultInfo = ilib.data.name ||  {
 		"esq",
 		"phd",
 		"md"
-	]
+	],
+    "patronymicName":[ ],
+    "familyNames":[ ]
 };
 
 /**
@@ -299,7 +316,7 @@ ilib.Name._isAsianChar = function(c) {
  * @static
  * @protected
  */
-ilib.Name._isAsianName = function (name) {
+ilib.Name._isAsianName = function (name, language) {
     // the idea is to count the number of asian chars and the number
     // of latin chars. If one is greater than the other, choose
     // that style.
@@ -310,10 +327,16 @@ ilib.Name._isAsianName = function (name) {
     if (name && name.length > 0) {
         for (i = 0; i < name.length; i++) {
         	var c = name.charAt(i);
-             
+
             if (ilib.Name._isAsianChar(c)) {
+                if (language =="ko" || language =="ja" || language =="zh") {
+                    return true;
+                }
                 asian++;
             } else if (ilib.CType.isAlpha(c)) {
+                if (!language =="ko" || !language =="ja" || !language =="zh") {
+                    return false;
+                }
                 latin++;
             }
         }
@@ -330,7 +353,7 @@ ilib.Name._isAsianName = function (name) {
  * @static
  * @protected
  */
-ilib.Name._isEuroName = function (name) {
+ilib.Name._isEuroName = function (name, language) {
     var c,
         n = new ilib.String(name),
         it = n.charIterator();
@@ -340,9 +363,10 @@ ilib.Name._isEuroName = function (name) {
 
         if (!ilib.Name._isAsianChar(c) && !ilib.CType.isPunct(c) && !ilib.CType.isSpace(c)) {
             return true;
+        } else if (ilib.Name._isAsianChar(c) && (language =="ko" || language =="ja" || language =="zh")) {
+            return false;
         }
     }
-
     return false;
 };
 
@@ -353,11 +377,12 @@ ilib.Name.prototype = {
     _init: function (name) {
         var parts, prefixArray, prefix, prefixLower,
             suffixArray, suffix, suffixLower,
-            asianName, i, info, hpSuffix;
+            i, info, hpSuffix;
+        var currentLanguage = this.locale.getLanguage();
 
         if (name) {
             // for DFISH-12905, pick off the part that the LDAP server automatically adds to our names in HP emails
-            i = name.search(/\s*[,\(\[\{<]/);
+            i = name.search(/\s*[,\/\(\[\{<]/);
             if (i !== -1) {
                 hpSuffix = name.substring(i);
                 hpSuffix = hpSuffix.replace(/\s+/g, ' '); // compress multiple whitespaces
@@ -371,15 +396,14 @@ ilib.Name.prototype = {
                 }
             }
 
+            this.isAsianName = ilib.Name._isAsianName(name, currentLanguage);
             if (this.info.nameStyle === "asian" || this.info.order === "fmg" || this.info.order === "fgm") {
-                asianName = !ilib.Name._isEuroName(name);
-                info = asianName ? this.info : ilib.data.name;
+                info = this.isAsianName ? this.info : ilib.data.name;
             } else {
-                asianName = ilib.Name._isAsianName(name);
-                info = asianName ? ilib.data.name : this.info;
+                info = this.isAsianName ? ilib.data.name : this.info;
             }
 
-            if (asianName) {
+            if (this.isAsianName) {
                 // all-asian names
                 if (this.useSpaces == false) {
                     name = name.replace(/\s+/g, ''); // eliminate all whitespaces
@@ -397,13 +421,13 @@ ilib.Name.prototype = {
             if (parts.length > 1) {
                 for (i = parts.length; i > 0; i--) {
                     prefixArray = parts.slice(0, i);
-                    prefix = prefixArray.join(asianName ? '' : ' ');
+                    prefix = prefixArray.join(this.isAsianName ? '' : ' ');
                     prefixLower = prefix.toLowerCase();
                     prefixLower = prefixLower.replace(/[,\.]/g, ''); // ignore commas and periods
                     if (this.info.prefixes &&
                         (this.info.prefixes.indexOf(prefixLower) > -1 || this._isConjunction(prefixLower))) {
                         if (this.prefix) {
-                            if (!asianName) {
+                            if (!this.isAsianName) {
                                 this.prefix += ' ';
                             }
                             this.prefix += prefix;
@@ -419,12 +443,12 @@ ilib.Name.prototype = {
             if (parts.length > 1) {
                 for (i = parts.length; i > 0; i--) {
                     suffixArray = parts.slice(-i);
-                    suffix = suffixArray.join(asianName ? '' : ' ');
+                    suffix = suffixArray.join(this.isAsianName ? '' : ' ');
                     suffixLower = suffix.toLowerCase();
                     suffixLower = suffixLower.replace(/[\.]/g, ''); // ignore periods
                     if (this.info.suffixes && this.info.suffixes.indexOf(suffixLower) > -1) {
                         if (this.suffix) {
-                            if (!asianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
+                            if (!this.isAsianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
                                 this.suffix = ' ' + this.suffix;
                             }
                             this.suffix = suffix + this.suffix;
@@ -442,12 +466,12 @@ ilib.Name.prototype = {
             }
 
             // adjoin auxillary words to their headwords
-            if (parts.length > 1 && !asianName) {
-                parts = this._joinAuxillaries(parts, asianName);
+            if (parts.length > 1 && !this.isAsianName) {
+                parts = this._joinAuxillaries(parts, this.isAsianName);
             }
 
-            if (asianName) {
-                this._parseAsianName(parts);
+            if (this.isAsianName) {
+                this._parseAsianName(parts, currentLanguage);
             } else {
                 this._parseWesternName(parts);
             }
@@ -490,8 +514,12 @@ ilib.Name.prototype = {
 
     /**
      * @protected
+     * @param {Array} parts
+     * @param {Array} names
+     * @param {boolean} isAsian
+     * @param {boolean=} noCompoundPrefix
      */
-    _findPrefix: function (parts, names, isAsian) {
+    _findPrefix: function (parts, names, isAsian, noCompoundPrefix) {
         var i, prefix, prefixLower, prefixArray, aux = [];
 
         if (parts.length > 0 && names) {
@@ -503,6 +531,10 @@ ilib.Name.prototype = {
 
                 if (prefixLower in names) {
                     aux = aux.concat(isAsian ? prefix : prefixArray);
+                    if (noCompoundPrefix) {
+                    	// don't need to parse further. Just return it as is.
+                    	return aux;
+                    }
                     parts = parts.slice(i);
                     i = parts.length + 1;
                 }
@@ -679,21 +711,79 @@ ilib.Name.prototype = {
     /**
      * @protected
      */
-    _parseAsianName: function (parts) {
-        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+    _parseAsianName: function (parts, language) {
+        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
-
             this.givenName = parts.slice(this.familyName.length).join('');
-
+            if (language === "ko" && this.givenName.search(/\s*[/\s]/) > -1) {
+                this._parseKoreanName(parts);
+            }
+        } else if (this.locale.getLanguage() === "ja") {
+            this._parseJapaneseName(parts);
         } else if (this.suffix || this.prefix) {
             this.familyName = parts.join('');
-
         } else {
             this.givenName = parts.join('');
-
         }
+    },
+
+    /**
+     * @protected
+     */
+    _parseKoreanName: function (parts) {
+        var index = this.givenName.indexOf(" ");
+        var temp = this.givenName.substr(0, index);
+        if (!this.suffix) {
+            this.suffix = this.givenName.substr(index + 1);     
+        }
+        this.givenName = temp;
+    },
+
+    /**
+     * @protected
+     */
+    _parseJapaneseName: function (parts) {
+    	if (this.suffix && this.suffix.length > 1 && this.info.honorifics.indexOf(this.suffix)>-1) {
+    		if (parts.length === 1) {
+    			if (ilib.CType.withinRange(parts[0], "cjk")) {
+    				this.familyName = parts[0];
+    			} else {
+    				this.givenName = parts[0];
+    			}
+    			return;
+    		} else if (parts.length === 2) {
+    			this.familyName = parts.slice(0,parts.length).join("")
+    			return;
+    		}
+    	}
+    	if (parts.length > 1) {
+    		var fn = "";                                                                    
+    		for (var i = 0; i < parts.length; i++) {
+    			if (ilib.CType.withinRange(parts[i], "cjk")) {
+    				fn += parts[i];
+    			} else if (fn.length > 1 && ilib.CType.withinRange(parts[i], "hiragana")) {
+    				this.familyName = fn;
+    				this.givenName = parts.slice(i,parts.length).join("");
+    				return;
+    			} else {
+    				break;
+    			}
+    		}
+    	}
+    	if (parts.length === 1) {
+    		this.familyName = parts[0];
+    	} else if (parts.length === 2) {
+    		this.familyName = parts[0];
+    		this.givenName = parts[1];
+    	} else if (parts.length === 3) {
+    		this.familyName = parts[0];
+    		this.givenName = parts.slice(1,parts.length).join("");
+    	} else if (parts.length > 3) {
+    		this.familyName = parts.slice(0,2).join("")
+    		this.givenName = parts.slice(2,parts.length).join("");
+    	}      
     },
 
     /**
@@ -759,6 +849,9 @@ ilib.Name.prototype = {
         }
     },
 
+    /**
+     * @protected
+     */
     _parseIndonesianName: function (parts) {
         var conjunctionIndex;
 
@@ -808,6 +901,9 @@ ilib.Name.prototype = {
         }
     },
     
+    /**
+     * @protected
+     */
     _parseGenericWesternName: function (parts) {
         /* Western names are parsed as follows, and rules are applied in this 
          * order:
@@ -879,6 +975,192 @@ ilib.Name.prototype = {
         }
     },
     
+     /**
+     * parse patrinomic name from the russian names 
+     * @protected
+     * @param {Array.<string>} parts the current array of name parts
+     * @return number  index of the part which contains patronymic name
+     */
+    _findPatronymicName: function(parts) {
+    	var index, part;
+    	for (index = 0; index < parts.length; index++) {
+    		part = parts[index];
+    		if (typeof (part) === 'string') {
+    			part = part.toLowerCase();
+
+    			var subLength = this.info.patronymicName.length;
+    			while(subLength--) {
+    				if(part.indexOf(this.info.patronymicName[subLength])!== -1 )
+    					return index;
+    			}
+    		}
+    	}
+    	return -1;
+    },
+
+    /**
+	 * find if the given part is patronymic name
+	 * 
+	 * @protected
+	 * @param {string} part string from name parts @
+	 * @return number index of the part which contains familyName
+	 */
+    _isPatronymicName: function(part) {
+	    var pName;
+	    if ( typeof (part) === 'string') {
+		    pName = part.toLowerCase();
+
+		    var subLength = this.info.patronymicName.length;
+		    while (subLength--) {
+			    if (pName.indexOf(this.info.patronymicName[subLength]) !== -1)
+				    return true;
+		    }
+	    }
+	    return false;
+    },
+
+    /**
+	 * find family name from the russian name
+	 * 
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @return boolean true if patronymic, false otherwise
+	 */
+    _findFamilyName: function(parts) {
+	    var index, part, substring;
+	    for (index = 0; index < parts.length; index++) {
+		    part = parts[index];
+
+		    if ( typeof (part) === 'string') {
+			    part = part.toLowerCase();
+			    var length = part.length - 1;
+
+			    if (this.info.familyName.indexOf(part) !== -1) {
+				    return index;
+			    } else if (part[length] === 'в' || part[length] === 'н' ||
+			        part[length] === 'й') {
+				    substring = part.slice(0, -1);
+				    if (this.info.familyName.indexOf(substring) !== -1) {
+					    return index;
+				    }
+			    } else if ((part[length - 1] === 'в' && part[length] === 'а') ||
+			        (part[length - 1] === 'н' && part[length] === 'а') ||
+			        (part[length - 1] === 'а' && part[length] === 'я')) {
+				    substring = part.slice(0, -2);
+				    if (this.info.familyName.indexOf(substring) !== -1) {
+					    return index;
+				    }
+			    }
+		    }
+	    }
+	    return -1;
+    },
+
+    /**
+	 * parse russian name
+	 * 
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @return
+	 */
+    _parseRussianName: function(parts) {
+	    var conjunctionIndex, familyIndex = -1;
+
+	    if (parts.length === 1) {
+		    if (this.prefix || typeof (parts[0]) === 'object') {
+			    // already has a prefix, so assume it goes with the family name
+				// like "Dr. Roberts" or
+			    // it is a name with auxillaries, which is almost always a
+				// family name
+			    this.familyName = parts[0];
+		    } else {
+			    this.givenName = parts[0];
+		    }
+	    } else if (parts.length === 2) {
+		    // we do G F
+		    if (this.info.order === 'fgm') {
+			    this.givenName = parts[1];
+			    this.familyName = parts[0];
+		    } else if (this.info.order === "gmf") {
+			    this.givenName = parts[0];
+			    this.familyName = parts[1];
+		    } else if ( typeof (this.info.order) === 'undefined') {
+			    if (this._isPatronymicName(parts[1]) === true) {
+				    this.middleName = parts[1];
+				    this.givenName = parts[0];
+			    } else if ((familyIndex = this._findFamilyName(parts)) !== -1) {
+				    if (familyIndex === 1) {
+					    this.givenName = parts[0];
+					    this.familyName = parts[1];
+				    } else {
+					    this.familyName = parts[0];
+					    this.givenName = parts[1];
+				    }
+
+			    } else {
+				    this.givenName = parts[0];
+				    this.familyName = parts[1];
+			    }
+
+		    }
+	    } else if (parts.length >= 3) {
+		    // find the first instance of 'and' in the name
+		    conjunctionIndex = this._findLastConjunction(parts);
+		    var patronymicNameIndex = this._findPatronymicName(parts);
+		    if (conjunctionIndex > 0) {
+			    // if there's a conjunction that's not the first token, put
+				// everything up to and
+			    // including the token after it into the first name, the last
+				// token into
+			    // the family name (if it exists) and everything else in to the
+				// middle name
+			    // 0 1 2 3 4 5
+			    // G A G M M F
+			    // G G A G M F
+			    // G G G A G F
+			    // G G G G A G
+			    // if(this.order == "gmf") {
+			    this.givenName = parts.slice(0, conjunctionIndex + 2);
+
+			    if (conjunctionIndex + 1 < parts.length - 1) {
+				    this.familyName = parts.splice(parts.length - 1, 1);
+				    // //console.log(this.familyName);
+				    if (conjunctionIndex + 2 < parts.length - 1) {
+					    this.middleName = parts.slice(conjunctionIndex + 2,
+					        parts.length - conjunctionIndex - 3);
+				    }
+			    } else if (this.order == "fgm") {
+				    this.familyName = parts.slice(0, conjunctionIndex + 2);
+				    if (conjunctionIndex + 1 < parts.length - 1) {
+					    this.middleName = parts.splice(parts.length - 1, 1);
+					    if (conjunctionIndex + 2 < parts.length - 1) {
+						    this.givenName = parts.slice(conjunctionIndex + 2,
+						        parts.length - conjunctionIndex - 3);
+					    }
+				    }
+			    }
+		    } else if (patronymicNameIndex !== -1) {
+			    this.middleName = parts[patronymicNameIndex];
+
+			    if (patronymicNameIndex === (parts.length - 1)) {
+				    this.familyName = parts[0];
+				    this.givenName = parts.slice(1, patronymicNameIndex);
+			    } else {
+				    this.givenName = parts.slice(0, patronymicNameIndex);
+
+				    this.familyName = parts[parts.length - 1];
+			    }
+		    } else {
+			    this.givenName = parts[0];
+
+			    this.middleName = parts.slice(1, parts.length - 1);
+
+			    this.familyName = parts[parts.length - 1];
+		    }
+	    }
+    },
+    
+    
     /**
      * @protected
      */
@@ -894,8 +1176,7 @@ ilib.Name.prototype = {
              * or family-given. Use the value of the "order" property of the
              * constructor options to give the default when the order is ambiguous.
              */
-            // TODO: this._parseRussianName(parts);
-        	this._parseGenericWesternName(parts); // for now, just do western names
+            this._parseRussianName(parts);
         } else if (this.locale.getLanguage() === "id") {
             // in indonesia, we parse names differently than in the rest of the world 
             // because names don't have family names usually.
@@ -950,7 +1231,7 @@ ilib.Name.prototype = {
                 }
             } else if (this.info.knownFamilyNames && this.familyName) {
                 parts = this.familyName.split('');
-                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
                 name = "";
                 for (i = 0; i < familyNameArray.length; i++) {
                     name += (this.info.knownFamilyNames[familyNameArray[i]] || "");
@@ -968,8 +1249,6 @@ ilib.Name.prototype = {
      * Return a shallow copy of the current instance.
      */
     clone: function () {
-        var other = new ilib.Name();
-        ilib.shallowCopy(this, other);
-        return other;
+        return new ilib.Name(this);
     }
 };

@@ -28,6 +28,7 @@ ctype.ispunct.js
 // !data name
 
 /**
+ * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to
  * a user. The options may contain the following properties:
  * 
@@ -109,7 +110,6 @@ ctype.ispunct.js
  * 
  * Depends directive: !depends namefmt.js
  * 
- * @class
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */
@@ -301,14 +301,14 @@ ilib.NameFmt.prototype = {
 	 */
 	format: function(name) {
 		var formatted, temp, modified, isAsianName;
-		
+		var currentLanguage = this.locale.getLanguage();
+		 
 		if (!name || typeof(name) !== 'object') {
 			return undefined;
 		}
 		
-		if ((!name.givenName || ilib.Name._isEuroName(name.givenName)) &&
-				 (!name.middleName || ilib.Name._isEuroName(name.middleName)) &&
-				 (!name.familyName || ilib.Name._isEuroName(name.familyName))) {
+		if ((typeof(name.isAsianName) === 'boolean' && !name.isAsianName) ||
+				ilib.Name._isEuroName([name.givenName, name.middleName, name.familyName].join(""), currentLanguage)) {
 			isAsianName = false;	// this is a euro name, even if the locale is asian
 			modified = name.clone();
 			
@@ -338,6 +338,9 @@ ilib.NameFmt.prototype = {
 		} else {
 			isAsianName = true;
 			modified = name;
+			if (currentLanguage === "ko" && this.info.honorifics.indexOf(name.suffix) == -1) {
+				modified.suffix = ' ' + modified.suffix; 
+			}
 		}
 		
 		if (!this.template || isAsianName !== this.isAsianLocale) {

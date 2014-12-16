@@ -1,6 +1,6 @@
 {
 	"name": "ilib",
-	"version": "6.0-001",
+	"version": "7.0-001",
 	"main": "./nodeglue.js",
 	"description": "node glue for iLib. iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
 	"keywords": [
@@ -20,7 +20,7 @@
 	"files": [
 		"./testglue.js",
 		"./ilib-dyn-full-compiled.js",
-		"../data/temp",
+		"../data/localetemp",
 		"README.md"
 	]
 }

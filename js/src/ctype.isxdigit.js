@@ -27,12 +27,27 @@
  * 
  * Depends directive: !depends ctype.isxdigit.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is a hexadecimal digit written
  * in the Latin script.
  */
 ilib.CType.isXdigit = function (ch) {
-	return ilib.CType._inRange(ch, 'xdigit', ilib.data.ctype);
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			num = ilib.String.toCodePoint(ch, 0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+
+	return ilib.CType._inRange(num, 'xdigit', ilib.data.ctype);
 };
 
 /**

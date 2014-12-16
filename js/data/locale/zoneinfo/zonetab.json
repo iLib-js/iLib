@@ -635,7 +635,8 @@
         "Pacific/Gambier"
     ],
     "PG": [
-        "Pacific/Port_Moresby"
+        "Pacific/Port_Moresby",
+        "Pacific/Bougainville"
     ],
     "PH": [
         "Asia/Manila"
@@ -685,21 +686,23 @@
     "RU": [
         "Europe/Kaliningrad",
         "Europe/Moscow",
+        "Europe/Simferopol",
         "Europe/Volgograd",
         "Europe/Samara",
-        "Europe/Simferopol",
         "Asia/Yekaterinburg",
         "Asia/Omsk",
         "Asia/Novosibirsk",
         "Asia/Novokuznetsk",
         "Asia/Krasnoyarsk",
         "Asia/Irkutsk",
+        "Asia/Chita",
         "Asia/Yakutsk",
         "Asia/Khandyga",
         "Asia/Vladivostok",
         "Asia/Sakhalin",
         "Asia/Ust-Nera",
         "Asia/Magadan",
+        "Asia/Srednekolymsk",
         "Asia/Kamchatka",
         "Asia/Anadyr"
     ],
@@ -852,13 +855,13 @@
         "America/Boise",
         "America/Phoenix",
         "America/Los_Angeles",
+        "America/Metlakatla",
         "America/Anchorage",
         "America/Juneau",
         "America/Sitka",
         "America/Yakutat",
         "America/Nome",
         "America/Adak",
-        "America/Metlakatla",
         "Pacific/Honolulu"
     ],
     "UY": [

@@ -2,7 +2,7 @@
 <!--
 build.xml - build the javascript parts
 
-Copyright © 2012-2013, JEDLSoft
+Copyright © 2012-2014, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -172,6 +172,33 @@ limitations under the License.
 		</jscomp>
 	</target>
 
+	<target name="testilib.datesonly" description="test whether or not the ilib-datesonly single file needs to be rebuilt">
+		<uptodate property="datesonly.ilib.datesonly.not.needed" targetfile="${build.src}/ilib-datesonly-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="ilib-datesonly-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		</uptodate>
+	</target>
+
+	<target name="assemble.datesonly" depends="prepare,gen.manifest.locale,testilib.datesonly" unless="datesonly.ilib.datesonly.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+		<runassemble 
+			tgtfilename="ilib-datesonly.js" 
+			srcfilename="ilib-datesonly-inc.js" 
+			locales="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,kn-IN,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,ta-IN,ta-SG,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW"/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-datesonly-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-datesonly.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
 	<target name="testilib.standard" description="test whether or not the ilib-standard single file needs to be rebuilt">
 		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.src}/ilib-standard-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
@@ -238,7 +265,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-NP,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hant-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-MO-Hant,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-NP,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-MO-Hant,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -292,7 +319,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-full-inc.js" 
-			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-MY,zh-HK,zh-HK-Hans,zh-MO,zh-MO-Hant,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hant-HK,zh-Hans-MO,zh-Hans-SG,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -400,7 +427,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
 			srcfilename="ilib-standard-inc.js"
-			locales="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,kn-IN,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,ta-IN,ta-SG,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hant-MY,zh-Hant-TW"/>
+			locales="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,kn-IN,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,ta-IN,ta-SG,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -456,6 +483,24 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/locale"/>
 		<copy todir="${build.export}/locale">
+			<fileset dir="${build.localetemp}">
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/package/locale"/>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.base}">
+				<include name="package.json"/>
+				<include name="README.md"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.src}">
+				<include name="nodeglue.js"/>
+				<include name="ilib-dyn-full-compiled.js"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package/locale">
 			<fileset dir="${build.localetemp}">
 				<include name="**/*.json"/>
 			</fileset>
@@ -540,84 +585,92 @@ limitations under the License.
 		</checksum>
 	</target -->
 
+	<macrodef name="runtests">
+        <attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="suite"/>
+		<sequential>
+			<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+				<arg value="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+			<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+				<arg line="testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target depends="assemble.dyn.unittest" name="test.util">
+		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.root">
+		<runtests suite="." assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.calendar">
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.date">
+		<runtests suite="date" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.number">
+		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.maps">
+		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.ctype">
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.strings-ext">
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.phone">
+		<runtests suite="phone" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.units">
+		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.name">
+		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.address">
+		<runtests suite="address" assembly="dynamic" compilation="compiled"/>
+	</target>
+	<target depends="assemble.dyn.unittest" name="test.collate">
+		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
+	</target>
+	
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<echo>Testing the core classes in the assembled and compiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="assembled_compiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_compiled"/>
-		</exec>
+		<runtests suite="full" assembly="assembled" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<echo>Testing the core classes in the assembled and uncompiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="assembled_uncompiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="assembled_uncompiled"/>
-		</exec>
+		<runtests suite="full" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
-		<echo>Testing the core classes in the dynamic and compiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="dynamic_compiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_compiled"/>
-		</exec>
+		<runtests suite="full" assembly="dynamic" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
-		<echo>Testing the core classes in the dynamic and uncompiled version of ilib</echo>
-		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="testSuite.js"/>
-			<arg value="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-			<arg line="testSuite.js"/>
-			<arg line="dynamic_uncompiled"/>
-		</exec>
+		<runtests suite="full" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
 	<target name="bench.core" depends="assemble.unittest,assemble.dyn.unittest"

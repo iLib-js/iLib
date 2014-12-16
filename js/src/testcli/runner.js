@@ -22,8 +22,6 @@ var fs = require('fs');
 var vm = require('vm');
 var util = require("util");
 
-var topDirName = topDirName || __dirname;
-
 function newSandbox() {
 	return {
 		top : {},
@@ -37,7 +35,7 @@ function newSandbox() {
 		require : require,
 		global: global,
 		process: process,
-		__dirname: topDirName
+		module: module
 	};
 };
 
@@ -57,7 +55,8 @@ function TestSuite(path) {
 	this.tests = [];
 	this.subSuites = [];
 	this.includes = [];
-
+	this.contextBits = {};
+	
 	this.path = path;
 };
 
@@ -97,6 +96,18 @@ TestSuite.prototype = {
 		this.setupCode = code;
 	},
 	
+	merge: function(to, from) {
+		for (var p in from) {
+			if (typeof(from[p]) !== 'undefined') {
+				to[p] = from[p];
+			}
+		}
+	},
+	
+	addToContext: function(obj) {
+		this.merge(this.contextBits, obj);
+	},
+	
 	_runAllTests: function() {
 		var tests = [];
 		
@@ -116,7 +127,7 @@ TestSuite.prototype = {
 				if (typeof(this.tearDown) === 'function') {
 					tearDown(); 
 				}
-				// util.print("PASS: " + t);
+				// util.print("PASS: " + t + "\n");
 				results.pass++;		
 			} catch ( e ) {
 				var msg = "FAIL: " + path + ":" + t + "()\n\t";
@@ -145,7 +156,7 @@ TestSuite.prototype = {
 	runTests: function(results, root) {
 		// util.print("runTests for suite " + this.path);
 		if (this.path) {
-			this.context = vm.createContext({
+			var contextInit = {
 				top: {},
 				window: {
 					document: {}
@@ -160,8 +171,10 @@ TestSuite.prototype = {
 				util: util,
 				global: global,
 				path: this.path,
-				__dirname: topDirName
-			});
+				module: module
+			};
+			this.merge(contextInit, this.contextBits);
+			this.context = vm.createContext(contextInit);
 			if (this.setupCode) {
 				// allow arbitrary set up before the includes and running the tests
 				vm.runInContext(this.setupCode, this.context);
@@ -182,7 +195,8 @@ TestSuite.prototype = {
 			}
 		}
 		this.subSuites.forEach(function (suite) {
-			// util.print("Running tests for subsuite " + JSON.stringify(suite));
+			// util.print("Running tests for subsuite " + JSON.stringify(suite.path) + "\n");
+			suite.tests.addToContext(this.contextBits);
 			suite.tests.applyIncludes(this.includes);
 			for (var i = 0; i < suite.iterations; i++) {
 				suite.tests.runTests(results, root);

@@ -21,6 +21,7 @@
 // !data likelylocales
 
 /**
+ * @class
  * Create a new locale matcher instance. This is used
  * to see which locales can be matched with each other in
  * various ways.<p>
@@ -51,7 +52,6 @@
  * 
  * Depends directive: !depends localematch.js
  * 
- * @class
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
  */
@@ -79,7 +79,7 @@ ilib.LocaleMatcher = function(options) {
 		ilib.LocaleMatcher.cache = {};
 	}
 
-	if (!ilib.data.likelylocales) {
+	if (typeof(ilib.data.likelylocales) === 'undefined') {
 		ilib.loadData({
 			object: ilib.LocaleMatcher, 
 			locale: "-", 
@@ -92,6 +92,7 @@ ilib.LocaleMatcher = function(options) {
 					var spec = this.locale.getSpec().replace(/-/g, "_");
 					ilib.LocaleMatcher.cache[spec] = info;
 				}
+				/** @type {Object.<string,string>} */
 				this.info = info;
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
@@ -99,7 +100,7 @@ ilib.LocaleMatcher = function(options) {
 			})
 		});
 	} else {
-		this.info = ilib.data.likelylocales;
+		this.info = /** @type {Object.<string,string>} */ ilib.data.likelylocales;
 	}
 };
 

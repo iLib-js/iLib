@@ -26,15 +26,29 @@
  * 
  * Depends directive: !depends ctype.isalnum.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is alphabetic.
  */
 ilib.CType.isAlpha = function (ch) {
-	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'Lt', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'Lm', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'Lo', ilib.data.ctype_l);
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			num = ilib.String.toCodePoint(ch, 0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+	return ilib.CType._inRange(num, 'Lu', ilib.data.ctype_l) ||
+		ilib.CType._inRange(num, 'Ll', ilib.data.ctype_l) ||
+		ilib.CType._inRange(num, 'Lt', ilib.data.ctype_l) ||
+		ilib.CType._inRange(num, 'Lm', ilib.data.ctype_l) ||
+		ilib.CType._inRange(num, 'Lo', ilib.data.ctype_l);
 };
 
 /**

@@ -77,15 +77,16 @@ limitations under the License.
 				dir="${build.base}"
 				includes="build.xml,build.properties"/>
 		</zip>
-		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip">
-			<zipfileset src="${build.dist}/ilib-${version}.zip"/>
-		</tar>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip">
-			<zipfileset src="${build.dist}/ilib-${version}-doc.zip"/>
-		</tar>
+		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip" 
+			basedir="${build.export}"
+			includes="js/**,java/**,locale/**"/>
+		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
 		<tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
-			<zipfileset src="${build.dist}/ilib-${version}-src.zip"/>
+			<fileset dir="${build.export}/src" includes="**"/>
+			<fileset dir="${build.export}"     includes="tools/**"/>
+			<fileset dir="${build.base}"       includes="build.xml,build.properties"/>
 		</tar>
+		<tar destfile="${build.dist}/ilib.tgz" compression="gzip" basedir="${build.export}" includes="package/**"/>
 		<checksum>
 			<fileset dir="${build.dist}">
 				<include name="*.tgz"/>
@@ -102,4 +103,5 @@ limitations under the License.
 	<target name="doc" description="Extract all the inline documentation.">
 		<iterate target="doc"/>
 	</target>
+	
 </project>

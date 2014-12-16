@@ -1,6 +1,6 @@
 /* jshint node: true */
 // pass the ilib definition to our callers
-var ilib = require("./ilib-dyn-full.js").ilib;
+var ilib = require("./ilib-dyn-full-compiled.js").ilib;
 exports.ilib = ilib;
 
 var path = require("path"),
@@ -10,11 +10,28 @@ var path = require("path"),
 var nodeLoader = function () {
 	// util.print("new nodeLoader instance\n");
 
-	// for use from within a check-out of ilib
-	this.base = path.normalize(path.join(__dirname, "../data"));  
-	
-	// for use on-device
-	if (!fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
+	if (typeof(module) !== 'undefined' && module.filename) {
+		// loaded under nodejs
+		var base = path.dirname(module.filename);
+		var localeDir = path.normalize(path.join(base, "locale"));
+		if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
+			// this was loaded via a nodejs require() call in an npm module, so the parent
+			// dir of this file is where the locale dir is
+			this.base = base;
+		} 
+		
+		if (!this.base) {
+			base = path.normalize(path.join(base, "/../data"));
+			localeDir = path.normalize(path.join(base, "localetemp"));
+			if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
+				// loaded from a development check-out of the ilib sources
+				this.base = base;
+			}
+		}
+	}
+
+	if (!this.base) {
+		// standard install location
 		// util.print("Could not find files in base " + path.join(this.base, "locale/localeinfo.json") + "\n");
 		this.base = "/usr/share/javascript/ilib";
 	}

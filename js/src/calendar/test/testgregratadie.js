@@ -163,7 +163,7 @@ function testGregRataDieConstructorUnixTime() {
     assertNotNull(rd);
     
     // rounded to 8 decimal points
-    assertEquals(719163.00070602, rd.getRataDie());
+    assertEquals(719163.0007060185, rd.getRataDie());
 }
 
 function testGregRataDieConstructorUnixTimeTestRounding() {
@@ -172,8 +172,8 @@ function testGregRataDieConstructorUnixTimeTestRounding() {
     });
     assertNotNull(rd);
     
-    // rounded to 8 decimal points
-    assertEquals(719163.00070602, rd.getRataDie());
+    // rounded to 10 decimal points
+    assertEquals(719163.0007060185, rd.getRataDie());
     
     assertEquals(61000, rd.getTime());
 }

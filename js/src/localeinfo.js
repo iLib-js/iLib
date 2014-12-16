@@ -22,6 +22,7 @@
 // !data localeinfo
 
 /**
+ * @class
  * Create a new locale info instance. Locale info instances give information about
  * the default settings for a particular locale. These settings may be overridden
  * by various parts of the code, and should be used as a fall-back setting of last
@@ -58,7 +59,6 @@
  * 
  * Depends directive: !depends localeinfo.js
  * 
- * @class
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback
  * function
@@ -71,7 +71,9 @@ ilib.LocaleInfo = function(locale, options) {
 	    loadParams = undefined;
 	
 	/* these are all the defaults. Essentially, en-US */
-	/** @type {{
+	/**
+	  @private 
+	  @type {{
 		scripts:Array.<string>,
 		timezone:string,
 		units:string,
@@ -79,6 +81,7 @@ ilib.LocaleInfo = function(locale, options) {
 		clock:string,
 		currency:string,
 		firstDayOfWeek:number,
+		unitfmt: {long:string,short:string},
 		numfmt:Object.<{
 			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
 			script:string,
@@ -94,7 +97,8 @@ ilib.LocaleInfo = function(locale, options) {
 			exponential:string,
 			digits:string
 		}>
-	}}*/
+	  }}
+	*/
 	this.info = ilib.LocaleInfo.defaultInfo;
 	
 	switch (typeof(locale)) {
@@ -152,6 +156,7 @@ ilib.LocaleInfo.defaultInfo = /** @type {{
 	clock:string,
 	currency:string,
 	firstDayOfWeek:number,
+	unitfmt: {long:string,short:string},
 	numfmt:Object.<{
 		currencyFormats:Object.<{
 			common:string,
@@ -248,6 +253,10 @@ ilib.LocaleInfo.prototype = {
 	getUnits: function () {
 		return this.info.units;
 	},
+        
+        getUnitFormat: function () {
+                return this.info.unitfmt;
+        },
 	
 	/**
 	 * Return the name of the calendar that is commonly used in the given locale.

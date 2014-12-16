@@ -1,0 +1,46 @@
+{
+	"formats": {
+		"default": "{streetAddress}\n{postalCode}\n{locality}, {region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode}\n{locality}, {region}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+			 		"Boaco",
+					"Carazo",
+					"Chinandega",
+					"Chontales",
+					"Esteli",
+					"Granada",
+					"Jinotega",
+					"Madriz",
+					"Managua",
+					"Masaya",
+					"Matagalpa",
+					"Nueva Segovia",
+					"Rio San Juan",
+					"Rivas",
+					"Leon"
+			]
+		},
+		
+		{
+			"name": "locality",
+			"line": "startAtLast",
+			"pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\s']+)$"
+		},
+
+	        {
+			"name": "postalCode",
+			"line": "last",
+			"pattern": "([0-9]{3}-[0-9]{3}-[0-9]{1})$"
+		}
+		
+		
+	]	
+}

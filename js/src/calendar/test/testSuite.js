@@ -28,6 +28,8 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
+        "testcalendar.js",
+        "testjulianday.js",
         "testgregratadie.js",
 	    "testgregoriandate.js",
 	    "testgregorian.js",
@@ -38,11 +40,12 @@ function suite() {
 	    "testhebrew.js",
 	    "testhebrewdate.js",
 	    "testthaisolar.js",
-	    "testthaisolardate.js"
-	    // "testpersiandate.js",
-	    // "testpersian.js",
-	    // "testpersianastrodate.js",
-	    // "testpersianastro.js",
+	    "testthaisolardate.js",
+	    "testpersian.js",
+	    "testpersiandate.js",
+	    "testpersianastro.js",
+	    "testpersiandateastro.js",
+	    "testtimezone.js"
     ];
     
     suites.forEach(function (path) {

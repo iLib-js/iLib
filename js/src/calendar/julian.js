@@ -21,12 +21,12 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
  * Depends directive: !depends julian.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */

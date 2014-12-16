@@ -1,0 +1,111 @@
+^+	plus
+^00	idd
+^10	cic
+^112	emergency
+^118	emergency
+^0	service2	short number
+^1	service2	short number
+^.	start
+
+
+2	area
+3	area
+4	area
+5	personal
+6	cell
+70	service
+7.	cell
+
+80	service
+81	service
+90	service
+
+822	area	Santa Cruz de Tenerife	Granadilla de Abona, Guimar, Icod de los Vinos, Isla de la Palma, La Orotava, San Sebastian de la Gomera, Santa Cruz de Tenerife, Valverde
+824	area	Badajoz	Alburquerque, Alconchel, Almendralejo, Azuaga, Badajoz, Cabeza del Buey, Castuera, Don Benito, Fregenal de la Sierra, Fuente de Cantos, Guareña, Jerez de los Caballeros, Llerena, Merida, Villafranca de los Barros, Zafra
+828	area	Las Palmas	Arrecife, Galdar, Isla de Fuerteventura, Las Palmas, Vecindario
+843	area	Guipuzcoa	Azpeitia, Beasain, Bergara, deba, Donostia-San Sebastian, Eibar, Guipuzcoa
+848	area	Navarra	Alsasua, Los Arcos, Burguete, Elizondo, Estella, Ezcaroz, Irurzun, Leiza, Pamplona, San Adrian, Sanguesa, Tafalla, Tudela, Vera de Bidasoa, Navarra
+856	area	Cádiz	Algeciras, Arcos de la Frontera, Barbate de Franco, Cadiz, Ceuta, Gibraltar, Jerez de la Frontera, Medina-Sidonia, Olvera, Sanlucar de Barrameda, Cádiz
+858	area	Granada	Alhama de Granada, Baza, Cadiar, Cullar, Granada, Guadix, Iznalloz, Lanjaron, Loja, Motril
+868	area	Murcia	Alhama de Murcia, Archena, Caravaca, Cartagena, Cieza, Jumilla, Lorca, Murcia
+871	area	Baleares	Campos, Eivissa, Inca, Manacor, Mao, Palma, Pollença, Sineu, Soller, Baleares
+872	area	Gerona	Blanes, Camprodon, Figueres, Girona, Llança, Olot, Palafrugell, Puigcerda, Ripoll, Roses, Sant Feliu de Guixols, Santa Coloma de Farners, Torroella de Montgri, Gerona
+873	area	Lerida	Artesa de Segre, Balaguer, Bellver de Cerdanya, Cervera, Lleida, Mollerussa, El Pont de Suert, Ponts, La Seu D'Urgell, Solsona, Sort, Tarrega, Tremp, Vielha, Lerida
+876	area	Zaragoza	Alagon, Alhama de Aragon, La Almunia de Doña Godina, Belchite, Calatayud, Cariñena, Caspe, Daroca, Ejea de los Caballeros, Escatron, Fuentes de Ebro, Illueca, Mallen, Muel, Tarazona, Zaragoza, Zuera
+877	area	Tarragona	Amposta, Falset, Gandesa, Montblanc, Mora D'Ebre, Reus, Santa Coloma de Queralt, Tarragona, Tortosa, El Vendrell
+881	area	Coruña	Betanzos, Carballo, A Coruña, Ferrol, Noia, Ordenes, Ortigueira, Santiago
+886	area	Pontevedra	A Estrada, Lalin, Ponte-Caldelas, Ponteareas, Pontevedra, Tui, Vigo, Vilagarcia de Arousa
+910	area	Madrid	Alcala de Henares, Arganda, Collado Villalba, Madrid
+911	area	Madrid	Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias
+912	area	Madrid	Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias
+913	area	Madrid	Madrid
+914	area	Madrid	Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias
+915	area	Madrid	Madrid
+916	area	Madrid	Madrid, El Molar
+917	area	Madrid	Aranjuez, Arganda, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias
+918	area	Madrid	Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias
+920	area	Ávila	Arenas de San Pedro, Arevalo, Avila, El Barco de Avila, Navalmoral, Piedrahita, San Pedro del Arroyo, Ávila
+921	area	Seville	Cantalejo, Carbonero El Mayor, Cuellar, Nava de la Asuncion, Riaza, San Rafael, Segovia, Turegano, Osuna, Seville
+922	area	Santa Cruz de Tenerife	Granadilla de Abona, Guimar, Icod de los Vinos, Isla de la Palma, La Orotava, San Sebastian de la Gomera, Santa Cruz de Tenerife, Valverde
+923	area	Salamanca	Bejar, Cantalapiedra, Ciudad Rodrigo, La Fuente de San Esteban, Guijuelo, Ledesma, Peñaranda de Bracamonte, Salamanca, Las Veguillas, Vitigudino
+924	area	Badajoz	Alburquerque, Alconchel, Almendralejo, Azuaga, Badajoz, Cabeza del Buey, Castuera, Don Benito, Fregenal de la Sierra, Fuente de Cantos, Guareña, Jerez de los Caballeros, Llerena, Merida, Villafranca de los Barros, Zafra
+925	area	Toledo	Galvez, Illescas, Madridejos, Mora, Ocaña, Oropesa, La Pueblanueva, Quintanar de la Orden, Talavera de la Reina, Toledo, Torrijos
+926	area	Ciudad Real	Alcazar de San Juan, Almaden, Ciudad Real, Daimiel, Malagon, Manzanares, Piedrabuena, Puertollano, Tomelloso, Valdepeñas, Villanueva de los Infantes
+927	area	Caceres	Alcantara, Caceres, Cañaveral, Coria, Jaraiz de la Vera, Logrosan, Montanchez, Montehermoso, Navalmoral de la Mata, Plasencia, Trujillo, Valencia de Alcantara, Zorita
+928	area	Las Palmas	Arrecife, Galdar, Isla de Fuerteventura, Las Palmas, Vecindario
+930	area	Barcelona	Barcelona, Granollers, Mataro, Sabadell-Terrassa
+931	area	Barcelona	Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+932	area	Barcelona	Barcelona, Berga, Granollers, Igualada, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sant Celoni, Vilafranca del Penedes, Vilanova i la Geltru
+933	area	Barcelona	Barcelona, Caldes de Montbui, Granollers, Igualada, Manresa, Martorell, Mataro, Sabadell-Terrassa, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+934	area	Barcelona	Barcelona
+935	area	Barcelona	Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+936	area	Barcelona	Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+937	area	Barcelona	Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+938	area	Barcelona	Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru
+941	area	La Rioja	Alfaro, Arnedo, Calahorra, Haro, Logroño, Najera, Santo Domingo de la Calzada, Torrecilla en Cameros, La Rioja
+942	area	Cantabria	Cabezon de la Sal, Castro-Urdiales, Laredo, Potes, Reinosa, San Vicente de la Barquera, Santander, Torrelavega, Villacarriedo, Cantabria
+943	area	Guipuzcoa	Don Benito, Azpeitia, Beasain, Bergara, deba, Donostia-San Sebastian, Eibar, Guipuzcoa
+944	area	Vizcaya	Balmaseda, Bermeo, Bilbao, Durango, Gernika, Ondarroa, Vizcaya
+945	area	Alava	Amurrio, Vitoria-Gasteiz, Alava
+946	area	Vizcaya	Balmaseda, Bermeo, Bilbao, Durango, Gernika, Ondarroa, Vizcaya
+947	area	Burgos	Aranda de Duero, Belorado, Briviesca, Burgos, Lerma, Medina de Pomar, Miranda de Ebro, Oña, Pampliega, Salas de los Infantes, Sasamon, Sedano, Villadiego, Villarcayo
+948	area	Navarra	Alsasua, Los Arcos, Burguete, Elizondo, Estella, Ezcaroz, Irurzun, Leiza, Pamplona, San Adrian, Sanguesa, Tafalla, Tudela, Vera de Bidasoa, Navarra
+949	area	Guadalajara	Brihuega, Cifuentes, Guadalajara, Humanes, Jadraque, Molina, Pastrana, Sacedon, Siguenza
+950	area	Almería	Abla, Adra, Albox, Almeria, Canjayar, Nijar, Tijola, Velez Rubio, Vera, Almería
+951	area	Malaga	Antequera, Coin, Cortes de la Frontera, Malaga, Marbella, Melilla, Ronda, Velez-Malaga
+952	area	Malaga	Antequera, Coin, Cortes de la Frontera, Malaga, Marbella, Melilla, Ronda, Velez-Malaga
+953	area	Jaen	Alcala la Real, Andujar, Castellar de Santisteban, Cazorla, Jaen, Linares, Orcera, Ubeda, Villanueva del Arzobispo
+954	area	Seville	El Arahal, Cantillana, Carmona, Constantina, Ecija, Lora del Rio, Moron de la Frontera, Osuna, Pilas, Seville, Utrera
+955	area	Seville	Granada, El Arahal, Cantillana, Carmona, Constantina, Ecija, Lora del Rio, Moron de la Frontera, Osuna, Pilas, Seville, Utrera
+956	area	Cádiz	Algeciras, Arcos de la Frontera, Barbate de Franco, Cadiz, Ceuta, Jerez de la Frontera, Medina-Sidonia, Olvera, Sanlucar de Barrameda, Cádiz
+957	area	Cordoba	La Carlota, Castro del Rio, Cordoba, Hinojosa del Duque, Lucena, Montilla, Montoro, Peñarroya-Pueblonuevo, Posadas, Pozoblanco, Priego de Cordoba, Puente Genil, Villaviciosa de Cordoba
+958	area	Granada	Alhama de Granada, Baza, Cadiar, Cullar
+959	area	Murcia	Aracena, Ayamonte, Cortegana, Huelva, Lepe, Nerva, La Palma del Condado, Santa Olalla del Cala, Valverde del Camino, Cartagena, Murcia
+960	area	Valencia	Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa
+961	area	Valencia	Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa
+962	area	Valencia	Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa
+963	area	Valencia	Alzira, Ayora, Betera, Buñol, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa
+964	area	Castellón de la Plana	Alcala de Chivert, Benasal, Morella, Segorbe, Vinaros, Castellón de la Plana
+965	area	Alicante	Alcoy-Plaza, Alicante-Avenida, Almoradi, Benidorm, Benissa, denia, Elche-Vinalopo, Jijona, Orihuela, Pego, Petrer, Villena, Alicante
+966	area	Alicante	Alcoy-Plaza, Alicante-Avenida, Almoradi, Benidorm, Benissa, denia, Elche-Vinalopo, Jijona, Orihuela, Pego, Petrer, Villena, Alicante
+967	area	Albacete	Albacete, Alcaraz, Almansa, Balazote, Bogarra, El Bonillo, Casas-Ibañez, Elche de la Sierra, Hellin, Petrola, La Roda, Tarazona de la Mancha, Valdeganga, Villarrobledo, Yeste
+968	area	Murcia	Alhama de Murcia, Archena, Caravaca, Cartagena, Cieza, Jumilla, Lorca, Murcia
+969	area	Cuenca	La Almarcha, Carboneras de Guadazaon, Cuenca, Huete, Landete, Motilla del Palancar, Priego, San Clemente, Tarancon, Valverde de Jucar
+971	area	Baleares	Campos, Eivissa, Inca, Manacor, Mao, Palma, Pollença, Sineu, Soller, Baleares
+972	area	Gerona	Blanes, Camprodon, Figueres, Girona, Llança, Olot, Palafrugell, Puigcerda, Ripoll, Roses, Sant Feliu de Guixols, Santa Coloma de Farners, Torroella de Montgri, Gerona
+973	area	Lerida	Artesa de Segre, Balaguer, Bellver de Cerdanya, Cervera, Lleida, Mollerussa, El Pont de Suert, Ponts, La Seu D'Urgell, Solsona, Sort, Tarrega, Tremp, Vielha, Lerida
+974	area	Huesca	Ainsa, Ayerbe, Barbastro, Campo, Fraga, Graus, Grañen, Huesca, Jaca, Monzon, Sabiñanigo, Sariñena, Tamarite de Litera
+975	area	Soria	Almazan, Arcos de Jalon, El Burgo de Osma, Covaleda, Gomara, San Esteban de Gormaz, Soria
+976	area	Zaragoza	Alagon, Alhama de Aragon, La Almunia de Doña Godina, Belchite, Calatayud, Cariñena, Caspe, Daroca, Ejea de los Caballeros, Escatron, Fuentes de Ebro, Illueca, Mallen, Muel, Tarazona, Zaragoza, Zuera
+977	area	Tarragona	Amposta, Falset, Gandesa, Montblanc, Mora D'Ebre, Reus, Santa Coloma de Queralt, Tarragona, Tortosa, El Vendrell
+978	area	Teruel	Albarracin, Alcañiz, Alcorisa, Alfambra, Calamocha, Hijar, Mora de Rubielos, Muniesa, Santa Eulalia, Sarrion, Teruel, Utrillas, Valderrobres
+979	area	Palencia	Aguilar de Campoo, Baltanas, Carrion de los Condes, Cervera de Pisuerga, Fromista, Guardo, Herrera de Pisuerga, Palencia, Paredes de Nava, Saldaña
+980	area	Zamora	Alcañices, Benavente, Bermillo de Sayago, Fuentesauco, Puebla de Sanabria, Tabara, Toro, Villalpando, Zamora
+981	area	Coruña	Betanzos, Carballo, Coruña, Ferrol, Noia, Ordenes, Ortigueira, Santiago
+982	area	Lugo	Becerrea, Chantada, Guitiriz, Lugo, Meira, Monforte de Lemos, Ribadeo, Sarria, Villalba, Viveiro
+983	area	Valladolid	Medina de Rioseco, Medina del Campo, Olmedo, Peñafiel, Quintanilla de Onesimo, Tordesillas, Valladolid, Villalon de Campos
+984	area	Asturias	Aviles, Cangas de Narcea, Cangas de Onis, Gijon, Infiesto, Llanes, Luarca, Moreda, Oviedo, Pola de Laviana, Ribadesella, Tineo, Asturias
+985	area	Asturias	Aviles, Cangas de Narcea, Cangas de Onis, Gijon, Infiesto, Llanes, Luarca, Moreda, Oviedo, Pola de Laviana, Ribadesella, Tineo, Asturias
+986	area	Pontevedra	A Estrada, Lalin, Ponte-Caldelas, Ponteareas, Pontevedra, Tui, Vigo, Vilagarcia de Arousa
+987	area	León	Astorga, La Bañeza, Bembibre, Cistierna, Leon, Ponferrada, Quintana de Rueda, Riaño, La Robla, Sahagun, Valencia de Don Juan, Veguellina de Orbigo, Villablino, Villafranca del Bierzo, León
+988	area	Orense	Allariz, Ourense, Ribadavia, La Rua, Verin, Orense

@@ -23,6 +23,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -71,8 +72,7 @@ julianday.js
  * 
  * Depends directive: !depends ratadie.js
  * 
- * @protected
- * @class
+ * @private
  * @constructor
  * @param {Object=} params parameters that govern the settings and behaviour of this RD date
  */
@@ -135,7 +135,8 @@ ilib.Date.RataDie.prototype = {
 	 */
 	_setJulianDay: function (date) {
 		var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
-		this.rd = ilib._roundFnc.halfup((jd.getDate() - this.epoch) * 100000000) / 100000000;
+		// round to the nearest millisecond
+		this.rd = ilib._roundFnc.halfup((jd.getDate() - this.epoch) * 86400000) / 86400000;
 	},
 
 	/**
@@ -239,6 +240,34 @@ ilib.Date.RataDie.prototype = {
 		var jd = this.getJulianDay();
 		if (jd < 2440587.5 || jd > 2465442.634803241) { 
 			return -1;
+		}
+	
+		// avoid the rounding errors in the floating point math by only using
+		// the whole days from the rd, and then calculating the milliseconds directly
+		return Math.round((jd - 2440587.5) * 86400000);
+	},
+
+	/**
+	 * Return the extended unix time equivalent to this Gregorian date instance. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970 UTC. Traditionally unix time
+	 * (or the type "time_t" in C/C++) is only encoded with a unsigned 32 bit integer, and thus 
+	 * runs out on Jan 19, 2038. However, most Javascript engines encode numbers well above 
+	 * 32 bits and the Date object allows you to encode up to 100 million days worth of time 
+	 * after Jan 1, 1970, and even more interestingly 100 million days worth of time before
+	 * Jan 1, 1970 as well. This method returns the number of milliseconds in that extended 
+	 * range. If this instance encodes a date outside of that range, this method will return
+	 * NaN.
+	 * 
+	 * @return {number} a number giving the extended unix time, or NaN if the date is outside 
+	 * the valid extended unix time range
+	 */
+	getTimeExtended: function() {
+		var jd = this.getJulianDay();
+		
+		// test if earlier than Jan 1, 1970 - 100 million days
+		// or later than Jan 1, 1970 + 100 million days
+		if (jd < -97559412.5 || jd > 102440587.5) { 
+			return NaN;
 		}
 	
 		// avoid the rounding errors in the floating point math by only using

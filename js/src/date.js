@@ -20,6 +20,7 @@
 /* !depends ilibglobal.js localeinfo.js */
 
 /**
+ * @class
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
@@ -30,12 +31,13 @@
  * 
  * Depends directive: !depends date.js
  * 
- * @class
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */
 ilib.Date = function(options) {
-	return ilib.Date.newInstance(options);
+	if (!options || typeof(options.noinstance) === 'undefined') {
+		return ilib.Date.newInstance(options);
+	}
 };
 
 /**
@@ -53,6 +55,7 @@ ilib.Date = function(options) {
  * and "julian" calendars are all included by default, as they are the
  * standard calendars for much of the world. If not specified, the type
  * of the date returned is the one that is appropriate for the locale.
+ * This property may also be given as "calendar" instead of "type".
  * </ul>
  * 
  * The options object is also passed down to the date constructor, and 
@@ -90,7 +93,7 @@ ilib.Date = function(options) {
  */
 ilib.Date.newInstance = function(options) {
 	var locale = options && options.locale,
-		type = options && options.type,
+		type = options && (options.type || options.calendar),
 		cons;
 
 	if (!locale) {
@@ -189,6 +192,24 @@ ilib.Date.prototype = {
 		return this.rd.getTime(); 
 	},
 	
+	/**
+	 * Return the extended unix time equivalent to this Gregorian date instance. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970 UTC. Traditionally unix time
+	 * (or the type "time_t" in C/C++) is only encoded with an unsigned 32 bit integer, and thus 
+	 * runs out on Jan 19, 2038. However, most Javascript engines encode numbers well above 
+	 * 32 bits and the Date object allows you to encode up to 100 million days worth of time 
+	 * after Jan 1, 1970, and even more interestingly, 100 million days worth of time before
+	 * Jan 1, 1970 as well. This method returns the number of milliseconds in that extended 
+	 * range. If this instance encodes a date outside of that range, this method will return
+	 * NaN.
+	 * 
+	 * @return {number} a number giving the extended unix time, or Nan if the date is outside 
+	 * the valid extended unix time range
+	 */
+	getTimeExtended: function() {
+		return this.rd.getTimeExtended();
+	},
+
 	/**
 	 * Set the time of this instance according to the given unix time. Unix time is
 	 * the number of milliseconds since midnight on Jan 1, 1970.
@@ -322,8 +343,8 @@ ilib.Date.prototype = {
 	 * @return {Date|undefined} a javascript Date object
 	 */
 	getJSDate: function() {
-		var unix = this.rd.getTime();
-		return (unix === -1) ? undefined : new Date(unix); 
+		var unix = this.rd.getTimeExtended();
+		return isNaN(unix) ? undefined : new Date(unix); 
 	},
 	
 	/**

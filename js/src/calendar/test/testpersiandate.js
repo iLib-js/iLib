@@ -17,461 +17,449 @@
  * limitations under the License.
  */
 
-function testPersDateConstructor() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
+function testPersAlgoDateConstructor() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+}
+
+function testPersAlgoDateCalcYearPositive1() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(1, pd._calcYear(1));
+}
+
+function testPersAlgoDateCalcYearPositive2() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(1, pd._calcYear(365));
+}
+
+function testPersAlgoDateCalcYearPositive3() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(2, pd._calcYear(366));
+}
+function testPersAlgoDateCalcYearPositive4() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(2, pd._calcYear(730));
+}
+function testPersAlgoDateCalcYearPositive5() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(3, pd._calcYear(731));
+}
+function testPersAlgoDateCalcYearPositive6() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(3, pd._calcYear(1095));
+}
+function testPersAlgoDateCalcYearPositive7() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(4, pd._calcYear(1096));
+}
+function testPersAlgoDateCalcYearPositive8() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(4, pd._calcYear(1461));
+}
+function testPersAlgoDateCalcYearPositive9() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(5, pd._calcYear(1462));
+}
+function testPersAlgoDateCalcYearPositive10() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(5, pd._calcYear(1826));
+}
+function testPersAlgoDateCalcYearPositive11() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(6, pd._calcYear(1827));
+}
+
+function testPersAlgoDateCalcYearNegative1() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-1, pd._calcYear(0));
+}
+function testPersAlgoDateCalcYearNegative2() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-1, pd._calcYear(-365));
+}
+function testPersAlgoDateCalcYearNegative3() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-2, pd._calcYear(-366));
+}
+function testPersAlgoDateCalcYearNegative4() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-2, pd._calcYear(-730));
+}
+function testPersAlgoDateCalcYearNegative5() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-3, pd._calcYear(-731));
+}
+function testPersAlgoDateCalcYearNegative6() {
+    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-1208, pd._calcYear(-441089));
+}
+
+function testPersAlgoRataDieConstructorFromDateComponents1() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 1,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents2() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: -1,
+    	month: 12,
+    	day: 30,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(0, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents3() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 1,
+    	month: 12,
+    	day: 29,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(365, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents4() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 2,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(366, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents5() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 1,
+    	month: 1,
+    	day: 31,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(31, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents6() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 1,
+    	month: 2,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(32, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents7() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 2,
+    	month: 12,
+    	day: 29,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(730, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents8() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 3,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(731, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents9() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 3,
+    	month: 12,
+    	day: 29,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1095, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents10() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 4,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1096, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents11() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 4,
+    	month: 12,
+    	day: 30,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1461, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents12() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 5,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1462, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents13() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 5,
+    	month: 12,
+    	day: 29,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1826, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents14() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: 6,
+    	month: 1,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(1827, prd.getRataDie());
+}
+function testPersAlgoRataDieConstructorFromDateComponents15() {
+    var prd = new ilib.Date.PersAlgoRataDie({
+    	year: -1208,
+    	month: 5,
+    	day: 1,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    
+    assertEquals('object', typeof(prd));
+    assertEquals(-441088, prd.getRataDie());
 }
 
 /* julian date is rd 366 + epoch */
-function testPersDateConstructorFromJD() {
-    var gd = new ilib.Date.PersDate({julianday: 1721790.75});
+function testPersAlgoDateConstructorFromJD() {
+    var pd = new ilib.Date.PersAlgoDate({julianday: 1948685.5, timezone: "Etc/UTC"});
     
-    assertEquals('object', typeof(gd));
-    assertEquals(2, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(6, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
+    assertEquals('object', typeof(pd));
+    assertEquals(366, pd.getRataDie());
+    assertEquals(2, pd.getYears());
+    assertEquals(1, pd.getMonths());
+    assertEquals(1, pd.getDays());
+    assertEquals(0, pd.getHours());
+    assertEquals(0, pd.getMinutes());
+    assertEquals(0, pd.getSeconds());
+    assertEquals(0, pd.getMilliseconds());
 }
 
-function testPersDateAfterLeapYear() {
-    var gd = new ilib.Date.PersDate({julianday: 1723071.9});  // jul 5, 05, 9:36am
+// year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
+// Farvardin 1 0005 is one day later than expected. RD is 1462
+function testPersAlgoDateAfterLeapYear() {
+    var pd = new ilib.Date.PersAlgoDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
     
-    assertEquals('object', typeof(gd));
-    assertEquals(5, gd.getYears());
-    assertEquals(7, gd.getMonths());
-    assertEquals(5, gd.getDays());
-    assertEquals(9, gd.getHours());
-    assertEquals(36, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
+    assertEquals('object', typeof(pd));
+    assertEquals(1462.4, pd.getRataDie());
+    assertEquals(5, pd.getYears());
+    assertEquals(1, pd.getMonths());
+    assertEquals(1, pd.getDays());
+    assertEquals(9, pd.getHours());
+    assertEquals(36, pd.getMinutes());
+    assertEquals(0, pd.getSeconds());
+    assertEquals(0, pd.getMilliseconds());
 }
 
-function testPersDateJan31Midnight() {
-    var gd = new ilib.Date.PersDate({rd: 734533});  // Jan 31, 2012 12:00am
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateJan31Noon() {
-    var gd = new ilib.Date.PersDate({rd: 734533.5});  // Jan 31, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateFeb1() {
-    var gd = new ilib.Date.PersDate({rd: 734534.5});  // Feb 1, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(2, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateFeb28LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734561.5});  // Feb 28, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(2, gd.getMonths());
-    assertEquals(28, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateFeb29LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734562.5});  // Feb 29, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(2, gd.getMonths());
-    assertEquals(29, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateMar1LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734563.5});  // Mar 1, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(3, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateMar31LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734593.5});  // Mar 31, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(3, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateApr1LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734594.5});  // Apr 1, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(4, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateDec31LeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734868.5});  // Dec 31, 2012 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2012, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateJan1NonLeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734869.5});  // Jan 1, 2013 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2013, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateFeb28NonLeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734927.5});  // Feb 28, 2013 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2013, gd.getYears());
-    assertEquals(2, gd.getMonths());
-    assertEquals(28, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateMar1NonLeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734928.5});  // Mar 1, 2013 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2013, gd.getYears());
-    assertEquals(3, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateMar31NonLeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734958.5});  // Mar 31, 2013 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2013, gd.getYears());
-    assertEquals(3, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateApr1NonLeapYear() {
-    var gd = new ilib.Date.PersDate({rd: 734959.5});  // Apr 1, 2013 12:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2013, gd.getYears());
-    assertEquals(4, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(12, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateAfterCentury() {
-    var gd = new ilib.Date.PersDate({julianday: 1758231.8}); // Oct 10, 101, 7:12am
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(101, gd.getYears());
-    assertEquals(10, gd.getMonths());
-    assertEquals(10, gd.getDays());
-    assertEquals(7, gd.getHours());
-    assertEquals(12, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateAfterQuadCentury() {
-    var gd = new ilib.Date.PersDate({julianday: 1867706.833333333333}); // Jul 4, 401, 8:00pm
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(401, gd.getYears());
-    assertEquals(7, gd.getMonths());
-    assertEquals(4, gd.getDays());
-    assertEquals(8, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateEndOfYear() {
-    var gd = new ilib.Date.PersDate({julianday: 2455196.5});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2009, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateBeginningOfYear() {
-    var gd = new ilib.Date.PersDate({julianday: 2455197.5});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2010, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateEndOfYearLeapYear() {
-    var gd = new ilib.Date.PersDate({julianday: 2454831.5});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2008, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateBeginningOfYearAfterLeapYear() {
-    var gd = new ilib.Date.PersDate({julianday: 2454832.5});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2009, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateEndOfYear0RJd() {
-    var gd = new ilib.Date.PersDate({julianday: 1721424.5});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(0, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateEndOfYear0Rd() {
-    var gd = new ilib.Date.PersDate({rd: 0});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(0, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateBeginningOfYearRd() {
-    var gd = new ilib.Date.PersDate({rd: 1});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(1, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateAlmostEndOfYearRd() {
-    var gd = new ilib.Date.PersDate({rd: 364});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(1, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(30, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateEndOfYearRd() {
-    var gd = new ilib.Date.PersDate({rd: 365});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(1, gd.getYears());
-    assertEquals(12, gd.getMonths());
-    assertEquals(31, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-function testPersDateBeginningOfYear2Rd() {
-    var gd = new ilib.Date.PersDate({rd: 366});
-    
-    assertEquals('object', typeof(gd));
-    assertEquals(2, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
-    assertEquals(0, gd.getMilliseconds());
-}
-
-var testDates = [
+var testDatesPersian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, -586,  7,     24,  0,    0,      0,      0,           0],
-    [1660037.5, -168,  12,    5,   0,    0,      0,      0,           3],
-    [1746893.5, 70,    9,     24,  0,    0,      0,      0,           3],
-    [1770641.5, 135,   10,    2,   0,    0,      0,      0,           0],
-    [1892731.5, 470,   1,     8,   0,    0,      0,      0,           3],
-    [1931579.5, 576,   5,     20,  0,    0,      0,      0,           1],
-    [1974851.5, 694,   11,    10,  0,    0,      0,      0,           6],
-    [2091164.5, 1013,  4,     25,  0,    0,      0,      0,           0],
-    [2121509.5, 1096,  5,     24,  0,    0,      0,      0,           0],
-    [2155779.5, 1190,  3,     23,  0,    0,      0,      0,           5],
-    [2174029.5, 1240,  3,     10,  0,    0,      0,      0,           6],
-    [2191584.5, 1288,  4,     2,   0,    0,      0,      0,           5],
-    [2195261.5, 1298,  4,     27,  0,    0,      0,      0,           0],
-    [2229274.5, 1391,  6,     12,  0,    0,      0,      0,           0],
-    [2245580.5, 1436,  2,     3,   0,    0,      0,      0,           3],
-    [2266100.5, 1492,  4,     9,   0,    0,      0,      0,           6],
-    [2288542.5, 1553,  9,     19,  0,    0,      0,      0,           6],
-    [2290901.5, 1560,  3,     5,   0,    0,      0,      0,           6],
-    [2323140.5, 1648,  6,     10,  0,    0,      0,      0,           3],
-    [2334848.5, 1680,  6,     30,  0,    0,      0,      0,           0],
-    [2348020.5, 1716,  7,     24,  0,    0,      0,      0,           5],
-    [2366978.5, 1768,  6,     19,  0,    0,      0,      0,           0],
-    [2385648.5, 1819,  8,     2,   0,    0,      0,      0,           1],
-    [2392825.5, 1839,  3,     27,  0,    0,      0,      0,           3],
-    [2416223.5, 1903,  4,     19,  0,    0,      0,      0,           0],
-    [2425848.5, 1929,  8,     25,  0,    0,      0,      0,           0],
-    [2430266.5, 1941,  9,     29,  0,    0,      0,      0,           1],
-    [2430833.5, 1943,  4,     19,  0,    0,      0,      0,           1],
-    [2431004.5, 1943,  10,    7,   0,    0,      0,      0,           4],
-    [2448698.5, 1992,  3,     17,  0,    0,      0,      0,           2],
-    [2450138.5, 1996,  2,     25,  0,    0,      0,      0,           0],
-    [2465737.5, 2038,  11,    10,  0,    0,      0,      0,           3],
-    [2486076.5, 2094,  7,     18,  0,    0,      0,      0,           0]
+    [1507231.5, -1208, 5,     1,   0,    0,      0,      0,           0],
+    [1660037.5, -790,  9,     14,  0,    0,      0,      0,           3],
+    [1746893.5, -552,  7,     2,   0,    0,      0,      0,           3],
+    [1770641.5, -487,  7,     9,   0,    0,      0,      0,           0],
+    [1892731.5, -153,  10,    18,  0,    0,      0,      0,           3],
+    [1931579.5, -46,   2,     30,  0,    0,      0,      0,           1],
+    [1974851.5, 73,    8,     19,  0,    0,      0,      0,           6],
+    [2091164.5, 392,   2,     5,   0,    0,      0,      0,           0],
+    [2121509.5, 475,   3,     3,   0,    0,      0,      0,           0],
+    [2155779.5, 569,   1,     3,   0,    0,      0,      0,           5],
+    [2174029.5, 618,   12,    20,  0,    0,      0,      0,           6],
+    [2191584.5, 667,   1,     14,  0,    0,      0,      0,           5],
+    [2195261.5, 677,   2,     8,   0,    0,      0,      0,           0],
+    [2229274.5, 770,   3,     22,  0,    0,      0,      0,           0],
+    [2245580.5, 814,   11,    13,  0,    0,      0,      0,           3],
+    [2266100.5, 871,   1,     21,  0,    0,      0,      0,           6],
+    [2288542.5, 932,   6,     28,  0,    0,      0,      0,           6],
+    [2290901.5, 938,   12,    14,  0,    0,      0,      0,           6],
+    [2323140.5, 1027,  3,     21,  0,    0,      0,      0,           3],
+    [2334848.5, 1059,  4,     10,  0,    0,      0,      0,           0],
+    [2348020.5, 1095,  5,     2,   0,    0,      0,      0,           5],
+    [2366978.5, 1147,  3,     30,  0,    0,      0,      0,           0],
+    [2385648.5, 1198,  5,     10,  0,    0,      0,      0,           1],
+    [2392825.5, 1218,  1,     7,   0,    0,      0,      0,           3],
+    [2416223.5, 1282,  1,     29,  0,    0,      0,      0,           0],
+    [2425848.5, 1308,  6,     3,   0,    0,      0,      0,           0],
+    [2430266.5, 1320,  7,     7,   0,    0,      0,      0,           1],
+    [2430833.5, 1322,  1,     29,  0,    0,      0,      0,           1],
+    [2431004.5, 1322,  7,     14,  0,    0,      0,      0,           4],
+    [2448698.5, 1370,  12,    27,  0,    0,      0,      0,           2],
+    [2450138.5, 1374,  12,    6,   0,    0,      0,      0,           0],
+    [2465737.5, 1417,  8,     19,  0,    0,      0,      0,           3],
+    [2486076.5, 1473,  4,     28,  0,    0,      0,      0,           0]
 ];
 
-function testPersDateConvert() {
-    var gd;
+function testPersAlgoDateConvert() {
+    var pd;
     
-    for (var i = 0; i < testDates.length; i++) {
-        gd = new ilib.Date.PersDate({julianday: testDates[i][0]});
+    for (var i = 0; i < testDatesPersian.length; i++) {
+        pd = new ilib.Date.PersAlgoDate({julianday: testDatesPersian[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesPersian[i][0]);
         
-        assertEquals('object', typeof(gd));
-        assertEquals(testDates[i][1], gd.getYears());
-        assertEquals(testDates[i][2], gd.getMonths());
-        assertEquals(testDates[i][3], gd.getDays());
-        assertEquals(testDates[i][4], gd.getHours());
-        assertEquals(testDates[i][5], gd.getMinutes());
-        assertEquals(testDates[i][6], gd.getSeconds());
-        assertEquals(testDates[i][7], gd.getMilliseconds());
-        assertEquals(testDates[i][8], gd.getDayOfWeek());
+        assertEquals('object', typeof(pd));
+        assertEquals("testing rd for " + testDatesPersian[i][0], (testDatesPersian[i][0] - 1948319.5), pd.getRataDie());
+        assertEquals("testing year for " + testDatesPersian[i][0], testDatesPersian[i][1], pd.getYears());
+        assertEquals("testing month for " + testDatesPersian[i][0], testDatesPersian[i][2], pd.getMonths());
+        assertEquals("testing day for " + testDatesPersian[i][0], testDatesPersian[i][3], pd.getDays());
+        assertEquals("testing hour for " + testDatesPersian[i][0], testDatesPersian[i][4], pd.getHours());
+        assertEquals("testing minute for " + testDatesPersian[i][0], testDatesPersian[i][5], pd.getMinutes());
+        assertEquals("testing second for " + testDatesPersian[i][0], testDatesPersian[i][6], pd.getSeconds());
+        assertEquals("testing millisecond for " + testDatesPersian[i][0], testDatesPersian[i][7], pd.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesPersian[i][0], testDatesPersian[i][8], pd.getDayOfWeek());
     }
 }
 
-function testPersDateConstructorFull() {
-	var gd = new ilib.Date.PersDate({
-		year: 2011, 
-		month: 9, 
-		day: 23, 
-		hour: 16, 
-		minute: 7, 
-		second: 12, 
-		millisecond: 123
-	});
+function testPersAlgoDateGetJulianDay() {
+	var pd;
 	
-	assertNotNull(gd);
-	
-	assertEquals(2011, gd.getYears());
-	assertEquals(9, gd.getMonths());
-	assertEquals(23, gd.getDays());
-	assertEquals(16, gd.getHours());
-	assertEquals(7, gd.getMinutes());
-	assertEquals(12, gd.getSeconds());
-	assertEquals(123, gd.getMilliseconds());
+    for (var i = 0; i < testDatesPersian.length; i++) {
+        pd = new ilib.Date.PersAlgoDate({
+            year: testDatesPersian[i][1], 
+            month: testDatesPersian[i][2], 
+            day: testDatesPersian[i][3],
+            hour: testDatesPersian[i][4],
+            minute: testDatesPersian[i][5],
+            second: testDatesPersian[i][6],
+            millisecond: testDatesPersian[i][7],
+            timezone: "Etc/UTC"
+    	});
+    
+        info("testing jd=" + testDatesPersian[i][0]);
+        
+        assertEquals('object', typeof(pd));
+        assertEquals("testing row " + testDatesPersian[i][0], testDatesPersian[i][0], pd.getJulianDay());
+        assertEquals(testDatesPersian[i][8], pd.getDayOfWeek());
+    }
 }
 
-function testPersDateConstructorFullWithStrings() {
-	// often you get strings from a UI element instead of numbers... 
-	// this constructor should work with numbers or strings
-	var gd = new ilib.Date.PersDate({
-		year: "2011", 
+function testPersAlgoDateConstructorFull() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1392,
+		month: 9,
+		day: 23,
+		hour: 16,
+		minute: 7,
+		second: 12,
+		millisecond: 123
+	});
+    
+    assertNotNull(pd);
+    
+    assertEquals(1392, pd.getYears());
+    assertEquals(9, pd.getMonths());
+    assertEquals(23, pd.getDays());
+    assertEquals(16, pd.getHours());
+    assertEquals(7, pd.getMinutes());
+    assertEquals(12, pd.getSeconds());
+    assertEquals(123, pd.getMilliseconds());
+}
+
+function testPersAlgoDateConstructorFullWithStrings() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: "1392", 
 		month: "9",
 		day: "23", 
 		hour: "16", 
@@ -479,21 +467,21 @@ function testPersDateConstructorFullWithStrings() {
 		second: "12", 
 		millisecond: "123"
 	});
-	
-	assertNotNull(gd);
-	
-	assertEquals(2011, gd.getYears());
-	assertEquals(9, gd.getMonths());
-	assertEquals(23, gd.getDays());
-	assertEquals(16, gd.getHours());
-	assertEquals(7, gd.getMinutes());
-	assertEquals(12, gd.getSeconds());
-	assertEquals(123, gd.getMilliseconds());
+    
+    assertNotNull(pd);
+    
+    assertEquals(1392, pd.getYears());
+    assertEquals(9, pd.getMonths());
+    assertEquals(23, pd.getDays());
+    assertEquals(16, pd.getHours());
+    assertEquals(7, pd.getMinutes());
+    assertEquals(12, pd.getSeconds());
+    assertEquals(123, pd.getMilliseconds());
 }
 
-function testPersDateConstructorCopy() {
-    var gd2 = new ilib.Date.PersDate({
-        year: 2011, 
+function testPersAlgoDateConstructorCopy() {
+    var pd = new ilib.Date.PersAlgoDate({
+        year: 1392, 
         month: 9, 
         day: 23, 
         hour: 16, 
@@ -501,1448 +489,1235 @@ function testPersDateConstructorCopy() {
         second: 12, 
         millisecond: 123
     });
-    var gd = new ilib.Date.PersDate(gd2);
     
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals(2011, gd.getYears());
-    assertEquals(9, gd.getMonths());
-    assertEquals(23, gd.getDays());
-    assertEquals(16, gd.getHours());
-    assertEquals(7, gd.getMinutes());
-    assertEquals(12, gd.getSeconds());
-    assertEquals(123, gd.getMilliseconds());
+    assertEquals(1392, pd.getYears());
+    assertEquals(9, pd.getMonths());
+    assertEquals(23, pd.getDays());
+    assertEquals(16, pd.getHours());
+    assertEquals(7, pd.getMinutes());
+    assertEquals(12, pd.getSeconds());
+    assertEquals(123, pd.getMilliseconds());
 }
 
-function testPersDateConstructorEmpty() {
-    var gd = new ilib.Date.PersDate();
-    var now = new Date(gd.getTime()); // compare against the JS date
-    assertNotNull(gd);
+function testPersAlgoDateSetYears() {
+    var pd = new ilib.Date.PersAlgoDate();
     
-    assertEquals("year", now.getUTCFullYear(), gd.getYears());
-    assertEquals("month", now.getUTCMonth()+1, gd.getMonths()); // js date months are 0-11 instead of 1-12 like persian dates
-    assertEquals("day", now.getUTCDate(), gd.getDays());
-    assertEquals("hour", now.getUTCHours(), gd.getHours());
-    assertEquals("minute", now.getUTCMinutes(), gd.getMinutes());
-    assertEquals("second", now.getUTCSeconds(), gd.getSeconds());
-    assertEquals("millisecond", now.getUTCMilliseconds(), gd.getMilliseconds());
-}
-
-function testPersDateConstructorUnixTime() {
-    var gd = new ilib.Date.PersDate({
-    	unixtime: 61000
-    });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("year", 1970, gd.getYears());
-    assertEquals("month", 1, gd.getMonths());
-    assertEquals("day", 1, gd.getDays());
-    assertEquals("hour", 0, gd.getHours());
-    assertEquals("minute", 1, gd.getMinutes());
-    assertEquals("second", 1, gd.getSeconds());
-    assertEquals("millisecond", 0, gd.getMilliseconds());
-}
-
-function testPersDateGetJulianDay() {
-    var gd;
+    pd.setYears(123);
     
-    for (var i = 0; i < testDates.length; i++) {
-        gd = new ilib.Date.PersDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7]
-        });
+    assertEquals(123, pd.getYears());
+}
+
+function testPersAlgoDateSetMonths() {
+    var pd = new ilib.Date.PersAlgoDate();
     
-        info("testing jd=" + testDates[i][0]);
-        
-        assertEquals('object', typeof(gd));
-        assertEquals(testDates[i][0], gd.getJulianDay());
-        assertEquals(testDates[i][8], gd.getDayOfWeek());
-    }
+    assertNotNull(pd);
+    
+    pd.setMonths(7);
+    
+    assertEquals(7, pd.getMonths());
 }
 
-function testPersDateSetYears() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setYears(123);
-	
-	assertEquals(123, gd.getYears());
+function testPersAlgoDateSetDays() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+    
+    pd.setDays(12);
+    
+    assertEquals(12, pd.getDays());
 }
 
-function testPersDateSetMonths() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setMonths(7);
-	
-	assertEquals(7, gd.getMonths());
+function testPersAlgoDateSetHours() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+    
+    pd.setHours(12);
+    
+    assertEquals(12, pd.getHours());
 }
 
-function testPersDateSetDays() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setDays(12);
-	
-	assertEquals(12, gd.getDays());
+function testPersAlgoDateSetMinutes() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+    
+    pd.setMinutes(13);
+    
+    assertEquals(13, pd.getMinutes());
 }
 
-function testPersDateSetHours() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setHours(12);
-	
-	assertEquals(12, gd.getHours());
+function testPersAlgoDateSetSeconds() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+    
+    pd.setSeconds(23);
+    
+    assertEquals(23, pd.getSeconds());
 }
 
-function testPersDateSetMinutes() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setMinutes(13);
-	
-	assertEquals(13, gd.getMinutes());
-}
-
-function testPersDateSetSeconds() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setSeconds(23);
-	
-	assertEquals(23, gd.getSeconds());
-}
-
-function testPersDateSetMilliseconds() {
-	var gd = new ilib.Date.PersDate();
-	
-	assertNotNull(gd);
-	
-	gd.setMilliseconds(123);
-	
-	assertEquals(123, gd.getMilliseconds());
+function testPersAlgoDateSetMilliseconds() {
+    var pd = new ilib.Date.PersAlgoDate();
+    
+    assertNotNull(pd);
+    
+    pd.setMilliseconds(123);
+    
+    assertEquals(123, pd.getMilliseconds());
 }
 
 function testGetDayOfWeek1() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 9, 
-    	day: 30
-    });
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1393,
+		month: 3,
+		day: 16
+	});
     
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek());
+    assertEquals(5, pd.getDayOfWeek());
 }
 
 function testGetDayOfWeekWithTime() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 9, 
-    	day: 30, 
-    	hour: 8, 
-    	minute: 39, 
-    	second: 34
-    });
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1393,
+		month: 3,
+		day: 16,
+		hour: 8,
+		minute: 39,
+		second: 34
+	});
     
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek());
+    assertEquals(5, pd.getDayOfWeek());
 }
 
-function testGetDayOfWeek2() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1648, 
-    	month: 6, 
-    	day: 10
-    });
+function testPersAlgoDateTestGetTimeZero() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1348,
+		month: 10,
+		day: 11,
+		timezone: "Etc/UTC"
+	});
+    assertNotNull(pd);
     
-    assertNotNull(gd);
-    
-    assertEquals(3, gd.getDayOfWeek());
+    assertEquals(0, pd.getTime());
 }
 
-function testGetDayOfWeek3() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1190, 
-    	month: 3, 
-    	day: 23
-    });
+function testPersAlgoDateTestGetTimeZeroJD() {
+    var pd = new ilib.Date.PersAlgoDate({julianday: 2440587.5});
+    assertNotNull(pd);
     
-    assertNotNull(gd);
-    
-    assertEquals(5, gd.getDayOfWeek());
+    assertEquals(0, pd.getTime());
 }
 
-function testGetDayOfWeek4() {
-    var gd = new ilib.Date.PersDate({
-    	year: -586, 
-    	month: 7, 
-    	day: 24
-    });
+function testPersAlgoDateTestGetTime() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1348,
+		month: 10,
+		day: 11,
+		hour: 8,
+		minute: 30,
+		timezone: "Etc/UTC"
+	});
+    assertNotNull(pd);
     
-    assertNotNull(gd);
-    
-    assertEquals(0, gd.getDayOfWeek());
+    assertEquals(30600000, pd.getTime());
 }
 
-function testPersDateTestGetTimeZero() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1970, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetTimeTooEarly() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1348,
+		month: 10,
+		day: 10
+	});
+    assertNotNull(pd);
     
-    assertEquals(0, gd.getTime());
+    assertEquals(-1, pd.getTime());
 }
 
-function testPersDateTestGetTime() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1970, 
-    	month: 1, 
-    	day: 3,
-	   	hour: 8,
-	   	minute: 30
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetTimeTooLate() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1416,
+		month: 11,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(203400000, gd.getTime());
-}
-
-function testPersDateTestGetTimeTooEarly() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1969, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
-    
-    assertEquals(-1, gd.getTime());
-}
-
-function testPersDateTestGetTimeTooLate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2038, 
-    	month: 1, 
-    	day: 20
-    });
-    assertNotNull(gd);
-    
-    assertEquals(-1, gd.getTime());
-}
-
-function testPersDateTestSetTime1() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1970, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
-    assertEquals(0, gd.getTime());
-    
-    // set to Jan 4, 1970 at 8:30:03
-    gd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
-    
-    assertEquals(1970, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(4, gd.getDays());
-    assertEquals(8, gd.getHours());
-    assertEquals(30, gd.getMinutes());
-    assertEquals(3, gd.getSeconds());
-}
-
-function testPersDateTestSetTimeZero() {
-    var gd = new ilib.Date.PersDate({
-    	year: -1, 
-    	month: 1, 
-    	day: 1,
-	   	hour: 1,
-	   	minute: 1,
-	   	second: 1,
-	   	millisecond: 1
-    });
-    assertNotNull(gd);
-    
-    gd.setTime(0);
-    
-    assertEquals(1970, gd.getYears());
-    assertEquals(1, gd.getMonths());
-    assertEquals(1, gd.getDays());
-    assertEquals(0, gd.getHours());
-    assertEquals(0, gd.getMinutes());
-    assertEquals(0, gd.getSeconds());
+    assertEquals(-1, pd.getTime());
 }
 
 // test some of the helper functions to make sure they are producing the right thing
-function testPersDateOnOrBeforeSun() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeSun() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday on or before is 5 days before 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    // Sunday on or before pd 5 days before 
+    assertEquals(rd-5, pd.onOrBefore(0).getRataDie());
 }
 
-function testPersDateOnOrBeforeMon() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeMon() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-4, gd.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, pd.onOrBefore(1).getRataDie());
 }
 
-function testPersDateOnOrBeforeTue() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeTue() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-3, gd.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, pd.onOrBefore(2).getRataDie());
 }
 
-function testPersDateOnOrBeforeWed() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeWed() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-2, gd.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, pd.onOrBefore(3).getRataDie());
 }
 
-function testPersDateOnOrBeforeThu() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeThu() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-1, gd.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, pd.onOrBefore(4).getRataDie());
 }
 
-function testPersDateOnOrBeforeFri() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeFri() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd, gd.onOrBeforeRd(rd, 5));
+    assertEquals(rd, pd.onOrBefore(5).getRataDie());
 }
 
-function testPersDateOnOrBeforeSat() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrBeforeSat() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-6, gd.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, pd.onOrBefore(6).getRataDie());
 }
 
-function testPersDateOnOrBeforeSunWithTime() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1,
-	   	hour: 8
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterSun() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie(); // contains fractional time for the 8:00am part
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday on or before is 5 days before 
-    // Should give an rd result that also contains the fractional time 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    // Sunday on or before pd 5 days before 
+    assertEquals(rd+2, pd.onOrAfter(0).getRataDie());
 }
 
-function testPersDateOnOrAfterSun() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterMon() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday on or before is 5 days before 
-    assertEquals(rd+2, gd.onOrAfterRd(rd, 0));
+    assertEquals(rd+3, pd.onOrAfter(1).getRataDie());
 }
 
-function testPersDateOnOrAfterSunDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterTue() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.onOrBefore(0);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday on or before is 5 days before
-    assertEquals(2009, date.year);
-    assertEquals(12, date.month);
-    assertEquals(27, date.day);
+    assertEquals(rd+4, pd.onOrAfter(2).getRataDie());
 }
 
-function testPersDateOnOrAfterMon() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterWed() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd+3, gd.onOrAfterRd(rd, 1));
+    assertEquals(rd+5, pd.onOrAfter(3).getRataDie());
 }
 
-function testPersDateOnOrAfterMonDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010,
-    	month: 1,
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterThu() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.onOrAfter(1);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(4, date.day);
+    assertEquals(rd+6, pd.onOrAfter(4).getRataDie());
 }
 
-function testPersDateOnOrAfterTue() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterFri() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd+4, gd.onOrAfterRd(rd, 2));
+    assertEquals(rd, pd.onOrAfter(5).getRataDie());
 }
 
-function testPersDateOnOrAfterWed() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateOnOrAfterSat() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd+5, gd.onOrAfterRd(rd, 3));
+    assertEquals(rd+1, pd.onOrAfter(6).getRataDie());
 }
 
-function testPersDateOnOrAfterThu() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeSun() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd+6, gd.onOrAfterRd(rd, 4));
+    // Sunday before pd 5 days before 
+    assertEquals(rd-5, pd.before(0).getRataDie());
 }
 
-function testPersDateOnOrAfterThuDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeMon() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.onOrAfter(4);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(7, date.day);
+    assertEquals(rd-4, pd.before(1).getRataDie());
 }
 
-function testPersDateOnOrAfterFri() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeTue() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd, gd.onOrAfterRd(rd, 5));
+    assertEquals(rd-3, pd.before(2).getRataDie());
 }
 
-function testPersDateOnOrAfterFriDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeWed() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.onOrAfter(5);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(1, date.day);
+    assertEquals(rd-2, pd.before(3).getRataDie());
 }
 
-function testPersDateOnOrAfterSat() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeThu() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd+1, gd.onOrAfterRd(rd, 6));
+    assertEquals(rd-1, pd.before(4).getRataDie());
 }
 
-function testPersDateBeforeSun() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeFri() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday before is 5 days before 
-    assertEquals(rd-5, gd.beforeRd(rd, 0));
+    assertEquals(rd-7, pd.before(5).getRataDie());
 }
 
-function testPersDateBeforeSunDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateBeforeSat() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.before(0);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Sunday before is 5 days before 
-    assertEquals(2009, date.year);
-    assertEquals(12, date.month);
-    assertEquals(27, date.day);
+    assertEquals(rd-6, pd.before(6).getRataDie());
 }
 
-function testPersDateBeforeMon() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterSun() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-4, gd.beforeRd(rd, 1));
+    // Sunday on or before pd 5 days before 
+    assertEquals(rd+2, pd.after(0).getRataDie());
 }
 
-function testPersDateBeforeTue() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterMon() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-3, gd.beforeRd(rd, 2));
+    assertEquals(rd+3, pd.after(1).getRataDie());
 }
 
-function testPersDateBeforeWed() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterTue() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-2, gd.beforeRd(rd, 3));
+    assertEquals(rd+4, pd.after(2).getRataDie());
 }
 
-function testPersDateBeforeThu() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterWed() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-1, gd.beforeRd(rd, 4));
+    assertEquals(rd+5, pd.after(3).getRataDie());
 }
 
-function testPersDateBeforeThuDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterThu() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.before(4);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Thursday before is 1 day before 
-    assertEquals(2009, date.year);
-    assertEquals(12, date.month);
-    assertEquals(31, date.day);
+    assertEquals(rd+6, pd.after(4).getRataDie());
 }
 
-function testPersDateBeforeFri() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterFri() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    assertEquals(rd-7, gd.beforeRd(rd, 5));
+    assertEquals(rd+7, pd.after(5).getRataDie());
 }
 
-function testPersDateBeforeFriDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateAfterSat() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 27
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.before(5);
+    assertEquals(5, pd.getDayOfWeek()); // Friday
+    var rd = pd.getRataDie();
     
-    // Friday before is 7 days before the current Friday
-    assertEquals(2009, date.year);
-    assertEquals(12, date.month);
-    assertEquals(25, date.day);
+    assertEquals(rd+1, pd.after(6).getRataDie());
 }
 
-function testPersDateBeforeSat() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearThisYear() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 2,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
-    
-    assertEquals(rd-6, gd.beforeRd(rd, 6));
+    assertEquals(5, pd.getWeekOfYear());
 }
 
-function testPersDateAfterSun() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearThisYear2() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 19
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
-    
-    // Sunday after is 2 days after 
-    assertEquals(rd+2, gd.afterRd(rd, 0));
+    assertEquals(12, pd.getWeekOfYear());
 }
 
-function testPersDateAfterSunDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
-    
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.after(0);
+function testPersAlgoDateTestGetWeekOfYearThisYear3() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    // Sunday after is 2 days after 
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(3, date.day);
+    assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateAfterMon() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearThisYearWithTime() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 12,
+		day: 29,
+		hour: 16,
+		minute: 13,
+		second: 12,
+		millisecond: 232
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
-    
-    assertEquals(rd+3, gd.afterRd(rd, 1));
+    assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateAfterTue() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
-    
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+function testPersAlgoDateTestGetWeekOfYearPreviousYear() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 1,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(rd+4, gd.afterRd(rd, 2));
+    assertEquals(53, pd.getWeekOfYear());
 }
 
-function testPersDateAfterWed() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearLastWeekLeap() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1383,
+		month: 12,
+		day: 30
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
-    
-    assertEquals(rd+5, gd.afterRd(rd, 3));
+    assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateAfterThu() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
-    
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular1() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1389,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(rd+6, gd.afterRd(rd, 4));
+    assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateAfterFri() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular2() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1390,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
-    
-    assertEquals(rd+7, gd.afterRd(rd, 5));
+    assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateAfterFriDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular3() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1391,
+		month: 12,
+		day: 30
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.after(5);
+    assertEquals(1, pd.getWeekOfYear());
+}
+
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular4() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1392,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    // Friday after is 7 days after 
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(8, date.day);
+    assertEquals(53, pd.getWeekOfYear());
 }
 
-function testPersDateAfterSat() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular5() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1393,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var rd = gd.getRataDie();
+    assertEquals(52, pd.getWeekOfYear());
+}
+
+function testPersAlgoDateTestGetWeekOfYearLastWeekRegular6() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1394,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(rd+1, gd.afterRd(rd, 6));
+    assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateAfterSatDate() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetDayOfYearFirstDay() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 1,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getDayOfWeek()); // Friday
-    var date = gd.after(6);
+    assertEquals(1, pd.getDayOfYear());
+}
+
+function testPersAlgoDateGetDayOfYearMidYear() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 17
+	});
+    assertNotNull(pd);
     
-    // Sat after is 1 day after 
-    assertEquals(2010, date.year);
-    assertEquals(1, date.month);
-    assertEquals(2, date.day);
+    assertEquals(79, pd.getDayOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYear() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 1, 
-    	day: 7
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetDayOfYearLastDay() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfYear());
+    assertEquals(365, pd.getDayOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYear2() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 1, 
-    	day: 25
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetDayOfYearLastDayLeapYear() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1387,
+		month: 12,
+		day: 30
+	});
+    assertNotNull(pd);
     
-    assertEquals(4, gd.getWeekOfYear());
+    assertEquals(366, pd.getDayOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYear3() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 19
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth0() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(42, gd.getWeekOfYear());
+    assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearThisYearWithTime() {
-    var gd = new ilib.Date.PersDate({
-    	year: -2011, 
-    	month: 10, 
-    	day: 19,
-	   	hour: 16,
-	   	minute: 13,
-	   	second: 12,
-	   	millisecond: 232
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth1() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 4
+	});
+    assertNotNull(pd);
     
-    assertEquals(42, gd.getWeekOfYear());
+    assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearPreviousYear() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth2() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 11
+	});
+    assertNotNull(pd);
     
-    assertEquals(52, gd.getWeekOfYear());
+    assertEquals(2, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekLeap() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2009, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth3() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 20
+	});
+    assertNotNull(pd);
     
-    assertEquals(53, gd.getWeekOfYear());
+    assertEquals(3, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular1() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2010, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth4() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(52, gd.getWeekOfYear());
+    assertEquals(4, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular2() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2008, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth5() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 31
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfYear());
+    assertEquals(5, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular3() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2007, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth6() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 4,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfYear());
+    assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular4() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2006, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth7() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 5,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfYear());
+    assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular5() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2005, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth8() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 6,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(52, gd.getWeekOfYear());
+    assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular6() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonth9() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 7,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(52, gd.getWeekOfYear());
+    assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetDayOfYearFirstDay() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR0() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getDayOfYear());
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetDayOfYearPaddysDay() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 17
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR1() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 4
+	});
+    assertNotNull(pd);
     
-    assertEquals(76, gd.getDayOfYear());
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetDayOfYearPaddysDayLeapYear() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2008, 
-    	month: 3, 
-    	day: 17
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR2() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 11
+	});
+    assertNotNull(pd);
     
-    assertEquals(77, gd.getDayOfYear());
+    assertEquals(2, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetDayOfYearLastDay() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR3() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 20
+	});
+    assertNotNull(pd);
     
-    assertEquals(365, gd.getDayOfYear());
+    assertEquals(3, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetDayOfYearLastDayLeapYear() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2008, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR4() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(366, gd.getDayOfYear());
+    assertEquals(4, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth0() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR5() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 3,
+		day: 31
+	});
+    assertNotNull(pd);
     
-    assertEquals(0, gd.getWeekOfMonth("en-US"));
+    assertEquals(5, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth1() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 2
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR6() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 4,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth2() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 11
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR7() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 5,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(2, gd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth3() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 20
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR8() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 6,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(3, gd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth4() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 29
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR9() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 7,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(4, gd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth5() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 10, 
-    	day: 30
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR10() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 8,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(5, gd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth6() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 9, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR11() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 9,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(0, gd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth7() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 8, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR12() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 10,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth8() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 7, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR13() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 11,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(0, gd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonth9() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 6, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthIR14() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 12,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthUS() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 5, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthUS() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 8,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonthDE() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 5, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetWeekOfMonthDE() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 8,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    // weeks in Germany start on Monday, and May 1st is a Sunday, so it is at the 
+    // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the 
     // end of the preceding week.
-    assertEquals(0, gd.getWeekOfMonth("de-DE"));
+    assertEquals(0, pd.getWeekOfMonth("de-DE"));
 }
 
-function testPersDateGetEraCE() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 5, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetEraAP() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1388,
+		month: 5,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getEra());
+    assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraBCE() {
-    var gd = new ilib.Date.PersDate({
-    	year: -46, 
-    	month: 5, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetEraBAP() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: -46,
+		month: 5,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0
+		
+	});
+    assertNotNull(pd);
     
-    assertEquals(-1, gd.getEra());
+    assertEquals(-1, pd.getEra());
 }
 
-function testPersDateGetEraCEYear1() {
-    var gd = new ilib.Date.PersDate({
-    	year: 1, 
-    	month: 1, 
-    	day: 1
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetEraAPYear1() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 1,
+		month: 1,
+		day: 1
+	});
+    assertNotNull(pd);
     
-    assertEquals(1, gd.getEra());
+    assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraCEYear0() {
-    var gd = new ilib.Date.PersDate({
-    	year: 0, 
-    	month: 12, 
-    	day: 31
-    });
-    assertNotNull(gd);
+function testPersAlgoDateGetEraBAPYear0() {
+    var pd = new ilib.Date.PersAlgoDate({
+		year: 0,
+		month: 12,
+		day: 29
+	});
+    assertNotNull(pd);
     
-    assertEquals(-1, gd.getEra());
+    assertEquals(-1, pd.getEra());
 }
 
-function testPersDateJan1Midnight() {
-    var gd = new ilib.Date.PersDate({julianday: 2455197.5});
-    assertNotNull(gd);
-    
-    assertEquals(2010, gd.year);
-    assertEquals(1, gd.month);
-    assertEquals(1, gd.day);
-    assertEquals(0, gd.hour);
-    assertEquals(0, gd.minute);
-    assertEquals(0, gd.second);
-    assertEquals(0, gd.millisecond);
-}
-
-function testPersDateGetRataDie() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 8
-    });
-    assertNotNull(gd);
-    
-    assertEquals(734204, gd.getRataDie());
-}
-
-function testPersDateGetTimeZone() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
+function testPersAlgoDateSetTimeZone() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1433, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    assertEquals("America/Los_Angeles", pd.getTimeZone());
+    
+    pd.setTimeZone("Asia/Tokyo");
+    
+    assertEquals("Asia/Tokyo", pd.getTimeZone());
 }
 
-function testPersDateGetTimeZoneDefault() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 8
-    });
-    assertNotNull(gd);
-    
-    assertEquals("local", gd.getTimeZone());
-}
-
-function testPersDateGetTimeZoneByLocale() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 8,
-    	locale: "de-DE"
-    });
-    assertNotNull(gd);
-    
-    assertEquals("Europe/Berlin", gd.getTimeZone());
-}
-
-function testPersDateGetTimeZoneByLocaleBogus() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 8,
-    	locale: "zz-ZZ"
-    });
-    assertNotNull(gd);
-    
-    assertEquals("Etc/UTC", gd.getTimeZone());
-}
-
-function testPersDateCurrentTimeWithTimeZone() {
-    var gd = new ilib.Date.PersDate({
-    	timezone: "America/Los_Angeles"
-    });
-    var d = new Date();
-    assertNotNull(gd);
-    
-    assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, gd.getTime(), 30);
-}
-
-function testPersDateSetTimeZone() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
+function testPersAlgoDateSetTimeZoneNotString() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1433, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    assertEquals("America/Los_Angeles", pd.getTimeZone());
     
-    gd.setTimeZone("Asia/Tokyo");
+    pd.setTimeZone(345);
     
-    assertEquals("Asia/Tokyo", gd.getTimeZone());
+    assertEquals("America/Los_Angeles", pd.getTimeZone());
 }
 
-function testPersDateSetTimeZoneNotString() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
+function testPersAlgoDateSetTimeZoneUndefined() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1433, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
-    
-    gd.setTimeZone(345);
-    
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
-}
-
-function testPersDateSetTimeZoneUndefined() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
-    	month: 3, 
-    	day: 8,
-    	timezone: "America/Los_Angeles"
-    });
-    assertNotNull(gd);
-    
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    assertEquals("America/Los_Angeles", pd.getTimeZone());
 
     // clears it out
-    gd.setTimeZone(undefined);
+    pd.setTimeZone(undefined);
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateSetTimeZoneEmpty() {
-    var gd = new ilib.Date.PersDate({
-    	year: 2011, 
+function testPersAlgoDateSetTimeZoneEmpty() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1433, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    assertEquals("America/Los_Angeles", pd.getTimeZone());
     
     // clears it out
-    gd.setTimeZone("");
+    pd.setTimeZone("");
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithUnixTimeRightTimeZone() {
-    var gd = new ilib.Date.PersDate({
+function testPersAlgoDateInitWithUnixTimeRightTimeZone() {
+    var pd = new ilib.Date.PersAlgoDate({
     	unixtime: 0
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithJDRightTimeZone() {
-    var gd = new ilib.Date.PersDate({
+function testPersAlgoDateInitWithJDRightTimeZone() {
+    var pd = new ilib.Date.PersAlgoDate({
     	julianday: 0
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithRDRightTimeZone() {
-    var gd = new ilib.Date.PersDate({
+function testPersAlgoDateInitWithRDRightTimeZone() {
+    var pd = new ilib.Date.PersAlgoDate({
     	rd: 0
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("local", pd.getTimeZone());
 }
 
-// for GF-33596
-function testPersDateGetTimeWithUnixTime() {
-	var d = new Date(2011, 2, 8, 0, 0, 0, 0);
-    var gd = new ilib.Date.PersDate({
-    	year: 2011,
-    	month: 3, 
-    	day: 8,
-    	hour: 0,
-    	minute: 0,
-    	second: 0,
-    	millisecond: 0
+function testPersDateAlgoRoundTripConstruction() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1393,
+    	month: 8,
+    	day: 12,
+    	timezone: "local"
     });
-    assertNotNull(gd);
+    assertNotNull(pd);
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
     
-    assertEquals(d.getTime(), gd.getTime());
-}
-
-function testPersDateGetTimeWithUTC() {
-	var utc = Date.UTC(2013, 10, 1);
-	var d = new Date(utc);
-    var gd = new ilib.Date.PersDate({
-    	unixtime: utc
+    var u = pd.getTime();
+    // console.log("unixtime is " + u);
+    var pd2 = new ilib.Date.PersAlgoDate({
+    	unixtime: u,
+    	timezone: "local"
     });
-    assertNotNull(gd);
-    
-    assertEquals(d.getTime(), gd.getTime());
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    assertEquals(pd.getTimeZone(), pd2.getTimeZone());
+    assertEquals(pd.getYears(), pd2.getYears());
+    assertEquals(pd.getMonths(), pd2.getMonths());
+    assertEquals(pd.getDays(), pd2.getDays());
+    assertEquals(pd.getHours(), pd2.getHours());
+    assertEquals(pd.getMinutes(), pd2.getMinutes());
+    assertEquals(pd.getSeconds(), pd2.getSeconds());
 }
 
-function testPersDateGetTimeWithDefaultTime() {
-	var d = new Date();
-    var gd = new ilib.Date.PersDate();
+function testPersDateAlgoRoundTripConstruction2() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1393,
+    	month: 8,
+    	day: 12,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(pd);
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
     
-    assertNotNull(gd);
-    
-    assertRoughlyEquals(d.getTime(), gd.getTime(), 100);
+    var u = pd.getTime();
+    // console.log("unixtime is " + u);
+    var pd2 = new ilib.Date.PersAlgoDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    assertEquals(pd.getTimeZone(), pd2.getTimeZone());
+    assertEquals(pd.getYears(), pd2.getYears());
+    assertEquals(pd.getMonths(), pd2.getMonths());
+    assertEquals(pd.getDays(), pd2.getDays());
+    assertEquals(pd.getHours(), pd2.getHours());
+    assertEquals(pd.getMinutes(), pd2.getMinutes());
+    assertEquals(pd.getSeconds(), pd2.getSeconds());
 }

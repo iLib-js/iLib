@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js
+// !depends ilibglobal.js locale.js util/search.js
 
 // !data ctype
 
@@ -41,7 +41,7 @@ ilib.CType = {
 	 * <li>Lt - Titlecase_Letter
 	 * <li>Lm - Modifier_Letter
 	 * <li>Lo - Other_Letter
-	 * <li>mn - Nonspacing_Mark
+	 * <li>Mn - Nonspacing_Mark
 	 * <li>Me - Enclosing_Mark
 	 * <li>Mc - Spacing_Mark
 	 * <li>Nd - Decimal_Number
@@ -68,37 +68,33 @@ ilib.CType = {
 	 * </ul>
 	 * 
 	 * @protected
-	 * @param {string} ch character to examine
+	 * @param {number} num code point of the character to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @param {Object} obj object containing the character range data
 	 * @return {boolean} true if the first character is within the named
 	 * range
 	 */
-	_inRange: function(ch, rangeName, obj) {
-		var range, i, num;
-		if (!ch || ch.length === 0 || !rangeName || typeof(obj) === 'undefined') {
+	_inRange: function(num, rangeName, obj) {
+		var range, i;
+		if (num < 0 || !rangeName || !obj) {
 			return false;
 		}
 		
-		num = new ilib.String(ch).codePointAt(0);
 		range = obj[rangeName];
 		if (!range) {
 			return false;
 		}
 		
-		for (i = 0; i < range.length; i++) {
-			if (range[i].length === 1) {
-				// single character range
-				if (num === range[i][0]) {
-					return true;
-				}
-			} else if (num >= range[i][0] && num <= range[i][1]) {
-				// multi-character range
-				return true;
+		var compare = function(singlerange, target) {
+			if (singlerange.length === 1) {
+				return singlerange[0] - target;
+			} else {
+				return target < singlerange[0] ? singlerange[0] - target :
+					(target > singlerange[1] ? singlerange[1] - target : 0);
 			}
-		}
-		
-		return false;
+		};
+		var result = ilib.bsearch(num, range, compare);
+		return result < range.length && compare(range[result], num) === 0;
 	},
 	
 	/**
@@ -248,7 +244,7 @@ ilib.CType = {
 	 * 
 	 * Depends directive: !depends ctype.js
 	 * 
-	 * @param {string} ch character to examine
+	 * @param {string|ilib.String|number} ch character or code point to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @return {boolean} true if the first character is within the named
 	 * range
@@ -257,7 +253,22 @@ ilib.CType = {
 		if (!rangeName) {
 			return false;
 		}
-		return ilib.CType._inRange(ch, rangeName.toLowerCase(), ilib.data.ctype);
+		var num;
+		switch (typeof(ch)) {
+			case 'number':
+				num = ch;
+				break;
+			case 'string':
+				num = ilib.String.toCodePoint(ch, 0);
+				break;
+			case 'undefined':
+				return false;
+			default:
+				num = ch._toCodePoint(0);
+				break;
+		}
+
+		return ilib.CType._inRange(num, rangeName.toLowerCase(), ilib.data.ctype);
 	},
 	
 	/**
@@ -283,6 +294,7 @@ ilib.CType = {
 			ilib.loadData({
 				name: loadName,
 				locale: "-",
+				nonlocale: true,
 				sync: sync,
 				loadParams: loadParams, 
 				callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ct) {

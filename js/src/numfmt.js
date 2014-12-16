@@ -33,6 +33,7 @@ util/jsutils.js
 // !data localeinfo currency
 
 /**
+ * @class
  * Create a new number formatter instance. Locales differ in the way that digits
  * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
@@ -91,14 +92,18 @@ util/jsutils.js
  * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
  * not specified.<p>
  *
- * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific" or "native". A "standard" style means
- * a fully specified floating point number formatted for the locale, whereas "scientific" uses
- * scientific notation for all numbers. That is, 1 integral digit, followed by a number
- * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. The native style will format a floating point
- * number using the native digits and formatting symbols for the script of the locale. Note
- * that if you specify a maximum number
+ * When the type of this formatter is "number", the style can be one of the following:
+ * <ul>
+ *   <li><i>standard - format a fully specified floating point number properly for the locale
+ *   <li><i>scientific</i> - use scientific notation for all numbers. That is, 1 integral 
+ *   digit, followed by a number of fractional digits, followed by an "e" which denotes 
+ *   exponentiation, followed digits which give the power of 10 in the exponent. 
+ *   <li><i>native</i> - format a floating point number using the native digits and 
+ *   formatting symbols for the script of the locale. 
+ *   <li><i>nogrouping</i> - format a floating point number without grouping digits for
+ *   the integral portion of the number
+ * </ul>
+ * Note that if you specify a maximum number
  * of integral digits, the formatter with a standard style will give you standard
  * formatting for smaller numbers and scientific notation for larger numbers. The default
  * is standard style if this is not specified.
@@ -114,20 +119,29 @@ util/jsutils.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * <p>
  *
  * Depends directive: !depends numfmt.js
  *
- * @class
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
 ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
-	/** @type {string} */
+	/** 
+	 * @private
+	 * @type {string} 
+	 */
 	this.type = "number";
+	var loadParams = undefined;
 
 	if (options) {
 		if (options.locale) {
@@ -143,41 +157,69 @@ ilib.NumFmt = function (options) {
 		}
 
 		if (options.currency) {
-			/** @type {string} */
+			/** 
+			 * @private 
+			 * @type {string} 
+			 */
 			this.currency = options.currency;
 		}
 
 		if (typeof (options.maxFractionDigits) === 'number') {
-			/** @type {number|undefined} */
+			/** 
+			 * @private 
+			 * @type {number|undefined} 
+			 */
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
 		if (typeof (options.minFractionDigits) === 'number') {
-			/** @type {number|undefined} */
+			/** 
+			 * @private 
+			 * @type {number|undefined} 
+			 */
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
-			/** @type {string} */
+			/** 
+			 * @private 
+			 * @type {string} 
+			 */
 			this.style = options.style;
 		}
 		if (typeof(options.useNative) === 'boolean') {
+			/** 
+			 * @private 
+			 * @type {boolean} 
+			 * */
 			this.useNative = options.useNative;
 		}
-		/** @type {string} */
+		/** 
+		 * @private 
+		 * @type {string} 
+		 */
 		this.roundingMode = options.roundingMode;
 
 		if (typeof (options.sync) !== 'undefined') {
 			/** @type {boolean} */
 			sync = (options.sync == true);
 		}
+		
+		loadParams = options.loadParams;
 	}
 
-	/** @type {ilib.LocaleInfo|undefined} */
+	/** 
+	 * @private 
+	 * @type {ilib.LocaleInfo|undefined} 
+	 */
 	this.localeInfo = undefined;
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
+		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
-			/** @type {ilib.LocaleInfo|undefined} */
+			/** 
+			 * @private 
+			 * @type {ilib.LocaleInfo|undefined} 
+			 */
 			this.localeInfo = li;
 
 			if (this.type === "number") {
@@ -193,6 +235,7 @@ ilib.NumFmt = function (options) {
 					locale: this.locale,
 					code: this.currency,
 					sync: sync,
+					loadParams: loadParams,
 					onLoad: ilib.bind(this, function (cur) {
 						this.currencyInfo = cur;
 						if (this.style !== "common" && this.style !== "iso") {
@@ -290,9 +333,13 @@ ilib.NumFmt.prototype = {
 			this.round = ilib._roundFnc[this.roundingMode];
 		}
 		
-		this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
-		this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-		this.groupingSeparator = this.getUseNative() ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		if (this.style === "nogrouping") {
+			this.prigroupSize = this.secgroupSize = 0;
+		} else {
+			this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits();
+			this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits();
+			this.groupingSeparator = this.getUseNative() ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		} 
 		this.decimalSeparator = this.getUseNative() ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
 		
 		if (this.getUseNative()) {

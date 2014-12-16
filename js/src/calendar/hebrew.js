@@ -21,6 +21,7 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Hebrew calendar object. This class encodes information about
  * the Hebrew (Jewish) calendar. The Hebrew calendar is a tabular hebrew 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -35,7 +36,6 @@
  * 
  * Depends directive: !depends hebrew.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */

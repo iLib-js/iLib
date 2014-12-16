@@ -26,11 +26,25 @@
  * 
  * Depends directive: !depends ctype.isascii.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is in the ASCII range.
  */
 ilib.CType.isAscii = function (ch) {
-	return ilib.CType._inRange(ch, 'ascii', ilib.data.ctype);
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			num = ilib.String.toCodePoint(ch, 0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+	return ilib.CType._inRange(num, 'ascii', ilib.data.ctype);
 };
 
 /**

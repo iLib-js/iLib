@@ -27,6 +27,7 @@ limitations under the License.
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCalendar.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDie.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDate.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorian.html");
@@ -38,7 +39,10 @@ function suite() {
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrewDate.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolar.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarDate.html");
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDay.html");
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testTimeZone.html");
 
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCalendarCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDieCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDateCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianCompiled.html");
@@ -50,6 +54,8 @@ function suite() {
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrewDateCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarDateCompiled.html");
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDayCompiled.html");
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testTimeZoneCompiled.html");
     
     return calSuite;
 }

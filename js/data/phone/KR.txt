@@ -1,0 +1,117 @@
+^+	plus
+^001	idd	KT international call
+^002	idd	LG U+ international call
+^00365	idd	Onse Telecom international call over Internet Protocol
+^005	idd	SK Broadband international call
+^006	idd	SK Telink international call
+^00700	idd	SK Telink international call over Internet Protocol
+^00727	idd	KT international call over Internet Protocol
+^00794	idd	Operator Service
+^008	idd	Onse Telecom international call
+
+^0	trunk
+
+^*	vsc
+^#	vsc
+
+^.	start
+
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local
+
+2	area	Seoul	Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)
+31	area	Gyeonggi-do	Gyeonggi-do
+32	area	Incheon	Incheon and parts of Gyeonggi-do (Bucheon and some insular communities of Ansan)
+33	area	Gangwon-do	Gangwon-do
+41	area	Chungcheongnam-do	Chungcheongnam-do
+42	area	Daejeon	Daejeon and a part of Chungcheongnam-do (Gyeryong)
+43	area	Chungcheongbuk-do	Chungcheongbuk-do
+44	area	Sejong City	Sejong City
+49	area	Kaesong	Kaesong Industrial Region
+51	area	Busan	Busan
+52	area	Ulsan	Ulsan
+53	area	Daegu	Daegu and a part of Gyeongsangbuk-do (Gyeongsan)
+54	area	Gyeongsangbuk-do	Gyeongsangbuk-do
+55	area	Gyeongsangnam-do	Gyeongsangnam-do and a few neighborhoods of Ulsan
+61	area	Jeollanam-do	Jeollanam-do
+62	area	Gwangju	Gwangju
+63	area	Jeollabuk-do	Jeollabuk-do
+64	area	Jeju-do	Jeju-do
+
+30	service	Unified Messaging Service
+50	service	Universal Access
+60	service	Telephone based intelligent service
+70	service	Internet phone (VoIP)
+80	service	Toll-free calls
+
+10	cell
+11	cell
+12	cell	Machine to machine
+13..	cell	Mobile special net
+14..	cell	Point-to-Point Protocol Access number
+15	cell	Mobile and paging services
+16	cell
+17	cell
+18	cell
+19	cell
+
+81	cic	KT
+82	cic	LG U+
+83	cic	Onse Telecom
+84	cic	SK Broadband
+85..	cic	Domestic long-distance Value Added Service (VAS)
+86	cic	SK Telink
+
+^100	emergency	KT customer center
+^101	emergency	LG U+ customer center
+^106	emergency	SK Broadband customer center
+^107	emergency	LG U+ report
+^110	emergency	Government Information call Center
+^111	emergency	NIS
+^112	emergency	Police
+^113	emergency	Spy Reporting
+^115	emergency	KT Telegram
+^117	emergency	School Violence Hotline (from 2012, previously: report sexual trafficking of women)
+^118	emergency	Cyber terrorism report
+^119	emergency	General emergency telephone number
+^120	emergency	Lifestyle service
+^121	emergency	Water utility report
+^122	emergency	Coast guard emergency telephone number
+^123	emergency	KEPCO Electric report
+^125	emergency	Smuggling report
+^127	emergency	Narcotics report
+^128	emergency	Pollution report
+^129	emergency	Coordination with social welfare service (after October 2005)
+^1300	emergency	Postal services
+^1301	emergency	Prosecutor service
+^132	emergency	Civil Action (Korea Legal Aid Corporation - for contract disputes)
+^1330	emergency	KNTO tourist information (bus·train schedule, hotel·inn information, free translation service)
+^1332	emergency	Finance Board
+^1333	emergency	Transport information
+^1335	emergency	Information communication service center
+^1336	emergency	Infringement of personal information board
+^1331	emergency	Human Rights Board
+^1350	emergency	Labor Board
+^1355	emergency	National Pension Service
+^1357	emergency	Small and medium enterprise support
+^1369	emergency	Financial Information Inquiry
+^1377	emergency	Food bank
+^1379	emergency	Unreasonable infringement of livelihood report
+^1382	emergency	Citizen Registry Confirmation
+^1385	emergency	Business discomfort report and board
+^1388	emergency	Minor mistreatment report
+^1390	emergency	Election information and infringement hotline
+^1399	emergency	Unclean grocery report
+^1337	emergency	Military Safety Board
+^1339	emergency	Emergency medical treatment
+^1365	emergency	Volunteering information
+^1366	emergency	Domestic abuse report
+^1398	emergency	Child abuse hotline
+^182	emergency	Missing child report hotline
+^188	emergency	National Board of Audit and Inspection

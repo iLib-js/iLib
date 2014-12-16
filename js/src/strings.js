@@ -22,6 +22,7 @@
 // !data plurals
 
 /**
+ * @class
  * Create a new string instance. This string inherits from the Javascript
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
@@ -30,7 +31,6 @@
  * 
  * Depends directive: !depends strings.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
@@ -100,11 +100,41 @@ ilib.String.fromCodePoint = function (codepoint) {
 };
 
 /**
+ * Convert the character or the surrogate pair at the given
+ * index into the intrinsic Javascript string to a Unicode 
+ * UCS-4 code point.
+ * 
+ * @param {string} str string to get the code point from
+ * @param {number} index index into the string
+ * @return {number} code point of the character at the
+ * given index into the string
+ */
+ilib.String.toCodePoint = function(str, index) {
+	if (!str || str.length === 0) {
+		return -1;
+	}
+	var code = -1, high = str.charCodeAt(index);
+	if (high >= 0xD800 && high <= 0xDBFF) {
+		if (str.length > index+1) {
+			var low = str.charCodeAt(index+1);
+			if (low >= 0xDC00 && low <= 0xDFFF) {
+				code = (((high & 0x3C0) >> 6) + 1) << 16 |
+					(((high & 0x3F) << 10) | (low & 0x3FF));
+			}
+		}
+	} else {
+		code = high;
+	}
+	
+	return code;
+};
+
+/**
  * Load the plural the definitions of plurals for the locale.
- * @param {ilib.Locale|string} locale
- * @param {boolean} sync
- * @param {Object} loadParams
- * @param {function(*)|undefined} onLoad
+ * @param {boolean=} sync
+ * @param {ilib.Locale|string=} locale
+ * @param {Object=} loadParams
+ * @param {function(*)=} onLoad
  */
 ilib.String.loadPlurals = function (sync, locale, loadParams, onLoad) {
 	var loc;
@@ -813,25 +843,68 @@ ilib.String.prototype = {
 	 * given index into the string
 	 */
 	_toCodePoint: function (index) {
-		if (this.str.length === 0) {
-			return -1;
-		}
-		var code = -1, high = this.str.charCodeAt(index);
-		if (high >= 0xD800 && high <= 0xDBFF) {
-			if (this.str.length > index+1) {
-				var low = this.str.charCodeAt(index+1);
-				if (low >= 0xDC00 && low <= 0xDFFF) {
-					code = (((high & 0x3C0) >> 6) + 1) << 16 |
-						(((high & 0x3F) << 10) | (low & 0x3FF));
-				}
-			}
-		} else {
-			code = high;
-		}
-		
-		return code;
+		return ilib.String.toCodePoint(this.str, index);
 	},
 	
+	/**
+	 * Call the callback with each character in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charAt() method only
+	 * returns a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the surrogate character rather 
+	 * than the the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * character, making sure to join two  
+	 * surrogates into one character in the supplementary planes
+	 * where necessary.<p>
+	 * 
+	 * @param {function(string)} callback a callback function to call with each
+	 * full character in the current string
+	 */
+	forEach: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.charIterator();
+			while (it.hasNext()) {
+				callback(/** @type {string} */ it.next());
+			}
+		}
+	},
+
+	/**
+	 * Call the callback with each numeric code point in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charCodeAt() method only
+	 * returns information about a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charCodeAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the code point of the surrogate character rather 
+	 * than the code point of the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * code point of each character, making sure to join two  
+	 * surrogates into one code point in the supplementary planes.<p>
+	 * 
+	 * @param {function(number)} callback a callback function to call with each
+	 * code point in the current string
+	 */
+	forEachCodePoint: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.iterator();
+			while (it.hasNext()) {
+				callback(it.next());
+			}
+		}
+	},
+
 	/**
 	 * Return an iterator that will step through all of the characters
 	 * in the string one at a time and return their code points, taking 
@@ -851,13 +924,13 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more code points to iterate through,
 	 * and next() which returns the next code point as a number.<p>
 	 * 
-	 * @return {ilib.Iterator} an iterator 
+	 * @return {ilib.NumberIterator} an iterator 
 	 * that iterates through all the code points in the string
 	 */
 	iterator: function() {
 		/**
 		 * @constructor
-		 * @implements ilib.Iterator
+		 * @implements {ilib.NumberIterator}
 		 */
 		function _iterator (istring) {
 			this.index = 0;
@@ -865,8 +938,9 @@ ilib.String.prototype = {
 				return (this.index < istring.str.length);
 			};
 			this.next = function () {
+				var num;
 				if (this.index < istring.str.length) {
-					var num = istring._toCodePoint(this.index);
+					num = istring._toCodePoint(this.index);
 					this.index += ((num > 0xFFFF) ? 2 : 1);
 				} else {
 					num = -1;
@@ -895,13 +969,13 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more characters to iterate through,
 	 * and next() which returns the next character.<p>
 	 * 
-	 * @return {ilib.Iterator} an iterator 
+	 * @return {ilib.StringIterator} an iterator 
 	 * that iterates through all the characters in the string
 	 */
 	charIterator: function() {
 		/**
 		 * @constructor
-		 * @implements ilib.Iterator
+		 * @implements {ilib.StringIterator}
 		 */
 		function _chiterator (istring) {
 			this.index = 0;
@@ -940,10 +1014,11 @@ ilib.String.prototype = {
 		}
 		var count,
 			it = this.iterator(),
-			ch;
+			ch = -1;
 		for (count = index; count >= 0 && it.hasNext(); count--) {
 			ch = it.next();
 		}
+		
 		return (count < 0) ? ch : -1;
 	},
 	
@@ -955,9 +1030,9 @@ ilib.String.prototype = {
 	 * 3 or 4".
 	 * @param {ilib.Locale|string} locale locale to use when processing choice
 	 * formats with this string
-	 * @param {boolean} sync [optional] whether to load the locale data synchronously 
+	 * @param {boolean=} sync [optional] whether to load the locale data synchronously 
 	 * or not
-	 * @param {Object} loadParams [optional] parameters to pass to the loader function
+	 * @param {Object=} loadParams [optional] parameters to pass to the loader function
 	 * @param {function(*)=} onLoad [optional] function to call when the loading is done
 	 */
 	setLocale: function (locale, sync, loadParams, onLoad) {

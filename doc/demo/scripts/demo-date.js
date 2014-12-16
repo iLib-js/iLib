@@ -1,7 +1,7 @@
 /*
- * ilibglobal.js - define the ilib name space
+ * demo-date.js - define the scripts used by the demo
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -608,6 +608,101 @@ function setupAddressPicker() {
 	$('#addressPicker').show();
 };
 
+function setupPhoneParsingPicker(res) {
+	$('#wholePhoneNum').show();
+	$('#textBoxLabel').text(res.getString("Free form phone number:"));
+	$('#textBoxPicker').show();
+};
+
+function setupPhonePicker(locale) {
+	var valid = {
+		'0': 1, '1': 1, '2': 1,	'3': 1,	'4': 1,	'5': 1,	'6': 1,	'7': 1,	'8': 1,	'9': 1,
+		'+': 1,	'*': 1,	'#': 1,
+		// pause chars
+		'p': 1,	'P': 1,	't': 1,	'T': 1,	'w': 1,	'W': 1,
+		// extension char
+		'x': 1,	'X': 1
+	};
+	
+	$(".phoneDigits").keypress(function (e) {
+		var c = String.fromCharCode(e.charCode);
+	    // if the letter is not a phone digit then don't type anything
+		if (e.which != 8 && e.which != 0 && !(c in valid)) {
+	        return false;
+	    }
+	});
+	
+	var fmt = new ilib.PhoneFmt({locale: locale});
+	var styles = fmt.getAvailableStyles();
+	
+	if (styles.length > 0) {
+		styles.sort();
+		
+		var element = $('#phoneStyle');
+		element.empty();
+		
+		for (var i = 0; i < styles.length; i++) {
+			element.append($("<option></option>").attr({
+				value: styles[i],
+				selected: styles[i] == "default"
+			}).text(styles[i]));
+		}
+		$('#stylePicker').show();
+	} else {
+		$('#stylePicker').hide();
+	}
+	$('#phonePicker').show();
+};
+
+function setMeasurementValues(element, u) {
+	var units = ilib.Measurement.getAvailableUnits();
+	units.sort();
+	$.each(units, function(key, value) {
+		element.append($("<option></option>").attr({
+			value: value,
+			"selected": (value == u)
+		}).text(value));
+	});
+};
+
+function setupUnitFmtPicker() {
+    var unitElement = $('#unit');
+    setMeasurementValues(unitElement);
+    $('#unitFmtPicker').show();
+    $('#unitLong').prop('checked', true);
+    $('#autoConv').prop('checked', true);
+    $('#uNative').prop('checked', true);
+    $('#scale').prop('checked', true);
+}
+
+function fromUnitSelected() {
+    var unit = $('#fUnit').val();
+    var toUnitElement = $('#tUnit');
+    toUnitElement.find('option').remove().end();
+    var measurement;
+    for (var c in ilib.Measurement._constructors) {
+        measurement = ilib.Measurement._constructors[c];
+        if (typeof(measurement.aliases[unit]) !== 'undefined') {                
+                break;
+        }
+        measurement = 'undefined';
+    }
+    var units = typeof(measurement) !== 'undefined' ? measurement.getMeasures() : "unknown";
+    $.each(units, function(key, value) {
+        toUnitElement.append($("<option></option>").attr({
+                value: value              
+        }).text(value));
+    });    
+}
+
+function setupUnitConvPicker() {
+    var unitElement = $('#fUnit');
+    setMeasurementValues(unitElement);
+    fromUnitSelected();
+    $('#locCtrl').hide();
+    $('#unitConvPicker').show();
+}
+
 function hideAllPickers() {
 	$('#calendarPane').hide();
 	$('#lengthPane').hide();
@@ -627,5 +722,9 @@ function hideAllPickers() {
 	$("#numTypePicker").hide();
 	$('#namePicker').hide();
 	$('#addressPicker').hide();
+	$('#phonePicker').hide();
 	$('#textBoxPicker').hide();
+    $('#unitFmtPicker').hide();
+    $('#unitConvPicker').hide();
+    $('#locCtrl').show();
 };

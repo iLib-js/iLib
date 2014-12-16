@@ -1,0 +1,24 @@
+262	area	Réunion	Islands of Réunion and Mayotte
+269	area	Mayotte	Islands of Réunion and Mayotte
+508	area	Saint Pierre and Miquelon	Saint Pierre and Miquelon Islands
+590	area	Guadaloupe	Guadeloupe, Saint-Barthélemy and Saint-Martin Islands
+594	area	French Guiana	French Guiana
+596	area	Martinique	Martinique Island
+639	area	Mobile Number	Mobile Number in Mayotte
+690	area	Mobile Number	Mobile Number in Guadeloupe, Saint-Barthélemy or Saint-Martin Islands
+692	area	Mobile Number	Mobile Number in Réunion
+694	area	Mobile Number	Mobile Number in French Guiana
+696	area	Mobile Number	Mobile Number in Martinique
+
+
+800	area	Toll-free Number	Toll-free Service (Numéros Verts)
+801	area	Toll call	Toll call at local rates (Numéros Azurs)
+802	area	Toll call	Toll call (Numéros Indigos)
+803	area	Toll call	Toll call (Numéros Indigos)
+805	area	Toll-free Number	Toll-free Service (Numéros Verts)
+809	area	Toll-free Number	Toll-free Service (Numéros Verts)
+8	area	Service Number	Service number
+81	area	Toll call	Toll call at local rates (Numéros Azurs)
+819	area	Toll-free Number	Toll-free Service (Numéros Verts)
+82	area	Toll call	Toll call (Numéros Indigos)
+89	area	Audiotel Number	Audiotel internet online services

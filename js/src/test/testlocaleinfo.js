@@ -6690,6 +6690,33 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 	ilib.setLoaderCallback(undefined);
 }
 
+function testLocaleInfoMissingDataSynchNoDataNoLoader() {
+	var temp = ilib._load;
+	
+	ilib._load = undefined;  // no loader
+	var callbackCalled = false;
+	ilib.LocaleInfo.cache = {}; // empty the cache
+	
+	var info = new ilib.LocaleInfo("xxx-QQ", {
+		sync: true,
+		onLoad: function (li) {
+			assertNotUndefined(li);
+			callbackCalled = true;
+			// should return the shared data only
+			assertEquals("{s}{n}", li.getCurrencyFormats().common);
+			assertEquals(1, li.getFirstDayOfWeek());
+			assertEquals("%", li.getPercentageSymbol());
+		}
+	});
+	assertNotNull(info);
+	assertTrue(callbackCalled);
+	
+	// clean up
+	ilib._load = undefined;  // no loader
+	ilib.LocaleInfo.cache = {}; // empty the cache
+	ilib._load = temp;
+}
+
 function testLocaleInfoLoadMissingDataSyncNoData() {
 	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing

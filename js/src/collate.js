@@ -22,13 +22,14 @@
 // !data collation
 
 /**
+ * @class
  * Represents a buffered source of code points. The input string is first
  * normalized so that combining characters come out in a standardized order.
  * If the "ignorePunctuation" flag is turned on, then punctuation 
  * characters are skipped.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.NormString|string} str a string to get code points from
  * @param {boolean} ignorePunctuation whether or not to ignore punctuation
  * characters
@@ -85,13 +86,14 @@ ilib.CodePointSource.prototype.consume = function(num) {
 
 
 /**
+ * @class
  * An iterator through a sequence of collation elements. This
  * iterator takes a source of code points, converts them into
  * collation elements, and allows the caller to get single
  * elements at a time.
  * 
- * @class
  * @constructor
+ * @private
  * @param {ilib.CodePointSource} source source of code points to 
  * convert to collation elements
  * @param {Object} map mapping from sequences of code points to
@@ -169,6 +171,7 @@ ilib.ElementIterator.prototype.next = function () {
 
 
 /**
+ * @class
  * A class that implements a locale-sensitive comparator function 
  * for use with sorting function. The comparator function
  * assumes that the strings it is comparing contain Unicode characters
@@ -406,7 +409,6 @@ ilib.ElementIterator.prototype.next = function () {
  * characters, the Japanese names will sort at the end of the list after all German names,
  * and will sort according to the Unicode values of the characters.
  * 
- * @class
  * @constructor
  * @param {Object} options options governing how the resulting comparator 
  * function will operate
@@ -417,15 +419,28 @@ ilib.Collator = function(options) {
 		useNative = true;
 
 	// defaults
-	/** @type ilib.Locale */
+	/** 
+	 * @private
+	 * @type {ilib.Locale} 
+	 */
 	this.locale = new ilib.Locale(ilib.getLocale());
+	
+	/** @private */
 	this.caseFirst = "upper";
+	/** @private */
 	this.sensitivity = "variant";
+	/** @private */
 	this.level = 4;
+	/** @private */
 	this.usage = "sort";
+	/** @private */
 	this.reverse = false;
+	/** @private */
 	this.numeric = false;
+	/** @private */
 	this.style = "standard";
+	/** @private */
+	this.ignorePunctuation = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -456,12 +471,10 @@ ilib.Collator = function(options) {
 			}
 		}
 		if (typeof(options.upperFirst) !== 'undefined') {
-			/** @type string */
 			this.caseFirst = options.upperFirst ? "upper" : "lower"; 
 		}
 		
 		if (typeof(options.ignorePunctuation) !== 'undefined') {
-			/** @type boolean */
 			this.ignorePunctuation = options.ignorePunctuation;
 		}
 		if (typeof(options.sync) !== 'undefined') {
@@ -498,7 +511,10 @@ ilib.Collator = function(options) {
 	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
-		/** @type {{compare:function(string,string)}} */
+		/** 
+		 * @private
+		 * @type {{compare:function(string,string)}} 
+		 */
 		this.collator = new Intl.Collator(this.locale.getSpec(), this);
 		
 		if (options && typeof(options.onLoad) === 'function') {
@@ -552,19 +568,24 @@ ilib.Collator.prototype = {
 	/**
 	 * @private
 	 * Bit pack an array of values into a single number
-	 * @param {Array.<number>} arr array of values to bit pack
+	 * @param {number|null|Array.<number>} arr array of values to bit pack
 	 */
 	_pack: function (arr) {
 		var value = 0;
-		for (var i = 0; i < this.level; i++) {
-			if (i > 0) {
-				value <<= this.collation.bits[i];	
+		if (arr) {
+			if (typeof(arr) === 'number') {
+				arr = [ arr ];
 			}
-			if (i === 2 && this.caseFirst === "lower") {
-				// sort the lower case first instead of upper
-				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
-			} else {
-				value = value | arr[i];
+			for (var i = 0; i < this.level; i++) {
+				if (i > 0) {
+					value <<= this.collation.bits[i];	
+				}
+				if (i === 2 && this.caseFirst === "lower") {
+					// sort the lower case first instead of upper
+					value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+				} else {
+					value = value | arr[i];
+				}
 			}
 		}
 		return value;
@@ -574,7 +595,7 @@ ilib.Collator.prototype = {
 	 * @private
 	 * Return the rule packed into an array of collation elements.
 	 * @param {Array.<number|null|Array.<number>>} rule
-	 * @returns
+	 * @return {Array.<number>} a bit-packed array of numbers
 	 */
 	_packRule: function(rule) {
 		if (rule[0] instanceof Array) {
@@ -592,7 +613,10 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
-    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	/** 
+    	 * @private
+    	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
+    	 */
     	this.collation = rules[this.style];
     	this.map = {};
     	this.keysize = 0;

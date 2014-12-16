@@ -20,6 +20,7 @@
 // !depends ilibglobal.js
 
 /**
+ * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
@@ -58,7 +59,6 @@
  * 
  * Depends directive: !depends locale.js
  * 
- * @class
  * @constructor
  * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
@@ -134,28 +134,7 @@ ilib.Locale = function(language, region, variant, script) {
 			this.script = undefined;
 		}
 	}
-	this.spec = this.language || "";
-	
-	if (this.script) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.script;
-	}
-	
-	if (this.region) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.region;
-	}
-	
-	if (this.variant) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.variant;
-	}
+	this._genSpec();
 };
 
 // from http://en.wikipedia.org/wiki/ISO_3166-1
@@ -739,6 +718,34 @@ ilib.Locale.languageAlpha1ToAlpha3 = function(alpha1) {
 
 ilib.Locale.prototype = {
 	/**
+	 * @private
+	 */
+	_genSpec: function () {
+		this.spec = this.language || "";
+		
+		if (this.script) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.script;
+		}
+		
+		if (this.region) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.region;
+		}
+		
+		if (this.variant) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.variant;
+		}
+	},
+
+	/**
 	 * Return the ISO 639 language code for this locale. 
 	 * @return {string|undefined} the language code for this locale 
 	 */
@@ -820,7 +827,12 @@ ilib.Locale.prototype = {
 	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
-		return (this.language === 'zxx' && this.region === 'XX');
+		var localeName = this.language + "-" + this.region;
+		var index;
+		for (index = 0; index < ilib.pseudoLocales.length; index++) {
+		    if(ilib.pseudoLocales[index] === localeName) return true;
+		}
+		return false;
 	}
 };
 

@@ -29,6 +29,7 @@ timezone.js
 */
 
 /**
+ * @class
  * Construct a new Gregorian date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -102,7 +103,6 @@ timezone.js
  * 
  * Depends directive: !depends gregoriandate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
@@ -166,7 +166,7 @@ ilib.Date.GregDate = function(params) {
 	}
 };
 
-ilib.Date.GregDate.prototype = new ilib.Date();
+ilib.Date.GregDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.GregDate.prototype.parent = ilib.Date;
 ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
 
@@ -215,6 +215,7 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
  */
 ilib.Date.GregDate.prototype._calcDateComponents = function () {
 	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
+		// console.log("using js Date to calculate offset");
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
 		var d = new Date(this.rd.getTime());
@@ -264,7 +265,10 @@ ilib.Date.GregDate.prototype._calcDateComponents = function () {
 		
 		this.offset = -d.getTimezoneOffset() / 1440;
 	} else {
+		// console.log("using ilib to calculate offset. tz is " + this.timezone);
+		// console.log("GregDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 		if (typeof(this.offset) === "undefined") {
+			// console.log("calculating offset");
 			this.year = this._calcYear(this.rd.getRataDie());
 			
 			// now offset the RD by the time zone, then recalculate in case we were 
@@ -273,7 +277,11 @@ ilib.Date.GregDate.prototype._calcDateComponents = function () {
 				this.tz = new ilib.TimeZone({id: this.timezone});
 			}
 			this.offset = this.tz.getOffsetMillis(this) / 86400000;
+		// } else {
+			// console.log("offset is already defined somehow. type is " + typeof(this.offset));
+			// console.trace("Stack is this one");
 		}
+		// console.log("offset is " + this.offset);
 		var rd = this.rd.getRataDie();
 		if (this.offset !== 0) {
 			rd += this.offset;

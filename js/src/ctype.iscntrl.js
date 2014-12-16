@@ -26,11 +26,25 @@
  * 
  * Depends directive: !depends ctype.iscntrl.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is a control character.
  */
 ilib.CType.isCntrl = function (ch) {
-	return ilib.CType._inRange(ch, 'Cc', ilib.data.ctype_c);
+	var num;
+	switch (typeof(ch)) {
+		case 'number':
+			num = ch;
+			break;
+		case 'string':
+			num = ilib.String.toCodePoint(ch, 0);
+			break;
+		case 'undefined':
+			return false;
+		default:
+			num = ch._toCodePoint(0);
+			break;
+	}
+	return ilib.CType._inRange(num, 'Cc', ilib.data.ctype_c);
 };
 
 /**

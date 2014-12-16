@@ -47,3 +47,61 @@ ilib.Iterator.prototype = {
 	 */
 	next: function () {}
 };
+
+/**
+ * An iterator class that iterates through a list or array of strings one
+ * at a time.
+ * 
+ * Depends directive: !depends iterator.js
+ * 
+ * @interface
+ */
+ilib.StringIterator = function() {};
+
+ilib.StringIterator.prototype = {
+	/**
+	 * Return true if there are more items to iterate through.
+	 * 
+	 * @return {boolean} true if there are more items to iterate through,
+	 * or false otherwise
+	 */
+	hasNext: function() {},
+	
+	/**
+	 * Return the next item in the iteration and advance the pointer
+	 * to the next item. 
+	 * 
+	 * @return {string} the next item in the iteration, or undefined if there
+	 * are no more items left to iterate through
+	 */
+	next: function () {}
+};
+
+/**
+ * An iterator class that iterates through a list or array of numbers one
+ * at a time.
+ * 
+ * Depends directive: !depends iterator.js
+ * 
+ * @interface
+ */
+ilib.NumberIterator = function() {};
+
+ilib.NumberIterator.prototype = {
+	/**
+	 * Return true if there are more items to iterate through.
+	 * 
+	 * @return {boolean} true if there are more items to iterate through,
+	 * or false otherwise
+	 */
+	hasNext: function() {},
+	
+	/**
+	 * Return the next item in the iteration and advance the pointer
+	 * to the next item. 
+	 * 
+	 * @return {number} the next item in the iteration, or undefined if there
+	 * are no more items left to iterate through
+	 */
+	next: function () {}
+};

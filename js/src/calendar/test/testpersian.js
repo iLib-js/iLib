@@ -17,135 +17,129 @@
  * limitations under the License.
  */
 
-function testPersianGetNumMonths() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetNumMonths() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(12, cal.getNumMonths(1389));
+    assertEquals(12, cal.getNumMonths(1392));
 }
 
-function testPersianGetMonLengthJan() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength1() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(1, 1389));
+    assertEquals(31, cal.getMonLength(1, 1392));
 }
 
-function testPersianGetMonLengthFeb() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength2() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(2, 1389));
+    assertEquals(31, cal.getMonLength(2, 1392));
 }
 
-function testPersianGetMonLengthFebLeapYear() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength3() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(2, 1390));
+    assertEquals(31, cal.getMonLength(3, 1392));
 }
 
-function testPersianGetMonLengthMar() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength4() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(3, 1389));
+    assertEquals(31, cal.getMonLength(4, 1392));
 }
 
-function testPersianGetMonLengthApr() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength5() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(4, 1389));
+    assertEquals(31, cal.getMonLength(5, 1392));
 }
 
-function testPersianGetMonLengthMay() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength6() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(31, cal.getMonLength(5, 1389));
+    assertEquals(31, cal.getMonLength(6, 1392));
 }
 
-function testPersianGetMonLengthJun() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength7() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(6, 1389));
+    assertEquals(30, cal.getMonLength(7, 1392));
 }
 
-function testPersianGetMonLengthJul() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength8() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(7, 1389));
+    assertEquals(30, cal.getMonLength(8, 1392));
 }
 
-function testPersianGetMonLengthAug() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength9() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(8, 1389));
+    assertEquals(30, cal.getMonLength(9, 1392));
 }
 
-function testPersianGetMonLengthSep() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength10() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(9, 1389));
+    assertEquals(30, cal.getMonLength(10, 1392));
 }
 
-function testPersianGetMonLengthOct() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength11() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(10, 1389));
+    assertEquals(30, cal.getMonLength(11, 1392));
 }
 
-function testPersianGetMonLengthNov() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength12() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(30, cal.getMonLength(11, 1389));
+    assertEquals(29, cal.getMonLength(12, 1392));
 }
 
-function testPersianGetMonLengthDec() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoGetMonLength12LeapYear() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertEquals(29, cal.getMonLength(12, 1389));
+    assertEquals(30, cal.getMonLength(12, 1391));
 }
 
-function testPersianIsLeapYear() {
-    var cal = new ilib.Cal.Persian();
+
+function testPersianAlgoIsLeapYear() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertTrue(cal.isLeapYear(1390));
+    assertTrue(cal.isLeapYear(1391));
 }
 
-function testPersianIsLeapYearNot() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoIsLeapYearNot() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertFalse(cal.isLeapYear(1389));
+    assertFalse(cal.isLeapYear(1392));
 }
 
-function testPersianIsLeapYear1() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoIsLeapYear1() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertFalse(cal.isLeapYear(1700));
+    assertFalse(cal.isLeapYear(1393));
 }
 
-function testPersianIsLeapYear2() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoIsLeapYear2() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertFalse(cal.isLeapYear(1800));
+    assertFalse(cal.isLeapYear(1394));
 }
 
-function testPersianIsLeapYearNotOnCentury3() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoIsLeapYear3() {
+    var cal = new ilib.Cal.PersianAlgo();
     
-    assertFalse(cal.isLeapYear(1900));
+    assertTrue(cal.isLeapYear(1395));
 }
 
-function testPersianIsLeapYearOnQuadCentennial() {
-    var cal = new ilib.Cal.Persian();
-    
-    assertTrue(cal.isLeapYear(2000));
-}
-
-function testPersianNewDateInstance() {
-    var cal = new ilib.Cal.Persian();
+function testPersianAlgoNewDateInstance() {
+    var cal = new ilib.Cal.PersianAlgo();
     var d = cal.newDateInstance({
-    	year: 1390,
+    	year: 1392,
     	month: 6,
     	day: 1
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.PersDate);
+    assertTrue(d instanceof ilib.Date.PersAlgoDate);
 }
-

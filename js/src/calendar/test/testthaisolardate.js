@@ -2169,3 +2169,55 @@ function testThaiSolarDateInitWithRDRightTimeZone() {
     
     assertEquals("local", td.getTimeZone());
 }
+
+function testThaiSolarDateRoundTripConstruction() {
+    var td = new ilib.Date.ThaiSolarDate({
+    	year: 2557,
+    	month: 11,
+    	day: 3,
+    	timezone: "local"
+    });
+    assertNotNull(td);
+    // console.log("td is " + JSON.stringify(td, undefined, 4));
+    
+    var u = td.getTime();
+    // console.log("unixtime is " + u);
+    var td2 = new ilib.Date.ThaiSolarDate({
+    	unixtime: u,
+    	timezone: "local"
+    });
+    // console.log("td2 is " + JSON.stringify(td2, undefined, 4));
+    assertEquals(td.getTimeZone(), td2.getTimeZone());
+    assertEquals(td.getYears(), td2.getYears());
+    assertEquals(td.getMonths(), td2.getMonths());
+    assertEquals(td.getDays(), td2.getDays());
+    assertEquals(td.getHours(), td2.getHours());
+    assertEquals(td.getMinutes(), td2.getMinutes());
+    assertEquals(td.getSeconds(), td2.getSeconds());
+}
+
+function testThaiSolarDateRoundTripConstruction2() {
+    var td = new ilib.Date.ThaiSolarDate({
+    	year: 2557,
+    	month: 11,
+    	day: 3,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(td);
+    // console.log("td is " + JSON.stringify(td, undefined, 4));
+    
+    var u = td.getTime();
+    // console.log("unixtime is " + u);
+    var td2 = new ilib.Date.ThaiSolarDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    // console.log("td2 is " + JSON.stringify(td2, undefined, 4));
+    assertEquals(td.getTimeZone(), td2.getTimeZone());
+    assertEquals(td.getYears(), td2.getYears());
+    assertEquals(td.getMonths(), td2.getMonths());
+    assertEquals(td.getDays(), td2.getDays());
+    assertEquals(td.getHours(), td2.getHours());
+    assertEquals(td.getMinutes(), td2.getMinutes());
+    assertEquals(td.getSeconds(), td2.getSeconds());
+}

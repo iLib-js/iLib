@@ -22,6 +22,7 @@
 // !data currency
 
 /**
+ * @class
  * Create a new currency information instance. Instances of this class encode 
  * information about a particular currency.<p>
  * 
@@ -82,7 +83,6 @@
  * 
  * Depends directive: !depends currency.js
  * 
- * @class
  * @constructor
  * @param options {Object} a set of properties to govern how this instance is constructed.
  * @throws "currency xxx is unknown" when the given currency code is not in the list of 

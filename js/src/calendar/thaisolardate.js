@@ -24,6 +24,7 @@ util/jsutils.js
 */
 
 /**
+ * @class
  * Construct a new Thai solar date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -81,7 +82,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends thaisolardate.js
  * 
- * @class
  * @constructor
  * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
@@ -100,11 +100,15 @@ ilib.Date.ThaiSolarDate = function(params) {
 			p.rd -= 198327;
 		}
 	}
-	this.rd = undefined; // clear this out so that the GregDate constructor can set it
+	this.rd = undefined; // clear these out so that the GregDate constructor can set it
+	this.offset = undefined;
+	//console.log("ThaiSolarDate.constructor: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
 	// make sure the year is set correctly
-	this._calcDateComponents();
+	if (params && typeof(params.year) !== 'undefined') {
+		this.year = parseInt(params.year, 10);
+	}
 };
 
 ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
@@ -127,6 +131,7 @@ ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
+	// console.log("ThaiSolarDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 	this.parent._calcDateComponents.call(this);
 	this.year += 543;
 };

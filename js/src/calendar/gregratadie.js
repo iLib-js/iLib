@@ -26,6 +26,7 @@ julianday.js
 */
 
 /**
+ * @class
  * Construct a new Gregorian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -68,14 +69,14 @@ julianday.js
  * 
  * Depends directive: !depends gregratadie.js
  * 
- * @protected
- * @class
+ * @private
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
  */
 ilib.Date.GregRataDie = function(params) {
 	this.cal = params && params.cal || new ilib.Cal.Gregorian();
+	/** @type {number|undefined} */
 	this.rd = undefined;
 	ilib.Date.RataDie.call(this, params);
 };
@@ -165,7 +166,7 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 	*/
 	
 	/**
-	 * @type {number} the RD number of this Gregorian date
+	 * @type {number|undefined} the RD number of this Gregorian date
 	 */
 	this.rd = years + dayInYear + rdtime;
 };

@@ -21,6 +21,7 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
+ * @class
  * Construct a new Islamic calendar object. This class encodes information about
  * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -35,7 +36,6 @@
  * 
  * Depends directive: !depends islamic.js
  * 
- * @class
  * @constructor
  * @implements ilib.Cal
  */

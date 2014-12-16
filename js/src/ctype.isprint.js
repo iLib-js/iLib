@@ -25,7 +25,7 @@
  * 
  * Depends directive: !depends ctype.isprint.js
  * 
- * @param {string} ch character to examine
+ * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is printable.
  */
 ilib.CType.isPrint = function (ch) {

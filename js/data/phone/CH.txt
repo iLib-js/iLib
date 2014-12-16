@@ -1,0 +1,74 @@
+^+	plus
+^00	idd
+^0	trunk
+
+21	area	Lausanne	Lausanne
+22	area	Geneva	Geneva
+24	area	Yverdon	Yverdon, Aigle
+26	area	Fribourg	Fribourg
+27	area	Sion	Sion
+31	area	Berne	Berne
+32	area	Neuchâtel	Bienne, Neuchâtel, Soleure, Jura
+33	area	Thun	Thun
+34	area	Burgdorf	Burgdorf, Langnau i.E.
+41	area	Lucerne	Lucerne
+43	area	Zurich	Zurich
+44	area	Zurich	Zurich
+51	area	corporate network	corporate network (national railways)
+52	area	Winterthur	Winterthur
+55	area	Rapperswil	Rapperswil
+56	area	Baden	Baden
+58	area	corporate network	corporate network
+61	area	Basel	Basel
+62	area	Olten	Olten
+71	area	St. Gallen	St. Gallen
+81	area	Chur	Chur
+91	area	Bellinzona	Bellinzona
+
+74	cell
+75	cell
+76	cell
+77	cell
+78	cell
+79	cell
+
+800	service	freephone numbers
+840	service	shared-cost numbers
+842	service	shared-cost numbers
+844	service	shared-cost numbers
+848	service	shared-cost numbers
+860	service	voice mail access code
+868	service	test numbers
+869	service	VPN access code
+98	service	Inter-network routing numbers
+99	service	Internal network numbers
+
+878	personal	personal numbers (UPT)
+
+900	premium	Premium rate service for business, marketing
+901	premium	Premium rate service for entertainment, games, telephone competitions
+906	premium	Premium rate service for adult entertainment
+
+112	emergency	General European Emergency Number
+117	emergency	Police
+118	emergency	Fireman / Fire Rescue Service
+140	emergency	TCS (car assistance)
+1414	emergency	REGA (helicopter rescue, outside Valais)
+1415	emergency	Air Glaciers (helicopter rescue, Valais only)
+143	emergency	"The Helping Hand" (psychological assistance)
+144	emergency	Ambulance service and medical assistance
+145	emergency	Poisoning/intoxication emergencies
+147	emergency	Child help line
+
+1600	service	Regional announcement voice mail
+161	service	Speaking clock
+162	service	Weather forecasts and meteorological conditions
+163	service	Traffic reports and travel information
+164	service	Sports news
+1811	service	Directory Enquiries (Swisscom)
+1818	service	Directory Enquiries
+1850	service	International Directory Enquiries
+187	service	Snow/avalanche threat information
+
+107	cic
+108	cic

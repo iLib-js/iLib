@@ -26,6 +26,7 @@ addressprs.js
 // !data address
 
 /**
+ * @class
  * Create a new formatter object to format physical addresses in a particular way.
  *
  * The options object may contain the following properties, both of which are optional:
@@ -59,7 +60,6 @@ addressprs.js
  * Depends directive: !depends addressfmt.js
  * 
  * @constructor
- * @class
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
  */
@@ -67,6 +67,7 @@ ilib.AddressFmt = function(options) {
 	this.sync = true;
 	this.styleName = 'default';
 	this.loadParams = {};
+	this.locale = new ilib.Locale();
 	
 	if (options) {
 		if (options.locale) {
@@ -85,7 +86,7 @@ ilib.AddressFmt = function(options) {
 			this.loadParams = options.loadParams;
 		}
 	}
-
+	
 	// console.log("Creating formatter for region: " + this.locale.region);
 	ilib.loadData({
 		name: "address.json",
@@ -105,7 +106,7 @@ ilib.AddressFmt = function(options) {
 					callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 						this.info = info;
 						this._init();
-						if (typeof(options.onLoad) === 'function') {
+						if (options && typeof(options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
 					})
@@ -113,7 +114,7 @@ ilib.AddressFmt = function(options) {
 			} else {
 				this.info = info;
 				this._init();
-				if (typeof(options.onLoad) === 'function') {
+				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
 			}
@@ -172,7 +173,12 @@ ilib.AddressFmt.prototype.format = function (address) {
 		return other.format(address);
 	}
 	
-	format = address.format ? this.style[address.format] : this.style;
+	if (typeof(this.style) === 'object') {
+		format = this.style[address.format || "latin"];
+	} else {
+		format = this.style;
+	}
+	
 	// console.log("Using format: " + format);
 	// make sure we have a blank string for any missing parts so that
 	// those template parts get blanked out
@@ -181,10 +187,13 @@ ilib.AddressFmt.prototype.format = function (address) {
 		region: address.region || "",
 		locality: address.locality || "",
 		streetAddress: address.streetAddress || "",
-		postalCode: address.postalCode || ""
+		postalCode: address.postalCode || "",
+		postOffice: address.postOffice || ""
 	};
 	template = new ilib.String(format);
 	ret = template.format(params);
 	ret = ret.replace(/[ \t]+/g, ' ');
+	ret = ret.replace("\n ", "\n");
+	ret = ret.replace(" \n", "\n");
 	return ret.replace(/\n+/g, '\n').trim();
 };

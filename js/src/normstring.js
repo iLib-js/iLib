@@ -17,27 +17,26 @@
  * limitations under the License.
  */
 
-// !depends strings.js iterator.js
+// !depends strings.js iterator.js glyphstring.js
 
 /**
+ * @class
  * Create a new normalized string instance. This string inherits from 
- * the ilib.String class, and adds the normalize method. It can be
+ * the ilib.GlyphString class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
  * 
- * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  */
 ilib.NormString = function (str) {
-	ilib.NormString.baseConstructor.call(this, str);
-	
+	ilib.GlyphString.call(this, str);
 };
-ilib.NormString.prototype = new ilib.String();
+
+ilib.NormString.prototype = new ilib.GlyphString();
+ilib.NormString.parent = ilib.GlyphString;
 ilib.NormString.prototype.constructor = ilib.NormString;
-ilib.NormString.baseConstructor = ilib.String;
-ilib.NormString.prototype.parent = ilib.String.prototype;
 
 /**
  * Initialize the normalized string routines statically. This
@@ -83,11 +82,11 @@ ilib.NormString.init = function(options) {
 	}
 	var formDependencies = {
 		"nfd": ["nfd"],
-		"nfc": ["nfc", "nfd"],
+		"nfc": ["nfd"],
 		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd", "nfc"]
+		"nfkc": ["nfkd", "nfd"]
 	};
-	var files = ["norm.ccc.json"];
+	var files = ["norm.json"];
 	var forms = formDependencies[form];
 	for (var f in forms) {
 		files.push(forms[f] + "/" + script + ".json");
@@ -95,7 +94,7 @@ ilib.NormString.init = function(options) {
 	
 	// console.log("trying to load " + JSON.stringify(files));
 	ilib._callLoadData(files, sync, loadParams, function(arr) {
-		ilib.data.norm.ccc = arr[0];
+		ilib.data.norm = arr[0];
 		for (var i = 1; i < arr.length; i++) {
 			if (typeof(arr[i]) !== 'undefined') {
 				ilib.data.norm[forms[i-1]] = arr[i];
@@ -106,58 +105,6 @@ ilib.NormString.init = function(options) {
 			onLoad(arr);
 		}
 	});
-};
-
-/**
- * Return true if the given character is a leading Jamo (Choseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a leading Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoL = function (n) {
-	return (n >= 0x1100 && n <= 0x1112);
-};
-
-/**
- * Return true if the given character is a vowel Jamo (Jungseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a vowel Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoV = function (n) {
-	return (n >= 0x1161 && n <= 0x1175);
-};
-
-/**
- * Return true if the given character is a trailing Jamo (Jongseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a trailing Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoT = function (n) {
-	return (n >= 0x11A8 && n <= 0x11C2);
-};
-
-/**
- * Return true if the given character is a precomposed Hangul character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a precomposed Hangul character, 
- * false otherwise
- */
-ilib.NormString._isHangul = function (n) {
-	return (n >= 0xAC00 && n <= 0xD7A3);
 };
 
 /**
@@ -182,37 +129,6 @@ ilib.NormString._decomposeHangul = function (cp) {
 };
 
 /**
- * Algorithmically compose an L and a V combining Jamo characters into
- * a precomposed Korean syllabic Hangul character. Both should already
- * be in the proper ranges for L and V characters. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Jamo character to compose
- * @param {number} trail the code point of the trailing Jamo character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLV = function (lead, trail) {
-	var lindex = lead - 0x1100;
-	var vindex = trail - 0x1161;
-	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
-};
-
-/**
- * Algorithmically compose a Hangul LV and a combining Jamo T character 
- * into a precomposed Korean syllabic Hangul character. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Hangul character to compose
- * @param {number} trail the code point of the trailing Jamo T character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLVT = function (lead, trail) {
-	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
-};
-
-/**
  * Expand one character according to the given canonical and 
  * compatibility mappings.
  *
@@ -228,7 +144,7 @@ ilib.NormString._expand = function (ch, canon, compat) {
 	var i, 
 		expansion = "",
 		n = ch.charCodeAt(0);
-	if (ilib.NormString._isHangul(n)) {
+	if (ilib.GlyphString._isHangul(n)) {
 		expansion = ilib.NormString._decomposeHangul(n);
 	} else {
 		var result = canon[ch];
@@ -245,33 +161,6 @@ ilib.NormString._expand = function (ch, canon, compat) {
 	}
 	return expansion;
 };
-
-/**
- * Compose one character out of a leading character and a 
- * trailing character. If the characters are Korean Jamo, they
- * will be composed algorithmically. If they are any other
- * characters, they will be looked up in the nfc tables.
- * 
- * @private
- * @static
- * @param {string} lead leading character to compose
- * @param {string} trail the trailing character to compose
- * @return {string} the fully composed character, or undefined if
- * there is no composition for those two characters
- */
-ilib.NormString._compose = function (lead, trail) {
-	var first = lead.charCodeAt(0);
-	var last = trail.charCodeAt(0);
-	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
-		return ilib.NormString._composeJamoLVT(first, last);
-	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
-		return ilib.NormString._composeJamoLV(first, last);
-	}
-
-	var c = lead + trail;
-	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
-};
-
 
 /**
  * Perform the Unicode Normalization Algorithm upon the string and return 
@@ -447,13 +336,13 @@ ilib.NormString.prototype.normalize = function (form) {
 	var decomp = "";
 	
 	if (nfkd) {
-		var ch, it = this.parent.charIterator.call(this);
+		var ch, it = ilib.String.prototype.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
 		}
 	} else {
-		var ch, it = this.parent.charIterator.call(this);
+		var ch, it = ilib.String.prototype.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
@@ -512,7 +401,7 @@ ilib.NormString.prototype.normalize = function (form) {
 						ilib.data.norm.ccc[cpArray[end]] !== 0) {
 						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
 							// not blocked 
-							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+							var testChar = ilib.GlyphString._compose(cpArray[i], cpArray[end]);
 							if (typeof(testChar) !== 'undefined') {
 								cpArray[i] = testChar;
 								
@@ -526,7 +415,7 @@ ilib.NormString.prototype.normalize = function (form) {
 						end++;
 					} else {
 						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+						var testChar = ilib.GlyphString._compose(cpArray[i], cpArray[end]);
 						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
 							// not blocked and there is a mapping 
 							cpArray[i] = testChar;
@@ -575,15 +464,15 @@ ilib.NormString.prototype.normalize = function (form) {
  * returns true if the iterator has more characters to iterate through,
  * and next() which returns the next character.<p>
  * 
- * @return {ilib.Iterator} an iterator 
+ * @return {ilib.StringIterator} an iterator 
  * that iterates through all the characters in the string
  */
 ilib.NormString.prototype.charIterator = function() {
-	var it = this.parent.charIterator.call(this);
+	var it = ilib.String.prototype.charIterator.call(this);
 	
 	/**
 	 * @constructor
-	 * @implements ilib.Iterator
+	 * @implements ilib.StringIterator
 	 */
 	function _chiterator (istring) {
 		/**
@@ -619,7 +508,7 @@ ilib.NormString.prototype.charIterator = function() {
 						this.nextChar = undefined;
 					} else {
 						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(composed, this.nextChar);
+						var testChar = ilib.GlyphString._compose(composed, this.nextChar);
 						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
 							// not blocked and there is a mapping 
 							composed = testChar;

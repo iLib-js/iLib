@@ -36,7 +36,6 @@ ilib.getVersion = function () {
 
 /**
  * Place where resources and such are eventually assigned.
- * @dict
  */
 ilib.data = {
     norm: {
@@ -48,7 +47,15 @@ ilib.data = {
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
-    }
+    },
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_c: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_l: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_m: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_p: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
+    /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
+    /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null
 };
 
 if (typeof(window) !== 'undefined') {
@@ -59,6 +66,12 @@ if (typeof(window) !== 'undefined') {
 if (typeof(exports) !== 'undefined') {
     exports.ilib = ilib;
 }
+
+ilib.pseudoLocales = ["zxx-XX"];
+
+ilib.setAsPseudoLocale = function (localename) {
+   ilib.pseudoLocales.push(localename)
+};
 
 /**
  * Return the name of the platform
@@ -113,10 +126,10 @@ ilib._isGlobal = function(name) {
  * Depends directive: !depends ilibglobal.js
  * 
  * @static
- * @param {string} spec the locale specifier for the default locale
+ * @param {string|undefined|null} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-    if (typeof(spec) === 'string') {
+    if (typeof(spec) === 'string' || !spec) {
         ilib.locale = spec;
     }
     // else ignore other data types, as we don't have the dependencies

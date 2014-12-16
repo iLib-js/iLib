@@ -15,20 +15,20 @@
                 "f": "EEEE, d בMMMM"
             },
             "dmy": {
-                "s": "dd.MM.yy",
-                "m": "dd.MM.yyyy",
-                "l": "d MMM yyyy",
-                "f": "d בMMMM yyyy"
+                "s": "‏dd.MM.yy",
+                "m": "‏dd.MM.yyyy",
+                "l": "‏d MMM yyyy",
+                "f": "‏d בMMMM yyyy"
             },
             "dm": {
-            	"s": "dd.MM",
-                "m": "dd.MM",
-                "l": "d MMM",
-                "f": "d בMMMM"
+            	"s": "‏dd.MM",
+                "m": "‏dd.MM",
+                "l": "‏d MMM",
+                "f": "‏d בMMMM"
             },
             "my": {
-                "s": "MM.yy",
-                "m": "MM.yyyy",
+                "s": "‏MM.yy",
+                "m": "‏MM.yyyy",
                 "l": "MMM yyyy",
                 "f": "MMMM yyyy"
             },
@@ -53,7 +53,7 @@
                 "ahm": "h:mm a",
                 "hm": "h:mm",
                 "hmz": "h:mm z",
-                "ah": "‏h a"
+                "ah": "h a"
             },
             "24": {
                 "ahmsz": "HH:mm:ss z",
@@ -70,48 +70,48 @@
         },
         "range": {
             "c00": {
-                "s": "{sd}.{sm}.{sy} {st} – {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {et}",
-                "l": "{sd} {sm} {sy} {st} – {et}",
-                "f": "{sd} ב{sm} {sy} {st} – {et}"
+                "s": "‏{sd}.{sm}.{sy} {st} – {et}",
+                "m": "‏{sd}.{sm}.{sy} {st} – {et}",
+                "l": "‏{sd} {sm} {sy} {st} – {et}",
+                "f": "‏{sd} ב{sm} {sy} {st} – {et}"
             },
             "c01": {
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "l": "{sd} {st} – {ed} {et} {em} {ey}",
-                "f": "{sd} {st} – {ed} {et} ב{em} {ey}"
+                "s": "‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "l": "‏{sd} {st} – {ed} {et} {em} {ey}",
+                "f": "‏{sd} {st} – {ed} {et} ב{em} {ey}"
             },
             "c02": {
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
-                "l": "{sd} {sm} {st} – {ed} {em} {ey} {et}",
-                "f": "{sd} ב{sm} {st} – {ed} ב{em} {ey} {et}"
+                "s": "‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "l": "‏{sd} {sm} {st} – {ed} {em} {ey} {et}",
+                "f": "‏{sd} ב{sm} {st} – {ed} ב{em} {ey} {et}"
             },
             "c10": {
-                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} – {ed} {em} {ey}",
-                "f": "{sd} – {ed} ב{em} {ey}"
+                "s": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "m": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "l": "‏{sd} – {ed} {em} {ey}",
+                "f": "‏{sd} – {ed} ב{em} {ey}"
             },
             "c11": {
-                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} {sm} – {ed} {em} {ey}",
-                "f": "{sd} ב{sm} – {ed} ב{em} {ey}"
+                "s": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "m": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "l": "‏{sd} {sm} – {ed} {em} {ey}",
+                "f": "‏{sd} ב{sm} – {ed} ב{em} {ey}"
             },
             "c12": {
-                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
-                "f": "{sd} ב{sm} {sy} – {ed} ב{em} {ey}"
+                "s": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "m": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+                "l": "‏{sd} {sm} {sy} – {ed} {em} {ey}",
+                "f": "‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}"
             },
             "c20": {
-                "s": "{sm}.{sy} – {em}.{ey}",
-                "m": "{sm}.{sy} – {em}.{ey}",
+                "s": "‏{sm}.{sy} – {em}.{ey}",
+                "m": "‏{sm}.{sy} – {em}.{ey}",
                 "l": "{sm} {sy} – {em} {ey}",
                 "f": "{sm} {sy} – {em} {ey}"
             },
-            "c30": "{sy} – {ey}"
+            "c30": "‏{sy} – {ey}"
         }
     }
 }

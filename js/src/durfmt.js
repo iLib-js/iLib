@@ -32,6 +32,7 @@ util/jsutils.js
 // !resbundle sysres
 
 /**
+ * @class
  * Create a new duration formatter instance. The duration formatter is immutable once
  * it is created, but can format as many different durations as needed with the same
  * options. Create different duration formatter instances for different purposes
@@ -92,7 +93,6 @@ util/jsutils.js
  * 
  * Depends directive: !depends durfmt.js
  * 
- * @class
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works
  */
@@ -281,7 +281,7 @@ ilib.DurFmt.prototype._mapDigits = function(str) {
 /**
  * @private
  * @param {ilib.LocaleInfo} locinfo
- * @param {Function|undefined} onLoad
+ * @param {function(ilib.DurFmt)|undefined} onLoad
  */
 ilib.DurFmt.prototype._init = function(locinfo, onLoad) {
 	var digits;
