@@ -94,7 +94,7 @@ function testFormatUSInternational() {
 function testFormatUSInternational2() { 
 	var formatted;
 	var parsed = new ilib.PhoneNumber("+82317105678", {locale:"en-US"});
-	var expected = "+82 31-710-5678";
+	var expected = "+82 31 710 5678";
 	
 	var fmt = new ilib.PhoneFmt({locale: "en-US", style: "default"});
 	formatted = fmt.format(parsed);
@@ -139,7 +139,7 @@ function testFormatUSInternationalAccessCode2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("011821045670923", {locale:"en-US"});
 			
-	var expected = "011 82 10-4567-0923";
+	var expected = "011 82 10 4567 0923";
 	
 	var fmt = new ilib.PhoneFmt({locale: "en-US", style: "default"});
 	formatted = fmt.format(parsed);

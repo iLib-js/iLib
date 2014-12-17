@@ -131,7 +131,7 @@ function testFormatKRMobileInternational() {
 		mobilePrefix: "16",
 		subscriberNumber: "12345678"
 	});
-	var expected = "+82 16-1234-5678";
+	var expected = "+82 16 1234 5678";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed);
@@ -1057,7 +1057,7 @@ function testFormatKRStyle2WithExtensionCharacter() {
 function testFormatKRStyle1WithExtensionCharacter2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber("35850950777;12345", {locale: "ko-KR"});
-	var expected = "35850950777;12345";
+	var expected = "3585-0950777;12345";
 	
 	var fmt = new ilib.PhoneFmt({locale: "ko-KR", style: "default"});
 	formatted = fmt.format(parsed, {partial: true});

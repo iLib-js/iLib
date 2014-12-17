@@ -5,19 +5,13 @@
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
         "emergency":        ["X", "XX", "XXX", "XXXX"],
         "mobilePrefix":     ["X ", "XX "],
-        "areaCode":         {
-                                "template":["X", "XX"],
-                                "suffix":"-"
-                            },
-        "serviceCode":      {
-                                "template":["X", "XX"],
-                                "suffix":"-"
-                            },
-        "subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
-        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
+        "areaCode":         ["X ", "XX "],
+        "serviceCode":      ["X", "XX"],
+        "subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
+        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX"]
     },
     "mobile": {
-        "iddPrefix":        ["X", "XX ", "XXX "],
+        "iddPrefix":        ["X", "XX", "XXX"],
         "countryCode":      ["X ", "XX ", "XXX "],
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
         "emergency":        ["X", "XX", "XXX", "XXXX"],
@@ -27,21 +21,18 @@
                                 "suffix":"-"
                             },
         "subscriberNumber": ["X", "XX", "XXX", "XXXX", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
-        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
+        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX"]
     }, 
     "internationalmobile": {
         "iddPrefix":        ["X", "XX ", "XXX "],
         "countryCode":      ["X ", "XX ", "XXX "],
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
-        "emergency":        ["X", "XX", "XXX", "XXXX"],
-        "mobilePrefix":     {
-                                "template":["X", "XX"],
-                                "suffix":"-"
-                            },
+        "emergency":        ["X", "XX", "XXX ", "XXXX "],
+        "mobilePrefix":     ["X ", "XX "],
         "areaCode":         ["X ", "XX "],
         "serviceCode":      ["X ", "XX ", "XXX ", "XXXX "],
-        "subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX"],
-        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
+        "subscriberNumber": ["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX"],
+        "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX"]
     },
     "default": {
         "example":           "033-1234-5678",
@@ -73,7 +64,7 @@
                                     "template":["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
                                     "suffix":"-"
                                 },
-            "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
+            "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"]
         },
         "whole": {
             "iddPrefix":        {
@@ -103,7 +94,7 @@
                                     "template":["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
                                     "suffix":"-"
                                 },
-            "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
+            "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"]
         }
     },
     "괄호": {
@@ -117,7 +108,7 @@
         "serviceCode":      ["X) ", "XX) "],
         "cic":              ["X) ", "XX) ", "XXX) ", "XXXX) "],
         "subscriberNumber": ["X", "XX", "XXX", "XXX-X", "XXX-XX", "XXX-XXX", "XXX-XXXX", "XXXX-XXXX", "XXXX-XXXXX", "XXXX-XXXXXX", "XXXX-XXXXXXX", "XXXX-XXXXXXXX", "XXXX-XXXXXXXXX", "XXXX-XXXXXXXXXX", "XXXX-XXXXXXXXXXX"],
-        "extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX"]
+        "extension":        ["-X", "-XX", "-XXX", "-XXXX", "-XXXXX", "-XXXXXX"]
     },
     "점": {
         "example":          "033.1234.5678",
@@ -148,7 +139,7 @@
                                 "template":["X", "XX", "XXX", "XXX.X", "XXX.XX", "XXX.XXX", "XXX.XXXX", "XXXX.XXXX", "XXXX.XXXXX", "XXXX.XXXXXX", "XXXX.XXXXXXX", "XXXX.XXXXXXXX", "XXXX.XXXXXXXXX", "XXXX.XXXXXXXXXX", "XXXX.XXXXXXXXXXX"],
                                 "suffix":"."
                             },                          
-        "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
+        "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"]
     },
     "공간": {
         "example":          "033 1234 5678",
@@ -164,6 +155,6 @@
                                 "template":["X", "XX", "XXX", "XXX X", "XXX XX", "XXX XXX", "XXX XXXX", "XXXX XXXX", "XXXX XXXXX", "XXXX XXXXXX", "XXXX XXXXXXX", "XXXX XXXXXXXX", "XXXX XXXXXXXXX", "XXXX XXXXXXXXXX", "XXXX XXXXXXXXXXX"],
                                 "suffix":" "
                             },                                  
-        "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX"]
+        "extension":        ["X", "XX", "XXX", "XXXX", "XXXXX", "XXXXXX"]
     }
 }
