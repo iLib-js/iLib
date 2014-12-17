@@ -17,7 +17,7 @@
         "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX"]
     },
     "mobile": {
-        "iddPrefix":        ["X", "XX", "XXX"],
+        "iddPrefix":        ["X", "XX ", "XXX "],
         "countryCode":      ["X ", "XX ", "XXX "],
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
         "emergency":        ["X", "XX", "XXX", "XXXX"],
@@ -33,7 +33,7 @@
         "iddPrefix":        ["X", "XX ", "XXX "],
         "countryCode":      ["X ", "XX ", "XXX "],
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
-        "emergency":        ["X", "XX", "XXX ", "XXXX "],
+        "emergency":        ["X", "XX", "XXX", "XXXX"],
         "mobilePrefix":     {
                                 "template":["X", "XX"],
                                 "suffix":"-"
