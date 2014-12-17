@@ -17,7 +17,151 @@
  * limitations under the License.
  */
 
-function testJSCollatorPhonebookQuatT_ko() {
+function testJSCollatorPriL_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가까나다따
+	assertTrue("가 < 까", col.compare("가", "까") < 0);
+	assertTrue("까 < 나", col.compare("까", "나") < 0);
+	assertTrue("나 < 다", col.compare("나", "다") < 0);
+	assertTrue("다 < 따", col.compare("다", "따") < 0);
+}
+
+function testJSCollatorPriV_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가개갸걔거
+	assertTrue("가 < 개", col.compare("가", "개") < 0);
+	assertTrue("개 < 갸", col.compare("개", "갸") < 0);
+	assertTrue("갸 < 걔", col.compare("갸", "걔") < 0);
+	assertTrue("걔 < 거", col.compare("걔", "거") < 0);
+}
+
+function testJSCollatorPriT_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가각갂갃간
+	assertTrue("가 < 각", col.compare("가", "각") < 0);
+	assertTrue("각 < 갂", col.compare("각", "갂") < 0);
+	assertTrue("갂 < 갃", col.compare("갂", "갃") < 0);
+	assertTrue("갃 < 간", col.compare("갃", "간") < 0);
+}
+
+function testJSCollatorSecL_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "secondary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가까나다따
+	assertTrue("가 < 까", col.compare("가", "까") < 0);
+	assertTrue("까 < 나", col.compare("까", "나") < 0);
+	assertTrue("나 < 다", col.compare("나", "다") < 0);
+	assertTrue("다 < 따", col.compare("다", "따") < 0);
+}
+
+function testJSCollatorSecV_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "secondary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가개갸걔거
+	assertTrue("가 < 개", col.compare("가", "개") < 0);
+	assertTrue("개 < 갸", col.compare("개", "갸") < 0);
+	assertTrue("갸 < 걔", col.compare("갸", "걔") < 0);
+	assertTrue("걔 < 거", col.compare("걔", "거") < 0);
+}
+
+function testJSCollatorSecT_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "secondary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가각갂갃간
+	assertTrue("가 < 각", col.compare("가", "각") < 0);
+	assertTrue("각 < 갂", col.compare("각", "갂") < 0);
+	assertTrue("갂 < 갃", col.compare("갂", "갃") < 0);
+	assertTrue("갃 < 간", col.compare("갃", "간") < 0);
+}
+
+function testJSCollatorTerL_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "tertiary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가까나다따
+	assertTrue("가 < 까", col.compare("가", "까") < 0);
+	assertTrue("까 < 나", col.compare("까", "나") < 0);
+	assertTrue("나 < 다", col.compare("나", "다") < 0);
+	assertTrue("다 < 따", col.compare("다", "따") < 0);
+}
+
+function testJSCollatorTerV_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "tertiary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가개갸걔거
+	assertTrue("가 < 개", col.compare("가", "개") < 0);
+	assertTrue("개 < 갸", col.compare("개", "갸") < 0);
+	assertTrue("갸 < 걔", col.compare("갸", "걔") < 0);
+	assertTrue("걔 < 거", col.compare("걔", "거") < 0);
+}
+
+function testJSCollatorTerT_ko() {
+	var col = new ilib.Collator({
+		locale: "ko-KR",
+		useNative: false,
+		sensitivity: "tertiary"
+	});
+
+	assertNotUndefined(col);
+
+	// 가각갂갃간
+	assertTrue("가 < 각", col.compare("가", "각") < 0);
+	assertTrue("각 < 갂", col.compare("각", "갂") < 0);
+	assertTrue("갂 < 갃", col.compare("갂", "갃") < 0);
+	assertTrue("갃 < 간", col.compare("갃", "간") < 0);
+}
+
+function testJSCollatorQuatL_ko() {
 	var col = new ilib.Collator({
 		locale: "ko-KR",
 		useNative: false,
@@ -26,202 +170,87 @@ function testJSCollatorPhonebookQuatT_ko() {
 
 	assertNotUndefined(col);
 
-	// 가각갂갃간갅갆갇가
-	assertTrue("가 < 각",  col.compare("가", "각") < 0);
-	assertTrue("각 < 갂",  col.compare("각", "갂") < 0);
-	assertTrue("갂 < 갃", col.compare("갃", "갃") < 0);
-	assertTrue("갃 < 간",  col.compare("갃", "간") < 0);
+	// 가까나다따
+	assertTrue("가 < 까", col.compare("가", "까") < 0);
+	assertTrue("까 < 나", col.compare("까", "나") < 0);
+	assertTrue("나 < 다", col.compare("나", "다") < 0);
+	assertTrue("다 < 따", col.compare("다", "따") < 0);
 }
 
-function testJSCollatorPhonebookQuatOE_ko() {
+function testJSCollatorQuatV_ko() {
 	var col = new ilib.Collator({
-		locale: "de-DE",
+		locale: "ko-KR",
 		useNative: false,
-		sensitivity: "quaternary",
-		style: "phonebook"
+		sensitivity: "quaternary"
 	});
 
 	assertNotUndefined(col);
 
-	// oa oe öa öz of
-	assertTrue("oa < oe",  col.compare("oa", "oe") < 0);
-	assertTrue("oe < öa",  col.compare("oe", "öa") < 0);
-	assertTrue("öa < öz", col.compare("öa", "öz") < 0);
-	assertTrue("öz < of",  col.compare("öz", "of") < 0);
+	// 가개갸걔거
+	assertTrue("가 < 개", col.compare("가", "개") < 0);
+	assertTrue("개 < 갸", col.compare("개", "갸") < 0);
+	assertTrue("갸 < 걔", col.compare("갸", "걔") < 0);
+	assertTrue("걔 < 거", col.compare("걔", "거") < 0);
 }
 
-function testJSCollatorPhonebookQuatAE_ko() {
+function testJSCollatorQuatT_ko() {
 	var col = new ilib.Collator({
-		locale: "de-DE",
+		locale: "ko-KR",
 		useNative: false,
-		sensitivity: "quaternary",
-		style: "phonebook"
+		sensitivity: "quaternary"
 	});
 
 	assertNotUndefined(col);
 
-	// aa ae äa äz af
-	assertTrue("aa < ae",  col.compare("aa", "ae") < 0);
-	assertTrue("ae < äa",  col.compare("ae", "äa") < 0);
-	assertTrue("äa < äz", col.compare("äa", "äz") < 0);
-	assertTrue("äz < af",  col.compare("äz", "af") < 0);
+	// 가각갂갃간
+	assertTrue("가 < 각", col.compare("가", "각") < 0);
+	assertTrue("각 < 갂", col.compare("각", "갂") < 0);
+	assertTrue("갂 < 갃", col.compare("갂", "갃") < 0);
+	assertTrue("갃 < 간", col.compare("갃", "간") < 0);
 }
 
-// differences in umlauted characters should be primary differences
 
-function testJSCollatorPhonebookPrimaryAE_ko() {
+function testCollatorPri_ko() {
 	var col = new ilib.Collator({
-		locale: "de-DE",
+		locale: "ko-KR",
 		useNative: false,
 		sensitivity: "primary",
-		style: "phonebook"
-	});
-
-	assertNotUndefined(col);
-
-	// aa ae äa äz af
-	assertTrue("aa < ae",  col.compare("aa", "ae") < 0);
-	assertTrue("ae < äa",  col.compare("ae", "äa") < 0);
-	assertTrue("äa < äz", col.compare("äa", "äz") < 0);
-	assertTrue("äz < af",  col.compare("äz", "af") < 0);
-}
-
-function testJSCollatorPhonebookPrimaryOE_ko() {
-	var col = new ilib.Collator({
-		locale: "de-DE",
-		useNative: false,
-		sensitivity: "primary",
-		style: "phonebook",
-		usage: "search"
-	});
-
-	assertNotUndefined(col);
-
-	// oa oe öa öz of
-	assertTrue("oa < oe",  col.compare("oa", "oe") < 0);
-	assertTrue("oe < öa",  col.compare("oe", "öa") < 0);
-	assertTrue("öa < öz", col.compare("öa", "öz") < 0);
-	assertTrue("öz < of",  col.compare("öz", "of") < 0);
-}
-
-function testJSCollatorPhonebookPrimaryUE_ko() {
-	var col = new ilib.Collator({
-		locale: "de-DE",
-		useNative: false,
-		sensitivity: "primary",
-		style: "phonebook",
-		usage: "search"
-	});
-
-	assertNotUndefined(col);
-
-	// ua ue üa üz uf
-	assertTrue("ua < ue",  col.compare("ua", "ue") < 0);
-	assertTrue("ue < üa",  col.compare("ue", "üa") < 0);
-	assertTrue("üa < üz", col.compare("üa", "üz") < 0);
-	assertTrue("üz < uf",  col.compare("üz", "uf") < 0);
-}
-
-function testCollatorNativedeDECase() {
-	var col = new ilib.Collator({
-		locale: "de-DE",
-		useNative: false,
-		sensitivity: "case",
-		usage: "sort",
-		style: "phonebook"
+		usage: "sort"
 	});
     assertNotUndefined(col);
 
     var input = [
-        "Flüße",
-        "Montags",
-		"Sonntag",
-		"Flüsse",
-		"fuße",
-		"flüße",
-		"Montag",
-		"Dienstag",
-		"Januar",
-		"Februar",
-		"März",
-		"Fuße",
-		"Flusse",
-		"flusse",
-		"flüsse",
-		"Fluße",
-		"Fuß"
+         "성항동",
+		"한명숙",
+		"김유리",
+		"최순길",
+		"한덕수",
+		"손형호",
+		"정홍원",
+		"김황식",
+		"정운찬",
+		"한승수",
+		"이해찬",
+		"고건",
+		"김석수"
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-		"Dienstag",
-		"Februar",
-		"Flüsse",
-		"Flüße",
-		"Flusse",
-		"Fluße",
-		"Fuß",
-		"Fuße",
-		"flüsse",
-		"flüße",
-		"flusse",
-		"fuße",
-		"Januar",
-		"März",
-		"Montag",
-		"Montags",
-		"Sonntag"	                    
-	];
-
-    assertArrayEquals(expected, input);
-}
-
-function testCollatorNativedeDEVariant() {
-	var col = new ilib.Collator({
-		locale: "de-DE",
-		useNative: false,
-		sensitivity: "variant",
-		upperFirst: true,
-		usage: "sort",
-		style: "phonebook"
-	});
-    assertNotUndefined(col);
-
-    var input = [
-		"Sonntag",
-		"Montags",
-		"Dienstag",
-		"Januar",
-		"Februar",
-		"März",
-		"Fuße",
-		"Fluße",
-		"Flusse",
-		"flusse",
-		"Montag",
-		"fluße",
-		"flüße",
-		"flüsse"
-	];
-
-    input.sort(col.getComparator());
-
-    var expected = [
-		"Dienstag",
-		"Februar",
-		"Flusse",
-		"Fluße",
-		"Fuße",
-		"flüsse",
-		"flüße",
-		"flusse",
-		"fluße",
-		"Januar",
-		"März",
-		"Montag",
-		"Montags",
-		"Sonntag"	                    
+		"고건",
+		"김석수",
+		"김유리",
+		"김황식",
+		"성항동",
+		"손형호",
+		"이해찬",
+		"정운찬",
+		"정홍원",
+		"최순길",
+		"한덕수",
+		"한명숙",
+		"한승수"                    
 	];
 
     assertArrayEquals(expected, input);
