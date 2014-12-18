@@ -11,7 +11,7 @@
         "extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX"]
     },
     "mobile": {
-        "iddPrefix":        ["X", "XX", "XXX"],
+        "iddPrefix":        ["X", "XX ", "XXX "],
         "countryCode":      ["X ", "XX ", "XXX "],
         "cic":              ["X", "XX", "XXX", "XXXX ", "XXXXX "],
         "emergency":        ["X", "XX", "XXX", "XXXX"],
