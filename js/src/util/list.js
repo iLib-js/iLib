@@ -140,18 +140,20 @@ ilib.List.prototype = {
 	 * @protected
 	 */
 	_find: function(obj) {
-		var element = this.firstElement;
-		while (element) {
-			if (this._compare(element.value, obj)) {
-				return element;
+		if (typeof(obj) !== 'undefined') {
+			var element = this.firstElement;
+			while (element) {
+				if (this._compare(element.value, obj)) {
+					return element;
+				}
+				element = element.next;
 			}
-			element = element.next;
 		}
 		return undefined;
 	},
 	
 	/**
-	 * Find the given element in the list. If it is there, this
+	 * Tell whether or not the given element is in the list. If it is there, this
 	 * method returns true, otherwise it returns false.
 	 * 
 	 * @param {*} obj object to find
@@ -159,6 +161,17 @@ ilib.List.prototype = {
 	 */
 	contains: function(obj) {
 		return !!this._find(obj);
+	},
+	
+	/**
+	 * Find the given element in the list.
+	 * 
+	 * @param {*} obj object to find
+	 * @return {*|undefined} object if the object is in the list or undefined otherwise
+	 */
+	find: function(obj) {
+		var element = this._find(obj); 
+		return element && element.value;
 	},
 	
 	/**

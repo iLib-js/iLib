@@ -89,12 +89,14 @@ ilib.ArrayList.prototype.addLast = function(obj) {
  * @protected
  */
 ilib.ArrayList.prototype._find = function(obj) {
-	var i = 0;
-	while (i < this.elements.length) {
-		if (this.compare(this.elements[i], obj)) {
-			return i;
+	if (typeof(obj) !== 'undefined') {
+		var i = 0;
+		while (i < this.elements.length) {
+			if (this.compare(this.elements[i], obj)) {
+				return i;
+			}
+			i++;
 		}
-		i++;
 	}
 	return -1;
 };
@@ -104,6 +106,14 @@ ilib.ArrayList.prototype._find = function(obj) {
  */
 ilib.ArrayList.prototype.contains = function(obj) {
 	return this._find(obj) >= 0;
+};
+
+/**
+ * @inheritDoc
+ */
+ilib.ArrayList.prototype.find = function(obj) {
+	var element = this._find(obj);
+	return element >= 0 ? this.elements[element] : undefined;
 };
 
 /**

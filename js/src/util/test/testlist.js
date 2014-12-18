@@ -1065,3 +1065,111 @@ function testListInsertAfterWithComparatorRightContents() {
 	assertUndefined(it.next());
 
 }
+
+function testListFind() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.List({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	var element = ll.find({key: "d"});
+	assertNotUndefined(element);
+}
+
+function testListFindRightContent() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.List({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	var element = ll.find({key: "d"});
+	assertNotUndefined(element);
+	
+	assertEquals("4", element.value);
+}
+
+function testListFindNotThere() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.List({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	var element = ll.find({key: "x"});
+	assertUndefined(element);
+}
+
+function testListFindEmpty() {
+    var ll = new ilib.List({
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(0, ll.length());
+	
+	var element = ll.find({key: "x"});
+	assertUndefined(element);
+}
+
+function testListFindEmpty() {
+    var arr = [
+       {key: "a", value: "1"},
+       {key: "b", value: "2"},
+       {key: "c", value: "3"},
+       {key: "d", value: "4"},
+       {key: "e", value: "5"},
+    ];
+    
+    var ll = new ilib.List({
+    	init: arr,
+    	comparator: function(left, right) {
+    		return left.key === right.key;
+    	}
+    });
+	assertNotUndefined(ll);
+	
+	assertEquals(5, ll.length());
+	
+	var element = ll.find();
+	assertUndefined(element);
+}
