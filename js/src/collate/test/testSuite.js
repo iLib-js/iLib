@@ -35,6 +35,7 @@ function suite() {
 		"testcollation.js",
 		"testcollation_lt.js",
 		"testcollation_lv.js",
+		"testcollation_general.js",
 		"testcollation_ko.js"
 	];
 
