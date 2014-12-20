@@ -441,7 +441,10 @@ ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
  * @returns {number} the major solar term for the RD
  */
 ilib.Date.HanDate._majorSTOnOrAfter = function(rd) {
-	return ilib.Date.HanDate._hanNextSolarLongitude(rd, 30);
+	var tz = ilib.Date.HanDate._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var next = ilib.Date._fixangle(30 * Math.ceil(ilib.Date._solarLongitude(uni + ilib.Date.RataDie.gregorianEpoch)/30));
+	return ilib.Date.HanDate._hanNextSolarLongitude(rd, next);
 };
 
 /**

@@ -1942,7 +1942,7 @@ ilib.Date._nextSolarLongitude = function(jd, longitude) {
 	var start = Math.max(jd, tau - 5.0);
 	var end = tau + 5.0;
 	
-	return ilib.bisectionSearch(0, start, end, 1e-5, function (l) {
+	return ilib.bisectionSearch(0, start, end, 1e-6, function (l) {
 		return 180 - ilib.Date._fixangle(ilib.Date._solarLongitude(l) - longitude);
 	});
 };

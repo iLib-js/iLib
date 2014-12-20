@@ -111,7 +111,7 @@ ilib.Cal.Han.prototype.equivalentCycleYear = function(year) {
 ilib.Cal.Han.prototype.isLeapYear = function(year, cycle) {
 	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
 	var gregyear = elapsedYear - 2697;
-	var rd = new ilib.Date.GregRataDie({
+	var rd1 = new ilib.Date.GregRataDie({
 		year: gregyear-1, 
 		month: 12, 
 		day: 15, 
@@ -120,10 +120,19 @@ ilib.Cal.Han.prototype.isLeapYear = function(year, cycle) {
 		second: 0, 
 		millisecond: 0
 	});
-	var solstice1 = ilib.Date.HanDate._hanNextSolarLongitude(rd.getRataDie(), 270); // 270 is the winter solstice
-	var solstice2 = ilib.Date.HanDate._hanNextSolarLongitude(rd.getRataDie() + 365, 270); // 270 is the winter solstice
-	var m1 = ilib.Date.HanDate._newMoonOnOrAfter(solstice1);
-	var m2 = ilib.Date.HanDate._newMoonBefore(solstice2);
+	var rd2 = new ilib.Date.GregRataDie({
+		year: gregyear, 
+		month: 12, 
+		day: 15, 
+		hour: 0, 
+		minute: 0, 
+		second: 0, 
+		millisecond: 0
+	});
+	var solstice1 = ilib.Date.HanDate._majorSTOnOrAfter(rd1.getRataDie());
+	var solstice2 = ilib.Date.HanDate._majorSTOnOrAfter(rd2.getRataDie());
+	var m1 = ilib.Date.HanDate._newMoonOnOrAfter(solstice1+1);
+	var m2 = ilib.Date.HanDate._newMoonBefore(solstice2+1);
 	return Math.round((m2 - m1) / 29.530588853000001) === 12;
 };
 
