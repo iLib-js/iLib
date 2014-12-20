@@ -23,7 +23,7 @@ function testCollatorConstructorNative_fo() {
 	assertNotUndefined(col);
 }
 
-function testCollatorDefaultNativeLowerPrimary_fo() {
+function testCollatorDefaultLowerPrimary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -62,7 +62,7 @@ function testCollatorDefaultNativeLowerPrimary_fo() {
 	assertTrue("æ < ø", col.compare("æ", "ø") < 0);
 }
 
-function testCollatorDefaultNativeUpperPrimary_fo() {
+function testCollatorDefaultUpperPrimary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -101,7 +101,7 @@ function testCollatorDefaultNativeUpperPrimary_fo() {
 	assertTrue("Æ < Ø", col.compare("Æ", "Ø") < 0);
 }
 
-function testCollatorDefaultNativeLowerSecondary_fo() {
+function testCollatorDefaultLowerSecondary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -136,7 +136,7 @@ function testCollatorDefaultNativeLowerSecondary_fo() {
 	assertTrue("æ < ø", col.compare("æ", "ø") < 0);
 }
 
-function testCollatorDefaultNativeCaseSecondary_fo() {
+function testCollatorDefaultCaseSecondary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -162,7 +162,7 @@ function testCollatorDefaultNativeCaseSecondary_fo() {
 	assertTrue("ø = Ø", col.compare("ø", "Ø") === 0);
 }
 
-function testCollatorDefaultNativeVariantsSecondary_fo() {
+function testCollatorDefaultVariantsSecondary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -189,7 +189,7 @@ function testCollatorDefaultNativeVariantsSecondary_fo() {
 	assertTrue("Ý = Ý", col.compare("Ý", "Ý") === 0);
 }
 
-function testCollatorDefaultNativeUpperSecondary_fo() {
+function testCollatorDefaultUpperSecondary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -224,7 +224,7 @@ function testCollatorDefaultNativeUpperSecondary_fo() {
 	assertTrue("Æ < Ø", col.compare("Æ", "Ø") < 0);
 }
 
-function testCollatorDefaultNativeLowerTertiary_fo() {
+function testCollatorDefaultLowerTertiary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -262,7 +262,7 @@ function testCollatorDefaultNativeLowerTertiary_fo() {
 	assertTrue("Ø < ø", col.compare("Ø", "ø") < 0);
 }
 
-function testCollatorDefaultNativeVariantsTertiary_fo() {
+function testCollatorDefaultVariantsTertiary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -289,7 +289,7 @@ function testCollatorDefaultNativeVariantsTertiary_fo() {
 	assertTrue("Ý = Ý", col.compare("Ý", "Ý") === 0);
 }
 
-function testCollatorDefaultNativeUpperTertiary_fo() {
+function testCollatorDefaultUpperTertiary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -324,7 +324,7 @@ function testCollatorDefaultNativeUpperTertiary_fo() {
 	assertTrue("Æ < Ø", col.compare("Æ", "Ø") < 0);
 }
 
-function testCollatorDefaultNativeLowerQuaternary_fo() {
+function testCollatorDefaultLowerQuaternary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -362,7 +362,7 @@ function testCollatorDefaultNativeLowerQuaternary_fo() {
 	assertTrue("Ø < ø", col.compare("Ø", "ø") < 0);
 }
 
-function testCollatorDefaultNativeVariantsQuaternary_fo() {
+function testCollatorDefaultVariantsQuaternary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -389,7 +389,7 @@ function testCollatorDefaultNativeVariantsQuaternary_fo() {
 	assertTrue("Ý < Ý", col.compare("Ý", "Ý") < 0);
 }
 
-function testCollatorDefaultNativeUpperQuaternary_fo() {
+function testCollatorDefaultUpperQuaternary_fo() {
 	var col = new ilib.Collator({
 		locale: "fo-FO",
 		usage: "search",
@@ -488,7 +488,7 @@ function testJSCollatorNumeric_fo() {
 
 	assertNotUndefined(col);
 
-	// period is the thousands separtor and comma is the decimal separator
+	// period is the thousands separator and comma is the decimal separator
 	assertEquals(0, col.compare("0.012.123,4", "12.123,4"));
 	assertTrue(col.compare("00123,4", "123") > 0);
 	assertTrue(col.compare("00123,4", "124") < 0);
