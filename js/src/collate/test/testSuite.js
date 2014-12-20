@@ -36,7 +36,8 @@ function suite() {
 		"testcollation_lt.js",
 		"testcollation_lv.js",
 		"testcollation_general.js",
-		"testcollation_ko.js"
+		"testcollation_ko.js",
+		"testcollation_fo.js"
 	];
 
     suites.forEach(function (path) {
