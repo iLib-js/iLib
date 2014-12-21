@@ -1,5 +1,5 @@
 /*
- * testcollation_nb.js - test the Collator object in Norwegian bokmal
+ * testcollation_no.js - test the Collator object in Norwegian
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -17,15 +17,15 @@
  * limitations under the License.
  */
 
-function testCollatorConstructorNative_nb() {
-	var col = new ilib.Collator({useNative: false, locale: "nb-NO"});
+function testCollatorConstructorNative_no() {
+	var col = new ilib.Collator({useNative: false, locale: "no-NO"});
 
 	assertNotUndefined(col);
 }
 
-function testCollatorDefaultLowerPrimary_nb() {
+function testCollatorDefaultLowerPrimary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -45,9 +45,9 @@ function testCollatorDefaultLowerPrimary_nb() {
 	assertTrue("ø < å", col.compare("ø", "å") < 0);
 }
 
-function testCollatorDefaultLowerAccentsPrimary_nb() {
+function testCollatorDefaultLowerAccentsPrimary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -72,9 +72,9 @@ function testCollatorDefaultLowerAccentsPrimary_nb() {
 	assertTrue("å = aa", col.compare("å", "aa") === 0);
 }
 
-function testCollatorDefaultUpperPrimary_nb() {
+function testCollatorDefaultUpperPrimary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -94,9 +94,9 @@ function testCollatorDefaultUpperPrimary_nb() {
 	assertTrue("Ø < Å", col.compare("Æ", "Å") < 0);
 }
 
-function testCollatorDefaultUpperAccentsPrimary_nb() {
+function testCollatorDefaultUpperAccentsPrimary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -124,9 +124,9 @@ function testCollatorDefaultUpperAccentsPrimary_nb() {
 	assertTrue("aA = aa", col.compare("aA", "aa") === 0);
 }
 
-function testCollatorDefaultLowerSecondary_nb() {
+function testCollatorDefaultLowerSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -146,9 +146,9 @@ function testCollatorDefaultLowerSecondary_nb() {
 	assertTrue("ø < å", col.compare("ø", "å") < 0);
 }
 
-function testCollatorDefaultLowerAccentsSecondary_nb() {
+function testCollatorDefaultLowerAccentsSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -173,9 +173,9 @@ function testCollatorDefaultLowerAccentsSecondary_nb() {
 	assertTrue("å = aa", col.compare("å", "aa") === 0);
 }
 
-function testCollatorDefaultCaseSecondary_nb() {
+function testCollatorDefaultCaseSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -191,9 +191,9 @@ function testCollatorDefaultCaseSecondary_nb() {
 	assertTrue("Å = å", col.compare("Å", "å") === 0);
 }
 
-function testCollatorDefaultVariantsSecondary_nb() {
+function testCollatorDefaultVariantsSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -206,9 +206,9 @@ function testCollatorDefaultVariantsSecondary_nb() {
 	assertTrue("å = å", col.compare("å", "å") === 0);
 }
 
-function testCollatorDefaultUpperSecondary_nb() {
+function testCollatorDefaultUpperSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -228,9 +228,9 @@ function testCollatorDefaultUpperSecondary_nb() {
 	assertTrue("Ø < Å", col.compare("Æ", "Å") < 0);
 }
 
-function testCollatorDefaultUpperAccentsSecondary_nb() {
+function testCollatorDefaultUpperAccentsSecondary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -258,9 +258,9 @@ function testCollatorDefaultUpperAccentsSecondary_nb() {
 	assertTrue("aA = aa", col.compare("aA", "aa") === 0);
 }
 
-function testCollatorDefaultLowerTertiary_nb() {
+function testCollatorDefaultLowerTertiary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -285,9 +285,9 @@ function testCollatorDefaultLowerTertiary_nb() {
 
 }
 
-function testCollatorDefaultLowerAccentsTertiary_nb() {
+function testCollatorDefaultLowerAccentsTertiary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -312,9 +312,9 @@ function testCollatorDefaultLowerAccentsTertiary_nb() {
 	assertTrue("å < aa", col.compare("å", "aa") < 0);
 }
 
-function testCollatorDefaultVariantsTertiary_nb() {
+function testCollatorDefaultVariantsTertiary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -327,9 +327,9 @@ function testCollatorDefaultVariantsTertiary_nb() {
 	assertTrue("å = å", col.compare("å", "å") === 0);
 }
 
-function testCollatorDefaultUpperTertiary_nb() {
+function testCollatorDefaultUpperTertiary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -348,9 +348,9 @@ function testCollatorDefaultUpperTertiary_nb() {
 	assertTrue("Ø < Å", col.compare("Æ", "Å") < 0);
 }
 
-function testCollatorDefaultUpperAccentsTertiary_nb() {
+function testCollatorDefaultUpperAccentsTertiary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -378,9 +378,9 @@ function testCollatorDefaultUpperAccentsTertiary_nb() {
 	assertTrue("aA < aa", col.compare("aA", "aa") < 0);
 }
 
-function testCollatorDefaultLowerQuaternary_nb() {
+function testCollatorDefaultLowerQuaternary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -404,9 +404,9 @@ function testCollatorDefaultLowerQuaternary_nb() {
 	assertTrue("Å < å", col.compare("Å", "å") < 0);
 }
 
-function testCollatorDefaultLowerAccentsQuaternary_nb() {
+function testCollatorDefaultLowerAccentsQuaternary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -431,9 +431,9 @@ function testCollatorDefaultLowerAccentsQuaternary_nb() {
 	assertTrue("å < aa", col.compare("å", "aa") < 0);
 }
 
-function testCollatorDefaultVariantsQuaternary_nb() {
+function testCollatorDefaultVariantsQuaternary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -446,9 +446,9 @@ function testCollatorDefaultVariantsQuaternary_nb() {
 	assertTrue("å < å", col.compare("å", "å") < 0);
 }
 
-function testCollatorDefaultUpperQuaternary_nb() {
+function testCollatorDefaultUpperQuaternary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -465,9 +465,9 @@ function testCollatorDefaultUpperQuaternary_nb() {
 	assertTrue("Ø < Å", col.compare("Æ", "Å") < 0);
 }
 
-function testCollatorDefaultUpperAccentsQuaternary_nb() {
+function testCollatorDefaultUpperAccentsQuaternary_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -495,9 +495,9 @@ function testCollatorDefaultUpperAccentsQuaternary_nb() {
 	assertTrue("aA < aa", col.compare("aA", "aa") < 0);
 }
 
-function testCollatorGetSortKeySimpleUpper_nb() {
+function testCollatorGetSortKeySimpleUpper_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		useNative: false
 	});
 
@@ -505,9 +505,9 @@ function testCollatorGetSortKeySimpleUpper_nb() {
 
 	assertEquals("000080100d00d80e00", col.sortKey("ABCÆØÅ"));
 }
-function testCollatorGetSortKeySimpleLower_nb() {
+function testCollatorGetSortKeySimpleLower_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		useNative: false
 	});
 
@@ -517,9 +517,9 @@ function testCollatorGetSortKeySimpleLower_nb() {
 }
 
 
-function testCollatorWithSort_nb() {
+function testCollatorWithSort_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		useNative: false,
 		usage: "sort"
 	});
@@ -539,18 +539,18 @@ function testCollatorWithSort_nb() {
 }
 
 
-function testCollatorGetAvailableScripts_nb() {
+function testCollatorGetAvailableScripts_no() {
 	assertArrayEquals(["Latn"], ilib.Collator.getAvailableScripts());
 }
 
-function testCollatorGetAvailableStyles_nb() {
+function testCollatorGetAvailableStyles_no() {
 	assertArrayEquals(["standard"], ilib.Collator.getAvailableStyles());
 }
 
 
-function testJSCollatorNumeric_nb() {
+function testJSCollatorNumeric_no() {
 	var col = new ilib.Collator({
-		locale: "nb-NO",
+		locale: "no-NO",
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
