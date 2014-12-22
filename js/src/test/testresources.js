@@ -1473,5 +1473,4 @@ function testResBundlePsuedo_psAF() {
 	locale:'ps-AF'
     });
     assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
-    //assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
 }
