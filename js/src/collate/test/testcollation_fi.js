@@ -1,5 +1,5 @@
 /*
- * testcollation_sv.js - test the Collator object in Swedish
+ * testcollation_fi.js - test the Collator object in Finnish
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -17,15 +17,15 @@
  * limitations under the License.
  */
 
-function testCollatorConstructorNative_sv() {
-	var col = new ilib.Collator({useNative: false, locale: "sv-SE"});
+function testCollatorConstructorNative_fi() {
+	var col = new ilib.Collator({useNative: false, locale: "fi-FI"});
 
 	assertNotUndefined(col);
 }
 
-function testCollatorDefaultLowerPrimary_sv() {
+function testCollatorDefaultLowerPrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -33,7 +33,7 @@ function testCollatorDefaultLowerPrimary_sv() {
 
 	assertNotUndefined(col);
 
-	// The Swedish alphabet also has some extra letters, namely Å and Ä and Ö which appear
+	// The Finnish alphabet also has some extra letters, namely Å and Ä and Ö which appear
 	// at the end of the alphabet as separate letters. 
 	// a b c d e f g h i j k l m n o p q r s t u v w x y z å ä ö
 	assertTrue("a < b", col.compare("a", "b") < 0);
@@ -45,9 +45,9 @@ function testCollatorDefaultLowerPrimary_sv() {
 	assertTrue("ä < ö", col.compare("ä", "ö") < 0);
 }
 
-function testCollatorDefaultLowerAccentsPrimary_sv() {
+function testCollatorDefaultLowerAccentsPrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -59,19 +59,25 @@ function testCollatorDefaultLowerAccentsPrimary_sv() {
 	assertTrue("d = đ", col.compare("d", "đ") === 0);
 	assertTrue("đ = ð", col.compare("đ", "ð") === 0);
 	assertTrue("v = w", col.compare("v", "w") === 0);
+	
 	assertTrue("y = ü", col.compare("y", "ü") === 0);
 	assertTrue("ü = ű", col.compare("ü", "ű") === 0);
 	assertTrue("ä = æ", col.compare("ä", "æ") === 0);
-	assertTrue("æ = ę", col.compare("æ", "ę") === 0);
 	assertTrue("ö = ø", col.compare("ö", "ø") === 0);
-	assertTrue("ø = ő", col.compare("ø", "ő") === 0);
-	assertTrue("ő = œ", col.compare("ő", "œ") === 0);
-	assertTrue("œ = ô", col.compare("œ", "ô") === 0);
+	
+	assertTrue("n̵ = ŋ", col.compare("n̵", "ŋ") === 0);
+	assertTrue("g̵ = ǥ", col.compare("g̵", "ǥ") === 0);
+	assertTrue("t̵ = ŧ", col.compare("t̵", "ŧ") === 0);
+	assertTrue("z̵ = ʒ", col.compare("z̵", "ʒ") === 0);
+	
+	assertTrue("tg < Þ", col.compare("tg", "Þ") < 0);
+	assertTrue("th = Þ", col.compare("th", "Þ") === 0);
+	assertTrue("Þ < ti", col.compare("Þ", "ti") < 0);
 }
 
-function testCollatorDefaultCasePrimary_sv() {
+function testCollatorDefaultCasePrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -87,9 +93,9 @@ function testCollatorDefaultCasePrimary_sv() {
 	assertTrue("Ö = ö", col.compare("Ö", "ö") === 0);
 }
 
-function testCollatorDefaultVariantsPrimary_sv() {
+function testCollatorDefaultVariantsPrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -106,9 +112,9 @@ function testCollatorDefaultVariantsPrimary_sv() {
 	assertTrue("ö = ö", col.compare("ö", "ö") === 0);
 }
 
-function testCollatorDefaultUpperPrimary_sv() {
+function testCollatorDefaultUpperPrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -116,7 +122,7 @@ function testCollatorDefaultUpperPrimary_sv() {
 
 	assertNotUndefined(col);
 
-	// The Swedish alphabet also has some extra letters, namely Å and Ä and Ö which appear
+	// The Finnish alphabet also has some extra letters, namely Å and Ä and Ö which appear
 	// at the end of the alphabet as separate letters. 
 	// A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Å Ä Ö
 	assertTrue("A < B", col.compare("A", "B") < 0);
@@ -128,9 +134,9 @@ function testCollatorDefaultUpperPrimary_sv() {
 	assertTrue("Ä < Ö", col.compare("Ä", "Ö") < 0);
 }
 
-function testCollatorDefaultUpperAccentsPrimary_sv() {
+function testCollatorDefaultUpperAccentsPrimary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "primary"
@@ -142,19 +148,25 @@ function testCollatorDefaultUpperAccentsPrimary_sv() {
 	assertTrue("D = Đ", col.compare("D", "Đ") === 0);
 	assertTrue("Đ = Ð", col.compare("Đ", "Ð") === 0);
 	assertTrue("V = W", col.compare("V", "W") === 0);
+	
 	assertTrue("Y = Ü", col.compare("Y", "Ü") === 0);
 	assertTrue("Ü = Ű", col.compare("Ü", "Ű") === 0);
 	assertTrue("Ä = Æ", col.compare("Ä", "Æ") === 0);
-	assertTrue("Æ = Ę", col.compare("Æ", "Ę") === 0);
 	assertTrue("Ö = Ø", col.compare("Ö", "Ø") === 0);
-	assertTrue("Ø = Ő", col.compare("Ø", "Ő") === 0);
-	assertTrue("Ő = œ", col.compare("Ő", "Œ") === 0);
-	assertTrue("Œ = Ô", col.compare("œ", "Ô") === 0);
+	
+	assertTrue("N̵ = Ŋ", col.compare("N̵", "Ŋ") === 0);
+	assertTrue("G̵ = Ǥ", col.compare("G̵", "Ǥ") === 0);
+	assertTrue("T̵ = Ŧ", col.compare("T̵", "Ŧ") === 0);
+	assertTrue("Z̵ = Ʒ", col.compare("Z̵", "Ʒ") === 0);
+
+	assertTrue("TG < Þ", col.compare("TG", "Þ") < 0);
+	assertTrue("TH = Þ", col.compare("TH", "Þ") === 0);
+	assertTrue("Þ < TI", col.compare("Þ", "TI") < 0);
 }
 
-function testCollatorDefaultLowerSecondary_sv() {
+function testCollatorDefaultLowerSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -174,9 +186,9 @@ function testCollatorDefaultLowerSecondary_sv() {
 	assertTrue("ä < ö", col.compare("ä", "ö") < 0);
 }
 
-function testCollatorDefaultLowerAccentsSecondary_sv() {
+function testCollatorDefaultLowerAccentsSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -188,19 +200,24 @@ function testCollatorDefaultLowerAccentsSecondary_sv() {
 	assertTrue("d < đ", col.compare("d", "đ") < 0);
 	assertTrue("đ < ð", col.compare("đ", "ð") < 0);
 	assertTrue("v < w", col.compare("v", "w") < 0);
+	
 	assertTrue("y < ü", col.compare("y", "ü") < 0);
 	assertTrue("ü < ű", col.compare("ü", "ű") < 0);
 	assertTrue("ä < æ", col.compare("ä", "æ") < 0);
-	assertTrue("æ < ę", col.compare("æ", "ę") < 0);
 	assertTrue("ö < ø", col.compare("ö", "ø") < 0);
-	assertTrue("ø < ő", col.compare("ø", "ő") < 0);
-	assertTrue("ő < œ", col.compare("ő", "œ") < 0);
-	assertTrue("œ < ô", col.compare("œ", "ô") < 0);
+	
+	assertTrue("n̵ < ŋ", col.compare("n̵", "ŋ") < 0);
+	assertTrue("g̵ < ǥ", col.compare("g̵", "ǥ") < 0);
+	assertTrue("t̵ < ŧ", col.compare("t̵", "ŧ") < 0);
+	assertTrue("z̵ < ʒ", col.compare("z̵", "ʒ") < 0);
+	
+	assertTrue("th < Þ", col.compare("th", "Þ") < 0);
+	assertTrue("Þ < ti", col.compare("Þ", "ti") < 0);
 }
 
-function testCollatorDefaultCaseSecondary_sv() {
+function testCollatorDefaultCaseSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -216,9 +233,9 @@ function testCollatorDefaultCaseSecondary_sv() {
 	assertTrue("Ö = ö", col.compare("Ö", "ö") === 0);
 }
 
-function testCollatorDefaultVariantsSecondary_sv() {
+function testCollatorDefaultVariantsSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -235,9 +252,9 @@ function testCollatorDefaultVariantsSecondary_sv() {
 	assertTrue("ö = ö", col.compare("ö", "ö") === 0);
 }
 
-function testCollatorDefaultUpperSecondary_sv() {
+function testCollatorDefaultUpperSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -257,9 +274,9 @@ function testCollatorDefaultUpperSecondary_sv() {
 	assertTrue("Ä < Ö", col.compare("Ä", "Ö") < 0);
 }
 
-function testCollatorDefaultUpperAccentsSecondary_sv() {
+function testCollatorDefaultUpperAccentsSecondary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "secondary"
@@ -271,19 +288,24 @@ function testCollatorDefaultUpperAccentsSecondary_sv() {
 	assertTrue("D < đ", col.compare("D", "Đ") < 0);
 	assertTrue("Đ < Ð", col.compare("Đ", "Ð") < 0);
 	assertTrue("V < W", col.compare("V", "W") < 0);
+	
 	assertTrue("Y < Ü", col.compare("Y", "Ü") < 0);
 	assertTrue("Ü < Ű", col.compare("Ü", "Ű") < 0);
 	assertTrue("Ä < Æ", col.compare("Ä", "Æ") < 0);
-	assertTrue("Æ < Ę", col.compare("Æ", "Ę") < 0);
 	assertTrue("Ö < Ø", col.compare("Ö", "Ø") < 0);
-	assertTrue("Ø < Ő", col.compare("Ø", "Ő") < 0);
-	assertTrue("Ő < œ", col.compare("Ő", "Œ") < 0);
-	assertTrue("Œ < Ô", col.compare("œ", "Ô") < 0);
+	
+	assertTrue("N̵ < Ŋ", col.compare("N̵", "Ŋ") < 0);
+	assertTrue("G̵ < Ǥ", col.compare("G̵", "Ǥ") < 0);
+	assertTrue("T̵ < Ŧ", col.compare("T̵", "Ŧ") < 0);
+	assertTrue("Z̵ < Ʒ", col.compare("Z̵", "Ʒ") < 0);
+	
+	assertTrue("TH < Þ", col.compare("TH", "Þ") < 0);
+	assertTrue("Þ < TI", col.compare("Þ", "TI") < 0);
 }
 
-function testCollatorDefaultLowerTertiary_sv() {
+function testCollatorDefaultLowerTertiary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -307,9 +329,9 @@ function testCollatorDefaultLowerTertiary_sv() {
 	assertTrue("Å < å", col.compare("Å", "å") < 0);
 }
 
-function testCollatorDefaultLowerAccentsTertiary_sv() {
+function testCollatorDefaultLowerAccentsTertiary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -321,20 +343,25 @@ function testCollatorDefaultLowerAccentsTertiary_sv() {
 	assertTrue("d < đ", col.compare("d", "đ") < 0);
 	assertTrue("đ < ð", col.compare("đ", "ð") < 0);
 	assertTrue("v < w", col.compare("v", "w") < 0);
+	
 	assertTrue("y < ü", col.compare("y", "ü") < 0);
 	assertTrue("ü < ű", col.compare("ü", "ű") < 0);
 	assertTrue("ä < æ", col.compare("ä", "æ") < 0);
-	assertTrue("æ < ę", col.compare("æ", "ę") < 0);
 	assertTrue("ö < ø", col.compare("ö", "ø") < 0);
-	assertTrue("ø < ő", col.compare("ø", "ő") < 0);
-	assertTrue("ő < œ", col.compare("ő", "œ") < 0);
-	assertTrue("œ < ô", col.compare("œ", "ô") < 0);
+	
+	assertTrue("n̵ < ŋ", col.compare("n̵", "ŋ") < 0);
+	assertTrue("g̵ < ǥ", col.compare("g̵", "ǥ") < 0);
+	assertTrue("t̵ < ŧ", col.compare("t̵", "ŧ") < 0);
+	assertTrue("z̵ < ʒ", col.compare("z̵", "ʒ") < 0);
+	
+	assertTrue("th < þ", col.compare("th", "þ") < 0);
+	assertTrue("þ < ti", col.compare("þ", "ti") < 0);
 }
 
 
-function testCollatorDefaultVariantsTertiary_sv() {
+function testCollatorDefaultVariantsTertiary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -351,9 +378,9 @@ function testCollatorDefaultVariantsTertiary_sv() {
 	assertTrue("ö = ö", col.compare("ö", "ö") === 0);
 }
 
-function testCollatorDefaultUpperTertiary_sv() {
+function testCollatorDefaultUpperTertiary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "tertiary"
@@ -372,9 +399,38 @@ function testCollatorDefaultUpperTertiary_sv() {
 	assertTrue("Ä < Ö", col.compare("Ä", "Ö") < 0);
 }
 
-function testCollatorDefaultLowerQuaternary_sv() {
+function testCollatorDefaultUpperAccentsTertiary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
+		usage: "search",
+		useNative: false, 
+		sensitivity: "tertiary"
+	});
+
+	assertNotUndefined(col);
+	
+	// some secondary differences, mostly for foreign loanwords
+	assertTrue("D < đ", col.compare("D", "Đ") < 0);
+	assertTrue("Đ < Ð", col.compare("Đ", "Ð") < 0);
+	assertTrue("V < W", col.compare("V", "W") < 0);
+	
+	assertTrue("Y < Ü", col.compare("Y", "Ü") < 0);
+	assertTrue("Ü < Ű", col.compare("Ü", "Ű") < 0);
+	assertTrue("Ä < Æ", col.compare("Ä", "Æ") < 0);
+	assertTrue("Ö < Ø", col.compare("Ö", "Ø") < 0);
+	
+	assertTrue("N̵ < Ŋ", col.compare("N̵", "Ŋ") < 0);
+	assertTrue("G̵ < Ǥ", col.compare("G̵", "Ǥ") < 0);
+	assertTrue("T̵ < Ŧ", col.compare("T̵", "Ŧ") < 0);
+	assertTrue("Z̵ < Ʒ", col.compare("Z̵", "Ʒ") < 0);
+	
+	assertTrue("TH < Þ", col.compare("TH", "Þ") < 0);
+	assertTrue("Þ < TI", col.compare("Þ", "TI") < 0);
+}
+
+function testCollatorDefaultLowerQuaternary_fi() {
+	var col = new ilib.Collator({
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -398,9 +454,9 @@ function testCollatorDefaultLowerQuaternary_sv() {
 	assertTrue("Å < å", col.compare("Å", "å") < 0);
 }
 
-function testCollatorDefaultVariantsQuaternary_sv() {
+function testCollatorDefaultVariantsQuaternary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -417,9 +473,9 @@ function testCollatorDefaultVariantsQuaternary_sv() {
 	assertTrue("ö < ö", col.compare("ö", "ö") < 0);
 }
 
-function testCollatorDefaultUpperQuaternary_sv() {
+function testCollatorDefaultUpperQuaternary_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		usage: "search",
 		useNative: false, 
 		sensitivity: "quaternary"
@@ -436,9 +492,9 @@ function testCollatorDefaultUpperQuaternary_sv() {
 	assertTrue("Ä < Ö", col.compare("Ä", "Ö") < 0);
 }
 
-function testCollatorGetSortKeySimpleUpper_sv() {
+function testCollatorGetSortKeySimpleUpper_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		useNative: false
 	});
 
@@ -446,9 +502,9 @@ function testCollatorGetSortKeySimpleUpper_sv() {
 
 	assertEquals("000020040320340360", col.sortKey("ABCÅÄÖ"));
 }
-function testCollatorGetSortKeySimpleLower_sv() {
+function testCollatorGetSortKeySimpleLower_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		useNative: false
 	});
 
@@ -458,9 +514,9 @@ function testCollatorGetSortKeySimpleLower_sv() {
 }
 
 
-function testCollatorWithSort_sv() {
+function testCollatorWithSort_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		useNative: false,
 		usage: "sort"
 	});
@@ -480,18 +536,18 @@ function testCollatorWithSort_sv() {
 }
 
 
-function testCollatorGetAvailableScripts_sv() {
+function testCollatorGetAvailableScripts_fi() {
 	assertArrayEquals(["Latn"], ilib.Collator.getAvailableScripts());
 }
 
-function testCollatorGetAvailableStyles_sv() {
+function testCollatorGetAvailableStyles_fi() {
 	assertArrayEquals(["standard"], ilib.Collator.getAvailableStyles());
 }
 
 
-function testJSCollatorNumeric_sv() {
+function testJSCollatorNumeric_fi() {
 	var col = new ilib.Collator({
-		locale: "sv-SE",
+		locale: "fi-FI",
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
