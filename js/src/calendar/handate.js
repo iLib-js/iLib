@@ -111,26 +111,39 @@ ilib.Date.HanRataDie.epoch = 758325.5;
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
-	var year = this.cal.equivalentCycleYear(date.year);
-	var y = date.year - (date.year >= 0 ? 474 : 473);
-	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
-	var dayInYear = (date.month > 1 ? ilib.Date.HanDate.cumMonthLengths[date.month-1] : 0) + date.day;
+	var calc = ilib.Cal.Han._leapYearCalc(date.year, date.cycle);
+	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	var newYears;
+	var isLeapYear = (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12);
+	if (isLeapYear && (ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
+		newYears = ilib.Date.HanDate._newMoonOnOrAfter(m2+1);
+	} else {
+		newYears = m2;
+	}
+
+	var p = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (date.month-1) * 29);
+	var m = ilib.Date.HanDate._newMoonBefore(p + 1);
+	
+	var month = ilib.amod(ilib._roundFnc.halfdown((calc.m2 - calc.m1) / 29.530588853000001) - (isLeapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m)) ? 1 : 0, 12);
+	var priorNewMoon = (month === date.month && isLeapYear) ? p : ilib.Date.HanDate._newMoonOnOrAfter(p+1);
+		
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
 		date.millisecond) /
 		86400000;
 	
-	/*
-	// console.log("getRataDie: converting " +  JSON.stringify(this));
-	console.log("getRataDie: year is " +  year);
-	console.log("getRataDie: rd of years is " +  rdOfYears);
-	console.log("getRataDie: day in year is " +  dayInYear);
-	console.log("getRataDie: rdtime is " +  rdtime);
-	console.log("getRataDie: rd is " +  (rdOfYears + dayInYear + rdtime));
-	*/
 	
-	this.rd = rdOfYears + dayInYear + rdtime;
+	console.log("getRataDie: converting " +  JSON.stringify(date) + " to an RD");
+	console.log("getRataDie: year is " +  date.year + " plus cycle " + date.cycle);
+	console.log("getRataDie: isLeapYear is " +  isLeapYear);
+	console.log("getRataDie: priorNewMoon is " +  priorNewMoon);
+	console.log("getRataDie: day in month is " +  date.day);
+	console.log("getRataDie: rdtime is " +  rdtime);
+	console.log("getRataDie: rd is " +  (priorNewMoon + date.day - 1 + rdtime));
+	
+	
+	this.rd = priorNewMoon + date.day - 1 + rdtime;
 };
 
 /**
@@ -549,15 +562,15 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 		second: 0,
 		millisecond: 0
 	});
-	var s1 = ilib.Date.HanDate._majorSTOnOrAfter(lastYearsST.getRataDie());
-	var s2 = ilib.Date.HanDate._majorSTOnOrAfter(thisYearsST.getRataDie());
-	var m1 = (s1 <= rd && rd < s2) ? ilib.Date.HanDate._newMoonOnOrAfter(s1 + 1) : ilib.Date.HanDate._newMoonOnOrAfter(s2 + 1);
-	var m2 = (s1 <= rd && rd < s2) ? ilib.Date.HanDate._newMoonBefore(s2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
+	var solstice1 = ilib.Date.HanDate._majorSTOnOrAfter(lastYearsST.getRataDie());
+	var solstice2 = ilib.Date.HanDate._majorSTOnOrAfter(thisYearsST.getRataDie());
+	var m1 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonOnOrAfter(solstice1 + 1) : ilib.Date.HanDate._newMoonOnOrAfter(solstice2 + 1);
+	var m2 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonBefore(solstice2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
 	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
-	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853) === 12);
-	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m)) ? 1 : 0, 12);
+	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853000001) === 12);
+	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m)) ? 1 : 0, 12);
 	this.isLeapMonth = (this.isLeapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
-	this.year = gregdate.year + 2636 + (this.month < 11 || rd > thisYearJul1.getRataDie()) ? 1 : 0;
+	this.year = gregdate.year + 2696 + (this.month < 11 || rd > thisYearJul1.getRataDie()) ? 1 : 0;
 	this.cycle = Math.floor((this.year - 1) / 60) + 1;
 	this.cycleYear = ilib.amod(this.year, 60);
 	this.day = rd - m + 1;

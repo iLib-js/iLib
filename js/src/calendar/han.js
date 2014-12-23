@@ -43,10 +43,53 @@ ilib.Cal.Han = function() {
  */
 ilib.Cal.Han._getElapsedYear = function(year, cycle) {
 	var elapsedYear = year;
-	if (year > 60 && typeof(cycle) !== 'undefined') {
+	if (year < 61 && typeof(cycle) !== 'undefined') {
 		elapsedYear = 60 * (cycle - 1) + year;
 	}
 	return elapsedYear;
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} year the year for which the leap year information is being sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
+ */
+ilib.Cal.Han._solsticeBefore = function (year, cycle) {
+	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
+	var gregyear = elapsedYear - 2697;
+	var rd = new ilib.Date.GregRataDie({
+		year: gregyear-1, 
+		month: 12, 
+		day: 15, 
+		hour: 0, 
+		minute: 0, 
+		second: 0, 
+		millisecond: 0
+	});
+	return ilib.Date.HanDate._majorSTOnOrAfter(rd.getRataDie());
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} year the year for which the leap year information is being sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
+ */
+ilib.Cal.Han._leapYearCalc = function(year, cycle) {
+	var ret = {
+		elapsedYear: ilib.Cal.Han._getElapsedYear(year, cycle)
+	};
+	ret.solstice1 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear);
+	ret.solstice2 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear+1);
+	ret.m1 = ilib.Date.HanDate._newMoonOnOrAfter(ret.solstice1+1);
+	ret.m2 = ilib.Date.HanDate._newMoonBefore(ret.solstice2+1);
+	
+	return ret;
 };
 
 /**
@@ -62,7 +105,7 @@ ilib.Cal.Han._getElapsedYear = function(year, cycle) {
  * @return {number} The number of months in the given year
  */
 ilib.Cal.Han.prototype.getNumMonths = function(year, cycle) {
-	return this.isLeapYear(ilib.Cal.Han._getElapsedYear(year, cycle)) ? 13 : 12;
+	return this.isLeapYear(year, cycle) ? 13 : 12;
 };
 
 /**
@@ -109,31 +152,8 @@ ilib.Cal.Han.prototype.equivalentCycleYear = function(year) {
  * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Han.prototype.isLeapYear = function(year, cycle) {
-	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
-	var gregyear = elapsedYear - 2697;
-	var rd1 = new ilib.Date.GregRataDie({
-		year: gregyear-1, 
-		month: 12, 
-		day: 15, 
-		hour: 0, 
-		minute: 0, 
-		second: 0, 
-		millisecond: 0
-	});
-	var rd2 = new ilib.Date.GregRataDie({
-		year: gregyear, 
-		month: 12, 
-		day: 15, 
-		hour: 0, 
-		minute: 0, 
-		second: 0, 
-		millisecond: 0
-	});
-	var solstice1 = ilib.Date.HanDate._majorSTOnOrAfter(rd1.getRataDie());
-	var solstice2 = ilib.Date.HanDate._majorSTOnOrAfter(rd2.getRataDie());
-	var m1 = ilib.Date.HanDate._newMoonOnOrAfter(solstice1+1);
-	var m2 = ilib.Date.HanDate._newMoonBefore(solstice2+1);
-	return Math.round((m2 - m1) / 29.530588853000001) === 12;
+	var calc = ilib.Cal.Han._leapYearCalc(year, cycle);
+	return Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
 };
 
 /**
@@ -148,8 +168,41 @@ ilib.Cal.Han.prototype.isLeapYear = function(year, cycle) {
  * if this is not a leap year
  */
 ilib.Cal.Han.prototype.getLeapMonth = function(year, cycle) {
-	var elapsedYear = ilib.Cal.Han._getElapsedYear(year, cycle);
-	return -1;
+	var calc = ilib.Cal.Han._leapYearCalc(year, cycle);
+	
+	if (Math.round((calc.m2 - calc.m1) / 29.530588853000001) != 12) {
+		return -1; // no leap month
+	}
+	
+	// search between rd1 and rd2 for the first month with no major solar term. That is our leap month.
+	var month = 0;
+	var m = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	while (!ilib.Date.HanDate._noMajorST(m)) {
+		month++;
+		m = ilib.Date.HanDate._newMoonOnOrAfter(m+1);
+	}
+	
+	// return the number of the month that is doubled
+	return month; 
+};
+
+/**
+ * Return the date of Chinese New Years in the given calendar year.
+ * 
+ * @param {number} year the Chinese year for which the new year information is being sought
+ * @param {number=} cycle if the given year < 60, this can specify the cycle. If the
+ * cycle is not given, then the year should be given as elapsed years since the beginning
+ * of the epoch
+ * @return {number} the julian day of the beginning of the given year 
+ */
+ilib.Cal.Han.prototype.newYears = function(year, cycle) {
+	var calc = ilib.Cal.Han._leapYearCalc(year, cycle);
+	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	if (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12 &&
+			(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
+		return ilib.Date.HanDate._newMoonOnOrAfter(m2+1) + ilib.Date.RataDie.gregorianEpoch;
+	}
+	return m2 + ilib.Date.RataDie.gregorianEpoch;
 };
 
 /**

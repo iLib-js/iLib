@@ -96,24 +96,30 @@ function testHanGetMonLength12() {
 }
 
 var hanLeapYears = {
-	"4697": {months: 12, leapMonth: -1}, // 2000
-	"4698": {months: 13, leapMonth: 4},  // 2001
-	"4699": {months: 12, leapMonth: -1}, // 2002
-	"4700": {months: 12, leapMonth: -1}, // 2003
-	"4701": {months: 13, leapMonth: 2},  // 2004
-	"4702": {months: 12, leapMonth: -1}, // 2005
-	"4703": {months: 13, leapMonth: 7},  // 2006
-	"4704": {months: 12, leapMonth: -1}, // 2007
-	"4705": {months: 12, leapMonth: -1}, // 2008
-	"4706": {months: 13, leapMonth: 5},  // 2009
-	"4707": {months: 12, leapMonth: -1}, // 2010
-	"4708": {months: 12, leapMonth: -1}, // 2011
-	"4709": {months: 13, leapMonth: 4},  // 2012
-	"4710": {months: 12, leapMonth: -1}, // 2013
-	"4711": {months: 13, leapMonth: 9},  // 2014
-	"4712": {months: 12, leapMonth: -1}, // 2015
-	"4713": {months: 12, leapMonth: -1}, // 2016
-	"4714": {months: 13, leapMonth: 6}   // 2017
+	"4680": {newYears: 2445378.5, months: 12, leapMonth: -1}, // 1983
+	"4681": {newYears: 2445732.5, months: 13, leapMonth: 10}, // 1984
+	"4682": {newYears: 2446116.5, months: 12, leapMonth: -1}, // 1985
+	"4686": {newYears: 2447563.5, months: 12, leapMonth: -1}, // 1989
+	"4687": {newYears: 2447918.5, months: 13, leapMonth: 5},  // 1990
+	"4688": {newYears: 2448302.5, months: 12, leapMonth: -1}, // 1991
+	"4697": {newYears: 2451579.5, months: 12, leapMonth: -1}, // 2000
+	"4698": {newYears: 2451933.5, months: 13, leapMonth: 4},  // 2001
+	"4699": {newYears: 2452317.5, months: 12, leapMonth: -1}, // 2002
+	"4700": {newYears: 2452671.5, months: 12, leapMonth: -1}, // 2003
+	"4701": {newYears: 2453026.5, months: 13, leapMonth: 2},  // 2004
+	"4702": {newYears: 2453410.5, months: 12, leapMonth: -1}, // 2005
+	"4703": {newYears: 2453764.5, months: 13, leapMonth: 7},  // 2006
+	"4704": {newYears: 2454149.5, months: 12, leapMonth: -1}, // 2007
+	"4705": {newYears: 2454503.5, months: 12, leapMonth: -1}, // 2008
+	"4706": {newYears: 2454857.5, months: 13, leapMonth: 5},  // 2009
+	"4707": {newYears: 2455241.5, months: 12, leapMonth: -1}, // 2010
+	"4708": {newYears: 2455595.5, months: 12, leapMonth: -1}, // 2011
+	"4709": {newYears: 2455949.5, months: 13, leapMonth: 4},  // 2012
+	"4710": {newYears: 2456333.5, months: 12, leapMonth: -1}, // 2013
+	"4711": {newYears: 2456688.5, months: 13, leapMonth: 9},  // 2014
+	"4712": {newYears: 2457072.5, months: 12, leapMonth: -1}, // 2015
+	"4713": {newYears: 2457426.5, months: 12, leapMonth: -1}, // 2016
+	"4714": {newYears: 2457781.5, months: 13, leapMonth: 6}   // 2017
 };
 
 function testHanIsLeapYear() {
@@ -143,10 +149,19 @@ function testHanGetLeapMonth() {
     }
 }
 
+function testHanNewYears() {
+    var cal = new ilib.Cal.Han();
+    
+    for (i in hanLeapYears) {
+    	var n = parseInt(i);
+    	assertEquals(hanLeapYears[i].newYears, cal.newYears(n));
+    }
+}
+
 function testHanNewDateInstance() {
     var cal = new ilib.Cal.Han();
     var d = cal.newDateInstance({
-    	year: 4650,
+    	year: 4681,
     	month: 6,
     	day: 1
     });
