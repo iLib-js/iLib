@@ -567,6 +567,7 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	this.cycleYear = ilib.amod(this.year, 60);
 	this.day = rd - m + 1;
 
+	/*
 	console.log("HanDate._calcDateComponents: year is " + this.year);
 	console.log("HanDate._calcDateComponents: isLeapYear is " + this.isLeapYear);
 	console.log("HanDate._calcDateComponents: cycle is " + this.cycle);
@@ -574,10 +575,11 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	console.log("HanDate._calcDateComponents: month is " + this.month);
 	console.log("HanDate._calcDateComponents: isLeapMonth is " + this.isLeapMonth);
 	console.log("HanDate._calcDateComponents: day is " + this.day);
+	*/
 	
 	remainder = rd - Math.floor(rd);
 	
-	console.log("HanDate._calcDateComponents: time remainder is " + remainder);
+	// console.log("HanDate._calcDateComponents: time remainder is " + remainder);
 	
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);
