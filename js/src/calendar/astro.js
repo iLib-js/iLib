@@ -31,6 +31,29 @@ calendar/gregratadie.js
  */
 
 /**
+ * Load in all the data needed for astrological calculations.
+ * 
+ * @param {boolean} sync
+ * @param {*} loadParams
+ * @param {function(Object=)} callback
+ */
+ilib.Date.initAstro = function(sync, loadParams, callback) {
+	ilib.loadData({
+		name: "astro.json", // countries in their own language 
+		locale: "-", // only need to load the root file 
+		nonLocale: true,
+		sync: sync, 
+		loadParams: loadParams, 
+		callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(astroData) {
+			ilib.data.astro = astroData;
+			if (typeof(callback) === 'function') {
+				callback(astroData);
+			}
+		})
+	});
+};
+
+/**
  * Convert degrees to radians.
  * 
  * @static

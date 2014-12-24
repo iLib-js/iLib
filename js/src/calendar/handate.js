@@ -122,9 +122,9 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	}
 
 	var p = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (date.month-1) * 29);
-	var m = ilib.Date.HanDate._newMoonBefore(p + 1);
 	
-	var month = ilib.amod(ilib._roundFnc.halfdown((calc.m2 - calc.m1) / 29.530588853000001) - (isLeapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m)) ? 1 : 0, 12);
+	var m = ilib.Date.HanDate._newMoonBefore(p + 1);
+	var month = ilib.amod(ilib._roundFnc.halfdown((m - calc.m1) / 29.530588853000001) - (isLeapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m) ? 1 : 0), 12);
 	var priorNewMoon = (month === date.month && isLeapYear) ? p : ilib.Date.HanDate._newMoonOnOrAfter(p+1);
 		
 	var rdtime = (date.hour * 3600000 +
@@ -145,20 +145,6 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	
 	this.rd = priorNewMoon + date.day - 1 + rdtime;
 };
-
-/**
- * Return the rd number of the particular day of the week on or before the 
- * given rd. eg. The Sunday on or before the given rd.
- * @private
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the current date
- * @return {number} the rd of the day of the week
- */
-ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
-};
-
 
 /**
  * @class
@@ -493,7 +479,13 @@ ilib.Date.HanDate._minorSTOnOrAfter = function(rd) {
  * @returns {number} the year for the RD
  */
 ilib.Date.HanDate.prototype._calcYear = function(rd) {
-	return this.year;
+	var gregdate = new ilib.Date.GregDate({
+		rd: rd,
+		timezone: this.timezone
+	});
+	var hanyear = gregdate.year + 2697;
+	var newYears = this.cal.newYears(hanyear);
+	return hanyear - ((rd + ilib.Date.RataDie.gregorianEpoch < newYears) ? 1 : 0);
 };
 
 /**
@@ -568,10 +560,10 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	var m2 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonBefore(solstice2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
 	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
 	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853000001) === 12);
-	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m)) ? 1 : 0, 12);
+	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m) ? 1 : 0), 12);
 	this.isLeapMonth = (this.isLeapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
-	this.year = gregdate.year + 2696 + (this.month < 11 || rd > thisYearJul1.getRataDie()) ? 1 : 0;
-	this.cycle = Math.floor((this.year - 1) / 60) + 1;
+	this.year = gregdate.year + 2696 + (this.month < 11 || rd > thisYearJul1.getRataDie() ? 1 : 0);
+	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = ilib.amod(this.year, 60);
 	this.day = rd - m + 1;
 
@@ -603,14 +595,40 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 };
 
 /**
+ * Return the year within the Chinese cycle of this date. Cycles are 60 
+ * years long, and the value returned from this method is the number of the year 
+ * within this cycle. The year returned from getYear() is the total elapsed 
+ * years since the beginning of the Chinese epoch and does not include 
+ * the cycles. 
+ * 
+ * @return {number} the year within the current Chinese cycle
+ */
+ilib.Date.HanDate.prototype.getCycleYears = function() {
+	return this.cycleYear;
+};
+
+/**
+ * Return the Chinese cycle number of this date. Cycles are 60 years long,
+ * and the value returned from getCycleYear() is the number of the year 
+ * within this cycle. The year returned from getYear() is the total elapsed 
+ * years since the beginning of the Chinese epoch and does not include 
+ * the cycles. 
+ * 
+ * @return {number} the current Chinese cycle
+ */
+ilib.Date.HanDate.prototype.getCycles = function() {
+	return this.cycle;
+};
+
+/**
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
  * @return {number} the day of the week
  */
 ilib.Date.HanDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
-	return ilib.mod(rd-3, 7);
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+	return ilib.mod(rd, 7);
 };
 
 /**
@@ -620,7 +638,7 @@ ilib.Date.HanDate.prototype.getDayOfWeek = function() {
  * @return {number} the ordinal day of the year
  */
 ilib.Date.HanDate.prototype.getDayOfYear = function() {
-	return ilib.Date.HanDate.cumMonthLengths[this.month-1] + this.day;
+	return (this.month-1) * 29 + this.day;
 };
 
 /**
