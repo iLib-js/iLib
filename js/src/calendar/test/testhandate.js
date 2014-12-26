@@ -763,6 +763,43 @@ function testHanDateAfterLeapYear() {
 }
 
 var testDatesHan = [
+	// jd			cycle	year	month	day	isLeapYear	isLeapMonth	day of week
+	[ 1507231.5,	35,	11,	6,	12,	false,	false,	0],
+	[ 1660037.5,	42,	9,	10,	27,	false,	false,	3],
+	[ 1746893.5,	46,	7,	8,	4,	true,	false,	3],
+	[ 1770641.5,	47,	12,	8,	9,	true,	false,	0],
+	[ 1892731.5,	52,	46,	11,	20,	false,	false,	3],
+	[ 1931579.5,	54,	33,	4,	5,	false,	false,	1],
+	[ 1974851.5,	56,	31,	10,	15,	false,	false,	6],
+	[ 2091164.5,	61,	50,	3,	7,	true,	false,	0],
+	[ 2121509.5,	63,	13,	4,	24,	false,	false,	0],
+	[ 2155779.5,	64,	47,	2,	9,	false,	false,	5],
+	[ 2174029.5,	65,	37,	2,	9,	false,	false,	6],
+	[ 2191584.5,	66,	25,	2,	23,	false,	false,	5],
+	[ 2195261.5,	66,	35,	3,	9,	true,	false,	0],
+	[ 2229274.5,	68,	8,	5,	2,	false,	false,	0],
+	[ 2245580.5,	68,	53,	1,	8,	true,	false,	3],
+	[ 2266100.5,	69,	49,	3,	4,	false,	false,	6],
+	[ 2288542.5,	70,	50,	8,	2,	true,	false,	6],
+	[ 2290901.5,	70,	57,	1,	29,	false,	false,	6],
+	[ 2323140.5,	72,	25,	4,	20,	true,	true,	3],
+	[ 2334848.5,	72,	57,	6,	5,	true,	false,	0],
+	[ 2348020.5,	73,	33,	6,	6,	true,	false,	5],
+	[ 2366978.5,	74,	25,	5,	5,	false,	false,	0],
+	[ 2385648.5,	75,	16,	6,	12,	true,	false,	1],
+	[ 2392825.5,	75,	36,	2,	13,	false,	false,	3],
+	[ 2416223.5,	76,	40,	3,	22,	true,	false,	0],
+	[ 2425848.5,	77,	6,	7,	21,	false,	false,	0],
+	[ 2430266.5,	77,	18,	8,	9,	true,	false,	1],
+	[ 2430833.5,	77,	20,	3,	15,	false,	false,	1],
+	[ 2431004.5,	77,	20,	9,	9,	false,	false,	4],
+	[ 2448698.5,	78,	9,	2,	14,	false,	false,	2],
+	[ 2450138.5,	78,	13,	1,	7,	false,	false,	0],
+	[ 2465737.5,	78,	55,	10,	14,	false,	false,	3],
+	[ 2486076.5,	79,	51,	6,	7,	false,	false,	0],
+];
+
+var testDatesHanOld = [
 //   jd         cycle  year  month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, 35,    11,   6,     12,  0,    0,      0,      0,           0],
     [1660037.5, 42,    9,    10,    27,  0,    0,      0,      0,           3],
@@ -814,11 +851,9 @@ function testHanDateConvert() {
         assertEquals("testing year for " + testDatesHan[i][0], testDatesHan[i][1] * 60 + testDatesHan[i][2], hd.getYears());
         assertEquals("testing month for " + testDatesHan[i][0], testDatesHan[i][3], hd.getMonths());
         assertEquals("testing day for " + testDatesHan[i][0], testDatesHan[i][4], hd.getDays());
-        assertEquals("testing hour for " + testDatesHan[i][0], testDatesHan[i][5], hd.getHours());
-        assertEquals("testing minute for " + testDatesHan[i][0], testDatesHan[i][6], hd.getMinutes());
-        assertEquals("testing second for " + testDatesHan[i][0], testDatesHan[i][7], hd.getSeconds());
-        assertEquals("testing millisecond for " + testDatesHan[i][0], testDatesHan[i][8], hd.getMilliseconds());
-        assertEquals("testing day of week for " + testDatesHan[i][0], testDatesHan[i][9], hd.getDayOfWeek());
+        assertEquals("testing isLeapYear for " + testDatesHan[i][0], testDatesHan[i][5], hd.isLeapYear());
+        assertEquals("testing isLeapMonth for " + testDatesHan[i][0], testDatesHan[i][6], hd.isLeapMonth());
+        assertEquals("testing day of week for " + testDatesHan[i][0], testDatesHan[i][7], hd.getDayOfWeek());
     }
 }
 
@@ -827,13 +862,10 @@ function testHanDateGetJulianDay() {
 	
     for (var i = 0; i < testDatesHan.length; i++) {
         hd = new ilib.Date.HanDate({
-            year: testDatesHan[i][1], 
-            month: testDatesHan[i][2], 
-            day: testDatesHan[i][3],
-            hour: testDatesHan[i][4],
-            minute: testDatesHan[i][5],
-            second: testDatesHan[i][6],
-            millisecond: testDatesHan[i][7],
+        	cycle: testDatesHan[i][1],
+            year: testDatesHan[i][2], 
+            month: testDatesHan[i][3], 
+            day: testDatesHan[i][4],
             timezone: "Etc/UTC"
     	});
     

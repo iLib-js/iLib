@@ -114,8 +114,8 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	var calc = ilib.Cal.Han._leapYearCalc(date.year, date.cycle);
 	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
 	var newYears;
-	var isLeapYear = (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12);
-	if (isLeapYear && (ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
+	this.leapYear = (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12);
+	if (this.leapYear && (ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
 		newYears = ilib.Date.HanDate._newMoonOnOrAfter(m2+1);
 	} else {
 		newYears = m2;
@@ -124,9 +124,11 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	var p = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (date.month-1) * 29);
 	
 	var m = ilib.Date.HanDate._newMoonBefore(p + 1);
-	var month = ilib.amod(ilib._roundFnc.halfdown((m - calc.m1) / 29.530588853000001) - (isLeapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m) ? 1 : 0), 12);
-	var priorNewMoon = (month === date.month && isLeapYear) ? p : ilib.Date.HanDate._newMoonOnOrAfter(p+1);
+	var month = ilib.amod(ilib._roundFnc.halfdown((m - calc.m1) / 29.530588853000001) - (this.leapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m) ? 1 : 0), 12);
+	var priorNewMoon = (month === date.month && this.leapYear) ? p : ilib.Date.HanDate._newMoonOnOrAfter(p+1);
 		
+	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(p) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(p)));
+
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -136,7 +138,7 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	
 	console.log("getRataDie: converting " +  JSON.stringify(date) + " to an RD");
 	console.log("getRataDie: year is " +  date.year + " plus cycle " + date.cycle);
-	console.log("getRataDie: isLeapYear is " +  isLeapYear);
+	console.log("getRataDie: isLeapYear is " +  this.leapYear);
 	console.log("getRataDie: priorNewMoon is " +  priorNewMoon);
 	console.log("getRataDie: day in month is " +  date.day);
 	console.log("getRataDie: rdtime is " +  rdtime);
@@ -559,9 +561,9 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	var m1 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonOnOrAfter(solstice1 + 1) : ilib.Date.HanDate._newMoonOnOrAfter(solstice2 + 1);
 	var m2 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonBefore(solstice2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
 	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
-	this.isLeapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853000001) === 12);
-	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.isLeapYear && ilib.Date.HanDate._priorLeapMonth(m1, m) ? 1 : 0), 12);
-	this.isLeapMonth = (this.isLeapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
+	this.leapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853000001) === 12);
+	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.leapYear && ilib.Date.HanDate._priorLeapMonth(m1, m) ? 1 : 0), 12);
+	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
 	this.year = gregdate.year + 2696 + (this.month < 11 || rd > thisYearJul1.getRataDie() ? 1 : 0);
 	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = ilib.amod(this.year, 60);
@@ -569,11 +571,11 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 
 	/*
 	console.log("HanDate._calcDateComponents: year is " + this.year);
-	console.log("HanDate._calcDateComponents: isLeapYear is " + this.isLeapYear);
+	console.log("HanDate._calcDateComponents: isLeapYear is " + this.leapYear);
 	console.log("HanDate._calcDateComponents: cycle is " + this.cycle);
 	console.log("HanDate._calcDateComponents: cycleYear is " + this.cycleYear);
 	console.log("HanDate._calcDateComponents: month is " + this.month);
-	console.log("HanDate._calcDateComponents: isLeapMonth is " + this.isLeapMonth);
+	console.log("HanDate._calcDateComponents: isLeapMonth is " + this.leapMonth);
 	console.log("HanDate._calcDateComponents: day is " + this.day);
 	*/
 	
@@ -620,6 +622,28 @@ ilib.Date.HanDate.prototype.getCycleYears = function() {
  */
 ilib.Date.HanDate.prototype.getCycles = function() {
 	return this.cycle;
+};
+
+/**
+ * Return whether the year of this date is a leap year in the Chinese Han 
+ * calendar. 
+ * 
+ * @return {boolean} true if the year of this date is a leap year in the 
+ * Chinese Han calendar. 
+ */
+ilib.Date.HanDate.prototype.isLeapYear = function() {
+	return this.leapYear;
+};
+
+/**
+ * Return whether the month of this date is a leap month in the Chinese Han 
+ * calendar.
+ * 
+ * @return {boolean} true if the month of this date is a leap month in the 
+ * Chinese Han calendar.
+ */
+ilib.Date.HanDate.prototype.isLeapMonth = function() {
+	return this.leapMonth;
 };
 
 /**
