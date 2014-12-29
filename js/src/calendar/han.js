@@ -44,7 +44,7 @@ ilib.Cal.Han = function() {
 ilib.Cal.Han._getElapsedYear = function(year, cycle) {
 	var elapsedYear = year;
 	if (year < 61 && typeof(cycle) !== 'undefined') {
-		elapsedYear = 60 * (cycle - 1) + year;
+		elapsedYear = 60 * cycle + year;
 	}
 	return elapsedYear;
 };
@@ -86,8 +86,8 @@ ilib.Cal.Han._leapYearCalc = function(year, cycle) {
 	};
 	ret.solstice1 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear);
 	ret.solstice2 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear+1);
-	ret.m1 = ilib.Date.HanDate._newMoonOnOrAfter(ret.solstice1+1);
-	ret.m2 = ilib.Date.HanDate._newMoonBefore(ret.solstice2+1);
+	ret.m1 = ilib.Date.HanDate._newMoonOnOrAfter(Math.ceil(ret.solstice1));
+	ret.m2 = ilib.Date.HanDate._newMoonBefore(Math.ceil(ret.solstice2));
 	
 	return ret;
 };
@@ -113,13 +113,16 @@ ilib.Cal.Han.prototype.getNumMonths = function(year, cycle) {
  * can return a different number for a month depending on the year because of things
  * like leap years.
  * 
- * @param {number} month the month for which the length is sought
- * @param {number} year the year within which that month can be found
+ * @param {number} month the elapsed month for which the length is sought
+ * @param {number} year the elapsed year within which that month can be found
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Han.prototype.getMonLength = function(month, year) {
 	// distance between two new moons in Nanjing China
-	return 30;
+	var calc = ilib.Cal.Han._leapYearCalc(year);
+	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1 + month * 29);
+	var postNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(priorNewMoon + 1);
+	return postNewMoon - priorNewMoon;
 };
 
 /**

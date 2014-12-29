@@ -338,7 +338,7 @@ function testHanRataDieConstructorFromDateComponents1() {
 function testHanRataDieConstructorFromDateComponents2() {
     var prd = new ilib.Date.HanRataDie({
     	year: 2697,
-    	month: 12,
+    	month: 13, // leap year
     	day: 30,
     	hour: 0,
     	minute: 0,
@@ -366,7 +366,7 @@ function testHanRataDieConstructorFromDateComponents3() {
 function testHanRataDieConstructorFromDateComponents4() {
     var prd = new ilib.Date.HanRataDie({
     	year: 0,
-    	month: 12,
+    	month: 13,
     	day: 30,
     	hour: 0,
     	minute: 0,
@@ -409,7 +409,7 @@ function testHanRataDieConstructorFromDateComponents7() {
     var prd = new ilib.Date.HanRataDie({
     	year: 2,
     	month: 12,
-    	day: 29,
+    	day: 30,
     	hour: 0,
     	minute: 0,
     	second: 0,
@@ -436,8 +436,8 @@ function testHanRataDieConstructorFromDateComponents8() {
 function testHanRataDieConstructorFromDateComponents9() {
     var prd = new ilib.Date.HanRataDie({
     	year: 3,
-    	month: 12,
-    	day: 29,
+    	month: 13,
+    	day: 30,
     	hour: 0,
     	minute: 0,
     	second: 0,
@@ -551,7 +551,7 @@ function testHanRataDieConstructorFromDateComponentsCycle2() {
     var prd = new ilib.Date.HanRataDie({
     	year: 57,
     	cycle: 44,
-    	month: 12,
+    	month: 13,
     	day: 30,
     	hour: 0,
     	minute: 0,
@@ -564,6 +564,7 @@ function testHanRataDieConstructorFromDateComponentsCycle2() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle3() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 1,
     	month: 1,
     	day: 1,
@@ -578,8 +579,9 @@ function testHanRataDieConstructorFromDateComponentsCycle3() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle4() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 0,
-    	month: 12,
+    	month: 13,
     	day: 30,
     	hour: 0,
     	minute: 0,
@@ -592,6 +594,7 @@ function testHanRataDieConstructorFromDateComponentsCycle4() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle5() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 1,
     	month: 12,
     	day: 30,
@@ -606,6 +609,7 @@ function testHanRataDieConstructorFromDateComponentsCycle5() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle6() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 2,
     	month: 1,
     	day: 1,
@@ -620,9 +624,10 @@ function testHanRataDieConstructorFromDateComponentsCycle6() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle7() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 2,
     	month: 12,
-    	day: 29,
+    	day: 30,
     	hour: 0,
     	minute: 0,
     	second: 0,
@@ -634,6 +639,7 @@ function testHanRataDieConstructorFromDateComponentsCycle7() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle8() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 3,
     	month: 1,
     	day: 1,
@@ -648,9 +654,10 @@ function testHanRataDieConstructorFromDateComponentsCycle8() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle9() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 3,
-    	month: 12,
-    	day: 29,
+    	month: 13,
+    	day: 30,
     	hour: 0,
     	minute: 0,
     	second: 0,
@@ -662,6 +669,7 @@ function testHanRataDieConstructorFromDateComponentsCycle9() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle10() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 4,
     	month: 1,
     	day: 1,
@@ -676,6 +684,7 @@ function testHanRataDieConstructorFromDateComponentsCycle10() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle11() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 4,
     	month: 12,
     	day: 30,
@@ -690,6 +699,7 @@ function testHanRataDieConstructorFromDateComponentsCycle11() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle12() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 5,
     	month: 1,
     	day: 1,
@@ -704,6 +714,7 @@ function testHanRataDieConstructorFromDateComponentsCycle12() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle13() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 5,
     	month: 12,
     	day: 29,
@@ -718,6 +729,7 @@ function testHanRataDieConstructorFromDateComponentsCycle13() {
 }
 function testHanRataDieConstructorFromDateComponentsCycle14() {
     var prd = new ilib.Date.HanRataDie({
+    	cycle: 0,
     	year: 6,
     	month: 1,
     	day: 1,
@@ -731,109 +743,41 @@ function testHanRataDieConstructorFromDateComponentsCycle14() {
     assertEquals(-983210, prd.getRataDie());
 }
 
-/* julian date is rd 366 + epoch */
-function testHanDateConstructorFromJD() {
-    var hd = new ilib.Date.HanDate({julianday: 1948685.5, timezone: "Etc/UTC"});
-    
-    assertEquals('object', typeof(hd));
-    assertEquals(366, hd.getRataDie());
-    assertEquals(2, hd.getYears());
-    assertEquals(1, hd.getMonths());
-    assertEquals(1, hd.getDays());
-    assertEquals(0, hd.getHours());
-    assertEquals(0, hd.getMinutes());
-    assertEquals(0, hd.getSeconds());
-    assertEquals(0, hd.getMilliseconds());
-}
-
-// year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
-// Farvardin 1 0005 is one day later than expected. RD is 1462
-function testHanDateAfterLeapYear() {
-    var hd = new ilib.Date.HanDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
-    
-    assertEquals('object', typeof(hd));
-    assertEquals(1462.4, hd.getRataDie());
-    assertEquals(5, hd.getYears());
-    assertEquals(1, hd.getMonths());
-    assertEquals(1, hd.getDays());
-    assertEquals(9, hd.getHours());
-    assertEquals(36, hd.getMinutes());
-    assertEquals(0, hd.getSeconds());
-    assertEquals(0, hd.getMilliseconds());
-}
-
 var testDatesHan = [
 	// jd			cycle	year	month	day	isLeapYear	isLeapMonth	day of week
-	[ 1507231.5,	35,	11,	6,	12,	false,	false,	0],
-	[ 1660037.5,	42,	9,	10,	27,	false,	false,	3],
-	[ 1746893.5,	46,	7,	8,	4,	true,	false,	3],
-	[ 1770641.5,	47,	12,	8,	9,	true,	false,	0],
-	[ 1892731.5,	52,	46,	11,	20,	false,	false,	3],
-	[ 1931579.5,	54,	33,	4,	5,	false,	false,	1],
-	[ 1974851.5,	56,	31,	10,	15,	false,	false,	6],
-	[ 2091164.5,	61,	50,	3,	7,	true,	false,	0],
-	[ 2121509.5,	63,	13,	4,	24,	false,	false,	0],
-	[ 2155779.5,	64,	47,	2,	9,	false,	false,	5],
-	[ 2174029.5,	65,	37,	2,	9,	false,	false,	6],
-	[ 2191584.5,	66,	25,	2,	23,	false,	false,	5],
-	[ 2195261.5,	66,	35,	3,	9,	true,	false,	0],
-	[ 2229274.5,	68,	8,	5,	2,	false,	false,	0],
-	[ 2245580.5,	68,	53,	1,	8,	true,	false,	3],
-	[ 2266100.5,	69,	49,	3,	4,	false,	false,	6],
-	[ 2288542.5,	70,	50,	8,	2,	true,	false,	6],
-	[ 2290901.5,	70,	57,	1,	29,	false,	false,	6],
-	[ 2323140.5,	72,	25,	4,	20,	true,	true,	3],
-	[ 2334848.5,	72,	57,	6,	5,	true,	false,	0],
-	[ 2348020.5,	73,	33,	6,	6,	true,	false,	5],
-	[ 2366978.5,	74,	25,	5,	5,	false,	false,	0],
-	[ 2385648.5,	75,	16,	6,	12,	true,	false,	1],
-	[ 2392825.5,	75,	36,	2,	13,	false,	false,	3],
-	[ 2416223.5,	76,	40,	3,	22,	true,	false,	0],
-	[ 2425848.5,	77,	6,	7,	21,	false,	false,	0],
-	[ 2430266.5,	77,	18,	8,	9,	true,	false,	1],
-	[ 2430833.5,	77,	20,	3,	15,	false,	false,	1],
-	[ 2431004.5,	77,	20,	9,	9,	false,	false,	4],
-	[ 2448698.5,	78,	9,	2,	14,	false,	false,	2],
-	[ 2450138.5,	78,	13,	1,	7,	false,	false,	0],
-	[ 2465737.5,	78,	55,	10,	14,	false,	false,	3],
-	[ 2486076.5,	79,	51,	6,	7,	false,	false,	0],
-];
-
-var testDatesHanOld = [
-//   jd         cycle  year  month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, 35,    11,   6,     12,  0,    0,      0,      0,           0],
-    [1660037.5, 42,    9,    10,    27,  0,    0,      0,      0,           3],
-    [1746893.5, 46,    7,    8,     4,   0,    0,      0,      0,           3],
-    [1770641.5, 47,    12,   8,     9,   0,    0,      0,      0,           0],
-    [1892731.5, 52,    46,   11,    20,  0,    0,      0,      0,           3],
-    [1931579.5, 54,    33,   4,     5,   0,    0,      0,      0,           1],
-    [1974851.5, 56,    31,   10,    15,  0,    0,      0,      0,           6],
-    [2091164.5, 61,    50,   3,     7,   0,    0,      0,      0,           0],
-    [2121509.5, 63,    13,   4,     24,  0,    0,      0,      0,           0],
-    [2155779.5, 64,    47,   2,     9,   0,    0,      0,      0,           5],
-    [2174029.5, 65,    37,   2,     9,   0,    0,      0,      0,           6],
-    [2191584.5, 66,    25,   2,     23,  0,    0,      0,      0,           5],
-    [2195261.5, 66,    35,   3,     9,   0,    0,      0,      0,           0],
-    [2229274.5, 68,    8,    5,     2,   0,    0,      0,      0,           0],
-    [2245580.5, 68,    53,   1,     8,   0,    0,      0,      0,           3],
-    [2266100.5, 69,    49,   3,     4,   0,    0,      0,      0,           6],
-    [2288542.5, 70,    50,   8,     2,   0,    0,      0,      0,           6],
-    [2290901.5, 70,    57,   1,     29,  0,    0,      0,      0,           6],
-    [2323140.5, 72,    25,   4,     20,  0,    0,      0,      0,           3],
-    [2334848.5, 72,    57,   6,     5,   0,    0,      0,      0,           0],
-    [2348020.5, 73,    33,   6,     6,   0,    0,      0,      0,           5],
-    [2366978.5, 74,    25,   5,     5,   0,    0,      0,      0,           0],
-    [2385648.5, 75,    16,   6,     12,  0,    0,      0,      0,           1],
-    [2392825.5, 75,    36,   2,     13,  0,    0,      0,      0,           3],
-    [2416223.5, 76,    40,   3,     22,  0,    0,      0,      0,           0],
-    [2425848.5, 77,    6,    7,     21,  0,    0,      0,      0,           0],
-    [2430266.5, 77,    18,   8,     9,   0,    0,      0,      0,           1],
-    [2430833.5, 77,    20,   3,     15,  0,    0,      0,      0,           1],
-    [2431004.5, 77,    20,   9,     9,   0,    0,      0,      0,           4],
-    [2448698.5, 78,    9,    2,     14,  0,    0,      0,      0,           2],
-    [2450138.5, 78,    13,   1,     7,   0,    0,      0,      0,           0],
-    [2465737.5, 78,    55,   10,    14,  0,    0,      0,      0,           3],
-    [2486076.5, 79,    51,   6,     7,   0,    0,      0,      0,           0]
+	[ 1507231.5,	35,	11,	6,	12,	false,	false,	0,	-214193],
+	[ 1660037.5,	42,	9,	10,	27,	false,	false,	3,	-61387],
+	[ 1746893.5,	46,	7,	9,	4,	true,	false,	3,	25469],
+	[ 1770641.5,	47,	12,	9,	9,	true,	false,	0,	49217],
+	[ 1892731.5,	52,	46,	12,	20,	true,	false,	3,	171307],
+	[ 1931579.5,	54,	33,	4,	5,	false,	false,	1,	210155],
+	[ 1974851.5,	56,	31,	10,	15,	false,	false,	6,	253427],
+	[ 2091164.5,	61,	50,	4,	7,	true,	false,	0,	369740],
+	[ 2121509.5,	63,	13,	4,	24,	false,	false,	0,	400085],
+	[ 2155779.5,	64,	47,	2,	9,	false,	false,	5,	434355],
+	[ 2174029.5,	65,	37,	2,	9,	false,	false,	6,	452605],
+	[ 2191584.5,	66,	25,	2,	23,	false,	false,	5,	470160],
+	[ 2195261.5,	66,	35,	4,	9,	true,	false,	0,	473837],
+	[ 2229274.5,	68,	8,	5,	2,	false,	false,	0,	507850],
+	[ 2245580.5,	68,	53,	1,	8,	true,	false,	3,	524156],
+	[ 2266100.5,	69,	49,	3,	4,	false,	false,	6,	544676],
+	[ 2288542.5,	70,	50,	9,	2,	true,	false,	6,	567118],
+	[ 2290901.5,	70,	57,	1,	29,	false,	false,	6,	569477],
+	[ 2323140.5,	72,	25,	5,	20,	true,	true,	3,	601716],
+	[ 2334848.5,	72,	57,	6,	5,	true,	false,	0,	613424],
+	[ 2348020.5,	73,	33,	7,	6,	true,	false,	5,	626596],
+	[ 2366978.5,	74,	25,	5,	5,	false,	false,	0,	645554],
+	[ 2385648.5,	75,	16,	7,	12,	true,	false,	1,	664224],
+	[ 2392825.5,	75,	36,	2,	13,	false,	false,	3,	671401],
+	[ 2416223.5,	76,	40,	3,	22,	true,	false,	0,	694799],
+	[ 2425848.5,	77,	6,	7,	21,	false,	false,	0,	704424],
+	[ 2430266.5,	77,	18,	9,	9,	true,	false,	1,	708842],
+	[ 2430833.5,	77,	20,	3,	15,	false,	false,	1,	709409],
+	[ 2431004.5,	77,	20,	9,	9,	false,	false,	4,	709580],
+	[ 2448698.5,	78,	9,	2,	14,	false,	false,	2,	727274],
+	[ 2450138.5,	78,	13,	1,	7,	false,	false,	0,	728714],
+	[ 2465737.5,	78,	55,	10,	14,	false,	false,	3,	744313],
+	[ 2486076.5,	79,	51,	6,	7,	false,	false,	0,	764652],
 ];
 
 function testHanDateConvert() {
@@ -873,7 +817,7 @@ function testHanDateGetJulianDay() {
         
         assertEquals('object', typeof(hd));
         assertEquals("testing row " + testDatesHan[i][0], testDatesHan[i][0], hd.getJulianDay());
-        assertEquals(testDatesHan[i][8], hd.getDayOfWeek());
+        assertEquals(testDatesHan[i][7], hd.getDayOfWeek());
     }
 }
 
@@ -1015,9 +959,9 @@ function testHanDateSetMilliseconds() {
 
 function testGetDayOfWeek1() {
     var hd = new ilib.Date.HanDate({
-		year: 1393,
-		month: 3,
-		day: 16
+		year: 4706, 
+    	month: 13, 
+    	day: 29
 	});
     
     assertNotNull(hd);
@@ -1027,9 +971,9 @@ function testGetDayOfWeek1() {
 
 function testGetDayOfWeekWithTime() {
     var hd = new ilib.Date.HanDate({
-		year: 1393,
-		month: 3,
-		day: 16,
+		year: 4706, 
+    	month: 13, 
+    	day: 29,
 		hour: 8,
 		minute: 39,
 		second: 34
@@ -1042,9 +986,9 @@ function testGetDayOfWeekWithTime() {
 
 function testHanDateTestGetTimeZero() {
     var hd = new ilib.Date.HanDate({
-		year: 1348,
-		month: 10,
-		day: 11,
+		year: 4666,
+		month: 11,
+		day: 24,
 		timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
@@ -1061,9 +1005,9 @@ function testHanDateTestGetTimeZeroJD() {
 
 function testHanDateTestGetTime() {
     var hd = new ilib.Date.HanDate({
-		year: 1348,
-		month: 10,
-		day: 11,
+		year: 4666,
+		month: 11,
+		day: 24,
 		hour: 8,
 		minute: 30,
 		timezone: "Etc/UTC"
@@ -1098,25 +1042,25 @@ function testHanDateTestGetTimeTooLate() {
 // test some of the helper functions to make sure they are producing the right thing
 function testHanDateOnOrBeforeSun() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
     var rd = hd.getRataDie();
     
-    // Sunday on or before hd 5 days before 
+    // Sunday on or before is 5 days before 
     assertEquals(rd-5, hd.onOrBefore(0).getRataDie());
 }
 
 function testHanDateOnOrBeforeMon() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1127,10 +1071,10 @@ function testHanDateOnOrBeforeMon() {
 
 function testHanDateOnOrBeforeTue() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1141,10 +1085,10 @@ function testHanDateOnOrBeforeTue() {
 
 function testHanDateOnOrBeforeWed() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1155,10 +1099,10 @@ function testHanDateOnOrBeforeWed() {
 
 function testHanDateOnOrBeforeThu() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1169,10 +1113,10 @@ function testHanDateOnOrBeforeThu() {
 
 function testHanDateOnOrBeforeFri() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1183,10 +1127,10 @@ function testHanDateOnOrBeforeFri() {
 
 function testHanDateOnOrBeforeSat() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1195,27 +1139,137 @@ function testHanDateOnOrBeforeSat() {
     assertEquals(rd-6, hd.onOrBefore(6).getRataDie());
 }
 
+function testHanDateOnOrBeforeSunWithTime() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 30,
+	   	hour: 8
+    });
+    assertNotNull(hd);
+    
+    assertEquals(6, hd.getDayOfWeek()); // Saturday
+    var rd = hd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 5 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd-6, hd.onOrBefore(0).getRataDie());
+}
+
+function testHanDateOnOrBeforeSunWithTimeZoneWestern1() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13,
+    	day: 30,
+	   	hour: 23,
+	   	minute: 59,
+	   	timezone: "America/Los_Angeles"
+    }); // this is Saturday in Los Angeles, but Sunday in UTC 
+    assertNotNull(hd);
+    
+    assertEquals(6, hd.getDayOfWeek()); // Saturday
+    var rd = hd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 6 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd-6, hd.onOrBefore(0).getRataDie());
+}
+
+function testHanDateOnOrBeforeSunWithTimeZoneWestern2() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4707, 
+    	month: 1, 
+    	day: 1,
+	   	hour: 0,
+	   	minute: 0,
+	   	timezone: "America/Los_Angeles"
+    }); // this is Sunday in Los Angeles and in UTC 
+    assertNotNull(hd);
+    
+    assertEquals(0, hd.getDayOfWeek()); // Sunday
+    var rd = hd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 5 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd, hd.onOrBefore(0).getRataDie());
+}
+
+function testHanDateOnOrBeforeSunWithTimeZoneEastern1() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4707, 
+    	month: 1,
+    	day: 1,
+	   	hour: 0,
+	   	minute: 0,
+	   	timezone: "Asia/Seoul"
+    }); // this is Saturday in UTC, but Sunday in Seoul
+    assertNotNull(hd);
+    
+    assertEquals(0, hd.getDayOfWeek()); // Sunday
+    var rd = hd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is today 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd, hd.onOrBefore(0).getRataDie());
+}
+
+function testHanDateOnOrBeforeSunWithTimeZoneEastern2() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 30,
+	   	hour: 23,
+	   	minute: 59,
+	   	timezone: "Asia/Seoul"
+    }); // this is Saturday in Seoul and in UTC 
+    assertNotNull(hd);
+    
+    assertEquals(6, hd.getDayOfWeek()); // Saturday
+    var rd = hd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 6 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd-6, hd.onOrBefore(0).getRataDie());
+}
+
 function testHanDateOnOrAfterSun() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
     var rd = hd.getRataDie();
     
-    // Sunday on or before hd 5 days before 
+    // Sunday on or after is 2 days after 
     assertEquals(rd+2, hd.onOrAfter(0).getRataDie());
+}
+
+function testHanDateOnOrAfterSunDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.onOrBefore(0);
+    
+    // Sunday on or before is 5 days before
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(24, date.day);
 }
 
 function testHanDateOnOrAfterMon() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1224,12 +1278,28 @@ function testHanDateOnOrAfterMon() {
     assertEquals(rd+3, hd.onOrAfter(1).getRataDie());
 }
 
+function testHanDateOnOrAfterMonDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706,
+    	month: 13,
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.onOrAfter(1);
+    
+    assertEquals(4707, date.year);
+    assertEquals(1, date.month);
+    assertEquals(2, date.day);
+}
+
 function testHanDateOnOrAfterTue() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1240,10 +1310,10 @@ function testHanDateOnOrAfterTue() {
 
 function testHanDateOnOrAfterWed() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1254,10 +1324,10 @@ function testHanDateOnOrAfterWed() {
 
 function testHanDateOnOrAfterThu() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1266,12 +1336,28 @@ function testHanDateOnOrAfterThu() {
     assertEquals(rd+6, hd.onOrAfter(4).getRataDie());
 }
 
+function testHanDateOnOrAfterThuDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.onOrAfter(4);
+    
+    assertEquals(4707, date.year);
+    assertEquals(1, date.month);
+    assertEquals(5, date.day);
+}
+
 function testHanDateOnOrAfterFri() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1280,12 +1366,28 @@ function testHanDateOnOrAfterFri() {
     assertEquals(rd, hd.onOrAfter(5).getRataDie());
 }
 
+function testHanDateOnOrAfterFriDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.onOrAfter(5);
+    
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(29, date.day);
+}
+
 function testHanDateOnOrAfterSat() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1296,25 +1398,42 @@ function testHanDateOnOrAfterSat() {
 
 function testHanDateBeforeSun() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
     var rd = hd.getRataDie();
     
-    // Sunday before hd 5 days before 
+    // Sunday before is 5 days before 
     assertEquals(rd-5, hd.before(0).getRataDie());
+}
+
+function testHanDateBeforeSunDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.before(0);
+    
+    // Sunday before is 5 days before 
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(24, date.day);
 }
 
 function testHanDateBeforeMon() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1325,10 +1444,10 @@ function testHanDateBeforeMon() {
 
 function testHanDateBeforeTue() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1339,10 +1458,10 @@ function testHanDateBeforeTue() {
 
 function testHanDateBeforeWed() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1353,10 +1472,10 @@ function testHanDateBeforeWed() {
 
 function testHanDateBeforeThu() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1365,12 +1484,29 @@ function testHanDateBeforeThu() {
     assertEquals(rd-1, hd.before(4).getRataDie());
 }
 
+function testHanDateBeforeThuDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.before(4);
+    
+    // Thursday before is 1 day before 
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(28, date.day);
+}
+
 function testHanDateBeforeFri() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1379,12 +1515,29 @@ function testHanDateBeforeFri() {
     assertEquals(rd-7, hd.before(5).getRataDie());
 }
 
+function testHanDateBeforeFriDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.before(5);
+    
+    // Friday before is 7 days before the current Friday
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(22, date.day);
+}
+
 function testHanDateBeforeSat() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1395,25 +1548,42 @@ function testHanDateBeforeSat() {
 
 function testHanDateAfterSun() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
     var rd = hd.getRataDie();
     
-    // Sunday on or before hd 5 days before 
+    // Sunday after is 2 days after 
     assertEquals(rd+2, hd.after(0).getRataDie());
+}
+
+function testHanDateAfterSunDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.after(0);
+    
+    // Sunday after is 2 days after 
+    assertEquals(4707, date.year);
+    assertEquals(1, date.month);
+    assertEquals(1, date.day);
 }
 
 function testHanDateAfterMon() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1424,10 +1594,10 @@ function testHanDateAfterMon() {
 
 function testHanDateAfterTue() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1438,10 +1608,10 @@ function testHanDateAfterTue() {
 
 function testHanDateAfterWed() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1452,10 +1622,10 @@ function testHanDateAfterWed() {
 
 function testHanDateAfterThu() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1466,10 +1636,10 @@ function testHanDateAfterThu() {
 
 function testHanDateAfterFri() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1478,12 +1648,29 @@ function testHanDateAfterFri() {
     assertEquals(rd+7, hd.after(5).getRataDie());
 }
 
+function testHanDateAfterFriDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.after(5);
+    
+    // Friday after is 7 days after 
+    assertEquals(4707, date.year);
+    assertEquals(1, date.month);
+    assertEquals(6, date.day);
+}
+
 function testHanDateAfterSat() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 9,
-		day: 27
-	});
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
     assertNotNull(hd);
     
     assertEquals(5, hd.getDayOfWeek()); // Friday
@@ -1492,9 +1679,26 @@ function testHanDateAfterSat() {
     assertEquals(rd+1, hd.after(6).getRataDie());
 }
 
+function testHanDateAfterSatDate() {
+    var hd = new ilib.Date.HanDate({
+    	year: 4706, 
+    	month: 13, 
+    	day: 29
+    });
+    assertNotNull(hd);
+    
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var date = hd.after(6);
+    
+    // Sat after is 1 day after 
+    assertEquals(4706, date.year);
+    assertEquals(13, date.month);
+    assertEquals(30, date.day);
+}
+
 function testHanDateTestGetWeekOfYearThisYear() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 2,
 		day: 1
 	});
@@ -1505,7 +1709,7 @@ function testHanDateTestGetWeekOfYearThisYear() {
 
 function testHanDateTestGetWeekOfYearThisYear2() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 19
 	});
@@ -1516,44 +1720,7 @@ function testHanDateTestGetWeekOfYearThisYear2() {
 
 function testHanDateTestGetWeekOfYearThisYear3() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 12,
-		day: 29
-	});
-    assertNotNull(hd);
-    
-    assertEquals(52, hd.getWeekOfYear());
-}
-
-function testHanDateTestGetWeekOfYearThisYearWithTime() {
-    var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 12,
-		day: 29,
-		hour: 16,
-		minute: 13,
-		second: 12,
-		millisecond: 232
-	});
-    assertNotNull(hd);
-    
-    assertEquals(52, hd.getWeekOfYear());
-}
-
-function testHanDateTestGetWeekOfYearPreviousYear() {
-    var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 1,
-		day: 1
-	});
-    assertNotNull(hd);
-    
-    assertEquals(53, hd.getWeekOfYear());
-}
-
-function testHanDateTestGetWeekOfYearLastWeekLeap() {
-    var hd = new ilib.Date.HanDate({
-		year: 1383,
+		year: 4707,
 		month: 12,
 		day: 30
 	});
@@ -1562,21 +1729,47 @@ function testHanDateTestGetWeekOfYearLastWeekLeap() {
     assertEquals(1, hd.getWeekOfYear());
 }
 
-function testHanDateTestGetWeekOfYearLastWeekRegular1() {
+function testHanDateTestGetWeekOfYearThisYearWithTime() {
     var hd = new ilib.Date.HanDate({
-		year: 1389,
+		year: 4707,
 		month: 12,
-		day: 29
+		day: 30,
+		hour: 16,
+		minute: 13,
+		second: 12,
+		millisecond: 232
 	});
     assertNotNull(hd);
     
     assertEquals(1, hd.getWeekOfYear());
 }
 
+function testHanDateTestGetWeekOfYearPreviousYear() {
+    var hd = new ilib.Date.HanDate({
+		year: 4700,
+		month: 1,
+		day: 1
+	});
+    assertNotNull(hd);
+    
+    assertEquals(51, hd.getWeekOfYear());
+}
+
+function testHanDateTestGetWeekOfYearLastWeekRegular1() {
+    var hd = new ilib.Date.HanDate({
+		year: 4689,
+		month: 12,
+		day: 30
+	});
+    assertNotNull(hd);
+    
+    assertEquals(51, hd.getWeekOfYear());
+}
+
 function testHanDateTestGetWeekOfYearLastWeekRegular2() {
     var hd = new ilib.Date.HanDate({
-		year: 1390,
-		month: 12,
+		year: 4690,
+		month: 13,
 		day: 29
 	});
     assertNotNull(hd);
@@ -1586,7 +1779,7 @@ function testHanDateTestGetWeekOfYearLastWeekRegular2() {
 
 function testHanDateTestGetWeekOfYearLastWeekRegular3() {
     var hd = new ilib.Date.HanDate({
-		year: 1391,
+		year: 4691,
 		month: 12,
 		day: 30
 	});
@@ -1597,40 +1790,40 @@ function testHanDateTestGetWeekOfYearLastWeekRegular3() {
 
 function testHanDateTestGetWeekOfYearLastWeekRegular4() {
     var hd = new ilib.Date.HanDate({
-		year: 1392,
-		month: 12,
+		year: 4692,
+		month: 13,
 		day: 29
 	});
     assertNotNull(hd);
     
-    assertEquals(53, hd.getWeekOfYear());
+    assertEquals(55, hd.getWeekOfYear());
 }
 
 function testHanDateTestGetWeekOfYearLastWeekRegular5() {
     var hd = new ilib.Date.HanDate({
-		year: 1393,
+		year: 4693,
 		month: 12,
 		day: 29
 	});
     assertNotNull(hd);
     
-    assertEquals(52, hd.getWeekOfYear());
+    assertEquals(51, hd.getWeekOfYear());
 }
 
 function testHanDateTestGetWeekOfYearLastWeekRegular6() {
     var hd = new ilib.Date.HanDate({
-		year: 1394,
+		year: 4694,
 		month: 12,
 		day: 29
 	});
     assertNotNull(hd);
     
-    assertEquals(52, hd.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHanDateGetDayOfYearFirstDay() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 1,
 		day: 1
 	});
@@ -1641,51 +1834,51 @@ function testHanDateGetDayOfYearFirstDay() {
 
 function testHanDateGetDayOfYearMidYear() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4687,
 		month: 3,
 		day: 17
 	});
     assertNotNull(hd);
     
-    assertEquals(79, hd.getDayOfYear());
+    assertEquals(76, hd.getDayOfYear());
 }
 
 function testHanDateGetDayOfYearLastDay() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4686,
 		month: 12,
 		day: 29
 	});
     assertNotNull(hd);
     
-    assertEquals(365, hd.getDayOfYear());
+    assertEquals(354, hd.getDayOfYear());
 }
 
 function testHanDateGetDayOfYearLastDayLeapYear() {
     var hd = new ilib.Date.HanDate({
-		year: 1387,
-		month: 12,
+		year: 4687,
+		month: 13,
 		day: 30
 	});
     assertNotNull(hd);
     
-    assertEquals(366, hd.getDayOfYear());
+    assertEquals(384, hd.getDayOfYear());
 }
 
 function testHanDateGetWeekOfMonth0() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(0, hd.getWeekOfMonth("en-US"));
+    assertEquals(1, hd.getWeekOfMonth("en-US"));
 }
 
 function testHanDateGetWeekOfMonth1() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 4
 	});
@@ -1696,7 +1889,7 @@ function testHanDateGetWeekOfMonth1() {
 
 function testHanDateGetWeekOfMonth2() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 11
 	});
@@ -1707,31 +1900,20 @@ function testHanDateGetWeekOfMonth2() {
 
 function testHanDateGetWeekOfMonth3() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 20
-	});
-    assertNotNull(hd);
-    
-    assertEquals(3, hd.getWeekOfMonth("en-US"));
-}
-
-function testHanDateGetWeekOfMonth4() {
-    var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 3,
-		day: 29
 	});
     assertNotNull(hd);
     
     assertEquals(4, hd.getWeekOfMonth("en-US"));
 }
 
-function testHanDateGetWeekOfMonth5() {
+function testHanDateGetWeekOfMonth4() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
-		day: 31
+		day: 30
 	});
     assertNotNull(hd);
     
@@ -1740,18 +1922,18 @@ function testHanDateGetWeekOfMonth5() {
 
 function testHanDateGetWeekOfMonth6() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 4,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(1, hd.getWeekOfMonth("en-US"));
+    assertEquals(0, hd.getWeekOfMonth("en-US"));
 }
 
 function testHanDateGetWeekOfMonth7() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 5,
 		day: 1
 	});
@@ -1762,7 +1944,7 @@ function testHanDateGetWeekOfMonth7() {
 
 function testHanDateGetWeekOfMonth8() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 6,
 		day: 1
 	});
@@ -1773,7 +1955,7 @@ function testHanDateGetWeekOfMonth8() {
 
 function testHanDateGetWeekOfMonth9() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 7,
 		day: 1
 	});
@@ -1784,18 +1966,18 @@ function testHanDateGetWeekOfMonth9() {
 
 function testHanDateGetWeekOfMonthCN0() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
+    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
 function testHanDateGetWeekOfMonthCN1() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 4
 	});
@@ -1806,7 +1988,7 @@ function testHanDateGetWeekOfMonthCN1() {
 
 function testHanDateGetWeekOfMonthCN2() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 11
 	});
@@ -1817,31 +1999,20 @@ function testHanDateGetWeekOfMonthCN2() {
 
 function testHanDateGetWeekOfMonthCN3() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
 		day: 20
-	});
-    assertNotNull(hd);
-    
-    assertEquals(3, hd.getWeekOfMonth("zh-Hans-CN"));
-}
-
-function testHanDateGetWeekOfMonthCN4() {
-    var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 3,
-		day: 29
 	});
     assertNotNull(hd);
     
     assertEquals(4, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
-function testHanDateGetWeekOfMonthCN5() {
+function testHanDateGetWeekOfMonthCN4() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 3,
-		day: 31
+		day: 30
 	});
     assertNotNull(hd);
     
@@ -1850,18 +2021,18 @@ function testHanDateGetWeekOfMonthCN5() {
 
 function testHanDateGetWeekOfMonthCN6() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 4,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
+    assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
 function testHanDateGetWeekOfMonthCN7() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 5,
 		day: 1
 	});
@@ -1872,7 +2043,7 @@ function testHanDateGetWeekOfMonthCN7() {
 
 function testHanDateGetWeekOfMonthCN8() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 6,
 		day: 1
 	});
@@ -1883,52 +2054,42 @@ function testHanDateGetWeekOfMonthCN8() {
 
 function testHanDateGetWeekOfMonthCN9() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 7,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
+    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
 }
+
 
 function testHanDateGetWeekOfMonthCN10() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 8,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
+    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
 function testHanDateGetWeekOfMonthCN11() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 9,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
+    assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
 function testHanDateGetWeekOfMonthCN12() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 10,
-		day: 1
-	});
-    assertNotNull(hd);
-    
-    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
-}
-
-function testHanDateGetWeekOfMonthCN13() {
-    var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 11,
 		day: 1
 	});
     assertNotNull(hd);
@@ -1936,9 +2097,20 @@ function testHanDateGetWeekOfMonthCN13() {
     assertEquals(0, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
+function testHanDateGetWeekOfMonthCN13() {
+    var hd = new ilib.Date.HanDate({
+		year: 4707,
+		month: 11,
+		day: 1
+	});
+    assertNotNull(hd);
+    
+    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
+}
+
 function testHanDateGetWeekOfMonthCN14() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 12,
 		day: 1
 	});
@@ -1947,33 +2119,34 @@ function testHanDateGetWeekOfMonthCN14() {
     assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
-function testHanDateGetWeekOfMonthUS() {
+function testHanDateGetWeekOfMonthCN() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 8,
+		year: 4708,
+		month: 3,
 		day: 1
 	});
     assertNotNull(hd);
     
-    assertEquals(0, hd.getWeekOfMonth("en-US"));
+    // 3/1 is a Sunday, so it is at the beginning of the first week in China
+    assertEquals(1, hd.getWeekOfMonth("zh-Hans-CN"));
 }
 
 function testHanDateGetWeekOfMonthDE() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
-		month: 8,
+		year: 4708,
+		month: 3,
 		day: 1
 	});
     assertNotNull(hd);
     
-    // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the 
+    // weeks in Germany start on Monday, and 3/1 is a Sunday, so it is at the 
     // end of the preceding week.
     assertEquals(0, hd.getWeekOfMonth("de-DE"));
 }
 
 function testHanDateGetEraAP() {
     var hd = new ilib.Date.HanDate({
-		year: 1388,
+		year: 4707,
 		month: 5,
 		day: 1
 	});
@@ -2021,7 +2194,7 @@ function testHanDateGetEraBAPYear0() {
 
 function testHanDateSetTimeZone() {
     var hd = new ilib.Date.HanDate({
-    	year: 1433, 
+    	year: 4707, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
@@ -2037,7 +2210,7 @@ function testHanDateSetTimeZone() {
 
 function testHanDateSetTimeZoneNotString() {
     var hd = new ilib.Date.HanDate({
-    	year: 1433, 
+    	year: 4707, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
@@ -2053,7 +2226,7 @@ function testHanDateSetTimeZoneNotString() {
 
 function testHanDateSetTimeZoneUndefined() {
     var hd = new ilib.Date.HanDate({
-    	year: 1433, 
+    	year: 4707, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
@@ -2070,7 +2243,7 @@ function testHanDateSetTimeZoneUndefined() {
 
 function testHanDateSetTimeZoneEmpty() {
     var hd = new ilib.Date.HanDate({
-    	year: 1433, 
+    	year: 4707, 
     	month: 3, 
     	day: 8,
     	timezone: "America/Los_Angeles"
@@ -2112,9 +2285,9 @@ function testHanDateInitWithRDRightTimeZone() {
     assertEquals("local", hd.getTimeZone());
 }
 
-function testPersDateAlgoRoundTripConstruction() {
+function testHanDateRoundTripConstruction() {
     var hd = new ilib.Date.HanDate({
-    	year: 1393,
+    	year: 4707,
     	month: 8,
     	day: 12,
     	timezone: "local"
@@ -2138,9 +2311,9 @@ function testPersDateAlgoRoundTripConstruction() {
     assertEquals(hd.getSeconds(), hd2.getSeconds());
 }
 
-function testPersDateAlgoRoundTripConstruction2() {
+function testHanDateRoundTripConstruction2() {
     var hd = new ilib.Date.HanDate({
-    	year: 1393,
+    	year: 4707,
     	month: 8,
     	day: 12,
     	timezone: "America/Los_Angeles"

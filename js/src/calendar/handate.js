@@ -121,13 +121,8 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 		newYears = m2;
 	}
 
-	var p = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (date.month-1) * 29);
-	
-	var m = ilib.Date.HanDate._newMoonBefore(p + 1);
-	var month = ilib.amod(ilib._roundFnc.halfdown((m - calc.m1) / 29.530588853000001) - (this.leapYear && ilib.Date.HanDate._priorLeapMonth(calc.m1, m) ? 1 : 0), 12);
-	var priorNewMoon = (month === date.month && this.leapYear) ? p : ilib.Date.HanDate._newMoonOnOrAfter(p+1);
-		
-	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(p) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(p)));
+	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1 + date.month * 29);
+	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(priorNewMoon) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(priorNewMoon)));
 
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
@@ -135,7 +130,7 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 		date.millisecond) /
 		86400000;
 	
-	
+	/*
 	console.log("getRataDie: converting " +  JSON.stringify(date) + " to an RD");
 	console.log("getRataDie: year is " +  date.year + " plus cycle " + date.cycle);
 	console.log("getRataDie: isLeapYear is " +  this.leapYear);
@@ -143,9 +138,22 @@ ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	console.log("getRataDie: day in month is " +  date.day);
 	console.log("getRataDie: rdtime is " +  rdtime);
 	console.log("getRataDie: rd is " +  (priorNewMoon + date.day - 1 + rdtime));
-	
+	*/
 	
 	this.rd = priorNewMoon + date.day - 1 + rdtime;
+};
+
+/**
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @private
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
 /**
@@ -498,7 +506,7 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	var remainder,
 		rd = this.rd.getRataDie();
 
-	console.log("HanDate._calcDateComponents: calculating for rd " + rd);
+	// console.log("HanDate._calcDateComponents: calculating for rd " + rd);
 
 	if (typeof(this.offset) === "undefined") {
 		// now offset the RD by the time zone, then recalculate in case we were 
@@ -516,55 +524,32 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	// use the Gregorian calendar objects as a convenient way to short-cut some
 	// of the date calculations
 	
-	var gregdate = new ilib.Date.GregDate({
-		julianday: this.rd.getJulianDay() + this.offset, 
-		timezone: "Etc/UTC"
-	});
-	var lastYearsST = new ilib.Date.GregRataDie({
-		year: gregdate.year - 1,
-		month: 12,
-		day: 15,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var thisYearsST = new ilib.Date.GregRataDie({
-		year: gregdate.year,
-		month: 12,
-		day: 15,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var nextYearsST = new ilib.Date.GregRataDie({
-		year: gregdate.year + 1,
-		month: 12,
-		day: 15,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var thisYearJul1 = new ilib.Date.GregRataDie({
-		year: gregdate.year,
-		month: 7,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var solstice1 = ilib.Date.HanDate._majorSTOnOrAfter(lastYearsST.getRataDie());
-	var solstice2 = ilib.Date.HanDate._majorSTOnOrAfter(thisYearsST.getRataDie());
-	var m1 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonOnOrAfter(solstice1 + 1) : ilib.Date.HanDate._newMoonOnOrAfter(solstice2 + 1);
-	var m2 = (solstice1 <= rd && rd < solstice2) ? ilib.Date.HanDate._newMoonBefore(solstice2 + 1) : ilib.Date.HanDate._newMoonBefore(ilib.Date.HanDate._majorSTOnOrAfter(nextYearsST.getRataDie()) + 1);
+	var gregyear = ilib.Date.GregDate._calcYear(rd);
+	this.year = gregyear + 2697;
+	var calc = ilib.Cal.Han._leapYearCalc(this.year);
+	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	this.leapYear = Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
+	var newYears = (this.leapYear &&
+		(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2))) ?
+				ilib.Date.HanDate._newMoonOnOrAfter(m2+1) : m2;
+	
+	// See if it's between Jan 1 and the Chinese new years of that Gregorian year. If
+	// so, then the Han year is actually the previous one
+	if (rd < newYears) {
+		this.year--;
+		calc = ilib.Cal.Han._leapYearCalc(this.year);
+		m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+		this.leapYear = Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
+		newYears = (this.leapYear &&
+			(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2))) ?
+					ilib.Date.HanDate._newMoonOnOrAfter(m2+1) : m2;
+	}
+	// month is elapsed month, not the month number + leap month boolean
 	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
-	this.leapYear = (ilib._roundFnc.halfdown((m2 - m1) / 29.530588853000001) === 12);
-	this.month = ilib.amod(ilib._roundFnc.halfdown((m - m1) / 29.530588853000001) - (this.leapYear && ilib.Date.HanDate._priorLeapMonth(m1, m) ? 1 : 0), 12);
-	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(m1, ilib.Date.HanDate._newMoonBefore(m)));
-	this.year = gregdate.year + 2696 + (this.month < 11 || rd > thisYearJul1.getRataDie() ? 1 : 0);
+	this.month = Math.round((m - calc.m1) / 29.530588853000001);
+	
+	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(m)));
+	
 	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = ilib.amod(this.year, 60);
 	this.day = rd - m + 1;
@@ -664,7 +649,9 @@ ilib.Date.HanDate.prototype.getDayOfWeek = function() {
  * @return {number} the ordinal day of the year
  */
 ilib.Date.HanDate.prototype.getDayOfYear = function() {
-	return (this.month-1) * 29 + this.day;
+	var newYears = this.cal.newYears(this.year) - ilib.Date.RataDie.gregorianEpoch;
+	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (this.month -1) * 29);
+	return priorNewMoon - newYears + this.day;
 };
 
 /**
