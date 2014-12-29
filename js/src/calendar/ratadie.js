@@ -19,6 +19,7 @@
 
 /* !depends 
 util/utils.js
+util/math.js
 julianday.js 
 */
 
@@ -33,6 +34,12 @@ julianday.js
  * 
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>cycle</i> - any integer giving the number of 60-year cycle in which the date is located.
+ * If the cycle is not given but the year is, it is assumed that the year parameter is a fictitious 
+ * linear count of years since the beginning of the epoch, much like other calendars. This linear
+ * count is never used. If both the cycle and year are given, the year is wrapped to the range 0 
+ * to 60 and treated as if it were a year in the regular 60-year cycle.
  * 
  * <li><i>year</i> - any integer, including 0
  * 
@@ -91,7 +98,7 @@ ilib.Date.RataDie = function(params) {
 			// JD time is defined to be UTC
 			this._setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.parts) {
+				params.minute || params.second || params.millisecond || params.parts || params.cycle) {
 			this._setDateComponents(params);
 		} else if (typeof(params.rd) !== 'undefined') {
 			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.Date.RataDie) ? params.rd.rd : params.rd;
@@ -107,14 +114,21 @@ ilib.Date.RataDie = function(params) {
 	}
 };
 
+/**
+ * @private
+ * @const
+ * @type {number}
+ */
+ilib.Date.RataDie.gregorianEpoch = 1721424.5;
+
 ilib.Date.RataDie.prototype = {
 	/**
 	 * @protected
 	 * @const
-	 * @type number
+	 * @type {number}
 	 * the difference between a zero Julian day and the zero Gregorian date. 
 	 */
-	epoch: 1721424.5,
+	epoch: ilib.Date.RataDie.gregorianEpoch,
 	
 	/**
 	 * Set the RD of this instance according to the given unix time. Unix time is

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js util/utils.js locale.js
+// !depends ilibglobal.js util/utils.js locale.js util/math.js
 
 // !data plurals
 

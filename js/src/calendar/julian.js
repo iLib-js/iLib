@@ -18,7 +18,7 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js */
+/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
 
 /**
  * @class

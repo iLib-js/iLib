@@ -20,6 +20,7 @@
 /* !depends 
 date.js
 util/utils.js
+util/math.js
 calendar/ratadie.js
 calendar/astro.js
 calendar/gregoriandate.js
@@ -76,7 +77,16 @@ calendar/gregoriandate.js
  */
 ilib.Date.PersAstroRataDie = function(params) {
 	this.rd = undefined;
-	ilib.Date.RataDie.call(this, params);
+	ilib.Date.initAstro(
+		params && typeof(params.sync) === 'boolean' ? params.sync : true,
+		params && params.loadParams,
+		ilib.bind(this, function (x) {
+			ilib.Date.RataDie.call(this, params);
+			if (params && typeof(params.callback) === 'function') {
+				params.callback(this);
+			}
+		})
+	);
 };
 
 ilib.Date.PersAstroRataDie.prototype = new ilib.Date.RataDie();
@@ -95,7 +105,7 @@ ilib.Date.PersAstroRataDie.prototype.epoch = 1948319.5;
  * @protected 
  */
 ilib.Date.PersAstroRataDie.prototype._tehranEquinox = function(year) {
-    var equJED, equJD, equAPP, equTehran, dtTehran;
+    var equJED, equJD, equAPP, equTehran, dtTehran, eot;
 
     //  March equinox in dynamical time
     equJED = ilib.Date._equinox(year, 0);
@@ -104,7 +114,9 @@ ilib.Date.PersAstroRataDie.prototype._tehranEquinox = function(year) {
     equJD = equJED - (ilib.Date._deltat(year) / (24 * 60 * 60));
 
     //  Apply the equation of time to yield the apparent time at Greenwich
-    equAPP = equJD + ilib.Date._equationOfTime(equJED);
+    eot = ilib.Date._equationOfTime(equJED) * 360;
+    eot = (eot - 20 * Math.floor(eot/20)) / 360;
+    equAPP = equJD + eot;
 
     /*  
      * Finally, we must correct for the constant difference between

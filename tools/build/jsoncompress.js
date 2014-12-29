@@ -86,6 +86,9 @@ function walk(root, dir) {
 				try {
 					var data = fs.readFileSync(sourcePath, 'utf8');
 					if (data.length > 0) {
+						// before parsing, first remove comments which are not valid in real json
+						data = data.replace(/\/\/[^\n]*\n/g, "\n").replace(/\/\*(\*[^\/]|[^\*])*\*\//g, "");
+						
 						obj = JSON.parse(data);
 						var targetPath = path.join(targetdir, sourcePathRelative);
 						

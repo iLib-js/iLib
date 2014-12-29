@@ -122,3 +122,44 @@ ilib._roundFnc = {
 	}
 };
 
+/**
+ * Do a proper modulo function. The Javascript % operator will give the truncated
+ * division algorithm, but for calendrical calculations, we need the Euclidean
+ * division algorithm where the remainder of any division, whether the dividend
+ * is negative or not, is always a positive number in the range [0, modulus).<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {number} dividend the number being divided
+ * @param {number} modulus the number dividing the dividend. This should always be a positive number.
+ * @return the remainder of dividing the dividend by the modulus.  
+ */
+ilib.mod = function (dividend, modulus) {
+	if (modulus == 0) {
+		return 0;
+	}
+	var x = dividend % modulus;
+	return (x < 0) ? x + modulus : x;
+};
+
+/**
+ * Do a proper adjusted modulo function. The Javascript % operator will give the truncated
+ * division algorithm, but for calendrical calculations, we need the Euclidean
+ * division algorithm where the remainder of any division, whether the dividend
+ * is negative or not, is always a positive number in the range (0, modulus]. The adjusted
+ * modulo function differs from the regular modulo function in that when the remainder is
+ * zero, the modulus should be returned instead.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {number} dividend the number being divided
+ * @param {number} modulus the number dividing the dividend. This should always be a positive number.
+ * @return the remainder of dividing the dividend by the modulus.  
+ */
+ilib.amod = function (dividend, modulus) {
+	if (modulus == 0) {
+		return 0;
+	}
+	var x = dividend % modulus;
+	return (x <= 0) ? x + modulus : x;
+};

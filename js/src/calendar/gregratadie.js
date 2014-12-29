@@ -22,6 +22,7 @@ date.js
 calendar/gregorian.js
 calendar/ratadie.js
 util/utils.js
+util/math.js
 julianday.js 
 */
 

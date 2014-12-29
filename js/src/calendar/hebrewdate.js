@@ -22,6 +22,7 @@ date.js
 calendar/hebrew.js
 calendar/ratadie.js
 util/utils.js
+util/math.js
 julianday.js 
 */
 
