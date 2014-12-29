@@ -22,6 +22,7 @@ date.js
 calendar/gregratadie.js 
 calendar/gregoriandate.js 
 calendar/han.js
+calendar/astro.js 
 util/utils.js
 util/search.js
 util/math.js
@@ -85,9 +86,25 @@ julianday.js
  * @param {Object=} params parameters that govern the settings and behaviour of this Han RD date
  */
 ilib.Date.HanRataDie = function(params) {
-	this.cal = params && params.cal || new ilib.Cal.Han();
 	this.rd = undefined;
-	ilib.Date.RataDie.call(this, params);
+	if (params && params.cal) {
+		this.cal = params.cal;
+		ilib.Date.RataDie.call(this, params);
+		if (params && typeof(params.callback) === 'function') {
+			params.callback(this);
+		}
+	}
+	new ilib.Cal.Han({
+		sync: params && params.sync,
+		loadParams: params && params.loadParams,
+		callback: ilib.bind(this, function(c) {
+			this.cal = c;
+			ilib.Date.RataDie.call(this, params);
+			if (params && typeof(params.callback) === 'function') {
+				params.callback(this);
+			}
+		})
+	});
 };
 
 ilib.Date.HanRataDie.prototype = new ilib.Date.RataDie();
@@ -112,17 +129,17 @@ ilib.Date.HanRataDie.epoch = 758325.5;
  */
 ilib.Date.HanRataDie.prototype._setDateComponents = function(date) {
 	var calc = ilib.Cal.Han._leapYearCalc(date.year, date.cycle);
-	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	var m2 = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
 	var newYears;
 	this.leapYear = (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12);
-	if (this.leapYear && (ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
-		newYears = ilib.Date.HanDate._newMoonOnOrAfter(m2+1);
+	if (this.leapYear && (ilib.Cal.Han._noMajorST(calc.m1) || ilib.Cal.Han._noMajorST(m2)) ) {
+		newYears = ilib.Cal.Han._newMoonOnOrAfter(m2+1);
 	} else {
 		newYears = m2;
 	}
 
-	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1 + date.month * 29);
-	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(priorNewMoon) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(priorNewMoon)));
+	var priorNewMoon = ilib.Cal.Han._newMoonOnOrAfter(calc.m1 + date.month * 29);
+	this.leapMonth = (this.leapYear && ilib.Cal.Han._noMajorST(priorNewMoon) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Cal.Han._newMoonBefore(priorNewMoon)));
 
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
@@ -229,9 +246,7 @@ ilib.Date.HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * @param {Object=} params parameters that govern the settings and behaviour of this Han date
  */
 ilib.Date.HanDate = function(params) {
-	this.cal = new ilib.Cal.Han();
 	this.timezone = "local";
-	
 	if (params) {
 		if (params.locale) {
 			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
@@ -241,94 +256,132 @@ ilib.Date.HanDate = function(params) {
 		if (params.timezone) {
 			this.timezone = params.timezone;
 		}
-		
-		if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.cycle) {
-			/**
-			 * Cycle number in the Han calendar.
-			 * @type number
-			 */
-			this.cycle = parseInt(params.cycle, 10) || 0;
-
-			/**
-			 * Year in the Han calendar.
-			 * @type number
-			 */
-			this.year = parseInt(params.year, 10) || 0;
-
-			if (typeof(params.cycle) !== 'undefined' && typeof(params.year) !== 'undefined') {
-				this.year = ilib.amod(this.year, 60);
-			}
-			
-			/**
-			 * The month number, ranging from 1 to 12
-			 * @type number
-			 */
-			this.month = parseInt(params.month, 10) || 1;
-
-			/**
-			 * The day of the month. This ranges from 1 to 31.
-			 * @type number
-			 */
-			this.day = parseInt(params.day, 10) || 1;
-			
-			/**
-			 * The hour of the day. This can be a number from 0 to 23, as times are
-			 * stored unambiguously in the 24-hour clock.
-			 * @type number
-			 */
-			this.hour = parseInt(params.hour, 10) || 0;
-
-			/**
-			 * The minute of the hours. Ranges from 0 to 59.
-			 * @type number
-			 */
-			this.minute = parseInt(params.minute, 10) || 0;
-
-			/**
-			 * The second of the minute. Ranges from 0 to 59.
-			 * @type number
-			 */
-			this.second = parseInt(params.second, 10) || 0;
-
-			/**
-			 * The millisecond of the second. Ranges from 0 to 999.
-			 * @type number
-			 */
-			this.millisecond = parseInt(params.millisecond, 10) || 0;
-			
-			/**
-			 * The day of the year. Ranges from 1 to 366.
-			 * @type number
-			 */
-			this.dayOfYear = parseInt(params.dayOfYear, 10);
-
-			if (typeof(params.dst) === 'boolean') {
-				this.dst = params.dst;
-			}
-			
-			this.rd = this.newRd(this);
-			
-			// add the time zone offset to the rd to convert to UTC
-			if (!this.tz) {
-				this.tz = new ilib.TimeZone({id: this.timezone});
-			}
-			// getOffsetMillis requires that this.year, this.rd, and this.dst 
-			// are set in order to figure out which time zone rules apply and 
-			// what the offset is at that point in the year
-			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
-			if (this.offset !== 0) {
-				this.rd = this.newRd({
-					rd: this.rd.getRataDie() - this.offset
+	}
+	
+	new ilib.Cal.Han({
+		sync: params && typeof(params) === 'boolean' ? params.sync : true,
+		loadParams: params && params.loadParams,
+		callback: ilib.bind(this, function (cal) {
+			this.cal = cal;
+	
+			if (params && (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond || params.cycle)) {
+				/**
+				 * Cycle number in the Han calendar.
+				 * @type number
+				 */
+				this.cycle = parseInt(params.cycle, 10) || 0;
+	
+				/**
+				 * Year in the Han calendar.
+				 * @type number
+				 */
+				this.year = parseInt(params.year, 10) || 0;
+	
+				if (typeof(params.cycle) !== 'undefined' && typeof(params.year) !== 'undefined') {
+					this.year = ilib.amod(this.year, 60);
+				}
+				
+				/**
+				 * The month number, ranging from 1 to 12
+				 * @type number
+				 */
+				this.month = parseInt(params.month, 10) || 1;
+	
+				/**
+				 * The day of the month. This ranges from 1 to 31.
+				 * @type number
+				 */
+				this.day = parseInt(params.day, 10) || 1;
+				
+				/**
+				 * The hour of the day. This can be a number from 0 to 23, as times are
+				 * stored unambiguously in the 24-hour clock.
+				 * @type number
+				 */
+				this.hour = parseInt(params.hour, 10) || 0;
+	
+				/**
+				 * The minute of the hours. Ranges from 0 to 59.
+				 * @type number
+				 */
+				this.minute = parseInt(params.minute, 10) || 0;
+	
+				/**
+				 * The second of the minute. Ranges from 0 to 59.
+				 * @type number
+				 */
+				this.second = parseInt(params.second, 10) || 0;
+	
+				/**
+				 * The millisecond of the second. Ranges from 0 to 999.
+				 * @type number
+				 */
+				this.millisecond = parseInt(params.millisecond, 10) || 0;
+				
+				/**
+				 * The day of the year. Ranges from 1 to 366.
+				 * @type number
+				 */
+				this.dayOfYear = parseInt(params.dayOfYear, 10);
+	
+				if (typeof(params.dst) === 'boolean') {
+					this.dst = params.dst;
+				}
+				
+				this.newRd({
+					cycle: this.cycle,
+					year: this.year,
+					month: this.month,
+					day: this.day,
+					hour: this.hour,
+					minute: this.minute,
+					second: this.second,
+					millisecond: this.millisecond,
+					sync: params && typeof(params.sync) === 'boolean' ? params.sync : true,
+					loadParams: params && params.loadParams,
+					callback: ilib.bind(this, function (rd) {
+						if (rd) {
+							this.rd = rd;
+							
+							// add the time zone offset to the rd to convert to UTC
+							if (!this.tz) {
+								this.tz = new ilib.TimeZone({id: this.timezone});
+							}
+							// getOffsetMillis requires that this.year, this.rd, and this.dst 
+							// are set in order to figure out which time zone rules apply and 
+							// what the offset is at that point in the year
+							this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+							if (this.offset !== 0) {
+								this.rd = this.newRd({
+									rd: this.rd.getRataDie() - this.offset
+								});
+							}
+						}
+						
+						if (!this.rd) {
+							this.rd = this.newRd(params);
+							this._calcDateComponents();
+						}
+						
+						if (params && typeof(params.onLoad) === 'function') {
+							params.onLoad(this);
+						}
+					})
 				});
+			} else {
+				if (!this.rd) {
+					this.rd = this.newRd(params);
+					this._calcDateComponents();
+				}
+				
+				if (params && typeof(params.onLoad) === 'function') {
+					params.onLoad(this);
+				}
 			}
-		}
-	}
+		})
+	});
 
-	if (!this.rd) {
-		this.rd = this.newRd(params);
-		this._calcDateComponents();
-	}
 };
 
 ilib.Date.HanDate.prototype = new ilib.Date({noinstance: true});
@@ -348,38 +401,6 @@ ilib.Date.HanDate.prototype.newRd = function (params) {
 /**
  * @protected
  * @static
- * @param {number} rd RD to calculate from
- * @returns {number} the current major solar term
- */
-ilib.Date.HanDate._chineseTZ = function(rd) {
-	var year = ilib.Date.GregDate._calcYear(rd);
-	return year < 1929 ? 465.6666666666666666 : 480;
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from
- * @returns {number} the current major solar term
- */
-ilib.Date.HanDate._currentMajorST = function(rd) {
-	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd, ilib.Date.HanDate._chineseTZ(rd)) + ilib.Date.RataDie.gregorianEpoch);
-	return ilib.amod(2 + Math.floor(s/30), 12);
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from
- * @returns {boolean} true if there is no major solar term in the same year
- */
-ilib.Date.HanDate._noMajorST = function(rd) {
-	return ilib.Date.HanDate._currentMajorST(rd) === ilib.Date.HanDate._currentMajorST(ilib.Date.HanDate._newMoonOnOrAfter(rd+1));
-};
-
-/**
- * @protected
- * @static
  * @param {number} rd1  
  * @param {number} rd2  
  * @returns {boolean} true if there is a leap month earlier in the same year 
@@ -387,99 +408,8 @@ ilib.Date.HanDate._noMajorST = function(rd) {
  */
 ilib.Date.HanDate._priorLeapMonth = function(rd1, rd2) {
 	return rd2 >= rd1 &&
-		(ilib.Date.HanDate._priorLeapMonth(rd1, ilib.Date.HanDate._newMoonBefore(rd2)) ||
-				ilib.Date.HanDate._noMajorST(rd2));
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the same RD at midnight in China
- */
-ilib.Date.HanDate._chinaRD = function(rd) {
-	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	return ilib.Date._universalFromLocal(rd, tz)
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the rd of previous new moon before the given RD date
- */
-ilib.Date.HanDate._newMoonBefore = function(rd) {
-	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var uni = ilib.Date._universalFromLocal(rd, tz);
-	var moon = ilib.Date._newMoonBefore(uni + ilib.Date.RataDie.gregorianEpoch);
-	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the rd of next new moon on or after the given RD date
- */
-ilib.Date.HanDate._newMoonOnOrAfter = function(rd) {
-	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var uni = ilib.Date._universalFromLocal(rd, tz);
-	var moon = ilib.Date._newMoonAtOrAfter(uni + ilib.Date.RataDie.gregorianEpoch);
-	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from
- * @param {number} longitude longitude to seek 
- * @returns {number} the RD of the next time that the solar longitude 
- * is a multiple of the given longitude
- */
-ilib.Date.HanDate._hanNextSolarLongitude = function(rd, longitude) {
-	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var uni = ilib.Date._universalFromLocal(rd, tz);
-	var sol = ilib.Date._nextSolarLongitude(uni + ilib.Date.RataDie.gregorianEpoch, longitude);
-	return ilib.Date._localFromUniversal(sol - ilib.Date.RataDie.gregorianEpoch, tz);
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the major solar term for the RD
- */
-ilib.Date.HanDate._majorSTOnOrAfter = function(rd) {
-	var tz = ilib.Date.HanDate._chineseTZ(rd);
-	var uni = ilib.Date._universalFromLocal(rd, tz);
-	var next = ilib.Date._fixangle(30 * Math.ceil(ilib.Date._solarLongitude(uni + ilib.Date.RataDie.gregorianEpoch)/30));
-	return ilib.Date.HanDate._hanNextSolarLongitude(rd, next);
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the current minor solar term for the RD
- */
-ilib.Date.HanDate._currentMinorST = function(rd) {
-	var slong = ilib.Date._solarLongitude(rd + ilib.Date.RataDie.gregorianEpoch);
-	return ilib.amod(3 + Math.floor((slong - 15) / 30), 12);
-};
-
-/**
- * @protected
- * @static
- * @param {number} rd RD to calculate from 
- * @returns {number} the next minor solar term for the RD
- */
-ilib.Date.HanDate._minorSTOnOrAfter = function(rd) {
-	var chineseDate = ilib.Date._universalFromLocal(rd, ilib.Date.HanDate._chineseTZ(rd)); 
-	var longitude = ilib.Date._fixangle(
-		30 * 
-		Math.ceil((ilib.Date._solarLongitude(chineseDate + ilib.Date.RataDie.gregorianEpoch) - 15) / 30) + 15
-	);
-	return ilib.Date.HanDate._hanNextSolarLongitude(rd, longitude);
+		(ilib.Date.HanDate._priorLeapMonth(rd1, ilib.Cal.Han._newMoonBefore(rd2)) ||
+				ilib.Cal.Han._noMajorST(rd2));
 };
 
 /**
@@ -527,28 +457,28 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	var gregyear = ilib.Date.GregDate._calcYear(rd);
 	this.year = gregyear + 2697;
 	var calc = ilib.Cal.Han._leapYearCalc(this.year);
-	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	var m2 = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
 	this.leapYear = Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
 	var newYears = (this.leapYear &&
-		(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2))) ?
-				ilib.Date.HanDate._newMoonOnOrAfter(m2+1) : m2;
+		(ilib.Cal.Han._noMajorST(calc.m1) || ilib.Cal.Han._noMajorST(m2))) ?
+				ilib.Cal.Han._newMoonOnOrAfter(m2+1) : m2;
 	
 	// See if it's between Jan 1 and the Chinese new years of that Gregorian year. If
 	// so, then the Han year is actually the previous one
 	if (rd < newYears) {
 		this.year--;
 		calc = ilib.Cal.Han._leapYearCalc(this.year);
-		m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+		m2 = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
 		this.leapYear = Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
 		newYears = (this.leapYear &&
-			(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2))) ?
-					ilib.Date.HanDate._newMoonOnOrAfter(m2+1) : m2;
+			(ilib.Cal.Han._noMajorST(calc.m1) || ilib.Cal.Han._noMajorST(m2))) ?
+					ilib.Cal.Han._newMoonOnOrAfter(m2+1) : m2;
 	}
 	// month is elapsed month, not the month number + leap month boolean
-	var m = ilib.Date.HanDate._newMoonBefore(rd + 1);
+	var m = ilib.Cal.Han._newMoonBefore(rd + 1);
 	this.month = Math.round((m - calc.m1) / 29.530588853000001);
 	
-	this.leapMonth = (this.leapYear && ilib.Date.HanDate._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Date.HanDate._newMoonBefore(m)));
+	this.leapMonth = (this.leapYear && ilib.Cal.Han._noMajorST(m) && !ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Cal.Han._newMoonBefore(m)));
 	
 	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = ilib.amod(this.year, 60);
@@ -650,7 +580,7 @@ ilib.Date.HanDate.prototype.getDayOfWeek = function() {
  */
 ilib.Date.HanDate.prototype.getDayOfYear = function() {
 	var newYears = this.cal.newYears(this.year) - ilib.Date.RataDie.gregorianEpoch;
-	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(newYears + (this.month -1) * 29);
+	var priorNewMoon = ilib.Cal.Han._newMoonOnOrAfter(newYears + (this.month -1) * 29);
 	return priorNewMoon - newYears + this.day;
 };
 

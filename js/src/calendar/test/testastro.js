@@ -56,6 +56,7 @@ var testDatesAstro1 = [
 
 function testEphemerisCorrection() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
         l = ilib.Date._ephemerisCorrection(testDatesAstro1[i][0]);
@@ -65,6 +66,7 @@ function testEphemerisCorrection() {
 
 function testJulianCenturies() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
         l = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
@@ -74,6 +76,7 @@ function testJulianCenturies() {
 
 function testNutation() {
 	var c, l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
         c = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
@@ -84,6 +87,7 @@ function testNutation() {
 
 function testAberration() {
 	var c, l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
         c = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
@@ -94,6 +98,7 @@ function testAberration() {
 
 function testSolarLongitude() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
     
         info("testing jd=" + testDatesAstro1[i][0]);
@@ -109,6 +114,7 @@ function testSolarLongitude() {
 
 function testNextSolarLongitude() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
     
         info("testing jd=" + testDatesAstro1[i][0]);
@@ -161,6 +167,7 @@ var testDatesAstro2 = [
 
 function testLunarLongitude() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
@@ -177,6 +184,7 @@ function testLunarLongitude() {
 
 function testNewMoonTime() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
@@ -191,6 +199,7 @@ function testNewMoonTime() {
 
 function testNewMoonBefore() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
@@ -207,6 +216,7 @@ function testNewMoonBefore() {
 
 function testNewMoonAtOrAfter() {
 	var l;
+	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);

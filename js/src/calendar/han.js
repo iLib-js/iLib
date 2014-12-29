@@ -17,8 +17,7 @@
  * limitations under the License.
  */
 
-
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
+/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js calendar/astro.js */
 
 /**
  * @class
@@ -28,10 +27,18 @@
  * Depends directive: !depends han.js
  * 
  * @constructor
+ * @param {Object=} params optional parameters to load the calendrical data
  * @implements ilib.Cal
  */
-ilib.Cal.Han = function() {
+ilib.Cal.Han = function(params) {
 	this.type = "han";
+	var sync = params && typeof(params.sync) === 'boolean' ? params.sync : true;
+	
+	ilib.Date.initAstro(sync, params && params.loadParams, /** @type {function ((Object|null)=): ?} */ ilib.bind(this, function (x) {
+		if (params && typeof(params.callback) === 'function') {
+			params.callback(this);
+		}
+	}));
 };
 
 /**
@@ -47,6 +54,34 @@ ilib.Cal.Han._getElapsedYear = function(year, cycle) {
 		elapsedYear = 60 * cycle + year;
 	}
 	return elapsedYear;
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from
+ * @param {number} longitude longitude to seek 
+ * @returns {number} the RD of the next time that the solar longitude 
+ * is a multiple of the given longitude
+ */
+ilib.Cal.Han._hanNextSolarLongitude = function(rd, longitude) {
+	var tz = ilib.Cal.Han._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var sol = ilib.Date._nextSolarLongitude(uni + ilib.Date.RataDie.gregorianEpoch, longitude);
+	return ilib.Date._localFromUniversal(sol - ilib.Date.RataDie.gregorianEpoch, tz);
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the major solar term for the RD
+ */
+ilib.Cal.Han._majorSTOnOrAfter = function(rd) {
+	var tz = ilib.Cal.Han._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var next = ilib.Date._fixangle(30 * Math.ceil(ilib.Date._solarLongitude(uni + ilib.Date.RataDie.gregorianEpoch)/30));
+	return ilib.Cal.Han._hanNextSolarLongitude(rd, next);
 };
 
 /**
@@ -69,7 +104,44 @@ ilib.Cal.Han._solsticeBefore = function (year, cycle) {
 		second: 0, 
 		millisecond: 0
 	});
-	return ilib.Date.HanDate._majorSTOnOrAfter(rd.getRataDie());
+	return ilib.Cal.Han._majorSTOnOrAfter(rd.getRataDie());
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from
+ * @returns {number} the current major solar term
+ */
+ilib.Cal.Han._chineseTZ = function(rd) {
+	var year = ilib.Date.GregDate._calcYear(rd);
+	return year < 1929 ? 465.6666666666666666 : 480;
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the rd of next new moon on or after the given RD date
+ */
+ilib.Cal.Han._newMoonOnOrAfter = function(rd) {
+	var tz = ilib.Cal.Han._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var moon = ilib.Date._newMoonAtOrAfter(uni + ilib.Date.RataDie.gregorianEpoch);
+	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the rd of previous new moon before the given RD date
+ */
+ilib.Cal.Han._newMoonBefore = function(rd) {
+	var tz = ilib.Cal.Han._chineseTZ(rd);
+	var uni = ilib.Date._universalFromLocal(rd, tz);
+	var moon = ilib.Date._newMoonBefore(uni + ilib.Date.RataDie.gregorianEpoch);
+	return Math.floor(ilib.Date._localFromUniversal(moon - ilib.Date.RataDie.gregorianEpoch, tz));
 };
 
 /**
@@ -86,10 +158,31 @@ ilib.Cal.Han._leapYearCalc = function(year, cycle) {
 	};
 	ret.solstice1 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear);
 	ret.solstice2 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear+1);
-	ret.m1 = ilib.Date.HanDate._newMoonOnOrAfter(Math.ceil(ret.solstice1));
-	ret.m2 = ilib.Date.HanDate._newMoonBefore(Math.ceil(ret.solstice2));
+	ret.m1 = ilib.Cal.Han._newMoonOnOrAfter(Math.ceil(ret.solstice1));
+	ret.m2 = ilib.Cal.Han._newMoonBefore(Math.ceil(ret.solstice2));
 	
 	return ret;
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from
+ * @returns {number} the current major solar term
+ */
+ilib.Cal.Han._currentMajorST = function(rd) {
+	var s = ilib.Date._solarLongitude(ilib.Date._universalFromLocal(rd, ilib.Cal.Han._chineseTZ(rd)) + ilib.Date.RataDie.gregorianEpoch);
+	return ilib.amod(2 + Math.floor(s/30), 12);
+};
+
+/**
+ * @protected
+ * @static
+ * @param {number} rd RD to calculate from
+ * @returns {boolean} true if there is no major solar term in the same year
+ */
+ilib.Cal.Han._noMajorST = function(rd) {
+	return ilib.Cal.Han._currentMajorST(rd) === ilib.Cal.Han._currentMajorST(ilib.Cal.Han._newMoonOnOrAfter(rd+1));
 };
 
 /**
@@ -120,8 +213,8 @@ ilib.Cal.Han.prototype.getNumMonths = function(year, cycle) {
 ilib.Cal.Han.prototype.getMonLength = function(month, year) {
 	// distance between two new moons in Nanjing China
 	var calc = ilib.Cal.Han._leapYearCalc(year);
-	var priorNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1 + month * 29);
-	var postNewMoon = ilib.Date.HanDate._newMoonOnOrAfter(priorNewMoon + 1);
+	var priorNewMoon = ilib.Cal.Han._newMoonOnOrAfter(calc.m1 + month * 29);
+	var postNewMoon = ilib.Cal.Han._newMoonOnOrAfter(priorNewMoon + 1);
 	return postNewMoon - priorNewMoon;
 };
 
@@ -179,10 +272,10 @@ ilib.Cal.Han.prototype.getLeapMonth = function(year, cycle) {
 	
 	// search between rd1 and rd2 for the first month with no major solar term. That is our leap month.
 	var month = 0;
-	var m = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
-	while (!ilib.Date.HanDate._noMajorST(m)) {
+	var m = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
+	while (!ilib.Cal.Han._noMajorST(m)) {
 		month++;
-		m = ilib.Date.HanDate._newMoonOnOrAfter(m+1);
+		m = ilib.Cal.Han._newMoonOnOrAfter(m+1);
 	}
 	
 	// return the number of the month that is doubled
@@ -200,10 +293,10 @@ ilib.Cal.Han.prototype.getLeapMonth = function(year, cycle) {
  */
 ilib.Cal.Han.prototype.newYears = function(year, cycle) {
 	var calc = ilib.Cal.Han._leapYearCalc(year, cycle);
-	var m2 = ilib.Date.HanDate._newMoonOnOrAfter(calc.m1+1);
+	var m2 = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
 	if (Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12 &&
-			(ilib.Date.HanDate._noMajorST(calc.m1) || ilib.Date.HanDate._noMajorST(m2)) ) {
-		return ilib.Date.HanDate._newMoonOnOrAfter(m2+1) + ilib.Date.RataDie.gregorianEpoch;
+			(ilib.Cal.Han._noMajorST(calc.m1) || ilib.Cal.Han._noMajorST(m2)) ) {
+		return ilib.Cal.Han._newMoonOnOrAfter(m2+1) + ilib.Date.RataDie.gregorianEpoch;
 	}
 	return m2 + ilib.Date.RataDie.gregorianEpoch;
 };

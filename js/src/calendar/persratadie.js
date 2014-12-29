@@ -77,7 +77,16 @@ calendar/gregoriandate.js
  */
 ilib.Date.PersAstroRataDie = function(params) {
 	this.rd = undefined;
-	ilib.Date.RataDie.call(this, params);
+	ilib.Date.initAstro(
+		params && typeof(params.sync) === 'boolean' ? params.sync : true,
+		params && params.loadParams,
+		ilib.bind(this, function (x) {
+			ilib.Date.RataDie.call(this, params);
+			if (params && typeof(params.callback) === 'function') {
+				params.callback(this);
+			}
+		})
+	);
 };
 
 ilib.Date.PersAstroRataDie.prototype = new ilib.Date.RataDie();

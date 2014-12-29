@@ -38,6 +38,8 @@ calendar/persian.js
 calendar/persiandate.js
 calendar/persianastro.js
 calendar/persianastrodate.js
+calendar/han.js
+calendar/handate.js
 numprs.js
 numfmt.js
 julianday.js
