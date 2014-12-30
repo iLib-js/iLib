@@ -334,7 +334,7 @@ exports.merge = function merge(object1, object2, name1, name2) {
  */
 exports.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		var spec = language || ilib.getLocale();
+		var spec = language; // || ilib.getLocale();
 		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
         	if (exports.Locale.isLanguageCode(parts[i])) {
