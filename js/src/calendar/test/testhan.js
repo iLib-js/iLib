@@ -61,8 +61,8 @@ function testDegreesInBeijing() {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
-        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        var deg = ilib.Date._universalFromLocal(rd, ilib.Cal.Han._chineseTZ(rd))
+        var jd = testDatesChineseAstro1[i][0];
+        var deg = ilib.Date._universalFromLocal(jd, ilib.Cal.Han._chineseTZ(jd)) - ilib.Date.RataDie.gregorianEpoch;
         assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][1], deg, 1e-9);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -77,8 +77,8 @@ function testCurrentMajorSolarTerm() {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
-        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._currentMajorST(rd);
+        var jd = testDatesChineseAstro1[i][0];
+        l = ilib.Cal.Han._currentMajorST(jd);
         assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][2], l, 1e-9);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -93,8 +93,8 @@ function testHanNextSolarLongitude() {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
-        var rd = testDatesChineseAstro1[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._hanNextSolarLongitude(rd, 30.0);
+        var jd = testDatesChineseAstro1[i][0];
+        l = ilib.Cal.Han._hanNextSolarLongitude(jd, 30.0) - ilib.Date.RataDie.gregorianEpoch;
         assertRoughlyEquals("testing next solar longitude for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][3], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -146,8 +146,8 @@ function testNewMoonBefore() {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
-        var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._newMoonBefore(rd);
+        var jd = testDatesChineseAstro2[i][0];
+        l = ilib.Cal.Han._newMoonBefore(jd) - ilib.Date.RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon before " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][1], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -162,8 +162,8 @@ function testNewMoonOnOrAfter() {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
-        var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._newMoonOnOrAfter(rd);
+        var jd = testDatesChineseAstro2[i][0];
+        l = ilib.Cal.Han._newMoonOnOrAfter(jd) - ilib.Date.RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon on or after " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][2], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -178,8 +178,8 @@ function testNoMajorST() {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
-        var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._noMajorST(rd);
+        var jd = testDatesChineseAstro2[i][0];
+        l = ilib.Cal.Han._noMajorST(jd);
         assertEquals("testing no major solar term for " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][3], l);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -194,8 +194,8 @@ function testMajorSTOnOrAfter() {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
-        var rd = testDatesChineseAstro2[i][0] - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Cal.Han._majorSTOnOrAfter(rd);
+        var jd = testDatesChineseAstro2[i][0];
+        l = ilib.Cal.Han._majorSTOnOrAfter(jd) - ilib.Date.RataDie.gregorianEpoch;
         assertRoughlyEquals("testing major solar term on or after for " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][4], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
