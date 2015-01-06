@@ -49,8 +49,8 @@ ilib.Cal.Han = function(params) {
  * @return {number}
  */
 ilib.Cal.Han._getElapsedYear = function(year, cycle) {
-	var elapsedYear = year;
-	if (year < 61 && typeof(cycle) !== 'undefined') {
+	var elapsedYear = year || 0;
+	if (typeof(year) !== 'undefined' && year < 61 && typeof(cycle) !== 'undefined') {
 		elapsedYear = 60 * cycle + year;
 	}
 	return elapsedYear;
@@ -129,7 +129,7 @@ ilib.Cal.Han._newMoonOnOrAfter = function(jd) {
 	var uni = ilib.Date._universalFromLocal(jd, tz);
 	var moon = ilib.Date._newMoonAtOrAfter(uni);
 	// floor to the start of the julian day
-	return Math.floor(ilib.Date._localFromUniversal(moon, tz) - 0.5) + 0.5; 
+	return ilib.Date._floorToJD(ilib.Date._localFromUniversal(moon, tz)); 
 };
 
 /**
@@ -143,7 +143,7 @@ ilib.Cal.Han._newMoonBefore = function(jd) {
 	var uni = ilib.Date._universalFromLocal(jd, tz);
 	var moon = ilib.Date._newMoonBefore(uni);
 	// floor to the start of the julian day
-	return Math.floor(ilib.Date._localFromUniversal(moon, tz) - 0.5) + 0.5;
+	return ilib.Date._floorToJD(ilib.Date._localFromUniversal(moon, tz));
 };
 
 /**
@@ -161,8 +161,8 @@ ilib.Cal.Han._leapYearCalc = function(year, cycle) {
 	ret.solstice1 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear);
 	ret.solstice2 = ilib.Cal.Han._solsticeBefore(ret.elapsedYear+1);
 	// ceil to the end of the julian day
-	ret.m1 = ilib.Cal.Han._newMoonOnOrAfter(Math.ceil(ret.solstice1 + 0.5) - 0.5);
-	ret.m2 = ilib.Cal.Han._newMoonBefore(Math.ceil(ret.solstice2 + 0.5) - 0.5);
+	ret.m1 = ilib.Cal.Han._newMoonOnOrAfter(ilib.Date._ceilToJD(ret.solstice1));
+	ret.m2 = ilib.Cal.Han._newMoonBefore(ilib.Date._ceilToJD(ret.solstice2));
 	
 	return ret;
 };

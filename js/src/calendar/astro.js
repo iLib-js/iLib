@@ -772,3 +772,27 @@ ilib.Date._nextSolarLongitude = function(jd, longitude) {
 		return 180 - ilib.Date._fixangle(ilib.Date._solarLongitude(l) - longitude);
 	});
 };
+
+/**
+ * Floor the julian day to midnight of the current julian day.
+ * 
+ * @static
+ * @protected
+ * @param {number} jd the julian to round
+ * @return {number} the jd floored to the midnight of the julian day
+ */
+ilib.Date._floorToJD = function(jd) {
+	return Math.floor(jd - 0.5) + 0.5;
+};
+
+/**
+ * Floor the julian day to midnight of the current julian day.
+ * 
+ * @static
+ * @protected
+ * @param {number} jd the julian to round
+ * @return {number} the jd floored to the midnight of the julian day
+ */
+ilib.Date._ceilToJD = function(jd) {
+	return Math.ceil(jd + 0.5) - 0.5;
+};

@@ -614,7 +614,7 @@ function testHanDateGetJulianDay() {
 
 function testHanDateConstructorFull() {
     var hd = new ilib.Date.HanDate({
-		year: 1392,
+		year: 4711,
 		month: 9,
 		day: 23,
 		hour: 16,
@@ -625,18 +625,20 @@ function testHanDateConstructorFull() {
     
     assertNotNull(hd);
     
-    assertEquals(1392, hd.getYears());
+    assertEquals(4711, hd.getYears());
     assertEquals(9, hd.getMonths());
     assertEquals(23, hd.getDays());
     assertEquals(16, hd.getHours());
     assertEquals(7, hd.getMinutes());
     assertEquals(12, hd.getSeconds());
     assertEquals(123, hd.getMilliseconds());
+    assertEquals(78, hd.getCycles());
+    assertEquals(31, hd.getCycleYears());
 }
 
 function testHanDateConstructorFullWithStrings() {
     var hd = new ilib.Date.HanDate({
-		year: "1392", 
+		year: "4711", 
 		month: "9",
 		day: "23", 
 		hour: "16", 
@@ -647,18 +649,20 @@ function testHanDateConstructorFullWithStrings() {
     
     assertNotNull(hd);
     
-    assertEquals(1392, hd.getYears());
+    assertEquals(4711, hd.getYears());
     assertEquals(9, hd.getMonths());
     assertEquals(23, hd.getDays());
     assertEquals(16, hd.getHours());
     assertEquals(7, hd.getMinutes());
     assertEquals(12, hd.getSeconds());
     assertEquals(123, hd.getMilliseconds());
+    assertEquals(78, hd.getCycles());
+    assertEquals(31, hd.getCycleYears());
 }
 
 function testHanDateConstructorCopy() {
-    var hd = new ilib.Date.HanDate({
-        year: 1392, 
+    var hd2 = new ilib.Date.HanDate({
+        year: 4711, 
         month: 9, 
         day: 23, 
         hour: 16, 
@@ -666,16 +670,62 @@ function testHanDateConstructorCopy() {
         second: 12, 
         millisecond: 123
     });
+    var hd = new ilib.Date.HanDate(hd2);
     
     assertNotNull(hd);
     
-    assertEquals(1392, hd.getYears());
+    assertEquals(4711, hd.getYears());
     assertEquals(9, hd.getMonths());
     assertEquals(23, hd.getDays());
     assertEquals(16, hd.getHours());
     assertEquals(7, hd.getMinutes());
     assertEquals(12, hd.getSeconds());
     assertEquals(123, hd.getMilliseconds());
+    assertEquals(78, hd.getCycles());
+    assertEquals(31, hd.getCycleYears());
+    assertTrue(hd.isLeapYear());
+    assertFalse(hd.isLeapMonth());
+}
+
+function testHanDateConstructorCopyLeapMonth() {
+    var hd2 = new ilib.Date.HanDate({
+        year: 4711, 
+        month: 10, 
+        day: 23, 
+        hour: 16, 
+        minute: 7, 
+        second: 12, 
+        millisecond: 123
+    });
+    var hd = new ilib.Date.HanDate(hd2);
+    
+    assertNotNull(hd);
+    
+    assertEquals(4711, hd.getYears());
+    assertEquals(10, hd.getMonths());
+    assertTrue(hd.isLeapYear());
+    assertTrue(hd.isLeapMonth());
+}
+
+function testHanDateConstructorUnixTime() {
+    var hd = new ilib.Date.HanDate({
+		unixtime: 1420563744696,
+		timezone: "Etc/UTC"
+	});
+    
+    assertNotNull(hd);
+    
+    assertEquals(4711, hd.getYears());
+    assertEquals(12, hd.getMonths());
+    assertEquals(16, hd.getDays());
+    assertEquals(17, hd.getHours());
+    assertEquals(2, hd.getMinutes());
+    assertEquals(24, hd.getSeconds());
+    assertEquals(696, hd.getMilliseconds());
+    assertEquals(78, hd.getCycles());
+    assertEquals(31, hd.getCycleYears());
+    assertTrue(hd.isLeapYear());
+    assertFalse(hd.isLeapMonth());
 }
 
 function testHanDateSetYears() {

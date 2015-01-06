@@ -266,31 +266,38 @@ ilib.Date.HanDate = function(params) {
 			this.cal = cal;
 	
 			if (params && (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.cycle)) {
-				/**
-				 * Cycle number in the Han calendar.
-				 * @type number
-				 */
-				this.cycle = parseInt(params.cycle, 10) || 0;
-	
-				/**
-				 * Year in the Han calendar.
-				 * @type number
-				 */
-				this.year = parseInt(params.year, 10) || 0;
-	
-				if (typeof(params.cycle) !== 'undefined' && typeof(params.year) !== 'undefined') {
-					this.year = ilib.amod(this.year, 60);
-				}
+				params.minute || params.second || params.millisecond || params.cycle || params.cycleYear)) {
+				if (typeof(params.cycle) !== 'undefined') {
+					/**
+					 * Cycle number in the Han calendar.
+					 * @type number
+					 */
+					this.cycle = parseInt(params.cycle, 10) || 0;
+					
+					var year = (typeof(params.year) !== 'undefined' ? parseInt(params.year, 10) : parseInt(params.cycleYear, 10)) || 0;
+					
+					/**
+					 * Year in the Han calendar.
+					 * @type number
+					 */
+					this.year = ilib.Cal.Han._getElapsedYear(year, this.cycle);
+				} else {
+					if (typeof(params.year) !== 'undefined') {
+						this.year = parseInt(params.year, 10) || 0;
+						this.cycle = Math.floor((this.year - 1) / 60);
+					} else {
+						this.year = this.cycle = 0;
+					}
+				}	
 				
 				/**
-				 * The month number, ranging from 1 to 12
+				 * The month number, ranging from 1 to 13
 				 * @type number
 				 */
 				this.month = parseInt(params.month, 10) || 1;
 	
 				/**
-				 * The day of the month. This ranges from 1 to 31.
+				 * The day of the month. This ranges from 1 to 30.
 				 * @type number
 				 */
 				this.day = parseInt(params.day, 10) || 1;
@@ -319,9 +326,17 @@ ilib.Date.HanDate = function(params) {
 				 * @type number
 				 */
 				this.millisecond = parseInt(params.millisecond, 10) || 0;
+			
+				// derived properties
 				
 				/**
-				 * The day of the year. Ranges from 1 to 366.
+				 * Year in the cycle of the Han calendar
+				 * @type number
+				 */
+				this.cycleYear = ilib.amod(this.year, 60); 
+
+				/**
+				 * The day of the year. Ranges from 1 to 384.
 				 * @type number
 				 */
 				this.dayOfYear = parseInt(params.dayOfYear, 10);
@@ -356,13 +371,21 @@ ilib.Date.HanDate = function(params) {
 							this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
 							if (this.offset !== 0) {
 								this.rd = this.newRd({
+									cal: this.cal,
 									rd: this.rd.getRataDie() - this.offset
 								});
 							}
+
+							// derived properties
+							this.leapMonth = this.rd.leapMonth;
+							this.priorLeapMonth = this.rd.priorLeapMonth;
+							this.leapYear = this.rd.leapYear;
 						}
 						
 						if (!this.rd) {
-							this.rd = this.newRd(params);
+							this.rd = this.newRd(ilib.merge(params || {}, {
+								cal: this.cal
+							}));
 							this._calcDateComponents();
 						}
 						
@@ -373,7 +396,9 @@ ilib.Date.HanDate = function(params) {
 				});
 			} else {
 				if (!this.rd) {
-					this.rd = this.newRd(params);
+					this.rd = this.newRd(ilib.merge(params || {}, {
+						cal: this.cal
+					}));
 					this._calcDateComponents();
 				}
 				
@@ -485,7 +510,7 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	
 	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = ilib.amod(this.year, 60);
-	this.day = jd - m + 1;
+	this.day = ilib.Date._floorToJD(jd) - m + 1;
 
 	/*
 	console.log("HanDate._calcDateComponents: year is " + this.year);
@@ -498,7 +523,7 @@ ilib.Date.HanDate.prototype._calcDateComponents = function () {
 	*/
 
 	// floor to the start of the julian day
-	remainder = jd - (Math.floor(jd - 0.5) + 0.5);
+	remainder = jd - ilib.Date._floorToJD(jd);
 	
 	// console.log("HanDate._calcDateComponents: time remainder is " + remainder);
 	
