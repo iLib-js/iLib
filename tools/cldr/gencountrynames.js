@@ -143,7 +143,7 @@ function getRegionNames(localeData, pathname, locale) {
 			if (!localeData[language][region]) {
 				localeData[language][region] = {};
 			}
-			localeData[language][region].data = filterRefilenamegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+			localeData[language][region].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
 		} else if (language) {
 			if (!localeData[language]) {
 				localeData[language] = {};
