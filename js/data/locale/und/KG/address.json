@@ -4,7 +4,7 @@
 		"nocountry": "{postalCode} {locality}\n{streetAddress}"
 	},
 	
-	"startAt": "end",
+	"startAt": "beginning",
 	"fields": [
                   {
 			"name": "postalCode",
@@ -15,7 +15,7 @@
 		{
 			"name": "locality",
 			"line": "first",
-			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїњЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-\\s']+"
+			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїњЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-\\S']+"
 		}	
 		
 	]	

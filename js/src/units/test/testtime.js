@@ -150,3 +150,4 @@ function testTimeGetMeasures() {
 	];
 	assertArrayEqualsIgnoringOrder(expected, measures);
 }
+
