@@ -94,7 +94,7 @@ function suite() {
 		//"testaddress_IS.js",
 		"testaddress_IT.js",
 		"testaddress_JO.js",
-		//"testaddress_JP.js",
+		"testaddress_JP.js",
 		"testaddress.js",
 		"testaddress_KE.js",
 		"testaddress_KG.js",
