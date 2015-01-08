@@ -89,7 +89,7 @@ function testParseAddressLKSuperfluousWhitespace() {
 };
 
 function testParseAddressLKNoDelimiters() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha PANADURA 12500 Sri Lanka", {locale: 'en-LK'});
+	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha\nPANADURA 12500 Sri Lanka", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1 Cyril Jansz Mawatha", parsedAddress.streetAddress);
