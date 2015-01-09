@@ -20,7 +20,7 @@
 
 
 function testParseAMAddressNormal() {
-	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002, YEREVAN, ARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAMAddressNormal() {
 };
 
 function testParseAMAddressNoZip() {
-	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, YEREVAN, ARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, YEREVAN, ARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAMAddressNoZip() {
 };
 
 function testParseAMAddressManyLines() {
-	var parsedAddress = new ilib.Address("Armen Simonyan\nSaryan str 22 apt 25\n0002 YEREVAN\nARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan\nSaryan str 22 apt 25\n0002 YEREVAN\nARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAMAddressManyLines() {
 };
 
 function testParseAMAddressOneLine() {
-	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAMAddressOneLine() {
 };
 
 function testParseAMAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25  \n\t\n 0002 YEREVAN\t\n\n ARMENIA  \n  \t\t\t", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25  \n\t\n 0002 YEREVAN\t\n\n ARMENIA  \n  \t\t\t", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAMAddressSuperfluousWhitespace() {
 };
 
 function testParseAMAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Armen Simonyan P. 15 Sh. 1 0002 YEREVAN ARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan P. 15 Sh. 1 0002 YEREVAN ARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan P. 15 Sh. 1", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAMAddressNoDelimiters() {
 };
 
 function testParseAMAddressSpeciAMChars() {
-	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-AM'});
+	var parsedAddress = new ilib.Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'hy-AM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Armen Simonyan, Saryan str 22 apt 25", parsedAddress.streetAddress);
@@ -124,10 +124,10 @@ function testFormatAddressAM() {
 		postalCode: "0002",
 		country: "ARMENIA",
 		countryCode: "AM"
-	}, {locale: 'en-AM'});
+	}, {locale: 'hy-AM'});
 	
 	var expected = "Armen Simonyan, Saryan str 22 apt 25\n0002 YEREVAN\nARMENIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-AM'});
+	var formatter = new ilib.AddressFmt({locale: 'hy-AM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
