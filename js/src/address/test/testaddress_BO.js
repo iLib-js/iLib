@@ -142,3 +142,28 @@ function testFormatAddressBOFromUS() {
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
+
+function testFormatAddressBOHotel() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Calle Arturo Costa De La Torre 1359 A 1/2 Cuadra De La Plaza",
+		country: "BOLIVIA",
+		locality: "San Pedro",
+		countryCode: "BO"
+	}, {locale: 'en-US'});
+	
+	var expected = "Calle Arturo Costa De La Torre 1359 A 1/2 Cuadra De La Plaza\nSan Pedro\nBOLIVIA";
+	var formatter = new ilib.AddressFmt({locale: 'es-BO'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testFormatAddressBOUNICEF() {
+	var parsedAddress = new ilib.Address("UNICEF, United Nations Children's Fund, P.O. Box 3-12435,La Paz, Bolivia", {locale: 'es-BO'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("UNICEF, United Nations Children's Fund, P.O. Box 3-12435", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("La Paz",parsedAddress.locality);
+	assertUndefined(parsedAddress.postalCode);
+	assertEquals("Bolivia", parsedAddress.country);
+	assertEquals("BO", parsedAddress.countryCode);
+};
