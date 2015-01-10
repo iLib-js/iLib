@@ -1,7 +1,7 @@
 /*
- * testSuiteDates.js - test suite for the date tests
+ * testSuite.js - test suite for the collation tests
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,8 @@ function suite() {
 		"testcollation_no.js",
 		"testcollation_nn.js",
 		"testcollation_fi.js",
-		"testcollation_ru.js"
+		"testcollation_ru.js",
+		"testcollation_he.js"
 	];
 
     suites.forEach(function (path) {
