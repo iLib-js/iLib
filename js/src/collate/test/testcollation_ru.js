@@ -1,7 +1,7 @@
 /*
  * testcollation_ru.js - test the Collator object in Russian
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
