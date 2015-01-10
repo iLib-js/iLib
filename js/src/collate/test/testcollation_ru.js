@@ -369,7 +369,7 @@ function testJSCollatorPriSort_ru() {
 	assertTrue("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
 }
 
-function testCollatorNativeCase_ru() {
+function testCollatorCase_ru() {
 	var col = new ilib.Collator({
 		locale: "ru-RU",
 		useNative: false,
@@ -423,7 +423,7 @@ function testCollatorNativeCase_ru() {
     assertArrayEquals(expected, input);
 }
 
-function testCollatorNativePrimary_ru() {
+function testCollatorPrimary_ru() {
 	var col = new ilib.Collator({
 		locale: "ru-RU",
 		useNative: false,
@@ -477,7 +477,7 @@ function testCollatorNativePrimary_ru() {
     assertArrayEquals(expected, input);
 }
 
-function testCollatorNativeIgnoreStressMarks_ru() {
+function testCollatorIgnoreStressMarks_ru() {
 	var col = new ilib.Collator({
 		locale: "ru-RU",
 		useNative: false,
@@ -500,3 +500,98 @@ function testCollatorNativeIgnoreStressMarks_ru() {
     assertEquals(0, comp("ЗА́МОК", "ЗАМО́К"));
 }
 
+function testJSCollatorQuatLatin_ru() {
+	var col = new ilib.Collator({
+		locale: "ru-RU",
+		useNative: false,
+		sensitivity: "quaternary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// all latin letters
+	assertTrue("A < a", col.compare("A", "a") < 0);
+	assertTrue("a < B", col.compare("a", "B") < 0);
+	assertTrue("B < b", col.compare("B", "b") < 0);
+	assertTrue("b < C", col.compare("b", "C") < 0);
+	assertTrue("C < c", col.compare("C", "c") < 0);
+	assertTrue("c < D", col.compare("c", "D") < 0);
+	assertTrue("D < d", col.compare("D", "d") < 0);
+	assertTrue("d < E", col.compare("d", "E") < 0);
+	assertTrue("E < e", col.compare("E", "e") < 0);
+	assertTrue("e < F", col.compare("e", "F") < 0);
+	assertTrue("F < f", col.compare("F", "f") < 0);
+	assertTrue("f < G", col.compare("f", "G") < 0);
+	assertTrue("G < g", col.compare("G", "g") < 0);
+	assertTrue("g < H", col.compare("g", "H") < 0);
+	assertTrue("H < h", col.compare("H", "h") < 0);
+	assertTrue("h < I", col.compare("h", "I") < 0);
+	assertTrue("I < i", col.compare("I", "i") < 0);
+}
+
+function testCollatorPrimaryMixed_ru() {
+	var col = new ilib.Collator({
+		locale: "ru-RU",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "sort"
+	});
+    assertNotUndefined(col);
+
+    var input = [
+        "У",
+        "Ё",
+        "ГУ",
+        "banana",
+        "Й",
+        "Е́",
+        "А́А",
+        "Ѐ",
+        "peach",
+        "apple",
+        "Ю",
+        "аа",
+        "ё",
+        "Ꙕ",
+        "И",
+        "Е",
+        "Гж",
+        "orange",
+        "е",
+        "Ў",
+        "raspberry",
+        "Ё"
+	];
+
+    input.sort(col.getComparator());
+
+    // Latin letters sort after the Cyrillic ones
+    
+    var expected = [
+        "А́А",
+        "аа",
+        "Гж",
+        "ГУ",
+        "Е",
+        "Е́",
+        "е",
+        "Ѐ",
+        "Ё",
+        "Ё",
+        "ё",
+        "И",
+        "Й",
+        "У",
+        "Ў",
+        "Ю",
+        "Ꙕ",
+        "apple",
+        "banana",
+        "orange",
+        "peach",
+        "raspberry"
+	];
+
+    assertArrayEquals(expected, input);
+}
