@@ -80,7 +80,7 @@ function testParseAddressDOSuperfluousWhitespace() {
 };
 
 function testParseAddressDONoDelimiters() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez C/45 # 33 Katanga Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new ilib.Address("Dominica L. Hernandez C/45 # 33 Katanga, Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez C/45 # 33 Katanga", parsedAddress.streetAddress);
