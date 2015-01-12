@@ -15,7 +15,7 @@
 		{
 			"name": "postalCode",
 			"line": "last",
-			"pattern": "([0-9]{8})",
+			"pattern": "([0-9]{7})",
 			"matchGroup": 0
 		}
 	]
