@@ -11,15 +11,6 @@
             "line": "startAtLast",
             "pattern": "(([A-z]+)? ?[A-z]+)$",
             "matchGroup": 1
-        },
-	{
-            "name": "postalCode",
-            "line": "last",
-            "pattern": "([0-9]{4})$",
-            "matchGroup": 0
         }
-	
-      
-        
     ]
 }
