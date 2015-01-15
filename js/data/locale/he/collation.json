@@ -2,7 +2,7 @@
 	"standard": {
 		"scripts":["Hebr","Latn"],
 		"bits":[6,3,1,2],
-		"keysize": 12,
+		"keysize":[8,12,12,12],
 		"map": {
 
 			"א":[0],

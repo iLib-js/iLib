@@ -619,11 +619,26 @@ ilib.Collator.prototype = {
     	 */
     	this.collation = rules[this.style];
     	this.map = {};
-    	this.keysize = this.collation.keysize;
+    	this.keysize = this.collation.keysize[this.level-1];
     	
     	for (var r in this.collation.map) {
     		if (r) {
     			this.map[r] = this._packRule(this.collation.map[r]);
+    		}
+    	}
+    	
+    	if (typeof(this.collation.ranges) !== 'undefined') {
+    		// for each range, everything in the range goes in primary sequence from the start
+    		for (var i = 0; i < this.collation.ranges.length; i++) {
+    			var range = this.collation.ranges[i];
+    			var j = 0;
+    			var gs = new ilib.GlyphString(range.chars);
+    			var it = gs.charIterator();
+    			
+    			while (it.hasNext()) {
+    				this.map[it.next()] = this._packRule([range.start + j]);
+    				j++;
+    			}
     		}
     	}
     },
