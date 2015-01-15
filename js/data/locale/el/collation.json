@@ -2,6 +2,7 @@
 	"standard": {
 		"scripts":["Grek","Latn"],
 		"bits":[6,3,1,2],
+		"keysize": 12, 
 		"map": {
 			"Α":[0],
 					"α":[0,0,1],

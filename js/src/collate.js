@@ -619,12 +619,7 @@ ilib.Collator.prototype = {
     	 */
     	this.collation = rules[this.style];
     	this.map = {};
-    	this.keysize = 0;
-    	for (var i = 0; i < this.level; i++) {
-    		this.keysize += this.collation.bits[i];
-    	}
-    	var remainder = ilib.mod(this.keysize, 4);
-    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
+    	this.keysize = this.collation.keysize;
     	
     	for (var r in this.collation.map) {
     		if (r) {

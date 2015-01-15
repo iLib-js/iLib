@@ -2,6 +2,7 @@
 	"standard": {
 		"scripts":["Latn"],
 		"bits":[6,3,2,1],
+		"keysize": 12,
 		"map": {
 			"A":[0],
 					"a":[0,0,1],
