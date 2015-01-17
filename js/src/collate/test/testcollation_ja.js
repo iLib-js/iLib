@@ -1725,7 +1725,22 @@ function testJSCollatorHiraganaIterationMarksPri_ja() {
 	assertTrue("んゝ = んん", col.compare("んゝ", "んん") === 0);
 }
 
+function testJSCollatorKatakanaQuat_ja() {
+	var col = new ilib.Collator({
+		locale: "ja-JP",
+		useNative: false,
+		sensitivity: "quaternary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// ア イ ウ エ オ カ ガ キ ギ ク グ ケ ゲ コ ゴ サ ザ シ ジ ス ズ セ ゼ ソ ゾ タ ダ チ ヂ ツ ヅ テ デ ト ド ナ ニ ヌ ネ ノ ハ バ パ ヒ ビ ピ フ ブ プ ヘ ベ ペ ホ ボ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
+
+}
+
 /*
+
 function testJSCollatorHiraganaSec_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
