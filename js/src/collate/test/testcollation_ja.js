@@ -1735,42 +1735,109 @@ function testJSCollatorKatakanaQuat_ja() {
 
 	assertNotUndefined(col);
 
-	// ア イ ウ エ オ カ ガ キ ギ ク グ ケ ゲ コ ゴ サ ザ シ ジ ス ズ セ ゼ ソ ゾ タ ダ チ ヂ ツ ヅ テ デ ト ド ナ ニ ヌ ネ ノ ハ バ パ ヒ ビ ピ フ ブ プ ヘ ベ ペ ホ ボ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
+	// ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
 
+	assertTrue("ア < イ", col.compare("ア", "イ") < 0);
+	assertTrue("イ < ウ", col.compare("イ", "ウ") < 0);
+	assertTrue("ウ < エ", col.compare("ウ", "エ") < 0);
+	assertTrue("エ < オ", col.compare("エ", "オ") < 0);
+	assertTrue("オ < カ", col.compare("オ", "カ") < 0);
+	assertTrue("カ < ガ", col.compare("カ", "ガ") < 0);
+	assertTrue("ガ < ガ", col.compare("ガ", "ガ") < 0);
+	assertTrue("ガ < キ", col.compare("ガ", "キ") < 0);
+	assertTrue("キ < ギ", col.compare("キ", "ギ") < 0);
+	assertTrue("ギ < ギ", col.compare("ギ", "ギ") < 0);
+	assertTrue("ギ < ク", col.compare("ギ", "ク") < 0);
+	assertTrue("ク < グ", col.compare("ク", "グ") < 0);
+	assertTrue("グ < グ", col.compare("グ", "グ") < 0);
+	assertTrue("グ < ケ", col.compare("グ", "ケ") < 0);
+	assertTrue("ケ < ゲ", col.compare("ケ", "ゲ") < 0);
+	assertTrue("ゲ < ゲ", col.compare("ゲ", "ゲ") < 0);
+	assertTrue("ゲ < コ", col.compare("ゲ", "コ") < 0);
+	assertTrue("コ < ゴ", col.compare("コ", "ゴ") < 0);
+	assertTrue("ゴ < ゴ", col.compare("ゴ", "ゴ") < 0);
+	assertTrue("ゴ < サ", col.compare("ゴ", "サ") < 0);
+	assertTrue("サ < ザ", col.compare("サ", "ザ") < 0);
+	assertTrue("ザ < ザ", col.compare("ザ", "ザ") < 0);
+	assertTrue("ザ < シ", col.compare("ザ", "シ") < 0);
+	assertTrue("シ < ジ", col.compare("シ", "ジ") < 0);
+	assertTrue("ジ < ジ", col.compare("ジ", "ジ") < 0);
+	assertTrue("ジ < ス", col.compare("ジ", "ス") < 0);
+	assertTrue("ス < ズ", col.compare("ス", "ズ") < 0);
+	assertTrue("ズ < ズ", col.compare("ズ", "ズ") < 0);
+	assertTrue("ズ < セ", col.compare("ズ", "セ") < 0);
+	assertTrue("セ < ゼ", col.compare("セ", "ゼ") < 0);
+	assertTrue("ゼ < ゼ", col.compare("ゼ", "ゼ") < 0);
+	assertTrue("ゼ < ソ", col.compare("ゼ", "ソ") < 0);
+	assertTrue("ソ < ゾ", col.compare("ソ", "ゾ") < 0);
+	assertTrue("ゾ < ゾ", col.compare("ゾ", "ゾ") < 0);
+	assertTrue("ゾ < タ", col.compare("ゾ", "タ") < 0);
+	assertTrue("タ < ダ", col.compare("タ", "ダ") < 0);
+	assertTrue("ダ < ダ", col.compare("ダ", "ダ") < 0);
+	assertTrue("ダ < チ", col.compare("ダ", "チ") < 0);
+	assertTrue("チ < ヂ", col.compare("チ", "ヂ") < 0);
+	assertTrue("ヂ < ヂ", col.compare("ヂ", "ヂ") < 0);
+	assertTrue("ヂ < ツ", col.compare("ヂ", "ツ") < 0);
+	assertTrue("ツ < ヅ", col.compare("ツ", "ヅ") < 0);
+	assertTrue("ヅ < ヅ", col.compare("ヅ", "ヅ") < 0);
+	assertTrue("ヅ < テ", col.compare("ヅ", "テ") < 0);
+	assertTrue("テ < デ", col.compare("テ", "デ") < 0);
+	assertTrue("デ < デ", col.compare("デ", "デ") < 0);
+	assertTrue("デ < ト", col.compare("デ", "ト") < 0);
+	assertTrue("ト < ド", col.compare("ト", "ド") < 0);
+	assertTrue("ド < ド", col.compare("ド", "ド") < 0);
+	assertTrue("ド < ナ", col.compare("ド", "ナ") < 0);
+	assertTrue("ナ < ニ", col.compare("ナ", "ニ") < 0);
+	assertTrue("ニ < ヌ", col.compare("ニ", "ヌ") < 0);
+	assertTrue("ヌ < ネ", col.compare("ヌ", "ネ") < 0);
+	assertTrue("ネ < ノ", col.compare("ネ", "ノ") < 0);
+	assertTrue("ノ < ハ", col.compare("ノ", "ハ") < 0);
+	assertTrue("ハ < バ", col.compare("ハ", "バ") < 0);
+	assertTrue("バ < バ", col.compare("バ", "バ") < 0);
+	assertTrue("バ < パ", col.compare("バ", "パ") < 0);
+	assertTrue("パ < パ", col.compare("パ", "パ") < 0);
+	assertTrue("パ < ヒ", col.compare("パ", "ヒ") < 0);
+	assertTrue("ヒ < ビ", col.compare("ヒ", "ビ") < 0);
+	assertTrue("ビ < ビ", col.compare("ビ", "ビ") < 0);
+	assertTrue("ビ < ピ", col.compare("ビ", "ピ") < 0);
+	assertTrue("ピ < ピ", col.compare("ピ", "ピ") < 0);
+	assertTrue("ピ < フ", col.compare("ピ", "フ") < 0);
+	assertTrue("フ < ブ", col.compare("フ", "ブ") < 0);
+	assertTrue("ブ < ブ", col.compare("ブ", "ブ") < 0);
+	assertTrue("ブ < プ", col.compare("ブ", "プ") < 0);
+	assertTrue("プ < プ", col.compare("プ", "プ") < 0);
+	assertTrue("プ < ヘ", col.compare("プ", "ヘ") < 0);
+	assertTrue("ヘ < ベ", col.compare("ヘ", "ベ") < 0);
+	assertTrue("ベ < ベ", col.compare("ベ", "ベ") < 0);
+	assertTrue("ベ < ペ", col.compare("ベ", "ペ") < 0);
+	assertTrue("ペ < ペ", col.compare("ペ", "ペ") < 0);
+	assertTrue("ペ < ホ", col.compare("ペ", "ホ") < 0);
+	assertTrue("ホ < ボ", col.compare("ホ", "ボ") < 0);
+	assertTrue("ボ < ボ", col.compare("ボ", "ボ") < 0);
+	assertTrue("ボ < ポ", col.compare("ボ", "ポ") < 0);
+	assertTrue("ポ < ポ", col.compare("ポ", "ポ") < 0);
+	assertTrue("ポ < マ", col.compare("ポ", "マ") < 0);
+	assertTrue("マ < ミ", col.compare("マ", "ミ") < 0);
+	assertTrue("ミ < ム", col.compare("ミ", "ム") < 0);
+	assertTrue("ム < メ", col.compare("ム", "メ") < 0);
+	assertTrue("メ < モ", col.compare("メ", "モ") < 0);
+	assertTrue("モ < ヤ", col.compare("モ", "ヤ") < 0);
+	assertTrue("ヤ < ユ", col.compare("ヤ", "ユ") < 0);
+	assertTrue("ユ < ヨ", col.compare("ユ", "ヨ") < 0);
+	assertTrue("ヨ < ラ", col.compare("ヨ", "ラ") < 0);
+	assertTrue("ラ < リ", col.compare("ラ", "リ") < 0);
+	assertTrue("リ < ル", col.compare("リ", "ル") < 0);
+	assertTrue("ル < レ", col.compare("ル", "レ") < 0);
+	assertTrue("レ < ロ", col.compare("レ", "ロ") < 0);
+	assertTrue("ロ < ワ", col.compare("ロ", "ワ") < 0);
+	assertTrue("ワ < ヰ", col.compare("ワ", "ヰ") < 0);
+	assertTrue("ヰ < ヱ", col.compare("ヰ", "ヱ") < 0);
+	assertTrue("ヱ < ヲ", col.compare("ヱ", "ヲ") < 0);
+	assertTrue("ヲ < ン", col.compare("ヲ", "ン") < 0);
 }
+
 
 /*
-
-function testJSCollatorHiraganaSec_ja() {
-	var col = new ilib.Collator({
-		locale: "ja-JP",
-		useNative: false,
-		sensitivity: "secondary",
-		usage: "search"
-	});
-
-	assertNotUndefined(col);
-
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-	
-	assertTrue("Α = α", col.compare("Α", "α") === 0);
-}
-
-function testJSCollatorHiraganaPri_ja() {
-	var col = new ilib.Collator({
-		locale: "ja-JP",
-		useNative: false,
-		sensitivity: "primary",
-		usage: "search"
-	});
-
-	assertNotUndefined(col);
-
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-	
-	assertTrue("Α = α", col.compare("Α", "α") === 0);
-}
-
 function testJSCollatorQuatSort_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
