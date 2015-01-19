@@ -3,31 +3,31 @@
 		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
-				"s": "EE, dd/MM/yyyy",
+				"s": "EE,  dd/M/yyyy",
 				"m": "EEE, dd/MM/yyyy",
-				"l": "EEE, dd/MMMM/yyyy",
-				"f": "EEEE, dd/MMMM/yyyy"
+				"l": "EEE, yyyy/MMMM/dd",
+				"f": "EEEE, yyyy/MMMM/dd"
 			},
 			"dmy": {
-				"s": "‏dd/MM/yyyy",
+				"s": "‏dd/M/yyyy",
 				"m": "‏dd/MM/yyyy",
-				"l": "‏dd/MMMM/yyyy",
-				"f": "‏dd/MMMM/yyyy"
+				"l": "‏yyyy/MMMM/dd",
+				"f": "‏yyyy/MMMM/dd"
 			},
 			"dmw": {
-				"s": "EE, dd/MM",
+				"s": "EE, dd/M",
 				"m": "EEE, dd/MM",
-				"l": "EEE, dd/MMMM",
-				"f": "EEEE, dd/MMMM"
+				"l": "EEE, MMMM/dd",
+				"f": "EEEE,MMMM/dd"
 			},
 			"dm": {
-				"s": "‏dd/MM",
+				"s": "‏dd/M",
 				"m": "‏dd/MM",
 				"l": "‏dd/MMMM",
 				"f": "‏dd/MMMM"
 			},
 			"my": {
-				"s": "‏MM/yyyy",
+				"s": "‏M/yyyy",
 				"m": "‏MM/yyyy",
 				"l": "‏MM/yyyy",
 				"f": "‏MM/yyyy"
@@ -40,7 +40,7 @@
 			},
 			"d": "dd",
 			"m": {
-				"s": "MM",
+				"s": "M",
 				"m": "MM",
 				"l": "MMMM",
 				"f": "MMMM"
