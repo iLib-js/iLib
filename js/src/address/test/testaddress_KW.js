@@ -42,11 +42,11 @@ function testParseAddressKWNoZip() {
 };
 
 function testParseAddressKWNoCountry() {
-	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت", {locale: 'ar-KW'});
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الجهرا", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
-	assertEquals("الكويت", parsedAddress.locality);
+	assertEquals("الجهرا", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
