@@ -1459,35 +1459,70 @@ function testResBundleGetStringCompressSpacesBeginning() {
     assertEquals("test3", rb.getString("     This    is     a     test.").toString());
 }
 
-function testResBundlePsuedo_euES() {
+function testResBundlePseudo_euES() {
+	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("eu-ES");
     var rb = new ilib.ResBundle({
-	locale:'eu-ES'
+    	locale:'eu-ES'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
 }
 
-function testResBundlePsuedo_psAF() {
-    ilib.setAsPseudoLocale("ps-AF");
+function testResBundlePseudo_psAF() {
+	ilib.clearPseudoLocales();
+	ilib.setAsPseudoLocale("ps-AF");
     var rb = new ilib.ResBundle({
-	locale:'ps-AF'
+    	locale:'ps-AF'
     });
     assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
 }
 
-function testResBundlePsuedo_deDE() {
+function testResBundlePseudo_deDE() {
+	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("de-DE");
     var rb = new ilib.ResBundle({
-	locale:'de-DE'
+    	locale:'de-DE'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
 }
 
+function testResBundlePseudoReallyThere() {
+	ilib.clearPseudoLocales();
+	assertEquals(-1, ilib.pseudoLocales.indexOf("de-DE"));
+    ilib.setAsPseudoLocale("de-DE");
+    assertEquals(1, ilib.pseudoLocales.indexOf("de-DE"));
+}
+
+function testResBundlePseudoIsPseudo() {
+	var loc = new ilib.Locale("de-DE");
+	ilib.clearPseudoLocales();
+	assertFalse(loc.isPseudo());
+    ilib.setAsPseudoLocale("de-DE");
+    assertTrue(loc.isPseudo());
+}
+
 function testResBundlePsuedo_EMPTY() {
+	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("");
     var rb = new ilib.ResBundle({
-	locale:""
+    	locale:""
     });
     assertEquals("This is psuedo string test", rb.getString("This is psuedo string test").toString());
+}
+
+function testResBundlePsuedoEmptyNothingAdded() {
+	ilib.clearPseudoLocales();
+	assertEquals(1, ilib.pseudoLocales.length);
+    ilib.setAsPseudoLocale("");
+    assertEquals(1, ilib.pseudoLocales.length);
+}
+
+function testResBundlePsuedoUndefinedNothingAdded() {
+	ilib.clearPseudoLocales();
+	assertEquals(1, ilib.pseudoLocales.length);
+    ilib.setAsPseudoLocale();
+    assertEquals(1, ilib.pseudoLocales.length);
+    
+    ilib.clearPseudoLocales();
 }
 

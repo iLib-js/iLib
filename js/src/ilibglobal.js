@@ -81,8 +81,16 @@ ilib.pseudoLocales = ["zxx-XX"];
  * @param {string|undefined|null} localename the locale specifier for the pseudo locale
  */
 ilib.setAsPseudoLocale = function (localename) {
-   if (localename)
-	ilib.pseudoLocales.push(localename)
+   if (localename) {
+	   ilib.pseudoLocales.push(localename)
+   }
+};
+
+/**
+ * Reset the list of pseudo locales back to the default single locale of zxx-XX.
+ */
+ilib.clearPseudoLocales = function() {
+	ilib.pseudoLocales = ["zxx-XX"];
 };
 
 /**
