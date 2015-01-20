@@ -1474,3 +1474,20 @@ function testResBundlePsuedo_psAF() {
     });
     assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
 }
+
+function testResBundlePsuedo_deDE() {
+    ilib.setAsPseudoLocale("de-DE");
+    var rb = new ilib.ResBundle({
+	locale:'de-DE'
+    });
+    assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
+}
+
+function testResBundlePsuedo_EMPTY() {
+    ilib.setAsPseudoLocale("");
+    var rb = new ilib.ResBundle({
+	locale:""
+    });
+    assertEquals("This is psuedo string test", rb.getString("This is psuedo string test").toString());
+}
+

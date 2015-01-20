@@ -69,8 +69,20 @@ if (typeof(exports) !== 'undefined') {
 
 ilib.pseudoLocales = ["zxx-XX"];
 
+/**
+ * Sets the pseudo locale. Pseudolocalization (or pseudo-localization) is used for testing
+ * internationalization aspects of software. Instead of translating the text of the software
+ * into a foreign language, as in the process of localization, the textual elements of an application
+ * are replaced with an altered version of the original language.These specific alterations make
+ * the original words appear readable, but include the most problematic characteristics of 
+ * the world's languages: varying length of text or characters, language direction, and so on.
+ * Regular Latin pseudo locale: eu-ES and RTL pseudo locale: ps-AF
+ * 
+ * @param {string|undefined|null} localename the locale specifier for the pseudo locale
+ */
 ilib.setAsPseudoLocale = function (localename) {
-   ilib.pseudoLocales.push(localename)
+   if (localename)
+	ilib.pseudoLocales.push(localename)
 };
 
 /**

@@ -828,11 +828,7 @@ ilib.Locale.prototype = {
 	 */
 	isPseudo: function () {
 		var localeName = this.language + "-" + this.region;
-		var index;
-		for (index = 0; index < ilib.pseudoLocales.length; index++) {
-		    if(ilib.pseudoLocales[index] === localeName) return true;
-		}
-		return false;
+		return ilib.pseudoLocales.indexOf(localeName) > -1;
 	}
 };
 
