@@ -4582,8 +4582,363 @@ function testJSCollatorHiraBeforeKataQuat_ja() {
 	assertTrue("ん < ン", col.compare("ん", "ン") < 0);
 }
 
-/*
-function testJSCollatorQuatSort_ja() {
+function testJSCollatorHiraBeforeKataTer_ja() {
+	var col = new ilib.Collator({
+		locale: "ja-JP",
+		useNative: false,
+		sensitivity: "tertiary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
+	// ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+	
+	assertTrue("あ < ア", col.compare("あ", "ア") < 0);
+	assertTrue("い < イ", col.compare("い", "イ") < 0);
+	assertTrue("う < ウ", col.compare("う", "ウ") < 0);
+	assertTrue("え < エ", col.compare("え", "エ") < 0);
+	assertTrue("お < オ", col.compare("お", "オ") < 0);
+	assertTrue("か < カ", col.compare("か", "カ") < 0);
+	assertTrue("が < ガ", col.compare("が", "ガ") < 0);
+	assertTrue("が < ガ", col.compare("が", "ガ") < 0);
+	assertTrue("き < キ", col.compare("き", "キ") < 0);
+	assertTrue("ぎ < ギ", col.compare("ぎ", "ギ") < 0);
+	assertTrue("ぎ < ギ", col.compare("ぎ", "ギ") < 0);
+	assertTrue("く < ク", col.compare("く", "ク") < 0);
+	assertTrue("ぐ < グ", col.compare("ぐ", "グ") < 0);
+	assertTrue("ぐ < グ", col.compare("ぐ", "グ") < 0);
+	assertTrue("け < ケ", col.compare("け", "ケ") < 0);
+	assertTrue("げ < ゲ", col.compare("げ", "ゲ") < 0);
+	assertTrue("げ < ゲ", col.compare("げ", "ゲ") < 0);
+	assertTrue("こ < コ", col.compare("こ", "コ") < 0);
+	assertTrue("ご < ゴ", col.compare("ご", "ゴ") < 0);
+	assertTrue("ご < ゴ", col.compare("ご", "ゴ") < 0);
+	assertTrue("さ < サ", col.compare("さ", "サ") < 0);
+	assertTrue("ざ < ザ", col.compare("ざ", "ザ") < 0);
+	assertTrue("ざ < ザ", col.compare("ざ", "ザ") < 0);
+	assertTrue("し < シ", col.compare("し", "シ") < 0);
+	assertTrue("じ < ジ", col.compare("じ", "ジ") < 0);
+	assertTrue("じ < ジ", col.compare("じ", "ジ") < 0);
+	assertTrue("す < ス", col.compare("す", "ス") < 0);
+	assertTrue("ず < ズ", col.compare("ず", "ズ") < 0);
+	assertTrue("ず < ズ", col.compare("ず", "ズ") < 0);
+	assertTrue("せ < セ", col.compare("せ", "セ") < 0);
+	assertTrue("ぜ < ゼ", col.compare("ぜ", "ゼ") < 0);
+	assertTrue("ぜ < ゼ", col.compare("ぜ", "ゼ") < 0);
+	assertTrue("そ < ソ", col.compare("そ", "ソ") < 0);
+	assertTrue("ぞ < ゾ", col.compare("ぞ", "ゾ") < 0);
+	assertTrue("ぞ < ゾ", col.compare("ぞ", "ゾ") < 0);
+	assertTrue("た < タ", col.compare("た", "タ") < 0);
+	assertTrue("だ < ダ", col.compare("だ", "ダ") < 0);
+	assertTrue("だ < ダ", col.compare("だ", "ダ") < 0);
+	assertTrue("ち < チ", col.compare("ち", "チ") < 0);
+	assertTrue("ぢ < ヂ", col.compare("ぢ", "ヂ") < 0);
+	assertTrue("ぢ < ヂ", col.compare("ぢ", "ヂ") < 0);
+	assertTrue("つ < ツ", col.compare("つ", "ツ") < 0);
+	assertTrue("づ < ヅ", col.compare("づ", "ヅ") < 0);
+	assertTrue("づ < ヅ", col.compare("づ", "ヅ") < 0);
+	assertTrue("て < テ", col.compare("て", "テ") < 0);
+	assertTrue("で < デ", col.compare("で", "デ") < 0);
+	assertTrue("で < デ", col.compare("で", "デ") < 0);
+	assertTrue("と < ト", col.compare("と", "ト") < 0);
+	assertTrue("ど < ド", col.compare("ど", "ド") < 0);
+	assertTrue("ど < ド", col.compare("ど", "ド") < 0);
+	assertTrue("な < ナ", col.compare("な", "ナ") < 0);
+	assertTrue("に < ニ", col.compare("に", "ニ") < 0);
+	assertTrue("ぬ < ヌ", col.compare("ぬ", "ヌ") < 0);
+	assertTrue("ね < ネ", col.compare("ね", "ネ") < 0);
+	assertTrue("の < ノ", col.compare("の", "ノ") < 0);
+	assertTrue("は < ハ", col.compare("は", "ハ") < 0);
+	assertTrue("ば < バ", col.compare("ば", "バ") < 0);
+	assertTrue("ば < バ", col.compare("ば", "バ") < 0);
+	assertTrue("ぱ < パ", col.compare("ぱ", "パ") < 0);
+	assertTrue("ぱ < パ", col.compare("ぱ", "パ") < 0);
+	assertTrue("ひ < ヒ", col.compare("ひ", "ヒ") < 0);
+	assertTrue("び < ビ", col.compare("び", "ビ") < 0);
+	assertTrue("び < ビ", col.compare("び", "ビ") < 0);
+	assertTrue("ぴ < ピ", col.compare("ぴ", "ピ") < 0);
+	assertTrue("ぴ < ピ", col.compare("ぴ", "ピ") < 0);
+	assertTrue("ふ < フ", col.compare("ふ", "フ") < 0);
+	assertTrue("ぶ < ブ", col.compare("ぶ", "ブ") < 0);
+	assertTrue("ぶ < ブ", col.compare("ぶ", "ブ") < 0);
+	assertTrue("ぷ < プ", col.compare("ぷ", "プ") < 0);
+	assertTrue("ぷ < プ", col.compare("ぷ", "プ") < 0);
+	assertTrue("へ < ヘ", col.compare("へ", "ヘ") < 0);
+	assertTrue("べ < ベ", col.compare("べ", "ベ") < 0);
+	assertTrue("べ < ベ", col.compare("べ", "ベ") < 0);
+	assertTrue("ぺ < ペ", col.compare("ぺ", "ペ") < 0);
+	assertTrue("ぺ < ペ", col.compare("ぺ", "ペ") < 0);
+	assertTrue("ほ < ホ", col.compare("ほ", "ホ") < 0);
+	assertTrue("ぼ < ボ", col.compare("ぼ", "ボ") < 0);
+	assertTrue("ぼ < ボ", col.compare("ぼ", "ボ") < 0);
+	assertTrue("ぽ < ポ", col.compare("ぽ", "ポ") < 0);
+	assertTrue("ぽ < ポ", col.compare("ぽ", "ポ") < 0);
+	assertTrue("ま < マ", col.compare("ま", "マ") < 0);
+	assertTrue("み < ミ", col.compare("み", "ミ") < 0);
+	assertTrue("む < ム", col.compare("む", "ム") < 0);
+	assertTrue("め < メ", col.compare("め", "メ") < 0);
+	assertTrue("も < モ", col.compare("も", "モ") < 0);
+	assertTrue("や < ヤ", col.compare("や", "ヤ") < 0);
+	assertTrue("ゆ < ユ", col.compare("ゆ", "ユ") < 0);
+	assertTrue("よ < ヨ", col.compare("よ", "ヨ") < 0);
+	assertTrue("ら < ラ", col.compare("ら", "ラ") < 0);
+	assertTrue("り < リ", col.compare("り", "リ") < 0);
+	assertTrue("る < ル", col.compare("る", "ル") < 0);
+	assertTrue("れ < レ", col.compare("れ", "レ") < 0);
+	assertTrue("ろ < ロ", col.compare("ろ", "ロ") < 0);
+	assertTrue("わ < ワ", col.compare("わ", "ワ") < 0);
+	assertTrue("ゐ < ヰ", col.compare("ゐ", "ヰ") < 0);
+	assertTrue("ゑ < ヱ", col.compare("ゑ", "ヱ") < 0);
+	assertTrue("を < ヲ", col.compare("を", "ヲ") < 0);
+	assertTrue("ん < ン", col.compare("ん", "ン") < 0);
+}
+
+function testJSCollatorHiraBeforeKataSec_ja() {
+	var col = new ilib.Collator({
+		locale: "ja-JP",
+		useNative: false,
+		sensitivity: "secondary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
+	// ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+	
+	assertTrue("あ = ア", col.compare("あ", "ア") === 0);
+	assertTrue("い = イ", col.compare("い", "イ") === 0);
+	assertTrue("う = ウ", col.compare("う", "ウ") === 0);
+	assertTrue("え = エ", col.compare("え", "エ") === 0);
+	assertTrue("お = オ", col.compare("お", "オ") === 0);
+	assertTrue("か = カ", col.compare("か", "カ") === 0);
+	assertTrue("が = ガ", col.compare("が", "ガ") === 0);
+	assertTrue("が = ガ", col.compare("が", "ガ") === 0);
+	assertTrue("き = キ", col.compare("き", "キ") === 0);
+	assertTrue("ぎ = ギ", col.compare("ぎ", "ギ") === 0);
+	assertTrue("ぎ = ギ", col.compare("ぎ", "ギ") === 0);
+	assertTrue("く = ク", col.compare("く", "ク") === 0);
+	assertTrue("ぐ = グ", col.compare("ぐ", "グ") === 0);
+	assertTrue("ぐ = グ", col.compare("ぐ", "グ") === 0);
+	assertTrue("け = ケ", col.compare("け", "ケ") === 0);
+	assertTrue("げ = ゲ", col.compare("げ", "ゲ") === 0);
+	assertTrue("げ = ゲ", col.compare("げ", "ゲ") === 0);
+	assertTrue("こ = コ", col.compare("こ", "コ") === 0);
+	assertTrue("ご = ゴ", col.compare("ご", "ゴ") === 0);
+	assertTrue("ご = ゴ", col.compare("ご", "ゴ") === 0);
+	assertTrue("さ = サ", col.compare("さ", "サ") === 0);
+	assertTrue("ざ = ザ", col.compare("ざ", "ザ") === 0);
+	assertTrue("ざ = ザ", col.compare("ざ", "ザ") === 0);
+	assertTrue("し = シ", col.compare("し", "シ") === 0);
+	assertTrue("じ = ジ", col.compare("じ", "ジ") === 0);
+	assertTrue("じ = ジ", col.compare("じ", "ジ") === 0);
+	assertTrue("す = ス", col.compare("す", "ス") === 0);
+	assertTrue("ず = ズ", col.compare("ず", "ズ") === 0);
+	assertTrue("ず = ズ", col.compare("ず", "ズ") === 0);
+	assertTrue("せ = セ", col.compare("せ", "セ") === 0);
+	assertTrue("ぜ = ゼ", col.compare("ぜ", "ゼ") === 0);
+	assertTrue("ぜ = ゼ", col.compare("ぜ", "ゼ") === 0);
+	assertTrue("そ = ソ", col.compare("そ", "ソ") === 0);
+	assertTrue("ぞ = ゾ", col.compare("ぞ", "ゾ") === 0);
+	assertTrue("ぞ = ゾ", col.compare("ぞ", "ゾ") === 0);
+	assertTrue("た = タ", col.compare("た", "タ") === 0);
+	assertTrue("だ = ダ", col.compare("だ", "ダ") === 0);
+	assertTrue("だ = ダ", col.compare("だ", "ダ") === 0);
+	assertTrue("ち = チ", col.compare("ち", "チ") === 0);
+	assertTrue("ぢ = ヂ", col.compare("ぢ", "ヂ") === 0);
+	assertTrue("ぢ = ヂ", col.compare("ぢ", "ヂ") === 0);
+	assertTrue("つ = ツ", col.compare("つ", "ツ") === 0);
+	assertTrue("づ = ヅ", col.compare("づ", "ヅ") === 0);
+	assertTrue("づ = ヅ", col.compare("づ", "ヅ") === 0);
+	assertTrue("て = テ", col.compare("て", "テ") === 0);
+	assertTrue("で = デ", col.compare("で", "デ") === 0);
+	assertTrue("で = デ", col.compare("で", "デ") === 0);
+	assertTrue("と = ト", col.compare("と", "ト") === 0);
+	assertTrue("ど = ド", col.compare("ど", "ド") === 0);
+	assertTrue("ど = ド", col.compare("ど", "ド") === 0);
+	assertTrue("な = ナ", col.compare("な", "ナ") === 0);
+	assertTrue("に = ニ", col.compare("に", "ニ") === 0);
+	assertTrue("ぬ = ヌ", col.compare("ぬ", "ヌ") === 0);
+	assertTrue("ね = ネ", col.compare("ね", "ネ") === 0);
+	assertTrue("の = ノ", col.compare("の", "ノ") === 0);
+	assertTrue("は = ハ", col.compare("は", "ハ") === 0);
+	assertTrue("ば = バ", col.compare("ば", "バ") === 0);
+	assertTrue("ば = バ", col.compare("ば", "バ") === 0);
+	assertTrue("ぱ = パ", col.compare("ぱ", "パ") === 0);
+	assertTrue("ぱ = パ", col.compare("ぱ", "パ") === 0);
+	assertTrue("ひ = ヒ", col.compare("ひ", "ヒ") === 0);
+	assertTrue("び = ビ", col.compare("び", "ビ") === 0);
+	assertTrue("び = ビ", col.compare("び", "ビ") === 0);
+	assertTrue("ぴ = ピ", col.compare("ぴ", "ピ") === 0);
+	assertTrue("ぴ = ピ", col.compare("ぴ", "ピ") === 0);
+	assertTrue("ふ = フ", col.compare("ふ", "フ") === 0);
+	assertTrue("ぶ = ブ", col.compare("ぶ", "ブ") === 0);
+	assertTrue("ぶ = ブ", col.compare("ぶ", "ブ") === 0);
+	assertTrue("ぷ = プ", col.compare("ぷ", "プ") === 0);
+	assertTrue("ぷ = プ", col.compare("ぷ", "プ") === 0);
+	assertTrue("へ = ヘ", col.compare("へ", "ヘ") === 0);
+	assertTrue("べ = ベ", col.compare("べ", "ベ") === 0);
+	assertTrue("べ = ベ", col.compare("べ", "ベ") === 0);
+	assertTrue("ぺ = ペ", col.compare("ぺ", "ペ") === 0);
+	assertTrue("ぺ = ペ", col.compare("ぺ", "ペ") === 0);
+	assertTrue("ほ = ホ", col.compare("ほ", "ホ") === 0);
+	assertTrue("ぼ = ボ", col.compare("ぼ", "ボ") === 0);
+	assertTrue("ぼ = ボ", col.compare("ぼ", "ボ") === 0);
+	assertTrue("ぽ = ポ", col.compare("ぽ", "ポ") === 0);
+	assertTrue("ぽ = ポ", col.compare("ぽ", "ポ") === 0);
+	assertTrue("ま = マ", col.compare("ま", "マ") === 0);
+	assertTrue("み = ミ", col.compare("み", "ミ") === 0);
+	assertTrue("む = ム", col.compare("む", "ム") === 0);
+	assertTrue("め = メ", col.compare("め", "メ") === 0);
+	assertTrue("も = モ", col.compare("も", "モ") === 0);
+	assertTrue("や = ヤ", col.compare("や", "ヤ") === 0);
+	assertTrue("ゆ = ユ", col.compare("ゆ", "ユ") === 0);
+	assertTrue("よ = ヨ", col.compare("よ", "ヨ") === 0);
+	assertTrue("ら = ラ", col.compare("ら", "ラ") === 0);
+	assertTrue("り = リ", col.compare("り", "リ") === 0);
+	assertTrue("る = ル", col.compare("る", "ル") === 0);
+	assertTrue("れ = レ", col.compare("れ", "レ") === 0);
+	assertTrue("ろ = ロ", col.compare("ろ", "ロ") === 0);
+	assertTrue("わ = ワ", col.compare("わ", "ワ") === 0);
+	assertTrue("ゐ = ヰ", col.compare("ゐ", "ヰ") === 0);
+	assertTrue("ゑ = ヱ", col.compare("ゑ", "ヱ") === 0);
+	assertTrue("を = ヲ", col.compare("を", "ヲ") === 0);
+	assertTrue("ん = ン", col.compare("ん", "ン") === 0);
+}
+
+function testJSCollatorHiraBeforeKataPri_ja() {
+	var col = new ilib.Collator({
+		locale: "ja-JP",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
+	// ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+	
+	assertTrue("あ = ア", col.compare("あ", "ア") === 0);
+	assertTrue("い = イ", col.compare("い", "イ") === 0);
+	assertTrue("う = ウ", col.compare("う", "ウ") === 0);
+	assertTrue("え = エ", col.compare("え", "エ") === 0);
+	assertTrue("お = オ", col.compare("お", "オ") === 0);
+	assertTrue("か = カ", col.compare("か", "カ") === 0);
+	assertTrue("が = ガ", col.compare("が", "ガ") === 0);
+	assertTrue("が = ガ", col.compare("が", "ガ") === 0);
+	assertTrue("き = キ", col.compare("き", "キ") === 0);
+	assertTrue("ぎ = ギ", col.compare("ぎ", "ギ") === 0);
+	assertTrue("ぎ = ギ", col.compare("ぎ", "ギ") === 0);
+	assertTrue("く = ク", col.compare("く", "ク") === 0);
+	assertTrue("ぐ = グ", col.compare("ぐ", "グ") === 0);
+	assertTrue("ぐ = グ", col.compare("ぐ", "グ") === 0);
+	assertTrue("け = ケ", col.compare("け", "ケ") === 0);
+	assertTrue("げ = ゲ", col.compare("げ", "ゲ") === 0);
+	assertTrue("げ = ゲ", col.compare("げ", "ゲ") === 0);
+	assertTrue("こ = コ", col.compare("こ", "コ") === 0);
+	assertTrue("ご = ゴ", col.compare("ご", "ゴ") === 0);
+	assertTrue("ご = ゴ", col.compare("ご", "ゴ") === 0);
+	assertTrue("さ = サ", col.compare("さ", "サ") === 0);
+	assertTrue("ざ = ザ", col.compare("ざ", "ザ") === 0);
+	assertTrue("ざ = ザ", col.compare("ざ", "ザ") === 0);
+	assertTrue("し = シ", col.compare("し", "シ") === 0);
+	assertTrue("じ = ジ", col.compare("じ", "ジ") === 0);
+	assertTrue("じ = ジ", col.compare("じ", "ジ") === 0);
+	assertTrue("す = ス", col.compare("す", "ス") === 0);
+	assertTrue("ず = ズ", col.compare("ず", "ズ") === 0);
+	assertTrue("ず = ズ", col.compare("ず", "ズ") === 0);
+	assertTrue("せ = セ", col.compare("せ", "セ") === 0);
+	assertTrue("ぜ = ゼ", col.compare("ぜ", "ゼ") === 0);
+	assertTrue("ぜ = ゼ", col.compare("ぜ", "ゼ") === 0);
+	assertTrue("そ = ソ", col.compare("そ", "ソ") === 0);
+	assertTrue("ぞ = ゾ", col.compare("ぞ", "ゾ") === 0);
+	assertTrue("ぞ = ゾ", col.compare("ぞ", "ゾ") === 0);
+	assertTrue("た = タ", col.compare("た", "タ") === 0);
+	assertTrue("だ = ダ", col.compare("だ", "ダ") === 0);
+	assertTrue("だ = ダ", col.compare("だ", "ダ") === 0);
+	assertTrue("ち = チ", col.compare("ち", "チ") === 0);
+	assertTrue("ぢ = ヂ", col.compare("ぢ", "ヂ") === 0);
+	assertTrue("ぢ = ヂ", col.compare("ぢ", "ヂ") === 0);
+	assertTrue("つ = ツ", col.compare("つ", "ツ") === 0);
+	assertTrue("づ = ヅ", col.compare("づ", "ヅ") === 0);
+	assertTrue("づ = ヅ", col.compare("づ", "ヅ") === 0);
+	assertTrue("て = テ", col.compare("て", "テ") === 0);
+	assertTrue("で = デ", col.compare("で", "デ") === 0);
+	assertTrue("で = デ", col.compare("で", "デ") === 0);
+	assertTrue("と = ト", col.compare("と", "ト") === 0);
+	assertTrue("ど = ド", col.compare("ど", "ド") === 0);
+	assertTrue("ど = ド", col.compare("ど", "ド") === 0);
+	assertTrue("な = ナ", col.compare("な", "ナ") === 0);
+	assertTrue("に = ニ", col.compare("に", "ニ") === 0);
+	assertTrue("ぬ = ヌ", col.compare("ぬ", "ヌ") === 0);
+	assertTrue("ね = ネ", col.compare("ね", "ネ") === 0);
+	assertTrue("の = ノ", col.compare("の", "ノ") === 0);
+	assertTrue("は = ハ", col.compare("は", "ハ") === 0);
+	assertTrue("ば = バ", col.compare("ば", "バ") === 0);
+	assertTrue("ば = バ", col.compare("ば", "バ") === 0);
+	assertTrue("ぱ = パ", col.compare("ぱ", "パ") === 0);
+	assertTrue("ぱ = パ", col.compare("ぱ", "パ") === 0);
+	assertTrue("ひ = ヒ", col.compare("ひ", "ヒ") === 0);
+	assertTrue("び = ビ", col.compare("び", "ビ") === 0);
+	assertTrue("び = ビ", col.compare("び", "ビ") === 0);
+	assertTrue("ぴ = ピ", col.compare("ぴ", "ピ") === 0);
+	assertTrue("ぴ = ピ", col.compare("ぴ", "ピ") === 0);
+	assertTrue("ふ = フ", col.compare("ふ", "フ") === 0);
+	assertTrue("ぶ = ブ", col.compare("ぶ", "ブ") === 0);
+	assertTrue("ぶ = ブ", col.compare("ぶ", "ブ") === 0);
+	assertTrue("ぷ = プ", col.compare("ぷ", "プ") === 0);
+	assertTrue("ぷ = プ", col.compare("ぷ", "プ") === 0);
+	assertTrue("へ = ヘ", col.compare("へ", "ヘ") === 0);
+	assertTrue("べ = ベ", col.compare("べ", "ベ") === 0);
+	assertTrue("べ = ベ", col.compare("べ", "ベ") === 0);
+	assertTrue("ぺ = ペ", col.compare("ぺ", "ペ") === 0);
+	assertTrue("ぺ = ペ", col.compare("ぺ", "ペ") === 0);
+	assertTrue("ほ = ホ", col.compare("ほ", "ホ") === 0);
+	assertTrue("ぼ = ボ", col.compare("ぼ", "ボ") === 0);
+	assertTrue("ぼ = ボ", col.compare("ぼ", "ボ") === 0);
+	assertTrue("ぽ = ポ", col.compare("ぽ", "ポ") === 0);
+	assertTrue("ぽ = ポ", col.compare("ぽ", "ポ") === 0);
+	assertTrue("ま = マ", col.compare("ま", "マ") === 0);
+	assertTrue("み = ミ", col.compare("み", "ミ") === 0);
+	assertTrue("む = ム", col.compare("む", "ム") === 0);
+	assertTrue("め = メ", col.compare("め", "メ") === 0);
+	assertTrue("も = モ", col.compare("も", "モ") === 0);
+	assertTrue("や = ヤ", col.compare("や", "ヤ") === 0);
+	assertTrue("ゆ = ユ", col.compare("ゆ", "ユ") === 0);
+	assertTrue("よ = ヨ", col.compare("よ", "ヨ") === 0);
+	assertTrue("ら = ラ", col.compare("ら", "ラ") === 0);
+	assertTrue("り = リ", col.compare("り", "リ") === 0);
+	assertTrue("る = ル", col.compare("る", "ル") === 0);
+	assertTrue("れ = レ", col.compare("れ", "レ") === 0);
+	assertTrue("ろ = ロ", col.compare("ろ", "ロ") === 0);
+	assertTrue("わ = ワ", col.compare("わ", "ワ") === 0);
+	assertTrue("ゐ = ヰ", col.compare("ゐ", "ヰ") === 0);
+	assertTrue("ゑ = ヱ", col.compare("ゑ", "ヱ") === 0);
+	assertTrue("を = ヲ", col.compare("を", "ヲ") === 0);
+	assertTrue("ん = ン", col.compare("ん", "ン") === 0);
+}
+
+function testJSCollatorKanaBeforeKanji_ja() {
+	var col = new ilib.Collator({
+		locale: "ja-JP",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
+	// ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
+	
+	assertTrue("ん <  鯵", col.compare("ん", "鯵") < 0);
+	assertTrue("ン <  鯵", col.compare("ン", "鯵") < 0);
+}
+
+function testJSCollatorSortQuat_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
 		useNative: false,
@@ -4593,12 +4948,64 @@ function testJSCollatorQuatSort_ja() {
 
 	assertNotUndefined(col);
 
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
+	assertTrue("鯵 < 允", col.compare("鯵", "允") < 0);
+	assertTrue("允 < 渦", col.compare("允", "渦") < 0);
+	assertTrue("渦 < 頴", col.compare("渦", "頴") < 0);
 	
-	assertTrue("Α < α", col.compare("Α", "α") < 0);
+	assertTrue("あ < い", col.compare("あ", "い") < 0);
+	assertTrue("い < う", col.compare("い", "う") < 0);
+	assertTrue("う < ゔ", col.compare("う", "ゔ") < 0);
+	assertTrue("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
+	assertTrue("ゔ < え", col.compare("ゔ", "え") < 0);
+
+	assertTrue("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
+	assertTrue("あー < あぁ", col.compare("あー", "あぁ") < 0);
+	assertTrue("かー < かぁ", col.compare("かー", "かぁ") < 0);
+	assertTrue("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
+	assertTrue("がー < がぁ", col.compare("がー", "がぁ") < 0);
+	assertTrue("さー < さぁ", col.compare("さー", "さぁ") < 0);
+
+	assertTrue("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
+	assertTrue("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
+	assertTrue("いゝ < いい", col.compare("いゝ", "いい") < 0);
+	assertTrue("ぃゝ < ぃい", col.compare("ぃゝ", "ぃい") < 0);
+	assertTrue("うゝ < うう", col.compare("うゝ", "うう") < 0);
+	assertTrue("ぅゝ < ぅう", col.compare("ぅゝ", "ぅう") < 0);
+	assertTrue("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
+	assertTrue("うゞ < うう", col.compare("うゞ", "うう") < 0);
+	assertTrue("ぅゞ < ぅう", col.compare("ぅゞ", "ぅう") < 0);
+
+	assertTrue("ア < イ", col.compare("ア", "イ") < 0);
+	assertTrue("イ < ウ", col.compare("イ", "ウ") < 0);
+	assertTrue("ウ < エ", col.compare("ウ", "エ") < 0);
+	assertTrue("エ < オ", col.compare("エ", "オ") < 0);
+	assertTrue("オ < カ", col.compare("オ", "カ") < 0);
+	assertTrue("カ < ガ", col.compare("カ", "ガ") < 0);
+	
+	assertTrue("ァー < ァア", col.compare("ァー", "ァア") < 0);
+	assertTrue("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
+	assertTrue("アー < アア", col.compare("アー", "アア") < 0);
+	assertTrue("ｱー < ｱア", col.compare("ｱー", "ｱア") < 0);
+	assertTrue("カー < カア", col.compare("カー", "カア") < 0);
+	assertTrue("ｶー < ｶア", col.compare("ｶー", "ｶア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("サー < サア", col.compare("サー", "サア") < 0);
+	assertTrue("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
+
+	assertTrue("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
+	assertTrue("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
+	assertTrue("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
+	assertTrue("ｩヽ < ｩウ", col.compare("ｩヽ", "ｩウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ウヾ < ウウ", col.compare("ウヾ", "ウウ") < 0);
+	assertTrue("ｳヾ < ｳウ", col.compare("ｳヾ", "ｳウ") < 0);
+	assertTrue("ゥヾ < ゥウ", col.compare("ゥヾ", "ゥウ") < 0);
+	assertTrue("ｩヾ < ｩウ", col.compare("ｩヾ", "ｩウ") < 0);
 }
 
-function testJSCollatorTerSort_ja() {
+function testJSCollatorSortTer_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
 		useNative: false,
@@ -4606,14 +5013,68 @@ function testJSCollatorTerSort_ja() {
 		usage: "sort"
 	});
 
+	// with usage "sort" all of these should stay the same no matter the sensitivity
+	
 	assertNotUndefined(col);
 
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
+	assertTrue("鯵 < 允", col.compare("鯵", "允") < 0);
+	assertTrue("允 < 渦", col.compare("允", "渦") < 0);
+	assertTrue("渦 < 頴", col.compare("渦", "頴") < 0);
 	
-	assertTrue("Α < α", col.compare("Α", "α") < 0);
+	assertTrue("あ < い", col.compare("あ", "い") < 0);
+	assertTrue("い < う", col.compare("い", "う") < 0);
+	assertTrue("う < ゔ", col.compare("う", "ゔ") < 0);
+	assertTrue("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
+	assertTrue("ゔ < え", col.compare("ゔ", "え") < 0);
+
+	assertTrue("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
+	assertTrue("あー < あぁ", col.compare("あー", "あぁ") < 0);
+	assertTrue("かー < かぁ", col.compare("かー", "かぁ") < 0);
+	assertTrue("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
+	assertTrue("がー < がぁ", col.compare("がー", "がぁ") < 0);
+	assertTrue("さー < さぁ", col.compare("さー", "さぁ") < 0);
+
+	assertTrue("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
+	assertTrue("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
+	assertTrue("いゝ < いい", col.compare("いゝ", "いい") < 0);
+	assertTrue("ぃゝ < ぃい", col.compare("ぃゝ", "ぃい") < 0);
+	assertTrue("うゝ < うう", col.compare("うゝ", "うう") < 0);
+	assertTrue("ぅゝ < ぅう", col.compare("ぅゝ", "ぅう") < 0);
+	assertTrue("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
+	assertTrue("うゞ < うう", col.compare("うゞ", "うう") < 0);
+	assertTrue("ぅゞ < ぅう", col.compare("ぅゞ", "ぅう") < 0);
+
+	assertTrue("ア < イ", col.compare("ア", "イ") < 0);
+	assertTrue("イ < ウ", col.compare("イ", "ウ") < 0);
+	assertTrue("ウ < エ", col.compare("ウ", "エ") < 0);
+	assertTrue("エ < オ", col.compare("エ", "オ") < 0);
+	assertTrue("オ < カ", col.compare("オ", "カ") < 0);
+	assertTrue("カ < ガ", col.compare("カ", "ガ") < 0);
+	
+	assertTrue("ァー < ァア", col.compare("ァー", "ァア") < 0);
+	assertTrue("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
+	assertTrue("アー < アア", col.compare("アー", "アア") < 0);
+	assertTrue("ｱー < ｱア", col.compare("ｱー", "ｱア") < 0);
+	assertTrue("カー < カア", col.compare("カー", "カア") < 0);
+	assertTrue("ｶー < ｶア", col.compare("ｶー", "ｶア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("サー < サア", col.compare("サー", "サア") < 0);
+	assertTrue("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
+
+	assertTrue("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
+	assertTrue("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
+	assertTrue("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
+	assertTrue("ｩヽ < ｩウ", col.compare("ｩヽ", "ｩウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ウヾ < ウウ", col.compare("ウヾ", "ウウ") < 0);
+	assertTrue("ｳヾ < ｳウ", col.compare("ｳヾ", "ｳウ") < 0);
+	assertTrue("ゥヾ < ゥウ", col.compare("ゥヾ", "ゥウ") < 0);
+	assertTrue("ｩヾ < ｩウ", col.compare("ｩヾ", "ｩウ") < 0);
 }
 
-function testJSCollatorSecSort_ja() {
+function testJSCollatorSortSec_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
 		useNative: false,
@@ -4621,14 +5082,68 @@ function testJSCollatorSecSort_ja() {
 		usage: "sort"
 	});
 
+	// with usage "sort" all of these should stay the same no matter the sensitivity
+	
 	assertNotUndefined(col);
 
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
+	assertTrue("鯵 < 允", col.compare("鯵", "允") < 0);
+	assertTrue("允 < 渦", col.compare("允", "渦") < 0);
+	assertTrue("渦 < 頴", col.compare("渦", "頴") < 0);
 	
-	assertTrue("Α < α", col.compare("Α", "α") < 0);
+	assertTrue("あ < い", col.compare("あ", "い") < 0);
+	assertTrue("い < う", col.compare("い", "う") < 0);
+	assertTrue("う < ゔ", col.compare("う", "ゔ") < 0);
+	assertTrue("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
+	assertTrue("ゔ < え", col.compare("ゔ", "え") < 0);
+
+	assertTrue("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
+	assertTrue("あー < あぁ", col.compare("あー", "あぁ") < 0);
+	assertTrue("かー < かぁ", col.compare("かー", "かぁ") < 0);
+	assertTrue("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
+	assertTrue("がー < がぁ", col.compare("がー", "がぁ") < 0);
+	assertTrue("さー < さぁ", col.compare("さー", "さぁ") < 0);
+
+	assertTrue("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
+	assertTrue("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
+	assertTrue("いゝ < いい", col.compare("いゝ", "いい") < 0);
+	assertTrue("ぃゝ < ぃい", col.compare("ぃゝ", "ぃい") < 0);
+	assertTrue("うゝ < うう", col.compare("うゝ", "うう") < 0);
+	assertTrue("ぅゝ < ぅう", col.compare("ぅゝ", "ぅう") < 0);
+	assertTrue("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
+	assertTrue("うゞ < うう", col.compare("うゞ", "うう") < 0);
+	assertTrue("ぅゞ < ぅう", col.compare("ぅゞ", "ぅう") < 0);
+
+	assertTrue("ア < イ", col.compare("ア", "イ") < 0);
+	assertTrue("イ < ウ", col.compare("イ", "ウ") < 0);
+	assertTrue("ウ < エ", col.compare("ウ", "エ") < 0);
+	assertTrue("エ < オ", col.compare("エ", "オ") < 0);
+	assertTrue("オ < カ", col.compare("オ", "カ") < 0);
+	assertTrue("カ < ガ", col.compare("カ", "ガ") < 0);
+	
+	assertTrue("ァー < ァア", col.compare("ァー", "ァア") < 0);
+	assertTrue("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
+	assertTrue("アー < アア", col.compare("アー", "アア") < 0);
+	assertTrue("ｱー < ｱア", col.compare("ｱー", "ｱア") < 0);
+	assertTrue("カー < カア", col.compare("カー", "カア") < 0);
+	assertTrue("ｶー < ｶア", col.compare("ｶー", "ｶア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("サー < サア", col.compare("サー", "サア") < 0);
+	assertTrue("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
+
+	assertTrue("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
+	assertTrue("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
+	assertTrue("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
+	assertTrue("ｩヽ < ｩウ", col.compare("ｩヽ", "ｩウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ウヾ < ウウ", col.compare("ウヾ", "ウウ") < 0);
+	assertTrue("ｳヾ < ｳウ", col.compare("ｳヾ", "ｳウ") < 0);
+	assertTrue("ゥヾ < ゥウ", col.compare("ゥヾ", "ゥウ") < 0);
+	assertTrue("ｩヾ < ｩウ", col.compare("ｩヾ", "ｩウ") < 0);
 }
 
-function testJSCollatorPriSort_ja() {
+function testJSCollatorSortPri_ja() {
 	var col = new ilib.Collator({
 		locale: "ja-JP",
 		useNative: false,
@@ -4636,11 +5151,65 @@ function testJSCollatorPriSort_ja() {
 		usage: "sort"
 	});
 
+	// with usage "sort" all of these should stay the same no matter the sensitivity
+	
 	assertNotUndefined(col);
 
-	// Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
+	assertTrue("鯵 < 允", col.compare("鯵", "允") < 0);
+	assertTrue("允 < 渦", col.compare("允", "渦") < 0);
+	assertTrue("渦 < 頴", col.compare("渦", "頴") < 0);
 	
-	assertTrue("Α < α", col.compare("Α", "α") < 0);
+	assertTrue("あ < い", col.compare("あ", "い") < 0);
+	assertTrue("い < う", col.compare("い", "う") < 0);
+	assertTrue("う < ゔ", col.compare("う", "ゔ") < 0);
+	assertTrue("ゔ < ゔ", col.compare("ゔ", "ゔ") < 0);
+	assertTrue("ゔ < え", col.compare("ゔ", "え") < 0);
+
+	assertTrue("ぁー < ぁぁ", col.compare("ぁー", "ぁぁ") < 0);
+	assertTrue("あー < あぁ", col.compare("あー", "あぁ") < 0);
+	assertTrue("かー < かぁ", col.compare("かー", "かぁ") < 0);
+	assertTrue("ゕー < ゕぁ", col.compare("ゕー", "ゕぁ") < 0);
+	assertTrue("がー < がぁ", col.compare("がー", "がぁ") < 0);
+	assertTrue("さー < さぁ", col.compare("さー", "さぁ") < 0);
+
+	assertTrue("あゝ < ああ", col.compare("あゝ", "ああ") < 0);
+	assertTrue("ぁゝ < ぁあ", col.compare("ぁゝ", "ぁあ") < 0);
+	assertTrue("いゝ < いい", col.compare("いゝ", "いい") < 0);
+	assertTrue("ぃゝ < ぃい", col.compare("ぃゝ", "ぃい") < 0);
+	assertTrue("うゝ < うう", col.compare("うゝ", "うう") < 0);
+	assertTrue("ぅゝ < ぅう", col.compare("ぅゝ", "ぅう") < 0);
+	assertTrue("ゔゝ < ゔう", col.compare("ゔゝ", "ゔう") < 0);
+	assertTrue("うゞ < うう", col.compare("うゞ", "うう") < 0);
+	assertTrue("ぅゞ < ぅう", col.compare("ぅゞ", "ぅう") < 0);
+
+	assertTrue("ア < イ", col.compare("ア", "イ") < 0);
+	assertTrue("イ < ウ", col.compare("イ", "ウ") < 0);
+	assertTrue("ウ < エ", col.compare("ウ", "エ") < 0);
+	assertTrue("エ < オ", col.compare("エ", "オ") < 0);
+	assertTrue("オ < カ", col.compare("オ", "カ") < 0);
+	assertTrue("カ < ガ", col.compare("カ", "ガ") < 0);
+	
+	assertTrue("ァー < ァア", col.compare("ァー", "ァア") < 0);
+	assertTrue("ｧー < ｧア", col.compare("ｧー", "ｧア") < 0);
+	assertTrue("アー < アア", col.compare("アー", "アア") < 0);
+	assertTrue("ｱー < ｱア", col.compare("ｱー", "ｱア") < 0);
+	assertTrue("カー < カア", col.compare("カー", "カア") < 0);
+	assertTrue("ｶー < ｶア", col.compare("ｶー", "ｶア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("ガー < ガア", col.compare("ガー", "ガア") < 0);
+	assertTrue("サー < サア", col.compare("サー", "サア") < 0);
+	assertTrue("ｻー < ｻア", col.compare("ｻー", "ｻア") < 0);
+
+	assertTrue("ウヽ < ウウ", col.compare("ウヽ", "ウウ") < 0);
+	assertTrue("ｳヽ < ｳウ", col.compare("ｳヽ", "ｳウ") < 0);
+	assertTrue("ゥヽ < ゥウ", col.compare("ゥヽ", "ゥウ") < 0);
+	assertTrue("ｩヽ < ｩウ", col.compare("ｩヽ", "ｩウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ヴヽ < ヴウ", col.compare("ヴヽ", "ヴウ") < 0);
+	assertTrue("ウヾ < ウウ", col.compare("ウヾ", "ウウ") < 0);
+	assertTrue("ｳヾ < ｳウ", col.compare("ｳヾ", "ｳウ") < 0);
+	assertTrue("ゥヾ < ゥウ", col.compare("ゥヾ", "ゥウ") < 0);
+	assertTrue("ｩヾ < ｩウ", col.compare("ｩヾ", "ｩウ") < 0);
 }
 
 function testCollatorCase_ja() {
@@ -4653,57 +5222,116 @@ function testCollatorCase_ja() {
     assertNotUndefined(col);
     
     var input = [
- 	    "ΐ", 
-	    "ί̈", 
- 	    "Α", 
-	    "ξ", 
-	    "ΐ", 
-	    "σ", 
-	    "Η", 
-	    "Κ", 
-	    "ϊ", 
-	    "ά", 
-	    "ω", 
-	    "ώ", 
-	    "α", 
-	    "Σ", 
-	    "ϊ", 
-	    "Δ", 
-	    "ά", 
-	    "ώ",
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ς",
-	    "Ψ"
+        		"ぁー",
+        		"ｧー",
+        		"い",
+        		"ｳヾ",
+   		"イ",
+  		"ゕー",
+        		"ｩヽ",
+        		"オ",
+        		"か",
+        		"ゔゝ",
+        "渦",
+        		"うゞ",
+           	"ぃゝ",      		
+        		"う",
+        		"ウ",
+         		"サー",
+     		"ぅゞ",
+        		"ア",
+        		"ガー",
+        		"がー",
+        		"あー",
+        		"あゝ",
+        		"ヴヽ",
+        		"アー",
+        		"ヴヽ",
+        "允",
+        		"ゥヾ",
+         		"ｻー",
+        "鯵",
+        		"カー",
+      		"ウヽ",
+        		"ガー",
+         		"あ",
+        		"カ",
+        		"ゥヽ",
+      		"ｩヾ",
+        		"え",
+        		"エ",
+        		"お",
+        		"うゝ",
+        		"ぅゝ",
+        		"ぁゝ",
+        		"ァー",
+        		"ｳヽ",
+        		"ｱー",
+    		"ウヾ",
+        		"かー",
+        		"いゝ",
+		"ｶー"
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-	    "Α", 
-	    "α", 
-	    "ά", 
-	    "ά", 
-	    "Δ", 
-	    "Η", 
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ϊ", 
-	    "ϊ", 
-	    "ΐ", 
-	    "ΐ", 
-	    "ί̈", 
-	    "Κ", 
-	    "ξ", 
-	    "Σ", 
-	    "σ", 
-	    "ς",
-	    "Ψ", 
-	    "ω", 
-	    "ώ", 
-	    "ώ"
+          		"ぁー",
+        		"ぁゝ",
+		"あ",
+		"あー",
+		"あゝ",
+		"ァー",
+		"ｧー",
+		"ア",
+		"アー",
+		"ｱー",
+
+		"ぃゝ",
+		"い",
+		"いゝ",
+		"イ",
+		
+		"ぅゝ",
+		"ぅゞ",
+		"う",
+		"うゝ",
+		"うゞ",
+		"ゥヽ",
+		"ゥヾ",
+		"ｩヽ",
+		"ｩヾ",
+		"ウ",
+		"ウヾ",
+		"ウヽ",
+		"ｳヽ",
+		"ｳヾ",
+		"ゔゝ",
+		"ヴヽ",
+		"ヴヽ",
+		
+		"え",
+		"エ",
+		
+		"お",
+		"オ",
+		
+		"ゕー",
+		"か",
+		"かー",
+		"カ",
+		"カー",
+		"ｶー",
+		"がー",
+		"ガー",
+		"ガー",
+
+		"サー",
+		"ｻー",
+
+		"鯵",
+		"允",
+		"渦"
 	];
 
     assertArrayEquals(expected, input);
@@ -4719,80 +5347,119 @@ function testCollatorPrimary_ja() {
     assertNotUndefined(col);
 
     var input = [
-	    "ΐ", 
-	    "ας",
-	    "ί̈", 
- 	    "Α", 
-	    "ξ", 
-	    "ΐ", 
-	    "σ", 
-	    "Η", 
-	    "Κ", 
-	    "αδ",
-	    "ϊ", 
-	    "ά", 
-	    "ω", 
-	    "ώ", 
-	    "α", 
-	    "Σ", 
-	    "ϊ", 
-	    "Δ", 
-	    "ά", 
-	    "ώ",
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ς",
-	    "Ψ"
+		"ぁー",
+		"ｧー",
+		"い",
+		"ｳヾ",
+		"イ",
+		"ゕー",
+		"ｩヽ",
+		"オ",
+		"か",
+		"ゔゝ",
+		"渦",
+		"うゞ",
+		"ぃゝ",      		
+		"う",
+		"ウ",
+		"サー",
+		"ぅゞ",
+		"ア",
+		"ガー",
+		"がー",
+		"あー",
+		"あゝ",
+		"ヴヽ",
+		"アー",
+		"ヴヽ",
+		"允",
+		"ゥヾ",
+		"ｻー",
+		"鯵",
+		"カー",
+		"ウヽ",
+		"ガー",
+		"あ",
+		"カ",
+		"ゥヽ",
+		"ｩヾ",
+		"え",
+		"エ",
+		"お",
+		"うゝ",
+		"ぅゝ",
+		"ぁゝ",
+		"ァー",
+		"ｳヽ",
+		"ｱー",
+		"ウヾ",
+		"かー",
+		"いゝ",
+		"ｶー"
 	];
-
-    input.sort(col.getComparator());
-
-    var expected = [
-	    "Α", 
-	    "α",
-	    "αδ",
-	    "ας",
-	    "ά", 
-	    "ά", 
-	    "Δ", 
-	    "Η", 
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ϊ", 
-	    "ϊ", 
-	    "ΐ", 
-	    "ΐ", 
-	    "ί̈", 
-	    "Κ", 
-	    "ξ", 
-	    "Σ", 
-	    "σ", 
-	    "ς",
-	    "Ψ", 
-	    "ω", 
-	    "ώ", 
-	    "ώ"
+	
+	input.sort(col.getComparator());
+	
+	var expected = [
+		"ぁー",
+		"ぁゝ",
+		"あ",
+		"あー",
+		"あゝ",
+		"ァー",
+		"ｧー",
+		"ア",
+		"アー",
+		"ｱー",
+		
+		"ぃゝ",
+		"い",
+		"いゝ",
+		"イ",
+		
+		"ぅゝ",
+		"ぅゞ",
+		"う",
+		"うゝ",
+		"うゞ",
+		"ゥヽ",
+		"ゥヾ",
+		"ｩヽ",
+		"ｩヾ",
+		"ウ",
+		"ウヾ",
+		"ウヽ",
+		"ｳヽ",
+		"ｳヾ",
+		"ゔゝ",
+		"ヴヽ",
+		"ヴヽ",
+		
+		"え",
+		"エ",
+		
+		"お",
+		"オ",
+		
+		"ゕー",
+		"か",
+		"かー",
+		"カ",
+		"カー",
+		"ｶー",
+		"がー",
+		"ガー",
+		"ガー",
+		
+		"サー",
+		"ｻー",
+		
+		"鯵",
+		"允",
+		"渦"
     ];
 
     assertArrayEquals(expected, input);
-}
-
-function testCollatorIgnoreStressMarks_ja() {
-	var col = new ilib.Collator({
-		locale: "ja-JP",
-		useNative: false,
-		sensitivity: "primary",
-		usage: "search"
-	});
-    assertNotUndefined(col);
-
-    var comp = col.getComparator();
-    
-    // ignore stress marks
-    assertEquals(0, comp("παϊδάκια", "παιδάκια"));
-    assertEquals(0, comp("Αθηνά", "Αθήνα"));
 }
 
 function testJSCollatorQuatLatin_ja() {
@@ -4835,36 +5502,60 @@ function testCollatorPrimaryMixed_ja() {
     assertNotUndefined(col);
 
     var input = [
- 	    "ΐ", 
-	    "ας",
-	    "Σ", 
-	    "ϊ", 
-	    "Δ", 
-        "orange",
-	    "ί̈", 
-        "peach",
-	    "ΐ", 
-	    "σ", 
-	    "Η", 
-	    "Κ", 
-        "apple",
-	    "αδ",
-	    "ϊ", 
-	    "ά", 
-	    "ω", 
-        "raspberry",
- 	    "Α", 
-	    "ξ", 
-	    "ώ", 
-	    "α", 
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ά", 
-	    "ώ",
+         		"ぁー",
+        		"ｧー",
+	    "peach",
+       		"い",
+        		"ｳヾ",
+   		"イ",
+  		"ゕー",
+        		"ｩヽ",
+        		"オ",
+        		"か",
         "banana",
-	    "ς",
-	    "Ψ"
+        		"ゔゝ",
+        "渦",
+        		"うゞ",
+           	"ぃゝ",      		
+        		"う",
+        		"ウ",
+         		"サー",
+     		"ぅゞ",
+        		"ア",
+        		"ガー",
+        		"がー",
+        		"あー",
+        "raspberry",
+       		"あゝ",
+        		"ヴヽ",
+        		"アー",
+        		"ヴヽ",
+        "允",
+        		"ゥヾ",
+         		"ｻー",
+        "鯵",
+        		"カー",
+      		"ウヽ",
+        		"ガー",
+         		"あ",
+        		"カ",
+        		"ゥヽ",
+      		"ｩヾ",
+        		"え",
+        		"エ",
+		"apple",
+		"お",
+		"うゝ",
+		"ぅゝ",
+		"ぁゝ",
+		"ァー",
+		"ｳヽ",
+		"orange",
+        		"ｱー",
+    		"ウヾ",
+        		"かー",
+        		"いゝ",
+		"ｶー"
 	];
 
     input.sort(col.getComparator());
@@ -4872,38 +5563,69 @@ function testCollatorPrimaryMixed_ja() {
     // Latin letters sort after the Cyrillic ones
     
     var expected = [
-	    "Α", 
-	    "α",
-	    "αδ",
-	    "ας",
-	    "ά", 
-	    "ά", 
-	    "Δ", 
-	    "Η", 
-	    "Ή", 
-	    "Ι", 
-	    "ι", 
-	    "ϊ", 
-	    "ϊ", 
-	    "ΐ", 
-	    "ΐ", 
-	    "ί̈", 
-	    "Κ", 
-	    "ξ", 
-	    "Σ", 
-	    "σ", 
-	    "ς",
-	    "Ψ", 
-	    "ω", 
-	    "ώ", 
-	    "ώ",
         "apple",
         "banana",
         "orange",
         "peach",
-        "raspberry"
+        "raspberry",
+
+        		"ぁー",
+        		"ぁゝ",
+    		"あ",
+    		"あー",
+    		"あゝ",
+    		"ァー",
+    		"ｧー",
+    		"ア",
+    		"アー",
+    		"ｱー",
+
+    		"ぃゝ",
+    		"い",
+    		"いゝ",
+    		"イ",
+    		
+       		"ぅゞ",
+       	 	"ぅゝ",
+    		"う",
+    		"うゝ",
+    		"うゞ",
+    		"ゥヾ",
+       		"ゥヽ",
+    		"ｩヾ",
+       	 	"ｩヽ",
+    		"ウ",
+    		"ウヽ",
+    		"ウヾ",
+    		"ｳヽ",
+    		"ｳヾ",
+    		"ゔゝ",
+    		"ヴヽ",
+    		"ヴヽ",
+    		
+    		"え",
+    		"エ",
+    		
+    		"お",
+    		"オ",
+    		
+    		"ゕー",
+    		"か",
+    		"かー",
+    		"カ",
+    		"カー",
+    		"ｶー",
+    		"がー",
+    		"ガー",
+    		"ガー",
+
+    		"サー",
+    		"ｻー",
+
+		"鯵",
+		"允",
+		"渦"
 	];
 
     assertArrayEquals(expected, input);
 }
-*/
