@@ -608,7 +608,20 @@ ilib.Collator.prototype = {
 			return [ this._pack(rule) ];
 		}
 	},
-    	
+    
+	/**
+	 * @private
+	 */
+	_addChars: function (str) {
+		var gs = new ilib.GlyphString(str);
+		var it = gs.charIterator();
+		
+		while (it.hasNext()) {
+			this.lastMap++;
+			this.map[it.next()] = this._packRule([this.lastMap]);
+		}
+	},
+	
 	/**
      * @private
      */
@@ -619,11 +632,13 @@ ilib.Collator.prototype = {
     	 */
     	this.collation = rules[this.style];
     	this.map = {};
+    	this.lastMap = 0;
     	this.keysize = this.collation.keysize[this.level-1];
     	
     	for (var r in this.collation.map) {
     		if (r) {
     			this.map[r] = this._packRule(this.collation.map[r]);
+    			this.lastMap = Math.max(this.collation.map[r][0], this.lastMap);
     		}
     	}
     	
@@ -631,13 +646,14 @@ ilib.Collator.prototype = {
     		// for each range, everything in the range goes in primary sequence from the start
     		for (var i = 0; i < this.collation.ranges.length; i++) {
     			var range = this.collation.ranges[i];
-    			var j = 0;
-    			var gs = new ilib.GlyphString(range.chars);
-    			var it = gs.charIterator();
     			
-    			while (it.hasNext()) {
-    				this.map[it.next()] = this._packRule([range.start + j]);
-    				j++;
+    			this.lastMap = range.start;
+    			if (typeof(range.chars) === "string") {
+    				this._addChars(range.chars);
+    			} else {
+    				for (var k = 0; k < range.chars.length; k++) {
+    					this._addChars(range.chars[k]);
+    				}
     			}
     		}
     	}
