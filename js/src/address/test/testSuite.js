@@ -118,7 +118,7 @@ function suite() {
 		"testaddress_MX.js",
 		"testaddress_MY.js",
 		"testaddress_NG.js",
-		//"testaddress_NI.js",
+		"testaddress_NI.js",
 		"testaddress_NL.js",
 		"testaddress_NO.js",
 		"testaddress_NZ.js",

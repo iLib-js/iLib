@@ -12,20 +12,35 @@
 			"line": "last",
 			"pattern": [
 			 		"Boaco",
+			 		"BOACO",
 					"Carazo",
+					"CARAZO",
 					"Chinandega",
+					"CHINANDEGA",
 					"Chontales",
+					"CHONTALES",
 					"Esteli",
+					"ESTELI",
 					"Granada",
+					"GRANADA",
 					"Jinotega",
+					"JINOTEGA",
 					"Madriz",
+					"MADRIZ",
 					"Managua",
+					"MANAGUA",
 					"Masaya",
+					"MASAYA",
 					"Matagalpa",
+					"MATAGALPA",
 					"Nueva Segovia",
+					"NUEVA SEGOVIA",
 					"Rio San Juan",
+					"RIO SAN JUAN",
 					"Rivas",
-					"Leon"
+					"RIVAS",
+					"Leon",
+					"LEON"
 			]
 		},
 		
@@ -44,3 +59,4 @@
 		
 	]	
 }
+
