@@ -615,10 +615,21 @@ ilib.Collator.prototype = {
 	_addChars: function (str) {
 		var gs = new ilib.GlyphString(str);
 		var it = gs.charIterator();
+		var c;
 		
 		while (it.hasNext()) {
+			c = it.next();
+			if (c === "'") {
+				// escape a sequence of chars as one collation element
+				c = "";
+				var x = "";
+				while (it.hasNext() && x !== "'") {
+					c += x;
+					x = it.next();
+				}
+			}
 			this.lastMap++;
-			this.map[it.next()] = this._packRule([this.lastMap]);
+			this.map[c] = this._packRule([this.lastMap]);
 		}
 	},
 	

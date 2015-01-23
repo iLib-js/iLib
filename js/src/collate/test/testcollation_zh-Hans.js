@@ -150,6 +150,94 @@ function testJSCollatorPriHanzi_zh_Hans() {
 	assertTrue("赵 < 蓙", col.compare("赵", "蓙") < 0);
 }
 
+function testJSCollatorQuatHanziVariants_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "quaternary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	// extra variants at the tertiary level
+	assertTrue("幼 < ㉅", col.compare("幼", "㉅") < 0);
+	assertTrue("平成 < ㍻", col.compare("平成", "㍻") < 0);
+	assertTrue("幼 < ㉅", col.compare("幼", "㉅") < 0);
+	assertTrue("木 < ⽊", col.compare("木", "⽊") < 0);
+	assertTrue("木 < ㊍", col.compare("木", "㊍") < 0);
+	assertTrue("株式会社 < ㍿", col.compare("株式会社", "㍿") < 0);
+	assertTrue("穴 < ⽳", col.compare("穴", "⽳") < 0);
+	assertTrue("非 < ⾮", col.compare("非", "⾮") < 0);
+	assertTrue("龠 < ⿕", col.compare("龠", "⿕") < 0);
+}
+
+function testJSCollatorTerHanziVariants_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "tertiary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	// extra variants at the tertiary level
+	assertTrue("幼 < ㉅", col.compare("幼", "㉅") < 0);
+	assertTrue("平成 < ㍻", col.compare("平成", "㍻") < 0);
+	assertTrue("幼 < ㉅", col.compare("幼", "㉅") < 0);
+	assertTrue("木 < ⽊", col.compare("木", "⽊") < 0);
+	assertTrue("木 < ㊍", col.compare("木", "㊍") < 0);
+	assertTrue("株式会社 < ㍿", col.compare("株式会社", "㍿") < 0);
+	assertTrue("穴 < ⽳", col.compare("穴", "⽳") < 0);
+	assertTrue("非 < ⾮", col.compare("非", "⾮") < 0);
+	assertTrue("龠 < ⿕", col.compare("龠", "⿕") < 0);
+}
+
+function testJSCollatorSecHanziVariants_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "secondary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	// extra variants at the tertiary level
+	assertTrue("幼 = ㉅", col.compare("幼", "㉅") === 0);
+	assertTrue("平成 = ㍻", col.compare("平成", "㍻") === 0);
+	assertTrue("幼 = ㉅", col.compare("幼", "㉅") === 0);
+	assertTrue("木 = ⽊", col.compare("木", "⽊") === 0);
+	assertTrue("木 = ㊍", col.compare("木", "㊍") === 0);
+	assertTrue("株式会社 = ㍿", col.compare("株式会社", "㍿") === 0);
+	assertTrue("穴 = ⽳", col.compare("穴", "⽳") === 0);
+	assertTrue("非 = ⾮", col.compare("非", "⾮") === 0);
+	assertTrue("龠 = ⿕", col.compare("龠", "⿕") === 0);
+}
+
+function testJSCollatorPriHanziVariants_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	// extra variants at the tertiary level
+	assertTrue("幼 = ㉅", col.compare("幼", "㉅") === 0);
+	assertTrue("平成 = ㍻", col.compare("平成", "㍻") === 0);
+	assertTrue("幼 = ㉅", col.compare("幼", "㉅") === 0);
+	assertTrue("木 = ⽊", col.compare("木", "⽊") === 0);
+	assertTrue("木 = ㊍", col.compare("木", "㊍") === 0);
+	assertTrue("株式会社 = ㍿", col.compare("株式会社", "㍿") === 0);
+	assertTrue("穴 = ⽳", col.compare("穴", "⽳") === 0);
+	assertTrue("非 = ⾮", col.compare("非", "⾮") === 0);
+	assertTrue("龠 = ⿕", col.compare("龠", "⿕") === 0);
+}
+
 function testJSCollatorPinyinQuat_zh_Hans() {
 	var col = new ilib.Collator({
 		locale: "zh-Hans-CN",
@@ -1300,6 +1388,96 @@ function testCollatorCaseMixed_zh_Hans() {
 		"体", // tǐ 
 		"吴", // wú
 		"西", // xī
+		"一", // yī
+		"站", // zhàn
+		"子"  // zī
+	];
+
+    assertArrayEquals(expected, input);
+}
+
+function testCollatorCaseMixedWithIndexMarkers_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "case",
+		usage: "sort"
+	});
+    assertNotUndefined(col);
+    
+    var input = [
+ 		"波", // bō  
+		"里", // lǐ 
+        "\uFDD0Apple",
+		"摸", // mō 
+		"子", // zī
+        "\uFDD0Orange",
+		"次", // cī
+		"西", // xī
+		"\uFDD0Yam",
+		"德", // dé
+		"\uFDD0Lemon",
+		"科", // kē
+		"记", // jī
+		"各", // gè 
+        "\uFDD0Banana",
+		"坡", // pō
+ 		"啊", // ā
+		"日", // rī
+        "\uFDD0ORange",
+		"吴", // wú
+		"那", // nà
+		"吃", // chī
+        "\uFDD0APPLE",
+		"食", // shí
+		"起", // qī
+		"站", // zhàn
+        "\uFDD0Raspberry",
+		"体", // tǐ 
+		"和", // hé
+		"一", // yī
+        "\uFDD0Peach",
+		"额", // é
+		"佛", // fú
+        "\uFDD0RASPBERRY",
+		"四"  // sī 
+	];
+
+    input.sort(col.getComparator());
+
+    var expected = [
+        "\uFDD0APPLE",
+        "\uFDD0Apple",
+		"啊", // ā
+        "\uFDD0Banana",
+		"波", // bō  
+		"吃", // chī
+		"次", // cī
+		"德", // dé
+		"额", // é
+		"佛", // fú
+		"各", // gè 
+		"和", // hé
+		"记", // jī
+		"科", // kē
+		"\uFDD0Lemon",
+		"里", // lǐ 
+		"摸", // mō 
+		"那", // nà
+        "\uFDD0ORange",
+        "\uFDD0Orange",
+        "\uFDD0Peach",
+		"坡", // pō
+		"起", // qī
+        "\uFDD0RASPBERRY",
+        "\uFDD0Raspberry",
+		"日", // rī
+		"食", // shí
+		"四", // sī
+		"体", // tǐ 
+		"吴", // wú
+		"西", // xī
+		"\uFDD0Yam",
 		"一", // yī
 		"站", // zhàn
 		"子"  // zī
