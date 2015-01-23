@@ -658,19 +658,67 @@ limitations under the License.
 	</target>
 	
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<runtests suite="full" assembly="assembled" compilation="compiled"/>
+		<runtests suite="util" assembly="assembled" compilation="compiled"/>
+		<runtests suite="." assembly="assembled" compilation="compiled"/>
+		<runtests suite="calendar" assembly="assembled" compilation="compiled"/>
+		<runtests suite="date" assembly="assembled" compilation="compiled"/>
+		<runtests suite="number" assembly="assembled" compilation="compiled"/>
+		<runtests suite="maps" assembly="assembled" compilation="compiled"/>
+		<runtests suite="ctype" assembly="assembled" compilation="compiled"/>
+		<runtests suite="strings-ext" assembly="assembled" compilation="compiled"/>
+		<runtests suite="phone" assembly="assembled" compilation="compiled"/>
+		<runtests suite="units" assembly="assembled" compilation="compiled"/>
+		<runtests suite="name" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address" assembly="assembled" compilation="compiled"/>
+		<runtests suite="collate" assembly="assembled" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<runtests suite="full" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="util" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="." assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="calendar" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="date" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="number" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="maps" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="ctype" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="strings-ext" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="phone" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="units" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="name" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="collate" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
-		<runtests suite="full" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="." assembly="dynamic" compilation="compiled"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
 	</target>
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
-		<runtests suite="full" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="util" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="." assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="date" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="number" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="maps" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="ctype" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="phone" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="units" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="name" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="collate" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
 	<target name="bench.core" depends="assemble.unittest,assemble.dyn.unittest"
