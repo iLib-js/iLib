@@ -1,6 +1,6 @@
 {
 	"name": "ilib",
-	"version": "9.0.006",
+	"version": "10.0.001",
 	"main": "nodeglue.js",
 	"description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
 	"keywords": [
