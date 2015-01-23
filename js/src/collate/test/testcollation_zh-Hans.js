@@ -1082,8 +1082,6 @@ function testJSCollatorPinyinPri_zh_Hans() {
 	assertTrue("Z = z", col.compare("Z", "z") === 0);
 }
 
-/*
-
 function testCollatorCase_zh_Hans() {
 	var col = new ilib.Collator({
 		locale: "zh-Hans-CN",
@@ -1094,122 +1092,67 @@ function testCollatorCase_zh_Hans() {
     assertNotUndefined(col);
     
     var input = [
-        		"ぁー",
-        		"ｧー",
-        		"い",
-        		"ｳヾ",
-   		"イ",
-  		"ゕー",
-        		"ｩヽ",
-        		"オ",
-        		"か",
-        		"ゔゝ",
-        "渦",
-        		"うゞ",
-           	"ぃゝ",      		
-        		"う",
-        		"ウ",
-         		"サー",
-     		"ぅゞ",
-        		"ア",
-        		"ガー",
-        		"がー",
-        		"あー",
-        		"あゝ",
-        		"ヴヽ",
-        		"アー",
-        		"ヴヽ",
-        "允",
-        		"ゥヾ",
-         		"ｻー",
-        "鯵",
-        		"カー",
-      		"ウヽ",
-        		"ガー",
-         		"あ",
-        		"カ",
-        		"ゥヽ",
-      		"ｩヾ",
-        		"え",
-        		"エ",
-        		"お",
-        		"うゝ",
-        		"ぅゝ",
-        		"ぁゝ",
-        		"ァー",
-        		"ｳヽ",
-        		"ｱー",
-    		"ウヾ",
-        		"かー",
-        		"いゝ",
-		"ｶー"
+ 		"波", // bō  
+		"里", // lǐ 
+		"摸", // mō 
+		"子", // zī
+		"次", // cī
+		"西", // xī
+		"德", // dé
+		"科", // kē
+		"记", // jī
+		"各", // gè 
+		"坡", // pō
+ 		"啊", // ā
+		"日", // rī
+		"吴", // wú
+		"那", // nà
+		"吃", // chī
+		"食", // shí
+		"起", // qī
+		"站", // zhàn
+		"体", // tǐ 
+		"和", // hé
+		"一", // yī
+		"额", // é
+		"佛", // fú
+		"四"  // sī 
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-          		"ぁー",
-        		"ぁゝ",
-		"あ",
-		"あー",
-		"あゝ",
-		"ァー",
-		"ｧー",
-		"ア",
-		"アー",
-		"ｱー",
-
-		"ぃゝ",
-		"い",
-		"いゝ",
-		"イ",
-		
-		"ぅゝ",
-		"ぅゞ",
-		"う",
-		"うゝ",
-		"うゞ",
-		"ゥヽ",
-		"ゥヾ",
-		"ｩヽ",
-		"ｩヾ",
-		"ウ",
-		"ウヾ",
-		"ウヽ",
-		"ｳヽ",
-		"ｳヾ",
-		"ゔゝ",
-		"ヴヽ",
-		"ヴヽ",
-		
-		"え",
-		"エ",
-		
-		"お",
-		"オ",
-		
-		"ゕー",
-		"か",
-		"かー",
-		"カ",
-		"カー",
-		"ｶー",
-		"がー",
-		"ガー",
-		"ガー",
-
-		"サー",
-		"ｻー",
-
-		"鯵",
-		"允",
-		"渦"
+		"啊", // ā
+		"波", // bō  
+		"吃", // chī
+		"次", // cī
+		"德", // dé
+		"额", // é
+		"佛", // fú
+		"各", // gè 
+		"和", // hé
+		"记", // jī
+		"科", // kē
+		"里", // lǐ 
+		"摸", // mō 
+		"那", // nà
+		"坡", // pō
+		"起", // qī
+		"日", // rī
+		"食", // shí
+		"四", // sī 
+		"体", // tǐ 
+		"吴", // wú
+		"西", // xī
+		"一", // yī
+		"站", // zhàn
+		"子"  // zī
 	];
 
     assertArrayEquals(expected, input);
 }
 
-function testCollatorPrimary_zh_Hans() {
+function testCollatorPri_zh_Hans() {
 	var col = new ilib.Collator({
 		locale: "zh-Hans-CN",
 		useNative: false,
@@ -1217,288 +1160,150 @@ function testCollatorPrimary_zh_Hans() {
 		usage: "sort"
 	});
     assertNotUndefined(col);
-
-    var input = [
-		"ぁー",
-		"ｧー",
-		"い",
-		"ｳヾ",
-		"イ",
-		"ゕー",
-		"ｩヽ",
-		"オ",
-		"か",
-		"ゔゝ",
-		"渦",
-		"うゞ",
-		"ぃゝ",      		
-		"う",
-		"ウ",
-		"サー",
-		"ぅゞ",
-		"ア",
-		"ガー",
-		"がー",
-		"あー",
-		"あゝ",
-		"ヴヽ",
-		"アー",
-		"ヴヽ",
-		"允",
-		"ゥヾ",
-		"ｻー",
-		"鯵",
-		"カー",
-		"ウヽ",
-		"ガー",
-		"あ",
-		"カ",
-		"ゥヽ",
-		"ｩヾ",
-		"え",
-		"エ",
-		"お",
-		"うゝ",
-		"ぅゝ",
-		"ぁゝ",
-		"ァー",
-		"ｳヽ",
-		"ｱー",
-		"ウヾ",
-		"かー",
-		"いゝ",
-		"ｶー"
-	];
-	
-	input.sort(col.getComparator());
-	
-	var expected = [
-		"ぁー",
-		"ぁゝ",
-		"あ",
-		"あー",
-		"あゝ",
-		"ァー",
-		"ｧー",
-		"ア",
-		"アー",
-		"ｱー",
-		
-		"ぃゝ",
-		"い",
-		"いゝ",
-		"イ",
-		
-		"ぅゝ",
-		"ぅゞ",
-		"う",
-		"うゝ",
-		"うゞ",
-		"ゥヽ",
-		"ゥヾ",
-		"ｩヽ",
-		"ｩヾ",
-		"ウ",
-		"ウヾ",
-		"ウヽ",
-		"ｳヽ",
-		"ｳヾ",
-		"ゔゝ",
-		"ヴヽ",
-		"ヴヽ",
-		
-		"え",
-		"エ",
-		
-		"お",
-		"オ",
-		
-		"ゕー",
-		"か",
-		"かー",
-		"カ",
-		"カー",
-		"ｶー",
-		"がー",
-		"ガー",
-		"ガー",
-		
-		"サー",
-		"ｻー",
-		
-		"鯵",
-		"允",
-		"渦"
-    ];
-
-    assertArrayEquals(expected, input);
-}
-
-function testJSCollatorQuatLatin_zh_Hans() {
-	var col = new ilib.Collator({
-		locale: "zh-Hans-CN",
-		useNative: false,
-		sensitivity: "quaternary",
-		usage: "search"
-	});
-
-	assertNotUndefined(col);
-
-	// all latin letters
-	assertTrue("A < a", col.compare("A", "a") < 0);
-	assertTrue("a < B", col.compare("a", "B") < 0);
-	assertTrue("B < b", col.compare("B", "b") < 0);
-	assertTrue("b < C", col.compare("b", "C") < 0);
-	assertTrue("C < c", col.compare("C", "c") < 0);
-	assertTrue("c < D", col.compare("c", "D") < 0);
-	assertTrue("D < d", col.compare("D", "d") < 0);
-	assertTrue("d < E", col.compare("d", "E") < 0);
-	assertTrue("E < e", col.compare("E", "e") < 0);
-	assertTrue("e < F", col.compare("e", "F") < 0);
-	assertTrue("F < f", col.compare("F", "f") < 0);
-	assertTrue("f < G", col.compare("f", "G") < 0);
-	assertTrue("G < g", col.compare("G", "g") < 0);
-	assertTrue("g < H", col.compare("g", "H") < 0);
-	assertTrue("H < h", col.compare("H", "h") < 0);
-	assertTrue("h < I", col.compare("h", "I") < 0);
-	assertTrue("I < i", col.compare("I", "i") < 0);
-}
-
-function testCollatorPrimaryMixed_zh_Hans() {
-	var col = new ilib.Collator({
-		locale: "zh-Hans-CN",
-		useNative: false,
-		sensitivity: "primary",
-		usage: "sort"
-	});
-    assertNotUndefined(col);
-
-    var input = [
-         		"ぁー",
-        		"ｧー",
-	    "peach",
-       		"い",
-        		"ｳヾ",
-   		"イ",
-  		"ゕー",
-        		"ｩヽ",
-        		"オ",
-        		"か",
-        "banana",
-        		"ゔゝ",
-        "渦",
-        		"うゞ",
-           	"ぃゝ",      		
-        		"う",
-        		"ウ",
-         		"サー",
-     		"ぅゞ",
-        		"ア",
-        		"ガー",
-        		"がー",
-        		"あー",
-        "raspberry",
-       		"あゝ",
-        		"ヴヽ",
-        		"アー",
-        		"ヴヽ",
-        "允",
-        		"ゥヾ",
-         		"ｻー",
-        "鯵",
-        		"カー",
-      		"ウヽ",
-        		"ガー",
-         		"あ",
-        		"カ",
-        		"ゥヽ",
-      		"ｩヾ",
-        		"え",
-        		"エ",
-		"apple",
-		"お",
-		"うゝ",
-		"ぅゝ",
-		"ぁゝ",
-		"ァー",
-		"ｳヽ",
-		"orange",
-        		"ｱー",
-    		"ウヾ",
-        		"かー",
-        		"いゝ",
-		"ｶー"
-	];
-
-    input.sort(col.getComparator());
-
-    // Latin letters sort after the Cyrillic ones
     
+    var input = [
+ 		"波", // bō  
+		"里", // lǐ 
+		"摸", // mō 
+		"子", // zī
+		"次", // cī
+		"西", // xī
+		"德", // dé
+		"科", // kē
+		"记", // jī
+		"各", // gè 
+		"坡", // pō
+ 		"啊", // ā
+		"日", // rī
+		"吴", // wú
+		"那", // nà
+		"吃", // chī
+		"食", // shí
+		"起", // qī
+		"站", // zhàn
+		"体", // tǐ 
+		"和", // hé
+		"一", // yī
+		"额", // é
+		"佛", // fú
+		"四"  // sī 
+	];
+
+    input.sort(col.getComparator());
+
     var expected = [
+		"啊", // ā
+		"波", // bō  
+		"吃", // chī
+		"次", // cī
+		"德", // dé
+		"额", // é
+		"佛", // fú
+		"各", // gè 
+		"和", // hé
+		"记", // jī
+		"科", // kē
+		"里", // lǐ 
+		"摸", // mō 
+		"那", // nà
+		"坡", // pō
+		"起", // qī
+		"日", // rī
+		"食", // shí
+		"四", // sī 
+		"体", // tǐ 
+		"吴", // wú
+		"西", // xī
+		"一", // yī
+		"站", // zhàn
+		"子"  // zī
+	];
+
+    assertArrayEquals(expected, input);
+}
+
+function testCollatorCaseMixed_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "case",
+		usage: "sort"
+	});
+    assertNotUndefined(col);
+    
+    var input = [
+ 		"波", // bō  
+		"里", // lǐ 
+        "apple",
+		"摸", // mō 
+		"子", // zī
+        "orange",
+		"次", // cī
+		"西", // xī
+		"德", // dé
+		"科", // kē
+		"记", // jī
+		"各", // gè 
+        "banana",
+		"坡", // pō
+ 		"啊", // ā
+		"日", // rī
+        "oRange",
+		"吴", // wú
+		"那", // nà
+		"吃", // chī
+        "Apple",
+		"食", // shí
+		"起", // qī
+		"站", // zhàn
+        "raspberry",
+		"体", // tǐ 
+		"和", // hé
+		"一", // yī
+        "peach",
+		"额", // é
+		"佛", // fú
+        "RASPBERRY",
+		"四"  // sī 
+	];
+
+    input.sort(col.getComparator());
+
+    var expected = [
+        "Apple",
         "apple",
         "banana",
+        "oRange",
         "orange",
         "peach",
+        "RASPBERRY",
         "raspberry",
-
-        		"ぁー",
-        		"ぁゝ",
-    		"あ",
-    		"あー",
-    		"あゝ",
-    		"ァー",
-    		"ｧー",
-    		"ア",
-    		"アー",
-    		"ｱー",
-
-    		"ぃゝ",
-    		"い",
-    		"いゝ",
-    		"イ",
-    		
-       		"ぅゞ",
-       	 	"ぅゝ",
-    		"う",
-    		"うゝ",
-    		"うゞ",
-    		"ゥヾ",
-       		"ゥヽ",
-    		"ｩヾ",
-       	 	"ｩヽ",
-    		"ウ",
-    		"ウヽ",
-    		"ウヾ",
-    		"ｳヽ",
-    		"ｳヾ",
-    		"ゔゝ",
-    		"ヴヽ",
-    		"ヴヽ",
-    		
-    		"え",
-    		"エ",
-    		
-    		"お",
-    		"オ",
-    		
-    		"ゕー",
-    		"か",
-    		"かー",
-    		"カ",
-    		"カー",
-    		"ｶー",
-    		"がー",
-    		"ガー",
-    		"ガー",
-
-    		"サー",
-    		"ｻー",
-
-		"鯵",
-		"允",
-		"渦"
+		"啊", // ā
+		"波", // bō  
+		"吃", // chī
+		"次", // cī
+		"德", // dé
+		"额", // é
+		"佛", // fú
+		"各", // gè 
+		"和", // hé
+		"记", // jī
+		"科", // kē
+		"里", // lǐ 
+		"摸", // mō 
+		"那", // nà
+		"坡", // pō
+		"起", // qī
+		"日", // rī
+		"食", // shí
+		"四", // sī 
+		"体", // tǐ 
+		"吴", // wú
+		"西", // xī
+		"一", // yī
+		"站", // zhàn
+		"子"  // zī
 	];
 
     assertArrayEquals(expected, input);
 }
-*/
