@@ -1,6 +1,7 @@
 {
-	"standard": {
-		"scripts":["Hans","Latn"],
+	"default": "pinyin",
+	"pinyin": {
+		"scripts":["Hans","Hani", "Latn"],
 		"bits":[16,4,1,2],
 		"keysize":[16,20,24,24],
 		"ranges":[

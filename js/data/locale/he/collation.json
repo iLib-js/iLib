@@ -1,4 +1,5 @@
 {
+	"default": "standard",
 	"standard": {
 		"scripts":["Hebr","Latn"],
 		"bits":[6,3,1,2],

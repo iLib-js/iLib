@@ -438,7 +438,7 @@ ilib.Collator = function(options) {
 	/** @private */
 	this.numeric = false;
 	/** @private */
-	this.style = "standard";
+	this.style = "default";
 	/** @private */
 	this.ignorePunctuation = false;
 	
@@ -637,11 +637,12 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
+    	var name = rules[this.style];
     	/** 
     	 * @private
     	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
     	 */
-    	this.collation = rules[this.style];
+    	this.collation = (typeof(name) === 'string' ? rules[name] : name);
     	this.map = {};
     	this.lastMap = 0;
     	this.keysize = this.collation.keysize[this.level-1];

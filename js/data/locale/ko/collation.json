@@ -1,5 +1,6 @@
 {
-    "standard": {
+    "default": "standard",
+	"standard": {
         "scripts": [
             "Hang"
         ],

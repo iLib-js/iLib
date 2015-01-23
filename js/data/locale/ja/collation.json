@@ -1,4 +1,5 @@
 {
+	"default": "standard",
 	"standard": {
 		"scripts":["Jpan","Hira","Kata","Latn"],
 		"bits":[13,3,4,1],
