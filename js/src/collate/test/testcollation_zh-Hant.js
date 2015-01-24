@@ -19,7 +19,7 @@
 
 function testJSCollatorQuatHanzi_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -49,11 +49,38 @@ function testJSCollatorQuatHanzi_zh_Hant() {
 	assertTrue("簧 < 䳡", col.compare("簧", "䳡") < 0);
 	assertTrue("䳡 < 鐗", col.compare("䳡", "鐗") < 0);
 	assertTrue("鐗 < 䱹", col.compare("鐗", "䱹") < 0);
+	assertTrue("䱹 < 囈", col.compare("䱹", "囈") < 0);
+	assertTrue("囈 < 覉", col.compare("囈", "覉") < 0);
+	assertTrue("覉 < 靈", col.compare("覉", "靈") < 0);
+	assertTrue("靈 < 䵴", col.compare("靈", "䵴") < 0);
+	assertTrue("䵴 < 㜻", col.compare("䵴", "㜻") < 0);
+	assertTrue("㜻 < 㦭", col.compare("㜻", "㦭") < 0);
+	assertTrue("㦭 < 㿜", col.compare("㦭", "㿜") < 0);
+	assertTrue("㿜 < 虋", col.compare("㿜", "虋") < 0);
+	assertTrue("虋 < 䂅", col.compare("虋", "䂅") < 0);
+	assertTrue("䂅 < 䴐", col.compare("䂅", "䴐") < 0);
+	assertTrue("䴐 < 𨰻", col.compare("䴐", "𨰻") < 0);
+	assertTrue("𨰻 < 鱻", col.compare("𨰻", "鱻") < 0);
+	assertTrue("鱻 < 䯂", col.compare("鱻", "䯂") < 0);
+	assertTrue("䯂 < 䶫", col.compare("䯂", "䶫") < 0);
+	assertTrue("䶫 < 䨺", col.compare("䶫", "䨺") < 0);
+	assertTrue("䨺 < 𪺚", col.compare("䨺", "𪺚") < 0);
+	assertTrue("𪺚 < 𩎑", col.compare("𪺚", "𩎑") < 0);
+	assertTrue("𩎑 < 靐", col.compare("𩎑", "靐") < 0);
+	assertTrue("靐 < 𩇓", col.compare("靐", "𩇓") < 0);
+	assertTrue("𩇓 < 𪓊", col.compare("𩇓", "𪓊") < 0);
+	assertTrue("𪓊 < 𦧄", col.compare("𪓊", "𦧄") < 0);
+	assertTrue("𦧄 < 𧆘", col.compare("𦧄", "𧆘") < 0);
+	assertTrue("𧆘 < 䲜", col.compare("𧆘", "䲜") < 0);
+	assertTrue("䲜 < 𩙣", col.compare("䲜", "𩙣") < 0);
+	assertTrue("𩙣 < 龘", col.compare("𩙣", "龘") < 0);
+	assertTrue("龘 < 䨻", col.compare("龘", "䨻") < 0);
+	assertTrue("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
 }
 
 function testJSCollatorTerHanzi_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -82,11 +109,38 @@ function testJSCollatorTerHanzi_zh_Hant() {
 	assertTrue("簧 < 䳡", col.compare("簧", "䳡") < 0);
 	assertTrue("䳡 < 鐗", col.compare("䳡", "鐗") < 0);
 	assertTrue("鐗 < 䱹", col.compare("鐗", "䱹") < 0);
+	assertTrue("䱹 < 囈", col.compare("䱹", "囈") < 0);
+	assertTrue("囈 < 覉", col.compare("囈", "覉") < 0);
+	assertTrue("覉 < 靈", col.compare("覉", "靈") < 0);
+	assertTrue("靈 < 䵴", col.compare("靈", "䵴") < 0);
+	assertTrue("䵴 < 㜻", col.compare("䵴", "㜻") < 0);
+	assertTrue("㜻 < 㦭", col.compare("㜻", "㦭") < 0);
+	assertTrue("㦭 < 㿜", col.compare("㦭", "㿜") < 0);
+	assertTrue("㿜 < 虋", col.compare("㿜", "虋") < 0);
+	assertTrue("虋 < 䂅", col.compare("虋", "䂅") < 0);
+	assertTrue("䂅 < 䴐", col.compare("䂅", "䴐") < 0);
+	assertTrue("䴐 < 𨰻", col.compare("䴐", "𨰻") < 0);
+	assertTrue("𨰻 < 鱻", col.compare("𨰻", "鱻") < 0);
+	assertTrue("鱻 < 䯂", col.compare("鱻", "䯂") < 0);
+	assertTrue("䯂 < 䶫", col.compare("䯂", "䶫") < 0);
+	assertTrue("䶫 < 䨺", col.compare("䶫", "䨺") < 0);
+	assertTrue("䨺 < 𪺚", col.compare("䨺", "𪺚") < 0);
+	assertTrue("𪺚 < 𩎑", col.compare("𪺚", "𩎑") < 0);
+	assertTrue("𩎑 < 靐", col.compare("𩎑", "靐") < 0);
+	assertTrue("靐 < 𩇓", col.compare("靐", "𩇓") < 0);
+	assertTrue("𩇓 < 𪓊", col.compare("𩇓", "𪓊") < 0);
+	assertTrue("𪓊 < 𦧄", col.compare("𪓊", "𦧄") < 0);
+	assertTrue("𦧄 < 𧆘", col.compare("𦧄", "𧆘") < 0);
+	assertTrue("𧆘 < 䲜", col.compare("𧆘", "䲜") < 0);
+	assertTrue("䲜 < 𩙣", col.compare("䲜", "𩙣") < 0);
+	assertTrue("𩙣 < 龘", col.compare("𩙣", "龘") < 0);
+	assertTrue("龘 < 䨻", col.compare("龘", "䨻") < 0);
+	assertTrue("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
 }
 
 function testJSCollatorSecHanzi_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -115,11 +169,38 @@ function testJSCollatorSecHanzi_zh_Hant() {
 	assertTrue("簧 < 䳡", col.compare("簧", "䳡") < 0);
 	assertTrue("䳡 < 鐗", col.compare("䳡", "鐗") < 0);
 	assertTrue("鐗 < 䱹", col.compare("鐗", "䱹") < 0);
+	assertTrue("䱹 < 囈", col.compare("䱹", "囈") < 0);
+	assertTrue("囈 < 覉", col.compare("囈", "覉") < 0);
+	assertTrue("覉 < 靈", col.compare("覉", "靈") < 0);
+	assertTrue("靈 < 䵴", col.compare("靈", "䵴") < 0);
+	assertTrue("䵴 < 㜻", col.compare("䵴", "㜻") < 0);
+	assertTrue("㜻 < 㦭", col.compare("㜻", "㦭") < 0);
+	assertTrue("㦭 < 㿜", col.compare("㦭", "㿜") < 0);
+	assertTrue("㿜 < 虋", col.compare("㿜", "虋") < 0);
+	assertTrue("虋 < 䂅", col.compare("虋", "䂅") < 0);
+	assertTrue("䂅 < 䴐", col.compare("䂅", "䴐") < 0);
+	assertTrue("䴐 < 𨰻", col.compare("䴐", "𨰻") < 0);
+	assertTrue("𨰻 < 鱻", col.compare("𨰻", "鱻") < 0);
+	assertTrue("鱻 < 䯂", col.compare("鱻", "䯂") < 0);
+	assertTrue("䯂 < 䶫", col.compare("䯂", "䶫") < 0);
+	assertTrue("䶫 < 䨺", col.compare("䶫", "䨺") < 0);
+	assertTrue("䨺 < 𪺚", col.compare("䨺", "𪺚") < 0);
+	assertTrue("𪺚 < 𩎑", col.compare("𪺚", "𩎑") < 0);
+	assertTrue("𩎑 < 靐", col.compare("𩎑", "靐") < 0);
+	assertTrue("靐 < 𩇓", col.compare("靐", "𩇓") < 0);
+	assertTrue("𩇓 < 𪓊", col.compare("𩇓", "𪓊") < 0);
+	assertTrue("𪓊 < 𦧄", col.compare("𪓊", "𦧄") < 0);
+	assertTrue("𦧄 < 𧆘", col.compare("𦧄", "𧆘") < 0);
+	assertTrue("𧆘 < 䲜", col.compare("𧆘", "䲜") < 0);
+	assertTrue("䲜 < 𩙣", col.compare("䲜", "𩙣") < 0);
+	assertTrue("𩙣 < 龘", col.compare("𩙣", "龘") < 0);
+	assertTrue("龘 < 䨻", col.compare("龘", "䨻") < 0);
+	assertTrue("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
 }
 
 function testJSCollatorPriHanzi_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -148,11 +229,38 @@ function testJSCollatorPriHanzi_zh_Hant() {
 	assertTrue("簧 < 䳡", col.compare("簧", "䳡") < 0);
 	assertTrue("䳡 < 鐗", col.compare("䳡", "鐗") < 0);
 	assertTrue("鐗 < 䱹", col.compare("鐗", "䱹") < 0);
+	assertTrue("䱹 < 囈", col.compare("䱹", "囈") < 0);
+	assertTrue("囈 < 覉", col.compare("囈", "覉") < 0);
+	assertTrue("覉 < 靈", col.compare("覉", "靈") < 0);
+	assertTrue("靈 < 䵴", col.compare("靈", "䵴") < 0);
+	assertTrue("䵴 < 㜻", col.compare("䵴", "㜻") < 0);
+	assertTrue("㜻 < 㦭", col.compare("㜻", "㦭") < 0);
+	assertTrue("㦭 < 㿜", col.compare("㦭", "㿜") < 0);
+	assertTrue("㿜 < 虋", col.compare("㿜", "虋") < 0);
+	assertTrue("虋 < 䂅", col.compare("虋", "䂅") < 0);
+	assertTrue("䂅 < 䴐", col.compare("䂅", "䴐") < 0);
+	assertTrue("䴐 < 𨰻", col.compare("䴐", "𨰻") < 0);
+	assertTrue("𨰻 < 鱻", col.compare("𨰻", "鱻") < 0);
+	assertTrue("鱻 < 䯂", col.compare("鱻", "䯂") < 0);
+	assertTrue("䯂 < 䶫", col.compare("䯂", "䶫") < 0);
+	assertTrue("䶫 < 䨺", col.compare("䶫", "䨺") < 0);
+	assertTrue("䨺 < 𪺚", col.compare("䨺", "𪺚") < 0);
+	assertTrue("𪺚 < 𩎑", col.compare("𪺚", "𩎑") < 0);
+	assertTrue("𩎑 < 靐", col.compare("𩎑", "靐") < 0);
+	assertTrue("靐 < 𩇓", col.compare("靐", "𩇓") < 0);
+	assertTrue("𩇓 < 𪓊", col.compare("𩇓", "𪓊") < 0);
+	assertTrue("𪓊 < 𦧄", col.compare("𪓊", "𦧄") < 0);
+	assertTrue("𦧄 < 𧆘", col.compare("𦧄", "𧆘") < 0);
+	assertTrue("𧆘 < 䲜", col.compare("𧆘", "䲜") < 0);
+	assertTrue("䲜 < 𩙣", col.compare("䲜", "𩙣") < 0);
+	assertTrue("𩙣 < 龘", col.compare("𩙣", "龘") < 0);
+	assertTrue("龘 < 䨻", col.compare("龘", "䨻") < 0);
+	assertTrue("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
 }
 
 function testJSCollatorQuatHanziVariants_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -174,7 +282,7 @@ function testJSCollatorQuatHanziVariants_zh_Hant() {
 
 function testJSCollatorTerHanziVariants_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -196,7 +304,7 @@ function testJSCollatorTerHanziVariants_zh_Hant() {
 
 function testJSCollatorSecHanziVariants_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -218,7 +326,7 @@ function testJSCollatorSecHanziVariants_zh_Hant() {
 
 function testJSCollatorPriHanziVariants_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -240,7 +348,7 @@ function testJSCollatorPriHanziVariants_zh_Hant() {
 
 function testJSCollatorPinyinQuat_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -473,7 +581,7 @@ function testJSCollatorPinyinQuat_zh_Hant() {
 
 function testJSCollatorPinyinTer_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -706,7 +814,7 @@ function testJSCollatorPinyinTer_zh_Hant() {
 
 function testJSCollatorPinyinSec_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -939,7 +1047,7 @@ function testJSCollatorPinyinSec_zh_Hant() {
 
 function testJSCollatorPinyinPri_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1170,9 +1278,205 @@ function testJSCollatorPinyinPri_zh_Hant() {
 	assertTrue("Z = z", col.compare("Z", "z") === 0);
 }
 
+function testJSCollatorZhuyinQuat_zh_Hant() {
+	var col = new ilib.Collator({
+		locale: "zh-Hant-TW",
+		useNative: false,
+		sensitivity: "quaternary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	assertTrue("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
+	assertTrue("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
+	assertTrue("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
+	assertTrue("ㄈ < ㄉ", col.compare("ㄈ", "ㄉ") < 0);
+	assertTrue("ㄉ < ㄊ", col.compare("ㄉ", "ㄊ") < 0);
+	assertTrue("ㄊ < ㄋ", col.compare("ㄊ", "ㄋ") < 0);
+	assertTrue("ㄋ < ㄌ", col.compare("ㄋ", "ㄌ") < 0);
+	assertTrue("ㄌ < ㄍ", col.compare("ㄌ", "ㄍ") < 0);
+	assertTrue("ㄍ < ㄎ", col.compare("ㄍ", "ㄎ") < 0);
+	assertTrue("ㄎ < ㄏ", col.compare("ㄎ", "ㄏ") < 0);
+	assertTrue("ㄏ < ㄐ", col.compare("ㄏ", "ㄐ") < 0);
+	assertTrue("ㄐ < ㄑ", col.compare("ㄐ", "ㄑ") < 0);
+	assertTrue("ㄑ < ㄒ", col.compare("ㄑ", "ㄒ") < 0);
+	assertTrue("ㄒ < ㄓ", col.compare("ㄒ", "ㄓ") < 0);
+	assertTrue("ㄓ < ㄔ", col.compare("ㄓ", "ㄔ") < 0);
+	assertTrue("ㄔ < ㄕ", col.compare("ㄔ", "ㄕ") < 0);
+	assertTrue("ㄕ < ㄖ", col.compare("ㄕ", "ㄖ") < 0);
+	assertTrue("ㄖ < ㄗ", col.compare("ㄖ", "ㄗ") < 0);
+	assertTrue("ㄗ < ㄘ", col.compare("ㄗ", "ㄘ") < 0);
+	assertTrue("ㄘ < ㄙ", col.compare("ㄘ", "ㄙ") < 0);
+	assertTrue("ㄙ < ㄚ", col.compare("ㄙ", "ㄚ") < 0);
+	assertTrue("ㄚ < ㄛ", col.compare("ㄚ", "ㄛ") < 0);
+	assertTrue("ㄛ < ㄜ", col.compare("ㄛ", "ㄜ") < 0);
+	assertTrue("ㄜ < ㄝ", col.compare("ㄜ", "ㄝ") < 0);
+	assertTrue("ㄝ < ㄞ", col.compare("ㄝ", "ㄞ") < 0);
+	assertTrue("ㄞ < ㄟ", col.compare("ㄞ", "ㄟ") < 0);
+	assertTrue("ㄟ < ㄠ", col.compare("ㄟ", "ㄠ") < 0);
+	assertTrue("ㄠ < ㄡ", col.compare("ㄠ", "ㄡ") < 0);
+	assertTrue("ㄡ < ㄢ", col.compare("ㄡ", "ㄢ") < 0);
+	assertTrue("ㄢ < ㄣ", col.compare("ㄢ", "ㄣ") < 0);
+	assertTrue("ㄣ < ㄤ", col.compare("ㄣ", "ㄤ") < 0);
+	assertTrue("ㄤ < ㄥ", col.compare("ㄤ", "ㄥ") < 0);
+	assertTrue("ㄥ < ㄦ", col.compare("ㄥ", "ㄦ") < 0);
+	assertTrue("ㄦ < ㄧ", col.compare("ㄦ", "ㄧ") < 0);
+	assertTrue("ㄧ < ㄨ", col.compare("ㄧ", "ㄨ") < 0);
+	assertTrue("ㄨ < ㄩ", col.compare("ㄨ", "ㄩ") < 0);
+	assertTrue("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
+}
+
+function testJSCollatorZhuyinTer_zh_Hant() {
+	var col = new ilib.Collator({
+		locale: "zh-Hant-TW",
+		useNative: false,
+		sensitivity: "tertiary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	assertTrue("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
+	assertTrue("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
+	assertTrue("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
+	assertTrue("ㄈ < ㄉ", col.compare("ㄈ", "ㄉ") < 0);
+	assertTrue("ㄉ < ㄊ", col.compare("ㄉ", "ㄊ") < 0);
+	assertTrue("ㄊ < ㄋ", col.compare("ㄊ", "ㄋ") < 0);
+	assertTrue("ㄋ < ㄌ", col.compare("ㄋ", "ㄌ") < 0);
+	assertTrue("ㄌ < ㄍ", col.compare("ㄌ", "ㄍ") < 0);
+	assertTrue("ㄍ < ㄎ", col.compare("ㄍ", "ㄎ") < 0);
+	assertTrue("ㄎ < ㄏ", col.compare("ㄎ", "ㄏ") < 0);
+	assertTrue("ㄏ < ㄐ", col.compare("ㄏ", "ㄐ") < 0);
+	assertTrue("ㄐ < ㄑ", col.compare("ㄐ", "ㄑ") < 0);
+	assertTrue("ㄑ < ㄒ", col.compare("ㄑ", "ㄒ") < 0);
+	assertTrue("ㄒ < ㄓ", col.compare("ㄒ", "ㄓ") < 0);
+	assertTrue("ㄓ < ㄔ", col.compare("ㄓ", "ㄔ") < 0);
+	assertTrue("ㄔ < ㄕ", col.compare("ㄔ", "ㄕ") < 0);
+	assertTrue("ㄕ < ㄖ", col.compare("ㄕ", "ㄖ") < 0);
+	assertTrue("ㄖ < ㄗ", col.compare("ㄖ", "ㄗ") < 0);
+	assertTrue("ㄗ < ㄘ", col.compare("ㄗ", "ㄘ") < 0);
+	assertTrue("ㄘ < ㄙ", col.compare("ㄘ", "ㄙ") < 0);
+	assertTrue("ㄙ < ㄚ", col.compare("ㄙ", "ㄚ") < 0);
+	assertTrue("ㄚ < ㄛ", col.compare("ㄚ", "ㄛ") < 0);
+	assertTrue("ㄛ < ㄜ", col.compare("ㄛ", "ㄜ") < 0);
+	assertTrue("ㄜ < ㄝ", col.compare("ㄜ", "ㄝ") < 0);
+	assertTrue("ㄝ < ㄞ", col.compare("ㄝ", "ㄞ") < 0);
+	assertTrue("ㄞ < ㄟ", col.compare("ㄞ", "ㄟ") < 0);
+	assertTrue("ㄟ < ㄠ", col.compare("ㄟ", "ㄠ") < 0);
+	assertTrue("ㄠ < ㄡ", col.compare("ㄠ", "ㄡ") < 0);
+	assertTrue("ㄡ < ㄢ", col.compare("ㄡ", "ㄢ") < 0);
+	assertTrue("ㄢ < ㄣ", col.compare("ㄢ", "ㄣ") < 0);
+	assertTrue("ㄣ < ㄤ", col.compare("ㄣ", "ㄤ") < 0);
+	assertTrue("ㄤ < ㄥ", col.compare("ㄤ", "ㄥ") < 0);
+	assertTrue("ㄥ < ㄦ", col.compare("ㄥ", "ㄦ") < 0);
+	assertTrue("ㄦ < ㄧ", col.compare("ㄦ", "ㄧ") < 0);
+	assertTrue("ㄧ < ㄨ", col.compare("ㄧ", "ㄨ") < 0);
+	assertTrue("ㄨ < ㄩ", col.compare("ㄨ", "ㄩ") < 0);
+	assertTrue("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
+}
+
+function testJSCollatorZhuyinSec_zh_Hant() {
+	var col = new ilib.Collator({
+		locale: "zh-Hant-TW",
+		useNative: false,
+		sensitivity: "secondary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	assertTrue("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
+	assertTrue("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
+	assertTrue("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
+	assertTrue("ㄈ < ㄉ", col.compare("ㄈ", "ㄉ") < 0);
+	assertTrue("ㄉ < ㄊ", col.compare("ㄉ", "ㄊ") < 0);
+	assertTrue("ㄊ < ㄋ", col.compare("ㄊ", "ㄋ") < 0);
+	assertTrue("ㄋ < ㄌ", col.compare("ㄋ", "ㄌ") < 0);
+	assertTrue("ㄌ < ㄍ", col.compare("ㄌ", "ㄍ") < 0);
+	assertTrue("ㄍ < ㄎ", col.compare("ㄍ", "ㄎ") < 0);
+	assertTrue("ㄎ < ㄏ", col.compare("ㄎ", "ㄏ") < 0);
+	assertTrue("ㄏ < ㄐ", col.compare("ㄏ", "ㄐ") < 0);
+	assertTrue("ㄐ < ㄑ", col.compare("ㄐ", "ㄑ") < 0);
+	assertTrue("ㄑ < ㄒ", col.compare("ㄑ", "ㄒ") < 0);
+	assertTrue("ㄒ < ㄓ", col.compare("ㄒ", "ㄓ") < 0);
+	assertTrue("ㄓ < ㄔ", col.compare("ㄓ", "ㄔ") < 0);
+	assertTrue("ㄔ < ㄕ", col.compare("ㄔ", "ㄕ") < 0);
+	assertTrue("ㄕ < ㄖ", col.compare("ㄕ", "ㄖ") < 0);
+	assertTrue("ㄖ < ㄗ", col.compare("ㄖ", "ㄗ") < 0);
+	assertTrue("ㄗ < ㄘ", col.compare("ㄗ", "ㄘ") < 0);
+	assertTrue("ㄘ < ㄙ", col.compare("ㄘ", "ㄙ") < 0);
+	assertTrue("ㄙ < ㄚ", col.compare("ㄙ", "ㄚ") < 0);
+	assertTrue("ㄚ < ㄛ", col.compare("ㄚ", "ㄛ") < 0);
+	assertTrue("ㄛ < ㄜ", col.compare("ㄛ", "ㄜ") < 0);
+	assertTrue("ㄜ < ㄝ", col.compare("ㄜ", "ㄝ") < 0);
+	assertTrue("ㄝ < ㄞ", col.compare("ㄝ", "ㄞ") < 0);
+	assertTrue("ㄞ < ㄟ", col.compare("ㄞ", "ㄟ") < 0);
+	assertTrue("ㄟ < ㄠ", col.compare("ㄟ", "ㄠ") < 0);
+	assertTrue("ㄠ < ㄡ", col.compare("ㄠ", "ㄡ") < 0);
+	assertTrue("ㄡ < ㄢ", col.compare("ㄡ", "ㄢ") < 0);
+	assertTrue("ㄢ < ㄣ", col.compare("ㄢ", "ㄣ") < 0);
+	assertTrue("ㄣ < ㄤ", col.compare("ㄣ", "ㄤ") < 0);
+	assertTrue("ㄤ < ㄥ", col.compare("ㄤ", "ㄥ") < 0);
+	assertTrue("ㄥ < ㄦ", col.compare("ㄥ", "ㄦ") < 0);
+	assertTrue("ㄦ < ㄧ", col.compare("ㄦ", "ㄧ") < 0);
+	assertTrue("ㄧ < ㄨ", col.compare("ㄧ", "ㄨ") < 0);
+	assertTrue("ㄨ < ㄩ", col.compare("ㄨ", "ㄩ") < 0);
+	assertTrue("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
+}
+
+function testJSCollatorZhuyinPri_zh_Hant() {
+	var col = new ilib.Collator({
+		locale: "zh-Hant-TW",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+	
+	assertTrue("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
+	assertTrue("ㄆ < ㄇ", col.compare("ㄆ", "ㄇ") < 0);
+	assertTrue("ㄇ < ㄈ", col.compare("ㄇ", "ㄈ") < 0);
+	assertTrue("ㄈ < ㄉ", col.compare("ㄈ", "ㄉ") < 0);
+	assertTrue("ㄉ < ㄊ", col.compare("ㄉ", "ㄊ") < 0);
+	assertTrue("ㄊ < ㄋ", col.compare("ㄊ", "ㄋ") < 0);
+	assertTrue("ㄋ < ㄌ", col.compare("ㄋ", "ㄌ") < 0);
+	assertTrue("ㄌ < ㄍ", col.compare("ㄌ", "ㄍ") < 0);
+	assertTrue("ㄍ < ㄎ", col.compare("ㄍ", "ㄎ") < 0);
+	assertTrue("ㄎ < ㄏ", col.compare("ㄎ", "ㄏ") < 0);
+	assertTrue("ㄏ < ㄐ", col.compare("ㄏ", "ㄐ") < 0);
+	assertTrue("ㄐ < ㄑ", col.compare("ㄐ", "ㄑ") < 0);
+	assertTrue("ㄑ < ㄒ", col.compare("ㄑ", "ㄒ") < 0);
+	assertTrue("ㄒ < ㄓ", col.compare("ㄒ", "ㄓ") < 0);
+	assertTrue("ㄓ < ㄔ", col.compare("ㄓ", "ㄔ") < 0);
+	assertTrue("ㄔ < ㄕ", col.compare("ㄔ", "ㄕ") < 0);
+	assertTrue("ㄕ < ㄖ", col.compare("ㄕ", "ㄖ") < 0);
+	assertTrue("ㄖ < ㄗ", col.compare("ㄖ", "ㄗ") < 0);
+	assertTrue("ㄗ < ㄘ", col.compare("ㄗ", "ㄘ") < 0);
+	assertTrue("ㄘ < ㄙ", col.compare("ㄘ", "ㄙ") < 0);
+	assertTrue("ㄙ < ㄚ", col.compare("ㄙ", "ㄚ") < 0);
+	assertTrue("ㄚ < ㄛ", col.compare("ㄚ", "ㄛ") < 0);
+	assertTrue("ㄛ < ㄜ", col.compare("ㄛ", "ㄜ") < 0);
+	assertTrue("ㄜ < ㄝ", col.compare("ㄜ", "ㄝ") < 0);
+	assertTrue("ㄝ < ㄞ", col.compare("ㄝ", "ㄞ") < 0);
+	assertTrue("ㄞ < ㄟ", col.compare("ㄞ", "ㄟ") < 0);
+	assertTrue("ㄟ < ㄠ", col.compare("ㄟ", "ㄠ") < 0);
+	assertTrue("ㄠ < ㄡ", col.compare("ㄠ", "ㄡ") < 0);
+	assertTrue("ㄡ < ㄢ", col.compare("ㄡ", "ㄢ") < 0);
+	assertTrue("ㄢ < ㄣ", col.compare("ㄢ", "ㄣ") < 0);
+	assertTrue("ㄣ < ㄤ", col.compare("ㄣ", "ㄤ") < 0);
+	assertTrue("ㄤ < ㄥ", col.compare("ㄤ", "ㄥ") < 0);
+	assertTrue("ㄥ < ㄦ", col.compare("ㄥ", "ㄦ") < 0);
+	assertTrue("ㄦ < ㄧ", col.compare("ㄦ", "ㄧ") < 0);
+	assertTrue("ㄧ < ㄨ", col.compare("ㄧ", "ㄨ") < 0);
+	assertTrue("ㄨ < ㄩ", col.compare("ㄨ", "ㄩ") < 0);
+	assertTrue("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
+}
+
 function testCollatorCase_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "case",
 		usage: "sort"
@@ -1180,61 +1484,49 @@ function testCollatorCase_zh_Hant() {
     assertNotUndefined(col);
     
     var input = [
- 		"波", // bō  
-		"里", // lǐ 
-		"摸", // mō 
-		"子", // zī
-		"次", // cī
-		"西", // xī
-		"德", // dé
-		"科", // kē
-		"记", // jī
-		"各", // gè 
-		"坡", // pō
- 		"啊", // ā
-		"日", // rī
-		"吴", // wú
-		"那", // nà
-		"吃", // chī
-		"食", // shí
-		"起", // qī
-		"站", // zhàn
-		"体", // tǐ 
-		"和", // hé
-		"一", // yī
-		"额", // é
-		"佛", // fú
-		"四"  // sī 
+        "唐", // 10
+        "㸌", // 20
+        "乃", // 2
+        "儓", // 16
+        "㩥", // 18
+        "㐮", // 13
+        "咗", // 8 
+        "不", // 4
+        "丿", // 1
+        "㒆", // 14
+        "乒", // 6
+        "𠴭", // 11
+        "儍", // 15
+        "串", // 7
+        "員", // 10
+        "世", // 5
+        "傪", // 13
+        "乻", // 9
+        "个"  // 3
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-		"啊", // ā
-		"波", // bō  
-		"吃", // chī
-		"次", // cī
-		"德", // dé
-		"额", // é
-		"佛", // fú
-		"各", // gè 
-		"和", // hé
-		"记", // jī
-		"科", // kē
-		"里", // lǐ 
-		"摸", // mō 
-		"那", // nà
-		"坡", // pō
-		"起", // qī
-		"日", // rī
-		"食", // shí
-		"四", // sī 
-		"体", // tǐ 
-		"吴", // wú
-		"西", // xī
-		"一", // yī
-		"站", // zhàn
-		"子"  // zī
+        "丿", // 1
+        "乃", // 2
+        "个", // 3
+        "不", // 4
+        "世", // 5
+        "乒", // 6
+        "串", // 7
+        "咗", // 8 
+        "乻", // 9
+        "員", // 10
+        "唐", // 10
+        "𠴭", // 11
+        "㐮", // 13
+        "傪", // 13
+        "㒆", // 14
+        "儍", // 15
+        "儓", // 16
+        "㩥", // 18
+        "㸌"  // 20
 	];
 
     assertArrayEquals(expected, input);
@@ -1242,7 +1534,7 @@ function testCollatorCase_zh_Hant() {
 
 function testCollatorPri_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "primary",
 		usage: "sort"
@@ -1250,61 +1542,49 @@ function testCollatorPri_zh_Hant() {
     assertNotUndefined(col);
     
     var input = [
- 		"波", // bō  
-		"里", // lǐ 
-		"摸", // mō 
-		"子", // zī
-		"次", // cī
-		"西", // xī
-		"德", // dé
-		"科", // kē
-		"记", // jī
-		"各", // gè 
-		"坡", // pō
- 		"啊", // ā
-		"日", // rī
-		"吴", // wú
-		"那", // nà
-		"吃", // chī
-		"食", // shí
-		"起", // qī
-		"站", // zhàn
-		"体", // tǐ 
-		"和", // hé
-		"一", // yī
-		"额", // é
-		"佛", // fú
-		"四"  // sī 
+        "唐", // 10
+        "㸌", // 20
+        "乃", // 2
+        "儓", // 16
+        "㩥", // 18
+        "㐮", // 13
+        "咗", // 8 
+        "不", // 4
+        "丿", // 1
+        "㒆", // 14
+        "乒", // 6
+        "𠴭", // 11
+        "儍", // 15
+        "串", // 7
+        "員", // 10
+        "世", // 5
+        "傪", // 13
+        "乻", // 9
+        "个"  // 3
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-		"啊", // ā
-		"波", // bō  
-		"吃", // chī
-		"次", // cī
-		"德", // dé
-		"额", // é
-		"佛", // fú
-		"各", // gè 
-		"和", // hé
-		"记", // jī
-		"科", // kē
-		"里", // lǐ 
-		"摸", // mō 
-		"那", // nà
-		"坡", // pō
-		"起", // qī
-		"日", // rī
-		"食", // shí
-		"四", // sī 
-		"体", // tǐ 
-		"吴", // wú
-		"西", // xī
-		"一", // yī
-		"站", // zhàn
-		"子"  // zī
+        "丿", // 1
+        "乃", // 2
+        "个", // 3
+        "不", // 4
+        "世", // 5
+        "乒", // 6
+        "串", // 7
+        "咗", // 8 
+        "乻", // 9
+        "員", // 10
+        "唐", // 10
+        "𠴭", // 11
+        "㐮", // 13
+        "傪", // 13
+        "㒆", // 14
+        "儍", // 15
+        "儓", // 16
+        "㩥", // 18
+        "㸌"  // 20
 	];
 
     assertArrayEquals(expected, input);
@@ -1312,7 +1592,7 @@ function testCollatorPri_zh_Hant() {
 
 function testCollatorCaseMixed_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "case",
 		usage: "sort"
@@ -1320,39 +1600,33 @@ function testCollatorCaseMixed_zh_Hant() {
     assertNotUndefined(col);
     
     var input = [
- 		"波", // bō  
-		"里", // lǐ 
-        "apple",
-		"摸", // mō 
-		"子", // zī
-        "orange",
-		"次", // cī
-		"西", // xī
-		"德", // dé
-		"科", // kē
-		"记", // jī
-		"各", // gè 
-        "banana",
-		"坡", // pō
- 		"啊", // ā
-		"日", // rī
+        "唐", // 10
         "oRange",
-		"吴", // wú
-		"那", // nà
-		"吃", // chī
-        "Apple",
-		"食", // shí
-		"起", // qī
-		"站", // zhàn
-        "raspberry",
-		"体", // tǐ 
-		"和", // hé
-		"一", // yī
-        "peach",
-		"额", // é
-		"佛", // fú
+        "㸌", // 20
+        "乃", // 2
+        "儓", // 16
         "RASPBERRY",
-		"四"  // sī 
+        "㩥", // 18
+        "㐮", // 13
+        "咗", // 8 
+        "banana",
+        "不", // 4
+        "apple",
+        "丿", // 1
+        "㒆", // 14
+        "乒", // 6
+        "𠴭", // 11
+        "儍", // 15
+        "Apple",
+        "串", // 7
+        "員", // 10
+        "orange",
+        "世", // 5
+        "peach",
+        "傪", // 13
+        "raspberry",
+        "乻", // 9
+        "个"  // 3
 	];
 
     input.sort(col.getComparator());
@@ -1366,31 +1640,25 @@ function testCollatorCaseMixed_zh_Hant() {
         "peach",
         "RASPBERRY",
         "raspberry",
-		"啊", // ā
-		"波", // bō  
-		"吃", // chī
-		"次", // cī
-		"德", // dé
-		"额", // é
-		"佛", // fú
-		"各", // gè 
-		"和", // hé
-		"记", // jī
-		"科", // kē
-		"里", // lǐ 
-		"摸", // mō 
-		"那", // nà
-		"坡", // pō
-		"起", // qī
-		"日", // rī
-		"食", // shí
-		"四", // sī 
-		"体", // tǐ 
-		"吴", // wú
-		"西", // xī
-		"一", // yī
-		"站", // zhàn
-		"子"  // zī
+        "丿", // 1
+        "乃", // 2
+        "个", // 3
+        "不", // 4
+        "世", // 5
+        "乒", // 6
+        "串", // 7
+        "咗", // 8 
+        "乻", // 9
+        "員", // 10
+        "唐", // 10
+        "𠴭", // 11
+        "㐮", // 13
+        "傪", // 13
+        "㒆", // 14
+        "儍", // 15
+        "儓", // 16
+        "㩥", // 18
+        "㸌"  // 20
 	];
 
     assertArrayEquals(expected, input);
@@ -1398,7 +1666,7 @@ function testCollatorCaseMixed_zh_Hant() {
 
 function testCollatorCaseMixedWithIndexMarkers_zh_Hant() {
 	var col = new ilib.Collator({
-		locale: "zh-Hant-CN",
+		locale: "zh-Hant-TW",
 		useNative: false,
 		sensitivity: "case",
 		usage: "sort"
@@ -1406,81 +1674,61 @@ function testCollatorCaseMixedWithIndexMarkers_zh_Hant() {
     assertNotUndefined(col);
     
     var input = [
- 		"波", // bō  
-		"里", // lǐ 
-        "\uFDD0Apple",
-		"摸", // mō 
-		"子", // zī
-        "\uFDD0Orange",
-		"次", // cī
-		"西", // xī
-		"\uFDD0Yam",
-		"德", // dé
-		"\uFDD0Lemon",
-		"科", // kē
-		"记", // jī
-		"各", // gè 
-        "\uFDD0Banana",
-		"坡", // pō
- 		"啊", // ā
-		"日", // rī
-        "\uFDD0ORange",
-		"吴", // wú
-		"那", // nà
-		"吃", // chī
-        "\uFDD0APPLE",
-		"食", // shí
-		"起", // qī
-		"站", // zhàn
-        "\uFDD0Raspberry",
-		"体", // tǐ 
-		"和", // hé
-		"一", // yī
-        "\uFDD0Peach",
-		"额", // é
-		"佛", // fú
-        "\uFDD0RASPBERRY",
-		"四"  // sī 
+        "唐", // 10
+        "\uFDD0.13",
+        "\uFDD0.11",
+        "㸌", // 20
+        "乃", // 2
+        "儓", // 16
+        "\uFDD0.6",
+        "㩥", // 18
+        "㐮", // 13
+        "咗", // 8 
+        "\uFDD0.10",
+        "不", // 4
+        "\uFDD0.3",
+        "丿", // 1
+        "㒆", // 14
+        "乒", // 6
+        "𠴭", // 11
+        "儍", // 15
+        "串", // 7
+        "員", // 10
+        "世", // 5
+        "傪", // 13
+        "\uFDD0.20",
+        "乻", // 9
+        "个"  // 3
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-        "\uFDD0APPLE",
-        "\uFDD0Apple",
-		"啊", // ā
-        "\uFDD0Banana",
-		"波", // bō  
-		"吃", // chī
-		"次", // cī
-		"德", // dé
-		"额", // é
-		"佛", // fú
-		"各", // gè 
-		"和", // hé
-		"记", // jī
-		"科", // kē
-		"\uFDD0Lemon",
-		"里", // lǐ 
-		"摸", // mō 
-		"那", // nà
-        "\uFDD0ORange",
-        "\uFDD0Orange",
-        "\uFDD0Peach",
-		"坡", // pō
-		"起", // qī
-        "\uFDD0RASPBERRY",
-        "\uFDD0Raspberry",
-		"日", // rī
-		"食", // shí
-		"四", // sī
-		"体", // tǐ 
-		"吴", // wú
-		"西", // xī
-		"\uFDD0Yam",
-		"一", // yī
-		"站", // zhàn
-		"子"  // zī
+        "丿", // 1
+        "乃", // 2
+        "\uFDD0.3",
+        "个", // 3
+        "不", // 4
+        "世", // 5
+        "\uFDD0.6",
+        "乒", // 6
+        "串", // 7
+        "咗", // 8 
+        "乻", // 9
+        "\uFDD0.10",
+        "員", // 10
+        "唐", // 10
+        "\uFDD0.11",
+        "𠴭", // 11
+        "\uFDD0.13",
+        "㐮", // 13
+        "傪", // 13
+        "㒆", // 14
+        "儍", // 15
+        "儓", // 16
+        "㩥", // 18
+        "\uFDD0.20",
+        "㸌"  // 20
 	];
 
     assertArrayEquals(expected, input);
