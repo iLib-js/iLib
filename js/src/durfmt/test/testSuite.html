@@ -1,7 +1,7 @@
 <!--
-testDurFmt.html - Test the duration formatter
+testSuite.html - Test Suite runs all the tests at once.
 
-Copyright © 2012, JEDLSoft
+Copyright © 2012-2015, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,8 +19,20 @@ limitations under the License.
 
 <html>
 <head>
+<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
-<script language="JavaScript" src="../../ilib-ut.js"></script>
-<script language="JavaScript" src="testdurfmt.js"></script>
+<script language="JavaScript">
+
+function suite() {
+    var s = new JsUnitTestSuite();
+    
+    s.addTestPage("file://" + ilibDir + "/js/src/durfmt/test/testDurFmt.html");
+
+    s.addTestPage("file://" + ilibDir + "/js/src/durfmt/test/testDurFmtCompiled.html");
+
+    return s;
+}
+
+</script>
 </head>
 </html>

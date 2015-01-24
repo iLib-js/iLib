@@ -24,17 +24,6 @@ var JsUnit = require("./testcli/runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 
-/*
-var suites = [
-	"util/test/testSuite.js",
-	"test/testSuite.js",
-	"calendar/test/testSuite.js",
-	"maps/test/testSuite.js",
-	"phone/test/testSuite.js",
-	"units/test/testSuite.js"
-];
-*/
-
 var suiteDefinitions = {
 	"core": [
         "util",
@@ -45,6 +34,8 @@ var suiteDefinitions = {
 	    ".",
 	    "calendar",
 	    "date",
+	    "daterange",
+	    "durfmt",
 	    "number",
 	    "maps",
 	    "ctype"
@@ -54,6 +45,8 @@ var suiteDefinitions = {
 	    ".",
 	    "calendar",
 	    "date",
+	    "daterange",
+	    "durfmt",
 	    "number",
 	    "maps",
 	    "ctype",
