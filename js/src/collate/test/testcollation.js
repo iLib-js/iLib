@@ -2623,3 +2623,19 @@ function testJSCollatorNumericSortKeyBig() {
 
 	assertEquals("00000fadaa62dfa1", col.sortKey("17238562365345"));
 }
+
+function testJSCollatorBogusStyle() {
+	var col = new ilib.Collator({
+		useNative: false,
+		sensitivity: "case",
+		style: "foobarfoo" // doesn't exist
+	});
+
+	assertNotUndefined(col);
+
+	// should use the default standard latin collation
+	assertTrue("A < a", col.compare("A", "a") < 0);
+	assertTrue("a < Ä", col.compare("a", "Ä") < 0);
+	assertTrue("Ä < ä", col.compare("Ä", "ä") < 0);
+	assertTrue("ä < B", col.compare("ä", "B") < 0);
+}

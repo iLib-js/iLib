@@ -454,13 +454,13 @@ ilib.Collator = function(options) {
 					this.level = 1;
 					break;
 				case 'secondary':
-				case 'case':
-					this.sensitivity = "case";
+				case 'accent':
+					this.sensitivity = "accent";
 					this.level = 2;
 					break;
 				case 'tertiary':
-				case 'accent':
-					this.sensitivity = "accent";
+				case 'case':
+					this.sensitivity = "case";
 					this.level = 3;
 					break;
 				case 'quaternary':
@@ -670,21 +670,24 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
-    	var name = rules[this.style];
+    	var rule = this.style;
+    	while (typeof(rule) === 'string') {
+    		rule = rules[rule] || "default";
+    	}
     	/** 
     	 * @private
     	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
     	 */
-    	this.collation = (typeof(name) === 'string' ? rules[name] : name);
+    	this.collation = rule;
     	this.map = {};
     	this.lastMap = 0;
     	this.keysize = this.collation.keysize[this.level-1];
     	
     	if (typeof(this.collation.inherit) !== 'undefined') {
     		for (var i = 0; i < this.collation.inherit.length; i++) {
-    			name = this.collation.inherit[i].name;
-    			if (rules[name]) {
-        			this._addRules(rules[name], this.collation.inherit[i].start);
+    			rule = this.collation.inherit[i].name;
+    			if (rules[rule]) {
+        			this._addRules(rules[rule], this.collation.inherit[i].start);
     			}
     		}
     	}
