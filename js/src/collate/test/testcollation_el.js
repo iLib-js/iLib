@@ -1075,9 +1075,14 @@ function testCollatorPrimaryMixed_el() {
 
     input.sort(col.getComparator());
 
-    // Latin letters sort after the Cyrillic ones
+    // Latin letters sort before the Greek ones
     
     var expected = [
+        "apple",
+        "banana",
+        "orange",
+        "peach",
+        "raspberry",
 	    "Α", 
 	    "α",
 	    "αδ",
@@ -1102,12 +1107,7 @@ function testCollatorPrimaryMixed_el() {
 	    "Ψ", 
 	    "ω", 
 	    "ώ", 
-	    "ώ",
-        "apple",
-        "banana",
-        "orange",
-        "peach",
-        "raspberry"
+	    "ώ"
 	];
 
     assertArrayEquals(expected, input);

@@ -831,19 +831,19 @@ function testCollatorPrimaryMixed_he() {
 
 	input.sort(col.getComparator());
 
-	// Latin letters sort after the Cyrillic ones
+	// Latin letters sort before the Hebrew ones
 
 	var expected = [
-		"אפרסק",
-		"בננה",
-		"פטל",
-		"תפוז",
-		"תפוח",
 		"apple",
 		"banana",
 		"orange",
 		"peach",
-		"raspberry"
+		"raspberry",
+		"אפרסק",
+		"בננה",
+		"פטל",
+		"תפוז",
+		"תפוח"
     ];
 
 	assertArrayEquals(expected, input);

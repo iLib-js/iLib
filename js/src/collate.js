@@ -642,10 +642,12 @@ ilib.Collator.prototype = {
 	 * @private
 	 */
 	_addRules: function(rules, start) {
+		var p;
     	for (var r in rules.map) {
     		if (r) {
     			this.map[r] = this._packRule(rules.map[r], start);
-    			this.lastMap = Math.max(rules.map[r][0] + start, this.lastMap);
+    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0]; 
+    			this.lastMap = Math.max(p + start, this.lastMap);
     		}
     	}
     	

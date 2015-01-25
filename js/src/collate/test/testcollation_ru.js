@@ -566,9 +566,14 @@ function testCollatorPrimaryMixed_ru() {
 
     input.sort(col.getComparator());
 
-    // Latin letters sort after the Cyrillic ones
+    // Latin letters sort before the Cyrillic ones
     
     var expected = [
+        "apple",
+        "banana",
+        "orange",
+        "peach",
+        "raspberry",
         "А́А",
         "аа",
         "Гж",
@@ -585,12 +590,7 @@ function testCollatorPrimaryMixed_ru() {
         "У",
         "Ў",
         "Ю",
-        "Ꙕ",
-        "apple",
-        "banana",
-        "orange",
-        "peach",
-        "raspberry"
+        "Ꙕ"
 	];
 
     assertArrayEquals(expected, input);
