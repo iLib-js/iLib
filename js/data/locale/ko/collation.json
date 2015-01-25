@@ -1,6 +1,6 @@
 {
-    "default": "standard",
-	"standard": {
+    "default": "korean",
+	"korean": {
         "scripts": [
             "Hang"
         ],

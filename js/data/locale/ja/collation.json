@@ -1,6 +1,6 @@
 {
-	"default": "standard",
-	"standard": {
+	"default": "japanese",
+	"japanese": {
 		"scripts":["Jpan","Hira","Kata","Latn"],
 		"bits":[13,3,4,1],
 		"keysize":[16,16,20,24],

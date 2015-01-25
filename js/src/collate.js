@@ -531,7 +531,6 @@ ilib.Collator = function(options) {
 			object: ilib.Collator, 
 			locale: this.locale, 
 			name: "collation.json",
-			replace: true,
 			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
@@ -569,22 +568,27 @@ ilib.Collator.prototype = {
 	 * @private
 	 * Bit pack an array of values into a single number
 	 * @param {number|null|Array.<number>} arr array of values to bit pack
+	 * @param {number} offset offset for the start of this map
 	 */
-	_pack: function (arr) {
+	_pack: function (arr, offset) {
 		var value = 0;
 		if (arr) {
 			if (typeof(arr) === 'number') {
 				arr = [ arr ];
 			}
 			for (var i = 0; i < this.level; i++) {
+				var thisLevel = (typeof(arr[i]) !== "undefined" ? arr[i] : 0);
+				if (i === 0) {
+					thisLevel += offset;
+				}
 				if (i > 0) {
 					value <<= this.collation.bits[i];	
 				}
 				if (i === 2 && this.caseFirst === "lower") {
 					// sort the lower case first instead of upper
-					value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+					value = value | (1 - thisLevel);
 				} else {
-					value = value | arr[i];
+					value = value | thisLevel;
 				}
 			}
 		}
@@ -595,24 +599,25 @@ ilib.Collator.prototype = {
 	 * @private
 	 * Return the rule packed into an array of collation elements.
 	 * @param {Array.<number|null|Array.<number>>} rule
+	 * @param {number} offset
 	 * @return {Array.<number>} a bit-packed array of numbers
 	 */
-	_packRule: function(rule) {
+	_packRule: function(rule, offset) {
 		if (rule[0] instanceof Array) {
 			var ret = [];
 			for (var i = 0; i < rule.length; i++) {
-				ret.push(this._pack(rule[i]));
+				ret.push(this._pack(rule[i], offset));
 			}
 			return ret;
 		} else {
-			return [ this._pack(rule) ];
+			return [ this._pack(rule, offset) ];
 		}
 	},
     
 	/**
 	 * @private
 	 */
-	_addChars: function (str) {
+	_addChars: function (str, offset) {
 		var gs = new ilib.GlyphString(str);
 		var it = gs.charIterator();
 		var c;
@@ -629,8 +634,36 @@ ilib.Collator.prototype = {
 				}
 			}
 			this.lastMap++;
-			this.map[c] = this._packRule([this.lastMap]);
+			this.map[c] = this._packRule([this.lastMap], offset);
 		}
+	},
+	
+	/**
+	 * @private
+	 */
+	_addRules: function(rules, start) {
+    	for (var r in rules.map) {
+    		if (r) {
+    			this.map[r] = this._packRule(rules.map[r], start);
+    			this.lastMap = Math.max(rules.map[r][0] + start, this.lastMap);
+    		}
+    	}
+    	
+    	if (typeof(rules.ranges) !== 'undefined') {
+    		// for each range, everything in the range goes in primary sequence from the start
+    		for (var i = 0; i < rules.ranges.length; i++) {
+    			var range = rules.ranges[i];
+    			
+    			this.lastMap = range.start;
+    			if (typeof(range.chars) === "string") {
+    				this._addChars(range.chars, start);
+    			} else {
+    				for (var k = 0; k < range.chars.length; k++) {
+    					this._addChars(range.chars[k], start);
+    				}
+    			}
+    		}
+    	}
 	},
 	
 	/**
@@ -647,28 +680,15 @@ ilib.Collator.prototype = {
     	this.lastMap = 0;
     	this.keysize = this.collation.keysize[this.level-1];
     	
-    	for (var r in this.collation.map) {
-    		if (r) {
-    			this.map[r] = this._packRule(this.collation.map[r]);
-    			this.lastMap = Math.max(this.collation.map[r][0], this.lastMap);
-    		}
-    	}
-    	
-    	if (typeof(this.collation.ranges) !== 'undefined') {
-    		// for each range, everything in the range goes in primary sequence from the start
-    		for (var i = 0; i < this.collation.ranges.length; i++) {
-    			var range = this.collation.ranges[i];
-    			
-    			this.lastMap = range.start;
-    			if (typeof(range.chars) === "string") {
-    				this._addChars(range.chars);
-    			} else {
-    				for (var k = 0; k < range.chars.length; k++) {
-    					this._addChars(range.chars[k]);
-    				}
+    	if (typeof(this.collation.inherit) !== 'undefined') {
+    		for (var i = 0; i < this.collation.inherit.length; i++) {
+    			name = this.collation.inherit[i].name;
+    			if (rules[name]) {
+        			this._addRules(rules[name], this.collation.inherit[i].start);
     			}
     		}
     	}
+    	this._addRules(this.collation, this.lastMap);
     },
     
     /**

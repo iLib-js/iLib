@@ -1,5 +1,5 @@
 {
-	"default": "standard",
+	"default": "latin",
 	"phonebook": {
 		"scripts": ["Latn"],
 		"bits": [5,3,1,1],

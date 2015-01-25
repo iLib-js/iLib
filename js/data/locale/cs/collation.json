@@ -1,6 +1,6 @@
 {
-	"default": "standard",
-	"standard": {
+	"default": "czech",
+	"czech": {
 		"scripts":["Latn"],
 		"bits":[6,3,2,1],
 		"keysize":[8,12,12,12],
