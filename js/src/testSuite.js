@@ -25,38 +25,50 @@ var JsUnit = require("./testcli/runner.js");
 var runner = new JsUnit.TestRunner("../..");
 
 var suiteDefinitions = {
-	"core": [
-        "util",
-        "."
-	],
-	"standard": [
-	    "util",
-	    ".",
-	    "calendar",
-	    "date",
-	    "daterange",
-	    "durfmt",
-	    "number",
-	    "maps",
-	    "ctype"
-	],
-	"full": [
-	    "util",
-	    ".",
-	    "calendar",
-	    "date",
-	    "daterange",
-	    "durfmt",
-	    "number",
-	    "maps",
-	    "ctype",
-	    "strings-ext",
-	    "phone",
-	    "units",
-	    "name",
-	    "address",
-	    "collate"
-    ]
+	"core": {
+        "util": "util/test/testSuite.js",
+        ".": "test/testSuite.js"
+	},
+	"standard": {
+        "util": "util/test/testSuite.js",
+        ".": "test/testSuite.js",
+	    "calendar": "calendar/test/testSuite.js",
+	    "date1": "date/test/testSuite.js",
+	    "date2": "date/test/testSuite2.js",
+	    "date3": "date/test/testSuite3.js",
+	    "daterange1": "daterange/test/testSuite.js",
+	    "daterange2": "daterange/test/testSuite2.js",
+	    "daterange3": "daterange/test/testSuite3.js",
+	    "durfmt": "durfmt/test/testSuite.js",
+	    "number": "number/test/testSuite.js",
+	    "maps": "maps/test/testSuite.js",
+	    "ctype": "ctype/test/testSuite.js"
+	},
+	"full": {
+        "util": "util/test/testSuite.js",
+        ".": "test/testSuite.js",
+	    "calendar": "calendar/test/testSuite.js",
+	    "date1": "date/test/testSuite.js",
+	    "date2": "date/test/testSuite2.js",
+	    "date3": "date/test/testSuite3.js",
+	    "daterange1": "daterange/test/testSuite.js",
+	    "daterange2": "daterange/test/testSuite2.js",
+	    "daterange3": "daterange/test/testSuite3.js",
+	    "durfmt": "durfmt/test/testSuite.js",
+	    "number": "number/test/testSuite.js",
+	    "maps": "maps/test/testSuite.js",
+	    "ctype": "ctype/test/testSuite.js",
+	    "strings-ext": "strings-ext/test/testSuite.js",
+	    "phone1": "phone/test/testSuite.js",
+	    "phone2": "phone/test/testSuite2.js",
+	    "phone3": "phone/test/testSuite3.js",
+	    "units": "units/test/testSuite.js",
+	    "name": "name/test/testSuite.js",
+	    "address1": "address/test/testSuite.js",
+	    "address2": "address/test/testSuite2.js",
+	    "address3": "address/test/testSuite3.js",
+	    "collate": "collate/test/testSuite.js"
+	}
 };
 
 // override the possible node environment to make the tests uniform
@@ -81,12 +93,13 @@ if (process.argv.length > 2) {
 					break;
 				default:
 					suite = size;
-					if (suiteDefinitions.full.indexOf(suite) === -1 && suite !== "all") {
+					if (!suiteDefinitions.full[suite] && suite !== "all") {
 						util.print("Suite " + suite + " is unrecognized. Testing all suites by default.\n");
 						suite = suiteDefinitions.full;
 					} else {
-						util.print("Only running test " + suite + "\n");
-						suite = [ suite ];
+						util.print("Only running test " + size + "\n");
+						suite = {};
+						suite[size] = suiteDefinitions.full[size];
 					}
 					break;
 			}
@@ -104,12 +117,13 @@ if (process.argv.length > 2) {
 	}
 }
 
-util.print("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite) + "\n");
+util.print("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(Object.keys(suite)) + "\n");
 
+var s;
 for (s in suite) {
 	var ts;
 	
-	ts = new JsUnit.TestSuite(path.join(suite[s], "test", "testSuite.js"));
+	ts = new JsUnit.TestSuite(suite[s]);
 	// ts.addToContext({ilib: require("./ilib-dyn-ut.js").ilib});
 	var inc = "./ilib" + ((assembly === "dynamic") ? "-dyn" : "") + "-ut" + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 	ts.include(inc); 

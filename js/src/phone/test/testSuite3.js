@@ -28,26 +28,27 @@ function suite() {
 	var s = new cli.TestSuite();
 	
 	var suites = [
-		"numplan.js",
-		"phoneloc.js",
-		"phonenum.js",
-		"phonegeo.js",
-		"phonegeo_KR.js",
-		"phonegeo_JP.js",
-		"normalize.js",
-		"normalize_KR.js",
-		"imsi.js",
-		"phonenum_AU.js",
-		"phonenum_BE.js",
-		"phonenum_BR.js",
-		"phonenum_CN.js",
-		"phonenum_DE.js",
-		"phonenum_ES.js",
-		"phonenum_FR.js",
-		"phonenum_GB.js",
-		"phonenum_HK.js",
-		"phonenum_IE.js",
-		"phonenum_IN.js"
+		"phonefmt_HK.js",
+		"phonefmt_IE.js",
+		"phonefmt_IN.js",
+		"phonefmt_IT.js",
+		"phonefmt_JP.js",
+		"phonefmt_KR.js",
+		"phonefmt_LU.js",
+		"phonefmt_MX.js",
+		"phonefmt_NL.js",
+		"phonefmt_NZ.js",
+		"phonefmt_RU.js",
+		"phonefmt_SG.js",
+		"phonefmt_TW.js",
+		"phonefmt_US.js",
+		"phonegeo_RU.js",
+		"phonegeo_BR.js",
+		"phonegeo_TW.js",
+		"normalize_BR.js",
+		"normalize_JP.js",
+		"normalize_RU.js",
+		"normalize_TW.js"
 	];
 	
 	suites.forEach(function (path) {

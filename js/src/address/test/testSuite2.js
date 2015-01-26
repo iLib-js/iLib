@@ -1,7 +1,7 @@
 /*
- * testSuiteDates.js - test suite for the date tests
+ * testSuite.js - 1st half of the test suites for this directory
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 var cli = require('../testcli/runner.js');
 
 function newSuite(path, include) {
-	var suite = new cli.TestSuite("date/test/" + path);
+	var suite = new cli.TestSuite("address/test/" + path);
 	suite.include("test/testUtils.js");
 	return suite;
 };
@@ -29,27 +29,37 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-   		"testdatefmt_ar_SA.js",
-		"testdatefmt_as_IN.js",
-		"testdatefmt_bg.js",
-		"testdatefmt_bn_IN.js",
-		"testdatefmt_bs_Cyrl_BA.js",
-		"testdatefmt_bs_Latn_BA.js",
-		"testdatefmt_cs_CZ.js",
-		"testdatefmt_da_DK.js",
-		"testdatefmt_de_DE.js",
-		"testdatefmt_el_GR.js", 
-		"testdatefmt_en_CA.js",
-		"testdatefmt_en_GB.js",
-		"testdatefmt_en_IN.js",
-		"testdatefmt_en_US.js",
-		"testdatefmt_es_CO.js",
-		"testdatefmt_es_ES.js",
-		"testdatefmt_et_EE.js",
-		"testdatefmt_fa_IR.js",
-		"testdatefmt_fi_FI.js",
-		"testdatefmt_fr_CA.js",
-		"testdatefmt_fr_FR.js"
+		"testaddress_EC.js",
+		"testaddress_EE.js",
+		"testaddress_EG.js",
+		"testaddress_ES.js",
+		"testaddress_ET.js",
+		"testaddress_FI.js",
+		"testaddress_FR.js",
+		"testaddress_GA.js",
+		"testaddress_GB.js",
+		"testaddress_GE.js",
+		"testaddress_GH.js",
+		"testaddress_GM.js",
+		"testaddress_GN.js",
+		"testaddress_GQ.js",
+		"testaddress_GR.js",
+		"testaddress_GT.js",
+		"testaddress_HK.js",
+		"testaddress_HN.js",
+		"testaddress_HR.js",
+		"testaddress_HU.js",
+		"testaddress_ID.js",
+		"testaddress_IE.js",
+		"testaddress_IL.js",
+		"testaddress_IN.js",
+		"testaddress_IQ.js",
+		"testaddress_IR.js",
+		"testaddress_IS.js",
+		"testaddress_IT.js",
+		"testaddress_JO.js",
+		"testaddress_JP.js",
+		"testaddress.js"
 	];
 
     suites.forEach(function (path) {

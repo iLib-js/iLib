@@ -627,10 +627,14 @@ limitations under the License.
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.date">
-		<runtests suite="date" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date3" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.daterange">
-		<runtests suite="daterange" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.durfmt">
 		<runtests suite="durfmt" assembly="dynamic" compilation="compiled"/>
@@ -648,7 +652,9 @@ limitations under the License.
 		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.phone">
-		<runtests suite="phone" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.units">
 		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
@@ -657,7 +663,9 @@ limitations under the License.
 		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.address">
-		<runtests suite="address" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyn.unittest" name="test.collate">
 		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
@@ -667,17 +675,25 @@ limitations under the License.
 		<runtests suite="util" assembly="assembled" compilation="compiled"/>
 		<runtests suite="." assembly="assembled" compilation="compiled"/>
 		<runtests suite="calendar" assembly="assembled" compilation="compiled"/>
-		<runtests suite="date" assembly="assembled" compilation="compiled"/>
-		<runtests suite="daterange" assembly="assembled" compilation="compiled"/>
+		<runtests suite="date1" assembly="assembled" compilation="compiled"/>
+		<runtests suite="date2" assembly="assembled" compilation="compiled"/>
+		<runtests suite="date3" assembly="assembled" compilation="compiled"/>
+		<runtests suite="daterange1" assembly="assembled" compilation="compiled"/>
+		<runtests suite="daterange2" assembly="assembled" compilation="compiled"/>
+		<runtests suite="daterange3" assembly="assembled" compilation="compiled"/>
 		<runtests suite="durfmt" assembly="assembled" compilation="compiled"/>
 		<runtests suite="number" assembly="assembled" compilation="compiled"/>
 		<runtests suite="maps" assembly="assembled" compilation="compiled"/>
 		<runtests suite="ctype" assembly="assembled" compilation="compiled"/>
 		<runtests suite="strings-ext" assembly="assembled" compilation="compiled"/>
-		<runtests suite="phone" assembly="assembled" compilation="compiled"/>
+		<runtests suite="phone1" assembly="assembled" compilation="compiled"/>
+		<runtests suite="phone2" assembly="assembled" compilation="compiled"/>
+		<runtests suite="phone3" assembly="assembled" compilation="compiled"/>
 		<runtests suite="units" assembly="assembled" compilation="compiled"/>
 		<runtests suite="name" assembly="assembled" compilation="compiled"/>
-		<runtests suite="address" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address1" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address2" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address3" assembly="assembled" compilation="compiled"/>
 		<runtests suite="collate" assembly="assembled" compilation="compiled"/>
 	</target>
 
@@ -685,17 +701,25 @@ limitations under the License.
 		<runtests suite="util" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="." assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="calendar" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="date" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="daterange" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="date1" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="date2" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="date3" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="daterange1" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="daterange2" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="daterange3" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="durfmt" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="number" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="maps" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="ctype" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="strings-ext" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="phone" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="phone1" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="phone2" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="phone3" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="units" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="name" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="address" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address1" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address2" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address3" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="collate" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
@@ -703,17 +727,25 @@ limitations under the License.
 		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="." assembly="dynamic" compilation="compiled"/>
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="date3" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="durfmt" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
 	</target>
 
@@ -721,17 +753,25 @@ limitations under the License.
 		<runtests suite="util" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="." assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="calendar" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="date" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="daterange" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="date1" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="date2" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="date3" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="durfmt" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="number" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="maps" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="ctype" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="strings-ext" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="phone" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="units" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="name" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="address" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address1" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address2" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address3" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="collate" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
