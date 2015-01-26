@@ -93,18 +93,19 @@ ilib.Date.HanRataDie = function(params) {
 		if (params && typeof(params.callback) === 'function') {
 			params.callback(this);
 		}
+	} else {
+		new ilib.Cal.Han({
+			sync: params && params.sync,
+			loadParams: params && params.loadParams,
+			callback: ilib.bind(this, function(c) {
+				this.cal = c;
+				ilib.Date.RataDie.call(this, params);
+				if (params && typeof(params.callback) === 'function') {
+					params.callback(this);
+				}
+			})
+		});
 	}
-	new ilib.Cal.Han({
-		sync: params && params.sync,
-		loadParams: params && params.loadParams,
-		callback: ilib.bind(this, function(c) {
-			this.cal = c;
-			ilib.Date.RataDie.call(this, params);
-			if (params && typeof(params.callback) === 'function') {
-				params.callback(this);
-			}
-		})
-	});
 };
 
 ilib.Date.HanRataDie.prototype = new ilib.Date.RataDie();
@@ -374,12 +375,13 @@ ilib.Date.HanDate = function(params) {
 									cal: this.cal,
 									rd: this.rd.getRataDie() - this.offset
 								});
+								this._calcLeap();
+							} else {
+								// re-use the derived properties from the RD calculations
+								this.leapMonth = this.rd.leapMonth;
+								this.priorLeapMonth = this.rd.priorLeapMonth;
+								this.leapYear = this.rd.leapYear;
 							}
-
-							// derived properties
-							this.leapMonth = this.rd.leapMonth;
-							this.priorLeapMonth = this.rd.priorLeapMonth;
-							this.leapYear = this.rd.leapYear;
 						}
 						
 						if (!this.rd) {
@@ -453,6 +455,26 @@ ilib.Date.HanDate.prototype._calcYear = function(rd) {
 	var hanyear = gregdate.year + 2697;
 	var newYears = this.cal.newYears(hanyear);
 	return hanyear - ((rd + ilib.Date.RataDie.gregorianEpoch < newYears) ? 1 : 0);
+};
+
+/** 
+ * @private 
+ * Calculate the leap year and months from the RD.
+ */
+ilib.Date.HanDate.prototype._calcLeap = function() {
+	var jd = this.rd.getRataDie() + ilib.Date.RataDie.gregorianEpoch;
+	
+	var calc = ilib.Cal.Han._leapYearCalc(this.year);
+	var m2 = ilib.Cal.Han._newMoonOnOrAfter(calc.m1+1);
+	this.leapYear = Math.round((calc.m2 - calc.m1) / 29.530588853000001) === 12;
+	
+	var newYears = (this.leapYear &&
+		(ilib.Cal.Han._noMajorST(calc.m1) || ilib.Cal.Han._noMajorST(m2))) ?
+				ilib.Cal.Han._newMoonOnOrAfter(m2+1) : m2;
+	
+	var m = ilib.Cal.Han._newMoonBefore(jd + 1);
+	this.priorLeapMonth = ilib.Date.HanDate._priorLeapMonth(newYears, ilib.Cal.Han._newMoonBefore(m));
+	this.leapMonth = (this.leapYear && ilib.Cal.Han._noMajorST(m) && !this.priorLeapMonth);
 };
 
 /**
