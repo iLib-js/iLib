@@ -459,3 +459,17 @@ function testFormatWithSuffix3_ko_KR() {
 	
 	assertEquals(expected, formatted);
 };
+
+function testFormatWithCopyConstructor_ko_KR() {
+	var name = new ilib.Name({
+		familyName: "가",
+		givenName: "나"
+	});	
+	var fmt = new ilib.NameFmt({locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "가나";
+	
+	assertEquals(expected, formatted);
+};
