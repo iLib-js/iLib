@@ -443,7 +443,7 @@ function testCollatorDefaultCase() {
 		assertTrue("A < a", col.compare("A", "a") < 0);
 		assertTrue("B < b", col.compare("B", "b") < 0);
 		assertTrue("a < Z", col.compare("a", "Z") < 0);
-		assertTrue("Á < a", col.compare("Á", "a") < 0);
+		assertTrue("a < Á", col.compare("a", "Á") < 0); // accent is more important than case
 	}
 }
 
@@ -488,13 +488,12 @@ function testCollatorGetComparatorWorksWithCase() {
 		assertTrue("b < B", func("b", "B") < 0);
 		assertTrue("a < Z", func("a", "Z") < 0);
 		assertTrue("a < Á", func("a", "Á") < 0);
-
 	} else {
 		// should compare upper-case first
 		assertTrue("A < a", func("A", "a") < 0);
 		assertTrue("B < b", func("B", "b") < 0);
 		assertTrue("a < Z", func("a", "Z") < 0);
-		assertTrue("Á < a", func("Á", "a") < 0);
+		assertTrue("a < Á", func("a", "Á") < 0); // accent is more important than case
 	}
 }
 
