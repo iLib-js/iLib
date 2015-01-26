@@ -602,13 +602,7 @@ limitations under the License.
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
 			</exec>
-			<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
-				<arg line="testSuite.js"/>
-				<arg line="@{assembly}"/>
-				<arg line="@{compilation}"/>
-				<arg line="@{suite}"/>
-			</exec>
-			<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="node.exe" dir="${build.src}" failifexecutionfails="true"  failonerror="true">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -839,13 +833,10 @@ limitations under the License.
 		<exec os="Linux" executable="node" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
-			<arg value="${build.tools}/build/mkli.js"/>
-		</exec>
 		<exec os="Mac OS X" executable="node" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
 		<touch file="${build.locale}/localeinfo.stamp"/>
@@ -871,12 +862,7 @@ limitations under the License.
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>
 		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.localetemp}"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
 			<arg value="${build.tools}/build/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>
@@ -900,10 +886,7 @@ limitations under the License.
 		<exec os="Mac OS X" executable="node" dir="${build.localetemp}">
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.localetemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
-		</exec>
-		<exec os="Windows 7" executable="node.exe" dir="${build.localetemp}">
+		<exec osfamily="windows" executable="node.exe" dir="${build.localetemp}">
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 	</target>
