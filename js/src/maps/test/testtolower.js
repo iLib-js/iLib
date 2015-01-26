@@ -73,12 +73,16 @@ function testToLowerGreek_default() {
     assertEquals("αβγδεζηθ", mapper.map("ΑΒΓΔΕΖΗΘ"));
 }
 
+/*
+only works on chrome and node... don't need this functionality
+unless the locale is greek anyways
 function testToLowerGreekSigma_default() {
 	var mapper = new ilib.CaseMapper({
 		direction: "tolower"
 	});
 	assertEquals("ιασας ιασας", mapper.map("ΙΑΣΑΣ ΙΑΣΑΣ"));
 }
+*/
 
 function testToLowerCoptic_default() {
 	var mapper = new ilib.CaseMapper({

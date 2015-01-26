@@ -212,7 +212,12 @@ ilib.ElementIterator.prototype.next = function () {
  *   
  * <li><i>upperFirst</i> - boolean. When collating case-sensitively in a script that
  * has the concept of case, put upper-case
- * characters first, otherwise lower-case will come first. Default: true
+ * characters first, otherwise lower-case will come first. Warning: some browsers do
+ * not implement this feature or at least do not implement it properly, so if you are 
+ * using the native collator with this option, you may get different results in different
+ * browsers. To guarantee the same results, set useNative to false to use the ilib 
+ * collator implementation. This of course will be somewhat slower, but more 
+ * predictable. Default: true
  * 
  * <li><i>reverse</i> - boolean. Return the list sorted in reverse order. When the
  * upperFirst option is also set to true, upper-case characters would then come at 

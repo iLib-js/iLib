@@ -1,7 +1,7 @@
 /*
  * casemapper.js - define upper- and lower-case mapper
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,32 +53,6 @@ ilib.CaseMapper = function (options) {
 		this.up = (!options.direction || options.direction === "toupper");
 	}
 
-	this.charMapper = function(string) {
-		var input;
-		if (!string) {
-			return string;
-		}
-		if (typeof(string) === 'string') {
-			input = new ilib.String(string);
-		} else {
-			input = string.toString();
-		}
-		var ret = "";
-		var it = input.charIterator();
-		var c;
-		
-		while (it.hasNext()) {
-			c = it.next();
-			if (this.mapData[c]) {
-				ret += this.mapData[c];
-			} else {
-				ret += this.up ? c.toUpperCase() : c.toLowerCase();
-			}
-		}
-		
-		return ret;
-	};
-	
 	switch (this.locale.getLanguage()) {
 		case "az":
 		case "tr":
@@ -93,7 +67,15 @@ ilib.CaseMapper = function (options) {
 				"İ": "i",
 				"I": "ı"
 			};
-			this.mapper = this.charMapper;
+			this.mapper = this._charMapper;
+			break;
+		case "de":
+			if (this.up) {
+				this.mapper = this._charMapper;
+				this.mapData = {
+					"ß": "SS"
+				};
+			}
 			break;
 		case "fr":
 			if (this.up && this.locale.getRegion() !== "CA") {
@@ -122,26 +104,24 @@ ilib.CaseMapper = function (options) {
 					'û': 'U',
 					'ü': 'U'
 				};
-				this.mapper = this.charMapper;
+				this.mapper = this._charMapper;
 			}
 			break;
 		case "el":
-			if (this.up) {
-				this.mapData = {
-					'ΐ': 'Ι',
-					'ά': 'Α',
-					'έ': 'Ε',
-					'ή': 'Η',
-					'ί': 'Ι',
-					'ΰ': 'Υ',
-					'ϊ': 'Ι',
-					'ϋ': 'Υ',
-					'ό': 'Ο',
-					'ύ': 'Υ',
-					'ώ': 'Ω'	
-				};
-				this.mapper = this.charMapper;
-			}
+			this.mapData = this.up ? {
+				'ΐ': 'Ι',
+				'ά': 'Α',
+				'έ': 'Ε',
+				'ή': 'Η',
+				'ί': 'Ι',
+				'ΰ': 'Υ',
+				'ϊ': 'Ι',
+				'ϋ': 'Υ',
+				'ό': 'Ο',
+				'ύ': 'Υ',
+				'ώ': 'Ω'	
+			} : {};
+			this.mapper = this._charMapper;
 			break;
 		case "abq":
 		case "ady":
@@ -158,7 +138,7 @@ ilib.CaseMapper = function (options) {
 				this.mapData = {
 					'Ӏ': 'Ӏ'	
 				};
-				this.mapper = this.charMapper;
+				this.mapper = this._charMapper;
 			}
 			break;
 	}
@@ -171,6 +151,49 @@ ilib.CaseMapper = function (options) {
 };
 
 ilib.CaseMapper.prototype = {
+	/** 
+	 * @private 
+	 */
+	_charMapper: function(string) {
+		var input;
+		if (!string) {
+			return string;
+		}
+		if (typeof(string) === 'string') {
+			input = new ilib.String(string);
+		} else {
+			input = string.toString();
+		}
+		var ret = "";
+		var it = input.charIterator();
+		var c;
+		
+		while (it.hasNext()) {
+			c = it.next();
+			if (!this.up && c === 'Σ') {
+				if (it.hasNext()) {
+					c = it.next();
+					var code = c.charCodeAt(0);
+					// if the next char is not a greek letter, this is the end of the word so use the
+					// final form of sigma. Otherwise, use the mid-word form.
+					ret += ((code < 0x0388 && code !== 0x0386) || code > 0x03CE) ? 'ς' : 'σ';
+					ret += c.toLowerCase();
+				} else {
+					// no next char means this is the end of the word, so use the final form of sigma
+					ret += 'ς';
+				}
+			} else {
+				if (this.mapData[c]) {
+					ret += this.mapData[c];
+				} else {
+					ret += this.up ? c.toUpperCase() : c.toLowerCase();
+				}
+			}
+		}
+		
+		return ret;
+	},
+
 	/**
 	 * Return the locale that this mapper was constructed with. 
 	 * @returns {ilib.Locale} the locale that this mapper was constructed with
