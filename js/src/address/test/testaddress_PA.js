@@ -88,18 +88,6 @@ function testParseAddressPASuperfluousWhitespace() {
 	assertEquals("Panama", parsedAddress.country);
 	assertEquals("PA", parsedAddress.countryCode);
 };
-//needs a better regular expression to handle localities with spaces and with no spaces
-/*function testParseAddressPANoDelimiters() {
-	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias. Area Bancaria Panama City Panama", {locale: 'es-PA'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Calle 52 y Ricardo Arias.", parsedAddress.streetAddress);
-	assertEquals("Area Bancaria", parsedAddress.locality);
-	assertEquals("Panama City", parsedAddress.region);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("Panama", parsedAddress.country);
-	assertEquals("PA", parsedAddress.countryCode);
-};*/
 
 function testParseAddressPAFromUS() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
@@ -141,4 +129,40 @@ function testFormatAddressPAFromUS() {
 	var expected = "Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testParseAddressPANormal1() {
+	var parsedAddress = new ilib.Address("MARTÍN GUTIERREZ,Via Israel 3,0424,VOLCÁN,Chiriquí,PANAMA", {locale: 'es-PA'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("MARTÍN GUTIERREZ, Via Israel 3, 0424", parsedAddress.streetAddress);
+	assertEquals("VOLCÁN", parsedAddress.locality);
+	assertEquals("Chiriquí", parsedAddress.region);
+	assertUndefined(parsedAddress.postalCode);
+	assertEquals("PANAMA", parsedAddress.country);
+	assertEquals("PA", parsedAddress.countryCode);
+};
+
+function testParseAddressPANormal2() {
+	var parsedAddress = new ilib.Address("Parque Industrial Milla 8,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Parque Industrial Milla 8", parsedAddress.streetAddress);
+	assertEquals("Ciudad de Panamá", parsedAddress.locality);
+	assertEquals("Panamá", parsedAddress.region);
+	assertUndefined(parsedAddress.postalCode);
+	assertEquals("PANAMA", parsedAddress.country);
+	assertEquals("PA", parsedAddress.countryCode);
+};
+
+function testParseAddressPANormal3() {
+	var parsedAddress = new ilib.Address("Edificio Plaza Fidanque, Piso 2,P.O Box 0816-01349,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Edificio Plaza Fidanque, Piso 2, P.O Box 0816-01349", parsedAddress.streetAddress);
+	assertEquals("Ciudad de Panamá", parsedAddress.locality);
+	assertEquals("Panamá", parsedAddress.region);
+	assertUndefined(parsedAddress.postalCode);
+	assertEquals("PANAMA", parsedAddress.country);
+	assertEquals("PA", parsedAddress.countryCode);
 };
