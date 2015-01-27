@@ -67,7 +67,8 @@ function suite() {
 		"testaddress_DZ.js",
 		"testaddress_NI.js",
 		"testaddress_PE.js",
-		"testaddress_PA.js"
+		"testaddress_PA.js",
+		"testaddress_SL.js"
 	];
 
     suites.forEach(function (path) {

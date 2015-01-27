@@ -89,7 +89,7 @@ function testParseAddressSLSuperfluousWhitespace() {
 };
 
 function testParseAddressSLNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline Freetown Sierra Leone", {locale: 'en-SL'});
+	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline, Freetown Sierra Leone", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Kamara 7A Ross Road Cline", parsedAddress.streetAddress);
@@ -137,3 +137,42 @@ function testFormatAddressSLFromUS() {
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
+
+function testFormatAddressSL1() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Mr. Simon Hunter 87 Florence's, Peninsula Road",
+		locality: "Freetown",
+		country: "Sierra Leone",
+		countryCode: "SL"
+	}, {locale: 'en-US'});
+	
+	var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
+	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testFormatAddressSL2() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Mr. Simon Hunter 87 Florence's, Peninsula Road",
+		locality: "Freetown",
+		country: "Sierra Leone",
+		countryCode: "SL"
+	}, {locale: 'en-SL'});
+	
+	var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
+	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testParseAddressSL3() {
+	var parsedAddress = new ilib.Address("Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone", {locale: 'en-SL'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Mr. Simon Hunter 87 Florence's, Peninsula Road", parsedAddress.streetAddress);
+	assertEquals("Freetown", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertUndefined(parsedAddress.postalCode);
+	assertEquals("Sierra Leone", parsedAddress.country);
+	assertEquals("SL", parsedAddress.countryCode);
+};
+
