@@ -18,24 +18,24 @@
  */
 
 function testParseAddressRSNormal() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Boulevard arsenicum Carnojevica 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSNoZip() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\nBelgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\nBelgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Boulevard arsenicum Carnojevica 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
@@ -43,72 +43,72 @@ function testParseAddressRSNoZip() {
 
 
 function testParseAddressRSNoCountry() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Boulevard arsenicum Carnojevica 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);	
 	assertUndefined(parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSManyLines() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica\n56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica\n56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Boulevard arsenicum Carnojevica, 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSOneLine() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica , 56 Novi Belgradum , 11070 , Belgradum , Central Serbia , Serbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica , 56 Novi Belgradum , 11070 , Belgradum , Central-Serbia , Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Boulevard arsenicum Carnojevica, 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Чарнојевић\n\n\t56 Novi Belgradum\n\n\r11070\r\r\nBelgradum\t\t\rCentral Serbia\t\t\rSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Чарнојевић\n\n\t56 Novi Belgradum\n\n\r11070\r\r\nBelgradum\t\t\rCentral-Serbia\t\t\rSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Boulevard arsenicum Чарнојевић, 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSNoDelimiters() {
-	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum 11070 Belgradum Central Serbia Serbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum 11070 Belgradum Central-Serbia Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Boulevard arsenicum Carnojevica 56 Novi Belgradum", parsedAddress.streetAddress);
 	assertEquals("Belgradum", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
 function testParseAddressRSFromUS() {
-	var parsedAddress = new ilib.Address("Bulevar Arsenija Carnojevica 56 New Belgrade\n11070 Belgrade\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Bulevar Arsenija Carnojevica 56 New Belgrade\n11070 Belgrade\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Bulevar Arsenija Carnojevica 56 New Belgrade", parsedAddress.streetAddress);
 	assertEquals("Belgrade", parsedAddress.locality);
-	assertEquals("Central Serbia", parsedAddress.region);
+	assertEquals("Central-Serbia", parsedAddress.region);
 	assertEquals("11070", parsedAddress.postalCode);
 	assertEquals("Serbia", parsedAddress.country);
 	assertEquals("RS", parsedAddress.countryCode);
@@ -119,12 +119,12 @@ function testFormatAddressRS() {
 		streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
 		locality: "Belgradum",
 		postalCode: "11070",
-		region: "Central Serbia",
+		region: "Central-Serbia",
 		country: "Serbia",
 		countryCode: "RS"
 	}, {locale: 'sr-Latn-RS'});
 	
-	var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia";
+	var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia";
 	var formatter = new ilib.AddressFmt({locale: 'sr-Latn-RS'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -134,12 +134,12 @@ function testFormatAddressRSFromUS() {
 		streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
 		locality: "Belgradum",
 		postalCode: "11070",
-		region: "Central Serbia",
+		region: "Central-Serbia",
 		country: "Serbia",
 		countryCode: "RS"
 	}, {locale: 'en-US'});
 	
-	var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia";
+	var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

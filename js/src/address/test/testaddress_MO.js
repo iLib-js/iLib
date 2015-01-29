@@ -18,190 +18,151 @@
  */
 
 function testParseAddressMOLatinNormal() {
-	var parsedAddress = new ilib.Address("L30, Unit 3007, Teemtower, Teemmall,\n208 Tianhe Road, Tianhe District,\nGuangzhou, Guangdong 510620\nChina", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("L30, Unit 3007, Teemtower, Teemmall, 208 Tianhe Road, Tianhe District", parsedAddress.streetAddress);
-	assertEquals("Guangzhou", parsedAddress.locality);
-	assertEquals("Guangdong", parsedAddress.region);
-	assertEquals("510620", parsedAddress.postalCode);
-	assertEquals("China", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressMOLatinNoZip() {
-	var parsedAddress = new ilib.Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, People's Republic of China", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau \n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("No. 1 Zhongguancun East Road, Haidian District", parsedAddress.streetAddress);
-	assertEquals("Beijing", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("People's Republic of China", parsedAddress.country);
+	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressMOLatinNoCountry() {
-	var parsedAddress = new ilib.Address("No.268 Xizang Zhong Road, Huangpu District\nShanghai, 200001", {locale: 'pt-MO'});
-	
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078", {locale: 'pt-MO'});
+
 	assertNotUndefined(parsedAddress);
-	assertEquals("No.268 Xizang Zhong Road, Huangpu District", parsedAddress.streetAddress);
-	assertEquals("Shanghai", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("200001", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
+	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
 	assertEquals("MO", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.country);
 };
 
 function testParseAddressMOAsianNormal() {
-	var parsedAddress = new ilib.Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {locale: 'zh-MO'});
+	var parsedAddress = new ilib.Address("澳門999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("朝阳区建国路112号 中国惠普大厦", parsedAddress.streetAddress);
-	assertEquals("北京市", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("100022", parsedAddress.postalCode);
-	assertEquals("中国", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
+	assertEquals("澳門", parsedAddress.country);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressMOAsianNoZip() {
-	var parsedAddress = new ilib.Address("中国武汉市汉口建设大道568号新世界国贸大厦I座9楼910室", {locale: 'zh-MO'});
+	var parsedAddress = new ilib.Address("澳門商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("汉口建设大道568号新世界国贸大厦I座9楼910室", parsedAddress.streetAddress);
-	assertEquals("武汉市", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("中国", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
+	assertEquals("澳門", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressMOAsianNoCountry() {
-	var parsedAddress = new ilib.Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-MO'});
+	var parsedAddress = new ilib.Address("999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("北京市朝阳区北四环中路 27号盘古大观 A 座 23层", parsedAddress.streetAddress);
-	assertEquals("北京市", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("200001", parsedAddress.postalCode);
+	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.country);
+	assertEquals("999078", parsedAddress.postalCode);
 	assertEquals("MO", parsedAddress.countryCode);
 };
 
-function testParseAddressMOAsianWithRegion() {
-	var parsedAddress = new ilib.Address("中国湖北省武汉市汉口建设大道568号新世界国贸大厦I座9楼910室430000", {locale: 'zh-MO'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("汉口建设大道568号新世界国贸大厦I座9楼910室", parsedAddress.streetAddress);
-	assertEquals("武汉市", parsedAddress.locality);
-	assertEquals("湖北省", parsedAddress.region);
-	assertEquals("中国", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
-	assertEquals("430000", parsedAddress.postalCode);
-};
-
 function testParseAddressMOManyLines() {
-	var parsedAddress = new ilib.Address("Tsinghua Science Park Bldg 6\nNo. 1 Zhongguancun East Road\nHaidian District\nBeijing 100084\nPRC\n\n", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n\n Lisboa Gardens, Tower B3\n\n 14th Floor D,\n\n\n Macau 999078\n\n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Tsinghua Science Park Bldg 6, No. 1 Zhongguancun East Road, Haidian District", parsedAddress.streetAddress);
-	assertEquals("Beijing", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("100084", parsedAddress.postalCode);
-	assertEquals("PRC", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressMOOneLine() {
-	var parsedAddress = new ilib.Address("No. 27, Central North Fourth Ring Road, Chaoyang District, Beijing 100101, PRC", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D, Macau 999078 Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("No. 27, Central North Fourth Ring Road, Chaoyang District", parsedAddress.streetAddress);
-	assertEquals("Beijing", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("100101", parsedAddress.postalCode);
-	assertEquals("PRC", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressMOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tNo. 27, Central North Fourth \r\t   \tRing Road\t\t\n\t, Chaoyang \r\tDistrict\n\t\rBeijing\t\r\n100101\n\t\t\r\rPRC\t\n\n\n", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("\t\t\tRua Cidade de Lisboa N.o 130\r\t Lisboa Gardens,\r\t   \tTower B3 14th Floor D,\t\t\n\t Macau \r\t999078 \n\t\t\r\rMacau\t\n\n\n", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("No. 27, Central North Fourth Ring Road, Chaoyang District", parsedAddress.streetAddress);
-	assertEquals("Beijing", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("100101", parsedAddress.postalCode);
-	assertEquals("PRC", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressMONoDelimiters() {
-	var parsedAddress = new ilib.Address("No. 27 Central North Fourth Ring Road Chaoyang District Beijing 100101 PRC", {locale: 'pt-MO'});
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D Macau 999078 Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("No. 27 Central North Fourth Ring Road Chaoyang District", parsedAddress.streetAddress);
-	assertEquals("Beijing", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("100101", parsedAddress.postalCode);
-	assertEquals("PRC", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
-function testParseAddressMOSpecialChars() {
-	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'pt-MO'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("208 Tianhe Road, Tianhe District", parsedAddress.streetAddress);
-	assertEquals("Guǎngzhōu", parsedAddress.locality);
-	assertEquals("Guǎngdōng", parsedAddress.region);
-	assertEquals("510620", parsedAddress.postalCode);
-	assertEquals("China", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
-};
+function testParseAddressMOFromUS() {	
 
-function testParseAddressMOFromUS() {
-	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-US'});
-	
+	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'en-US'});
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("208 Tianhe Road, Tianhe District", parsedAddress.streetAddress);
-	assertEquals("Guǎngzhōu", parsedAddress.locality);
-	assertEquals("Guǎngdōng", parsedAddress.region);
-	assertEquals("510620", parsedAddress.postalCode);
-	assertEquals("China", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
+	assertEquals("Macau", parsedAddress.region);
+	assertEquals("999078", parsedAddress.postalCode);
+	assertEquals("Macau", parsedAddress.country);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testFormatAddressMOLatin() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "208 Tianhe Road, Tianhe District",
-		locality: "Guǎngzhōu",
-		region: "Guǎngdōng",
-		postalCode: "510620",
-		country: "China",
-		countryCode: "CN",
+		streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
+		region: "Macau",
+		postalCode: "999078",
+		country: "Macau",
+		countryCode: "MO",
 		format: "latin"
 	}, {locale: 'pt-MO'});
 	
-	var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
+	var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
 	var formatter = new ilib.AddressFmt({locale: 'pt-MO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMOFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "208 Tianhe Road, Tianhe District",
-		locality: "Guǎngzhōu",
-		region: "Guǎngdōng",
-		postalCode: "510620",
-		country: "China",
-		countryCode: "CN",
+		streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
+		region: "Macau",
+		postalCode: "999078",
+		country: "Macau",
+		countryCode: "MO",
 		format: "latin"
 	}, {locale: 'en-US'});
 	
-	var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
+	var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -64,11 +64,7 @@ function suite() {
 		"testaddress_DJ.js",
 		"testaddress_DK.js",
 		"testaddress_DO.js",
-		"testaddress_DZ.js",
-		"testaddress_NI.js",
-		"testaddress_PE.js",
-		"testaddress_PA.js",
-		"testaddress_SL.js"
+		"testaddress_DZ.js"
 	];
 
     suites.forEach(function (path) {
