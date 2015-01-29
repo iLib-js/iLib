@@ -53,6 +53,24 @@ ilib.CaseMapper = function (options) {
 		this.up = (!options.direction || options.direction === "toupper");
 	}
 
+	this.mapData = this.up ? {
+		"ß": "SS",		// German
+		'ΐ': 'Ι',		// Greek
+		'ά': 'Α',
+		'έ': 'Ε',
+		'ή': 'Η',
+		'ί': 'Ι',
+		'ΰ': 'Υ',
+		'ϊ': 'Ι',
+		'ϋ': 'Υ',
+		'ό': 'Ο',
+		'ύ': 'Υ',
+		'ώ': 'Ω',
+		'Ӏ': 'Ӏ'		// Russian and slavic languages
+	} : {
+		'Ӏ': 'Ӏ'		// Russian and slavic languages
+	};
+
 	switch (this.locale.getLanguage()) {
 		case "az":
 		case "tr":
@@ -60,93 +78,25 @@ ilib.CaseMapper = function (options) {
 		case "kk":
 		case "krc":
 		case "tt":
-			this.mapData = this.up ?  {
-				"i": "İ",
-				"ı": "I"
-			} : {
-				"İ": "i",
-				"I": "ı"
-			};
-			this.mapper = this._charMapper;
-			break;
-		case "de":
-			if (this.up) {
-				this.mapper = this._charMapper;
-				this.mapData = {
-					"ß": "SS"
-				};
-			}
+			var lower = "iı";
+			var upper = "İI";
+			this._setUpMap(lower, upper);
 			break;
 		case "fr":
 			if (this.up && this.locale.getRegion() !== "CA") {
-				this.mapData = {
-					'à': 'A',
-					'á': 'A',
-					'â': 'A',
-					'ã': 'A',
-					'ä': 'A',
-					'ç': 'C',
-					'è': 'E',
-					'é': 'E',
-					'ê': 'E',
-					'ë': 'E',
-					'ì': 'I',
-					'í': 'I',
-					'î': 'I',
-					'ï': 'I',
-					'ñ': 'N',
-					'ò': 'O',
-					'ó': 'O',
-					'ô': 'O',
-					'ö': 'O',
-					'ù': 'U',
-					'ú': 'U',
-					'û': 'U',
-					'ü': 'U'
-				};
-				this.mapper = this._charMapper;
-			}
-			break;
-		case "el":
-			this.mapData = this.up ? {
-				'ΐ': 'Ι',
-				'ά': 'Α',
-				'έ': 'Ε',
-				'ή': 'Η',
-				'ί': 'Ι',
-				'ΰ': 'Υ',
-				'ϊ': 'Ι',
-				'ϋ': 'Υ',
-				'ό': 'Ο',
-				'ύ': 'Υ',
-				'ώ': 'Ω'	
-			} : {};
-			this.mapper = this._charMapper;
-			break;
-		case "abq":
-		case "ady":
-		case "av":
-		case "ce":
-		case "dar":
-		case "inh":
-		case "kbd":
-		case "lbe":
-		case "lez":
-		case "tab":
-		case "ru":
-			if (!this.up) {
-				this.mapData = {
-					'Ӏ': 'Ӏ'	
-				};
-				this.mapper = this._charMapper;
+				this._setUpMap("àáâãäçèéêëìíîïñòóôöùúûü", "AAAAACEEEEIIIINOOOOUUUU");
 			}
 			break;
 	}
 	
-	if (!this.mapper) {
-		this.mapper = function(string) {
-			return this.up ? string.toUpperCase() : string.toLowerCase();
-		};
+	if (ilib._getBrowser() === "ie") {
+		// IE is missing these mappings for some reason
+		if (this.up) {
+			this.mapData['ς'] = 'Σ';
+		}
+		this._setUpMap("ⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⳁⳉⳋ", "ⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⳀⳈⳊ"); // Coptic
+		// Georgian Mkhedruli <-> Asomtavruli
+		this._setUpMap("აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵ", "ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ");	
 	}
 };
 
@@ -155,15 +105,10 @@ ilib.CaseMapper.prototype = {
 	 * @private 
 	 */
 	_charMapper: function(string) {
-		var input;
 		if (!string) {
 			return string;
 		}
-		if (typeof(string) === 'string') {
-			input = new ilib.String(string);
-		} else {
-			input = string.toString();
-		}
+		var input = (typeof(string) === 'string') ? new ilib.String(string) : string.toString();
 		var ret = "";
 		var it = input.charIterator();
 		var c;
@@ -194,6 +139,21 @@ ilib.CaseMapper.prototype = {
 		return ret;
 	},
 
+	/** @private */
+	_setUpMap: function(lower, upper) {
+		var from, to;
+		if (this.up) {
+			from = lower;
+			to = upper;
+		} else {
+			from = upper;
+			to = lower;
+		}
+		for (var i = 0; i < upper.length; i++) {
+			this.mapData[from[i]] = to[i];
+		}
+	},
+
 	/**
 	 * Return the locale that this mapper was constructed with. 
 	 * @returns {ilib.Locale} the locale that this mapper was constructed with
@@ -209,6 +169,6 @@ ilib.CaseMapper.prototype = {
 	 * @return {string|undefined}
 	 */
 	map: function (string) {
-		return this.mapper(string);
+		return this._charMapper(string);
 	}
 };
