@@ -68,7 +68,8 @@ ilib.CaseMapper = function (options) {
 		'ώ': 'Ω',
 		'Ӏ': 'Ӏ'		// Russian and slavic languages
 	} : {
-		'Ӏ': 'Ӏ'		// Russian and slavic languages
+		'Ӏ': 'Ӏ',		// Russian and slavic languages
+		'Ӏ': 'Ӏ'
 	};
 
 	switch (this.locale.getLanguage()) {
@@ -95,8 +96,8 @@ ilib.CaseMapper = function (options) {
 			this.mapData['ς'] = 'Σ';
 		}
 		this._setUpMap("ⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⳁⳉⳋ", "ⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖⲘⲚⲜⲞⲠⲢⲤⲦⲨⲪⲬⲮⲰⳀⳈⳊ"); // Coptic
-		// Georgian Mkhedruli <-> Asomtavruli
-		this._setUpMap("აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰჱჲჳჴჵ", "ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ");	
+		// Georgian Nuskhuri <-> Asomtavruli
+		this._setUpMap("ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉⴊⴋⴌⴍⴎⴏⴐⴑⴒⴓⴔⴕⴖⴗⴘⴙⴚⴛⴜⴝⴞⴟⴠⴡⴢⴣⴤⴥ", "ႠႡႢႣႤႥႦႧႨႩႪႫႬႭႮႯႰႱႲႳႴႵႶႷႸႹႺႻႼႽႾႿჀჁჂჃჄჅ");	
 	}
 };
 
