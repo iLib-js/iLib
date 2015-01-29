@@ -66,10 +66,10 @@ ilib.CaseMapper = function (options) {
 		'ό': 'Ο',
 		'ύ': 'Υ',
 		'ώ': 'Ω',
-		'Ӏ': 'Ӏ'		// Russian and slavic languages
-	} : {
 		'Ӏ': 'Ӏ',		// Russian and slavic languages
-		'Ӏ': 'Ӏ'
+		'ӏ': 'Ӏ'
+	} : {
+		'Ӏ': 'Ӏ'		// Russian and slavic languages
 	};
 
 	switch (this.locale.getLanguage()) {
