@@ -115,6 +115,40 @@ ilib._getPlatform = function () {
 };
 
 /**
+ * If this ilib is running in a browser, return the name of that browser.
+ * @private
+ * @static
+ * @return {string|undefined} the name of the browser that this is running in ("firefox", "chrome", "ie", 
+ * "safari", or "opera"), or undefined if this is not running in a browser or if
+ * the browser name could not be determined 
+ */
+ilib._getBrowser = function () {
+	var browser = undefined;
+	if (ilib._getPlatform() === "browser") {
+		if (navigator && navigator.userAgent) {
+			if (navigator.userAgent.indexOf("Firefox") > -1) {
+				browser = "firefox";
+			}
+			if (navigator.userAgent.indexOf("Opera") > -1) {
+				browser = "opera";
+			}
+			if (navigator.userAgent.indexOf("Chrome") > -1) {
+				browser = "chrome";
+			}
+			if (navigator.userAgent.indexOf(" .NET") > -1) {
+				browser = "ie";
+			}
+			if (navigator.userAgent.indexOf("Safari") > -1) {
+				// chrome also has the string Safari in its userAgen, but the chrome case is 
+				// already taken care of above
+				browser = "safari";
+			}
+		}
+	}
+	return browser;
+};
+
+/**
  * Return true if the global variable is defined on this platform.
  * @private
  * @static
