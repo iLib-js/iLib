@@ -21,140 +21,187 @@
 function testEthiopicGetNumMonths() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(12, cal.getNumMonths(2011));
+    assertEquals(13, cal.getNumMonths(2007));
 }
 
-function testEthiopicgetMonLengthJan() {
+function testEthiopicGetMonLength1() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(1, 2011));
+    assertEquals(30, cal.getMonLength(1, 2007));
 }
 
-function testEthiopicgetMonLengthFeb() {
+function testEthiopicGetMonLength2() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(28, cal.getMonLength(2, 2011));
+    assertEquals(30, cal.getMonLength(2, 2007));
 }
 
-function testEthiopicgetMonLengthFebLeapYear() {
+function testEthiopicGetMonLength3() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(29, cal.getMonLength(2, 2012));
+    assertEquals(30, cal.getMonLength(3, 2007));
 }
 
-function testEthiopicgetMonLengthMar() {
+function testEthiopicGetMonLength4() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(3, 2011));
+    assertEquals(30, cal.getMonLength(4, 2007));
 }
 
-function testEthiopicgetMonLengthApr() {
+function testEthiopicGetMonLength5() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(30, cal.getMonLength(4, 2011));
+    assertEquals(30, cal.getMonLength(5, 2007));
 }
 
-function testEthiopicgetMonLengthMay() {
+function testEthiopicGetMonLength6() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(5, 2011));
+    assertEquals(30, cal.getMonLength(6, 2007));
 }
 
-function testEthiopicgetMonLengthJun() {
+function testEthiopicGetMonLength7() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(30, cal.getMonLength(6, 2011));
+    assertEquals(30, cal.getMonLength(7, 2007));
 }
 
-function testEthiopicgetMonLengthJul() {
+function testEthiopicGetMonLength8() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(7, 2011));
+    assertEquals(30, cal.getMonLength(8, 2007));
 }
 
-function testEthiopicgetMonLengthAug() {
+function testEthiopicGetMonLength9() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(8, 2011));
+    assertEquals(30, cal.getMonLength(9, 2007));
 }
 
-function testEthiopicgetMonLengthSep() {
+function testEthiopicGetMonLength10() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(30, cal.getMonLength(9, 2011));
+    assertEquals(30, cal.getMonLength(10, 2007));
 }
 
-function testEthiopicgetMonLengthOct() {
+function testEthiopicGetMonLength11() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(10, 2011));
+    assertEquals(30, cal.getMonLength(11, 2007));
 }
 
-function testEthiopicgetMonLengthNov() {
+function testEthiopicGetMonLength12() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(30, cal.getMonLength(11, 2011));
+    assertEquals(30, cal.getMonLength(12, 2007));
 }
 
-function testEthiopicgetMonLengthDec() {
+function testEthiopicGetMonLength13LeapYear() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertEquals(31, cal.getMonLength(12, 2011));
+    assertEquals(6, cal.getMonLength(13, 2007));
+}
+
+function testEthiopicGetMonLength13() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertEquals(5, cal.getMonLength(13, 2008));
 }
 
 function testEthiopicIsLeapYear() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(2012));
+    assertTrue(cal.isLeapYear(2007));
 }
 
-/*
-In the Ethiopic calendar, there is no year 0. The dates
-go from 2 BCE, 1 BCE, 1 CE, 2 CE, etc.
-Thus, year 4 is a leap year, and 4 years earlier was year
-1 BCE, which was also a leap year. 1 BCE is represented
-as -1 in our calculations.
-*/
-function testEthiopicIsLeapYearBCEFalse() {
+function testEthiopicIsLeapYear() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(2008));
+}
+
+function testEthiopicIsLeapYear() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(2009));
+}
+
+function testEthiopicIsLeapYear() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(2010));
+}
+
+function testEthiopicIsLeapYear() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertTrue(cal.isLeapYear(2011));
+}
+
+function testEthiopicIsLeapYearBM0() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertTrue(cal.isLeapYear(0));
+}
+
+function testEthiopicIsLeapYearBMMinus1() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(-1));
+}
+
+function testEthiopicIsLeapYearBMMinus2() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(-2));
+}
+
+function testEthiopicIsLeapYearBMMinus3() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertFalse(cal.isLeapYear(-3));
 }
 
-function testEthiopicIsLeapYearBCETrue() {
+function testEthiopicIsLeapYearBMMinus4() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(-1));
+    assertTrue(cal.isLeapYear(-4));
 }
 
-function testEthiopicIsLeapYearNot() {
+function testEthiopicIsLeapYearOnMillenium() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertFalse(cal.isLeapYear(2011));
+    assertTrue(cal.isLeapYear(2003));
 }
 
-function testEthiopicIsLeapYearNotOnCentury1() {
+function testEthiopicIsLeapYearOnCentury0() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(1700));
+    assertTrue(cal.isLeapYear(1603));
 }
 
-function testEthiopicIsLeapYearNotOnCentury2() {
+function testEthiopicIsLeapYearOnCentury1() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(1800));
+    assertTrue(cal.isLeapYear(1703));
 }
 
-function testEthiopicIsLeapYearNotOnCentury3() {
+function testEthiopicIsLeapYearOnCentury2() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(1900));
+    assertTrue(cal.isLeapYear(1803));
+}
+
+function testEthiopicIsLeapYearOnCentury3() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertTrue(cal.isLeapYear(1903));
 }
 
 function testEthiopicIsLeapYearOnQuadCentennial() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(2000));
+    assertTrue(cal.isLeapYear(2003));
 }
 
 function testEthiopicNewDateInstance() {
@@ -166,5 +213,5 @@ function testEthiopicNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.JulDate);
+    assertTrue(d instanceof ilib.Date.EthiopicDate);
 }

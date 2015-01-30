@@ -21,140 +21,187 @@
 function testCopticGetNumMonths() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(12, cal.getNumMonths(2011));
+    assertEquals(13, cal.getNumMonths(1731));
 }
 
-function testCopticgetMonLengthJan() {
+function testCopticGetMonLength1() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(1, 2011));
+    assertEquals(30, cal.getMonLength(1, 1731));
 }
 
-function testCopticgetMonLengthFeb() {
+function testCopticGetMonLength2() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(28, cal.getMonLength(2, 2011));
+    assertEquals(30, cal.getMonLength(2, 1731));
 }
 
-function testCopticgetMonLengthFebLeapYear() {
+function testCopticGetMonLength3() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(29, cal.getMonLength(2, 2012));
+    assertEquals(30, cal.getMonLength(3, 1731));
 }
 
-function testCopticgetMonLengthMar() {
+function testCopticGetMonLength4() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(3, 2011));
+    assertEquals(30, cal.getMonLength(4, 1731));
 }
 
-function testCopticgetMonLengthApr() {
+function testCopticGetMonLength5() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(30, cal.getMonLength(4, 2011));
+    assertEquals(30, cal.getMonLength(5, 1731));
 }
 
-function testCopticgetMonLengthMay() {
+function testCopticGetMonLength6() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(5, 2011));
+    assertEquals(30, cal.getMonLength(6, 1731));
 }
 
-function testCopticgetMonLengthJun() {
+function testCopticGetMonLength7() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(30, cal.getMonLength(6, 2011));
+    assertEquals(30, cal.getMonLength(7, 1731));
 }
 
-function testCopticgetMonLengthJul() {
+function testCopticGetMonLength8() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(7, 2011));
+    assertEquals(30, cal.getMonLength(8, 1731));
 }
 
-function testCopticgetMonLengthAug() {
+function testCopticGetMonLength9() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(8, 2011));
+    assertEquals(30, cal.getMonLength(9, 1731));
 }
 
-function testCopticgetMonLengthSep() {
+function testCopticGetMonLength10() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(30, cal.getMonLength(9, 2011));
+    assertEquals(30, cal.getMonLength(10, 1731));
 }
 
-function testCopticgetMonLengthOct() {
+function testCopticGetMonLength11() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(10, 2011));
+    assertEquals(30, cal.getMonLength(11, 1731));
 }
 
-function testCopticgetMonLengthNov() {
+function testCopticGetMonLength12() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(30, cal.getMonLength(11, 2011));
+    assertEquals(30, cal.getMonLength(12, 1731));
 }
 
-function testCopticgetMonLengthDec() {
+function testCopticGetMonLength13LeapYear() {
     var cal = new ilib.Cal.Coptic();
     
-    assertEquals(31, cal.getMonLength(12, 2011));
+    assertEquals(6, cal.getMonLength(13, 1731));
+}
+
+function testCopticGetMonLength13() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertEquals(5, cal.getMonLength(13, 1732));
 }
 
 function testCopticIsLeapYear() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(2012));
+    assertTrue(cal.isLeapYear(1731));
 }
 
-/*
-In the Coptic calendar, there is no year 0. The dates
-go from 2 BCE, 1 BCE, 1 CE, 2 CE, etc.
-Thus, year 4 is a leap year, and 4 years earlier was year
-1 BCE, which was also a leap year. 1 BCE is represented
-as -1 in our calculations.
-*/
-function testCopticIsLeapYearBCEFalse() {
+function testCopticIsLeapYear() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertFalse(cal.isLeapYear(1732));
+}
+
+function testCopticIsLeapYear() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertFalse(cal.isLeapYear(1733));
+}
+
+function testCopticIsLeapYear() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertFalse(cal.isLeapYear(1734));
+}
+
+function testCopticIsLeapYear() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertTrue(cal.isLeapYear(1735));
+}
+
+function testCopticIsLeapYearBM0() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertTrue(cal.isLeapYear(0));
+}
+
+function testCopticIsLeapYearBMMinus1() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertFalse(cal.isLeapYear(-1));
+}
+
+function testCopticIsLeapYearBMMinus2() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertFalse(cal.isLeapYear(-2));
+}
+
+function testCopticIsLeapYearBMMinus3() {
     var cal = new ilib.Cal.Coptic();
     
     assertFalse(cal.isLeapYear(-3));
 }
 
-function testCopticIsLeapYearBCETrue() {
+function testCopticIsLeapYearBMMinus4() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(-1));
+    assertTrue(cal.isLeapYear(-4));
 }
 
-function testCopticIsLeapYearNot() {
+function testCopticIsLeapYearOnMillenium() {
     var cal = new ilib.Cal.Coptic();
     
-    assertFalse(cal.isLeapYear(2011));
+    assertTrue(cal.isLeapYear(2003));
 }
 
-function testCopticIsLeapYearNotOnCentury1() {
+function testCopticIsLeapYearOnCentury0() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(1700));
+    assertTrue(cal.isLeapYear(1603));
 }
 
-function testCopticIsLeapYearNotOnCentury2() {
+function testCopticIsLeapYearOnCentury1() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(1800));
+    assertTrue(cal.isLeapYear(1703));
 }
 
-function testCopticIsLeapYearNotOnCentury3() {
+function testCopticIsLeapYearOnCentury2() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(1900));
+    assertTrue(cal.isLeapYear(1803));
+}
+
+function testCopticIsLeapYearOnCentury3() {
+    var cal = new ilib.Cal.Coptic();
+    
+    assertTrue(cal.isLeapYear(1903));
 }
 
 function testCopticIsLeapYearOnQuadCentennial() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(2000));
+    assertTrue(cal.isLeapYear(2003));
 }
 
 function testCopticNewDateInstance() {
@@ -166,5 +213,5 @@ function testCopticNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.JulDate);
+    assertTrue(d instanceof ilib.Date.CopticDate);
 }
