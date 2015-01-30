@@ -83,7 +83,7 @@ function testParseAddressSAOneLine() {
 
 
 function testParseAddressSANoDelimiters() {
-	var parsedAddress = new ilib.Address("السيد عبد الله ناصر مكة المكرمة ٢١۴۵۴ المملكة العربية السعودية", {locale: 'ar-SA'});
+	var parsedAddress = new ilib.Address("السيد عبد الله ناصر, مكة المكرمة ٢١۴۵۴ المملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله ناصر", parsedAddress.streetAddress);
@@ -139,4 +139,31 @@ function testFormatAddressSAFromUS() {
 	var expected = "السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nSAUDI ARABIA";
 	var formatter = new ilib.AddressFmt({locale: 'ar-SA'});
 	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testParseAddressSA1() {
+	var parsedAddress = new ilib.Address("Zakat & Income Tax Dept,RIYADH 11187, SAUDI ARABIA", {locale: 'en-US'});
+	
+	// the country name is in English because this address is for a contact in a US database
+		
+	assertNotUndefined(parsedAddress);
+	assertEquals("Zakat & Income Tax Dept", parsedAddress.streetAddress);
+	assertEquals("RIYADH", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("11187", parsedAddress.postalCode);
+	assertEquals("SAUDI ARABIA", parsedAddress.country);
+	assertEquals("SA", parsedAddress.countryCode);
+};
+
+function testParseAddressSA2() {
+	var parsedAddress = new ilib.Address("Mr. Ibrahim Mohamad, P.O. Box 56577, RIYADH 11564, SAUDI ARABIA", {locale: 'en-US'});
+	// the country name is in English because this address is for a contact in a US database
+		
+	assertNotUndefined(parsedAddress);
+	assertEquals("Mr. Ibrahim Mohamad, P.O. Box 56577", parsedAddress.streetAddress);
+	assertEquals("RIYADH", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("11564", parsedAddress.postalCode);
+	assertEquals("SAUDI ARABIA", parsedAddress.country);
+	assertEquals("SA", parsedAddress.countryCode);
 };

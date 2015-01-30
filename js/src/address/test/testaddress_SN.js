@@ -89,13 +89,13 @@ function testParseAddressSNSuperfluousWhitespace() {
 };
 
 function testParseAddressSNNoDelimiters() {
-	var parsedAddress = new ilib.Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE DAKAR Senegal", {locale: 'fr-SN'});
+	var parsedAddress = new ilib.Address("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE 12500 DAKAR Senegal", {locale: 'fr-SN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE", parsedAddress.streetAddress);
 	assertEquals("DAKAR", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("10000", parsedAddress.postalCode);
+	assertEquals("12500", parsedAddress.postalCode);
 	assertEquals("Senegal", parsedAddress.country);
 	assertEquals("SN", parsedAddress.countryCode);
 };
@@ -134,6 +134,40 @@ function testFormatAddressSNFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "La Poste Direction de la production postale 6 RUE ABDOULAYE SECK MARIE PÉRSINE\nDAKAR\nSenegal";
+	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testParseAddressSN1() {
+	var parsedAddress = new ilib.Address("Monsieur Amadou Diop, Résidence Fallou Ndiaye, Appartement 12, 12 Avenue Cheikh Anta Diop, 12500 Dakar, SENEGAL");
+	assertNotUndefined(parsedAddress);
+	assertEquals("Monsieur Amadou Diop, Résidence Fallou Ndiaye, Appartement 12, 12 Avenue Cheikh Anta Diop", parsedAddress.streetAddress);
+	assertEquals("Dakar", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("12500", parsedAddress.postalCode);
+	assertEquals("SENEGAL", parsedAddress.country);
+	assertEquals("SN", parsedAddress.countryCode);
+};
+
+function testParseAddressSN2() {
+	var parsedAddress = new ilib.Address("American Embassy Dakar, Route des Almadies, Dakar, Senegal");
+	assertNotUndefined(parsedAddress);
+	assertEquals("American Embassy Dakar, Route des Almadies", parsedAddress.streetAddress);
+	assertEquals("Dakar", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("Senegal", parsedAddress.country);
+	assertEquals("SN", parsedAddress.countryCode);
+};
+function testFormatAddressSN1() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Monsieur Amadou DIOP, Appartement 12, Résidence Fallou Ndiaye",
+		locality: "DAKAR",
+		postalCode: "12500",
+		country: "Senegal",
+		countryCode: "SN"
+	}, {locale: 'en-US'});
+	
+	var expected = "Monsieur Amadou DIOP, Appartement 12, Résidence Fallou Ndiaye\n12500 DAKAR\nSenegal";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
