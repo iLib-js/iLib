@@ -102,6 +102,10 @@ ilib.Locale = function(language, region, variant, script) {
 	        this.region = this.region || undefined;
 	        this.script = this.script || undefined;
 	        this.variant = this.variant || undefined;
+	        if (!this.region && this.language === "en") {
+	        	// special case for Opera
+	        	this.region = "US";
+	        }
 		} else if (typeof(spec) === 'object') {
 	        this.language = spec.language || undefined;
 	        this.region = spec.region || undefined;
