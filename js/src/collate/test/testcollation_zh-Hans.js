@@ -1485,3 +1485,79 @@ function testCollatorCaseMixedWithIndexMarkers_zh_Hans() {
 
     assertArrayEquals(expected, input);
 }
+
+
+function testCollatorHanziTones_zh_Hans() {
+	var col = new ilib.Collator({
+		locale: "zh-Hans-CN",
+		useNative: false,
+		sensitivity: "primary",
+		usage: "sort"
+	});
+    assertNotUndefined(col);
+    
+    var input = [
+		"鱼",
+		"闷",
+		"白",
+		"报",
+		"皮",
+		"孕",
+		"劈",
+		"被",
+		"伯",
+		"笨",
+ 		"耳",
+		"把",
+		"批",
+		"癖",
+		"勇",
+		"有",
+		"鬓",
+		"月",
+		"病",
+		"捕",
+		"美",
+		"办",
+		"别",
+		"谬",
+		"帮",
+		"崩",
+		"逼",
+	];
+
+    input.sort(col.getComparator());
+
+    var expected = [
+   		"帮", // "bāng"
+		"白", // "bái"
+		"把", // "bǎ"
+		"办", // "bàn"
+		"报", // "bào"
+		"崩", // "bēng"
+		"被", // "bèi"
+		"笨", // "bèn"
+		"逼", // "bī"
+		"鬓", // "bìn"
+		"病", // "bìng"
+		"别", // "bié"
+		"伯", // "bó"  
+		"捕", // "bǔ"
+		"耳", // "Ěr"
+		"美", // "měi"
+		"闷", // "mèn"
+		"谬", // "miù"
+		"批", // "pī"
+		"劈", // "pī"
+		"皮", // "pí"
+		"癖", // "pǐ"
+		"勇", // "yǒng"
+		"有", // "yǒu"
+		"鱼", // "yú" 
+		"孕", // "yùn"
+		"月"  // "yuè"
+	];
+
+    assertArrayEquals(expected, input);
+}
+
