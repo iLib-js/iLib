@@ -102,6 +102,72 @@ function testNumFmtNumberFormatWithMinFracDigits() {
     assertEquals("1.7500", fmt.format(1.75));
 }
 
+function testNumFmtNumberFormatWithMinFracDigitsTooSmall() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: -5
+    });
+    
+    assertNotNull(fmt);
+    
+    // lower bound is 0
+    assertEquals("1.75", fmt.format(1.75));
+}
+
+function testNumFmtNumberFormatWithMinFracDigitsTooSmallNoDigits() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: -5
+    });
+    
+    assertNotNull(fmt);
+    
+    // lower bound is 0
+    assertEquals("17,500", fmt.format(17500));
+}
+
+function testNumFmtNumberFormatWithMinFracDigitsTooBig() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: 25
+    });
+    
+    assertNotNull(fmt);
+
+    // limit to 20, but the precision is only to 16 so it is rounded and zero-padded at the end
+    assertEquals("1.01234567890123460000", fmt.format(1.012345678901234567890123456789));
+}
+
+function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooSmall() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: 3,
+        maxFractionDigits: 6
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.700", fmt.format(1.7));
+}
+
+function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooBig() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: 3,
+        maxFractionDigits: 6
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.765433", fmt.format(1.76543298765));
+}
+
+function testNumFmtNumberFormatWithMinAndMaxFracDigitsJustRight() {
+    var fmt = new ilib.NumFmt({
+        minFractionDigits: 3,
+        maxFractionDigits: 6
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.76543", fmt.format(1.76543));
+}
+
 function testNumFmtNumberGetMaxFracDigits() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2
@@ -194,6 +260,63 @@ function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
     assertEquals("1.23457e-6", fmt.format(0.0000012345678901234567890123456789));
 }
 
+function testNumFmtNumberStyleScientificWithMinFractionDigits() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        minFractionDigits: 5
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.23400e+28", fmt.format(12340000000000000000000000000.0));
+}
+
+function testNumFmtNumberStyleScientificWithMinFractionDigits() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        minFractionDigits: 1
+    });
+    
+    assertNotNull(fmt);
+    
+    // min of 1 means we can have more digits than one!
+    assertEquals("1.23456789e+28", fmt.format(12345678900000000000000000000.0));
+}
+
+function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmall() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        minFractionDigits: -2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.234e+20", fmt.format(123400000000000000000.0));
+}
+
+function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmallNoDigits() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        minFractionDigits: -2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1e+28", fmt.format(10000000000000000000000000000.0));
+}
+
+function testNumFmtNumberStyleScientificWithMinFractionDigitsTooBig() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        minFractionDigits: 25
+    });
+    
+    assertNotNull(fmt);
+    
+    // max is 20
+    assertEquals("1.23400000000000000000e+28", fmt.format(12340000000000000000000000000.0));
+}
+
 function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
     var fmt = new ilib.NumFmt({
         style: "scientific",
@@ -252,6 +375,42 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
     assertNotNull(fmt);
     
     assertEquals("1.235e+28", fmt.format(12345000000000000000000000000.0));
+}
+
+function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooSmall() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        maxFractionDigits: 5,
+        minFractionDigits: 3
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.200e-6", fmt.format(0.0000012));
+}
+
+function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooBig() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        maxFractionDigits: 5,
+        minFractionDigits: 3
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.23457e-6", fmt.format(0.00000123456789));
+}
+
+function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsJustRight() {
+    var fmt = new ilib.NumFmt({
+        style: "scientific",
+        maxFractionDigits: 5,
+        minFractionDigits: 3
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("1.2345e-6", fmt.format(0.0000012345));
 }
 
 function testNumFmtNumberStyleNogroupingInteger() {

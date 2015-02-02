@@ -177,6 +177,13 @@ ilib.NumFmt = function (options) {
 			 * @type {number|undefined} 
 			 */
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
+			// enforce the limits to avoid JS exceptions
+			if (this.minFractionDigits < 0) {
+				this.minFractionDigits = 0;
+			}
+			if (this.minFractionDigits > 20) {
+				this.minFractionDigits = 20;
+			}
 		}
 		if (options.style) {
 			/** 
@@ -398,26 +405,39 @@ ilib.NumFmt.prototype = {
 	_formatScientific: function (num) {
 		var n = new Number(num);
 		var formatted;
-		if (typeof (this.maxFractionDigits) !== 'undefined') {
-			// if there is fraction digits, round it to the right length first
-			// divide or multiply by 10 by manipulating the exponent so as to
-			// avoid the rounding errors of floating point numbers
-			var e,
-				factor,
-				str = n.toExponential(),
-				parts = str.split("e"),
-				significant = parts[0];
+		
+		var factor,
+			str = n.toExponential(),
+			parts = str.split("e"),
+			significant = parts[0],
+			exponent = parts[1],
+			numparts,
+			integral,
+			fraction;
 
-			e = parts[1];
+		if (this.maxFractionDigits > 0) {
+			// if there is a max fraction digits setting, round the fraction to 
+			// the right length first by dividing or multiplying by powers of 10. 
+			// manipulate the fraction digits so as to
+			// avoid the rounding errors of floating point numbers
 			factor = Math.pow(10, this.maxFractionDigits);
 			significant = this.round(significant * factor) / factor;
-			formatted = "" + significant + this.exponentSymbol + e;
-		} else {
-			formatted = n.toExponential(this.minFractionDigits);
-			if (this.exponentSymbol !== 'e') {
-				formatted = formatted.replace(/e/, this.exponentSymbol);
-			}
 		}
+		numparts = ("" + significant).split(".");
+		integral = numparts[0];
+		fraction = numparts[1];
+		
+		if (typeof(this.maxFractionDigits) !== 'undefined') {
+			fraction = fraction.substring(0, this.maxFractionDigits);
+		}
+		if (typeof(this.minFractionDigits) !== 'undefined') {
+			fraction = this._pad(fraction || "", this.minFractionDigits, false);
+		}
+		formatted = integral;
+		if (fraction.length) {
+			formatted += this.decimalSeparator + fraction;	
+		} 
+		formatted += this.exponentSymbol + exponent;
 		return formatted;
 	},
 
