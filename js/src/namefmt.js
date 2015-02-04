@@ -40,6 +40,8 @@ ctype.ispunct.js
  *     <li><i>short</i> - Format a short name with just the given and family names.
  *     <li><i>medium</i> - Format a medium-length name with the given, middle, and family names.
  *     <li><i>long</i> - Format a long name with all names available in the given name object, including
+ *     prefixes.
+ *     <li><i>full</i> - Format a long name with all names available in the given name object, including
  *     prefixes and suffixes.
  *   </ul>
  * <li><i>components</i> - Format the name with the given components in the correct
