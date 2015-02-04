@@ -17,6 +17,185 @@
  * limitations under the License.
  */
 
+function testEthiopicRataDieConstructor() {
+	var erd = new ilib.Date.EthiopicRataDie();
+	
+	assertNotNull(erd);
+}
+
+function testEthiopicRataDieConstructorComponents() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		year: 1,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(0, erd.getRD());
+}
+
+function testEthiopicRataDieConstructorComponentsBig() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		year: 2007,
+		month: 2,
+		day: 19,
+		hour: 12,
+		minute: 30,
+		second: 12,
+		millisecond: 0
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(733106.520972222, erd.getRD());
+}
+
+function testEthiopicRataDieConstructorRD() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		rd: 732323.2342345
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(732323.2342345, erd.getRD());
+}
+
+function testEthiopicRataDieConstructorUnixtime() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		unixtime: 0
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(716364.708333333, erd.getRD());
+}
+
+function testEthiopicRataDieConstructorRD() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 1724220.7916666666667 + 734564 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(734564, erd.getRD());
+}
+
+function testEthiopicRataDieGetJulianDay1() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 1724220.7916666666667 + 734564 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(1724220.7916666666667 + 734564, erd.getJulianDay());
+}
+
+function testEthiopicRataDieGetJulianDay2() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		unixtime: 0 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(2440587.5, erd.getJulianDay());
+}
+
+function testEthiopicRataDieGetJulianDay3() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		rd: 0 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(1724220.7916666666667, erd.getJulianDay());
+}
+
+function testEthiopicRataDieGetTime1() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		unixtime: 0 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(0, erd.getTime());
+}
+
+function testEthiopicRataDieGetTime2() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2440587.5
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(0, erd.getTime());
+}
+
+function testEthiopicRataDieGetTimeTooSmall() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2440586.5
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(-1, erd.getTime());
+}
+
+function testEthiopicRataDieGetTimeTooBig() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2465443.634803241
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(-1, erd.getTimeExtended());
+}
+
+function testEthiopicRataDieGetTimeExtended1() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		unixtime: 0 
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(0, erd.getTimeExtended());
+}
+
+function testEthiopicRataDieGetTimeExtended2() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2440587.5
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(0, erd.getTimeExtended());
+}
+
+function testEthiopicRataDieGetTimeExtendedTooSmallForRegularGetTime() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2440586.5
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(-86400000, erd.getTimeExtended());
+}
+
+function testEthiopicRataDieGetTimeExtendedTooBigForRegularGetTime() {
+	var erd = new ilib.Date.EthiopicRataDie({
+		julianday: 2465443.634803241
+	});
+	
+	assertNotNull(erd);
+	
+	assertEquals(2147570047000, erd.getTimeExtended());
+}
+
+
 function testEthiopicDateConstructor() {
 	var ed = new ilib.Date.EthiopicDate();
 	
