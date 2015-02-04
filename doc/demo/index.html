@@ -116,7 +116,7 @@ $(function() {
             setupCalendarPicker();
             break;
         case 'DateFmtRange':
-            setupRangePicker(res.getString("Start"), res.getString("End"), res.getString("Julian Day"));
+            setupRangePicker(res.getString("Start"), res.getString("End"), res.getString("Julian Day"), res.getString("Unix Time"));
             break;
         case 'RelativeDate':
             setupRangePicker(res.getString("Reference Date"), res.getString("Relative Date"));
@@ -224,12 +224,17 @@ $(function() {
             var date,
                 cal = ilib.Cal.newInstance({
                     locale: localeName,
-                    type: (calendar === "julianday") ? "gregorian" : calendar
+                    type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
                 });
                 
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
                 	julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                	unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
@@ -252,6 +257,7 @@ $(function() {
             
             switch (calendar) {
                 case "julianday":
+                case "unixtime":
                 case "gregorian":
                     break;
                     
@@ -292,15 +298,21 @@ $(function() {
                 
             cal = ilib.Cal.newInstance({
                 locale: localeName,
-                type: (calendar === "julianday") ? "gregorian" : calendar
+                type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
             });
             
             if (calendar === 'julianday') {
                 jd = $('#julianday').val();
                 date = cal.newDateInstance({
                     julianday: jd,
-                    timezone: timezone
+                    timezone: "Etc/UTC"
                 });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                    unixtime: $('#unixtime').val(),
+                    timezone: "Etc/UTC"
+                });
+                jd = date.getJulianDay();
             } else {
                 date = cal.newDateInstance({
                     year: $('#year').val(),
@@ -324,8 +336,11 @@ $(function() {
                 jd: jd
             });
             output += res.getString('Unix time: {t} <br/>').format({
-            	 t: date.getTime()
+            	t: date.getTime()
             });
+            output += res.getString('Extended unix time: {t} <br/>').format({
+				t: date.getTimeExtended()
+			});
             
             $.each(calendarList, function(key, calendar) {
                 cal = ilib.Cal.newInstance({
@@ -343,7 +358,7 @@ $(function() {
                 });
                 date = cal.newDateInstance({
                     julianday: jd,
-                    timezone: timezone
+                    timezone: "Etc/UTC"
                 });
                 
                 output += res.getString('Calendar {cal}: {formattedDate} <br/>').format({
@@ -372,6 +387,11 @@ $(function() {
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
                     julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                    julianday: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
@@ -622,7 +642,12 @@ $(function() {
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
                     julianday: $('#julianday').val(),
-                    timezone: timezone
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                	unixtime: $('#unixtime').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -786,7 +811,13 @@ $(function() {
             
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
-                    julianday: $('#julianday').val()
+                    julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                	unixtime: $('#unixtime').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -796,7 +827,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone !== "none" ? timezone : undefined
                 });
             }
             
@@ -832,6 +864,11 @@ $(function() {
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
                     julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                	unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
@@ -876,6 +913,11 @@ $(function() {
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
                     julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
+                });
+            } else if (calendar === 'unixtime') {
+                date = cal.newDateInstance({
+                	unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
@@ -1461,10 +1503,22 @@ $(document).ready(function () {
                                 </div>
                             </div>                          
                         </div>
+						<div id="chineseCyclesPicker" style="display: none">
+                            <div>
+                            	<label for="cycle">Cycle:</label>
+                             	<input type="text" name="cycle" id="cycle"/>
+                            </div>
+                            <div>
+                            	<label for="cycleyear">Cycle Year:</label>
+                             	<input type="text" name="cycleYear" id="cycleYear"/>
+                            </div>
+                        </div>
                         <div id='yearMonthPicker' style="display: none">
                             <div>
-                                <label for="year">Year:</label>
-                                <input type="text" name="year" id="year"/>
+                            	<span>
+	                                <label for="year">Year:</label>
+	                                <input type="text" name="year" id="year"/>
+                                </span>
                             </div>
                             <div>
                                 <label for="month">Month:</label>
@@ -1507,6 +1561,12 @@ $(document).ready(function () {
                             <div>
                                 <label for="julianday">Julian Day:</label>
                                 <input type="text" name="julianday" id="julianday"/>
+                            </div>
+                        </div>
+                        <div id="utpicker" style="display: none">
+                            <div>
+                                <label for="unixtime">Unix Time:</label>
+                                <input type="text" name="unixtime" id="unixtime"/>
                             </div>
                         </div>
                         <div id="rangePicker" style="display: none">
