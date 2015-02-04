@@ -88,12 +88,12 @@ ilib.Date.EthiopicRataDie.prototype.constructor = ilib.Date.EthiopicRataDie;
 
 /**
  * The difference between the zero Julian day and the first Ethiopic date
- * of Friday, July 16, 622 CE Gregorian. 
+ * of Friday, August 29, 8 CE Julian at 7:00am UTC. 
  * @private
  * @const
  * @type number
  */
-ilib.Date.EthiopicRataDie.prototype.epoch = 1721422.5;
+ilib.Date.EthiopicRataDie.prototype.epoch = 1724220.791666666667;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the

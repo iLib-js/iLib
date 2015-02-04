@@ -88,12 +88,12 @@ ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
 
 /**
  * The difference between the zero Julian day and the first Coptic date
- * of Friday, July 16, 622 CE Gregorian. 
+ * of Friday, August 29, 284 CE Julian at 7:00am UTC. 
  * @private
  * @const
  * @type number
  */
-ilib.Date.CopticRataDie.prototype.epoch = 1721422.5;
+ilib.Date.CopticRataDie.prototype.epoch = 1825029.7916666667;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
