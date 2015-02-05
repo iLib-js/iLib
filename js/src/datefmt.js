@@ -702,7 +702,7 @@ ilib.DateFmt.prototype = {
 	 * @return {string|undefined} the requested format
 	 */
 	_getFormat: function getFormat(obj, components, length) {
-		if (typeof(components) !== 'undefined' && obj[components]) {
+		if (typeof(components) !== 'undefined' && obj && obj[components]) {
 			return this._getLengthFormat(obj[components], length);
 		}
 		return undefined;
