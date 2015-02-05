@@ -18,7 +18,7 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
+/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js calendar/ethiopic.js */
 
 /**
  * @class
@@ -107,7 +107,7 @@ ilib.Cal.Coptic.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Coptic.prototype.newDateInstance = function (options) {
-	return new ilib.Date.JulDate(options);
+	return new ilib.Date.CopticDate(options);
 };
 
 /* register this calendar for the factory method */

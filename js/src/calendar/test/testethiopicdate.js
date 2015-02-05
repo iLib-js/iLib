@@ -36,7 +36,7 @@ function testEthiopicRataDieConstructorComponents() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(0, erd.getRD());
+	assertEquals(0, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorComponentsBig() {
@@ -52,7 +52,7 @@ function testEthiopicRataDieConstructorComponentsBig() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(733106.520972222, erd.getRD());
+	assertEquals(733106.520972222, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -62,7 +62,7 @@ function testEthiopicRataDieConstructorRD() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(732323.2342345, erd.getRD());
+	assertEquals(732323.2342345, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorUnixtime() {
@@ -72,7 +72,7 @@ function testEthiopicRataDieConstructorUnixtime() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(716364.708333333, erd.getRD());
+	assertEquals(716364.708333333, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -82,7 +82,7 @@ function testEthiopicRataDieConstructorRD() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(734564, erd.getRD());
+	assertEquals(734564, erd.getRataDie());
 }
 
 function testEthiopicRataDieGetJulianDay1() {
@@ -663,7 +663,7 @@ function testEthiopicDateTestGetTime() {
 		year: 1961,
 		month: 3,
 		day: 19,
-		hour: 20,		// 20:30 ethopic time = 3:30am gregorian time
+		hour: 20,		// 20:30 ethiopic time = 3:30am gregorian time
 		minute: 30,
         timezone: "Etc/UTC"
 	});

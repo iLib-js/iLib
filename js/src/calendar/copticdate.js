@@ -25,6 +25,7 @@ util/search.js
 util/math.js
 localeinfo.js 
 julianday.js 
+calendar/ethiopicdate.js
 */
 
 /**
