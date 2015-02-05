@@ -36,18 +36,19 @@ ilib.Cal.Ethiopic = function() {
 
 /* the lengths of each month */
 ilib.Cal.Ethiopic.monthLengths = [
-	31,  /* Jan */
-	28,  /* Feb */
-	31,  /* Mar */
+	30,  /* Jan */
+	30,  /* Feb */
+	30,  /* Mar */
 	30,  /* Apr */
-	31,  /* May */
+	30,  /* May */
 	30,  /* Jun */
-	31,  /* Jul */
-	31,  /* Aug */
+	30,  /* Jul */
+	30,  /* Aug */
 	30,  /* Sep */
-	31,  /* Oct */
+	30,  /* Oct */
 	30,  /* Nov */
-	31   /* Dec */
+	30,  /* Dec */
+	5    /* 13th */
 ];
 
 /**
@@ -72,10 +73,10 @@ ilib.Cal.Ethiopic.prototype.getNumMonths = function(year) {
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Ethiopic.prototype.getMonLength = function(month, year) {
-	if (month !== 2 || !this.isLeapYear(year)) {
+	if (month !== 13 || !this.isLeapYear(year)) {
 		return ilib.Cal.Ethiopic.monthLengths[month-1];
 	} else {
-		return 29;
+		return 6;
 	}
 };
 
@@ -87,7 +88,7 @@ ilib.Cal.Ethiopic.prototype.getMonLength = function(month, year) {
  */
 ilib.Cal.Ethiopic.prototype.isLeapYear = function(year) {
 	var y = (typeof(year) === 'number' ? year : year.year);
-	return ilib.mod(y, 4) === ((year > 0) ? 0 : 3);
+	return ilib.mod(y, 4) === 3;
 };
 
 /**
@@ -107,7 +108,7 @@ ilib.Cal.Ethiopic.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Ethiopic.prototype.newDateInstance = function (options) {
-	return new ilib.Date.JulDate(options);
+	return new ilib.Date.EthiopicDate(options);
 };
 
 /* register this calendar for the factory method */
