@@ -59,7 +59,7 @@ ilib.Cal.Ethiopic.monthLengths = [
  * @param {number} year a year for which the number of months is sought
  */
 ilib.Cal.Ethiopic.prototype.getNumMonths = function(year) {
-	return 12;
+	return 13;
 };
 
 /**
