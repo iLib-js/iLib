@@ -111,7 +111,7 @@ ilib.Date.ThaiSolarDate = function(params) {
 	}
 };
 
-ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
+ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate({noinstance: true});
 ilib.Date.ThaiSolarDate.prototype.parent = ilib.Date.GregDate.prototype;
 ilib.Date.ThaiSolarDate.prototype.constructor = ilib.Date.ThaiSolarDate;
 
