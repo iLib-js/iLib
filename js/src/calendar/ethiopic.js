@@ -55,7 +55,7 @@ ilib.Cal.Ethiopic.monthLengths = [
  * Return the number of months in the given year. The number of months in a year varies
  * for lunar calendars because in some years, an extra month is needed to extend the 
  * days in a year to an entire solar year. The month is represented as a 1-based number
- * where 1=Jaunary, 2=February, etc. until 12=December.
+ * where 1=Thoout, 2=Paope, etc. until 13=Epagomene.
  * 
  * @param {number} year a year for which the number of months is sought
  */

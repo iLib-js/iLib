@@ -141,13 +141,13 @@ function testEthiopicIsLeapYear() {
 function testEthiopicIsLeapYearBM0() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(0));
+    assertFalse(cal.isLeapYear(0));
 }
 
 function testEthiopicIsLeapYearBMMinus1() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertFalse(cal.isLeapYear(-1));
+    assertTrue(cal.isLeapYear(-1));
 }
 
 function testEthiopicIsLeapYearBMMinus2() {
@@ -165,7 +165,7 @@ function testEthiopicIsLeapYearBMMinus3() {
 function testEthiopicIsLeapYearBMMinus4() {
     var cal = new ilib.Cal.Ethiopic();
     
-    assertTrue(cal.isLeapYear(-4));
+    assertFalse(cal.isLeapYear(-4));
 }
 
 function testEthiopicIsLeapYearOnMillenium() {
