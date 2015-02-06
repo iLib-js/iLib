@@ -340,7 +340,7 @@ ilib.NameFmt.prototype = {
 		} else {
 			isAsianName = true;
 			modified = name;
-			if (currentLanguage === "ko" && this.info.honorifics.indexOf(name.suffix) == -1) {
+			if (modified.suffix && currentLanguage === "ko" && this.info.honorifics.indexOf(name.suffix) == -1) {
 				modified.suffix = ' ' + modified.suffix; 
 			}
 		}

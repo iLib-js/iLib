@@ -473,3 +473,29 @@ function testFormatWithCopyConstructor_ko_KR() {
 	
 	assertEquals(expected, formatted);
 };
+
+function testFormatWithfullStyleWithoutSuffix1_ko_KR() {
+	var name = new ilib.Name("홍길동", {locale: "ko-KR"});
+
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동";
+	
+	assertEquals(expected, formatted);
+};
+
+function testFormatWithfullStyleWithoutSuffix2_ko_KR() {
+	var name = new ilib.Name({
+		givenName: "길동",
+		familyName: "홍"
+	});	
+	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
+	var formatted = fmt.format(name);
+	assertNotUndefined(formatted);
+	
+	var expected = "홍길동";
+	
+	assertEquals(expected, formatted);
+};
