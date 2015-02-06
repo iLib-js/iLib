@@ -34,23 +34,6 @@ ilib.Cal.Ethiopic = function() {
 	this.type = "ethiopic";
 };
 
-/* the lengths of each month */
-ilib.Cal.Ethiopic.monthLengths = [
-	30,  /* Jan */
-	30,  /* Feb */
-	30,  /* Mar */
-	30,  /* Apr */
-	30,  /* May */
-	30,  /* Jun */
-	30,  /* Jul */
-	30,  /* Aug */
-	30,  /* Sep */
-	30,  /* Oct */
-	30,  /* Nov */
-	30,  /* Dec */
-	5    /* 13th */
-];
-
 /**
  * Return the number of months in the given year. The number of months in a year varies
  * for lunar calendars because in some years, an extra month is needed to extend the 
@@ -73,10 +56,10 @@ ilib.Cal.Ethiopic.prototype.getNumMonths = function(year) {
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Ethiopic.prototype.getMonLength = function(month, year) {
-	if (month !== 13 || !this.isLeapYear(year)) {
-		return ilib.Cal.Ethiopic.monthLengths[month-1];
+	if (month < 13) {
+		return 30;
 	} else {
-		return 6;
+		return this.isLeapYear(year) ? 6 : 5;
 	}
 };
 

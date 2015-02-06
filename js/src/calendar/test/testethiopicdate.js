@@ -36,7 +36,7 @@ function testEthiopicRataDieConstructorComponents() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(0, erd.getRataDie());
+	assertEquals(1, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorComponentsBig() {
@@ -52,7 +52,7 @@ function testEthiopicRataDieConstructorComponentsBig() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(733106.520972222, erd.getRataDie());
+	assertEquals(732740.520972222, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -72,7 +72,7 @@ function testEthiopicRataDieConstructorUnixtime() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(716364.708333333, erd.getRataDie());
+	assertEquals(716366.708333333, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -152,7 +152,7 @@ function testEthiopicRataDieGetTimeTooBig() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(-1, erd.getTimeExtended());
+	assertEquals(-1, erd.getTime());
 }
 
 function testEthiopicRataDieGetTimeExtended1() {
@@ -212,7 +212,7 @@ function testEthiopicDateConstructorFromJD() {
     assertEquals('object', typeof(ed));
     assertEquals(2, ed.getYears());
     assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(2, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -221,14 +221,14 @@ function testEthiopicDateConstructorFromJD() {
 
 function testEthiopicDateConstructorUnixTime() {
     var ed = new ilib.Date.EthiopicDate({
-    	unixtime: 0,
+    	unixtime: 0, // rd = 716366.708333333
 		timezone: "Etc/UTC"
     });
     assertNotNull(ed);
     
-    assertEquals("year", 1961, ed.getYears());
-    assertEquals("month", 3, ed.getMonths());
-    assertEquals("day", 19, ed.getDays());
+    assertEquals("year", 1962, ed.getYears());
+    assertEquals("month", 4, ed.getMonths());
+    assertEquals("day", 23, ed.getDays());
     assertEquals("hour", 17, ed.getHours());
     assertEquals("minute", 0, ed.getMinutes());
     assertEquals("second", 0, ed.getSeconds());
@@ -647,9 +647,9 @@ function testEthiopicDateSetMilliseconds() {
 
 function testEthiopicDateTestGetTimeZero() {
     var ed = new ilib.Date.EthiopicDate({
-		year: 1961,
-		month: 3,
-		day: 19,
+		year: 1962,
+		month: 4,
+		day: 23,
 		hour: 17,
         timezone: "Etc/UTC"
 	});
@@ -660,9 +660,9 @@ function testEthiopicDateTestGetTimeZero() {
 
 function testEthiopicDateTestGetTime() {
     var ed = new ilib.Date.EthiopicDate({
-		year: 1961,
-		month: 3,
-		day: 19,
+		year: 1962,
+		month: 4,
+		day: 23,
 		hour: 20,		// 20:30 ethiopic time = 3:30am gregorian time
 		minute: 30,
         timezone: "Etc/UTC"
@@ -674,9 +674,9 @@ function testEthiopicDateTestGetTime() {
 
 function testEthiopicDateTestGetTimeTooEarly() {
     var ed = new ilib.Date.EthiopicDate({
-		year: 1961,
-		month: 3,
-		day: 19,
+		year: 1962,
+		month: 4,
+		day: 23,
 		hour: 16,
 		timezone: "Etc/UTC"
 	});
@@ -719,9 +719,9 @@ function testEthiopicDateTestGetTimeExtendedNotTooLate() {
 
 function testEthiopicDateTestSetTime1() {
     var ed = new ilib.Date.EthiopicDate({
-		year: 1961,
-		month: 3,
-		day: 19,
+		year: 1962,
+		month: 4,
+		day: 23,
 		hour: 17,
         timezone: "Etc/UTC"
     });
@@ -730,9 +730,9 @@ function testEthiopicDateTestSetTime1() {
     
     ed.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
-    assertEquals(1961, ed.getYears());
-    assertEquals(3, ed.getMonths());
-    assertEquals(23, ed.getDays());
+    assertEquals(1962, ed.getYears());
+    assertEquals(4, ed.getMonths());
+    assertEquals(26, ed.getDays());
     assertEquals(1, ed.getHours());
     assertEquals(30, ed.getMinutes());
     assertEquals(3, ed.getSeconds());
@@ -753,9 +753,9 @@ function testEthiopicDateTestSetTimeZero() {
     
     ed.setTime(0);
     
-    assertEquals(1961, ed.getYears());
-    assertEquals(3, ed.getMonths());
-    assertEquals(19, ed.getDays());
+    assertEquals(1962, ed.getYears());
+    assertEquals(4, ed.getMonths());
+    assertEquals(23, ed.getDays());
     assertEquals(17, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());

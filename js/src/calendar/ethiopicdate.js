@@ -105,8 +105,7 @@ ilib.Date.EthiopicRataDie.prototype.epoch = 1724220.791666666667;
 ilib.Date.EthiopicRataDie.prototype._setDateComponents = function(date) {
 	var year = date.year;
 	var years = 365 * (year - 1) + Math.floor(year/4);
-	var dayInYear = (date.month > 1 ? ilib.Date.EthiopicDate.cumMonthLengths[date.month-1] : 0) +
-		date.day;
+	var dayInYear = (date.month-1) * 30 + date.day;
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -133,8 +132,7 @@ ilib.Date.EthiopicRataDie.prototype._setDateComponents = function(date) {
  * <li><i>unixtime<i> - sets the time of this instance according to the given 
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970 (Gregorian).
  * <li><i>julianday</i> - the Julian Day to set into this date
- * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping the zero 
- * year which doesn't exist in the Ethiopic calendar
+ * <li><i>year</i> - any integer
  * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
  * <li><i>day</i> - 1 to 31
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
@@ -265,52 +263,6 @@ ilib.Date.EthiopicDate.prototype.parent = ilib.Date;
 ilib.Date.EthiopicDate.prototype.constructor = ilib.Date.EthiopicDate;
 
 /**
- * the cumulative lengths of each month, for a non-leap year 
- * @private
- * @const
- * @type Array.<number>
- */
-ilib.Date.EthiopicDate.cumMonthLengths = [
-    0,   /* Jan */
-	30,  /* Feb */
-	60,  /* Mar */
-	90,  /* Apr */
-	120, /* May */
-	150, /* Jun */
-	180, /* Jul */
-	210, /* Aug */
-	240, /* Sep */
-	270, /* Oct */
-	300, /* Nov */
-	330, /* Dec */
-	360, /* 13th */
-	365
-];
-
-/**
- * the cumulative lengths of each month, for a leap year 
- * @private
- * @const
- * @type Array.<number>
- */
-ilib.Date.EthiopicDate.cumMonthLengthsLeap = [
-    0,   /* Jan */
-	30,  /* Feb */
-	60,  /* Mar */
-	90,  /* Apr */
-	120, /* May */
-	150, /* Jun */
-	180, /* Jul */
-	210, /* Aug */
-	240, /* Sep */
-	270, /* Oct */
-	300, /* Nov */
-	330, /* Dec */
-	360, /* 13th */
-	366
-];
-
-/**
  * Return a new RD for this date type using the given params.
  * @protected
  * @param {Object=} params the parameters used to create this rata die instance
@@ -370,12 +322,8 @@ ilib.Date.EthiopicDate.prototype._calcDateComponents = function () {
 	});
 	remainder = rd + 1 - jan1.getRataDie();
 	
-	cumulative = this.cal.isLeapYear(this.year) ? 
-		ilib.Date.EthiopicDate.cumMonthLengthsLeap : 
-		ilib.Date.EthiopicDate.cumMonthLengths; 
-	
-	this.month = ilib.bsearch(Math.floor(remainder), cumulative);
-	remainder = remainder - cumulative[this.month-1];
+	this.month = Math.floor(remainder/30) + 1;
+	remainder = remainder - (this.month-1) * 30;
 	
 	this.day = Math.floor(remainder);
 	remainder -= this.day;

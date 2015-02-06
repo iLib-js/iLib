@@ -152,7 +152,7 @@ function testCopticRataDieGetTimeTooBig() {
 	
 	assertNotNull(crd);
 	
-	assertEquals(-1, crd.getTimeExtended());
+	assertEquals(-1, erd.getTime());
 }
 
 function testCopticRataDieGetTimeExtended1() {
@@ -212,7 +212,7 @@ function testCopticDateConstructorFromJD() {
     assertEquals('object', typeof(cd));
     assertEquals(2, cd.getYears());
     assertEquals(1, cd.getMonths());
-    assertEquals(1, cd.getDays());
+    assertEquals(2, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -226,9 +226,9 @@ function testCopticDateConstructorUnixTime() {
     });
     assertNotNull(cd);
     
-    assertEquals("year", 1685, cd.getYears());
-    assertEquals("month", 3, cd.getMonths());
-    assertEquals("day", 19, cd.getDays());
+    assertEquals("year", 1686, cd.getYears());
+    assertEquals("month", 4, cd.getMonths());
+    assertEquals("day", 23, cd.getDays());
     assertEquals("hour", 17, cd.getHours());
     assertEquals("minute", 0, cd.getMinutes());
     assertEquals("second", 0, cd.getSeconds());
@@ -647,9 +647,9 @@ function testCopticDateSetMilliseconds() {
 
 function testCopticDateTestGetTimeZero() {
     var cd = new ilib.Date.CopticDate({
-		year: 1685,
-		month: 3,
-		day: 19,
+		year: 1686,
+		month: 4,
+		day: 23,
 		hour: 17,
         timezone: "Etc/UTC"
 	});
@@ -660,9 +660,9 @@ function testCopticDateTestGetTimeZero() {
 
 function testCopticDateTestGetTime() {
     var cd = new ilib.Date.CopticDate({
-		year: 1685,
-		month: 3,
-		day: 19,
+		year: 1686,
+		month: 4,
+		day: 23,
 		hour: 20,		// 20:30 coptic time = 3:30am gregorian time
 		minute: 30,
         timezone: "Etc/UTC"
@@ -674,9 +674,9 @@ function testCopticDateTestGetTime() {
 
 function testCopticDateTestGetTimeTooEarly() {
     var cd = new ilib.Date.CopticDate({
-		year: 1685,
-		month: 3,
-		day: 19,
+		year: 1686,
+		month: 4,
+		day: 23,
 		hour: 16,
 		timezone: "Etc/UTC"
 	});
@@ -719,9 +719,9 @@ function testCopticDateTestGetTimeExtendedNotTooLate() {
 
 function testCopticDateTestSetTime1() {
     var cd = new ilib.Date.CopticDate({
-		year: 1685,
-		month: 3,
-		day: 19,
+		year: 1686,
+		month: 4,
+		day: 23,
 		hour: 17,
         timezone: "Etc/UTC"
     });
@@ -731,8 +731,8 @@ function testCopticDateTestSetTime1() {
     cd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
     assertEquals(1685, cd.getYears());
-    assertEquals(3, cd.getMonths());
-    assertEquals(23, cd.getDays());
+    assertEquals(4, cd.getMonths());
+    assertEquals(26, cd.getDays());
     assertEquals(1, cd.getHours());
     assertEquals(30, cd.getMinutes());
     assertEquals(3, cd.getSeconds());
@@ -753,9 +753,9 @@ function testCopticDateTestSetTimeZero() {
     
     cd.setTime(0);
     
-    assertEquals(1685, cd.getYears());
-    assertEquals(3, cd.getMonths());
-    assertEquals(19, cd.getDays());
+    assertEquals(1686, cd.getYears());
+    assertEquals(4, cd.getMonths());
+    assertEquals(23, cd.getDays());
     assertEquals(17, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
