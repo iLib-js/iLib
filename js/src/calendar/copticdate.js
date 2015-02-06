@@ -262,7 +262,7 @@ ilib.Date.CopticDate = function(params) {
 	}
 };
 
-ilib.Date.CopticDate.prototype = new ilib.Date();
+ilib.Date.CopticDate.prototype = new ilib.Date({noinstance: true });
 ilib.Date.CopticDate.prototype.parent = ilib.Date;
 ilib.Date.CopticDate.prototype.constructor = ilib.Date.CopticDate;
 

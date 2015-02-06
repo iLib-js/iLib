@@ -103,11 +103,10 @@ ilib.Date.EthiopicRataDie.prototype.epoch = 1724220.791666666667;
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.EthiopicRataDie.prototype._setDateComponents = function(date) {
-	var year = date.year + ((date.year < 0) ? 1 : 0);
-	var years = 365 * (year - 1) + Math.floor((year-1)/4);
+	var year = date.year;
+	var years = 365 * (year - 1) + Math.floor(year/4);
 	var dayInYear = (date.month > 1 ? ilib.Date.EthiopicDate.cumMonthLengths[date.month-1] : 0) +
-		date.day +
-		(this.cal.isLeapYear(date.year) && date.month > 2 ? 1 : 0);
+		date.day;
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -261,7 +260,7 @@ ilib.Date.EthiopicDate = function(params) {
 	}
 };
 
-ilib.Date.EthiopicDate.prototype = new ilib.Date();
+ilib.Date.EthiopicDate.prototype = new ilib.Date({noinstance: true });
 ilib.Date.EthiopicDate.prototype.parent = ilib.Date;
 ilib.Date.EthiopicDate.prototype.constructor = ilib.Date.EthiopicDate;
 
@@ -273,17 +272,18 @@ ilib.Date.EthiopicDate.prototype.constructor = ilib.Date.EthiopicDate;
  */
 ilib.Date.EthiopicDate.cumMonthLengths = [
     0,   /* Jan */
-	31,  /* Feb */
-	59,  /* Mar */
+	30,  /* Feb */
+	60,  /* Mar */
 	90,  /* Apr */
 	120, /* May */
-	151, /* Jun */
-	181, /* Jul */
-	212, /* Aug */
-	243, /* Sep */
-	273, /* Oct */
-	304, /* Nov */
-	334, /* Dec */
+	150, /* Jun */
+	180, /* Jul */
+	210, /* Aug */
+	240, /* Sep */
+	270, /* Oct */
+	300, /* Nov */
+	330, /* Dec */
+	360, /* 13th */
 	365
 ];
 
@@ -294,18 +294,19 @@ ilib.Date.EthiopicDate.cumMonthLengths = [
  * @type Array.<number>
  */
 ilib.Date.EthiopicDate.cumMonthLengthsLeap = [
-	0,   /* Jan */
-	31,  /* Feb */
+    0,   /* Jan */
+	30,  /* Feb */
 	60,  /* Mar */
-	91,  /* Apr */
-	121, /* May */
-	152, /* Jun */
-	182, /* Jul */
-	213, /* Aug */
-	244, /* Sep */
-	274, /* Oct */
-	305, /* Nov */
-	335, /* Dec */
+	90,  /* Apr */
+	120, /* May */
+	150, /* Jun */
+	180, /* Jul */
+	210, /* Aug */
+	240, /* Sep */
+	270, /* Oct */
+	300, /* Nov */
+	330, /* Dec */
+	360, /* 13th */
 	366
 ];
 
@@ -326,9 +327,9 @@ ilib.Date.EthiopicDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 ilib.Date.EthiopicDate.prototype._calcYear = function(rd) {
-	var year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
+	var year = Math.floor((4*(Math.floor(rd)-1) + 1463)/1461);
 	
-	return (year <= 0) ? year - 1 : year;
+	return year;
 };
 
 /**
