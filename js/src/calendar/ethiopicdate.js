@@ -258,7 +258,7 @@ ilib.Date.EthiopicDate = function(params) {
 	}
 };
 
-ilib.Date.EthiopicDate.prototype = new ilib.Date({noinstance: true });
+ilib.Date.EthiopicDate.prototype = new ilib.Date({ noinstance: true });
 ilib.Date.EthiopicDate.prototype.parent = ilib.Date;
 ilib.Date.EthiopicDate.prototype.constructor = ilib.Date.EthiopicDate;
 

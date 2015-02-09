@@ -141,13 +141,13 @@ function testCopticIsLeapYear() {
 function testCopticIsLeapYearBM0() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(0));
+    assertFalse(cal.isLeapYear(0));
 }
 
 function testCopticIsLeapYearBMMinus1() {
     var cal = new ilib.Cal.Coptic();
     
-    assertFalse(cal.isLeapYear(-1));
+    assertTrue(cal.isLeapYear(-1));
 }
 
 function testCopticIsLeapYearBMMinus2() {
@@ -165,7 +165,7 @@ function testCopticIsLeapYearBMMinus3() {
 function testCopticIsLeapYearBMMinus4() {
     var cal = new ilib.Cal.Coptic();
     
-    assertTrue(cal.isLeapYear(-4));
+    assertFalse(cal.isLeapYear(-4));
 }
 
 function testCopticIsLeapYearOnMillenium() {

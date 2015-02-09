@@ -83,8 +83,8 @@ ilib.Date.CopticRataDie = function(params) {
 	ilib.Date.RataDie.call(this, params);
 };
 
-ilib.Date.CopticRataDie.prototype = new ilib.Date.RataDie();
-ilib.Date.CopticRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.CopticRataDie.prototype = new ilib.Date.EthiopicRataDie();
+ilib.Date.CopticRataDie.prototype.parent = ilib.Date.EthiopicRataDie;
 ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
 
 /**
@@ -95,36 +95,6 @@ ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
  * @type number
  */
 ilib.Date.CopticRataDie.prototype.epoch = 1825029.7916666667;
-
-/**
- * Calculate the Rata Die (fixed day) number of the given date from the
- * date components.
- * 
- * @protected
- * @param {Object} date the date components to calculate the RD from
- */
-ilib.Date.CopticRataDie.prototype._setDateComponents = function(date) {
-	var year = date.year + ((date.year < 0) ? 1 : 0);
-	var years = 365 * (year - 1) + Math.floor((year-1)/4);
-	var dayInYear = (date.month > 1 ? ilib.Date.CopticDate.cumMonthLengths[date.month-1] : 0) +
-		date.day +
-		(this.cal.isLeapYear(date.year) && date.month > 2 ? 1 : 0);
-	var rdtime = (date.hour * 3600000 +
-		date.minute * 60000 +
-		date.second * 1000 +
-		date.millisecond) / 
-		86400000;
-	
-	/*
-	console.log("calcRataDie: converting " +  JSON.stringify(parts));
-	console.log("getRataDie: year is " +  years);
-	console.log("getRataDie: day in year is " +  dayInYear);
-	console.log("getRataDie: rdtime is " +  rdtime);
-	console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
-	*/
-	
-	this.rd = years + dayInYear + rdtime;
-};
 
 /**
  * @class
@@ -262,53 +232,9 @@ ilib.Date.CopticDate = function(params) {
 	}
 };
 
-ilib.Date.CopticDate.prototype = new ilib.Date({noinstance: true });
+ilib.Date.CopticDate.prototype = new ilib.Date({ noinstance: true });
 ilib.Date.CopticDate.prototype.parent = ilib.Date;
 ilib.Date.CopticDate.prototype.constructor = ilib.Date.CopticDate;
-
-/**
- * the cumulative lengths of each month, for a non-leap year 
- * @private
- * @const
- * @type Array.<number>
- */
-ilib.Date.CopticDate.cumMonthLengths = [
-    0,   /* Jan */
-	31,  /* Feb */
-	59,  /* Mar */
-	90,  /* Apr */
-	120, /* May */
-	151, /* Jun */
-	181, /* Jul */
-	212, /* Aug */
-	243, /* Sep */
-	273, /* Oct */
-	304, /* Nov */
-	334, /* Dec */
-	365
-];
-
-/**
- * the cumulative lengths of each month, for a leap year 
- * @private
- * @const
- * @type Array.<number>
- */
-ilib.Date.CopticDate.cumMonthLengthsLeap = [
-	0,   /* Jan */
-	31,  /* Feb */
-	60,  /* Mar */
-	91,  /* Apr */
-	121, /* May */
-	152, /* Jun */
-	182, /* Jul */
-	213, /* Aug */
-	244, /* Sep */
-	274, /* Oct */
-	305, /* Nov */
-	335, /* Dec */
-	366
-];
 
 /**
  * Return a new RD for this date type using the given params.
@@ -370,12 +296,8 @@ ilib.Date.CopticDate.prototype._calcDateComponents = function () {
 	});
 	remainder = rd + 1 - jan1.getRataDie();
 	
-	cumulative = this.cal.isLeapYear(this.year) ? 
-		ilib.Date.CopticDate.cumMonthLengthsLeap : 
-		ilib.Date.CopticDate.cumMonthLengths; 
-	
-	this.month = ilib.bsearch(Math.floor(remainder), cumulative);
-	remainder = remainder - cumulative[this.month-1];
+	this.month = Math.floor(remainder/30) + 1;
+	remainder = remainder - (this.month-1) * 30;
 	
 	this.day = Math.floor(remainder);
 	remainder -= this.day;
