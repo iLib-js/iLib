@@ -52,7 +52,7 @@ function testEthiopicRataDieConstructorComponentsBig() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(732740.520972222, erd.getRataDie());
+	assertEquals(732740.5209722222, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -72,7 +72,7 @@ function testEthiopicRataDieConstructorUnixtime() {
 	
 	assertNotNull(erd);
 	
-	assertEquals(716366.708333333, erd.getRataDie());
+	assertEquals(716366.7083333334, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorRD() {
@@ -212,7 +212,7 @@ function testEthiopicDateConstructorFromJD() {
     assertEquals('object', typeof(ed));
     assertEquals(2, ed.getYears());
     assertEquals(1, ed.getMonths());
-    assertEquals(2, ed.getDays());
+    assertEquals(1, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -228,7 +228,7 @@ function testEthiopicDateConstructorUnixTime() {
     
     assertEquals("year", 1962, ed.getYears());
     assertEquals("month", 4, ed.getMonths());
-    assertEquals("day", 23, ed.getDays());
+    assertEquals("day", 21, ed.getDays());
     assertEquals("hour", 17, ed.getHours());
     assertEquals("minute", 0, ed.getMinutes());
     assertEquals("second", 0, ed.getSeconds());
@@ -243,9 +243,9 @@ function testEthiopicDateAfterLeapYear() {
 	});
     
     assertEquals('object', typeof(ed));
-    assertEquals(4, ed.getYears());
-    assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(3, ed.getYears());
+    assertEquals(13, ed.getMonths());
+    assertEquals(6, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -259,7 +259,7 @@ function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2014 Gregorian
     assertEquals(1, ed.getMonths());   // Sept
-    assertEquals(30, ed.getDays());    // 30
+    assertEquals(15, ed.getDays());    // 30
     assertEquals(23, ed.getHours());   // 6am
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -271,9 +271,9 @@ function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2014 Gregorian
-    assertEquals(2, ed.getMonths());   // Oct
-    assertEquals(1, ed.getDays());     // 1
-    assertEquals(6, ed.getHours());    // 12:00pm
+    assertEquals(1, ed.getMonths());   // Oct
+    assertEquals(17, ed.getDays());     // 1
+    assertEquals(5, ed.getHours());    // 12:00pm
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
     assertEquals(0, ed.getMilliseconds());
@@ -286,7 +286,7 @@ function testEthiopicDateLastMonthLeapYear() {
     assertEquals('object', typeof(ed));
     assertEquals(2007, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(6, ed.getDays());
+    assertEquals(3, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -297,9 +297,9 @@ function testEthiopicDateFirstMonthAfterLeapYear() {
     var ed = new ilib.Date.EthiopicDate({rd: 733055, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2008, ed.getYears());
-    assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(2007, ed.getYears());
+    assertEquals(13, ed.getMonths());
+    assertEquals(4, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -313,7 +313,7 @@ function testEthiopicDateThirdMonthEnd() {
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(3, ed.getMonths());
-    assertEquals(30, ed.getDays());
+    assertEquals(27, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -325,8 +325,8 @@ function testEthiopicDateFourthMonthStart() {
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
-    assertEquals(4, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(3, ed.getMonths());
+    assertEquals(28, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -340,7 +340,7 @@ function testEthiopicDateLastMonthEndNonLeapYear() {
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(5, ed.getDays());
+    assertEquals(2, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -351,9 +351,9 @@ function testEthiopicDateFirstMonthStartNonLeapYear() {
     var ed = new ilib.Date.EthiopicDate({rd: 733420, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2009, ed.getYears());
-    assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(2008, ed.getYears());
+    assertEquals(13, ed.getMonths());
+    assertEquals(3, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -427,39 +427,39 @@ function testEthiopicDateBeginningOfYear2Rd() {
 
 var testDates = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, -594,  12,    6,   0,    0,      0,      0,           0],
-    [1660037.5, -175,  4,     12,  0,    0,      0,      0,           3],
-    [1746893.5, 63,    1,     29,  0,    0,      0,      0,           3],
-    [1770641.5, 128,   2,     5,   0,    0,      0,      0,           0],
-    [1892731.5, 462,   5,     12,  0,    0,      0,      0,           3],
-    [1931579.5, 568,   9,     23,  0,    0,      0,      0,           1],
-    [1974851.5, 687,   3,     11,  0,    0,      0,      0,           6],
-    [2091164.5, 1005,  8,     24,  0,    0,      0,      0,           0],
-    [2121509.5, 1088,  9,     23,  0,    0,      0,      0,           0],
-    [2155779.5, 1182,  7,     20,  0,    0,      0,      0,           5],
-    [2174029.5, 1232,  7,     7,   0,    0,      0,      0,           6],
-    [2191584.5, 1280,  7,     30,  0,    0,      0,      0,           5],
-    [2195261.5, 1290,  8,     25,  0,    0,      0,      0,           0],
-    [2229274.5, 1383,  10,    10,  0,    0,      0,      0,           0],
-    [2245580.5, 1428,  5,     29,  0,    0,      0,      0,           3],
-    [2266100.5, 1484,  8,     5,   0,    0,      0,      0,           6],
-    [2288542.5, 1546,  1,     12,  0,    0,      0,      0,           6],
-    [2290901.5, 1552,  6,     29,  0,    0,      0,      0,           6],
-    [2323140.5, 1640,  10,    6,   0,    0,      0,      0,           3],
-    [2334848.5, 1672,  10,    26,  0,    0,      0,      0,           0],
-    [2348020.5, 1708,  11,    19,  0,    0,      0,      0,           5],
-    [2366978.5, 1760,  10,    14,  0,    0,      0,      0,           0],
-    [2385648.5, 1811,  11,    27,  0,    0,      0,      0,           1],
-    [2392825.5, 1831,  7,     19,  0,    0,      0,      0,           3],
-    [2416223.5, 1895,  8,     11,  0,    0,      0,      0,           0],
-    [2425848.5, 1921,  12,    19,  0,    0,      0,      0,           0],
-    [2430266.5, 1934,  1,     19,  0,    0,      0,      0,           1],
-    [2430833.5, 1935,  8,     11,  0,    0,      0,      0,           1],
-    [2431004.5, 1936,  1,     26,  0,    0,      0,      0,           4],
-    [2448698.5, 1984,  7,     8,   0,    0,      0,      0,           2],
-    [2450138.5, 1988,  6,     17,  0,    0,      0,      0,           0],
-    [2465737.5, 2031,  3,     1,   0,    0,      0,      0,           3],
-    [2486076.5, 2086,  11,    11,  0,    0,      0,      0,           0]
+    [1507231.5, -594,  12,    4,   17,   0,      0,      0,           1],
+    [1660037.5, -175,  4,     10,  17,   0,      0,      0,           4],
+    [1746893.5, 63,    1,     27,  17,   0,      0,      0,           4],
+    [1770641.5, 128,   2,     3,   17,   0,      0,      0,           1],
+    [1892731.5, 462,   5,     10,  17,   0,      0,      0,           4],
+    [1931579.5, 568,   9,     21,  17,   0,      0,      0,           2],
+    [1974851.5, 687,   3,     9,   17,   0,      0,      0,           0],
+    [2091164.5, 1005,  8,     22,  17,   0,      0,      0,           1],
+    [2121509.5, 1088,  9,     21,  17,   0,      0,      0,           1],
+    [2155779.5, 1182,  7,     18,  17,   0,      0,      0,           6],
+    [2174029.5, 1232,  7,     5,   17,   0,      0,      0,           0],
+    [2191584.5, 1280,  7,     28,  17,   0,      0,      0,           6],
+    [2195261.5, 1290,  8,     23,  17,   0,      0,      0,           1],
+    [2229274.5, 1383,  10,    8,   17,   0,      0,      0,           1],
+    [2245580.5, 1428,  5,     27,  17,   0,      0,      0,           4],
+    [2266100.5, 1484,  8,     3,   17,   0,      0,      0,           0],
+    [2288542.5, 1546,  1,     10,  17,   0,      0,      0,           0],
+    [2290901.5, 1552,  6,     27,  17,   0,      0,      0,           0],
+    [2323140.5, 1640,  10,    4,   17,   0,      0,      0,           4],
+    [2334848.5, 1672,  10,    24,  17,   0,      0,      0,           1],
+    [2348020.5, 1708,  11,    17,  17,   0,      0,      0,           6],
+    [2366978.5, 1760,  10,    12,  17,   0,      0,      0,           1],
+    [2385648.5, 1811,  11,    25,  17,   0,      0,      0,           2],
+    [2392825.5, 1831,  7,     17,  17,   0,      0,      0,           4],
+    [2416223.5, 1895,  8,     9,   17,   0,      0,      0,           1],
+    [2425848.5, 1921,  12,    17,  17,   0,      0,      0,           1],
+    [2430266.5, 1934,  1,     17,  17,   0,      0,      0,           2],
+    [2430833.5, 1935,  8,     9,   17,   0,      0,      0,           2],
+    [2431004.5, 1936,  1,     24,  17,   0,      0,      0,           5],
+    [2448698.5, 1984,  7,     6,   17,   0,      0,      0,           3],
+    [2450138.5, 1988,  6,     15,  17,   0,      0,      0,           1],
+    [2465737.5, 2031,  2,     29,  17,   0,      0,      0,           4],
+    [2486076.5, 2086,  11,    9,   17,   0,      0,      0,           1]
 ];
 
 function testEthiopicDateConvert() {
@@ -472,10 +472,10 @@ function testEthiopicDateConvert() {
         	julianday: testDates[i][0], 
         	timezone: "Etc/UTC"
         });
-    
+
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][1], ed.getYears());
-        assertEquals(testDates[i][2], ed.getMonths());
+        assertEquals(testDates[i][1], ed.getYears());        
+        assertEquals(testDates[i][2], ed.getMonths());        
         assertEquals(testDates[i][3], ed.getDays());
         assertEquals(testDates[i][4], ed.getHours());
         assertEquals(testDates[i][5], ed.getMinutes());
@@ -655,7 +655,7 @@ function testEthiopicDateTestGetTimeZero() {
 	});
     assertNotNull(ed);
  
-    assertEquals(0, ed.getTime());
+    assertEquals(172800000, ed.getTime());
 }
 
 function testEthiopicDateTestGetTime() {
@@ -669,7 +669,7 @@ function testEthiopicDateTestGetTime() {
 	});
     assertNotNull(ed);
     
-    assertEquals(12600000, ed.getTime());
+    assertEquals(185400000, ed.getTime());
 }
 
 function testEthiopicDateTestGetTimeTooEarly() {
@@ -682,7 +682,7 @@ function testEthiopicDateTestGetTimeTooEarly() {
 	});
     assertNotNull(ed);
     
-    assertEquals(-1, ed.getTime());
+    assertEquals(169200000, ed.getTime());
 }
 
 function testEthiopicDateTestGetTimeTooLate() {
@@ -714,7 +714,7 @@ function testEthiopicDateTestGetTimeExtendedNotTooLate() {
 	});
     assertNotNull(ed);
     
-    assertEquals(2147483648000, ed.getTimeExtended());
+    assertEquals(2147656448000, ed.getTimeExtended());
 }
 
 function testEthiopicDateTestSetTime1() {
@@ -726,13 +726,13 @@ function testEthiopicDateTestSetTime1() {
         timezone: "Etc/UTC"
     });
     assertNotNull(ed);
-    assertEquals(0, ed.getTime());
+    assertEquals(172800000, ed.getTime());
     
     ed.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
     assertEquals(1962, ed.getYears());
     assertEquals(4, ed.getMonths());
-    assertEquals(26, ed.getDays());
+    assertEquals(25, ed.getDays());
     assertEquals(1, ed.getHours());
     assertEquals(30, ed.getMinutes());
     assertEquals(3, ed.getSeconds());
@@ -755,7 +755,7 @@ function testEthiopicDateTestSetTimeZero() {
     
     assertEquals(1962, ed.getYears());
     assertEquals(4, ed.getMonths());
-    assertEquals(23, ed.getDays());
+    assertEquals(21, ed.getDays());
     assertEquals(17, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
