@@ -713,12 +713,15 @@ ilib.Name.prototype = {
      */
     _parseAsianName: function (parts, language) {
         var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
+        var tempFullName = parts.join('');
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
             this.givenName = parts.slice(this.familyName.length).join('');
-            if (language === "ko" && this.givenName.search(/\s*[/\s]/) > -1) {
-                this._parseKoreanName(parts);
+            
+            //Overide parsing rules if spaces are found in korean
+            if (language === "ko" && tempFullName.search(/\s*[/\s]/) > -1 && !this.suffix) {
+                this._parseKoreanName(tempFullName);
             }
         } else if (this.locale.getLanguage() === "ja") {
             this._parseJapaneseName(parts);
@@ -732,13 +735,23 @@ ilib.Name.prototype = {
     /**
      * @protected
      */
-    _parseKoreanName: function (parts) {
-        var index = this.givenName.indexOf(" ");
-        var temp = this.givenName.substr(0, index);
-        if (!this.suffix) {
-            this.suffix = this.givenName.substr(index + 1);     
+    _parseKoreanName: function (name) {
+        var tempName = name;
+
+        var spaceSplit = tempName.split(" ");
+        var spceCount = spaceSplit.length;
+        var fistSpaceIndex = tempName.indexOf(" ");
+        var lastSpaceIndex = tempName.lastIndexOf(" ");
+
+        if (spceCount === 2) {
+            this.familyName = spaceSplit[0];
+            this.givenName = tempName.slice(fistSpaceIndex, tempName.length);
+        } else {
+            this.familyName = spaceSplit[0];
+            this.middleName = tempName.slice(fistSpaceIndex, lastSpaceIndex);
+            this.givenName = tempName.slice(lastSpaceIndex, tempName.length);
         }
-        this.givenName = temp;
+        
     },
 
     /**
