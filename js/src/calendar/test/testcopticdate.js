@@ -212,7 +212,7 @@ function testCopticDateConstructorFromJD() {
     assertEquals('object', typeof(cd));
     assertEquals(2, cd.getYears());
     assertEquals(1, cd.getMonths());
-    assertEquals(1, cd.getDays());
+    assertEquals(2, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -228,7 +228,7 @@ function testCopticDateConstructorUnixTime() {
     
     assertEquals("year", 1686, cd.getYears());
     assertEquals("month", 4, cd.getMonths());
-    assertEquals("day", 21, cd.getDays());
+    assertEquals("day", 23, cd.getDays());
     assertEquals("hour", 17, cd.getHours());
     assertEquals("minute", 0, cd.getMinutes());
     assertEquals("second", 0, cd.getSeconds());
@@ -245,7 +245,7 @@ function testCopticDateAfterLeapYear() {
     assertEquals('object', typeof(cd));
     assertEquals(4, cd.getYears());
     assertEquals(1, cd.getMonths());
-    assertEquals(0, cd.getDays());
+    assertEquals(1, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -259,7 +259,7 @@ function testCopticDateFirstMonthEndRightBeforeDateChange() {
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears()); // 2014 Gregorian
     assertEquals(1, cd.getMonths());   // Sept
-    assertEquals(15, cd.getDays());    // 30
+    assertEquals(30, cd.getDays());    // 30
     assertEquals(23, cd.getHours());   // 6am
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -271,9 +271,9 @@ function testCopticDateSecondMonthStartNoonAfterDateChange() {
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears()); // 2014 Gregorian
-    assertEquals(1, cd.getMonths());   // Oct
-    assertEquals(17, cd.getDays());     // 1
-    assertEquals(5, cd.getHours());    // 12:00pm
+    assertEquals(2, cd.getMonths());   // Oct
+    assertEquals(1, cd.getDays());     // 1
+    assertEquals(6, cd.getHours());    // 12:00pm
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
     assertEquals(0, cd.getMilliseconds());
@@ -286,7 +286,7 @@ function testCopticDateLastMonthLeapYear() {
     assertEquals('object', typeof(cd));
     assertEquals(1731, cd.getYears());
     assertEquals(13, cd.getMonths());
-    assertEquals(3, cd.getDays());
+    assertEquals(6, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -297,9 +297,9 @@ function testCopticDateFirstMonthAfterLeapYear() {
     var cd = new ilib.Date.CopticDate({rd: 632246, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1731, cd.getYears());
-    assertEquals(13, cd.getMonths());
-    assertEquals(4, cd.getDays());
+    assertEquals(1732, cd.getYears());
+    assertEquals(1, cd.getMonths());
+    assertEquals(1, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -313,7 +313,7 @@ function testCopticDateThirdMonthEnd() {
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
     assertEquals(3, cd.getMonths());
-    assertEquals(27, cd.getDays());
+    assertEquals(30, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -325,8 +325,8 @@ function testCopticDateFourthMonthStart() {
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
-    assertEquals(3, cd.getMonths());
-    assertEquals(28, cd.getDays());
+    assertEquals(4, cd.getMonths());
+    assertEquals(1, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -340,7 +340,7 @@ function testCopticDateLastMonthEndNonLeapYear() {
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
     assertEquals(13, cd.getMonths());
-    assertEquals(2, cd.getDays());
+    assertEquals(5, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -351,9 +351,9 @@ function testCopticDateFirstMonthStartNonLeapYear() {
     var cd = new ilib.Date.CopticDate({rd: 632611, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1732, cd.getYears());
-    assertEquals(13, cd.getMonths());
-    assertEquals(3, cd.getDays());
+    assertEquals(1733, cd.getYears());
+    assertEquals(1, cd.getMonths());
+    assertEquals(1, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -364,9 +364,9 @@ function testCopticDateEndOfYearZeroRd() {
     var cd = new ilib.Date.CopticDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(-1, cd.getYears());
-    assertEquals(25, cd.getMonths());
-    assertEquals(11, cd.getDays());
+    assertEquals(0, cd.getYears());
+    assertEquals(13, cd.getMonths());
+    assertEquals(5, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -427,39 +427,39 @@ function testCopticDateBeginningOfYear2Rd() {
 
 var testDates = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-	[1507231.5, -871,  24,    9,   17,   0,      0,      0,           6],
-	[1660037.5, -452,  16,    15,  17,   0,      0,      0,           2],
-	[1746893.5, -214,  14,    2,   17,   0,      0,      0,           2],
-	[1770641.5, -149,  14,    9,   17,   0,      0,      0,           6],
-	[1892731.5, 186,   5,     10,  17,   0,      0,      0,           2],
-	[1931579.5, 292,   9,     21,  17,   0,      0,      0,           0],
-	[1974851.5, 411,   3,     9,   17,   0,      0,      0,           5],
-	[2091164.5, 729,   8,     22,  17,   0,      0,      0,           6],
-	[2121509.5, 812,   9,     21,  17,   0,      0,      0,           6],
-	[2155779.5, 906,   7,     18,  17,   0,      0,      0,           4],
-	[2174029.5, 956,   7,     5,   17,   0,      0,      0,           5],
-	[2191584.5, 1004,  7,     28,  17,   0,      0,      0,           4],
-	[2195261.5, 1014,  8,     23,  17,   0,      0,      0,           6],
-	[2229274.5, 1107,  10,    8,   17,   0,      0,      0,           6],
-	[2245580.5, 1152,  5,     27,  17,   0,      0,      0,           2],
-	[2266100.5, 1208,  8,     3,   17,   0,      0,      0,           5],
-	[2288542.5, 1270,  1,     10,  17,   0,      0,      0,           5],
-	[2290901.5, 1276,  6,     27,  17,   0,      0,      0,           5],
-	[2323140.5, 1364,  10,    4,   17,   0,      0,      0,           2],
-	[2334848.5, 1396,  10,    24,  17,   0,      0,      0,           6],
-	[2348020.5, 1432,  11,    17,  17,   0,      0,      0,           4],
-	[2366978.5, 1484,  10,    12,  17,   0,      0,      0,           6],
-	[2385648.5, 1535,  11,    25,  17,   0,      0,      0,           0],
-	[2392825.5, 1555,  7,     17,  17,   0,      0,      0,           2],
-	[2416223.5, 1619,  8,     9,   17,   0,      0,      0,           6],
-	[2425848.5, 1645,  12,    17,  17,   0,      0,      0,           6],
-	[2430266.5, 1658,  1,     17,  17,   0,      0,      0,           0],
-	[2430833.5, 1659,  8,     9,   17,   0,      0,      0,           0],
-	[2431004.5, 1660,  1,     24,  17,   0,      0,      0,           3],
-	[2448698.5, 1708,  7,     6,   17,   0,      0,      0,           1],
-	[2450138.5, 1712,  6,     15,  17,   0,      0,      0,           6],
-	[2465737.5, 1755,  2,     29,  17,   0,      0,      0,           2],
-	[2486076.5, 1810,  11,    9,   17,   0,      0,      0,           6]
+	[1507231.5, -870,	  12,	6,	0,	0,	0,	0,	0],
+	[1660037.5, -451,	  4,	12,	0,	0,	0,	0,	3],
+	[1746893.5, -213,	  1,	29,	0,	0,	0,	0,	3],
+	[1770641.5, -148,	  2,	5,	0,	0,	0,	0,	0],
+	[1892731.5, 186,	  5,	12,	0,	0,	0,	0,	3],
+	[1931579.5, 292,	  9,	23,	0,	0,	0,	0,	1],
+	[1974851.5, 411,	  3,	11,	0,	0,	0,	0,	6],
+	[2091164.5, 729,	  8,	24,	0,	0,	0,	0,	0],
+	[2121509.5, 812,	  9,	23,	0,	0,	0,	0,	0],
+	[2155779.5, 906,	  7,	20,	0,	0,	0,	0,	5],
+	[2174029.5, 956,	  7,	7,	0,	0,	0,	0,	6],
+	[2191584.5, 1004,	  7,	30,	0,	0,	0,	0,	5],
+	[2195261.5, 1014,	  8,	25,	0,	0,	0,	0,	0],
+	[2229274.5, 1107,	  10,	10,	0,	0,	0,	0,	0],
+	[2245580.5, 1152,	  5,	29,	0,	0,	0,	0,	3],
+	[2266100.5, 1208,	  8,	5,	0,	0,	0,	0,	6],
+	[2288542.5, 1270,	  1,	12,	0,	0,	0,	0,	6],
+	[2290901.5, 1276,	  6,	29,	0,	0,	0,	0,	6],
+	[2323140.5, 1364,	  10,	6,	0,	0,	0,	0,	3],
+	[2334848.5, 1396,	  10,	26,	0,	0,	0,	0,	0],
+	[2348020.5, 1432,	  11,	19,	0,	0,	0,	0,	5],
+	[2366978.5, 1484,	  10,	14,	0,	0,	0,	0,	0],
+	[2385648.5, 1535,	  11,	27,	0,	0,	0,	0,	1],
+	[2392825.5, 1555,	  7,	19,	0,	0,	0,	0,	3],
+	[2416223.5, 1619,	  8,	11,	0,	0,	0,	0,	0],
+	[2425848.5, 1645,	  12,	19,	0,	0,	0,	0,	0],
+	[2430266.5, 1658,	  1,	19,	0,	0,	0,	0,	1],
+	[2430833.5, 1659,	  8,	11,	0,	0,	0,	0,	1],
+	[2431004.5, 1660,	  1,	26,	0,	0,	0,	0,	4],
+	[2448698.5, 1708,	  7,	8,	0,	0,	0,	0,	2],
+	[2450138.5, 1712,	  6,	17,	0,	0,	0,	0,	0],
+	[2465737.5, 1755,	  3,	1,	0,	0,	0,	0,	3],
+	[2486076.5, 1810,	  11,	11,	0,	0,	0,	0,	0]
 ];
 
 function testCopticDateConvert() {
@@ -655,7 +655,7 @@ function testCopticDateTestGetTimeZero() {
 	});
     assertNotNull(cd);
  
-    assertEquals(172800000, cd.getTime());
+    assertEquals(0, cd.getTime());
 }
 
 function testCopticDateTestGetTime() {
@@ -669,7 +669,7 @@ function testCopticDateTestGetTime() {
 	});
     assertNotNull(cd);
     
-    assertEquals(185400000, cd.getTime());
+    assertEquals(12600000, cd.getTime());
 }
 
 function testCopticDateTestGetTimeTooEarly() {
@@ -682,7 +682,7 @@ function testCopticDateTestGetTimeTooEarly() {
 	});
     assertNotNull(cd);
     
-    assertEquals(169200000, cd.getTime());
+    assertEquals(-1, cd.getTime());
 }
 
 function testCopticDateTestGetTimeTooLate() {
@@ -714,7 +714,7 @@ function testCopticDateTestGetTimeExtendedNotTooLate() {
 	});
     assertNotNull(cd);
     
-    assertEquals(2147656448000, cd.getTimeExtended());
+    assertEquals(2147483648000, cd.getTimeExtended());
 }
 
 function testCopticDateTestSetTime1() {
@@ -726,13 +726,13 @@ function testCopticDateTestSetTime1() {
         timezone: "Etc/UTC"
     });
     assertNotNull(cd);
-    assertEquals(172800000, cd.getTime());
+    assertEquals(0, cd.getTime());
     
     cd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
-    assertEquals(1686, cd.getYears());
+    assertEquals(1685, cd.getYears());
     assertEquals(4, cd.getMonths());
-    assertEquals(25, cd.getDays());
+    assertEquals(26, cd.getDays());
     assertEquals(1, cd.getHours());
     assertEquals(30, cd.getMinutes());
     assertEquals(3, cd.getSeconds());
@@ -755,7 +755,7 @@ function testCopticDateTestSetTimeZero() {
     
     assertEquals(1686, cd.getYears());
     assertEquals(4, cd.getMonths());
-    assertEquals(21, cd.getDays());
+    assertEquals(23, cd.getDays());
     assertEquals(17, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
