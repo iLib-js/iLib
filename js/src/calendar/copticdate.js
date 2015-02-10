@@ -147,93 +147,13 @@ ilib.Date.CopticRataDie.prototype.epoch = 1825029.7916666667;
  * @param {Object=} params parameters that govern the settings and behaviour of this Coptic date
  */
 ilib.Date.CopticDate = function(params) {
+	this.rd = undefined; // clear these out so that the EthiopicDate constructor can set it
+	ilib.Date.EthiopicDate.call(this, params);
 	this.cal = new ilib.Cal.Coptic();
-	
-	if (params) {
-		if (params.locale) {
-			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
-			var li = new ilib.LocaleInfo(this.locale);
-			this.timezone = li.getTimeZone(); 
-		}
-		if (params.timezone) {
-			this.timezone = params.timezone;
-		}
-		
-		if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond ) {
-			/**
-			 * Year in the Coptic calendar.
-			 * @type number
-			 */
-			this.year = parseInt(params.year, 10) || 0;
-			/**
-			 * The month number, ranging from 1 (January) to 12 (December).
-			 * @type number
-			 */
-			this.month = parseInt(params.month, 10) || 1;
-			/**
-			 * The day of the month. This ranges from 1 to 31.
-			 * @type number
-			 */
-			this.day = parseInt(params.day, 10) || 1;
-			/**
-			 * The hour of the day. This can be a number from 0 to 23, as times are
-			 * stored unambiguously in the 24-hour clock.
-			 * @type number
-			 */
-			this.hour = parseInt(params.hour, 10) || 0;
-			/**
-			 * The minute of the hours. Ranges from 0 to 59.
-			 * @type number
-			 */
-			this.minute = parseInt(params.minute, 10) || 0;
-			/**
-			 * The second of the minute. Ranges from 0 to 59.
-			 * @type number
-			 */
-			this.second = parseInt(params.second, 10) || 0;
-			/**
-			 * The millisecond of the second. Ranges from 0 to 999.
-			 * @type number
-			 */
-			this.millisecond = parseInt(params.millisecond, 10) || 0;
-			
-			/**
-			 * The day of the year. Ranges from 1 to 383.
-			 * @type number
-			 */
-			this.dayOfYear = parseInt(params.dayOfYear, 10);
-			
-			if (typeof(params.dst) === 'boolean') {
-				this.dst = params.dst;
-			}
-			
-			this.rd = this.newRd(this);
-			
-			// add the time zone offset to the rd to convert to UTC
-			if (!this.tz) {
-				this.tz = new ilib.TimeZone({id: this.timezone});
-			}
-			// getOffsetMillis requires that this.year, this.rd, and this.dst 
-			// are set in order to figure out which time zone rules apply and 
-			// what the offset is at that point in the year
-			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
-			if (this.offset !== 0) {
-				this.rd = this.newRd({
-					rd: this.rd.getRataDie() - this.offset
-				});
-			}
-		}
-	}
-	
-	if (!this.rd) {
-		this.rd = this.newRd(params);
-		this._calcDateComponents();
-	}
 };
 
-ilib.Date.CopticDate.prototype = new ilib.Date({ noinstance: true });
-ilib.Date.CopticDate.prototype.parent = ilib.Date;
+ilib.Date.CopticDate.prototype = new ilib.Date.EthiopicDate();
+ilib.Date.CopticDate.prototype.parent = ilib.Date.EthiopicDate.prototype;
 ilib.Date.CopticDate.prototype.constructor = ilib.Date.CopticDate;
 
 /**
@@ -244,87 +164,6 @@ ilib.Date.CopticDate.prototype.constructor = ilib.Date.CopticDate;
  */
 ilib.Date.CopticDate.prototype.newRd = function (params) {
 	return new ilib.Date.CopticRataDie(params);
-};
-
-/**
- * Return the year for the given RD
- * @protected
- * @param {number} rd RD to calculate from 
- * @returns {number} the year for the RD
- */
-ilib.Date.CopticDate.prototype._calcYear = function(rd) {
-	var year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
-	
-	return (year <= 0) ? year - 1 : year;
-};
-
-/**
- * Calculate date components for the given RD date.
- * @protected
- */
-ilib.Date.CopticDate.prototype._calcDateComponents = function () {
-	var remainder,
-		cumulative,
-		rd = this.rd.getRataDie();
-	
-	this.year = this._calcYear(rd);
-
-	if (typeof(this.offset) === "undefined") {
-		this.year = this._calcYear(rd);
-		
-		// now offset the RD by the time zone, then recalculate in case we were 
-		// near the year boundary
-		if (!this.tz) {
-			this.tz = new ilib.TimeZone({id: this.timezone});
-		}
-		this.offset = this.tz.getOffsetMillis(this) / 86400000;
-	}
-
-	if (this.offset !== 0) {
-		rd += this.offset;
-		this.year = this._calcYear(rd);
-	}
-	
-	var jan1 = this.newRd({
-		year: this.year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	remainder = rd + 1 - jan1.getRataDie();
-	
-	this.month = Math.floor(remainder/30) + 1;
-	remainder = remainder - (this.month-1) * 30;
-	
-	this.day = Math.floor(remainder);
-	remainder -= this.day;
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
-	
-	this.hour = Math.floor(remainder/3600000);
-	remainder -= this.hour * 3600000;
-	
-	this.minute = Math.floor(remainder/60000);
-	remainder -= this.minute * 60000;
-	
-	this.second = Math.floor(remainder/1000);
-	remainder -= this.second * 1000;
-	
-	this.millisecond = remainder;
-};
-
-/**
- * Return the day of the week of this date. The day of the week is encoded
- * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
- * 
- * @return {number} the day of the week
- */
-ilib.Date.CopticDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return ilib.mod(rd-2, 7);
 };
 
 /**
