@@ -72,7 +72,7 @@ function testEthiopicRataDieConstructorUnixtime() {
     
     assertNotNull(erd);
     
-    assertEquals(716366.7083333334, erd.getRataDie());
+    assertEquals(716367.7083333334, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorJulianDay() {
@@ -221,7 +221,7 @@ function testEthiopicDateConstructorFromJD() {
 
 function testEthiopicDateConstructorUnixTime() {
     var ed = new ilib.Date.EthiopicDate({
-        unixtime: 0, // rd = 716366.708333333
+        unixtime: 0, // rd = 716367.7083333334
         timezone: "Etc/UTC"
     });
     assertNotNull(ed);
@@ -254,12 +254,12 @@ function testEthiopicDateAfterLeapYear() {
 
 // next two test the transition between months at 6am
 function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733072.9583333333, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733086.9583333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2008, ed.getYears()); // 2014 Gregorian
-    assertEquals(1, ed.getMonths());   // Sept
-    assertEquals(30, ed.getDays());    // 30
+    assertEquals(2008, ed.getYears()); // 2015 Gregorian
+    assertEquals(1, ed.getMonths());   // Oct
+    assertEquals(30, ed.getDays());    // 11
     assertEquals(23, ed.getHours());   // 6am
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -267,12 +267,12 @@ function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
 }
 
 function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733074.2083333333, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733088.2083333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2008, ed.getYears()); // 2014 Gregorian
+    assertEquals(2008, ed.getYears()); // 2015 Gregorian
     assertEquals(2, ed.getMonths());   // Oct
-    assertEquals(1, ed.getDays());     // 1
+    assertEquals(1, ed.getDays());     // 12
     assertEquals(6, ed.getHours());    // 12:00pm
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -286,7 +286,7 @@ function testEthiopicDateLastMonthLeapYear() {
     assertEquals('object', typeof(ed));
     assertEquals(2007, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(6, ed.getDays());
+    assertEquals(3, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -297,9 +297,9 @@ function testEthiopicDateFirstMonthAfterLeapYear() {
     var ed = new ilib.Date.EthiopicDate({rd: 733055, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2008, ed.getYears());
-    assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(2007, ed.getYears());
+    assertEquals(13, ed.getMonths());
+    assertEquals(4, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -313,7 +313,7 @@ function testEthiopicDateThirdMonthEnd() {
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(3, ed.getMonths());
-    assertEquals(30, ed.getDays());
+    assertEquals(27, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -325,8 +325,8 @@ function testEthiopicDateFourthMonthStart() {
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
-    assertEquals(4, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(3, ed.getMonths());
+    assertEquals(28, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -340,7 +340,7 @@ function testEthiopicDateLastMonthEndNonLeapYear() {
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(5, ed.getDays());
+    assertEquals(2, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -351,9 +351,9 @@ function testEthiopicDateFirstMonthStartNonLeapYear() {
     var ed = new ilib.Date.EthiopicDate({rd: 733420, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2009, ed.getYears());
-    assertEquals(1, ed.getMonths());
-    assertEquals(1, ed.getDays());
+    assertEquals(2008, ed.getYears());
+    assertEquals(13, ed.getMonths());
+    assertEquals(3, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());

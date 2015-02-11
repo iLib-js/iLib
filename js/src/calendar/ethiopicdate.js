@@ -322,7 +322,7 @@ ilib.Date.EthiopicDate.prototype._calcDateComponents = function () {
 	});
 	remainder = rd + 1 - jan1.getRataDie();
 	
-	this.month = Math.floor(remainder/30) + 1;
+	this.month = Math.floor((remainder-1)/30) + 1;
 	remainder = remainder - (this.month-1) * 30;
 	
 	this.day = Math.floor(remainder);
