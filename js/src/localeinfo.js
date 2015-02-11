@@ -280,6 +280,26 @@ ilib.LocaleInfo.prototype = {
 	},
 	
 	/**
+	 * Return the day of week that starts weekend in the current locale. Days are still
+	 * numbered the standard way with 0 for Sunday through 6 for Saturday.
+	 * 
+	 * @returns {number} the day of the week that starts weeks in the current locale.
+	 */
+	getWeekEndStart: function () {
+		return this.info.weekendStart;
+	},
+
+	/**
+	 * Return the day of week that starts weekend in the current locale. Days are still
+	 * numbered the standard way with 0 for Sunday through 6 for Saturday.
+	 * 
+	 * @returns {number} the day of the week that starts weeks in the current locale.
+	 */
+	getWeekEndEnd: function () {
+		return this.info.weekendEnd;
+	},
+
+	/**
 	 * Return the default time zone for this locale. Many locales span across multiple
 	 * time zones. In this case, the time zone with the largest population is chosen
 	 * to represent the locale. This is obviously not that accurate, but then again,

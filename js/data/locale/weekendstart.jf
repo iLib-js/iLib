@@ -1,4 +1,4 @@
 {
-    "firstDayOfWeek": 0,
+    "weekendStart": 6,
     "generated": true
 }
