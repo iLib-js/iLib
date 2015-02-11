@@ -93,7 +93,7 @@ ilib.Date.EthiopicRataDie.prototype.constructor = ilib.Date.EthiopicRataDie;
  * @const
  * @type number
  */
-ilib.Date.EthiopicRataDie.prototype.epoch = 1724220.791666666667;
+ilib.Date.EthiopicRataDie.prototype.epoch = 1724219.7916666667;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
@@ -350,7 +350,7 @@ ilib.Date.EthiopicDate.prototype._calcDateComponents = function () {
  */
 ilib.Date.EthiopicDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return ilib.mod(rd-2, 7);
+	return ilib.mod(rd-4, 7);
 };
 
 /**
