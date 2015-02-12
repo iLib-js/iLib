@@ -105,8 +105,7 @@ ilib.Date.CopticRataDie.prototype.epoch = 1825028.7916666667;
  * <li><i>unixtime<i> - sets the time of this instance according to the given 
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970 (Gregorian).
  * <li><i>julianday</i> - the Julian Day to set into this date
- * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping the zero 
- * year which doesn't exist in the Coptic calendar
+ * <li><i>year</i> - any integer
  * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
  * <li><i>day</i> - 1 to 31
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
