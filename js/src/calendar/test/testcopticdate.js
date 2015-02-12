@@ -484,7 +484,7 @@ function testCopticDateConvert() {
         assertEquals(testDates[i][8], cd.getDayOfWeek());
     }
 }
-/*function testCopticDateConvertYears() {
+function testCopticDateConvertYears() {
     var ed;
     
     for (var i = 0; i < testDates.length; i++) {
@@ -512,7 +512,6 @@ function testCopticDateConvertMonths() {
         });
    
         assertEquals('object', typeof(ed));
-        console.log(testDates[i][0]);
         assertEquals(testDates[i][2], ed.getMonths());        
     }
 }
@@ -530,7 +529,7 @@ function testCopticDateConvertDays() {
         assertEquals('object', typeof(ed));
         assertEquals(testDates[i][3], ed.getDays());
     }
-}*/
+}
 
 function testCopticDateConvertHours() {
     var ed;
