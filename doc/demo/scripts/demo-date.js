@@ -189,16 +189,15 @@ function setupCalendarPicker() {
 		year,
 		tzElement = $("#timezone");
 	
-	setCalendarValues();
-	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
-	calName.append($("<option></option>").attr("value", "unixtime").text("unixtime"));
-
 	cal = ilib.Cal.newInstance({
-		type: "gregorian",
 		locale: locale
 	});
 	today = cal.newDateInstance();
-	
+
+	setCalendarValues(cal.getType());
+	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+	calName.append($("<option></option>").attr("value", "unixtime").text("unixtime"));
+
 	setMinutesSecondsValues(minuteElement, secondElement, today.minute, today.second);
 	year = parseInt(yearElement.val());
 	
