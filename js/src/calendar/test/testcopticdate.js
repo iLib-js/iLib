@@ -72,12 +72,12 @@ function testCopticRataDieConstructorUnixtime() {
 	
 	assertNotNull(crd);
 	
-	assertEquals(615557.7083333334, crd.getRataDie());
+	assertEquals(615558.7083333334, crd.getRataDie());
 }
 
-function testCopticRataDieConstructorRD() {
+function testCopticRataDieConstructorJD() {
 	var crd = new ilib.Date.CopticRataDie({
-		julianday: 1825029.7916666667 + 734564 
+		julianday: 1825028.7916666667 + 734564 
 	});
 	
 	assertNotNull(crd);
@@ -112,7 +112,7 @@ function testCopticRataDieGetJulianDay3() {
 	
 	assertNotNull(crd);
 	
-	assertEquals(1825029.7916666667, crd.getJulianDay());
+	assertEquals(1825028.7916666667, crd.getJulianDay());
 }
 
 function testCopticRataDieGetTime1() {
@@ -228,7 +228,7 @@ function testCopticDateConstructorUnixTime() {
     
     assertEquals("year", 1686, cd.getYears());
     assertEquals("month", 4, cd.getMonths());
-    assertEquals("day", 23, cd.getDays());
+    assertEquals("day", 22, cd.getDays());
     assertEquals("hour", 17, cd.getHours());
     assertEquals("minute", 0, cd.getMinutes());
     assertEquals("second", 0, cd.getSeconds());
@@ -257,9 +257,9 @@ function testCopticDateFirstMonthEndRightBeforeDateChange() {
     var cd = new ilib.Date.CopticDate({rd: 632263.9583333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1732, cd.getYears()); // 2014 Gregorian
+    assertEquals(1732, cd.getYears()); // 2015 Gregorian
     assertEquals(1, cd.getMonths());   // Sept
-    assertEquals(30, cd.getDays());    // 30
+    assertEquals(15, cd.getDays());    // 27
     assertEquals(23, cd.getHours());   // 6am
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -270,10 +270,10 @@ function testCopticDateSecondMonthStartNoonAfterDateChange() {
     var cd = new ilib.Date.CopticDate({rd: 632265.2083333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1732, cd.getYears()); // 2014 Gregorian
-    assertEquals(2, cd.getMonths());   // Oct
-    assertEquals(1, cd.getDays());     // 1
-    assertEquals(6, cd.getHours());    // 12:00pm
+    assertEquals(1732, cd.getYears()); // 2015 Gregorian
+    assertEquals(1, cd.getMonths());   // Sept
+    assertEquals(17, cd.getDays());    // 28
+    assertEquals(5, cd.getHours());    // 12:00pm
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
     assertEquals(0, cd.getMilliseconds());
@@ -286,7 +286,7 @@ function testCopticDateLastMonthLeapYear() {
     assertEquals('object', typeof(cd));
     assertEquals(1731, cd.getYears());
     assertEquals(13, cd.getMonths());
-    assertEquals(6, cd.getDays());
+    assertEquals(3, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -297,9 +297,9 @@ function testCopticDateFirstMonthAfterLeapYear() {
     var cd = new ilib.Date.CopticDate({rd: 632246, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1732, cd.getYears());
-    assertEquals(1, cd.getMonths());
-    assertEquals(1, cd.getDays());
+    assertEquals(1731, cd.getYears());
+    assertEquals(13, cd.getMonths());
+    assertEquals(4, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -313,7 +313,7 @@ function testCopticDateThirdMonthEnd() {
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
     assertEquals(3, cd.getMonths());
-    assertEquals(30, cd.getDays());
+    assertEquals(27, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -325,8 +325,8 @@ function testCopticDateFourthMonthStart() {
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
-    assertEquals(4, cd.getMonths());
-    assertEquals(1, cd.getDays());
+    assertEquals(3, cd.getMonths());
+    assertEquals(28, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -340,7 +340,7 @@ function testCopticDateLastMonthEndNonLeapYear() {
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
     assertEquals(13, cd.getMonths());
-    assertEquals(5, cd.getDays());
+    assertEquals(2, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -351,9 +351,9 @@ function testCopticDateFirstMonthStartNonLeapYear() {
     var cd = new ilib.Date.CopticDate({rd: 632611, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
-    assertEquals(1733, cd.getYears());
-    assertEquals(1, cd.getMonths());
-    assertEquals(1, cd.getDays());
+    assertEquals(1732, cd.getYears());
+    assertEquals(13, cd.getMonths());
+    assertEquals(3, cd.getDays());
     assertEquals(0, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());
@@ -427,39 +427,39 @@ function testCopticDateBeginningOfYear2Rd() {
 
 var testDates = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-	[1507231.5, -870,	  12,	6,	0,	0,	0,	0,	0],
-	[1660037.5, -451,	  4,	12,	0,	0,	0,	0,	3],
-	[1746893.5, -213,	  1,	29,	0,	0,	0,	0,	3],
-	[1770641.5, -148,	  2,	5,	0,	0,	0,	0,	0],
-	[1892731.5, 186,	  5,	12,	0,	0,	0,	0,	3],
-	[1931579.5, 292,	  9,	23,	0,	0,	0,	0,	1],
-	[1974851.5, 411,	  3,	11,	0,	0,	0,	0,	6],
-	[2091164.5, 729,	  8,	24,	0,	0,	0,	0,	0],
-	[2121509.5, 812,	  9,	23,	0,	0,	0,	0,	0],
-	[2155779.5, 906,	  7,	20,	0,	0,	0,	0,	5],
-	[2174029.5, 956,	  7,	7,	0,	0,	0,	0,	6],
-	[2191584.5, 1004,	  7,	30,	0,	0,	0,	0,	5],
-	[2195261.5, 1014,	  8,	25,	0,	0,	0,	0,	0],
-	[2229274.5, 1107,	  10,	10,	0,	0,	0,	0,	0],
-	[2245580.5, 1152,	  5,	29,	0,	0,	0,	0,	3],
-	[2266100.5, 1208,	  8,	5,	0,	0,	0,	0,	6],
-	[2288542.5, 1270,	  1,	12,	0,	0,	0,	0,	6],
-	[2290901.5, 1276,	  6,	29,	0,	0,	0,	0,	6],
-	[2323140.5, 1364,	  10,	6,	0,	0,	0,	0,	3],
-	[2334848.5, 1396,	  10,	26,	0,	0,	0,	0,	0],
-	[2348020.5, 1432,	  11,	19,	0,	0,	0,	0,	5],
-	[2366978.5, 1484,	  10,	14,	0,	0,	0,	0,	0],
-	[2385648.5, 1535,	  11,	27,	0,	0,	0,	0,	1],
-	[2392825.5, 1555,	  7,	19,	0,	0,	0,	0,	3],
-	[2416223.5, 1619,	  8,	11,	0,	0,	0,	0,	0],
-	[2425848.5, 1645,	  12,	19,	0,	0,	0,	0,	0],
-	[2430266.5, 1658,	  1,	19,	0,	0,	0,	0,	1],
-	[2430833.5, 1659,	  8,	11,	0,	0,	0,	0,	1],
-	[2431004.5, 1660,	  1,	26,	0,	0,	0,	0,	4],
-	[2448698.5, 1708,	  7,	8,	0,	0,	0,	0,	2],
-	[2450138.5, 1712,	  6,	17,	0,	0,	0,	0,	0],
-	[2465737.5, 1755,	  3,	1,	0,	0,	0,	0,	3],
-	[2486076.5, 1810,	  11,	11,	0,	0,	0,	0,	0]
+	[1507231.5, -870,	  12,	5,	17,	0,	0,	0,	0],
+	[1660037.5, -451,	  4,	11,	17,	0,	0,	0,	3],
+	[1746893.5, -213,	  1,	28,	17,	0,	0,	0,	3],
+	[1770641.5, -148,	  2,	4,	17,	0,	0,	0,	0],
+	[1892731.5, 186,	  5,	11,	17,	0,	0,	0,	3],
+	[1931579.5, 292,	  9,	22,	17,	0,	0,	0,	1],
+	[1974851.5, 411,	  3,	10,	17,	0,	0,	0,	6],
+	[2091164.5, 729,	  8,	23,	17,	0,	0,	0,	0],
+	[2121509.5, 812,	  9,	22,	17,	0,	0,	0,	0],
+	[2155779.5, 906,	  7,	19,	17,	0,	0,	0,	5],
+	[2174029.5, 956,	  7,	6,	17,	0,	0,	0,	6],
+	[2191584.5, 1004,	  7,	29,	17,	0,	0,	0,	5],
+	[2195261.5, 1014,	  8,	24,	17,	0,	0,	0,	0],
+	[2229274.5, 1107,	  10,	9,	17,	0,	0,	0,	0],
+	[2245580.5, 1152,	  5,	28,	17,	0,	0,	0,	3],
+	[2266100.5, 1208,	  8,	4,	17,	0,	0,	0,	6],
+	[2288542.5, 1270,	  1,	11,	17,	0,	0,	0,	6],
+	[2290901.5, 1276,	  6,	28,	17,	0,	0,	0,	6],
+	[2323140.5, 1364,	  10,	5,	17,	0,	0,	0,	3],
+	[2334848.5, 1396,	  10,	25,	17,	0,	0,	0,	0],
+	[2348020.5, 1432,	  11,	18,	17,	0,	0,	0,	5],
+	[2366978.5, 1484,	  10,	13,	17,	0,	0,	0,	0],
+	[2385648.5, 1535,	  11,	26,	17,	0,	0,	0,	1],
+	[2392825.5, 1555,	  7,	18,	17,	0,	0,	0,	3],
+	[2416223.5, 1619,	  8,	10,	17,	0,	0,	0,	0],
+	[2425848.5, 1645,	  12,	18,	17,	0,	0,	0,	0],
+	[2430266.5, 1658,	  1,	18,	17,	0,	0,	0,	1],
+	[2430833.5, 1659,	  8,	10,	17,	0,	0,	0,	1],
+	[2431004.5, 1660,	  1,	25,	17,	0,	0,	0,	4],
+	[2448698.5, 1708,	  7,	7,	17,	0,	0,	0,	2],
+	[2450138.5, 1712,	  6,	16,	17,	0,	0,	0,	0],
+	[2465737.5, 1755,	  2,	30,	17,	0,	0,	0,	3],
+	[2486076.5, 1810,	  11,	10,	17,	0,	0,	0,	0]
 ];
 
 function testCopticDateConvert() {
@@ -482,6 +482,103 @@ function testCopticDateConvert() {
         assertEquals(testDates[i][6], cd.getSeconds());
         assertEquals(testDates[i][7], cd.getMilliseconds());
         assertEquals(testDates[i][8], cd.getDayOfWeek());
+    }
+}
+/*function testCopticDateConvertYears() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+
+        assertEquals('object', typeof(ed));
+        assertEquals(testDates[i][1], ed.getYears());        
+    }
+}
+
+function testCopticDateConvertMonths() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+   
+        assertEquals('object', typeof(ed));
+        console.log(testDates[i][0]);
+        assertEquals(testDates[i][2], ed.getMonths());        
+    }
+}
+
+function testCopticDateConvertDays() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+        
+        assertEquals('object', typeof(ed));
+        assertEquals(testDates[i][3], ed.getDays());
+    }
+}*/
+
+function testCopticDateConvertHours() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+
+        assertEquals('object', typeof(ed));
+        assertEquals(testDates[i][4], ed.getHours());
+    }
+}
+
+function testCopticDateConvertDayOfWeek() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+
+        assertEquals('object', typeof(ed));
+        assertEquals(testDates[i][8], ed.getDayOfWeek());
+    }
+}
+
+function testCopticDateConvertOther() {
+    var ed;
+    
+    for (var i = 0; i < testDates.length; i++) {
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        
+        ed = new ilib.Date.CopticDate({
+            julianday: testDates[i][0], 
+            timezone: "Etc/UTC"
+        });
+
+        assertEquals('object', typeof(ed));
+        assertEquals(testDates[i][5], ed.getMinutes());
+        assertEquals(testDates[i][6], ed.getSeconds());
+        assertEquals(testDates[i][7], ed.getMilliseconds());
     }
 }
 
@@ -649,7 +746,7 @@ function testCopticDateTestGetTimeZero() {
     var cd = new ilib.Date.CopticDate({
 		year: 1686,
 		month: 4,
-		day: 23,
+		day: 22,
 		hour: 17,
         timezone: "Etc/UTC"
 	});
@@ -662,7 +759,7 @@ function testCopticDateTestGetTime() {
     var cd = new ilib.Date.CopticDate({
 		year: 1686,
 		month: 4,
-		day: 23,
+		day: 22,
 		hour: 20,		// 20:30 coptic time = 3:30am gregorian time
 		minute: 30,
         timezone: "Etc/UTC"
@@ -676,7 +773,7 @@ function testCopticDateTestGetTimeTooEarly() {
     var cd = new ilib.Date.CopticDate({
 		year: 1686,
 		month: 4,
-		day: 23,
+		day: 22,
 		hour: 16,
 		timezone: "Etc/UTC"
 	});
@@ -690,7 +787,7 @@ function testCopticDateTestGetTimeTooLate() {
     var cd = new ilib.Date.CopticDate({
 		year: 1754,
 		month: 5,
-		day: 11,
+		day: 10,
 		hour: 20,
 		minute: 14,
 		second: 8,
@@ -706,7 +803,7 @@ function testCopticDateTestGetTimeExtendedNotTooLate() {
     var cd = new ilib.Date.CopticDate({
 		year: 1754,
 		month: 5,
-		day: 11,
+		day: 10,
 		hour: 20,
 		minute: 14,
 		second: 8,
@@ -721,7 +818,7 @@ function testCopticDateTestSetTime1() {
     var cd = new ilib.Date.CopticDate({
 		year: 1686,
 		month: 4,
-		day: 23,
+		day: 22,
 		hour: 17,
         timezone: "Etc/UTC"
     });
@@ -730,7 +827,7 @@ function testCopticDateTestSetTime1() {
     
     cd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
-    assertEquals(1685, cd.getYears());
+    assertEquals(1686, cd.getYears());
     assertEquals(4, cd.getMonths());
     assertEquals(26, cd.getDays());
     assertEquals(1, cd.getHours());
@@ -755,7 +852,7 @@ function testCopticDateTestSetTimeZero() {
     
     assertEquals(1686, cd.getYears());
     assertEquals(4, cd.getMonths());
-    assertEquals(23, cd.getDays());
+    assertEquals(22, cd.getDays());
     assertEquals(17, cd.getHours());
     assertEquals(0, cd.getMinutes());
     assertEquals(0, cd.getSeconds());

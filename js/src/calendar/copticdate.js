@@ -167,6 +167,17 @@ ilib.Date.CopticDate.prototype.newRd = function (params) {
 };
 
 /**
+ * Return the day of the week of this date. The day of the week is encoded
+ * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * 
+ * @return {number} the day of the week
+ */
+ilib.Date.CopticDate.prototype.getDayOfWeek = function() {
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+	return ilib.mod(rd-2, 7);
+};
+
+/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
