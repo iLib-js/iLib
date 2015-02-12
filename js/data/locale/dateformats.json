@@ -154,5 +154,7 @@
 	"thaisolar": "gregorian",
 	"persian": "gregorian",
 	"persian-algo": "gregorian",
-	"han": "gregorian"
+	"han": "gregorian",
+	"ethiopic": "gregorian",
+	"coptic": "gregorian"
 }
