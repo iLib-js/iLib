@@ -74,13 +74,13 @@ calendar/ethiopicdate.js
  * 
  * @private
  * @constructor
- * @extends ilib.Date.RataDie
+ * @extends ilib.Date.EthiopicRataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Coptic RD date
  */
 ilib.Date.CopticRataDie = function(params) {
 	this.cal = params && params.cal || new ilib.Cal.Coptic();
 	this.rd = undefined;
-	ilib.Date.RataDie.call(this, params);
+	ilib.Date.EthiopicRataDie.call(this, params);
 };
 
 ilib.Date.CopticRataDie.prototype = new ilib.Date.EthiopicRataDie();
@@ -143,7 +143,7 @@ ilib.Date.CopticRataDie.prototype.epoch = 1825028.7916666667;
  * Depends directive: !depends copticdate.js
  * 
  * @constructor
- * @extends ilib.Date
+ * @extends ilib.Date.EthiopicDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Coptic date
  */
 ilib.Date.CopticDate = function(params) {

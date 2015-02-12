@@ -89,8 +89,7 @@ ilib.Date.EthiopicRataDie.prototype.constructor = ilib.Date.EthiopicRataDie;
 /**
  * The difference between the zero Julian day and the first Ethiopic date
  * of Friday, August 29, 8 CE Julian at 7:00am UTC. 
- * @private
- * @const
+ * @protected
  * @type number
  */
 ilib.Date.EthiopicRataDie.prototype.epoch = 1724219.7916666667;
