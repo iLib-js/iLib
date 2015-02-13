@@ -589,92 +589,70 @@ $(function() {
 
             var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-	    var output = "";
-	    li = new ilib.LocaleInfo(localeName);
-	    
-	    var firstDay = li.getFirstDayOfWeek();
-            var weekendStart = li.getWeekEndStart();
-	    var weekendEnd = li.getWeekEndEnd();
-
-	    output += res.getString("First Day Of Week: ") + weeks[firstDay] + "<br/>";
-	    output += res.getString("Weekend Start: ") + weeks[weekendStart] + "<br/>";
-	    output += res.getString("Weekend End: ") + weeks[weekendEnd] + "<br/>";
-
-
-	    var calendar = $('#calendarName').val(),
-	    cal = ilib.Cal.newInstance({
-		locale: localeName,
-		type: calendar
-	    }),
-
-	    timezone = $('#timezone').val() || "local",
-	    date = "";
-
-	    if (calendar === 'julianday') {
-
-		date = cal.newDateInstance({
-	
-        		julianday: $('#julianday').val(),
-
-			timezone: "Etc/UTC"
-	     });
-	    }else {
-
-	    date = cal.newDateInstance({
-
-		year: $('#year').val(),
-
-		month: $('#month').val(),
-
-		day: $('#day').val(),
-
-		hour: $('#hour').val(),
-
-		minute: $('#minute').val(),
-
-		second: $('#second').val(),
-
-		millisecond: $('#millisecond').val(),
-
-		timezone: timezone
-
-	    });
-
-	}
-
-	options = {
-
-	    calendar: calendar,
-	    locale: localeName,
-	    length: "full",
-	    type: "date",
-	    timezone: timezone
-
-	};
-
-	fmt = new ilib.DateFmt(options);
-
-	var dateEntered = fmt.format(date);
-
-	options = {
-	    calendar: calendar,
-	    length: "full",
-	    template: "EEEE",
-	    timezone: timezone
-
-	};
-
-	fmt = new ilib.DateFmt(options);
-	var dayOfWeek = fmt.format(date);
-	var index = weeks.indexOf(dayOfWeek);
-
-	if (index === weekendStart || index === weekendEnd)
-	    output += res.getString("The date " + dateEntered + " is: " + dayOfWeek + " falls on weekend ");
-	else
-	    output += res.getString("The date " + dateEntered + " is: " + dayOfWeek + " falls on weekday ");
-
-	$('.testSubject').html('<b style ="color:grey ">' + output + '</b><br />');
-		break;
+		    var output = "";
+		    li = new ilib.LocaleInfo(localeName);
+		    
+		    var firstDay = li.getFirstDayOfWeek();
+		    var weekendStart = li.getWeekEndStart();
+		    var weekendEnd = li.getWeekEndEnd();
+		
+		    output += res.getString("First Day Of Week: ") + weeks[firstDay] + "<br/>";
+		    output += res.getString("Weekend Start: ") + weeks[weekendStart] + "<br/>";
+		    output += res.getString("Weekend End: ") + weeks[weekendEnd] + "<br/>";
+		
+		    var calendar = $('#calendarName').val(),
+				    cal = ilib.Cal.newInstance({
+					locale: localeName,
+					type: calendar
+			    }),
+			    timezone = $('#timezone').val() || "local",
+			    date = "";
+			
+		    if (calendar === 'julianday') {
+				date = cal.newDateInstance({
+		       		julianday: $('#julianday').val(),
+					timezone: "Etc/UTC"
+				});
+			} else {
+			    date = cal.newDateInstance({
+					year: $('#year').val(),
+					month: $('#month').val(),
+					day: $('#dayPickerDay').val(),
+					hour: $('#hour').val(),
+					minute: $('#minute').val(),
+					second: $('#second').val(),
+					millisecond: $('#millisecond').val(),
+					timezone: timezone
+			    });
+			}
+			
+			options = {
+			    calendar: calendar,
+			    locale: localeName,
+			    length: "full",
+			    type: "date",
+			    timezone: timezone
+			};
+			
+			fmt = new ilib.DateFmt(options);
+			
+			var dateEntered = fmt.format(date);
+			
+			options = {
+			    calendar: calendar,
+			    length: "full",
+			    template: "EEEE",
+			    timezone: timezone
+			};
+			
+			fmt = new ilib.DateFmt(options);
+			var dayOfWeek = fmt.format(date);
+			var index = weeks.indexOf(dayOfWeek);
+			
+			output += res.getString("The date '" + dateEntered + "' is a " + dayOfWeek + " which falls on a " + ((index === weekendStart || index === weekendEnd) ? "weekend" : "weekday"));
+			
+			$('.testSubject').html('<b style ="color:grey ">' + output + '</b><br />');
+			break;
 
 		case 'CurrencyInfo':
             var output = "",
@@ -1566,13 +1544,13 @@ $(document).ready(function () {
                                 <select name="month" id="month"></select>
                             </div>
                         </div>
-			<div id='dayPicker' style="display: none">
+						<div id='dayPicker' style="display: none">
                             <div>
                                 <label for="day">Day:</label>
                                 <select name="day" id="dayPickerDay"></select>
                             </div>
-			</div>
-			<div id='calendarPicker' style="display: none">
+						</div>
+						<div id='calendarPicker' style="display: none">
                             <div>
                                 <label for="day">Day:</label>
                                 <select name="day" id="day"></select>
