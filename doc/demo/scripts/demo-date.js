@@ -264,6 +264,60 @@ function setupCalendarPicker() {
 	$('#calendarPicker').show();
 };
 
+
+function datePicker() {
+	var calName = $("#calendarName"),
+		yearElement = $('#year'),
+		monthElement = $('#month'),
+		dayElement = $('#dayPickerDay'),
+		cal,
+		locale = $('#localeControl').val() || "en",
+		today,
+		year;
+
+	cal = ilib.Cal.newInstance({
+		type: "gregorian",
+		locale: locale
+	});
+	today = cal.newDateInstance();
+
+	year = parseInt(yearElement.val());
+	
+	$('#localeControl').change(function () {
+		var month = parseInt(monthElement.val()),
+			hour = parseInt(hourElement.val()),
+			year = parseInt(yearElement.val());
+		setMonthValues(monthElement, month, year);
+		setHourValues(hourElement, hour);
+	});
+	
+	$('#year').change(function () {
+		var month = parseInt(monthElement.val()),
+			day = parseInt(dayElement.val()),
+			year = parseInt(yearElement.val());
+		setMonthValues(monthElement, month, year);
+		setDayValues(dayElement, day, month, year);
+	});
+	
+	
+	monthElement.change(function() {
+		var day = parseInt(dayElement.val());
+			month = parseInt(monthElement.val()),
+			year = parseInt(yearElement.val());
+		setDayValues(dayElement, day, month, year);
+	});
+	
+	yearElement.val(today.year);
+	setMonthValues(monthElement, today.month, today.year);
+	setDayValues(dayElement, today.day, today.month, today.year);
+
+
+	
+	$('#yearMonthPicker').show();
+	$('#dayPicker').show();
+	
+};
+
 function setupRangePicker(startname, endname, jdname) {
 	var calName = $("#calendarName"),
 		startYearElement = $('#syear'),
@@ -724,6 +778,7 @@ function hideAllPickers() {
 	$('#addressPicker').hide();
 	$('#phonePicker').hide();
 	$('#textBoxPicker').hide();
+	$('#dayPicker').hide();
     $('#unitFmtPicker').hide();
     $('#unitConvPicker').hide();
     $('#locCtrl').show();
