@@ -6921,3 +6921,188 @@ function testGetDigitsStyleNative() {
 	assertNotUndefined(li);
 	assertEquals("native", li.getDigitsStyle());
 }
+/*Get weekend Data*/
+function testLocaleInfoGetWeekendUS() {
+	var info = new ilib.LocaleInfo("en-US");
+	assertNotNull(info);
+
+	assertEquals(6, info.getWeekEndStart());
+	assertEquals(0, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendDE() {
+	var info = new ilib.LocaleInfo("de-DE");
+	assertNotNull(info);
+	
+	assertEquals(6, info.getWeekEndStart());
+	assertEquals(0, info.getWeekEndEnd());
+}
+
+
+function testLocaleInfoGetGetWekendFR() {
+	var info = new ilib.LocaleInfo("fr-FR");
+	assertNotNull(info);
+
+	assertEquals(6, info.getWeekEndStart());
+	assertEquals(0, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendAE() {
+	var info = new ilib.LocaleInfo("ar-AE");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendBH() {
+	var info = new ilib.LocaleInfo("ar-BH");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendDZ() {
+	var info = new ilib.LocaleInfo("ar-DZ");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendEG() {
+	var info = new ilib.LocaleInfo("ar-EG");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendIL() {
+	var info = new ilib.LocaleInfo("he-IL");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendIQ() {
+	var info = new ilib.LocaleInfo("ar-IQ");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendJO() {
+	var info = new ilib.LocaleInfo("ar-JO");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendKW() {
+	var info = new ilib.LocaleInfo("ar-KW");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendLY() {
+	var info = new ilib.LocaleInfo("ar-LY");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendMA() {
+	var info = new ilib.LocaleInfo("ar-MA");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendOM() {
+	var info = new ilib.LocaleInfo("ar-OM");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendQA() {
+	var info = new ilib.LocaleInfo("ar-QA");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWeekendSA() {
+	var info = new ilib.LocaleInfo("ar-SA");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendSD() {
+	var info = new ilib.LocaleInfo("ar-SD");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendSY() {
+	var info = new ilib.LocaleInfo("ar-SY");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendTN() {
+	var info = new ilib.LocaleInfo("ar-TN");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetGetWekendYE() {
+	var info = new ilib.LocaleInfo("ar-YE");
+	assertNotNull(info);
+
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(6, info.getWeekEndEnd());
+}
+
+function testLocaleInfoGetWeekendAF() {
+	var info = new ilib.LocaleInfo("ps-AF");
+	assertNotNull(info);
+
+	assertEquals(4, info.getWeekEndStart());
+	assertEquals(5, info.getWeekEndEnd());
+}	
+
+function testLocaleInfoGetGetWeekendIR() {
+	var info = new ilib.LocaleInfo("fa-IR");
+	assertNotNull(info);
+	
+	assertEquals(5, info.getWeekEndStart());
+	assertEquals(5, info.getWeekEndEnd());
+}
+function testLocaleInfoGetGetWeekendIN() {
+	var info = new ilib.LocaleInfo("hi-IN");
+	assertNotNull(info);
+	
+	assertEquals(0, info.getWeekEndStart());
+	assertEquals(0, info.getWeekEndEnd());
+}
+
