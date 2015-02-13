@@ -292,7 +292,8 @@ $(function() {
                 cal,
                 date,
                 calendarList,
-                fmt,
+                fmtLong,
+                fmtShort,
                 output,
                 timezone = $('#timezone').val() || "local";
                 
@@ -347,7 +348,7 @@ $(function() {
                     locale: localeName,
                     type: calendar
                 });
-                fmt = new ilib.DateFmt({
+                fmtLong = new ilib.DateFmt({
                     type: "datetime",
                     calendar: calendar,
                     locale: localeName,
@@ -356,14 +357,23 @@ $(function() {
                     time: "hms",
                     timezone: timezone
                 });
+                fmtShort = new ilib.DateFmt({
+                    type: "date",
+                    calendar: calendar,
+                    locale: localeName,
+                    length: "short",
+                    date: "mdy",
+                    timezone: timezone
+                });
                 date = cal.newDateInstance({
                     julianday: jd,
                     timezone: "Etc/UTC"
                 });
                 
-                output += res.getString('Calendar {cal}: {formattedDate} <br/>').format({
+                output += res.getString('Calendar {cal}: {formattedDate} ({formattedShort})<br/>').format({
                     cal: calendar,
-                    formattedDate: fmt.format(date)
+                    formattedDate: fmtLong.format(date),
+                    formattedShort: fmtShort.format(date)
                 });
             });
 
