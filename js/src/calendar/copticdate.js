@@ -94,7 +94,7 @@ ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
  * @const
  * @type number
  */
-ilib.Date.CopticRataDie.prototype.epoch = 1825028.7916666667;
+ilib.Date.CopticRataDie.prototype.epoch = 1825028.5;
 
 /**
  * @class

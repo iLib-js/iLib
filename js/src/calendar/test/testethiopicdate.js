@@ -254,26 +254,26 @@ function testEthiopicDateAfterLeapYear() {
 
 // next two test the transition between months at 6am
 function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733086.9583333333, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733087.9583333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2015 Gregorian
     assertEquals(1, ed.getMonths());   // Oct
-    assertEquals(29, ed.getDays());    // 11
-    assertEquals(23, ed.getHours());   // 6am
+    assertEquals(30, ed.getDays());    // 11
+    assertEquals(23, ed.getHours());   // 6:00am
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
     assertEquals(0, ed.getMilliseconds());
 }
 
 function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733088.2083333333, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733088.041666667, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2015 Gregorian
     assertEquals(2, ed.getMonths());   // Oct
     assertEquals(1, ed.getDays());     // 12
-    assertEquals(5, ed.getHours());    // 12:00pm
+    assertEquals(1, ed.getHours());    // 8:00am
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
     assertEquals(0, ed.getMilliseconds());
@@ -281,12 +281,12 @@ function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
 
 // next two test the year transition from a leap year to a regular year
 function testEthiopicDateLastMonthLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733054, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733057, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2007, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(3, ed.getDays());
+    assertEquals(6, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -294,12 +294,12 @@ function testEthiopicDateLastMonthLeapYear() {
 }
 
 function testEthiopicDateFirstMonthAfterLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733055, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733058, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2007, ed.getYears());
-    assertEquals(13, ed.getMonths());
-    assertEquals(4, ed.getDays());
+    assertEquals(2008, ed.getYears());
+    assertEquals(1, ed.getMonths());
+    assertEquals(1, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -308,12 +308,12 @@ function testEthiopicDateFirstMonthAfterLeapYear() {
 
 // next two test a regular month transition
 function testEthiopicDateThirdMonthEnd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733144, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733147, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(3, ed.getMonths());
-    assertEquals(27, ed.getDays());
+    assertEquals(30, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -321,12 +321,12 @@ function testEthiopicDateThirdMonthEnd() {
 }
 
 function testEthiopicDateFourthMonthStart() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733145, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733148, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
-    assertEquals(3, ed.getMonths());
-    assertEquals(28, ed.getDays());
+    assertEquals(4, ed.getMonths());
+    assertEquals(1, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -335,12 +335,12 @@ function testEthiopicDateFourthMonthStart() {
 
 // next two test a transition from a non-leap year to a non-leap year
 function testEthiopicDateLastMonthEndNonLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733419, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733422, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
     assertEquals(13, ed.getMonths());
-    assertEquals(2, ed.getDays());
+    assertEquals(5, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
@@ -348,12 +348,12 @@ function testEthiopicDateLastMonthEndNonLeapYear() {
 }
 
 function testEthiopicDateFirstMonthStartNonLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733420, timezone: "Etc/UTC"});
+    var ed = new ilib.Date.EthiopicDate({rd: 733423, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
-    assertEquals(2008, ed.getYears());
-    assertEquals(13, ed.getMonths());
-    assertEquals(3, ed.getDays());
+    assertEquals(2009, ed.getYears());
+    assertEquals(1, ed.getMonths());
+    assertEquals(1, ed.getDays());
     assertEquals(0, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
