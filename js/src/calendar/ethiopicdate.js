@@ -88,7 +88,11 @@ ilib.Date.EthiopicRataDie.prototype.constructor = ilib.Date.EthiopicRataDie;
 
 /**
  * The difference between the zero Julian day and the first Ethiopic date
- * of Friday, August 29, 8 CE Julian at 7:00am UTC. 
+ * of Friday, August 29, 8 CE Julian at 7:00am UTC.<p> 
+ * 
+ * See <a href="http://us.wow.com/wiki/Time_in_Ethiopia?s_chn=90&s_pt=aolsem&v_t=aolsem"
+ * Time in Ethiopia</a> for information about how time is handled in Ethiopia.
+ * 
  * @protected
  * @type number
  */

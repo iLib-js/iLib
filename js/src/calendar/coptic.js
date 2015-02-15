@@ -35,6 +35,8 @@ ilib.Cal.Coptic = function() {
 };
 
 ilib.Cal.Coptic.prototype = new ilib.Cal.Ethiopic();
+ilib.Cal.Coptic.prototype.parent = ilib.Cal.Coptic.prototype;
+ilib.Cal.Coptic.prototype.constructor = ilib.Cal.Coptic;
 
 /**
  * Return a date instance for this calendar type using the given

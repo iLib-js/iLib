@@ -199,8 +199,8 @@ util/jsutils.js
  * <li><i>w</i> - week number in year
  * <li><i>ww</i> - week number in year, 0 padded to 2 digits
  * <li><i>W</i> - week in month
- * <li><i>h</i> - hour (1 to 12)
- * <li><i>hh</i> - hour (1 to 12), 0 padded to 2 digits
+ * <li><i>h</i> - hour (12 followed by 1 to 11)
+ * <li><i>hh</i> - hour (12, followed by 1 to 11), 0 padded to 2 digits
  * <li><i>k</i> - hour (1 to 24)
  * <li><i>kk</i> - hour (1 to 24), 0 padded to 2 digits
  * <li><i>H</i> - hour (0 to 23)

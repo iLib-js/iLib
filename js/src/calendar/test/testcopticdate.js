@@ -72,12 +72,12 @@ function testCopticRataDieConstructorUnixtime() {
 	
 	assertNotNull(crd);
 	
-	assertEquals(615558, crd.getRataDie());
+	assertEquals(615559, crd.getRataDie());
 }
 
 function testCopticRataDieConstructorJD() {
 	var crd = new ilib.Date.CopticRataDie({
-		julianday: 1825029.5 + 734564 
+		julianday: 1825028.5 + 734564 
 	});
 	
 	assertNotNull(crd);
@@ -87,12 +87,12 @@ function testCopticRataDieConstructorJD() {
 
 function testCopticRataDieGetJulianDay1() {
 	var crd = new ilib.Date.CopticRataDie({
-		julianday: 1825029.5 + 734564 
+		julianday: 1825028.5 + 734564 
 	});
 	
 	assertNotNull(crd);
 	
-	assertEquals(1825029.5 + 734564, crd.getJulianDay());
+	assertEquals(1825028.5 + 734564, crd.getJulianDay());
 }
 
 function testCopticRataDieGetJulianDay2() {
@@ -202,13 +202,14 @@ function testCopticDateConstructor() {
 	assertNotNull(cd);
 }
 
-/* Coptic date is rd 366 + epoch */
+/* Coptic date is rd 367 + epoch */
 function testCopticDateConstructorFromJD() {
     var cd = new ilib.Date.CopticDate({
 		julianday: 1825395.5,
 		timezone: "Etc/UTC"
 	});
     
+    //console.log("testCopticDateConstructorFromJD: " + JSON.stringify(cd, undefined, 4));
     assertEquals('object', typeof(cd));
     assertEquals(2, cd.getYears());
     assertEquals(1, cd.getMonths());
@@ -238,7 +239,7 @@ function testCopticDateConstructorUnixTime() {
 function testCopticDateAfterLeapYear() {
 	// year 3 of every 4 year cycle is a leap year in the Coptic calendar
     var cd = new ilib.Date.CopticDate({
-		julianday: 1826124.5, // Coptic epoch + 2 * 365 + 366
+		julianday: 1826125.5, // Coptic epoch + 1 + 2 * 365 + 366
 		timezone: "Etc/UTC"
 	});
     
@@ -462,122 +463,100 @@ var testDates = [
 	[2486076.5, 1810,	  11,	11,	0,	0,	0,	0,	0]
 ];
 
-function testCopticDateConvert() {
+function testCopticDateConvertYears() {
     var cd;
     
     for (var i = 0; i < testDates.length; i++) {
         info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
         
         cd = new ilib.Date.CopticDate({
-        	julianday: testDates[i][0], 
-        	timezone: "Etc/UTC"
-        });
-
-        assertEquals('object', typeof(cd));
-        assertEquals(testDates[i][1], cd.getYears());
-        assertEquals(testDates[i][2], cd.getMonths());
-        assertEquals(testDates[i][3], cd.getDays());
-        assertEquals(testDates[i][4], cd.getHours());
-        assertEquals(testDates[i][5], cd.getMinutes());
-        assertEquals(testDates[i][6], cd.getSeconds());
-        assertEquals(testDates[i][7], cd.getMilliseconds());
-        assertEquals(testDates[i][8], cd.getDayOfWeek());
-    }
-}
-function testCopticDateConvertYears() {
-    var ed;
-    
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
-        
-        ed = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
 
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][1], ed.getYears());        
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][1], cd.getYears());        
     }
 }
 
 function testCopticDateConvertMonths() {
-    var ed;
+    var cd;
     
     for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
         
-        ed = new ilib.Date.CopticDate({
+        cd = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
    
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][2], ed.getMonths());        
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][2], cd.getMonths());        
     }
 }
 
 function testCopticDateConvertDays() {
-    var ed;
+    var cd;
     
     for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
-        ed = new ilib.Date.CopticDate({
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
+        cd = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
         
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][3], ed.getDays());
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][3], cd.getDays());
     }
 }
 
 function testCopticDateConvertHours() {
-    var ed;
+    var cd;
     
     for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
         
-        ed = new ilib.Date.CopticDate({
+        cd = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
 
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][4], ed.getHours());
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][4], cd.getHours());
     }
 }
 
 function testCopticDateConvertDayOfWeek() {
-    var ed;
+    var cd;
     
     for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
         
-        ed = new ilib.Date.CopticDate({
+        cd = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
 
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][8], ed.getDayOfWeek());
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][8], cd.getDayOfWeek());
     }
 }
 
 function testCopticDateConvertOther() {
-    var ed;
+    var cd;
     
     for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(cd));
         
-        ed = new ilib.Date.CopticDate({
+        cd = new ilib.Date.CopticDate({
             julianday: testDates[i][0], 
             timezone: "Etc/UTC"
         });
 
-        assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][5], ed.getMinutes());
-        assertEquals(testDates[i][6], ed.getSeconds());
-        assertEquals(testDates[i][7], ed.getMilliseconds());
+        assertEquals('object', typeof(cd));
+        assertEquals(testDates[i][5], cd.getMinutes());
+        assertEquals(testDates[i][6], cd.getSeconds());
+        assertEquals(testDates[i][7], cd.getMilliseconds());
     }
 }
 
@@ -816,20 +795,19 @@ function testCopticDateTestGetTimeExtendedNotTooLate() {
 function testCopticDateTestSetTime1() {
     var cd = new ilib.Date.CopticDate({
 		year: 1686,
-		month: 4,
-		day: 23,
+		month: 1,
+		day: 1,
 		hour: 0,
         timezone: "Etc/UTC"
     });
     assertNotNull(cd);
-    assertEquals(0, cd.getTime());
     
     cd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
     
     assertEquals(1686, cd.getYears());
     assertEquals(4, cd.getMonths());
     assertEquals(26, cd.getDays());
-    assertEquals(1, cd.getHours());
+    assertEquals(8, cd.getHours());
     assertEquals(30, cd.getMinutes());
     assertEquals(3, cd.getSeconds());
 }

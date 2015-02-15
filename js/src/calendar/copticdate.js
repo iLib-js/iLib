@@ -80,21 +80,21 @@ calendar/ethiopicdate.js
 ilib.Date.CopticRataDie = function(params) {
 	this.cal = params && params.cal || new ilib.Cal.Coptic();
 	this.rd = undefined;
-	ilib.Date.EthiopicRataDie.call(this, params);
+	/**
+	 * The difference between the zero Julian day and the first Coptic date
+	 * of Friday, August 29, 284 CE Julian at 7:00am UTC. 
+	 * @private
+	 * @const
+	 * @type number
+	 */
+	this.epoch = 1825028.5;
+
+	ilib.Date.EthiopicRataDie.call(this, ilib.merge(params || {}, {cal: this.cal}));
 };
 
 ilib.Date.CopticRataDie.prototype = new ilib.Date.EthiopicRataDie();
 ilib.Date.CopticRataDie.prototype.parent = ilib.Date.EthiopicRataDie;
 ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
-
-/**
- * The difference between the zero Julian day and the first Coptic date
- * of Friday, August 29, 284 CE Julian at 7:00am UTC. 
- * @private
- * @const
- * @type number
- */
-ilib.Date.CopticRataDie.prototype.epoch = 1825028.5;
 
 /**
  * @class
@@ -173,7 +173,7 @@ ilib.Date.CopticDate.prototype.newRd = function (params) {
  */
 ilib.Date.CopticDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return ilib.mod(rd-2, 7);
+	return ilib.mod(rd-3, 7);
 };
 
 /**

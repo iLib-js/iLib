@@ -238,7 +238,7 @@ function testEthiopicDateConstructorUnixTime() {
 function testEthiopicDateAfterLeapYear() {
     // year 3 of every 4 year cycle is a leap year in the ethiopic calendar
     var ed = new ilib.Date.EthiopicDate({
-        julianday: 1725316.7916666667, // ethiopic epoch + 2 * 365 + 366
+        julianday: 1725316.7916666667, // ethiopic epoch + 1 + 2 * 365 + 366
         timezone: "Etc/UTC"
     });
     
