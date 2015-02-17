@@ -139,7 +139,7 @@ ilib._getBrowser = function () {
 				browser = "ie";
 			}
 			if (navigator.userAgent.indexOf("Safari") > -1) {
-				// chrome also has the string Safari in its userAgen, but the chrome case is 
+				// chrome also has the string Safari in its userAgent, but the chrome case is 
 				// already taken care of above
 				browser = "safari";
 			}
