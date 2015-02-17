@@ -6930,7 +6930,7 @@ function testLocaleInfoGetWeekendUS() {
 	assertEquals(0, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendDE() {
+function testLocaleInfoGetWeekendDE() {
 	var info = new ilib.LocaleInfo("de-DE");
 	assertNotNull(info);
 	
@@ -6939,7 +6939,7 @@ function testLocaleInfoGetGetWeekendDE() {
 }
 
 
-function testLocaleInfoGetGetWekendFR() {
+function testLocaleInfoGetWeekendFR() {
 	var info = new ilib.LocaleInfo("fr-FR");
 	assertNotNull(info);
 
@@ -6955,7 +6955,7 @@ function testLocaleInfoGetWeekendAE() {
 	assertEquals(6, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendBH() {
+function testLocaleInfoGetWeekendBH() {
 	var info = new ilib.LocaleInfo("ar-BH");
 	assertNotNull(info);
 	
@@ -6963,7 +6963,7 @@ function testLocaleInfoGetGetWeekendBH() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendDZ() {
+function testLocaleInfoGetWeekendDZ() {
 	var info = new ilib.LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
@@ -6979,7 +6979,7 @@ function testLocaleInfoGetWeekendEG() {
 	assertEquals(6, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendIL() {
+function testLocaleInfoGetWeekendIL() {
 	var info = new ilib.LocaleInfo("he-IL");
 	assertNotNull(info);
 	
@@ -6987,7 +6987,7 @@ function testLocaleInfoGetGetWeekendIL() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendIQ() {
+function testLocaleInfoGetWeekendIQ() {
 	var info = new ilib.LocaleInfo("ar-IQ");
 	assertNotNull(info);
 
@@ -7003,7 +7003,7 @@ function testLocaleInfoGetWeekendJO() {
 	assertEquals(6, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendKW() {
+function testLocaleInfoGetWeekendKW() {
 	var info = new ilib.LocaleInfo("ar-KW");
 	assertNotNull(info);
 	
@@ -7011,7 +7011,7 @@ function testLocaleInfoGetGetWeekendKW() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendLY() {
+function testLocaleInfoGetWeekendLY() {
 	var info = new ilib.LocaleInfo("ar-LY");
 	assertNotNull(info);
 
@@ -7027,7 +7027,7 @@ function testLocaleInfoGetWeekendMA() {
 	assertEquals(6, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendOM() {
+function testLocaleInfoGetWeekendOM() {
 	var info = new ilib.LocaleInfo("ar-OM");
 	assertNotNull(info);
 	
@@ -7035,7 +7035,7 @@ function testLocaleInfoGetGetWeekendOM() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendQA() {
+function testLocaleInfoGetWeekendQA() {
 	var info = new ilib.LocaleInfo("ar-QA");
 	assertNotNull(info);
 
@@ -7043,7 +7043,7 @@ function testLocaleInfoGetGetWekendQA() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWeekendSA() {
+function testLocaleInfoGetWeekendSA() {
 	var info = new ilib.LocaleInfo("ar-SA");
 	assertNotNull(info);
 	
@@ -7051,7 +7051,7 @@ function testLocaleInfoGetGetWeekendSA() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendSD() {
+function testLocaleInfoGetWeekendSD() {
 	var info = new ilib.LocaleInfo("ar-SD");
 	assertNotNull(info);
 
@@ -7067,7 +7067,7 @@ function testLocaleInfoGetWeekendSY() {
 	assertEquals(6, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendTN() {
+function testLocaleInfoGetWeekendTN() {
 	var info = new ilib.LocaleInfo("ar-TN");
 	assertNotNull(info);
 	
@@ -7075,7 +7075,7 @@ function testLocaleInfoGetGetWeekendTN() {
 	assertEquals(6, info.getWeekEndEnd());
 }
 
-function testLocaleInfoGetGetWekendYE() {
+function testLocaleInfoGetWeekendYE() {
 	var info = new ilib.LocaleInfo("ar-YE");
 	assertNotNull(info);
 
@@ -7091,14 +7091,14 @@ function testLocaleInfoGetWeekendAF() {
 	assertEquals(5, info.getWeekEndEnd());
 }	
 
-function testLocaleInfoGetGetWeekendIR() {
+function testLocaleInfoGetWeekendIR() {
 	var info = new ilib.LocaleInfo("fa-IR");
 	assertNotNull(info);
 	
 	assertEquals(5, info.getWeekEndStart());
 	assertEquals(5, info.getWeekEndEnd());
 }
-function testLocaleInfoGetGetWeekendIN() {
+function testLocaleInfoGetWeekendIN() {
 	var info = new ilib.LocaleInfo("hi-IN");
 	assertNotNull(info);
 	
