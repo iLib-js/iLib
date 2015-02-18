@@ -1382,7 +1382,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_am_ET() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("dalam 30 detik", fmt.formatRelative(reference, date));
+    assertEquals("በ 30 ሰከንዶች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1408,7 +1408,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_am_ET() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 detik yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ30 ሰከንዶች በፊት", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeWithinHourAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 10 menit", fmt.formatRelative(reference, date));
+    assertEquals("በ 10 ደቂቃዎች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1460,7 +1460,7 @@ function testDateFmtFormatRelativeWithinHourBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 menit yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ10 ደቂቃዎች በፊት", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1486,7 +1486,7 @@ function testDateFmtFormatRelativeWithinDayAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 4 jam", fmt.formatRelative(reference, date));
+    assertEquals("በ 4 ሰዓቶች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1512,7 +1512,7 @@ function testDateFmtFormatRelativeWithinDayBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 jam yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ4 ሰዓቶች በፊት", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_am_ET() {
@@ -1539,7 +1539,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 4 hari", fmt.formatRelative(reference, date));
+    assertEquals("በ 4 ቀናት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1565,7 +1565,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 hari yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ4 ቀናት በፊት", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_am_ET() {
@@ -1592,7 +1592,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 9 minggu", fmt.formatRelative(reference, date));
+    assertEquals("በ 9 ሳምንታት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1618,7 +1618,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 minggu yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ9 ሳምንታት በፊት", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET() {
@@ -1645,7 +1645,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 16 bulan", fmt.formatRelative(reference, date));
+    assertEquals("በ 16 ወራት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1671,7 +1671,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 bulan yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ14 ወራት በፊት", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_am_ET() {
@@ -1698,7 +1698,7 @@ function testDateFmtFormatRelativeYearsAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("dalam 14 tahun", fmt.formatRelative(reference, date));
+    assertEquals("በ 14 ዓመታት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_am_ET() {
     var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
@@ -1724,6 +1724,6 @@ function testDateFmtFormatRelativeYearsBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 tahun yang lalu", fmt.formatRelative(reference, date));
+    assertEquals("ከ21 ዓመታት በፊት", fmt.formatRelative(reference, date));
 }
 
