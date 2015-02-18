@@ -499,7 +499,7 @@ function testDurFmtAMAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("", duration.toString());
+    	    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -708,137 +708,12 @@ function testDurFmtAMFormatShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("", duration.toString());
+    	    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1ሰዓ 1ደ 1ሰከ", duration.toString());
     	    callbackCalled = true;
     	}
     });
     assertTrue(callbackCalled);
 };
-
-
-
-function testDurFmtAMFormatWesternShortDefaultStyle1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "short",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
-function testDurFmtAMFormatWesternShortText1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "short",
-    	style: "text",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
-function testDurFmtAMFormatWesternShortClock1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "short",
-    	style: "clock",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
-function testDurFmtAMFormatWesternMedium1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "medium",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
-function testDurFmtAMFormatWesternLong1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "long",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
-function testDurFmtAMFormatWesternFull1() {
-    var fmt = new ilib.DurFmt({
-    	locale: "am-ET",
-    	length: "full",
-    	useNative: false
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("", duration.toString());
-};
-
 
 function testDurFmtAMAsync2() {
 	var callbackCalled = false;
@@ -859,7 +734,7 @@ function testDurFmtAMAsync2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("", duration.toString());
+    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -886,7 +761,7 @@ function testDurFmtAMAsyncWithLocale2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("", duration.toString());
+    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -914,7 +789,7 @@ function testDurFmtAMFormatWesternShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("", duration.toString());
+    	    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
