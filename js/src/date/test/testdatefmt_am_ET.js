@@ -1102,7 +1102,7 @@ function testDateFmtShortTimeComponentsHMSAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WIB", fmt.format(date));
+    assertEquals("2:45:37 ከሰዓት WIB", fmt.format(date));
 }
 
 
@@ -1154,7 +1154,7 @@ function testDateFmtFullTimeComponentsH_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13", fmt.format(date));
+    assertEquals("2", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsMS_am_ET() {
@@ -1188,7 +1188,7 @@ function testDateFmtFullTimeComponentsHM_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("2:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS_am_ET() {
@@ -1205,7 +1205,7 @@ function testDateFmtFullTimeComponentsHMS_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("2:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA_am_ET() {
@@ -1222,7 +1222,7 @@ function testDateFmtFullTimeComponentsHMA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("2:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ_am_ET() {
@@ -1245,7 +1245,7 @@ function testDateFmtFullTimeComponentsHMZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WIB", fmt.format(date));
+    assertEquals("2:45 WIB", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_am_ET() {
@@ -1268,7 +1268,7 @@ function testDateFmtFullTimeComponentsHMAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WIB", fmt.format(date));
+    assertEquals("2:45 ከሰዓት WIB", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_am_ET() {
@@ -1285,7 +1285,7 @@ function testDateFmtFullTimeComponentsHMSA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("2:45:37 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ_am_ET() {
@@ -1308,7 +1308,7 @@ function testDateFmtFullTimeComponentsHMSZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WIB", fmt.format(date));
+    assertEquals("2:45:37 WIB", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
@@ -1331,7 +1331,7 @@ function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WIB", fmt.format(date));
+    assertEquals("2:45:37 ከሰዓት WIB", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_am_ET() {
