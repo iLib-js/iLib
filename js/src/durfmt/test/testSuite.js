@@ -30,6 +30,7 @@ function suite() {
     
     var suites = [
 		"testdurfmt.js",
+		"testdurfmt_am_ET.js",
 		"testdurfmt_ar_SA.js"
 	];
 
