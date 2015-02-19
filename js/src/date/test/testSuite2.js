@@ -50,7 +50,8 @@ function suite() {
 		"testdatefmt_mr_IN.js",
 		"testdatefmt_ms_MY.js",
 		"testdatefmt_nb_NO.js",
-		"testdatefmt_nl_NL.js"
+		"testdatefmt_nl_NL.js",
+		"testdatefmt_or_IN.js"
 	];
 
     suites.forEach(function (path) {
