@@ -29,6 +29,8 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
+		"testdatefmt_af_NA.js",
+		"testdatefmt_af_ZA.js",
    		"testdatefmt_ar_SA.js",
 		"testdatefmt_as_IN.js",
 		"testdatefmt_bg.js",
