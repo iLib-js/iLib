@@ -51,7 +51,8 @@ function suite() {
 		"testdatefmtrange_mr_IN.js",
 		"testdatefmtrange_ms_MY.js",
 		"testdatefmtrange_nb_NO.js",
-		"testdatefmtrange_nl_NL.js"
+		"testdatefmtrange_nl_NL.js",
+		"testdatefmtrange_or_IN.js"
 	];
 
     suites.forEach(function (path) {
