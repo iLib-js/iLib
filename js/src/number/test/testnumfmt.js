@@ -868,6 +868,17 @@ function testNumFmtGetUseNativeHasNativeButFalse() {
     assertFalse(fmt.getUseNative());
 }
 
+function testNumFmtGetUseNativeHasNativeButFalse_OR_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    // Oriya does have native digits, but they are not frequently used
+    assertFalse(fmt.getUseNative());
+}
+
 function testNumFmtGetUseNativeOverrideTrue() {
     var fmt = new ilib.NumFmt({
         locale: "en-US",
@@ -943,6 +954,17 @@ function testNumFmtFormatNativeDefaultTrue() {
     assertEquals("১২৩.৪৫৬", fmt.format(123.456));
 }
 
+function testNumFmtFormatNativeDefaultFalse_or_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    // oriya has native digits, but they are not used by default
+    assertEquals("123.456", fmt.format(123.456));
+}
+
 function testNumFmtFormatNativeDefaultFalse() {
     var fmt = new ilib.NumFmt({
         locale: "ta-IN"
@@ -953,6 +975,7 @@ function testNumFmtFormatNativeDefaultFalse() {
     // Tamil has native digits, but they are not used by default
     assertEquals("123.456", fmt.format(123.456));
 }
+
 
 function testNumFmtFormatNativeExplicitTrue() {
     var fmt = new ilib.NumFmt({
@@ -987,9 +1010,31 @@ function testNumFmtFormatNativeExplicitTrue2() {
     assertEquals("௧௨௩.௪௫௬", fmt.format(123.456));
 }
 
+function testNumFmtFormatNativeExplicitTrue2_or_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("୧୨୩.୪୫୬", fmt.format(123.456));
+}
+
 function testNumFmtFormatNativeExplicitFalse2() {
     var fmt = new ilib.NumFmt({
         locale: "ta-IN",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeExplicitFalse2_or_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN",
         useNative: false
     });
     
@@ -1962,6 +2007,95 @@ function testNumFmtPercentageNativeFormatRegular_ta_IN() {
     assertEquals("57.8%", fmt.format(57.8));
 }
 
+//test cases for or-IN
+
+function testNumFmt_or_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-12,34,568.78", fmt.format(-1234568.78));
+}
+
+
+function testNumFmtNative_or_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "or-IN",
+	useNative: true,
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-୧୨,୩୪,୫୬୮.୭୮", fmt.format(-1234568.78));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_or_IN1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "or-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ ୧,୦୦,୧୧୦.୫୭", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "or-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹-୧,୦୦,୧୧୦.୫୭", fmt.format(-100110.57));
+}
+
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "or-IN",
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+}
+
+
+function testNumFmtPercentageFormatRegular_or_IN() {
+    var fmt = new ilib.NumFmt({
+	locale: "or-IN",
+	useNative: true,
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("୫୭.୮%", fmt.format(57.8));
+}
+
+
+function testNumFmtPercentageNativeFormatRegular_or_IN() {
+    var fmt = new ilib.NumFmt({
+	locale: "or-IN",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
 //test acses for ml-IN
 
 function testNumFmt_ml_IN() {
