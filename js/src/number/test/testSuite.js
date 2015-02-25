@@ -31,6 +31,7 @@ function suite() {
     var suites = [
 		"testcurrency.js",
 		"testnumfmt.js",
+		"testnumfmt_af.js",
 		"testnumprs.js"
 	];
 
