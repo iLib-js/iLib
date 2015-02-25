@@ -4,7 +4,7 @@
         "date": {
             "dm": {
                 "s": "M/d",
-                "m": "d MMM",
+                "m": "MMM d",
                 "l": "MMM d",
                 "f": "MMMM d"
             },
@@ -27,10 +27,10 @@
                 "f": "EEEE፣ MMM d yyyy"
             },
             "dmw": {
-                "s": "E, M/d",
-                "m": "EE, M/d",
-                "l": "EEEE, MMM d",
-                "f": "EEEE, MMM d"
+                "s": "E፣ M/d",
+                "m": "EE፣, M/d",
+                "l": "EEE፣, MMM d",
+                "f": "EEEE፣, MMM d"
             },
             "n": {
                 "m": "N"
