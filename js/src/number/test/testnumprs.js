@@ -514,3 +514,399 @@ function testNumberParseAsyncCurrency() {
     });
     assertTrue(callbackCalled);
 }
+
+/*Test cases for Afrikaans*/
+function testNumberFloatAF() {
+    var num = new ilib.Number("3,4", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloatAFNegative() {
+    var num = new ilib.Number("-3,4", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
+function testNumberFloatAFThousands() {
+    var num = new ilib.Number("1.233,4", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(1233.4, num.valueOf());
+}
+
+function testNumberFloatAFThousandsNegative() {
+    var num = new ilib.Number("-1.233,4", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
+function testNumberFloatAFWithDashForZeros() {
+    var num = new ilib.Number("3,-", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloatAFStartsWithDecimal() {
+    var num = new ilib.Number(",4342", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatAFStartsWithZero() {
+    var num = new ilib.Number("0,4342", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatAFStartsWithDecimalNegative() {
+    var num = new ilib.Number("-,4342", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatAFStartsWithZeroNegative() {
+    var num = new ilib.Number("-0,4342", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatAFStartsWithPeriodIgnore() {
+    var num = new ilib.Number(".4342", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
+}
+
+function testNumberFloatAFWithMDashForZeros() {
+    var num = new ilib.Number("3,—", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberIntAF() {
+    var num = new ilib.Number("123", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123, num.valueOf());
+}
+
+function testNumberIntAFThousands() {
+    var num = new ilib.Number("123.456", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123456, num.valueOf());
+}
+
+function testNumberInvalidAF() {
+    var num = new ilib.Number("123,234,234", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123.234, num.valueOf());
+}
+
+function testNumberEmptyAF() {
+    var num = new ilib.Number("", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0, num.valueOf());
+}
+
+function testNumberPercentageAF() {
+    var num = new ilib.Number("58,4 %", {
+    	locale: "af-ZA",
+    	type: "percentage"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.584, num.valueOf());
+}
+
+function testNumberPercentageAFNoTypeSpecified() {
+    var num = new ilib.Number("58,4 %", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(58.4, num.valueOf());
+}
+
+function testNumberCurrencyAFValue() {
+    var num = new ilib.Number("R5,84", {
+    	locale: "af-ZA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    assertEquals(5.84, num.valueOf());
+}
+
+function testNumberCurrencyAFType() {
+    var num = new ilib.Number("R5,84", {
+    	locale: "af-ZA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("ZAR", cur.getCode());
+}
+
+function testNumberCurrencyAFNoTypeSpecified() {
+    var num = new ilib.Number("5,84 €", {
+    	locale: "af-ZA"
+    });
+    assertNotNull(num);
+    
+    assertUndefined(num.getCurrency());
+}
+
+function testNumberCurrencyAFTypeUsingISOCode() {
+    var num = new ilib.Number("5,84 ZAR", {
+    	locale: "af-ZA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("ZAR", cur.getCode());
+}
+/*Nambian*/
+/*Test cases for Afrikaans*/
+function testNumberFloatNA() {
+    var num = new ilib.Number("3,4", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloatNANegative() {
+    var num = new ilib.Number("-3,4", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
+function testNumberFloatNAThousands() {
+    var num = new ilib.Number("1.233,4", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(1233.4, num.valueOf());
+}
+
+function testNumberFloatNAThousandsNegative() {
+    var num = new ilib.Number("-1.233,4", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
+function testNumberFloatNAWithDashForZeros() {
+    var num = new ilib.Number("3,-", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloatNAStartsWithDecimal() {
+    var num = new ilib.Number(",4342", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatNAStartsWithZero() {
+    var num = new ilib.Number("0,4342", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatNAStartsWithDecimalNegative() {
+    var num = new ilib.Number("-,4342", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatNAStartsWithZeroNegative() {
+    var num = new ilib.Number("-0,4342", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatNAStartsWithPeriodIgnore() {
+    var num = new ilib.Number(".4342", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
+}
+
+function testNumberFloatNAWithMDashForZeros() {
+    var num = new ilib.Number("3,—", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberIntNA() {
+    var num = new ilib.Number("123", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123, num.valueOf());
+}
+
+function testNumberIntNAThousands() {
+    var num = new ilib.Number("123.456", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123456, num.valueOf());
+}
+
+function testNumberInvalidNA() {
+    var num = new ilib.Number("123,234,234", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123.234, num.valueOf());
+}
+
+function testNumberEmptyNA() {
+    var num = new ilib.Number("", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0, num.valueOf());
+}
+
+function testNumberPercentageNA() {
+    var num = new ilib.Number("58,4 %", {
+    	locale: "af-NA",
+    	type: "percentage"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.584, num.valueOf());
+}
+
+function testNumberPercentageNANoTypeSpecified() {
+    var num = new ilib.Number("58,4 %", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertEquals(58.4, num.valueOf());
+}
+
+function testNumberCurrencyNAValue() {
+    var num = new ilib.Number("5,84 $", {
+    	locale: "af-NA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    assertEquals(5.84, num.valueOf());
+}
+
+function testNumberCurrencyNAType() {
+    var num = new ilib.Number("$5,84", {
+    	locale: "af-NA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("NAD", cur.getCode());
+}
+
+function testNumberCurrencyNANoTypeSpecified() {
+    var num = new ilib.Number("5,84 $", {
+    	locale: "af-NA"
+    });
+    assertNotNull(num);
+    
+    assertUndefined(num.getCurrency());
+}
+
+function testNumberCurrencyNATypeUsingISOCode() {
+    var num = new ilib.Number("5,84 NAD", {
+    	locale: "af-NA",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("NAD", cur.getCode());
+}
