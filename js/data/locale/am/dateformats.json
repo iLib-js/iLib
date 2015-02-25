@@ -9,16 +9,28 @@
                 "f": "MMMM d"
             },
             "dmy": {
-                "m": "d MMM yy"
+                "s": "dd/MM/yyyy",
+                "m": "d NN yyyy",
+                "l": "d MMMM yyyy",
+                "f": "MMMM d ቀን yyyy"
             },
             "my": {
-                "m": "MMM yy"
+                "s": "MM/yyyy",
+                "m": "NN yyyy",
+                "l": "MMMM yyyy",
+                "f": "MMMM ቀን yyyy"
             },
             "d": {
                 "s": "d",
                 "f": "d",
                 "l": "d",
                 "m": "d"
+            },
+            "y": {
+                "s": "yyyy",
+                "m": "yyyy",
+                "l": "yyyy",
+                "f": "yyyy"
             },
             "dmwy": {
                 "s": "E፣ d/M/yy",
