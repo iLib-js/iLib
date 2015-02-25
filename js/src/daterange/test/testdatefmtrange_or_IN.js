@@ -1,8 +1,7 @@
 /*
- * testdatefmtrange_or_in.js - test the date range formatter object in Punjabi/India
+ * testdatefmtrange_or_IN.js - test the date range formatter object in Oriya/India
  * 
- * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

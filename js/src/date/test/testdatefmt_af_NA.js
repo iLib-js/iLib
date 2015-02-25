@@ -1,7 +1,7 @@
 /*
- * testdatefmt_af_NA.js - test the date formatter object in พฤaiLand
+ * testdatefmt_af_NA.js - test the date formatter object in Afrikaans
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
