@@ -84,6 +84,19 @@ function testScriptGetDefaultLongCode() {
     assertEquals("Sarati", si.getLongCode());
 }
 
+function testScriptGetDefaultLongCodeOrya() {
+    var si = new ilib.ScriptInfo("Orya");
+    assertNotNull(si);
+    
+    assertEquals("Orya", si.getCode());
+    assertEquals(327, si.getCodeNumber());
+    assertEquals("Oriya", si.getName());
+    assertEquals("Oriya", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
 function testScriptGetDefaultLongCodeWithSpaces() {
     var si = new ilib.ScriptInfo("Kore");
     assertNotNull(si);

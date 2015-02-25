@@ -63,6 +63,36 @@ function testLocaleMatcherGetLikelyLocaleByLanguageAndScript() {
 	assertEquals("pa-Arab-PK", locale.getSpec());
 }
 
+function testLocaleMatcherGetLikelyLocaleByLanguageAndScriptOriya() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "or-Orya"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("or-Orya-IN", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByScriptOriya() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "or"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("or-Orya-IN", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLanguageOriya() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "Orya"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("or-Orya-IN", locale.getSpec());
+}
+
 function testLocaleMatcherGetLikelyLocaleByLanguageAndRegion() {
 	var lm = new ilib.LocaleMatcher({
 		locale: "uz-AF"

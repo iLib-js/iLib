@@ -910,3 +910,202 @@ function testNumberCurrencyNATypeUsingISOCode() {
     assertNotUndefined(cur);
     assertEquals("NAD", cur.getCode());
 }
+
+// number parsing test cases for Oriya
+function testNumberFloat_or_IN() {
+    var num = new ilib.Number("3.4", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloat_or_INNegative() {
+    var num = new ilib.Number("-3.4", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
+function testNumberFloat_or_IN_Thousands() {
+    var num = new ilib.Number("1,233.4", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(1233.4, num.valueOf());
+}
+
+function testNumberFloat_or_IN_ThousandsNegative() {
+    var num = new ilib.Number("-1,233.4", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
+function testNumberFloat_or_IN_WithDashForZeros() {
+    var num = new ilib.Number("3.-", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloat_or_IN_StartsWithDecimal() {
+    var num = new ilib.Number(".4342", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloat_or_IN_StartsWithZero() {
+    var num = new ilib.Number("0.4342", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloat_or_IN_StartsWithDecimalNegative() {
+    var num = new ilib.Number("-.4342", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloat_or_IN_StartsWithZeroNegative() {
+    var num = new ilib.Number("-0.4342", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloat_or_IN_StartsWithPeriodIgnore() {
+    var num = new ilib.Number(",4342", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
+}
+
+function testNumberFloat_or_IN_WithMDashForZeros() {
+    var num = new ilib.Number("3.—", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberInt_or_IN_() {
+    var num = new ilib.Number("123", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123, num.valueOf());
+}
+
+function testNumberInt_or_IN_Thousands() {
+    var num = new ilib.Number("123,456", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123456, num.valueOf());
+}
+
+function testNumberInvalid_or_IN_() {
+    var num = new ilib.Number("123.234.234", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123.234, num.valueOf());
+}
+
+function testNumberEmpty_or_IN_() {
+    var num = new ilib.Number("", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0, num.valueOf());
+}
+
+function testNumberPercentage_or_IN_() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "or-IN",
+    	type: "percentage"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.584, num.valueOf());
+}
+
+function testNumberPercentage_or_IN_NoTypeSpecified() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertEquals(58.4, num.valueOf());
+}
+
+function testNumberCurrency_or_IN_Value() {
+    var num = new ilib.Number("5.84 ₹", {
+    	locale: "or-IN",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    assertEquals(5.84, num.valueOf());
+}
+
+function testNumberCurrency_or_IN_Type() {
+    var num = new ilib.Number("5.84 ₹", {
+    	locale: "or-IN",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("INR", cur.getCode());
+}
+
+function testNumberCurrency_or_IN_NoTypeSpecified() {
+    var num = new ilib.Number("5.84 ₹", {
+    	locale: "or-IN"
+    });
+    assertNotNull(num);
+    
+    assertUndefined(num.getCurrency());
+}
+
+function testNumberCurrency_or_IN_TypeUsingISOCode() {
+    var num = new ilib.Number("5.84 IND", {
+    	locale: "or-IN",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("INR", cur.getCode());
+}
+
