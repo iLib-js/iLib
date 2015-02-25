@@ -173,7 +173,7 @@ ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
         if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
             // running in a browser
-            ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
+            ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
             if (!ilib.locale) {
                 // IE on Windows
                 var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
