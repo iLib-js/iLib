@@ -146,6 +146,7 @@ function scanDir(rootDir, dirName, zones) {
 			var ext = filepath.search(".json");
 		
 			if (ext !== -1) {
+				util.print("Found file " + filepath + "\n");
 				zones[filepath.substring(0, ext).replace(/^zoneinfo\//, "")] = loadFile(path.join(rootDir, filepath)) || {};
 			}
 		}
@@ -199,6 +200,10 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
 			util.print("zone " + name + " long name is missing\n");
 		}
 	}
+}
+
+if (!fs.existsSync(path.join(toDir, "zoneinfo"))) {
+	common.makeDirs(path.join(toDir, "zoneinfo"));
 }
 
 for (var zone in timezones) {
