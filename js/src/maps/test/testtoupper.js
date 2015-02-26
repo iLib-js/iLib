@@ -207,3 +207,53 @@ function testToUpper_lt() {
 	});
     assertEquals("AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ", mapper.map("aąbcčdeęėfghiįyjklmnoprsštuųūvzž"));
 }
+
+/*Afrikaans Test cases*/
+function testToUpeer_af_ZA1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-ZA"
+	});
+    assertEquals("AÁÄBCDEÊËÉÈFG", mapper.map("aáäbcdeêëéèfg"));
+}
+
+function testToUpeer_af_ZA2() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-ZA"
+	});
+    assertEquals("HIÎÏÍJKLMNOÔÖÓPQRSTUÛÜÚVWXYZ", mapper.map("hiîïíjklmnoôöópqrstuûüúvwxyz"));
+}
+
+function testToUpeerMixed_af_ZA3() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-ZA"
+	});
+    assertEquals("HIÎ - ÏÍJKL", mapper.map("hiî - ïíjkl"));
+}
+
+
+function testToUpeer_af_NA1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-NA"
+	});
+    assertEquals("AÁÄBCDEÊËÉÈFG", mapper.map("aáäbcdeêëéèfg"));
+}
+
+function testToUpeer_af_NA2() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-NA"
+	});
+    assertEquals("HIÎÏÍJKLMNOÔÖÓPQRSTUÛÜÚVWXYZ", mapper.map("hiîïíjklmnoôöópqrstuûüúvwxyz"));
+}
+
+function testToUpeerMixed_af_NA3() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "af-NA"
+	});
+    assertEquals("HIÎ - ÏÍJKL", mapper.map("hiî - ïíjkl"));
+}
