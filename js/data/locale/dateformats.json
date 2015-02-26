@@ -177,10 +177,10 @@
                 "f": "EEEE, d MMMM"
             },
             "dm": {
-                "s": "dd/MM",
-                "m": "d MMM",
-                "l": "d MMM",
-                "f": "d MMMM"
+                "s": "MM/dd",
+                "m": "MMM d",
+                "l": "MMM d",
+                "f": "MMMM d"
             },
             "my": {
                 "s": "MM/yyyy",
