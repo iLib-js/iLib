@@ -3,19 +3,19 @@
         "order": "{time} {date}",
         "date": {
             "dm": {
-                "s": "M/d",
+                "s": "MM/d",
                 "m": "MMM d",
                 "l": "MMM d",
                 "f": "MMMM d"
             },
             "dmy": {
-                "s": "dd/MM/yyyy",
+                "s": "dd/MM/yy",
                 "m": "d NN yyyy",
                 "l": "d MMMM yyyy",
                 "f": "MMMM d ቀን yyyy"
             },
             "my": {
-                "s": "MM/yyyy",
+                "s": "MM/yy",
                 "m": "NN yyyy",
                 "l": "MMMM yyyy",
                 "f": "MMMM ቀን yyyy"
@@ -34,15 +34,15 @@
             },
             "dmwy": {
                 "s": "E፣ d/M/yy",
-                "m": "EE፣ d/M/yy",
+                "m": "EE፣ d/M/yyyy",
                 "l": "EEE፣ MMM d yyyy",
                 "f": "EEEE፣ MMM d yyyy"
             },
             "dmw": {
                 "s": "E፣ M/d",
-                "m": "EE፣, M/d",
-                "l": "EEE፣, MMM d",
-                "f": "EEEE፣, MMM d"
+                "m": "EE፣ M/d",
+                "l": "EEE፣ MMM d",
+                "f": "EEEE፣ MMM d"
             },
             "n": {
                 "m": "N"
@@ -50,15 +50,15 @@
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a z",
-                "hmsz": "h:mm:ss z",
-                "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss",
-                "ahmz": "h:mm a z",
-                "ahm": "h:mm a",
-                "hm": "h:mm",
-                "hmz": "h:mm z",
-                "ah": "h a"
+                "ahmsz": "j:mm:ss a z",
+                "hmsz": "j:mm:ss z",
+                "ahms": "j:mm:ss a",
+                "hms": "j:mm:ss",
+                "ahmz": "j:mm a z",
+                "ahm": "j:mm a",
+                "hm": "j:mm",
+                "hmz": "j:mm z",
+                "ah": "j a"
             }
         },
         "range": {
