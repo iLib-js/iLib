@@ -1,5 +1,5 @@
 {
-    "gregorian": {
+    "coptic": {
         "order": "{time} {date}",
         "date": {
             "dm": {
@@ -94,6 +94,5 @@
             },
             "c30": "{sy} – {ey}"
         }
-    },
-    "generated": true
+    }
 }
