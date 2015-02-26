@@ -142,3 +142,33 @@ function testLocaleMatcherGetLikelyLocaleByLanguageAndRegionMissing() {
 	assertNotUndefined(locale);
 	assertEquals("en-GB", locale.getSpec());
 }
+
+function testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeAF() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "af-ZA"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("af-ZA", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleCodeAF() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "af"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("af-Latn-ZA", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeAF() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "af-NA"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("af-NA", locale.getSpec());
+}
