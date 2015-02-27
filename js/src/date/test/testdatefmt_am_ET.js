@@ -723,7 +723,7 @@ function testDateFmtShortDateComponentsWDM_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓ፣ 09/29", fmt.format(date));
+    assertEquals("ዓ፣ 29/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_am_ET() {

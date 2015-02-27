@@ -120,9 +120,9 @@
                 "f": "MMMM d ቀን yyyy"
             },
             "dmw": {
-                "s": "E፣ MM/dd",
-                "m": "EE፣ MMM d",
-                "l": "EEE፣ MMM d",
+                "s": "E፣ dd/MM",
+                "m": "EE፣ d MMM",
+                "l": "EEE፣ d MMM",
                 "f": "EEEE፣ MMMM d"
             },
             "dm": {
