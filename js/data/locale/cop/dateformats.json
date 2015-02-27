@@ -9,8 +9,11 @@
                 "f": "‏d MMMM"
             },
             "dmy": {
-                "m": "‏d MMM، yy"
-            },
+                "s": "dd/MM/yyyy",
+                "m": "dd‏/NN/yyyy",
+                "l": "d MMMM، yyyy",
+                "f": "d MMMM، yyyy"
+             },
             "my": {
                 "m": "MMM، yy"
             },
