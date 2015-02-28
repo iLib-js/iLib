@@ -38,7 +38,7 @@ function testDateFmtSimpleShort_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("‏29/09/2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_cop_EG() {
@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ግንቦ 2011", fmt.format(date));
+    assertEquals("‏29 بشنس 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_cop_EG() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ግንቦት 2011", fmt.format(date));
+    assertEquals("‏29 بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_cop_EG() {
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("‏29 بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_cop_EG() {
@@ -106,7 +106,7 @@ function testDateFmtSimpleTimeShort_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium_cop_EG() {
@@ -123,7 +123,7 @@ function testDateFmtSimpleTimeMedium_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeLong_cop_EG() {
@@ -140,7 +140,7 @@ function testDateFmtSimpleTimeLong_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeFull_cop_EG() {
@@ -157,7 +157,7 @@ function testDateFmtSimpleTimeFull_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleShort_cop_EG() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29/09/11", fmt.format(date));
+    assertEquals("1:45 ከሰዓት ‏29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_cop_EG() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 ግንቦ 2011", fmt.format(date));
+    assertEquals("1:45 ከሰዓት ‏29 بشنس 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_cop_EG() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 ግንቦት 2011", fmt.format(date));
+    assertEquals("1:45 ከሰዓት ‏29 بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_cop_EG() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("1:45 ከሰዓት ‏29 بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtTemplateCalendar_cop_EG() {
@@ -252,7 +252,7 @@ function testDateFmtTemplateCalendarIncompatibleDateType_cop_EG() {
     
     var date = new ilib.Date.CopticDate({
 		locale: "cop-EG",
-		year: 2011,
+		year: 1731,
 		month: 9,
 		day: 29,
 		hour: 13,
@@ -261,7 +261,7 @@ function testDateFmtTemplateCalendarIncompatibleDateType_cop_EG() {
 		millisecond: 0
 	});
     // convert automatically to a Julian calendar date
-    assertEquals("2019-05-24 20:45", fmt.format(date));
+    assertEquals("2015-05-24 15:45", fmt.format(date));
 }
 
 function testDateFmtTemplateClock12SwitchHH_cop_EG() {
@@ -415,7 +415,7 @@ function testDateFmtTypeDate_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("‏29/09/2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_cop_EG() {
@@ -432,7 +432,7 @@ function testDateFmtTypeTime_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtTypeDateTime_cop_EG() {
@@ -449,7 +449,7 @@ function testDateFmtTypeDateTime_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29/09/11", fmt.format(date));
+    assertEquals("1:45 ከሰዓት ‏29/09/2011", fmt.format(date));
 }
 
 
@@ -484,7 +484,7 @@ function testDateFmtShortDateComponentsM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_cop_EG() {
@@ -501,7 +501,7 @@ function testDateFmtShortDateComponentsN_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD() {
@@ -535,7 +535,7 @@ function testDateFmtShortDateComponentsDM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/29", fmt.format(date));
+    assertEquals("‏29/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_cop_EG() {
@@ -552,7 +552,7 @@ function testDateFmtShortDateComponentsMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/11", fmt.format(date));
+    assertEquals("‏09/2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_cop_EG() {
@@ -569,7 +569,7 @@ function testDateFmtShortDateComponentsDMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("‏29/09/2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_cop_EG() {
@@ -586,7 +586,7 @@ function testDateFmtShortDateComponentsWDM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓ፣ 9/29", fmt.format(date));
+    assertEquals("س، 29/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_cop_EG() {
@@ -603,7 +603,7 @@ function testDateFmtShortDateComponentsWDMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓ፣ 29/9/11", fmt.format(date));
+    assertEquals("س، 29/09/2011", fmt.format(date));
 }
 
 
@@ -638,7 +638,7 @@ function testDateFmtFullDateComponentsM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት", fmt.format(date));
+    assertEquals("بشنس", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD() {
@@ -672,7 +672,7 @@ function testDateFmtFullDateComponentsDM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29", fmt.format(date));
+    assertEquals("‏29 بشنس", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_cop_EG() {
@@ -689,7 +689,7 @@ function testDateFmtFullDateComponentsMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት ቀን 2011", fmt.format(date));
+    assertEquals("بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_cop_EG() {
@@ -706,7 +706,7 @@ function testDateFmtFullDateComponentsDMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("‏29 بشنس، 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_cop_EG() {
@@ -723,7 +723,7 @@ function testDateFmtFullDateComponentsWDM_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓርብ፣ ግንቦት 29", fmt.format(date));
+    assertEquals("السبت، 29 بشنس", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_cop_EG() {
@@ -740,7 +740,7 @@ function testDateFmtFullDateComponentsWDMY_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓርብ፣ ግንቦት 29 2011", fmt.format(date));
+    assertEquals("السبت، 29 بشنس، 2011", fmt.format(date));
 }
 
 
@@ -826,7 +826,7 @@ function testDateFmtShortTimeComponentsHM_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMS_cop_EG() {
@@ -843,7 +843,7 @@ function testDateFmtShortTimeComponentsHMS_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMA_cop_EG() {
@@ -860,7 +860,7 @@ function testDateFmtShortTimeComponentsHMA_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMZ_cop_EG() {
@@ -882,7 +882,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 EAT", fmt.format(date));
+    assertEquals("1:45 EAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
@@ -904,7 +904,7 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45 ከሰዓት EAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_cop_EG() {
@@ -921,7 +921,7 @@ function testDateFmtShortTimeComponentsHMSA_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 ከሰዓት", fmt.format(date));
+    assertEquals("1:45:37 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
@@ -943,7 +943,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
@@ -965,7 +965,7 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45:37 ከሰዓት EAT", fmt.format(date));
 }
 
 
@@ -1051,7 +1051,7 @@ function testDateFmtFullTimeComponentsHM_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS_cop_EG() {
@@ -1068,7 +1068,7 @@ function testDateFmtFullTimeComponentsHMS_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA_cop_EG() {
@@ -1085,7 +1085,7 @@ function testDateFmtFullTimeComponentsHMA_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ_cop_EG() {
@@ -1108,7 +1108,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 EAT", fmt.format(date));
+    assertEquals("1:45 EAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
@@ -1131,7 +1131,7 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45 ከሰዓት EAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_cop_EG() {
@@ -1148,7 +1148,7 @@ function testDateFmtFullTimeComponentsHMSA_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 ከሰዓት", fmt.format(date));
+    assertEquals("1:45:37 ከሰዓት", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
@@ -1171,7 +1171,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
@@ -1194,7 +1194,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("2:45:37 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45:37 ከሰዓት EAT", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
@@ -1218,7 +1218,7 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
 		millisecond: 0
 	});
     // does not observe DST, so no difference in the TZ spec
-    assertEquals("2:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EAT", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {

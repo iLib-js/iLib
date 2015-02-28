@@ -3,19 +3,22 @@
         "order": "{time} {date}",
         "date": {
             "dm": {
-                "s": "‏d/M",
+                "s": "‏dd/MM",
                 "m": "‏d MMM",
-                "l": "‏d MMM",
+                "l": "‏d MMMM",
                 "f": "‏d MMMM"
             },
             "dmy": {
-                "s": "dd/MM/yyyy",
-                "m": "dd‏/NN/yyyy",
-                "l": "d MMMM، yyyy",
-                "f": "d MMMM، yyyy"
+                "s": "‏dd/MM/yyyy",
+                "m": "‏d MMM yyyy",
+                "l": "‏d MMMM، yyyy",
+                "f": "‏d MMMM، yyyy"
              },
             "my": {
-                "m": "MMM، yy"
+                "s": "‏MM/yyyy",
+                "m": "MMM، yy",
+                "l": "MMMM، yyyy",
+                "f": "MMMM، yyyy"
             },
             "d": {
                 "s": "‏d",
@@ -24,19 +27,40 @@
                 "m": "‏d"
             },
             "dmwy": {
-                "s": "E، d/M/y",
-                "m": "EE، d/M/y",
-                "l": "EEE، d MMM، yyyy",
-                "f": "EEEE، d MMM، yyyy"
+                "s": "E، dd/MM/yyyy",
+                "m": "EE، d MMM yyyy",
+                "l": "EEE، d MMMM، yyyy",
+                "f": "EEEE، d MMMM، yyyy"
             },
             "dmw": {
-                "s": "E، d/M",
-                "m": "EE، d/M",
-                "l": "EEE، d MMM",
-                "f": "EEEE، d MMM"
+                "s": "E، dd/MM",
+                "m": "EE، dd/MM",
+                "l": "EEE، d MMMM",
+                "f": "EEEE، d MMMM"
+            },
+            "y": {
+                "s": "yyyy",
+                "m": "yyyy",
+                "l": "yyyy",
+                "f": "yyyy"
+            },
+            "m": {
+                "s": "MM",
+                "m": "MMM",
+                "l": "MMMM",
+                "f": "MMMM"
             },
             "n": {
-                "m": "N"
+                "s": "N",
+                "m": "NN",
+                "l": "MMMM",
+                "f": "MMMM"
+            },
+            "w": {
+                "s": "E",
+                "m": "EE",
+                "l": "EEE",
+                "f": "EEEE"
             }
         },
         "time": {
@@ -49,7 +73,12 @@
                 "ahm": "h:mm a",
                 "hm": "h:mm",
                 "hmz": "h:mm z",
-                "ah": "h a"
+                "ah": "h a",
+                "hm": "h:mm",
+                "ms": "mm:ss",
+                "h": "h",
+                "m": "mm",
+                "s": "ss"
             }
         },
         "range": {
