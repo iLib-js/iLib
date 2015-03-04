@@ -30,7 +30,7 @@ function usage() {
 		"-h or --help\n" +
 		"  this help\n" +
 		"source_dir\n" +
-		'  Where to put the results. Default "."\n' +
+		'  Where to find json files to compress. Default "."\n' +
 		"target_dir\n" +
 		'  Where to put the results. Default "compressed"\n');
 	process.exit(1);
