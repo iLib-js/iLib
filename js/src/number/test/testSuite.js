@@ -32,6 +32,7 @@ function suite() {
 		"testcurrency.js",
 		"testnumfmt.js",
 		"testnumfmt_af.js",
+		"testnumfmt_am.js",
 		"testnumprs.js"
 	];
 

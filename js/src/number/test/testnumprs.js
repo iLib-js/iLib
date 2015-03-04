@@ -1108,4 +1108,200 @@ function testNumberCurrency_or_IN_TypeUsingISOCode() {
     assertNotUndefined(cur);
     assertEquals("INR", cur.getCode());
 }
+/*Amharic test cases */
+function testNumberFloatET() {
+    var num = new ilib.Number("3.4", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
 
+function testNumberFloatETNegative() {
+    var num = new ilib.Number("-3.4", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
+function testNumberFloatETThousands() {
+    var num = new ilib.Number("1.233.4", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(1.233, num.valueOf());
+}
+
+function testNumberFloatETThousandsNegative() {
+    var num = new ilib.Number("-1.2334", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1.2334, num.valueOf());
+}
+
+function testNumberFloatETWithDashForZeros() {
+    var num = new ilib.Number("3.-", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloatETStartsWithDecimal() {
+    var num = new ilib.Number(".4342", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatETStartsWithZero() {
+    var num = new ilib.Number("0.4342", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatETStartsWithDecimalNegative() {
+    var num = new ilib.Number("-.4342", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatETStartsWithZeroNegative() {
+    var num = new ilib.Number("-0.4342", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatETStartsWithPeriodIgnore() {
+    var num = new ilib.Number("4342", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
+}
+
+function testNumberFloatETWithMDashForZeros() {
+    var num = new ilib.Number("3.—", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberIntET() {
+    var num = new ilib.Number("123", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123, num.valueOf());
+}
+
+function testNumberIntETThousands() {
+    var num = new ilib.Number("123,456", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123456, num.valueOf());
+}
+
+function testNumberInvalidET() {
+    var num = new ilib.Number("123.234.234", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123.234, num.valueOf());
+}
+
+function testNumberEmptyET() {
+    var num = new ilib.Number("", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0, num.valueOf());
+}
+
+function testNumberPercentageET() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "am-ET",
+    	type: "percentage"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.584, num.valueOf());
+}
+
+function testNumberPercentageETNoTypeSpecified() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertEquals(58.4, num.valueOf());
+}
+
+function testNumberCurrencyETValue() {
+    var num = new ilib.Number("5.84 Br", {
+    	locale: "am-ET",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    assertEquals(5.84, num.valueOf());
+}
+
+function testNumberCurrencyETType() {
+    var num = new ilib.Number("Br 5.84", {
+    	locale: "am-ET",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("ETB", cur.getCode());
+}
+
+function testNumberCurrencyETNoTypeSpecified() {
+    var num = new ilib.Number("5.84 €", {
+    	locale: "am-ET"
+    });
+    assertNotNull(num);
+    
+    assertUndefined(num.getCurrency());
+}
+
+function testNumberCurrencyETTypeUsingISOCode() {
+    var num = new ilib.Number("5.84 ETB", {
+    	locale: "am-ET",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("ETB", cur.getCode());
+}
