@@ -790,6 +790,6 @@ function testMergeAndPruneComplexObject() {
 	};
 	
 	common.mergeAndPrune(data);
-	util.print("data.a.m.data is " + JSON.stringify(data.a.m.data) + "\n");
+	//util.print("data.a.m.data is " + JSON.stringify(data.a.m.data) + "\n");
 	assertTrue(common.isEmpty(data.a.m.data));
 }

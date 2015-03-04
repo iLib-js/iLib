@@ -286,6 +286,64 @@ exports.merge = function merge(object1, object2, name1, name2) {
 };
 
 /**
+ * Return the default locale for the common classes if one has been set. This 
+ * locale will be used when no explicit locale is passed to any common 
+ * class. If the default locale is not set, the common classes will attempt 
+ * to use the locale of the environment it is running in, if it can find 
+ * that. If not, it will default to the locale "en-US".<p>
+ * 
+ * @static
+ * @return {string} the locale specifier for the default locale
+ */
+exports.getLocale = function () {
+    if (typeof(exports.locale) !== 'string') {
+        if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+            // running in a browser
+            exports.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
+            if (!exports.locale) {
+                // IE on Windows
+                var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                    navigator.browserLanguage : 
+                    (typeof(navigator.userLanguage) !== 'undefined' ? 
+                        navigator.userLanguage : 
+                        (typeof(navigator.systemLanguage) !== 'undefined' ?
+                            navigator.systemLanguage :
+                            undefined));
+                if (typeof(lang) !== 'undefined' && lang) {
+                    // for some reason, MS uses lower case region tags
+                    exports.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                }
+            }
+        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+            // webOS
+            if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
+                exports.locale = PalmSystem.locales.UI;
+            }
+        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+            // running under rhino
+            if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
+                exports.locale = environment.user.language;
+                if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
+                    exports.locale += '-' + environment.user.country;
+                }
+            }
+        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+            // running under nodejs
+            var lang = process.env.LANG || process.env.LC_ALL;
+            // the LANG variable on unix is in the form "lang_REGION.CHARSET"
+            // where language and region are the correct ISO codes separated by
+            // an underscore. This translate it back to the BCP-47 form.
+            if (lang && lang !== 'undefined') {
+                exports.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+            }
+        }
+             
+        exports.locale = typeof(exports.locale) === 'string' ? exports.locale : 'en-US';
+    }
+    return exports.locale;
+};
+
+/**
  * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
@@ -334,7 +392,7 @@ exports.merge = function merge(object1, object2, name1, name2) {
  */
 exports.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		var spec = language; // || ilib.getLocale();
+		var spec = language || exports.getLocale();
 		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
         	if (exports.Locale.isLanguageCode(parts[i])) {
@@ -638,7 +696,7 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 		for (var prop in localeData) {
 			// util.print("merging " + prop + "\n");
 			if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
-				util.print(prop + " ");
+				// util.print(prop + " ");
 				localeData[prop].merged = exports.merge(localeData.merged || {}, localeData[prop].data || {});
 				localeData[prop].data = exports.prune(localeData.merged || {}, localeData[prop].data || {});
 				// util.print("recursing\n");

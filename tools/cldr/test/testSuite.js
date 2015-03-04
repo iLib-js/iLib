@@ -32,7 +32,9 @@ function suite() {
     var suites = [
    	    "testcommon.js",
 	    "testunifile.js",
-	    "testunidata.js"
+	    "testunidata.js",
+	    "testtranslationunit.js",
+	    "testtranslationset.js"
 	];
 
     suites.forEach(function (path) {
