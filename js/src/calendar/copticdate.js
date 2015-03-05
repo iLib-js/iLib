@@ -89,7 +89,9 @@ ilib.Date.CopticRataDie = function(params) {
 	 */
 	this.epoch = 1825028.5;
 
-	ilib.Date.EthiopicRataDie.call(this, ilib.merge(params || {}, {cal: this.cal}));
+	var cal = {cal: this.cal};
+	ilib.shallowCopy(params || {}, cal);
+	ilib.Date.EthiopicRataDie.call(this, cal);
 };
 
 ilib.Date.CopticRataDie.prototype = new ilib.Date.EthiopicRataDie();
