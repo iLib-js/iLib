@@ -3,7 +3,7 @@
 		"order": "{time} {date}",
 		"date": {
 			"dmwy": {
-				"s": "E dd/MM/yy",
+				"s": "E dd/M/yy",
 				"m": "EE dd/MM/yyyy",
 				"l": "EEE dd MMM yyyy",
 				"f": "EEEE 'ngày' dd MMMM 'năm' yyyy"

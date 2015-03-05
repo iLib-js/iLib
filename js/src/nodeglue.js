@@ -1,6 +1,6 @@
 /* jshint node: true */
 // pass the ilib definition to our callers
-var ilib = require("./ilib-dyn-full-compiled.js").ilib;
+var ilib = require("./ilib-dyn-full.js").ilib;
 exports.ilib = ilib;
 
 var path = require("path"),

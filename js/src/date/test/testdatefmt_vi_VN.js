@@ -92,6 +92,74 @@ function testDateFmtSimpleFull_vi_VN() {
     assertEquals("ngày 29 tháng chín năm 2011", fmt.format(date));
 }
 
+function testDateFmtAllComponentsShort_vi_VN() {
+    var fmt = new ilib.DateFmt({locale: "vi-VN", length: "short", date: "wdmy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("t5 29/9/11", fmt.format(date));
+}
+
+function testDateFmtAllComponentsMedium_vi_VN() {
+    var fmt = new ilib.DateFmt({locale: "vi-VN", length: "medium", date: "wdmy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("t5 29/09/2011", fmt.format(date));
+}
+
+function testDateFmtAllComponentsLong_vi_VN() {
+    var fmt = new ilib.DateFmt({locale: "vi-VN", length: "long", date: "wdmy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("th 5 29 th.9 2011", fmt.format(date));
+}
+
+function testDateFmtAllComponentsFull_vi_VN() {
+    var fmt = new ilib.DateFmt({locale: "vi-VN", length: "full", date: "wdmy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("thứ năm ngày 29 tháng chín năm 2011", fmt.format(date));
+}
+
 function testDateFmtSimpleTimeShort_vi_VN() {
     var fmt = new ilib.DateFmt({locale: "vi-VN", length: "short", type: "time"});
     assertNotNull(fmt);
@@ -585,7 +653,7 @@ function testDateFmtShortDateComponentsWDMY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("t5 29/09/11", fmt.format(date));
+    assertEquals("t5 29/9/11", fmt.format(date));
 }
 
 
