@@ -118,3 +118,17 @@ function testTUAddOccuranceRightContents() {
     assertEquals(23, occurances[0].line);
 }
 
+function testTUAddOccuranceRightContents() {
+    var tu = new TranslationUnit({
+    	key: "a",
+    	source: "b"
+    });
+    assertNotUndefined(tu);
+
+    assertEquals("a", tu.key);
+    assertEquals("b", tu.source);
+    assertUndefined(tu.translation);
+    assertUndefined(tu.locale);
+    assertEquals("javascript", tu.dataType);
+}
+

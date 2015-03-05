@@ -145,8 +145,9 @@ TranslationSet.prototype.getAllTranslationUnits = function(locale) {
 /**
  * Return the set of all target locales in the current translation set.
  * 
- * @return {Array.<String>} the union of all locale specs across all 
- * translation units in the current translation set
+ * @return {Array.<String>|undefined} the union of all locale specs across all 
+ * translation units in the current translation set, or undefined if no
+ * trans-units with target locales have been added yet
  */
 TranslationSet.prototype.getAllLocales = function() {
 	
