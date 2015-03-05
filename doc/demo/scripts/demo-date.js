@@ -132,7 +132,8 @@ function setHourValues(element, hour) {
 			timezone: "Etc/UTC"
 		}),
 		date = cal.newDateInstance({
-			hour: 0
+			hour: 0,
+			timezone: "Etc/UTC"
 		});
 	
 	element.empty();
