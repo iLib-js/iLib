@@ -206,6 +206,7 @@ ilib.DurFmt = function(options) {
 			if (this.style === 'clock') {
 				new ilib.DateFmt({
 					locale: this.locale,
+					calendar: "gregorian",
 					type: "time",
 					time: "ms",
 					sync: sync,
@@ -215,6 +216,7 @@ ilib.DurFmt = function(options) {
 						this.timeFmtMS = fmtMS;
 						new ilib.DateFmt({
 							locale: this.locale,
+							calendar: "gregorian",
 							type: "time",
 							time: "hm",
 							sync: sync,
@@ -224,6 +226,7 @@ ilib.DurFmt = function(options) {
 								this.timeFmtHM = fmtHM;		
 								new ilib.DateFmt({
 									locale: this.locale,
+									calendar: "gregorian",
 									type: "time",
 									time: "hms",
 									sync: sync,

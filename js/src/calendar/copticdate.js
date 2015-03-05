@@ -89,9 +89,12 @@ ilib.Date.CopticRataDie = function(params) {
 	 */
 	this.epoch = 1825028.5;
 
-	var cal = {cal: this.cal};
-	ilib.shallowCopy(params || {}, cal);
-	ilib.Date.EthiopicRataDie.call(this, cal);
+	var tmp = {};
+	if (params) {
+		ilib.shallowCopy(params, tmp);
+	}
+	tmp.cal = this.cal; // override the cal parameter that may be passed in
+	ilib.Date.EthiopicRataDie.call(this, tmp);
 };
 
 ilib.Date.CopticRataDie.prototype = new ilib.Date.EthiopicRataDie();

@@ -111,7 +111,7 @@ function testDateRngFmtAMRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextDayShort() {
@@ -184,7 +184,7 @@ function testDateRngFmtAMRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 ነሐሴ – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("2:45 ከሰዓት 29 – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtAMRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 ነሐሴ – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("2:45 ከሰዓት ነሐሴ 29 – 3:30 ከሰዓት ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeMultiDayShort() {
@@ -233,7 +233,7 @@ function testDateRngFmtAMRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/2011 – 30/12/2011", fmt.format(start, end));
+    assertEquals("20–30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -305,7 +305,7 @@ function testDateRngFmtAMRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("ነሐሴ 20–30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextMonthShort() {
@@ -354,7 +354,7 @@ function testDateRngFmtAMRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 30/12/2011", fmt.format(start, end));
+    assertEquals("20 ሐምሌ – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -402,7 +402,7 @@ function testDateRngFmtAMRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ሐምሌ – 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("ሐምሌ 20 – ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextYearShort() {
@@ -427,7 +427,7 @@ function testDateRngFmtAMRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 30/01/2012", fmt.format(start, end));
+    assertEquals("20/11/2011–30/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -451,7 +451,7 @@ function testDateRngFmtAMRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ሐምሌ 2011 – 30 መስከ 2012", fmt.format(start, end));
+    assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -475,7 +475,7 @@ function testDateRngFmtAMRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ሐምሌ 2011 – 30 መስከ 2012", fmt.format(start, end));
+    assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -499,7 +499,7 @@ function testDateRngFmtAMRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
+    assertEquals("ሐምሌ 20 ቀን 2011 – መስከረም 30 ቀን 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeMultiYearShort() {
@@ -524,7 +524,7 @@ function testDateRngFmtAMRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
+    assertEquals("11/2011–01/2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -548,7 +548,7 @@ function testDateRngFmtAMRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ሐምሌ 2011 – መስከ 2014", fmt.format(start, end));
+    assertEquals("ሐምሌ 2011 – መስከረም 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -572,7 +572,7 @@ function testDateRngFmtAMRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ሐምሌ 2011 – መስከ 2014", fmt.format(start, end));
+    assertEquals("ሐምሌ 2011 – መስከረም 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -596,7 +596,7 @@ function testDateRngFmtAMRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ሐምሌ 2011 – ሐምሌ 2014", fmt.format(start, end));
+    assertEquals("ሐምሌ ቀን 2011 – መስከረም ቀን 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -620,5 +620,5 @@ function testDateRngFmtAMManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–2064", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

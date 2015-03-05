@@ -504,7 +504,7 @@ function testDateFmtShortDateComponentsN_cop_EG() {
     assertEquals("9", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsD() {
+function testDateFmtShortDateComponentsD_cop_EG() {
     var fmt = new ilib.DateFmt({locale: "cop-EG", date: "d"});
     assertNotNull(fmt);
     
@@ -518,7 +518,7 @@ function testDateFmtShortDateComponentsD() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("‏29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_cop_EG() {
@@ -641,7 +641,7 @@ function testDateFmtFullDateComponentsM_cop_EG() {
     assertEquals("بشنس", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsD() {
+function testDateFmtFullDateComponentsD_cop_EG() {
     var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "d"});
     assertNotNull(fmt);
     
@@ -655,7 +655,7 @@ function testDateFmtFullDateComponentsD() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("‏29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_cop_EG() {
@@ -1222,11 +1222,14 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1236,7 +1239,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1245,14 +1248,17 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("በ 30 ሰከንዶች ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1262,7 +1268,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1271,14 +1277,17 @@ function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("ከ30 ሰከንዶች በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1288,7 +1297,7 @@ function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1297,14 +1306,17 @@ function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 10 ደቂቃዎች ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1314,7 +1326,7 @@ function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1323,14 +1335,17 @@ function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ10 ደቂቃዎች በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1340,7 +1355,7 @@ function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1349,14 +1364,17 @@ function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 4 ሰዓቶች ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1366,7 +1384,7 @@ function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1375,15 +1393,18 @@ function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ4 ሰዓቶች በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+};
 
 function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1393,7 +1414,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1402,14 +1423,17 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 4 ቀናት ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 4 أيام من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1419,7 +1443,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1428,15 +1452,18 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ4 ቀናት በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 4 أيام من الأيام", fmt.formatRelative(reference, date));
+};
 
 function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1446,7 +1473,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1455,14 +1482,17 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 9 ሳምንታት ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1472,7 +1502,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1481,15 +1511,18 @@ function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ9 ሳምንታት በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+};
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1499,7 +1532,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1508,14 +1541,17 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 16 ወራት ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 16 شهر من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1525,7 +1561,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1534,15 +1570,18 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ14 ወራት በፊት", fmt.formatRelative(reference, date));
-}
+    assertEquals("قبل 14 شهر من الأيام", fmt.formatRelative(reference, date));
+};
 
 function testDateFmtFormatRelativeYearsAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1552,7 +1591,7 @@ function testDateFmtFormatRelativeYearsAfter_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1561,14 +1600,17 @@ function testDateFmtFormatRelativeYearsAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("በ 14 ዓመታት ውስጥ", fmt.formatRelative(reference, date));
-}
+    assertEquals("خلال 14 سنة من الأيام", fmt.formatRelative(reference, date));
+};
 function testDateFmtFormatRelativeYearsBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new ilib.DateFmt({
+    	locale: "cop-EG",
+		length: "full"
+	});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1578,7 +1620,7 @@ function testDateFmtFormatRelativeYearsBefore_cop_EG() {
 		millisecond: 0
 	});
     var date = new ilib.Date.CopticDate({
-		locale: "cop-EG",
+    	locale: "cop-EG",
 		year: 1990,
 		month: 7,
 		day: 18,
@@ -1587,6 +1629,5 @@ function testDateFmtFormatRelativeYearsBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ከ21 ዓመታት በፊት", fmt.formatRelative(reference, date));
-}
-
+    assertEquals("قبل 21 سنة من الأيام", fmt.formatRelative(reference, date));
+};
