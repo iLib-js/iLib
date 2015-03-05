@@ -179,6 +179,10 @@ ilib.Date.EthiopicDate = function(params) {
 	this.cal = new ilib.Cal.Ethiopic();
 	
 	if (params) {
+		if (typeof(params.noinstance) === 'boolean' && params.noinstance) {
+			// for doing inheritance, so don't need to fill in the data. The inheriting class only wants the methods.
+			return;
+		}
 		if (params.locale) {
 			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
 			var li = new ilib.LocaleInfo(this.locale);

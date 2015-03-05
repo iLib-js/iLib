@@ -367,7 +367,7 @@ $(function() {
                 });
                 date = cal.newDateInstance({
                     julianday: jd,
-                    timezone: "Etc/UTC"
+                    timezone: timezone
                 });
                 
                 output += res.getString('Calendar {cal}: {formattedDate} ({formattedShort})<br/>').format({

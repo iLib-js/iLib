@@ -151,7 +151,7 @@ ilib.Date.CopticDate = function(params) {
 	this.cal = new ilib.Cal.Coptic();
 };
 
-ilib.Date.CopticDate.prototype = new ilib.Date.EthiopicDate();
+ilib.Date.CopticDate.prototype = new ilib.Date.EthiopicDate({noinstance: true});
 ilib.Date.CopticDate.prototype.parent = ilib.Date.EthiopicDate.prototype;
 ilib.Date.CopticDate.prototype.constructor = ilib.Date.CopticDate;
 
