@@ -40,6 +40,10 @@ calendar/persianastro.js
 calendar/persianastrodate.js
 calendar/han.js
 calendar/handate.js
+calendar/ethiopic.js
+calendar/ethiopicdate.js
+calendar/coptic.js
+calendar/copticdate.js
 numprs.js
 numfmt.js
 julianday.js

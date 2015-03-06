@@ -132,7 +132,8 @@ function setHourValues(element, hour) {
 			timezone: "Etc/UTC"
 		}),
 		date = cal.newDateInstance({
-			hour: 0
+			hour: 0,
+			timezone: "Etc/UTC"
 		});
 	
 	element.empty();
@@ -189,15 +190,15 @@ function setupCalendarPicker() {
 		year,
 		tzElement = $("#timezone");
 	
-	setCalendarValues();
-	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
-
 	cal = ilib.Cal.newInstance({
-		type: "gregorian",
 		locale: locale
 	});
 	today = cal.newDateInstance();
-	
+
+	setCalendarValues(cal.getType());
+	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+	calName.append($("<option></option>").attr("value", "unixtime").text("unixtime"));
+
 	setMinutesSecondsValues(minuteElement, secondElement, today.minute, today.second);
 	year = parseInt(yearElement.val());
 	
@@ -213,6 +214,10 @@ function setupCalendarPicker() {
 		var month = parseInt(monthElement.val()),
 			day = parseInt(dayElement.val()),
 			year = parseInt(yearElement.val());
+
+		$('#cycle').val(Math.floor((year - 1) / 60));
+		$('#cycleYear').val(ilib.amod(year, 60));
+
 		setMonthValues(monthElement, month, year);
 		setDayValues(dayElement, day, month, year);
 	});
@@ -225,10 +230,24 @@ function setupCalendarPicker() {
 			$('#yearMonthPicker').hide();
 			$('#calendarPicker').hide();
 			$('#jdpicker').show();
+			$('#utpicker').hide();
+			$('#chineseCyclesPicker').hide();
+		} else if (name === "unixtime") {
+			$('#yearMonthPicker').hide();
+			$('#calendarPicker').hide();
+			$('#jdpicker').hide();
+			$('#utpicker').show();
+			$('#chineseCyclesPicker').hide();
 		} else {
 			$('#jdpicker').hide();
+			$('#utpicker').hide();
 			$('#yearMonthPicker').show();
 			$('#calendarPicker').show();
+			if (name === "han") {
+				$('#chineseCyclesPicker').show();
+			} else {
+				$('#chineseCyclesPicker').hide();
+			}
 			cal = ilib.Cal.newInstance({
 				type: name,
 				locale: locale
@@ -236,6 +255,11 @@ function setupCalendarPicker() {
 			
 			var today = cal.newDateInstance(),
 				yearElement = $('#year');
+			
+			if (name === "han") {
+				$('#cycle').val(today.getCycles());
+				$('#cycleYear').val(today.getCycleYears());
+			}
 	
 			yearElement.val(today.year);
 			
@@ -243,6 +267,16 @@ function setupCalendarPicker() {
 			setDayValues(dayElement, today.day, today.month, today.year);
 			setHourValues(hourElement, today.hour);
 		}
+	});
+	
+	$('#cycle,#cycleYear').change(function() {
+		var cycle = parseInt($('#cycle').val());
+		var cycleYear = parseInt($('#cycleYear').val());
+		var year = cycle * 60 + cycleYear;
+		
+		$('#year').val(year);
+		$('#cycle').val(Math.floor((year - 1) / 60));
+		$('#cycleYear').val(ilib.amod(year, 60));
 	});
 	
 	monthElement.change(function() {
@@ -263,7 +297,6 @@ function setupCalendarPicker() {
 	$('#yearMonthPicker').show();
 	$('#calendarPicker').show();
 };
-
 
 function datePicker() {
 	var calName = $("#calendarName"),
@@ -318,7 +351,7 @@ function datePicker() {
 	
 };
 
-function setupRangePicker(startname, endname, jdname) {
+function setupRangePicker(startname, endname, jdname, utname) {
 	var calName = $("#calendarName"),
 		startYearElement = $('#syear'),
 		startMonthElement = $('#smonth'),
@@ -341,6 +374,7 @@ function setupRangePicker(startname, endname, jdname) {
 	
 	setCalendarValues();
 	calName.append($("<option></option>").attr("value", "julianday").text(jdname));
+	calName.append($("<option></option>").attr("value", "unixtime").text(utname));
 
 	cal = ilib.Cal.newInstance({
 		type: "gregorian",
@@ -764,6 +798,8 @@ function hideAllPickers() {
 	$('#calendarPicker').hide();
 	$('#yearMonthPicker').hide();
 	$('#jdpicker').hide();
+	$('#utpicker').hide();
+	$('#chineseCyclesPicker').hide();
 	$('#rangePicker').hide();
 	$('#jdRangePicker').hide();
 	$('#durationPicker').hide();

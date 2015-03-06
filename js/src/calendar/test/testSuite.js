@@ -48,7 +48,11 @@ function suite() {
 	    "testtimezone.js",
 	    "testastro.js",
 	    "testhan.js",
-	    "testhandate.js"
+	    "testhandate.js",
+	    "testethiopic.js",
+	    "testethiopicdate.js",
+	    "testcoptic.js",
+	    "testcopticdate.js"
     ];
     
     suites.forEach(function (path) {

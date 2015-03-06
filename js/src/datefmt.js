@@ -199,8 +199,8 @@ util/jsutils.js
  * <li><i>w</i> - week number in year
  * <li><i>ww</i> - week number in year, 0 padded to 2 digits
  * <li><i>W</i> - week in month
- * <li><i>h</i> - hour (1 to 12)
- * <li><i>hh</i> - hour (1 to 12), 0 padded to 2 digits
+ * <li><i>h</i> - hour (12 followed by 1 to 11)
+ * <li><i>hh</i> - hour (12, followed by 1 to 11), 0 padded to 2 digits
  * <li><i>k</i> - hour (1 to 24)
  * <li><i>kk</i> - hour (1 to 24), 0 padded to 2 digits
  * <li><i>H</i> - hour (0 to 23)
@@ -963,7 +963,6 @@ ilib.DateFmt.prototype = {
 				case 'MM':
 					str += this._pad(date.month || "1", 2);
 					break;
-
 				case 'h':
 					temp = (date.hour || 0) % 12;
 					if (temp == 0) {
@@ -976,6 +975,14 @@ ilib.DateFmt.prototype = {
 					if (temp == 0) {
 						temp = "12";
 					}
+					str += this._pad(temp, 2);
+					break;
+				case 'j':
+					temp = (date.hour || 0) % 12 + 1;
+					str += temp; 
+					break;
+				case 'jj':
+					temp = (date.hour || 0) % 12 + 1;
 					str += this._pad(temp, 2);
 					break;
 				case 'K':

@@ -1189,6 +1189,418 @@ function testDateFmtWithTimeZoneAndNoDST_ar_SA() {
     assertEquals("‏١:٤٥:٣٧ AST", fmt.format(date));
 }
 
+
+function testDateFmtFormatRelativeWithinMinuteAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("خلال 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinMinuteBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("قبل 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinHourAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinHourBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinDayAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinDayBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+};
+
+function testDateFmtFormatRelativeWithinFortnightAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 4 أيام من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinFortnightBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 4 أيام من الأيام", fmt.formatRelative(reference, date));
+};
+
+function testDateFmtFormatRelativeWithinQuarterAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinQuarterBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+};
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 16 شهر من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeWithinTwoYearsBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 14 شهر من الأيام", fmt.formatRelative(reference, date));
+};
+
+function testDateFmtFormatRelativeYearsAfter_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("خلال 14 سنة من الأيام", fmt.formatRelative(reference, date));
+};
+function testDateFmtFormatRelativeYearsBefore_ar_SA() {
+    var fmt = new ilib.DateFmt({
+    	locale: "ar-SA",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+    	locale: "ar-SA",
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("قبل 21 سنة من الأيام", fmt.formatRelative(reference, date));
+};
+
 function testDateFmtNativeSimpleShort_ar_SA() {
     var fmt = new ilib.DateFmt({locale: "ar-SA", useNative: false,  length: "short"});
     assertNotNull(fmt);
