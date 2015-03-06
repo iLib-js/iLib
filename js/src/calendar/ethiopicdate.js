@@ -1,7 +1,7 @@
 /*
  * ethiopicdate.js - Represent a date in the Ethiopic calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,9 +41,9 @@ julianday.js
  * 
  * <li><i>year</i> - any integer, including 0
  * 
- * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * <li><i>month</i> - 1 to 12, where 1 means Maskaram, 2 means Teqemt, etc., and 13 means Paguemen
  * 
- * <li><i>day</i> - 1 to 31
+ * <li><i>day</i> - 1 to 30
  * 
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
  * is always done with an unambiguous 24 hour representation
@@ -136,8 +136,8 @@ ilib.Date.EthiopicRataDie.prototype._setDateComponents = function(date) {
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970 (Gregorian).
  * <li><i>julianday</i> - the Julian Day to set into this date
  * <li><i>year</i> - any integer
- * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
- * <li><i>day</i> - 1 to 31
+ * <li><i>month</i> - 1 to 13, where 1 means Maskaram, 2 means Teqemt, etc., and 13 means Paguemen
+ * <li><i>day</i> - 1 to 30
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
  * is always done with an unambiguous 24 hour representation
  * <li><i>minute</i> - 0 to 59
@@ -200,12 +200,12 @@ ilib.Date.EthiopicDate = function(params) {
 			 */
 			this.year = parseInt(params.year, 10) || 0;
 			/**
-			 * The month number, ranging from 1 (January) to 12 (December).
+			 * The month number, ranging from 1 (Maskaram) to 13 (Paguemen).
 			 * @type number
 			 */
 			this.month = parseInt(params.month, 10) || 1;
 			/**
-			 * The day of the month. This ranges from 1 to 31.
+			 * The day of the month. This ranges from 1 to 30.
 			 * @type number
 			 */
 			this.day = parseInt(params.day, 10) || 1;
@@ -232,7 +232,7 @@ ilib.Date.EthiopicDate = function(params) {
 			this.millisecond = parseInt(params.millisecond, 10) || 0;
 			
 			/**
-			 * The day of the year. Ranges from 1 to 383.
+			 * The day of the year. Ranges from 1 to 366.
 			 * @type number
 			 */
 			this.dayOfYear = parseInt(params.dayOfYear, 10);

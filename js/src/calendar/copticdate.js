@@ -1,7 +1,7 @@
 /*
  * copticdate.js - Represent a date in the Coptic calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,9 +42,9 @@ calendar/ethiopicdate.js
  * 
  * <li><i>year</i> - any integer, including 0
  * 
- * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * <li><i>month</i> - 1 to 13, where 1 means Thoout, 2 means Paope, etc., and 13 means Epagomene
  * 
- * <li><i>day</i> - 1 to 31
+ * <li><i>day</i> - 1 to 30
  * 
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
  * is always done with an unambiguous 24 hour representation
@@ -111,8 +111,8 @@ ilib.Date.CopticRataDie.prototype.constructor = ilib.Date.CopticRataDie;
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970 (Gregorian).
  * <li><i>julianday</i> - the Julian Day to set into this date
  * <li><i>year</i> - any integer
- * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
- * <li><i>day</i> - 1 to 31
+ * <li><i>month</i> - 1 to 13, where 1 means Thoout, 2 means Paope, etc., and 13 means Epagomene
+ * <li><i>day</i> - 1 to 30
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
  * is always done with an unambiguous 24 hour representation
  * <li><i>minute</i> - 0 to 59
