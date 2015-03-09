@@ -1079,6 +1079,55 @@ function testTSSaveRightContent() {
     fs.unlinkSync("./test/testfile.json");
 }
 
+function testTSSaveAndReload() {
+	assertFalse(fs.existsSync("./test/testfile.json"));
+	
+    var ts = new TranslationSet({
+    	file: "./test/testfile.json"
+    });
+    assertNotUndefined(ts);
+
+    var tu = ts.getTranslationUnit("firstkey", "de-DE");
+    assertUndefined(tu);
+    tu = ts.getTranslationUnit("firstkey", "fr-FR");
+    assertUndefined(tu);
+    
+    tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be localized.",
+    	translation: "Übersetzung des ersten Schlüssel.",
+    	locale: "de-DE"
+    });
+    ts.addTranslationUnit(tu);
+
+    tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be localized.",
+    	translation: "Traduction de la première clé.",
+    	locale: "fr-FR"
+    });
+    ts.addTranslationUnit(tu);
+    
+    ts.save();
+    
+    assertTrue(fs.existsSync("./test/testfile.json"));
+    
+    var ts2 = new TranslationSet({
+    	file: "./test/testfile.json"
+    });
+    
+    var tu2 = ts2.getTranslationUnit("firstkey", "de-DE");
+    assertNotUndefined(tu2);
+    
+    assertEquals("de-DE", tu2.locale);
+    assertEquals("firstkey", tu2.key);
+    assertEquals("This string should be localized.", tu2.source);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
+    
+    // clean up
+    fs.unlinkSync("./test/testfile.json");
+}
+
 function testTSSaveEmpty() {
 	assertFalse(fs.existsSync("./test/testfile.json"));
 	
