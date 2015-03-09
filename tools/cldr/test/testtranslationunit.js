@@ -118,7 +118,7 @@ function testTUAddOccuranceRightContents() {
     assertEquals(23, occurances[0].line);
 }
 
-function testTUAddOccuranceRightContents() {
+function testTUAddOccuranceNoTranslationAndLocale() {
     var tu = new TranslationUnit({
     	key: "a",
     	source: "b"

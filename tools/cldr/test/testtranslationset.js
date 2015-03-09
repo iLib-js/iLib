@@ -21,6 +21,7 @@ var common = require("../../../tools/cldr/common.js");
 var TranslationSet = require("../../../tools/cldr/translationset.js");
 var TranslationUnit = require("../../../tools/cldr/translationunit.js");
 var util = require("util");
+var fs = require("fs");
 
 function testTSConstructorEmpty() {
     var ts = new TranslationSet();
@@ -31,7 +32,7 @@ function testTSGetPathEmpty() {
     var ts = new TranslationSet();
     assertNotUndefined(ts);
     
-    assertEquals("./stringsdb.json", ts.getPath());
+    assertEquals("stringsdb.json", ts.getPath());
 }
 
 function testTSConstructorFromFile() {
@@ -47,7 +48,7 @@ function testTSGetPathFile() {
     });
     assertNotUndefined(ts);
     
-    assertEquals("./test/stringsdb.json", ts.getPath());
+    assertEquals("test/stringsdb.json", ts.getPath());
 }
 
 function testTSConstructorFromPath() {
@@ -63,7 +64,7 @@ function testTSGetPathFromPath() {
     });
     assertNotUndefined(ts);
     
-    assertEquals("./test/stringsdb.json", ts.getPath());
+    assertEquals("test/stringsdb.json", ts.getPath());
 }
 
 function testTSConstructorFromFileRightContents() {
@@ -82,10 +83,10 @@ function testTSConstructorFromFileRightContents() {
 }
 
 var xliff =
-	'<?xml version="1.0" encoding="UTF-8"?>\n' +
+	'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
 	'<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">\n' +
 	'<xliff version="1.2">\n' +
-	'  <file datatype="javascript" source-language="en-US" target-langauge="de-DE">\n' +
+	'  <file datatype="javascript" source-language="en-US" target-language="de-DE">\n' +
 	'    <body>\n' +
 	'      <trans-unit>\n' +
 	'        <source>This string should be extracted.</source>\n' +
@@ -101,19 +102,17 @@ var xliff =
 	'      </trans-unit>\n' +
 	'    </body>\n' +
 	'  </file>\n' +
-	'</xliff>';
+	'</xliff>\n';
 
 function testTSConstructorFromXliff() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
 }
 
 function testTSConstructorFromXliffRightContents() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
@@ -121,6 +120,7 @@ function testTSConstructorFromXliffRightContents() {
     var tu = ts.getTranslationUnit("firstkey", "de-DE");
     assertNotUndefined(tu);
     
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
     assertEquals("This string should be extracted.", tu.source);
     assertEquals("de-DE", tu.locale);
@@ -128,13 +128,12 @@ function testTSConstructorFromXliffRightContents() {
 }
 
 function testTSGetPathFromXliff() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
     
-    assertEquals("./stringsdb.json", ts.getPath());
+    assertEquals("stringsdb.json", ts.getPath());
 }
 
 function testTSGetTranslationUnitEmpty() {
@@ -147,8 +146,7 @@ function testTSGetTranslationUnitEmpty() {
 }
 
 function testTSGetTranslationUnitMissingKey() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
@@ -158,8 +156,7 @@ function testTSGetTranslationUnitMissingKey() {
 }
 
 function testTSGetTranslationUnitMissingLocale() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
@@ -169,8 +166,7 @@ function testTSGetTranslationUnitMissingLocale() {
 }
 
 function testTSGetTranslationUnitMissingTU() {
-	var xliff = "";
-    var ts = new TranslationSet({
+	var ts = new TranslationSet({
     	xliff: xliff
     });
     assertNotUndefined(ts);
@@ -201,7 +197,7 @@ function testTSAddTranslationUnit() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
 }
@@ -244,7 +240,7 @@ function testTSAddTranslationUnitMissingTranslationAndLocale2() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertUndefined(tu2.locale);
     assertUndefined(tu2.translation);
 }
@@ -279,7 +275,7 @@ function testTSAddTranslationUnitMultiple() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
     
@@ -288,8 +284,8 @@ function testTSAddTranslationUnitMultiple() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
-    assertEquals("de-DE", tu2.locale);
+    assertEquals("This string should be localized.", tu2.source);
+    assertEquals("fr-FR", tu2.locale);
     assertEquals("Traduction de la première clé.", tu2.translation);
 }
 
@@ -314,7 +310,7 @@ function testTSAddTranslationUnitOverwritePrevious() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
 
@@ -359,7 +355,7 @@ function testTSAddTranslationUnitNoOverwritePreviousWithUndefined() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
 
@@ -374,7 +370,7 @@ function testTSAddTranslationUnitNoOverwritePreviousWithUndefined() {
 
     // should be same as before
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
 }
@@ -482,7 +478,7 @@ function testTSRemoveTranslationUnitReturnOldTU() {
     assertNotUndefined(tu2);
     
     assertEquals("firstkey", tu2.key);
-    assertEquals("This string should be extracted.", tu2.source);
+    assertEquals("This string should be localized.", tu2.source);
     assertEquals("de-DE", tu2.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu2.translation);
 
@@ -548,7 +544,9 @@ function testTSGetAllLocalesEmpty() {
     var ts = new TranslationSet();
     assertNotUndefined(ts);
 
-    assertUndefined(ts.getAllLocales());
+    var locales = ts.getAllLocales();
+    assertNotUndefined(locales);
+    assertEquals(0, locales.length);
 }
 
 function testTSGetAllLocalesSourceTransUnitsOnly() {
@@ -562,7 +560,9 @@ function testTSGetAllLocalesSourceTransUnitsOnly() {
     
     ts.addTranslationUnit(tu);
     
-    assertUndefined(ts.getAllLocales());
+    var locales = ts.getAllLocales();
+    assertNotUndefined(locales);
+    assertEquals(0, locales.length);
 }
 
 function testTSGetAllLocalesSingle() {
@@ -669,7 +669,7 @@ function testTSGetAllTranslationUnitsEmpty() {
     var ts = new TranslationSet();
     assertNotUndefined(ts);
 
-    var units = ts.getAllTranslationUnits("en-US");
+    var units = ts.getAllTranslationUnits();
     assertNotUndefined(units);
     assertEquals(0, units.length);
 }
@@ -685,7 +685,7 @@ function testTSGetAllTranslationUnitsSourceTransUnit() {
     
     ts.addTranslationUnit(tu);
     
-    var units = ts.getAllTranslationUnits("en-US");
+    var units = ts.getAllTranslationUnits();
     assertNotUndefined(units);
     assertEquals(1, units.length);
 }
@@ -701,7 +701,7 @@ function testTSGetAllTranslationUnitsSourceTransUnitRightContents() {
     
     ts.addTranslationUnit(tu);
     
-    var units = ts.getAllTranslationUnits("en-US");
+    var units = ts.getAllTranslationUnits();
     assertNotUndefined(units);
     assertEquals(1, units.length);
     
@@ -723,7 +723,29 @@ function testTSGetAllTranslationUnitsSingle() {
     });
     ts.addTranslationUnit(tu);
 
-    var units = ts.getAllTranslationUnits("en-US");
+    var units = ts.getAllTranslationUnits();
+    assertNotUndefined(units);
+    assertEquals(1, units.length);
+    
+    assertEquals("firstkey", units[0].key);
+    assertEquals("This string should be localized.", units[0].source);
+    assertEquals("Übersetzung des ersten Schlüssel.", units[0].translation);
+    assertEquals("de-DE", units[0].locale);
+}
+
+function testTSGetAllTranslationUnitsSingleWithLocale() {
+    var ts = new TranslationSet();
+    assertNotUndefined(ts);
+
+    var tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be localized.",
+    	translation: "Übersetzung des ersten Schlüssel.",
+    	locale: "de-DE"
+    });
+    ts.addTranslationUnit(tu);
+
+    var units = ts.getAllTranslationUnits("de-DE");
     assertNotUndefined(units);
     assertEquals(1, units.length);
     
@@ -753,7 +775,7 @@ function testTSGetAllTranslationUnitsMultiple() {
     });
     ts.addTranslationUnit(tu);
 
-    var units = ts.getAllTranslationUnits("en-US");
+    var units = ts.getAllTranslationUnits();
     assertNotUndefined(units);
     assertEquals(2, units.length);
     
@@ -768,6 +790,36 @@ function testTSGetAllTranslationUnitsMultiple() {
     assertEquals("fr-FR", units[1].locale);
 }
 
+function testTSGetAllTranslationUnitsMultipleWithLocale() {
+    var ts = new TranslationSet();
+    assertNotUndefined(ts);
+
+    var tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be localized.",
+    	translation: "Übersetzung des ersten Schlüssel.",
+    	locale: "de-DE"
+    });
+    ts.addTranslationUnit(tu);
+
+    tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be localized.",
+    	translation: "Traduction de la première clé.",
+    	locale: "fr-FR"
+    });
+    ts.addTranslationUnit(tu);
+
+    var units = ts.getAllTranslationUnits("de-DE");
+    assertNotUndefined(units);
+    assertEquals(1, units.length);
+    
+    assertEquals("firstkey", units[0].key);
+    assertEquals("This string should be localized.", units[0].source);
+    assertEquals("Übersetzung des ersten Schlüssel.", units[0].translation);
+    assertEquals("de-DE", units[0].locale);
+}
+
 function testTSMergeEmpty() {
     var ts1 = new TranslationSet();
     assertNotUndefined(ts1);
@@ -777,7 +829,9 @@ function testTSMergeEmpty() {
 
     ts1.merge(ts2);
     
-    assertUndefined(ts.getAllLocales());
+    var locales = ts1.getAllLocales();
+    assertNotUndefined(locales);
+    assertEquals(0, locales.length);
 }
 
 function testTSMergeSomethingIntoEmpty() {
@@ -805,7 +859,7 @@ function testTSMergeSomethingIntoEmpty() {
 
     ts1.merge(ts2);
     
-    assertNotUndefined(ts.getAllLocales());
+    assertNotUndefined(ts1.getAllLocales());
 }
 
 function testTSMergeSomethingIntoEmptyRightContents() {
@@ -831,13 +885,15 @@ function testTSMergeSomethingIntoEmptyRightContents() {
     });
     ts2.addTranslationUnit(tu);
 
+    //util.print("ts1 before merge is " + JSON.stringify(ts1, undefined, 4) + "\n");
     ts1.merge(ts2);
+    //util.print("ts1 is " + JSON.stringify(ts1, undefined, 4) + "\n");
     
     tu = ts1.getTranslationUnit("firstkey", "de-DE");
     assertNotUndefined(tu);
     
     assertEquals("firstkey", tu.key);
-    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("This string should be localized.", tu.source);
     assertEquals("de-DE", tu.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
     
@@ -845,7 +901,7 @@ function testTSMergeSomethingIntoEmptyRightContents() {
     assertNotUndefined(tu);
     
     assertEquals("firstkey", tu.key);
-    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("This string should be localized.", tu.source);
     assertEquals("fr-FR", tu.locale);
     assertEquals("Traduction de la première clé.", tu.translation);
 }
@@ -879,7 +935,7 @@ function testTSMergeNoConflicts() {
     assertNotUndefined(tu);
     
     assertEquals("firstkey", tu.key);
-    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("This string should be localized.", tu.source);
     assertEquals("de-DE", tu.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
     
@@ -887,7 +943,7 @@ function testTSMergeNoConflicts() {
     assertNotUndefined(tu);
     
     assertEquals("firstkey", tu.key);
-    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("This string should be localized.", tu.source);
     assertEquals("fr-FR", tu.locale);
     assertEquals("Traduction de la première clé.", tu.translation);
 }
@@ -921,7 +977,7 @@ function testTSMergeOverwrite() {
     assertNotUndefined(tu);
     
     assertEquals("firstkey", tu.key);
-    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("This string should be localized.", tu.source);
     assertEquals("de-DE", tu.locale);
     assertEquals("Andere Übersetzung.", tu.translation);
 }
@@ -1011,7 +1067,7 @@ function testTSSaveRightContent() {
 			"fr-FR": {
 				"firstkey": {
 					"source": "This string should be localized.",
-					"translation": "Traduction de la première clé."
+					"translation": "Traduction de la première clé.",
 				}
 			}
 		}
@@ -1076,6 +1132,7 @@ function testTSToXliff() {
     });
     ts.addTranslationUnit(tu);
 
+    // util.print("ts is now " + JSON.stringify(ts, undefined, 4) + "\n");
     assertEquals(xliff, ts.toXliff());
 }
 
@@ -1084,10 +1141,9 @@ function testTSToXliffEmpty() {
     assertNotUndefined(ts);
 
     var expected =
-    	'<?xml version="1.0" encoding="UTF-8"?>\n' +
+    	'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
     	'<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">\n' +
-    	'<xliff version="1.2">\n' +
-    	'</xliff>';
+    	'<xliff version="1.2"/>\n';
     	
     assertEquals(expected, ts.toXliff());
 }
@@ -1102,17 +1158,17 @@ function testTSToXliffSourceOnly() {
     ts.addTranslationUnit(tu);
     
     var expected =
-    	'<?xml version="1.0" encoding="UTF-8"?>\n' +
+    	'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
     	'<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">\n' +
     	'<xliff version="1.2">\n' +
-    	'  <file datatype="javascript" source-language="en-US" target-langauge="de-DE">\n' +
+    	'  <file datatype="javascript" source-language="en-US">\n' +
     	'    <body>\n' +
     	'      <trans-unit>\n' +
     	'        <source>This string should be extracted.</source>\n' +
     	'      </trans-unit>\n' +
     	'    </body>\n' +
     	'  </file>\n' +
-    	'</xliff>';
+    	'</xliff>\n';
     	
     assertEquals(expected, ts.toXliff());
 }

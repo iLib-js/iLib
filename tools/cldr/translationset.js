@@ -19,6 +19,7 @@
 
 var fs = require('fs');
 var util = require('util');
+var path = require('path');
 var common = require('./common.js');
 var TranslationUnit = require("./translationunit.js");
 
@@ -44,20 +45,78 @@ var TranslationUnit = require("./translationunit.js");
  */
 var TranslationSet = function TranslationSet(params) {
 	this.db = {};
+	this.path = ".";
+	this.sourceLocale = "en-US";
 	if (params) {
-		this.path = params.path;
-		this.sourceLocale = params.sourceLocale;
+		if (params.path) {
+			this.path = params.path;
+		}
+		if (params.file) {
+			this.file = params.file;
+		}
+		if (params.sourceLocale) {
+			this.sourceLocale = params.sourceLocale;	
+		}
 		if (params.xliff) {
-			
+			var xml2js = require("xml2js");
+						
+			//util.print("Parsing xliff\n");
+			xml2js.parseString(params.xliff, common.bind(this, function (err, result) {
+			    //util.print("result is " + JSON.stringify(result, undefined,4) + "\n");
+			    this.sourceLocale = result.xliff.file[0].$["source-language"];
+			    var targetLocale = result.xliff.file[0].$["target-language"];
+			    this.db = {};
+			    var utlist = result.xliff.file[0].body[0]["trans-unit"];
+			    //util.print("utlist is " + JSON.stringify(utlist, undefined,4) + "\n");
+			    for (var i = 0; i < utlist.length; i++) {
+			    	var transunit = utlist[i];
+			    	//util.print("trans unit " + i + " is " + JSON.stringify(transunit, undefined,4) + "\n");
+			    	var sourceElement = transunit.source[0];
+			    	//til.print("trans unit source is " + JSON.stringify(sourceElement, undefined,4) + "\n");
+			    	var key, source; 
+			    	if (typeof(sourceElement) === "string") {
+			    		key = source = sourceElement;
+			    	} else {
+			    		key = sourceElement.$.key;
+			    		source = sourceElement._;
+			    	}
+			    	var tu = new TranslationUnit({
+			    		source: source,
+			    		key: key,
+			    		translation: transunit.target && transunit.target[0],
+			    		locale: targetLocale
+			    	});
+			    	
+			    	this.addTranslationUnit(tu);
+			    }
+			}));
 		}
 	}
+	this.file = this.file || path.join(this.path, "stringsdb.json");
+	this.file = path.normalize(this.file);
 	this.sourceLocale = this.sourceLocale || new common.Locale();
-	if (this.path) {
-		var filepath = path.join(this.path, "stringsdb.json"); 
+	if (this.file && fs.existsSync(this.file)) {
 		try {
-			var json = fs.readFileSync(filepath, "utf-8");
+			//util.print("Attempting to load file " + this.file + "\n");
+			var json = fs.readFileSync(this.file, "utf-8");
 			if (json) {
-				this.db = JSON.parse(json);
+				var contents = JSON.parse(json);
+				for (var loc in contents.db) {
+					if (loc && contents.db[loc]) {
+						var tulist = contents.db[loc];
+						for (var key in tulist) {
+							var tuinfo = tulist[key];
+							var tu = new TranslationUnit({
+								key: key,
+								source: tuinfo.source || key,
+								translation: tuinfo.translation,
+								locale: loc
+							});
+							this.addTranslationUnit(tu);
+						}
+					}
+				}
+				this.sourceLocale = contents.sourceLocale;
 			}
 		} catch(e) {
 			util.print("Warning: no translation set at " + filepath + " yet. Creating a new one...\n");
@@ -84,7 +143,7 @@ TranslationSet.fromXliff = function(xliff) {
  * @return {String} the path where this set is saved
  */
 TranslationSet.prototype.getPath = function() {
-	return path;
+	return this.file;
 };
 
 /**
@@ -92,8 +151,37 @@ TranslationSet.prototype.getPath = function() {
  * @throws exception if the file could not be written
  */
 TranslationSet.prototype.save = function() {
-	var json = JSON.stringify(this, undefined, 4);
-	fs.writeFileSync(this.path, json, "utf-8");
+	var ondisk = {
+		sourceLocale: this.sourceLocale,
+		db: {}
+	};
+	
+	for (var loc in this.db) {
+		if (loc && this.db[loc]) {
+			if (!ondisk.db[loc]) {
+				ondisk.db[loc] = {};
+			}
+			var tulist = this.db[loc];
+			for (var key in tulist) {
+				if (key && tulist[key]) {
+					var tu = tulist[key];
+					ondisk.db[loc][key] = {
+						source: tu.source
+					};
+					if (tu.translation) {
+						ondisk.db[loc][key].translation = tu.translation;
+					}
+					if (tu.occurances && tu.occurances.length > 0) {
+						ondisk.db[loc][key].occurances = tu.occurances;
+					}
+				}
+			}
+		}
+	}
+
+	var json = JSON.stringify(ondisk, undefined, 4);
+	// util.print("save: saving contents: " + json + "\n");
+	fs.writeFileSync(this.file, json, "utf-8");
 };
 
 /**
@@ -105,7 +193,14 @@ TranslationSet.prototype.save = function() {
  * @param {TranslationUnit} tu translation unit to add
  */
 TranslationSet.prototype.addTranslationUnit = function(tu) {
-	
+	if (tu) {
+		var locale = tu.locale || "-";
+		if (!this.db[locale]) {
+			this.db[locale] = {};
+		}
+		// overwrite if necessary
+		this.db[locale][tu.key] = this.db[locale][tu.key] ? common.merge(this.db[locale][tu.key], tu) : tu;
+	}
 };
 
 /**
@@ -116,7 +211,13 @@ TranslationSet.prototype.addTranslationUnit = function(tu) {
  * to the given key and locale, or undefined if no such unit exists
  */
 TranslationSet.prototype.getTranslationUnit = function(key, locale) {
+	if (!key) {
+		return undefined;
+	}
 	
+	locale = locale || "-";
+	
+	return this.db[locale] && this.db[locale][key];
 };
 
 /**
@@ -127,19 +228,42 @@ TranslationSet.prototype.getTranslationUnit = function(key, locale) {
  * undefined if no such unit exists in the set already
  */
 TranslationSet.prototype.removeTranslationUnit = function(key, locale) {
+	if (!key || !locale) {
+		return undefined;
+	}
 	
+	if (this.db[locale] && this.db[locale][key]) {
+		var tu = this.db[locale][key];
+		this.db[locale][key] = undefined;
+		return tu;
+	}
+	
+	return undefined;
 };
 
 /**
  * Return all translation units for the given locale.
  * 
- * @param {String} locale the target locale for which all translations 
- * are being sought
+ * @param {String|undefined} locale the target locale for which all translations 
+ * units are being sought, or undefined to retrieve all translation units
  * @return {Array.<TranslationUnit>} an array of translation units for the
  * given target locale
  */
 TranslationSet.prototype.getAllTranslationUnits = function(locale) {
-	
+	var all = [];
+	for (var loc in this.db) {
+		if (!locale || loc === locale) {
+			if (loc && this.db[loc]) {
+				var tulist = this.db[loc];
+				for (var key in tulist) {
+					if (key && tulist[key]) {
+						all.push(tulist[key]);
+					}
+				}
+			}
+		}
+	}
+	return all;
 };
 
 /**
@@ -150,17 +274,84 @@ TranslationSet.prototype.getAllTranslationUnits = function(locale) {
  * trans-units with target locales have been added yet
  */
 TranslationSet.prototype.getAllLocales = function() {
-	
+	var locales = [];
+	for (var loc in this.db) {
+		if (loc && loc !== '-' && this.db[loc]) {
+			if (locales.indexOf(loc) === -1) {
+				locales.push(loc);
+			}
+		}
+	}
+	return locales;
 };
 
 /**
  * Return a representation of the current translation set as an XML document
- * that conforms to the XLIFF DTD.
+ * that conforms to the XLIFF DTD. In order to use this, you have to install
+ * the "xml2js" locally first: "npm install xml2js"
  * 
  * @return {String} the XLIFF representation of the current set
  */
 TranslationSet.prototype.toXliff = function() {
-	
+	var xml2js = require("xml2js");
+1
+	var builder = new xml2js.Builder({
+		rootName: "xliff",
+		doctype: {
+			pubID: "-//XLIFF//DTD XLIFF//EN",
+			sysID: "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd"
+		},
+		headless: false
+	});
+	var xliff = {
+		"$": {
+			"version": "1.2"
+		},
+		file: []
+	};
+
+	for (var loc in this.db) {
+		if (loc && this.db[loc]) {
+			var tulist = this.db[loc];
+			var file = {
+				"$": {
+					"datatype": "javascript",
+					"source-language": this.sourceLocale
+				},
+				"body": {
+					"trans-unit": []
+				}
+			};
+			if (loc !== '-') {
+				file.$["target-language"] = loc;
+			}
+			
+			for (var key in tulist) {
+				if (key && tulist[key]) {
+					var tu = tulist[key];
+					var element = {
+						"source": {
+							"_": tu.source
+						}
+					};
+					if (key !== tu.source) {
+						element.source["$"] = {
+							"key": key
+						};
+					}
+					if (tu.translation) {
+						element.target = tu.translation;
+					}
+
+					file.body["trans-unit"].push(element);
+				}
+			}
+			
+			xliff.file.push(file);
+		}
+	}
+
+	return builder.buildObject(xliff) + "\n";
 };
 
 /**
@@ -172,9 +363,22 @@ TranslationSet.prototype.toXliff = function() {
  * current set.
  * 
  * @param {TranslationSet} other the other set to merge into the current one
+ * @return {TranslationSet} returns this instance for chaining
  */
 TranslationSet.prototype.merge = function(other) {
-	
+	if (other) {
+		for (var loc in other.db) {
+			if (loc && other.db[loc]) {
+				var tulist = other.db[loc];
+				for (var key in tulist) {
+					if (key && tulist[key]) {
+						this.addTranslationUnit(tulist[key]);
+					}
+				}
+			}
+		}
+	}
+	return this;
 };
 
 module.exports = TranslationSet;
