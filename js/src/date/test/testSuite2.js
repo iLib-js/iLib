@@ -31,6 +31,7 @@ function suite() {
     var suites = [
 		"testdatefmt_ga_IE.js",
 		"testdatefmt_gu_IN.js",
+		//"testdatefmt_ha_Latn.js",
 		"testdatefmt_he_IL.js",
 		"testdatefmt_hi_IN.js",
 		"testdatefmt_hr_HR.js",
