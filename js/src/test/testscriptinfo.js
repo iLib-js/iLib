@@ -97,6 +97,18 @@ function testScriptGetDefaultLongCodeOrya() {
     assertFalse(si.getCasing());
 }
 
+function testScriptGetDefaultLongCodeAmharic() {
+    var si = new ilib.ScriptInfo("Ethi");
+    assertNotNull(si);
+    
+    assertEquals("Ethi", si.getCode());
+    assertEquals(430, si.getCodeNumber());
+    assertEquals("Ethiopic (Geʻez)", si.getName());
+    assertEquals("Ethiopic", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertTrue(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
 function testScriptGetDefaultLongCodeWithSpaces() {
     var si = new ilib.ScriptInfo("Kore");
     assertNotNull(si);

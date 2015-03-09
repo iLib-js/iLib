@@ -172,3 +172,23 @@ function testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeAF() {
 	assertNotUndefined(locale);
 	assertEquals("af-NA", locale.getSpec());
 }
+
+function testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeET() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "am-ET"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("am-ET", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleCodeET() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "am"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("am-Ethi-ET", locale.getSpec());
+}
