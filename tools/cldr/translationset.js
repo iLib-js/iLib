@@ -119,7 +119,7 @@ var TranslationSet = function TranslationSet(params) {
 				this.sourceLocale = contents.sourceLocale;
 			}
 		} catch(e) {
-			util.print("Warning: no translation set at " + filepath + " yet. Creating a new one...\n");
+			util.print("Warning: no translation set at " + this.file + " yet. Creating a new one...\n");
 		} // no db yet... that's ok
 	}
 };

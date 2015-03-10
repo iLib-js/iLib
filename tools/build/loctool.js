@@ -27,6 +27,7 @@ var common = require('../cldr/common.js');
 var path = require('path');
 var xml2js = require('xml2js');
 var TranslationSet = require('../cldr/translationset.js');
+var TranslationUnit = require('../cldr/translationunit.js');
 
 function usage() {
 	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] command [source_dir]\n" +
@@ -89,7 +90,7 @@ var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\
 var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceAndKey = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 
-var extracted = {};
+var extracted = new TranslationSet();
 
 function stripQuotes(str) {
 	if (str.charAt(0) === '"' || str.charAt(0) === "'") {
@@ -99,13 +100,6 @@ function stripQuotes(str) {
 		str = str.substring(0,str.length-1);
 	}
 	return str;
-}
-
-function addString(filename, key, string) {
-	if (!extracted[filename]) {
-		extracted[filename] = {};
-	}
-	extracted[filename][key] = string;
 }
 
 function scanFile(filename, text) {
@@ -120,12 +114,17 @@ function scanFile(filename, text) {
 		while ((result = reGetStringSourceOnly.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + "\n");
 			var str = stripQuotes(result[2]);
-			addString(filename, str, str);
+			extracted.addTranslationUnit(new TranslationUnit({
+				source: str
+			}));
 		}
 		
 		while ((result = reGetStringSourceAndKey.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + ", key: " + result[5] + "\n");
-			addString(filename, stripQuotes(result[5]), stripQuotes(result[2]));
+			extracted.addTranslationUnit(new TranslationUnit({
+				key: stripQuotes(result[5]),
+				source: stripQuotes(result[2])
+			}))
 		}
 	}
 }
@@ -167,117 +166,59 @@ function walk(root, dir) {
 
 walk(sourcedir, "");
 
-verbose && util.print("Extracted json is: \n" + JSON.stringify(extracted, undefined, 4) + "\n");
+// verbose && util.print("Extracted json is: \n" + JSON.stringify(extracted, undefined, 4) + "\n");
 
-function getOutputJson() {
+verbose && util.print("All strings extracted. Now writing output files...\n");
+
+function getOutputJson(locale) {
 	var json = {};
-	for (var filename in extracted) {
-		if (filename && extracted[filename]) {
-			for (var key in extracted[filename]) {
-				if (key && extracted[filename][key]) {
-					json[key] = extracted[filename][key];
-				}
-			}
+	var tulist = extracted.getAllTranslationUnits(locale);
+	var tu;
+	for (var i = 0; i < tulist.length; i++) {
+		tu = tulist[i];
+		if (tu.translation) {
+			json[tu.key] = tu.translation;
 		}
 	}
 	return json;
 }
 
-var outputFile = path.join(targetdir, "strings.json");
-fs.writeFileSync(outputFile, JSON.stringify(getOutputJson(), undefined, 4), "utf-8");
-verbose && util.print("Output file written to " + outputFile + "\n");
+extracted.save();
+verbose && util.print("Strings database saved to " + extracted.getPath() + "\n");
 
-outputFile = path.join(targetdir, "strings.js");
-fs.writeFileSync(outputFile, 
-		"ilib.data.strings = " + 
-		JSON.stringify(getOutputJson(), undefined, 4) +
-		";\n", "utf-8");
-verbose && util.print("Output file written to " + outputFile + "\n");
+var outputDir;
 
-var builder = new xml2js.Builder({
-	rootName: "xliff",
-	doctype: { ext: "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd"} 
-});
-
-var xliff = {
-	"$version": "1.2"
-};
-
-for (var filename in extracted) {
-	if (filename && extracted[filename]) {
-		if (!xliff.file) {
-			xliff.file = [];
+var locales = extracted.getAllLocales();
+for (var i = 0; i < locales.length; i++) {
+	var loc = new common.Locale(locales[i]);
+	outputDir = targetdir;
+	if (loc.getLanguage()) {
+		outputDir = path.join(outputDir, loc.getLanguage());
+		if (loc.getScript()) {
+			outputDir = path.join(outputDir, loc.getScript());
 		}
-		var file = {
-			"$": {
-				"datatype": "javascript",
-				"source-language": sourceLocale.getSpec(),
-				"target-langauge": "de-DE",
-				"name": filename
-			},
-			"body": {
-				"trans-unit": []
-			}
-		};
-		for (var key in extracted[filename]) {
-			if (key && extracted[filename][key]) {
-				file.body["trans-unit"].push({
-					"source": key,
-					"target": extracted[filename][key]
-				});
-			}
+		if (loc.getRegion()) {
+			outputDir = path.join(outputDir, loc.getRegion());
 		}
-		xliff.file.push(file);
 	}
+	common.makeDirs(outputDir);
+	outputFile = path.join(outputDir, "strings.js");
+	var locname = loc.getSpec();
+	locname = (locname === "-") ? "" : "_" + locname.replace("-", "_")
+	fs.writeFileSync(outputFile, 
+			"ilib.data.strings" +
+			locname + 
+			" = " + 
+			JSON.stringify(getOutputJson(locales[i]), undefined, 4) +
+			";\n", "utf-8");
+	verbose && util.print("Output file written to " + outputFile + "\n");
+	
+	outputFile = path.join(outputDir, "strings.json");
+	fs.writeFileSync(outputFile, JSON.stringify(getOutputJson(locales[i]), undefined, 4) + "\n", "utf-8");
+	verbose && util.print("Output file written to " + outputFile + "\n");
 }
-
-var xml = builder.buildObject(xliff) + "\n";
 
 outputFile = path.join(targetdir, "strings.xliff");
-fs.writeFileSync(outputFile, xml, "utf-8");
+fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
 verbose && util.print("Output file written to " + outputFile + "\n");
 
-
-/*
-var builder = new xml2js.Builder({
-rootName: "xliff",
-doctype: { ext: "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd"} 
-});
-
-var xliff = builder.create(
-"xliff",
-{version: '1.0', encoding: 'UTF-8', standalone: true},
-{pubID: "pubID", sysID: "sysID"},
-{
-	allowSurrogateChars: false, 
-	skipNullAttributes: false, 
-    headless: false, 
-    ignoreDecorators: false, 
-    stringify: {}
-}
-);
-
-for (var filename in extracted) {
-if (filename && extracted[filename]) {
-	var file = xliff.ele("file", {
-		"datatype": "javascript",
-		"source-language": sourceLocale.getSpec(),
-		"target-langauge": "de-DE"
-	});
-	var body = file.ele("body");
-	for (var key in extracted[filename]) {
-		if (key && extracted[filename][key]) {
-			var tu = body.ele("trans-unit")
-			tu.ele("source").txt(key);
-			tu.ele("target").txt(extracted[filename][key]);
-		}
-	}
-}
-}
-
-var xml = xliff.end({
-pretty: true, 
-indent: '\t', 
-newline: '\n'
-});
-*/
