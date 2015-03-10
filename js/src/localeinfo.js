@@ -83,6 +83,7 @@ ilib.LocaleInfo = function(locale, options) {
 		firstDayOfWeek:number,
 		weekendStart:number,
 		weekendEnd:number,
+		meridiems:string,
 		unitfmt: {long:string,short:string},
 		numfmt:Object.<{
 			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
@@ -160,6 +161,7 @@ ilib.LocaleInfo.defaultInfo = /** @type {{
 	firstDayOfWeek:number,
 	weekendStart:number,
 	weekendEnd:number,
+	meridiems:string,
 	unitfmt: {long:string,short:string},
 	numfmt:Object.<{
 		currencyFormats:Object.<{
@@ -190,6 +192,7 @@ ilib.LocaleInfo.defaultInfo = ilib.LocaleInfo.defaultInfo || {
     "clock": "24",
     "currency": "USD",
     "firstDayOfWeek": 1,
+    "meridiems": "gregorian",
     "numfmt": {
         "currencyFormats": {
             "common": "{s}{n}",
@@ -553,5 +556,20 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getAllScripts: function() {
 		return this.info.scripts || ["Latn"];
-	}
+	},
+	
+	/**
+	 * Return the default style of meridiems used in this locale. Meridiems are 
+	 * times of day like AM/PM. In a few locales with some calendars, for example
+	 * Amharic/Ethiopia using the Ethiopic calendar, the times of day may be
+	 * split into different segments than simple AM/PM as in the Gregorian 
+	 * calendar. Only a few locales are like that. For most locales, formatting 
+	 * a Gregorian date will use the regular Gregorian AM/PM meridiems.
+	 *  
+	 * @returns {string} the default meridiems style used in this locale. Possible
+	 * values are "gregorian", "chinese", and "ethiopic"
+	 */
+	getMeridiemsStyle: function () {
+		return this.info.meridiems || "gregorian";
+	}	
 };

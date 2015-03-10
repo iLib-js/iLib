@@ -85,6 +85,11 @@
 	"azh4": "PM",
 	"azh5": "PM",
 	"azh6": "PM",
+    "a0-ethiopic": "morning",
+    "a1-ethiopic": "noon",
+    "a2-ethiopic": "afternoon",
+    "a3-ethiopic": "evening",
+    "a4-ethiopic": "night",
 	"G-1": "BCE",
 	"G1": "CE",
 	

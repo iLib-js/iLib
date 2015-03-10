@@ -221,9 +221,13 @@ util/jsutils.js
  * for formatting the numbers.
  *
  * <li><i>meridiems</i> - string that specifies what style of meridiems to use with this 
- * format. The choices are "default" and "chinese". The "default" style is the simple AM/PM,
- * and the "chinese" style uses 7 different meridiems corresponding to the various parts of 
- * the day. The default if not specified is "default", even for the Chinese locales. 
+ * format. The choices are "default", "gregorian", "ethiopic", and "chinese". The "default" 
+ * style is often the simple Gregorian AM/PM, but the actual style is chosen by the locale. 
+ * (For almost all locales, the Gregorian AM/PM style is most frequently used.)
+ * The "ethiopic" style uses 5 different meridiems for "morning", "noon", "afternoon", 
+ * "evening", and "night". The "chinese" style uses 7 different meridiems corresponding 
+ * to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
+ * when formatting dates in the Gregorian calendar.
  *
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
@@ -382,7 +386,10 @@ ilib.DateFmt = function(options) {
 			this.useNative = options.useNative;
 		}
 		
-		if (typeof(options.meridiems) !== 'undefined' && options.meridiems === "chinese") {
+		if (typeof(options.meridiems) !== 'undefined' && 
+				(options.meridiems === "chinese" || 
+				 options.meridiems === "gregorian" || 
+				 options.meridiems === "ethiopic")) {
 			this.meridiems = options.meridiems;
 		}
 		
@@ -411,6 +418,10 @@ ilib.DateFmt = function(options) {
 			});
 			if (!this.cal) {
 				this.cal = new ilib.Cal.Gregorian();
+			}
+			
+			if (this.meridiems === "default") {
+				this.meridiems = li.getMeridiemsStyle();
 			}
 
 			/*
@@ -977,6 +988,7 @@ ilib.DateFmt.prototype = {
 					}
 					str += this._pad(temp, 2);
 					break;
+				/*
 				case 'j':
 					temp = (date.hour || 0) % 12 + 1;
 					str += temp; 
@@ -985,6 +997,7 @@ ilib.DateFmt.prototype = {
 					temp = (date.hour || 0) % 12 + 1;
 					str += this._pad(temp, 2);
 					break;
+				*/
 				case 'K':
 					temp = (date.hour || 0) % 12;
 					str += temp; 
@@ -1045,7 +1058,8 @@ ilib.DateFmt.prototype = {
 					break;
 					
 				case 'a':
-					if (this.meridiems === "chinese") {
+					switch (this.meridiems) {
+					case "chinese":
 						if (date.hour < 6) {
 							key = "azh0";	// before dawn
 						} else if (date.hour < 9) {
@@ -1061,8 +1075,23 @@ ilib.DateFmt.prototype = {
 						} else {
 							key = "azh6";	// night time
 						}
-					} else {
+						break;
+					case "ethiopic":
+						if (date.hour < 6) {
+							key = "a0-ethiopic";	// morning
+						} else if (date.hour === 6 && date.minute === 0) {
+							key = "a1-ethiopic";	// noon
+						} else if (date.hour >= 6 && date.hour < 12) {
+							key = "a2-ethiopic";	// afternoon
+						} else if (date.hour >= 12 && date.hour < 18) {
+							key = "a3-ethiopic";	// evening
+						} else if (date.hour >= 18) {
+							key = "a4-ethiopic";	// night
+						}
+						break;
+					default:
 						key = date.hour < 12 ? "a0" : "a1";
+						break;
 					}
 					//console.log("finding " + key + " in the resources");
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
