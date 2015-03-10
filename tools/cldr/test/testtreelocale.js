@@ -41,24 +41,54 @@ function testTLConstructorWithLocale() {
     assertEquals("de-DE", tl.getSpec());
 }
 
-function testTLGetParent() {
+function testTLGetParentGerman1() {
+    var tl = new TreeLocale("de");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentGerman2() {
     var tl = new TreeLocale("de-DE");
     assertNotUndefined(tl);
     
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-US", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
-function testTLGetParentUnknown() {
-    var tl = new TreeLocale("ha-NG");
+function testTLGetParentGerman3() {
+    var tl = new TreeLocale("de-Latn-DE");
     assertNotUndefined(tl);
     
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-US", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentGerman4() {
+    var tl = new TreeLocale("de-AT");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("de-Latn-DE", parent.getSpec());
+}
+
+function testTLGetParentUnknown() {
+    var tl = new TreeLocale("xx-Xxxx-XX");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
 function testTLGetParentNonEnglish1() {
@@ -68,17 +98,47 @@ function testTLGetParentNonEnglish1() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("fr-FR", parent.getSpec());
+    assertEquals("fr-Latn-FR", parent.getSpec());
 }
 
 function testTLGetParentNonEnglish2() {
+    var tl = new TreeLocale("fr-Latn-CA");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("fr-Latn-FR", parent.getSpec());
+}
+
+function testTLGetParentNonEnglish3() {
+    var tl = new TreeLocale("fr-Latn-FR");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentNonEnglish4() {
     var tl = new TreeLocale("fr-FR");
     assertNotUndefined(tl);
     
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-US", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentNonEnglish4() {
+    var tl = new TreeLocale("fr");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
 function testTLGetParentEnglishBritish1() {
@@ -88,7 +148,7 @@ function testTLGetParentEnglishBritish1() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-GB", parent.getSpec());
+    assertEquals("en-Latn-GB", parent.getSpec());
 }
 
 function testTLGetParentEnglishBritish2() {
@@ -98,7 +158,7 @@ function testTLGetParentEnglishBritish2() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-GB", parent.getSpec());
+    assertEquals("en-Latn-GB", parent.getSpec());
 }
 
 function testTLGetParentEnglishBritish3() {
@@ -108,7 +168,7 @@ function testTLGetParentEnglishBritish3() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-GB", parent.getSpec());
+    assertEquals("en-Latn-GB", parent.getSpec());
 }
 
 function testTLGetParentEnglishBritish4() {
@@ -118,7 +178,7 @@ function testTLGetParentEnglishBritish4() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-GB", parent.getSpec());
+    assertEquals("en-Latn-GB", parent.getSpec());
 }
 
 function testTLGetParentUSEnglish1() {
@@ -128,7 +188,7 @@ function testTLGetParentUSEnglish1() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-US", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
 function testTLGetParentUSEnglish2() {
@@ -138,7 +198,57 @@ function testTLGetParentUSEnglish2() {
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-US", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentUSEnglish4() {
+    var tl = new TreeLocale("en-LR");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
+}
+
+function testTLGetParentWithScript1() {
+    var tl = new TreeLocale("zh-Hant-HK");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("zh-Hant-TW", parent.getSpec());
+}
+
+function testTLGetParentWithScript2() {
+    var tl = new TreeLocale("zh-Hant-TW");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("zh-Hans-CN", parent.getSpec());
+}
+
+function testTLGetParentWithScript4() {
+    var tl = new TreeLocale("uz-Arab-UZ");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("uz-Cyrl-UZ", parent.getSpec());
+}
+
+function testTLGetParentWithScript5() {
+    var tl = new TreeLocale("uz-Cyrl-UZ");
+    assertNotUndefined(tl);
+    
+    var parent = tl.getParent();
+    assertNotUndefined(parent);
+    
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
 
@@ -163,9 +273,39 @@ function testTLIsRootFalse3() {
     assertFalse(tl.isRoot());
 }
 
-function testTLIsRootTree() {
-    var tl = new TreeLocale("en-US");
+function testTLIsRootFalse4() {
+    var tl = new TreeLocale("fr-Latn-FR");
     assertNotUndefined(tl);
     
     assertFalse(tl.isRoot());
+}
+
+function testTLIsRootFalse5() {
+    var tl = new TreeLocale("fr");
+    assertNotUndefined(tl);
+    
+    assertFalse(tl.isRoot());
+}
+
+function testTLIsRootFalse6() {
+    var tl = new TreeLocale("en");
+    assertNotUndefined(tl);
+    
+    util.print("tl is " + tl.getRegion() + "\n");
+    util.print("root is " + JSON.stringify(TreeLocale.root, undefined, 4) + "\n");
+    assertFalse(tl.isRoot());
+}
+
+function testTLIsRootTrue1() {
+    var tl = new TreeLocale("en-US");
+    assertNotUndefined(tl);
+    
+    assertTrue(tl.isRoot());
+}
+
+function testTLIsRootTrue2() {
+    var tl = new TreeLocale("en-Latn-US");
+    assertNotUndefined(tl);
+    
+    assertTrue(tl.isRoot());
 }

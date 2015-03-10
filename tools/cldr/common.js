@@ -652,15 +652,29 @@ exports.Locale.prototype = {
 	isPseudo: function () {
 		return (this.language === 'xx' && this.region === 'XX');
 	},
-	
-	isCompatible: function (localeSpec) {
-		var min = Math.min(localeSpec.length, this.spec.length);
-		for (var i = 0; i < min; i++) {
-			if (localeSpec.charAt(i) !== this.spec.charAt(i)) {
-				return false;
-			}
-		}
-		return true;
+
+	/**
+	 * Return true if this locale is compatible with the other locale. For two locales
+	 * to be compatible, any locale components specified in the other locale must be 
+	 * either undefined in the other locale or exactly equal to the same component in
+	 * the current locale.<p>
+	 * 
+	 * true: en-Latn-US &lt;-- en<br>
+	 * true: en-Latn-US &lt;-- en-Latn<br>
+	 * true: en-Latn-US &lt;-- en-Latn-US<br>
+	 * true: en-Latn-US &lt;-- en-US<br>
+	 * false: en-Latn-US &lt;-- fr<br>
+	 * false: en-Latn-US &lt;-- en-Dest-US<br>
+	 * false: fr-Latn-FR &lt;-- fr-Latn-CA<br>
+	 *
+	 * @param {Locale} other other locale to match against
+	 * @return {boolean} true if the other locale is compatible with the current locale
+	 */
+	isCompatible: function (other) {
+		return !((this.language && other.getLanguage() && this.language !== other.getLanguage()) ||
+			(this.script && other.getScript() && this.script !== other.getScript()) ||
+			(this.region && other.getRegion() && this.region !== other.getRegion()) ||
+			(this.variant && other.getVariant() && this.variant !== other.getVariant()));
 	}
 };
 

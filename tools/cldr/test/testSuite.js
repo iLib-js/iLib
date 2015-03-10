@@ -34,7 +34,8 @@ function suite() {
 	    "testunifile.js",
 	    "testunidata.js",
 	    "testtranslationunit.js",
-	    "testtranslationset.js"
+	    "testtranslationset.js",
+	    "testtreelocale.js"
 	];
 
     suites.forEach(function (path) {
