@@ -31,7 +31,7 @@ function suite() {
     var suites = [
 		"testdatefmt_af_NA.js",
 		"testdatefmt_af_ZA.js",
-        "testdatefmt_am_ET.js",
+        	"testdatefmt_am_ET.js",
    		"testdatefmt_ar_SA.js",
 		"testdatefmt_as_IN.js",
 		"testdatefmt_bg.js",
