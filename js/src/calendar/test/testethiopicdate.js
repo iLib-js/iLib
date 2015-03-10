@@ -72,12 +72,12 @@ function testEthiopicRataDieConstructorUnixtime() {
     
     assertNotNull(erd);
     
-    assertEquals(716367.7083333334, erd.getRataDie());
+    assertEquals(716367.75, erd.getRataDie());
 }
 
 function testEthiopicRataDieConstructorJulianDay() {
     var erd = new ilib.Date.EthiopicRataDie({
-        julianday: 1724219.7916666667 + 734564 
+        julianday: 1724219.75 + 734564 
     });
     
     assertNotNull(erd);
@@ -87,12 +87,12 @@ function testEthiopicRataDieConstructorJulianDay() {
 
 function testEthiopicRataDieGetJulianDay1() {
     var erd = new ilib.Date.EthiopicRataDie({
-        julianday: 1724219.7916666667 + 734564 
+        julianday: 1724219.75 + 734564 
     });
     
     assertNotNull(erd);
     
-    assertEquals(1724219.7916666667 + 734564, erd.getJulianDay());
+    assertEquals(1724219.75 + 734564, erd.getJulianDay());
 }
 
 function testEthiopicRataDieGetJulianDay2() {
@@ -112,7 +112,7 @@ function testEthiopicRataDieGetJulianDay3() {
     
     assertNotNull(erd);
     
-    assertEquals(1724219.7916666667, erd.getJulianDay());
+    assertEquals(1724219.75, erd.getJulianDay());
 }
 
 function testEthiopicRataDieGetTime1() {
@@ -205,7 +205,7 @@ function testEthiopicDateConstructor() {
 /* ethiopic date is rd 366 + epoch */
 function testEthiopicDateConstructorFromJD() {
     var ed = new ilib.Date.EthiopicDate({
-        julianday: 1724586.7916666667,
+        julianday: 1724586.75,
         timezone: "Etc/UTC"
     });
     
@@ -229,7 +229,7 @@ function testEthiopicDateConstructorUnixTime() {
     assertEquals("year", 1962, ed.getYears());
     assertEquals("month", 4, ed.getMonths());
     assertEquals("day", 22, ed.getDays());
-    assertEquals("hour", 17, ed.getHours());
+    assertEquals("hour", 18, ed.getHours());
     assertEquals("minute", 0, ed.getMinutes());
     assertEquals("second", 0, ed.getSeconds());
     assertEquals("millisecond", 0, ed.getMilliseconds());
@@ -238,7 +238,7 @@ function testEthiopicDateConstructorUnixTime() {
 function testEthiopicDateAfterLeapYear() {
     // year 3 of every 4 year cycle is a leap year in the ethiopic calendar
     var ed = new ilib.Date.EthiopicDate({
-        julianday: 1725316.7916666667, // ethiopic epoch + 1 + 2 * 365 + 366
+        julianday: 1725316.75, // ethiopic epoch + 1 + 2 * 365 + 366
         timezone: "Etc/UTC"
     });
     
@@ -427,39 +427,39 @@ function testEthiopicDateBeginningOfYear2Rd() {
 
 var testDates = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, -594,  12,    5,   17,   0,      0,      0,           0],
-    [1660037.5, -175,  4,     11,  17,   0,      0,      0,           3],
-    [1746893.5, 63,    1,     28,  17,   0,      0,      0,           3],
-    [1770641.5, 128,   2,     4,   17,   0,      0,      0,           0],
-    [1892731.5, 462,   5,     11,  17,   0,      0,      0,           3],
-    [1931579.5, 568,   9,     22,  17,   0,      0,      0,           1],
-    [1974851.5, 687,   3,     10,  17,   0,      0,      0,           6],
-    [2091164.5, 1005,  8,     23,  17,   0,      0,      0,           0],
-    [2121509.5, 1088,  9,     22,  17,   0,      0,      0,           0],
-    [2155779.5, 1182,  7,     19,  17,   0,      0,      0,           5],
-    [2174029.5, 1232,  7,     6,   17,   0,      0,      0,           6],
-    [2191584.5, 1280,  7,     29,  17,   0,      0,      0,           5],
-    [2195261.5, 1290,  8,     24,  17,   0,      0,      0,           0],
-    [2229274.5, 1383,  10,    9,   17,   0,      0,      0,           0],
-    [2245580.5, 1428,  5,     28,  17,   0,      0,      0,           3],
-    [2266100.5, 1484,  8,     4,   17,   0,      0,      0,           6],
-    [2288542.5, 1546,  1,     11,  17,   0,      0,      0,           6],
-    [2290901.5, 1552,  6,     28,  17,   0,      0,      0,           6],
-    [2323140.5, 1640,  10,    5,   17,   0,      0,      0,           3],
-    [2334848.5, 1672,  10,    25,  17,   0,      0,      0,           0],
-    [2348020.5, 1708,  11,    18,  17,   0,      0,      0,           5],
-    [2366978.5, 1760,  10,    13,  17,   0,      0,      0,           0],
-    [2385648.5, 1811,  11,    26,  17,   0,      0,      0,           1],
-    [2392825.5, 1831,  7,     18,  17,   0,      0,      0,           3],
-    [2416223.5, 1895,  8,     10,  17,   0,      0,      0,           0],
-    [2425848.5, 1921,  12,    18,  17,   0,      0,      0,           0],
-    [2430266.5, 1934,  1,     18,  17,   0,      0,      0,           1],
-    [2430833.5, 1935,  8,     10,  17,   0,      0,      0,           1],
-    [2431004.5, 1936,  1,     25,  17,   0,      0,      0,           4],
-    [2448698.5, 1984,  7,     7,   17,   0,      0,      0,           2],
-    [2450138.5, 1988,  6,     16,  17,   0,      0,      0,           0],
-    [2465737.5, 2031,  2,     30,  17,   0,      0,      0,           3],
-    [2486076.5, 2086,  11,    10,  17,   0,      0,      0,           0]
+    [1507231.5, -594,  12,    5,   18,   0,      0,      0,           0],
+    [1660037.5, -175,  4,     11,  18,   0,      0,      0,           3],
+    [1746893.5, 63,    1,     28,  18,   0,      0,      0,           3],
+    [1770641.5, 128,   2,     4,   18,   0,      0,      0,           0],
+    [1892731.5, 462,   5,     11,  18,   0,      0,      0,           3],
+    [1931579.5, 568,   9,     22,  18,   0,      0,      0,           1],
+    [1974851.5, 687,   3,     10,  18,   0,      0,      0,           6],
+    [2091164.5, 1005,  8,     23,  18,   0,      0,      0,           0],
+    [2121509.5, 1088,  9,     22,  18,   0,      0,      0,           0],
+    [2155779.5, 1182,  7,     19,  18,   0,      0,      0,           5],
+    [2174029.5, 1232,  7,     6,   18,   0,      0,      0,           6],
+    [2191584.5, 1280,  7,     29,  18,   0,      0,      0,           5],
+    [2195261.5, 1290,  8,     24,  18,   0,      0,      0,           0],
+    [2229274.5, 1383,  10,    9,   18,   0,      0,      0,           0],
+    [2245580.5, 1428,  5,     28,  18,   0,      0,      0,           3],
+    [2266100.5, 1484,  8,     4,   18,   0,      0,      0,           6],
+    [2288542.5, 1546,  1,     11,  18,   0,      0,      0,           6],
+    [2290901.5, 1552,  6,     28,  18,   0,      0,      0,           6],
+    [2323140.5, 1640,  10,    5,   18,   0,      0,      0,           3],
+    [2334848.5, 1672,  10,    25,  18,   0,      0,      0,           0],
+    [2348020.5, 1708,  11,    18,  18,   0,      0,      0,           5],
+    [2366978.5, 1760,  10,    13,  18,   0,      0,      0,           0],
+    [2385648.5, 1811,  11,    26,  18,   0,      0,      0,           1],
+    [2392825.5, 1831,  7,     18,  18,   0,      0,      0,           3],
+    [2416223.5, 1895,  8,     10,  18,   0,      0,      0,           0],
+    [2425848.5, 1921,  12,    18,  18,   0,      0,      0,           0],
+    [2430266.5, 1934,  1,     18,  18,   0,      0,      0,           1],
+    [2430833.5, 1935,  8,     10,  18,   0,      0,      0,           1],
+    [2431004.5, 1936,  1,     25,  18,   0,      0,      0,           4],
+    [2448698.5, 1984,  7,     7,   18,   0,      0,      0,           2],
+    [2450138.5, 1988,  6,     16,  18,   0,      0,      0,           0],
+    [2465737.5, 2031,  2,     30,  18,   0,      0,      0,           3],
+    [2486076.5, 2086,  11,    10,  18,   0,      0,      0,           0]
 ];
 
 function testEthiopicDateConvertYears() {
@@ -724,7 +724,7 @@ function testEthiopicDateTestGetTimeZero() {
         year: 1962,
         month: 4,
         day: 22,
-        hour: 17,
+        hour: 18,
         timezone: "Etc/UTC"
     });
     assertNotNull(ed);
@@ -737,7 +737,7 @@ function testEthiopicDateTestGetTime() {
         year: 1962,
         month: 4,
         day: 22,
-        hour: 20,       // 20:30 ethiopic time = 3:30am gregorian time
+        hour: 21,       // 21:30 ethiopic time = 3:30am gregorian time
         minute: 30,
         timezone: "Etc/UTC"
     });
@@ -765,7 +765,7 @@ function testEthiopicDateTestGetTimeTooLate() {
         year: 2030,
         month: 5,
         day: 10,
-        hour: 20,
+        hour: 21,
         minute: 14,
         second: 8,
         timezone: "Etc/UTC"
@@ -781,7 +781,7 @@ function testEthiopicDateTestGetTimeExtendedNotTooLate() {
         year: 2030,
         month: 5,
         day: 10,
-        hour: 20,
+        hour: 21,
         minute: 14,
         second: 8,
         timezone: "Etc/UTC"
@@ -796,7 +796,7 @@ function testEthiopicDateTestSetTime1() {
         year: 1962,
         month: 4,
         day: 22,
-        hour: 17,
+        hour: 18,
         timezone: "Etc/UTC"
     });
     assertNotNull(ed);
@@ -807,7 +807,7 @@ function testEthiopicDateTestSetTime1() {
     assertEquals(1962, ed.getYears());
     assertEquals(4, ed.getMonths());
     assertEquals(26, ed.getDays());
-    assertEquals(1, ed.getHours());
+    assertEquals(2, ed.getHours());
     assertEquals(30, ed.getMinutes());
     assertEquals(3, ed.getSeconds());
 }
@@ -830,7 +830,7 @@ function testEthiopicDateTestSetTimeZero() {
     assertEquals(1962, ed.getYears());
     assertEquals(4, ed.getMonths());
     assertEquals(22, ed.getDays());
-    assertEquals(17, ed.getHours());
+    assertEquals(18, ed.getHours());
     assertEquals(0, ed.getMinutes());
     assertEquals(0, ed.getSeconds());
 }
