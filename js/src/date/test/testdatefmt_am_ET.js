@@ -106,7 +106,7 @@ function testDateFmtSimpleTimeShort_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium_am_ET() {
@@ -123,7 +123,7 @@ function testDateFmtSimpleTimeMedium_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeLong_am_ET() {
@@ -140,7 +140,7 @@ function testDateFmtSimpleTimeLong_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeFull_am_ET() {
@@ -157,7 +157,7 @@ function testDateFmtSimpleTimeFull_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleShort_am_ET() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት 29/09/2011", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ 29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_am_ET() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት 29 ግንቦት 2011", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ 29 ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_am_ET() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት 29 ግንቦት 2011", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ 29 ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_am_ET() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ ግንቦት 29 ቀን 2011", fmt.format(date));
 }
 
 function testDateFmtjTemplateMorning_am_ET() {
@@ -569,7 +569,7 @@ function testDateFmtTypeTime_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtTypeDateTime_am_ET() {
@@ -586,7 +586,7 @@ function testDateFmtTypeDateTime_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት 29/09/2011", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ 29/09/2011", fmt.format(date));
 }
 
 
@@ -997,7 +997,7 @@ function testDateFmtShortTimeComponentsHMA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMZ_am_ET() {
@@ -1041,7 +1041,7 @@ function testDateFmtShortTimeComponentsHMAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ EAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_am_ET() {
@@ -1058,7 +1058,7 @@ function testDateFmtShortTimeComponentsHMSA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ከሰዓት", fmt.format(date));
+    assertEquals("1:45:37 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSZ_am_ET() {
@@ -1102,7 +1102,7 @@ function testDateFmtShortTimeComponentsHMSAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45:37 ከምሽቱ EAT", fmt.format(date));
 }
 
 
@@ -1222,7 +1222,7 @@ function testDateFmtFullTimeComponentsHMA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ_am_ET() {
@@ -1268,7 +1268,7 @@ function testDateFmtFullTimeComponentsHMAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45 ከምሽቱ EAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_am_ET() {
@@ -1285,7 +1285,7 @@ function testDateFmtFullTimeComponentsHMSA_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ከሰዓት", fmt.format(date));
+    assertEquals("1:45:37 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ_am_ET() {
@@ -1331,7 +1331,7 @@ function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ከሰዓት EAT", fmt.format(date));
+    assertEquals("1:45:37 ከምሽቱ EAT", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_am_ET() {
@@ -1356,6 +1356,121 @@ function testDateFmtWithTimeZoneAndNoDST_am_ET() {
 	});
     // does not observe DST, so no difference in the TZ spec
     assertEquals("1:45:37 EAT", fmt.format(date));
+}
+
+function testDateFmtTimeMeridiem0_am_ET() {
+    var fmt = new ilib.DateFmt({
+        locale: "am-ET", 
+        type: "time", 
+        length: "long", 
+        time: "hma", 
+        timezone: "Africa/Addis_Ababa"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.EthiopicDate({
+		locale: "am-ET",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 1,
+		minute: 45,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("1:45 ጠዋት", fmt.format(date));
+}
+
+function testDateFmtTimeMeridiem1_am_ET() {
+    var fmt = new ilib.DateFmt({
+        locale: "am-ET", 
+        type: "time", 
+        length: "long", 
+        time: "hma", 
+        timezone: "Africa/Addis_Ababa"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.EthiopicDate({
+		locale: "am-ET",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 6,
+		minute: 0,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("6:00 ቀትር", fmt.format(date));
+}
+
+function testDateFmtTimeMeridiem2_am_ET() {
+    var fmt = new ilib.DateFmt({
+        locale: "am-ET", 
+        type: "time", 
+        length: "long", 
+        time: "hma", 
+        timezone: "Africa/Addis_Ababa"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.EthiopicDate({
+		locale: "am-ET",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 8,
+		minute: 22,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("8:22 ከሰዓት", fmt.format(date));
+}
+
+function testDateFmtTimeMeridiem3_am_ET() {
+    var fmt = new ilib.DateFmt({
+        locale: "am-ET", 
+        type: "time", 
+        length: "long", 
+        time: "hma", 
+        timezone: "Africa/Addis_Ababa"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.EthiopicDate({
+		locale: "am-ET",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 22,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("1:22 ከምሽቱ", fmt.format(date));
+}
+
+function testDateFmtTimeMeridiem4_am_ET() {
+    var fmt = new ilib.DateFmt({
+        locale: "am-ET", 
+        type: "time", 
+        length: "long", 
+        time: "hma", 
+        timezone: "Africa/Addis_Ababa"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.EthiopicDate({
+		locale: "am-ET",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 19,
+		minute: 22,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("7:22 ከሌሊቱ", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_am_ET() {
