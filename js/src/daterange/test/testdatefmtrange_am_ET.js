@@ -39,7 +39,7 @@ function testDateRngFmtAMRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት 30/12/2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtAMRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtAMRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtAMRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት – 3:30 ከሰዓት ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextDayShort() {
@@ -136,7 +136,7 @@ function testDateRngFmtAMRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29/12/2011 – 3:30 ከሰዓት 30/12/2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ 29/12/2011 – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtAMRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 ነሐሴ – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ 29 ነሐሴ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtAMRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት 29 – 3:30 ከሰዓት 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ 29 – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtAMRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2:45 ከሰዓት ነሐሴ 29 – 3:30 ከሰዓት ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+    assertEquals("1:45 ከምሽቱ ነሐሴ 29 – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeMultiDayShort() {
