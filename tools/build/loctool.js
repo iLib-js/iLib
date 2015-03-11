@@ -83,8 +83,8 @@ if (verbose) {
 
 var ignoreDirs = ["test", "resources", "locale", "output"];
 
-var reSlashDotComments = new RegExp("\\/\\*(\\*[^/]|[^\\*])*\\*\\/", "g");
-var reSlashSlashComments = new RegExp("\\/\\/.*$", "g");
+var reSlashDotComments = new RegExp("\\/\\*( ?i18n)?(\\*[^/]|[^\\*])*\\*\\/", "g");
+var reSlashSlashComments = new RegExp("\\/\\/( ?i18n)?.*$", "g");
 var reGetStringSourceOnly = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
@@ -107,24 +107,37 @@ function scanFile(filename, text) {
 	
 	var result;
 	var lines = text.split("\n");
+	var comment;
 	
 	for (var i = 0; i < lines.length; i++) {
-		var line = lines[i].replace(reSlashSlashComments, "");
+		var line = lines[i];
+		if ((result = reSlashSlashComments.exec(lines[i])) && result && result.length > 0) {
+			if (result[1]) {
+				comment = result[0].substring(2+result[1].length);
+				verbose && util.print("Found translator's comment: " + comment + "\n");	
+			}
+			
+			line = lines[i].replace(reSlashSlashComments, "");
+		}
 		
 		while ((result = reGetStringSourceOnly.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + "\n");
 			var str = stripQuotes(result[2]);
 			extracted.addTranslationUnit(new TranslationUnit({
-				source: str
+				source: str,
+				comment: comment
 			}));
+			comment = undefined;
 		}
 		
 		while ((result = reGetStringSourceAndKey.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + ", key: " + result[5] + "\n");
 			extracted.addTranslationUnit(new TranslationUnit({
 				key: stripQuotes(result[5]),
-				source: stripQuotes(result[2])
-			}))
+				source: stripQuotes(result[2]),
+				comment: comment
+			}));
+			comment = undefined;
 		}
 	}
 }

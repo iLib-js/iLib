@@ -80,11 +80,13 @@ var TranslationSet = function TranslationSet(params) {
 			    		key = sourceElement.$.key;
 			    		source = sourceElement._;
 			    	}
+			    	var comment = transunit.note && transunit.note[0];
 			    	var tu = new TranslationUnit({
 			    		source: source,
 			    		key: key,
 			    		translation: transunit.target && transunit.target[0],
-			    		locale: targetLocale
+			    		locale: targetLocale,
+			    		comment: comment
 			    	});
 			    	
 			    	this.addTranslationUnit(tu);
@@ -110,7 +112,8 @@ var TranslationSet = function TranslationSet(params) {
 								key: key,
 								source: tuinfo.source || key,
 								translation: tuinfo.translation,
-								locale: loc
+								locale: loc,
+								comment: tuinfo.comment
 							});
 							this.addTranslationUnit(tu);
 						}
@@ -170,6 +173,9 @@ TranslationSet.prototype.save = function() {
 					};
 					if (tu.translation) {
 						ondisk.db[loc][key].translation = tu.translation;
+					}
+					if (tu.comment) {
+						ondisk.db[loc][key].comment = tu.comment;
 					}
 					if (tu.occurances && tu.occurances.length > 0) {
 						ondisk.db[loc][key].occurances = tu.occurances;
@@ -341,6 +347,9 @@ TranslationSet.prototype.toXliff = function() {
 					}
 					if (tu.translation) {
 						element.target = tu.translation;
+					}
+					if (tu.comment) {
+						element.note = tu.comment;
 					}
 
 					file.body["trans-unit"].push(element);

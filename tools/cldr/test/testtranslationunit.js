@@ -132,3 +132,16 @@ function testTUAddOccuranceNoTranslationAndLocale() {
     assertEquals("javascript", tu.dataType);
 }
 
+function testTUComment() {
+    var tu = new TranslationUnit({
+    	key: "a",
+    	source: "b",
+    	target: "c",
+    	comment: "translator's comment",
+    	locale: "de-DE"
+    });
+    assertNotUndefined(tu);
+
+    assertEquals("translator's comment", tu.comment);
+}
+

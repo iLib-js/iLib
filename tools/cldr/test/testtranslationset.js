@@ -95,6 +95,7 @@ var xliff =
 	'      <trans-unit>\n' +
 	'        <source key="firstkey">This string should be extracted.</source>\n' +
 	'        <target>Übersetzung des ersten Schlüssel.</target>\n' +
+	'        <note>This is a note about the string with the first key</note>\n' +
 	'      </trans-unit>\n' +
 	'      <trans-unit>\n' +
 	'        <source key="secondkey">This string should be extracted.</source>\n' +
@@ -125,6 +126,7 @@ function testTSConstructorFromXliffRightContents() {
     assertEquals("This string should be extracted.", tu.source);
     assertEquals("de-DE", tu.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+    assertEquals("This is a note about the string with the first key", tu.comment);
 }
 
 function testTSGetPathFromXliff() {
@@ -1169,7 +1171,8 @@ function testTSToXliff() {
     	key: "firstkey",
     	source: "This string should be extracted.",
     	translation: "Übersetzung des ersten Schlüssel.",
-    	locale: "de-DE"
+    	locale: "de-DE",
+    	comment: "This is a note about the string with the first key"
     });
     ts.addTranslationUnit(tu);
 
