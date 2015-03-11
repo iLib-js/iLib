@@ -48,7 +48,7 @@ TreeLocale._init = function() {
 TreeLocale.prototype.getParent = function() {
 	var spec, parts = [];
 	
-	util.print("getParent: checking " + this.getSpec() + "\n");
+	// util.print("getParent: checking " + this.getSpec() + "\n");
 	
 	if (this.isRoot()) {
 		return undefined;
@@ -69,14 +69,14 @@ TreeLocale.prototype.getParent = function() {
 	
 	while (parts.length > 0) {
 		spec = parts.join("-");
-		util.print("  getParent: checking " + spec + "\n");
+		// util.print("  getParent: checking " + spec + "\n");
 		if (TreeLocale.hierarchy[spec]) {
-			util.print("  getParent: found potential parent " + TreeLocale.hierarchy[spec] + "\n");
+			// util.print("  getParent: found potential parent " + TreeLocale.hierarchy[spec] + "\n");
 			loc = new TreeLocale(TreeLocale.hierarchy[spec]);
 			if (!loc.isCompatible(this)) {
 				return loc;
 			}
-			util.print("  getParent: compatible. Resuming search...\n");
+			// util.print("  getParent: compatible. Resuming search...\n");
 		}
 		parts = parts.slice(0, -1);
 	}
@@ -85,14 +85,14 @@ TreeLocale.prototype.getParent = function() {
 		TreeLocale.root = new common.Locale(TreeLocale.hierarchy["*"] || "en-Latn-US");
 	}
 	
-	util.print("  getParent: returning root " + TreeLocale.root.getSpec() + "\n");
+	// util.print("  getParent: returning root " + TreeLocale.root.getSpec() + "\n");
 	
 	return TreeLocale.root;
 };
 
 TreeLocale.prototype.isRoot = function() {
 	if (!TreeLocale.root) {
-		TreeLocale.root = new common.Locale(TreeLocale.hierarchy["*"] || "en-Latn-US");
+		TreeLocale.root = new TreeLocale(TreeLocale.hierarchy["*"] || "en-Latn-US");
 	}
 	return TreeLocale.root.isCompatible(this);
 };

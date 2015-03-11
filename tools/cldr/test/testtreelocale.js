@@ -171,14 +171,14 @@ function testTLGetParentEnglishBritish3() {
     assertEquals("en-Latn-GB", parent.getSpec());
 }
 
-function testTLGetParentEnglishBritish4() {
+function testTLGetParentUSEnglish0() {
     var tl = new TreeLocale("zh-Hans-CN");
     assertNotUndefined(tl);
     
     var parent = tl.getParent();
     assertNotUndefined(parent);
     
-    assertEquals("en-Latn-GB", parent.getSpec());
+    assertEquals("en-Latn-US", parent.getSpec());
 }
 
 function testTLGetParentUSEnglish1() {
@@ -288,12 +288,31 @@ function testTLIsRootFalse5() {
 }
 
 function testTLIsRootFalse6() {
+    var tl = new TreeLocale("en-Latn-GB");
+    assertNotUndefined(tl);
+    
+    assertFalse(tl.isRoot());
+}
+
+function testTLIsRootFalse7() {
+    var tl = new TreeLocale("en-GB");
+    assertNotUndefined(tl);
+    
+    assertFalse(tl.isRoot());
+}
+
+function testTLIsRootFalse8() {
+    var tl = new TreeLocale("en-AU");
+    assertNotUndefined(tl);
+    
+    assertFalse(tl.isRoot());
+}
+
+function testTLIsRootTrue0() {
     var tl = new TreeLocale("en");
     assertNotUndefined(tl);
     
-    util.print("tl is " + tl.getRegion() + "\n");
-    util.print("root is " + JSON.stringify(TreeLocale.root, undefined, 4) + "\n");
-    assertFalse(tl.isRoot());
+    assertTrue(tl.isRoot());
 }
 
 function testTLIsRootTrue1() {
