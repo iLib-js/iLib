@@ -209,7 +209,7 @@ function testToUpper_lt() {
 }
 
 /*Afrikaans Test cases*/
-function testToUpeer_af_ZA1() {
+function testToUpper_af_ZA1() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-ZA"
@@ -217,7 +217,7 @@ function testToUpeer_af_ZA1() {
     assertEquals("AÁÄBCDEÊËÉÈFG", mapper.map("aáäbcdeêëéèfg"));
 }
 
-function testToUpeer_af_ZA2() {
+function testToUpper_af_ZA2() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-ZA"
@@ -225,7 +225,7 @@ function testToUpeer_af_ZA2() {
     assertEquals("HIÎÏÍJKLMNOÔÖÓPQRSTUÛÜÚVWXYZ", mapper.map("hiîïíjklmnoôöópqrstuûüúvwxyz"));
 }
 
-function testToUpeerMixed_af_ZA3() {
+function testToUpperMixed_af_ZA3() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-ZA"
@@ -234,7 +234,7 @@ function testToUpeerMixed_af_ZA3() {
 }
 
 
-function testToUpeer_af_NA1() {
+function testToUpper_af_NA1() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-NA"
@@ -242,7 +242,7 @@ function testToUpeer_af_NA1() {
     assertEquals("AÁÄBCDEÊËÉÈFG", mapper.map("aáäbcdeêëéèfg"));
 }
 
-function testToUpeer_af_NA2() {
+function testToUpper_af_NA2() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-NA"
@@ -250,10 +250,36 @@ function testToUpeer_af_NA2() {
     assertEquals("HIÎÏÍJKLMNOÔÖÓPQRSTUÛÜÚVWXYZ", mapper.map("hiîïíjklmnoôöópqrstuûüúvwxyz"));
 }
 
-function testToUpeerMixed_af_NA3() {
+function testToUpperMixed_af_NA3() {
 	var mapper = new ilib.CaseMapper({
 		direction: "toupper",
 		locale: "af-NA"
 	});
     assertEquals("HIÎ - ÏÍJKL", mapper.map("hiî - ïíjkl"));
 }
+/*Hausa */
+function testToUpper_ha_GH1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "ha-GH"
+	});
+    assertEquals("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ", mapper.map("abɓcdɗefghijkƙlmnorstuwyƴz"));
+}
+
+function testToUpper_ha_NE1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "ha-NE"
+	});
+    assertEquals("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ", mapper.map("abɓcdɗefghijkƙlmnorstuwyƴz"));
+}
+
+function testToUpper_ha_NG1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper",
+		locale: "ha-NG"
+	});
+    assertEquals("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ", mapper.map("abɓcdɗefghijkƙlmnorstuwyƴz"));
+}
+
+

@@ -289,3 +289,28 @@ function testToLowerMixed_af_NA3() {
 	});
     assertEquals("hiî - ïíjkl", mapper.map("Hiî - ÏÍjkL"));
 }
+
+/*Hausa */
+function testToLower_ha_GH1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "tolower",
+		locale: "ha-GH"
+	});
+    assertEquals("abɓcdɗefghijkƙlmnorstuwyƴz", mapper.map("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ"));
+}
+
+function testToLower_ha_NE1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "tolower",
+		locale: "ha-NE"
+	});
+     assertEquals("abɓcdɗefghijkƙlmnorstuwyƴz", mapper.map("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ"));
+}
+
+function testToLower_ha_NG1() {
+	var mapper = new ilib.CaseMapper({
+		direction: "tolower",
+		locale: "ha-NG"
+	});
+     assertEquals("abɓcdɗefghijkƙlmnorstuwyƴz", mapper.map("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ"));
+}
