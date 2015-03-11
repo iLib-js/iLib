@@ -7106,3 +7106,32 @@ function testLocaleInfoGetWeekendIN() {
 	assertEquals(0, info.getWeekEndEnd());
 }
 
+
+function testLocaleInfoGetMeridiemsStyleDefault() {
+	var info = new ilib.LocaleInfo();
+	assertNotNull(info);
+	
+	assertEquals("gregorian", info.getMeridiemsStyle());
+}
+function testLocaleInfoGetMeridiemsStyleUS() {
+	var info = new ilib.LocaleInfo("en-US");
+	assertNotNull(info);
+	
+	assertEquals("gregorian", info.getMeridiemsStyle());
+}
+function testLocaleInfoGetMeridiemsStyle_am_ET() {
+	var info = new ilib.LocaleInfo("am-ET");
+	assertNotNull(info);
+	
+	assertEquals("ethiopic", info.getMeridiemsStyle());
+}
+function testLocaleInfoGetMeridiemsStyle_zh_Hans_CN() {
+	var info = new ilib.LocaleInfo("zh-Hans-CN");
+	assertNotNull(info);
+	
+	// Even for the Chinese locales, the default is 
+	// Gregorian style. To format with Chinese style,
+	// you have to explicitly request it when constructing
+	// the date formatter instance.
+	assertEquals("gregorian", info.getMeridiemsStyle());
+}
