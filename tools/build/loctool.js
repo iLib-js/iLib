@@ -90,7 +90,13 @@ var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\
 var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceAndKey = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 
-var extracted = new TranslationSet();
+var stringsdb = new TranslationSet();
+var extracted = new TranslationSet({
+	file: ""
+});
+var newStrings = new TranslationSet({
+	file: ""
+});
 
 function stripQuotes(str) {
 	if (str.charAt(0) === '"' || str.charAt(0) === "'") {
@@ -100,6 +106,28 @@ function stripQuotes(str) {
 		str = str.substring(0,str.length-1);
 	}
 	return str;
+}
+
+function saveTransUnit(tu) {
+	var locales = stringsdb.getAllLocales();
+	for (var i = 0; i < locales.length; i++) {
+		var tu2 = stringsdb.getTranslationUnit(tu.key, locales[i]);
+		
+		if (!tu2) {
+			// newStrings only has strings that are not yet translated.
+			// re-use the source for the translation field for new strings
+			newStrings.addTranslationUnit(common.merge(tu, {
+				locale: locales[i], 
+				translation: tu.source
+			}));
+		}
+	}
+	
+	// saves all strings
+	stringsdb.addTranslationUnit(tu);
+	
+	// only has strings extracted in this run of the loc tool
+	extracted.addTranslationUnit(tu);
 }
 
 function scanFile(filename, text) {
@@ -123,7 +151,7 @@ function scanFile(filename, text) {
 		while ((result = reGetStringSourceOnly.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + "\n");
 			var str = stripQuotes(result[2]);
-			extracted.addTranslationUnit(new TranslationUnit({
+			saveTransUnit(new TranslationUnit({
 				source: str,
 				comment: comment
 			}));
@@ -132,7 +160,7 @@ function scanFile(filename, text) {
 		
 		while ((result = reGetStringSourceAndKey.exec(line)) !== null && result && result.length > 0) {
 			verbose && util.print("Found source string: " + result[2] + ", key: " + result[5] + "\n");
-			extracted.addTranslationUnit(new TranslationUnit({
+			saveTransUnit(new TranslationUnit({
 				key: stripQuotes(result[5]),
 				source: stripQuotes(result[2]),
 				comment: comment
@@ -196,12 +224,12 @@ function getOutputJson(locale) {
 	return json;
 }
 
-extracted.save();
-verbose && util.print("Strings database saved to " + extracted.getPath() + "\n");
+//stringsdb.save();
+verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n");
 
 var outputDir;
 
-var locales = extracted.getAllLocales();
+var locales = stringsdb.getAllLocales();
 for (var i = 0; i < locales.length; i++) {
 	var loc = new common.Locale(locales[i]);
 	outputDir = targetdir;
@@ -231,7 +259,10 @@ for (var i = 0; i < locales.length; i++) {
 	verbose && util.print("Output file written to " + outputFile + "\n");
 }
 
-outputFile = path.join(targetdir, "strings.xliff");
+outputFile = path.join(targetdir, "extracted.xliff");
 fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
 verbose && util.print("Output file written to " + outputFile + "\n");
 
+outputFile = path.join(targetdir, "newstrings.xliff");
+fs.writeFileSync(outputFile, newStrings.toXliff(), "utf-8");
+verbose && util.print("Output file written to " + outputFile + "\n");
