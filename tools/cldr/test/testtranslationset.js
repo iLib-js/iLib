@@ -35,6 +35,16 @@ function testTSGetPathEmpty() {
     assertEquals("stringsdb.json", ts.getPath());
 }
 
+function testTSEmptyNoTransUnits() {
+    var ts = new TranslationSet();
+    assertNotUndefined(ts);
+    
+    var locales = ts.getAllLocales();
+    assertEquals(0, locales.length);
+    var units = ts.getAllTranslationUnits();
+    assertEquals(0, units.length);
+}
+
 function testTSConstructorFromFile() {
     var ts = new TranslationSet({
     	file: "./test/stringsdb.json"

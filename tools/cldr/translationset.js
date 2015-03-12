@@ -97,7 +97,7 @@ var TranslationSet = function TranslationSet(params) {
 	this.file = this.file || path.join(this.path, "stringsdb.json");
 	this.file = path.normalize(this.file);
 	this.sourceLocale = this.sourceLocale || new common.Locale();
-	if (this.file && fs.existsSync(this.file)) {
+	if ((params && (params.file || params.path)) && fs.existsSync(this.file)) {
 		try {
 			//util.print("Attempting to load file " + this.file + "\n");
 			var json = fs.readFileSync(this.file, "utf-8");

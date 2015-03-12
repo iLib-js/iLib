@@ -30,7 +30,7 @@ var TranslationSet = require('../cldr/translationset.js');
 var TranslationUnit = require('../cldr/translationunit.js');
 
 function usage() {
-	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] command [source_dir]\n" +
+	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] command [source_dir]\n" +
 		"Scan js files for translatable strings and generate translated json files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
@@ -38,6 +38,9 @@ function usage() {
 	    "  Verbose mode" +
 	    "-o target_dir\n" +
 		'  Where to put the results. Default "./resources"\n' +
+	    "-l locale_list\n" +
+		'  Comma-separated list of BCP-47 style locale names to localize to. Default is\n' +
+		'  all locales that already exist in the strings database.\n' +
 		"command\n" +
 		"  Action to perform: extract, merge, split" +
 	    "source_dir\n" +
@@ -48,7 +51,8 @@ function usage() {
 var sourcedir = ".", 
 	targetdir = "resources",
 	verbose = false,
-	sourceLocale = new common.Locale("en-US");
+	sourceLocale = new common.Locale("en-US"),
+	locales;
 
 for (var i = 2; i < process.argv.length; i++) {
 	if (process.argv[i].toUpperCase() === '-H' || process.argv[i] === '--help') {
@@ -57,6 +61,12 @@ for (var i = 2; i < process.argv.length; i++) {
 		targetdir = process.argv[i];
 	} else if (process.argv[i].toUpperCase() === '-V' || process.argv[i] === '--verbose') {
 		verbose = true;
+	} else if (process.argv[i].toUpperCase() === '-L' || process.argv[i] === '--locales') {
+		if (i+1 >= process.argv.length) {
+			util.print("Error: " + process.argv[i] + " argument requires a list of locales to follow it.\n");
+			usage();
+		}
+		locales = process.argv[++i].split(",");
 	} else {
 		sourcedir = process.argv[i];
 	}
@@ -83,20 +93,22 @@ if (verbose) {
 
 var ignoreDirs = ["test", "resources", "locale", "output"];
 
-var reSlashDotComments = new RegExp("\\/\\*( ?i18n)?(\\*[^/]|[^\\*])*\\*\\/", "g");
-var reSlashSlashComments = new RegExp("\\/\\/( ?i18n)?.*$", "g");
+var reSlashDotComments = new RegExp("\\/\\*( ?i18n )?(\\*[^/]|[^\\*])*\\*\\/", "g");
+var reSlashSlashComments = new RegExp("\\/\\/( ?i18n )?.*$", "g");
 var reGetStringSourceOnly = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceAndKey = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 
-var stringsdb = new TranslationSet();
-var extracted = new TranslationSet({
-	file: ""
+var stringsdb = new TranslationSet({
+	path: "."
 });
-var newStrings = new TranslationSet({
-	file: ""
-});
+var extracted = new TranslationSet();
+var newStrings = new TranslationSet();
+
+if (!locales) {
+	locales = stringsdb.getAllLocales();
+}
 
 function stripQuotes(str) {
 	if (str.charAt(0) === '"' || str.charAt(0) === "'") {
@@ -109,7 +121,6 @@ function stripQuotes(str) {
 }
 
 function saveTransUnit(tu) {
-	var locales = stringsdb.getAllLocales();
 	for (var i = 0; i < locales.length; i++) {
 		var tu2 = stringsdb.getTranslationUnit(tu.key, locales[i]);
 		
@@ -224,12 +235,11 @@ function getOutputJson(locale) {
 	return json;
 }
 
-//stringsdb.save();
+stringsdb.save();
 verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n");
 
 var outputDir;
 
-var locales = stringsdb.getAllLocales();
 for (var i = 0; i < locales.length; i++) {
 	var loc = new common.Locale(locales[i]);
 	outputDir = targetdir;
