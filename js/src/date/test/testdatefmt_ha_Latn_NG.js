@@ -1,5 +1,5 @@
 /*
- * testdatefmt_ha_Latn.js - test the date formatter object in Hausa.
+ * testdatefmt_ha_Latn_NG.js - test the date formatter object in Hausa.
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -18,17 +18,17 @@
  */
 
 function testDateFmtConstructorEmpty_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG"});
     
     assertNotNull(fmt);
 }
 
 function testDateFmtSimpleShort_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "short"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -41,11 +41,11 @@ function testDateFmtSimpleShort_ha_Latn() {
 }
 
 function testDateFmtSimpleMedium_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "medium"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -58,11 +58,11 @@ function testDateFmtSimpleMedium_ha_Latn() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Jan() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 1,
 		day: 29,
@@ -75,11 +75,11 @@ function testDateFmtSimpleLong_ha_Latn_Jan() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Feb() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 2,
 		day: 29,
@@ -92,11 +92,11 @@ function testDateFmtSimpleLong_ha_Latn_Feb() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Mar() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 3,
 		day: 29,
@@ -108,11 +108,11 @@ function testDateFmtSimpleLong_ha_Latn_Mar() {
     assertEquals("29 Maris, 2011", fmt.format(date));
 }
 function testDateFmtSimpleLong_ha_Latn_Apr() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 4,
 		day: 29,
@@ -125,11 +125,11 @@ function testDateFmtSimpleLong_ha_Latn_Apr() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_May() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 5,
 		day: 29,
@@ -142,11 +142,11 @@ function testDateFmtSimpleLong_ha_Latn_May() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Jun() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 6,
 		day: 29,
@@ -159,11 +159,11 @@ function testDateFmtSimpleLong_ha_Latn_Jun() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Jul() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 7,
 		day: 29,
@@ -175,11 +175,11 @@ function testDateFmtSimpleLong_ha_Latn_Jul() {
     assertEquals("29 Yuli, 2011", fmt.format(date));
 }
 function testDateFmtSimpleLong_ha_Latn_Aug() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 8,
 		day: 29,
@@ -192,11 +192,11 @@ function testDateFmtSimpleLong_ha_Latn_Aug() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Sep() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -209,11 +209,11 @@ function testDateFmtSimpleLong_ha_Latn_Sep() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Oct() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 10,
 		day: 29,
@@ -226,11 +226,11 @@ function testDateFmtSimpleLong_ha_Latn_Oct() {
 }
 
 function testDateFmtSimpleLong_ha_Latn_Nov() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 29,
@@ -242,11 +242,11 @@ function testDateFmtSimpleLong_ha_Latn_Nov() {
     assertEquals("29 Nuwamba, 2011", fmt.format(date));
 }
 function testDateFmtSimpleLong_ha_Latn_Dec() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -258,11 +258,11 @@ function testDateFmtSimpleLong_ha_Latn_Dec() {
     assertEquals("29 Disamba, 2011", fmt.format(date));
 }
 function testDateFmtSimpleLong_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "long"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "long"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -275,11 +275,11 @@ function testDateFmtSimpleLong_ha_Latn() {
 }
 
 function testDateFmtSimpleFull_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -292,11 +292,11 @@ function testDateFmtSimpleFull_ha_Latn() {
 }
 
 function testDateFmtSimpleTimeShort_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "short", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -309,11 +309,11 @@ function testDateFmtSimpleTimeShort_ha_Latn() {
 }
 
 function testDateFmtSimpleTimeMedium_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "medium", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -326,11 +326,11 @@ function testDateFmtSimpleTimeMedium_ha_Latn() {
 }
 
 function testDateFmtSimpleTimeLong_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", timelength: "long", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -343,11 +343,11 @@ function testDateFmtSimpleTimeLong_ha_Latn() {
 }
 
 function testDateFmtSimpleTimeFull_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -360,11 +360,11 @@ function testDateFmtSimpleTimeFull_ha_Latn() {
 }
 
 function testDateFmtDateTimeSimpleShort_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "short", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -377,11 +377,11 @@ function testDateFmtDateTimeSimpleShort_ha_Latn() {
 }
 
 function testDateFmtDateTimeSimpleMedium_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "medium", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -394,11 +394,11 @@ function testDateFmtDateTimeSimpleMedium_ha_Latn() {
 }
 
 function testDateFmtDateTimeSimpleLong_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "long", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -411,11 +411,11 @@ function testDateFmtDateTimeSimpleLong_ha_Latn() {
 }
 
 function testDateFmtDateTimeSimpleFull_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -429,11 +429,11 @@ function testDateFmtDateTimeSimpleFull_ha_Latn() {
 
 
 function testDateFmtTemplateCalendar_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
-    	locale: "ha-Latn-NE",
+    	locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -448,11 +448,11 @@ function testDateFmtTemplateCalendar_ha_Latn() {
 
 
 function testDateFmtTemplateClock12SwitchHH_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock: "12", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -465,11 +465,11 @@ function testDateFmtTemplateClock12SwitchHH_ha_Latn() {
 }
 
 function testDateFmtTemplateClock12Switchkk_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock: "12", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -482,11 +482,11 @@ function testDateFmtTemplateClock12Switchkk_ha_Latn() {
 }
 
 function testDateFmtTemplateClock24Switchhh_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock: "24", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -499,11 +499,11 @@ function testDateFmtTemplateClock24Switchhh_ha_Latn() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock: "24", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -516,11 +516,11 @@ function testDateFmtTemplateClock24SwitchKK_ha_Latn() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -533,11 +533,11 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_ha_Latn() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -550,11 +550,11 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_ha_Latn() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -567,11 +567,11 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_ha_Latn() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -585,11 +585,11 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_ha_Latn() {
 
 
 function testDateFmtTypeDate_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "date"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "date"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -602,11 +602,11 @@ function testDateFmtTypeDate_ha_Latn() {
 }
 
 function testDateFmtTypeTime_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -619,11 +619,11 @@ function testDateFmtTypeTime_ha_Latn() {
 }
 
 function testDateFmtTypeDateTime_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -637,11 +637,11 @@ function testDateFmtTypeDateTime_ha_Latn() {
 
 
 function testDateFmtShortDateComponentsY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -654,11 +654,11 @@ function testDateFmtShortDateComponentsY_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -671,11 +671,11 @@ function testDateFmtShortDateComponentsM_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsN_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -688,11 +688,11 @@ function testDateFmtShortDateComponentsN_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsN_ha_Latn_Mar() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 3,
 		day: 29,
@@ -704,11 +704,11 @@ function testDateFmtShortDateComponentsN_ha_Latn_Mar() {
     assertEquals("M", fmt.format(date));
 }
 function testDateFmtShortDateComponentsD_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -721,11 +721,11 @@ function testDateFmtShortDateComponentsD_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsDM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -738,11 +738,11 @@ function testDateFmtShortDateComponentsDM_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsMY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -755,11 +755,11 @@ function testDateFmtShortDateComponentsMY_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsDMY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -772,11 +772,11 @@ function testDateFmtShortDateComponentsDMY_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsDMW_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "dmw"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmw"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2554,
 		month: 9,
 		day: 29,
@@ -789,11 +789,11 @@ function testDateFmtShortDateComponentsDMW_ha_Latn() {
 }
 
 function testDateFmtShortDateComponentsDMWY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", date: "dmwy"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", date: "dmwy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2554,
 		month: 9,
 		day: 29,
@@ -807,11 +807,11 @@ function testDateFmtShortDateComponentsDMWY_ha_Latn() {
 
 
 function testDateFmtFullDateComponentsY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -824,11 +824,11 @@ function testDateFmtFullDateComponentsY_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -841,11 +841,11 @@ function testDateFmtFullDateComponentsM_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsD_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -858,11 +858,11 @@ function testDateFmtFullDateComponentsD_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsDM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -875,11 +875,11 @@ function testDateFmtFullDateComponentsDM_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsMY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -892,11 +892,11 @@ function testDateFmtFullDateComponentsMY_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsDMY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -909,11 +909,11 @@ function testDateFmtFullDateComponentsDMY_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsDMW_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "dmw"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmw"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2015,
 		month: 2,
 		day: 19,
@@ -926,11 +926,11 @@ function testDateFmtFullDateComponentsDMW_ha_Latn() {
 }
 
 function testDateFmtFullDateComponentsDMWY_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full", date: "dmwy"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full", date: "dmwy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2015,
 		month: 2,
 		day: 19,
@@ -944,11 +944,11 @@ function testDateFmtFullDateComponentsDMWY_ha_Latn() {
 
 
 function testDateFmtShortTimeComponentsS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -961,11 +961,11 @@ function testDateFmtShortTimeComponentsS_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -978,11 +978,11 @@ function testDateFmtShortTimeComponentsM_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsH_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -995,11 +995,11 @@ function testDateFmtShortTimeComponentsH_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsMS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1012,11 +1012,11 @@ function testDateFmtShortTimeComponentsMS_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsHM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock:"12", type: "time", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1029,11 +1029,11 @@ function testDateFmtShortTimeComponentsHM_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsHMS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock:"12", type: "time", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1046,11 +1046,11 @@ function testDateFmtShortTimeComponentsHMS_ha_Latn() {
 }
 
 function testDateFmtShortTimeComponentsHMA_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock:"12", type: "time", time: "ahm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "ahm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1064,14 +1064,14 @@ function testDateFmtShortTimeComponentsHMA_ha_Latn() {
 
 function testDateFmtShortTimeComponentsHMZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         time: "hmz"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1080,19 +1080,19 @@ function testDateFmtShortTimeComponentsHMZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 WAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         time: "ahmz"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1101,15 +1101,15 @@ function testDateFmtShortTimeComponentsHMAZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 WAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", clock:"12", type: "time", time: "ahms"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", clock:"12", type: "time", time: "ahms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1123,14 +1123,14 @@ function testDateFmtShortTimeComponentsHMSA_ha_Latn() {
 
 function testDateFmtShortTimeComponentsHMSZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         time: "hmsz"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1139,19 +1139,19 @@ function testDateFmtShortTimeComponentsHMSZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 WAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         time: "ahmsz"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1160,16 +1160,16 @@ function testDateFmtShortTimeComponentsHMSAZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 WAT", fmt.format(date));
 }
 
 
 function testDateFmtFullTimeComponentsS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", length: "full", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1182,11 +1182,11 @@ function testDateFmtFullTimeComponentsS_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", length: "full", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1199,11 +1199,11 @@ function testDateFmtFullTimeComponentsM_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsH_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1216,11 +1216,11 @@ function testDateFmtFullTimeComponentsH_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsMS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", length: "full", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1233,11 +1233,11 @@ function testDateFmtFullTimeComponentsMS_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsHM_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", length: "full", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1250,11 +1250,11 @@ function testDateFmtFullTimeComponentsHM_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsHMS_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", length: "full", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1267,11 +1267,11 @@ function testDateFmtFullTimeComponentsHMS_ha_Latn() {
 }
 
 function testDateFmtFullTimeComponentsHMA_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1285,7 +1285,7 @@ function testDateFmtFullTimeComponentsHMA_ha_Latn() {
 
 function testDateFmtFullTimeComponentsHMZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         length: "full", 
         time: "hmz"
@@ -1293,7 +1293,7 @@ function testDateFmtFullTimeComponentsHMZ_ha_Latn() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1302,12 +1302,12 @@ function testDateFmtFullTimeComponentsHMZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 WAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         length: "full", 
         time: "hmaz"
@@ -1315,7 +1315,7 @@ function testDateFmtFullTimeComponentsHMAZ_ha_Latn() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1324,15 +1324,15 @@ function testDateFmtFullTimeComponentsHMAZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 WAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", type: "time", clock:"12", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1346,7 +1346,7 @@ function testDateFmtFullTimeComponentsHMSA_ha_Latn() {
 
 function testDateFmtFullTimeComponentsHMSZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         length: "full", 
         time: "hmsz"
@@ -1354,7 +1354,7 @@ function testDateFmtFullTimeComponentsHMSZ_ha_Latn() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1363,12 +1363,12 @@ function testDateFmtFullTimeComponentsHMSZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 WAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         length: "full", 
         time: "hmsaz"
@@ -1376,7 +1376,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ha_Latn() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1385,12 +1385,12 @@ function testDateFmtFullTimeComponentsHMSAZ_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 WAT", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ha_Latn() {
     var fmt = new ilib.DateFmt({
-        locale: "ha-Latn-NE", calendar: "gregorian", 
+        locale: "ha-Latn-NG", calendar: "gregorian", 
         type: "time", 
         length: "full", 
         time: "hmsz"
@@ -1398,7 +1398,7 @@ function testDateFmtWithTimeZoneAndNoDST_ha_Latn() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1407,15 +1407,15 @@ function testDateFmtWithTimeZoneAndNoDST_ha_Latn() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 WAT", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1425,7 +1425,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1437,11 +1437,11 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ha_Latn() {
     assertEquals("+30 s", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1451,7 +1451,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1463,11 +1463,11 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ha_Latn() {
     assertEquals("-30 s", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1477,7 +1477,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1489,11 +1489,11 @@ function testDateFmtFormatRelativeWithinHourAfter_ha_Latn() {
     assertEquals("+10 min", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1503,7 +1503,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1515,11 +1515,11 @@ function testDateFmtFormatRelativeWithinHourBefore_ha_Latn() {
     assertEquals("-10 min", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1529,7 +1529,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1541,11 +1541,11 @@ function testDateFmtFormatRelativeWithinDayAfter_ha_Latn() {
     assertEquals("+4 h", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1555,7 +1555,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1568,11 +1568,11 @@ function testDateFmtFormatRelativeWithinDayBefore_ha_Latn() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1582,7 +1582,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1594,11 +1594,11 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ha_Latn() {
     assertEquals("+4 d", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1608,7 +1608,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1621,11 +1621,11 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ha_Latn() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1635,7 +1635,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1647,11 +1647,11 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ha_Latn() {
     assertEquals("+9 w", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1661,7 +1661,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1674,11 +1674,11 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ha_Latn() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1688,7 +1688,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1700,11 +1700,11 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ha_Latn() {
     assertEquals("+16 m", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1714,7 +1714,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1727,11 +1727,11 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ha_Latn() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1741,7 +1741,7 @@ function testDateFmtFormatRelativeYearsAfter_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1753,11 +1753,11 @@ function testDateFmtFormatRelativeYearsAfter_ha_Latn() {
     assertEquals("+14 y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_ha_Latn() {
-    var fmt = new ilib.DateFmt({locale: "ha-Latn-NE", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1767,7 +1767,7 @@ function testDateFmtFormatRelativeYearsBefore_ha_Latn() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
-		locale: "ha-Latn-NE",
+		locale: "ha-Latn-NG",
 		year: 1990,
 		month: 7,
 		day: 18,

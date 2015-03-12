@@ -2096,6 +2096,67 @@ function testNumFmtPercentageNativeFormatRegular_or_IN() {
     
     assertEquals("57.8%", fmt.format(57.8));
 }
+
+//test cases for ha-Latn-NG
+
+function testNumFmt_ha_Latn_NG() {
+    var fmt = new ilib.NumFmt({
+        locale: "ha-Latn-NG",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-1,234,568.78", fmt.format(-1234568.78));
+}
+
+function testNumFmtCurrencyFormatCurrencyForLocale_ha_Latn_NG1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "ha-Latn-NG",	
+	currency: "NGN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₦ 100,110.57", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNegativeCurrencyForLocale_ha_Latn_NG1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "ha-Latn-NG",
+	currency: "NGN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₦-100,110.57", fmt.format(-100110.57));
+}
+
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ha_Latn_NG() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "ha-Latn-NG",
+	currency: "NGN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₦ 100,110.57", fmt.format(100110.57));
+}
+
+function testNumFmtPercentageFormatRegular_ha_Latn_NG() {
+    var fmt = new ilib.NumFmt({
+	locale: "ha-Latn-NG",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
 //test acses for ml-IN
 
 function testNumFmt_ml_IN() {
