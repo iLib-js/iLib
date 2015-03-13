@@ -911,6 +911,204 @@ function testNumberCurrencyNATypeUsingISOCode() {
     assertEquals("NAD", cur.getCode());
 }
 
+// number parsing test cases for Hausa
+function testNumberFloat_ha_Latn_NG() {
+    var num = new ilib.Number("3.4", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_Negative() {
+    var num = new ilib.Number("-3.4", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_Thousands() {
+    var num = new ilib.Number("1,233.4", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(1233.4, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_ThousandsNegative() {
+    var num = new ilib.Number("-1,233.4", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_WithDashForZeros() {
+    var num = new ilib.Number("3.-", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_StartsWithDecimal() {
+    var num = new ilib.Number(".4342", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_StartsWithZero() {
+    var num = new ilib.Number("0.4342", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_StartsWithDecimalNegative() {
+    var num = new ilib.Number("-.4342", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_StartsWithZeroNegative() {
+    var num = new ilib.Number("-0.4342", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_StartsWithPeriodIgnore() {
+    var num = new ilib.Number(",4342", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
+}
+
+function testNumberFloat_ha_Latn_NG_WithMDashForZeros() {
+    var num = new ilib.Number("3.—", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(3.0, num.valueOf());
+}
+
+function testNumberInt_ha_Latn_NG_() {
+    var num = new ilib.Number("123", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123, num.valueOf());
+}
+
+function testNumberInt_ha_Latn_NG_Thousands() {
+    var num = new ilib.Number("123,456", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123456, num.valueOf());
+}
+
+function testNumberInvalid_ha_Latn_NG_() {
+    var num = new ilib.Number("123.234.234", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(123.234, num.valueOf());
+}
+
+function testNumberEmpty_ha_Latn_NG_() {
+    var num = new ilib.Number("", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0, num.valueOf());
+}
+
+function testNumberPercentage_ha_Latn_NG_() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "ha-Latn-NG",
+    	type: "percentage"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.584, num.valueOf());
+}
+
+function testNumberPercentage_ha_Latn_NG_NoTypeSpecified() {
+    var num = new ilib.Number("58.4 %", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertEquals(58.4, num.valueOf());
+}
+
+function testNumberCurrency_ha_Latn_NG_Value() {
+    var num = new ilib.Number("5.84 ₦", {
+    	locale: "ha-Latn-NG",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    assertEquals(5.84, num.valueOf());
+}
+
+function testNumberCurrency_ha_Latn_NG_Type() {
+    var num = new ilib.Number("5.84 ₦", {
+    	locale: "ha-Latn-NG",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("NGN", cur.getCode());
+}
+
+function testNumberCurrency_ha_Latn_NG_NoTypeSpecified() {
+    var num = new ilib.Number("5.84 ₦", {
+    	locale: "ha-Latn-NG"
+    });
+    assertNotNull(num);
+    
+    assertUndefined(num.getCurrency());
+}
+
+function testNumberCurrency_ha_Latn_NG_TypeUsingISOCode() {
+    var num = new ilib.Number("5.84 NGN", {
+    	locale: "ha-Latn-NG",
+    	type: "currency"
+    });
+    assertNotNull(num);
+    
+    var cur = num.getCurrency();
+    assertNotUndefined(cur);
+    assertEquals("NGN", cur.getCode());
+}
+
 // number parsing test cases for Oriya
 function testNumberFloat_or_IN() {
     var num = new ilib.Number("3.4", {
