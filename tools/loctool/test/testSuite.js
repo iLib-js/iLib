@@ -20,9 +20,6 @@
 var cli = require('../../../js/src/testcli/runner.js');
 function newSuite(path) {
 	var suite = new cli.TestSuite("test/" + path);
-	//suite.include("./common.js");
-	//suite.include("./unifile.js");
-	//suite.include("./uniData.js");
 	return suite;
 };
 
@@ -30,9 +27,9 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-   	    "testcommon.js",
-	    "testunifile.js",
-	    "testunidata.js"
+   	    "testtranslationunit.js",
+	    "testtranslationset.js",
+	    "testtreelocale.js"
 	];
 
     suites.forEach(function (path) {

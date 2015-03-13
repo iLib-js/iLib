@@ -18,8 +18,8 @@
  */
 
 var common = require("../../../tools/cldr/common.js");
-var TranslationSet = require("../../../tools/cldr/translationset.js");
-var TranslationUnit = require("../../../tools/cldr/translationunit.js");
+var TranslationSet = require("../../../tools/loctool/translationset.js");
+var TranslationUnit = require("../../../tools/loctool/translationunit.js");
 var util = require("util");
 var fs = require("fs");
 

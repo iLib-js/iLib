@@ -18,7 +18,7 @@
  */
 
 var util = require('util');
-var common = require('./common.js');
+var common = require('../cldr/common.js');
 
 /**
  * Create a new translation unit. A translation unit stores the

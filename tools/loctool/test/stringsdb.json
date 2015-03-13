@@ -1,0 +1,44 @@
+{
+    "sourceLocale": "en-US",
+    "db": {
+        "-": {
+            "This string should be extracted.": {
+                "source": "This string should be extracted."
+            },
+            "firstkey": {
+                "source": "This string should be extracted."
+            },
+            "secondkey": {
+                "source": "This string should be extracted."
+            }
+        },
+        "de-DE": {
+            "This string should be extracted.": {
+                "source": "This string should be extracted.",
+				"translation": "Dieser String soll übersetzt werden."
+            },
+            "firstkey": {
+                "source": "This string should be extracted.",
+				"translation": "Übersetzung des ersten Schlüssel."
+            },
+            "secondkey": {
+                "source": "This string should be extracted.",
+				"translation": "Übersetzung des zweiten Schlüssel."
+            }
+        },
+        "fr-FR": {
+            "This string should be extracted.": {
+                "source": "This string should be extracted.",
+				"translation": "Cette chaîne doit être extrait."
+            },
+            "firstkey": {
+                "source": "This string should be extracted.",
+				"translation": "Traduction de la première clé."
+            },
+            "secondkey": {
+                "source": "This string should be extracted.",
+				"translation": "Traduction de la seconde clé."
+            }
+        }
+    }
+}
