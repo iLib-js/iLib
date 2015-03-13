@@ -148,6 +148,62 @@ function testTSGetPathFromXliff() {
     assertEquals("stringsdb.json", ts.getPath());
 }
 
+function testTSConstructorFromObject() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+}
+
+function testTSConstructorFromObjectRightContents() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-DE");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("de-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+    assertEquals("This is a note about the string with the first key", tu.comment);
+}
+
 function testTSGetTranslationUnitEmpty() {
     var ts = new TranslationSet();
     assertNotUndefined(ts);
@@ -1079,7 +1135,7 @@ function testTSSaveRightContent() {
 			"fr-FR": {
 				"firstkey": {
 					"source": "This string should be localized.",
-					"translation": "Traduction de la première clé.",
+					"translation": "Traduction de la première clé."
 				}
 			}
 		}
@@ -1233,4 +1289,228 @@ function testTSToXliffSourceOnly() {
     	'</xliff>\n';
     	
     assertEquals(expected, ts.toXliff());
+}
+
+var testDB = {
+    "sourceLocale": "en-US",
+    "db": {
+        "-": {
+            "firstkey": {
+                "source": "This string should be extracted."
+            }
+        },
+        "de-Latn-DE": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "Übersetzung des ersten Schlüssel.",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+        "de-DE": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "Überschreibene Übersetzung des ersten Schlüssel.",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+        "de-CH": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "Schweizer Deutsch Übersetzung des ersten Schlüssel.",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+        "zh-Hans-CN": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "这应该是提取的字符串。",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+        "zh-Hant-TW": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "這應該是提取的字符串。",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+        "zh-Hant-HK": {
+            "firstkey": {
+                "source": "This string should be extracted.",
+                "translation": "這應該是在香港提取的字符串。",
+                "comment": "This is a note about the string with the first key"
+            }
+        },
+		"fr-CA": {
+			"firstkey": {
+				"source": "This string should be localized.",
+				"translation": "Traduction de la première clé.",
+                "comment": "This is a note about the string with the first key"
+			}
+		}
+    }
+};
+
+function testTSGetAncestorTranslationUnitEnglish() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-DE");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("de-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "de-DE");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("en-Latn-US", tu.locale);
+    assertEquals("This string should be extracted.", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitMissingTranslation() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-AT");
+    assertUndefined(tu);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "de-AT");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("de-Latn-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitExistingTranslation() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-CH");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("de-DE", tu.locale);
+    assertEquals("Schweizer Deutsch Übersetzung des ersten Schlüssel.", tu.translation);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "de-CH");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("de-Latn-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitComplicated1() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "zh-Hant-HK");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("zh-Hant-HK", tu.locale);
+    assertEquals("這應該是在香港提取的字符串。", tu.translation);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "zh-Hant-HK");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("zh-Hant-TW", tu.locale);
+    assertEquals("這應該是提取的字符串。", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitComplicated2() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "zh-Hant-TW");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("zh-Hant-TW", tu.locale);
+    assertEquals("這應該是提取的字符串。", tu.translation);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "zh-Hant-TW");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("zh-Hans-CN", tu.locale);
+    assertEquals("这应该是提取的字符串。", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitSkipLevel() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "fr-CA");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("fr-CA", tu.locale);
+    assertEquals("Traduction de la première clé.", tu.translation);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "fr-CA");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("en-Latn-US", tu.locale);
+    assertEquals("This string should be extracted.", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitSkipTwoLevels() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "th-TH");
+    assertUndefined(tu);
+    
+    var tu = ts.getAncestorTranslationUnit("firstkey", "th-TH");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("en-Latn-US", tu.locale);
+    assertEquals("This string should be extracted.", tu.translation);
+}
+
+function testTSGetAncestorTranslationUnitMissingString() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("thirdkey", "de-DE");
+    assertUndefined(tu);
+    
+    var tu = ts.getAncestorTranslationUnit("thirdkey", "de-DE");
+    assertUndefined(tu);
 }

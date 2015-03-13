@@ -22,6 +22,7 @@ var util = require('util');
 var path = require('path');
 var common = require('../cldr/common.js');
 var TranslationUnit = require("./translationunit.js");
+var TreeLocale = require("./treelocale.js");
 
 /**
  * Create a new translation set. This retrieves the current set from
@@ -93,6 +94,9 @@ var TranslationSet = function TranslationSet(params) {
 			    }
 			}));
 		}
+		if (params.object) {
+			this._fromObject(params.object);
+		}
 	}
 	this.file = this.file || path.join(this.path, "stringsdb.json");
 	this.file = path.normalize(this.file);
@@ -102,24 +106,7 @@ var TranslationSet = function TranslationSet(params) {
 			//util.print("Attempting to load file " + this.file + "\n");
 			var json = fs.readFileSync(this.file, "utf-8");
 			if (json) {
-				var contents = JSON.parse(json);
-				for (var loc in contents.db) {
-					if (loc && contents.db[loc]) {
-						var tulist = contents.db[loc];
-						for (var key in tulist) {
-							var tuinfo = tulist[key];
-							var tu = new TranslationUnit({
-								key: key,
-								source: tuinfo.source || key,
-								translation: tuinfo.translation,
-								locale: loc,
-								comment: tuinfo.comment
-							});
-							this.addTranslationUnit(tu);
-						}
-					}
-				}
-				this.sourceLocale = contents.sourceLocale;
+				this._fromObject(JSON.parse(json));
 			}
 		} catch(e) {
 			util.print("Warning: no translation set at " + this.file + " yet. Creating a new one...\n");
@@ -128,16 +115,28 @@ var TranslationSet = function TranslationSet(params) {
 };
 
 /**
- * Return a new translation set that is initialized with the 
- * contents of the given xliff document.
- * 
- * @static
- * @param {String} xliff the contents of an xliff file to
- * initialize a new translation set with
- * @return {TranslationSet} the new translation set
+ * Load in a database from a javascript object
+ * @protected
+ * @param {Object} obj object containing the translation set db
  */
-TranslationSet.fromXliff = function(xliff) {
-	
+TranslationSet.prototype._fromObject = function(obj) {
+	for (var loc in obj.db) {
+		if (loc && obj.db[loc]) {
+			var tulist = obj.db[loc];
+			for (var key in tulist) {
+				var tuinfo = tulist[key];
+				var tu = new TranslationUnit({
+					key: key,
+					source: tuinfo.source || key,
+					translation: tuinfo.translation,
+					locale: loc,
+					comment: tuinfo.comment
+				});
+				this.addTranslationUnit(tu);
+			}
+		}
+	}
+	this.sourceLocale = obj.sourceLocale;
 };
 
 /**
@@ -224,6 +223,17 @@ TranslationSet.prototype.getTranslationUnit = function(key, locale) {
 	locale = locale || "-";
 	
 	return this.db[locale] && this.db[locale][key];
+};
+
+/**
+ * Return the translation unit with the given key in the given
+ * target locale.
+ * 
+ * @return {TranslationUnit|undefined} the translation unit corresponding
+ * to the given key and locale, or undefined if no such unit exists
+ */
+TranslationSet.prototype.getAncestorTranslationUnit = function(key, locale) {
+	return undefined
 };
 
 /**
