@@ -122,6 +122,18 @@ function testScriptGetDefaultLongCodeWithSpaces() {
     assertFalse(si.getCasing());
 }
 
+function testScriptGetDefaultLongCodeArab() {
+    var si = new ilib.ScriptInfo("Arab");
+    assertNotNull(si);
+    
+    assertEquals("Arab", si.getCode());
+    assertEquals(160, si.getCodeNumber());
+    assertEquals("Arabic", si.getName());
+    assertEquals("Arabic", si.getLongCode());
+    assertEquals("rtl", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
 function testScriptGetUnknown() {
     var si = new ilib.ScriptInfo("Fooo");
     assertNotNull(si);

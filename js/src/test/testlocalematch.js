@@ -192,3 +192,44 @@ function testLocaleMatcherGetLikelyLocaleByLocaleCodeET() {
 	assertNotUndefined(locale);
 	assertEquals("am-Ethi-ET", locale.getSpec());
 }
+/*Hausa */
+function testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeHANG() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "ha"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("ha-Latn-NG", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleCodeHANG() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "ha-NG"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("ha-NG", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleCodeHANE() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "ha-NE"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("ha-NE", locale.getSpec());
+}
+
+function testLocaleMatcherGetLikelyLocaleByLocaleCodeGH() {
+	var lm = new ilib.LocaleMatcher({
+		locale: "ha-GH"
+	});
+	assertNotUndefined(lm);
+	var locale = lm.getLikelyLocale();
+	assertNotUndefined(locale);
+	assertEquals("ha-GH", locale.getSpec());
+}
+
