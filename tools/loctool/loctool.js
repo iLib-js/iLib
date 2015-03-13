@@ -23,11 +23,12 @@
  */
 var fs = require('fs');
 var util = require('util');
-var common = require('../cldr/common.js');
 var path = require('path');
 var xml2js = require('xml2js');
-var TranslationSet = require('../cldr/translationset.js');
-var TranslationUnit = require('../cldr/translationunit.js');
+
+var common = require('../cldr/common.js');
+var TranslationSet = require('./translationset.js');
+var TranslationUnit = require('./translationunit.js');
 
 function usage() {
 	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] command [source_dir]\n" +
@@ -92,13 +93,7 @@ if (verbose) {
 }
 
 var ignoreDirs = ["test", "resources", "locale", "output"];
-
-var reSlashDotComments = new RegExp("\\/\\*( ?i18n )?(\\*[^/]|[^\\*])*\\*\\/", "g");
-var reSlashSlashComments = new RegExp("\\/\\/( ?i18n )?.*$", "g");
-var reGetStringSourceOnly = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
-var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
-var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
-var re$LSourceAndKey = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
+var fileTypesToLoad = ["JSFileType", "JsonFileType"];
 
 var stringsdb = new TranslationSet({
 	path: "."
@@ -110,15 +105,18 @@ if (!locales) {
 	locales = stringsdb.getAllLocales();
 }
 
-function stripQuotes(str) {
-	if (str.charAt(0) === '"' || str.charAt(0) === "'") {
-		str = str.substring(1);
-	}
-	if (str.charAt(str.length-1) === '"' || str.charAt(str.length-1) === "'") {
-		str = str.substring(0,str.length-1);
-	}
-	return str;
+var fileTypes = [];
+
+for (var i = 0; i < fileTypesToLoad.length; i++) {
+	var type = require("./" + fileTypesToLoad[i] + ".js");
+	fileTypes.push(new type({
+		sourcedir: sourcedir,
+		targetdir: targetdir,
+		verbose: verbose,
+		locales: locales
+	}));
 }
+
 
 function saveTransUnit(tu) {
 	for (var i = 0; i < locales.length; i++) {
@@ -141,42 +139,11 @@ function saveTransUnit(tu) {
 	extracted.addTranslationUnit(tu);
 }
 
-function scanFile(filename, text) {
-	text = text.replace(reSlashDotComments, ""); // ignore things inside slash dot comments
-	
-	var result;
-	var lines = text.split("\n");
-	var comment;
-	
-	for (var i = 0; i < lines.length; i++) {
-		var line = lines[i];
-		if ((result = reSlashSlashComments.exec(lines[i])) && result && result.length > 0) {
-			if (result[1]) {
-				comment = result[0].substring(2+result[1].length);
-				verbose && util.print("Found translator's comment: " + comment + "\n");	
-			}
-			
-			line = lines[i].replace(reSlashSlashComments, "");
-		}
-		
-		while ((result = reGetStringSourceOnly.exec(line)) !== null && result && result.length > 0) {
-			verbose && util.print("Found source string: " + result[2] + "\n");
-			var str = stripQuotes(result[2]);
-			saveTransUnit(new TranslationUnit({
-				source: str,
-				comment: comment
-			}));
-			comment = undefined;
-		}
-		
-		while ((result = reGetStringSourceAndKey.exec(line)) !== null && result && result.length > 0) {
-			verbose && util.print("Found source string: " + result[2] + ", key: " + result[5] + "\n");
-			saveTransUnit(new TranslationUnit({
-				key: stripQuotes(result[5]),
-				source: stripQuotes(result[2]),
-				comment: comment
-			}));
-			comment = undefined;
+function saveTranslations(ts) {
+	if (ts) {
+		var units = ts.getAllTranslationUnits();
+		for (var i = 0; i < units.length; i++) {
+			saveTransUnit(units[i]);
 		}
 	}
 }
@@ -184,30 +151,33 @@ function scanFile(filename, text) {
 function walk(root, dir) {
 	var results = [];
 	var list = fs.readdirSync(path.join(root, dir));
-	list.forEach(function (file) {
-		var sourcePathRelative = path.join(dir, file);
+	list.forEach(function (filename) {
+		var sourcePathRelative = path.join(dir, filename);
 		var sourcePath = path.join(root, sourcePathRelative);
 		var stat = fs.statSync(sourcePath);
 		if (stat && stat.isDirectory()) {
-			if (ignoreDirs.indexOf(file) === -1 && path.normalize(sourcePath) !== path.normalize(targetdir)) {
+			if (ignoreDirs.indexOf(filename) === -1 && path.normalize(sourcePath) !== path.normalize(targetdir)) {
 				verbose && util.print("Scanning dir " + sourcePath + "\n");
 				walk(root, sourcePathRelative);
 			} else {
 				verbose && util.print("Ignoring dir " + sourcePath + "\n");
 			}
 		} else {
-			var obj;
-			if (file.match(/\.js$/)) {
-				try {
-					verbose && util.print("Scanning js file " + sourcePath + "\n");
-					var data = fs.readFileSync(sourcePath, 'utf8');
-					if (data.length > 0) {
-						scanFile(sourcePath, data);
+			var obj, file;
+			
+			for (var i = 0; i < fileTypes.length; i++) {
+				if (fileTypes[i].isFileType(filename)) {
+					try {
+						file = fileTypes[i].newFile(sourcePath);
+
+						saveTranslations(file.scan());
+						file.localize(stringsdb);
+					} catch (err) {
+						util.print("File " + sourcePath + " is not readable or does not contain valid source.\n");
+						util.print(err + "\n");
+						process.exit(2);
 					}
-				} catch (err) {
-					util.print("File " + sourcePath + " is not readable or does not contain valid JS.\n");
-					util.print(err + "\n");
-					process.exit(2);
+					
 				}
 			}
 		}
@@ -240,39 +210,20 @@ verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n")
 
 var outputDir;
 
-for (var i = 0; i < locales.length; i++) {
-	var loc = new common.Locale(locales[i]);
-	outputDir = targetdir;
-	if (loc.getLanguage()) {
-		outputDir = path.join(outputDir, loc.getLanguage());
-		if (loc.getScript()) {
-			outputDir = path.join(outputDir, loc.getScript());
-		}
-		if (loc.getRegion()) {
-			outputDir = path.join(outputDir, loc.getRegion());
-		}
+for (var i = 0; i < fileTypes.length; i++) {
+	try {
+		fileTypes[i].localize(stringsdb);
+	} catch (err) {
+		util.print("Could not write to output file for file type " + fileTypes[i].getName() + "\n");
+		util.print(err + "\n");
+		process.exit(2);
 	}
-	common.makeDirs(outputDir);
-	outputFile = path.join(outputDir, "strings.js");
-	var locname = loc.getSpec();
-	locname = (locname === "-") ? "" : "_" + locname.replace("-", "_")
-	fs.writeFileSync(outputFile, 
-			"ilib.data.strings" +
-			locname + 
-			" = " + 
-			JSON.stringify(getOutputJson(locales[i]), undefined, 4) +
-			";\n", "utf-8");
-	verbose && util.print("Output file written to " + outputFile + "\n");
-	
-	outputFile = path.join(outputDir, "strings.json");
-	fs.writeFileSync(outputFile, JSON.stringify(getOutputJson(locales[i]), undefined, 4) + "\n", "utf-8");
-	verbose && util.print("Output file written to " + outputFile + "\n");
 }
 
 outputFile = path.join(targetdir, "extracted.xliff");
 fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
-verbose && util.print("Output file written to " + outputFile + "\n");
+verbose && util.print("Extracted strings file written to " + outputFile + "\n");
 
 outputFile = path.join(targetdir, "newstrings.xliff");
 fs.writeFileSync(outputFile, newStrings.toXliff(), "utf-8");
-verbose && util.print("Output file written to " + outputFile + "\n");
+verbose && util.print("New strings file written to " + outputFile + "\n");
