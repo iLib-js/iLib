@@ -100,7 +100,7 @@ var TranslationSet = function TranslationSet(params) {
 	}
 	this.file = this.file || path.join(this.path, "stringsdb.json");
 	this.file = path.normalize(this.file);
-	this.sourceLocale = this.sourceLocale || new common.Locale();
+	this.sourceLocale = typeof(this.sourceLocale) === "string" ? new TreeLocale(this.sourceLocale) : (this.sourceLocale || new TreeLocale());
 	if ((params && (params.file || params.path)) && fs.existsSync(this.file)) {
 		try {
 			//util.print("Attempting to load file " + this.file + "\n");
@@ -136,7 +136,7 @@ TranslationSet.prototype._fromObject = function(obj) {
 			}
 		}
 	}
-	this.sourceLocale = obj.sourceLocale;
+	this.sourceLocale = typeof(obj.sourceLocale) === "string" ? new TreeLocale(obj.sourceLocale) : obj.sourceLocale;
 };
 
 /**
@@ -154,7 +154,7 @@ TranslationSet.prototype.getPath = function() {
  */
 TranslationSet.prototype.save = function() {
 	var ondisk = {
-		sourceLocale: this.sourceLocale,
+		sourceLocale: this.sourceLocale.getSpec(),
 		db: {}
 	};
 	
@@ -216,24 +216,60 @@ TranslationSet.prototype.addTranslationUnit = function(tu) {
  * to the given key and locale, or undefined if no such unit exists
  */
 TranslationSet.prototype.getTranslationUnit = function(key, locale) {
-	if (!key) {
+	if (!key || !locale) {
 		return undefined;
 	}
 	
-	locale = locale || "-";
+	locale = typeof(locale) === "object" ? locale.getSpec() : locale;
 	
-	return this.db[locale] && this.db[locale][key];
+	if (this.sourceLocale.isCompatible(new TreeLocale(locale))) {
+		locale = '-';
+	}
+	var tu = this.db[locale] && this.db[locale][key];
+	
+	if (!tu) {
+		var thisloc = new TreeLocale(locale);
+		for (var loc in this.db) {
+			if (loc !== '-') {
+				var dbloc = new TreeLocale(loc);
+				if (dbloc.isCompatible(thisloc)) {
+					tu = this.db[loc][key];
+					if (tu) break;
+				}
+			}
+		}
+	}
+	
+	return tu;
 };
 
 /**
- * Return the translation unit with the given key in the given
- * target locale.
+ * Return the a translation unit containing the ancestor translation of the
+ * unit with the given key in the given target locale. The ancestor is the 
+ * translation unit that is the next one up the hierarchy of the locales.
+ * That is, the parent of the given locale is taken, and if the translation
+ * unit is found, return that. Otherwise, go up another level to the next
+ * parent iteratively until the root level is reached. If there is no 
+ * translation unit at the root level, then return undefined, as there is
+ * no translation at all for this key and locale.
  * 
- * @return {TranslationUnit|undefined} the translation unit corresponding
- * to the given key and locale, or undefined if no such unit exists
+ * @param {TreeLocale|String} key key of the translation unit being sought
+ * @param {String} locale of the translation unit whose ancestors are being sought
+ * @return {TranslationUnit|undefined} the ancestor of the translation unit 
+ * corresponding to the given key and locale, or undefined if no such unit exists
  */
 TranslationSet.prototype.getAncestorTranslationUnit = function(key, locale) {
-	return undefined
+	if (!key || !locale) {
+		return undefined;
+	}
+	// util.print("Investigating ancestor of " + key + " in " + locale + "\n");
+	var loc = typeof(locale) === "string" ? new TreeLocale(locale) : locale;
+	if (loc.isRoot()) {
+		// util.print("  .. it is the root\n");
+		return undefined;
+	}
+	loc = loc.getParent();
+	return this.getTranslationUnit(key, loc) || this.getAncestorTranslationUnit(key, loc);
 };
 
 /**
@@ -332,7 +368,7 @@ TranslationSet.prototype.toXliff = function() {
 			var file = {
 				"$": {
 					"datatype": "javascript",
-					"source-language": this.sourceLocale
+					"source-language": this.sourceLocale.getSpec()
 				},
 				"body": {
 					"trans-unit": []

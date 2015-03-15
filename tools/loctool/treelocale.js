@@ -82,7 +82,7 @@ TreeLocale.prototype.getParent = function() {
 	}
 	
 	if (!TreeLocale.root) {
-		TreeLocale.root = new common.Locale(TreeLocale.hierarchy["*"] || "en-Latn-US");
+		TreeLocale.root = new TreeLocale(TreeLocale.hierarchy["*"] || "en-Latn-US");
 	}
 	
 	// util.print("  getParent: returning root " + TreeLocale.root.getSpec() + "\n");

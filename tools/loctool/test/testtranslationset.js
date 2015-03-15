@@ -244,6 +244,131 @@ function testTSGetTranslationUnitMissingTU() {
     assertUndefined(tu);
 }
 
+function testTSGetTranslationUnitCompatibleLocale1() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-Latn-DE");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("de-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+    assertEquals("This is a note about the string with the first key", tu.comment);
+}
+
+function testTSGetTranslationUnitCompatibleLocale2() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-Latn-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "de-DE");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("de-Latn-DE", tu.locale);
+    assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
+    assertEquals("This is a note about the string with the first key", tu.comment);
+}
+
+function testTSGetTranslationUnitSourceLocale() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("firstkey", "en-US");
+    assertNotUndefined(tu);
+    
+    // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
+    assertEquals("firstkey", tu.key);
+    assertEquals("This string should be extracted.", tu.source);
+    assertEquals("-", tu.locale);
+    assertUndefined(tu.translation);
+    assertUndefined(tu.comment);
+}
+
+function testTSGetTranslationUnitSourceLocaleMissing() {
+	var ts = new TranslationSet({
+    	object: {
+    	    "sourceLocale": "en-US",
+    	    "db": {
+    	        "-": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted."
+    	            }
+    	        },
+    	        "de-DE": {
+    	            "firstkey": {
+    	                "source": "This string should be extracted.",
+    	                "translation": "Übersetzung des ersten Schlüssel.",
+    	                "comment": "This is a note about the string with the first key"
+    	            }
+    	        }
+    	    }
+    	}
+    });
+    assertNotUndefined(ts);
+    
+    var tu = ts.getTranslationUnit("secondkey", "en-US");
+    assertUndefined(tu);
+}
+
 function testTSAddTranslationUnit() {
     var ts = new TranslationSet();
     assertNotUndefined(ts);
@@ -303,7 +428,7 @@ function testTSAddTranslationUnitMissingTranslationAndLocale2() {
     
     ts.addTranslationUnit(tu);
     
-    var tu2 = ts.getTranslationUnit("firstkey");
+    var tu2 = ts.getTranslationUnit("firstkey", "-");
 
     assertNotUndefined(tu2);
     
@@ -1051,6 +1176,9 @@ function testTSMergeOverwrite() {
 }
 
 function testTSSaveFileCreated() {
+	if (fs.existsSync("./test/testfile.json")) {
+		fs.unlinkSync("./test/testfile.json");
+	}
 	assertFalse(fs.existsSync("./test/testfile.json"));
 	
     var ts = new TranslationSet({
@@ -1088,7 +1216,11 @@ function testTSSaveFileCreated() {
 }
 
 function testTSSaveRightContent() {
+	if (fs.existsSync("./test/testfile.json")) {
+		fs.unlinkSync("./test/testfile.json");
+	}
 	assertFalse(fs.existsSync("./test/testfile.json"));
+
 	
     var ts = new TranslationSet({
     	file: "./test/testfile.json"
@@ -1148,7 +1280,11 @@ function testTSSaveRightContent() {
 }
 
 function testTSSaveAndReload() {
+	if (fs.existsSync("./test/testfile.json")) {
+		fs.unlinkSync("./test/testfile.json");
+	}
 	assertFalse(fs.existsSync("./test/testfile.json"));
+
 	
     var ts = new TranslationSet({
     	file: "./test/testfile.json"
@@ -1197,7 +1333,11 @@ function testTSSaveAndReload() {
 }
 
 function testTSSaveEmpty() {
+	if (fs.existsSync("./test/testfile.json")) {
+		fs.unlinkSync("./test/testfile.json");
+	}
 	assertFalse(fs.existsSync("./test/testfile.json"));
+
 	
     var ts = new TranslationSet({
     	file: "./test/testfile.json"
@@ -1299,17 +1439,10 @@ var testDB = {
                 "source": "This string should be extracted."
             }
         },
-        "de-Latn-DE": {
-            "firstkey": {
-                "source": "This string should be extracted.",
-                "translation": "Übersetzung des ersten Schlüssel.",
-                "comment": "This is a note about the string with the first key"
-            }
-        },
         "de-DE": {
             "firstkey": {
                 "source": "This string should be extracted.",
-                "translation": "Überschreibene Übersetzung des ersten Schlüssel.",
+                "translation": "Übersetzung des ersten Schlüssel.",
                 "comment": "This is a note about the string with the first key"
             }
         },
@@ -1351,7 +1484,7 @@ var testDB = {
     }
 };
 
-function testTSGetAncestorTranslationUnitEnglish() {
+function testTSGetAncestorTranslationUnitEnglishAncestor() {
 	var ts = new TranslationSet({
     	object: testDB
     });
@@ -1370,8 +1503,10 @@ function testTSGetAncestorTranslationUnitEnglish() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("en-Latn-US", tu.locale);
-    assertEquals("This string should be extracted.", tu.translation);
+    assertEquals("-", tu.locale);
+    assertEquals("This string should be extracted.", tu.source);
+    assertUndefined(tu.translation);
+    assertUndefined(tu.comment);
 }
 
 function testTSGetAncestorTranslationUnitMissingTranslation() {
@@ -1388,7 +1523,7 @@ function testTSGetAncestorTranslationUnitMissingTranslation() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("de-Latn-DE", tu.locale);
+    assertEquals("de-DE", tu.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
 }
 
@@ -1403,7 +1538,7 @@ function testTSGetAncestorTranslationUnitExistingTranslation() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("de-DE", tu.locale);
+    assertEquals("de-CH", tu.locale);
     assertEquals("Schweizer Deutsch Übersetzung des ersten Schlüssel.", tu.translation);
     
     var tu = ts.getAncestorTranslationUnit("firstkey", "de-CH");
@@ -1411,7 +1546,7 @@ function testTSGetAncestorTranslationUnitExistingTranslation() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("de-Latn-DE", tu.locale);
+    assertEquals("de-DE", tu.locale);
     assertEquals("Übersetzung des ersten Schlüssel.", tu.translation);
 }
 
@@ -1480,8 +1615,10 @@ function testTSGetAncestorTranslationUnitSkipLevel() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("en-Latn-US", tu.locale);
-    assertEquals("This string should be extracted.", tu.translation);
+    assertEquals("-", tu.locale);
+    assertEquals("This string should be extracted.", tu.source);
+    assertUndefined(tu.translation);
+    assertUndefined(tu.comment);
 }
 
 function testTSGetAncestorTranslationUnitSkipTwoLevels() {
@@ -1498,8 +1635,10 @@ function testTSGetAncestorTranslationUnitSkipTwoLevels() {
     
     // util.print("tu is " + JSON.stringify(tu, undefined, 4) + "\n");
     assertEquals("firstkey", tu.key);
-    assertEquals("en-Latn-US", tu.locale);
-    assertEquals("This string should be extracted.", tu.translation);
+    assertEquals("-", tu.locale);
+    assertEquals("This string should be extracted.", tu.source);
+    assertUndefined(tu.translation);
+    assertUndefined(tu.comment);
 }
 
 function testTSGetAncestorTranslationUnitMissingString() {
