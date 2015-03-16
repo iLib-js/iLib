@@ -82,12 +82,14 @@ var TranslationSet = function TranslationSet(params) {
 			    		source = sourceElement._;
 			    	}
 			    	var comment = transunit.note && transunit.note[0];
+			    	var status = (transunit.$ && transunit.$["x-status"] && transunit.$["x-status"][0]) || "approved";
 			    	var tu = new TranslationUnit({
 			    		source: source,
 			    		key: key,
 			    		translation: transunit.target && transunit.target[0],
 			    		locale: targetLocale,
-			    		comment: comment
+			    		comment: comment,
+			    		status: status
 			    	});
 			    	
 			    	this.addTranslationUnit(tu);
@@ -130,7 +132,8 @@ TranslationSet.prototype._fromObject = function(obj) {
 					source: tuinfo.source || key,
 					translation: tuinfo.translation,
 					locale: loc,
-					comment: tuinfo.comment
+					comment: tuinfo.comment,
+					status: tuinfo.status || "approved"
 				});
 				this.addTranslationUnit(tu);
 			}
@@ -175,6 +178,9 @@ TranslationSet.prototype.save = function() {
 					}
 					if (tu.comment) {
 						ondisk.db[loc][key].comment = tu.comment;
+					}
+					if (tu.status) {
+						ondisk.db[loc][key].status = tu.status;
 					}
 					if (tu.occurances && tu.occurances.length > 0) {
 						ondisk.db[loc][key].occurances = tu.occurances;
@@ -396,6 +402,11 @@ TranslationSet.prototype.toXliff = function() {
 					}
 					if (tu.comment) {
 						element.note = tu.comment;
+					}
+					if (tu.status) {
+						element["$"] = {
+							"x-status": tu.status
+						};
 					}
 
 					file.body["trans-unit"].push(element);

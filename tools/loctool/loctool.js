@@ -31,7 +31,7 @@ var TranslationSet = require('./translationset.js');
 var TranslationUnit = require('./translationunit.js');
 
 function usage() {
-	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] command [source_dir]\n" +
+	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] [-s source_dir] [command]\n" +
 		"Scan js files for translatable strings and generate translated json files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
@@ -42,10 +42,18 @@ function usage() {
 	    "-l locale_list\n" +
 		'  Comma-separated list of BCP-47 style locale names to localize to. Default is\n' +
 		'  all locales that already exist in the strings database.\n' +
+	    "-s source_dir\n" +
+		'  Where to find files to scan. Default "."\n' +
 		"command\n" +
-		"  Action to perform: extract, merge, split" +
-	    "source_dir\n" +
-		'  Where to find files to scan. Default "."\n');
+		"  Action to perform:\n" +
+		"    extract - extract strings from the current app, but do not localize it\n" +
+		"    localize - extract and localize the current app\n" +
+		"    import [pathname] - import an xliff file or directory full of\n" +
+		"       xliff files into the strings db\n" +
+		"    export [-s] [pathname] - export the stringsdb to an xliff file\n" +
+		"      -s - split by language so that the tool produces one xliff per language\n" +
+		"  Default command: localize\n"
+		);
 	process.exit(1);
 }
 
@@ -53,13 +61,22 @@ var sourcedir = ".",
 	targetdir = "resources",
 	verbose = false,
 	sourceLocale = new common.Locale("en-US"),
-	locales;
+	locales,
+	command = "localize",
+	doExtract = true;
+	doLocalize = true,
+	splitByLang = false
+	targetFile = "strings.xliff";
 
 for (var i = 2; i < process.argv.length; i++) {
 	if (process.argv[i].toUpperCase() === '-H' || process.argv[i] === '--help') {
 		usage();
 	} else if (process.argv[i].toUpperCase() === '-O' || process.argv[i] === '--output') {
-		targetdir = process.argv[i];
+		if (i+1 >= process.argv.length) {
+			util.print("Error: " + process.argv[i] + " argument requires an output dir to follow it.\n");
+			usage();
+		}
+		targetdir = process.argv[++i];
 	} else if (process.argv[i].toUpperCase() === '-V' || process.argv[i] === '--verbose') {
 		verbose = true;
 	} else if (process.argv[i].toUpperCase() === '-L' || process.argv[i] === '--locales') {
@@ -68,8 +85,39 @@ for (var i = 2; i < process.argv.length; i++) {
 			usage();
 		}
 		locales = process.argv[++i].split(",");
+	} else if (process.argv[i].toUpperCase() === '-S' || process.argv[i] === '--source') {
+		if (i+1 >= process.argv.length) {
+			util.print("Error: " + process.argv[i] + " argument requires a source dir to follow it.\n");
+			usage();
+		}
+		sourcedir = process.argv[++i];
 	} else {
-		sourcedir = process.argv[i];
+		command = process.argv[i];
+		switch (command) {
+		case 'localize':
+			break;
+		case 'export':
+			if (i+1 < process.argv.length && 
+					(process.arg[i+1].toUpperCase() === '-S' || process.argv[i] === '--split')) {
+				splitByLang = true;
+				i++;
+			}
+			if (i+1 < process.argv.length) {
+				targetFile = process.argv[i+1];
+				i++;
+			}
+			break;
+		case 'import':
+			if (i+1 < process.argv.length) {
+				targetFile = process.argv[i+1];
+				i++;
+			}
+			break;
+		default:
+			util.print("Error: unrecognized command: " + command + "\n");
+			usage();
+			break;
+		}
 	}
 }
 
@@ -119,8 +167,15 @@ for (var i = 0; i < fileTypesToLoad.length; i++) {
 
 
 function saveTransUnit(tu) {
+	var tu2;
+
+	tu2 = stringsdb.getTranslationUnit(tu.key, "-");
+	if (!tu2) {
+		tu.status = "new";
+	}
+	
 	for (var i = 0; i < locales.length; i++) {
-		var tu2 = stringsdb.getTranslationUnit(tu.key, locales[i]);
+		tu2 = stringsdb.getTranslationUnit(tu.key, locales[i]);
 		
 		if (!tu2) {
 			// newStrings only has strings that are not yet translated.
@@ -130,6 +185,10 @@ function saveTransUnit(tu) {
 				translation: tu.source
 			}));
 		}
+		
+		stringsdb.addTranslationUnit(common.merge(tu, {
+			locale: locales[i]
+		}));
 	}
 	
 	// saves all strings
@@ -198,7 +257,7 @@ function getOutputJson(locale) {
 	var tu;
 	for (var i = 0; i < tulist.length; i++) {
 		tu = tulist[i];
-		if (tu.translation) {
+		if (tu.translation && (!tu.status || tu.status === "approved")) {
 			json[tu.key] = tu.translation;
 		}
 	}

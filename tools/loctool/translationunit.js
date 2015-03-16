@@ -37,6 +37,7 @@ var TranslationUnit = function TranslationUnit(params) {
 		this.locale = params.locale;
 		this.dataType = params.dataType;
 		this.comment = params.comment;
+		this.status = params.status;
 	}
 	
 	this.dataType = this.dataType || "javascript";

@@ -37,7 +37,8 @@ function testTUConstructorRightFields() {
     	source: "b",
     	translation: "c",
     	locale: "de-DE",
-    	dataType: "C++"
+    	dataType: "C++",
+    	status: "approved"
     });
     assertNotUndefined(tu);
     
@@ -46,6 +47,7 @@ function testTUConstructorRightFields() {
     assertEquals("c", tu.translation);
     assertEquals("de-DE", tu.locale);
     assertEquals("C++", tu.dataType);
+    assertEquals("approved", tu.status);
 }
 
 function testTUConstructorDefaults() {

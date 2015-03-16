@@ -3,67 +3,152 @@
     "db": {
         "-": {
             "This string should be extracted.": {
-                "source": "This string should be extracted."
+                "source": "This string should be extracted.",
+                "status": "approved"
             },
             "firstkey": {
-                "source": "This string should be extracted."
+                "source": "This string should be extracted.",
+                "status": "approved"
             },
             "secondkey": {
-                "source": "This string should be extracted."
+                "source": "This string should be extracted.",
+                "status": "approved"
             },
             "This is a new string.": {
-                "source": "This is a new string."
+                "source": "This is a new string.",
+                "status": "new"
             },
             "This string should not be extracted either.": {
-                "source": "This string should not be extracted either."
+                "source": "This string should not be extracted either.",
+                "status": "new"
             },
             "String 1 with slash dot translator's comment.": {
-                "source": "String 1 with slash dot translator's comment."
+                "source": "String 1 with slash dot translator's comment.",
+                "status": "new"
             },
             "String 2 with slash dot translator's comment.": {
-                "source": "String 2 with slash dot translator's comment."
+                "source": "String 2 with slash dot translator's comment.",
+                "status": "new"
             },
             "String 3 with slash dot translator's comment.": {
-                "source": "String 3 with slash dot translator's comment."
+                "source": "String 3 with slash dot translator's comment.",
+                "status": "new"
             },
             "This is string 1 with a slash slash translator's comment.": {
                 "source": "This is string 1 with a slash slash translator's comment.",
-                "comment": "this translator's comment appears later on the same line"
+                "comment": "this translator's comment appears later on the same line",
+                "status": "new"
             },
             "This is string 2 with a slash slash translator's comment.": {
                 "source": "This is string 2 with a slash slash translator's comment.",
-                "comment": "this translator's comment appears on the line before"
+                "comment": "this translator's comment appears on the line before",
+                "status": "new"
             },
             "This string has no translator's comment.": {
-                "source": "This string has no translator's comment."
+                "source": "This string has no translator's comment.",
+                "status": "new"
             }
         },
         "de-DE": {
             "This string should be extracted.": {
                 "source": "This string should be extracted.",
-                "translation": "Dieser String soll übersetzt werden."
+                "translation": "Dieser String soll übersetzt werden.",
+                "status": "approved"
             },
             "firstkey": {
                 "source": "This string should be extracted.",
-                "translation": "Übersetzung des ersten Schlüssel."
+                "translation": "Übersetzung des ersten Schlüssel.",
+                "status": "approved"
             },
             "secondkey": {
                 "source": "This string should be extracted.",
-                "translation": "Übersetzung des zweiten Schlüssel."
+                "translation": "Übersetzung des zweiten Schlüssel.",
+                "status": "approved"
+            },
+            "This is a new string.": {
+                "source": "This is a new string.",
+                "status": "new"
+            },
+            "This string should not be extracted either.": {
+                "source": "This string should not be extracted either.",
+                "status": "new"
+            },
+            "String 1 with slash dot translator's comment.": {
+                "source": "String 1 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "String 2 with slash dot translator's comment.": {
+                "source": "String 2 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "String 3 with slash dot translator's comment.": {
+                "source": "String 3 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "This is string 1 with a slash slash translator's comment.": {
+                "source": "This is string 1 with a slash slash translator's comment.",
+                "comment": "this translator's comment appears later on the same line",
+                "status": "new"
+            },
+            "This is string 2 with a slash slash translator's comment.": {
+                "source": "This is string 2 with a slash slash translator's comment.",
+                "comment": "this translator's comment appears on the line before",
+                "status": "new"
+            },
+            "This string has no translator's comment.": {
+                "source": "This string has no translator's comment.",
+                "status": "new"
             }
         },
         "fr-FR": {
             "This string should be extracted.": {
                 "source": "This string should be extracted.",
-                "translation": "Cette chaîne doit être extrait."
+                "translation": "Cette chaîne doit être extrait.",
+                "status": "approved"
             },
             "firstkey": {
                 "source": "This string should be extracted.",
-                "translation": "Traduction de la première clé."
+                "translation": "Traduction de la première clé.",
+                "status": "approved"
             },
             "secondkey": {
                 "source": "This string should be extracted.",
-                "translation": "Traduction de la seconde clé."
+                "translation": "Traduction de la seconde clé.",
+                "status": "approved"
+            },
+            "This is a new string.": {
+                "source": "This is a new string.",
+                "status": "new"
+            },
+            "This string should not be extracted either.": {
+                "source": "This string should not be extracted either.",
+                "status": "new"
+            },
+            "String 1 with slash dot translator's comment.": {
+                "source": "String 1 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "String 2 with slash dot translator's comment.": {
+                "source": "String 2 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "String 3 with slash dot translator's comment.": {
+                "source": "String 3 with slash dot translator's comment.",
+                "status": "new"
+            },
+            "This is string 1 with a slash slash translator's comment.": {
+                "source": "This is string 1 with a slash slash translator's comment.",
+                "comment": "this translator's comment appears later on the same line",
+                "status": "new"
+            },
+            "This is string 2 with a slash slash translator's comment.": {
+                "source": "This is string 2 with a slash slash translator's comment.",
+                "comment": "this translator's comment appears on the line before",
+                "status": "new"
+            },
+            "This string has no translator's comment.": {
+                "source": "This string has no translator's comment.",
+                "status": "new"
             }
         }
     }
