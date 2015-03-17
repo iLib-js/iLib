@@ -227,11 +227,11 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
  * @private
  */
 ilib.Date.GregDate.prototype._calcDateComponents = function () {
-	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
+	if (this.timezone === "local" && this.rd.getRataDie() >= -99280837 && this.rd.getRataDie() <= 100719163) {
 		// console.log("using js Date to calculate offset");
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
-		var d = new Date(this.rd.getTime());
+		var d = new Date(this.rd.getTimeExtended());
 	
 		/**
 		 * Year in the Gregorian calendar.

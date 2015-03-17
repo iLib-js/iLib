@@ -486,7 +486,7 @@ ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 	// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
 	// well if we are in the overlap time at the end of DST
 	if (this.isLocal && typeof(date.dst) === 'undefined') {
-		var d = (!date) ? new Date() : new Date(date.getTime());
+		var d = (!date) ? new Date() : new Date(date.getTimeExtended());
 		return -d.getTimezoneOffset() * 60000;
 	} 
 	
