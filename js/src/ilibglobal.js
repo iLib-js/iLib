@@ -311,6 +311,7 @@ ilib.getTimeZone = function() {
 };
 
 /**
+ * @class
  * Defines the interface for the loader class for ilib. The main method of the
  * loader object is loadFiles(), which loads a set of requested locale data files
  * from where-ever it is stored.
