@@ -29,7 +29,8 @@ function suite() {
     var suites = [
    	    "testtranslationunit.js",
 	    "testtranslationset.js",
-	    "testtreelocale.js"
+	    "testtreelocale.js",
+	    "testJSFile.js"
 	];
 
     suites.forEach(function (path) {
