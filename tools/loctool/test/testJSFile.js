@@ -187,7 +187,7 @@ function testJSFileScanExtractSlashDotTranslatorCommentLineBefore() {
     
     assertEquals("String 1 with slash dot translator's comment.", tu.source);
     assertEquals("String 1 with slash dot translator's comment.", tu.key);
-    assertEquals("This is a slash dot translator's comment. ", tu.comment);
+    assertEquals("This is a slash dot translator's comment.", tu.comment);
 }
 
 function testJSFileScanExtractSlashDotTranslatorCommentMultiLineBefore() {
@@ -358,23 +358,6 @@ function testJSFileScanExtractSlashSlashTranslatorCommentOverride() {
     assertEquals("This is string 4 with a slash slash translator's comment.", tu.source);
     assertEquals("This is string 4 with a slash slash translator's comment.", tu.key);
     assertEquals("This one appears on the same line.", tu.comment);
-}
-
-function testJSFileScanExtractSlashSlashTranslatorCommentMultiline() {
-    var jsf = new JSFile({
-    	filename: "test/testfiles/slashslashcomment.js"
-    });
-    assertNotUndefined(jsf);
-    
-    var ts = jsf.scan();
-    assertNotUndefined(ts);
-    
-    var tu = ts.getTranslationUnit("This is string 5 with a slash slash translator's comment.", "-");
-    assertNotUndefined(tu);
-    
-    assertEquals("This is string 5 with a slash slash translator's comment.", tu.source);
-    assertEquals("This is string 5 with a slash slash translator's comment.", tu.key);
-    assertEquals("this translator's comment appears on the lines before and it is a multiline comment", tu.comment);
 }
 
 function testJSFileScanExtractSlashSlashTranslatorNoComment() {
