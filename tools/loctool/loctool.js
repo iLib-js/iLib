@@ -98,7 +98,7 @@ for (var i = 2; i < process.argv.length; i++) {
 			break;
 		case 'export':
 			if (i+1 < process.argv.length && 
-					(process.arg[i+1].toUpperCase() === '-S' || process.argv[i] === '--split')) {
+					(process.argv[i+1].toUpperCase() === '-S' || process.argv[i] === '--split')) {
 				splitByLang = true;
 				i++;
 			}
@@ -245,44 +245,66 @@ function walk(root, dir) {
 	return results;
 }
 
-walk(sourcedir, "");
-
-// verbose && util.print("Extracted json is: \n" + JSON.stringify(extracted, undefined, 4) + "\n");
-
-verbose && util.print("All strings extracted. Now writing output files...\n");
-
-function getOutputJson(locale) {
-	var json = {};
-	var tulist = extracted.getAllTranslationUnits(locale);
-	var tu;
-	for (var i = 0; i < tulist.length; i++) {
-		tu = tulist[i];
-		if (tu.translation && (!tu.status || tu.status === "approved")) {
-			json[tu.key] = tu.translation;
+switch (command) {
+	case "localize":
+		walk(sourcedir, "");
+		
+		// verbose && util.print("Extracted json is: \n" + JSON.stringify(extracted, undefined, 4) + "\n");
+		
+		verbose && util.print("All strings extracted. Now writing output files...\n");
+		
+		stringsdb.save();
+		verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n");
+		
+		var outputDir;
+		
+		for (var i = 0; i < fileTypes.length; i++) {
+			try {
+				fileTypes[i].localize(stringsdb);
+			} catch (err) {
+				util.print("Could not write to output file for file type " + fileTypes[i].getName() + "\n");
+				util.print(err + "\n");
+				process.exit(2);
+			}
 		}
-	}
-	return json;
+		
+		outputFile = path.join(targetdir, "extracted.xliff");
+		fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
+		verbose && util.print("Extracted strings file written to " + outputFile + "\n");
+		
+		outputFile = path.join(targetdir, "newstrings.xliff");
+		fs.writeFileSync(outputFile, stringsdb.toXliff(function (tu) {
+	    	return tu.status === "new";
+	    }), "utf-8");
+		verbose && util.print("New strings file written to " + outputFile + "\n");
+		break;
+		
+	case "export":
+		if (splitByLang) {
+			var sets = stringsdb.split();
+			var basename = path.basename(targetFile);
+			var extension = path.extname(targetFile);
+			var outputFile;
+			
+			for (var i = 0; i < sets.length; i++) {
+				util.print("sets[i] is " + JSON.stringify(sets[i], undefined, 4) + "\n");
+				outputFile = basename + sets[i].db.locale + extension; 
+				fs.writeFileSync(outputFile, sets[i].toXliff(function (tu) {
+			    	return tu.status === "new";
+			    }), "utf-8");
+			}
+		} else {
+			fs.writeFileSync(targetFile, stringsdb.toXliff(function (tu) {
+		    	return tu.status === "new";
+		    }), "utf-8");
+		}
+		break;
+		
+	case "import":
+		var xliff = new TranslationSet({
+			xliff: fs.readFileSync(targetFile, "utf-8")
+		});
+		stringsdb.merge(xliff);
+		stringsdb.save();
+		break;
 }
-
-stringsdb.save();
-verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n");
-
-var outputDir;
-
-for (var i = 0; i < fileTypes.length; i++) {
-	try {
-		fileTypes[i].localize(stringsdb);
-	} catch (err) {
-		util.print("Could not write to output file for file type " + fileTypes[i].getName() + "\n");
-		util.print(err + "\n");
-		process.exit(2);
-	}
-}
-
-outputFile = path.join(targetdir, "extracted.xliff");
-fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
-verbose && util.print("Extracted strings file written to " + outputFile + "\n");
-
-outputFile = path.join(targetdir, "newstrings.xliff");
-fs.writeFileSync(outputFile, newStrings.toXliff(), "utf-8");
-verbose && util.print("New strings file written to " + outputFile + "\n");

@@ -67,7 +67,8 @@
             },
             "This is a new string.": {
                 "source": "This is a new string.",
-                "status": "new"
+                "translation": "Diesen ist einen neuen String.",
+                "status": "translated"
             },
             "This string should not be extracted either.": {
                 "source": "This string should not be extracted either.",

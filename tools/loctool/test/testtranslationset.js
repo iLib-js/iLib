@@ -107,7 +107,7 @@ var xliff =
 	'        <target>Übersetzung des ersten Schlüssel.</target>\n' +
 	'        <note>This is a note about the string with the first key</note>\n' +
 	'      </trans-unit>\n' +
-	'      <trans-unit>\n' +
+	'      <trans-unit x-status="new">\n' +
 	'        <source key="secondkey">This string should be extracted.</source>\n' +
 	'        <target>Übersetzung des zweiten Schlüssel.</target>\n' +
 	'      </trans-unit>\n' +
@@ -1386,7 +1386,8 @@ function testTSToXliff() {
     	key: "secondkey",
     	source: "This string should be extracted.",
     	translation: "Übersetzung des zweiten Schlüssel.",
-    	locale: "de-DE"
+    	locale: "de-DE",
+    	status: "new"
     });
     ts.addTranslationUnit(tu);
 
@@ -1431,6 +1432,55 @@ function testTSToXliffSourceOnly() {
     assertEquals(expected, ts.toXliff());
 }
 
+function testTSToXliffWithFilter() {
+    var ts = new TranslationSet();
+    assertNotUndefined(ts);
+
+    var tu = new TranslationUnit({
+    	source: "This string should be extracted.",
+    	translation: "Dieser String soll übersetzt werden.",
+    	locale: "de-DE"
+    });
+    ts.addTranslationUnit(tu);
+    
+    tu = new TranslationUnit({
+    	key: "firstkey",
+    	source: "This string should be extracted.",
+    	translation: "Übersetzung des ersten Schlüssel.",
+    	locale: "de-DE",
+    	comment: "This is a note about the string with the first key"
+    });
+    ts.addTranslationUnit(tu);
+
+    tu = new TranslationUnit({
+    	key: "secondkey",
+    	source: "This string should be extracted.",
+    	translation: "Übersetzung des zweiten Schlüssel.",
+    	locale: "de-DE",
+    	status: "new"
+    });
+    ts.addTranslationUnit(tu);
+
+    var expected = 
+    	'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
+    	'<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">\n' +
+    	'<xliff version="1.2">\n' +
+    	'  <file datatype="javascript" source-language="en-US" target-language="de-DE">\n' +
+    	'    <body>\n' +
+    	'      <trans-unit x-status="new">\n' +
+    	'        <source key="secondkey">This string should be extracted.</source>\n' +
+    	'        <target>Übersetzung des zweiten Schlüssel.</target>\n' +
+    	'      </trans-unit>\n' +
+    	'    </body>\n' +
+    	'  </file>\n' +
+    	'</xliff>\n';
+
+    // util.print("ts is now " + JSON.stringify(ts, undefined, 4) + "\n");
+    assertEquals(expected, ts.toXliff(function (tu) {
+    	return tu.status === "new";
+    }));
+}
+
 var testDB = {
     "sourceLocale": "en-US",
     "db": {
@@ -1444,6 +1494,10 @@ var testDB = {
                 "source": "This string should be extracted.",
                 "translation": "Übersetzung des ersten Schlüssel.",
                 "comment": "This is a note about the string with the first key"
+            },
+            "secondkey": {
+            	"source": "This string should be extracted.",
+            	"translation": "Übersetzung des zweiten Schlüssel."
             }
         },
         "de-CH": {
@@ -1652,4 +1706,45 @@ function testTSGetAncestorTranslationUnitMissingString() {
     
     var tu = ts.getAncestorTranslationUnit("thirdkey", "de-DE");
     assertUndefined(tu);
+}
+
+function testTSSplit() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var sets = ts.split();
+    assertNotUndefined(sets);
+}
+
+function testTSSplitRightContents() {
+	var ts = new TranslationSet({
+    	object: testDB
+    });
+    assertNotUndefined(ts);
+    
+    var sets = ts.split();
+    assertNotUndefined(sets);
+    
+    var units = sets["-"].getAllTranslationUnits();
+    for (var i = 0; i < units.length; i++) {
+    	assertEquals("-", units[i].locale);
+    }
+    
+    units = sets["de-DE"].getAllTranslationUnits();
+    //util.print("units is " + JSON.stringify(units, undefined, 4) + "\n");
+    for (var i = 0; i < units.length; i++) {
+    	assertEquals("de-DE", units[i].locale);
+    }
+
+    units = sets["de-CH"].getAllTranslationUnits();
+    for (var i = 0; i < units.length; i++) {
+    	assertEquals("de-CH", units[i].locale);
+    }
+
+    units = sets["zh-Hans-CN"].getAllTranslationUnits();
+    for (var i = 0; i < units.length; i++) {
+    	assertEquals("zh-Hans-CN", units[i].locale);
+    }
 }

@@ -82,7 +82,7 @@ var TranslationSet = function TranslationSet(params) {
 			    		source = sourceElement._;
 			    	}
 			    	var comment = transunit.note && transunit.note[0];
-			    	var status = (transunit.$ && transunit.$["x-status"] && transunit.$["x-status"][0]) || "approved";
+			    	var status = (transunit.$ && transunit.$["x-status"]) || "approved";
 			    	var tu = new TranslationUnit({
 			    		source: source,
 			    		key: key,
@@ -348,11 +348,18 @@ TranslationSet.prototype.getAllLocales = function() {
  * that conforms to the XLIFF DTD. In order to use this, you have to install
  * the "xml2js" locally first: "npm install xml2js"
  * 
+ * @param {Function(TranslationUnit):boolean|undefined} filter a function to 
+ * filter Translation units for output to the xliff file. Return true to keep
+ * the translation unit, and false to skip it.
  * @return {String} the XLIFF representation of the current set
  */
-TranslationSet.prototype.toXliff = function() {
+TranslationSet.prototype.toXliff = function(filter) {
+	if (filter && typeof(filter) !== "function") {
+		return undefined;
+	}
+	
 	var xml2js = require("xml2js");
-1
+
 	var builder = new xml2js.Builder({
 		rootName: "xliff",
 		doctype: {
@@ -387,29 +394,31 @@ TranslationSet.prototype.toXliff = function() {
 			for (var key in tulist) {
 				if (key && tulist[key]) {
 					var tu = tulist[key];
-					var element = {
-						"source": {
-							"_": tu.source
+					if (!filter || filter(tu)) {
+						var element = {
+							"source": {
+								"_": tu.source
+							}
+						};
+						if (key !== tu.source) {
+							element.source["$"] = {
+								"key": key
+							};
 						}
-					};
-					if (key !== tu.source) {
-						element.source["$"] = {
-							"key": key
-						};
+						if (tu.translation) {
+							element.target = tu.translation;
+						}
+						if (tu.comment) {
+							element.note = tu.comment;
+						}
+						if (tu.status) {
+							element["$"] = {
+								"x-status": tu.status
+							};
+						}
+	
+						file.body["trans-unit"].push(element);
 					}
-					if (tu.translation) {
-						element.target = tu.translation;
-					}
-					if (tu.comment) {
-						element.note = tu.comment;
-					}
-					if (tu.status) {
-						element["$"] = {
-							"x-status": tu.status
-						};
-					}
-
-					file.body["trans-unit"].push(element);
 				}
 			}
 			
@@ -445,6 +454,32 @@ TranslationSet.prototype.merge = function(other) {
 		}
 	}
 	return this;
+};
+
+/**
+ * Split the current translation set into multiple translation sets
+ * per locale.
+ * @return {{string, TranslationSet}} the current set split into new 
+ * sets, with each locale mapping to a set containing strings for
+ * that locale
+ */
+TranslationSet.prototype.split = function() {
+	var ts, sets = {};
+	
+	for (var loc in this.db) {
+		if (loc && this.db[loc]) {
+			ts = new TranslationSet();
+			var tulist = this.db[loc];
+			for (var key in tulist) {
+				if (key && tulist[key]) {
+					ts.addTranslationUnit(tulist[key]);
+				}
+			}
+			sets[loc] = ts;
+		}
+	}
+	
+	return sets;
 };
 
 module.exports = TranslationSet;

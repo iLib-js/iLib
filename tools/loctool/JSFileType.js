@@ -64,10 +64,11 @@ JSFileType.prototype.addSet = function(set) {
 function getOutputJson(set, locale) {
 	var json = {};
 	var tulist = set.getAllTranslationUnits(locale);
-	var tu;
+	var tu, ancestor;
 	for (var i = 0; i < tulist.length; i++) {
 		tu = tulist[i];
-		if (tu.translation && tu.translation !== tu.source) {
+		ancestor = set.getAncestorTranslationUnit(tu.key, tu.locale);
+		if (tu.translation && (!ancestor || tu.translation !== ancestor.translation) && (!tu.status || tu.status === "approved")) {
 			json[tu.key] = tu.translation;
 		}
 	}
