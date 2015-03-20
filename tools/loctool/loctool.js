@@ -50,8 +50,8 @@ function usage() {
 		"    localize - extract and localize the current app\n" +
 		"    import [pathname] - import an xliff file or directory full of\n" +
 		"       xliff files into the strings db\n" +
-		"    export [-s] [pathname] - export the stringsdb to an xliff file\n" +
-		"      -s - split by language so that the tool produces one xliff per language\n" +
+		"    export [--split] [pathname] - export the stringsdb to an xliff file\n" +
+		"      --split - split by language so that the tool produces one xliff per language\n" +
 		"  Default command: localize\n"
 		);
 	process.exit(1);
@@ -97,8 +97,7 @@ for (var i = 2; i < process.argv.length; i++) {
 		case 'localize':
 			break;
 		case 'export':
-			if (i+1 < process.argv.length && 
-					(process.argv[i+1].toUpperCase() === '-S' || process.argv[i] === '--split')) {
+			if (i+1 < process.argv.length && process.argv[i+1] === '--split') {
 				splitByLang = true;
 				i++;
 			}
@@ -118,6 +117,7 @@ for (var i = 2; i < process.argv.length; i++) {
 			usage();
 			break;
 		}
+		verbose && util.print("Doing command " + command + "\n");
 	}
 }
 
@@ -281,22 +281,27 @@ switch (command) {
 		
 	case "export":
 		if (splitByLang) {
+			verbose && util.print("Splitting by language\n");
 			var sets = stringsdb.split();
-			var basename = path.basename(targetFile);
-			var extension = path.extname(targetFile);
+			var basename = path.basename(targetFile, ".xliff");
+			var extension = path.extname(targetFile) || ".xliff";
 			var outputFile;
 			
-			for (var i = 0; i < sets.length; i++) {
-				util.print("sets[i] is " + JSON.stringify(sets[i], undefined, 4) + "\n");
-				outputFile = basename + sets[i].db.locale + extension; 
-				fs.writeFileSync(outputFile, sets[i].toXliff(function (tu) {
-			    	return tu.status === "new";
-			    }), "utf-8");
+			for (var loc in sets) {
+				if (loc !== '-') {
+					//util.print("sets[loc] is " + JSON.stringify(sets[loc], undefined, 4) + "\n");
+					outputFile = basename + "." + loc + extension; 
+					fs.writeFileSync(outputFile, sets[loc].toXliff(function (tu) {
+				    	return tu.status === "new";
+				    }), "utf-8");
+					verbose && util.print("Wrote to " + outputFile + "\n");
+				}
 			}
 		} else {
 			fs.writeFileSync(targetFile, stringsdb.toXliff(function (tu) {
 		    	return tu.status === "new";
 		    }), "utf-8");
+			verbose && util.print("Wrote to " + targetFile + "\n");
 		}
 		break;
 		
