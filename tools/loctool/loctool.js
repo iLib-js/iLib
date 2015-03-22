@@ -19,16 +19,29 @@
  */
 /* 
  * This code is intended to be run under node.js. This requires that you
- * install the package xml2js from npm.
+ * install the package xml2js and command-line-args from npm.
  */
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
 var xml2js = require('xml2js');
+var clargs = require('command-line-args');
 
 var common = require('../cldr/common.js');
 var TranslationSet = require('./translationset.js');
 var TranslationUnit = require('./translationunit.js');
+
+var cli = clargs([
+	{ name: "verbose", type: Boolean, alias: "v", description: "Verbose mode." },
+	{ name: "help", type: Boolean, description: "This help." },
+	{ name: "output", type: String, alias: "o", description: 'Dir where the results should go. Default "./resources"'},
+	{ name: "source", type: String, alias: "s", description: 'Dir where the source files should be read from. Default "."'},
+	{ name: "locales", type: String, alias: "l", description: 'Comma-separated list of BCP-47 style locale names to localize to. Default is all locales that already exist in the strings database.'},
+	{ name: "status", type: String, alias: "t", description: 'Status to set or search for, depending on the command.'},
+	{ name: "advance", type: String, alias: "a", description: 'Automatically advance the workflow status of each translation unit to the next level in the workflow as it is imported.'},
+	{ name: "split", type: String, alias: "p", description: 'For the export comand, produce multiple xliff files split one language per file.'},
+	{ name: "command", type: String, defaultOption: true, description: "The command to run" }
+]);
 
 function usage() {
 	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] [-s source_dir] [command]\n" +
@@ -46,12 +59,24 @@ function usage() {
 		'  Where to find files to scan. Default "."\n' +
 		"command\n" +
 		"  Action to perform:\n" +
-		"    extract - extract strings from the current app, but do not localize it\n" +
-		"    localize - extract and localize the current app\n" +
-		"    import [pathname] - import an xliff file or directory full of\n" +
-		"       xliff files into the strings db\n" +
-		"    export [--split] [pathname] - export the stringsdb to an xliff file\n" +
-		"      --split - split by language so that the tool produces one xliff per language\n" +
+		"    extract           - extract strings from the current app, but do not localize it\n" +
+		"    localize [--status <status>] - extract and localize the current app\n" +
+		"      --status <status>\n" +
+		"                      - only produce localized files using translation units that have the\n" +
+		"                        given status. Default is 'approved'.\n" +
+		"    import [--advance] [--status <status>] [pathname] - import an xliff file or directory\n" +
+		"                        full of xliff files into the strings db\n" +
+		"      --advance       - automatically advance the workflow status of each translation\n" +
+		"                        unit to the next level in the workflow as it is imported\n" +
+		"      --status <status>\n" +
+		"                      - explicitly set the status of imported translation units to the\n" +
+		"                        given status.\n" +
+		"    export [--split] [--status <status>] [pathname] - export the stringsdb to an\n" +
+		"                        xliff file\n" +
+		"      --split         - produce multiple xliff files, split one language per file\n" +
+		"      --status <status>\n" +
+		"                      - only export translation units with the given status. By default\n" +
+		"                        export only exports translations with the status 'new'\n" +
 		"  Default command: localize\n"
 		);
 	process.exit(1);
@@ -63,10 +88,15 @@ var sourcedir = ".",
 	sourceLocale = new common.Locale("en-US"),
 	locales,
 	command = "localize",
-	doExtract = true;
+	doExtract = true,
 	doLocalize = true,
-	splitByLang = false
-	targetFile = "strings.xliff";
+	splitByLang = false,
+	targetFile = "strings.xliff",
+	status;
+
+var ignoreDirs = ["test", "resources", "locale", "output"];
+var fileTypesToLoad = ["JSFileType", "JsonFileType"];
+var statii = ["new", "edit", "review", "approved"]
 
 for (var i = 2; i < process.argv.length; i++) {
 	if (process.argv[i].toUpperCase() === '-H' || process.argv[i] === '--help') {
@@ -91,6 +121,18 @@ for (var i = 2; i < process.argv.length; i++) {
 			usage();
 		}
 		sourcedir = process.argv[++i];
+	} else if (process.argv[i] === '--advance') {
+	} else if (process.argv[i] === '--status') {
+		if (i+1 >= process.argv.length) {
+			util.print("Error: " + process.argv[i] + " argument requires a status to follow it.\n" +
+					"One of:");
+			for (var j = 0; j < statii.length; j++) {
+				util.print(" " + statii[j]);
+			}
+			util.print("\n");
+			usage();
+		}
+		status = process.argv[++i];
 	} else {
 		command = process.argv[i];
 		switch (command) {
@@ -139,9 +181,6 @@ if (verbose) {
 	util.print("source dir: " + sourcedir + "\n");
 	util.print("target dir: " + targetdir + "\n");
 }
-
-var ignoreDirs = ["test", "resources", "locale", "output"];
-var fileTypesToLoad = ["JSFileType", "JsonFileType"];
 
 var stringsdb = new TranslationSet({
 	path: "."
