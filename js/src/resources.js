@@ -550,6 +550,22 @@ ilib.ResBundle.prototype = {
 	},
 	
 	/**
+	 * Return a localized string as a Javascript object. This does the same thing as
+	 * the getString() method, but it returns a regular Javascript string instead of
+	 * and ilib.String instance. This means it cannot be formatted with the format()
+	 * method without being wrapped in an ilib.String instance first.
+	 * 
+	 * @param {?string=} source the source string to translate
+	 * @param {?string=} key optional name of the key, if any
+	 * @param {?string=} escapeMode escape mode, if any
+	 * @return {string|undefined} the translation of the given source/key or undefined 
+	 * if the translation is not found and the source is undefined
+	 */
+	getStringJS: function(source, key, escapeMode) {
+		return this.getString(source, key, escapeMode).toString();
+	},
+	
+	/**
 	 * Return true if the current bundle contains a translation for the given key and
 	 * source. The
 	 * getString method will always return a string for any given key and source 

@@ -145,6 +145,16 @@ function testResBundleGetString() {
     assertEquals("third", rb.getString("third string").toString());
 }
 
+function testResBundleGetStringJS() {
+    var rb = new ilib.ResBundle(); // default locale
+    
+    assertNotNull(rb);
+    
+    assertEquals("first", rb.getStringJS("first string"));
+    assertEquals("second", rb.getStringJS("second string"));
+    assertEquals("third", rb.getStringJS("third string"));
+}
+
 function testResBundleGetStringEmpty() {
     var rb = new ilib.ResBundle(); // default locale
     
@@ -219,6 +229,16 @@ function testResBundleGetStringDefaultToSource() {
     assertEquals("first string x", rb.getString("first string x").toString());
     assertEquals("second string x", rb.getString("second string x").toString());
     assertEquals("third string x", rb.getString("third string x").toString());
+}
+
+function testResBundleGetStringJSDefaultToSource() {
+    var rb = new ilib.ResBundle({locale: "ja-JP"});
+    
+    assertNotNull(rb);
+    
+    assertEquals("first string x", rb.getStringJS("first string x"));
+    assertEquals("second string x", rb.getStringJS("second string x"));
+    assertEquals("third string x", rb.getStringJS("third string x"));
 }
 
 function testResBundleGetStringOtherBundle() {
