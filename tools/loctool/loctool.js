@@ -26,145 +26,124 @@ var util = require('util');
 var path = require('path');
 var xml2js = require('xml2js');
 var clargs = require('command-line-args');
+var ilib = require("ilib").ilib;
 
 var common = require('../cldr/common.js');
 var TranslationSet = require('./translationset.js');
 var TranslationUnit = require('./translationunit.js');
 
+ilib.ResBundle.prototype.getStringJS = function(source, key, escapeMode) {
+	return this.getString(source, key, escapeMode).toString();
+};
+var rb = new ilib.ResBundle();
+
 var cli = clargs([
-	{ name: "verbose", type: Boolean, alias: "v", description: "Verbose mode." },
-	{ name: "help", type: Boolean, description: "This help." },
-	{ name: "output", type: String, alias: "o", description: 'Dir where the results should go. Default "./resources"'},
-	{ name: "source", type: String, alias: "s", description: 'Dir where the source files should be read from. Default "."'},
-	{ name: "locales", type: String, alias: "l", description: 'Comma-separated list of BCP-47 style locale names to localize to. Default is all locales that already exist in the strings database.'},
-	{ name: "status", type: String, alias: "t", description: 'Status to set or search for, depending on the command.'},
-	{ name: "advance", type: String, alias: "a", description: 'Automatically advance the workflow status of each translation unit to the next level in the workflow as it is imported.'},
-	{ name: "split", type: String, alias: "p", description: 'For the export comand, produce multiple xliff files split one language per file.'},
-	{ name: "command", type: String, defaultOption: true, description: "The command to run" }
+	{ name: rb.getStringJS("verbose"), type: Boolean, alias: rb.getStringJS("v"), description: rb.getStringJS("Verbose mode.") },
+	{ name: rb.getStringJS("help"), type: Boolean, alias: rb.getStringJS("h"), description: rb.getStringJS("This help.") },
+	{ name: rb.getStringJS("output"), type: String, alias: rb.getStringJS("o"), description: rb.getStringJS('Dir where the results should go. Default "./resources"')},
+	{ name: rb.getStringJS("source"), type: String, alias: rb.getStringJS("s"), description: rb.getStringJS('Dir where the source files should be read from. Default "."')},
+	{ name: rb.getStringJS("locales"), type: String, alias: rb.getStringJS("l"), description: rb.getStringJS('Comma-separated list of BCP-47 style locale names to localize to. Default is all locales that already exist in the strings database.')},
+	{ name: rb.getStringJS("status"), type: String, alias: rb.getStringJS("t"), description: rb.getStringJS('Status to set or search for, depending on the command.')},
+	{ name: rb.getStringJS("advance"), type: String, alias: rb.getStringJS("a"), description: rb.getStringJS('Automatically advance the workflow status of each translation unit to the next level in the workflow as it is imported.')},
+	{ name: rb.getStringJS("split"), type: String, alias: rb.getStringJS("p"), description: rb.getStringJS('For the export comand, produce multiple xliff files split one language per file.')},
+	{ name: rb.getStringJS("command"), type: Array, defaultOption: true, description: rb.getStringJS('The command to run. This is one of "localize", "extract", "import", or "export".') }
 ]);
 
-function usage() {
-	util.print("Usage: loctool.js [-h] [-v] [-o target_dir] [-l locale_list] [-s source_dir] [command]\n" +
-		"Scan js files for translatable strings and generate translated json files.\n\n" +
-		"-h or --help\n" +
-		"  this help\n" +
-		"-v\n" +
-	    "  Verbose mode" +
-	    "-o target_dir\n" +
-		'  Where to put the results. Default "./resources"\n' +
-	    "-l locale_list\n" +
-		'  Comma-separated list of BCP-47 style locale names to localize to. Default is\n' +
-		'  all locales that already exist in the strings database.\n' +
-	    "-s source_dir\n" +
-		'  Where to find files to scan. Default "."\n' +
-		"command\n" +
-		"  Action to perform:\n" +
-		"    extract           - extract strings from the current app, but do not localize it\n" +
-		"    localize [--status <status>] - extract and localize the current app\n" +
-		"      --status <status>\n" +
-		"                      - only produce localized files using translation units that have the\n" +
-		"                        given status. Default is 'approved'.\n" +
-		"    import [--advance] [--status <status>] [pathname] - import an xliff file or directory\n" +
-		"                        full of xliff files into the strings db\n" +
-		"      --advance       - automatically advance the workflow status of each translation\n" +
-		"                        unit to the next level in the workflow as it is imported\n" +
-		"      --status <status>\n" +
-		"                      - explicitly set the status of imported translation units to the\n" +
-		"                        given status.\n" +
-		"    export [--split] [--status <status>] [pathname] - export the stringsdb to an\n" +
-		"                        xliff file\n" +
-		"      --split         - produce multiple xliff files, split one language per file\n" +
-		"      --status <status>\n" +
-		"                      - only export translation units with the given status. By default\n" +
-		"                        export only exports translations with the status 'new'\n" +
-		"  Default command: localize\n"
-		);
-	process.exit(1);
-}
+var options = cli.parse();
 
 var sourcedir = ".", 
 	targetdir = "resources",
 	verbose = false,
-	sourceLocale = new common.Locale("en-US"),
+	sourceLocale = new ilib.Locale("en-US"),
 	locales,
 	command = "localize",
 	doExtract = true,
 	doLocalize = true,
 	splitByLang = false,
 	targetFile = "strings.xliff",
-	status;
+	status,
+	autoAdvance = false;
 
 var ignoreDirs = ["test", "resources", "locale", "output"];
 var fileTypesToLoad = ["JSFileType", "JsonFileType"];
-var statii = ["new", "edit", "review", "approved"]
+var statii = ["new", "edit", "review", "approved"];
 
-for (var i = 2; i < process.argv.length; i++) {
-	if (process.argv[i].toUpperCase() === '-H' || process.argv[i] === '--help') {
-		usage();
-	} else if (process.argv[i].toUpperCase() === '-O' || process.argv[i] === '--output') {
-		if (i+1 >= process.argv.length) {
-			util.print("Error: " + process.argv[i] + " argument requires an output dir to follow it.\n");
-			usage();
-		}
-		targetdir = process.argv[++i];
-	} else if (process.argv[i].toUpperCase() === '-V' || process.argv[i] === '--verbose') {
-		verbose = true;
-	} else if (process.argv[i].toUpperCase() === '-L' || process.argv[i] === '--locales') {
-		if (i+1 >= process.argv.length) {
-			util.print("Error: " + process.argv[i] + " argument requires a list of locales to follow it.\n");
-			usage();
-		}
-		locales = process.argv[++i].split(",");
-	} else if (process.argv[i].toUpperCase() === '-S' || process.argv[i] === '--source') {
-		if (i+1 >= process.argv.length) {
-			util.print("Error: " + process.argv[i] + " argument requires a source dir to follow it.\n");
-			usage();
-		}
-		sourcedir = process.argv[++i];
-	} else if (process.argv[i] === '--advance') {
-	} else if (process.argv[i] === '--status') {
-		if (i+1 >= process.argv.length) {
-			util.print("Error: " + process.argv[i] + " argument requires a status to follow it.\n" +
-					"One of:");
-			for (var j = 0; j < statii.length; j++) {
-				util.print(" " + statii[j]);
-			}
-			util.print("\n");
-			usage();
-		}
-		status = process.argv[++i];
+function usage() {		
+	util.print(cli.getUsage({
+	    header: rb.getStringJS("Tool to extract and localize strings from software or web sites."),
+	    footer: rb.getStringJS("For more information, visit http://sourceforge.net/p/i18nlib/wiki/iLib%20-%20an%20internationalization%20library%20written%20in%20Javascript/")
+	}));
+	process.exit(1);
+}
+
+if (options.help) {
+	usage();
+}
+
+if (options.locales) {
+	locales = options.locales.split(",");
+}
+
+if (typeof(options.output) !== 'undefined') {
+	if (options.output) {
+		targetdir = options.output;	
 	} else {
-		command = process.argv[i];
-		switch (command) {
-		case 'localize':
-			break;
-		case 'export':
-			if (i+1 < process.argv.length && process.argv[i+1] === '--split') {
-				splitByLang = true;
-				i++;
-			}
-			if (i+1 < process.argv.length) {
-				targetFile = process.argv[i+1];
-				i++;
-			}
-			break;
-		case 'import':
-			if (i+1 < process.argv.length) {
-				targetFile = process.argv[i+1];
-				i++;
-			}
-			break;
-		default:
-			util.print("Error: unrecognized command: " + command + "\n");
-			usage();
-			break;
-		}
-		verbose && util.print("Doing command " + command + "\n");
+		util.print(rb.getStringJS("Error: output argument requires an output dir to follow it.\n"));
+		usage();
 	}
 }
 
+if (typeof(options.source) !== 'undefined') {
+	if (options.source) {
+		sourcedir = options.source;	
+	} else {
+		util.print(rb.getStringJS("Error: source argument requires an source dir to follow it.\n"));
+		usage();
+	}
+}
+
+if (typeof(options.status) !== 'undefined') {
+	if (options.status) {
+		status = options.status;	
+	} else {
+		util.print(rb.getStringJS("Error: status argument requires a status to follow it.\n") +
+			rb.getStringJS("One of:"));
+		for (var j = 0; j < statii.length; j++) {
+			util.print(" " + statii[j]);
+		}
+		util.print("\n");
+		usage();
+	}
+}
+
+verbose = !!options.verbose;
+splitByLang = !!options.split;
+autoAdvance = !!options.advance;
+
+if (options.command && options.command.length > 0) {
+	command = options.command[0];
+	switch (command) {
+	case 'localize':
+	case 'export':
+	case 'import':
+		break;
+	default:
+		util.print(rb.getString("Error: unrecognized command: {cmd}\n").format({cmd: command}));
+		usage();
+		break;
+	}
+	
+	if (options.command.length > 1) {
+		targetFile = options.command[1];
+	}
+}
+
+verbose && util.print(rb.getString("Doing command {cmd}\n").format({cmd: command}));
+
+verbose && util.print(rb.getStringJS("Loctool was run with options:\n") + JSON.stringify(options, undefined, 4) + "\n");
+
 if (!fs.existsSync(sourcedir)) {
-	util.print("Error: Could not access source directory " + sourcedir + "\n");
+	util.print(rb.getString("Error: Could not access source directory {dir}").format({dir: sourcedir}));
 	usage();
 }
 
@@ -172,21 +151,25 @@ if (!fs.existsSync(targetdir)) {
 	try {
 		common.makeDirs(targetdir);
 	} catch (e) {
-		util.print("Could not access or create target directory " + targetdir + "\nError: " + e + "\n");
+		util.print(rb.getString("Could not access or create target directory {dir}\nError: {errstring}\n").format({dir: targetdir, errstring: e}));
 		usage();
 	}
 }
 
+if (command === "import" && !fs.existsSync(targetFile)) {
+	util.print(rb.getString("Error: Could not access the file {filename} to import it.\n").format({filename: targetFile}));
+	usage();
+}
+
 if (verbose) {
-	util.print("source dir: " + sourcedir + "\n");
-	util.print("target dir: " + targetdir + "\n");
+	util.print(rb.getString("source dir: {dir}\n").format({dir: sourcedir}));
+	util.print(rb.getString("target dir: {dir}\n").format({dir: targetdir}));
 }
 
 var stringsdb = new TranslationSet({
 	path: "."
 });
 var extracted = new TranslationSet();
-var newStrings = new TranslationSet();
 
 if (!locales) {
 	locales = stringsdb.getAllLocales();
@@ -215,15 +198,6 @@ function saveTransUnit(tu) {
 	
 	for (var i = 0; i < locales.length; i++) {
 		tu2 = stringsdb.getTranslationUnit(tu.key, locales[i]);
-		
-		if (!tu2) {
-			// newStrings only has strings that are not yet translated.
-			// re-use the source for the translation field for new strings
-			newStrings.addTranslationUnit(common.merge(tu, {
-				locale: locales[i], 
-				translation: tu.source
-			}));
-		}
 		
 		stringsdb.addTranslationUnit(common.merge(tu, {
 			locale: locales[i]
@@ -255,13 +229,13 @@ function walk(root, dir) {
 		var stat = fs.statSync(sourcePath);
 		if (stat && stat.isDirectory()) {
 			if (ignoreDirs.indexOf(filename) === -1 && path.normalize(sourcePath) !== path.normalize(targetdir)) {
-				verbose && util.print("Scanning dir " + sourcePath + "\n");
+				verbose && util.print(rb.getString("Scanning dir {dir}\n").format({dir: sourcePath}));
 				walk(root, sourcePathRelative);
 			} else {
-				verbose && util.print("Ignoring dir " + sourcePath + "\n");
+				verbose && util.print(rb.getString("Ignoring dir {dir}\n").format({dir: sourcePath}));
 			}
 		} else {
-			var obj, file;
+			var file;
 			
 			for (var i = 0; i < fileTypes.length; i++) {
 				if (fileTypes[i].isFileType(filename)) {
@@ -271,7 +245,7 @@ function walk(root, dir) {
 						saveTranslations(file.scan());
 						file.localize(stringsdb);
 					} catch (err) {
-						util.print("File " + sourcePath + " is not readable or does not contain valid source.\n");
+						util.print(rb.getString("File {path} is not readable or does not contain valid source.\n").format({path: sourcePath}));
 						util.print(err + "\n");
 						process.exit(2);
 					}
@@ -290,10 +264,10 @@ switch (command) {
 		
 		// verbose && util.print("Extracted json is: \n" + JSON.stringify(extracted, undefined, 4) + "\n");
 		
-		verbose && util.print("All strings extracted. Now writing output files...\n");
+		verbose && util.print(rb.getStringJS("All strings extracted. Now writing output files...\n"));
 		
 		stringsdb.save();
-		verbose && util.print("Strings database saved to " + stringsdb.getPath() + "\n");
+		verbose && util.print(rb.getString("Strings database saved to {path}\n").format({path: stringsdb.getPath()}));
 		
 		var outputDir;
 		
@@ -301,7 +275,7 @@ switch (command) {
 			try {
 				fileTypes[i].localize(stringsdb);
 			} catch (err) {
-				util.print("Could not write to output file for file type " + fileTypes[i].getName() + "\n");
+				util.print(rb.getString("Could not write to output file for file type {filetype}\n").format({filetype: fileTypes[i].getName()}));
 				util.print(err + "\n");
 				process.exit(2);
 			}
@@ -309,18 +283,18 @@ switch (command) {
 		
 		outputFile = path.join(targetdir, "extracted.xliff");
 		fs.writeFileSync(outputFile, extracted.toXliff(), "utf-8");
-		verbose && util.print("Extracted strings file written to " + outputFile + "\n");
+		verbose && util.print(rb.getString("Extracted strings file written to {filename}\n").format({filename: outputFile}));
 		
 		outputFile = path.join(targetdir, "newstrings.xliff");
 		fs.writeFileSync(outputFile, stringsdb.toXliff(function (tu) {
 	    	return tu.status === "new";
 	    }), "utf-8");
-		verbose && util.print("New strings file written to " + outputFile + "\n");
+		verbose && util.print(rb.getString("New strings file written to {filename}\n").format({filename: outputFile}));
 		break;
 		
 	case "export":
 		if (splitByLang) {
-			verbose && util.print("Splitting by language\n");
+			verbose && util.print(rb.getStringJS("Splitting by language\n"));
 			var sets = stringsdb.split();
 			var basename = path.basename(targetFile, ".xliff");
 			var extension = path.extname(targetFile) || ".xliff";
@@ -333,14 +307,14 @@ switch (command) {
 					fs.writeFileSync(outputFile, sets[loc].toXliff(function (tu) {
 				    	return tu.status === "new";
 				    }), "utf-8");
-					verbose && util.print("Wrote to " + outputFile + "\n");
+					verbose && util.print(rb.getString("Wrote to {filename}\n").format({filename: outputFile}));
 				}
 			}
 		} else {
 			fs.writeFileSync(targetFile, stringsdb.toXliff(function (tu) {
 		    	return tu.status === "new";
 		    }), "utf-8");
-			verbose && util.print("Wrote to " + targetFile + "\n");
+			verbose && util.print(rb.getString("Wrote to {filename}\n").format({filename: targetFile}));
 		}
 		break;
 		
@@ -350,5 +324,6 @@ switch (command) {
 		});
 		stringsdb.merge(xliff);
 		stringsdb.save();
+		verbose && util.print(rb.getString("Successfully imported {filename}\n").format({filename: targetFile}));
 		break;
 }

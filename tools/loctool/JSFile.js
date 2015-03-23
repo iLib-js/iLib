@@ -42,8 +42,8 @@ var reSlashDotCommentOneLine = new RegExp("/\\*+\\s*(i18n)?\\s*((\\*[^/]|[^\\*])
 var reSlashDotCommentStart = new RegExp("/\\*+\\s*(i18n)?\\s*((\\*[^/]|[^\\*])*)$", "g");
 var reSlashDotCommentEnd = new RegExp("((\\*[^/]|[^\\*])*)\\*/", "g");
 var reSlashSlashComments = new RegExp("//\\s*(i18n)?\\s*(.*)$", "g");
-var reGetStringSourceOnly = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
-var reGetStringSourceAndKey = new RegExp("(\\.getString|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
+var reGetStringSourceOnly = new RegExp("(\\.getString(JS)?|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
+var reGetStringSourceAndKey = new RegExp("(\\.getString(JS)?|\\$L)\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceOnly = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var re$LSourceAndKey = new RegExp("\\.\\$L\\s*\\(\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*,\\s*('([^'\\n]|\\\\.)*'|\"([^\"\\n]|\\\\.)*\")\\s*\\)", "g");
 var reStarPrefix = new RegExp("^\\s*\\*\\s*", "g");
@@ -62,7 +62,7 @@ JSFile.prototype.scan = function() {
 	var text = this.data; // this.data.replace(reSlashDotComments, ""); // ignore things inside slash dot comments
 	var result;
 	var lines = text.split("\n");
-	var comment, inComment = false;
+	var comment = undefined, inComment = false;
 	var ts = new TranslationSet();
 	
 	for (var i = 0; i < lines.length; i++) {
@@ -128,8 +128,8 @@ JSFile.prototype.scan = function() {
 			//util.print("line is now " + line + "\n");
 			reGetStringSourceOnly.lastIndex = 0;
 			while ((result = reGetStringSourceOnly.exec(line)) !== null && result && result.length > 0) {
-				this.verbose && util.print("Found source string: " + result[2] + "\n");
-				var str = stripQuotes(result[2]);
+				this.verbose && util.print("Found source string: " + result[3] + "\n");
+				var str = stripQuotes(result[3]);
 				ts.addTranslationUnit(new TranslationUnit({
 					source: str,
 					comment: comment && comment.trim()
@@ -139,10 +139,10 @@ JSFile.prototype.scan = function() {
 			
 			reGetStringSourceAndKey.lastIndex = 0;
 			while ((result = reGetStringSourceAndKey.exec(line)) !== null && result && result.length > 0) {
-				this.verbose && util.print("Found source string: " + result[2] + ", key: " + result[5] + "\n");
+				this.verbose && util.print("Found source string: " + result[3] + ", key: " + result[6] + "\n");
 				ts.addTranslationUnit(new TranslationUnit({
-					key: stripQuotes(result[5]),
-					source: stripQuotes(result[2]),
+					key: stripQuotes(result[6]),
+					source: stripQuotes(result[3]),
 					comment: comment && comment.trim()
 				}));
 				comment = undefined;

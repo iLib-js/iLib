@@ -43,7 +43,7 @@ TreeLocale._init = function() {
 			}
 		}
 	}
-}
+};
 
 TreeLocale.prototype.getParent = function() {
 	var spec, parts = [];

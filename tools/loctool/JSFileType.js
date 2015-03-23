@@ -24,12 +24,18 @@ var fs = require('fs');
 var util = require('util');
 var path = require('path');
 var xml2js = require('xml2js');
+var ilib = require("ilib").ilib;
 
 var common = require('../cldr/common.js');
 var TranslationSet = require('./translationset.js');
 var TranslationUnit = require('./translationunit.js');
 var TreeLocale = require('./treelocale.js');
 var JSFile = require("./JSFile.js");
+
+ilib.ResBundle.prototype.getStringJS = function(source, key, escapeMode) {
+	return this.getString(source, key, escapeMode).toString();
+};
+var rb = new ilib.ResBundle();
 
 var JSFileType = function(options) {
 	if (options) {
@@ -76,7 +82,7 @@ function getOutputJson(set, locale) {
 }
 
 JSFileType.prototype.localize = function(translations) {
-	this.verbose && util.print("Writing strings for the javascript file type.\n");
+	this.verbose && util.print(rb.getStringJS("Writing strings for the javascript file type.\n"));
 	for (var i = 0; i < this.locales.length; i++) {
 		var loc = new TreeLocale(this.locales[i]);
 		outputDir = this.targetdir;
@@ -91,20 +97,19 @@ JSFileType.prototype.localize = function(translations) {
 		}
 		common.makeDirs(outputDir);
 		outputFile = path.join(outputDir, "strings.js");
-		this.verbose && util.print("JS output file " + outputFile + "\n");
 		var locname = loc.getSpec();
-		locname = (locname === "-") ? "" : "_" + locname.replace("-", "_")
+		locname = (locname === "-") ? "" : "_" + locname.replace("-", "_");
 		fs.writeFileSync(outputFile, 
 				"ilib.data.strings" +
 				locname + 
 				" = " + 
 				JSON.stringify(getOutputJson(translations, this.locales[i]), undefined, 4) +
 				";\n", "utf-8");
-		this.verbose && util.print("JS output file written to " + outputFile + "\n");
+		this.verbose && util.print(rb.getString("JS output file written to {filename}\n").format({filename: outputFile}));
 		
 		outputFile = path.join(outputDir, "strings.json");
 		fs.writeFileSync(outputFile, JSON.stringify(getOutputJson(translations, this.locales[i]), undefined, 4) + "\n", "utf-8");
-		this.verbose && util.print("Json output file written to " + outputFile + "\n");
+		this.verbose && util.print(rb.getString("Json output file written to {filename}\n").format({filename: outputFile}));
 	}
 };
 

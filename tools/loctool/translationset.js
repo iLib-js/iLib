@@ -20,9 +20,13 @@
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
+var ilib = require('ilib').ilib;
+
 var common = require('../cldr/common.js');
 var TranslationUnit = require("./translationunit.js");
 var TreeLocale = require("./treelocale.js");
+
+var rb = new ilib.ResBundle();
 
 /**
  * Create a new translation set. This retrieves the current set from
@@ -53,6 +57,7 @@ var TranslationSet = function TranslationSet(params) {
 			this.path = params.path;
 		}
 		if (params.file) {
+			/** @type {String} */
 			this.file = params.file;
 		}
 		if (params.sourceLocale) {
@@ -111,7 +116,7 @@ var TranslationSet = function TranslationSet(params) {
 				this._fromObject(JSON.parse(json));
 			}
 		} catch(e) {
-			util.print("Warning: no translation set at " + this.file + " yet. Creating a new one...\n");
+			util.print(rb.getString("Warning: no translation set at {filename} yet. Creating a new one...\n").format({filename: this.file}));
 		} // no db yet... that's ok
 	}
 };
@@ -231,6 +236,7 @@ TranslationSet.prototype.getTranslationUnit = function(key, locale) {
 	if (this.sourceLocale.isCompatible(new TreeLocale(locale))) {
 		locale = '-';
 	}
+	/** @type {TranslationUnit} */
 	var tu = this.db[locale] && this.db[locale][key];
 	
 	if (!tu) {
