@@ -1,7 +1,7 @@
 /*
  * temperature.js - Unit conversions for Temperature/temperature
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,8 @@
 ilibglobal.js
 unit.js
 */
+
+var ilib = ilib || {Measurement:{}};
 
 /**
  * @class
@@ -213,3 +215,11 @@ ilib.Measurement.Temperature.prototype.localize = function(locale) {
 };
 //register with the factory method
 ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "unit.js"
+    ]);
+	return ilib;
+};

@@ -1,7 +1,7 @@
 /*
  * phonegeo.js - Represent a phone number geolocator object.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,16 @@
 /*
 !depends 
 ilibglobal.js 
-locale.js 
-localeinfo.js
 phone/numplan.js
 phone/phoneloc.js
 phone/phonenum.js
+util/utils.js
+resources.js
 */
 
 // !data iddarea area extarea extstates phoneres
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -649,4 +651,16 @@ ilib.GeoLocator.prototype = {
 		}		
 		return region;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/utils.js",
+        "phone/numplan.js",
+        "phone/phonenum.js",
+        "phone/phoneloc.js",
+        "resources.js"
+    ]);
+	return ilib;
 };

@@ -230,7 +230,7 @@ module.exports = function(loader) {
         "calendar/gregoriandate.js",
         "calendar/thaisolar.js",
         "util/jsutils.js",
-        "date.js",
+        "date.js"
     ]);
 	return ilib;
 };

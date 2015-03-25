@@ -17,7 +17,9 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js
+// !depends ilibglobal.js locale.js
+
+var ilib = ilib || {};
 
 /**
  * If Function.prototype.bind does not exist in this JS engine, this
@@ -624,4 +626,12 @@ ilib.loadData = function(params) {
 	} else {
 		callback(object.cache[spec]);
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js"
+    ]);
+	return ilib;
 };

@@ -1,7 +1,7 @@
 /*
  * util/search.js - Misc search utility routines
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
  */
 
 // !depends ilibglobal.js
+
+var ilib = ilib || {};
 
 /**
  * Binary search a sorted array for a particular target value.
@@ -117,15 +119,6 @@ ilib.bisectionSearch = function(target, low, high, precision, func) {
 		value,
 		pre = precision > 0 ? precision : 1e-13;
 	
-	function compareSignificantDigits(a, b) {
-		var leftParts = a.toExponential().split('e');
-		var rightParts = b.toExponential().split('e');
-		var left = new Number(leftParts[0]);
-		var right = new Number(rightParts[0]);
-		
-		return leftParts[1] === rightParts[1] && Math.abs(left - right) < pre; 
-	}
-	
 	do {
 		mid = (high+low)/2;
 		value = func(mid);
@@ -139,3 +132,9 @@ ilib.bisectionSearch = function(target, low, high, precision, func) {
 	return mid;
 };
 
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js"
+    ]);
+	return ilib;
+};

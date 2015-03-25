@@ -17,7 +17,9 @@
  * limitations under the License.
  */
 
-// !depends locale.js util/utils.js
+// !depends locale.js strings.js
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -172,4 +174,13 @@ ilib.CaseMapper.prototype = {
 	map: function (string) {
 		return this._charMapper(string);
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "strings.js"
+    ]);
+	return ilib;
 };

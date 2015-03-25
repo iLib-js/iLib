@@ -1,7 +1,7 @@
 /*
  * util/math.js - Misc math utility routines
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
  */
 
 // !depends ilibglobal.js
+
+var ilib = ilib || {};
 
 /**
  * Return the sign of the given number. If the sign is negative, this function
@@ -162,4 +164,11 @@ ilib.amod = function (dividend, modulus) {
 	}
 	var x = dividend % modulus;
 	return (x <= 0) ? x + modulus : x;
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js"
+    ]);
+	return ilib;
 };

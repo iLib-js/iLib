@@ -1,7 +1,7 @@
 /*
  * handler.js - Handle phone number parse states
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,9 @@
 /*
 !depends 
 ilibglobal.js 
-phone/phoneloc.js
 */
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -597,4 +598,11 @@ ilib._handlerFactory = function (locale, plan) {
 	default:
 		return new ilib.StateHandler();
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js"
+    ]);
+	return ilib;
 };

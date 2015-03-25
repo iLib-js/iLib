@@ -1,7 +1,7 @@
 /*
  * util/jsutils.js - Misc utilities to work around Javascript engine differences
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
  */
 
 // !depends ilibglobal.js
+
+var ilib = ilib || {};
 
 /**
  * Perform a shallow copy of the source object to the target object. This only 
@@ -135,4 +137,11 @@ ilib.toHexString = function(string, limit) {
 		result += "00000000".substring(0, lim-ch.length) + ch;
 	}
 	return result.toUpperCase();
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js"
+    ]);
+	return ilib;
 };

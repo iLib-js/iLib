@@ -1,7 +1,7 @@
 /*
  * phonefmt.js - Represent a phone number formatter.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,15 @@
 !depends 
 ilibglobal.js 
 locale.js 
-localeinfo.js
 phone/numplan.js
 phone/phonenum.js
+phone/phoneloc.js
+util/utils.js
 */
 
 // !data phonefmt
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -467,4 +470,16 @@ ilib.PhoneFmt.prototype = {
 	getStyleExample: function (style) {
 		return this.fmtdata[style].example || undefined;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js",
+        "phone/numplan.js",
+        "phone/phonenum.js",
+        "phone/phoneloc.js"
+    ]);
+	return ilib;
 };

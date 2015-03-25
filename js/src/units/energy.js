@@ -1,7 +1,7 @@
 /*
  * Energy.js - Unit conversions for Energys/energys
  *
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
 !depends
 ilibglobal.js
 */
+
+var ilib = ilib || {Measurement:{}};
 
 /**
  * @class
@@ -335,3 +337,11 @@ ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
 };
 //register with the factory method
 ilib.Measurement._constructors["energy"] = ilib.Measurement.Energy;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "unit.js"
+    ]);
+	return ilib;
+};

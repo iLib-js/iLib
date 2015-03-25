@@ -1,7 +1,7 @@
 /*
  * phonenum.js - Represent a phone number.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,15 @@
 /*
 !depends 
 ilibglobal.js
-locale.js 
-localeinfo.js
 phone/numplan.js
 phone/phoneloc.js
 phone/handler.js
+util/utils.js
 */
 
 // !data states idd mnc
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -1623,4 +1624,15 @@ ilib.PhoneNumber.prototype = {
 		// return the value for the synchronous case
 		return normalized;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/utils.js",
+        "phone/numplan.js",
+        "phone/phoneloc.js",
+        "phone/handler.js"
+    ]);
+	return ilib;
 };

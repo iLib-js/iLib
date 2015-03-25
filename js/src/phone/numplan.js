@@ -1,7 +1,7 @@
 /*
  * numplan.js - Represent a phone numbering plan.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,12 @@
 !depends 
 ilibglobal.js 
 locale.js 
-localeinfo.js
+util/utils.js
 */
 
 // !data numplan
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -236,4 +238,13 @@ ilib.NumPlan.prototype = {
 		
 		return dataField[field];
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js"
+    ]);
+	return ilib;
 };
