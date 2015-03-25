@@ -49,6 +49,7 @@ public class JSFile
     protected ArrayList<Pattern> dataPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> macroPatterns = new ArrayList<Pattern>();
     protected JSONObject zonetab = null;
+    protected ArrayList<Pattern> deletePatterns = new ArrayList<Pattern>();
     
     public JSFile(File file)
     {
@@ -62,6 +63,9 @@ public class JSFile
         
         macroPatterns.add(Pattern.compile("/\\*\\s*!macro\\s*([^\\*]+)\\*/"));
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
+        
+        deletePatterns.add(Pattern.compile("var ilib = ilib \\|\\| \\{\\};\\n"));
+        deletePatterns.add(Pattern.compile("module.exports = function(?s).*\\n};$"));
     }
     
     /**
@@ -525,11 +529,20 @@ public class JSFile
         try {
             int groupEnd, nameStart;
             String macroName;
+            Matcher matcher;
             
         	str = readFile();
         	
+        	// remove the parts that are not needed for assembled files
+        	for ( int p = 0; p < deletePatterns.size(); p++ ) {
+        		matcher = deletePatterns.get(p).matcher(str);
+                if ( matcher.find() ) {
+	        		str = str.replace(matcher.start(), matcher.end(), "");
+	        	}
+        	}
+        	
             for ( int p = 0; p < macroPatterns.size(); p++ ) {
-                Matcher matcher = macroPatterns.get(p).matcher(str);
+                matcher = macroPatterns.get(p).matcher(str);
                 while ( matcher.find() ) {
                     i = matcher.start(1);
                     groupEnd = matcher.end(1);
