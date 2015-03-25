@@ -52,7 +52,7 @@ ilib.CType.isAscii = function (ch) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isAscii._init = function (sync, loadParams, onLoad) {

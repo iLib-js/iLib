@@ -52,7 +52,7 @@ ilib.CType.isGraph = function (ch) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isGraph._init = function (sync, loadParams, onLoad) {

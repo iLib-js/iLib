@@ -57,7 +57,7 @@ ilib.CType.isIdeo = function (ch) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isIdeo._init = function (sync, loadParams, onLoad) {

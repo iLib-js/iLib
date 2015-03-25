@@ -53,7 +53,7 @@ ilib.CType.isBlank = function (ch) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isBlank._init = function (sync, loadParams, onLoad) {

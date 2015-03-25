@@ -276,7 +276,7 @@ ilib.CType = {
 	/**
 	 * @protected
 	 * @param {boolean} sync
-	 * @param {Object} loadParams
+	 * @param {Object|undefined} loadParams
 	 * @param {function(*)|undefined} onLoad
 	 */
 	_init: function(sync, loadParams, onLoad) {
@@ -287,7 +287,7 @@ ilib.CType = {
 	 * @protected
 	 * @param {string} name
 	 * @param {boolean} sync
-	 * @param {Object} loadParams
+	 * @param {Object|undefined} loadParams
 	 * @param {function(*)|undefined} onLoad
 	 */
 	_load: function (name, sync, loadParams, onLoad) {

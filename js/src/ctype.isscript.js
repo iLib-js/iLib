@@ -57,7 +57,7 @@ ilib.CType.isScript = function (ch, script) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isScript._init = function (sync, loadParams, onLoad) {
