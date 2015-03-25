@@ -465,13 +465,21 @@ ilib.Loader.prototype.isAvailable = function(path) {};
  * The module system is roughly modeled on the nodejs module system, and is actually
  * implemented on top of the nodejs module system when run on nodejs itself.<p>
  * 
- * The loader should remember which code files it has already loaded and avoid
- * loading them again. 
+ * The loader should cache the file names of the code files it has already loaded 
+ * and avoid loading them again upon the second call to require with the same
+ * file name. This way, files that multiple other files depend upon will only 
+ * get loaded once. 
  * 
  * @param {string|Array.<string>} path Path or array of paths to modules to load
  * @returns {Object} the object/namespace where the module loads itself
  */
 ilib.Loader.prototype.require = function(path) {};
+
+/**
+ * Clear the cache of files names already loaded in order to cause require() to
+ * load them again. This is mainly used for debugging and unit testing.
+ */
+ilib.Loader.prototype.clearRequireCache = function() {};
 
 /**
  * Set the custom loader used to load ilib's locale data in your environment. 
@@ -492,6 +500,18 @@ ilib.setLoaderCallback = function(loader) {
         return true;
     }
     return false;
+};
+
+/**
+ * Return the custom ilib.Loader instance currently in use with this instance 
+ * of ilib. If there is no loader, this method returns undefined.
+ * 
+ * @static
+ * @return {ilib.Loader|undefined} the loader instance currently in use, or 
+ * undefined if there is no such loader
+ */
+ilib.getLoader = function() {
+	return ilib._load;
 };
 
 module.exports = function(loader) {

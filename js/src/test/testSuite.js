@@ -35,7 +35,8 @@ function suite() {
 		"testresources.js",
 		"testscriptinfo.js",
 		"teststrings.js",
-		"testlocalematch.js"
+		"testlocalematch.js",
+		"testloader.js"
 	];
 
     suites.forEach(function (path) {

@@ -2,17 +2,22 @@ var path = require("path"),
 	fs = require("fs"),
 	util = require("util");
 
-var nodeLoader = function () {
+var nodeLoader = function (ilibobj) {
 	// util.print("new nodeLoader instance\n");
 
 	// for use from within a check-out of ilib
-	this.base = path.normalize(process.cwd() + "/../data");  
+	var root = path.normalize(path.join(process.cwd(), ".."));
+	this.base = path.normalize(path.join(root, "data"));
+	this.code = path.normalize(path.join(root, "src"));
 	
 	// for use on-device
-	if (!fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
+	if (!fs.existsSync(path.join(this.base, "locale", "localeinfo.json"))) {
 		this.base = "/usr/share/javascript/ilib";
+		this.code = "/usr/share/javascript/ilib/js";
 	}
 	
+	this.ilib = ilibobj;
+	this.fileNameCache = {};
 	// util.print("base is defined as " + this.base + "\n");
 };
 
@@ -60,8 +65,10 @@ nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 					json = fs.readFileSync(filepath, "utf-8");
 					// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 					ret.push(json ? JSON.parse(json) : undefined);
-				} 
+				}
 			}
+			
+			ret.push(undefined);
 			// util.print("node loader:  sync load failed\n");
 		});
 
@@ -157,7 +164,51 @@ nodeLoader.prototype.isAvailable = function(path) {
 	return false;
 };
 
-ilib.setLoaderCallback(new nodeLoader());
+// merge object2's properties into object 1
+nodeLoader.prototype.merge = function (object1, object2) {
+	var prop = undefined;
+	for (prop in object2) {
+		if (prop && typeof(object2[prop]) !== 'undefined') {
+			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
+				//console.log("Merging array prop " + prop);
+				object1[prop] = object1[prop].concat(object2[prop]);
+			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+				//console.log("Merging object prop " + prop);
+				object1[prop] = ilib.merge(object1[prop], object2[prop], replace);
+			} else {
+				//console.log("Copying prop " + prop);
+				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+				object1[prop] = object2[prop];
+			}
+		}
+	}
+	return object1;
+};
+
+nodeLoader.prototype.require = function(pathname) {
+	//	console.log("typeof(this.code) is " + typeof(this.code));
+	//	console.log("typeof(pathname) is " + typeof(pathname));
+	var paths = (typeof(pathname) === 'string') ? [pathname] : pathname;
+	var submodule = {};
+	for (var i = 0; i < paths.length; i++) {
+		if (!this.fileNameCache[paths[i]]) {
+			var m = require(path.join(this.code, paths[i]));
+			var mod = m(this);
+			//console.log("mod is " + JSON.stringify(mod));
+			this.merge(this.ilib, mod);
+			this.merge(submodule, mod);
+			this.fileNameCache[paths[i]] = true;
+		}
+	}
+	//console.log("submodule is " + JSON.stringify(submodule));
+	return submodule;
+};
+
+nodeLoader.prototype.clearRequireCache = function() {
+	this.fileNameCache = {};
+};
+
+ilib.setLoaderCallback(new nodeLoader(ilib));
 
 //initialize some things statically because the constructors do not load 
 // the locale-independent data
