@@ -1,7 +1,7 @@
 /*
  * locale.js - Locale specifier definition
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -675,8 +675,7 @@ ilib.Locale._isRegionCode = function (str) {
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
-ilib.Locale._isScriptCode = function(str)
-{
+ilib.Locale._isScriptCode = function(str) {
 	if (typeof(str) === 'undefined' || str.length !== 4 || ilib.Locale._notUpper(str.charAt(0))) {
 		return false;
 	}
@@ -851,4 +850,10 @@ ilib.Locale.locales = [
  */
 ilib.Locale.getAvailableLocales = function () {
 	return ilib.Locale.locales;
+};
+
+module.exports = function(loader) {
+	loader.require("ilibglobal.js");
+	
+	return ilib;
 };

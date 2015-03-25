@@ -1,7 +1,7 @@
 /*
  * unitfmt.js - Unit formatter class
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ locale.js
 resources.js 
 localeinfo.js
 strings.js
+numfmt.js
+util/utils.js
 */
 
 // !data unitfmt
@@ -267,4 +269,18 @@ ilib.UnitFmt.prototype = {
     	formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
     	return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
     }
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "strings.js",
+        "resources.js",
+        "numfmt.js",
+        "util/utils.js"
+    ]);
+	
+	return ilib;
 };

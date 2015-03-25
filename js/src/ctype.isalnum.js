@@ -1,7 +1,7 @@
 /*
  * ctype.isalnum.js - Character type alphanumeric
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ctype.js ctype.isalpha.js ctype.isdigit.js
+// !depends ctype.js strings.js ctype.isalpha.js ctype.isdigit.js
 
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
@@ -48,11 +48,17 @@ ilib.CType.isAlnum = function isAlnum(ch) {
 /**
  * @protected
  * @param {boolean} sync
- * @param {Object} loadParams
+ * @param {Object|undefined} loadParams
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isAlnum._init = function (sync, loadParams, onLoad) {
 	ilib.CType.isAlpha._init(sync, loadParams, function () {
 		ilib.CType.isDigit._init(sync, loadParams, onLoad);
 	});
+};
+
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.isalpha.js", "ctype.isdigit.js"]);
+	
+	return ilib;
 };

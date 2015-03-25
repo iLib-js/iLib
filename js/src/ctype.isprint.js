@@ -1,7 +1,7 @@
 /*
  * ctype.isprint.js - Character type is printable char
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,4 +40,10 @@ ilib.CType.isPrint = function (ch) {
  */
 ilib.CType.isPrint._init = function (sync, loadParams, onLoad) {
 	ilib.CType.isCntrl._init(sync, loadParams, onLoad);
+};
+
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.iscntrl.js"]);
+	
+	return ilib;
 };

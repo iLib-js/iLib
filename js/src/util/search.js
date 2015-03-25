@@ -35,7 +35,7 @@
  * the array and the target are numeric values and should be compared 
  * as such.<p>
  * 
- * Depends directive: !depends utils.js
+ * Depends directive: !depends util/search.js
  * 
  * @static
  * @param {*} target element being sought 
@@ -93,7 +93,7 @@ ilib.bsearch.numbers = function(element, target) {
  * function should should be smooth and not have any discontinuities 
  * between the low and high values of the parameter.
  *  
- * Depends directive: !depends utils.js
+ * Depends directive: !depends util/search.js
  * 
  * @static
  * @param {number} target value being sought

@@ -1,7 +1,7 @@
 /*
  * date.js - Represent a date in any calendar. This class is subclassed for each calendar.
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-/* !depends ilibglobal.js localeinfo.js */
+/* !depends ilibglobal.js locale.js localeinfo.js */
 
 /**
  * @class
@@ -508,4 +508,28 @@ ilib.Date.prototype = {
 		}
 		return Math.floor((this.rd.getRataDie() - weekStart) / 7) + 1;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require(["ilibglobal.js", "locale.js", "localeinfo.js", "julianday.js"]);
+	
+	var extilib = loader.getLoadTarget();
+	var locale = new extilib.Locale();
+	switch (locale.getRegion()) {
+	case 'TH':
+		loader.require("calendar/thaisolar.js");
+		break;
+	case 'IR':
+	case 'AF':
+		loader.require("calendar/persianastro.js");
+		break;
+	case 'ET':
+		loader.require("calendar/ethiopic.js");
+		break;
+	default:
+		loader.require("calendar/gregorian.js");
+		break;
+	}
+
+	return ilib;
 };

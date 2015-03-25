@@ -1,7 +1,7 @@
 /*
  * numprs.js - Parse a number in any locale
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,11 @@
 !depends 
 ilibglobal.js 
 locale.js 
-strings.js 
 ctype.isdigit.js 
 ctype.isspace.js
+localeinfo.js
+util/utils.js
+currency.js
 */
 
 /**
@@ -259,4 +261,18 @@ ilib.Number.prototype = {
 	valueOf: function () {
 		return this.value;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "util/utils.js",
+        "ctype.isdigit.js", 
+        "ctype.isspace.js",
+        "currency.js"
+    ]);
+	
+	return ilib;
 };

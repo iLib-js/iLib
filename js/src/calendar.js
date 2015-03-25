@@ -156,3 +156,9 @@ ilib.Cal.prototype = {
 		throw "Cannot call methods of abstract class ilib.Cal";
 	}
 };
+
+module.exports = function(loader) {
+	loader.require(["ilibglobal.js", "locale.js", "localeinfo.js"]);
+	
+	return ilib;	
+};

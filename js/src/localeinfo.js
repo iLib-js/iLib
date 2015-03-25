@@ -1,7 +1,7 @@
 /*
  * localeinfo.js - Encode locale-specific defaults
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js
+// !depends ilibglobal.js locale.js util/utils.js
 
 // !data localeinfo
 
@@ -572,4 +572,14 @@ ilib.LocaleInfo.prototype = {
 	getMeridiemsStyle: function () {
 		return this.info.meridiems || "gregorian";
 	}	
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js"
+	]);
+	
+	return ilib;
 };

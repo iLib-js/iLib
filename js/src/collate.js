@@ -1,7 +1,7 @@
 /*
  * collate.js - Collation routines
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -823,4 +823,10 @@ ilib.Collator.getAvailableStyles = function (locale) {
  */
 ilib.Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
+};
+
+module.exports = function(loader) {
+	loader.require(["ilibglobal.js", "locale.js", "numprs.js", "normstring.js", "util/math.js", "ctype.ispunct.js"]);
+	
+	return ilib;
 };

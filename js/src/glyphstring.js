@@ -2,7 +2,7 @@
  * glyphstring.js - ilib string subclass that allows you to access 
  * whole glyphs at a time
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-// !depends strings.js ctype.js
+// !depends strings.js ctype.js util/utils.js
 // !data norm ctype_m
 
 /**
@@ -395,3 +395,12 @@ ilib.GlyphString.prototype.ellipsize = function(length) {
 	return this.truncate(length > 0 ? length-1 : 0) + "…";
 };
 
+module.exports = function(loader) {
+	loader.require([
+        "strings.js",
+        "ctype.js",
+        "util/utils.js"
+	]);
+	
+	return ilib;
+};

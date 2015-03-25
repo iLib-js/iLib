@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js util/search.js
+// !depends ilibglobal.js locale.js util/search.js util/utils.js
 
 // !data ctype
 
@@ -310,4 +310,12 @@ ilib.CType = {
 			}
 		}
 	}
+};
+
+module.exports = function(loader) {
+	loader.require(["ilibglobal.js", "locale.js", "util/search.js", "util/utils.js"]);
+	
+	// (!extilib.data || !extilib.data.ctype) && ilib.CType._init(true);
+
+	return ilib;
 };

@@ -1,7 +1,7 @@
 /*
  * ctype.isgraph.js - Character type is graph char
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ctype.js ctype.isspace.js ctype.iscntrl.js
+// !depends ctype.js strings.js ctype.isspace.js ctype.iscntrl.js
 
 /**
  * Return whether or not the first character is any printable character
@@ -57,4 +57,10 @@ ilib.CType.isGraph._init = function (sync, loadParams, onLoad) {
 	ilib.CType.isSpace._init(sync, loadParams, function () {
 		ilib.CType.isCntrl._init(sync, loadParams, onLoad);
 	});
+};
+
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.isspace.js", "ctype.iscntrl.js"]);
+	
+	return ilib;
 };

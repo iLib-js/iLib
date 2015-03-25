@@ -1,7 +1,7 @@
 /*
  * numfmt.js - Number formatter definition
  *
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js strings.js currency.js
 /*
 !depends 
 ilibglobal.js 
@@ -28,6 +27,7 @@ util/math.js
 currency.js
 strings.js
 util/jsutils.js
+numprs.js
 */
 
 // !data localeinfo currency
@@ -641,4 +641,20 @@ ilib.NumFmt.prototype = {
 	getStyle: function () {
 		return this.style;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "strings.js",
+        "util/utils.js",
+        "locale.js",
+        "localeinfo.js",
+        "util/math.js",
+        "currency.js",
+        "util/jsutils.js",
+        "numprs.js"
+    ]);
+	
+	return ilib;
 };

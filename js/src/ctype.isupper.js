@@ -1,7 +1,7 @@
 /*
  * ctype.isupper.js - Character type is upper-case letter
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ctype.js
+// !depends ctype.js strings.js
 
 // !data ctype_l
 
@@ -58,4 +58,11 @@ ilib.CType.isUpper = function (ch) {
  */
 ilib.CType.isUpper._init = function (sync, loadParams, onLoad) {
 	ilib.CType._load("ctype_l", sync, loadParams, onLoad);
+};
+
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.js"]);
+	// (!extilib.data || !extilib.data.ctype_l) && ilib.CType.isUpper._init(true);
+
+	return ilib;
 };

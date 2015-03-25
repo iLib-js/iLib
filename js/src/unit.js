@@ -1,7 +1,7 @@
 /*
  * unit.js - Unit class
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,8 @@
 
 /*
 !depends 
-ilibglobal.js 
-locale.js 
-localeinfo.js
+ilibglobal.js
 */
-
 
 /**
  * @class
@@ -248,4 +245,12 @@ ilib.Measurement.prototype = {
 	 * @returns {ilib.Measurement} a new instance that is converted to locale
 	 */
 	localize: function(locale) {}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js"
+    ]);
+	
+	return ilib;
 };

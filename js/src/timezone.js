@@ -1,7 +1,7 @@
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ localeinfo.js
 util/utils.js
 util/math.js
 calendar/gregratadie.js
+strings.js
+calendar/gregorian.js
 */
 
 // !data localeinfo zoneinfo
@@ -855,4 +857,20 @@ ilib.TimeZone.prototype.useDaylightTime = function (year) {
  */
 ilib.TimeZone.prototype.getCountry = function () {
 	return this.zone.c;
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "util/math.js",
+        "util/utils.js",
+        "strings.js",
+        "calendar/gregorian.js",
+        "calendar/gregratadie.js",
+        "calendar/gregoriandate.js"
+    ]);
+	
+	return ilib;
 };

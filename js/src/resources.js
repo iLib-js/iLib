@@ -1,7 +1,7 @@
 /*
  * resources.js - Resource bundle definition
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -622,4 +622,16 @@ ilib.ResBundle.prototype = {
 	getResObj: function () {
 		return this.map;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "strings.js",
+        "util/utils.js"
+    ]);
+	
+	return ilib;
 };

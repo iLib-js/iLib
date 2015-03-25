@@ -1,7 +1,7 @@
 /*
  * nameprs.js - Person name parser
  *
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1264,4 +1264,22 @@ ilib.Name.prototype = {
     clone: function () {
         return new ilib.Name(this);
     }
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js",
+        "strings.js",
+        "nameprs.js",
+        "ctype.js",
+        "ctype.ispunct.js",
+        "ctype.isalpha.js", 
+        "ctype.isideo.js",
+        "ctype.isspace.js",
+        "util/jsutils.js"
+	]);
+	
+	return ilib;
 };

@@ -1,7 +1,7 @@
 /*
  * durfmt.js - Date formatter definition
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,13 @@
 !depends 
 ilibglobal.js 
 locale.js 
-date.js 
+date.js
+datefmt.js
 strings.js 
 resources.js 
 localeinfo.js
 util/jsutils.js
+util/utils.js
 */
 
 // !data dateformats sysres
@@ -402,4 +404,20 @@ ilib.DurFmt.prototype.getLength = function () {
  */
 ilib.DurFmt.prototype.getStyle = function () {
 	return this.style;
+};
+
+module.exports = function(loader) {
+	loader.require([
+		"ilibglobal.js", 
+		"locale.js",
+		"date.js",
+		"datefmt.js",
+		"strings.js", 
+		"resources.js",
+		"localeinfo.js",
+		"util/jsutils.js",
+		"util/utils.js"
+	]);
+	
+	return ilib;
 };

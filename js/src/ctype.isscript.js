@@ -1,7 +1,7 @@
 /*
  * ctype.isscript.js - Character type is script
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ctype.js
+// !depends ctype.js strings.js
 
 // !data scriptToRange
 
@@ -62,3 +62,9 @@ ilib.CType.isScript._init = function (sync, loadParams, onLoad) {
 	ilib.CType._load("scriptToRange", sync, loadParams, onLoad);
 };
 
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.js"]);
+	// (!extilib.data || !extilib.data.scriptToRange) && ilib.CType.isScript._init(true);
+
+	return ilib;
+};

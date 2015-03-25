@@ -1,7 +1,7 @@
 /*
  * namefmt.js - Format person names for display
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ locale.js
 strings.js
 nameprs.js
 ctype.ispunct.js
+util/utils.js
 */
 
 // !data name
@@ -362,4 +363,17 @@ ilib.NameFmt.prototype = {
 		formatted = temp.format(parts);
 		return formatted.replace(/\s+/g, ' ').trim();
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js",
+        "strings.js",
+        "nameprs.js",
+        "ctype.ispunct.js"
+	]);
+	
+	return ilib;
 };

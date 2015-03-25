@@ -1,7 +1,7 @@
 /*
  * strings.js - ilib string subclass definition
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1076,4 +1076,15 @@ ilib.String.prototype = {
 		}
 		return this.cpLength;	
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/math.js",
+        "util/utils.js"
+    ]);
+	
+	return ilib;
 };

@@ -1,7 +1,7 @@
-/**
+/*
  * addressprs.js - Represent a mailing address
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,8 @@ ctype.isdigit.js
 */
 
 // !data address countries nativecountries ctrynames
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -611,4 +613,10 @@ ilib.Address.prototype = {
 		
 		return undefined;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require(["locale.js", "ctype.isideo.js", "ctype.isascii.js", "ctype.isdigit.js"]);
+	
+	return ilib;	
 };

@@ -1,7 +1,7 @@
 /*
  * ctype.isascii.js - Character type is ASCII
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ctype.js
+// !depends ctype.js strings.js
 
 // !data ctype
 
@@ -55,4 +55,11 @@ ilib.CType.isAscii = function (ch) {
  */
 ilib.CType.isAscii._init = function (sync, loadParams, onLoad) {
 	ilib.CType._init(sync, loadParams, onLoad);
+};
+
+module.exports = function(loader) {
+	loader.require(["strings.js", "ctype.js"]);
+	// (!extilib.data || !extilib.data.ctype) && ilib.CType.isAscii._init(true);	
+	
+	return ilib;
 };

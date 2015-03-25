@@ -20,7 +20,7 @@
 /**
  * @namespace The global namespace that contains all ilib functions and classes.
  */
-var ilib = ilib || {};
+var ilib = {};
 
 /**
  * Return the current version of ilib.
@@ -315,9 +315,11 @@ ilib.getTimeZone = function() {
  * Defines the interface for the loader class for ilib. The main method of the
  * loader object is loadFiles(), which loads a set of requested locale data files
  * from where-ever it is stored.
+ * @param {Object} ilib The current ilib name space into which files and data should
+ * be loaded
  * @interface
  */
-ilib.Loader = function() {};
+ilib.Loader = function(ilib) {};
 
 /**
  * Load a set of files from where-ever it is stored.<p>
@@ -456,6 +458,22 @@ ilib.Loader.prototype.listAvailableFiles = function() {};
 ilib.Loader.prototype.isAvailable = function(path) {};
 
 /**
+ * Load an ilib javascript module in to memory and initialize it. This function is
+ * used for the module system which loads ilib code dynamically as it is needed.
+ * The module loaded by require() may itself call require() for its dependencies,
+ * meaning that one call to require may result in the loading of multiple JS files.
+ * The module system is roughly modeled on the nodejs module system, and is actually
+ * implemented on top of the nodejs module system when run on nodejs itself.<p>
+ * 
+ * The loader should remember which code files it has already loaded and avoid
+ * loading them again. 
+ * 
+ * @param {string|Array.<string>} path Path or array of paths to modules to load
+ * @returns {Object} the object/namespace where the module loads itself
+ */
+ilib.Loader.prototype.require = function(path) {};
+
+/**
  * Set the custom loader used to load ilib's locale data in your environment. 
  * The instance passed in must implement the ilib.Loader interface. See the
  * ilib.Loader class documentation for more information about loaders. 
@@ -474,4 +492,8 @@ ilib.setLoaderCallback = function(loader) {
         return true;
     }
     return false;
+};
+
+module.exports = function(loader) {
+	return ilib;
 };

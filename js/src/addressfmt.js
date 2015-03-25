@@ -1,7 +1,7 @@
 /*
  * addressfmt.js - Format an address
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,13 @@
 ilibglobal.js 
 locale.js
 addressprs.js
+strings.js
+util/utils.js
 */
 
 // !data address
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -196,4 +200,10 @@ ilib.AddressFmt.prototype.format = function (address) {
 	ret = ret.replace("\n ", "\n");
 	ret = ret.replace(" \n", "\n");
 	return ret.replace(/\n+/g, '\n').trim();
+};
+
+module.exports = function(loader) {
+	loader.require(["locale.js", "addressprs.js", "strings.js", "util/utils.js"]);
+	
+	return ilib;	
 };

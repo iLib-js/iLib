@@ -1,7 +1,7 @@
 /*
  * normstring.js - ilib normalized string subclass definition
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends strings.js glyphstring.js
+// !depends strings.js glyphstring.js util/utils.js
 
 /**
  * @class
@@ -525,3 +525,13 @@ ilib.NormString.prototype.charIterator = function() {
 	return new _chiterator(this);
 };
 
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "strings.js",
+        "glyphstring.js",
+        "util/utils.js"
+    ]);
+	
+	return ilib;
+};

@@ -1,7 +1,7 @@
 /*
  * mapper.js - ilib string mapper class definition
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends strings.js util/utils.js locale.js
+// !depends ilibglobal.js strings.js util/utils.js locale.js
 
 /**
  * @class
@@ -170,4 +170,15 @@ ilib.StringMapper.prototype = {
 		
 		return ret;
 	}	
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "util/utils.js",
+        "strings.js"
+	]);
+	
+	return ilib;
 };

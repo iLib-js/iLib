@@ -1,7 +1,7 @@
 /*
- * julianday.js - A Julian date object.
+ * julianday.js - A Julian Day object.
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-/* !depends locale.js */
+/* !depends ilibglobal.js */
 
 /**
  * @class
@@ -111,4 +111,8 @@ ilib.JulianDay.prototype = {
 			this.frac = this.jd - this.days;
 		}
 	}
+};
+
+module.exports = function(loader) {
+	return ilib;
 };

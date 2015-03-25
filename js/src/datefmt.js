@@ -1,7 +1,7 @@
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ localeinfo.js
 timezone.js
 calendar/gregorian.js
 util/jsutils.js
+util/utils.js
 */
 
 // !data dateformats sysres
@@ -1358,4 +1359,40 @@ ilib.DateFmt.prototype = {
 		}
 		return fmt.format({duration: time.formatChoice(num, {num: num})});
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+		"ilibglobal.js", 
+		"locale.js",
+		"date.js",
+		"strings.js", 
+		"resources.js", 
+		"calendar.js",
+		"localeinfo.js",
+		"timezone.js",
+		"util/jsutils.js",
+		"util/utils.js",
+		"calendar/gregorian.js"
+	]);
+	
+	var extilib = loader.getLoadTarget();
+	var locale = new extilib.Locale();
+	switch (locale.getRegion()) {
+	case 'TH':
+		loader.require(["calendar/thaisolar.js", "calendar/thaisolardate.js"]);
+		break;
+	case 'IR':
+	case 'AF':
+		loader.require(["calendar/persianastro.js", "calendar/persianastrodate.js"]);
+		break;
+	case 'ET':
+		loader.require(["calendar/ethiopic.js", "calendar/ethiopicdate.js"]);
+		break;
+	default:
+		loader.require("calendar/gregoriandate.js");
+		break;
+	}
+
+	return ilib;
 };
