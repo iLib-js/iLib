@@ -19,6 +19,8 @@
 
 // !depends ilibglobal.js strings.js util/utils.js locale.js
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new string mapper instance. <p>

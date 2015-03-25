@@ -21,6 +21,8 @@
 
 // !data ctype_l
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is upper-case. For alphabetic
  * characters in scripts that do not make a distinction between upper- and 

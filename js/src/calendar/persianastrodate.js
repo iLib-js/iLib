@@ -1,7 +1,7 @@
 /*
  * persianastrodate.js - Represent a date in the Persian astronomical (Hijjri) calendar
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +18,22 @@
  */
 
 /* !depends 
+ilibglobal.js
+locale.js
+timezone.js
 date.js
 calendar/persratadie.js
 calendar/persianastro.js 
-util/utils.js
 util/search.js
 util/math.js
 localeinfo.js 
-julianday.js 
+calendar/astro.js
+calendar/ratadie.js
 */
 
 // !data astro
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -357,3 +362,19 @@ ilib.Date.PersDate.prototype.getCalendar = function() {
 
 // register with the factory method
 ilib.Date._constructors["persian"] = ilib.Date.PersDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/search.js",
+        "calendar/astro.js",
+        "calendar/persianastro.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
+};

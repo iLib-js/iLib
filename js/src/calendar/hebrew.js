@@ -1,7 +1,7 @@
 /*
  * hebrew.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,9 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
+/* !depends ilibglobal.js calendar.js util/math.js */
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -229,3 +231,12 @@ ilib.Cal.Hebrew.prototype.newDateInstance = function (options) {
 
 /*register this calendar for the factory method */
 ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "calendar/hebrewdate.js"
+    ]);
+	return ilib;
+};

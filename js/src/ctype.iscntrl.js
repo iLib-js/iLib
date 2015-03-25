@@ -21,6 +21,8 @@
 
 // !data ctype_c
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is a control character.<p>
  * 

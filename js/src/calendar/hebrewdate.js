@@ -1,7 +1,7 @@
 /*
  * hebrewdate.js - Represent a date in the Hebrew calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,18 @@
  */
 
 /* !depends 
-date.js 
+ilibglobal.js
+locale.js
+localeinfo.js
+timezone.js
+date.js
+util/math.js
+calendar.js
 calendar/hebrew.js
 calendar/ratadie.js
-util/utils.js
-util/math.js
-julianday.js 
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -709,3 +714,18 @@ ilib.Date.HebrewDate.prototype.getCalendar = function() {
 
 // register with the factory method
 ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "calendar.js",
+        "calendar/hebrew.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
+};

@@ -22,6 +22,8 @@
 ilibglobal.js
 */
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a measurement instance. The measurement is immutable once

@@ -30,6 +30,8 @@ util/utils.js
 
 // !data unitfmt
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new unit formatter instance. The unit formatter is immutable once

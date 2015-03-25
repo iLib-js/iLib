@@ -1,7 +1,7 @@
 /*
  * persian.js - Represent a Persian algorithmic calendar object.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,9 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
+/* !depends ilibglobal.js calendar.js util/math.js */
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -132,3 +134,12 @@ ilib.Cal.PersianAlgo.prototype.newDateInstance = function (options) {
 
 /* register this calendar for the factory method */
 ilib.Cal._constructors["persian-algo"] = ilib.Cal.PersianAlgo;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "calendar/persiandate.js"
+    ]);
+	return ilib;
+};

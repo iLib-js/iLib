@@ -18,7 +18,9 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js calendar/ethiopic.js */
+/* !depends ilibglobal.js calendar.js locale.js date.js util/utils.js */
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -51,3 +53,15 @@ ilib.Cal.Coptic.prototype.newDateInstance = function (options) {
 
 /* register this calendar for the factory method */
 ilib.Cal._constructors["coptic"] = ilib.Cal.Coptic;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "date.js",
+        "util/utils.js",
+        "calendar.js",
+        "calendar/copticdate.js"
+    ]);
+	
+	return ilib;
+};

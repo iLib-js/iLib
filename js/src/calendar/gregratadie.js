@@ -1,7 +1,7 @@
 /*
  * gregratadie.js - Represent the RD date number in the Gregorian calendar
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,14 @@
  */
 
 /* !depends 
+ilibglobal.js
 date.js
 calendar/gregorian.js
 calendar/ratadie.js
-util/utils.js
 util/math.js
-julianday.js 
 */
+
+var ilib = ilib || {};
 
 /**
  * @class
@@ -183,4 +184,14 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
  */
 ilib.Date.GregRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "calendar/gregorian.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
 };

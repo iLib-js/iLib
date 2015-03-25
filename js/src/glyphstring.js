@@ -21,6 +21,8 @@
 // !depends strings.js ctype.js util/utils.js
 // !data norm ctype_m
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new glyph string instance. This string inherits from 

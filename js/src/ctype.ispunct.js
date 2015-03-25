@@ -21,6 +21,8 @@
 
 // !data ctype_p
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is punctuation.<p>
  * 

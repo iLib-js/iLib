@@ -19,6 +19,8 @@
 
 // !depends ctype.js strings.js ctype.isalpha.js ctype.isdigit.js
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
  * 

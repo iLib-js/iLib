@@ -1,7 +1,7 @@
 /*
  * astro.js - Static functions to support astronomical calculations
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 /* !depends
 ilibglobal.js
 date.js
+util/utils.js
 calendar/gregoriandate.js
 calendar/gregratadie.js
 */
@@ -31,6 +32,8 @@ calendar/gregratadie.js
  * functions for positional astronomy by John Walker of Fourmilab, 
  * September 1999.
  */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * Load in all the data needed for astrological calculations.
@@ -795,4 +798,16 @@ ilib.Date._floorToJD = function(jd) {
  */
 ilib.Date._ceilToJD = function(jd) {
 	return Math.ceil(jd + 0.5) - 0.5;
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/utils.js",
+        "date.js",
+        "calendar/gregoriandate.js",
+        "calendar/gregratadie.js"
+    ]);
+	
+	return ilib;
 };

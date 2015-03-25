@@ -1,7 +1,7 @@
 /*
  * persiandate.js - Represent a date in the Persian algorithmic calendar
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,22 @@
  */
 
 /* !depends 
-date.js 
+ilibglobal.js
+locale.js
+localeinfo.js
+timezone.js
+date.js
+calendar/ratadie.js
 calendar/persian.js 
-util/utils.js
 util/search.js
 util/math.js
 localeinfo.js 
-julianday.js 
 */
 
+var ilib = ilib || {Date:{}};
+
 /**
+ * @class
  * Construct a new Persian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -71,7 +77,6 @@ julianday.js
  * Depends directive: !depends persiandate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
@@ -459,3 +464,18 @@ ilib.Date.PersAlgoDate.prototype.getCalendar = function() {
 
 // register with the factory method
 ilib.Date._constructors["persian-algo"] = ilib.Date.PersAlgoDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/search.js",
+        "calendar/persian.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
+};

@@ -33,6 +33,8 @@ util/jsutils.js
 
 // !data dateformats sysres
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new date range formatter instance. The date range formatter is immutable once

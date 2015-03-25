@@ -1,7 +1,7 @@
 /*
  * juliandate.js - Represent a date in the Julian calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,19 @@
  */
 
 /* !depends 
+ilibglobal.js
+locale.js
 date.js 
+timezone.js
+calendar.js 
 calendar/julian.js 
-util/utils.js
 util/search.js 
 util/math.js
 localeinfo.js 
-julianday.js 
+calendar/ratadie.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -425,3 +430,18 @@ ilib.Date.JulDate.prototype.getCalendar = function() {
 
 //register with the factory method
 ilib.Date._constructors["julian"] = ilib.Date.JulDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/search.js",
+        "calendar/julian.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
+};

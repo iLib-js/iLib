@@ -21,6 +21,8 @@
 
 // !data ctype
 
+var ilib = ilib || {};
+
 /**
  * Provides a set of static routines that return information about characters.
  * These routines emulate the C-library ctype functions. The characters must be 

@@ -23,6 +23,8 @@ locale.js
 localeinfo.js
 */
 
+var ilib = ilib || {};
+
 /**
  * Interface that all calendars must implement.
  * 

@@ -19,6 +19,8 @@
 
 /* !depends ilibglobal.js locale.js localeinfo.js */
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Construct a new date object. Each parameter is a numeric value, but its 

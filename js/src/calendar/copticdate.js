@@ -18,15 +18,18 @@
  */
 
 /* !depends 
+ilibglobal.js
 date.js 
 calendar/coptic.js 
-util/utils.js
-util/search.js 
 util/math.js
+util/jsutils.js
+locale.js
 localeinfo.js 
-julianday.js 
+timezone.js
 calendar/ethiopicdate.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -192,3 +195,18 @@ ilib.Date.CopticDate.prototype.getCalendar = function() {
 
 //register with the factory method
 ilib.Date._constructors["coptic"] = ilib.Date.CopticDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/jsutils.js",
+        "calendar/coptic.js",
+        "calendar/ethiopicdate.js"
+    ]);
+	return ilib;
+};

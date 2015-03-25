@@ -36,6 +36,8 @@ util/jsutils.js
 // http://www.mentalfloss.com/blogs/archives/59277
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
+var ilib = ilib || {};
+
 /**
  * @class
  * A class to parse names of people. Different locales have different conventions when it

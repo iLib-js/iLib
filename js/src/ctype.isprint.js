@@ -19,6 +19,8 @@
 
 // !depends ctype.js ctype.iscntrl.js
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is any printable character,
  * including space.<p>

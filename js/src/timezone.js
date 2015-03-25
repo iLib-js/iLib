@@ -31,6 +31,8 @@ calendar/gregorian.js
 
 // !data localeinfo zoneinfo
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a time zone instance. 

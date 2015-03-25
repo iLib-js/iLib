@@ -28,6 +28,8 @@ util/utils.js
 currency.js
 */
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Parse a string as a number, ignoring all locale-specific formatting.<p>

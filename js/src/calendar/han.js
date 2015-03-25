@@ -1,7 +1,7 @@
 /*
  * han.js - Represent a Han Chinese Lunar calendar object.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,18 @@
  * limitations under the License.
  */
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js calendar/astro.js */
+/* !depends 
+ilibglobal.js 
+calendar.js 
+date.js 
+util/utils.js 
+util/math.js 
+calendar/astro.js
+calendar/gregoriandate.js
+calendar/gregratadie.js
+*/
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -326,3 +337,18 @@ ilib.Cal.Han.prototype.newDateInstance = function (options) {
 
 /* register this calendar for the factory method */
 ilib.Cal._constructors["han"] = ilib.Cal.Han;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "date.js",
+        "util/utils.js",
+        "util/math.js",
+        "calendar.js",
+        "calendar/astro.js",
+        "calendar/handate.js",
+        "calendar/gregoriandate.js",
+        "calendar/gregratadie.js"
+    ]);
+	return ilib;
+};

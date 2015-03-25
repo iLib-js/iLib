@@ -21,6 +21,8 @@
 
 // !data localeinfo
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new locale info instance. Locale info instances give information about

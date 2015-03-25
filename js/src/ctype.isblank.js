@@ -21,6 +21,8 @@
 
 // !data ctype
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is a blank character.<p>
  * 

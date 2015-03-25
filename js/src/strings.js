@@ -21,6 +21,8 @@
 
 // !data plurals
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new string instance. This string inherits from the Javascript

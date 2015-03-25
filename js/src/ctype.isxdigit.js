@@ -21,6 +21,8 @@
 
 // !data ctype
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is a hexadecimal digit written
  * in the Latin script. (0-9 or A-F)<p>

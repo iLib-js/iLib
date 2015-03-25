@@ -21,6 +21,8 @@
 
 // !data currency
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new currency information instance. Instances of this class encode 

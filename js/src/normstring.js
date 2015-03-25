@@ -19,6 +19,8 @@
 
 // !depends strings.js glyphstring.js util/utils.js
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new normalized string instance. This string inherits from 

@@ -1,7 +1,7 @@
 /*
  * thaisolardate.js - Represent a date in the ThaiSolar calendar
  * 
- * Copyright © 2013-2014, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,14 @@
  */
 
 /* !depends 
+ilibglobal.js
 date.js 
-calendar/gregorian.js 
 util/jsutils.js
+calendar/gregoriandate.js
+calendar/thaisolar.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -220,3 +224,13 @@ ilib.Date.ThaiSolarDate.prototype.getCalendar = function() {
 //register with the factory method
 ilib.Date._constructors["thaisolar"] = ilib.Date.ThaiSolarDate;
 
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "calendar/gregoriandate.js",
+        "calendar/thaisolar.js",
+        "util/jsutils.js",
+        "date.js",
+    ]);
+	return ilib;
+};

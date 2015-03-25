@@ -21,6 +21,8 @@
 
 // !data ctype ctype_z
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character is a whitespace character.<p>
  * 

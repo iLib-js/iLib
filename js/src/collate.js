@@ -21,6 +21,8 @@
 
 // !data collation
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Represents a buffered source of code points. The input string is first

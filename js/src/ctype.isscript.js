@@ -21,6 +21,8 @@
 
 // !data scriptToRange
 
+var ilib = ilib || {CType:{}};
+
 /**
  * Return whether or not the first character in the given string is 
  * in the given script. The script is given as the 4-letter ISO

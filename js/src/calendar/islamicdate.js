@@ -1,7 +1,7 @@
 /*
  * islamicdate.js - Represent a date in the Islamic calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,19 @@
  */
 
 /* !depends 
-date.js 
-calendar/islamic.js 
-util/utils.js 
-util/search.js
-util/math.js
+ilibglobal.js
+locale.js
 localeinfo.js
-julianday.js
+timezone.js
+date.js
+util/math.js
+util/search.js
+calendar.js
+calendar/islamic.js
+calendar/ratadie.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -428,3 +433,19 @@ ilib.Date.IslamicDate.prototype.getCalendar = function() {
 
 //register with the factory method
 ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/search.js",
+        "calendar.js",
+        "calendar/islamic.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
+};

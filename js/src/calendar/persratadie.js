@@ -1,7 +1,7 @@
 /*
  * persratadie.js - Represent a rata die date in the Persian calendar
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 /* !depends 
-date.js
+ilibglobal.js
 util/utils.js
 util/math.js
 calendar/ratadie.js
@@ -26,7 +26,10 @@ calendar/astro.js
 calendar/gregoriandate.js
 */
 
+var ilib = ilib || {Date:{}};
+
 /**
+ * @class
  * Construct a new Persian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -70,7 +73,6 @@ calendar/gregoriandate.js
  * Depends directive: !depends persiandate.js
  * 
  * @private
- * @class
  * @constructor
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
@@ -212,4 +214,16 @@ ilib.Date.PersAstroRataDie.prototype._setDateComponents = function(date) {
  */
 ilib.Date.PersAstroRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "util/utils.js",
+        "calendar/astro.js",
+        "calendar/gregoriandate.js",
+        "calendar/ratadie.js"
+    ]);
+	return ilib;
 };

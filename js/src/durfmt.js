@@ -33,6 +33,8 @@ util/utils.js
 // !data dateformats sysres
 // !resbundle sysres
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new duration formatter instance. The duration formatter is immutable once

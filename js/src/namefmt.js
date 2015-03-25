@@ -28,6 +28,8 @@ util/utils.js
 
 // !data name
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to

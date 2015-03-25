@@ -20,6 +20,8 @@
 // !depends ilibglobal.js locale.js util/utils.js
 // !data likelylocales
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new locale matcher instance. This is used

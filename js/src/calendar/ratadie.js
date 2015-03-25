@@ -1,7 +1,7 @@
 /*
  * ratadie.js - Represent the RD date number in the calendar
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,12 @@
  */
 
 /* !depends 
-util/utils.js
+ilibglobal.js
+julianday.js
 util/math.js
-julianday.js 
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -307,4 +309,13 @@ ilib.Date.RataDie.prototype = {
 	getRataDie: function() {
 		return this.rd;
 	}
+};
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "julianday.js"
+    ]);
+	return ilib;
 };

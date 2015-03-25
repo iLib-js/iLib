@@ -19,6 +19,8 @@
 
 /* !depends ilibglobal.js */
 
+var ilib = ilib || {};
+
 /**
  * @class
  * A Julian Day class. A Julian Day is a date based on the Julian Day count

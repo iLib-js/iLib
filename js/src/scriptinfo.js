@@ -21,6 +21,8 @@
 
 // !data scripts
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new script info instance. This class encodes information about

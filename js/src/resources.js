@@ -21,6 +21,8 @@
 
 // !data pseudomap
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new resource bundle instance. The resource bundle loads strings

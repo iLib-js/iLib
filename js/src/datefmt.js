@@ -34,6 +34,8 @@ util/utils.js
 
 // !data dateformats sysres
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new date formatter instance. The date formatter is immutable once

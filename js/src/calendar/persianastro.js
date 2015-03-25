@@ -1,7 +1,7 @@
 /*
  * persianastro.js - Represent a Persian astronomical (Hijjri) calendar object.
  * 
- * Copyright © 2014, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@
 /* !depends 
 calendar/astro.js 
 calendar.js 
-locale.js 
-date.js 
-julianday.js 
-util/utils.js
 calendar/persratadie.js 
+ilibglobal.js
+util/math.js
 */
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -148,3 +148,14 @@ ilib.Cal.Persian.prototype.newDateInstance = function (options) {
 
 /* register this calendar for the factory method */
 ilib.Cal._constructors["persian"] = ilib.Cal.Persian;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/math.js",
+        "calendar/astro.js", 
+        "calendar.js",
+        "calendar/persratadie.js" 
+    ]);
+	return ilib;
+};

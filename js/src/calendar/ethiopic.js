@@ -18,7 +18,9 @@
  */
 
 
-/* !depends calendar.js locale.js date.js julianday.js util/utils.js util/math.js */
+/* !depends ilibglobal.js calendar.js util/utils.js util/math.js */
+
+var ilib = ilib || {Cal:{}};
 
 /**
  * @class
@@ -96,3 +98,15 @@ ilib.Cal.Ethiopic.prototype.newDateInstance = function (options) {
 
 /* register this calendar for the factory method */
 ilib.Cal._constructors["ethiopic"] = ilib.Cal.Ethiopic;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "util/utils.js",
+        "util/math.js",
+        "calendar.js",
+        "calendar/ethiopicdate.js"
+    ]);
+	
+	return ilib;
+};

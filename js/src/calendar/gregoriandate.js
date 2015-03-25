@@ -1,7 +1,7 @@
 /*
  * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,19 @@
  */
 
 /* !depends 
+ilibglobal.js
 date.js 
 calendar/gregorian.js 
-util/utils.js
 util/search.js
 util/math.js
+locale.js
 localeinfo.js 
 julianday.js
 calendar/gregratadie.js
 timezone.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -386,3 +389,18 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
 
 // register with the factory method
 ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "util/search.js",
+        "calendar/gregorian.js",
+        "calendar/gregratadie.js"
+    ]);
+	return ilib;
+};

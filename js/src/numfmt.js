@@ -32,6 +32,8 @@ numprs.js
 
 // !data localeinfo currency
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new number formatter instance. Locales differ in the way that digits

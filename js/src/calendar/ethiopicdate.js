@@ -18,14 +18,16 @@
  */
 
 /* !depends 
+ilibglobal.js
 date.js 
 calendar/ethiopic.js 
-util/utils.js
-util/search.js 
 util/math.js
+locale.js
 localeinfo.js 
-julianday.js 
+timezone.js
 */
+
+var ilib = ilib || {Date:{}};
 
 /**
  * @class
@@ -371,3 +373,16 @@ ilib.Date.EthiopicDate.prototype.getCalendar = function() {
 
 //register with the factory method
 ilib.Date._constructors["ethiopic"] = ilib.Date.EthiopicDate;
+
+module.exports = function(loader) {
+	loader.require([
+        "ilibglobal.js",
+        "locale.js",
+        "localeinfo.js",
+        "timezone.js",
+        "date.js",
+        "util/math.js",
+        "calendar/ethiopic.js"
+    ]);
+	return ilib;
+};

@@ -19,6 +19,8 @@
 
 // !depends ilibglobal.js
 
+var ilib = ilib || {};
+
 /**
  * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
