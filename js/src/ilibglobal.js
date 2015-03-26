@@ -58,9 +58,11 @@ ilib.data = {
     /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null
 };
 
+/*
 if (typeof(window) !== 'undefined') {
     window["ilib"] = ilib;
 }
+*/
 
 // export ilib for use as a module in nodejs
 if (typeof(exports) !== 'undefined') {
