@@ -21,7 +21,9 @@
 
 // !data currency
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.Locale) ilib.Locale = require("./Locale.js");
 
 /**
  * @class
@@ -254,8 +256,4 @@ ilib.Currency.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require(["ilibglobal.js", "locale.js"]);
-
-	return ilib;
-};
+module.exports = ilib.Currency;

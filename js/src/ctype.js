@@ -21,7 +21,11 @@
 
 // !data ctype
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/search.js"));
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
 /**
  * Provides a set of static routines that return information about characters.
@@ -314,10 +318,4 @@ ilib.CType = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require(["ilibglobal.js", "locale.js", "util/search.js", "util/utils.js"]);
-	
-	// (!extilib.data || !extilib.data.ctype) && ilib.CType._init(true);
-
-	return ilib;
-};
+module.exports = ilib.CType;

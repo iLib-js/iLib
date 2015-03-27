@@ -20,7 +20,11 @@
 
 /* !depends ilibglobal.js calendar.js util/math.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
 /**
  * @class
@@ -232,11 +236,4 @@ ilib.Cal.Hebrew.prototype.newDateInstance = function (options) {
 /*register this calendar for the factory method */
 ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/hebrewdate.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.Hebrew;

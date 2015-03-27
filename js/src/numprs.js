@@ -28,7 +28,18 @@ util/utils.js
 currency.js
 */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.isdigit.js");
+if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.isspace.js");
+
+if (!ilib.Currency) ilib.Currency = require("./currency.js");
+
 
 /**
  * @class

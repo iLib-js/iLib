@@ -19,7 +19,10 @@
 
 // !depends ctype.js ctype.iscntrl.js
 
-var ilib = ilib || {CType:{}};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isCntrl) ilib.CType.isCntrl = require("./ctype.iscntrl.js");
 
 /**
  * Return whether or not the first character is any printable character,
@@ -44,8 +47,4 @@ ilib.CType.isPrint._init = function (sync, loadParams, onLoad) {
 	ilib.CType.isCntrl._init(sync, loadParams, onLoad);
 };
 
-module.exports = function(loader) {
-	loader.require(["strings.js", "ctype.iscntrl.js"]);
-	
-	return ilib;
-};
+module.exports = ilib.CType.isPrint;

@@ -21,7 +21,16 @@
 
 // !data collation
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.Number) ilib.Number = require("./numprs.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
+
+if (!ilib.NormString) ilib.NormString = require("./normstring.js");
 
 /**
  * @class
@@ -827,8 +836,4 @@ ilib.Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
 };
 
-module.exports = function(loader) {
-	loader.require(["ilibglobal.js", "locale.js", "numprs.js", "normstring.js", "util/math.js", "ctype.ispunct.js"]);
-	
-	return ilib;
-};
+module.exports = ilib.Collator;

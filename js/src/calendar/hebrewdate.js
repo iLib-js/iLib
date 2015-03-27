@@ -29,7 +29,17 @@ calendar/hebrew.js
 calendar/ratadie.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+
+if (!ilib.Cal.Hebrew) ilib.Cal.Hebrew = require("./hebrew.js");
+if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
 
 /**
  * @class
@@ -715,17 +725,4 @@ ilib.Date.HebrewDate.prototype.getCalendar = function() {
 // register with the factory method
 ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "timezone.js",
-        "date.js",
-        "util/math.js",
-        "calendar.js",
-        "calendar/hebrew.js",
-        "calendar/ratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.HebrewDate;

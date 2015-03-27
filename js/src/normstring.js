@@ -19,7 +19,11 @@
 
 // !depends strings.js glyphstring.js util/utils.js
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.GlyphString) ilib.GlyphString = require("./glyphstring.js");
 
 /**
  * @class
@@ -527,13 +531,4 @@ ilib.NormString.prototype.charIterator = function() {
 	return new _chiterator(this);
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "strings.js",
-        "glyphstring.js",
-        "util/utils.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.NormString;

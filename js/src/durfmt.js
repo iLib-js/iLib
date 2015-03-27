@@ -33,7 +33,18 @@ util/utils.js
 // !data dateformats sysres
 // !resbundle sysres
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/jsutils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+
+if (!ilib.Date) ilib.Date = require("./date.js");
+
+if (!ilib.DateFmt) ilib.DateFmt = require("./datefmt.js");
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.ResBundle) ilib.ResBundle = require("./resources.js");
 
 /**
  * @class
@@ -408,18 +419,4 @@ ilib.DurFmt.prototype.getStyle = function () {
 	return this.style;
 };
 
-module.exports = function(loader) {
-	loader.require([
-		"ilibglobal.js", 
-		"locale.js",
-		"date.js",
-		"datefmt.js",
-		"strings.js", 
-		"resources.js",
-		"localeinfo.js",
-		"util/jsutils.js",
-		"util/utils.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.DurFmt;

@@ -19,9 +19,7 @@
 
 // !depends ilibglobal.js
 
-var ilib = require("../ilibglobal.js");
-
-var utils = {};
+var ilib = require("../ilibglobal.js"), utils = {};
 
 /**
  * Binary search a sorted array for a particular target value.
@@ -50,7 +48,7 @@ var utils = {};
  * inserted, or -1 if given array is not an array or the target is not 
  * a number
  */
-utils.bsearch = function(target, arr, comparator) {
+utils.bsearch = ilib.bsearch = function(target, arr, comparator) {
 	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
 		return -1;
 	}
@@ -59,7 +57,7 @@ utils.bsearch = function(target, arr, comparator) {
 		low = 0,
 		mid = 0,
 		value,
-		cmp = comparator || utils.bsearch.numbers;
+		cmp = comparator || ilib.bsearch.numbers;
 	
 	while (low <= high) {
 		mid = Math.floor((high+low)/2);
@@ -85,7 +83,7 @@ utils.bsearch = function(target, arr, comparator) {
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */
-utils.bsearch.numbers = function(element, target) {
+utils.bsearch.numbers = ilib.bsearch.number = function(element, target) {
 	return element - target;
 };
 
@@ -109,7 +107,7 @@ utils.bsearch.numbers = function(element, target) {
  * target output value, correct to within the error range of Javascript floating point 
  * arithmetic, or NaN if there was some error
  */
-utils.bisectionSearch = function(target, low, high, precision, func) {
+utils.bisectionSearch = ilib.bisectionSearch = function(target, low, high, precision, func) {
 	if (typeof(target) !== 'number' || 
 			typeof(low) !== 'number' || 
 			typeof(high) !== 'number' || 

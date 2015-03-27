@@ -21,7 +21,10 @@
 
 // !data ctype
 
-var ilib = ilib || {CType:{}};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * Return whether or not the first character is a hexadecimal digit written
@@ -62,9 +65,4 @@ ilib.CType.isXdigit._init = function (sync, loadParams, onLoad) {
 	ilib.CType._init(sync, loadParams, onLoad);
 };
 
-module.exports = function(loader) {
-	loader.require(["strings.js", "ctype.js"]);
-	// (!extilib.data || !extilib.data.ctype) && ilib.CType.isXdigit._init(true);	
-	
-	return ilib;
-};
+module.exports = ilib.CType.isXdigit;

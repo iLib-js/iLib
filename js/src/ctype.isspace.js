@@ -21,7 +21,10 @@
 
 // !data ctype ctype_z
 
-var ilib = ilib || {CType:{}};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * Return whether or not the first character is a whitespace character.<p>
@@ -65,9 +68,4 @@ ilib.CType.isSpace._init = function (sync, loadParams, onLoad) {
 	});
 };
 
-module.exports = function(loader) {
-	loader.require(["strings.js", "ctype.js"]);
-	// (!extilib.data || !extilib.data.ctype_z) && ilib.CType.isSpace._init(true);
-
-	return ilib;
-};
+module.exports = ilib.CType.isSpace;

@@ -29,11 +29,25 @@ timezone.js
 datefmt.js
 calendar/gregorian.js
 util/jsutils.js
+util/utils.js
 */
 
 // !data dateformats sysres
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/jsutils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+
+if (!ilib.Date) ilib.Date = require("./date.js");
+if (!ilib.Cal) ilib.Cal = require("./calendar.js");
+
+if (!ilib.DateFmt) ilib.DateFmt = require("./datefmt.js");
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("./timezone.js");
+if (!ilib.Gregorian) ilib.Gregorian = require("./calendar/gregorian.js");
 
 /**
  * @class
@@ -360,37 +374,4 @@ ilib.DateRngFmt.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-		"ilibglobal.js", 
-		"locale.js",
-		"date.js",
-		"strings.js", 
-		"calendar.js",
-		"localeinfo.js",
-		"datefmt.js",
-		"util/jsutils.js",
-		"util/utils.js",
-		"calendar/gregorian.js"
-	]);
-	
-	var extilib = loader.getLoadTarget();
-	var locale = new extilib.Locale();
-	switch (locale.getRegion()) {
-	case 'TH':
-		loader.require(["calendar/thaisolar.js", "calendar/thaisolardate.js"]);
-		break;
-	case 'IR':
-	case 'AF':
-		loader.require(["calendar/persianastro.js", "calendar/persianastrodate.js"]);
-		break;
-	case 'ET':
-		loader.require(["calendar/ethiopic.js", "calendar/ethiopicdate.js"]);
-		break;
-	default:
-		loader.require("calendar/gregoriandate.js");
-		break;
-	}
-
-	return ilib;
-};
+module.exports = ilib.DateRngFmt;

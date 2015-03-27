@@ -21,7 +21,10 @@
 
 // !data ctype_p
 
-var ilib = ilib || {CType:{}};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * Return whether or not the first character is punctuation.<p>
@@ -66,9 +69,4 @@ ilib.CType.isPunct._init = function (sync, loadParams, onLoad) {
 	ilib.CType._load("ctype_p", sync, loadParams, onLoad);
 };
 
-module.exports = function(loader) {
-	loader.require(["strings.js", "ctype.js"]);
-	// (!extilib.data || !extilib.data.ctype_p) && ilib.CType.isPunct._init(true);
-
-	return ilib;
-};
+module.exports = ilib.CType.isPunct;

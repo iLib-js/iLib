@@ -19,7 +19,12 @@
 
 // !depends ctype.js strings.js ctype.isalpha.js ctype.isdigit.js
 
-var ilib = ilib || {CType:{}};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.CType.isAlpha) ilib.CType.isAlpha = require("./ctype.isalpha.js");
+if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
 
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
@@ -59,8 +64,4 @@ ilib.CType.isAlnum._init = function (sync, loadParams, onLoad) {
 	});
 };
 
-module.exports = function(loader) {
-	loader.require(["strings.js", "ctype.isalpha.js", "ctype.isdigit.js"]);
-	
-	return ilib;
-};
+module.exports = ilib.CType.isAlnum;

@@ -21,7 +21,11 @@
 // !depends strings.js ctype.js util/utils.js
 // !data norm ctype_m
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.CType) ilib.CType = require("./ctype.js");
 
 /**
  * @class
@@ -397,12 +401,4 @@ ilib.GlyphString.prototype.ellipsize = function(length) {
 	return this.truncate(length > 0 ? length-1 : 0) + "…";
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "strings.js",
-        "ctype.js",
-        "util/utils.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.GlyphString;
