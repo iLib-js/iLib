@@ -19,6 +19,8 @@
 
 var ilib = require("./ilibglobal.js");
 ilib.Date = require("./date.js");
+ilib.DateFmt = require("./datefmt.js");
+ilib.Date.Hebrew = require("./calendar/hebrewdate.js");
 
 function testDateConstructor() {
     var gd = new ilib.Date();

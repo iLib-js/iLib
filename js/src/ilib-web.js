@@ -63,13 +63,13 @@ function loadFile(pathname, sync, success, failure) {
 	};
 	
 	//console.log("url is " + JSON.stringify(req._url, undefined, 4));
-	try {
+	//try {
 		req.send();
-	} catch (e) {
+	//} catch (e) {
 		// could not load the file
-		console.log("loadFile warning: could not load file " + pathname);
-		text = undefined;
-	}
+		//console.log("loadFile warning: could not load file " + pathname);
+		//text = undefined;
+	//}
 	
 	return text;
 }

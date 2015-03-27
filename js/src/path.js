@@ -18,7 +18,7 @@
  */
 
 var path = {
-	parentdir: function(pathname) {
+	dirname: function(pathname) {
 		var i = pathname.lastIndexOf("/");
 		return i !== -1 ? pathname.substring(0,i) : pathname;
 	},

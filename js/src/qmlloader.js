@@ -1,5 +1,5 @@
 /*
- * webglue.js - loader implementation for web apps. 
+ * qmlloader.js - loader implementation for Qt/QML apps. 
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -17,41 +17,18 @@
  * limitations under the License.
  */
 
-// minimal pure js implementation of the nodejs path module
-var path = {
-	dirname: function(pathname) {
-		var i = pathname.lastIndexOf("/");
-		return i !== -1 ? pathname.substring(0,i) : pathname;
-	},
-	
-	join: function() {
-		var arr = [];
-		for (var i = 0; i < arguments.length; i++) {
-			arr.push(arguments[i]);
-		}
-		return arr.join("/");
-	},
-	
-	normalize: function(pathname) {
-		return pathname && pathname.replace(/\/[^/]+\/\.\./, "").replace(/\/\.\//, "/").replace(/^\.\//, "");
-	}
-};
+var path = require("./path.js");
+var ilib = require("./ilibglobal.js");
 
-var module = {};
-var webLoader = function(ilibobj) {
-	console.log("new webLoader instance\n");
+var qmlLoader = function(ilibobj) {
+	console.log("new qmlLoader instance\n");
 
 	// for use from within a check-out of ilib
 	var root, pos;
 	
-	scripts = document.getElementsByTagName("script");
-
-	for (var i = 0; i < scripts.length; i++) {
-		var source = scripts[i].src;
-		if (source && (pos = source.search(/webglue\.js$/)) !== -1) {
-			root = path.join(source.substring(7, pos-1), "..");
-			break;
-		}
+	root = Qt.resolvedUrl(".");
+	if (root[root.length-1] === '/') {
+		root = root.substring(0,root.length-1);
 	}
 	
 	this.base = path.normalize(path.join(root, "data"));
@@ -69,7 +46,11 @@ var webLoader = function(ilibobj) {
 	this.fileNameCache = {};
 };
 
-webLoader.prototype._loadFile = function (pathname, sync, success, failure) {
+qmlLoader.prototype = new ilib.Loader();
+qmlLoader.prototype.parent = ilib.Loader;
+qmlLoader.prototype.constructor = qmlLoader;
+
+qmlLoader.prototype._loadFile = function (pathname, sync, success, failure) {
 	// use normal web techniques
 	var req = new XMLHttpRequest();
 	var text = undefined;
@@ -99,10 +80,10 @@ webLoader.prototype._loadFile = function (pathname, sync, success, failure) {
 	return text;
 };
 
-webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
+qmlLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	var root = params && params.base || this.base;
 
-	// console.log("webLoader loadFiles called\n");
+	// console.log("qmlLoader loadFiles called\n");
 	// make sure we know what we can load
 	this._loadManifests();
 	
@@ -114,7 +95,7 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	
 	var resources = path.normalize(path.join(root, "resources"));
 	
-	console.log("web loader: attempting to load paths " + JSON.stringify(paths) + "\n");
+	console.log("qml loader: attempting to load paths " + JSON.stringify(paths) + "\n");
 	if (sync) {
 		var ret = [];
 		
@@ -124,21 +105,21 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 			var p = paths[i];
 
 			var filepath = path.join(root, "locale", p);
-			console.log("web loader: attempting sync load " + filepath + "\n");
+			console.log("qml loader: attempting sync load " + filepath + "\n");
 			var text = this._loadFile(filepath, true);
 			if (text) {
-				console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+				console.log("qml loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 				ret.push(JSON.parse(text));
 			} else { 
 				filepath = path.join(resources, p);
-				console.log("web loader: attempting sync load resources " + filepath + "\n");
+				console.log("qml loader: attempting sync load resources " + filepath + "\n");
 				text = this._loadFile(filepath, true);
 				if (text) {
-					console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+					console.log("qml loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 					ret.push(JSON.parse(text));
 				} else {
 					ret.push(undefined);
-					console.log("web loader: sync load failed\n");
+					console.log("qml loader: sync load failed\n");
 				}
 			}
 		};
@@ -157,18 +138,18 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	this._loadFilesAsync(root, paths);
 };
 
-webLoader.prototype._loadFilesAsync = function (root, paths) {
+qmlLoader.prototype._loadFilesAsync = function (root, paths) {
 	if (paths.length > 0) {
 		var filename = paths.shift();
 		var filepath = path.join(root, "locale", filename);
-		console.log("web loader: attempting async load " + filepath);
+		console.log("qml loader: attempting async load " + filepath);
 		this._loadFile(filepath, false, function(text) {
 			console.log("success\n");
 			this._nextFile(root, paths, text);
 		}, function (err) {
 			console.log("failed\n");
 			filepath = path.join("resources", filename);
-			console.log("web loader: attempting async load " + filepath);
+			console.log("qml loader: attempting async load " + filepath);
 			this._loadFile(filepath, false, function(text) {
 				console.log("success\n");
 				this._nextFile(root, paths, text);
@@ -179,8 +160,8 @@ webLoader.prototype._loadFilesAsync = function (root, paths) {
 		});
 	}
 };
-webLoader.prototype._nextFile = function (root, paths, json) {
-	// console.log("web loader:  async load " + (json ? "succeeded" : "failed") + "\n");
+qmlLoader.prototype._nextFile = function (root, paths, json) {
+	// console.log("qml loader:  async load " + (json ? "succeeded" : "failed") + "\n");
 	this.results.push(json ? JSON.parse(json) : undefined);
 	if (paths.length > 0) {
 		this._loadFilesAsync(root, paths);
@@ -192,18 +173,18 @@ webLoader.prototype._nextFile = function (root, paths, json) {
 	}
 };
 
-webLoader.prototype._loadManifest = function(root, subpath, manifest) {
+qmlLoader.prototype._loadManifest = function(root, subpath, manifest) {
 	var dirpath = path.normalize(path.join(root, subpath));
 	var filepath = path.join(dirpath, "ilibmanifest.json");
 	var text = this._loadFile(filepath, true);
 	if (text) {
-		console.log("web loader: loading manifest " + filepath + "\n");
+		console.log("qml loader: loading manifest " + filepath + "\n");
 		manifest[dirpath] = JSON.parse(text).files;
 	}
 };
 
-webLoader.prototype._loadManifests = function() {
-	console.log("web loader: load manifests\n");
+qmlLoader.prototype._loadManifests = function() {
+	console.log("qml loader: load manifests\n");
 	if (!this.manifest) {
 		var manifest = {};
 		
@@ -214,13 +195,13 @@ webLoader.prototype._loadManifests = function() {
 		this.manifest = manifest;
 	}
 };
-webLoader.prototype.listAvailableFiles = function() {
-	console.log("web loader: list available files called\n");
+qmlLoader.prototype.listAvailableFiles = function() {
+	console.log("qml loader: list available files called\n");
 	this._loadManifests();
 	return this.manifest;
 };
 
-webLoader.indexOf = function(array, obj) {
+qmlLoader.indexOf = function(array, obj) {
 	if (!array || !obj) {
 		return -1;
 	}
@@ -236,12 +217,12 @@ webLoader.indexOf = function(array, obj) {
 	}
 };
 
-webLoader.prototype.isAvailable = function(path) {
+qmlLoader.prototype.isAvailable = function(path) {
 	this._loadManifests();
 	
-	console.log("web loader: isAvailable " + path + "? ");
+	console.log("qml loader: isAvailable " + path + "? ");
 	for (var dir in this.manifest) {
-		if (webLoader.indexOf(this.manifest[dir], path) !== -1) {
+		if (qmlLoader.indexOf(this.manifest[dir], path) !== -1) {
 			console.log("true\n");
 			return true;
 		}
@@ -252,7 +233,7 @@ webLoader.prototype.isAvailable = function(path) {
 };
 
 // merge object2's properties into object 1
-webLoader.prototype.merge = function (object1, object2) {
+qmlLoader.prototype.merge = function (object1, object2) {
 	var prop = undefined;
 	for (prop in object2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
@@ -274,7 +255,7 @@ webLoader.prototype.merge = function (object1, object2) {
 	return object1;
 };
 
-webLoader.prototype.require = function(pathname) {
+qmlLoader.prototype.require = function(pathname) {
 	//	console.log("typeof(this.code) is " + typeof(this.code));
 	//	console.log("typeof(pathname) is " + typeof(pathname));
 	var paths = (typeof(pathname) === 'string') ? [pathname] : pathname;
@@ -308,21 +289,12 @@ webLoader.prototype.require = function(pathname) {
 	return submodule;
 };
 
-webLoader.prototype.clearRequireCache = function() {
+qmlLoader.prototype.clearRequireCache = function() {
 	this.fileNameCache = {};
 };
 
-webLoader.prototype.getTarget = function () {
+qmlLoader.prototype.getTarget = function () {
 	return this.ilibobj;
 };
 
-
-var ilib = {};
-var loader = new webLoader(ilib);
-
-loader.require("ilibglobal.js");
-
-// Bypass the protections of setLoaderCallback because the loader class had to be defined 
-// before the class it inherits from. This uses duck typing to make sure it works as if it
-// were a real subclass anyways.
-ilib._load = loader;
+module.exports = qmlLoader;

@@ -524,7 +524,7 @@ ilib.getLoader = function() {
  * by concatenating the elements of object2 onto those of object1.  
  * 
  * @param {Object} object1 the target object to extend
- * @param {Object} object1 the object to mix in to object1
+ * @param {Object} object2 the object to mix in to object1
  * @param {Object} returns object1
  */
 ilib.extend = function (object1, object2) {
@@ -537,7 +537,7 @@ ilib.extend = function (object1, object2) {
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
 				//console.log("Merging object prop " + prop);
 				if (prop !== "ilib") {
-					object1[prop] = this.merge(object1[prop], object2[prop]);
+					object1[prop] = ilib.extend(object1[prop], object2[prop]);
 				}
 			} else {
 				//console.log("Copying prop " + prop);
