@@ -17,16 +17,31 @@
  * limitations under the License.
  */
 
-function normalize(pathname) {
-	if (pathname) {
-		var previousLen;
-		do {
-			previousLen = pathname.length;
-			pathname = pathname.replace(/\/[^/]+\/\.\./g, "").replace(/\/\.\//g, "/").replace(/^\.\//, "");
-		} while (pathname.length < previousLen);
+var path = {
+	dirname: function(pathname) {
+		var i = pathname.lastIndexOf("/");
+		return i !== -1 ? pathname.substring(0,i) : pathname;
+	},
+	
+	join: function() {
+		var arr = [];
+		for (var i = 0; i < arguments.length; i++) {
+			arr.push(arguments[i]);
+		}
+		return arr.join("/");
+	},
+	
+	normalize: function(pathname) {
+		if (pathname) {
+			var previousLen;
+			do {
+				previousLen = pathname.length;
+				pathname = pathname.replace(/\/[^/]+\/\.\./g, "").replace(/\/\.\//g, "/").replace(/^\.\//, "");
+			} while (pathname.length < previousLen);
+		}
+		return pathname;
 	}
-	return pathname;
-}
+};
 
 function loadFile(pathname, sync, success, failure) {
 	// use normal web techniques
@@ -61,6 +76,7 @@ function loadFile(pathname, sync, success, failure) {
 
 var requireClass = function() {
 	this.cache = {};
+	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 };
 requireClass.prototype.require = function(pathname) {
 	if (!this.root) {
@@ -83,7 +99,7 @@ requireClass.prototype.require = function(pathname) {
 		pathname = this.root + "/" + pathname;
 	}
 	
-	pathname = normalize(pathname);
+	pathname = path.normalize(pathname);
 	console.log("pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
@@ -91,8 +107,14 @@ requireClass.prototype.require = function(pathname) {
 	}
 	
 	var text = loadFile(pathname, true);
+	var dirname = path.dirname(pathname);
+	var match;
+	
 	if (text) {
 		text = 'var module={exports:{},filename:"' + pathname + '"};' + text;
+		while ((match = this.updateRequire.exec(text)) !== null) {
+			text = text.replace(match[1], '"' + dirname + '/" + ' + match[1]);
+		}
 		// console.log("text is " + text);
 		eval(text);
 		
