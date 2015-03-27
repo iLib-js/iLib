@@ -19,7 +19,9 @@
 
 // !depends ilibglobal.js
 
-var ilib = ilib || {};
+var ilib = require("../ilibglobal.js");
+
+var utils = {};
 
 /**
  * Return the sign of the given number. If the sign is negative, this function
@@ -28,7 +30,7 @@ var ilib = ilib || {};
  * @param {number} num the number to test
  * @return {number} -1 if the number is negative, and 1 otherwise
  */
-ilib.signum = function (num) {
+utils.signum = function (num) {
 	var n = num;
 	if (typeof(num) === 'string') {
 		n = parseInt(num, 10);
@@ -42,7 +44,7 @@ ilib.signum = function (num) {
 /**
  * @protected
  */
-ilib._roundFnc = {
+utils._roundFnc = {
 	/**
 	 * @static
 	 * @protected
@@ -136,7 +138,7 @@ ilib._roundFnc = {
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
  */
-ilib.mod = function (dividend, modulus) {
+utils.mod = function (dividend, modulus) {
 	if (modulus == 0) {
 		return 0;
 	}
@@ -158,7 +160,7 @@ ilib.mod = function (dividend, modulus) {
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
  */
-ilib.amod = function (dividend, modulus) {
+utils.amod = function (dividend, modulus) {
 	if (modulus == 0) {
 		return 0;
 	}
@@ -166,9 +168,4 @@ ilib.amod = function (dividend, modulus) {
 	return (x <= 0) ? x + modulus : x;
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js"
-    ]);
-	return ilib;
-};
+module.exports = utils;

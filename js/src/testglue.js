@@ -194,7 +194,9 @@ nodeLoader.prototype.merge = function (object1, object2) {
 				object1[prop] = object1[prop].concat(object2[prop]);
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
 				//console.log("Merging object prop " + prop);
-				object1[prop] = ilib.merge(object1[prop], object2[prop], replace);
+				if (prop !== "_load" && prop !== "ilib") {
+					object1[prop] = this.merge(object1[prop], object2[prop]);
+				}
 			} else {
 				//console.log("Copying prop " + prop);
 				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
@@ -228,7 +230,12 @@ nodeLoader.prototype.clearRequireCache = function() {
 	this.fileNameCache = {};
 };
 
+nodeLoader.prototype.getTarget = function () {
+	return this.ilib;
+};
+
 ilib.setLoaderCallback(new nodeLoader(ilib));
+global.ilib = ilib;
 
 //initialize some things statically because the constructors do not load 
 // the locale-independent data

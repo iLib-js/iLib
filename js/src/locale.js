@@ -19,7 +19,7 @@
 
 // !depends ilibglobal.js
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
 
 /**
  * @class
@@ -854,8 +854,4 @@ ilib.Locale.getAvailableLocales = function () {
 	return ilib.Locale.locales;
 };
 
-module.exports = function(loader) {
-	loader.require("ilibglobal.js");
-	
-	return ilib;
-};
+module.exports = ilib.Locale;

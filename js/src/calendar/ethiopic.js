@@ -17,10 +17,13 @@
  * limitations under the License.
  */
 
-
 /* !depends ilibglobal.js calendar.js util/utils.js util/math.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/utils.js"));
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
 /**
  * @class
@@ -99,14 +102,4 @@ ilib.Cal.Ethiopic.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["ethiopic"] = ilib.Cal.Ethiopic;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/utils.js",
-        "util/math.js",
-        "calendar.js",
-        "calendar/ethiopicdate.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.Cal.Ethiopic;

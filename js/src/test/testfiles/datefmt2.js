@@ -21,8 +21,13 @@ ilib.DateFmt2.prototype.format = function(date) {
 
 ilib.x = "This property came from ilib.DateFmt2";
 
-module.exports = function (loader) {
-	loader.merge(ilib, loader.require("test/testfiles/locale2.js"));
+var util = require("util");
+console.log("DateFmt2: ilib is " + util.inspect(ilib, {depth: null}));
+console.log("DateFmt2: global.ilib is " + util.inspect(global.ilib, {depth: null}));
+console.log("DateFmt2: module is " + util.inspect(module, {depth: null}));
 
-	return ilib;	
+module.exports = function (loader) {
+	loader.require("test/testfiles/locale2.js");
+
+	return ilib;
 };

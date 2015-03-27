@@ -31,7 +31,19 @@ calendar/gregorian.js
 
 // !data localeinfo zoneinfo
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+
+if (!ilib.Date) ilib.Date = require("./date.js");
+if (!ilib.Cal) ilib.Cal = require("./calendar.js");
+if (!ilib.Date.Gregorian) ilib.Date.Gregorian = require("./calendar/gregorian.js");
+if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");
+
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * @class
@@ -861,18 +873,4 @@ ilib.TimeZone.prototype.getCountry = function () {
 	return this.zone.c;
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "util/math.js",
-        "util/utils.js",
-        "strings.js",
-        "calendar/gregorian.js",
-        "calendar/gregratadie.js",
-        "calendar/gregoriandate.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.TimeZone;

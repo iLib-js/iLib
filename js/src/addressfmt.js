@@ -27,7 +27,12 @@ util/utils.js
 
 // !data address
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+ilib.Locale = require("./locale.js");
+ilib.Address = require("./addressprs.js");
+ilib.String = require("./strings.js");
 
 /**
  * @class
@@ -202,8 +207,4 @@ ilib.AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
-module.exports = function(loader) {
-	loader.require(["locale.js", "addressprs.js", "strings.js", "util/utils.js"]);
-	
-	return ilib;	
-};
+module.exports = ilib.AddressFmt;

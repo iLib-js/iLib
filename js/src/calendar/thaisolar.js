@@ -20,7 +20,12 @@
 
 /* !depends ilibglobal.js calendar.js calendar/gregorian.js util/math.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+
+if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./gregorian.js");
 
 /**
  * @class
@@ -67,12 +72,4 @@ ilib.Cal.ThaiSolar.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["thaisolar"] = ilib.Cal.ThaiSolar;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/gregorian.js"
-        "calendar/thaisolardate.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.ThaiSolar;

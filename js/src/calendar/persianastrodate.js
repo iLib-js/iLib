@@ -28,12 +28,23 @@ util/search.js
 util/math.js
 localeinfo.js 
 calendar/astro.js
-calendar/ratadie.js
 */
 
 // !data astro
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/search.js"));
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+
+ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Cal.Persian) ilib.Cal.Persian = require("./persianastro.js");
+if (!ilib.Date.PersRataDie) ilib.Date.PersRataDie = require("./persratadie.js");
 
 /**
  * @class
@@ -363,18 +374,4 @@ ilib.Date.PersDate.prototype.getCalendar = function() {
 // register with the factory method
 ilib.Date._constructors["persian"] = ilib.Date.PersDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "timezone.js",
-        "date.js",
-        "util/math.js",
-        "util/search.js",
-        "calendar/astro.js",
-        "calendar/persianastro.js",
-        "calendar/ratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.PersDate;

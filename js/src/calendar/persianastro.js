@@ -26,7 +26,13 @@ ilibglobal.js
 util/math.js
 */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Date) ilib.Date = require("../date.js");
+ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.PersRataDie) ilib.Date.PersRataDie = require("./persratadie.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
 /**
  * @class
@@ -149,13 +155,4 @@ ilib.Cal.Persian.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["persian"] = ilib.Cal.Persian;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/astro.js", 
-        "calendar.js",
-        "calendar/persratadie.js" 
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.Persian;

@@ -29,7 +29,13 @@ ctype.isdigit.js
 
 // !data address countries nativecountries ctrynames
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+
+ilib.Locale = require("./locale.js");
+ilib.CType = require("./ctype.js");
+ilib.CType.isIdeo = require("./ctype.isideo.js");
+ilib.CType.isAscii = require("./ctype.isascii.js");
+ilib.CType.isDigit = require("./ctype.isdigit.js");
 
 /**
  * @class
@@ -615,8 +621,4 @@ ilib.Address.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require(["locale.js", "ctype.isideo.js", "ctype.isascii.js", "ctype.isdigit.js"]);
-	
-	return ilib;	
-};
+module.exports = ilib.Address;

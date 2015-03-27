@@ -21,7 +21,11 @@
 
 // !data plurals
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
 /**
  * @class
@@ -1080,13 +1084,4 @@ ilib.String.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/math.js",
-        "util/utils.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.String;

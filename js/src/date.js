@@ -17,9 +17,13 @@
  * limitations under the License.
  */
 
-/* !depends ilibglobal.js locale.js localeinfo.js */
+/* !depends ilibglobal.js locale.js localeinfo.js julianday.js */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.JulianDay) ilib.JulianDay = require("./julianday.js");
 
 /**
  * @class
@@ -41,6 +45,12 @@ ilib.Date = function(options) {
 		return ilib.Date.newInstance(options);
 	}
 };
+
+/* place for the subclasses to put their constructors so that the factory method
+ * can find them. Do this to add your date after it's defined: 
+ * ilib.Date._constructors["mytype"] = ilib.Date.MyTypeConstructor;
+ */
+ilib.Date._constructors = {};
 
 /**
  * Factory method to create a new instance of a date subclass.<p>
@@ -94,13 +104,41 @@ ilib.Date = function(options) {
  * @return {ilib.Date} an instance of a calendar object of the appropriate type 
  */
 ilib.Date.newInstance = function(options) {
-	var locale = options && options.locale,
-		type = options && (options.type || options.calendar),
+	var locale,
+		type,
 		cons;
 
+	if (options) {
+		if (options.locale) {
+			locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		type = options.type || options.calendar;
+	}
+	
 	if (!locale) {
 		locale = new ilib.Locale();	// default locale
 	}
+
+	// dynamic dependencies which are based on the current locale. Only load these classes
+	// when they are needed after ilib.Date is fully defined and this method is invoked
+	switch (locale.getRegion()) {
+	case 'TH':
+		if (!ilib.Date.ThaiSolarDate) ilib.Date.ThaiSolarDate = require("./calendar/thaisolardate.js");
+		break;
+	case 'IR':
+	case 'AF':
+		if (!ilib.Date.PersDate) ilib.Date.PersDate = require("./calendar/persianastrodate.js");
+		break;
+	case 'ET':
+		if (!ilib.Date.EthiopicDate) ilib.Date.EthiopicDate = require("./calendar/ethiopicdate.js");
+		break;
+	}
+
+	if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
+	
+	//console.log("newInstance: locale is " + JSON.stringify(locale, undefined, 4));
+	//console.log("newInstance: constructors is " + typeof(ilib.Date._constructors["persian"]));
 	
 	if (!type) {
 		var info = new ilib.LocaleInfo(locale);
@@ -125,11 +163,12 @@ ilib.Date.newInstance = function(options) {
  * 
  * @static
  * @private
- * @param  {ilib.Date|Object|ilib.JulianDay|Date|string|number=} inDate The input date object, string or Number.
- * @param  {ilib.String|string=} timezone timezone to use if a new date object is created
+ * @param {ilib.Date|Object|ilib.JulianDay|Date|string|number=} inDate The input date object, string or Number.
+ * @param {ilib.String|string=} timezone timezone to use if a new date object is created
+ * @param {ilib.Locale|string=} locale locale to use when constructing an ilib.Date
  * @return {ilib.Date|null|undefined} an ilib.Date subclass equivalent to the given inDate
  */
-ilib.Date._dateToIlib = function(inDate, timezone) {
+ilib.Date._dateToIlib = function(inDate, timezone, locale) {
 	if (typeof(inDate) === 'undefined' || inDate === null) {
 		return inDate;
 	}
@@ -139,19 +178,22 @@ ilib.Date._dateToIlib = function(inDate, timezone) {
 	if (inDate instanceof Date) {
 		return ilib.Date.newInstance({
 			unixtime: inDate.getTime(),
-			timezone: timezone
+			timezone: timezone,
+			locale: locale
 		});
 	}
 	if (inDate instanceof ilib.JulianDay) {
 		return ilib.Date.newInstance({
 			jd: inDate,
-			timezone: timezone
+			timezone: timezone,
+			locale: locale
 		});
 	}
 	if (typeof(inDate) === 'number') {
 		return ilib.Date.newInstance({
 			unixtime: inDate,
-			timezone: timezone
+			timezone: timezone,
+			locale: locale
 		});
 	}
 	if (typeof(inDate) === 'object') {
@@ -162,15 +204,10 @@ ilib.Date._dateToIlib = function(inDate, timezone) {
 	}
 	return ilib.Date.newInstance({
 		unixtime: inDate.getTime(),
-		timezone: timezone
+		timezone: timezone,
+		locale: locale
 	});
 };
-
-/* place for the subclasses to put their constructors so that the factory method
- * can find them. Do this to add your date after it's defined: 
- * ilib.Date._constructors["mytype"] = ilib.Date.MyTypeConstructor;
- */
-ilib.Date._constructors = {};
 
 ilib.Date.prototype = {
 	getType: function() {
@@ -512,26 +549,4 @@ ilib.Date.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require(["ilibglobal.js", "locale.js", "localeinfo.js", "julianday.js"]);
-	
-	var extilib = loader.getLoadTarget();
-	var locale = new extilib.Locale();
-	switch (locale.getRegion()) {
-	case 'TH':
-		loader.require("calendar/thaisolar.js");
-		break;
-	case 'IR':
-	case 'AF':
-		loader.require("calendar/persianastro.js");
-		break;
-	case 'ET':
-		loader.require("calendar/ethiopic.js");
-		break;
-	default:
-		loader.require("calendar/gregorian.js");
-		break;
-	}
-
-	return ilib;
-};
+module.exports = ilib.Date;

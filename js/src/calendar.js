@@ -23,7 +23,10 @@ locale.js
 localeinfo.js
 */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+
+ilib.Locale = require("./locale.js");
+ilib.LocaleInfo = require("./localeinfo.js");
 
 /**
  * Interface that all calendars must implement.
@@ -159,8 +162,4 @@ ilib.Cal.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require(["ilibglobal.js", "locale.js", "localeinfo.js"]);
-	
-	return ilib;	
-};
+module.exports = ilib.Cal;

@@ -65,8 +65,9 @@ if (typeof(window) !== 'undefined') {
 */
 
 // export ilib for use as a module in nodejs
-if (typeof(exports) !== 'undefined') {
-    exports.ilib = ilib;
+if (typeof(module) !== 'undefined') {
+    module.exports = ilib;
+    module.exports.ilib = ilib;  // for backwards compatibility with older versions of ilib
 }
 
 ilib.pseudoLocales = ["zxx-XX"];
@@ -516,6 +517,34 @@ ilib.getLoader = function() {
 	return ilib._load;
 };
 
-module.exports = function(loader) {
-	return ilib;
+/**
+ * Extend object1 by mixing in everything from object2 into it. The objects
+ * are deeply extended, meaning that this method recursively descends the
+ * tree in the objects and mixes them in at each level. Arrays are extended
+ * by concatenating the elements of object2 onto those of object1.  
+ * 
+ * @param {Object} object1 the target object to extend
+ * @param {Object} object1 the object to mix in to object1
+ * @param {Object} returns object1
+ */
+ilib.extend = function (object1, object2) {
+	var prop = undefined;
+	for (prop in object2) {
+		if (prop && typeof(object2[prop]) !== 'undefined') {
+			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
+				//console.log("Merging array prop " + prop);
+				object1[prop] = object1[prop].concat(object2[prop]);
+			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+				//console.log("Merging object prop " + prop);
+				if (prop !== "ilib") {
+					object1[prop] = this.merge(object1[prop], object2[prop]);
+				}
+			} else {
+				//console.log("Copying prop " + prop);
+				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+				object1[prop] = object2[prop];
+			}
+		}
+	}
+	return object1;
 };

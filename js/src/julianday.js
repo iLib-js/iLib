@@ -19,7 +19,7 @@
 
 /* !depends ilibglobal.js */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
 
 /**
  * @class
@@ -115,6 +115,4 @@ ilib.JulianDay.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	return ilib;
-};
+module.exports = ilib.JulianDay;

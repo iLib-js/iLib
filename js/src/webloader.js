@@ -1,5 +1,5 @@
 /*
- * webglue.js - loader implementation for web apps. 
+ * webloader.js - loader implementation for web apps. 
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -17,27 +17,9 @@
  * limitations under the License.
  */
 
-// minimal pure js implementation of the nodejs path module
-var path = {
-	parentdir: function(pathname) {
-		var i = pathname.lastIndexOf("/");
-		return i !== -1 ? pathname.substring(0,i) : pathname;
-	},
-	
-	join: function() {
-		var arr = [];
-		for (var i = 0; i < arguments.length; i++) {
-			arr.push(arguments[i]);
-		}
-		return arr.join("/");
-	},
-	
-	normalize: function(pathname) {
-		return pathname && pathname.replace(/\/[^/]+\/\.\./, "").replace(/\/\.\//, "/").replace(/^\.\//, "");
-	}
-};
+var path = require("./path.js");
+var ilib = require("./ilibglobal.js");
 
-var module = {};
 var webLoader = function(ilibobj) {
 	console.log("new webLoader instance\n");
 
@@ -48,7 +30,7 @@ var webLoader = function(ilibobj) {
 
 	for (var i = 0; i < scripts.length; i++) {
 		var source = scripts[i].src;
-		if (source && (pos = source.search(/webglue\.js$/)) !== -1) {
+		if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
 			root = path.join(source.substring(7, pos-1), "..");
 			break;
 		}
@@ -68,6 +50,10 @@ var webLoader = function(ilibobj) {
 	this.ilibobj = ilibobj;
 	this.fileNameCache = {};
 };
+
+webLoader.prototype = new ilib.Loader();
+webLoader.prototype.parent = ilib.Loader;
+webLoader.prototype.constructor = webLoader;
 
 webLoader.prototype._loadFile = function (pathname, sync, success, failure) {
 	// use normal web techniques
@@ -316,13 +302,4 @@ webLoader.prototype.getTarget = function () {
 	return this.ilibobj;
 };
 
-
-var ilib = {};
-var loader = new webLoader(ilib);
-
-loader.require("ilibglobal.js");
-
-// Bypass the protections of setLoaderCallback because the loader class had to be defined 
-// before the class it inherits from. This uses duck typing to make sure it works as if it
-// were a real subclass anyways.
-ilib._load = loader;
+module.exports = webLoader;

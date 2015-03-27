@@ -19,7 +19,9 @@
 
 // !depends ilibglobal.js
 
-var ilib = ilib || {};
+var ilib = require("../ilibglobal.js");
+
+var utils = {};
 
 /**
  * Perform a shallow copy of the source object to the target object. This only 
@@ -32,7 +34,7 @@ var ilib = ilib || {};
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
  */
-ilib.shallowCopy = function (source, target) {
+utils.shallowCopy = function (source, target) {
 	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
@@ -46,14 +48,14 @@ ilib.shallowCopy = function (source, target) {
 /** [Need Comment]
  * 
  */
-ilib.deepCopy = function(from, to) {
+utils.deepCopy = function(from, to) {
 	var prop;
 
 	for (prop in from) {
 		if (prop) {
 			if (typeof(from[prop]) === 'object') {
 				to[prop] ={};
-				ilib.deepCopy(from[prop], to[prop]);
+				utils.deepCopy(from[prop], to[prop]);
 			} else {
 				to[prop] = from[prop];
 			}
@@ -72,7 +74,7 @@ ilib.deepCopy = function(from, to) {
  * @param {Array.<string>|Object} map a mapping to alternate characters
  * @return {string} the source string where each character is mapped to alternate characters
  */
-ilib.mapString = function (str, map) {
+utils.mapString = function (str, map) {
 	var mapped = "";
 	if (map && str) {
 		for (var i = 0; i < str.length; i++) {
@@ -98,7 +100,7 @@ ilib.mapString = function (str, map) {
  * any results.
  * @return {number} index of the object in the array, or -1 if it is not in the array.
  */
-ilib.indexOf = function(array, obj) {
+utils.indexOf = function(array, obj) {
 	if (!array || !obj) {
 		return -1;
 	}
@@ -124,7 +126,7 @@ ilib.indexOf = function(array, obj) {
  * @return {string} a hexadecimal representation of the
  * Unicode characters in the input string
  */
-ilib.toHexString = function(string, limit) {
+utils.toHexString = function(string, limit) {
 	var i, 
 		result = "", 
 		lim = (limit && limit < 9) ? limit : 4;
@@ -139,9 +141,4 @@ ilib.toHexString = function(string, limit) {
 	return result.toUpperCase();
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js"
-    ]);
-	return ilib;
-};
+module.exports = utils;

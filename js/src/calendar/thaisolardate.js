@@ -25,7 +25,15 @@ calendar/gregoriandate.js
 calendar/thaisolar.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/jsutils.js"));
+
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+
+if (!ilib.Cal.ThaiSolar) ilib.Cal.ThaiSolar = require("./thaisolar.js");
+if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");
+if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./gregratadie.js");
 
 /**
  * @class
@@ -224,13 +232,4 @@ ilib.Date.ThaiSolarDate.prototype.getCalendar = function() {
 //register with the factory method
 ilib.Date._constructors["thaisolar"] = ilib.Date.ThaiSolarDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "calendar/gregoriandate.js",
-        "calendar/thaisolar.js",
-        "util/jsutils.js",
-        "date.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.ThaiSolarDate;

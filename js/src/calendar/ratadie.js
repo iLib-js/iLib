@@ -23,7 +23,10 @@ julianday.js
 util/math.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.JulianDay) ilib.Date = require("../julianday.js");
 
 /**
  * @class
@@ -311,11 +314,4 @@ ilib.Date.RataDie.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "julianday.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.RataDie;

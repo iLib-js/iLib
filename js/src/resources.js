@@ -21,7 +21,13 @@
 
 // !data pseudomap
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * @class
@@ -626,14 +632,4 @@ ilib.ResBundle.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "strings.js",
-        "util/utils.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.ResBundle;

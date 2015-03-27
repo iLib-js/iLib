@@ -26,7 +26,16 @@ calendar/astro.js
 calendar/gregoriandate.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/utils.js"));
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Date) ilib.Date = require("../date.js");
+ilib.extend(ilib.Date, require("./astro.js"));
+
+if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
+if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");
+
 
 /**
  * @class
@@ -216,14 +225,4 @@ ilib.Date.PersAstroRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "util/utils.js",
-        "calendar/astro.js",
-        "calendar/gregoriandate.js",
-        "calendar/ratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.PersAstroRataDie;

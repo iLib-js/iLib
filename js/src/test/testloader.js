@@ -315,7 +315,9 @@ function testLoaderRunCode2() {
 
 function testLoaderNewNodeLoader() {
 	var namespace = {};
-    var loader = new nodeLoader(namespace);
+	var oldloader = ilib.getLoader();
+    var loader = new oldloader.__proto__.constructor(namespace);
+    assertNotUndefined(loader);
     
     assertUndefined(namespace.DateFmt2);
     assertUndefined(namespace.Locale2);
@@ -329,7 +331,8 @@ function testLoaderNewNodeLoader() {
 
 function testLoaderNewNodeLoaderRequireMultipleFiles() {
 	var namespace = {};
-    var loader = new nodeLoader(namespace);
+	var oldloader = ilib.getLoader();
+    var loader = new oldloader.__proto__.constructor(namespace);
     assertNotUndefined(loader);
 
     assertUndefined(namespace.DateFmt2);
@@ -351,7 +354,8 @@ function testLoaderNewNodeLoaderRequireMultipleFiles() {
 
 function testLoaderNewLoaderRunCode1() {
 	var namespace = {};
-    var loader = new nodeLoader(namespace);
+	var oldloader = ilib.getLoader();
+    var loader = new oldloader.__proto__.constructor(namespace);
     assertNotUndefined(loader);
     
     loader.require("test/testfiles/datefmt2.js");
@@ -364,7 +368,8 @@ function testLoaderNewLoaderRunCode1() {
 
 function testLoaderNewLoaderRunCode2() {
 	var namespace = {};
-    var loader = new nodeLoader(namespace);
+	var oldloader = ilib.getLoader();
+    var loader = new oldloader.__proto__.constructor(namespace);
     assertNotUndefined(loader);
     
     loader.require("test/testfiles/datefmt2.js");

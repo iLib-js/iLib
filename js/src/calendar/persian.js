@@ -20,7 +20,11 @@
 
 /* !depends ilibglobal.js calendar.js util/math.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+
 
 /**
  * @class
@@ -135,11 +139,4 @@ ilib.Cal.PersianAlgo.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["persian-algo"] = ilib.Cal.PersianAlgo;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/persiandate.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.PersianAlgo;

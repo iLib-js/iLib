@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var ilib = require("./ilibglobal.js");
+ilib.Date = require("./date.js");
+
 function testDateConstructor() {
     var gd = new ilib.Date();
     

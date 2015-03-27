@@ -25,7 +25,12 @@ calendar/ratadie.js
 util/math.js
 */
 
-var ilib = ilib || {};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./gregorian.js");
+if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
 
 /**
  * @class
@@ -186,12 +191,4 @@ ilib.Date.GregRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/gregorian.js",
-        "calendar/ratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.GregRataDie;

@@ -30,7 +30,19 @@ calendar/gregratadie.js
 timezone.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/search.js"));
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.JulianDay) ilib.JulianDay = require("../julianday.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+
+if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./gregorian.js");
+if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./gregratadie.js");
 
 /**
  * @class
@@ -390,17 +402,4 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
 // register with the factory method
 ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "timezone.js",
-        "date.js",
-        "util/math.js",
-        "util/search.js",
-        "calendar/gregorian.js",
-        "calendar/gregratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.GregDate;
