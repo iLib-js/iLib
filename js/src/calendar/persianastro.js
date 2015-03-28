@@ -27,10 +27,10 @@ util/math.js
 */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 
 if (!ilib.Date) ilib.Date = require("../date.js");
-ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
 if (!ilib.Date.PersRataDie) ilib.Date.PersRataDie = require("./persratadie.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 

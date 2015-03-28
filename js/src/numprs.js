@@ -29,7 +29,7 @@ currency.js
 */
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
@@ -276,16 +276,4 @@ ilib.Number.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "util/utils.js",
-        "ctype.isdigit.js", 
-        "ctype.isspace.js",
-        "currency.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.Number;

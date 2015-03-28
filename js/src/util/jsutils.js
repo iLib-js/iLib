@@ -19,8 +19,12 @@
 
 // !depends ilibglobal.js
 
-var ilib = require("../ilibglobal.js"), utils = {};
+var ilib = require("../ilibglobal.js");
 
+(function() {
+	var utils = {};
+
+utils.shallowCopy = 
 /**
  * Perform a shallow copy of the source object to the target object. This only 
  * copies the assignments of the source properties to the target properties, 
@@ -32,7 +36,7 @@ var ilib = require("../ilibglobal.js"), utils = {};
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
  */
-utils.shallowCopy = ilib.shallowCopy = function (source, target) {
+ilib.shallowCopy = function (source, target) {
 	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
@@ -43,16 +47,21 @@ utils.shallowCopy = ilib.shallowCopy = function (source, target) {
 	}
 };
 
-/** [Need Comment]
+utils.deepCopy = 
+/**
+ * Perform a recursive deep copy from the "from" object to the "deep" object.
  * 
+ * @param {Object} from the object to copy from
+ * @param {Object} to the object to copy to
+ * @return {Object} a reference to the the "to" object
  */
-utils.deepCopy = ilib.deepCopy = function(from, to) {
+ilib.deepCopy = function(from, to) {
 	var prop;
 
 	for (prop in from) {
 		if (prop) {
 			if (typeof(from[prop]) === 'object') {
-				to[prop] ={};
+				to[prop] = {};
 				ilib.deepCopy(from[prop], to[prop]);
 			} else {
 				to[prop] = from[prop];
@@ -62,6 +71,7 @@ utils.deepCopy = ilib.deepCopy = function(from, to) {
 	return to;
 };
 
+utils.mapString = 
 /**
  * Map a string to the given set of alternate characters. If the target set
  * does not contain a particular character in the input string, then that
@@ -72,7 +82,7 @@ utils.deepCopy = ilib.deepCopy = function(from, to) {
  * @param {Array.<string>|Object} map a mapping to alternate characters
  * @return {string} the source string where each character is mapped to alternate characters
  */
-utils.mapString = ilib.mapString = function (str, map) {
+ilib.mapString = function (str, map) {
 	var mapped = "";
 	if (map && str) {
 		for (var i = 0; i < str.length; i++) {
@@ -85,6 +95,7 @@ utils.mapString = ilib.mapString = function (str, map) {
 	return mapped;
 };
 
+utils.indexOf = 
 /**
  * Check if an object is a member of the given array. If this javascript engine
  * support indexOf, it is used directly. Otherwise, this function implements it
@@ -98,7 +109,7 @@ utils.mapString = ilib.mapString = function (str, map) {
  * any results.
  * @return {number} index of the object in the array, or -1 if it is not in the array.
  */
-utils.indexOf = ilib.indexOf = function(array, obj) {
+ilib.indexOf = function(array, obj) {
 	if (!array || !obj) {
 		return -1;
 	}
@@ -114,6 +125,7 @@ utils.indexOf = ilib.indexOf = function(array, obj) {
 	}
 };
 
+utils.toHexString = 
 /**
  * @static
  * Convert a string into the hexadecimal representation
@@ -124,7 +136,7 @@ utils.indexOf = ilib.indexOf = function(array, obj) {
  * @return {string} a hexadecimal representation of the
  * Unicode characters in the input string
  */
-utils.toHexString = ilib.toHexString = function(string, limit) {
+ilib.toHexString = function(string, limit) {
 	var i, 
 		result = "", 
 		lim = (limit && limit < 9) ? limit : 4;
@@ -140,3 +152,5 @@ utils.toHexString = ilib.toHexString = function(string, limit) {
 };
 
 module.exports = utils;
+
+})();

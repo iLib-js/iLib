@@ -22,9 +22,9 @@
 // !data localeinfo
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
-ilib.Locale = require("./locale.js");
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
 /**
  * @class

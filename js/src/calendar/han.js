@@ -29,11 +29,11 @@ calendar/gregratadie.js
 */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/utils.js"));
-ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 
 if (!ilib.Date) ilib.Date = require("../date.js");
-ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
 if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");

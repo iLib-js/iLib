@@ -22,7 +22,7 @@
 // !data norm ctype_m
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.String) ilib.String = require("./strings.js");
 if (!ilib.CType) ilib.CType = require("./ctype.js");

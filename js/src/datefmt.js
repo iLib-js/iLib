@@ -35,8 +35,8 @@ util/utils.js
 // !data dateformats sysres
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
-ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");

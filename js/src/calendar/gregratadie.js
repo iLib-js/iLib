@@ -26,7 +26,7 @@ util/math.js
 */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 
 if (!ilib.Date) ilib.Date = require("../date.js");
 if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./gregorian.js");

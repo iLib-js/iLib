@@ -19,8 +19,12 @@
 
 // !depends ilibglobal.js
 
-var ilib = require("../ilibglobal.js"), utils = {};
+var ilib = require("../ilibglobal.js");
 
+(function() {
+	var utils = {};
+
+utils.bsearch = 
 /**
  * Binary search a sorted array for a particular target value.
  * If the exact value is not found, it returns the index of the smallest 
@@ -48,7 +52,7 @@ var ilib = require("../ilibglobal.js"), utils = {};
  * inserted, or -1 if given array is not an array or the target is not 
  * a number
  */
-utils.bsearch = ilib.bsearch = function(target, arr, comparator) {
+ilib.bsearch = function(target, arr, comparator) {
 	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
 		return -1;
 	}
@@ -74,6 +78,7 @@ utils.bsearch = ilib.bsearch = function(target, arr, comparator) {
 	return low;
 };
 
+utils.bsearch.numbers = 
 /**
  * Returns whether or not the given element is greater than, less than,
  * or equal to the given target.<p>
@@ -83,10 +88,11 @@ utils.bsearch = ilib.bsearch = function(target, arr, comparator) {
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */
-utils.bsearch.numbers = ilib.bsearch.number = function(element, target) {
+ilib.bsearch.number = function(element, target) {
 	return element - target;
 };
 
+utils.bisectionSearch = 
 /**
  * Do a bisection search of a function for a particular target value.<p> 
  * 
@@ -107,7 +113,7 @@ utils.bsearch.numbers = ilib.bsearch.number = function(element, target) {
  * target output value, correct to within the error range of Javascript floating point 
  * arithmetic, or NaN if there was some error
  */
-utils.bisectionSearch = ilib.bisectionSearch = function(target, low, high, precision, func) {
+ilib.bisectionSearch = function(target, low, high, precision, func) {
 	if (typeof(target) !== 'number' || 
 			typeof(low) !== 'number' || 
 			typeof(high) !== 'number' || 
@@ -133,3 +139,5 @@ utils.bisectionSearch = ilib.bisectionSearch = function(target, low, high, preci
 };
 
 module.exports = utils;
+
+})();

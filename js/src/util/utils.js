@@ -19,10 +19,14 @@
 
 // !depends ilibglobal.js locale.js
 
-var ilib = require("../ilibglobal.js"), utils = {};
+var ilib = require("../ilibglobal.js");
 
 if (!ilib.Locale) ilib.Locale = require("../locale.js");
 
+(function() {
+	var utils = {};
+
+utils.bind = 
 /**
  * If Function.prototype.bind does not exist in this JS engine, this
  * function reimplements it in terms of older JS functions.
@@ -34,7 +38,7 @@ if (!ilib.Locale) ilib.Locale = require("../locale.js");
  * in the given scope with all of its arguments properly attached, or
  * undefined if there was a problem with the arguments
  */
-utils.bind = ilib.bind = function(scope, method/*, bound arguments*/){
+ilib.bind = function(scope, method/*, bound arguments*/){
 	if (!scope || !method) {
 		return undefined;
 	}
@@ -67,6 +71,7 @@ utils.bind = ilib.bind = function(scope, method/*, bound arguments*/){
 	return undefined;
 };
 
+utils.merge = 
 /**
  * Merge the properties of object2 into object1 in a deep manner and return a merged
  * object. If the property exists in both objects, the value in object2 will overwrite 
@@ -86,7 +91,7 @@ utils.bind = ilib.bind = function(scope, method/*, bound arguments*/){
  * @param {string=} name2 name of the object being merged in
  * @return {Object} the merged object
  */
-utils.merge = ilib.merge = function (object1, object2, replace, name1, name2) {
+ilib.merge = function (object1, object2, replace, name1, name2) {
 	var prop = undefined,
 		newObj = {};
 	for (prop in object1) {
@@ -118,6 +123,7 @@ utils.merge = ilib.merge = function (object1, object2, replace, name1, name2) {
 	return newObj;
 };
 
+utils.mergeLocData = 
 /**
  * Find and merge all the locale data for a particular prefix in the given locale
  * and return it as a single javascript object. This merges the data in the 
@@ -144,7 +150,7 @@ utils.merge = ilib.merge = function (object1, object2, replace, name1, name2) {
  * merge all the relevant locale data together.
  * @return {Object?} the merged locale data
  */
-utils.mergeLocData = ilib.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
+ilib.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
 	var data = undefined;
 	var loc = locale || new ilib.Locale();
 	var foundLocaleData = false;
@@ -234,6 +240,7 @@ utils.mergeLocData = ilib.mergeLocData = function (prefix, locale, replaceArrays
 	return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
 };
 
+utils.getLocFiles = 
 /**
  * Return an array of relative path names for the
  * files that represent the data for the given locale.<p>
@@ -321,7 +328,7 @@ utils.mergeLocData = ilib.mergeLocData = function (prefix, locale, replaceArrays
  * @return {Array.<string>} An array of relative path names
  * for the files that contain the locale data
  */
-utils.getLocFiles = ilib.getLocFiles = function(locale, name) {
+ilib.getLocFiles = function(locale, name) {
 	var dir = "";
 	var files = [];
 	var filename = name || "resources.json";
@@ -378,6 +385,7 @@ utils.getLocFiles = ilib.getLocFiles = function(locale, name) {
 	return files;
 };
 
+utils.isEmpty = 
 /**
  * Return true if the given object has no properties.<p>
  * 
@@ -386,7 +394,7 @@ utils.getLocFiles = ilib.getLocFiles = function(locale, name) {
  * @param {Object} obj the object to check
  * @return {boolean} true if the given object has no properties, false otherwise
  */
-utils.isEmpty = ilib.isEmpty = function (obj) {
+ilib.isEmpty = function (obj) {
 	var prop = undefined;
 	
 	if (!obj) {
@@ -401,11 +409,11 @@ utils.isEmpty = ilib.isEmpty = function (obj) {
 	return true;
 };
 
-
+utils.hashCode = 
 /**
  * @private
  */
-utils.hashCode = ilib.hashCode = function(obj) {
+ilib.hashCode = function(obj) {
 	var hash = 0;
 	
 	function addHash(hash, newValue) {
@@ -458,12 +466,12 @@ utils.hashCode = ilib.hashCode = function(obj) {
 	return hash;
 };
 
-
+utils._callLoadData = 
 /**
  * Load data using the new loader object or via the old function callback.
  * @private
  */
-utils._callLoadData = ilib._callLoadData = function (files, sync, params, callback) {
+ilib._callLoadData = function (files, sync, params, callback) {
 	// console.log("ilib._callLoadData called");
 	if (typeof(ilib._load) === 'function') {
 		// console.log("ilib._callLoadData: calling as a regular function");
@@ -477,6 +485,7 @@ utils._callLoadData = ilib._callLoadData = function (files, sync, params, callba
 	return undefined;
 };
 
+utils.loadData = 
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -504,7 +513,7 @@ utils._callLoadData = ilib._callLoadData = function (files, sync, params, callba
  * 
  * @param {Object} params Parameters configuring how to load the files (see above)
  */
-utils.loadData = ilib.loadData = function(params) {
+ilib.loadData = function(params) {
 	var name = "resources.json",
 		object = undefined, 
 		locale = new ilib.Locale(ilib.getLocale()), 
@@ -631,3 +640,5 @@ utils.loadData = ilib.loadData = function(params) {
 };
 
 module.exports = utils;
+
+})();

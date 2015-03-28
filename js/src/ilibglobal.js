@@ -525,7 +525,7 @@ ilib.getLoader = function() {
  * 
  * @param {Object} object1 the target object to extend
  * @param {Object} object2 the object to mix in to object1
- * @param {Object} returns object1
+ * @return {Object} returns object1
  */
 ilib.extend = function (object1, object2) {
 	var prop = undefined;

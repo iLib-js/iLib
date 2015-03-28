@@ -27,11 +27,11 @@ calendar/gregoriandate.js
 */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/utils.js"));
-ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 
 if (!ilib.Date) ilib.Date = require("../date.js");
-ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
 
 if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
 if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");

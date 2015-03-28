@@ -20,7 +20,10 @@
 
 /* !depends ilibglobal.js calendar.js util/math.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
 /**
  * @class
@@ -115,11 +118,4 @@ ilib.Cal.Julian.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/math.js",
-        "calendar/juliandate.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.Julian;

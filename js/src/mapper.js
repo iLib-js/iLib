@@ -20,7 +20,7 @@
 // !depends ilibglobal.js strings.js util/utils.js locale.js
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.String) ilib.String = require("./strings.js");

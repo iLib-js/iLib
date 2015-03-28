@@ -21,7 +21,7 @@
 /* !depends ilibglobal.js calendar.js locale.js date.js util/utils.js */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("../locale.js");
 if (!ilib.Date) ilib.Date = require("../date.js");

@@ -19,8 +19,12 @@
 
 // !depends ilibglobal.js
 
-var ilib = require("../ilibglobal.js"), utils = {};
+var ilib = require("../ilibglobal.js");
 
+(function() {
+	var utils = {};
+
+utils.signum = 
 /**
  * Return the sign of the given number. If the sign is negative, this function
  * returns -1. If the sign is positive or zero, this function returns 1.
@@ -28,7 +32,7 @@ var ilib = require("../ilibglobal.js"), utils = {};
  * @param {number} num the number to test
  * @return {number} -1 if the number is negative, and 1 otherwise
  */
-utils.signum = ilib.signum = function (num) {
+ilib.signum = function (num) {
 	var n = num;
 	if (typeof(num) === 'string') {
 		n = parseInt(num, 10);
@@ -38,11 +42,11 @@ utils.signum = ilib.signum = function (num) {
 	return (n < 0) ? -1 : 1;
 };
 
-
+utils._roundFnc = 
 /**
  * @protected
  */
-utils._roundFnc = ilib._roundFnc = {
+ilib._roundFnc = {
 	/**
 	 * @static
 	 * @protected
@@ -124,6 +128,7 @@ utils._roundFnc = ilib._roundFnc = {
 	}
 };
 
+utils.mod = 
 /**
  * Do a proper modulo function. The Javascript % operator will give the truncated
  * division algorithm, but for calendrical calculations, we need the Euclidean
@@ -136,7 +141,7 @@ utils._roundFnc = ilib._roundFnc = {
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
  */
-utils.mod = ilib.mod = function (dividend, modulus) {
+ilib.mod = function (dividend, modulus) {
 	if (modulus == 0) {
 		return 0;
 	}
@@ -144,6 +149,7 @@ utils.mod = ilib.mod = function (dividend, modulus) {
 	return (x < 0) ? x + modulus : x;
 };
 
+utils.amod = 
 /**
  * Do a proper adjusted modulo function. The Javascript % operator will give the truncated
  * division algorithm, but for calendrical calculations, we need the Euclidean
@@ -158,7 +164,7 @@ utils.mod = ilib.mod = function (dividend, modulus) {
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
  */
-utils.amod = ilib.amod = function (dividend, modulus) {
+ilib.amod = function (dividend, modulus) {
 	if (modulus == 0) {
 		return 0;
 	}
@@ -167,3 +173,5 @@ utils.amod = ilib.amod = function (dividend, modulus) {
 };
 
 module.exports = utils;
+
+})();

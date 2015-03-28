@@ -29,7 +29,7 @@ util/utils.js
 // !data states idd mnc
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
@@ -1634,13 +1634,4 @@ ilib.PhoneNumber.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/utils.js",
-        "phone/numplan.js",
-        "phone/phoneloc.js",
-        "phone/handler.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.PhoneNumber;

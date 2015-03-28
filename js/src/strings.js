@@ -22,8 +22,8 @@
 // !data plurals
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
-ilib.extend(ilib, require("./util/math.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.signum) ilib.extend(ilib, require("./util/math.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 

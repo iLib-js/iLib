@@ -20,7 +20,7 @@
 // !depends strings.js glyphstring.js util/utils.js
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.String) ilib.String = require("./strings.js");
 if (!ilib.GlyphString) ilib.GlyphString = require("./glyphstring.js");

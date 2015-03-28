@@ -21,8 +21,8 @@
 /* !depends ilibglobal.js calendar.js date.js util/utils.js util/math.js */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/utils.js"));
-ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 
 if (!ilib.Date) ilib.Date = require("../date.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");

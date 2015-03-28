@@ -21,7 +21,7 @@
 // !data likelylocales
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 

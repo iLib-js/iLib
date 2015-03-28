@@ -28,7 +28,7 @@ util/utils.js
 // !data address
 
 var ilib = require("./ilibglobal.js");
-ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
 ilib.Locale = require("./locale.js");
 ilib.Address = require("./addressprs.js");

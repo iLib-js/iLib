@@ -30,7 +30,17 @@ localeinfo.js
 calendar/ratadie.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+if (!ilib.bsearch) ilib.extend(ilib, require("../util/search.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Cal.Julian) ilib.Cal.Julian = require("./julian.js");
 
 /**
  * @class
@@ -431,17 +441,4 @@ ilib.Date.JulDate.prototype.getCalendar = function() {
 //register with the factory method
 ilib.Date._constructors["julian"] = ilib.Date.JulDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "timezone.js",
-        "date.js",
-        "util/math.js",
-        "util/search.js",
-        "calendar/julian.js",
-        "calendar/ratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.JulDate;
