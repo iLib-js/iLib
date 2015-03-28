@@ -32,7 +32,16 @@ numprs.js
 
 // !data localeinfo currency
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/jsutils.js"));
+ilib.extend(ilib, require("./util/math.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Currency) ilib.Currency = require("./currency.js");
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.Number) ilib.Number = require("./numprs.js");
 
 /**
  * @class
@@ -645,18 +654,4 @@ ilib.NumFmt.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "strings.js",
-        "util/utils.js",
-        "locale.js",
-        "localeinfo.js",
-        "util/math.js",
-        "currency.js",
-        "util/jsutils.js",
-        "numprs.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.NumFmt;

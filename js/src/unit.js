@@ -22,7 +22,7 @@
 ilibglobal.js
 */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
 
 /**
  * @class
@@ -249,10 +249,4 @@ ilib.Measurement.prototype = {
 	localize: function(locale) {}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.Measurement;

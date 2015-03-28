@@ -29,7 +29,17 @@ timezone.js
 calendar/ethiopicdate.js
 */
 
-var ilib = ilib || {Date:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/math.js"));
+ilib.extend(ilib, require("../util/jsutils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Date.EthiopicDate) ilib.Date.EthiopicDate = require("../ethiopicdate.js");
+if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Cal.Coptic) ilib.Cal.Coptic = require("../coptic.js");
 
 /**
  * @class
@@ -196,17 +206,4 @@ ilib.Date.CopticDate.prototype.getCalendar = function() {
 //register with the factory method
 ilib.Date._constructors["coptic"] = ilib.Date.CopticDate;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "timezone.js",
-        "date.js",
-        "util/math.js",
-        "util/jsutils.js",
-        "calendar/coptic.js",
-        "calendar/ethiopicdate.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Date.CopticDate;

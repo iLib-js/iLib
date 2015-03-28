@@ -28,7 +28,15 @@ util/utils.js
 
 // !data states idd mnc
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+
+if (!ilib.PhoneNumber) ilib.PhoneNumber = require("./phonenum.js");
+if (!ilib.NumPlan) ilib.NumPlan = require("./numplan.js");
+if (!ilib.Locale.PhoneLoc) ilib.Locale.PhoneLoc = require("./phoneloc.js");
+if (!ilib.StateHandler) ilib.StateHandler = require("./handler.js");
 
 /**
  * @class

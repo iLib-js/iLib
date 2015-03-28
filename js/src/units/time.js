@@ -23,7 +23,8 @@ ilibglobal.js
 unit.js
 */
 
-var ilib = ilib || {Measurement:{}};
+var ilib = require("../ilibglobal.js");
+if (!ilib.Measurement) ilib.Measurement = require("../unit.js");
 
 /**
  * @class
@@ -286,10 +287,4 @@ ilib.Measurement.Time.getMeasures = function () {
 //register with the factory method
 ilib.Measurement._constructors["time"] = ilib.Measurement.Time;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "unit.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Measurement.Time;

@@ -20,7 +20,10 @@
 // !depends ilibglobal.js locale.js util/utils.js
 // !data likelylocales
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
 /**
  * @class
@@ -139,12 +142,4 @@ ilib.LocaleMatcher.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.LocaleMatcher;

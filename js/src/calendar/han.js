@@ -28,7 +28,15 @@ calendar/gregoriandate.js
 calendar/gregratadie.js
 */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/utils.js"));
+ilib.extend(ilib, require("../util/math.js"));
+
+if (!ilib.Date) ilib.Date = require("../date.js");
+ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");
 
 /**
  * @class
@@ -338,17 +346,4 @@ ilib.Cal.Han.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["han"] = ilib.Cal.Han;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "date.js",
-        "util/utils.js",
-        "util/math.js",
-        "calendar.js",
-        "calendar/astro.js",
-        "calendar/handate.js",
-        "calendar/gregoriandate.js",
-        "calendar/gregratadie.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Cal.Han;

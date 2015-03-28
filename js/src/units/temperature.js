@@ -23,7 +23,8 @@ ilibglobal.js
 unit.js
 */
 
-var ilib = ilib || {Measurement:{}};
+var ilib = require("../ilibglobal.js");
+if (!ilib.Measurement) ilib.Measurement = require("../unit.js");
 
 /**
  * @class
@@ -216,10 +217,4 @@ ilib.Measurement.Temperature.prototype.localize = function(locale) {
 //register with the factory method
 ilib.Measurement._constructors["temperature"] = ilib.Measurement.Temperature;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "unit.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Measurement.Temperature;

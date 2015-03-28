@@ -36,7 +36,17 @@ util/jsutils.js
 // http://www.mentalfloss.com/blogs/archives/59277
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+ilib.extend(ilib, require("./util/jsutils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isAlpha) ilib.CType.isAlpha = require("./ctype.isalpha.js");
+if (!ilib.CType.isIdeo) ilib.CType.isIdeo = require("./ctype.isideo.js");
+if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
+if (!ilib.CType.isSpace) ilib.CType.isSpace = require("./ctype.isspace.js");
 
 /**
  * @class
@@ -1268,20 +1278,4 @@ ilib.Name.prototype = {
     }
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js",
-        "strings.js",
-        "nameprs.js",
-        "ctype.js",
-        "ctype.ispunct.js",
-        "ctype.isalpha.js", 
-        "ctype.isideo.js",
-        "ctype.isspace.js",
-        "util/jsutils.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.Name;

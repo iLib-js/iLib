@@ -22,7 +22,7 @@
 ilibglobal.js 
 */
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
 
 /**
  * @class
@@ -600,9 +600,4 @@ ilib._handlerFactory = function (locale, plan) {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.StateHandler;

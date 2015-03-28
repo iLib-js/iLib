@@ -26,7 +26,10 @@ util/utils.js
 
 // !data phoneloc
 
-var ilib = ilib || {Locale:{}};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
 
 /**
  * @class
@@ -237,11 +240,4 @@ ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 	return norm;
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.Locale.PhoneLoc;

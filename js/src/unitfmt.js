@@ -30,7 +30,14 @@ util/utils.js
 
 // !data unitfmt
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.ResBundle) ilib.ResBundle = require("./resources.js");
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.NumFmt) ilib.NumFmt = require("./numfmt.js");
 
 /**
  * @class
@@ -273,16 +280,4 @@ ilib.UnitFmt.prototype = {
     }
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "localeinfo.js",
-        "strings.js",
-        "resources.js",
-        "numfmt.js",
-        "util/utils.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.UnitFmt;

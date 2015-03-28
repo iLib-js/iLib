@@ -28,7 +28,15 @@ util/utils.js
 
 // !data name
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+
+if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.Name) ilib.Name = require("./nameprs.js");
+if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
 
 /**
  * @class
@@ -367,15 +375,4 @@ ilib.NameFmt.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js",
-        "strings.js",
-        "nameprs.js",
-        "ctype.ispunct.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.NameFmt;

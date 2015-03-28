@@ -19,7 +19,10 @@
 
 // !depends locale.js strings.js
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * @class
@@ -176,11 +179,4 @@ ilib.CaseMapper.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "strings.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.CaseMapper;

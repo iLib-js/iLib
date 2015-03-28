@@ -19,7 +19,11 @@
 
 // !depends ilibglobal.js strings.js util/utils.js locale.js
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * @class
@@ -174,13 +178,4 @@ ilib.StringMapper.prototype = {
 	}	
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js",
-        "strings.js"
-	]);
-	
-	return ilib;
-};
+module.exports = ilib.StringMapper;

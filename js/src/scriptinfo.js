@@ -21,7 +21,8 @@
 
 // !data scripts
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
 
 /**
  * @class
@@ -193,11 +194,4 @@ ilib.ScriptInfo.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "util/utils.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.ScriptInfo;

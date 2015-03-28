@@ -29,7 +29,14 @@ util/utils.js
 
 // !data phonefmt
 
-var ilib = ilib || {};
+var ilib = require("./ilibglobal.js");
+ilib.extend(ilib, require("./util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+
+if (!ilib.PhoneNumber) ilib.PhoneNumber = require("./phonenum.js");
+if (!ilib.NumPlan) ilib.NumPlan = require("./numplan.js");
+if (!ilib.Locale.PhoneLoc) ilib.Locale.PhoneLoc = require("./phoneloc.js");
 
 /**
  * @class
@@ -472,14 +479,4 @@ ilib.PhoneFmt.prototype = {
 	}
 };
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "locale.js",
-        "util/utils.js",
-        "phone/numplan.js",
-        "phone/phonenum.js",
-        "phone/phoneloc.js"
-    ]);
-	return ilib;
-};
+module.exports = ilib.PhoneFmt;

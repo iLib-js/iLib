@@ -20,7 +20,12 @@
 
 /* !depends ilibglobal.js calendar.js locale.js date.js util/utils.js */
 
-var ilib = ilib || {Cal:{}};
+var ilib = require("../ilibglobal.js");
+ilib.extend(ilib, require("../util/utils.js"));
+
+if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
 /**
  * @class
@@ -54,14 +59,4 @@ ilib.Cal.Coptic.prototype.newDateInstance = function (options) {
 /* register this calendar for the factory method */
 ilib.Cal._constructors["coptic"] = ilib.Cal.Coptic;
 
-module.exports = function(loader) {
-	loader.require([
-        "ilibglobal.js",
-        "date.js",
-        "util/utils.js",
-        "calendar.js",
-        "calendar/copticdate.js"
-    ]);
-	
-	return ilib;
-};
+module.exports = ilib.Cal.Coptic;
