@@ -38,7 +38,7 @@ if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
 if (!ilib.Date) ilib.Date = require("../date.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
-if (!ilib.Cal.Persian) ilib.Cal.Persian = require("./persianastro.js");
+if (!ilib.Cal.PersianAlgo) ilib.Cal.PersianAlgo = require("./persian.js");
 
 /**
  * @class

@@ -47,7 +47,7 @@ if (!ilib.Cal) ilib.Cal = require("./calendar.js");
 if (!ilib.DateFmt) ilib.DateFmt = require("./datefmt.js");
 if (!ilib.String) ilib.String = require("./strings.js");
 if (!ilib.TimeZone) ilib.TimeZone = require("./timezone.js");
-if (!ilib.Gregorian) ilib.Gregorian = require("./calendar/gregorian.js");
+if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./calendar/gregorian.js");
 
 /**
  * @class

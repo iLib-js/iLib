@@ -40,7 +40,7 @@ if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
 
 if (!ilib.Date) ilib.Date = require("./date.js");
 if (!ilib.Cal) ilib.Cal = require("./calendar.js");
-if (!ilib.Date.Gregorian) ilib.Date.Gregorian = require("./calendar/gregorian.js");
+if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./calendar/gregorian.js");
 if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");
 
 if (!ilib.String) ilib.String = require("./strings.js");

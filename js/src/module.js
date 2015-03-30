@@ -1,7 +1,8 @@
 /*
- * externs.js - define externs for the google closure compiler
+ * module.js - glue file to define missing pieces for the assembled 
+ * versions of ilib
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +18,7 @@
  * limitations under the License.
  */
 
-function console(str){};
-function JSON(str){};
-console.log = function (str){};
-var PalmSystem, process, require, environment, exports, global, Intl;
+var module = {
+	exports: {},
+	filename: null
+};

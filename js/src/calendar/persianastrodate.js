@@ -42,9 +42,9 @@ if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
 if (!ilib.Date) ilib.Date = require("../date.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 
-if (!ilib.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
 if (!ilib.Cal.Persian) ilib.Cal.Persian = require("./persianastro.js");
-if (!ilib.Date.PersRataDie) ilib.Date.PersRataDie = require("./persratadie.js");
+if (!ilib.Date.PersAstroRataDie) ilib.Date.PersAstroRataDie = require("./persratadie.js");
 
 /**
  * @class

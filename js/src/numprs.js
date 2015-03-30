@@ -35,8 +35,8 @@ if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
 
 if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.isdigit.js");
-if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.isspace.js");
+if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
+if (!ilib.CType.isSpace) ilib.CType.isSpace = require("./ctype.isspace.js");
 
 if (!ilib.Currency) ilib.Currency = require("./currency.js");
 

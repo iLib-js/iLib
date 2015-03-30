@@ -37,7 +37,7 @@ if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
 if (!ilib.Locale) ilib.Locale = require("../locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
 if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
 if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 if (!ilib.Cal.Han) ilib.Cal.Han = require("./han.js");

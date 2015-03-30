@@ -25,8 +25,8 @@ localeinfo.js
 
 var ilib = require("./ilibglobal.js");
 
-ilib.Locale = require("./locale.js");
-ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
 
 /**
  * Interface that all calendars must implement.

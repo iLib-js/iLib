@@ -30,9 +30,9 @@ util/utils.js
 var ilib = require("./ilibglobal.js");
 if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 
-ilib.Locale = require("./locale.js");
-ilib.Address = require("./addressprs.js");
-ilib.String = require("./strings.js");
+if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.Address) ilib.Address = require("./addressprs.js");
+if (!ilib.String) ilib.String = require("./strings.js");
 
 /**
  * @class
