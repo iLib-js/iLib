@@ -17,9 +17,10 @@
  * limitations under the License.
  */
 
-/* !depends ilibglobal.js locale.js localeinfo.js julianday.js */
+/* !depends ilibglobal.js locale.js localeinfo.js julianday.js util/jsutils.js */
 
 var ilib = require("./ilibglobal.js");
+if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
@@ -175,7 +176,7 @@ ilib.Date._dateToIlib = function(inDate, timezone, locale) {
 	if (inDate instanceof ilib.Date) {
 		return inDate;
 	}
-	if (inDate instanceof Date) {
+	if (ilib.isDate(inDate)) {
 		return ilib.Date.newInstance({
 			unixtime: inDate.getTime(),
 			timezone: timezone,

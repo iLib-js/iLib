@@ -66,7 +66,6 @@ var webLoader = function(ilibobj) {
 	}
 	
 	this.ilibobj = ilibobj;
-	this.fileNameCache = {};
 };
 
 webLoader.prototype._loadFile = function (pathname, sync, success, failure) {
@@ -273,49 +272,6 @@ webLoader.prototype.merge = function (object1, object2) {
 	}
 	return object1;
 };
-
-webLoader.prototype.require = function(pathname) {
-	//	console.log("typeof(this.code) is " + typeof(this.code));
-	//	console.log("typeof(pathname) is " + typeof(pathname));
-	var paths = (typeof(pathname) === 'string') ? [pathname] : pathname;
-	var mod, submodule = {};
-	for (var i = 0; i < paths.length; i++) {
-		if (!this.fileNameCache[paths[i]]) {
-			var text = this._loadFile(path.join(this.code, paths[i]), true, undefined);
-			if (text) {
-				// remove the ilib definition so that the things that file defines
-				// go to the global ilib rather than the local one
-				text = text.replace(/var ilib = [^;]*;/, "var xilib = {};");
-				text = text.replace(/\nilib\./g, "\nxilib.");
-				text = text.replace(/return ilib;/, "return xilib;");
-				
-				// console.log("text is " + text);
-				eval(text);
-				
-				mod = module.exports(this);
-				this.merge(submodule, mod);
-				this.merge(this.ilibobj, mod);
-				/*
-				for (var prop in submodule) {
-					console.log("assigning " + prop);
-					obj[prop] = submodule[prop];
-				}
-				*/
-			}
-			this.fileNameCache[paths[i]] = true;
-		}
-	}
-	return submodule;
-};
-
-webLoader.prototype.clearRequireCache = function() {
-	this.fileNameCache = {};
-};
-
-webLoader.prototype.getTarget = function () {
-	return this.ilibobj;
-};
-
 
 var ilib = {};
 var loader = new webLoader(ilib);

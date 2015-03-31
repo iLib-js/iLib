@@ -65,7 +65,7 @@ public class JSFile
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
         
         deletePatterns.add(Pattern.compile("var ilib = require[^;]*;\\n"));
-        deletePatterns.add(Pattern.compile("module.exports = [^;]*;\\n"));
+        deletePatterns.add(Pattern.compile("module.exports = [^;]*;"));
     }
     
     /**

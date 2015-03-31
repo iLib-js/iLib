@@ -141,7 +141,29 @@ TestSuite.prototype = {
 						msg += t + ": " + e.stackTrace;
 					}
 				} else {
-					msg += e.toString();
+					var extra = "";
+					if (e.fileName) {
+						extra += e.fileName;
+					}
+					if (e.lineNumber) {
+						extra += "(" + e.linenumber + ")";
+					}
+					if (e.message) {
+						if (extra.length > 0) {
+							extra += ": " + e.message;
+						}
+						extra += e.message;
+					}
+					if (e.stack) {
+						if (extra.length > 0) {
+							extra += "\n";
+						}
+						extra += e.stack;
+					}
+					if (extra.length === 0) {
+						extra += e.toString();
+					}
+					msg += extra;
 				}
 				msg += '\n';
 				util.print(msg);

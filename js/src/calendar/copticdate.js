@@ -30,8 +30,8 @@ calendar/ethiopicdate.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
-ilib.extend(ilib, require("../util/jsutils.js"));
+if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.shallowCopy) ilib.extend(ilib, require("../util/jsutils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("../locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");

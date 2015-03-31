@@ -22,6 +22,9 @@ var path = require("path"),
 	fs = require("fs"),
 	util = require("util");
 
+//var	loaderFactory = require("../nodeloader.js");
+//ilib.setLoaderCallback(loaderFactory(ilib));
+
 var nodeLoader = function (ilibobj) {
 	// util.print("new nodeLoader instance\n");
 

@@ -51,6 +51,7 @@ utils.deepCopy =
 /**
  * Perform a recursive deep copy from the "from" object to the "deep" object.
  * 
+ * @static
  * @param {Object} from the object to copy from
  * @param {Object} to the object to copy to
  * @return {Object} a reference to the the "to" object
@@ -127,10 +128,10 @@ ilib.indexOf = function(array, obj) {
 
 utils.toHexString = 
 /**
- * @static
  * Convert a string into the hexadecimal representation
  * of the Unicode characters in that string.
  * 
+ * @static
  * @param {string} string The string to convert
  * @param {number=} limit the number of digits to use to represent the character (1 to 8)
  * @return {string} a hexadecimal representation of the
@@ -149,6 +150,42 @@ ilib.toHexString = function(string, limit) {
 		result += "00000000".substring(0, lim-ch.length) + ch;
 	}
 	return result.toUpperCase();
+};
+
+utils.isArray = 
+/**
+ * Test whether an object in an javascript array. 
+ * 
+ * @static
+ * @param {*} object The object to test
+ * @return {boolean} return true if the object is an array
+ * and false otherwise
+ */
+ilib.isArray = function(object) {
+	var o;
+	if (typeof(object) === 'object') {
+		o = /** @type {Object|null|undefined} */ object;
+		return Object.prototype.toString.call(o) === '[object Array]';
+	}
+	return false; 
+};
+
+utils.isDate = 
+/**
+ * Test whether an object in a Javascript Date. 
+ * 
+ * @static
+ * @param {*} object The object to test
+ * @return {boolean} return true if the object is a Date
+ * and false otherwise
+ */
+ilib.isDate = function(object) {
+	var o;
+	if (typeof(object) === 'object') {
+		o = /** @type {Object|null|undefined} */ object;
+		return Object.prototype.toString.call(o) === '[object Date]';
+	}
+	return false; 
 };
 
 module.exports = utils;

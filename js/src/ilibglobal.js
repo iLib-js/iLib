@@ -106,10 +106,10 @@ ilib._getPlatform = function () {
     if (!ilib._platform) {
         if (typeof(environment) !== 'undefined') {
             ilib._platform = "rhino";
-        } else if (typeof(global) === 'object' && typeof(global.process) === 'object' || typeof(global.require) === 'function') {
-            ilib._platform = "nodejs";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+        } else if (typeof(global) === 'object') {
+            ilib._platform = "nodejs";
         } else {
             ilib._platform = "unknown";
         }
@@ -459,30 +459,6 @@ ilib.Loader.prototype.listAvailableFiles = function() {};
  * false otherwise
  */
 ilib.Loader.prototype.isAvailable = function(path) {};
-
-/**
- * Load an ilib javascript module in to memory and initialize it. This function is
- * used for the module system which loads ilib code dynamically as it is needed.
- * The module loaded by require() may itself call require() for its dependencies,
- * meaning that one call to require may result in the loading of multiple JS files.
- * The module system is roughly modeled on the nodejs module system, and is actually
- * implemented on top of the nodejs module system when run on nodejs itself.<p>
- * 
- * The loader should cache the file names of the code files it has already loaded 
- * and avoid loading them again upon the second call to require with the same
- * file name. This way, files that multiple other files depend upon will only 
- * get loaded once. 
- * 
- * @param {string|Array.<string>} path Path or array of paths to modules to load
- * @returns {Object} the object/namespace where the module loads itself
- */
-ilib.Loader.prototype.require = function(path) {};
-
-/**
- * Clear the cache of files names already loaded in order to cause require() to
- * load them again. This is mainly used for debugging and unit testing.
- */
-ilib.Loader.prototype.clearRequireCache = function() {};
 
 /**
  * Set the custom loader used to load ilib's locale data in your environment. 

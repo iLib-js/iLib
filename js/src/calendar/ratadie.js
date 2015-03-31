@@ -21,10 +21,12 @@
 ilibglobal.js
 julianday.js
 util/math.js
+util/jsutils.js
 */
 
 var ilib = require("../ilibglobal.js");
 if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.shallowCopy) ilib.extend(ilib, require("../util/jsutils.js"));
 
 if (!ilib.JulianDay) ilib.Date = require("../julianday.js");
 
@@ -93,7 +95,7 @@ ilib.Date.RataDie = function(params) {
 		if (typeof(params.date) !== 'undefined') {
 			// accept JS Date classes or strings
 			var date = params.date;
-			if (!(date instanceof Date)) {
+			if (!(ilib.isDate(date))) {
 				date = new Date(date); // maybe a string initializer?
 			}
 			this._setTime(date.getTime());

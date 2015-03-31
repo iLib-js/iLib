@@ -436,8 +436,8 @@ ilib.Name.prototype = {
                     prefix = prefixArray.join(this.isAsianName ? '' : ' ');
                     prefixLower = prefix.toLowerCase();
                     prefixLower = prefixLower.replace(/[,\.]/g, ''); // ignore commas and periods
-                    if (this.info.prefixes &&
-                        (this.info.prefixes.indexOf(prefixLower) > -1 || this._isConjunction(prefixLower))) {
+                    if (ilib.isArray(this.info.prefixes) &&
+                        (ilib.indexOf(this.info.prefixes, prefixLower) > -1 || this._isConjunction(prefixLower))) {
                         if (this.prefix) {
                             if (!this.isAsianName) {
                                 this.prefix += ' ';
@@ -458,7 +458,7 @@ ilib.Name.prototype = {
                     suffix = suffixArray.join(this.isAsianName ? '' : ' ');
                     suffixLower = suffix.toLowerCase();
                     suffixLower = suffixLower.replace(/[\.]/g, ''); // ignore periods
-                    if (this.info.suffixes && this.info.suffixes.indexOf(suffixLower) > -1) {
+                    if (ilib.isArray(this.info.suffixes) && ilib.indexOf(this.info.suffixes, suffixLower) > -1) {
                         if (this.suffix) {
                             if (!this.isAsianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
                                 this.suffix = ' ' + this.suffix;

@@ -21,7 +21,6 @@
  */
 
 /* !depends
-module.js
 ilibglobal.js
 daterangefmt.js
 date.js

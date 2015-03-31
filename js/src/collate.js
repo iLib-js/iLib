@@ -17,12 +17,13 @@
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js util/math.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js util/math.js util/jsutils.js
 
 // !data collation
 
 var ilib = require("./ilibglobal.js");
 if (!ilib.signum) ilib.extend(ilib, require("./util/math.js"));
+if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.Number) ilib.Number = require("./numprs.js");
@@ -614,7 +615,7 @@ ilib.Collator.prototype = {
 	 * @return {Array.<number>} a bit-packed array of numbers
 	 */
 	_packRule: function(rule) {
-		if (rule[0] instanceof Array) {
+		if (ilib.isArray(rule[0])) {
 			var ret = [];
 			for (var i = 0; i < rule.length; i++) {
 				ret.push(this._pack(rule[i]));

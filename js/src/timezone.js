@@ -24,6 +24,7 @@ locale.js
 localeinfo.js
 util/utils.js
 util/math.js
+util/jsutils.js
 calendar/gregratadie.js
 strings.js
 calendar/gregorian.js
@@ -34,6 +35,7 @@ calendar/gregorian.js
 var ilib = require("./ilibglobal.js");
 if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
 if (!ilib.signum) ilib.extend(ilib, require("./util/math.js"));
+if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
 
 if (!ilib.Locale) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
@@ -294,11 +296,11 @@ ilib.TimeZone.getAvailableIds = function (country) {
 	
 	if (!ilib.data.timezone.list) {
 		ilib.data.timezone.list = [];
-		if (ilib._load instanceof ilib.Loader) {
+		if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
 			var hash = ilib._load.listAvailableFiles();
 			for (var dir in hash) {
 				var files = hash[dir];
-				if (typeof(files) === 'object' && files instanceof Array) {
+				if (ilib.isArray(files)) {
 					files.forEach(function (filename) {
 						if (filename && filename.match(/^zoneinfo/)) {
 							ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));

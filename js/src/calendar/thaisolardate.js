@@ -26,7 +26,7 @@ calendar/thaisolar.js
 */
 
 var ilib = require("../ilibglobal.js");
-ilib.extend(ilib, require("../util/jsutils.js"));
+if (!ilib.bind) ilib.extend(ilib, require("../util/jsutils.js"));
 
 if (!ilib.Cal) ilib.Cal = require("../calendar.js");
 if (!ilib.Date) ilib.Date = require("../date.js");

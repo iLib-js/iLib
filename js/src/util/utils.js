@@ -103,7 +103,7 @@ ilib.merge = function (object1, object2, replace, name1, name2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
 			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
 				if (typeof(replace) !== 'boolean' || !replace) {
-					newObj[prop] = new Array();
+					newObj[prop] = [];
 					newObj[prop] = newObj[prop].concat(object1[prop]);
 					newObj[prop] = newObj[prop].concat(object2[prop]);
 				} else {
