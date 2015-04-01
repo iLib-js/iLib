@@ -1740,3 +1740,319 @@ function testUnitFormatUseNativeDefault() {
     var str = uf.format(m1);
     assertEquals("১,০০০ সেন্টিমিটার", str);
 }
+
+/*Zh units*/
+
+
+function testUnitFormatzhHansCN() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一,〇〇〇厘米", str);
+}
+
+function testUnitFormatUseNativezhHansHK() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+    var str = uf.format(m1);
+    assertEquals("1,000厘米", str);
+}
+
+
+function testUnitFormatzhHansSG() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一,〇〇〇厘米", str);
+}
+
+function testUnitFormatUseNativezhHansMO() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+    var str = uf.format(m1);
+    assertEquals("1,000厘米", str);
+}
+
+
+
+function testUnitFormatzhHantHK() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一,〇〇〇 公分", str);
+}
+
+function testUnitFormatUseNativezhHantMO() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+    var str = uf.format(m1);
+    assertEquals("1,000 公分", str);
+}
+
+
+function testUnitFormatzhHantMY() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MY",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一,〇〇〇 公分", str);
+}
+
+function testUnitFormatUseNativezhHantTW() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+    var str = uf.format(m1);
+    assertEquals("1,000 公分", str);
+}
+
+function testUnitFormatUseNativezhHantUS() {
+    var m1 = new ilib.Measurement({
+        unit: "cm",
+        amount: 1000
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+    var str = uf.format(m1);
+    assertEquals("1,000 公分", str);
+}
+
+/*Kelvin*/
+
+
+function testUnitFormatzhHansCNKelvin() {
+    var m1 = new ilib.Measurement({
+       	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("二八五.三开尔文", str);
+}
+
+function testUnitFormatUseNativezhHansHKKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+    var str = uf.format(m1);
+    assertEquals("285.3开尔文", str);
+}
+
+
+function testUnitFormatzhHansSGKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("二八五.三开尔文", str);
+}
+
+function testUnitFormatUseNativezhHansMOKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+    var str = uf.format(m1);
+    assertEquals("285.3开尔文", str);
+}
+
+
+
+function testUnitFormatzhHantHKKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("二八五.三 K", str);
+}
+
+function testUnitFormatUseNativezhHantMOKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+    var str = uf.format(m1);
+    assertEquals("285.3 K", str);
+}
+
+
+function testUnitFormatzhHantMYKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MY",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("二八五.三 K", str);
+}
+
+function testUnitFormatUseNativezhHantTWKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+    var str = uf.format(m1);
+    assertEquals("285.3 K", str);
+}
+
+function testUnitFormatUseNativezhHantUSKelvin() {
+    var m1 = new ilib.Measurement({
+	unit: "kelvin",
+	amount: 285.3
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+    var str = uf.format(m1);
+    assertEquals("285.3 K", str);
+}
+
+/*hectare*/
+
+
+function testUnitFormatzhHansCNHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一〇〇公顷", str);
+}
+
+function testUnitFormatzhHansHKHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+    var str = uf.format(m1);
+    assertEquals("100公顷", str);
+}
+
+
+function testUnitFormatzhHansSGHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一〇〇公顷", str);
+}
+
+function testUnitFormatUseNativezhHansMOHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+    var str = uf.format(m1);
+    assertEquals("100公顷", str);
+}
+
+function testUnitFormatzhHantHKHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+    var str = uf.format(m1);
+    assertEquals("一〇〇 公頃", str);
+}
+
+function testUnitFormatUsezhHantMOHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+    var str = uf.format(m1);
+    assertEquals("100 公頃", str);
+}
+
+
+function testUnitFormatUsezhHantMOHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MY"});
+    var str = uf.format(m1);
+    assertEquals("100 公頃", str);
+}
+
+function testUnitFormatUseNativezhHantTWHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+    var str = uf.format(m1);
+    assertEquals("100 公頃", str);
+}
+
+function testUnitFormatUseNativezhHantUSHectare() {
+    var m1 = new ilib.Measurement({
+	unit: "hectare",
+	amount: 100
+    });
+
+    var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+    var str = uf.format(m1);
+    assertEquals("100 公頃", str);
+}
