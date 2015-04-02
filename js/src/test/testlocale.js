@@ -183,26 +183,6 @@ function testLocaleEqualsTrue() {
     assertTrue(loc1.equals(loc2));
 }
 
-function testLocaleEqualsTrue2() {
-    var loc1 = new ilib.Locale("en-us"),
-        loc2 = new ilib.Locale("en", "US");
-    
-    assertNotNull(loc1);
-    assertNotNull(loc2);
-    
-    assertTrue(loc1.equals(loc2));
-}
-
-function testLocaleEqualsTrue3() {
-    var loc1 = new ilib.Locale("en-us"),
-        loc2 = new ilib.Locale("en-US");
-    
-    assertNotNull(loc1);
-    assertNotNull(loc2);
-    
-    assertTrue(loc1.equals(loc2));
-}
-
 function testLocaleEqualsFalse() {
     var loc1 = new ilib.Locale("en-US"),
         loc2 = new ilib.Locale("en", "CA");

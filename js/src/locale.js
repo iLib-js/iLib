@@ -68,12 +68,6 @@
  */
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-
-		//Fix for Android system WebView ver.40	 i.e) new ilib.Locale("en-us");
-		if (language && typeof(language) == 'string' && language.length == 5 && ilib.Locale._notUpper(language.charAt(0))) {
-			language = language.substring(0,3) + language.substring(3,5).toUpperCase();
-		}
-
 		var spec = language || ilib.getLocale();
 
 		if (typeof(spec) === 'string') {

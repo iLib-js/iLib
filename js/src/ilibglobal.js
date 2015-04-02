@@ -184,11 +184,8 @@ ilib._isGlobal = function(name) {
  */
 ilib.setLocale = function (spec) {
     if (typeof(spec) === 'string' || !spec) {
-        if (typeof(spec) === 'string') {//Fix for Android system WebView ver. 40
-            spec = spec.substring(0,3) + spec.substring(3,5).toUpperCase();    
-        }
         ilib.locale = spec;
-    } 
+    }
     // else ignore other data types, as we don't have the dependencies
     // to look into them to find a locale
 };
