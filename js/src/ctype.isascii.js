@@ -23,8 +23,8 @@
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
 
 /**
  * Return whether or not the first character is in the ASCII range.<p>
@@ -62,4 +62,4 @@ ilib.CType.isAscii._init = function (sync, loadParams, onLoad) {
 	ilib.CType._init(sync, loadParams, onLoad);
 };
 
-module.exports = ilib.CType.isisAsciiAlnum;
+module.exports = ilib.CType.isAscii;

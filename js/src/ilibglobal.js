@@ -38,12 +38,14 @@ ilib.getVersion = function () {
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-    norm: {
+	/** @type {null|{nfc:Object.<string,string>,nfd:Object.<string,string>,nfkd:Object.<string,string>,ccc:Object.<string,number>}} */
+    norm: null,
+    /* {
         nfc: {},
         nfd: {},
         nfkd: {},
         ccc: {}
-    },
+    }, */
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}

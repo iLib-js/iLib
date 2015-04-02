@@ -34,13 +34,13 @@ calendar/gregratadie.js
  */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");
-if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./gregratadie.js");
+if (!ilib.Date.GregDate || ilib.Date.GregDate.stub) ilib.Date.GregDate = require("./gregoriandate.js");
+if (!ilib.Date.GregRataDie || ilib.Date.GregRataDie.stub) ilib.Date.GregRataDie = require("./gregratadie.js");
 
 (function() {
 	var astro = {};

@@ -23,7 +23,7 @@
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.Locale) ilib.Locale = require("./Locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./Locale.js");
 
 /**
  * @class

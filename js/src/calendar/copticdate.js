@@ -30,16 +30,16 @@ calendar/ethiopicdate.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("../util/jsutils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("../util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("../locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Date.EthiopicDate) ilib.Date.EthiopicDate = require("../ethiopicdate.js");
-if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
-if (!ilib.Cal.Coptic) ilib.Cal.Coptic = require("../coptic.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Date.EthiopicDate || ilib.Date.EthiopicDate.stub) ilib.Date.EthiopicDate = require("../ethiopicdate.js");
+if (!ilib.TimeZone || ilib.TimeZone.stub) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
+if (!ilib.Cal.Coptic || ilib.Cal.Coptic.stub) ilib.Cal.Coptic = require("../coptic.js");
 
 /**
  * @class

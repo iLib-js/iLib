@@ -34,17 +34,17 @@ util/utils.js
 // !resbundle sysres
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
 
-if (!ilib.Date) ilib.Date = require("./date.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("./date.js");
 
-if (!ilib.DateFmt) ilib.DateFmt = require("./datefmt.js");
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.ResBundle) ilib.ResBundle = require("./resources.js");
+if (!ilib.DateFmt || ilib.DateFmt.stub) ilib.DateFmt = require("./datefmt.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.ResBundle || ilib.ResBundle.stub) ilib.ResBundle = require("./resources.js");
 
 /**
  * @class

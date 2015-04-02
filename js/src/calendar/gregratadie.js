@@ -26,11 +26,11 @@ util/math.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./gregorian.js");
-if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Cal.Gregorian || ilib.Cal.Gregorian.stub) ilib.Cal.Gregorian = require("./gregorian.js");
+if (!ilib.Date.RataDie || ilib.Date.RataDie.stub) ilib.Date.RataDie = require("./ratadie.js");
 
 /**
  * @class

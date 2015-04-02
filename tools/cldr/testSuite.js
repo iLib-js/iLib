@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var JsUnit = require("../../js/src/testcli/runner.js");
+var JsUnit = require("../../js/src/runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 

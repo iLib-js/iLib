@@ -25,10 +25,10 @@ util/jsutils.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("../util/jsutils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("../util/jsutils.js"));
 
-if (!ilib.JulianDay) ilib.Date = require("../julianday.js");
+if (!ilib.JulianDay || ilib.JulianDay.stub) ilib.Date = require("../julianday.js");
 
 /**
  * @class

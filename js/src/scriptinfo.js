@@ -22,7 +22,7 @@
 // !data scripts
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
 /**
  * @class

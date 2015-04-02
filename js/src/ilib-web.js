@@ -108,12 +108,14 @@ requireClass.prototype.require = function(pathname) {
 	
 	var text = loadFile(pathname, true);
 	var dirname = path.dirname(pathname);
-	var match;
+	var match, replacement;
 	
 	if (text) {
 		text = 'var module={exports:{},filename:"' + pathname + '"};' + text;
 		while ((match = this.updateRequire.exec(text)) !== null) {
-			text = text.replace(match[1], '"' + dirname + '/" + ' + match[1]);
+			replacement = '"' + dirname + '/" + ' + match[1];
+			text = text.replace(new RegExp(match[1], "g"), replacement);
+			this.updateRequire.lastIndex = match.index + replacement.length;
 		}
 		// console.log("text is " + text);
 		eval(text);
@@ -133,7 +135,4 @@ var webLoader = require("./webloader.js");
 var ilib = require("./ilibglobal.js");
 ilib.setLoaderCallback(new webLoader(ilib));
 
-ilib.DateFmt = function(options) {
-	ilib.DateFmt = require("./datefmt.js");
-	return ilib.DateFmt(options);
-};
+require("./ilib-stubs.js");

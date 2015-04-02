@@ -22,16 +22,16 @@
 // !data collation
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("./util/math.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("./util/math.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.Number) ilib.Number = require("./numprs.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Number || ilib.Number.stub) ilib.Number = require("./numprs.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isPunct || ilib.CType.isPunct.stub) ilib.CType.isPunct = require("./ctype.ispunct.js");
 
-if (!ilib.NormString) ilib.NormString = require("./normstring.js");
+if (!ilib.NormString || ilib.NormString.stub) ilib.NormString = require("./normstring.js");
 
 /**
  * @class

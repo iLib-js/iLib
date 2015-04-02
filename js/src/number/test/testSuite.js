@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var cli = require('../testcli/runner.js');
+var cli = require('./runner.js');
 
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("number/test/" + path);

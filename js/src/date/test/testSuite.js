@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var cli = require('../testcli/runner.js');
+var cli = require('./runner.js');
 
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("date/test/" + path);
@@ -31,7 +31,7 @@ function suite() {
     var suites = [
 		"testdatefmt_af_NA.js",
 		"testdatefmt_af_ZA.js",
-        	"testdatefmt_am_ET.js",
+        "testdatefmt_am_ET.js",
    		"testdatefmt_ar_SA.js",
 		"testdatefmt_as_IN.js",
 		"testdatefmt_bg.js",

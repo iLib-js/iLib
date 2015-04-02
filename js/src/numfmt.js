@@ -33,15 +33,15 @@ numprs.js
 // !data localeinfo currency
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
-if (!ilib.signum) ilib.extend(ilib, require("./util/math.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("./util/math.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
-if (!ilib.Currency) ilib.Currency = require("./currency.js");
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.Number) ilib.Number = require("./numprs.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Currency || ilib.Currency.stub) ilib.Currency = require("./currency.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.Number || ilib.Number.stub) ilib.Number = require("./numprs.js");
 
 /**
  * @class

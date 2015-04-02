@@ -23,7 +23,7 @@ ilibglobal.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.Measurement) ilib.Measurement = require("../unit.js");
+if (!ilib.Measurement || ilib.Measurement.stub) ilib.Measurement = require("../unit.js");
 
 /**
  * @class

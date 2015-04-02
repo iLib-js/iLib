@@ -20,10 +20,10 @@
 // !depends strings.js glyphstring.js util/utils.js
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.GlyphString) ilib.GlyphString = require("./glyphstring.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.GlyphString || ilib.GlyphString.stub) ilib.GlyphString = require("./glyphstring.js");
 
 /**
  * @class
@@ -40,7 +40,7 @@ ilib.NormString = function (str) {
 	ilib.GlyphString.call(this, str);
 };
 
-ilib.NormString.prototype = new ilib.GlyphString();
+ilib.NormString.prototype = new ilib.GlyphString("", {noinstance:true});
 ilib.NormString.parent = ilib.GlyphString;
 ilib.NormString.prototype.constructor = ilib.NormString;
 
@@ -67,7 +67,7 @@ ilib.NormString.prototype.constructor = ilib.NormString;
  * how to initialize the data
  */
 ilib.NormString.init = function(options) {
-	if (!ilib._load || (typeof(ilib._load) !== 'function' && !(ilib._load instanceof ilib.Loader))) {
+	if (!ilib._load || (typeof(ilib._load) !== 'function' && typeof(ilib._load.loadFiles) !== 'function')) {
 		// can't do anything
 		return;
 	}

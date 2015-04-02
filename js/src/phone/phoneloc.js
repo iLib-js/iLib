@@ -27,9 +27,9 @@ util/utils.js
 // !data phoneloc
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 
 /**
  * @class

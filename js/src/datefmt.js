@@ -35,19 +35,19 @@ util/utils.js
 // !data dateformats sysres
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
 
-if (!ilib.Date) ilib.Date = require("./date.js");
-if (!ilib.Cal) ilib.Cal = require("./calendar.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("./date.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("./calendar.js");
 
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.ResBundle) ilib.ResBundle = require("./resources.js");
-if (!ilib.TimeZone) ilib.TimeZone = require("./timezone.js");
-if (!ilib.Cal.Gregorian) ilib.Cal.Gregorian = require("./calendar/gregorian.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.ResBundle || ilib.ResBundle.stub) ilib.ResBundle = require("./resources.js");
+if (!ilib.TimeZone || ilib.TimeZone.stub) ilib.TimeZone = require("./timezone.js");
+if (!ilib.Cal.Gregorian || ilib.Cal.Gregorian.stub) ilib.Cal.Gregorian = require("./calendar/gregorian.js");
 
 /**
  * @class
@@ -429,13 +429,19 @@ ilib.DateFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+			if (!ilib.Date._constructors[this.calName]) {
+				// If we are running in the dynamic code loading assembly of ilib, the following
+				// will attempt to dynamically load the calendar date class for this calendar. If 
+				// it doesn't work, this just goes on and it will use Gregorian instead.
+				ilib.Date._dynLoadCalendar(this.calName);
+			}
+			
 			this.cal = ilib.Cal.newInstance({
 				type: this.calName
 			});
 			if (!this.cal) {
 				this.cal = new ilib.Cal.Gregorian();
 			}
-			
 			if (this.meridiems === "default") {
 				this.meridiems = li.getMeridiemsStyle();
 			}

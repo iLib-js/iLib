@@ -19,7 +19,7 @@
 
 var util = require("util");
 
-var JsUnit = require("./testcli/runner.js");
+var JsUnit = require("./runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 

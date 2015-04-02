@@ -29,14 +29,14 @@ util/utils.js
 // !data name
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.Name) ilib.Name = require("./nameprs.js");
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.Name || ilib.Name.stub) ilib.Name = require("./nameprs.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isPunct || ilib.CType.isPunct.stub) ilib.CType.isPunct = require("./ctype.ispunct.js");
 
 /**
  * @class

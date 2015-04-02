@@ -21,10 +21,10 @@
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.CType.isAlpha) ilib.CType.isAlpha = require("./ctype.isalpha.js");
-if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.CType.isAlpha || ilib.CType.isAlpha.stub) ilib.CType.isAlpha = require("./ctype.isalpha.js");
+if (!ilib.CType.isDigit || ilib.CType.isDigit.stub) ilib.CType.isDigit = require("./ctype.isdigit.js");
 
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
@@ -34,7 +34,7 @@ if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
  * @param {string|ilib.String|number} ch character or code point to examine
  * @return {boolean} true if the first character is alphabetic or numeric
  */
-ilib.CType.isAlnum = function isAlnum(ch) {
+ilib.CType.isAlnum = function (ch) {
 	var num;
 	switch (typeof(ch)) {
 		case 'number':

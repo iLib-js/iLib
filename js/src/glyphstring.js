@@ -22,10 +22,10 @@
 // !data norm ctype_m
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.CType) ilib.CType = require("./ctype.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
 
 /**
  * @class
@@ -101,6 +101,10 @@ if (!ilib.CType) ilib.CType = require("./ctype.js");
  * @param {Object=} options options governing the way this instance works
  */
 ilib.GlyphString = function (str, options) {
+	if (options && options.noinstance) {
+		return;
+	}
+	
 	ilib.String.call(this, str);
 	
 	var sync = true;
@@ -115,7 +119,7 @@ ilib.GlyphString = function (str, options) {
 	}
 	
 	ilib.CType._load("ctype_m", sync, loadParams, function() {
-		if (typeof(ilib.data.norm) === 'undefined' || typeof(ilib.data.norm.ccc) === 'undefined') {
+		if (!ilib.data.norm || ilib.isEmpty(ilib.data.norm.ccc)) {
 			ilib.loadData({
 				object: ilib.GlyphString, 
 				locale: "-", 
@@ -138,7 +142,7 @@ ilib.GlyphString = function (str, options) {
 	});
 };
 
-ilib.GlyphString.prototype = new ilib.String();
+ilib.GlyphString.prototype = new ilib.String(undefined);
 ilib.GlyphString.parent = ilib.String;
 ilib.GlyphString.prototype.constructor = ilib.GlyphString;
 
@@ -239,7 +243,7 @@ ilib.GlyphString._composeJamoLVT = function (lead, trail) {
  * @static
  * @param {string} lead leading character to compose
  * @param {string} trail the trailing character to compose
- * @return {string} the fully composed character, or undefined if
+ * @return {string|null} the fully composed character, or undefined if
  * there is no composition for those two characters
  */
 ilib.GlyphString._compose = function (lead, trail) {

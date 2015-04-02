@@ -112,14 +112,14 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 			console.log("web loader: attempting sync load " + filepath + "\n");
 			var text = this._loadFile(filepath, true);
 			if (text) {
-				console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+				console.log("web loader: load " + filepath + (text ? " succeeded\n" : " failed\n"));
 				ret.push(JSON.parse(text));
 			} else { 
 				filepath = path.join(resources, p);
 				console.log("web loader: attempting sync load resources " + filepath + "\n");
 				text = this._loadFile(filepath, true);
 				if (text) {
-					console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+					console.log("web loader: load " + filepath + (text ? " succeeded\n" : " failed\n"));
 					ret.push(JSON.parse(text));
 				} else {
 					ret.push(undefined);

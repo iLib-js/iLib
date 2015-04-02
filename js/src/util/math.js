@@ -46,86 +46,86 @@ utils._roundFnc =
 /**
  * @protected
  */
-ilib._roundFnc = {
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @static
-	 * @protected
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
+ilib._roundFnc = {};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.floor = function (num) {
+	return Math.floor(num);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.ceiling = function (num) {
+	return Math.ceil(num);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.down = function (num) {
+	return (num < 0) ? Math.ceil(num) : Math.floor(num);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.up = function (num) {
+	return (num < 0) ? Math.floor(num) : Math.ceil(num);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.halfup = function (num) {
+	return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.halfdown = function (num) {
+	return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.halfeven = function (num) {
+	return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+};
+
+/**
+ * @static
+ * @protected
+ * @param {number} num number to round
+ * @return {number} rounded number
+ */
+ilib._roundFnc.halfodd = function (num) {
+	return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
 };
 
 utils.mod = 
@@ -137,6 +137,7 @@ utils.mod =
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {number} dividend the number being divided
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
@@ -160,6 +161,7 @@ utils.amod =
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {number} dividend the number being divided
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  

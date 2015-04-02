@@ -20,11 +20,11 @@
 /* !depends ilibglobal.js locale.js localeinfo.js julianday.js util/jsutils.js */
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
-if (!ilib.JulianDay) ilib.JulianDay = require("./julianday.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.JulianDay || ilib.JulianDay.stub) ilib.JulianDay = require("./julianday.js");
 
 /**
  * @class
@@ -45,6 +45,37 @@ ilib.Date = function(options) {
 	if (!options || typeof(options.noinstance) === 'undefined') {
 		return ilib.Date.newInstance(options);
 	}
+};
+
+/**
+ * Map calendar names to classes to initialize in the dynamic code model.
+ * Need to figure out some way that this doesn't have to be updated by hand.
+ * @private
+ */
+ilib.Date._dynMap = {
+	"coptic":       {c: "CopticDate"},
+	"ethiopic":     {c: "EthiopicDate"},
+	"gregorian":    {c: "GregDate"},
+	"han":          {c: "HanDate"},
+	"hebrew":       {c: "HebrewDate"},
+	"islamic":      {c: "IslamicDate"},
+	"julian":       {c: "JulDate"},
+	"persian":      {c: "PersDate", f: "persianastro"},
+	"persian-algo": {c: "PersAlgoDate", f: "persian"},
+	"thaisolar":    {c: "ThaiSolarDate"}
+};
+
+/**
+ * Dynamically load the code for a calendar and calendar class if necessary.
+ * @protected
+ */
+ilib.Date._dynLoadCalendar = function (name) {
+	var entry = ilib.Date._dynMap[name];
+	if (entry) {
+		if (!ilib.Date[entry.c]) ilib.Date[entry.c] = require("./calendar/" + (entry.f || name) + "date.js");
+		return entry.c;
+	}
+	return undefined;
 };
 
 /* place for the subclasses to put their constructors so that the factory method
@@ -99,7 +130,8 @@ ilib.Date._constructors = {};
  * the year/month/date date components. The date components for that UTC 
  * time will be calculated and the time zone offset will be automatically 
  * factored in.
- *  
+ * 
+ * @static
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
  * @return {ilib.Date} an instance of a calendar object of the appropriate type 
@@ -121,31 +153,14 @@ ilib.Date.newInstance = function(options) {
 		locale = new ilib.Locale();	// default locale
 	}
 
-	// dynamic dependencies which are based on the current locale. Only load these classes
-	// when they are needed after ilib.Date is fully defined and this method is invoked
-	switch (locale.getRegion()) {
-	case 'TH':
-		if (!ilib.Date.ThaiSolarDate) ilib.Date.ThaiSolarDate = require("./calendar/thaisolardate.js");
-		break;
-	case 'IR':
-	case 'AF':
-		if (!ilib.Date.PersDate) ilib.Date.PersDate = require("./calendar/persianastrodate.js");
-		break;
-	case 'ET':
-		if (!ilib.Date.EthiopicDate) ilib.Date.EthiopicDate = require("./calendar/ethiopicdate.js");
-		break;
-	}
-
-	if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
-	
-	//console.log("newInstance: locale is " + JSON.stringify(locale, undefined, 4));
-	//console.log("newInstance: constructors is " + typeof(ilib.Date._constructors["persian"]));
-	
 	if (!type) {
 		var info = new ilib.LocaleInfo(locale);
 		type = info.getCalendar();
 	}
-
+	
+	ilib.Date._dynLoadCalendar(type);
+	ilib.Date._dynLoadCalendar("gregorian"); // always need this available
+	
 	cons = ilib.Date._constructors[type];
 	
 	// pass the same options through to the constructor so the subclass

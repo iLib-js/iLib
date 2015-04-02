@@ -27,12 +27,12 @@ util/math.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
-if (!ilib.Date.PersAstroRataDie) ilib.Date.PersAstroRataDie = require("./persratadie.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.PersAstroRataDie || ilib.Date.PersAstroRataDie.stub) ilib.Date.PersAstroRataDie = require("./persratadie.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
 
 /**
  * @class

@@ -21,11 +21,11 @@
 /* !depends ilibglobal.js calendar.js date.js util/utils.js util/math.js */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
 
 /**
  * @class

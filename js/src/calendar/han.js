@@ -29,14 +29,14 @@ calendar/gregratadie.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
-if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
-if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date.GregDate || ilib.Date.GregDate.stub) ilib.Date.GregDate = require("./calendar/gregoriandate.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
+if (!ilib.Date.GregRataDie || ilib.Date.GregRataDie.stub) ilib.Date.GregRataDie = require("./calendar/gregratadie.js");
 
 /**
  * @class

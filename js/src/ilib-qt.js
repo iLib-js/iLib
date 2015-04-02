@@ -104,3 +104,4 @@ var qmlLoader = require("./qmlloader.js");
 var ilib = require("./ilibglobal.js");
 ilib.setLoaderCallback(new qmlLoader(ilib));
 
+require("./ilib-stubs.js");

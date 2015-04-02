@@ -37,16 +37,16 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
-if (!ilib.shallowCopy) ilib.extend(ilib, require("./util/jsutils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isAlpha) ilib.CType.isAlpha = require("./ctype.isalpha.js");
-if (!ilib.CType.isIdeo) ilib.CType.isIdeo = require("./ctype.isideo.js");
-if (!ilib.CType.isPunct) ilib.CType.isPunct = require("./ctype.ispunct.js");
-if (!ilib.CType.isSpace) ilib.CType.isSpace = require("./ctype.isspace.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isAlpha || ilib.CType.isAlpha.stub) ilib.CType.isAlpha = require("./ctype.isalpha.js");
+if (!ilib.CType.isIdeo || ilib.CType.isIdeo.stub) ilib.CType.isIdeo = require("./ctype.isideo.js");
+if (!ilib.CType.isPunct || ilib.CType.isPunct.stub) ilib.CType.isPunct = require("./ctype.ispunct.js");
+if (!ilib.CType.isSpace || ilib.CType.isSpace.stub) ilib.CType.isSpace = require("./ctype.isspace.js");
 
 /**
  * @class

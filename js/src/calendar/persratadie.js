@@ -27,14 +27,14 @@ calendar/gregoriandate.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("../util/utils.js"));
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) ilib.extend(ilib.Date, require("./astro.js"));
 
-if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
-if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");
+if (!ilib.Date.RataDie || ilib.Date.RataDie.stub) ilib.Date.RataDie = require("./ratadie.js");
+if (!ilib.Date.GregDate || ilib.Date.GregDate.stub) ilib.Date.GregDate = require("./gregoriandate.js");
 
 
 /**

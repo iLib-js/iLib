@@ -21,10 +21,10 @@
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.String) ilib.String = require("./strings.js");
-if (!ilib.CType.isSpace) ilib.CType.isSpace = require("./ctype.isspace.js");
-if (!ilib.CType.isCntrl) ilib.CType.isCntrl = require("./ctype.iscntrl.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.CType.isSpace || ilib.CType.isSpace.stub) ilib.CType.isSpace = require("./ctype.isspace.js");
+if (!ilib.CType.isCntrl || ilib.CType.isCntrl.stub) ilib.CType.isCntrl = require("./ctype.iscntrl.js");
 
 /**
  * Return whether or not the first character is any printable character

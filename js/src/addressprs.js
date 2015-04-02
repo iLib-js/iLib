@@ -31,11 +31,11 @@ ctype.isdigit.js
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isIdeo) ilib.CType.isIdeo = require("./ctype.isideo.js");
-if (!ilib.CType.isAscii) ilib.CType.isAscii = require("./ctype.isascii.js");
-if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isIdeo || ilib.CType.isIdeo.stub) ilib.CType.isIdeo = require("./ctype.isideo.js");
+if (!ilib.CType.isAscii || ilib.CType.isAscii.stub) ilib.CType.isAscii = require("./ctype.isascii.js");
+if (!ilib.CType.isDigit || ilib.CType.isDigit.stub) ilib.CType.isDigit = require("./ctype.isdigit.js");
 
 /**
  * @class

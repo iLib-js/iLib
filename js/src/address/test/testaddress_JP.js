@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressSimple() {
+function testParseAddressJPSimple() {
 	var parsedAddress = new ilib.Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);

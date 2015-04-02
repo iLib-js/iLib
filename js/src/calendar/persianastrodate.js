@@ -33,18 +33,18 @@ calendar/astro.js
 // !data astro
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bsearch) ilib.extend(ilib, require("../util/search.js"));
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.bsearch || ilib.bsearch.stub) ilib.extend(ilib, require("../util/search.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Locale) ilib.Locale = require("../locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
-if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.TimeZone || ilib.TimeZone.stub) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
 
-if (!ilib.Date.initAstro) ilib.extend(ilib.Date, require("./astro.js"));
-if (!ilib.Cal.Persian) ilib.Cal.Persian = require("./persianastro.js");
-if (!ilib.Date.PersAstroRataDie) ilib.Date.PersAstroRataDie = require("./persratadie.js");
+if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) ilib.extend(ilib.Date, require("./astro.js"));
+if (!ilib.Cal.Persian || ilib.Cal.Persian.stub) ilib.Cal.Persian = require("./persianastro.js");
+if (!ilib.Date.PersAstroRataDie || ilib.Date.PersAstroRataDie.stub) ilib.Date.PersAstroRataDie = require("./persratadie.js");
 
 /**
  * @class

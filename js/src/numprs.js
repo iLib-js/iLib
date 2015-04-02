@@ -29,16 +29,16 @@ currency.js
 */
 
 var ilib = require("./ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("./util/utils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
-if (!ilib.Locale) ilib.Locale = require("./locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("./localeinfo.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.CType.isDigit) ilib.CType.isDigit = require("./ctype.isdigit.js");
-if (!ilib.CType.isSpace) ilib.CType.isSpace = require("./ctype.isspace.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.CType.isDigit || ilib.CType.isDigit.stub) ilib.CType.isDigit = require("./ctype.isdigit.js");
+if (!ilib.CType.isSpace || ilib.CType.isSpace.stub) ilib.CType.isSpace = require("./ctype.isspace.js");
 
-if (!ilib.Currency) ilib.Currency = require("./currency.js");
+if (!ilib.Currency || ilib.Currency.stub) ilib.Currency = require("./currency.js");
 
 
 /**

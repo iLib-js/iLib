@@ -17,10 +17,11 @@
  * limitations under the License.
  */
 
-require("module");
+var mod = require("module");
 var fs = require('fs');
 var vm = require('vm');
 var util = require("util");
+var path = require("path");
 
 function newSandbox() {
 	return {
@@ -38,9 +39,9 @@ function newSandbox() {
 	};
 };
 
-var load = function(path, context) {
-    var code = fs.readFileSync(path, "utf-8");
-    return vm.runInContext(code, context, path);
+var load = function(pathname, context) {
+    var code = fs.readFileSync(pathname, "utf-8");
+    return vm.runInContext(code, context, pathname);
 }.bind(this);
 
 /**
@@ -50,18 +51,18 @@ var load = function(path, context) {
  * @constructor
  * @param {string|ilib.String=} string path to a js file that contains a suite of tests 
  */
-function TestSuite(path) {
+function TestSuite(pathname) {
 	this.tests = [];
 	this.subSuites = [];
 	this.includes = [];
 	this.contextBits = {};
 	
-	this.path = path;
+	this.path = pathname;
 };
 
 TestSuite.prototype = {
-	include: function (path) {
-		this.includes.push(path);
+	include: function (pathname) {
+		this.includes.push(pathname);
 	},
 
 	applyIncludes: function (includes) {
@@ -129,7 +130,7 @@ TestSuite.prototype = {
 				// util.print("PASS: " + t + "\n");
 				results.pass++;		
 			} catch ( e ) {
-				var msg = "FAIL: " + path + ":" + t + "()\n\t";
+				var msg = "FAIL: " + this.path + ":" + t + "()\n\t";
 				if (typeof(e) === 'object' && e.isJsUnitFailure) {
 					if (e.comment) {
 						msg += t + ": " + e.comment;
@@ -191,7 +192,8 @@ TestSuite.prototype = {
 				process: process,
 				util: util,
 				global: global,
-				path: this.path
+				path: this.path,
+				module: new mod(this.path, module.parent.filename)
 			};
 			this.merge(contextInit, this.contextBits);
 			this.context = vm.createContext(contextInit);

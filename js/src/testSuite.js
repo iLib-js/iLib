@@ -20,7 +20,7 @@
 var util = require("util");
 var path = require("path");
 
-var JsUnit = require("./testcli/runner.js");
+var JsUnit = require("./runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 
@@ -81,6 +81,7 @@ var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.full;
 
+// Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection]]]
 if (process.argv.length > 2) {
 	if (process.argv.length > 3) {
 		if (process.argv.length > 4) {
@@ -111,7 +112,10 @@ if (process.argv.length > 2) {
 		}
 	}
 	assembly = process.argv[2];
-	if (assembly !== "assembled" && assembly !== "dynamic") {
+	if (assembly !== "assembled" && assembly !== "dynamicdata" && assembly !== "dynamic") {
+		// assembled: pre-assembled code and locale data together in one file
+		// dynamicdata: pre-assembled code, but dynamically loaded locale data
+		// dynamic: dynamically loaded code and locale data
 		util.print("Assembly " + assembly + " is unknown. Using 'dynamic' by default.\n");
 		compilation = "dynamic";
 	}
@@ -121,13 +125,18 @@ util.print("Running " + compilation + " " + assembly + " suites: " + JSON.string
 
 var s;
 for (s in suite) {
-	var ts;
+	var inc, ts;
 	
 	ts = new JsUnit.TestSuite(suite[s]);
-	// ts.addToContext({ilib: require("./ilib-dyn-ut.js").ilib});
-	var inc = "./ilib" + ((assembly === "dynamic") ? "-dyn" : "") + "-ut" + ((compilation === "compiled") ? "-compiled" : "") + ".js";
-	ts.include(inc); 
-	ts.include("testglue.js");
+	
+	if (assembly === "dynamic") {
+		inc = "./ilib-node.js";		
+		ts.include(inc); 
+	} else {
+		inc = "./ilib" + ((assembly === "dynamic") ? "-dyn" : "") + "-ut" + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+		ts.include(inc); 
+		ts.include("testglue.js");
+	}
 	runner.addSuite(ts);
 	// util.print("Adding suite " + suite[s] + " and including ilib file " + inc + "\n");
 }

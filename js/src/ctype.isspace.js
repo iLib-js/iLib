@@ -23,8 +23,8 @@
 
 var ilib = require("./ilibglobal.js");
 
-if (!ilib.CType) ilib.CType = require("./ctype.js");
-if (!ilib.String) ilib.String = require("./strings.js");
+if (!ilib.CType || ilib.CType.stub) ilib.CType = require("./ctype.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
 
 /**
  * Return whether or not the first character is a whitespace character.<p>

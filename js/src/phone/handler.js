@@ -31,7 +31,7 @@ var ilib = require("./ilibglobal.js");
  * @private
  * @constructor
  */
-ilib.StateHandler = function _StateHandler () {
+ilib.StateHandler = function () {
 	return this;
 };
 

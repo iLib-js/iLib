@@ -21,7 +21,7 @@
 
 var ilib = require("../ilibglobal.js");
 
-if (!ilib.Locale) ilib.Locale = require("../locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 (function() {
 	var utils = {};
@@ -32,6 +32,7 @@ utils.bind =
  * function reimplements it in terms of older JS functions.
  * bind() doesn't exist in many older browsers.
  * 
+ * @static
  * @param {Object} scope object that the method should operate on
  * @param {function(...)} method method to call
  * @return {function(...)|undefined} function that calls the given method 
@@ -83,6 +84,7 @@ utils.merge =
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
  * @param {boolean=} replace if true, replace the array elements in object1 with those in object2.
@@ -141,7 +143,8 @@ utils.mergeLocData =
  * missing data. However, if everything except the shared data is missing, this 
  * function returns undefined, allowing the caller to go and dynamically load the
  * data instead.
- *  
+ * 
+ * @static
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
  * @param {boolean=} replaceArrays if true, replace the array elements in object1 with those in object2.
@@ -322,6 +325,7 @@ utils.getLocFiles =
  * language/script/region/variant
  * </pre>
  * 
+ * @static
  * @param {ilib.Locale} locale load the files for this locale
  * @param {string?} name the file name of each file to load without
  * any path
@@ -391,6 +395,7 @@ utils.isEmpty =
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {Object} obj the object to check
  * @return {boolean} true if the given object has no properties, false otherwise
  */
@@ -412,6 +417,7 @@ ilib.isEmpty = function (obj) {
 utils.hashCode = 
 /**
  * @private
+ * @static
  */
 ilib.hashCode = function(obj) {
 	var hash = 0;
@@ -469,6 +475,7 @@ ilib.hashCode = function(obj) {
 utils._callLoadData = 
 /**
  * Load data using the new loader object or via the old function callback.
+ * @static
  * @private
  */
 ilib._callLoadData = function (files, sync, params, callback) {
@@ -476,7 +483,7 @@ ilib._callLoadData = function (files, sync, params, callback) {
 	if (typeof(ilib._load) === 'function') {
 		// console.log("ilib._callLoadData: calling as a regular function");
 		return ilib._load(files, sync, params, callback);
-	} else if (typeof(ilib._load) === 'object' && ilib._load instanceof ilib.Loader) {
+	} else if (typeof(ilib._load) === 'object' && typeof(ilib._load.loadFiles) === 'function') {
 		// console.log("ilib._callLoadData: calling as an object");
 		return ilib._load.loadFiles(files, sync, params, callback);
 	}
@@ -511,6 +518,7 @@ utils.loadData =
  * Data is not returned from this method, so a callback function is mandatory.
  * </ul>
  * 
+ * @static
  * @param {Object} params Parameters configuring how to load the files (see above)
  */
 ilib.loadData = function(params) {

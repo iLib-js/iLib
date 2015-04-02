@@ -26,14 +26,14 @@ calendar/thaisolar.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.bind) ilib.extend(ilib, require("../util/jsutils.js"));
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/jsutils.js"));
 
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
-if (!ilib.Date) ilib.Date = require("../date.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
 
-if (!ilib.Cal.ThaiSolar) ilib.Cal.ThaiSolar = require("./thaisolar.js");
-if (!ilib.Date.GregDate) ilib.Date.GregDate = require("./gregoriandate.js");
-if (!ilib.Date.GregRataDie) ilib.Date.GregRataDie = require("./gregratadie.js");
+if (!ilib.Cal.ThaiSolar || ilib.Cal.ThaiSolar.stub) ilib.Cal.ThaiSolar = require("./thaisolar.js");
+if (!ilib.Date.GregDate || ilib.Date.GregDate.stub) ilib.Date.GregDate = require("./gregoriandate.js");
+if (!ilib.Date.GregRataDie || ilib.Date.GregRataDie.stub) ilib.Date.GregRataDie = require("./gregratadie.js");
 
 /**
  * @class

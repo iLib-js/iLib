@@ -30,16 +30,16 @@ calendar/ratadie.js
 */
 
 var ilib = require("../ilibglobal.js");
-if (!ilib.signum) ilib.extend(ilib, require("../util/math.js"));
+if (!ilib.signum || ilib.signum.stub) ilib.extend(ilib, require("../util/math.js"));
 
-if (!ilib.Locale) ilib.Locale = require("../locale.js");
-if (!ilib.LocaleInfo) ilib.LocaleInfo = require("../localeinfo.js");
-if (!ilib.Date) ilib.Date = require("../date.js");
-if (!ilib.TimeZone) ilib.TimeZone = require("../timezone.js");
-if (!ilib.Cal) ilib.Cal = require("../calendar.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
+if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("../localeinfo.js");
+if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
+if (!ilib.TimeZone || ilib.TimeZone.stub) ilib.TimeZone = require("../timezone.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
 
-if (!ilib.Cal.Hebrew) ilib.Cal.Hebrew = require("./hebrew.js");
-if (!ilib.Date.RataDie) ilib.Date.RataDie = require("./ratadie.js");
+if (!ilib.Cal.Hebrew || ilib.Cal.Hebrew.stub) ilib.Cal.Hebrew = require("./hebrew.js");
+if (!ilib.Date.RataDie || ilib.Date.RataDie.stub) ilib.Date.RataDie = require("./ratadie.js");
 
 /**
  * @class
