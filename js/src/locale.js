@@ -69,8 +69,10 @@
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
 		var spec = language || ilib.getLocale();
+		
 		if (typeof(spec) === 'string') {
 			var parts = spec.split('-');
+			parts[parts.length-1].toUpperCase();  //Fix for Android system WebView ver.40
 	        for ( var i = 0; i < parts.length; i++ ) {
 	        	if (ilib.Locale._isLanguageCode(parts[i])) {
 	    			/** 
