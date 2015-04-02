@@ -1,4 +1,5 @@
-var ilib = ilib || {};
+var ilib = require("../../../ilibglobal.js");
+if (!ilib.Locale2) ilib.Locale2 = require("./locale2.js");
 
 ilib.DateFmt2 = function(options) {
 	// console.log("DateFmt2: options is " + JSON.stringify(options));
@@ -19,15 +20,11 @@ ilib.DateFmt2.prototype.format = function(date) {
 	return x;
 };
 
-ilib.x = "This property came from ilib.DateFmt2";
+ilib.DateFmt2.x = "This property came from ilib.DateFmt2";
 
-var util = require("util");
-console.log("DateFmt2: ilib is " + util.inspect(ilib, {depth: null}));
-console.log("DateFmt2: global.ilib is " + util.inspect(global.ilib, {depth: null}));
-console.log("DateFmt2: module is " + util.inspect(module, {depth: null}));
+//var util = require("util");
+//console.log("DateFmt2: ilib is " + util.inspect(ilib, {depth: null}));
+//console.log("DateFmt2: global.ilib is " + util.inspect(global.ilib, {depth: null}));
+//console.log("DateFmt2: module is " + util.inspect(module, {depth: null}));
 
-module.exports = function (loader) {
-	loader.require("test/testfiles/locale2.js");
-
-	return ilib;
-};
+module.exports = ilib.DateFmt2;

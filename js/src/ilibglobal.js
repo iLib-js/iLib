@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ var ilib = {};
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-    // increment this for each release
     return // !macro ilibVersion
     ;
 };
@@ -40,12 +39,6 @@ ilib.getVersion = function () {
 ilib.data = {
 	/** @type {null|{nfc:Object.<string,string>,nfd:Object.<string,string>,nfkd:Object.<string,string>,ccc:Object.<string,number>}} */
     norm: null,
-    /* {
-        nfc: {},
-        nfd: {},
-        nfkd: {},
-        ccc: {}
-    }, */
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}

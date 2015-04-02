@@ -1,4 +1,4 @@
-var ilib = ilib || {};
+var ilib = require("../../../ilibglobal.js");
 
 ilib.Locale2 = function(spec) {
 	//console.log("Locale2: spec is " + spec);
@@ -16,9 +16,6 @@ ilib.Locale2.prototype.getRegion = function() {
 	return this.region;
 };
 
-ilib.y = "This property came from ilib.Locale2";
+ilib.Locale2.y = "This property came from ilib.Locale2";
 
-module.exports = function (loader) {
-	// no dependencies
-	return ilib;
-};
+module.exports = ilib.Locale2;

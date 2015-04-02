@@ -19,33 +19,31 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="userSettings.js"></script>
 <script type="text/javascript" src="../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
 var iframes = parent.document.getElementsByName("testFrame");
 var url = iframes[0].contentDocument.location.href;
 var i = url.lastIndexOf("/");
-var dir = (i !== -1 ? url.substring(0, i) : url);
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
-    //calSuite.addTestPage(dir + "/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/name/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/date/test/testSuiteDyn.html");
-    calSuite.addTestPage(dir + "/daterange/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/durfmt/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/phone/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/ctype/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/collate/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/number/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/units/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/maps/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/strings-ext/test/testSuiteDyn.html");
-    //calSuite.addTestPage(dir + "/util/test/testSuiteDyn.html");
-    calSuite.addTestPage(dir + "/calendar/test/testSuiteDyn.html");
-    calSuite.addTestPage(dir + "/address/test/testSuiteDyn.html");
-
+    calSuite.addTestPage(dir + "test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "name/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "date/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "daterange/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "durfmt/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "phone/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "ctype/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "collate/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "number/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "units/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "maps/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "strings-ext/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "util/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "calendar/test/testSuiteDyn.html");
+    calSuite.addTestPage(dir + "address/test/testSuiteDyn.html");
     
     return calSuite;
 }

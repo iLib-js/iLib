@@ -19,62 +19,66 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
-
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCalendar.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDie.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorian.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulian.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testIslamicDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testIslamic.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrew.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrewDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolar.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDay.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testTimeZone.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testPersian.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testPersianDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testAstro.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHan.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHanDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testEthiopic.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testEthiopicDate.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCoptic.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCopticDate.html");
+    calSuite.addTestPage(dir + "testCalendar.html");
+    calSuite.addTestPage(dir + "testGregRataDie.html");
+    calSuite.addTestPage(dir + "testGregorianDate.html");
+    calSuite.addTestPage(dir + "testGregorian.html");
+    calSuite.addTestPage(dir + "testJulianDate.html");
+    calSuite.addTestPage(dir + "testJulian.html");
+    calSuite.addTestPage(dir + "testIslamicDate.html");
+    calSuite.addTestPage(dir + "testIslamic.html");
+    calSuite.addTestPage(dir + "testHebrew.html");
+    calSuite.addTestPage(dir + "testHebrewDate.html");
+    calSuite.addTestPage(dir + "testThaiSolar.html");
+    calSuite.addTestPage(dir + "testThaiSolarDate.html");
+    calSuite.addTestPage(dir + "testJulianDay.html");
+    calSuite.addTestPage(dir + "testTimeZone.html");
+    calSuite.addTestPage(dir + "testPersian.html");
+    calSuite.addTestPage(dir + "testPersianDate.html");
+    calSuite.addTestPage(dir + "testAstro.html");
+    calSuite.addTestPage(dir + "testHan.html");
+    calSuite.addTestPage(dir + "testHanDate.html");
+    calSuite.addTestPage(dir + "testEthiopic.html");
+    calSuite.addTestPage(dir + "testEthiopicDate.html");
+    calSuite.addTestPage(dir + "testCoptic.html");
+    calSuite.addTestPage(dir + "testCopticDate.html");
 
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCalendarCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDieCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testIslamicDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testIslamicCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrewCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHebrewDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDayCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testTimeZoneCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testPersianCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testPersianDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testAstroCompiled.html");
-	calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHanCompiled.html");
-	calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testHanDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testEthiopicCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testEthiopicDateCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCopticCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testCopticDateCompiled.html");
+    calSuite.addTestPage(dir + "testCalendarCompiled.html");
+    calSuite.addTestPage(dir + "testGregRataDieCompiled.html");
+    calSuite.addTestPage(dir + "testGregorianDateCompiled.html");
+    calSuite.addTestPage(dir + "testGregorianCompiled.html");
+    calSuite.addTestPage(dir + "testJulianDateCompiled.html");
+    calSuite.addTestPage(dir + "testJulianCompiled.html");
+    calSuite.addTestPage(dir + "testIslamicDateCompiled.html");
+    calSuite.addTestPage(dir + "testIslamicCompiled.html");
+    calSuite.addTestPage(dir + "testHebrewCompiled.html");
+    calSuite.addTestPage(dir + "testHebrewDateCompiled.html");
+    calSuite.addTestPage(dir + "testThaiSolarCompiled.html");
+    calSuite.addTestPage(dir + "testThaiSolarDateCompiled.html");
+    calSuite.addTestPage(dir + "testJulianDayCompiled.html");
+    calSuite.addTestPage(dir + "testTimeZoneCompiled.html");
+    calSuite.addTestPage(dir + "testPersianCompiled.html");
+    calSuite.addTestPage(dir + "testPersianDateCompiled.html");
+    calSuite.addTestPage(dir + "testAstroCompiled.html");
+	calSuite.addTestPage(dir + "testHanCompiled.html");
+	calSuite.addTestPage(dir + "testHanDateCompiled.html");
+    calSuite.addTestPage(dir + "testEthiopicCompiled.html");
+    calSuite.addTestPage(dir + "testEthiopicDateCompiled.html");
+    calSuite.addTestPage(dir + "testCopticCompiled.html");
+    calSuite.addTestPage(dir + "testCopticDateCompiled.html");
     
+    calSuite.addTestPage(dir + "testCalendarDyn.html");
+
     return calSuite;
 }
 </script>

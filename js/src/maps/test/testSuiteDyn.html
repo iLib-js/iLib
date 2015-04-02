@@ -1,7 +1,7 @@
 <!--
-testSuiteDyn.html - Test Suite runs all the tests at once.
+testSuiteDyn.html - Run all tests
 
-Copyright © 2015, JEDLSoft
+Copyright © 2014, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -27,13 +27,12 @@ var i = url.lastIndexOf("/");
 var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
-    var s = new JsUnitTestSuite();
+    var calSuite = new JsUnitTestSuite();
     
-    s.addTestPage(dir + "testAddressDyn.html");
+    calSuite.addTestPage(dir + "testMapsDyn.html");
     
-    return s;
+    return calSuite;
 }
-
 </script>
 </head>
 </html>

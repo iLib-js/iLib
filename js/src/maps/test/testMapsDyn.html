@@ -1,5 +1,5 @@
 <!--
-testSuiteDyn.html - Test Suite runs all the tests at once.
+testMapsDyn.html - Test the mappers
 
 Copyright © 2015, JEDLSoft
 
@@ -19,21 +19,9 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
-<script language="JavaScript">
-var iframes = parent.document.getElementsByName("testFrame");
-var url = iframes[0].contentDocument.location.href;
-var i = url.lastIndexOf("/");
-var dir = (i !== -1 ? url.substring(0, i+1) : url);
-
-function suite() {
-    var s = new JsUnitTestSuite();
-    
-    s.addTestPage(dir + "testAddressDyn.html");
-    
-    return s;
-}
-
-</script>
+<script language="JavaScript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
+<script language="JavaScript" src="../../ilib-web.js"></script>
+<script type="text/javascript" src="testtoupper.js"></script>
+<script type="text/javascript" src="testtolower.js"></script>
 </head>
 </html>

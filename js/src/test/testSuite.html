@@ -19,28 +19,32 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../userSettings.js"></script>
 <script type="text/javascript" src="../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var s = new JsUnitTestSuite();
     
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testLocale.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleInfo.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testResources.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testStrings.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testGlobal.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testScriptInfo.html");
-    //s.addTestPage("file://" + ilibDir + "/js/src/test/testLoader.html");
+    s.addTestPage(dir + "testLocale.html");
+    s.addTestPage(dir + "testLocaleInfo.html");
+    s.addTestPage(dir + "testResources.html");
+    s.addTestPage(dir + "testStrings.html");
+    s.addTestPage(dir + "testGlobal.html");
+    s.addTestPage(dir + "testScriptInfo.html");
+    
+    s.addTestPage(dir + "testLocaleCompiled.html");
+    s.addTestPage(dir + "testLocaleInfoCompiled.html");
+    s.addTestPage(dir + "testResourcesCompiled.html");
+    s.addTestPage(dir + "testStringsCompiled.html");
+    s.addTestPage(dir + "testGlobalCompiled.html");
+    s.addTestPage(dir + "testScriptInfoCompiled.html");
+    
+    s.addTestPage(dir + "testRootDyn.html");
 
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testLocaleInfoCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testResourcesCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testStringsCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testGlobalCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/test/testScriptInfoCompiled.html");
-    //s.addTestPage("file://" + ilibDir + "/js/src/test/testLoaderCompiled.html");
     return s;
 }
 

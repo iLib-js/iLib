@@ -1,5 +1,5 @@
 <!--
-testSuiteDyn.html - Test Suite runs all the tests at once.
+testSuiteDyn.html - Run all tests
 
 Copyright © 2015, JEDLSoft
 
@@ -27,13 +27,12 @@ var i = url.lastIndexOf("/");
 var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
-    var s = new JsUnitTestSuite();
+    var calSuite = new JsUnitTestSuite();
     
-    s.addTestPage(dir + "testAddressDyn.html");
-    
-    return s;
-}
+    calSuite.addTestPage(dir + "testUtilDyn.html");
 
+    return calSuite;
+}
 </script>
 </head>
 </html>

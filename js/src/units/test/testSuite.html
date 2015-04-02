@@ -19,26 +19,33 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var s = new JsUnitTestSuite();
     
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengthsCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testSpeed.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testLengths.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testTemp.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testDigitalStorage.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testTime.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testMass.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testArea.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testMeasurement.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testUnits.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/units/test/testUnitFmt.html");
-    
+    s.addTestPage(dir + "testLengths.html");
+    s.addTestPage(dir + "testSpeed.html");
+    s.addTestPage(dir + "testLengths.html");
+    s.addTestPage(dir + "testTemp.html");
+    s.addTestPage(dir + "testDigitalStorage.html");
+    s.addTestPage(dir + "testTime.html");
+    s.addTestPage(dir + "testMass.html");
+    s.addTestPage(dir + "testArea.html");
+    s.addTestPage(dir + "testMeasurement.html");
+    s.addTestPage(dir + "testUnits.html");
+    s.addTestPage(dir + "testUnitFmt.html");
+
+    s.addTestPage(dir + "testLengthsCompiled.html");
+    s.addTestPage(dir + "testMeasurementCompiled.html");
+
+    s.addTestPage(dir + "testUnitsDyn.html");
+
     return s;
 }
 </script>

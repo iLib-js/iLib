@@ -17,11 +17,6 @@
  * limitations under the License.
  */
 
-if (!ilib) var ilib = require("./ilibglobal.js");
-if (!ilib.Date) ilib.Date = require("./date.js");
-if (!ilib.DateFmt) ilib.DateFmt = require("./datefmt.js");
-if (!ilib.Date.HebrewDate) ilib.Date.HebrewDate = require("./calendar/hebrewdate.js");
-
 function testDateConstructor() {
     var gd = new ilib.Date();
     

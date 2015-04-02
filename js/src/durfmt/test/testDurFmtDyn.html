@@ -1,5 +1,5 @@
 <!--
-testSuiteDyn.html - Test Suite runs all the tests at once.
+testDurFmtDyn.html - Test the duration formatter
 
 Copyright © 2015, JEDLSoft
 
@@ -20,20 +20,11 @@ limitations under the License.
 <html>
 <head>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
-<script language="JavaScript">
-var iframes = parent.document.getElementsByName("testFrame");
-var url = iframes[0].contentDocument.location.href;
-var i = url.lastIndexOf("/");
-var dir = (i !== -1 ? url.substring(0, i+1) : url);
-
-function suite() {
-    var s = new JsUnitTestSuite();
-    
-    s.addTestPage(dir + "testAddressDyn.html");
-    
-    return s;
-}
-
-</script>
+<script language="JavaScript" src="../../ilib-web.js"></script>
+<script language="JavaScript" src="testdurfmt.js"></script>
+<script language="JavaScript" src="testdurfmt_am_ET.js"></script>
+<script language="JavaScript" src="testdurfmt_ar_SA.js"></script>
+<script language="JavaScript" src="testdurfmt_or_IN.js"></script>
+<script language="JavaScript" src="testdurfmt_ha_Latn_NG.js"></script>
 </head>
 </html>

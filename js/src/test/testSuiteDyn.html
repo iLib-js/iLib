@@ -19,7 +19,7 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
+<script type="text/javascript" src="../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
 var iframes = parent.document.getElementsByName("testFrame");
 var url = iframes[0].contentDocument.location.href;
@@ -29,8 +29,8 @@ var dir = (i !== -1 ? url.substring(0, i+1) : url);
 function suite() {
     var s = new JsUnitTestSuite();
     
-    s.addTestPage(dir + "testAddressDyn.html");
-    
+    s.addTestPage(dir + "testRootDyn.html");
+
     return s;
 }
 

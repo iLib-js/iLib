@@ -19,18 +19,23 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var s = new JsUnitTestSuite();
     
-    s.addTestPage("file://" + ilibDir + "/js/src/strings-ext/test/testGlyphStr.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/strings-ext/test/testNorm.html");
+    s.addTestPage(dir + "testGlyphStr.html");
+    s.addTestPage(dir + "testNorm.html");
 
-    s.addTestPage("file://" + ilibDir + "/js/src/strings-ext/test/testGlyphStrCompiled.html");
-    s.addTestPage("file://" + ilibDir + "/js/src/strings-ext/test/testNormCompiled.html");
+    s.addTestPage(dir + "testGlyphStrCompiled.html");
+    s.addTestPage(dir + "testNormCompiled.html");
+
+    s.addTestPage(dir + "testStringsExtDyn.html");
 
     return s;
 }

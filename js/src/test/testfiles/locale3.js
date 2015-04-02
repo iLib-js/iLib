@@ -1,4 +1,4 @@
-var ilib = ilib || {};
+var ilib = require("../../../ilibglobal.js");
 
 // this is an alternate definition of Locale2
 
@@ -19,9 +19,6 @@ ilib.Locale2.prototype.getRegion = function() {
 };
 
 // the other definition doesn't have this property
-ilib.z = "This property came from the alternate ilib.Locale2";
+ilib.Locale2.z = "This property came from the alternate ilib.Locale2";
 
-module.exports = function (loader) {
-	// no dependencies
-	return ilib;
-};
+module.exports = ilib.Locale2;

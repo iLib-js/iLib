@@ -19,20 +19,24 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
-
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/maps/test/testToUpper.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/maps/test/testToLower.html");
+    calSuite.addTestPage(dir + "testToUpper.html");
+    calSuite.addTestPage(dir + "testToLower.html");
 
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/maps/test/testToUpperCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/maps/test/testToLowerCompiled.html");
+    calSuite.addTestPage(dir + "testToUpperCompiled.html");
+    calSuite.addTestPage(dir + "testToLowerCompiled.html");
     
+    calSuite.addTestPage(dir + "testMapsDyn.html");
+
     return calSuite;
 }
 </script>

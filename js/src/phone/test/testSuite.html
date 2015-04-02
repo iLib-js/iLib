@@ -19,31 +19,36 @@ limitations under the License.
 
 <html>
 <head>
-<script type="text/javascript" src="../../userSettings.js"></script>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript">
-
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testImsi.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testNumPlan.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneFmt_all.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneGeo.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneLoc.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNum_all.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNum_IMSI.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNum_Normalize.html");
+    calSuite.addTestPage(dir + "testImsi.html");
+    calSuite.addTestPage(dir + "testNumPlan.html");
+    calSuite.addTestPage(dir + "testPhoneFmt_all.html");
+    calSuite.addTestPage(dir + "testPhoneGeo.html");
+    calSuite.addTestPage(dir + "testPhoneLoc.html");
+    calSuite.addTestPage(dir + "testPhoneNum_all.html");
+    calSuite.addTestPage(dir + "testPhoneNum_IMSI.html");
+    calSuite.addTestPage(dir + "testPhoneNum_Normalize.html");
 
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testImsiCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testNumPlanCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneFmtCompiled_all.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneGeoCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneLocCompiled.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNumCompiled_all.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNumCompiled_IMSI.html");
-    calSuite.addTestPage("file://" + ilibDir + "/js/src/phone/test/testPhoneNumCompiled_Normalize.html");
+    calSuite.addTestPage(dir + "testImsiCompiled.html");
+    calSuite.addTestPage(dir + "testNumPlanCompiled.html");
+    calSuite.addTestPage(dir + "testPhoneFmtCompiled_all.html");
+    calSuite.addTestPage(dir + "testPhoneGeoCompiled.html");
+    calSuite.addTestPage(dir + "testPhoneLocCompiled.html");
+    calSuite.addTestPage(dir + "testPhoneNumCompiled_all.html");
+    calSuite.addTestPage(dir + "testPhoneNumCompiled_IMSI.html");
+    calSuite.addTestPage(dir + "testPhoneNumCompiled_Normalize.html");
+    
+    calSuite.addTestPage(dir + "testPhoneDyn.html");
+
     return calSuite;
 }
 </script>
