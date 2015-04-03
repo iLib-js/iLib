@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "gregorian"});
+}
+
 function testGregRataDieConstructor() {
 	var rd = new ilib.Date.GregRataDie();
 	
@@ -56,7 +60,7 @@ function testGregRataDieConstructorFromComponents() {
     assertEquals(719163, rd.getRataDie());
 }
 
-var testDates = [
+var testDatesGregRD = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -586,  7,     24,  0,    0,      0,      0,           0],
     [1660037.5, -168,  12,    5,   0,    0,      0,      0,           3],
@@ -96,12 +100,12 @@ var testDates = [
 function testGregRataDieConvert() {
     var rd;
     
-    for (var i = 0; i < testDates.length; i++) {
-        rd = new ilib.Date.GregRataDie({julianday: testDates[i][0]});
+    for (var i = 0; i < testDatesGregRD.length; i++) {
+        rd = new ilib.Date.GregRataDie({julianday: testDatesGregRD[i][0]});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesGregRD[i][0]);
         
-        assertEquals(testDates[i][0] - rd.epoch, rd.getRataDie());
+        assertEquals(testDatesGregRD[i][0] - rd.epoch, rd.getRataDie());
     }
 }
 
@@ -181,21 +185,21 @@ function testGregRataDieConstructorUnixTimeTestRounding() {
 function testGregRataDieGetJulianDay() {
     var rd;
     
-    for (var i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDatesGregRD.length; i++) {
         rd = new ilib.Date.GregRataDie({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7]
+            year: testDatesGregRD[i][1], 
+            month: testDatesGregRD[i][2], 
+            day: testDatesGregRD[i][3],
+            hour: testDatesGregRD[i][4],
+            minute: testDatesGregRD[i][5],
+            second: testDatesGregRD[i][6],
+            millisecond: testDatesGregRD[i][7]
         });
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesGregRD[i][0]);
         
         assertEquals('object', typeof(rd));
-        assertEquals(testDates[i][0], rd.getJulianDay());
+        assertEquals(testDatesGregRD[i][0], rd.getJulianDay());
     }
 }
 

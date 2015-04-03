@@ -104,4 +104,6 @@ var qmlLoader = require("./qmlloader.js");
 var ilib = require("./ilibglobal.js");
 ilib.setLoaderCallback(new qmlLoader(ilib));
 
+ilib._dyncode = true; // indicate that we are using dynamically loaded code
+
 require("./ilib-stubs.js");

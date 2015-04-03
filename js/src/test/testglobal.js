@@ -94,8 +94,23 @@ function testGetTimeZoneNodejs() {
 }
 
 function testGetTimeZoneRhino() {
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
+		return;
+	}
 	ilib._platform = undefined;
 	ilib.tz = undefined;
+	if (ilib._isGlobal("navigator")) {
+		// this won't work in a browser
+		navigator = undefined;
+	}
+	if (ilib._isGlobal("navigator") || ilib._isGlobal("PalmSystem")) {
+		// can't test on these systems because you can't unset these
+		return;
+	}
+	
 	if (typeof(environment) === 'undefined') {
 		environment = {
 			user: {}
@@ -109,24 +124,44 @@ function testGetTimeZoneRhino() {
 }
 
 function testGetTimeZoneWebOS() {
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
+		return;
+	}
 	ilib._platform = undefined;
 	ilib.tz = undefined;
-	if (typeof(PalmSystem) === 'undefined') {
-		PalmSystem = {};
+
+	if (ilib._isGlobal("navigator") || ilib._isGlobal("PalmSystem")) {
+		// can't test on these systems because you can't unset these
+		return;
 	}
-	PalmSystem.timezone = "Europe/London";
 	
+	setGlobal("PalmSystem", {
+		timezone: "Europe/London"
+	});
+		
 	assertEquals("Europe/London", ilib.getTimeZone());
 	
 	PalmSystem = undefined;
 }
 
 function testGetLocaleNodejs1() {
-	if (typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is already set up and overrides
-		// everything else
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 	
 	ilib._platform = undefined;
@@ -144,11 +179,20 @@ function testGetLocaleNodejs1() {
 }
 
 function testGetLocaleNodejs2() {
-	if (typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is already set up and overrides
-		// everything else
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 	
 	ilib._platform = undefined;
@@ -166,11 +210,20 @@ function testGetLocaleNodejs2() {
 }
 
 function testGetLocaleRhino() {
-	if (typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is already set up and overrides
-		// everything else
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 	
 	ilib._platform = undefined;
@@ -180,6 +233,7 @@ function testGetLocaleRhino() {
 			user: {}
 		};
 	}
+	console.log("platform is " + ilib._getPlatform());
 	environment.user.language = "de";
 	environment.user.country = "AT";
 	
@@ -189,11 +243,20 @@ function testGetLocaleRhino() {
 }
 
 function testGetLocaleWebOS() {
-	if (typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is already set up and overrides
-		// everything else
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 	
 	ilib._platform = undefined;
@@ -211,6 +274,12 @@ function testGetLocaleWebOS() {
 }
 
 function testGetLocaleNotString() {
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
+		return;
+	}
 	ilib._platform = undefined;
 	PalmSystem = undefined;
 	ilib.locale = new ilib.Locale("it-IT");
@@ -220,10 +289,20 @@ function testGetLocaleNotString() {
 }
 
 function testGetTimeZoneBrowser() {
-	if (typeof(navigator) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator is read-only!
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 
 	ilib._platform = undefined;
@@ -238,10 +317,20 @@ function testGetTimeZoneBrowser() {
 }
 
 function testGetLocaleBrowser() {
-	if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is read-only!
+	if (ilib.isDynCode()) {
+		// can't test this with dynamically loaded code because the global context
+		// is different for each module and we cannot set global variables, so we 
+		// cannot simulate the conditions where this code would work
 		return;
+	}
+	if (ilib._isGlobal("navigator")) {
+		navigator = undefined; // this won't work on a browser, so we have to check again
+		if (typeof(navigator) !== 'undefined') {
+			// can't test setting things up for the browser when you are testing within the 
+			// the browser already -- navigator.language is already set up and overrides
+			// everything else
+			return;
+		}
 	}
 	
 	ilib._platform = undefined;
@@ -256,3 +345,194 @@ function testGetLocaleBrowser() {
 	navigator.language = undefined;
 }
 
+function testIsArrayNewArrayObj() {
+	var a = new Array();
+	assertTrue(ilib.isArray(a));
+}
+
+function testIsArrayNewArrayBrackets() {
+	var a = [];
+	assertTrue(ilib.isArray(a));
+}
+
+function testIsArrayObject() {
+	var a = {foo:234};
+	assertFalse(ilib.isArray(a));
+}
+
+function testIsArrayObjectWithNumericProperties() {
+	var a = {"0": "d", "1": "c"};
+	assertFalse(ilib.isArray(a));
+}
+
+function testIsArrayNumber() {
+	var a = 234;
+	assertFalse(ilib.isArray(a));
+}
+
+function testIsArrayString() {
+	var a = "asdf";
+	assertFalse(ilib.isArray(a));
+}
+
+function testIsArrayNull() {
+	var a = null;
+	assertFalse(ilib.isArray(a));
+}
+
+function testIsArrayUndefined() {
+	var a = undefined;
+	assertFalse(ilib.isArray(a));
+}
+
+function testExtendSimple() {
+    var object1 = {"a": "A", "b": "B"},
+        object2 = {"c": "C", "d": "D"};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": "B", "c": "C", "d": "D"}, object1);
+}
+
+function testExtendReturnObject1() {
+    var object1 = {"a": "A", "b": "B"},
+        object2 = {"c": "C", "d": "D"};
+    
+    var x = ilib.extend(object1, object2);
+    assertEquals(object1, x);
+}
+
+function testExtendArrays() {
+    var object1 = {"a": ["b", "c"]},
+        object2 = {"a": ["d"]};
+   
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": ["b", "c", "d"]}, object1);
+}
+
+function testExtendArraysDups() {
+    var object1 = {"a": ["b", "c"]},
+        object2 = {"a": ["c", "d"]};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": ["b", "c", "c", "d"]}, object1);
+}
+
+function testExtendArraysEmptySource() {
+    var object1 = {"a": []},
+        object2 = {"a": ["d"]};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": ["d"]}, object1);
+}
+
+function testExtendArraysEmptyTarget() {
+    var object1 = {"a": ["b", "c"]},
+        object2 = {"a": []};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": ["b", "c"]}, object1);
+}
+
+function testExtendArraysIncongruentTypes1() {
+    var object1 = {"a": ["b", "c"]},
+        object2 = {"a": "d"};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "d"}, object1);
+}
+
+function testExtendArraysIncongruentTypes2() {
+    var object1 = {"a": "b"},
+        object2 = {"a": ["d"]};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": ["d"]}, object1);
+}
+
+function testExtendSimpleProperty() {
+    var object1 = {"a": "A", "b": "B"},
+        object2 = {"b": "X"};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": "X"}, object1);
+}
+
+function testExtendComplexProperty() {
+    var object1 = {"a": "A", "b": {"x": "B"}},
+        object2 = {"b": "X"};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": "X"}, object1);
+}
+
+function testExtendSubobjects() {
+    var object1 = {"b": {"x": "X", "y": "Y"}},
+        object2 = {"b": {"x": "M", "y": "N"}};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"b": {"x": "M", "y": "N"}}, object1);
+}
+
+function testExtendSubobjectsLeaveObj1PropsUntouched() {
+    var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
+        object2 = {"b": {"x": "M", "y": "N"}};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, object1);
+}
+
+function testExtendSubobjectsAddProps() {
+    var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
+        object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, object1);
+}
+
+function testExtendSubobjectsAddProps() {
+    var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
+        object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, object1);
+}
+
+function testExtendBooleans() {
+    var object1 = {"a": true, "b": true},
+        object2 = {"b": false};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": true, "b": false}, object1);
+}
+
+function testExtendAddBooleans() {
+    var object1 = {"a": true, "b": true},
+        object2 = {"c": false};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": true, "b": true, "c": false}, object1);
+}
+
+function testExtendNumbers() {
+    var object1 = {"a": 1, "b": 2},
+        object2 = {"b": 3};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": 1, "b": 3}, object1);
+}
+
+function testExtendNumbersWithZero() {
+    var object1 = {"a": 1, "b": 2},
+        object2 = {"b": 0};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": 1, "b": 0}, object1);
+}
+
+function testExtendNumbersAddZero() {
+    var object1 = {"a": 1, "b": 2},
+        object2 = {"c": 0};
+    
+    ilib.extend(object1, object2);
+    assertObjectEquals({"a": 1, "b": 2, "c": 0}, object1);
+}

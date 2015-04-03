@@ -29,14 +29,14 @@ util/utils.js
 
 // !data phonefmt
 
-var ilib = require("./ilibglobal.js");
-if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+var ilib = require("../ilibglobal.js");
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 if (!ilib.PhoneNumber || ilib.PhoneNumber.stub) ilib.PhoneNumber = require("./phonenum.js");
 if (!ilib.NumPlan || ilib.NumPlan.stub) ilib.NumPlan = require("./numplan.js");
-if (!ilib.Locale.PhoneLoc || ilib.Locale.PhoneLoc.stub) ilib.Locale.PhoneLoc = require("./phoneloc.js");
+if (!ilib.PhoneLoc || ilib.PhoneLoc.stub) ilib.PhoneLoc = require("./phoneloc.js");
 
 /**
  * @class
@@ -108,12 +108,12 @@ ilib.PhoneFmt = function(options) {
 		}
 	}
 
-	new ilib.Locale.PhoneLoc({
+	new ilib.PhoneLoc({
 		locale: locale,
 		mcc: options && options.mcc,
 		countryCode: options && options.countryCode,
 		onLoad: ilib.bind(this, function (data) {
-			/** @type {ilib.Locale.PhoneLoc} */
+			/** @type {ilib.PhoneLoc} */
 			this.locale = data;
 
 			new ilib.NumPlan({
@@ -293,12 +293,12 @@ ilib.PhoneFmt.prototype = {
 						// switch to the new country to format the rest of the number
 						countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
 
-						new ilib.Locale.PhoneLoc({
+						new ilib.PhoneLoc({
 							locale: this.locale,
 							sync: sync,							
 							loadParms: loadParams,
 							countryCode: countryCode,
-							onLoad: ilib.bind(this, function (/** @type {ilib.Locale.PhoneLoc} */ locale) {
+							onLoad: ilib.bind(this, function (/** @type {ilib.PhoneLoc} */ locale) {
 								ilib.loadData({
 									name: "phonefmt.json",
 									object: ilib.PhoneFmt,

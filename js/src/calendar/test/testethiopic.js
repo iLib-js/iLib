@@ -17,9 +17,12 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "ethiopic"});
+}
 
 function testEthiopicGetNumMonths() {
-    var cal = new ilib.Cal.Ethiopic();
+	var cal = new ilib.Cal.Ethiopic();
     
     assertEquals(13, cal.getNumMonths(2007));
 }

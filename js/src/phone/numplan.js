@@ -26,10 +26,10 @@ util/utils.js
 
 // !data numplan
 
-var ilib = require("./ilibglobal.js");
-if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+var ilib = require("../ilibglobal.js");
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 /**
  * @class

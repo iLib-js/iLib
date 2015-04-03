@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "julian"});
+}
+
 function testJulDateConstructor() {
 	var jul = new ilib.Date.JulDate();
 	
@@ -351,7 +355,7 @@ function testJulDateBeginningOfYear2Rd() {
     assertEquals(0, gd.getMilliseconds());
 }
 
-var testDates = [
+var testDatesJulian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -587,  7,     30,  0,    0,      0,      0,           0],
     [1660037.5, -169,  12,    8,   0,    0,      0,      0,           3],
@@ -391,23 +395,23 @@ var testDates = [
 function testJulDateConvert() {
     var jul;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(jul));
+    for (var i = 0; i < testDatesJulian.length; i++) {
+        info("testing jd=" + testDatesJulian[i][0] + " and date of " + JSON.stringify(jul));
         
         jul = new ilib.Date.JulDate({
-        	julianday: testDates[i][0], 
+        	julianday: testDatesJulian[i][0], 
         	timezone: "Etc/UTC"
         });
     
         assertEquals('object', typeof(jul));
-        assertEquals(testDates[i][1], jul.getYears());
-        assertEquals(testDates[i][2], jul.getMonths());
-        assertEquals(testDates[i][3], jul.getDays());
-        assertEquals(testDates[i][4], jul.getHours());
-        assertEquals(testDates[i][5], jul.getMinutes());
-        assertEquals(testDates[i][6], jul.getSeconds());
-        assertEquals(testDates[i][7], jul.getMilliseconds());
-        assertEquals(testDates[i][8], jul.getDayOfWeek());
+        assertEquals(testDatesJulian[i][1], jul.getYears());
+        assertEquals(testDatesJulian[i][2], jul.getMonths());
+        assertEquals(testDatesJulian[i][3], jul.getDays());
+        assertEquals(testDatesJulian[i][4], jul.getHours());
+        assertEquals(testDatesJulian[i][5], jul.getMinutes());
+        assertEquals(testDatesJulian[i][6], jul.getSeconds());
+        assertEquals(testDatesJulian[i][7], jul.getMilliseconds());
+        assertEquals(testDatesJulian[i][8], jul.getDayOfWeek());
     }
 }
 
@@ -480,24 +484,24 @@ function testJulDateConstructorCopy() {
 function testJulDateGetJulianDay() {
     var jul;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date " + JSON.stringify(jul));
+    for (var i = 0; i < testDatesJulian.length; i++) {
+        info("testing jd=" + testDatesJulian[i][0] + " and date " + JSON.stringify(jul));
         
         jul = new ilib.Date.JulDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+            year: testDatesJulian[i][1], 
+            month: testDatesJulian[i][2], 
+            day: testDatesJulian[i][3],
+            hour: testDatesJulian[i][4],
+            minute: testDatesJulian[i][5],
+            second: testDatesJulian[i][6],
+            millisecond: testDatesJulian[i][7],
             timezone: "Etc/UTC"
         });
     
         assertEquals('object', typeof(jul));
         info("calculated julian day is " + jul.getJulianDay());
-        assertEquals(testDates[i][0], jul.getJulianDay());
-        assertEquals(testDates[i][8], jul.getDayOfWeek());
+        assertEquals(testDatesJulian[i][0], jul.getJulianDay());
+        assertEquals(testDatesJulian[i][8], jul.getDayOfWeek());
     }
 }
 

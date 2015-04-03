@@ -28,13 +28,13 @@ util/utils.js
 
 // !data states idd mnc
 
-var ilib = require("./ilibglobal.js");
-if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+var ilib = require("../ilibglobal.js");
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 if (!ilib.NumPlan || ilib.NumPlan.stub) ilib.NumPlan = require("./numplan.js");
-if (!ilib.Locale.PhoneLoc || ilib.Locale.PhoneLoc.stub) ilib.Locale.PhoneLoc = require("./phoneloc.js");
+if (!ilib.PhoneLoc || ilib.PhoneLoc.stub) ilib.PhoneLoc = require("./phoneloc.js");
 if (!ilib.StateHandler || ilib.StateHandler.stub) ilib.StateHandler = require("./handler.js");
 
 /**
@@ -289,7 +289,7 @@ ilib.PhoneNumber = function(number, options) {
 			
 			/** 
 			 * @private
-			 * @type {ilib.Locale.PhoneLoc} 
+			 * @type {ilib.PhoneLoc} 
 			 */
 			this.locale = number.locale;
 	
@@ -301,7 +301,7 @@ ilib.PhoneNumber = function(number, options) {
 			
 			/** 
 			 * @private
-			 * @type {ilib.Locale.PhoneLoc} 
+			 * @type {ilib.PhoneLoc} 
 			 */
 			this.destinationLocale = number.destinationLocale;
 	
@@ -312,7 +312,7 @@ ilib.PhoneNumber = function(number, options) {
 		}
 	}
 
-	new ilib.Locale.PhoneLoc({
+	new ilib.PhoneLoc({
 		locale: options && options.locale,
 		mcc: options && options.mcc,
 		sync: this.sync,
@@ -691,7 +691,7 @@ ilib.PhoneNumber.prototype = {
 	 * @param {string} countryCode
 	 */
 	_parseOtherCountry: function(number, regionData, options, countryCode) {
-		new ilib.Locale.PhoneLoc({
+		new ilib.PhoneLoc({
 			locale: this.locale,
 			countryCode: countryCode,
 			sync: this.sync,
@@ -702,7 +702,7 @@ ilib.PhoneNumber.prototype = {
 				 * and is used to parse the IDD prefix, if any, and this.destinationLocale is 
 				 * the locale of the rest of this number after the IDD prefix.
 				 */
-				/** @type {ilib.Locale.PhoneLoc} */
+				/** @type {ilib.PhoneLoc} */
 				this.destinationLocale = loc;
 
 				ilib.loadData({
@@ -1197,10 +1197,10 @@ ilib.PhoneNumber.prototype = {
 	 *   manualDialing:boolean
 	 * }} options an object containing options to help in normalizing. 
 	 * @param {ilib.PhoneNumber} norm
-	 * @param {ilib.Locale.PhoneLoc} homeLocale
-	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.PhoneLoc} homeLocale
+	 * @param {ilib.PhoneLoc} currentLocale
 	 * @param {ilib.NumPlan} currentPlan
-	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.PhoneLoc} destinationLocale
 	 * @param {ilib.NumPlan} destinationPlan
 	 * @param {boolean} sync
 	 * @param {Object|undefined} loadParams
@@ -1355,10 +1355,10 @@ ilib.PhoneNumber.prototype = {
 	 *   manualDialing:boolean
 	 * }} options an object containing options to help in normalizing. 
 	 * @param {ilib.PhoneNumber} norm
-	 * @param {ilib.Locale.PhoneLoc} homeLocale
-	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.PhoneLoc} homeLocale
+	 * @param {ilib.PhoneLoc} currentLocale
 	 * @param {ilib.NumPlan} currentPlan
-	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.PhoneLoc} destinationLocale
 	 * @param {ilib.NumPlan} destinationPlan
 	 * @param {boolean} sync
 	 * @param {Object|undefined} loadParams
@@ -1595,7 +1595,7 @@ ilib.PhoneNumber.prototype = {
 		var normalized;
 		
 		if (options && (typeof(options.mcc) !== 'undefined' || typeof(options.country) !== 'undefined')) {
-			new ilib.Locale.PhoneLoc({
+			new ilib.PhoneLoc({
 				mcc: options.mcc,
 				countryCode: options.countryCode,
 				locale: this.locale,

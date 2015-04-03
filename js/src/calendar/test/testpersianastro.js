@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "persian"});
+}
+
 function testPersianGetNumMonths() {
     var cal = new ilib.Cal.Persian();
     

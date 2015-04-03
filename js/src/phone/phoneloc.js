@@ -26,10 +26,10 @@ util/utils.js
 
 // !data phoneloc
 
-var ilib = require("./ilibglobal.js");
-if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+var ilib = require("../ilibglobal.js");
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 /**
  * @class
@@ -39,7 +39,7 @@ if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
  * @private
  * @extends ilib.Locale
  */
-ilib.Locale.PhoneLoc = function(options) {
+ilib.PhoneLoc = function(options) {
 	var region,
 		mcc,
 		cc,
@@ -73,7 +73,7 @@ ilib.Locale.PhoneLoc = function(options) {
 
 	ilib.loadData({
 		name: "phoneloc.json",
-		object: ilib.Locale.PhoneLoc,
+		object: ilib.PhoneLoc,
 		nonlocale: true,
 		sync: sync, 
 		loadParams: loadParams, 
@@ -103,9 +103,9 @@ ilib.Locale.PhoneLoc = function(options) {
 	});
 };
 
-ilib.Locale.PhoneLoc.prototype = new ilib.Locale();
-ilib.Locale.PhoneLoc.prototype.parent = ilib.Locale;
-ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
+ilib.PhoneLoc.prototype = new ilib.Locale();
+ilib.PhoneLoc.prototype.parent = ilib.Locale;
+ilib.PhoneLoc.prototype.constructor = ilib.PhoneLoc;
 
 /**
  * Map a mobile carrier code to a region code.
@@ -116,7 +116,7 @@ ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
  * @return {string|undefined} the region code
  */
 
-ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
+ilib.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
 		return undefined;
 	}
@@ -131,7 +131,7 @@ ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
  * @param {string|undefined} cc the country code to map
  * @return {string|undefined} the region code
  */
-ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
+ilib.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
 		return undefined;
 	}
@@ -146,7 +146,7 @@ ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
  * @param {string|undefined} region the region code to map
  * @return {string|undefined} the country code
  */
-ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
+ilib.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
 		return undefined;
 	}
@@ -162,7 +162,7 @@ ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
  * @param {string|undefined} area the area code within the country code's numbering plan
  * @return {string|undefined} the region code
  */
-ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
+ilib.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	if (!cc) {
 		return undefined;
 	}
@@ -182,7 +182,7 @@ ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
  * @param {string} region the region code to normalize
  * @return {string} the normalized region code
  */
-ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
+ilib.PhoneLoc.prototype._normPhoneReg = function(region) {
 	var norm;
 	
 	// Map all NANP regions to the right region, so that they get parsed using the 
@@ -240,4 +240,4 @@ ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 	return norm;
 };
 
-module.exports = ilib.Locale.PhoneLoc;
+module.exports = ilib.PhoneLoc;

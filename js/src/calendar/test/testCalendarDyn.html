@@ -22,7 +22,6 @@ limitations under the License.
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript" src="../../ilib-web.js"></script>
 <script language="JavaScript" src="testastro.js"></script>
-<script language="JavaScript" src="testcalendar.js"></script>
 <script language="JavaScript" src="testcopticdate.js"></script>
 <script language="JavaScript" src="testcoptic.js"></script>
 <script language="JavaScript" src="testethiopicdate.js"></script>
@@ -46,5 +45,9 @@ limitations under the License.
 <script language="JavaScript" src="testthaisolardate.js"></script>
 <script language="JavaScript" src="testthaisolar.js"></script>
 <script language="JavaScript" src="testtimezone.js"></script>
+
+<!--  This has to be last so that all the calendars are loaded
+	  before these tests are run. -->
+<script language="JavaScript" src="testcalendar.js"></script>
 </head>
 </html>

@@ -22,7 +22,7 @@
 ilibglobal.js 
 */
 
-var ilib = require("./ilibglobal.js");
+var ilib = require("../ilibglobal.js");
 
 /**
  * @class

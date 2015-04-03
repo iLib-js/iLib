@@ -1318,7 +1318,7 @@ function testBogusCountryCode() {
 		areaCode: "650",
 		subscriberNumber: "5551212",
 		destinationPlan: new ilib.NumPlan({locale: "en-US"}),
-		destinationLocale: new ilib.Locale.PhoneLoc({locale: "en-US"})
+		destinationLocale: new ilib.PhoneLoc({locale: "en-US"})
 	}, {locale: "en-US"});
 	var expected = {
 		country: {
@@ -1350,7 +1350,7 @@ function testBogusAreaCode() {
 		areaCode: "650P",
 		subscriberNumber: "5551212",
 		destinationPlan: new ilib.NumPlan({locale: "en-US"}),
-		destinationLocale: new ilib.Locale.PhoneLoc({locale: "en-US"})
+		destinationLocale: new ilib.PhoneLoc({locale: "en-US"})
 	}, {locale: "en-US"});
 	var expected = {
 		country: {

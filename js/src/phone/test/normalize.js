@@ -677,9 +677,9 @@ function testAssistedDialingThreeLocalesCDMA() {
 		areaCode: "495",	// moscow
 		subscriberNumber: "7654321",
 		plan: new ilib.NumPlan({locale: "ru-RU"}),
-		locale: new ilib.Locale.PhoneLoc({locale: "ru-RU"}),
+		locale: new ilib.PhoneLoc({locale: "ru-RU"}),
 		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
-		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
+		destinationLocale: new ilib.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
 	var hints = {
 		mcc: "732", // from Columbia
@@ -698,9 +698,9 @@ function testAssistedDialingThreeLocalesUMTS() {
 		areaCode: "495",	// moscow
 		subscriberNumber: "7654321",
 		plan: new ilib.NumPlan({locale: "ru-RU"}),
-		locale: new ilib.Locale.PhoneLoc({locale: "ru-RU"}),
+		locale: new ilib.PhoneLoc({locale: "ru-RU"}),
 		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
-		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
+		destinationLocale: new ilib.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
 	var hints = {
 		mcc: "732", // from Columbia

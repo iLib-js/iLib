@@ -17,22 +17,39 @@
  * limitations under the License.
  */
 
-function setUp() {
-	ilib.CType.isAlnum._init(true);	
-	ilib.CType.isAlpha._init(true);
-	ilib.CType.isAscii._init(true);
-	ilib.CType.isBlank._init(true);
-	ilib.CType.isCntrl._init(true);
-	ilib.CType.isDigit._init(true);
-	ilib.CType.isGraph._init(true);
-	ilib.CType.isIdeo._init(true);
-	ilib.CType.isLower._init(true);
-	ilib.CType.isPunct._init(true);
-	ilib.CType.isScript._init(true);
-	ilib.CType.isSpace._init(true);
-	ilib.CType.isUpper._init(true);
-	ilib.CType.isXdigit._init(true);
+if (ilib.isDynCode()) {
+	if (!ilib.CType.isAlnum	|| ilib.CType.isAlnum.stub) require("./ctype.isalnum.js");
+	if (!ilib.CType.isAlpha || ilib.CType.isAlpha.stub) require("./ctype.isalpha.js");
+	if (!ilib.CType.isAscii || ilib.CType.isAscii.stub) require("./ctype.isascii.js");
+	if (!ilib.CType.isBlank || ilib.CType.isBlank.stub) require("./ctype.isblank.js");
+	if (!ilib.CType.isCntrl || ilib.CType.isCntrl.stub) require("./ctype.iscntrl.js");
+	if (!ilib.CType.isDigit || ilib.CType.isDigit.stub) require("./ctype.isdigit.js");
+	if (!ilib.CType.isGraph || ilib.CType.isGraph.stub) require("./ctype.isgraph.js");
+	if (!ilib.CType.isIdeo || ilib.CType.isIdeo.stub) require("./ctype.isideo.js");
+	if (!ilib.CType.isLower || ilib.CType.isLower.stub) require("./ctype.islower.js");
+	if (!ilib.CType.isPrint || ilib.CType.isPrint.stub) require("./ctype.isprint.js");
+	if (!ilib.CType.isPunct || ilib.CType.isPunct.stub) require("./ctype.ispunct.js");
+	if (!ilib.CType.isScript || ilib.CType.isScript.stub) require("./ctype.isscript.js");
+	if (!ilib.CType.isSpace || ilib.CType.isSpace.stub) require("./ctype.isspace.js");
+	if (!ilib.CType.isUpper || ilib.CType.isUpper.stub) require("./ctype.isupper.js");
+	if (!ilib.CType.isXdigit || ilib.CType.isXdigit.stub) require("./ctype.isxdigit.js");
 }
+
+ilib.CType.isAlnum._init(true);	
+ilib.CType.isAlpha._init(true);
+ilib.CType.isAscii._init(true);
+ilib.CType.isBlank._init(true);
+ilib.CType.isCntrl._init(true);
+ilib.CType.isDigit._init(true);
+ilib.CType.isGraph._init(true);
+ilib.CType.isIdeo._init(true);
+ilib.CType.isLower._init(true);
+ilib.CType.isPrint._init(true);
+ilib.CType.isPunct._init(true);
+ilib.CType.isScript._init(true);
+ilib.CType.isSpace._init(true);
+ilib.CType.isUpper._init(true);
+ilib.CType.isXdigit._init(true);
 
 function testIsAlnumTrue() {
     assertTrue(ilib.CType.isAlnum('a'));

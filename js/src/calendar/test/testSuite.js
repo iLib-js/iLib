@@ -28,7 +28,6 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        "testcalendar.js",
         "testjulianday.js",
         "testgregratadie.js",
 	    "testgregoriandate.js",
@@ -52,7 +51,11 @@ function suite() {
 	    "testethiopic.js",
 	    "testethiopicdate.js",
 	    "testcoptic.js",
-	    "testcopticdate.js"
+	    "testcopticdate.js",
+	    
+	    // This has to be last so that all the calendars are loaded in dynamic mode
+	    // before these tests are run.
+        "testcalendar.js"
     ];
     
     suites.forEach(function (path) {

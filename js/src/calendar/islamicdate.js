@@ -38,8 +38,9 @@ if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("../localeinfo.js");
 if (!ilib.TimeZone || ilib.TimeZone.stub) ilib.TimeZone = require("../timezone.js");
 if (!ilib.Date || ilib.Date.stub) ilib.Date = require("../date.js");
-if (!ilib.Date.RataDie || ilib.Date.RataDie.stub) ilib.Date.RataDie = require("./ratadie.js");
 if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("../calendar.js");
+
+if (!ilib.Date.RataDie || ilib.Date.RataDie.stub) ilib.Date.RataDie = require("./ratadie.js");
 if (!ilib.Cal.Islamic || ilib.Cal.Islamic.stub) ilib.Cal.Islamic = require("./islamic.js");
 
 /**

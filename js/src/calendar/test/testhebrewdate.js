@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "hebrew"});
+}
+
 function testHebrewDateConstructor() {
 	var hd = new ilib.Date.HebrewDate();
     
@@ -94,7 +98,7 @@ function testHebrewDateAfterNoon() {
     assertEquals(0, hd.getMilliseconds());
 }
 
-var testDates = [
+var testDatesHebrew = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, 3174,  5,     10,  0,    0,      0,      0,           0],
     [1660037.5, 3593,  9,     25,  0,    0,      0,      0,           3],
@@ -133,21 +137,21 @@ var testDates = [
 
 function testHebrewDateConvert() {
     var hd;
-    for (var i = 0; i < testDates.length; i++) {
-        hd = new ilib.Date.HebrewDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesHebrew.length; i++) {
+        hd = new ilib.Date.HebrewDate({julianday: testDatesHebrew[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesHebrew[i][0]);
         
         assertEquals('object', typeof(hd));
-        assertEquals("testing rd for " + testDates[i][0], (testDates[i][0] - 347997.25), hd.getRataDie());
-        assertEquals("testing year for " + testDates[i][0], testDates[i][1], hd.getYears());
-        assertEquals("testing month for " + testDates[i][0], testDates[i][2], hd.getMonths());
-        assertEquals("testing day for " + testDates[i][0], testDates[i][3], hd.getDays());
-        assertEquals("testing hour for " + testDates[i][0], testDates[i][4], hd.getHours());
-        assertEquals("testing minute for " + testDates[i][0], testDates[i][5], hd.getMinutes());
-        assertEquals("testing second for " + testDates[i][0], testDates[i][6], hd.getSeconds());
-        assertEquals("testing millisecond for " + testDates[i][0], testDates[i][7], hd.getMilliseconds());
-        assertEquals("testing day of week for " + testDates[i][0], testDates[i][8], hd.getDayOfWeek());
+        assertEquals("testing rd for " + testDatesHebrew[i][0], (testDatesHebrew[i][0] - 347997.25), hd.getRataDie());
+        assertEquals("testing year for " + testDatesHebrew[i][0], testDatesHebrew[i][1], hd.getYears());
+        assertEquals("testing month for " + testDatesHebrew[i][0], testDatesHebrew[i][2], hd.getMonths());
+        assertEquals("testing day for " + testDatesHebrew[i][0], testDatesHebrew[i][3], hd.getDays());
+        assertEquals("testing hour for " + testDatesHebrew[i][0], testDatesHebrew[i][4], hd.getHours());
+        assertEquals("testing minute for " + testDatesHebrew[i][0], testDatesHebrew[i][5], hd.getMinutes());
+        assertEquals("testing second for " + testDatesHebrew[i][0], testDatesHebrew[i][6], hd.getSeconds());
+        assertEquals("testing millisecond for " + testDatesHebrew[i][0], testDatesHebrew[i][7], hd.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesHebrew[i][0], testDatesHebrew[i][8], hd.getDayOfWeek());
     }
 }
 
@@ -220,23 +224,23 @@ function testHebrewDateConstructorCopy() {
 function testHebrewDateGetJulianDay() {
     var hd;
     
-    for (var i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDatesHebrew.length; i++) {
         hd = new ilib.Date.HebrewDate({
-        	year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+        	year: testDatesHebrew[i][1], 
+            month: testDatesHebrew[i][2], 
+            day: testDatesHebrew[i][3],
+            hour: testDatesHebrew[i][4],
+            minute: testDatesHebrew[i][5],
+            second: testDatesHebrew[i][6],
+            millisecond: testDatesHebrew[i][7],
             timezone: "Etc/UTC"            
     	});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesHebrew[i][0]);
         
         assertEquals('object', typeof(hd));
-        assertEquals(testDates[i][0], hd.getJulianDay());
-        assertEquals(testDates[i][8], hd.getDayOfWeek());
+        assertEquals(testDatesHebrew[i][0], hd.getJulianDay());
+        assertEquals(testDatesHebrew[i][8], hd.getDayOfWeek());
     }
 }
 

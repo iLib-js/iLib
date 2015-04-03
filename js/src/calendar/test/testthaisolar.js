@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "thaisolar"});
+}
+
 function testThaiSolarGetNumMonths() {
     var cal = new ilib.Cal.ThaiSolar();
     

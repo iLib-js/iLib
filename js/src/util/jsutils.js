@@ -152,24 +152,6 @@ ilib.toHexString = function(string, limit) {
 	return result.toUpperCase();
 };
 
-utils.isArray = 
-/**
- * Test whether an object in an javascript array. 
- * 
- * @static
- * @param {*} object The object to test
- * @return {boolean} return true if the object is an array
- * and false otherwise
- */
-ilib.isArray = function(object) {
-	var o;
-	if (typeof(object) === 'object') {
-		o = /** @type {Object|null|undefined} */ object;
-		return Object.prototype.toString.call(o) === '[object Array]';
-	}
-	return false; 
-};
-
 utils.isDate = 
 /**
  * Test whether an object in a Javascript Date. 

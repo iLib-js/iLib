@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "gregorian"});
+}
+
 function testGregDateConstructor() {
 	var gd = new ilib.Date.GregDate();
 	
@@ -391,7 +395,7 @@ function testGregDateBeginningOfYear2Rd() {
     assertEquals(0, gd.getMilliseconds());
 }
 
-var testDates = [
+var testDatesGregorian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -586,  7,     24,  0,    0,      0,      0,           0],
     [1660037.5, -168,  12,    5,   0,    0,      0,      0,           3],
@@ -431,20 +435,20 @@ var testDates = [
 function testGregDateConvert() {
     var gd;
     
-    for (var i = 0; i < testDates.length; i++) {
-        gd = new ilib.Date.GregDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesGregorian.length; i++) {
+        gd = new ilib.Date.GregDate({julianday: testDatesGregorian[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesGregorian[i][0]);
         
         assertEquals('object', typeof(gd));
-        assertEquals(testDates[i][1], gd.getYears());
-        assertEquals(testDates[i][2], gd.getMonths());
-        assertEquals(testDates[i][3], gd.getDays());
-        assertEquals(testDates[i][4], gd.getHours());
-        assertEquals(testDates[i][5], gd.getMinutes());
-        assertEquals(testDates[i][6], gd.getSeconds());
-        assertEquals(testDates[i][7], gd.getMilliseconds());
-        assertEquals(testDates[i][8], gd.getDayOfWeek());
+        assertEquals(testDatesGregorian[i][1], gd.getYears());
+        assertEquals(testDatesGregorian[i][2], gd.getMonths());
+        assertEquals(testDatesGregorian[i][3], gd.getDays());
+        assertEquals(testDatesGregorian[i][4], gd.getHours());
+        assertEquals(testDatesGregorian[i][5], gd.getMinutes());
+        assertEquals(testDatesGregorian[i][6], gd.getSeconds());
+        assertEquals(testDatesGregorian[i][7], gd.getMilliseconds());
+        assertEquals(testDatesGregorian[i][8], gd.getDayOfWeek());
     }
 }
 
@@ -550,23 +554,23 @@ function testGregDateConstructorUnixTime() {
 function testGregDateGetJulianDay() {
     var gd;
     
-    for (var i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDatesGregorian.length; i++) {
         gd = new ilib.Date.GregDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+            year: testDatesGregorian[i][1], 
+            month: testDatesGregorian[i][2], 
+            day: testDatesGregorian[i][3],
+            hour: testDatesGregorian[i][4],
+            minute: testDatesGregorian[i][5],
+            second: testDatesGregorian[i][6],
+            millisecond: testDatesGregorian[i][7],
             timezone: "Etc/UTC"
         });
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesGregorian[i][0]);
         
         assertEquals('object', typeof(gd));
-        assertEquals(testDates[i][0], gd.getJulianDay());
-        assertEquals(testDates[i][8], gd.getDayOfWeek());
+        assertEquals(testDatesGregorian[i][0], gd.getJulianDay());
+        assertEquals(testDatesGregorian[i][8], gd.getDayOfWeek());
     }
 }
 

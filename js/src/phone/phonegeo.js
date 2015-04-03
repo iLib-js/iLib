@@ -29,15 +29,15 @@ resources.js
 
 // !data iddarea area extarea extstates phoneres
 
-var ilib = require("./ilibglobal.js");
-if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
+var ilib = require("../ilibglobal.js");
+if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("../util/utils.js"));
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
 
 if (!ilib.PhoneNumber || ilib.PhoneNumber.stub) ilib.PhoneNumber = require("./phonenum.js");
 if (!ilib.NumPlan || ilib.NumPlan.stub) ilib.NumPlan = require("./numplan.js");
-if (!ilib.Locale.PhoneLoc || ilib.Locale.PhoneLoc.stub) ilib.Locale.PhoneLoc = require("./phoneloc.js");
-if (!ilib.ResBundle || ilib.ResBundle.stub) ilib.ResBundle = require("./resources.js");
+if (!ilib.PhoneLoc || ilib.PhoneLoc.stub) ilib.PhoneLoc = require("./phoneloc.js");
+if (!ilib.ResBundle || ilib.ResBundle.stub) ilib.ResBundle = require("../resources.js");
 
 /**
  * @class
@@ -129,7 +129,7 @@ ilib.GeoLocator = function(options) {
 		}
 	}
 	
-	new ilib.Locale.PhoneLoc({
+	new ilib.PhoneLoc({
 		locale: locale,
 		mcc: options && options.mcc,
 		countryCode: options && options.countryCode,

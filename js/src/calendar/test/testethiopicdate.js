@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "ethiopic"});
+}
+
 function testEthiopicRataDieConstructor() {
     var erd = new ilib.Date.EthiopicRataDie();
     
@@ -425,7 +429,7 @@ function testEthiopicDateBeginningOfYear2Rd() {
     assertEquals(0, ed.getMilliseconds());
 }
 
-var testDates = [
+var testDatesEthiopic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -594,  12,    5,   18,   0,      0,      0,           0],
     [1660037.5, -175,  4,     11,  18,   0,      0,      0,           3],
@@ -465,97 +469,97 @@ var testDates = [
 function testEthiopicDateConvertYears() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
 
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][1], ed.getYears());        
+        assertEquals(testDatesEthiopic[i][1], ed.getYears());        
     }
 }
 
 function testEthiopicDateConvertMonths() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
    
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][2], ed.getMonths());        
+        assertEquals(testDatesEthiopic[i][2], ed.getMonths());        
     }
 }
 
 function testEthiopicDateConvertDays() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
         
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][3], ed.getDays());
+        assertEquals(testDatesEthiopic[i][3], ed.getDays());
     }
 }
 
 function testEthiopicDateConvertHours() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
 
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][4], ed.getHours());
+        assertEquals(testDatesEthiopic[i][4], ed.getHours());
     }
 }
 
 function testEthiopicDateConvertDayOfWeek() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
 
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][8], ed.getDayOfWeek());
+        assertEquals(testDatesEthiopic[i][8], ed.getDayOfWeek());
     }
 }
 
 function testEthiopicDateConvertOther() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            julianday: testDates[i][0], 
+            julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
 
         assertEquals('object', typeof(ed));
-        assertEquals(testDates[i][5], ed.getMinutes());
-        assertEquals(testDates[i][6], ed.getSeconds());
-        assertEquals(testDates[i][7], ed.getMilliseconds());
+        assertEquals(testDatesEthiopic[i][5], ed.getMinutes());
+        assertEquals(testDatesEthiopic[i][6], ed.getSeconds());
+        assertEquals(testDatesEthiopic[i][7], ed.getMilliseconds());
     }
 }
 
@@ -628,24 +632,24 @@ function testEthiopicDateConstructorCopy() {
 function testEthiopicDateGetJulianDay() {
     var ed;
     
-    for (var i = 0; i < testDates.length; i++) {
-        info("testing jd=" + testDates[i][0] + " and date " + JSON.stringify(ed));
+    for (var i = 0; i < testDatesEthiopic.length; i++) {
+        info("testing jd=" + testDatesEthiopic[i][0] + " and date " + JSON.stringify(ed));
         
         ed = new ilib.Date.EthiopicDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+            year: testDatesEthiopic[i][1], 
+            month: testDatesEthiopic[i][2], 
+            day: testDatesEthiopic[i][3],
+            hour: testDatesEthiopic[i][4],
+            minute: testDatesEthiopic[i][5],
+            second: testDatesEthiopic[i][6],
+            millisecond: testDatesEthiopic[i][7],
             timezone: "Etc/UTC"
         });
     
         assertEquals('object', typeof(ed));
         info("calculated julian day is " + ed.getJulianDay());
-        assertEquals(testDates[i][0], ed.getJulianDay());
-        assertEquals(testDates[i][8], ed.getDayOfWeek());
+        assertEquals(testDatesEthiopic[i][0], ed.getJulianDay());
+        assertEquals(testDatesEthiopic[i][8], ed.getDayOfWeek());
     }
 }
 

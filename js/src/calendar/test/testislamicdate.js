@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "islamic"});
+}
+
 function testIslamicDateConstructor() {
     var id = new ilib.Date.IslamicDate();
     
@@ -52,7 +56,7 @@ function testIslamicDateAfterLeapYear() {
     assertEquals(0, id.getMilliseconds());
 }
 
-var testDates = [
+var testDatesIslamic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -1245, 12,    9,   0,    0,      0,      0,           0],
     [1660037.5, -813,  2,     23,  0,    0,      0,      0,           3],
@@ -92,21 +96,21 @@ var testDates = [
 function testIslamicDateConvert() {
     var id;
     
-    for (var i = 0; i < testDates.length; i++) {
-        id = new ilib.Date.IslamicDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesIslamic.length; i++) {
+        id = new ilib.Date.IslamicDate({julianday: testDatesIslamic[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesIslamic[i][0]);
         
         assertEquals('object', typeof(id));
-        assertEquals("testing rd for " + testDates[i][0], (testDates[i][0] - 1948439.5), id.getRataDie());
-        assertEquals("testing year for " + testDates[i][0], testDates[i][1], id.getYears());
-        assertEquals("testing month for " + testDates[i][0], testDates[i][2], id.getMonths());
-        assertEquals("testing day for " + testDates[i][0], testDates[i][3], id.getDays());
-        assertEquals("testing hour for " + testDates[i][0], testDates[i][4], id.getHours());
-        assertEquals("testing minute for " + testDates[i][0], testDates[i][5], id.getMinutes());
-        assertEquals("testing second for " + testDates[i][0], testDates[i][6], id.getSeconds());
-        assertEquals("testing millisecond for " + testDates[i][0], testDates[i][7], id.getMilliseconds());
-        assertEquals("testing day of week for " + testDates[i][0], testDates[i][8], id.getDayOfWeek());
+        assertEquals("testing rd for " + testDatesIslamic[i][0], (testDatesIslamic[i][0] - 1948439.5), id.getRataDie());
+        assertEquals("testing year for " + testDatesIslamic[i][0], testDatesIslamic[i][1], id.getYears());
+        assertEquals("testing month for " + testDatesIslamic[i][0], testDatesIslamic[i][2], id.getMonths());
+        assertEquals("testing day for " + testDatesIslamic[i][0], testDatesIslamic[i][3], id.getDays());
+        assertEquals("testing hour for " + testDatesIslamic[i][0], testDatesIslamic[i][4], id.getHours());
+        assertEquals("testing minute for " + testDatesIslamic[i][0], testDatesIslamic[i][5], id.getMinutes());
+        assertEquals("testing second for " + testDatesIslamic[i][0], testDatesIslamic[i][6], id.getSeconds());
+        assertEquals("testing millisecond for " + testDatesIslamic[i][0], testDatesIslamic[i][7], id.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesIslamic[i][0], testDatesIslamic[i][8], id.getDayOfWeek());
     }
 }
 
@@ -179,23 +183,23 @@ function testIslamicDateConstructorCopy() {
 function testIslamicDateGetJulianDay() {
 	var id;
 	
-    for (var i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDatesIslamic.length; i++) {
         id = new ilib.Date.IslamicDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+            year: testDatesIslamic[i][1], 
+            month: testDatesIslamic[i][2], 
+            day: testDatesIslamic[i][3],
+            hour: testDatesIslamic[i][4],
+            minute: testDatesIslamic[i][5],
+            second: testDatesIslamic[i][6],
+            millisecond: testDatesIslamic[i][7],
             timezone: "Etc/UTC"
     	});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesIslamic[i][0]);
         
         assertEquals('object', typeof(id));
-        assertEquals("testing row " + testDates[i][0], testDates[i][0], id.getJulianDay());
-        assertEquals(testDates[i][8], id.getDayOfWeek());
+        assertEquals("testing row " + testDatesIslamic[i][0], testDatesIslamic[i][0], id.getJulianDay());
+        assertEquals(testDatesIslamic[i][8], id.getDayOfWeek());
     }
 }
 

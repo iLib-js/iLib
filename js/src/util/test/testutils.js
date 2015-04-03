@@ -244,6 +244,7 @@ function testMergeSimpleNoSideEffects() {
 function testMergeArrays() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": ["d"]};
+
     assertObjectEquals({"a": ["b", "c", "d"]}, ilib.merge(object1, object2));
 }
 

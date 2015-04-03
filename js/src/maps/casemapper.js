@@ -19,10 +19,10 @@
 
 // !depends locale.js strings.js
 
-var ilib = require("./ilibglobal.js");
+var ilib = require("../ilibglobal.js");
 
-if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
-if (!ilib.String || ilib.String.stub) ilib.String = require("./strings.js");
+if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("../locale.js");
+if (!ilib.String || ilib.String.stub) ilib.String = require("../strings.js");
 
 /**
  * @class

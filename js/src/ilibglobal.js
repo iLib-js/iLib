@@ -22,6 +22,12 @@
  */
 var ilib = {};
 
+/** @private */
+ilib._ver = function() {
+    return // !macro ilibVersion
+    ;
+};
+
 /**
  * Return the current version of ilib.
  * 
@@ -29,15 +35,15 @@ var ilib = {};
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-    return // !macro ilibVersion
-    ;
+	// TODO: need some way of getting the version number under dynamic load code
+    return ilib._ver() || "10.0"; 
 };
 
 /**
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	/** @type {null|{nfc:Object.<string,string>,nfd:Object.<string,string>,nfkd:Object.<string,string>,ccc:Object.<string,number>}} */
+	/** @type {{nfc:Object.<string,string>,nfd:Object.<string,string>,nfkd:Object.<string,string>,ccc:Object.<string,number>}|null} */
     norm: null,
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
@@ -101,10 +107,10 @@ ilib._getPlatform = function () {
     if (!ilib._platform) {
         if (typeof(environment) !== 'undefined') {
             ilib._platform = "rhino";
+        } else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
+            ilib._platform = "nodejs";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
-        } else if (typeof(global) === 'object') {
-            ilib._platform = "nodejs";
         } else {
             ilib._platform = "unknown";
         }
@@ -148,8 +154,9 @@ ilib._getBrowser = function () {
 
 /**
  * Return true if the global variable is defined on this platform.
- * @private
+ * @protected
  * @static
+ * @param {string} name the name of the variable to check
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
@@ -158,13 +165,13 @@ ilib._isGlobal = function(name) {
             var top = (function() {
               return (typeof global === 'object') ? global : this;
             })();
-            return typeof(top[name]) !== undefined;
+            return typeof(top[name]) !== 'undefined';
         case "nodejs":
             var root = typeof(global) !== 'undefined' ? global : this;
-            return root && typeof(root[name]) !== undefined;
+            return root && typeof(root[name]) !== 'undefined';
             
         default:
-            return typeof(window[name]) !== undefined;
+            return typeof(window[name]) !== 'undefined';
     }
 };
 
@@ -313,11 +320,9 @@ ilib.getTimeZone = function() {
  * Defines the interface for the loader class for ilib. The main method of the
  * loader object is loadFiles(), which loads a set of requested locale data files
  * from where-ever it is stored.
- * @param {Object} ilib The current ilib name space into which files and data should
- * be loaded
  * @interface
  */
-ilib.Loader = function(ilib) {};
+ilib.Loader = function() {};
 
 /**
  * Load a set of files from where-ever it is stored.<p>
@@ -489,11 +494,29 @@ ilib.getLoader = function() {
 };
 
 /**
+ * Test whether an object in an javascript array. 
+ * 
+ * @static
+ * @param {*} object The object to test
+ * @return {boolean} return true if the object is an array
+ * and false otherwise
+ */
+ilib.isArray = function(object) {
+	var o;
+	if (typeof(object) === 'object') {
+		o = /** @type {Object|null|undefined} */ object;
+		return Object.prototype.toString.call(o) === '[object Array]';
+	}
+	return false; 
+};
+
+/**
  * Extend object1 by mixing in everything from object2 into it. The objects
  * are deeply extended, meaning that this method recursively descends the
  * tree in the objects and mixes them in at each level. Arrays are extended
  * by concatenating the elements of object2 onto those of object1.  
  * 
+ * @static
  * @param {Object} object1 the target object to extend
  * @param {Object} object2 the object to mix in to object1
  * @return {Object} returns object1
@@ -502,7 +525,7 @@ ilib.extend = function (object1, object2) {
 	var prop = undefined;
 	for (prop in object2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
-			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
+			if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
 				//console.log("Merging array prop " + prop);
 				object1[prop] = object1[prop].concat(object2[prop]);
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
@@ -518,4 +541,20 @@ ilib.extend = function (object1, object2) {
 		}
 	}
 	return object1;
+};
+
+/**
+ * @private
+ */
+ilib._dyncode = false;
+
+/**
+ * Return true if this copy of ilib is using dynamically loaded code. It returns
+ * false for pre-assembled code.
+ * 
+ * @static
+ * @return {boolean} true if this ilib uses dynamically loaded code, and false otherwise
+ */
+ilib.isDynCode = function() {
+	return ilib._dyncode;
 };

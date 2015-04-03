@@ -17,6 +17,11 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	if (!ilib.NormString || ilib.NormString.stub) require("./normstring.js");
+	ilib.NormString.init();
+}
+
 function toHexString(string) {
 	var i, result = ""; 
 	

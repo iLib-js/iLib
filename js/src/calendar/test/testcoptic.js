@@ -17,9 +17,12 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "coptic"});
+}
 
 function testCopticGetNumMonths() {
-    var cal = new ilib.Cal.Coptic();
+	var cal = new ilib.Cal.Coptic();
     
     assertEquals(13, cal.getNumMonths(1731));
 }

@@ -19,71 +19,48 @@
  */
 
 function testLoaderRequireSingleFile() {
-	var mod = require("./testfiles/datefmt2.js");
+	var mod = require("./test/testfiles/datefmt2.js");
     
     assertNotUndefined(mod);
-    assertNotUndefined(mod.DateFmt2);
+    assertEquals("function", typeof(mod));
 }
 
 function testLoaderRequireSingleFileWithSideEffects() {
-    ilib.DateFmt2 = undefined;
+    assertUndefined(ilib.Foobar);
     
-    assertUndefined(ilib.DateFmt2);
+    require("./test/testfiles/foobar.js");
     
-    require("./testfiles/datefmt2.js");
-    
-    assertNotUndefined(ilib.DateFmt2);
+    assertNotUndefined(ilib.Foobar);
 }
 
 function testLoaderRequireSingleFileDependenciesLoaded() {
-    ilib.Locale2 = undefined;
-    
-    assertUndefined(ilib.Locale2);
+   assertUndefined(ilib.Grzwfd);
     
     // datefmt2 depends on locale2 automatically
-    var mod = require("./testfiles/datefmt2.js");
+    var mod = require("./test/testfiles/asdf.js");
     
-    assertNotUndefined(ilib.Locale2);
-}
-
-function testLoaderRequireMultipleFiles() {
-    ilib.DateFmt2 = undefined;
-    ilib.Locale2 = undefined;
-    
-    var mod = require([
-        "./testfiles/locale3.js",
-    	"./testfiles/datefmt2.js"
-    ]);
-    
-    assertNotUndefined(mod);
-    assertNotUndefined(mod.DateFmt2);
-    assertNotUndefined(mod.Locale2);
-    
-    assertEquals("This property came from ilib.DateFmt2", ilib.x);
-    assertEquals("This property came from the alternate ilib.Locale2", ilib.z);
-    
-    assertUndefined(ilib.y); // should not load locale2.js because the dependency is already satisfied by locale3.js
+    assertNotUndefined(ilib.Grzwfd);
 }
 
 function testLoaderRequireDoNotReloadSameFile() {
-    ilib.DateFmt2 = undefined;
+	assertUndefined(ilib.Qwerty);
     
-    var mod = require("./testfiles/datefmt2.js");
+	var mod = require("./test/testfiles/qwerty.js");
     
-    assertNotUndefined(ilib.DateFmt2);
-    ilib.DateFmt2.testproperty = "foo";
+    assertNotUndefined(ilib.Qwerty);
+    ilib.Qwerty.testproperty = "foo";
     
-    ilib.DateFmt2 = undefined;
+    ilib.Qwerty = undefined;
     
     // should not reload it again because it already loaded it previously
     // so the test property should be in the cache
-    var mod = require("./testfiles/datefmt2.js");
-    assertUndefined(ilib.DateFmt2);
-    assertEquals("foo", ilib.DateFmt2.testproperty);
+    ilib.Qwerty = require("./test/testfiles/qwerty.js");
+    assertNotUndefined(ilib.Qwerty);
+    assertEquals("foo", ilib.Qwerty.testproperty);
 }
 
 function testLoaderRunCode1() {
-    require("./testfiles/datefmt2.js");
+    require("./test/testfiles/datefmt2.js");
 
     var locale = new ilib.Locale2("de-DE");
     
@@ -92,8 +69,9 @@ function testLoaderRunCode1() {
 }
 
 function testLoaderRunCode2() {
-    require("./testfiles/datefmt2.js");
+    require("./test/testfiles/datefmt2.js");
 
+    assertNotUndefined(ilib.DateFmt2);
     var df = new ilib.DateFmt2({locale: "de-DE"});
     
     var d = new Date(2015, 2, 25, 16, 16, 16);

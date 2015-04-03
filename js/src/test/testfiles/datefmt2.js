@@ -1,4 +1,4 @@
-var ilib = require("../../../ilibglobal.js");
+var ilib = require("../../ilibglobal.js");
 if (!ilib.Locale2) ilib.Locale2 = require("./locale2.js");
 
 ilib.DateFmt2 = function(options) {

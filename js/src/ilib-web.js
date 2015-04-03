@@ -93,18 +93,19 @@ requireClass.prototype.require = function(pathname) {
 		}
 	}
 	
-	console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
 	if (pathname.charAt(0) !== '/') {
 		pathname = this.root + "/" + pathname;
 	}
 	
 	pathname = path.normalize(pathname);
-	console.log("pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
 		return this.cache[pathname];
 	}
+	
+	console.log("loading module " + pathname);
 	
 	var text = loadFile(pathname, true);
 	var dirname = path.dirname(pathname);
@@ -134,5 +135,7 @@ var webLoader = require("./webloader.js");
 
 var ilib = require("./ilibglobal.js");
 ilib.setLoaderCallback(new webLoader(ilib));
+
+ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
 require("./ilib-stubs.js");

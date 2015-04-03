@@ -17,6 +17,11 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) require("./calendar/astro.js");
+	ilib.Date.initAstro(true, undefined, undefined);
+}
+
 var testDatesAstro1 = [
    	// jd			ephemeris corr.			julian cent			nutation				aberration				solar long.
 	[ 1507231.5,	0.21576230938805918,	-25.85388868549461,	-0.004453990869550968,	-0.00553080167005999,	118.99065569869708,	-213857.88538267263],

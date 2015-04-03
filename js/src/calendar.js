@@ -40,6 +40,37 @@ ilib.Cal = function() {
 };
 
 /**
+ * Map calendar names to classes to initialize in the dynamic code model.
+ * TODO: Need to figure out some way that this doesn't have to be updated by hand.
+ * @private
+ */
+ilib.Cal._dynMap = {
+	"coptic":       {c: "Coptic"},
+	"ethiopic":     {c: "Ethiopic"},
+	"gregorian":    {c: "Gregorian"},
+	"han":          {c: "Han"},
+	"hebrew":       {c: "Hebrew"},
+	"islamic":      {c: "Islamic"},
+	"julian":       {c: "Julian"},
+	"persian":      {c: "Persian", f: "persianastro"},
+	"persian-algo": {c: "PersianAlgo", f: "persian"},
+	"thaisolar":    {c: "ThaiSolar"}
+};
+
+/**
+ * Dynamically load the code for a calendar and calendar class if necessary.
+ * @protected
+ */
+ilib.Cal._dynLoadCalendar = function (name) {
+	var entry = ilib.Cal._dynMap[name];
+	if (entry) {
+		if (!ilib.Cal[entry.c]) ilib.Cal[entry.c] = require("./calendar/" + (entry.f || name) + ".js");
+		return entry.c;
+	}
+	return undefined;
+};
+
+/**
  * Factory method to create a new instance of a calendar subclass.<p>
  * 
  * The options parameter can be an object that contains the following
@@ -82,6 +113,8 @@ ilib.Cal.newInstance = function (options) {
 		var info = new ilib.LocaleInfo(locale);
 		type = info.getCalendar();
 	}
+	
+	ilib.Cal._dynLoadCalendar(type);
 	
 	cons = ilib.Cal._constructors[type];
 	

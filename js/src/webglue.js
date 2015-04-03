@@ -113,7 +113,7 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	
 	var resources = path.normalize(path.join(root, "resources"));
 	
-	console.log("web loader: attempting to load paths " + JSON.stringify(paths) + "\n");
+	//console.log("web loader: attempting to load paths " + JSON.stringify(paths) + "\n");
 	if (sync) {
 		var ret = [];
 		
@@ -123,21 +123,21 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 			var p = paths[i];
 
 			var filepath = path.join(root, "locale", p);
-			console.log("web loader: attempting sync load " + filepath + "\n");
+			//console.log("web loader: attempting sync load " + filepath + "\n");
 			var text = this._loadFile(filepath, true);
 			if (text) {
-				console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+				//console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 				ret.push(JSON.parse(text));
 			} else { 
 				filepath = path.join(resources, p);
-				console.log("web loader: attempting sync load resources " + filepath + "\n");
+				//console.log("web loader: attempting sync load resources " + filepath + "\n");
 				text = this._loadFile(filepath, true);
 				if (text) {
-					console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
+					//console.log("web loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 					ret.push(JSON.parse(text));
 				} else {
 					ret.push(undefined);
-					console.log("web loader: sync load failed\n");
+					//console.log("web loader: sync load failed\n");
 				}
 			}
 		};
@@ -160,19 +160,19 @@ webLoader.prototype._loadFilesAsync = function (root, paths) {
 	if (paths.length > 0) {
 		var filename = paths.shift();
 		var filepath = path.join(root, "locale", filename);
-		console.log("web loader: attempting async load " + filepath);
+		//console.log("web loader: attempting async load " + filepath);
 		this._loadFile(filepath, false, function(text) {
-			console.log("success\n");
+			//console.log("success\n");
 			this._nextFile(root, paths, text);
 		}, function (err) {
-			console.log("failed\n");
+			//console.log("failed\n");
 			filepath = path.join("resources", filename);
-			console.log("web loader: attempting async load " + filepath);
+			//console.log("web loader: attempting async load " + filepath);
 			this._loadFile(filepath, false, function(text) {
-				console.log("success\n");
+				//console.log("success\n");
 				this._nextFile(root, paths, text);
 			}, function (err) {
-				console.log("failed\n");
+				//console.log("failed\n");
 				this._nextFile(root, paths, undefined);
 			});
 		});
@@ -196,13 +196,13 @@ webLoader.prototype._loadManifest = function(root, subpath, manifest) {
 	var filepath = path.join(dirpath, "ilibmanifest.json");
 	var text = this._loadFile(filepath, true);
 	if (text) {
-		console.log("web loader: loading manifest " + filepath + "\n");
+		//console.log("web loader: loading manifest " + filepath + "\n");
 		manifest[dirpath] = JSON.parse(text).files;
 	}
 };
 
 webLoader.prototype._loadManifests = function() {
-	console.log("web loader: load manifests\n");
+	//console.log("web loader: load manifests\n");
 	if (!this.manifest) {
 		var manifest = {};
 		
@@ -238,15 +238,15 @@ webLoader.indexOf = function(array, obj) {
 webLoader.prototype.isAvailable = function(path) {
 	this._loadManifests();
 	
-	console.log("web loader: isAvailable " + path + "? ");
+	//console.log("web loader: isAvailable " + path + "? ");
 	for (var dir in this.manifest) {
 		if (webLoader.indexOf(this.manifest[dir], path) !== -1) {
-			console.log("true\n");
+			//console.log("true\n");
 			return true;
 		}
 	}
 	
-	console.log("false\n");
+	//console.log("false\n");
 	return false;
 };
 

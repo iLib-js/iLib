@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-/* !depends ilibglobal.js locale.js localeinfo.js julianday.js util/jsutils.js */
+/* !depends ilibglobal.js locale.js localeinfo.js julianday.js util/jsutils.js calendar.js */
 
 var ilib = require("./ilibglobal.js");
 if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./util/jsutils.js"));
@@ -25,6 +25,7 @@ if (!ilib.shallowCopy || ilib.shallowCopy.stub) ilib.extend(ilib, require("./uti
 if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 if (!ilib.LocaleInfo || ilib.LocaleInfo.stub) ilib.LocaleInfo = require("./localeinfo.js");
 if (!ilib.JulianDay || ilib.JulianDay.stub) ilib.JulianDay = require("./julianday.js");
+if (!ilib.Cal || ilib.Cal.stub) ilib.Cal = require("./calendar.js");
 
 /**
  * @class
@@ -49,7 +50,7 @@ ilib.Date = function(options) {
 
 /**
  * Map calendar names to classes to initialize in the dynamic code model.
- * Need to figure out some way that this doesn't have to be updated by hand.
+ * TODO: Need to figure out some way that this doesn't have to be updated by hand.
  * @private
  */
 ilib.Date._dynMap = {
@@ -158,8 +159,14 @@ ilib.Date.newInstance = function(options) {
 		type = info.getCalendar();
 	}
 	
-	ilib.Date._dynLoadCalendar(type);
-	ilib.Date._dynLoadCalendar("gregorian"); // always need this available
+	if (ilib.isDynCode()) {
+		ilib.Date._dynLoadCalendar(type);
+		ilib.Cal._dynLoadCalendar(type);
+		if (!ilib.Date.Gregorian || ilib.Date.Gregorian.stub) {
+			ilib.Date._dynLoadCalendar("gregorian"); // always need this available
+			ilib.Cal._dynLoadCalendar("gregorian"); // always need this available
+		}
+	}
 	
 	cons = ilib.Date._constructors[type];
 	

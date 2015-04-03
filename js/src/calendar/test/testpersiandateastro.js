@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	ilib.Date.newInstance({type: "persian"});
+}
+
 function testPersDateAstroConstructor() {
     var pd = new ilib.Date.PersDate();
     
@@ -374,7 +378,7 @@ function testPersDateAstroLastDayOfLeapYear() {
 }
 
 
-var testDatesPersianAstro = [
+var testDatesPersianPersianAstro = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -1207, 5,     1,   0,    0,      0,      0,           0],
     [1660037.5, -789,  9,     14,  0,    0,      0,      0,           3],
@@ -414,44 +418,44 @@ var testDatesPersianAstro = [
 function testPersDateAstroConvert() {
     var pd;
     
-    for (var i = 0; i < testDatesPersianAstro.length; i++) {
-        pd = new ilib.Date.PersDate({julianday: testDatesPersianAstro[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesPersianPersianAstro.length; i++) {
+        pd = new ilib.Date.PersDate({julianday: testDatesPersianPersianAstro[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDatesPersianAstro[i][0]);
+        info("testing jd=" + testDatesPersianPersianAstro[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing rd for " + testDatesPersianAstro[i][0], (testDatesPersianAstro[i][0] - 1948319.5), pd.getRataDie());
-        assertEquals("testing year for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][1], pd.getYears());
-        assertEquals("testing month for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][2], pd.getMonths());
-        assertEquals("testing day for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][3], pd.getDays());
-        assertEquals("testing hour for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][4], pd.getHours());
-        assertEquals("testing minute for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][5], pd.getMinutes());
-        assertEquals("testing second for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][6], pd.getSeconds());
-        assertEquals("testing millisecond for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][7], pd.getMilliseconds());
-        assertEquals("testing day of week for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][8], pd.getDayOfWeek());
+        assertEquals("testing rd for " + testDatesPersianPersianAstro[i][0], (testDatesPersianPersianAstro[i][0] - 1948319.5), pd.getRataDie());
+        assertEquals("testing year for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][1], pd.getYears());
+        assertEquals("testing month for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][2], pd.getMonths());
+        assertEquals("testing day for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][3], pd.getDays());
+        assertEquals("testing hour for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][4], pd.getHours());
+        assertEquals("testing minute for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][5], pd.getMinutes());
+        assertEquals("testing second for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][6], pd.getSeconds());
+        assertEquals("testing millisecond for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][7], pd.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][8], pd.getDayOfWeek());
     }
 }
 
 function testPersDateAstroGetJulianDay() {
 	var pd;
 	
-    for (var i = 0; i < testDatesPersianAstro.length; i++) {
+    for (var i = 0; i < testDatesPersianPersianAstro.length; i++) {
         pd = new ilib.Date.PersDate({
-            year: testDatesPersianAstro[i][1], 
-            month: testDatesPersianAstro[i][2], 
-            day: testDatesPersianAstro[i][3],
-            hour: testDatesPersianAstro[i][4],
-            minute: testDatesPersianAstro[i][5],
-            second: testDatesPersianAstro[i][6],
-            millisecond: testDatesPersianAstro[i][7],
+            year: testDatesPersianPersianAstro[i][1], 
+            month: testDatesPersianPersianAstro[i][2], 
+            day: testDatesPersianPersianAstro[i][3],
+            hour: testDatesPersianPersianAstro[i][4],
+            minute: testDatesPersianPersianAstro[i][5],
+            second: testDatesPersianPersianAstro[i][6],
+            millisecond: testDatesPersianPersianAstro[i][7],
             timezone: "Etc/UTC"
     	});
     
-        info("testing jd=" + testDatesPersianAstro[i][0]);
+        info("testing jd=" + testDatesPersianPersianAstro[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing row " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][0], pd.getJulianDay());
-        assertEquals(testDatesPersianAstro[i][8], pd.getDayOfWeek());
+        assertEquals("testing row " + testDatesPersianPersianAstro[i][0], testDatesPersianPersianAstro[i][0], pd.getJulianDay());
+        assertEquals(testDatesPersianPersianAstro[i][8], pd.getDayOfWeek());
     }
 }
 
