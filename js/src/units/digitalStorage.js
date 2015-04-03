@@ -36,7 +36,7 @@ if (!ilib.Measurement || ilib.Measurement.stub) ilib.Measurement = require("../u
  * the construction of this instance
  */
 ilib.Measurement.DigitalStorage = function (options) {
-	this.unit = "bit";
+	this.unit = "byte";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.DigitalStorage.aliases; // share this table in all instances
 	

@@ -35,7 +35,7 @@ if (!ilib.Measurement || ilib.Measurement.stub) ilib.Measurement = require("../u
  * the construction of this instance
  */
 ilib.Measurement.Area = function (options) {
-	this.unit = "square km";
+	this.unit = "square meter";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Area.aliases; // share this table in all instances
 	

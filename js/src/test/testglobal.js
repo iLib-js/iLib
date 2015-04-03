@@ -138,9 +138,9 @@ function testGetTimeZoneWebOS() {
 		return;
 	}
 	
-	setGlobal("PalmSystem", {
+	PalmSystem = {
 		timezone: "Europe/London"
-	});
+	};
 		
 	assertEquals("Europe/London", ilib.getTimeZone());
 	

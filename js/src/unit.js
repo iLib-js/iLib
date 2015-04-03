@@ -24,6 +24,17 @@ ilibglobal.js
 
 var ilib = require("./ilibglobal.js");
 
+// use IIFE to hide the "tmp" variable
+(function (ilib) {
+// save all the stubs to call once ilib.Measurement is redefined. This
+// way we don't have to explicitly list them out
+var tmp = {};
+if (ilib.isDynCode()) {
+	for (var prop in ilib.Measurement) {
+		tmp[prop] = ilib.Measurement[prop];
+	}
+}
+
 /**
  * @class
  * Create a measurement instance. The measurement is immutable once
@@ -248,5 +259,13 @@ ilib.Measurement.prototype = {
 	 */
 	localize: function(locale) {}
 };
+
+// call all the units subclass stubs to cause them to load their code files
+if (ilib.isDynCode()) {
+	for (var prop in tmp) {
+		if (typeof(tmp[prop]) === 'function') tmp[prop]();
+	}
+}
+})(ilib);
 
 module.exports = ilib.Measurement;

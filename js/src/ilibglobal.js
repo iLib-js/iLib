@@ -107,7 +107,7 @@ ilib._getPlatform = function () {
     if (!ilib._platform) {
         if (typeof(environment) !== 'undefined') {
             ilib._platform = "rhino";
-        } else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
+        } else if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";

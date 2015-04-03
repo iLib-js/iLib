@@ -36,7 +36,7 @@ if (!ilib.Measurement || ilib.Measurement.stub) ilib.Measurement = require("../u
  * the construction of this instance
  */
 ilib.Measurement.Time = function (options) {
-	this.unit = "ns";
+	this.unit = "second";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Time.aliases; // share this table in all instances
 	

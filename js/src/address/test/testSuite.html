@@ -24,7 +24,7 @@ limitations under the License.
 var iframes = parent.document.getElementsByName("testFrame");
 var url = iframes[0].contentDocument.location.href;
 var i = url.lastIndexOf("/");
-var dir = (i !== -1 ? url.substring(0, i) : url);
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var s = new JsUnitTestSuite();

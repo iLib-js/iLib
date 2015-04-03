@@ -35,7 +35,7 @@ if (!ilib.Measurement || ilib.Measurement.stub) ilib.Measurement = require("../u
  * the construction of this instance
  */
 ilib.Measurement.Energy = function (options) {
-	this.unit = "ns";
+	this.unit = "joule";
 	this.amount = 0;
 	this.aliases = ilib.Measurement.Energy.aliases; // share this table in all instances
 
