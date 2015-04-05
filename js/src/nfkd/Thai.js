@@ -20,5 +20,6 @@
 // !depends util/utils.js nfkd/Zyyy.js
 // !depends nfd/Thai.js
 // !data norm nfkd/Thai
+ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Thai);
 ilib.data.nfkd_Thai = undefined;

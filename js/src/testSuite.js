@@ -133,7 +133,7 @@ for (s in suite) {
 		inc = "./ilib-node.js";		
 		ts.include(inc); 
 	} else {
-		inc = "./ilib" + ((assembly === "dynamic") ? "-dyn" : "") + "-ut" + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+		inc = "../output/js/ilib" + "-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc); 
 		ts.include("testglue.js");
 	}

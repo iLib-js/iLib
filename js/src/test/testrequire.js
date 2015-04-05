@@ -18,14 +18,24 @@
  * limitations under the License.
  */
 
-function testLoaderRequireSingleFile() {
+function testRequireSingleFile() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
 	var mod = require("./test/testfiles/datefmt2.js");
     
     assertNotUndefined(mod);
     assertEquals("function", typeof(mod));
 }
 
-function testLoaderRequireSingleFileWithSideEffects() {
+function testRequireSingleFileWithSideEffects() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
     assertUndefined(ilib.Foobar);
     
     require("./test/testfiles/foobar.js");
@@ -33,7 +43,12 @@ function testLoaderRequireSingleFileWithSideEffects() {
     assertNotUndefined(ilib.Foobar);
 }
 
-function testLoaderRequireSingleFileDependenciesLoaded() {
+function testRequireSingleFileDependenciesLoaded() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
    assertUndefined(ilib.Grzwfd);
     
     // datefmt2 depends on locale2 automatically
@@ -42,7 +57,12 @@ function testLoaderRequireSingleFileDependenciesLoaded() {
     assertNotUndefined(ilib.Grzwfd);
 }
 
-function testLoaderRequireDoNotReloadSameFile() {
+function testRequireDoNotReloadSameFile() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
 	assertUndefined(ilib.Qwerty);
     
 	var mod = require("./test/testfiles/qwerty.js");
@@ -60,6 +80,11 @@ function testLoaderRequireDoNotReloadSameFile() {
 }
 
 function testLoaderRunCode1() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
     require("./test/testfiles/datefmt2.js");
 
     var locale = new ilib.Locale2("de-DE");
@@ -69,6 +94,11 @@ function testLoaderRunCode1() {
 }
 
 function testLoaderRunCode2() {
+	if (!ilib.isDynCode()) {
+		// can't test the require function unless you're 
+		// in dynamic code loading mode
+		return;
+	}
     require("./test/testfiles/datefmt2.js");
 
     assertNotUndefined(ilib.DateFmt2);

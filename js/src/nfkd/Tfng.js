@@ -20,5 +20,6 @@
 // !depends util/utils.js nfkd/Zyyy.js
 // !depends nfd/Tfng.js
 // !data norm nfkd/Tfng
+ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Tfng);
 ilib.data.nfkd_Tfng = undefined;

@@ -20,5 +20,6 @@
 // !depends util/utils.js nfkd/Zyyy.js
 // !depends nfd/Arab.js
 // !data norm nfkd/Arab
+ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Arab);
 ilib.data.nfkd_Arab = undefined;

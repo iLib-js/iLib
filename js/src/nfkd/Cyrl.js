@@ -20,5 +20,6 @@
 // !depends util/utils.js nfkd/Zyyy.js
 // !depends nfd/Cyrl.js
 // !data norm nfkd/Cyrl
+ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Cyrl);
 ilib.data.nfkd_Cyrl = undefined;

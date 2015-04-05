@@ -20,5 +20,6 @@
 // !depends util/utils.js nfkd/Zyyy.js
 // !depends nfd/Hebr.js
 // !data norm nfkd/Hebr
+ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Hebr);
 ilib.data.nfkd_Hebr = undefined;
