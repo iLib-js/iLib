@@ -108,34 +108,64 @@ function testEthiopicGetMonLength13() {
     assertEquals(5, cal.getMonLength(13, 2008));
 }
 
+function testEthiopicGetMonLength14() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertEquals(30, cal.getMonLength(undefined));
+}
+
+function testEthiopicGetMonLength15() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertEquals(5, cal.getMonLength("15"));
+}
+
+function testEthiopicGetMonLength16() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertEquals(6, cal.getMonLength("13", "2007"));
+}
+
 function testEthiopicIsLeapYear() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertTrue(cal.isLeapYear(2007));
 }
 
-function testEthiopicIsLeapYear() {
+function testEthiopicIsLeapYear1() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertFalse(cal.isLeapYear(2008));
 }
 
-function testEthiopicIsLeapYear() {
+function testEthiopicIsLeapYear2() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertFalse(cal.isLeapYear(2009));
 }
 
-function testEthiopicIsLeapYear() {
+function testEthiopicIsLeapYear3() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertFalse(cal.isLeapYear(2010));
 }
 
-function testEthiopicIsLeapYear() {
+function testEthiopicIsLeapYear4() {
     var cal = new ilib.Cal.Ethiopic();
     
     assertTrue(cal.isLeapYear(2011));
+}
+
+function testEthiopicIsLeapYear5() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear(undefined));
+}
+
+function testEthiopicIsLeapYear6() {
+    var cal = new ilib.Cal.Ethiopic();
+    
+    assertFalse(cal.isLeapYear("2009"));
 }
 
 function testEthiopicIsLeapYearBM0() {

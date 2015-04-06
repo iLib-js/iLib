@@ -51,12 +51,23 @@ ilib.Cal.Ethiopic.prototype.getNumMonths = function(year) {
  * can return a different number for a month depending on the year because of things
  * like leap years.
  * 
- * @param {number} month the month for which the length is sought
+ * @param {number|string} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Ethiopic.prototype.getMonLength = function(month, year) {
-	if (month < 13) {
+	var m = month;
+	switch (typeof(m)) {
+        case "string": 
+            m = parseInt(m, 10); 
+            break;
+        case "function":
+        case "object":
+        case "undefined":
+            return 30;
+            break;
+    }    
+	if (m < 13) {
 		return 30;
 	} else {
 		return this.isLeapYear(year) ? 6 : 5;
@@ -66,11 +77,26 @@ ilib.Cal.Ethiopic.prototype.getMonLength = function(month, year) {
 /**
  * Return true if the given year is a leap year in the Ethiopic calendar.
  * The year parameter may be given as a number, or as a JulDate object.
- * @param {number|ilib.Date.JulDate} year the year for which the leap year information is being sought
+ * @param {number|ilib.Date.JulDate|string} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Ethiopic.prototype.isLeapYear = function(year) {
-	var y = (typeof(year) === 'number' ? year : year.year);
+	var y = year;
+	 switch (typeof(y)) {
+        case "string":
+            y = parseInt(y, 10);
+            break;
+        case "object":
+            if (typeof(y.year) !== "number") { // in case it is an ilib.Date object
+                return false;
+            }
+            y = y.year;
+            break;
+        case "function":
+        case "undefined":
+            return false;
+            break;
+    }
 	return ilib.mod(y, 4) === 3;
 };
 
