@@ -111,6 +111,8 @@ ilib._getPlatform = function () {
             ilib._platform = "nodejs";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+        } else if (typeof(Qt) !== 'undefined') {
+        	ilib._platform = "qt";
         } else {
             ilib._platform = "unknown";
         }
@@ -169,7 +171,8 @@ ilib._isGlobal = function(name) {
         case "nodejs":
             var root = typeof(global) !== 'undefined' ? global : this;
             return root && typeof(root[name]) !== 'undefined';
-            
+        case "qt":
+        	return false;
         default:
             return typeof(window[name]) !== 'undefined';
     }
@@ -249,6 +252,10 @@ ilib.getLocale = function () {
             if (lang && lang !== 'undefined') {
                 ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
             }
+        } else if (typeof(Qt) !== 'undefined') {
+        	// running in the Javascript engine under Qt/QML
+        	var locobj = Qt.locale();
+        	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
         }
              
         ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';

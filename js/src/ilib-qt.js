@@ -17,6 +17,11 @@
  * limitations under the License.
  */
 
+var module = {
+	exports: {},
+	filename:null
+};
+
 function loadFile(pathname, sync, success, failure) {
 	if (sync) {
 		return Qt.include(pathname);
@@ -54,13 +59,13 @@ requireClass.prototype.normalize = function(pathname) {
 	
 requireClass.prototype.require = function(pathname) {
 	if (!this.root) {
-		this.root = Qt.resolvedUrl(".");
+		this.root = Qt.resolvedUrl(".").toString();
 		if (this.root[this.root.length-1] === '/') {
 			this.root = this.root.substring(0,this.root.length-1);
 		}
 	}
 	
-	console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
 	var base = module.filename ? this.dirname(module.filename) : this.root;
 
@@ -69,7 +74,7 @@ requireClass.prototype.require = function(pathname) {
 	}
 	
 	pathname = this.normalize(pathname);
-	console.log("pathname after is " + pathname);
+	//console.log("pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
 		return this.cache[pathname];
@@ -97,12 +102,9 @@ requireClass.prototype.require = function(pathname) {
 var r = new requireClass();
 var require = requireClass.prototype.require.bind(r);
 
-var module = {exports: {},filename:null};
-
-var qmlLoader = require("./qmlloader.js");
+var QmlLoader = require("./qmlloader.js");
 
 var ilib = require("./ilibglobal.js");
-ilib.setLoaderCallback(new qmlLoader(ilib));
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
