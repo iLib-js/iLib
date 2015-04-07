@@ -79,18 +79,20 @@ function testSetTimeZoneEmpty() {
 }
 
 function testGetTimeZoneNodejs() {
-	ilib._platform = undefined;
-	ilib.tz = undefined;
-	if (typeof(process) === 'undefined') {
-		process = {
-			env: {}
-		};
+	if (ilib._getPlatform() === "nodejs") {
+		ilib._platform = undefined;
+		ilib.tz = undefined;
+		if (typeof(process) === 'undefined') {
+			process = {
+				env: {}
+			};
+		}
+		process.env.TZ = "America/Phoenix";
+		
+		assertEquals("America/Phoenix", ilib.getTimeZone());
+		
+		process.env.TZ = "";
 	}
-	process.env.TZ = "America/Phoenix";
-	
-	assertEquals("America/Phoenix", ilib.getTimeZone());
-	
-	process.env.TZ = "";
 }
 
 function testGetTimeZoneRhino() {

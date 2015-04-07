@@ -34,7 +34,7 @@ function testNumberMatchFRDepartments1(){
 };
 
 function testStringsNumberMatchUSIgnoreSomeFields() {
-	var left = new ilib.PhoneNumber('1 (650) 456-7890');
+	var left = new ilib.PhoneNumber('1 (650) 456-7890'),
 		right = new ilib.PhoneNumber('650-456-7890');
 	assertNotUndefined(left);
 	assertEquals(100, left.compare(right));
@@ -1091,7 +1091,7 @@ function testPhoneNumLookaheadRoot() {
 	left.areaCode = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = {
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1110,7 +1110,7 @@ function testPhoneNumLookaheadSubleaf1() {
 	left.areaCode = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1129,7 +1129,7 @@ function testPhoneNumLookaheadSubleaf2() {
 	left.areaCode = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1148,7 +1148,7 @@ function testPhoneNumLookaheadSubleaf3() {
 	left.areaCode = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1168,7 +1168,7 @@ function testPhoneNumLookaheadFallback1() {
 	left.subscriberNumber = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1189,7 +1189,7 @@ function testPhoneNumLookaheadFallback2() {
 	left.subscriberNumber = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1210,7 +1210,7 @@ function testPhoneNumLookaheadFallback3() {
 	left.subscriberNumber = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1231,7 +1231,7 @@ function testPhoneNumLookaheadFallback4() {
 	left.subscriberNumber = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
@@ -1252,7 +1252,7 @@ function testPhoneNumLookaheadFallback5() {
 	left.subscriberNumber = undefined;
 	
 	// use custom states data to test lookahead parsing
-	regionData = { 
+	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
 		handler: ilib._handlerFactory(left.locale, left.plan)
