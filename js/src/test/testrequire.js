@@ -79,13 +79,14 @@ function testRequireDoNotReloadSameFile() {
     assertEquals("foo", ilib.Qwerty.testproperty);
 }
 
-function testLoaderRunCode1() {
+function testRequireRunCode1() {
 	if (!ilib.isDynCode()) {
 		// can't test the require function unless you're 
 		// in dynamic code loading mode
 		return;
 	}
-    require("./test/testfiles/datefmt2.js");
+    var mod = require("./test/testfiles/datefmt2.js");
+    assertNotUndefined(mod);
 
     var locale = new ilib.Locale2("de-DE");
     
@@ -93,14 +94,15 @@ function testLoaderRunCode1() {
     assertEquals("DE", locale.getRegion());
 }
 
-function testLoaderRunCode2() {
+function testRequireRunCode2() {
 	if (!ilib.isDynCode()) {
 		// can't test the require function unless you're 
 		// in dynamic code loading mode
 		return;
 	}
-    require("./test/testfiles/datefmt2.js");
-
+    var mod = require("./test/testfiles/datefmt2.js");
+    assertNotUndefined(mod);
+    
     assertNotUndefined(ilib.DateFmt2);
     var df = new ilib.DateFmt2({locale: "de-DE"});
     

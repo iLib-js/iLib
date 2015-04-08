@@ -140,13 +140,13 @@ qmlLoader.prototype._loadFilesAsync = function (root, paths) {
 			//console.log("failed");
 			filepath = path.join("resources", filename);
 			//console.log("qml loader: attempting async load " + filepath);
-			this._loadFile(filepath, false, function(text) {
+			this._loadFile(filepath, false, ilib.bind(this, function(text) {
 				//console.log("success");
 				this._nextFile(root, paths, text);
-			}, function (err) {
+			}), ilib.bind(this, function (err) {
 				//console.log("failed");
 				this._nextFile(root, paths, undefined);
-			});
+			}));
 		}));
 	}
 };

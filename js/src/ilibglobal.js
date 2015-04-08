@@ -71,8 +71,6 @@ if (typeof(module) !== 'undefined') {
     module.exports.ilib = ilib;  // for backwards compatibility with older versions of ilib
 }
 
-ilib.pseudoLocales = ["zxx-XX"];
-
 /**
  * Sets the pseudo locale. Pseudolocalization (or pseudo-localization) is used for testing
  * internationalization aspects of software. Instead of translating the text of the software
@@ -94,8 +92,15 @@ ilib.setAsPseudoLocale = function (localename) {
  * Reset the list of pseudo locales back to the default single locale of zxx-XX.
  */
 ilib.clearPseudoLocales = function() {
-	ilib.pseudoLocales = ["zxx-XX"];
+	ilib.pseudoLocales = [
+        "zxx-XX",
+        "zxx-Cyrl-XX",
+        "zxx-Hans-XX",
+        "zxx-Hebr-XX"
+    ];
 };
+
+ilib.clearPseudoLocales();
 
 /**
  * Return the name of the platform

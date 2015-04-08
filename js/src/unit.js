@@ -20,20 +20,24 @@
 /*
 !depends 
 ilibglobal.js
+util/utils.js
 */
 
 var ilib = require("./ilibglobal.js");
+if (!ilib.bind  || ilib.bind.stub) require("./util/utils.js");
 
-// use IIFE to hide the "tmp" variable
-(function (ilib) {
 // save all the stubs to call once ilib.Measurement is redefined. This
 // way we don't have to explicitly list them out
-var tmp = {};
-if (ilib.isDynCode()) {
-	for (var prop in ilib.Measurement) {
-		tmp[prop] = ilib.Measurement[prop];
+(ilib.bind(this, function () {
+	if (ilib.isDynCode()) {
+		ilib.tmp = {};
+		for (var prop in ilib.Measurement) {
+			if (ilib.Measurement[prop] && typeof(ilib.Measurement[prop]) === 'function' && ilib.Measurement[prop].stub) {
+				ilib.tmp[prop] = ilib.Measurement[prop];
+			}
+		}
 	}
-}
+}))();
 
 /**
  * @class
@@ -100,6 +104,14 @@ ilib.Measurement = function(options) {
 	this.amount = options.amount || 0;
 	var measure = undefined;
 
+	if (ilib.isDynCode()) {
+		// call all the stubs to load all the constructors so that we have them available
+		for (var prop in ilib.Measurement) {
+			if (ilib.Measurement[prop] && typeof(ilib.Measurement[prop]) === 'function' && ilib.Measurement[prop].stub) {
+				ilib.Measurement[prop]();
+			}
+		}
+	}
 	for (var c in ilib.Measurement._constructors) {
 		var measurement = ilib.Measurement._constructors[c];
 		if (typeof(measurement.aliases[options.unit]) !== 'undefined') {
@@ -261,11 +273,16 @@ ilib.Measurement.prototype = {
 };
 
 // call all the units subclass stubs to cause them to load their code files
-if (ilib.isDynCode()) {
-	for (var prop in tmp) {
-		if (typeof(tmp[prop]) === 'function') tmp[prop]();
+(ilib.bind(this, function () {
+	if (ilib.isDynCode()) {
+		for (var prop in ilib.tmp) {
+			if (!ilib.Measurement[prop]) {
+				//console.log("replacing measurement stub function " + prop);
+				ilib.Measurement[prop] = ilib.tmp[prop];
+			}
+		}
+		ilib.tmp = undefined;
 	}
-}
-})(ilib);
+}))();
 
 module.exports = ilib.Measurement;

@@ -94,6 +94,8 @@ ilib.data.mock_foobar_de = ilib.data.strings_de;
 
 
 function testResBundleConstructorEmpty() {
+	ilib.clearPseudoLocales();
+	
     var rb = new ilib.ResBundle();
     
     assertNotNull(rb);
@@ -1486,6 +1488,7 @@ function testResBundlePseudo_euES() {
     	locale:'eu-ES'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePseudo_psAF() {
@@ -1495,6 +1498,7 @@ function testResBundlePseudo_psAF() {
     	locale:'ps-AF'
     });
     assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePseudo_deDE() {
@@ -1504,13 +1508,15 @@ function testResBundlePseudo_deDE() {
     	locale:'de-DE'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePseudoReallyThere() {
 	ilib.clearPseudoLocales();
 	assertEquals(-1, ilib.pseudoLocales.indexOf("de-DE"));
     ilib.setAsPseudoLocale("de-DE");
-    assertEquals(1, ilib.pseudoLocales.indexOf("de-DE"));
+    assertEquals(4, ilib.pseudoLocales.indexOf("de-DE"));
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePseudoIsPseudo() {
@@ -1519,6 +1525,7 @@ function testResBundlePseudoIsPseudo() {
 	assertFalse(loc.isPseudo());
     ilib.setAsPseudoLocale("de-DE");
     assertTrue(loc.isPseudo());
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePsuedo_EMPTY() {
@@ -1528,21 +1535,46 @@ function testResBundlePsuedo_EMPTY() {
     	locale:""
     });
     assertEquals("This is psuedo string test", rb.getString("This is psuedo string test").toString());
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePsuedoEmptyNothingAdded() {
 	ilib.clearPseudoLocales();
-	assertEquals(1, ilib.pseudoLocales.length);
+	assertEquals(4, ilib.pseudoLocales.length);
     ilib.setAsPseudoLocale("");
-    assertEquals(1, ilib.pseudoLocales.length);
+    assertEquals(4, ilib.pseudoLocales.length);
+    ilib.clearPseudoLocales();
 }
 
 function testResBundlePsuedoUndefinedNothingAdded() {
 	ilib.clearPseudoLocales();
-	assertEquals(1, ilib.pseudoLocales.length);
+	assertEquals(4, ilib.pseudoLocales.length);
     ilib.setAsPseudoLocale();
-    assertEquals(1, ilib.pseudoLocales.length);
+    assertEquals(4, ilib.pseudoLocales.length);
     
     ilib.clearPseudoLocales();
 }
 
+function testClearPseudoLocalesOldOnesGone() {
+	var loc = new ilib.Locale("de-DE");
+	ilib.setAsPseudoLocale("de-DE");
+	assertTrue(loc.isPseudo());
+	
+    ilib.clearPseudoLocales();
+    
+    assertFalse(loc.isPseudo());
+}
+
+function testClearResetToDefaults() {
+    ilib.clearPseudoLocales();
+
+	var loc = new ilib.Locale("zxx-XX");
+    assertTrue(loc.isPseudo());
+    
+    loc = new ilib.Locale("zxx-Hans-XX");
+    assertTrue(loc.isPseudo());
+    loc = new ilib.Locale("zxx-Cyrl-XX");
+    assertTrue(loc.isPseudo());
+    loc = new ilib.Locale("zxx-Hebr-XX");
+    assertTrue(loc.isPseudo());
+}

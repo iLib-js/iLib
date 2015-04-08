@@ -199,9 +199,23 @@ ilib.UnitFmt = function(options) {
 		callback: ilib.bind(this, function (format) {                      
 			var formatted = format;
 			this.template = formatted["unitfmt"][this.length];
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+			
+			new ilib.NumFmt({
+	    		locale: this.locale,
+	    		useNative: this.useNative,
+	            maxFractionDigits: this.maxFractionDigits,
+	            minFractionDigits: this.minFractionDigits,
+	            roundingMode: this.roundingMode,
+	            sync: sync,
+	            loadParams: loadParams,
+	            onLoad: ilib.bind(this, function (numfmt) {
+	            	this.numFmt = numfmt;
+	            	
+	    			if (options && typeof(options.onLoad) === 'function') {
+	    				options.onLoad(this);
+	    			}
+	            })
+	    	});
 		})
 	});
 };
@@ -268,14 +282,7 @@ ilib.UnitFmt.prototype = {
     	var formatted = new ilib.String(this.template[u.getUnit()]);
     	// make sure to use the right plural rules
     	formatted.setLocale(this.locale, true, undefined, undefined);
-    	var numFmt = new ilib.NumFmt({
-    		locale: this.locale,
-    		useNative: this.useNative,
-            maxFractionDigits: this.maxFractionDigits,
-            minFractionDigits: this.minFractionDigits,
-            roundingMode: this.roundingMode
-    	});
-    	formatted = formatted.formatChoice(u.amount,{n:numFmt.format(u.amount)});
+    	formatted = formatted.formatChoice(u.amount,{n:this.numFmt.format(u.amount)});
     	return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
     }
 };

@@ -324,11 +324,14 @@ ilib.Measurement.Energy.prototype.scale = function(measurementsystem) {
     var energy = this.amount;
     var munit = this.unit;
 
+    energy = 18446744073709551999;
+    
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        energy = tmp;
-        munit = m;
+        if (tmp >= 1 && tmp < energy) {
+	        energy = tmp;
+	        munit = m;
+        }
     }
 
     return new ilib.Measurement.Energy({

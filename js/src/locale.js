@@ -17,9 +17,10 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js
+// !depends ilibglobal.js util/jsutils.js
 
 var ilib = require("./ilibglobal.js");
+if (!ilib.indexOf) require("./util/jsutils.js");
 
 /**
  * @class
@@ -828,8 +829,7 @@ ilib.Locale.prototype = {
 	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
-		var localeName = this.language + "-" + this.region;
-		return ilib.pseudoLocales.indexOf(localeName) > -1;
+		return ilib.indexOf(ilib.pseudoLocales, this.spec) > -1;
 	}
 };
 

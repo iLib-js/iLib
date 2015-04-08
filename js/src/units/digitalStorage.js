@@ -63,7 +63,7 @@ ilib.Measurement.DigitalStorage = function (options) {
 };
 
 ilib.Measurement.DigitalStorage.ratios = {
-    /*                 bit             byte            kb              kB              mb              mB              gb               gB               tb               tB               pb               pB   */           
+    /*            #    bit             byte            kb              kB              mb              mB              gb               gB               tb               tB               pb               pB   */           
 	"bit":      [ 1,   1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7, 1.192092896e-7, 9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13, 8.881784197e-16, 1.110223025e-16 ],
     "byte":     [ 2,   8,              1,              0.0078125,      0.0009765625,   7.629394531e-6, 9.536743164e-7, 7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13, 7.105427358e-15, 8.881784197e-16 ],
     "kilobit":  [ 3,   1024,           128,            1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13 ],
@@ -154,19 +154,21 @@ ilib.Measurement.DigitalStorage.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.DigitalStorage.ratios[this.unit];    
     var dStorage = this.amount;
     var munit = this.unit;
-    var i=1;
+    var i;
     
+    dStorage = 18446744073709551999;
     for (var m in ilib.Measurement.DigitalStorage.ratios) {
+    	i = ilib.Measurement.DigitalStorage.ratios[m][0];
         var tmp = this.amount * fromRow[i];
-        if (tmp < 1) break;
-        dStorage = tmp;
-        munit = m;
-        ++i
+        if (tmp >= 1 && tmp < dStorage) {
+	        dStorage = tmp;
+	        munit = m;
+        }
     }
     
     return new ilib.Measurement.DigitalStorage({
-	unit: munit,
-	amount: dStorage
+		unit: munit,
+		amount: dStorage
     });    
 };
 

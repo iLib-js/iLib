@@ -27,6 +27,19 @@ if (!ilib.bind || ilib.bind.stub) ilib.extend(ilib, require("./util/utils.js"));
 
 if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 
+//save all the stubs to call once ilib.CType is redefined. This
+//way we don't have to explicitly list them out
+(ilib.bind(this, function () {
+	if (ilib.isDynCode()) {
+		ilib.tmp = {};
+		for (var prop in ilib.CType) {
+			if (ilib.CType[prop] && typeof(ilib.CType[prop]) === 'function' && ilib.CType[prop].stub) {
+				ilib.tmp[prop] = ilib.CType[prop];
+			}
+		}
+	}
+}))();
+
 /**
  * Provides a set of static routines that return information about characters.
  * These routines emulate the C-library ctype functions. The characters must be 
@@ -318,5 +331,18 @@ ilib.CType._load = function (name, sync, loadParams, onLoad) {
 		}
 	}
 };
+
+//call all the units subclass stubs to cause them to load their code files
+(ilib.bind(this, function () {
+	if (ilib.isDynCode()) {
+		for (var prop in ilib.tmp) {
+			if (!ilib.CType[prop]) {
+				//console.log("replacing measurement stub function " + prop);
+				ilib.CType[prop] = ilib.tmp[prop];
+			}
+		}
+		ilib.tmp = undefined;
+	}
+}))();
 
 module.exports = ilib.CType;

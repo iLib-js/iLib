@@ -131,7 +131,7 @@ ilib.Measurement.Area.aliases = {
 	"square kilometre":"square km",
 	"square kilometers":"square km",
 	"square kilometres":"square km",
-        "square km":"square km",
+    "square km":"square km",
 	"sq km":"square km",
 	"km2":"square km",
 	"Hectare":"hectare",
@@ -264,26 +264,25 @@ ilib.Measurement.Area.prototype.scale = function(measurementsystem) {
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
         && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.metricSystem;
-    }
-
-    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.uscustomarySystem;
-    }
-
-    else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-        && typeof(ilib.Measurement.Area.metricSystem[this.unit]) !== 'undefined')) {
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+        && typeof(ilib.Measurement.Area.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = ilib.Measurement.Area.imperialSystem;
     }
 
     var area = this.amount;
     var munit = this.unit;
 
+    area = 18446744073709551999;
+    
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        area = tmp;
-        munit = m;
+        if (tmp >= 1 && tmp < area) {
+	        area = tmp;
+	        munit = m;
+        }
     }
 
     return new ilib.Measurement.Area({

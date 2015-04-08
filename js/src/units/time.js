@@ -257,14 +257,16 @@ ilib.Measurement.Time.prototype.scale = function(measurementsystem) {
     var fromRow = ilib.Measurement.Time.ratios[this.unit];
     var time = this.amount;
     var munit = this.unit;
-    var i=1;
+    var i;
 
+    time = 18446744073709551999;
     for (var m in ilib.Measurement.Time.ratios) {
-        var tmp = this.amount * fromRow[i];
-        if (tmp < 1) break;
-        time = tmp;
-        munit = m;
-        ++i
+    	i = ilib.Measurement.Time.ratios[m][0];
+    	var tmp = this.amount * fromRow[i];
+    	if (tmp >= 1 && tmp < time) {
+	        time = tmp;
+	        munit = m;
+    	}
     }
 
     return new ilib.Measurement.Time({

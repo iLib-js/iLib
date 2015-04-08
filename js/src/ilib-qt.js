@@ -38,6 +38,7 @@ function loadFile(pathname, sync, success, failure) {
 
 var requireClass = function() {
 	this.cache = {};
+	this.loading = {};
 	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 };
 
@@ -77,16 +78,26 @@ requireClass.prototype.require = function(pathname) {
 	//console.log("pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
+		//console.log("cache hit");
 		return this.cache[pathname];
 	}
+	
+	// don't try to load things that are currently in the process of loading
+	if (this.loading[pathname]) {
+		//console.log("already loading...");
+		return {};
+	}
+	//console.log("loading the file");
 	
 	// communicate the current dir to the included js file
 	var tmp = module.filename;
 	module.filename = pathname;
+	this.loading[pathname] = true;
 	
 	var s = Qt.include(pathname);
 	
 	module.filename = tmp;
+	this.loading[pathname] = undefined;
 	
 	if (s.status === s.OK) {
 		var dirname = this.dirname(pathname);
@@ -94,7 +105,7 @@ requireClass.prototype.require = function(pathname) {
 		return module.exports;
 	}
 	
-	console.log("s.exception was " + JSON.stringify(s.exception, undefined, 4));
+	console.log("exception was " + JSON.stringify(s.status, undefined, 4));
 	console.log("Failed loading " + pathname);
 	return undefined;
 };

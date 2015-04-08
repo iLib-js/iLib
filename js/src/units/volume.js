@@ -395,11 +395,14 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var volume = this.amount;
     var munit = this.unit;
 
+    volume = Math.min(18446744073709551999, volume);
+    
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        volume = tmp;
-        munit = m;
+        if (tmp >= 1 && tmp < volume) {
+	        volume = tmp;
+	        munit = m;
+        }
     }
 
     return new ilib.Measurement.Volume({

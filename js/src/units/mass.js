@@ -322,11 +322,14 @@ ilib.Measurement.Mass.prototype.scale = function(measurementsystem) {
     var munit = this.amount;
     var fromRow = ilib.Measurement.Mass.ratios[this.unit];
     
+    mass = 18446744073709551999;
+    
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        mass = tmp;
-        munit = m;
+        if (tmp >= 1 && tmp < mass) {
+        	mass = tmp;
+            munit = m;
+        }
     }
     
     return new ilib.Measurement.Mass({

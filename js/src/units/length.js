@@ -226,11 +226,13 @@ ilib.Measurement.Length.prototype.scale = function(measurementsystem) {
     var munit = this.unit;
     var fromRow = ilib.Measurement.Length.ratios[this.unit];
     
+    length = 18446744073709551999;
     for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp < 1) break;
-        length = tmp;
-        munit = m;
+    	var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp >= 1 && tmp < length) {
+	        length = tmp;
+	        munit = m;
+        }
     }
     
     return new ilib.Measurement.Length({
