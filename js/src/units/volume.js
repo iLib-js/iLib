@@ -65,7 +65,7 @@ ilib.Measurement.Volume = function (options) {
 
 ilib.Measurement.Volume.ratios = {
     /*                 index, tsp,      tbsp,          cubic inch  us ounce, cup,        pint,       quart,      gallon,      cubic foot,  milliliter  liter,      cubic meter, imperial tsp,  imperial tbsp, imperial ounce,  imperial pint,  imperial quart, imperial gal, */
-    "tsp" :            [1,    1,        0.333333,      0.300781,   0.166667, 0.0208333,  0.0104167,  0.00130208, 0.00130208,  0.000174063, 4.92892,    0.00492892, 4.9289e-6,   0.832674,      0.277558,      0.173474,        0.00867369,     0.00433684,     0.00108421          ],
+    "tsp" :            [1,    1,        0.333333,      0.300781,   0.166667, 0.0208333,  0.0104167,  0.00520833, 0.00130208,  0.000174063, 4.92892,    0.00492892, 4.9289e-6,   0.832674,      0.277558,      0.173474,        0.00867369,     0.00433684,     0.00108421          ],
     "tbsp":            [2,    3,        1,             0.902344,   0.5,      0.0625,     0.0312,     0.015625,   0.00390625,  0.00052219,  14.7868,    0.0147868,  1.4787e-5,   2.49802,       0.832674,      0.520421,        0.0260211,      0.0130105,      0.00325263          ],
     "cubic inch":      [3,    3.32468,  1.10823,       1,          0.554113, 0.0692641,  0.034632,   0.017316,   0.004329,    0.000578704, 16.3871,    0.0163871,  1.6387e-5,   2.76837,       0.92279,       0.576744,        0.0288372,      0.0144186,      0.00360465          ],
     "us ounce":        [4,    6,        2,             1.80469,    1,        0.125,      0.0625,     0.0078125,  0.0078125,   0.00104438,  29.5735,    0.0295735,  2.9574e-5,   4.99604,       1.04084,       1.04084,         0.0520421,      0.0260211,      0.00650526          ],
@@ -395,16 +395,16 @@ ilib.Measurement.Volume.prototype.scale = function(measurementsystem) {
     var volume = this.amount;
     var munit = this.unit;
 
-    volume = Math.min(18446744073709551999, volume);
+    volume = 18446744073709551999;
     
     for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
+    	var tmp = this.amount * fromRow[mSystem[m]];
         if (tmp >= 1 && tmp < volume) {
-	        volume = tmp;
+        	volume = tmp;
 	        munit = m;
         }
     }
-
+    
     return new ilib.Measurement.Volume({
         unit: munit,
         amount: volume
