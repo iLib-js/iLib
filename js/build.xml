@@ -488,6 +488,7 @@ limitations under the License.
 				<exclude name="runner.js"/>
 				<exclude name="**/*-inc.js"/>
 				<exclude name="externs.js"/>
+				<exclude name="**/bench*"/>
 				<exclude name="nfc/**"/>
 				<exclude name="nfd/**"/>
 				<exclude name="nfkc/**"/>

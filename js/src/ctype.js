@@ -33,7 +33,7 @@ if (!ilib.Locale || ilib.Locale.stub) ilib.Locale = require("./locale.js");
 	if (ilib.isDynCode()) {
 		ilib.tmp = {};
 		for (var prop in ilib.CType) {
-			if (ilib.CType[prop] && typeof(ilib.CType[prop]) === 'function' && ilib.CType[prop].stub) {
+			if (/** @type {{stub:boolean}} */ilib.CType[prop] && typeof(ilib.CType[prop]) === 'function' && ilib.CType[prop].stub) {
 				ilib.tmp[prop] = ilib.CType[prop];
 			}
 		}

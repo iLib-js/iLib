@@ -1,3 +1,4 @@
+/* jshint node: true */
 /*
  * ilib-node.js - glue code for node to load local ilib code and 
  * data dynamically 
@@ -18,14 +19,10 @@
  * limitations under the License.
  */
 
-//console.log('Current directory: ' + process.cwd());
-//var util = require("util");
-//console.log("parent is " + util.inspect(module.parent));
-
 var nodeLoader = require("./nodeloader.js");
 
 var ilib = require("./ilibglobal.js");
-ilib.setLoaderCallback(new nodeLoader(ilib));
+ilib.setLoaderCallback(nodeLoader(ilib));
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 

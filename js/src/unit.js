@@ -32,7 +32,7 @@ if (!ilib.bind  || ilib.bind.stub) require("./util/utils.js");
 	if (ilib.isDynCode()) {
 		ilib.tmp = {};
 		for (var prop in ilib.Measurement) {
-			if (ilib.Measurement[prop] && typeof(ilib.Measurement[prop]) === 'function' && ilib.Measurement[prop].stub) {
+			if (/** @type {{stub:boolean}} */ilib.Measurement[prop] && typeof(ilib.Measurement[prop]) === 'function' && ilib.Measurement[prop].stub) {
 				ilib.tmp[prop] = ilib.Measurement[prop];
 			}
 		}
