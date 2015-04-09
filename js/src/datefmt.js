@@ -429,7 +429,7 @@ ilib.DateFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-			if (!ilib.Date._constructors[this.calName]) {
+			if (!ilib.Date._constructors[this.calName] && ilib.isDynCode()) {
 				// If we are running in the dynamic code loading assembly of ilib, the following
 				// will attempt to dynamically load the calendar date class for this calendar. If 
 				// it doesn't work, this just goes on and it will use Gregorian instead.

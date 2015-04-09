@@ -97,6 +97,7 @@ ilib.NormString.init = function(options) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
+	//console.log("loading files " + JSON.stringify(files));
 	ilib._callLoadData(files, sync, loadParams, function(arr) {
 		ilib.data.norm = arr[0];
 		for (var i = 1; i < arr.length; i++) {
@@ -362,6 +363,30 @@ ilib.NormString.prototype.normalize = function (form) {
 	function ccc(c) {
 		return ilib.data.norm.ccc[c] || 0;
 	}
+
+	function sortChars(arr, comp) {
+		// qt/qml's Javascript engine re-arranges entries that are equal to
+		// each other. Technically, that is a correct behaviour, but it is
+		// not desirable. All the other engines leave equivalent entries
+		// where they are. This bubblesort emulates what the other engines
+		// do. Fortunately, the arrays we are sorting are a max of 5 or 6
+		// entries, so performance is not a big deal here.
+		if (ilib._getPlatform() === "qt") {
+			var tmp;
+			for (var i = arr.length-1; i > 0; i--) {
+				for (var j = 0; j < i; j++) {
+					if (comp(arr[j], arr[j+1]) > 0) {
+						tmp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = tmp;
+					}
+				}
+			}
+			return arr;
+		} else {
+			return arr.sort(comp);
+		}
+	}
 		
 	var dstr = new ilib.String(decomp);
 	var it = dstr.charIterator();
@@ -385,7 +410,7 @@ ilib.NormString.prototype.normalize = function (form) {
 			
 			// simple sort of the non-starter chars
 			if (end - i > 1) {
-				cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
+				cpArray = cpArray.slice(0,i).concat(sortChars(cpArray.slice(i, end), compareByCCC), cpArray.slice(end));
 			}
 		}
 		i++;

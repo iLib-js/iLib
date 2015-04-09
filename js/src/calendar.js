@@ -114,7 +114,9 @@ ilib.Cal.newInstance = function (options) {
 		type = info.getCalendar();
 	}
 	
-	ilib.Cal._dynLoadCalendar(type);
+	if (ilib.isDynCode()) {
+		ilib.Cal._dynLoadCalendar(type);
+	}
 	
 	cons = ilib.Cal._constructors[type];
 	
@@ -137,6 +139,12 @@ ilib.Cal._constructors = {};
 ilib.Cal.getCalendars = function () {
 	var arr = [],
 		c;
+	
+	if (ilib.isDynCode()) {
+		for (c in ilib.Cal._dynMap) {
+			ilib.Cal._dynLoadCalendar(c);
+		}
+	}
 	
 	for (c in ilib.Cal._constructors) {
 		if (c && ilib.Cal._constructors[c]) {

@@ -197,7 +197,7 @@ function testDateToIlibDateWithNumber() {
 }
 
 function testDateToIlibDateWithString() {
-	var date = ilib.Date._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800 (PST)");
+	var date = ilib.Date._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800");
     
     assertEquals("object", typeof(date));
     assertTrue(date instanceof ilib.Date);
@@ -242,7 +242,7 @@ function testDateToIlibDateWithBogusObject() {
 }
 
 function testDateToIlibDate() {
-    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
+    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
     var ildMyBday = ilib.Date.newInstance({
         year: 1982,
         month: 8,
@@ -256,7 +256,7 @@ function testDateToIlibDate() {
 }
 
 function testDateToIlibString() {
-    var strMyBday = "Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)";
+    var strMyBday = "Fri Aug 13 1982 13:37:35 GMT-0700";
     var ildMyBday = ilib.Date.newInstance({
         year: 1982,
         month: 8,

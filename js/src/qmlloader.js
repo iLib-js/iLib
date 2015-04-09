@@ -62,10 +62,14 @@ qmlLoader.prototype._loadFile = function (pathname, sync, success, failure) {
 	// use the FileReader plugin to access the local disk synchronously
 	if (this.fr.exists(pathname)) {
 		var text = this.fr.read(pathname);
-		success && typeof(success) === 'function' && success(text);
+		if (text) {
+			success && typeof(success) === 'function' && success(text);
+		} else {
+			failure && typeof(failure) === 'function' && failure();
+		}
 		return text;
 	} else {
-		failure && typeof(failure) === 'function' && failure(text);
+		failure && typeof(failure) === 'function' && failure();
 		return undefined;
 	}
 };
@@ -157,7 +161,7 @@ qmlLoader.prototype._nextFile = function (root, paths, json) {
 		this._loadFilesAsync(root, paths);
 	} else {
 		// only call the callback at the end of the chain of files
-		if (typeof(callback) === 'function') {
+		if (typeof(this.callback) === 'function') {
 			this.callback(this.results);
 		}
 	}

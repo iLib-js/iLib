@@ -15,6 +15,7 @@ QtObject {
 	property var window: {}
 	property var top: {}
 	property var navigator: {}
+	property var require: {}
 	
     Component.onCompleted: {
     	//console.log("Test.qml -- new context. Loading in a fresh copy of ilib.");
@@ -32,12 +33,14 @@ QtObject {
 		navigator = {
 			userAgent: "Qt"
 		};
+		require = QtIlib.require;
 		
 		//console.log("Test.qml: parameter includes is " + JSON.stringify(includes));
         //console.log("Test.qml: parameter path is " + JSON.stringify(path));
         //console.log("Test.qml: parameter root is " + JSON.stringify(root));
         //console.log("Test.qml: parameter results is " + JSON.stringify(results));
-
+		//console.log("TestEnvironment.qml: require is " + typeof(require));
+		
 		TestRunner.runTests(path, root, includes, results); 
 		
 		// thisObj.destroy();	        

@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+function setUp() {
+	ilib.locale = undefined;
+}
+
 function testStringConstructor() {
     var str = new ilib.String();
     

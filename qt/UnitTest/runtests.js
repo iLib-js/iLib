@@ -55,7 +55,10 @@ function _runAllTests(path, results) {
 					msg += t + ": " + e.jsUnitMessage;
 				}
 				if (e.stackTrace) {
-					msg += t + ": " + e.stackTrace;
+					if (msg.length > 0) {
+						msg += "\n";
+					}
+					msg += "stack:\n" + e.stackTrace;
 				}
 			} else {
 				var extra = "";
@@ -75,10 +78,13 @@ function _runAllTests(path, results) {
 					if (extra.length > 0) {
 						extra += "\n";
 					}
-					extra += e.stack;
+					extra += "stack:\n" + e.stack;
 				}
 				if (extra.length === 0) {
 					extra += e.toString();
+				}
+				if (msg.length > 0) {
+					msg += "\n";
 				}
 				msg += extra;
 			}
@@ -101,6 +107,8 @@ function runTests(path, root, includes, results) {
 			Qt.include(root + "/js/src/" + inc);
 		}.bind(this));
 		//console.log("Running " + root + "/js/src/" + path);
+		var tmp = module.filename;
+		module.filename = root + "/js/src/" + path;
 		Qt.include(root + "/js/src/" + path);
 		if (typeof(suite) === 'function') {
 			//console.log("found a subsuite. Dir is: " + Qt.resolvedUrl(".").toString());
@@ -109,6 +117,7 @@ function runTests(path, root, includes, results) {
 			//console.log("Running subtests.");
 			_runAllTests(path, results);
 		}
+		module.filename = tmp;
 	}
 	if (subSuite && subSuite.subSuites) {
 		//console.log("TestRunner: running tests for subsuites.");

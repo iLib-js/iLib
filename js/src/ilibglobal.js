@@ -114,10 +114,10 @@ ilib._getPlatform = function () {
             ilib._platform = "rhino";
         } else if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
-        } else if (typeof(window) !== 'undefined') {
-            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else if (typeof(Qt) !== 'undefined') {
         	ilib._platform = "qt";
+        } else if (typeof(window) !== 'undefined') {
+            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
             ilib._platform = "unknown";
         }
@@ -219,7 +219,7 @@ ilib.setLocale = function (spec) {
 ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
         if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
-            // running in a browser
+        	// running in a browser
             ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
             if (!ilib.locale) {
                 // IE on Windows

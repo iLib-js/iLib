@@ -56,6 +56,7 @@ QtObject {
 		var compilation = "uncompiled";
 		var size = "full";
 		var suite = suiteDefinitions.full;
+		// var suite = ["strings-ext/test/testSuite.js"];
 		
 		console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(Object.keys(suite)) + "\n");
 		
@@ -65,9 +66,10 @@ QtObject {
 			
 			ts = new JsUnit.TestSuite(suite[s]);
 			runner.addSuite(ts);
-			// console.log("Adding suite " + suite[s]);
+			//console.log("Adding suite " + suite[s]);
 		}
 		
+		//console.log("Running all tests");
 		runner.runTests();
     }
 }

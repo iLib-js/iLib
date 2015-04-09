@@ -25,8 +25,8 @@ function testRequireSingleFile() {
 		return;
 	}
 	var mod = require("./test/testfiles/datefmt2.js");
-    
     assertNotUndefined(mod);
+    
     assertEquals("function", typeof(mod));
 }
 
@@ -38,9 +38,10 @@ function testRequireSingleFileWithSideEffects() {
 	}
     assertUndefined(ilib.Foobar);
     
-    require("./test/testfiles/foobar.js");
+    var mod = require("./test/testfiles/foobar.js");
+    assertNotUndefined("mod", mod);
     
-    assertNotUndefined(ilib.Foobar);
+    assertNotUndefined("ilib.Foobar", ilib.Foobar);
 }
 
 function testRequireSingleFileDependenciesLoaded() {
@@ -49,10 +50,11 @@ function testRequireSingleFileDependenciesLoaded() {
 		// in dynamic code loading mode
 		return;
 	}
-   assertUndefined(ilib.Grzwfd);
+	assertUndefined(ilib.Grzwfd);
     
     // datefmt2 depends on locale2 automatically
     var mod = require("./test/testfiles/asdf.js");
+    assertNotUndefined(mod);
     
     assertNotUndefined(ilib.Grzwfd);
 }
@@ -66,6 +68,7 @@ function testRequireDoNotReloadSameFile() {
 	assertUndefined(ilib.Qwerty);
     
 	var mod = require("./test/testfiles/qwerty.js");
+	assertNotUndefined(mod);
     
     assertNotUndefined(ilib.Qwerty);
     ilib.Qwerty.testproperty = "foo";

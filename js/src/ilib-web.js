@@ -139,3 +139,9 @@ ilib.setLoaderCallback(new webLoader(ilib));
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
 require("./ilib-stubs.js");
+
+if (typeof(window.module) === 'undefined') {
+	var module = {
+		exports: {}
+	};
+}

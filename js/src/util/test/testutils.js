@@ -718,6 +718,8 @@ function testMergeLocDataNoBase() {
 	assertEquals("e", m.a);
 	assertEquals("f", m.c);
 	assertEquals("i", m.g);
+	
+	ilib.data.asdf_de = ilib.data.asdf_de_DE = ilib.data.asdf_de_Latn_DE = ilib.data.asdf_de_Latn_DE_SAP = undefined;
 }
 
 function testMergeLocDataMissingLocaleParts() {
@@ -991,16 +993,36 @@ function testHashCodeEqualFunction() {
 }
 
 function testHashCodeEqualFunctionDifferentSpacing() {
-	assertNotEquals(ilib.hashCode(function a () { 
-		return "a"; 
-	}), ilib.hashCode(function a(){return "a";}));
+	if (ilib._getPlatform() === "qt") {
+		// the qt javascript engine doesn't allow you to see the code of a function, so all 
+		// functions should have the same hash
+		assertEquals(ilib.hashCode(function a () { 
+			return "a"; 
+		}), ilib.hashCode(function a(){return "a";}));
+	} else {
+		assertNotEquals(ilib.hashCode(function a () { 
+			return "a"; 
+		}), ilib.hashCode(function a(){return "a";}));
+	}
 }
 
 function testHashCodeNotEqualFunctionDifferentNames() {
-	assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function b() { return "a"; }));
+	if (ilib._getPlatform() === "qt") {
+		// the qt javascript engine doesn't allow you to see the code of a function, so all 
+		// functions should have the same hash
+		assertEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function b() { return "a"; }));
+	} else {
+		assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function b() { return "a"; }));
+	}
 }
 function testHashCodeNotEqualFunctionDifferentContents() {
-	assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "b"; }));
+	if (ilib._getPlatform() === "qt") {
+		// the qt javascript engine doesn't allow you to see the code of a function, so all 
+		// functions should have the same hash
+		assertEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "b"; }));
+	} else {
+		assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "b"; }));
+	}
 }
 
 function testHashCodeEqualObjects() {

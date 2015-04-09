@@ -59,35 +59,47 @@ requireClass.prototype.normalize = function(pathname) {
 };
 	
 requireClass.prototype.require = function(pathname) {
+	//console.log("------------------------\nrequire: called with " + pathname);
 	if (!this.root) {
 		this.root = Qt.resolvedUrl(".").toString();
 		if (this.root[this.root.length-1] === '/') {
 			this.root = this.root.substring(0,this.root.length-1);
 		}
+		if (this.root.substring(0,7) === "file://") {
+			this.root = this.root.substring(7);
+		}
+	}
+	
+	if (pathname === "./runner.js") {
+		// special case to redirect to the qt runner instead
+		pathname = "../../qt/UnitTest/runner.js";
 	}
 	
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	//console.log("require: module.filename is " + module.filename);
 	
 	var base = module.filename ? this.dirname(module.filename) : this.root;
 
+	//console.log("require: base is " + base);
+	
 	if (pathname.charAt(0) !== '/') {
 		pathname = base + "/" + pathname;
 	}
 	
 	pathname = this.normalize(pathname);
-	//console.log("pathname after is " + pathname);
+	//console.log("require: pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
-		//console.log("cache hit");
+		//console.log("require: cache hit");
 		return this.cache[pathname];
 	}
 	
 	// don't try to load things that are currently in the process of loading
 	if (this.loading[pathname]) {
-		//console.log("already loading...");
+		//console.log("require: already loading...");
 		return {};
 	}
-	//console.log("loading the file");
+	//console.log("require: loading the file");
 	
 	// communicate the current dir to the included js file
 	var tmp = module.filename;

@@ -344,7 +344,7 @@ function testGetLocaleBrowser() {
 	
 	assertEquals("ja-JP", ilib.getLocale());
 	
-	navigator.language = undefined;
+	navigator = undefined;
 }
 
 function testIsArrayNewArrayObj() {

@@ -76,8 +76,13 @@ TestSuite.prototype = {
 	},
 	
 	runTests: function(results, root) {
-		//console.log("runTests for suite " + this.path);
-		var suiteComponent = Qt.createComponent("TestEnvironment.qml");
+		//console.log("runTests: for suite " + this.path);
+		var suiteComponent = Qt.createComponent("../../qt/UnitTest/TestEnvironment.qml");
+		if (suiteComponent.status != Component.Ready) {
+		    if (suiteComponent.status == Component.Error)
+		        console.debug("Error: "+ suiteComponent.errorString());
+		    return; // or maybe throw
+		}
 		var suiteRunner = suiteComponent.createObject(null, {
         	path: this.path,
         	root: root,
@@ -87,7 +92,6 @@ TestSuite.prototype = {
         if (suiteRunner == null) {
         	console.log("failed to run test suite " + this.path);
         }
-
 	}
 };
 
@@ -245,6 +249,7 @@ if (!module) {
 module.exports.TestSuite = TestSuite;
 module.exports.TestRunner = TestRunner;
 
-var require = function(path) {
-	return module.exports;
-};
+//var require = function(path) {
+//	console.log("runner.require called with " + path);
+//	return module.exports;
+//};

@@ -804,6 +804,13 @@ ilib.String.prototype = {
 	 * @return {ilib.String} the requested substring 
 	 */
 	substr: function(start, length) {
+		if (ilib._getPlatform() === "qt") {
+			// qt's JS engine has a broken implementation of substr(), so
+			// work around it
+			if (typeof(length) === "undefined") {
+				length = this.str.length - start;
+			}
+		}
 		return new ilib.String(this.str.substr(start, length));
 	},
 	

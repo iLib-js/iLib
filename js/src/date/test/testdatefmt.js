@@ -636,28 +636,31 @@ function testDateFmtTokenizeWithEscapes() {
 };
 
 function testDateFmtAlternateInputs1() {
-    var fmt = new ilib.DateFmt({
-    	timezone: "Etc/UTC", 
-    	template: "EEE, d MMM yyyy kk:mm:ss z"
-    });
-    assertNotNull(fmt);
-    
-    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
-    var ildMyBday = ilib.Date.newInstance({
-    	timezone: "Etc/UTC",
-        year: 1982,
-        month: 8,
-        day: 13,
-        hour: 20,
-        minute: 37,
-        second: 35
-    });
-    var strFormattedDate1 = datMyBday.toUTCString();
-    var strFormattedDate2 = fmt.format(ildMyBday);
-    strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
-    strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
-
-    assertEquals(strFormattedDate1, strFormattedDate2);
+	// toUTCString doesn't work properly on qt, so we can't do this test
+	if (ilib._getPlatform() !== "qt") {
+	    var fmt = new ilib.DateFmt({
+	    	timezone: "Etc/UTC", 
+	    	template: "EEE, d MMM yyyy kk:mm:ss z"
+	    });
+	    assertNotNull(fmt);
+	    
+	    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
+	    var ildMyBday = ilib.Date.newInstance({
+	    	timezone: "Etc/UTC",
+	        year: 1982,
+	        month: 8,
+	        day: 13,
+	        hour: 20,
+	        minute: 37,
+	        second: 35
+	    });
+	    var strFormattedDate1 = datMyBday.toUTCString();
+	    var strFormattedDate2 = fmt.format(ildMyBday);
+	    strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
+	    strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
+	
+	    assertEquals(strFormattedDate1, strFormattedDate2);
+	}
 };
 
 function testDateFmtFormatJSDate1() {
@@ -670,7 +673,7 @@ function testDateFmtFormatJSDate1() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
+    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
     assertEquals("1:37pm", fmt.format(datMyBday));
 };
 
@@ -685,7 +688,7 @@ function testDateFmtFormatJSDateRightTimeZone1() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700 (PDT)");
+    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700");
     assertEquals("Wednesday", fmt.format(datMyBday));
 };
 
@@ -700,7 +703,7 @@ function testDateFmtFormatJSDateRightTimeZone2() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700 (PDT)");
+    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700");
     assertEquals("Thursday", fmt.format(datMyBday));
 };
 
@@ -779,7 +782,7 @@ function testDateFmtFormatJSDate3() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    assertEquals("1:37pm", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)"));
+    assertEquals("1:37pm", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700"));
 };
 
 function testDateFmtFormatJSDateRightTimeZone6() {
@@ -796,7 +799,7 @@ function testDateFmtFormatJSDateRightTimeZone6() {
 	    
 	    // test formatting a javascript date. It should be converted to 
 	    // an ilib date object automatically and then formatted
-	    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700 (PDT)"));
+	    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700"));
 	}
 };
 
