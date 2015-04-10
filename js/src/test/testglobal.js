@@ -156,14 +156,8 @@ function testGetLocaleNodejs1() {
 		// cannot simulate the conditions where this code would work
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
+	if (ilib._getPlatform() !== "nodejs") {
+		return;
 	}
 	
 	ilib._platform = undefined;
@@ -187,14 +181,8 @@ function testGetLocaleNodejs2() {
 		// cannot simulate the conditions where this code would work
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
+	if (ilib._getPlatform() !== "nodejs") {
+		return;
 	}
 	
 	ilib._platform = undefined;
@@ -218,14 +206,9 @@ function testGetLocaleRhino() {
 		// cannot simulate the conditions where this code would work
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
+	// can only simulate this on node
+	if (ilib._getPlatform() !== "nodejs") {
+		return;
 	}
 	
 	ilib._platform = undefined;
@@ -251,24 +234,20 @@ function testGetLocaleWebOS() {
 		// cannot simulate the conditions where this code would work
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
+	
+	// can only simulate this on node
+	if (ilib._getPlatform() !== "nodejs") {
+		return;
 	}
 	
 	ilib._platform = undefined;
 	ilib.locale = undefined;
 	if (typeof(PalmSystem) === 'undefined') {
 		PalmSystem = {
-			locales: {}
+			locale: ""
 		};
 	}
-	PalmSystem.locales.UI = "ru-RU";
+	PalmSystem.locale = "ru-RU";
 	
 	assertEquals("ru-RU", ilib.getLocale());
 	

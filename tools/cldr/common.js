@@ -314,10 +314,14 @@ exports.getLocale = function () {
                     exports.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
                 }
             }
-        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+        } else if (typeof(PalmSystem) !== 'undefined') {
             // webOS
-            if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
-                exports.locale = PalmSystem.locales.UI;
+            if (typeof(PalmSystem.locales) !== 'undefined' && 
+            		typeof(PalmSystem.locales.UI) != 'undefined' && 
+            		PalmSystem.locales.UI.length > 0) {
+                ilib.locale = PalmSystem.locales.UI;
+            } else if (typeof(PalmSystem.locale) !== 'undefined') {
+            	ilib.locale = PalmSystem.locale;
             }
         } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
             // running under rhino
