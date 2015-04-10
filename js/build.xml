@@ -148,7 +148,7 @@ limitations under the License.
 	
 	<target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
 		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/ilib-core-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js" />
 			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
 		</uptodate>
@@ -175,7 +175,7 @@ limitations under the License.
 
 	<target name="testilib.datesonly" description="test whether or not the ilib-datesonly single file needs to be rebuilt">
 		<uptodate property="datesonly.ilib.datesonly.not.needed" targetfile="${build.output.js}/ilib-datesonly-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js" />
 			<srcfiles dir="${build.src}" includes="ilib-datesonly-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
 		</uptodate>
@@ -202,7 +202,7 @@ limitations under the License.
 
 	<target name="testilib.standard" description="test whether or not the ilib-standard single file needs to be rebuilt">
 		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.output.js}/ilib-standard-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js" />
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
 		</uptodate>
@@ -229,7 +229,7 @@ limitations under the License.
 
 	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
 		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/ilib-full-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js" />
 			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
 		</uptodate>
@@ -256,7 +256,7 @@ limitations under the License.
 
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -282,8 +282,8 @@ limitations under the License.
 	</target>
 
 	<target name="testilib.dyn.ut" description="test whether or not the ilib-dyn-ut single file needs to be rebuilt">
-		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.output.js}/ilib-dyn-ut.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
+		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.output.js}/ilib-ut-dyn.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -312,7 +312,7 @@ limitations under the License.
 
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="**/ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -339,7 +339,7 @@ limitations under the License.
 
 	<target name="testilib.dyn.standard" description="test whether or not the standard-sized ilib file needs to be rebuilt">
 		<uptodate property="ilib.dyn.standard.not.needed" targetfile="${build.output.js}/ilib-standard-dyn-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -366,7 +366,7 @@ limitations under the License.
 
 	<target name="testilib.dyn.core" description="test whether or not the ilib-core file needs to be rebuilt">
 		<uptodate property="ilib.dyn.core.not.needed" targetfile="${build.output.js}/ilib-core-dyn-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -393,7 +393,7 @@ limitations under the License.
 
 	<target name="testilib.dyn.full" description="test whether or not the ilib-full file needs to be rebuilt">
 		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.output.js}/ilib-full-dyn-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -420,7 +420,7 @@ limitations under the License.
 
 	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
 		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,runner.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -493,6 +493,9 @@ limitations under the License.
 				<exclude name="nfd/**"/>
 				<exclude name="nfkc/**"/>
 				<exclude name="nkkd/**"/>
+				<exclude name="ilib-test.js"/>
+				<exclude name="testSuite.js"/>
+				<exclude name="datefmtstr.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -530,11 +533,12 @@ limitations under the License.
 			</fileset>
 		</copy>
 		<copy todir="${build.export}/package">
-			<fileset dir="${build.src}">
-				<include name="nodeglue.js"/>
-			</fileset>
-			<fileset dir="${build.output.js}">
-				<include name="ilib-full-dyn-compiled.js"/>
+			<fileset dir="${build.export}/js/dyncode">
+				<include name="**/*"/>
+				<exclude name="ilib-web.js"/>
+				<exclude name="ilib-qt.js"/>
+				<exclude name="qmlloader.js"/>
+				<exclude name="webloader.js"/>
 			</fileset>
 		</copy>
 		<copy todir="${build.export}/package/locale">
@@ -920,7 +924,7 @@ limitations under the License.
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
 			<jvmarg value="-Xmx1024m"/>
-			<jvmarg value="-XX:MaxPermSize=256m"/>
+			<jvmarg value="-XX:MaxPermSize=128m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>

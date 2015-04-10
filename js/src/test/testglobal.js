@@ -218,7 +218,7 @@ function testGetLocaleRhino() {
 			user: {}
 		};
 	}
-	console.log("platform is " + ilib._getPlatform());
+
 	environment.user.language = "de";
 	environment.user.country = "AT";
 	

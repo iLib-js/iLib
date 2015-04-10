@@ -65,6 +65,7 @@ limitations under the License.
 
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.output}"/>
+		<delete dir="${build.export}/qt"/>
 		<sequential>
 			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
 				<arg line="clean"/>
@@ -97,11 +98,17 @@ limitations under the License.
 	</target>
 	
 	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
-		<mkdir dir="${build.export}/qt/FS"/>
-		<copy todir="${build.export}/qt/FS">
+		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
+		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
 			<fileset dir="${build.base}/build-filereader">
 				<include name="libFileReader.so"/>
 				<include name="qmldir"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/src/qt/FileReader"/>
+		<copy todir="${build.export}/src/qt/FileReader">
+			<fileset dir="${build.filereader}">
+				<include name="*"/>
 			</fileset>
 		</copy>
 	</target>
