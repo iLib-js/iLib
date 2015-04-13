@@ -575,7 +575,8 @@ function testGetDayOfWeek1() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1393,
 		month: 3,
-		day: 16
+		day: 16,
+		timezone: "Asia/Tehran"
 	});
     
     assertNotNull(pd);
@@ -635,7 +636,8 @@ function testPersAlgoDateTestGetTimeTooEarly() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1348,
 		month: 10,
-		day: 10
+		day: 10,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -646,7 +648,8 @@ function testPersAlgoDateTestGetTimeTooLate() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1416,
 		month: 11,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -658,7 +661,8 @@ function testPersAlgoDateOnOrBeforeSun() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -673,7 +677,8 @@ function testPersAlgoDateOnOrBeforeMon() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -687,7 +692,8 @@ function testPersAlgoDateOnOrBeforeTue() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -701,7 +707,8 @@ function testPersAlgoDateOnOrBeforeWed() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -715,7 +722,8 @@ function testPersAlgoDateOnOrBeforeThu() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -729,7 +737,8 @@ function testPersAlgoDateOnOrBeforeFri() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -743,7 +752,8 @@ function testPersAlgoDateOnOrBeforeSat() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -757,7 +767,8 @@ function testPersAlgoDateOnOrAfterSun() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -772,7 +783,8 @@ function testPersAlgoDateOnOrAfterMon() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -786,7 +798,8 @@ function testPersAlgoDateOnOrAfterTue() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -800,7 +813,8 @@ function testPersAlgoDateOnOrAfterWed() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -814,7 +828,8 @@ function testPersAlgoDateOnOrAfterThu() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -828,7 +843,8 @@ function testPersAlgoDateOnOrAfterFri() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -842,7 +858,8 @@ function testPersAlgoDateOnOrAfterSat() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -856,7 +873,8 @@ function testPersAlgoDateBeforeSun() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -871,7 +889,8 @@ function testPersAlgoDateBeforeMon() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -885,7 +904,8 @@ function testPersAlgoDateBeforeTue() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -899,7 +919,8 @@ function testPersAlgoDateBeforeWed() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -913,7 +934,8 @@ function testPersAlgoDateBeforeThu() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -927,7 +949,8 @@ function testPersAlgoDateBeforeFri() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -941,7 +964,8 @@ function testPersAlgoDateBeforeSat() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -955,7 +979,8 @@ function testPersAlgoDateAfterSun() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -970,7 +995,8 @@ function testPersAlgoDateAfterMon() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -984,7 +1010,8 @@ function testPersAlgoDateAfterTue() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -998,7 +1025,8 @@ function testPersAlgoDateAfterWed() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1012,7 +1040,8 @@ function testPersAlgoDateAfterThu() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1026,7 +1055,8 @@ function testPersAlgoDateAfterFri() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1040,7 +1070,8 @@ function testPersAlgoDateAfterSat() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1054,7 +1085,8 @@ function testPersAlgoDateTestGetWeekOfYearThisYear() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 2,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1065,7 +1097,8 @@ function testPersAlgoDateTestGetWeekOfYearThisYear2() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 19
+		day: 19,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1076,7 +1109,8 @@ function testPersAlgoDateTestGetWeekOfYearThisYear3() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1102,7 +1136,8 @@ function testPersAlgoDateTestGetWeekOfYearPreviousYear() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1113,7 +1148,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekLeap() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1383,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1124,7 +1160,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular1() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1389,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1135,7 +1172,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular2() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1390,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1146,7 +1184,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular3() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1391,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1157,7 +1196,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular4() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1392,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1168,7 +1208,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular5() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1393,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1179,7 +1220,8 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular6() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1394,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1190,7 +1232,8 @@ function testPersAlgoDateGetDayOfYearFirstDay() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1201,7 +1244,8 @@ function testPersAlgoDateGetDayOfYearMidYear() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 17
+		day: 17,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1212,7 +1256,8 @@ function testPersAlgoDateGetDayOfYearLastDay() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1223,7 +1268,8 @@ function testPersAlgoDateGetDayOfYearLastDayLeapYear() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1387,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1234,7 +1280,8 @@ function testPersAlgoDateGetWeekOfMonth0() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1245,7 +1292,8 @@ function testPersAlgoDateGetWeekOfMonth1() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 4
+		day: 4,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1256,7 +1304,8 @@ function testPersAlgoDateGetWeekOfMonth2() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 11
+		day: 11,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1267,7 +1316,8 @@ function testPersAlgoDateGetWeekOfMonth3() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 20
+		day: 20,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1278,7 +1328,8 @@ function testPersAlgoDateGetWeekOfMonth4() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1289,7 +1340,8 @@ function testPersAlgoDateGetWeekOfMonth5() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 31
+		day: 31,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1300,7 +1352,8 @@ function testPersAlgoDateGetWeekOfMonth6() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 4,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1311,7 +1364,8 @@ function testPersAlgoDateGetWeekOfMonth7() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1322,7 +1376,8 @@ function testPersAlgoDateGetWeekOfMonth8() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 6,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1333,7 +1388,8 @@ function testPersAlgoDateGetWeekOfMonth9() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 7,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1344,7 +1400,8 @@ function testPersAlgoDateGetWeekOfMonthIR0() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1355,7 +1412,8 @@ function testPersAlgoDateGetWeekOfMonthIR1() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 4
+		day: 4,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1366,7 +1424,8 @@ function testPersAlgoDateGetWeekOfMonthIR2() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 11
+		day: 11,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1377,7 +1436,8 @@ function testPersAlgoDateGetWeekOfMonthIR3() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 20
+		day: 20,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1388,7 +1448,8 @@ function testPersAlgoDateGetWeekOfMonthIR4() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1399,7 +1460,8 @@ function testPersAlgoDateGetWeekOfMonthIR5() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 3,
-		day: 31
+		day: 31,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1410,7 +1472,8 @@ function testPersAlgoDateGetWeekOfMonthIR6() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 4,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1421,7 +1484,8 @@ function testPersAlgoDateGetWeekOfMonthIR7() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1432,7 +1496,8 @@ function testPersAlgoDateGetWeekOfMonthIR8() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 6,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1443,7 +1508,8 @@ function testPersAlgoDateGetWeekOfMonthIR9() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 7,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1454,7 +1520,8 @@ function testPersAlgoDateGetWeekOfMonthIR10() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1465,7 +1532,8 @@ function testPersAlgoDateGetWeekOfMonthIR11() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 9,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1476,7 +1544,8 @@ function testPersAlgoDateGetWeekOfMonthIR12() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 10,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1487,7 +1556,8 @@ function testPersAlgoDateGetWeekOfMonthIR13() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 11,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1498,7 +1568,8 @@ function testPersAlgoDateGetWeekOfMonthIR14() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 12,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1509,7 +1580,8 @@ function testPersAlgoDateGetWeekOfMonthUS() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1520,7 +1592,8 @@ function testPersAlgoDateGetWeekOfMonthDE() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1533,7 +1606,8 @@ function testPersAlgoDateGetEraAP() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1559,7 +1633,8 @@ function testPersAlgoDateGetEraAPYear1() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 1,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     
@@ -1570,7 +1645,8 @@ function testPersAlgoDateGetEraBAPYear0() {
     var pd = new ilib.Date.PersAlgoDate({
 		year: 0,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Asia/Tehran"
 	});
     assertNotNull(pd);
     

@@ -933,7 +933,8 @@ function testGregDateOnOrBeforeSun() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -948,7 +949,8 @@ function testGregDateOnOrBeforeMon() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -962,7 +964,8 @@ function testGregDateOnOrBeforeTue() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -976,7 +979,8 @@ function testGregDateOnOrBeforeWed() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -990,7 +994,8 @@ function testGregDateOnOrBeforeThu() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1004,7 +1009,8 @@ function testGregDateOnOrBeforeFri() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1018,7 +1024,8 @@ function testGregDateOnOrBeforeSat() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1033,7 +1040,8 @@ function testGregDateOnOrBeforeSunWithTime() {
     	year: 2010, 
     	month: 1, 
     	day: 1,
-	   	hour: 8
+	   	hour: 8,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1125,7 +1133,8 @@ function testGregDateOnOrAfterSun() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1140,7 +1149,8 @@ function testGregDateOnOrAfterSunDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1157,7 +1167,8 @@ function testGregDateOnOrAfterMon() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1171,7 +1182,8 @@ function testGregDateOnOrAfterMonDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010,
     	month: 1,
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1187,7 +1199,8 @@ function testGregDateOnOrAfterTue() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1201,7 +1214,8 @@ function testGregDateOnOrAfterWed() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1215,7 +1229,8 @@ function testGregDateOnOrAfterThu() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1229,7 +1244,8 @@ function testGregDateOnOrAfterThuDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1245,7 +1261,8 @@ function testGregDateOnOrAfterFri() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1259,7 +1276,8 @@ function testGregDateOnOrAfterFriDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1275,7 +1293,8 @@ function testGregDateOnOrAfterSat() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1289,7 +1308,8 @@ function testGregDateBeforeSun() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1304,7 +1324,8 @@ function testGregDateBeforeSunDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1321,7 +1342,8 @@ function testGregDateBeforeMon() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1335,7 +1357,8 @@ function testGregDateBeforeTue() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1349,7 +1372,8 @@ function testGregDateBeforeWed() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1363,7 +1387,8 @@ function testGregDateBeforeThu() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1377,7 +1402,8 @@ function testGregDateBeforeThuDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1394,7 +1420,8 @@ function testGregDateBeforeFri() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1408,7 +1435,8 @@ function testGregDateBeforeFriDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1425,7 +1453,8 @@ function testGregDateBeforeSat() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1439,7 +1468,8 @@ function testGregDateAfterSun() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1454,7 +1484,8 @@ function testGregDateAfterSunDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1471,7 +1502,8 @@ function testGregDateAfterMon() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1485,7 +1517,8 @@ function testGregDateAfterTue() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1499,7 +1532,8 @@ function testGregDateAfterWed() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1513,7 +1547,8 @@ function testGregDateAfterThu() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1527,7 +1562,8 @@ function testGregDateAfterFri() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1541,7 +1577,8 @@ function testGregDateAfterFriDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1558,7 +1595,8 @@ function testGregDateAfterSat() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1572,7 +1610,8 @@ function testGregDateAfterSatDate() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1589,7 +1628,8 @@ function testGregDateTestGetWeekOfYearThisYear() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 1, 
-    	day: 7
+    	day: 7,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1600,7 +1640,8 @@ function testGregDateTestGetWeekOfYearThisYear2() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 1, 
-    	day: 25
+    	day: 25,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1611,7 +1652,8 @@ function testGregDateTestGetWeekOfYearThisYear3() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 19
+    	day: 19,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1626,7 +1668,8 @@ function testGregDateTestGetWeekOfYearThisYearWithTime() {
 	   	hour: 16,
 	   	minute: 13,
 	   	second: 12,
-	   	millisecond: 232
+	   	millisecond: 232,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1637,7 +1680,8 @@ function testGregDateTestGetWeekOfYearPreviousYear() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1648,7 +1692,8 @@ function testGregDateTestGetWeekOfYearLastWeekLeap() {
     var gd = new ilib.Date.GregDate({
     	year: 2009, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1659,7 +1704,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular1() {
     var gd = new ilib.Date.GregDate({
     	year: 2010, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1670,7 +1716,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular2() {
     var gd = new ilib.Date.GregDate({
     	year: 2008, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1681,7 +1728,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular3() {
     var gd = new ilib.Date.GregDate({
     	year: 2007, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1692,7 +1740,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular4() {
     var gd = new ilib.Date.GregDate({
     	year: 2006, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1703,7 +1752,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular5() {
     var gd = new ilib.Date.GregDate({
     	year: 2005, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1714,7 +1764,8 @@ function testGregDateTestGetWeekOfYearLastWeekRegular6() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1725,7 +1776,8 @@ function testGregDateGetDayOfYearFirstDay() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1736,7 +1788,8 @@ function testGregDateGetDayOfYearPaddysDay() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 3, 
-    	day: 17
+    	day: 17,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1747,7 +1800,8 @@ function testGregDateGetDayOfYearPaddysDayLeapYear() {
     var gd = new ilib.Date.GregDate({
     	year: 2008, 
     	month: 3, 
-    	day: 17
+    	day: 17,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1758,7 +1812,8 @@ function testGregDateGetDayOfYearLastDay() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1769,7 +1824,8 @@ function testGregDateGetDayOfYearLastDayLeapYear() {
     var gd = new ilib.Date.GregDate({
     	year: 2008, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1780,7 +1836,8 @@ function testGregDateGetWeekOfMonth0() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1802,7 +1859,8 @@ function testGregDateGetWeekOfMonth2() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 11
+    	day: 11,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1813,7 +1871,8 @@ function testGregDateGetWeekOfMonth3() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 20
+    	day: 20,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1824,7 +1883,8 @@ function testGregDateGetWeekOfMonth4() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1835,7 +1895,8 @@ function testGregDateGetWeekOfMonth5() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 30
+    	day: 30,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1846,7 +1907,8 @@ function testGregDateGetWeekOfMonth6() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 9, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1857,7 +1919,8 @@ function testGregDateGetWeekOfMonth7() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 8, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1868,7 +1931,8 @@ function testGregDateGetWeekOfMonth8() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 7, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1879,7 +1943,8 @@ function testGregDateGetWeekOfMonth9() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 6, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1890,7 +1955,8 @@ function testGregDateGetWeekOfMonthUS() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1901,7 +1967,8 @@ function testGregDateGetWeekOfMonthDE() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1914,7 +1981,8 @@ function testGregDateGetEraCE() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1925,7 +1993,8 @@ function testGregDateGetEraBCE() {
     var gd = new ilib.Date.GregDate({
     	year: -46, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1936,7 +2005,8 @@ function testGregDateGetEraCEYear1() {
     var gd = new ilib.Date.GregDate({
     	year: 1, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1947,7 +2017,8 @@ function testGregDateGetEraCEYear0() {
     var gd = new ilib.Date.GregDate({
     	year: 0, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
