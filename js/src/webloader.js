@@ -20,9 +20,11 @@
 var path = require("./path.js");
 var ilib = require("./ilibglobal.js");
 
-var webLoader = function() {
+var webLoader = function(ilib) {
 	//console.log("new webLoader instance\n");
 
+	this.ilibobj = ilib;
+	
 	// for use from within a check-out of ilib
 	var base, root, pos;
 	
@@ -113,13 +115,13 @@ webLoader.prototype._loadFileAlongIncludePath = function(includePath, pathname) 
 				//console.log("webLoader._loadFileAlongIncludePath: succeeded");
 				return text;
 			} 
-			else {
+			//else {
 				//console.log("webLoader._loadFileAlongIncludePath: failed");
-			} 
+			//} 
 		} 
-		else {
+		//else {
 			//console.log("webLoader._loadFileAlongIncludePath: " + pathname + " not in manifest for " + this.includePath[i]);
-		}
+		//}
 	}
 	
 	//console.log("webLoader._loadFileAlongIncludePath: file not found anywhere along the path.");
@@ -135,7 +137,7 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	
 	if (!paths) {
 		// nothing to load
-		// //console.log("nothing to load\n");
+		//console.log("nothing to load\n");
 		return;
 	}
 	
@@ -165,23 +167,23 @@ webLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 webLoader.prototype._loadFilesAsyncAlongIncludePath = function (includes, filename, success, failure) {
 	var text = undefined;
 	
-	if (include.length > 0) {
+	if (includes.length > 0) {
 		var root = includes[0];
 		includes = includes.slice(1);
 		
 		var manifest = this.manifest[root];
-		if (!manifest || webLoader.indexOf(manifest, pathname) > -1) {
+		if (!manifest || webLoader.indexOf(manifest, filename) > -1) {
 			var filepath = path.join(root, filename);
 			this._loadFile(filepath, false, function(t) {
 				//console.log("webLoader._loadFilesAsyncAlongIncludePath: loading " + filepath + " success\n");
 				success(t);
-			}, function (err) {
+			}, this.ilibobj.bind(this, function (err) {
 				//console.log("webLoader._loadFilesAsyncAlongIncludePath: loading " + filepath + " failed\n");
-				this._loadFilesAsyncAlongIncludePath(includes, filename);
-			});
+				this._loadFilesAsyncAlongIncludePath(includes, filename, success, failure);
+			}));
 		} else {
 			//console.log("webLoader._loadFilesAsyncAlongIncludePath: " + filepath + " not in manifest for " + root);
-			this._loadFilesAsyncAlongIncludePath(includes, filename);
+			this._loadFilesAsyncAlongIncludePath(includes, filename, success, failure);
 		}
 	} else {
 		failure();
@@ -194,13 +196,13 @@ webLoader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 		paths = paths.slice(1);
 		
 		//console.log("webLoader._loadFilesAsync: attempting to load " + filename + " along the include path.");
-		this._loadFilesAsyncAlongIncludePath(includePath, filename, function (json) {
+		this._loadFilesAsyncAlongIncludePath(includePath, filename, this.ilibobj.bind(this, function (json) {
 			this.results.push(json ? JSON.parse(json) : undefined);
 			this._loadFilesAsync(includePath, paths, callback);
-		}, function () {
+		}), this.ilibobj.bind(this, function () {
 			this.results.push(undefined);
 			this._loadFilesAsync(includePath, paths, callback);
-		});
+		}));
 	} else {
 		// only call the callback at the end of the chain of files
 		if (typeof(callback) === 'function') {
@@ -209,7 +211,7 @@ webLoader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 	}
 };
 
-webLoader.prototype._loadManifest = function(root) {
+webLoader.prototype._loadManifestFile = function(root) {
 	var dirpath = path.normalize(root);
 	var filepath = path.join(dirpath, "ilibmanifest.json");
 	var text = this._loadFile(filepath, true);
@@ -225,7 +227,7 @@ webLoader.prototype._loadManifests = function() {
 		this.manifest = {};
 		
 		for (var i = 0; i < this.includePath.length; i++) {
-			this._loadManifest(this.includePath[i]);
+			this._loadManifestFile(this.includePath[i]);
 		}
 	}
 };
