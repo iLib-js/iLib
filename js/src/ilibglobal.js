@@ -560,6 +560,51 @@ ilib.extend = function (object1, object2) {
 };
 
 /**
+ * If Function.prototype.bind does not exist in this JS engine, this
+ * function reimplements it in terms of older JS functions.
+ * bind() doesn't exist in many older browsers.
+ * 
+ * @static
+ * @param {Object} scope object that the method should operate on
+ * @param {function(...)} method method to call
+ * @return {function(...)|undefined} function that calls the given method 
+ * in the given scope with all of its arguments properly attached, or
+ * undefined if there was a problem with the arguments
+ */
+ilib.bind = function(scope, method/*, bound arguments*/){
+	if (!scope || !method) {
+		return undefined;
+	}
+	
+	/** @protected 
+	 * @param {Arguments} inArrayLike
+	 * @param {number=} inOffset
+	 */
+	function cloneArray(inArrayLike, inOffset) {
+		var arr = [];
+		for(var i = inOffset || 0, l = inArrayLike.length; i<l; i++){
+			arr.push(inArrayLike[i]);
+		}
+		return arr;
+	}
+
+	if (typeof(method) === 'function') {
+		var func, args = cloneArray(arguments, 2);
+		if (typeof(method.bind) === 'function') {
+			func = method.bind.apply(method, [scope].concat(args));
+		} else {
+			func = function() {
+				var nargs = cloneArray(arguments);
+				// invoke with collected args
+				return method.apply(scope, args.concat(nargs));
+			};
+		}
+		return func;
+	}
+	return undefined;
+};
+
+/**
  * @private
  */
 ilib._dyncode = false;
