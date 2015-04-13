@@ -70,18 +70,18 @@ var classRegex = /\* @class/;
 var i, currentFile, output, isStatic = true;
 
 function outputClass(name, signature, filename) {
-	output += name + "=function" + signature + '{require("./' + filename + '");return new ' + name + signature + ";};" + name + ".stub=true;\n";
+	output += "if(!"+ name + "){" + name + "=function" + signature + '{require("./' + filename + '");return new ' + name + signature + ";};" + name + ".stub=true;}\n";
 }
 
 function outputStatic(name, signature, filename) {
-	output += name + "=function" + signature + '{require("./' + filename + '");return ' + name + signature + ";};" + name + ".stub=true;\n";
+	output += "if(!"+ name + "){" + name + "=function" + signature + '{require("./' + filename + '");return ' + name + signature + ";};" + name + ".stub=true;}\n";
 }
 
 output = 
 	"/* This is a generated file. DO NOT EDIT, as your changes will be lost. */\n" +
 	"/* Instead, fix the code in mkstubs.js which generated this file.       */\n" +
-	'var ilib = require("./ilibglobal.js");\n' +
-	'ilib.CType = {stub:true}; ilib._roundFnc = {stub:true};\n';
+	'var ilib=require("./ilibglobal.js");\n' +
+	'if(!ilib.CType)ilib.CType={stub:true};if(!ilib._roundFnc)ilib._roundFnc={stub:true};\n';
 
 for (i = 0; i < lines.length; i++) {
 	var result = fileNameRegex.exec(lines[i]);

@@ -37,7 +37,7 @@ var path = {
 			do {
 				previousLen = pathname.length;
 				pathname = pathname.replace(/\/[^/]+\/\.\./g, "").replace(/\/\.\//g, "/").replace(/^\.\//, "");
-			} while (pathname.length < previousLen);
+			} while (pathname.length < previousLen && pathname.length > 0);
 		}
 		return pathname;
 	}
@@ -47,6 +47,7 @@ var requireClass = function() {
 	this.cache = {};
 	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 };
+
 requireClass.prototype.loadFile = function(pathname, sync) {
 	var text;
     var ajax = new enyo.Ajax({
@@ -61,7 +62,8 @@ requireClass.prototype.loadFile = function(pathname, sync) {
 	ajax.go();
 	return text;
 };
-requireClass.prototype.require = function(pathname) {
+
+requireClass.prototype.setRoot = function() {
 	if (!this.root) {
 		var pos;
 		var scripts = document.getElementsByTagName("script");
@@ -75,6 +77,21 @@ requireClass.prototype.require = function(pathname) {
 			}
 		}
 	}
+};
+
+requireClass.prototype.cacheObjectForPath = function(pathname, obj) {
+	this.setRoot();
+	if (pathname.charAt(0) !== '/') {
+		pathname = this.root + "/" + pathname;
+	}
+	
+	pathname = path.normalize(pathname);
+	
+	this.cache[pathname] = obj;
+};
+
+requireClass.prototype.require = function(pathname) {
+	this.setRoot();
 	
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
@@ -113,18 +130,17 @@ requireClass.prototype.require = function(pathname) {
 
 var r = new requireClass();
 var require = requireClass.prototype.require.bind(r);
-
-var ilib = require("./ilibglobal.js");
+r.cacheObjectForPath("./ilibglobal.js", ilib);
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
-
-require("./ilib-stubs.js");
 
 if (typeof(window.module) === 'undefined') {
 	var module = {
 		exports: {}
 	};
 }
+
+require("./ilib-stubs.js");
 
 // now the enyo code should create an enyo loadeer and set it in to ilib
 // with ilib.setLoaderCallback()
