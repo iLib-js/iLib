@@ -121,6 +121,7 @@ ilib.Cal.Gregorian.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Gregorian.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.GregDate || ilib.Date.GregDate.stub) require("./gregoriandate.js");
 	return new ilib.Date.GregDate(options);
 };
 

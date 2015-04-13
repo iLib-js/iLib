@@ -150,6 +150,7 @@ ilib.Cal.Persian.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Persian.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.PersDate || ilib.Date.PersDate.stub) require("./persianastrodate.js");
 	return new ilib.Date.PersDate(options);
 };
 

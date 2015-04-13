@@ -112,6 +112,7 @@ ilib.Cal.Julian.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Julian.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.JulDate || ilib.Date.JulDate.stub) require("./juliandate.js");
 	return new ilib.Date.JulDate(options);
 };
 

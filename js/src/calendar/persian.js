@@ -133,6 +133,7 @@ ilib.Cal.PersianAlgo.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.PersianAlgo.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.PersAlgoDate || ilib.Date.PersAlgoDate.stub) require("./persiandate.js");
 	return new ilib.Date.PersAlgoDate(options);
 };
 

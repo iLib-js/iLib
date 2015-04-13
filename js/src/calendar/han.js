@@ -341,6 +341,7 @@ ilib.Cal.Han.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Han.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.HanDate || ilib.Date.HanDate.stub) require("./handate.js");
 	return new ilib.Date.HanDate(options);
 };
 

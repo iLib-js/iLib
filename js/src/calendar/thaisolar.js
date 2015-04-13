@@ -65,6 +65,7 @@ ilib.Cal.ThaiSolar.prototype.isLeapYear = function(year) {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.ThaiSolar.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.ThaiSolarDate || ilib.Date.ThaiSolarDate.stub) require("./thaisolardate.js");
 	return new ilib.Date.ThaiSolarDate(options);
 };
 

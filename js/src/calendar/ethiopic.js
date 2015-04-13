@@ -96,6 +96,7 @@ ilib.Cal.Ethiopic.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Ethiopic.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.EthiopicDate || ilib.Date.EthiopicDate.stub) require("./ethiopicdate.js");
 	return new ilib.Date.EthiopicDate(options);
 };
 

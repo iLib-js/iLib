@@ -130,6 +130,7 @@ ilib.Cal.Islamic.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Islamic.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.IslamicDate || ilib.Date.IslamicDate.stub) require("./islamicdate.js");
 	return new ilib.Date.IslamicDate(options);
 };
 

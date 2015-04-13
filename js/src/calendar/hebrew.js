@@ -230,6 +230,7 @@ ilib.Cal.Hebrew.prototype.getType = function() {
  * @returns {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Hebrew.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.HebrewDate || ilib.Date.HebrewDate.stub) require("./hebrewdate.js");
 	return new ilib.Date.HebrewDate(options);
 };
 

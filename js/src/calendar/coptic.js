@@ -55,6 +55,7 @@ ilib.Cal.Coptic.prototype.constructor = ilib.Cal.Coptic;
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Coptic.prototype.newDateInstance = function (options) {
+	if (!ilib.Date.CopticDate || ilib.Date.CopticDate.stub) require("./copticdate.js");
 	return new ilib.Date.CopticDate(options);
 };
 
