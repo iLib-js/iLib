@@ -22,185 +22,210 @@ module.exports = function (ilib) {
 		fs = require("fs"),
 		util = require("util");
 	
-	var nodeLoader = function () {
+	var nodeLoader = function (root) {
 		// util.print("new common nodeLoader instance\n");
 	
-		if (typeof(module) !== 'undefined' && module.filename) {
-			// loaded under nodejs
-			var base = path.dirname(module.filename);
-			var localeDir = path.normalize(path.join(base, "locale"));
-			if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
-				// this was loaded via a nodejs require() call in an npm module, so the parent
-				// dir of this file is where the locale dir is
-				this.base = base;
-				this.code = path.normalize(path.join(base, "js"));
-			} 
-			
-			if (!this.base) {
-				// for use from within a check-out of ilib
-				var root = path.normalize(path.join(base, ".."));
-				this.base = path.normalize(path.join(root, "data"));
-				this.code = path.normalize(path.join(root, "src"));
-					
-				localeDir = path.normalize(path.join(base, "localetemp"));
-				if (fs.existsSync(localeDir) && fs.existsSync(path.join(localeDir, "localeinfo.json"))) {
-					// loaded from a development check-out of the ilib sources
-					this.base = base;
-				}
-			}
-		}
-	
-		if (!this.base) {
-			// default to the standard install location
-			this.base = "/usr/share/javascript/ilib";
-			this.code = "/usr/share/javascript/ilib/js";
-		}
+		// root of the app that created this loader
+		this.root = root || process.cwd();
 		
-		// util.print("base is defined as " + this.base + "\n");
-		// util.print("code is defined as " + this.code + "\n");
+		this.base = (typeof(module) !== 'undefined' && module.filename) ?
+				path.join(path.dirname(module.filename), "..") :
+				this.root;
+		
+		// console.log("base is defined as " + this.base + "\n");
+		
+		this.includePath = [
+	        path.join(this.root, "resources") 	// always check the application's resources dir first
+		];
+		
+		// then try a check-out dir of ilib
+		this._exists(path.join(this.base, "data", "localetemp"), "localeinfo.json");
+		
+		// then a standard locale dir of a built version of ilib from npm
+		this._exists(path.join(this.base, "locale"), "localeinfo.json");
+		
+		// ... else fall back to the standard install directories
+		this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
+		
 	};
-	
+		
 	// make this a subclass of loader
 	nodeLoader.prototype = new ilib.Loader();
 	nodeLoader.prototype.parent = new ilib.Loader;
 	nodeLoader.prototype.constructor = nodeLoader;
 	
-	nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
-		var root = (params && params.base) ? path.normalize(params.base) : this.base;
+	nodeLoader.indexOf = function(array, obj) {
+		if (!array || !obj) {
+			return -1;
+		}
+		if (typeof(array.indexOf) === 'function') {
+			return array.indexOf(obj);
+		} else {
+			for (var i = 0; i < array.length; i++) {
+		        if (array[i] === obj) {
+		            return i;
+		        }
+		    }
+		    return -1;
+		}
+	};
+
+	nodeLoader.prototype._exists = function(dir, file) {
+		if (fs.existsSync(path.join(dir, file))) {
+			// console.log("nodeLoader._exists: adding " + dir + " to the include path.");
+			this.includePath.push(dir);
+		}
+	};
+
+	nodeLoader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
+		for (var i = 0; i < includePath.length; i++) {
+			var manifest = this.manifest[includePath[i]];
+			if (!manifest || nodeLoader.indexOf(manifest, pathname) > -1) {
+				var filepath = path.join(includePath[i], pathname);
+				// console.log("nodeLoader._loadFileAlongIncludePath: attempting sync load " + filepath);
+				var text;
+				if (fs.existsSync(filepath)) {
+					text = fs.readFileSync(filepath, "utf-8");
+				}
+				if (text) {
+					// console.log("nodeLoader._loadFileAlongIncludePath: succeeded");
+					return text;
+				} 
+				//else {
+					// console.log("nodeLoader._loadFileAlongIncludePath: failed");
+				//} 
+			} 
+			//else {
+				// console.log("nodeLoader._loadFileAlongIncludePath: " + pathname + " not in manifest for " + this.includePath[i]);
+			//}
+		}
+		
+		// console.log("nodeLoader._loadFileAlongIncludePath: file not found anywhere along the path.");
+		return undefined;
+	};
 	
-		// util.print("nodeLoader loadFiles called\n");
+	nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
+		var includePath = params && params.base ? [params.base].concat(this.includePath) : this.includePath;
+
+		//console.log("nodeLoader loadFiles called\n");
 		// make sure we know what we can load
 		this._loadManifests();
 		
 		if (!paths) {
 			// nothing to load
-			// util.print("nothing to load\n");
+			//console.log("nothing to load\n");
 			return;
 		}
 		
-		var resources = path.normalize(path.join(root, "resources"));
-		var resExists = fs.existsSync(resources);
-	
-		// util.print("node loader: attempting to load paths " + JSON.stringify(paths) + "\n");
+		// console.log("nodeLoader: attempting to load these files: " + JSON.stringify(paths) + "\n");
 		if (sync) {
 			var ret = [];
 			
 			// synchronous
-			paths.forEach(function (p) {
-				var json;
-	
-				var filepath = path.join(root, "locale", p);
-				// util.print("node loader: attempting sync load " + filepath + "\n");
-				if (fs.existsSync(filepath)) {
-					json = fs.readFileSync(filepath, "utf-8");
-					// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
-					ret.push(json ? JSON.parse(json) : undefined);
-					return;
-				} 
-				
-				if (resExists) {
-					filepath = path.join(resources, p);
-					// util.print("node loader: attempting sync load resources " + filepath + "\n");
-					if (fs.existsSync(filepath)) {
-						json = fs.readFileSync(filepath, "utf-8");
-						// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
-						ret.push(json ? JSON.parse(json) : undefined);
-					}
-				}
-				
-				ret.push(undefined);
-				// util.print("node loader:  sync load failed\n");
-			});
-	
+			for (var i = 0; i < paths.length; i++) {
+				var text = this._loadFileAlongIncludePath(includePath, path.normalize(paths[i]));
+				ret.push(text ? JSON.parse(text) : undefined); 
+			};
+
 			// only call the callback at the end of the chain of files
 			if (typeof(callback) === 'function') {
 				callback(ret);
 			}
-	
+
 			return ret;
 		}
-	
+
 		// asynchronous
 		this.results = [];
-		this.callback = callback;
-		this._loadFilesAsync(root, paths);
+		this._loadFilesAsync(includePath, paths, callback);
 	};
 	
-	nodeLoader.prototype._loadFilesAsync = function (root, paths) {
-		if (paths.length > 0) {
-			var filename = paths.shift();
-			var filepath = path.join(root, "locale", filename);
-			// util.print("node loader: attempting async load " + filepath + "\n");
-			fs.readFile(filepath, "utf-8", function(err, json) {
-				if (err) {
-					filepath = path.join("resources", filename);
-					// util.print("node loader: attempting async load " + filepath + "\n");
-					fs.readFile(filepath, "utf-8", function(err, json) {
-						this._nextFile(root, paths, err ? undefined : json);
-					});
-				} else {
-					this._nextFile(root, paths, json);
-				}
-			});
+	nodeLoader.prototype._loadFilesAsyncAlongIncludePath = function (includes, filename, cb) {
+		var text = undefined;
+		
+		if (includes.length > 0) {
+			var root = includes[0];
+			includes = includes.slice(1);
+			
+			var manifest = this.manifest[root];
+			if (!manifest || nodeLoader.indexOf(manifest, filename) > -1) {
+				var filepath = path.join(root, filename);
+				fs.readFile(filepath, "utf-8", ilib.bind(this, function(err, t) {
+					// console.log("nodeLoader._loadFilesAsyncAlongIncludePath: loading " + filepath + (err ? " failed" : " success"));
+					if (err) {
+						this._loadFilesAsyncAlongIncludePath(includes, filename, cb);
+					} else {
+						cb(t);
+					}
+				}));
+			} else {
+				// console.log("nodeLoader._loadFilesAsyncAlongIncludePath: " + filepath + " not in manifest for " + root);
+				this._loadFilesAsyncAlongIncludePath(includes, filename, cb);
+			}
+		} else {
+			cb();
 		}
 	};
-	nodeLoader.prototype._nextFile = function (root, paths, json) {
-		// util.print("node loader:  async load " + (json ? "succeeded" : "failed") + "\n");
-		this.results.push(json ? JSON.parse(json) : undefined);
+
+	nodeLoader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 		if (paths.length > 0) {
-			this._loadFilesAsync(root, paths);
+			var filename = paths[0];
+			paths = paths.slice(1);
+			
+			// console.log("nodeLoader._loadFilesAsync: attempting to load " + filename + " along the include path.");
+			this._loadFilesAsyncAlongIncludePath(includePath, filename, ilib.bind(this, function (json) {
+				this.results.push(json ? JSON.parse(json) : undefined);
+				this._loadFilesAsync(includePath, paths, callback);
+			}));
 		} else {
 			// only call the callback at the end of the chain of files
 			if (typeof(callback) === 'function') {
-				this.callback(this.results);
+				callback(this.results);
 			}
 		}
 	};
+
+	nodeLoader.prototype._loadManifestFile = function(root) {
+		var dirpath = path.normalize(root);
+		var filepath = path.join(dirpath, "ilibmanifest.json");
+		if (fs.existsSync(filepath)) {
+			var text = fs.readFileSync(filepath, "utf-8");
+			if (text) {
+				// console.log("nodeLoader: loaded manifest " + filepath + "\n");
+				this.manifest[dirpath] = JSON.parse(text).files;
+			}
+		}
+	};
+
 	nodeLoader.prototype._loadManifests = function() {
-		// util.print("node loader: load manifests\n");
+		// console.log("nodeLoader: load manifests\n");
 		if (!this.manifest) {
-			var root = this.base;
-			var manifest = {};
-	
-			function loadManifest(subpath) {
-				var json;
-				var dirpath = path.join(root, subpath);
-				var filepath = path.join(dirpath, "ilibmanifest.json");
-				if (fs.existsSync(filepath)) {
-					// util.print("node loader: loading manifest " + filepath + "\n");
-					json = fs.readFileSync(filepath, "utf-8");
-					if (json) {
-						manifest[dirpath] = JSON.parse(json).files;
-					}
-				}
+			this.manifest = {};
+			
+			for (var i = 0; i < this.includePath.length; i++) {
+				this._loadManifestFile(this.includePath[i]);
 			}
-	
-			loadManifest("localetemp");
-			loadManifest("locale");
-			
-			root = ".";
-			loadManifest("resources");
-			
-			this.manifest = manifest;
 		}
 	};
+
 	nodeLoader.prototype.listAvailableFiles = function() {
 		// util.print("node loader: list available files called\n");
 		this._loadManifests();
 		return this.manifest;
 	};
+
 	nodeLoader.prototype.isAvailable = function(path) {
 		this._loadManifests();
 		
-		// util.print("node loader: isAvailable " + path + "? ");
+		// console.log("nodeLoader: isAvailable " + path + "? ");
 		for (var dir in this.manifest) {
-			if (ilib.indexOf(this.manifest[dir], path) !== -1) {
-				// util.print("true\n");
+			if (nodeLoader.indexOf(this.manifest[dir], path) !== -1) {
+				// console.log("true\n");
 				return true;
 			}
 		}
 		
-		// util.print("false\n");
+		// console.log("false\n");
 		return false;
 	};
 	
