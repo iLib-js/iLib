@@ -601,7 +601,8 @@ function testJulDateTestGetTimeTooEarly() {
     var jul = new ilib.Date.JulDate({
 		year: 1960,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(jul);
     
@@ -612,7 +613,8 @@ function testJulDateTestGetTimeTooLate() {
     var jul = new ilib.Date.JulDate({
 		year: 2040,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(jul);
     

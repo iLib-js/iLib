@@ -576,7 +576,7 @@ function testGetDayOfWeek1() {
 		year: 1393,
 		month: 3,
 		day: 16,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     
     assertNotNull(pd);
@@ -637,7 +637,7 @@ function testPersAlgoDateTestGetTimeTooEarly() {
 		year: 1348,
 		month: 10,
 		day: 10,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -649,7 +649,7 @@ function testPersAlgoDateTestGetTimeTooLate() {
 		year: 1416,
 		month: 11,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -662,7 +662,7 @@ function testPersAlgoDateOnOrBeforeSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -678,7 +678,7 @@ function testPersAlgoDateOnOrBeforeMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -693,7 +693,7 @@ function testPersAlgoDateOnOrBeforeTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -708,7 +708,7 @@ function testPersAlgoDateOnOrBeforeWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -723,7 +723,7 @@ function testPersAlgoDateOnOrBeforeThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -738,7 +738,7 @@ function testPersAlgoDateOnOrBeforeFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -753,7 +753,7 @@ function testPersAlgoDateOnOrBeforeSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -768,7 +768,7 @@ function testPersAlgoDateOnOrAfterSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -784,7 +784,7 @@ function testPersAlgoDateOnOrAfterMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -799,7 +799,7 @@ function testPersAlgoDateOnOrAfterTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -814,7 +814,7 @@ function testPersAlgoDateOnOrAfterWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -829,7 +829,7 @@ function testPersAlgoDateOnOrAfterThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -844,7 +844,7 @@ function testPersAlgoDateOnOrAfterFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -859,7 +859,7 @@ function testPersAlgoDateOnOrAfterSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -874,7 +874,7 @@ function testPersAlgoDateBeforeSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -890,7 +890,7 @@ function testPersAlgoDateBeforeMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -905,7 +905,7 @@ function testPersAlgoDateBeforeTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -920,7 +920,7 @@ function testPersAlgoDateBeforeWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -935,7 +935,7 @@ function testPersAlgoDateBeforeThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -950,7 +950,7 @@ function testPersAlgoDateBeforeFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -965,7 +965,7 @@ function testPersAlgoDateBeforeSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -980,7 +980,7 @@ function testPersAlgoDateAfterSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -996,7 +996,7 @@ function testPersAlgoDateAfterMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1011,7 +1011,7 @@ function testPersAlgoDateAfterTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1026,7 +1026,7 @@ function testPersAlgoDateAfterWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1041,7 +1041,7 @@ function testPersAlgoDateAfterThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1056,7 +1056,7 @@ function testPersAlgoDateAfterFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1071,7 +1071,7 @@ function testPersAlgoDateAfterSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1086,7 +1086,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear() {
 		year: 1388,
 		month: 2,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1098,7 +1098,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear2() {
 		year: 1388,
 		month: 3,
 		day: 19,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1110,7 +1110,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear3() {
 		year: 1388,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1137,7 +1137,7 @@ function testPersAlgoDateTestGetWeekOfYearPreviousYear() {
 		year: 1388,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1149,7 +1149,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekLeap() {
 		year: 1383,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1161,7 +1161,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular1() {
 		year: 1389,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1173,7 +1173,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular2() {
 		year: 1390,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1185,7 +1185,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular3() {
 		year: 1391,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1197,7 +1197,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular4() {
 		year: 1392,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1209,7 +1209,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular5() {
 		year: 1393,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1221,7 +1221,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular6() {
 		year: 1394,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1233,7 +1233,7 @@ function testPersAlgoDateGetDayOfYearFirstDay() {
 		year: 1388,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1245,7 +1245,7 @@ function testPersAlgoDateGetDayOfYearMidYear() {
 		year: 1388,
 		month: 3,
 		day: 17,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1257,7 +1257,7 @@ function testPersAlgoDateGetDayOfYearLastDay() {
 		year: 1388,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1269,7 +1269,7 @@ function testPersAlgoDateGetDayOfYearLastDayLeapYear() {
 		year: 1387,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1281,7 +1281,7 @@ function testPersAlgoDateGetWeekOfMonth0() {
 		year: 1388,
 		month: 3,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1293,7 +1293,7 @@ function testPersAlgoDateGetWeekOfMonth1() {
 		year: 1388,
 		month: 3,
 		day: 4,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1305,7 +1305,7 @@ function testPersAlgoDateGetWeekOfMonth2() {
 		year: 1388,
 		month: 3,
 		day: 11,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1317,7 +1317,7 @@ function testPersAlgoDateGetWeekOfMonth3() {
 		year: 1388,
 		month: 3,
 		day: 20,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1329,7 +1329,7 @@ function testPersAlgoDateGetWeekOfMonth4() {
 		year: 1388,
 		month: 3,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1341,7 +1341,7 @@ function testPersAlgoDateGetWeekOfMonth5() {
 		year: 1388,
 		month: 3,
 		day: 31,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1353,7 +1353,7 @@ function testPersAlgoDateGetWeekOfMonth6() {
 		year: 1388,
 		month: 4,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1365,7 +1365,7 @@ function testPersAlgoDateGetWeekOfMonth7() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1377,7 +1377,7 @@ function testPersAlgoDateGetWeekOfMonth8() {
 		year: 1388,
 		month: 6,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1389,7 +1389,7 @@ function testPersAlgoDateGetWeekOfMonth9() {
 		year: 1388,
 		month: 7,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1401,7 +1401,7 @@ function testPersAlgoDateGetWeekOfMonthIR0() {
 		year: 1388,
 		month: 3,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1413,7 +1413,7 @@ function testPersAlgoDateGetWeekOfMonthIR1() {
 		year: 1388,
 		month: 3,
 		day: 4,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1425,7 +1425,7 @@ function testPersAlgoDateGetWeekOfMonthIR2() {
 		year: 1388,
 		month: 3,
 		day: 11,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1437,7 +1437,7 @@ function testPersAlgoDateGetWeekOfMonthIR3() {
 		year: 1388,
 		month: 3,
 		day: 20,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1449,7 +1449,7 @@ function testPersAlgoDateGetWeekOfMonthIR4() {
 		year: 1388,
 		month: 3,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1461,7 +1461,7 @@ function testPersAlgoDateGetWeekOfMonthIR5() {
 		year: 1388,
 		month: 3,
 		day: 31,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1473,7 +1473,7 @@ function testPersAlgoDateGetWeekOfMonthIR6() {
 		year: 1388,
 		month: 4,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1485,7 +1485,7 @@ function testPersAlgoDateGetWeekOfMonthIR7() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1497,7 +1497,7 @@ function testPersAlgoDateGetWeekOfMonthIR8() {
 		year: 1388,
 		month: 6,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1509,7 +1509,7 @@ function testPersAlgoDateGetWeekOfMonthIR9() {
 		year: 1388,
 		month: 7,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1521,7 +1521,7 @@ function testPersAlgoDateGetWeekOfMonthIR10() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1533,7 +1533,7 @@ function testPersAlgoDateGetWeekOfMonthIR11() {
 		year: 1388,
 		month: 9,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1545,7 +1545,7 @@ function testPersAlgoDateGetWeekOfMonthIR12() {
 		year: 1388,
 		month: 10,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1557,7 +1557,7 @@ function testPersAlgoDateGetWeekOfMonthIR13() {
 		year: 1388,
 		month: 11,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1569,7 +1569,7 @@ function testPersAlgoDateGetWeekOfMonthIR14() {
 		year: 1388,
 		month: 12,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1581,7 +1581,7 @@ function testPersAlgoDateGetWeekOfMonthUS() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1593,7 +1593,7 @@ function testPersAlgoDateGetWeekOfMonthDE() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1607,7 +1607,7 @@ function testPersAlgoDateGetEraAP() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1634,7 +1634,7 @@ function testPersAlgoDateGetEraAPYear1() {
 		year: 1,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1646,7 +1646,7 @@ function testPersAlgoDateGetEraBAPYear0() {
 		year: 0,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     

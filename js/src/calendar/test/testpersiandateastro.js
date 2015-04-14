@@ -596,7 +596,7 @@ function testGetDayOfWeek1() {
 		year: 1393,
 		month: 3,
 		day: 16,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     
     assertNotNull(pd);
@@ -657,7 +657,7 @@ function testPersDateAstroTestGetTimeTooEarly() {
 		year: 1348,
 		month: 10,
 		day: 10,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -669,7 +669,7 @@ function testPersDateAstroTestGetTimeTooLate() {
 		year: 1416,
 		month: 11,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -682,7 +682,7 @@ function testPersDateAstroOnOrBeforeSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -698,7 +698,7 @@ function testPersDateAstroOnOrBeforeMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -713,7 +713,7 @@ function testPersDateAstroOnOrBeforeTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -728,7 +728,7 @@ function testPersDateAstroOnOrBeforeWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -743,7 +743,7 @@ function testPersDateAstroOnOrBeforeThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -758,7 +758,7 @@ function testPersDateAstroOnOrBeforeFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -773,7 +773,7 @@ function testPersDateAstroOnOrBeforeSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -788,7 +788,7 @@ function testPersDateAstroOnOrAfterSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -804,7 +804,7 @@ function testPersDateAstroOnOrAfterMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -819,7 +819,7 @@ function testPersDateAstroOnOrAfterTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -834,7 +834,7 @@ function testPersDateAstroOnOrAfterWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -849,7 +849,7 @@ function testPersDateAstroOnOrAfterThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -864,7 +864,7 @@ function testPersDateAstroOnOrAfterFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -879,7 +879,7 @@ function testPersDateAstroOnOrAfterSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -894,7 +894,7 @@ function testPersDateAstroBeforeSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -910,7 +910,7 @@ function testPersDateAstroBeforeMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -925,7 +925,7 @@ function testPersDateAstroBeforeTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -940,7 +940,7 @@ function testPersDateAstroBeforeWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -955,7 +955,7 @@ function testPersDateAstroBeforeThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -970,7 +970,7 @@ function testPersDateAstroBeforeFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -985,7 +985,7 @@ function testPersDateAstroBeforeSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1000,7 +1000,7 @@ function testPersDateAstroAfterSun() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1016,7 +1016,7 @@ function testPersDateAstroAfterMon() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1031,7 +1031,7 @@ function testPersDateAstroAfterTue() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1046,7 +1046,7 @@ function testPersDateAstroAfterWed() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1061,7 +1061,7 @@ function testPersDateAstroAfterThu() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1076,7 +1076,7 @@ function testPersDateAstroAfterFri() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1091,7 +1091,7 @@ function testPersDateAstroAfterSat() {
 		year: 1388,
 		month: 9,
 		day: 27,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1106,7 +1106,7 @@ function testPersDateAstroTestGetWeekOfYearThisYear() {
 		year: 1388,
 		month: 2,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1118,7 +1118,7 @@ function testPersDateAstroTestGetWeekOfYearThisYear2() {
 		year: 1388,
 		month: 3,
 		day: 19,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1130,7 +1130,7 @@ function testPersDateAstroTestGetWeekOfYearThisYear3() {
 		year: 1388,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1157,7 +1157,7 @@ function testPersDateAstroTestGetWeekOfYearPreviousYear() {
 		year: 1388,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1169,7 +1169,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekLeap() {
 		year: 1383,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1181,7 +1181,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular1() {
 		year: 1389,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1193,7 +1193,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular2() {
 		year: 1390,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1205,7 +1205,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular3() {
 		year: 1391,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1217,7 +1217,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular4() {
 		year: 1392,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1229,7 +1229,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular5() {
 		year: 1393,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1241,7 +1241,7 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular6() {
 		year: 1394,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1253,7 +1253,7 @@ function testPersDateAstroGetDayOfYearFirstDay() {
 		year: 1388,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1265,7 +1265,7 @@ function testPersDateAstroGetDayOfYearMidYear() {
 		year: 1388,
 		month: 3,
 		day: 17,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1277,7 +1277,7 @@ function testPersDateAstroGetDayOfYearLastDay() {
 		year: 1388,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1289,7 +1289,7 @@ function testPersDateAstroGetDayOfYearLastDayLeapYear() {
 		year: 1387,
 		month: 12,
 		day: 30,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1301,7 +1301,7 @@ function testPersDateAstroGetWeekOfMonth0() {
 		year: 1388,
 		month: 3,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1313,7 +1313,7 @@ function testPersDateAstroGetWeekOfMonth1() {
 		year: 1388,
 		month: 3,
 		day: 4,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1325,7 +1325,7 @@ function testPersDateAstroGetWeekOfMonth2() {
 		year: 1388,
 		month: 3,
 		day: 11,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1337,7 +1337,7 @@ function testPersDateAstroGetWeekOfMonth3() {
 		year: 1388,
 		month: 3,
 		day: 20,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1349,7 +1349,7 @@ function testPersDateAstroGetWeekOfMonth4() {
 		year: 1388,
 		month: 3,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1361,7 +1361,7 @@ function testPersDateAstroGetWeekOfMonth5() {
 		year: 1388,
 		month: 3,
 		day: 31,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1373,7 +1373,7 @@ function testPersDateAstroGetWeekOfMonth6() {
 		year: 1388,
 		month: 4,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1385,7 +1385,7 @@ function testPersDateAstroGetWeekOfMonth7() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1397,7 +1397,7 @@ function testPersDateAstroGetWeekOfMonth8() {
 		year: 1388,
 		month: 6,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1409,7 +1409,7 @@ function testPersDateAstroGetWeekOfMonth9() {
 		year: 1388,
 		month: 7,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1421,7 +1421,7 @@ function testPersDateAstroGetWeekOfMonthIR0() {
 		year: 1388,
 		month: 3,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1433,7 +1433,7 @@ function testPersDateAstroGetWeekOfMonthIR1() {
 		year: 1388,
 		month: 3,
 		day: 4,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1445,7 +1445,7 @@ function testPersDateAstroGetWeekOfMonthIR2() {
 		year: 1388,
 		month: 3,
 		day: 11,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1457,7 +1457,7 @@ function testPersDateAstroGetWeekOfMonthIR3() {
 		year: 1388,
 		month: 3,
 		day: 20,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1469,7 +1469,7 @@ function testPersDateAstroGetWeekOfMonthIR4() {
 		year: 1388,
 		month: 3,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1481,7 +1481,7 @@ function testPersDateAstroGetWeekOfMonthIR5() {
 		year: 1388,
 		month: 3,
 		day: 31,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1493,7 +1493,7 @@ function testPersDateAstroGetWeekOfMonthIR6() {
 		year: 1388,
 		month: 4,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1505,7 +1505,7 @@ function testPersDateAstroGetWeekOfMonthIR7() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1517,7 +1517,7 @@ function testPersDateAstroGetWeekOfMonthIR8() {
 		year: 1388,
 		month: 6,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1529,7 +1529,7 @@ function testPersDateAstroGetWeekOfMonthIR9() {
 		year: 1388,
 		month: 7,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1541,7 +1541,7 @@ function testPersDateAstroGetWeekOfMonthIR10() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1553,7 +1553,7 @@ function testPersDateAstroGetWeekOfMonthIR11() {
 		year: 1388,
 		month: 9,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1565,7 +1565,7 @@ function testPersDateAstroGetWeekOfMonthIR12() {
 		year: 1388,
 		month: 10,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1577,7 +1577,7 @@ function testPersDateAstroGetWeekOfMonthIR13() {
 		year: 1388,
 		month: 11,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1589,7 +1589,7 @@ function testPersDateAstroGetWeekOfMonthIR14() {
 		year: 1388,
 		month: 12,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1601,7 +1601,7 @@ function testPersDateAstroGetWeekOfMonthUS() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1613,7 +1613,7 @@ function testPersDateAstroGetWeekOfMonthDE() {
 		year: 1388,
 		month: 8,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1627,7 +1627,7 @@ function testPersDateAstroGetEraAP() {
 		year: 1388,
 		month: 5,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1654,7 +1654,7 @@ function testPersDateAstroGetEraAPYear1() {
 		year: 1,
 		month: 1,
 		day: 1,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1666,7 +1666,7 @@ function testPersDateAstroGetEraBAPYear0() {
 		year: 0,
 		month: 12,
 		day: 29,
-		timezone: "Asia/Tehran"
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     

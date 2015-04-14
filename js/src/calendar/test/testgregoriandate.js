@@ -1848,7 +1848,8 @@ function testGregDateGetWeekOfMonth1() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 10, 
-    	day: 2
+    	day: 2,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     

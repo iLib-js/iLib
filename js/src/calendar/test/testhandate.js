@@ -802,7 +802,8 @@ function testGetDayOfWeek1() {
     var hd = new ilib.Date.HanDate({
 		year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
 	});
     
     assertNotNull(hd);
@@ -862,7 +863,8 @@ function testHanDateTestGetTimeTooEarly() {
     var hd = new ilib.Date.HanDate({
 		year: 1348,
 		month: 10,
-		day: 10
+		day: 10,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -873,7 +875,8 @@ function testHanDateTestGetTimeTooLate() {
     var hd = new ilib.Date.HanDate({
 		year: 1416,
 		month: 11,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -885,7 +888,8 @@ function testHanDateOnOrBeforeSun() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -900,7 +904,8 @@ function testHanDateOnOrBeforeMon() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -914,7 +919,8 @@ function testHanDateOnOrBeforeTue() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -928,7 +934,8 @@ function testHanDateOnOrBeforeWed() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -942,7 +949,8 @@ function testHanDateOnOrBeforeThu() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -956,7 +964,8 @@ function testHanDateOnOrBeforeFri() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -970,7 +979,8 @@ function testHanDateOnOrBeforeSat() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1077,7 +1087,8 @@ function testHanDateOnOrAfterSun() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1092,7 +1103,8 @@ function testHanDateOnOrAfterSunDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1109,7 +1121,8 @@ function testHanDateOnOrAfterMon() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1123,7 +1136,8 @@ function testHanDateOnOrAfterMonDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706,
     	month: 13,
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1139,7 +1153,8 @@ function testHanDateOnOrAfterTue() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1153,7 +1168,8 @@ function testHanDateOnOrAfterWed() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1167,7 +1183,8 @@ function testHanDateOnOrAfterThu() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1181,7 +1198,8 @@ function testHanDateOnOrAfterThuDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1197,7 +1215,8 @@ function testHanDateOnOrAfterFri() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1211,7 +1230,8 @@ function testHanDateOnOrAfterFriDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1227,7 +1247,8 @@ function testHanDateOnOrAfterSat() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1241,7 +1262,8 @@ function testHanDateBeforeSun() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1256,7 +1278,8 @@ function testHanDateBeforeSunDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1273,7 +1296,8 @@ function testHanDateBeforeMon() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1287,7 +1311,8 @@ function testHanDateBeforeTue() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1301,7 +1326,8 @@ function testHanDateBeforeWed() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1315,7 +1341,8 @@ function testHanDateBeforeThu() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1329,7 +1356,8 @@ function testHanDateBeforeThuDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1346,7 +1374,8 @@ function testHanDateBeforeFri() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1360,7 +1389,8 @@ function testHanDateBeforeFriDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1377,7 +1407,8 @@ function testHanDateBeforeSat() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1391,7 +1422,8 @@ function testHanDateAfterSun() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1406,7 +1438,8 @@ function testHanDateAfterSunDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1423,7 +1456,8 @@ function testHanDateAfterMon() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1437,7 +1471,8 @@ function testHanDateAfterTue() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1451,7 +1486,8 @@ function testHanDateAfterWed() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1465,7 +1501,8 @@ function testHanDateAfterThu() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1479,7 +1516,8 @@ function testHanDateAfterFri() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1493,7 +1531,8 @@ function testHanDateAfterFriDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1510,7 +1549,8 @@ function testHanDateAfterSat() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1524,7 +1564,8 @@ function testHanDateAfterSatDate() {
     var hd = new ilib.Date.HanDate({
     	year: 4706, 
     	month: 13, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(hd);
     
@@ -1541,7 +1582,8 @@ function testHanDateTestGetWeekOfYearThisYear() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 2,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1552,7 +1594,8 @@ function testHanDateTestGetWeekOfYearThisYear2() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 19
+		day: 19,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1563,7 +1606,8 @@ function testHanDateTestGetWeekOfYearThisYear3() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 12,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1589,7 +1633,8 @@ function testHanDateTestGetWeekOfYearPreviousYear() {
     var hd = new ilib.Date.HanDate({
 		year: 4700,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1600,7 +1645,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular1() {
     var hd = new ilib.Date.HanDate({
 		year: 4689,
 		month: 12,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1611,7 +1657,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular2() {
     var hd = new ilib.Date.HanDate({
 		year: 4690,
 		month: 13,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1622,7 +1669,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular3() {
     var hd = new ilib.Date.HanDate({
 		year: 4691,
 		month: 12,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1633,7 +1681,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular4() {
     var hd = new ilib.Date.HanDate({
 		year: 4692,
 		month: 13,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1644,7 +1693,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular5() {
     var hd = new ilib.Date.HanDate({
 		year: 4693,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1655,7 +1705,8 @@ function testHanDateTestGetWeekOfYearLastWeekRegular6() {
     var hd = new ilib.Date.HanDate({
 		year: 4694,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1666,7 +1717,8 @@ function testHanDateGetDayOfYearFirstDay() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1677,7 +1729,8 @@ function testHanDateGetDayOfYearMidYear() {
     var hd = new ilib.Date.HanDate({
 		year: 4687,
 		month: 3,
-		day: 17
+		day: 17,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1688,7 +1741,8 @@ function testHanDateGetDayOfYearLastDay() {
     var hd = new ilib.Date.HanDate({
 		year: 4686,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1699,7 +1753,8 @@ function testHanDateGetDayOfYearLastDayLeapYear() {
     var hd = new ilib.Date.HanDate({
 		year: 4687,
 		month: 13,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1710,7 +1765,8 @@ function testHanDateGetWeekOfMonth0() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1721,7 +1777,8 @@ function testHanDateGetWeekOfMonth1() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 4
+		day: 4,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1732,7 +1789,8 @@ function testHanDateGetWeekOfMonth2() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 11
+		day: 11,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1743,7 +1801,8 @@ function testHanDateGetWeekOfMonth3() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 20
+		day: 20,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1754,7 +1813,8 @@ function testHanDateGetWeekOfMonth4() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1765,7 +1825,8 @@ function testHanDateGetWeekOfMonth6() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 4,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1776,7 +1837,8 @@ function testHanDateGetWeekOfMonth7() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 5,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1787,7 +1849,8 @@ function testHanDateGetWeekOfMonth8() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 6,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1798,7 +1861,8 @@ function testHanDateGetWeekOfMonth9() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 7,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1809,7 +1873,8 @@ function testHanDateGetWeekOfMonthCN0() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1820,7 +1885,8 @@ function testHanDateGetWeekOfMonthCN1() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 4
+		day: 4,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1831,7 +1897,8 @@ function testHanDateGetWeekOfMonthCN2() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 11
+		day: 11,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1842,7 +1909,8 @@ function testHanDateGetWeekOfMonthCN3() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 20
+		day: 20,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1853,7 +1921,8 @@ function testHanDateGetWeekOfMonthCN4() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 3,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1864,7 +1933,8 @@ function testHanDateGetWeekOfMonthCN6() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 4,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1875,7 +1945,8 @@ function testHanDateGetWeekOfMonthCN7() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 5,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1886,7 +1957,8 @@ function testHanDateGetWeekOfMonthCN8() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 6,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1897,7 +1969,8 @@ function testHanDateGetWeekOfMonthCN9() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 7,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1909,7 +1982,8 @@ function testHanDateGetWeekOfMonthCN10() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 8,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1920,7 +1994,8 @@ function testHanDateGetWeekOfMonthCN11() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 9,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1931,7 +2006,8 @@ function testHanDateGetWeekOfMonthCN12() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 10,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1942,7 +2018,8 @@ function testHanDateGetWeekOfMonthCN13() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 11,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1953,7 +2030,8 @@ function testHanDateGetWeekOfMonthCN14() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 12,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1964,7 +2042,8 @@ function testHanDateGetWeekOfMonthCN() {
     var hd = new ilib.Date.HanDate({
 		year: 4708,
 		month: 3,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1976,7 +2055,8 @@ function testHanDateGetWeekOfMonthDE() {
     var hd = new ilib.Date.HanDate({
 		year: 4708,
 		month: 3,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -1989,7 +2069,8 @@ function testHanDateGetEraAP() {
     var hd = new ilib.Date.HanDate({
 		year: 4707,
 		month: 5,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -2015,7 +2096,8 @@ function testHanDateGetEraAPYear1() {
     var hd = new ilib.Date.HanDate({
 		year: 1,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
@@ -2026,7 +2108,8 @@ function testHanDateGetEraBAPYear0() {
     var hd = new ilib.Date.HanDate({
 		year: 0,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     
