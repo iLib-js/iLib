@@ -214,3 +214,19 @@ function testFormatAddressJPFromUS() {
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
+
+function testFormatAddressJPAsianNormal() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "本町2丁目4-7サニーマンション203",
+		locality: "渋谷区",
+		region: "東京都",
+		postalCode: "〒150-2345",
+		countryCode: "JP",
+		format: "asian"
+	}, {locale: 'ja-JP'});
+	
+	var expected = "〒150-2345\n東京都渋谷区本町2丁目4-7サニーマンション203";
+	var formatter = new ilib.AddressFmt({locale: 'ja-JP'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+

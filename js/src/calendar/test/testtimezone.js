@@ -823,8 +823,12 @@ function getAvailableMocker(paths, sync, params, callback) {
 }
 getAvailableMocker.prototype = new ilib.Loader();
 getAvailableMocker.prototype.constructor = getAvailableMocker;
-getAvailableMocker.prototype.listAvailableFiles = function() {
-	return {"resources": "*"};
+getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
+	var ret = {"resources": "*"}; 
+	if (typeof(cb) === 'function') {
+		cb(ret);
+	}
+	return ret;
 };
 
 function testGetAvailableTimeZonesWithLoader() {
@@ -1352,6 +1356,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 		// it via all the other tests already.
 		return;
 	}
+	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
 	ilib.TimeZone.cache = {}; // clear the cache
@@ -1359,7 +1364,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Asia/Tokyo", tz.getId());
-    ilib._load = undefined;
+    ilib._load = temp;
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
@@ -1368,6 +1373,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 		// it via all the other tests already.
 		return;
 	}
+	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
 	ilib.TimeZone.cache = {}; // clear the cache
@@ -1377,10 +1383,9 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
     	onLoad: function (tz) {
     		assertNotNull(tz);
     	    assertEquals("Asia/Tokyo", tz.getId());
-    	    ilib.setLoaderCallback(undefined);
+    	    ilib.setLoaderCallback(temp);
     	}
     });
-    ilib._load = undefined;
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
@@ -1389,13 +1394,14 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 		// it via all the other tests already.
 		return;
 	}
+	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     var tz = new ilib.TimeZone({locale: "ww-WW"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Etc/UTC", tz.getId());
-    ilib._load = undefined;
+    ilib._load = temp;
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
@@ -1404,6 +1410,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
+	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     new ilib.TimeZone({
@@ -1412,10 +1419,9 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
     	onLoad: function (tz) {
     		assertNotNull(tz);
     	    assertEquals("Etc/UTC", tz.getId());
-    	    ilib.setLoaderCallback(undefined);
+    	    ilib.setLoaderCallback(temp);
     	}
     });
-    ilib._load = undefined;
 }
 
 function mockLoader2(paths, sync, params, callback) {

@@ -43,13 +43,34 @@ var path = {
 	}
 };
 
-function loadFile(pathname, sync, success, failure) {
+
+var requireClass = function() {
+	this.cache = {};
+	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
+	
+	var pos;
+	var scripts = document.getElementsByTagName("script");
+
+	this.protocol = "file:";
+	this.root = ".";
+	
+	for (var i = 0; i < scripts.length; i++) {
+		var source = scripts[i].src;
+		if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
+			var colon = source.indexOf('://');
+			this.protocol = source.substring(0,colon+1);
+			this.root = source.substring(colon+1, pos-1);
+			break;
+		}
+	}
+};
+requireClass.prototype.loadFile = function(pathname, sync, success, failure) {
 	// use normal web techniques
 	var req = new XMLHttpRequest();
 	var text = undefined;
 		
 	//req.open("GET", "file:" + path.resolve(file), false);
-	req.open("GET", "file:" + pathname, !sync);
+	req.open("GET", this.protocol + pathname, !sync);
 	//req.responseType = "text";
 	req.onload = function(e) {
 		text = req.response;
@@ -72,26 +93,8 @@ function loadFile(pathname, sync, success, failure) {
 	//}
 	
 	return text;
-}
-
-var requireClass = function() {
-	this.cache = {};
-	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 };
 requireClass.prototype.require = function(pathname) {
-	if (!this.root) {
-		var pos;
-		var scripts = document.getElementsByTagName("script");
-	
-		this.root = ".";
-		for (var i = 0; i < scripts.length; i++) {
-			var source = scripts[i].src;
-			if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
-				this.root = source.substring(7, pos-1);
-				break;
-			}
-		}
-	}
 	
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
@@ -107,7 +110,7 @@ requireClass.prototype.require = function(pathname) {
 	
 	console.log("loading module " + pathname);
 	
-	var text = loadFile(pathname, true);
+	var text = this.loadFile(pathname, true);
 	var dirname = path.dirname(pathname);
 	var match, replacement;
 	

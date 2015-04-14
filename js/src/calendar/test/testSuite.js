@@ -52,6 +52,7 @@ function suite() {
 	    "testethiopicdate.js",
 	    "testcoptic.js",
 	    "testcopticdate.js",
+	    "testcalasync.js",
 	    
 	    // This has to be last so that all the calendars are loaded in dynamic mode
 	    // before these tests are run.

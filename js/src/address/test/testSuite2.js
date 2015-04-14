@@ -59,7 +59,8 @@ function suite() {
 		"testaddress_IT.js",
 		"testaddress_JO.js",
 		"testaddress_JP.js",
-		"testaddress.js"
+		"testaddress.js",
+		"testaddressasync.js"
 	];
 
     suites.forEach(function (path) {

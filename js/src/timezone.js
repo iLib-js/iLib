@@ -286,48 +286,20 @@ ilib.TimeZone.prototype._initZone = function() {
 
 ilib.data.timezone = {};
 
-/**
- * Return an array of available zone ids that the constructor knows about.
- * The country parameter is optional. If it is not given, all time zones will
- * be returned. If it specifies a country code, then only time zones for that
- * country will be returned.
- * 
- * @param {string} country country code for which time zones are being sought
- * @return {Array.<string>} an array of zone id strings
- */
-ilib.TimeZone.getAvailableIds = function (country) {
+/** @private */
+ilib.TimeZone._marshallIds = function (country, sync, callback) {
 	var tz, ids = [];
 	
-	if (!ilib.data.timezone.list) {
-		ilib.data.timezone.list = [];
-		if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
-			var hash = ilib._load.listAvailableFiles();
-			for (var dir in hash) {
-				var files = hash[dir];
-				if (ilib.isArray(files)) {
-					files.forEach(function (filename) {
-						if (filename && filename.match(/^zoneinfo/)) {
-							ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
-						}
-					});
-				}
-			}
-		} else {
-			for (tz in ilib.data.zoneinfo) {
-				if (ilib.data.zoneinfo[tz]) {
-					ilib.data.timezone.list.push(tz);
-				}
-			}
-		}
-	}
-	
 	if (!country) {
-		// special zone meaning "the local time zone according to the JS engine we are running upon"
+		// local is a special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
 		for (tz in ilib.data.timezone.list) {
 			if (ilib.data.timezone.list[tz]) {
 				ids.push(ilib.data.timezone.list[tz]);
 			}
+		}
+		if (typeof(callback) === 'function') {
+			callback(ids);
 		}
 	} else {
 		if (!ilib.data.zoneinfo.zonetab) {
@@ -335,15 +307,74 @@ ilib.TimeZone.getAvailableIds = function (country) {
 				object: ilib.TimeZone, 
 				nonlocale: true,	// locale independent 
 				name: "zoneinfo/zonetab.json", 
-				sync: true, 
+				sync: sync, 
 				callback: ilib.bind(this, function (tzdata) {
 					if (tzdata) {
 						ilib.data.zoneinfo.zonetab = tzdata;
 					}
+					
+					ids = ilib.data.zoneinfo.zonetab[country];
+					
+					if (typeof(callback) === 'function') {
+						callback(ids);
+					}
 				})
 			});
+		} else {
+			ids = ilib.data.zoneinfo.zonetab[country];
+			if (typeof(callback) === 'function') {
+				callback(ids);
+			}
 		}
-		ids = ilib.data.zoneinfo.zonetab[country];
+	}
+	
+	return ids;
+};
+
+/**
+ * Return an array of available zone ids that the constructor knows about.
+ * The country parameter is optional. If it is not given, all time zones will
+ * be returned. If it specifies a country code, then only time zones for that
+ * country will be returned.
+ * 
+ * @param {string|undefined} country country code for which time zones are being sought
+ * @param {boolean} sync whether to find the available ids synchronously (true) or asynchronously (false)
+ * @param {Function(Array.<string>)} onLoad callback function to call when the data is finished loading
+ * @return {Array.<string>} an array of zone id strings
+ */
+ilib.TimeZone.getAvailableIds = function (country, sync, callback) {
+	var tz, ids = [];
+	
+	if (typeof(sync) !== 'boolean') {
+		sync = true;
+	}
+	
+	if (!ilib.data.timezone.list || ilib.data.timezone.list.length === 0) {
+		ilib.data.timezone.list = [];
+		if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
+			ilib._load.listAvailableFiles(sync, function(hash) {
+				for (var dir in hash) {
+					var files = hash[dir];
+					if (ilib.isArray(files)) {
+						files.forEach(function (filename) {
+							if (filename && filename.match(/^zoneinfo/)) {
+								ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+							}
+						});
+					}
+				}
+				ids = ilib.TimeZone._marshallIds(country, sync, callback);
+			});
+		} else {
+			for (tz in ilib.data.zoneinfo) {
+				if (ilib.data.zoneinfo[tz]) {
+					ilib.data.timezone.list.push(tz);
+				}
+			}
+			ids = ilib.TimeZone._marshallIds(country, sync, callback);
+		}
+	} else {
+		ids = ilib.TimeZone._marshallIds(country, sync, callback);
 	}
 	
 	return ids;
