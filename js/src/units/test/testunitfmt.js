@@ -1799,7 +1799,7 @@ function testUnitFormatzhHantHK() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
     var str = uf.format(m1);
-    assertEquals("一,〇〇〇 公分", str);
+    assertEquals("一,〇〇〇 厘米", str);
 }
 
 function testUnitFormatUseNativezhHantMO() {
@@ -1810,7 +1810,7 @@ function testUnitFormatUseNativezhHantMO() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
     var str = uf.format(m1);
-    assertEquals("1,000 公分", str);
+    assertEquals("1,000 厘米", str);
 }
 
 
@@ -1869,7 +1869,7 @@ function testUnitFormatUseNativezhHansHKKelvin() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
     var str = uf.format(m1);
-    assertEquals("285.3开尔文", str);
+    assertEquals("285.3开氏度", str);
 }
 
 
@@ -1881,7 +1881,7 @@ function testUnitFormatzhHansSGKelvin() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
     var str = uf.format(m1);
-    assertEquals("二八五.三开尔文", str);
+    assertEquals("二八五.三开氏度", str);
 }
 
 function testUnitFormatUseNativezhHansMOKelvin() {
@@ -1892,10 +1892,8 @@ function testUnitFormatUseNativezhHansMOKelvin() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
     var str = uf.format(m1);
-    assertEquals("285.3开尔文", str);
+    assertEquals("285.3开氏度", str);
 }
-
-
 
 function testUnitFormatzhHantHKKelvin() {
     var m1 = new ilib.Measurement({
@@ -1905,7 +1903,7 @@ function testUnitFormatzhHantHKKelvin() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
     var str = uf.format(m1);
-    assertEquals("二八五.三 K", str);
+    assertEquals("二八五.三 開爾文", str);
 }
 
 function testUnitFormatUseNativezhHantMOKelvin() {
@@ -1916,7 +1914,7 @@ function testUnitFormatUseNativezhHantMOKelvin() {
 
     var uf = new ilib.UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
     var str = uf.format(m1);
-    assertEquals("285.3 K", str);
+    assertEquals("285.3 開爾文", str);
 }
 
 
