@@ -611,7 +611,8 @@ function testGetDayOfWeekWithTime() {
 		day: 16,
 		hour: 8,
 		minute: 39,
-		second: 34
+		second: 34,
+		timezone: "Etc/UTC"
 	});
     
     assertNotNull(pd);
