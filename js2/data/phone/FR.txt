@@ -1,0 +1,45 @@
+^+	plus
+^00	idd
+^0	trunk
+
+1	area	Paris	Paris (Ile-de-France area)
+2	area	Northwest France	Northwest France
+262	service	Réunion	Islands of Réunion and Mayotte
+3	area	Northeast France	Northeast France
+4	area	Southeast France	Southeast France
+5	area	Southwest France	Southwest France
+508	service	Saint Pierre and Miquelon	Saint Pierre and Miquelon Islands
+590	service	Guadaloupe	Guadaloupe Island
+594	service	French Guiana	French Guiana
+596	service	Martinique	Martinique Island
+6	cell
+639	service	Mobile Number	Mobile Number in Mayotte
+690	service	Mobile Number	Mobile Number in Guadeloupe, Saint-Barthélemy or Saint-Martin Islands
+692	service	Mobile Number	Mobile Number in Réunion
+694	service	Mobile Number	Mobile Number in French Guiana
+696	service	Mobile Number	Mobile Number in Martinique
+7	cell
+
+8	service2	Service Number	Service Number
+800	service2	Toll-free Number	Toll-free Services (Numéros Vert)
+801	service2	Toll call	Toll calls at local rates (Numéros Azur)
+802	service2	Toll call	Toll calls (Numéros Indigo)
+803	service2	Toll call	Toll calls (Numéros Indigo)
+805	service2	Toll-free Number	Toll-free Services (Numéros Vert)
+809	service2	Toll-free Number	Toll-free Services (Numéros Vert)
+81	service2	Toll call	Toll calls at local rates (Numéros Azur)
+819	service2	Toll-free Number	Toll-free Services (Numéros Vert)
+82	service2	Toll call	Toll calls (Numéros Indigo)
+89	service2	Audiotel Number	Audiotel internet online services
+
+9	service3	Voice over IP	Voice over IP services
+
+^1	local
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local

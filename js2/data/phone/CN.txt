@@ -1,0 +1,446 @@
+^+	plus
+^00	idd
+^0	trunk
+
+^110	emergency	Police
+^119	emergency	Fire
+^120	emergency	Ambulance
+^122	emergency	Traffic Accident
+^999	service	
+^114	service	Directory
+^12117	premium	Time
+^12121	premium	Weather
+
+^130	cell	China Unicom GSM
+^131	cell	China Unicom GSM
+^132	cell	China Unicom GSM
+^133	cell	China Telecom CDMA
+^1340	cell	China Mobile GSM
+^1341	cell	China Mobile GSM
+^1342	cell	China Mobile GSM
+^1343	cell	China Mobile GSM
+^1344	cell	China Mobile GSM
+^1345	cell	China Mobile GSM
+^1346	cell	China Mobile GSM
+^1347	cell	China Mobile GSM
+^1348	cell	China Mobile GSM
+^1349	cell	ChinaSat Satellite
+^135	cell	China Mobile GSM
+^136	cell	China Mobile GSM
+^137	cell	China Mobile GSM
+^138	cell	China Mobile GSM
+^139	cell	China Mobile GSM
+
+^145	cell	China Unicom WCDMA
+^147	cell	China Unicom TD-SCDMA
+
+^150	cell	China Mobile GSM
+^151	cell	China Mobile GSM
+^152	cell	China Mobile GSM
+^153	cell	China Telecom CDMA
+^155	cell	China Unicom GSM
+^156	cell	China Unicom GSM
+^157	cell	China Mobile TD-SCDMA
+^158	cell	China Mobile GSM
+^159	cell	China Mobile GSM
+
+^180	cell	China Telecom CDMA
+^182	cell	China Mobile GSM
+^185	cell	China Unicom WCDMA
+^186	cell	China Unicom WCDMA
+^187	cell	China Mobile GSM
+^188	cell	China Mobile TD-SCDMA
+^189	cell	China Telecom  CDMA
+
+// this is a hack -- mobile code do not start with a trunk access prefix, but when calling from international, you 
+// have to skip the trunk access prefix, so these below allow you to pretend that you are skipping the trunk while
+// calling the cell from international. The disadvantage is that it will format 0130 from inside the country as a 
+// mobile number too, but that should rarely happen.
+130	cell	China Unicom GSM
+131	cell	China Unicom GSM
+132	cell	China Unicom GSM
+133	cell	China Telecom CDMA
+1340	cell	China Mobile GSM
+1341	cell	China Mobile GSM
+1342	cell	China Mobile GSM
+1343	cell	China Mobile GSM
+1344	cell	China Mobile GSM
+1345	cell	China Mobile GSM
+1346	cell	China Mobile GSM
+1347	cell	China Mobile GSM
+1348	cell	China Mobile GSM
+1349	cell	ChinaSat Satellite
+135	cell	China Mobile GSM
+136	cell	China Mobile GSM
+137	cell	China Mobile GSM
+138	cell	China Mobile GSM
+139	cell	China Mobile GSM
+
+145	cell	China Unicom WCDMA
+147	cell	China Unicom TD-SCDMA
+
+150	cell	China Mobile GSM
+151	cell	China Mobile GSM
+152	cell	China Mobile GSM
+153	cell	China Telecom CDMA
+155	cell	China Unicom GSM
+156	cell	China Unicom GSM
+157	cell	China Mobile TD-SCDMA
+158	cell	China Mobile GSM
+159	cell	China Mobile GSM
+
+180	cell	China Telecom CDMA
+182	cell	China Mobile GSM
+185	cell	China Unicom WCDMA
+186	cell	China Unicom WCDMA
+187	cell	China Mobile GSM
+188	cell	China Mobile TD-SCDMA
+189	cell	China Telecom  CDMA
+
+^1	local
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local
+
+550	area	Chuzhou	Chuzhou 滁州市
+551	area	Hefei	Hefei 合肥市
+552	area	Bengbu	Bengbu 蚌埠市
+553	area	Wuhu	Wuhu 芜湖市
+554	area	Huainan	Huainan 淮南市
+555	area	MaAnshan	MaAnshan 马鞍山市
+556	area	Anqing	Anqing 安庆市
+557	area	Suzhou	Suzhou 宿州市
+558	area	Fuyang	Fuyang 阜阳市
+559	area	Huangshan	Huangshan 黄山市
+561	area	Huaibei	Huaibei 淮北市
+562	area	Tongling	Tongling 铜陵市
+563	area	Xuancheng	Xuancheng 宣城市
+564	area	LiuAn	LiuAn 六安市
+565	area	Chaohu	Chaohu 巢湖市
+566	area	Chizhou	Chizhou 池州市
+10	area	Beijing	Beijing 北京市
+23	area	Chongqing	Chongqing 重庆市
+591	area	Fuzhou	Fuzhou 福州市
+592	area	Xiamen	Xiamen 厦门市
+593	area	Ningde	Ningde 宁德市
+594	area	Putian	Putian 莆田市
+595	area	Quanzhou	Quanzhou 泉州市
+596	area	Zhangzhou	Zhangzhou 漳州市
+597	area	Longyan	Longyan 龙岩市
+598	area	Sanming	Sanming 三明市
+599	area	Nanping	Nanping 南平市
+20	area	Guangzhou	Guangzhou 广州市
+660	area	Shanwei	Shanwei 汕尾市
+754	area	Shantou	Chaoyang 潮阳市, Shantou 汕头市
+662	area	Yangjiang	Yangjiang 阳江市
+663	area	Jieyang	Jieyang 揭阳市
+668	area	Maoming	Maoming 茂名市
+750	area	Jiangmen	Jiangmen 江门市
+751	area	Shaoguan	Shaoguan 韶关市
+752	area	Huizhou	Huizhou 惠州市
+753	area	Meizhou	Meizhou 梅州市
+755	area	Shenzhen	Shenzhen 深圳市
+756	area	Zhuhai	Zhuhai 珠海市
+757	area	Foshan	Foshan 佛山市, Shunde 顺德市
+758	area	Zhaoqing	Zhaoqing 肇庆市
+759	area	Zhanjiang	Zhanjiang 湛江市
+760	area	Zhongshan	Zhongshan 中山市
+762	area	Heyuan	Heyuan 河源市
+763	area	Qingyuan	Qingyuan 清远市
+766	area	Yunfu	Yunfu 云浮市
+768	area	Chaozhou	Chaozhou 潮州市
+769	area	Dongguan	Dongguan 东莞市
+930	area	Linxia	Linxia 临夏市(临夏 回族自治州)
+931	area	Lanzhou	Lanzhou 兰州市
+932	area	Dingxi	Dingxi 定西县 (定西地区)
+933	area	Pingliang	Pingliang 平凉市 (平凉地区)
+934	area	Xifeng	Xifeng 西峰市 (庆阳地区)
+935	area	Jinchang	Jinchang 金昌市
+936	area	Zhangye	Zhangye 张掖市 (张掖地区)
+937	area	Jiuquan	Jiuquan 酒泉市 (酒泉地区)
+938	area	Tianshui	Tianshui 天水市
+939	area	Wudu	Wudu 武都县 (陇南地区)
+941	area	Hezuo	Hezuo 合作市(甘南 藏族自治州)
+943	area	Baiyin	Baiyin 白银市
+770	area	Fangchenggang	Fangchenggang 防城港市
+771	area	Nanning	Nanning 南宁市
+772	area	Liuzhou	Liuzhou 柳州市
+773	area	Guilin	Guilin 桂林市
+774	area	Wuzhou	Wuzhou 梧州市
+775	area	Yulin	Yulin 玉林市
+776	area	Baise	Baise 百色市 (百色地区)
+777	area	Qinzhou	Qinzhou 钦州市
+778	area	Hechi	Hechi 河池市 (河池地区)
+779	area	Beihai	Beihai 北海市
+851	area	Guiyang	Guiyang 贵阳市
+852	area	Zunyi	Zunyi 遵义市
+853	area	Anshun	Anshun 安顺市 (安顺地区)
+854	area	Duyun	Duyun 都匀市 (黔南布依族 苗族自治州)   
+855	area	Kaili	Kaili 凯里市 (黔东南苗族 侗族自治州   )
+856	area	Tongren	Tongren 铜仁市 (铜仁地区)
+857	area	Bijie	Bijie 毕节市 (毕节地区)
+858	area	Liupanshui	Liupanshui 六盘水市
+859	area	Xingyi	Xingyi 兴义市 (黔西南布依族 苗族自治州)  
+27	area	Wuhan	Wuhan 武汉市
+710	area	Xiangfan	Xiangfan 襄樊市
+711	area	Ezhou	Ezhou 鄂州市
+712	area	Xiaogan	Xiaogan 孝感市
+713	area	Huanggang	Huanggang 黄冈市
+714	area	Huangshi	Huangshi 黄石市
+715	area	Xianning	Xianning 咸宁市
+716	area	Jingzhou	Jingzhou 荆州市
+717	area	Yichang	Yichang 宜昌市
+718	area	Enshi	Enshi 恩施市 (恩施土家族 苗族自治州)
+719	area	Shiyan	Shiyan 十堰市
+722	area	Suizhou	Suizhou 随州市
+724	area	Jingmen	Jingmen 荆门市
+728	area	Xiantao	Xiantao 仙桃市
+310	area	Handan	Handan 邯郸市
+311	area	Shijiazhuang	Shijiazhuang 石家庄市
+312	area	Baoding	Baoding 保定市
+313	area	Zhangjiakou	Zhangjiakou 张家口市
+314	area	Chengde	Chengde 承德市
+315	area	Tangshan	Tangshan 唐山市
+316	area	Langfang	Langfang 廊坊市
+317	area	Cangzhou	Cangzhou 沧州市
+318	area	Hengshui	Hengshui 衡水市
+319	area	Xingtai	Xingtai 邢台市
+335	area	Qinhuangdao	Qinhuangdao 秦皇岛市
+370	area	Shangqiu	Shangqiu 商丘市
+371	area	Zhengzhou	Zhengzhou 郑州市
+372	area	Anyang	Anyang 安阳市
+373	area	Xinxiang	Xinxiang 新乡市
+374	area	Xuchang	Xuchang 许昌市
+375	area	Pingdingshan	Pingdingshan 平顶山市
+376	area	Xinyang	Xinyang 信阳市、潢川县
+377	area	Nanyang	Nanyang 南阳市
+378	area	Kaifeng	Kaifeng 开封市
+379	area	Luoyang	Luoyang 洛阳市
+391	area	Jiaozuo	Jiaozuo 焦作市
+392	area	Hebi	Hebi 鹤壁市
+393	area	Puyang	Puyang 濮阳市
+394	area	Zhoukou	Zhoukou 周口市
+395	area	Luohe	Luohe 漯河市
+396	area	Zhumadian	Zhumadian 驻马店市
+398	area	Sanmenxia	Sanmenxia 三门峡市
+451	area	Harbin	Harbin 哈尔滨市
+452	area	Qiqihar	Qiqihar 齐齐哈尔市
+453	area	Mudanjiang	Mudanjiang 牡丹江市
+454	area	Jiamusi	Jiamusi 佳木斯市
+455	area	Suihua	Suihua 绥化市
+456	area	Heihe	Heihe 黑河市
+457	area	Jiagedaqi	Jiagedaqi 加格达奇 (大兴安岭地区)
+458	area	Yichun	Yichun 伊春市
+459	area	Daqing	Daqing 大庆市
+464	area	Qitaihe	Qitaihe 七台河市
+467	area	Jixi	Jixi 鸡西市
+468	area	Hegang	Hegang 鹤岗市
+469	area	Shuangyashan	Shuangyashan 双鸭山市
+730	area	Yueyang	Yueyang 岳阳市
+731	area	Changsha	Changsha 长沙市, Xiangtan 湘潭市, Zhuzhou 株州市
+734	area	Hengyang	Hengyang 衡阳市
+735	area	Chenzhou	Chenzhou 郴州市
+736	area	Changde	Changde 常德市
+737	area	Yiyang	Yiyang 益阳市
+738	area	Loudi	Loudi 娄底市
+739	area	Shaoyang	Shaoyang 邵阳市
+743	area	Jishou	Jishou 吉首市 (湘西土家族 苗族自治州)
+744	area	Zhangjiajie	Zhangjiajie 张家界市
+745	area	Huaihua	Huaihua 怀化市
+746	area	Yongzhou	Yongzhou 永州市
+898	area	Haikou	Haikou 海口市
+431	area	Changchun	Changchun 长春市
+432	area	Jilin	Jilin 吉林市
+433	area	Hunchun	Hunchun 珲春市, Yanji 延吉市(延边 朝鲜族自治州)
+434	area	Siping	Siping 四平市
+435	area	Tonghua	Tonghua 通化市, Meihekou 梅河口市
+436	area	Baicheng	Baicheng 白城市
+437	area	Liaoyuan	Liaoyuan 辽源市
+438	area	Songyuan	Songyuan 松原市
+439	area	Baishan	Baishan 白山市 
+25	area	Nanjing	Nanjing 南京市
+510	area	Wuxi	Wuxi 无锡市
+511	area	Zhenjiang	Zhenjiang 镇江市
+512	area	Suzhou	Suzhou 苏州市
+513	area	Nantong	Nantong 南通市
+514	area	Yangzhou	Yangzhou 扬州市
+515	area	Yancheng	Yancheng 盐城市
+516	area	Xuzhou	Xuzhou 徐州市
+517	area	Huaian	Huaian 淮阴市
+518	area	Lianyungang	Lianyungang 连云港市
+519	area	Changzhou	Changzhou 常州市
+523	area	Taizhou	Taizhou 泰州市
+527	area	Suqian	Suqian 宿迁市
+701	area	Yingtan	Yingtan 鹰潭市
+790	area	Xinyu	Xinyu 新余市
+791	area	Nanchang	Nanchang 南昌市
+792	area	Jiujiang	Jiujiang 九江市
+793	area	Shangrao	Shangrao 上饶市
+794	area	Fuzhou	Fuzhou 抚州市
+795	area	Yichun	Yichun 宜春市
+796	area	JiAn	JiAn 吉安市
+797	area	Ganzhou	Ganzhou 赣州市
+798	area	Jingdezhen	Jingdezhen 景德镇市
+799	area	Pingxiang	Pingxiang 萍乡市
+24	area	Shenyang	Shenyang 沈阳市
+410	area	Tieling	Tieling 铁岭市
+411	area	Dalian	Dalian 大连市
+412	area	Anshan	Anshan 鞍山市
+413	area	Fushun	Fushun 抚顺市
+414	area	Benxi	Benxi 本溪市
+415	area	Dandong	Dandong 丹东市
+416	area	Jinzhou	Jinzhou 锦州市
+417	area	Yingkou	Yingkou 营口市
+418	area	Fuxin	Fuxin 阜新市
+419	area	Liaoyang	Liaoyang 辽阳市
+421	area	Chaoyang	Chaoyang 朝阳市
+427	area	Panjin	Panjin 盘锦市
+429	area	Huludao	Huludao 葫芦岛市
+470	area	Hailaer	Hailaer 海拉尔市 (呼伦贝尔盟)
+471	area	Huhehaote	Huhehaote 呼和浩特市
+472	area	Baotou	Baotou 包头市
+473	area	Wuhai	Wuhai 乌海市
+474	area	Jining	Jining 集宁市 (乌兰察布盟)
+476	area	Chifeng	Chifeng 赤峰市
+477	area	Dongsheng	Dongsheng 东胜市 (伊克昭盟)
+478	area	Linhe	Linhe 临河市 (巴彦淖尔盟)
+479	area	Xilinhaote	Xilinhaote 锡林浩特市 (锡林郭勒盟)
+482	area	Wulanhaote	Wulanhaote 乌兰浩特市 (兴安盟)
+483	area	Alashanzuoqi	Alashanzuoqi 阿拉善左旗 (阿拉善盟)
+951	area	Yinchuan	Yinchuan 银川市
+952	area	Shizuishan	Shizuishan 石嘴山市
+953	area	Wuzhong	Wuzhong 吴忠市
+954	area	Guyuan	Guyuan 固原县 (固原地区)
+955	area	Zhongwei	Zhongwei 中卫市、中宁县、海原县 (中卫地区)
+970	area	Haiyan	Haiyan 海晏县(海北 藏族自治州)
+971	area	Xining	Xining 西宁市
+972	area	PingAn	PingAn 平安县 (海东地区)
+973	area	Tongren	Tongren 同仁县(黄南 藏族自治州)
+974	area	Gonghe	Gonghe 共和县(海南 藏族自治州)
+975	area	Maqin	Maqin 玛沁县(果洛 藏族自治州)
+976	area	Yushu	Yushu 玉树县(玉树 藏族自治州)
+977	area	Delingha	Delingha 德令哈市 (海西蒙古族 藏族自治州)
+979	area	GeErmu	GeErmu 格尔木市
+28	area	Chengdu	Chengdu 成都市
+812	area	Panzhihua	Panzhihua 攀枝花市
+813	area	Zigong	Zigong 自贡市
+816	area	Mianyang	Mianyang 绵阳市
+817	area	Nanchong	Nanchong 南充市
+818	area	Dazhou	Dazhou 达州市
+825	area	Suining	Suining 遂宁市
+826	area	GuangAn	GuangAn 广安市
+827	area	Bazhong	Bazhong 巴中市
+830	area	Luzhou	Luzhou 泸州市
+831	area	Yibin	Yibin 宜宾市
+832	area	Neijiang	Neijiang 内江市, Ziyang 资阳市
+833	area	Leshan	Leshan 乐山市
+834	area	Xichang	Xichang 西昌市(凉山 彝族自治州)
+835	area	YaAn	YaAn 雅安市
+836	area	Kangding	Kangding 康定县(甘孜 藏族自治州)
+837	area	MaErkang	MaErkang 马尔康县 (阿坝藏族 羌族自治州)
+838	area	Deyang	Deyang 德阳市
+839	area	Guangyuan	Guangyuan 广元市
+530	area	Heze	Heze 荷泽市 (荷泽地区)
+531	area	Jinan	Jinan 济南市
+532	area	Qingdao	Qingdao 青岛市
+533	area	Zibo	Zibo 淄博市
+534	area	Dezhou	Dezhou 德州市 (德州地区)
+535	area	Yantai	Yantai 烟台市
+536	area	Weifang	Weifang 潍坊市
+537	area	Jining	Jining 济宁市
+538	area	TaiAn	TaiAn 泰安市
+539	area	Linyi	Linyi 临沂市 (临沂地区)
+543	area	Binzhou	Binzhou 滨州市 (滨州地区)
+546	area	Dongying	Dongying 东营市
+631	area	Weihai	Weihai 威海市
+632	area	Zaozhuang	Zaozhuang 枣庄市
+633	area	Rizhao	Rizhao 日照市
+634	area	Laiwu	Laiwu 莱芜市
+635	area	Liaocheng	Liaocheng 聊城市 (聊城地区)
+21	area	Shanghai	Shanghai 上海市
+29	area	XiAn	XiAn 西安市, Xianyang 咸阳市
+911	area	YanAn	YanAn 延安市
+912	area	Yulin	Yulin 榆林市
+913	area	Weinan	Weinan 渭南市
+914	area	Shangzhou	Shangzhou 商州市 (商南地区)
+915	area	Ankang	Ankang 安康市 (安康地区)
+916	area	Hanzhong	Hanzhong 汉中市
+917	area	Baoji	Baoji 宝鸡市
+919	area	Tongchuan	Tongchuan 铜川市
+349	area	Shuozhou	Shuozhou 朔州市
+350	area	Xinzhou	Xinzhou 忻州市 (忻州地区)
+351	area	Taiyuan	Taiyuan 太原市
+352	area	Datong	Datong 大同市
+353	area	Yangquan	Yangquan 阳泉市
+354	area	Yuci	Yuci 榆次市 (晋中地区)
+355	area	Changzhi	Changzhi 长治市
+356	area	Jincheng	Jincheng 晋城市
+357	area	Linfen	Linfen 临汾市 (临汾地区)
+358	area	Lishi	Lishi 离石市 (吕梁地区)
+359	area	Yuncheng	Yuncheng 运城市 (运城地区)
+22	area	Tianjin	Tianjin 天津市
+901	area	Tacheng	Tacheng 塔城市
+902	area	Hami	Hami 哈密市 (哈密地区)
+903	area	Hetian	Hetian 和田市 (和田地区)
+906	area	Aletai	Aletai 阿勒泰市
+908	area	Atushi	Atushi 阿图什市 (克孜勒苏柯尔 克孜自治州)
+909	area	Bole	Bole 博乐市 (博尔塔拉 蒙古自治州)
+990	area	Kalamayi	Kalamayi 克拉玛依市
+991	area	Urumchi	Urumchi 乌鲁木齐
+992	area	Kuitun	Kuitun 奎屯市
+993	area	Shihezi	Shihezi 石河子市
+994	area	Changji	Changji 昌吉市(昌吉 回族自治州)
+995	area	Tulufan	Tulufan 吐鲁番市 (吐鲁番地区)
+996	area	KuErle	KuErle 库尔勒市 (巴音郭楞 蒙古自治州)
+997	area	Akesu	Akesu 阿克苏市 (阿克苏地区)
+998	area	Kashi	Kashi 喀什市 (喀什地区)
+999	area	Yining	Yining 伊宁市(伊犁 哈萨克自治州)
+891	area	Lhasa	Lhasa 拉萨市
+892	area	Rikaze	Rikaze 日喀则市 (日喀则地区)
+893	area	Naidong	Naidong 乃东县 (山南地区)
+894	area	Linzhi	Linzhi 林芝县 (林芝地区)
+895	area	Changdu	Changdu 昌都县 (昌都地区)
+896	area	Naqu	Naqu 那曲县 (那曲地区)
+897	area	GeEr	GeEr 噶尔县 (阿里地区)
+8029	area	Zhongba	Zhongba 仲巴县
+8063	area	Jiali	Jiali 嘉黎县
+8065	area	Nierong	Nierong 聂荣县
+8068	area	Shenzha	Shenzha 申扎县
+8070	area	Shuanghu	Shuanghu 双湖
+8060	area	Pulan	Pulan 普兰县
+8071	area	Zhada	Zhada 扎达县
+8067	area	Bange	Bange 班戈县
+8078	area	Suoxian	Suoxian 索县
+8081	area	Nima	Nima 尼玛县
+691	area	Jinghong	Jinghong 景洪市 (西双版纳 傣族自治州 )  
+692	area	Luxi	Luxi 潞西市 (德宏傣族 景颇族自治州)   
+870	area	Zhaotong	Zhaotong 昭通市 (昭通地区)
+871	area	Kunming	Kunming 昆明市
+872	area	Dali	Dali 大理市(大理 白族自治州)   
+873	area	Gejiu	Gejiu 个旧市 (红河哈尼族 彝族自治州)   
+874	area	Qujing	Qujing 曲靖市
+875	area	Baoshan	Baoshan 保山市
+876	area	Wenshan	Wenshan 文山县 (文山壮族 苗族自治州) 
+877	area	Yuxi	Yuxi 玉溪市
+878	area	Chuxiong	Chuxiong 楚雄市(楚雄 彝族自治州 )  
+879	area	Simao	Simao 思茅市 (思茅地区)
+883	area	Lincang	Lincang 临沧县 (临沧地区)
+886	area	Liuku	Liuku 六库市(怒江 傈傈族自治州)
+887	area	Zhongdian	Zhongdian 中甸县(迪庆 藏族自治州) 
+888	area	Lijiang	Lijiang 丽江纳西族 自治县 (丽江地区)
+570	area	Quzhou	Quzhou 衢州市
+571	area	Hangzhou	Hangzhou 杭州市
+572	area	Huzhou	Huzhou 湖州市
+573	area	Jiaxing	Jiaxing 嘉兴市
+574	area	Ningbo	Ningbo 宁波市
+575	area	Shaoxing	Shaoxing 绍兴市
+576	area	Taizhou	Taizhou 台州市
+577	area	Wenzhou	Wenzhou 温州市
+578	area	Lishui	Lishui 丽水市
+579	area	Jinhua	Jinhua 金华市
+580	area	Zhoushan	Zhoushan 舟山市

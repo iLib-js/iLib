@@ -1,0 +1,15 @@
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Arab",
+        "decimalChar": "٫",
+        "groupChar": "٬",
+        "pctChar": "٪",
+        "exponential": "×۱۰^",
+        "currencyFormats": {
+            "common": "{n} {s}"
+        },
+        "useNative": true,
+        "digits": "۰۱۲۳۴۵۶۷۸۹"
+    }
+}

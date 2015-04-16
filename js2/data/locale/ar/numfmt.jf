@@ -1,0 +1,17 @@
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Arab",
+        "decimalChar": "٫",
+        "groupChar": "٬",
+        "pctChar": "٪",
+        "exponential": "اس",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "{s} {n}-"
+        },
+        "negativenumFmt": "{n}-",
+		"useNative": true,
+        "digits": "٠١٢٣٤٥٦٧٨٩"
+    }
+}

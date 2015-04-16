@@ -1,0 +1,131 @@
+// from http://www.comreg.ie/publications/national_numbering_conventions_v6_0.583.102910.p.html
+// see especially annex 4, and 6.3
+
+^+	plus
+^00	idd
+^0	trunk
+
+^112	emergency	// emergency
+^116	emergency
+^999	emergency
+
+^10	service	national operator
+^114	service	international operator
+^118..	service	directory assistance
+
+^13...	cic
+
+^141	vsc
+^142	vsc
+
+^151.	premium	premium rate services
+^1530	premium	premium rate services
+^1540	premium	premium rate services
+^1550	premium	premium rate services
+^1559	premium	premium rate services
+^1560	premium	premium rate services
+^1570	premium	premium rate services
+^1580	premium	premium rate services
+
+^1750	service	network routing
+
+^1800	service	toll-free
+^1850	service	shared cost (Lo-Call) numbers
+^1890	service	local rate numbers
+
+^1891	service	below-local-rate internet dial-up
+^1892	service	local-rate internet dial-up
+^1893	service	variable-rate internet dial-up
+
+^190.	service	short code
+^191.	service	short code
+
+^19800	service
+
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9.	local
+
+1	area	Dublin	Dublin
+21	area	Cork	Cork, Coachford, and Kinsale
+22	area	Mallow	Mallow
+23	area	Bandon	Bandon
+24	area	Youghal	Youghal
+25	area	Fermoy	Fermoy
+26	area	Macroom	Macroom
+27	area	Bantry	Bantry
+28	area	Skibbereen	Skibbereen
+29	area	Kanturk	Kanturk
+402	area	Arklow	Arklow
+404	area	Wicklow	Wicklow
+41	area	Drogheda	Drogheda, Ardee
+42	area	Dundalk	Dundalk, Carrickmacross, Castleblaney
+43	area	Longford	Longford, Granard
+44	area	Mullingar	Mullingar, Castlepollard, Tyrrellspass
+45	area	Naas	Naas, Kildare, The Curragh
+46	area	Navan	Navan, Kells, Trim, Enfield, Edenderry
+47	area	Monaghan	Monaghan, Clones
+48	area	Northern Ireland	Northern Ireland
+49	area	Cavan	Cavan, Cootehill, Oldcastle, Belturbet
+502	area	Portlaoise	Portlaoise, Abbeyleix
+504	area	Thurles	Thurles
+505	area	Roscrea	Roscrea
+506	area	Tullamore	Tullamore
+509	area	Bin	Bin
+51	area	Waterford	Waterford, Carrick-on-Suir, New Ross, Kilmacthomas
+52	area	Clonmel	Clonmel, Cahir, Killenaule
+53	area	Wexford	Wexford, Enniscorthy, Ferns, Gorey
+56	area	Kilkenny	Kilkenny, Castlecomer, Freshford
+57	area	Portlaoise	Portlaoise, Abbeyleix, Tullamore, Birr
+58	area	Dungarvan	Dungarvan
+59	area	Carlow	Carlow, Muine Bheag, Athy, Baltinglass
+61	area	Limerick	Limerick, Scariff
+62	area	Tipperary	Tipperary, Cashel
+63	area	Charleville	Charleville
+64	area	Killarney	Killarney, Rathmore
+65	area	Ennis	Ennis, Ennistymon, Kilrush
+66	area	Tralee	Tralee, Dingle, Killorglin, Cahirciveen
+67	area	Nenagh	Nenagh
+68	area	Listowel	Listowel
+69	area	Newcastle West	Newcastle West
+71	area	Sligo	Sligo, Manorhamilton, Carrick-on-Shannon
+74	area	Donegal	Donegal, Letterkenny, Dungloe, Buncrana
+90	area	Athlone	Athlone, Roscommon, Ballinasloe, Portumna
+91	area	Galway	Galway, Loughrea, Gort
+93	area	Tuam	Tuam
+94	area	Ballinrobe	Ballinrobe, Castlebar, Claremorris, Castlerea
+95	area	Clifden	Clifden
+96	area	Ballina	Ballina
+97	area	Belmullet	Belmullet
+98	area	Westport	Westport
+99	area	Kilronan	Kilronan
+
+822	cell
+83	cell
+84	cell
+85	cell
+86	cell
+87	cell
+88	cell
+89	cell
+2091	service
+700	service
+707	service
+76	service
+80	service
+818	service
+30	service
+31	service
+32	service
+33	service
+34	service
+35	service
+36	service
+37	service
+38	service
+39	service

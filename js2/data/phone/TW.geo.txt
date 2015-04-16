@@ -1,0 +1,53 @@
+2	area	Taipei	Taipei County, Keelung, Panchiao, Sanchung, Yingge, Yungho, Jilong 
+3	area	Taoyuan	Taoyuan, Hsinchu, Ilan, Hualian, and Miaoli Counties
+32	area	Taoyuan	Taoyuan County
+33	area	Taoyuan	Daxi, Taoyuan City 
+34	area	Taoyuan	Zhongli, Taoyuan County 
+35	area	Hsinchu Hsinchu County, Chubei 
+36	area	Hsinchu	Hsinchu County, Hukou, Zhudong 
+37	area	Miaoli	Miaoli County, Zhunan, Miaoli
+38	area	Hualian	Hualian County
+39	area	Ilan	Ilan County, Jiaoqi, Su'ao, Luodong 
+4	area	Taichung	Wurim, Wufeng, Shalong, Yuanlin, Taichung City
+422	area	Taichung	Taichung City
+423	area	Taichung	Taichung City
+424	area	Taichung	Taichung City
+425	area	Taichung	Fengyuan, including Zhuolan, Miaoli, Taichung City
+426	area	Taichung	Dajia and Shalu, Taichung City
+43	area	Taichung	Taichung City
+44	area	Taichung	Taichung City
+45	area	Taichung	Houli, Lishan, Taichung City 
+46	area	Dadu	Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi
+47	area	Changhua	Lugang, Changhua City 
+470	area	Taichung	Taichung City
+48	area	Changhua	Shetou, Tianzhong, Yongjing, Yuanlin, Changhua County 
+49	area	Nantou	Buli, Riyuetan, Xincun, Zhongxing, Nantou County 
+5	area	Chiayi	Chiayi City, Chiayi County
+52	area	Chiayi	Minxiong, Chiayi City
+53	area	Chiayi	Puzi, Xingang, Chiayi County
+55	area	Yunlin	Douliu, Yunlin County
+56	area	Yunlin	Huwei, Yunlin County
+57	area	Yunlin	Beigang, Yunlin County
+6	area	Tainan	Tainan County, Chiali, Makung, Shanhua 
+62	area	Tainan	Tainan City
+63	area	Tainan	Tainan City
+65	area	Tainan	Xinhua and Shanhua, Tainan
+66	area	Tainan	Xinying, Tainan 
+67	area	Tainan	Jiali, Tainan
+69	area	Penghu	Penghu County
+7	area	Kaohsiung	Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying, Kaohsiung County and the Pratas and Spratly Islands
+8	area	Pingtung	Pingtung, Kinmen, Lienchiang, Taitung Counties, Wuqiu Township
+8232	area	Kinmen	Jincheng and Jinning, Kinmen County
+8233	area	Kinmen	Jinhu, Kinmen County
+8235	area	Kinmen	Jinsha, Kinmen County
+8236	area	Kinmen	Lieyu, Kinmen County
+826	area	Wuqiu	Wuqiu Township
+827	area	Tung-Sha	Tung-Sha Island
+8362	area	Matsu	Nangan, Matsu, Lienchiang County
+8365	area	Matsu	Beigan, Matsu, Lienchiang County
+8367	area	Matsu	Dongyin, Matsu, Lienchiang County
+8368	area	Matsu	Juguang, Matsu, Lienchiang County
+87	area	Pingtung	Pingtung City and Chaozhou, Pingtung County 
+88	area	Pingtung	Donggang and Kenting, Pingtung County 
+89	area	Taitung	Taitung County 
+

@@ -1,0 +1,10 @@
+{
+    "generated": true,
+    "numfmt": {
+        "groupChar": " ",
+        "exponential": "Е",
+        "currencyFormats": {
+            "common": "{n} {s}"
+        }
+    }
+}

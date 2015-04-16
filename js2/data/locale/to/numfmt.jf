@@ -1,0 +1,13 @@
+{
+    "generated": true,
+    "numfmt": {
+        "decimalChar": ".",
+        "groupChar": ",",
+        "exponential": "E",
+        "prigroupSize": 2,
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "pctFmt": "‎{n}%"
+    }
+}

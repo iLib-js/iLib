@@ -1,0 +1,11 @@
+{
+    "generated": true,
+    "numfmt": {
+        "groupChar": " ",
+        "exponential": "E",
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "pctFmt": "{n} %"
+    }
+}

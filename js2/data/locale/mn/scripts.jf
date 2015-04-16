@@ -1,0 +1,8 @@
+{
+    "scripts": [
+        "Cyrl",
+        "Mong",
+        "Phag"
+    ],
+    "generated": true
+}

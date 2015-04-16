@@ -1,0 +1,103 @@
+/**
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * @license
+ */
+
+/*
+ * ilib.js - metafile that includes all other js files
+ */
+
+/* !depends
+ilib.js
+DateRngFmt.js
+Date.js
+HebrewDate.js
+HebrewCal.js
+IslamicCal.js
+IslamicDate.js
+JulianCal.js
+JulianDate.js
+GregorianCal.js
+GregDate.js
+ThaiSolarCal.js
+ThaiSolarDate.js
+PersianAlgoCal.js
+calendar/persianDate.js
+calendar/persianAstro.js
+PersianDate.js
+HanCal.js
+HanDate.js
+EthiopicCal.js
+EthiopicDate.js
+CopticCal.js
+CopticDate.js
+Number.js
+NumFmt.js
+JulianDay.js
+DateFmt.js
+calendar.js
+Utils.js
+Locale.js
+nfkc/all.js
+String.js
+DurFmt.js
+ResBundle.js
+CType.js
+LocaleInfo.js
+DateRngFmt.js
+isAlnum.js
+isAlpha.js
+isAscii.js
+isBlank.js
+isCntrl.js
+isDigit.js
+isAlnum.js
+isIdeo.js
+isLower.js
+isPrint.js
+isPunct.js
+isScript.js
+isSpace.js
+isUpper.js
+isXDigit.js
+ScriptInfo.js
+Name.js
+NameFmt.js
+Address.js
+AddressFmt.js
+Collator.js
+LocaleMatcher.js
+NormString.js
+Mapper.js
+maps/caseMapper.js
+GlyphString.js
+PhoneNumber.js
+PhoneFmt.js
+PhoneGeo.js
+Measurement.js
+UnitFmt.js
+LengthUnit.js
+VelocityUnit.js
+TemperatureUnit.js
+DigitalStorageUnit.js
+UnknownUnit.js
+TimeUnit.js
+MassUnit.js
+AreaUnit.js
+FeulConsumptionUnit.js
+VolumeUnit.js	
+EnergyUnit.js
+*/
