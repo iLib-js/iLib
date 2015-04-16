@@ -1,5 +1,6 @@
 /*
- * ilib-web.js - glue code for web apps to load local ilib code and data 
+ * ilib-web.js - glue code for web apps to load local ilib code and data
+ * using XHR
  * 
  * Copyright © 2015, JEDLSoft
  *

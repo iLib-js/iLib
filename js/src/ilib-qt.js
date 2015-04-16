@@ -112,7 +112,6 @@ requireClass.prototype.require = function(pathname) {
 	this.loading[pathname] = undefined;
 	
 	if (s.status === s.OK) {
-		var dirname = this.dirname(pathname);
 		this.cache[pathname] = module.exports;
 		return module.exports;
 	}
