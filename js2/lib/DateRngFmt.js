@@ -23,7 +23,7 @@ ilib.js
 Locale.js 
 IDate.js 
 IString.js 
-Calendar.js
+CalendarFactory.js
 LocaleInfo.js
 TimeZone.js
 DateFmt.js
@@ -42,7 +42,7 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 
 var IDate = require("./IDate.js");
-var Calendar = require("./Calendar.js");
+var CalendarFactory = require("./CalendarFactory.js");
 
 var DateFmt = require("./DateFmt.js");
 var IString = require("./IString.js");
@@ -177,7 +177,7 @@ var DateRngFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-			this.cal = Calendar.newInstance({
+			this.cal = CalendarFactory({
 				type: this.calName
 			});
 			if (!this.cal) {

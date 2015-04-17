@@ -21,10 +21,12 @@
 !depends 
 ilib.js 
 Locale.js 
-IDate.js 
+IDate.js
+DateFactory.js  
 IString.js 
 ResBundle.js 
 Calendar.js
+CalendarFactory.js
 LocaleInfo.js
 TimeZone.js
 GregorianCal.js
@@ -42,7 +44,9 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 
 var IDate = require("./IDate.js");
+var DateFactory = require("./DateFactory.js");
 var Calendar = require("./Calendar.js");
+var CalendarFactory = require("./CalendarFactory.js");
 
 var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
@@ -429,14 +433,14 @@ var DateFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-			if (!IDate._constructors[this.calName] && ilib.isDynCode()) {
+			if (ilib.isDynCode()) {
 				// If we are running in the dynamic code loading assembly of ilib, the following
 				// will attempt to dynamically load the calendar date class for this calendar. If 
 				// it doesn't work, this just goes on and it will use Gregorian instead.
-				IDate._dynLoadCalendar(this.calName);
+				DateFactory._dynLoadDate(this.calName);
 			}
 			
-			this.cal = Calendar.newInstance({
+			this.cal = CalendarFactory({
 				type: this.calName
 			});
 			if (!this.cal) {
@@ -895,11 +899,11 @@ DateFmt.prototype = {
 		
 		if (options) {
 			if (options.date) {
-				date = IDate._dateToIlib(options.date); 	
+				date = DateFactory._dateToIlib(options.date); 	
 			}
 			
 			if (options.year) {
-				date = IDate.newInstance({year: options.year, month: 1, day: 1, type: this.cal.getType()});
+				date = DateFactory({year: options.year, month: 1, day: 1, type: this.cal.getType()});
 			}
 		}
 		
@@ -1183,7 +1187,7 @@ DateFmt.prototype = {
 	format: function (dateLike) {
 		var thisZoneName = this.tz && this.tz.getId() || "local";
 
-		var date = IDate._dateToIlib(dateLike, thisZoneName, this.locale);
+		var date = DateFactory._dateToIlib(dateLike, thisZoneName, this.locale);
 		
 		if (!date.getCalendar || !(date instanceof IDate)) {
 			throw "Wrong date type passed to DateFmt.format()";
@@ -1196,7 +1200,7 @@ DateFmt.prototype = {
 			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
 			// this will recalculate the date components based on the new time zone
 			// and/or convert a date in another calendar to the current calendar before formatting it
-			var newDate = IDate.newInstance({
+			var newDate = DateFactory({
 				type: this.calName,
 				timezone: thisZoneName,
 				julianday: date.getJulianDay()
@@ -1237,8 +1241,8 @@ DateFmt.prototype = {
 	 * @return {string} the formatted relative date
 	 */
 	formatRelative: function(reference, date) {
-		reference = IDate._dateToIlib(reference);
-		date = IDate._dateToIlib(date);
+		reference = DateFactory._dateToIlib(reference);
+		date = DateFactory._dateToIlib(date);
 		
 		var referenceRd, dateRd, fmt, time, diff, num;
 		

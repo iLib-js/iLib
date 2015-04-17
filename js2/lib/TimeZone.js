@@ -27,6 +27,7 @@ MathUtils.js
 JSUtils.js
 GregRataDie.js
 IString.js
+CalendarFactory.js
 */
 
 // !data localeinfo zoneinfo
@@ -40,7 +41,7 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 
 var GregRataDie = require("./GregRataDie.js");
-
+var CalendarFactory = require("./CalendarFactory.js");
 var IString = require("./IString.js");
 
 /**
@@ -196,10 +197,6 @@ var TimeZone = function(options) {
 	//console.log("localeinfo is: " + JSON.stringify(this.locinfo));
 	//console.log("id is: " + JSON.stringify(this.id));
 };
-
-// prevent circular dependencies by checking this after TimeZone is
-// already defined
-var GregorianDate = require("./GregorianDate.js");
 
 /*
  * Explanation of the compressed time zone info properties.
@@ -694,7 +691,7 @@ TimeZone.prototype._calcRuleStart = function (rule, year) {
 		});
 	} else {
 		if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-			cal = Calendar.newInstance({type: "gregorian"});
+			cal = CalendarFactory({type: "gregorian"});
 			type = rule.r.charAt(0);
 			weekday = parseInt(rule.r.substring(1), 10);
 			day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
@@ -802,7 +799,7 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  * otherwise.
  */
 TimeZone.prototype.inDaylightTime = function (date, wallTime) {
-	var rd, startRd, endRd;
+	var rd, startRd, endRd, year;
 
 	if (this.isLocal) {
 		// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
@@ -820,19 +817,22 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 		return (-d.getTimezoneOffset() === dst);
 	}
 	
+	console.log("date is of type " + typeof(date));
+	console.log("contents is " + JSON.stringify(date));
 	if (!date) {
-		date = new GregorianDate(); // right now
+		date = new Date(); // right now
+		year = date.getFullYear();
 	} else if (!(date instanceof GregorianDate)) {
 		// convert to Gregorian so that we can tell if it is in DST or not
-		date = new GregorianDate({
-			julianday: date.getJulianDay(),
-			timezone: date.getTimeZone()
-		});
+		date = new Date(date.getTimeExtended());
+		year = date.getFullYear();
+	} else {
+		year = date.year;
 	}
 	
 	// if we aren't using daylight time in this zone for the given year, then we are 
 	// not in daylight time
-	if (!this.useDaylightTime(date.year)) {
+	if (!this.useDaylightTime(year)) {
 		return false;
 	}
 	
@@ -840,10 +840,10 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 	rd = date.rd.getRataDie();
 	
 	// these calculate the start/end in local wall time
-	var startrule = this._getDSTStartRule(date.year);
-	var endrule = this._getDSTEndRule(date.year);
-	startRd = this._calcRuleStart(startrule, date.year);
-	endRd = this._calcRuleStart(endrule, date.year);
+	var startrule = this._getDSTStartRule(year);
+	var endrule = this._getDSTEndRule(year);
+	startRd = this._calcRuleStart(startrule, year);
+	endRd = this._calcRuleStart(endrule, year);
 	
 	if (wallTime) {
 		// rd is in wall time, so we have to make sure to skip the missing time

@@ -47,6 +47,7 @@ var path = {
 
 var requireClass = function() {
 	this.cache = {};
+	this.loading = {};
 	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 	
 	var pos;
@@ -109,8 +110,16 @@ requireClass.prototype.require = function(pathname) {
 		return this.cache[pathname];
 	}
 	
+	// don't try to load things that are currently in the process of loading
+	if (this.loading[pathname]) {
+		//console.log("require: already loading...");
+		return {};
+	}
+
 	console.log("loading module " + pathname);
-	
+
+	this.loading[pathname] = true;
+
 	var text = this.loadFile(pathname, true);
 	var dirname = path.dirname(pathname);
 	var match, replacement;
@@ -126,6 +135,8 @@ requireClass.prototype.require = function(pathname) {
 		eval(text);
 		
 		this.cache[pathname] = module.exports;
+		this.loading[pathname] = undefined;
+	
 		return module.exports;
 	}
 

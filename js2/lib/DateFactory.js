@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-/* !depends ilib.js Locale.js LocaleInfo.js JulianDay.js JSUtils.js CalendarFactory.js */
+/* !depends ilib.js Locale.js LocaleInfo.js JulianDay.js JSUtils.js CalendarFactory.js IDate.js GregorianDate.js*/
 
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
@@ -26,7 +26,7 @@ var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var JulianDay = require("./JulianDay.js");
-var CalendarFactory = require("./Calendar.js");
+var CalendarFactory = require("./CalendarFactory.js");
 
 // Statically depend on these even though we don't use them
 // to guarantee they are loaded into the cache already.
@@ -133,7 +133,7 @@ var DateFactory = function(options) {
 			onLoad: ilib.bind(this, function(info) {
 				type = info.getCalendar();
 				
-				obj = DateFactory._init(type);
+				obj = DateFactory._init(type, options);
 				
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(obj);
@@ -141,7 +141,7 @@ var DateFactory = function(options) {
 			})
 		});
 	} else {
-		obj = DateFactory._init(type);
+		obj = DateFactory._init(type, options);
 	}
 	
 	return obj
@@ -171,7 +171,7 @@ DateFactory._dynMap = {
  */
 DateFactory._dynLoadDate = function (name) {
 	if (!IDate._constructors[name]) {
-		var entry = IDate._dynMap[name];
+		var entry = DateFactory._dynMap[name];
 		if (entry) {
 			IDate._constructors[name] = require("./" + entry + "Date.js");
 		}
@@ -183,7 +183,9 @@ DateFactory._dynLoadDate = function (name) {
  * @protected
  * @static 
  */
-DateFactory._init = function(type) {
+DateFactory._init = function(type, options) {
+	var cons;
+	
 	if (ilib.isDynCode()) {
 		DateFactory._dynLoadDate(type);
 		CalendarFactory._dynLoadCalendar(type);

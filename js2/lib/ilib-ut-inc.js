@@ -24,6 +24,7 @@
 ilib.js
 DateRngFmt.js
 IDate.js
+DateFactory.js
 HebrewDate.js
 HebrewCal.js
 IslamicCal.js
@@ -49,6 +50,7 @@ NumFmt.js
 JulianDay.js
 DateFmt.js
 Calendar.js
+CalendarFactory.js
 Utils.js
 Locale.js
 nfkc/all.js

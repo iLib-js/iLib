@@ -26,30 +26,31 @@ var common = require('../cldr/common');
 var path = require('path');
 
 function usage() {
-	util.print("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n" +
-		"Create an dynamic-load stub file out of the existing assembled source file.\n\n" +
-		"-h or --help\n" +
-		"  this help\n" +
-		"assembled_source_file\n" +
-		'  File to scan. Default: "ilib-dyn.js"\n' +
-		"output_file\n" +
-		'  File to put output. Default: "ilib-stubs.js"\n');
+	util
+			.print("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n"
+					+ "Create an dynamic-load stub file out of the existing assembled source file.\n\n"
+					+ "-h or --help\n"
+					+ "  this help\n"
+					+ "assembled_source_file\n"
+					+ '  File to scan. Default: "ilib-dyn.js"\n'
+					+ "output_file\n"
+					+ '  File to put output. Default: "ilib-stubs.js"\n');
 	process.exit(1);
 }
-
 
 var sourcefile = "ilib-dyn.js";
 var outputDynFile = "ilib-stubs-dyn.js";
 var outputFile = "ilib-stubs.js";
 
 if (process.argv.length > 2) {
-	if (process.argv[2] == '-h' || process.argv[2] == '-H' || process.argv[2] == '--help') {
+	if (process.argv[2] == '-h' || process.argv[2] == '-H'
+			|| process.argv[2] == '--help') {
 		usage();
 	}
 	sourcefile = process.argv[2];
 	if (process.argv.length > 3) {
 		outputDynFile = process.argv[3];
-	}	
+	}
 }
 
 if (!fs.existsSync(sourcefile)) {
@@ -61,135 +62,144 @@ util.print("mkstubs - make a dynamic-load stubs file\n");
 util.print("source file: " + sourcefile + "\n");
 
 var legacyMapping = {
-	"AddressFmt": "ilib.AddressFmt",
-	"Address": "ilib.Address",
-	"Collator": "ilib.Collator",
-	"ElementIterator": "ilib.ElementIterator",
-	"CodePointSource": "ilib.CodePointSource",
-	"isAlnum": "ilib.CType.isAlnum",
-	"isAlpha": "ilib.CType.isAlpha",
-	"isAscii": "ilib.CType.isAscii",
-	"isBlank": "ilib.CType.isBlank",
-	"isCntrl": "ilib.CType.isCntrl",
-	"isDigit": "ilib.CType.isDigit",
-	"isGraph": "ilib.CType.isGraph",
-	"isIdeo": "ilib.CType.isIdeo",
-	"isLower": "ilib.CType.isLower",
-	"isPrint": "ilib.CType.isPrint",
-	"isPunct": "ilib.CType.isPunct",
-	"isScript": "ilib.CType.isScript",
-	"isSpace": "ilib.CType.isSpace",
-	"isUpper": "ilib.CType.isUpper",
-	"isXdigit": "ilib.CType.isXdigit",
-	"Currency": "ilib.Currency",
-	"Locale": "ilib.Locale",
-	"DateFmt": "ilib.DateFmt",
-	"DateRngFmt": "ilib.DateRngFmt",
-	"DurationFmt": "ilib.DurFmt",
-	"GlyphString": "ilib.GlyphString",
-	"JulianDay": "ilib.JulianDay",
-	"Loader": "ilib.Loader",
-	"LocaleInfo": "ilib.LocaleInfo",
-	"LocaleMatcher": "ilib.LocaleMatcher",
-	"StringMapper": "ilib.StringMapper",
-	"NameFmt": "ilib.NameFmt",
-	"Name": "ilib.Name",
-	"NormString": "ilib.NormString",
-	"NumFmt": "ilib.NumFmt",
-	"INumber": "ilib.Number",
-	"ResBundle": "ilib.ResBundle",
-	"ScriptInfo": "ilib.ScriptInfo",
-	"IString": "ilib.String",
-	"TimeZone": "ilib.TimeZone",
-	"UnitFmt": "ilib.UnitFmt",
-	"CopticDate": "ilib.Date.CopticDate",
-	"CopticCal": "ilib.Cal.Coptic",
-	"EthiopicDate": "ilib.Date.EthiopicDate",
-	"EthiopicCal": "ilib.Cal.Ethiopic",
-	"GregorianDate": "ilib.Date.GregDate",
-	"GregorianCal": "ilib.Cal.Gregorian",
-	"GregRataDie": "ilib.Date.GregRataDie",
-	"HanDate": "ilib.Date.HanDate",
-	"HanCal": "ilib.Cal.Han",
-	"HebrewDate": "ilib.Date.HebrewDate",
-	"HebrewCal": "ilib.Cal.Hebrew",
-	"IslamicDate": "ilib.Date.IslamicDate",
-	"IslamicCal": "ilib.Cal.Islamic",
-	"JulianDate": "ilib.Date.JulianDate",
-	"JulianCal": "ilib.Cal.Julian",
-	"PersianDate": "ilib.Date.PersDate",
-	"PersianCal": "ilib.Cal.Persian",
-	"PersianAlgoDate": "ilib.Date.PersAlgoDate",
-	"PersianAlgoCal": "ilib.Cal.PersianAlgo",
-	"PersRataDie": "ilib.Date.PersAstroRataDie",
-	"RataDie": "ilib.Date.RataDie",
-	"ThaiSolarDate": "ilib.Date.ThaiSolarDate",
-	"ThaiSolarCal": "ilib.Cal.ThaiSolar",
-	"CaseMapper": "ilib.CaseMapper",
-	"PhoneHandler": "ilib.StateHandler",
-	"NumberingPlan": "ilib.NumPlan",
-	"PhoneFmt": "ilib.PhoneFmt",
-	"PhoneGeoLocator": "ilib.GeoLocator",
-	"PhoneLocale": "ilib.PhoneLoc",
-	"PhoneNumber": "ilib.PhoneNumber",
-	"AreaUnit": "ilib.Measurement.Area",
-	"DigitalStorageUnit": "ilib.Measurement.DigitalStorage",
-	"EnergyUnit": "ilib.Measurement.Energy",
-	"FuelConsumptionUnit": "ilib.Measurement.FuelConsumption",
-	"LengthUnit": "ilib.Measurement.Length",
-	"MassUnit": "ilib.Measurement.Mass",
-	"VelocityUnit": "ilib.Measurement.Speed",
-	"TemperatureUnit": "ilib.Measurement.Temperature",
-	"TimeUnit": "ilib.Measurement.Time",
-	"UnknownUnit": "ilib.Measurement.Unknown",
-	"VolumeUnit": "ilib.Measurement.Volume",
-	"PhoneHandlerFactory": "ilib._handlerFactory",
+	"AddressFmt" : "ilib.AddressFmt",
+	"Address" : "ilib.Address",
+	"Collator" : "ilib.Collator",
+	"ElementIterator" : "ilib.ElementIterator",
+	"CodePointSource" : "ilib.CodePointSource",
+	"isAlnum" : "ilib.CType.isAlnum",
+	"isAlpha" : "ilib.CType.isAlpha",
+	"isAscii" : "ilib.CType.isAscii",
+	"isBlank" : "ilib.CType.isBlank",
+	"isCntrl" : "ilib.CType.isCntrl",
+	"isDigit" : "ilib.CType.isDigit",
+	"isGraph" : "ilib.CType.isGraph",
+	"isIdeo" : "ilib.CType.isIdeo",
+	"isLower" : "ilib.CType.isLower",
+	"isPrint" : "ilib.CType.isPrint",
+	"isPunct" : "ilib.CType.isPunct",
+	"isScript" : "ilib.CType.isScript",
+	"isSpace" : "ilib.CType.isSpace",
+	"isUpper" : "ilib.CType.isUpper",
+	"isXdigit" : "ilib.CType.isXdigit",
+	"Currency" : "ilib.Currency",
+	"Locale" : "ilib.Locale",
+	"DateFmt" : "ilib.DateFmt",
+	"DateRngFmt" : "ilib.DateRngFmt",
+	"DurationFmt" : "ilib.DurFmt",
+	"GlyphString" : "ilib.GlyphString",
+	"JulianDay" : "ilib.JulianDay",
+	"Loader" : "ilib.Loader",
+	"LocaleInfo" : "ilib.LocaleInfo",
+	"LocaleMatcher" : "ilib.LocaleMatcher",
+	"StringMapper" : "ilib.StringMapper",
+	"NameFmt" : "ilib.NameFmt",
+	"Name" : "ilib.Name",
+	"NormString" : "ilib.NormString",
+	"NumFmt" : "ilib.NumFmt",
+	"INumber" : "ilib.Number",
+	"ResBundle" : "ilib.ResBundle",
+	"ScriptInfo" : "ilib.ScriptInfo",
+	"IString" : "ilib.String",
+	"TimeZone" : "ilib.TimeZone",
+	"UnitFmt" : "ilib.UnitFmt",
+	"CopticDate" : "ilib.Date.CopticDate",
+	"CopticCal" : "ilib.Cal.Coptic",
+	"EthiopicDate" : "ilib.Date.EthiopicDate",
+	"EthiopicCal" : "ilib.Cal.Ethiopic",
+	"GregorianDate" : "ilib.Date.GregDate",
+	"GregorianCal" : "ilib.Cal.Gregorian",
+	"GregRataDie" : "ilib.Date.GregRataDie",
+	"HanDate" : "ilib.Date.HanDate",
+	"HanCal" : "ilib.Cal.Han",
+	"HebrewDate" : "ilib.Date.HebrewDate",
+	"HebrewCal" : "ilib.Cal.Hebrew",
+	"IslamicDate" : "ilib.Date.IslamicDate",
+	"IslamicCal" : "ilib.Cal.Islamic",
+	"JulianDate" : "ilib.Date.JulianDate",
+	"JulianCal" : "ilib.Cal.Julian",
+	"PersianDate" : "ilib.Date.PersDate",
+	"PersianCal" : "ilib.Cal.Persian",
+	"PersianAlgoDate" : "ilib.Date.PersAlgoDate",
+	"PersianAlgoCal" : "ilib.Cal.PersianAlgo",
+	"PersRataDie" : "ilib.Date.PersAstroRataDie",
+	"RataDie" : "ilib.Date.RataDie",
+	"ThaiSolarDate" : "ilib.Date.ThaiSolarDate",
+	"ThaiSolarCal" : "ilib.Cal.ThaiSolar",
+	"CaseMapper" : "ilib.CaseMapper",
+	"PhoneHandler" : "ilib.StateHandler",
+	"NumberingPlan" : "ilib.NumPlan",
+	"PhoneFmt" : "ilib.PhoneFmt",
+	"PhoneGeoLocator" : "ilib.GeoLocator",
+	"PhoneLocale" : "ilib.PhoneLoc",
+	"PhoneNumber" : "ilib.PhoneNumber",
+	"AreaUnit" : "ilib.Measurement.Area",
+	"DigitalStorageUnit" : "ilib.Measurement.DigitalStorage",
+	"EnergyUnit" : "ilib.Measurement.Energy",
+	"FuelConsumptionUnit" : "ilib.Measurement.FuelConsumption",
+	"LengthUnit" : "ilib.Measurement.Length",
+	"MassUnit" : "ilib.Measurement.Mass",
+	"VelocityUnit" : "ilib.Measurement.Speed",
+	"TemperatureUnit" : "ilib.Measurement.Temperature",
+	"TimeUnit" : "ilib.Measurement.Time",
+	"UnknownUnit" : "ilib.Measurement.Unknown",
+	"VolumeUnit" : "ilib.Measurement.Volume",
+	"PhoneHandlerFactory" : "ilib._handlerFactory",
 	
-	"JSUtils.shallowCopy": "ilib.shallowCopy",
-	"JSUtils.deepCopy": "ilib.deepCopy",
-	"JSUtils.mapString": "ilib.mapString",
-	"JSUtils.indexOf": "ilib.indexOf",
-	"JSUtils.toHexString": "ilib.toHexString",
-	"JSUtils.isDate": "ilib.isDate",
-	"JSUtils.merge": "ilib.merge",
-	"JSUtils.isEmpty": "ilib.isEmpty",
-	"JSUtils.hashCode": "ilib.hashCode",
+	"JSUtils.shallowCopy" : "ilib.shallowCopy",
+	"JSUtils.deepCopy" : "ilib.deepCopy",
+	"JSUtils.mapString" : "ilib.mapString",
+	"JSUtils.indexOf" : "ilib.indexOf",
+	"JSUtils.toHexString" : "ilib.toHexString",
+	"JSUtils.isDate" : "ilib.isDate",
+	"JSUtils.merge" : "ilib.merge",
+	"JSUtils.isEmpty" : "ilib.isEmpty",
+	"JSUtils.hashCode" : "ilib.hashCode",
 
-	"MathUtils.signum": "ilib.signum",
-	"MathUtils.floor": "ilib._roundFnc.floor",
-	"MathUtils.ceiling": "ilib._roundFnc.ceiling",
-	"MathUtils.down": "ilib._roundFnc.down",
-	"MathUtils.up": "ilib._roundFnc.up",
-	"MathUtils.halfup": "ilib._roundFnc.halfup",
-	"MathUtils.halfdown": "ilib._roundFnc.halfdown",
-	"MathUtils.halfeven": "ilib._roundFnc.halfeven",
-	"MathUtils.halfodd": "ilib._roundFnc.halfodd",
-	"MathUtils.mod": "ilib.mod",
-	"MathUtils.amod": "ilib.amod",
+	"MathUtils.signum" : "ilib.signum",
+	"MathUtils.floor" : "ilib._roundFnc.floor",
+	"MathUtils.ceiling" : "ilib._roundFnc.ceiling",
+	"MathUtils.down" : "ilib._roundFnc.down",
+	"MathUtils.up" : "ilib._roundFnc.up",
+	"MathUtils.halfup" : "ilib._roundFnc.halfup",
+	"MathUtils.halfdown" : "ilib._roundFnc.halfdown",
+	"MathUtils.halfeven" : "ilib._roundFnc.halfeven",
+	"MathUtils.halfodd" : "ilib._roundFnc.halfodd",
+	"MathUtils.mod" : "ilib.mod",
+	"MathUtils.amod" : "ilib.amod",
 
-	"SearchUtils.bsearch": "ilib.bsearch",
-	"SearchUtils.bsearch.numbers": "ilib.bsearch.numbers",
-	"SearchUtils.bisectionSearch": "ilib.bisectionSearch",
+	"SearchUtils.bsearch" : "ilib.bsearch",
+	"SearchUtils.bsearch.numbers" : "ilib.bsearch.numbers",
+	"SearchUtils.bisectionSearch" : "ilib.bisectionSearch",
 
-	"Utils.mergeLocData": "ilib.mergeLocData",
-	"Utils.getLocFiles": "ilib.getLocFiles",
-	"Utils._callLoadData": "ilib._callLoadData",
-	"Utils.loadData": "ilib.loadData",
+	"Utils.mergeLocData" : "ilib.mergeLocData",
+	"Utils.getLocFiles" : "ilib.getLocFiles",
+	"Utils._callLoadData" : "ilib._callLoadData",
+	"Utils.loadData" : "ilib.loadData",
 
-	"Astro.initAstro": "ilib.Date.initAstro"
+	"Astro.initAstro" : "ilib.Date.initAstro",
+	
+	"DateFactory" : "ilib.Date.newInstance",
+	"DateFactory._dateToIlib": "ilib.Date._dateToIlib",
+	
+	"CalendarFactory" : "ilib.Cal.newInstance",
+	"CalendarFactory.getCalendars" : "ilib.Cal.getCalendars"
 };
+
 var parentMap = {
-	"ilib.Date": "IDate",
-	"ilib.Cal": "Calendar",
-	"ilib.Measurement": "MeasurementFactory"
+	"ilib.Date" : "DateFactory",
+	"ilib.Cal" : "CalendarFactory",
+	"ilib.Measurement" : "MeasurementFactory"
 };
-var nonClasses = [
-	"JSUtils",
-	"MathUtils",
-	"SearchUtils",
-	"Utils",
+var nonClasses = [ 
+	"JSUtils", 
+	"MathUtils", 
+	"SearchUtils", 
+	"Utils", 
 	"Astro",
-	"ilib"
+	"ilib",
+	"DateFactory",
+	"CalendarFactory"
 ];
 
 var text = fs.readFileSync(sourcefile, "utf-8");
@@ -218,7 +228,8 @@ function outputDynIdentifier(name, signature, filename, isStatic) {
 	var oldName = legacyMapping[name];
 	// console.log("Dynamic stub " + name);
 	if (oldName) {
-		outputDyn += "if(!"+ oldName + "){" + oldName + "=function" + signature + '{';
+		outputDyn += "if(!" + oldName + "){" + oldName + "=function"
+				+ signature + '{';
 		outputDyn += oldName + '=require("./' + filename + '")';
 		parts = name.split(".");
 		if (parts.length > 1) {
@@ -238,27 +249,27 @@ function outputIdentifier(name, signature, filename, isStatic) {
 	var oldName = legacyMapping[name];
 	// console.log("Stub " + name);
 	if (oldName) {
-		output += oldName  + "=" + name + ";";
+		output += oldName + "=" + name + ";";
 	}
 }
 
-outputDyn = 
-	"/* This is a generated file. DO NOT EDIT, as your changes will be lost. */\n" +
-	"/* Instead, fix the code in mkstubs.js which generated this file.       */\n" +
-	'var ilib=require("./ilib.js");\n' +
-	'if(!ilib.CType)ilib.CType={};if(!ilib._roundFnc)ilib._roundFnc={};\n';
+outputDyn = "/* This is a generated file. DO NOT EDIT, as your changes will be lost. */\n"
+		+ "/* Instead, fix the code in mkstubs.js which generated this file.       */\n"
+		+ 'var ilib=require("./ilib.js");\n'
+		+ 'if(!ilib.CType)ilib.CType={};if(!ilib._roundFnc)ilib._roundFnc={};\n';
 
-output = 
-	"/* This is a generated file. DO NOT EDIT, as your changes will be lost. */\n" +
-	"/* Instead, fix the code in mkstubs.js which generated this file.       */\n" +
-	'ilib.CType=CType;ilib._roundFnc={};\n';
+output = "/* This is a generated file. DO NOT EDIT, as your changes will be lost. */\n"
+		+ "/* Instead, fix the code in mkstubs.js which generated this file.       */\n"
+		+ 'ilib.CType=CType;ilib._roundFnc={};\n';
 
 // first output the parents
 var parentName;
 for (parentName in parentMap) {
-	outputDyn += "if(!"+ parentName + "){" + parentName + "=function(params){" + parentName + '=require("./' + parentMap[parentName] + '.js");';
-	outputDyn += 'return new ' + parentName + "(params);};" + parentName + ".stub=true;}\n";
-	
+	outputDyn += "if(!" + parentName + "){" + parentName + "=function(params){"
+			+ parentName + '=require("./' + parentMap[parentName] + '.js");';
+	outputDyn += 'return new ' + parentName + "(params);};" + parentName
+			+ ".stub=true;}\n";
+
 	output += parentName + "=" + parentMap[parentName] + ";";
 }
 
@@ -281,7 +292,8 @@ for (i = 0; i < lines.length; i++) {
 		isPublic = false;
 	} else if (publicRegex.test(lines[i])) {
 		isPublic = true;
-	} else if (currentFile !== "ilib.js" && lines[i].indexOf(".prototype") === -1) {
+	} else if (currentFile !== "ilib.js"
+			&& lines[i].indexOf(".prototype") === -1) {
 		result = functionRegex1.exec(lines[i]);
 		if (result === null) {
 			result = functionRegex2.exec(lines[i]);

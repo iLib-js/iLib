@@ -24,6 +24,7 @@
 ilib.js
 DateRngFmt.js
 IDate.js
+DateFactory.js
 GregorianCal.js
 GregorianDate.js
 ThaiSolarCal.js
@@ -37,6 +38,7 @@ NumFmt.js
 JulianDay.js
 DateFmt.js
 Calendar.js
+CalendarFactory.js
 Utils.js
 Locale.js
 IString.js
