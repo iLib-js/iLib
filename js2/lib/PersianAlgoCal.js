@@ -38,10 +38,6 @@ var PersianAlgoCal = function() {
 	this.type = "persian-algo";
 };
 
-PersianAlgoCal.prototype = new Calendar({noinstance: true});
-PersianAlgoCal.prototype.parent = Calendar.prototype;
-PersianAlgoCal.prototype.constructor = PersianAlgoCal;
-
 /**
  * @private
  * @const

@@ -60,7 +60,7 @@ var DigitalStorageUnit = function (options) {
 	}
 };
 
-DigitalStorageUnit.prototype = new Measurement();
+DigitalStorageUnit.prototype = new Measurement({});
 DigitalStorageUnit.prototype.parent = Measurement;
 DigitalStorageUnit.prototype.constructor = DigitalStorageUnit;
 

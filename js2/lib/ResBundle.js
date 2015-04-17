@@ -230,7 +230,7 @@ var ResBundle = function (options) {
 			this.locale = (typeof(options.locale) === 'string') ? 
 					new Locale(options.locale) :
 					options.locale;
-		}path
+		}
 		if (options.name) {
 			this.baseName = options.name;
 		}

@@ -27,7 +27,7 @@ MathUtils.js
 SearchUtils.js
 Calendar.js
 IslamicCal.js
-RataDie.js
+IslamicRataDie.js
 */
 
 var ilib = require("./ilib.js");
@@ -87,7 +87,7 @@ var IslamicCal = require("./IslamicCal.js");
  * Depends directive: !depends IslamicDate.js
  * 
  * @constructor
- * @extends Date
+ * @extends IDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
  */
 var IslamicDate = function(params) {
@@ -224,7 +224,7 @@ IslamicDate.GregorianDiff = 227015;
  * @returns {RataDie} the new RD instance for the given params
  */
 IslamicDate.prototype.newRd = function (params) {
-	return new Date.IslamicRataDie(params);
+	return new IslamicRataDie(params);
 };
 
 /**

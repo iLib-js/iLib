@@ -60,7 +60,7 @@ var EnergyUnit = function (options) {
 	}
 };
 
-EnergyUnit.prototype = new Measurement();
+EnergyUnit.prototype = new Measurement({});
 EnergyUnit.prototype.parent = Measurement;
 EnergyUnit.prototype.constructor = EnergyUnit;
 

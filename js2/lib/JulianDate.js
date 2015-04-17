@@ -27,7 +27,7 @@ JulianCal.js
 SearchUtils.js 
 MathUtils.js
 LocaleInfo.js 
-RataDie.js
+JulianRataDie.js
 */
 
 var ilib = require("./ilib.js");

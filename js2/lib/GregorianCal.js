@@ -33,17 +33,14 @@ var Calendar = require("./Calendar.js");
  * Depends directive: !depends gregorian.js
  * 
  * @constructor
+ * @param {{noinstance:boolean}=} options
  * @implements Calendar
  */
 var GregorianCal = function(options) {
-	if (!options || !options.noInstance) {
+	if (!options || !options.noinstance) {
 		this.type = "gregorian";
 	}
 };
-
-GregorianCal.prototype = new Calendar({noinstance: true});
-GregorianCal.prototype.parent = Calendar.prototype;
-GregorianCal.prototype.constructor = GregorianCal;
 
 /**
  * the lengths of each month 

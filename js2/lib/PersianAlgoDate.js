@@ -26,6 +26,7 @@ IDate.js
 PersianAlgoCal.js 
 SearchUtils.js
 MathUtils.js
+PersAlgoRataDie.js
 */
 
 var ilib = require("./ilib.js");
@@ -39,6 +40,7 @@ var IDate = require("./IDate.js");
 var Calendar = require("./Calendar.js");
 
 var PersianAlgoCal = require("./PersianAlgoCal.js");
+var PersianAlgoRataDie = require("./PersianAlgoRataDie.js");
 
 /**
  * @class

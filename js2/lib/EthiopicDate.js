@@ -189,7 +189,7 @@ EthiopicDate.prototype.constructor = EthiopicDate;
  * @returns {RataDie} the new RD instance for the given params
  */
 EthiopicDate.prototype.newRd = function (params) {
-	return new Date.EthiopicRataDie(params);
+	return new EthiopicRataDie(params);
 };
 
 /**

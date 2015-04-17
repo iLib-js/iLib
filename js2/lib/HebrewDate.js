@@ -26,7 +26,7 @@ IDate.js
 MathUtils.js
 Calendar.js
 HebrewCal.js
-RataDie.js
+HebrewRataDie.js
 */
 
 var ilib = require("./ilib.js");
@@ -87,7 +87,7 @@ var HebrewRataDie = require("./HebrewRataDie.js");
  * Depends directive: !depends HebrewDate.js
  * 
  * @constructor
- * @extends Date
+ * @extends IDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
  */
 var HebrewDate = function(params) {
@@ -311,7 +311,7 @@ HebrewDate.GregorianDiff = 1373060.25;
  * @returns {RataDie} the new RD instance for the given params
  */
 HebrewDate.prototype.newRd = function (params) {
-	return new Date.HebrewRataDie(params);
+	return new HebrewRataDie(params);
 };
 
 /**

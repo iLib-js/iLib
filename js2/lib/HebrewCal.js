@@ -47,10 +47,6 @@ var HebrewCal = function() {
 	this.type = "hebrew";
 };
 
-HebrewCal.prototype = new Calendar({noinstance: true});
-HebrewCal.prototype.parent = Calendar.prototype;
-HebrewCal.prototype.constructor = HanCal;
-
 /**
  * Return the number of days elapsed in the Hebrew calendar before the
  * given year starts.
@@ -228,7 +224,7 @@ HebrewCal.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {IDate} a date appropriate for this calendar type
+ * @returns {HebrewDate} a date appropriate for this calendar type
  */
 HebrewCal.prototype.newDateInstance = function (options) {
 	var HebrewDate = require("./HebrewDate.js");

@@ -81,7 +81,7 @@ SearchUtils.bsearch = function(target, arr, comparator) {
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */
-SearchUtils.bsearch.number = function(element, target) {
+SearchUtils.bsearch.numbers = function(element, target) {
 	return element - target;
 };
 

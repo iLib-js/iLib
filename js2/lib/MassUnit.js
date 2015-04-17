@@ -60,7 +60,7 @@ var MassUnit = function (options) {
 	}
 };
 
-MassUnit.prototype = new Measurement();
+MassUnit.prototype = new Measurement({});
 MassUnit.prototype.parent = Measurement;
 MassUnit.prototype.constructor = MassUnit;
 

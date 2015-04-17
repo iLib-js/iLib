@@ -82,7 +82,7 @@ var UnknownUnit = require("./UnknownUnit.js");
  * The value in measurement2 will again end up being about 3.125 miles.
  * 
  * @constructor 
- * @param {Object} options options that control the construction of this instance
+ * @param {Object=} options options that control the construction of this instance
  */
 var Measurement = function(options) {
 	if (!options || typeof(options.unit) === 'undefined') {
@@ -117,6 +117,8 @@ var Measurement = function(options) {
 		return new Measurement._constructors[measure](options);
 	}
 };
+
+Measurement.stub = false;
 
 /**
  * @private

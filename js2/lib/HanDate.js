@@ -28,6 +28,7 @@ MathUtils.js
 LocaleInfo.js 
 Locale.js
 TimeZone.js
+HanRataDie.js
 */
 
 var ilib = require("./ilib.js");
@@ -117,7 +118,7 @@ var HanRataDie = require("./HanRataDie.js");
  * @extends Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Han date
  */
-HanDate = function(params) {
+var HanDate = function(params) {
 	this.timezone = "local";
 	if (params) {
 		if (params.locale) {

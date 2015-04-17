@@ -51,10 +51,6 @@ var PersianCal = function() {
 	this.type = "persian";
 };
 
-PersianCal.prototype = new Calendar({noinstance: true});
-PersianCal.prototype.parent = Calendar.prototype;
-PersianCal.prototype.constructor = PersianCal;
-
 /**
  * @private
  * @const

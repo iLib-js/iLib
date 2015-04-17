@@ -110,7 +110,7 @@ CopticDate.prototype.constructor = CopticDate;
  * @returns {RataDie} the new RD instance for the given params
  */
 CopticDate.prototype.newRd = function (params) {
-	return new Date.CopticRataDie(params);
+	return new CopticRataDie(params);
 };
 
 /**

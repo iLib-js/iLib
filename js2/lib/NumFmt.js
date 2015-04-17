@@ -27,7 +27,7 @@ MathUtils.js
 Currency.js
 IString.js
 JSUtils.js
-Number.js
+INumber.js
 */
 
 // !data localeinfo currency
@@ -41,7 +41,7 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var Currency = require("./Currency.js");
 var IString = require("./IString.js");
-var Number = require("./Number.js");
+var INumber = require("./INumber.js");
 
 /**
  * @class
@@ -345,10 +345,10 @@ NumFmt.prototype = {
 
 		// set up the function, so we only have to figure it out once
 		// and not every time we do format()
-		this.round = ilib._roundFnc[this.roundingMode];
+		this.round = MathUtils[this.roundingMode];
 		if (!this.round) {
 			this.roundingMode = "halfdown";
-			this.round = ilib._roundFnc[this.roundingMode];
+			this.round = MathUtils[this.roundingMode];
 		}
 		
 		if (this.style === "nogrouping") {
@@ -383,7 +383,7 @@ NumFmt.prototype = {
 
 	/**
 	 * @private
-	 * @param {Number|Number|string|number} num object, string, or number to convert to a primitive number
+	 * @param {INumber|Number|string|number} num object, string, or number to convert to a primitive number
 	 * @return {number} the primitive number equivalent of the argument
 	 */
 	_toPrimitive: function (num) {
@@ -531,7 +531,7 @@ NumFmt.prototype = {
 
 	/**
 	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|string|Number|Number} a floating point number to format
+	 * @param num {number|string|INumber|Number} a floating point number to format
 	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {

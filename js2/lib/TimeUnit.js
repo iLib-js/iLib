@@ -60,7 +60,7 @@ var TimeUnit = function (options) {
 	}
 };
 
-TimeUnit.prototype = new Measurement();
+TimeUnit.prototype = new Measurement({});
 TimeUnit.prototype.parent = Measurement;
 TimeUnit.prototype.constructor = TimeUnit;
 

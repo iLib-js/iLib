@@ -51,10 +51,6 @@ var IslamicCal = function() {
 	this.type = "islamic";
 };
 
-IslamicCal.prototype = new Calendar({noinstance: true});
-IslamicCal.prototype.parent = Calendar.prototype;
-IslamicCal.prototype.constructor = IslamicCal;
-
 /**
  * the lengths of each month 
  * @private
@@ -130,7 +126,7 @@ IslamicCal.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @return {IDate} a date appropriate for this calendar type
+ * @return {IslamicDate} a date appropriate for this calendar type
  */
 IslamicCal.prototype.newDateInstance = function (options) {
 	var IslamicDate = require("./IslamicDate.js");

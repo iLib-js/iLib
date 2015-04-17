@@ -56,7 +56,7 @@ var FuelConsumptionUnit = function(options) {
     }
 };
 
-FuelConsumptionUnit.prototype = new Measurement();
+FuelConsumptionUnit.prototype = new Measurement({});
 FuelConsumptionUnit.prototype.parent = Measurement;
 FuelConsumptionUnit.prototype.constructor = FuelConsumptionUnit;
 

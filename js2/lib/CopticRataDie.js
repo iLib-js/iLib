@@ -75,7 +75,7 @@ var EthiopicRataDie = require("./EthiopicRataDie.js");
  * 
  * @private
  * @constructor
- * @extends Date.EthiopicRataDie
+ * @extends EthiopicRataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Coptic RD date
  */
 var CopticRataDie = function(params) {

@@ -60,7 +60,7 @@ var LengthUnit = function (options) {
 	}
 };
 
-LengthUnit.prototype = new Measurement();
+LengthUnit.prototype = new Measurement({});
 LengthUnit.prototype.parent = Measurement;
 LengthUnit.prototype.constructor = LengthUnit;
 

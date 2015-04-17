@@ -1,5 +1,6 @@
 /**
- * Copyright © 2012-2014, JEDLSoft
+ * @license
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +14,16 @@
  *
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * @license
  */
 
 /*
- * ilib.js - metafile that includes all other js files
+ * ilib-full-inc.js - metafile that includes all other js files
  */
 
 /* !depends
 ilib.js
 DateRngFmt.js
-Date.js
+IDate.js
 HebrewDate.js
 HebrewCal.js
 IslamicCal.js
@@ -31,29 +31,28 @@ IslamicDate.js
 JulianCal.js
 JulianDate.js
 GregorianCal.js
-GregDate.js
+GregorianDate.js
 ThaiSolarCal.js
 ThaiSolarDate.js
-PersianAlgoCal.js
-calendar/persianDate.js
-calendar/persianAstro.js
+PersianCal.js
 PersianDate.js
+PersianAlgoCal.js
+PersianAlgoDate.js
 HanCal.js
 HanDate.js
 EthiopicCal.js
 EthiopicDate.js
 CopticCal.js
 CopticDate.js
-Number.js
+INumber.js
 NumFmt.js
 JulianDay.js
 DateFmt.js
-calendar.js
+Calendar.js
 Utils.js
 Locale.js
-nfkc/all.js
-String.js
-DurFmt.js
+IString.js
+DurationFmt.js
 ResBundle.js
 CType.js
 LocaleInfo.js
@@ -69,35 +68,35 @@ isIdeo.js
 isLower.js
 isPrint.js
 isPunct.js
-isScript.js
 isSpace.js
 isUpper.js
 isXDigit.js
+isScript.js
 ScriptInfo.js
 Name.js
 NameFmt.js
 Address.js
 AddressFmt.js
 Collator.js
+nfkc/all.js
 LocaleMatcher.js
 NormString.js
-Mapper.js
-maps/caseMapper.js
+CaseMapper.js
 GlyphString.js
-PhoneNumber.js
 PhoneFmt.js
-PhoneGeo.js
+PhoneGeoLocator.js
+PhoneNumber.js
 Measurement.js
 UnitFmt.js
 LengthUnit.js
 VelocityUnit.js
-TemperatureUnit.js
 DigitalStorageUnit.js
+TemperatureUnit.js
 UnknownUnit.js
 TimeUnit.js
 MassUnit.js
 AreaUnit.js
-FeulConsumptionUnit.js
+FuelConsumptionUnit.js
 VolumeUnit.js	
 EnergyUnit.js
 */

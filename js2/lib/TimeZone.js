@@ -39,7 +39,6 @@ var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 
-var IDate = require("./IDate.js");
 var GregRataDie = require("./GregRataDie.js");
 
 var IString = require("./IString.js");
@@ -336,10 +335,10 @@ TimeZone._marshallIds = function (country, sync, callback) {
  * 
  * @param {string|undefined} country country code for which time zones are being sought
  * @param {boolean} sync whether to find the available ids synchronously (true) or asynchronously (false)
- * @param {Function(Array.<string>)} onLoad callback function to call when the data is finished loading
+ * @param {function(Array.<string>)} onLoad callback function to call when the data is finished loading
  * @return {Array.<string>} an array of zone id strings
  */
-TimeZone.getAvailableIds = function (country, sync, callback) {
+TimeZone.getAvailableIds = function (country, sync, onLoad) {
 	var tz, ids = [];
 	
 	if (typeof(sync) !== 'boolean') {
@@ -360,7 +359,7 @@ TimeZone.getAvailableIds = function (country, sync, callback) {
 						});
 					}
 				}
-				ids = TimeZone._marshallIds(country, sync, callback);
+				ids = TimeZone._marshallIds(country, sync, onLoad);
 			});
 		} else {
 			for (tz in ilib.data.zoneinfo) {
@@ -368,10 +367,10 @@ TimeZone.getAvailableIds = function (country, sync, callback) {
 					ilib.data.timezone.list.push(tz);
 				}
 			}
-			ids = TimeZone._marshallIds(country, sync, callback);
+			ids = TimeZone._marshallIds(country, sync, onLoad);
 		}
 	} else {
-		ids = TimeZone._marshallIds(country, sync, callback);
+		ids = TimeZone._marshallIds(country, sync, onLoad);
 	}
 	
 	return ids;

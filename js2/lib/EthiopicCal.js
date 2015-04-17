@@ -39,10 +39,6 @@ var EthiopicCal = function() {
 	this.type = "ethiopic";
 };
 
-EthiopicCal.prototype = new Calendar({noinstance: true});
-EthiopicCal.prototype.parent = Calendar.prototype;
-EthiopicCal.prototype.constructor = EthiopicCal;
-
 /**
  * Return the number of months in the given year. The number of months in a year varies
  * for lunar calendars because in some years, an extra month is needed to extend the 
@@ -75,7 +71,7 @@ EthiopicCal.prototype.getMonLength = function(month, year) {
 /**
  * Return true if the given year is a leap year in the Ethiopic calendar.
  * The year parameter may be given as a number, or as a JulDate object.
- * @param {number|Date.JulDate} year the year for which the leap year information is being sought
+ * @param {number|EthiopicDate} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 EthiopicCal.prototype.isLeapYear = function(year) {

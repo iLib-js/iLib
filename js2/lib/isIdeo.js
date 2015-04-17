@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends CType.js String.js
+// !depends CType.js IString.js
 
 // !data ctype
 

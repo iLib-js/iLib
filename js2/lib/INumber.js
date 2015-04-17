@@ -1,5 +1,5 @@
 /*
- * Number.js - Parse a number in any locale
+ * INumber.js - Parse a number in any locale
  * 
  * Copyright © 2012-2015, JEDLSoft
  *
@@ -50,7 +50,7 @@ var Currency = require("./Currency.js");
  * that are not supported by those two
  * functions, and it handles numbers written in other locales properly. For example, 
  * if you pass the string "203,231.23" to the parseFloat() function in Javascript, it 
- * will return you the number 203. The Number class will parse it correctly and 
+ * will return you the number 203. The INumber class will parse it correctly and 
  * the value() function will return the number 203231.23. If you pass parseFloat() the 
  * string "203.231,23" with the locale set to de-DE, it will return you 203 again. This
  * class will return the correct number 203231.23 again.<p>
@@ -92,13 +92,13 @@ var Currency = require("./Currency.js");
  * </ul>
  * <p>
  * 
- * Depends directive: !depends Number.js
+ * Depends directive: !depends INumber.js
  * 
  * @constructor
- * @param {string|number|Number|Number|undefined} str a string to parse as a number, or a number value
+ * @param {string|number|INumber|Number|undefined} str a string to parse as a number, or a number value
  * @param {Object=} options Options controlling how the instance should be created 
  */
-var Number = function (str, options) {
+var INumber = function (str, options) {
 	var i, stripped = "", 
 		sync = true,
 		loadParams,
@@ -227,7 +227,7 @@ var Number = function (str, options) {
 	}));
 };
 
-Number.prototype = {
+INumber.prototype = {
 	/**
 	 * Return the locale for this formatter instance.
 	 * @return {Locale} the locale instance for this formatter
@@ -245,7 +245,7 @@ Number.prototype = {
 	},
 	
 	/**
-	 * If the type of this Number instance is "currency", then the parser will attempt
+	 * If the type of this INumber instance is "currency", then the parser will attempt
 	 * to figure out which currency this amount represents. The amount can be written
 	 * with any of the currency signs or ISO 4217 codes that are currently
 	 * recognized by ilib, and the currency signs may occur before or after the
@@ -261,14 +261,14 @@ Number.prototype = {
 	 * the "$" as its sign.
 	 * 
 	 * @return {Currency|undefined} the currency instance for this amount, or 
-	 * undefined if this Number object is not of type currency
+	 * undefined if this INumber object is not of type currency
 	 */
 	getCurrency: function () {
 		return this.currency;
 	},
 	
 	/**
-	 * Return the value of this number object as a primitive number instance.
+	 * Return the value of this INumber object as a primitive number instance.
 	 * @return {number} the value of this number instance
 	 */
 	valueOf: function () {
@@ -276,4 +276,4 @@ Number.prototype = {
 	}
 };
 
-module.exports = Number;
+module.exports = INumber;

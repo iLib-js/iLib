@@ -23,7 +23,7 @@
 /* !depends
 ilib.js
 DateRngFmt.js
-Date.js
+IDate.js
 GregorianCal.js
 GregorianDate.js
 ThaiSolarCal.js
@@ -32,7 +32,7 @@ PersianCal.js
 PersianDate.js
 EthiopicCal.js
 EthiopicDate.js
-Number.js
+INumber.js
 NumFmt.js
 JulianDay.js
 DateFmt.js

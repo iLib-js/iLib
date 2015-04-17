@@ -38,10 +38,6 @@ var JulianCal = function() {
 	this.type = "julian";
 };
 
-JulianCal.prototype = new Calendar({noinstance: true});
-JulianCal.prototype.parent = Calendar.prototype;
-JulianCal.prototype.constructor = JulianCal;
-
 /* the lengths of each month */
 JulianCal.monthLengths = [
 	31,  /* Jan */
@@ -134,7 +130,7 @@ JulianCal.prototype.getMonLength = function(month, year) {
 /**
  * Return true if the given year is a leap year in the Julian calendar.
  * The year parameter may be given as a number, or as a JulDate object.
- * @param {number|Date.JulDate} year the year for which the leap year information is being sought
+ * @param {number|JulianDate} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 JulianCal.prototype.isLeapYear = function(year) {
@@ -160,7 +156,7 @@ JulianCal.prototype.getType = function() {
  */
 JulianCal.prototype.newDateInstance = function (options) {
 	var JulianDate = require("./JulianDate.js");
-	return new Date.JulDate(options);
+	return new JulianDate(options);
 };
 
 /* register this calendar for the factory method */

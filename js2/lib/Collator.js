@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends Locale.js ilib.js Number.js isPunct.js NormString.js MathUtils.js JSUtils.js
+// !depends Locale.js ilib.js INumber.js isPunct.js NormString.js MathUtils.js JSUtils.js
 
 // !data collation
 
@@ -26,7 +26,7 @@ var MathUtils = require("./MathUtils.js");
 var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
-var Number = require("./Number.js");
+var INumber = require("./INumber.js");
 
 var CType = require("./CType.js");
 var isPunct = require("./isPunct.js");
@@ -655,8 +655,8 @@ Collator.prototype = {
      */
     _basicCompare: function(left, right) {
 		if (this.numeric) {
-			var lvalue = new Number(left, {locale: this.locale});
-			var rvalue = new Number(right, {locale: this.locale});
+			var lvalue = new INumber(left, {locale: this.locale});
+			var rvalue = new INumber(right, {locale: this.locale});
 			if (isNaN(lvalue.valueOf())) {
 				if (isNaN(rvalue.valueOf())) {
 					return 0;
@@ -784,7 +784,7 @@ Collator.prototype = {
 		}
 		
 		if (this.numeric) {
-			var v = new Number(str, {locale: this.locale});
+			var v = new INumber(str, {locale: this.locale});
 			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
 			return pad(s, 16);	
 		} else {

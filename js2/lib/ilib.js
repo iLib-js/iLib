@@ -482,7 +482,7 @@ ilib.Loader.prototype.isAvailable = function(path) {};
  * Loader class documentation for more information about loaders. 
  * 
  * @static
- * @param {Loader} loader class to call to access the requested data.
+ * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
  * if not
  */
@@ -502,7 +502,7 @@ ilib.setLoaderCallback = function(loader) {
  * of ilib. If there is no loader, this method returns undefined.
  * 
  * @static
- * @return {Loader|undefined} the loader instance currently in use, or 
+ * @return {ilib.Loader|undefined} the loader instance currently in use, or 
  * undefined if there is no such loader
  */
 ilib.getLoader = function() {

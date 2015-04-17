@@ -29,7 +29,7 @@ var isDigit = require("./isDigit.js");
  * 
  * Depends directive: !depends isAlnum.js
  * 
- * @param {string|ilib.String|number} ch character or code point to examine
+ * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is alphabetic or numeric
  */
 var isAlnum = function (ch) {
@@ -39,7 +39,7 @@ var isAlnum = function (ch) {
 			num = ch;
 			break;
 		case 'string':
-			num = ilib.String.toCodePoint(ch, 0);
+			num = IString.toCodePoint(ch, 0);
 			break;
 		case 'undefined':
 			return false;

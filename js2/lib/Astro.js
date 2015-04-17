@@ -19,7 +19,7 @@
 
 /* !depends
 ilib.js
-Date.js
+IDate.js
 Utils.js
 GregorianDate.js
 GregRataDie.js

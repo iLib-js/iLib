@@ -57,10 +57,6 @@ var HanCal = function(params) {
 	}));
 };
 
-HanCal.prototype = new Calendar({noinstance: true});
-HanCal.prototype.parent = Calendar.prototype;
-HanCal.prototype.constructor = HanCal;
-
 /**
  * @protected
  * @static
@@ -205,7 +201,7 @@ HanCal._currentMajorST = function(jd) {
  * @returns {boolean} true if there is no major solar term in the same year
  */
 HanCal._noMajorST = function(jd) {
-	return HanCal._currentMajorST(jd) === HanCal._currentMajorST(ilib.HanCal._newMoonOnOrAfter(jd+1));
+	return HanCal._currentMajorST(jd) === HanCal._currentMajorST(HanCal._newMoonOnOrAfter(jd+1));
 };
 
 /**
@@ -338,7 +334,7 @@ HanCal.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @return {IDate} a date appropriate for this calendar type
+ * @return {HanDate} a date appropriate for this calendar type
  */
 HanCal.prototype.newDateInstance = function (options) {
 	var HanDate = require("./HanDate.js");
