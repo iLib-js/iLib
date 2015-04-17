@@ -28,20 +28,20 @@ function suite() {
 	var s = new cli.TestSuite();
 
 	var suites = [
-	    "testmeasurement.js",
 	    "testlengths.js",
 	    "testspeeds.js",
 	    "testtemp.js",
 	    "testdigitalstoreage.js",
-	    "testUnknown.js",
 	    "testtime.js",
 	    "testmass.js",
 	    "testarea.js",
 	    "testFuelConsumption.js",
 	    "testVolume.js",
 	    "testenergy.js",
+	    "testUnknown.js",
 	    "testunits.js",
-	    "testunitfmt.js"
+	    "testunitfmt.js",
+	    "testmeasurement.js"
 	];
 
 	suites.forEach(function(path) {

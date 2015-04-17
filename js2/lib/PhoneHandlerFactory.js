@@ -577,7 +577,6 @@ USStateHandler.prototype.vsc = function (number, currentChar, fields, regionSett
 };
 
 /**
- * @protected
  * @static
  */
 var PhoneHandlerFactory = function (locale, plan) {

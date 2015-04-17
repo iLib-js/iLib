@@ -18,7 +18,7 @@
  */
 
 if (ilib.isDynCode()) {
-	if (!ilib.NormString || ilib.NormString.stub) require("./normstring.js");
+	new ilib.NormString("foo"); // cause the code to be loaded
 	ilib.NormString.init();
 
 	if (typeof(normtests) === 'undefined') {

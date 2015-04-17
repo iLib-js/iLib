@@ -193,7 +193,7 @@ var UnitFmt = function(options) {
 	Utils.loadData({
 		object: UnitFmt, 
 		locale: this.locale, 
-		name: "UnitFmt.json", 
+		name: "unitfmt.json", 
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (format) {                      

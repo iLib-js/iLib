@@ -153,7 +153,7 @@ function testUnitFormatWithScale5() {
 }
 
 function testUnitFormatWithoutScale5() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new ilib.Measurement({
 		unit: "kilowatt hour",
 		amount: 1233453
 	});
@@ -164,7 +164,7 @@ function testUnitFormatWithoutScale5() {
 }
 
 function testUnitFormatWithMeasurementSystem5() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new ilib.Measurement({
 		unit: "kilowatt hour",
 		amount: 1233453
 	});

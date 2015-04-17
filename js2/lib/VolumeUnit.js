@@ -61,7 +61,7 @@ var VolumeUnit = function (options) {
 	}
 };
 
-VolumeUnit.prototype = new Measurement({});
+VolumeUnit.prototype = new Measurement();
 VolumeUnit.prototype.parent = Measurement;
 VolumeUnit.prototype.constructor = VolumeUnit;
 
@@ -86,10 +86,6 @@ VolumeUnit.ratios = {
     "imperial quart":  [17,   230.582,  76.8608,       69.3549,    38.4304,  4.8038,     2.4019,     1.20095,    0.300238,    0.0401359,   1136.52,    1.13652,    0.00113652,  192,           64,            40,              2,              1,              0.25                ],
     "imperial gallon": [18,   922.33,   307.443,       277.42,     153.722,  19.2152,    9.6076,     4.8038,     1.20095,     0.160544,    4546.09,    4.54609,    0.00454609,  768,           256,           160,             8,              4,              1                   ]
 };
-
-VolumeUnit.prototype = new Measurement({});
-VolumeUnit.prototype.parent = Measurement;
-VolumeUnit.prototype.constructor = VolumeUnit;
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -121,7 +117,7 @@ VolumeUnit.prototype.convert = function(to) {
 	if (!to || typeof(VolumeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new VolumeUnit({
 		unit: to,
 		amount: this
 	});

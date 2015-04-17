@@ -60,7 +60,7 @@ var TimeUnit = function (options) {
 	}
 };
 
-TimeUnit.prototype = new Measurement({});
+TimeUnit.prototype = new Measurement();
 TimeUnit.prototype.parent = Measurement;
 TimeUnit.prototype.constructor = TimeUnit;
 
@@ -79,10 +79,6 @@ TimeUnit.ratios = {
     "decade":       [ 11,  3.156e+17,  3.156e+14,  3.156e+11,  3.156e+8,  5.259e+6,    87658.1,      3652.42,      521.775,     120,         10,          1,            0.1         ],
     "century":      [ 12,  3.156e+18,  3.156e+18,  3.156e+12,  3.156e+9,  5.259e+7,    876581,       36524.2,      5217.75,     1200,        100,         10,           1           ]
 };
-
-TimeUnit.prototype = new Measurement({});
-TimeUnit.prototype.parent = Measurement;
-TimeUnit.prototype.constructor = TimeUnit;
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -114,7 +110,7 @@ TimeUnit.prototype.convert = function(to) {
 	if (!to || typeof(TimeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new TimeUnit({
 		unit: to,
 		amount: this
 	});

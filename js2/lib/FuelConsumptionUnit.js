@@ -56,7 +56,7 @@ var FuelConsumptionUnit = function(options) {
     }
 };
 
-FuelConsumptionUnit.prototype = new Measurement({});
+FuelConsumptionUnit.prototype = new Measurement();
 FuelConsumptionUnit.prototype.parent = Measurement;
 FuelConsumptionUnit.prototype.constructor = FuelConsumptionUnit;
 
@@ -66,10 +66,6 @@ FuelConsumptionUnit.ratios = [
     "mpg",
     "mpg(imp)"
 ];
-
-FuelConsumptionUnit.prototype = new Measurement({});
-FuelConsumptionUnit.prototype.parent = Measurement;
-FuelConsumptionUnit.prototype.constructor = FuelConsumptionUnit;
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -101,7 +97,7 @@ FuelConsumptionUnit.prototype.convert = function(to) {
     if (!to || typeof(FuelConsumptionUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
         return undefined;
     }
-    return new Measurement({
+    return new FuelConsumptionUnit({
         unit: to,
         amount: this
     });

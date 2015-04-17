@@ -17,170 +17,31 @@
  * limitations under the License.
  */
 
-// !depends Locale.js ilib.js INumber.js isPunct.js NormString.js MathUtils.js JSUtils.js
+/* !depends 
+Locale.js 
+ilib.js 
+INumber.js 
+isPunct.js 
+NormString.js 
+MathUtils.js 
+Utils.js 
+LocaleInfo.js 
+CodePointSource.js
+ElementIterator.js
+*/
 
 // !data collation
 
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
-var JSUtils = require("./JSUtils.js");
-
+var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
+var LocaleInfo = require("./LocaleInfo.js");
 var INumber = require("./INumber.js");
-
-var CType = require("./CType.js");
 var isPunct = require("./isPunct.js");
-
 var NormString = require("./NormString.js");
-
-/**
- * @class
- * Represents a buffered source of code points. The input string is first
- * normalized so that combining characters come out in a standardized order.
- * If the "ignorePunctuation" flag is turned on, then punctuation 
- * characters are skipped.
- * 
- * @constructor
- * @private
- * @param {NormString|string} str a string to get code points from
- * @param {boolean} ignorePunctuation whether or not to ignore punctuation
- * characters
- */
-var CodePointSource = function(str, ignorePunctuation) {
-	this.chars = [];
-	// first convert the string to a normalized sequence of characters
-	var s = (typeof(str) === "string") ? new NormString(str) : str;
-	this.it = s.charIterator();
-	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
-};
-
-/**
- * Return the first num code points in the source without advancing the
- * source pointer. If there are not enough code points left in the
- * string to satisfy the request, this method will return undefined. 
- * 
- * @param {number} num the number of characters to peek ahead
- * @return {string|undefined} a string formed out of up to num code points from
- * the start of the string, or undefined if there are not enough character left
- * in the source to complete the request
- */
-CodePointSource.prototype.peek = function(num) {
-	if (num < 1) {
-		return undefined;
-	}
-	if (this.chars.length < num && this.it.hasNext()) {
-		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
-			var c = this.it.next();
-			if (c && !this.ignorePunctuation || !isPunct(c)) {
-				this.chars.push(c);
-			}
-		}
-	}
-	if (this.chars.length < num) {
-		return undefined;
-	}
-	return this.chars.slice(0, num).join("");
-};
-/**
- * Advance the source pointer by the given number of code points.
- * @param {number} num number of code points to advance
- */
-CodePointSource.prototype.consume = function(num) {
-	if (num > 0) {
-		this.peek(num); // for the iterator to go forward if needed
-		if (num < this.chars.length) {
-			this.chars = this.chars.slice(num);
-		} else {
-			this.chars = [];
-		}
-	}
-};
-
-
-/**
- * @class
- * An iterator through a sequence of collation elements. This
- * iterator takes a source of code points, converts them into
- * collation elements, and allows the caller to get single
- * elements at a time.
- * 
- * @constructor
- * @private
- * @param {CodePointSource} source source of code points to 
- * convert to collation elements
- * @param {Object} map mapping from sequences of code points to
- * collation elements
- * @param {number} keysize size in bits of the collation elements
- */
-var ElementIterator = function (source, map, keysize) {
-	this.elements = [];
-	this.source = source;
-	this.map = map;
-	this.keysize = keysize;
-};
-
-/**
- * @private
- */
-ElementIterator.prototype._fillBuffer = function () {
-	var str = undefined;
-	
-	// peek ahead by up to 4 characters, which may combine
-	// into 1 or more collation elements
-	for (var i = 4; i > 0; i--) {
-		str = this.source.peek(i);
-		if (str && this.map[str]) {
-			this.elements = this.elements.concat(this.map[str]);
-			this.source.consume(i);
-			return;
-		}
-	}
-	
-	if (str) {
-		// no mappings for the first code point, so just use its
-		// Unicode code point as a proxy for its sort order. Shift
-		// it by the key size so that everything unknown sorts
-		// after things that have mappings
-		this.elements.push(str.charCodeAt(0) << this.keysize);
-		this.source.consume(1);
-	} else {
-		// end of the string
-		return undefined;
-	}
-};
-
-/**
- * Return true if there are more collation elements left to
- * iterate through.
- * @returns {boolean} true if there are more elements left to
- * iterate through, and false otherwise
- */
-ElementIterator.prototype.hasNext = function () {
-	if (this.elements.length < 1) {
-		this._fillBuffer();
-	}
-	return !!this.elements.length;
-};
-
-/**
- * Return the next collation element. If more than one collation 
- * element is generated from a sequence of code points 
- * (ie. an "expansion"), then this class will buffer the
- * other elements and return them on subsequent calls to 
- * this method.
- * 
- * @returns {number|undefined} the next collation element or
- * undefined for no more collation elements
- */
-ElementIterator.prototype.next = function () {
-	if (this.elements.length < 1) {
-		this._fillBuffer();
-	}
-	var ret = this.elements[0];
-	this.elements = this.elements.slice(1);
-	return ret;
-};
-
+var CodePointSource = require("./CodePointSource.js");
+var ElementIterator = require("./ElementIterator.js");
 
 /**
  * @class

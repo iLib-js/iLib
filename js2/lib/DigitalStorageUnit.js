@@ -60,7 +60,7 @@ var DigitalStorageUnit = function (options) {
 	}
 };
 
-DigitalStorageUnit.prototype = new Measurement({});
+DigitalStorageUnit.prototype = new Measurement();
 DigitalStorageUnit.prototype.parent = Measurement;
 DigitalStorageUnit.prototype.constructor = DigitalStorageUnit;
 
@@ -79,9 +79,6 @@ DigitalStorageUnit.ratios = {
     "petabit":  [ 11,  1.125899907e15, 1.407374884e14, 1.099511628e12, 137438953472,   1073741824,     134217728,      1048576,         131072,          1024,            128,             1,               0.125           ],
     "petabyte": [ 12,  9.007199255e15, 1.125899907e15, 8.796093022e12, 1.099511628e12, 8589934592,     1073741824,     8388608,         1048576,         8192,            1024,            8,               1               ]
 };
-DigitalStorageUnit.prototype = new Measurement({});
-DigitalStorageUnit.prototype.parent = Measurement;
-DigitalStorageUnit.prototype.constructor = DigitalStorageUnit;
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -114,7 +111,7 @@ DigitalStorageUnit.prototype.convert = function(to) {
 	if (!to || typeof(DigitalStorageUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new DigitalStorageUnit({
 		unit: to,
 		amount: this
 	});

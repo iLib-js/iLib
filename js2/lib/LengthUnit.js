@@ -60,7 +60,7 @@ var LengthUnit = function (options) {
 	}
 };
 
-LengthUnit.prototype = new Measurement({});
+LengthUnit.prototype = new Measurement();
 LengthUnit.prototype.parent = Measurement;
 LengthUnit.prototype.constructor = LengthUnit;
 
@@ -130,10 +130,6 @@ LengthUnit.usCustomaryToMetric = {
     "nauticalmile": "kilometer"
 };
 
-LengthUnit.prototype = new Measurement({});
-LengthUnit.prototype.parent = Measurement;
-LengthUnit.prototype.constructor = LengthUnit;
-
 /**
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
@@ -188,7 +184,7 @@ LengthUnit.prototype.convert = function(to) {
 	if (!to || typeof(LengthUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new LengthUnit({
 		unit: to,
 		amount: this
 	});

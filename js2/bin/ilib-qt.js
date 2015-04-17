@@ -130,4 +130,4 @@ var ilib = require("../lib/ilib.js");
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
-require("./ilib-stubs.js");
+require("./ilib-stubs-dyn.js");

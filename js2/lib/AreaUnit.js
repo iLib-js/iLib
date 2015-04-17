@@ -76,10 +76,6 @@ AreaUnit.ratios = {
     "square mile":  	[9,	   	2.58998811e+10,	2.59e+6,        258.999,    2.58999,      4.014e+9,	 	2.788e+7,   	  	3.098e+6,  				640,     			1   	     		]
 }
 
-AreaUnit.prototype = new Measurement({});
-AreaUnit.prototype.parent = Measurement;
-AreaUnit.prototype.constructor = AreaUnit;
-
 /**
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
@@ -111,7 +107,7 @@ AreaUnit.prototype.convert = function(to) {
 	if (!to || typeof(AreaUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new AreaUnit({
 		unit: to, 
 		amount: this
 	});

@@ -56,7 +56,7 @@ var TemperatureUnit = function (options) {
 	}
 };
 
-TemperatureUnit.prototype = new Measurement({});
+TemperatureUnit.prototype = new Measurement();
 TemperatureUnit.prototype.parent = Measurement;
 TemperatureUnit.prototype.constructor = TemperatureUnit;
 
@@ -110,7 +110,7 @@ TemperatureUnit.prototype.convert = function(to) {
 	if (!to || typeof(TemperatureUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new TemperatureUnit({
 		unit: to,
 		amount: this
 	});

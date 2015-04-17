@@ -107,6 +107,7 @@ limitations under the License.
 		<delete>
 			<fileset dir="${build.src}">
 			    <include name="ilib-stubs.js"/>
+				<include name="ilib-stubs-dyn.js"/>
 			</fileset>
 			<fileset dir="${build.locale.src}">
 			    <include name="**/localeinfo.json"/>
@@ -264,7 +265,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,gen.stubs,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-ut.js" 
 			srcfilename="${build.src}/ilib-ut-inc.js" 

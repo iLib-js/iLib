@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Locale.js SearchUtils.js Utils.js
+// !depends ilib.js Locale.js SearchUtils.js Utils.js IString.js
 
 // !data ctype
 
@@ -25,6 +25,7 @@ var ilib = require("./ilib.js");
 var SearchUtils = require("./SearchUtils.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
+var IString = require("./IString.js");
 
 /**
  * Provides a set of static routines that return information about characters.
@@ -251,6 +252,7 @@ CType._inRange = function(num, rangeName, obj) {
  * 
  * Depends directive: !depends CType.js
  * 
+ * @protected
  * @param {string|IString|number} ch character or code point to examine
  * @param {string} rangeName the name of the range to check
  * @return {boolean} true if the first character is within the named

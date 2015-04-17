@@ -21,6 +21,7 @@
 
 // !data ctype
 
+var ilib = require("./ilib.js");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 

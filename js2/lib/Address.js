@@ -20,22 +20,27 @@
 /*globals console RegExp */
 
 /* !depends 
-ilib.js 
+ilib.js
+Utils.js
+JSUtils.js
 Locale.js 
 isIdeo.js 
 isAscii.js
 isDigit.js
+IString.js
 */
 
 // !data address countries nativecountries ctrynames
 
 var ilib = require("./ilib.js");
-
+var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var CType = require("./CType.js");
 var isIdeo = require("./isIdeo.js");
 var isAscii = require("./isAscii.js");
 var isDigit = require("./isDigit.js");
+var IString = require("./IString.js");
 
 /**
  * @class

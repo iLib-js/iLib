@@ -23,12 +23,14 @@ Locale.js
 Address.js
 IString.js
 Utils.js
+JSUtils.js
 */
 
 // !data address
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
 var Address = require("./Address.js");

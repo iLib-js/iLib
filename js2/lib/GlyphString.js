@@ -18,11 +18,12 @@
  * limitations under the License.
  */
 
-// !depends IString.js CType.js Utils.js
+// !depends IString.js CType.js Utils.js JSUtils.js
 // !data norm ctype_m
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var IString = require("./IString.js");
 var CType = require("./CType.js");

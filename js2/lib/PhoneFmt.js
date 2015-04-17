@@ -25,15 +25,15 @@ NumberingPlan.js
 PhoneNumber.js
 PhoneLocale.js
 Utils.js
+JSUtils.js
 */
 
 // !data phonefmt
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-
+var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
-
 var PhoneNumber = require("./PhoneNumber.js");
 var NumberingPlan = require("./NumberingPlan.js");
 var PhoneLocale = require("./PhoneLocale.js");

@@ -60,7 +60,7 @@ var EnergyUnit = function (options) {
 	}
 };
 
-EnergyUnit.prototype = new Measurement({});
+EnergyUnit.prototype = new Measurement();
 EnergyUnit.prototype.parent = Measurement;
 EnergyUnit.prototype.constructor = EnergyUnit;
 
@@ -78,10 +78,6 @@ EnergyUnit.ratios = {
     "megawatt hour":[ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
     "gigawatt hour":[ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
 };
-
-EnergyUnit.prototype = new Measurement({});
-EnergyUnit.prototype.parent = Measurement;
-EnergyUnit.prototype.constructor = EnergyUnit;
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -113,7 +109,7 @@ EnergyUnit.prototype.convert = function(to) {
 	if (!to || typeof(EnergyUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new EnergyUnit({
 		unit: to,
 		amount: this
 	});

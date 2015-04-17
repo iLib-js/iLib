@@ -17,10 +17,11 @@
  * limitations under the License.
  */
 
-// !depends CType.js IString.js
+// !depends CType.js IString.js ilib.js
 
 // !data ctype_c
 
+var ilib = require("./ilib.js");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 

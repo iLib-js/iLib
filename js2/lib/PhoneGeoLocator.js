@@ -24,6 +24,7 @@ NumberingPlan.js
 PhoneLocale.js
 PhoneNumber.js
 Utils.js
+JSUtils.js
 ResBundle.js
 */
 
@@ -31,7 +32,7 @@ ResBundle.js
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-
+var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 
 var PhoneNumber = require("./PhoneNumber.js");

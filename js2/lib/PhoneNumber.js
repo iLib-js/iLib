@@ -24,15 +24,15 @@ NumberingPlan.js
 PhoneLocale.js
 PhoneHandlerFactory.js
 Utils.js
+JSUtils.js
 */
 
 // !data states idd mnc
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-
+var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
-
 var NumberingPlan = require("./NumberingPlan.js");
 var PhoneLocale = require("./PhoneLocale.js");
 var PhoneHandlerFactory = require("./PhoneHandlerFactory.js");

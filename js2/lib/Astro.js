@@ -119,6 +119,7 @@ Astro.initAstro = function(sync, loadParams, callback) {
  * Convert degrees to radians.
  * 
  * @static
+ * @protected
  * @param {number} d angle in degrees
  * @return {number} angle in radians 
  */
@@ -130,6 +131,7 @@ Astro.dtr = function(d) {
  * Convert radians to degrees.
  * 
  * @static
+ * @protected
  * @param {number} r angle in radians
  * @return {number} angle in degrees 
  */
@@ -140,6 +142,7 @@ Astro.rtd = function(r) {
 /**
  * Return the cosine of an angle given in degrees.
  * @static
+ * @protected
  * @param {number} d angle in degrees
  * @return {number} cosine of the angle.
  */  
@@ -150,6 +153,7 @@ Astro.dcos = function(d) {
 /**
  * Return the sine of an angle given in degrees.
  * @static
+ * @protected
  * @param {number} d angle in degrees
  * @return {number} sine of the angle.
  */  
@@ -160,6 +164,7 @@ Astro.dsin = function(d) {
 /**
  * Return the tan of an angle given in degrees.
  * @static
+ * @protected
  * @param {number} d angle in degrees
  * @return {number} tan of the angle.
  */  
@@ -182,6 +187,7 @@ Astro.fixangle = function(a) {
  * Range reduce angle in radians.
  * 
  * @static
+ * @protected
  * @param {number} a angle to reduce
  * @return {number} the reduced angle  
  */
@@ -201,6 +207,7 @@ Astro.fixangr = function(a) {
  * </ul>
  * 
  * @static
+ * @protected
  * @param {number} year Gregorian year to calculate for
  * @param {number} which Which equinox or solstice to calculate
  */
@@ -262,6 +269,7 @@ Astro.equinox = function(year, which) {
  * Determine the difference, in seconds, between dynamical time and universal time.
  * 
  * @static
+ * @protected
  * @param {number} year to calculate the difference for
  * @return {number} difference in seconds between dynamical time and universal time  
  */
@@ -299,6 +307,7 @@ Astro.deltat = function (year) {
  * happens to be almost precisely the mean.
  * 
  * @static
+ * @protected
  * @param {number} jd Julian Day to calculate the obliquity for
  * @return {number} the obliquity
  */
@@ -323,6 +332,7 @@ Astro.obliqeq = function (jd) {
  * intermediate values because they are useful in a
  * variety of other contexts.
  * @static
+ * @protected
  * @param {number} jd find the position of sun on this Julian Day
  * @return {Object} the position of the sun and many intermediate
  * values
@@ -379,6 +389,7 @@ Astro.sunpos = function(jd) {
  * giving deltaPsi and deltaEpsilon in degrees.
  * 
  * @static
+ * @protected
  * @param {number} jd calculate the nutation of this Julian Day
  * @return {Object} the deltaPsi and deltaEpsilon of the nutation
  */
@@ -444,6 +455,7 @@ Astro.nutation = function(jd) {
  * Returns the equation of time as a fraction of a day.
  * 
  * @static
+ * @protected
  * @param {number} jd the Julian Day of the day to calculate for
  * @return {number} the equation of time for the given day  
  */
@@ -508,6 +520,7 @@ Astro.poly = function(x, coefficients) {
  * worth of offset.
  * 
  * @static
+ * @protected
  * @param {number} local RD of the locale time, given in any calendar
  * @param {number} zone number of minutes of offset from UTC for the time zone 
  * @return {number} the UTC equivalent of the local RD
@@ -521,6 +534,7 @@ Astro.universalFromLocal = function(local, zone) {
  * worth of offset.
  * 
  * @static
+ * @protected
  * @param {number} local RD of the locale time, given in any calendar
  * @param {number} zone number of minutes of offset from UTC for the time zone 
  * @return {number} the UTC equivalent of the local RD
@@ -635,6 +649,7 @@ Astro.julianCenturies = function(jd) {
  * Calculate the solar longitude
  * 
  * @static
+ * @protected
  * @param {number} jd julian day of the date to calculate the longitude for 
  * @return {number} the solar longitude in degrees
  */
@@ -688,6 +703,7 @@ Astro.lunarLongitude = function (jd) {
 
 /**
  * @static
+ * @protected
  * @param {number} n
  * @return {number} julian day of the n'th new moon
  */
@@ -718,6 +734,7 @@ Astro.newMoonTime = function(n) {
 
 /**
  * @static
+ * @protected
  * @param {number} jd
  * @return {number}
  */
@@ -729,6 +746,7 @@ Astro.lunarSolarAngle = function(jd) {
 
 /**
  * @static
+ * @protected
  * @param {number} jd
  * @return {number}
  */
@@ -749,6 +767,7 @@ Astro.newMoonBefore = function (jd) {
 
 /**
  * @static
+ * @protected
  * @param {number} jd
  * @return {number}
  */
@@ -766,6 +785,7 @@ Astro.newMoonAtOrAfter = function (jd) {
 
 /**
  * @static
+ * @protected
  * @param {number} jd JD to calculate from
  * @param {number} longitude longitude to seek 
  * @returns {number} the JD of the next time that the solar longitude 

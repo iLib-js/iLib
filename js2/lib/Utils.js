@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Locale.js
+// !depends ilib.js Locale.js JSUtils.js
 
 var ilib = require("./ilib.js");
 var Locale = require("./Locale.js");
@@ -233,7 +233,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
 Utils.getLocFiles = function(locale, name) {
 	var dir = "";
 	var files = [];
-	var filename = name || "ResBundle.json";
+	var filename = name || "resources.json";
 	var loc = locale || new Locale();
 	
 	var language = loc.getLanguage();

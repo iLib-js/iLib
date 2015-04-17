@@ -24,7 +24,7 @@ function testMeasurementUnknownEmpty() {
 }
 
 function testMeasurementUnknownUnitPreserved() {
-	var m = new ilib.Measurement({
+	var m = new ilib.Measurement.Unknown({
 	    unit: "krunghoonfoop",
 	    amount: 2
 	});
@@ -36,7 +36,7 @@ function testMeasurementUnknownUnitPreserved() {
 }
 
 function testMeasurementUnknownUnitUnknownMeasureType() {
-	var m = new ilib.Measurement({
+	var m = new ilib.Measurement.Unknown({
 	    unit: "krunghoonfoop",
 	    amount: 2
 	});

@@ -239,7 +239,6 @@ JSUtils.isEmpty = function (obj) {
 };
 
 /**
- * @private
  * @static
  */
 JSUtils.hashCode = function(obj) {

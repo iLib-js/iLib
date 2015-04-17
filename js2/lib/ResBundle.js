@@ -17,12 +17,13 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Locale.js LocaleInfo.js IString.js Utils.js
+// !depends ilib.js Locale.js LocaleInfo.js IString.js Utils.js JSUtils.js
 
 // !data pseudomap
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");

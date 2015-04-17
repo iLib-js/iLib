@@ -51,14 +51,14 @@ var WebLoader = function(ilib, sync, onLoad) {
 	
 	this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 	
-	// then try a check-out dir of ilib
-	this._exists(path.join(this.base, "localetemp"), "localeinfo.json");
-	
 	// then a standard locale dir of a built version of ilib
-	this._exists(path.join(this.base, "locale"), "localeinfo.json");
+	this._exists(path.join(this.root, "locale"), "localeinfo.json");
 	
-	// ... else fall back to the standard install directories
+	// then try the standard install directories
 	this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
+	
+	// if all else fails, try a check-out dir of ilib
+	this._exists(path.join(this.base, "locale"), "localeinfo.json");
 };
 
 WebLoader.prototype = new Loader();

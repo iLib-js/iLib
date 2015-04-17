@@ -18,7 +18,6 @@
  */
 
 function testVolumeVolumeConstructor() {
-
 	var m = new ilib.Measurement.Volume({
 	    unit: "m3",
 	    amount: 2

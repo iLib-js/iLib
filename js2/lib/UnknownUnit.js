@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-// Do not inherit from Measurement.js because that creates a circular 
-// dependency. Instead, make this look like a Measurement, but to not
-// inherit from it.
+// !depends Measurement.js
+
+var Measurement = require("./Measurement.js");
 
 /**
  * @class
@@ -36,6 +36,10 @@ var UnknownUnit = function (options) {
 		this.amount = options.amount;
 	}
 };
+
+UnknownUnit.prototype = new Measurement();
+UnknownUnit.prototype.parent = Measurement;
+UnknownUnit.prototype.constructor = UnknownUnit;
 
 UnknownUnit.aliases = {
 	"unknown":"unknown"

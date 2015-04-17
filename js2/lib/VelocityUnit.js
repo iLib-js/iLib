@@ -60,7 +60,7 @@ var VelocityUnit = function (options) {
 	}
 };
 
-VelocityUnit.prototype = new Measurement({});
+VelocityUnit.prototype = new Measurement();
 VelocityUnit.prototype.parent = Measurement;
 VelocityUnit.prototype.constructor = VelocityUnit;
 
@@ -105,10 +105,6 @@ VelocityUnit.UScustomaryTometric = {
     "knot": "kilometer/hour"
 };
 
-VelocityUnit.prototype = new Measurement({});
-VelocityUnit.prototype.parent = Measurement;
-VelocityUnit.prototype.constructor = VelocityUnit;
-
 /**
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
@@ -139,7 +135,7 @@ VelocityUnit.prototype.convert = function(to) {
 	if (!to || typeof(VelocityUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new VelocityUnit({
 		unit: to,
 		amount: this
 	});

@@ -64,7 +64,7 @@ isAscii.js
 isBlank.js
 isCntrl.js
 isDigit.js
-isAlnum.js
+isGraph.js
 isIdeo.js
 isLower.js
 isPrint.js
@@ -72,7 +72,7 @@ isPunct.js
 isScript.js
 isSpace.js
 isUpper.js
-isXDigit.js
+isXdigit.js
 ScriptInfo.js
 Name.js
 NameFmt.js
@@ -88,6 +88,7 @@ PhoneNumber.js
 PhoneFmt.js
 PhoneGeoLocator.js
 Measurement.js
+MeasurementFactory.js
 UnitFmt.js
 LengthUnit.js
 VelocityUnit.js

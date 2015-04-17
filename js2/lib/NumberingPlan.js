@@ -22,12 +22,14 @@
 ilib.js 
 Locale.js 
 Utils.js
+JSUtils.js
 */
 
 // !data numplan
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 
 /**

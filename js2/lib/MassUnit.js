@@ -60,7 +60,7 @@ var MassUnit = function (options) {
 	}
 };
 
-MassUnit.prototype = new Measurement({});
+MassUnit.prototype = new Measurement();
 MassUnit.prototype.parent = Measurement;
 MassUnit.prototype.constructor = MassUnit;
 
@@ -138,11 +138,6 @@ MassUnit.uScustomarylToMetric = {
     "long ton": "metric ton"
 };
 
-
-MassUnit.prototype = new Measurement({});
-MassUnit.prototype.parent = Measurement;
-MassUnit.prototype.constructor = MassUnit;
-
 /**
  * Localize the measurement to the commonly used measurement in that locale. For example
  * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
@@ -202,7 +197,7 @@ MassUnit.prototype.convert = function(to) {
 	if (!to || typeof(MassUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
 		return undefined;
 	}
-	return new Measurement({
+	return new MassUnit({
 		unit: to,
 		amount: this
 	});

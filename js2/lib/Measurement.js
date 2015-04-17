@@ -17,40 +17,10 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js
-Utils.js
-*/
-
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var UnknownUnit = require("./UnknownUnit.js");
-
 /**
  * @class
- * Create a measurement instance. The measurement is immutable once
+ * Create a measurement instance. A measurement is immutable once
  * it is created, but can be converted to other measurements later.<p>
- * 
- * The options may contain any of the following properties:
- * 
- * <ul>
- * <li><i>amount</i> - either a numeric amount for this measurement given
- * as a number of the specified units, or another Measurement instance 
- * to convert to the requested units. If converting to new units, the type
- * of measure between the other instance's units and the current units
- * must be the same. That is, you can only convert one unit of mass to
- * another. You cannot convert a unit of mass into a unit of length. 
- * 
- * <li><i>unit</i> - units of this measurement. Use the 
- * static call {@link Measurement.getAvailableUnits}
- * to find out what units this version of ilib supports. If the given unit
- * is not a base unit, the amount will be normalized to the number of base units
- * and stored as that number of base units.
- * For example, if an instance is constructed with 1 kg, this will be converted
- * automatically into 1000 g, as grams are the base unit and kg is merely a 
- * commonly used scale of grams.
- * </ul>
  * 
  * Here are some examples of converting a length into new units. The first method
  * is via the constructor by passing the old measurement in as the amount property.
@@ -82,84 +52,14 @@ var UnknownUnit = require("./UnknownUnit.js");
  * The value in measurement2 will again end up being about 3.125 miles.
  * 
  * @constructor 
- * @param {Object=} options options that control the construction of this instance
  */
-var Measurement = function(options) {
-	if (!options || typeof(options.unit) === 'undefined') {
-		return undefined;
-	}
-
-	this.amount = options.amount || 0;
-	var measure = undefined;
-
-	if (ilib.isDynCode()) {
-		// call all the stubs to load all the constructors so that we have them available
-		for (var prop in Measurement) {
-			if (Measurement[prop] && typeof(Measurement[prop]) === 'function' && Measurement[prop].stub) {
-				Measurement[prop]();
-			}
-		}
-	}
-	for (var c in Measurement._constructors) {
-		var measurement = Measurement._constructors[c];
-		if (typeof(measurement.aliases[options.unit]) !== 'undefined') {
-			measure = c;
-			break;
-		}
-	}
-
-	if (!measure || typeof(measure) === 'undefined') {
-		return new UnknownUnit({
-			unit: options.unit,
-			amount: options.amount
-		});                
-	} else {
-		return new Measurement._constructors[measure](options);
-	}
+var Measurement = function() {
 };
-
-Measurement.stub = false;
 
 /**
  * @private
  */
 Measurement._constructors = {};
-
-/**
- * Return a list of all possible units that this version of ilib supports.
- * Typically, the units are given as their full names in English. Unit names
- * are case-insensitive.
- * 
- * @static
- * @return {Array.<string>} an array of strings containing names of units available
- */
-Measurement.getAvailableUnits = function () {
-	var units = [];
-	for (var c in Measurement._constructors) {
-		var measure = Measurement._constructors[c];
-		units = units.concat(measure.getMeasures());
-	}
-	return units;
-};
-
-/*
-Measurement.metricScales = {
-	"femto": {"symbol": "f", "scale": -15},
-	"pico": {"symbol": "p", "scale": -12},
-	"nano": {"symbol": "n", "scale": -9},
-	"micro": {"symbol": "µ", "scale": -6},
-	"milli": {"symbol": "m", "scale": -3},
-	"centi": {"symbol": "c", "scale": -2},
-	"deci": {"symbol": "d", "scale": -1},
-	"deca": {"symbol": "da", "scale": 1},
-	"hecto": {"symbol": "h", "scale": 2},
-	"kilo": {"symbol": "k", "scale": 3},
-	"mega": {"symbol": "M", "scale": 6},
-	"giga": {"symbol": "G", "scale": 9},
-	"peta": {"symbol": "P", "scale": 12},
-	"exa": {"symbol": "E", "scale": 18}
-};
-*/
 
 Measurement.prototype = {
 	/**

@@ -26,6 +26,7 @@ isIdeo.js
 isPunct.js 
 isSpace.js
 JSUtils.js 
+IString.js
 */
 
 // !data name
@@ -41,7 +42,7 @@ var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
-
+var IString = require("./IString.js");
 var CType = require("./CType.js");
 var isAlpha = require("./isAlpha.js");
 var isIdeo = require("./isIdeo.js");

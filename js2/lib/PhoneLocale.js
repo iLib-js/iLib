@@ -35,7 +35,6 @@ var Locale = require("./Locale.js");
  *
  * @param {Object} options Options that govern how this phone locale works
  * @constructor
- * @private
  * @extends Locale
  */
 var PhoneLocale = function(options) {

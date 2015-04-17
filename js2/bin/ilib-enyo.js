@@ -140,7 +140,7 @@ if (typeof(window.module) === 'undefined') {
 	};
 }
 
-require("./ilib-stubs.js");
+require("./ilib-stubs-dyn.js");
 
 // now the enyo code should create an enyo loadeer and set it in to ilib
 // with ilib.setLoaderCallback()
