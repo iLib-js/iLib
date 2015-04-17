@@ -48,6 +48,7 @@ limitations under the License.
 	<property name="build.src"						value="${build.base}/lib"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
+	<property name="build.test"						value="${build.base}/test"/>
 	<property name="build.locale.src"				value="${build.data}/locale"/>
 	<property name="build.locale"					value="${build.base}/locale"/>
 	<property name="build.config"					value="config"/>
@@ -632,19 +633,19 @@ limitations under the License.
         <attribute name="compilation"/>
         <attribute name="suite"/>
 		<sequential>
-			<exec osfamily="unix" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
 			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
 				<arg value="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
 			</exec>
-			<exec osfamily="windows" executable="node.exe" dir="${build.src}" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="true"  failonerror="true">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>

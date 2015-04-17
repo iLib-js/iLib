@@ -130,7 +130,7 @@ for (s in suite) {
 	ts = new JsUnit.TestSuite(suite[s]);
 	
 	if (assembly === "dynamic") {
-		inc = "./ilib-node.js";		
+		inc = "../bin/ilib-node.js";		
 		ts.include(inc); 
 	} else {
 		inc = "../output/js/ilib" + "-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";

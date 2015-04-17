@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 if (!ilib.Grzwfd) ilib.Grzwfd = require("./grzwfd.js");
 
 ilib.Asdf = function(spec) {

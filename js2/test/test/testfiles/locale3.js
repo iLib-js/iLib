@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 
 // this is an alternate definition of Locale2
 

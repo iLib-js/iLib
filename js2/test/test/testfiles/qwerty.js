@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 
 ilib.Qwerty = function(spec) {
 	//console.log("Qwerty: spec is " + spec);

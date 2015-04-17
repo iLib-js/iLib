@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 
 ilib.Grzwfd = function(spec) {
 	//console.log("Grzwfd: spec is " + spec);

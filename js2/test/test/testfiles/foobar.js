@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 
 ilib.Foobar = function(spec) {
 	//console.log("Foobar: spec is " + spec);

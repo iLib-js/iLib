@@ -1,4 +1,4 @@
-var ilib = require("../../ilibglobal.js");
+var ilib = require("../../../lib/ilib.js");
 
 ilib.Locale2 = function(spec) {
 	//console.log("Locale2: spec is " + spec);
