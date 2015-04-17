@@ -67,7 +67,7 @@ public class JSFile
         macroPatterns.add(Pattern.compile("/\\*\\s*!macro\\s*([^\\*]+)\\*/"));
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
         
-        deletePatterns.add(Pattern.compile("var\\silib\\s*=\\s*require[^;]*;\\n"));
+        deletePatterns.add(Pattern.compile("var\\s[^;]*=\\s*require[^;]*;\\n"));
         deletePatterns.add(Pattern.compile("if \\(!ilib[^;]*require[^;]*;"));
         deletePatterns.add(Pattern.compile("module.exports = [^;]*;"));
     }
