@@ -817,27 +817,22 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 		return (-d.getTimezoneOffset() === dst);
 	}
 	
-	console.log("date is of type " + typeof(date));
-	console.log("contents is " + JSON.stringify(date));
-	if (!date) {
-		date = new Date(); // right now
-		year = date.getFullYear();
-	} else if (!(date instanceof GregorianDate)) {
+	if (!date || !date.cal || date.cal.type !== "gregorian") {
 		// convert to Gregorian so that we can tell if it is in DST or not
-		date = new Date(date.getTimeExtended());
-		year = date.getFullYear();
+		var time = date && typeof(date.getTimeExtended) === 'function' ? date.getTimeExtended() : undefined;
+		rd = new GregRataDie({unixtime: time}).getRataDie();
+		year = new Date(time).getUTCFullYear();
 	} else {
+		rd = date.rd.getRataDie();
 		year = date.year;
 	}
+	// rd should be a Gregorian RD number now, in UTC
 	
 	// if we aren't using daylight time in this zone for the given year, then we are 
 	// not in daylight time
 	if (!this.useDaylightTime(year)) {
 		return false;
 	}
-	
-	// this should be a Gregorian RD number now, in UTC
-	rd = date.rd.getRataDie();
 	
 	// these calculate the start/end in local wall time
 	var startrule = this._getDSTStartRule(year);

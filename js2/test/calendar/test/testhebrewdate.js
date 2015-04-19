@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "hebrew"});
-}
-
 function testHebrewDateConstructor() {
 	var hd = new ilib.Date.HebrewDate();
     

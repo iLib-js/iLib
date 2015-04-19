@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "gregorian"});
-}
+//if (ilib.isDynCode()) {
+//	ilib.Date.newInstance({type: "gregorian"});
+//}
 
 function testGregDateConstructor() {
 	var gd = new ilib.Date.GregDate();

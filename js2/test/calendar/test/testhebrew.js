@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "hebrew"});
-}
-
 function testHebrewGetNumMonths() {
     var cal = new ilib.Cal.Hebrew();
     

@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) require("./calendar/astro.js");
-	ilib.Date.initAstro(true, undefined, undefined);
-}
+//if (ilib.isDynCode()) {
+//	if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) require("./calendar/astro.js");
+//	ilib.Date.initAstro(true, undefined, undefined);
+//}
 
 var testDatesAstro1 = [
    	// jd			ephemeris corr.			julian cent			nutation				aberration				solar long.

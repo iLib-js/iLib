@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "han"});
-}
-
 var testDatesChineseAstro1 = [
   	// jd			deg					current major ST	han next solar long.	current minor ST	minor ST on or aft
 	[ 1507231.5,	-214193.32337962964,	5.0,	-213920.51787281086,	6.0,	-214176.22370667264],

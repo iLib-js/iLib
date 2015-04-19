@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "persian"});
-}
-
 function testPersDateAstroConstructor() {
     var pd = new ilib.Date.PersDate();
     

@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "islamic"});
-}
-
 function testIslamicDateConstructor() {
     var id = new ilib.Date.IslamicDate();
     

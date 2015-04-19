@@ -17,16 +17,7 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "coptic"});
-}
-
 function testCopticRataDieConstructor() {
-	// pre-load the classes in a dynamic load loading scenario
-	if (ilib.isDynCode()) {
-		ilib.Date.newInstance({type: "coptic"});
-	}
-	
 	var crd = new ilib.Date.CopticRataDie();
 	
 	assertNotNull(crd);

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.3.2, 2015-04-06T15:08:33. -->
+<!-- Written by QtCreator 3.0.1, 2015-04-05T16:24:41. -->
 <qtcreator>
  <data>
-  <variable>EnvironmentId</variable>
-  <value type="QByteArray">{f0a89fa0-e164-47d4-b9b4-4d6d64c938c2}</value>
- </data>
- <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
-  <value type="int">0</value>
+  <value type="int">-1</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.EditorSettings</variable>
@@ -33,12 +29,9 @@
    <value type="bool" key="EditorConfiguration.ConstrainTooltips">false</value>
    <value type="int" key="EditorConfiguration.IndentSize">4</value>
    <value type="bool" key="EditorConfiguration.KeyboardTooltips">false</value>
-   <value type="int" key="EditorConfiguration.MarginColumn">80</value>
-   <value type="bool" key="EditorConfiguration.MouseHiding">true</value>
    <value type="bool" key="EditorConfiguration.MouseNavigation">true</value>
    <value type="int" key="EditorConfiguration.PaddingMode">1</value>
    <value type="bool" key="EditorConfiguration.ScrollWheelZooming">true</value>
-   <value type="bool" key="EditorConfiguration.ShowMargin">false</value>
    <value type="int" key="EditorConfiguration.SmartBackspaceBehavior">0</value>
    <value type="bool" key="EditorConfiguration.SpacesForTabs">true</value>
    <value type="int" key="EditorConfiguration.TabKeyBehavior">0</value>
@@ -56,30 +49,15 @@
   <valuemap type="QVariantMap"/>
  </data>
  <data>
-  <variable>ProjectExplorer.Project.Target.0</variable>
-  <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{5e91ec2f-b512-4033-bb53-9eb3616ade88}</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">-1</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">-1</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">-1</value>
-   <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">0</value>
-   <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">0</value>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
-   <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">0</value>
-  </valuemap>
+  <variable>ProjectExplorer.Project.TargetCount</variable>
+  <value type="int">0</value>
  </data>
  <data>
-  <variable>ProjectExplorer.Project.TargetCount</variable>
-  <value type="int">1</value>
+  <variable>ProjectExplorer.Project.Updater.EnvironmentId</variable>
+  <value type="QByteArray">{ed9ec177-1119-4a2e-8c61-5bcdbeecbd5d}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>
-  <value type="int">18</value>
- </data>
- <data>
-  <variable>Version</variable>
-  <value type="int">18</value>
+  <value type="int">15</value>
  </data>
 </qtcreator>

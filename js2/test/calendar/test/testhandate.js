@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "han"});
-}
+//if (ilib.isDynCode()) {
+//	ilib.Date.newInstance({type: "han"});
+//}
 
 function testHanDateConstructor() {
     var hd = new ilib.Date.HanDate();

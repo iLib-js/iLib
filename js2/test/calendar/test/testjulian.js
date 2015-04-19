@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "julian"});
-}
-
 function testJulianGetNumMonths() {
     var cal = new ilib.Cal.Julian();
     

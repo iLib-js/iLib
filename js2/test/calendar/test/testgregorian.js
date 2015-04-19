@@ -17,9 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "gregorian"});
-}
 
 function testGregorianGetNumMonths() {
     var cal = new ilib.Cal.Gregorian();

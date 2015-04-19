@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "ethiopic"});
-}
-
 function testEthiopicRataDieConstructor() {
     var erd = new ilib.Date.EthiopicRataDie();
     

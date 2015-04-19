@@ -17,10 +17,6 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "julian"});
-}
-
 function testJulDateConstructor() {
 	var jul = new ilib.Date.JulDate();
 	
