@@ -17,11 +17,6 @@
  * limitations under the License.
  */
 
-//if (ilib.isDynCode()) {
-//	if (!ilib.Date.initAstro || ilib.Date.initAstro.stub) require("./calendar/astro.js");
-//	ilib.Date.initAstro(true, undefined, undefined);
-//}
-
 var testDatesAstro1 = [
    	// jd			ephemeris corr.			julian cent			nutation				aberration				solar long.
 	[ 1507231.5,	0.21576230938805918,	-25.85388868549461,	-0.004453990869550968,	-0.00553080167005999,	118.99065569869708,	-213857.88538267263],
@@ -119,6 +114,10 @@ function testSolarLongitude() {
 
 function testNextSolarLongitude() {
 	var l;
+	if (ilib.isDynCode()) {
+		// force this to be defined first
+		var rd = new ilib.Date.RataDie({rd: 0}); 
+	}
 	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
     
@@ -189,6 +188,10 @@ function testLunarLongitude() {
 
 function testNewMoonTime() {
 	var l;
+	if (ilib.isDynCode()) {
+		// force this to be defined first
+		var rd = new ilib.Date.RataDie({rd: 0}); 
+	}
 	ilib.Date.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     

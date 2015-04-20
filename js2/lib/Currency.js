@@ -17,13 +17,14 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js Locale.js
+// !depends ilib.js Utils.js Locale.js LocaleInfo.js
 
 // !data currency
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
+var LocaleInfo = require("./LocaleInfo.js");
 
 /**
  * @class

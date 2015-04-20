@@ -358,7 +358,7 @@ function testHebrewNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.HebrewDate);
+    assertEquals("hebrew", d.cal.type);
 }
 
 function testHebrewGetNumMonths1() {

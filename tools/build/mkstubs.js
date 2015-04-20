@@ -187,8 +187,8 @@ var legacyMapping = {
 };
 
 var parentMap = {
-	"ilib.Date" : "DateFactory",
-	"ilib.Cal" : "CalendarFactory",
+	"ilib.Date" : "IDate",
+	"ilib.Cal" : "Calendar",
 	"ilib.Measurement" : "MeasurementFactory"
 };
 var nonClasses = [ 
@@ -225,17 +225,21 @@ function parentId(name) {
 }
 
 function outputDynIdentifier(name, signature, filename, isStatic) {
-	var oldName = legacyMapping[name];
+	var parts, oldName = legacyMapping[name];
 	// console.log("Dynamic stub " + name);
 	if (oldName) {
-		outputDyn += "if(!" + oldName + "){" + oldName + "=function"
-				+ signature + '{';
-		outputDyn += oldName + '=require("./' + filename + '")';
+		outputDyn += "if(!" + oldName + "){" + oldName + "=function" + signature + '{';
+		
 		parts = name.split(".");
-		if (parts.length > 1) {
-			if (nonClasses.indexOf(parts[0]) > -1) {
-				outputDyn += "." + parts[1];
-			}
+		var nonClassParent = (parts.length > 1) ? parts.slice(0, parts.length-1).join('.') : name;
+		
+		parts = oldName.split(".");
+		var parent = (parts.length > 1) ? parts.slice(0, parts.length-1).join('.') : oldName;
+
+		if (nonClasses.indexOf(nonClassParent) > -1) {
+			outputDyn += "ilib.extend(" + parent + ', require("./' + filename + '"))';
+		} else {
+			outputDyn += oldName + '=require("./' + filename + '")';
 		}
 		outputDyn += ';return ';
 		if (!isStatic) {
@@ -265,10 +269,7 @@ output = "/* This is a generated file. DO NOT EDIT, as your changes will be lost
 // first output the parents
 var parentName;
 for (parentName in parentMap) {
-	outputDyn += "if(!" + parentName + "){" + parentName + "=function(params){"
-			+ parentName + '=require("./' + parentMap[parentName] + '.js");';
-	outputDyn += 'return new ' + parentName + "(params);};" + parentName
-			+ ".stub=true;}\n";
+	outputDyn += "if(!" + parentName + ")" + parentName + '=require("./' + parentMap[parentName] + '.js");\n';
 
 	output += parentName + "=" + parentMap[parentName] + ";";
 }

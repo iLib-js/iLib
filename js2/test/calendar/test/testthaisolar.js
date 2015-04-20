@@ -146,6 +146,6 @@ function testThaiSolarNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.ThaiSolarDate);
+    assertEquals("thaisolar", d.cal.type);
 }
 

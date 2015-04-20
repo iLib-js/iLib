@@ -20,10 +20,12 @@
 /* !depends 
 PersianAlgoCal.js 
 MathUtils.js
+RataDie.js
 */
 
 var MathUtils = require("./MathUtils.js");
 var PersianAlgoCal = require("./PersianAlgoCal.js");
+var RataDie = require("./RataDie.js");
 
 /**
  * @class
@@ -93,6 +95,28 @@ PersAlgoRataDie.prototype.constructor = PersAlgoRataDie;
 PersAlgoRataDie.prototype.epoch = 1948319.5;
 
 /**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month, for a non-leap year 
+ */
+PersAlgoRataDie.cumMonthLengths = [
+    0,    // Farvardin
+	31,   // Ordibehesht
+	62,   // Khordad
+	93,   // Tir
+	124,  // Mordad
+	155,  // Shahrivar
+	186,  // Mehr
+	216,  // Aban
+	246,  // Azar
+	276,  // Dey
+	306,  // Bahman
+	336,  // Esfand
+	365
+];
+
+/**
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  *
@@ -103,7 +127,7 @@ PersAlgoRataDie.prototype._setDateComponents = function(date) {
 	var year = this.cal.equivalentCycleYear(date.year);
 	var y = date.year - (date.year >= 0 ? 474 : 473);
 	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
-	var dayInYear = (date.month > 1 ? PersianAlgoDate.cumMonthLengths[date.month-1] : 0) + date.day;
+	var dayInYear = (date.month > 1 ? PersAlgoRataDie.cumMonthLengths[date.month-1] : 0) + date.day;
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -135,4 +159,4 @@ PersAlgoRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
-module.exports = PersianAlgoDate;
+module.exports = PersAlgoRataDie;

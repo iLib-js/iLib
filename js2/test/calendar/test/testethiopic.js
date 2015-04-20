@@ -212,5 +212,5 @@ function testEthiopicNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.EthiopicDate);
+    assertEquals("ethiopic", d.cal.type);
 }

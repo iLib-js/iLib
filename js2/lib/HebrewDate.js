@@ -202,27 +202,6 @@ HebrewDate.prototype.parent = IDate;
 HebrewDate.prototype.constructor = HebrewDate;
 
 /**
- * the cumulative lengths of each month for a non-leap year, without new years corrections
- * @private
- * @const
- * @type Array.<number>
- */
-HebrewDate.cumMonthLengths = [
-	176,  /* Nisan */
-	206,  /* Iyyar */
-	235,  /* Sivan */
-	265,  /* Tammuz */
-	294,  /* Av */
-	324,  /* Elul */
-	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
-	30,   /* Heshvan */
-	59,   /* Kislev */
-	88,   /* Teveth */
-	117,  /* Shevat */
-	147   /* Adar I */
-];
-
-/**
  * the cumulative lengths of each month for a non-leap year, without new years corrections,
  * that can be used in reverse to map days to months
  * @private
@@ -244,28 +223,6 @@ HebrewDate.cumMonthLengthsReverse = [
 	[294, 5],  /* Av */
 	[324, 6],  /* Elul */
 	[354, 7]   /* end of year sentinel value */
-];
-
-/**
- * the cumulative lengths of each month for a leap year, without new years corrections 
- * @private
- * @const
- * @type Array.<number>
- */
-HebrewDate.cumMonthLengthsLeap = [
-	206,  /* Nisan */
-	236,  /* Iyyar */
-	265,  /* Sivan */
-	295,  /* Tammuz */
-	324,  /* Av */
-	354,  /* Elul */
-	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
-	30,   /* Heshvan */
-	59,   /* Kislev */
-	88,   /* Teveth */
-	117,  /* Shevat */
-	147,  /* Adar I */
-	177   /* Adar II */
 ];
 
 /**
@@ -490,8 +447,8 @@ HebrewDate.prototype.firstSunday = function (year) {
  */
 HebrewDate.prototype.getDayOfYear = function() {
 	var table = this.cal.isLeapYear(this.year) ? 
-				HebrewDate.cumMonthLengthsLeap : 
-				HebrewDate.cumMonthLengths;
+				HebrewRataDie.cumMonthLengthsLeap : 
+				HebrewRataDie.cumMonthLengths;
 	var days = table[this.month-1];
 	if ((this.month < 7 || this.month > 8) && HebrewCal.longHeshvan(this.year)) {
 		days++;

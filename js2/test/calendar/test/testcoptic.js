@@ -212,5 +212,5 @@ function testCopticNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.CopticDate);
+    assertEquals("coptic", d.cal.type);
 }

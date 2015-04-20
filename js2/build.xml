@@ -265,7 +265,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,gen.stubs,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-ut.js" 
 			srcfilename="${build.src}/ilib-ut-inc.js" 
@@ -311,7 +311,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale,gen.stubs" description="prepares dynamic load code for the unit tests"/>
+	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
 
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
@@ -464,7 +464,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,gen.stubs,doc,demo" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -781,7 +781,7 @@ limitations under the License.
 		<runtests suite="collate" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
-	<target depends="gen.stubs" name="test.dynamic.uncompiled">
+	<target name="test.dynamic.uncompiled">
 		<runtests suite="util" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="." assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="calendar" assembly="dynamic" compilation="uncompiled"/>
@@ -807,7 +807,7 @@ limitations under the License.
 		<runtests suite="collate" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
-	<target depends="gen.stubs" name="test.dynamic.compiled">
+	<target name="test.dynamic.compiled">
 		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="." assembly="dynamic" compilation="compiled"/>
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>

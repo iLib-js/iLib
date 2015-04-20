@@ -115,13 +115,13 @@ PersRataDie.prototype._tehranEquinox = function(year) {
     var equJED, equJD, equAPP, equTehran, dtTehran, eot;
 
     //  March equinox in dynamical time
-    equJED = Astro.equinox(year, 0);
+    equJED = Astro._equinox(year, 0);
 
     //  Correct for delta T to obtain Universal time
-    equJD = equJED - (Astro.deltat(year) / (24 * 60 * 60));
+    equJD = equJED - (Astro._deltat(year) / (24 * 60 * 60));
 
     //  Apply the equation of time to yield the apparent time at Greenwich
-    eot = Astro.equationOfTime(equJED) * 360;
+    eot = Astro._equationOfTime(equJED) * 360;
     eot = (eot - 20 * Math.floor(eot/20)) / 360;
     equAPP = equJD + eot;
 

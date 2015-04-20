@@ -335,7 +335,7 @@ Utils._callLoadData = function (files, sync, params, callback) {
  * @param {Object} params Parameters configuring how to load the files (see above)
  */
 Utils.loadData = function(params) {
-	var name = "ResBundle.json",
+	var name = "resources.json",
 		object = undefined, 
 		locale = new Locale(ilib.getLocale()), 
 		sync = false, 
@@ -412,7 +412,7 @@ Utils.loadData = function(params) {
 		// console.log("ilib._load is " + typeof(ilib._load));
 		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
-			var files = nonlocale ? [ name || "ResBundle.json" ] : Utils.getLocFiles(locale, name);
+			var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
 			}

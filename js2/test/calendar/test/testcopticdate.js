@@ -17,6 +17,11 @@
  * limitations under the License.
  */
 
+function setUp() {
+	if (ilib.isDynCode()) {
+		
+	}
+}
 function testCopticRataDieConstructor() {
 	var crd = new ilib.Date.CopticRataDie();
 	

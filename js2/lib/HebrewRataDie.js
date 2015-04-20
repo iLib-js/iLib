@@ -99,6 +99,49 @@ HebrewRataDie.prototype.constructor = HebrewRataDie;
 HebrewRataDie.prototype.epoch = 347997.25;
 
 /**
+ * the cumulative lengths of each month for a non-leap year, without new years corrections
+ * @private
+ * @const
+ * @type Array.<number>
+ */
+HebrewRataDie.cumMonthLengths = [
+	176,  /* Nisan */
+	206,  /* Iyyar */
+	235,  /* Sivan */
+	265,  /* Tammuz */
+	294,  /* Av */
+	324,  /* Elul */
+	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	30,   /* Heshvan */
+	59,   /* Kislev */
+	88,   /* Teveth */
+	117,  /* Shevat */
+	147   /* Adar I */
+];
+
+/**
+ * the cumulative lengths of each month for a leap year, without new years corrections 
+ * @private
+ * @const
+ * @type Array.<number>
+ */
+HebrewRataDie.cumMonthLengthsLeap = [
+	206,  /* Nisan */
+	236,  /* Iyyar */
+	265,  /* Sivan */
+	295,  /* Tammuz */
+	324,  /* Av */
+	354,  /* Elul */
+	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	30,   /* Heshvan */
+	59,   /* Kislev */
+	88,   /* Teveth */
+	117,  /* Shevat */
+	147,  /* Adar I */
+	177   /* Adar II */
+];
+
+/**
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  * 
@@ -117,8 +160,8 @@ HebrewRataDie.prototype._setDateComponents = function(date) {
 	//console.log("getRataDie: new years correction is " +  HebrewCal.newYearsCorrection(date.year, elapsed));
 	
 	table = this.cal.isLeapYear(date.year) ? 
-				HebrewDate.cumMonthLengthsLeap :
-				HebrewDate.cumMonthLengths;
+		HebrewRataDie.cumMonthLengthsLeap :
+		HebrewRataDie.cumMonthLengths;
 	sum = table[date.month-1];
 	
 	// gets cumulative without correction, so now add in the correction

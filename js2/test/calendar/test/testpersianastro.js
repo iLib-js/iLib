@@ -141,5 +141,5 @@ function testPersianNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.PersDate);
+    assertEquals("persian", d.cal.type);
 }

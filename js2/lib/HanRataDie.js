@@ -139,7 +139,7 @@ HanRataDie.prototype._setDateComponents = function(date) {
 	}
 
 	var priorNewMoon = HanCal._newMoonOnOrAfter(calc.m1 + date.month * 29); // this is a julian day
-	this.priorLeapMonth = HanDate._priorLeapMonth(newYears, HanCal._newMoonBefore(priorNewMoon));
+	this.priorLeapMonth = HanRataDie._priorLeapMonth(newYears, HanCal._newMoonBefore(priorNewMoon));
 	this.leapMonth = (this.leapYear && HanCal._noMajorST(priorNewMoon) && !this.priorLeapMonth);
 
 	var rdtime = (date.hour * 3600000 +
@@ -173,5 +173,20 @@ HanRataDie.prototype._setDateComponents = function(date) {
 HanRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek, 7);
 };
+
+/**
+ * @protected
+ * @static
+ * @param {number} jd1 first julian day
+ * @param {number} jd2 second julian day
+ * @returns {boolean} true if there is a leap month earlier in the same year 
+ * as the given months 
+ */
+HanRataDie._priorLeapMonth = function(jd1, jd2) {
+	return jd2 >= jd1 &&
+		(HanRataDie._priorLeapMonth(jd1, HanCal._newMoonBefore(jd2)) ||
+				HanCal._noMajorST(jd2));
+};
+
 
 module.exports = HanRataDie;

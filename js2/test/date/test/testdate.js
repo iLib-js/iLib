@@ -175,7 +175,8 @@ function testDateToIlibDateWithDate() {
     var date = ilib.Date._dateToIlib(d);
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(d.getTime(), date.getTime());
 }
 
@@ -184,7 +185,8 @@ function testDateToIlibDateWithIlibDate() {
     var date = ilib.Date._dateToIlib(d);
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(d.getTime(), date.getTime());
 }
 
@@ -192,7 +194,8 @@ function testDateToIlibDateWithNumber() {
 	var date = ilib.Date._dateToIlib(1000);
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(1000, date.getTime());
 }
 
@@ -200,7 +203,8 @@ function testDateToIlibDateWithString() {
 	var date = ilib.Date._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800");
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(1394057892000, date.getTime());
 }
 
@@ -215,7 +219,8 @@ function testDateToIlibDateWithGenericObject() {
     var date = ilib.Date._dateToIlib(d);
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(1968, date.year);
     assertEquals(8, date.month);
     assertEquals(23, date.day);
@@ -232,7 +237,8 @@ function testDateToIlibDateWithBogusObject() {
 	var date = ilib.Date._dateToIlib(d);
     
     assertEquals("object", typeof(date));
-    assertTrue(date instanceof ilib.Date);
+    assertNotUndefined(typeof(date.cal));
+    assertEquals("gregorian", date.cal.type);
     assertEquals(now.getFullYear(), date.year);
     assertEquals(now.getMonth(), date.month-1);
     assertEquals(now.getDate(), date.day);

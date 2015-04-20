@@ -40,7 +40,7 @@ var IDate = require("./IDate.js");
 var Calendar = require("./Calendar.js");
 
 var PersianAlgoCal = require("./PersianAlgoCal.js");
-var PersianAlgoRataDie = require("./PersianAlgoRataDie.js");
+var PersAlgoRataDie = require("./PersAlgoRataDie.js");
 
 /**
  * @class
@@ -206,28 +206,6 @@ PersianAlgoDate.prototype.parent = IDate;
 PersianAlgoDate.prototype.constructor = PersianAlgoDate;
 
 /**
- * @private
- * @const
- * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
- */
-PersianAlgoDate.cumMonthLengths = [
-    0,    // Farvardin
-	31,   // Ordibehesht
-	62,   // Khordad
-	93,   // Tir
-	124,  // Mordad
-	155,  // Shahrivar
-	186,  // Mehr
-	216,  // Aban
-	246,  // Azar
-	276,  // Dey
-	306,  // Bahman
-	336,  // Esfand
-	365
-];
-
-/**
  * Return a new RD for this date type using the given params.
  * @protected
  * @param {Object=} params the parameters used to create this rata die instance
@@ -293,8 +271,8 @@ PersianAlgoDate.prototype._calcDateComponents = function () {
 	
 	//console.log("PersAlgoDate.calcComponent: remainder is " + remainder);
 	
-	this.month = SearchUtils.bsearch(remainder, PersianAlgoDate.cumMonthLengths);
-	remainder -= PersianAlgoDate.cumMonthLengths[this.month-1];
+	this.month = SearchUtils.bsearch(remainder, PersAlgoRataDie.cumMonthLengths);
+	remainder -= PersAlgoRataDie.cumMonthLengths[this.month-1];
 	
 	//console.log("PersAlgoDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
 	
@@ -336,7 +314,7 @@ PersianAlgoDate.prototype.getDayOfWeek = function() {
  * @return {number} the ordinal day of the year
  */
 PersianAlgoDate.prototype.getDayOfYear = function() {
-	return PersianAlgoDate.cumMonthLengths[this.month-1] + this.day;
+	return PersAlgoRataDie.cumMonthLengths[this.month-1] + this.day;
 };
 
 /**

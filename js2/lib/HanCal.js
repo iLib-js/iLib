@@ -24,6 +24,7 @@ MathUtils.js
 Astro.js
 GregorianDate.js
 GregRataDie.js
+RataDie.js
 */
 
 var ilib = require("./ilib.js");
@@ -32,6 +33,7 @@ var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 
 var Astro = require("./Astro.js");
+var RataDie = require("./RataDie.js");
 var GregorianDate = require("./GregorianDate.js");
 var GregRataDie = require("./GregRataDie.js");
 
@@ -82,9 +84,9 @@ HanCal._getElapsedYear = function(year, cycle) {
  */
 HanCal._hanNextSolarLongitude = function(jd, longitude) {
 	var tz = HanCal._chineseTZ(jd);
-	var uni = Astro.universalFromLocal(jd, tz);
-	var sol = Astro.nextSolarLongitude(uni, longitude);
-	return Astro.localFromUniversal(sol, tz);
+	var uni = Astro._universalFromLocal(jd, tz);
+	var sol = Astro._nextSolarLongitude(uni, longitude);
+	return Astro._localFromUniversal(sol, tz);
 };
 
 /**
@@ -95,8 +97,8 @@ HanCal._hanNextSolarLongitude = function(jd, longitude) {
  */
 HanCal._majorSTOnOrAfter = function(jd) {
 	var tz = HanCal._chineseTZ(jd);
-	var uni = Astro.universalFromLocal(jd, tz);
-	var next = Astro.fixangle(30 * Math.ceil(Astro.solarLongitude(uni)/30));
+	var uni = Astro._universalFromLocal(jd, tz);
+	var next = Astro._fixangle(30 * Math.ceil(Astro._solarLongitude(uni)/30));
 	return HanCal._hanNextSolarLongitude(jd, next);
 };
 
@@ -142,10 +144,10 @@ HanCal._chineseTZ = function(jd) {
  */
 HanCal._newMoonOnOrAfter = function(jd) {
 	var tz = HanCal._chineseTZ(jd);
-	var uni = Astro.universalFromLocal(jd, tz);
-	var moon = Astro.newMoonAtOrAfter(uni);
+	var uni = Astro._universalFromLocal(jd, tz);
+	var moon = Astro._newMoonAtOrAfter(uni);
 	// floor to the start of the julian day
-	return Astro.floorToJD(Astro.localFromUniversal(moon, tz)); 
+	return Astro._floorToJD(Astro._localFromUniversal(moon, tz)); 
 };
 
 /**
@@ -156,10 +158,10 @@ HanCal._newMoonOnOrAfter = function(jd) {
  */
 HanCal._newMoonBefore = function(jd) {
 	var tz = HanCal._chineseTZ(jd);
-	var uni = Astro.universalFromLocal(jd, tz);
-	var moon = Astro.newMoonBefore(uni);
+	var uni = Astro._universalFromLocal(jd, tz);
+	var moon = Astro._newMoonBefore(uni);
 	// floor to the start of the julian day
-	return Astro.floorToJD(Astro.localFromUniversal(moon, tz));
+	return Astro._floorToJD(Astro._localFromUniversal(moon, tz));
 };
 
 /**
@@ -177,8 +179,8 @@ HanCal._leapYearCalc = function(year, cycle) {
 	ret.solstice1 = HanCal._solsticeBefore(ret.elapsedYear);
 	ret.solstice2 = HanCal._solsticeBefore(ret.elapsedYear+1);
 	// ceil to the end of the julian day
-	ret.m1 = HanCal._newMoonOnOrAfter(Astro.ceilToJD(ret.solstice1));
-	ret.m2 = HanCal._newMoonBefore(Astro.ceilToJD(ret.solstice2));
+	ret.m1 = HanCal._newMoonOnOrAfter(Astro._ceilToJD(ret.solstice1));
+	ret.m2 = HanCal._newMoonBefore(Astro._ceilToJD(ret.solstice2));
 	
 	return ret;
 };
@@ -190,7 +192,7 @@ HanCal._leapYearCalc = function(year, cycle) {
  * @returns {number} the current major solar term
  */
 HanCal._currentMajorST = function(jd) {
-	var s = Astro.solarLongitude(Astro.universalFromLocal(jd, HanCal._chineseTZ(jd)));
+	var s = Astro._solarLongitude(Astro._universalFromLocal(jd, HanCal._chineseTZ(jd)));
 	return MathUtils.amod(2 + Math.floor(s/30), 12);
 };
 

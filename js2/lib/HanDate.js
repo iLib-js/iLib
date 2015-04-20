@@ -23,16 +23,17 @@ IDate.js
 GregorianDate.js 
 HanCal.js
 Astro.js 
-Utils.js
+JSUtils.js
 MathUtils.js
 LocaleInfo.js 
 Locale.js
 TimeZone.js
 HanRataDie.js
+RataDie.js
 */
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
 
 var Locale = require("./Locale.js");
@@ -45,6 +46,7 @@ var Astro = require("./Astro.js");
 var HanCal = require("./HanCal.js");
 var GregorianDate = require("./GregorianDate.js");
 var HanRataDie = require("./HanRataDie.js");
+var RataDie = require("./RataDie.js");
 
 /**
  * @class
@@ -299,20 +301,6 @@ HanDate.prototype.newRd = function (params) {
 };
 
 /**
- * @protected
- * @static
- * @param {number} jd1 first julian day
- * @param {number} jd2 second julian day
- * @returns {boolean} true if there is a leap month earlier in the same year 
- * as the given months 
- */
-HanDate._priorLeapMonth = function(jd1, jd2) {
-	return jd2 >= jd1 &&
-		(HanDate._priorLeapMonth(jd1, HanCal._newMoonBefore(jd2)) ||
-				HanCal._noMajorST(jd2));
-};
-
-/**
  * Return the year for the given RD
  * @protected
  * @param {number} rd RD to calculate from 
@@ -344,7 +332,7 @@ HanDate.prototype._calcLeap = function() {
 				HanCal._newMoonOnOrAfter(m2+1) : m2;
 	
 	var m = HanCal._newMoonBefore(jd + 1);
-	this.priorLeapMonth = HanDate._priorLeapMonth(newYears, HanCal._newMoonBefore(m));
+	this.priorLeapMonth = HanRataDie._priorLeapMonth(newYears, HanCal._newMoonBefore(m));
 	this.leapMonth = (this.leapYear && HanCal._noMajorST(m) && !this.priorLeapMonth);
 };
 
@@ -398,12 +386,12 @@ HanDate.prototype._calcDateComponents = function () {
 	var m = HanCal._newMoonBefore(jd + 1);
 	this.month = Math.round((m - calc.m1) / 29.530588853000001);
 	
-	this.priorLeapMonth = HanDate._priorLeapMonth(newYears, HanCal._newMoonBefore(m));
+	this.priorLeapMonth = HanRataDie._priorLeapMonth(newYears, HanCal._newMoonBefore(m));
 	this.leapMonth = (this.leapYear && HanCal._noMajorST(m) && !this.priorLeapMonth);
 	
 	this.cycle = Math.floor((this.year - 1) / 60);
 	this.cycleYear = MathUtils.amod(this.year, 60);
-	this.day = Astro.floorToJD(jd) - m + 1;
+	this.day = Astro._floorToJD(jd) - m + 1;
 
 	/*
 	console.log("HanDate._calcDateComponents: year is " + this.year);
@@ -416,7 +404,7 @@ HanDate.prototype._calcDateComponents = function () {
 	*/
 
 	// floor to the start of the julian day
-	remainder = jd - Astro.floorToJD(jd);
+	remainder = jd - Astro._floorToJD(jd);
 	
 	// console.log("HanDate._calcDateComponents: time remainder is " + remainder);
 	

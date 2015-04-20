@@ -141,5 +141,5 @@ function testPersianAlgoNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.PersAlgoDate);
+    assertEquals("persian-algo", d.cal.type);
 }

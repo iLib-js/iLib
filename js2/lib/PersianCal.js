@@ -19,7 +19,6 @@
 
 
 /* !depends 
-Astro.js 
 Calendar.js 
 PersRataDie.js 
 ilib.js
@@ -31,7 +30,6 @@ var MathUtils = require("./MathUtils.js");
 
 var Calendar = require("./Calendar.js");
 
-var Astro = require("./Astro.js");
 var PersRataDie = require("./PersRataDie.js");
 
 /**

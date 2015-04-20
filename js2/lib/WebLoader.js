@@ -52,7 +52,7 @@ var WebLoader = function(ilib, sync, onLoad) {
 	this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 	
 	// then a standard locale dir of a built version of ilib
-	this._exists(path.join(this.root, "locale"), "localeinfo.json");
+	this._exists(path.join(base, "locale"), "localeinfo.json");
 	
 	// then try the standard install directories
 	this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
@@ -79,7 +79,7 @@ WebLoader.prototype._loadFile = function (pathname, sync, cb) {
 	req.onload = function(e) {
 		text = req.response;
 		if (typeof(cb) === 'function') {
-			cb(req.status == 200 ? text : undefined);
+			cb((req.status === 0 || req.status === 200) ? text : undefined);
 		}
 	};
 	req.onerror = function(err) {
@@ -96,6 +96,9 @@ WebLoader.prototype._loadFile = function (pathname, sync, cb) {
 	} catch (e) {
 		// could not load the file
 		text = undefined;
+		if (typeof(cb) === 'function') {
+			cb(undefined);
+		}
 	}
 	
 	return text;

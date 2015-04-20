@@ -57,6 +57,10 @@ var testDatesChineseAstro1 = [
 function testDegreesInBeijing() {
 	var l;
 	ilib.Date.initAstro(true, undefined, undefined);
+	if (ilib.isDynCode()) {
+		var d = new ilib.Cal.Han();
+		var d = ilib.Date.RataDie({rd: 0});
+	}
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
@@ -73,6 +77,10 @@ function testDegreesInBeijing() {
 function testCurrentMajorSolarTerm() {
 	var l;
 	ilib.Date.initAstro(true, undefined, undefined);
+	if (ilib.isDynCode()) {
+		var d = new ilib.Cal.Han();
+		var d = ilib.Date.RataDie({rd: 0});
+	}
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
@@ -89,6 +97,10 @@ function testCurrentMajorSolarTerm() {
 function testHanNextSolarLongitude() {
 	var l;
 	ilib.Date.initAstro(true, undefined, undefined);
+	if (ilib.isDynCode()) {
+		var d = new ilib.Cal.Han();
+		var d = ilib.Date.RataDie({rd: 0});
+	}
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
@@ -142,6 +154,10 @@ var testDatesChineseAstro2 = [
 function testNewMoonBefore() {
 	var l;
 	ilib.Date.initAstro(true, undefined, undefined);
+	if (ilib.isDynCode()) {
+		var d = new ilib.Cal.Han();
+		var d = ilib.Date.RataDie({rd: 0});
+	}
 	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
@@ -404,5 +420,5 @@ function testHanNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.HanDate);
+    assertEquals("han", d.cal.type);
 }

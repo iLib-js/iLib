@@ -21,6 +21,8 @@
 ilib.js
 IDate.js
 Utils.js
+MathUtils.js
+SearchUtils.js
 GregorianDate.js
 GregRataDie.js
 */
@@ -36,8 +38,10 @@ GregRataDie.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
+var SearchUtils = require("./SearchUtils.js");
 
 var GregorianDate = require("./GregorianDate.js");
+var RataDie = require("./RataDie.js");
 var GregRataDie = require("./GregRataDie.js");
 
 var Astro = {};
@@ -123,7 +127,7 @@ Astro.initAstro = function(sync, loadParams, callback) {
  * @param {number} d angle in degrees
  * @return {number} angle in radians 
  */
-Astro.dtr = function(d) {
+Astro._dtr = function(d) {
 	return (d * Math.PI) / 180.0;
 };
 
@@ -135,7 +139,7 @@ Astro.dtr = function(d) {
  * @param {number} r angle in radians
  * @return {number} angle in degrees 
  */
-Astro.rtd = function(r) {
+Astro._rtd = function(r) {
 	return (r * 180.0) / Math.PI;
 };
 
@@ -146,8 +150,8 @@ Astro.rtd = function(r) {
  * @param {number} d angle in degrees
  * @return {number} cosine of the angle.
  */  
-Astro.dcos = function(d) {
-	return Math.cos(Astro.dtr(d));
+Astro._dcos = function(d) {
+	return Math.cos(Astro._dtr(d));
 };
 
 /**
@@ -157,8 +161,8 @@ Astro.dcos = function(d) {
  * @param {number} d angle in degrees
  * @return {number} sine of the angle.
  */  
-Astro.dsin = function(d) {
-	return Math.sin(Astro.dtr(d));
+Astro._dsin = function(d) {
+	return Math.sin(Astro._dtr(d));
 };
 
 /**
@@ -168,8 +172,8 @@ Astro.dsin = function(d) {
  * @param {number} d angle in degrees
  * @return {number} tan of the angle.
  */  
-Astro.dtan = function(d) {
-	return Math.tan(Astro.dtr(d));
+Astro._dtan = function(d) {
+	return Math.tan(Astro._dtr(d));
 };
 
 /**
@@ -179,7 +183,7 @@ Astro.dtan = function(d) {
  * @param {number} a angle to reduce
  * @return {number} the reduced angle  
  */
-Astro.fixangle = function(a) {
+Astro._fixangle = function(a) {
 	return a - 360.0 * (Math.floor(a / 360.0));
 };
 
@@ -191,7 +195,7 @@ Astro.fixangle = function(a) {
  * @param {number} a angle to reduce
  * @return {number} the reduced angle  
  */
-Astro.fixangr = function(a) {
+Astro._fixangr = function(a) {
 	return a - (2 * Math.PI) * (Math.floor(a / (2 * Math.PI)));
 };
 
@@ -211,7 +215,7 @@ Astro.fixangr = function(a) {
  * @param {number} year Gregorian year to calculate for
  * @param {number} which Which equinox or solstice to calculate
  */
-Astro.equinox = function(year, which) {
+Astro._equinox = function(year, which) {
 	var deltaL, i, j, JDE0, JDE, JDE0tab, S, T, W, Y;
 
 	/*  Initialize terms for mean equinox and solstices.  We
@@ -236,7 +240,7 @@ Astro.equinox = function(year, which) {
 	//document.debug.log.value += "T = " + T + "\n";
 	W = (35999.373 * T) - 2.47;
 	//document.debug.log.value += "W = " + W + "\n";
-	deltaL = 1 + (0.0334 * Astro.dcos(W)) + (0.0007 * Astro.dcos(2 * W));
+	deltaL = 1 + (0.0334 * Astro._dcos(W)) + (0.0007 * Astro._dcos(2 * W));
 	//document.debug.log.value += "deltaL = " + deltaL + "\n";
 
 	//  Sum the periodic terms for time T
@@ -245,7 +249,7 @@ Astro.equinox = function(year, which) {
 	j = 0;
 	for (i = 0; i < 24; i++) {
 		S += ilib.data.astro._EquinoxpTerms[j]
-				* Astro.dcos(ilib.data.astro._EquinoxpTerms[j + 1] + (ilib.data.astro._EquinoxpTerms[j + 2] * T));
+				* Astro._dcos(ilib.data.astro._EquinoxpTerms[j + 1] + (ilib.data.astro._EquinoxpTerms[j + 2] * T));
 		j += 3;
 	}
 
@@ -273,7 +277,7 @@ Astro.equinox = function(year, which) {
  * @param {number} year to calculate the difference for
  * @return {number} difference in seconds between dynamical time and universal time  
  */
-Astro.deltat = function (year) {
+Astro._deltat = function (year) {
 	var dt, f, i, t;
 
 	if ((year >= 1620) && (year <= 2014)) {
@@ -311,7 +315,7 @@ Astro.deltat = function (year) {
  * @param {number} jd Julian Day to calculate the obliquity for
  * @return {number} the obliquity
  */
-Astro.obliqeq = function (jd) {
+Astro._obliqeq = function (jd) {
 	var eps, u, v, i;
 
  	v = u = (jd - 2451545.0) / 3652500.0;
@@ -337,7 +341,7 @@ Astro.obliqeq = function (jd) {
  * @return {Object} the position of the sun and many intermediate
  * values
  */
-Astro.sunpos = function(jd) {
+Astro._sunpos = function(jd) {
 	var ret = {}, 
 		T, T2, T3, Omega, epsilon, epsilon0;
 
@@ -345,38 +349,38 @@ Astro.sunpos = function(jd) {
 	//document.debug.log.value += "Sunpos.  T = " + T + "\n";
 	T2 = T * T;
 	T3 = T * T2;
-	ret.meanLongitude = Astro.fixangle(280.46646 + 36000.76983 * T + 0.0003032 * T2);
+	ret.meanLongitude = Astro._fixangle(280.46646 + 36000.76983 * T + 0.0003032 * T2);
 	//document.debug.log.value += "ret.meanLongitude = " + ret.meanLongitude + "\n";
-	ret.meanAnomaly = Astro.fixangle(357.52911 + (35999.05029 * T) - 0.0001537 * T2 - 0.00000048 * T3);
+	ret.meanAnomaly = Astro._fixangle(357.52911 + (35999.05029 * T) - 0.0001537 * T2 - 0.00000048 * T3);
 	//document.debug.log.value += "ret.meanAnomaly = " + ret.meanAnomaly + "\n";
 	ret.eccentricity = 0.016708634 - 0.000042037 * T - 0.0000001267 * T2;
 	//document.debug.log.value += "e = " + e + "\n";
-	ret.equationOfCenter = ((1.914602 - 0.004817 * T - 0.000014 * T2) * Astro.dsin(ret.meanAnomaly))
-			+ ((0.019993 - 0.000101 * T) * Astro.dsin(2 * ret.meanAnomaly))
-			+ (0.000289 * Astro.dsin(3 * ret.meanAnomaly));
+	ret.equationOfCenter = ((1.914602 - 0.004817 * T - 0.000014 * T2) * Astro._dsin(ret.meanAnomaly))
+			+ ((0.019993 - 0.000101 * T) * Astro._dsin(2 * ret.meanAnomaly))
+			+ (0.000289 * Astro._dsin(3 * ret.meanAnomaly));
 	//document.debug.log.value += "ret.equationOfCenter = " + ret.equationOfCenter + "\n";
 	ret.sunLongitude = ret.meanLongitude + ret.equationOfCenter;
 	//document.debug.log.value += "ret.sunLongitude = " + ret.sunLongitude + "\n";
 	//ret.sunAnomaly = ret.meanAnomaly + ret.equationOfCenter;
 	//document.debug.log.value += "ret.sunAnomaly = " + ret.sunAnomaly + "\n";
-	// ret.sunRadius = (1.000001018 * (1 - (ret.eccentricity * ret.eccentricity))) / (1 + (ret.eccentricity * Astro.dcos(ret.sunAnomaly)));
+	// ret.sunRadius = (1.000001018 * (1 - (ret.eccentricity * ret.eccentricity))) / (1 + (ret.eccentricity * Astro._dcos(ret.sunAnomaly)));
 	//document.debug.log.value += "ret.sunRadius = " + ret.sunRadius + "\n";
 	Omega = 125.04 - (1934.136 * T);
 	//document.debug.log.value += "Omega = " + Omega + "\n";
-	ret.apparentLong = ret.sunLongitude + (-0.00569) + (-0.00478 * Astro.dsin(Omega));
+	ret.apparentLong = ret.sunLongitude + (-0.00569) + (-0.00478 * Astro._dsin(Omega));
 	//document.debug.log.value += "ret.apparentLong = " + ret.apparentLong + "\n";
-	epsilon0 = Astro.obliqeq(jd);
+	epsilon0 = Astro._obliqeq(jd);
 	//document.debug.log.value += "epsilon0 = " + epsilon0 + "\n";
-	epsilon = epsilon0 + (0.00256 * Astro.dcos(Omega));
+	epsilon = epsilon0 + (0.00256 * Astro._dcos(Omega));
 	//document.debug.log.value += "epsilon = " + epsilon + "\n";
-	//ret.rightAscension = Astro.fixangle(Astro.rtd(Math.atan2(Astro.dcos(epsilon0) * Astro.dsin(ret.sunLongitude), Astro.dcos(ret.sunLongitude))));
+	//ret.rightAscension = Astro._fixangle(Astro._rtd(Math.atan2(Astro._dcos(epsilon0) * Astro._dsin(ret.sunLongitude), Astro._dcos(ret.sunLongitude))));
 	//document.debug.log.value += "ret.rightAscension = " + ret.rightAscension + "\n";
-	// ret.declination = Astro.rtd(Math.asin(Astro.dsin(epsilon0) * Astro.dsin(ret.sunLongitude)));
+	// ret.declination = Astro._rtd(Math.asin(Astro._dsin(epsilon0) * Astro._dsin(ret.sunLongitude)));
 	////document.debug.log.value += "ret.declination = " + ret.declination + "\n";
-	ret.inclination = Astro.fixangle(23.4392911 - 0.013004167 * T - 0.00000016389 * T2 + 0.0000005036 * T3);
-	ret.apparentRightAscension = Astro.fixangle(Astro.rtd(Math.atan2(Astro.dcos(epsilon) * Astro.dsin(ret.apparentLong), Astro.dcos(ret.apparentLong))));
+	ret.inclination = Astro._fixangle(23.4392911 - 0.013004167 * T - 0.00000016389 * T2 + 0.0000005036 * T3);
+	ret.apparentRightAscension = Astro._fixangle(Astro._rtd(Math.atan2(Astro._dcos(epsilon) * Astro._dsin(ret.apparentLong), Astro._dcos(ret.apparentLong))));
 	//document.debug.log.value += "ret.apparentRightAscension = " + ret.apparentRightAscension + "\n";
-	//ret.apparentDeclination = Astro.rtd(Math.asin(Astro.dsin(epsilon) * Astro.dsin(ret.apparentLong)));
+	//ret.apparentDeclination = Astro._rtd(Math.asin(Astro._dsin(epsilon) * Astro._dsin(ret.apparentLong)));
 	//document.debug.log.value += "ret.apparentDecliation = " + ret.apparentDecliation + "\n";
 
 	// Angular quantities are expressed in decimal degrees
@@ -393,7 +397,7 @@ Astro.sunpos = function(jd) {
  * @param {number} jd calculate the nutation of this Julian Day
  * @return {Object} the deltaPsi and deltaEpsilon of the nutation
  */
-Astro.nutation = function(jd) {
+Astro._nutation = function(jd) {
 	var i, j, 
 		t = (jd - 2451545.0) / 36525.0, 
 		t2, t3, to10, 
@@ -413,11 +417,11 @@ Astro.nutation = function(jd) {
 	 * 
 	 */
 
-	ta[0] = Astro.dtr(297.850363 + 445267.11148 * t - 0.0019142 * t2 + t3 / 189474.0);
-	ta[1] = Astro.dtr(357.52772 + 35999.05034 * t - 0.0001603 * t2 - t3 / 300000.0);
-	ta[2] = Astro.dtr(134.96298 + 477198.867398 * t + 0.0086972 * t2 + t3 / 56250.0);
-	ta[3] = Astro.dtr(93.27191 + 483202.017538 * t - 0.0036825 * t2 + t3 / 327270);
-	ta[4] = Astro.dtr(125.04452 - 1934.136261 * t + 0.0020708 * t2 + t3 / 450000.0);
+	ta[0] = Astro._dtr(297.850363 + 445267.11148 * t - 0.0019142 * t2 + t3 / 189474.0);
+	ta[1] = Astro._dtr(357.52772 + 35999.05034 * t - 0.0001603 * t2 - t3 / 300000.0);
+	ta[2] = Astro._dtr(134.96298 + 477198.867398 * t + 0.0086972 * t2 + t3 / 56250.0);
+	ta[3] = Astro._dtr(93.27191 + 483202.017538 * t - 0.0036825 * t2 + t3 / 327270);
+	ta[4] = Astro._dtr(125.04452 - 1934.136261 * t + 0.0020708 * t2 + t3 / 450000.0);
 
 	/*
 	 * Range reduce the angles in case the sine and cosine functions don't do it
@@ -425,7 +429,7 @@ Astro.nutation = function(jd) {
 	 */
 
 	for (i = 0; i < 5; i++) {
-		ta[i] = Astro.fixangr(ta[i]);
+		ta[i] = Astro._fixangr(ta[i]);
 	}
 
 	to10 = t / 10.0;
@@ -459,7 +463,7 @@ Astro.nutation = function(jd) {
  * @param {number} jd the Julian Day of the day to calculate for
  * @return {number} the equation of time for the given day  
  */
-Astro.equationOfTime = function(jd) {
+Astro._equationOfTime = function(jd) {
 	var alpha, deltaPsi, E, epsilon, L0, tau, pos;
 
 	// 2451545.0 is the Julian day of J2000 epoch
@@ -471,21 +475,21 @@ Astro.equationOfTime = function(jd) {
 			+ (-((tau * tau * tau * tau) / 15300))
 			+ (-((tau * tau * tau * tau * tau) / 2000000));
 	//console.log("L0 = " + L0);
-	L0 = Astro.fixangle(L0);
+	L0 = Astro._fixangle(L0);
 	//console.log("L0 = " + L0);
-	pos = Astro.sunpos(jd);
+	pos = Astro._sunpos(jd);
 	alpha = pos.apparentRightAscension;
 	//console.log("alpha = " + alpha);
-	var nut = Astro.nutation(jd);
+	var nut = Astro._nutation(jd);
 	deltaPsi = nut.deltaPsi;
 	//console.log("deltaPsi = " + deltaPsi);
-	epsilon = Astro.obliqeq(jd) + nut.deltaEpsilon;
+	epsilon = Astro._obliqeq(jd) + nut.deltaEpsilon;
 	//console.log("epsilon = " + epsilon);
 	//console.log("L0 - 0.0057183 = " + (L0 - 0.0057183));
 	//console.log("L0 - 0.0057183 - alpha = " + (L0 - 0.0057183 - alpha));
-	//console.log("deltaPsi * cos(epsilon) = " + deltaPsi * Astro.dcos(epsilon));
+	//console.log("deltaPsi * cos(epsilon) = " + deltaPsi * Astro._dcos(epsilon));
 	
-	E = L0 - 0.0057183 - alpha + deltaPsi * Astro.dcos(epsilon);
+	E = L0 - 0.0057183 - alpha + deltaPsi * Astro._dcos(epsilon);
 	// if alpha and L0 are in different quadrants, then renormalize
 	// so that the difference between them is in the right range
 	if (E > 180) {
@@ -505,7 +509,7 @@ Astro.equationOfTime = function(jd) {
  * @private
  * @static
  */
-Astro.poly = function(x, coefficients) {
+Astro._poly = function(x, coefficients) {
 	var result = coefficients[0];
 	var xpow = x;
 	for (var i = 1; i < coefficients.length; i++) {
@@ -525,7 +529,7 @@ Astro.poly = function(x, coefficients) {
  * @param {number} zone number of minutes of offset from UTC for the time zone 
  * @return {number} the UTC equivalent of the local RD
  */
-Astro.universalFromLocal = function(local, zone) {
+Astro._universalFromLocal = function(local, zone) {
 	return local - zone / 1440;
 };
 
@@ -539,7 +543,7 @@ Astro.universalFromLocal = function(local, zone) {
  * @param {number} zone number of minutes of offset from UTC for the time zone 
  * @return {number} the UTC equivalent of the local RD
  */
-Astro.localFromUniversal = function(local, zone) {
+Astro._localFromUniversal = function(local, zone) {
 	return local + zone / 1440;
 };
 
@@ -549,8 +553,8 @@ Astro.localFromUniversal = function(local, zone) {
  * @param {number} c julian centuries of the date to calculate
  * @return {number} the aberration
  */
-Astro.aberration = function(c) {
-	return 9.74e-05 * Astro.dcos(177.63 + 35999.01847999999 * c) - 0.005575;
+Astro._aberration = function(c) {
+	return 9.74e-05 * Astro._dcos(177.63 + 35999.01847999999 * c) - 0.005575;
 };
 
 /**
@@ -566,18 +570,18 @@ ilib.data.astro._nutCoeffB q= [201.11, 72001.5377, 0.00057];
  * @param {number} c julian centuries of the date to calculate
  * @return {number} the nutation for the given julian century in radians
  */
-Astro.nutation2 = function(c) {
-	var a = Astro.poly(c, ilib.data.astro._nutCoeffA);
-	var b = Astro.poly(c, ilib.data.astro._nutCoeffB);
-	// return -0.0000834 * Astro.dsin(a) - 0.0000064 * Astro.dsin(b);
-	return -0.004778 * Astro.dsin(a) - 0.0003667 * Astro.dsin(b);
+Astro._nutation2 = function(c) {
+	var a = Astro._poly(c, ilib.data.astro._nutCoeffA);
+	var b = Astro._poly(c, ilib.data.astro._nutCoeffB);
+	// return -0.0000834 * Astro._dsin(a) - 0.0000064 * Astro._dsin(b);
+	return -0.004778 * Astro._dsin(a) - 0.0003667 * Astro._dsin(b);
 };
 
 /**
  * @static
  * @private
  */
-Astro.ephemerisCorrection = function(jd) {
+Astro._ephemerisCorrection = function(jd) {
 	var year = GregorianDate._calcYear(jd - 1721424.5);
 	
 	if (1988 <= year && year <= 2019) {
@@ -595,7 +599,7 @@ Astro.ephemerisCorrection = function(jd) {
 		});
 		// 693596 is the rd of Jan 1, 1900
 		var theta = (jul1.getRataDie() - 693596) / 36525;
-		return Astro.poly(theta, (1900 <= year) ? ilib.data.astro._coeff19th : ilib.data.astro._coeff18th);
+		return Astro._poly(theta, (1900 <= year) ? ilib.data.astro._coeff19th : ilib.data.astro._coeff18th);
 	}
 	
 	if (1620 <= year && year <= 1799) {
@@ -622,27 +626,27 @@ Astro.ephemerisCorrection = function(jd) {
  * @static
  * @private
  */
-Astro.ephemerisFromUniversal = function(jd) {
-	return jd + Astro.ephemerisCorrection(jd);
+Astro._ephemerisFromUniversal = function(jd) {
+	return jd + Astro._ephemerisCorrection(jd);
 };
 
 /**
  * @static
  * @private
  */
-Astro.universalFromEphemeris = function(jd) {
-	return jd - Astro.ephemerisCorrection(jd);
+Astro._universalFromEphemeris = function(jd) {
+	return jd - Astro._ephemerisCorrection(jd);
 };
 
 /**
  * @static
  * @private
  */
-Astro.julianCenturies = function(jd) {
+Astro._julianCenturies = function(jd) {
 	// 2451545.0 is the Julian day of J2000 epoch
 	// 730119.5 is the Gregorian RD of J2000 epoch
 	// 36525.0 is the number of days in a Julian century
-	return (Astro.ephemerisFromUniversal(jd) - 2451545.0) / 36525.0;
+	return (Astro._ephemerisFromUniversal(jd) - 2451545.0) / 36525.0;
 };
 
 /**
@@ -653,20 +657,20 @@ Astro.julianCenturies = function(jd) {
  * @param {number} jd julian day of the date to calculate the longitude for 
  * @return {number} the solar longitude in degrees
  */
-Astro.solarLongitude = function(jd) {
-	var c = Astro.julianCenturies(jd),
+Astro._solarLongitude = function(jd) {
+	var c = Astro._julianCenturies(jd),
 		longitude = 0,
 		len = ilib.data.astro._solarLongCoeff.length,
 		row;
 	
 	for (var i = 0; i < len; i++) {
 		longitude += ilib.data.astro._solarLongCoeff[i] * 
-			Astro.dsin(ilib.data.astro._solarLongAddends[i] + ilib.data.astro._solarLongMultipliers[i] * c);
+			Astro._dsin(ilib.data.astro._solarLongAddends[i] + ilib.data.astro._solarLongMultipliers[i] * c);
 	}
 	longitude *= 5.729577951308232e-06;
 	longitude += 282.77718340000001 + 36000.769537439999 * c;
-	longitude += Astro.aberration(c) + Astro.nutation2(c);
-	return Astro.fixangle(longitude);
+	longitude += Astro._aberration(c) + Astro._nutation2(c);
+	return Astro._fixangle(longitude);
 };
 
 /**
@@ -675,30 +679,30 @@ Astro.solarLongitude = function(jd) {
  * @param {number} jd
  * @return {number}
  */
-Astro.lunarLongitude = function (jd) {
-	var c = Astro.julianCenturies(jd),
-	    meanMoon = Astro.fixangle(Astro.poly(c, ilib.data.astro._meanMoonCoeff)),
-	    elongation = Astro.fixangle(Astro.poly(c, ilib.data.astro._elongationCoeff)),
-	    solarAnomaly = Astro.fixangle(Astro.poly(c, ilib.data.astro._solarAnomalyCoeff)),
-	    lunarAnomaly = Astro.fixangle(Astro.poly(c, ilib.data.astro._lunarAnomalyCoeff)),
-	    moonNode = Astro.fixangle(Astro.poly(c, ilib.data.astro._moonFromNodeCoeff)),
-	    e = Astro.poly(c, ilib.data.astro._eCoeff);
+Astro._lunarLongitude = function (jd) {
+	var c = Astro._julianCenturies(jd),
+	    meanMoon = Astro._fixangle(Astro._poly(c, ilib.data.astro._meanMoonCoeff)),
+	    elongation = Astro._fixangle(Astro._poly(c, ilib.data.astro._elongationCoeff)),
+	    solarAnomaly = Astro._fixangle(Astro._poly(c, ilib.data.astro._solarAnomalyCoeff)),
+	    lunarAnomaly = Astro._fixangle(Astro._poly(c, ilib.data.astro._lunarAnomalyCoeff)),
+	    moonNode = Astro._fixangle(Astro._poly(c, ilib.data.astro._moonFromNodeCoeff)),
+	    e = Astro._poly(c, ilib.data.astro._eCoeff);
 	
 	var sum = 0;
 	for (var i = 0; i < ilib.data.astro._lunarElongationLongCoeff.length; i++) {
 		var x = ilib.data.astro._solarAnomalyLongCoeff[i];
 
 		sum += ilib.data.astro._sineCoeff[i] * Math.pow(e, Math.abs(x)) * 
-			Astro.dsin(ilib.data.astro._lunarElongationLongCoeff[i] * elongation + x * solarAnomaly + 
+			Astro._dsin(ilib.data.astro._lunarElongationLongCoeff[i] * elongation + x * solarAnomaly + 
 				ilib.data.astro._lunarAnomalyLongCoeff[i] * lunarAnomaly + 
 				ilib.data.astro._moonFromNodeLongCoeff[i] * moonNode);
 	}
 	var longitude = sum / 1000000;
-	var venus = 3958.0 / 1000000 * Astro.dsin(119.75 + c * 131.84899999999999);
-	var jupiter = 318.0 / 1000000 * Astro.dsin(53.090000000000003 + c * 479264.28999999998);
-	var flatEarth = 1962.0 / 1000000 * Astro.dsin(meanMoon - moonNode);
+	var venus = 3958.0 / 1000000 * Astro._dsin(119.75 + c * 131.84899999999999);
+	var jupiter = 318.0 / 1000000 * Astro._dsin(53.090000000000003 + c * 479264.28999999998);
+	var flatEarth = 1962.0 / 1000000 * Astro._dsin(meanMoon - moonNode);
 	
-	return Astro.fixangle(meanMoon + longitude + venus + jupiter + flatEarth + Astro.nutation2(c));
+	return Astro._fixangle(meanMoon + longitude + venus + jupiter + flatEarth + Astro._nutation2(c));
 };
 
 /**
@@ -707,29 +711,29 @@ Astro.lunarLongitude = function (jd) {
  * @param {number} n
  * @return {number} julian day of the n'th new moon
  */
-Astro.newMoonTime = function(n) {
+Astro._newMoonTime = function(n) {
 	var k = n - 24724;
 	var c = k / 1236.8499999999999;
-	var approx = Astro.poly(c, ilib.data.astro._nmApproxCoeff);
-	var capE = Astro.poly(c, ilib.data.astro._nmCapECoeff);
-	var solarAnomaly = Astro.poly(c, ilib.data.astro._nmSolarAnomalyCoeff);
-	var lunarAnomaly = Astro.poly(c, ilib.data.astro._nmLunarAnomalyCoeff);
-	var moonArgument = Astro.poly(c, ilib.data.astro._nmMoonArgumentCoeff);
-	var capOmega = Astro.poly(c, ilib.data.astro._nmCapOmegaCoeff);
-	var correction = -0.00017 * Astro.dsin(capOmega);
+	var approx = Astro._poly(c, ilib.data.astro._nmApproxCoeff);
+	var capE = Astro._poly(c, ilib.data.astro._nmCapECoeff);
+	var solarAnomaly = Astro._poly(c, ilib.data.astro._nmSolarAnomalyCoeff);
+	var lunarAnomaly = Astro._poly(c, ilib.data.astro._nmLunarAnomalyCoeff);
+	var moonArgument = Astro._poly(c, ilib.data.astro._nmMoonArgumentCoeff);
+	var capOmega = Astro._poly(c, ilib.data.astro._nmCapOmegaCoeff);
+	var correction = -0.00017 * Astro._dsin(capOmega);
 	for (var i = 0; i < ilib.data.astro._nmSineCoeff.length; i++) {
 		correction = correction + ilib.data.astro._nmSineCoeff[i] * Math.pow(capE, ilib.data.astro._nmEFactor[i]) * 
-		Astro.dsin(ilib.data.astro._nmSolarCoeff[i] * solarAnomaly + 
+		Astro._dsin(ilib.data.astro._nmSolarCoeff[i] * solarAnomaly + 
 				ilib.data.astro._nmLunarCoeff[i] * lunarAnomaly + 
 				ilib.data.astro._nmMoonCoeff[i] * moonArgument);
 	}
 	var additional = 0;
 	for (var i = 0; i < ilib.data.astro._nmAddConst.length; i++) {
 		additional = additional + ilib.data.astro._nmAddFactor[i] * 
-		Astro.dsin(ilib.data.astro._nmAddConst[i] + ilib.data.astro._nmAddCoeff[i] * k);
+		Astro._dsin(ilib.data.astro._nmAddConst[i] + ilib.data.astro._nmAddCoeff[i] * k);
 	}
-	var extra = 0.000325 * Astro.dsin(Astro.poly(c, ilib.data.astro._nmExtra));
-	return Astro.universalFromEphemeris(approx + correction + extra + additional + RataDie.gregorianEpoch);
+	var extra = 0.000325 * Astro._dsin(Astro._poly(c, ilib.data.astro._nmExtra));
+	return Astro._universalFromEphemeris(approx + correction + extra + additional + RataDie.gregorianEpoch);
 };
 
 /**
@@ -738,10 +742,10 @@ Astro.newMoonTime = function(n) {
  * @param {number} jd
  * @return {number}
  */
-Astro.lunarSolarAngle = function(jd) {
-	var lunar = Astro.lunarLongitude(jd);
-	var solar = Astro.solarLongitude(jd)
-	return Astro.fixangle(lunar - solar);
+Astro._lunarSolarAngle = function(jd) {
+	var lunar = Astro._lunarLongitude(jd);
+	var solar = Astro._solarLongitude(jd)
+	return Astro._fixangle(lunar - solar);
 };
 
 /**
@@ -750,17 +754,17 @@ Astro.lunarSolarAngle = function(jd) {
  * @param {number} jd
  * @return {number}
  */
-Astro.newMoonBefore = function (jd) {
-	var phase = Astro.lunarSolarAngle(jd);
+Astro._newMoonBefore = function (jd) {
+	var phase = Astro._lunarSolarAngle(jd);
 	// 11.450086114414322 is the julian day of the 0th full moon
 	// 29.530588853000001 is the average length of a month
 	var guess = Math.round((jd - 11.450086114414322 - RataDie.gregorianEpoch) / 29.530588853000001 - phase / 360) - 1;
 	var current, last;
-	current = last = Astro.newMoonTime(guess);
+	current = last = Astro._newMoonTime(guess);
 	while (current < jd) {
 		guess++;
 		last = current;
-		current = Astro.newMoonTime(guess);
+		current = Astro._newMoonTime(guess);
 	}
 	return last;
 };
@@ -771,13 +775,13 @@ Astro.newMoonBefore = function (jd) {
  * @param {number} jd
  * @return {number}
  */
-Astro.newMoonAtOrAfter = function (jd) {
-	var phase = Astro.lunarSolarAngle(jd);
+Astro._newMoonAtOrAfter = function (jd) {
+	var phase = Astro._lunarSolarAngle(jd);
 	// 11.450086114414322 is the julian day of the 0th full moon
 	// 29.530588853000001 is the average length of a month
 	var guess = Math.round((jd - 11.450086114414322 - RataDie.gregorianEpoch) / 29.530588853000001 - phase / 360);
 	var current;
-	while ((current = Astro.newMoonTime(guess)) < jd) {
+	while ((current = Astro._newMoonTime(guess)) < jd) {
 		guess++;
 	}
 	return current;
@@ -791,14 +795,14 @@ Astro.newMoonAtOrAfter = function (jd) {
  * @returns {number} the JD of the next time that the solar longitude 
  * is a multiple of the given longitude
  */
-Astro.nextSolarLongitude = function(jd, longitude) {
+Astro._nextSolarLongitude = function(jd, longitude) {
 	var rate = 365.242189 / 360.0;
-	var tau = jd + rate * Astro.fixangle(longitude - Astro.solarLongitude(jd));
+	var tau = jd + rate * Astro._fixangle(longitude - Astro._solarLongitude(jd));
 	var start = Math.max(jd, tau - 5.0);
 	var end = tau + 5.0;
 	
 	return SearchUtils.bisectionSearch(0, start, end, 1e-6, function (l) {
-		return 180 - Astro.fixangle(Astro.solarLongitude(l) - longitude);
+		return 180 - Astro._fixangle(Astro._solarLongitude(l) - longitude);
 	});
 };
 
@@ -810,7 +814,7 @@ Astro.nextSolarLongitude = function(jd, longitude) {
  * @param {number} jd the julian to round
  * @return {number} the jd floored to the midnight of the julian day
  */
-Astro.floorToJD = function(jd) {
+Astro._floorToJD = function(jd) {
 	return Math.floor(jd - 0.5) + 0.5;
 };
 
@@ -822,7 +826,7 @@ Astro.floorToJD = function(jd) {
  * @param {number} jd the julian to round
  * @return {number} the jd floored to the midnight of the julian day
  */
-Astro.ceilToJD = function(jd) {
+Astro._ceilToJD = function(jd) {
 	return Math.ceil(jd + 0.5) - 0.5;
 };
 
