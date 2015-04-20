@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressTNNormal() {
 	var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
 	

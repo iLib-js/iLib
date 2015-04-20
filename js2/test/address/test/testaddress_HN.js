@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressHNNormal() {
 	var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
 	

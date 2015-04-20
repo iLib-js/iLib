@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressGHNormal() {
 	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	

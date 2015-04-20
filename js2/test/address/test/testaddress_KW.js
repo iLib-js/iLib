@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressKWNormal() {
 	var parsedAddress = new Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	

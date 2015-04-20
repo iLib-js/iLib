@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressTRNormal() {
 	var parsedAddress = new Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'tr-TR'});
 	

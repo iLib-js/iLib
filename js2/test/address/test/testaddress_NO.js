@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressNONormal() {
 	var parsedAddress = new Address("Norwegian Post and Telecommunications Authority\nPostboks 447 Sentrum\n0104 Trondheim\nNORWAY", {locale: 'nb-NO'});
 	

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressZANormal() {
 	var parsedAddress = new Address("Customer Services 497 Jacob Mare Street\nPretoria 0001\nSouth Africa", {locale: 'en-ZA'});
 	

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressNZNormal() {
 	var parsedAddress = new Address("PO Box 10362\nWellington 6143\nNew Zealand", {locale: 'en-NZ'});
 	

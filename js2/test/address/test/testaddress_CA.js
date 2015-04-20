@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressCASimpleCA() {
 	var parsedAddress = new Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
 	

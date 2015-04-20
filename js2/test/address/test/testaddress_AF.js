@@ -17,7 +17,8 @@
  * limitations under the License.
  */
 
-
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 
 function testParseAFAddressNormal() {
 	var parsedAddress = new Address("آقای احمد توحید, خیابان، خانه شماره ۰۴۲, کابل, ۱۰۰۱, افغانستان", {locale: 'fa-AF'});

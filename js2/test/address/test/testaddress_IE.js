@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressIENormal() {
 	var parsedAddress = new Address("Gordon House\nBarrow Street\nDublin 4\nIreland", {locale: 'en-IE'});
 	

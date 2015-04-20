@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressGANormal() {
 	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	

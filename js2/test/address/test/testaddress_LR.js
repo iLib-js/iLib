@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressLRNormal() {
 	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-LR'});
 	

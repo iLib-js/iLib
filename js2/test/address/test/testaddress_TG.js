@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressTGNormal() {
 	var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
 	

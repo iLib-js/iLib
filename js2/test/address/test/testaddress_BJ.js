@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressBJNormal() {
 	var parsedAddress = new Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	

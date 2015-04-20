@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressNLNormal() {
 	var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Nederland", {locale: 'nl-NL'});
 	

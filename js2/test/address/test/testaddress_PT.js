@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressPTNormal() {
 	var parsedAddress = new Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal", {locale: 'pt-PT'});
 	

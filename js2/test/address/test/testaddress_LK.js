@@ -17,6 +17,12 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressLKNormal() {
 	var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500\nSri Lanka", {locale: 'en-LK'});
 	

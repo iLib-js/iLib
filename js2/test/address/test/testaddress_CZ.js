@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressCZNormal() {
 	var parsedAddress = new Address("Prujezdna 320/62, 100 00 PRAHA 10, česká republika", {locale: 'cs-CZ'});
 	

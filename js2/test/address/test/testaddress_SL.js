@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressSLNormal() {
 	var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
 	

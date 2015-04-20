@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressITNormal() {
 	var parsedAddress = new Address("Corso Europa 2\n20122 Milan\nItalia", {locale: 'it-IT'});
 	

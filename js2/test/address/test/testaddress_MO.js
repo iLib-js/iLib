@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressMOLatinNormal() {
 	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'pt-MO'});
 	

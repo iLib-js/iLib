@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressZMNormal() {
 	var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA\nZAMBIA", {locale: 'en-ZM'});
 	

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressGMNormal() {
 	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
 	

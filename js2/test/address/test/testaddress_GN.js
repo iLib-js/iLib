@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressGNNormal() {
 	var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984 CONAKRY\nguinée", {locale: 'fr-GN'});
 	

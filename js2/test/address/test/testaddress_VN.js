@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressVNNormal() {
 	var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612\nViệt Nam", {locale: 'vi-VN'});
 	

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressDENormal() {
 	var parsedAddress = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {locale: 'de-DE'});
 	

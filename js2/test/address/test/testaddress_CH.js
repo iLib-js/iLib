@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 
 function testParseAddressCHNormal() {
 	var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});

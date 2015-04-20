@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressSGSGLatinNormal() {
 	var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-SG'});
 	

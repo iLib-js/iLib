@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressUYNormal() {
 	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo\nUruguay", {locale: 'es-UY'});
 	

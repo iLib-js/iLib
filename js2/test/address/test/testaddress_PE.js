@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressPENormal() {
 	var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
 	

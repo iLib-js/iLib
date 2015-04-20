@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressMENormal() {
 	var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica\nCrna Gora", {locale: 'hr-ME'});
 	

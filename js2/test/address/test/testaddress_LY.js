@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 
 function testParseAddressLYARNormal() {
 	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});

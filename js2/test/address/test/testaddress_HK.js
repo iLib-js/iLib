@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressHKHKLatinNormal() {
 	var parsedAddress = new Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay, Hong Kong", {locale: 'en-HK'});
 	

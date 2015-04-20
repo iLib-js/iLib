@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressPLNormal() {
 	var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland", {locale: 'pl-PL'});
 	

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressMWNormal() {
 	var parsedAddress = new Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI", {locale: 'en-MW'});
 	

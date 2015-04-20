@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 // TODO: get some Luxembourg addresses
 
 function testParseAddressLUNormal() {

@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAUAddressNormal() {
 	var parsedAddress = new Address("Level 5, 48 Pirrama Road,\nPyrmont, NSW 2009\nAustralia", {locale: 'en-AU'});
 	

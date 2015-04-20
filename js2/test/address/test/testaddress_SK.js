@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressSKNormal() {
 	
 	var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});

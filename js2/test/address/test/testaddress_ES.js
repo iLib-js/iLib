@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressESNormal() {
 	var parsedAddress = new Address("Avda.General Avilés, 35-37, Bajo\n46015 - Valencia\nEspaña", {locale: 'es-ES'});
 	

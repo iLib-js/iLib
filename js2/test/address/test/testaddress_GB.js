@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressGBNormal() {
 	var parsedAddress = new Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nUnited Kingdom", {locale: 'en-GB'});
 	

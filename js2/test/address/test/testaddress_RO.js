@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressRONormal() {
 	var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'ro-RO'});
 	

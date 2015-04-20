@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressPYNormal() {
 	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
 	

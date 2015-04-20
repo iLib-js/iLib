@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressILNormal() {
 	var parsedAddress = new Address("Yisrael Yisraeli\nHaDoar 1\nJerusalem 12345\nIsrael", {locale: 'he-IL'});
 	

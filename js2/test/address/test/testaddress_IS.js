@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressISNormal() {
 	var parsedAddress = new Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
 	

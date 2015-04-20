@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressUGNormal() {
 	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
 	

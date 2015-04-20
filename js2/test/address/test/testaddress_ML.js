@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var Address = require("../lib/Address.js");
+var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressMLNormal() {
 	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
 	
