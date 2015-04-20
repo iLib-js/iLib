@@ -18,7 +18,7 @@
  */
 
 function testParseAddressESNormal() {
-	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Valencia\nEspaña", {locale: 'es-ES'});
+	var parsedAddress = new Address("Avda.General Avilés, 35-37, Bajo\n46015 - Valencia\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressESNormal() {
 };
 
 function testParseAddressESNoZip() {
-	var parsedAddress = new ilib.Address("Torre Picasso\nPlaza Pablo Ruiz Picasso 1\nMadrid\nEspaña", {locale: 'es-ES'});
+	var parsedAddress = new Address("Torre Picasso\nPlaza Pablo Ruiz Picasso 1\nMadrid\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Torre Picasso, Plaza Pablo Ruiz Picasso 1", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressESNoZip() {
 };
 
 function testParseAddressESNoCountry() {
-	var parsedAddress = new ilib.Address("Isabel de Santo Domingo, 6\n50014 - Zaragoza", {locale: 'es-ES'});
+	var parsedAddress = new Address("Isabel de Santo Domingo, 6\n50014 - Zaragoza", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Isabel de Santo Domingo, 6", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressESNoCountry() {
 };
 
 function testParseAddressESManyLines() {
-	var parsedAddress = new ilib.Address("Cami de Can Graells\nno. 1-21\n08174\nSant Cugat del Valles\nBarcelona\nEspaña", {locale: 'es-ES'});
+	var parsedAddress = new Address("Cami de Can Graells\nno. 1-21\n08174\nSant Cugat del Valles\nBarcelona\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Cami de Can Graells, no. 1-21", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressESManyLines() {
 };
 
 function testParseAddressESOneLine() {
-	var parsedAddress = new ilib.Address("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas, 28232 - Las Rozas. Madrid, España", {locale: 'es-ES'});
+	var parsedAddress = new Address("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas, 28232 - Las Rozas. Madrid, España", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressESOneLine() {
 };
 
 function testParseAddressESSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tAvda.General\t\t\r Avilés,\r 35-37,\r Bajo\n\t\t\t\r\r46015\r -\r\r \nValencia,\n,\t\tEspaña\n\n\n", {locale: 'es-ES'});
+	var parsedAddress = new Address("\t\t\tAvda.General\t\t\r Avilés,\r 35-37,\r Bajo\n\t\t\t\r\r46015\r -\r\r \nValencia,\n,\t\tEspaña\n\n\n", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressESSuperfluousWhitespace() {
 };
 
 function testParseAddressESNoDelimiters() {
-	var parsedAddress = new ilib.Address("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas 28232 - Las Rozas Madrid España", {locale: 'es-ES'});
+	var parsedAddress = new Address("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas 28232 - Las Rozas Madrid España", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressESNoDelimiters() {
 };
 
 function testParseAddressESSpecialChars() {
-	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València", {locale: 'es-ES'});
+	var parsedAddress = new Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressESSpecialChars() {
 };
 
 function testParseAddressESFromUS() {
-	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València, Spain", {locale: 'en-US'});
+	var parsedAddress = new Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València, Spain", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -128,7 +128,7 @@ function testParseAddressESFromUS() {
 };
 
 function testFormatAddressES() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
@@ -138,12 +138,12 @@ function testFormatAddressES() {
 	}, {locale: 'es-ES'});
 	
 	var expected = "Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví València\nEspaña";
-	var formatter = new ilib.AddressFmt({locale: 'es-ES'});
+	var formatter = new AddressFmt({locale: 'es-ES'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressESFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
@@ -153,6 +153,6 @@ function testFormatAddressESFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví València\nSpain";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

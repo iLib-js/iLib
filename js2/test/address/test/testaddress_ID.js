@@ -20,7 +20,7 @@
 
 
 function testParseAddressIDNormal() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan 10110,Jakarta,INDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan 10110,Jakarta,INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressIDNormal() {
 };
 
 function testParseAddressIDNoZip() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan, INDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan, INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressIDNoZip() {
 };
 
 function testParseAddressIDManyLines() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta\nJalan Medan Merdeka Selatan No. xx\nJakarta Selatan 10110\nINDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta\nJalan Medan Merdeka Selatan No. xx\nJakarta Selatan 10110\nINDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressIDManyLines() {
 };
 
 function testParseAddressIDOneLine() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressIDOneLine() {
 };
 
 function testParseAddressIDSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx   \n\t\n Jakarta Selatan 10110\t\n\n INDONESIA  \n  \t\t\t", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx   \n\t\n Jakarta Selatan 10110\t\n\n INDONESIA  \n  \t\t\t", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressIDSuperfluousWhitespace() {
 };
 
 function testParseAddressIDNoDelimiters() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressIDNoDelimiters() {
 };
 
 /*function testParseAddressIDSpecialChars() {
-	var parsedAddress = new ilib.Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,ID-1307 København K.,INDONESIA", {locale: 'id-ID'});
+	var parsedAddress = new Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,ID-1307 København K.,INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Botanisk Centralbibliotek,Sølvgade 83, opg. S", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressIDNoDelimiters() {
 };*/
 
 function testParseAddressIDFromUS() {
-	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110,INDONESIA", {locale: 'en-US'});
+	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110,INDONESIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressIDFromUS() {
 };
 
 function testFormatAddressID() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx",
 		locality: "Jakarta Selatan",
 		postalCode: "10110",
@@ -127,12 +127,12 @@ function testFormatAddressID() {
 	}, {locale: 'id-ID'});
 	
 	var expected = "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx\nJakarta Selatan 10110\nINDONESIA";
-	var formatter = new ilib.AddressFmt({locale: 'id-ID'});
+	var formatter = new AddressFmt({locale: 'id-ID'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressIDFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx",
 		postalCode: "10110",
 		country: "Indonesia",
@@ -140,6 +140,6 @@ function testFormatAddressIDFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx\n10110\nIndonesia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

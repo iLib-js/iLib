@@ -20,7 +20,7 @@
 
 
 function testParseAZAddressNormal() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
@@ -31,7 +31,7 @@ function testParseAZAddressNormal() {
 };
 
 function testParseAZAddressNoZip() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAZAddressNoZip() {
 };
 
 function testParseAZAddressManyLines() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR\n45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR\n45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAZAddressManyLines() {
 };
 
 function testParseAZAddressOneLine() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -67,7 +67,7 @@ function testParseAZAddressOneLine() {
 };
 
 function testParseAZAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str.  \n\t\n 2012 GÄNCÄ\t\n\n AZERBAIJAN  \n  \t\t\t", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.  \n\t\n 2012 GÄNCÄ\t\n\n AZERBAIJAN  \n  \t\t\t", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAZAddressSuperfluousWhitespace() {
 };
 
 function testParseAZAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR 45 Hatai Str. 2012 GÄNCÄ AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR 45 Hatai Str. 2012 GÄNCÄ AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR 45 Hatai Str.", parsedAddress.streetAddress);
@@ -91,7 +91,7 @@ function testParseAZAddressNoDelimiters() {
 };
 
 function testParseAZAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAZAddressSpecialChars() {
 };
 
 function testParseAZAddressFromUS() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-US'});
+	var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-US'});
 	
 	// the country nAZe is in English because this address is for a contact in a US database
 	
@@ -117,7 +117,7 @@ function testParseAZAddressFromUS() {
 };
 
 function testFormatAddressAZ() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
 		locality: "GÄNCÄ",
 		postalCode: "2012",
@@ -126,12 +126,12 @@ function testFormatAddressAZ() {
 	}, {locale: 'en-AZ'});
 	
 	var expected = "ILHAZ SHAHRIAR, 45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN";
-	var formatter = new ilib.AddressFmt({locale: 'en-AZ'});
+	var formatter = new AddressFmt({locale: 'en-AZ'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressAZFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
 		postalCode: "2012",
 		country: "AZERBAIJAN",
@@ -140,6 +140,6 @@ function testFormatAddressAZFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "ILHAZ SHAHRIAR, 45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

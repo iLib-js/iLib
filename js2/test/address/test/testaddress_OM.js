@@ -18,7 +18,7 @@
  */
 
 function testParseAddressOMNormal() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressOMNormal() {
 };
 
 function testParseAddressOMNoZip() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressOMNoZip() {
 };
 
 function testParseAddressOMNoCountry() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressOMNoCountry() {
 };
 
 function testParseAddressOMManyLines() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ\n٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\nعُمان\n\n\n", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ\n٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\nعُمان\n\n\n", {locale: 'ar-OM'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ, ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressOMManyLines() {
 };
 
 function testParseAddressOMOneLine() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ,  ٣٣٨ - ﺭﻮﻳ , ١١٢ , ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ , عُمان", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ,  ٣٣٨ - ﺭﻮﻳ , ١١٢ , ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ , عُمان", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ, ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressOMOneLine() {
 };
 
 function testParseAddressOMSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﻡﻭﺎﻘﻓ ﻑﺮﻋ\n\n\t٣٣٨ - ﺭﻮﻳ\n\n\t١١٢\n\n\tﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\n\tعُمان\n\n\n", {locale: 'ar-OM'});
+	var parsedAddress = new Address("\t\t\tﻡﻭﺎﻘﻓ ﻑﺮﻋ\n\n\t٣٣٨ - ﺭﻮﻳ\n\n\t١١٢\n\n\tﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\n\tعُمان\n\n\n", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ, ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressOMSuperfluousWhitespace() {
 };
 
 function testParseAddressOMNoDelimiters() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ ١١٢  ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ عُمان", {locale: 'ar-OM'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ ١١٢  ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ عُمان", {locale: 'ar-OM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressOMNoDelimiters() {
 };
 
 function testParseAddressOMFromUS() {
-	var parsedAddress = new ilib.Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nOman", {locale: 'en-US'});
+	var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nOman", {locale: 'en-US'});
 	
 	
 	
@@ -115,7 +115,7 @@ function testParseAddressOMFromUS() {
 };
 
 function testFormatAddressOM() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ",
 		locality: "ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ",
 		postalCode: "١١٢",
@@ -124,12 +124,12 @@ function testFormatAddressOM() {
 	}, {locale: 'ar-OM'});
 	
 	var expected = "ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان";
-	var formatter = new ilib.AddressFmt({locale: 'ar-OM'});
+	var formatter = new AddressFmt({locale: 'ar-OM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressOMFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ",
 		locality: "ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ",
 		postalCode: "١١٢",
@@ -138,6 +138,6 @@ function testFormatAddressOMFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nOman";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

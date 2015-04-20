@@ -18,7 +18,7 @@
  */
 
 function testParseAddressTHNormal() {
-	var parsedAddress = new ilib.Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {locale: 'th-Th'});
+	var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressTHNormal() {
 
 
 function testParseAddressTHNoZip() {
-	var parsedAddress = new ilib.Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ\nประเทศไทย", {locale: 'th-Th'});
+	var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ\nประเทศไทย", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี", parsedAddress.streetAddress);
@@ -45,7 +45,7 @@ function testParseAddressTHNoZip() {
 
 
 function testParseAddressTHNoCountry() {
-	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
+	var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า", parsedAddress.streetAddress);
@@ -57,7 +57,7 @@ function testParseAddressTHNoCountry() {
 };
 
 function testParseAddressTHManyLines() {
-	var parsedAddress = new ilib.Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
+	var parsedAddress = new Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119, มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า", parsedAddress.streetAddress);
@@ -70,7 +70,7 @@ function testParseAddressTHManyLines() {
 
 
 function testParseAddressTHOneLine() {
-	var parsedAddress = new ilib.Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
+	var parsedAddress = new Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119, มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า", parsedAddress.streetAddress);
@@ -83,7 +83,7 @@ function testParseAddressTHOneLine() {
 
 
 function testParseAddressTHOther() {
-	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nประเทศไทย", {locale: 'th-TH'});
+	var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า", parsedAddress.streetAddress);
@@ -96,7 +96,7 @@ function testParseAddressTHOther() {
 
 
 function testFormatAddressTH() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี",
 		locality: "เขตปทุมวัน",
 		postalCode: "10330",
@@ -106,12 +106,12 @@ function testFormatAddressTH() {
 	}, {locale: 'th-TH'});
 	
 	var expected = "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย";
-	var formatter = new ilib.AddressFmt({locale: 'tH-TH'});
+	var formatter = new AddressFmt({locale: 'tH-TH'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTHFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า",
 		locality: "อำเภอเมือง",
 		region: "นนทบุรี",
@@ -120,7 +120,7 @@ function testFormatAddressTHFromUS() {
 		countryCode: "TH"
 	}, {locale: 'en-US'});
 	var expected = "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nThailand";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

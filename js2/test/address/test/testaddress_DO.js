@@ -20,7 +20,7 @@
 
 
 function testParseAddressDONormal() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez, C/45 # 33, Katanga", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressDONormal() {
 };
 
 function testParseAddressDONoZip() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez, C/45 # 33, Katanga", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressDONoZip() {
 };
 
 function testParseAddressDOManyLines() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez\nC/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nRepública Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez\nC/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nRepública Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez, C/45 # 33, Katanga", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressDOManyLines() {
 };
 
 function testParseAddressDOOneLine() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez, C/45 # 33, Katanga", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressDOOneLine() {
 };
 
 function testParseAddressDOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas  \n\t\n 11903 SANTO DOMINGO\t\n\n República Dominicana  \n  \t\t\t", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas  \n\t\n 11903 SANTO DOMINGO\t\n\n República Dominicana  \n  \t\t\t", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez, C/45 # 33, Katanga", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressDOSuperfluousWhitespace() {
 };
 
 function testParseAddressDONoDelimiters() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez C/45 # 33 Katanga, Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Dominica L. Hernandez C/45 # 33 Katanga, Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dominica L. Hernandez C/45 # 33 Katanga", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressDONoDelimiters() {
 };
 
 function testParseAddressDOSpecialChars() {
-	var parsedAddress = new ilib.Address("Instituto Postal Dominicano, C/Héroes de Luperón esq. Rafael Damirón, Centro de los Héroes, 10101 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
+	var parsedAddress = new Address("Instituto Postal Dominicano, C/Héroes de Luperón esq. Rafael Damirón, Centro de los Héroes, 10101 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Instituto Postal Dominicano, C/Héroes de Luperón esq. Rafael Damirón", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressDOSpecialChars() {
 };
 
 function testParseAddressDOFromUS() {
-	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, Dominican Republic", {locale: 'en-US'});
+	var parsedAddress = new Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, Dominican Republic", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressDOFromUS() {
 };
 
 function testFormatAddressDO() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Dominica L. Hernandez, C/45 # 33",
 		region: "SANTO DOMINGO",
 		locality: "Katanga, Los Minas",
@@ -128,12 +128,12 @@ function testFormatAddressDO() {
 	}, {locale: 'es-DO'});
 	
 	var expected = "Dominica L. Hernandez, C/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nRepública Dominicana";
-	var formatter = new ilib.AddressFmt({locale: 'es-DO'});
+	var formatter = new AddressFmt({locale: 'es-DO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressDOFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Dominica L. Hernandez, C/45 # 33",
 		region: "SANTO DOMINGO",
 		locality: "Katanga, Los Minas",
@@ -143,6 +143,6 @@ function testFormatAddressDOFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Dominica L. Hernandez, C/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nDominican Republic";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -18,7 +18,7 @@
  */
 
 function testParseAddressITNormal() {
-	var parsedAddress = new ilib.Address("Corso Europa 2\n20122 Milan\nItalia", {locale: 'it-IT'});
+	var parsedAddress = new Address("Corso Europa 2\n20122 Milan\nItalia", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Corso Europa 2", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressITNormal() {
 };
 
 function testParseAddressITNoZip() {
-	var parsedAddress = new ilib.Address("C.so Trapani 16\nTorino\nItalia", {locale: 'it-IT'});
+	var parsedAddress = new Address("C.so Trapani 16\nTorino\nItalia", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("C.so Trapani 16", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressITNoZip() {
 };
 
 function testParseAddressITNoCountry() {
-	var parsedAddress = new ilib.Address("Corso Europa 2\n20122 Milan", {locale: 'it-IT'});
+	var parsedAddress = new Address("Corso Europa 2\n20122 Milan", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Corso Europa 2", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressITNoCountry() {
 };
 
 function testParseAddressITWithRegion() {
-	var parsedAddress = new ilib.Address("via Paná, 56\n35027 Noventa Padovana (PD)", {locale: 'it-IT'});
+	var parsedAddress = new Address("via Paná, 56\n35027 Noventa Padovana (PD)", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("via Paná, 56", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressITWithRegion() {
 };
 
 function testParseAddressITWithRegion2() {
-	var parsedAddress = new ilib.Address("via Napoli 45\n96017 Noto (SR)\nItalia", {locale: 'it-IT'});
+	var parsedAddress = new Address("via Napoli 45\n96017 Noto (SR)\nItalia", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("via Napoli 45", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressITWithRegion2() {
 };
 
 function testParseAddressITManyLines() {
-	var parsedAddress = new ilib.Address("Centro Direzionale\nFab. 1 G/7\n80143\nNapoli\nItalia\n", {locale: 'it-IT'});
+	var parsedAddress = new Address("Centro Direzionale\nFab. 1 G/7\n80143\nNapoli\nItalia\n", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Centro Direzionale, Fab. 1 G/7", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressITManyLines() {
 };
 
 function testParseAddressITOneLine() {
-	var parsedAddress = new ilib.Address("Via Achille Campanile 85, 00144 ROMA, Italia", {locale: 'it-IT'});
+	var parsedAddress = new Address("Via Achille Campanile 85, 00144 ROMA, Italia", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Via Achille Campanile 85", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressITOneLine() {
 };
 
 function testParseAddressITSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tVia Achille   \t\t\t Campanile 85,\n\n\t\r\t00144\t\t\t\n ROMA\t\t\n\r\r Italia\n\n\n", {locale: 'it-IT'});
+	var parsedAddress = new Address("\t\t\tVia Achille   \t\t\t Campanile 85,\n\n\t\r\t00144\t\t\t\n ROMA\t\t\n\r\r Italia\n\n\n", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Via Achille Campanile 85", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressITSuperfluousWhitespace() {
 };
 
 function testParseAddressITNoDelimiters() {
-	var parsedAddress = new ilib.Address("Via Achille Campanile 85 00144 ROMA Italia", {locale: 'it-IT'});
+	var parsedAddress = new Address("Via Achille Campanile 85 00144 ROMA Italia", {locale: 'it-IT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Via Achille Campanile 85", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressITNoDelimiters() {
 };
 
 function testParseAddressITFromUS() {
-	var parsedAddress = new ilib.Address("Via Achille Campanile 85\n00144 ROMA\nItaly", {locale: 'en-US'});
+	var parsedAddress = new Address("Via Achille Campanile 85\n00144 ROMA\nItaly", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -140,7 +140,7 @@ function testParseAddressITFromUS() {
 };
 
 function testFormatAddressIT() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Corso Europa 2",
 		locality: "Milan",
 		postalCode: "20122",
@@ -149,12 +149,12 @@ function testFormatAddressIT() {
 	}, {locale: 'it-IT'});
 	
 	var expected = "Corso Europa 2\n20122 Milan\nItalia";
-	var formatter = new ilib.AddressFmt({locale: 'it-IT'});
+	var formatter = new AddressFmt({locale: 'it-IT'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressITFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Corso Europa 2",
 		locality: "Milan",
 		postalCode: "20122",
@@ -163,6 +163,6 @@ function testFormatAddressITFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Corso Europa 2\n20122 Milan\nItalia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

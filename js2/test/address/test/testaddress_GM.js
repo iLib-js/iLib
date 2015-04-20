@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGMNormal() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. A. Ceesay 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGMNormal() {
 };
 
 function testParseAddressGMNoZip() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. A. Ceesay 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGMNoZip() {
 };
 
 function testParseAddressGMNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. A. Ceesay 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGMNoCountry() {
 };
 
 function testParseAddressGMManyLines() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay\n21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay\n21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. A. Ceesay, 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressGMManyLines() {
 };
 
 function testParseAddressGMOneLine() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay , 21 Liberation Avenue , BANJUL , GAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay , 21 Liberation Avenue , BANJUL , GAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. A. Ceesay, 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressGMOneLine() {
 };
 
 function testParseAddressGMSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay\n\n\t\r\t\t\r21 Liberation Avenue\r\r\n\nBANJUL\t\r\n\t\rGAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay\n\n\t\r\t\t\r21 Liberation Avenue\r\r\n\nBANJUL\t\r\n\t\rGAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. A. Ceesay, 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressGMSuperfluousWhitespace() {
 };
 
 /*function testParseAddressGMNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay 21 Liberation Avenue BANJUL GAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue BANJUL GAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. A. Ceesay 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressGMSuperfluousWhitespace() {
 };*/
 
 function testParseAddressGMFromUS() {
-	var parsedAddress = new ilib.Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
+	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. A. Ceesay 21 Liberation Avenue", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressGMFromUS() {
 };
 
 function testFormatAddressGM() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. A. Ceesay 21 Liberation Avenue",
 		locality: "BANJUL",
 		postalCode: "1010",
@@ -123,12 +123,12 @@ function testFormatAddressGM() {
 	}, {locale: 'en-GM'});
 	
 	var expected = "Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-GM'});
+	var formatter = new AddressFmt({locale: 'en-GM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGMFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. A. Ceesay 21 Liberation Avenue",
 		locality: "BANJUL",
 		postalCode: "1010",
@@ -137,6 +137,6 @@ function testFormatAddressGMFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

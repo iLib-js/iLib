@@ -18,7 +18,7 @@
  */
 
 function testParseAddressJONormal() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب, عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب, عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressJONormal() {
 };
 
 function testParseAddressJONoZip() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب, عمان, الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب, عمان, الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressJONoZip() {
 };
 
 function testParseAddressJOManyLines() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب\nعمان ١١٩٣٧\n الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب\nعمان ١١٩٣٧\n الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressJOManyLines() {
 };
 
 function testParseAddressJOOneLine() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressJOOneLine() {
 };
 
 function testParseAddressJOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب   \n\t\n عمان ١١٩٣٧\t\n\n  الأردن  \n  \t\t\t", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب   \n\t\n عمان ١١٩٣٧\t\n\n  الأردن  \n  \t\t\t", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressJOSuperfluousWhitespace() {
 
 //needs a precise regular expression top deal with no delimiters for locality
 /*function testParseAddressJONoDelimiters() {
-	var parsedAddress = new ilib.Address("رويل ٥ آل الحلب  ٢ شارع الاستقلال عمان ١١٩٣٧  الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥ آل الحلب  ٢ شارع الاستقلال عمان ١١٩٣٧  الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥ آل الحلب ٢ شارع الاستقلال", parsedAddress.streetAddress);
@@ -91,7 +91,7 @@ function testParseAddressJOSuperfluousWhitespace() {
 };*/
 
 function testParseAddressJOSpecialChars() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("رويل ٥, آل الحلب", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressJOSpecialChars() {
 };
 
 function testParseAddressJOFromUS() {
-	var parsedAddress = new ilib.Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, Jordan", {locale: 'en-US'});
+	var parsedAddress = new Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, Jordan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -117,7 +117,7 @@ function testParseAddressJOFromUS() {
 };
 
 function testFormatAddressJO() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "رويل ٥, آل الحلب",
 		locality: "عمان ١١٩٣٧",
 		country: " الأردن",
@@ -125,12 +125,12 @@ function testFormatAddressJO() {
 	}, {locale: 'ar-JO'});
 	
 	var expected = "رويل ٥, آل الحلب\nعمان ١١٩٣٧\nالأردن";
-	var formatter = new ilib.AddressFmt({locale: 'ar-JO'});
+	var formatter = new AddressFmt({locale: 'ar-JO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressJOARFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "رويل ٥, آل الحلب",
 		locality: "عمان ١١٩٣٧",
 		country: "Jordan",
@@ -138,6 +138,6 @@ function testFormatAddressJOARFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "رويل ٥, آل الحلب\nعمان ١١٩٣٧\nJordan";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

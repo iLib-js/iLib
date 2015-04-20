@@ -20,7 +20,7 @@
 
 
 function testParseAddressCONormal() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCONormal() {
 };
 
 function testParseAddressCONoZip() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCONoZip() {
 };
 
 function testParseAddressCOManyLines() {
-	var parsedAddress = new ilib.Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702\nARACATACA–MAGDALENA\nCOLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702\nARACATACA–MAGDALENA\nCOLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCOManyLines() {
 };
 
 function testParseAddressCOOneLine() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCOOneLine() {
 };
 
 function testParseAddressCOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702  \n\t\n ARACATACA–MAGDALENA\t\n\n COLOMBIA  \n  \t\t\t", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702  \n\t\n ARACATACA–MAGDALENA\t\n\n COLOMBIA  \n  \t\t\t", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCOSuperfluousWhitespace() {
 };
 
 function testParseAddressCONoDelimiters() {
-	var parsedAddress = new ilib.Address("SEÑOR Gabriel Garcia Marquez SOCIEDAD DE ESCRITORES COLOMBIANOS Av. 15 no 80–13 oficina 702 ARACATACA–MAGDALENA COLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR Gabriel Garcia Marquez SOCIEDAD DE ESCRITORES COLOMBIANOS Av. 15 no 80–13 oficina 702 ARACATACA–MAGDALENA COLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR Gabriel Garcia Marquez SOCIEDAD DE ESCRITORES COLOMBIANOS Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCONoDelimiters() {
 };
 
 function testParseAddressCOSpecialChars() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
+	var parsedAddress = new Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCOSpecialChars() {
 };
 
 function testParseAddressCOFromUS() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'en-US'});
+	var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCOFromUS() {
 };
 
 function testFormatAddressCO() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702",
 		locality: "ARACATACA–MAGDALENA",
 		country: "COLOMBIA",
@@ -126,12 +126,12 @@ function testFormatAddressCO() {
 	}, {locale: 'es-CO'});
 	
 	var expected = "SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702\nARACATACA–MAGDALENA\nCOLOMBIA";
-	var formatter = new ilib.AddressFmt({locale: 'es-CO'});
+	var formatter = new AddressFmt({locale: 'es-CO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCOFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702",
 		country: "COLOMBIA",
 		locality: "ARACATACA–MAGDALENA",
@@ -139,6 +139,6 @@ function testFormatAddressCOFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702\nARACATACA–MAGDALENA\nCOLOMBIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

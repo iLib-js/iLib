@@ -18,7 +18,7 @@
  */
 
 function testParseAddressTRNormal() {
-	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street No 14", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressTRNormal() {
 };
 
 function testParseAddressTRNoZip() {
-	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul\nTurkey", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Teyfikhane Sok No 1\nSultanahmet Istanbul\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Teyfikhane Sok No 1", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressTRNoZip() {
 
 
 function testParseAddressTRNoCountry() {
-	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Orhaniye Street No 14\nSirkeci Istanbul 34120", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street No 14", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAddressTRNoCountry() {
 };
 
 function testParseAddressTRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Orhaniye Street No 14 Sirkeci Istanbul 34120 Turkey", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Orhaniye Street No 14 Sirkeci Istanbul 34120 Turkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street No 14", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressTRNoDelimiters() {
 
 
 function testParseAddressTROneLine() {
-	var parsedAddress = new ilib.Address("Orhaniye Street , No 14 , Sirkeci , Istanbul , 34120 , Turkey", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Orhaniye Street , No 14 , Sirkeci , Istanbul , 34120 , Turkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street, No 14", parsedAddress.streetAddress);
@@ -81,7 +81,7 @@ function testParseAddressTROneLine() {
 
 
 function testParseAddressTROther() {
-	var parsedAddress = new ilib.Address("Alemdag Cad. Yanyol Sok. No 6-8\nÜSKÜDAR  ISTANBUL 34692\nTURKEY", {locale: 'tr-TR'});
+	var parsedAddress = new Address("Alemdag Cad. Yanyol Sok. No 6-8\nÜSKÜDAR  ISTANBUL 34692\nTURKEY", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Alemdag Cad. Yanyol Sok. No 6-8", parsedAddress.streetAddress);
@@ -94,7 +94,7 @@ function testParseAddressTROther() {
 
 
 function testParseAddressTRManyLines() {
-	var parsedAddress = new ilib.Address("Orhaniye Street\nNo 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'sl-SI'});
+	var parsedAddress = new Address("Orhaniye Street\nNo 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street, No 14", parsedAddress.streetAddress);
@@ -108,7 +108,7 @@ function testParseAddressTRManyLines() {
 
 
 function testFormatAddressTR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Alemdag Cad. Yanyol Sok. No 6-8",
 		locality: "ÜSKÜDAR",
 		postalCode: "34692",
@@ -118,12 +118,12 @@ function testFormatAddressTR() {
 	}, {locale: 'tr-TR'});
 	
 	var expected = "Alemdag Cad. Yanyol Sok. No 6-8\nÜSKÜDAR ISTANBUL 34692\nTURKEY";
-	var formatter = new ilib.AddressFmt({locale: 'tr-TR'});
+	var formatter = new AddressFmt({locale: 'tr-TR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Orhaniye Street No 14",
 		locality: "Sirkeci",
 		region: "Istanbul",
@@ -133,7 +133,7 @@ function testFormatAddressTRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

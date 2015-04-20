@@ -18,7 +18,7 @@
  */
 
 function testParseAddressEGNormal() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("مصر", parsedAddress.country);
@@ -33,7 +33,7 @@ function testParseAddressEGNormal() {
 
 
 function testParseAddressEGNoZip() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\nمصر", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -46,7 +46,7 @@ function testParseAddressEGNoZip() {
 
 
 function testParseAddressEGNoCountry() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n ١٢٤١١", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n ١٢٤١١", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -60,7 +60,7 @@ function testParseAddressEGNoCountry() {
 
 
 function testParseAddressEGManyLines() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠\nشارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر\n\n", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠\nشارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر\n\n", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -72,7 +72,7 @@ function testParseAddressEGManyLines() {
 };
 
 function testParseAddressEGOneLine() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠ , شارع احمد عرابى , آل المهندسين , الجيزة , ١٢٤١١ , مصر", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠ , شارع احمد عرابى , آل المهندسين , الجيزة , ١٢٤١١ , مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -85,7 +85,7 @@ function testParseAddressEGOneLine() {
 
 //needs a more precise regular expression to handle spaces within localities
 /*function testParseAddressEGNoDelimiters() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين\n الجيزة\n ١٢٤١١ مصر", {locale: 'ar-EG'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين\n الجيزة\n ١٢٤١١ مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -97,7 +97,7 @@ function testParseAddressEGOneLine() {
 };*/
 
 function testParseAddressEGFromUS() {
-	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt", {locale: 'en-US'});
+	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
@@ -110,7 +110,7 @@ function testParseAddressEGFromUS() {
 
 
 function testFormatAddressEGEG() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",
 		region: "الجيزة",
@@ -120,13 +120,13 @@ function testFormatAddressEGEG() {
 	}, {locale: 'ar-EG'});
 	
 	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر";
-	var formatter = new ilib.AddressFmt({locale: 'ar-EG'});
+	var formatter = new AddressFmt({locale: 'ar-EG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 
 function testFormatAddressEGFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",
 		region: "الجيزة",
@@ -136,6 +136,6 @@ function testFormatAddressEGFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nEgypt";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

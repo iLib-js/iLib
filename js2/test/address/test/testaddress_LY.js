@@ -19,7 +19,7 @@
 
 
 function testParseAddressLYARNormal() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -31,7 +31,7 @@ function testParseAddressLYARNormal() {
 };
 
 function testParseAddressLYARNoZip() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressLYARNoZip() {
 };
 
 function testParseAddressLYARManyLines() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\n ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\n ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAddressLYARManyLines() {
 };
 
 function testParseAddressLYAROneLine() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -67,7 +67,7 @@ function testParseAddressLYAROneLine() {
 };
 
 function testParseAddressLYARSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢   \n\t\n طرابلس\t\n\n  ليبيا  \n  \t\t\t", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢   \n\t\n طرابلس\t\n\n  ليبيا  \n  \t\t\t", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressLYARSuperfluousWhitespace() {
 };
 //needs a precise regular expression to handle locality with and without spaces in no delimiter case
 /*function testParseAddressLYARNoDelimiters() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة الغزالي ١٢  ٢ شارع الاستقلال طرابلس  ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة الغزالي ١٢  ٢ شارع الاستقلال طرابلس  ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة الغزالي ١٢ ٢ شارع الاستقلال", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressLYARSuperfluousWhitespace() {
 
 
 function testParseAddressLYARSpecialChars() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد محمد علي خليفة, الغزالي ١٢", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressLYARSpecialChars() {
 };
 
 function testParseAddressLYFromUS() {
-	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, Libya", {locale: 'en-US'});
+	var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, Libya", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressLYFromUS() {
 };
 
 function testFormatAddressLY() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "السيد محمد علي خليفة, الغزالي ١٢",
 		locality: "طرابلس",
 		country: " ليبيا",
@@ -126,12 +126,12 @@ function testFormatAddressLY() {
 	}, {locale: 'ar-LY'});
 	
 	var expected = "السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\nليبيا";
-	var formatter = new ilib.AddressFmt({locale: 'ar-LY'});
+	var formatter = new AddressFmt({locale: 'ar-LY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressLYARFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "السيد محمد علي خليفة, الغزالي ١٢",
 		locality: "طرابلس",
 		country: "Libya",
@@ -139,6 +139,6 @@ function testFormatAddressLYARFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\nLibya";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

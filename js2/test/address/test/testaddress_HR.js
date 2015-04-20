@@ -20,7 +20,7 @@
 
 
 function testParseAddressHRNormal() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat, Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressHRNormal() {
 };
 
 function testParseAddressHRNoZip() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat, Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressHRNoZip() {
 };
 
 function testParseAddressHRManyLines() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat\nUlica Maršala Tita 174\nHR-51410 Opatija\nCroatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat\nUlica Maršala Tita 174\nHR-51410 Opatija\nCroatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat, Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressHRManyLines() {
 };
 
 function testParseAddressHROneLine() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat, Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressHROneLine() {
 };
 
 function testParseAddressHRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat, Ulica Maršala Tita 174  \n\t\n HR-51410 Opatija\t\n\n Croatia  \n  \t\t\t", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat, Ulica Maršala Tita 174  \n\t\n HR-51410 Opatija\t\n\n Croatia  \n  \t\t\t", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat, Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressHRSuperfluousWhitespace() {
 };
 
 function testParseAddressHRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat Ulica Maršala Tita 174 HR-51410 Opatija Croatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Hrvoje Horvat Ulica Maršala Tita 174 HR-51410 Opatija Croatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hrvoje Horvat Ulica Maršala Tita 174", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressHRNoDelimiters() {
 };
 
 function testParseAddressHRSpecialChars() {
-	var parsedAddress = new ilib.Address("Annette Ruzicka, BISTRIČKA 9 A, 31225 BREZNICA NAŠIČKA, Croatia", {locale: 'hr-HR'});
+	var parsedAddress = new Address("Annette Ruzicka, BISTRIČKA 9 A, 31225 BREZNICA NAŠIČKA, Croatia", {locale: 'hr-HR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Annette Ruzicka, BISTRIČKA 9 A", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressHRSpecialChars() {
 };
 
 function testParseAddressHRFromUS() {
-	var parsedAddress = new ilib.Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'en-US'});
+	var parsedAddress = new Address("Hrvoje Horvat, Ulica Maršala Tita 174, HR-51410 Opatija, Croatia", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressHRFromUS() {
 };
 
 function testFormatAddressHR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Hrvoje Horvat, Ulica Maršala Tita 174",
 		locality: "Opatija",
 		postalCode: "HR-51410",
@@ -127,12 +127,12 @@ function testFormatAddressHR() {
 	}, {locale: 'hr-HR'});
 	
 	var expected = "Hrvoje Horvat, Ulica Maršala Tita 174\nHR-51410 Opatija\nCroatia";
-	var formatter = new ilib.AddressFmt({locale: 'hr-HR'});
+	var formatter = new AddressFmt({locale: 'hr-HR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressHRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Hrvoje Horvat, Ulica Maršala Tita 174",
 		locality: "Opatija",
 		postalCode: "HR-51410",
@@ -141,6 +141,6 @@ function testFormatAddressHRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Hrvoje Horvat, Ulica Maršala Tita 174\nHR-51410 Opatija\nCroatia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

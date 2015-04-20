@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGTNormal() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGTNormal() {
 };
 
 function testParseAddressGTNoZip() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\nGUATEMALA\nGUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\nGUATEMALA\nGUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGTNoZip() {
 };
 
 function testParseAddressGTNoCountry() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGTNoCountry() {
 };
 
 function testParseAddressGTManyLines() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ \nAVENIDA PETAPA 37\n\nZ. 12\n01012\nGUATEMALA\n\n\nGUATEMALA\n\n\n", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ \nAVENIDA PETAPA 37\n\nZ. 12\n01012\nGUATEMALA\n\n\nGUATEMALA\n\n\n", {locale: 'es-GT'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12", parsedAddress.streetAddress);
 	assertEquals("GUATEMALA", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressGTManyLines() {
 };
 
 function testParseAddressGTOneLine() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ , AVENIDA PETAPA 37 , Z. 12 ,01012 GUATEMALA , GUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ , AVENIDA PETAPA 37 , Z. 12 ,01012 GUATEMALA , GUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressGTOneLine() {
 };
 
 function testParseAddressGTSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMIGUEL ÁNGEL MENCHÚ \n\t\tAVENIDA PETAPA 37\n\nZ. 12\n\n01012\n\t\nGUATEMALA\n GUATEMALA\n\n\n", {locale: 'es-GT'});
+	var parsedAddress = new Address("\t\t\tMIGUEL ÁNGEL MENCHÚ \n\t\tAVENIDA PETAPA 37\n\nZ. 12\n\n01012\n\t\nGUATEMALA\n GUATEMALA\n\n\n", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressGTSuperfluousWhitespace() {
 };
 
 function testParseAddressGTNoDelimiters() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12 01012-GUATEMALA GUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new Address("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12 01012-GUATEMALA GUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressGTNoDelimiters() {
 };
 
 function testParseAddressGTFromUS() {
-	var parsedAddress = new ilib.Address("MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'en-US'});
+	var parsedAddress = new Address("MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12", parsedAddress.streetAddress);
@@ -113,7 +113,7 @@ function testParseAddressGTFromUS() {
 };
 
 function testFormatAddressGT() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12",
 		locality: "GUATEMALA",
 		postalCode: "01012",
@@ -122,12 +122,12 @@ function testFormatAddressGT() {
 	}, {locale: 'es-GT'});
 	
 	var expected = "MIGUEL ÁNGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA";
-	var formatter = new ilib.AddressFmt({locale: 'es-GT'});
+	var formatter = new AddressFmt({locale: 'es-GT'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGTFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12",
 		locality: "GUATEMALA",
 		postalCode: "01012",
@@ -136,6 +136,6 @@ function testFormatAddressGTFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "MIGUEL ANGEL MENCHÚ AVENIDA PETAPA 37 Z. 12\n01012-GUATEMALA\nGUATEMALA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

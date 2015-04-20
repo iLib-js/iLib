@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGANormal() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGANormal() {
 };
 
 function testParseAddressGANoZip() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGANoZip() {
 };
 
 function testParseAddressGANoCountry() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGANoCountry() {
 };
 
 function testParseAddressGAManyLines() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service\nde l'organisation et\nde l'exploitation du réseau postal\nBP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service\nde l'organisation et\nde l'exploitation du réseau postal\nBP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Direction de la Poste Service, de l'organisation et, de l'exploitation du réseau postal, BP 20000", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressGAManyLines() {
 };
 
 function testParseAddressGAOneLine() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service , de l'organisation et , de l'exploitation du réseau postal , BP 20000 , LIBREVILLE , GABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service , de l'organisation et , de l'exploitation du réseau postal , BP 20000 , LIBREVILLE , GABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Direction de la Poste Service, de l'organisation et, de l'exploitation du réseau postal, BP 20000", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressGAOneLine() {
 };
 
 function testParseAddressGASuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service\r\r\tde l'organisation et\t\t\tde l'exploitation du réseau postal\t\t\rBP 20000\r\r\n\nLIBREVILLE\t\r\n\t\rGABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service\r\r\tde l'organisation et\t\t\tde l'exploitation du réseau postal\t\t\rBP 20000\r\r\n\nLIBREVILLE\t\r\n\t\rGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressGASuperfluousWhitespace() {
 };
 
 function testParseAddressGANoDelimiters() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000 LIBREVILLE GABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000 LIBREVILLE GABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressGANoDelimiters() {
 };
 
 function testParseAddressGAFromUS() {
-	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
+	var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressGAFromUS() {
 };
 
 function testFormatAddressGA() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000",
 		locality: "LIBREVILLE",
 		postalCode: "1010",
@@ -123,12 +123,12 @@ function testFormatAddressGA() {
 	}, {locale: 'fr-GA'});
 	
 	var expected = "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON";
-	var formatter = new ilib.AddressFmt({locale: 'fr-GA'});
+	var formatter = new AddressFmt({locale: 'fr-GA'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGAFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000",
 		locality: "LIBREVILLE",
 		postalCode: "1010",
@@ -137,6 +137,6 @@ function testFormatAddressGAFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

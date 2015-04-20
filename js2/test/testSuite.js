@@ -64,14 +64,14 @@ var suiteDefinitions = {
 	    "phone3": "phone/test/testSuite3.js",
 	    "units": "units/test/testSuite.js",
 	    "name": "name/test/testSuite.js",
-	    "address1": "address/test/testSuite.js",
-	    "address2": "address/test/testSuite2.js",
-	    "address3": "address/test/testSuite3.js",
+	    "address1": "address/legacy/testSuite.js",
+	    "address2": "address/legacy/testSuite2.js",
+	    "address3": "address/legacy/testSuite3.js",
 	    "collate": "collate/test/testSuite.js",
 	    
-	    "address4": "address/modular/testSuite.js",
-	    "address5": "address/modular/testSuite2.js",
-	    "address6": "address/modular/testSuite3.js"
+	    "address4": "address/test/testSuite.js",
+	    "address5": "address/test/testSuite2.js",
+	    "address6": "address/test/testSuite3.js"
 	}
 };
 

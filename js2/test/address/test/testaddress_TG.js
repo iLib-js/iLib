@@ -18,7 +18,7 @@
  */
 
 function testParseAddressTGNormal() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu B.P. 526", parsedAddress.streetAddress);
@@ -31,7 +31,7 @@ function testParseAddressTGNormal() {
 
 
 function testParseAddressTGNoCountry() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome", {locale: 'fr-TG'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu B.P. 526", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressTGNoCountry() {
 };
 
 function testParseAddressTGManyLines() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu, B.P. 526", parsedAddress.streetAddress);
 	assertEquals("Lome", parsedAddress.locality);
@@ -54,7 +54,7 @@ function testParseAddressTGManyLines() {
 };
 
 function testParseAddressTGOneLine() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu , B.P. 526 , Lome , Togo", {locale: 'fr-TG'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu , B.P. 526 , Lome , Togo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu, B.P. 526", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressTGOneLine() {
 };
 
 function testParseAddressTGSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t\tM. Nicolas Ayi Patatu\t\t\tB.P.\t\r\r526\t\nLome\n\tTogo\n\n\n", {locale: 'fr-TG'});
+	var parsedAddress = new Address("\t\t\t\tM. Nicolas Ayi Patatu\t\t\tB.P.\t\r\r526\t\nLome\n\tTogo\n\n\n", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu B.P. 526", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressTGSuperfluousWhitespace() {
 };
 
 function testParseAddressTGNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526 Lome Togo", {locale: 'fr-TG'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526 Lome Togo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu B.P. 526", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressTGNoDelimiters() {
 };
 
 function testParseAddressTGFromUS() {
-	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'en-US'});
+	var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu B.P. 526", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressTGFromUS() {
 };
 
 function testFormatAddressTG() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
 		locality: "Lome",
 		country: "Togo",
@@ -110,12 +110,12 @@ function testFormatAddressTG() {
 	}, {locale: 'fr-TG'});
 	
 	var expected = "M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo";
-	var formatter = new ilib.AddressFmt({locale: 'fr-TG'});
+	var formatter = new AddressFmt({locale: 'fr-TG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTGFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
 		locality: "Lome",
 		country: "Togo",
@@ -123,6 +123,6 @@ function testFormatAddressTGFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

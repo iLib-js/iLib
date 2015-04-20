@@ -20,7 +20,7 @@
 
 
 function testParseAddressIRNormal() {
-	var parsedAddress = new ilib.Address("خانم فاطمه, شماره طبقه, فرهنگ, تهران, ۱۱۹۳۶۵۴۴۷۱, ایران", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه, شماره طبقه, فرهنگ, تهران, ۱۱۹۳۶۵۴۴۷۱, ایران", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه, شماره طبقه", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressIRNormal() {
 };
 
 function testParseAddressIRNoZip() {
-	var parsedAddress = new ilib.Address("خانم فاطمه,شماره  طبقه, فرهنگ, تهران, ایران", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه,شماره  طبقه, فرهنگ, تهران, ایران", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه, شماره طبقه", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressIRNoZip() {
 };
 
 function testParseAddressIRManyLines() {
-	var parsedAddress = new ilib.Address("خانم فاطمه\nشماره  طبقه\nفرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\nایران", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه\nشماره  طبقه\nفرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\nایران", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه, شماره طبقه", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressIRManyLines() {
 };
 
 function testParseAddressIROneLine() {
-	var parsedAddress = new ilib.Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه, شماره طبقه", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressIROneLine() {
 };
 
 function testParseAddressIRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("خانم فاطمه,شماره  طبقه   \n\t\n فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\t\n\n ایران  \n  \t\t\t", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه,شماره  طبقه   \n\t\n فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\t\n\n ایران  \n  \t\t\t", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه, شماره طبقه", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressIRSuperfluousWhitespace() {
 };
 
 function testParseAddressIRNoDelimiters() {
-	var parsedAddress = new ilib.Address("خانم فاطمه شماره  طبقه فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
+	var parsedAddress = new Address("خانم فاطمه شماره  طبقه فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("خانم فاطمه شماره طبقه", parsedAddress.streetAddress);
@@ -94,7 +94,7 @@ function testParseAddressIRNoDelimiters() {
 
 
 function testParseAddressIRFromUS() {
-	var parsedAddress = new ilib.Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱,Iran", {locale: 'en-US'});
+	var parsedAddress = new Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱,Iran", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -108,7 +108,7 @@ function testParseAddressIRFromUS() {
 };
 
 function testFormatAddressIR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "خانم فاطمه,شماره  طبقه",
 		locality: "فرهنگ",
 		region: "تهران",
@@ -118,12 +118,12 @@ function testFormatAddressIR() {
 	}, {locale: 'fa-IR'});
 	
 	var expected = "خانم فاطمه,شماره طبقه\nفرهنگ\nتهران\n۱۱۹۳۶۵۴۴۷۱\nایران";
-	var formatter = new ilib.AddressFmt({locale: 'fa-IR'});
+	var formatter = new AddressFmt({locale: 'fa-IR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressIRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "خانم فاطمه,شماره  طبقه",
 		postalCode: "۱۱۹۳۶۵۴۴۷۱",
 		country: "Iran",
@@ -131,6 +131,6 @@ function testFormatAddressIRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "خانم فاطمه,شماره طبقه\n۱۱۹۳۶۵۴۴۷۱\nIran";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

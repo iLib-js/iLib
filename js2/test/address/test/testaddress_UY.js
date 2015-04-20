@@ -18,7 +18,7 @@
  */
 
 function testParseAddressUYNormal() {
-	var parsedAddress = new ilib.Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo\nUruguay", {locale: 'es-UY'});
+	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo\nUruguay", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Florencio Agustini Eduardo Acevedo Diaz 1753", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressUYNormal() {
 };
 
 function testParseAddressUYNoZip() {
-	var parsedAddress = new ilib.Address("Florencio Agustini Eduardo Acevedo Diaz 1753\nMontevideo\nUruguay", {locale: 'es-UY'});
+	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\nMontevideo\nUruguay", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Florencio Agustini Eduardo Acevedo Diaz 1753", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressUYNoZip() {
 };
 
 function testParseAddressUYNoCountry() {
-	var parsedAddress = new ilib.Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo", {locale: 'es-UY'});
+	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Florencio Agustini Eduardo Acevedo Diaz 1753", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressUYNoCountry() {
 };
 
 function testParseAddressUYManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n11801\nMontevideo\nUruguay\n\n\n", {locale: 'es-UY'});
+	var parsedAddress = new Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n11801\nMontevideo\nUruguay\n\n\n", {locale: 'es-UY'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Richard Chanda, 10, Nyimba, Road", parsedAddress.streetAddress);
 	assertEquals("Montevideo", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressUYManyLines() {
 };
 
 function testParseAddressUYOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Richard Chanda , 10 , Nyimba , Road , 11801 , Montevideo , Uruguay", {locale: 'es-UY'});
+	var parsedAddress = new Address("Mr. Richard Chanda , 10 , Nyimba , Road , 11801 , Montevideo , Uruguay", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Richard Chanda, 10, Nyimba, Road", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressUYOneLine() {
 };
 
 function testParseAddressUYSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n11801\t\nMontevideo\n\t Uruguay\n\n\n", {locale: 'es-UY'});
+	var parsedAddress = new Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n11801\t\nMontevideo\n\t Uruguay\n\n\n", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Richard Chanda, 10 Nyimba, Road", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressUYSuperfluousWhitespace() {
 };
 
 function testParseAddressUYNoDelimiters() {
-	var parsedAddress = new ilib.Address("Florencio Agustini Eduardo Acevedo Diaz 1753 11801 Montevideo Uruguay", {locale: 'es-UY'});
+	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753 11801 Montevideo Uruguay", {locale: 'es-UY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Florencio Agustini Eduardo Acevedo Diaz 1753", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressUYNoDelimiters() {
 };
 
 function testParseAddressUYFromUS() {
-	var parsedAddress = new ilib.Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay", {locale: 'en-US'});
+	var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressUYFromUS() {
 };
 
 function testFormatAddressUY() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Florencio Agustini Eduardo Acevedo Diaz 1753",
 		locality: "Montevideo",
 		postalCode: "56001",
@@ -124,12 +124,12 @@ function testFormatAddressUY() {
 	}, {locale: 'es-UY'});
 	
 	var expected = "Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay";
-	var formatter = new ilib.AddressFmt({locale: 'es-UY'});
+	var formatter = new AddressFmt({locale: 'es-UY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressUYFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Florencio Agustini Eduardo Acevedo Diaz 1753",
 		locality: "Montevideo",
 		postalCode: "56001",
@@ -138,6 +138,6 @@ function testFormatAddressUYFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -18,7 +18,7 @@
  */
 
 function testParseAddressLKNormal() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500\nSri Lanka", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500\nSri Lanka", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressLKNormal() {
 };
 
 function testParseAddressLKNoZip() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA\nSri Lanka", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA\nSri Lanka", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressLKNoZip() {
 };
 
 function testParseAddressLKNoCountry() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressLKNoCountry() {
 };
 
 function testParseAddressLKManyLines() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara\n25/1\nCyril Jansz\nMawatha\nPANADURA\n12500\nSri Lanka\n\n\n", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara\n25/1\nCyril Jansz\nMawatha\nPANADURA\n12500\nSri Lanka\n\n\n", {locale: 'en-LK'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
 	assertEquals("PANADURA", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressLKManyLines() {
 };
 
 function testParseAddressLKOneLine() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara , 25/1 , Cyril Jansz , Mawatha ,  PANADURA , 12500 , Sri Lanka", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara , 25/1 , Cyril Jansz , Mawatha ,  PANADURA , 12500 , Sri Lanka", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressLKOneLine() {
 };
 
 function testParseAddressLKSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMarvan Sangakkara\n\t\t\t25/1,\t\t\t\r\r Cyril Jansz \n \r \tMawatha \n\t\nPANADURA\n\t 12500\t\nSri Lanka\n\n\n", {locale: 'en-LK'});
+	var parsedAddress = new Address("\t\t\tMarvan Sangakkara\n\t\t\t25/1,\t\t\t\r\r Cyril Jansz \n \r \tMawatha \n\t\nPANADURA\n\t 12500\t\nSri Lanka\n\n\n", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressLKSuperfluousWhitespace() {
 };
 
 function testParseAddressLKNoDelimiters() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha\nPANADURA 12500 Sri Lanka", {locale: 'en-LK'});
+	var parsedAddress = new Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha\nPANADURA 12500 Sri Lanka", {locale: 'en-LK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1 Cyril Jansz Mawatha", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressLKNoDelimiters() {
 };
 
 function testParseAddressLKFromUS() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka", {locale: 'en-US'});
+	var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka", {locale: 'en-US'});
 	
 	
 	
@@ -115,7 +115,7 @@ function testParseAddressLKFromUS() {
 };
 
 function testFormatAddressLK() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
 		locality: "PANADURA",
 		postalCode: "56001",
@@ -124,12 +124,12 @@ function testFormatAddressLK() {
 	}, {locale: 'en-LK'});
 	
 	var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
-	var formatter = new ilib.AddressFmt({locale: 'en-LK'});
+	var formatter = new AddressFmt({locale: 'en-LK'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressLKFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
 		locality: "PANADURA",
 		postalCode: "56001",
@@ -138,6 +138,6 @@ function testFormatAddressLKFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

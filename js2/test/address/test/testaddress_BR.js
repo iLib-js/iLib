@@ -20,7 +20,7 @@
 
 
 function testParseAddressBRNormal() {
-	var parsedAddress = new ilib.Address("Carlos Rossi,Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP,13035-680,BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Carlos Rossi,Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP,13035-680,BRAZIL", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Carlos Rossi, Avenida João Jorge, 112, ap. 31 Vila Industrial", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressBRNormal() {
 };
 
 function testParseAddressBRNoZip() {
-	var parsedAddress = new ilib.Address("Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP, BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP, BRAZIL", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avenida João Jorge, 112, ap. 31 Vila Industrial", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressBRNoZip() {
 };
 
 function testParseAddressBRManyLines() {
-	var parsedAddress = new ilib.Address("Carlos Rossi\nAvenida João Jorge, 112, ap. 31\nVila Industrial\nCampinas - SP\n13035-680\nBRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Carlos Rossi\nAvenida João Jorge, 112, ap. 31\nVila Industrial\nCampinas - SP\n13035-680\nBRAZIL", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Carlos Rossi, Avenida João Jorge, 112, ap. 31, Vila Industrial", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressBRManyLines() {
 };
 
 function testParseAddressBROneLine() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238, Sao Paulo - SP,BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238, Sao Paulo - SP,BRAZIL", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Visconde de Porto Seguro 1238", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressBROneLine() {
 };
 
 function testParseAddressBRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP\n\n\n BRAZIL  \n  \t\n 04642-000 \t\t\t", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP\n\n\n BRAZIL  \n  \t\n 04642-000 \t\t\t", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Visconde de Porto Seguro 1238", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressBRSuperfluousWhitespace() {
 };
 
 function testParseAddressBRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro Sao Paulo - SP BRAZIL  04642-000 ", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Rua Visconde de Porto Seguro Sao Paulo - SP BRAZIL  04642-000 ", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Visconde de Porto Seguro", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressBRNoDelimiters() {
 };
 
 function testParseAddressBRSpecialChars() {
-	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,BRAZIL,05315-970", {locale: 'pt-BR'});
+	var parsedAddress = new Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,BRAZIL,05315-970", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SOCIEDADE BRASILEIRA DE FÍSICA, Caixa Postal 66328", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressBRSpecialChars() {
 };
 
 function testParseAddressBRFromUS() {
-	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, Brasil, 04642-000", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, Brasil, 04642-000", {locale: 'pt-BR'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressBRFromUS() {
 };
 
 function testFormatAddressBR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rua Visconde de Porto Seguro",
 		locality: "Sao Paulo",
 		region: "SP",
@@ -128,12 +128,12 @@ function testFormatAddressBR() {
 	}, {locale: 'pt-BR'});
 	
 	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
-	var formatter = new ilib.AddressFmt({locale: 'pt-BR'});
+	var formatter = new AddressFmt({locale: 'pt-BR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressBRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rua Visconde de Porto Seguro",
 		locality: "Sao Paulo",
 		region: "SP",
@@ -143,12 +143,12 @@ function testFormatAddressBRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Rua Visconde de Porto Seguro\nSao Paulo-SP\nBRAZIL\n04642-000";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testParseAddressBR1() {
-	var parsedAddress = new ilib.Address("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista, São Paulo - SP, Brasil, 01310-000", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista, São Paulo - SP, Brasil, 01310-000", {locale: 'pt-BR'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -162,7 +162,7 @@ function testParseAddressBR1() {
 };
 
 function testParseAddressBR2() {
-	var parsedAddress = new ilib.Address("Rua Afonso Canargo, 805, Santana, Guarapuava - PR, 85070-200", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Rua Afonso Canargo, 805, Santana, Guarapuava - PR, 85070-200", {locale: 'pt-BR'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -176,7 +176,7 @@ function testParseAddressBR2() {
 };
 
 function testParseAddressBR3() {
-	var parsedAddress = new ilib.Address("Boulevard das Flores 255,	SALVADOR - BA, BRAZIL, 40301-110", {locale: 'pt-BR'});
+	var parsedAddress = new Address("Boulevard das Flores 255,	SALVADOR - BA, BRAZIL, 40301-110", {locale: 'pt-BR'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	

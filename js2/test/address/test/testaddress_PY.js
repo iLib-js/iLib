@@ -18,7 +18,7 @@
  */
 
 function testParseAddressPYNormal() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressPYNormal() {
 };
 
 function testParseAddressPYNoZip() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\nASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\nASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressPYNoZip() {
 };
 
 function testParseAddressPYNoCountry() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressPYNoCountry() {
 };
 
 function testParseAddressPYManyLines() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n PISO 9\n\n1321\nASUNCIÓN\nPARAGUAY\n\n\n", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n PISO 9\n\n1321\nASUNCIÓN\nPARAGUAY\n\n\n", {locale: 'es-PY'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
 	assertEquals("ASUNCIÓN", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressPYManyLines() {
 };
 
 function testParseAddressPYOneLine() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811 , PISO 9 , 1321 , ASUNCIÓN , PARAGUAY", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811 , PISO 9 , 1321 , ASUNCIÓN , PARAGUAY", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressPYOneLine() {
 };
 
 function testParseAddressPYSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tJOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n\t\t\t PISO 9\n\t\n1321\t\nASUNCIÓN\n\t PARAGUAY\n\n\n", {locale: 'es-PY'});
+	var parsedAddress = new Address("\t\t\tJOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n\t\t\t PISO 9\n\t\n1321\t\nASUNCIÓN\n\t PARAGUAY\n\n\n", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressPYSuperfluousWhitespace() {
 };
 
 function testParseAddressPYNoDelimiters() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9 1321 ASUNCIÓN PARAGUAY", {locale: 'es-PY'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9 1321 ASUNCIÓN PARAGUAY", {locale: 'es-PY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressPYNoDelimiters() {
 };
 
 function testParseAddressPYFromUS() {
-	var parsedAddress = new ilib.Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'en-US'});
+	var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressPYFromUS() {
 };
 
 function testFormatAddressPY() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9",
 		locality: "ASUNCIÓN",
 		postalCode: "1321",
@@ -124,12 +124,12 @@ function testFormatAddressPY() {
 	}, {locale: 'es-PY'});
 	
 	var expected = "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY";
-	var formatter = new ilib.AddressFmt({locale: 'es-PY'});
+	var formatter = new AddressFmt({locale: 'es-PY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressPYFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9",
 		locality: "ASUNCIÓN",
 		postalCode: "1321",
@@ -138,6 +138,6 @@ function testFormatAddressPYFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

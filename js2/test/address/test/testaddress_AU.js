@@ -18,7 +18,7 @@
  */
 
 function testParseAUAddressNormal() {
-	var parsedAddress = new ilib.Address("Level 5, 48 Pirrama Road,\nPyrmont, NSW 2009\nAustralia", {locale: 'en-AU'});
+	var parsedAddress = new Address("Level 5, 48 Pirrama Road,\nPyrmont, NSW 2009\nAustralia", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Level 5, 48 Pirrama Road", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAUAddressNormal() {
 };
 
 function testParseAUAddressNoZip() {
-	var parsedAddress = new ilib.Address("Canberra Nara Centre,\n1 Constitution Ave\nCanberra City, Australia", {locale: 'en-AU'});
+	var parsedAddress = new Address("Canberra Nara Centre,\n1 Constitution Ave\nCanberra City, Australia", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Canberra Nara Centre, 1 Constitution Ave", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAUAddressNoZip() {
 };
 
 function testParseAUAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Trevarrick Rd\nSevenhill SA 5453", {locale: 'en-AU'});
+	var parsedAddress = new Address("Trevarrick Rd\nSevenhill SA 5453", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Trevarrick Rd", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAUAddressNoCountry() {
 };
 
 function testParseAUAddressManyLines() {
-	var parsedAddress = new ilib.Address("Dept of Treasury\nLangton Crs\nParkes\nACT 2600\nAustralia\n\n\n", {locale: 'en-AU'});
+	var parsedAddress = new Address("Dept of Treasury\nLangton Crs\nParkes\nACT 2600\nAustralia\n\n\n", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Dept of Treasury, Langton Crs", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAUAddressManyLines() {
 };
 
 function testParseAUAddressOneLine() {
-	var parsedAddress = new ilib.Address("630 Beaufort St, Mt Lawley, WA 6050, Australia", {locale: 'en-AU'});
+	var parsedAddress = new Address("630 Beaufort St, Mt Lawley, WA 6050, Australia", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("630 Beaufort St", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAUAddressOneLine() {
 };
 
 function testParseAUAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tPiccadilly\t\t\r  Lot 6B Spring \r\r\tGully Rd\nPiccadilly \n\t\rSA \r\t\n5151\nAustralia    \n\n\n", {locale: 'en-AU'});
+	var parsedAddress = new Address("\t\t\tPiccadilly\t\t\r  Lot 6B Spring \r\r\tGully Rd\nPiccadilly \n\t\rSA \r\t\n5151\nAustralia    \n\n\n", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Piccadilly Lot 6B Spring Gully Rd", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAUAddressSuperfluousWhitespace() {
 };
 
 function testParseAUAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("630 Beaufort St Mt Lawley WA 6050 Australia", {locale: 'en-AU'});
+	var parsedAddress = new Address("630 Beaufort St Mt Lawley WA 6050 Australia", {locale: 'en-AU'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("630 Beaufort St", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAUAddressNoDelimiters() {
 };
 
 function testParseAUAddressFromUS() {
-	var parsedAddress = new ilib.Address("Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia", {locale: 'en-US'});
+	var parsedAddress = new Address("Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -116,7 +116,7 @@ function testParseAUAddressFromUS() {
 };
 
 function testFormatAddressAU() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Shp1/ Wanneroo Rd",
 		locality: "Landsdale",
 		region: "WA",
@@ -126,12 +126,12 @@ function testFormatAddressAU() {
 	}, {locale: 'en-AU'});
 	
 	var expected = "Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia";
-	var formatter = new ilib.AddressFmt({locale: 'en-AU'});
+	var formatter = new AddressFmt({locale: 'en-AU'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressAUFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Shp1/ Wanneroo Rd",
 		locality: "Landsdale",
 		region: "WA",
@@ -141,6 +141,6 @@ function testFormatAddressAUFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

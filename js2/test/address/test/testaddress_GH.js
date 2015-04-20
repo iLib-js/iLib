@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGHNormal() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Mensah P.O. Box 1234", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGHNormal() {
 };
 
 function testParseAddressGHNoZip() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Mensah P.O. Box 1234", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGHNoZip() {
 };
 
 function testParseAddressGHNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Mensah P.O. Box 1234", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGHNoCountry() {
 };
 
 function testParseAddressGHManyLines() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah\nP.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah\nP.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. John Mensah, P.O. Box 1234", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressGHManyLines() {
 };
 
 function testParseAddressGHOneLine() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah , P.O. Box 1234 , ACCRA , GHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah , P.O. Box 1234 , ACCRA , GHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. John Mensah, P.O. Box 1234", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressGHOneLine() {
 };
 
 function testParseAddressGHSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah\n\n\t\r\t\t\rP.O. Box 1234\r\r\n\nACCRA\t\r\n\t\rGHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah\n\n\t\r\t\t\rP.O. Box 1234\r\r\n\nACCRA\t\r\n\t\rGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. John Mensah, P.O. Box 1234", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressGHSuperfluousWhitespace() {
 };
 
 function testParseAddressGHNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234 ACCRA GHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234 ACCRA GHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Mensah P.O. Box 1234", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressGHNoDelimiters() {
 };
 
 function testParseAddressGHFromUS() {
-	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
+	var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Mensah P.O. Box 1234", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressGHFromUS() {
 };
 
 function testFormatAddressGH() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. John Mensah P.O. Box 1234",
 		locality: "ACCRA",
 		postalCode: "1010",
@@ -123,12 +123,12 @@ function testFormatAddressGH() {
 	}, {locale: 'en-GH'});
 	
 	var expected = "Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA";
-	var formatter = new ilib.AddressFmt({locale: 'en-GH'});
+	var formatter = new AddressFmt({locale: 'en-GH'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGHFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. John Mensah P.O. Box 1234",
 		locality: "ACCRA",
 		postalCode: "1010",
@@ -137,6 +137,6 @@ function testFormatAddressGHFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

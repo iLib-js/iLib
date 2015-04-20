@@ -18,7 +18,7 @@
  */
 
 function testParseAddressTNNormal() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
+	var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressTNNormal() {
 };
 
 function testParseAddressTNNoZip() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
+	var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressTNNoZip() {
 };
 
 function testParseAddressTNNoCountry() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ", {locale: 'ar-TN'});
+	var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressTNNoCountry() {
 };
 
 function testParseAddressTNManyLines() {
-	var parsedAddress = new ilib.Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nتونس\n\n\n", {locale: 'ar-TN'});
+	var parsedAddress = new Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nتونس\n\n\n", {locale: 'ar-TN'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
@@ -66,7 +66,7 @@ function testParseAddressTNManyLines() {
 
 
 function testParseAddressTNSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tتونس\n\n\n", {locale: 'ar-TN'});
+	var parsedAddress = new Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tتونس\n\n\n", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressTNSuperfluousWhitespace() {
 
 
 function testParseAddressTNFromUS() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia", {locale: 'en-US'});
+	var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia", {locale: 'en-US'});
 	
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressTNFromUS() {
 };
 
 function testFormatAddressTN() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
 		locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
 		postalCode: "٨١٢٩",
@@ -101,12 +101,12 @@ function testFormatAddressTN() {
 	}, {locale: 'ar-TN'});
 	
 	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس";
-	var formatter = new ilib.AddressFmt({locale: 'ar-TN'});
+	var formatter = new AddressFmt({locale: 'ar-TN'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTNFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
 		locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
 		postalCode: "٨١٢٩",
@@ -115,6 +115,6 @@ function testFormatAddressTNFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

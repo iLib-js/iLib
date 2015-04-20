@@ -18,7 +18,7 @@
  */
 
 function testParseAddressSYNormal() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
+	var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressSYNormal() {
 };
 
 function testParseAddressSYNoZip() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
+	var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressSYNoZip() {
 };
 
 function testParseAddressSYNoCountry() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ", {locale: 'ar-SY'});
+	var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressSYNoCountry() {
 };
 
 function testParseAddressSYManyLines() {
-	var parsedAddress = new ilib.Address("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n٠١٠٠\nﺪﻤﺸﻗ\n\nسوريا\n\n\n", {locale: 'ar-SY'});
+	var parsedAddress = new Address("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n٠١٠٠\nﺪﻤﺸﻗ\n\nسوريا\n\n\n", {locale: 'ar-SY'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
@@ -66,7 +66,7 @@ function testParseAddressSYManyLines() {
 
 
 function testParseAddressSYSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n\n\t٠١٠٠\n\n\tﺪﻤﺸﻗ\n\n\tسوريا\n\n\n", {locale: 'ar-SY'});
+	var parsedAddress = new Address("\t\t\tﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n\n\t٠١٠٠\n\n\tﺪﻤﺸﻗ\n\n\tسوريا\n\n\n", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressSYSuperfluousWhitespace() {
 
 
 function testParseAddressSYFromUS() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nSyria", {locale: 'en-US'});
+	var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nSyria", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -93,7 +93,7 @@ function testParseAddressSYFromUS() {
 };
 
 function testFormatAddressSY() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
 		locality: "ﺪﻤﺸﻗ",
 		postalCode: "٠١٠٠",
@@ -102,12 +102,12 @@ function testFormatAddressSY() {
 	}, {locale: 'ar-SY'});
 	
 	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ\nسوريا";
-	var formatter = new ilib.AddressFmt({locale: 'ar-SY'});
+	var formatter = new AddressFmt({locale: 'ar-SY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressSYFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
 		locality: "ﺪﻤﺸﻗ",
 		postalCode: "٠١٠٠",
@@ -116,6 +116,6 @@ function testFormatAddressSYFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ\nSyria";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

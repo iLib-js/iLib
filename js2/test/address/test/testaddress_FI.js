@@ -18,7 +18,7 @@
  */
 
 function testParseAddressFIFIfinnishNormal() {
-	var parsedAddress = new ilib.Address("Eduskunta\nMatti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta\nFinland", {locale: 'fi-FI'});
+	var parsedAddress = new Address("Eduskunta\nMatti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta\nFinland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Eduskunta, Matti Mallikainen, Mannerheimintie 30 as 5", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressFIFIfinnishNormal() {
 };
 
 function testParseAddressFIFIfinnishNoCountry() {
-	var parsedAddress = new ilib.Address("Eduskunta, Matti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta", {locale: 'fi-FI'});
+	var parsedAddress = new Address("Eduskunta, Matti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Eduskunta, Matti Mallikainen, Mannerheimintie 30 as 5", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressFIFIfinnishNoCountry() {
 
 
 function testParseAddressFIFIswedishNormal() {
-	var parsedAddress = new ilib.Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki,Finland", {locale: 'sv-FI'});
+	var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki,Finland", {locale: 'sv-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Kalevankatu 12, 1st floor", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAddressFIFIswedishNormal() {
 };
 
 function testParseAddressFIFIswedishNoCountry() {
-	var parsedAddress = new ilib.Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki", {locale: 'sv-FI'});
+	var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki", {locale: 'sv-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Kalevankatu 12, 1st floor", parsedAddress.streetAddress);
@@ -69,7 +69,7 @@ function testParseAddressFIFIswedishNoCountry() {
 
 
 function testParseAddressFIFIOneLine() {
-	var parsedAddress = new ilib.Address("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B, 00180 HELSINKI, Finland", {locale: 'fi-FI'});
+	var parsedAddress = new Address("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B, 00180 HELSINKI, Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B", parsedAddress.streetAddress);
@@ -81,7 +81,7 @@ function testParseAddressFIFIOneLine() {
 };
 
 function testParseAddressFIFISuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMs. Aulikki Laasko\n\t\nVesakkotic 1399\n \r\n\r\rFI-00630	HELSINKI\r\r\n	Finland\t\n\n\n", {locale: 'fi-FI'});
+	var parsedAddress = new Address("\t\t\tMs. Aulikki Laasko\n\t\nVesakkotic 1399\n \r\n\r\rFI-00630	HELSINKI\r\r\n	Finland\t\n\n\n", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Aulikki Laasko, Vesakkotic 1399", parsedAddress.streetAddress);
@@ -93,7 +93,7 @@ function testParseAddressFIFISuperfluousWhitespace() {
 };
 
 function testParseAddressFIFINoDelimiters() {
-	var parsedAddress = new ilib.Address("Ms. Aulikki Laasko Vesakkotic 1399 HELSINKI Finland", {locale: 'fi-FI'});
+	var parsedAddress = new Address("Ms. Aulikki Laasko Vesakkotic 1399 HELSINKI Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Aulikki Laasko Vesakkotic 1399", parsedAddress.streetAddress);
@@ -105,7 +105,7 @@ function testParseAddressFIFINoDelimiters() {
 };
 
 function testParseAddressFIFISpecialChars() {
-	var parsedAddress = new ilib.Address("Työpajankatu 13,FI-00580 Helsinki, Finland", {locale: 'fi-FI'});
+	var parsedAddress = new Address("Työpajankatu 13,FI-00580 Helsinki, Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Työpajankatu 13", parsedAddress.streetAddress);
@@ -117,7 +117,7 @@ function testParseAddressFIFISpecialChars() {
 };
 
 function testParseAddressFIFIFromUS() {
-	var parsedAddress = new ilib.Address("Saga Matkat OY\nSaga Tours Ltd\nAlbertinkatu 36 B\nHELSINKI, Finland", {locale: 'en-US'});
+	var parsedAddress = new Address("Saga Matkat OY\nSaga Tours Ltd\nAlbertinkatu 36 B\nHELSINKI, Finland", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B", parsedAddress.streetAddress);
@@ -129,7 +129,7 @@ function testParseAddressFIFIFromUS() {
 };
 
 function testFormatAddressFIFIfinnish() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
 		locality: "HELSINKI",
 		country: "Finland",
@@ -137,12 +137,12 @@ function testFormatAddressFIFIfinnish() {
 	}, {locale: 'fi-FI'});
 	
 	var expected = "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B\nHELSINKI\nFinland";
-	var formatter = new ilib.AddressFmt({locale: 'fi-FI'});
+	var formatter = new AddressFmt({locale: 'fi-FI'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFIFIswedish() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Työpajankatu 13",
 		locality: "Helsinki",
 		country: "Finland",
@@ -150,12 +150,12 @@ function testFormatAddressFIFIswedish() {
 	}, {locale: 'fi-FI'});
 	
 	var expected = "Työpajankatu 13\nHelsinki\nFinland";
-	var formatter = new ilib.AddressFmt({locale: 'fi-FI'});
+	var formatter = new AddressFmt({locale: 'fi-FI'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFIFIFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
 		locality: "HELSINKI",
 		country: "Finland",
@@ -163,6 +163,6 @@ function testFormatAddressFIFIFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B\nHELSINKI\nFinland";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

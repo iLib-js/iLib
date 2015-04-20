@@ -18,7 +18,7 @@
  */
 
 function testParseAddressSimple() {
-	var parsedAddress = new ilib.Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W Maude Ave.", parsedAddress.streetAddress);
@@ -31,7 +31,7 @@ function testParseAddressSimple() {
 
 // to verify NOV-111026
 function testParseAddressSimple2() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, NY 11530\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, NY 11530\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressSimple2() {
 };
 
 function testParseAddressSimple3() {
-	var parsedAddress = new ilib.Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
+	var parsedAddress = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("5-2-1 Ginza", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAddressSimple3() {
 };
 
 function testParseAddressMoreComplex() {
-	var parsedAddress = new ilib.Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W 21st Ave, Apt 45", parsedAddress.streetAddress);
@@ -67,7 +67,7 @@ function testParseAddressMoreComplex() {
 };
 
 function testParseAddressSpelledOutState() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressSpelledOutState() {
 };
 
 function testParseAddressSpelledOutStateWithSpaces() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, New York 11530\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -91,7 +91,7 @@ function testParseAddressSpelledOutStateWithSpaces() {
 };
 
 function testParseAddressSpelledOutStateWithPrefix() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, Arkansas 11530\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, Arkansas 11530\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpelledOutStateWithPrefix() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, NY\nUSA", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, NY\nUSA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -115,7 +115,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("950 W 21st Ave\nApt 45\nNY\nNY\n10234", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W 21st Ave\nApt 45\nNY\nNY\n10234", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W 21st Ave, Apt 45", parsedAddress.streetAddress);
@@ -127,7 +127,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("950 W Maude Ave., Sunnyvale, CA 94085 USA", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W Maude Ave., Sunnyvale, CA 94085 USA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W Maude Ave.", parsedAddress.streetAddress);
@@ -139,7 +139,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("950 W 21st Ave\n\n   Apt 45      \n NY,    NY   10234\n\n   \n\n", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W 21st Ave\n\n   Apt 45      \n NY,    NY   10234\n\n   \n\n", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W 21st Ave, Apt 45", parsedAddress.streetAddress);
@@ -151,7 +151,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressFewDelimiters() {
-	var parsedAddress = new ilib.Address("950 W Maude Ave., Sunnyvale CA 94085 USA", {locale: 'en-US'});
+	var parsedAddress = new Address("950 W Maude Ave., Sunnyvale CA 94085 USA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W Maude Ave.", parsedAddress.streetAddress);
@@ -163,7 +163,7 @@ function testParseAddressFewDelimiters() {
 };
 
 function testParseAddressWithStreetNumberThatLooksLikeAZip() {
-	var parsedAddress = new ilib.Address("15672 W 156st St #45\nSeattle, WA 98765", {locale: 'en-US'});
+	var parsedAddress = new Address("15672 W 156st St #45\nSeattle, WA 98765", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("15672 W 156st St #45", parsedAddress.streetAddress);
@@ -175,7 +175,7 @@ function testParseAddressWithStreetNumberThatLooksLikeAZip() {
 };
 
 function testParseAddressPOBox() {
-	var parsedAddress = new ilib.Address("P.O. Box 350\nMinneapolis MN 45678-2234", {locale: 'en-US'});
+	var parsedAddress = new Address("P.O. Box 350\nMinneapolis MN 45678-2234", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("P.O. Box 350", parsedAddress.streetAddress);
@@ -187,7 +187,7 @@ function testParseAddressPOBox() {
 };
 
 function testParseAddressHawaii() {
-	var parsedAddress = new ilib.Address("20 Hawai'i Oe Lane\nKa'anapali, HI 99232", {locale: 'en-US'});
+	var parsedAddress = new Address("20 Hawai'i Oe Lane\nKa'anapali, HI 99232", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Hawai'i Oe Lane", parsedAddress.streetAddress);
@@ -200,7 +200,7 @@ function testParseAddressHawaii() {
 
 function testParseAddressUnknown() {
 
-	var parsedAddress = new ilib.Address("123 Main Street, Pretoria 5678, South Africa", {locale: 'en-US'});
+	var parsedAddress = new Address("123 Main Street, Pretoria 5678, South Africa", {locale: 'en-US'});
 
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 Main Street", parsedAddress.streetAddress);
@@ -212,7 +212,7 @@ function testParseAddressUnknown() {
 };
 
 function testParseAddressNonUS() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
+	var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Achterberglaan 23", parsedAddress.streetAddress);
@@ -225,7 +225,7 @@ function testParseAddressNonUS() {
 	
 // for NOV-118061
 function testParseAddressNonStandard() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-US'});
+	var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 mcdonald ave, apt 234", parsedAddress.streetAddress);
@@ -237,7 +237,7 @@ function testParseAddressNonStandard() {
 };
 
 function testFormatAddressUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "1234 Any Street",
 		locality: "Anytown",
 		region: "CA",
@@ -247,12 +247,12 @@ function testFormatAddressUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressDomestic() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "1234 Any Street",
 		locality: "Anytown",
 		region: "CA",
@@ -262,13 +262,13 @@ function testFormatAddressDomestic() {
 	}, {locale: 'en-US'});
 	
 	var expected = "1234 Any Street\nAnytown CA 94085";
-	var formatter = new ilib.AddressFmt({locale: 'en-US', style: 'nocountry'});
+	var formatter = new AddressFmt({locale: 'en-US', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 // for DFISH-9927
 function testParseAddressUnknownLocale() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'zxx-XX'});
+	var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'zxx-XX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 mcdonald ave, apt 234, sunnyvale", parsedAddress.streetAddress);
@@ -281,7 +281,7 @@ function testParseAddressUnknownLocale() {
 
 //for DFISH-23879
 function testParseAddressUnknownLocaleQQ() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-QQ'});
+	var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-QQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 mcdonald ave, apt 234, sunnyvale", parsedAddress.streetAddress);
@@ -293,7 +293,7 @@ function testParseAddressUnknownLocaleQQ() {
 };
 
 function testFormatAddressUnknownLocaleQQ() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "123 mcdonald ave, apt 234", 
 		locality: "Sunnyvale",
 		region: "CA",
@@ -302,12 +302,12 @@ function testFormatAddressUnknownLocaleQQ() {
 	});
 	
 	var expected = "123 mcdonald ave, apt 234\nSunnyvale CA 94086";
-	var formatter = new ilib.AddressFmt({locale: 'en-QQ', style: 'nocountry'});
+	var formatter = new AddressFmt({locale: 'en-QQ', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testParseAddressUnknownLocaleHK() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
+	var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 mcdonald ave, apt 234, sunnyvale, CA 34567", parsedAddress.streetAddress);
@@ -319,15 +319,15 @@ function testParseAddressUnknownLocaleHK() {
 };
 
 function testFormatAddressUnknownLocaleHK() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
+	var parsedAddress = new Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-HK'});
 	
 	var expected = "123 mcdonald ave, apt 234, sunnyvale, CA 34567";
-	var formatter = new ilib.AddressFmt({locale: 'en-HK', style: 'nocountry'});
+	var formatter = new AddressFmt({locale: 'en-HK', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressDefaultEverythingButForeignAddress() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 	    country: "Hong Kong",
 	    countryCode: "HK",
 	    locality: "North Point",
@@ -335,7 +335,7 @@ function testFormatAddressDefaultEverythingButForeignAddress() {
 	});
 	
 	var expected = "5F, 633 King's Road\nNorth Point\nHong Kong";
-	var formatter = new ilib.AddressFmt();
+	var formatter = new AddressFmt();
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

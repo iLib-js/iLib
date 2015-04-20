@@ -18,7 +18,7 @@
  */
 
 function testParseAddressMOLatinNormal() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
@@ -29,7 +29,7 @@ function testParseAddressMOLatinNormal() {
 };
 
 function testParseAddressMOLatinNoZip() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau \n Macau", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau \n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
@@ -40,7 +40,7 @@ function testParseAddressMOLatinNoZip() {
 };
 
 function testParseAddressMOLatinNoCountry() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078", {locale: 'pt-MO'});
 
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
@@ -51,7 +51,7 @@ function testParseAddressMOLatinNoCountry() {
 };
 
 function testParseAddressMOAsianNormal() {
-	var parsedAddress = new ilib.Address("澳門999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
+	var parsedAddress = new Address("澳門999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
@@ -61,7 +61,7 @@ function testParseAddressMOAsianNormal() {
 };
 
 function testParseAddressMOAsianNoZip() {
-	var parsedAddress = new ilib.Address("澳門商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
+	var parsedAddress = new Address("澳門商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
@@ -71,7 +71,7 @@ function testParseAddressMOAsianNoZip() {
 };
 
 function testParseAddressMOAsianNoCountry() {
-	var parsedAddress = new ilib.Address("999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
+	var parsedAddress = new Address("999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("商業大馬路251A-301號這是一個友善博祚20樓行政中心", parsedAddress.streetAddress);
@@ -81,7 +81,7 @@ function testParseAddressMOAsianNoCountry() {
 };
 
 function testParseAddressMOManyLines() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n\n Lisboa Gardens, Tower B3\n\n 14th Floor D,\n\n\n Macau 999078\n\n Macau", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n\n Lisboa Gardens, Tower B3\n\n 14th Floor D,\n\n\n Macau 999078\n\n Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressMOManyLines() {
 };
 
 function testParseAddressMOOneLine() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D, Macau 999078 Macau", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D, Macau 999078 Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressMOOneLine() {
 };
 
 function testParseAddressMOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tRua Cidade de Lisboa N.o 130\r\t Lisboa Gardens,\r\t   \tTower B3 14th Floor D,\t\t\n\t Macau \r\t999078 \n\t\t\r\rMacau\t\n\n\n", {locale: 'pt-MO'});
+	var parsedAddress = new Address("\t\t\tRua Cidade de Lisboa N.o 130\r\t Lisboa Gardens,\r\t   \tTower B3 14th Floor D,\t\t\n\t Macau \r\t999078 \n\t\t\r\rMacau\t\n\n\n", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressMOSuperfluousWhitespace() {
 };
 
 function testParseAddressMONoDelimiters() {
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D Macau 999078 Macau", {locale: 'pt-MO'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D Macau 999078 Macau", {locale: 'pt-MO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressMONoDelimiters() {
 
 function testParseAddressMOFromUS() {	
 
-	var parsedAddress = new ilib.Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'en-US'});
+	var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'en-US'});
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
@@ -138,7 +138,7 @@ function testParseAddressMOFromUS() {
 };
 
 function testFormatAddressMOLatin() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
 		region: "Macau",
 		postalCode: "999078",
@@ -148,12 +148,12 @@ function testFormatAddressMOLatin() {
 	}, {locale: 'pt-MO'});
 	
 	var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
-	var formatter = new ilib.AddressFmt({locale: 'pt-MO'});
+	var formatter = new AddressFmt({locale: 'pt-MO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMOFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
 		region: "Macau",
 		postalCode: "999078",
@@ -163,6 +163,6 @@ function testFormatAddressMOFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

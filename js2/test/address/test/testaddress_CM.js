@@ -20,7 +20,7 @@
 
 
 function testParseAddressCMNormal() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie, BP 6000", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCMNormal() {
 };
 
 function testParseAddressCMNoZip() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie, BP 6000", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCMNoZip() {
 };
 
 function testParseAddressCMManyLines() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie\nBP 6000, YAOUNDE\nCAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie\nBP 6000, YAOUNDE\nCAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie, BP 6000", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCMManyLines() {
 };
 
 function testParseAddressCMOneLine() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie, BP 6000", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCMOneLine() {
 };
 
 function testParseAddressCMSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie  \n\t\n BP 6000, YAOUNDE\t\n\n CAMEROON  \n  \t\t\t", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie  \n\t\n BP 6000, YAOUNDE\t\n\n CAMEROON  \n  \t\t\t", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie, BP 6000", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCMSuperfluousWhitespace() {
 };
 
 function testParseAddressCMNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie BP 6000 YAOUNDE CAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("M. Pierre Marie BP 6000 YAOUNDE CAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Marie BP 6000", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCMNoDelimiters() {
 };
 
 function testParseAddressCMSpecialChars() {
-	var parsedAddress = new ilib.Address("Direction des postes ,Régulation des réseaux et services postaux, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
+	var parsedAddress = new Address("Direction des postes ,Régulation des réseaux et services postaux, YAOUNDE, CAMEROON", {locale: 'fr-CM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Direction des postes, Régulation des réseaux et services postaux", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCMSpecialChars() {
 };
 
 function testParseAddressCMFromUS() {
-	var parsedAddress = new ilib.Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'en-US'});
+	var parsedAddress = new Address("M. Pierre Marie, BP 6000, YAOUNDE, CAMEROON", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCMFromUS() {
 };
 
 function testFormatAddressCM() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Pierre Marie\nBP 6000",
 		locality: "YAOUNDE",
 		country: "CAMEROON",
@@ -126,12 +126,12 @@ function testFormatAddressCM() {
 	}, {locale: 'fr-CM'});
 	
 	var expected = "M. Pierre Marie\nBP 6000\nYAOUNDE\nCAMEROON";
-	var formatter = new ilib.AddressFmt({locale: 'fr-CM'});
+	var formatter = new AddressFmt({locale: 'fr-CM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCMFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Pierre Marie\nBP 6000",
 		country: "CAMEROON",
 		locality: "YAOUNDE",
@@ -139,6 +139,6 @@ function testFormatAddressCMFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "M. Pierre Marie\nBP 6000\nYAOUNDE\nCAMEROON";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

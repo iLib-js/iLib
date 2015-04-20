@@ -18,7 +18,7 @@
  */
 
 function testParseAddressSGSGLatinNormal() {
-	var parsedAddress = new ilib.Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-SG'});
+	var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("#38-01/01A, 8 Shenton Way", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressSGSGLatinNormal() {
 };
 
 function testParseAddressSGSGLatinNoZip() {
-	var parsedAddress = new ilib.Address("9 Changi Business Park Central 1\nSingapore", {locale: 'en-SG'});
+	var parsedAddress = new Address("9 Changi Business Park Central 1\nSingapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("9 Changi Business Park Central 1", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressSGSGLatinNoZip() {
 };
 
 function testParseAddressSGSGLatinNoCountry() {
-	var parsedAddress = new ilib.Address("#38-01/01A\n8 Shenton Way\nSingapore 068811", {locale: 'en-SG'});
+	var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("#38-01/01A, 8 Shenton Way", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressSGSGLatinNoCountry() {
 };
 
 function testParseAddressSGSGAsianNormal() {
-	var parsedAddress = new ilib.Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
+	var parsedAddress = new Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("麟記路4＃06-07/08矽統科技大廈", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressSGSGAsianNormal() {
 };
 
 function testParseAddressSGSGAsianNoZip() {
-	var parsedAddress = new ilib.Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
+	var parsedAddress = new Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("麟記路4＃06-07/08矽統科技大廈", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressSGSGAsianNoZip() {
 };
 
 function testParseAddressSGSGAsianNoCountry() {
-	var parsedAddress = new ilib.Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
+	var parsedAddress = new Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("麟記路4＃06-07/08矽統科技大廈", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressSGSGAsianNoCountry() {
 };
 
 function testParseAddressSGSGManyLines() {
-	var parsedAddress = new ilib.Address("Blk 111\nAng Mo Kio Avenue 4\nSingapore\n560111\nRepublic of Singapore\n\n", {locale: 'en-SG'});
+	var parsedAddress = new Address("Blk 111\nAng Mo Kio Avenue 4\nSingapore\n560111\nRepublic of Singapore\n\n", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Blk 111, Ang Mo Kio Avenue 4", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressSGSGManyLines() {
 };
 
 function testParseAddressSGSGOneLine() {
-	var parsedAddress = new ilib.Address("152 Beach Rd., #16-00 Gateway East, Singapore 189721, The Republic of Singapore", {locale: 'en-SG'});
+	var parsedAddress = new Address("152 Beach Rd., #16-00 Gateway East, Singapore 189721, The Republic of Singapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("152 Beach Rd., #16-00 Gateway East", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressSGSGOneLine() {
 };
 
 function testParseAddressSGSGSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t2 Orchard Turn\t\t\r\n\t#04-05\r\t ION \tOrchard\t\nSingapore \r\t\n238801\n\t\rSingapore\n\n", {locale: 'en-SG'});
+	var parsedAddress = new Address("\t\t\t2 Orchard Turn\t\t\r\n\t#04-05\r\t ION \tOrchard\t\nSingapore \r\t\n238801\n\t\rSingapore\n\n", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("2 Orchard Turn, #04-05 ION Orchard", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressSGSGSuperfluousWhitespace() {
 };
 
 function testParseAddressSGSGNoDelimiters() {
-	var parsedAddress = new ilib.Address("152 Beach Rd. #16-00 Gateway East Singapore 189721 The Republic of Singapore", {locale: 'en-SG'});
+	var parsedAddress = new Address("152 Beach Rd. #16-00 Gateway East Singapore 189721 The Republic of Singapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("152 Beach Rd. #16-00 Gateway East", parsedAddress.streetAddress);
@@ -138,7 +138,7 @@ function testParseAddressSGSGNoDelimiters() {
 };
 
 function testParseAddressSGSGSpecialChars() {
-	var parsedAddress = new ilib.Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nSingapore 159088\n", {locale: 'en-SG'});
+	var parsedAddress = new Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nSingapore 159088\n", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Lín Jì Lù 4, # 06-07/08 Xì Tǒng Kējì Dàshà", parsedAddress.streetAddress);
@@ -150,7 +150,7 @@ function testParseAddressSGSGSpecialChars() {
 };
 
 function testParseAddressSGSGFromUS() {
-	var parsedAddress = new ilib.Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-US'});
+	var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -164,7 +164,7 @@ function testParseAddressSGSGFromUS() {
 };
 
 function testFormatAddressSGLatin() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "#38-01/01A, 8 Shenton Way",
 		locality: "Singapore",
 		postalCode: "068811",
@@ -174,12 +174,12 @@ function testFormatAddressSGLatin() {
 	}, {locale: 'en-SG'});
 	
 	var expected = "#38-01/01A, 8 Shenton Way\nSingapore 068811\nSingapore";
-	var formatter = new ilib.AddressFmt({locale: 'en-SG'});
+	var formatter = new AddressFmt({locale: 'en-SG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressSGAsian() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "麟記路4＃06-07/08矽統科技大廈",
 		locality: "新加坡",
 		postalCode: "159088",
@@ -189,12 +189,12 @@ function testFormatAddressSGAsian() {
 	}, {locale: 'zh-SG'});
 	
 	var expected = "新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈";
-	var formatter = new ilib.AddressFmt({locale: 'zh-SG'});
+	var formatter = new AddressFmt({locale: 'zh-SG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressSGFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "#38-01/01A, 8 Shenton Way",
 		locality: "Singapore",
 		postalCode: "068811",
@@ -204,6 +204,6 @@ function testFormatAddressSGFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "#38-01/01A, 8 Shenton Way\nSingapore 068811\nRepublic of Singapore";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

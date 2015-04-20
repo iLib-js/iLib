@@ -19,7 +19,7 @@
 
 function testParseAddressSKNormal() {
 	
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
+	var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
         assertNotUndefined(parsedAddress);
 	assertEquals("Pawel Opatovský Gazdova 4", parsedAddress.streetAddress);
 	assertEquals("ŽILINA 1", parsedAddress.locality);
@@ -32,7 +32,7 @@ function testParseAddressSKNormal() {
 
 function testParseAddressSKOtherName() {
 	
-var parsedAddress = new ilib.Address("Slovenská Pošta, š.p. Partizánska Cesta 9\n975 99 BANSKÁ BYSTRICA 1\nSLOVAKIA", {locale: 'sk-SK'});
+var parsedAddress = new Address("Slovenská Pošta, š.p. Partizánska Cesta 9\n975 99 BANSKÁ BYSTRICA 1\nSLOVAKIA", {locale: 'sk-SK'});
         assertNotUndefined(parsedAddress);
 	assertEquals("Slovenská Pošta, š.p. Partizánska Cesta 9", parsedAddress.streetAddress);
 	assertEquals("BANSKÁ BYSTRICA 1", parsedAddress.locality);
@@ -44,7 +44,7 @@ var parsedAddress = new ilib.Address("Slovenská Pošta, š.p. Partizánska Cest
 };
 
 function testParseAddressSKNoZip() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
+	var parsedAddress = new Address("Pawel Opatovský Gazdova 4\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Pawel Opatovský Gazdova 4", parsedAddress.streetAddress);
 	assertEquals("ŽILINA 1", parsedAddress.locality);
@@ -55,7 +55,7 @@ function testParseAddressSKNoZip() {
 };
 
 function testParseAddressSKNoCountry() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1", {locale: 'sk-SK'});
+	var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1", {locale: 'sk-SK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Pawel Opatovský Gazdova 4", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressSKNoCountry() {
 };
 
 function testParseAddressSKManyLines() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský\nGazdova 4\n010 01\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
+	var parsedAddress = new Address("Pawel Opatovský\nGazdova 4\n010 01\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Pawel Opatovský, Gazdova 4", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressSKManyLines() {
 };
 
 function testParseAddressSKNoDelimiters() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4 010 01 ŽILINA 1 SLOVAKIA", {locale: 'sk-SK'});
+	var parsedAddress = new Address("Pawel Opatovský Gazdova 4 010 01 ŽILINA 1 SLOVAKIA", {locale: 'sk-SK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Pawel Opatovský Gazdova 4", parsedAddress.streetAddress);
@@ -93,7 +93,7 @@ function testParseAddressSKNoDelimiters() {
 
 
 function testParseAddressSKFromUS() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'en-US'});
+	var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -107,7 +107,7 @@ function testParseAddressSKFromUS() {
 };
 
 function testFormatAddressSK() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Pawel Opatovský Gazdova 4",
 		locality: "ŽILINA 1",
 		region: null,
@@ -117,12 +117,12 @@ function testFormatAddressSK() {
 	}, {locale: 'sk-SK'});
 	
 	var expected = "Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA";
-	var formatter = new ilib.AddressFmt({locale: 'sk-SK'});
+	var formatter = new AddressFmt({locale: 'sk-SK'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressSKFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Pawel Opatovský Gazdova 4",
 		locality: "ŽILINA 1",
 		region: null,
@@ -132,6 +132,6 @@ function testFormatAddressSKFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

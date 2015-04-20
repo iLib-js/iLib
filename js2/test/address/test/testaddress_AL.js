@@ -20,7 +20,7 @@
 
 
 function testParseALAddressNormal() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseALAddressNormal() {
 };
 
 function testParseALAddressNoZip() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, TIRANE, ALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, TIRANE, ALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseALAddressNoZip() {
 };
 
 function testParseALAddressManyLines() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu'\nP. 15, Sh. 1\n1001-TIRANE\nALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu'\nP. 15, Sh. 1\n1001-TIRANE\nALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseALAddressManyLines() {
 };
 
 function testParseALAddressOneLine() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseALAddressOneLine() {
 };
 
 function testParseALAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1  \n\t\n 1001-TIRANE\t\n\n ALBANIA  \n  \t\t\t", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1  \n\t\n 1001-TIRANE\t\n\n ALBANIA  \n  \t\t\t", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseALAddressSuperfluousWhitespace() {
 };
 
 function testParseALAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu' P. 15 Sh. 1 1001-TIRANE ALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu' P. 15 Sh. 1 1001-TIRANE ALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu' P. 15 Sh. 1", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseALAddressNoDelimiters() {
 };
 
 function testParseALAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Rr 'Aleksander Moisiu', P. 15, Sh. 1", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseALAddressSpecialChars() {
 };
 
 function testParseALAddressFromUS() {
-	var parsedAddress = new ilib.Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'en-US'});
+	var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseALAddressFromUS() {
 };
 
 function testFormatAddressAL() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rr 'Aleksander Moisiu', P. 15, Sh. 1",
 		locality: "TIRANE",
 		postalCode: "1001",
@@ -127,12 +127,12 @@ function testFormatAddressAL() {
 	}, {locale: 'sq-AL'});
 	
 	var expected = "Rr 'Aleksander Moisiu', P. 15, Sh. 1\n1001-TIRANE\nALBANIA";
-	var formatter = new ilib.AddressFmt({locale: 'sq-AL'});
+	var formatter = new AddressFmt({locale: 'sq-AL'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressALFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Rr 'Aleksander Moisiu', P. 15, Sh. 1",
 		postalCode: "1001",
 		locality: "TIRANE",
@@ -141,6 +141,6 @@ function testFormatAddressALFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Rr 'Aleksander Moisiu', P. 15, Sh. 1\n1001-TIRANE\nALBANIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -18,7 +18,7 @@
  */
 
 function testParseAddressKRNormal() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742\nSOUTH KOREA", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742\nSOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressKRNormal() {
 };
 
 function testParseAddressKRNormalNative() {
-	var parsedAddress = new ilib.Address("대한민국\n151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("대한민국\n151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressKRNormalNative() {
 };
 
 function testParseAddressKRWithBrackets() {
-	var parsedAddress = new ilib.Address("(609-735) 부산광역시 금정구 부산대학로63번길 2 (장전동)", {locale: 'ko-KR'});
+	var parsedAddress = new Address("(609-735) 부산광역시 금정구 부산대학로63번길 2 (장전동)", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("금정구 부산대학로63번길 2 (장전동)", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressKRWithBrackets() {
 };
 
 function testParseAddressKRWithRegion() {
-	var parsedAddress = new ilib.Address("Chuncheon National University of Education.\nGongji Ro 126, Chuncheon 200-703, Gangwon-Do, Republic of Korea", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Chuncheon National University of Education.\nGongji Ro 126, Chuncheon 200-703, Gangwon-Do, Republic of Korea", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Chuncheon National University of Education., Gongji Ro 126", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressKRWithRegion() {
 };
 
 function testParseAddressKRWithRegionNative() {
-	var parsedAddress = new ilib.Address("(200-703) 강원도 춘천시 공지로 126(석사동)", {locale: 'ko-KR'});
+	var parsedAddress = new Address("(200-703) 강원도 춘천시 공지로 126(석사동)", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("(200-703)", parsedAddress.postalCode);
@@ -78,7 +78,7 @@ function testParseAddressKRWithRegionNative() {
 };
 
 function testParseAddressKRNoZip() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul\nSOUTH KOREA", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul\nSOUTH KOREA", {locale: 'ko-KR'});
 
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressKRNoZip() {
 };
 
 function testParseAddressKRNoZipNative() {
-	var parsedAddress = new ilib.Address("대한민국\n서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("대한민국\n서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
 
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressKRNoZipNative() {
 };
 
 function testParseAddressKRNoCountry() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressKRNoCountry() {
 };
 
 function testParseAddressKRNoCountryNative() {
-	var parsedAddress = new ilib.Address("151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressKRNoCountryNative() {
 };
 
 function testParseAddressKRManyLines() {
-	var parsedAddress = new ilib.Address("Seoul National University\n1 Gwanak-ro\nGwanak-gu\nSeoul\n151-742\nKorea\n", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University\n1 Gwanak-ro\nGwanak-gu\nSeoul\n151-742\nKorea\n", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -138,7 +138,7 @@ function testParseAddressKRManyLines() {
 };
 
 function testParseAddressKRManyLinesNative() {
-	var parsedAddress = new ilib.Address("대한민국\n151-742\n서울시\n관악구 관악로\n1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("대한민국\n151-742\n서울시\n관악구 관악로\n1 서울대학교", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -150,7 +150,7 @@ function testParseAddressKRManyLinesNative() {
 };
 
 function testParseAddressKROneLine() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742, SOUTH KOREA", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742, SOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -162,7 +162,7 @@ function testParseAddressKROneLine() {
 };
 
 function testParseAddressKROneLineNative() {
-	var parsedAddress = new ilib.Address("대한민국, 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("대한민국, 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -174,7 +174,7 @@ function testParseAddressKROneLineNative() {
 };
 
 function testParseAddressKRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Seoul National University 1 Gwanak-ro Gwanak-gu Seoul 151-742 SOUTH KOREA", {locale: 'ko-KR'});
+	var parsedAddress = new Address("Seoul National University 1 Gwanak-ro Gwanak-gu Seoul 151-742 SOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University 1 Gwanak-ro Gwanak-gu", parsedAddress.streetAddress);
@@ -186,7 +186,7 @@ function testParseAddressKRNoDelimiters() {
 };
 
 function testParseAddressKRNoDelimitersNative() {
-	var parsedAddress = new ilib.Address("대한민국 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
+	var parsedAddress = new Address("대한민국 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("관악구 관악로 1 서울대학교", parsedAddress.streetAddress);
@@ -198,7 +198,7 @@ function testParseAddressKRNoDelimitersNative() {
 };
 
 function testParseAddressKRLatinFromUS() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nRepublic of Korea", {locale: 'en-US'});
+	var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nRepublic of Korea", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -210,7 +210,7 @@ function testParseAddressKRLatinFromUS() {
 };
 
 function testFormatAddressKRLatin() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Seoul National University, 1 Gwanak-ro, Gwanak-gu",
 		locality: "Seoul",
 		postalCode: "151-742",
@@ -220,12 +220,12 @@ function testFormatAddressKRLatin() {
 	}, {locale: 'ko-KR'});
 	
 	var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
-	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	var formatter = new AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressKRLatinWithRegion() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Chuncheon National University of Education, 339 Seoksa-dong",
 		locality: "Chuncheon-si",
 		region: "Gangwon-do",
@@ -236,12 +236,12 @@ function testFormatAddressKRLatinWithRegion() {
 	}, {locale: 'ko-KR'});
 	
 	var expected = "Chuncheon National University of Education, 339 Seoksa-dong\nChuncheon-si Gangwon-do 200-703\nSouth Korea";
-	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	var formatter = new AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressKRLatinFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Seoul National University, 1 Gwanak-ro, Gwanak-gu",
 		locality: "Seoul",
 		postalCode: "151-742",
@@ -251,12 +251,12 @@ function testFormatAddressKRLatinFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressKRNative() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "관악구 관악로 1 서울대학교",
 		locality: "서울시",
 		postalCode: "151-742",
@@ -266,12 +266,12 @@ function testFormatAddressKRNative() {
 	}, {locale: 'ko-KR'});
 	
 	var expected = "대한민국\n151-742 서울시 관악구 관악로 1 서울대학교";
-	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	var formatter = new AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressKRNativeWithRegion() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "공지로 126(석사동)",
 		locality: "춘천시",
 		region: "강원도",
@@ -282,7 +282,7 @@ function testFormatAddressKRNativeWithRegion() {
 	}, {locale: 'ko-KR'});
 	
 	var expected = "대한민국\n(200-703) 강원도 춘천시 공지로 126(석사동)";
-	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	var formatter = new AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

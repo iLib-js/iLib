@@ -18,7 +18,7 @@
  */
 
 function testParseAddressMXNormal() {
-	var parsedAddress = new ilib.Address("Paseo de la Reforma #115, Piso 22\nCol. Lomas de Chapultepec\n11000 México D.F.\nMéxico", {locale: 'es-MX'});
+	var parsedAddress = new Address("Paseo de la Reforma #115, Piso 22\nCol. Lomas de Chapultepec\n11000 México D.F.\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paseo de la Reforma #115, Piso 22, Col. Lomas de Chapultepec", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressMXNormal() {
 };
 
 function testParseAddressMXNoZip() {
-	var parsedAddress = new ilib.Address("20 de Noviembre 855 Sur\nObispado\nMonterrey, NL\nMéxico", {locale: 'es-MX'});
+	var parsedAddress = new Address("20 de Noviembre 855 Sur\nObispado\nMonterrey, NL\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 de Noviembre 855 Sur, Obispado", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressMXNoZip() {
 };
 
 function testParseAddressMXNoCountry() {
-	var parsedAddress = new ilib.Address("AV RIO MIXCOAC N° 125 , INSURGENTES MIXCOAC , C.P 03920 , BENITO JUAREZ , DF", {locale: 'es-MX'});
+	var parsedAddress = new Address("AV RIO MIXCOAC N° 125 , INSURGENTES MIXCOAC , C.P 03920 , BENITO JUAREZ , DF", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("AV RIO MIXCOAC N° 125, INSURGENTES MIXCOAC", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressMXNoCountry() {
 };
 
 function testParseAddressMXManyLines() {
-	var parsedAddress = new ilib.Address("Colegio Niños de México\nQueretaro 151\nRoma\nC.P 06700\nCuauhtemoc\nDF\nMéxico", {locale: 'es-MX'});
+	var parsedAddress = new Address("Colegio Niños de México\nQueretaro 151\nRoma\nC.P 06700\nCuauhtemoc\nDF\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Colegio Niños de México, Queretaro 151, Roma", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressMXManyLines() {
 };
 
 function testParseAddressMXOneLine() {
-	var parsedAddress = new ilib.Address("Vicente Guerrero S/N , Centro , C.P 23450 , Cabo San Lucas , BCS , México", {locale: 'es-MX'});
+	var parsedAddress = new Address("Vicente Guerrero S/N , Centro , C.P 23450 , Cabo San Lucas , BCS , México", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Vicente Guerrero S/N, Centro", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressMXOneLine() {
 };
 
 function testParseAddressMXSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tVicente     Guerrero \tS/N\n\t\tCentro\t\n C.P\t\r 23450\n\t\t\r Cabo   \t\r San Lucas\n\n\n\tBCS\r\t\nMéxico\n\n\n", {locale: 'es-MX'});
+	var parsedAddress = new Address("\t\t\tVicente     Guerrero \tS/N\n\t\tCentro\t\n C.P\t\r 23450\n\t\t\r Cabo   \t\r San Lucas\n\n\n\tBCS\r\t\nMéxico\n\n\n", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Vicente Guerrero S/N, Centro", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressMXSuperfluousWhitespace() {
 };
 
 function testParseAddressMXNoDelimiters() {
-	var parsedAddress = new ilib.Address("Vicente Guerrero S/N Centro C.P 23450 Cabo San Lucas BCS México", {locale: 'es-MX'});
+	var parsedAddress = new Address("Vicente Guerrero S/N Centro C.P 23450 Cabo San Lucas BCS México", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Vicente Guerrero S/N Centro", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressMXNoDelimiters() {
 };
 
 function testParseAddressMXSpecialChars() {
-	var parsedAddress = new ilib.Address("Calle Yucatán No. 45\nC.P 97751 Chichén Itzá, Yucatán\nMéxico", {locale: 'es-MX'});
+	var parsedAddress = new Address("Calle Yucatán No. 45\nC.P 97751 Chichén Itzá, Yucatán\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Calle Yucatán No. 45", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressMXSpecialChars() {
 };
 
 function testParseAddressMXFromUS() {
-	var parsedAddress = new ilib.Address("Vicente Guerrero S/N , Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico", {locale: 'en-US'});
+	var parsedAddress = new Address("Vicente Guerrero S/N , Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -128,7 +128,7 @@ function testParseAddressMXFromUS() {
 };
 
 function testFormatAddressMX() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Vicente Guerrero S/N, Centro",
 		locality: "Cabo San Lucas",
 		region: "BCS",
@@ -138,12 +138,12 @@ function testFormatAddressMX() {
 	}, {locale: 'es-MX'});
 	
 	var expected = "Vicente Guerrero S/N, Centro\nC.P 23450 Cabo San Lucas, BCS\nMéxico";
-	var formatter = new ilib.AddressFmt({locale: 'es-MX'});
+	var formatter = new AddressFmt({locale: 'es-MX'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMXFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Vicente Guerrero S/N, Centro",
 		locality: "Cabo San Lucas",
 		region: "BCS",
@@ -153,6 +153,6 @@ function testFormatAddressMXFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Vicente Guerrero S/N, Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

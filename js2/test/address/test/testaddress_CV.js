@@ -20,7 +20,7 @@
 
 
 function testParseAddressCVNormal() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCVNormal() {
 };
 
 function testParseAddressCVNoZip() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38,PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38,PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCVNoZip() {
 };
 
 function testParseAddressCVManyLines() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos\nRua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos\nRua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCVManyLines() {
 };
 
 function testParseAddressCVOneLine() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCVOneLine() {
 };
 
 function testParseAddressCVSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38  \n\t\n 7600 PRAIA, SANTIAGO\t\n\n CAPE VERDE  \n  \t\t\t", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38  \n\t\n 7600 PRAIA, SANTIAGO\t\n\n CAPE VERDE  \n  \t\t\t", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCVSuperfluousWhitespace() {
 };
 
 function testParseAddressCVNoDelimiters() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38 7600 PRAIA SANTIAGO CAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38 7600 PRAIA SANTIAGO CAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCVNoDelimiters() {
 };
 
 function testParseAddressCVSpecialChars() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCVSpecialChars() {
 };
 
 function testParseAddressCVFromUS() {
-	var parsedAddress = new ilib.Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'en-US'});
+	var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCVFromUS() {
 };
 
 function testFormatAddressCV() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38",
 		locality: "PRAIA",
 		postalCode: "7600",
@@ -128,12 +128,12 @@ function testFormatAddressCV() {
 	}, {locale: 'pt-CV'});
 	
 	var expected = "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE";
-	var formatter = new ilib.AddressFmt({locale: 'pt-CV'});
+	var formatter = new AddressFmt({locale: 'pt-CV'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCVFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38",
 		postalCode: "7600",
 		region: "SANTIAGO",
@@ -143,6 +143,6 @@ function testFormatAddressCVFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGBNormal() {
-	var parsedAddress = new ilib.Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nUnited Kingdom", {locale: 'en-GB'});
+	var parsedAddress = new Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nUnited Kingdom", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Belgrave House, 76 Buckingham Palace Road", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGBNormal() {
 };
 
 function testParseAddressGBNoZip() {
-	var parsedAddress = new ilib.Address("Peter House\nOxford Street\nManchester", {locale: 'en-GB'});
+	var parsedAddress = new Address("Peter House\nOxford Street\nManchester", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Peter House, Oxford Street", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGBNoZip() {
 };
 
 function testParseAddressGBNoCountry() {
-	var parsedAddress = new ilib.Address("88 Wood Street\nLondon\nEC2V 7QT", {locale: 'en-GB'});
+	var parsedAddress = new Address("88 Wood Street\nLondon\nEC2V 7QT", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("88 Wood Street", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGBNoCountry() {
 };
 
 function testParseAddressGBManyLines() {
-	var parsedAddress = new ilib.Address("2 Kelvin Close\nBirchwood Science Park North\nNorth Risley\nWarrington\nCheshire\nWA3 7PB\nUK", {locale: 'en-GB'});
+	var parsedAddress = new Address("2 Kelvin Close\nBirchwood Science Park North\nNorth Risley\nWarrington\nCheshire\nWA3 7PB\nUK", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("2 Kelvin Close, Birchwood Science Park North, North Risley, Warrington", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressGBManyLines() {
 };
 
 function testParseAddressGBOneLine() {
-	var parsedAddress = new ilib.Address("Amen Corner, Cain Road, Bracknell, Berkshire, RG12 1HN, England", {locale: 'en-GB'});
+	var parsedAddress = new Address("Amen Corner, Cain Road, Bracknell, Berkshire, RG12 1HN, England", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Amen Corner, Cain Road, Bracknell", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressGBOneLine() {
 };
 
 function testParseAddressGBSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tAmen Corner\n\t\t\tCain Road, \t\t\t\r\r Bracknell, \n \r \tBerkshire, \n\t\nRG12 1HN\t\n\t England\n\n\n", {locale: 'en-GB'});
+	var parsedAddress = new Address("\t\t\tAmen Corner\n\t\t\tCain Road, \t\t\t\r\r Bracknell, \n \r \tBerkshire, \n\t\nRG12 1HN\t\n\t England\n\n\n", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Amen Corner, Cain Road, Bracknell", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressGBSuperfluousWhitespace() {
 };
 
 function testParseAddressGBNoDelimiters() {
-	var parsedAddress = new ilib.Address("Amen Corner Cain Road Bracknell Berkshire RG12 1HN England", {locale: 'en-GB'});
+	var parsedAddress = new Address("Amen Corner Cain Road Bracknell Berkshire RG12 1HN England", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Amen Corner Cain Road Bracknell", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressGBNoDelimiters() {
 };
 
 function testParseAddressGBFromDE() {
-	var parsedAddress = new ilib.Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nGroßbritannien", {locale: 'de-DE'});
+	var parsedAddress = new Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nGroßbritannien", {locale: 'de-DE'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -116,7 +116,7 @@ function testParseAddressGBFromDE() {
 };
 
 function testFormatAddressGB() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Belgrave House, 76 Buckingham Palace Road",
 		locality: "London",
 		postalCode: "SW1W 9TQ",
@@ -125,12 +125,12 @@ function testFormatAddressGB() {
 	}, {locale: 'en-GB'});
 	
 	var expected = "Belgrave House, 76 Buckingham Palace Road\nLondon\nSW1W 9TQ\nOld Blighty";
-	var formatter = new ilib.AddressFmt({locale: 'en-GB'});
+	var formatter = new AddressFmt({locale: 'en-GB'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGBFromDE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Belgrave House, 76 Buckingham Palace Road",
 		locality: "London",
 		postalCode: "SW1W 9TQ",
@@ -139,6 +139,6 @@ function testFormatAddressGBFromDE() {
 	}, {locale: 'de-DE'});
 	
 	var expected = "Belgrave House, 76 Buckingham Palace Road\nLondon\nSW1W 9TQ\nOld Blighty";
-	var formatter = new ilib.AddressFmt({locale: 'de-DE'});
+	var formatter = new AddressFmt({locale: 'de-DE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

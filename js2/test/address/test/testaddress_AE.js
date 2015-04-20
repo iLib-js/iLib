@@ -18,7 +18,7 @@
  */
 
 function testParseAEAddressNormal() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
+	var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAEAddressNormal() {
 };
 
 function testParseAEAddressManyLines() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
+	var parsedAddress = new Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("تاج قصر الفندق, صندوق البريد بالبوسطة, ٤٢٢١١", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAEAddressManyLines() {
 };
 
 function testParseAEAddressOneLine() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
+	var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAEAddressOneLine() {
 
 
 function testParseAEAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
+	var parsedAddress = new Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAEAddressNoDelimiters() {
 
 
 function testParseAEAddressFromUS() {
-	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
+	var parsedAddress = new Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -85,7 +85,7 @@ function testParseAEAddressFromUS() {
 
 
 function testFormatAddressAESANative() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١",
 		locality: "دبي",
 		region: null,
@@ -95,12 +95,12 @@ function testFormatAddressAESANative() {
 	}, {locale: 'ar-AE'});
 	
 	var expected = "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nالإمارات العربية المتحدة";
-	var formatter = new ilib.AddressFmt({locale: 'ar-AE'});
+	var formatter = new AddressFmt({locale: 'ar-AE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressAEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١",
 		locality: "دبي",
 		region: null,
@@ -110,6 +110,6 @@ function testFormatAddressAEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nUnited Arab Emirates";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

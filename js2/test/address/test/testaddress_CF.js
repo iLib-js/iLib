@@ -20,7 +20,7 @@
 
 
 function testParseAddressCFNormal() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko, BP 729", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCFNormal() {
 };
 
 function testParseAddressCFNoZip() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko, BP 729", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCFNoZip() {
 };
 
 function testParseAddressCFManyLines() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko\nBP 729, BANGUI\nCENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko\nBP 729, BANGUI\nCENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko, BP 729", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCFManyLines() {
 };
 
 function testParseAddressCFOneLine() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko, BP 729", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCFOneLine() {
 };
 
 function testParseAddressCFSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko  \n\t\n BP 729\nBANGUI\t\n\n CENTRAL AFRICAN REPUBLIC  \n  \t\t\t", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko  \n\t\n BP 729\nBANGUI\t\n\n CENTRAL AFRICAN REPUBLIC  \n  \t\t\t", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko, BP 729", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCFSuperfluousWhitespace() {
 };
 
 function testParseAddressCFNoDelimiters() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko BP 729 BANGUI CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko BP 729 BANGUI CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Evangelical Church Elim Bangui – M'Poko BP 729", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCFNoDelimiters() {
 };
 
 function testParseAddressCFSpecialChars() {
-	var parsedAddress = new ilib.Address("Avenue des Martyrs Boîte postale 344, BANGUI, République centrafricaine", {locale: 'fr-CF'});
+	var parsedAddress = new Address("Avenue des Martyrs Boîte postale 344, BANGUI, République centrafricaine", {locale: 'fr-CF'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avenue des Martyrs Boîte postale 344", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCFSpecialChars() {
 };
 
 function testParseAddressCFFromUS() {
-	var parsedAddress = new ilib.Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'en-US'});
+	var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCFFromUS() {
 };
 
 function testFormatAddressCF() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Evangelical Church Elim Bangui – M'Poko\nBP 729",
 		locality: "BANGUI",
 		country: "CENTRAL AFRICAN REPUBLIC",
@@ -126,12 +126,12 @@ function testFormatAddressCF() {
 	}, {locale: 'fr-CF'});
 	
 	var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
-	var formatter = new ilib.AddressFmt({locale: 'fr-CF'});
+	var formatter = new AddressFmt({locale: 'fr-CF'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCFFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Evangelical Church Elim Bangui – M'Poko\nBP 729",
 		country: "CENTRAL AFRICAN REPUBLIC",
 		locality: "BANGUI",
@@ -139,6 +139,6 @@ function testFormatAddressCFFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

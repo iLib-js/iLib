@@ -18,7 +18,7 @@
  */
 
 function testParseAddressAsyncSimple() {
-	var pa = new ilib.Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {
+	var pa = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -36,7 +36,7 @@ function testParseAddressAsyncSimple() {
 
 // to verify NOV-111026
 function testParseAddressAsyncSimple2() {
-	var pa = new ilib.Address("20 Main St.\nMyTown, NY 11530\nUSA", {
+	var pa = new Address("20 Main St.\nMyTown, NY 11530\nUSA", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -53,7 +53,7 @@ function testParseAddressAsyncSimple2() {
 };
 
 function testParseAddressAsyncSimple3() {
-	var pa = new ilib.Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {
+	var pa = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -70,7 +70,7 @@ function testParseAddressAsyncSimple3() {
 };
 
 function testParseAddressAsyncMoreComplex() {
-	var pa = new ilib.Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {
+	var pa = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -87,7 +87,7 @@ function testParseAddressAsyncMoreComplex() {
 };
 
 function testParseAddressAsyncSpelledOutState() {
-	var pa = new ilib.Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {
+	var pa = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -104,7 +104,7 @@ function testParseAddressAsyncSpelledOutState() {
 };
 
 function testParseAddressAsyncSpelledOutStateWithSpaces() {
-	var pa = new ilib.Address("20 Main St.\nMyTown, New York 11530\nUSA", {
+	var pa = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -122,7 +122,7 @@ function testParseAddressAsyncSpelledOutStateWithSpaces() {
 
 function testParseAddressAsyncUnknown() {
 
-	var pa = new ilib.Address("123 Main Street, Pretoria 5678, South Africa", {
+	var pa = new Address("123 Main Street, Pretoria 5678, South Africa", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -139,7 +139,7 @@ function testParseAddressAsyncUnknown() {
 };
 
 function testParseAddressAsyncNonUS() {
-	var pa = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {
+	var pa = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -156,7 +156,7 @@ function testParseAddressAsyncNonUS() {
 };
 	
 function testFormatAddressAsyncUS() {
-	var pa = new ilib.Address({
+	var pa = new Address({
 		streetAddress: "1234 Any Street",
 		locality: "Anytown",
 		region: "CA",
@@ -166,7 +166,7 @@ function testFormatAddressAsyncUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
-	var f = new ilib.AddressFmt({
+	var f = new AddressFmt({
 		locale: 'en-US',
 		sync: false,
 		onLoad: function(formatter) {
@@ -178,7 +178,7 @@ function testFormatAddressAsyncUS() {
 };
 
 function testFormatAddressAsyncUnknownLocaleQQ() {
-	var pa = new ilib.Address({
+	var pa = new Address({
 		streetAddress: "123 mcdonald ave, apt 234", 
 		locality: "Sunnyvale",
 		region: "CA",
@@ -187,7 +187,7 @@ function testFormatAddressAsyncUnknownLocaleQQ() {
 	});
 	
 	var expected = "123 mcdonald ave, apt 234\nSunnyvale CA 94086";
-	var f = new ilib.AddressFmt({
+	var f = new AddressFmt({
 		locale: 'en-QQ', 
 		style: 'nocountry',
 		sync: false,
@@ -200,7 +200,7 @@ function testFormatAddressAsyncUnknownLocaleQQ() {
 };
 
 function testParseAddressAsyncJPAsianNormal1() {
-	var pa = new ilib.Address("〒150-2345 東京都渋谷区本町2丁目4-7サニーマンション203",  {
+	var pa = new Address("〒150-2345 東京都渋谷区本町2丁目4-7サニーマンション203",  {
 		locale: 'ja-JP',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -216,7 +216,7 @@ function testParseAddressAsyncJPAsianNormal1() {
 };
 
 function testFormatAddressAsyncJPAsianNormal() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "本町2丁目4-7サニーマンション203",
 		locality: "渋谷区",
 		region: "東京都",
@@ -227,7 +227,7 @@ function testFormatAddressAsyncJPAsianNormal() {
 	
 	var expected = "〒150-2345\n東京都渋谷区本町2丁目4-7サニーマンション203";
 	
-	var f = new ilib.AddressFmt({
+	var f = new AddressFmt({
 		locale: 'ja-JP',
 		sync: false,
 		onLoad: function(formatter) {
@@ -240,7 +240,7 @@ function testFormatAddressAsyncJPAsianNormal() {
 
 
 function testParseAddressAsyncCNAsianNormal() {
-	var pa = new ilib.Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {
+	var pa = new Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {
 		locale: 'zh-CN',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -257,7 +257,7 @@ function testParseAddressAsyncCNAsianNormal() {
 };
 
 function testParseAddressAsyncDENormal() {
-	var pa = new ilib.Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {
+	var pa = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {
 		locale: 'de-DE',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -274,7 +274,7 @@ function testParseAddressAsyncDENormal() {
 };
 
 function testParseAddressAsyncTHNormal() {
-	var pa = new ilib.Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {
+	var pa = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {
 		locale: 'th-Th',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -291,7 +291,7 @@ function testParseAddressAsyncTHNormal() {
 };
 
 function testParseAddressAsyncRUNormal() {
-	var pa = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {
+	var pa = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {
 		locale: 'ru-RU',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -308,7 +308,7 @@ function testParseAddressAsyncRUNormal() {
 };
 
 function testParseAddressAsyncSANormalNative() {
-	var pa = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {
+	var pa = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {
 		locale: 'ar-SA',
 		sync: false,
 		onLoad: function(parsedAddress) {
@@ -325,7 +325,7 @@ function testParseAddressAsyncSANormalNative() {
 };
 
 function testParseAddressAsyncINHINormal() {
-	var pa = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {
+	var pa = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {
 		locale: 'hi-IN',
 		sync: false,
 		onLoad: function(parsedAddress) {	
@@ -342,7 +342,7 @@ function testParseAddressAsyncINHINormal() {
 };
 
 function testParseAddressAsyncINGUNoZip() {
-	var pa = new ilib.Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {
+	var pa = new Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {
 		locale: 'gu-IN',
 		sync: false,
 		onLoad: function(parsedAddress) {						

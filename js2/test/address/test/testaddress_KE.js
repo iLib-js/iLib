@@ -18,7 +18,7 @@
  */
 
 function testParseAddressKENormal() {
-	var parsedAddress = new ilib.Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba P.O. Box 3120", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressKENormal() {
 };
 
 function testParseAddressKENoZip() {
-	var parsedAddress = new ilib.Address("Paul Makeba P.O. Box 3120\nNAKURU\nKENYA", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\nKENYA", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba P.O. Box 3120", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressKENoZip() {
 };
 
 function testParseAddressKENoCountry() {
-	var parsedAddress = new ilib.Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba P.O. Box 3120", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressKENoCountry() {
 };
 
 function testParseAddressKEManyLines() {
-	var parsedAddress = new ilib.Address("Paul Makeba\nP.O. Box 3120\n\n\n\n\nNAKURU\n\n20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba\nP.O. Box 3120\n\n\n\n\nNAKURU\n\n20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba, P.O. Box 3120", parsedAddress.streetAddress);
 	assertEquals("NAKURU", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressKEManyLines() {
 };
 
 function testParseAddressKEOneLine() {
-	var parsedAddress = new ilib.Address("Paul Makeba , P.O. Box 3120 , NAKURU , 20100 , KENYA", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba , P.O. Box 3120 , NAKURU , 20100 , KENYA", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba, P.O. Box 3120", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressKEOneLine() {
 };
 
 function testParseAddressKESuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tPaul Makeba\t\t\rP.O. Box 3120\t\t\r\n\n\n\nNAKURU\n\t20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
+	var parsedAddress = new Address("\t\t\tPaul Makeba\t\t\rP.O. Box 3120\t\t\r\n\n\n\nNAKURU\n\t20100\n\nKENYA\n\n\n", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba P.O. Box 3120", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressKESuperfluousWhitespace() {
 };
 
 function testParseAddressKENoDelimiters() {
-	var parsedAddress = new ilib.Address("Paul Makeba P.O. Box 3120 NAKURU\n20100 KENYA", {locale: 'en-KE'});
+	var parsedAddress = new Address("Paul Makeba P.O. Box 3120 NAKURU\n20100 KENYA", {locale: 'en-KE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Paul Makeba P.O. Box 3120", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressKENoDelimiters() {
 };
 
 function testParseAddressKEFromUS() {
-	var parsedAddress = new ilib.Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-US'});
+	var parsedAddress = new Address("Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressKEFromUS() {
 };
 
 function testFormatAddressKE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Paul Makeba P.O. Box 3120",
 		locality: "NAKURU",
 		postalCode: "20100",
@@ -124,12 +124,12 @@ function testFormatAddressKE() {
 	}, {locale: 'en-KE'});
 	
 	var expected = "Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA";
-	var formatter = new ilib.AddressFmt({locale: 'en-KE'});
+	var formatter = new AddressFmt({locale: 'en-KE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressKEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Paul Makeba P.O. Box 3120",
 		locality: "NAKURU",
 		postalCode: "20100",
@@ -138,6 +138,6 @@ function testFormatAddressKEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Paul Makeba P.O. Box 3120\nNAKURU\n20100\nKENYA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

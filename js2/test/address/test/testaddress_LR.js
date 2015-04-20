@@ -18,7 +18,7 @@
  */
 
 function testParseAddressLRNormal() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications Postal Operations GPO", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressLRNormal() {
 };
 
 function testParseAddressLRNoZip() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications Postal Operations GPO\nMONROVIA 10\nLiberia", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\nMONROVIA 10\nLiberia", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications Postal Operations GPO", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressLRNoZip() {
 };
 
 function testParseAddressLRNoCountry() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications Postal Operations GPO", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressLRNoCountry() {
 };
 
 function testParseAddressLRManyLines() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications\nPostal Operations\nGPO\n\n1000\n\nMONROVIA 10\n\n\nLiberia\n\n\n", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications\nPostal Operations\nGPO\n\n1000\n\nMONROVIA 10\n\n\nLiberia\n\n\n", {locale: 'en-LR'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications, Postal Operations, GPO", parsedAddress.streetAddress);
 	assertEquals("MONROVIA 10", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressLRManyLines() {
 };
 
 function testParseAddressLROneLine() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications , Postal Operations , GPO , 1000 , MONROVIA 10 , Liberia", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications , Postal Operations , GPO , 1000 , MONROVIA 10 , Liberia", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications, Postal Operations, GPO", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressLROneLine() {
 };
 
 function testParseAddressLRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMinistry of Posts and Telecommunications\t\t\rPostal Operations\t\t\rGPO\n\n1000\n\nMONROVIA 10\n\t Liberia\n\n\n", {locale: 'en-LR'});
+	var parsedAddress = new Address("\t\t\tMinistry of Posts and Telecommunications\t\t\rPostal Operations\t\t\rGPO\n\n1000\n\nMONROVIA 10\n\t Liberia\n\n\n", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications Postal Operations GPO", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressLRSuperfluousWhitespace() {
 };
 
 function testParseAddressLRNoDelimiters() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications Postal Operations GPO 1000 MONROVIA 10 Liberia", {locale: 'en-LR'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO 1000 MONROVIA 10 Liberia", {locale: 'en-LR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ministry of Posts and Telecommunications Postal Operations GPO", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressLRNoDelimiters() {
 };
 
 function testParseAddressLRFromUS() {
-	var parsedAddress = new ilib.Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-US'});
+	var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressLRFromUS() {
 };
 
 function testFormatAddressLR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Ministry of Posts and Telecommunications Postal Operations GPO",
 		locality: "MONROVIA 10",
 		postalCode: "1000",
@@ -124,12 +124,12 @@ function testFormatAddressLR() {
 	}, {locale: 'en-LR'});
 	
 	var expected = "Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia";
-	var formatter = new ilib.AddressFmt({locale: 'en-LR'});
+	var formatter = new AddressFmt({locale: 'en-LR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressLRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Ministry of Posts and Telecommunications Postal Operations GPO",
 		locality: "MONROVIA 10",
 		postalCode: "1000",
@@ -138,6 +138,6 @@ function testFormatAddressLRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

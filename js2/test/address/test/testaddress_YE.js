@@ -18,7 +18,7 @@
  */
 
 function testParseAddressYENormal() {
-	var parsedAddress = new ilib.Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
+	var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressYENormal() {
 };
 
 function testParseAddressYENoZip() {
-	var parsedAddress = new ilib.Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
+	var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressYENoZip() {
 };
 
 function testParseAddressYENoCountry() {
-	var parsedAddress = new ilib.Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ", {locale: 'ar-YE'});
+	var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ", {locale: 'ar-YE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressYENoCountry() {
 };
 
 function testParseAddressYEManyLines() {
-	var parsedAddress = new ilib.Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\nﻉﺪﻧ\n\nاليمن\n\n\n", {locale: 'ar-YE'});
+	var parsedAddress = new Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\nﻉﺪﻧ\n\nاليمن\n\n\n", {locale: 'ar-YE'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣, ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ", parsedAddress.streetAddress);
 	assertEquals("ﻉﺪﻧ", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressYEManyLines() {
 };
 
 function testParseAddressYEOneLine() {
-	var parsedAddress = new ilib.Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﻉﺪﻧ , اليمن", {locale: 'ar-YE'});
+	var parsedAddress = new Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﻉﺪﻧ , اليمن", {locale: 'ar-YE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣, ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressYEOneLine() {
 };
 
 function testParseAddressYESuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tپﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\n\tﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\n\t\n\n\tﻉﺪﻧ\n\n\tاليمن\n\n\n", {locale: 'ar-YE'});
+	var parsedAddress = new Address("\t\t\tپﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\n\tﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\n\t\n\n\tﻉﺪﻧ\n\n\tاليمن\n\n\n", {locale: 'ar-YE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣, ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ", parsedAddress.streetAddress);
@@ -91,7 +91,7 @@ function testParseAddressYESuperfluousWhitespace() {
 
 
 function testParseAddressYEFromUS() {
-	var parsedAddress = new ilib.Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ\nYemen", {locale: 'en-US'});
+	var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ\nYemen", {locale: 'en-US'});
 	
 	
 	assertNotUndefined(parsedAddress);
@@ -104,7 +104,7 @@ function testParseAddressYEFromUS() {
 };
 
 function testFormatAddressYE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣",
 		locality: "ﻉﺪﻧ",
 		country: "اليمن",
@@ -112,12 +112,12 @@ function testFormatAddressYE() {
 	}, {locale: 'ar-YE'});
 	
 	var expected = "ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن";
-	var formatter = new ilib.AddressFmt({locale: 'ar-YE'});
+	var formatter = new AddressFmt({locale: 'ar-YE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressYEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣",
 		locality: "ﻉﺪﻧ",
 		country: "Yemen",
@@ -125,6 +125,6 @@ function testFormatAddressYEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nYemen";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

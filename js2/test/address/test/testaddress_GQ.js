@@ -18,7 +18,7 @@
  */
 
 function testParseAddressGQNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressGQNormal() {
 };
 
 function testParseAddressGQNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressGQNormal() {
 };
 
 function testParseAddressGQNoZip() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressGQNoZip() {
 };
 
 function testParseAddressGQNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressGQNoCountry() {
 };
 
 function testParseAddressGQManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressGQManyLines() {
 };
 
 function testParseAddressGQOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressGQOneLine() {
 };
 
 function testParseAddressGQSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressGQSuperfluousWhitespace() {
 };
 
 function testParseAddressGQNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36 MALABO Guinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO Guinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressGQNoDelimiters() {
 };
 
 function testParseAddressGQFromUS() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressGQFromUS() {
 };
 
 function testFormatAddressGQ() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -135,12 +135,12 @@ function testFormatAddressGQ() {
 	}, {locale: 'es-GQ'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial";
-	var formatter = new ilib.AddressFmt({locale: 'es-GQ'});
+	var formatter = new AddressFmt({locale: 'es-GQ'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressGQFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -149,13 +149,13 @@ function testFormatAddressGQFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 
 function testFRParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -167,7 +167,7 @@ function testFRParseAddressNormal() {
 };
 
 function testFRParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -179,7 +179,7 @@ function testFRParseAddressNormal() {
 };
 
 function testFRParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -191,7 +191,7 @@ function testFRParseAddressNoZip() {
 };
 
 function testFRParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -203,7 +203,7 @@ function testFRParseAddressNoCountry() {
 };
 
 function testFRParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -215,7 +215,7 @@ function testFRParseAddressManyLines() {
 };
 
 function testFRParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , guinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , guinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -227,7 +227,7 @@ function testFRParseAddressOneLine() {
 };
 
 function testFRParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -239,7 +239,7 @@ function testFRParseAddressSuperfluousWhitespace() {
 };
 
 function testFRParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36 MALABO guinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO guinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -251,7 +251,7 @@ function testFRParseAddressNoDelimiters() {
 };
 
 function testFRParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -263,7 +263,7 @@ function testFRParseAddressFromUS() {
 };
 
 function testFormatFRAddress() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -272,12 +272,12 @@ function testFormatFRAddress() {
 	}, {locale: 'fr-GQ'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale";
-	var formatter = new ilib.AddressFmt({locale: 'fr-GQ'});
+	var formatter = new AddressFmt({locale: 'fr-GQ'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatFRAddressFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -286,14 +286,14 @@ function testFormatFRAddressFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 
 
 function testPTParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -305,7 +305,7 @@ function testPTParseAddressNormal() {
 };
 
 function testPTParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -317,7 +317,7 @@ function testPTParseAddressNormal() {
 };
 
 function testPTParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -329,7 +329,7 @@ function testPTParseAddressNoZip() {
 };
 
 function testPTParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -341,7 +341,7 @@ function testPTParseAddressNoCountry() {
 };
 
 function testPTParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -353,7 +353,7 @@ function testPTParseAddressManyLines() {
 };
 
 function testPTParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -365,7 +365,7 @@ function testPTParseAddressOneLine() {
 };
 
 function testPTParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ignacio Nguema, Apartado 36", parsedAddress.streetAddress);
@@ -377,7 +377,7 @@ function testPTParseAddressSuperfluousWhitespace() {
 };
 
 function testPTParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36 MALABO Guiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO Guiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -389,7 +389,7 @@ function testPTParseAddressNoDelimiters() {
 };
 
 function testPTParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
+	var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ignacio Nguema Apartado 36", parsedAddress.streetAddress);
@@ -401,7 +401,7 @@ function testPTParseAddressFromUS() {
 };
 
 function testFormatPTAddress() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -410,12 +410,12 @@ function testFormatPTAddress() {
 	}, {locale: 'pt-GQ'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial";
-	var formatter = new ilib.AddressFmt({locale: 'pt-GQ'});
+	var formatter = new AddressFmt({locale: 'pt-GQ'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatPTAddressFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Mr. Ignacio Nguema Apartado 36",
 		locality: "MALABO",
 		postalCode: "1010",
@@ -424,6 +424,6 @@ function testFormatPTAddressFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

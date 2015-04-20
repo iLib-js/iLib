@@ -20,7 +20,7 @@
 
 
 function testParseAddressCDNormal() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele, B.P. 7948", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCDNormal() {
 };
 
 function testParseAddressCDNoZip() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele, B.P. 7948", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCDNoZip() {
 };
 
 function testParseAddressCDManyLines() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948\nKINSHASA 1\nrépublique démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948\nKINSHASA 1\nrépublique démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele, B.P. 7948", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCDManyLines() {
 };
 
 function testParseAddressCDOneLine() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele, B.P. 7948", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCDOneLine() {
 };
 
 function testParseAddressCDSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948  \n\t\n KINSHASA 1\t\n\n république démocratique du congo  \n  \t\t\t", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948  \n\t\n KINSHASA 1\t\n\n république démocratique du congo  \n  \t\t\t", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele, B.P. 7948", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCDSuperfluousWhitespace() {
 };
 
 function testParseAddressCDNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele B.P. 7948 KINSHASA 1 république démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele B.P. 7948 KINSHASA 1 république démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Mashala Kashama Kashele B.P. 7948", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCDNoDelimiters() {
 };
 
 function testParseAddressCDSpecialChars() {
-	var parsedAddress = new ilib.Address("Office congolais des postes, et télécommunications,B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
+	var parsedAddress = new Address("Office congolais des postes, et télécommunications,B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'fr-CD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Office congolais des postes, et télécommunications, B.P. 7948", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCDSpecialChars() {
 };
 
 function testParseAddressCDFromUS() {
-	var parsedAddress = new ilib.Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'en-US'});
+	var parsedAddress = new Address("M. Mashala Kashama Kashele, B.P. 7948, KINSHASA 1, république démocratique du congo", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCDFromUS() {
 };
 
 function testFormatAddressCD() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Mashala Kashama Kashele\nB.P. 7948",
 		locality: "KINSHASA 1",
 		country: "république démocratique du congo",
@@ -126,12 +126,12 @@ function testFormatAddressCD() {
 	}, {locale: 'fr-CD'});
 	
 	var expected = "M. Mashala Kashama Kashele\nB.P. 7948\nKINSHASA 1\nrépublique démocratique du congo";
-	var formatter = new ilib.AddressFmt({locale: 'fr-CD'});
+	var formatter = new AddressFmt({locale: 'fr-CD'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCDFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Mashala Kashama Kashele\nB.P. 7948",
 		country: "république démocratique du congo",
 		locality: "KINSHASA 1",
@@ -139,6 +139,6 @@ function testFormatAddressCDFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "M. Mashala Kashama Kashele\nB.P. 7948\nKINSHASA 1\nrépublique démocratique du congo";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

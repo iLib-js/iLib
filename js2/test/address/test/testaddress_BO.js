@@ -20,7 +20,7 @@
 
 
 function testParseAddressBONormal() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressBONormal() {
 };
 
 function testParseAddressBONoZip() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressBONoZip() {
 };
 
 function testParseAddressBOManyLines() {
-	var parsedAddress = new ilib.Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressBOManyLines() {
 };
 
 function testParseAddressBOOneLine() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressBOOneLine() {
 };
 
 function testParseAddressBOSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580  \n\t\n COCHABAMBA\t\n\n BOLIVIA  \n  \t\t\t", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580  \n\t\n COCHABAMBA\t\n\n BOLIVIA  \n  \t\t\t", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressBOSuperfluousWhitespace() {
 };
 
 function testParseAddressBONoDelimiters() {
-	var parsedAddress = new ilib.Address("SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580 COCHABAMBA BOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580 COCHABAMBA BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BOX 580", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressBONoDelimiters() {
 };
 
 function testParseAddressBOSpecialChars() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressBOSpecialChars() {
 };
 
 function testParseAddressBOFromUS() {
-	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'en-US'});
+	var parsedAddress = new Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressBOFromUS() {
 };
 
 function testFormatAddressBO() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580",
 		locality: "COCHABAMBA",
 		country: "BOLIVIA",
@@ -126,12 +126,12 @@ function testFormatAddressBO() {
 	}, {locale: 'es-BO'});
 	
 	var expected = "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA";
-	var formatter = new ilib.AddressFmt({locale: 'es-BO'});
+	var formatter = new AddressFmt({locale: 'es-BO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressBOFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580",
 		country: "BOLIVIA",
 		locality: "COCHABAMBA",
@@ -139,12 +139,12 @@ function testFormatAddressBOFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580\nCOCHABAMBA\nBOLIVIA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressBOHotel() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Calle Arturo Costa De La Torre 1359 A 1/2 Cuadra De La Plaza",
 		country: "BOLIVIA",
 		locality: "San Pedro",
@@ -152,12 +152,12 @@ function testFormatAddressBOHotel() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Calle Arturo Costa De La Torre 1359 A 1/2 Cuadra De La Plaza\nSan Pedro\nBOLIVIA";
-	var formatter = new ilib.AddressFmt({locale: 'es-BO'});
+	var formatter = new AddressFmt({locale: 'es-BO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressBOUNICEF() {
-	var parsedAddress = new ilib.Address("UNICEF, United Nations Children's Fund, P.O. Box 3-12435,La Paz, Bolivia", {locale: 'es-BO'});
+	var parsedAddress = new Address("UNICEF, United Nations Children's Fund, P.O. Box 3-12435,La Paz, Bolivia", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("UNICEF, United Nations Children's Fund, P.O. Box 3-12435", parsedAddress.streetAddress);

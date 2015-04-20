@@ -18,7 +18,7 @@
  */
 
 function testParseAddressCASimpleCA() {
-	var parsedAddress = new ilib.Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
+	var parsedAddress = new Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("5150 Spectrum Way", parsedAddress.streetAddress);
@@ -31,7 +31,7 @@ function testParseAddressCASimpleCA() {
 
 // to verify NOV-111026
 function testParseAddressCAWithAccents() {
-	var parsedAddress = new ilib.Address("1253 McGill College\nSuite 250\nMontréal, QC, H2B 2Y5", {locale: 'en-CA'});
+	var parsedAddress = new Address("1253 McGill College\nSuite 250\nMontréal, QC, H2B 2Y5", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("1253 McGill College, Suite 250", parsedAddress.streetAddress);
@@ -43,7 +43,7 @@ function testParseAddressCAWithAccents() {
 };
 
 function testParseAddressCASpelledOutProvince() {
-	var parsedAddress = new ilib.Address("340 Hagey Blvd\n2nd Floor\nWaterloo, Ontario, N2L 6R6", {locale: 'en-CA'});
+	var parsedAddress = new Address("340 Hagey Blvd\n2nd Floor\nWaterloo, Ontario, N2L 6R6", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("340 Hagey Blvd, 2nd Floor", parsedAddress.streetAddress);
@@ -55,7 +55,7 @@ function testParseAddressCASpelledOutProvince() {
 };
 
 function testParseAddressCASpelledOutProvinceWithSpaces() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, Prince Edward Island A1B 2C3\nCanada", {locale: 'en-CA'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, Prince Edward Island A1B 2C3\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -67,7 +67,7 @@ function testParseAddressCASpelledOutProvinceWithSpaces() {
 };
 
 function testParseAddressCANoZip() {
-	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, AB\nCanada", {locale: 'en-CA'});
+	var parsedAddress = new Address("20 Main St.\nMyTown, AB\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Main St.", parsedAddress.streetAddress);
@@ -79,7 +79,7 @@ function testParseAddressCANoZip() {
 };
 
 function testParseAddressCAManyLines() {
-	var parsedAddress = new ilib.Address("950 W 21st Ave\nApt 45\nCambridge\nON\nA4C 5N4", {locale: 'en-CA'});
+	var parsedAddress = new Address("950 W 21st Ave\nApt 45\nCambridge\nON\nA4C 5N4", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W 21st Ave, Apt 45", parsedAddress.streetAddress);
@@ -91,7 +91,7 @@ function testParseAddressCAManyLines() {
 };
 
 function testParseAddressCAOneLine() {
-	var parsedAddress = new ilib.Address("5150 Spectrum Way, Mississauga, ON, L4W 5G1, Canada", {locale: 'en-CA'});
+	var parsedAddress = new Address("5150 Spectrum Way, Mississauga, ON, L4W 5G1, Canada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("5150 Spectrum Way", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressCAOneLine() {
 };
 
 function testParseAddressCASuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("5150 Spectrum Way\n  \t \t Mississauga, \n   \t ON, \n, \n\n L4W 5G1   \n  Canada\n\n   \n\n", {locale: 'en-CA'});
+	var parsedAddress = new Address("5150 Spectrum Way\n  \t \t Mississauga, \n   \t ON, \n, \n\n L4W 5G1   \n  Canada\n\n   \n\n", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("5150 Spectrum Way", parsedAddress.streetAddress);
@@ -115,7 +115,7 @@ function testParseAddressCASuperfluousWhitespace() {
 };
 
 function testParseAddressCANoDelimiters() {
-	var parsedAddress = new ilib.Address("5150 Spectrum Way Mississauga ON L4W 5G1 Canada", {locale: 'en-CA'});
+	var parsedAddress = new Address("5150 Spectrum Way Mississauga ON L4W 5G1 Canada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("5150 Spectrum Way", parsedAddress.streetAddress);
@@ -127,7 +127,7 @@ function testParseAddressCANoDelimiters() {
 };
 
 function testParseAddressCAPOBox() {
-	var parsedAddress = new ilib.Address("P.O. Box 350\nToronto ON Y5T 5T5", {locale: 'en-CA'});
+	var parsedAddress = new Address("P.O. Box 350\nToronto ON Y5T 5T5", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("P.O. Box 350", parsedAddress.streetAddress);
@@ -139,7 +139,7 @@ function testParseAddressCAPOBox() {
 };
 
 function testParseAddressCAFrench() {
-	var parsedAddress = new ilib.Address("20 Montée Lavalle\nÉparnay, Nouveau-Brunswick Y7Y 7Y7", {locale: 'en-CA'});
+	var parsedAddress = new Address("20 Montée Lavalle\nÉparnay, Nouveau-Brunswick Y7Y 7Y7", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("20 Montée Lavalle", parsedAddress.streetAddress);
@@ -151,7 +151,7 @@ function testParseAddressCAFrench() {
 };
 
 function testParseAddressCAForeign() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-CA'});
+	var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Achterberglaan 23", parsedAddress.streetAddress);
@@ -163,7 +163,7 @@ function testParseAddressCAForeign() {
 };
 	
 function testFormatAddressCA() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "5150 Spectrum Way",
 		locality: "Mississauga",
 		region: "Ontario",
@@ -173,12 +173,12 @@ function testFormatAddressCA() {
 	}, {locale: 'en-CA'});
 	
 	var expected = "5150 Spectrum Way\nMississauga, Ontario L4W 5G1\nCanada";
-	var formatter = new ilib.AddressFmt({locale: 'en-CA'});
+	var formatter = new AddressFmt({locale: 'en-CA'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCADomestic() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "5150 Spectrum Way",
 		locality: "Mississauga",
 		region: "Ontario",
@@ -188,7 +188,7 @@ function testFormatAddressCADomestic() {
 	}, {locale: 'en-CA'});
 	
 	var expected = "5150 Spectrum Way\nMississauga, Ontario L4W 5G1";
-	var formatter = new ilib.AddressFmt({locale: 'en-CA', style: 'nocountry'});
+	var formatter = new AddressFmt({locale: 'en-CA', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

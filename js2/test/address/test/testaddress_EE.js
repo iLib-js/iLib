@@ -20,7 +20,7 @@
 
 
 function testParseAddressEENormal() {
-	var parsedAddress = new ilib.Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House, Rahukohtu 3", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressEENormal() {
 };
 
 function testParseAddressEENoZip() {
-	var parsedAddress = new ilib.Address("The Stenbock House, Rahukohtu 3,Tallinn, Estonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House, Rahukohtu 3,Tallinn, Estonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House, Rahukohtu 3", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressEENoZip() {
 };
 
 function testParseAddressEEManyLines() {
-	var parsedAddress = new ilib.Address("The Stenbock House\nRahukohtu 3\n15161 Tallinn\nEstonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House\nRahukohtu 3\n15161 Tallinn\nEstonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House, Rahukohtu 3", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressEEManyLines() {
 };
 
 function testParseAddressEEOneLine() {
-	var parsedAddress = new ilib.Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House, Rahukohtu 3", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressEEOneLine() {
 };
 
 function testParseAddressEESuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("The Stenbock House\n\tRahukohtu 3  \n\t\n 15161 Tallinn\t\n\n Estonia  \n  \t\t\t", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House\n\tRahukohtu 3  \n\t\n 15161 Tallinn\t\n\n Estonia  \n  \t\t\t", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House, Rahukohtu 3", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressEESuperfluousWhitespace() {
 };
 
 function testParseAddressEENoDelimiters() {
-	var parsedAddress = new ilib.Address("The Stenbock House Rahukohtu 3 15161 Tallinn Estonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("The Stenbock House Rahukohtu 3 15161 Tallinn Estonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("The Stenbock House Rahukohtu 3", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressEENoDelimiters() {
 };
 
 function testParseAddressEESpecialChars() {
-	var parsedAddress = new ilib.Address("Informatics Center, Rävala 5, 15169 Tallinn, Estonia", {locale: 'et-EE'});
+	var parsedAddress = new Address("Informatics Center, Rävala 5, 15169 Tallinn, Estonia", {locale: 'et-EE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Informatics Center, Rävala 5", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressEESpecialChars() {
 };
 
 function testParseAddressEEFromUS() {
-	var parsedAddress = new ilib.Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'en-US'});
+	var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressEEFromUS() {
 };
 
 function testFormatAddressEE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "The Stenbock House\nRahukohtu 3",
 		locality: "Tallinn",
 		postalCode: "15161",
@@ -127,12 +127,12 @@ function testFormatAddressEE() {
 	}, {locale: 'et-EE'});
 	
 	var expected = "The Stenbock House\nRahukohtu 3\n15161 Tallinn\nEstonia";
-	var formatter = new ilib.AddressFmt({locale: 'et-EE'});
+	var formatter = new AddressFmt({locale: 'et-EE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressEEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "The Stenbock House\nRahukohtu 3",
 		locality: "Tallinn",
 		postalCode: "15161",
@@ -141,6 +141,6 @@ function testFormatAddressEEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "The Stenbock House\nRahukohtu 3\n15161 Tallinn\nEstonia";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

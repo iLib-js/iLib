@@ -18,7 +18,7 @@
  */
 
 function testParseAddressMLNormal() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressMLNormal() {
 };
 
 function testParseAddressMLNoZip() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressMLNoZip() {
 };
 
 function testParseAddressMLNoCountry() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressMLNoCountry() {
 };
 
 function testParseAddressMLManyLines() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue\n406 - Porte 39\nMagnabougou\n\n\nBAMAKO\n\n\nMALI\n\n\n", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue\n406 - Porte 39\nMagnabougou\n\n\nBAMAKO\n\n\nMALI\n\n\n", {locale: 'fr-ML'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue, 406 - Porte 39, Magnabougou", parsedAddress.streetAddress);
 	assertEquals("BAMAKO", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressMLManyLines() {
 };
 
 function testParseAddressMLOneLine() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue , 406 - Porte 39 , Magnabougou , BAMAKO , MALI", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue , 406 - Porte 39 , Magnabougou , BAMAKO , MALI", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue, 406 - Porte 39, Magnabougou", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressMLOneLine() {
 };
 
 function testParseAddressMLSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tM. Kalilou Sissoko Rue\t\t\r406 - Porte 39\t\t\rMagnabougou\n\n\n\nBAMAKO\n\t MALI\n\n\n", {locale: 'fr-ML'});
+	var parsedAddress = new Address("\t\t\tM. Kalilou Sissoko Rue\t\t\r406 - Porte 39\t\t\rMagnabougou\n\n\n\nBAMAKO\n\t MALI\n\n\n", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressMLSuperfluousWhitespace() {
 };
 
 function testParseAddressMLNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou BAMAKO MALI", {locale: 'fr-ML'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou BAMAKO MALI", {locale: 'fr-ML'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressMLNoDelimiters() {
 };
 
 function testParseAddressMLFromUS() {
-	var parsedAddress = new ilib.Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'en-US'});
+	var parsedAddress = new Address("M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressMLFromUS() {
 };
 
 function testFormatAddressML() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou",
 		locality: "BAMAKO",
 		country: "MALI",
@@ -123,12 +123,12 @@ function testFormatAddressML() {
 	}, {locale: 'fr-ML'});
 	
 	var expected = "M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI";
-	var formatter = new ilib.AddressFmt({locale: 'fr-ML'});
+	var formatter = new AddressFmt({locale: 'fr-ML'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMLFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou",
 		locality: "BAMAKO",
 		country: "MALI",
@@ -136,6 +136,6 @@ function testFormatAddressMLFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "M. Kalilou Sissoko Rue 406 - Porte 39 Magnabougou\nBAMAKO\nMALI";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

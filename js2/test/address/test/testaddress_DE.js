@@ -18,7 +18,7 @@
  */
 
 function testParseAddressDENormal() {
-	var parsedAddress = new ilib.Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {locale: 'de-DE'});
+	var parsedAddress = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressDENormal() {
 };
 
 function testParseAddressDENoZip() {
-	var parsedAddress = new ilib.Address("Berliner Straße 111, Ratingen, Deutschland", {locale: 'de-DE'});
+	var parsedAddress = new Address("Berliner Straße 111, Ratingen, Deutschland", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Berliner Straße 111", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressDENoZip() {
 };
 
 function testParseAddressDENoCountry() {
-	var parsedAddress = new ilib.Address("Herrenberger Straße 140, 71034 Böblingen", {locale: 'de-DE'});
+	var parsedAddress = new Address("Herrenberger Straße 140, 71034 Böblingen", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressDENoCountry() {
 };
 
 function testParseAddressDEManyLines() {
-	var parsedAddress = new ilib.Address("Altrottstraße 31\nPartner Port SAP\n69190\nWalldorf/Baden\nDeutschland\n\n\n", {locale: 'de-DE'});
+	var parsedAddress = new Address("Altrottstraße 31\nPartner Port SAP\n69190\nWalldorf/Baden\nDeutschland\n\n\n", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressDEManyLines() {
 };
 
 function testParseAddressDEOneLine() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19, 20354 Hamburg, Deutschland", {locale: 'de-DE'});
+	var parsedAddress = new Address("ABC-Strasse 19, 20354 Hamburg, Deutschland", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressDEOneLine() {
 };
 
 function testParseAddressDESuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tAltrottstraße 31\n\n\nPartner Port SAP\n   \t\n69190\n   \r\t\n Walldorf/Baden\n   \t \t \t Deutschland\n\n\n", {locale: 'de-DE'});
+	var parsedAddress = new Address("\t\t\tAltrottstraße 31\n\n\nPartner Port SAP\n   \t\n69190\n   \r\t\n Walldorf/Baden\n   \t \t \t Deutschland\n\n\n", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressDESuperfluousWhitespace() {
 };
 
 function testParseAddressDENoDelimiters() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19 20354 Hamburg Deutschland", {locale: 'de-DE'});
+	var parsedAddress = new Address("ABC-Strasse 19 20354 Hamburg Deutschland", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressDENoDelimiters() {
 };
 
 function testParseAddressDESpecialChars() {
-	var parsedAddress = new ilib.Address("Geschäftsstelle Lützowplatz 15\n(Eingang Einemstraße 24)\n10785 Würtzheim", {locale: 'de-DE'});
+	var parsedAddress = new Address("Geschäftsstelle Lützowplatz 15\n(Eingang Einemstraße 24)\n10785 Würtzheim", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Geschäftsstelle Lützowplatz 15, (Eingang Einemstraße 24)", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressDESpecialChars() {
 };
 
 function testParseAddressDEFromUS() {
-	var parsedAddress = new ilib.Address("Dienerstrasse 12\n80331 Munich\nGermany", {locale: 'en-US'});
+	var parsedAddress = new Address("Dienerstrasse 12\n80331 Munich\nGermany", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -128,7 +128,7 @@ function testParseAddressDEFromUS() {
 };
 
 function testFormatAddressDEDE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Dienerstrasse 12",
 		locality: "München",
 		postalCode: "80331",
@@ -137,12 +137,12 @@ function testFormatAddressDEDE() {
 	}, {locale: 'de-DE'});
 	
 	var expected = "Dienerstrasse 12\n80331 München\nDeutschland";
-	var formatter = new ilib.AddressFmt({locale: 'de-DE'});
+	var formatter = new AddressFmt({locale: 'de-DE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressDEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Dienerstrasse 12",
 		locality: "Munich",
 		postalCode: "80331",
@@ -151,6 +151,6 @@ function testFormatAddressDEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Dienerstrasse 12\n80331 Munich\nGermany";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

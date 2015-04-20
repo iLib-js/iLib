@@ -18,7 +18,7 @@
  */
 
 function testParseAddressMKNormal() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски ГРАДСКИ ПАЗАР 5", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressMKNormal() {
 };
 
 function testParseAddressMKNoZip() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\nОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\nОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски ГРАДСКИ ПАЗАР 5", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressMKNoZip() {
 };
 
 function testParseAddressMKNoCountry() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски ГРАДСКИ ПАЗАР 5", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressMKNoCountry() {
 };
 
 function testParseAddressMKManyLines() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски\nГРАДСКИ\nПАЗАР 5\n\n6000\n\nОХРИД\n\n\nМАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски\nГРАДСКИ\nПАЗАР 5\n\n6000\n\nОХРИД\n\n\nМАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски, ГРАДСКИ, ПАЗАР 5", parsedAddress.streetAddress);
 	assertEquals("ОХРИД", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressMKManyLines() {
 };
 
 function testParseAddressMKOneLine() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски , ГРАДСКИ , ПАЗАР 5 , 6000 , ОХРИД , МАКЕДОНИЈА", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски , ГРАДСКИ , ПАЗАР 5 , 6000 , ОХРИД , МАКЕДОНИЈА", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски, ГРАДСКИ, ПАЗАР 5", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressMKOneLine() {
 };
 
 function testParseAddressMKSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tСања Јанчевски\t\t\rГРАДСКИ\t\t\rПАЗАР 5\n\n6000\n\nОХРИД\n\t МАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
+	var parsedAddress = new Address("\t\t\tСања Јанчевски\t\t\rГРАДСКИ\t\t\rПАЗАР 5\n\n6000\n\nОХРИД\n\t МАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски ГРАДСКИ ПАЗАР 5", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressMKSuperfluousWhitespace() {
 };
 
 function testParseAddressMKNoDelimiters() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5 6000 ОХРИД МАКЕДОНИЈА", {locale: 'mk-MK'});
+	var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5 6000 ОХРИД МАКЕДОНИЈА", {locale: 'mk-MK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Сања Јанчевски ГРАДСКИ ПАЗАР 5", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressMKNoDelimiters() {
 };
 
 function testParseAddressMKFromUS() {
-	var parsedAddress = new ilib.Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'en-US'});
+	var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressMKFromUS() {
 };
 
 function testFormatAddressMK() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Сања Јанчевски ГРАДСКИ ПАЗАР 5",
 		locality: "ОХРИД",
 		postalCode: "6000",
@@ -124,12 +124,12 @@ function testFormatAddressMK() {
 	}, {locale: 'mk-MK'});
 	
 	var expected = "Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА";
-	var formatter = new ilib.AddressFmt({locale: 'mk-MK'});
+	var formatter = new AddressFmt({locale: 'mk-MK'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMKFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Сања Јанчевски ГРАДСКИ ПАЗАР 5",
 		locality: "ОХРИД",
 		postalCode: "6000",
@@ -138,6 +138,6 @@ function testFormatAddressMKFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

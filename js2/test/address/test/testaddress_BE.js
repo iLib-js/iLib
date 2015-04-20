@@ -21,7 +21,7 @@
 // TODO: fill in Belgian addresses here
 
 function testParseAddressBENormal() {
-	var parsedAddress = new ilib.Address("31, Place de Brouckere\n1000 Brussels\nBelgium", {locale: 'nl-BE'});
+	var parsedAddress = new Address("31, Place de Brouckere\n1000 Brussels\nBelgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31, Place de Brouckere", parsedAddress.streetAddress);
@@ -33,7 +33,7 @@ function testParseAddressBENormal() {
 };
 
 function testParseAddressBEOtherNormal() {
-	var parsedAddress = new ilib.Address("31, Place de Brouckère\n1000 Bruxelles\nBelgium", {locale: 'fr-BE'});
+	var parsedAddress = new Address("31, Place de Brouckère\n1000 Bruxelles\nBelgium", {locale: 'fr-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31, Place de Brouckère", parsedAddress.streetAddress);
@@ -46,7 +46,7 @@ function testParseAddressBEOtherNormal() {
 };
 
 function testParseAddressBENoZip() {
-	var parsedAddress = new ilib.Address("31, Place de Brouckère\nBruxelles\nBelgium", {locale: 'fr-BE'});
+	var parsedAddress = new Address("31, Place de Brouckère\nBruxelles\nBelgium", {locale: 'fr-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31, Place de Brouckère", parsedAddress.streetAddress);
@@ -59,7 +59,7 @@ function testParseAddressBENoZip() {
 
 
 function testParseAddressBEManyLines() {
-	var parsedAddress = new ilib.Address("31\nPlace\nde Brouckere\n1000\nBrussels\nBelgium", {locale: 'nl-BE'});
+	var parsedAddress = new Address("31\nPlace\nde Brouckere\n1000\nBrussels\nBelgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31, Place, de Brouckere", parsedAddress.streetAddress);
@@ -71,7 +71,7 @@ function testParseAddressBEManyLines() {
 };
 
 function testParseAddressBEOneLine() {
-	var parsedAddress = new ilib.Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'nl-BE'});
+	var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31, Place de Brouckere", parsedAddress.streetAddress);
@@ -85,7 +85,7 @@ function testParseAddressBEOneLine() {
 
 
 function testParseAddressBENoDelimiters() {
-	var parsedAddress = new ilib.Address("31 Place de Brouckere 1000 Brussels Belgium", {locale: 'nl-BE'});
+	var parsedAddress = new Address("31 Place de Brouckere 1000 Brussels Belgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("31 Place de Brouckere", parsedAddress.streetAddress);
@@ -99,7 +99,7 @@ function testParseAddressBENoDelimiters() {
 
 
 function testParseAddressBEFromUS() {
-	var parsedAddress = new ilib.Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'en-US'});
+	var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -113,7 +113,7 @@ function testParseAddressBEFromUS() {
 };
 
 function testFormatAddressBE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "31, Place de Brouckere",
 		locality: "Brussels",
 		postalCode: "1000",
@@ -122,12 +122,12 @@ function testFormatAddressBE() {
 	}, {locale: 'nl-BE'});
 	
 	var expected = "31, Place de Brouckere\n1000 Brussels\nBelgium";
-	var formatter = new ilib.AddressFmt({locale: 'nl-BE'});
+	var formatter = new AddressFmt({locale: 'nl-BE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressBEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "31, Place de Brouckere",
 		locality: "Brussels",
 		postalCode: "1000",
@@ -136,6 +136,6 @@ function testFormatAddressBEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "31, Place de Brouckere\n1000 Brussels\nBelgium";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

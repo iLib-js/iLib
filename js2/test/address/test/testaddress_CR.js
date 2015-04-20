@@ -20,7 +20,7 @@
 
 
 function testParseAddressCRNormal() {
-	var parsedAddress = new ilib.Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressCRNormal() {
 };
 
 function testParseAddressCRNoZip() {
-	var parsedAddress = new ilib.Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressCRNoZip() {
 };
 
 function testParseAddressCRManyLines() {
-	var parsedAddress = new ilib.Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\n40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\n40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, FEDERICO TERRAZAS ARIAS, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressCRManyLines() {
 };
 
 function testParseAddressCROneLine() {
-	var parsedAddress = new ilib.Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressCROneLine() {
 };
 
 function testParseAddressCRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Señor Carlos Torres, Ca 15 Av 37 # 55\n\t\n Heredia, San Rafael, San Rafael\t\n\n 40501, COSTA RICA  \n  \t\t\t", {locale: 'es-CR'});
+	var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55\n\t\n Heredia, San Rafael, San Rafael\t\n\n 40501, COSTA RICA  \n  \t\t\t", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressCRSuperfluousWhitespace() {
 };
 
 function testParseAddressCRNoDelimiters() {
-	var parsedAddress = new ilib.Address("SEÑOR Gabriel Garcia Marquez Ca 15 Av 37 # 55 Heredia San Rafael, San Rafael 40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("SEÑOR Gabriel Garcia Marquez Ca 15 Av 37 # 55 Heredia San Rafael, San Rafael 40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR Gabriel Garcia Marquez Ca 15 Av 37 # 55 Heredia", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressCRNoDelimiters() {
 };
 
 function testParseAddressCRSpecialChars() {
-	var parsedAddress = new ilib.Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
+	var parsedAddress = new Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, Ca 15 Av 37 # 55, Heredia", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressCRSpecialChars() {
 };
 
 function testParseAddressCRFromUS() {
-	var parsedAddress = new ilib.Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'en-US'});
+	var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, San Rafael, 40501, COSTA RICA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressCRFromUS() {
 };
 
 function testFormatAddressCR() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia",
 		locality: "San Rafael",
 		region: "San Rafael",
@@ -127,12 +127,12 @@ function testFormatAddressCR() {
 	}, {locale: 'es-CR'});
 	
 	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia\nSan Rafael, San Rafael\nCOSTA RICA";
-	var formatter = new ilib.AddressFmt({locale: 'es-CR'});
+	var formatter = new AddressFmt({locale: 'es-CR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressCRFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia",
 		country: "COSTA RICA",
 		region: "San Rafael",
@@ -141,6 +141,6 @@ function testFormatAddressCRFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia\nSan Rafael, San Rafael\nCOSTA RICA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

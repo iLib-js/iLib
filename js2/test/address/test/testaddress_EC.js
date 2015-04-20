@@ -20,7 +20,7 @@
 
 
 function testParseAddressECNormal() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressECNormal() {
 };
 
 function testParseAddressECNoZip() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, QUITO, Ecuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressECNoZip() {
 };
 
 function testParseAddressECManyLines() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V, QUITO\nEcuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V, QUITO\nEcuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressECManyLines() {
 };
 
 function testParseAddressECOneLine() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressECOneLine() {
 };
 
 function testParseAddressECSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito  \n\t\n P0133V, QUITO\t\n\n Ecuador  \n  \t\t\t", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito  \n\t\n P0133V, QUITO\t\n\n Ecuador  \n  \t\t\t", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressECSuperfluousWhitespace() {
 };
 
 function testParseAddressECNoDelimiters() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressECNoDelimiters() {
 };
 
 function testParseAddressECSpecialChars() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressECSpecialChars() {
 };
 
 function testParseAddressECFromUS() {
-	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'en-US'});
+	var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -118,7 +118,7 @@ function testParseAddressECFromUS() {
 };
 
 function testFormatAddressEC() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
 		locality: "QUITO",
 		postalCode: "P0133V",
@@ -127,12 +127,12 @@ function testFormatAddressEC() {
 	}, {locale: 'es-EC'});
 	
 	var expected = "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V\nQUITO\nEcuador";
-	var formatter = new ilib.AddressFmt({locale: 'es-EC'});
+	var formatter = new AddressFmt({locale: 'es-EC'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressECFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
 		locality: "QUITO",
 		postalCode: "P0133V",
@@ -141,6 +141,6 @@ function testFormatAddressECFromUS() {
 	}, {locale: 'es-EC'});
 	
 	var expected = "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V\nQUITO\nEcuador";
-	var formatter = new ilib.AddressFmt({locale: 'es-EC'});
+	var formatter = new AddressFmt({locale: 'es-EC'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

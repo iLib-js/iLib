@@ -18,7 +18,7 @@
  */
 
 function testParseAddressPENormal() {
-	var parsedAddress = new ilib.Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Catalina Huanca 110 San Isidro", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressPENormal() {
 };
 
 function testParseAddressPENoZip() {
-	var parsedAddress = new ilib.Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Catalina Huanca 110 San Isidro", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressPENoZip() {
 };
 
 function testParseAddressPENoCountry() {
-	var parsedAddress = new ilib.Address("Catalina Huanca 110 San Isidro\nLima 27", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Catalina Huanca 110 San Isidro", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressPENoCountry() {
 };
 
 function testParseAddressPEManyLines() {
-	var parsedAddress = new ilib.Address("Catalina Huanca\n110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca\n110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Catalina Huanca, 110 San Isidro", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressPEManyLines() {
 };
 
 function testParseAddressPEOneLine() {
-	var parsedAddress = new ilib.Address("Catalina Huanca , 110 San Isidro , Lima 27 , PERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca , 110 San Isidro , Lima 27 , PERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Catalina Huanca, 110 San Isidro", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressPEOneLine() {
 };
 
 function testParseAddressPESuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Catalina Huanca\n\n\t\r\t\t\r110 San Isidro\r\r\n\nLima 27\t\r\n\t\rPERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca\n\n\t\r\t\t\r110 San Isidro\r\r\n\nLima 27\t\r\n\t\rPERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Catalina Huanca, 110 San Isidro", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressPESuperfluousWhitespace() {
 };
 
 function testParseAddressPENoDelimiters() {
-	var parsedAddress = new ilib.Address("Catalina Huanca 110 San Isidro Lima 27 PERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca 110 San Isidro Lima 27 PERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Catalina Huanca 110 San Isidro", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressPENoDelimiters() {
 };
 
 function testParseAddressPEFromUS() {
-	var parsedAddress = new ilib.Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
+	var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Catalina Huanca 110 San Isidro", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressPEFromUS() {
 };
 
 function testFormatAddressPE() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Catalina Huanca 110 San Isidro",
 		locality: "Lima 27",
 		postalCode: "1010",
@@ -123,12 +123,12 @@ function testFormatAddressPE() {
 	}, {locale: 'es-PE'});
 	
 	var expected = "Catalina Huanca 110 San Isidro\nLima 27\nPERU";
-	var formatter = new ilib.AddressFmt({locale: 'es-PE'});
+	var formatter = new AddressFmt({locale: 'es-PE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressPEFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Catalina Huanca 110 San Isidro",
 		locality: "Lima 27",
 		postalCode: "1010",
@@ -137,6 +137,6 @@ function testFormatAddressPEFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Catalina Huanca 110 San Isidro\nLima 27\nPERU";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

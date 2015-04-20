@@ -18,7 +18,7 @@
  */
 
 function testParseAddressTWTWLatinNormal() {
-	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan", {locale: 'en-TW'});
+	var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressTWTWLatinNormal() {
 };
 
 function testParseAddressTWTWLatinNoZip() {
-	var parsedAddress = new ilib.Address("3F-499, Jung-Ming S. Road, West District, Taichung, Taiwan, R.O.C.", {locale: 'en-TW'});
+	var parsedAddress = new Address("3F-499, Jung-Ming S. Road, West District, Taichung, Taiwan, R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("3F-499, Jung-Ming S. Road, West District", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressTWTWLatinNoZip() {
 };
 
 function testParseAddressTWTWLatinNoCountry() {
-	var parsedAddress = new ilib.Address("3F, No.7\nShong-Ren Rd.\nTaipei City 11045", {locale: 'en-TW'});
+	var parsedAddress = new Address("3F, No.7\nShong-Ren Rd.\nTaipei City 11045", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("3F, No.7, Shong-Ren Rd.", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressTWTWLatinNoCountry() {
 };
 
 function testParseAddressTWTWAsianNormal() {
-	var parsedAddress = new ilib.Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
+	var parsedAddress = new Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressTWTWAsianNormal() {
 };
 
 function testParseAddressTWTWAsianNoZip() {
-	var parsedAddress = new ilib.Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-TW'});
+	var parsedAddress = new Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("南港區經貿二路66號10樓", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressTWTWAsianNoZip() {
 };
 
 function testParseAddressTWTWAsianNoCountry() {
-	var parsedAddress = new ilib.Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-TW'});
+	var parsedAddress = new Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路 6 號 26 樓", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressTWTWAsianNoCountry() {
 };
 
 function testParseAddressTWTWAsianWithRegion() {
-	var parsedAddress = new ilib.Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
+	var parsedAddress = new Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressTWTWAsianWithRegion() {
 };
 
 function testParseAddressTWTWAsianZipAtEnd() {
-	var parsedAddress = new ilib.Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-TW'});
+	var parsedAddress = new Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -114,7 +114,7 @@ function testParseAddressTWTWAsianZipAtEnd() {
 };
 
 function testParseAddressTWTWManyLines() {
-	var parsedAddress = new ilib.Address("Level 73\nTaipei 101 Tower\n7 Xinyi Road\nSec. 5\nTaipei\n110\nTaiwan\n\n\n", {locale: 'en-TW'});
+	var parsedAddress = new Address("Level 73\nTaipei 101 Tower\n7 Xinyi Road\nSec. 5\nTaipei\n110\nTaiwan\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressTWTWManyLines() {
 };
 
 function testParseAddressTWTWOneLine() {
-	var parsedAddress = new ilib.Address("3F, 499, Jung-Ming S. Road, West District, Taichung, 403, Taiwan, R.O.C.", {locale: 'en-TW'});
+	var parsedAddress = new Address("3F, 499, Jung-Ming S. Road, West District, Taichung, 403, Taiwan, R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("3F, 499, Jung-Ming S. Road, West District", parsedAddress.streetAddress);
@@ -138,7 +138,7 @@ function testParseAddressTWTWOneLine() {
 };
 
 function testParseAddressTWTWSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Republic of China\n\n\n", {locale: 'en-TW'});
+	var parsedAddress = new Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Republic of China\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("TW", parsedAddress.countryCode);
@@ -150,7 +150,7 @@ function testParseAddressTWTWSuperfluousWhitespace() {
 };
 
 function testParseAddressTWTWNoDelimiters() {
-	var parsedAddress = new ilib.Address("3F 499 Jung-Ming S. Road West District Taichung 403 Taiwan R.O.C.", {locale: 'en-TW'});
+	var parsedAddress = new Address("3F 499 Jung-Ming S. Road West District Taichung 403 Taiwan R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("3F 499 Jung-Ming S. Road West District", parsedAddress.streetAddress);
@@ -162,7 +162,7 @@ function testParseAddressTWTWNoDelimiters() {
 };
 
 function testParseAddressTWTWSpecialChars() {
-	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTáiběi, 110\nTáiwān\nROC", {locale: 'en-TW'});
+	var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTáiběi, 110\nTáiwān\nROC", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5", parsedAddress.streetAddress);
@@ -174,7 +174,7 @@ function testParseAddressTWTWSpecialChars() {
 };
 
 function testParseAddressTWTWFromUS() {
-	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nRepublic of China", {locale: 'en-US'});
+	var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nRepublic of China", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -188,7 +188,7 @@ function testParseAddressTWTWFromUS() {
 };
 
 function testFormatAddressTWTWLatin() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5",
 		locality: "Taipei",
 		region: "Taiwan",
@@ -199,12 +199,12 @@ function testFormatAddressTWTWLatin() {
 	}, {locale: 'en-TW'});
 	
 	var expected = "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5\nTaipei, Taiwan, 11045\nRepublic of China";
-	var formatter = new ilib.AddressFmt({locale: 'en-TW'});
+	var formatter = new AddressFmt({locale: 'en-TW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTWTWAsian() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "苓雅區四維三路6號18樓A",
 		locality: "高雄市",
 		region: "台灣省",
@@ -215,12 +215,12 @@ function testFormatAddressTWTWAsian() {
 	}, {locale: 'zh-TW'});
 	
 	var expected = "中華民國\n台灣省高雄市苓雅區四維三路6號18樓A80212";
-	var formatter = new ilib.AddressFmt({locale: 'zh-TW'});
+	var formatter = new AddressFmt({locale: 'zh-TW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressTWTWFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5",
 		locality: "Taipei",
 		region: "Taiwan",
@@ -231,6 +231,6 @@ function testFormatAddressTWTWFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5\nTaipei, Taiwan, 11045\nRepublic of China";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

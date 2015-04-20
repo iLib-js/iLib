@@ -18,7 +18,7 @@
  */
 
 function testParseAddressMMNormal() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\n\nMyanmar", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\n\nMyanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressMMNormal() {
 };
 
 function testParseAddressMMNoZip() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON\nMyanmar", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON\nMyanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressMMNoZip() {
 };
 
 function testParseAddressMMNoCountry() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressMMNoCountry() {
 };
 
 function testParseAddressMMManyLines() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications\nNo 43 Bo Aung Gyaw Street\n\nYANGON\n\n11181\nMyanmar\n\n\n", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications\nNo 43 Bo Aung Gyaw Street\n\nYANGON\n\n11181\nMyanmar\n\n\n", {locale: 'en-MM'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications, No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
 	assertEquals("YANGON", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressMMManyLines() {
 };
 
 function testParseAddressMMOneLine() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications , No 43 Bo Aung Gyaw Street , YANGON , 11181 , Myanmar", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications , No 43 Bo Aung Gyaw Street , YANGON , 11181 , Myanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications, No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressMMOneLine() {
 };
 
 function testParseAddressMMSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tPosts and Telecommunications\n\t\t\rNo 43 Bo\t\t\rAung Gyaw Street\t\n\n\nYANGON\n\n11181\n\t Myanmar\n\n\n", {locale: 'en-MM'});
+	var parsedAddress = new Address("\t\t\tPosts and Telecommunications\n\t\t\rNo 43 Bo\t\t\rAung Gyaw Street\t\n\n\nYANGON\n\n11181\n\t Myanmar\n\n\n", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications, No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressMMSuperfluousWhitespace() {
 };
 
 function testParseAddressMMNoDelimiters() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON, 11181 Myanmar", {locale: 'en-MM'});
+	var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON, 11181 Myanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressMMNoDelimiters() {
 };
 
 function testParseAddressMMFromUS() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar", {locale: 'en-US'});
+	var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressMMFromUS() {
 };
 
 function testFormatAddressMM() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Posts and Telecommunications No 43 Bo Aung Gyaw Street",
 		locality: "YANGON",
 		postalCode: "11181",
@@ -124,12 +124,12 @@ function testFormatAddressMM() {
 	}, {locale: 'en-MM'});
 	
 	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
-	var formatter = new ilib.AddressFmt({locale: 'en-MM'});
+	var formatter = new AddressFmt({locale: 'en-MM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressMMFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Posts and Telecommunications No 43 Bo Aung Gyaw Street",
 		locality: "YANGON",
 		postalCode: "11181",
@@ -138,6 +138,6 @@ function testFormatAddressMMFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

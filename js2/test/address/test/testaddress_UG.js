@@ -18,7 +18,7 @@
  */
 
 function testParseAddressUGNormal() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua P.O. Box 21310", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressUGNormal() {
 };
 
 function testParseAddressUGNoZip() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua P.O. Box 21310", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressUGNoZip() {
 };
 
 function testParseAddressUGNoCountry() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua P.O. Box 21310", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressUGNoCountry() {
 };
 
 function testParseAddressUGManyLines() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua\nP.O. Box 21310\nKAMPALA\nUganda\n\n\n", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua\nP.O. Box 21310\nKAMPALA\nUganda\n\n\n", {locale: 'en-UG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua, P.O. Box 21310", parsedAddress.streetAddress);
 	assertEquals("KAMPALA", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressUGManyLines() {
 };
 
 function testParseAddressUGOneLine() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua , P.O. Box 21310 , KAMPALA , Uganda", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua , P.O. Box 21310 , KAMPALA , Uganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua, P.O. Box 21310", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressUGOneLine() {
 };
 
 function testParseAddressUGSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t\tMs. Olive Takubua\t\t\tP.O. Box\t\r\r21310\t\nKAMPALA\n\t Uganda\n\n\n", {locale: 'en-UG'});
+	var parsedAddress = new Address("\t\t\t\tMs. Olive Takubua\t\t\tP.O. Box\t\r\r21310\t\nKAMPALA\n\t Uganda\n\n\n", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua P.O. Box 21310", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressUGSuperfluousWhitespace() {
 };
 
 function testParseAddressUGNoDelimiters() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310 KAMPALA Uganda", {locale: 'en-UG'});
+	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310 KAMPALA Uganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua P.O. Box 21310", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressUGNoDelimiters() {
 };
 
 function testParseAddressUGFromUS() {
-	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-US'});
+	var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -115,7 +115,7 @@ function testParseAddressUGFromUS() {
 };
 
 function testFormatAddressUG() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Ms. Olive Takubua P.O. Box 21310",
 		locality: "KAMPALA",
 		country: "Uganda",
@@ -123,12 +123,12 @@ function testFormatAddressUG() {
 	}, {locale: 'en-UG'});
 	
 	var expected = "Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda";
-	var formatter = new ilib.AddressFmt({locale: 'en-UG'});
+	var formatter = new AddressFmt({locale: 'en-UG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressUGFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "Ms. Olive Takubua P.O. Box 21310",
 		locality: "KAMPALA",
 		country: "Uganda",
@@ -136,6 +136,6 @@ function testFormatAddressUGFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

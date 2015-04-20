@@ -18,7 +18,7 @@
  */
 
 function testParseAddressRWNormal() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressRWNormal() {
 };
 
 function testParseAddressRWNoZip() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressRWNoZip() {
 };
 
 function testParseAddressRWNoCountry() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressRWNoCountry() {
 };
 
 function testParseAddressRWManyLines() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon\nB.P. 3425\nKIGALI\nRwanda\n\n\n", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon\nB.P. 3425\nKIGALI\nRwanda\n\n\n", {locale: 'fr-RW'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon, B.P. 3425", parsedAddress.streetAddress);
 	assertEquals("KIGALI", parsedAddress.locality);
@@ -65,7 +65,7 @@ function testParseAddressRWManyLines() {
 };
 
 function testParseAddressRWOneLine() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon , B.P. 3425 , KIGALI , Rwanda", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon , B.P. 3425 , KIGALI , Rwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon, B.P. 3425", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressRWOneLine() {
 };
 
 function testParseAddressRWSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t\tM. Pierre Simon\t\t\tB.P. 3425\n\t\nKIGALI\n\tRwanda\n\n\n", {locale: 'fr-RW'});
+	var parsedAddress = new Address("\t\t\t\tM. Pierre Simon\t\t\tB.P. 3425\n\t\nKIGALI\n\tRwanda\n\n\n", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressRWSuperfluousWhitespace() {
 };
 
 function testParseAddressRWNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425 KIGALI Rwanda", {locale: 'fr-RW'});
+	var parsedAddress = new Address("M. Pierre Simon B.P. 3425 KIGALI Rwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressRWNoDelimiters() {
 };
 
 function testParseAddressRWFromUS() {
-	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'en-US'});
+	var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon B.P. 3425", parsedAddress.streetAddress);
@@ -113,7 +113,7 @@ function testParseAddressRWFromUS() {
 };
 
 function testFormatAddressRW() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Pierre Simon B.P. 3425",
 		locality: "KIGALI",
 		country: "Rwanda",
@@ -121,12 +121,12 @@ function testFormatAddressRW() {
 	}, {locale: 'fr-RW'});
 	
 	var expected = "M. Pierre Simon B.P. 3425\nKIGALI\nRwanda";
-	var formatter = new ilib.AddressFmt({locale: 'fr-RW'});
+	var formatter = new AddressFmt({locale: 'fr-RW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressRWFromUS() {
-	var parsedAddress = new ilib.Address({
+	var parsedAddress = new Address({
 		streetAddress: "M. Pierre Simon B.P. 3425",
 		locality: "KIGALI",
 		country: "Rwanda",
@@ -134,6 +134,6 @@ function testFormatAddressRWFromUS() {
 	}, {locale: 'en-US'});
 	
 	var expected = "M. Pierre Simon B.P. 3425\nKIGALI\nRwanda";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
+	var formatter = new AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
