@@ -139,8 +139,8 @@ for (s in suite) {
 	} else {
 		inc = "../output/js/ilib" + "-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc);
-		ts.include("ilib-stubs.js");
 		ts.include("../bin/ilib-test.js");
+		ts.include("../lib/ilib-stubs.js");
 	}
 	runner.addSuite(ts);
 	// util.print("Adding suite " + suite[s] + " and including ilib file " + inc + "\n");

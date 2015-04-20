@@ -57,23 +57,20 @@ module.exports = function (ilib) {
 	NodeLoader.prototype.parent = Loader;
 	NodeLoader.prototype.constructor = NodeLoader;
 	
+	NodeLoader.prototype.name = "NodeLoader";
 	NodeLoader.prototype._loadFile = function (pathname, sync, cb) {
 		var text;
-		// console.log("NodeLoader._loadFile: loading " + pathname);
+		//console.log("NodeLoader._loadFile: loading " + pathname + (sync ? " sync" : " async"));
 		try {
-			if (sync) {
-				text = fs.readFileSync(pathname, "utf-8");
-				if (typeof(cb) === 'function') {
-					cb(text);
-				}
-			} else {
-				fs.readFile(pathname, "utf-8", function(err, text) {
-					if (typeof(cb) === 'function') {
-						cb(err ? undefined : text);
-					}
-				});
+			// on node, just secret load everything synchronously, even when asynchronous 
+			// load is requested, or else you will get crazy results where files are not read 
+			// until a long time later when the run queue is free
+			text = fs.readFileSync(pathname, "utf-8");
+			if (typeof(cb) === 'function') {
+				cb(text);
 			}
 		} catch (e) {
+			//console.log("NodeLoader._loadFile: caught exception");
 			if (typeof(cb) === 'function') {
 				cb();
 			}

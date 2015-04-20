@@ -488,9 +488,9 @@ ilib.Loader.prototype.isAvailable = function(path) {};
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if ((typeof(loader) === 'object' && loader instanceof ilib.Loader) || 
+    if ((typeof(loader) === 'object' && typeof(loader.loadFiles) === 'function') || 
             typeof(loader) === 'function' || typeof(loader) === 'undefined') {
-        // console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
+        //console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
         ilib._load = loader;
         return true;
     }

@@ -65,6 +65,7 @@ WebLoader.prototype = new Loader();
 WebLoader.prototype.parent = Loader;
 WebLoader.prototype.constructor = WebLoader;
 
+WebLoader.prototype.name = "WebLoader";
 WebLoader.prototype._loadFile = function (pathname, sync, cb) {
 	// use normal web techniques
 	var req = new XMLHttpRequest();

@@ -26,10 +26,11 @@ function testTZAsyncGetAvailableIds() {
 }
 
 function testTZAsyncGetAvailableIdsRightValues() {
-    ilib.TimeZone.getAvailableIds(undefined, false, function(zones) {
+	ilib.TimeZone.getAvailableIds(undefined, false, function(zones) {
         assertNotUndefined(zones);
         
-        //util.print("timezones is " + JSON.stringify(ilib._load, undefined, 4) + "\n");
+        //var util = require("util");
+        //util.print("ilib._load is " + util.inspect(ilib._load) + "\n");
         assertContains("Europe/London", zones);
         assertContains("America/Los_Angeles", zones);
         assertContains("Australia/Sydney", zones);

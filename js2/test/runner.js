@@ -203,6 +203,7 @@ TestSuite.prototype = {
 			}
 			load(root + "/tools/jsunit/app/jsUnitCore.js", this.context);
 			this.includes.forEach(function (inc) {
+				//console.log("runner: including file " + inc + " before the test.");
 				load(inc, this.context);
 			}.bind(this));
 			load(this.path, this.context);

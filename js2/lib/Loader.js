@@ -49,7 +49,7 @@ Loader.prototype._exists = function(dir, file) {
 		this.includePath.push(dir);
 		this._loadFile(fullpath, false, ilib.bind(this, function(text) {
 			if (!text) {
-				console.log("Loader._exists: removing " + dir + " from the include path because it doesn't exist.");
+				//console.log("Loader._exists: removing " + dir + " from the include path because it doesn't exist.");
 				this.includePath = this.includePath.slice(-1);
 			}
 		}));
@@ -83,11 +83,11 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
 Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 	var includePath = params && params.base ? [params.base].concat(this.includePath) : this.includePath;
 
-	//console.log("Loader loadFiles called\n");
+	//console.log("Loader loadFiles called");
 	// make sure we know what we can load
 	if (!paths) {
 		// nothing to load
-		//console.log("nothing to load\n");
+		//console.log("nothing to load");
 		return;
 	}
 	
@@ -96,7 +96,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		var ret = [];
 		
 		// synchronous
-		this._loadManifests();
+		this._loadManifests(true);
 		
 		for (var i = 0; i < paths.length; i++) {
 			var text = this._loadFileAlongIncludePath(includePath, path.normalize(paths[i]));
@@ -113,6 +113,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 
 	// asynchronous
 	this._loadManifests(false, ilib.bind(this, function() {
+		//console.log("Loader.loadFiles: now loading files asynchronously");
 		this.results = [];
 		this._loadFilesAsync(includePath, paths, callback);
 	}));
@@ -164,23 +165,30 @@ Loader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 };
 
 Loader.prototype._loadManifestFile = function(i, sync, cb) {
+	//console.log("Loader._loadManifestFile: Checking include path " + i + " " + this.includePath[i]);
 	if (i < this.includePath.length) {
 		var filepath = path.join(this.includePath[i], "ilibmanifest.json");
+		//console.log("Loader._loadManifestFile: Loading manifest file " + filepath);
 		var text = this._loadFile(filepath, sync, ilib.bind(this, function(text) {
 			if (text) {
+				//console.log("Loader._loadManifestFile: success!");
 				this.manifest[this.includePath[i]] = JSON.parse(text).files;
 			}
+			//else console.log("Loader._loadManifestFile: failed...");
 			this._loadManifestFile(i+1, sync, cb);
 		}));
 	} else {
 		if (typeof(cb) === 'function') {
+			//console.log("Loader._loadManifestFile: now calling callback function");
 			cb();
 		}
 	}
 };
 
 Loader.prototype._loadManifests = function(sync, cb) {
+	//console.log("Loader._loadManifests: called " + (sync ? "synchronously" : "asychronously."));
 	if (!this.manifest) {
+		//console.log("Loader._loadManifests: attempting to find manifests");
 		this.manifest = {};
 		if (typeof(sync) !== 'boolean') {
 			sync = true;
@@ -188,16 +196,19 @@ Loader.prototype._loadManifests = function(sync, cb) {
 			
 		this._loadManifestFile(0, sync, cb);
 	} else {
+		//console.log("Loader._loadManifests: already loaded");
 		if (typeof(cb) === 'function') {
+			//console.log("Loader._loadManifests: now calling callback function");
 			cb();
 		}
 	}
 };
 
 Loader.prototype.listAvailableFiles = function(sync, cb) {
-	//console.log("generic loader: list available files called\n");
+	//console.log("generic loader: list available files called");
 	this._loadManifests(sync, ilib.bind(this, function () {
 		if (typeof(cb) === 'function') {
+			//console.log("generic loader: now calling caller's callback function");
 			cb(this.manifest);
 		}
 	}));
@@ -231,6 +242,7 @@ Loader.prototype.checkAvailability = function(file) {
 };
 
 Loader.prototype.isAvailable = function(file, sync, cb) {
+	//console.log("Loader.isAvailable: called");
 	if (typeof(sync) !== 'boolean') {
 		sync = true;
 	}
