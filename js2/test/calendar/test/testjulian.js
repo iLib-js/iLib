@@ -165,5 +165,6 @@ function testJulianNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.JulDate);
+    assertNotUndefined(d.cal);
+    assertEquals("julian", d.cal.type);
 }

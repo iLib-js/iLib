@@ -429,7 +429,7 @@ function testDateFmtDateTimeSimpleFull_af_NA() {
 
 
 function testDateFmtTemplateCalendar_af_NA() {
-    var fmt = new ilib.DateFmt({locale: "af-NA", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "af-NA", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({

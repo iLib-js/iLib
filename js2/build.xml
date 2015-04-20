@@ -724,6 +724,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address4" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address5" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address6" assembly="dynamic" compilation="compiled"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.collate">
 		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
@@ -752,6 +755,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="assembled" compilation="compiled"/>
 		<runtests suite="address2" assembly="assembled" compilation="compiled"/>
 		<runtests suite="address3" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address4" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address5" assembly="assembled" compilation="compiled"/>
+		<runtests suite="address6" assembly="assembled" compilation="compiled"/>
 		<runtests suite="collate" assembly="assembled" compilation="compiled"/>
 	</target>
 
@@ -778,6 +784,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="address2" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="address3" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address4" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address5" assembly="assembled" compilation="uncompiled"/>
+		<runtests suite="address6" assembly="assembled" compilation="uncompiled"/>
 		<runtests suite="collate" assembly="assembled" compilation="uncompiled"/>
 	</target>
 
@@ -804,6 +813,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="address2" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="address3" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address4" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address5" assembly="dynamic" compilation="uncompiled"/>
+		<runtests suite="address6" assembly="dynamic" compilation="uncompiled"/>
 		<runtests suite="collate" assembly="dynamic" compilation="uncompiled"/>
 	</target>
 
@@ -830,6 +842,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address4" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address5" assembly="dynamic" compilation="compiled"/>
+		<runtests suite="address6" assembly="dynamic" compilation="compiled"/>
 		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
 	</target>
 
@@ -856,6 +871,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="dynamicdata" compilation="compiled"/>
 		<runtests suite="address2" assembly="dynamicdata" compilation="compiled"/>
 		<runtests suite="address3" assembly="dynamicdata" compilation="compiled"/>
+		<runtests suite="address4" assembly="dynamicdata" compilation="compiled"/>
+		<runtests suite="address5" assembly="dynamicdata" compilation="compiled"/>
+		<runtests suite="address6" assembly="dynamicdata" compilation="compiled"/>
 		<runtests suite="collate" assembly="dynamicdata" compilation="compiled"/>
 	</target>
 
@@ -882,6 +900,9 @@ limitations under the License.
 		<runtests suite="address1" assembly="dynamicdata" compilation="uncompiled"/>
 		<runtests suite="address2" assembly="dynamicdata" compilation="uncompiled"/>
 		<runtests suite="address3" assembly="dynamicdata" compilation="uncompiled"/>
+		<runtests suite="address4" assembly="dynamicdata" compilation="uncompiled"/>
+		<runtests suite="address5" assembly="dynamicdata" compilation="uncompiled"/>
+		<runtests suite="address6" assembly="dynamicdata" compilation="uncompiled"/>
 		<runtests suite="collate" assembly="dynamicdata" compilation="uncompiled"/>
 	</target>
 

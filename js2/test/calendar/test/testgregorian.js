@@ -147,6 +147,7 @@ function testGregorianNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.GregDate);
+    assertNotUndefined(d.cal);
+    assertEquals("gregorian", d.cal.type);
 }
 

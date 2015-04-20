@@ -273,5 +273,6 @@ function testIslamicNewDateInstance() {
     });
     
     assertNotUndefined(d);
-    assertTrue(d instanceof ilib.Date.IslamicDate);
+    assertNotUndefined(d.cal);
+    assertEquals("islamic", d.cal.type);
 }

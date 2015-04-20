@@ -64,6 +64,7 @@ if(!ilib.Date.CopticRataDie){ilib.Date.CopticRataDie=function(params){ilib.Date.
 if(!ilib.CType.isDigit){ilib.CType.isDigit=function(ch){ilib.CType.isDigit=require("./isDigit.js");return ilib.CType.isDigit(ch);};ilib.CType.isDigit.stub=true;}
 if(!ilib.CType.isSpace){ilib.CType.isSpace=function(ch){ilib.CType.isSpace=require("./isSpace.js");return ilib.CType.isSpace(ch);};ilib.CType.isSpace.stub=true;}
 if(!ilib.Currency){ilib.Currency=function(options){ilib.Currency=require("./Currency.js");return new ilib.Currency(options);};ilib.Currency.stub=true;}
+if(!ilib.Currency.getAvailableCurrencies){ilib.Currency.getAvailableCurrencies=function(){ilib.Currency=require("./Currency.js");return new ilib.Currency.getAvailableCurrencies();};ilib.Currency.getAvailableCurrencies.stub=true;}
 if(!ilib.Number){ilib.Number=function(str, options){ilib.Number=require("./INumber.js");return new ilib.Number(str, options);};ilib.Number.stub=true;}
 if(!ilib.NumFmt){ilib.NumFmt=function(options){ilib.NumFmt=require("./NumFmt.js");return new ilib.NumFmt(options);};ilib.NumFmt.stub=true;}
 if(!ilib.DurFmt){ilib.DurFmt=function(options){ilib.DurFmt=require("./DurationFmt.js");return new ilib.DurFmt(options);};ilib.DurFmt.stub=true;}
