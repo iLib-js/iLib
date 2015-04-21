@@ -1,7 +1,7 @@
 /*
  * datefmtstr.js - Date formatter strings
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@
  * strings are looked up via dynamically generated keys, so the localization tool has
  * no way of finding and extracting them properly without this file.
  */
+
+// !dependencies: false
 
 // These are dummy strings extracted by the loc tool for translation to other languages.
 // The result is the various "sysres.json" files in the locale directory.

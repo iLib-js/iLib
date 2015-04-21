@@ -1,3 +1,24 @@
+/*
+ * ilib-stubs.js - define the legacy ilib namespace in terms of new modules
+ * 
+ * Copyright © 2015, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !dependencies: false
+
 ilib.CType=CType;ilib._roundFnc={};
 ilib.Date=DateFactory;ilib.Cal=CalendarFactory;ilib.Measurement=MeasurementFactory;ilib.extend(ilib.Date, Astro);
 ilib.shallowCopy=JSUtils.shallowCopy;ilib.deepCopy=JSUtils.deepCopy;ilib.mapString=JSUtils.mapString;ilib.indexOf=JSUtils.indexOf;ilib.toHexString=JSUtils.toHexString;ilib.isDate=JSUtils.isDate;ilib.merge=JSUtils.merge;ilib.isEmpty=JSUtils.isEmpty;ilib.hashCode=JSUtils.hashCode;ilib.Locale=Locale;ilib.mergeLocData=Utils.mergeLocData;ilib.getLocFiles=Utils.getLocFiles;ilib.loadData=Utils.loadData;ilib.LocaleInfo=LocaleInfo;ilib.signum=MathUtils.signum;ilib.mod=MathUtils.mod;ilib.amod=MathUtils.amod;ilib.String=IString;ilib.Cal.newInstance=CalendarFactory;ilib.Cal.getCalendars=CalendarFactory.getCalendars;ilib.Cal.Gregorian=GregorianCal;ilib.JulianDay=JulianDay;ilib.Date.RataDie=RataDie;ilib.Date.GregRataDie=GregRataDie;ilib.TimeZone=TimeZone;ilib.bsearch=SearchUtils.bsearch;ilib.bisectionSearch=SearchUtils.bisectionSearch;ilib.Date.GregDate=GregorianDate;ilib.Date.newInstance=DateFactory;ilib.ResBundle=ResBundle;ilib.DateFmt=DateFmt;ilib.DateRngFmt=DateRngFmt;ilib.Cal.Hebrew=HebrewCal;ilib.Date.HebrewDate=HebrewDate;ilib.Cal.Islamic=IslamicCal;ilib.Date.IslamicDate=IslamicDate;ilib.Cal.Julian=JulianCal;ilib.Date.JulDate=JulianDate;ilib.Date.JulRataDie=JulianRataDie;
