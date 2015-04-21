@@ -29,15 +29,15 @@ function suite() {
     var s = new TestSuite();
     
     var suites = [
+   		"testloader.js",
+		"testrequire.js",
 		"testglobal.js",
 		"testlocaleinfo.js",
 		"testlocale.js",
 		"testresources.js",
 		"testscriptinfo.js",
 		"teststrings.js",
-		"testlocalematch.js",
-		"testloader.js",
-		"testrequire.js"
+		"testlocalematch.js"
 	];
 
     suites.forEach(function (path) {

@@ -18,9 +18,10 @@
  */
 
 /**
- * @namespace The global namespace that contains all ilib functions and classes.
+ * @namespace The global namespace that contains general ilib functions useful
+ * to all of ilib
  */
-var ilib = {};
+var ilib = ilib || {};
 
 /** @private */
 ilib._ver = function() {

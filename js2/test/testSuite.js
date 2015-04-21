@@ -187,7 +187,7 @@ for (s in suite) {
 		inc = "../bin/ilib-node.js";		
 		ts.include(inc); 
 	} else {
-		inc = "../output/js/ilib" + "-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+		inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc);
 		ts.include("../bin/ilib-test.js");
 		ts.include("../lib/ilib-stubs.js");
