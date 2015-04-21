@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_fa() {
-	var parsed = new ilib.Name("لیلا میلانی", {locale: 'fa-IR'});
+	var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_fa() {
 
 
 function testParseAdjunctNames_fa() {
-	var parsed = new ilib.Name("لیلا میلانی", {locale: 'fa-IR'});
+	var parsed = new Name("لیلا میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -45,7 +47,7 @@ function testParseAdjunctNames_fa() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_fa() {
-	var parsed = new ilib.Name("آقای ﻭ خانم میلانی", {locale: 'fa-IR'});
+	var parsed = new Name("آقای ﻭ خانم میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -58,7 +60,7 @@ function testParseSingleNameWithPrefixAndAdjunct_fa() {
 
 
 function testParseTitle_fa() {
-	var parsed = new ilib.Name("لیلا میلانی ﺙﺎﻠﺛﺍ", {locale: 'fa-IR'});
+	var parsed = new Name("لیلا میلانی ﺙﺎﻠﺛﺍ", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -73,7 +75,7 @@ function testParseTitle_fa() {
 
 
 function testParseTitleWithFamilyOnly_fa() {
-	var parsed = new ilib.Name("خانم میلانی", {locale: 'fa-IR'});
+	var parsed = new Name("خانم میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -87,7 +89,7 @@ function testParseTitleWithFamilyOnly_fa() {
 
 
 function testParseEverything_fa() {
-	var parsed = new ilib.Name("خانم لیلا میلانی", {locale: 'fa-IR'});
+	var parsed = new Name("خانم لیلا میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -105,11 +107,11 @@ function testParseEverything_fa() {
  */
 
 function testFormatSimpleNameShort_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "لیلا",
 		familyName: "میلانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'fa-IR'
 	});
@@ -122,11 +124,11 @@ function testFormatSimpleNameShort_fa() {
 };
 
 function testFormatSimpleNameMedium_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "لیلا",
 		familyName: "میلانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'fa-IR'
 	});
@@ -139,12 +141,12 @@ function testFormatSimpleNameMedium_fa() {
 };
 
 function testFormatSimpleNameLong_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "لیلا",
 		familyName: "میلانی",
 		suffix: "ﺙﺎﻠﺛﺍ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'fa-IR'
 	});
@@ -157,13 +159,13 @@ function testFormatSimpleNameLong_fa() {
 };
 
 function testFormatSimpleNameFull_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "خانم",
 		givenName: "لیلا",
 		familyName: "میلانی",
 		suffix: "ﺙﺎﻠﺛﺍ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'fa-IR'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameFull_fa() {
 };
 
 function testFormatComplexNameShort_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "خانم",
 		givenName: "لیلا",
 		familyName: "میلانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'fa-IR'
 	});
@@ -194,12 +196,12 @@ function testFormatComplexNameShort_fa() {
 };
 
 function testFormatComplexNameMedium_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "خانم",
 		givenName: "لیلا",
 		familyName: "میلانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'fa-IR'
 	});
@@ -212,12 +214,12 @@ function testFormatComplexNameMedium_fa() {
 };
 
 function testFormatComplexNameLong_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "خانم",
 		givenName: "لیلا",
 		familyName: "میلانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'fa-IR'
 	});
@@ -230,12 +232,12 @@ function testFormatComplexNameLong_fa() {
 };
 
 function testFormatAsianNameShort_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'fa-IR'
 	});
@@ -248,12 +250,12 @@ function testFormatAsianNameShort_fa() {
 };
 
 function testFormatAsianNameMedium_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'fa-IR'
 	});
@@ -266,12 +268,12 @@ function testFormatAsianNameMedium_fa() {
 };
 
 function testFormatAsianNameLong_fa() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'fa-IR'
 	});

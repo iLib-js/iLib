@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ResBundle = require("./../lib/ResBundle.js");
+var Locale = require("./../lib/Locale.js");
+
 ilib.data.strings = {
     "first string": "first",
     "second string": "second",
@@ -96,13 +100,13 @@ ilib.data.mock_foobar_de = ilib.data.strings_de;
 function testResBundleConstructorEmpty() {
 	ilib.clearPseudoLocales();
 	
-    var rb = new ilib.ResBundle();
+    var rb = new ResBundle();
     
     assertNotNull(rb);
 }
 
 function testResBundleConstructorDefaultName() {
-    var rb = new ilib.ResBundle();
+    var rb = new ResBundle();
     
     assertNotNull(rb);
     
@@ -110,7 +114,7 @@ function testResBundleConstructorDefaultName() {
 }
 
 function testResBundleConstructorDefaultLocale() {
-    var rb = new ilib.ResBundle();
+    var rb = new ResBundle();
     
     assertNotNull(rb);
     
@@ -120,7 +124,7 @@ function testResBundleConstructorDefaultLocale() {
 }
 
 function testResBundleConstructorOtherLocale() {
-    var rb = new ilib.ResBundle({locale: "de-DE"});
+    var rb = new ResBundle({locale: "de-DE"});
     
     assertNotNull(rb);
     
@@ -130,7 +134,7 @@ function testResBundleConstructorOtherLocale() {
 }
 
 function testResBundleConstructorOtherName() {
-    var rb = new ilib.ResBundle({name: "tester"});
+    var rb = new ResBundle({name: "tester"});
     
     assertNotNull(rb);
     
@@ -138,7 +142,7 @@ function testResBundleConstructorOtherName() {
 }
 
 function testResBundleGetString() {
-    var rb = new ilib.ResBundle(); // default locale
+    var rb = new ResBundle(); // default locale
     
     assertNotNull(rb);
     
@@ -148,7 +152,7 @@ function testResBundleGetString() {
 }
 
 function testResBundleGetStringJS() {
-    var rb = new ilib.ResBundle(); // default locale
+    var rb = new ResBundle(); // default locale
     
     assertNotNull(rb);
     
@@ -158,7 +162,7 @@ function testResBundleGetStringJS() {
 }
 
 function testResBundleGetStringEmpty() {
-    var rb = new ilib.ResBundle(); // default locale
+    var rb = new ResBundle(); // default locale
     
     assertNotNull(rb);
     
@@ -166,7 +170,7 @@ function testResBundleGetStringEmpty() {
 }
 
 function testResBundleGetStringUndefined() {
-    var rb = new ilib.ResBundle(); // default locale
+    var rb = new ResBundle(); // default locale
     
     assertNotNull(rb);
     
@@ -174,7 +178,7 @@ function testResBundleGetStringUndefined() {
 }
 
 function testResBundleGetStringde() {
-    var rb = new ilib.ResBundle({locale: "de"});
+    var rb = new ResBundle({locale: "de"});
     
     assertNotNull(rb);
     
@@ -184,7 +188,7 @@ function testResBundleGetStringde() {
 }
 
 function testResBundleGetStringfr() {
-    var rb = new ilib.ResBundle({locale: "fr"});
+    var rb = new ResBundle({locale: "fr"});
     
     assertNotNull(rb);
     
@@ -194,7 +198,7 @@ function testResBundleGetStringfr() {
 }
 
 function testResBundleGetStringfrCA() {
-    var rb = new ilib.ResBundle({locale: "fr-CA"});
+    var rb = new ResBundle({locale: "fr-CA"});
     
     assertNotNull(rb);
     
@@ -204,7 +208,7 @@ function testResBundleGetStringfrCA() {
 }
 
 function testResBundleGetStringfrCAgovt() {
-    var rb = new ilib.ResBundle({locale: "fr-CA-govt"});
+    var rb = new ResBundle({locale: "fr-CA-govt"});
     
     assertNotNull(rb);
     
@@ -214,7 +218,7 @@ function testResBundleGetStringfrCAgovt() {
 }
 
 function testResBundleGetStringDefaultToParent() {
-    var rb = new ilib.ResBundle({locale: "de-DE"});
+    var rb = new ResBundle({locale: "de-DE"});
     
     assertNotNull(rb);
     
@@ -224,7 +228,7 @@ function testResBundleGetStringDefaultToParent() {
 }
 
 function testResBundleGetStringDefaultToSource() {
-    var rb = new ilib.ResBundle({locale: "ja-JP"});
+    var rb = new ResBundle({locale: "ja-JP"});
     
     assertNotNull(rb);
     
@@ -234,7 +238,7 @@ function testResBundleGetStringDefaultToSource() {
 }
 
 function testResBundleGetStringJSDefaultToSource() {
-    var rb = new ilib.ResBundle({locale: "ja-JP"});
+    var rb = new ResBundle({locale: "ja-JP"});
     
     assertNotNull(rb);
     
@@ -244,7 +248,7 @@ function testResBundleGetStringJSDefaultToSource() {
 }
 
 function testResBundleGetStringOtherBundle() {
-    var rb = new ilib.ResBundle({name: "tester"});
+    var rb = new ResBundle({name: "tester"});
     
     assertNotNull(rb);
     
@@ -254,7 +258,7 @@ function testResBundleGetStringOtherBundle() {
 }
 
 function testResBundleGetStringOtherBundleesES() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es-ES"
     });
@@ -267,7 +271,7 @@ function testResBundleGetStringOtherBundleesES() {
 }
 
 function testResBundleGetStringOtherBundleesMX() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es-MX"
     });
@@ -280,7 +284,7 @@ function testResBundleGetStringOtherBundleesMX() {
 }
 
 function testResBundleGetStringOtherBundleesMXslang() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es-MX-slang"
     });
@@ -294,7 +298,7 @@ function testResBundleGetStringOtherBundleesMXslang() {
 
 
 function testResBundleGetStringOtherBundlePsuedoRaw() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "raw"
@@ -309,7 +313,7 @@ function testResBundleGetStringOtherBundlePsuedoRaw() {
 }
 
 function testResBundleGetStringOtherBundlePsuedoText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "text"
@@ -324,7 +328,7 @@ function testResBundleGetStringOtherBundlePsuedoText() {
 }
 
 function testResBundleGetStringOtherBundlePsuedoHtml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "html"
@@ -339,7 +343,7 @@ function testResBundleGetStringOtherBundlePsuedoHtml() {
 }
 
 function testResBundleGetStringOtherBundlePsuedoXml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "xml"
@@ -354,7 +358,7 @@ function testResBundleGetStringOtherBundlePsuedoXml() {
 }
 
 function testResBundleGetStringOtherBundlePsuedoDefault() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX"
     });
@@ -368,7 +372,7 @@ function testResBundleGetStringOtherBundlePsuedoDefault() {
 }
 
 function testResBundleGetStringMissingBundlePsuedoHtml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "html"
@@ -383,7 +387,7 @@ function testResBundleGetStringMissingBundlePsuedoHtml() {
 }
 
 function testResBundleGetStringPsuedoHtmlLengthenShort() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "html",
@@ -397,7 +401,7 @@ function testResBundleGetStringPsuedoHtmlLengthenShort() {
 }
 
 function testResBundleGetStringPsuedoHtmlLengthenMedium() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "html",
@@ -411,7 +415,7 @@ function testResBundleGetStringPsuedoHtmlLengthenMedium() {
 }
 
 function testResBundleGetStringPsuedoHtmlLengthenLong() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "html",
@@ -425,7 +429,7 @@ function testResBundleGetStringPsuedoHtmlLengthenLong() {
 }
 
 function testResBundleGetStringPsuedoLeaveHTMLTags() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "html"
@@ -437,7 +441,7 @@ function testResBundleGetStringPsuedoLeaveHTMLTags() {
 }
 
 function testResBundleGetStringPsuedoLeaveHTMLTags2() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "html"
@@ -449,7 +453,7 @@ function testResBundleGetStringPsuedoLeaveHTMLTags2() {
 }
 
 function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "raw"
@@ -461,7 +465,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
 }
 
 function testResBundleGetStringPsuedoNotLeaveHTMLTagsText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "text"
@@ -473,7 +477,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLTagsText() {
 }
 
 function testResBundleGetStringPsuedoLeaveHTMLEntities() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "html"
@@ -485,7 +489,7 @@ function testResBundleGetStringPsuedoLeaveHTMLEntities() {
 }
 
 function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesRaw() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "raw"
@@ -497,7 +501,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesRaw() {
 }
 
 function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "text"
@@ -509,7 +513,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesText() {
 }
 
 function testResBundleGetStringMissingBundlePsuedoXml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "xml"
@@ -524,7 +528,7 @@ function testResBundleGetStringMissingBundlePsuedoXml() {
 }
 
 function testResBundleGetStringPsuedoXmlLengthenShort() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "xml",
@@ -538,7 +542,7 @@ function testResBundleGetStringPsuedoXmlLengthenShort() {
 }
 
 function testResBundleGetStringPsuedoXmlLengthenMedium() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "xml",
@@ -552,7 +556,7 @@ function testResBundleGetStringPsuedoXmlLengthenMedium() {
 }
 
 function testResBundleGetStringPsuedoXmlLengthenLong() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "asdfasdffoobar",
         locale: "zxx-XX",
         type: "xml",
@@ -566,7 +570,7 @@ function testResBundleGetStringPsuedoXmlLengthenLong() {
 }
 
 function testResBundleGetStringPsuedoLeaveXmlTags() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "xml"
@@ -578,7 +582,7 @@ function testResBundleGetStringPsuedoLeaveXmlTags() {
 }
 
 function testResBundleGetStringPsuedoLeaveXmlEntities() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "xml"
@@ -590,7 +594,7 @@ function testResBundleGetStringPsuedoLeaveXmlEntities() {
 }
 
 function testResBundleGetStringWithKeyNamees() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es"
     });
@@ -601,7 +605,7 @@ function testResBundleGetStringWithKeyNamees() {
 }
 
 function testResBundleGetStringWithKeyNameesMX() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es-MX"
     });
@@ -612,7 +616,7 @@ function testResBundleGetStringWithKeyNameesMX() {
 }
 
 function testResBundleGetStringWithKeyNameesMXslang() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "es-MX-slang"
     });
@@ -623,7 +627,7 @@ function testResBundleGetStringWithKeyNameesMXslang() {
 }
 
 function testResBundleGetStringWithKeyNamedeDE() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "de-DE"
     });
@@ -634,7 +638,7 @@ function testResBundleGetStringWithKeyNamedeDE() {
 }
 
 function testResBundleGetStringWithKeyNameUnknown() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "de-DE"
     });
@@ -645,7 +649,7 @@ function testResBundleGetStringWithKeyNameUnknown() {
 }
 
 function testResBundleGetStringRightLocale() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         locale: "de-DE"
     });
     
@@ -657,7 +661,7 @@ function testResBundleGetStringRightLocale() {
 }
 
 function testResBundleGetResObj() {
-    var rb = new ilib.ResBundle({locale: "fr"});
+    var rb = new ResBundle({locale: "fr"});
     
     assertNotNull(rb);
     
@@ -669,7 +673,7 @@ function testResBundleGetResObj() {
 }
 
 function testResBundleGetResObjMerge() {
-    var rb = new ilib.ResBundle({locale: "fr-CA"});
+    var rb = new ResBundle({locale: "fr-CA"});
     
     assertNotNull(rb);
     
@@ -681,7 +685,7 @@ function testResBundleGetResObjMerge() {
 }
 
 function testResBundleGetStringAcceptEmptyTranslations() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -692,7 +696,7 @@ function testResBundleGetStringAcceptEmptyTranslations() {
 }
 
 function testResBundleGetStringNonExistantTranslations() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -704,7 +708,7 @@ function testResBundleGetStringNonExistantTranslations() {
 }
 
 function testResBundleGetStringAcceptSpaceTranslations() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -715,7 +719,7 @@ function testResBundleGetStringAcceptSpaceTranslations() {
 }
 
 function testResBundleGetStringAcceptCommaTranslations() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -726,7 +730,7 @@ function testResBundleGetStringAcceptCommaTranslations() {
 }
 
 function testResBundleGetStringAcceptEmptyTranslationsWithKey() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -737,7 +741,7 @@ function testResBundleGetStringAcceptEmptyTranslationsWithKey() {
 }
 
 function testResBundleGetStringAcceptNonExistantTranslationsWithKey() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -749,7 +753,7 @@ function testResBundleGetStringAcceptNonExistantTranslationsWithKey() {
 }
 
 function testResBundleGetStringAcceptSpaceTranslationsWithKey() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -760,7 +764,7 @@ function testResBundleGetStringAcceptSpaceTranslationsWithKey() {
 }
 
 function testResBundleGetStringAcceptCommaTranslationsWithKey() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	name: "tester",
     	locale: "zh-CN"
     });
@@ -771,7 +775,7 @@ function testResBundleGetStringAcceptCommaTranslationsWithKey() {
 }
 
 function testResBundleGetStringNoResourcesReturnSource() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ"
    });
@@ -782,7 +786,7 @@ function testResBundleGetStringNoResourcesReturnSource() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceHtmlTypeHtml() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "html"
@@ -794,7 +798,7 @@ function testResBundleGetStringNoResourcesReturnSourceHtmlTypeHtml() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceHtmlTypejs() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "js"
@@ -806,7 +810,7 @@ function testResBundleGetStringNoResourcesReturnSourceHtmlTypejs() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceTypejsNoEscape() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "js"
@@ -818,7 +822,7 @@ function testResBundleGetStringNoResourcesReturnSourceTypejsNoEscape() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceTypejsWithEscape() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "js"
@@ -830,7 +834,7 @@ function testResBundleGetStringNoResourcesReturnSourceTypejsWithEscape() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscape() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "html"
@@ -842,7 +846,7 @@ function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscape() {
 }
 
 function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscapeJS() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
      name: "tester",
      locale: "zz-ZZ",
      type: "html"
@@ -854,7 +858,7 @@ function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscapeJS() {
 }
 
 function testResBundleGetStringPsuedoHtmlNoEscape() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "asdfasdffoobar",
        locale: "zxx-XX",
        type: "html"
@@ -866,7 +870,7 @@ function testResBundleGetStringPsuedoHtmlNoEscape() {
 }
 
 function testResBundleGetStringPsuedoHtmlEscapeHtml() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "asdfasdffoobar",
        locale: "zxx-XX",
        type: "html"
@@ -878,7 +882,7 @@ function testResBundleGetStringPsuedoHtmlEscapeHtml() {
 }
 
 function testResBundleGetStringPsuedoHtmlEscapeJS() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "asdfasdffoobar",
        locale: "zxx-XX",
        type: "html"
@@ -890,7 +894,7 @@ function testResBundleGetStringPsuedoHtmlEscapeJS() {
 }
 
 function testResBundleContainsKeyByKeyTrue() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -901,7 +905,7 @@ function testResBundleContainsKeyByKeyTrue() {
 }
 
 function testResBundleContainsKeyByKeyFalse() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -912,7 +916,7 @@ function testResBundleContainsKeyByKeyFalse() {
 }
 
 function testResBundleContainsKeyBySourceTrue() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -923,7 +927,7 @@ function testResBundleContainsKeyBySourceTrue() {
 }
 
 function testResBundleContainsKeyBySourceFalse() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -934,7 +938,7 @@ function testResBundleContainsKeyBySourceFalse() {
 }
 
 function testResBundleContainsKeyBySourceMakeKey() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -945,7 +949,7 @@ function testResBundleContainsKeyBySourceMakeKey() {
 }
 
 function testResBundleContainsKeyBothUndefined() {
-   var rb = new ilib.ResBundle({
+   var rb = new ResBundle({
        name: "strings",
        locale: "de-DE"
    });
@@ -957,8 +961,8 @@ function testResBundleContainsKeyBothUndefined() {
 
 function testResBundleConstructAsynchPreassembled() {
 	var onloadcalled = false;
-	ilib.ResBundle.resources = undefined;
-    var rb = new ilib.ResBundle({
+	ResBundle.resources = undefined;
+    var rb = new ResBundle({
     	locale: "fr-CA-govt",
     	sync: false,
     	onLoad: function(rb) {
@@ -978,7 +982,7 @@ function testResBundleConstructAsynchPreassembled() {
 
 function testResBundleConstructAsynchPreassembledCached() {
 	var onloadcalled = false;
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "fr-CA-govt",
     	sync: false,
     	onLoad: function(rb) {
@@ -1029,9 +1033,9 @@ function testResBundleConstructAsynchDynamic() {
 		return;
 	}
 	var onloadcalled = false;
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "de-DE-SAP",
     	name: "foobar",
     	sync: false,
@@ -1057,9 +1061,9 @@ function testResBundleConstructSynchDynamic() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "de-DE-SAP",
     	name: "foobar"
     });
@@ -1079,9 +1083,9 @@ function testResBundleConstructAsynchDynamicDefaultName() {
 		return;
 	}
 	var onloadcalled = false;
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "fr-CA-govt",
     	sync: false,
     	onLoad: function(rb) {
@@ -1106,9 +1110,9 @@ function testResBundleConstructSynchDynamicDefaultName() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "fr-CA-govt"
     });
     
@@ -1127,9 +1131,9 @@ function testResBundleConstructAsynchDynamicNoStrings() {
 		return;
 	}
 	var onloadcalled = false;
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "de-DE-SAP",
     	name: "asdf", // doesn't exist
     	sync: false,
@@ -1155,9 +1159,9 @@ function testResBundleConstructSynchDynamicNoStrings() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.ResBundle.cache = {};
+	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale: "de-DE-SAP",
     	name: "asdf" // doesn't exist
     });
@@ -1172,7 +1176,7 @@ function testResBundleConstructSynchDynamicNoStrings() {
 
 
 function testResBundleGetStringCyrlPsuedoRaw() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Cyrl-XX",
         type: "raw"
@@ -1187,7 +1191,7 @@ function testResBundleGetStringCyrlPsuedoRaw() {
 }
 
 function testResBundleGetStringCyrlPsuedoText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Cyrl-XX",
         type: "text"
@@ -1202,7 +1206,7 @@ function testResBundleGetStringCyrlPsuedoText() {
 }
 
 function testResBundleGetStringCyrlPsuedoHtml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Cyrl-XX",
         type: "html"
@@ -1217,7 +1221,7 @@ function testResBundleGetStringCyrlPsuedoHtml() {
 }
 
 function testResBundleGetStringCyrlPsuedoXml() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Cyrl-XX",
         type: "xml"
@@ -1232,7 +1236,7 @@ function testResBundleGetStringCyrlPsuedoXml() {
 }
 
 function testResBundleGetStringCyrlPsuedoDefault() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Cyrl-XX"
     });
@@ -1246,7 +1250,7 @@ function testResBundleGetStringCyrlPsuedoDefault() {
 }
 
 function testResBundleGetStringHansPsuedoText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Hans-XX",
         type: "text"
@@ -1262,7 +1266,7 @@ function testResBundleGetStringHansPsuedoText() {
 }
 
 function testResBundleGetStringHebrPsuedoText() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-Hebr-XX",
         type: "text"
@@ -1278,7 +1282,7 @@ function testResBundleGetStringHebrPsuedoText() {
 
 
 function testResBundleGetStringMissingWrongValue() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         missing: "foo"
@@ -1290,7 +1294,7 @@ function testResBundleGetStringMissingWrongValue() {
 }
 
 function testResBundleGetStringMissingRightValue1() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         missing: "pseudo"
@@ -1302,7 +1306,7 @@ function testResBundleGetStringMissingRightValue1() {
 }
 
 function testResBundleGetStringMissingRightValue2() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         missing: "source"
@@ -1314,7 +1318,7 @@ function testResBundleGetStringMissingRightValue2() {
 }
 
 function testResBundleGetStringMissingRightValue3() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         missing: "empty"
@@ -1326,7 +1330,7 @@ function testResBundleGetStringMissingRightValue3() {
 }
 
 function testResBundleGetStringCyrlMissingRawSource() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         type: "raw",
@@ -1341,7 +1345,7 @@ function testResBundleGetStringCyrlMissingRawSource() {
 }
 
 function testResBundleGetStringCyrlMissingRawPseudo() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         type: "raw",
@@ -1356,7 +1360,7 @@ function testResBundleGetStringCyrlMissingRawPseudo() {
 }
 
 function testResBundleGetStringCyrlMissingRawEmpty() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         type: "raw",
@@ -1371,7 +1375,7 @@ function testResBundleGetStringCyrlMissingRawEmpty() {
 }
 
 function testResBundleGetStringLatnMissingPsuedo() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "de-DE",
         missing: "pseudo"
@@ -1386,7 +1390,7 @@ function testResBundleGetStringLatnMissingPsuedo() {
 }
 
 function testResBundleGetStringCyrlMissingPsuedo() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "ru-RU",
         missing: "pseudo"
@@ -1401,7 +1405,7 @@ function testResBundleGetStringCyrlMissingPsuedo() {
 }
 
 function testResBundleGetStringHebrMissingPsuedo() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "he-IL",
         missing: "pseudo"
@@ -1416,7 +1420,7 @@ function testResBundleGetStringHebrMissingPsuedo() {
 }
 
 function testResBundleGetStringHansMissingPsuedo() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2",
         locale: "zh-Hans-CN",
         missing: "pseudo"
@@ -1432,7 +1436,7 @@ function testResBundleGetStringHansMissingPsuedo() {
 }
 
 function testResBundleGetStringWithSpaces() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2"
     });
     
@@ -1442,7 +1446,7 @@ function testResBundleGetStringWithSpaces() {
 }
 
 function testResBundleGetStringCompressSpaces() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2"
     });
     
@@ -1452,7 +1456,7 @@ function testResBundleGetStringCompressSpaces() {
 }
 
 function testResBundleGetStringConvertAllWhiteToSpaces() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2"
     });
     
@@ -1462,7 +1466,7 @@ function testResBundleGetStringConvertAllWhiteToSpaces() {
 }
 
 function testResBundleGetStringCompressSpacesEnd() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2"
     });
     
@@ -1472,7 +1476,7 @@ function testResBundleGetStringCompressSpacesEnd() {
 }
 
 function testResBundleGetStringCompressSpacesBeginning() {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester2"
     });
     
@@ -1484,7 +1488,7 @@ function testResBundleGetStringCompressSpacesBeginning() {
 function testResBundlePseudo_euES() {
 	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("eu-ES");
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale:'eu-ES'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
@@ -1494,7 +1498,7 @@ function testResBundlePseudo_euES() {
 function testResBundlePseudo_psAF() {
 	ilib.clearPseudoLocales();
 	ilib.setAsPseudoLocale("ps-AF");
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale:'ps-AF'
     });
     assertEquals("טהִס ִס פסֶֻדֹ סטרִנג טֶסט", rb.getString("This is psuedo string test").toString());
@@ -1504,7 +1508,7 @@ function testResBundlePseudo_psAF() {
 function testResBundlePseudo_deDE() {
 	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("de-DE");
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale:'de-DE'
     });
     assertEquals("Ťĥíš íš þšüëðõ šţŕíñğ ţëšţ", rb.getString("This is psuedo string test").toString());
@@ -1520,7 +1524,7 @@ function testResBundlePseudoReallyThere() {
 }
 
 function testResBundlePseudoIsPseudo() {
-	var loc = new ilib.Locale("de-DE");
+	var loc = new Locale("de-DE");
 	ilib.clearPseudoLocales();
 	assertFalse(loc.isPseudo());
     ilib.setAsPseudoLocale("de-DE");
@@ -1531,7 +1535,7 @@ function testResBundlePseudoIsPseudo() {
 function testResBundlePsuedo_EMPTY() {
 	ilib.clearPseudoLocales();
     ilib.setAsPseudoLocale("");
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
     	locale:""
     });
     assertEquals("This is psuedo string test", rb.getString("This is psuedo string test").toString());
@@ -1556,7 +1560,7 @@ function testResBundlePsuedoUndefinedNothingAdded() {
 }
 
 function testClearPseudoLocalesOldOnesGone() {
-	var loc = new ilib.Locale("de-DE");
+	var loc = new Locale("de-DE");
 	ilib.setAsPseudoLocale("de-DE");
 	assertTrue(loc.isPseudo());
 	
@@ -1568,13 +1572,13 @@ function testClearPseudoLocalesOldOnesGone() {
 function testClearResetToDefaults() {
     ilib.clearPseudoLocales();
 
-	var loc = new ilib.Locale("zxx-XX");
+	var loc = new Locale("zxx-XX");
     assertTrue(loc.isPseudo());
     
-    loc = new ilib.Locale("zxx-Hans-XX");
+    loc = new Locale("zxx-Hans-XX");
     assertTrue(loc.isPseudo());
-    loc = new ilib.Locale("zxx-Cyrl-XX");
+    loc = new Locale("zxx-Cyrl-XX");
     assertTrue(loc.isPseudo());
-    loc = new ilib.Locale("zxx-Hebr-XX");
+    loc = new Locale("zxx-Hebr-XX");
     assertTrue(loc.isPseudo());
 }

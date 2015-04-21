@@ -17,50 +17,53 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var NumberingPlan = require("./../lib/NumberingPlan.js");
+
 function testGet1() {
-	var plan = new ilib.NumPlan({locale: "en-US"});
+	var plan = new NumberingPlan({locale: "en-US"});
 	assertNotUndefined(plan);
 	assertEquals("US", plan.getName());
 }
 
 function testGet2() {
-	var plan = new ilib.NumPlan({locale: "de-DE"});
+	var plan = new NumberingPlan({locale: "de-DE"});
 	assertNotUndefined(plan);
 	assertEquals("DE", plan.getName());
 };
 
 function testGetUnknown() {
-	var plan = new ilib.NumPlan({locale: "unknown-unknown"});
+	var plan = new NumberingPlan({locale: "unknown-unknown"});
 	assertNotUndefined(plan);
 	assertEquals("XX", plan.getName());
 };
 
 function testGetUnrecognized () {
-	var plan = new ilib.NumPlan({locale: "zu-ZZ"});
+	var plan = new NumberingPlan({locale: "zu-ZZ"});
 	assertNotUndefined(plan);
 	assertEquals("XX", plan.getName());
 };
 
 function testGetDefault() {
-	var plan = new ilib.NumPlan({});
+	var plan = new NumberingPlan({});
 	assertNotUndefined(plan);
 	assertEquals("US", plan.getName());
 };
 
 function testGetContextFreeContent() {
-	var plan = new ilib.NumPlan({locale: "en-GB"});
+	var plan = new NumberingPlan({locale: "en-GB"});
 	assertNotUndefined(plan);
 	assertEquals(false, plan.getContextFree());
 };
 
 function testGetContextFreeContent() {
-	var plan = new ilib.NumPlan({locale: "en-US"});
+	var plan = new NumberingPlan({locale: "en-US"});
 	assertNotUndefined(plan);
 	assertEquals(undefined, plan.getContextFree());
 };
 
 function testRightContents() {
-	var plan = new ilib.NumPlan({locale: "en-US"});
+	var plan = new NumberingPlan({locale: "en-US"});
 	assertNotUndefined(plan);
 	assertEquals("US", plan.getName());
 	assertEquals("1", plan.getTrunkCode());
@@ -95,10 +98,10 @@ function testNumPlanLoadLocaleDataSynch() {
 		return;
 	}
 	
-	ilib.NumPlan.cache = {};
+	NumberingPlan.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	new ilib.NumPlan({
+	new NumberingPlan({
 		locale: "en-US",
 		sync: false,
 		onLoad: function (plan) {

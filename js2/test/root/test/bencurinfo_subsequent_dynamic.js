@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var Currency = require("./../lib/Currency.js");
 function testCurrencyConstructorEmptySubsequent(results) {
-    new ilib.Currency();
+    new Currency();
 
     var tt = new TimedTest({
 		name: "Currency-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.Currency();
+		    var fmt = new Currency();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testCurrencyConstructorEmptySubsequent(results) {
 }
 
 function testCurrencyConstructorRealSubsequent(results) {
-	new ilib.Currency({
+	new Currency({
 		code: "USD"
 	});
 
@@ -41,7 +42,7 @@ function testCurrencyConstructorRealSubsequent(results) {
 		name: "Currency-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				code: "USD"
 			});
 		    assertNotNull(fmt);
@@ -52,7 +53,7 @@ function testCurrencyConstructorRealSubsequent(results) {
 }
 
 function testCurrencyConstructorBySignSubsequent(results) {
-	new ilib.Currency({
+	new Currency({
 		sign: "$"
 	});
 
@@ -60,7 +61,7 @@ function testCurrencyConstructorBySignSubsequent(results) {
 		name: "Currency-dynamic-bysign-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				sign: "$"
 			});
 		    assertNotNull(fmt);

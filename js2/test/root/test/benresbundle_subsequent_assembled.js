@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ResBundle = require("./../lib/ResBundle.js");
 ilib.data.strings = {
     "first string": "first",
     "second string": "second",
@@ -99,12 +101,12 @@ ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
 ilib.data.pseudomap = {"a":"à","c":"ç","d":"ð","e":"ë","g":"ğ","h":"ĥ","i":"í","j":"ĵ","k":"ķ","l":"ľ","n":"ñ","o":"õ","p":"þ","r":"ŕ","s":"š","t":"ţ","u":"ü","w":"ŵ","y":"ÿ","z":"ž","A":"Ã","B":"ß","C":"Ç","D":"Ð","E":"Ë","G":"Ĝ","H":"Ħ","I":"Ï","J":"Ĵ","K":"ĸ","L":"Ľ","N":"Ň","O":"Ø","R":"Ŗ","S":"Š","T":"Ť","U":"Ú","W":"Ŵ","Y":"Ŷ","Z":"Ż"};
 
 function testResBundleConstructorEmptySubsequent(results) {
-	new ilib.ResBundle(); // burn the initial iteration
+	new ResBundle(); // burn the initial iteration
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle();
+			var rb = new ResBundle();
 		    assertNotNull(rb);
 		}
 	});
@@ -114,14 +116,14 @@ function testResBundleConstructorEmptySubsequent(results) {
 
 function testResBundleConstructorRealSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		locale: "de-DE"
 	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				locale: "de-DE"
 			});
 		    assertNotNull(rb);
@@ -133,14 +135,14 @@ function testResBundleConstructorRealSubsequent(results) {
 
 function testResBundleConstructorNonexistentSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		locale: "ja-JP"
 	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				locale: "ja-JP"
 			});
 		    assertNotNull(rb);
@@ -152,14 +154,14 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 
 function testResBundleConstructorOtherFileSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		name: "tester"
 	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-otherfile-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "tester"
 			});
 		    assertNotNull(rb);
@@ -171,7 +173,7 @@ function testResBundleConstructorOtherFileSubsequent(results) {
 
 function testResBundleConstructorOtherComplexSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		name: "tester",
 		locale: "es-MX-slang"
 	});
@@ -179,7 +181,7 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 		name: "ResBundle-assembled-otherfile-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "tester",
 				locale: "es-MX-slang"
 			});
@@ -197,7 +199,7 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 
 
 function testResBundleGetstringDefault(results) {
-	var rb = new ilib.ResBundle();
+	var rb = new ResBundle();
     assertNotNull(rb);
 
 	// burn the initial iteration
@@ -215,7 +217,7 @@ function testResBundleGetstringDefault(results) {
 }
 
 function testResBundleGetstringNormal(results) {
-	var rb = new ilib.ResBundle({
+	var rb = new ResBundle({
 		locale: "de-DE"
 	});
     assertNotNull(rb);
@@ -234,7 +236,7 @@ function testResBundleGetstringNormal(results) {
 }
 
 function testResBundleGetstringComplex(results) {
-	var rb = new ilib.ResBundle({
+	var rb = new ResBundle({
 		name: "tester",
 		locale: "es-MX-slang"
 	});
@@ -254,7 +256,7 @@ function testResBundleGetstringComplex(results) {
 }
 
 function testResBundleGetstringPseudo(results) {
-	var rb = new ilib.ResBundle({
+	var rb = new ResBundle({
 		locale: "zxx-XX"
 	});
     assertNotNull(rb);
@@ -273,7 +275,7 @@ function testResBundleGetstringPseudo(results) {
 }
 
 function testResBundleGetStringOtherBundlePsuedoRaw(results) {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "raw"
@@ -294,7 +296,7 @@ function testResBundleGetStringOtherBundlePsuedoRaw(results) {
 }
 
 function testResBundleGetStringOtherBundlePsuedoText(results) {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "text"
@@ -315,7 +317,7 @@ function testResBundleGetStringOtherBundlePsuedoText(results) {
 }
 
 function testResBundleGetStringOtherBundlePsuedoHtml(results) {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "html"
@@ -336,7 +338,7 @@ function testResBundleGetStringOtherBundlePsuedoHtml(results) {
 }
 
 function testResBundleGetStringOtherBundlePsuedoXml(results) {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "tester",
         locale: "zxx-XX",
         type: "xml"

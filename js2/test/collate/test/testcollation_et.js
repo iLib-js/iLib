@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Collator = require("./../lib/Collator.js");
+
 function testJSCollatorQuatS_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -32,7 +34,7 @@ function testJSCollatorQuatS_et() {
 }
 
 function testJSCollatorQuatZ_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -46,7 +48,7 @@ function testJSCollatorQuatZ_et() {
 }
 
 function testJSCollatorQuatOAOU_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -64,7 +66,7 @@ function testJSCollatorQuatOAOU_et() {
 }
 
 function testJSCollatorPrimaryS_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary",
@@ -79,7 +81,7 @@ function testJSCollatorPrimaryS_et() {
 }
 
 function testJSCollatorPrimaryZ_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary",
@@ -94,7 +96,7 @@ function testJSCollatorPrimaryZ_et() {
 }
 
 function testJSCollatorPrimaryOAOU_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary",
@@ -113,7 +115,7 @@ function testJSCollatorPrimaryOAOU_et() {
 }
 
 function testJSCollatorQuatLowerS_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -127,7 +129,7 @@ function testJSCollatorQuatLowerS_et() {
 }
 
 function testJSCollatorQuatLowerZ_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -141,7 +143,7 @@ function testJSCollatorQuatLowerZ_et() {
 }
 
 function testJSCollatorQuatoLowerOAOU_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -159,7 +161,7 @@ function testJSCollatorQuatoLowerOAOU_et() {
 }
 
 function testJSCollatorPrimaryLowerS_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary"
@@ -173,7 +175,7 @@ function testJSCollatorPrimaryLowerS_et() {
 }
 
 function testJSCollatorPrimaryLowerZ_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary",
@@ -188,7 +190,7 @@ function testJSCollatorPrimaryLowerZ_et() {
 }
 
 function testJSCollatorPrimaryLowerOAOU_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "primary",
@@ -207,7 +209,7 @@ function testJSCollatorPrimaryLowerOAOU_et() {
 }
 
 function testCollatorNativeCase_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "case",
@@ -259,7 +261,7 @@ function testCollatorNativeCase_et() {
 }
 
 function testCollatorNativeVariant_et() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "et-EE",
 		useNative: false,
 		sensitivity: "variant",

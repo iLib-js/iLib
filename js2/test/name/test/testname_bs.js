@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_bs() {
-	var parsed = new ilib.Name("Derviš Sušić", {locale: 'bs-BA'});
+	var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_bs() {
 
 
 function testParseAdjunctNames_bs() {
-	var parsed = new ilib.Name("Derviš Sušić", {locale: 'bs-BA'});
+	var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -45,7 +47,7 @@ function testParseAdjunctNames_bs() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_bs() {
-	var parsed = new ilib.Name("Gospodin i Gospođica Sušić", {locale: 'bs-BA'});
+	var parsed = new Name("Gospodin i Gospođica Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -58,7 +60,7 @@ function testParseSingleNameWithPrefixAndAdjunct_bs() {
 
 
 function testParseTitle_bs() {
-	var parsed = new ilib.Name("Derviš Sušić viši", {locale: 'bs-BA'});
+	var parsed = new Name("Derviš Sušić viši", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -73,7 +75,7 @@ function testParseTitle_bs() {
 
 
 function testParseTitleWithFamilyOnly_bs() {
-	var parsed = new ilib.Name("predsjednik Sušić", {locale: 'bs-BA'});
+	var parsed = new Name("predsjednik Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -87,7 +89,7 @@ function testParseTitleWithFamilyOnly_bs() {
 
 
 function testParseEverything_bs() {
-	var parsed = new ilib.Name("predsjednik Derviš Sušić", {locale: 'bs-BA'});
+	var parsed = new Name("predsjednik Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -105,11 +107,11 @@ function testParseEverything_bs() {
  */
 
 function testFormatSimpleNameShort_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Derviš",
 		familyName: "Sušić"  
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bs-BA'
 	});
@@ -122,11 +124,11 @@ function testFormatSimpleNameShort_bs() {
 };
 
 function testFormatSimpleNameMedium_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Derviš",
 		familyName: "Sušić"  
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bs-BA'
 	});
@@ -139,13 +141,13 @@ function testFormatSimpleNameMedium_bs() {
 };
 
 function testFormatSimpleNameLong_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Derviš",
 		
 		familyName: "Sušić"  ,
 		suffix: "viši"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'bs-BA'
 	});
@@ -158,13 +160,13 @@ function testFormatSimpleNameLong_bs() {
 };
 
 function testFormatSimpleNameFull_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Gospodin",
 		givenName: "Derviš",
 		familyName: "Sušić"  ,
 		suffix: "viši"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'bs-BA'
 	});
@@ -177,12 +179,12 @@ function testFormatSimpleNameFull_bs() {
 };
 
 function testFormatComplexNameShort_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Gospodin",
 		givenName: "Derviš",
 		familyName: "Sušić"  
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bs-BA'
 	});
@@ -195,12 +197,12 @@ function testFormatComplexNameShort_bs() {
 };
 
 function testFormatComplexNameMedium_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Gospodin",
 		givenName: "Derviš",
 		familyName: "Sušić"  
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bs-BA'
 	});
@@ -213,12 +215,12 @@ function testFormatComplexNameMedium_bs() {
 };
 
 function testFormatComplexNameLong_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Gospodin",
 		givenName: "Derviš",
 		familyName: "Sušić"  
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'bs-BA'
 	});
@@ -231,12 +233,12 @@ function testFormatComplexNameLong_bs() {
 };
 
 function testFormatAsianNameShort_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bs-BA'
 	});
@@ -249,12 +251,12 @@ function testFormatAsianNameShort_bs() {
 };
 
 function testFormatAsianNameMedium_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bs-BA'
 	});
@@ -267,12 +269,12 @@ function testFormatAsianNameMedium_bs() {
 };
 
 function testFormatAsianNameLong_bs() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'bs-BA'
 	});

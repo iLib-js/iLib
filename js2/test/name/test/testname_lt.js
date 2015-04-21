@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_lt_LT() {
-	var parsed = new ilib.Name("Gediminas Baravykas", {locale: 'lt-LT'});
+	var parsed = new Name("Gediminas Baravykas", {locale: 'lt-LT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_lt_LT() {
 
 
 function testParseTitle_lt_LT() {
-	var parsed = new ilib.Name("Gediminas Baravykas jaunesnysis", {locale: 'lt-LT'});
+	var parsed = new Name("Gediminas Baravykas jaunesnysis", {locale: 'lt-LT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_lt_LT() {
 
 
 function testParseTitleWithFamilyOnly_lt_LT() {
-	var parsed = new ilib.Name("inspektorius Baravykas", {locale: 'lt-LT'});
+	var parsed = new Name("inspektorius Baravykas", {locale: 'lt-LT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_lt_LT() {
 
 
 function testParseEverything_lt_LT() {
-	var parsed = new ilib.Name("ponas ir ponia Baravykas", {locale: 'lt-LT'});
+	var parsed = new Name("ponas ir ponia Baravykas", {locale: 'lt-LT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_lt_LT() {
 };
 
 function testParseprefix_lt_LT() {
-	var parsed = new ilib.Name("ponas Gediminas Baravykas", {locale: 'lt-LT'});
+	var parsed = new Name("ponas Gediminas Baravykas", {locale: 'lt-LT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_lt_LT() {
  */
 
 function testFormatSimpleNameShort_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Gediminas",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'lt-LT'
 	});
@@ -106,11 +108,11 @@ function testFormatSimpleNameShort_lt_LT() {
 };
 
 function testFormatSimpleNameMedium_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Gediminas",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'lt-LT'
 	});
@@ -123,12 +125,12 @@ function testFormatSimpleNameMedium_lt_LT() {
 };
 
 function testFormatSimpleNameLong_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Gediminas",
 		familyName: "Baravykas",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'lt-LT'
 	});
@@ -141,11 +143,11 @@ function testFormatSimpleNameLong_lt_LT() {
 };
 
 function testFormatSurname_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ponas ir ponia",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'lt-LT'
 	});
@@ -158,13 +160,13 @@ function testFormatSurname_lt_LT() {
 };
 
 function testFormatSimpleNameFull_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "profesorius",
 		givenName: "Gediminas",
 		familyName: "Baravykas",
 		suffix: "daktaro"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'lt-LT'
 	});
@@ -177,12 +179,12 @@ function testFormatSimpleNameFull_lt_LT() {
 };
 
 function testFormatComplexNameShort_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "profesorius",
 		givenName: "Gediminas",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'lt-LT'
 	});
@@ -195,12 +197,12 @@ function testFormatComplexNameShort_lt_LT() {
 };
 
 function testFormatComplexNameMedium_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "profesorius",
 		givenName: "Gediminas",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'lt-LT'
 	});
@@ -213,12 +215,12 @@ function testFormatComplexNameMedium_lt_LT() {
 };
 
 function testFormatComplexNameLong_lt_LT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "profesorius",
 		givenName: "Gediminas",
 		familyName: "Baravykas"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'lt-LT'
 	});

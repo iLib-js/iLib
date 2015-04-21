@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_nb_NO() {
-	var parsed = new ilib.Name("Maria Bonnevie", {locale: 'nb-NO'});
+	var parsed = new Name("Maria Bonnevie", {locale: 'nb-NO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -31,7 +33,7 @@ function testParseSimpleName_nb_NO() {
 
 
 function testParseTitle_nb_NO() {
-	var parsed = new ilib.Name("Maria Bonnevie pensjonert", {locale: 'nb-NO'});
+	var parsed = new Name("Maria Bonnevie pensjonert", {locale: 'nb-NO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -46,7 +48,7 @@ function testParseTitle_nb_NO() {
 
 
 function testParseTitleWithFamilyOnly_nb_NO() {
-	var parsed = new ilib.Name("Mrs. Bonnevie", {locale: 'nb-NO'});
+	var parsed = new Name("Mrs. Bonnevie", {locale: 'nb-NO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -60,7 +62,7 @@ function testParseTitleWithFamilyOnly_nb_NO() {
 
 
 function testParseEverything_nb_NO() {
-	var parsed = new ilib.Name("Mr. og Mrs. Bonnevie", {locale: 'nb-NO'});
+	var parsed = new Name("Mr. og Mrs. Bonnevie", {locale: 'nb-NO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -72,7 +74,7 @@ function testParseEverything_nb_NO() {
 };
 
 function testParseprefix_nb_NO() {
-	var parsed = new ilib.Name("Mrs. Maria Bonnevie", {locale: 'nb-NO'});
+	var parsed = new Name("Mrs. Maria Bonnevie", {locale: 'nb-NO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -88,11 +90,11 @@ function testParseprefix_nb_NO() {
  */
 
 function testFormatSimpleNameShort_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maria",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'nb-NO'
 	});
@@ -105,11 +107,11 @@ function testFormatSimpleNameShort_nb_NO() {
 };
 
 function testFormatSimpleNameMedium_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maria",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'nb-NO'
 	});
@@ -122,12 +124,12 @@ function testFormatSimpleNameMedium_nb_NO() {
 };
 
 function testFormatSimpleNameLong_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maria",
 		familyName: "Bonnevie",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'nb-NO'
 	});
@@ -142,11 +144,11 @@ function testFormatSimpleNameLong_nb_NO() {
 
 
 function testFormatSurname_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr. og Mrs.",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'nb-NO'
 	});
@@ -159,13 +161,13 @@ function testFormatSurname_nb_NO() {
 };
 
 function testFormatSimpleNameFull_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "vice president",
 		givenName: "Maria",
 		familyName: "Bonnevie",
 		suffix: "pensjonert"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'nb-NO'
 	});
@@ -178,12 +180,12 @@ function testFormatSimpleNameFull_nb_NO() {
 };
 
 function testFormatComplexNameShort_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "vice president",
 		givenName: "Maria",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'nb-NO'
 	});
@@ -196,12 +198,12 @@ function testFormatComplexNameShort_nb_NO() {
 };
 
 function testFormatComplexNameMedium_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "vice president",
 		givenName: "Maria",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'nb-NO'
 	});
@@ -214,12 +216,12 @@ function testFormatComplexNameMedium_nb_NO() {
 };
 
 function testFormatComplexNameLong_nb_NO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "vice president",
 		givenName: "Maria",
 		familyName: "Bonnevie"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'nb-NO'
 	});

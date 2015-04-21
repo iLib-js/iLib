@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var NumFmt = require("./../lib/NumFmt.js");
 function testNumFmtConstructorEmptySubsequent(results) {
-    new ilib.NumFmt();
+    new NumFmt();
 
     var tt = new TimedTest({
 		name: "NumFmt-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.NumFmt();
+		    var fmt = new NumFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testNumFmtConstructorEmptySubsequent(results) {
 }
 
 function testNumFmtConstructorRealSubsequent(results) {
-	new ilib.NumFmt({
+	new NumFmt({
 		locale: "de-DE"
 	});
 
@@ -41,7 +42,7 @@ function testNumFmtConstructorRealSubsequent(results) {
 		name: "NumFmt-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -52,7 +53,7 @@ function testNumFmtConstructorRealSubsequent(results) {
 }
 
 function testNumFmtConstructorNonexistentSubsequent(results) {
-	new ilib.NumFmt({
+	new NumFmt({
 		locale: "xx-YY"
 	});
 
@@ -60,7 +61,7 @@ function testNumFmtConstructorNonexistentSubsequent(results) {
 		name: "NumFmt-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);

@@ -16,9 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 /* Calling from US*/
 function testNANPUStoTaiwan() {
-	var parsed = new ilib.PhoneNumber("011 886 2 3210 3210");
+	var parsed = new PhoneNumber("011 886 2 3210 3210");
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -31,7 +33,7 @@ function testNANPUStoTaiwan() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -43,7 +45,7 @@ function testNANPUStoTaiwan() {
 };
 
 function testTWLocalNumber2() {
-	var parsed = new ilib.PhoneNumber("212-3456",{locale: "en-US"});
+	var parsed = new PhoneNumber("212-3456",{locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -52,7 +54,7 @@ function testTWLocalNumber2() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "tw-TW"});
+	var locator = new PhoneGeoLocator({locale: "tw-TW"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -62,7 +64,7 @@ function testTWLocalNumber2() {
 };
 
 function testTWNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("(89) 456-7890",{locale: "en-US"});
+	var parsed = new PhoneNumber("(89) 456-7890",{locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -75,7 +77,7 @@ function testTWNumberWithAreaCode1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'tw-TW'});
+	var locator = new PhoneGeoLocator({locale: 'tw-TW'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -86,7 +88,7 @@ function testTWNumberWithAreaCode1() {
 };
 
 function testTWNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("(49)212-3456",{locale: "en-US"});
+	var parsed = new PhoneNumber("(49)212-3456",{locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -99,7 +101,7 @@ function testTWNumberWithAreaCode2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'tw-TW'});
+	var locator = new PhoneGeoLocator({locale: 'tw-TW'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -110,7 +112,7 @@ function testTWNumberWithAreaCode2() {
 };
 
 function testTWNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+886-49-312-3456");
+	var parsed = new PhoneNumber("+886-49-312-3456");
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -123,7 +125,7 @@ function testTWNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KO'});
+	var locator = new PhoneGeoLocator({locale: 'ko-KO'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -133,7 +135,7 @@ function testTWNumberWithAreaCodeAndCountry1() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
  function testTWNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+886-49-32-456-1");
+	var parsed = new PhoneNumber("+886-49-32-456-1");
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -146,7 +148,7 @@ function testTWNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -157,7 +159,7 @@ function testTWNumberWithAreaCodeAndCountry1() {
 };
 
 function testTWNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+886-2-212-3456");
+	var parsed = new PhoneNumber("+886-2-212-3456");
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -170,7 +172,7 @@ function testTWNumberWithAreaCodeAndCountry3() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -181,7 +183,7 @@ function testTWNumberWithAreaCodeAndCountry3() {
 };
 
 function testTWNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 886-812-212-3456");
+	var parsed = new PhoneNumber("011 886-812-212-3456");
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -194,7 +196,7 @@ function testTWNumberCallFromUS() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -205,7 +207,7 @@ function testTWNumberCallFromUS() {
 };
 
 function testTWNumberWithAreaCodeAndCountry4() {
-	var parsed = new ilib.PhoneNumber("+886-37-212-3456");
+	var parsed = new PhoneNumber("+886-37-212-3456");
 	var expected = {
 		country: {
 			sn: "Taïwan",
@@ -218,7 +220,7 @@ function testTWNumberWithAreaCodeAndCountry4() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -229,7 +231,7 @@ function testTWNumberWithAreaCodeAndCountry4() {
 };
 
 function testTWPolice() {
-	var parsed = new ilib.PhoneNumber("112",{locale: "tw-TW"});
+	var parsed = new PhoneNumber("112",{locale: "tw-TW"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -241,7 +243,7 @@ function testTWPolice() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "tw-TW"});
+	var locator = new PhoneGeoLocator({locale: "tw-TW"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -253,7 +255,7 @@ function testTWPolice() {
 };
 
 function testTWFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("119",{locale: "tw-TW"});
+	var parsed = new PhoneNumber("119",{locale: "tw-TW"});
 	var expected = {
 		country: {
 			sn: "Taiwan",
@@ -265,7 +267,7 @@ function testTWFireAndAmbulance() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "tw-TW"});
+	var locator = new PhoneGeoLocator({locale: "tw-TW"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

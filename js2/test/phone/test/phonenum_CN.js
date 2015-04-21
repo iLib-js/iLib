@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testParseCNFull(){
-	var parsed = new ilib.PhoneNumber("01012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12345678"
@@ -32,10 +33,10 @@ function testParseCNFull(){
 };
 
 function testParseCNFull2(){
-	var parsed = new ilib.PhoneNumber("08081123456", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("08081123456", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "8081",
 		subscriberNumber: "123456"
@@ -46,10 +47,10 @@ function testParseCNFull2(){
 };
 
 function testParseCNIgnoreFormatting(){
-	var parsed = new ilib.PhoneNumber("010-12345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("010-12345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12345678"
@@ -60,10 +61,10 @@ function testParseCNIgnoreFormatting(){
 };
 
 function testParseCNIgnoreCrap(){
-	var parsed = new ilib.PhoneNumber("01%0@-12$&34!56^7(8", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01%0@-12$&34!56^7(8", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12345678"
@@ -74,10 +75,10 @@ function testParseCNIgnoreCrap(){
 };
 
 function testParseCNLocalNumber(){
-	var parsed = new ilib.PhoneNumber("87654321", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("87654321", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "87654321"
 	}, {locale: "zh-CN"});
 	
@@ -86,10 +87,10 @@ function testParseCNLocalNumber(){
 };
 
 function testParseCNPlusIDDToGB(){
-	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+442012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "20",
@@ -101,10 +102,10 @@ function testParseCNPlusIDDToGB(){
 };
 
 function testParseCNZerosIDDToGB(){
-	var parsed = new ilib.PhoneNumber("00442012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("00442012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "44",
 		areaCode: "20",
@@ -116,10 +117,10 @@ function testParseCNZerosIDDToGB(){
 };
 
 function testParseCNPlusIDDToGBLongArea(){
-	var parsed = new ilib.PhoneNumber("+441997123456", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+441997123456", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "1997",
@@ -131,10 +132,10 @@ function testParseCNPlusIDDToGBLongArea(){
 };
 
 function testParseCNMobileNumber(){
-	var parsed = new ilib.PhoneNumber("15005179573", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("15005179573", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		mobilePrefix: "150",
 		subscriberNumber: "05179573"
 	}, {locale: "zh-CN"});
@@ -144,10 +145,10 @@ function testParseCNMobileNumber(){
 };
 
 function testParseCNIDDToMobile(){
-	var parsed = new ilib.PhoneNumber("+8615005179573", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+8615005179573", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "86",
 		mobilePrefix: "150",
@@ -159,10 +160,10 @@ function testParseCNIDDToMobile(){
 };
 
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+"
 	}, {locale: "zh-CN"});
 	
@@ -170,10 +171,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+4", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+4", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		subscriberNumber: "4"
 	}, {locale: "zh-CN"});
@@ -182,10 +183,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+44", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+44", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44"
 	}, {locale: "zh-CN"});
@@ -194,10 +195,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+442", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+442", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		subscriberNumber: "2"
@@ -207,10 +208,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+4420", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+4420", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "20"
@@ -220,10 +221,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+44201", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+44201", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -234,10 +235,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+442012", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+442012", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -248,10 +249,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+4420123", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+4420123", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -262,10 +263,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+44201234", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+44201234", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -276,10 +277,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+442012345", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+442012345", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -290,10 +291,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+4420123456", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+4420123456", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -304,10 +305,10 @@ function testParseCNPlusIDDToGBPartial1(){
 	
 };
 function testParseCNPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+44201234567", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+44201234567", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -319,10 +320,10 @@ function testParseCNPlusIDDToGBPartial1(){
 };
 
 function testParseCNEmergencyNumber(){
-	var parsed = new ilib.PhoneNumber("110", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("110", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			emergency: "110"
 	}, {locale: "zh-CN"});
 	
@@ -330,10 +331,10 @@ function testParseCNEmergencyNumber(){
 	
 };
 function testParseCNEmergencyNumberPlus(){
-	var parsed = new ilib.PhoneNumber("120115", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("120115", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			emergency: "120",
 			subscriberNumber: "115"
 	}, {locale: "zh-CN"});
@@ -343,10 +344,10 @@ function testParseCNEmergencyNumberPlus(){
 };
 
 function testParseCNPlusIDDToUnknown(){
-	var parsed = new ilib.PhoneNumber("+5062012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("+5062012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "506",  // Costa Rica
 		subscriberNumber: "2012345678"
@@ -357,10 +358,10 @@ function testParseCNPlusIDDToUnknown(){
 };
 
 function testParseCNZerosIDDToUnknown(){
-	var parsed = new ilib.PhoneNumber("005062012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("005062012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "506",
 		subscriberNumber: "2012345678"
@@ -370,10 +371,10 @@ function testParseCNZerosIDDToUnknown(){
 	
 };
 function testParseCNPartial1(){
-	var parsed = new ilib.PhoneNumber("0", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("0", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0"
 	}, {locale: "zh-CN"});
 	
@@ -382,10 +383,10 @@ function testParseCNPartial1(){
 };
 
 function testParseCNPartial2(){
-	var parsed = new ilib.PhoneNumber("01", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		subscriberNumber: "1"
 	}, {locale: "zh-CN"});
@@ -394,10 +395,10 @@ function testParseCNPartial2(){
 	
 };
 function testParseCNPartial3(){
-	var parsed = new ilib.PhoneNumber("010", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("010", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10"
 	}, {locale: "zh-CN"});
@@ -406,10 +407,10 @@ function testParseCNPartial3(){
 	
 };
 function testParseCNPartial4(){
-	var parsed = new ilib.PhoneNumber("0101", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("0101", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "1"
@@ -419,10 +420,10 @@ function testParseCNPartial4(){
 	
 };
 function testParseCNPartial5(){
-	var parsed = new ilib.PhoneNumber("01012", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01012", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12"
@@ -432,10 +433,10 @@ function testParseCNPartial5(){
 	
 };
 function testParseCNPartial6(){
-	var parsed = new ilib.PhoneNumber("010123", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("010123", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "123"
@@ -445,10 +446,10 @@ function testParseCNPartial6(){
 	
 };
 function testParseCNPartial7(){
-	var parsed = new ilib.PhoneNumber("0101234", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("0101234", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "1234"
@@ -458,10 +459,10 @@ function testParseCNPartial7(){
 	
 };
 function testParseCNPartial8(){
-	var parsed = new ilib.PhoneNumber("01012345", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01012345", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12345"
@@ -471,10 +472,10 @@ function testParseCNPartial8(){
 	
 };
 function testParseCNPartial9(){
-	var parsed = new ilib.PhoneNumber("010123456", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("010123456", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "123456"
@@ -484,10 +485,10 @@ function testParseCNPartial9(){
 	
 };
 function testParseCNPartial10(){
-	var parsed = new ilib.PhoneNumber("0101234567", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("0101234567", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "1234567"
@@ -497,10 +498,10 @@ function testParseCNPartial10(){
 	
 };
 function testParseCNPartial11(){
-	var parsed = new ilib.PhoneNumber("01012345678", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("01012345678", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "10",
 		subscriberNumber: "12345678"
@@ -511,10 +512,10 @@ function testParseCNPartial11(){
 };
 
 function testParseCNPartialLocal1(){
-	var parsed = new ilib.PhoneNumber("8", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("8", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "8"
 	}, {locale: "zh-CN"});
 	
@@ -523,10 +524,10 @@ function testParseCNPartialLocal1(){
 };
 
 function testParseCNPartialLocal2(){
-	var parsed = new ilib.PhoneNumber("87", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("87", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "87"
 	}, {locale: "zh-CN"});
 	
@@ -534,10 +535,10 @@ function testParseCNPartialLocal2(){
 	
 };
 function testParseCNPartialLocal3(){
-	var parsed = new ilib.PhoneNumber("876", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("876", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "876"
 	}, {locale: "zh-CN"});
 	
@@ -545,10 +546,10 @@ function testParseCNPartialLocal3(){
 	
 };
 function testParseCNPartialLocal4(){
-	var parsed = new ilib.PhoneNumber("8765", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("8765", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "8765"
 	}, {locale: "zh-CN"});
 	
@@ -556,10 +557,10 @@ function testParseCNPartialLocal4(){
 	
 };
 function testParseCNPartialLocal5(){
-	var parsed = new ilib.PhoneNumber("87654", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("87654", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "87654"
 	}, {locale: "zh-CN"});
 	
@@ -567,10 +568,10 @@ function testParseCNPartialLocal5(){
 	
 };
 function testParseCNPartialLocal6(){
-	var parsed = new ilib.PhoneNumber("876543", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("876543", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "876543"
 	}, {locale: "zh-CN"});
 	
@@ -578,10 +579,10 @@ function testParseCNPartialLocal6(){
 	
 };
 function testParseCNPartialLocal7(){
-	var parsed = new ilib.PhoneNumber("8765432", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("8765432", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "8765432"
 	}, {locale: "zh-CN"});
 	
@@ -589,10 +590,10 @@ function testParseCNPartialLocal7(){
 	
 };
 function testParseCNPartialLocal8(){
-	var parsed = new ilib.PhoneNumber("87654321", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("87654321", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "87654321"
 	}, {locale: "zh-CN"});
 	
@@ -602,10 +603,10 @@ function testParseCNPartialLocal8(){
 
 //for DFISH-26683
 function testParseCNNewMobilePrefix1(){
-	var parsed = new ilib.PhoneNumber("14782808075", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("14782808075", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		mobilePrefix: "147",
 		subscriberNumber: "82808075"
 	}, {locale: "zh-CN"});
@@ -614,10 +615,10 @@ function testParseCNNewMobilePrefix1(){
 	
 };
 function testParseCNNewMobilePrefix2(){
-	var parsed = new ilib.PhoneNumber("18721083400", {locale: "zh-CN"});
+	var parsed = new PhoneNumber("18721083400", {locale: "zh-CN"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		mobilePrefix: "187",
 		subscriberNumber: "21083400"
 	}, {locale: "zh-CN"});

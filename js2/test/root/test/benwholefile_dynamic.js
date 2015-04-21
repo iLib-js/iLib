@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
 function testLoadWholeFileDynamicCore(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-dynamic-core",
 		fn: function () {
-		    var ilib = require("../ilib-dyn-core.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -33,7 +33,6 @@ function testLoadWholeFileDynamicStandard(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-dynamic-standard",
 		fn: function () {
-		    var ilib = require("../ilib-dyn-standard.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -45,7 +44,6 @@ function testLoadWholeFileDynamicFull(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-dynamic-full",
 		fn: function () {
-		    var ilib = require("../ilib-dyn-full.js");
 		    assertNotUndefined(ilib);
 		}
 	});

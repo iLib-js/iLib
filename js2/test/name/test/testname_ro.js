@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ro_RO() {
-	var parsed = new ilib.Name("Sebastian Stan", {locale: 'ro-RO'});
+	var parsed = new Name("Sebastian Stan", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_ro_RO() {
 };
 
 function testParseSimpleNameWithMiddleName_ro_RO() {
-	var parsed = new ilib.Name("Alexandra Maria Lara", {locale: 'ro-RO'});
+	var parsed = new Name("Alexandra Maria Lara", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseSimpleNameWithMiddleName_ro_RO() {
 };
 
 function testParseTitle_ro_RO() {
-	var parsed = new ilib.Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
+	var parsed = new Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +58,7 @@ function testParseTitle_ro_RO() {
 };
 
 function testParseTitleWithFamilyOnly_ro_RO() {
-	var parsed = new ilib.Name("Dl. Stan", {locale: 'ro-RO'});
+	var parsed = new Name("Dl. Stan", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -70,7 +72,7 @@ function testParseTitleWithFamilyOnly_ro_RO() {
 
 
 function testParseEverything_ro_RO() {
-	var parsed = new ilib.Name("Dl. și D-na. Stan", {locale: 'ro-RO'});
+	var parsed = new Name("Dl. și D-na. Stan", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -82,7 +84,7 @@ function testParseEverything_ro_RO() {
 };
 
 function testParseprefix_ro_RO() {
-	var parsed = new ilib.Name("Dl. Sebastian Stan", {locale: 'ro-RO'});
+	var parsed = new Name("Dl. Sebastian Stan", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -95,7 +97,7 @@ function testParseprefix_ro_RO() {
 };
 
 function testParseprefixAndSuffix_ro_RO() {
-	var parsed = new ilib.Name("Vice-presedinte Sebastian Stan retras", {locale: 'ro-RO'});
+	var parsed = new Name("Vice-presedinte Sebastian Stan retras", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -112,11 +114,11 @@ function testParseprefixAndSuffix_ro_RO() {
  */
 
 function testFormatSimpleNameShort_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Sebastian",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ro-RO'
 	});
@@ -129,12 +131,12 @@ function testFormatSimpleNameShort_ro_RO() {
 };
 
 function testFormatSimpleNameMedium_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Sebastian",
 		
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ro-RO'
 	});
@@ -147,13 +149,13 @@ function testFormatSimpleNameMedium_ro_RO() {
 };
 
 function testFormatSimpleNameLong_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Sebastian",
 		
 		familyName: "Stan",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ro-RO'
 	});
@@ -168,12 +170,12 @@ function testFormatSimpleNameLong_ro_RO() {
 
 
 function testFormatSurname_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Dl. i D-na.",
 		
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ro-RO'
 	});
@@ -186,14 +188,14 @@ function testFormatSurname_ro_RO() {
 };
 
 function testFormatSimpleNameFull_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Administrator",
 		givenName: "Sebastian",
 		
 		familyName: "Stan",
 		suffix: "doctorand"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ro-RO'
 	});
@@ -206,12 +208,12 @@ function testFormatSimpleNameFull_ro_RO() {
 };
 
 function testFormatComplexNameShort_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Administrator",
 		givenName: "Sebastian",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ro-RO'
 	});
@@ -224,12 +226,12 @@ function testFormatComplexNameShort_ro_RO() {
 };
 
 function testFormatComplexNameMedium_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Administrator",
 		givenName: "Sebastian",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ro-RO'
 	});
@@ -242,12 +244,12 @@ function testFormatComplexNameMedium_ro_RO() {
 };
 
 function testFormatComplexNameLong_ro_RO() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Administrator",
 		givenName: "Sebastian",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ro-RO'
 	});

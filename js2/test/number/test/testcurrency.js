@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var Currency = require("./../lib/Currency.js");
+
 function testCurrencyConstructorEmpty() {
-    var cur = new ilib.Currency();
+    var cur = new Currency();
     
     assertNotNull(cur);
 }
 
 function testCurrencyDefaults() {
-    var cur = new ilib.Currency();
+    var cur = new Currency();
     assertNotNull(cur);
     
     assertEquals("USD", cur.getCode());
@@ -37,7 +39,7 @@ function testCurrencyDefaults() {
 }
 
 function testCurrencyGetByCode1() {
-    var cur = new ilib.Currency({
+    var cur = new Currency({
         code: "EUR"
     });
     assertNotNull(cur);
@@ -51,7 +53,7 @@ function testCurrencyGetByCode1() {
 }
 
 function testCurrencyGetByCode2() {
-    var cur = new ilib.Currency({
+    var cur = new Currency({
         code: "JPY"
     });
     assertNotNull(cur);
@@ -66,7 +68,7 @@ function testCurrencyGetByCode2() {
 
 function testCurrencyGetByCodeUnknown() {
     try {
-        var cur = new ilib.Currency({
+        var cur = new Currency({
             code: "xxx"
         });
         fail();
@@ -76,7 +78,7 @@ function testCurrencyGetByCodeUnknown() {
 }
 
 function testCurrencyGetBySignUnambiguous() {
-    var cur = new ilib.Currency({
+    var cur = new Currency({
         sign: "€"
     });
     assertNotNull(cur);
@@ -90,7 +92,7 @@ function testCurrencyGetBySignUnambiguous() {
 }
 
 function testCurrencyGetBySignAmbiguousCurrentLocale() {
-    var cur = new ilib.Currency({
+    var cur = new Currency({
     	locale: "en-CA",
         sign: "$"
     });
@@ -105,7 +107,7 @@ function testCurrencyGetBySignAmbiguousCurrentLocale() {
 }
 
 function testCurrencyGetBySignAmbiguousNotCurrentLocale() {
-    var cur = new ilib.Currency({
+    var cur = new Currency({
     	locale: "en-GB",
         sign: "$"
     });
@@ -121,7 +123,7 @@ function testCurrencyGetBySignAmbiguousNotCurrentLocale() {
 
 function testCurrencyAsync() {
 	var callbackCalled = false;
-    new ilib.Currency({
+    new Currency({
     	locale: "en-GB",
         sign: "$",
         sync: false,

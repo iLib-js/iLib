@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_hu_HU() {
-	var parsed = new ilib.Name("Halász Dorottya", {locale: 'hu-HU'});
+	var parsed = new Name("Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_hu_HU() {
 
 
 function testParseSimpleName_hu_HU1() {
-	var parsed = new ilib.Name("úr. Halász Dorottya", {locale: 'hu-HU'});
+	var parsed = new Name("úr. Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseSimpleName_hu_HU1() {
 
 
 function testParseSimpleNameWom_hu_HU() {
-	var parsed = new ilib.Name("Kisasszony. Kovács Lajos", {locale: 'hu-HU'});
+	var parsed = new Name("Kisasszony. Kovács Lajos", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -63,7 +65,7 @@ function testParseSimpleNameWom_hu_HU() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_hu_HU() {
-	var parsed = new ilib.Name("Halász Dorottya jr.", {locale: 'hu-HU'});
+	var parsed = new Name("Halász Dorottya jr.", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -77,7 +79,7 @@ function testParseSingleNameWithPrefixAndAdjunct_hu_HU() {
 
 
 function testParseTitle_hu_HU1() {
-	var parsed = new ilib.Name("alelnöke Halász Dorottya", {locale: 'hu-HU'});
+	var parsed = new Name("alelnöke Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -91,7 +93,7 @@ function testParseTitle_hu_HU1() {
 
 
 function testParseTitle_hu_HU_second() {
-	var parsed = new ilib.Name("Úr. és Kisasszony. Halász", {locale: 'hu-HU'});
+	var parsed = new Name("Úr. és Kisasszony. Halász", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -105,14 +107,14 @@ function testParseTitle_hu_HU_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_hu_HU() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "alelnöke",
 		givenName: "Dorottya",
 	
 		familyName: "Halász",
 		suffix: "idősebb"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hu-HU'
 	});
@@ -128,7 +130,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_hu_HU() {
 
 
 function testParseCompoundHonorific_hu_HU() {
-	var parsed = new ilib.Name("alelnöke Halász", {locale: 'hu-HU'});
+	var parsed = new Name("alelnöke Halász", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -144,11 +146,11 @@ function testParseCompoundHonorific_hu_HU() {
  */
 
 function testFormatSimpleNameShort_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Dorottya",
 		familyName: "Halász"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'hu-HU'
 	});
@@ -161,11 +163,11 @@ function testFormatSimpleNameShort_hu_HU() {
 };
 
 function testFormatSimpleNameMedium_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Dorottya",
 		familyName: "Halász"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'hu-HU'
 	});
@@ -178,12 +180,12 @@ function testFormatSimpleNameMedium_hu_HU() {
 };
 
 function testFormatSimpleNameFull_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Dorottya",
 		familyName: "Halász",
 		suffix: "idősebb"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hu-HU'
 	});
@@ -196,12 +198,12 @@ function testFormatSimpleNameFull_hu_HU() {
 };
 
 function testFormatComplexNameShort_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "idősebb",
 		givenName: "Dorottya",
 		familyName: "Halász"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'hu-HU'
 	});
@@ -215,13 +217,13 @@ function testFormatComplexNameShort_hu_HU() {
 
 
 function testFormatAsianNameMedium_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'hu-HU'
 	});
@@ -234,13 +236,13 @@ function testFormatAsianNameMedium_hu_HU() {
 };
 
 function testFormatAsianNameLong_hu_HU() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hu-HU'
 	});

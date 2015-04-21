@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_kk() {
-	var parsed = new ilib.Name("Джордж Буш", {locale: 'kk-KZ'});
+	var parsed = new Name("Джордж Буш", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_kk() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_kk() {
-	var parsed = new ilib.Name("үлкен Буш", {locale: 'kk-KZ'});
+	var parsed = new Name("үлкен Буш", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -44,7 +46,7 @@ function testParseSingleNameWithPrefixAndAdjunct_kk() {
 
 
 function testParseTitle_kk() {
-	var parsed = new ilib.Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
+	var parsed = new Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -57,7 +59,7 @@ function testParseTitle_kk() {
 };
 
 function testParseEverything_kk() {
-	var parsed = new ilib.Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
+	var parsed = new Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -76,11 +78,11 @@ function testParseEverything_kk() {
  */
 
 function testFormatSimpleNameShort_kk() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Джордж",
 		familyName: "Буш"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'kk-KZ'
 	});
@@ -93,11 +95,11 @@ function testFormatSimpleNameShort_kk() {
 };
 
 function testFormatSimpleNameMedium_kk() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Джордж",
 		familyName: "Буш"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'kk-KZ'
 	});
@@ -110,12 +112,12 @@ function testFormatSimpleNameMedium_kk() {
 };
 
 function testFormatSimpleNameLong_kk() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Джордж",
 		familyName: "Буш",
 		suffix: "2-ші"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'kk-KZ'
 	});
@@ -128,13 +130,13 @@ function testFormatSimpleNameLong_kk() {
 };
 
 function testFormatSimpleNameFull_kk() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "үлкен",
 		givenName: "Джордж",
 		familyName: "Буш",
 		suffix: "2-ші"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'kk-KZ'
 	});

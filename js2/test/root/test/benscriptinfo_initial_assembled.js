@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ScriptInfo = require("./../lib/ScriptInfo.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -483,7 +485,7 @@ function testScriptInfoConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.ScriptInfo();
+		    var fmt = new ScriptInfo();
 		    assertNotNull(fmt);
 		}
 	});
@@ -495,7 +497,7 @@ function testScriptInfoConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("Hang");
+			var fmt = new ScriptInfo("Hang");
 		    assertNotNull(fmt);
 		}
 	});
@@ -507,7 +509,7 @@ function testScriptInfoConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("xxxx");
+			var fmt = new ScriptInfo("xxxx");
 		    assertNotNull(fmt);
 		}
 	});

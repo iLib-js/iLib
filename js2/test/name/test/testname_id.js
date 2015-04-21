@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_id_ID() {
-	var parsed = new ilib.Name("Mahyadi Panggabean", {locale: 'id-ID'});
+	var parsed = new Name("Mahyadi Panggabean", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_id_ID() {
 
 
 function testParseSimpleName_id_ID1() {
-	var parsed = new ilib.Name("Bapak. Abdul Panggabean", {locale: 'id-ID'});
+	var parsed = new Name("Bapak. Abdul Panggabean", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -46,7 +48,7 @@ function testParseSimpleName_id_ID1() {
 
 
 function testParseSimpleName_id_ID2() {
-	var parsed = new ilib.Name("Ibu. Mahyadi Panggabean", {locale: 'id-ID'});
+	var parsed = new Name("Ibu. Mahyadi Panggabean", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseSimpleName_id_ID2() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_id_ID() {
-	var parsed = new ilib.Name("Mahyadi Krupuk muda", {locale: 'id-ID'});
+	var parsed = new Name("Mahyadi Krupuk muda", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -75,7 +77,7 @@ function testParseSingleNameWithPrefixAndAdjunct_id_ID() {
 
 
 function testParseTitle_id_ID1() {
-	var parsed = new ilib.Name("perdana menteri Mahyadi Krupuk", {locale: 'id-ID'});
+	var parsed = new Name("perdana menteri Mahyadi Krupuk", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,7 +91,7 @@ function testParseTitle_id_ID1() {
 
 
 function testParseTitle_id_ID_second() {
-	var parsed = new ilib.Name("Ibu. dan Bapak. Panggabean", {locale: 'id-ID'});
+	var parsed = new Name("Ibu. dan Bapak. Panggabean", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -103,13 +105,13 @@ function testParseTitle_id_ID_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_id_ID() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presiden",
 		givenName: "Mahyadi",
 		middleName : "Krupuk",
 		suffix: "mundur"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'id-ID'
 	});
@@ -125,7 +127,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_id_ID() {
 
 
 function testParseCompoundHonorific_id_ID() {
-	var parsed = new ilib.Name("melayani Panggabean", {locale: 'id-ID'});
+	var parsed = new Name("melayani Panggabean", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -141,11 +143,11 @@ function testParseCompoundHonorific_id_ID() {
  */
 
 function testFormatSimpleNameShort_id_ID() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Mahyadi",
 		middleName : "Krupuk"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'id-ID'
 	});
@@ -158,11 +160,11 @@ function testFormatSimpleNameShort_id_ID() {
 };
 
 function testFormatSimpleNameMedium_id_ID() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Mahyadi",
 		middleName : "Krupuk"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'id-ID'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameMedium_id_ID() {
 
 
 function testFormatComplexNameShort_id_ID() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "mirovini",
 		givenName: "Mahyadi",
 		middleName: "Panggabean"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'id-ID'
 	});
@@ -195,13 +197,13 @@ function testFormatComplexNameShort_id_ID() {
 
 
 function testFormatAsianNameMedium_id_ID() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		middleName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'id-ID'
 	});
@@ -214,13 +216,13 @@ function testFormatAsianNameMedium_id_ID() {
 };
 
 function testFormatAsianNameLong_id_ID() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		middleName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'id-ID'
 	});

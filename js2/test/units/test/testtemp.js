@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var TemperatureUnit = require("./../lib/TemperatureUnit.js");
+
 function testTemperatureConstructor() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 2
 	});
@@ -27,11 +29,11 @@ function testTemperatureConstructor() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 0
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: m1
 	});
@@ -43,11 +45,11 @@ function testTemperatureConvertCelciusToFahrenheit1() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 100
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: m1
 	});
@@ -59,11 +61,11 @@ function testTemperatureConvertCelciusToFahrenheit2() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit3() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 30
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: m1
 	});
@@ -75,11 +77,11 @@ function testTemperatureConvertCelciusToFahrenheit3() {
 }
 
 function testTemperatureConvertFahrenheitToCelcius1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: 50
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: m1
 	});
@@ -91,11 +93,11 @@ function testTemperatureConvertFahrenheitToCelcius1() {
 }
 
 function testTemperatureConvertFahrenheitToCelcius2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: 100
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: m1
 	});
@@ -107,11 +109,11 @@ function testTemperatureConvertFahrenheitToCelcius2() {
 }
 
 function testTemperatureConvertCelciusToKelvin1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 0
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: m1
 	});
@@ -123,11 +125,11 @@ function testTemperatureConvertCelciusToKelvin1() {
 }
 
 function testTemperatureConvertCelciusToKelvin2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: 100
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: m1
 	});
@@ -139,11 +141,11 @@ function testTemperatureConvertCelciusToKelvin2() {
 }
 
 function testTemperatureConvertKelvinToCelcius1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: 0
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: m1
 	});
@@ -155,11 +157,11 @@ function testTemperatureConvertKelvinToCelcius1() {
 }
 
 function testTemperatureConvertKelvinToCelcius2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: 285.3
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "celsius",
 	    amount: m1
 	});
@@ -171,11 +173,11 @@ function testTemperatureConvertKelvinToCelcius2() {
 }
 
 function testTemperatureConvertFahrenheitToKelvin1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: 0
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: m1
 	});
@@ -187,11 +189,11 @@ function testTemperatureConvertFahrenheitToKelvin1() {
 }
 
 function testTemperatureConvertFahrenheitToKelvin2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: 100
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: m1
 	});
@@ -203,11 +205,11 @@ function testTemperatureConvertFahrenheitToKelvin2() {
 }
 
 function testTemperatureConvertKelvinToFahrenheit1() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: 0
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: m1
 	});
@@ -219,11 +221,11 @@ function testTemperatureConvertKelvinToFahrenheit1() {
 }
 
 function testTemperatureConvertKelvinToFahrenheit2() {
-	var m1 = new ilib.Measurement.Temperature({
+	var m1 = new TemperatureUnit({
 	    unit: "kelvin",
 	    amount: 285.3
 	});
-	var m2 = new ilib.Measurement.Temperature({
+	var m2 = new TemperatureUnit({
 	    unit: "fahrenheit",
 	    amount: m1
 	});
@@ -235,7 +237,7 @@ function testTemperatureConvertKelvinToFahrenheit2() {
 }
 
 function testTemperatureAliasCelcius1() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "Celsius",
 	    amount: 0
 	});
@@ -246,7 +248,7 @@ function testTemperatureAliasCelcius1() {
 }
 
 function testTemperatureAliasCelcius2() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "°C",
 	    amount: 0
 	});
@@ -257,7 +259,7 @@ function testTemperatureAliasCelcius2() {
 }
 
 function testTemperatureAliasCelcius3() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "℃",
 	    amount: 0
 	});
@@ -268,7 +270,7 @@ function testTemperatureAliasCelcius3() {
 }
 
 function testTemperatureAliasCelcius4() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "C",
 	    amount: 0
 	});
@@ -279,7 +281,7 @@ function testTemperatureAliasCelcius4() {
 }
 
 function testTemperatureAliasFahrenheit1() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "Fahrenheit",
 	    amount: 0
 	});
@@ -290,7 +292,7 @@ function testTemperatureAliasFahrenheit1() {
 }
 
 function testTemperatureAliasFahrenheit2() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "°F",
 	    amount: 0
 	});
@@ -301,7 +303,7 @@ function testTemperatureAliasFahrenheit2() {
 }
 
 function testTemperatureAliasFahrenheit3() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "℉",
 	    amount: 0
 	});
@@ -312,7 +314,7 @@ function testTemperatureAliasFahrenheit3() {
 }
 
 function testTemperatureAliasFahrenheit4() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "F",
 	    amount: 0
 	});
@@ -323,7 +325,7 @@ function testTemperatureAliasFahrenheit4() {
 }
 
 function testTemperatureAliasKelvin1() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "Kelvin",
 	    amount: 0
 	});
@@ -334,7 +336,7 @@ function testTemperatureAliasKelvin1() {
 }
 
 function testTemperatureAliasKelvin2() {
-	var m = new ilib.Measurement.Temperature({
+	var m = new TemperatureUnit({
 	    unit: "K",
 	    amount: 0
 	});
@@ -345,7 +347,7 @@ function testTemperatureAliasKelvin2() {
 }
 
 function testGetMeasures() {
-	var measures = ilib.Measurement.Temperature.getMeasures();
+	var measures = TemperatureUnit.getMeasures();
 	var expected = [
 	    "celsius",
 	    "fahrenheit",

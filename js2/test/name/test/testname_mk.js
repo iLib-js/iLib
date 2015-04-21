@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_mk_MK() {
-	var parsed = new ilib.Name("Љубunша Самарџunќ", {locale: 'mk-MK'});
+	var parsed = new Name("Љубunша Самарџunќ", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_mk_MK() {
 };
 
 function testParseSimpleWithHiphen_mk_MK() {
-	var parsed = new ilib.Name("Nikola-Kole Angelovski", {locale: 'mk-MK'});
+	var parsed = new Name("Nikola-Kole Angelovski", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -44,7 +46,7 @@ function testParseSimpleWithHiphen_mk_MK() {
 
 
 function testParseTitle_mk_MK() {
-	var parsed = new ilib.Name("Љубunша Самарџunќ високи", {locale: 'mk-MK'});
+	var parsed = new Name("Љубunша Самарџunќ високи", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -59,7 +61,7 @@ function testParseTitle_mk_MK() {
 
 
 function testParseTitleWithFamilyOnly_mk_MK() {
-	var parsed = new ilib.Name("г-дин Самарџunќ", {locale: 'mk-MK'});
+	var parsed = new Name("г-дин Самарџunќ", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseTitleWithFamilyOnly_mk_MK() {
 
 
 function testParseEverything_mk_MK() {
-	var parsed = new ilib.Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
+	var parsed = new Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -85,7 +87,7 @@ function testParseEverything_mk_MK() {
 };
 
 function testParseprefix_mk_MK() {
-	var parsed = new ilib.Name("г-дин Љубunша Самарџunќ", {locale: 'mk-MK'});
+	var parsed = new Name("г-дин Љубunша Самарџunќ", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -101,11 +103,11 @@ function testParseprefix_mk_MK() {
  */
 
 function testFormatSimpleNameShort_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Љубunша",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mk-MK'
 	});
@@ -118,11 +120,11 @@ function testFormatSimpleNameShort_mk_MK() {
 };
 
 function testFormatSimpleNameMedium_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Љубunша",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mk-MK'
 	});
@@ -135,12 +137,12 @@ function testFormatSimpleNameMedium_mk_MK() {
 };
 
 function testFormatSimpleNameLong_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Љубunша",
 		familyName: "Самарџunќ",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'mk-MK'
 	});
@@ -155,11 +157,11 @@ function testFormatSimpleNameLong_mk_MK() {
 
 
 function testFormatSurname_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "г-дunн и kundze",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'mk-MK'
 	});
@@ -172,13 +174,13 @@ function testFormatSurname_mk_MK() {
 };
 
 function testFormatSimpleNameFull_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "претседател",
 		givenName: "Љубunша",
 		familyName: "Самарџunќ",
 		suffix: "помладun"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'mk-MK'
 	});
@@ -191,12 +193,12 @@ function testFormatSimpleNameFull_mk_MK() {
 };
 
 function testFormatComplexNameShort_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "претседател",
 		givenName: "Љубunша",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mk-MK'
 	});
@@ -209,12 +211,12 @@ function testFormatComplexNameShort_mk_MK() {
 };
 
 function testFormatComplexNameMedium_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "претседател",
 		givenName: "Љубunша",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mk-MK'
 	});
@@ -227,12 +229,12 @@ function testFormatComplexNameMedium_mk_MK() {
 };
 
 function testFormatComplexNameLong_mk_MK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "претседател",
 		givenName: "Љубunша",
 		familyName: "Самарџunќ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'mk-MK'
 	});

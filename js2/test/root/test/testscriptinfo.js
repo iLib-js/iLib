@@ -17,13 +17,15 @@
  * limitations under the License.
  */
 
+var ScriptInfo = require("./../lib/ScriptInfo.js");
+
 function testScriptConstructor() {
-    var si = new ilib.ScriptInfo();
+    var si = new ScriptInfo();
     assertNotNull(si);
 }
 
 function testScriptGet1() {
-    var si = new ilib.ScriptInfo("Latn");
+    var si = new ScriptInfo("Latn");
     assertNotNull(si);
     
     assertEquals("Latn", si.getCode());
@@ -36,7 +38,7 @@ function testScriptGet1() {
 }
 
 function testScriptGet2() {
-    var si = new ilib.ScriptInfo("Phag");
+    var si = new ScriptInfo("Phag");
     assertNotNull(si);
     
     assertEquals("Phag", si.getCode());
@@ -49,7 +51,7 @@ function testScriptGet2() {
 }
 
 function testScriptGet3() {
-    var si = new ilib.ScriptInfo("Hebr");
+    var si = new ScriptInfo("Hebr");
     assertNotNull(si);
     
     assertEquals("Hebr", si.getCode());
@@ -62,7 +64,7 @@ function testScriptGet3() {
 }
 
 function testScriptGet4() {
-    var si = new ilib.ScriptInfo("Hans");
+    var si = new ScriptInfo("Hans");
     assertNotNull(si);
     
     assertEquals("Hans", si.getCode());
@@ -75,7 +77,7 @@ function testScriptGet4() {
 }
 
 function testScriptGetDefaultLongCode() {
-    var si = new ilib.ScriptInfo("Sara");
+    var si = new ScriptInfo("Sara");
     assertNotNull(si);
     
     assertEquals("Sara", si.getCode());
@@ -85,7 +87,7 @@ function testScriptGetDefaultLongCode() {
 }
 
 function testScriptGetDefaultLongCodeOrya() {
-    var si = new ilib.ScriptInfo("Orya");
+    var si = new ScriptInfo("Orya");
     assertNotNull(si);
     
     assertEquals("Orya", si.getCode());
@@ -98,7 +100,7 @@ function testScriptGetDefaultLongCodeOrya() {
 }
 
 function testScriptGetDefaultLongCodeAmharic() {
-    var si = new ilib.ScriptInfo("Ethi");
+    var si = new ScriptInfo("Ethi");
     assertNotNull(si);
     
     assertEquals("Ethi", si.getCode());
@@ -110,7 +112,7 @@ function testScriptGetDefaultLongCodeAmharic() {
     assertFalse(si.getCasing());
 }
 function testScriptGetDefaultLongCodeWithSpaces() {
-    var si = new ilib.ScriptInfo("Kore");
+    var si = new ScriptInfo("Kore");
     assertNotNull(si);
     
     assertEquals("Kore", si.getCode());
@@ -123,7 +125,7 @@ function testScriptGetDefaultLongCodeWithSpaces() {
 }
 
 function testScriptGetDefaultLongCodeArab() {
-    var si = new ilib.ScriptInfo("Arab");
+    var si = new ScriptInfo("Arab");
     assertNotNull(si);
     
     assertEquals("Arab", si.getCode());
@@ -135,7 +137,7 @@ function testScriptGetDefaultLongCodeArab() {
     assertFalse(si.getCasing());
 }
 function testScriptGetUnknown() {
-    var si = new ilib.ScriptInfo("Fooo");
+    var si = new ScriptInfo("Fooo");
     assertNotNull(si);
     
     assertEquals(undefined, si.getCode());
@@ -145,7 +147,7 @@ function testScriptGetUnknown() {
 }
 
 function testScriptGetAllScripts() {
-    var scripts = new ilib.ScriptInfo.getAllScripts();
+    var scripts = new ScriptInfo.getAllScripts();
     assertNotNull(scripts);
     
     assertEquals("Afak", scripts[0]);

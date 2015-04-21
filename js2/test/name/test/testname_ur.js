@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ur_IN() {
-	var parsed = new ilib.Name("موہن لال", {locale: 'ur-IN'});
+	var parsed = new Name("موہن لال", {locale: 'ur-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_ur_IN() {
 
 
 function testParseTitle_ur_IN() {
-	var parsed = new ilib.Name("موہن لال میں", {locale: 'ur-IN'});
+	var parsed = new Name("موہن لال میں", {locale: 'ur-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_ur_IN() {
 
 
 function testParseTitleWithFamilyOnly_ur_IN() {
-	var parsed = new ilib.Name("مسٹر لال", {locale: 'ur-IN'});
+	var parsed = new Name("مسٹر لال", {locale: 'ur-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_ur_IN() {
 
 
 function testParseEverything_ur_IN() {
-	var parsed = new ilib.Name("مسٹر اور مسز لال", {locale: 'ur-IN'});
+	var parsed = new Name("مسٹر اور مسز لال", {locale: 'ur-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_ur_IN() {
 };
 
 function testParseprefix_ur_IN() {
-	var parsed = new ilib.Name("مسٹر موہن لال", {locale: 'ur-IN'});
+	var parsed = new Name("مسٹر موہن لال", {locale: 'ur-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_ur_IN() {
  */
 
 function testFormatSimpleNameShort_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ur-IN'
 	});
@@ -106,11 +108,11 @@ function testFormatSimpleNameShort_ur_IN() {
 };
 
 function testFormatSimpleNameMedium_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ur-IN'
 	});
@@ -123,11 +125,11 @@ function testFormatSimpleNameMedium_ur_IN() {
 };
 
 function testFormatSimpleNameLong_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ur-IN'
 	});
@@ -140,11 +142,11 @@ function testFormatSimpleNameLong_ur_IN() {
 };
 
 function testFormatSurname_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "مسٹر اور مسز",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ur-IN'
 	});
@@ -157,13 +159,13 @@ function testFormatSurname_ur_IN() {
 };
 
 function testFormatSimpleNameFull_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ڈاکٹر",
 		givenName: "موہن",
 		familyName: "لال",
 		suffix: "میں"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ur-IN'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameFull_ur_IN() {
 };
 
 function testFormatComplexNameShort_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ڈاکٹر",
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ur-IN'
 	});
@@ -194,12 +196,12 @@ function testFormatComplexNameShort_ur_IN() {
 };
 
 function testFormatComplexNameMedium_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ڈاکٹر",
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ur-IN'
 	});
@@ -212,12 +214,12 @@ function testFormatComplexNameMedium_ur_IN() {
 };
 
 function testFormatComplexNameLong_ur_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ڈاکٹر",
 		givenName: "موہن",
 		familyName: "لال"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ur-IN'
 	});

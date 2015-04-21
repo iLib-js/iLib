@@ -17,29 +17,30 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testIDDPrefix() {
-	var parsed = new ilib.PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({locale: 'pt-BR'})); 
 };
 
 function testIDDPrefixAlreadyPlus() {
-	var parsed = new ilib.PhoneNumber("+31 55 345 343", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("+31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({locale: 'pt-BR'})); 
 };
 
 function testWithNoLocale() {
-	var parsed = new ilib.PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
 function testNoHints() {
-	var parsed = new ilib.PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize()); 
@@ -47,7 +48,7 @@ function testNoHints() {
 
 
 function testLDNumberUsingBRRMCC() {
-	var parsed = new ilib.PhoneNumber("62-312-3456", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("62-312-3456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724"
 	};
@@ -57,7 +58,7 @@ function testLDNumberUsingBRRMCC() {
 };
 
 function testLDNumberUsingBRMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber("98-912-3456", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("98-912-3456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
 		locale:"de-DE"
@@ -68,7 +69,7 @@ function testLDNumberUsingBRMCCOtherLocale() {
 };
 
 function testLDNumberUsingBRMCC() {
-	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
+	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "724" 
 	};
@@ -78,7 +79,7 @@ function testLDNumberUsingBRMCC() {
 };
 
 function testAreaCodeFromHint() {
-	var parsed = new ilib.PhoneNumber("212-3456", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
 	var hints = {
 		defaultAreaCode: "21"
 	};
@@ -88,7 +89,7 @@ function testAreaCodeFromHint() {
 };
 
 function testAreaCodeIgnoreHint() {
-	var parsed = new ilib.PhoneNumber("98-212-3456", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("98-212-3456", {locale: 'pt-BR'});
 	var hints = {
 		defaultAreaCode: "21"
 	};
@@ -98,14 +99,14 @@ function testAreaCodeIgnoreHint() {
 };
 
 function testNoAreaCodeAndNoCountry() {
-	var parsed = new ilib.PhoneNumber("212-3456", {locale: 'pt-BR'});
+	var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
 	var expected = "2123456";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testAssistedDialingLocalToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("2123456", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
 		networkType: "umts",
@@ -118,7 +119,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
-	var phone = new ilib.PhoneNumber("+55 21 2123456", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("+55 21 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
 		networkType: "umts",
@@ -130,7 +131,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("2123456", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
 		networkType: "cdma",
@@ -143,7 +144,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
-	var phone = new ilib.PhoneNumber("+55 62 2123456", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("+55 62 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
 		networkType: "cdma",
@@ -156,7 +157,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
 };
 
 function testAssistedDialingIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("32012325", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -169,7 +170,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 };
 
 function testAssistedDialingIntlToLDUMTS() {
-	var phone = new ilib.PhoneNumber("079 32012325", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("079 32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -182,7 +183,7 @@ function testAssistedDialingIntlToLDUMTS() {
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("32012325", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "505", // From Australia
 		networkType: "cdma",
@@ -195,7 +196,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 };
 
 function testAssistedDialingIntlToLDCDMA() {
-	var phone = new ilib.PhoneNumber("099 2123456", {locale: 'pt-BR'});
+	var phone = new PhoneNumber("099 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",

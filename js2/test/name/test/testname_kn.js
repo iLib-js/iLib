@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_kn_IN() {
-	var parsed = new ilib.Name("ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
+	var parsed = new Name("ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_kn_IN() {
 
 
 function testParseTitle_kn_IN() {
-	var parsed = new ilib.Name("ಮಂಜುನಾಥ ಗೌಡ ಹಿರಿಯ", {locale: 'kn-IN'});
+	var parsed = new Name("ಮಂಜುನಾಥ ಗೌಡ ಹಿರಿಯ", {locale: 'kn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_kn_IN() {
 
 
 function testParseTitleWithFamilyOnly_kn_IN() {
-	var parsed = new ilib.Name("ವೈದ್ಯರು ಗೌಡ", {locale: 'kn-IN'});
+	var parsed = new Name("ವೈದ್ಯರು ಗೌಡ", {locale: 'kn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_kn_IN() {
 
 
 function testParseEverything_kn_IN() {
-	var parsed = new ilib.Name("ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಗೌಡ", {locale: 'kn-IN'});
+	var parsed = new Name("ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಗೌಡ", {locale: 'kn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_kn_IN() {
 };
 
 function testParseprefix_kn_IN() {
-	var parsed = new ilib.Name("ಶ್ರೀ ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
+	var parsed = new Name("ಶ್ರೀ ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_kn_IN() {
  */
 
 function testFormatSimpleNameShort_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ಮಂಜುನಾಥ",
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'kn-IN'
 	});
@@ -106,12 +108,12 @@ function testFormatSimpleNameShort_kn_IN() {
 };
 
 function testFormatSimpleNameMedium_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ಮಂಜುನಾಥ",
 		
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'kn-IN'
 	});
@@ -124,12 +126,12 @@ function testFormatSimpleNameMedium_kn_IN() {
 };
 
 function testFormatSimpleNameLong_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ಮಂಜುನಾಥ",
 		
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'kn-IN'
 	});
@@ -142,11 +144,11 @@ function testFormatSimpleNameLong_kn_IN() {
 };
 
 function testFormatSurname_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ",
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'kn-IN'
 	});
@@ -159,14 +161,14 @@ function testFormatSurname_kn_IN() {
 };
 
 function testFormatSimpleNameFull_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ವೈದ್ಯರು",
 		givenName: "ಮಂಜುನಾಥ",
 		
 		familyName: "ಗೌಡ",
 		suffix: "ಕಿರಿಯ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'kn-IN'
 	});
@@ -179,12 +181,12 @@ function testFormatSimpleNameFull_kn_IN() {
 };
 
 function testFormatComplexNameShort_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ವೈದ್ಯರು",
 		givenName: "ಮಂಜುನಾಥ",
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'kn-IN'
 	});
@@ -197,12 +199,12 @@ function testFormatComplexNameShort_kn_IN() {
 };
 
 function testFormatComplexNameMedium_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ವೈದ್ಯರು",
 		givenName: "ಮಂಜುನಾಥ",
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'kn-IN'
 	});
@@ -215,12 +217,12 @@ function testFormatComplexNameMedium_kn_IN() {
 };
 
 function testFormatComplexNameLong_kn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ವೈದ್ಯರು",
 		givenName: "ಮಂಜುನಾಥ",
 		familyName: "ಗೌಡ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'kn-IN'
 	});

@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var TimeZone = require("./../lib/TimeZone.js");
 function testTimeZoneConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.TimeZone();
+		    var fmt = new TimeZone();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testTimeZoneConstructorRealInitialLocale(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -47,7 +48,7 @@ function testTimeZoneConstructorRealInitialId(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "Europe/Berlin"
 			});
 		    assertNotNull(fmt);
@@ -61,7 +62,7 @@ function testTimeZoneConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "xx-YY"
 			});
 		    assertNotNull(fmt);

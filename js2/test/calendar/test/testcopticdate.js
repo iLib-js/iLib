@@ -17,19 +17,18 @@
  * limitations under the License.
  */
 
-function setUp() {
-	if (ilib.isDynCode()) {
-		
-	}
-}
+var ilib = require("./../lib/ilib.js");
+var CopticRataDie = require("./../lib/CopticRataDie.js");
+var CopticDate = require("./../lib/CopticDate.js");
+
 function testCopticRataDieConstructor() {
-	var crd = new ilib.Date.CopticRataDie();
+	var crd = new CopticRataDie();
 	
 	assertNotNull(crd);
 }
 
 function testCopticRataDieConstructorComponents() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		year: 1,
 		month: 1,
 		day: 1,
@@ -45,7 +44,7 @@ function testCopticRataDieConstructorComponents() {
 }
 
 function testCopticRataDieConstructorComponentsBig() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		year: 1731,
 		month: 2,
 		day: 19,
@@ -61,7 +60,7 @@ function testCopticRataDieConstructorComponentsBig() {
 }
 
 function testCopticRataDieConstructorRD() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		rd: 732323.2342345
 	});
 	
@@ -71,7 +70,7 @@ function testCopticRataDieConstructorRD() {
 }
 
 function testCopticRataDieConstructorUnixtime() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		unixtime: 0
 	});
 	
@@ -81,7 +80,7 @@ function testCopticRataDieConstructorUnixtime() {
 }
 
 function testCopticRataDieConstructorJD() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 1825028.5 + 734564 
 	});
 	
@@ -91,7 +90,7 @@ function testCopticRataDieConstructorJD() {
 }
 
 function testCopticRataDieGetJulianDay1() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 1825028.5 + 734564 
 	});
 	
@@ -101,7 +100,7 @@ function testCopticRataDieGetJulianDay1() {
 }
 
 function testCopticRataDieGetJulianDay2() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		unixtime: 0 
 	});
 	
@@ -111,7 +110,7 @@ function testCopticRataDieGetJulianDay2() {
 }
 
 function testCopticRataDieGetJulianDay3() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		rd: 0 
 	});
 	
@@ -121,7 +120,7 @@ function testCopticRataDieGetJulianDay3() {
 }
 
 function testCopticRataDieGetTime1() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		unixtime: 0 
 	});
 	
@@ -131,7 +130,7 @@ function testCopticRataDieGetTime1() {
 }
 
 function testCopticRataDieGetTime2() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2440587.5
 	});
 	
@@ -141,7 +140,7 @@ function testCopticRataDieGetTime2() {
 }
 
 function testCopticRataDieGetTimeTooSmall() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2440586.5
 	});
 	
@@ -151,7 +150,7 @@ function testCopticRataDieGetTimeTooSmall() {
 }
 
 function testCopticRataDieGetTimeTooBig() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2465443.634803241
 	});
 	
@@ -161,7 +160,7 @@ function testCopticRataDieGetTimeTooBig() {
 }
 
 function testCopticRataDieGetTimeExtended1() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		unixtime: 0 
 	});
 	
@@ -171,7 +170,7 @@ function testCopticRataDieGetTimeExtended1() {
 }
 
 function testCopticRataDieGetTimeExtended2() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2440587.5
 	});
 	
@@ -181,7 +180,7 @@ function testCopticRataDieGetTimeExtended2() {
 }
 
 function testCopticRataDieGetTimeExtendedTooSmallForRegularGetTime() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2440586.5
 	});
 	
@@ -191,7 +190,7 @@ function testCopticRataDieGetTimeExtendedTooSmallForRegularGetTime() {
 }
 
 function testCopticRataDieGetTimeExtendedTooBigForRegularGetTime() {
-	var crd = new ilib.Date.CopticRataDie({
+	var crd = new CopticRataDie({
 		julianday: 2465443.634803241
 	});
 	
@@ -202,14 +201,14 @@ function testCopticRataDieGetTimeExtendedTooBigForRegularGetTime() {
 
 
 function testCopticDateConstructor() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 }
 
 /* Coptic date is rd 367 + epoch */
 function testCopticDateConstructorFromJD() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		julianday: 1825395.5,
 		timezone: "Etc/UTC"
 	});
@@ -226,7 +225,7 @@ function testCopticDateConstructorFromJD() {
 }
 
 function testCopticDateConstructorUnixTime() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	unixtime: 0,
 		timezone: "Etc/UTC"
     });
@@ -243,7 +242,7 @@ function testCopticDateConstructorUnixTime() {
 
 function testCopticDateAfterLeapYear() {
 	// year 3 of every 4 year cycle is a leap year in the Coptic calendar
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		julianday: 1826125.5, // Coptic epoch + 1 + 2 * 365 + 366
 		timezone: "Etc/UTC"
 	});
@@ -260,7 +259,7 @@ function testCopticDateAfterLeapYear() {
 
 // next two test the transition between months at 6am
 function testCopticDateFirstMonthEndRightBeforeDateChange() {
-    var cd = new ilib.Date.CopticDate({rd: 632263.9583333333, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632263.9583333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears()); // 2015 Gregorian
@@ -273,7 +272,7 @@ function testCopticDateFirstMonthEndRightBeforeDateChange() {
 }
 
 function testCopticDateSecondMonthStartNoonAfterDateChange() {
-    var cd = new ilib.Date.CopticDate({rd: 632265.2083333333, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632265.2083333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears()); // 2015 Gregorian
@@ -287,7 +286,7 @@ function testCopticDateSecondMonthStartNoonAfterDateChange() {
 
 // next two test the year transition from a leap year to a regular year
 function testCopticDateLastMonthLeapYear() {
-    var cd = new ilib.Date.CopticDate({rd: 632245, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632245, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1731, cd.getYears());
@@ -300,7 +299,7 @@ function testCopticDateLastMonthLeapYear() {
 }
 
 function testCopticDateFirstMonthAfterLeapYear() {
-    var cd = new ilib.Date.CopticDate({rd: 632246, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632246, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1731, cd.getYears());
@@ -314,7 +313,7 @@ function testCopticDateFirstMonthAfterLeapYear() {
 
 // next two test a regular month transition
 function testCopticDateThirdMonthEnd() {
-    var cd = new ilib.Date.CopticDate({rd: 632335, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632335, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
@@ -327,7 +326,7 @@ function testCopticDateThirdMonthEnd() {
 }
 
 function testCopticDateFourthMonthStart() {
-    var cd = new ilib.Date.CopticDate({rd: 632336, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632336, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
@@ -341,7 +340,7 @@ function testCopticDateFourthMonthStart() {
 
 // next two test a transition from a non-leap year to a non-leap year
 function testCopticDateLastMonthEndNonLeapYear() {
-    var cd = new ilib.Date.CopticDate({rd: 632610, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632610, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
@@ -354,7 +353,7 @@ function testCopticDateLastMonthEndNonLeapYear() {
 }
 
 function testCopticDateFirstMonthStartNonLeapYear() {
-    var cd = new ilib.Date.CopticDate({rd: 632611, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 632611, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1732, cd.getYears());
@@ -367,7 +366,7 @@ function testCopticDateFirstMonthStartNonLeapYear() {
 }
 
 function testCopticDateEndOfYearZeroRd() {
-    var cd = new ilib.Date.CopticDate({rd: 0, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(0, cd.getYears());
@@ -380,7 +379,7 @@ function testCopticDateEndOfYearZeroRd() {
 }
 
 function testCopticDateBeginningOfYearOneRd() {
-    var cd = new ilib.Date.CopticDate({rd: 1, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1, cd.getYears());
@@ -393,7 +392,7 @@ function testCopticDateBeginningOfYearOneRd() {
 }
 
 function testCopticDateAlmostEndOfYearOneRd() {
-    var cd = new ilib.Date.CopticDate({rd: 364, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1, cd.getYears());
@@ -406,7 +405,7 @@ function testCopticDateAlmostEndOfYearOneRd() {
 }
 
 function testCopticDateEndOfYearOneRd() {
-    var cd = new ilib.Date.CopticDate({rd: 365, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(1, cd.getYears());
@@ -419,7 +418,7 @@ function testCopticDateEndOfYearOneRd() {
 }
 
 function testCopticDateBeginningOfYear2Rd() {
-    var cd = new ilib.Date.CopticDate({rd: 366, timezone: "Etc/UTC"});
+    var cd = new CopticDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(cd));
     assertEquals(2, cd.getYears());
@@ -474,7 +473,7 @@ function testCopticDateConvertYears() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -490,7 +489,7 @@ function testCopticDateConvertMonths() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -505,7 +504,7 @@ function testCopticDateConvertDays() {
     
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -521,7 +520,7 @@ function testCopticDateConvertHours() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -537,7 +536,7 @@ function testCopticDateConvertDayOfWeek() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -553,7 +552,7 @@ function testCopticDateConvertOther() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             julianday: testDatesCoptic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -566,7 +565,7 @@ function testCopticDateConvertOther() {
 }
 
 function testCopticDateConstructorFull() {
-	var cd = new ilib.Date.CopticDate({
+	var cd = new CopticDate({
 		year: 1735,
 		month: 9,
 		day: 23,
@@ -588,7 +587,7 @@ function testCopticDateConstructorFull() {
 }
 
 function testCopticDateConstructorFullWithStrings() {
-	var cd = new ilib.Date.CopticDate({
+	var cd = new CopticDate({
 		year: "1735", 
 		month: "9",
 		day: "23", 
@@ -610,7 +609,7 @@ function testCopticDateConstructorFullWithStrings() {
 }
 
 function testCopticDateConstructorCopy() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
         year: 1735, 
         month: 9, 
         day: 23, 
@@ -637,7 +636,7 @@ function testCopticDateGetJulianDay() {
     for (var i = 0; i < testDatesCoptic.length; i++) {
         info("testing jd=" + testDatesCoptic[i][0] + " and date " + JSON.stringify(cd));
         
-        cd = new ilib.Date.CopticDate({
+        cd = new CopticDate({
             year: testDatesCoptic[i][1], 
             month: testDatesCoptic[i][2], 
             day: testDatesCoptic[i][3],
@@ -656,7 +655,7 @@ function testCopticDateGetJulianDay() {
 }
 
 function testCopticDateSetYears() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -666,7 +665,7 @@ function testCopticDateSetYears() {
 }
 
 function testCopticDateSetMonths() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -676,7 +675,7 @@ function testCopticDateSetMonths() {
 }
 
 function testCopticDateSetDays() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -686,7 +685,7 @@ function testCopticDateSetDays() {
 }
 
 function testCopticDateSetHours() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -696,7 +695,7 @@ function testCopticDateSetHours() {
 }
 
 function testCopticDateSetMinutes() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -706,7 +705,7 @@ function testCopticDateSetMinutes() {
 }
 
 function testCopticDateSetSeconds() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -716,7 +715,7 @@ function testCopticDateSetSeconds() {
 }
 
 function testCopticDateSetMilliseconds() {
-	var cd = new ilib.Date.CopticDate();
+	var cd = new CopticDate();
 	
 	assertNotNull(cd);
 	
@@ -726,7 +725,7 @@ function testCopticDateSetMilliseconds() {
 }
 
 function testCopticDateTestGetTimeZero() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1686,
 		month: 4,
 		day: 23,
@@ -739,7 +738,7 @@ function testCopticDateTestGetTimeZero() {
 }
 
 function testCopticDateTestGetTime() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1686,
 		month: 4,
 		day: 23,
@@ -753,7 +752,7 @@ function testCopticDateTestGetTime() {
 }
 
 function testCopticDateTestGetTimeTooEarly() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1686,
 		month: 4,
 		day: 22,
@@ -767,7 +766,7 @@ function testCopticDateTestGetTimeTooEarly() {
 
 function testCopticDateTestGetTimeTooLate() {
 	// 1 second too late for regular unix time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1754,
 		month: 5,
 		day: 11,
@@ -783,7 +782,7 @@ function testCopticDateTestGetTimeTooLate() {
 
 function testCopticDateTestGetTimeExtendedNotTooLate() {
 	// 1 second too late for regular unix time, but not for extended time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1754,
 		month: 5,
 		day: 11,
@@ -798,7 +797,7 @@ function testCopticDateTestGetTimeExtendedNotTooLate() {
 }
 
 function testCopticDateTestSetTime1() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
 		year: 1686,
 		month: 1,
 		day: 1,
@@ -818,7 +817,7 @@ function testCopticDateTestSetTime1() {
 }
 
 function testCopticDateTestSetTimeZero() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	timezone: "Etc/UTC",
     	year: 0, 
     	month: 1, 
@@ -841,7 +840,7 @@ function testCopticDateTestSetTimeZero() {
 }
 
 function testCopticDateGetTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -853,7 +852,7 @@ function testCopticDateGetTimeZone() {
 }
 
 function testCopticDateGetTimeZoneDefault() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8
@@ -864,7 +863,7 @@ function testCopticDateGetTimeZoneDefault() {
 }
 
 function testCopticDateGetTimeZoneByLocaleDE() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -876,7 +875,7 @@ function testCopticDateGetTimeZoneByLocaleDE() {
 }
 
 function testCopticDateGetTimeZoneByLocaleJP() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -888,7 +887,7 @@ function testCopticDateGetTimeZoneByLocaleJP() {
 }
 
 function testCopticDateGetTimeZoneByLocaleBogus() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -900,7 +899,7 @@ function testCopticDateGetTimeZoneByLocaleBogus() {
 }
 
 function testCopticDateCurrentTimeWithTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	timezone: "America/Los_Angeles"
     });
     var d = new Date();
@@ -910,7 +909,7 @@ function testCopticDateCurrentTimeWithTimeZone() {
 }
 
 function testCopticDateSetTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -926,7 +925,7 @@ function testCopticDateSetTimeZone() {
 }
 
 function testCopticDateSetTimeZoneNotString() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -942,7 +941,7 @@ function testCopticDateSetTimeZoneNotString() {
 }
 
 function testCopticDateSetTimeZoneUndefined() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -959,7 +958,7 @@ function testCopticDateSetTimeZoneUndefined() {
 }
 
 function testCopticDateSetTimeZoneEmpty() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	year: 1735, 
     	month: 3, 
     	day: 8,
@@ -976,7 +975,7 @@ function testCopticDateSetTimeZoneEmpty() {
 }
 
 function testCopticDateInitWithUnixTimeRightTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	unixtime: 0
     });
     assertNotNull(cd);
@@ -985,7 +984,7 @@ function testCopticDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testCopticDateInitWithJDRightTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	julianday: 0
     });
     assertNotNull(cd);
@@ -994,7 +993,7 @@ function testCopticDateInitWithJDRightTimeZone() {
 }
 
 function testCopticDateInitWithRDRightTimeZone() {
-    var cd = new ilib.Date.CopticDate({
+    var cd = new CopticDate({
     	rd: 0
     });
     assertNotNull(cd);
@@ -1003,7 +1002,7 @@ function testCopticDateInitWithRDRightTimeZone() {
 }
 
 function testCopticDateRoundTripConstruction() {
-    var jd = new ilib.Date.CopticDate({
+    var jd = new CopticDate({
     	year: 1738,
     	month: 10,
     	day: 20,
@@ -1014,7 +1013,7 @@ function testCopticDateRoundTripConstruction() {
     
     var u = jd.getTime();
     // console.log("unixtime is " + u);
-    var jd2 = new ilib.Date.CopticDate({
+    var jd2 = new CopticDate({
     	unixtime: u,
     	timezone: "local"
     });
@@ -1029,7 +1028,7 @@ function testCopticDateRoundTripConstruction() {
 }
 
 function testCopticDateRoundTripConstruction2() {
-    var jd = new ilib.Date.CopticDate({
+    var jd = new CopticDate({
     	year: 1738,
     	month: 10,
     	day: 20,
@@ -1040,7 +1039,7 @@ function testCopticDateRoundTripConstruction2() {
     
     var u = jd.getTime();
     // console.log("unixtime is " + u);
-    var jd2 = new ilib.Date.CopticDate({
+    var jd2 = new CopticDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });

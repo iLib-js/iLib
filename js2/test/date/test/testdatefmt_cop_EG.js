@@ -17,18 +17,21 @@
  * limitations under the License.
  */
 
+var JulianDate = require("./../lib/JulianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
+var CopticDate = require("./../lib/CopticDate.js");
 function testDateFmtConstructorEmpty_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG"});
+    var fmt = new DateFmt({locale: "cop-EG"});
     
     assertNotNull(fmt);
 }
 
 
 function testDateFmtSimpleShort_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "short"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "short"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -42,10 +45,10 @@ function testDateFmtSimpleShort_cop_EG() {
 }
 
 function testDateFmtSimpleMedium_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "medium"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "medium"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -59,10 +62,10 @@ function testDateFmtSimpleMedium_cop_EG() {
 }
 
 function testDateFmtSimpleLong_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "long"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -76,10 +79,10 @@ function testDateFmtSimpleLong_cop_EG() {
 }
 
 function testDateFmtSimpleFull_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -93,10 +96,10 @@ function testDateFmtSimpleFull_cop_EG() {
 }
 
 function testDateFmtSimpleTimeShort_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -110,10 +113,10 @@ function testDateFmtSimpleTimeShort_cop_EG() {
 }
 
 function testDateFmtSimpleTimeMedium_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "medium", type: "time"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -127,10 +130,10 @@ function testDateFmtSimpleTimeMedium_cop_EG() {
 }
 
 function testDateFmtSimpleTimeLong_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", timelength: "long", type: "time"});
+    var fmt = new DateFmt({locale: "cop-EG", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -144,10 +147,10 @@ function testDateFmtSimpleTimeLong_cop_EG() {
 }
 
 function testDateFmtSimpleTimeFull_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", type: "time"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -161,10 +164,10 @@ function testDateFmtSimpleTimeFull_cop_EG() {
 }
 
 function testDateFmtDateTimeSimpleShort_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "short", type: "datetime"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -178,10 +181,10 @@ function testDateFmtDateTimeSimpleShort_cop_EG() {
 }
 
 function testDateFmtDateTimeSimpleMedium_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "medium", type: "datetime"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -195,10 +198,10 @@ function testDateFmtDateTimeSimpleMedium_cop_EG() {
 }
 
 function testDateFmtDateTimeSimpleLong_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "long", type: "datetime"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -212,10 +215,10 @@ function testDateFmtDateTimeSimpleLong_cop_EG() {
 }
 
 function testDateFmtDateTimeSimpleFull_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", type: "datetime"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -229,10 +232,10 @@ function testDateFmtDateTimeSimpleFull_cop_EG() {
 }
 
 function testDateFmtTemplateCalendar_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -247,10 +250,10 @@ function testDateFmtTemplateCalendar_cop_EG() {
 
 
 function testDateFmtTemplateCalendarIncompatibleDateType_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 1731,
 		month: 9,
@@ -265,10 +268,10 @@ function testDateFmtTemplateCalendarIncompatibleDateType_cop_EG() {
 }
 
 function testDateFmtTemplateClock12SwitchHH_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", clock: "12", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -282,10 +285,10 @@ function testDateFmtTemplateClock12SwitchHH_cop_EG() {
 }
 
 function testDateFmtTemplateClock12Switchkk_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", clock: "12", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -299,10 +302,10 @@ function testDateFmtTemplateClock12Switchkk_cop_EG() {
 }
 
 function testDateFmtTemplateClock24Switchhh_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", clock: "24", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -316,10 +319,10 @@ function testDateFmtTemplateClock24Switchhh_cop_EG() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", clock: "24", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -333,10 +336,10 @@ function testDateFmtTemplateClock24SwitchKK_cop_EG() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -350,10 +353,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_cop_EG() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -367,10 +370,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_cop_EG() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -384,10 +387,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_cop_EG() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "cop-EG", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -402,10 +405,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_cop_EG() {
 
 
 function testDateFmtTypeDate_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "date"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "date"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -419,10 +422,10 @@ function testDateFmtTypeDate_cop_EG() {
 }
 
 function testDateFmtTypeTime_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -436,10 +439,10 @@ function testDateFmtTypeTime_cop_EG() {
 }
 
 function testDateFmtTypeDateTime_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "datetime"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -454,10 +457,10 @@ function testDateFmtTypeDateTime_cop_EG() {
 
 
 function testDateFmtShortDateComponentsY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "y"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -471,10 +474,10 @@ function testDateFmtShortDateComponentsY_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "m"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -488,10 +491,10 @@ function testDateFmtShortDateComponentsM_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsN_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "n"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "n"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -505,10 +508,10 @@ function testDateFmtShortDateComponentsN_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsD_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "d"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -522,10 +525,10 @@ function testDateFmtShortDateComponentsD_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsDM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "dm"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -539,10 +542,10 @@ function testDateFmtShortDateComponentsDM_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "my"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -556,10 +559,10 @@ function testDateFmtShortDateComponentsMY_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsDMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "dmy"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -573,10 +576,10 @@ function testDateFmtShortDateComponentsDMY_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsWDM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "wdm"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -590,10 +593,10 @@ function testDateFmtShortDateComponentsWDM_cop_EG() {
 }
 
 function testDateFmtShortDateComponentsWDMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", date: "wdmy"});
+    var fmt = new DateFmt({locale: "cop-EG", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -608,10 +611,10 @@ function testDateFmtShortDateComponentsWDMY_cop_EG() {
 
 
 function testDateFmtFullDateComponentsY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "y"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -625,10 +628,10 @@ function testDateFmtFullDateComponentsY_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "m"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -642,10 +645,10 @@ function testDateFmtFullDateComponentsM_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsD_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "d"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -659,10 +662,10 @@ function testDateFmtFullDateComponentsD_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsDM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "dm"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -676,10 +679,10 @@ function testDateFmtFullDateComponentsDM_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "my"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -693,10 +696,10 @@ function testDateFmtFullDateComponentsMY_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsDMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "dmy"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -710,10 +713,10 @@ function testDateFmtFullDateComponentsDMY_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsWDM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "wdm"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -727,10 +730,10 @@ function testDateFmtFullDateComponentsWDM_cop_EG() {
 }
 
 function testDateFmtFullDateComponentsWDMY_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", length: "full", date: "wdmy"});
+    var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -745,10 +748,10 @@ function testDateFmtFullDateComponentsWDMY_cop_EG() {
 
 
 function testDateFmtShortTimeComponentsS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "s"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -762,10 +765,10 @@ function testDateFmtShortTimeComponentsS_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "m"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -779,10 +782,10 @@ function testDateFmtShortTimeComponentsM_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsH_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "h"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -796,10 +799,10 @@ function testDateFmtShortTimeComponentsH_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsMS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "ms"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -813,10 +816,10 @@ function testDateFmtShortTimeComponentsMS_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "hm"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -830,10 +833,10 @@ function testDateFmtShortTimeComponentsHM_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "hms"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -847,10 +850,10 @@ function testDateFmtShortTimeComponentsHMS_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMA_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "hma"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -864,7 +867,7 @@ function testDateFmtShortTimeComponentsHMA_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         time: "hmz", 
@@ -872,7 +875,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -886,7 +889,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         time: "hmaz", 
@@ -894,7 +897,7 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -908,10 +911,10 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMSA_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", time: "hmsa"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -925,7 +928,7 @@ function testDateFmtShortTimeComponentsHMSA_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         time: "hmsz", 
@@ -933,7 +936,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -947,7 +950,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         time: "hmsaz", 
@@ -955,7 +958,7 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -970,10 +973,10 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
 
 
 function testDateFmtFullTimeComponentsS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "s"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -987,10 +990,10 @@ function testDateFmtFullTimeComponentsS_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "m"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1004,10 +1007,10 @@ function testDateFmtFullTimeComponentsM_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsH_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "h"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1021,10 +1024,10 @@ function testDateFmtFullTimeComponentsH_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsMS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "ms"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1038,10 +1041,10 @@ function testDateFmtFullTimeComponentsMS_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHM_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hm"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1055,10 +1058,10 @@ function testDateFmtFullTimeComponentsHM_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMS_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hms"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1072,10 +1075,10 @@ function testDateFmtFullTimeComponentsHMS_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMA_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1089,7 +1092,7 @@ function testDateFmtFullTimeComponentsHMA_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         length: "full", 
@@ -1098,7 +1101,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1112,7 +1115,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         length: "full", 
@@ -1121,7 +1124,7 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1135,10 +1138,10 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMSA_cop_EG() {
-    var fmt = new ilib.DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1152,7 +1155,7 @@ function testDateFmtFullTimeComponentsHMSA_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         length: "full", 
@@ -1161,7 +1164,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1175,7 +1178,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         length: "full", 
@@ -1184,7 +1187,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1198,7 +1201,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
 }
 
 function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "cop-EG", 
         type: "time", 
         length: "full", 
@@ -1207,7 +1210,7 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
 		locale: "cop-EG",
 		year: 2011,
 		month: 12,
@@ -1222,13 +1225,13 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1238,7 +1241,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1251,13 +1254,13 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
     assertEquals("خلال 30 ثانية من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1267,7 +1270,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1280,13 +1283,13 @@ function testDateFmtFormatRelativeWithinMinuteBefore_cop_EG() {
     assertEquals("قبل 30 ثانية من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1296,7 +1299,7 @@ function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1309,13 +1312,13 @@ function testDateFmtFormatRelativeWithinHourAfter_cop_EG() {
     assertEquals("خلال 10 دقائق من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1325,7 +1328,7 @@ function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1338,13 +1341,13 @@ function testDateFmtFormatRelativeWithinHourBefore_cop_EG() {
     assertEquals("قبل 10 دقائق من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1354,7 +1357,7 @@ function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1367,13 +1370,13 @@ function testDateFmtFormatRelativeWithinDayAfter_cop_EG() {
     assertEquals("خلال 4 ساعات من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1383,7 +1386,7 @@ function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1397,13 +1400,13 @@ function testDateFmtFormatRelativeWithinDayBefore_cop_EG() {
 };
 
 function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1413,7 +1416,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1426,13 +1429,13 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cop_EG() {
     assertEquals("خلال 4 أيام من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1442,7 +1445,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1456,13 +1459,13 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cop_EG() {
 };
 
 function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1472,7 +1475,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 11,
@@ -1485,13 +1488,13 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cop_EG() {
     assertEquals("خلال 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1501,7 +1504,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 7,
@@ -1515,13 +1518,13 @@ function testDateFmtFormatRelativeWithinQuarterBefore_cop_EG() {
 };
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1531,7 +1534,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2013,
 		month: 1,
@@ -1544,13 +1547,13 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG() {
     assertEquals("خلال 16 شهر من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1560,7 +1563,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2010,
 		month: 7,
@@ -1574,13 +1577,13 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG() {
 };
 
 function testDateFmtFormatRelativeYearsAfter_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1590,7 +1593,7 @@ function testDateFmtFormatRelativeYearsAfter_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 2025,
 		month: 10,
@@ -1603,13 +1606,13 @@ function testDateFmtFormatRelativeYearsAfter_cop_EG() {
     assertEquals("خلال 14 سنة من الأيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeYearsBefore_cop_EG() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "cop-EG",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.CopticDate({
+    var reference = new CopticDate({
     	locale: "cop-EG",
 		year: 2011,
 		month: 9,
@@ -1619,7 +1622,7 @@ function testDateFmtFormatRelativeYearsBefore_cop_EG() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.CopticDate({
+    var date = new CopticDate({
     	locale: "cop-EG",
 		year: 1990,
 		month: 7,

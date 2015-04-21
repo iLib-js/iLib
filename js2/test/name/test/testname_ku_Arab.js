@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ku_Arab() {
-	var parsed = new ilib.Name("جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
+	var parsed = new Name("جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -34,7 +36,7 @@ function testParseSimpleName_ku_Arab() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_ku_Arab() {
-	var parsed = new ilib.Name("بەڕێز و خاتوو تاڵەبانی", {locale: 'ku-Arab-IQ'});
+	var parsed = new Name("بەڕێز و خاتوو تاڵەبانی", {locale: 'ku-Arab-IQ'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -47,7 +49,7 @@ function testParseSingleNameWithPrefixAndAdjunct_ku_Arab() {
 
 
 function testParseTitle_ku_Arab() {
-	var parsed = new ilib.Name("جەلال تاڵەبانی کوڕ", {locale: 'ku-Arab-IQ'});
+	var parsed = new Name("جەلال تاڵەبانی کوڕ", {locale: 'ku-Arab-IQ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -64,7 +66,7 @@ function testParseTitle_ku_Arab() {
 
 
 function testParseEverything_ku_Arab() {
-	var parsed = new ilib.Name("بەڕێز جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
+	var parsed = new Name("بەڕێز جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -82,11 +84,11 @@ function testParseEverything_ku_Arab() {
  */
 
 function testFormatSimpleNameShort_ku_Arab() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "جەلال",
 		familyName: "تاڵەبانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ku-Arab-IQ'
 	});
@@ -99,11 +101,11 @@ function testFormatSimpleNameShort_ku_Arab() {
 };
 
 function testFormatSimpleNameMedium_ku_Arab() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "جەلال",
 		familyName: "تاڵەبانی"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ku-Arab-IQ'
 	});
@@ -116,13 +118,13 @@ function testFormatSimpleNameMedium_ku_Arab() {
 };
 
 function testFormatSimpleNameLong_ku_Arab() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "جەلال",
 		
 		familyName: "تاڵەبانی",
 		suffix: "کوڕ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ku-Arab-IQ'
 	});

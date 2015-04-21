@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var LocaleInfo = require("./../lib/LocaleInfo.js");
 function testLocaleInfoConstructorEmptySubsequent(results) {
-    new ilib.LocaleInfo();	    
+    new LocaleInfo();	    
 
     var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.LocaleInfo();
+		    var fmt = new LocaleInfo();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,13 +34,13 @@ function testLocaleInfoConstructorEmptySubsequent(results) {
 }
 
 function testLocaleInfoConstructorRealSubsequent(results) {
-	new ilib.LocaleInfo("de-DE");
+	new LocaleInfo("de-DE");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("de-DE");
+			var fmt = new LocaleInfo("de-DE");
 		    assertNotNull(fmt);
 		}
 	});
@@ -48,13 +49,13 @@ function testLocaleInfoConstructorRealSubsequent(results) {
 }
 
 function testLocaleInfoConstructorNonexistentSubsequent(results) {
-	new ilib.LocaleInfo("xx-YY");
+	new LocaleInfo("xx-YY");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("xx-YY");
+			var fmt = new LocaleInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});
@@ -63,13 +64,13 @@ function testLocaleInfoConstructorNonexistentSubsequent(results) {
 }
 
 function testLocaleInfoConstructorOtherComplexSubsequent(results) {
-	new ilib.LocaleInfo("zh-Hant-TW");
+	new LocaleInfo("zh-Hant-TW");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-otherfile-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("zh-Hant-TW");
+			var fmt = new LocaleInfo("zh-Hant-TW");
 		    assertNotNull(fmt);
 		}
 	});

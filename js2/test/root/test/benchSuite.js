@@ -17,17 +17,18 @@
  * limitations under the License.
  */
 
-var cli = require('./runner.js');
+var TestSuite = require("./TestSuiteModule.js");
+var ilib = require("./../lib/ilib.js");
 var util = require("util");
 
 function newSuite(path, include) {
-	var suite = new cli.TestSuite("test/" + path);
+	var suite = new TestSuite("test/" + path);
 	suite.include("test/testUtils.js");
 	return suite;
 };
 
 function suite() {
-    var s = new cli.TestSuite();
+    var s = new TestSuite();
     
     var suites = [
         {file: "benresbundle_initial_assembled.js", iterations: 100},

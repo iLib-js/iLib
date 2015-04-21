@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_he() {
-	var parsed = new ilib.Name("נטלי פורטמן", {locale: 'he-IL'});
+	var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_he() {
 
 
 function testParseAdjunctNames_he() {
-	var parsed = new ilib.Name("נטלי פורטמן", {locale: 'he-IL'});
+	var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -45,7 +47,7 @@ function testParseAdjunctNames_he() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_he() {
-	var parsed = new ilib.Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
+	var parsed = new Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -58,7 +60,7 @@ function testParseSingleNameWithPrefixAndAdjunct_he() {
 
 
 function testParseTitle_he() {
-	var parsed = new ilib.Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
+	var parsed = new Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -73,7 +75,7 @@ function testParseTitle_he() {
 
 
 function testParseTitleWithFamilyOnly_he() {
-	var parsed = new ilib.Name("גברת פורטמן", {locale: 'he-IL'});
+	var parsed = new Name("גברת פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -87,7 +89,7 @@ function testParseTitleWithFamilyOnly_he() {
 
 
 function testParseEverything_he() {
-	var parsed = new ilib.Name("גברת נטלי פורטמן", {locale: 'he-IL'});
+	var parsed = new Name("גברת נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -105,11 +107,11 @@ function testParseEverything_he() {
  */
 
 function testFormatSimpleNameShort_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "נטלי",
 		familyName: "פורטמן"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'he-IL'
 	});
@@ -122,11 +124,11 @@ function testFormatSimpleNameShort_he() {
 };
 
 function testFormatSimpleNameMedium_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "נטלי",
 		familyName: "פורטמן"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'he-IL'
 	});
@@ -139,12 +141,12 @@ function testFormatSimpleNameMedium_he() {
 };
 
 function testFormatSimpleNameLong_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "נטלי",
 		familyName: "פורטמן",
 		suffix: "דוקטור"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'he-IL'
 	});
@@ -157,14 +159,14 @@ function testFormatSimpleNameLong_he() {
 };
 
 function testFormatSimpleNameFull_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ראש הממשלה",
 		givenName: "נטלי",
 		
 		familyName: "פורטמן",
 		suffix: "לשעבר"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'he-IL'
 	});
@@ -177,13 +179,13 @@ function testFormatSimpleNameFull_he() {
 };
 
 function testFormatComplexNameShort_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ראש הממשלה",
 		givenName: "נטלי",
 		
 		familyName: "פורטמן",
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'he-IL'
 	});
@@ -196,13 +198,13 @@ function testFormatComplexNameShort_he() {
 };
 
 function testFormatComplexNameMedium_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ראש הממשלה",
 		givenName: "נטלי",
 		
 		familyName: "פורטמן",
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'he-IL'
 	});
@@ -215,13 +217,13 @@ function testFormatComplexNameMedium_he() {
 };
 
 function testFormatComplexNameLong_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ראש הממשלה",
 		givenName: "נטלי",
 		
 		familyName: "פורטמן",
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'he-IL'
 	});
@@ -234,12 +236,12 @@ function testFormatComplexNameLong_he() {
 };
 
 function testFormatAsianNameShort_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'he-IL'
 	});
@@ -252,12 +254,12 @@ function testFormatAsianNameShort_he() {
 };
 
 function testFormatAsianNameMedium_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'he-IL'
 	});
@@ -270,12 +272,12 @@ function testFormatAsianNameMedium_he() {
 };
 
 function testFormatAsianNameLong_he() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'he-IL'
 	});

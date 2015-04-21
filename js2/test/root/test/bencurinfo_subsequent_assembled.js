@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var Currency = require("./../lib/Currency.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -42,13 +44,13 @@ ilib.data.currency = {
 };
 
 function testCurrencyConstructorEmptySubsequent(results) {
-	new ilib.Currency();
+	new Currency();
 
 	var tt = new TimedTest({
 		name: "Currency-assembled-empty-subsequent",
 		iterations: 100,
 		fn: function () {
-		    var fmt = new ilib.Currency();
+		    var fmt = new Currency();
 		    assertNotNull(fmt);
 		}
 	});
@@ -57,7 +59,7 @@ function testCurrencyConstructorEmptySubsequent(results) {
 }
 
 function testCurrencyConstructorRealSubsequent(results) {
-	new ilib.Currency({
+	new Currency({
 		code: "USD"
 	});
 
@@ -65,7 +67,7 @@ function testCurrencyConstructorRealSubsequent(results) {
 		name: "Currency-assembled-normal-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				code: "USD"
 			});
 		    assertNotNull(fmt);
@@ -76,7 +78,7 @@ function testCurrencyConstructorRealSubsequent(results) {
 }
 
 function testCurrencyConstructorBySignSubsequent(results) {
-	new ilib.Currency({
+	new Currency({
 		sign: "$"	
 	});
 
@@ -84,7 +86,7 @@ function testCurrencyConstructorBySignSubsequent(results) {
 		name: "Currency-assembled-bysign-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				sign: "$"	
 			});
 		    assertNotNull(fmt);

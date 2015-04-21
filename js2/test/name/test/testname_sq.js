@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_sq_Al() {
-	var parsed = new ilib.Name("James Belushi", {locale: 'sq-Al'});
+	var parsed = new Name("James Belushi", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -34,7 +36,7 @@ function testParseSimpleName_sq_Al() {
 
 
 function testParseTitle_sq_Al() {
-	var parsed = new ilib.Name("James Belushi njom", {locale: 'sq-Al'});
+	var parsed = new Name("James Belushi njom", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -49,7 +51,7 @@ function testParseTitle_sq_Al() {
 
 
 function testParseTitleWithFamilyOnly_sq_Al() {
-	var parsed = new ilib.Name("Zoti. Belushi", {locale: 'sq-Al'});
+	var parsed = new Name("Zoti. Belushi", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -63,7 +65,7 @@ function testParseTitleWithFamilyOnly_sq_Al() {
 
 
 function testParseEverything_sq_Al() {
-	var parsed = new ilib.Name("Zoti. dhe Zonja. Belushi", {locale: 'sq-Al'});
+	var parsed = new Name("Zoti. dhe Zonja. Belushi", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -75,7 +77,7 @@ function testParseEverything_sq_Al() {
 };
 
 function testParseprefix_sq_Al() {
-	var parsed = new ilib.Name("Zoti. James Belushi", {locale: 'sq-Al'});
+	var parsed = new Name("Zoti. James Belushi", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -88,7 +90,7 @@ function testParseprefix_sq_Al() {
 };
 
 function testParseprefixAndSuffix_sq_Al() {
-	var parsed = new ilib.Name("Zëvendëspresident James Belushi njom", {locale: 'sq-Al'});
+	var parsed = new Name("Zëvendëspresident James Belushi njom", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -105,11 +107,11 @@ function testParseprefixAndSuffix_sq_Al() {
  */
 
 function testFormatSimpleNameShort_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "James",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sq-Al'
 	});
@@ -122,11 +124,11 @@ function testFormatSimpleNameShort_sq_Al() {
 };
 
 function testFormatSimpleNameMedium_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "James",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sq-Al'
 	});
@@ -139,12 +141,12 @@ function testFormatSimpleNameMedium_sq_Al() {
 };
 
 function testFormatSimpleNameLong_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "James",
 		familyName: "Belushi",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sq-Al'
 	});
@@ -159,11 +161,11 @@ function testFormatSimpleNameLong_sq_Al() {
 
 
 function testFormatSurname_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Zoti. dhe Zonja.",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sq-Al'
 	});
@@ -176,13 +178,13 @@ function testFormatSurname_sq_Al() {
 };
 
 function testFormatSimpleNameFull_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Guvernator",
 		givenName: "James",
 		familyName: "Belushi",
 		suffix: "njom"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'sq-Al'
 	});
@@ -195,12 +197,12 @@ function testFormatSimpleNameFull_sq_Al() {
 };
 
 function testFormatComplexNameShort_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Guvernator",
 		givenName: "James",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sq-Al'
 	});
@@ -213,12 +215,12 @@ function testFormatComplexNameShort_sq_Al() {
 };
 
 function testFormatComplexNameMedium_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Guvernator",
 		givenName: "James",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sq-Al'
 	});
@@ -231,12 +233,12 @@ function testFormatComplexNameMedium_sq_Al() {
 };
 
 function testFormatComplexNameLong_sq_Al() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Guvernator",
 		givenName: "James",
 		familyName: "Belushi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'sq-Al'
 	});

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var JulianDay = require("./../lib/JulianDay.js");
+
 function testJulianDayConstructor() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
     assertNotNull(jd);
     debug(JSON.stringify(jd));
@@ -26,26 +28,26 @@ function testJulianDayConstructor() {
 
 /* julian date is 366 + epoch */
 function testJulianDayGetDate() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
     assertEquals(1721791.25, jd.getDate());
 }
 
 function testJulianDayGetDays() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
     debug(typeof(jd.getDays));
     assertEquals(1721791, jd.getDays());
 }
 
 function testJulianDayGetDayFraction() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
     assertEquals(0.25, jd.getDayFraction());
 }
 
 function testJulianDayAddDate() {
-    var jd = new ilib.JulianDay(1.25);
+    var jd = new JulianDay(1.25);
     assertEquals(1.25, jd.getDate());
     
     jd.addDate(83.2);
@@ -54,7 +56,7 @@ function testJulianDayAddDate() {
 }
 
 function testJulianDaySetDays() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     assertEquals(1721791.25, jd.getDate());
     
     jd.setDays(2);
@@ -64,7 +66,7 @@ function testJulianDaySetDays() {
 }
 
 function testJulianDaySetDaysIgnoreFraction() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     assertEquals(1721791.25, jd.getDate());
     
     jd.setDays(2.9);
@@ -74,7 +76,7 @@ function testJulianDaySetDaysIgnoreFraction() {
 }
 
 function testJulianDaySetDayFraction() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     assertEquals(1721791.25, jd.getDate());
     
     jd.setDayFraction(0.33);
@@ -84,7 +86,7 @@ function testJulianDaySetDayFraction() {
 }
 
 function testJulianDaySetDayFractionWithWholeNumber() {
-    var jd = new ilib.JulianDay(1721791.25);  // jan 2, 2, 6:00pm
+    var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     assertEquals(1721791.25, jd.getDate());
     
     jd.setDayFraction(2.33);
@@ -94,7 +96,7 @@ function testJulianDaySetDayFractionWithWholeNumber() {
 }
 
 function testJulianDaySetDate() {
-    var jd = new ilib.JulianDay(1721791.25);
+    var jd = new JulianDay(1721791.25);
     assertEquals(1721791.25, jd.getDate());
     
     jd.setDate(123.456);

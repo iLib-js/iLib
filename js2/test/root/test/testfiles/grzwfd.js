@@ -1,13 +1,13 @@
-var ilib = require("../../../../lib/ilib.js");
+// !dependencies: false
 
-ilib.Grzwfd = function(spec) {
+Grzwfd = function(spec) {
 	//console.log("Grzwfd: spec is " + spec);
 
 	this.spec = spec;
 };
 
-ilib.Grzwfd.prototype.getSpec = function() {
+Grzwfd.prototype.getSpec = function() {
 	return this.spec;
 };
 
-module.exports = ilib.Grzwfd;
+module.exports = Grzwfd;

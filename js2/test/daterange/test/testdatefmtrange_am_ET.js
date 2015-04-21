@@ -17,11 +17,13 @@
  * limitations under the License.
  */
 
+var EthiopicDate = require("./../lib/EthiopicDate.js");
+var DateRngFmt = require("./../lib/DateRngFmt.js");
 function testDateRngFmtAMRangeInDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -30,7 +32,7 @@ function testDateRngFmtAMRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -42,10 +44,10 @@ function testDateRngFmtAMRangeInDayShort() {
     assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -54,7 +56,7 @@ function testDateRngFmtAMRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -66,10 +68,10 @@ function testDateRngFmtAMRangeInDayMedium() {
     assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -78,7 +80,7 @@ function testDateRngFmtAMRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -90,10 +92,10 @@ function testDateRngFmtAMRangeInDayLong() {
     assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -102,7 +104,7 @@ function testDateRngFmtAMRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -115,10 +117,10 @@ function testDateRngFmtAMRangeInDayFull() {
 }
 
 function testDateRngFmtAMRangeNextDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -127,7 +129,7 @@ function testDateRngFmtAMRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -139,10 +141,10 @@ function testDateRngFmtAMRangeNextDayShort() {
     assertEquals("1:45 ከምሽቱ 29/12/2011 – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -151,7 +153,7 @@ function testDateRngFmtAMRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -163,10 +165,10 @@ function testDateRngFmtAMRangeNextDayMedium() {
     assertEquals("1:45 ከምሽቱ 29 ነሐሴ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -175,7 +177,7 @@ function testDateRngFmtAMRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -187,10 +189,10 @@ function testDateRngFmtAMRangeNextDayLong() {
     assertEquals("1:45 ከምሽቱ 29 – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -199,7 +201,7 @@ function testDateRngFmtAMRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -212,10 +214,10 @@ function testDateRngFmtAMRangeNextDayFull() {
 }
 
 function testDateRngFmtAMRangeMultiDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -224,7 +226,7 @@ function testDateRngFmtAMRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -236,10 +238,10 @@ function testDateRngFmtAMRangeMultiDayShort() {
     assertEquals("20–30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -248,7 +250,7 @@ function testDateRngFmtAMRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -260,10 +262,10 @@ function testDateRngFmtAMRangeMultiDayMedium() {
     assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -272,7 +274,7 @@ function testDateRngFmtAMRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -284,10 +286,10 @@ function testDateRngFmtAMRangeMultiDayLong() {
     assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -296,7 +298,7 @@ function testDateRngFmtAMRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -309,10 +311,10 @@ function testDateRngFmtAMRangeMultiDayFull() {
 }
 
 function testDateRngFmtAMRangeNextMonthShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -321,7 +323,7 @@ function testDateRngFmtAMRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -333,10 +335,10 @@ function testDateRngFmtAMRangeNextMonthShort() {
     assertEquals("20/11/2011 – 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -345,7 +347,7 @@ function testDateRngFmtAMRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -357,10 +359,10 @@ function testDateRngFmtAMRangeNextMonthMedium() {
     assertEquals("20 ሐምሌ – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -369,7 +371,7 @@ function testDateRngFmtAMRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -381,10 +383,10 @@ function testDateRngFmtAMRangeNextMonthLong() {
     assertEquals("20 ሐምሌ – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -393,7 +395,7 @@ function testDateRngFmtAMRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -406,10 +408,10 @@ function testDateRngFmtAMRangeNextMonthFull() {
 }
 
 function testDateRngFmtAMRangeNextYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -418,7 +420,7 @@ function testDateRngFmtAMRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2012,
 		month: 1,
 		day: 30,
@@ -430,10 +432,10 @@ function testDateRngFmtAMRangeNextYearShort() {
     assertEquals("20/11/2011–30/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -442,7 +444,7 @@ function testDateRngFmtAMRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2012,
 		month: 1,
 		day: 30,
@@ -454,10 +456,10 @@ function testDateRngFmtAMRangeNextYearMedium() {
     assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -466,7 +468,7 @@ function testDateRngFmtAMRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2012,
 		month: 1,
 		day: 30,
@@ -478,10 +480,10 @@ function testDateRngFmtAMRangeNextYearLong() {
     assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -490,7 +492,7 @@ function testDateRngFmtAMRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2012,
 		month: 1,
 		day: 30,
@@ -503,10 +505,10 @@ function testDateRngFmtAMRangeNextYearFull() {
 }
 
 function testDateRngFmtAMRangeMultiYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -515,7 +517,7 @@ function testDateRngFmtAMRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2014,
 		month: 1,
 		day: 30,
@@ -527,10 +529,10 @@ function testDateRngFmtAMRangeMultiYearShort() {
     assertEquals("11/2011–01/2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -539,7 +541,7 @@ function testDateRngFmtAMRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2014,
 		month: 1,
 		day: 30,
@@ -551,10 +553,10 @@ function testDateRngFmtAMRangeMultiYearMedium() {
     assertEquals("ሐምሌ 2011 – መስከረም 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -563,7 +565,7 @@ function testDateRngFmtAMRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2014,
 		month: 1,
 		day: 30,
@@ -575,10 +577,10 @@ function testDateRngFmtAMRangeMultiYearLong() {
     assertEquals("ሐምሌ 2011 – መስከረም 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -587,7 +589,7 @@ function testDateRngFmtAMRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2014,
 		month: 1,
 		day: 30,
@@ -599,10 +601,10 @@ function testDateRngFmtAMRangeMultiYearFull() {
     assertEquals("ሐምሌ ቀን 2011 – መስከረም ቀን 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMManyYearsFull() {
-    var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.EthiopicDate({
+    var start = new EthiopicDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -611,7 +613,7 @@ function testDateRngFmtAMManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.EthiopicDate({
+    var end = new EthiopicDate({
 		year: 2064,
 		month: 1,
 		day: 30,

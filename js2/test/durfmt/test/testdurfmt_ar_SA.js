@@ -17,10 +17,11 @@
  * limitations under the License.
  */
 
+var DurationFmt = require("./../lib/DurationFmt.js");
 //test cases for ar-SA
 
 function testDurFmtARFormatShortDefaultStyle1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short"
     });
@@ -39,7 +40,7 @@ function testDurFmtARFormatShortDefaultStyle1() {
 };
 
 function testDurFmtARFormatShortText1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "text"
@@ -59,7 +60,7 @@ function testDurFmtARFormatShortText1() {
 };
 
 function testDurFmtARFormatShortClock1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock"
@@ -79,7 +80,7 @@ function testDurFmtARFormatShortClock1() {
 };
 
 function testDurFmtARFormatMedium1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "medium"
     });
@@ -98,7 +99,7 @@ function testDurFmtARFormatMedium1() {
 };
 
 function testDurFmtARFormatLong1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "long"
     });
@@ -117,7 +118,7 @@ function testDurFmtARFormatLong1() {
 };
 
 function testDurFmtARFormatFull1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "full"
     });
@@ -136,7 +137,7 @@ function testDurFmtARFormatFull1() {
 };
 
 function testDurFmtARFormatShortDefaultStyle2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short"
     });
@@ -155,7 +156,7 @@ function testDurFmtARFormatShortDefaultStyle2() {
 };
 
 function testDurFmtARFormatShortText2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "text"
@@ -175,7 +176,7 @@ function testDurFmtARFormatShortText2() {
 };
 
 function testDurFmtARFormatShortClock2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock"
@@ -195,7 +196,7 @@ function testDurFmtARFormatShortClock2() {
 };
 
 function testDurFmtARFormatMedium2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "medium"
     });
@@ -214,7 +215,7 @@ function testDurFmtARFormatMedium2() {
 };
 
 function testDurFmtARFormatLong2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "long"
     });
@@ -233,7 +234,7 @@ function testDurFmtARFormatLong2() {
 };
 
 function testDurFmtARFormatFull2() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "full"
     });
@@ -252,7 +253,7 @@ function testDurFmtARFormatFull2() {
 };
 
 function testDurFmtARFormatShortDefaultStyle3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short"
     });
@@ -271,7 +272,7 @@ function testDurFmtARFormatShortDefaultStyle3() {
 };
 
 function testDurFmtARFormatShortText3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "text"
@@ -291,7 +292,7 @@ function testDurFmtARFormatShortText3() {
 };
 
 function testDurFmtARFormatShortClock3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock"
@@ -311,7 +312,7 @@ function testDurFmtARFormatShortClock3() {
 };
 
 function testDurFmtARFormatMedium3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "medium"
     });
@@ -330,7 +331,7 @@ function testDurFmtARFormatMedium3() {
 };
 
 function testDurFmtARFormatLong3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "long"
     });
@@ -349,7 +350,7 @@ function testDurFmtARFormatLong3() {
 };
 
 function testDurFmtARFormatFull3() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "full"
     });
@@ -368,7 +369,7 @@ function testDurFmtARFormatFull3() {
 };
 
 function testDurFmtARFormatShortDefaultStyle11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short"
     });
@@ -387,7 +388,7 @@ function testDurFmtARFormatShortDefaultStyle11() {
 };
 
 function testDurFmtARFormatShortText11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "text"
@@ -407,7 +408,7 @@ function testDurFmtARFormatShortText11() {
 };
 
 function testDurFmtARFormatShortClock11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock"
@@ -427,7 +428,7 @@ function testDurFmtARFormatShortClock11() {
 };
 
 function testDurFmtARFormatMedium11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "medium"
     });
@@ -446,7 +447,7 @@ function testDurFmtARFormatMedium11() {
 };
 
 function testDurFmtARFormatLong11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "long"
     });
@@ -465,7 +466,7 @@ function testDurFmtARFormatLong11() {
 };
 
 function testDurFmtARFormatFull11() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "full"
     });
@@ -485,7 +486,7 @@ function testDurFmtARFormatFull11() {
 
 function testDurFmtARAsync1() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -511,7 +512,7 @@ function testDurFmtARAsync1() {
 
 function testDurFmtARAsyncWithLocale1() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -537,7 +538,7 @@ function testDurFmtARAsyncWithLocale1() {
 
 function testDurFmtARAsync2() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -563,7 +564,7 @@ function testDurFmtARAsync2() {
 
 function testDurFmtARAsyncWithLocale2() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -589,7 +590,7 @@ function testDurFmtARAsyncWithLocale2() {
 
 function testDurFmtARAsync3() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -615,7 +616,7 @@ function testDurFmtARAsync3() {
 
 function testDurFmtARAsyncWithLocale3() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -641,7 +642,7 @@ function testDurFmtARAsyncWithLocale3() {
 
 function testDurFmtARAsync11() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -667,7 +668,7 @@ function testDurFmtARAsync11() {
 
 function testDurFmtARAsyncWithLocale11() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	sync: false,
@@ -693,7 +694,7 @@ function testDurFmtARAsyncWithLocale11() {
 
 function testDurFmtARFormatShortClockAsync1() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock",
@@ -720,7 +721,7 @@ function testDurFmtARFormatShortClockAsync1() {
 
 
 function testDurFmtARFormatWesternShortDefaultStyle1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	useNative: false
@@ -740,7 +741,7 @@ function testDurFmtARFormatWesternShortDefaultStyle1() {
 };
 
 function testDurFmtARFormatWesternShortText1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "text",
@@ -761,7 +762,7 @@ function testDurFmtARFormatWesternShortText1() {
 };
 
 function testDurFmtARFormatWesternShortClock1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock",
@@ -782,7 +783,7 @@ function testDurFmtARFormatWesternShortClock1() {
 };
 
 function testDurFmtARFormatWesternMedium1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "medium",
     	useNative: false
@@ -802,7 +803,7 @@ function testDurFmtARFormatWesternMedium1() {
 };
 
 function testDurFmtARFormatWesternLong1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "long",
     	useNative: false
@@ -822,7 +823,7 @@ function testDurFmtARFormatWesternLong1() {
 };
 
 function testDurFmtARFormatWesternFull1() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	useNative: false
@@ -844,7 +845,7 @@ function testDurFmtARFormatWesternFull1() {
 
 function testDurFmtARAsync2() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	useNative: false,
@@ -871,7 +872,7 @@ function testDurFmtARAsync2() {
 
 function testDurFmtARAsyncWithLocale2() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
     	useNative: false,
@@ -898,7 +899,7 @@ function testDurFmtARAsyncWithLocale2() {
 
 function testDurFmtARFormatWesternShortClockAsync1() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
     	style: "clock",

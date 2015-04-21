@@ -17,18 +17,21 @@
  * limitations under the License.
  */
 
+var JulianDate = require("./../lib/JulianDate.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtConstructorEmpty_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR"});
+    var fmt = new DateFmt({locale: "ko-KR"});
     
     assertNotNull(fmt);
 }
 
 
 function testDateFmtSimpleShort_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -42,10 +45,10 @@ function testDateFmtSimpleShort_ko_KR() {
 }
 
 function testDateFmtSimpleMedium_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -59,10 +62,10 @@ function testDateFmtSimpleMedium_ko_KR() {
 }
 
 function testDateFmtSimpleLong_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -76,10 +79,10 @@ function testDateFmtSimpleLong_ko_KR() {
 }
 
 function testDateFmtSimpleFull_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -93,10 +96,10 @@ function testDateFmtSimpleFull_ko_KR() {
 }
 
 function testDateFmtSimpleTimeShort_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "short", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -110,10 +113,10 @@ function testDateFmtSimpleTimeShort_ko_KR() {
 }
 
 function testDateFmtSimpleTimeMedium_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "medium", type: "time"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "medium", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -127,10 +130,10 @@ function testDateFmtSimpleTimeMedium_ko_KR() {
 }
 
 function testDateFmtSimpleTimeLong_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", timelength: "long", type: "time"});
+    var fmt = new DateFmt({locale: "ko-KR", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -144,10 +147,10 @@ function testDateFmtSimpleTimeLong_ko_KR() {
 }
 
 function testDateFmtSimpleTimeFull_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", type: "time"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -161,10 +164,10 @@ function testDateFmtSimpleTimeFull_ko_KR() {
 }
 
 function testDateFmtDateTimeSimpleShort_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "short", type: "datetime"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -178,10 +181,10 @@ function testDateFmtDateTimeSimpleShort_ko_KR() {
 }
 
 function testDateFmtDateTimeSimpleMedium_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "medium", type: "datetime"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -195,10 +198,10 @@ function testDateFmtDateTimeSimpleMedium_ko_KR() {
 }
 
 function testDateFmtDateTimeSimpleLong_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "long", type: "datetime"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -212,10 +215,10 @@ function testDateFmtDateTimeSimpleLong_ko_KR() {
 }
 
 function testDateFmtDateTimeSimpleFull_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", type: "datetime"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -230,10 +233,10 @@ function testDateFmtDateTimeSimpleFull_ko_KR() {
 
 
 function testDateFmtTemplateCalendar_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new DateFmt({locale: "ko-KR", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
     	locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -247,10 +250,10 @@ function testDateFmtTemplateCalendar_ko_KR() {
 }
 
 function testDateFmtTemplateCalendarIncompatibleDateType_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -265,10 +268,10 @@ function testDateFmtTemplateCalendarIncompatibleDateType_ko_KR() {
 }
 
 function testDateFmtTemplateClock12SwitchHH_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", clock: "12", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -282,10 +285,10 @@ function testDateFmtTemplateClock12SwitchHH_ko_KR() {
 }
 
 function testDateFmtTemplateClock12Switchkk_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", clock: "12", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -299,10 +302,10 @@ function testDateFmtTemplateClock12Switchkk_ko_KR() {
 }
 
 function testDateFmtTemplateClock24Switchhh_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", clock: "24", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -316,10 +319,10 @@ function testDateFmtTemplateClock24Switchhh_ko_KR() {
 }
 
 function testDateFmtTemplateClock24SwitchKK() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", clock: "24", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -333,10 +336,10 @@ function testDateFmtTemplateClock24SwitchKK() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -350,10 +353,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ko_KR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -367,10 +370,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -384,10 +387,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ko_KR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "ko-KR", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -402,10 +405,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ko_KR() {
 
 
 function testDateFmtTypeDate_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "date"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "date"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -419,10 +422,10 @@ function testDateFmtTypeDate_ko_KR() {
 }
 
 function testDateFmtTypeTime_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -436,10 +439,10 @@ function testDateFmtTypeTime_ko_KR() {
 }
 
 function testDateFmtTypeDateTime_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "datetime"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -454,10 +457,10 @@ function testDateFmtTypeDateTime_ko_KR() {
 
 
 function testDateFmtShortDateComponentsY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "y"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -471,10 +474,10 @@ function testDateFmtShortDateComponentsY_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "m"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -488,10 +491,10 @@ function testDateFmtShortDateComponentsM_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsN_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "n"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "n"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -505,10 +508,10 @@ function testDateFmtShortDateComponentsN_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsD_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "d"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -522,10 +525,10 @@ function testDateFmtShortDateComponentsD_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsDM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "dm"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -539,10 +542,10 @@ function testDateFmtShortDateComponentsDM_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "my"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -556,10 +559,10 @@ function testDateFmtShortDateComponentsMY_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsDMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "dmy"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -573,10 +576,10 @@ function testDateFmtShortDateComponentsDMY_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsWDM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "wdm"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -590,10 +593,10 @@ function testDateFmtShortDateComponentsWDM_ko_KR() {
 }
 
 function testDateFmtShortDateComponentsWDMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "wdmy"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -607,10 +610,10 @@ function testDateFmtShortDateComponentsWDMY_ko_KR() {
 }
 
 function testDateFmtLongDateComponentsWDM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "wdm", length: "long"});
+    var fmt = new DateFmt({locale: "ko-KR", date: "wdm", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -625,10 +628,10 @@ function testDateFmtLongDateComponentsWDM_ko_KR() {
 
 
 function testDateFmtFullDateComponentsY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "y"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -642,10 +645,10 @@ function testDateFmtFullDateComponentsY_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "m"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -659,10 +662,10 @@ function testDateFmtFullDateComponentsM_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsD_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "d"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -676,10 +679,10 @@ function testDateFmtFullDateComponentsD_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsDM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "dm"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -693,10 +696,10 @@ function testDateFmtFullDateComponentsDM_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "my"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -710,10 +713,10 @@ function testDateFmtFullDateComponentsMY_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsDMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "dmy"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -727,10 +730,10 @@ function testDateFmtFullDateComponentsDMY_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsWDM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "wdm"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -744,10 +747,10 @@ function testDateFmtFullDateComponentsWDM_ko_KR() {
 }
 
 function testDateFmtFullDateComponentsWDMY_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full", date: "wdmy"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -762,10 +765,10 @@ function testDateFmtFullDateComponentsWDMY_ko_KR() {
 
 
 function testDateFmtShortTimeComponentsS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "s"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -779,10 +782,10 @@ function testDateFmtShortTimeComponentsS_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "m"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -796,10 +799,10 @@ function testDateFmtShortTimeComponentsM_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsH_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "h"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -813,10 +816,10 @@ function testDateFmtShortTimeComponentsH_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsMS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "ms"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -830,10 +833,10 @@ function testDateFmtShortTimeComponentsMS_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "hm"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -847,10 +850,10 @@ function testDateFmtShortTimeComponentsHM_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "hms"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -864,10 +867,10 @@ function testDateFmtShortTimeComponentsHMS_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMA_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "hma"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -881,7 +884,7 @@ function testDateFmtShortTimeComponentsHMA_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         time: "hmz", 
@@ -889,7 +892,7 @@ function testDateFmtShortTimeComponentsHMZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -903,7 +906,7 @@ function testDateFmtShortTimeComponentsHMZ_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         time: "hmaz", 
@@ -911,7 +914,7 @@ function testDateFmtShortTimeComponentsHMAZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -925,10 +928,10 @@ function testDateFmtShortTimeComponentsHMAZ_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMSA_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", time: "hmsa"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -942,7 +945,7 @@ function testDateFmtShortTimeComponentsHMSA_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMSZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         time: "hmsz", 
@@ -950,7 +953,7 @@ function testDateFmtShortTimeComponentsHMSZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -964,7 +967,7 @@ function testDateFmtShortTimeComponentsHMSZ_ko_KR() {
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         time: "hmsaz", 
@@ -972,7 +975,7 @@ function testDateFmtShortTimeComponentsHMSAZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -987,10 +990,10 @@ function testDateFmtShortTimeComponentsHMSAZ_ko_KR() {
 
 
 function testDateFmtFullTimeComponentsS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "s"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1004,10 +1007,10 @@ function testDateFmtFullTimeComponentsS_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "m"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1021,10 +1024,10 @@ function testDateFmtFullTimeComponentsM_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsH_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "h"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1038,10 +1041,10 @@ function testDateFmtFullTimeComponentsH_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsMS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "ms"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1055,10 +1058,10 @@ function testDateFmtFullTimeComponentsMS_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHM_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hm"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1072,10 +1075,10 @@ function testDateFmtFullTimeComponentsHM_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMS_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hms"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1089,10 +1092,10 @@ function testDateFmtFullTimeComponentsHMS_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMA_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1106,7 +1109,7 @@ function testDateFmtFullTimeComponentsHMA_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         length: "full", 
@@ -1115,7 +1118,7 @@ function testDateFmtFullTimeComponentsHMZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1129,7 +1132,7 @@ function testDateFmtFullTimeComponentsHMZ_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         length: "full", 
@@ -1138,7 +1141,7 @@ function testDateFmtFullTimeComponentsHMAZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1152,10 +1155,10 @@ function testDateFmtFullTimeComponentsHMAZ_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMSA_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "ko-KR", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1169,7 +1172,7 @@ function testDateFmtFullTimeComponentsHMSA_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMSZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         length: "full", 
@@ -1178,7 +1181,7 @@ function testDateFmtFullTimeComponentsHMSZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1192,7 +1195,7 @@ function testDateFmtFullTimeComponentsHMSZ_ko_KR() {
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         length: "full", 
@@ -1201,7 +1204,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1215,7 +1218,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ko_KR() {
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ko_KR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "ko-KR", 
         type: "time", 
         length: "full", 
@@ -1224,7 +1227,7 @@ function testDateFmtWithTimeZoneAndNoDST_ko_KR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 12,
@@ -1238,10 +1241,10 @@ function testDateFmtWithTimeZoneAndNoDST_ko_KR() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1251,7 +1254,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1264,10 +1267,10 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ko_KR() {
     assertEquals("30초에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1277,7 +1280,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1290,10 +1293,10 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ko_KR() {
     assertEquals("30초전", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1303,7 +1306,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1316,10 +1319,10 @@ function testDateFmtFormatRelativeWithinHourAfter_ko_KR() {
     assertEquals("10분에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1329,7 +1332,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1342,10 +1345,10 @@ function testDateFmtFormatRelativeWithinHourBefore_ko_KR() {
     assertEquals("10분전", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1355,7 +1358,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1368,10 +1371,10 @@ function testDateFmtFormatRelativeWithinDayAfter_ko_KR() {
     assertEquals("4시간에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1381,7 +1384,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1395,10 +1398,10 @@ function testDateFmtFormatRelativeWithinDayBefore_ko_KR() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1408,7 +1411,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1421,10 +1424,10 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ko_KR() {
     assertEquals("4일에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1434,7 +1437,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1448,10 +1451,10 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ko_KR() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1461,7 +1464,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 11,
@@ -1474,10 +1477,10 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ko_KR() {
     assertEquals("9주에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1487,7 +1490,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 7,
@@ -1501,10 +1504,10 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ko_KR() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1514,7 +1517,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2013,
 		month: 1,
@@ -1527,10 +1530,10 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ko_KR() {
     assertEquals("16개월에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1540,7 +1543,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2010,
 		month: 7,
@@ -1554,10 +1557,10 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ko_KR() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1567,7 +1570,7 @@ function testDateFmtFormatRelativeYearsAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 2025,
 		month: 10,
@@ -1580,10 +1583,10 @@ function testDateFmtFormatRelativeYearsAfter_ko_KR() {
     assertEquals("14년에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_ko_KR() {
-    var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "ko-KR",
 		year: 2011,
 		month: 9,
@@ -1593,7 +1596,7 @@ function testDateFmtFormatRelativeYearsBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "ko-KR",
 		year: 1990,
 		month: 7,

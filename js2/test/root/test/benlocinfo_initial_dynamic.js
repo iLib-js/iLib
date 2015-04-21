@@ -18,11 +18,12 @@
  */
 
 
+var LocaleInfo = require("./../lib/LocaleInfo.js");
 function testLocaleInfoConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.LocaleInfo();	    
+		    var fmt = new LocaleInfo();	    
 		    assertNotNull(fmt);
 		}
 	});
@@ -34,7 +35,7 @@ function testLocaleInfoConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("de-DE");
+			var fmt = new LocaleInfo("de-DE");
 		    assertNotNull(fmt);
 		}
 	});
@@ -46,7 +47,7 @@ function testLocaleInfoConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("xx-YY");
+			var fmt = new LocaleInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});
@@ -58,7 +59,7 @@ function testLocaleInfoConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-otherfile-complex-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("zh-Hant-TW");
+			var fmt = new LocaleInfo("zh-Hant-TW");
 		    assertNotNull(fmt);
 		}
 	});

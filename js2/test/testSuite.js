@@ -20,9 +20,10 @@
 var util = require("util");
 var path = require("path");
 
-var JsUnit = require("./runner.js");
+var TestSuite = require("./TestSuiteModule.js");
+var TestRunner = require("./runner.js");
 
-var runner = new JsUnit.TestRunner("../..");
+var runner = new TestRunner("../..");
 
 var suiteDefinitions = {
 	"legacy": {
@@ -180,7 +181,7 @@ var s;
 for (s in suite) {
 	var inc, ts;
 	
-	ts = new JsUnit.TestSuite(suite[s]);
+	ts = new TestSuite(suite[s]);
 	
 	if (assembly === "dynamic") {
 		inc = "../bin/ilib-node.js";		

@@ -17,43 +17,44 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testIDDPrefix() {
-	var parsed = new ilib.PhoneNumber("002 31 456 3453434", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("002 31 456 3453434", {locale: 'zh-TW'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'zh-TW'})); // 'zh-TW'
 };
 
 function testIDDPrefixAlreadyPlus() {
-	var parsed = new ilib.PhoneNumber("+31 456 3453434", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("+31 456 3453434", {locale: 'zh-TW'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'zh-TW'})); // 'zh-TW'
 };
 
 function testWithNoLocale() {
-	var parsed = new ilib.PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
 function testNoHints() {
-	var parsed = new ilib.PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'zh-TW'
 };
 
 function testWithNoHintsNoLocale() {
-	var parsed = new ilib.PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("00231 456 3453434", {locale: 'zh-TW'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testLDNumberUsingTWMCC() {
-	var parsed = new ilib.PhoneNumber("02-24766830", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("02-24766830", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466"
 	};
@@ -63,7 +64,7 @@ function testLDNumberUsingTWMCC() {
 };
 
 function testLDNumberUsingTWMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber("02-24766830", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("02-24766830", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466",
 		locale: 'de-DE'
@@ -74,7 +75,7 @@ function testLDNumberUsingTWMCCOtherLocale() {
 };
 
 function testLDNumberUsingTWMCC() {
-	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
+	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "466" //zh-TW
 	};
@@ -84,7 +85,7 @@ function testLDNumberUsingTWMCC() {
 };
 
 function testAreaCodeFromHintTW() {
-	var parsed = new ilib.PhoneNumber("2435674", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("2435674", {locale: 'zh-TW'});
 	var hints = {
 		defaultAreaCode: "49"
 	};
@@ -94,7 +95,7 @@ function testAreaCodeFromHintTW() {
 };
 
 function testAreaCodeIgnoreHintTW() {
-	var parsed = new ilib.PhoneNumber("05-531-5123", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("05-531-5123", {locale: 'zh-TW'});
 	var hints = {
 		defaultAreaCode: "650"
 	};
@@ -104,14 +105,14 @@ function testAreaCodeIgnoreHintTW() {
 };
 
 function testNoAreaCodeAndNoCountry() {
-	var parsed = new ilib.PhoneNumber("531-5123", {locale: 'zh-TW'});
+	var parsed = new PhoneNumber("531-5123", {locale: 'zh-TW'});
 	var expected = "5315123";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testAssistedDialingLocalToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("5315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("5315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466",
 		networkType: "umts",
@@ -124,7 +125,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+88655315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("+88655315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466",
 		networkType: "umts",
@@ -135,7 +136,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("5315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("5315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466",
 		networkType: "cdma",
@@ -148,7 +149,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+886492315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("+886492315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "466",
 		networkType: "cdma",
@@ -161,7 +162,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 };
 
 function testAssistedDialingIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("2315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("2315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -174,7 +175,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 };
 
 function testAssistedDialingIntlToLDUMTS() {
-	var phone = new ilib.PhoneNumber("0492315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("0492315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -187,7 +188,7 @@ function testAssistedDialingIntlToLDUMTS() {
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("2315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("2315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "505", // From Australia
 		networkType: "cdma",
@@ -200,7 +201,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 };
 
 function testAssistedDialingIntlToLDCDMA() {
-	var phone = new ilib.PhoneNumber("0492315123", {locale: 'zh-TW'});
+	var phone = new PhoneNumber("0492315123", {locale: 'zh-TW'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ar() {
-	var parsed = new ilib.Name("ابن سعود", {locale: 'ar-SA'});
+	var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_ar() {
 
 
 function testParseAdjunctNames_ar() {
-	var parsed = new ilib.Name("ابن سعود", {locale: 'ar-SA'});
+	var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -45,7 +47,7 @@ function testParseAdjunctNames_ar() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_ar() {
-	var parsed = new ilib.Name("السيد و السيدة سعود", {locale: 'ar-SA'});
+	var parsed = new Name("السيد و السيدة سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -58,7 +60,7 @@ function testParseSingleNameWithPrefixAndAdjunct_ar() {
 
 
 function testParseTitle_ar() {
-	var parsed = new ilib.Name("ابن سعود كبار", {locale: 'ar-SA'});
+	var parsed = new Name("ابن سعود كبار", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -73,7 +75,7 @@ function testParseTitle_ar() {
 
 
 function testParseTitleWithFamilyOnly_ar() {
-	var parsed = new ilib.Name("الملك سعود", {locale: 'ar-SA'});
+	var parsed = new Name("الملك سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -87,7 +89,7 @@ function testParseTitleWithFamilyOnly_ar() {
 
 
 function testParseEverything_ar() {
-	var parsed = new ilib.Name("الملك ابن سعود", {locale: 'ar-SA'});
+	var parsed = new Name("الملك ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -105,11 +107,11 @@ function testParseEverything_ar() {
  */
 
 function testFormatSimpleNameShort_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ابن",
 		familyName: "سعود"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ar-SA'
 	});
@@ -122,11 +124,11 @@ function testFormatSimpleNameShort_ar() {
 };
 
 function testFormatSimpleNameMedium_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ابن",
 		familyName: "سعود"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ar-SA'
 	});
@@ -139,13 +141,13 @@ function testFormatSimpleNameMedium_ar() {
 };
 
 function testFormatSimpleNameLong_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ابن",
 		
 		familyName: "سعود",
 		suffix: "كبار"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ar-SA'
 	});
@@ -158,13 +160,13 @@ function testFormatSimpleNameLong_ar() {
 };
 
 function testFormatSimpleNameFull_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "الملك",
 		givenName: "ابن",
 		familyName: "سعود",
 		suffix: "كبار"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ar-SA'
 	});
@@ -177,12 +179,12 @@ function testFormatSimpleNameFull_ar() {
 };
 
 function testFormatComplexNameShort_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "الملك",
 		givenName: "ابن",
 		familyName: "سعود"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ar-SA'
 	});
@@ -195,12 +197,12 @@ function testFormatComplexNameShort_ar() {
 };
 
 function testFormatComplexNameMedium_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "الملك",
 		givenName: "ابن",
 		familyName: "سعود"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ar-SA'
 	});
@@ -213,12 +215,12 @@ function testFormatComplexNameMedium_ar() {
 };
 
 function testFormatComplexNameLong_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "الملك",
 		givenName: "ابن",
 		familyName: "سعود"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ar-SA'
 	});
@@ -231,12 +233,12 @@ function testFormatComplexNameLong_ar() {
 };
 
 function testFormatAsianNameShort_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ar-SA'
 	});
@@ -249,12 +251,12 @@ function testFormatAsianNameShort_ar() {
 };
 
 function testFormatAsianNameMedium_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ar-SA'
 	});
@@ -267,12 +269,12 @@ function testFormatAsianNameMedium_ar() {
 };
 
 function testFormatAsianNameLong_ar() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ar-SA'
 	});

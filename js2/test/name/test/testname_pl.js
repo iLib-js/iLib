@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_pl_PL() {
-	var parsed = new ilib.Name("Szymon Askenazy", {locale: 'pl-PL'});
+	var parsed = new Name("Szymon Askenazy", {locale: 'pl-PL'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -33,7 +35,7 @@ function testParseSimpleName_pl_PL() {
 
 
 function testParseTitle_pl_PL() {
-	var parsed = new ilib.Name("Szymon Askenazy emeryturę", {locale: 'pl-PL'});
+	var parsed = new Name("Szymon Askenazy emeryturę", {locale: 'pl-PL'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -48,7 +50,7 @@ function testParseTitle_pl_PL() {
 
 
 function testParseTitleWithFamilyOnly_pl_PL() {
-	var parsed = new ilib.Name("Pan. Askenazy", {locale: 'pl-PL'});
+	var parsed = new Name("Pan. Askenazy", {locale: 'pl-PL'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -62,7 +64,7 @@ function testParseTitleWithFamilyOnly_pl_PL() {
 
 
 function testParseEverything_pl_PL() {
-	var parsed = new ilib.Name("Pan. i Pani. Askenazy", {locale: 'pl-PL'});
+	var parsed = new Name("Pan. i Pani. Askenazy", {locale: 'pl-PL'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -74,7 +76,7 @@ function testParseEverything_pl_PL() {
 };
 
 function testParseprefix_pl_PL() {
-	var parsed = new ilib.Name("Pan. Szymon Askenazy", {locale: 'pl-PL'});
+	var parsed = new Name("Pan. Szymon Askenazy", {locale: 'pl-PL'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -90,11 +92,11 @@ function testParseprefix_pl_PL() {
  */
 
 function testFormatSimpleNameShort_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Szymon",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pl-PL'
 	});
@@ -107,11 +109,11 @@ function testFormatSimpleNameShort_pl_PL() {
 };
 
 function testFormatSimpleNameMedium_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Szymon",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pl-PL'
 	});
@@ -124,12 +126,12 @@ function testFormatSimpleNameMedium_pl_PL() {
 };
 
 function testFormatSimpleNameLong_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Szymon",
 		familyName: "Askenazy",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pl-PL'
 	});
@@ -144,11 +146,11 @@ function testFormatSimpleNameLong_pl_PL() {
 
 
 function testFormatSurname_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Pan. i Pani.",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pl-PL'
 	});
@@ -161,13 +163,13 @@ function testFormatSurname_pl_PL() {
 };
 
 function testFormatSimpleNameFull_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezydent",
 		givenName: "Szymon",
 		familyName: "Askenazy",
 		suffix: "emeryturę"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'pl-PL'
 	});
@@ -180,12 +182,12 @@ function testFormatSimpleNameFull_pl_PL() {
 };
 
 function testFormatComplexNameShort_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezydent",
 		givenName: "Szymon",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pl-PL'
 	});
@@ -198,12 +200,12 @@ function testFormatComplexNameShort_pl_PL() {
 };
 
 function testFormatComplexNameMedium_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezydent",
 		givenName: "Szymon",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pl-PL'
 	});
@@ -216,12 +218,12 @@ function testFormatComplexNameMedium_pl_PL() {
 };
 
 function testFormatComplexNameLong_pl_PL() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezydent",
 		givenName: "Szymon",
 		familyName: "Askenazy"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'pl-PL'
 	});

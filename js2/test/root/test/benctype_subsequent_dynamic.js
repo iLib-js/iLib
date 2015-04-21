@@ -17,14 +17,18 @@
  * limitations under the License.
  */
 
+var isSpace = require("./../lib/isSpace.js");
+var isDigit = require("./../lib/isDigit.js");
+var isAlpha = require("./../lib/isAlpha.js");
+var CType = require("./../lib/CType.js");
 function testCTypeLoaderL(results) {
-	ilib.CType._load("ctype_l", true);
+	CType._load("ctype_l", true);
 	
 	var tt = new TimedTest({
 		name: "CType-dynamic-loader-l-subsequent",
 		iterations: 1000,
 		fn: function () {
-			ilib.CType._load("ctype_l", true);
+			CType._load("ctype_l", true);
 		}
 	});
 	
@@ -32,13 +36,13 @@ function testCTypeLoaderL(results) {
 }
 
 function testCTypeLoaderZ(results) {
-	ilib.CType._load("ctype_z", true);
+	CType._load("ctype_z", true);
 	
 	var tt = new TimedTest({
 		name: "CType-dynamic-loader-z-subsequent",
 		iterations: 1000,
 		fn: function () {
-			ilib.CType._load("ctype_z", true);
+			CType._load("ctype_z", true);
 		}
 	});
 	
@@ -46,13 +50,13 @@ function testCTypeLoaderZ(results) {
 }
 
 function testCTypeLoaderC(results) {
-	ilib.CType._load("ctype_c", true);
+	CType._load("ctype_c", true);
 	
 	var tt = new TimedTest({
 		name: "CType-dynamic-loader-c-subsequent",
 		iterations: 1000,
 		fn: function () {
-			ilib.CType._load("ctype_c", true);
+			CType._load("ctype_c", true);
 		}
 	});
 	
@@ -60,13 +64,13 @@ function testCTypeLoaderC(results) {
 }
 
 function testCTypeLoaderP(results) {
-	ilib.CType._load("ctype_p", true);
+	CType._load("ctype_p", true);
 	
 	var tt = new TimedTest({
 		name: "CType-dynamic-loader-p-subsequent",
 		iterations: 1000,
 		fn: function () {
-			ilib.CType._load("ctype_p", true);
+			CType._load("ctype_p", true);
 		}
 	});
 	
@@ -74,15 +78,15 @@ function testCTypeLoaderP(results) {
 }
 
 function testCTypeisAlpha(results) {
-	ilib.CType.isAlpha("a");
-	ilib.CType.isAlpha(";");
+	isAlpha("a");
+	isAlpha(";");
 
 	var tt = new TimedTest({
 		name: "CType-dynamic-isAlpha-subsequent",
 		iterations: 1000,
 		fn: function () {
-			assertTrue(ilib.CType.isAlpha("a"));
-			assertFalse(ilib.CType.isAlpha(";"));
+			assertTrue(isAlpha("a"));
+			assertFalse(isAlpha(";"));
 		}
 	});
 	
@@ -90,15 +94,15 @@ function testCTypeisAlpha(results) {
 }
 
 function testCTypeisDigit(results) {
-	ilib.CType.isDigit("5");
-	ilib.CType.isDigit("g");
+	isDigit("5");
+	isDigit("g");
 
 	var tt = new TimedTest({
 		name: "CType-dynamic-isAlpha-subsequent",
 		iterations: 1000,
 		fn: function () {
-			assertTrue(ilib.CType.isDigit("5"));
-			assertFalse(ilib.CType.isDigit("g"));
+			assertTrue(isDigit("5"));
+			assertFalse(isDigit("g"));
 		}
 	});
 	
@@ -106,15 +110,15 @@ function testCTypeisDigit(results) {
 }
 
 function testCTypeisSpace(results) {
-	ilib.CType.isSpace(" ");
-	ilib.CType.isSpace("g");
+	isSpace(" ");
+	isSpace("g");
 
 	var tt = new TimedTest({
 		name: "CType-dynamic-isSpace-subsequent",
 		iterations: 1000,
 		fn: function () {
-			assertTrue(ilib.CType.isSpace(" "));
-			assertFalse(ilib.CType.isSpace("g"));
+			assertTrue(isSpace(" "));
+			assertFalse(isSpace("g"));
 		}
 	});
 	

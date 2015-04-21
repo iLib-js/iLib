@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var TimeZone = require("./../lib/TimeZone.js");
 ilib.data.timezones = {
     "America/Los_Angeles": {
         "o": "-8:0",
@@ -122,7 +124,7 @@ function testTimeZoneConstructorRealInitialLocale(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -136,7 +138,7 @@ function testTimeZoneConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.TimeZone();
+		    var fmt = new TimeZone();
 		    assertNotNull(fmt);
 		}
 	});
@@ -148,7 +150,7 @@ function testTimeZoneConstructorRealInitialId(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "Europe/Berlin"
 			});
 		    assertNotNull(fmt);
@@ -162,7 +164,7 @@ function testTimeZoneConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "TimeZone-assembled-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "xx/YY"
 			});
 		    assertNotNull(fmt);

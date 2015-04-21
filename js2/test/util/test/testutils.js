@@ -17,65 +17,72 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var Utils = require("./../lib/Utils.js");
+var SearchUtils = require("./../lib/SearchUtils.js");
+var MathUtils = require("./../lib/MathUtils.js");
+var Locale = require("./../lib/Locale.js");
+var JSUtils = require("./../lib/JSUtils.js");
+
 function testBsearch() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
-    assertEquals(5, ilib.bsearch(10, array));
+    assertEquals(5, SearchUtils.bsearch(10, array));
 }
 
 function testBsearchEmptyArray() {
     var array = [];
     
-    assertEquals(0, ilib.bsearch(10, array));
+    assertEquals(0, SearchUtils.bsearch(10, array));
 }
 
 function testBsearchUndefinedArray() {
-    assertEquals(-1, ilib.bsearch(10, undefined));
+    assertEquals(-1, SearchUtils.bsearch(10, undefined));
 }
 
 function testBsearchUndefinedTarget() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
-    assertEquals(-1, ilib.bsearch(undefined, array));
+    assertEquals(-1, SearchUtils.bsearch(undefined, array));
 }
 
 function testBsearchBefore() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
-    assertEquals(0, ilib.bsearch(0, array));
+    assertEquals(0, SearchUtils.bsearch(0, array));
 }
 
 function testBsearchAfter() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
-    assertEquals(10, ilib.bsearch(20, array));
+    assertEquals(10, SearchUtils.bsearch(20, array));
 }
 
 function testBsearchExact() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
     // place it right after the exact match
-    assertEquals(7, ilib.bsearch(15, array));
+    assertEquals(7, SearchUtils.bsearch(15, array));
 }
 
 function testBsearchExactBeginning() {
     var array = [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
     // place it right after the exact match
-    assertEquals(0, ilib.bsearch(0, array));
+    assertEquals(0, SearchUtils.bsearch(0, array));
 }
 
 function testBsearchExactEnd() {
     var array = [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
     // place it right after the exact match
-    assertEquals(10, ilib.bsearch(19, array));
+    assertEquals(10, SearchUtils.bsearch(19, array));
 }
 
 function testBsearchMonthEdge() {
     var array = [0,31,60,91,121,152,182,213,244,274,305,335,366];
     
-    assertEquals(6, ilib.bsearch(182, array));
+    assertEquals(6, SearchUtils.bsearch(182, array));
 }
 
 function strcmp(left, right) {
@@ -96,7 +103,7 @@ function testBsearchStrings() {
         "veal"
     ];
     
-    assertEquals(6, ilib.bsearch("mango", array, strcmp));
+    assertEquals(6, SearchUtils.bsearch("mango", array, strcmp));
 }
 
 function testBsearchStringsBefore() {
@@ -113,7 +120,7 @@ function testBsearchStringsBefore() {
         "veal"
     ];
     
-    assertEquals(0, ilib.bsearch("apple", array, strcmp));
+    assertEquals(0, SearchUtils.bsearch("apple", array, strcmp));
 }
 
 function testBsearchStringsAfter() {
@@ -130,29 +137,29 @@ function testBsearchStringsAfter() {
         "veal"
     ];
     
-    assertEquals(10, ilib.bsearch("zucchini", array, strcmp));
+    assertEquals(10, SearchUtils.bsearch("zucchini", array, strcmp));
 }
 
 function testBisectionSearchSimple() {
-    assertRoughlyEquals(5.5, ilib.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
+    assertRoughlyEquals(5.5, SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
     	return 2 * x + 5;
     }), 1e-12);
 }
 
 function testBisectionSearchMoreComplex() {
-    assertRoughlyEquals(4, ilib.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
+    assertRoughlyEquals(4, SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
     	return x * x;
     }), 1e-12);
 }
 
 function testBisectionSearchTrig() {
-    assertRoughlyEquals(30, ilib.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
+    assertRoughlyEquals(30, SearchUtils.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
     	return Math.sin(x * Math.PI / 180);
     }), 1e-9);
 }
 
 function testBisectionSearchVeryComplex() {
-    assertRoughlyEquals(-0.66666666666666, ilib.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
+    assertRoughlyEquals(-0.66666666666666, SearchUtils.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
     	var coeff = [2, 5, 3];
     	var xpow = 1;
     	var ret = 0;
@@ -165,77 +172,77 @@ function testBisectionSearchVeryComplex() {
 }
 
 function testModSimple() {
-    assertObjectEquals(2, ilib.mod(2, 4));
+    assertObjectEquals(2, MathUtils.mod(2, 4));
 }
 
 function testModWrap() {
-    assertObjectEquals(2, ilib.mod(6, 4));
+    assertObjectEquals(2, MathUtils.mod(6, 4));
 }
 
 function testModWrapNeg() {
-    assertObjectEquals(2, ilib.mod(-6, 4));
+    assertObjectEquals(2, MathUtils.mod(-6, 4));
 }
 
 function testModZeroModulus() {
-    assertObjectEquals(0, ilib.mod(6, 0));
+    assertObjectEquals(0, MathUtils.mod(6, 0));
 }
 
 function testModZeroNum() {
-    assertObjectEquals(0, ilib.mod(0, 6));
+    assertObjectEquals(0, MathUtils.mod(0, 6));
 }
 
 function testModReal() {
-    assertRoughlyEquals(2.234231, ilib.mod(2.234231, 4), 0.0000001);
+    assertRoughlyEquals(2.234231, MathUtils.mod(2.234231, 4), 0.0000001);
 }
 function testModRealWrap() {
-    assertRoughlyEquals(2.234231, ilib.mod(6.234231, 4), 0.0000001);
+    assertRoughlyEquals(2.234231, MathUtils.mod(6.234231, 4), 0.0000001);
 }
 function testModRealNeg() {
-    assertRoughlyEquals(1.7, ilib.mod(-6.3, 4), 0.0000001);
+    assertRoughlyEquals(1.7, MathUtils.mod(-6.3, 4), 0.0000001);
 }
 
 function testAmodSimple() {
-    assertObjectEquals(2, ilib.amod(2, 4));
+    assertObjectEquals(2, MathUtils.amod(2, 4));
 }
 
 function testAmodWrap() {
-    assertObjectEquals(2, ilib.amod(6, 4));
+    assertObjectEquals(2, MathUtils.amod(6, 4));
 }
 
 function testAmodWrapNeg() {
-    assertObjectEquals(2, ilib.amod(-6, 4));
+    assertObjectEquals(2, MathUtils.amod(-6, 4));
 }
 
 function testAmodZeroModulus() {
-    assertObjectEquals(0, ilib.amod(6, 0));
+    assertObjectEquals(0, MathUtils.amod(6, 0));
 }
 
 function testAmodZeroNum() {
-    assertObjectEquals(6, ilib.amod(0, 6));
+    assertObjectEquals(6, MathUtils.amod(0, 6));
 }
 
 function testAmodReal() {
-    assertRoughlyEquals(2.234231, ilib.amod(2.234231, 4), 0.0000001);
+    assertRoughlyEquals(2.234231, MathUtils.amod(2.234231, 4), 0.0000001);
 }
 function testAmodRealWrap() {
-    assertRoughlyEquals(2.234231, ilib.amod(6.234231, 4), 0.0000001);
+    assertRoughlyEquals(2.234231, MathUtils.amod(6.234231, 4), 0.0000001);
 }
 function testAmodRealNeg() {
-    assertRoughlyEquals(1.7, ilib.amod(-6.3, 4), 0.0000001);
+    assertRoughlyEquals(1.7, MathUtils.amod(-6.3, 4), 0.0000001);
 }
 
 function testMergeSimple() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"c": "C", "d": "D"};
     
-    assertObjectEquals({"a": "A", "b": "B", "c": "C", "d": "D"}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": "B", "c": "C", "d": "D"}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSimpleNoSideEffects() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"c": "C", "d": "D"};
     
-    var x = ilib.merge(object1, object2);
+    var x = JSUtils.merge(object1, object2);
     
     assertNotUndefined(x);
     assertObjectEquals({"a": "A", "b": "B"}, object1);
@@ -245,147 +252,147 @@ function testMergeArrays() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": ["d"]};
 
-    assertObjectEquals({"a": ["b", "c", "d"]}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": ["b", "c", "d"]}, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysDups() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": ["c", "d"]};
     
-    assertObjectEquals({"a": ["b", "c", "c", "d"]}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": ["b", "c", "c", "d"]}, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysEmptySource() {
     var object1 = {"a": []},
         object2 = {"a": ["d"]};
     
-    assertObjectEquals({"a": ["d"]}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": ["d"]}, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysEmptyTarget() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": []};
     
-    assertObjectEquals({"a": ["b", "c"]}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": ["b", "c"]}, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysIncongruentTypes1() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": "d"};
     
-    assertObjectEquals({"a": "d"}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "d"}, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysIncongruentTypes2() {
     var object1 = {"a": "b"},
         object2 = {"a": ["d"]};
     
-    assertObjectEquals({"a": ["d"]}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": ["d"]}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSimpleProperty() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"b": "X"};
     
-    assertObjectEquals({"a": "A", "b": "X"}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": "X"}, JSUtils.merge(object1, object2));
 }
 
 function testMergeComplexProperty() {
     var object1 = {"a": "A", "b": {"x": "B"}},
         object2 = {"b": "X"};
     
-    assertObjectEquals({"a": "A", "b": "X"}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": "X"}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjects() {
     var object1 = {"b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N"}};
     
-    assertObjectEquals({"b": {"x": "M", "y": "N"}}, ilib.merge(object1, object2));
+    assertObjectEquals({"b": {"x": "M", "y": "N"}}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsLeaveObj1PropsUntouched() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
         object2 = {"b": {"x": "M", "y": "N"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsAddProps() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsAddProps() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
 }
 
 function testMergeBooleans() {
     var object1 = {"a": true, "b": true},
         object2 = {"b": false};
     
-    assertObjectEquals({"a": true, "b": false}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": true, "b": false}, JSUtils.merge(object1, object2));
 }
 
 function testMergeAddBooleans() {
     var object1 = {"a": true, "b": true},
         object2 = {"c": false};
     
-    assertObjectEquals({"a": true, "b": true, "c": false}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": true, "b": true, "c": false}, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbers() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"b": 3};
     
-    assertObjectEquals({"a": 1, "b": 3}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": 1, "b": 3}, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbersWithZero() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"b": 0};
     
-    assertObjectEquals({"a": 1, "b": 0}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": 1, "b": 0}, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbersAddZero() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"c": 0};
     
-    assertObjectEquals({"a": 1, "b": 2, "c": 0}, ilib.merge(object1, object2));
+    assertObjectEquals({"a": 1, "b": 2, "c": 0}, JSUtils.merge(object1, object2));
 }
 
 function testIsEmptyFalse() {
     var object = {"a": "A"};
     
-    assertFalse(ilib.isEmpty(object));
+    assertFalse(JSUtils.isEmpty(object));
 }
 
 function testIsEmptyTrue() {
     var object = {};
     
-    assertTrue(ilib.isEmpty(object));
+    assertTrue(JSUtils.isEmpty(object));
 }
 
 function testIsEmptyUndefined() {
-    assertTrue(ilib.isEmpty(undefined));
+    assertTrue(JSUtils.isEmpty(undefined));
 }
 
 function testIsEmptyUndefinedProperties() {
     var object = {"a": undefined};
     
-    assertTrue(ilib.isEmpty(object));
+    assertTrue(JSUtils.isEmpty(object));
 }
 
 function testIsEmptyFalsyValues() {
     var object = {"a": false, "b": 0};
     
-    assertFalse(ilib.isEmpty(object));
+    assertFalse(JSUtils.isEmpty(object));
 }
 
 function testShallowCopy() {
@@ -394,7 +401,7 @@ function testShallowCopy() {
     
     assertTrue(typeof(tgt.a) === "undefined");
     
-    ilib.shallowCopy(src, tgt);
+    JSUtils.shallowCopy(src, tgt);
     
     assertFalse(typeof(tgt.a) === "undefined");
 }
@@ -411,7 +418,7 @@ function testShallowCopyRightValues() {
     
     assertTrue(typeof(tgt.a) === "undefined");
     
-    ilib.shallowCopy(src, tgt);
+    JSUtils.shallowCopy(src, tgt);
     
     assertEquals("b", tgt.a);
     assertEquals("e", tgt.c.d);
@@ -423,12 +430,12 @@ function testShallowCopyUndefined() {
     var tgt = {};
     
     assertTrue(typeof(tgt) !== undefined);
-    assertTrue(ilib.isEmpty(tgt));
+    assertTrue(JSUtils.isEmpty(tgt));
     
-    ilib.shallowCopy(src, tgt);
+    JSUtils.shallowCopy(src, tgt);
     
     assertTrue(typeof(tgt) !== undefined);
-    assertTrue(ilib.isEmpty(tgt));
+    assertTrue(JSUtils.isEmpty(tgt));
 }
 
 function testShallowCopyToUndefined() {
@@ -444,7 +451,7 @@ function testShallowCopyToUndefined() {
     assertUndefined(tgt);
     
     try {
-    	ilib.shallowCopy(src, tgt);
+    	JSUtils.shallowCopy(src, tgt);
     	assertUndefined(tgt);
     } catch (e) {
     	fail();
@@ -455,9 +462,9 @@ function testShallowCopyEmpty() {
     var src = {};
     var tgt = {};
     
-    assertTrue(ilib.isEmpty(tgt));
-    ilib.shallowCopy(src, tgt);
-    assertTrue(ilib.isEmpty(tgt));
+    assertTrue(JSUtils.isEmpty(tgt));
+    JSUtils.shallowCopy(src, tgt);
+    assertTrue(JSUtils.isEmpty(tgt));
 }
 
 function testShallowCopyEmptyValues() {
@@ -469,7 +476,7 @@ function testShallowCopyEmptyValues() {
     };
     var tgt = {};
     
-    ilib.shallowCopy(src, tgt);
+    JSUtils.shallowCopy(src, tgt);
     
     assertEquals(0, tgt.a);
     assertEquals("", tgt.b);
@@ -478,52 +485,52 @@ function testShallowCopyEmptyValues() {
 }
 
 function testSignumPositive() {
-    assertEquals(1, ilib.signum(1));
+    assertEquals(1, MathUtils.signum(1));
 }
 
 function testSignumPositiveLarge() {
-    assertEquals(1, ilib.signum(1345234));
+    assertEquals(1, MathUtils.signum(1345234));
 }
 
 function testSignumNegative() {
-    assertEquals(-1, ilib.signum(-1));
+    assertEquals(-1, MathUtils.signum(-1));
 }
 
 function testSignumPositiveLarge() {
-    assertEquals(-1, ilib.signum(-13234));
+    assertEquals(-1, MathUtils.signum(-13234));
 }
 
 function testSignumZero() {
-    assertEquals(1, ilib.signum(0));
+    assertEquals(1, MathUtils.signum(0));
 }
 
 function testSignumStringNumberPositive() {
-    assertEquals(1, ilib.signum("1345234"));
+    assertEquals(1, MathUtils.signum("1345234"));
 }
 
 function testSignumStringNumberNegative() {
-    assertEquals(-1, ilib.signum("-1345234"));
+    assertEquals(-1, MathUtils.signum("-1345234"));
 }
 
 function testSignumUndefined() {
-    assertEquals(1, ilib.signum());
+    assertEquals(1, MathUtils.signum());
 }
 
 function testSignumNull() {
-    assertEquals(1, ilib.signum(null));
+    assertEquals(1, MathUtils.signum(null));
 }
 
 function testSignumStringNonNumber() {
-    assertEquals(1, ilib.signum("rafgasdf"));
+    assertEquals(1, MathUtils.signum("rafgasdf"));
 }
 
 function testSignumBoolean() {
-    assertEquals(1, ilib.signum(true));
-    assertEquals(1, ilib.signum(false));
+    assertEquals(1, MathUtils.signum(true));
+    assertEquals(1, MathUtils.signum(false));
 }
 
 function testSignumFunction() {
-    assertEquals(1, ilib.signum(function () { return -4; }));
+    assertEquals(1, MathUtils.signum(function () { return -4; }));
 }
 
 function testMergeLocData() {
@@ -544,8 +551,8 @@ function testMergeLocData() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE-Latn-SAP");
-	var m = ilib.mergeLocData("foobar", locale);
+	var locale = new Locale("de-DE-Latn-SAP");
+	var m = Utils.mergeLocData("foobar", locale);
 	assertEquals("e", m.a);
 	assertEquals("f", m.c);
 	assertEquals("i", m.g);
@@ -569,8 +576,8 @@ function testMergeLocDataNoLocale() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("-");
-	var m = ilib.mergeLocData("foobar", locale);
+	var locale = new Locale("-");
+	var m = Utils.mergeLocData("foobar", locale);
 	assertEquals("b", m.a);
 	assertEquals("d", m.c);
 	assertUndefined(m.g);
@@ -594,8 +601,8 @@ function testMergeLocDataNonLeafLocale() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE");
-	var m = ilib.mergeLocData("foobar", locale);
+	var locale = new Locale("de-DE");
+	var m = Utils.mergeLocData("foobar", locale);
 	assertEquals("e", m.a);
 	assertEquals("f", m.c);
 	assertUndefined(m.g);
@@ -619,8 +626,8 @@ function testMergeLocDataMissingData() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE-Latn-SAP");
-	var m = ilib.mergeLocData("asdf", locale);
+	var locale = new Locale("de-DE-Latn-SAP");
+	var m = Utils.mergeLocData("asdf", locale);
 	assertUndefined(m);
 }
 
@@ -642,8 +649,8 @@ function testMergeLocDataNoName() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE-Latn-SAP");
-	var m = ilib.mergeLocData(undefined, locale);
+	var locale = new Locale("de-DE-Latn-SAP");
+	var m = Utils.mergeLocData(undefined, locale);
 	assertUndefined(m);
 }
 
@@ -665,7 +672,7 @@ function testMergeLocDataNoLocale() {
    		g: "i"
    	};
 
-	var m = ilib.mergeLocData("foobar"); // use the current locale -- en-US
+	var m = Utils.mergeLocData("foobar"); // use the current locale -- en-US
 	assertTrue(typeof(m) !== 'undefined');
 	
 	assertEquals("e", m.a);
@@ -691,8 +698,8 @@ function testMergeLocDataNoSideEffects() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE-Latn-SAP");
-	var m = ilib.mergeLocData("foobar", locale);
+	var locale = new Locale("de-DE-Latn-SAP");
+	var m = Utils.mergeLocData("foobar", locale);
 	assertNotUndefined(m);
 	assertEquals("b", ilib.data.foobar.a);
 	assertEquals("d", ilib.data.foobar.c);
@@ -713,8 +720,8 @@ function testMergeLocDataNoBase() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-DE-Latn-SAP");
-	var m = ilib.mergeLocData("asdf", locale);
+	var locale = new Locale("de-DE-Latn-SAP");
+	var m = Utils.mergeLocData("asdf", locale);
 	assertEquals("e", m.a);
 	assertEquals("f", m.c);
 	assertEquals("i", m.g);
@@ -734,16 +741,16 @@ function testMergeLocDataMissingLocaleParts() {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-Latn");
-	var m = ilib.mergeLocData("foobar", locale);
+	var locale = new Locale("de-Latn");
+	var m = Utils.mergeLocData("foobar", locale);
 	assertEquals("e", m.a);
 	assertEquals("d", m.c);
 	assertEquals("i", m.g);
 }
 
 function testGetLocFilesLanguageOnly() {
-	var locale = new ilib.Locale("en");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -754,8 +761,8 @@ function testGetLocFilesLanguageOnly() {
 }
 
 function testGetLocFilesRegionOnly() {
-	var locale = new ilib.Locale("US");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("US");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -766,8 +773,8 @@ function testGetLocFilesRegionOnly() {
 }
 
 function testGetLocFilesLangScript() {
-	var locale = new ilib.Locale("en-Latn");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-Latn");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -779,8 +786,8 @@ function testGetLocFilesLangScript() {
 }
 
 function testGetLocFilesLangRegion() {
-	var locale = new ilib.Locale("en-US");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-US");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -793,8 +800,8 @@ function testGetLocFilesLangRegion() {
 }
 
 function testGetLocFilesLangVariant() {
-	var locale = new ilib.Locale("en-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-govt");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -805,8 +812,8 @@ function testGetLocFilesLangVariant() {
 }
 
 function testGetLocFilesScriptRegion() {
-	var locale = new ilib.Locale("Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("Latn-US");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -817,8 +824,8 @@ function testGetLocFilesScriptRegion() {
 }
 
 function testGetLocFilesRegionVariant() {
-	var locale = new ilib.Locale("US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("US-govt");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json",
@@ -830,8 +837,8 @@ function testGetLocFilesRegionVariant() {
 }
 
 function testGetLocFilesLangScriptRegion() {
-	var locale = new ilib.Locale("en-Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-Latn-US");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -846,8 +853,8 @@ function testGetLocFilesLangScriptRegion() {
 }
 
 function testGetLocFilesLangScriptVariant() {
-	var locale = new ilib.Locale("en-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-Latn-govt");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -859,8 +866,8 @@ function testGetLocFilesLangScriptVariant() {
 }
 
 function testGetLocFilesLangRegionVariant() {
-	var locale = new ilib.Locale("en-US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-US-govt");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -875,8 +882,8 @@ function testGetLocFilesLangRegionVariant() {
 }
 
 function testGetLocFilesAll() {
-	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("en-US-Latn-govt");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -894,8 +901,8 @@ function testGetLocFilesAll() {
 }
 
 function testGetLocFilesNoLocale() {
-	var locale = new ilib.Locale("-");
-	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var locale = new Locale("-");
+	var f = Utils.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json"
 	];
@@ -905,8 +912,8 @@ function testGetLocFilesNoLocale() {
 }
 
 function testGetLocFilesNoBasename() {
-	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles(locale, undefined);
+	var locale = new Locale("en-US-Latn-govt");
+	var f = Utils.getLocFiles(locale, undefined);
 	var expected = [
 		"resources.json",
 		"en/resources.json",
@@ -924,7 +931,7 @@ function testGetLocFilesNoBasename() {
 }
 
 function testGetLocFilesDefaultLocale() {
-	var f = ilib.getLocFiles(undefined, "localeinfo.json");
+	var f = Utils.getLocFiles(undefined, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -937,72 +944,72 @@ function testGetLocFilesDefaultLocale() {
 }
 
 function testHashCodeEmptyString() {
-	assertEquals(0, ilib.hashCode(""));
+	assertEquals(0, JSUtils.hashCode(""));
 }
 
 function testHashCodeEmptyNumber() {
-	assertEquals(48, ilib.hashCode(0));
+	assertEquals(48, JSUtils.hashCode(0));
 }
 
 function testHashCodeEmptyObject() {
-	assertEquals(0, ilib.hashCode({}));
+	assertEquals(0, JSUtils.hashCode({}));
 }
 
 function testHashCodeEmptyBoolean() {
-	assertEquals(0, ilib.hashCode(false));
+	assertEquals(0, JSUtils.hashCode(false));
 }
 
 function testHashCodeUndefined() {
-	assertEquals(0, ilib.hashCode(undefined));
+	assertEquals(0, JSUtils.hashCode(undefined));
 }
 
 function testHashCodeNull() {
-	assertEquals(0, ilib.hashCode(null));
+	assertEquals(0, JSUtils.hashCode(null));
 }
 
 function testHashCodeFunction() {
-	assertTrue(0 < ilib.hashCode(function(asdf) { return asdf * 38; }));
+	assertTrue(0 < JSUtils.hashCode(function(asdf) { return asdf * 38; }));
 }
 
 function testHashCodeEqualStrings() {
-	assertEquals(ilib.hashCode("abcdef"), ilib.hashCode("abcdef"));
+	assertEquals(JSUtils.hashCode("abcdef"), JSUtils.hashCode("abcdef"));
 }
 
 function testHashCodeNotEqualStrings() {
-	assertNotEquals(ilib.hashCode("abcdefg"), ilib.hashCode("abcdef"));
+	assertNotEquals(JSUtils.hashCode("abcdefg"), JSUtils.hashCode("abcdef"));
 }
 
 function testHashCodeEqualNumbers() {
-	assertEquals(ilib.hashCode(23455), ilib.hashCode(23455));
+	assertEquals(JSUtils.hashCode(23455), JSUtils.hashCode(23455));
 }
 
 function testHashCodeNotEqualNumbers() {
-	assertNotEquals(ilib.hashCode(23455), ilib.hashCode(33455));
+	assertNotEquals(JSUtils.hashCode(23455), JSUtils.hashCode(33455));
 }
 
 function testHashCodeEqualBoolean() {
-	assertEquals(ilib.hashCode(true), ilib.hashCode(true));
+	assertEquals(JSUtils.hashCode(true), JSUtils.hashCode(true));
 }
 
 function testHashCodeNotEqualBoolean() {
-	assertNotEquals(ilib.hashCode(false), ilib.hashCode(true));
+	assertNotEquals(JSUtils.hashCode(false), JSUtils.hashCode(true));
 }
 
 function testHashCodeEqualFunction() {
-	assertEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "a"; }));
+	assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "a"; }));
 }
 
 function testHashCodeEqualFunctionDifferentSpacing() {
 	if (ilib._getPlatform() === "qt") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
 		// functions should have the same hash
-		assertEquals(ilib.hashCode(function a () { 
+		assertEquals(JSUtils.hashCode(function a () { 
 			return "a"; 
-		}), ilib.hashCode(function a(){return "a";}));
+		}), JSUtils.hashCode(function a(){return "a";}));
 	} else {
-		assertNotEquals(ilib.hashCode(function a () { 
+		assertNotEquals(JSUtils.hashCode(function a () { 
 			return "a"; 
-		}), ilib.hashCode(function a(){return "a";}));
+		}), JSUtils.hashCode(function a(){return "a";}));
 	}
 }
 
@@ -1010,43 +1017,43 @@ function testHashCodeNotEqualFunctionDifferentNames() {
 	if (ilib._getPlatform() === "qt") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
 		// functions should have the same hash
-		assertEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function b() { return "a"; }));
+		assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function b() { return "a"; }));
 	} else {
-		assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function b() { return "a"; }));
+		assertNotEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function b() { return "a"; }));
 	}
 }
 function testHashCodeNotEqualFunctionDifferentContents() {
 	if (ilib._getPlatform() === "qt") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
 		// functions should have the same hash
-		assertEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "b"; }));
+		assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "b"; }));
 	} else {
-		assertNotEquals(ilib.hashCode(function a() { return "a"; }), ilib.hashCode(function a() { return "b"; }));
+		assertNotEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "b"; }));
 	}
 }
 
 function testHashCodeEqualObjects() {
-	assertEquals(ilib.hashCode({name: "abcdef"}), ilib.hashCode({name: "abcdef"}));
+	assertEquals(JSUtils.hashCode({name: "abcdef"}), JSUtils.hashCode({name: "abcdef"}));
 }
 
 function testHashCodeNotEqualObjectProperties() {
-	assertNotEquals(ilib.hashCode({name: "abcdef"}), ilib.hashCode({value: "abcdef"}));
+	assertNotEquals(JSUtils.hashCode({name: "abcdef"}), JSUtils.hashCode({value: "abcdef"}));
 }
 
 function testHashCodeNotEqualObjectOneEmpty() {
-	assertNotEquals(ilib.hashCode({}), ilib.hashCode({value: "abcdef"}));
+	assertNotEquals(JSUtils.hashCode({}), JSUtils.hashCode({value: "abcdef"}));
 }
 
 function testHashCodeNotEqualObjectValues() {
-	assertNotEquals(ilib.hashCode({name: "abcXdef"}), ilib.hashCode({name: "abcdef"}));
+	assertNotEquals(JSUtils.hashCode({name: "abcXdef"}), JSUtils.hashCode({name: "abcdef"}));
 }
 
 function testHashCodeEqualObjectScrambledProperties() {
-	assertEquals(ilib.hashCode({name: "abcdef", num: 3, value: "asdf"}), ilib.hashCode({value: "asdf", name: "abcdef", num: 3}));
+	assertEquals(JSUtils.hashCode({name: "abcdef", num: 3, value: "asdf"}), JSUtils.hashCode({value: "asdf", name: "abcdef", num: 3}));
 }
 
 function testHashCodeNotEqualObjectValuesComplex() {
-	assertNotEquals(ilib.hashCode({num: 3, apple: "jacks", type: false, name: "abcXdef"}), ilib.hashCode({name: "abcdef", apple: "jacks", num: 3, type: false}));
+	assertNotEquals(JSUtils.hashCode({num: 3, apple: "jacks", type: false, name: "abcXdef"}), JSUtils.hashCode({name: "abcdef", apple: "jacks", num: 3, type: false}));
 }
 
 
@@ -1140,7 +1147,7 @@ function testLoadDataCorrectType() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1166,7 +1173,7 @@ function testLoadDataCorrectItems() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1196,7 +1203,7 @@ function testLoadDataWithLocale() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "de-DE",
@@ -1226,7 +1233,7 @@ function testLoadDataWithLocaleMissingParts() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "fr-Latn-FR",
@@ -1256,7 +1263,7 @@ function testLoadDataDefaultLocale() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			type: "json",
@@ -1286,7 +1293,7 @@ function testLoadDataNonJson() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1314,7 +1321,7 @@ function testLoadDataCached() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1349,7 +1356,7 @@ function testLoadDataCachedWithOtherName() {
 	ilib.setLoaderCallback(mockLoader);
 
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1365,7 +1372,7 @@ function testLoadDataCachedWithOtherName() {
 			}
 		});
 	
-		ilib.loadData({
+		Utils.loadData({
 			name: "bar.json",
 			object: obj,
 			locale: "en-US",
@@ -1395,7 +1402,7 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1406,7 +1413,7 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 			}
 		});
 	
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1443,7 +1450,7 @@ function testLoadDataCachedWithLoadParams() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1459,7 +1466,7 @@ function testLoadDataCachedWithLoadParams() {
 			}
 		});
 	
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1491,7 +1498,7 @@ function testLoadDataNoCache() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			locale: "en-US",
 			type: "json",
@@ -1520,7 +1527,7 @@ function testLoadDataNotCachedWithLoadParams() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			locale: "en-US",
 			type: "json",
@@ -1535,7 +1542,7 @@ function testLoadDataNotCachedWithLoadParams() {
 			}
 		});
 	
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			locale: "en-US",
 			type: "json",
@@ -1568,7 +1575,7 @@ function testLoadDataAsynch() {
 	
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			object: obj,
 			locale: "en-US",
@@ -1596,7 +1603,7 @@ function testLoadDataDefaults() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			callback: function (results) {
 				assertObjectEquals({
@@ -1619,7 +1626,7 @@ function testLoadDataNonJson_en_US() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			callback: function (results) {
@@ -1639,7 +1646,7 @@ function testLoadDataNonJson_de() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			locale: "de",
@@ -1660,7 +1667,7 @@ function testLoadDataNonJson_de_DE() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			locale: "de-DE",
@@ -1681,7 +1688,7 @@ function testLoadDataNonJson_DE() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			locale: "DE",
@@ -1703,7 +1710,7 @@ function testLoadDataNonJsonWithFallbackToLanguage() {
 	ilib.setLoaderCallback(mockLoader);
 
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			locale: "fr-FR",
@@ -1724,7 +1731,7 @@ function testLoadDataNonJsonWithFallbackToRoot() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			type: "html",
 			locale: "es-ES",
@@ -1745,7 +1752,7 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.html",
 			locale: "de",
 			callback: function (results) {
@@ -1765,7 +1772,7 @@ function testLoadDataJsonInferFileTypeFromExtension() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	try {
-		ilib.loadData({
+		Utils.loadData({
 			name: "foo.json",
 			locale: "de-DE",
 			callback: function (results) {
@@ -1784,13 +1791,13 @@ function testLoadDataJsonInferFileTypeFromExtension() {
 function testMapStringDigits() {
 	var map = "abcdefghij".split("");
 	
-	assertEquals("jihgfedcba", ilib.mapString("9876543210", map));
+	assertEquals("jihgfedcba", JSUtils.mapString("9876543210", map));
 }
 
 function testMapStringDigitsUnknown() {
 	var map = "abcde".split("");
 	
-	assertEquals("98765edcba", ilib.mapString("9876543210", map));
+	assertEquals("98765edcba", JSUtils.mapString("9876543210", map));
 }
 
 function testMapStringHash() {
@@ -1800,7 +1807,7 @@ function testMapStringHash() {
 		"c": "z"
 	};
 	
-	assertEquals("xyzzy", ilib.mapString("abccb", map));
+	assertEquals("xyzzy", JSUtils.mapString("abccb", map));
 }
 
 function testMapStringUndefined() {
@@ -1810,11 +1817,11 @@ function testMapStringUndefined() {
 		"c": "z"
 	};
 	
-	assertUndefined(ilib.mapString(undefined, map));
+	assertUndefined(JSUtils.mapString(undefined, map));
 }
 
 function testMapStringUndefinedMap() {
-	assertEquals("abccb", ilib.mapString("abccb", undefined));
+	assertEquals("abccb", JSUtils.mapString("abccb", undefined));
 }
 
 function testMapStringHashUnknown() {
@@ -1824,7 +1831,7 @@ function testMapStringHashUnknown() {
 		"c": "z"
 	};
 	
-	assertEquals("xyzdefxyz", ilib.mapString("abcdefabc", map));
+	assertEquals("xyzdefxyz", JSUtils.mapString("abcdefabc", map));
 }
 
 function testMapStringHashMulti() {
@@ -1834,64 +1841,64 @@ function testMapStringHashMulti() {
 		"c": "zo"
 	};
 	
-	assertEquals("xmynzoxmynzo", ilib.mapString("abcabc", map));
+	assertEquals("xmynzoxmynzo", JSUtils.mapString("abcabc", map));
 }
 
 function testIndexOf() {
 	var arr = ["a", "b", "c"];
-	assertEquals(1, ilib.indexOf(arr, "b"));
+	assertEquals(1, JSUtils.indexOf(arr, "b"));
 }
 
 function testIndexOfNeg() {
 	var arr = ["a", "b", "c"];
-	assertEquals(-1, ilib.indexOf(arr, "d"));
+	assertEquals(-1, JSUtils.indexOf(arr, "d"));
 }
 
 function testIndexOfBeginning() {
 	var arr = ["a", "b", "c"];
-	assertEquals(0, ilib.indexOf(arr, "a"));
+	assertEquals(0, JSUtils.indexOf(arr, "a"));
 }
 
 function testIndexOfEnd() {
 	var arr = ["a", "b", "c"];
-	assertEquals(2, ilib.indexOf(arr, "c"));
+	assertEquals(2, JSUtils.indexOf(arr, "c"));
 }
 
 function testIndexOfCaseSensitive() {
 	var arr = ["a", "b", "c"];
-	assertEquals(-1, ilib.indexOf(arr, "C"));
+	assertEquals(-1, JSUtils.indexOf(arr, "C"));
 }
 
 function testIndexOfWrongObjectType() {
 	var arr = ["a", "b", "c"];
-	assertEquals(-1, ilib.indexOf(arr, 2));
+	assertEquals(-1, JSUtils.indexOf(arr, 2));
 }
 
 function testIndexOfUndefinedSearchTerm() {
 	var arr = ["a", "b", "c"];
-	assertEquals(-1, ilib.indexOf(arr, undefined));
+	assertEquals(-1, JSUtils.indexOf(arr, undefined));
 }
 
 function testIndexOfUndefinedArray() {
-	assertEquals(-1, ilib.indexOf(undefined, "a"));
+	assertEquals(-1, JSUtils.indexOf(undefined, "a"));
 }
 
 function testToHexStringSimple() {
-	assertEquals("0061", ilib.toHexString("a"));
+	assertEquals("0061", JSUtils.toHexString("a"));
 }
 
 function testToHexStringWithLengthLimit2() {
-	assertEquals("61", ilib.toHexString("a", 2));
+	assertEquals("61", JSUtils.toHexString("a", 2));
 }
 
 function testToHexStringWithLengthLimit8() {
-	assertEquals("00000061", ilib.toHexString("a", 8));
+	assertEquals("00000061", JSUtils.toHexString("a", 8));
 }
 
 function testToHexStringChinese() {
-	assertEquals("35C0", ilib.toHexString("㗀"));
+	assertEquals("35C0", JSUtils.toHexString("㗀"));
 }
 
 function testToHexStringComplex() {
-	assertEquals("006135C00E080C13", ilib.toHexString("a㗀จఓ"));
+	assertEquals("006135C00E080C13", JSUtils.toHexString("a㗀จఓ"));
 }

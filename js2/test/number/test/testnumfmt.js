@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var NumFmt = require("./../lib/NumFmt.js");
+
 function testNumFmtConstructorEmpty() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
 }
 
 function testNumFmtDefaults() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -37,7 +39,7 @@ function testNumFmtDefaults() {
 }
 
 function testNumFmtNumberFormatSimple() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -45,7 +47,7 @@ function testNumFmtNumberFormatSimple() {
 }
 
 function testNumFmtNumberFormatUndefined() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -53,7 +55,7 @@ function testNumFmtNumberFormatUndefined() {
 }
 
 function testNumFmtNumberFormatSimpleNeg() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -61,7 +63,7 @@ function testNumFmtNumberFormatSimpleNeg() {
 }
 
 function testNumFmtNumberFormatNoFractionalLimit() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -72,7 +74,7 @@ function testNumFmtNumberFormatNoFractionalLimit() {
 }
 
 function testNumFmtNumberFormatNoIntegralLimit() {
-    var fmt = new ilib.NumFmt();
+    var fmt = new NumFmt();
     
     assertNotNull(fmt);
     
@@ -83,7 +85,7 @@ function testNumFmtNumberFormatNoIntegralLimit() {
 }
 
 function testNumFmtNumberFormatWithMaxFracDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2
     });
     
@@ -93,7 +95,7 @@ function testNumFmtNumberFormatWithMaxFracDigits() {
 }
 
 function testNumFmtNumberFormatWithMinFracDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 4
     });
     
@@ -103,7 +105,7 @@ function testNumFmtNumberFormatWithMinFracDigits() {
 }
 
 function testNumFmtNumberFormatWithMinFracDigitsTooSmall() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: -5
     });
     
@@ -114,7 +116,7 @@ function testNumFmtNumberFormatWithMinFracDigitsTooSmall() {
 }
 
 function testNumFmtNumberFormatWithMinFracDigitsTooSmallNoDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: -5
     });
     
@@ -125,7 +127,7 @@ function testNumFmtNumberFormatWithMinFracDigitsTooSmallNoDigits() {
 }
 
 function testNumFmtNumberFormatWithMinFracDigitsTooBig() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 25
     });
     
@@ -136,7 +138,7 @@ function testNumFmtNumberFormatWithMinFracDigitsTooBig() {
 }
 
 function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooSmall() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 3,
         maxFractionDigits: 6
     });
@@ -147,7 +149,7 @@ function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooSmall() {
 }
 
 function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooBig() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 3,
         maxFractionDigits: 6
     });
@@ -158,7 +160,7 @@ function testNumFmtNumberFormatWithMinAndMaxFracDigitsTooBig() {
 }
 
 function testNumFmtNumberFormatWithMinAndMaxFracDigitsJustRight() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 3,
         maxFractionDigits: 6
     });
@@ -169,7 +171,7 @@ function testNumFmtNumberFormatWithMinAndMaxFracDigitsJustRight() {
 }
 
 function testNumFmtNumberGetMaxFracDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2
     });
     
@@ -179,7 +181,7 @@ function testNumFmtNumberGetMaxFracDigits() {
 }
 
 function testNumFmtGetMinFracDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         minFractionDigits: 4
     });
     
@@ -189,7 +191,7 @@ function testNumFmtGetMinFracDigits() {
 }
 
 function testNumFmtNumberStyleStandard() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "standard"
     });
     
@@ -199,7 +201,7 @@ function testNumFmtNumberStyleStandard() {
 }
 
 function testNumFmtNumberFormatStandardWithMultiGroups() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
     	style: "standard"
     });
     
@@ -209,7 +211,7 @@ function testNumFmtNumberFormatStandardWithMultiGroups() {
 }
 
 function testNumFmtNumberFormatWithMultiGroupsNegative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
     	style: "standard"
     });
     
@@ -219,7 +221,7 @@ function testNumFmtNumberFormatWithMultiGroupsNegative() {
 }
 
 function testNumFmtNumberStyleScientific() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific"
     });
     
@@ -229,7 +231,7 @@ function testNumFmtNumberStyleScientific() {
 }
 
 function testNumFmtNumberStyleScientificSmall() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific"
     });
     
@@ -239,7 +241,7 @@ function testNumFmtNumberStyleScientificSmall() {
 }
 
 function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5
     });
@@ -250,7 +252,7 @@ function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5
     });
@@ -261,7 +263,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
 }
 
 function testNumFmtNumberStyleScientificWithMinFractionDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         minFractionDigits: 5
     });
@@ -272,7 +274,7 @@ function testNumFmtNumberStyleScientificWithMinFractionDigits() {
 }
 
 function testNumFmtNumberStyleScientificWithMinFractionDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         minFractionDigits: 1
     });
@@ -284,7 +286,7 @@ function testNumFmtNumberStyleScientificWithMinFractionDigits() {
 }
 
 function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmall() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         minFractionDigits: -2
     });
@@ -295,7 +297,7 @@ function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmall() {
 }
 
 function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmallNoDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         minFractionDigits: -2
     });
@@ -306,7 +308,7 @@ function testNumFmtNumberStyleScientificWithMinFractionDigitsTooSmallNoDigits() 
 }
 
 function testNumFmtNumberStyleScientificWithMinFractionDigitsTooBig() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         minFractionDigits: 25
     });
@@ -318,7 +320,7 @@ function testNumFmtNumberStyleScientificWithMinFractionDigitsTooBig() {
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5,
         roundingMode: "up"
@@ -330,7 +332,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5,
         roundingMode: "down"
@@ -342,7 +344,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 3,
         roundingMode: "halfdown"
@@ -354,7 +356,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 3,
         roundingMode: "halfdown"
@@ -366,7 +368,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 3,
         roundingMode: "halfup"
@@ -378,7 +380,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooSmall() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5,
         minFractionDigits: 3
@@ -390,7 +392,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooSmall
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooBig() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5,
         minFractionDigits: 3
@@ -402,7 +404,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsTooBig()
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsJustRight() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "scientific",
         maxFractionDigits: 5,
         minFractionDigits: 3
@@ -414,7 +416,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndMinFractionDigitsJustRigh
 }
 
 function testNumFmtNumberStyleNogroupingInteger() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "nogrouping"
     });
     
@@ -424,7 +426,7 @@ function testNumFmtNumberStyleNogroupingInteger() {
 }
 
 function testNumFmtNumberStyleNogroupingFloat() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "nogrouping"
     });
     
@@ -434,7 +436,7 @@ function testNumFmtNumberStyleNogroupingFloat() {
 }
 
 function testNumFmtNumberStyleNogroupingWithLocale() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
     	locale: "fa-IR",
         style: "nogrouping",
         useNative: false
@@ -446,7 +448,7 @@ function testNumFmtNumberStyleNogroupingWithLocale() {
 }
 
 function testNumFmtNumberStyleNogroupingWithNative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
     	locale: "fa-IR",
         style: "nogrouping",
         useNative: true
@@ -458,7 +460,7 @@ function testNumFmtNumberStyleNogroupingWithNative() {
 }
 
 function testNumFmtNumberStyleNogroupingWithMaxFrac() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "nogrouping",
         maxFractionDigits: 3
     });
@@ -469,7 +471,7 @@ function testNumFmtNumberStyleNogroupingWithMaxFrac() {
 }
 
 function testNumFmtNumberFormatRoundingCeiling() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "ceiling"
     });
@@ -480,7 +482,7 @@ function testNumFmtNumberFormatRoundingCeiling() {
 }
 
 function testNumFmtNumberFormatRoundingCeilingNeg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "ceiling"
     });
@@ -491,7 +493,7 @@ function testNumFmtNumberFormatRoundingCeilingNeg() {
 }
 
 function testNumFmtNumberFormatRoundingDown() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "down"
     });
@@ -502,7 +504,7 @@ function testNumFmtNumberFormatRoundingDown() {
 }
 
 function testNumFmtNumberFormatRoundingDownNeg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "down"
     });
@@ -513,7 +515,7 @@ function testNumFmtNumberFormatRoundingDownNeg() {
 }
 
 function testNumFmtNumberFormatRoundingFloor() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "floor"
     });
@@ -524,7 +526,7 @@ function testNumFmtNumberFormatRoundingFloor() {
 }
 
 function testNumFmtNumberFormatRoundingFloorNeg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "floor"
     });
@@ -535,7 +537,7 @@ function testNumFmtNumberFormatRoundingFloorNeg() {
 }
 
 function testNumFmtNumberFormatRoundingUp() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "up"
     });
@@ -546,7 +548,7 @@ function testNumFmtNumberFormatRoundingUp() {
 }
 
 function testNumFmtNumberFormatRoundingUpNeg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "up"
     });
@@ -557,7 +559,7 @@ function testNumFmtNumberFormatRoundingUpNeg() {
 }
 
 function testNumFmtNumberFormatRoundingHalfdownReg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -568,7 +570,7 @@ function testNumFmtNumberFormatRoundingHalfdownReg() {
 }
 
 function testNumFmtNumberFormatRoundingHalfdownAtHalf() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -579,7 +581,7 @@ function testNumFmtNumberFormatRoundingHalfdownAtHalf() {
 }
 
 function testNumFmtNumberFormatRoundingHalfdownNegReg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -590,7 +592,7 @@ function testNumFmtNumberFormatRoundingHalfdownNegReg() {
 }
 
 function testNumFmtNumberFormatRoundingHalfdownNegAtHalf() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -601,7 +603,7 @@ function testNumFmtNumberFormatRoundingHalfdownNegAtHalf() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdownLessThan5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -612,7 +614,7 @@ function testNumFmtNumberFormatRoundinghalfdownLessThan5() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdown5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -623,7 +625,7 @@ function testNumFmtNumberFormatRoundinghalfdown5() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdownMoreThan5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -635,7 +637,7 @@ function testNumFmtNumberFormatRoundinghalfdownMoreThan5() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdownExactly5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -647,7 +649,7 @@ function testNumFmtNumberFormatRoundinghalfdownExactly5() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdownLessThan5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -658,7 +660,7 @@ function testNumFmtNumberFormatRoundinghalfdownLessThan5Up() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdown5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -669,7 +671,7 @@ function testNumFmtNumberFormatRoundinghalfdown5Up() {
 }
 
 function testNumFmtNumberFormatRoundinghalfdownMoreThan5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfdown"
     });
@@ -681,7 +683,7 @@ function testNumFmtNumberFormatRoundinghalfdownMoreThan5Up() {
 }
 
 function testNumFmtNumberFormatRoundingHalfoddLessThan5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -692,7 +694,7 @@ function testNumFmtNumberFormatRoundingHalfoddLessThan5() {
 }
 
 function testNumFmtNumberFormatRoundingHalfodd5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -703,7 +705,7 @@ function testNumFmtNumberFormatRoundingHalfodd5() {
 }
 
 function testNumFmtNumberFormatRoundingHalfoddMoreThan5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -715,7 +717,7 @@ function testNumFmtNumberFormatRoundingHalfoddMoreThan5() {
 }
 
 function testNumFmtNumberFormatRoundingHalfoddExactly5() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -727,7 +729,7 @@ function testNumFmtNumberFormatRoundingHalfoddExactly5() {
 }
 
 function testNumFmtNumberFormatRoundingHalfoddLessThan5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -738,7 +740,7 @@ function testNumFmtNumberFormatRoundingHalfoddLessThan5Up() {
 }
 
 function testNumFmtNumberFormatRoundingHalfodd5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -749,7 +751,7 @@ function testNumFmtNumberFormatRoundingHalfodd5Up() {
 }
 
 function testNumFmtNumberFormatRoundingHalfoddMoreThan5Up() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfodd"
     });
@@ -761,7 +763,7 @@ function testNumFmtNumberFormatRoundingHalfoddMoreThan5Up() {
 }
 
 function testNumFmtNumberFormatRoundingHalfupReg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfup"
     });
@@ -772,7 +774,7 @@ function testNumFmtNumberFormatRoundingHalfupReg() {
 }
 
 function testNumFmtNumberFormatRoundingHalfupAtHalf() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfup"
     });
@@ -783,7 +785,7 @@ function testNumFmtNumberFormatRoundingHalfupAtHalf() {
 }
 
 function testNumFmtNumberFormatRoundingHalfupNegReg() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfup"
     });
@@ -794,7 +796,7 @@ function testNumFmtNumberFormatRoundingHalfupNegReg() {
 }
 
 function testNumFmtNumberFormatRoundingHalfupNegAtHalf() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         maxFractionDigits: 2,
         roundingMode: "halfup"
     });
@@ -805,7 +807,7 @@ function testNumFmtNumberFormatRoundingHalfupNegAtHalf() {
 }
 
 function testNumFmtNumberStyleStringArgument() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "standard"
     });
     
@@ -816,7 +818,7 @@ function testNumFmtNumberStyleStringArgument() {
 }
 
 function testNumFmtNumberStyleNumberObjectArgument() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "standard"
     });
     
@@ -827,18 +829,18 @@ function testNumFmtNumberStyleNumberObjectArgument() {
 }
 
 function testNumFmtNumberStyleIlibNumberObjectArgument() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         style: "standard"
     });
     
     assertNotNull(fmt);
     
     // should work with a number object
-    assertEquals("2,345,678,901,234,567", fmt.format(new ilib.Number(2345678901234567.0)));
+    assertEquals("2,345,678,901,234,567", fmt.format(new Number(2345678901234567.0)));
 }
 
 function testNumFmtGetUseNativeDefaultFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US"
     });
     
@@ -848,7 +850,7 @@ function testNumFmtGetUseNativeDefaultFalse() {
 }
 
 function testNumFmtGetUseNativeDefaultTrue() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN"
     });
     
@@ -858,7 +860,7 @@ function testNumFmtGetUseNativeDefaultTrue() {
 }
 
 function testNumFmtGetUseNativeHasNativeButFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN"
     });
     
@@ -869,7 +871,7 @@ function testNumFmtGetUseNativeHasNativeButFalse() {
 }
 
 function testNumFmtGetUseNativeHasNativeButFalse_OR_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN"
     });
     
@@ -880,7 +882,7 @@ function testNumFmtGetUseNativeHasNativeButFalse_OR_IN() {
 }
 
 function testNumFmtGetUseNativeOverrideTrue() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US",
         useNative: true
     });
@@ -891,7 +893,7 @@ function testNumFmtGetUseNativeOverrideTrue() {
 }
 
 function testNumFmtGetUseNativeExplicitTrue() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN",
         useNative: true
     });
@@ -902,7 +904,7 @@ function testNumFmtGetUseNativeExplicitTrue() {
 }
 
 function testNumFmtGetUseNativeExplicitFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US",
         useNative: false
     });
@@ -913,7 +915,7 @@ function testNumFmtGetUseNativeExplicitFalse() {
 }
 
 function testNumFmtGetUseNativeOverrideFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN",
         useNative: false
     });
@@ -924,7 +926,7 @@ function testNumFmtGetUseNativeOverrideFalse() {
 }
 
 function testNumFmtFormatWesternDefault() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US"
     });
     
@@ -934,7 +936,7 @@ function testNumFmtFormatWesternDefault() {
 }
 
 function testNumFmtFormatWesternOverrideNative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US",
         useNative: true
     });
@@ -945,7 +947,7 @@ function testNumFmtFormatWesternOverrideNative() {
 }
 
 function testNumFmtFormatNativeDefaultTrue() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN"
     });
     
@@ -955,7 +957,7 @@ function testNumFmtFormatNativeDefaultTrue() {
 }
 
 function testNumFmtFormatNativeDefaultFalse_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN"
     });
     
@@ -966,7 +968,7 @@ function testNumFmtFormatNativeDefaultFalse_or_IN() {
 }
 
 function testNumFmtFormatNativeDefaultFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN"
     });
     
@@ -978,7 +980,7 @@ function testNumFmtFormatNativeDefaultFalse() {
 
 
 function testNumFmtFormatNativeExplicitTrue() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN",
         useNative: true
     });
@@ -989,7 +991,7 @@ function testNumFmtFormatNativeExplicitTrue() {
 }
 
 function testNumFmtFormatNativeExplicitFalse() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN",
         useNative: false
     });
@@ -1000,7 +1002,7 @@ function testNumFmtFormatNativeExplicitFalse() {
 }
 
 function testNumFmtFormatNativeExplicitTrue2() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN",
         useNative: true
     });
@@ -1011,7 +1013,7 @@ function testNumFmtFormatNativeExplicitTrue2() {
 }
 
 function testNumFmtFormatNativeExplicitTrue2_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN",
         useNative: true
     });
@@ -1022,7 +1024,7 @@ function testNumFmtFormatNativeExplicitTrue2_or_IN() {
 }
 
 function testNumFmtFormatNativeExplicitFalse2() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN",
         useNative: false
     });
@@ -1033,7 +1035,7 @@ function testNumFmtFormatNativeExplicitFalse2() {
 }
 
 function testNumFmtFormatNativeExplicitFalse2_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN",
         useNative: false
     });
@@ -1044,7 +1046,7 @@ function testNumFmtFormatNativeExplicitFalse2_or_IN() {
 }
 
 function testNumFmtNumberFormatDESimple() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1054,7 +1056,7 @@ function testNumFmtNumberFormatDESimple() {
 }
 
 function testNumFmtDEIsGroupingUsed() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1064,7 +1066,7 @@ function testNumFmtDEIsGroupingUsed() {
 }
 
 function testNumFmtNumberFormatDEWithThousands() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1074,7 +1076,7 @@ function testNumFmtNumberFormatDEWithThousands() {
 }
 
 function testNumFmtNumberFormatDEWithThousandsWithMultiGroups() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1084,7 +1086,7 @@ function testNumFmtNumberFormatDEWithThousandsWithMultiGroups() {
 }
 
 function testNumFmtNumberFormatDEWithThousandsWithMultiGroupsNegative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1094,7 +1096,7 @@ function testNumFmtNumberFormatDEWithThousandsWithMultiGroupsNegative() {
 }
 
 function testNumFmtNumberFormatFRSimple() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-FR"
     });
     
@@ -1104,7 +1106,7 @@ function testNumFmtNumberFormatFRSimple() {
 }
 
 function testNumFmtNumberFormatFRWithThousands() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-FR"
     });
     
@@ -1114,7 +1116,7 @@ function testNumFmtNumberFormatFRWithThousands() {
 }
 
 function testNumFmtNumberFormatDESimple() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE"
     });
     
@@ -1124,7 +1126,7 @@ function testNumFmtNumberFormatDESimple() {
 }
 
 function testNumFmtPercentageFormatRegular() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "percentage"
     });
     
@@ -1134,7 +1136,7 @@ function testNumFmtPercentageFormatRegular() {
 }
 
 function testNumFmtPercentageGetType() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "percentage"
     });
     
@@ -1144,7 +1146,7 @@ function testNumFmtPercentageGetType() {
 }
 
 function testNumFmtPercentageFormatWithDecimal() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "percentage"
     });
     
@@ -1154,7 +1156,7 @@ function testNumFmtPercentageFormatWithDecimal() {
 }
 
 function testNumFmtPercentageFormatWithDecimalAndRounding() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "percentage",
         maxFractionDigits: 1
     });
@@ -1165,7 +1167,7 @@ function testNumFmtPercentageFormatWithDecimalAndRounding() {
 }
 
 function testNumFmtPercentageFormatDERegular() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         type: "percentage"
     });
@@ -1176,7 +1178,7 @@ function testNumFmtPercentageFormatDERegular() {
 }
 
 function testNumFmtPercentageFormatDEWithDecimal() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         type: "percentage"
     });
@@ -1187,7 +1189,7 @@ function testNumFmtPercentageFormatDEWithDecimal() {
 }
 
 function testNumFmtPercentageFormatDEWithDecimalAndRounding() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         type: "percentage",
         maxFractionDigits: 1
@@ -1199,7 +1201,7 @@ function testNumFmtPercentageFormatDEWithDecimalAndRounding() {
 }
 
 function testNumFmtCurrencyFormatDefault() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1210,7 +1212,7 @@ function testNumFmtCurrencyFormatDefault() {
 }
 
 function testNumFmtCurrencyFormatZeroCents() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1221,7 +1223,7 @@ function testNumFmtCurrencyFormatZeroCents() {
 }
 
 function testNumFmtCurrencyGetType() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1232,7 +1234,7 @@ function testNumFmtCurrencyGetType() {
 }
 
 function testNumFmtCurrencyGetStyleDefault() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1243,7 +1245,7 @@ function testNumFmtCurrencyGetStyleDefault() {
 }
 
 function testNumFmtCurrencyFormatDefaultRounding() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1254,7 +1256,7 @@ function testNumFmtCurrencyFormatDefaultRounding() {
 }
 
 function testNumFmtCurrencyFormatOverrideMinFraction() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         minFractionDigits: 5,
         currency: "USD"
@@ -1266,7 +1268,7 @@ function testNumFmtCurrencyFormatOverrideMinFraction() {
 }
 
 function testNumFmtCurrencyFormatOverrideMaxFraction() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         maxFractionDigits: 0,
         currency: "USD"
@@ -1278,7 +1280,7 @@ function testNumFmtCurrencyFormatOverrideMaxFraction() {
 }
 
 function testNumFmtCurrencyFormatOverrideMinAndMaxFraction() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         minFractionDigits: 3,
         maxFractionDigits: 3,
@@ -1291,7 +1293,7 @@ function testNumFmtCurrencyFormatOverrideMinAndMaxFraction() {
 }
 
 function testNumFmtCurrencyFormatOverrideMinAndMaxFractionWonky() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         minFractionDigits: 4,
         maxFractionDigits: 3,
@@ -1304,7 +1306,7 @@ function testNumFmtCurrencyFormatOverrideMinAndMaxFractionWonky() {
 }
 
 function testNumFmtCurrencyFormatAlternateStyle() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         style: "iso",
         currency: "USD"
@@ -1316,7 +1318,7 @@ function testNumFmtCurrencyFormatAlternateStyle() {
 }
 
 function testNumFmtCurrencyFormatOtherCurrency() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "EUR"
     });
@@ -1327,7 +1329,7 @@ function testNumFmtCurrencyFormatOtherCurrency() {
 }
 
 function testNumFmtCurrencyFormatOtherCurrencyIsoStyle() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "EUR",
         style: "iso"
@@ -1339,7 +1341,7 @@ function testNumFmtCurrencyFormatOtherCurrencyIsoStyle() {
 }
 
 function testNumFmtCurrencyGetDefaultFractionDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "USD"
     });
@@ -1351,7 +1353,7 @@ function testNumFmtCurrencyGetDefaultFractionDigits() {
 }
 
 function testNumFmtCurrencyGetFractionDigitsOtherCurrency() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "JPY"  // Japanese yen
     });
@@ -1363,7 +1365,7 @@ function testNumFmtCurrencyGetFractionDigitsOtherCurrency() {
 }
 
 function testNumFmtCurrencyFormatOtherCurrencyUseDefaultDigits() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         currency: "JPY"  // japanese yen use 0 fraction digits
     });
@@ -1377,7 +1379,7 @@ function testNumFmtCurrencyNoCurrencyDefaultForLocale() {
     var fmt;
     
     try {
-    	fmt = new ilib.NumFmt({
+    	fmt = new NumFmt({
 	        type: "currency",
 	        locale: "ja-JP"
 	    });
@@ -1390,7 +1392,7 @@ function testNumFmtCurrencyNoCurrencyDefaultForLocale() {
 }
 
 function testNumFmtCurrencyUseCorrectFractionDigitsForLocale() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ja-JP",
         currency: "JPY"
@@ -1403,7 +1405,7 @@ function testNumFmtCurrencyUseCorrectFractionDigitsForLocale() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ja-JP",
         currency: "JPY"
@@ -1415,7 +1417,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocalefr_CA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fr-CA",
         currency: "CAD"
@@ -1427,7 +1429,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocalefr_CA() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocalefr_CA1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fr-CA",
         currency: "CAD"
@@ -1439,7 +1441,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocalefr_CA1() {
 }
 
 function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "zxx-XX",
         currency: "USD"
@@ -1451,7 +1453,7 @@ function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
 }
 
 function testNumFmtJAIsGroupingUsed() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP"
     });
     
@@ -1461,7 +1463,7 @@ function testNumFmtJAIsGroupingUsed() {
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroups() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP"
     });
     
@@ -1471,7 +1473,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroups() {
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP"
     });
     
@@ -1481,7 +1483,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegative() {
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsja() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja"
     });
     
@@ -1491,7 +1493,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsja() {
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja"
     });
     
@@ -1501,7 +1503,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
 }
 
 function testNumFmtNumberFormatJALessThanOne() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP"
     });
     
@@ -1511,7 +1513,7 @@ function testNumFmtNumberFormatJALessThanOne() {
 }
 
 function testNumFmtNumberFormatJALessThanOneNegative() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP"
     });
     
@@ -1522,7 +1524,7 @@ function testNumFmtNumberFormatJALessThanOneNegative() {
 
 // test all of tier 1 locales and a number of the tier 2 and lower locales
 function testNumFmtzhCN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "zh-CN",
         maxFractionDigits: 2
     });
@@ -1533,7 +1535,7 @@ function testNumFmtzhCN() {
 }
 
 function testNumFmtenIN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-IN",
         maxFractionDigits: 2
     });
@@ -1546,7 +1548,7 @@ function testNumFmtenIN() {
 
 
 function testNumFmtasIN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "as-IN",
         maxFractionDigits: 2
     });
@@ -1562,7 +1564,7 @@ function testNumFmtasIN() {
 /***************** test cases written by Birendra 3/6/2013 *******************************************/
 //test acses for hi-IN
 function testNumFmthi_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "hi-IN",
         maxFractionDigits: 2
     });
@@ -1573,7 +1575,7 @@ function testNumFmthi_IN() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hi_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "hi-IN",
 	currency: "INR"
@@ -1585,7 +1587,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hi_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "hi-IN",
 	useNative: true,
@@ -1598,7 +1600,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "hi-IN",
 	useNative: true,
@@ -1613,7 +1615,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN1() {
 //test cases for bn-IN
 
 function testNumFmtbn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bn-IN",
         maxFractionDigits: 2
     });
@@ -1624,7 +1626,7 @@ function testNumFmtbn_IN() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "bn-IN",
 	currency: "INR"
@@ -1636,7 +1638,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bn_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_bn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "bn-IN",
 	currency: "INR"
@@ -1649,7 +1651,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_bn_IN() {
 
 
 function testNumFmtPercentageFormatRegular_bn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "bn-IN",
         type: "percentage"
     });
@@ -1662,7 +1664,7 @@ function testNumFmtPercentageFormatRegular_bn_IN() {
 //test cases for mr-IN
 
 function testNumFmt_mr_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "mr-IN",
         maxFractionDigits: 2
     });
@@ -1673,7 +1675,7 @@ function testNumFmt_mr_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "mr-IN",
 	useNative: true,
@@ -1687,7 +1689,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mr_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "mr-IN",
 	currency: "INR"
@@ -1699,7 +1701,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mr_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "mr-IN",
 	useNative: true,
@@ -1713,7 +1715,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN() {
 
 
 function testNumFmtPercentageFormatRegular_mr_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "mr-IN",
 	useNative: true,
         type: "percentage"
@@ -1726,7 +1728,7 @@ function testNumFmtPercentageFormatRegular_mr_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_mr_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "mr-IN",
         type: "percentage"
     });
@@ -1740,7 +1742,7 @@ function testNumFmtPercentageNativeFormatRegular_mr_IN() {
 //test cases for kn-IN
 
 function testNumFmt_kn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "kn-IN",
         maxFractionDigits: 2
     });
@@ -1752,7 +1754,7 @@ function testNumFmt_kn_IN() {
 
 
 function testNumFmtNative_kn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "kn-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -1764,7 +1766,7 @@ function testNumFmtNative_kn_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_kn_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "kn-IN",
 	useNative: true,
@@ -1777,7 +1779,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_kn_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_kn_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "kn-IN",
 	useNative: true,
@@ -1791,7 +1793,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_kn_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "kn-IN",
 	currency: "INR"
@@ -1804,7 +1806,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kn_IN() {
 
 
 function testNumFmtPercentageFormatRegular_kn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "kn-IN",
 	useNative: true,
         type: "percentage"
@@ -1817,7 +1819,7 @@ function testNumFmtPercentageFormatRegular_kn_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_kn_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "kn-IN",
         type: "percentage"
     });
@@ -1830,7 +1832,7 @@ function testNumFmtPercentageNativeFormatRegular_kn_IN() {
 //test cases for gu-IN
 
 function testNumFmt_gu_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "gu-IN",
         maxFractionDigits: 2
     });
@@ -1842,7 +1844,7 @@ function testNumFmt_gu_IN() {
 
 
 function testNumFmtNative_gu_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "gu-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -1854,7 +1856,7 @@ function testNumFmtNative_gu_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_gu_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "gu-IN",
 	useNative: true,
@@ -1867,7 +1869,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_gu_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_gu_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "gu-IN",
 	useNative: true,
@@ -1881,7 +1883,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_gu_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_gu_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "gu-IN",
 	currency: "INR"
@@ -1894,7 +1896,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_gu_IN() {
 
 
 function testNumFmtPercentageFormatRegular_gu_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "gu-IN",
 	useNative: true,
         type: "percentage"
@@ -1907,7 +1909,7 @@ function testNumFmtPercentageFormatRegular_gu_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_gu_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "gu-IN",
         type: "percentage"
     });
@@ -1920,7 +1922,7 @@ function testNumFmtPercentageNativeFormatRegular_gu_IN() {
 //test cases for ta-IN
 
 function testNumFmt_ta_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN",
         maxFractionDigits: 2
     });
@@ -1932,7 +1934,7 @@ function testNumFmt_ta_IN() {
 
 
 function testNumFmtNative_ta_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ta-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -1944,7 +1946,7 @@ function testNumFmtNative_ta_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_ta_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ta-IN",
 	useNative: true,
@@ -1957,7 +1959,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ta_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ta_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ta-IN",
 	useNative: true,
@@ -1971,7 +1973,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ta_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ta_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ta-IN",
 	currency: "INR"
@@ -1984,7 +1986,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ta_IN() {
 
 
 function testNumFmtPercentageFormatRegular_ta_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ta-IN",
 	useNative: true,
         type: "percentage"
@@ -1997,7 +1999,7 @@ function testNumFmtPercentageFormatRegular_ta_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_ta_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ta-IN",
         type: "percentage"
     });
@@ -2010,7 +2012,7 @@ function testNumFmtPercentageNativeFormatRegular_ta_IN() {
 //test cases for or-IN
 
 function testNumFmt_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN",
         maxFractionDigits: 2
     });
@@ -2022,7 +2024,7 @@ function testNumFmt_or_IN() {
 
 
 function testNumFmtNative_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "or-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2034,7 +2036,7 @@ function testNumFmtNative_or_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_or_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
 	useNative: true,
@@ -2047,7 +2049,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_or_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
 	useNative: true,
@@ -2061,7 +2063,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
 	currency: "INR"
@@ -2074,7 +2076,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
 
 
 function testNumFmtPercentageFormatRegular_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "or-IN",
 	useNative: true,
         type: "percentage"
@@ -2087,7 +2089,7 @@ function testNumFmtPercentageFormatRegular_or_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_or_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "or-IN",
         type: "percentage"
     });
@@ -2100,7 +2102,7 @@ function testNumFmtPercentageNativeFormatRegular_or_IN() {
 //test cases for ha-Latn-NG
 
 function testNumFmt_ha_Latn_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ha-Latn-NG",
         maxFractionDigits: 2
     });
@@ -2111,7 +2113,7 @@ function testNumFmt_ha_Latn_NG() {
 }
 
 function testNumFmtCurrencyFormatCurrencyForLocale_ha_Latn_NG1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ha-Latn-NG",	
 	currency: "NGN"
@@ -2123,7 +2125,7 @@ function testNumFmtCurrencyFormatCurrencyForLocale_ha_Latn_NG1() {
 }
 
 function testNumFmtCurrencyFormatNegativeCurrencyForLocale_ha_Latn_NG1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ha-Latn-NG",
 	currency: "NGN"
@@ -2136,7 +2138,7 @@ function testNumFmtCurrencyFormatNegativeCurrencyForLocale_ha_Latn_NG1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ha_Latn_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ha-Latn-NG",
 	currency: "NGN"
@@ -2148,7 +2150,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ha_Latn_NG() {
 }
 
 function testNumFmtPercentageFormatRegular_ha_Latn_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ha-Latn-NG",
         type: "percentage"
     });
@@ -2160,7 +2162,7 @@ function testNumFmtPercentageFormatRegular_ha_Latn_NG() {
 //test acses for ml-IN
 
 function testNumFmt_ml_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ml-IN",
         maxFractionDigits: 2
     });
@@ -2172,7 +2174,7 @@ function testNumFmt_ml_IN() {
 
 
 function testNumFmtNative_ml_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ml-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2184,7 +2186,7 @@ function testNumFmtNative_ml_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_ml_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
 	useNative: true,
@@ -2197,7 +2199,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ml_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ml_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
 	useNative: true,
@@ -2211,7 +2213,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ml_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ml_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
 	currency: "INR"
@@ -2224,7 +2226,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ml_IN() {
 
 
 function testNumFmtPercentageFormatRegular_ml_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ml-IN",
 	useNative: true,
         type: "percentage"
@@ -2237,7 +2239,7 @@ function testNumFmtPercentageFormatRegular_ml_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_ml_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ml-IN",
         type: "percentage"
     });
@@ -2250,7 +2252,7 @@ function testNumFmtPercentageNativeFormatRegular_ml_IN() {
 //test cases for te-IN
 
 function testNumFmt_te_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "te-IN",
         maxFractionDigits: 2
     });
@@ -2262,7 +2264,7 @@ function testNumFmt_te_IN() {
 
 
 function testNumFmtNative_te_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "te-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2274,7 +2276,7 @@ function testNumFmtNative_te_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_te_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
 	useNative: true,
@@ -2287,7 +2289,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_te_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_te_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
 	useNative: true,
@@ -2301,7 +2303,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_te_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_te_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
 	currency: "INR"
@@ -2314,7 +2316,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_te_IN() {
 
 
 function testNumFmtPercentageFormatRegular_te_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "te-IN",
 	useNative: true,
         type: "percentage"
@@ -2327,7 +2329,7 @@ function testNumFmtPercentageFormatRegular_te_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_te_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "te-IN",
         type: "percentage"
     });
@@ -2340,7 +2342,7 @@ function testNumFmtPercentageNativeFormatRegular_te_IN() {
 //test cases for pa-IN
 
 function testNumFmt_pa_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pa-IN",
         maxFractionDigits: 2
     });
@@ -2352,7 +2354,7 @@ function testNumFmt_pa_IN() {
 
 
 function testNumFmtNative_pa_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pa-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2364,7 +2366,7 @@ function testNumFmtNative_pa_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_pa_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
 	useNative: true,
@@ -2377,7 +2379,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_pa_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_pa_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
 	useNative: true,
@@ -2391,7 +2393,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_pa_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pa_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
 	currency: "INR"
@@ -2404,7 +2406,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pa_IN() {
 
 
 function testNumFmtPercentageFormatRegular_pa_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "pa-IN",
 	useNative: true,
         type: "percentage"
@@ -2417,7 +2419,7 @@ function testNumFmtPercentageFormatRegular_pa_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_pa_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "pa-IN",
         type: "percentage"
     });
@@ -2430,7 +2432,7 @@ function testNumFmtPercentageNativeFormatRegular_pa_IN() {
 //test cases for ur-IN
 
 function testNumFmt_ur_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ur-IN",
         maxFractionDigits: 2
     });
@@ -2442,7 +2444,7 @@ function testNumFmt_ur_IN() {
 
 
 function testNumFmtNative_ur_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ur-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2454,7 +2456,7 @@ function testNumFmtNative_ur_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
 	useNative: true,
@@ -2467,7 +2469,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
 	useNative: true,
@@ -2481,7 +2483,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
 
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
 	currency: "INR"
@@ -2494,7 +2496,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
 
 
 function testNumFmtPercentageFormatRegular_ur_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ur-IN",
 	useNative: true,
         type: "percentage"
@@ -2507,7 +2509,7 @@ function testNumFmtPercentageFormatRegular_ur_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_ur_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ur-IN",
         type: "percentage"
     });
@@ -2521,7 +2523,7 @@ function testNumFmtPercentageNativeFormatRegular_ur_IN() {
 
 
 function testNumFmt_as_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "as-IN",
         maxFractionDigits: 2
     });
@@ -2533,7 +2535,7 @@ function testNumFmt_as_IN() {
 
 
 function testNumFmtNative_as_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "as-IN",
 	useNative: true,
         maxFractionDigits: 2
@@ -2545,7 +2547,7 @@ function testNumFmtNative_as_IN() {
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_as_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
 	useNative: true,
@@ -2558,7 +2560,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_as_IN1() {
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
 	useNative: true,
@@ -2573,7 +2575,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
 
 
 function testNumFmtPercentageFormatRegular_as_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "as-IN",
 	useNative: true,
         type: "percentage"
@@ -2586,7 +2588,7 @@ function testNumFmtPercentageFormatRegular_as_IN() {
 
 
 function testNumFmtPercentageNativeFormatRegular_as_IN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "as-IN",
         type: "percentage"
     });
@@ -2601,7 +2603,7 @@ function testNumFmtPercentageNativeFormatRegular_as_IN() {
 
 //test cases for en-US
 function testNumFmt_en_US() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-US",
         maxFractionDigits: 2
     });
@@ -2612,7 +2614,7 @@ function testNumFmt_en_US() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_US() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-US",
 	currency: "USD"
@@ -2623,7 +2625,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_US() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_US() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-US",
         type: "percentage"
     });
@@ -2637,7 +2639,7 @@ function testNumFmtPercentageFormatRegular_en_US() {
 //test cases for en-GB
 
 function testNumFmtenGB() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-GB",
         maxFractionDigits: 2
     });
@@ -2648,7 +2650,7 @@ function testNumFmtenGB() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_enGB() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-GB",
         currency: "USD"
@@ -2659,7 +2661,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_enGB() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_enGB() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-GB",
         type: "percentage"
     });
@@ -2673,7 +2675,7 @@ function testNumFmtPercentageFormatRegular_enGB() {
 //test cases for ko-KR
 
 function testNumFmtkoKR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ko-KR",
         maxFractionDigits: 2
     });
@@ -2684,7 +2686,7 @@ function testNumFmtkoKR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocaleko_KR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ko-KR",
         currency: "KRW",
@@ -2696,7 +2698,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocaleko_KR() {
     assertEquals("₩100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_koKR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ko-KR",
         type: "percentage"
     });
@@ -2708,7 +2710,7 @@ function testNumFmtPercentageFormatRegular_koKR() {
 
 //test cases for zh-Hans-CN
 function testNumFmt_zhHansCN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "zh-CN-Hans",
         maxFractionDigits: 2
     });
@@ -2719,7 +2721,7 @@ function testNumFmt_zhHansCN() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHansCN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "zh-CN-Hans",
         currency: "CNY"
@@ -2730,7 +2732,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHansCN() {
     assertEquals("元100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_zhHansCN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "zh-CN-Hans",
         type: "percentage"
     });
@@ -2744,7 +2746,7 @@ function testNumFmtPercentageFormatRegular_zhHansCN() {
 //test cases for honk-kong
 
 function testNumFmt_zhHansHK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "zh-HK-Hans",
         maxFractionDigits: 2
     });
@@ -2755,7 +2757,7 @@ function testNumFmt_zhHansHK() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHansHK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "zh-HK-Hans",
 	style: "iso",
@@ -2767,7 +2769,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHansHK() {
     assertEquals("HKD100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_zhHansHK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "zh-HK-Hans",
         type: "percentage"
     });
@@ -2779,7 +2781,7 @@ function testNumFmtPercentageFormatRegular_zhHansHK() {
 //zh-Hank-TW
 
 function testNumFmt_zhHantTW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "zh-TW-Hant",
         maxFractionDigits: 2
     });
@@ -2790,7 +2792,7 @@ function testNumFmt_zhHantTW() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHantTW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "zh-TW-Hant",
 	style: "iso",
@@ -2802,7 +2804,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zhHantTW() {
     assertEquals("TWD100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_zhHantTW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "zh-TW-Hant",
         type: "percentage"
     });
@@ -2814,7 +2816,7 @@ function testNumFmtPercentageFormatRegular_zhHantTW() {
 
 //test cases for fr-FR
 function testNumFmt_frFR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-FR",
         maxFractionDigits: 2
     });
@@ -2825,7 +2827,7 @@ function testNumFmt_frFR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_frFR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fr-FR",
 	currency: "CAD"
@@ -2836,7 +2838,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_frFR() {
     assertEquals("100 110,57 $", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_frFR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "fr-FR",
         type: "percentage"
     });
@@ -2848,7 +2850,7 @@ function testNumFmtPercentageFormatRegular_frFR() {
 
 //test cases for pt-BR
 function testNumFmt_ptBR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pt-BR",
         maxFractionDigits: 2
     });
@@ -2860,7 +2862,7 @@ function testNumFmt_ptBR() {
 
 
 function testNumFmtPercentageFormatRegular_ptBR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "pt-BR",
         type: "percentage"
     });
@@ -2870,7 +2872,7 @@ function testNumFmtPercentageFormatRegular_ptBR() {
     assertEquals("57,21%", fmt.format(57.21));
 }
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ptBR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pt-BR",
 	currency: "BRL"
@@ -2882,7 +2884,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ptBR() {
 }
 //test cases for pt-PT
 function testNumFmt_ptPT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pt-PT",
         maxFractionDigits: 2
     });
@@ -2893,7 +2895,7 @@ function testNumFmt_ptPT() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ptPT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pt-PT",
 	currency: "EUR"
@@ -2904,7 +2906,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ptPT() {
     assertEquals("100 110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_ptPT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "pt-PT",
         type: "percentage"
     });
@@ -2916,7 +2918,7 @@ function testNumFmtPercentageFormatRegular_ptPT() {
 
 //test cases for es-ES
 function testNumFmt_esES() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-ES",
         maxFractionDigits: 2
     });
@@ -2927,7 +2929,7 @@ function testNumFmt_esES() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_esES() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-ES",
 	currency: "EUR"
@@ -2938,7 +2940,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_esES() {
     assertEquals("100.110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_esES() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-ES",
         type: "percentage"
     });
@@ -2949,7 +2951,7 @@ function testNumFmtPercentageFormatRegular_esES() {
 }
 //test cases for es-CO
 function testNumFmt_esCO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-CO",
         maxFractionDigits: 2
     });
@@ -2960,7 +2962,7 @@ function testNumFmt_esCO() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_esCO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-CO",
 	currency: "COP"
@@ -2971,7 +2973,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_esCO() {
     assertEquals("$100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_esCO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-CO",
         type: "percentage"
     });
@@ -2982,7 +2984,7 @@ function testNumFmtPercentageFormatRegular_esCO() {
 }
 //test cases for ja-JP
 function testNumFmt_jaJP() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP",
         maxFractionDigits: 2
     });
@@ -2993,7 +2995,7 @@ function testNumFmt_jaJP() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_jaJP() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ja-JP",
 	currency: "JPY"
@@ -3004,7 +3006,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_jaJP() {
     assertEquals("¥100,111", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_jaJP() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ja-JP",
         type: "percentage"
     });
@@ -3015,7 +3017,7 @@ function testNumFmtPercentageFormatRegular_jaJP() {
 }
 //test cases for de-DE
 function testNumFmt_deDE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         maxFractionDigits: 2
     });
@@ -3026,7 +3028,7 @@ function testNumFmt_deDE() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_deDE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "de-DE",
 	currency: "EUR"
@@ -3037,7 +3039,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_deDE() {
     assertEquals("100.110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_deDE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "de-DE",
         type: "percentage"
     });
@@ -3048,7 +3050,7 @@ function testNumFmtPercentageFormatRegular_deDE() {
 }
 //test cases for itIT
 function testNumFmt_itIT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2
     });
@@ -3059,7 +3061,7 @@ function testNumFmt_itIT() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_itIT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "it-IT",
 	currency: "EUR"
@@ -3070,7 +3072,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_itIT() {
     assertEquals("€ 100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_itIT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "it-IT",
         type: "percentage"
     });
@@ -3081,7 +3083,7 @@ function testNumFmtPercentageFormatRegular_itIT() {
 }
 //test cases for sv-SE
 function testNumFmt_svSE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "sv-SE",
         maxFractionDigits: 2
     });
@@ -3092,7 +3094,7 @@ function testNumFmt_svSE() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_svSE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "sv-SE",
 	currency: "SEK"
@@ -3103,7 +3105,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_svSE() {
     assertEquals("100 110,57 kr", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_svSE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "sv-SE",
         type: "percentage"
     });
@@ -3114,7 +3116,7 @@ function testNumFmtPercentageFormatRegular_svSE() {
 }
 //test cases for fi-FI
 function testNumFmt_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fi-FI",
         maxFractionDigits: 2
     });
@@ -3125,7 +3127,7 @@ function testNumFmt_fiFI() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fi-FI",
         currency: "EUR"
@@ -3136,7 +3138,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fiFI() {
     assertEquals("100 110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
     	locale: "fi-FI",
         type: "percentage"
     });
@@ -3147,7 +3149,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for cs-CZ
 function testNumFmt_csCZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "cs-CZ",
         maxFractionDigits: 2
     });
@@ -3158,7 +3160,7 @@ function testNumFmt_csCZ() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_csCZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
 	currency: "CZK"
@@ -3169,7 +3171,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_csCZ() {
     assertEquals("100 110,57 Kč", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "cs-CZ",
         type: "percentage"
     });
@@ -3180,7 +3182,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for el-GR
 function testNumFmt_el_GR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "el-GR",
         maxFractionDigits: 2
     });
@@ -3191,7 +3193,7 @@ function testNumFmt_el_GR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_el_GR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "el-GR",
 	currency: "EUR"
@@ -3202,7 +3204,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_el_GR() {
     assertEquals("100.110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "el-GR",
         type: "percentage"
     });
@@ -3213,7 +3215,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for hu-HU
 function testNumFmt_hu_Hu() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "hu-HU",
         maxFractionDigits: 2
     });
@@ -3224,7 +3226,7 @@ function testNumFmt_hu_Hu() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hu_Hu() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "hu-HU",
 	currency: "HUF"
@@ -3235,7 +3237,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hu_Hu() {
     assertEquals("100 110,57 Ft", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "hu-HU",
         type: "percentage"
     });
@@ -3246,7 +3248,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for nl_NL
 function testNumFmt_nl_NL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "nl-NL",
         maxFractionDigits: 2
     });
@@ -3257,7 +3259,7 @@ function testNumFmt_nl_NL() {
 }
 
 function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_nl_NL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "nl-NL",
 	currency: "ANG"
@@ -3268,7 +3270,7 @@ function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_nl_NL() {
     assertEquals("ƒ 100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "nl-NL",
         type: "percentage"
     });
@@ -3279,7 +3281,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for pl_PL
 function testNumFmt_pl_PL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pl-PL",
         maxFractionDigits: 2
     });
@@ -3290,7 +3292,7 @@ function testNumFmt_pl_PL() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pl_PL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pl-PL",
 	currency: "PLN"
@@ -3301,7 +3303,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pl_PL() {
     assertEquals("100 110,57 zł", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "pl-PL",
         type: "percentage"
     });
@@ -3312,7 +3314,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for da-DK
 function testNumFmt_da_DK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "da-DK",
         maxFractionDigits: 2
     });
@@ -3323,7 +3325,7 @@ function testNumFmt_da_DK() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_da_DK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "da-DK",
 	currency: "DKK"
@@ -3334,7 +3336,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_da_DK() {
     assertEquals("100.110,57 kr", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "da-DK",
         type: "percentage"
     });
@@ -3345,7 +3347,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 }
 //test cases for ro_RO
 function testNumFmt_ro_RO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ro-RO",
         maxFractionDigits: 2
     });
@@ -3356,7 +3358,7 @@ function testNumFmt_ro_RO() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ro_RO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ro-RO",
 	currency: "RON"
@@ -3367,7 +3369,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ro_RO() {
     assertEquals("100.110,57 L", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ro-RO",
         type: "percentage"
     });
@@ -3382,7 +3384,7 @@ function testNumFmtPercentageFormatRegular_fiFI() {
 
 //test cases for en-IN
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_enIN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-IN",
 	currency: "INR"
@@ -3394,7 +3396,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_enIN() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_asIN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
 	currency: "INR"
@@ -3407,7 +3409,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_asIN() {
 
 //test cases for ar-SA
 function testNumFmt_ar_SA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ar-SA",
         maxFractionDigits: 2
     });
@@ -3418,7 +3420,7 @@ function testNumFmt_ar_SA() {
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ar_SA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ar-SA",
 	currency: "SAR"
@@ -3429,7 +3431,7 @@ function testNumFmt_ar_SA() {
     assertEquals("ر.س 100٬110٫57", fmt.format(100110.57));
 }*/
 function testNumFmtPercentageFormatRegular_ar_SA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ar-SA",
         type: "percentage"
     });
@@ -3441,7 +3443,7 @@ function testNumFmtPercentageFormatRegular_ar_SA() {
 
 //test cases for bg-BG
 function testNumFmt_bg_BG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bg-BG",
         maxFractionDigits: 2
     });
@@ -3452,7 +3454,7 @@ function testNumFmt_bg_BG() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "bg-BG",
 	currency: "BGN"
@@ -3463,7 +3465,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
     assertEquals("100 110,57 лв", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_bg_BG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "bg-BG",
         type: "percentage"
     });
@@ -3474,7 +3476,7 @@ function testNumFmtPercentageFormatRegular_bg_BG() {
 }
 //test cases for bs-Latn-BA
 function testNumFmt_bs_Latn_BA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "bs-BA-Latn",
         maxFractionDigits: 2
     });
@@ -3485,7 +3487,7 @@ function testNumFmt_bs_Latn_BA() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "bs-BA-Latn",
 	currency: "BAM"
@@ -3496,7 +3498,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
     assertEquals("КМ 100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_bs_Latn_BA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "bs-BA-Latn",
         type: "percentage"
     });
@@ -3507,7 +3509,7 @@ function testNumFmtPercentageFormatRegular_bs_Latn_BA() {
 }
 //test cases for de-DE
 function testNumFmt_de_DE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         maxFractionDigits: 2
     });
@@ -3518,7 +3520,7 @@ function testNumFmt_de_DE() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "de-DE",
 	currency: "EUR"
@@ -3529,7 +3531,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
     assertEquals("100.110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_de_DE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "de-DE",
         type: "percentage"
     });
@@ -3541,7 +3543,7 @@ function testNumFmtPercentageFormatRegular_de_DE() {
 
 //test cases for et-EE
 function testNumFmt_et_EE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "et-EE",
         maxFractionDigits: 2
     });
@@ -3552,7 +3554,7 @@ function testNumFmt_et_EE() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "et-EE",
 	currency: "EUR"
@@ -3565,7 +3567,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
 
 
 function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
 	currency: "CZK"
@@ -3576,7 +3578,7 @@ function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
     assertEquals("Kč-100 110,57", fmt.format(-100110.57));
 }
 function testNumFmtPercentageFormatRegular_et_EE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "et-EE",
         type: "percentage"
     });
@@ -3587,7 +3589,7 @@ function testNumFmtPercentageFormatRegular_et_EE() {
 }
 //test cases for fa-IR
 function testNumFmt_fa_IR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fa-IR",
         maxFractionDigits: 2
     });
@@ -3598,7 +3600,7 @@ function testNumFmt_fa_IR() {
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fa_IR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fa-IR",
 	currency: "IRR"
@@ -3609,7 +3611,7 @@ function testNumFmt_fa_IR() {
     assertEquals("﷼100٬110٫57", fmt.format(100110.57));
 }*/
 function testNumFmtPercentageFormatRegular_fa_IR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "fa-IR",
         type: "percentage"
     });
@@ -3620,7 +3622,7 @@ function testNumFmtPercentageFormatRegular_fa_IR() {
 }
 //test cases for fr-FR
 function testNumFmt_fr_FR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-FR",
         maxFractionDigits: 2
     });
@@ -3631,7 +3633,7 @@ function testNumFmt_fr_FR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fr_FR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "fr-FR",
 	currency: "EUR"
@@ -3642,7 +3644,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fr_FR() {
     assertEquals("100 110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fr_FR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "fr-FR",
         type: "percentage"
     });
@@ -3653,7 +3655,7 @@ function testNumFmtPercentageFormatRegular_fr_FR() {
 }
 //test cases for ga-IE
 function testNumFmt_ga_IE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ga-IE",
         maxFractionDigits: 2
     });
@@ -3664,7 +3666,7 @@ function testNumFmt_ga_IE() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ga_IE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ga-IE",
 	currency: "EUR"
@@ -3675,7 +3677,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ga_IE() {
     assertEquals("€100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_ga_IE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ga-IE",
         type: "percentage"
     });
@@ -3686,7 +3688,7 @@ function testNumFmtPercentageFormatRegular_ga_IE() {
 }
 //test cases for he-IL
 function testNumFmt_he_IL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "he-IL",
         maxFractionDigits: 2
     });
@@ -3697,7 +3699,7 @@ function testNumFmt_he_IL() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_he_IL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "he-IL",
 	currency: "ILS"
@@ -3708,7 +3710,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_he_IL() {
     assertEquals("100,110.57 ₪", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_he_IL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "he-IL",
         type: "percentage"
     });
@@ -3719,7 +3721,7 @@ function testNumFmtPercentageFormatRegular_he_IL() {
 }
 //test cases for hr-HR
 function testNumFmt_hr_HR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "hr-HR",
         maxFractionDigits: 2
     });
@@ -3730,7 +3732,7 @@ function testNumFmt_hr_HR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hr_HR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "hr-HR",
 	currency: "HRK"
@@ -3741,7 +3743,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hr_HR() {
     assertEquals("100.110,57 kn", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_hr_HR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "hr-HR",
         type: "percentage"
     });
@@ -3753,7 +3755,7 @@ function testNumFmtPercentageFormatRegular_hr_HR() {
 
 //test cases for id-ID
 function testNumFmt_id_ID() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "id-ID",
         maxFractionDigits: 2
     });
@@ -3764,7 +3766,7 @@ function testNumFmt_id_ID() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_id_ID() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "id-ID",
 	currency: "IDR"
@@ -3775,7 +3777,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_id_ID() {
     assertEquals("Rp100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_id_ID() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "id-ID",
         type: "percentage"
     });
@@ -3787,7 +3789,7 @@ function testNumFmtPercentageFormatRegular_id_ID() {
 
 //test cases for kk-Cyrl-KZ
 function testNumFmt_kk_Cyrl_KZ () {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "kk-KZ-Cyrl",
         maxFractionDigits: 2
     });
@@ -3798,7 +3800,7 @@ function testNumFmt_kk_Cyrl_KZ () {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kk_Cyrl_KZ () {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "kk-KZ-Cyrl",
 	currency: "KZT"
@@ -3809,7 +3811,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kk_Cyrl_KZ () {
     assertEquals("100 110,57 ₸", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_kk_Cyrl_KZ () {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "kk-KZ-Cyrl",
         type: "percentage"
     });
@@ -3820,7 +3822,7 @@ function testNumFmtPercentageFormatRegular_kk_Cyrl_KZ () {
 }
 //test cases for lt-LT
 function testNumFmt_lt_LT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "lt-LT",
         maxFractionDigits: 2
     });
@@ -3831,7 +3833,7 @@ function testNumFmt_lt_LT() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "lt-LT",
 	currency: "LTL"
@@ -3842,7 +3844,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
     assertEquals("100 110,57 Lt", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_lt_LT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "lt-LT",
         type: "percentage"
     });
@@ -3854,7 +3856,7 @@ function testNumFmtPercentageFormatRegular_lt_LT() {
 
 //test cases for lv-LV
 function testNumFmt_lv_LV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "lv-LV",
         maxFractionDigits: 2
     });
@@ -3865,7 +3867,7 @@ function testNumFmt_lv_LV() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lv_LV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "lv-LV",
 	currency: "LVL"
@@ -3876,7 +3878,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lv_LV() {
     assertEquals("Ls100 110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_lv_LV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "lv-LV",
         type: "percentage"
     });
@@ -3887,7 +3889,7 @@ function testNumFmtPercentageFormatRegular_lv_LV() {
 }
 //test cases for mk-MK
 function testNumFmt_mk_MK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "mk-MK",
         maxFractionDigits: 2
     });
@@ -3898,7 +3900,7 @@ function testNumFmt_mk_MK() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mk_MK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "mk-MK",
 	currency: "MKD"
@@ -3909,7 +3911,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mk_MK() {
     assertEquals("ден 100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_mk_MK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "mk-MK",
         type: "percentage"
     });
@@ -3920,7 +3922,7 @@ function testNumFmtPercentageFormatRegular_mk_MK() {
 }
 //test cases for ms-MY
 function testNumFmt_ms_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ms-MY",
         maxFractionDigits: 2
     });
@@ -3931,7 +3933,7 @@ function testNumFmt_ms_MY() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ms_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ms-MY",
 	currency: "MNT"
@@ -3942,7 +3944,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ms_MY() {
     assertEquals("₮100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_ms_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ms-MY",
         type: "percentage"
     });
@@ -3953,7 +3955,7 @@ function testNumFmtPercentageFormatRegular_ms_MY() {
 }
 //test cases for nb-NO
 function testNumFmt_nb_NO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "nb-NO",
         maxFractionDigits: 2
     });
@@ -3964,7 +3966,7 @@ function testNumFmt_nb_NO() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "nb-NO",
 	currency: "NOK"
@@ -3975,7 +3977,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
     assertEquals("kr 100 110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_nb_NO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "nb-NO",
         type: "percentage"
     });
@@ -3986,7 +3988,7 @@ function testNumFmtPercentageFormatRegular_nb_NO() {
 }
 //test cases for ru-RU
 function testNumFmtruRU() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ru-RU",
         maxFractionDigits: 2
     });
@@ -3996,7 +3998,7 @@ function testNumFmtruRU() {
     assertEquals("-123 456,78", fmt.format(-123456.785));
 }
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ru_RU() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ru-RU",
 	currency: "RUB"
@@ -4007,7 +4009,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ru_RU() {
     assertEquals("100 110,57 руб.", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_ru_RU() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "ru-RU",
         type: "percentage"
     });
@@ -4019,7 +4021,7 @@ function testNumFmtPercentageFormatRegular_ru_RU() {
 
 //test cases for negative currency
 function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "nl-NL",
 	currency: "ANG"
@@ -4031,7 +4033,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pl-PL",
 	currency: "PLN"
@@ -4043,7 +4045,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_US() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-US",
 	currency: "USD"
@@ -4055,7 +4057,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_US() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "et-EE",
 	currency: "EUR"
@@ -4067,7 +4069,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ko-KR",
 	currency: "KRW",
@@ -4080,7 +4082,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_ms_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "ms-MY",
 	currency: "MNT"
@@ -4092,7 +4094,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_ms_MY() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_pt_BR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "pt-BR",
 	currency: "BRL"
@@ -4104,7 +4106,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_pt_BR() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_EC() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-EC",
 	currency: "USD"
@@ -4118,7 +4120,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_EC() {
 //test cases for en-SL
 
 function testNumFmt_en_SL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-SL",
         maxFractionDigits: 2
     });
@@ -4129,7 +4131,7 @@ function testNumFmt_en_SL() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SL",
 	currency: "SLL"
@@ -4140,7 +4142,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SL() {
     assertEquals("Le100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_SL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-SL",
         type: "percentage"
     });
@@ -4151,7 +4153,7 @@ function testNumFmtPercentageFormatRegular_en_SL() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_SL() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SL",
 	currency: "SLL"
@@ -4166,7 +4168,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SL() {
 
 
 function testNumFmt_en_SG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-SG",
         maxFractionDigits: 2
     });
@@ -4177,7 +4179,7 @@ function testNumFmt_en_SG() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SG",
 	currency: "SGD"
@@ -4188,7 +4190,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SG() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_SG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-SG",
         type: "percentage"
     });
@@ -4199,7 +4201,7 @@ function testNumFmtPercentageFormatRegular_en_SG() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_SG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SG",
 	currency: "SGD"
@@ -4212,7 +4214,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SG() {
 
 //test caes for en-ZA
 function testNumFmt_en_ZA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-ZA",
         maxFractionDigits: 2
     });
@@ -4223,7 +4225,7 @@ function testNumFmt_en_ZA() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_ZA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-ZA",
 	currency: "ZAR"
@@ -4234,7 +4236,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_ZA() {
     assertEquals("R100 110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_ZA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-ZA",
         type: "percentage"
     });
@@ -4245,7 +4247,7 @@ function testNumFmtPercentageFormatRegular_en_ZA() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_ZA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-ZA",
 	currency: "ZAR"
@@ -4259,7 +4261,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_ZA() {
 //test cases for en-MY
 
 function testNumFmt_en_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-MY",
         maxFractionDigits: 2
     });
@@ -4270,7 +4272,7 @@ function testNumFmt_en_MY() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-MY",
 	currency: "MYR"
@@ -4281,7 +4283,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MY() {
     assertEquals("RM100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-MY",
         type: "percentage"
     });
@@ -4292,7 +4294,7 @@ function testNumFmtPercentageFormatRegular_en_MY() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_MY() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-MY",
 	currency: "MYR"
@@ -4306,7 +4308,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MY() {
 //test cases for en-MM
 
 function testNumFmt_en_MM() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-MM",
         maxFractionDigits: 2
     });
@@ -4317,7 +4319,7 @@ function testNumFmt_en_MM() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MM() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-MM",
 	currency: "MMK"
@@ -4328,7 +4330,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MM() {
     assertEquals("K100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_MM() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-MM",
         type: "percentage"
     });
@@ -4339,7 +4341,7 @@ function testNumFmtPercentageFormatRegular_en_MM() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_MM() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-MM",
 	currency: "MMK"
@@ -4353,7 +4355,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MM() {
 //test cases for en-NZ
 
 function testNumFmt_en_NZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-NZ",
         maxFractionDigits: 2
     });
@@ -4364,7 +4366,7 @@ function testNumFmt_en_NZ() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-NZ",
 	currency: "NZD"
@@ -4375,7 +4377,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NZ() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_NZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-NZ",
         type: "percentage"
     });
@@ -4386,7 +4388,7 @@ function testNumFmtPercentageFormatRegular_en_NZ() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_NZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-NZ",
 	currency: "NZD"
@@ -4399,7 +4401,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_NZ() {
 
 //test cases for en-NG
 function testNumFmt_en_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-NG",
         maxFractionDigits: 2
     });
@@ -4410,7 +4412,7 @@ function testNumFmt_en_NG() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-NG",
 	currency: "NGN"
@@ -4421,7 +4423,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NG() {
     assertEquals("₦100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-NG",
         type: "percentage"
     });
@@ -4432,7 +4434,7 @@ function testNumFmtPercentageFormatRegular_en_NG() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_NG() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-NG",
 	currency: "NGN"
@@ -4446,7 +4448,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_NG() {
 //test cases for en-PK
 
 function testNumFmt_en_PK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-PK",
         maxFractionDigits: 2
     });
@@ -4457,7 +4459,7 @@ function testNumFmt_en_PK() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PK",
 	currency: "PKR"
@@ -4468,7 +4470,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
     assertEquals("₨100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_PK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-PK",
         type: "percentage"
     });
@@ -4479,7 +4481,7 @@ function testNumFmtPercentageFormatRegular_en_PK() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PK",
 	currency: "PKR"
@@ -4493,7 +4495,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
 //test cases for en-PH
 
 function testNumFmt_en_PH() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-PH",
         maxFractionDigits: 2
     });
@@ -4504,7 +4506,7 @@ function testNumFmt_en_PH() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PH() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PH",
 	currency: "PHP"
@@ -4515,7 +4517,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PH() {
     assertEquals("₱100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_PH() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-PH",
         type: "percentage"
     });
@@ -4526,7 +4528,7 @@ function testNumFmtPercentageFormatRegular_en_PH() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_PH() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PH",
 	currency: "PHP"
@@ -4539,7 +4541,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PH() {
 //test cases for en-PR
 
 function testNumFmt_en_PR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-PR",
         maxFractionDigits: 2
     });
@@ -4550,7 +4552,7 @@ function testNumFmt_en_PR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PR",
 	currency: "USD"
@@ -4561,7 +4563,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PR() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_PR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-PR",
         type: "percentage"
     });
@@ -4572,7 +4574,7 @@ function testNumFmtPercentageFormatRegular_en_PR() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_PR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-PR",
 	currency: "USD"
@@ -4585,7 +4587,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PR() {
 
 //test cases for en-RW
 function testNumFmt_en_RW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-RW",
         maxFractionDigits: 2
     });
@@ -4596,7 +4598,7 @@ function testNumFmt_en_RW() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_RW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-RW",
 	currency: "RWF"
@@ -4607,7 +4609,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_RW() {
     assertEquals("Fr100,111", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_RW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-RW",
         type: "percentage"
     });
@@ -4618,7 +4620,7 @@ function testNumFmtPercentageFormatRegular_en_RW() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_RW() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-RW",
 	currency: "RWF"
@@ -4632,7 +4634,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_RW() {
 //test cases for en-LK
 
 function testNumFmt_en_LK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-LK",
         maxFractionDigits: 2
     });
@@ -4643,7 +4645,7 @@ function testNumFmt_en_LK() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_LK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-LK",
 	currency: "LKR"
@@ -4654,7 +4656,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_LK() {
     assertEquals("Rs100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_LK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-LK",
         type: "percentage"
     });
@@ -4665,7 +4667,7 @@ function testNumFmtPercentageFormatRegular_en_LK() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_LK() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-LK",
 	currency: "LKR"
@@ -4679,7 +4681,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_LK() {
 //test cases for en-SD
 
 function testNumFmt_en_SD() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-SD",
         maxFractionDigits: 2
     });
@@ -4690,7 +4692,7 @@ function testNumFmt_en_SD() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SD() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SD",
 	currency: "SDG"
@@ -4701,7 +4703,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SD() {
     assertEquals("£100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_SD() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-SD",
         type: "percentage"
     });
@@ -4712,7 +4714,7 @@ function testNumFmtPercentageFormatRegular_en_SD() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_SD() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-SD",
 	currency: "SDG"
@@ -4726,7 +4728,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SD() {
 //test cases for en-TZ
 
 function testNumFmt_en_TZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-TZ",
         maxFractionDigits: 2
     });
@@ -4737,7 +4739,7 @@ function testNumFmt_en_TZ() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_TZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-TZ",
 	currency: "TZS"
@@ -4748,7 +4750,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_TZ() {
     assertEquals("Sh100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_en_TZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "en-TZ",
         type: "percentage"
     });
@@ -4759,7 +4761,7 @@ function testNumFmtPercentageFormatRegular_en_TZ() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_en_TZ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "en-TZ",
 	currency: "TZS"
@@ -4773,7 +4775,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_TZ() {
 //test cases for es-CR
 
 function testNumFmt_es_CR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-CR",
         maxFractionDigits: 2
     });
@@ -4784,7 +4786,7 @@ function testNumFmt_es_CR() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-CR",
 	currency: "CRC"
@@ -4795,7 +4797,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
     assertEquals("₡100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_CR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-CR",
         type: "percentage"
     });
@@ -4806,7 +4808,7 @@ function testNumFmtPercentageFormatRegular_es_CR() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-CR",
 	currency: "CRC"
@@ -4820,7 +4822,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
 //test cases for es-DO
 
 function testNumFmt_es_DO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-DO",
         maxFractionDigits: 2
     });
@@ -4831,7 +4833,7 @@ function testNumFmt_es_DO() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-DO",
 	currency: "DOP"
@@ -4842,7 +4844,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_DO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-DO",
         type: "percentage"
     });
@@ -4853,7 +4855,7 @@ function testNumFmtPercentageFormatRegular_es_DO() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-DO",
 	currency: "DOP"
@@ -4868,7 +4870,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
 //test cases for es-SV
 
 function testNumFmt_es_SV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-SV",
         maxFractionDigits: 2
     });
@@ -4879,7 +4881,7 @@ function testNumFmt_es_SV() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-SV",
 	currency: "USD"
@@ -4890,7 +4892,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_SV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-SV",
         type: "percentage"
     });
@@ -4901,7 +4903,7 @@ function testNumFmtPercentageFormatRegular_es_SV() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-SV",
 	currency: "USD"
@@ -4915,7 +4917,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
 //test cases for es-GQ
 
 function testNumFmt_es_GQ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-GQ",
         maxFractionDigits: 2
     });
@@ -4926,7 +4928,7 @@ function testNumFmt_es_GQ() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-GQ",
 	currency: "XAF"
@@ -4937,7 +4939,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
     assertEquals("Fr100.111", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_GQ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-GQ",
         type: "percentage"
     });
@@ -4948,7 +4950,7 @@ function testNumFmtPercentageFormatRegular_es_GQ() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-GQ",
 	currency: "XAF"
@@ -4961,7 +4963,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
 //test cases for es-GT
 
 function testNumFmt_es_GT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-GT",
         maxFractionDigits: 2
     });
@@ -4972,7 +4974,7 @@ function testNumFmt_es_GT() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-GT",
 	currency: "GTQ"
@@ -4983,7 +4985,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
     assertEquals("Q100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_GT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-GT",
         type: "percentage"
     });
@@ -4994,7 +4996,7 @@ function testNumFmtPercentageFormatRegular_es_GT() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-GT",
 	currency: "GTQ"
@@ -5008,7 +5010,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
 //test cases for es-HN
 
 function testNumFmt_es_HN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-HN",
         maxFractionDigits: 2
     });
@@ -5019,7 +5021,7 @@ function testNumFmt_es_HN() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-HN",
 	currency: "HNL"
@@ -5030,7 +5032,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
     assertEquals("L100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_HN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-HN",
         type: "percentage"
     });
@@ -5041,7 +5043,7 @@ function testNumFmtPercentageFormatRegular_es_HN() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-HN",
 	currency: "HNL"
@@ -5055,7 +5057,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
 //test cases for es-MX
 
 function testNumFmt_es_MX() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "es-MX",
         maxFractionDigits: 2
     });
@@ -5066,7 +5068,7 @@ function testNumFmt_es_MX() {
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-MX",
 	currency: "MXN"
@@ -5077,7 +5079,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
     assertEquals("$100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_MX() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
 	locale: "es-MX",
         type: "percentage"
     });
@@ -5088,7 +5090,7 @@ function testNumFmtPercentageFormatRegular_es_MX() {
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         type: "currency",
         locale: "es-MX",
 	currency: "MXN"
@@ -5100,7 +5102,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
 }
 /******************************** End of test cases****************************************************/
 function testNumFmtenGB() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-GB",
         maxFractionDigits: 2
     });
@@ -5111,7 +5113,7 @@ function testNumFmtenGB() {
 }
 
 function testNumFmtenCA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "en-CA",
         maxFractionDigits: 2
     });
@@ -5122,7 +5124,7 @@ function testNumFmtenCA() {
 }
 
 function testNumFmtjaJP() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "ja-JP",
         maxFractionDigits: 2
     });
@@ -5133,7 +5135,7 @@ function testNumFmtjaJP() {
 }
 
 function testNumFmtptBR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "pt-BR",
         maxFractionDigits: 2
     });
@@ -5144,7 +5146,7 @@ function testNumFmtptBR() {
 }
 
 function testNumFmtdeDE() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "de-DE",
         maxFractionDigits: 2
     });
@@ -5156,7 +5158,7 @@ function testNumFmtdeDE() {
 
 
 function testNumFmtidID() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "id-ID",
         maxFractionDigits: 2
     });
@@ -5167,7 +5169,7 @@ function testNumFmtidID() {
 }
 
 function testNumFmtfrFR() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-FR",
         maxFractionDigits: 2
     });
@@ -5178,7 +5180,7 @@ function testNumFmtfrFR() {
 }
 
 function testNumFmtfrCA() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "fr-CA",
         maxFractionDigits: 2
     });
@@ -5189,7 +5191,7 @@ function testNumFmtfrCA() {
 }
 
 function testNumFmtitIT() {
-    var fmt = new ilib.NumFmt({
+    var fmt = new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2
     });
@@ -5201,7 +5203,7 @@ function testNumFmtitIT() {
 
 function testNumFmtAsyncDefaults() {
 	var callbackCalled = false;
-    new ilib.NumFmt({
+    new NumFmt({
     	sync: false,
     	onLoad: function (fmt) {
     	    assertNotNull(fmt);
@@ -5222,7 +5224,7 @@ function testNumFmtAsyncDefaults() {
 
 function testNumFmtAsync() {
 	var callbackCalled = false;
-    new ilib.NumFmt({
+    new NumFmt({
     	sync: false,
     	onLoad: function (fmt) {
     	    assertNotNull(fmt);
@@ -5236,7 +5238,7 @@ function testNumFmtAsync() {
 
 function testNumFmtAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.NumFmt({
+    new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2,
     	sync: false,

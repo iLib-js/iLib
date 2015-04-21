@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var ResBundle = require("./../lib/ResBundle.js");
 function testResBundleConstructorRootInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-root-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres"
 			});
 		    assertNotNull(rb);
@@ -35,7 +36,7 @@ function testResBundleConstructorComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-complex-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres",
 				locale: "zh-Hant-TW"
 			});
@@ -50,7 +51,7 @@ function testResBundleConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-nonexistent-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres",
 				locale: "foo-XY"
 			});
@@ -66,7 +67,7 @@ function testResBundleConstructorPsuedoInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-pseudo",
 		fn: function () {
-		    var rb = new ilib.ResBundle({
+		    var rb = new ResBundle({
 		        name: "sysres",
 		        locale: "zxx-XX",
 		        type: "html"

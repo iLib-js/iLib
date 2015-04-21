@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var DurationFmt = require("./../lib/DurationFmt.js");
+
 function testDurFmtConstructorEmpty() {
-	var fmt = new ilib.DurFmt();
+	var fmt = new DurationFmt();
     
     assertNotNull(fmt);
 };
 
 function testDurFmtConstructorDefaultLocale() {
-    var fmt = new ilib.DurFmt();
+    var fmt = new DurationFmt();
     
     assertNotNull(fmt);
     
@@ -32,77 +34,77 @@ function testDurFmtConstructorDefaultLocale() {
 };
 
 function testDurFmtGetLength() {
-    var fmt = new ilib.DurFmt({length: "full"});
+    var fmt = new DurationFmt({length: "full"});
     assertNotNull(fmt);
     
     assertEquals("full", fmt.getLength());
 };
 
 function testDurFmtGetLengthDefault() {
-    var fmt = new ilib.DurFmt();
+    var fmt = new DurationFmt();
     assertNotNull(fmt);
     
     assertEquals("short", fmt.getLength());
 };
 
 function testDurFmtGetLengthBogus() {
-    var fmt = new ilib.DurFmt({length: "asdf"});
+    var fmt = new DurationFmt({length: "asdf"});
     assertNotNull(fmt);
     
     assertEquals("short", fmt.getLength());
 };
 
 function testDurFmtGetLocale() {
-    var fmt = new ilib.DurFmt({locale: "de-DE"});
+    var fmt = new DurationFmt({locale: "de-DE"});
     assertNotNull(fmt);
     
     assertEquals("de-DE", fmt.getLocale().toString());
 };
 
 function testDurFmtGetLocaleDefault() {
-    var fmt = new ilib.DurFmt();
+    var fmt = new DurationFmt();
     assertNotNull(fmt);
     
     assertEquals("en-US", fmt.getLocale().toString());
 };
 
 function testDurFmtGetLocaleBogus() {
-    var fmt = new ilib.DurFmt({locale: "zyy-XX"});
+    var fmt = new DurationFmt({locale: "zyy-XX"});
     assertNotNull(fmt);
     
     assertEquals("zyy-XX", fmt.getLocale().toString());
 };
 
 function testDurFmtGetStyleDefault() {
-    var fmt = new ilib.DurFmt();
+    var fmt = new DurationFmt();
     assertNotNull(fmt);
     
     assertEquals("text", fmt.getStyle());
 };
 
 function testDurFmtGetStyleText() {
-    var fmt = new ilib.DurFmt({style: "text"});
+    var fmt = new DurationFmt({style: "text"});
     assertNotNull(fmt);
     
     assertEquals("text", fmt.getStyle());
 };
 
 function testDurFmtGetStyleClock() {
-    var fmt = new ilib.DurFmt({style: "clock"});
+    var fmt = new DurationFmt({style: "clock"});
     assertNotNull(fmt);
     
     assertEquals("clock", fmt.getStyle());
 };
 
 function testDurFmtGetStyleBogus() {
-    var fmt = new ilib.DurFmt({style: "asdf"});
+    var fmt = new DurationFmt({style: "asdf"});
     assertNotNull(fmt);
     
     assertEquals("text", fmt.getStyle());
 };
 
 function testDurFmtFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "short"
     });
     assertNotNull(fmt);
@@ -121,7 +123,7 @@ function testDurFmtFormatShortText() {
 };
 
 function testDurFmtFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "short",
     	style: "clock"
     });
@@ -141,7 +143,7 @@ function testDurFmtFormatShortClock() {
 };
 
 function testDurFmtFormatShortExceedClockLimitsNoWrap() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "short",
     	style: "clock"
     });
@@ -160,7 +162,7 @@ function testDurFmtFormatShortExceedClockLimitsNoWrap() {
 };
 
 function testDurFmtFormatShortClockNoMinutesSeconds() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "short",
     	style: "clock"
     });
@@ -177,7 +179,7 @@ function testDurFmtFormatShortClockNoMinutesSeconds() {
 };
 
 function testDurFmtFormatShortTextNoMinutesSeconds() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "short",
     	style: "text"
     });
@@ -194,7 +196,7 @@ function testDurFmtFormatShortTextNoMinutesSeconds() {
 };
 
 function testDurFmtFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "medium"
     });
     assertNotNull(fmt);
@@ -213,7 +215,7 @@ function testDurFmtFormatMedium() {
 };
 
 function testDurFmtFormatLongSingle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "long"
     });
     assertNotNull(fmt);
@@ -232,7 +234,7 @@ function testDurFmtFormatLongSingle() {
 };
 
 function testDurFmtFormatFullSingle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full"
     });
     assertNotNull(fmt);
@@ -251,7 +253,7 @@ function testDurFmtFormatFullSingle() {
 };
 
 function testDurFmtFormatFullSingle_en_GB() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full",
     	locale: "en-GB"
     });
@@ -271,7 +273,7 @@ function testDurFmtFormatFullSingle_en_GB() {
 };
 
 function testDurFmtFormatFullSingleNotAllFields() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full"
     });
     assertNotNull(fmt);
@@ -286,7 +288,7 @@ function testDurFmtFormatFullSingleNotAllFields() {
 };
 
 function testDurFmtFormatFullSingleNotAllFields_en_GB() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full",
     	locale: "en-GB"
     });
@@ -302,7 +304,7 @@ function testDurFmtFormatFullSingleNotAllFields_en_GB() {
 };
 
 function testDurFmtFormatFullSingle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full"
     });
     assertNotNull(fmt);
@@ -321,7 +323,7 @@ function testDurFmtFormatFullSingle() {
 };
 
 function testDurFmtFormatFullSingle_en_GB() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full",
     	locale: "en-GB"
     });
@@ -341,7 +343,7 @@ function testDurFmtFormatFullSingle_en_GB() {
 };
 
 function testDurFmtFormatLongPlural() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "long"
     });
     assertNotNull(fmt);
@@ -360,7 +362,7 @@ function testDurFmtFormatLongPlural() {
 };
 
 function testDurFmtFormatFullPlural() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full"
     });
     assertNotNull(fmt);
@@ -379,7 +381,7 @@ function testDurFmtFormatFullPlural() {
 };
 
 function testDurFmtFormatFullPlural_en_GB() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	length: "full",
     	locale: "en-GB"
     });
@@ -399,7 +401,7 @@ function testDurFmtFormatFullPlural_en_GB() {
 };
 
 function testDurFmtFormatShortDEDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "short"
     });
@@ -419,7 +421,7 @@ function testDurFmtFormatShortDEDefaultStyle() {
 };
 
 function testDurFmtFormatShortDEText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "short",
     	style: "text"
@@ -440,7 +442,7 @@ function testDurFmtFormatShortDEText() {
 };
 
 function testDurFmtFormatShortDEClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "short",
     	style: "clock"
@@ -461,7 +463,7 @@ function testDurFmtFormatShortDEClock() {
 };
 
 function testDurFmtFormatMediumDE() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "medium"
     });
@@ -481,7 +483,7 @@ function testDurFmtFormatMediumDE() {
 };
 
 function testDurFmtFormatLongDESingle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "long"
     });
@@ -501,7 +503,7 @@ function testDurFmtFormatLongDESingle() {
 };
 
 function testDurFmtFormatFullDESingle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "full"
     });
@@ -521,7 +523,7 @@ function testDurFmtFormatFullDESingle() {
 };
 
 function testDurFmtFormatLongDEPlural() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "long"
     });
@@ -541,7 +543,7 @@ function testDurFmtFormatLongDEPlural() {
 };
 
 function testDurFmtFormatFullDEPlural() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "de-DE",
     	length: "full"
     });
@@ -561,7 +563,7 @@ function testDurFmtFormatFullDEPlural() {
 };
 
 function testDurFmtFormatShortZHDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "short"
     });
@@ -581,7 +583,7 @@ function testDurFmtFormatShortZHDefaultStyle() {
 };
 
 function testDurFmtFormatShortZHText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "short",
     	style: "text"
@@ -602,7 +604,7 @@ function testDurFmtFormatShortZHText() {
 };
 
 function testDurFmtFormatShortZHClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "short",
     	style: "clock"
@@ -623,7 +625,7 @@ function testDurFmtFormatShortZHClock() {
 };
 
 function testDurFmtFormatMediumZH() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "medium"
     });
@@ -643,7 +645,7 @@ function testDurFmtFormatMediumZH() {
 };
 
 function testDurFmtFormatLongZH() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "long"
     });
@@ -663,7 +665,7 @@ function testDurFmtFormatLongZH() {
 };
 
 function testDurFmtFormatFullZH() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-CN",
     	length: "full"
     });
@@ -683,7 +685,7 @@ function testDurFmtFormatFullZH() {
 };
 
 function testDurFmtFormatShortFRDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "short"
     });
@@ -703,7 +705,7 @@ function testDurFmtFormatShortFRDefaultStyle() {
 };
 
 function testDurFmtFormatShortFRText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "short",
     	style: "text"
@@ -724,7 +726,7 @@ function testDurFmtFormatShortFRText() {
 };
 
 function testDurFmtFormatShortFRClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "short",
     	style: "clock"
@@ -745,7 +747,7 @@ function testDurFmtFormatShortFRClock() {
 };
 
 function testDurFmtFormatMediumFR() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "medium"
     });
@@ -765,7 +767,7 @@ function testDurFmtFormatMediumFR() {
 };
 
 function testDurFmtFormatLongFR() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "long"
     });
@@ -785,7 +787,7 @@ function testDurFmtFormatLongFR() {
 };
 
 function testDurFmtFormatFullFR() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-FR",
     	length: "full"
     });
@@ -807,7 +809,7 @@ function testDurFmtFormatFullFR() {
 
 function testDurFmtAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	length: "full",
     	sync: false,
     	locale: "en-GB",
@@ -834,7 +836,7 @@ function testDurFmtAsync() {
 
 function testDurFmtAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fr-FR",
     	length: "full",
     	sync: false,
@@ -861,7 +863,7 @@ function testDurFmtAsyncWithLocale() {
 
 function testDurFmtFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fr-FR",
     	length: "short",
     	style: "clock",
@@ -889,7 +891,7 @@ function testDurFmtFormatShortClockAsync() {
 //test cases for bg-BG
 
 function testDurFmtBGFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "short"
     });
@@ -908,7 +910,7 @@ function testDurFmtBGFormatShortDefaultStyle() {
 };
 
 function testDurFmtBGFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "short",
     	style: "text"
@@ -928,7 +930,7 @@ function testDurFmtBGFormatShortText() {
 };
 
 function testDurFmtBGFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "short",
     	style: "clock"
@@ -948,7 +950,7 @@ function testDurFmtBGFormatShortClock() {
 };
 
 function testDurFmtBGFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "medium"
     });
@@ -967,7 +969,7 @@ function testDurFmtBGFormatMedium() {
 };
 
 function testDurFmtBGFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "long"
     });
@@ -986,7 +988,7 @@ function testDurFmtBGFormatLong() {
 };
 
 function testDurFmtBGFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bg-BG",
     	length: "full"
     });
@@ -1007,7 +1009,7 @@ function testDurFmtBGFormatFull() {
 
 function testDurFmtBGAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bg-BG",
     	length: "full",
     	sync: false,
@@ -1033,7 +1035,7 @@ function testDurFmtBGAsync() {
 
 function testDurFmtBGAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bg-BG",
     	length: "full",
     	sync: false,
@@ -1060,7 +1062,7 @@ function testDurFmtBGAsyncWithLocale() {
 //test cases for bs-Latn-BA
 
 function testDurFmtBSLatnFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "short"
     });
@@ -1079,7 +1081,7 @@ function testDurFmtBSLatnFormatShortDefaultStyle() {
 };
 
 function testDurFmtBSLatnFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "short",
     	style: "text"
@@ -1099,7 +1101,7 @@ function testDurFmtBSLatnFormatShortText() {
 };
 
 function testDurFmtBSLatnFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "short",
     	style: "clock"
@@ -1119,7 +1121,7 @@ function testDurFmtBSLatnFormatShortClock() {
 };
 
 function testDurFmtBSLatnFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "medium"
     });
@@ -1138,7 +1140,7 @@ function testDurFmtBSLatnFormatMedium() {
 };
 
 function testDurFmtBSLatnFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "long"
     });
@@ -1157,7 +1159,7 @@ function testDurFmtBSLatnFormatLong() {
 };
 
 function testDurFmtBSLatnFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "full"
     });
@@ -1178,7 +1180,7 @@ function testDurFmtBSLatnFormatFull() {
 
 function testDurFmtBSLatnAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "full",
     	sync: false,
@@ -1205,7 +1207,7 @@ function testDurFmtBSLatnAsyncWithLocale() {
 //test cases for cs-CZ
 
 function testDurFmtCSFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "short"
     });
@@ -1224,7 +1226,7 @@ function testDurFmtCSFormatShortDefaultStyle() {
 };
 
 function testDurFmtCSFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "short",
     	style: "text"
@@ -1244,7 +1246,7 @@ function testDurFmtCSFormatShortText() {
 };
 
 function testDurFmtCSFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "short",
     	style: "clock"
@@ -1264,7 +1266,7 @@ function testDurFmtCSFormatShortClock() {
 };
 
 function testDurFmtCSFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "medium"
     });
@@ -1283,7 +1285,7 @@ function testDurFmtCSFormatMedium() {
 };
 
 function testDurFmtCSFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "long"
     });
@@ -1302,7 +1304,7 @@ function testDurFmtCSFormatLong() {
 };
 
 function testDurFmtCSFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "cs-CZ",
     	length: "full"
     });
@@ -1323,7 +1325,7 @@ function testDurFmtCSFormatFull() {
 
 function testDurFmtCSAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "cs-CZ",
     	length: "full",
     	sync: false,
@@ -1351,7 +1353,7 @@ function testDurFmtCSAsyncWithLocale() {
 
 
 function testDurFmtDAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "short"
     });
@@ -1370,7 +1372,7 @@ function testDurFmtDAFormatShortDefaultStyle() {
 };
 
 function testDurFmtDAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "short",
     	style: "text"
@@ -1390,7 +1392,7 @@ function testDurFmtDAFormatShortText() {
 };
 
 function testDurFmtDAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "short",
     	style: "clock"
@@ -1410,7 +1412,7 @@ function testDurFmtDAFormatShortClock() {
 };
 
 function testDurFmtDAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "medium"
     });
@@ -1429,7 +1431,7 @@ function testDurFmtDAFormatMedium() {
 };
 
 function testDurFmtDAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "long"
     });
@@ -1448,7 +1450,7 @@ function testDurFmtDAFormatLong() {
 };
 
 function testDurFmtDAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "da-DK",
     	length: "full"
     });
@@ -1469,7 +1471,7 @@ function testDurFmtDAFormatFull() {
 
 function testDurFmtDAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "da-DK",
     	length: "full",
     	sync: false,
@@ -1498,7 +1500,7 @@ function testDurFmtDAAsyncWithLocale() {
 
 
 function testDurFmtGRFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "short"
     });
@@ -1517,7 +1519,7 @@ function testDurFmtGRFormatShortDefaultStyle() {
 };
 
 function testDurFmtGRFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "short",
     	style: "text"
@@ -1537,7 +1539,7 @@ function testDurFmtGRFormatShortText() {
 };
 
 function testDurFmtGRFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "short",
     	style: "clock"
@@ -1557,7 +1559,7 @@ function testDurFmtGRFormatShortClock() {
 };
 
 function testDurFmtGRFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "medium"
     });
@@ -1576,7 +1578,7 @@ function testDurFmtGRFormatMedium() {
 };
 
 function testDurFmtGRFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "long"
     });
@@ -1595,7 +1597,7 @@ function testDurFmtGRFormatLong() {
 };
 
 function testDurFmtGRFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "el-GR",
     	length: "full"
     });
@@ -1616,7 +1618,7 @@ function testDurFmtGRFormatFull() {
 
 function testDurFmtGRAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "el-GR",
     	length: "full",
     	sync: false,
@@ -1644,7 +1646,7 @@ function testDurFmtGRAsyncWithLocale() {
 
 
 function testDurFmtESFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "short"
     });
@@ -1663,7 +1665,7 @@ function testDurFmtESFormatShortDefaultStyle() {
 };
 
 function testDurFmtESFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "short",
     	style: "text"
@@ -1683,7 +1685,7 @@ function testDurFmtESFormatShortText() {
 };
 
 function testDurFmtESFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "short",
     	style: "clock"
@@ -1703,7 +1705,7 @@ function testDurFmtESFormatShortClock() {
 };
 
 function testDurFmtESFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "medium"
     });
@@ -1722,7 +1724,7 @@ function testDurFmtESFormatMedium() {
 };
 
 function testDurFmtESFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "long"
     });
@@ -1741,7 +1743,7 @@ function testDurFmtESFormatLong() {
 };
 
 function testDurFmtESFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "es-CO",
     	length: "full"
     });
@@ -1762,7 +1764,7 @@ function testDurFmtESFormatFull() {
 
 function testDurFmtESAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "es-CO",
     	length: "full",
     	sync: false,
@@ -1789,7 +1791,7 @@ function testDurFmtESAsyncWithLocale() {
 //test cases for estonian
 
 function testDurFmtETFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "short"
     });
@@ -1808,7 +1810,7 @@ function testDurFmtETFormatShortDefaultStyle() {
 };
 
 function testDurFmtETFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "short",
     	style: "text"
@@ -1828,7 +1830,7 @@ function testDurFmtETFormatShortText() {
 };
 
 function testDurFmtETFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "short",
     	style: "clock"
@@ -1848,7 +1850,7 @@ function testDurFmtETFormatShortClock() {
 };
 
 function testDurFmtETFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "medium"
     });
@@ -1867,7 +1869,7 @@ function testDurFmtETFormatMedium() {
 };
 
 function testDurFmtETFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "long"
     });
@@ -1886,7 +1888,7 @@ function testDurFmtETFormatLong() {
 };
 
 function testDurFmtETFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "et-EE",
     	length: "full"
     });
@@ -1907,7 +1909,7 @@ function testDurFmtETFormatFull() {
 
 function testDurFmtETAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "et-EE",
     	length: "full",
     	sync: false,
@@ -1936,7 +1938,7 @@ function testDurFmtETAsyncWithLocale() {
 
 
 function testDurFmtFAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "short"
     });
@@ -1955,7 +1957,7 @@ function testDurFmtFAFormatShortDefaultStyle() {
 };
 
 function testDurFmtFAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "short",
     	style: "text"
@@ -1975,7 +1977,7 @@ function testDurFmtFAFormatShortText() {
 };
 
 function testDurFmtFAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "short",
     	style: "clock"
@@ -1995,7 +1997,7 @@ function testDurFmtFAFormatShortClock() {
 };
 
 function testDurFmtFAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "medium"
     });
@@ -2014,7 +2016,7 @@ function testDurFmtFAFormatMedium() {
 };
 
 function testDurFmtFAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "long"
     });
@@ -2033,7 +2035,7 @@ function testDurFmtFAFormatLong() {
 };
 
 function testDurFmtFAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fa-IR",
     	length: "full"
     });
@@ -2054,7 +2056,7 @@ function testDurFmtFAFormatFull() {
 
 function testDurFmtFAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fa-IR",
     	length: "full",
     	sync: false,
@@ -2084,7 +2086,7 @@ function testDurFmtFAAsyncWithLocale() {
 
 
 function testDurFmtFIFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "short"
     });
@@ -2103,7 +2105,7 @@ function testDurFmtFIFormatShortDefaultStyle() {
 };
 
 function testDurFmtFIFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "short",
     	style: "text"
@@ -2123,7 +2125,7 @@ function testDurFmtFIFormatShortText() {
 };
 
 function testDurFmtFIFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "short",
     	style: "clock"
@@ -2143,7 +2145,7 @@ function testDurFmtFIFormatShortClock() {
 };
 
 function testDurFmtFIFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "medium"
     });
@@ -2162,7 +2164,7 @@ function testDurFmtFIFormatMedium() {
 };
 
 function testDurFmtFIFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "long"
     });
@@ -2181,7 +2183,7 @@ function testDurFmtFIFormatLong() {
 };
 
 function testDurFmtFIFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fi-FI",
     	length: "full"
     });
@@ -2202,7 +2204,7 @@ function testDurFmtFIFormatFull() {
 
 function testDurFmtFIAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fi-FI",
     	length: "full",
     	sync: false,
@@ -2230,7 +2232,7 @@ function testDurFmtFIAsyncWithLocale() {
 //test cases for fr-CA
 
 function testDurFmtFRCAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "short"
     });
@@ -2249,7 +2251,7 @@ function testDurFmtFRCAFormatShortDefaultStyle() {
 };
 
 function testDurFmtFRCAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "short",
     	style: "text"
@@ -2269,7 +2271,7 @@ function testDurFmtFRCAFormatShortText() {
 };
 
 function testDurFmtFRCAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "short",
     	style: "clock"
@@ -2289,7 +2291,7 @@ function testDurFmtFRCAFormatShortClock() {
 };
 
 function testDurFmtFRCAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "medium"
     });
@@ -2308,7 +2310,7 @@ function testDurFmtFRCAFormatMedium() {
 };
 
 function testDurFmtFRCAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "long"
     });
@@ -2327,7 +2329,7 @@ function testDurFmtFRCAFormatLong() {
 };
 
 function testDurFmtFRCAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "fr-CA",
     	length: "full"
     });
@@ -2348,7 +2350,7 @@ function testDurFmtFRCAFormatFull() {
 
 function testDurFmtFRCAAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fr-CA",
     	length: "full",
     	sync: false,
@@ -2374,7 +2376,7 @@ function testDurFmtFRCAAsync() {
 
 function testDurFmtFRCAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fr-CA",
     	length: "full",
     	sync: false,
@@ -2400,7 +2402,7 @@ function testDurFmtFRCAAsyncWithLocale() {
 
 function testDurFmtFRCAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "fr-CA",
     	length: "short",
     	style: "clock",
@@ -2428,7 +2430,7 @@ function testDurFmtFRCAFormatShortClockAsync() {
 //test cases for ga-IE
 
 function testDurFmtGAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "short"
     });
@@ -2447,7 +2449,7 @@ function testDurFmtGAFormatShortDefaultStyle() {
 };
 
 function testDurFmtGAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "short",
     	style: "text"
@@ -2467,7 +2469,7 @@ function testDurFmtGAFormatShortText() {
 };
 
 function testDurFmtGAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "short",
     	style: "clock"
@@ -2487,7 +2489,7 @@ function testDurFmtGAFormatShortClock() {
 };
 
 function testDurFmtGAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "medium"
     });
@@ -2506,7 +2508,7 @@ function testDurFmtGAFormatMedium() {
 };
 
 function testDurFmtGAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "long"
     });
@@ -2525,7 +2527,7 @@ function testDurFmtGAFormatLong() {
 };
 
 function testDurFmtGAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ga-IE",
     	length: "full"
     });
@@ -2548,7 +2550,7 @@ function testDurFmtGAFormatFull() {
 
 function testDurFmtGAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ga-IE",
     	length: "full",
     	sync: false,
@@ -2574,7 +2576,7 @@ function testDurFmtGAAsyncWithLocale() {
 
 function testDurFmtGAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ga-IE",
     	length: "short",
     	style: "clock",
@@ -2602,7 +2604,7 @@ function testDurFmtGAFormatShortClockAsync() {
 //test cases for hebrew
 
 function testDurFmtHEFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "short"
     });
@@ -2621,7 +2623,7 @@ function testDurFmtHEFormatShortDefaultStyle() {
 };
 
 function testDurFmtHEFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "short",
     	style: "text"
@@ -2641,7 +2643,7 @@ function testDurFmtHEFormatShortText() {
 };
 
 function testDurFmtHEFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "short",
     	style: "clock"
@@ -2661,7 +2663,7 @@ function testDurFmtHEFormatShortClock() {
 };
 
 function testDurFmtHEFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "medium"
     });
@@ -2680,7 +2682,7 @@ function testDurFmtHEFormatMedium() {
 };
 
 function testDurFmtHEFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "long"
     });
@@ -2699,7 +2701,7 @@ function testDurFmtHEFormatLong() {
 };
 
 function testDurFmtHEFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "he-IL",
     	length: "full"
     });
@@ -2722,7 +2724,7 @@ function testDurFmtHEFormatFull() {
 
 function testDurFmtHEAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "he-IL",
     	length: "full",
     	sync: false,
@@ -2748,7 +2750,7 @@ function testDurFmtHEAsyncWithLocale() {
 
 function testDurFmtHEFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "he-IL",
     	length: "short",
     	style: "clock",
@@ -2776,7 +2778,7 @@ function testDurFmtHEFormatShortClockAsync() {
 //test cases for hi-IN
 
 function testDurFmtHIFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "short"
     });
@@ -2795,7 +2797,7 @@ function testDurFmtHIFormatShortDefaultStyle() {
 };
 
 function testDurFmtHIFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "short",
     	style: "text"
@@ -2815,7 +2817,7 @@ function testDurFmtHIFormatShortText() {
 };
 
 function testDurFmtHIFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "short",
     	style: "clock"
@@ -2835,7 +2837,7 @@ function testDurFmtHIFormatShortClock() {
 };
 
 function testDurFmtHIFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "medium"
     });
@@ -2854,7 +2856,7 @@ function testDurFmtHIFormatMedium() {
 };
 
 function testDurFmtHIFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "long"
     });
@@ -2873,7 +2875,7 @@ function testDurFmtHIFormatLong() {
 };
 
 function testDurFmtHIFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hi-IN",
     	length: "full"
     });
@@ -2894,7 +2896,7 @@ function testDurFmtHIFormatFull() {
 
 function testDurFmtHIAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hi-IN",
     	length: "full",
     	sync: false,
@@ -2920,7 +2922,7 @@ function testDurFmtHIAsyncWithLocale() {
 
 function testDurFmtHIFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hi-IN",
     	length: "short",
     	style: "clock",
@@ -2947,7 +2949,7 @@ function testDurFmtHIFormatShortClockAsync() {
 //test cases for marathi mr-IN
 
 function testDurFmtMRFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "short"
     });
@@ -2966,7 +2968,7 @@ function testDurFmtMRFormatShortDefaultStyle() {
 };
 
 function testDurFmtMRFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "short",
     	style: "text"
@@ -2986,7 +2988,7 @@ function testDurFmtMRFormatShortText() {
 };
 
 function testDurFmtMRFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "short",
     	style: "clock"
@@ -3006,7 +3008,7 @@ function testDurFmtMRFormatShortClock() {
 };
 
 function testDurFmtMRFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "medium"
     });
@@ -3025,7 +3027,7 @@ function testDurFmtMRFormatMedium() {
 };
 
 function testDurFmtMRFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "long"
     });
@@ -3044,7 +3046,7 @@ function testDurFmtMRFormatLong() {
 };
 
 function testDurFmtMRFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mr-IN",
     	length: "full"
     });
@@ -3065,7 +3067,7 @@ function testDurFmtMRFormatFull() {
 
 function testDurFmtMRAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mr-IN",
     	length: "full",
     	sync: false,
@@ -3092,7 +3094,7 @@ function testDurFmtMRAsyncWithLocale() {
 
 function testDurFmtMRFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mr-IN",
     	length: "short",
     	style: "clock",
@@ -3119,7 +3121,7 @@ function testDurFmtMRFormatShortClockAsync() {
 //testa cases for Telugu (te-IN)
 
 function testDurFmtTEFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "short"
     });
@@ -3138,7 +3140,7 @@ function testDurFmtTEFormatShortDefaultStyle() {
 };
 
 function testDurFmtTEFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "short",
     	style: "text"
@@ -3158,7 +3160,7 @@ function testDurFmtTEFormatShortText() {
 };
 
 function testDurFmtTEFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "short",
     	style: "clock"
@@ -3179,7 +3181,7 @@ function testDurFmtTEFormatShortClock() {
 
 
 function testDurFmtTEFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "medium"
     });
@@ -3198,7 +3200,7 @@ function testDurFmtTEFormatMedium() {
 };
 
 function testDurFmtTEFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "long"
     });
@@ -3217,7 +3219,7 @@ function testDurFmtTEFormatLong() {
 };
 
 function testDurFmtTEFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "te-IN",
     	length: "full"
     });
@@ -3238,7 +3240,7 @@ function testDurFmtTEFormatFull() {
 
 function testDurFmtTEAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "te-IN",
     	length: "full",
     	sync: false,
@@ -3264,7 +3266,7 @@ function testDurFmtTEAsyncWithLocale() {
 
 function testDurFmtTEFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "te-IN",
     	length: "short",
     	style: "clock",
@@ -3292,7 +3294,7 @@ function testDurFmtTEFormatShortClockAsync() {
 //test cases for kannada(kn-IN)
 
 function testDurFmtKNFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "short"
     });
@@ -3311,7 +3313,7 @@ function testDurFmtKNFormatShortDefaultStyle() {
 };
 
 function testDurFmtKNFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "short",
     	style: "text"
@@ -3331,7 +3333,7 @@ function testDurFmtKNFormatShortText() {
 };
 
 function testDurFmtKNFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "short",
     	style: "clock"
@@ -3351,7 +3353,7 @@ function testDurFmtKNFormatShortClock() {
 };
 
 function testDurFmtKNFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "medium"
     });
@@ -3370,7 +3372,7 @@ function testDurFmtKNFormatMedium() {
 };
 
 function testDurFmtKNFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "long"
     });
@@ -3389,7 +3391,7 @@ function testDurFmtKNFormatLong() {
 };
 
 function testDurFmtKNFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kn-IN",
     	length: "full"
     });
@@ -3410,7 +3412,7 @@ function testDurFmtKNFormatFull() {
 
 function testDurFmtKNAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "kn-IN",
     	length: "full",
     	sync: false,
@@ -3436,7 +3438,7 @@ function testDurFmtKNAsyncWithLocale() {
 
 function testDurFmtKNFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "kn-IN",
     	length: "short",
     	style: "clock",
@@ -3464,7 +3466,7 @@ function testDurFmtKNFormatShortClockAsync() {
 //test cases for tamil(ta-IN)
 
 function testDurFmtTAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "short"
     });
@@ -3483,7 +3485,7 @@ function testDurFmtTAFormatShortDefaultStyle() {
 };
 
 function testDurFmtTAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "short",
     	style: "text"
@@ -3503,7 +3505,7 @@ function testDurFmtTAFormatShortText() {
 };
 
 function testDurFmtTAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "short",
     	style: "clock"
@@ -3523,7 +3525,7 @@ function testDurFmtTAFormatShortClock() {
 };
 
 function testDurFmtTAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "medium"
     });
@@ -3542,7 +3544,7 @@ function testDurFmtTAFormatMedium() {
 };
 
 function testDurFmtTAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "long"
     });
@@ -3561,7 +3563,7 @@ function testDurFmtTAFormatLong() {
 };
 
 function testDurFmtTAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ta-IN",
     	length: "full"
     });
@@ -3582,7 +3584,7 @@ function testDurFmtTAFormatFull() {
 
 function testDurFmtTAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ta-IN",
     	length: "full",
     	sync: false,
@@ -3608,7 +3610,7 @@ function testDurFmtTAAsyncWithLocale() {
 
 function testDurFmtTAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ta-IN",
     	length: "short",
     	style: "clock",
@@ -3635,7 +3637,7 @@ function testDurFmtTAFormatShortClockAsync() {
 //test cases for Malaylam(ml-IN)
 
 function testDurFmtMLFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "short"
     });
@@ -3654,7 +3656,7 @@ function testDurFmtMLFormatShortDefaultStyle() {
 };
 
 function testDurFmtMLFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "short",
     	style: "text"
@@ -3674,7 +3676,7 @@ function testDurFmtMLFormatShortText() {
 };
 
 function testDurFmtMLFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "short",
     	style: "clock"
@@ -3694,7 +3696,7 @@ function testDurFmtMLFormatShortClock() {
 };
 
 function testDurFmtMLFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "medium"
     });
@@ -3713,7 +3715,7 @@ function testDurFmtMLFormatMedium() {
 };
 
 function testDurFmtMLFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "long"
     });
@@ -3732,7 +3734,7 @@ function testDurFmtMLFormatLong() {
 };
 
 function testDurFmtMLFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ml-IN",
     	length: "full"
     });
@@ -3753,7 +3755,7 @@ function testDurFmtMLFormatFull() {
 
 function testDurFmtMLAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ml-IN",
     	length: "full",
     	sync: false,
@@ -3779,7 +3781,7 @@ function testDurFmtMLAsyncWithLocale() {
 
 function testDurFmtMLFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ml-IN",
     	length: "short",
     	style: "clock",
@@ -3806,7 +3808,7 @@ function testDurFmtMLFormatShortClockAsync() {
 //test cases for Gujrati(gu-IN)
 
 function testDurFmtGUFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "short"
     });
@@ -3825,7 +3827,7 @@ function testDurFmtGUFormatShortDefaultStyle() {
 };
 
 function testDurFmtGUFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "short",
     	style: "text"
@@ -3845,7 +3847,7 @@ function testDurFmtGUFormatShortText() {
 };
 
 function testDurFmtGUFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "short",
     	style: "clock"
@@ -3865,7 +3867,7 @@ function testDurFmtGUFormatShortClock() {
 };
 
 function testDurFmtGUFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "medium"
     });
@@ -3884,7 +3886,7 @@ function testDurFmtGUFormatMedium() {
 };
 
 function testDurFmtGUFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "long"
     });
@@ -3903,7 +3905,7 @@ function testDurFmtGUFormatLong() {
 };
 
 function testDurFmtGUFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "gu-IN",
     	length: "full"
     });
@@ -3924,7 +3926,7 @@ function testDurFmtGUFormatFull() {
 
 function testDurFmtGUAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "gu-IN",
     	length: "full",
     	sync: false,
@@ -3950,7 +3952,7 @@ function testDurFmtGUAsyncWithLocale() {
 
 function testDurFmtGUFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "gu-IN",
     	length: "short",
     	style: "clock",
@@ -3978,7 +3980,7 @@ function testDurFmtGUFormatShortClockAsync() {
 //test cases for Bengali(bn-IN)
 
 function testDurFmtBNFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short"
     });
@@ -3997,7 +3999,7 @@ function testDurFmtBNFormatShortDefaultStyle() {
 };
 
 function testDurFmtBNFormatShortDefaultStyleNative() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	useNative: true
@@ -4017,7 +4019,7 @@ function testDurFmtBNFormatShortDefaultStyleNative() {
 };
 
 function testDurFmtBNFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "text"
@@ -4037,7 +4039,7 @@ function testDurFmtBNFormatShortText() {
 };
 
 function testDurFmtBNFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "clock"
@@ -4057,7 +4059,7 @@ function testDurFmtBNFormatShortClock() {
 };
 
 function testDurFmtBNFormatShortClockNative() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "clock",
@@ -4078,7 +4080,7 @@ function testDurFmtBNFormatShortClockNative() {
 };
 
 function testDurFmtBNFormatShortClockWestern() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "clock",
@@ -4099,7 +4101,7 @@ function testDurFmtBNFormatShortClockWestern() {
 };
 
 function testDurFmtBNFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "medium"
     });
@@ -4118,7 +4120,7 @@ function testDurFmtBNFormatMedium() {
 };
 
 function testDurFmtBNFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "long"
     });
@@ -4137,7 +4139,7 @@ function testDurFmtBNFormatLong() {
 };
 
 function testDurFmtBNFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "bn-IN",
     	length: "full"
     });
@@ -4158,7 +4160,7 @@ function testDurFmtBNFormatFull() {
 
 function testDurFmtBNAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bn-IN",
     	length: "full",
     	sync: false,
@@ -4184,7 +4186,7 @@ function testDurFmtBNAsyncWithLocale() {
 
 function testDurFmtBNFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "clock",
@@ -4210,7 +4212,7 @@ function testDurFmtBNFormatShortClockAsync() {
 
 function testDurFmtBNFormatShortClockAsyncWestern() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
     	style: "clock",
@@ -4238,7 +4240,7 @@ function testDurFmtBNFormatShortClockAsyncWestern() {
 //test cases for Assamese(as-IN)
 /*
 function testDurFmtASFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "short"
     });
@@ -4257,7 +4259,7 @@ function testDurFmtASFormatShortDefaultStyle() {
 };
 
 function testDurFmtASFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "short",
     	style: "text"
@@ -4277,7 +4279,7 @@ function testDurFmtASFormatShortText() {
 };
 
 function testDurFmtASFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "short",
     	style: "clock"
@@ -4297,7 +4299,7 @@ function testDurFmtASFormatShortClock() {
 };
 
 function testDurFmtASFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "medium"
     });
@@ -4316,7 +4318,7 @@ function testDurFmtASFormatMedium() {
 };
 
 function testDurFmtASFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "long"
     });
@@ -4335,7 +4337,7 @@ function testDurFmtASFormatLong() {
 };
 
 function testDurFmtASFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "as-IN",
     	length: "full"
     });
@@ -4356,7 +4358,7 @@ function testDurFmtASFormatFull() {
 
 function testDurFmtASAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "as-IN",
     	length: "full",
     	sync: false,
@@ -4382,7 +4384,7 @@ function testDurFmtASAsyncWithLocale() {
 
 function testDurFmtASFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "as-IN",
     	length: "short",
     	style: "clock",
@@ -4410,7 +4412,7 @@ function testDurFmtASFormatShortClockAsync() {
 //test cases for Punjabi(pa-IN)
 
 function testDurFmtPAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "short"
     });
@@ -4429,7 +4431,7 @@ function testDurFmtPAFormatShortDefaultStyle() {
 };
 
 function testDurFmtPAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "short",
     	style: "text"
@@ -4449,7 +4451,7 @@ function testDurFmtPAFormatShortText() {
 };
 
 function testDurFmtPAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "short",
     	style: "clock"
@@ -4469,7 +4471,7 @@ function testDurFmtPAFormatShortClock() {
 };
 
 function testDurFmtPAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "medium"
     });
@@ -4488,7 +4490,7 @@ function testDurFmtPAFormatMedium() {
 };
 
 function testDurFmtPAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "long"
     });
@@ -4507,7 +4509,7 @@ function testDurFmtPAFormatLong() {
 };
 
 function testDurFmtPAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pa-IN",
     	length: "full"
     });
@@ -4528,7 +4530,7 @@ function testDurFmtPAFormatFull() {
 
 function testDurFmtPAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pa-IN",
     	length: "full",
     	sync: false,
@@ -4554,7 +4556,7 @@ function testDurFmtPAAsyncWithLocale() {
 
 function testDurFmtPAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pa-IN",
     	length: "short",
     	style: "clock",
@@ -4581,7 +4583,7 @@ function testDurFmtPAFormatShortClockAsync() {
 //test cases for Urdu(ur-IN)
 
 function testDurFmtURFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "short"
     });
@@ -4600,7 +4602,7 @@ function testDurFmtURFormatShortDefaultStyle() {
 };
 
 function testDurFmtURFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "short",
     	style: "text"
@@ -4620,7 +4622,7 @@ function testDurFmtURFormatShortText() {
 };
 
 function testDurFmtURFormatShortTextWestern() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "short",
     	style: "text",
@@ -4641,7 +4643,7 @@ function testDurFmtURFormatShortTextWestern() {
 };
 
 function testDurFmtURFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "short",
     	style: "clock"
@@ -4661,7 +4663,7 @@ function testDurFmtURFormatShortClock() {
 };
 
 function testDurFmtURFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "medium"
     });
@@ -4680,7 +4682,7 @@ function testDurFmtURFormatMedium() {
 };
 
 function testDurFmtURFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "long"
     });
@@ -4699,7 +4701,7 @@ function testDurFmtURFormatLong() {
 };
 
 function testDurFmtURFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ur-IN",
     	length: "full"
     });
@@ -4719,7 +4721,7 @@ function testDurFmtURFormatFull() {
 
 function testDurFmtURAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ur-IN",
     	length: "full",
     	sync: false,
@@ -4745,7 +4747,7 @@ function testDurFmtURAsyncWithLocale() {
 
 function testDurFmtURAsyncWithLocaleWestern() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ur-IN",
     	length: "full",
     	sync: false,
@@ -4772,7 +4774,7 @@ function testDurFmtURAsyncWithLocaleWestern() {
 
 function testDurFmtURFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ur-IN",
     	length: "short",
     	style: "clock",
@@ -4799,7 +4801,7 @@ function testDurFmtURFormatShortClockAsync() {
 //test cases for croation
 
 function testDurFmtHRFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "short"
     });
@@ -4818,7 +4820,7 @@ function testDurFmtHRFormatShortDefaultStyle() {
 };
 
 function testDurFmtHRFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "short",
     	style: "text"
@@ -4838,7 +4840,7 @@ function testDurFmtHRFormatShortText() {
 };
 
 function testDurFmtHRFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "short",
     	style: "clock"
@@ -4858,7 +4860,7 @@ function testDurFmtHRFormatShortClock() {
 };
 
 function testDurFmtHRFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "medium"
     });
@@ -4877,7 +4879,7 @@ function testDurFmtHRFormatMedium() {
 };
 
 function testDurFmtHRFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "long"
     });
@@ -4896,7 +4898,7 @@ function testDurFmtHRFormatLong() {
 };
 
 function testDurFmtHRFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hr-HR",
     	length: "full"
     });
@@ -4917,7 +4919,7 @@ function testDurFmtHRFormatFull() {
 
 function testDurFmtHRAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hr-HR",
     	length: "full",
     	sync: false,
@@ -4943,7 +4945,7 @@ function testDurFmtHRAsyncWithLocale() {
 
 function testDurFmtHRFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hr-HR",
     	length: "short",
     	style: "clock",
@@ -4971,7 +4973,7 @@ function testDurFmtHRFormatShortClockAsync() {
 
 
 function testDurFmtHUFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "short"
     });
@@ -4990,7 +4992,7 @@ function testDurFmtHUFormatShortDefaultStyle() {
 };
 
 function testDurFmtHUFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "short",
     	style: "text"
@@ -5010,7 +5012,7 @@ function testDurFmtHUFormatShortText() {
 };
 
 function testDurFmtHUFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "short",
     	style: "clock"
@@ -5030,7 +5032,7 @@ function testDurFmtHUFormatShortClock() {
 };
 
 function testDurFmtHUFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "medium"
     });
@@ -5049,7 +5051,7 @@ function testDurFmtHUFormatMedium() {
 };
 
 function testDurFmtHUFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "long"
     });
@@ -5068,7 +5070,7 @@ function testDurFmtHUFormatLong() {
 };
 
 function testDurFmtHUFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "hu-HU",
     	length: "full"
     });
@@ -5089,7 +5091,7 @@ function testDurFmtHUFormatFull() {
 
 function testDurFmtHUAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hu-HU",
     	length: "full",
     	sync: false,
@@ -5115,7 +5117,7 @@ function testDurFmtHUAsyncWithLocale() {
 
 function testDurFmtHUFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "hu-HU",
     	length: "short",
     	style: "clock",
@@ -5144,7 +5146,7 @@ function testDurFmtHUFormatShortClockAsync() {
 
 
 function testDurFmtIDFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "short"
     });
@@ -5163,7 +5165,7 @@ function testDurFmtIDFormatShortDefaultStyle() {
 };
 
 function testDurFmtIDFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "short",
     	style: "text"
@@ -5183,7 +5185,7 @@ function testDurFmtIDFormatShortText() {
 };
 
 function testDurFmtIDFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "short",
     	style: "clock"
@@ -5203,7 +5205,7 @@ function testDurFmtIDFormatShortClock() {
 };
 
 function testDurFmtIDFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "medium"
     });
@@ -5222,7 +5224,7 @@ function testDurFmtIDFormatMedium() {
 };
 
 function testDurFmtIDFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "long"
     });
@@ -5241,7 +5243,7 @@ function testDurFmtIDFormatLong() {
 };
 
 function testDurFmtIDFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "id-ID",
     	length: "full"
     });
@@ -5262,7 +5264,7 @@ function testDurFmtIDFormatFull() {
 
 function testDurFmtIDAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "id-ID",
     	length: "full",
     	sync: false,
@@ -5288,7 +5290,7 @@ function testDurFmtIDAsyncWithLocale() {
 
 function testDurFmtIDFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "id-ID",
     	length: "short",
     	style: "clock",
@@ -5317,7 +5319,7 @@ function testDurFmtIDFormatShortClockAsync() {
 
 
 function testDurFmtITFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "short"
     });
@@ -5336,7 +5338,7 @@ function testDurFmtITFormatShortDefaultStyle() {
 };
 
 function testDurFmtITFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "short",
     	style: "text"
@@ -5356,7 +5358,7 @@ function testDurFmtITFormatShortText() {
 };
 
 function testDurFmtITFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "short",
     	style: "clock"
@@ -5376,7 +5378,7 @@ function testDurFmtITFormatShortClock() {
 };
 
 function testDurFmtITFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "medium"
     });
@@ -5395,7 +5397,7 @@ function testDurFmtITFormatMedium() {
 };
 
 function testDurFmtITFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "long"
     });
@@ -5414,7 +5416,7 @@ function testDurFmtITFormatLong() {
 };
 
 function testDurFmtITFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "it-IT",
     	length: "full"
     });
@@ -5435,7 +5437,7 @@ function testDurFmtITFormatFull() {
 
 function testDurFmtITAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "it-IT",
     	length: "full",
     	sync: false,
@@ -5461,7 +5463,7 @@ function testDurFmtITAsyncWithLocale() {
 
 function testDurFmtITFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "it-IT",
     	length: "short",
     	style: "clock",
@@ -5489,7 +5491,7 @@ function testDurFmtITFormatShortClockAsync() {
 //test cases for japanese
 
 function testDurFmtJAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "short"
     });
@@ -5509,7 +5511,7 @@ function testDurFmtJAFormatShortDefaultStyle() {
 };
 
 function testDurFmtJAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "short",
     	style: "text"
@@ -5530,7 +5532,7 @@ function testDurFmtJAFormatShortText() {
 };
 
 function testDurFmtJAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "short",
     	style: "clock"
@@ -5551,7 +5553,7 @@ function testDurFmtJAFormatShortClock() {
 };
 
 function testDurFmtJAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "medium"
     });
@@ -5571,7 +5573,7 @@ function testDurFmtJAFormatMedium() {
 };
 
 function testDurFmtJAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "long"
     });
@@ -5591,7 +5593,7 @@ function testDurFmtJAFormatLong() {
 };
 
 function testDurFmtJAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ja-JP",
     	length: "full"
     });
@@ -5613,7 +5615,7 @@ function testDurFmtJAFormatFull() {
 
 function testDurFmtJAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ja-JP",
     	length: "full",
     	sync: false,
@@ -5640,7 +5642,7 @@ function testDurFmtJAAsyncWithLocale() {
 
 function testDurFmtJAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ja-JP",
     	length: "short",
     	style: "clock",
@@ -5669,7 +5671,7 @@ function testDurFmtJAFormatShortClockAsync() {
 //test cases for kk-Cyrl-KZ
 
 function testDurFmtKKFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "short"
     });
@@ -5688,7 +5690,7 @@ function testDurFmtKKFormatShortDefaultStyle() {
 };
 
 function testDurFmtKKFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "short",
     	style: "text"
@@ -5708,7 +5710,7 @@ function testDurFmtKKFormatShortText() {
 };
 
 function testDurFmtKKFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "short",
     	style: "clock"
@@ -5729,7 +5731,7 @@ function testDurFmtKKFormatShortClock() {
 
 
 function testDurFmtKKFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "long"
     });
@@ -5748,7 +5750,7 @@ function testDurFmtKKFormatLong() {
 };
 
 function testDurFmtKKFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "full"
     });
@@ -5769,7 +5771,7 @@ function testDurFmtKKFormatFull() {
 
 function testDurFmtKKAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "full",
     	sync: false,
@@ -5795,7 +5797,7 @@ function testDurFmtKKAsyncWithLocale() {
 
 function testDurFmtKKFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "short",
     	style: "clock",
@@ -5823,7 +5825,7 @@ function testDurFmtKKFormatShortClockAsync() {
 //test cases for ko-KR
 
 function testDurFmtKOFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "short"
     });
@@ -5843,7 +5845,7 @@ function testDurFmtKOFormatShortDefaultStyle() {
 };
 
 function testDurFmtKOFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "short",
     	style: "text"
@@ -5864,7 +5866,7 @@ function testDurFmtKOFormatShortText() {
 };
 
 function testDurFmtKOFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "short",
     	style: "clock"
@@ -5885,7 +5887,7 @@ function testDurFmtKOFormatShortClock() {
 };
 
 function testDurFmtKOFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "medium"
     });
@@ -5905,7 +5907,7 @@ function testDurFmtKOFormatMedium() {
 };
 
 function testDurFmtKOFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "long"
     });
@@ -5925,7 +5927,7 @@ function testDurFmtKOFormatLong() {
 };
 
 function testDurFmtKOFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ko-KR",
     	length: "full"
     });
@@ -5947,7 +5949,7 @@ function testDurFmtKOFormatFull() {
 
 function testDurFmtKOAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ko-KR",
     	length: "full",
     	sync: false,
@@ -5974,7 +5976,7 @@ function testDurFmtKOAsyncWithLocale() {
 
 function testDurFmtKOFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ko-KR",
     	length: "short",
     	style: "clock",
@@ -6000,7 +6002,7 @@ function testDurFmtKOFormatShortClockAsync() {
 
 /*
 function testDurFmtKUFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "short"
     });
@@ -6019,7 +6021,7 @@ function testDurFmtKUFormatShortDefaultStyle() {
 };
 
 function testDurFmtKUFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "short",
     	style: "text"
@@ -6039,7 +6041,7 @@ function testDurFmtKUFormatShortText() {
 };
 
 function testDurFmtKUFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "short",
     	style: "clock"
@@ -6059,7 +6061,7 @@ function testDurFmtKUFormatShortClock() {
 };
 
 function testDurFmtKUFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "medium"
     });
@@ -6078,7 +6080,7 @@ function testDurFmtKUFormatMedium() {
 };
 
 function testDurFmtKUFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "long"
     });
@@ -6097,7 +6099,7 @@ function testDurFmtKUFormatLong() {
 };
 
 function testDurFmtKUFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "full"
     });
@@ -6118,7 +6120,7 @@ function testDurFmtKUFormatFull() {
 
 function testDurFmtKUAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "full",
     	sync: false,
@@ -6144,7 +6146,7 @@ function testDurFmtKUAsyncWithLocale() {
 
 function testDurFmtKUFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "short",
     	style: "clock",
@@ -6172,7 +6174,7 @@ function testDurFmtKUFormatShortClockAsync() {
 //test cases for lt-LT
 
 function testDurFmtLTFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "short"
     });
@@ -6191,7 +6193,7 @@ function testDurFmtLTFormatShortDefaultStyle() {
 };
 
 function testDurFmtLTFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "short",
     	style: "text"
@@ -6211,7 +6213,7 @@ function testDurFmtLTFormatShortText() {
 };
 
 function testDurFmtLTFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "short",
     	style: "clock"
@@ -6231,7 +6233,7 @@ function testDurFmtLTFormatShortClock() {
 };
 
 function testDurFmtLTFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "medium"
     });
@@ -6250,7 +6252,7 @@ function testDurFmtLTFormatMedium() {
 };
 
 function testDurFmtLTFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "long"
     });
@@ -6269,7 +6271,7 @@ function testDurFmtLTFormatLong() {
 };
 
 function testDurFmtLTFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lt-LT",
     	length: "full"
     });
@@ -6290,7 +6292,7 @@ function testDurFmtLTFormatFull() {
 
 function testDurFmtLTAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "lt-LT",
     	length: "full",
     	sync: false,
@@ -6316,7 +6318,7 @@ function testDurFmtLTAsyncWithLocale() {
 
 function testDurFmtLTFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "lt-LT",
     	length: "short",
     	style: "clock",
@@ -6343,7 +6345,7 @@ function testDurFmtLTFormatShortClockAsync() {
 //test cases for lv-LV
 
 function testDurFmtLVFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "short"
     });
@@ -6362,7 +6364,7 @@ function testDurFmtLVFormatShortDefaultStyle() {
 };
 
 function testDurFmtLVFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "short",
     	style: "text"
@@ -6382,7 +6384,7 @@ function testDurFmtLVFormatShortText() {
 };
 
 function testDurFmtLVFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "short",
     	style: "clock"
@@ -6402,7 +6404,7 @@ function testDurFmtLVFormatShortClock() {
 };
 
 function testDurFmtLVFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "medium"
     });
@@ -6421,7 +6423,7 @@ function testDurFmtLVFormatMedium() {
 };
 
 function testDurFmtLVFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "long"
     });
@@ -6440,7 +6442,7 @@ function testDurFmtLVFormatLong() {
 };
 
 function testDurFmtLVFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "lv-LV",
     	length: "full"
     });
@@ -6461,7 +6463,7 @@ function testDurFmtLVFormatFull() {
 
 function testDurFmtLVAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "lv-LV",
     	length: "full",
     	sync: false,
@@ -6487,7 +6489,7 @@ function testDurFmtLVAsyncWithLocale() {
 
 function testDurFmtLVFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "lv-LV",
     	length: "short",
     	style: "clock",
@@ -6514,7 +6516,7 @@ function testDurFmtLVFormatShortClockAsync() {
 //test cases for mk-MK
 
 function testDurFmtMKFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "short"
     });
@@ -6533,7 +6535,7 @@ function testDurFmtMKFormatShortDefaultStyle() {
 };
 
 function testDurFmtMKFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "short",
     	style: "text"
@@ -6553,7 +6555,7 @@ function testDurFmtMKFormatShortText() {
 };
 
 function testDurFmtMKFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "short",
     	style: "clock"
@@ -6573,7 +6575,7 @@ function testDurFmtMKFormatShortClock() {
 };
 
 function testDurFmtMKFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "medium"
     });
@@ -6592,7 +6594,7 @@ function testDurFmtMKFormatMedium() {
 };
 
 function testDurFmtMKFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "long"
     });
@@ -6611,7 +6613,7 @@ function testDurFmtMKFormatLong() {
 };
 
 function testDurFmtMKFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mk-MK",
     	length: "full"
     });
@@ -6632,7 +6634,7 @@ function testDurFmtMKFormatFull() {
 
 function testDurFmtMKAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mk-MK",
     	length: "full",
     	sync: false,
@@ -6658,7 +6660,7 @@ function testDurFmtMKAsyncWithLocale() {
 
 function testDurFmtMKFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mk-MK",
     	length: "short",
     	style: "clock",
@@ -6686,7 +6688,7 @@ function testDurFmtMKFormatShortClockAsync() {
 
 /*
 function testDurFmtMNFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "short"
     });
@@ -6705,7 +6707,7 @@ function testDurFmtMNFormatShortDefaultStyle() {
 };
 
 function testDurFmtMNFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "short",
     	style: "text"
@@ -6725,7 +6727,7 @@ function testDurFmtMNFormatShortText() {
 };
 
 function testDurFmtMNFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "short",
     	style: "clock"
@@ -6745,7 +6747,7 @@ function testDurFmtMNFormatShortClock() {
 };
 
 function testDurFmtMNFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "medium"
     });
@@ -6764,7 +6766,7 @@ function testDurFmtMNFormatMedium() {
 };
 
 function testDurFmtMNFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "long"
     });
@@ -6783,7 +6785,7 @@ function testDurFmtMNFormatLong() {
 };
 
 function testDurFmtMNFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "full"
     });
@@ -6804,7 +6806,7 @@ function testDurFmtMNFormatFull() {
 
 function testDurFmtMNAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "full",
     	sync: false,
@@ -6830,7 +6832,7 @@ function testDurFmtMNAsyncWithLocale() {
 
 function testDurFmtMNFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "short",
     	style: "clock",
@@ -6857,7 +6859,7 @@ function testDurFmtMNFormatShortClockAsync() {
 //test cases for ms-MY
 
 function testDurFmtMSFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "short"
     });
@@ -6876,7 +6878,7 @@ function testDurFmtMSFormatShortDefaultStyle() {
 };
 
 function testDurFmtMSFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "short",
     	style: "text"
@@ -6896,7 +6898,7 @@ function testDurFmtMSFormatShortText() {
 };
 
 function testDurFmtMSFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "short",
     	style: "clock"
@@ -6916,7 +6918,7 @@ function testDurFmtMSFormatShortClock() {
 };
 
 function testDurFmtMSFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "medium"
     });
@@ -6935,7 +6937,7 @@ function testDurFmtMSFormatMedium() {
 };
 
 function testDurFmtMSFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "long"
     });
@@ -6954,7 +6956,7 @@ function testDurFmtMSFormatLong() {
 };
 
 function testDurFmtMSFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ms-MY",
     	length: "full"
     });
@@ -6975,7 +6977,7 @@ function testDurFmtMSFormatFull() {
 
 function testDurFmtMSAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ms-MY",
     	length: "full",
     	sync: false,
@@ -7001,7 +7003,7 @@ function testDurFmtMSAsyncWithLocale() {
 
 function testDurFmtMSFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ms-MY",
     	length: "short",
     	style: "clock",
@@ -7029,7 +7031,7 @@ function testDurFmtMSFormatShortClockAsync() {
 
 
 function testDurFmtNBFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "short"
     });
@@ -7048,7 +7050,7 @@ function testDurFmtNBFormatShortDefaultStyle() {
 };
 
 function testDurFmtNBFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "short",
     	style: "text"
@@ -7068,7 +7070,7 @@ function testDurFmtNBFormatShortText() {
 };
 
 function testDurFmtNBFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "short",
     	style: "clock"
@@ -7088,7 +7090,7 @@ function testDurFmtNBFormatShortClock() {
 };
 
 function testDurFmtNBFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "medium"
     });
@@ -7107,7 +7109,7 @@ function testDurFmtNBFormatMedium() {
 };
 
 function testDurFmtNBFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "long"
     });
@@ -7126,7 +7128,7 @@ function testDurFmtNBFormatLong() {
 };
 
 function testDurFmtNBFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nb-NO",
     	length: "full"
     });
@@ -7147,7 +7149,7 @@ function testDurFmtNBFormatFull() {
 
 function testDurFmtNBAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "nb-NO",
     	length: "full",
     	sync: false,
@@ -7173,7 +7175,7 @@ function testDurFmtNBAsyncWithLocale() {
 
 function testDurFmtNBFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "nb-NO",
     	length: "short",
     	style: "clock",
@@ -7201,7 +7203,7 @@ function testDurFmtNBFormatShortClockAsync() {
 
 
 function testDurFmtNLFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "short"
     });
@@ -7220,7 +7222,7 @@ function testDurFmtNLFormatShortDefaultStyle() {
 };
 
 function testDurFmtNLFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "short",
     	style: "text"
@@ -7240,7 +7242,7 @@ function testDurFmtNLFormatShortText() {
 };
 
 function testDurFmtNLFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "short",
     	style: "clock"
@@ -7260,7 +7262,7 @@ function testDurFmtNLFormatShortClock() {
 };
 
 function testDurFmtNLFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "medium"
     });
@@ -7279,7 +7281,7 @@ function testDurFmtNLFormatMedium() {
 };
 
 function testDurFmtNLFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "long"
     });
@@ -7298,7 +7300,7 @@ function testDurFmtNLFormatLong() {
 };
 
 function testDurFmtNLFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "nl-NL",
     	length: "full"
     });
@@ -7319,7 +7321,7 @@ function testDurFmtNLFormatFull() {
 
 function testDurFmtNLAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "nl-NL",
     	length: "full",
     	sync: false,
@@ -7345,7 +7347,7 @@ function testDurFmtNLAsyncWithLocale() {
 
 function testDurFmtNLFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "nl-NL",
     	length: "short",
     	style: "clock",
@@ -7373,7 +7375,7 @@ function testDurFmtNLFormatShortClockAsync() {
 
 
 function testDurFmtPLFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "short"
     });
@@ -7392,7 +7394,7 @@ function testDurFmtPLFormatShortDefaultStyle() {
 };
 
 function testDurFmtPLFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "short",
     	style: "text"
@@ -7412,7 +7414,7 @@ function testDurFmtPLFormatShortText() {
 };
 
 function testDurFmtPLFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "short",
     	style: "clock"
@@ -7432,7 +7434,7 @@ function testDurFmtPLFormatShortClock() {
 };
 
 function testDurFmtPLFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "medium"
     });
@@ -7451,7 +7453,7 @@ function testDurFmtPLFormatMedium() {
 };
 
 function testDurFmtPLFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "long"
     });
@@ -7470,7 +7472,7 @@ function testDurFmtPLFormatLong() {
 };
 
 function testDurFmtPLFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pl-PL",
     	length: "full"
     });
@@ -7493,7 +7495,7 @@ function testDurFmtPLFormatFull() {
 
 function testDurFmtPLFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pl-PL",
     	length: "short",
     	style: "clock",
@@ -7520,7 +7522,7 @@ function testDurFmtPLFormatShortClockAsync() {
 //test cases for pt-BR
 
 function testDurFmtPTFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "short"
     });
@@ -7539,7 +7541,7 @@ function testDurFmtPTFormatShortDefaultStyle() {
 };
 
 function testDurFmtPTFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "short",
     	style: "text"
@@ -7559,7 +7561,7 @@ function testDurFmtPTFormatShortText() {
 };
 
 function testDurFmtPTFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "short",
     	style: "clock"
@@ -7579,7 +7581,7 @@ function testDurFmtPTFormatShortClock() {
 };
 
 function testDurFmtPTFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "medium"
     });
@@ -7598,7 +7600,7 @@ function testDurFmtPTFormatMedium() {
 };
 
 function testDurFmtPTFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "long"
     });
@@ -7617,7 +7619,7 @@ function testDurFmtPTFormatLong() {
 };
 
 function testDurFmtPTFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-BR",
     	length: "full"
     });
@@ -7638,7 +7640,7 @@ function testDurFmtPTFormatFull() {
 
 function testDurFmtPTAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pt-BR",
     	length: "full",
     	sync: false,
@@ -7664,7 +7666,7 @@ function testDurFmtPTAsyncWithLocale() {
 
 function testDurFmtPTFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pt-BR",
     	length: "short",
     	style: "clock",
@@ -7691,7 +7693,7 @@ function testDurFmtPTFormatShortClockAsync() {
 //test cases for ro-RO
 
 function testDurFmtROFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "short"
     });
@@ -7710,7 +7712,7 @@ function testDurFmtROFormatShortDefaultStyle() {
 };
 
 function testDurFmtROFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "short",
     	style: "text"
@@ -7730,7 +7732,7 @@ function testDurFmtROFormatShortText() {
 };
 
 function testDurFmtROFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "short",
     	style: "clock"
@@ -7750,7 +7752,7 @@ function testDurFmtROFormatShortClock() {
 };
 
 function testDurFmtROFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "medium"
     });
@@ -7769,7 +7771,7 @@ function testDurFmtROFormatMedium() {
 };
 
 function testDurFmtROFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "long"
     });
@@ -7788,7 +7790,7 @@ function testDurFmtROFormatLong() {
 };
 
 function testDurFmtROFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ro-RO",
     	length: "full"
     });
@@ -7809,7 +7811,7 @@ function testDurFmtROFormatFull() {
 
 function testDurFmtROAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ro-RO",
     	length: "full",
     	sync: false,
@@ -7835,7 +7837,7 @@ function testDurFmtROAsyncWithLocale() {
 
 function testDurFmtROFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ro-RO",
     	length: "short",
     	style: "clock",
@@ -7862,7 +7864,7 @@ function testDurFmtROFormatShortClockAsync() {
 //test cases for ru-RU
 
 function testDurFmtRUFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "short"
     });
@@ -7881,7 +7883,7 @@ function testDurFmtRUFormatShortDefaultStyle() {
 };
 
 function testDurFmtRUFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "short",
     	style: "text"
@@ -7901,7 +7903,7 @@ function testDurFmtRUFormatShortText() {
 };
 
 function testDurFmtRUFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "short",
     	style: "clock"
@@ -7921,7 +7923,7 @@ function testDurFmtRUFormatShortClock() {
 };
 
 function testDurFmtRUFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "medium"
     });
@@ -7940,7 +7942,7 @@ function testDurFmtRUFormatMedium() {
 };
 
 function testDurFmtRUFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "long"
     });
@@ -7959,7 +7961,7 @@ function testDurFmtRUFormatLong() {
 };
 
 function testDurFmtRUFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ru-RU",
     	length: "full"
     });
@@ -7980,7 +7982,7 @@ function testDurFmtRUFormatFull() {
 
 function testDurFmtRUAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ru-RU",
     	length: "full",
     	sync: false,
@@ -8006,7 +8008,7 @@ function testDurFmtRUAsyncWithLocale() {
 
 function testDurFmtRUFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ru-RU",
     	length: "short",
     	style: "clock",
@@ -8033,7 +8035,7 @@ function testDurFmtRUFormatShortClockAsync() {
 //test cases for sk-SK
 
 function testDurFmtSKFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "short"
     });
@@ -8052,7 +8054,7 @@ function testDurFmtSKFormatShortDefaultStyle() {
 };
 
 function testDurFmtSKFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "short",
     	style: "text"
@@ -8072,7 +8074,7 @@ function testDurFmtSKFormatShortText() {
 };
 
 function testDurFmtSKFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "short",
     	style: "clock"
@@ -8092,7 +8094,7 @@ function testDurFmtSKFormatShortClock() {
 };
 
 function testDurFmtSKFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "medium"
     });
@@ -8111,7 +8113,7 @@ function testDurFmtSKFormatMedium() {
 };
 
 function testDurFmtSKFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "long"
     });
@@ -8130,7 +8132,7 @@ function testDurFmtSKFormatLong() {
 };
 
 function testDurFmtSKFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sk-SK",
     	length: "full"
     });
@@ -8151,7 +8153,7 @@ function testDurFmtSKFormatFull() {
 
 function testDurFmtSKAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sk-SK",
     	length: "full",
     	sync: false,
@@ -8177,7 +8179,7 @@ function testDurFmtSKAsyncWithLocale() {
 
 function testDurFmtSKFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sk-SK",
     	length: "short",
     	style: "clock",
@@ -8205,7 +8207,7 @@ function testDurFmtSKFormatShortClockAsync() {
 //test cases for sq-AL
 
 function testDurFmtSQFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "short"
     });
@@ -8224,7 +8226,7 @@ function testDurFmtSQFormatShortDefaultStyle() {
 };
 
 function testDurFmtSQFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "short",
     	style: "text"
@@ -8244,7 +8246,7 @@ function testDurFmtSQFormatShortText() {
 };
 
 function testDurFmtSQFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "short",
     	style: "clock"
@@ -8264,7 +8266,7 @@ function testDurFmtSQFormatShortClock() {
 };
 
 function testDurFmtSQFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "medium"
     });
@@ -8283,7 +8285,7 @@ function testDurFmtSQFormatMedium() {
 };
 
 function testDurFmtSQFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "long"
     });
@@ -8302,7 +8304,7 @@ function testDurFmtSQFormatLong() {
 };
 
 function testDurFmtSQFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sq-AL",
     	length: "full"
     });
@@ -8323,7 +8325,7 @@ function testDurFmtSQFormatFull() {
 
 function testDurFmtSQAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sq-AL",
     	length: "full",
     	sync: false,
@@ -8349,7 +8351,7 @@ function testDurFmtSQAsyncWithLocale() {
 
 function testDurFmtSQFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sq-AL",
     	length: "short",
     	style: "clock",
@@ -8376,7 +8378,7 @@ function testDurFmtSQFormatShortClockAsync() {
 //test cases for sr-Latn-RS
 
 function testDurFmtSRFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "short"
     });
@@ -8395,7 +8397,7 @@ function testDurFmtSRFormatShortDefaultStyle() {
 };
 
 function testDurFmtSRFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "short",
     	style: "text"
@@ -8415,7 +8417,7 @@ function testDurFmtSRFormatShortText() {
 };
 
 function testDurFmtSRFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "short",
     	style: "clock"
@@ -8436,7 +8438,7 @@ function testDurFmtSRFormatShortClock() {
 
 
 function testDurFmtSRFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "long"
     });
@@ -8455,7 +8457,7 @@ function testDurFmtSRFormatLong() {
 };
 
 function testDurFmtSRFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "full"
     });
@@ -8476,7 +8478,7 @@ function testDurFmtSRFormatFull() {
 
 function testDurFmtSRAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "full",
     	sync: false,
@@ -8502,7 +8504,7 @@ function testDurFmtSRAsyncWithLocale() {
 
 function testDurFmtSRFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "short",
     	style: "clock",
@@ -8529,7 +8531,7 @@ function testDurFmtSRFormatShortClockAsync() {
 //test cases for th-TH
 
 function testDurFmtTHFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "short"
     });
@@ -8548,7 +8550,7 @@ function testDurFmtTHFormatShortDefaultStyle() {
 };
 
 function testDurFmtTHFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "short",
     	style: "text"
@@ -8568,7 +8570,7 @@ function testDurFmtTHFormatShortText() {
 };
 
 function testDurFmtTHFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "short",
     	style: "clock"
@@ -8588,7 +8590,7 @@ function testDurFmtTHFormatShortClock() {
 };
 
 function testDurFmtTHFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "medium"
     });
@@ -8607,7 +8609,7 @@ function testDurFmtTHFormatMedium() {
 };
 
 function testDurFmtTHFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "long"
     });
@@ -8626,7 +8628,7 @@ function testDurFmtTHFormatLong() {
 };
 
 function testDurFmtTHFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "th-TH",
     	length: "full"
     });
@@ -8647,7 +8649,7 @@ function testDurFmtTHFormatFull() {
 
 function testDurFmtTHAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "th-TH",
     	length: "full",
     	sync: false,
@@ -8673,7 +8675,7 @@ function testDurFmtTHAsyncWithLocale() {
 
 function testDurFmtTHFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "th-TH",
     	length: "short",
     	style: "clock",
@@ -8703,7 +8705,7 @@ function testDurFmtTHFormatShortClockAsync() {
 
 
 function testDurFmtUKUAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "short"
     });
@@ -8722,7 +8724,7 @@ function testDurFmtUKUAFormatShortDefaultStyle() {
 };
 
 function testDurFmtUKUAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "short",
     	style: "text"
@@ -8742,7 +8744,7 @@ function testDurFmtUKUAFormatShortText() {
 };
 
 function testDurFmtUKUAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "short",
     	style: "clock"
@@ -8762,7 +8764,7 @@ function testDurFmtUKUAFormatShortClock() {
 };
 
 function testDurFmtUKUAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "medium"
     });
@@ -8781,7 +8783,7 @@ function testDurFmtUKUAFormatMedium() {
 };
 
 function testDurFmtUKUAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "long"
     });
@@ -8800,7 +8802,7 @@ function testDurFmtUKUAFormatLong() {
 };
 
 function testDurFmtUKUAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uk-UA",
     	length: "full"
     });
@@ -8821,7 +8823,7 @@ function testDurFmtUKUAFormatFull() {
 
 function testDurFmtUKUAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uk-UA",
     	length: "full",
     	sync: false,
@@ -8847,7 +8849,7 @@ function testDurFmtUKUAAsyncWithLocale() {
 
 function testDurFmtUKUAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uk-UA",
     	length: "short",
     	style: "clock",
@@ -8874,7 +8876,7 @@ function testDurFmtUKUAFormatShortClockAsync() {
 //test cases for uz-Cyrl-UZ
 /*
 function testDurFmtUZFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "short"
     });
@@ -8893,7 +8895,7 @@ function testDurFmtUZFormatShortDefaultStyle() {
 };
 
 function testDurFmtUZFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "short",
     	style: "text"
@@ -8913,7 +8915,7 @@ function testDurFmtUZFormatShortText() {
 };
 
 function testDurFmtUZFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "short",
     	style: "clock"
@@ -8933,7 +8935,7 @@ function testDurFmtUZFormatShortClock() {
 };
 
 function testDurFmtUZFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "medium"
     });
@@ -8952,7 +8954,7 @@ function testDurFmtUZFormatMedium() {
 };
 
 function testDurFmtUZFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "long"
     });
@@ -8971,7 +8973,7 @@ function testDurFmtUZFormatLong() {
 };
 
 function testDurFmtUZFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "full"
     });
@@ -8992,7 +8994,7 @@ function testDurFmtUZFormatFull() {
 
 function testDurFmtUZAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "full",
     	sync: false,
@@ -9018,7 +9020,7 @@ function testDurFmtUZAsyncWithLocale() {
 
 function testDurFmtUZFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "short",
     	style: "clock",
@@ -9046,7 +9048,7 @@ function testDurFmtUZFormatShortClockAsync() {
 
 
 function testDurFmtUZLATNFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "short"
     });
@@ -9065,7 +9067,7 @@ function testDurFmtUZLATNFormatShortDefaultStyle() {
 };
 
 function testDurFmtUZLATNFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "short",
     	style: "text"
@@ -9085,7 +9087,7 @@ function testDurFmtUZLATNFormatShortText() {
 };
 
 function testDurFmtUZLATNFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "short",
     	style: "clock"
@@ -9105,7 +9107,7 @@ function testDurFmtUZLATNFormatShortClock() {
 };
 
 function testDurFmtUZLATNFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "medium"
     });
@@ -9124,7 +9126,7 @@ function testDurFmtUZLATNFormatMedium() {
 };
 
 function testDurFmtUZLATNFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "long"
     });
@@ -9143,7 +9145,7 @@ function testDurFmtUZLATNFormatLong() {
 };
 
 function testDurFmtUZLATNFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "full"
     });
@@ -9164,7 +9166,7 @@ function testDurFmtUZLATNFormatFull() {
 
 function testDurFmtUZLATNAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "full",
     	sync: false,
@@ -9190,7 +9192,7 @@ function testDurFmtUZLATNAsyncWithLocale() {
 
 function testDurFmtUZLATNFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "short",
     	style: "clock",
@@ -9218,7 +9220,7 @@ function testDurFmtUZLATNFormatShortClockAsync() {
 //test cases for vietnemese
 
 function testDurFmtVIFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "short"
     });
@@ -9237,7 +9239,7 @@ function testDurFmtVIFormatShortDefaultStyle() {
 };
 
 function testDurFmtVIFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "short",
     	style: "text"
@@ -9257,7 +9259,7 @@ function testDurFmtVIFormatShortText() {
 };
 
 function testDurFmtVIFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "short",
     	style: "clock"
@@ -9277,7 +9279,7 @@ function testDurFmtVIFormatShortClock() {
 };
 
 function testDurFmtVIFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "medium"
     });
@@ -9296,7 +9298,7 @@ function testDurFmtVIFormatMedium() {
 };
 
 function testDurFmtVIFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "long"
     });
@@ -9315,7 +9317,7 @@ function testDurFmtVIFormatLong() {
 };
 
 function testDurFmtVIFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "vi-VN",
     	length: "full"
     });
@@ -9336,7 +9338,7 @@ function testDurFmtVIFormatFull() {
 
 function testDurFmtVIAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "vi-VN",
     	length: "full",
     	sync: false,
@@ -9362,7 +9364,7 @@ function testDurFmtVIAsyncWithLocale() {
 
 function testDurFmtVIFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "vi-VN",
     	length: "short",
     	style: "clock",
@@ -9390,7 +9392,7 @@ function testDurFmtVIFormatShortClockAsync() {
 //test cases for zh-Hant-TW
 
 function testDurFmtZHFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "short"
     });
@@ -9409,7 +9411,7 @@ function testDurFmtZHFormatShortDefaultStyle() {
 };
 
 function testDurFmtZHFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "short",
     	style: "text"
@@ -9429,7 +9431,7 @@ function testDurFmtZHFormatShortText() {
 };
 
 function testDurFmtZHFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "short",
     	style: "clock"
@@ -9449,7 +9451,7 @@ function testDurFmtZHFormatShortClock() {
 };
 
 function testDurFmtZHFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "medium"
     });
@@ -9468,7 +9470,7 @@ function testDurFmtZHFormatMedium() {
 };
 
 function testDurFmtZHFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "long"
     });
@@ -9487,7 +9489,7 @@ function testDurFmtZHFormatLong() {
 };
 
 function testDurFmtZHFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "full"
     });
@@ -9508,7 +9510,7 @@ function testDurFmtZHFormatFull() {
 
 function testDurFmtZHAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "full",
     	sync: false,
@@ -9534,7 +9536,7 @@ function testDurFmtZHAsyncWithLocale() {
 
 function testDurFmtZHFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "short",
     	style: "clock",
@@ -9562,7 +9564,7 @@ function testDurFmtZHFormatShortClockAsync() {
 //test cases for zh-Hank-HK
 
 function testDurFmtZHHKFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "short"
     });
@@ -9582,7 +9584,7 @@ function testDurFmtZHHKFormatShortDefaultStyle() {
 
 
 function testDurFmtZHHKFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "short",
     	style: "text"
@@ -9602,7 +9604,7 @@ function testDurFmtZHHKFormatShortText() {
 };
 
 function testDurFmtZHHKFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "short",
     	style: "clock"
@@ -9622,7 +9624,7 @@ function testDurFmtZHHKFormatShortClock() {
 };
 
 function testDurFmtZHHKFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "medium"
     });
@@ -9641,7 +9643,7 @@ function testDurFmtZHHKFormatMedium() {
 };
 
 function testDurFmtZHHKFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "long"
     });
@@ -9660,7 +9662,7 @@ function testDurFmtZHHKFormatLong() {
 };
 
 function testDurFmtZHHKFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "full"
     });
@@ -9681,7 +9683,7 @@ function testDurFmtZHHKFormatFull() {
 
 function testDurFmtZHHKAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "full",
     	sync: false,
@@ -9707,7 +9709,7 @@ function testDurFmtZHHKAsyncWithLocale() {
 
 function testDurFmtZHHKFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "short",
     	style: "clock",
@@ -9735,7 +9737,7 @@ function testDurFmtZHHKFormatShortClockAsync() {
 //test cases for tr-TR
 
 function testDurFmtTRFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "short"
     });
@@ -9754,7 +9756,7 @@ function testDurFmtTRFormatShortDefaultStyle() {
 };
 
 function testDurFmtTRFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "short",
     	style: "text"
@@ -9774,7 +9776,7 @@ function testDurFmtTRFormatShortText() {
 };
 
 function testDurFmtTRFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "short",
     	style: "clock"
@@ -9794,7 +9796,7 @@ function testDurFmtTRFormatShortClock() {
 };
 
 function testDurFmtTRFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "medium"
     });
@@ -9813,7 +9815,7 @@ function testDurFmtTRFormatMedium() {
 };
 
 function testDurFmtTRFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "long"
     });
@@ -9832,7 +9834,7 @@ function testDurFmtTRFormatLong() {
 };
 
 function testDurFmtTRFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "tr-TR",
     	length: "full"
     });
@@ -9853,7 +9855,7 @@ function testDurFmtTRFormatFull() {
 
 function testDurFmtTRAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "tr-TR",
     	length: "full",
     	sync: false,
@@ -9879,7 +9881,7 @@ function testDurFmtTRAsyncWithLocale() {
 
 function testDurFmtTRFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "tr-TR",
     	length: "short",
     	style: "clock",
@@ -9907,7 +9909,7 @@ function testDurFmtTRFormatShortClockAsync() {
 //test cases for swedish
 
 function testDurFmtSVFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "short"
     });
@@ -9926,7 +9928,7 @@ function testDurFmtSVFormatShortDefaultStyle() {
 };
 
 function testDurFmtSVFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "short",
     	style: "text"
@@ -9946,7 +9948,7 @@ function testDurFmtSVFormatShortText() {
 };
 
 function testDurFmtSVFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "short",
     	style: "clock"
@@ -9966,7 +9968,7 @@ function testDurFmtSVFormatShortClock() {
 };
 
 function testDurFmtSVFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "medium"
     });
@@ -9985,7 +9987,7 @@ function testDurFmtSVFormatMedium() {
 };
 
 function testDurFmtSVFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "long"
     });
@@ -10004,7 +10006,7 @@ function testDurFmtSVFormatLong() {
 };
 
 function testDurFmtSVFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sv-SE",
     	length: "full"
     });
@@ -10025,7 +10027,7 @@ function testDurFmtSVFormatFull() {
 
 function testDurFmtSVAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sv-SE",
     	length: "full",
     	sync: false,
@@ -10051,7 +10053,7 @@ function testDurFmtSVAsyncWithLocale() {
 
 function testDurFmtSVFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sv-SE",
     	length: "short",
     	style: "clock",
@@ -10080,7 +10082,7 @@ function testDurFmtSVFormatShortClockAsync() {
 
 
 function testDurFmtSLFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "short"
     });
@@ -10099,7 +10101,7 @@ function testDurFmtSLFormatShortDefaultStyle() {
 };
 
 function testDurFmtSLFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "short",
     	style: "text"
@@ -10119,7 +10121,7 @@ function testDurFmtSLFormatShortText() {
 };
 
 function testDurFmtSLFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "short",
     	style: "clock"
@@ -10139,7 +10141,7 @@ function testDurFmtSLFormatShortClock() {
 };
 
 function testDurFmtSLFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "medium"
     });
@@ -10158,7 +10160,7 @@ function testDurFmtSLFormatMedium() {
 };
 
 function testDurFmtSLFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "long"
     });
@@ -10177,7 +10179,7 @@ function testDurFmtSLFormatLong() {
 };
 
 function testDurFmtSLFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "sl-SI",
     	length: "full"
     });
@@ -10198,7 +10200,7 @@ function testDurFmtSLFormatFull() {
 
 function testDurFmtSLAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sl-SI",
     	length: "full",
     	sync: false,
@@ -10224,7 +10226,7 @@ function testDurFmtSLAsyncWithLocale() {
 
 function testDurFmtSLFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "sl-SI",
     	length: "short",
     	style: "clock",
@@ -10252,7 +10254,7 @@ function testDurFmtSLFormatShortClockAsync() {
 
 
 function testDurFmtPTPTFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "short"
     });
@@ -10271,7 +10273,7 @@ function testDurFmtPTPTFormatShortDefaultStyle() {
 };
 
 function testDurFmtPTPTFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "short",
     	style: "text"
@@ -10291,7 +10293,7 @@ function testDurFmtPTPTFormatShortText() {
 };
 
 function testDurFmtPTPTFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "short",
     	style: "clock"
@@ -10311,7 +10313,7 @@ function testDurFmtPTPTFormatShortClock() {
 };
 
 function testDurFmtPTPTFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "medium"
     });
@@ -10330,7 +10332,7 @@ function testDurFmtPTPTFormatMedium() {
 };
 
 function testDurFmtPTPTFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "long"
     });
@@ -10349,7 +10351,7 @@ function testDurFmtPTPTFormatLong() {
 };
 
 function testDurFmtPTPTFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "pt-PT",
     	length: "full"
     });
@@ -10370,7 +10372,7 @@ function testDurFmtPTPTFormatFull() {
 
 function testDurFmtPTPTAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pt-PT",
     	length: "full",
     	sync: false,
@@ -10396,7 +10398,7 @@ function testDurFmtPTPTAsyncWithLocale() {
 
 function testDurFmtPTPTFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "pt-PT",
     	length: "short",
     	style: "clock",

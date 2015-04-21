@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 function testBRLocalNumber1() {
-	var parsed = new ilib.PhoneNumber("3111-1111",{locale: "pt-BR"});
+	var parsed = new PhoneNumber("3111-1111",{locale: "pt-BR"});
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -27,7 +29,7 @@ function testBRLocalNumber1() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'pt-BR'});
+	var locator = new PhoneGeoLocator({locale: 'pt-BR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -37,7 +39,7 @@ function testBRLocalNumber1() {
 };
 
 function testBRNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("0 31 85 2222 2222",{locale: "pt-BR"});
+	var parsed = new PhoneNumber("0 31 85 2222 2222",{locale: "pt-BR"});
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -50,7 +52,7 @@ function testBRNumberWithAreaCode1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: "pt-BR"});
+	var locator = new PhoneGeoLocator({locale: "pt-BR"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -61,7 +63,7 @@ function testBRNumberWithAreaCode1() {
 };
 
 function testBRNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("0-31-31-2222-2222",{locale: "pt-BR"});
+	var parsed = new PhoneNumber("0-31-31-2222-2222",{locale: "pt-BR"});
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -74,7 +76,7 @@ function testBRNumberWithAreaCode2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'pt-BR'});
+	var locator = new PhoneGeoLocator({locale: 'pt-BR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -85,7 +87,7 @@ function testBRNumberWithAreaCode2() {
 };
 
 function testBRNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+55-31-2122-3456");
+	var parsed = new PhoneNumber("+55-31-2122-3456");
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -98,7 +100,7 @@ function testBRNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'pt-BR'});
+	var locator = new PhoneGeoLocator({locale: 'pt-BR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -109,7 +111,7 @@ function testBRNumberWithAreaCodeAndCountry1() {
 };
 
 function testBRNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+55-87-2122-3456");
+	var parsed = new PhoneNumber("+55-87-2122-3456");
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -122,7 +124,7 @@ function testBRNumberWithAreaCodeAndCountry2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -133,7 +135,7 @@ function testBRNumberWithAreaCodeAndCountry2() {
 };
 
 function testBRNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+55-71-2123-3456");
+	var parsed = new PhoneNumber("+55-71-2123-3456");
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -146,7 +148,7 @@ function testBRNumberWithAreaCodeAndCountry3() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -157,7 +159,7 @@ function testBRNumberWithAreaCodeAndCountry3() {
 };
 
 function testBRNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 55-71-2123-3456");
+	var parsed = new PhoneNumber("011 55-71-2123-3456");
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -170,7 +172,7 @@ function testBRNumberCallFromUS() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -181,7 +183,7 @@ function testBRNumberCallFromUS() {
 };
 
 function testBRPolice() {
-	var parsed = new ilib.PhoneNumber("197",{locale: "pt-BR"});
+	var parsed = new PhoneNumber("197",{locale: "pt-BR"});
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -193,7 +195,7 @@ function testBRPolice() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "pt-BR"});
+	var locator = new PhoneGeoLocator({locale: "pt-BR"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -205,7 +207,7 @@ function testBRPolice() {
 };
 
 function testBRAmbulance() {
-	var parsed = new ilib.PhoneNumber("192",{locale: "pt-BR"});
+	var parsed = new PhoneNumber("192",{locale: "pt-BR"});
 	var expected = {
 		country: {
 			sn: "Brazil",
@@ -217,7 +219,7 @@ function testBRAmbulance() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "pt-BR"});
+	var locator = new PhoneGeoLocator({locale: "pt-BR"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

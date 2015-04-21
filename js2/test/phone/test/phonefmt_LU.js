@@ -17,14 +17,16 @@
  * limitations under the License.
  */
  
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneFmt = require("./../lib/PhoneFmt.js");
 function testFormatStyle0() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
 		}),
 		expected = "22 34 56";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -34,12 +36,12 @@ function testFormatStyle0() {
 
 function testFormatStyle1() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
 		}),
 		expected = "223456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -48,12 +50,12 @@ function testFormatStyle1() {
 };
 function testFormatStyle2() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
 		}),
 		expected = "223-456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -63,14 +65,14 @@ function testFormatStyle2() {
 
 function testFormatInternational() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "352",
 			subscriberNumber: "123456"
 		}),
 		expected = "+352 123 456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -80,14 +82,14 @@ function testFormatInternational() {
 
 function testFormatInternationalAccessCode() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "352",
 			subscriberNumber: "123456"
 		}),
 		expected = "00 352 123 456";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -97,13 +99,13 @@ function testFormatInternationalAccessCode() {
 
 function testFormatMobile() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			mobilePrefix: "661",
 			subscriberNumber: "234567"
 		}),
 		expected = "661 234 567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -113,7 +115,7 @@ function testFormatMobile() {
 
 function testFormatMobileInternational() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "352",
 			mobilePrefix: "661",
@@ -121,7 +123,7 @@ function testFormatMobileInternational() {
 		}),
 		expected = "+352 661 234 567";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -132,12 +134,12 @@ function testFormatMobileInternational() {
 
 function testFormatWithParamsSMSPartial() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "8765"
 		}),
 		expected = "87 65";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -147,12 +149,12 @@ function testFormatWithParamsSMSPartial() {
 
 function testFormatWithParamsSMSWhole() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "8765"
 		}),
 		expected = "8765";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -162,13 +164,13 @@ function testFormatWithParamsSMSWhole() {
 
 function testFormatPremium() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			serviceCode: "901",
 			subscriberNumber: "12345"
 		}),
 		expected = "901 123 45";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -177,13 +179,13 @@ function testFormatPremium() {
 };
 function testFormatBlock() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			serviceCode: "116",
 			subscriberNumber: "116"
 		}),
 		expected = "116 116";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "default"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "default"});
 	formatted = fmt.format(parsed);
 	
 	assertEquals(expected, formatted);
@@ -195,12 +197,12 @@ function testFormatBlock() {
 
 function testFormatStyle0Partial1() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5"
 		}),
 		expected = "5";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -209,12 +211,12 @@ function testFormatStyle0Partial1() {
 };
 function testFormatStyle0Partial2() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50"
 		}),
 		expected = "50";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -223,12 +225,12 @@ function testFormatStyle0Partial2() {
 };
 function testFormatStyle0Partial3() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501"
 		}),
 		expected = "501";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -237,12 +239,12 @@ function testFormatStyle0Partial3() {
 };
 function testFormatStyle0Partial4() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
 		}),
 		expected = "50 12";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -251,12 +253,12 @@ function testFormatStyle0Partial4() {
 };
 function testFormatStyle0Partial5() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
 		}),
 		expected = "501 23";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -265,12 +267,12 @@ function testFormatStyle0Partial5() {
 };
 function testFormatStyle0Partial6() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
 		}),
 		expected = "50 12 34";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -279,12 +281,12 @@ function testFormatStyle0Partial6() {
 };
 function testFormatStyle0Partial7() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012345" // too long
 		}),
 		expected = "5012345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU"});
+	var fmt = new PhoneFmt({locale: "de-LU"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -295,12 +297,12 @@ function testFormatStyle0Partial7() {
 
 function testFormatStyle1Partial1() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5"
 		}),
 		expected = "5";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -309,12 +311,12 @@ function testFormatStyle1Partial1() {
 };
 function testFormatStyle1Partial2() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50"
 		}),
 		expected = "50";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -323,12 +325,12 @@ function testFormatStyle1Partial2() {
 };
 function testFormatStyle1Partial3() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501"
 		}),
 		expected = "501";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -337,12 +339,12 @@ function testFormatStyle1Partial3() {
 };
 function testFormatStyle1Partial4() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
 		}),
 		expected = "5012";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -351,12 +353,12 @@ function testFormatStyle1Partial4() {
 };
 function testFormatStyle1Partial5() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
 		}),
 		expected = "50123";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -365,12 +367,12 @@ function testFormatStyle1Partial5() {
 };
 function testFormatStyle1Partial6() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
 		}),
 		expected = "501234";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -379,12 +381,12 @@ function testFormatStyle1Partial6() {
 };
 function testFormatStyle1Partial7() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012345"
 		}),
 		expected = "5012345"; // too long
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "komprimierte/comprimé"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -395,12 +397,12 @@ function testFormatStyle1Partial7() {
 
 function testFormatStyle2Partial1() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5"
 		}),
 		expected = "5";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -409,12 +411,12 @@ function testFormatStyle2Partial1() {
 };
 function testFormatStyle2Partial2() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50"
 		}),
 		expected = "50";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -423,12 +425,12 @@ function testFormatStyle2Partial2() {
 };
 function testFormatStyle2Partial3() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501"
 		}),
 		expected = "501";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -437,12 +439,12 @@ function testFormatStyle2Partial3() {
 };
 function testFormatStyle2Partial4() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
 		}),
 		expected = "501-2";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -451,12 +453,12 @@ function testFormatStyle2Partial4() {
 };
 function testFormatStyle2Partial5() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
 		}),
 		expected = "501-23";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -465,12 +467,12 @@ function testFormatStyle2Partial5() {
 };
 function testFormatStyle2Partial6() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
 		}),
 		expected = "501-234";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);
@@ -479,12 +481,12 @@ function testFormatStyle2Partial6() {
 };
 function testFormatStyle2Partial7() {
 	var formatted,
-		parsed = new ilib.PhoneNumber({
+		parsed = new PhoneNumber({
 			subscriberNumber: "5012345" // too long
 		}),
 		expected = "5012345";
 	
-	var fmt = new ilib.PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
+	var fmt = new PhoneFmt({locale: "de-LU", style: "Bindestrichen/tirets"});
 	formatted = fmt.format(parsed, {partial: true});
 	
 	assertEquals(expected, formatted);

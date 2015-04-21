@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var DateFmt = require("./../lib/DateFmt.js");
+var DateFactory = require("./../lib/DateFactory.js");
 ilib.data.timezones = {
     "America/Los_Angeles": {
         "o": "-8:0",
@@ -137,7 +140,7 @@ function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.DateFmt();
+		    var fmt = new DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -149,7 +152,7 @@ function testDateFmtConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -163,7 +166,7 @@ function testDateFmtConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);
@@ -177,7 +180,7 @@ function testDateFmtConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-otherfile-complex-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "zh-Hant-TW"
 			});
 		    assertNotNull(fmt);
@@ -191,7 +194,7 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-otherfile-options-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "fr-FR",
 				type: "datetime",
 				date: "dmywg",
@@ -206,7 +209,7 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 }
 
 function testDateFmtFormatInitial(results) {
-	var fmt = new ilib.DateFmt({
+	var fmt = new DateFmt({
 		locale: "fr-FR",
 		type: "datetime",
 		date: "dmywg",
@@ -219,7 +222,7 @@ function testDateFmtFormatInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-format-full-initial",
 		fn: function () {
-			d = ilib.Date.newInstance();
+			d = DateFactory();
 			assertNotUndefined(fmt.format(d));
 		}
 	});

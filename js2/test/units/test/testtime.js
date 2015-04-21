@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var TimeUnit = require("./../lib/TimeUnit.js");
+
 function testTimeTimeConstructor() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "sec",
 	    amount: 2
 	});
@@ -27,11 +29,11 @@ function testTimeTimeConstructor() {
 }
 
 function testTimeTimeConvertSecondToHour() {
-	var m1 = new ilib.Measurement.Time({
+	var m1 = new TimeUnit({
 	    unit: "sec",
 	    amount: 3600
 	});
-	var m2 = new ilib.Measurement.Time({
+	var m2 = new TimeUnit({
 	    unit: "hour",
 	    amount: m1
 	});
@@ -43,37 +45,37 @@ function testTimeTimeConvertSecondToHour() {
 }
 
 function testTimeStaticConvert1() {
-	var m = ilib.Measurement.Time.convert("second", "ns", 1000000000);
+	var m = TimeUnit.convert("second", "ns", 1000000000);
 
 	assertEquals(1, m);
 }
 
 function testTimeStaticConvertWithString() {
-	var m = ilib.Measurement.Time.convert("hour", "decade", "5");
+	var m = TimeUnit.convert("hour", "decade", "5");
 
 	assertEquals(438290.5, m);
 }
 
 function testTimeStaticConvert2() {
-	var m = ilib.Measurement.Time.convert("hour", "day", 10);
+	var m = TimeUnit.convert("hour", "day", 10);
 
 	assertEquals(240, m);
 }
 
 function testTimeStaticConvert3() {
-	var m = ilib.Measurement.Time.convert("min", "month", 2);
+	var m = TimeUnit.convert("min", "month", 2);
 
 	assertEquals(87658.2, m);
 }
 
 function testTimeStaticConvert4() {
-	var m = ilib.Measurement.Time.convert("day", "week", 10);
+	var m = TimeUnit.convert("day", "week", 10);
 
 	assertEquals(70, m);
 }
 
 function testTimeScaling1() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "ns",
 	    amount: 1024
 	});
@@ -85,7 +87,7 @@ function testTimeScaling1() {
 }
 
 function testTimeScaling2() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "ms",
 	    amount: 12000
 	});
@@ -97,7 +99,7 @@ function testTimeScaling2() {
 }
 
 function testTimeScaling3() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "day",
 	    amount: 10485
 	});
@@ -109,7 +111,7 @@ function testTimeScaling3() {
 }
 
 function testTimeScaling4() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "year",
 	    amount: 1000
 	});
@@ -121,7 +123,7 @@ function testTimeScaling4() {
 }
 
 function testTimeScaling5() {
-	var m = new ilib.Measurement.Time({
+	var m = new TimeUnit({
 	    unit: "h",
 	    amount: 120
 	});
@@ -133,7 +135,7 @@ function testTimeScaling5() {
 }
 
 function testTimeGetMeasures() {
-	var measures = ilib.Measurement.Time.getMeasures();
+	var measures = TimeUnit.getMeasures();
 	var expected = [
 	    "nanosecond",
 	    "microsecond",

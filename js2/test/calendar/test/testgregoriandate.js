@@ -17,19 +17,17 @@
  * limitations under the License.
  */
 
-//if (ilib.isDynCode()) {
-//	ilib.Date.newInstance({type: "gregorian"});
-//}
+var GregorianDate = require("./../lib/GregorianDate.js");
 
 function testGregDateConstructor() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 }
 
 /* julian date is rd 366 + epoch */
 function testGregDateConstructorFromJD() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	julianday: 1721790.75,
     	timezone: "Etc/UTC"
     });
@@ -45,7 +43,7 @@ function testGregDateConstructorFromJD() {
 }
 
 function testGregDateAfterLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
+    var gd = new GregorianDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
     
     assertEquals('object', typeof(gd));
     assertEquals(5, gd.getYears());
@@ -58,7 +56,7 @@ function testGregDateAfterLeapYear() {
 }
 
 function testGregDateJan31Midnight() {
-    var gd = new ilib.Date.GregDate({rd: 734533, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
+    var gd = new GregorianDate({rd: 734533, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -71,7 +69,7 @@ function testGregDateJan31Midnight() {
 }
 
 function testGregDateJan31Noon() {
-    var gd = new ilib.Date.GregDate({rd: 734533.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734533.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -84,7 +82,7 @@ function testGregDateJan31Noon() {
 }
 
 function testGregDateFeb1() {
-    var gd = new ilib.Date.GregDate({rd: 734534.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734534.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -97,7 +95,7 @@ function testGregDateFeb1() {
 }
 
 function testGregDateFeb28LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734561.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734561.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -110,7 +108,7 @@ function testGregDateFeb28LeapYear() {
 }
 
 function testGregDateFeb29LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734562.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734562.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -123,7 +121,7 @@ function testGregDateFeb29LeapYear() {
 }
 
 function testGregDateMar1LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734563.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734563.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -136,7 +134,7 @@ function testGregDateMar1LeapYear() {
 }
 
 function testGregDateMar31LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734593.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734593.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -149,7 +147,7 @@ function testGregDateMar31LeapYear() {
 }
 
 function testGregDateApr1LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734594.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734594.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -162,7 +160,7 @@ function testGregDateApr1LeapYear() {
 }
 
 function testGregDateDec31LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734868.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
+    var gd = new GregorianDate({rd: 734868.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -175,7 +173,7 @@ function testGregDateDec31LeapYear() {
 }
 
 function testGregDateJan1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734869.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
+    var gd = new GregorianDate({rd: 734869.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -188,7 +186,7 @@ function testGregDateJan1NonLeapYear() {
 }
 
 function testGregDateFeb28NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734927.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
+    var gd = new GregorianDate({rd: 734927.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -201,7 +199,7 @@ function testGregDateFeb28NonLeapYear() {
 }
 
 function testGregDateMar1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734928.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
+    var gd = new GregorianDate({rd: 734928.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -214,7 +212,7 @@ function testGregDateMar1NonLeapYear() {
 }
 
 function testGregDateMar31NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734958.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
+    var gd = new GregorianDate({rd: 734958.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -227,7 +225,7 @@ function testGregDateMar31NonLeapYear() {
 }
 
 function testGregDateApr1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734959.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
+    var gd = new GregorianDate({rd: 734959.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -240,7 +238,7 @@ function testGregDateApr1NonLeapYear() {
 }
 
 function testGregDateAfterCentury() {
-    var gd = new ilib.Date.GregDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
+    var gd = new GregorianDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
     
     assertEquals('object', typeof(gd));
     assertEquals(101, gd.getYears());
@@ -253,7 +251,7 @@ function testGregDateAfterCentury() {
 }
 
 function testGregDateAfterQuadCentury() {
-    var gd = new ilib.Date.GregDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
+    var gd = new GregorianDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(401, gd.getYears());
@@ -266,7 +264,7 @@ function testGregDateAfterQuadCentury() {
 }
 
 function testGregDateEndOfYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2455196.5, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({julianday: 2455196.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2009, gd.getYears());
@@ -279,7 +277,7 @@ function testGregDateEndOfYear() {
 }
 
 function testGregDateBeginningOfYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2455197.5, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({julianday: 2455197.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2010, gd.getYears());
@@ -292,7 +290,7 @@ function testGregDateBeginningOfYear() {
 }
 
 function testGregDateEndOfYearLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2454831.5, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({julianday: 2454831.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2008, gd.getYears());
@@ -305,7 +303,7 @@ function testGregDateEndOfYearLeapYear() {
 }
 
 function testGregDateBeginningOfYearAfterLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2454832.5, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({julianday: 2454832.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2009, gd.getYears());
@@ -318,7 +316,7 @@ function testGregDateBeginningOfYearAfterLeapYear() {
 }
 
 function testGregDateEndOfYear0RJd() {
-    var gd = new ilib.Date.GregDate({julianday: 1721424.5, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({julianday: 1721424.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(0, gd.getYears());
@@ -331,7 +329,7 @@ function testGregDateEndOfYear0RJd() {
 }
 
 function testGregDateEndOfYear0Rd() {
-    var gd = new ilib.Date.GregDate({rd: 0, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(0, gd.getYears());
@@ -344,7 +342,7 @@ function testGregDateEndOfYear0Rd() {
 }
 
 function testGregDateBeginningOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 1, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -357,7 +355,7 @@ function testGregDateBeginningOfYearRd() {
 }
 
 function testGregDateAlmostEndOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 364, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -370,7 +368,7 @@ function testGregDateAlmostEndOfYearRd() {
 }
 
 function testGregDateEndOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 365, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -383,7 +381,7 @@ function testGregDateEndOfYearRd() {
 }
 
 function testGregDateBeginningOfYear2Rd() {
-    var gd = new ilib.Date.GregDate({rd: 366, timezone: "Etc/UTC"});
+    var gd = new GregorianDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2, gd.getYears());
@@ -436,7 +434,7 @@ function testGregDateConvert() {
     var gd;
     
     for (var i = 0; i < testDatesGregorian.length; i++) {
-        gd = new ilib.Date.GregDate({julianday: testDatesGregorian[i][0], timezone: "Etc/UTC"});
+        gd = new GregorianDate({julianday: testDatesGregorian[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDatesGregorian[i][0]);
         
@@ -453,7 +451,7 @@ function testGregDateConvert() {
 }
 
 function testGregDateConstructorFull() {
-	var gd = new ilib.Date.GregDate({
+	var gd = new GregorianDate({
 		year: 2011, 
 		month: 9, 
 		day: 23, 
@@ -477,7 +475,7 @@ function testGregDateConstructorFull() {
 function testGregDateConstructorFullWithStrings() {
 	// often you get strings from a UI element instead of numbers... 
 	// this constructor should work with numbers or strings
-	var gd = new ilib.Date.GregDate({
+	var gd = new GregorianDate({
 		year: "2011", 
 		month: "9",
 		day: "23", 
@@ -499,7 +497,7 @@ function testGregDateConstructorFullWithStrings() {
 }
 
 function testGregDateConstructorCopy() {
-    var gd2 = new ilib.Date.GregDate({
+    var gd2 = new GregorianDate({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -508,7 +506,7 @@ function testGregDateConstructorCopy() {
         second: 12, 
         millisecond: 123
     });
-    var gd = new ilib.Date.GregDate(gd2);
+    var gd = new GregorianDate(gd2);
     
     assertNotNull(gd);
     
@@ -522,7 +520,7 @@ function testGregDateConstructorCopy() {
 }
 
 function testGregDateConstructorEmpty() {
-    var gd = new ilib.Date.GregDate();
+    var gd = new GregorianDate();
     var now = new Date(gd.getTime()); // compare against the JS date
     assertNotNull(gd);
     
@@ -536,7 +534,7 @@ function testGregDateConstructorEmpty() {
 }
 
 function testGregDateConstructorUnixTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	unixtime: 61000, 
     	timezone: "Etc/UTC"
     });
@@ -555,7 +553,7 @@ function testGregDateGetJulianDay() {
     var gd;
     
     for (var i = 0; i < testDatesGregorian.length; i++) {
-        gd = new ilib.Date.GregDate({
+        gd = new GregorianDate({
             year: testDatesGregorian[i][1], 
             month: testDatesGregorian[i][2], 
             day: testDatesGregorian[i][3],
@@ -575,7 +573,7 @@ function testGregDateGetJulianDay() {
 }
 
 function testGregDateSetYears() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -585,7 +583,7 @@ function testGregDateSetYears() {
 }
 
 function testGregDateSetMonths() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -595,7 +593,7 @@ function testGregDateSetMonths() {
 }
 
 function testGregDateSetDays() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -605,7 +603,7 @@ function testGregDateSetDays() {
 }
 
 function testGregDateSetHours() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -615,7 +613,7 @@ function testGregDateSetHours() {
 }
 
 function testGregDateSetMinutes() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -625,7 +623,7 @@ function testGregDateSetMinutes() {
 }
 
 function testGregDateSetSeconds() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -635,7 +633,7 @@ function testGregDateSetSeconds() {
 }
 
 function testGregDateSetMilliseconds() {
-	var gd = new ilib.Date.GregDate();
+	var gd = new GregorianDate();
 	
 	assertNotNull(gd);
 	
@@ -645,7 +643,7 @@ function testGregDateSetMilliseconds() {
 }
 
 function testGetDayOfWeek1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 9, 
     	day: 30,
@@ -658,7 +656,7 @@ function testGetDayOfWeek1() {
 }
 
 function testGetDayOfWeekWithTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 9, 
     	day: 30, 
@@ -674,7 +672,7 @@ function testGetDayOfWeekWithTime() {
 }
 
 function testGetDayOfWeek2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1648, 
     	month: 6, 
     	day: 10,
@@ -687,7 +685,7 @@ function testGetDayOfWeek2() {
 }
 
 function testGetDayOfWeek3() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1190, 
     	month: 3, 
     	day: 23,
@@ -700,7 +698,7 @@ function testGetDayOfWeek3() {
 }
 
 function testGetDayOfWeek4() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: -586, 
     	month: 7, 
     	day: 24,
@@ -713,7 +711,7 @@ function testGetDayOfWeek4() {
 }
 
 function testGetDayOfWeekWithTimezoneWestern() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4,
     	day: 25,
@@ -728,7 +726,7 @@ function testGetDayOfWeekWithTimezoneWestern() {
 }
 
 function testGetDayOfWeekWithTimezoneEastern() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4,
     	day: 25,
@@ -741,7 +739,7 @@ function testGetDayOfWeekWithTimezoneEastern() {
 }
 
 function testGregDateTestGetTimeZero() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 1,
@@ -753,7 +751,7 @@ function testGregDateTestGetTimeZero() {
 }
 
 function testGregDateTestGetTimeCalifornia() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 1,
@@ -765,7 +763,7 @@ function testGregDateTestGetTimeCalifornia() {
 }
 
 function testGregDateTestGetTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 3,
@@ -779,7 +777,7 @@ function testGregDateTestGetTime() {
 }
 
 function testGregDateTestGetTimeTooEarly() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1969, 
     	month: 12, 
     	day: 31,
@@ -791,7 +789,7 @@ function testGregDateTestGetTimeTooEarly() {
 }
 
 function testGregDateTestGetTimeTooLate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2038, 
     	month: 1, 
     	day: 20,
@@ -803,7 +801,7 @@ function testGregDateTestGetTimeTooLate() {
 }
 
 function testGregDateTestGetTimeExtendedZero() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 1,
@@ -815,7 +813,7 @@ function testGregDateTestGetTimeExtendedZero() {
 }
 
 function testGregDateTestGetTimeExtendedCalifornia() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 1,
@@ -827,7 +825,7 @@ function testGregDateTestGetTimeExtendedCalifornia() {
 }
 
 function testGregDateTestGetTimeExtended() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 3,
@@ -841,7 +839,7 @@ function testGregDateTestGetTimeExtended() {
 }
 
 function testGregDateTestGetTimeExtendedTooEarlyForRegularUnixTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1969, 
     	month: 12, 
     	day: 31,
@@ -853,7 +851,7 @@ function testGregDateTestGetTimeExtendedTooEarlyForRegularUnixTime() {
 }
 
 function testGregDateTestGetTimeExtendedTooEarlyForExtendedUnixTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: -271821, 
     	month: 4, 
     	day: 18,
@@ -865,7 +863,7 @@ function testGregDateTestGetTimeExtendedTooEarlyForExtendedUnixTime() {
 }
 
 function testGregDateTestGetTimeExtendedTooLateForRegularUnixTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2038, 
     	month: 1, 
     	day: 20,
@@ -877,7 +875,7 @@ function testGregDateTestGetTimeExtendedTooLateForRegularUnixTime() {
 }
 
 function testGregDateTestGetTimeExtendedTooLateForExtendedUnixTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 275760, 
     	month: 9, 
     	day: 20,
@@ -889,7 +887,7 @@ function testGregDateTestGetTimeExtendedTooLateForExtendedUnixTime() {
 }
 
 function testGregDateTestSetTime1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1970, 
     	month: 1, 
     	day: 1,
@@ -910,7 +908,7 @@ function testGregDateTestSetTime1() {
 }
 
 function testGregDateTestSetTimeZero() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: -1, 
     	month: 1,
     	day: 1,
@@ -934,7 +932,7 @@ function testGregDateTestSetTimeZero() {
 
 // test some of the helper functions to make sure they are producing the right thing
 function testGregDateOnOrBeforeSun() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -949,7 +947,7 @@ function testGregDateOnOrBeforeSun() {
 }
 
 function testGregDateOnOrBeforeMon() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -963,7 +961,7 @@ function testGregDateOnOrBeforeMon() {
 }
 
 function testGregDateOnOrBeforeTue() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -977,7 +975,7 @@ function testGregDateOnOrBeforeTue() {
 }
 
 function testGregDateOnOrBeforeWed() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -991,7 +989,7 @@ function testGregDateOnOrBeforeWed() {
 }
 
 function testGregDateOnOrBeforeThu() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1005,7 +1003,7 @@ function testGregDateOnOrBeforeThu() {
 }
 
 function testGregDateOnOrBeforeFri() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1019,7 +1017,7 @@ function testGregDateOnOrBeforeFri() {
 }
 
 function testGregDateOnOrBeforeSat() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1033,7 +1031,7 @@ function testGregDateOnOrBeforeSat() {
 }
 
 function testGregDateOnOrBeforeSunWithTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1,
@@ -1050,7 +1048,7 @@ function testGregDateOnOrBeforeSunWithTime() {
 }
 
 function testGregDateOnOrBeforeSunWithTimeZoneWestern1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4,
     	day: 26,
@@ -1069,7 +1067,7 @@ function testGregDateOnOrBeforeSunWithTimeZoneWestern1() {
 }
 
 function testGregDateOnOrBeforeSunWithTimeZoneWestern2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4, 
     	day: 27,
@@ -1088,7 +1086,7 @@ function testGregDateOnOrBeforeSunWithTimeZoneWestern2() {
 }
 
 function testGregDateOnOrBeforeSunWithTimeZoneEastern1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4,
     	day: 27,
@@ -1107,7 +1105,7 @@ function testGregDateOnOrBeforeSunWithTimeZoneEastern1() {
 }
 
 function testGregDateOnOrBeforeSunWithTimeZoneEastern2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014, 
     	month: 4, 
     	day: 26,
@@ -1126,7 +1124,7 @@ function testGregDateOnOrBeforeSunWithTimeZoneEastern2() {
 }
 
 function testGregDateOnOrAfterSun() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1141,7 +1139,7 @@ function testGregDateOnOrAfterSun() {
 }
 
 function testGregDateOnOrAfterSunDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1158,7 +1156,7 @@ function testGregDateOnOrAfterSunDate() {
 }
 
 function testGregDateOnOrAfterMon() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1172,7 +1170,7 @@ function testGregDateOnOrAfterMon() {
 }
 
 function testGregDateOnOrAfterMonDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010,
     	month: 1,
     	day: 1
@@ -1188,7 +1186,7 @@ function testGregDateOnOrAfterMonDate() {
 }
 
 function testGregDateOnOrAfterTue() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1202,7 +1200,7 @@ function testGregDateOnOrAfterTue() {
 }
 
 function testGregDateOnOrAfterWed() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1216,7 +1214,7 @@ function testGregDateOnOrAfterWed() {
 }
 
 function testGregDateOnOrAfterThu() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1230,7 +1228,7 @@ function testGregDateOnOrAfterThu() {
 }
 
 function testGregDateOnOrAfterThuDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1246,7 +1244,7 @@ function testGregDateOnOrAfterThuDate() {
 }
 
 function testGregDateOnOrAfterFri() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1260,7 +1258,7 @@ function testGregDateOnOrAfterFri() {
 }
 
 function testGregDateOnOrAfterFriDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1276,7 +1274,7 @@ function testGregDateOnOrAfterFriDate() {
 }
 
 function testGregDateOnOrAfterSat() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1290,7 +1288,7 @@ function testGregDateOnOrAfterSat() {
 }
 
 function testGregDateBeforeSun() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1305,7 +1303,7 @@ function testGregDateBeforeSun() {
 }
 
 function testGregDateBeforeSunDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1322,7 +1320,7 @@ function testGregDateBeforeSunDate() {
 }
 
 function testGregDateBeforeMon() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1336,7 +1334,7 @@ function testGregDateBeforeMon() {
 }
 
 function testGregDateBeforeTue() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1350,7 +1348,7 @@ function testGregDateBeforeTue() {
 }
 
 function testGregDateBeforeWed() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1364,7 +1362,7 @@ function testGregDateBeforeWed() {
 }
 
 function testGregDateBeforeThu() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1378,7 +1376,7 @@ function testGregDateBeforeThu() {
 }
 
 function testGregDateBeforeThuDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1395,7 +1393,7 @@ function testGregDateBeforeThuDate() {
 }
 
 function testGregDateBeforeFri() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1409,7 +1407,7 @@ function testGregDateBeforeFri() {
 }
 
 function testGregDateBeforeFriDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1426,7 +1424,7 @@ function testGregDateBeforeFriDate() {
 }
 
 function testGregDateBeforeSat() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1440,7 +1438,7 @@ function testGregDateBeforeSat() {
 }
 
 function testGregDateAfterSun() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1455,7 +1453,7 @@ function testGregDateAfterSun() {
 }
 
 function testGregDateAfterSunDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1472,7 +1470,7 @@ function testGregDateAfterSunDate() {
 }
 
 function testGregDateAfterMon() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1486,7 +1484,7 @@ function testGregDateAfterMon() {
 }
 
 function testGregDateAfterTue() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1500,7 +1498,7 @@ function testGregDateAfterTue() {
 }
 
 function testGregDateAfterWed() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1514,7 +1512,7 @@ function testGregDateAfterWed() {
 }
 
 function testGregDateAfterThu() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1528,7 +1526,7 @@ function testGregDateAfterThu() {
 }
 
 function testGregDateAfterFri() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1542,7 +1540,7 @@ function testGregDateAfterFri() {
 }
 
 function testGregDateAfterFriDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1559,7 +1557,7 @@ function testGregDateAfterFriDate() {
 }
 
 function testGregDateAfterSat() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1573,7 +1571,7 @@ function testGregDateAfterSat() {
 }
 
 function testGregDateAfterSatDate() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -1590,7 +1588,7 @@ function testGregDateAfterSatDate() {
 }
 
 function testGregDateTestGetWeekOfYearThisYear() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 1, 
     	day: 7
@@ -1601,7 +1599,7 @@ function testGregDateTestGetWeekOfYearThisYear() {
 }
 
 function testGregDateTestGetWeekOfYearThisYear2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 1, 
     	day: 25
@@ -1612,7 +1610,7 @@ function testGregDateTestGetWeekOfYearThisYear2() {
 }
 
 function testGregDateTestGetWeekOfYearThisYear3() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 19
@@ -1623,7 +1621,7 @@ function testGregDateTestGetWeekOfYearThisYear3() {
 }
 
 function testGregDateTestGetWeekOfYearThisYearWithTime() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: -2011, 
     	month: 10, 
     	day: 19,
@@ -1638,7 +1636,7 @@ function testGregDateTestGetWeekOfYearThisYearWithTime() {
 }
 
 function testGregDateTestGetWeekOfYearPreviousYear() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 1, 
     	day: 1
@@ -1649,7 +1647,7 @@ function testGregDateTestGetWeekOfYearPreviousYear() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekLeap() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2009, 
     	month: 12, 
     	day: 31
@@ -1660,7 +1658,7 @@ function testGregDateTestGetWeekOfYearLastWeekLeap() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2010, 
     	month: 12, 
     	day: 31
@@ -1671,7 +1669,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular1() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2008, 
     	month: 12, 
     	day: 31
@@ -1682,7 +1680,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular2() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular3() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2007, 
     	month: 12, 
     	day: 31
@@ -1693,7 +1691,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular3() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular4() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2006, 
     	month: 12, 
     	day: 31
@@ -1704,7 +1702,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular4() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular5() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2005, 
     	month: 12, 
     	day: 31
@@ -1715,7 +1713,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular5() {
 }
 
 function testGregDateTestGetWeekOfYearLastWeekRegular6() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 12, 
     	day: 31
@@ -1726,7 +1724,7 @@ function testGregDateTestGetWeekOfYearLastWeekRegular6() {
 }
 
 function testGregDateGetDayOfYearFirstDay() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 1, 
     	day: 1
@@ -1737,7 +1735,7 @@ function testGregDateGetDayOfYearFirstDay() {
 }
 
 function testGregDateGetDayOfYearPaddysDay() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 17
@@ -1748,7 +1746,7 @@ function testGregDateGetDayOfYearPaddysDay() {
 }
 
 function testGregDateGetDayOfYearPaddysDayLeapYear() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2008, 
     	month: 3, 
     	day: 17
@@ -1759,7 +1757,7 @@ function testGregDateGetDayOfYearPaddysDayLeapYear() {
 }
 
 function testGregDateGetDayOfYearLastDay() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 12, 
     	day: 31
@@ -1770,7 +1768,7 @@ function testGregDateGetDayOfYearLastDay() {
 }
 
 function testGregDateGetDayOfYearLastDayLeapYear() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2008, 
     	month: 12, 
     	day: 31
@@ -1781,7 +1779,7 @@ function testGregDateGetDayOfYearLastDayLeapYear() {
 }
 
 function testGregDateGetWeekOfMonth0() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 1
@@ -1792,7 +1790,7 @@ function testGregDateGetWeekOfMonth0() {
 }
 
 function testGregDateGetWeekOfMonth1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 2
@@ -1803,7 +1801,7 @@ function testGregDateGetWeekOfMonth1() {
 }
 
 function testGregDateGetWeekOfMonth2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 11
@@ -1814,7 +1812,7 @@ function testGregDateGetWeekOfMonth2() {
 }
 
 function testGregDateGetWeekOfMonth3() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 20
@@ -1825,7 +1823,7 @@ function testGregDateGetWeekOfMonth3() {
 }
 
 function testGregDateGetWeekOfMonth4() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 29
@@ -1836,7 +1834,7 @@ function testGregDateGetWeekOfMonth4() {
 }
 
 function testGregDateGetWeekOfMonth5() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 10, 
     	day: 30
@@ -1847,7 +1845,7 @@ function testGregDateGetWeekOfMonth5() {
 }
 
 function testGregDateGetWeekOfMonth6() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 9, 
     	day: 1
@@ -1858,7 +1856,7 @@ function testGregDateGetWeekOfMonth6() {
 }
 
 function testGregDateGetWeekOfMonth7() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 8, 
     	day: 1
@@ -1869,7 +1867,7 @@ function testGregDateGetWeekOfMonth7() {
 }
 
 function testGregDateGetWeekOfMonth8() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 7, 
     	day: 1
@@ -1880,7 +1878,7 @@ function testGregDateGetWeekOfMonth8() {
 }
 
 function testGregDateGetWeekOfMonth9() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 6, 
     	day: 1
@@ -1891,7 +1889,7 @@ function testGregDateGetWeekOfMonth9() {
 }
 
 function testGregDateGetWeekOfMonthUS() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 5, 
     	day: 1
@@ -1902,7 +1900,7 @@ function testGregDateGetWeekOfMonthUS() {
 }
 
 function testGregDateGetWeekOfMonthDE() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 5, 
     	day: 1
@@ -1915,7 +1913,7 @@ function testGregDateGetWeekOfMonthDE() {
 }
 
 function testGregDateGetEraCE() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 5, 
     	day: 1
@@ -1926,7 +1924,7 @@ function testGregDateGetEraCE() {
 }
 
 function testGregDateGetEraBCE() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: -46, 
     	month: 5, 
     	day: 1
@@ -1937,7 +1935,7 @@ function testGregDateGetEraBCE() {
 }
 
 function testGregDateGetEraCEYear1() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 1, 
     	month: 1, 
     	day: 1
@@ -1948,7 +1946,7 @@ function testGregDateGetEraCEYear1() {
 }
 
 function testGregDateGetEraCEYear0() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 0, 
     	month: 12, 
     	day: 31
@@ -1959,7 +1957,7 @@ function testGregDateGetEraCEYear0() {
 }
 
 function testGregDateJan1Midnight() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	julianday: 2455197.5,
     	timezone: "Etc/UTC"
     });
@@ -1975,7 +1973,7 @@ function testGregDateJan1Midnight() {
 }
 
 function testGregDateGetRataDie() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -1987,7 +1985,7 @@ function testGregDateGetRataDie() {
 }
 
 function testGregDateGetTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -1999,7 +1997,7 @@ function testGregDateGetTimeZone() {
 }
 
 function testGregDateGetTimeZoneDefault() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8
@@ -2010,7 +2008,7 @@ function testGregDateGetTimeZoneDefault() {
 }
 
 function testGregDateGetTimeZoneByLocale() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2022,7 +2020,7 @@ function testGregDateGetTimeZoneByLocale() {
 }
 
 function testGregDateGetTimeZoneByLocaleBogus() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2034,7 +2032,7 @@ function testGregDateGetTimeZoneByLocaleBogus() {
 }
 
 function testGregDateCurrentTimeWithTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	timezone: "America/Los_Angeles"
     });
     var d = new Date();
@@ -2044,7 +2042,7 @@ function testGregDateCurrentTimeWithTimeZone() {
 }
 
 function testGregDateSetTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2060,7 +2058,7 @@ function testGregDateSetTimeZone() {
 }
 
 function testGregDateSetTimeZoneNotString() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2076,7 +2074,7 @@ function testGregDateSetTimeZoneNotString() {
 }
 
 function testGregDateSetTimeZoneUndefined() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2093,7 +2091,7 @@ function testGregDateSetTimeZoneUndefined() {
 }
 
 function testGregDateSetTimeZoneEmpty() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011, 
     	month: 3, 
     	day: 8,
@@ -2110,7 +2108,7 @@ function testGregDateSetTimeZoneEmpty() {
 }
 
 function testGregDateInitWithUnixTimeRightTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	unixtime: 0
     });
     assertNotNull(gd);
@@ -2119,7 +2117,7 @@ function testGregDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testGregDateInitWithJDRightTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	julianday: 0
     });
     assertNotNull(gd);
@@ -2128,7 +2126,7 @@ function testGregDateInitWithJDRightTimeZone() {
 }
 
 function testGregDateInitWithRDRightTimeZone() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	rd: 0
     });
     assertNotNull(gd);
@@ -2139,7 +2137,7 @@ function testGregDateInitWithRDRightTimeZone() {
 // for GF-33596
 function testGregDateGetTimeWithUnixTime() {
 	var d = new Date(2011, 2, 8, 0, 0, 0, 0);
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2011,
     	month: 3, 
     	day: 8,
@@ -2156,7 +2154,7 @@ function testGregDateGetTimeWithUnixTime() {
 function testGregDateGetTimeWithUTC() {
 	var utc = Date.UTC(2013, 10, 1);
 	var d = new Date(utc);
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	unixtime: utc
     });
     assertNotNull(gd);
@@ -2166,7 +2164,7 @@ function testGregDateGetTimeWithUTC() {
 
 function testGregDateGetTimeWithDefaultTime() {
 	var d = new Date();
-    var gd = new ilib.Date.GregDate();
+    var gd = new GregorianDate();
     
     assertNotNull(gd);
     
@@ -2174,7 +2172,7 @@ function testGregDateGetTimeWithDefaultTime() {
 }
 
 function testGregDateRoundTripConstruction() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014,
     	month: 11,
     	day: 3,
@@ -2185,7 +2183,7 @@ function testGregDateRoundTripConstruction() {
     
     var u = gd.getTime();
     // console.log("unixtime is " + u);
-    var gd2 = new ilib.Date.GregDate({
+    var gd2 = new GregorianDate({
     	unixtime: u,
     	timezone: "local"
     });
@@ -2200,7 +2198,7 @@ function testGregDateRoundTripConstruction() {
 }
 
 function testGregDateRoundTripConstruction2() {
-    var gd = new ilib.Date.GregDate({
+    var gd = new GregorianDate({
     	year: 2014,
     	month: 11,
     	day: 3,
@@ -2211,7 +2209,7 @@ function testGregDateRoundTripConstruction2() {
     
     var u = gd.getTime();
     // console.log("unixtime is " + u);
-    var gd2 = new ilib.Date.GregDate({
+    var gd2 = new GregorianDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });

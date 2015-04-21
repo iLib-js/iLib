@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var NumFmt = require("./../lib/NumFmt.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -52,13 +54,13 @@ ilib.data.currency = {
 };
 
 function testNumFmtConstructorEmptySubsequent(results) {
-	new ilib.NumFmt();
+	new NumFmt();
 
 	var tt = new TimedTest({
 		name: "NumFmt-assembled-empty-subsequent",
 		iterations: 100,
 		fn: function () {
-		    var fmt = new ilib.NumFmt();
+		    var fmt = new NumFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -67,7 +69,7 @@ function testNumFmtConstructorEmptySubsequent(results) {
 }
 
 function testNumFmtConstructorRealSubsequent(results) {
-	new ilib.NumFmt({
+	new NumFmt({
 		locale: "de-DE"
 	});
 
@@ -75,7 +77,7 @@ function testNumFmtConstructorRealSubsequent(results) {
 		name: "NumFmt-assembled-normal-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -86,7 +88,7 @@ function testNumFmtConstructorRealSubsequent(results) {
 }
 
 function testNumFmtConstructorNonexistentSubsequent(results) {
-	new ilib.NumFmt({
+	new NumFmt({
 		locale: "xx-YY"
 	});
 
@@ -94,7 +96,7 @@ function testNumFmtConstructorNonexistentSubsequent(results) {
 		name: "NumFmt-assembled-nonexistent-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);
@@ -105,7 +107,7 @@ function testNumFmtConstructorNonexistentSubsequent(results) {
 }
 
 function testNumFmtConstructorCurrencySubsequent(results) {
-	new ilib.NumFmt({
+	new NumFmt({
 		type: "currency",
 		currency: "USD"
 	});
@@ -114,7 +116,7 @@ function testNumFmtConstructorCurrencySubsequent(results) {
 		name: "NumFmt-assembled-currency-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				type: "currency",
 				currency: "USD"
 			});
@@ -127,7 +129,7 @@ function testNumFmtConstructorCurrencySubsequent(results) {
 }
 
 function testNumFmtFormatDefault(results) {
-	var fmt = new ilib.NumFmt();
+	var fmt = new NumFmt();
 
 	var tt = new TimedTest({
 		name: "NumFmt-assembled-format-default",
@@ -142,7 +144,7 @@ function testNumFmtFormatDefault(results) {
 }
 
 function testNumFmtFormatGerman(results) {
-	var fmt = new ilib.NumFmt({
+	var fmt = new NumFmt({
 		locale: "de-DE"
 	});
 
@@ -159,7 +161,7 @@ function testNumFmtFormatGerman(results) {
 }
 
 function testNumFmtFormatPercentage(results) {
-	var fmt = new ilib.NumFmt({
+	var fmt = new NumFmt({
 		type: "percentage"
 	});
 
@@ -176,7 +178,7 @@ function testNumFmtFormatPercentage(results) {
 }
 
 function testNumFmtFormatPercentage(results) {
-	var fmt = new ilib.NumFmt({
+	var fmt = new NumFmt({
 		type: "currency",
 		currency: "USD"
 	});

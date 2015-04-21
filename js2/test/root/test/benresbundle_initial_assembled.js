@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ResBundle = require("./../lib/ResBundle.js");
 ilib.data.strings = {
     "first string": "first",
     "second string": "second",
@@ -102,7 +104,7 @@ function testResBundleConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-empty-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle();
+			var rb = new ResBundle();
 		    assertNotNull(rb);
 		}
 	});
@@ -114,7 +116,7 @@ function testResBundleConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-normal-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				locale: "de-DE"
 			});
 		    assertNotNull(rb);
@@ -128,7 +130,7 @@ function testResBundleConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-nonexistent-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				locale: "ja-JP"
 			});
 		    assertNotNull(rb);
@@ -142,7 +144,7 @@ function testResBundleConstructorOtherFileInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-otherfile-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "tester"
 			});
 		    assertNotNull(rb);
@@ -156,7 +158,7 @@ function testResBundleConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-otherfile-complex-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "tester",
 				locale: "es-MX-slang"
 			});

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_fi_FI() {
-	var parsed = new ilib.Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
+	var parsed = new Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -33,7 +35,7 @@ function testParseSimpleName_fi_FI() {
 
 
 function testParseSimpleName_fi_FI() {
-	var parsed = new ilib.Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
+	var parsed = new Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -48,7 +50,7 @@ function testParseSimpleName_fi_FI() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_fi_FI() {
-	var parsed = new ilib.Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
+	var parsed = new Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -63,7 +65,7 @@ function testParseSingleNameWithPrefixAndAdjunct_fi_FI() {
 
 
 function testParseTitle_fi_FI1() {
-	var parsed = new ilib.Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
+	var parsed = new Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -78,7 +80,7 @@ function testParseTitle_fi_FI1() {
 
 
 function testParseTitle_fi_FI_second() {
-	var parsed = new ilib.Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
+	var parsed = new Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -92,14 +94,14 @@ function testParseTitle_fi_FI_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presidentti",
 		givenName: "Pihla",
 		middleName : "Viitala",
 		familyName: "Mikkeli",
 		suffix: "vanhempi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'fi-FI'
 	});
@@ -115,7 +117,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
 
 
 function testParseCompoundHonorific_fi_FI() {
-	var parsed = new ilib.Name("presidentti Mikkeli", {locale: 'fi-FI'});
+	var parsed = new Name("presidentti Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -131,12 +133,12 @@ function testParseCompoundHonorific_fi_FI() {
  */
 
 function testFormatSimpleNameShort_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Pihla",
 		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'fi-FI'
 	});
@@ -149,12 +151,12 @@ function testFormatSimpleNameShort_fi_FI() {
 };
 
 function testFormatSimpleNameMedium_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Pihla",
 		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'fi-FI'
 	});
@@ -167,14 +169,14 @@ function testFormatSimpleNameMedium_fi_FI() {
 };
 
 function testFormatSimpleNameFull_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		
 		givenName: "Pihla",
 		middleName : "Viitala",
 		familyName: "Mikkeli",
 		suffix: "vanhempi"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'fi-FI'
 	});
@@ -187,13 +189,13 @@ function testFormatSimpleNameFull_fi_FI() {
 };
 
 function testFormatComplexNameShort_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "vanhempi",
 		givenName: "Pihla",
 		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'fi-FI'
 	});
@@ -207,13 +209,13 @@ function testFormatComplexNameShort_fi_FI() {
 
 
 function testFormatAsianNameMedium_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'fi-FI'
 	});
@@ -226,13 +228,13 @@ function testFormatAsianNameMedium_fi_FI() {
 };
 
 function testFormatAsianNameLong_fi_FI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'fi-FI'
 	});

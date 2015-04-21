@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+
 function testRegularImsi3DigitMNC() {
 	var imsi = "31003014084567890"
 	var expected = {
@@ -25,7 +28,7 @@ function testRegularImsi3DigitMNC() {
 		msin: "14084567890"
 	};
 
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testRegularImsi2DigitMNC() {
@@ -36,7 +39,7 @@ function testRegularImsi2DigitMNC() {
 		msin: "201234567"
 	};
 
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testSpecialImsi1() {
@@ -47,7 +50,7 @@ function testSpecialImsi1() {
 		msin: "201234567"
 	};
 	
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testSpecialImsi2() {
@@ -58,7 +61,7 @@ function testSpecialImsi2() {
 		msin: "201234567"
 	};
 	
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testBrokenMCC() {
@@ -70,7 +73,7 @@ function testBrokenMCC() {
 	};
 	
 	// should default to a 3 digit mnc
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testBrokenMNC() {
@@ -82,16 +85,16 @@ function testBrokenMNC() {
 	};
 	
 	// should default to a 3 digit mnc
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi));
 };
 
 function testTooShort() {
 	var imsi = "31"
-	assertObjectEquals(undefined, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(undefined, PhoneNumber.parseImsi(imsi));
 };
 
 function testUndefined() {
-	assertUndefined(ilib.PhoneNumber.parseImsi(undefined));
+	assertUndefined(PhoneNumber.parseImsi(undefined));
 };
 
 function mockLoader(paths, sync, params, callback) {
@@ -113,7 +116,7 @@ function testIMSILoadLocaleDataSynch() {
 		return;
 	}
 	
-	ilib.PhoneNumber.cache = {};
+	PhoneNumber.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var field = [];
@@ -125,7 +128,7 @@ function testIMSILoadLocaleDataSynch() {
 		msin: "14084567890"
 	};
 	
-	fields = ilib.PhoneNumber.parseImsi(imsi)
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi, options));
+	fields = PhoneNumber.parseImsi(imsi)
+	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi, options));
     ilib.setLoaderCallback(undefined);
 };

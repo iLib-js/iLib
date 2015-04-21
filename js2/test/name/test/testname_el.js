@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_el_GR() {
-	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_el_GR() {
 
 
 function testParseSimpleName_el_GR() {
-	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseSimpleName_el_GR() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_el_GR() {
-	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
+	var parsed = new Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseSingleNameWithPrefixAndAdjunct_el_GR() {
 
 
 function testParseTitle_el_GR1() {
-	var parsed = new ilib.Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -75,7 +77,7 @@ function testParseTitle_el_GR1() {
 
 
 function testParseTitle_el_GR_second() {
-	var parsed = new ilib.Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -90,13 +92,13 @@ function testParseTitle_el_GR_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_el_GR() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Ο κ.",
 		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος",
 		suffix: "μουσκεύω"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'el-GR'
 	});
@@ -111,7 +113,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_el_GR() {
 
 
 function testParseTitleWithFamilyOnlyAndAdjunctex_el_GR() {
-	var parsed = new ilib.Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
+	var parsed = new Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -126,7 +128,7 @@ function testParseTitleWithFamilyOnlyAndAdjunctex_el_GR() {
 
 
 function testParseCompoundHonorific_el_GR() {
-	var parsed = new ilib.Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -142,11 +144,11 @@ function testParseCompoundHonorific_el_GR() {
  */
 
 function testFormatSimpleNameShort_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'el-GR'
 	});
@@ -159,11 +161,11 @@ function testFormatSimpleNameShort_el_GR() {
 };
 
 function testFormatSimpleNameMedium_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'el-GR'
 	});
@@ -176,13 +178,13 @@ function testFormatSimpleNameMedium_el_GR() {
 };
 
 function testFormatSimpleNameFull_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		
 		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος",
 		suffix: "μουσκεύω"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'el-GR'
 	});
@@ -195,12 +197,12 @@ function testFormatSimpleNameFull_el_GR() {
 };
 
 function testFormatComplexNameShort_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "μουσκεύω",
 		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'el-GR'
 	});
@@ -214,13 +216,13 @@ function testFormatComplexNameShort_el_GR() {
 
 
 function testFormatAsianNameMedium_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'el-GR'
 	});
@@ -233,13 +235,13 @@ function testFormatAsianNameMedium_el_GR() {
 };
 
 function testFormatAsianNameLong_el_GR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'el-GR'
 	});

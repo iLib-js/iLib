@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testESParseSimpleName() {
-	var parsed = new ilib.Name("Joaquin Cebolla", {locale: 'es-ES'});
+	var parsed = new Name("Joaquin Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testESParseSimpleName() {
 };
 
 function testESParseTripleName() {
-	var parsed = new ilib.Name("Joaquin Zaragoza Cebolla", {locale: 'es-ES'});
+	var parsed = new Name("Joaquin Zaragoza Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -42,7 +44,7 @@ function testESParseTripleName() {
 };
 
 function testESParseAdjunctNames() {
-	var parsed = new ilib.Name("Mario de Sevilla", {locale: 'es-ES'});
+	var parsed = new Name("Mario de Sevilla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -54,7 +56,7 @@ function testESParseAdjunctNames() {
 };
 
 function testESParseMultiAdjunctNames() {
-	var parsed = new ilib.Name("Mario de las Pulgas", {locale: 'es-ES'});
+	var parsed = new Name("Mario de las Pulgas", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -66,7 +68,7 @@ function testESParseMultiAdjunctNames() {
 };
 
 function testESParseHypenatedName() {
-	var parsed = new ilib.Name("Joaquin Johnson-Cebolla", {locale: 'es-ES'});
+	var parsed = new Name("Joaquin Johnson-Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -78,7 +80,7 @@ function testESParseHypenatedName() {
 };
 
 function testESParseQuadrupleName() {
-	var parsed = new ilib.Name("Joaquin Michael de los Cruzes Cebolla", {locale: 'es-ES'});
+	var parsed = new Name("Joaquin Michael de los Cruzes Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -91,7 +93,7 @@ function testESParseQuadrupleName() {
 };
 
 function testESParseMultiMultiFamily() {
-	var parsed = new ilib.Name("Joaquin Michael de los Cruzes de Namur", {locale: 'es-ES'});
+	var parsed = new Name("Joaquin Michael de los Cruzes de Namur", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -103,7 +105,7 @@ function testESParseMultiMultiFamily() {
 	assertObjectContains(expected, parsed);
 };
 function testESParseTitle() {
-	var parsed = new ilib.Name("Dr. Joaquin Cebolla", {locale: 'es-ES'});
+	var parsed = new Name("Dr. Joaquin Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -116,7 +118,7 @@ function testESParseTitle() {
 };
 
 function testESParseHonorific() {
-	var parsed = new ilib.Name("Doña Julia Maria Lopez Ortiz", {locale: 'es-ES'});
+	var parsed = new Name("Doña Julia Maria Lopez Ortiz", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -130,7 +132,7 @@ function testESParseHonorific() {
 };
 
 function testESParseEverything() {
-	var parsed = new ilib.Name("Doña Julia Maria Consuela de las Piñas Ortiz III", {locale: 'es-ES'});
+	var parsed = new Name("Doña Julia Maria Consuela de las Piñas Ortiz III", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -145,7 +147,7 @@ function testESParseEverything() {
 };
 
 function testESParseConjunction1() {
-	var parsed = new ilib.Name("Rodrigo y Gabriella", {locale: 'es-ES'});
+	var parsed = new Name("Rodrigo y Gabriella", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -156,7 +158,7 @@ function testESParseConjunction1() {
 };
 
 function testESParseConjunction2() {
-	var parsed = new ilib.Name("Rodrigo y Gabriella Cortez", {locale: 'es-ES'});
+	var parsed = new Name("Rodrigo y Gabriella Cortez", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -168,7 +170,7 @@ function testESParseConjunction2() {
 };
 
 function testESParseConjunction3() {
-	var parsed = new ilib.Name("Rodrigo y Gabriella Cortez Colón", {locale: 'es-ES'});
+	var parsed = new Name("Rodrigo y Gabriella Cortez Colón", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -180,7 +182,7 @@ function testESParseConjunction3() {
 };
 
 function testESParseConjunction4() {
-	var parsed = new ilib.Name("Miguel, Rodrigo, y Gabriella Cortez Colón", {locale: 'es-ES'});
+	var parsed = new Name("Miguel, Rodrigo, y Gabriella Cortez Colón", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -192,7 +194,7 @@ function testESParseConjunction4() {
 };
 
 function testESParseFamily() {
-	var parsed = new ilib.Name("Los Hernandez", {locale: 'es-ES'});
+	var parsed = new Name("Los Hernandez", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -204,7 +206,7 @@ function testESParseFamily() {
 };
 
 function testESParseCompoundHonorific() {
-	var parsed = new ilib.Name("Sr. y Sra. Hernandez", {locale: 'es-ES'});
+	var parsed = new Name("Sr. y Sra. Hernandez", {locale: 'es-ES'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -220,12 +222,12 @@ function testESParseCompoundHonorific() {
  */
 
 function testESFormatSimpleNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Joaquin",
 		middleName: "Michael",
 		familyName: "Cebolla"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "short", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -235,12 +237,12 @@ function testESFormatSimpleNameShort() {
 };
 
 function testESFormatSimpleNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Joaquin",
 		middleName: "Michael",
 		familyName: "Cebolla"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "medium", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -250,12 +252,12 @@ function testESFormatSimpleNameMedium() {
 };
 
 function testESFormatSimpleNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Joaquin",
 		middleName: "Michael",
 		familyName: "Cebolla"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "long", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -265,12 +267,12 @@ function testESFormatSimpleNameLong() {
 };
 
 function testESFormatSimpleNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Joaquin",
 		middleName: "Michael",
 		familyName: "Cebolla"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "full", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -280,14 +282,14 @@ function testESFormatSimpleNameFull() {
 };
 
 function testESFormatComplexNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Doña",
 		givenName: "Julia",
 		middleName: "Maria Consuela",
 		familyName: "de las Piñas Ortiz",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "short", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -297,14 +299,14 @@ function testESFormatComplexNameShort() {
 };
 
 function testESFormatComplexNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Doña",
 		givenName: "Julia",
 		middleName: "Maria Consuela",
 		familyName: "de las Piñas Ortiz",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "medium", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -314,14 +316,14 @@ function testESFormatComplexNameMedium() {
 };
 
 function testESFormatComplexNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Doña",
 		givenName: "Julia",
 		middleName: "Maria Consuela",
 		familyName: "de las Piñas Ortiz",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "long", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -331,14 +333,14 @@ function testESFormatComplexNameLong() {
 };
 
 function testESFormatComplexNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Doña",
 		givenName: "Julia",
 		middleName: "Maria Consuela",
 		familyName: "de las Piñas Ortiz",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'es-ES'});
+	var fmt = new NameFmt({style: "full", locale: 'es-ES'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -348,13 +350,13 @@ function testESFormatComplexNameFull() {
 };
 
 function testESFormatAsianNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'es-MX'});
+	var fmt = new NameFmt({style: "short", locale: 'es-MX'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -364,13 +366,13 @@ function testESFormatAsianNameShort() {
 };
 
 function testESFormatAsianNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'es-MX'});
+	var fmt = new NameFmt({style: "medium", locale: 'es-MX'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -380,13 +382,13 @@ function testESFormatAsianNameMedium() {
 };
 
 function testESFormatAsianNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'es-MX'});
+	var fmt = new NameFmt({style: "long", locale: 'es-MX'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -396,13 +398,13 @@ function testESFormatAsianNameLong() {
 };
 
 function testESFormatAsianNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'es-MX'});
+	var fmt = new NameFmt({style: "full", locale: 'es-MX'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	

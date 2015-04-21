@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 function testKRLocalNumber1() {
-	var parsed = new ilib.PhoneNumber("312 3456",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("312 3456",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -27,7 +29,7 @@ function testKRLocalNumber1() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new PhoneGeoLocator({locale: "ko-KR"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -37,7 +39,7 @@ function testKRLocalNumber1() {
 };
 
 function testKRLocalNumber2() {
-	var parsed = new ilib.PhoneNumber("212-3456",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("212-3456",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -46,7 +48,7 @@ function testKRLocalNumber2() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new PhoneGeoLocator({locale: "ko-KR"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -56,7 +58,7 @@ function testKRLocalNumber2() {
 };
 
 function testKRNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("02-312-3456",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("02-312-3456",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -69,7 +71,7 @@ function testKRNumberWithAreaCode1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new PhoneGeoLocator({locale: 'ko-KR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -80,7 +82,7 @@ function testKRNumberWithAreaCode1() {
 };
 
 function testKRNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("051-212-3456",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("051-212-3456",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -93,7 +95,7 @@ function testKRNumberWithAreaCode2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new PhoneGeoLocator({locale: 'ko-KR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -104,7 +106,7 @@ function testKRNumberWithAreaCode2() {
 };
 
 function testKRNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+82-2-312-3456");
+	var parsed = new PhoneNumber("+82-2-312-3456");
 	var expected = {
 		country: {
 			sn: "남한",
@@ -117,7 +119,7 @@ function testKRNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ko-KR'});
+	var locator = new PhoneGeoLocator({locale: 'ko-KR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -128,7 +130,7 @@ function testKRNumberWithAreaCodeAndCountry1() {
 };
 
 function testKRNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+82-2-312-3456");
+	var parsed = new PhoneNumber("+82-2-312-3456");
 	var expected = {
 		country: {
 			sn: "South Korea",
@@ -141,7 +143,7 @@ function testKRNumberWithAreaCodeAndCountry2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -152,7 +154,7 @@ function testKRNumberWithAreaCodeAndCountry2() {
 };
 
 function testKRNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+82-51-212-3456");
+	var parsed = new PhoneNumber("+82-51-212-3456");
 	var expected = {
 		country: {
 			sn: "South Korea",
@@ -165,7 +167,7 @@ function testKRNumberWithAreaCodeAndCountry3() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -176,7 +178,7 @@ function testKRNumberWithAreaCodeAndCountry3() {
 };
 
 function testKRNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 82-51-212-3456");
+	var parsed = new PhoneNumber("011 82-51-212-3456");
 	var expected = {
 		country: {
 			sn: "South Korea",
@@ -189,7 +191,7 @@ function testKRNumberCallFromUS() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -200,7 +202,7 @@ function testKRNumberCallFromUS() {
 };
 
 function testKRNumberWithAreaCodeAndCountry4() {
-	var parsed = new ilib.PhoneNumber("+82-51-212-3456");
+	var parsed = new PhoneNumber("+82-51-212-3456");
 	var expected = {
 		country: {
 			sn: "Corée du Sud",
@@ -213,7 +215,7 @@ function testKRNumberWithAreaCodeAndCountry4() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -224,7 +226,7 @@ function testKRNumberWithAreaCodeAndCountry4() {
 };
 
 function testKRPolice() {
-	var parsed = new ilib.PhoneNumber("112",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("112",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -236,7 +238,7 @@ function testKRPolice() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new PhoneGeoLocator({locale: "ko-KR"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -248,7 +250,7 @@ function testKRPolice() {
 };
 
 function testKRFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("119",{locale: "ko-KR"});
+	var parsed = new PhoneNumber("119",{locale: "ko-KR"});
 	var expected = {
 		country: {
 			sn: "남한",
@@ -260,7 +262,7 @@ function testKRFireAndAmbulance() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ko-KR"});
+	var locator = new PhoneGeoLocator({locale: "ko-KR"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

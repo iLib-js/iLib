@@ -17,18 +17,23 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var NormString = require("./../lib/NormString.js");
+var Locale = require("./../lib/Locale.js");
+var IString = require("./../lib/IString.js");
+
 function setUp() {
 	ilib.locale = undefined;
 }
 
 function testStringConstructor() {
-    var str = new ilib.String();
+    var str = new IString();
     
     assertNotNull(str);
 }
 
 function testStringConstructorEmpty() {
-    var str = new ilib.String();
+    var str = new IString();
     
     assertNotNull(str);
     
@@ -37,7 +42,7 @@ function testStringConstructorEmpty() {
 }
 
 function testStringConstructorFull() {
-    var str = new ilib.String("test test test");
+    var str = new IString("test test test");
     
     assertNotNull(str);
 
@@ -46,7 +51,7 @@ function testStringConstructorFull() {
 }
 
 function testStringConstructorWithStringObj() {
-    var str = new ilib.String(new String("test test test"));
+    var str = new IString(new String("test test test"));
     
     assertNotNull(str);
 
@@ -55,7 +60,7 @@ function testStringConstructorWithStringObj() {
 }
 
 function testStringConstructorWithIlibStringObj() {
-    var str = new ilib.String(new ilib.String("test test test"));
+    var str = new IString(new IString("test test test"));
     
     assertNotNull(str);
 
@@ -64,7 +69,7 @@ function testStringConstructorWithIlibStringObj() {
 }
 
 function testStringConstructorWithIlibNormStringObj() {
-    var str = new ilib.String(new ilib.NormString("test test test"));
+    var str = new IString(new NormString("test test test"));
     
     assertNotNull(str);
 
@@ -73,7 +78,7 @@ function testStringConstructorWithIlibNormStringObj() {
 }
 
 function testStringFormatNoArgs() {
-    var str = new ilib.String("Format this string.");
+    var str = new IString("Format this string.");
     
     assertNotNull(str);
     
@@ -81,7 +86,7 @@ function testStringFormatNoArgs() {
 }
 
 function testStringFormatEmpty() {
-    var str = new ilib.String();
+    var str = new IString();
     
     assertNotNull(str);
     
@@ -89,7 +94,7 @@ function testStringFormatEmpty() {
 }
 
 function testStringFormatEmptyWithArgs() {
-    var str = new ilib.String();
+    var str = new IString();
     
     assertNotNull(str);
     
@@ -97,7 +102,7 @@ function testStringFormatEmptyWithArgs() {
 }
 
 function testStringFormatWithArg() {
-    var str = new ilib.String("Format {size} string.");
+    var str = new IString("Format {size} string.");
     
     assertNotNull(str);
     
@@ -105,7 +110,7 @@ function testStringFormatWithArg() {
 }
 
 function testStringFormatWithMultipleArgs() {
-    var str = new ilib.String("Format {size} {object}.");
+    var str = new IString("Format {size} {object}.");
     
     assertNotNull(str);
     
@@ -116,7 +121,7 @@ function testStringFormatWithMultipleArgs() {
 }
 
 function testStringFormatWithSameArgMultipleTimes() {
-    var str = new ilib.String("Format {size} when {size} is at least {size} big.");
+    var str = new IString("Format {size} when {size} is at least {size} big.");
     
     assertNotNull(str);
     
@@ -126,7 +131,7 @@ function testStringFormatWithSameArgMultipleTimes() {
 }
 
 function testStringFormatWithMissingArgs() {
-    var str = new ilib.String("Format {size} {object}.");
+    var str = new IString("Format {size} {object}.");
     
     assertNotNull(str);
     
@@ -136,7 +141,7 @@ function testStringFormatWithMissingArgs() {
 }
 
 function testStringFormatWithEmptyArg() {
-    var str = new ilib.String("Format {size} string.");
+    var str = new IString("Format {size} string.");
     
     assertNotNull(str);
     
@@ -144,7 +149,7 @@ function testStringFormatWithEmptyArg() {
 }
 
 function testStringFormatHandleNonAsciiParam() {
-    var str = new ilib.String("Format {size} string.");
+    var str = new IString("Format {size} string.");
     
     assertNotNull(str);
     
@@ -152,7 +157,7 @@ function testStringFormatHandleNonAsciiParam() {
 }
 
 function testStringFormatHandleNonAsciiReplacement() {
-    var str = new ilib.String("Format {sïzé} string.");
+    var str = new IString("Format {sïzé} string.");
     
     assertNotNull(str);
     
@@ -160,7 +165,7 @@ function testStringFormatHandleNonAsciiReplacement() {
 }
 
 function testStringFormatMultipleReplacements() {
-    var str = new ilib.String("User {user} has {num} objects in their {container}.");
+    var str = new IString("User {user} has {num} objects in their {container}.");
     
     assertNotNull(str);
     
@@ -173,7 +178,7 @@ function testStringFormatMultipleReplacements() {
 
 
 function testStringFormatChoiceSimple1() {
-    var str = new ilib.String("1#first string|2#second string");
+    var str = new IString("1#first string|2#second string");
     
     assertNotNull(str);
     
@@ -181,7 +186,7 @@ function testStringFormatChoiceSimple1() {
 }
 
 function testStringFormatChoiceSimple2() {
-    var str = new ilib.String("1#first string|2#second string");
+    var str = new IString("1#first string|2#second string");
     
     assertNotNull(str);
     
@@ -189,7 +194,7 @@ function testStringFormatChoiceSimple2() {
 }
 
 function testStringFormatChoiceOnlyOneChoicePositive() {
-    var str = new ilib.String("1#first string");
+    var str = new IString("1#first string");
     
     assertNotNull(str);
     
@@ -197,7 +202,7 @@ function testStringFormatChoiceOnlyOneChoicePositive() {
 }
 
 function testStringFormatChoiceOnlyOneChoiceNegative() {
-    var str = new ilib.String("1#first string");
+    var str = new IString("1#first string");
     
     assertNotNull(str);
     
@@ -205,7 +210,7 @@ function testStringFormatChoiceOnlyOneChoiceNegative() {
 }
 
 function testStringFormatChoiceNoString() {
-    var str = new ilib.String("");
+    var str = new IString("");
     
     assertNotNull(str);
     
@@ -213,7 +218,7 @@ function testStringFormatChoiceNoString() {
 }
 
 function testStringFormatChoiceSimpleNoMatch() {
-    var str = new ilib.String("1#first string|2#second string");
+    var str = new IString("1#first string|2#second string");
     
     assertNotNull(str);
     
@@ -221,7 +226,7 @@ function testStringFormatChoiceSimpleNoMatch() {
 }
 
 function testStringFormatChoiceSimpleDefault() {
-    var str = new ilib.String("1#first string|2#second string|#other string");
+    var str = new IString("1#first string|2#second string|#other string");
     
     assertNotNull(str);
     
@@ -229,7 +234,7 @@ function testStringFormatChoiceSimpleDefault() {
 }
 
 function testStringFormatChoiceLessThanOrEqualPositive() {
-    var str = new ilib.String("<=2#first string|3#second string|#other string");
+    var str = new IString("<=2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -237,7 +242,7 @@ function testStringFormatChoiceLessThanOrEqualPositive() {
 }
 
 function testStringFormatChoiceLessThanOrEqualEqual() {
-    var str = new ilib.String("<=2#first string|3#second string|#other string");
+    var str = new IString("<=2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -245,7 +250,7 @@ function testStringFormatChoiceLessThanOrEqualEqual() {
 }
 
 function testStringFormatChoiceLessThanOrEqualNotLessThan() {
-    var str = new ilib.String("<=2#first string|3#second string|#other string");
+    var str = new IString("<=2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -253,7 +258,7 @@ function testStringFormatChoiceLessThanOrEqualNotLessThan() {
 }
 
 function testStringFormatChoiceGreaterThanOrEqualPositive() {
-    var str = new ilib.String(">=2#first string|1#second string|#other string");
+    var str = new IString(">=2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -261,7 +266,7 @@ function testStringFormatChoiceGreaterThanOrEqualPositive() {
 }
 
 function testStringFormatChoiceGreaterThanOrEqualEqual() {
-    var str = new ilib.String(">=2#first string|1#second string|#other string");
+    var str = new IString(">=2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -269,7 +274,7 @@ function testStringFormatChoiceGreaterThanOrEqualEqual() {
 }
 
 function testStringFormatChoiceGreaterThanOrEqualNotLessThan() {
-    var str = new ilib.String(">=2#first string|1#second string|#other string");
+    var str = new IString(">=2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -277,7 +282,7 @@ function testStringFormatChoiceGreaterThanOrEqualNotLessThan() {
 }
 
 function testStringFormatChoiceLessThanPositive() {
-    var str = new ilib.String("<2#first string|3#second string|#other string");
+    var str = new IString("<2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -285,7 +290,7 @@ function testStringFormatChoiceLessThanPositive() {
 }
 
 function testStringFormatChoiceLessThanEqual() {
-    var str = new ilib.String("<2#first string|3#second string|#other string");
+    var str = new IString("<2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -293,7 +298,7 @@ function testStringFormatChoiceLessThanEqual() {
 }
 
 function testStringFormatChoiceLessThanNotLessThan() {
-    var str = new ilib.String("<2#first string|3#second string|#other string");
+    var str = new IString("<2#first string|3#second string|#other string");
     
     assertNotNull(str);
     
@@ -301,7 +306,7 @@ function testStringFormatChoiceLessThanNotLessThan() {
 }
 
 function testStringFormatChoiceGreaterThanPositive() {
-    var str = new ilib.String(">2#first string|1#second string|#other string");
+    var str = new IString(">2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -309,7 +314,7 @@ function testStringFormatChoiceGreaterThanPositive() {
 }
 
 function testStringFormatChoiceGreaterThanEqual() {
-    var str = new ilib.String(">2#first string|1#second string|#other string");
+    var str = new IString(">2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -317,7 +322,7 @@ function testStringFormatChoiceGreaterThanEqual() {
 }
 
 function testStringFormatChoiceGreaterThanNotLessThan() {
-    var str = new ilib.String(">2#first string|1#second string|#other string");
+    var str = new IString(">2#first string|1#second string|#other string");
     
     assertNotNull(str);
     
@@ -325,7 +330,7 @@ function testStringFormatChoiceGreaterThanNotLessThan() {
 }
 
 function testStringFormatRange1() {
-    var str = new ilib.String("0-2#first string {num}|3-5#second string {num}|#other string {num}");
+    var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
     assertNotNull(str);
     
@@ -333,7 +338,7 @@ function testStringFormatRange1() {
 }
 
 function testStringFormatRange4() {
-    var str = new ilib.String("0-2#first string {num}|3-5#second string {num}|#other string {num}");
+    var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
     assertNotNull(str);
     
@@ -341,7 +346,7 @@ function testStringFormatRange4() {
 }
 
 function testStringFormatRange7() {
-    var str = new ilib.String("0-2#first string {num}|3-5#second string {num}|#other string {num}");
+    var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
     assertNotNull(str);
     
@@ -349,7 +354,7 @@ function testStringFormatRange7() {
 }
 
 function testStringFormatChoiceBooleanTrue() {
-    var str = new ilib.String("true#first string|false#second string");
+    var str = new IString("true#first string|false#second string");
     
     assertNotNull(str);
     
@@ -357,7 +362,7 @@ function testStringFormatChoiceBooleanTrue() {
 }
 
 function testStringFormatChoiceBooleanFalse() {
-    var str = new ilib.String("true#first string|false#second string");
+    var str = new IString("true#first string|false#second string");
     
     assertNotNull(str);
     
@@ -365,7 +370,7 @@ function testStringFormatChoiceBooleanFalse() {
 }
 
 function testStringFormatChoiceBooleanMissing() {
-    var str = new ilib.String("true#first string");
+    var str = new IString("true#first string");
     
     assertNotNull(str);
     
@@ -373,7 +378,7 @@ function testStringFormatChoiceBooleanMissing() {
 }
 
 function testStringFormatChoiceStringStaticA() {
-    var str = new ilib.String("a#first string|b#second string|c#third string");
+    var str = new IString("a#first string|b#second string|c#third string");
     
     assertNotNull(str);
     
@@ -381,7 +386,7 @@ function testStringFormatChoiceStringStaticA() {
 }
 
 function testStringFormatChoiceStringStaticB() {
-    var str = new ilib.String("a#first string|b#second string|c#third string");
+    var str = new IString("a#first string|b#second string|c#third string");
     
     assertNotNull(str);
     
@@ -389,7 +394,7 @@ function testStringFormatChoiceStringStaticB() {
 }
 
 function testStringFormatChoiceStringStaticC() {
-    var str = new ilib.String("a#first string|b#second string|c#third string");
+    var str = new IString("a#first string|b#second string|c#third string");
     
     assertNotNull(str);
     
@@ -397,7 +402,7 @@ function testStringFormatChoiceStringStaticC() {
 }
 
 function testStringFormatChoiceStringIgnoreCase() {
-    var str = new ilib.String("a#first string|b#second string|c#third string");
+    var str = new IString("a#first string|b#second string|c#third string");
     
     assertNotNull(str);
     
@@ -405,7 +410,7 @@ function testStringFormatChoiceStringIgnoreCase() {
 }
 
 function testStringFormatChoiceRegExpA() {
-    var str = new ilib.String("a.*b#first string|b.*c#second string|c+d#third string");
+    var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
     assertNotNull(str);
     
@@ -413,7 +418,7 @@ function testStringFormatChoiceRegExpA() {
 }
 
 function testStringFormatChoiceRegExpB() {
-    var str = new ilib.String("a.*b#first string|b.*c#second string|c+d#third string");
+    var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
     assertNotNull(str);
     
@@ -421,7 +426,7 @@ function testStringFormatChoiceRegExpB() {
 }
 
 function testStringFormatChoiceRegExpC() {
-    var str = new ilib.String("a.*b#first string|b.*c#second string|c+d#third string");
+    var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
     assertNotNull(str);
     
@@ -429,7 +434,7 @@ function testStringFormatChoiceRegExpC() {
 }
 
 function testStringFormatChoiceRegExpDefault() {
-    var str = new ilib.String("a.*b#first string|b.*c#second string|#third string");
+    var str = new IString("a.*b#first string|b.*c#second string|#third string");
     
     assertNotNull(str);
     
@@ -437,7 +442,7 @@ function testStringFormatChoiceRegExpDefault() {
 }
 
 function testStringFormatChoiceRegExpMissing() {
-    var str = new ilib.String("a.*b#first string|b.*c#second string|c+d#third string");
+    var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
     assertNotNull(str);
     
@@ -445,7 +450,7 @@ function testStringFormatChoiceRegExpMissing() {
 }
 
 function testStringFormatChoiceWithReplacement0() {
-    var str = new ilib.String("0#There are no strings.|1#There is one string.|#There are {num} strings.");
+    var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
     assertNotNull(str);
     
@@ -453,7 +458,7 @@ function testStringFormatChoiceWithReplacement0() {
 }
 
 function testStringFormatChoiceWithReplacement1() {
-    var str = new ilib.String("0#There are no strings.|1#There is one string.|#There are {num} strings.");
+    var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
     assertNotNull(str);
     
@@ -461,7 +466,7 @@ function testStringFormatChoiceWithReplacement1() {
 }
 
 function testStringFormatChoiceWithReplacement2() {
-    var str = new ilib.String("0#There are no strings.|1#There is one string.|#There are {num} strings.");
+    var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
     assertNotNull(str);
     
@@ -469,7 +474,7 @@ function testStringFormatChoiceWithReplacement2() {
 }
 
 function testStringFormatChoiceWithMultipleReplacement0() {
-    var str = new ilib.String("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
+    var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
     assertNotNull(str);
     
@@ -480,7 +485,7 @@ function testStringFormatChoiceWithMultipleReplacement0() {
 }
 
 function testStringFormatChoiceWithMultipleReplacement1() {
-    var str = new ilib.String("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
+    var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
     assertNotNull(str);
     
@@ -491,7 +496,7 @@ function testStringFormatChoiceWithMultipleReplacement1() {
 }
 
 function testStringFormatChoiceWithMultipleReplacement2() {
-    var str = new ilib.String("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
+    var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
     assertNotNull(str);
     
@@ -502,7 +507,7 @@ function testStringFormatChoiceWithMultipleReplacement2() {
 }
 
 function testStringDelegateCharAt() {
-    var str = new ilib.String("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
+    var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
     assertNotNull(str);
     
@@ -510,7 +515,7 @@ function testStringDelegateCharAt() {
 }
 
 function testStringDelegateCharCodeAt() {
-    var str = new ilib.String("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
+    var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
     assertNotNull(str);
     
@@ -518,7 +523,7 @@ function testStringDelegateCharCodeAt() {
 }
 
 function testStringDelegateConcat() {
-    var str = new ilib.String("abc");
+    var str = new IString("abc");
     
     assertNotNull(str);
     
@@ -526,7 +531,7 @@ function testStringDelegateConcat() {
 }
 
 function testStringDelegateIndexOf() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyz");
+    var str = new IString("abcdefghijklmnopqrstuvwxyz");
     
     assertNotNull(str);
     
@@ -534,7 +539,7 @@ function testStringDelegateIndexOf() {
 }
 
 function testStringDelegateIndexOf() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -542,7 +547,7 @@ function testStringDelegateIndexOf() {
 }
 
 function testStringDelegateMatch() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -553,7 +558,7 @@ function testStringDelegateMatch() {
 }
 
 function testStringDelegateReplace() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -561,7 +566,7 @@ function testStringDelegateReplace() {
 }
 
 function testStringDelegateSearch() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -569,7 +574,7 @@ function testStringDelegateSearch() {
 }
 
 function testStringDelegateSplit() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyz");
+    var str = new IString("abcdefghijklmnopqrstuvwxyz");
     
     assertNotNull(str);
 
@@ -584,7 +589,7 @@ function testStringDelegateSplit() {
 }
 
 function testStringDelegateSubstr() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -592,7 +597,7 @@ function testStringDelegateSubstr() {
 }
 
 function testStringDelegateSubstring() {
-    var str = new ilib.String("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
+    var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
     assertNotNull(str);
     
@@ -600,7 +605,7 @@ function testStringDelegateSubstring() {
 }
 
 function testStringDelegateToLowerCase() {
-    var str = new ilib.String("ABCDEF");
+    var str = new IString("ABCDEF");
     
     assertNotNull(str);
     
@@ -608,7 +613,7 @@ function testStringDelegateToLowerCase() {
 }
 
 function testStringDelegateToLowerCase() {
-    var str = new ilib.String("abcdef");
+    var str = new IString("abcdef");
     
     assertNotNull(str);
     
@@ -616,7 +621,7 @@ function testStringDelegateToLowerCase() {
 }
 
 function testCodePointToUTF() {
-    var str = ilib.String.fromCodePoint(0x10302);
+    var str = IString.fromCodePoint(0x10302);
     
     assertEquals(2, str.length);
     assertEquals(0xD800, str.charCodeAt(0));
@@ -624,7 +629,7 @@ function testCodePointToUTF() {
 }
 
 function testCodePointToUTFLast() {
-    var str = ilib.String.fromCodePoint(0x10FFFD);
+    var str = IString.fromCodePoint(0x10FFFD);
     
     assertEquals(2, str.length);
     assertEquals(0xDBFF, str.charCodeAt(0));
@@ -632,7 +637,7 @@ function testCodePointToUTFLast() {
 }
 
 function testCodePointToUTFFirst() {
-    var str = ilib.String.fromCodePoint(0x10000);
+    var str = IString.fromCodePoint(0x10000);
     
     assertEquals(2, str.length);
     assertEquals(0xD800, str.charCodeAt(0));
@@ -640,21 +645,21 @@ function testCodePointToUTFFirst() {
 }
 
 function testCodePointToUTFBeforeFirst() {
-    var str = ilib.String.fromCodePoint(0xFFFF);
+    var str = IString.fromCodePoint(0xFFFF);
     
     assertEquals(1, str.length);
     assertEquals(0xFFFF, str.charCodeAt(0));
 }
 
 function testCodePointToUTFNotSupplementary() {
-    var str = ilib.String.fromCodePoint(0x0302);
+    var str = IString.fromCodePoint(0x0302);
     
     assertEquals(1, str.length);
     assertEquals(0x0302, str.charCodeAt(0));
 }
 
 function testIteratorSimple() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     var it = str.iterator();
     assertTrue(it.hasNext());
@@ -670,7 +675,7 @@ function testIteratorSimple() {
 }
 
 function testIteratorComplex() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     var it = str.iterator();
     assertTrue(it.hasNext());
@@ -686,7 +691,7 @@ function testIteratorComplex() {
 }
 
 function testIteratorEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     var it = str.iterator();
     assertFalse(it.hasNext());
@@ -694,7 +699,7 @@ function testIteratorEmpty() {
 }
 
 function testForEachCodePointSimple() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     var expected = [0x0061, 0x0062, 0x0063, 0x0064];
     var i = 0;
@@ -705,7 +710,7 @@ function testForEachCodePointSimple() {
 }
 
 function testForEachCodePointComplex() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     var expected = [0x0061, 0x10302, 0x0062, 0x10000];
     var i = 0;
@@ -716,7 +721,7 @@ function testForEachCodePointComplex() {
 }
 
 function testForEachCodePointEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     str.forEachCodePoint(function(ch) {
     	// should never call this callback
@@ -725,7 +730,7 @@ function testForEachCodePointEmpty() {
 }
 
 function testCharIteratorSimple() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     var it = str.charIterator();
     assertTrue(it.hasNext());
@@ -741,7 +746,7 @@ function testCharIteratorSimple() {
 }
 
 function testCharIteratorComplex() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     var it = str.charIterator();
     assertTrue(it.hasNext());
@@ -757,7 +762,7 @@ function testCharIteratorComplex() {
 }
 
 function testCharIteratorEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     var it = str.charIterator();
     assertFalse(it.hasNext());
@@ -765,7 +770,7 @@ function testCharIteratorEmpty() {
 }
 
 function testForEachSimple() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     var expected = ["a", "b", "c", "d"];
     var i = 0;
@@ -776,7 +781,7 @@ function testForEachSimple() {
 }
 
 function testForEachComplex() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     var expected = ["a", "\uD800\uDF02", "b", "\uD800\uDC00"];
     var i = 0;
@@ -787,7 +792,7 @@ function testForEachComplex() {
 }
 
 function testForEachEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     str.forEach(function(ch) {
     	// should never call this callback
@@ -796,28 +801,28 @@ function testForEachEmpty() {
 }
 
 function testCodePointLengthUCS2() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     assertEquals(4, str.codePointLength());
     assertEquals(4, str.length);
 }
 
 function testCodePointLengthWithSurrogates() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     assertEquals(4, str.codePointLength());
     assertEquals(6, str.length);
 }
 
 function testCodePointLengthEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     assertEquals(0, str.codePointLength());
     assertEquals(0, str.length);
 }
 
 function testCodePointAtUCS2() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     assertEquals(0x61, str.codePointAt(0));
     assertEquals(0x62, str.codePointAt(1));
@@ -826,7 +831,7 @@ function testCodePointAtUCS2() {
 }
 
 function testCodePointAtWithSurrogates() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     assertEquals(0x61, str.codePointAt(0));
     assertEquals(0x10302, str.codePointAt(1));
@@ -835,31 +840,31 @@ function testCodePointAtWithSurrogates() {
 }
 
 function testCodePointAtEmpty() {
-    var str = new ilib.String("");
+    var str = new IString("");
 
     assertEquals(-1, str.codePointAt(0));
 }
 
 function testCodePointAtPastEndUCS2() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     assertEquals(-1, str.codePointAt(4));
 }
 
 function testCodePointAtNegUCS2() {
-    var str = new ilib.String("abcd");
+    var str = new IString("abcd");
 
     assertEquals(-1, str.codePointAt(-234));
 }
 
 function testCodePointAtPastEndWithSurrogates() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     assertEquals(-1, str.codePointAt(4));
 }
 
 function testCodePointAtNegWithSurrogates() {
-    var str = new ilib.String("a\uD800\uDF02b\uD800\uDC00");
+    var str = new IString("a\uD800\uDF02b\uD800\uDC00");
 
     assertEquals(-1, str.codePointAt(-234));
 }
@@ -869,7 +874,7 @@ function testRuleGetValueN() {
 		n: []
 	};
 	
-	assertRoughlyEquals(8.2, ilib.String._fncs.getValue(rule, 8.2), 0.01);
+	assertRoughlyEquals(8.2, IString._fncs.getValue(rule, 8.2), 0.01);
 }
 
 function testRuleGetValueIsTrue() {
@@ -880,7 +885,7 @@ function testRuleGetValueIsTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueIsFalse() {
@@ -891,7 +896,7 @@ function testRuleGetValueIsFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3));
+	assertFalse(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueIsNotTrue() {
@@ -902,7 +907,7 @@ function testRuleGetValueIsNotTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 3));
+	assertTrue(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueIsNotFalse() {
@@ -913,7 +918,7 @@ function testRuleGetValueIsNotFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 2));
+	assertFalse(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueInRangeTrueStart() {
@@ -924,7 +929,7 @@ function testRuleGetValueInRangeTrueStart() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0));
+	assertTrue(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueInRangeTrueEnd() {
@@ -935,7 +940,7 @@ function testRuleGetValueInRangeTrueEnd() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueInRangeTrueBetween() {
@@ -946,7 +951,7 @@ function testRuleGetValueInRangeTrueBetween() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 1));
+	assertTrue(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueInRangeFalse() {
@@ -957,7 +962,7 @@ function testRuleGetValueInRangeFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3));
+	assertFalse(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueInRangeFalseNotInteger() {
@@ -968,7 +973,7 @@ function testRuleGetValueInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertFalse(IString._fncs.getValue(rule, 0.5));
 }
 
 
@@ -980,7 +985,7 @@ function testRuleGetValueInRangeFalseIntegersAfter() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 4));
+	assertFalse(IString._fncs.getValue(rule, 4));
 }
 
 function testRuleGetValueInRangeFalseIntegersBefore() {
@@ -991,7 +996,7 @@ function testRuleGetValueInRangeFalseIntegersBefore() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0));
+	assertFalse(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueInRangeFalseIntegersBetween() {
@@ -1002,7 +1007,7 @@ function testRuleGetValueInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueInRangeIntegersTrue() {
@@ -1013,7 +1018,7 @@ function testRuleGetValueInRangeIntegersTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueInRangeIntegersFalseNotInteger() {
@@ -1024,7 +1029,7 @@ function testRuleGetValueInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertFalse(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueInRangeIntegersTrueMany() {
@@ -1035,7 +1040,7 @@ function testRuleGetValueInRangeIntegersTrueMany() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 6));
+	assertTrue(IString._fncs.getValue(rule, 6));
 }
 
 
@@ -1047,7 +1052,7 @@ function testRuleGetValueInRangeComplexTrue1() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0));
+	assertTrue(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueInRangeComplexTrue2() {
@@ -1058,7 +1063,7 @@ function testRuleGetValueInRangeComplexTrue2() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueInRangeComplexTrue3() {
@@ -1069,7 +1074,7 @@ function testRuleGetValueInRangeComplexTrue3() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 3));
+	assertTrue(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueInRangeComplexTrue4() {
@@ -1080,7 +1085,7 @@ function testRuleGetValueInRangeComplexTrue4() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 4));
+	assertTrue(IString._fncs.getValue(rule, 4));
 }
 
 function testRuleGetValueInRangeComplexTrue5() {
@@ -1091,7 +1096,7 @@ function testRuleGetValueInRangeComplexTrue5() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 8));
+	assertTrue(IString._fncs.getValue(rule, 8));
 }
 
 function testRuleGetValueInRangeComplexTrue6() {
@@ -1102,7 +1107,7 @@ function testRuleGetValueInRangeComplexTrue6() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 9));
+	assertTrue(IString._fncs.getValue(rule, 9));
 }
 
 function testRuleGetValueInRangeComplexFalse1() {
@@ -1113,7 +1118,7 @@ function testRuleGetValueInRangeComplexFalse1() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueInRangeComplexFalse2() {
@@ -1124,7 +1129,7 @@ function testRuleGetValueInRangeComplexFalse2() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 5));
+	assertFalse(IString._fncs.getValue(rule, 5));
 }
 
 function testRuleGetValueInRangeComplexFalse3() {
@@ -1135,7 +1140,7 @@ function testRuleGetValueInRangeComplexFalse3() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 10));
+	assertFalse(IString._fncs.getValue(rule, 10));
 }
 
 function testRuleGetValueNotInRangeTrueStart() {
@@ -1146,7 +1151,7 @@ function testRuleGetValueNotInRangeTrueStart() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0));
+	assertFalse(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueNotInRangeTrueEnd() {
@@ -1157,7 +1162,7 @@ function testRuleGetValueNotInRangeTrueEnd() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 2));
+	assertFalse(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueNotInRangeTrueBetween() {
@@ -1168,7 +1173,7 @@ function testRuleGetValueNotInRangeTrueBetween() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueNotInRangeFalse() {
@@ -1179,7 +1184,7 @@ function testRuleGetValueNotInRangeFalse() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 3));
+	assertTrue(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueNotInRangeFalseNotInteger() {
@@ -1190,7 +1195,7 @@ function testRuleGetValueNotInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1202,7 +1207,7 @@ function testRuleGetValueNotInRangeFalseIntegersAfter() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 4));
+	assertTrue(IString._fncs.getValue(rule, 4));
 }
 
 function testRuleGetValueNotInRangeFalseIntegersBefore() {
@@ -1213,7 +1218,7 @@ function testRuleGetValueNotInRangeFalseIntegersBefore() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0));
+	assertTrue(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueNotInRangeFalseIntegersBetween() {
@@ -1224,7 +1229,7 @@ function testRuleGetValueNotInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 1));
+	assertTrue(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueNotInRangeIntegersTrue() {
@@ -1235,7 +1240,7 @@ function testRuleGetValueNotInRangeIntegersTrue() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 2));
+	assertFalse(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueNotInRangeIntegersFalseNotInteger() {
@@ -1246,7 +1251,7 @@ function testRuleGetValueNotInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueNotInRangeIntegersTrueMany() {
@@ -1257,7 +1262,7 @@ function testRuleGetValueNotInRangeIntegersTrueMany() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 6));
+	assertFalse(IString._fncs.getValue(rule, 6));
 }
 
 
@@ -1269,7 +1274,7 @@ function testRuleGetValueNotInRangeComplexTrue1() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0));
+	assertFalse(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueNotInRangeComplexTrue2() {
@@ -1280,7 +1285,7 @@ function testRuleGetValueNotInRangeComplexTrue2() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 2));
+	assertFalse(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueNotInRangeComplexTrue3() {
@@ -1291,7 +1296,7 @@ function testRuleGetValueNotInRangeComplexTrue3() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3));
+	assertFalse(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueNotInRangeComplexTrue4() {
@@ -1302,7 +1307,7 @@ function testRuleGetValueNotInRangeComplexTrue4() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 4));
+	assertFalse(IString._fncs.getValue(rule, 4));
 }
 
 function testRuleGetValueNotInRangeComplexTrue5() {
@@ -1313,7 +1318,7 @@ function testRuleGetValueNotInRangeComplexTrue5() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 8));
+	assertFalse(IString._fncs.getValue(rule, 8));
 }
 
 function testRuleGetValueNotInRangeComplexTrue6() {
@@ -1324,7 +1329,7 @@ function testRuleGetValueNotInRangeComplexTrue6() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 9));
+	assertFalse(IString._fncs.getValue(rule, 9));
 }
 
 function testRuleGetValueNotInRangeComplexFalse1() {
@@ -1335,7 +1340,7 @@ function testRuleGetValueNotInRangeComplexFalse1() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 1));
+	assertTrue(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueNotInRangeComplexFalse2() {
@@ -1346,7 +1351,7 @@ function testRuleGetValueNotInRangeComplexFalse2() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 5));
+	assertTrue(IString._fncs.getValue(rule, 5));
 }
 
 function testRuleGetValueNotInRangeComplexFalse3() {
@@ -1357,7 +1362,7 @@ function testRuleGetValueNotInRangeComplexFalse3() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 10));
+	assertTrue(IString._fncs.getValue(rule, 10));
 }
 
 function testRuleGetValueWithinTrueStart() {
@@ -1368,7 +1373,7 @@ function testRuleGetValueWithinTrueStart() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0));
+	assertTrue(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueWithinTrueEnd() {
@@ -1379,7 +1384,7 @@ function testRuleGetValueWithinTrueEnd() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueWithinTrueBetween() {
@@ -1390,7 +1395,7 @@ function testRuleGetValueWithinTrueBetween() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 1));
+	assertTrue(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueWithinFalse() {
@@ -1401,7 +1406,7 @@ function testRuleGetValueWithinFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3));
+	assertFalse(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueWithinTrueNotInteger() {
@@ -1412,7 +1417,7 @@ function testRuleGetValueWithinTrueNotInteger() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1424,7 +1429,7 @@ function testRuleGetValueWithinFalseAfter() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 2.1));
+	assertFalse(IString._fncs.getValue(rule, 2.1));
 }
 
 function testRuleGetValueWithinFalseBefore() {
@@ -1435,7 +1440,7 @@ function testRuleGetValueWithinFalseBefore() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.9));
+	assertFalse(IString._fncs.getValue(rule, 0.9));
 }
 
 function testRuleGetValueWithinFalseBetween() {
@@ -1446,7 +1451,7 @@ function testRuleGetValueWithinFalseBetween() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1.876));
+	assertFalse(IString._fncs.getValue(rule, 1.876));
 }
 
 function testRuleGetValueWithinITrue() {
@@ -1457,7 +1462,7 @@ function testRuleGetValueWithinITrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2));
+	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
 function testRuleGetValueWithinIntegersFalseNotInteger() {
@@ -1468,7 +1473,7 @@ function testRuleGetValueWithinIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertFalse(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueWithinIntegersTrueMany() {
@@ -1479,7 +1484,7 @@ function testRuleGetValueWithinIntegersTrueMany() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 6));
+	assertTrue(IString._fncs.getValue(rule, 6));
 }
 
 
@@ -1491,7 +1496,7 @@ function testRuleGetValueWithinComplexTrue1() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0));
+	assertTrue(IString._fncs.getValue(rule, 0));
 }
 
 function testRuleGetValueWithinComplexTrue2() {
@@ -1502,7 +1507,7 @@ function testRuleGetValueWithinComplexTrue2() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 2.8));
+	assertTrue(IString._fncs.getValue(rule, 2.8));
 }
 
 function testRuleGetValueWithinComplexTrue3() {
@@ -1513,7 +1518,7 @@ function testRuleGetValueWithinComplexTrue3() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 3));
+	assertTrue(IString._fncs.getValue(rule, 3));
 }
 
 function testRuleGetValueWithinComplexTrue4() {
@@ -1524,7 +1529,7 @@ function testRuleGetValueWithinComplexTrue4() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 4));
+	assertTrue(IString._fncs.getValue(rule, 4));
 }
 
 function testRuleGetValueWithinComplexTrue5() {
@@ -1535,7 +1540,7 @@ function testRuleGetValueWithinComplexTrue5() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 8));
+	assertTrue(IString._fncs.getValue(rule, 8));
 }
 
 function testRuleGetValueWithinComplexTrue6() {
@@ -1546,7 +1551,7 @@ function testRuleGetValueWithinComplexTrue6() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 9));
+	assertTrue(IString._fncs.getValue(rule, 9));
 }
 
 function testRuleGetValueWithinComplexFalse1() {
@@ -1557,7 +1562,7 @@ function testRuleGetValueWithinComplexFalse1() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueWithinComplexFalse2() {
@@ -1568,7 +1573,7 @@ function testRuleGetValueWithinComplexFalse2() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 5));
+	assertFalse(IString._fncs.getValue(rule, 5));
 }
 
 function testRuleGetValueWithinComplexFalse3() {
@@ -1579,7 +1584,7 @@ function testRuleGetValueWithinComplexFalse3() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 10));
+	assertFalse(IString._fncs.getValue(rule, 10));
 }
 
 function testRuleGetValueMod() {
@@ -1590,7 +1595,7 @@ function testRuleGetValueMod() {
 		]
 	};
 	
-	assertEquals(4, ilib.String._fncs.getValue(rule, 10));
+	assertEquals(4, IString._fncs.getValue(rule, 10));
 }
 
 function testRuleGetValueModNonInteger() {
@@ -1601,7 +1606,7 @@ function testRuleGetValueModNonInteger() {
 		]
 	};
 	
-	assertRoughlyEquals(2.2, ilib.String._fncs.getValue(rule, 8.2), 0.01);
+	assertRoughlyEquals(2.2, IString._fncs.getValue(rule, 8.2), 0.01);
 }
 
 function testRuleGetValueModNegative() {
@@ -1612,7 +1617,7 @@ function testRuleGetValueModNegative() {
 		]
 	};
 	
-	assertRoughlyEquals(1, ilib.String._fncs.getValue(rule, -11), 0.01);
+	assertRoughlyEquals(1, IString._fncs.getValue(rule, -11), 0.01);
 }
 
 function testRuleGetValueOrFalseFalse() {
@@ -1623,7 +1628,7 @@ function testRuleGetValueOrFalseFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 11));
+	assertFalse(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueOrFalseTrue() {
@@ -1634,7 +1639,7 @@ function testRuleGetValueOrFalseTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 11));
+	assertTrue(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueOrTrueFalse() {
@@ -1645,7 +1650,7 @@ function testRuleGetValueOrTrueFalse() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 11));
+	assertTrue(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueOrTrueTrue() {
@@ -1656,7 +1661,7 @@ function testRuleGetValueOrTrueTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 11));
+	assertTrue(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueAndFalseFalse() {
@@ -1667,7 +1672,7 @@ function testRuleGetValueAndFalseFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 11));
+	assertFalse(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueAndFalseTrue() {
@@ -1678,7 +1683,7 @@ function testRuleGetValueAndFalseTrue() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 11));
+	assertFalse(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueAndTrueFalse() {
@@ -1689,7 +1694,7 @@ function testRuleGetValueAndTrueFalse() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 11));
+	assertFalse(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleGetValueAndTrueTrue() {
@@ -1700,7 +1705,7 @@ function testRuleGetValueAndTrueTrue() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 11));
+	assertTrue(IString._fncs.getValue(rule, 11));
 }
 
 function testRuleComplex1() {
@@ -1731,12 +1736,12 @@ function testRuleComplex1() {
         ]
     };
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 3));
-	assertFalse(ilib.String._fncs.getValue(rule, 13));
-	assertTrue(ilib.String._fncs.getValue(rule, 23));
-	assertTrue(ilib.String._fncs.getValue(rule, 103));
-	assertFalse(ilib.String._fncs.getValue(rule, 113));
-	assertTrue(ilib.String._fncs.getValue(rule, 123));
+	assertTrue(IString._fncs.getValue(rule, 3));
+	assertFalse(IString._fncs.getValue(rule, 13));
+	assertTrue(IString._fncs.getValue(rule, 23));
+	assertTrue(IString._fncs.getValue(rule, 103));
+	assertFalse(IString._fncs.getValue(rule, 113));
+	assertTrue(IString._fncs.getValue(rule, 123));
 }
 
 function testRuleComplex2() {
@@ -1767,12 +1772,12 @@ function testRuleComplex2() {
         ]
     };
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
-	assertFalse(ilib.String._fncs.getValue(rule, 11));
-	assertFalse(ilib.String._fncs.getValue(rule, 21));
-	assertFalse(ilib.String._fncs.getValue(rule, 101));
-	assertFalse(ilib.String._fncs.getValue(rule, 111));
-	assertFalse(ilib.String._fncs.getValue(rule, 121));
+	assertFalse(IString._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 11));
+	assertFalse(IString._fncs.getValue(rule, 21));
+	assertFalse(IString._fncs.getValue(rule, 101));
+	assertFalse(IString._fncs.getValue(rule, 111));
+	assertFalse(IString._fncs.getValue(rule, 121));
 }
 
 function testRuleComplex3() {
@@ -1803,12 +1808,12 @@ function testRuleComplex3() {
         ]
     };
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 5));
-	assertFalse(ilib.String._fncs.getValue(rule, 15));
-	assertFalse(ilib.String._fncs.getValue(rule, 25));
-	assertFalse(ilib.String._fncs.getValue(rule, 105));
-	assertFalse(ilib.String._fncs.getValue(rule, 115));
-	assertFalse(ilib.String._fncs.getValue(rule, 125));
+	assertFalse(IString._fncs.getValue(rule, 5));
+	assertFalse(IString._fncs.getValue(rule, 15));
+	assertFalse(IString._fncs.getValue(rule, 25));
+	assertFalse(IString._fncs.getValue(rule, 105));
+	assertFalse(IString._fncs.getValue(rule, 115));
+	assertFalse(IString._fncs.getValue(rule, 125));
 }
 
 function testRuleComplex4() {
@@ -1839,16 +1844,16 @@ function testRuleComplex4() {
         ]
     };
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 13.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 23.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 103.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 113.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 123.5));
+	assertFalse(IString._fncs.getValue(rule, 3.5));
+	assertFalse(IString._fncs.getValue(rule, 13.5));
+	assertFalse(IString._fncs.getValue(rule, 23.5));
+	assertFalse(IString._fncs.getValue(rule, 103.5));
+	assertFalse(IString._fncs.getValue(rule, 113.5));
+	assertFalse(IString._fncs.getValue(rule, 123.5));
 }
 
 function testStringGetLocaleDefault() {
-	var str = new ilib.String("foo");
+	var str = new IString("foo");
     
 	assertNotNull(str);
     
@@ -1856,8 +1861,8 @@ function testStringGetLocaleDefault() {
 }
 
 function testStringGetLocaleWithLocaleObj() {
-	var str = new ilib.String("foo");
-	str.setLocale(new ilib.Locale("ja-JP"));
+	var str = new IString("foo");
+	str.setLocale(new Locale("ja-JP"));
     
 	assertNotNull(str);
     
@@ -1865,7 +1870,7 @@ function testStringGetLocaleWithLocaleObj() {
 }
 
 function testStringGetLocaleWithLocaleSpec() {
-	var str = new ilib.String("foo");
+	var str = new IString("foo");
 	str.setLocale("ja-JP");
     
 	assertNotNull(str);
@@ -1874,7 +1879,7 @@ function testStringGetLocaleWithLocaleSpec() {
 }
 
 function testStringSetLocaleUndefined() {
-	var str = new ilib.String("foo");
+	var str = new IString("foo");
 	str.setLocale(undefined);
     
 	assertNotNull(str);
@@ -1883,7 +1888,7 @@ function testStringSetLocaleUndefined() {
 }
 
 function testStringFormatChoiceCharClasses1() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1892,7 +1897,7 @@ function testStringFormatChoiceCharClasses1() {
 }
 
 function testStringFormatChoiceCharClasses2() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1901,7 +1906,7 @@ function testStringFormatChoiceCharClasses2() {
 }
 
 function testStringFormatChoiceCharClasses3() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1910,7 +1915,7 @@ function testStringFormatChoiceCharClasses3() {
 }
 
 function testStringFormatChoiceCharClasses4() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1919,7 +1924,7 @@ function testStringFormatChoiceCharClasses4() {
 }
 
 function testStringFormatChoiceCharClasses5() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1928,7 +1933,7 @@ function testStringFormatChoiceCharClasses5() {
 }
 
 function testStringFormatChoiceCharClasses6() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1937,7 +1942,7 @@ function testStringFormatChoiceCharClasses6() {
 }
 
 function testStringFormatChoiceCharClasses7() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1946,7 +1951,7 @@ function testStringFormatChoiceCharClasses7() {
 }
 
 function testStringFormatChoiceCharClasses8() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1955,7 +1960,7 @@ function testStringFormatChoiceCharClasses8() {
 }
 
 function testStringFormatChoiceCharClasses9() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1964,7 +1969,7 @@ function testStringFormatChoiceCharClasses9() {
 }
 
 function testStringFormatChoiceCharClasses10() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1973,7 +1978,7 @@ function testStringFormatChoiceCharClasses10() {
 }
 
 function testStringFormatChoiceCharClasses11() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1982,7 +1987,7 @@ function testStringFormatChoiceCharClasses11() {
 }
 
 function testStringFormatChoiceCharClasses12() {
-    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1991,7 +1996,7 @@ function testStringFormatChoiceCharClasses12() {
 }
 
 function testStringFormatChoiceCharClassesComplex1() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2000,7 +2005,7 @@ function testStringFormatChoiceCharClassesComplex1() {
 }
 
 function testStringFormatChoiceCharClassesComplex2() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2009,7 +2014,7 @@ function testStringFormatChoiceCharClassesComplex2() {
 }
 
 function testStringFormatChoiceCharClassesComplex3() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2018,7 +2023,7 @@ function testStringFormatChoiceCharClassesComplex3() {
 }
 
 function testStringFormatChoiceCharClassesComplex4() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2027,7 +2032,7 @@ function testStringFormatChoiceCharClassesComplex4() {
 }
 
 function testStringFormatChoiceCharClassesComplex5() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2036,7 +2041,7 @@ function testStringFormatChoiceCharClassesComplex5() {
 }
 
 function testStringFormatChoiceCharClassesComplex6() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2045,7 +2050,7 @@ function testStringFormatChoiceCharClassesComplex6() {
 }
 
 function testStringFormatChoiceCharClassesComplex7() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2054,7 +2059,7 @@ function testStringFormatChoiceCharClassesComplex7() {
 }
 
 function testStringFormatChoiceCharClassesComplex8() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2063,7 +2068,7 @@ function testStringFormatChoiceCharClassesComplex8() {
 }
 
 function testStringFormatChoiceCharClassesComplex9() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);
@@ -2072,7 +2077,7 @@ function testStringFormatChoiceCharClassesComplex9() {
 }
 
 function testStringFormatChoiceCharClassesComplex10() {
-    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
     
     assertNotNull(str);

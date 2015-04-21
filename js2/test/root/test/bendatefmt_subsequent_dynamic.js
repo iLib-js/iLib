@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtConstructorEmptySubsequent(results) {
-    new ilib.DateFmt();
+    new DateFmt();
 
     var tt = new TimedTest({
 		name: "DateFmt-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.DateFmt();
+		    var fmt = new DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testDateFmtConstructorEmptySubsequent(results) {
 }
 
 function testDateFmtConstructorRealSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "de-DE"
 	});
 
@@ -41,7 +42,7 @@ function testDateFmtConstructorRealSubsequent(results) {
 		name: "DateFmt-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -52,7 +53,7 @@ function testDateFmtConstructorRealSubsequent(results) {
 }
 
 function testDateFmtConstructorNonexistentSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "xx-YY"
 	});
 
@@ -60,7 +61,7 @@ function testDateFmtConstructorNonexistentSubsequent(results) {
 		name: "DateFmt-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);
@@ -71,7 +72,7 @@ function testDateFmtConstructorNonexistentSubsequent(results) {
 }
 
 function testDateFmtConstructorOtherComplexSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "zh-Hant-TW"
 	});
 
@@ -79,7 +80,7 @@ function testDateFmtConstructorOtherComplexSubsequent(results) {
 		name: "DateFmt-dynamic-otherfile-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "zh-Hant-TW"
 			});
 		    assertNotNull(fmt);
@@ -90,7 +91,7 @@ function testDateFmtConstructorOtherComplexSubsequent(results) {
 }
 
 function testDateFmtConstructorWithOptionsSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "fr-FR",
 		type: "datetime",
 		date: "dmywg",
@@ -102,7 +103,7 @@ function testDateFmtConstructorWithOptionsSubsequent(results) {
 		name: "DateFmt-dynamic-otherfile-options-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "fr-FR",
 				type: "datetime",
 				date: "dmywg",

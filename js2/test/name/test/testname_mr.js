@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_mr_IN() {
-	var parsed = new ilib.Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
+	var parsed = new Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_mr_IN() {
 
 
 function testParseTitle_mr_IN() {
-	var parsed = new ilib.Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
+	var parsed = new Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_mr_IN() {
 
 
 function testParseTitleWithFamilyOnly_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
+	var parsed = new Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_mr_IN() {
 
 
 function testParseEverything_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
+	var parsed = new Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_mr_IN() {
 };
 
 function testParseprefix_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
+	var parsed = new Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_mr_IN() {
  */
 
 function testFormatSimpleNameShort_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mr-IN'
 	});
@@ -106,11 +108,11 @@ function testFormatSimpleNameShort_mr_IN() {
 };
 
 function testFormatSimpleNameMedium_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mr-IN'
 	});
@@ -123,11 +125,11 @@ function testFormatSimpleNameMedium_mr_IN() {
 };
 
 function testFormatSimpleNameLong_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'mr-IN'
 	});
@@ -140,11 +142,11 @@ function testFormatSimpleNameLong_mr_IN() {
 };
 
 function testFormatSurname_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "श्रीयुत आणि मिसेस",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'mr-IN'
 	});
@@ -157,13 +159,13 @@ function testFormatSurname_mr_IN() {
 };
 
 function testFormatSimpleNameFull_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "डॉक्टर",
 		givenName: "सचिन",
 		familyName: "तेंडुलकर",
 		suffix: "वरिष्ठ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'mr-IN'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameFull_mr_IN() {
 };
 
 function testFormatComplexNameShort_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "डॉक्टर",
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mr-IN'
 	});
@@ -194,12 +196,12 @@ function testFormatComplexNameShort_mr_IN() {
 };
 
 function testFormatComplexNameMedium_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "डॉक्टर",
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mr-IN'
 	});
@@ -212,12 +214,12 @@ function testFormatComplexNameMedium_mr_IN() {
 };
 
 function testFormatComplexNameLong_mr_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "डॉक्टर",
 		givenName: "सचिन",
 		familyName: "तेंडुलकर"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'mr-IN'
 	});

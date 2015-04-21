@@ -17,14 +17,17 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+
 function testNumberMatchFRDepartments1(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -34,20 +37,20 @@ function testNumberMatchFRDepartments1(){
 };
 
 function testStringsNumberMatchUSIgnoreSomeFields() {
-	var left = new ilib.PhoneNumber('1 (650) 456-7890'),
-		right = new ilib.PhoneNumber('650-456-7890');
+	var left = new PhoneNumber('1 (650) 456-7890'),
+		right = new PhoneNumber('650-456-7890');
 	assertNotUndefined(left);
 	assertEquals(100, left.compare(right));
 };
 
 function testNumberMatchFRDepartments2(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -57,13 +60,13 @@ function testNumberMatchFRDepartments2(){
 };
 
 function testNumberMatchFRDepartments3(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -73,13 +76,13 @@ function testNumberMatchFRDepartments3(){
 };
 
 function testNumberMatchFRDepartments1Reverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -89,13 +92,13 @@ function testNumberMatchFRDepartments1Reverse(){
 };
 
 function testNumberMatchFRDepartmentsWrongArea(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "591",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -105,13 +108,13 @@ function testNumberMatchFRDepartmentsWrongArea(){
 };
 
 function testNumberMatchFRDepartmentsWrongAreaReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "591",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -121,13 +124,13 @@ function testNumberMatchFRDepartmentsWrongAreaReverse(){
 };
 
 function testNumberMatchFRDepartmentsDifferentCountryCodes(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
@@ -138,13 +141,13 @@ function testNumberMatchFRDepartmentsDifferentCountryCodes(){
 };
 
 function testNumberMatchFRDifferentSN(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123454"
@@ -154,12 +157,12 @@ function testNumberMatchFRDifferentSN(){
 };
 
 function testNumberMatchUSTrunk(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
@@ -168,12 +171,12 @@ function testNumberMatchUSTrunk(){
 };
 
 function testNumberMatchUSTrunkReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
@@ -182,12 +185,12 @@ function testNumberMatchUSTrunkReverse(){
 };
 
 function testNumberMatchUSTrunkDefaultLocale(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
@@ -196,12 +199,12 @@ function testNumberMatchUSTrunkDefaultLocale(){
 };
 
 function testNumberMatchUSTrunkDefaultLocaleReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
@@ -210,12 +213,12 @@ function testNumberMatchUSTrunkDefaultLocaleReverse(){
 };
 
 function testNumberMatchUSTrunkWrongLocale(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "fr-FR"});
@@ -224,12 +227,12 @@ function testNumberMatchUSTrunkWrongLocale(){
 };
 
 function testNumberMatchUSTrunkWrongLocaleReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "fr-FR"});
@@ -238,12 +241,12 @@ function testNumberMatchUSTrunkWrongLocaleReverse(){
 };
 
 function testNumberMatchUSMissingArea(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
 	
@@ -251,12 +254,12 @@ function testNumberMatchUSMissingArea(){
 };
 
 function testNumberMatchUSMissingAreaReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
 	
@@ -264,11 +267,11 @@ function testNumberMatchUSMissingAreaReverse(){
 };
 
 function testNumberMatchUSDifferentArea(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "407",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
@@ -277,11 +280,11 @@ function testNumberMatchUSDifferentArea(){
 };
 
 function testNumberMatchUSDifferentAreaReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "407",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
@@ -291,13 +294,13 @@ function testNumberMatchUSDifferentAreaReverse(){
 
 function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	// different area codes, where neither is the US
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "30",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
@@ -309,11 +312,11 @@ function testNumberMatchUSCompletelyDifferentCountryCodes(){
 
 function testNumberMatchUSMissingCountryCodeThisCountry(){
 	// missing area code, where the one that is present is the same as the locale
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "es-ES"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
@@ -325,11 +328,11 @@ function testNumberMatchUSMissingCountryCodeThisCountry(){
 
 function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	// missing area code, where the one that is present is the same as the locale
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "es-ES"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
@@ -341,11 +344,11 @@ function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 
 function testNumberMatchUSMissingCountryCodeOtherCountry(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
@@ -357,11 +360,11 @@ function testNumberMatchUSMissingCountryCodeOtherCountry(){
 
 function testNumberMatchUSMissingCountryCodeOtherCountryReverse(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
@@ -372,13 +375,13 @@ function testNumberMatchUSMissingCountryCodeOtherCountryReverse(){
 };
 
 function testNumberMatchITSanMarino(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
@@ -388,13 +391,13 @@ function testNumberMatchITSanMarino(){
 };
 
 function testNumberMatchITSanMarinoReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
@@ -404,13 +407,13 @@ function testNumberMatchITSanMarinoReverse(){
 };
 
 function testNumberMatchUSSanMarino(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
@@ -421,13 +424,13 @@ function testNumberMatchUSSanMarino(){
 };
 
 function testNumberMatchITSanMarinoWrongArea(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "374",
 		subscriberNumber: "123456"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
@@ -437,14 +440,14 @@ function testNumberMatchITSanMarinoWrongArea(){
 };
 
 function testNumberMatchITSanMarinoDifferentCountryCodes(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -456,14 +459,14 @@ function testNumberMatchITSanMarinoDifferentCountryCodes(){
 };
 
 function testNumberMatchITSanMarinoDifferentCountryCodesReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -475,14 +478,14 @@ function testNumberMatchITSanMarinoDifferentCountryCodesReverse(){
 };
 
 function testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -494,14 +497,14 @@ function testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
 };
 
 function testNumberMatchITVaticanCity(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
@@ -511,14 +514,14 @@ function testNumberMatchITVaticanCity(){
 };
 
 function testNumberMatchITVaticanCityReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
@@ -528,14 +531,14 @@ function testNumberMatchITVaticanCityReverse(){
 };
 
 function testNumberMatchITOther(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
@@ -545,14 +548,14 @@ function testNumberMatchITOther(){
 };
 
 function testNumberMatchITOtherReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "it-IT"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
@@ -563,13 +566,13 @@ function testNumberMatchITOtherReverse(){
 
 function testNumberMatchUSDifferentCountryCodesIT(){
 	// both ways are valid ways to reach the Vatican from abroad
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "6",
@@ -581,13 +584,13 @@ function testNumberMatchUSDifferentCountryCodesIT(){
 
 function testNumberMatchUSDifferentCountryCodesITReverse(){
 	// both ways are valid ways to reach the Vatican from abroad
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "6",
@@ -599,13 +602,13 @@ function testNumberMatchUSDifferentCountryCodesITReverse(){
 
 function testNumberMatchUSDifferentCountryCodesFR(){
 	// both ways are valid ways to reach the departments from abroad
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
@@ -617,13 +620,13 @@ function testNumberMatchUSDifferentCountryCodesFR(){
 
 function testNumberMatchUSDifferentCountryCodesFRReverse(){
 	// both ways are valid ways to reach the departments from abroad
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
@@ -634,12 +637,12 @@ function testNumberMatchUSDifferentCountryCodesFRReverse(){
 };
 
 function testNumberMatchDEMissingExtension(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456"
 	}, {locale: "de-DE"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
@@ -650,12 +653,12 @@ function testNumberMatchDEMissingExtension(){
 };
 
 function testNumberMatchDEMissingExtensionReverse(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456"
 	}, {locale: "de-DE"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
@@ -667,13 +670,13 @@ function testNumberMatchDEMissingExtensionReverse(){
 
 function testNumberMatchDEDifferentExtension(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "833"
 	}, {locale: "de-DE"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
@@ -685,14 +688,14 @@ function testNumberMatchDEDifferentExtension(){
 
 function testNumberMatchUSEverythingDifferent(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		trunkAccess: "0",
 		countryCode: "49",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "833"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "650",
 		subscriberNumber: "7654321"
@@ -703,11 +706,11 @@ function testNumberMatchUSEverythingDifferent(){
 
 function testNumberMatchCAUseNanpRules(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "416",
 		subscriberNumber: "1234567"
 	}, {locale: "en-CA"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "416",
 		subscriberNumber: "1234567"
@@ -719,13 +722,13 @@ function testNumberMatchCAUseNanpRules(){
 // for bug NOV-116615
 function testNumberMatchMobileVsLDNumber(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		mobilePrefix: "7734",
 		subscriberNumber: "345345"
 	}, {locale: "en-gb"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "1483",
 		subscriberNumber: "345345"
@@ -738,12 +741,12 @@ function testNumberMatchMobileVsLDNumber(){
 
 function testNumberMatchSG(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "93897077"
 	}, {locale: "en-SG"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		subscriberNumber: "93897077"
 	}, {locale: "en-SG"});
 	
@@ -752,12 +755,12 @@ function testNumberMatchSG(){
 
 function testNumberMatchSGWrongLocale(){
 	var location;
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "93897077"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		subscriberNumber: "93897077"
 	}, {locale: "en-US"});
 	
@@ -765,104 +768,104 @@ function testNumberMatchSGWrongLocale(){
 };
 
 function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
-	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
-		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
+	var left = new PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
+		right = new PhoneNumber('+39 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
-	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
-		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
+	var left = new PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
+		right = new PhoneNumber('0549 123 456', {locale: "it-IT"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
-	var left = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
-		right = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"});
+	var left = new PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
+		right = new PhoneNumber('+39 0545 123 456', {locale: "en-US"});
 	assertEquals(0, left.compare(right));
 };
 
 function testStringsNumberMatchITOther(){
-	var left = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
-		right = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"});
+	var left = new PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
+		right = new PhoneNumber('06-69812345', {locale: "it-IT"});
 	assertEquals(84, left.compare(right));
 };
 
 function testStringsNumberMatchFRDepartments1(){
-	var left = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
-		right = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"});
+	var left = new PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
+		right = new PhoneNumber('0590 123 456', {locale: "fr-FR"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchDEMissingExtension(){
-	var left = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"}),
-		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
+	var left = new PhoneNumber('02203 123456', {locale: "de-DE"}),
+		right = new PhoneNumber('02203 123456-789', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
 };
 
 function testStringsNumberMatchDEDifferentExtension(){
-	var left = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"}),
-		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
+	var left = new PhoneNumber('02203/123456-833', {locale: "de-DE"}),
+		right = new PhoneNumber('02203 123456-789', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
 };
 
 function testStringsNumberMatchUSIgnoreSomeFieldsReverse(){
-	var left = new ilib.PhoneNumber('650-456-7890', {locale: "en-US"}),
-		right = new ilib.PhoneNumber('1 (650) 456-7890', {locale: "en-US"});
+	var left = new PhoneNumber('650-456-7890', {locale: "en-US"}),
+		right = new PhoneNumber('1 (650) 456-7890', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse(){
-	var left = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
-		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"});
+	var left = new PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
+		right = new PhoneNumber('+378 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoMissingCountryCodesReverse(){
-	var left = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"}),
-		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"});
+	var left = new PhoneNumber('0549 123 456', {locale: "it-IT"}),
+		right = new PhoneNumber('+378 0549 123 456', {locale: "it-IT"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse(){
-	var left = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
-		right = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"});
+	var left = new PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
+		right = new PhoneNumber('+378 0548 123 456', {locale: "en-US"});
 	assertEquals(0, left.compare(right));
 };
 
 function testStringsNumberMatchITOtherReverse(){
-	var left = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"}),
-		right = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"});
+	var left = new PhoneNumber('06-69812345', {locale: "it-IT"}),
+		right = new PhoneNumber('+39 06 69812345', {locale: "it-IT"});
 	assertEquals(84, left.compare(right));
 };
 
 function testStringsNumberMatchFRDepartments1Reverse(){
-	var left = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"}),
-		right = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"});
+	var left = new PhoneNumber('0590 123 456', {locale: "fr-FR"}),
+		right = new PhoneNumber('+590 590 123 456', {locale: "fr-FR"});
 	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchDEMissingExtensionReverse(){
-	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
-		right = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"});
+	var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
+		right = new PhoneNumber('02203 123456', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
 };
 
 function testStringsNumberMatchDEDifferentExtensionReverse(){
-	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
-		right = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"});
+	var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
+		right = new PhoneNumber('02203/123456-833', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));	
 };
 
 
 function testEqualsNotEqual(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -872,13 +875,13 @@ function testEqualsNotEqual(){
 };
 
 function testEquals(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
@@ -889,13 +892,13 @@ function testEquals(){
 };
 
 function testEqualsDifferentLocaleOkay(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
@@ -907,11 +910,11 @@ function testEqualsDifferentLocaleOkay(){
 };
 
 function testEqualsDifferentLocaleNotOkay(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "en-US"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
@@ -921,13 +924,13 @@ function testEqualsDifferentLocaleNotOkay(){
 };
 
 function testEqualsMissingLocaleLeft(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
@@ -938,13 +941,13 @@ function testEqualsMissingLocaleLeft(){
 };
 
 function testEqualsMissingLocaleRight(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
@@ -955,13 +958,13 @@ function testEqualsMissingLocaleRight(){
 };
 
 function testEqualsMissingLocaleBoth(){
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
@@ -991,17 +994,17 @@ function testPhoneNumLoadLocaleDataSynch() {
 		return;
 	}
 	
-	ilib.PhoneNumber.cache = {};
+	PhoneNumber.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	var left = new ilib.PhoneNumber({
+	var left = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR",
 		sync: false});
-	var right = new ilib.PhoneNumber({
+	var right = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
@@ -1085,7 +1088,7 @@ var lookAheadStates = {
 };
 
 function testPhoneNumLookaheadRoot() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1104,7 +1107,7 @@ function testPhoneNumLookaheadRoot() {
 };
 
 function testPhoneNumLookaheadSubleaf1() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1123,7 +1126,7 @@ function testPhoneNumLookaheadSubleaf1() {
 };
 
 function testPhoneNumLookaheadSubleaf2() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1142,7 +1145,7 @@ function testPhoneNumLookaheadSubleaf2() {
 };
 
 function testPhoneNumLookaheadSubleaf3() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1161,7 +1164,7 @@ function testPhoneNumLookaheadSubleaf3() {
 };
 
 function testPhoneNumLookaheadFallback1() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1182,7 +1185,7 @@ function testPhoneNumLookaheadFallback1() {
 };
 
 function testPhoneNumLookaheadFallback2() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1203,7 +1206,7 @@ function testPhoneNumLookaheadFallback2() {
 };
 
 function testPhoneNumLookaheadFallback3() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1224,7 +1227,7 @@ function testPhoneNumLookaheadFallback3() {
 };
 
 function testPhoneNumLookaheadFallback4() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;
@@ -1245,7 +1248,7 @@ function testPhoneNumLookaheadFallback4() {
 };
 
 function testPhoneNumLookaheadFallback5() {
-	var left = new ilib.PhoneNumber("0", {locale: "XX"});
+	var left = new PhoneNumber("0", {locale: "XX"});
 	
 	left.trunkAccess = undefined;
 	left.areaCode = undefined;

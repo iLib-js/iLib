@@ -17,14 +17,20 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var LocaleInfo = require("./../lib/LocaleInfo.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateRngFmt = require("./../lib/DateRngFmt.js");
+var DateFmt = require("./../lib/DateFmt.js");
+
 function testDateRngFmtConstructorEmpty() {
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     
     assertNotNull(fmt);
 }
 
 function testDateRngFmtConstructorDefaultLocale() {
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     
     assertNotNull(fmt);
     
@@ -32,7 +38,7 @@ function testDateRngFmtConstructorDefaultLocale() {
 }
 
 function testDateRngFmtGetCalendarDefault() {
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     
     assertNotNull(fmt);
     var cal = fmt.getCalendar();
@@ -42,7 +48,7 @@ function testDateRngFmtGetCalendarDefault() {
 }
 
 function testDateRngFmtGetCalendarExplicit() {
-    var fmt = new ilib.DateRngFmt({calendar: "julian"});
+    var fmt = new DateRngFmt({calendar: "julian"});
     
     assertNotNull(fmt);
     var cal = fmt.getCalendar();
@@ -52,7 +58,7 @@ function testDateRngFmtGetCalendarExplicit() {
 }
 
 function testDateRngFmtGetCalendarExplicitDefault() {
-    var fmt = new ilib.DateRngFmt({calendar: "gregorian"});
+    var fmt = new DateRngFmt({calendar: "gregorian"});
     
     assertNotNull(fmt);
     var cal = fmt.getCalendar();
@@ -63,7 +69,7 @@ function testDateRngFmtGetCalendarExplicitDefault() {
 
 function testDateRngFmtGetCalendarNotInThisLocale() {
     try {
-        var fmt = new ilib.DateRngFmt({calendar: "arabic", locale: 'en-US'});
+        var fmt = new DateRngFmt({calendar: "arabic", locale: 'en-US'});
         fail();
     } catch (str) {
         assertEquals("string", typeof(str));
@@ -72,49 +78,49 @@ function testDateRngFmtGetCalendarNotInThisLocale() {
 }
 
 function testDateRngFmtGetLength() {
-    var fmt = new ilib.DateRngFmt({length: "full"});
+    var fmt = new DateRngFmt({length: "full"});
     assertNotNull(fmt);
     
     assertEquals("full", fmt.getLength());
 }
 
 function testDateRngFmtGetLengthDefault() {
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
     assertEquals("short", fmt.getLength());
 }
 
 function testDateRngFmtGetLengthBogus() {
-    var fmt = new ilib.DateRngFmt({length: "asdf"});
+    var fmt = new DateRngFmt({length: "asdf"});
     assertNotNull(fmt);
     
     assertEquals("short", fmt.getLength());
 }
 
 function testDateRngFmtGetLocale() {
-    var fmt = new ilib.DateRngFmt({locale: "de-DE"});
+    var fmt = new DateRngFmt({locale: "de-DE"});
     assertNotNull(fmt);
     
     assertEquals("de-DE", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetLocaleDefault() {
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
     assertEquals("en-US", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetLocaleBogus() {
-    var fmt = new ilib.DateRngFmt({locale: "zyy-XX"});
+    var fmt = new DateRngFmt({locale: "zyy-XX"});
     assertNotNull(fmt);
     
     assertEquals("zyy-XX", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetClockDefaultUS() {
-    var fmt = new ilib.DateRngFmt({locale: "en-US"});
+    var fmt = new DateRngFmt({locale: "en-US"});
     assertNotNull(fmt);
     
     // use the default
@@ -122,7 +128,7 @@ function testDateRngFmtGetClockDefaultUS() {
 }
 
 function testDateRngFmtGetClockDefaultDE() {
-    var fmt = new ilib.DateRngFmt({locale: "de-DE"});
+    var fmt = new DateRngFmt({locale: "de-DE"});
     assertNotNull(fmt);
     
     // use the default
@@ -130,7 +136,7 @@ function testDateRngFmtGetClockDefaultDE() {
 }
 
 function testDateRngFmtGetClock() {
-    var fmt = new ilib.DateRngFmt({locale: "en-US", clock: "24"});
+    var fmt = new DateRngFmt({locale: "en-US", clock: "24"});
     assertNotNull(fmt);
     
     // use the default
@@ -138,7 +144,7 @@ function testDateRngFmtGetClock() {
 }
 
 function testDateRngFmtGetClockBogus() {
-    var fmt = new ilib.DateRngFmt({locale: "en-US", clock: "asdf"});
+    var fmt = new DateRngFmt({locale: "en-US", clock: "asdf"});
     assertNotNull(fmt);
     
     // use the default
@@ -147,7 +153,7 @@ function testDateRngFmtGetClockBogus() {
 
 function testDateRngFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
-    var fmt = new ilib.DateRngFmt();
+    var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
     var tz = fmt.getTimeZone();
@@ -155,7 +161,7 @@ function testDateRngFmtGetTimeZoneDefault() {
 }
 
 function testDateRngFmtGetTimeZone() {
-    var fmt = new ilib.DateRngFmt({timezone: "Europe/Paris"});
+    var fmt = new DateRngFmt({timezone: "Europe/Paris"});
     assertNotNull(fmt);
     
     var tz = fmt.getTimeZone();
@@ -163,19 +169,19 @@ function testDateRngFmtGetTimeZone() {
 }
 
 function testDateRngFmtGetDefaultLocale() {
-    var fmt = new ilib.DateRngFmt({locale: "yy-YY"});
+    var fmt = new DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
     assertEquals("yy-YY", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetDefaultFormat() {
-	ilib.DateFmt.cache = {};
-	ilib.LocaleInfo.cache = {};
-	var fmt = new ilib.DateRngFmt({locale: "yy-YY"});
+	DateFmt.cache = {};
+	LocaleInfo.cache = {};
+	var fmt = new DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -184,7 +190,7 @@ function testDateRngFmtGetDefaultFormat() {
     	second: 0
     });
     
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -224,16 +230,16 @@ function testDateRngFmtDynamicLoadSync() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.DateFmt.cache = {};
-	ilib.LocaleInfo.cache = {};
+	DateFmt.cache = {};
+	LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
     	locale: "yy-YY"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -242,7 +248,7 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -263,12 +269,12 @@ function testDateRngFmtDynamicLoadSyncCached() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 	
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
     	locale: "yy-YY"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -277,7 +283,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -296,11 +302,11 @@ function testDateRngFmtDynamicLoadAsync() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.DateFmt.cache = {};
-	ilib.LocaleInfo.cache = {};
+	DateFmt.cache = {};
+	LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	var start = new ilib.Date.GregDate({
+	var start = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -309,7 +315,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	second: 0
     });
     
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -318,7 +324,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	second: 0
     });
 	
-    new ilib.DateRngFmt({
+    new DateRngFmt({
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
@@ -337,7 +343,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
 	}
 	ilib.setLoaderCallback(mockLoader);
 
-	var start = new ilib.Date.GregDate({
+	var start = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -346,7 +352,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	second: 0
     });
     
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
     	year: 2013,
     	month: 2,
     	day: 20,
@@ -355,7 +361,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	second: 0
     });
 	
-    new ilib.DateRngFmt({
+    new DateRngFmt({
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {

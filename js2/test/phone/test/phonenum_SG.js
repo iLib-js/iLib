@@ -17,12 +17,13 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 // for bug NOV-118901
 function testSGLocalNumber(){
-	var parsed = new ilib.PhoneNumber("93897077", {locale: "en-SG"});
+	var parsed = new PhoneNumber("93897077", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "93897077"
 	}, {locale: "en-SG"});
 	
@@ -30,10 +31,10 @@ function testSGLocalNumber(){
 	
 };
 function testSGFromIntl(){
-	var parsed = new ilib.PhoneNumber("+6593897077", {locale: "en-SG"});
+	var parsed = new PhoneNumber("+6593897077", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "93897077"
@@ -43,10 +44,10 @@ function testSGFromIntl(){
 	
 };
 function testSGLocalNumberWithMCC(){
-	var parsed = new ilib.PhoneNumber("83897077", {locale: "en-US", mcc: "525"});
+	var parsed = new PhoneNumber("83897077", {locale: "en-US", mcc: "525"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "83897077"
 	}, {locale: "en-SG"});
 	
@@ -55,10 +56,10 @@ function testSGLocalNumberWithMCC(){
 };
 
 function testParseSGLocalNumber(){
-	var parsed = new ilib.PhoneNumber("6123 4567", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 4567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "61234567"
 	}, {locale: "en-SG"});
 	
@@ -67,10 +68,10 @@ function testParseSGLocalNumber(){
 };
 
 function testParseSGIgnoreFormatting(){
-	var parsed = new ilib.PhoneNumber("62-34-56-78", {locale: "en-SG"});
+	var parsed = new PhoneNumber("62-34-56-78", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "62345678"
 	}, {locale: "en-SG"});
 	
@@ -79,10 +80,10 @@ function testParseSGIgnoreFormatting(){
 };
 
 function testParseSGIgnoreCrap(){
-	var parsed = new ilib.PhoneNumber("6!1@2$3-^4&5(6)7", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6!1@2$3-^4&5(6)7", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "61234567"
 	}, {locale: "en-SG"});
 	
@@ -91,10 +92,10 @@ function testParseSGIgnoreCrap(){
 };
 
 function testParseSGServiceCode(){
-	var parsed = new ilib.PhoneNumber("1800 345 6789", {locale: "en-SG"});
+	var parsed = new PhoneNumber("1800 345 6789", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		serviceCode: "1800",
 		subscriberNumber: "3456789"
 	}, {locale: "en-SG"});
@@ -104,10 +105,10 @@ function testParseSGServiceCode(){
 };
 
 function testParseSGMobileNumber(){
-	var parsed = new ilib.PhoneNumber("81234567", {locale: "en-SG"});
+	var parsed = new PhoneNumber("81234567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "81234567"
 	}, {locale: "en-SG"});
 	
@@ -116,10 +117,10 @@ function testParseSGMobileNumber(){
 };
 
 function testParseSGPlusIDDToUS(){
-	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "en-SG"});
+	var parsed = new PhoneNumber("+12028675309", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "202",
@@ -131,10 +132,10 @@ function testParseSGPlusIDDToUS(){
 };
 
 function testParseSGZerosIDDToUS(){
-	var parsed = new ilib.PhoneNumber("00112028675309", {locale: "en-SG"});
+	var parsed = new PhoneNumber("00112028675309", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "001",
 		countryCode: "1",
 		areaCode: "202",
@@ -146,10 +147,10 @@ function testParseSGZerosIDDToUS(){
 };
 
 function testParseSGEmergencyNumber(){
-	var parsed = new ilib.PhoneNumber("999", {locale: "en-SG"});
+	var parsed = new PhoneNumber("999", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		emergency: "999"
 	}, {locale: "en-SG"});
 	
@@ -158,10 +159,10 @@ function testParseSGEmergencyNumber(){
 };
 
 function testParseSGPartial1(){
-	var parsed = new ilib.PhoneNumber("6", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6"
 	}, {locale: "en-SG"});
 	
@@ -170,10 +171,10 @@ function testParseSGPartial1(){
 };
 
 function testParseSGPartial2(){
-	var parsed = new ilib.PhoneNumber("61", {locale: "en-SG"});
+	var parsed = new PhoneNumber("61", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "61"
 	}, {locale: "en-SG"});
 	
@@ -181,10 +182,10 @@ function testParseSGPartial2(){
 	
 };
 function testParseSGPartial3(){
-	var parsed = new ilib.PhoneNumber("612", {locale: "en-SG"});
+	var parsed = new PhoneNumber("612", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "612"
 	}, {locale: "en-SG"});
 	
@@ -192,10 +193,10 @@ function testParseSGPartial3(){
 	
 };
 function testParseSGPartial4(){
-	var parsed = new ilib.PhoneNumber("6123", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6123"
 	}, {locale: "en-SG"});
 	
@@ -203,10 +204,10 @@ function testParseSGPartial4(){
 	
 };
 function testParseSGPartial5(){
-	var parsed = new ilib.PhoneNumber("6123 4", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 4", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "61234"
 	}, {locale: "en-SG"});
 	
@@ -214,10 +215,10 @@ function testParseSGPartial5(){
 	
 };
 function testParseSGPartial6(){
-	var parsed = new ilib.PhoneNumber("6123 45", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 45", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "612345"
 	}, {locale: "en-SG"});
 	
@@ -225,10 +226,10 @@ function testParseSGPartial6(){
 	
 };
 function testParseSGPartial7(){
-	var parsed = new ilib.PhoneNumber("6123 456", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 456", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6123456"
 	}, {locale: "en-SG"});
 	
@@ -236,10 +237,10 @@ function testParseSGPartial7(){
 	
 };
 function testParseSGPartial8(){
-	var parsed = new ilib.PhoneNumber("6123 4567", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 4567", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "61234567"
 	}, {locale: "en-SG"});
 	
@@ -247,10 +248,10 @@ function testParseSGPartial8(){
 	
 };
 function testParseSGPartial9(){
-	var parsed = new ilib.PhoneNumber("6123 4567 8", {locale: "en-SG"});
+	var parsed = new PhoneNumber("6123 4567 8", {locale: "en-SG"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "612345678"
 	}, {locale: "en-SG"});
 	
@@ -259,10 +260,10 @@ function testParseSGPartial9(){
 };
 
 function testParseSGWithUSMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "316"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "316"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: "en-US"});
@@ -272,10 +273,10 @@ function testParseSGWithUSMCC(){
 };
 
 function testParseSGWithFRMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "208"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "208"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: "en-FR"});
 	
@@ -284,10 +285,10 @@ function testParseSGWithFRMCC(){
 };
 
 function testParseSGWithMXMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "334"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "334"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: "en-MX"});
@@ -297,10 +298,10 @@ function testParseSGWithMXMCC(){
 };
 
 function testParseSGWithDEMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "262"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "262"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: "en-DE"});
 	
@@ -309,10 +310,10 @@ function testParseSGWithDEMCC(){
 };
 
 function testParseSGWithGBMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-SG", mcc: "235"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "235"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313",
 		invalid: true
 	}, {locale: "en-GB"});

@@ -17,18 +17,21 @@
  * limitations under the License.
  */
 
+var JulianDate = require("./../lib/JulianDate.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtDADKConstructorEmpty() {
-    var fmt = new ilib.DateFmt();
+    var fmt = new DateFmt();
     
     assertNotNull(fmt);
 }
 
 
 function testDateFmtDADKSimpleShort() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "short"});
+    var fmt = new DateFmt({locale: "da-DK", length: "short"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -42,10 +45,10 @@ function testDateFmtDADKSimpleShort() {
 }
 
 function testDateFmtDADKSimpleMedium() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "medium"});
+    var fmt = new DateFmt({locale: "da-DK", length: "medium"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -59,10 +62,10 @@ function testDateFmtDADKSimpleMedium() {
 }
 
 function testDateFmtDADKSimpleLong() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "long"});
+    var fmt = new DateFmt({locale: "da-DK", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -76,10 +79,10 @@ function testDateFmtDADKSimpleLong() {
 }
 
 function testDateFmtDADKSimpleFull() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -93,10 +96,10 @@ function testDateFmtDADKSimpleFull() {
 }
 
 function testDateFmtDADKSimpleTimeShort() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "da-DK", length: "short", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -110,10 +113,10 @@ function testDateFmtDADKSimpleTimeShort() {
 }
 
 function testDateFmtDADKSimpleTimeMedium() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "medium", type: "time"});
+    var fmt = new DateFmt({locale: "da-DK", length: "medium", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -127,10 +130,10 @@ function testDateFmtDADKSimpleTimeMedium() {
 }
 
 function testDateFmtDADKSimpleTimeLong() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", timelength: "long", type: "time"});
+    var fmt = new DateFmt({locale: "da-DK", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -144,10 +147,10 @@ function testDateFmtDADKSimpleTimeLong() {
 }
 
 function testDateFmtDADKSimpleTimeFull() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", type: "time"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -161,10 +164,10 @@ function testDateFmtDADKSimpleTimeFull() {
 }
 
 function testDateFmtDADKDateTimeSimpleShort() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "short", type: "datetime"});
+    var fmt = new DateFmt({locale: "da-DK", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -178,10 +181,10 @@ function testDateFmtDADKDateTimeSimpleShort() {
 }
 
 function testDateFmtDADKDateTimeSimpleMedium() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "medium", type: "datetime"});
+    var fmt = new DateFmt({locale: "da-DK", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -195,10 +198,10 @@ function testDateFmtDADKDateTimeSimpleMedium() {
 }
 
 function testDateFmtDADKDateTimeSimpleLong() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "long", type: "datetime"});
+    var fmt = new DateFmt({locale: "da-DK", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -212,10 +215,10 @@ function testDateFmtDADKDateTimeSimpleLong() {
 }
 
 function testDateFmtDADKDateTimeSimpleFull() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", type: "datetime"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -230,10 +233,10 @@ function testDateFmtDADKDateTimeSimpleFull() {
 
 
 function testDateFmtDADKTemplateCalendar() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new DateFmt({locale: "da-DK", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -246,10 +249,10 @@ function testDateFmtDADKTemplateCalendar() {
 }
 
 function testDateFmtDADKTemplateCalendarIncompatibleDateType() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+    var fmt = new DateFmt({locale: "da-DK", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -264,10 +267,10 @@ function testDateFmtDADKTemplateCalendarIncompatibleDateType() {
 }
 
 function testDateFmtDADKTemplateClock12SwitchHH() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", clock: "12", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "da-DK", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -281,10 +284,10 @@ function testDateFmtDADKTemplateClock12SwitchHH() {
 }
 
 function testDateFmtDADKTemplateClock12Switchkk() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", clock: "12", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "da-DK", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -298,10 +301,10 @@ function testDateFmtDADKTemplateClock12Switchkk() {
 }
 
 function testDateFmtDADKTemplateClock24Switchhh() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", clock: "24", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "da-DK", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -315,10 +318,10 @@ function testDateFmtDADKTemplateClock24Switchhh() {
 }
 
 function testDateFmtDADKTemplateClock24SwitchKK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", clock: "24", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "da-DK", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -332,10 +335,10 @@ function testDateFmtDADKTemplateClock24SwitchKK() {
 }
 
 function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault12hh() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", locale: "da-DK", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "da-DK", locale: "da-DK", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -349,10 +352,10 @@ function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault12hh() {
 }
 
 function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault12KK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", locale: "da-DK", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "da-DK", locale: "da-DK", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -366,10 +369,10 @@ function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault12KK() {
 }
 
 function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault24HH() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", locale: "da-DK", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "da-DK", locale: "da-DK", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -383,10 +386,10 @@ function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault24HH() {
 }
 
 function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault24kk() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", locale: "da-DK", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "da-DK", locale: "da-DK", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -401,10 +404,10 @@ function testDateFmtDADKTemplateNoClockDoNotFollowLocaleDefault24kk() {
 
 
 function testDateFmtDADKTypeDate() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "date"});
+    var fmt = new DateFmt({locale: "da-DK", type: "date"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -418,10 +421,10 @@ function testDateFmtDADKTypeDate() {
 }
 
 function testDateFmtDADKTypeTime() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -435,10 +438,10 @@ function testDateFmtDADKTypeTime() {
 }
 
 function testDateFmtDADKTypeDateTime() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "datetime"});
+    var fmt = new DateFmt({locale: "da-DK", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -453,10 +456,10 @@ function testDateFmtDADKTypeDateTime() {
 
 
 function testDateFmtDADKShortDateComponentsY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "y"});
+    var fmt = new DateFmt({locale: "da-DK", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -470,10 +473,10 @@ function testDateFmtDADKShortDateComponentsY() {
 }
 
 function testDateFmtDADKShortDateComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "m"});
+    var fmt = new DateFmt({locale: "da-DK", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -487,10 +490,10 @@ function testDateFmtDADKShortDateComponentsM() {
 }
 
 function testDateFmtDADKShortDateComponentsN() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "n"});
+    var fmt = new DateFmt({locale: "da-DK", date: "n"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -504,10 +507,10 @@ function testDateFmtDADKShortDateComponentsN() {
 }
 
 function testDateFmtDADKShortDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "d"});
+    var fmt = new DateFmt({locale: "da-DK", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -521,10 +524,10 @@ function testDateFmtDADKShortDateComponentsD() {
 }
 
 function testDateFmtDADKShortDateComponentsDM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "dm"});
+    var fmt = new DateFmt({locale: "da-DK", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -538,10 +541,10 @@ function testDateFmtDADKShortDateComponentsDM() {
 }
 
 function testDateFmtDADKShortDateComponentsMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "my"});
+    var fmt = new DateFmt({locale: "da-DK", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -555,10 +558,10 @@ function testDateFmtDADKShortDateComponentsMY() {
 }
 
 function testDateFmtDADKShortDateComponentsDMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "dmy"});
+    var fmt = new DateFmt({locale: "da-DK", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -572,10 +575,10 @@ function testDateFmtDADKShortDateComponentsDMY() {
 }
 
 function testDateFmtDADKShortDateComponentsWDM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "wdm"});
+    var fmt = new DateFmt({locale: "da-DK", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -589,10 +592,10 @@ function testDateFmtDADKShortDateComponentsWDM() {
 }
 
 function testDateFmtDADKShortDateComponentsWDMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", date: "wdmy"});
+    var fmt = new DateFmt({locale: "da-DK", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -607,10 +610,10 @@ function testDateFmtDADKShortDateComponentsWDMY() {
 
 
 function testDateFmtDADKFullDateComponentsY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "y"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -624,10 +627,10 @@ function testDateFmtDADKFullDateComponentsY() {
 }
 
 function testDateFmtDADKFullDateComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "m"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -641,10 +644,10 @@ function testDateFmtDADKFullDateComponentsM() {
 }
 
 function testDateFmtDADKFullDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "d"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -658,10 +661,10 @@ function testDateFmtDADKFullDateComponentsD() {
 }
 
 function testDateFmtDADKFullDateComponentsDM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "dm"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -675,10 +678,10 @@ function testDateFmtDADKFullDateComponentsDM() {
 }
 
 function testDateFmtDADKFullDateComponentsMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "my"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -692,10 +695,10 @@ function testDateFmtDADKFullDateComponentsMY() {
 }
 
 function testDateFmtDADKFullDateComponentsDMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "dmy"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -709,10 +712,10 @@ function testDateFmtDADKFullDateComponentsDMY() {
 }
 
 function testDateFmtDADKFullDateComponentsWDM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "wdm"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -726,10 +729,10 @@ function testDateFmtDADKFullDateComponentsWDM() {
 }
 
 function testDateFmtDADKFullDateComponentsWDMY() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full", date: "wdmy"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -744,10 +747,10 @@ function testDateFmtDADKFullDateComponentsWDMY() {
 
 
 function testDateFmtDADKShortTimeComponentsS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "s"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -761,10 +764,10 @@ function testDateFmtDADKShortTimeComponentsS() {
 }
 
 function testDateFmtDADKShortTimeComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "m"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -778,10 +781,10 @@ function testDateFmtDADKShortTimeComponentsM() {
 }
 
 function testDateFmtDADKShortTimeComponentsH() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "h"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -795,10 +798,10 @@ function testDateFmtDADKShortTimeComponentsH() {
 }
 
 function testDateFmtDADKShortTimeComponentsMS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "ms"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -812,10 +815,10 @@ function testDateFmtDADKShortTimeComponentsMS() {
 }
 
 function testDateFmtDADKShortTimeComponentsHM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "hm"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -829,10 +832,10 @@ function testDateFmtDADKShortTimeComponentsHM() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "hms"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -846,10 +849,10 @@ function testDateFmtDADKShortTimeComponentsHMS() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMA() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "hma"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -863,14 +866,14 @@ function testDateFmtDADKShortTimeComponentsHMA() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         time: "hmz"
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -884,14 +887,14 @@ function testDateFmtDADKShortTimeComponentsHMZ() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMAZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         time: "hmaz"
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -905,10 +908,10 @@ function testDateFmtDADKShortTimeComponentsHMAZ() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMSA() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", time: "hmsa"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -922,14 +925,14 @@ function testDateFmtDADKShortTimeComponentsHMSA() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMSZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         time: "hmsz"
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -943,14 +946,14 @@ function testDateFmtDADKShortTimeComponentsHMSZ() {
 }
 
 function testDateFmtDADKShortTimeComponentsHMSAZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         time: "hmsaz"
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -965,10 +968,10 @@ function testDateFmtDADKShortTimeComponentsHMSAZ() {
 
 
 function testDateFmtDADKFullTimeComponentsS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "s"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -982,10 +985,10 @@ function testDateFmtDADKFullTimeComponentsS() {
 }
 
 function testDateFmtDADKFullTimeComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "m"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -999,10 +1002,10 @@ function testDateFmtDADKFullTimeComponentsM() {
 }
 
 function testDateFmtDADKFullTimeComponentsH() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "h"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1016,10 +1019,10 @@ function testDateFmtDADKFullTimeComponentsH() {
 }
 
 function testDateFmtDADKFullTimeComponentsMS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "ms"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1033,10 +1036,10 @@ function testDateFmtDADKFullTimeComponentsMS() {
 }
 
 function testDateFmtDADKFullTimeComponentsHM() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "hm"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1050,10 +1053,10 @@ function testDateFmtDADKFullTimeComponentsHM() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMS() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "hms"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1067,10 +1070,10 @@ function testDateFmtDADKFullTimeComponentsHMS() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMA() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1084,7 +1087,7 @@ function testDateFmtDADKFullTimeComponentsHMA() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         length: "full", 
@@ -1092,7 +1095,7 @@ function testDateFmtDADKFullTimeComponentsHMZ() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1106,7 +1109,7 @@ function testDateFmtDADKFullTimeComponentsHMZ() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMAZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         length: "full", 
@@ -1114,7 +1117,7 @@ function testDateFmtDADKFullTimeComponentsHMAZ() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1128,10 +1131,10 @@ function testDateFmtDADKFullTimeComponentsHMAZ() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMSA() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "da-DK", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1145,7 +1148,7 @@ function testDateFmtDADKFullTimeComponentsHMSA() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMSZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         length: "full", 
@@ -1153,7 +1156,7 @@ function testDateFmtDADKFullTimeComponentsHMSZ() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1167,7 +1170,7 @@ function testDateFmtDADKFullTimeComponentsHMSZ() {
 }
 
 function testDateFmtDADKFullTimeComponentsHMSAZ() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         length: "full", 
@@ -1175,7 +1178,7 @@ function testDateFmtDADKFullTimeComponentsHMSAZ() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1189,7 +1192,7 @@ function testDateFmtDADKFullTimeComponentsHMSAZ() {
 }
 
 function testDateFmtDADKWithTimeZoneAndNoDST() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "da-DK", 
         type: "time", 
         length: "full", 
@@ -1197,7 +1200,7 @@ function testDateFmtDADKWithTimeZoneAndNoDST() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 12,
@@ -1212,10 +1215,10 @@ function testDateFmtDADKWithTimeZoneAndNoDST() {
 
 
 function testDateFmtFormatRelativeWithinMinuteAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1225,7 +1228,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1238,10 +1241,10 @@ function testDateFmtFormatRelativeWithinMinuteAfter_da_DK() {
     assertEquals("om 30 sekunder", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1251,7 +1254,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1264,10 +1267,10 @@ function testDateFmtFormatRelativeWithinMinuteBefore_da_DK() {
     assertEquals("30 sekunder siden", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1277,7 +1280,7 @@ function testDateFmtFormatRelativeWithinHourAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1290,10 +1293,10 @@ function testDateFmtFormatRelativeWithinHourAfter_da_DK() {
     assertEquals("om 10 minutter", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1303,7 +1306,7 @@ function testDateFmtFormatRelativeWithinHourBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1316,10 +1319,10 @@ function testDateFmtFormatRelativeWithinHourBefore_da_DK() {
     assertEquals("10 minutter siden", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1329,7 +1332,7 @@ function testDateFmtFormatRelativeWithinDayAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1344,10 +1347,10 @@ function testDateFmtFormatRelativeWithinDayAfter_da_DK() {
 
 
 function testDateFmtFormatRelativeWithinDayBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1357,7 +1360,7 @@ function testDateFmtFormatRelativeWithinDayBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1371,10 +1374,10 @@ function testDateFmtFormatRelativeWithinDayBefore_da_DK() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1384,7 +1387,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1397,10 +1400,10 @@ function testDateFmtFormatRelativeWithinFortnightAfter_da_DK() {
     assertEquals("om 4 dage", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1410,7 +1413,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1424,10 +1427,10 @@ function testDateFmtFormatRelativeWithinFortnightBefore_da_DK() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1437,7 +1440,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 11,
@@ -1450,10 +1453,10 @@ function testDateFmtFormatRelativeWithinQuarterAfter_da_DK() {
     assertEquals("om 9 uger", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1463,7 +1466,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 7,
@@ -1477,10 +1480,10 @@ function testDateFmtFormatRelativeWithinQuarterBefore_da_DK() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1490,7 +1493,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2013,
 		month: 1,
@@ -1503,10 +1506,10 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_da_DK() {
     assertEquals("om 16 måneder", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1516,7 +1519,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2010,
 		month: 7,
@@ -1530,10 +1533,10 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_da_DK() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1543,7 +1546,7 @@ function testDateFmtFormatRelativeYearsAfter_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 2025,
 		month: 10,
@@ -1556,10 +1559,10 @@ function testDateFmtFormatRelativeYearsAfter_da_DK() {
     assertEquals("om 14 år", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_da_DK() {
-    var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
+    var fmt = new DateFmt({locale: "da-DK", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "da-DK",
 		year: 2011,
 		month: 9,
@@ -1569,7 +1572,7 @@ function testDateFmtFormatRelativeYearsBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "da-DK",
 		year: 1990,
 		month: 7,

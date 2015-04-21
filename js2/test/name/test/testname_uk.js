@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_uk_UA() {
-	var parsed = new ilib.Name("Міла Куніс", {locale: 'uk-UA'});
+	var parsed = new Name("Міла Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_uk_UA() {
 };
 
 function testParseTitle_uk_UA() {
-	var parsed = new ilib.Name("Міла Куніс відставку", {locale: 'uk-UA'});
+	var parsed = new Name("Міла Куніс відставку", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_uk_UA() {
 };
 
 function testParseTitleWithFamilyOnly_uk_UA() {
-	var parsed = new ilib.Name("г-н Куніс", {locale: 'uk-UA'});
+	var parsed = new Name("г-н Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -57,7 +59,7 @@ function testParseTitleWithFamilyOnly_uk_UA() {
 
 
 function testParseEverything_uk_UA() {
-	var parsed = new ilib.Name("г-н і г-жа Куніс", {locale: 'uk-UA'});
+	var parsed = new Name("г-н і г-жа Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -69,7 +71,7 @@ function testParseEverything_uk_UA() {
 };
 
 function testParseprefix_uk_UA() {
-	var parsed = new ilib.Name("г-н Міла Куніс", {locale: 'uk-UA'});
+	var parsed = new Name("г-н Міла Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -82,7 +84,7 @@ function testParseprefix_uk_UA() {
 };
 
 function testParseprefixAndSuffix_uk_UA() {
-	var parsed = new ilib.Name("міністр Міла Куніс відставку", {locale: 'uk-UA'});
+	var parsed = new Name("міністр Міла Куніс відставку", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -99,11 +101,11 @@ function testParseprefixAndSuffix_uk_UA() {
  */
 
 function testFormatSimpleNameShort_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Міла",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'uk-UA'
 	});
@@ -116,11 +118,11 @@ function testFormatSimpleNameShort_uk_UA() {
 };
 
 function testFormatSimpleNameMedium_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Міла",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'uk-UA'
 	});
@@ -133,12 +135,12 @@ function testFormatSimpleNameMedium_uk_UA() {
 };
 
 function testFormatSimpleNameLong_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Міла",
 		familyName: "Куніс",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'uk-UA'
 	});
@@ -153,11 +155,11 @@ function testFormatSimpleNameLong_uk_UA() {
 
 
 function testFormatSurname_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "г-н i г-жа",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'uk-UA'
 	});
@@ -170,13 +172,13 @@ function testFormatSurname_uk_UA() {
 };
 
 function testFormatSimpleNameFull_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "шеф-кухар",
 		givenName: "Міла",
 		familyName: "Куніс",
 		suffix: "відставку"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'uk-UA'
 	});
@@ -189,12 +191,12 @@ function testFormatSimpleNameFull_uk_UA() {
 };
 
 function testFormatComplexNameShort_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "шеф-кухар",
 		givenName: "Міла",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'uk-UA'
 	});
@@ -207,12 +209,12 @@ function testFormatComplexNameShort_uk_UA() {
 };
 
 function testFormatComplexNameMedium_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "шеф-кухар",
 		givenName: "Міла",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'uk-UA'
 	});
@@ -225,12 +227,12 @@ function testFormatComplexNameMedium_uk_UA() {
 };
 
 function testFormatComplexNameLong_uk_UA() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "шеф-кухар",
 		givenName: "Міла",
 		familyName: "Куніс"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'uk-UA'
 	});

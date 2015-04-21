@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_uz_Cyrl() {
-	var parsed = new ilib.Name("Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
+	var parsed = new Name("Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -30,7 +32,7 @@ function testParseSimpleName_uz_Cyrl() {
 };
 
 function testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl() {
-	var parsed = new ilib.Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
+	var parsed = new Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -42,7 +44,7 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl() {
 };
 
 function testParseTitle_uz_Cyrl() {
-	var parsed = new ilib.Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
+	var parsed = new Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -55,7 +57,7 @@ function testParseTitle_uz_Cyrl() {
 };
 
 function testParseTitleWithFamilyOnly_uz_Cyrl() {
-	var parsed = new ilib.Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
+	var parsed = new Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -67,7 +69,7 @@ function testParseTitleWithFamilyOnly_uz_Cyrl() {
 };
 
 function testParseEverything_uz_Cyrl() {
-	var parsed = new ilib.Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
+	var parsed = new Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -84,11 +86,11 @@ function testParseEverything_uz_Cyrl() {
  */
 
 function testFormatSimpleNameShort_uz_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Бобур",
 		familyName: "Мирзаев"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'uz-Cyrl-UZ'
 	});
@@ -101,11 +103,11 @@ function testFormatSimpleNameShort_uz_Cyrl() {
 };
 
 function testFormatSimpleNameMedium_uz_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Бобур",
 		familyName: "Мирзаев"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'uz-Cyrl-UZ'
 	});
@@ -120,13 +122,13 @@ function testFormatSimpleNameMedium_uz_Cyrl() {
 
 
 function testFormatSimpleNameFull_uz_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "доктор",
 		givenName: "Бобур",
 		familyName: "Мирзаев",
 		suffix: "2-чи"
        });
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'uz-Cyrl-UZ'
 	});

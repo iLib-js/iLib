@@ -17,8 +17,9 @@
  * limitations under the License.
  */
 
+var DurationFmt = require("./../lib/DurationFmt.js");
 function testDurFmtHAFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "short"
     });
@@ -37,7 +38,7 @@ function testDurFmtHAFormatShortDefaultStyle() {
 };
 
 function testDurFmtHAFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "short",
     	style: "text"
@@ -57,7 +58,7 @@ function testDurFmtHAFormatShortText() {
 };
 
 function testDurFmtHAFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "short",
     	style: "clock"
@@ -77,7 +78,7 @@ function testDurFmtHAFormatShortClock() {
 };
 
 function testDurFmtHAFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "medium"
     });
@@ -96,7 +97,7 @@ function testDurFmtHAFormatMedium() {
 };
 
 function testDurFmtHAFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "long"
     });
@@ -115,7 +116,7 @@ function testDurFmtHAFormatLong() {
 };
 
 function testDurFmtHAFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "full"
     });
@@ -136,7 +137,7 @@ function testDurFmtHAFormatFull() {
 
 function testDurFmtHAAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "full",
     	sync: false,
@@ -162,7 +163,7 @@ function testDurFmtHAAsyncWithLocale() {
 
 function testDurFmtHAFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "short",
     	style: "clock",

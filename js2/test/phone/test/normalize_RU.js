@@ -17,43 +17,44 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testIDDPrefix() {
-	var parsed = new ilib.PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ru-RU'})); // 'ru-RU'
 };
 
 function testIDDPrefixAlreadyPlus() {
-	var parsed = new ilib.PhoneNumber("+31 456 3453434", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ru-RU'})); // 'ru-RU'
 };
 
 function testWithNoLocale() {
-	var parsed = new ilib.PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
 function testNoHints() {
-	var parsed = new ilib.PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'ru-RU'
 };
 
 function testWithNoHintsNoLocale() {
-	var parsed = new ilib.PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testLDNumberUsingRUMCC() {
-	var parsed = new ilib.PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250"
 	};
@@ -62,7 +63,7 @@ function testLDNumberUsingRUMCC() {
 };
 
 function testLDNumberUsingRUMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
 		locale: 'de-DE'
@@ -73,7 +74,7 @@ function testLDNumberUsingRUMCCOtherLocale() {
 };
 
 function testLDNumberUsingRUMCC() {
-	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
+	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "250" //ru-RU
 	};
@@ -83,7 +84,7 @@ function testLDNumberUsingRUMCC() {
 };
 
 function testAreaCodeFromHint() {
-	var parsed = new ilib.PhoneNumber("212-3456", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
 	var hints = {
 		defaultAreaCode: "8332"
 	};
@@ -92,7 +93,7 @@ function testAreaCodeFromHint() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ru-RU'
 };
 function testAreaCodeIgnoreHint() {
-	var parsed = new ilib.PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		defaultAreaCode: "877"
 	};
@@ -102,14 +103,14 @@ function testAreaCodeIgnoreHint() {
 };
 
 function testNoAreaCodeAndNoCountry() {
-	var parsed = new ilib.PhoneNumber("212-3456", {locale: 'ru-RU'});
+	var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
 	var expected = "2123456";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testAssistedDialingLocalToLocalUMTSRU() {
-	var phone = new ilib.PhoneNumber("2123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
 		networkType: "umts",
@@ -122,7 +123,7 @@ function testAssistedDialingLocalToLocalUMTSRU() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
 		networkType: "umts",
@@ -134,7 +135,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("2123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
 		networkType: "cdma",
@@ -147,7 +148,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 };
 
 function testAssistedDialingRULocalToLocalCDMAAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
 		networkType: "cdma",
@@ -160,7 +161,7 @@ function testAssistedDialingRULocalToLocalCDMAAddTrunkOpen() {
 };
 
 function testRUAssistedDialingIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("22-33-44", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("22-33-44", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -173,7 +174,7 @@ function testRUAssistedDialingIntlToLocalUMTS() {
 };
 
 function testRUAssistedDialingIntlToLDUMTS() {
-	var phone = new ilib.PhoneNumber("83022 212345", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("83022 212345", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -186,7 +187,7 @@ function testRUAssistedDialingIntlToLDUMTS() {
 };
 
 function testAssistedDialingIntlToLocalCDMARU() {
-	var phone = new ilib.PhoneNumber("2123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "505", // From Australia
 		networkType: "cdma",
@@ -199,7 +200,7 @@ function testAssistedDialingIntlToLocalCDMARU() {
 };
 
 function testAssistedDialingIntlToLDCDMARU() {
-	var phone = new ilib.PhoneNumber("84952123456", {locale: 'ru-RU'});
+	var phone = new PhoneNumber("84952123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_et_EE() {
-	var parsed = new ilib.Name("Kertu-Triin Sepp", {locale: 'et-EE'});
+	var parsed = new Name("Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_et_EE() {
 
 
 function testParseSimpleName_et_EE() {
-	var parsed = new ilib.Name("professor Kertu Sepp", {locale: 'et-EE'});
+	var parsed = new Name("professor Kertu Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -48,7 +50,7 @@ function testParseSimpleName_et_EE() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_et_EE() {
-	var parsed = new ilib.Name("Kertu-Triin Sepp jr.", {locale: 'et-EE'});
+	var parsed = new Name("Kertu-Triin Sepp jr.", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -62,7 +64,7 @@ function testParseSingleNameWithPrefixAndAdjunct_et_EE() {
 
 
 function testParseTitle_et_EE1() {
-	var parsed = new ilib.Name("Hr. Kertu-Triin Sepp", {locale: 'et-EE'});
+	var parsed = new Name("Hr. Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -76,7 +78,7 @@ function testParseTitle_et_EE1() {
 
 
 function testParseTitle_et_EE_second() {
-	var parsed = new ilib.Name("Prl. Kertu-Triin Sepp", {locale: 'et-EE'});
+	var parsed = new Name("Prl. Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -91,13 +93,13 @@ function testParseTitle_et_EE_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_et_EE() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Kertu-Triin",
 		familyName: "Sepp",
 		suffix: "pensionile"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'et-EE'
 	});
@@ -112,7 +114,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_et_EE() {
 
 
 function testParseTitleWithFamilyOnlyAndAdjunctex_et_EE() {
-	var parsed = new ilib.Name("inspektor Kertu-Triin Sepp pensionile", {locale: 'et-EE'});
+	var parsed = new Name("inspektor Kertu-Triin Sepp pensionile", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -127,7 +129,7 @@ function testParseTitleWithFamilyOnlyAndAdjunctex_et_EE() {
 
 
 function testParseCompoundHonorific_et_EE() {
-	var parsed = new ilib.Name("Hr. Sepp", {locale: 'et-EE'});
+	var parsed = new Name("Hr. Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -143,11 +145,11 @@ function testParseCompoundHonorific_et_EE() {
  */
 
 function testFormatSimpleNameShort_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Kertu-Triin",
 		familyName: "Sepp"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'et-EE'
 	});
@@ -160,11 +162,11 @@ function testFormatSimpleNameShort_et_EE() {
 };
 
 function testFormatSimpleNameMedium_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Kertu-Triin",
 		familyName: "Sepp"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'et-EE'
 	});
@@ -177,13 +179,13 @@ function testFormatSimpleNameMedium_et_EE() {
 };
 
 function testFormatSimpleNameFull_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		
 		givenName: "Kertu-Triin",
 		familyName: "Sepp",
 		suffix: "pensionile"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'et-EE'
 	});
@@ -196,12 +198,12 @@ function testFormatSimpleNameFull_et_EE() {
 };
 
 function testFormatComplexNameShort_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "pensionile",
 		givenName: "Kertu-Triin",
 		familyName: "Sepp"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'et-EE'
 	});
@@ -215,13 +217,13 @@ function testFormatComplexNameShort_et_EE() {
 
 
 function testFormatAsianNameMedium_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'et-EE'
 	});
@@ -234,13 +236,13 @@ function testFormatAsianNameMedium_et_EE() {
 };
 
 function testFormatAsianNameLong_et_EE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'et-EE'
 	});

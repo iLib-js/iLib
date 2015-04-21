@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ga_IE() {
-	var parsed = new ilib.Name("Daniel O'Reilly", {locale: 'ga-IE'});
+	var parsed = new Name("Daniel O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_ga_IE() {
 
 
 function testParseSimpleName_ga_IE() {
-	var parsed = new ilib.Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
+	var parsed = new Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -48,7 +50,7 @@ function testParseSimpleName_ga_IE() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_ga_IE() {
-	var parsed = new ilib.Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
+	var parsed = new Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -62,7 +64,7 @@ function testParseSingleNameWithPrefixAndAdjunct_ga_IE() {
 
 
 function testParseTitle_ga_IE1() {
-	var parsed = new ilib.Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
+	var parsed = new Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -76,7 +78,7 @@ function testParseTitle_ga_IE1() {
 
 
 function testParseTitle_ga_IE_second() {
-	var parsed = new ilib.Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
+	var parsed = new Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -90,13 +92,13 @@ function testParseTitle_ga_IE_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_ga_IE() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "príomh-aire",
 		givenName: "Daniel",
 		familyName: "O'Reilly",
 		suffix: "scor"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ga-IE'
 	});
@@ -112,7 +114,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_ga_IE() {
 
 
 function testParseCompoundHonorific_ga_IE() {
-	var parsed = new ilib.Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
+	var parsed = new Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -128,11 +130,11 @@ function testParseCompoundHonorific_ga_IE() {
  */
 
 function testFormatSimpleNameShort_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Daniel",
 		familyName: "O'Reilly"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ga-IE'
 	});
@@ -145,11 +147,11 @@ function testFormatSimpleNameShort_ga_IE() {
 };
 
 function testFormatSimpleNameMedium_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Daniel",
 		familyName: "O'Reilly"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ga-IE'
 	});
@@ -162,13 +164,13 @@ function testFormatSimpleNameMedium_ga_IE() {
 };
 
 function testFormatSimpleNameFull_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		
 		givenName: "Daniel",
 		familyName: "O'Reilly",
 		suffix: "scor"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ga-IE'
 	});
@@ -181,12 +183,12 @@ function testFormatSimpleNameFull_ga_IE() {
 };
 
 function testFormatComplexNameShort_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "scor",
 		givenName: "Daniel",
 		familyName: "O'Reilly"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ga-IE'
 	});
@@ -200,13 +202,13 @@ function testFormatComplexNameShort_ga_IE() {
 
 
 function testFormatAsianNameMedium_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ga-IE'
 	});
@@ -219,13 +221,13 @@ function testFormatAsianNameMedium_ga_IE() {
 };
 
 function testFormatAsianNameLong_ga_IE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ga-IE'
 	});

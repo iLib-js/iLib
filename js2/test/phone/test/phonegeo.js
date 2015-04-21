@@ -17,8 +17,14 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneLocale = require("./../lib/PhoneLocale.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
+var NumberingPlan = require("./../lib/NumberingPlan.js");
+
 function testNANP() {
-	var parsed = new ilib.PhoneNumber("+1 650 654 3210");
+	var parsed = new PhoneNumber("+1 650 654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -31,7 +37,7 @@ function testNANP() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -43,7 +49,7 @@ function testNANP() {
 };
 
 function testNANPLocalNumber() {
-	var parsed = new ilib.PhoneNumber("654 3210");
+	var parsed = new PhoneNumber("654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -52,7 +58,7 @@ function testNANPLocalNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -61,7 +67,7 @@ function testNANPLocalNumber() {
 };
 
 function testNANPServiceNumber() {
-	var parsed = new ilib.PhoneNumber("+1 888 654 3210");
+	var parsed = new PhoneNumber("+1 888 654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -74,7 +80,7 @@ function testNANPServiceNumber() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -86,7 +92,7 @@ function testNANPServiceNumber() {
 };
 
 function testNANPEmergencyLikeServiceNumber() {
-	var parsed = new ilib.PhoneNumber("411");
+	var parsed = new PhoneNumber("411");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -99,7 +105,7 @@ function testNANPEmergencyLikeServiceNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -111,7 +117,7 @@ function testNANPEmergencyLikeServiceNumber() {
 };
 
 function testNANPEmergency() {
-	var parsed = new ilib.PhoneNumber("911");
+	var parsed = new PhoneNumber("911");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -123,7 +129,7 @@ function testNANPEmergency() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -135,7 +141,7 @@ function testNANPEmergency() {
 };
 
 function testNANPNoLocale() {
-	var parsed = new ilib.PhoneNumber("+1 650 654 3210");
+	var parsed = new PhoneNumber("+1 650 654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -148,7 +154,7 @@ function testNANPNoLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -160,7 +166,7 @@ function testNANPNoLocale() {
 };
 
 function testNANPOtherLocale() {
-	var parsed = new ilib.PhoneNumber("+1 650 654 3210");
+	var parsed = new PhoneNumber("+1 650 654 3210");
 	var expected = {
 		country: {
 			sn: "Amérique du Nord",
@@ -173,7 +179,7 @@ function testNANPOtherLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 	
@@ -185,7 +191,7 @@ function testNANPOtherLocale() {
 };
 
 function testNANPUnknownAreaCode() {
-	var parsed = new ilib.PhoneNumber("875 654 3210");
+	var parsed = new PhoneNumber("875 654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -194,7 +200,7 @@ function testNANPUnknownAreaCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -204,7 +210,7 @@ function testNANPUnknownAreaCode() {
 };
 
 function testDefaultCountry() {
-	var parsed = new ilib.PhoneNumber("650 654 3210");
+	var parsed = new PhoneNumber("650 654 3210");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -217,7 +223,7 @@ function testDefaultCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -231,7 +237,7 @@ function testDefaultCountry() {
 
 //for bug NOV-118981
 function testNANPInvalidNumber() {
-	var parsed = new ilib.PhoneNumber("1 234");
+	var parsed = new PhoneNumber("1 234");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -244,7 +250,7 @@ function testNANPInvalidNumber() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -256,7 +262,7 @@ function testNANPInvalidNumber() {
 };
 
 function testDefaultDE() {
-	var parsed = new ilib.PhoneNumber("06224 123456", {locale: "de-DE"});
+	var parsed = new PhoneNumber("06224 123456", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -269,7 +275,7 @@ function testDefaultDE() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -281,7 +287,7 @@ function testDefaultDE() {
 };
 
 function testDEMobileNumber() {
-	var parsed = new ilib.PhoneNumber("017 12345678", {locale: "de-DE"});
+	var parsed = new PhoneNumber("017 12345678", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -294,7 +300,7 @@ function testDEMobileNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -306,7 +312,7 @@ function testDEMobileNumber() {
 };
 
 function testDEServiceNumber() {
-	var parsed = new ilib.PhoneNumber("012 12345678", {locale: "de-DE"});
+	var parsed = new PhoneNumber("012 12345678", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -319,7 +325,7 @@ function testDEServiceNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -331,7 +337,7 @@ function testDEServiceNumber() {
 };
 
 function testDEEmergency() {
-	var parsed = new ilib.PhoneNumber("112", {locale: "de-DE"});
+	var parsed = new PhoneNumber("112", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -344,7 +350,7 @@ function testDEEmergency() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -357,7 +363,7 @@ function testDEEmergency() {
 
 
 function testDELocal() {
-	var parsed = new ilib.PhoneNumber("12345678", {locale: 'de-DE'});
+	var parsed = new PhoneNumber("12345678", {locale: 'de-DE'});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -366,7 +372,7 @@ function testDELocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -376,7 +382,7 @@ function testDELocal() {
 };
 
 function testDefaultHK() {
-	var parsed = new ilib.PhoneNumber("0663 12345678", {locale: 'en-CN'});
+	var parsed = new PhoneNumber("0663 12345678", {locale: 'en-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
@@ -390,7 +396,7 @@ function testDefaultHK() {
 	};
 	
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new ilib.GeoLocator({locale: 'zh-HK', mcc: "460"});
+	var locator = new PhoneGeoLocator({locale: 'zh-HK', mcc: "460"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -402,7 +408,7 @@ function testDefaultHK() {
 };
 
 function testHKMobileNumber() {
-	var parsed = new ilib.PhoneNumber("150 05179573", {locale: 'en-CN'});
+	var parsed = new PhoneNumber("150 05179573", {locale: 'en-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
@@ -416,7 +422,7 @@ function testHKMobileNumber() {
 	};
 
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new ilib.GeoLocator({locale: 'zh-HK', mcc: "460"});
+	var locator = new PhoneGeoLocator({locale: 'zh-HK', mcc: "460"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -428,7 +434,7 @@ function testHKMobileNumber() {
 };
 
 function testDefaultCN() {
-	var parsed = new ilib.PhoneNumber("0663 12345678", {locale: 'zh-CN'});
+	var parsed = new PhoneNumber("0663 12345678", {locale: 'zh-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
@@ -441,7 +447,7 @@ function testDefaultCN() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'zh-CN'});
+	var locator = new PhoneGeoLocator({locale: 'zh-CN'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -453,7 +459,7 @@ function testDefaultCN() {
 };
 
 function testCNMobileNumber() {
-	var parsed = new ilib.PhoneNumber("150 05179573", {locale: 'zh-CN'});
+	var parsed = new PhoneNumber("150 05179573", {locale: 'zh-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
@@ -466,7 +472,7 @@ function testCNMobileNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'zh-CN'});
+	var locator = new PhoneGeoLocator({locale: 'zh-CN'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -478,7 +484,7 @@ function testCNMobileNumber() {
 };
 
 function testUK() {
-	var parsed = new ilib.PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
+	var parsed = new PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
@@ -491,7 +497,7 @@ function testUK() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-GB'});
+	var locator = new PhoneGeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -503,7 +509,7 @@ function testUK() {
 };
 
 function testGB() {
-	var parsed = new ilib.PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
+	var parsed = new PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
@@ -516,7 +522,7 @@ function testGB() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-GB'});
+	var locator = new PhoneGeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -528,7 +534,7 @@ function testGB() {
 };
 
 function testUKMobile() {
-	var parsed = new ilib.PhoneNumber("+44 75 12345678", {locale: 'en-GB'});
+	var parsed = new PhoneNumber("+44 75 12345678", {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
@@ -541,7 +547,7 @@ function testUKMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-GB'});
+	var locator = new PhoneGeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -553,7 +559,7 @@ function testUKMobile() {
 };
 
 function testUKService() {
-	var parsed = new ilib.PhoneNumber("+44 303 1234567", {locale: 'en-GB'});
+	var parsed = new PhoneNumber("+44 303 1234567", {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
@@ -566,7 +572,7 @@ function testUKService() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-GB'});
+	var locator = new PhoneGeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -578,7 +584,7 @@ function testUKService() {
 };
 
 function testUKLocal() {
-	var parsed = new ilib.PhoneNumber("1234567", {locale: 'en-GB'});
+	var parsed = new PhoneNumber("1234567", {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
@@ -587,7 +593,7 @@ function testUKLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-GB'});
+	var locator = new PhoneGeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -598,7 +604,7 @@ function testUKLocal() {
 
 
 function testFR() {
-	var parsed = new ilib.PhoneNumber("+33 1 12 34 56 78");
+	var parsed = new PhoneNumber("+33 1 12 34 56 78");
 	var expected = {
 		country: {
 			sn: "France",
@@ -611,7 +617,7 @@ function testFR() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -623,7 +629,7 @@ function testFR() {
 };
 
 function testFRMobile() {
-	var parsed = new ilib.PhoneNumber("+33 6 23 45 67 89");
+	var parsed = new PhoneNumber("+33 6 23 45 67 89");
 	var expected = {
 		country: {
 			sn: "France",
@@ -636,7 +642,7 @@ function testFRMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -648,7 +654,7 @@ function testFRMobile() {
 };
 
 function testFRService() {
-	var parsed = new ilib.PhoneNumber("+33 6 90 12 34 56");
+	var parsed = new PhoneNumber("+33 6 90 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -661,7 +667,7 @@ function testFRService() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -673,7 +679,7 @@ function testFRService() {
 };
 
 function testFRDepartment() {
-	var parsed = new ilib.PhoneNumber("+33 2 62 12 34 56");
+	var parsed = new PhoneNumber("+33 2 62 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -686,7 +692,7 @@ function testFRDepartment() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -698,7 +704,7 @@ function testFRDepartment() {
 };
 
 function testFRFreephone() {
-	var parsed = new ilib.PhoneNumber("+33 800 12 34 56");
+	var parsed = new PhoneNumber("+33 800 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -711,7 +717,7 @@ function testFRFreephone() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -723,7 +729,7 @@ function testFRFreephone() {
 };
 
 function testFRToll() {
-	var parsed = new ilib.PhoneNumber("+33 810 12 34 56");
+	var parsed = new PhoneNumber("+33 810 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -736,7 +742,7 @@ function testFRToll() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -748,7 +754,7 @@ function testFRToll() {
 };
 
 function testDE() {
-	var parsed = new ilib.PhoneNumber("+49 6224 12 34 56");
+	var parsed = new PhoneNumber("+49 6224 12 34 56");
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -761,7 +767,7 @@ function testDE() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -773,7 +779,7 @@ function testDE() {
 };
 
 function testIT() {
-	var parsed = new ilib.PhoneNumber("+39 075 12345678");
+	var parsed = new PhoneNumber("+39 075 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -786,7 +792,7 @@ function testIT() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'it-IT'});
+	var locator = new PhoneGeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -799,7 +805,7 @@ function testIT() {
 
 // for bug NOV-115337
 function testITIntl() {
-	var parsed = new ilib.PhoneNumber("+39 039 12345678");
+	var parsed = new PhoneNumber("+39 039 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -812,7 +818,7 @@ function testITIntl() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'it-IT'});
+	var locator = new PhoneGeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -824,7 +830,7 @@ function testITIntl() {
 };
 
 function testITIntlMobile() {
-	var parsed = new ilib.PhoneNumber("+39 390 12345678");
+	var parsed = new PhoneNumber("+39 390 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -837,7 +843,7 @@ function testITIntlMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'it-IT'});
+	var locator = new PhoneGeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -849,7 +855,7 @@ function testITIntlMobile() {
 };
 
 function testES() {
-	var parsed = new ilib.PhoneNumber("+34 930 123 456");
+	var parsed = new PhoneNumber("+34 930 123 456");
 	var expected = {
 		country: {
 			sn: "España",
@@ -862,7 +868,7 @@ function testES() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-ES'});
+	var locator = new PhoneGeoLocator({locale: 'es-ES'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -874,7 +880,7 @@ function testES() {
 };
 
 function testMX() {
-	var parsed = new ilib.PhoneNumber("+52 755 123 4567");
+	var parsed = new PhoneNumber("+52 755 123 4567");
 	var expected = {
 		country: {
 			sn: "Mexico",
@@ -887,7 +893,7 @@ function testMX() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-MX'});
+	var locator = new PhoneGeoLocator({locale: 'en-MX'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -899,7 +905,7 @@ function testMX() {
 };
 
 function testMXLocal() {
-	var parsed = new ilib.PhoneNumber("1234 5678");
+	var parsed = new PhoneNumber("1234 5678");
 	var expected = {
 		country: {
 			sn: "Mexico",
@@ -908,7 +914,7 @@ function testMXLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-MX'});
+	var locator = new PhoneGeoLocator({locale: 'en-MX'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -918,7 +924,7 @@ function testMXLocal() {
 };
 
 function testAU() {
-	var parsed = new ilib.PhoneNumber("+61 8 9201 2345");
+	var parsed = new PhoneNumber("+61 8 9201 2345");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -931,7 +937,7 @@ function testAU() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-AU'});
+	var locator = new PhoneGeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -943,7 +949,7 @@ function testAU() {
 };
 
 function testAUMobile() {
-	var parsed = new ilib.PhoneNumber("+61 4201 2345");
+	var parsed = new PhoneNumber("+61 4201 2345");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -956,7 +962,7 @@ function testAUMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-AU'});
+	var locator = new PhoneGeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -968,7 +974,7 @@ function testAUMobile() {
 };
 
 function testAUUnknownAreaWithinACity() {
-	var parsed = new ilib.PhoneNumber("+61 2 9120 2343");
+	var parsed = new PhoneNumber("+61 2 9120 2343");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -981,7 +987,7 @@ function testAUUnknownAreaWithinACity() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-AU'});
+	var locator = new PhoneGeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -993,7 +999,7 @@ function testAUUnknownAreaWithinACity() {
 };
 
 function testAUUnknownAreaWithinCountry() {
-	var parsed = new ilib.PhoneNumber("+61 3 1234 5678");
+	var parsed = new PhoneNumber("+61 3 1234 5678");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -1006,7 +1012,7 @@ function testAUUnknownAreaWithinCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-AU'});
+	var locator = new PhoneGeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1018,7 +1024,7 @@ function testAUUnknownAreaWithinCountry() {
 };
 
 function testNZ() {
-	var parsed = new ilib.PhoneNumber("+64 3 9601 2345");
+	var parsed = new PhoneNumber("+64 3 9601 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1031,7 +1037,7 @@ function testNZ() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
+	var locator = new PhoneGeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1043,7 +1049,7 @@ function testNZ() {
 };
 
 function testNZWithDot() {
-	var parsed = new ilib.PhoneNumber("+64 3 2331 2345");
+	var parsed = new PhoneNumber("+64 3 2331 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1056,7 +1062,7 @@ function testNZWithDot() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
+	var locator = new PhoneGeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1068,7 +1074,7 @@ function testNZWithDot() {
 };
 
 function testNZMobile() {
-	var parsed = new ilib.PhoneNumber("+64 21 201 2345");
+	var parsed = new PhoneNumber("+64 21 201 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1081,7 +1087,7 @@ function testNZMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
+	var locator = new PhoneGeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1093,7 +1099,7 @@ function testNZMobile() {
 };
 
 function testNZUnknownAreaWithinACity() {
-	var parsed = new ilib.PhoneNumber("+64 9 4620 2343");
+	var parsed = new PhoneNumber("+64 9 4620 2343");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1106,7 +1112,7 @@ function testNZUnknownAreaWithinACity() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
+	var locator = new PhoneGeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1118,7 +1124,7 @@ function testNZUnknownAreaWithinACity() {
 };
 
 function testNZUnknownAreaWithinCountry() {
-	var parsed = new ilib.PhoneNumber("+64 3 812 345 678");
+	var parsed = new PhoneNumber("+64 3 812 345 678");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1131,7 +1137,7 @@ function testNZUnknownAreaWithinCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
+	var locator = new PhoneGeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1143,7 +1149,7 @@ function testNZUnknownAreaWithinCountry() {
 };
 
 function testUnknown() {
-	var parsed = new ilib.PhoneNumber("+506 20 123 456");
+	var parsed = new PhoneNumber("+506 20 123 456");
 	var expected = {
 		country: {
 			sn: "Costa Rica",
@@ -1152,7 +1158,7 @@ function testUnknown() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1162,7 +1168,7 @@ function testUnknown() {
 };
 
 function testDEMobileIntl() {
-	var parsed = new ilib.PhoneNumber("+49 16 1234 5678");
+	var parsed = new PhoneNumber("+49 16 1234 5678");
 	var expected = {
 		country: {
 			sn: "Germany",
@@ -1175,7 +1181,7 @@ function testDEMobileIntl() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1187,7 +1193,7 @@ function testDEMobileIntl() {
 };
 
 function testWithUSMCC() {
-	var parsed = new ilib.PhoneNumber("650-123-4567");
+	var parsed = new PhoneNumber("650-123-4567");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1200,7 +1206,7 @@ function testWithUSMCC() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator(parsed, {locale: 'en-US', mcc: '316'});
+	var locator = new PhoneGeoLocator(parsed, {locale: 'en-US', mcc: '316'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1212,7 +1218,7 @@ function testWithUSMCC() {
 };
 
 function testWithUSMCCNoLocale() {
-	var parsed = new ilib.PhoneNumber("650-123-4567");
+	var parsed = new PhoneNumber("650-123-4567");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1225,7 +1231,7 @@ function testWithUSMCCNoLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({mcc: '316'});
+	var locator = new PhoneGeoLocator({mcc: '316'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1237,7 +1243,7 @@ function testWithUSMCCNoLocale() {
 };
 
 function testDEMCCEnglishLocale() {
-	var parsed = new ilib.PhoneNumber("06224 123 456", {locale: "de-DE"});
+	var parsed = new PhoneNumber("06224 123 456", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Germany",
@@ -1250,7 +1256,7 @@ function testDEMCCEnglishLocale() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US', mcc: '262'});
+	var locator = new PhoneGeoLocator({locale: 'en-US', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1262,7 +1268,7 @@ function testDEMCCEnglishLocale() {
 };
 
 function testDEMCCGermanLocale() {
-	var parsed = new ilib.PhoneNumber("06224 123 456", {locale: "de-DE"});
+	var parsed = new PhoneNumber("06224 123 456", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -1275,7 +1281,7 @@ function testDEMCCGermanLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE', mcc: '262'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1287,7 +1293,7 @@ function testDEMCCGermanLocale() {
 };
 
 function testDEMCCFrenchLocaleUSCountryCode() {
-	var parsed = new ilib.PhoneNumber("+1 650 555 1212");
+	var parsed = new PhoneNumber("+1 650 555 1212");
 	var expected = {
 		country: {
 			sn: "Amérique du Nord",
@@ -1300,7 +1306,7 @@ function testDEMCCFrenchLocaleUSCountryCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR', mcc: '262'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1312,13 +1318,13 @@ function testDEMCCFrenchLocaleUSCountryCode() {
 };
 
 function testBogusCountryCode() {
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "P1",
 		areaCode: "650",
 		subscriberNumber: "5551212",
-		destinationPlan: new ilib.NumPlan({locale: "en-US"}),
-		destinationLocale: new ilib.PhoneLoc({locale: "en-US"})
+		destinationPlan: new NumberingPlan({locale: "en-US"}),
+		destinationLocale: new PhoneLocale({locale: "en-US"})
 	}, {locale: "en-US"});
 	var expected = {
 		country: {
@@ -1332,7 +1338,7 @@ function testBogusCountryCode() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1344,13 +1350,13 @@ function testBogusCountryCode() {
 };
 
 function testBogusAreaCode() {
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650P",
 		subscriberNumber: "5551212",
-		destinationPlan: new ilib.NumPlan({locale: "en-US"}),
-		destinationLocale: new ilib.PhoneLoc({locale: "en-US"})
+		destinationPlan: new NumberingPlan({locale: "en-US"}),
+		destinationLocale: new PhoneLocale({locale: "en-US"})
 	}, {locale: "en-US"});
 	var expected = {
 		country: {
@@ -1364,7 +1370,7 @@ function testBogusAreaCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1377,7 +1383,7 @@ function testBogusAreaCode() {
 
 // for bug NOV-115625
 function testNumberTooLongUS() {
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		areaCode: "941",
 		subscriberNumber: "62719524"
 	}, {locale: "en-US"});
@@ -1389,7 +1395,7 @@ function testNumberTooLongUS() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1400,7 +1406,7 @@ function testNumberTooLongUS() {
 
 // no fixed length in Germany, so there should not be any numbers that are "too long"
 function testNumberTooLongDE() {
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
 	}, {locale: "de-DE"});
@@ -1416,7 +1422,7 @@ function testNumberTooLongDE() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1428,7 +1434,7 @@ function testNumberTooLongDE() {
 };
 
 function testInvalidNumberPartial() {
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
 	}, {locale: "en-US"});
@@ -1444,7 +1450,7 @@ function testInvalidNumberPartial() {
 		}
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1457,9 +1463,9 @@ function testInvalidNumberPartial() {
 
 function testGetCountryCode() {
 	var country;
-	var parsed = new ilib.PhoneNumber("+49 6224 12345678901234567890");
+	var parsed = new PhoneNumber("+49 6224 12345678901234567890");
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1468,9 +1474,9 @@ function testGetCountryCode() {
 
 function testGetCountryCode2() {
 	var country;
-	var parsed = new ilib.PhoneNumber("+61 2 1234 5678");
+	var parsed = new PhoneNumber("+61 2 1234 5678");
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1478,7 +1484,7 @@ function testGetCountryCode2() {
 };
 
 function testGetCountryCodeUndefined() {
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	var geoInfo = locator.country(undefined);
 	
 	assertNotUndefined(locator);
@@ -1487,13 +1493,13 @@ function testGetCountryCodeUndefined() {
 
 function testGetCountryCodeLocalNumber() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
 	}, {locale: "de-DE"});
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1502,12 +1508,12 @@ function testGetCountryCodeLocalNumber() {
 
 function testGetCountryCodeLocalNumberNoLocale() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		areaCode: "905",
 		subscriberNumber: "5551212"
 	}, {locale: "en-US"});
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1516,12 +1522,12 @@ function testGetCountryCodeLocalNumberNoLocale() {
 
 function testGetCountryCodeLocalNumberNoLocaleDefault() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		areaCode: "650",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1530,13 +1536,13 @@ function testGetCountryCodeLocalNumberNoLocaleDefault() {
 
 function testGetCountryCodeLocalNumberNoAreaCode() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		trunkAccess: "0",
 		mobilePrefix: "175",
 		subscriberNumber: "12345678"
 	}, {locale: "de-DE"});
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1545,14 +1551,14 @@ function testGetCountryCodeLocalNumberNoAreaCode() {
 
 function testGetCountryCodeHaveCountryButNoAreaCode() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "49",
 		mobilePrefix: "175",
 		subscriberNumber: "12345678"
 	}, {locale: "de-DE"});
 	
-	var locator = new ilib.GeoLocator({locale: 'de-DE'});
+	var locator = new PhoneGeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1561,14 +1567,14 @@ function testGetCountryCodeHaveCountryButNoAreaCode() {
 
 function testGetCountryCodeHaveCountryButNoAreaCodeFR() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		mobilePrefix: "6",
 		subscriberNumber: "12345678"
 	});
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1577,14 +1583,14 @@ function testGetCountryCodeHaveCountryButNoAreaCodeFR() {
 
 function testGetCountryCodeUS() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "408",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1593,14 +1599,14 @@ function testGetCountryCodeUS() {
 
 function testGetCountryCodeCA() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "705",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);	
 	
 	assertNotUndefined(locator);
@@ -1609,14 +1615,14 @@ function testGetCountryCodeCA() {
 
 function testGetCountryCodeCaribbean() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "876",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoLocator(parsed);
+	var locator = new PhoneGeoLocator(parsed);
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);	
@@ -1625,14 +1631,14 @@ function testGetCountryCodeCaribbean() {
 
 function testGetCountryCodeCaribbean2() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "284",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1641,7 +1647,7 @@ function testGetCountryCodeCaribbean2() {
 
 function testGetCountryCodeItalySanMarino() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1649,7 +1655,7 @@ function testGetCountryCodeItalySanMarino() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1658,7 +1664,7 @@ function testGetCountryCodeItalySanMarino() {
 
 function testGetCountryCodeItalyRome() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1666,7 +1672,7 @@ function testGetCountryCodeItalyRome() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1675,7 +1681,7 @@ function testGetCountryCodeItalyRome() {
 
 function testGetCountryCodeFranceParis() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1683,7 +1689,7 @@ function testGetCountryCodeFranceParis() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1692,7 +1698,7 @@ function testGetCountryCodeFranceParis() {
 
 function testGetCountryCodeFranceReunion() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1700,7 +1706,7 @@ function testGetCountryCodeFranceReunion() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1709,7 +1715,7 @@ function testGetCountryCodeFranceReunion() {
 
 function testGetCountryCodeFranceMartinique() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1717,7 +1723,7 @@ function testGetCountryCodeFranceMartinique() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1727,12 +1733,12 @@ function testGetCountryCodeFranceMartinique() {
 // for bug NOV-118981
 function testInvalidNumber() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
+	var parsed = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
 	});
 	
-	var locator = new ilib.GeoLocator();
+	var locator = new PhoneGeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1740,7 +1746,7 @@ function testInvalidNumber() {
 };
 
 function testSG() {
-	var parsed = new ilib.PhoneNumber("+65 2543 2102");
+	var parsed = new PhoneNumber("+65 2543 2102");
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -1749,7 +1755,7 @@ function testSG() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -1759,7 +1765,7 @@ function testSG() {
 };
 
 function testSGLocal() {
-	var parsed = new ilib.PhoneNumber("25432102", {locale: "en-SG"});
+	var parsed = new PhoneNumber("25432102", {locale: "en-SG"});
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -1768,7 +1774,7 @@ function testSGLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-SG'});
+	var locator = new PhoneGeoLocator({locale: 'en-SG'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1778,7 +1784,7 @@ function testSGLocal() {
 };
 
 function testSGMobile() {
-	var parsed = new ilib.PhoneNumber("65432102", {locale: "en-SG"});
+	var parsed = new PhoneNumber("65432102", {locale: "en-SG"});
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -1787,7 +1793,7 @@ function testSGMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-SG'});
+	var locator = new PhoneGeoLocator({locale: 'en-SG'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1797,7 +1803,7 @@ function testSGMobile() {
 };
 
 function testHK() {
-	var parsed = new ilib.PhoneNumber("+852 2543 2102");
+	var parsed = new PhoneNumber("+852 2543 2102");
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -1806,7 +1812,7 @@ function testHK() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1816,7 +1822,7 @@ function testHK() {
 };
 
 function testHKLocal() {
-	var parsed = new ilib.PhoneNumber("2543 2102", {locale: "en-HK"});
+	var parsed = new PhoneNumber("2543 2102", {locale: "en-HK"});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -1825,7 +1831,7 @@ function testHKLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-HK'});
+	var locator = new PhoneGeoLocator({locale: 'en-HK'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1835,7 +1841,7 @@ function testHKLocal() {
 };
 
 function testHKMobile() {
-	var parsed = new ilib.PhoneNumber("6543 2102", {locale: "en-HK"});
+	var parsed = new PhoneNumber("6543 2102", {locale: "en-HK"});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -1844,7 +1850,7 @@ function testHKMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-HK'});
+	var locator = new PhoneGeoLocator({locale: 'en-HK'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1871,7 +1877,7 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		return;
 	}
 
-	var parsed = new ilib.PhoneNumber("+1 650 654 3210");
+	var parsed = new PhoneNumber("+1 650 654 3210");
 
 	var expected = {
 		country: {
@@ -1885,10 +1891,10 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		}
 	};
 
-	ilib.GeoLocator.cache = {};
+	PhoneGeoLocator.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	var locator = new ilib.GeoLocator({locale: 'en-US',
+	var locator = new PhoneGeoLocator({locale: 'en-US',
 		sync: false,
 		onLoad: function (loc) {
     		assertNotNull(loc);

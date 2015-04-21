@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_mn_Cyrl() {
-	var parsed = new ilib.Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
+	var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -31,7 +33,7 @@ function testParseSimpleName_mn_Cyrl() {
 
 
 function testParseAdjunctNames_mn_Cyrl() {
-	var parsed = new ilib.Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
+	var parsed = new Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -43,7 +45,7 @@ function testParseAdjunctNames_mn_Cyrl() {
 };
 
 function testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl() {
-	var parsed = new ilib.Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
+	var parsed = new Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -55,7 +57,7 @@ function testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl() {
 };
 
 function testParseTitle_mn_Cyrl() {
-	var parsed = new ilib.Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
+	var parsed = new Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -68,7 +70,7 @@ function testParseTitle_mn_Cyrl() {
 };
 
 function testParseEverything_mn_Cyrl() {
-	var parsed = new ilib.Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
+	var parsed = new Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -86,13 +88,13 @@ function testParseEverything_mn_Cyrl() {
  */
 
 function testFormatSimpleNameFull_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
 		givenName: "Цахиагийн",
 		familyName: "Элбэгдорж",
 		suffix: "9-р"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'mn-Cyrl-MN'
 	});
@@ -105,12 +107,12 @@ function testFormatSimpleNameFull_mn_Cyrl() {
 };
 
 function testFormatComplexNameShort_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
 		givenName: "Цахиагийн",
 		familyName: "Элбэгдорж"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mn-Cyrl-MN'
 	});
@@ -123,12 +125,12 @@ function testFormatComplexNameShort_mn_Cyrl() {
 };
 
 function testFormatComplexNameMedium_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
 		givenName: "Цахиагийн",
 		familyName: "Элбэгдорж"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mn-Cyrl-MN'
 	});
@@ -141,12 +143,12 @@ function testFormatComplexNameMedium_mn_Cyrl() {
 };
 
 function testFormatComplexNameLong_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
 		givenName: "Цахиагийн",
 		familyName: "Элбэгдорж"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'mn-Cyrl-MN'
 	});
@@ -159,12 +161,12 @@ function testFormatComplexNameLong_mn_Cyrl() {
 };
 
 function testFormatAsianNameShort_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'mn-Cyrl-MN'
 	});
@@ -177,12 +179,12 @@ function testFormatAsianNameShort_mn_Cyrl() {
 };
 
 function testFormatAsianNameMedium_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'mn-Cyrl-MN'
 	});
@@ -195,12 +197,12 @@ function testFormatAsianNameMedium_mn_Cyrl() {
 };
 
 function testFormatAsianNameLong_mn_Cyrl() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'mn-Cyrl-MN'
 	});

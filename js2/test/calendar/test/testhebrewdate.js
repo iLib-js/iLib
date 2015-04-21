@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var HebrewDate = require("./../lib/HebrewDate.js");
+
 function testHebrewDateConstructor() {
-	var hd = new ilib.Date.HebrewDate();
+	var hd = new HebrewDate();
     
     assertNotNull(hd);
 }
 
 function testHebrewDateConstructorFromRD() {
-	var hd = new ilib.Date.HebrewDate({rd: 357.25, timezone: "Etc/UTC"});
+	var hd = new HebrewDate({rd: 357.25, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(357.25, hd.getRataDie());
@@ -39,7 +41,7 @@ function testHebrewDateConstructorFromRD() {
 
 /* julian date is rd 357 + epoch */
 function testHebrewDateConstructorFromJD() {
-	var hd = new ilib.Date.HebrewDate({julianday: 348354.5, timezone: "Etc/UTC"});
+	var hd = new HebrewDate({julianday: 348354.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(357.25, hd.getRataDie());
@@ -53,7 +55,7 @@ function testHebrewDateConstructorFromJD() {
 }
 
 function testHebrewDateConstructorFromRDCusp() {
-	var hd = new ilib.Date.HebrewDate({rd: 355.25, timezone: "Etc/UTC"});
+	var hd = new HebrewDate({rd: 355.25, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(355.25, hd.getRataDie());
@@ -67,7 +69,7 @@ function testHebrewDateConstructorFromRDCusp() {
 }
 
 function testHebrewDateAfterLeapYear() {
-	var hd = new ilib.Date.HebrewDate({julianday: 349326.9, timezone: "Etc/UTC"});  // Siv 1, 0004, 9:36am
+	var hd = new HebrewDate({julianday: 349326.9, timezone: "Etc/UTC"});  // Siv 1, 0004, 9:36am
     
     assertEquals('object', typeof(hd));
     assertRoughlyEquals(1329.65, hd.getRataDie(), 0.001);
@@ -81,7 +83,7 @@ function testHebrewDateAfterLeapYear() {
 }
 
 function testHebrewDateAfterNoon() {
-	var hd = new ilib.Date.HebrewDate({julianday: 349327.1, timezone: "Etc/UTC"});  // Siv 1, 0004, 2:24pm
+	var hd = new HebrewDate({julianday: 349327.1, timezone: "Etc/UTC"});  // Siv 1, 0004, 2:24pm
     
     assertEquals('object', typeof(hd));
     assertRoughlyEquals(1329.85, hd.getRataDie(), 0.001);
@@ -134,7 +136,7 @@ var testDatesHebrew = [
 function testHebrewDateConvert() {
     var hd;
     for (var i = 0; i < testDatesHebrew.length; i++) {
-        hd = new ilib.Date.HebrewDate({julianday: testDatesHebrew[i][0], timezone: "Etc/UTC"});
+        hd = new HebrewDate({julianday: testDatesHebrew[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDatesHebrew[i][0]);
         
@@ -152,7 +154,7 @@ function testHebrewDateConvert() {
 }
 
 function testHebrewDateConstructorFull() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 2011,
 		month: 9,
 		day: 23,
@@ -174,7 +176,7 @@ function testHebrewDateConstructorFull() {
 }
 
 function testHebrewDateConstructorFullWithStrings() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: "2011", 
 		month: "9",
 		day: "23", 
@@ -196,7 +198,7 @@ function testHebrewDateConstructorFullWithStrings() {
 }
 
 function testHebrewDateConstructorCopy() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -221,7 +223,7 @@ function testHebrewDateGetJulianDay() {
     var hd;
     
     for (var i = 0; i < testDatesHebrew.length; i++) {
-        hd = new ilib.Date.HebrewDate({
+        hd = new HebrewDate({
         	year: testDatesHebrew[i][1], 
             month: testDatesHebrew[i][2], 
             day: testDatesHebrew[i][3],
@@ -241,7 +243,7 @@ function testHebrewDateGetJulianDay() {
 }
 
 function testHebrewDateSetYears() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -251,7 +253,7 @@ function testHebrewDateSetYears() {
 }
 
 function testHebrewDateSetMonths() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -261,7 +263,7 @@ function testHebrewDateSetMonths() {
 }
 
 function testHebrewDateSetDays() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -271,7 +273,7 @@ function testHebrewDateSetDays() {
 }
 
 function testHebrewDateSetHours() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -281,7 +283,7 @@ function testHebrewDateSetHours() {
 }
 
 function testHebrewDateSetMinutes() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -291,7 +293,7 @@ function testHebrewDateSetMinutes() {
 }
 
 function testHebrewDateSetSeconds() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -301,7 +303,7 @@ function testHebrewDateSetSeconds() {
 }
 
 function testHebrewDateSetMilliseconds() {
-    var hd = new ilib.Date.HebrewDate();
+    var hd = new HebrewDate();
     
     assertNotNull(hd);
     
@@ -311,7 +313,7 @@ function testHebrewDateSetMilliseconds() {
 }
 
 function testGetDayOfWeek1() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 2
@@ -323,7 +325,7 @@ function testGetDayOfWeek1() {
 }
 
 function testGetDayOfWeekWithTime() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 2,
@@ -338,7 +340,7 @@ function testGetDayOfWeekWithTime() {
 }
 
 function testHebrewDateTestGetTimeZero() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
     	timezone: "Etc/UTC",
 		year: 5730,
 		month: 10,
@@ -350,14 +352,14 @@ function testHebrewDateTestGetTimeZero() {
 }
 
 function testHebrewDateTestGetTimeZeroJD() {
-    var hd = new ilib.Date.HebrewDate({julianday: 2440587.5, timezone: "Etc/UTC"});
+    var hd = new HebrewDate({julianday: 2440587.5, timezone: "Etc/UTC"});
     assertNotNull(hd);
     
     assertEquals(0, hd.getTime());
 }
 
 function testHebrewDateTestGetTime() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5730,
 		month: 10,
 		day: 24,
@@ -371,7 +373,7 @@ function testHebrewDateTestGetTime() {
 }
 
 function testHebrewDateTestGetTimeTooEarly() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5730,
 		month: 10,
 		day: 22
@@ -382,7 +384,7 @@ function testHebrewDateTestGetTimeTooEarly() {
 }
 
 function testHebrewDateTestGetTimeTooLate() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5798,
 		month: 11,
 		day: 14
@@ -394,7 +396,7 @@ function testHebrewDateTestGetTimeTooLate() {
 
 // test some of the helper functions to make sure they are producing the right thing
 function testHebrewDateOnOrBeforeSun() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -409,7 +411,7 @@ function testHebrewDateOnOrBeforeSun() {
 }
 
 function testHebrewDateOnOrBeforeMon() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -423,7 +425,7 @@ function testHebrewDateOnOrBeforeMon() {
 }
 
 function testHebrewDateOnOrBeforeTue() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -437,7 +439,7 @@ function testHebrewDateOnOrBeforeTue() {
 }
 
 function testHebrewDateOnOrBeforeWed() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -451,7 +453,7 @@ function testHebrewDateOnOrBeforeWed() {
 }
 
 function testHebrewDateOnOrBeforeThu() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -465,7 +467,7 @@ function testHebrewDateOnOrBeforeThu() {
 }
 
 function testHebrewDateOnOrBeforeFri() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -479,7 +481,7 @@ function testHebrewDateOnOrBeforeFri() {
 }
 
 function testHebrewDateOnOrBeforeSat() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -493,7 +495,7 @@ function testHebrewDateOnOrBeforeSat() {
 }
 
 function testHebrewDateOnOrAfterSun() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -508,7 +510,7 @@ function testHebrewDateOnOrAfterSun() {
 }
 
 function testHebrewDateOnOrAfterMon() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -522,7 +524,7 @@ function testHebrewDateOnOrAfterMon() {
 }
 
 function testHebrewDateOnOrAfterTue() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -536,7 +538,7 @@ function testHebrewDateOnOrAfterTue() {
 }
 
 function testHebrewDateOnOrAfterWed() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -550,7 +552,7 @@ function testHebrewDateOnOrAfterWed() {
 }
 
 function testHebrewDateOnOrAfterThu() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -564,7 +566,7 @@ function testHebrewDateOnOrAfterThu() {
 }
 
 function testHebrewDateOnOrAfterFri() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -578,7 +580,7 @@ function testHebrewDateOnOrAfterFri() {
 }
 
 function testHebrewDateOnOrAfterSat() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -592,7 +594,7 @@ function testHebrewDateOnOrAfterSat() {
 }
 
 function testHebrewDateBeforeSun() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -607,7 +609,7 @@ function testHebrewDateBeforeSun() {
 }
 
 function testHebrewDateBeforeMon() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -621,7 +623,7 @@ function testHebrewDateBeforeMon() {
 }
 
 function testHebrewDateBeforeTue() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -635,7 +637,7 @@ function testHebrewDateBeforeTue() {
 }
 
 function testHebrewDateBeforeWed() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -649,7 +651,7 @@ function testHebrewDateBeforeWed() {
 }
 
 function testHebrewDateBeforeThu() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -663,7 +665,7 @@ function testHebrewDateBeforeThu() {
 }
 
 function testHebrewDateBeforeFri() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -677,7 +679,7 @@ function testHebrewDateBeforeFri() {
 }
 
 function testHebrewDateBeforeSat() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -691,7 +693,7 @@ function testHebrewDateBeforeSat() {
 }
 
 function testHebrewDateAfterSun() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -706,7 +708,7 @@ function testHebrewDateAfterSun() {
 }
 
 function testHebrewDateAfterMon() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -720,7 +722,7 @@ function testHebrewDateAfterMon() {
 }
 
 function testHebrewDateAfterTue() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -734,7 +736,7 @@ function testHebrewDateAfterTue() {
 }
 
 function testHebrewDateAfterWed() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -748,7 +750,7 @@ function testHebrewDateAfterWed() {
 }
 
 function testHebrewDateAfterThu() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -762,7 +764,7 @@ function testHebrewDateAfterThu() {
 }
 
 function testHebrewDateAfterFri() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -776,7 +778,7 @@ function testHebrewDateAfterFri() {
 }
 
 function testHebrewDateAfterSat() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
@@ -790,7 +792,7 @@ function testHebrewDateAfterSat() {
 }
 
 function testHebrewDateTestGetWeekOfYearThisYear() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
@@ -801,7 +803,7 @@ function testHebrewDateTestGetWeekOfYearThisYear() {
 }
 
 function testHebrewDateTestGetWeekOfYearThisYear2() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 19
@@ -812,7 +814,7 @@ function testHebrewDateTestGetWeekOfYearThisYear2() {
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearRegular() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 1
@@ -823,7 +825,7 @@ function testHebrewDateTestGetWeekOfYearThisYearRegular() {
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearLeap() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5771,
 		month: 1,
 		day: 1
@@ -835,7 +837,7 @@ function testHebrewDateTestGetWeekOfYearThisYearLeap() {
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearWithTime() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 29,
@@ -850,7 +852,7 @@ function testHebrewDateTestGetWeekOfYearThisYearWithTime() {
 }
 
 function testHebrewDateTestGetWeekOfYearPreviousYear() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5781,
 		month: 7,
 		day: 1
@@ -861,7 +863,7 @@ function testHebrewDateTestGetWeekOfYearPreviousYear() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekLeap() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5784,
 		month: 6,
 		day: 29
@@ -872,7 +874,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekLeap() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular1() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5781,
 		month: 6,
 		day: 29
@@ -883,7 +885,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular1() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular2() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5782,
 		month: 6,
 		day: 29
@@ -894,7 +896,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular2() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular3() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5783,
 		month: 6,
 		day: 29
@@ -905,7 +907,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular3() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular4() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5785,
 		month: 6,
 		day: 29
@@ -916,7 +918,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular4() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular5() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5786,
 		month: 6,
 		day: 29
@@ -927,7 +929,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular5() {
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular6() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5787,
 		month: 6,
 		day: 29
@@ -938,7 +940,7 @@ function testHebrewDateTestGetWeekOfYearLastWeekRegular6() {
 }
 
 function testHebrewDateGetDayOfYearFirstDay() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 5771,
 		month: 7,
 		day: 1
@@ -949,7 +951,7 @@ function testHebrewDateGetDayOfYearFirstDay() {
 }
 
 function testHebrewDateGetDayOfYearMidYear() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 1
@@ -960,7 +962,7 @@ function testHebrewDateGetDayOfYearMidYear() {
 }
 
 function testHebrewDateGetDayOfYearMidYearLeap() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5774,
 		month: 1,
 		day: 1
@@ -971,7 +973,7 @@ function testHebrewDateGetDayOfYearMidYearLeap() {
 }
 
 function testHebrewDateGetDayOfYearLastDay() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 29
@@ -982,7 +984,7 @@ function testHebrewDateGetDayOfYearLastDay() {
 }
 
 function testHebrewDateGetDayOfYearLastDayLeapYear() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5774,
 		month: 6,
 		day: 29
@@ -993,7 +995,7 @@ function testHebrewDateGetDayOfYearLastDayLeapYear() {
 }
 
 function testHebrewDateGetWeekOfMonth0() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 1
@@ -1004,7 +1006,7 @@ function testHebrewDateGetWeekOfMonth0() {
 }
 
 function testHebrewDateGetWeekOfMonth1() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 2
@@ -1015,7 +1017,7 @@ function testHebrewDateGetWeekOfMonth1() {
 }
 
 function testHebrewDateGetWeekOfMonth2() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 11
@@ -1026,7 +1028,7 @@ function testHebrewDateGetWeekOfMonth2() {
 }
 
 function testHebrewDateGetWeekOfMonth3() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 20
@@ -1037,7 +1039,7 @@ function testHebrewDateGetWeekOfMonth3() {
 }
 
 function testHebrewDateGetWeekOfMonth4() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 29
@@ -1048,7 +1050,7 @@ function testHebrewDateGetWeekOfMonth4() {
 }
 
 function testHebrewDateGetWeekOfMonth5() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 30
@@ -1059,7 +1061,7 @@ function testHebrewDateGetWeekOfMonth5() {
 }
 
 function testHebrewDateGetWeekOfMonth6() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 5772,
 		month: 4,
 		day: 1
@@ -1070,7 +1072,7 @@ function testHebrewDateGetWeekOfMonth6() {
 }
 
 function testHebrewDateGetWeekOfMonth7() {
-	var hd = new ilib.Date.HebrewDate({
+	var hd = new HebrewDate({
 		year: 5772,
 		month: 5,
 		day: 1
@@ -1081,7 +1083,7 @@ function testHebrewDateGetWeekOfMonth7() {
 }
 
 function testHebrewDateGetWeekOfMonth8() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 1
@@ -1092,7 +1094,7 @@ function testHebrewDateGetWeekOfMonth8() {
 }
 
 function testHebrewDateGetWeekOfMonth9() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 1
@@ -1103,7 +1105,7 @@ function testHebrewDateGetWeekOfMonth9() {
 }
 
 function testHebrewDateGetWeekOfMonth10() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
@@ -1114,7 +1116,7 @@ function testHebrewDateGetWeekOfMonth10() {
 }
 
 function testHebrewDateGetWeekOfMonthUS() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
@@ -1125,7 +1127,7 @@ function testHebrewDateGetWeekOfMonthUS() {
 }
 
 function testHebrewDateGetWeekOfMonthDE() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
@@ -1138,7 +1140,7 @@ function testHebrewDateGetWeekOfMonthDE() {
 }
 
 function testHebrewDateGetEraAM() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 5772,
 		month: 5,
 		day: 1
@@ -1149,7 +1151,7 @@ function testHebrewDateGetEraAM() {
 }
 
 function testHebrewDateGetEraBAM() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: -46,
 		month: 5,
 		day: 1,
@@ -1164,7 +1166,7 @@ function testHebrewDateGetEraBAM() {
 }
 
 function testHebrewDateGetEraAMYear1() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 1,
 		month: 1,
 		day: 1
@@ -1175,7 +1177,7 @@ function testHebrewDateGetEraAMYear1() {
 }
 
 function testHebrewDateGetEraBAMYear0() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
 		year: 0,
 		month: 12,
 		day: 29
@@ -1186,7 +1188,7 @@ function testHebrewDateGetEraBAMYear0() {
 }
 
 function testHebrewDateSetTimeZone() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	year: 5711, 
     	month: 3, 
     	day: 8,
@@ -1202,7 +1204,7 @@ function testHebrewDateSetTimeZone() {
 }
 
 function testHebrewDateSetTimeZoneNotString() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	year: 5711, 
     	month: 3, 
     	day: 8,
@@ -1218,7 +1220,7 @@ function testHebrewDateSetTimeZoneNotString() {
 }
 
 function testHebrewDateSetTimeZoneUndefined() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	year: 5711, 
     	month: 3, 
     	day: 8,
@@ -1235,7 +1237,7 @@ function testHebrewDateSetTimeZoneUndefined() {
 }
 
 function testHebrewDateSetTimeZoneEmpty() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	year: 5711, 
     	month: 3, 
     	day: 8,
@@ -1252,7 +1254,7 @@ function testHebrewDateSetTimeZoneEmpty() {
 }
 
 function testHebrewDateInitWithUnixTimeRightTimeZone() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	unixtime: 0
     });
     assertNotNull(gd);
@@ -1261,7 +1263,7 @@ function testHebrewDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testHebrewDateInitWithJDRightTimeZone() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	julianday: 0
     });
     assertNotNull(gd);
@@ -1270,7 +1272,7 @@ function testHebrewDateInitWithJDRightTimeZone() {
 }
 
 function testHebrewDateInitWithRDRightTimeZone() {
-    var gd = new ilib.Date.HebrewDate({
+    var gd = new HebrewDate({
     	rd: 0
     });
     assertNotNull(gd);
@@ -1279,7 +1281,7 @@ function testHebrewDateInitWithRDRightTimeZone() {
 }
 
 function testHebrewDateRoundTripConstruction() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
     	year: 5775,
     	month: 8,
     	day: 10,
@@ -1290,7 +1292,7 @@ function testHebrewDateRoundTripConstruction() {
     
     var u = hd.getTime();
     // console.log("unixtime is " + u);
-    var hd2 = new ilib.Date.HebrewDate({
+    var hd2 = new HebrewDate({
     	unixtime: u,
     	timezone: "local"
     });
@@ -1305,7 +1307,7 @@ function testHebrewDateRoundTripConstruction() {
 }
 
 function testHebrewDateRoundTripConstruction2() {
-    var hd = new ilib.Date.HebrewDate({
+    var hd = new HebrewDate({
     	year: 5775,
     	month: 8,
     	day: 10,
@@ -1316,7 +1318,7 @@ function testHebrewDateRoundTripConstruction2() {
     
     var u = hd.getTime();
     // console.log("unixtime is " + u);
-    var hd2 = new ilib.Date.HebrewDate({
+    var hd2 = new HebrewDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });

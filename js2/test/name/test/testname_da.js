@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testDKParseSimpleName() {
-	var parsed = new ilib.Name("Maren Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Maren Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testDKParseSimpleName() {
 };
 
 function testDKParseTripleName() {
-	var parsed = new ilib.Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testDKParseTripleName() {
 };
 
 function testDKParseAdjunctNames() {
-	var parsed = new ilib.Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +58,7 @@ function testDKParseAdjunctNames() {
 };
 
 function testDKParseMultiAdjunctNames() {
-	var parsed = new ilib.Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -68,7 +70,7 @@ function testDKParseMultiAdjunctNames() {
 };
 
 function testDKParseHypenatedName() {
-	var parsed = new ilib.Name("Jan Michael Bergische-Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Jan Michael Bergische-Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -81,7 +83,7 @@ function testDKParseHypenatedName() {
 };
 
 function testDKParseQuadrupleName() {
-	var parsed = new ilib.Name("Jan Michael Jürgen Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Jan Michael Jürgen Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -94,7 +96,7 @@ function testDKParseQuadrupleName() {
 };
 
 function testDKParseTitle() {
-	var parsed = new ilib.Name("Dr. Jan Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Dr. Jan Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -107,7 +109,7 @@ function testDKParseTitle() {
 };
 
 function testDKParseHonorific() {
-	var parsed = new ilib.Name("Fru Julia Jensdatter", {locale: 'da-DK'});
+	var parsed = new Name("Fru Julia Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -120,7 +122,7 @@ function testDKParseHonorific() {
 };
 
 function testDKParseEverything() {
-	var parsed = new ilib.Name("Præsident Jan Michael Jürgen Jensdatter Jr.", {locale: 'da-DK'});
+	var parsed = new Name("Præsident Jan Michael Jürgen Jensdatter Jr.", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -139,12 +141,12 @@ function testDKParseEverything() {
  */
 
 function testDKFormatSimpleNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Jan",
 		middleName: "Michael",
 		familyName: "Jensdatter"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "short", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -154,12 +156,12 @@ function testDKFormatSimpleNameShort() {
 };
 
 function testDKFormatSimpleNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Jan",
 		middleName: "Michael",
 		familyName: "Jensdatter"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -169,12 +171,12 @@ function testDKFormatSimpleNameMedium() {
 };
 
 function testDKFormatSimpleNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Jan",
 		middleName: "Michael",
 		familyName: "Jensdatter"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "long", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -184,12 +186,12 @@ function testDKFormatSimpleNameLong() {
 };
 
 function testDKFormatSimpleNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Jan",
 		middleName: "Michael",
 		familyName: "Jensdatter"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "full", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -199,14 +201,14 @@ function testDKFormatSimpleNameFull() {
 };
 
 function testDKFormatComplexNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Dr.",
 		givenName: "Jan",
 		middleName: "Michael Pieter",
 		familyName: "Jensdatter",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "short", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -216,14 +218,14 @@ function testDKFormatComplexNameShort() {
 };
 
 function testDKFormatComplexNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Dr.",
 		givenName: "Jan",
 		middleName: "Michael Pieter",
 		familyName: "Jensdatter",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -233,14 +235,14 @@ function testDKFormatComplexNameMedium() {
 };
 
 function testDKFormatComplexNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Dr.",
 		givenName: "Jan",
 		middleName: "Michael Pieter",
 		familyName: "Jensdatter",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "long", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -250,14 +252,14 @@ function testDKFormatComplexNameLong() {
 };
 
 function testDKFormatComplexNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Dr.",
 		givenName: "Jan",
 		middleName: "Michael Pieter",
 		familyName: "Jensdatter",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "full", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -267,13 +269,13 @@ function testDKFormatComplexNameFull() {
 };
 
 function testDKFormatAsianNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "short", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -283,13 +285,13 @@ function testDKFormatAsianNameShort() {
 };
 
 function testDKFormatAsianNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -299,13 +301,13 @@ function testDKFormatAsianNameMedium() {
 };
 
 function testDKFormatAsianNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "long", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -315,13 +317,13 @@ function testDKFormatAsianNameLong() {
 };
 
 function testDKFormatAsianNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'da-DK'});
+	var fmt = new NameFmt({style: "full", locale: 'da-DK'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	

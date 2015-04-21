@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_tr_TR() {
-	var parsed = new ilib.Name("Kemal Sunal", {locale: 'tr-TR'});
+	var parsed = new Name("Kemal Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_tr_TR() {
 };
 
 function testParseTitle_tr_TR() {
-	var parsed = new ilib.Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
+	var parsed = new Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_tr_TR() {
 };
 
 function testParseTitleWithFamilyOnly_tr_TR() {
-	var parsed = new ilib.Name("Bay Sunal", {locale: 'tr-TR'});
+	var parsed = new Name("Bay Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -57,7 +59,7 @@ function testParseTitleWithFamilyOnly_tr_TR() {
 
 
 function testParseEverything_tr_TR() {
-	var parsed = new ilib.Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
+	var parsed = new Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -69,7 +71,7 @@ function testParseEverything_tr_TR() {
 };
 
 function testParseprefix_tr_TR() {
-	var parsed = new ilib.Name("Bay Kemal Sunal", {locale: 'tr-TR'});
+	var parsed = new Name("Bay Kemal Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -82,7 +84,7 @@ function testParseprefix_tr_TR() {
 };
 
 function testParseprefixAndSuffix_tr_TR() {
-	var parsed = new ilib.Name("belediye başkanı Kemal Sunal kıdemli", {locale: 'tr-TR'});
+	var parsed = new Name("belediye başkanı Kemal Sunal kıdemli", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -99,11 +101,11 @@ function testParseprefixAndSuffix_tr_TR() {
  */
 
 function testFormatSimpleNameShort_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Kemal",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'tr-TR'
 	});
@@ -116,11 +118,11 @@ function testFormatSimpleNameShort_tr_TR() {
 };
 
 function testFormatSimpleNameMedium_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Kemal",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'tr-TR'
 	});
@@ -133,12 +135,12 @@ function testFormatSimpleNameMedium_tr_TR() {
 };
 
 function testFormatSimpleNameLong_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Kemal",
 		familyName: "Sunal",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'tr-TR'
 	});
@@ -151,11 +153,11 @@ function testFormatSimpleNameLong_tr_TR() {
 };
 
 function testFormatSurname_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Bay ve Bayan",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'tr-TR'
 	});
@@ -168,13 +170,13 @@ function testFormatSurname_tr_TR() {
 };
 
 function testFormatSimpleNameFull_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Bakan",
 		givenName: "Kemal",
 		familyName: "Sunal",
 		suffix: "kıdemli"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'tr-TR'
 	});
@@ -187,12 +189,12 @@ function testFormatSimpleNameFull_tr_TR() {
 };
 
 function testFormatComplexNameShort_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Bakan",
 		givenName: "Kemal",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'tr-TR'
 	});
@@ -205,12 +207,12 @@ function testFormatComplexNameShort_tr_TR() {
 };
 
 function testFormatComplexNameMedium_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Bakan",
 		givenName: "Kemal",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'tr-TR'
 	});
@@ -223,12 +225,12 @@ function testFormatComplexNameMedium_tr_TR() {
 };
 
 function testFormatComplexNameLong_tr_TR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Bakan",
 		givenName: "Kemal",
 		familyName: "Sunal"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'tr-TR'
 	});

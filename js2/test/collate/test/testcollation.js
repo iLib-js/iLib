@@ -17,6 +17,12 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib.js");
+var ElementIterator = require("./../lib/ElementIterator.js");
+var Collator = require("./../lib/Collator.js");
+var CodePointSource = require("./../lib/CodePointSource.js");
+
 function testCodePointSourceConstructor() {
 	var cps = new ilib.CodePointSource("abc");
 
@@ -409,13 +415,13 @@ function testElementIteratorNonMapCharacter() {
 
 
 function testCollatorConstructorNative() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 }
 
 function testCollatorDefaultNative() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 
@@ -427,7 +433,7 @@ function testCollatorDefaultNative() {
 }
 
 function testCollatorDefaultCase() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 
@@ -449,7 +455,7 @@ function testCollatorDefaultCase() {
 }
 
 function testCollatorGetComparator() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 
@@ -460,7 +466,7 @@ function testCollatorGetComparator() {
 }
 
 function testCollatorGetComparatorWorks() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 
@@ -475,7 +481,7 @@ function testCollatorGetComparatorWorks() {
 }
 
 function testCollatorGetComparatorWorksWithCase() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 
 	assertNotUndefined(col);
 
@@ -500,13 +506,13 @@ function testCollatorGetComparatorWorksWithCase() {
 }
 
 function testCollatorConstructorJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 }
 
 function testCollatorDefaultJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -518,7 +524,7 @@ function testCollatorDefaultJS() {
 }
 
 function testCollatorDefaultCaseJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -530,7 +536,7 @@ function testCollatorDefaultCaseJS() {
 }
 
 function testCollatorGetComparatorJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -541,7 +547,7 @@ function testCollatorGetComparatorJS() {
 }
 
 function testCollatorGetComparatorWorksJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -556,7 +562,7 @@ function testCollatorGetComparatorWorksJS() {
 }
 
 function testCollatorGetComparatorWorksWithCaseJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -573,7 +579,7 @@ function testCollatorGetComparatorWorksWithCaseJS() {
 
 function testCollatorGetSortKeyNative() {
 	if (typeof(Intl) !== 'undefined' && Intl) {
-		var col = new ilib.Collator();
+		var col = new Collator();
 
 		assertNotUndefined(col);
 
@@ -583,14 +589,14 @@ function testCollatorGetSortKeyNative() {
 }
 
 function testCollatorGetSortKeySimpleUpper() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
 	assertEquals("0000200400600800a0", col.sortKey("ABCDEF"));
 }
 function testCollatorGetSortKeySimpleLower() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -598,7 +604,7 @@ function testCollatorGetSortKeySimpleLower() {
 }
 
 function testCollatorGetSortKeyMixed() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -606,7 +612,7 @@ function testCollatorGetSortKeyMixed() {
 }
 
 function testCollatorGetSortKeyWithExpansion() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -615,7 +621,7 @@ function testCollatorGetSortKeyWithExpansion() {
 }
 
 function testCollatorGetSortKeyWithContraction() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -627,7 +633,7 @@ function testCollatorGetSortKeyWithContraction() {
 }
 
 function testCollatorGetSortKeyEmpty() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -635,7 +641,7 @@ function testCollatorGetSortKeyEmpty() {
 }
 
 function testCollatorGetSortKeyUndefined() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -643,7 +649,7 @@ function testCollatorGetSortKeyUndefined() {
 }
 
 function testCollatorGetSortKeyDeterministic() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -651,7 +657,7 @@ function testCollatorGetSortKeyDeterministic() {
 	assertTrue(col.sortKey("string") === col.sortKey("string"));
 }
 function testCollatorGetSortKeyWorks() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 
 	assertNotUndefined(col);
 
@@ -663,7 +669,7 @@ function testCollatorGetSortKeyWorks() {
 
 
 function testCollatorWithSort() {
-	var col = new ilib.Collator();
+	var col = new Collator();
 	assertNotUndefined(col);
 
 	var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -676,7 +682,7 @@ function testCollatorWithSort() {
 }
 
 function testCollatorWithSortUpperFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		upperFirst: true
 	});
 	assertNotUndefined(col);
@@ -699,7 +705,7 @@ function testCollatorWithSortUpperFirst() {
 }
 
 function testCollatorWithSortUpperNotFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		upperFirst: false
 	});
 	assertNotUndefined(col);
@@ -715,7 +721,7 @@ function testCollatorWithSortUpperNotFirst() {
 }
 
 function testCollatorWithSortJS() {
-	var col = new ilib.Collator({useNative: false});
+	var col = new Collator({useNative: false});
 	assertNotUndefined(col);
 
 	var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -728,7 +734,7 @@ function testCollatorWithSortJS() {
 }
 
 function testCollatorWithSortUpperFirstJS() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		upperFirst: true,
 		useNative: false
 	});
@@ -744,7 +750,7 @@ function testCollatorWithSortUpperFirstJS() {
 }
 
 function testCollatorWithSortUpperNotFirstJS() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		upperFirst: false,
 		useNative: false
 	});
@@ -760,17 +766,17 @@ function testCollatorWithSortUpperNotFirstJS() {
 }
 
 function testCollatorGetAvailableScripts() {
-	assertArrayEquals(["Latn"], ilib.Collator.getAvailableScripts());
+	assertArrayEquals(["Latn"], Collator.getAvailableScripts());
 }
 
 function testCollatorGetAvailableStyles() {
-	assertArrayEquals(["standard"], ilib.Collator.getAvailableStyles());
+	assertArrayEquals(["standard"], Collator.getAvailableStyles());
 }
 
 function testCollatorDefaultExtendedChars() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator();
+		var col = new Collator();
 
 		assertNotUndefined(col);
 
@@ -783,7 +789,7 @@ function testCollatorDefaultExtendedChars() {
 function testCollatorPrimaryExtendedChars() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			sensitivity: "primary",
 			usage: "search"
 		});
@@ -799,7 +805,7 @@ function testCollatorPrimaryExtendedChars() {
 function testCollatorDefaultExtendedCharsJS() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({useNative: false});
+		var col = new Collator({useNative: false});
 
 		assertNotUndefined(col);
 
@@ -812,7 +818,7 @@ function testCollatorDefaultExtendedCharsJS() {
 function testCollatorPrimaryExtendedCharsJS() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			sensitivity: "primary",
 			usage: "search",
 			useNative: false
@@ -829,7 +835,7 @@ function testCollatorPrimaryExtendedCharsJS() {
 function testCollatorNativeIsNative() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator();
+		var col = new Collator();
 		assertNotUndefined(col);
 		assertNotUndefined(col.collator);
 	}
@@ -839,7 +845,7 @@ function testCollatorNativeIsNative() {
 function testCollatorNativefrFRCase() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "fr-FR",
 			sensitivity: "case"
 		});
@@ -892,7 +898,7 @@ function testCollatorNativefrFRCase() {
 function testCollatorNativefrFRVariant() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "fr-FR",
 			sensitivity: "variant",
 			frenchAccents: true
@@ -949,7 +955,7 @@ function testCollatorNativefrFRVariant() {
 function testCollatorNativefrCACase() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "fr-CA",
 			sensitivity: "case"
 		});
@@ -1002,7 +1008,7 @@ function testCollatorNativefrCACase() {
 function testCollatorNativefrCAVariant() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "fr-CA",
 			sensitivity: "variant"
 		});
@@ -1057,7 +1063,7 @@ function testCollatorNativefrCAVariant() {
 function testCollatorNativedeDECase() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "de-DE",
 			sensitivity: "case"
 		});
@@ -1104,7 +1110,7 @@ function testCollatorNativedeDECase() {
 function testCollatorNativedeDEVariant() {
 	// only test on platforms that support the new Intl class natively
 	if (typeof(Intl) !== 'undefined') {
-		var col = new ilib.Collator({
+		var col = new Collator({
 			locale: "de-DE",
 			sensitivity: "variant",
 			upperFirst: true
@@ -1153,7 +1159,7 @@ function testCollatorNativedeDEVariant() {
  */
 
 function testJSCollatorPrimaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1169,7 +1175,7 @@ function testJSCollatorPrimaryEqual() {
 }
 
 function testJSCollatorPrimaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1200,7 +1206,7 @@ function testJSCollatorPrimaryBase() {
 }
 
 function testJSCollatorPrimaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1217,7 +1223,7 @@ function testJSCollatorPrimaryAccent() {
 }
 
 function testJSCollatorPrimaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1241,7 +1247,7 @@ function testJSCollatorPrimaryCase() {
 }
 
 function testJSCollatorGetComparatorPrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1254,7 +1260,7 @@ function testJSCollatorGetComparatorPrimary() {
 }
 
 function testJSCollatorGetComparatorPrimaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1267,7 +1273,7 @@ function testJSCollatorGetComparatorPrimaryWorks() {
 }
 
 function testJSCollatorGetComparatorPrimaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1293,7 +1299,7 @@ function testJSCollatorGetComparatorPrimaryWorksWithCase() {
 }
 
 function testJSCollatorGetSortKeyPrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1304,7 +1310,7 @@ function testJSCollatorGetSortKeyPrimary() {
 }
 
 function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1315,7 +1321,7 @@ function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
 }
 
 function testJSCollatorGetSortKeyPrimaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -1339,7 +1345,7 @@ function testJSCollatorGetSortKeyPrimaryWorks() {
 
 
 function testJSCollatorSecondaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1355,7 +1361,7 @@ function testJSCollatorSecondaryEqual() {
 }
 
 function testJSCollatorSecondaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1386,7 +1392,7 @@ function testJSCollatorSecondaryBase() {
 }
 
 function testJSCollatorSecondaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1402,7 +1408,7 @@ function testJSCollatorSecondaryAccent() {
 }
 
 function testJSCollatorSecondaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1425,7 +1431,7 @@ function testJSCollatorSecondaryCase() {
 }
 
 function testJSCollatorGetComparatorSecondary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1438,7 +1444,7 @@ function testJSCollatorGetComparatorSecondary() {
 }
 
 function testJSCollatorGetComparatorSecondaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1451,7 +1457,7 @@ function testJSCollatorGetComparatorSecondaryWorks() {
 }
 
 function testJSCollatorGetComparatorSecondaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1476,7 +1482,7 @@ function testJSCollatorGetComparatorSecondaryWorksWithCase() {
 }
 
 function testJSCollatorGetSortKeySecondary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1487,7 +1493,7 @@ function testJSCollatorGetSortKeySecondary() {
 }
 
 function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1498,7 +1504,7 @@ function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
 }
 
 function testJSCollatorGetSortKeySecondaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -1522,7 +1528,7 @@ function testJSCollatorGetSortKeySecondaryWorks() {
 
 
 function testJSCollatorTertiaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1538,7 +1544,7 @@ function testJSCollatorTertiaryEqual() {
 }
 
 function testJSCollatorTertiaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1569,7 +1575,7 @@ function testJSCollatorTertiaryBase() {
 }
 
 function testJSCollatorTertiaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1584,7 +1590,7 @@ function testJSCollatorTertiaryAccent() {
 }
 
 function testJSCollatorTertiaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1607,7 +1613,7 @@ function testJSCollatorTertiaryCase() {
 }
 
 function testJSCollatorGetComparatorTertiary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1620,7 +1626,7 @@ function testJSCollatorGetComparatorTertiary() {
 }
 
 function testJSCollatorGetComparatorTertiaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1633,7 +1639,7 @@ function testJSCollatorGetComparatorTertiaryWorks() {
 }
 
 function testJSCollatorGetComparatorTertiaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1658,7 +1664,7 @@ function testJSCollatorGetComparatorTertiaryWorksWithCase() {
 }
 
 function testJSCollatorGetSortKeyTertiary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1669,7 +1675,7 @@ function testJSCollatorGetSortKeyTertiary() {
 }
 
 function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1680,7 +1686,7 @@ function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
 }
 
 function testJSCollatorGetSortKeyTertiaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -1704,7 +1710,7 @@ function testJSCollatorGetSortKeyTertiaryWorks() {
 
 
 function testJSCollatorSearchPrimaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1721,7 +1727,7 @@ function testJSCollatorSearchPrimaryEqual() {
 }
 
 function testJSCollatorSearchPrimaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1753,7 +1759,7 @@ function testJSCollatorSearchPrimaryBase() {
 }
 
 function testJSCollatorSearchPrimaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1770,7 +1776,7 @@ function testJSCollatorSearchPrimaryAccent() {
 }
 
 function testJSCollatorSearchPrimaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1795,7 +1801,7 @@ function testJSCollatorSearchPrimaryCase() {
 }
 
 function testJSCollatorSearchGetComparatorPrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1809,7 +1815,7 @@ function testJSCollatorSearchGetComparatorPrimary() {
 }
 
 function testJSCollatorSearchGetComparatorPrimaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1823,7 +1829,7 @@ function testJSCollatorSearchGetComparatorPrimaryWorks() {
 }
 
 function testJSCollatorSearchGetComparatorPrimaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1850,7 +1856,7 @@ function testJSCollatorSearchGetComparatorPrimaryWorksWithCase() {
 }
 
 function testJSCollatorSearchGetSortKeyPrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1862,7 +1868,7 @@ function testJSCollatorSearchGetSortKeyPrimary() {
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1874,7 +1880,7 @@ function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		usage: "search"
@@ -1899,7 +1905,7 @@ function testJSCollatorSearchGetSortKeyPrimaryWorks() {
 
 
 function testJSCollatorSearchSecondaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -1916,7 +1922,7 @@ function testJSCollatorSearchSecondaryEqual() {
 }
 
 function testJSCollatorSearchSecondaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -1948,7 +1954,7 @@ function testJSCollatorSearchSecondaryBase() {
 }
 
 function testJSCollatorSearchSecondaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -1965,7 +1971,7 @@ function testJSCollatorSearchSecondaryAccent() {
 }
 
 function testJSCollatorSearchSecondaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -1990,7 +1996,7 @@ function testJSCollatorSearchSecondaryCase() {
 }
 
 function testJSCollatorSearchGetComparatorSecondary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2004,7 +2010,7 @@ function testJSCollatorSearchGetComparatorSecondary() {
 }
 
 function testJSCollatorSearchGetComparatorSecondaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2018,7 +2024,7 @@ function testJSCollatorSearchGetComparatorSecondaryWorks() {
 }
 
 function testJSCollatorSearchGetComparatorSecondaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2046,7 +2052,7 @@ function testJSCollatorSearchGetComparatorSecondaryWorksWithCase() {
 }
 
 function testJSCollatorSearchGetSortKeySecondary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2058,7 +2064,7 @@ function testJSCollatorSearchGetSortKeySecondary() {
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2070,7 +2076,7 @@ function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary",
 		usage: "search"
@@ -2095,7 +2101,7 @@ function testJSCollatorSearchGetSortKeySecondaryWorks() {
 
 
 function testJSCollatorSearchTertiaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2112,7 +2118,7 @@ function testJSCollatorSearchTertiaryEqual() {
 }
 
 function testJSCollatorSearchTertiaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2144,7 +2150,7 @@ function testJSCollatorSearchTertiaryBase() {
 }
 
 function testJSCollatorSearchTertiaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2161,7 +2167,7 @@ function testJSCollatorSearchTertiaryAccent() {
 }
 
 function testJSCollatorSearchTertiaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2186,7 +2192,7 @@ function testJSCollatorSearchTertiaryCase() {
 }
 
 function testJSCollatorSearchGetComparatorTertiary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2200,7 +2206,7 @@ function testJSCollatorSearchGetComparatorTertiary() {
 }
 
 function testJSCollatorSearchGetComparatorTertiaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2214,7 +2220,7 @@ function testJSCollatorSearchGetComparatorTertiaryWorks() {
 }
 
 function testJSCollatorSearchGetComparatorTertiaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2242,7 +2248,7 @@ function testJSCollatorSearchGetComparatorTertiaryWorksWithCase() {
 }
 
 function testJSCollatorSearchGetSortKeyTertiary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2254,7 +2260,7 @@ function testJSCollatorSearchGetSortKeyTertiary() {
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2266,7 +2272,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary",
 		usage: "search"
@@ -2291,7 +2297,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWorks() {
 
 
 function testJSCollatorSearchQuaternaryEqual() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2308,7 +2314,7 @@ function testJSCollatorSearchQuaternaryEqual() {
 }
 
 function testJSCollatorSearchQuaternaryBase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2340,7 +2346,7 @@ function testJSCollatorSearchQuaternaryBase() {
 }
 
 function testJSCollatorSearchQuaternaryAccent() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2357,7 +2363,7 @@ function testJSCollatorSearchQuaternaryAccent() {
 }
 
 function testJSCollatorSearchQuaternaryCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2382,7 +2388,7 @@ function testJSCollatorSearchQuaternaryCase() {
 }
 
 function testJSCollatorSearchGetComparatorQuaternary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2396,7 +2402,7 @@ function testJSCollatorSearchGetComparatorQuaternary() {
 }
 
 function testJSCollatorSearchGetComparatorQuaternaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2410,7 +2416,7 @@ function testJSCollatorSearchGetComparatorQuaternaryWorks() {
 }
 
 function testJSCollatorSearchGetComparatorQuaternaryWorksWithCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2438,7 +2444,7 @@ function testJSCollatorSearchGetComparatorQuaternaryWorksWithCase() {
 }
 
 function testJSCollatorSearchGetSortKeyQuaternary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2450,7 +2456,7 @@ function testJSCollatorSearchGetSortKeyQuaternary() {
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2462,7 +2468,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "quaternary",
 		usage: "search"
@@ -2487,7 +2493,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
 
 
 function testCollatorJSWithSortPrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -2503,7 +2509,7 @@ function testCollatorJSWithSortPrimary() {
 }
 
 function testCollatorJSWithSortPrimaryStable() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -2520,7 +2526,7 @@ function testCollatorJSWithSortPrimaryStable() {
 }
 
 function testCollatorJSWithSortPrimaryLowerFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		upperFirst: false
@@ -2537,7 +2543,7 @@ function testCollatorJSWithSortPrimaryLowerFirst() {
 }
 
 function testCollatorJSWithSortPrimaryReverse() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		reverse: true
@@ -2554,7 +2560,7 @@ function testCollatorJSWithSortPrimaryReverse() {
 }
 
 function testCollatorJSWithSortPrimaryReverseLowerFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		reverse: true,
@@ -2572,7 +2578,7 @@ function testCollatorJSWithSortPrimaryReverseLowerFirst() {
 }
 
 function testCollatorJSWithSortSecondary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "secondary"
 	});
@@ -2589,7 +2595,7 @@ function testCollatorJSWithSortSecondary() {
 }
 
 function testCollatorJSWithSortTertiary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "tertiary"
 	});
@@ -2607,7 +2613,7 @@ function testCollatorJSWithSortTertiary() {
 
 
 function testCollatorJSWithSortWithSortKeys() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary"
 	});
@@ -2643,7 +2649,7 @@ function testCollatorJSWithSortWithSortKeys() {
 }
 
 function testCollatorJSWithSortUpperFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		upperFirst: true
 	});
@@ -2659,7 +2665,7 @@ function testCollatorJSWithSortUpperFirst() {
 }
 
 function testCollatorJSWithSortUpperNotFirst() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		upperFirst: false
 	});
@@ -2675,7 +2681,7 @@ function testCollatorJSWithSortUpperNotFirst() {
 }
 
 function testJSCollatorSortGetSortKeyReversePrimary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		usage: "search",
 		reverse: true,
@@ -2688,7 +2694,7 @@ function testJSCollatorSortGetSortKeyReversePrimary() {
 }
 
 function testJSCollatorSortGetSortKeyReverseQuaternary() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		usage: "search",
 		reverse: true,
@@ -2701,7 +2707,7 @@ function testJSCollatorSortGetSortKeyReverseQuaternary() {
 }
 
 function testCollatorJSWithSortWithSortKeysReverse() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "primary",
 		reverse: true
@@ -2739,7 +2745,7 @@ function testCollatorJSWithSortWithSortKeysReverse() {
 
 
 function testJSCollatorIgnorePunctuation() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		ignorePunctuation: true
@@ -2751,7 +2757,7 @@ function testJSCollatorIgnorePunctuation() {
 }
 
 function testJSCollatorIgnorePunctuationNoPunct() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		ignorePunctuation: true
@@ -2763,7 +2769,7 @@ function testJSCollatorIgnorePunctuationNoPunct() {
 }
 
 function testJSCollatorIgnorePunctuationSortKey() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		ignorePunctuation: true
@@ -2775,7 +2781,7 @@ function testJSCollatorIgnorePunctuationSortKey() {
 }
 
 function testJSCollatorNumeric() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2787,7 +2793,7 @@ function testJSCollatorNumeric() {
 }
 
 function testJSCollatorNumericNoNumbers() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2799,7 +2805,7 @@ function testJSCollatorNumericNoNumbers() {
 }
 
 function testJSCollatorNumericLeftNumber() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2811,7 +2817,7 @@ function testJSCollatorNumericLeftNumber() {
 }
 
 function testJSCollatorNumericRightNumber() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2823,7 +2829,7 @@ function testJSCollatorNumericRightNumber() {
 }
 
 function testJSCollatorWithThousandsSeparator() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2835,7 +2841,7 @@ function testJSCollatorWithThousandsSeparator() {
 }
 
 function testJSCollatorWithThousandsSeparatorDE() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		locale: "de-DE",
@@ -2848,7 +2854,7 @@ function testJSCollatorWithThousandsSeparatorDE() {
 }
 
 function testJSCollatorNumeric1() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2860,7 +2866,7 @@ function testJSCollatorNumeric1() {
 }
 
 function testJSCollatorNumeric2() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2872,7 +2878,7 @@ function testJSCollatorNumeric2() {
 }
 
 function testJSCollatorNumeric3() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2884,7 +2890,7 @@ function testJSCollatorNumeric3() {
 }
 
 function testJSCollatorNumeric4() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2896,7 +2902,7 @@ function testJSCollatorNumeric4() {
 }
 
 function testJSCollatorNumericWithText() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2908,7 +2914,7 @@ function testJSCollatorNumericWithText() {
 }
 
 function testJSCollatorNumericWithText() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2920,7 +2926,7 @@ function testJSCollatorNumericWithText() {
 }
 
 function testJSCollatorNumericWithText2() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2932,7 +2938,7 @@ function testJSCollatorNumericWithText2() {
 }
 
 function testJSCollatorNumericSortKey1() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2944,7 +2950,7 @@ function testJSCollatorNumericSortKey1() {
 }
 
 function testJSCollatorNumericSortKey255() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true
@@ -2956,7 +2962,7 @@ function testJSCollatorNumericSortKey255() {
 }
 
 function testJSCollatorNumericSortKeyBig() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		useNative: false,
 		sensitivity: "case",
 		numeric: true

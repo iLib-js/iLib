@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_te_IN() {
-	var parsed = new ilib.Name("రామ్ తేజ", {locale: 'te-IN'});
+	var parsed = new Name("రామ్ తేజ", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_te_IN() {
 };
 
 function testParseTitle_te_IN() {
-	var parsed = new ilib.Name("రామ్ తేజ సీనియర్", {locale: 'te-IN'});
+	var parsed = new Name("రామ్ తేజ సీనియర్", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_te_IN() {
 };
 
 function testParseTitleWithFamilyOnly_te_IN() {
-	var parsed = new ilib.Name("మిస్టర్ తేజ", {locale: 'te-IN'});
+	var parsed = new Name("మిస్టర్ తేజ", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -55,7 +57,7 @@ function testParseTitleWithFamilyOnly_te_IN() {
 };
 
 function testParseEverything_te_IN() {
-	var parsed = new ilib.Name("మిస్టర్ మరియు మిస్ తేజ", {locale: 'te-IN'});
+	var parsed = new Name("మిస్టర్ మరియు మిస్ తేజ", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseEverything_te_IN() {
 };
 
 function testParseprefix_te_IN() {
-	var parsed = new ilib.Name("మిస్టర్ రామ్ తేజ", {locale: 'te-IN'});
+	var parsed = new Name("మిస్టర్ రామ్ తేజ", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -83,11 +85,11 @@ function testParseprefix_te_IN() {
  */
 
 function testFormatSimpleNameShort_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'te-IN'
 	});
@@ -100,11 +102,11 @@ function testFormatSimpleNameShort_te_IN() {
 };
 
 function testFormatSimpleNameMedium_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'te-IN'
 	});
@@ -117,11 +119,11 @@ function testFormatSimpleNameMedium_te_IN() {
 };
 
 function testFormatSimpleNameLong_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'te-IN'
 	});
@@ -134,11 +136,11 @@ function testFormatSimpleNameLong_te_IN() {
 };
 
 function testFormatSurname_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "మిస్టర్ మరియు మిస్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'te-IN'
 	});
@@ -151,13 +153,13 @@ function testFormatSurname_te_IN() {
 };
 
 function testFormatSimpleNameFull_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "డాక్టర్",
 		givenName: "రామ్",
 		familyName: "తేజ",
 		suffix: "జూనియర్"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'te-IN'
 	});
@@ -170,12 +172,12 @@ function testFormatSimpleNameFull_te_IN() {
 };
 
 function testFormatComplexNameShort_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "డాక్టర్",
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'te-IN'
 	});
@@ -188,12 +190,12 @@ function testFormatComplexNameShort_te_IN() {
 };
 
 function testFormatComplexNameMedium_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "డాక్టర్",
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'te-IN'
 	});
@@ -206,12 +208,12 @@ function testFormatComplexNameMedium_te_IN() {
 };
 
 function testFormatComplexNameLong_te_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "డాక్టర్",
 		givenName: "రామ్",
 		familyName: "తేజ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'te-IN'
 	});

@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testParseNZFull(){
-	var parsed = new ilib.PhoneNumber("03 456-7890", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("03 456-7890", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "4567890"
@@ -32,10 +33,10 @@ function testParseNZFull(){
 };
 
 function testParseNZLocalNumber(){
-	var parsed = new ilib.PhoneNumber("3456789", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("3456789", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "3456789"
 	}, {locale: "en-NZ"});
 	
@@ -44,10 +45,10 @@ function testParseNZLocalNumber(){
 };
 
 function testParseNZBogusPrefix(){
-	var parsed = new ilib.PhoneNumber("05 9812345", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("05 9812345", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		subscriberNumber: "59812345"
 	}, {locale: "en-NZ"});
@@ -57,10 +58,10 @@ function testParseNZBogusPrefix(){
 };
 
 function testParseNZIgnoreFormatting(){
-	var parsed = new ilib.PhoneNumber("(03) 123-5678", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("(03) 123-5678", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "1235678"
@@ -71,10 +72,10 @@ function testParseNZIgnoreFormatting(){
 };
 
 function testParseNZIgnoreCrap(){
-	var parsed = new ilib.PhoneNumber("$03@1234&567-", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("$03@1234&567-", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "1234567"
@@ -85,10 +86,10 @@ function testParseNZIgnoreCrap(){
 };
 
 function testParseNZNoAreaCode(){
-	var parsed = new ilib.PhoneNumber("91234567", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("91234567", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "91234567"
 	}, {locale: "en-NZ"});
 	
@@ -97,10 +98,10 @@ function testParseNZNoAreaCode(){
 };
 
 function testParseNZServiceCode(){
-	var parsed = new ilib.PhoneNumber("080098765", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("080098765", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		serviceCode: "800",
 		subscriberNumber: "98765"
@@ -111,10 +112,10 @@ function testParseNZServiceCode(){
 };
 
 function testParseNZWithVSC(){
-	var parsed = new ilib.PhoneNumber("*222", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("*222", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*222"
 	}, {locale: "en-NZ"});
 	
@@ -123,10 +124,10 @@ function testParseNZWithVSC(){
 };
 
 function testParseNZMobileNumber(){
-	var parsed = new ilib.PhoneNumber("02112345678", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("02112345678", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		mobilePrefix: "21",
 		subscriberNumber: "12345678"
@@ -137,10 +138,10 @@ function testParseNZMobileNumber(){
 };
 
 function testParseNZPlusIDDToUS(){
-	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("+12028675309", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "202",
@@ -152,10 +153,10 @@ function testParseNZPlusIDDToUS(){
 };
 
 function testParseNZZerosIDDToUS(){
-	var parsed = new ilib.PhoneNumber("0012028675309", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("0012028675309", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "1",
 		areaCode: "202",
@@ -167,10 +168,10 @@ function testParseNZZerosIDDToUS(){
 };
 
 function testParseNZEmergencyNumber(){
-	var parsed = new ilib.PhoneNumber("111", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("111", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		emergency: "111"
 	}, {locale: "en-NZ"});
 	
@@ -179,10 +180,10 @@ function testParseNZEmergencyNumber(){
 };
 
 function testParseNZPartial1(){
-	var parsed = new ilib.PhoneNumber("0", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("0", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0"
 	}, {locale: "en-NZ"});
 	
@@ -191,10 +192,10 @@ function testParseNZPartial1(){
 };
 
 function testParseNZPartial2(){
-	var parsed = new ilib.PhoneNumber("03", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("03", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3"
 	}, {locale: "en-NZ"});
@@ -203,10 +204,10 @@ function testParseNZPartial2(){
 	
 };
 function testParseNZPartial3(){
-	var parsed = new ilib.PhoneNumber("039", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("039", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "9"
@@ -216,10 +217,10 @@ function testParseNZPartial3(){
 	
 };
 function testParseNZPartial4(){
-	var parsed = new ilib.PhoneNumber("0399", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("0399", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "99"
@@ -229,10 +230,10 @@ function testParseNZPartial4(){
 	
 };
 function testParseNZPartial5(){
-	var parsed = new ilib.PhoneNumber("03999", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("03999", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			trunkAccess: "0",
 			areaCode: "3",
 			subscriberNumber: "999"
@@ -242,10 +243,10 @@ function testParseNZPartial5(){
 	
 };
 function testParseNZPartial6(){
-	var parsed = new ilib.PhoneNumber("039991", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("039991", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "9991"
@@ -255,10 +256,10 @@ function testParseNZPartial6(){
 	
 };
 function testParseNZPartial7(){
-	var parsed = new ilib.PhoneNumber("0399912", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("0399912", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "99912"
@@ -268,10 +269,10 @@ function testParseNZPartial7(){
 	
 };
 function testParseNZPartial8(){
-	var parsed = new ilib.PhoneNumber("03999123", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("03999123", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "3",
 		subscriberNumber: "999123"
@@ -281,10 +282,10 @@ function testParseNZPartial8(){
 	
 };
 function testParseNZPartial9(){
-	var parsed = new ilib.PhoneNumber("039991234", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("039991234", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			trunkAccess: "0",
 			areaCode: "3",
 			subscriberNumber: "9991234"
@@ -294,10 +295,10 @@ function testParseNZPartial9(){
 	
 };
 function testParseNZPartial10(){
-	var parsed = new ilib.PhoneNumber("0399912345", {locale: "en-NZ"});
+	var parsed = new PhoneNumber("0399912345", {locale: "en-NZ"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			trunkAccess: "0",
 			areaCode: "3",
 			subscriberNumber: "99912345"
@@ -308,10 +309,10 @@ function testParseNZPartial10(){
 };
 
 function testParseNZWithUSMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "316"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-NZ", mcc: "316"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: "en-US"});
@@ -321,10 +322,10 @@ function testParseNZWithUSMCC(){
 };
 
 function testParseNZWithFRMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "208"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-NZ", mcc: "208"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: "en-FR"});
 	
@@ -333,10 +334,10 @@ function testParseNZWithFRMCC(){
 };
 
 function testParseNZWithMXMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "334"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-NZ", mcc: "334"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: "en-MX"});
@@ -346,10 +347,10 @@ function testParseNZWithMXMCC(){
 };
 
 function testParseNZWithDEMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "262"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-NZ", mcc: "262"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: "en-DE"});
 	
@@ -358,10 +359,10 @@ function testParseNZWithDEMCC(){
 };
 
 function testParseNZWithNZMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-NZ", mcc: "530"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-NZ", mcc: "530"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313",
 		invalid: true
 	}, {locale: "en-NZ"});

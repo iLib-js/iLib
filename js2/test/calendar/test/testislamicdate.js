@@ -17,15 +17,17 @@
  * limitations under the License.
  */
 
+var IslamicDate = require("./../lib/IslamicDate.js");
+
 function testIslamicDateConstructor() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
 }
 
 /* julian date id rd 355 + epoch */
 function testIslamicDateConstructorFromJD() {
-    var id = new ilib.Date.IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
+    var id = new IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(id));
     assertEquals(354, id.getRataDie());
@@ -39,7 +41,7 @@ function testIslamicDateConstructorFromJD() {
 }
 
 function testIslamicDateAfterLeapYear() {
-    var id = new ilib.Date.IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
+    var id = new IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
     
     assertEquals('object', typeof(id));
     assertEquals(709.4, id.getRataDie());
@@ -93,7 +95,7 @@ function testIslamicDateConvert() {
     var id;
     
     for (var i = 0; i < testDatesIslamic.length; i++) {
-        id = new ilib.Date.IslamicDate({julianday: testDatesIslamic[i][0], timezone: "Etc/UTC"});
+        id = new IslamicDate({julianday: testDatesIslamic[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDatesIslamic[i][0]);
         
@@ -111,7 +113,7 @@ function testIslamicDateConvert() {
 }
 
 function testIslamicDateConstructorFull() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 2011,
 		month: 9,
 		day: 23,
@@ -133,7 +135,7 @@ function testIslamicDateConstructorFull() {
 }
 
 function testIslamicDateConstructorFullWithStrings() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: "2011", 
 		month: "9",
 		day: "23", 
@@ -155,7 +157,7 @@ function testIslamicDateConstructorFullWithStrings() {
 }
 
 function testIslamicDateConstructorCopy() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -180,7 +182,7 @@ function testIslamicDateGetJulianDay() {
 	var id;
 	
     for (var i = 0; i < testDatesIslamic.length; i++) {
-        id = new ilib.Date.IslamicDate({
+        id = new IslamicDate({
             year: testDatesIslamic[i][1], 
             month: testDatesIslamic[i][2], 
             day: testDatesIslamic[i][3],
@@ -200,7 +202,7 @@ function testIslamicDateGetJulianDay() {
 }
 
 function testIslamicDateSetYears() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -210,7 +212,7 @@ function testIslamicDateSetYears() {
 }
 
 function testIslamicDateSetMonths() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -220,7 +222,7 @@ function testIslamicDateSetMonths() {
 }
 
 function testIslamicDateSetDays() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -230,7 +232,7 @@ function testIslamicDateSetDays() {
 }
 
 function testIslamicDateSetHours() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -240,7 +242,7 @@ function testIslamicDateSetHours() {
 }
 
 function testIslamicDateSetMinutes() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -250,7 +252,7 @@ function testIslamicDateSetMinutes() {
 }
 
 function testIslamicDateSetSeconds() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -260,7 +262,7 @@ function testIslamicDateSetSeconds() {
 }
 
 function testIslamicDateSetMilliseconds() {
-    var id = new ilib.Date.IslamicDate();
+    var id = new IslamicDate();
     
     assertNotNull(id);
     
@@ -270,7 +272,7 @@ function testIslamicDateSetMilliseconds() {
 }
 
 function testGetDayOfWeek1() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 11,
 		day: 2
@@ -282,7 +284,7 @@ function testGetDayOfWeek1() {
 }
 
 function testGetDayOfWeekWithTime() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 11,
 		day: 2,
@@ -297,7 +299,7 @@ function testGetDayOfWeekWithTime() {
 }
 
 function testIslamicDateTestGetTimeZero() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1389,
 		month: 10,
 		day: 22,
@@ -309,14 +311,14 @@ function testIslamicDateTestGetTimeZero() {
 }
 
 function testIslamicDateTestGetTimeZeroJD() {
-    var id = new ilib.Date.IslamicDate({julianday: 2440587.5});
+    var id = new IslamicDate({julianday: 2440587.5});
     assertNotNull(id);
     
     assertEquals(0, id.getTime());
 }
 
 function testIslamicDateTestGetTime() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1389,
 		month: 10,
 		day: 24,
@@ -330,7 +332,7 @@ function testIslamicDateTestGetTime() {
 }
 
 function testIslamicDateTestGetTimeTooEarly() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1389,
 		month: 10,
 		day: 21
@@ -341,7 +343,7 @@ function testIslamicDateTestGetTimeTooEarly() {
 }
 
 function testIslamicDateTestGetTimeTooLate() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1459,
 		month: 12,
 		day: 13
@@ -353,7 +355,7 @@ function testIslamicDateTestGetTimeTooLate() {
 
 // test some of the helper functions to make sure they are producing the right thing
 function testIslamicDateOnOrBeforeSun() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -368,7 +370,7 @@ function testIslamicDateOnOrBeforeSun() {
 }
 
 function testIslamicDateOnOrBeforeMon() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -382,7 +384,7 @@ function testIslamicDateOnOrBeforeMon() {
 }
 
 function testIslamicDateOnOrBeforeTue() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -396,7 +398,7 @@ function testIslamicDateOnOrBeforeTue() {
 }
 
 function testIslamicDateOnOrBeforeWed() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -410,7 +412,7 @@ function testIslamicDateOnOrBeforeWed() {
 }
 
 function testIslamicDateOnOrBeforeThu() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -424,7 +426,7 @@ function testIslamicDateOnOrBeforeThu() {
 }
 
 function testIslamicDateOnOrBeforeFri() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -438,7 +440,7 @@ function testIslamicDateOnOrBeforeFri() {
 }
 
 function testIslamicDateOnOrBeforeSat() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -452,7 +454,7 @@ function testIslamicDateOnOrBeforeSat() {
 }
 
 function testIslamicDateOnOrAfterSun() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -467,7 +469,7 @@ function testIslamicDateOnOrAfterSun() {
 }
 
 function testIslamicDateOnOrAfterMon() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -481,7 +483,7 @@ function testIslamicDateOnOrAfterMon() {
 }
 
 function testIslamicDateOnOrAfterTue() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -495,7 +497,7 @@ function testIslamicDateOnOrAfterTue() {
 }
 
 function testIslamicDateOnOrAfterWed() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -509,7 +511,7 @@ function testIslamicDateOnOrAfterWed() {
 }
 
 function testIslamicDateOnOrAfterThu() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -523,7 +525,7 @@ function testIslamicDateOnOrAfterThu() {
 }
 
 function testIslamicDateOnOrAfterFri() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -537,7 +539,7 @@ function testIslamicDateOnOrAfterFri() {
 }
 
 function testIslamicDateOnOrAfterSat() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -551,7 +553,7 @@ function testIslamicDateOnOrAfterSat() {
 }
 
 function testIslamicDateBeforeSun() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -566,7 +568,7 @@ function testIslamicDateBeforeSun() {
 }
 
 function testIslamicDateBeforeMon() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -580,7 +582,7 @@ function testIslamicDateBeforeMon() {
 }
 
 function testIslamicDateBeforeTue() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -594,7 +596,7 @@ function testIslamicDateBeforeTue() {
 }
 
 function testIslamicDateBeforeWed() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -608,7 +610,7 @@ function testIslamicDateBeforeWed() {
 }
 
 function testIslamicDateBeforeThu() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -622,7 +624,7 @@ function testIslamicDateBeforeThu() {
 }
 
 function testIslamicDateBeforeFri() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -636,7 +638,7 @@ function testIslamicDateBeforeFri() {
 }
 
 function testIslamicDateBeforeSat() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -650,7 +652,7 @@ function testIslamicDateBeforeSat() {
 }
 
 function testIslamicDateAfterSun() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -665,7 +667,7 @@ function testIslamicDateAfterSun() {
 }
 
 function testIslamicDateAfterMon() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -679,7 +681,7 @@ function testIslamicDateAfterMon() {
 }
 
 function testIslamicDateAfterTue() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -693,7 +695,7 @@ function testIslamicDateAfterTue() {
 }
 
 function testIslamicDateAfterWed() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -707,7 +709,7 @@ function testIslamicDateAfterWed() {
 }
 
 function testIslamicDateAfterThu() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -721,7 +723,7 @@ function testIslamicDateAfterThu() {
 }
 
 function testIslamicDateAfterFri() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -735,7 +737,7 @@ function testIslamicDateAfterFri() {
 }
 
 function testIslamicDateAfterSat() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -749,7 +751,7 @@ function testIslamicDateAfterSat() {
 }
 
 function testIslamicDateTestGetWeekOfYearThisYear() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 2,
 		day: 1
@@ -760,7 +762,7 @@ function testIslamicDateTestGetWeekOfYearThisYear() {
 }
 
 function testIslamicDateTestGetWeekOfYearThisYear2() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 3,
 		day: 19
@@ -771,7 +773,7 @@ function testIslamicDateTestGetWeekOfYearThisYear2() {
 }
 
 function testIslamicDateTestGetWeekOfYearThisYear3() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 12,
 		day: 29
@@ -782,7 +784,7 @@ function testIslamicDateTestGetWeekOfYearThisYear3() {
 }
 
 function testIslamicDateTestGetWeekOfYearThisYearWithTime() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 12,
 		day: 29,
@@ -797,7 +799,7 @@ function testIslamicDateTestGetWeekOfYearThisYearWithTime() {
 }
 
 function testIslamicDateTestGetWeekOfYearPreviousYear() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1428,
 		month: 1,
 		day: 1
@@ -808,7 +810,7 @@ function testIslamicDateTestGetWeekOfYearPreviousYear() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekLeap() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1429,
 		month: 12,
 		day: 29
@@ -819,7 +821,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekLeap() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular1() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1428,
 		month: 12,
 		day: 29
@@ -830,7 +832,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular1() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular2() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1427,
 		month: 12,
 		day: 29
@@ -841,7 +843,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular2() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular3() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1426,
 		month: 12,
 		day: 29
@@ -852,7 +854,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular3() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular4() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1425,
 		month: 12,
 		day: 29
@@ -863,7 +865,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular4() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular5() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1424,
 		month: 12,
 		day: 29
@@ -874,7 +876,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular5() {
 }
 
 function testIslamicDateTestGetWeekOfYearLastWeekRegular6() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1423,
 		month: 12,
 		day: 29
@@ -885,7 +887,7 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular6() {
 }
 
 function testIslamicDateGetDayOfYearFirstDay() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 1,
 		day: 1
@@ -896,7 +898,7 @@ function testIslamicDateGetDayOfYearFirstDay() {
 }
 
 function testIslamicDateGetDayOfYearMidYear() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 3,
 		day: 17
@@ -907,7 +909,7 @@ function testIslamicDateGetDayOfYearMidYear() {
 }
 
 function testIslamicDateGetDayOfYearLastDay() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1430,
 		month: 12,
 		day: 29
@@ -918,7 +920,7 @@ function testIslamicDateGetDayOfYearLastDay() {
 }
 
 function testIslamicDateGetDayOfYearLastDayLeapYear() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1431,
 		month: 12,
 		day: 30
@@ -929,7 +931,7 @@ function testIslamicDateGetDayOfYearLastDayLeapYear() {
 }
 
 function testIslamicDateGetWeekOfMonth0() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 1
@@ -940,7 +942,7 @@ function testIslamicDateGetWeekOfMonth0() {
 }
 
 function testIslamicDateGetWeekOfMonth1() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 2
@@ -951,7 +953,7 @@ function testIslamicDateGetWeekOfMonth1() {
 }
 
 function testIslamicDateGetWeekOfMonth2() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 11
@@ -962,7 +964,7 @@ function testIslamicDateGetWeekOfMonth2() {
 }
 
 function testIslamicDateGetWeekOfMonth3() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 20
@@ -973,7 +975,7 @@ function testIslamicDateGetWeekOfMonth3() {
 }
 
 function testIslamicDateGetWeekOfMonth4() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 29
@@ -984,7 +986,7 @@ function testIslamicDateGetWeekOfMonth4() {
 }
 
 function testIslamicDateGetWeekOfMonth5() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 3,
 		day: 30
@@ -995,7 +997,7 @@ function testIslamicDateGetWeekOfMonth5() {
 }
 
 function testIslamicDateGetWeekOfMonth6() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 4,
 		day: 1
@@ -1006,7 +1008,7 @@ function testIslamicDateGetWeekOfMonth6() {
 }
 
 function testIslamicDateGetWeekOfMonth7() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 5,
 		day: 1
@@ -1017,7 +1019,7 @@ function testIslamicDateGetWeekOfMonth7() {
 }
 
 function testIslamicDateGetWeekOfMonth8() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 6,
 		day: 1
@@ -1028,7 +1030,7 @@ function testIslamicDateGetWeekOfMonth8() {
 }
 
 function testIslamicDateGetWeekOfMonth9() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 7,
 		day: 1
@@ -1039,7 +1041,7 @@ function testIslamicDateGetWeekOfMonth9() {
 }
 
 function testIslamicDateGetWeekOfMonthUS() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 8,
 		day: 1
@@ -1050,7 +1052,7 @@ function testIslamicDateGetWeekOfMonthUS() {
 }
 
 function testIslamicDateGetWeekOfMonthDE() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1432,
 		month: 8,
 		day: 1
@@ -1063,7 +1065,7 @@ function testIslamicDateGetWeekOfMonthDE() {
 }
 
 function testIslamicDateGetEraAH() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 2011,
 		month: 5,
 		day: 1
@@ -1074,7 +1076,7 @@ function testIslamicDateGetEraAH() {
 }
 
 function testIslamicDateGetEraBAH() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: -46,
 		month: 5,
 		day: 1,
@@ -1089,7 +1091,7 @@ function testIslamicDateGetEraBAH() {
 }
 
 function testIslamicDateGetEraAHYear1() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 1,
 		month: 1,
 		day: 1
@@ -1100,7 +1102,7 @@ function testIslamicDateGetEraAHYear1() {
 }
 
 function testIslamicDateGetEraBAHYear0() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
 		year: 0,
 		month: 12,
 		day: 29
@@ -1111,7 +1113,7 @@ function testIslamicDateGetEraBAHYear0() {
 }
 
 function testIslamicDateSetTimeZone() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1127,7 +1129,7 @@ function testIslamicDateSetTimeZone() {
 }
 
 function testIslamicDateSetTimeZoneNotString() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1143,7 +1145,7 @@ function testIslamicDateSetTimeZoneNotString() {
 }
 
 function testIslamicDateSetTimeZoneUndefined() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1160,7 +1162,7 @@ function testIslamicDateSetTimeZoneUndefined() {
 }
 
 function testIslamicDateSetTimeZoneEmpty() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1177,7 +1179,7 @@ function testIslamicDateSetTimeZoneEmpty() {
 }
 
 function testIslamicDateInitWithUnixTimeRightTimeZone() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	unixtime: 0
     });
     assertNotNull(id);
@@ -1186,7 +1188,7 @@ function testIslamicDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testIslamicDateInitWithJDRightTimeZone() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	julianday: 0
     });
     assertNotNull(id);
@@ -1195,7 +1197,7 @@ function testIslamicDateInitWithJDRightTimeZone() {
 }
 
 function testIslamicDateInitWithRDRightTimeZone() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	rd: 0
     });
     assertNotNull(id);
@@ -1204,7 +1206,7 @@ function testIslamicDateInitWithRDRightTimeZone() {
 }
 
 function testIslamicDateRoundTripConstruction() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1436,
     	month: 1,
     	day: 10,
@@ -1215,7 +1217,7 @@ function testIslamicDateRoundTripConstruction() {
     
     var u = id.getTime();
     // console.log("unixtime is " + u);
-    var id2 = new ilib.Date.IslamicDate({
+    var id2 = new IslamicDate({
     	unixtime: u,
     	timezone: "local"
     });
@@ -1230,7 +1232,7 @@ function testIslamicDateRoundTripConstruction() {
 }
 
 function testIslamicDateRoundTripConstruction2() {
-    var id = new ilib.Date.IslamicDate({
+    var id = new IslamicDate({
     	year: 1436,
     	month: 1,
     	day: 10,
@@ -1241,7 +1243,7 @@ function testIslamicDateRoundTripConstruction2() {
     
     var u = id.getTime();
     // console.log("unixtime is " + u);
-    var id2 = new ilib.Date.IslamicDate({
+    var id2 = new IslamicDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });

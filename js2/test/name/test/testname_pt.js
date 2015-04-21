@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_pt_PT() {
-	var parsed = new ilib.Name("Cristiano Ronaldo", {locale: 'pt-PT'});
+	var parsed = new Name("Cristiano Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_pt_PT() {
 };
 
 function testParseSimpleNameWithTwoFamilyName_pt_PT() {
-	var parsed = new ilib.Name("José Eduardo Tavares Silva", {locale: 'pt-PT'});
+	var parsed = new Name("José Eduardo Tavares Silva", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -44,7 +46,7 @@ function testParseSimpleNameWithTwoFamilyName_pt_PT() {
 
 
 function testParseTitle_pt_PT() {
-	var parsed = new ilib.Name("Cristiano Ronaldo aposentados", {locale: 'pt-PT'});
+	var parsed = new Name("Cristiano Ronaldo aposentados", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -59,7 +61,7 @@ function testParseTitle_pt_PT() {
 
 
 function testParseTitleWithFamilyOnly_pt_PT() {
-	var parsed = new ilib.Name("Senhor Ronaldo", {locale: 'pt-PT'});
+	var parsed = new Name("Senhor Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseTitleWithFamilyOnly_pt_PT() {
 
 
 function testParseEverything_pt_PT() {
-	var parsed = new ilib.Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
+	var parsed = new Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -85,7 +87,7 @@ function testParseEverything_pt_PT() {
 };
 
 function testParseprefix_pt_PT() {
-	var parsed = new ilib.Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
+	var parsed = new Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -101,11 +103,11 @@ function testParseprefix_pt_PT() {
  */
 
 function testFormatSimpleNameShort_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pt-PT'
 	});
@@ -118,11 +120,11 @@ function testFormatSimpleNameShort_pt_PT() {
 };
 
 function testFormatSimpleNameMedium_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pt-PT'
 	});
@@ -135,12 +137,12 @@ function testFormatSimpleNameMedium_pt_PT() {
 };
 
 function testFormatSimpleNameLong_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Cristiano",
 		familyName: "Ronaldo",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pt-PT'
 	});
@@ -155,11 +157,11 @@ function testFormatSimpleNameLong_pt_PT() {
 
 
 function testFormatSurname_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Senhor e Senhori",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pt-PT'
 	});
@@ -172,13 +174,13 @@ function testFormatSurname_pt_PT() {
 };
 
 function testFormatSimpleNameFull_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presidente",
 		givenName: "Cristiano",
 		familyName: "Ronaldo",
 		suffix: "aposentados"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'pt-PT'
 	});
@@ -191,12 +193,12 @@ function testFormatSimpleNameFull_pt_PT() {
 };
 
 function testFormatComplexNameShort_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presidente",
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pt-PT'
 	});
@@ -209,12 +211,12 @@ function testFormatComplexNameShort_pt_PT() {
 };
 
 function testFormatComplexNameMedium_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presidente",
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pt-PT'
 	});
@@ -227,12 +229,12 @@ function testFormatComplexNameMedium_pt_PT() {
 };
 
 function testFormatComplexNameLong_pt_PT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "presidente",
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'pt-PT'
 	});

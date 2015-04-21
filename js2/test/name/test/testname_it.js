@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_it_IT() {
-	var parsed = new ilib.Name("Leonardo DiCaprio", {locale: 'it-IT'});
+	var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_it_IT() {
 
 
 function testParseTitle_it_IT() {
-	var parsed = new ilib.Name("Leonardo DiCaprio", {locale: 'it-IT'});
+	var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -46,7 +48,7 @@ function testParseTitle_it_IT() {
 
 
 function testParseTitleWithFamilyOnly_it_IT() {
-	var parsed = new ilib.Name("ingegnere. DiCaprio", {locale: 'it-IT'});
+	var parsed = new Name("ingegnere. DiCaprio", {locale: 'it-IT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -60,7 +62,7 @@ function testParseTitleWithFamilyOnly_it_IT() {
 
 
 function testParseEverything_it_IT() {
-	var parsed = new ilib.Name("ingegnere Leonardo DiCaprio", {locale: 'it-IT'});
+	var parsed = new Name("ingegnere Leonardo DiCaprio", {locale: 'it-IT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -78,11 +80,11 @@ function testParseEverything_it_IT() {
  */
 
 function testFormatSimpleNameShort_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Leonardo",
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'it-IT'
 	});
@@ -95,12 +97,12 @@ function testFormatSimpleNameShort_it_IT() {
 };
 
 function testFormatSimpleNameMedium_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Leonardo",
 		
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'it-IT'
 	});
@@ -113,13 +115,13 @@ function testFormatSimpleNameMedium_it_IT() {
 };
 
 function testFormatSimpleNameLong_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Leonardo",
 		
 		familyName: "DiCaprio",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'it-IT'
 	});
@@ -132,13 +134,13 @@ function testFormatSimpleNameLong_it_IT() {
 };
 
 function testFormatSimpleNameFull_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "dottore",
 		givenName: "Leonardo",
 		
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'it-IT'
 	});
@@ -151,12 +153,12 @@ function testFormatSimpleNameFull_it_IT() {
 };
 
 function testFormatComplexNameShort_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "dottore",
 		givenName: "Leonardo",
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'it-IT'
 	});
@@ -169,12 +171,12 @@ function testFormatComplexNameShort_it_IT() {
 };
 
 function testFormatComplexNameMedium_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "dottore",
 		givenName: "Leonardo",
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'it-IT'
 	});
@@ -187,12 +189,12 @@ function testFormatComplexNameMedium_it_IT() {
 };
 
 function testFormatComplexNameLong_it_IT() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "dottore",
 		givenName: "Leonardo",
 		familyName: "DiCaprio"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'it-IT'
 	});

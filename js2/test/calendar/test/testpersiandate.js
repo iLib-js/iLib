@@ -17,103 +17,106 @@
  * limitations under the License.
  */
 
+var PersianAlgoDate = require("./../lib/PersianAlgoDate.js");
+var PersAlgoRataDie = require("./../lib/PersAlgoRataDie.js");
+
 function testPersAlgoDateConstructor() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
 }
 
 function testPersAlgoDateCalcYearPositive1() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(1, pd._calcYear(1));
 }
 
 function testPersAlgoDateCalcYearPositive2() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(1, pd._calcYear(365));
 }
 
 function testPersAlgoDateCalcYearPositive3() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(2, pd._calcYear(366));
 }
 function testPersAlgoDateCalcYearPositive4() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(2, pd._calcYear(730));
 }
 function testPersAlgoDateCalcYearPositive5() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(3, pd._calcYear(731));
 }
 function testPersAlgoDateCalcYearPositive6() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(3, pd._calcYear(1095));
 }
 function testPersAlgoDateCalcYearPositive7() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(4, pd._calcYear(1096));
 }
 function testPersAlgoDateCalcYearPositive8() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(4, pd._calcYear(1461));
 }
 function testPersAlgoDateCalcYearPositive9() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(5, pd._calcYear(1462));
 }
 function testPersAlgoDateCalcYearPositive10() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(5, pd._calcYear(1826));
 }
 function testPersAlgoDateCalcYearPositive11() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(6, pd._calcYear(1827));
 }
 
 function testPersAlgoDateCalcYearNegative1() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-1, pd._calcYear(0));
 }
 function testPersAlgoDateCalcYearNegative2() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-1, pd._calcYear(-365));
 }
 function testPersAlgoDateCalcYearNegative3() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-2, pd._calcYear(-366));
 }
 function testPersAlgoDateCalcYearNegative4() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-2, pd._calcYear(-730));
 }
 function testPersAlgoDateCalcYearNegative5() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-3, pd._calcYear(-731));
 }
 function testPersAlgoDateCalcYearNegative6() {
-    var pd = new ilib.Date.PersAlgoDate({rd: 0, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(-1208, pd._calcYear(-441089));
 }
 
 function testPersAlgoRataDieConstructorFromDateComponents1() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 1,
     	month: 1,
     	day: 1,
@@ -127,7 +130,7 @@ function testPersAlgoRataDieConstructorFromDateComponents1() {
     assertEquals(1, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents2() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: -1,
     	month: 12,
     	day: 30,
@@ -141,7 +144,7 @@ function testPersAlgoRataDieConstructorFromDateComponents2() {
     assertEquals(0, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents3() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 1,
     	month: 12,
     	day: 29,
@@ -155,7 +158,7 @@ function testPersAlgoRataDieConstructorFromDateComponents3() {
     assertEquals(365, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents4() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 2,
     	month: 1,
     	day: 1,
@@ -169,7 +172,7 @@ function testPersAlgoRataDieConstructorFromDateComponents4() {
     assertEquals(366, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents5() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 1,
     	month: 1,
     	day: 31,
@@ -183,7 +186,7 @@ function testPersAlgoRataDieConstructorFromDateComponents5() {
     assertEquals(31, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents6() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 1,
     	month: 2,
     	day: 1,
@@ -197,7 +200,7 @@ function testPersAlgoRataDieConstructorFromDateComponents6() {
     assertEquals(32, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents7() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 2,
     	month: 12,
     	day: 29,
@@ -211,7 +214,7 @@ function testPersAlgoRataDieConstructorFromDateComponents7() {
     assertEquals(730, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents8() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 3,
     	month: 1,
     	day: 1,
@@ -225,7 +228,7 @@ function testPersAlgoRataDieConstructorFromDateComponents8() {
     assertEquals(731, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents9() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 3,
     	month: 12,
     	day: 29,
@@ -239,7 +242,7 @@ function testPersAlgoRataDieConstructorFromDateComponents9() {
     assertEquals(1095, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents10() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 4,
     	month: 1,
     	day: 1,
@@ -253,7 +256,7 @@ function testPersAlgoRataDieConstructorFromDateComponents10() {
     assertEquals(1096, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents11() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 4,
     	month: 12,
     	day: 30,
@@ -267,7 +270,7 @@ function testPersAlgoRataDieConstructorFromDateComponents11() {
     assertEquals(1461, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents12() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 5,
     	month: 1,
     	day: 1,
@@ -281,7 +284,7 @@ function testPersAlgoRataDieConstructorFromDateComponents12() {
     assertEquals(1462, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents13() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 5,
     	month: 12,
     	day: 29,
@@ -295,7 +298,7 @@ function testPersAlgoRataDieConstructorFromDateComponents13() {
     assertEquals(1826, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents14() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: 6,
     	month: 1,
     	day: 1,
@@ -309,7 +312,7 @@ function testPersAlgoRataDieConstructorFromDateComponents14() {
     assertEquals(1827, prd.getRataDie());
 }
 function testPersAlgoRataDieConstructorFromDateComponents15() {
-    var prd = new ilib.Date.PersAlgoRataDie({
+    var prd = new PersAlgoRataDie({
     	year: -1208,
     	month: 5,
     	day: 1,
@@ -325,7 +328,7 @@ function testPersAlgoRataDieConstructorFromDateComponents15() {
 
 /* julian date is rd 366 + epoch */
 function testPersAlgoDateConstructorFromJD() {
-    var pd = new ilib.Date.PersAlgoDate({julianday: 1948685.5, timezone: "Etc/UTC"});
+    var pd = new PersianAlgoDate({julianday: 1948685.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(pd));
     assertEquals(366, pd.getRataDie());
@@ -341,7 +344,7 @@ function testPersAlgoDateConstructorFromJD() {
 // year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
 // Farvardin 1 0005 is one day later than expected. RD is 1462
 function testPersAlgoDateAfterLeapYear() {
-    var pd = new ilib.Date.PersAlgoDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
+    var pd = new PersianAlgoDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
     
     assertEquals('object', typeof(pd));
     assertEquals(1462.4, pd.getRataDie());
@@ -395,7 +398,7 @@ function testPersAlgoDateConvert() {
     var pd;
     
     for (var i = 0; i < testDatesPersAlgoPersian.length; i++) {
-        pd = new ilib.Date.PersAlgoDate({julianday: testDatesPersAlgoPersian[i][0], timezone: "Etc/UTC"});
+        pd = new PersianAlgoDate({julianday: testDatesPersAlgoPersian[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDatesPersAlgoPersian[i][0]);
         
@@ -416,7 +419,7 @@ function testPersAlgoDateGetJulianDay() {
 	var pd;
 	
     for (var i = 0; i < testDatesPersAlgoPersian.length; i++) {
-        pd = new ilib.Date.PersAlgoDate({
+        pd = new PersianAlgoDate({
             year: testDatesPersAlgoPersian[i][1], 
             month: testDatesPersAlgoPersian[i][2], 
             day: testDatesPersAlgoPersian[i][3],
@@ -436,7 +439,7 @@ function testPersAlgoDateGetJulianDay() {
 }
 
 function testPersAlgoDateConstructorFull() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1392,
 		month: 9,
 		day: 23,
@@ -458,7 +461,7 @@ function testPersAlgoDateConstructorFull() {
 }
 
 function testPersAlgoDateConstructorFullWithStrings() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: "1392", 
 		month: "9",
 		day: "23", 
@@ -480,7 +483,7 @@ function testPersAlgoDateConstructorFullWithStrings() {
 }
 
 function testPersAlgoDateConstructorCopy() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
         year: 1392, 
         month: 9, 
         day: 23, 
@@ -502,7 +505,7 @@ function testPersAlgoDateConstructorCopy() {
 }
 
 function testPersAlgoDateSetYears() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -512,7 +515,7 @@ function testPersAlgoDateSetYears() {
 }
 
 function testPersAlgoDateSetMonths() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -522,7 +525,7 @@ function testPersAlgoDateSetMonths() {
 }
 
 function testPersAlgoDateSetDays() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -532,7 +535,7 @@ function testPersAlgoDateSetDays() {
 }
 
 function testPersAlgoDateSetHours() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -542,7 +545,7 @@ function testPersAlgoDateSetHours() {
 }
 
 function testPersAlgoDateSetMinutes() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -552,7 +555,7 @@ function testPersAlgoDateSetMinutes() {
 }
 
 function testPersAlgoDateSetSeconds() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -562,7 +565,7 @@ function testPersAlgoDateSetSeconds() {
 }
 
 function testPersAlgoDateSetMilliseconds() {
-    var pd = new ilib.Date.PersAlgoDate();
+    var pd = new PersianAlgoDate();
     
     assertNotNull(pd);
     
@@ -572,7 +575,7 @@ function testPersAlgoDateSetMilliseconds() {
 }
 
 function testGetDayOfWeek1() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1393,
 		month: 3,
 		day: 16
@@ -584,7 +587,7 @@ function testGetDayOfWeek1() {
 }
 
 function testGetDayOfWeekWithTime() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1393,
 		month: 3,
 		day: 16,
@@ -599,7 +602,7 @@ function testGetDayOfWeekWithTime() {
 }
 
 function testPersAlgoDateTestGetTimeZero() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1348,
 		month: 10,
 		day: 11,
@@ -611,14 +614,14 @@ function testPersAlgoDateTestGetTimeZero() {
 }
 
 function testPersAlgoDateTestGetTimeZeroJD() {
-    var pd = new ilib.Date.PersAlgoDate({julianday: 2440587.5});
+    var pd = new PersianAlgoDate({julianday: 2440587.5});
     assertNotNull(pd);
     
     assertEquals(0, pd.getTime());
 }
 
 function testPersAlgoDateTestGetTime() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1348,
 		month: 10,
 		day: 11,
@@ -632,7 +635,7 @@ function testPersAlgoDateTestGetTime() {
 }
 
 function testPersAlgoDateTestGetTimeTooEarly() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1348,
 		month: 10,
 		day: 10
@@ -643,7 +646,7 @@ function testPersAlgoDateTestGetTimeTooEarly() {
 }
 
 function testPersAlgoDateTestGetTimeTooLate() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1416,
 		month: 11,
 		day: 1
@@ -655,7 +658,7 @@ function testPersAlgoDateTestGetTimeTooLate() {
 
 // test some of the helper functions to make sure they are producing the right thing
 function testPersAlgoDateOnOrBeforeSun() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -670,7 +673,7 @@ function testPersAlgoDateOnOrBeforeSun() {
 }
 
 function testPersAlgoDateOnOrBeforeMon() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -684,7 +687,7 @@ function testPersAlgoDateOnOrBeforeMon() {
 }
 
 function testPersAlgoDateOnOrBeforeTue() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -698,7 +701,7 @@ function testPersAlgoDateOnOrBeforeTue() {
 }
 
 function testPersAlgoDateOnOrBeforeWed() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -712,7 +715,7 @@ function testPersAlgoDateOnOrBeforeWed() {
 }
 
 function testPersAlgoDateOnOrBeforeThu() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -726,7 +729,7 @@ function testPersAlgoDateOnOrBeforeThu() {
 }
 
 function testPersAlgoDateOnOrBeforeFri() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -740,7 +743,7 @@ function testPersAlgoDateOnOrBeforeFri() {
 }
 
 function testPersAlgoDateOnOrBeforeSat() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -754,7 +757,7 @@ function testPersAlgoDateOnOrBeforeSat() {
 }
 
 function testPersAlgoDateOnOrAfterSun() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -769,7 +772,7 @@ function testPersAlgoDateOnOrAfterSun() {
 }
 
 function testPersAlgoDateOnOrAfterMon() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -783,7 +786,7 @@ function testPersAlgoDateOnOrAfterMon() {
 }
 
 function testPersAlgoDateOnOrAfterTue() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -797,7 +800,7 @@ function testPersAlgoDateOnOrAfterTue() {
 }
 
 function testPersAlgoDateOnOrAfterWed() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -811,7 +814,7 @@ function testPersAlgoDateOnOrAfterWed() {
 }
 
 function testPersAlgoDateOnOrAfterThu() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -825,7 +828,7 @@ function testPersAlgoDateOnOrAfterThu() {
 }
 
 function testPersAlgoDateOnOrAfterFri() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -839,7 +842,7 @@ function testPersAlgoDateOnOrAfterFri() {
 }
 
 function testPersAlgoDateOnOrAfterSat() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -853,7 +856,7 @@ function testPersAlgoDateOnOrAfterSat() {
 }
 
 function testPersAlgoDateBeforeSun() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -868,7 +871,7 @@ function testPersAlgoDateBeforeSun() {
 }
 
 function testPersAlgoDateBeforeMon() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -882,7 +885,7 @@ function testPersAlgoDateBeforeMon() {
 }
 
 function testPersAlgoDateBeforeTue() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -896,7 +899,7 @@ function testPersAlgoDateBeforeTue() {
 }
 
 function testPersAlgoDateBeforeWed() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -910,7 +913,7 @@ function testPersAlgoDateBeforeWed() {
 }
 
 function testPersAlgoDateBeforeThu() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -924,7 +927,7 @@ function testPersAlgoDateBeforeThu() {
 }
 
 function testPersAlgoDateBeforeFri() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -938,7 +941,7 @@ function testPersAlgoDateBeforeFri() {
 }
 
 function testPersAlgoDateBeforeSat() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -952,7 +955,7 @@ function testPersAlgoDateBeforeSat() {
 }
 
 function testPersAlgoDateAfterSun() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -967,7 +970,7 @@ function testPersAlgoDateAfterSun() {
 }
 
 function testPersAlgoDateAfterMon() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -981,7 +984,7 @@ function testPersAlgoDateAfterMon() {
 }
 
 function testPersAlgoDateAfterTue() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -995,7 +998,7 @@ function testPersAlgoDateAfterTue() {
 }
 
 function testPersAlgoDateAfterWed() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -1009,7 +1012,7 @@ function testPersAlgoDateAfterWed() {
 }
 
 function testPersAlgoDateAfterThu() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -1023,7 +1026,7 @@ function testPersAlgoDateAfterThu() {
 }
 
 function testPersAlgoDateAfterFri() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -1037,7 +1040,7 @@ function testPersAlgoDateAfterFri() {
 }
 
 function testPersAlgoDateAfterSat() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 27
@@ -1051,7 +1054,7 @@ function testPersAlgoDateAfterSat() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearThisYear() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 2,
 		day: 1
@@ -1062,7 +1065,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearThisYear2() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 19
@@ -1073,7 +1076,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear2() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearThisYear3() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 12,
 		day: 29
@@ -1084,7 +1087,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYear3() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearThisYearWithTime() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 12,
 		day: 29,
@@ -1099,7 +1102,7 @@ function testPersAlgoDateTestGetWeekOfYearThisYearWithTime() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearPreviousYear() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 1,
 		day: 1
@@ -1110,7 +1113,7 @@ function testPersAlgoDateTestGetWeekOfYearPreviousYear() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekLeap() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1383,
 		month: 12,
 		day: 30
@@ -1121,7 +1124,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekLeap() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular1() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1389,
 		month: 12,
 		day: 29
@@ -1132,7 +1135,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular1() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular2() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1390,
 		month: 12,
 		day: 29
@@ -1143,7 +1146,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular2() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular3() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1391,
 		month: 12,
 		day: 30
@@ -1154,7 +1157,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular3() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular4() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1392,
 		month: 12,
 		day: 29
@@ -1165,7 +1168,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular4() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular5() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1393,
 		month: 12,
 		day: 29
@@ -1176,7 +1179,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular5() {
 }
 
 function testPersAlgoDateTestGetWeekOfYearLastWeekRegular6() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1394,
 		month: 12,
 		day: 29
@@ -1187,7 +1190,7 @@ function testPersAlgoDateTestGetWeekOfYearLastWeekRegular6() {
 }
 
 function testPersAlgoDateGetDayOfYearFirstDay() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 1,
 		day: 1
@@ -1198,7 +1201,7 @@ function testPersAlgoDateGetDayOfYearFirstDay() {
 }
 
 function testPersAlgoDateGetDayOfYearMidYear() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 17
@@ -1209,7 +1212,7 @@ function testPersAlgoDateGetDayOfYearMidYear() {
 }
 
 function testPersAlgoDateGetDayOfYearLastDay() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 12,
 		day: 29
@@ -1220,7 +1223,7 @@ function testPersAlgoDateGetDayOfYearLastDay() {
 }
 
 function testPersAlgoDateGetDayOfYearLastDayLeapYear() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1387,
 		month: 12,
 		day: 30
@@ -1231,7 +1234,7 @@ function testPersAlgoDateGetDayOfYearLastDayLeapYear() {
 }
 
 function testPersAlgoDateGetWeekOfMonth0() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 1
@@ -1242,7 +1245,7 @@ function testPersAlgoDateGetWeekOfMonth0() {
 }
 
 function testPersAlgoDateGetWeekOfMonth1() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 4
@@ -1253,7 +1256,7 @@ function testPersAlgoDateGetWeekOfMonth1() {
 }
 
 function testPersAlgoDateGetWeekOfMonth2() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 11
@@ -1264,7 +1267,7 @@ function testPersAlgoDateGetWeekOfMonth2() {
 }
 
 function testPersAlgoDateGetWeekOfMonth3() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 20
@@ -1275,7 +1278,7 @@ function testPersAlgoDateGetWeekOfMonth3() {
 }
 
 function testPersAlgoDateGetWeekOfMonth4() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 29
@@ -1286,7 +1289,7 @@ function testPersAlgoDateGetWeekOfMonth4() {
 }
 
 function testPersAlgoDateGetWeekOfMonth5() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 31
@@ -1297,7 +1300,7 @@ function testPersAlgoDateGetWeekOfMonth5() {
 }
 
 function testPersAlgoDateGetWeekOfMonth6() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 4,
 		day: 1
@@ -1308,7 +1311,7 @@ function testPersAlgoDateGetWeekOfMonth6() {
 }
 
 function testPersAlgoDateGetWeekOfMonth7() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 5,
 		day: 1
@@ -1319,7 +1322,7 @@ function testPersAlgoDateGetWeekOfMonth7() {
 }
 
 function testPersAlgoDateGetWeekOfMonth8() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 6,
 		day: 1
@@ -1330,7 +1333,7 @@ function testPersAlgoDateGetWeekOfMonth8() {
 }
 
 function testPersAlgoDateGetWeekOfMonth9() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 7,
 		day: 1
@@ -1341,7 +1344,7 @@ function testPersAlgoDateGetWeekOfMonth9() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR0() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 1
@@ -1352,7 +1355,7 @@ function testPersAlgoDateGetWeekOfMonthIR0() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR1() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 4
@@ -1363,7 +1366,7 @@ function testPersAlgoDateGetWeekOfMonthIR1() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR2() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 11
@@ -1374,7 +1377,7 @@ function testPersAlgoDateGetWeekOfMonthIR2() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR3() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 20
@@ -1385,7 +1388,7 @@ function testPersAlgoDateGetWeekOfMonthIR3() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR4() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 29
@@ -1396,7 +1399,7 @@ function testPersAlgoDateGetWeekOfMonthIR4() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR5() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 3,
 		day: 31
@@ -1407,7 +1410,7 @@ function testPersAlgoDateGetWeekOfMonthIR5() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR6() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 4,
 		day: 1
@@ -1418,7 +1421,7 @@ function testPersAlgoDateGetWeekOfMonthIR6() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR7() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 5,
 		day: 1
@@ -1429,7 +1432,7 @@ function testPersAlgoDateGetWeekOfMonthIR7() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR8() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 6,
 		day: 1
@@ -1440,7 +1443,7 @@ function testPersAlgoDateGetWeekOfMonthIR8() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR9() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 7,
 		day: 1
@@ -1451,7 +1454,7 @@ function testPersAlgoDateGetWeekOfMonthIR9() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR10() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 8,
 		day: 1
@@ -1462,7 +1465,7 @@ function testPersAlgoDateGetWeekOfMonthIR10() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR11() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 9,
 		day: 1
@@ -1473,7 +1476,7 @@ function testPersAlgoDateGetWeekOfMonthIR11() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR12() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 10,
 		day: 1
@@ -1484,7 +1487,7 @@ function testPersAlgoDateGetWeekOfMonthIR12() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR13() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 11,
 		day: 1
@@ -1495,7 +1498,7 @@ function testPersAlgoDateGetWeekOfMonthIR13() {
 }
 
 function testPersAlgoDateGetWeekOfMonthIR14() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 12,
 		day: 1
@@ -1506,7 +1509,7 @@ function testPersAlgoDateGetWeekOfMonthIR14() {
 }
 
 function testPersAlgoDateGetWeekOfMonthUS() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 8,
 		day: 1
@@ -1517,7 +1520,7 @@ function testPersAlgoDateGetWeekOfMonthUS() {
 }
 
 function testPersAlgoDateGetWeekOfMonthDE() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 8,
 		day: 1
@@ -1530,7 +1533,7 @@ function testPersAlgoDateGetWeekOfMonthDE() {
 }
 
 function testPersAlgoDateGetEraAP() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1388,
 		month: 5,
 		day: 1
@@ -1541,7 +1544,7 @@ function testPersAlgoDateGetEraAP() {
 }
 
 function testPersAlgoDateGetEraBAP() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: -46,
 		month: 5,
 		day: 1,
@@ -1556,7 +1559,7 @@ function testPersAlgoDateGetEraBAP() {
 }
 
 function testPersAlgoDateGetEraAPYear1() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 1,
 		month: 1,
 		day: 1
@@ -1567,7 +1570,7 @@ function testPersAlgoDateGetEraAPYear1() {
 }
 
 function testPersAlgoDateGetEraBAPYear0() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
 		year: 0,
 		month: 12,
 		day: 29
@@ -1578,7 +1581,7 @@ function testPersAlgoDateGetEraBAPYear0() {
 }
 
 function testPersAlgoDateSetTimeZone() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1594,7 +1597,7 @@ function testPersAlgoDateSetTimeZone() {
 }
 
 function testPersAlgoDateSetTimeZoneNotString() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1610,7 +1613,7 @@ function testPersAlgoDateSetTimeZoneNotString() {
 }
 
 function testPersAlgoDateSetTimeZoneUndefined() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1627,7 +1630,7 @@ function testPersAlgoDateSetTimeZoneUndefined() {
 }
 
 function testPersAlgoDateSetTimeZoneEmpty() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1433, 
     	month: 3, 
     	day: 8,
@@ -1644,7 +1647,7 @@ function testPersAlgoDateSetTimeZoneEmpty() {
 }
 
 function testPersAlgoDateInitWithUnixTimeRightTimeZone() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	unixtime: 0
     });
     assertNotNull(pd);
@@ -1653,7 +1656,7 @@ function testPersAlgoDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testPersAlgoDateInitWithJDRightTimeZone() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	julianday: 0
     });
     assertNotNull(pd);
@@ -1662,7 +1665,7 @@ function testPersAlgoDateInitWithJDRightTimeZone() {
 }
 
 function testPersAlgoDateInitWithRDRightTimeZone() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	rd: 0
     });
     assertNotNull(pd);
@@ -1671,7 +1674,7 @@ function testPersAlgoDateInitWithRDRightTimeZone() {
 }
 
 function testPersDateAlgoRoundTripConstruction() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1393,
     	month: 8,
     	day: 12,
@@ -1682,7 +1685,7 @@ function testPersDateAlgoRoundTripConstruction() {
     
     var u = pd.getTime();
     // console.log("unixtime is " + u);
-    var pd2 = new ilib.Date.PersAlgoDate({
+    var pd2 = new PersianAlgoDate({
     	unixtime: u,
     	timezone: "local"
     });
@@ -1697,7 +1700,7 @@ function testPersDateAlgoRoundTripConstruction() {
 }
 
 function testPersDateAlgoRoundTripConstruction2() {
-    var pd = new ilib.Date.PersAlgoDate({
+    var pd = new PersianAlgoDate({
     	year: 1393,
     	month: 8,
     	day: 12,
@@ -1708,7 +1711,7 @@ function testPersDateAlgoRoundTripConstruction2() {
     
     var u = pd.getTime();
     // console.log("unixtime is " + u);
-    var pd2 = new ilib.Date.PersAlgoDate({
+    var pd2 = new PersianAlgoDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });

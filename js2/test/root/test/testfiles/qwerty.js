@@ -1,13 +1,13 @@
-var ilib = require("../../../../lib/ilib.js");
+// !dependencies: false
 
-ilib.Qwerty = function(spec) {
+Qwerty = function(spec) {
 	//console.log("Qwerty: spec is " + spec);
 
 	this.spec = spec;
 };
 
-ilib.Qwerty.prototype.getSpec = function() {
+Qwerty.prototype.getSpec = function() {
 	return this.spec;
 };
 
-module.exports = ilib.Qwerty;
+module.exports = Qwerty;

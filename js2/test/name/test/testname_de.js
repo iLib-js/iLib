@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_de_DE() {
-	var parsed = new ilib.Name("Johan Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Johan Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_de_DE() {
 };
 
 function testParseTripleName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Johan Michael Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTripleName_de_DE() {
 };
 
 function testParseAdjunctNames_de_DE() {
-	var parsed = new ilib.Name("Ludwig Klaus von Beethoven", {locale: 'de-DE'});
+	var parsed = new Name("Ludwig Klaus von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +58,7 @@ function testParseAdjunctNames_de_DE() {
 };
 
 function testParseSingleName_de_DE() {
-	var parsed = new ilib.Name("Ludwig", {locale: 'de-DE'});
+	var parsed = new Name("Ludwig", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseSingleName_de_DE() {
 };
 
 function testParseSingleNameWithAdjunct_de_DE() {
-	var parsed = new ilib.Name("von Beethoven", {locale: 'de-DE'});
+	var parsed = new Name("von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -79,7 +81,7 @@ function testParseSingleNameWithAdjunct_de_DE() {
 };
 
 function testParseSingleNameWithPrefixAndAdjunct_de_DE() {
-	var parsed = new ilib.Name("Herr von Beethoven", {locale: 'de-DE'});
+	var parsed = new Name("Herr von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -91,7 +93,7 @@ function testParseSingleNameWithPrefixAndAdjunct_de_DE() {
 };
 
 function testParseMultiAdjunctNames_de_DE() {
-	var parsed = new ilib.Name("Ludwig von den Wiesthal", {locale: 'de-DE'});
+	var parsed = new Name("Ludwig von den Wiesthal", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -103,7 +105,7 @@ function testParseMultiAdjunctNames_de_DE() {
 };
 
 function testParseHypenatedName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Bergische-Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Johan Michael Bergische-Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -116,7 +118,7 @@ function testParseHypenatedName_de_DE() {
 };
 
 function testParseQuadrupleName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Jürgen Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Johan Michael Jürgen Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -129,7 +131,7 @@ function testParseQuadrupleName_de_DE() {
 };
 
 function testParseTitle_de_DE() {
-	var parsed = new ilib.Name("Herr Dr. Johan Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Herr Dr. Johan Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -142,7 +144,7 @@ function testParseTitle_de_DE() {
 };
 
 function testParseTitleWithFamilyOnly_de_DE() {
-	var parsed = new ilib.Name("Herr Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Herr Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -154,7 +156,7 @@ function testParseTitleWithFamilyOnly_de_DE() {
 };
 
 function testParseTitleWithFamilyOnlyAndAdjunct_de_DE() {
-	var parsed = new ilib.Name("Herr von Schmidt", {locale: 'de-DE'});
+	var parsed = new Name("Herr von Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -166,7 +168,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_de_DE() {
 };
 
 function testParseHonorific_de_DE() {
-	var parsed = new ilib.Name("Fr. Julia Maier", {locale: 'de-DE'});
+	var parsed = new Name("Fr. Julia Maier", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -179,7 +181,7 @@ function testParseHonorific_de_DE() {
 };
 
 function testParseEverything_de_DE() {
-	var parsed = new ilib.Name("Herr Präsident Johan Michael Jürgen Schmidt III", {locale: 'de-DE'});
+	var parsed = new Name("Herr Präsident Johan Michael Jürgen Schmidt III", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -194,7 +196,7 @@ function testParseEverything_de_DE() {
 };
 
 function testParseFamily_de_DE() {
-	var parsed = new ilib.Name("Die Maiers", {locale: 'de-DE'});
+	var parsed = new Name("Die Maiers", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -206,7 +208,7 @@ function testParseFamily_de_DE() {
 };
 
 function testParseCompoundHonorific_de_DE() {
-	var parsed = new ilib.Name("Herr und Frau Maier", {locale: 'de-DE'});
+	var parsed = new Name("Herr und Frau Maier", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -222,12 +224,12 @@ function testParseCompoundHonorific_de_DE() {
  */
 
 function testFormatSimpleNameShort_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Johan",
 		middleName: "Michael",
 		familyName: "Schmidt"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'de-DE'
 	});
@@ -240,12 +242,12 @@ function testFormatSimpleNameShort_de_DE() {
 };
 
 function testFormatSimpleNameMedium_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Johan",
 		middleName: "Michael",
 		familyName: "Schmidt"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'de-DE'
 	});
@@ -258,13 +260,13 @@ function testFormatSimpleNameMedium_de_DE() {
 };
 
 function testFormatSimpleNameLong_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Johan",
 		middleName: "Michael",
 		familyName: "Schmidt",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'de-DE'
 	});
@@ -277,14 +279,14 @@ function testFormatSimpleNameLong_de_DE() {
 };
 
 function testFormatSimpleNameFull_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
 		middleName: "Michael",
 		familyName: "Schmidt",
 		suffix: " MdB"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'de-DE'
 	});
@@ -297,14 +299,14 @@ function testFormatSimpleNameFull_de_DE() {
 };
 
 function testFormatComplexNameShort_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
 		middleName: "Michael Uwe",
 		familyName: "von Schmidt",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'de-DE'
 	});
@@ -317,14 +319,14 @@ function testFormatComplexNameShort_de_DE() {
 };
 
 function testFormatComplexNameMedium_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
 		middleName: "Michael Uwe",
 		familyName: "von Schmidt",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'de-DE'
 	});
@@ -337,14 +339,14 @@ function testFormatComplexNameMedium_de_DE() {
 };
 
 function testFormatComplexNameLong_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
 		middleName: "Michael Uwe",
 		familyName: "von Schmidt",
 		suffix: "III"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'de-DE'
 	});
@@ -357,13 +359,13 @@ function testFormatComplexNameLong_de_DE() {
 };
 
 function testFormatAsianNameShort_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'de-DE'
 	});
@@ -376,13 +378,13 @@ function testFormatAsianNameShort_de_DE() {
 };
 
 function testFormatAsianNameMedium_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'de-DE'
 	});
@@ -395,13 +397,13 @@ function testFormatAsianNameMedium_de_DE() {
 };
 
 function testFormatAsianNameLong_de_DE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'de-DE'
 	});

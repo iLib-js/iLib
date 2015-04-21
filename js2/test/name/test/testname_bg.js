@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testDEParseSimpleName_bg_BG() {
-	var parsed = new ilib.Name("Мария Георгиева", {locale: 'bg-BG'});
+	var parsed = new Name("Мария Георгиева", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -31,7 +33,7 @@ function testDEParseSimpleName_bg_BG() {
 
 
 function testDEParseAdjunctNames_bg_BG() {
-	var parsed = new ilib.Name("Стоян Драганов", {locale: 'bg-BG'});
+	var parsed = new Name("Стоян Драганов", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -45,7 +47,7 @@ function testDEParseAdjunctNames_bg_BG() {
 
 
 function testDEParseSingleNameWithPrefixAndAdjunct_bg_BG() {
-	var parsed = new ilib.Name("сестра Драганов", {locale: 'bg-BG'});
+	var parsed = new Name("сестра Драганов", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -58,7 +60,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_bg_BG() {
 
 
 function testDEParseTitle_bg_BG() {
-	var parsed = new ilib.Name("Мария Георгиева младши", {locale: 'bg-BG'});
+	var parsed = new Name("Мария Георгиева младши", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testDEParseTitle_bg_BG() {
 
 
 function testDEParseTitleWithFamilyOnly_bg_BG() {
-	var parsed = new ilib.Name("сестра. Георгиева", {locale: 'bg-BG'});
+	var parsed = new Name("сестра. Георгиева", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -87,7 +89,7 @@ function testDEParseTitleWithFamilyOnly_bg_BG() {
 
 
 function testDEParseEverything_bg_BG() {
-	var parsed = new ilib.Name("баба Мария Георгиева", {locale: 'bg-BG'});
+	var parsed = new Name("баба Мария Георгиева", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -105,11 +107,11 @@ function testDEParseEverything_bg_BG() {
  */
 
 function testDEFormatSimpleNameShort_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Мария",
 		familyName: "Георгиева"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bg-BG'
 	});
@@ -122,12 +124,12 @@ function testDEFormatSimpleNameShort_bg_BG() {
 };
 
 function testDEFormatSimpleNameMedium_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Мария",
 		
 		familyName: "Георгиева"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bg-BG'
 	});
@@ -140,13 +142,13 @@ function testDEFormatSimpleNameMedium_bg_BG() {
 };
 
 function testDEFormatSimpleNameLong_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Мария",
 		
 		familyName: "Георгиева",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'bg-BG'
 	});
@@ -159,14 +161,14 @@ function testDEFormatSimpleNameLong_bg_BG() {
 };
 
 function testDEFormatSimpleNameFull_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "лекар",
 		givenName: "Мария",
 		
 		familyName: "Георгиева",
 		suffix: " MdB"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'bg-BG'
 	});
@@ -179,12 +181,12 @@ function testDEFormatSimpleNameFull_bg_BG() {
 };
 
 function testDEFormatComplexNameShort_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "лекар",
 		givenName: "Мария",
 		familyName: "Георгиева"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bg-BG'
 	});
@@ -197,12 +199,12 @@ function testDEFormatComplexNameShort_bg_BG() {
 };
 
 function testDEFormatComplexNameMedium_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "лекар",
 		givenName: "Мария",
 		familyName: "Георгиева"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bg-BG'
 	});
@@ -215,12 +217,12 @@ function testDEFormatComplexNameMedium_bg_BG() {
 };
 
 function testDEFormatComplexNameLong_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "лекар",
 		givenName: "Мария",
 		familyName: "Георгиева"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'bg-BG'
 	});
@@ -233,12 +235,12 @@ function testDEFormatComplexNameLong_bg_BG() {
 };
 
 function testDEFormatAsianNameShort_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bg-BG'
 	});
@@ -251,12 +253,12 @@ function testDEFormatAsianNameShort_bg_BG() {
 };
 
 function testDEFormatAsianNameMedium_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bg-BG'
 	});
@@ -269,12 +271,12 @@ function testDEFormatAsianNameMedium_bg_BG() {
 };
 
 function testDEFormatAsianNameLong_bg_BG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'bg-BG'
 	});
@@ -292,7 +294,7 @@ function testDEFormatAsianNameLong_bg_BG() {
 
 
 function testDEParseSimpleName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -304,7 +306,7 @@ function testDEParseSimpleName_cs_CZ() {
 };
 
 function testDEParseTripleName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -317,7 +319,7 @@ function testDEParseTripleName_cs_CZ() {
 
 
 function testDEParseSingleNameWithPrefixAndAdjunct_cs_CZ() {
-	var parsed = new ilib.Name("prezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -330,7 +332,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_cs_CZ() {
 };
 
 function testDEParseHypenatedName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -344,7 +346,7 @@ function testDEParseHypenatedName_cs_CZ() {
 
 
 function testDEParseTitle_cs_CZ() {
-	var parsed = new ilib.Name("prezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -358,7 +360,7 @@ function testDEParseTitle_cs_CZ() {
 
 
 function testDEParseTitle_cs_CZ1() {
-	var parsed = new ilib.Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -373,7 +375,7 @@ function testDEParseTitle_cs_CZ1() {
 
 
 function testDEParseTitleWithFamilyOnlyAndAdjunct_cs_CZ() {
-	var parsed = new ilib.Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -388,7 +390,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_cs_CZ() {
 
 
 function testDEParseEverything_cs_CZ() {
-	var parsed = new ilib.Name("dáma Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -402,7 +404,7 @@ function testDEParseEverything_cs_CZ() {
 
 
 function testDEParseCompoundHonorific_cs_CZ() {
-	var parsed = new ilib.Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -414,7 +416,7 @@ function testDEParseCompoundHonorific_cs_CZ() {
 };
 
 function testDEParseCompoundHonorific_cs_CZ1() {
-	var parsed = new ilib.Name("Dr. Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -429,11 +431,11 @@ function testDEParseCompoundHonorific_cs_CZ1() {
  */
 
 function testDEFormatSimpleNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -446,11 +448,11 @@ function testDEFormatSimpleNameShort_cs_CZ() {
 };
 
 function testDEFormatSimpleNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -463,12 +465,12 @@ function testDEFormatSimpleNameMedium_cs_CZ() {
 };
 
 function testDEFormatSimpleNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'cs-CZ'
 	});
@@ -481,13 +483,13 @@ function testDEFormatSimpleNameLong_cs_CZ() {
 };
 
 function testDEFormatSimpleNameFull_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský předseda",
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "v důchodu"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});
@@ -500,12 +502,12 @@ function testDEFormatSimpleNameFull_cs_CZ() {
 };
 
 function testDEFormatComplexNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -518,12 +520,12 @@ function testDEFormatComplexNameShort_cs_CZ() {
 };
 
 function testDEFormatComplexNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -536,12 +538,12 @@ function testDEFormatComplexNameMedium_cs_CZ() {
 };
 
 function testDEFormatComplexNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'cs-CZ'
 	});
@@ -554,13 +556,13 @@ function testDEFormatComplexNameLong_cs_CZ() {
 };
 
 function testDEFormatAsianNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -573,13 +575,13 @@ function testDEFormatAsianNameShort_cs_CZ() {
 };
 
 function testDEFormatAsianNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -592,13 +594,13 @@ function testDEFormatAsianNameMedium_cs_CZ() {
 };
 
 function testDEFormatAsianNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});
@@ -614,7 +616,7 @@ function testDEFormatAsianNameLong_cs_CZ() {
 
 
 function testDEParseSimpleName_da_DK() {
-	var parsed = new ilib.Name("Raeburn van Buren", {locale: 'da-DK'});
+	var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -627,7 +629,7 @@ function testDEParseSimpleName_da_DK() {
 
 
 function testDEParseAdjunctNames_da_DK() {
-	var parsed = new ilib.Name("Humphrey Dallas Bogart", {locale: 'da-DK'});
+	var parsed = new Name("Humphrey Dallas Bogart", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -640,7 +642,7 @@ function testDEParseAdjunctNames_da_DK() {
 };
 
 function testDEParseSingleName_da_DK() {
-	var parsed = new ilib.Name("Armin", {locale: 'da-DK'});
+	var parsed = new Name("Armin", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -653,7 +655,7 @@ function testDEParseSingleName_da_DK() {
 
 
 function testDEParseSingleNameWithPrefixAndAdjunct_da_DK() {
-	var parsed = new ilib.Name("meneer Raeburn van Buren", {locale: 'da-DK'});
+	var parsed = new Name("meneer Raeburn van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -667,7 +669,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_da_DK() {
 
 
 function testDEParseHypenatedName_da_DK() {
-	var parsed = new ilib.Name("Raeburn van Buren", {locale: 'da-DK'});
+	var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -679,7 +681,7 @@ function testDEParseHypenatedName_da_DK() {
 };
 
 function testDEParseQuadrupleName_da_DK() {
-	var parsed = new ilib.Name("Raeburn Jürgen van Buren", {locale: 'da-DK'});
+	var parsed = new Name("Raeburn Jürgen van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -692,7 +694,7 @@ function testDEParseQuadrupleName_da_DK() {
 };
 
 function testDEParseTitle_da_DK() {
-	var parsed = new ilib.Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
+	var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -705,7 +707,7 @@ function testDEParseTitle_da_DK() {
 };
 
 function testDEParseTitle_da_DK() {
-	var parsed = new ilib.Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
+	var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -719,7 +721,7 @@ function testDEParseTitle_da_DK() {
 
 
 function testDEParseTitleWithFamilyOnly_da_DK() {
-	var parsed = new ilib.Name("meneer van Buren", {locale: 'da-DK'});
+	var parsed = new Name("meneer van Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -732,7 +734,7 @@ function testDEParseTitleWithFamilyOnly_da_DK() {
 
 
 function testDEParseHonorific_da_DK() {
-	var parsed = new ilib.Name("Fr. Julia Maier", {locale: 'da-DK'});
+	var parsed = new Name("Fr. Julia Maier", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -745,7 +747,7 @@ function testDEParseHonorific_da_DK() {
 };
 
 function testDEParseEverything_da_DK() {
-	var parsed = new ilib.Name("guvernør Raeburn Jürgen van Buren pensioneret", {locale: 'da-DK'});
+	var parsed = new Name("guvernør Raeburn Jürgen van Buren pensioneret", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -760,7 +762,7 @@ function testDEParseEverything_da_DK() {
 };
 
 function testDEParseCompoundHonorific_da_DK() {
-	var parsed = new ilib.Name("Mr. Buren", {locale: 'da-DK'});
+	var parsed = new Name("Mr. Buren", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -776,12 +778,12 @@ function testDEParseCompoundHonorific_da_DK() {
  */
 
 function testDEFormatSimpleNameShort_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Raeburn",
 		middleName: "Michael",
 		familyName: "van Buren"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'da-DK'
 	});
@@ -794,11 +796,11 @@ function testDEFormatSimpleNameShort_da_DK() {
 };
 
 function testDEFormatSimpleNameMedium_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Raeburn",
 		familyName: "van Buren"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'da-DK'
 	});
@@ -811,12 +813,12 @@ function testDEFormatSimpleNameMedium_da_DK() {
 };
 
 function testDEFormatSimpleNameLong_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Raeburn",
 		familyName: "van Buren",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'da-DK'
 	});
@@ -829,13 +831,13 @@ function testDEFormatSimpleNameLong_da_DK() {
 };
 
 function testDEFormatSimpleNameFull_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "meneer Dr.",
 		givenName: "Raeburn",
 		familyName: "van Buren",
 		suffix: "pensioneret"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'da-DK'
 	});
@@ -848,14 +850,14 @@ function testDEFormatSimpleNameFull_da_DK() {
 };
 
 function testDEFormatComplexNameShort_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "meneer Dr.",
 		givenName: "Raeburn",
 		middleName: "Michael Uwe",
 		familyName: "von van Buren",
 		suffix: "pensioneret"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'da-DK'
 	});
@@ -870,14 +872,14 @@ function testDEFormatComplexNameShort_da_DK() {
 
 
 function testDEFormatComplexNameLong_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "meneer Dr.",
 		givenName: "Raeburn",
 		middleName: "Michael Uwe",
 		familyName: "von van Buren",
 		suffix: "pensioneret"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'da-DK'
 	});
@@ -890,13 +892,13 @@ function testDEFormatComplexNameLong_da_DK() {
 };
 
 function testDEFormatAsianNameShort_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'da-DK'
 	});
@@ -909,13 +911,13 @@ function testDEFormatAsianNameShort_da_DK() {
 };
 
 function testDEFormatAsianNameMedium_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'da-DK'
 	});
@@ -928,13 +930,13 @@ function testDEFormatAsianNameMedium_da_DK() {
 };
 
 function testDEFormatAsianNameLong_da_DK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'da-DK'
 	});

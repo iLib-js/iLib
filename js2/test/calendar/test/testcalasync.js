@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var TimeZone = require("./../lib/TimeZone.js");
+
 function testTZAsyncGetAvailableIds() {
-    ilib.TimeZone.getAvailableIds(undefined, false, function(zones) {
+    TimeZone.getAvailableIds(undefined, false, function(zones) {
         assertNotUndefined(zones);
         
         assertTrue(zones.length > 0);
@@ -26,7 +28,7 @@ function testTZAsyncGetAvailableIds() {
 }
 
 function testTZAsyncGetAvailableIdsRightValues() {
-	ilib.TimeZone.getAvailableIds(undefined, false, function(zones) {
+	TimeZone.getAvailableIds(undefined, false, function(zones) {
         assertNotUndefined(zones);
         
         //var util = require("util");
@@ -40,7 +42,7 @@ function testTZAsyncGetAvailableIdsRightValues() {
 }
 
 function testTZAsyncGetAvailableIdsNoFilterContainsLocal() {
-    ilib.TimeZone.getAvailableIds(undefined, false, function(zones) {
+    TimeZone.getAvailableIds(undefined, false, function(zones) {
         assertNotUndefined(zones);
         
         assertTrue(zones.indexOf("local") != -1);
@@ -48,7 +50,7 @@ function testTZAsyncGetAvailableIdsNoFilterContainsLocal() {
 }
 
 function testTZAsyncGetAvailableIdsByCountryRightLength() {
-    ilib.TimeZone.getAvailableIds("US", false, function(zones) {
+    TimeZone.getAvailableIds("US", false, function(zones) {
         assertNotUndefined(zones);
         
         assertEquals(29, zones.length);
@@ -57,7 +59,7 @@ function testTZAsyncGetAvailableIdsByCountryRightLength() {
 
 function testTZAsyncGetAvailableIdsWithFilterContainsNoLocal() {
 	try {
-	    ilib.TimeZone.getAvailableIds("US", false, function(zones) {
+	    TimeZone.getAvailableIds("US", false, function(zones) {
 	        assertNotUndefined(zones);
 	        
 	        assertTrue(zones.indexOf("local") == -1);
@@ -68,7 +70,7 @@ function testTZAsyncGetAvailableIdsWithFilterContainsNoLocal() {
 }
 
 function testTZAsyncGetAvailableIdsByCountryRightContents() {
-    ilib.TimeZone.getAvailableIds("US", false, function(zones) {
+    TimeZone.getAvailableIds("US", false, function(zones) {
         assertNotUndefined(zones);
         
         var expected = [
@@ -108,7 +110,7 @@ function testTZAsyncGetAvailableIdsByCountryRightContents() {
 }
 
 function testTZAsyncGetAvailableIdsByCountry2RightLength() {
-    var zones = ilib.TimeZone.getAvailableIds("SG", false, function(zones) {
+    var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
         assertNotUndefined(zones);
         
         assertEquals(1, zones.length);
@@ -116,7 +118,7 @@ function testTZAsyncGetAvailableIdsByCountry2RightLength() {
 }
 
 function testTZAsyncGetAvailableIdsByCountry2RightContents() {
-    var zones = ilib.TimeZone.getAvailableIds("SG", false, function(zones) {
+    var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
         assertNotUndefined(zones);
         
         var expected = [

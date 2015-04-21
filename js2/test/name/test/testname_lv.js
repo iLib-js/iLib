@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_lv_LV() {
-	var parsed = new ilib.Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
+	var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_lv_LV() {
 };
 
 function testParseSimpleWithMiddleName_lv_LV() {
-	var parsed = new ilib.Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
+	var parsed = new Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -45,7 +47,7 @@ function testParseSimpleWithMiddleName_lv_LV() {
 
 
 function testParseTitle_lv_LV() {
-	var parsed = new ilib.Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
+	var parsed = new Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -60,7 +62,7 @@ function testParseTitle_lv_LV() {
 
 
 function testParseTitleWithFamilyOnly_lv_LV() {
-	var parsed = new ilib.Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
+	var parsed = new Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -74,7 +76,7 @@ function testParseTitleWithFamilyOnly_lv_LV() {
 
 
 function testParseEverything_lv_LV() {
-	var parsed = new ilib.Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
+	var parsed = new Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -86,7 +88,7 @@ function testParseEverything_lv_LV() {
 };
 
 function testParseprefix_lv_LV() {
-	var parsed = new ilib.Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
+	var parsed = new Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -102,11 +104,11 @@ function testParseprefix_lv_LV() {
  */
 
 function testFormatSimpleNameShort_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Mikhail",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'lv-LV'
 	});
@@ -119,11 +121,11 @@ function testFormatSimpleNameShort_lv_LV() {
 };
 
 function testFormatSimpleNameMedium_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Mikhail",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'lv-LV'
 	});
@@ -136,12 +138,12 @@ function testFormatSimpleNameMedium_lv_LV() {
 };
 
 function testFormatSimpleNameLong_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Mikhail",
 		familyName: "Baryshnikov",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'lv-LV'
 	});
@@ -154,13 +156,13 @@ function testFormatSimpleNameLong_lv_LV() {
 };
 
 function testFormatSimpleNameWithMiddleNameFull_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Sergei",
 		middleName: "M.",
 		familyName: "Eisenstein",
 		suffix: "pūt"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'lv-LV'
 	});
@@ -173,11 +175,11 @@ function testFormatSimpleNameWithMiddleNameFull_lv_LV() {
 };
 
 function testFormatSurname_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "kungs un kundze",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'lv-LV'
 	});
@@ -190,13 +192,13 @@ function testFormatSurname_lv_LV() {
 };
 
 function testFormatSimpleNameFull_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "priekšsēdētājs",
 		givenName: "Mikhail",
 		familyName: "Baryshnikov",
 		suffix: "jaunākais"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'lv-LV'
 	});
@@ -209,12 +211,12 @@ function testFormatSimpleNameFull_lv_LV() {
 };
 
 function testFormatComplexNameShort_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "priekšsēdētājs",
 		givenName: "Mikhail",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'lv-LV'
 	});
@@ -227,12 +229,12 @@ function testFormatComplexNameShort_lv_LV() {
 };
 
 function testFormatComplexNameMedium_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "priekšsēdētājs",
 		givenName: "Mikhail",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'lv-LV'
 	});
@@ -245,12 +247,12 @@ function testFormatComplexNameMedium_lv_LV() {
 };
 
 function testFormatComplexNameLong_lv_LV() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "priekšsēdētājs",
 		givenName: "Mikhail",
 		familyName: "Baryshnikov"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'lv-LV'
 	});

@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var NumFmt = require("./../lib/NumFmt.js");
 function testNumFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.NumFmt();
+		    var fmt = new NumFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testNumFmtConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -47,7 +48,7 @@ function testNumFmtConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);

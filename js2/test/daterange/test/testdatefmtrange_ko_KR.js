@@ -18,11 +18,13 @@
  * limitations under the License.
  */
 
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateRngFmt = require("./../lib/DateRngFmt.js");
 function testDateRngFmtKRRangeInDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -31,7 +33,7 @@ function testDateRngFmtKRRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -43,10 +45,10 @@ function testDateRngFmtKRRangeInDayShort() {
     assertEquals("11. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -55,7 +57,7 @@ function testDateRngFmtKRRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -67,10 +69,10 @@ function testDateRngFmtKRRangeInDayMedium() {
     assertEquals("2011. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -79,7 +81,7 @@ function testDateRngFmtKRRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -91,10 +93,10 @@ function testDateRngFmtKRRangeInDayLong() {
     assertEquals("2011년 12월 31일 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -103,7 +105,7 @@ function testDateRngFmtKRRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -116,10 +118,10 @@ function testDateRngFmtKRRangeInDayFull() {
 }
 
 function testDateRngFmtKRRangeNextDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -128,7 +130,7 @@ function testDateRngFmtKRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -140,10 +142,10 @@ function testDateRngFmtKRRangeNextDayShort() {
     assertEquals("11. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -152,7 +154,7 @@ function testDateRngFmtKRRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -164,10 +166,10 @@ function testDateRngFmtKRRangeNextDayMedium() {
     assertEquals("2011. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -176,7 +178,7 @@ function testDateRngFmtKRRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -188,10 +190,10 @@ function testDateRngFmtKRRangeNextDayLong() {
     assertEquals("2011년 12월 30일 오후 1:45에서 31일 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -200,7 +202,7 @@ function testDateRngFmtKRRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -213,10 +215,10 @@ function testDateRngFmtKRRangeNextDayFull() {
 }
 
 function testDateRngFmtKRRangeMultiDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -225,7 +227,7 @@ function testDateRngFmtKRRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -237,10 +239,10 @@ function testDateRngFmtKRRangeMultiDayShort() {
     assertEquals("11. 12. 20에서 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -249,7 +251,7 @@ function testDateRngFmtKRRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -261,10 +263,10 @@ function testDateRngFmtKRRangeMultiDayMedium() {
     assertEquals("2011. 12. 20에서 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -273,7 +275,7 @@ function testDateRngFmtKRRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -285,10 +287,10 @@ function testDateRngFmtKRRangeMultiDayLong() {
     assertEquals("2011년 12월 20일에서 31일까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -297,7 +299,7 @@ function testDateRngFmtKRRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -310,10 +312,10 @@ function testDateRngFmtKRRangeMultiDayFull() {
 }
 
 function testDateRngFmtKRRangeNextMonthShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -322,7 +324,7 @@ function testDateRngFmtKRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -334,10 +336,10 @@ function testDateRngFmtKRRangeNextMonthShort() {
     assertEquals("11. 11. 20에서 12. 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextMonthMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -346,7 +348,7 @@ function testDateRngFmtKRRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -358,10 +360,10 @@ function testDateRngFmtKRRangeNextMonthMedium() {
     assertEquals("2011. 11. 20에서 12. 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextMonthLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -370,7 +372,7 @@ function testDateRngFmtKRRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -382,10 +384,10 @@ function testDateRngFmtKRRangeNextMonthLong() {
     assertEquals("2011년 11월 20일에서 12월 31일까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextMonthFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -394,7 +396,7 @@ function testDateRngFmtKRRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -407,10 +409,10 @@ function testDateRngFmtKRRangeNextMonthFull() {
 }
 
 function testDateRngFmtKRRangeNextYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -419,7 +421,7 @@ function testDateRngFmtKRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -431,10 +433,10 @@ function testDateRngFmtKRRangeNextYearShort() {
     assertEquals("11. 11. 20에서 12. 1. 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -443,7 +445,7 @@ function testDateRngFmtKRRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -455,10 +457,10 @@ function testDateRngFmtKRRangeNextYearMedium() {
     assertEquals("2011. 11. 20에서 2012. 01. 31까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -467,7 +469,7 @@ function testDateRngFmtKRRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -479,10 +481,10 @@ function testDateRngFmtKRRangeNextYearLong() {
     assertEquals("2011년 11월 20일에서 2012년 1월 31일까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -491,7 +493,7 @@ function testDateRngFmtKRRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -504,10 +506,10 @@ function testDateRngFmtKRRangeNextYearFull() {
 }
 
 function testDateRngFmtKRRangeMultiYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "short"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -516,7 +518,7 @@ function testDateRngFmtKRRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -528,10 +530,10 @@ function testDateRngFmtKRRangeMultiYearShort() {
     assertEquals("11. 11.에서 14. 1.까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -540,7 +542,7 @@ function testDateRngFmtKRRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -552,10 +554,10 @@ function testDateRngFmtKRRangeMultiYearMedium() {
     assertEquals("2011. 11.에서 2014. 01.까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -564,7 +566,7 @@ function testDateRngFmtKRRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -576,10 +578,10 @@ function testDateRngFmtKRRangeMultiYearLong() {
     assertEquals("2011년 11월에서 2014년 1월까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -588,7 +590,7 @@ function testDateRngFmtKRRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -600,10 +602,10 @@ function testDateRngFmtKRRangeMultiYearFull() {
     assertEquals("2011년 십일월에서 2014년 일월까지", fmt.format(start, end));
 }
 function testDateRngFmtKRManyYearsFull() {
-    var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
+    var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -612,7 +614,7 @@ function testDateRngFmtKRManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2064,
 		month: 1,
 		day: 31,

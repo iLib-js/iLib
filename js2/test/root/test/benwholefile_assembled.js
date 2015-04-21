@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
 function testLoadWholeFileAssembledCore(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-core",
 		fn: function () {
-		    var ilib = require("../ilib-core.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -33,7 +33,6 @@ function testLoadWholeFileAssembledStandard(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-standard",
 		fn: function () {
-		    var ilib = require("../ilib-standard.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -45,7 +44,6 @@ function testLoadWholeFileAssembledFull(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-full",
 		fn: function () {
-		    var ilib = require("../ilib-full.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -57,7 +55,6 @@ function testLoadWholeFileAssembledCoreCompiled(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-core-compiled",
 		fn: function () {
-		    var ilib = require("../ilib-core-compiled.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -69,7 +66,6 @@ function testLoadWholeFileAssembledStandardCompiled(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-standard-compiled",
 		fn: function () {
-		    var ilib = require("../ilib-standard-compiled.js");
 		    assertNotUndefined(ilib);
 		}
 	});
@@ -81,7 +77,6 @@ function testLoadWholeFileAssembledFullCompiled(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-full-compiled",
 		fn: function () {
-		    var ilib = require("../ilib-full-compiled.js");
 		    assertNotUndefined(ilib);
 		}
 	});

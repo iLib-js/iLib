@@ -17,6 +17,12 @@
  * limitations under the License.
  */
 
+var isSpace = require("./../lib/isSpace.js");
+var isSpace = require("./../lib/isSpace.js");
+var isDigit = require("./../lib/isDigit.js");
+var isAlpha = require("./../lib/isAlpha.js");
+var ilib = require("./../lib/ilib.js");
+var CType = require("./../lib/CType.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -42,7 +48,7 @@ function testCTypeLoaderL(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-loader-l-initial",
 		fn: function () {
-			ilib.CType._load("ctype_l", true);
+			CType._load("ctype_l", true);
 		}
 	});
 	
@@ -53,7 +59,7 @@ function testCTypeLoaderZ(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-loader-z-initial",
 		fn: function () {
-			ilib.CType._load("ctype_z", true);
+			CType._load("ctype_z", true);
 		}
 	});
 	
@@ -64,7 +70,7 @@ function testCTypeLoaderC(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-loader-c-initial",
 		fn: function () {
-			ilib.CType._load("ctype_c", true);
+			CType._load("ctype_c", true);
 		}
 	});
 	
@@ -75,7 +81,7 @@ function testCTypeLoaderP(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-loader-p-initial",
 		fn: function () {
-			ilib.CType._load("ctype_p", true);
+			CType._load("ctype_p", true);
 		}
 	});
 	
@@ -86,8 +92,8 @@ function testCTypeisAlpha(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-isAlpha-initial",
 		fn: function () {
-			assertTrue(ilib.CType.isAlpha("a"));
-			assertFalse(ilib.CType.isAlpha(";"));
+			assertTrue(isAlpha("a"));
+			assertFalse(isAlpha(";"));
 		}
 	});
 	
@@ -98,8 +104,8 @@ function testCTypeisDigit(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-isAlpha-initial",
 		fn: function () {
-			assertTrue(ilib.CType.isDigit("5"));
-			assertFalse(ilib.CType.isDigit("g"));
+			assertTrue(isDigit("5"));
+			assertFalse(isDigit("g"));
 		}
 	});
 	
@@ -110,8 +116,8 @@ function testCTypeisSpace(results) {
 	var tt = new TimedTest({
 		name: "CType-assembled-isSpace-initial",
 		fn: function () {
-			assertTrue(ilib.CType.isSpace(" "));
-			assertFalse(ilib.CType.isSpace("g"));
+			assertTrue(isSpace(" "));
+			assertFalse(isSpace("g"));
 		}
 	});
 	

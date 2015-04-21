@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var DateFmt = require("./../lib/DateFmt.js");
+var DateFactory = require("./../lib/DateFactory.js");
 ilib.data.timezones = {
     "America/Los_Angeles": {
         "o": "-8:0",
@@ -134,13 +137,13 @@ ilib.data.sysres_zh = {"MMMM1":"1","MMM1":"1","NN1":"01","N1":"1","MMMM2":"2","M
 ilib.data.sysres_zh_TW = {"EEE0":"週日","EE0":"週日","E0":"週日","EEE1":"週一","EE1":"週一","E1":"週一","EEE2":"週二","EE2":"週二","E2":"週二","EEE3":"週三","EE3":"週三","E3":"週三","EEE4":"週四","EE4":"週四","E4":"週四","EEE5":"週五","EE5":"週五","E5":"週五","EEE6":"週六","EE6":"週六","E6":"週六","azh3":"正午","durationShortMinutes":"#{num}分鐘","#{num}h":"#{num}小時","#{num}w":"#{num}週","durationShortMonths":"#{num}個月","1#1 mi|#{num} min":"#{num}分鐘","durationMediumHours":"#{num}小時","1#1 wk|#{num} wks":"#{num}週","1#1 mo|#{num} mos":"#{num}個月","1#1 min|#{num} min":"#{num}分鐘","1#1 hr|#{num} hrs":"#{num}小時","1#1 mon|#{num} mons":"#{num}個月","1#1 minute|#{num} minutes":"#{num}分鐘","1#1 hour|#{num} hours":"#{num}小時","1#1 week|#{num} weeks":"#{num}週","1#1 month|#{num} months":"#{num}個月"};
 
 function testDateFmtConstructorEmptySubsequent(results) {
-	new ilib.DateFmt();
+	new DateFmt();
 
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-empty-subsequent",
 		iterations: 100,
 		fn: function () {
-		    var fmt = new ilib.DateFmt();
+		    var fmt = new DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -149,7 +152,7 @@ function testDateFmtConstructorEmptySubsequent(results) {
 }
 
 function testDateFmtConstructorRealSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "de-DE"
 	});
 
@@ -157,7 +160,7 @@ function testDateFmtConstructorRealSubsequent(results) {
 		name: "DateFmt-assembled-normal-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -168,7 +171,7 @@ function testDateFmtConstructorRealSubsequent(results) {
 }
 
 function testDateFmtConstructorNonexistentSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "xx-YY"
 	});
 
@@ -176,7 +179,7 @@ function testDateFmtConstructorNonexistentSubsequent(results) {
 		name: "DateFmt-assembled-nonexistent-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);
@@ -187,7 +190,7 @@ function testDateFmtConstructorNonexistentSubsequent(results) {
 }
 
 function testDateFmtConstructorOtherComplexSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "zh-Hant-TW"
 	});
 
@@ -195,7 +198,7 @@ function testDateFmtConstructorOtherComplexSubsequent(results) {
 		name: "DateFmt-assembled-otherfile-complex-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "zh-Hant-TW"
 			});
 		    assertNotNull(fmt);
@@ -206,7 +209,7 @@ function testDateFmtConstructorOtherComplexSubsequent(results) {
 }
 
 function testDateFmtConstructorWithOptionsSubsequent(results) {
-	new ilib.DateFmt({
+	new DateFmt({
 		locale: "fr-FR",
 		type: "datetime",
 		date: "dmywg",
@@ -218,7 +221,7 @@ function testDateFmtConstructorWithOptionsSubsequent(results) {
 		name: "DateFmt-assembled-otherfile-options-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "fr-FR",
 				type: "datetime",
 				date: "dmywg",
@@ -233,7 +236,7 @@ function testDateFmtConstructorWithOptionsSubsequent(results) {
 }
 
 function testDateFmtFormatSubsequent(results) {
-	var fmt = new ilib.DateFmt({
+	var fmt = new DateFmt({
 		locale: "fr-FR",
 		type: "datetime",
 		date: "dmywg",
@@ -243,14 +246,14 @@ function testDateFmtFormatSubsequent(results) {
 
 	assertNotNull(fmt);
 
-	var d = ilib.Date.newInstance();
+	var d = DateFactory();
 	assertNotUndefined(fmt.format(d));
 	
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-format-full-subsequent",
 		iterations: 100,
 		fn: function () {
-			d = ilib.Date.newInstance();
+			d = DateFactory();
 			assertNotUndefined(fmt.format(d));
 		}
 	});

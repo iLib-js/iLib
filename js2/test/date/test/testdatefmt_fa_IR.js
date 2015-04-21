@@ -17,17 +17,21 @@
  * limitations under the License.
  */
 
+var PersianDate = require("./../lib/PersianDate.js");
+var JulianDate = require("./../lib/JulianDate.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
 /* First, Gregorian. See the bottom for the Persian calendar tests */
 
 function testDateFmtSimpleShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -41,14 +45,14 @@ function testDateFmtSimpleShort_fa_IR() {
 };
 
 function testDateFmtSimpleMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -62,14 +66,14 @@ function testDateFmtSimpleMedium_fa_IR() {
 };
 
 function testDateFmtSimpleLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -83,14 +87,14 @@ function testDateFmtSimpleLong_fa_IR() {
 }
 
 function testDateFmtSimpleFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -104,7 +108,7 @@ function testDateFmtSimpleFull_fa_IR() {
 }
 
 function testDateFmtSimpleTimeShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "short",
@@ -112,7 +116,7 @@ function testDateFmtSimpleTimeShort_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -126,7 +130,7 @@ function testDateFmtSimpleTimeShort_fa_IR() {
 }
 
 function testDateFmtSimpleTimeMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "medium",
@@ -134,7 +138,7 @@ function testDateFmtSimpleTimeMedium_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -148,7 +152,7 @@ function testDateFmtSimpleTimeMedium_fa_IR() {
 }
 
 function testDateFmtSimpleTimeLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		timelength: "long",
@@ -156,7 +160,7 @@ function testDateFmtSimpleTimeLong_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -170,7 +174,7 @@ function testDateFmtSimpleTimeLong_fa_IR() {
 }
 
 function testDateFmtSimpleTimeFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -178,7 +182,7 @@ function testDateFmtSimpleTimeFull_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -192,7 +196,7 @@ function testDateFmtSimpleTimeFull_fa_IR() {
 }
 
 function testDateFmtDateTimeSimpleShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "short",
@@ -200,7 +204,7 @@ function testDateFmtDateTimeSimpleShort_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -214,7 +218,7 @@ function testDateFmtDateTimeSimpleShort_fa_IR() {
 }
 
 function testDateFmtDateTimeSimpleMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "medium",
@@ -222,7 +226,7 @@ function testDateFmtDateTimeSimpleMedium_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -236,7 +240,7 @@ function testDateFmtDateTimeSimpleMedium_fa_IR() {
 }
 
 function testDateFmtDateTimeSimpleLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "long",
@@ -244,7 +248,7 @@ function testDateFmtDateTimeSimpleLong_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -258,7 +262,7 @@ function testDateFmtDateTimeSimpleLong_fa_IR() {
 }
 
 function testDateFmtDateTimeSimpleFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -266,7 +270,7 @@ function testDateFmtDateTimeSimpleFull_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -281,14 +285,14 @@ function testDateFmtDateTimeSimpleFull_fa_IR() {
 
 
 function testDateFmtTemplateCalendar_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
     	locale: "fa-IR", 
     	calendar: "julian", 
     	template: "yyyy-MM-dd"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
     	locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -303,7 +307,7 @@ function testDateFmtTemplateCalendar_fa_IR() {
 
 
 function testDateFmtTemplateClock12SwitchHH_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		clock: "12",
@@ -311,7 +315,7 @@ function testDateFmtTemplateClock12SwitchHH_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -325,7 +329,7 @@ function testDateFmtTemplateClock12SwitchHH_fa_IR() {
 }
 
 function testDateFmtTemplateClock12Switchkk_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		clock: "12",
@@ -333,7 +337,7 @@ function testDateFmtTemplateClock12Switchkk_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -347,7 +351,7 @@ function testDateFmtTemplateClock12Switchkk_fa_IR() {
 }
 
 function testDateFmtTemplateClock24Switchhh_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		clock: "24", 
@@ -355,7 +359,7 @@ function testDateFmtTemplateClock24Switchhh_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -369,7 +373,7 @@ function testDateFmtTemplateClock24Switchhh_fa_IR() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		clock: "24", 
@@ -377,7 +381,7 @@ function testDateFmtTemplateClock24SwitchKK_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -391,14 +395,14 @@ function testDateFmtTemplateClock24SwitchKK_fa_IR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		template: "hh:mm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -412,14 +416,14 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fa_IR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		template: "KK:mm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -433,14 +437,14 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fa_IR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		template: "HH:mm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -454,14 +458,14 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fa_IR() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		template: "kk:mm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -476,14 +480,14 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fa_IR() {
 
 
 function testDateFmtTypeDate_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "date"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -497,14 +501,14 @@ function testDateFmtTypeDate_fa_IR() {
 }
 
 function testDateFmtTypeTime_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -518,14 +522,14 @@ function testDateFmtTypeTime_fa_IR() {
 }
 
 function testDateFmtTypeDateTime_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "datetime"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -540,14 +544,14 @@ function testDateFmtTypeDateTime_fa_IR() {
 
 
 function testDateFmtShortDateComponentsY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "y"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -561,14 +565,14 @@ function testDateFmtShortDateComponentsY_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "m"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -583,14 +587,14 @@ function testDateFmtShortDateComponentsM_fa_IR() {
 
 
 function testDateFmtShortDateComponentsD_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "d"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -604,14 +608,14 @@ function testDateFmtShortDateComponentsD_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsDM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "dm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -625,14 +629,14 @@ function testDateFmtShortDateComponentsDM_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "my"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -646,14 +650,14 @@ function testDateFmtShortDateComponentsMY_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsDMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "dmy"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -667,14 +671,14 @@ function testDateFmtShortDateComponentsDMY_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsWDM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "wdm"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -688,14 +692,14 @@ function testDateFmtShortDateComponentsWDM_fa_IR() {
 }
 
 function testDateFmtShortDateComponentsWDMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		date: "wdmy"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -710,7 +714,7 @@ function testDateFmtShortDateComponentsWDMY_fa_IR() {
 
 
 function testDateFmtFullDateComponentsY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -718,7 +722,7 @@ function testDateFmtFullDateComponentsY_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -732,7 +736,7 @@ function testDateFmtFullDateComponentsY_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -740,7 +744,7 @@ function testDateFmtFullDateComponentsM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -754,7 +758,7 @@ function testDateFmtFullDateComponentsM_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsD_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -762,7 +766,7 @@ function testDateFmtFullDateComponentsD_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -776,7 +780,7 @@ function testDateFmtFullDateComponentsD_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsDM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -784,7 +788,7 @@ function testDateFmtFullDateComponentsDM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -798,7 +802,7 @@ function testDateFmtFullDateComponentsDM_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -806,7 +810,7 @@ function testDateFmtFullDateComponentsMY_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -820,7 +824,7 @@ function testDateFmtFullDateComponentsMY_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsDMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -828,7 +832,7 @@ function testDateFmtFullDateComponentsDMY_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -842,7 +846,7 @@ function testDateFmtFullDateComponentsDMY_fa_IR() {
 }
 
 function testDateFmtFullDateComponentsWDM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -850,7 +854,7 @@ function testDateFmtFullDateComponentsWDM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -865,7 +869,7 @@ function testDateFmtFullDateComponentsWDM_fa_IR() {
 
 
 function testDateFmtFullDateComponentsWDMY_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full",
@@ -873,7 +877,7 @@ function testDateFmtFullDateComponentsWDMY_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -888,7 +892,7 @@ function testDateFmtFullDateComponentsWDMY_fa_IR() {
 
 
 function testDateFmtShortTimeComponentsS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -896,7 +900,7 @@ function testDateFmtShortTimeComponentsS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -910,7 +914,7 @@ function testDateFmtShortTimeComponentsS_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -918,7 +922,7 @@ function testDateFmtShortTimeComponentsM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -932,7 +936,7 @@ function testDateFmtShortTimeComponentsM_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsH_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -940,7 +944,7 @@ function testDateFmtShortTimeComponentsH_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -954,7 +958,7 @@ function testDateFmtShortTimeComponentsH_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsMS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -962,7 +966,7 @@ function testDateFmtShortTimeComponentsMS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -976,7 +980,7 @@ function testDateFmtShortTimeComponentsMS_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -984,7 +988,7 @@ function testDateFmtShortTimeComponentsHM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -998,7 +1002,7 @@ function testDateFmtShortTimeComponentsHM_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1006,7 +1010,7 @@ function testDateFmtShortTimeComponentsHMS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1020,7 +1024,7 @@ function testDateFmtShortTimeComponentsHMS_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMA_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1028,7 +1032,7 @@ function testDateFmtShortTimeComponentsHMA_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1042,7 +1046,7 @@ function testDateFmtShortTimeComponentsHMA_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1050,7 +1054,7 @@ function testDateFmtShortTimeComponentsHMZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1064,7 +1068,7 @@ function testDateFmtShortTimeComponentsHMZ_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1072,7 +1076,7 @@ function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1086,7 +1090,7 @@ function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMSA_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1094,7 +1098,7 @@ function testDateFmtShortTimeComponentsHMSA_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1108,7 +1112,7 @@ function testDateFmtShortTimeComponentsHMSA_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1116,7 +1120,7 @@ function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1130,7 +1134,7 @@ function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1138,7 +1142,7 @@ function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1153,7 +1157,7 @@ function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
 
 
 function testDateFmtFullTimeComponentsS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1162,7 +1166,7 @@ function testDateFmtFullTimeComponentsS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1176,7 +1180,7 @@ function testDateFmtFullTimeComponentsS_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1185,7 +1189,7 @@ function testDateFmtFullTimeComponentsM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1199,7 +1203,7 @@ function testDateFmtFullTimeComponentsM_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsH_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1208,7 +1212,7 @@ function testDateFmtFullTimeComponentsH_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1222,7 +1226,7 @@ function testDateFmtFullTimeComponentsH_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsMS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1231,7 +1235,7 @@ function testDateFmtFullTimeComponentsMS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1245,7 +1249,7 @@ function testDateFmtFullTimeComponentsMS_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHM_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1254,7 +1258,7 @@ function testDateFmtFullTimeComponentsHM_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1268,7 +1272,7 @@ function testDateFmtFullTimeComponentsHM_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMS_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1277,7 +1281,7 @@ function testDateFmtFullTimeComponentsHMS_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1291,7 +1295,7 @@ function testDateFmtFullTimeComponentsHMS_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMA_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1300,7 +1304,7 @@ function testDateFmtFullTimeComponentsHMA_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1314,7 +1318,7 @@ function testDateFmtFullTimeComponentsHMA_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1323,7 +1327,7 @@ function testDateFmtFullTimeComponentsHMZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1337,7 +1341,7 @@ function testDateFmtFullTimeComponentsHMZ_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1346,7 +1350,7 @@ function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1360,7 +1364,7 @@ function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMSA_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		type: "time",
@@ -1369,7 +1373,7 @@ function testDateFmtFullTimeComponentsHMSA_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1383,7 +1387,7 @@ function testDateFmtFullTimeComponentsHMSA_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1392,7 +1396,7 @@ function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1406,7 +1410,7 @@ function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1415,7 +1419,7 @@ function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1429,7 +1433,7 @@ function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
 }
 
 function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		type: "time", 
@@ -1438,7 +1442,7 @@ function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 12,
@@ -1452,14 +1456,14 @@ function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1469,7 +1473,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1482,14 +1486,14 @@ function testDateFmtFormatRelativeWithinMinuteAfter_fa_IR() {
     assertEquals("‏30 ثانیه بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1499,7 +1503,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1512,14 +1516,14 @@ function testDateFmtFormatRelativeWithinMinuteBefore_fa_IR() {
     assertEquals("‏30 ثانیه پیش", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1529,7 +1533,7 @@ function testDateFmtFormatRelativeWithinHourAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1542,14 +1546,14 @@ function testDateFmtFormatRelativeWithinHourAfter_fa_IR() {
     assertEquals("‏10 دقیقه بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1559,7 +1563,7 @@ function testDateFmtFormatRelativeWithinHourBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1572,14 +1576,14 @@ function testDateFmtFormatRelativeWithinHourBefore_fa_IR() {
     assertEquals("‏10 دقیقه پیش", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1589,7 +1593,7 @@ function testDateFmtFormatRelativeWithinDayAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1604,14 +1608,14 @@ function testDateFmtFormatRelativeWithinDayAfter_fa_IR() {
 
 
 function testDateFmtFormatRelativeWithinDayBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1621,7 +1625,7 @@ function testDateFmtFormatRelativeWithinDayBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1635,14 +1639,14 @@ function testDateFmtFormatRelativeWithinDayBefore_fa_IR() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1652,7 +1656,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1665,14 +1669,14 @@ function testDateFmtFormatRelativeWithinFortnightAfter_fa_IR() {
     assertEquals("‏4 روز بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1682,7 +1686,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1696,14 +1700,14 @@ function testDateFmtFormatRelativeWithinFortnightBefore_fa_IR() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1713,7 +1717,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 11,
@@ -1726,14 +1730,14 @@ function testDateFmtFormatRelativeWithinQuarterAfter_fa_IR() {
     assertEquals("‏9 هفته بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1743,7 +1747,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 7,
@@ -1757,14 +1761,14 @@ function testDateFmtFormatRelativeWithinQuarterBefore_fa_IR() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1774,7 +1778,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2013,
 		month: 1,
@@ -1787,14 +1791,14 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR() {
     assertEquals("‏16 ماه بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1804,7 +1808,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2010,
 		month: 7,
@@ -1818,14 +1822,14 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_fa_IR() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1835,7 +1839,7 @@ function testDateFmtFormatRelativeYearsAfter_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 2025,
 		month: 10,
@@ -1848,14 +1852,14 @@ function testDateFmtFormatRelativeYearsAfter_fa_IR() {
     assertEquals("‏14 سال بعد", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "fa-IR",
 		year: 2011,
 		month: 9,
@@ -1865,7 +1869,7 @@ function testDateFmtFormatRelativeYearsBefore_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "fa-IR",
 		year: 1990,
 		month: 7,
@@ -1882,14 +1886,14 @@ function testDateFmtFormatRelativeYearsBefore_fa_IR() {
 /* Now Persian calendar tests */
 
 function testDateFmtPersSimpleShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -1903,14 +1907,14 @@ function testDateFmtPersSimpleShort_fa_IR() {
 };
 
 function testDateFmtPersSimpleMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -1924,14 +1928,14 @@ function testDateFmtPersSimpleMedium_fa_IR() {
 };
 
 function testDateFmtPersSimpleLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -1945,14 +1949,14 @@ function testDateFmtPersSimpleLong_fa_IR() {
 }
 
 function testDateFmtPersSimpleFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -1966,7 +1970,7 @@ function testDateFmtPersSimpleFull_fa_IR() {
 }
 
 function testDateFmtPersSimpleTimeShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "short",
@@ -1974,7 +1978,7 @@ function testDateFmtPersSimpleTimeShort_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -1988,7 +1992,7 @@ function testDateFmtPersSimpleTimeShort_fa_IR() {
 }
 
 function testDateFmtPersSimpleTimeMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "medium",
@@ -1996,7 +2000,7 @@ function testDateFmtPersSimpleTimeMedium_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2010,7 +2014,7 @@ function testDateFmtPersSimpleTimeMedium_fa_IR() {
 }
 
 function testDateFmtPersSimpleTimeLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR", 
 		timelength: "long",
@@ -2018,7 +2022,7 @@ function testDateFmtPersSimpleTimeLong_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2032,7 +2036,7 @@ function testDateFmtPersSimpleTimeLong_fa_IR() {
 }
 
 function testDateFmtPersSimpleTimeFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "full",
@@ -2040,7 +2044,7 @@ function testDateFmtPersSimpleTimeFull_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2054,7 +2058,7 @@ function testDateFmtPersSimpleTimeFull_fa_IR() {
 }
 
 function testDateFmtPersDateTimeSimpleShort_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "short",
@@ -2062,7 +2066,7 @@ function testDateFmtPersDateTimeSimpleShort_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2076,7 +2080,7 @@ function testDateFmtPersDateTimeSimpleShort_fa_IR() {
 }
 
 function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "medium",
@@ -2084,7 +2088,7 @@ function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2098,7 +2102,7 @@ function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
 }
 
 function testDateFmtPersDateTimeSimpleLong_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "long",
@@ -2106,7 +2110,7 @@ function testDateFmtPersDateTimeSimpleLong_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,
@@ -2120,7 +2124,7 @@ function testDateFmtPersDateTimeSimpleLong_fa_IR() {
 }
 
 function testDateFmtPersDateTimeSimpleFull_fa_IR() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		calendar: "persian",
 		locale: "fa-IR",
 		length: "full",
@@ -2128,7 +2132,7 @@ function testDateFmtPersDateTimeSimpleFull_fa_IR() {
 	});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.PersDate({
+    var date = new PersianDate({
 		locale: "fa-IR",
 		year: 1392,
 		month: 9,

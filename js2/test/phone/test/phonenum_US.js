@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testParseUSFull(){
-	var parsed = new ilib.PhoneNumber("(456) 345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("(456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "3453434"
 	});
@@ -31,10 +32,10 @@ function testParseUSFull(){
 };
 
 function testParseUSFullNoLocale(){
-	var parsed = new ilib.PhoneNumber("(456) 345-3434");
+	var parsed = new PhoneNumber("(456) 345-3434");
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "3453434"
 	});
@@ -44,10 +45,10 @@ function testParseUSFullNoLocale(){
 };
 
 function testParseUSFull2(){
-	var parsed = new ilib.PhoneNumber("4154154155", {locale: "en-US"});
+	var parsed = new PhoneNumber("4154154155", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "415",
 		subscriberNumber: "4154155"
 	});
@@ -57,10 +58,10 @@ function testParseUSFull2(){
 };
 
 function testParseUSIgnoreFormatting(){
-	var parsed = new ilib.PhoneNumber("456-345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("456-345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "3453434"
 	});
@@ -70,10 +71,10 @@ function testParseUSIgnoreFormatting(){
 };
 
 function testParseUSIgnoreCrap(){
-	var parsed = new ilib.PhoneNumber("@456@345@$%^3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("@456@345@$%^3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "3453434"
 	});
@@ -83,10 +84,10 @@ function testParseUSIgnoreCrap(){
 };
 
 function testParseUSLocalNumber(){
-	var parsed = new ilib.PhoneNumber("345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "3453434"
 	});
 	
@@ -95,10 +96,10 @@ function testParseUSLocalNumber(){
 };
 
 function testParseUSWithTrunk(){
-	var parsed = new ilib.PhoneNumber("1 (456) 345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("1 (456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "3453434"
@@ -109,10 +110,10 @@ function testParseUSWithTrunk(){
 };
 
 function testParseUSWithTrunkAltFormatting(){
-	var parsed = new ilib.PhoneNumber("1-456-345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("1-456-345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "3453434"
@@ -123,10 +124,10 @@ function testParseUSWithTrunkAltFormatting(){
 };
 
 function testParseUSWithDialAround(){
-	var parsed = new ilib.PhoneNumber("10-10-321-456-345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("10-10-321-456-345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		cic: "1010321",
 		areaCode: "456",
 		subscriberNumber: "3453434"
@@ -137,10 +138,10 @@ function testParseUSWithDialAround(){
 };
 
 function testParseUSWithVSC(){
-	var parsed = new ilib.PhoneNumber("*67 (456) 345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("*67 (456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*674563453434"
 	});
 	
@@ -149,10 +150,10 @@ function testParseUSWithVSC(){
 };
 
 function testParseUSWithVSCandTrunk(){
-	var parsed = new ilib.PhoneNumber("*67 1 (456) 345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("*67 1 (456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*6714563453434"
 	});
 	
@@ -161,10 +162,10 @@ function testParseUSWithVSCandTrunk(){
 };
 
 function testParseUSWithAlternateVSC(){
-	var parsed = new ilib.PhoneNumber("112 (456) 345-3434", {locale: "en-US"});
+	var parsed = new PhoneNumber("112 (456) 345-3434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "1124563453434"
 	});
 	
@@ -173,10 +174,10 @@ function testParseUSWithAlternateVSC(){
 };
 
 function testParseUSWithAlternateVSCBogusCode(){
-	var parsed = new ilib.PhoneNumber("111111111", {locale: "en-US"});
+	var parsed = new PhoneNumber("111111111", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "111111111"
 	});
 	
@@ -185,10 +186,10 @@ function testParseUSWithAlternateVSCBogusCode(){
 };
 
 function testParseUSEmergencyNumber(){
-	var parsed = new ilib.PhoneNumber("911", {locale: "en-US"});
+	var parsed = new PhoneNumber("911", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		emergency: "911"
 	});
 	
@@ -197,10 +198,10 @@ function testParseUSEmergencyNumber(){
 };
 
 function testParseUSEmergencyNumberExtended(){
-	var parsed = new ilib.PhoneNumber("911 123", {locale: "en-US"});
+	var parsed = new PhoneNumber("911 123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		emergency: "911",
 		subscriberNumber: "123"
 	});
@@ -210,10 +211,10 @@ function testParseUSEmergencyNumberExtended(){
 };
 
 function testParseUSLocalWithPauseChars(){
-	var parsed = new ilib.PhoneNumber("6175568w1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("6175568w1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6175568",
 		extension: "w1234"
 	});
@@ -223,10 +224,10 @@ function testParseUSLocalWithPauseChars(){
 };
 
 function testParseUSLDWithPauseChars(){
-	var parsed = new ilib.PhoneNumber("4156175568w1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("4156175568w1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "415",
 		subscriberNumber: "6175568",
 		extension: "w1234"
@@ -237,10 +238,10 @@ function testParseUSLDWithPauseChars(){
 };
 
 function testParseUSLDWithPauseCharsAndTrunk(){
-	var parsed = new ilib.PhoneNumber("1-415-617-5568 w 1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("1-415-617-5568 w 1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "415",
 		subscriberNumber: "6175568",
@@ -252,10 +253,10 @@ function testParseUSLDWithPauseCharsAndTrunk(){
 };
 
 function testParseUSLocalWithExtension(){
-	var parsed = new ilib.PhoneNumber("617-5568x1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("617-5568x1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6175568",
 		extension: "1234"
 	});
@@ -265,10 +266,10 @@ function testParseUSLocalWithExtension(){
 };
 
 function testParseUSLDWithExtension(){
-	var parsed = new ilib.PhoneNumber("415-617-5568 x1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("415-617-5568 x1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "415",
 		subscriberNumber: "6175568",
 		extension: "1234"
@@ -279,10 +280,10 @@ function testParseUSLDWithExtension(){
 };
 
 function testParseUSPlusIDDToGB(){
-	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+442012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "20",
@@ -294,10 +295,10 @@ function testParseUSPlusIDDToGB(){
 };
 
 function testParseUSZerosIDDToGB(){
-	var parsed = new ilib.PhoneNumber("011442012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("011442012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "011",
 		countryCode: "44",
 		areaCode: "20",
@@ -309,10 +310,10 @@ function testParseUSZerosIDDToGB(){
 };
 
 function testParseUSPlusIDDToGBLongArea(){
-	var parsed = new ilib.PhoneNumber("+441997123456", {locale: "en-US"});
+	var parsed = new PhoneNumber("+441997123456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "1997",
@@ -324,10 +325,10 @@ function testParseUSPlusIDDToGBLongArea(){
 };
 
 function testParseUSPlusIDDToGBPartial1(){
-	var parsed = new ilib.PhoneNumber("+", {locale: "en-US"});
+	var parsed = new PhoneNumber("+", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+"
 	});
 	
@@ -335,10 +336,10 @@ function testParseUSPlusIDDToGBPartial1(){
 	
 };
 function testParseUSPlusIDDToGBPartial2(){
-	var parsed = new ilib.PhoneNumber("+4", {locale: "en-US"});
+	var parsed = new PhoneNumber("+4", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		subscriberNumber: "4"
 	});
@@ -347,10 +348,10 @@ function testParseUSPlusIDDToGBPartial2(){
 	
 };
 function testParseUSPlusIDDToGBPartial3(){
-	var parsed = new ilib.PhoneNumber("+44", {locale: "en-US"});
+	var parsed = new PhoneNumber("+44", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44"
 	});
@@ -359,10 +360,10 @@ function testParseUSPlusIDDToGBPartial3(){
 	
 };
 function testParseUSPlusIDDToGBPartial4(){
-	var parsed = new ilib.PhoneNumber("+442", {locale: "en-US"});
+	var parsed = new PhoneNumber("+442", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		subscriberNumber: "2"
@@ -372,10 +373,10 @@ function testParseUSPlusIDDToGBPartial4(){
 	
 };
 function testParseUSPlusIDDToGBPartial5(){
-	var parsed = new ilib.PhoneNumber("+4420", {locale: "en-US"});
+	var parsed = new PhoneNumber("+4420", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "20"
@@ -385,10 +386,10 @@ function testParseUSPlusIDDToGBPartial5(){
 	
 };
 function testParseUSPlusIDDToGBPartial6(){
-	var parsed = new ilib.PhoneNumber("+44201", {locale: "en-US"});
+	var parsed = new PhoneNumber("+44201", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -399,10 +400,10 @@ function testParseUSPlusIDDToGBPartial6(){
 	
 };
 function testParseUSPlusIDDToGBPartial7(){
-	var parsed = new ilib.PhoneNumber("+442012", {locale: "en-US"});
+	var parsed = new PhoneNumber("+442012", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -413,10 +414,10 @@ function testParseUSPlusIDDToGBPartial7(){
 	
 };
 function testParseUSPlusIDDToGBPartial8(){
-	var parsed = new ilib.PhoneNumber("+4420123", {locale: "en-US"});
+	var parsed = new PhoneNumber("+4420123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -427,10 +428,10 @@ function testParseUSPlusIDDToGBPartial8(){
 	
 };
 function testParseUSPlusIDDToGBPartial9(){
-	var parsed = new ilib.PhoneNumber("+44201234", {locale: "en-US"});
+	var parsed = new PhoneNumber("+44201234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -441,10 +442,10 @@ function testParseUSPlusIDDToGBPartial9(){
 	
 };
 function testParseUSPlusIDDToGBPartial10(){
-	var parsed = new ilib.PhoneNumber("+442012345", {locale: "en-US"});
+	var parsed = new PhoneNumber("+442012345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -455,10 +456,10 @@ function testParseUSPlusIDDToGBPartial10(){
 	
 };
 function testParseUSPlusIDDToGBPartial11(){
-	var parsed = new ilib.PhoneNumber("+4420123456", {locale: "en-US"});
+	var parsed = new PhoneNumber("+4420123456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -469,10 +470,10 @@ function testParseUSPlusIDDToGBPartial11(){
 	
 };
 function testParseUSPlusIDDToGBPartial12(){
-	var parsed = new ilib.PhoneNumber("+44201234567", {locale: "en-US"});
+	var parsed = new PhoneNumber("+44201234567", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -483,10 +484,10 @@ function testParseUSPlusIDDToGBPartial12(){
 	
 };
 function testParseUSPlusIDDToGBPartial13(){
-	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+442012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "44",
 			areaCode: "20",
@@ -499,10 +500,10 @@ function testParseUSPlusIDDToGBPartial13(){
 
 
 function testParseUSPlusIDDToUnknown(){
-	var parsed = new ilib.PhoneNumber("+5062012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+5062012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "506",	// Costa Rica
 		subscriberNumber: "2012345678"
@@ -513,10 +514,10 @@ function testParseUSPlusIDDToUnknown(){
 };
 
 function testParseUSZerosIDDToUnknown(){
-	var parsed = new ilib.PhoneNumber("0115062012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("0115062012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "011",
 		countryCode: "506", // Costa Rica
 		subscriberNumber: "2012345678"
@@ -526,10 +527,10 @@ function testParseUSZerosIDDToUnknown(){
 	
 };
 function testParseUSPartial1(){
-	var parsed = new ilib.PhoneNumber("4", {locale: "en-US"});
+	var parsed = new PhoneNumber("4", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "4"
 	});
 	
@@ -538,10 +539,10 @@ function testParseUSPartial1(){
 };
 
 function testParseUSPartial2(){
-	var parsed = new ilib.PhoneNumber("45", {locale: "en-US"});
+	var parsed = new PhoneNumber("45", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "45"
 	});
 	
@@ -549,10 +550,10 @@ function testParseUSPartial2(){
 	
 };
 function testParseUSPartial3(){
-	var parsed = new ilib.PhoneNumber("456", {locale: "en-US"});
+	var parsed = new PhoneNumber("456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "456"
 	});
 	
@@ -560,10 +561,10 @@ function testParseUSPartial3(){
 	
 };
 function testParseUSPartial4(){
-	var parsed = new ilib.PhoneNumber("4563", {locale: "en-US"});
+	var parsed = new PhoneNumber("4563", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "4563"
 	});
 	
@@ -571,10 +572,10 @@ function testParseUSPartial4(){
 	
 };
 function testParseUSPartial5(){
-	var parsed = new ilib.PhoneNumber("45634", {locale: "en-US"});
+	var parsed = new PhoneNumber("45634", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "45634"
 	});
 	
@@ -582,10 +583,10 @@ function testParseUSPartial5(){
 	
 };
 function testParseUSPartial6(){
-	var parsed = new ilib.PhoneNumber("456345", {locale: "en-US"});
+	var parsed = new PhoneNumber("456345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "456345"
 	});
 	
@@ -593,10 +594,10 @@ function testParseUSPartial6(){
 	
 };
 function testParseUSPartial7(){
-	var parsed = new ilib.PhoneNumber("4563453", {locale: "en-US"});
+	var parsed = new PhoneNumber("4563453", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "4563453"
 	});
 	
@@ -604,10 +605,10 @@ function testParseUSPartial7(){
 	
 };
 function testParseUSPartial8(){
-	var parsed = new ilib.PhoneNumber("45634534", {locale: "en-US"});
+	var parsed = new PhoneNumber("45634534", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "34534"
 	});
@@ -616,10 +617,10 @@ function testParseUSPartial8(){
 	
 };
 function testParseUSPartial9(){
-	var parsed = new ilib.PhoneNumber("456345343", {locale: "en-US"});
+	var parsed = new PhoneNumber("456345343", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "345343"
 	});
@@ -628,10 +629,10 @@ function testParseUSPartial9(){
 	
 };
 function testParseUSPartial10(){
-	var parsed = new ilib.PhoneNumber("4563453434", {locale: "en-US"});
+	var parsed = new PhoneNumber("4563453434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "3453434"
 	});
@@ -640,10 +641,10 @@ function testParseUSPartial10(){
 	
 };
 function testParseUSPartial11(){
-	var parsed = new ilib.PhoneNumber("45634534345", {locale: "en-US"});
+	var parsed = new PhoneNumber("45634534345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "456",
 		subscriberNumber: "34534345",
 		invalid: true
@@ -654,10 +655,10 @@ function testParseUSPartial11(){
 };
 
 function testParseUSPartialTrunk0(){
-	var parsed = new ilib.PhoneNumber("1", {locale: "en-US"});
+	var parsed = new PhoneNumber("1", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1"
 	});
 	
@@ -666,10 +667,10 @@ function testParseUSPartialTrunk0(){
 };
 
 function testParseUSPartialTrunk1(){
-	var parsed = new ilib.PhoneNumber("14", {locale: "en-US"});
+	var parsed = new PhoneNumber("14", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		subscriberNumber: "4"
 	});
@@ -679,10 +680,10 @@ function testParseUSPartialTrunk1(){
 };
 
 function testParseUSPartialTrunk2(){
-	var parsed = new ilib.PhoneNumber("145", {locale: "en-US"});
+	var parsed = new PhoneNumber("145", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		subscriberNumber: "45"
 	});
@@ -691,10 +692,10 @@ function testParseUSPartialTrunk2(){
 	
 };
 function testParseUSPartialTrunk3(){
-	var parsed = new ilib.PhoneNumber("1456", {locale: "en-US"});
+	var parsed = new PhoneNumber("1456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456"
 	});
@@ -703,10 +704,10 @@ function testParseUSPartialTrunk3(){
 	
 };
 function testParseUSPartialTrunk4(){
-	var parsed = new ilib.PhoneNumber("14563", {locale: "en-US"});
+	var parsed = new PhoneNumber("14563", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "3"
@@ -716,10 +717,10 @@ function testParseUSPartialTrunk4(){
 	
 };
 function testParseUSPartialTrunk5(){
-	var parsed = new ilib.PhoneNumber("145634", {locale: "en-US"});
+	var parsed = new PhoneNumber("145634", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "34"
@@ -729,10 +730,10 @@ function testParseUSPartialTrunk5(){
 	
 };
 function testParseUSPartialTrunk6(){
-	var parsed = new ilib.PhoneNumber("1456345", {locale: "en-US"});
+	var parsed = new PhoneNumber("1456345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "345"
@@ -742,10 +743,10 @@ function testParseUSPartialTrunk6(){
 	
 };
 function testParseUSPartialTrunk7(){
-	var parsed = new ilib.PhoneNumber("14563453", {locale: "en-US"});
+	var parsed = new PhoneNumber("14563453", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "3453"
@@ -755,10 +756,10 @@ function testParseUSPartialTrunk7(){
 	
 };
 function testParseUSPartialTrunk8(){
-	var parsed = new ilib.PhoneNumber("145634534", {locale: "en-US"});
+	var parsed = new PhoneNumber("145634534", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "34534"
@@ -768,10 +769,10 @@ function testParseUSPartialTrunk8(){
 	
 };
 function testParseUSPartialTrunk9(){
-	var parsed = new ilib.PhoneNumber("1456345343", {locale: "en-US"});
+	var parsed = new PhoneNumber("1456345343", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "345343"
@@ -781,10 +782,10 @@ function testParseUSPartialTrunk9(){
 	
 };
 function testParseUSPartialTrunk10(){
-	var parsed = new ilib.PhoneNumber("14563453434", {locale: "en-US"});
+	var parsed = new PhoneNumber("14563453434", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "3453434"
@@ -794,10 +795,10 @@ function testParseUSPartialTrunk10(){
 	
 };
 function testParseUSPartialTrunk11(){
-	var parsed = new ilib.PhoneNumber("145634534345", {locale: "en-US"});
+	var parsed = new PhoneNumber("145634534345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "456",
 		subscriberNumber: "34534345",
@@ -808,10 +809,10 @@ function testParseUSPartialTrunk11(){
 	
 };
 function testParseUSPartialIDD1(){
-	var parsed = new ilib.PhoneNumber("+", {locale: "en-US"});
+	var parsed = new PhoneNumber("+", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+"
 	});
 	
@@ -819,10 +820,10 @@ function testParseUSPartialIDD1(){
 	
 };
 function testParseUSPartialIDD2(){
-	var parsed = new ilib.PhoneNumber("+3", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		subscriberNumber: "3"
 	});
@@ -831,10 +832,10 @@ function testParseUSPartialIDD2(){
 	
 };
 function testParseUSPartialIDD3(){
-	var parsed = new ilib.PhoneNumber("+35", {locale: "en-US"});
+	var parsed = new PhoneNumber("+35", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		subscriberNumber: "35"
 	});
@@ -843,10 +844,10 @@ function testParseUSPartialIDD3(){
 	
 };
 function testParseUSPartialIDD4(){
-	var parsed = new ilib.PhoneNumber("+353", {locale: "en-US"});
+	var parsed = new PhoneNumber("+353", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353"
 	});
@@ -855,10 +856,10 @@ function testParseUSPartialIDD4(){
 	
 };
 function testParseUSPartialIDD5(){
-	var parsed = new ilib.PhoneNumber("+3531", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3531", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1"
@@ -868,10 +869,10 @@ function testParseUSPartialIDD5(){
 	
 };
 function testParseUSPartialIDD6(){
-	var parsed = new ilib.PhoneNumber("+35311", {locale: "en-US"});
+	var parsed = new PhoneNumber("+35311", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -882,10 +883,10 @@ function testParseUSPartialIDD6(){
 	
 };
 function testParseUSPartialIDD7(){
-	var parsed = new ilib.PhoneNumber("+353112", {locale: "en-US"});
+	var parsed = new PhoneNumber("+353112", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -896,10 +897,10 @@ function testParseUSPartialIDD7(){
 	
 };
 function testParseUSPartialIDD8(){
-	var parsed = new ilib.PhoneNumber("+3531123", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3531123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -910,10 +911,10 @@ function testParseUSPartialIDD8(){
 	
 };
 function testParseUSPartialIDD9(){
-	var parsed = new ilib.PhoneNumber("+35311234", {locale: "en-US"});
+	var parsed = new PhoneNumber("+35311234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -924,10 +925,10 @@ function testParseUSPartialIDD9(){
 	
 };
 function testParseUSPartialIDD10(){
-	var parsed = new ilib.PhoneNumber("+353112345", {locale: "en-US"});
+	var parsed = new PhoneNumber("+353112345", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -938,10 +939,10 @@ function testParseUSPartialIDD10(){
 	
 };
 function testParseUSPartialIDD11(){
-	var parsed = new ilib.PhoneNumber("+3531123456", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3531123456", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -952,10 +953,10 @@ function testParseUSPartialIDD11(){
 	
 };
 function testParseUSPartialIDD12(){
-	var parsed = new ilib.PhoneNumber("+35311234567", {locale: "en-US"});
+	var parsed = new PhoneNumber("+35311234567", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -966,10 +967,10 @@ function testParseUSPartialIDD12(){
 	
 };
 function testParseUSPartialIDD13(){
-	var parsed = new ilib.PhoneNumber("+353112345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+353112345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "353",
 		areaCode: "1",
@@ -981,10 +982,10 @@ function testParseUSPartialIDD13(){
 };
 
 function testParseUSPartialIDDtoPreserveZeroCountry0(){
-	var parsed = new ilib.PhoneNumber("+", {locale: "en-US"});
+	var parsed = new PhoneNumber("+", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+"
 	});
 	
@@ -992,10 +993,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry0(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry1(){
-	var parsed = new ilib.PhoneNumber("+3", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		subscriberNumber: "3"
 	});
@@ -1004,10 +1005,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry1(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry2(){
-	var parsed = new ilib.PhoneNumber("+39", {locale: "en-US"});
+	var parsed = new PhoneNumber("+39", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39"
 	});
@@ -1016,10 +1017,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry2(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry3(){
-	var parsed = new ilib.PhoneNumber("+390", {locale: "en-US"});
+	var parsed = new PhoneNumber("+390", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0"
@@ -1029,10 +1030,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry3(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry4(){
-	var parsed = new ilib.PhoneNumber("+3904", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3904", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1043,10 +1044,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry4(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry5(){
-	var parsed = new ilib.PhoneNumber("+39040", {locale: "en-US"});
+	var parsed = new PhoneNumber("+39040", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1057,10 +1058,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry5(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry6(){
-	var parsed = new ilib.PhoneNumber("+390401", {locale: "en-US"});
+	var parsed = new PhoneNumber("+390401", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1072,10 +1073,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry6(){
 	
 };
 function testParseUSPartialIDDtoPreserveZeroCountry7(){
-	var parsed = new ilib.PhoneNumber("+3904012345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+3904012345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1088,10 +1089,10 @@ function testParseUSPartialIDDtoPreserveZeroCountry7(){
 };
 
 function testParseUSWithUSMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "316"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "316"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 		});
@@ -1101,10 +1102,10 @@ function testParseUSWithUSMCC(){
 };
 
 function testParseUSWithFRMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "208"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "208"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: 'en-FR'});
 	
@@ -1113,10 +1114,10 @@ function testParseUSWithFRMCC(){
 };
 
 function testParseUSWithMXMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "334"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "334"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: 'en-MX'});
@@ -1126,10 +1127,10 @@ function testParseUSWithMXMCC(){
 };
 
 function testParseUSWithDEMCC(){
-	var parsed = new ilib.PhoneNumber("6153222313", {locale: "en-US", mcc: "262"});
+	var parsed = new PhoneNumber("6153222313", {locale: "en-US", mcc: "262"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: 'en-DE'});
 	
@@ -1139,10 +1140,10 @@ function testParseUSWithDEMCC(){
 
 
 function testParseUSWithUSMCCNoLocale(){
-	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "316"});
+	var parsed = new PhoneNumber("6153222313", {mcc: "316"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	});
@@ -1152,10 +1153,10 @@ function testParseUSWithUSMCCNoLocale(){
 };
 
 function testParseUSWithFRMCCNoLocale(){
-	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "208"});
+	var parsed = new PhoneNumber("6153222313", {mcc: "208"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: 'en-FR'});
 	
@@ -1164,10 +1165,10 @@ function testParseUSWithFRMCCNoLocale(){
 };
 
 function testParseUSWithMXMCCNoLocale(){
-	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "334"});
+	var parsed = new PhoneNumber("6153222313", {mcc: "334"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
 	}, {locale: 'en-MX'});
@@ -1177,10 +1178,10 @@ function testParseUSWithMXMCCNoLocale(){
 };
 
 function testParseUSWithDEMCCNoLocale(){
-	var parsed = new ilib.PhoneNumber("6153222313", {mcc: "262"});
+	var parsed = new PhoneNumber("6153222313", {mcc: "262"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "6153222313"
 	}, {locale: 'en-DE'});
 	
@@ -1191,10 +1192,10 @@ function testParseUSWithDEMCCNoLocale(){
 
 // for NOV-108200
 function testParseUSBogusSpecialChars(){
-	var parsed = new ilib.PhoneNumber("+P13817803573", {mcc: "262"});
+	var parsed = new PhoneNumber("+P13817803573", {mcc: "262"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "P1",
 		areaCode: "381",
@@ -1206,10 +1207,10 @@ function testParseUSBogusSpecialChars(){
 };
 
 function testParseUS555Number(){
-	var parsed = new ilib.PhoneNumber("(408) 555-1234", {locale: "en-US"});
+	var parsed = new PhoneNumber("(408) 555-1234", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "408",
 		subscriberNumber: "5551234"
 	});
@@ -1219,10 +1220,10 @@ function testParseUS555Number(){
 };
 
 function testParseUSHtmlGarbage(){
-	var parsed = new ilib.PhoneNumber("<button>t1</button>", {locale: "en-US"});
+	var parsed = new PhoneNumber("<button>t1</button>", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		extension: "ttt1tt"
 	});
 	
@@ -1231,10 +1232,10 @@ function testParseUSHtmlGarbage(){
 };
 
 function testParseUSIntermediateSizedNumber(){
-	var parsed = new ilib.PhoneNumber("56765432", {locale: "en-US"});
+	var parsed = new PhoneNumber("56765432", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "567",
 		subscriberNumber: "65432"
 	});
@@ -1244,10 +1245,10 @@ function testParseUSIntermediateSizedNumber(){
 };
 
 function testParseUSEmergencyLikeServiceNumber(){
-	var parsed = new ilib.PhoneNumber("411", {locale: "en-US"});
+	var parsed = new PhoneNumber("411", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		serviceCode: "411"
 	});
 	
@@ -1256,10 +1257,10 @@ function testParseUSEmergencyLikeServiceNumber(){
 };
 
 function testUSBogusInternationalNumber(){
-	var parsed = new ilib.PhoneNumber("+33112345678", {locale: "en-US"});
+	var parsed = new PhoneNumber("+33112345678", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "1",
@@ -1272,10 +1273,10 @@ function testUSBogusInternationalNumber(){
 
 
 function testUSFictitousNumberLocale(){
-	var parsed = new ilib.PhoneNumber("5555555", {locale: "en-US"});
+	var parsed = new PhoneNumber("5555555", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		subscriberNumber: "5555555"
 	});
 	
@@ -1284,10 +1285,10 @@ function testUSFictitousNumberLocale(){
 };
 
 function testUSFictitousNumberLD(){
-	var parsed = new ilib.PhoneNumber("5555555555", {locale: "en-US"});
+	var parsed = new PhoneNumber("5555555555", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		areaCode: "555",
 		subscriberNumber: "5555555"
 	});
@@ -1298,10 +1299,10 @@ function testUSFictitousNumberLD(){
 
 // for NOV-113367
 function testUSCrazyIntlCall(){
-	var parsed = new ilib.PhoneNumber("+1123", {locale: "en-US"});
+	var parsed = new PhoneNumber("+1123", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		subscriberNumber: "123"
@@ -1312,10 +1313,10 @@ function testUSCrazyIntlCall(){
 
 //for NOV-109333
 function testUSWierdVSC(){
-	var parsed = new ilib.PhoneNumber("*#43#", {locale: "en-US"});
+	var parsed = new PhoneNumber("*#43#", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*#43#"
 	});
 	
@@ -1324,10 +1325,10 @@ function testUSWierdVSC(){
 };
 
 function testUSSSCode(){
-	var parsed = new ilib.PhoneNumber("*646#", {locale: "en-US"});
+	var parsed = new PhoneNumber("*646#", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*646#"
 	});
 	
@@ -1337,10 +1338,10 @@ function testUSSSCode(){
 
 // for CFISH-5088
 function testUSVSCUMTS1(){
-	var parsed = new ilib.PhoneNumber("#*06", {locale: "en-US"});
+	var parsed = new PhoneNumber("#*06", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "#*06"
 	});
 	
@@ -1348,10 +1349,10 @@ function testUSVSCUMTS1(){
 	
 };
 function testUSVSCUMTS2(){
-	var parsed = new ilib.PhoneNumber("*#06#408-987-6543", {locale: "en-US"});
+	var parsed = new PhoneNumber("*#06#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*#06#4089876543"
 	});
 	
@@ -1359,10 +1360,10 @@ function testUSVSCUMTS2(){
 	
 };
 function testUSVSCUMTS3(){
-	var parsed = new ilib.PhoneNumber("*#062#408-987-6543", {locale: "en-US"});
+	var parsed = new PhoneNumber("*#062#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*#062#4089876543"
 	});
 	
@@ -1370,10 +1371,10 @@ function testUSVSCUMTS3(){
 	
 };
 function testUSVSCUMTS4(){
-	var parsed = new ilib.PhoneNumber("#62#408-987-6543", {locale: "en-US"});
+	var parsed = new PhoneNumber("#62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "#62#4089876543"
 	});
 	
@@ -1381,10 +1382,10 @@ function testUSVSCUMTS4(){
 	
 };
 function testUSVSCUMTS5(){
-	var parsed = new ilib.PhoneNumber("*##62#408-987-6543", {locale: "en-US"});
+	var parsed = new PhoneNumber("*##62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*##62#4089876543"
 	});
 	
@@ -1392,10 +1393,10 @@ function testUSVSCUMTS5(){
 	
 };
 function testUSVSCUMTS6(){
-	var parsed = new ilib.PhoneNumber("##62#408-987-6543", {locale: "en-US"});
+	var parsed = new PhoneNumber("##62#408-987-6543", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "##62#4089876543"
 	});
 	
@@ -1405,10 +1406,10 @@ function testUSVSCUMTS6(){
 
 // for CFISH-6022
 function testUSVSCVerizon(){
-	var parsed = new ilib.PhoneNumber("*228", {locale: "en-US"});
+	var parsed = new PhoneNumber("*228", {locale: "en-US"});
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*228"
 	});
 	
@@ -1416,10 +1417,10 @@ function testUSVSCVerizon(){
 	
 };
 function testUSVSCVerizon2(){
-	var parsed = new ilib.PhoneNumber("*844752224458", {mcc: "310"}); // US
+	var parsed = new PhoneNumber("*844752224458", {mcc: "310"}); // US
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "*844752224458"
 	});
 	
@@ -1429,10 +1430,10 @@ function testUSVSCVerizon2(){
 
 // for CFISH-6362
 function testUSVSCCDMALong(){
-	var parsed = new ilib.PhoneNumber("1123456", {mcc: "310"}); // US
+	var parsed = new PhoneNumber("1123456", {mcc: "310"}); // US
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		vsc: "1123456"
 	});
 	
@@ -1442,10 +1443,10 @@ function testUSVSCCDMALong(){
 
 //for CFISH-6444
 function testParseUSWithForeignIDD(){
-	var parsed = new ilib.PhoneNumber("0044209876543", {mcc: "310"}); // US but with a foreign IDD
+	var parsed = new PhoneNumber("0044209876543", {mcc: "310"}); // US but with a foreign IDD
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "44", // uk
 		areaCode: "20", // london
@@ -1458,10 +1459,10 @@ function testParseUSWithForeignIDD(){
 
 // for CFISH-6845
 function testParseUSWithChinaIDD(){
-	var parsed = new ilib.PhoneNumber("00861098765432"); // US home locale but using a foreign IDD
+	var parsed = new PhoneNumber("00861098765432"); // US home locale but using a foreign IDD
 	assertNotUndefined(parsed);
 	
-	var expected = new ilib.PhoneNumber({
+	var expected = new PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "86", // china
 		areaCode: "10", // beijing

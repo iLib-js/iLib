@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ta_IN() {
-	var parsed = new ilib.Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
+	var parsed = new Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_ta_IN() {
 };
 
 function testParseTitle_ta_IN() {
-	var parsed = new ilib.Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
+	var parsed = new Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_ta_IN() {
 };
 
 function testParseTitleWithFamilyOnly_ta_IN() {
-	var parsed = new ilib.Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
+	var parsed = new Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -55,7 +57,7 @@ function testParseTitleWithFamilyOnly_ta_IN() {
 };
 
 function testParseEverything_ta_IN() {
-	var parsed = new ilib.Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
+	var parsed = new Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseEverything_ta_IN() {
 };
 
 function testParseprefix_ta_IN() {
-	var parsed = new ilib.Name("திரு மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
+	var parsed = new Name("திரு மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -83,11 +85,11 @@ function testParseprefix_ta_IN() {
  */
 
 function testFormatSimpleNameShort_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ta-IN'
 	});
@@ -100,11 +102,11 @@ function testFormatSimpleNameShort_ta_IN() {
 };
 
 function testFormatSimpleNameMedium_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ta-IN'
 	});
@@ -117,11 +119,11 @@ function testFormatSimpleNameMedium_ta_IN() {
 };
 
 function testFormatSimpleNameLong_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ta-IN'
 	});
@@ -134,11 +136,11 @@ function testFormatSimpleNameLong_ta_IN() {
 };
 
 function testFormatSurname_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "திரு மற்றும் திருமதி",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ta-IN'
 	});
@@ -151,13 +153,13 @@ function testFormatSurname_ta_IN() {
 };
 
 function testFormatSimpleNameFull_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "வைத்தியர்",
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே",
 		suffix: "மிஸ்"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ta-IN'
 	});
@@ -170,12 +172,12 @@ function testFormatSimpleNameFull_ta_IN() {
 };
 
 function testFormatComplexNameShort_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "வைத்தியர்",
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ta-IN'
 	});
@@ -188,12 +190,12 @@ function testFormatComplexNameShort_ta_IN() {
 };
 
 function testFormatComplexNameMedium_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "வைத்தியர்",
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ta-IN'
 	});
@@ -206,12 +208,12 @@ function testFormatComplexNameMedium_ta_IN() {
 };
 
 function testFormatComplexNameLong_ta_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "வைத்தியர்",
 		givenName: "மஹிலா",
 		familyName: "ஜெயவர்த்தனே"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ta-IN'
 	});

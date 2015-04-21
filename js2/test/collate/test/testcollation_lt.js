@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Collator = require("./../lib/Collator.js");
+
 function testJSCollatorQuatCD_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -35,7 +37,7 @@ function testJSCollatorQuatCD_lt() {
 }
 
 function testJSCollatorQuatEF_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -54,7 +56,7 @@ function testJSCollatorQuatEF_lt() {
 }
 
 function testJSCollatorQuatIJ_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -73,7 +75,7 @@ function testJSCollatorQuatIJ_lt() {
 }
 
 function testJSCollatorQuatST_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -90,7 +92,7 @@ function testJSCollatorQuatST_lt() {
 }
 
 function testJSCollatorQuatUV_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -109,7 +111,7 @@ function testJSCollatorQuatUV_lt() {
 }
 
 function testJSCollatorQuatZ_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -126,7 +128,7 @@ function testJSCollatorQuatZ_lt() {
 // differences in accented characters should be primary differences
 
 function testJSCollatorPrimaryCD_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -144,7 +146,7 @@ function testJSCollatorPrimaryCD_lt() {
 }
 
 function testJSCollatorPrimaryEF_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -164,7 +166,7 @@ function testJSCollatorPrimaryEF_lt() {
 }
 
 function testJSCollatorPrimaryIJ_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -184,7 +186,7 @@ function testJSCollatorPrimaryIJ_lt() {
 }
 
 function testJSCollatorPrimaryST_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -202,7 +204,7 @@ function testJSCollatorPrimaryST_lt() {
 }
 
 function testJSCollatorPrimaryUV_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -222,7 +224,7 @@ function testJSCollatorPrimaryUV_lt() {
 }
 
 function testJSCollatorPrimaryZ_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "primary",
@@ -238,7 +240,7 @@ function testJSCollatorPrimaryZ_lt() {
 }
 
 function testCollatorNativeCase_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "case",
@@ -341,7 +343,7 @@ function testCollatorNativeCase_lt() {
 }
 
 function testCollatorNativeVariant_lt() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lt-LT",
 		useNative: false,
 		sensitivity: "variant",

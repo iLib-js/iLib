@@ -17,18 +17,21 @@
  * limitations under the License.
  */
 
+var JulianDate = require("./../lib/JulianDate.js");
+var EthiopicDate = require("./../lib/EthiopicDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtConstructorEmpty_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET"});
+    var fmt = new DateFmt({locale: "am-ET"});
     
     assertNotNull(fmt);
 }
 
 
 function testDateFmtSimpleShort_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "short"});
+    var fmt = new DateFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -42,10 +45,10 @@ function testDateFmtSimpleShort_am_ET() {
 }
 
 function testDateFmtSimpleMedium_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "medium"});
+    var fmt = new DateFmt({locale: "am-ET", length: "medium"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -59,10 +62,10 @@ function testDateFmtSimpleMedium_am_ET() {
 }
 
 function testDateFmtSimpleLong_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "long"});
+    var fmt = new DateFmt({locale: "am-ET", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -76,10 +79,10 @@ function testDateFmtSimpleLong_am_ET() {
 }
 
 function testDateFmtSimpleFull_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -93,10 +96,10 @@ function testDateFmtSimpleFull_am_ET() {
 }
 
 function testDateFmtSimpleTimeShort_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "am-ET", length: "short", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -110,10 +113,10 @@ function testDateFmtSimpleTimeShort_am_ET() {
 }
 
 function testDateFmtSimpleTimeMedium_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "medium", type: "time"});
+    var fmt = new DateFmt({locale: "am-ET", length: "medium", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -127,10 +130,10 @@ function testDateFmtSimpleTimeMedium_am_ET() {
 }
 
 function testDateFmtSimpleTimeLong_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", timelength: "long", type: "time"});
+    var fmt = new DateFmt({locale: "am-ET", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -144,10 +147,10 @@ function testDateFmtSimpleTimeLong_am_ET() {
 }
 
 function testDateFmtSimpleTimeFull_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", type: "time"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -161,10 +164,10 @@ function testDateFmtSimpleTimeFull_am_ET() {
 }
 
 function testDateFmtDateTimeSimpleShort_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "short", type: "datetime"});
+    var fmt = new DateFmt({locale: "am-ET", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -178,10 +181,10 @@ function testDateFmtDateTimeSimpleShort_am_ET() {
 }
 
 function testDateFmtDateTimeSimpleMedium_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "medium", type: "datetime"});
+    var fmt = new DateFmt({locale: "am-ET", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -195,10 +198,10 @@ function testDateFmtDateTimeSimpleMedium_am_ET() {
 }
 
 function testDateFmtDateTimeSimpleLong_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "long", type: "datetime"});
+    var fmt = new DateFmt({locale: "am-ET", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -212,10 +215,10 @@ function testDateFmtDateTimeSimpleLong_am_ET() {
 }
 
 function testDateFmtDateTimeSimpleFull_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", type: "datetime"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -229,10 +232,10 @@ function testDateFmtDateTimeSimpleFull_am_ET() {
 }
 
 function testDateFmtjTemplateMorning_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "h"});
+    var fmt = new DateFmt({locale: "am-ET", template: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -246,10 +249,10 @@ function testDateFmtjTemplateMorning_am_ET() {
 }
 
 function testDateFmtjjTemplateMorning_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -263,10 +266,10 @@ function testDateFmtjjTemplateMorning_am_ET() {
 }
 
 function testDateFmtjTemplateEvening_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "h"});
+    var fmt = new DateFmt({locale: "am-ET", template: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -280,10 +283,10 @@ function testDateFmtjTemplateEvening_am_ET() {
 }
 
 function testDateFmtjjTemplateEvening_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -297,10 +300,10 @@ function testDateFmtjjTemplateEvening_am_ET() {
 }
 
 function testDateFmtjjTemplateTransitionBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -314,10 +317,10 @@ function testDateFmtjjTemplateTransitionBefore_am_ET() {
 }
 
 function testDateFmtjjTemplateTransitionAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -331,10 +334,10 @@ function testDateFmtjjTemplateTransitionAfter_am_ET() {
 }
 
 function testDateFmtjjTemplateTransitionEveningBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -348,10 +351,10 @@ function testDateFmtjjTemplateTransitionEveningBefore_am_ET() {
 }
 
 function testDateFmtjjTemplateTransitionEveningAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -366,10 +369,10 @@ function testDateFmtjjTemplateTransitionEveningAfter_am_ET() {
 
 
 function testDateFmtTemplateCalendar_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
     	locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -384,10 +387,10 @@ function testDateFmtTemplateCalendar_am_ET() {
 
 
 function testDateFmtTemplateCalendarIncompatibleDateType_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+    var fmt = new DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -402,10 +405,10 @@ function testDateFmtTemplateCalendarIncompatibleDateType_am_ET() {
 }
 
 function testDateFmtTemplateClock12SwitchHH_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", clock: "12", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "am-ET", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -419,10 +422,10 @@ function testDateFmtTemplateClock12SwitchHH_am_ET() {
 }
 
 function testDateFmtTemplateClock12Switchkk_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", clock: "12", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "am-ET", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -436,10 +439,10 @@ function testDateFmtTemplateClock12Switchkk_am_ET() {
 }
 
 function testDateFmtTemplateClock24Switchhh_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", clock: "24", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "am-ET", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -453,10 +456,10 @@ function testDateFmtTemplateClock24Switchhh_am_ET() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", clock: "24", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "am-ET", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -470,10 +473,10 @@ function testDateFmtTemplateClock24SwitchKK_am_ET() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "am-ET", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -487,10 +490,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_am_ET() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "am-ET", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -504,10 +507,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_am_ET() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "am-ET", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -521,10 +524,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_am_ET() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "am-ET", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -539,10 +542,10 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_am_ET() {
 
 
 function testDateFmtTypeDate_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "date"});
+    var fmt = new DateFmt({locale: "am-ET", type: "date"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -556,10 +559,10 @@ function testDateFmtTypeDate_am_ET() {
 }
 
 function testDateFmtTypeTime_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -573,10 +576,10 @@ function testDateFmtTypeTime_am_ET() {
 }
 
 function testDateFmtTypeDateTime_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "datetime"});
+    var fmt = new DateFmt({locale: "am-ET", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -591,10 +594,10 @@ function testDateFmtTypeDateTime_am_ET() {
 
 
 function testDateFmtShortDateComponentsY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "y"});
+    var fmt = new DateFmt({locale: "am-ET", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -608,10 +611,10 @@ function testDateFmtShortDateComponentsY_am_ET() {
 }
 
 function testDateFmtShortDateComponentsM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "m"});
+    var fmt = new DateFmt({locale: "am-ET", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -625,10 +628,10 @@ function testDateFmtShortDateComponentsM_am_ET() {
 }
 
 function testDateFmtShortDateComponentsN_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "n"});
+    var fmt = new DateFmt({locale: "am-ET", date: "n"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -642,10 +645,10 @@ function testDateFmtShortDateComponentsN_am_ET() {
 }
 
 function testDateFmtShortDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "d"});
+    var fmt = new DateFmt({locale: "am-ET", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -659,10 +662,10 @@ function testDateFmtShortDateComponentsD() {
 }
 
 function testDateFmtShortDateComponentsDM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "dm"});
+    var fmt = new DateFmt({locale: "am-ET", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -676,10 +679,10 @@ function testDateFmtShortDateComponentsDM_am_ET() {
 }
 
 function testDateFmtShortDateComponentsMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "my"});
+    var fmt = new DateFmt({locale: "am-ET", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -693,10 +696,10 @@ function testDateFmtShortDateComponentsMY_am_ET() {
 }
 
 function testDateFmtShortDateComponentsDMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "dmy"});
+    var fmt = new DateFmt({locale: "am-ET", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -710,10 +713,10 @@ function testDateFmtShortDateComponentsDMY_am_ET() {
 }
 
 function testDateFmtShortDateComponentsWDM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "wdm"});
+    var fmt = new DateFmt({locale: "am-ET", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -727,10 +730,10 @@ function testDateFmtShortDateComponentsWDM_am_ET() {
 }
 
 function testDateFmtShortDateComponentsWDMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", date: "wdmy"});
+    var fmt = new DateFmt({locale: "am-ET", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -745,10 +748,10 @@ function testDateFmtShortDateComponentsWDMY_am_ET() {
 
 
 function testDateFmtFullDateComponentsY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "y"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -762,10 +765,10 @@ function testDateFmtFullDateComponentsY_am_ET() {
 }
 
 function testDateFmtFullDateComponentsM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "m"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -779,10 +782,10 @@ function testDateFmtFullDateComponentsM_am_ET() {
 }
 
 function testDateFmtFullDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "d"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -796,10 +799,10 @@ function testDateFmtFullDateComponentsD() {
 }
 
 function testDateFmtFullDateComponentsDM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "dm"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -813,10 +816,10 @@ function testDateFmtFullDateComponentsDM_am_ET() {
 }
 
 function testDateFmtFullDateComponentsMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "my"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -830,10 +833,10 @@ function testDateFmtFullDateComponentsMY_am_ET() {
 }
 
 function testDateFmtFullDateComponentsDMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "dmy"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -847,10 +850,10 @@ function testDateFmtFullDateComponentsDMY_am_ET() {
 }
 
 function testDateFmtFullDateComponentsWDM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "wdm"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -864,10 +867,10 @@ function testDateFmtFullDateComponentsWDM_am_ET() {
 }
 
 function testDateFmtFullDateComponentsWDMY_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full", date: "wdmy"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -882,10 +885,10 @@ function testDateFmtFullDateComponentsWDMY_am_ET() {
 
 
 function testDateFmtShortTimeComponentsS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "s"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -899,10 +902,10 @@ function testDateFmtShortTimeComponentsS_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "m"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -916,10 +919,10 @@ function testDateFmtShortTimeComponentsM_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsH_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "h"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -933,10 +936,10 @@ function testDateFmtShortTimeComponentsH_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsMS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "ms"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -950,10 +953,10 @@ function testDateFmtShortTimeComponentsMS_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "hm"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -967,10 +970,10 @@ function testDateFmtShortTimeComponentsHM_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "hms"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -984,10 +987,10 @@ function testDateFmtShortTimeComponentsHMS_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMA_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "hma"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1001,7 +1004,7 @@ function testDateFmtShortTimeComponentsHMA_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         time: "hmz", 
@@ -1009,7 +1012,7 @@ function testDateFmtShortTimeComponentsHMZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1023,7 +1026,7 @@ function testDateFmtShortTimeComponentsHMZ_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMAZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         time: "hmaz", 
@@ -1031,7 +1034,7 @@ function testDateFmtShortTimeComponentsHMAZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1045,10 +1048,10 @@ function testDateFmtShortTimeComponentsHMAZ_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMSA_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", time: "hmsa"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1062,7 +1065,7 @@ function testDateFmtShortTimeComponentsHMSA_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMSZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         time: "hmsz", 
@@ -1070,7 +1073,7 @@ function testDateFmtShortTimeComponentsHMSZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1084,7 +1087,7 @@ function testDateFmtShortTimeComponentsHMSZ_am_ET() {
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         time: "hmsaz", 
@@ -1092,7 +1095,7 @@ function testDateFmtShortTimeComponentsHMSAZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1107,10 +1110,10 @@ function testDateFmtShortTimeComponentsHMSAZ_am_ET() {
 
 
 function testDateFmtFullTimeComponentsS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "s"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1124,10 +1127,10 @@ function testDateFmtFullTimeComponentsS_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "m"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1141,10 +1144,10 @@ function testDateFmtFullTimeComponentsM_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsH_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "h"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1158,10 +1161,10 @@ function testDateFmtFullTimeComponentsH_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsMS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "ms"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1175,10 +1178,10 @@ function testDateFmtFullTimeComponentsMS_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHM_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "hm"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1192,10 +1195,10 @@ function testDateFmtFullTimeComponentsHM_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMS_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "hms"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1209,10 +1212,10 @@ function testDateFmtFullTimeComponentsHMS_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMA_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1226,7 +1229,7 @@ function testDateFmtFullTimeComponentsHMA_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "full", 
@@ -1235,7 +1238,7 @@ function testDateFmtFullTimeComponentsHMZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1249,7 +1252,7 @@ function testDateFmtFullTimeComponentsHMZ_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMAZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "full", 
@@ -1258,7 +1261,7 @@ function testDateFmtFullTimeComponentsHMAZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1272,10 +1275,10 @@ function testDateFmtFullTimeComponentsHMAZ_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMSA_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1289,7 +1292,7 @@ function testDateFmtFullTimeComponentsHMSA_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMSZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "full", 
@@ -1298,7 +1301,7 @@ function testDateFmtFullTimeComponentsHMSZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1312,7 +1315,7 @@ function testDateFmtFullTimeComponentsHMSZ_am_ET() {
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "full", 
@@ -1321,7 +1324,7 @@ function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1335,7 +1338,7 @@ function testDateFmtFullTimeComponentsHMSAZ_am_ET() {
 }
 
 function testDateFmtWithTimeZoneAndNoDST_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "full", 
@@ -1344,7 +1347,7 @@ function testDateFmtWithTimeZoneAndNoDST_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 12,
@@ -1359,7 +1362,7 @@ function testDateFmtWithTimeZoneAndNoDST_am_ET() {
 }
 
 function testDateFmtTimeMeridiem0_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "long", 
@@ -1368,7 +1371,7 @@ function testDateFmtTimeMeridiem0_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1382,7 +1385,7 @@ function testDateFmtTimeMeridiem0_am_ET() {
 }
 
 function testDateFmtTimeMeridiem1_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "long", 
@@ -1391,7 +1394,7 @@ function testDateFmtTimeMeridiem1_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1405,7 +1408,7 @@ function testDateFmtTimeMeridiem1_am_ET() {
 }
 
 function testDateFmtTimeMeridiem2_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "long", 
@@ -1414,7 +1417,7 @@ function testDateFmtTimeMeridiem2_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1428,7 +1431,7 @@ function testDateFmtTimeMeridiem2_am_ET() {
 }
 
 function testDateFmtTimeMeridiem3_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "long", 
@@ -1437,7 +1440,7 @@ function testDateFmtTimeMeridiem3_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1451,7 +1454,7 @@ function testDateFmtTimeMeridiem3_am_ET() {
 }
 
 function testDateFmtTimeMeridiem4_am_ET() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
         locale: "am-ET", 
         type: "time", 
         length: "long", 
@@ -1460,7 +1463,7 @@ function testDateFmtTimeMeridiem4_am_ET() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1474,10 +1477,10 @@ function testDateFmtTimeMeridiem4_am_ET() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1487,7 +1490,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1500,10 +1503,10 @@ function testDateFmtFormatRelativeWithinMinuteAfter_am_ET() {
     assertEquals("በ 30 ሰከንዶች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1513,7 +1516,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1526,10 +1529,10 @@ function testDateFmtFormatRelativeWithinMinuteBefore_am_ET() {
     assertEquals("ከ30 ሰከንዶች በፊት", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1539,7 +1542,7 @@ function testDateFmtFormatRelativeWithinHourAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1552,10 +1555,10 @@ function testDateFmtFormatRelativeWithinHourAfter_am_ET() {
     assertEquals("በ 10 ደቂቃዎች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1565,7 +1568,7 @@ function testDateFmtFormatRelativeWithinHourBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1578,10 +1581,10 @@ function testDateFmtFormatRelativeWithinHourBefore_am_ET() {
     assertEquals("ከ10 ደቂቃዎች በፊት", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1591,7 +1594,7 @@ function testDateFmtFormatRelativeWithinDayAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1604,10 +1607,10 @@ function testDateFmtFormatRelativeWithinDayAfter_am_ET() {
     assertEquals("በ 4 ሰዓቶች ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1617,7 +1620,7 @@ function testDateFmtFormatRelativeWithinDayBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1631,10 +1634,10 @@ function testDateFmtFormatRelativeWithinDayBefore_am_ET() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1644,7 +1647,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1657,10 +1660,10 @@ function testDateFmtFormatRelativeWithinFortnightAfter_am_ET() {
     assertEquals("በ 4 ቀናት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1670,7 +1673,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1684,10 +1687,10 @@ function testDateFmtFormatRelativeWithinFortnightBefore_am_ET() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1697,7 +1700,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 11,
@@ -1710,10 +1713,10 @@ function testDateFmtFormatRelativeWithinQuarterAfter_am_ET() {
     assertEquals("በ 9 ሳምንታት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1723,7 +1726,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 7,
@@ -1737,10 +1740,10 @@ function testDateFmtFormatRelativeWithinQuarterBefore_am_ET() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1750,7 +1753,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2013,
 		month: 1,
@@ -1763,10 +1766,10 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET() {
     assertEquals("በ 16 ወራት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1776,7 +1779,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2010,
 		month: 7,
@@ -1790,10 +1793,10 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1803,7 +1806,7 @@ function testDateFmtFormatRelativeYearsAfter_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 2025,
 		month: 10,
@@ -1816,10 +1819,10 @@ function testDateFmtFormatRelativeYearsAfter_am_ET() {
     assertEquals("በ 14 ዓመታት ውስጥ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_am_ET() {
-    var fmt = new ilib.DateFmt({locale: "am-ET", length: "full"});
+    var fmt = new DateFmt({locale: "am-ET", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.EthiopicDate({
+    var reference = new EthiopicDate({
 		locale: "am-ET",
 		year: 2011,
 		month: 9,
@@ -1829,7 +1832,7 @@ function testDateFmtFormatRelativeYearsBefore_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.EthiopicDate({
+    var date = new EthiopicDate({
 		locale: "am-ET",
 		year: 1990,
 		month: 7,

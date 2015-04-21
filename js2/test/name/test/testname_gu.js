@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_gu_IN() {
-	var parsed = new ilib.Name("જેઠાલાલ મોદી", {locale: 'gu-IN'});
+	var parsed = new Name("જેઠાલાલ મોદી", {locale: 'gu-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_gu_IN() {
 
 
 function testParseTitle_gu_IN() {
-	var parsed = new ilib.Name("જેઠાલાલ મોદી વરિષ્ઠ", {locale: 'gu-IN'});
+	var parsed = new Name("જેઠાલાલ મોદી વરિષ્ઠ", {locale: 'gu-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_gu_IN() {
 
 
 function testParseEverything_gu_IN() {
-	var parsed = new ilib.Name("મિસ્ટર અને શ્રીમતી મોદી", {locale: 'gu-IN'});
+	var parsed = new Name("મિસ્ટર અને શ્રીમતી મોદી", {locale: 'gu-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -59,7 +61,7 @@ function testParseEverything_gu_IN() {
 };
 
 function testParseprefix_gu_IN() {
-	var parsed = new ilib.Name("મિસ્ટર જેઠાલાલ મોદી", {locale: 'gu-IN'});
+	var parsed = new Name("મિસ્ટર જેઠાલાલ મોદી", {locale: 'gu-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -75,11 +77,11 @@ function testParseprefix_gu_IN() {
  */
 
 function testFormatSimpleNameShort_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "જેઠાલાલ",
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'gu-IN'
 	});
@@ -92,12 +94,12 @@ function testFormatSimpleNameShort_gu_IN() {
 };
 
 function testFormatSimpleNameMedium_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "જેઠાલાલ",
 		
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'gu-IN'
 	});
@@ -110,13 +112,13 @@ function testFormatSimpleNameMedium_gu_IN() {
 };
 
 function testFormatSimpleNameLong_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "જેઠાલાલ",
 		
 		familyName: "મોદી",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'gu-IN'
 	});
@@ -129,12 +131,12 @@ function testFormatSimpleNameLong_gu_IN() {
 };
 
 function testFormatSurname_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "મિસ્ટર અને શ્રીમતી",
 		
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'gu-IN'
 	});
@@ -147,14 +149,14 @@ function testFormatSurname_gu_IN() {
 };
 
 function testFormatSimpleNameFull_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ગુમાવે છે",
 		givenName: "જેઠાલાલ",
 		
 		familyName: "મોદી",
 		suffix: "વરિષ્ઠ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'gu-IN'
 	});
@@ -167,12 +169,12 @@ function testFormatSimpleNameFull_gu_IN() {
 };
 
 function testFormatComplexNameShort_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ગુમાવે છે",
 		givenName: "જેઠાલાલ",
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'gu-IN'
 	});
@@ -185,12 +187,12 @@ function testFormatComplexNameShort_gu_IN() {
 };
 
 function testFormatComplexNameMedium_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ગુમાવે છે",
 		givenName: "જેઠાલાલ",
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'gu-IN'
 	});
@@ -203,12 +205,12 @@ function testFormatComplexNameMedium_gu_IN() {
 };
 
 function testFormatComplexNameLong_gu_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ગુમાવે છે",
 		givenName: "જેઠાલાલ",
 		familyName: "મોદી"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'gu-IN'
 	});

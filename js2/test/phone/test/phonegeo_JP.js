@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 function testJPLocalNumber1() {
-	var parsed = new ilib.PhoneNumber("3111 1111",{locale: "ja-JP"});
+	var parsed = new PhoneNumber("3111 1111",{locale: "ja-JP"});
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -27,7 +29,7 @@ function testJPLocalNumber1() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
+	var locator = new PhoneGeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -37,7 +39,7 @@ function testJPLocalNumber1() {
 };
 
 function testJPNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("056-5-3111-1111",{locale: "ja-JP"});
+	var parsed = new PhoneNumber("056-5-3111-1111",{locale: "ja-JP"});
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -50,7 +52,7 @@ function testJPNumberWithAreaCode1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: "ja-JP"});
+	var locator = new PhoneGeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -61,7 +63,7 @@ function testJPNumberWithAreaCode1() {
 };
 
 function testJPNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("03-3262-2391",{locale: "ja-JP"});
+	var parsed = new PhoneNumber("03-3262-2391",{locale: "ja-JP"});
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -74,7 +76,7 @@ function testJPNumberWithAreaCode2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
+	var locator = new PhoneGeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -85,7 +87,7 @@ function testJPNumberWithAreaCode2() {
 };
 
 function testJPNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+81-3-2122-3456");
+	var parsed = new PhoneNumber("+81-3-2122-3456");
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -98,7 +100,7 @@ function testJPNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ja-JP'});
+	var locator = new PhoneGeoLocator({locale: 'ja-JP'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -109,7 +111,7 @@ function testJPNumberWithAreaCodeAndCountry1() {
 };
 
 function testJPNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+81-56-5-2122-3456");
+	var parsed = new PhoneNumber("+81-56-5-2122-3456");
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -122,7 +124,7 @@ function testJPNumberWithAreaCodeAndCountry2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -133,7 +135,7 @@ function testJPNumberWithAreaCodeAndCountry2() {
 };
 
 function testJPNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+81-4-29-2123-3456");
+	var parsed = new PhoneNumber("+81-4-29-2123-3456");
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -146,7 +148,7 @@ function testJPNumberWithAreaCodeAndCountry3() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -157,7 +159,7 @@ function testJPNumberWithAreaCodeAndCountry3() {
 };
 
 function testJPNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 81-4-29-2123-3456");
+	var parsed = new PhoneNumber("011 81-4-29-2123-3456");
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -170,7 +172,7 @@ function testJPNumberCallFromUS() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -181,7 +183,7 @@ function testJPNumberCallFromUS() {
 };
 
 function testJPNumberWithAreaCodeAndCountry4() {
-	var parsed = new ilib.PhoneNumber("+81-4-29-2123-3456");
+	var parsed = new PhoneNumber("+81-4-29-2123-3456");
 	var expected = {
 		country: {
 			sn: "Japon",
@@ -194,7 +196,7 @@ function testJPNumberWithAreaCodeAndCountry4() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -205,7 +207,7 @@ function testJPNumberWithAreaCodeAndCountry4() {
 };
 
 function testJPPolice() {
-	var parsed = new ilib.PhoneNumber("110",{locale: "ja-JP"});
+	var parsed = new PhoneNumber("110",{locale: "ja-JP"});
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -217,7 +219,7 @@ function testJPPolice() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ja-JP"});
+	var locator = new PhoneGeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -229,7 +231,7 @@ function testJPPolice() {
 };
 
 function testJPFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("119",{locale: "ja-JP"});
+	var parsed = new PhoneNumber("119",{locale: "ja-JP"});
 	var expected = {
 		country: {
 			sn: "Japan",
@@ -241,7 +243,7 @@ function testJPFireAndAmbulance() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ja-JP"});
+	var locator = new PhoneGeoLocator({locale: "ja-JP"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

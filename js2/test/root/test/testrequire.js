@@ -18,6 +18,10 @@
  * limitations under the License.
  */
 
+// !dependencies: false
+
+var ilib = require("./../lib/ilib.js");
+
 function testRequireSingleFile() {
 	if (!ilib.isDynCode()) {
 		// can't test the require function unless you're 
@@ -30,56 +34,27 @@ function testRequireSingleFile() {
     assertEquals("function", typeof(mod));
 }
 
-function testRequireSingleFileWithSideEffects() {
-	if (!ilib.isDynCode()) {
-		// can't test the require function unless you're 
-		// in dynamic code loading mode
-		return;
-	}
-    assertUndefined(ilib.Foobar);
-    
-    var mod = require("./root/test/testfiles/foobar.js");
-    assertNotUndefined("mod", mod);
-    
-    assertNotUndefined("ilib.Foobar", ilib.Foobar);
-}
-
-function testRequireSingleFileDependenciesLoaded() {
-	if (!ilib.isDynCode()) {
-		// can't test the require function unless you're 
-		// in dynamic code loading mode
-		return;
-	}
-	assertUndefined(ilib.Grzwfd);
-    
-    // datefmt2 depends on locale2 automatically
-    var mod = require("./root/test/testfiles/asdf.js");
-    assertNotUndefined(mod);
-    
-    assertNotUndefined(ilib.Grzwfd);
-}
-
 function testRequireDoNotReloadSameFile() {
 	if (!ilib.isDynCode()) {
 		// can't test the require function unless you're 
 		// in dynamic code loading mode
 		return;
 	}
-	assertUndefined(ilib.Qwerty);
+	assertUndefined(Qwerty);
+
+	var Qwerty = require("./root/test/testfiles/qwerty.js");
+	assertNotUndefined(Qwerty);
     
-	var mod = require("./root/test/testfiles/qwerty.js");
-	assertNotUndefined(mod);
+    Qwerty.testproperty = "foo";
     
-    assertNotUndefined(ilib.Qwerty);
-    ilib.Qwerty.testproperty = "foo";
-    
-    ilib.Qwerty = undefined;
+    Qwerty = undefined;
     
     // should not reload it again because it already loaded it previously
     // so the test property should be in the cache
-    ilib.Qwerty = require("./root/test/testfiles/qwerty.js");
-    assertNotUndefined(ilib.Qwerty);
-    assertEquals("foo", ilib.Qwerty.testproperty);
+    Qwerty = require("./root/test/testfiles/qwerty.js");
+    
+    assertNotUndefined(Qwerty);
+    assertEquals("foo", Qwerty.testproperty);
 }
 
 function testRequireRunCode1() {
@@ -88,10 +63,11 @@ function testRequireRunCode1() {
 		// in dynamic code loading mode
 		return;
 	}
-    var mod = require("./root/test/testfiles/datefmt2.js");
-    assertNotUndefined(mod);
+	var Locale2 = require("./root/test/testfiles/locale2.js");
+	
+    assertNotUndefined(Locale2);
 
-    var locale = new ilib.Locale2("de-DE");
+    var locale = new Locale2("de-DE");
     
     assertEquals("de", locale.getLanguage());
     assertEquals("DE", locale.getRegion());
@@ -103,16 +79,18 @@ function testRequireRunCode2() {
 		// in dynamic code loading mode
 		return;
 	}
-    var mod = require("./root/test/testfiles/datefmt2.js");
-    assertNotUndefined(mod);
+	
+	var Locale2 = require("./root/test/testfiles/locale2.js");
+    assertNotUndefined(Locale2);
     
-    assertNotUndefined(ilib.DateFmt2);
-    var df = new ilib.DateFmt2({locale: "de-DE"});
+    var DateFmt2 = require("./root/test/testfiles/datefmt2.js");
+    assertNotUndefined(DateFmt2);
+    var df = new DateFmt2({locale: "de-DE"});
     
     var d = new Date(2015, 2, 25, 16, 16, 16);
     assertEquals("25/3/2015", df.format(d));
     
-    df = new ilib.DateFmt2({locale: "en-US"});
+    df = new DateFmt2({locale: "en-US"});
     
     assertEquals("3/25/2015", df.format(d));
 }

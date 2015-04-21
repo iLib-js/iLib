@@ -17,20 +17,23 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
+
 function testNameFmtConstructor() {
-    var fmt = new ilib.NameFmt();
+    var fmt = new NameFmt();
     
     assertNotUndefined(fmt);
 }
 
 function testNameFmtGetLocaleDefault() {
-	var fmt = new ilib.NameFmt();
+	var fmt = new NameFmt();
     
     assertEquals("en-US", fmt.getLocale().getSpec());
 }
 
 function testNameFmtGetLocale() {
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		locale: "nl-NL"
 	});
     
@@ -38,7 +41,7 @@ function testNameFmtGetLocale() {
 }
 
 function testNameFmtGetBogus() {
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		locale: "ii-II"
 	});
     
@@ -46,7 +49,7 @@ function testNameFmtGetBogus() {
 }
 
 function testNameFmtGetStyle() {
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
     	style: "medium"
     });
     
@@ -54,13 +57,13 @@ function testNameFmtGetStyle() {
 }
 
 function testNameFmtGetStyleDefault() {
-	var fmt = new ilib.NameFmt();
+	var fmt = new NameFmt();
     
     assertEquals("short", fmt.getStyle());
 }
 
 function testNameFmtGetStyleBogus() {
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
     	style: "humungous"
     });
     
@@ -68,14 +71,14 @@ function testNameFmtGetStyleBogus() {
 }
 
 function testNameFmtENShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "short"
     });
     
@@ -83,14 +86,14 @@ function testNameFmtENShort() {
 }
 
 function testNameFmtENMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "medium"
     });
     
@@ -98,14 +101,14 @@ function testNameFmtENMedium() {
 }
 
 function testNameFmtENLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "long"
     });
     
@@ -113,14 +116,14 @@ function testNameFmtENLong() {
 }
 
 function testNameFmtENFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full"
     });
     
@@ -128,14 +131,14 @@ function testNameFmtENFull() {
 }
 
 function testNameFmtENWithCommaInSuffix() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: ", Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full"
     });
     
@@ -143,14 +146,14 @@ function testNameFmtENWithCommaInSuffix() {
 }
 
 function testNameFmtENComponentsP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "p"
     });
     
@@ -158,14 +161,14 @@ function testNameFmtENComponentsP() {
 }
 
 function testNameFmtENComponentsPG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pg"
     });
     
@@ -173,14 +176,14 @@ function testNameFmtENComponentsPG() {
 }
 
 function testNameFmtENComponentsPF() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pf"
     });
     
@@ -188,14 +191,14 @@ function testNameFmtENComponentsPF() {
 }
 
 function testNameFmtENComponentsPGF() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pgf"
     });
     
@@ -203,14 +206,14 @@ function testNameFmtENComponentsPGF() {
 }
 
 function testNameFmtENComponentsPFS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pfs"
     });
     
@@ -218,14 +221,14 @@ function testNameFmtENComponentsPFS() {
 }
 
 function testNameFmtENComponentsPGFScrambled() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "gfp"
     });
     
@@ -233,14 +236,14 @@ function testNameFmtENComponentsPGFScrambled() {
 }
 
 function testNameFmtENComponentsOverrideStyle() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Mr.",
 		givenName: "John",
 		middleName: "Kevin",
 		familyName: "Smith",
 		suffix: "Phd."
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full",
     	components: "gfp"
     });
@@ -250,7 +253,7 @@ function testNameFmtENComponentsOverrideStyle() {
 
 
 function testNameFmtDEShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -259,7 +262,7 @@ function testNameFmtDEShort() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "short",
     	locale: "de-DE"
     });
@@ -268,7 +271,7 @@ function testNameFmtDEShort() {
 }
 
 function testNameFmtDEMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -277,7 +280,7 @@ function testNameFmtDEMedium() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "medium",
     	locale: "de-DE"
     });
@@ -286,7 +289,7 @@ function testNameFmtDEMedium() {
 }
 
 function testNameFmtDELong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -295,7 +298,7 @@ function testNameFmtDELong() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "long",
     	locale: "de-DE"
     });
@@ -304,7 +307,7 @@ function testNameFmtDELong() {
 }
 
 function testNameFmtDEFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -313,7 +316,7 @@ function testNameFmtDEFull() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full",
     	locale: "de-DE"
     });
@@ -322,7 +325,7 @@ function testNameFmtDEFull() {
 }
 
 function testNameFmtDEWithCommaInSuffix() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -331,7 +334,7 @@ function testNameFmtDEWithCommaInSuffix() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full",
     	locale: "de-DE"
     });
@@ -340,7 +343,7 @@ function testNameFmtDEWithCommaInSuffix() {
 }
 
 function testNameFmtDEComponentsP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -349,7 +352,7 @@ function testNameFmtDEComponentsP() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "p",
     	locale: "de-DE"
     });
@@ -358,7 +361,7 @@ function testNameFmtDEComponentsP() {
 }
 
 function testNameFmtDEComponentsPG() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -367,7 +370,7 @@ function testNameFmtDEComponentsPG() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pg",
     	locale: "de-DE"
     });
@@ -376,7 +379,7 @@ function testNameFmtDEComponentsPG() {
 }
 
 function testNameFmtDEComponentsPF() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -385,7 +388,7 @@ function testNameFmtDEComponentsPF() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pf",
     	locale: "de-DE"
     });
@@ -394,7 +397,7 @@ function testNameFmtDEComponentsPF() {
 }
 
 function testNameFmtDEComponentsPGF() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -403,7 +406,7 @@ function testNameFmtDEComponentsPGF() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pgf",
     	locale: "de-DE"
     });
@@ -412,7 +415,7 @@ function testNameFmtDEComponentsPGF() {
 }
 
 function testNameFmtDEComponentsPFS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -421,7 +424,7 @@ function testNameFmtDEComponentsPFS() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "pfs",
     	locale: "de-DE"
     });
@@ -430,7 +433,7 @@ function testNameFmtDEComponentsPFS() {
 }
 
 function testNameFmtDEComponentsPGFScrambled() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -439,7 +442,7 @@ function testNameFmtDEComponentsPGFScrambled() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	components: "gfp",
     	locale: "de-DE"
     });
@@ -448,7 +451,7 @@ function testNameFmtDEComponentsPGFScrambled() {
 }
 
 function testNameFmtDEComponentsOverrideStyle() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Hr.",
 		givenName: "Andreas",
 		middleName: "Helmut",
@@ -457,7 +460,7 @@ function testNameFmtDEComponentsOverrideStyle() {
 	}, {
 		locale: "de-DE"
 	});
-    var fmt = new ilib.NameFmt({
+    var fmt = new NameFmt({
     	style: "full",
     	components: "pgf",
     	locale: "de-DE"

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Address = require("../lib/Address.js");
+var Address = require("./../lib/Address.js");
 var AddressFmt = require("../lib/AddressFmt.js");
 function testParseAddressSimple() {
 	var parsedAddress = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {locale: 'en-US'});

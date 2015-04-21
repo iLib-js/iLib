@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var NumFmt = require("./../lib/NumFmt.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -38,7 +40,7 @@ function testNumFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.NumFmt();
+		    var fmt = new NumFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -50,7 +52,7 @@ function testNumFmtConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -64,7 +66,7 @@ function testNumFmtConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-assembled-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.NumFmt({
+			var fmt = new NumFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);

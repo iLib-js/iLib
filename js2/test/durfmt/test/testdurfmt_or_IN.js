@@ -17,8 +17,9 @@
  * limitations under the License.
  */
 
+var DurationFmt = require("./../lib/DurationFmt.js");
 function testDurFmtORFormatShortDefaultStyle() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "short"
     });
@@ -37,7 +38,7 @@ function testDurFmtORFormatShortDefaultStyle() {
 };
 
 function testDurFmtORFormatShortText() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "short",
     	style: "text"
@@ -57,7 +58,7 @@ function testDurFmtORFormatShortText() {
 };
 
 function testDurFmtORFormatShortClock() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "short",
     	style: "clock"
@@ -77,7 +78,7 @@ function testDurFmtORFormatShortClock() {
 };
 
 function testDurFmtORFormatMedium() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "medium"
     });
@@ -96,7 +97,7 @@ function testDurFmtORFormatMedium() {
 };
 
 function testDurFmtORFormatLong() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "long"
     });
@@ -115,7 +116,7 @@ function testDurFmtORFormatLong() {
 };
 
 function testDurFmtORFormatFull() {
-    var fmt = new ilib.DurFmt({
+    var fmt = new DurationFmt({
     	locale: "or-IN",
     	length: "full"
     });
@@ -136,7 +137,7 @@ function testDurFmtORFormatFull() {
 
 function testDurFmtORAsyncWithLocale() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "or-IN",
     	length: "full",
     	sync: false,
@@ -162,7 +163,7 @@ function testDurFmtORAsyncWithLocale() {
 
 function testDurFmtORFormatShortClockAsync() {
 	var callbackCalled = false;
-    new ilib.DurFmt({
+    new DurationFmt({
     	locale: "or-IN",
     	length: "short",
     	style: "clock",

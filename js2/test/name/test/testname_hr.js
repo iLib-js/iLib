@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_hr_HR() {
-	var parsed = new ilib.Name("Antonio Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("Antonio Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_hr_HR() {
 
 
 function testParseSimpleName_hr_HR() {
-	var parsed = new ilib.Name("G. Kertu Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("G. Kertu Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseSimpleName_hr_HR() {
 
 
 function testParseSimpleName_hr_HR() {
-	var parsed = new ilib.Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -63,7 +65,7 @@ function testParseSimpleName_hr_HR() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_hr_HR() {
-	var parsed = new ilib.Name("Antonio Vesna Pavlović mlađi", {locale: 'hr-HR'});
+	var parsed = new Name("Antonio Vesna Pavlović mlađi", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -78,7 +80,7 @@ function testParseSingleNameWithPrefixAndAdjunct_hr_HR() {
 
 
 function testParseTitle_hr_HR1() {
-	var parsed = new ilib.Name("predsjednik Antonio Vesna Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("predsjednik Antonio Vesna Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -93,7 +95,7 @@ function testParseTitle_hr_HR1() {
 
 
 function testParseTitle_hr_HR_second() {
-	var parsed = new ilib.Name("G. i Gospođa. Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("G. i Gospođa. Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -106,14 +108,14 @@ function testParseTitle_hr_HR_second() {
 
 function testParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
 
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "predsjednik",
 		givenName: "Antonio",
 		middleName : "Vesna",
 		familyName: "Pavlović",
 		suffix: "mirovini"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hr-HR'
 	});
@@ -129,7 +131,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
 
 
 function testParseCompoundHonorific_hr_HR() {
-	var parsed = new ilib.Name("predsjednik Pavlović", {locale: 'hr-HR'});
+	var parsed = new Name("predsjednik Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -145,12 +147,12 @@ function testParseCompoundHonorific_hr_HR() {
  */
 
 function testFormatSimpleNameShort_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Antonio",
 		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'hr-HR'
 	});
@@ -163,12 +165,12 @@ function testFormatSimpleNameShort_hr_HR() {
 };
 
 function testFormatSimpleNameMedium_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Antonio",
 		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'hr-HR'
 	});
@@ -181,14 +183,14 @@ function testFormatSimpleNameMedium_hr_HR() {
 };
 
 function testFormatSimpleNameFull_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		
 		givenName: "Antonio",
 		middleName : "Vesna",
 		familyName: "Pavlović",
 		suffix: "mirovini"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hr-HR'
 	});
@@ -201,13 +203,13 @@ function testFormatSimpleNameFull_hr_HR() {
 };
 
 function testFormatComplexNameShort_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "mirovini",
 		givenName: "Antonio",
 		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'hr-HR'
 	});
@@ -221,13 +223,13 @@ function testFormatComplexNameShort_hr_HR() {
 
 
 function testFormatAsianNameMedium_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'hr-HR'
 	});
@@ -240,13 +242,13 @@ function testFormatAsianNameMedium_hr_HR() {
 };
 
 function testFormatAsianNameLong_hr_HR() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'hr-HR'
 	});

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_bn_IN() {
-	var parsed = new ilib.Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
+	var parsed = new Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_bn_IN() {
 
 
 function testParseTitle_bn_IN() {
-	var parsed = new ilib.Name("শশী ব্যানার্জী কনিষ্ঠ", {locale: 'bn-IN'});
+	var parsed = new Name("শশী ব্যানার্জী কনিষ্ঠ", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_bn_IN() {
 
 
 function testParseTitleWithFamilyOnly_bn_IN() {
-	var parsed = new ilib.Name("এমএস ব্যানার্জী", {locale: 'bn-IN'});
+	var parsed = new Name("এমএস ব্যানার্জী", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_bn_IN() {
 
 
 function testParseEverything_bn_IN() {
-	var parsed = new ilib.Name("মিঃ এবং মিসেস ব্যানার্জী", {locale: 'bn-IN'});
+	var parsed = new Name("মিঃ এবং মিসেস ব্যানার্জী", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_bn_IN() {
 };
 
 function testParseprefix_bn_IN() {
-	var parsed = new ilib.Name("মিঃ শশী ব্যানার্জী", {locale: 'bn-IN'});
+	var parsed = new Name("মিঃ শশী ব্যানার্জী", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_bn_IN() {
  */
 
 function testFormatSimpleNameShort_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "শশী",
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bn-IN'
 	});
@@ -106,12 +108,12 @@ function testFormatSimpleNameShort_bn_IN() {
 };
 
 function testFormatSimpleNameMedium_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "শশী",
 		
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bn-IN'
 	});
@@ -124,13 +126,13 @@ function testFormatSimpleNameMedium_bn_IN() {
 };
 
 function testFormatSimpleNameLong_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "শশী",
 		
 		familyName: "ব্যানার্জী",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'bn-IN'
 	});
@@ -143,12 +145,12 @@ function testFormatSimpleNameLong_bn_IN() {
 };
 
 function testFormatSurname_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "মিঃ এবং মিসেস",
 		
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'bn-IN'
 	});
@@ -161,14 +163,14 @@ function testFormatSurname_bn_IN() {
 };
 
 function testFormatSimpleNameFull_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ডাক্তার",
 		givenName: "শশী",
 		
 		familyName: "ব্যানার্জী",
 		suffix: " वरिष्ठ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'bn-IN'
 	});
@@ -181,12 +183,12 @@ function testFormatSimpleNameFull_bn_IN() {
 };
 
 function testFormatComplexNameShort_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ডাক্তার",
 		givenName: "শশী",
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'bn-IN'
 	});
@@ -199,12 +201,12 @@ function testFormatComplexNameShort_bn_IN() {
 };
 
 function testFormatComplexNameMedium_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ডাক্তার",
 		givenName: "শশী",
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'bn-IN'
 	});
@@ -217,12 +219,12 @@ function testFormatComplexNameMedium_bn_IN() {
 };
 
 function testFormatComplexNameLong_bn_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ডাক্তার",
 		givenName: "শশী",
 		familyName: "ব্যানার্জী"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'bn-IN'
 	});

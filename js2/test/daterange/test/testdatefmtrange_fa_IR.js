@@ -17,18 +17,21 @@
  * limitations under the License.
  */
 
+var PersianDate = require("./../lib/PersianDate.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateRngFmt = require("./../lib/DateRngFmt.js");
 /* These are the gregorian tests. For Persian calendar tests, see about
  * half way down the file. */
 
 function testDateRngFmtIRRangeinDayShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -37,7 +40,7 @@ function testDateRngFmtIRRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -49,14 +52,14 @@ function testDateRngFmtIRRangeinDayShort() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۱۱/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -65,7 +68,7 @@ function testDateRngFmtIRRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -77,14 +80,14 @@ function testDateRngFmtIRRangeinDayMedium() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -93,7 +96,7 @@ function testDateRngFmtIRRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -105,14 +108,14 @@ function testDateRngFmtIRRangeinDayLong() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -121,7 +124,7 @@ function testDateRngFmtIRRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -134,14 +137,14 @@ function testDateRngFmtIRRangeinDayFull() {
 }
 
 function testDateRngFmtIRRangeNextDayShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -150,7 +153,7 @@ function testDateRngFmtIRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -162,14 +165,14 @@ function testDateRngFmtIRRangeNextDayShort() {
     assertEquals("‏۱۴:۳۰ ۱۱/۱۲/۳۱ - ‏۱۳:۴۵ ۱۱/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -178,7 +181,7 @@ function testDateRngFmtIRRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -190,14 +193,14 @@ function testDateRngFmtIRRangeNextDayMedium() {
     assertEquals("‏۱۴:۳۰ ۲۰۱۱/۱۲/۳۱ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -206,7 +209,7 @@ function testDateRngFmtIRRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -218,14 +221,14 @@ function testDateRngFmtIRRangeNextDayLong() {
     assertEquals("‏۱۳:۴۵ ۳۰ تا ‏۱۴:۳۰ ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -234,7 +237,7 @@ function testDateRngFmtIRRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -247,14 +250,14 @@ function testDateRngFmtIRRangeNextDayFull() {
 }
 
 function testDateRngFmtIRRangeMultiDayShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -263,7 +266,7 @@ function testDateRngFmtIRRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -275,14 +278,14 @@ function testDateRngFmtIRRangeMultiDayShort() {
     assertEquals("‏۱۱/۱۲/۳۱ - ۱۱/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -291,7 +294,7 @@ function testDateRngFmtIRRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -303,14 +306,14 @@ function testDateRngFmtIRRangeMultiDayMedium() {
     assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -319,7 +322,7 @@ function testDateRngFmtIRRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -331,14 +334,14 @@ function testDateRngFmtIRRangeMultiDayLong() {
     assertEquals("‏۲۰ تا ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -347,7 +350,7 @@ function testDateRngFmtIRRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -360,14 +363,14 @@ function testDateRngFmtIRRangeMultiDayFull() {
 }
 
 function testDateRngFmtIRRangeNextMonthShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -376,7 +379,7 @@ function testDateRngFmtIRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -388,14 +391,14 @@ function testDateRngFmtIRRangeNextMonthShort() {
     assertEquals("‏۱۱/۱۲/۳۱ - ۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -404,7 +407,7 @@ function testDateRngFmtIRRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -416,14 +419,14 @@ function testDateRngFmtIRRangeNextMonthMedium() {
     assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -432,7 +435,7 @@ function testDateRngFmtIRRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -444,14 +447,14 @@ function testDateRngFmtIRRangeNextMonthLong() {
     assertEquals("‏۲۰ نوامبر تا ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -460,7 +463,7 @@ function testDateRngFmtIRRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -473,14 +476,14 @@ function testDateRngFmtIRRangeNextMonthFull() {
 }
 
 function testDateRngFmtIRRangeNextYearShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -489,7 +492,7 @@ function testDateRngFmtIRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -501,14 +504,14 @@ function testDateRngFmtIRRangeNextYearShort() {
     assertEquals("‏۱۲/۱/۳۱ - ۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -517,7 +520,7 @@ function testDateRngFmtIRRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -529,14 +532,14 @@ function testDateRngFmtIRRangeNextYearMedium() {
     assertEquals("‏۲۰۱۲/۰۱/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -545,7 +548,7 @@ function testDateRngFmtIRRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -557,14 +560,14 @@ function testDateRngFmtIRRangeNextYearLong() {
     assertEquals("‏۲۰ نوامبر ۲۰۱۱ تا ۳۱ ژانویهٔ ۲۰۱۲", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -573,7 +576,7 @@ function testDateRngFmtIRRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -586,14 +589,14 @@ function testDateRngFmtIRRangeNextYearFull() {
 }
 
 function testDateRngFmtIRRangeMultiYearShort() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -602,7 +605,7 @@ function testDateRngFmtIRRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -614,14 +617,14 @@ function testDateRngFmtIRRangeMultiYearShort() {
     assertEquals("‏۱۴/۱ - ۱۱/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearMedium() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -630,7 +633,7 @@ function testDateRngFmtIRRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -642,14 +645,14 @@ function testDateRngFmtIRRangeMultiYearMedium() {
     assertEquals("‏۲۰۱۴/۰۱ - ۲۰۱۱/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearLong() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -658,7 +661,7 @@ function testDateRngFmtIRRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -670,14 +673,14 @@ function testDateRngFmtIRRangeMultiYearLong() {
     assertEquals("نوامبر ۲۰۱۱ تا ژانویهٔ ۲۰۱۴", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -686,7 +689,7 @@ function testDateRngFmtIRRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -698,14 +701,14 @@ function testDateRngFmtIRRangeMultiYearFull() {
     assertEquals("نوامبر ۲۰۱۱ تا ژانویهٔ ۲۰۱۴", fmt.format(start, end));
 }
 function testDateRngFmtIRManyYearsFull() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "gregorian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -714,7 +717,7 @@ function testDateRngFmtIRManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2064,
 		month: 1,
 		day: 31,
@@ -729,14 +732,14 @@ function testDateRngFmtIRManyYearsFull() {
 /* Now the persian calendar tests. */
 
 function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -745,7 +748,7 @@ function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -757,14 +760,14 @@ function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -773,7 +776,7 @@ function testDateRngFmtPersRangeinDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -785,14 +788,14 @@ function testDateRngFmtPersRangeinDayMedium_fa_IR() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -801,7 +804,7 @@ function testDateRngFmtPersRangeinDayLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -813,14 +816,14 @@ function testDateRngFmtPersRangeinDayLong_fa_IR() {
     assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -829,7 +832,7 @@ function testDateRngFmtPersRangeinDayFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -842,14 +845,14 @@ function testDateRngFmtPersRangeinDayFull_fa_IR() {
 }
 
 function testDateRngFmtPersRangeNextDayShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 30,
@@ -858,7 +861,7 @@ function testDateRngFmtPersRangeNextDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -870,14 +873,14 @@ function testDateRngFmtPersRangeNextDayShort_fa_IR() {
     assertEquals("‏۱۴:۳۰ ۹۳/۱۲/۳۱ - ‏۱۳:۴۵ ۹۳/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 30,
@@ -886,7 +889,7 @@ function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -898,14 +901,14 @@ function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
     assertEquals("‏۱۴:۳۰ ۱۳۹۳/۱۲/۳۱ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 30,
@@ -914,7 +917,7 @@ function testDateRngFmtPersRangeNextDayLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -926,14 +929,14 @@ function testDateRngFmtPersRangeNextDayLong_fa_IR() {
     assertEquals("‏۱۳:۴۵ ۳۰ تا ‏۱۴:۳۰ ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 30,
@@ -942,7 +945,7 @@ function testDateRngFmtPersRangeNextDayFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -955,14 +958,14 @@ function testDateRngFmtPersRangeNextDayFull_fa_IR() {
 }
 
 function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 20,
@@ -971,7 +974,7 @@ function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -983,14 +986,14 @@ function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
     assertEquals("‏۹۳/۱۲/۳۱ - ۹۳/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 20,
@@ -999,7 +1002,7 @@ function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1011,14 +1014,14 @@ function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
     assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 20,
@@ -1027,7 +1030,7 @@ function testDateRngFmtPersRangeMultiDayLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1039,14 +1042,14 @@ function testDateRngFmtPersRangeMultiDayLong_fa_IR() {
     assertEquals("‏۲۰ تا ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 20,
@@ -1055,7 +1058,7 @@ function testDateRngFmtPersRangeMultiDayFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1068,14 +1071,14 @@ function testDateRngFmtPersRangeMultiDayFull_fa_IR() {
 }
 
 function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1084,7 +1087,7 @@ function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1096,14 +1099,14 @@ function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
     assertEquals("‏۹۳/۱۲/۳۱ - ۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1112,7 +1115,7 @@ function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1124,14 +1127,14 @@ function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
     assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1140,7 +1143,7 @@ function testDateRngFmtPersRangeNextMonthLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1152,14 +1155,14 @@ function testDateRngFmtPersRangeNextMonthLong_fa_IR() {
     assertEquals("‏۲۰ بهمن تا ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1168,7 +1171,7 @@ function testDateRngFmtPersRangeNextMonthFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1393,
 		month: 12,
 		day: 31,
@@ -1181,14 +1184,14 @@ function testDateRngFmtPersRangeNextMonthFull_fa_IR() {
 }
 
 function testDateRngFmtPersRangeNextYearShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1197,7 +1200,7 @@ function testDateRngFmtPersRangeNextYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1394,
 		month: 1,
 		day: 31,
@@ -1209,14 +1212,14 @@ function testDateRngFmtPersRangeNextYearShort_fa_IR() {
     assertEquals("‏۹۴/۱/۳۱ - ۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1225,7 +1228,7 @@ function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1394,
 		month: 1,
 		day: 31,
@@ -1237,14 +1240,14 @@ function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
     assertEquals("‏۱۳۹۴/۰۱/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1253,7 +1256,7 @@ function testDateRngFmtPersRangeNextYearLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1394,
 		month: 1,
 		day: 31,
@@ -1265,14 +1268,14 @@ function testDateRngFmtPersRangeNextYearLong_fa_IR() {
     assertEquals("‏۲۰ بهمن ۱۳۹۳ تا ۳۱ فروردین ۱۳۹۴", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1281,7 +1284,7 @@ function testDateRngFmtPersRangeNextYearFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1394,
 		month: 1,
 		day: 31,
@@ -1294,14 +1297,14 @@ function testDateRngFmtPersRangeNextYearFull_fa_IR() {
 }
 
 function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "short"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1310,7 +1313,7 @@ function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1396,
 		month: 1,
 		day: 31,
@@ -1322,14 +1325,14 @@ function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
     assertEquals("‏۹۶/۱ - ۹۳/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "medium"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1338,7 +1341,7 @@ function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1396,
 		month: 1,
 		day: 31,
@@ -1350,14 +1353,14 @@ function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
     assertEquals("‏۱۳۹۶/۰۱ - ۱۳۹۳/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearLong_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "long"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1366,7 +1369,7 @@ function testDateRngFmtPersRangeMultiYearLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1396,
 		month: 1,
 		day: 31,
@@ -1378,14 +1381,14 @@ function testDateRngFmtPersRangeMultiYearLong_fa_IR() {
     assertEquals("بهمن ۱۳۹۳ تا فروردین ۱۳۹۶", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1394,7 +1397,7 @@ function testDateRngFmtPersRangeMultiYearFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1396,
 		month: 1,
 		day: 31,
@@ -1406,14 +1409,14 @@ function testDateRngFmtPersRangeMultiYearFull_fa_IR() {
     assertEquals("بهمن ۱۳۹۳ تا فروردین ۱۳۹۶", fmt.format(start, end));
 }
 function testDateRngFmtPersManyYearsFull_fa_IR() {
-    var fmt = new ilib.DateRngFmt({
+    var fmt = new DateRngFmt({
 		locale: "fa-IR", 
 		calendar: "persian",
 		length: "full"
 	});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.PersDate({
+    var start = new PersianDate({
 		year: 1393,
 		month: 11,
 		day: 20,
@@ -1422,7 +1425,7 @@ function testDateRngFmtPersManyYearsFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.PersDate({
+    var end = new PersianDate({
 		year: 1450,
 		month: 1,
 		day: 31,

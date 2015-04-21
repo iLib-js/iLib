@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Collator = require("./../lib/Collator.js");
+
 function testJSCollatorQuatUpper_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -64,7 +66,7 @@ function testJSCollatorQuatUpper_lv() {
 }
 
 function testJSCollatorQuatLower_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "quaternary"
@@ -112,7 +114,7 @@ function testJSCollatorQuatLower_lv() {
 // differences in umlauted characters should be primary differences
 
 function testJSCollatorPrimaryUpper_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "primary",
@@ -156,7 +158,7 @@ function testJSCollatorPrimaryUpper_lv() {
 }
 
 function testJSCollatorPrimaryOE_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "primary",
@@ -200,7 +202,7 @@ function testJSCollatorPrimaryOE_lv() {
 }
 
 function testCollatorNativeCase_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "case",
@@ -359,7 +361,7 @@ function testCollatorNativeCase_lv() {
 }
 
 function testCollatorNativeVariant_lv() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "lv-LV",
 		useNative: false,
 		sensitivity: "variant",

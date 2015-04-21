@@ -17,43 +17,44 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
 function testIDDPrefix() {
-	var parsed = new ilib.PhoneNumber("010 31 456 3453434", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("010 31 456 3453434", {locale: 'ja-JP'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ja-JP'})); // 'ja-JP'
 };
 
 function testIDDPrefixAlreadyPlus() {
-	var parsed = new ilib.PhoneNumber("+31 456 3453434", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ja-JP'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ja-JP'})); // 'ja-JP'
 };
 
 function testWithNoLocale() {
-	var parsed = new ilib.PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
 function testNoHints() {
-	var parsed = new ilib.PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'ja-JP'
 };
 
 function testWithNoHintsNoLocale() {
-	var parsed = new ilib.PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testLDNumberUsingJPMCC() {
-	var parsed = new ilib.PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440"
 	};
@@ -63,7 +64,7 @@ function testLDNumberUsingJPMCC() {
 };
 
 function testLDNumberUsingJPMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440",
 		locale: 'de-DE'
@@ -74,7 +75,7 @@ function testLDNumberUsingJPMCCOtherLocale() {
 };
 
 function testLDNumberUsingJPMCC() {
-	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
+	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "440" //ja-JP
 	};
@@ -84,7 +85,7 @@ function testLDNumberUsingJPMCC() {
 };
 
 function testAreaCodeFromHint() {
-	var parsed = new ilib.PhoneNumber("3111-1111", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		defaultAreaCode: "565"
 	};
@@ -94,7 +95,7 @@ function testAreaCodeFromHint() {
 };
 
 function testAreaCodeIgnoreHint() {
-	var parsed = new ilib.PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		defaultAreaCode: "650"
 	};
@@ -104,14 +105,14 @@ function testAreaCodeIgnoreHint() {
 };
 
 function testNoAreaCodeAndNoCountry() {
-	var parsed = new ilib.PhoneNumber("3111-1111", {locale: 'ja-JP'});
+	var parsed = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
 	var expected = "31111111";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testAssistedDialingLocalToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("32622391", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("32622391", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440",
 		networkType: "umts",
@@ -124,7 +125,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440",
 		networkType: "umts",
@@ -135,7 +136,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440",
 		networkType: "cdma",
@@ -148,7 +149,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "440",
 		networkType: "cdma",
@@ -161,7 +162,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 };
 
 function testAssistedDialingIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber("31111111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("31111111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -174,7 +175,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 };
 
 function testAssistedDialingIntlToLDUMTS() {
-	var phone = new ilib.PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -187,7 +188,7 @@ function testAssistedDialingIntlToLDUMTS() {
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber("3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "505", // From Australia
 		networkType: "cdma",
@@ -200,7 +201,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 };
 
 function testAssistedDialingIntlToLDCDMA() {
-	var phone = new ilib.PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
+	var phone = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",

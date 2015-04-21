@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var TimeZone = require("./../lib/TimeZone.js");
 function testTimeZoneConstructorEmptySubsequent(results) {
-    new ilib.TimeZone();
+    new TimeZone();
 
     var tt = new TimedTest({
 		name: "TimeZone-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.TimeZone();
+		    var fmt = new TimeZone();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testTimeZoneConstructorEmptySubsequent(results) {
 }
 
 function testTimeZoneConstructorRealSubsequentLocale(results) {
-	new ilib.TimeZone({
+	new TimeZone({
 		locale: "de-DE"
 	});
 
@@ -41,7 +42,7 @@ function testTimeZoneConstructorRealSubsequentLocale(results) {
 		name: "TimeZone-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -52,7 +53,7 @@ function testTimeZoneConstructorRealSubsequentLocale(results) {
 }
 
 function testTimeZoneConstructorRealSubsequentId(results) {
-	new ilib.TimeZone({
+	new TimeZone({
 		id: "Europe/Berlin"
 	});
 
@@ -60,7 +61,7 @@ function testTimeZoneConstructorRealSubsequentId(results) {
 		name: "TimeZone-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "Europe/Berlin"
 			});
 		    assertNotNull(fmt);
@@ -71,7 +72,7 @@ function testTimeZoneConstructorRealSubsequentId(results) {
 }
 
 function testTimeZoneConstructorNonexistentSubsequent(results) {
-	new ilib.TimeZone({
+	new TimeZone({
 		id: "xx-YY"
 	});
 
@@ -79,7 +80,7 @@ function testTimeZoneConstructorNonexistentSubsequent(results) {
 		name: "TimeZone-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.TimeZone({
+			var fmt = new TimeZone({
 				id: "xx-YY"
 			});
 		    assertNotNull(fmt);

@@ -17,46 +17,48 @@
  * limitations under the License.
  */
 
+var CalendarFactory = require("./../lib/CalendarFactory.js");
+
 function testCalendarFactoryDefault() {
-    var cal = ilib.Cal.newInstance();
+    var cal = CalendarFactory();
     assertNotUndefined(cal);
 }
 
 function testCalendarFactoryDefaultRightType() {
-    var cal = ilib.Cal.newInstance();
+    var cal = CalendarFactory();
     assertNotUndefined(cal);
     
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactorySpecific() {
-    var cal = ilib.Cal.newInstance({type: "julian"});
+    var cal = CalendarFactory({type: "julian"});
     assertNotUndefined(cal);
     
     assertEquals("julian", cal.getType());
 }
 
 function testCalendarFactoryUnknown() {
-    var cal = ilib.Cal.newInstance({type: "asdf"});
+    var cal = CalendarFactory({type: "asdf"});
     assertUndefined(cal);
 }
 
 function testCalendarFactoryDefaultForLocale() {
-    var cal = ilib.Cal.newInstance({locale: "ar-AE"});
+    var cal = CalendarFactory({locale: "ar-AE"});
     assertNotUndefined(cal);
     
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactoryDefaultForLocaleOther() {
-    var cal = ilib.Cal.newInstance({locale: "th-TH"});
+    var cal = CalendarFactory({locale: "th-TH"});
     assertNotUndefined(cal);
     
     assertEquals("thaisolar", cal.getType());
 }
 
 function testCalendarFactoryOverrideLocale() {
-    var cal = ilib.Cal.newInstance({locale: "ar-AE", type: "gregorian"});
+    var cal = CalendarFactory({locale: "ar-AE", type: "gregorian"});
     assertNotUndefined(cal);
     
     assertEquals("gregorian", cal.getType());
@@ -76,5 +78,5 @@ function testGetCalendars() {
         "coptic"
     ];
     
-    assertArrayEqualsIgnoringOrder(expected, ilib.Cal.getCalendars());
+    assertArrayEqualsIgnoringOrder(expected, CalendarFactory.getCalendars());
 }

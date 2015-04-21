@@ -17,11 +17,13 @@
  * limitations under the License.
  */
 
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateRngFmt = require("./../lib/DateRngFmt.js");
 function testDateRngFmtCORangeinDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -30,7 +32,7 @@ function testDateRngFmtCORangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -42,10 +44,10 @@ function testDateRngFmtCORangeinDayShort() {
     assertEquals("13:45 - 14:30 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -54,7 +56,7 @@ function testDateRngFmtCORangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -66,10 +68,10 @@ function testDateRngFmtCORangeinDayMedium() {
     assertEquals("13:45 - 14:30, 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -78,7 +80,7 @@ function testDateRngFmtCORangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -90,10 +92,10 @@ function testDateRngFmtCORangeinDayLong() {
     assertEquals("13:45 - 14:30, 31 dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -102,7 +104,7 @@ function testDateRngFmtCORangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -115,10 +117,10 @@ function testDateRngFmtCORangeinDayFull() {
 }
 
 function testDateRngFmtCORangeNextDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -127,7 +129,7 @@ function testDateRngFmtCORangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -139,10 +141,10 @@ function testDateRngFmtCORangeNextDayShort() {
     assertEquals("30/12/11 13:45 - 31/12/11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -151,7 +153,7 @@ function testDateRngFmtCORangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -163,10 +165,10 @@ function testDateRngFmtCORangeNextDayMedium() {
     assertEquals("30/12 13:45 - 31/12 14:30, 11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -175,7 +177,7 @@ function testDateRngFmtCORangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -187,10 +189,10 @@ function testDateRngFmtCORangeNextDayLong() {
     assertEquals("30 13:45 - 31 14:30, dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 30,
@@ -199,7 +201,7 @@ function testDateRngFmtCORangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -212,10 +214,10 @@ function testDateRngFmtCORangeNextDayFull() {
 }
 
 function testDateRngFmtCORangeMultiDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -224,7 +226,7 @@ function testDateRngFmtCORangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -236,10 +238,10 @@ function testDateRngFmtCORangeMultiDayShort() {
     assertEquals("20-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -248,7 +250,7 @@ function testDateRngFmtCORangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -260,10 +262,10 @@ function testDateRngFmtCORangeMultiDayMedium() {
     assertEquals("20-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -272,7 +274,7 @@ function testDateRngFmtCORangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -284,10 +286,10 @@ function testDateRngFmtCORangeMultiDayLong() {
     assertEquals("20-31 dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 20,
@@ -296,7 +298,7 @@ function testDateRngFmtCORangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -309,10 +311,10 @@ function testDateRngFmtCORangeMultiDayFull() {
 }
 
 function testDateRngFmtCORangeNextMonthShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -321,7 +323,7 @@ function testDateRngFmtCORangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -333,10 +335,10 @@ function testDateRngFmtCORangeNextMonthShort() {
     assertEquals("20/11-31/12 11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextMonthMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -345,7 +347,7 @@ function testDateRngFmtCORangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -357,10 +359,10 @@ function testDateRngFmtCORangeNextMonthMedium() {
     assertEquals("20/11 - 31/12 11", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextMonthLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -369,7 +371,7 @@ function testDateRngFmtCORangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -381,10 +383,10 @@ function testDateRngFmtCORangeNextMonthLong() {
     assertEquals("20 nov - 31 dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextMonthFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -393,7 +395,7 @@ function testDateRngFmtCORangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2011,
 		month: 12,
 		day: 31,
@@ -406,10 +408,10 @@ function testDateRngFmtCORangeNextMonthFull() {
 }
 
 function testDateRngFmtCORangeNextYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -418,7 +420,7 @@ function testDateRngFmtCORangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -430,10 +432,10 @@ function testDateRngFmtCORangeNextYearShort() {
     assertEquals("20/11/11-31/1/12", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -442,7 +444,7 @@ function testDateRngFmtCORangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -454,10 +456,10 @@ function testDateRngFmtCORangeNextYearMedium() {
     assertEquals("20/11/11 - 31/01/12", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -466,7 +468,7 @@ function testDateRngFmtCORangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -478,10 +480,10 @@ function testDateRngFmtCORangeNextYearLong() {
     assertEquals("20 nov 2011 - 31 ene 2012", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -490,7 +492,7 @@ function testDateRngFmtCORangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2012,
 		month: 1,
 		day: 31,
@@ -503,10 +505,10 @@ function testDateRngFmtCORangeNextYearFull() {
 }
 
 function testDateRngFmtCORangeMultiYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "short"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -515,7 +517,7 @@ function testDateRngFmtCORangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -527,10 +529,10 @@ function testDateRngFmtCORangeMultiYearShort() {
     assertEquals("11/11-1/14", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "medium"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -539,7 +541,7 @@ function testDateRngFmtCORangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -551,10 +553,10 @@ function testDateRngFmtCORangeMultiYearMedium() {
     assertEquals("11/11 - 01/14", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "long"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -563,7 +565,7 @@ function testDateRngFmtCORangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -575,10 +577,10 @@ function testDateRngFmtCORangeMultiYearLong() {
     assertEquals("nov 2011 - ene 2014", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -587,7 +589,7 @@ function testDateRngFmtCORangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2014,
 		month: 1,
 		day: 31,
@@ -599,10 +601,10 @@ function testDateRngFmtCORangeMultiYearFull() {
     assertEquals("noviembre 2011 d.C. - enero 2014 d.C.", fmt.format(start, end));
 }
 function testDateRngFmtCOManyYearsFull() {
-    var fmt = new ilib.DateRngFmt({locale: "es-CO", length: "full"});
+    var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new GregorianDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -611,7 +613,7 @@ function testDateRngFmtCOManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new GregorianDate({
 		year: 2064,
 		month: 1,
 		day: 31,

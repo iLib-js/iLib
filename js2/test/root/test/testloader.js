@@ -18,6 +18,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+
 function testLoaderExists() {
     var loader = ilib.getLoader();
     

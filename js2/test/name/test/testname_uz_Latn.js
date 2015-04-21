@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_uz_Latn() {
-	var parsed = new ilib.Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -30,7 +32,7 @@ function testParseSimpleName_uz_Latn() {
 };
 
 function testParseAdjunctNames_uz_Latn() {
-	var parsed = new ilib.Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -42,7 +44,7 @@ function testParseAdjunctNames_uz_Latn() {
 };
 
 function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
-	var parsed = new ilib.Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -54,7 +56,7 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
 };
 
 function testParseTitle_uz_Latn() {
-	var parsed = new ilib.Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -67,7 +69,7 @@ function testParseTitle_uz_Latn() {
 };
 
 function testParseTitleWithFamilyOnly_uz_Latn() {
-	var parsed = new ilib.Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -79,7 +81,7 @@ function testParseTitleWithFamilyOnly_uz_Latn() {
 };
 
 function testParseEverything_uz_Latn() {
-	var parsed = new ilib.Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -96,11 +98,11 @@ function testParseEverything_uz_Latn() {
  */
 
 function testFormatSimpleNameShort_uz_Latn() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'uz-Latn-UZ'
 	});
@@ -113,11 +115,11 @@ function testFormatSimpleNameShort_uz_Latn() {
 };
 
 function testFormatSimpleNameMedium_uz_Latn() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'uz-Latn-UZ'
 	});
@@ -130,12 +132,12 @@ function testFormatSimpleNameMedium_uz_Latn() {
 };
 
 function testFormatSimpleNameLong_uz_Latn() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova",
 		suffix: "kichik"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'uz-Latn-UZ'
 	});
@@ -148,13 +150,13 @@ function testFormatSimpleNameLong_uz_Latn() {
 };
 
 function testFormatSimpleNameFull_uz_Latn() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "xonim",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova",
 		suffix: "kichik"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'uz-Latn-UZ'
 	});

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_vi() {
-	var parsed = new ilib.Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+	var parsed = new Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -32,7 +34,7 @@ function testParseSimpleName_vi() {
 
 
 function testParseAdjunctNames_vi() {
-	var parsed = new ilib.Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+	var parsed = new Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
@@ -47,7 +49,7 @@ function testParseAdjunctNames_vi() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_vi() {
-	var parsed = new ilib.Name("Ông và Bà Nguyen", {locale: 'vi-VN'});
+	var parsed = new Name("Ông và Bà Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -60,7 +62,7 @@ function testParseSingleNameWithPrefixAndAdjunct_vi() {
 
 
 function testParseTitle_vi() {
-	var parsed = new ilib.Name("Chau-Giang Nguyen Cao cấp", {locale: 'vi-VN'});
+	var parsed = new Name("Chau-Giang Nguyen Cao cấp", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -75,7 +77,7 @@ function testParseTitle_vi() {
 
 
 function testParseTitleWithFamilyOnly_vi() {
-	var parsed = new ilib.Name("Thị trưởng Nguyen", {locale: 'vi-VN'});
+	var parsed = new Name("Thị trưởng Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
@@ -89,7 +91,7 @@ function testParseTitleWithFamilyOnly_vi() {
 
 
 function testParseEverything_vi() {
-	var parsed = new ilib.Name("Ông Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+	var parsed = new Name("Ông Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
@@ -108,12 +110,12 @@ function testParseEverything_vi() {
  */
 
 function testFormatSimpleNameShort_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'vi-VN'
 	});
@@ -126,12 +128,12 @@ function testFormatSimpleNameShort_vi() {
 };
 
 function testFormatSimpleNameMedium_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'vi-VN'
 	});
@@ -144,13 +146,13 @@ function testFormatSimpleNameMedium_vi() {
 };
 
 function testFormatSimpleNameLong_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen",
 		suffix: "Cao cấp"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'vi-VN'
 	});
@@ -163,14 +165,14 @@ function testFormatSimpleNameLong_vi() {
 };
 
 function testFormatSimpleNameFull_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Ông",
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen",
 		suffix: "Cao cấp"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'vi-VN'
 	});
@@ -183,13 +185,13 @@ function testFormatSimpleNameFull_vi() {
 };
 
 function testFormatComplexNameShort_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Ông",
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'vi-VN'
 	});
@@ -202,13 +204,13 @@ function testFormatComplexNameShort_vi() {
 };
 
 function testFormatComplexNameMedium_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Ông",
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'vi-VN'
 	});
@@ -221,13 +223,13 @@ function testFormatComplexNameMedium_vi() {
 };
 
 function testFormatComplexNameLong_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Ông",
 		givenName: "Chau-Giang",
 		middleName: "Thi",
 		familyName: "Nguyen"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'vi-VN'
 	});
@@ -240,12 +242,12 @@ function testFormatComplexNameLong_vi() {
 };
 
 function testFormatAsianNameShort_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'vi-VN'
 	});
@@ -258,12 +260,12 @@ function testFormatAsianNameShort_vi() {
 };
 
 function testFormatAsianNameMedium_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'vi-VN'
 	});
@@ -276,12 +278,12 @@ function testFormatAsianNameMedium_vi() {
 };
 
 function testFormatAsianNameLong_vi() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'vi-VN'
 	});

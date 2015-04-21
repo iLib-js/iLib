@@ -18,6 +18,8 @@
  */
 
 
+var ilib = require("./../lib/ilib.js");
+var LocaleInfo = require("./../lib/LocaleInfo.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -38,7 +40,7 @@ function testLocaleInfoConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.LocaleInfo();	    
+		    var fmt = new LocaleInfo();	    
 		    assertNotNull(fmt);
 		}
 	});
@@ -50,7 +52,7 @@ function testLocaleInfoConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("de-DE");
+			var fmt = new LocaleInfo("de-DE");
 		    assertNotNull(fmt);
 		}
 	});
@@ -62,7 +64,7 @@ function testLocaleInfoConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("xx-YY");
+			var fmt = new LocaleInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});
@@ -74,7 +76,7 @@ function testLocaleInfoConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-otherfile-complex-initial",
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("zh-Hant-TW");
+			var fmt = new LocaleInfo("zh-Hant-TW");
 		    assertNotNull(fmt);
 		}
 	});

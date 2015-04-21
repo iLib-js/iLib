@@ -182,7 +182,7 @@ var legacyCalls = {
 	"ilib.CType.isBlank": "isBlank",
 	"ilib.CType.isCntrl": "isCntrl",
 	"ilib.CType.isDigit": "isDigit",
-	"ilib.CType.isAlnum": "isAlnum",
+	"ilib.CType.isGraph": "isGraph",
 	"ilib.CType.isIdeo": "isIdeo",
 	"ilib.CType.isLower": "isLower",
 	"ilib.CType.isPrint": "isPrint",
@@ -190,7 +190,7 @@ var legacyCalls = {
 	"ilib.CType.isScript": "isScript",
 	"ilib.CType.isSpace": "isSpace",
 	"ilib.CType.isUpper": "isUpper",
-	"ilib.CType.isXDigit": "isXDigit",
+	"ilib.CType.isXdigit": "isXdigit",
 	"ilib.CType": "CType",
 	"ilib.Currency": "Currency",
 	"ilib.DateFmt": "DateFmt",
@@ -285,6 +285,7 @@ var reSlashStarComments = new RegExp("/\\*(\\*[^/]|[^\\*])*\\*/", "mg");
 var reSlashSlashComments = new RegExp("//.*\n", "g");
 var reSlashSlashNoDependencies = new RegExp("//\\s*!dependencies:\\s*false");
 var reEmptyLine = new RegExp("^\\s*$");
+var filesUpdated = 0;
 
 function processFile(dir, file, update) {
 	var pathname = path.join(dir, file);
@@ -405,7 +406,8 @@ function processFile(dir, file, update) {
 				
 				verbose && util.print(changes + " changes were needed.\n");
 				if (changes > 0) {
-					fs.writeFileSync(pathname + ".updated", updated.join("\n"));
+					filesUpdated++;
+					fs.writeFileSync(pathname, updated.join("\n"));
 				}
 			}
 		}
@@ -422,7 +424,7 @@ function walk(dir, update) {
 		if (stat && stat.isDirectory()) {
 			walk(pathname, update);
 		} else {
-			if (pathname.match(/\.js$/)) {
+			if (pathname.match(/\.[Jj][Ss]$/)) {
 				processFile(dir, file, update);
 			}
 		}
@@ -437,3 +439,5 @@ for (i = 0; i < includes.length; i++) {
 
 // now update the source files in the start dir
 walk(startDir, false);
+
+util.print("Done. " + filesUpdated + " files updated.\n");

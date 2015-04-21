@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleNameEuro_ja_JP() {
-	var parsed = new ilib.Name("Takuya Kimura", {locale: 'ja-JP'});
+	var parsed = new Name("Takuya Kimura", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleNameEuro_ja_JP() {
 };
 
 function testParseSimpleNameAsian_ja_JP() {
-	var parsed = new ilib.Name("高橋弘樹", {locale: 'ja-JP'});
+	var parsed = new Name("高橋弘樹", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -42,7 +44,7 @@ function testParseSimpleNameAsian_ja_JP() {
 };
 
 function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
-	var parsed = new ilib.Name("高橋弘樹さん", {locale: 'ja-JP'});
+	var parsed = new Name("高橋弘樹さん", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -55,7 +57,7 @@ function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 };
 
 function testParseTitle_ja_JP1() {
-	var parsed = new ilib.Name("高橋弘樹知事", {locale: 'ja-JP'});
+	var parsed = new Name("高橋弘樹知事", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -68,7 +70,7 @@ function testParseTitle_ja_JP1() {
 };
 
 function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
-	var parsed = new ilib.Name("高橋弘樹教授", {locale: 'ja-JP'});
+	var parsed = new Name("高橋弘樹教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -81,7 +83,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 };
 
 function testParseCompoundHonorific_ja_JP() {
-	var parsed = new ilib.Name("高橋教授", {locale: 'ja-JP'});
+	var parsed = new Name("高橋教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -93,7 +95,7 @@ function testParseCompoundHonorific_ja_JP() {
 };
 
 function testParseCompoundHonorific_ja_JP1() {
-	var parsed = new ilib.Name("高橋総裁", {locale: 'ja-JP'});
+	var parsed = new Name("高橋総裁", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -105,7 +107,7 @@ function testParseCompoundHonorific_ja_JP1() {
 };
 
 function testParseFamilyName_ja_JP1() {
-	var parsed = new ilib.Name("佐々木主浩", {locale: 'ja-JP'});
+	var parsed = new Name("佐々木主浩", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -118,7 +120,7 @@ function testParseFamilyName_ja_JP1() {
 
 
 function testParseWithLongMixedName_ja_JP() {
-	var parsed = new ilib.Name("佐々木主浩/Software Engineer", {locale: "ja-JP"});
+	var parsed = new Name("佐々木主浩/Software Engineer", {locale: "ja-JP"});
 	assertNotUndefined(parsed);	
 	var expected = {
 		givenName : "主浩",
@@ -133,11 +135,11 @@ function testParseWithLongMixedName_ja_JP() {
  */
 
 function testFormatSimpleNameShort_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "弘樹",
 		familyName: "高橋"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ja-JP'
 	});
@@ -150,11 +152,11 @@ function testFormatSimpleNameShort_ja_JP() {
 };
 
 function testFormatSimpleNameMedium_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "弘樹",
 		familyName: "高橋"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ja-JP'
 	});
@@ -167,12 +169,12 @@ function testFormatSimpleNameMedium_ja_JP() {
 };
 
 function testFormatSimpleNameFull_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "弘樹",
 		familyName: "高橋",
 		suffix: "副大統領ご"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ja-JP'
 	});
@@ -185,12 +187,12 @@ function testFormatSimpleNameFull_ja_JP() {
 };
 
 function testFormatComplexNameShort_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		suffix: "きゅう",
 		givenName: "弘樹",
 		familyName: "高橋"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ja-JP'
 	});
@@ -204,13 +206,13 @@ function testFormatComplexNameShort_ja_JP() {
 
 
 function testFormatAsianNameMedium_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ja-JP'
 	});
@@ -223,13 +225,13 @@ function testFormatAsianNameMedium_ja_JP() {
 };
 
 function testFormatAsianNameLong_ja_JP() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ja-JP'
 	});

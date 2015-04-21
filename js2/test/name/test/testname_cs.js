@@ -18,8 +18,10 @@
  */
 
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -31,7 +33,7 @@ function testParseSimpleName_cs_CZ() {
 };
 
 function testParseTripleName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -44,7 +46,7 @@ function testParseTripleName_cs_CZ() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_cs_CZ() {
-	var parsed = new ilib.Name("prezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -57,7 +59,7 @@ function testParseSingleNameWithPrefixAndAdjunct_cs_CZ() {
 };
 
 function testParseHypenatedName_cs_CZ() {
-	var parsed = new ilib.Name("Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -71,7 +73,7 @@ function testParseHypenatedName_cs_CZ() {
 
 
 function testParseTitle_cs_CZ() {
-	var parsed = new ilib.Name("prezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -85,7 +87,7 @@ function testParseTitle_cs_CZ() {
 
 
 function testParseTitle_cs_CZ1() {
-	var parsed = new ilib.Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -100,7 +102,7 @@ function testParseTitle_cs_CZ1() {
 
 
 function testParseTitleWithFamilyOnlyAndAdjunct_cs_CZ() {
-	var parsed = new ilib.Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -115,7 +117,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_cs_CZ() {
 
 
 function testParseEverything_cs_CZ() {
-	var parsed = new ilib.Name("dáma Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -129,7 +131,7 @@ function testParseEverything_cs_CZ() {
 
 
 function testParseCompoundHonorific_cs_CZ() {
-	var parsed = new ilib.Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -141,7 +143,7 @@ function testParseCompoundHonorific_cs_CZ() {
 };
 
 function testParseCompoundHonorific_cs_CZ1() {
-	var parsed = new ilib.Name("Dr. Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -153,7 +155,7 @@ function testParseCompoundHonorific_cs_CZ1() {
 };
 
 function testParsewithFamilyCompoundHonorific_cs_CZ1() {
-	var parsed = new ilib.Name("Pan a Paní Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Pan a Paní Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -165,7 +167,7 @@ function testParsewithFamilyCompoundHonorific_cs_CZ1() {
 };
 
 function testParseCompoundHonorific_cs_CZZ() {
-	var parsed = new ilib.Name("Paní Yana Synkova", {locale: 'cs-CZ'});
+	var parsed = new Name("Paní Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -181,11 +183,11 @@ function testParseCompoundHonorific_cs_CZZ() {
  */
 
 function testFormatSimpleNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -198,11 +200,11 @@ function testFormatSimpleNameShort_cs_CZ() {
 };
 
 function testFormatSimpleNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -215,12 +217,12 @@ function testFormatSimpleNameMedium_cs_CZ() {
 };
 
 function testFormatSimpleNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'cs-CZ'
 	});
@@ -233,13 +235,13 @@ function testFormatSimpleNameLong_cs_CZ() {
 };
 
 function testFormatSimpleNameFull1_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Pan",
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "v důchodu"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});
@@ -252,13 +254,13 @@ function testFormatSimpleNameFull1_cs_CZ() {
 };
 
 function testFormatSimpleNameFullu_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Paní",
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "v důchodu"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});
@@ -272,13 +274,13 @@ function testFormatSimpleNameFullu_cs_CZ() {
 
 
 function testFormatSimpleNameFull_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský předseda",
 		givenName: "Yana",
 		familyName: "Synkova",
 		suffix: "v důchodu"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});
@@ -291,12 +293,12 @@ function testFormatSimpleNameFull_cs_CZ() {
 };
 
 function testFormatComplexNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -309,12 +311,12 @@ function testFormatComplexNameShort_cs_CZ() {
 };
 
 function testFormatComplexNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -327,12 +329,12 @@ function testFormatComplexNameMedium_cs_CZ() {
 };
 
 function testFormatComplexNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "prezidentí ministerský",
 		givenName: "Yana",
 		familyName: "von Synkova"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'cs-CZ'
 	});
@@ -345,13 +347,13 @@ function testFormatComplexNameLong_cs_CZ() {
 };
 
 function testFormatAsianNameShort_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'cs-CZ'
 	});
@@ -364,13 +366,13 @@ function testFormatAsianNameShort_cs_CZ() {
 };
 
 function testFormatAsianNameMedium_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'cs-CZ'
 	});
@@ -383,13 +385,13 @@ function testFormatAsianNameMedium_cs_CZ() {
 };
 
 function testFormatAsianNameLong_cs_CZ() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'cs-CZ'
 	});

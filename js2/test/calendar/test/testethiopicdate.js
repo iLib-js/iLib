@@ -17,14 +17,17 @@
  * limitations under the License.
  */
 
+var EthiopicRataDie = require("./../lib/EthiopicRataDie.js");
+var EthiopicDate = require("./../lib/EthiopicDate.js");
+
 function testEthiopicRataDieConstructor() {
-    var erd = new ilib.Date.EthiopicRataDie();
+    var erd = new EthiopicRataDie();
     
     assertNotNull(erd);
 }
 
 function testEthiopicRataDieConstructorComponents() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         year: 1,
         month: 1,
         day: 1,
@@ -40,7 +43,7 @@ function testEthiopicRataDieConstructorComponents() {
 }
 
 function testEthiopicRataDieConstructorComponentsBig() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         year: 2007,
         month: 2,
         day: 19,
@@ -56,7 +59,7 @@ function testEthiopicRataDieConstructorComponentsBig() {
 }
 
 function testEthiopicRataDieConstructorRD() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         rd: 732323.2342345
     });
     
@@ -66,7 +69,7 @@ function testEthiopicRataDieConstructorRD() {
 }
 
 function testEthiopicRataDieConstructorUnixtime() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         unixtime: 0
     });
     
@@ -76,7 +79,7 @@ function testEthiopicRataDieConstructorUnixtime() {
 }
 
 function testEthiopicRataDieConstructorJulianDay() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 1724219.75 + 734564 
     });
     
@@ -86,7 +89,7 @@ function testEthiopicRataDieConstructorJulianDay() {
 }
 
 function testEthiopicRataDieGetJulianDay1() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 1724219.75 + 734564 
     });
     
@@ -96,7 +99,7 @@ function testEthiopicRataDieGetJulianDay1() {
 }
 
 function testEthiopicRataDieGetJulianDay2() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         unixtime: 0 
     });
     
@@ -106,7 +109,7 @@ function testEthiopicRataDieGetJulianDay2() {
 }
 
 function testEthiopicRataDieGetJulianDay3() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         rd: 0 
     });
     
@@ -116,7 +119,7 @@ function testEthiopicRataDieGetJulianDay3() {
 }
 
 function testEthiopicRataDieGetTime1() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         unixtime: 0 
     });
     
@@ -126,7 +129,7 @@ function testEthiopicRataDieGetTime1() {
 }
 
 function testEthiopicRataDieGetTime2() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2440587.5
     });
     
@@ -136,7 +139,7 @@ function testEthiopicRataDieGetTime2() {
 }
 
 function testEthiopicRataDieGetTimeTooSmall() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2440586.5
     });
     
@@ -146,7 +149,7 @@ function testEthiopicRataDieGetTimeTooSmall() {
 }
 
 function testEthiopicRataDieGetTimeTooBig() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2465443.634803241
     });
     
@@ -156,7 +159,7 @@ function testEthiopicRataDieGetTimeTooBig() {
 }
 
 function testEthiopicRataDieGetTimeExtended1() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         unixtime: 0 
     });
     
@@ -166,7 +169,7 @@ function testEthiopicRataDieGetTimeExtended1() {
 }
 
 function testEthiopicRataDieGetTimeExtended2() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2440587.5
     });
     
@@ -176,7 +179,7 @@ function testEthiopicRataDieGetTimeExtended2() {
 }
 
 function testEthiopicRataDieGetTimeExtendedTooSmallForRegularGetTime() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2440586.5
     });
     
@@ -186,7 +189,7 @@ function testEthiopicRataDieGetTimeExtendedTooSmallForRegularGetTime() {
 }
 
 function testEthiopicRataDieGetTimeExtendedTooBigForRegularGetTime() {
-    var erd = new ilib.Date.EthiopicRataDie({
+    var erd = new EthiopicRataDie({
         julianday: 2465443.634803241
     });
     
@@ -197,14 +200,14 @@ function testEthiopicRataDieGetTimeExtendedTooBigForRegularGetTime() {
 
 
 function testEthiopicDateConstructor() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
 }
 
 /* ethiopic date is rd 366 + epoch */
 function testEthiopicDateConstructorFromJD() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         julianday: 1724586.75,
         timezone: "Etc/UTC"
     });
@@ -220,7 +223,7 @@ function testEthiopicDateConstructorFromJD() {
 }
 
 function testEthiopicDateConstructorUnixTime() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         unixtime: 0, // rd = 716367.4166633331
         timezone: "Etc/UTC"
     });
@@ -237,7 +240,7 @@ function testEthiopicDateConstructorUnixTime() {
 
 function testEthiopicDateAfterLeapYear() {
     // year 3 of every 4 year cycle is a leap year in the ethiopic calendar
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         julianday: 1725316.75, // ethiopic epoch + 1 + 2 * 365 + 366
         timezone: "Etc/UTC"
     });
@@ -254,7 +257,7 @@ function testEthiopicDateAfterLeapYear() {
 
 // next two test the transition between months at 6am
 function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733087.9583333333, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733087.9583333333, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2015 Gregorian
@@ -267,7 +270,7 @@ function testEthiopicDateFirstMonthEndRightBeforeDateChange() {
 }
 
 function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733088.041666667, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733088.041666667, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears()); // 2015 Gregorian
@@ -281,7 +284,7 @@ function testEthiopicDateSecondMonthStartNoonAfterDateChange() {
 
 // next two test the year transition from a leap year to a regular year
 function testEthiopicDateLastMonthLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733057, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733057, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2007, ed.getYears());
@@ -294,7 +297,7 @@ function testEthiopicDateLastMonthLeapYear() {
 }
 
 function testEthiopicDateFirstMonthAfterLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733058, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733058, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
@@ -308,7 +311,7 @@ function testEthiopicDateFirstMonthAfterLeapYear() {
 
 // next two test a regular month transition
 function testEthiopicDateThirdMonthEnd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733147, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733147, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
@@ -321,7 +324,7 @@ function testEthiopicDateThirdMonthEnd() {
 }
 
 function testEthiopicDateFourthMonthStart() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733148, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733148, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
@@ -335,7 +338,7 @@ function testEthiopicDateFourthMonthStart() {
 
 // next two test a transition from a non-leap year to a non-leap year
 function testEthiopicDateLastMonthEndNonLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733422, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733422, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2008, ed.getYears());
@@ -348,7 +351,7 @@ function testEthiopicDateLastMonthEndNonLeapYear() {
 }
 
 function testEthiopicDateFirstMonthStartNonLeapYear() {
-    var ed = new ilib.Date.EthiopicDate({rd: 733423, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 733423, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2009, ed.getYears());
@@ -361,7 +364,7 @@ function testEthiopicDateFirstMonthStartNonLeapYear() {
 }
 
 function testEthiopicDateEndOfYearZeroRd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 0, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(0, ed.getYears());
@@ -374,7 +377,7 @@ function testEthiopicDateEndOfYearZeroRd() {
 }
 
 function testEthiopicDateBeginningOfYearOneRd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 1, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(1, ed.getYears());
@@ -387,7 +390,7 @@ function testEthiopicDateBeginningOfYearOneRd() {
 }
 
 function testEthiopicDateAlmostEndOfYearOneRd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 364, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(1, ed.getYears());
@@ -400,7 +403,7 @@ function testEthiopicDateAlmostEndOfYearOneRd() {
 }
 
 function testEthiopicDateEndOfYearOneRd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 365, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(1, ed.getYears());
@@ -413,7 +416,7 @@ function testEthiopicDateEndOfYearOneRd() {
 }
 
 function testEthiopicDateBeginningOfYear2Rd() {
-    var ed = new ilib.Date.EthiopicDate({rd: 366, timezone: "Etc/UTC"});
+    var ed = new EthiopicDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(ed));
     assertEquals(2, ed.getYears());
@@ -468,7 +471,7 @@ function testEthiopicDateConvertYears() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -484,7 +487,7 @@ function testEthiopicDateConvertMonths() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -499,7 +502,7 @@ function testEthiopicDateConvertDays() {
     
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -515,7 +518,7 @@ function testEthiopicDateConvertHours() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -531,7 +534,7 @@ function testEthiopicDateConvertDayOfWeek() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -547,7 +550,7 @@ function testEthiopicDateConvertOther() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             julianday: testDatesEthiopic[i][0], 
             timezone: "Etc/UTC"
         });
@@ -560,7 +563,7 @@ function testEthiopicDateConvertOther() {
 }
 
 function testEthiopicDateConstructorFull() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011,
         month: 9,
         day: 23,
@@ -582,7 +585,7 @@ function testEthiopicDateConstructorFull() {
 }
 
 function testEthiopicDateConstructorFullWithStrings() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: "2011", 
         month: "9",
         day: "23", 
@@ -604,7 +607,7 @@ function testEthiopicDateConstructorFullWithStrings() {
 }
 
 function testEthiopicDateConstructorCopy() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -631,7 +634,7 @@ function testEthiopicDateGetJulianDay() {
     for (var i = 0; i < testDatesEthiopic.length; i++) {
         info("testing jd=" + testDatesEthiopic[i][0] + " and date " + JSON.stringify(ed));
         
-        ed = new ilib.Date.EthiopicDate({
+        ed = new EthiopicDate({
             year: testDatesEthiopic[i][1], 
             month: testDatesEthiopic[i][2], 
             day: testDatesEthiopic[i][3],
@@ -650,7 +653,7 @@ function testEthiopicDateGetJulianDay() {
 }
 
 function testEthiopicDateSetYears() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -660,7 +663,7 @@ function testEthiopicDateSetYears() {
 }
 
 function testEthiopicDateSetMonths() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -670,7 +673,7 @@ function testEthiopicDateSetMonths() {
 }
 
 function testEthiopicDateSetDays() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -680,7 +683,7 @@ function testEthiopicDateSetDays() {
 }
 
 function testEthiopicDateSetHours() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -690,7 +693,7 @@ function testEthiopicDateSetHours() {
 }
 
 function testEthiopicDateSetMinutes() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -700,7 +703,7 @@ function testEthiopicDateSetMinutes() {
 }
 
 function testEthiopicDateSetSeconds() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -710,7 +713,7 @@ function testEthiopicDateSetSeconds() {
 }
 
 function testEthiopicDateSetMilliseconds() {
-    var ed = new ilib.Date.EthiopicDate();
+    var ed = new EthiopicDate();
     
     assertNotNull(ed);
     
@@ -720,7 +723,7 @@ function testEthiopicDateSetMilliseconds() {
 }
 
 function testEthiopicDateTestGetTimeZero() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 1962,
         month: 4,
         day: 22,
@@ -733,7 +736,7 @@ function testEthiopicDateTestGetTimeZero() {
 }
 
 function testEthiopicDateTestGetTime() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 1962,
         month: 4,
         day: 22,
@@ -747,7 +750,7 @@ function testEthiopicDateTestGetTime() {
 }
 
 function testEthiopicDateTestGetTimeTooEarly() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 1962,
         month: 4,
         day: 22,
@@ -761,7 +764,7 @@ function testEthiopicDateTestGetTimeTooEarly() {
 
 function testEthiopicDateTestGetTimeTooLate() {
     // 1 second too late for regular unix time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2030,
         month: 5,
         day: 10,
@@ -777,7 +780,7 @@ function testEthiopicDateTestGetTimeTooLate() {
 
 function testEthiopicDateTestGetTimeExtendedNotTooLate() {
     // 1 second too late for regular unix time, but not for extended time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2030,
         month: 5,
         day: 10,
@@ -792,7 +795,7 @@ function testEthiopicDateTestGetTimeExtendedNotTooLate() {
 }
 
 function testEthiopicDateTestSetTime1() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 1962,
         month: 4,
         day: 22,
@@ -813,7 +816,7 @@ function testEthiopicDateTestSetTime1() {
 }
 
 function testEthiopicDateTestSetTimeZero() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         timezone: "Etc/UTC",
         year: 0, 
         month: 1, 
@@ -836,7 +839,7 @@ function testEthiopicDateTestSetTimeZero() {
 }
 
 function testEthiopicDateGetTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -848,7 +851,7 @@ function testEthiopicDateGetTimeZone() {
 }
 
 function testEthiopicDateGetTimeZoneDefault() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8
@@ -859,7 +862,7 @@ function testEthiopicDateGetTimeZoneDefault() {
 }
 
 function testEthiopicDateGetTimeZoneByLocaleDE() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -871,7 +874,7 @@ function testEthiopicDateGetTimeZoneByLocaleDE() {
 }
 
 function testEthiopicDateGetTimeZoneByLocaleJP() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -883,7 +886,7 @@ function testEthiopicDateGetTimeZoneByLocaleJP() {
 }
 
 function testEthiopicDateGetTimeZoneByLocaleBogus() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -895,7 +898,7 @@ function testEthiopicDateGetTimeZoneByLocaleBogus() {
 }
 
 function testEthiopicDateCurrentTimeWithTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         timezone: "America/Los_Angeles"
     });
     var d = new Date();
@@ -905,7 +908,7 @@ function testEthiopicDateCurrentTimeWithTimeZone() {
 }
 
 function testEthiopicDateSetTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -921,7 +924,7 @@ function testEthiopicDateSetTimeZone() {
 }
 
 function testEthiopicDateSetTimeZoneNotString() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -937,7 +940,7 @@ function testEthiopicDateSetTimeZoneNotString() {
 }
 
 function testEthiopicDateSetTimeZoneUndefined() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -954,7 +957,7 @@ function testEthiopicDateSetTimeZoneUndefined() {
 }
 
 function testEthiopicDateSetTimeZoneEmpty() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         year: 2011, 
         month: 3, 
         day: 8,
@@ -971,7 +974,7 @@ function testEthiopicDateSetTimeZoneEmpty() {
 }
 
 function testEthiopicDateInitWithUnixTimeRightTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         unixtime: 0
     });
     assertNotNull(ed);
@@ -980,7 +983,7 @@ function testEthiopicDateInitWithUnixTimeRightTimeZone() {
 }
 
 function testEthiopicDateInitWithJDRightTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         julianday: 0
     });
     assertNotNull(ed);
@@ -989,7 +992,7 @@ function testEthiopicDateInitWithJDRightTimeZone() {
 }
 
 function testEthiopicDateInitWithRDRightTimeZone() {
-    var ed = new ilib.Date.EthiopicDate({
+    var ed = new EthiopicDate({
         rd: 0
     });
     assertNotNull(ed);
@@ -998,7 +1001,7 @@ function testEthiopicDateInitWithRDRightTimeZone() {
 }
 
 function testEthiopicDateRoundTripConstruction() {
-    var jd = new ilib.Date.EthiopicDate({
+    var jd = new EthiopicDate({
         year: 2014,
         month: 10,
         day: 20,
@@ -1009,7 +1012,7 @@ function testEthiopicDateRoundTripConstruction() {
     
     var u = jd.getTime();
     // console.log("unixtime is " + u);
-    var jd2 = new ilib.Date.EthiopicDate({
+    var jd2 = new EthiopicDate({
         unixtime: u,
         timezone: "local"
     });
@@ -1024,7 +1027,7 @@ function testEthiopicDateRoundTripConstruction() {
 }
 
 function testEthiopicDateRoundTripConstruction2() {
-    var jd = new ilib.Date.EthiopicDate({
+    var jd = new EthiopicDate({
         year: 2014,
         month: 10,
         day: 20,
@@ -1035,7 +1038,7 @@ function testEthiopicDateRoundTripConstruction2() {
     
     var u = jd.getTime();
     // console.log("unixtime is " + u);
-    var jd2 = new ilib.Date.EthiopicDate({
+    var jd2 = new EthiopicDate({
         unixtime: u,
         timezone: "America/Los_Angeles"
     });

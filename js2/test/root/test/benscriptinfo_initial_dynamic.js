@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var ScriptInfo = require("./../lib/ScriptInfo.js");
 function testScriptInfoConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.ScriptInfo();
+		    var fmt = new ScriptInfo();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testScriptInfoConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("Hang");
+			var fmt = new ScriptInfo("Hang");
 		    assertNotNull(fmt);
 		}
 	});
@@ -45,7 +46,7 @@ function testScriptInfoConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("xx-YY");
+			var fmt = new ScriptInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});

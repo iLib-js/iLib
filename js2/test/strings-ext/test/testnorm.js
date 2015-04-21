@@ -17,12 +17,14 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	new ilib.NormString("foo"); // cause the code to be loaded
-	ilib.NormString.init();
+var ilib = require("./../lib/ilib.js");
+var NormString = require("./../lib/NormString.js");
+
+function setUp() {
+	NormString.init();
 
 	if (typeof(normtests) === 'undefined') {
-		var normtests = require("./normdata.js");
+		var normtests = require("./strings-ext/test/normdata.js");
 	}
 }
 
@@ -44,26 +46,26 @@ function toHexString(string) {
 
 function testNFD() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.NormString(val[0]);
+    	var source = new NormString(val[0]);
     	//console.log(index + ": Testing NFD normalization for " + source + " (" + toHexString(source) + ")");
     	
     	var nfd = source.normalize("nfd");
-    	assertEquals("Test NFD for #" + index + " " + source + " (" + toHexString(source) + ")", toHexString(new ilib.NormString(val[2])), toHexString(nfd));
+    	assertEquals("Test NFD for #" + index + " " + source + " (" + toHexString(source) + ")", toHexString(new NormString(val[2])), toHexString(nfd));
     });
 }
 
 function testNFKD() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.NormString(val[0]);
+    	var source = new NormString(val[0]);
     	//console.log(index + ": Testing NFKD normalization for " + source + " (" + toHexString(source) + ")");
     	
-    	assertEquals("Test NFKD for #" + index + " " + source + " (" + toHexString(source) + ")", toHexString(new ilib.NormString(val[4])), toHexString(source.normalize("nfkd")));
+    	assertEquals("Test NFKD for #" + index + " " + source + " (" + toHexString(source) + ")", toHexString(new NormString(val[4])), toHexString(source.normalize("nfkd")));
     });
 }
 
 function testNFC() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.NormString(val[0]);
+    	var source = new NormString(val[0]);
     	//console.log(index + ": Testing NFC normalization for " + source + " (" + toHexString(source) + ")");
     	
     	assertEquals("Test NFC for #" + index + " " + source + " ("+ toHexString(source) + ")", toHexString(val[1]), toHexString(source.normalize("nfc")));
@@ -72,7 +74,7 @@ function testNFC() {
 
 function testNFKC() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.NormString(val[0]);
+    	var source = new NormString(val[0]);
     	//console.log(index + ": Testing NFKC normalization for " + source + " (" + toHexString(source) + ")");
     	
     	assertEquals("Test NFKC for #" + index + " " + source + " ("+ toHexString(source) + ")", toHexString(val[3]), toHexString(source.normalize("nfkc")));
@@ -80,7 +82,7 @@ function testNFKC() {
 }
 
 function testCharIteratorNormal() {
-	var s = new ilib.NormString("aba");
+	var s = new NormString("aba");
 	var it = s.charIterator();
 	
 	assertTrue(it.hasNext());
@@ -94,7 +96,7 @@ function testCharIteratorNormal() {
 }
 
 function testCharIteratorDecomposed() {
-	var s = new ilib.NormString("aÄa"); // the A umlaut is a decomposed char
+	var s = new NormString("aÄa"); // the A umlaut is a decomposed char
 	var it = s.charIterator();
 	
 	assertTrue(it.hasNext());
@@ -108,7 +110,7 @@ function testCharIteratorDecomposed() {
 }
 
 function testCharIteratorEmpty() {
-	var s = new ilib.NormString(""); // the A umlaut is a decomposed char
+	var s = new NormString(""); // the A umlaut is a decomposed char
 	var it = s.charIterator();
 	
 	assertFalse(it.hasNext());
@@ -116,7 +118,7 @@ function testCharIteratorEmpty() {
 }
 
 function testCharIteratorWithSurrogates() {
-    var str = new ilib.NormString("a\uD800\uDF02b\uD800\uDC00");
+    var str = new NormString("a\uD800\uDF02b\uD800\uDC00");
 
     var it = str.charIterator();
     assertTrue(it.hasNext());
@@ -132,7 +134,7 @@ function testCharIteratorWithSurrogates() {
 }
 
 function testCharIteratorWithSurrogatesAndDecomposedChars() {
-    var str = new ilib.NormString("a\uD800\uDF02bï\uD800\uDC00"); // the ï is a decomposed i + umlaut
+    var str = new NormString("a\uD800\uDF02bï\uD800\uDC00"); // the ï is a decomposed i + umlaut
 
     var it = str.charIterator();
     assertTrue(it.hasNext());
@@ -150,7 +152,7 @@ function testCharIteratorWithSurrogatesAndDecomposedChars() {
 }
 
 function testCharIteratorMultipleDecomposed() {
-	var s = new ilib.NormString("aẬa"); // the accented A is a decomposed char with 2 accents
+	var s = new NormString("aẬa"); // the accented A is a decomposed char with 2 accents
 	var it = s.charIterator();
 	
 	assertTrue(it.hasNext());
@@ -164,7 +166,7 @@ function testCharIteratorMultipleDecomposed() {
 }
 
 function testCharIteratorAgrave() {
-	var s = new ilib.NormString("À"); // the accented A is a decomposed char
+	var s = new NormString("À"); // the accented A is a decomposed char
 	var it = s.charIterator();
 	
 	assertTrue(it.hasNext());

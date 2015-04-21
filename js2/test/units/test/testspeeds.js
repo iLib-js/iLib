@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Measurement = require("./../lib/Measurement.js");
+
 function testSpeedSpeedConstructor() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "meters/sec",
 	    amount: 2
 	});
@@ -27,11 +29,11 @@ function testSpeedSpeedConstructor() {
 }
 
 function testSpeedSpeedConvertMetersPerSecToMilesPerHour() {
-	var m1 = new ilib.Measurement.Speed({
+	var m1 = new Measurement.Speed({
 	    unit: "meters/sec",
 	    amount: 5000
 	});
-	var m2 = new ilib.Measurement.Speed({
+	var m2 = new Measurement.Speed({
 	    unit: "miles/hour",
 	    amount: m1
 	});
@@ -43,37 +45,37 @@ function testSpeedSpeedConvertMetersPerSecToMilesPerHour() {
 }
 
 function testSpeedStaticConvert1() {
-	var m = ilib.Measurement.Speed.convert("feet/sec", "meters/sec", 2.0);
+	var m = Measurement.Speed.convert("feet/sec", "meters/sec", 2.0);
 
 	assertEquals(6.56168, m);
 }
 
 function testSpeedStaticConvertWithString() {
-	var m = ilib.Measurement.Speed.convert("feet/sec", "meters/sec", "2");
+	var m = Measurement.Speed.convert("feet/sec", "meters/sec", "2");
 
 	assertEquals(6.56168, m);
 }
 
 function testSpeedStaticConvert2() {
-	var m = ilib.Measurement.Speed.convert("meters/sec", "km/hour", 720);
+	var m = Measurement.Speed.convert("meters/sec", "km/hour", 720);
 
 	assertRoughlyEquals(200.00016, m, 0.00001);
 }
 
 function testSpeedStaticConvert3() {
-	var m = ilib.Measurement.Speed.convert("mile/hour", "knot", 200);
+	var m = Measurement.Speed.convert("mile/hour", "knot", 200);
 
 	assertRoughlyEquals(230.156, m, 0.001);
 }
 
 function testSpeedStaticConvert4() {
-	var m = ilib.Measurement.Speed.convert("kn", "feet/sec", 200.0);
+	var m = Measurement.Speed.convert("kn", "feet/sec", 200.0);
 
 	assertRoughlyEquals(118.4968, m, 0.0001);
 }
 
 function testSpeedScale1() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "m/sec",
 	    amount: 0.277778
 	});
@@ -85,7 +87,7 @@ function testSpeedScale1() {
 }
 
 function testSpeedScale2() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "feet/sec",
 	    amount: 60
 	});
@@ -97,7 +99,7 @@ function testSpeedScale2() {
 }
 
 function testSpeedScale3() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "feet/sec",
 	    amount: 1000
 	});
@@ -109,7 +111,7 @@ function testSpeedScale3() {
 }
 
 function testSpeedScale4() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "feet/sec",
 	    amount: 1000
 	});
@@ -121,7 +123,7 @@ function testSpeedScale4() {
 }
 
 function testSpeedLocalize1() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "miles/hour",
 	    amount: 1000
 	});
@@ -133,7 +135,7 @@ function testSpeedLocalize1() {
 }
 
 function testSpeedLocalize2() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "kilometer/hour",
 	    amount: 1000
 	});
@@ -145,7 +147,7 @@ function testSpeedLocalize2() {
 }
 
 function testSpeedLocalize3() {
-	var m = new ilib.Measurement.Speed({
+	var m = new Measurement.Speed({
 	    unit: "miles/hour",
 	    amount: 1000
 	});
@@ -157,7 +159,7 @@ function testSpeedLocalize3() {
 }
 
 function testSpeedGetMeasures() {
-	var measures = ilib.Measurement.Speed.getMeasures();
+	var measures = Measurement.Speed.getMeasures();
 	var expected = [
 	    "kilometer/hour",
 	    "feet/second",

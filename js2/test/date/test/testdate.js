@@ -17,14 +17,18 @@
  * limitations under the License.
  */
 
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
+var DateFactory = require("./../lib/DateFactory.js");
+
 function testDateConstructor() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
 };
 
 function testDateConstructorFull() {
-    var gd = new ilib.Date({
+    var gd = new DateFactory({
     	year: 2011, 
     	month: 9, 
     	day: 23, 
@@ -46,7 +50,7 @@ function testDateConstructorFull() {
 };
 
 function testDateSetYears() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -56,7 +60,7 @@ function testDateSetYears() {
 };
 
 function testDateSetMonths() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -66,7 +70,7 @@ function testDateSetMonths() {
 };
 
 function testDateSetDays() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -76,7 +80,7 @@ function testDateSetDays() {
 };
 
 function testDateSetHours() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -86,7 +90,7 @@ function testDateSetHours() {
 };
 
 function testDateSetMinutes() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -96,7 +100,7 @@ function testDateSetMinutes() {
 };
 
 function testDateSetSeconds() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -106,7 +110,7 @@ function testDateSetSeconds() {
 };
 
 function testDateSetMilliseconds() {
-    var gd = new ilib.Date();
+    var gd = new DateFactory();
     
     assertNotNull(gd);
     
@@ -117,7 +121,7 @@ function testDateSetMilliseconds() {
 
 
 function testDateFactoryRightType() {
-    var date = ilib.Date.newInstance({
+    var date = DateFactory({
     	type: "gregorian"
     });
     
@@ -126,14 +130,14 @@ function testDateFactoryRightType() {
 };
 
 function testDateFactoryDefaultGregorian() {
-    var date = ilib.Date.newInstance();
+    var date = DateFactory();
     
     assertNotNull(date);
     assertEquals("gregorian", date.getCalendar());
 };
 
 function testDateFactoryNonGregorian() {
-    var date = ilib.Date.newInstance({
+    var date = DateFactory({
     	type: "hebrew"
     });
     
@@ -142,7 +146,7 @@ function testDateFactoryNonGregorian() {
 };
 
 function testDateFactoryNonGregorianWithCalendar() {
-    var date = ilib.Date.newInstance({
+    var date = DateFactory({
     	calendar: "hebrew"
     });
     
@@ -151,7 +155,7 @@ function testDateFactoryNonGregorianWithCalendar() {
 };
 
 function testDateFactoryBogus() {
-    var date = ilib.Date.newInstance({
+    var date = DateFactory({
     	type: "asdf"
     });
     
@@ -159,20 +163,20 @@ function testDateFactoryBogus() {
 };
 
 function testDateToIlibUndefined() {
-    var date = ilib.Date._dateToIlib();
+    var date = DateFactory._dateToIlib();
     
     assertUndefined(date);
 }
 
 function testDateToIlibNull() {
-    var date = ilib.Date._dateToIlib(null);
+    var date = DateFactory._dateToIlib(null);
     
     assertNull(date);
 }
 
 function testDateToIlibDateWithDate() {
 	var d = new Date();
-    var date = ilib.Date._dateToIlib(d);
+    var date = DateFactory._dateToIlib(d);
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -181,8 +185,8 @@ function testDateToIlibDateWithDate() {
 }
 
 function testDateToIlibDateWithIlibDate() {
-	var d = new ilib.Date.GregDate();
-    var date = ilib.Date._dateToIlib(d);
+	var d = new GregorianDate();
+    var date = DateFactory._dateToIlib(d);
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -191,7 +195,7 @@ function testDateToIlibDateWithIlibDate() {
 }
 
 function testDateToIlibDateWithNumber() {
-	var date = ilib.Date._dateToIlib(1000);
+	var date = DateFactory._dateToIlib(1000);
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -200,7 +204,7 @@ function testDateToIlibDateWithNumber() {
 }
 
 function testDateToIlibDateWithString() {
-	var date = ilib.Date._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800");
+	var date = DateFactory._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800");
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -216,7 +220,7 @@ function testDateToIlibDateWithGenericObject() {
 		hour: 8,
 		minute: 24
 	};
-    var date = ilib.Date._dateToIlib(d);
+    var date = DateFactory._dateToIlib(d);
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -234,7 +238,7 @@ function testDateToIlibDateWithBogusObject() {
 		xxx: true
 	};
 	var now = new Date();
-	var date = ilib.Date._dateToIlib(d);
+	var date = DateFactory._dateToIlib(d);
     
     assertEquals("object", typeof(date));
     assertNotUndefined(typeof(date.cal));
@@ -249,7 +253,7 @@ function testDateToIlibDateWithBogusObject() {
 
 function testDateToIlibDate() {
     var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
-    var ildMyBday = ilib.Date.newInstance({
+    var ildMyBday = DateFactory({
         year: 1982,
         month: 8,
         day: 13,
@@ -257,13 +261,13 @@ function testDateToIlibDate() {
         minute: 37,
         second: 35
     });
-    var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(datMyBday)));
+    var fmt = new DateFmt({length: "full"});
+    assertEquals(fmt.format(ildMyBday), fmt.format(DateFactory._dateToIlib(datMyBday)));
 }
 
 function testDateToIlibString() {
     var strMyBday = "Fri Aug 13 1982 13:37:35 GMT-0700";
-    var ildMyBday = ilib.Date.newInstance({
+    var ildMyBday = DateFactory({
         year: 1982,
         month: 8,
         day: 13,
@@ -271,24 +275,24 @@ function testDateToIlibString() {
         minute: 37,
         second: 35
     });
-    var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(strMyBday)));
+    var fmt = new DateFmt({length: "full"});
+    assertEquals(fmt.format(ildMyBday), fmt.format(DateFactory._dateToIlib(strMyBday)));
 }
 
 function testDateToIlibInteger() {
     var intMyBday = 1234657890000;
-    var ildMyBday = ilib.Date.newInstance({unixtime: 1234657890000});
-    var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(intMyBday)));
+    var ildMyBday = DateFactory({unixtime: 1234657890000});
+    var fmt = new DateFmt({length: "full"});
+    assertEquals(fmt.format(ildMyBday), fmt.format(DateFactory._dateToIlib(intMyBday)));
 }
 
 function testDateToIlibIlibDate() {
-    var ildMyBday = ilib.Date.newInstance({unixtime: 1234657890000});
-    assertObjectEquals(ildMyBday, ilib.Date._dateToIlib(ildMyBday));
+    var ildMyBday = DateFactory({unixtime: 1234657890000});
+    assertObjectEquals(ildMyBday, DateFactory._dateToIlib(ildMyBday));
 }
 
 function testDateGetJSDateBeyond32Bits() {
-	var d = ilib.Date.newInstance({
+	var d = DateFactory({
 		year: 2040,  // beyond the end of 32-bit unix time
 		month: 1,
 		day: 1

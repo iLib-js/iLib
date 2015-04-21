@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var Locale = require("./../lib/Locale.js");
+
 function testGetLocaleDefault() {
     assertEquals("en-US", ilib.getLocale());
 }
@@ -33,7 +36,7 @@ function testSetLocale() {
 function testSetLocaleObject() {
     assertEquals("en-US", ilib.getLocale());
     
-    ilib.setLocale(new ilib.Locale("it-IT"));
+    ilib.setLocale(new Locale("it-IT"));
 
     // do not change the locale if the arg is not a string
     assertEquals("en-US", ilib.getLocale());
@@ -263,7 +266,7 @@ function testGetLocaleNotString() {
 	}
 	ilib._platform = undefined;
 	PalmSystem = undefined;
-	ilib.locale = new ilib.Locale("it-IT");
+	ilib.locale = new Locale("it-IT");
 	
 	// should remove the locale object and make it into a string
 	assertEquals("en-US", ilib.getLocale());

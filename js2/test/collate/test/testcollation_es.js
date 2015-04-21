@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Collator = require("./../lib/Collator.js");
+
 function testJSCollatorTraditionalQuatCH_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -36,7 +38,7 @@ function testJSCollatorTraditionalQuatCH_es() {
 }
 
 function testJSCollatorTraditionalQuatLL_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -54,7 +56,7 @@ function testJSCollatorTraditionalQuatLL_es() {
 }
 
 function testJSCollatorTraditionalQuatEnye_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -74,7 +76,7 @@ function testJSCollatorTraditionalQuatEnye_es() {
 // differences in ch rr ll and ñ should be primary differences
 
 function testJSCollatorTraditionalPrimaryCH_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "primary",
@@ -93,7 +95,7 @@ function testJSCollatorTraditionalPrimaryCH_es() {
 }
 
 function testJSCollatorTraditionalPrimaryLL_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "primary",
@@ -112,7 +114,7 @@ function testJSCollatorTraditionalPrimaryLL_es() {
 }
 
 function testJSCollatorTraditionalPrimaryEnye_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "primary",
@@ -130,7 +132,7 @@ function testJSCollatorTraditionalPrimaryEnye_es() {
 }
 
 function testCollatorSortWithCase_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		sensitivity: "tertiary",
 		usage: "sort",
@@ -183,7 +185,7 @@ function testCollatorSortWithCase_es() {
 }
 
 function testCollatorWithVariants_es() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "es-ES",
 		sensitivity: "tertiary",
 		usage: "sort",

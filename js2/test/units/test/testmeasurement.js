@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var Measurement = require("./../lib/Measurement.js");
+
 function testMeasurementConstructor() {
-    var m = new ilib.Measurement();
+    var m = new Measurement();
     
     assertNotNull(m);
 }
 
 function testMeasurementNoAmount() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "meter"
     });
     
@@ -35,7 +37,7 @@ function testMeasurementNoAmount() {
 }
 
 function testMeasurementRightMeasureType() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "meter",
     	amount: 2
     });
@@ -46,7 +48,7 @@ function testMeasurementRightMeasureType() {
 }
 
 function testMeasurementUnknownUnitPreserved() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "krunghoonfoop",
     	amount: 2
     });
@@ -58,7 +60,7 @@ function testMeasurementUnknownUnitPreserved() {
 }
 
 function testMeasurementUnknownUnitUnknownMeasureType() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "krunghoonfoop",
     	amount: 2
     });
@@ -69,7 +71,7 @@ function testMeasurementUnknownUnitUnknownMeasureType() {
 }
 
 function testMeasurementMetricScaleMicro() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "micrometer",
     	amount: 2
     });
@@ -81,7 +83,7 @@ function testMeasurementMetricScaleMicro() {
 }
 
 function testMeasurementMetricScaleMilli() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "millimeter",
     	amount: 2
     });
@@ -93,7 +95,7 @@ function testMeasurementMetricScaleMilli() {
 }
 
 function testMeasurementMetricScaleCenti() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "centimeter",
     	amount: 2
     });
@@ -105,7 +107,7 @@ function testMeasurementMetricScaleCenti() {
 }
 
 function testMeasurementMetricScaleDeca() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "decameter",
     	amount: 2
     });
@@ -117,7 +119,7 @@ function testMeasurementMetricScaleDeca() {
 }
 
 function testMeasurementMetricScaleHecto() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "hectometer",
     	amount: 2
     });
@@ -129,7 +131,7 @@ function testMeasurementMetricScaleHecto() {
 }
 
 function testMeasurementMetricScaleKilo() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "kilometer",
     	amount: 2
     });
@@ -141,7 +143,7 @@ function testMeasurementMetricScaleKilo() {
 }
 
 function testMeasurementMetricScaleMega() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "megameter",
     	amount: 2
     });
@@ -153,7 +155,7 @@ function testMeasurementMetricScaleMega() {
 }
 
 function testMeasurementMetricScaleGiga() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "gigameter",
     	amount: 2
     });
@@ -165,7 +167,7 @@ function testMeasurementMetricScaleGiga() {
 }
 
 function testMeasurementMetricScaleSymbolMicro() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "µm",
     	amount: 2
     });
@@ -177,7 +179,7 @@ function testMeasurementMetricScaleSymbolMicro() {
 }
 
 function testMeasurementMetricScaleSymbolMilli() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "mm",
     	amount: 2
     });
@@ -189,7 +191,7 @@ function testMeasurementMetricScaleSymbolMilli() {
 }
 
 function testMeasurementMetricScaleSymbolCenti() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "cm",
     	amount: 2
     });
@@ -201,7 +203,7 @@ function testMeasurementMetricScaleSymbolCenti() {
 }
 
 function testMeasurementMetricScaleSymbolNone() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "m",
     	amount: 2
     });
@@ -213,7 +215,7 @@ function testMeasurementMetricScaleSymbolNone() {
 }
 
 function testMeasurementMetricScaleSymbolDeca() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "dam",
     	amount: 2
     });
@@ -225,7 +227,7 @@ function testMeasurementMetricScaleSymbolDeca() {
 }
 
 function testMeasurementMetricScaleSymbolHecto() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "hm",
     	amount: 2
     });
@@ -237,7 +239,7 @@ function testMeasurementMetricScaleSymbolHecto() {
 }
 
 function testMeasurementMetricScaleSymbolKilo() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "km",
     	amount: 2
     });
@@ -249,7 +251,7 @@ function testMeasurementMetricScaleSymbolKilo() {
 }
 
 function testMeasurementMetricScaleSymbolMega() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "Mm",
     	amount: 2
     });
@@ -261,7 +263,7 @@ function testMeasurementMetricScaleSymbolMega() {
 }
 
 function testMeasurementMetricScaleSymbolGiga() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "Gm",
     	amount: 2
     });
@@ -273,7 +275,7 @@ function testMeasurementMetricScaleSymbolGiga() {
 }
 
 function testMeasurementMetricScaleOriginalUnit() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "kilometer",
     	amount: 2
     });
@@ -284,7 +286,7 @@ function testMeasurementMetricScaleOriginalUnit() {
 }
 
 function testMeasurementAliases1() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "miles",
     	amount: 2
     });
@@ -296,7 +298,7 @@ function testMeasurementAliases1() {
 }
 
 function testMeasurementAliases1OriginalUnit() {
-    var m = new ilib.Measurement({
+    var m = new Measurement({
     	unit: "meters",
     	amount: 2
     });
@@ -316,7 +318,7 @@ function testMeasurementAliasesMetric() {
 	];
 	
 	for (var i = 0; i < expected.length; i++) {
-	    var m = new ilib.Measurement({
+	    var m = new Measurement({
 	    	unit: expected[i],
 	    	amount: 2
 	    });
@@ -337,7 +339,7 @@ function testMeasurementAliasesUS() {
 	];
 	
 	for (var i = 0; i < expected.length; i++) {
-	    var m = new ilib.Measurement({
+	    var m = new Measurement({
 	    	unit: expected[i].alias,
 	    	amount: 2
 	    });
@@ -349,11 +351,11 @@ function testMeasurementAliasesUS() {
 }
 
 function testMeasurementConvert() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "meter",
     	amount: m1
     });
@@ -366,11 +368,11 @@ function testMeasurementConvert() {
 }
 
 function testMeasurementConvertToMetricScale() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "kilometer",
     	amount: m1
     });
@@ -383,11 +385,11 @@ function testMeasurementConvertToMetricScale() {
 }
 
 function testMeasurementConvertToMetricScaleWithAlias() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "km",
     	amount: m1
     });
@@ -400,11 +402,11 @@ function testMeasurementConvertToMetricScaleWithAlias() {
 }
 
 function testMeasurementConvertFromMetric() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "meter",
     	amount: 2000
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "mile",
     	amount: m1
     });
@@ -417,11 +419,11 @@ function testMeasurementConvertFromMetric() {
 }
 
 function testMeasurementConvertFromMetricWithScale() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "kilometer",
     	amount: 2
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "mile",
     	amount: m1
     });
@@ -434,11 +436,11 @@ function testMeasurementConvertFromMetricWithScale() {
 }
 
 function testMeasurementConvertFromMetricWithScaleAndAlias() {
-    var m1 = new ilib.Measurement({
+    var m1 = new Measurement({
     	unit: "km",
     	amount: 2
     });
-    var m2 = new ilib.Measurement({
+    var m2 = new Measurement({
     	unit: "mile",
     	amount: m1
     });
@@ -452,11 +454,11 @@ function testMeasurementConvertFromMetricWithScaleAndAlias() {
 
 function testMeasurementCannotConvertBetweenMeasureTypes() {
 	try {
-		var m1 = new ilib.Measurement({
+		var m1 = new Measurement({
 	    	unit: "meter",
 	    	amount: 2
 	    });
-	    var m2 = new ilib.Measurement({
+	    var m2 = new Measurement({
 	    	unit: "celsius",
 	    	amount: m1
 	    });

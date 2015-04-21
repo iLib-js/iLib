@@ -17,9 +17,11 @@
  * limitations under the License.
  */
 
+var FuelConsumptionUnit = require("./../lib/FuelConsumptionUnit.js");
+
 function testFuelConsumptionFuelConsumptionConstructor() {
 
-	var m = new ilib.Measurement.FuelConsumption({
+	var m = new FuelConsumptionUnit({
 		unit: "km/liter",
 		amount: 2
 	});
@@ -28,11 +30,11 @@ function testFuelConsumptionFuelConsumptionConstructor() {
 }
 
 function testFuelConsumptionFuelConsumptionConvertKm2toMi2() {
-	var m1 = new ilib.Measurement.FuelConsumption({
+	var m1 = new FuelConsumptionUnit({
 		unit: "km/liter",
 		amount:5000
 	});
-	var m2 = new ilib.Measurement.FuelConsumption({
+	var m2 = new FuelConsumptionUnit({
 		unit: "liter/100km",
 		amount: m1
 	});
@@ -44,78 +46,78 @@ function testFuelConsumptionFuelConsumptionConvertKm2toMi2() {
 }
 
 function testFuelConsumptionStaticConvert1() {
-	var m = ilib.Measurement.FuelConsumption.convert("mpg","km/liter", 2.0);
+	var m = FuelConsumptionUnit.convert("mpg","km/liter", 2.0);
 	assertRoughlyEquals(4.70429, m, 0.01);
 }
 
 function testFuelConsumptionStaticConvertWithString() {
-	var m = ilib.Measurement.FuelConsumption.convert("mpg(imp)","km/liter", 2.0);
+	var m = FuelConsumptionUnit.convert("mpg(imp)","km/liter", 2.0);
 
 	assertEquals(5.64962, m);
 }
 
 function testFuelConsumptionStaticConvert2() {
-	var m = ilib.Measurement.FuelConsumption.convert( "liter/100km","km/liter", 2.0);
+	var m = FuelConsumptionUnit.convert( "liter/100km","km/liter", 2.0);
 
 	assertEquals(50, m);
 }
 
 function testFuelConsumptionStaticConvert3() {
-	var m = ilib.Measurement.FuelConsumption.convert("mpg", "liter/100km", 2.0);
+	var m = FuelConsumptionUnit.convert("mpg", "liter/100km", 2.0);
 
 	assertRoughlyEquals(117.607, m, 0.01);
 }
 
 function testFuelConsumptionStaticConvert4() {
-	var m = ilib.Measurement.FuelConsumption.convert("km/liter", "liter/100km", 2.0);
+	var m = FuelConsumptionUnit.convert("km/liter", "liter/100km", 2.0);
 
 	assertEquals(50, m);
 }
 
 function testFuelConsumptionStaticConvert5() {
-	var m = ilib.Measurement.FuelConsumption.convert("mpg(imp)", "liter/100km", 2.0);
+	var m = FuelConsumptionUnit.convert("mpg(imp)", "liter/100km", 2.0);
 
 	assertRoughlyEquals(141.241, m, 0.001);
 }
 
 function testFuelConsumptionStaticConvert6() {
-	var m = ilib.Measurement.FuelConsumption.convert( "mpg","mpg(imp)", 2.0);
+	var m = FuelConsumptionUnit.convert( "mpg","mpg(imp)", 2.0);
 
 	assertRoughlyEquals(1.66535, m, 0.001);
 }
 function testFuelConsumptionStaticConvert7() {
-	var m = ilib.Measurement.FuelConsumption.convert( "km/liter","mpg(imp)", 2.0);
+	var m = FuelConsumptionUnit.convert( "km/liter","mpg(imp)", 2.0);
 
 	assertRoughlyEquals(0.708012, m, 0.01);
 }
 function testFuelConsumptionStaticConvert8() {
-	var m = ilib.Measurement.FuelConsumption.convert( "liter/100km","mpg(imp)", 2.0);
+	var m = FuelConsumptionUnit.convert( "liter/100km","mpg(imp)", 2.0);
 
 	assertRoughlyEquals(141.241, m, 0.01);
 }
 
 function testFuelConsumptionStaticConvert9() {
-	var m = ilib.Measurement.FuelConsumption.convert("km/liter", "mpg",2.0);
+	var m = FuelConsumptionUnit.convert("km/liter", "mpg",2.0);
 
 	assertRoughlyEquals(0.850287, m, 0.001);
 }
 
 
 function testFuelConsumptionStaticConvert10() {
-	var m = ilib.Measurement.FuelConsumption.convert("mpg(imp)", "mpg",2.0);
+	var m = FuelConsumptionUnit.convert("mpg(imp)", "mpg",2.0);
 
 	assertRoughlyEquals(2.4019, m, 0.001);
 }
 
 function testFuelConsumptionStaticConvert11() {
-	var m = ilib.Measurement.FuelConsumption.convert("liter/100km", "mpg",2.0);
+	var m = FuelConsumptionUnit.convert("liter/100km", "mpg",2.0);
 
 	assertRoughlyEquals(117.607, m, 0.001);
 
 }
 
 function testFuelConsumptionLocalize4() {
-    var m = new ilib.Measurement.FuelConsumption({
+    var m = new FuelConsumptionUnit({
         unit: "mpg(imp)",
         amount: 1000
     });
@@ -127,7 +129,7 @@ function testFuelConsumptionLocalize4() {
 }
 
 function testFuelConsumptionLocalize1() {
-    var m = new ilib.Measurement.FuelConsumption({
+    var m = new FuelConsumptionUnit({
         unit: "km/liter",
         amount: 1000
     });
@@ -139,7 +141,7 @@ function testFuelConsumptionLocalize1() {
 }
 
 function testFuelConsumptionLocalize2() {
-    var m = new ilib.Measurement.FuelConsumption({
+    var m = new FuelConsumptionUnit({
         unit: "km/liter",
         amount: 1000
     });
@@ -151,7 +153,7 @@ function testFuelConsumptionLocalize2() {
 }
 
 function testFuelConsumptionLocalize3() {
-    var m = new ilib.Measurement.FuelConsumption({
+    var m = new FuelConsumptionUnit({
         unit: "km/liter",
         amount: 1000
     });
@@ -163,7 +165,7 @@ function testFuelConsumptionLocalize3() {
 }
 
 function testFuelConsumptionLocalize5() {
-    var m = new ilib.Measurement.FuelConsumption({
+    var m = new FuelConsumptionUnit({
         unit: "km/liter",
         amount: 1000
     });
@@ -175,7 +177,7 @@ function testFuelConsumptionLocalize5() {
 }
 
 function testFuelConsumptionGetMeasures() {
-	var measures = ilib.Measurement.FuelConsumption.getMeasures();
+	var measures = FuelConsumptionUnit.getMeasures();
 	var expected = [
         "liter/100km",
         "mpg",

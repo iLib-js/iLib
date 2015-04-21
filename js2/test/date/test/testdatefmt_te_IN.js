@@ -16,18 +16,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var JulianDate = require("./../lib/JulianDate.js");
+var GregorianDate = require("./../lib/GregorianDate.js");
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtINConstructorEmpty_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN"});
+    var fmt = new DateFmt({locale: "te-IN"});
     
     assertNotUndefined(fmt);
 }
 
 
 function testDateFmtINSimpleShort_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "short"});
+    var fmt = new DateFmt({locale: "te-IN", length: "short"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -40,10 +43,10 @@ function testDateFmtINSimpleShort_te_IN() {
 }
 
 function testDateFmtINSimpleMedium_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "medium"});
+    var fmt = new DateFmt({locale: "te-IN", length: "medium"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -57,10 +60,10 @@ function testDateFmtINSimpleMedium_te_IN() {
 }
 
 function testDateFmtINSimpleLong_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "long"});
+    var fmt = new DateFmt({locale: "te-IN", length: "long"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -74,10 +77,10 @@ function testDateFmtINSimpleLong_te_IN() {
 }
 
 function testDateFmtINSimpleFull_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -91,10 +94,10 @@ function testDateFmtINSimpleFull_te_IN() {
 }
 
 function testDateFmtINSimpleTimeShort_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", length: "short", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -108,10 +111,10 @@ function testDateFmtINSimpleTimeShort_te_IN() {
 }
 
 function testDateFmtINSimpleTimeShort_te_IN1() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "short", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", length: "short", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -125,10 +128,10 @@ function testDateFmtINSimpleTimeShort_te_IN1() {
 }
 
 function testDateFmtINSimpleTimeMedium_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "medium", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", length: "medium", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -142,10 +145,10 @@ function testDateFmtINSimpleTimeMedium_te_IN() {
 }
 
 function testDateFmtINSimpleTimeLong_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", timelength: "long", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", timelength: "long", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -159,10 +162,10 @@ function testDateFmtINSimpleTimeLong_te_IN() {
 }
 
 function testDateFmtINSimpleTimeFull_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -176,10 +179,10 @@ function testDateFmtINSimpleTimeFull_te_IN() {
 }
 
 function testDateFmtINDateTimeSimpleShort_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "short", type: "datetime"});
+    var fmt = new DateFmt({locale: "te-IN", length: "short", type: "datetime"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -193,10 +196,10 @@ function testDateFmtINDateTimeSimpleShort_te_IN() {
 }
 
 function testDateFmtINDateTimeSimpleMedium_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "medium", type: "datetime"});
+    var fmt = new DateFmt({locale: "te-IN", length: "medium", type: "datetime"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -210,10 +213,10 @@ function testDateFmtINDateTimeSimpleMedium_te_IN() {
 }
 
 function testDateFmtINDateTimeSimpleLong_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "long", type: "datetime"});
+    var fmt = new DateFmt({locale: "te-IN", length: "long", type: "datetime"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -227,10 +230,10 @@ function testDateFmtINDateTimeSimpleLong_te_IN() {
 }
 
 function testDateFmtINDateTimeSimpleFull_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", type: "datetime"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", type: "datetime"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -245,10 +248,10 @@ function testDateFmtINDateTimeSimpleFull_te_IN() {
 
 
 function testDateFmtINTemplateCalendar_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new DateFmt({locale: "te-IN", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.JulDate({
+    var date = new JulianDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -263,10 +266,10 @@ function testDateFmtINTemplateCalendar_te_IN() {
 
 
 function testDateFmtINTemplateClock12SwitchHH_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", clock: "12", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "te-IN", clock: "12", template: "HH:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -280,10 +283,10 @@ function testDateFmtINTemplateClock12SwitchHH_te_IN() {
 }
 
 function testDateFmtINTemplateClock12Switchkk_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", clock: "12", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "te-IN", clock: "12", template: "kk:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -297,10 +300,10 @@ function testDateFmtINTemplateClock12Switchkk_te_IN() {
 }
 
 function testDateFmtINTemplateClock24Switchhh_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", clock: "24", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "te-IN", clock: "24", template: "hh:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -314,10 +317,10 @@ function testDateFmtINTemplateClock24Switchhh_te_IN() {
 }
 
 function testDateFmtINTemplateClock24SwitchKK_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", clock: "24", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "te-IN", clock: "24", template: "KK:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -331,10 +334,10 @@ function testDateFmtINTemplateClock24SwitchKK_te_IN() {
 }
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", template: "hh:mm"});
+    var fmt = new DateFmt({locale: "te-IN", template: "hh:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -348,10 +351,10 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_te_IN() {
 }
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", template: "KK:mm"});
+    var fmt = new DateFmt({locale: "te-IN", template: "KK:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -365,10 +368,10 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_te_IN() {
 }
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", template: "HH:mm"});
+    var fmt = new DateFmt({locale: "te-IN", template: "HH:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -382,10 +385,10 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_te_IN() {
 }
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", template: "kk:mm"});
+    var fmt = new DateFmt({locale: "te-IN", template: "kk:mm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -400,10 +403,10 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_te_IN() {
 
 
 function testDateFmtINTypeDate_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "date"});
+    var fmt = new DateFmt({locale: "te-IN", type: "date"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -417,10 +420,10 @@ function testDateFmtINTypeDate_te_IN() {
 }
 
 function testDateFmtINTypeTime_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -434,10 +437,10 @@ function testDateFmtINTypeTime_te_IN() {
 }
 
 function testDateFmtINTypeDateTime_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "datetime"});
+    var fmt = new DateFmt({locale: "te-IN", type: "datetime"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -452,10 +455,10 @@ function testDateFmtINTypeDateTime_te_IN() {
 
 
 function testDateFmtINShortDateComponentsY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "y"});
+    var fmt = new DateFmt({locale: "te-IN", date: "y"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -469,10 +472,10 @@ function testDateFmtINShortDateComponentsY_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "m"});
+    var fmt = new DateFmt({locale: "te-IN", date: "m"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -486,10 +489,10 @@ function testDateFmtINShortDateComponentsM_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsN_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "n"});
+    var fmt = new DateFmt({locale: "te-IN", date: "n"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -503,10 +506,10 @@ function testDateFmtINShortDateComponentsN_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsD_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "d"});
+    var fmt = new DateFmt({locale: "te-IN", date: "d"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -520,10 +523,10 @@ function testDateFmtINShortDateComponentsD_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsDM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "dm"});
+    var fmt = new DateFmt({locale: "te-IN", date: "dm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -537,10 +540,10 @@ function testDateFmtINShortDateComponentsDM_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "my"});
+    var fmt = new DateFmt({locale: "te-IN", date: "my"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -554,10 +557,10 @@ function testDateFmtINShortDateComponentsMY_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsDMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "dmy"});
+    var fmt = new DateFmt({locale: "te-IN", date: "dmy"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -571,10 +574,10 @@ function testDateFmtINShortDateComponentsDMY_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsWDM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "wdm"});
+    var fmt = new DateFmt({locale: "te-IN", date: "wdm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -588,10 +591,10 @@ function testDateFmtINShortDateComponentsWDM_te_IN() {
 }
 
 function testDateFmtINShortDateComponentsWDMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", date: "wdmy"});
+    var fmt = new DateFmt({locale: "te-IN", date: "wdmy"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -606,10 +609,10 @@ function testDateFmtINShortDateComponentsWDMY_te_IN() {
 
 
 function testDateFmtINFullDateComponentsY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "y"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "y"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -623,10 +626,10 @@ function testDateFmtINFullDateComponentsY_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "m"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "m"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -640,10 +643,10 @@ function testDateFmtINFullDateComponentsM_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsD_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "d"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "d"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -657,10 +660,10 @@ function testDateFmtINFullDateComponentsD_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsDM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "dm"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "dm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -674,10 +677,10 @@ function testDateFmtINFullDateComponentsDM_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "my"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "my"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -691,10 +694,10 @@ function testDateFmtINFullDateComponentsMY_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsDMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "dmy"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "dmy"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -708,10 +711,10 @@ function testDateFmtINFullDateComponentsDMY_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsWDM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "wdm"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "wdm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -725,10 +728,10 @@ function testDateFmtINFullDateComponentsWDM_te_IN() {
 }
 
 function testDateFmtINFullDateComponentsWDMY_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full", date: "wdmy"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full", date: "wdmy"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -743,10 +746,10 @@ function testDateFmtINFullDateComponentsWDMY_te_IN() {
 
 
 function testDateFmtINShortTimeComponentsS_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "s"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "s"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -760,10 +763,10 @@ function testDateFmtINShortTimeComponentsS_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "m"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "m"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -777,10 +780,10 @@ function testDateFmtINShortTimeComponentsM_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsH_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "h"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "h"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -795,10 +798,10 @@ function testDateFmtINShortTimeComponentsH_te_IN() {
 
 
 function testDateFmtINShortTimeComponentsHM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "hm"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hm"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -812,10 +815,10 @@ function testDateFmtINShortTimeComponentsHM_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMS_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "hms"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hms"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -829,10 +832,10 @@ function testDateFmtINShortTimeComponentsHMS_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMA_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "hma"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hma"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -846,14 +849,14 @@ function testDateFmtINShortTimeComponentsHMA_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         time: "ahmsz"
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -867,7 +870,7 @@ function testDateFmtINShortTimeComponentsHMZ_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMAZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         time: "ahmsz", 
@@ -875,7 +878,7 @@ function testDateFmtINShortTimeComponentsHMAZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -889,10 +892,10 @@ function testDateFmtINShortTimeComponentsHMAZ_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMSA_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", time: "hmsa"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", time: "hmsa"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -906,7 +909,7 @@ function testDateFmtINShortTimeComponentsHMSA_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMSZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         time: "hmsaz", 
@@ -914,7 +917,7 @@ function testDateFmtINShortTimeComponentsHMSZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -928,7 +931,7 @@ function testDateFmtINShortTimeComponentsHMSZ_te_IN() {
 }
 
 function testDateFmtINShortTimeComponentsHMSAZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         time: "hmsaz", 
@@ -936,7 +939,7 @@ function testDateFmtINShortTimeComponentsHMSAZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -951,10 +954,10 @@ function testDateFmtINShortTimeComponentsHMSAZ_te_IN() {
 
 
 function testDateFmtINFullTimeComponentsS_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "s"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "s"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -968,10 +971,10 @@ function testDateFmtINFullTimeComponentsS_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "m"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "m"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -985,10 +988,10 @@ function testDateFmtINFullTimeComponentsM_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsH_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "h"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "h"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1004,10 +1007,10 @@ function testDateFmtINFullTimeComponentsH_te_IN() {
 
 
 function testDateFmtINFullTimeComponentsHM_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1021,10 +1024,10 @@ function testDateFmtINFullTimeComponentsHM_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsHMS_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1038,10 +1041,10 @@ function testDateFmtINFullTimeComponentsHMS_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsHMA_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hma"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1057,7 +1060,7 @@ function testDateFmtINFullTimeComponentsHMA_te_IN() {
 
 
 function testDateFmtINFullTimeComponentsHMAZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         length: "full", 
@@ -1066,7 +1069,7 @@ function testDateFmtINFullTimeComponentsHMAZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1080,10 +1083,10 @@ function testDateFmtINFullTimeComponentsHMAZ_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsHMSA_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
+    var fmt = new DateFmt({locale: "te-IN", type: "time", length: "full", time: "hmsa"});
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1097,7 +1100,7 @@ function testDateFmtINFullTimeComponentsHMSA_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsHMSZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         length: "full", 
@@ -1106,7 +1109,7 @@ function testDateFmtINFullTimeComponentsHMSZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1120,7 +1123,7 @@ function testDateFmtINFullTimeComponentsHMSZ_te_IN() {
 }
 
 function testDateFmtINFullTimeComponentsHMSAZ_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         length: "full", 
@@ -1129,7 +1132,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1143,7 +1146,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_te_IN() {
 }
 
 function testDateFmtINWithTimeZoneAndNoDST_te_IN() {
-    var fmt = new ilib.DateFmt({
+    var fmt = new DateFmt({
 		locale: "te-IN", 
         type: "time", 
         length: "full", 
@@ -1152,7 +1155,7 @@ function testDateFmtINWithTimeZoneAndNoDST_te_IN() {
     });
     assertNotUndefined(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 12,
@@ -1166,10 +1169,10 @@ function testDateFmtINWithTimeZoneAndNoDST_te_IN() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1179,7 +1182,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1192,10 +1195,10 @@ function testDateFmtFormatRelativeWithinMinuteAfter_te_IN() {
     assertEquals("30 సెకన్లు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1205,7 +1208,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1218,10 +1221,10 @@ function testDateFmtFormatRelativeWithinMinuteBefore_te_IN() {
     assertEquals("30 సెకన్లు క్రితం", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1231,7 +1234,7 @@ function testDateFmtFormatRelativeWithinHourAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1244,10 +1247,10 @@ function testDateFmtFormatRelativeWithinHourAfter_te_IN() {
     assertEquals("10 నిమిషాలు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1257,7 +1260,7 @@ function testDateFmtFormatRelativeWithinHourBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1270,10 +1273,10 @@ function testDateFmtFormatRelativeWithinHourBefore_te_IN() {
     assertEquals("10 నిమిషాలు క్రితం", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1283,7 +1286,7 @@ function testDateFmtFormatRelativeWithinDayAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1296,10 +1299,10 @@ function testDateFmtFormatRelativeWithinDayAfter_te_IN() {
     assertEquals("4 గంటలు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1309,7 +1312,7 @@ function testDateFmtFormatRelativeWithinDayBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1323,10 +1326,10 @@ function testDateFmtFormatRelativeWithinDayBefore_te_IN() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1336,7 +1339,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1349,10 +1352,10 @@ function testDateFmtFormatRelativeWithinFortnightAfter_te_IN() {
     assertEquals("4 రోజులు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1362,7 +1365,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1376,10 +1379,10 @@ function testDateFmtFormatRelativeWithinFortnightBefore_te_IN() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1389,7 +1392,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 11,
@@ -1402,10 +1405,10 @@ function testDateFmtFormatRelativeWithinQuarterAfter_te_IN() {
     assertEquals("9 వారాలు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1415,7 +1418,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 7,
@@ -1429,10 +1432,10 @@ function testDateFmtFormatRelativeWithinQuarterBefore_te_IN() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1442,7 +1445,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2013,
 		month: 1,
@@ -1455,10 +1458,10 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_te_IN() {
     assertEquals("16 నెలలు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1468,7 +1471,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2010,
 		month: 7,
@@ -1482,10 +1485,10 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_te_IN() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1495,7 +1498,7 @@ function testDateFmtFormatRelativeYearsAfter_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 2025,
 		month: 10,
@@ -1508,10 +1511,10 @@ function testDateFmtFormatRelativeYearsAfter_te_IN() {
     assertEquals("14 సంవత్సరాలు తర్వాత", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_te_IN() {
-    var fmt = new ilib.DateFmt({locale: "te-IN", length: "full"});
+    var fmt = new DateFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new GregorianDate({
 		locale: "te-IN",
 		year: 2011,
 		month: 9,
@@ -1521,7 +1524,7 @@ function testDateFmtFormatRelativeYearsBefore_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new GregorianDate({
 		locale: "te-IN",
 		year: 1990,
 		month: 7,

@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var MassUnit = require("./../lib/MassUnit.js");
+
 function testMassMassConstructor() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "kg",
 	    amount: 2
 	});
@@ -27,11 +29,11 @@ function testMassMassConstructor() {
 }
 
 function testMassMassConvertGramToKG() {
-	var m1 = new ilib.Measurement.Mass({
+	var m1 = new MassUnit({
 	    unit: "g",
 	    amount: 3000
 	});
-	var m2 = new ilib.Measurement.Mass({
+	var m2 = new MassUnit({
 	    unit: "kg",
 	    amount: m1
 	});
@@ -43,43 +45,43 @@ function testMassMassConvertGramToKG() {
 }
 
 function testMassStaticConvert1() {
-	var m = ilib.Measurement.Mass.convert("long ton", "kg", 10000);
+	var m = MassUnit.convert("long ton", "kg", 10000);
 
 	assertRoughlyEquals(9.842065, m, 0.00001);
 }
 
 function testMassStaticConvertWithString() {
-	var m = ilib.Measurement.Mass.convert("tonne", "pound", "1000");
+	var m = MassUnit.convert("tonne", "pound", "1000");
 
 	assertEquals(0.453592, m);
 }
 
 function testMassStaticConvert2() {
-	var m = ilib.Measurement.Mass.convert("short ton", "ounce", 10000);
+	var m = MassUnit.convert("short ton", "ounce", 10000);
 
 	assertEquals(0.3125, m);
 }
 
 function testMassStaticConvert3() {
-	var m = ilib.Measurement.Mass.convert("st", "gram", 10000);
+	var m = MassUnit.convert("st", "gram", 10000);
 
 	assertEquals(1.57473, m);
 }
 
 function testMassStaticConvert4() {
-	var m = ilib.Measurement.Mass.convert("kg", "mg", 1000000);
+	var m = MassUnit.convert("kg", "mg", 1000000);
 
 	assertEquals(1, m);
 }
 
 function testMassStaticConvert5() {
-	var m = ilib.Measurement.Mass.convert("lb", "mcg", 1000000000);
+	var m = MassUnit.convert("lb", "mcg", 1000000000);
 
 	assertRoughlyEquals(2.20462, m, 0.0001);
 }
 
 function testMassScale1() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "mcg",
 	    amount: 10000000
 	});
@@ -91,7 +93,7 @@ function testMassScale1() {
 }
 
 function testMassScale2() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "g",
 	    amount: 0.00001
 	});
@@ -103,7 +105,7 @@ function testMassScale2() {
 }
 
 function testMassScale3() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "mg",
 	    amount: 1000000
 	});
@@ -115,7 +117,7 @@ function testMassScale3() {
 }
 
 function testMassScale4() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "t",
 	    amount: 0.0001
 	});
@@ -127,7 +129,7 @@ function testMassScale4() {
 }
 
 function testMassScale5() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "oz",
 	    amount: 1000
 	});
@@ -139,7 +141,7 @@ function testMassScale5() {
 }
 
 function testMassScale6() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "st",
 	    amount: 0.1
 	});
@@ -151,7 +153,7 @@ function testMassScale6() {
 }
 
 function testMassScale7() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "oz",
 	    amount: 500000
 	});
@@ -163,7 +165,7 @@ function testMassScale7() {
 }
 
 function testMassScale8() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "lb",
 	    amount: 10
 	});
@@ -175,7 +177,7 @@ function testMassScale8() {
 }
 
 function testMassScale9() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "oz",
 	    amount: 100000
 	});
@@ -187,7 +189,7 @@ function testMassScale9() {
 }
 
 function testMassScale10() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "short ton",
 	    amount: 0.001
 	});
@@ -199,7 +201,7 @@ function testMassScale10() {
 }
 
 function testMassLocalize1() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "ounce",
 	    amount: 1000
 	});
@@ -211,7 +213,7 @@ function testMassLocalize1() {
 }
 
 function testMassLocalize2() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "gram",
 	    amount: 1000
 	});
@@ -223,7 +225,7 @@ function testMassLocalize2() {
 }
 
 function testMassLocalize3() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "long ton",
 	    amount: 1000
 	});
@@ -235,7 +237,7 @@ function testMassLocalize3() {
 }
 
 function testMassLocalize5() {
-	var m = new ilib.Measurement.Mass({
+	var m = new MassUnit({
 	    unit: "metric ton",
 	    amount: 1000
 	});
@@ -247,7 +249,7 @@ function testMassLocalize5() {
 }
 
 function testMassGetMeasures() {
-	var measures = ilib.Measurement.Mass.getMeasures();
+	var measures = MassUnit.getMeasures();
 	var expected = [
 	    "microgram",
 	    "milligram",

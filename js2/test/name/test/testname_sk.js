@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_sk_SK() {
-	var parsed = new ilib.Name("Iveta Stan", {locale: 'sk-SK'});
+	var parsed = new Name("Iveta Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_sk_SK() {
 };
 
 function testParseTitle_sk_SK() {
-	var parsed = new ilib.Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
+	var parsed = new Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -44,7 +46,7 @@ function testParseTitle_sk_SK() {
 
 
 function testParseTitleWithFamilyOnly_sk_SK() {
-	var parsed = new ilib.Name("Pán. Stan", {locale: 'sk-SK'});
+	var parsed = new Name("Pán. Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +58,7 @@ function testParseTitleWithFamilyOnly_sk_SK() {
 };
 
 function testParseEverything_sk_SK() {
-	var parsed = new ilib.Name("Pán. a pani. Stan", {locale: 'sk-SK'});
+	var parsed = new Name("Pán. a pani. Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -68,7 +70,7 @@ function testParseEverything_sk_SK() {
 };
 
 function testParseprefix_sk_SK() {
-	var parsed = new ilib.Name("Pán. Iveta Stan", {locale: 'sk-SK'});
+	var parsed = new Name("Pán. Iveta Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -81,7 +83,7 @@ function testParseprefix_sk_SK() {
 };
 
 function testParseprefixAndSuffix_sk_SK() {
-	var parsed = new ilib.Name("Viceprezident Iveta Stan dôchodku", {locale: 'sk-SK'});
+	var parsed = new Name("Viceprezident Iveta Stan dôchodku", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -98,11 +100,11 @@ function testParseprefixAndSuffix_sk_SK() {
  */
 
 function testFormatSimpleNameShort_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Iveta",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sk-SK'
 	});
@@ -115,11 +117,11 @@ function testFormatSimpleNameShort_sk_SK() {
 };
 
 function testFormatSimpleNameMedium_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Iveta",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sk-SK'
 	});
@@ -132,12 +134,12 @@ function testFormatSimpleNameMedium_sk_SK() {
 };
 
 function testFormatSimpleNameLong_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Iveta",
 		familyName: "Stan",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sk-SK'
 	});
@@ -152,11 +154,11 @@ function testFormatSimpleNameLong_sk_SK() {
 
 
 function testFormatSurname_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Pán. a pani.",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sk-SK'
 	});
@@ -169,13 +171,13 @@ function testFormatSurname_sk_SK() {
 };
 
 function testFormatSimpleNameFull_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "princezná",
 		givenName: "Iveta",
 		familyName: "Stan",
 		suffix: "dôchodku"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'sk-SK'
 	});
@@ -188,12 +190,12 @@ function testFormatSimpleNameFull_sk_SK() {
 };
 
 function testFormatComplexNameShort_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "princezná",
 		givenName: "Iveta",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sk-SK'
 	});
@@ -206,12 +208,12 @@ function testFormatComplexNameShort_sk_SK() {
 };
 
 function testFormatComplexNameMedium_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "princezná",
 		givenName: "Iveta",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sk-SK'
 	});
@@ -224,12 +226,12 @@ function testFormatComplexNameMedium_sk_SK() {
 };
 
 function testFormatComplexNameLong_sk_SK() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "princezná",
 		givenName: "Iveta",
 		familyName: "Stan"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'sk-SK'
 	});

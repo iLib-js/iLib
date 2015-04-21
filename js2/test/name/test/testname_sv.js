@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_sv_SE() {
-	var parsed = new ilib.Name("Maud Adams", {locale: 'sv-SE'});
+	var parsed = new Name("Maud Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_sv_SE() {
 };
 
 function testParseTitle_sv_SE() {
-	var parsed = new ilib.Name("Maud Adams pension", {locale: 'sv-SE'});
+	var parsed = new Name("Maud Adams pension", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_sv_SE() {
 };
 
 function testParseTitleWithFamilyOnly_sv_SE() {
-	var parsed = new ilib.Name("herr Adams", {locale: 'sv-SE'});
+	var parsed = new Name("herr Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -55,7 +57,7 @@ function testParseTitleWithFamilyOnly_sv_SE() {
 };
 
 function testParseEverything_sv_SE() {
-	var parsed = new ilib.Name("herr och fru Adams", {locale: 'sv-SE'});
+	var parsed = new Name("herr och fru Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseEverything_sv_SE() {
 };
 
 function testParseprefix_sv_SE() {
-	var parsed = new ilib.Name("herr Maud Adams", {locale: 'sv-SE'});
+	var parsed = new Name("herr Maud Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -80,7 +82,7 @@ function testParseprefix_sv_SE() {
 };
 
 function testParseprefixAndSuffix_sv_SE() {
-	var parsed = new ilib.Name("premiärminister Maud Adams pension", {locale: 'sv-SE'});
+	var parsed = new Name("premiärminister Maud Adams pension", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -98,11 +100,11 @@ function testParseprefixAndSuffix_sv_SE() {
  */
 
 function testFormatSimpleNameShort_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maud",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sv-SE'
 	});
@@ -115,11 +117,11 @@ function testFormatSimpleNameShort_sv_SE() {
 };
 
 function testFormatSimpleNameMedium_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maud",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sv-SE'
 	});
@@ -132,12 +134,12 @@ function testFormatSimpleNameMedium_sv_SE() {
 };
 
 function testFormatSimpleNameLong_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Maud",
 		familyName: "Adams",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sv-SE'
 	});
@@ -150,11 +152,11 @@ function testFormatSimpleNameLong_sv_SE() {
 };
 
 function testFormatSurname_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "herr och fru",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sv-SE'
 	});
@@ -167,13 +169,13 @@ function testFormatSurname_sv_SE() {
 };
 
 function testFormatSimpleNameFull_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "guvernör",
 		givenName: "Maud",
 		familyName: "Adams",
 		suffix: "pension"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'sv-SE'
 	});
@@ -186,12 +188,12 @@ function testFormatSimpleNameFull_sv_SE() {
 };
 
 function testFormatComplexNameShort_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "guvernör",
 		givenName: "Maud",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sv-SE'
 	});
@@ -204,12 +206,12 @@ function testFormatComplexNameShort_sv_SE() {
 };
 
 function testFormatComplexNameMedium_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "guvernör",
 		givenName: "Maud",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sv-SE'
 	});
@@ -222,12 +224,12 @@ function testFormatComplexNameMedium_sv_SE() {
 };
 
 function testFormatComplexNameLong_sv_SE() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "guvernör",
 		givenName: "Maud",
 		familyName: "Adams"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'sv-SE'
 	});

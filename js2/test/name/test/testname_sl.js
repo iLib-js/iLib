@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_sl_SI() {
-	var parsed = new ilib.Name("Melania Trump", {locale: 'sl-SI'});
+	var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_sl_SI() {
 };
 
 function testParseTitle_sl_SI() {
-	var parsed = new ilib.Name("Melania Trump upokojil", {locale: 'sl-SI'});
+	var parsed = new Name("Melania Trump upokojil", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_sl_SI() {
 };
 
 function testParseTitleWithFamilyOnly_sl_SI() {
-	var parsed = new ilib.Name("G. Trump", {locale: 'sl-SI'});
+	var parsed = new Name("G. Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -55,7 +57,7 @@ function testParseTitleWithFamilyOnly_sl_SI() {
 };
 
 function testParseEverything_sl_SI() {
-	var parsed = new ilib.Name("G. in Ga. Trump", {locale: 'sl-SI'});
+	var parsed = new Name("G. in Ga. Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseEverything_sl_SI() {
 };
 
 function testParseprefix_sl_SI() {
-	var parsed = new ilib.Name("Ga. Melania Trump", {locale: 'sl-SI'});
+	var parsed = new Name("Ga. Melania Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -80,7 +82,7 @@ function testParseprefix_sl_SI() {
 };
 
 function testParseprefixAndSuffix_sl_SI() {
-	var parsed = new ilib.Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
+	var parsed = new Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -97,11 +99,11 @@ function testParseprefixAndSuffix_sl_SI() {
  */
 
 function testFormatSimpleNameShort_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Melania",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sl-SI'
 	});
@@ -114,11 +116,11 @@ function testFormatSimpleNameShort_sl_SI() {
 };
 
 function testFormatSimpleNameMedium_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Melania",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sl-SI'
 	});
@@ -131,12 +133,12 @@ function testFormatSimpleNameMedium_sl_SI() {
 };
 
 function testFormatSimpleNameLong_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Melania",
 		familyName: "Trump",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sl-SI'
 	});
@@ -151,11 +153,11 @@ function testFormatSimpleNameLong_sl_SI() {
 
 
 function testFormatSurname_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "G. in Ga.",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sl-SI'
 	});
@@ -168,13 +170,13 @@ function testFormatSurname_sl_SI() {
 };
 
 function testFormatSimpleNameFull_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Princeska",
 		givenName: "Melania",
 		familyName: "Trump",
 		suffix: "upokojil"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'sl-SI'
 	});
@@ -187,12 +189,12 @@ function testFormatSimpleNameFull_sl_SI() {
 };
 
 function testFormatComplexNameShort_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Princeska",
 		givenName: "Melania",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sl-SI'
 	});
@@ -205,12 +207,12 @@ function testFormatComplexNameShort_sl_SI() {
 };
 
 function testFormatComplexNameMedium_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Princeska",
 		givenName: "Melania",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sl-SI'
 	});
@@ -223,12 +225,12 @@ function testFormatComplexNameMedium_sl_SI() {
 };
 
 function testFormatComplexNameLong_sl_SI() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Princeska",
 		givenName: "Melania",
 		familyName: "Trump"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'sl-SI'
 	});

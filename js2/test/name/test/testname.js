@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var Name = require("./../lib/Name.js");
+
 function testNameEmptyConstructor() {
-    var name = new ilib.Name();
+    var name = new Name();
     
     assertNotUndefined(name);
 }
 
 function testNameCopyConstructor() {
-    var name = new ilib.Name({
+    var name = new Name({
     	prefix: "a",
     	givenName: "b",
     	middleName: "c",
@@ -43,7 +45,7 @@ function testNameCopyConstructor() {
 }
 
 function testNameENSimple() {
-    var name = new ilib.Name("John Doe");
+    var name = new Name("John Doe");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -53,7 +55,7 @@ function testNameENSimple() {
 }
 
 function testNameENSlightlyComplex() {
-    var name = new ilib.Name("John Jacob Doe");
+    var name = new Name("John Jacob Doe");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -64,7 +66,7 @@ function testNameENSlightlyComplex() {
 }
 
 function testNameENMoreComplex() {
-    var name = new ilib.Name("John Jacob Winchester Doe");
+    var name = new Name("John Jacob Winchester Doe");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -75,7 +77,7 @@ function testNameENMoreComplex() {
 }
 
 function testNameENWithSuffix() {
-    var name = new ilib.Name("John Jacob Winchester Doe Jr.");
+    var name = new Name("John Jacob Winchester Doe Jr.");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -87,7 +89,7 @@ function testNameENWithSuffix() {
 }
 
 function testNameENWithPrefix() {
-    var name = new ilib.Name("Mr. John Jacob Winchester Doe");
+    var name = new Name("Mr. John Jacob Winchester Doe");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -99,7 +101,7 @@ function testNameENWithPrefix() {
 }
 
 function testNameENFull() {
-    var name = new ilib.Name("Dr. John Jacob Winchester Doe, Phd.");
+    var name = new Name("Dr. John Jacob Winchester Doe, Phd.");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -112,7 +114,7 @@ function testNameENFull() {
 }
 
 function testNameENPrefixFamily() {
-    var name = new ilib.Name("Dr. Winchester");
+    var name = new Name("Dr. Winchester");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -122,7 +124,7 @@ function testNameENPrefixFamily() {
 }
 
 function testNameENOneName() {
-    var name = new ilib.Name("Sting");
+    var name = new Name("Sting");
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -131,7 +133,7 @@ function testNameENOneName() {
 }
 
 function testNameENGetSortFamilyName() {
-    var name = new ilib.Name("Jason Smith");
+    var name = new Name("Jason Smith");
     assertNotUndefined(name);
     
     assertEquals("Smith", name.getSortFamilyName());
@@ -139,7 +141,7 @@ function testNameENGetSortFamilyName() {
 
 
 function testNameENGetSortFamilyNameWithAuxillaries() {
-    var name = new ilib.Name("Jason van der Muiden");
+    var name = new Name("Jason van der Muiden");
     assertNotUndefined(name);
     
     assertEquals("van der Muiden", name.getSortFamilyName());
@@ -147,7 +149,7 @@ function testNameENGetSortFamilyNameWithAuxillaries() {
 
 
 function testNameDESimple() {
-    var name = new ilib.Name("Josef Herzheim", {locale: "de-DE"});
+    var name = new Name("Josef Herzheim", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -157,7 +159,7 @@ function testNameDESimple() {
 }
 
 function testNameDESlightlyComplex() {
-    var name = new ilib.Name("Josef Jürgen Herzheim", {locale: "de-DE"});
+    var name = new Name("Josef Jürgen Herzheim", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -168,7 +170,7 @@ function testNameDESlightlyComplex() {
 }
 
 function testNameDEMoreComplex() {
-    var name = new ilib.Name("Josef Hans Jürgen Herzheim", {locale: "de-DE"});
+    var name = new Name("Josef Hans Jürgen Herzheim", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -179,7 +181,7 @@ function testNameDEMoreComplex() {
 }
 
 function testNameDEWithSuffix() {
-    var name = new ilib.Name("Josef Hans Jürgen Herzheim III", {locale: "de-DE"});
+    var name = new Name("Josef Hans Jürgen Herzheim III", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -191,7 +193,7 @@ function testNameDEWithSuffix() {
 }
 
 function testNameDEWithPrefix() {
-    var name = new ilib.Name("Herr Josef Hans Jürgen Herzheim", {locale: "de-DE"});
+    var name = new Name("Herr Josef Hans Jürgen Herzheim", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -203,7 +205,7 @@ function testNameDEWithPrefix() {
 }
 
 function testNameDEWithMultiplePrefixes() {
-    var name = new ilib.Name("Herr Dr. Josef Hans Jürgen Herzheim", {locale: "de-DE"});
+    var name = new Name("Herr Dr. Josef Hans Jürgen Herzheim", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -215,7 +217,7 @@ function testNameDEWithMultiplePrefixes() {
 }
 
 function testNameDEWithAuxillaries() {
-    var name = new ilib.Name("Ludwig von Beethoven", {locale: "de-DE"});
+    var name = new Name("Ludwig von Beethoven", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -225,14 +227,14 @@ function testNameDEWithAuxillaries() {
 }
 
 function testNameDEGetSortFamilyName() {
-    var name = new ilib.Name("Ludwig von Beethoven", {locale: "de-DE"});
+    var name = new Name("Ludwig von Beethoven", {locale: "de-DE"});
     assertNotUndefined(name);
     
     assertEquals("Beethoven, von", name.getSortFamilyName());
 }
 
 function testNameESSimple() {
-    var name = new ilib.Name("Juan Arroyo", {locale: "es-ES"});
+    var name = new Name("Juan Arroyo", {locale: "es-ES"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -242,7 +244,7 @@ function testNameESSimple() {
 }
 
 function testNameESMoreComplex() {
-    var name = new ilib.Name("Juan Carlos Arroyo", {locale: "es-ES"});
+    var name = new Name("Juan Carlos Arroyo", {locale: "es-ES"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -252,7 +254,7 @@ function testNameESMoreComplex() {
 }
 
 function testNameESFull() {
-    var name = new ilib.Name("Juan Carlos Maria León Arroyo", {locale: "es-ES"});
+    var name = new Name("Juan Carlos Maria León Arroyo", {locale: "es-ES"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -263,7 +265,7 @@ function testNameESFull() {
 }
 
 function testNameESAuxillaries() {
-    var name = new ilib.Name("Juan de los Reyes", {locale: "es-ES"});
+    var name = new Name("Juan de los Reyes", {locale: "es-ES"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -273,7 +275,7 @@ function testNameESAuxillaries() {
 }
 
 function testNameESFullWithAuxillaries() {
-    var name = new ilib.Name("Juan Carlos de los Reyes de León", {locale: "es-ES"});
+    var name = new Name("Juan Carlos de los Reyes de León", {locale: "es-ES"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -284,7 +286,7 @@ function testNameESFullWithAuxillaries() {
 }
 
 function testNameZHSimple() {
-    var name = new ilib.Name("王志成", {locale: "zh-CN"});
+    var name = new Name("王志成", {locale: "zh-CN"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -294,7 +296,7 @@ function testNameZHSimple() {
 }
 
 function testNameZHCompoundFamily() {
-    var name = new ilib.Name("南宫志成", {locale: "zh-CN"});
+    var name = new Name("南宫志成", {locale: "zh-CN"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -304,7 +306,7 @@ function testNameZHCompoundFamily() {
 }
 
 function testNameZHPrefix() {
-    var name = new ilib.Name("老王志成", {locale: "zh-CN"});
+    var name = new Name("老王志成", {locale: "zh-CN"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -315,7 +317,7 @@ function testNameZHPrefix() {
 }
 
 function testNameZHMarriedName() {
-    var name = new ilib.Name("王杨凭平", {locale: "zh-CN"});
+    var name = new Name("王杨凭平", {locale: "zh-CN"});
     assertNotUndefined(name);
     
     assertObjectContains({
@@ -325,7 +327,7 @@ function testNameZHMarriedName() {
 }
 
 function testNameZHHonorific() {
-    var name = new ilib.Name("堂哥胡锦涛", {locale: "zh-CN"});
+    var name = new Name("堂哥胡锦涛", {locale: "zh-CN"});
     assertNotUndefined(name);
     
     assertObjectContains({

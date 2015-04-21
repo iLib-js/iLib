@@ -17,14 +17,16 @@
  * limitations under the License.
  */
 
+var UnknownUnit = require("./../lib/UnknownUnit.js");
+
 function testMeasurementUnknownEmpty() {
-	var m = new ilib.Measurement.Unknown();
+	var m = new UnknownUnit();
 
 	assertNotNull(m);
 }
 
 function testMeasurementUnknownUnitPreserved() {
-	var m = new ilib.Measurement.Unknown({
+	var m = new UnknownUnit({
 	    unit: "krunghoonfoop",
 	    amount: 2
 	});
@@ -36,7 +38,7 @@ function testMeasurementUnknownUnitPreserved() {
 }
 
 function testMeasurementUnknownUnitUnknownMeasureType() {
-	var m = new ilib.Measurement.Unknown({
+	var m = new UnknownUnit({
 	    unit: "krunghoonfoop",
 	    amount: 2
 	});

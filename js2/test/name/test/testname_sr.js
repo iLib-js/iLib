@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testParseSimpleName_sr_Cyrl_RS() {
 };
 
 function testParseTitle_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testParseTitle_sr_Cyrl_RS() {
 };
 
 function testParseTitleWithFamilyOnly_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -55,7 +57,7 @@ function testParseTitleWithFamilyOnly_sr_Cyrl_RS() {
 };
 
 function testParseEverything_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -67,7 +69,7 @@ function testParseEverything_sr_Cyrl_RS() {
 };
 
 function testParseprefix_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("господин. Александар Дероко", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("господин. Александар Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -80,7 +82,7 @@ function testParseprefix_sr_Cyrl_RS() {
 };
 
 function testParseprefixAndSuffix_sr_Cyrl_RS() {
-	var parsed = new ilib.Name("заменик председника Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
+	var parsed = new Name("заменик председника Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -97,11 +99,11 @@ function testParseprefixAndSuffix_sr_Cyrl_RS() {
  */
 
 function testFormatSimpleNameShort_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Александар",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -114,11 +116,11 @@ function testFormatSimpleNameShort_sr_Cyrl_RS() {
 };
 
 function testFormatSimpleNameMedium_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Александар",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -131,12 +133,12 @@ function testFormatSimpleNameMedium_sr_Cyrl_RS() {
 };
 
 function testFormatSimpleNameLong_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Александар",
 		familyName: "Дероко",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -151,11 +153,11 @@ function testFormatSimpleNameLong_sr_Cyrl_RS() {
 
 
 function testFormatSurname_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "господин. и госпођа.",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -168,13 +170,13 @@ function testFormatSurname_sr_Cyrl_RS() {
 };
 
 function testFormatSimpleNameFull_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "председавајућа",
 		givenName: "Александар",
 		familyName: "Дероко",
 		suffix: "млађи"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -187,12 +189,12 @@ function testFormatSimpleNameFull_sr_Cyrl_RS() {
 };
 
 function testFormatComplexNameShort_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "председавајућа",
 		givenName: "Александар",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -205,12 +207,12 @@ function testFormatComplexNameShort_sr_Cyrl_RS() {
 };
 
 function testFormatComplexNameMedium_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "председавајућа",
 		givenName: "Александар",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'sr-Cyrl-RS'
 	});
@@ -223,12 +225,12 @@ function testFormatComplexNameMedium_sr_Cyrl_RS() {
 };
 
 function testFormatComplexNameLong_sr_Cyrl_RS() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "председавајућа",
 		givenName: "Александар",
 		familyName: "Дероко"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'sr-Cyrl-RS'
 	});

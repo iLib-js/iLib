@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ml_IN() {
-	var parsed = new ilib.Name("മോഹന ലള", {locale: 'ml-IN'});
+	var parsed = new Name("മോഹന ലള", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_ml_IN() {
 
 
 function testParseTitle_ml_IN() {
-	var parsed = new ilib.Name("മോഹന ലള ജൂനിയര്‍", {locale: 'ml-IN'});
+	var parsed = new Name("മോഹന ലള ജൂനിയര്‍", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_ml_IN() {
 
 
 function testParseTitleWithFamilyOnly_ml_IN() {
-	var parsed = new ilib.Name("മിസ്റ്റര്‍ ലള", {locale: 'ml-IN'});
+	var parsed = new Name("മിസ്റ്റര്‍ ലള", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_ml_IN() {
 
 
 function testParseEverything_ml_IN() {
-	var parsed = new ilib.Name("മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള", {locale: 'ml-IN'});
+	var parsed = new Name("മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_ml_IN() {
 };
 
 function testParseprefix_ml_IN() {
-	var parsed = new ilib.Name("മിസ്റ്റര്‍ മോഹന ലള", {locale: 'ml-IN'});
+	var parsed = new Name("മിസ്റ്റര്‍ മോഹന ലള", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_ml_IN() {
  */
 
 function testFormatSimpleNameShort_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ml-IN'
 	});
@@ -106,11 +108,11 @@ function testFormatSimpleNameShort_ml_IN() {
 };
 
 function testFormatSimpleNameMedium_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ml-IN'
 	});
@@ -123,11 +125,11 @@ function testFormatSimpleNameMedium_ml_IN() {
 };
 
 function testFormatSimpleNameLong_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ml-IN'
 	});
@@ -140,11 +142,11 @@ function testFormatSimpleNameLong_ml_IN() {
 };
 
 function testFormatSurname_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ml-IN'
 	});
@@ -157,13 +159,13 @@ function testFormatSurname_ml_IN() {
 };
 
 function testFormatSimpleNameFull_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ഡോക്ടര്‍",
 		givenName: "മോഹന",
 		familyName: "ലള",
 		suffix: "ജൂനിയര്‍"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ml-IN'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameFull_ml_IN() {
 };
 
 function testFormatComplexNameShort_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ഡോക്ടര്‍",
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ml-IN'
 	});
@@ -194,12 +196,12 @@ function testFormatComplexNameShort_ml_IN() {
 };
 
 function testFormatComplexNameMedium_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ഡോക്ടര്‍",
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ml-IN'
 	});
@@ -212,12 +214,12 @@ function testFormatComplexNameMedium_ml_IN() {
 };
 
 function testFormatComplexNameLong_ml_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ഡോക്ടര്‍",
 		givenName: "മോഹന",
 		familyName: "ലള"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ml-IN'
 	});

@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-var cli = require('./runner.js');
+var TestSuite = require("./TestSuiteModule.js");
 
 function newSuite(path, include) {
-	return new cli.TestSuite("maps/test/" + path);
+	return new TestSuite("maps/test/" + path);
 };
 
 function suite() {
-    var s = new cli.TestSuite();
+    var s = new TestSuite();
     
     var suites = [
 	    "testtoupper.js",

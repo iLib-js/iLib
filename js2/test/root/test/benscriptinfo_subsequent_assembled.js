@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var ScriptInfo = require("./../lib/ScriptInfo.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -480,13 +482,13 @@ ilib.data.scripts = {
 };
 
 function testScriptInfoConstructorEmptySubsequent(results) {
-	new ilib.ScriptInfo();
+	new ScriptInfo();
 
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-empty-subsequent",
 		iterations: 100,
 		fn: function () {
-		    var fmt = new ilib.ScriptInfo();
+		    var fmt = new ScriptInfo();
 		    assertNotNull(fmt);
 		}
 	});
@@ -495,13 +497,13 @@ function testScriptInfoConstructorEmptySubsequent(results) {
 }
 
 function testScriptInfoConstructorRealSubsequent(results) {
-	new ilib.ScriptInfo("Hang");
+	new ScriptInfo("Hang");
 
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-normal-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("Hang");
+			var fmt = new ScriptInfo("Hang");
 		    assertNotNull(fmt);
 		}
 	});
@@ -510,13 +512,13 @@ function testScriptInfoConstructorRealSubsequent(results) {
 }
 
 function testScriptInfoConstructorNonexistentSubsequent(results) {
-	new ilib.ScriptInfo("xx-YY");
+	new ScriptInfo("xx-YY");
 
 	var tt = new TimedTest({
 		name: "ScriptInfo-assembled-nonexistent-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("xx-YY");
+			var fmt = new ScriptInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});

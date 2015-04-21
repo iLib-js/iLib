@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_pa_IN() {
-	var parsed = new ilib.Name("ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
+	var parsed = new Name("ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,7 +34,7 @@ function testParseSimpleName_pa_IN() {
 
 
 function testParseTitle_pa_IN() {
-	var parsed = new ilib.Name("ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ", {locale: 'pa-IN'});
+	var parsed = new Name("ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,7 +49,7 @@ function testParseTitle_pa_IN() {
 
 
 function testParseTitleWithFamilyOnly_pa_IN() {
-	var parsed = new ilib.Name("ਦਰ ਸਿੰਘ", {locale: 'pa-IN'});
+	var parsed = new Name("ਦਰ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -61,7 +63,7 @@ function testParseTitleWithFamilyOnly_pa_IN() {
 
 
 function testParseEverything_pa_IN() {
-	var parsed = new ilib.Name("ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ", {locale: 'pa-IN'});
+	var parsed = new Name("ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -73,7 +75,7 @@ function testParseEverything_pa_IN() {
 };
 
 function testParseprefix_pa_IN() {
-	var parsed = new ilib.Name("ਦਰ ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
+	var parsed = new Name("ਦਰ ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -89,11 +91,11 @@ function testParseprefix_pa_IN() {
  */
 
 function testFormatSimpleNameShort_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pa-IN'
 	});
@@ -106,11 +108,11 @@ function testFormatSimpleNameShort_pa_IN() {
 };
 
 function testFormatSimpleNameMedium_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pa-IN'
 	});
@@ -123,11 +125,11 @@ function testFormatSimpleNameMedium_pa_IN() {
 };
 
 function testFormatSimpleNameLong_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pa-IN'
 	});
@@ -140,11 +142,11 @@ function testFormatSimpleNameLong_pa_IN() {
 };
 
 function testFormatSurname_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ਦਰ ਏੰਡ ਮਰ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'pa-IN'
 	});
@@ -157,13 +159,13 @@ function testFormatSurname_pa_IN() {
 };
 
 function testFormatSimpleNameFull_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ਡਾਕ੍ਟਰ",
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ",
 		suffix: "ਸੇਨਿਓਰ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'pa-IN'
 	});
@@ -176,12 +178,12 @@ function testFormatSimpleNameFull_pa_IN() {
 };
 
 function testFormatComplexNameShort_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ਡਾਕ੍ਟਰ",
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'pa-IN'
 	});
@@ -194,12 +196,12 @@ function testFormatComplexNameShort_pa_IN() {
 };
 
 function testFormatComplexNameMedium_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ਡਾਕ੍ਟਰ",
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'pa-IN'
 	});
@@ -212,12 +214,12 @@ function testFormatComplexNameMedium_pa_IN() {
 };
 
 function testFormatComplexNameLong_pa_IN() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "ਡਾਕ੍ਟਰ",
 		givenName: "ਹਰਭਜਨ",
 		familyName: "ਸਿੰਘ"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'pa-IN'
 	});

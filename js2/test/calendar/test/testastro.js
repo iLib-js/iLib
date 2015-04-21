@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var RataDie = require("./../lib/RataDie.js");
+var Astro = require("./../lib/Astro.js");
+
 var testDatesAstro1 = [
    	// jd			ephemeris corr.			julian cent			nutation				aberration				solar long.
 	[ 1507231.5,	0.21576230938805918,	-25.85388868549461,	-0.004453990869550968,	-0.00553080167005999,	118.99065569869708,	-213857.88538267263],
@@ -56,54 +60,54 @@ var testDatesAstro1 = [
 
 function testEphemerisCorrection() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
-        l = ilib.Date._ephemerisCorrection(testDatesAstro1[i][0]);
+        l = Astro._ephemerisCorrection(testDatesAstro1[i][0]);
         assertRoughlyEquals("testing ephemeris correction for " + testDatesAstro1[i][0], testDatesAstro1[i][1], l, 1e-14);
     } 
 }
 
 function testJulianCenturies() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
-        l = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
+        l = Astro._julianCenturies(testDatesAstro1[i][0]);
         assertRoughlyEquals("testing julian centuries for " + testDatesAstro1[i][0], testDatesAstro1[i][2], l, 1e-14);
     } 
 }
 
 function testNutation() {
 	var c, l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
-        c = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
-        l = ilib.Date._nutation2(c);
+        c = Astro._julianCenturies(testDatesAstro1[i][0]);
+        l = Astro._nutation2(c);
         assertRoughlyEquals("testing nutation for " + testDatesAstro1[i][0], testDatesAstro1[i][3], l, 1e-14);
     } 
 }
 
 function testAberration() {
 	var c, l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
         info("testing jd=" + testDatesAstro1[i][0]);
-        c = ilib.Date._julianCenturies(testDatesAstro1[i][0]);
-        l = ilib.Date._aberration(c);
+        c = Astro._julianCenturies(testDatesAstro1[i][0]);
+        l = Astro._aberration(c);
         assertRoughlyEquals("testing abberation for " + testDatesAstro1[i][0], testDatesAstro1[i][4], l, 1e-14);
     } 
 }
 
 function testSolarLongitude() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
     
         info("testing jd=" + testDatesAstro1[i][0]);
         //try {
-        l = ilib.Date._solarLongitude(testDatesAstro1[i][0]);
+        l = Astro._solarLongitude(testDatesAstro1[i][0]);
         assertRoughlyEquals("testing solar longitude for " + testDatesAstro1[i][0], testDatesAstro1[i][5], l, 1e-9);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][5]));
@@ -114,16 +118,12 @@ function testSolarLongitude() {
 
 function testNextSolarLongitude() {
 	var l;
-	if (ilib.isDynCode()) {
-		// force this to be defined first
-		var rd = new ilib.Date.RataDie({rd: 0}); 
-	}
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro1.length; i++) {
     
         info("testing jd=" + testDatesAstro1[i][0]);
         //try {
-        l = ilib.Date._nextSolarLongitude(testDatesAstro1[i][0], 90.0) - ilib.Date.RataDie.gregorianEpoch;
+        l = Astro._nextSolarLongitude(testDatesAstro1[i][0], 90.0) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing next solar longitude for " + testDatesAstro1[i][0], testDatesAstro1[i][6], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][6]));
@@ -171,14 +171,14 @@ var testDatesAstro2 = [
 
 function testLunarLongitude() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
         //try {
         var jd = testDatesAstro2[i][0]
-        var rd = jd - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Date._lunarLongitude(jd);
+        var rd = jd - RataDie.gregorianEpoch;
+        l = Astro._lunarLongitude(jd);
         assertRoughlyEquals("testing lunar longitude for " + testDatesAstro2[i][0], testDatesAstro2[i][1], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -188,16 +188,12 @@ function testLunarLongitude() {
 
 function testNewMoonTime() {
 	var l;
-	if (ilib.isDynCode()) {
-		// force this to be defined first
-		var rd = new ilib.Date.RataDie({rd: 0}); 
-	}
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
         //try {
-        l = ilib.Date._newMoonTime(i) - ilib.Date.RataDie.gregorianEpoch;
+        l = Astro._newMoonTime(i) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon time for " + testDatesAstro2[i][0], testDatesAstro2[i][2], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -207,14 +203,14 @@ function testNewMoonTime() {
 
 function testNewMoonBefore() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
         //try {
         var jd = testDatesAstro2[i][0]
-        var rd = jd - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Date._newMoonBefore(jd) - ilib.Date.RataDie.gregorianEpoch;
+        var rd = jd - RataDie.gregorianEpoch;
+        l = Astro._newMoonBefore(jd) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon before for " + testDatesAstro2[i][0], testDatesAstro2[i][3], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -224,14 +220,14 @@ function testNewMoonBefore() {
 
 function testNewMoonAtOrAfter() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesAstro2.length; i++) {
     
         info("testing jd=" + testDatesAstro2[i][0]);
         //try {
         var jd = testDatesAstro2[i][0]
-        var rd = jd - ilib.Date.RataDie.gregorianEpoch;
-        l = ilib.Date._newMoonAtOrAfter(jd) - ilib.Date.RataDie.gregorianEpoch;
+        var rd = jd - RataDie.gregorianEpoch;
+        l = Astro._newMoonAtOrAfter(jd) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon after for " + testDatesAstro2[i][0], testDatesAstro2[i][4], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));

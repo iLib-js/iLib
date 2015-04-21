@@ -22,7 +22,7 @@ if (ilib.isDynCode()) {
 	ilib.NormString.init();
 
 	if (typeof(normtests) === 'undefined') {
-		var normtests = require("./normdata.js");
+		var normtests = require("./strings-ext/test/normdata.js");
 	}
 }
 

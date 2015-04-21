@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 function testRULocalNumber1() {
-	var parsed = new ilib.PhoneNumber("3456123",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("3456123",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -27,7 +29,7 @@ function testRULocalNumber1() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "ru-RU"});
+	var locator = new PhoneGeoLocator({locale: "ru-RU"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -37,7 +39,7 @@ function testRULocalNumber1() {
 };
 
 function testRULocalNumber2() {
-	var parsed = new ilib.PhoneNumber("212-3456",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("212-3456",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -46,7 +48,7 @@ function testRULocalNumber2() {
 		}		
 	};
 
-	var locator = new ilib.GeoLocator({locale: "ru-RU"});
+	var locator = new PhoneGeoLocator({locale: "ru-RU"});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -56,7 +58,7 @@ function testRULocalNumber2() {
 };
 
 function testRUNumberWithAreaCode1() {
-	var parsed = new ilib.PhoneNumber("8 (812) 456-7890",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("8 (812) 456-7890",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -69,7 +71,7 @@ function testRUNumberWithAreaCode1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ru-RU'});
+	var locator = new PhoneGeoLocator({locale: 'ru-RU'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -80,7 +82,7 @@ function testRUNumberWithAreaCode1() {
 };
 
 function testRUNumberWithAreaCode2() {
-	var parsed = new ilib.PhoneNumber("8 (8352) 051-212-3456",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("8 (8352) 051-212-3456",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -93,7 +95,7 @@ function testRUNumberWithAreaCode2() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ru-RU'});
+	var locator = new PhoneGeoLocator({locale: 'ru-RU'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -104,7 +106,7 @@ function testRUNumberWithAreaCode2() {
 };
 
 function testRUNumberWithAreaCodeAndCountry1() {
-	var parsed = new ilib.PhoneNumber("+7-812-312-3456");
+	var parsed = new PhoneNumber("+7-812-312-3456");
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -117,7 +119,7 @@ function testRUNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'ru-RU'});
+	var locator = new PhoneGeoLocator({locale: 'ru-RU'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -127,7 +129,7 @@ function testRUNumberWithAreaCodeAndCountry1() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
  function testRUNumberWithAreaCodeAndCountry2() {
-	var parsed = new ilib.PhoneNumber("+7-8552-32-456-1");
+	var parsed = new PhoneNumber("+7-8552-32-456-1");
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -140,7 +142,7 @@ function testRUNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -151,7 +153,7 @@ function testRUNumberWithAreaCodeAndCountry1() {
 };
 
 function testRUNumberWithAreaCodeAndCountry3() {
-	var parsed = new ilib.PhoneNumber("+7-3452-212-3456");
+	var parsed = new PhoneNumber("+7-3452-212-3456");
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -164,7 +166,7 @@ function testRUNumberWithAreaCodeAndCountry3() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -175,7 +177,7 @@ function testRUNumberWithAreaCodeAndCountry3() {
 };
 
 function testRUNumberCallFromUS() {
-	var parsed = new ilib.PhoneNumber("011 7-812-212-3456");
+	var parsed = new PhoneNumber("011 7-812-212-3456");
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -188,7 +190,7 @@ function testRUNumberCallFromUS() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'en-US'});
+	var locator = new PhoneGeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -199,7 +201,7 @@ function testRUNumberCallFromUS() {
 };
 
 function testRUNumberWithAreaCodeAndCountry4() {
-	var parsed = new ilib.PhoneNumber("+7-812-212-3456");
+	var parsed = new PhoneNumber("+7-812-212-3456");
 	var expected = {
 		country: {
 			sn: "Russie",
@@ -212,7 +214,7 @@ function testRUNumberWithAreaCodeAndCountry4() {
 		}
 	};
 	
-	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	var locator = new PhoneGeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -223,7 +225,7 @@ function testRUNumberWithAreaCodeAndCountry4() {
 };
 
 function testRUPolice() {
-	var parsed = new ilib.PhoneNumber("112",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("112",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -235,7 +237,7 @@ function testRUPolice() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ru-RU"});
+	var locator = new PhoneGeoLocator({locale: "ru-RU"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -247,7 +249,7 @@ function testRUPolice() {
 };
 
 function testRUFireAndAmbulance() {
-	var parsed = new ilib.PhoneNumber("101",{locale: "ru-RU"});
+	var parsed = new PhoneNumber("101",{locale: "ru-RU"});
 	var expected = {
 		country: {
 			sn: "Russia",
@@ -259,7 +261,7 @@ function testRUFireAndAmbulance() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoLocator({locale: "ru-RU"});
+	var locator = new PhoneGeoLocator({locale: "ru-RU"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

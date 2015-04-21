@@ -17,14 +17,17 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var Locale = require("./../lib/Locale.js");
+
 function testLocaleConstructor() {
-    var loc = new ilib.Locale();
+    var loc = new Locale();
     
     assertNotNull(loc);
 }
 
 function testLocaleConstructorCurrent() {
-    var loc = new ilib.Locale(); // gives locale of the host JS engine
+    var loc = new Locale(); // gives locale of the host JS engine
     
     assertNotNull(loc);
 
@@ -36,7 +39,7 @@ function testLocaleConstructorCurrent() {
 function testLocaleConstructorDefault() {
 	ilib.setLocale("it-IT");
 	
-    var loc = new ilib.Locale();
+    var loc = new Locale();
     
     assertNotNull(loc);
 
@@ -48,8 +51,8 @@ function testLocaleConstructorDefault() {
 }
 
 function testLocaleCopyConstructor() {
-    var loc2 = new ilib.Locale("de", "DE");
-    var loc = new ilib.Locale(loc2);
+    var loc2 = new Locale("de", "DE");
+    var loc = new Locale(loc2);
     
     assertNotNull(loc);
     
@@ -59,7 +62,7 @@ function testLocaleCopyConstructor() {
 }
 
 function testLocaleConstructorFull() {
-    var loc = new ilib.Locale("en", "US", "Midwest");
+    var loc = new Locale("en", "US", "Midwest");
     
     assertNotNull(loc);
     
@@ -69,7 +72,7 @@ function testLocaleConstructorFull() {
 }
 
 function testLocaleConstructorSpecWithVariant() {
-    var loc = new ilib.Locale("en-US-Midwest");
+    var loc = new Locale("en-US-Midwest");
     
     assertNotNull(loc);
     
@@ -80,7 +83,7 @@ function testLocaleConstructorSpecWithVariant() {
 }
 
 function testLocaleConstructorSpecWithScript() {
-    var loc = new ilib.Locale("en-US-Latn");
+    var loc = new Locale("en-US-Latn");
     
     assertNotNull(loc);
     
@@ -91,7 +94,7 @@ function testLocaleConstructorSpecWithScript() {
 }
 
 function testLocaleConstructorPartial() {
-    var loc = new ilib.Locale("en", "US");
+    var loc = new Locale("en", "US");
     
     assertNotNull(loc);
     
@@ -101,7 +104,7 @@ function testLocaleConstructorPartial() {
 }
 
 function testLocaleConstructorSpecPartial() {
-    var loc = new ilib.Locale("en-US");
+    var loc = new Locale("en-US");
     
     assertNotNull(loc);
     
@@ -111,7 +114,7 @@ function testLocaleConstructorSpecPartial() {
 }
 
 function testLocaleConstructorShort() {
-    var loc = new ilib.Locale("en");
+    var loc = new Locale("en");
     
     assertNotNull(loc);
     
@@ -121,7 +124,7 @@ function testLocaleConstructorShort() {
 }
 
 function testLocaleConstructorUpperCaseLanguage() {
-    var loc = new ilib.Locale("EN", "US");
+    var loc = new Locale("EN", "US");
     
     assertNotNull(loc);
     
@@ -131,7 +134,7 @@ function testLocaleConstructorUpperCaseLanguage() {
 }
 
 function testLocaleConstructorLowerCaseRegion() {
-    var loc = new ilib.Locale("en", "us");
+    var loc = new Locale("en", "us");
     
     assertNotNull(loc);
     
@@ -141,7 +144,7 @@ function testLocaleConstructorLowerCaseRegion() {
 }
 
 function testLocaleConstructorSpecMissingRegion() {
-    var loc = new ilib.Locale("en--Midwest");
+    var loc = new Locale("en--Midwest");
     
     assertNotNull(loc);
     
@@ -152,7 +155,7 @@ function testLocaleConstructorSpecMissingRegion() {
 }
 
 function testLocaleConstructorSpecMissingLanguage() {
-    var loc = new ilib.Locale("-US-Midwest");
+    var loc = new Locale("-US-Midwest");
     
     assertNotNull(loc);
     
@@ -163,7 +166,7 @@ function testLocaleConstructorSpecMissingLanguage() {
 }
 
 function testLocaleConstructorSpecMissingLanguageAndVariant() {
-    var loc = new ilib.Locale("-US");
+    var loc = new Locale("-US");
     
     assertNotNull(loc);
     
@@ -174,8 +177,8 @@ function testLocaleConstructorSpecMissingLanguageAndVariant() {
 }
 
 function testLocaleEqualsTrue() {
-    var loc1 = new ilib.Locale("en-US"),
-        loc2 = new ilib.Locale("en", "US");
+    var loc1 = new Locale("en-US"),
+        loc2 = new Locale("en", "US");
     
     assertNotNull(loc1);
     assertNotNull(loc2);
@@ -184,8 +187,8 @@ function testLocaleEqualsTrue() {
 }
 
 function testLocaleEqualsFalse() {
-    var loc1 = new ilib.Locale("en-US"),
-        loc2 = new ilib.Locale("en", "CA");
+    var loc1 = new Locale("en-US"),
+        loc2 = new Locale("en", "CA");
     
     assertNotNull(loc1);
     assertNotNull(loc2);
@@ -194,8 +197,8 @@ function testLocaleEqualsFalse() {
 }
 
 function testLocaleEqualsMissing() {
-    var loc1 = new ilib.Locale("en-US"),
-        loc2 = new ilib.Locale("en", "US", "govt");
+    var loc1 = new Locale("en-US"),
+        loc2 = new Locale("en", "US", "govt");
     
     assertNotNull(loc1);
     assertNotNull(loc2);
@@ -204,8 +207,8 @@ function testLocaleEqualsMissing() {
 }
 
 function testLocaleEqualsTrueFull() {
-    var loc1 = new ilib.Locale("en-US-govt"),
-        loc2 = new ilib.Locale("en", "US", "govt");
+    var loc1 = new Locale("en-US-govt"),
+        loc2 = new Locale("en", "US", "govt");
     
     assertNotNull(loc1);
     assertNotNull(loc2);
@@ -214,8 +217,8 @@ function testLocaleEqualsTrueFull() {
 }
 
 function testLocaleEqualsTrueShort() {
-    var loc1 = new ilib.Locale("en"),
-        loc2 = new ilib.Locale("en");
+    var loc1 = new Locale("en"),
+        loc2 = new Locale("en");
     
     assertNotNull(loc1);
     assertNotNull(loc2);
@@ -224,7 +227,7 @@ function testLocaleEqualsTrueShort() {
 }
 
 function testLocaleIsPseudoTrue() {
-    var loc = new ilib.Locale("zxx-XX");
+    var loc = new Locale("zxx-XX");
     
     assertNotNull(loc);
     
@@ -232,7 +235,7 @@ function testLocaleIsPseudoTrue() {
 }
 
 function testLocaleIsPseudoFalse() {
-    var loc = new ilib.Locale("en-US");
+    var loc = new Locale("en-US");
     
     assertNotNull(loc);
     
@@ -240,7 +243,7 @@ function testLocaleIsPseudoFalse() {
 }
 
 function testLocaleIsPseudoFalseButClosLang() {
-    var loc = new ilib.Locale("zxx-US");
+    var loc = new Locale("zxx-US");
     
     assertNotNull(loc);
     
@@ -248,7 +251,7 @@ function testLocaleIsPseudoFalseButClosLang() {
 }
 
 function testLocaleIsPseudoFalse() {
-    var loc = new ilib.Locale("en-XX");
+    var loc = new Locale("en-XX");
     
     assertNotNull(loc);
     
@@ -257,7 +260,7 @@ function testLocaleIsPseudoFalse() {
 
 
 function testLocaleGetSpecLangOnly() {
-    var loc = new ilib.Locale("en");
+    var loc = new Locale("en");
     
     assertNotNull(loc);
     
@@ -265,7 +268,7 @@ function testLocaleGetSpecLangOnly() {
 }
 
 function testLocaleGetSpecRegionOnly() {
-    var loc = new ilib.Locale("CA");
+    var loc = new Locale("CA");
     
     assertNotNull(loc);
     
@@ -273,7 +276,7 @@ function testLocaleGetSpecRegionOnly() {
 }
 
 function testLocaleGetSpecScriptOnly() {
-    var loc = new ilib.Locale("Latn");
+    var loc = new Locale("Latn");
     
     assertNotNull(loc);
     
@@ -281,7 +284,7 @@ function testLocaleGetSpecScriptOnly() {
 }
 
 function testLocaleGetSpecVariantOnly() {
-    var loc = new ilib.Locale("asdfasdf");
+    var loc = new Locale("asdfasdf");
     
     assertNotNull(loc);
     
@@ -289,7 +292,7 @@ function testLocaleGetSpecVariantOnly() {
 }
 
 function testLocaleGetSpecLangAndScript() {
-    var loc = new ilib.Locale("Latn-en");
+    var loc = new Locale("Latn-en");
     
     assertNotNull(loc);
     
@@ -297,7 +300,7 @@ function testLocaleGetSpecLangAndScript() {
 }
 
 function testLocaleGetSpecLangAndRegion() {
-    var loc = new ilib.Locale("CA-en");
+    var loc = new Locale("CA-en");
     
     assertNotNull(loc);
     
@@ -305,7 +308,7 @@ function testLocaleGetSpecLangAndRegion() {
 }
 
 function testLocaleGetSpecLangAndVariant() {
-    var loc = new ilib.Locale("asdf-en");
+    var loc = new Locale("asdf-en");
     
     assertNotNull(loc);
     
@@ -313,7 +316,7 @@ function testLocaleGetSpecLangAndVariant() {
 }
 
 function testLocaleGetSpecScriptAndRegion() {
-    var loc = new ilib.Locale("CA-Latn");
+    var loc = new Locale("CA-Latn");
     
     assertNotNull(loc);
     
@@ -321,7 +324,7 @@ function testLocaleGetSpecScriptAndRegion() {
 }
 
 function testLocaleGetSpecScriptAndVariant() {
-    var loc = new ilib.Locale("asdf-Latn");
+    var loc = new Locale("asdf-Latn");
     
     assertNotNull(loc);
     
@@ -329,7 +332,7 @@ function testLocaleGetSpecScriptAndVariant() {
 }
 
 function testLocaleGetSpecRegionAndVariant() {
-    var loc = new ilib.Locale("asdf-CA");
+    var loc = new Locale("asdf-CA");
     
     assertNotNull(loc);
     
@@ -337,7 +340,7 @@ function testLocaleGetSpecRegionAndVariant() {
 }
 
 function testLocaleGetSpecLangScriptRegion() {
-    var loc = new ilib.Locale("CA-en-Latn");
+    var loc = new Locale("CA-en-Latn");
     
     assertNotNull(loc);
     
@@ -345,7 +348,7 @@ function testLocaleGetSpecLangScriptRegion() {
 }
 
 function testLocaleGetSpecScriptRegionVariant() {
-    var loc = new ilib.Locale("CA-asdf-Latn");
+    var loc = new Locale("CA-asdf-Latn");
     
     assertNotNull(loc);
     
@@ -353,7 +356,7 @@ function testLocaleGetSpecScriptRegionVariant() {
 }
 
 function testLocaleGetSpecLangScriptVariant() {
-    var loc = new ilib.Locale("asdf-Latn-en");
+    var loc = new Locale("asdf-Latn-en");
     
     assertNotNull(loc);
     
@@ -361,7 +364,7 @@ function testLocaleGetSpecLangScriptVariant() {
 }
 
 function testLocaleGetSpecLangRegionVariant() {
-    var loc = new ilib.Locale("asdf-CA-en");
+    var loc = new Locale("asdf-CA-en");
     
     assertNotNull(loc);
     
@@ -369,7 +372,7 @@ function testLocaleGetSpecLangRegionVariant() {
 }
 
 function testLocaleGetSpecAll() {
-    var loc = new ilib.Locale("asdf-CA-Latn-en");
+    var loc = new Locale("asdf-CA-Latn-en");
     
     assertNotNull(loc);
     
@@ -377,7 +380,7 @@ function testLocaleGetSpecAll() {
 }
 
 function testLocaleM49RegionCodeGetParts() {
-    var loc = new ilib.Locale("en-001");
+    var loc = new Locale("en-001");
     
     assertNotNull(loc);
     
@@ -387,7 +390,7 @@ function testLocaleM49RegionCodeGetParts() {
 }
 
 function testLocaleM49RegionCodeGetParts2() {
-    var loc = new ilib.Locale("en-150");
+    var loc = new Locale("en-150");
     
     assertNotNull(loc);
     
@@ -397,7 +400,7 @@ function testLocaleM49RegionCodeGetParts2() {
 }
 
 function testLocaleM49RegionCodeGetSpec() {
-    var loc = new ilib.Locale("en-001");
+    var loc = new Locale("en-001");
     
     assertNotNull(loc);
     
@@ -405,7 +408,7 @@ function testLocaleM49RegionCodeGetSpec() {
 }
 
 function testLocaleNoLocale() {
-    var loc = new ilib.Locale("-");
+    var loc = new Locale("-");
     
     assertNotNull(loc);
     
@@ -418,63 +421,63 @@ function testLocaleNoLocale() {
 
 
 function testLocaleRegionMap1() {
-    assertEquals("SGP", ilib.Locale.regionAlpha2ToAlpha3("SG"));
+    assertEquals("SGP", Locale.regionAlpha2ToAlpha3("SG"));
 }
 
 function testLocaleRegionMap2() {
-    assertEquals("VNM", ilib.Locale.regionAlpha2ToAlpha3("VN"));
+    assertEquals("VNM", Locale.regionAlpha2ToAlpha3("VN"));
 }
 
 function testLocaleRegionMap3() {
-    assertEquals("KOR", ilib.Locale.regionAlpha2ToAlpha3("KR"));
+    assertEquals("KOR", Locale.regionAlpha2ToAlpha3("KR"));
 }
 
 function testLocaleRegionMapEmpty() {
-    assertEquals("", ilib.Locale.regionAlpha2ToAlpha3(""));
+    assertEquals("", Locale.regionAlpha2ToAlpha3(""));
 }
 
 function testLocaleRegionMapUnknown() {
-    assertEquals("QQ", ilib.Locale.regionAlpha2ToAlpha3("QQ"));
+    assertEquals("QQ", Locale.regionAlpha2ToAlpha3("QQ"));
 }
 
 function testLocaleRegionMapWrongCase() {
-    assertEquals("sg", ilib.Locale.regionAlpha2ToAlpha3("sg"));
+    assertEquals("sg", Locale.regionAlpha2ToAlpha3("sg"));
 }
 
 function testLocaleRegionMapUndefined() {
-    assertUndefined(ilib.Locale.regionAlpha2ToAlpha3(undefined));
+    assertUndefined(Locale.regionAlpha2ToAlpha3(undefined));
 }
 
 function testLocaleLanguageMap1() {
-    assertEquals("kor", ilib.Locale.languageAlpha1ToAlpha3("ko"));
+    assertEquals("kor", Locale.languageAlpha1ToAlpha3("ko"));
 }
 
 function testLocaleLanguageMap2() {
-    assertEquals("tha", ilib.Locale.languageAlpha1ToAlpha3("th"));
+    assertEquals("tha", Locale.languageAlpha1ToAlpha3("th"));
 }
 
 function testLocaleLanguageMap3() {
-    assertEquals("hrv", ilib.Locale.languageAlpha1ToAlpha3("hr"));
+    assertEquals("hrv", Locale.languageAlpha1ToAlpha3("hr"));
 }
 
 function testLocaleLanguageMapEmpty() {
-    assertEquals("", ilib.Locale.languageAlpha1ToAlpha3(""));
+    assertEquals("", Locale.languageAlpha1ToAlpha3(""));
 }
 
 function testLocaleLanguageMapUnknown() {
-    assertEquals("qq", ilib.Locale.languageAlpha1ToAlpha3("qq"));
+    assertEquals("qq", Locale.languageAlpha1ToAlpha3("qq"));
 }
 
 function testLocaleLanguageMapWrongCase() {
-    assertEquals("EN", ilib.Locale.languageAlpha1ToAlpha3("EN"));
+    assertEquals("EN", Locale.languageAlpha1ToAlpha3("EN"));
 }
 
 function testLocaleLanguageMapUndefined() {
-    assertUndefined(ilib.Locale.languageAlpha1ToAlpha3(undefined));
+    assertUndefined(Locale.languageAlpha1ToAlpha3(undefined));
 }
 
 function testLocaleGetLanguageAlpha3_1() {
-    var loc = new ilib.Locale("en-US");
+    var loc = new Locale("en-US");
     
     assertNotNull(loc);
     
@@ -482,7 +485,7 @@ function testLocaleGetLanguageAlpha3_1() {
 }
 
 function testLocaleGetLanguageAlpha3_2() {
-    var loc = new ilib.Locale("ru-RU");
+    var loc = new Locale("ru-RU");
     
     assertNotNull(loc);
     
@@ -490,7 +493,7 @@ function testLocaleGetLanguageAlpha3_2() {
 }
 
 function testLocaleGetLanguageAlpha3_3() {
-    var loc = new ilib.Locale("gv-GB");
+    var loc = new Locale("gv-GB");
     
     assertNotNull(loc);
     
@@ -498,7 +501,7 @@ function testLocaleGetLanguageAlpha3_3() {
 }
 
 function testLocaleGetLanguageAlpha3NoLanguage() {
-    var loc = new ilib.Locale("GB");
+    var loc = new Locale("GB");
     
     assertNotNull(loc);
     
@@ -506,7 +509,7 @@ function testLocaleGetLanguageAlpha3NoLanguage() {
 }
 
 function testLocaleGetRegionAlpha3_1() {
-    var loc = new ilib.Locale("en-US");
+    var loc = new Locale("en-US");
     
     assertNotNull(loc);
     
@@ -514,7 +517,7 @@ function testLocaleGetRegionAlpha3_1() {
 }
 
 function testLocaleGetRegionAlpha3_2() {
-    var loc = new ilib.Locale("ru-RU");
+    var loc = new Locale("ru-RU");
     
     assertNotNull(loc);
     
@@ -522,7 +525,7 @@ function testLocaleGetRegionAlpha3_2() {
 }
 
 function testLocaleGetRegionAlpha3_3() {
-    var loc = new ilib.Locale("gv-GB");
+    var loc = new Locale("gv-GB");
     
     assertNotNull(loc);
     
@@ -530,7 +533,7 @@ function testLocaleGetRegionAlpha3_3() {
 }
 
 function testLocaleGetRegionAlpha3NoRegion() {
-    var loc = new ilib.Locale("en");
+    var loc = new Locale("en");
     
     assertNotNull(loc);
     

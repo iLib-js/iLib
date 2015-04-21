@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var Collator = require("./../lib/Collator.js");
+
 function testJSCollatorPhonebookQuatUE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -35,7 +37,7 @@ function testJSCollatorPhonebookQuatUE_de() {
 }
 
 function testJSCollatorPhonebookQuatOE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -52,7 +54,7 @@ function testJSCollatorPhonebookQuatOE_de() {
 }
 
 function testJSCollatorPhonebookQuatAE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "quaternary",
@@ -71,7 +73,7 @@ function testJSCollatorPhonebookQuatAE_de() {
 // differences in umlauted characters should be primary differences
 
 function testJSCollatorPhonebookPrimaryAE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "primary",
@@ -88,7 +90,7 @@ function testJSCollatorPhonebookPrimaryAE_de() {
 }
 
 function testJSCollatorPhonebookPrimaryOE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "primary",
@@ -106,7 +108,7 @@ function testJSCollatorPhonebookPrimaryOE_de() {
 }
 
 function testJSCollatorPhonebookPrimaryUE_de() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "primary",
@@ -124,7 +126,7 @@ function testJSCollatorPhonebookPrimaryUE_de() {
 }
 
 function testCollatorNativedeDECase() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "case",
@@ -179,7 +181,7 @@ function testCollatorNativedeDECase() {
 }
 
 function testCollatorNativedeDEVariant() {
-	var col = new ilib.Collator({
+	var col = new Collator({
 		locale: "de-DE",
 		useNative: false,
 		sensitivity: "variant",

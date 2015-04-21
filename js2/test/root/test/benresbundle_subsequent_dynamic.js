@@ -17,8 +17,9 @@
  * limitations under the License.
  */
 
+var ResBundle = require("./../lib/ResBundle.js");
 function testResBundleConstructorRootSubsequent(results) {
-	new ilib.ResBundle({
+	new ResBundle({
 		name: "sysres"
 	}); // burn the initial iteration
 
@@ -26,7 +27,7 @@ function testResBundleConstructorRootSubsequent(results) {
 		name: "ResBundle-dynamic-root-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres"
 			});
 		    assertNotNull(rb);
@@ -38,7 +39,7 @@ function testResBundleConstructorRootSubsequent(results) {
 
 function testResBundleConstructorComplexSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		name: "sysres",
 		locale: "zh-Hant-TW"
 	});
@@ -46,7 +47,7 @@ function testResBundleConstructorComplexSubsequent(results) {
 		name: "ResBundle-dynamic-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres",
 				locale: "zh-Hant-TW"
 			});
@@ -59,7 +60,7 @@ function testResBundleConstructorComplexSubsequent(results) {
 
 function testResBundleConstructorNonexistentSubsequent(results) {
 	// burn the initial iteration
-	new ilib.ResBundle({
+	new ResBundle({
 		name: "sysres",
 		locale: "foo-XY"
 	});
@@ -67,7 +68,7 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 		name: "ResBundle-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var rb = new ResBundle({
 				name: "sysres",
 				locale: "foo-XY"
 			});
@@ -79,7 +80,7 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 }
 
 function testResBundleConstructorPsuedoSubsequent(results) {
-    var rb = new ilib.ResBundle({
+    var rb = new ResBundle({
         name: "sysres",
         locale: "zxx-XX",
         type: "html"
@@ -92,7 +93,7 @@ function testResBundleConstructorPsuedoSubsequent(results) {
 		name: "ResBundle-dynamic-pseudo-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var rb = new ilib.ResBundle({
+		    var rb = new ResBundle({
 		        name: "sysres",
 		        locale: "zxx-XX",
 		        type: "html"

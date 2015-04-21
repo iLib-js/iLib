@@ -17,9 +17,11 @@
  * limitations under the License.
  */
 
+var LengthUnit = require("./../lib/LengthUnit.js");
+
 function testLengthLengthConstructor() {
 
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "meter",
 	    amount: 2
 	});
@@ -28,11 +30,11 @@ function testLengthLengthConstructor() {
 }
 
 function testLengthLengthConvertMetersToMiles() {
-	var m1 = new ilib.Measurement.Length({
+	var m1 = new LengthUnit({
 	    unit: "meter",
 	    amount: 5000
 	});
-	var m2 = new ilib.Measurement.Length({
+	var m2 = new LengthUnit({
 	    unit: "mile",
 	    amount: m1
 	});
@@ -44,79 +46,79 @@ function testLengthLengthConvertMetersToMiles() {
 }
 
 function testLengthStaticConvert1() {
-	var m = ilib.Measurement.Length.convert("feet", "meter", 2.0);
+	var m = LengthUnit.convert("feet", "meter", 2.0);
 
 	assertEquals(6.56168, m);
 }
 
 function testLengthStaticConvertWithString() {
-	var m = ilib.Measurement.Length.convert("feet", "meter", "2");
+	var m = LengthUnit.convert("feet", "meter", "2");
 
 	assertEquals(6.56168, m);
 }
 
 function testLengthStaticConvert2() {
-	var m = ilib.Measurement.Length.convert("meter", "millimeter", 200000);
+	var m = LengthUnit.convert("meter", "millimeter", 200000);
 
 	assertEquals(200, m);
 }
 
 function testLengthStaticConvert3() {
-	var m = ilib.Measurement.Length.convert("mile", "yard", 7495);
+	var m = LengthUnit.convert("mile", "yard", 7495);
 
 	assertEquals(4.25852409, m);
 }
 
 function testLengthStaticConvert4() {
-	var m = ilib.Measurement.Length.convert("millimeter", "meter", 2.0);
+	var m = LengthUnit.convert("millimeter", "meter", 2.0);
 
 	assertEquals(2000, m);
 }
 
 function testLengthStaticConvert5() {
-	var m = ilib.Measurement.Length.convert("inch", "micrometer", 200000);
+	var m = LengthUnit.convert("inch", "micrometer", 200000);
 
 	assertRoughlyEquals(7.87402, m, 0.00001)
 }
 
 function testLengthStaticConvert6() {
-	var m = ilib.Measurement.Length.convert("yard", "cm", 100);
+	var m = LengthUnit.convert("yard", "cm", 100);
 
 	assertEquals(1.09361, m);
 }
 
 function testLengthStaticConvert7() {
-	var m = ilib.Measurement.Length.convert("mile", "decimeter", 100000);
+	var m = LengthUnit.convert("mile", "decimeter", 100000);
 
 	assertRoughlyEquals(6.21373, m, 0.00001);
 }
 
 function testLengthStaticConvert8() {
-	var m = ilib.Measurement.Length.convert("nauticalmile", "meter", 1000);
+	var m = LengthUnit.convert("nauticalmile", "meter", 1000);
 
 	assertEquals(0.539957, m);
 }
 
 function testLengthStaticConvert9() {
-	var m = ilib.Measurement.Length.convert("inch", "yard", 1000);
+	var m = LengthUnit.convert("inch", "yard", 1000);
 
 	assertEquals(36000, m);
 }
 
 function testLengthStaticConvert10() {
-	var m = ilib.Measurement.Length.convert("nauticalmile", "feet", 100000);
+	var m = LengthUnit.convert("nauticalmile", "feet", 100000);
 
 	assertRoughlyEquals(16.4579, m, 0.0001);
 }
 
 function testLengthStaticConvert11() {
-	var m = ilib.Measurement.Length.convert("mm", "feet", 500);
+	var m = LengthUnit.convert("mm", "feet", 500);
 
 	assertRoughlyEquals(152400, m, 0.1);
 }
 
 function testLengthScale1() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "mm",
 	    amount: 1000
 	});
@@ -128,7 +130,7 @@ function testLengthScale1() {
 }
 
 function testLengthScale2() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "m",
 	    amount: 0.001
 	});
@@ -140,7 +142,7 @@ function testLengthScale2() {
 }
 
 function testLengthScale3() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "inch",
 	    amount: 2000
 	});
@@ -152,7 +154,7 @@ function testLengthScale3() {
 }
 
 function testLengthScale4() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "miles",
 	    amount: 0.003
 	});
@@ -164,7 +166,7 @@ function testLengthScale4() {
 }
 
 function testLengthScale5() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "inch",
 	    amount: 200000
 	});
@@ -176,7 +178,7 @@ function testLengthScale5() {
 }
 
 function testLengthScale6() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "nauticalmile",
 	    amount: 0.00002
 	});
@@ -188,7 +190,7 @@ function testLengthScale6() {
 }
 
 function testLengthScale7() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "decimeter",
 	    amount: 8
 	});
@@ -200,7 +202,7 @@ function testLengthScale7() {
 }
 
 function testLengthScale8() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "mm",
 	    amount: 1000
 	});
@@ -212,7 +214,7 @@ function testLengthScale8() {
 }
 
 function testLengthScale9() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "m",
 	    amount: 0.001
 	});
@@ -224,7 +226,7 @@ function testLengthScale9() {
 }
 
 function testLengthScale10() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "inch",
 	    amount: 200000
 	});
@@ -236,7 +238,7 @@ function testLengthScale10() {
 }
 
 function testLengthScale11() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "nauticalmile",
 	    amount: 0.00002
 	});
@@ -248,7 +250,7 @@ function testLengthScale11() {
 }
 
 function testLengthLocalize1() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "miles",
 	    amount: 1000
 	});
@@ -260,7 +262,7 @@ function testLengthLocalize1() {
 }
 
 function testLengthLocalize2() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "kilometer",
 	    amount: 1000
 	});
@@ -272,7 +274,7 @@ function testLengthLocalize2() {
 }
 
 function testLengthLocalize3() {
-	var m = new ilib.Measurement.Length({
+	var m = new LengthUnit({
 	    unit: "mile",
 	    amount: 1000
 	});
@@ -284,7 +286,7 @@ function testLengthLocalize3() {
 }
 
 function testLengthGetMeasures() {
-	var measures = ilib.Measurement.Length.getMeasures();
+	var measures = LengthUnit.getMeasures();
 	var expected = [
 	    "micrometer",
 	    "millimeter",

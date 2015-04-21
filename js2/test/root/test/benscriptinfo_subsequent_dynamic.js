@@ -17,14 +17,15 @@
  * limitations under the License.
  */
 
+var ScriptInfo = require("./../lib/ScriptInfo.js");
 function testScriptInfoConstructorEmptySubsequent(results) {
-    new ilib.ScriptInfo();
+    new ScriptInfo();
 
     var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.ScriptInfo();
+		    var fmt = new ScriptInfo();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,13 +34,13 @@ function testScriptInfoConstructorEmptySubsequent(results) {
 }
 
 function testScriptInfoConstructorRealSubsequent(results) {
-	new ilib.ScriptInfo("Hang");
+	new ScriptInfo("Hang");
 
 	var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("Hang");
+			var fmt = new ScriptInfo("Hang");
 		    assertNotNull(fmt);
 		}
 	});
@@ -48,13 +49,13 @@ function testScriptInfoConstructorRealSubsequent(results) {
 }
 
 function testScriptInfoConstructorNonexistentSubsequent(results) {
-	new ilib.ScriptInfo("xx-YY");
+	new ScriptInfo("xx-YY");
 
 	var tt = new TimedTest({
 		name: "ScriptInfo-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var fmt = new ilib.ScriptInfo("xx-YY");
+			var fmt = new ScriptInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});

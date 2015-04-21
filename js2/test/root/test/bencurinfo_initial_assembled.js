@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var Currency = require("./../lib/Currency.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -45,7 +47,7 @@ function testCurrencyConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.Currency();
+		    var fmt = new Currency();
 		    assertNotNull(fmt);
 		}
 	});
@@ -57,7 +59,7 @@ function testCurrencyConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-assembled-normal-initial",
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				code: "USD"
 			});
 		    assertNotNull(fmt);
@@ -71,7 +73,7 @@ function testCurrencyConstructorBySignInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-assembled-bysign-initial",
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				sign: "$"
 			});
 		    assertNotNull(fmt);

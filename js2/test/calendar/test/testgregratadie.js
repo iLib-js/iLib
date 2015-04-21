@@ -17,40 +17,40 @@
  * limitations under the License.
  */
 
-if (ilib.isDynCode()) {
-	ilib.Date.newInstance({type: "gregorian"});
-}
+var ilib = require("./../lib/ilib.js");
+var GregRataDie = require("./../lib/GregRataDie.js");
+var DateFactory = require("./../lib/DateFactory.js");
 
 function testGregRataDieConstructor() {
-	var rd = new ilib.Date.GregRataDie();
+	var rd = new GregRataDie();
 	
 	assertNotNull(rd);
 }
 
 /* julian date is rd 366.25 + epoch */
 function testGregRataDieConstructorFromJD() {
-    var rd = new ilib.Date.GregRataDie({julianday: 1721790.75});
+    var rd = new GregRataDie({julianday: 1721790.75});
     
     assertEquals('object', typeof(rd));
     assertEquals(366.25, rd.getRataDie());
 }
 
 function testGregRataDieConstructorFromRD() {
-    var rd = new ilib.Date.GregRataDie({rd: 234323});
+    var rd = new GregRataDie({rd: 234323});
     
     assertEquals('object', typeof(rd));
     assertEquals(234323, rd.getRataDie());
 }
 
 function testGregRataDieConstructorFromUnixtime() {
-    var rd = new ilib.Date.GregRataDie({unixtime: 0});
+    var rd = new GregRataDie({unixtime: 0});
     
     assertEquals('object', typeof(rd));
     assertEquals(719163, rd.getRataDie());
 }
 
 function testGregRataDieConstructorFromComponents() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 1970,
     	month: 1,
     	day: 1
@@ -101,7 +101,7 @@ function testGregRataDieConvert() {
     var rd;
     
     for (var i = 0; i < testDatesGregRD.length; i++) {
-        rd = new ilib.Date.GregRataDie({julianday: testDatesGregRD[i][0]});
+        rd = new GregRataDie({julianday: testDatesGregRD[i][0]});
     
         info("testing jd=" + testDatesGregRD[i][0]);
         
@@ -110,7 +110,7 @@ function testGregRataDieConvert() {
 }
 
 function testGregRataDieConstructorFull() {
-	var rd = new ilib.Date.GregRataDie({
+	var rd = new GregRataDie({
 		year: 2011,
 		month: 9, 
 		day: 23, 
@@ -128,7 +128,7 @@ function testGregRataDieConstructorFull() {
 function testGregRataDieConstructorFullWithStrings() {
 	// often you get strings from a UI element instead of numbers... 
 	// this constructor should work with numbers or strings
-	var rd = new ilib.Date.GregRataDie({
+	var rd = new GregRataDie({
 		year: "2011", 
 		month: "9",
 		day: "23", 
@@ -144,7 +144,7 @@ function testGregRataDieConstructorFullWithStrings() {
 }
 
 function testGregRataDieConstructorCopy() {
-    var rd2 = new ilib.Date.GregRataDie({
+    var rd2 = new GregRataDie({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -153,7 +153,7 @@ function testGregRataDieConstructorCopy() {
         second: 12, 
         millisecond: 123
     });
-    var rd = new ilib.Date.GregRataDie(rd2);
+    var rd = new GregRataDie(rd2);
     
     assertNotNull(rd);
     
@@ -161,7 +161,7 @@ function testGregRataDieConstructorCopy() {
 }
 
 function testGregRataDieConstructorUnixTime() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	unixtime: 61000
     });
     assertNotNull(rd);
@@ -171,7 +171,7 @@ function testGregRataDieConstructorUnixTime() {
 }
 
 function testGregRataDieConstructorUnixTimeTestRounding() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	unixtime: 61000
     });
     assertNotNull(rd);
@@ -186,7 +186,7 @@ function testGregRataDieGetJulianDay() {
     var rd;
     
     for (var i = 0; i < testDatesGregRD.length; i++) {
-        rd = new ilib.Date.GregRataDie({
+        rd = new GregRataDie({
             year: testDatesGregRD[i][1], 
             month: testDatesGregRD[i][2], 
             day: testDatesGregRD[i][3],
@@ -204,7 +204,7 @@ function testGregRataDieGetJulianDay() {
 }
 
 function testGregRataDieTestGetTimeZero() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 1970, 
     	month: 1, 
     	day: 1
@@ -215,7 +215,7 @@ function testGregRataDieTestGetTimeZero() {
 }
 
 function testGregRataDieTestGetTime() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 1970, 
     	month: 1, 
     	day: 3,
@@ -228,7 +228,7 @@ function testGregRataDieTestGetTime() {
 }
 
 function testGregRataDieTestGetTimeTooEarly() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 1969, 
     	month: 12, 
     	day: 31
@@ -239,7 +239,7 @@ function testGregRataDieTestGetTimeTooEarly() {
 }
 
 function testGregRataDieTestGetTimeTooLate() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2038, 
     	month: 1, 
     	day: 20
@@ -251,7 +251,7 @@ function testGregRataDieTestGetTimeTooLate() {
 
 // test some of the helper functions to make sure they are producing the right thing
 function testGregRataDieOnOrBeforeSun() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -265,7 +265,7 @@ function testGregRataDieOnOrBeforeSun() {
 }
 
 function testGregRataDieOnOrBeforeMon() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -278,7 +278,7 @@ function testGregRataDieOnOrBeforeMon() {
 }
 
 function testGregRataDieOnOrBeforeTue() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -291,7 +291,7 @@ function testGregRataDieOnOrBeforeTue() {
 }
 
 function testGregRataDieOnOrBeforeWed() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -304,7 +304,7 @@ function testGregRataDieOnOrBeforeWed() {
 }
 
 function testGregRataDieOnOrBeforeThu() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -317,7 +317,7 @@ function testGregRataDieOnOrBeforeThu() {
 }
 
 function testGregRataDieOnOrBeforeFri() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -330,7 +330,7 @@ function testGregRataDieOnOrBeforeFri() {
 }
 
 function testGregRataDieOnOrBeforeSat() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -343,7 +343,7 @@ function testGregRataDieOnOrBeforeSat() {
 }
 
 function testGregRataDieOnOrBeforeSunWithTime() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1,
@@ -359,7 +359,7 @@ function testGregRataDieOnOrBeforeSunWithTime() {
 }
 
 function testGregRataDieOnOrAfterSun() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -373,7 +373,7 @@ function testGregRataDieOnOrAfterSun() {
 }
 
 function testGregRataDieOnOrAfterMon() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -386,7 +386,7 @@ function testGregRataDieOnOrAfterMon() {
 }
 
 function testGregRataDieOnOrAfterTue() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -399,7 +399,7 @@ function testGregRataDieOnOrAfterTue() {
 }
 
 function testGregRataDieOnOrAfterWed() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -412,7 +412,7 @@ function testGregRataDieOnOrAfterWed() {
 }
 
 function testGregRataDieOnOrAfterThu() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -425,7 +425,7 @@ function testGregRataDieOnOrAfterThu() {
 }
 
 function testGregRataDieOnOrAfterFri() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -438,7 +438,7 @@ function testGregRataDieOnOrAfterFri() {
 }
 
 function testGregRataDieOnOrAfterSat() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -451,7 +451,7 @@ function testGregRataDieOnOrAfterSat() {
 }
 
 function testGregRataDieBeforeSun() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -465,7 +465,7 @@ function testGregRataDieBeforeSun() {
 }
 
 function testGregRataDieBeforeMon() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -478,7 +478,7 @@ function testGregRataDieBeforeMon() {
 }
 
 function testGregRataDieBeforeTue() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -491,7 +491,7 @@ function testGregRataDieBeforeTue() {
 }
 
 function testGregRataDieBeforeWed() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -504,7 +504,7 @@ function testGregRataDieBeforeWed() {
 }
 
 function testGregRataDieBeforeThu() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -517,7 +517,7 @@ function testGregRataDieBeforeThu() {
 }
 
 function testGregRataDieBeforeFri() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -530,7 +530,7 @@ function testGregRataDieBeforeFri() {
 }
 
 function testGregRataDieBeforeSat() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -543,7 +543,7 @@ function testGregRataDieBeforeSat() {
 }
 
 function testGregRataDieAfterSun() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -557,7 +557,7 @@ function testGregRataDieAfterSun() {
 }
 
 function testGregRataDieAfterMon() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -570,7 +570,7 @@ function testGregRataDieAfterMon() {
 }
 
 function testGregRataDieAfterTue() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -583,7 +583,7 @@ function testGregRataDieAfterTue() {
 }
 
 function testGregRataDieAfterWed() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -596,7 +596,7 @@ function testGregRataDieAfterWed() {
 }
 
 function testGregRataDieAfterThu() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -609,7 +609,7 @@ function testGregRataDieAfterThu() {
 }
 
 function testGregRataDieAfterFri() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -622,7 +622,7 @@ function testGregRataDieAfterFri() {
 }
 
 function testGregRataDieAfterSat() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2010, 
     	month: 1, 
     	day: 1
@@ -635,14 +635,14 @@ function testGregRataDieAfterSat() {
 }
 
 function testGregRataDieJan1Midnight() {
-    var rd = new ilib.Date.GregRataDie({julianday: 2455197.5});
+    var rd = new GregRataDie({julianday: 2455197.5});
     assertNotNull(rd);
     
     assertEquals(733773, rd.getRataDie());
 }
 
 function testGregRataDieGetRataDie() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2011, 
     	month: 3, 
     	day: 8
@@ -656,7 +656,7 @@ function testGregRataDieGetRataDie() {
 // for GF-33596
 function testGregRataDieGetTimeWithUnixTime() {
 	var d = new Date(Date.UTC(2011, 2, 8, 0, 0, 0, 0));
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2011,
     	month: 3, 
     	day: 8,
@@ -673,7 +673,7 @@ function testGregRataDieGetTimeWithUnixTime() {
 function testGregRataDieGetTimeWithUTC() {
 	var utc = Date.UTC(2013, 10, 1);
 	var d = new Date(utc);
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	unixtime: utc
     });
     assertNotNull(rd);
@@ -683,7 +683,7 @@ function testGregRataDieGetTimeWithUTC() {
 
 function testGregRataDieGetTimeWithDefaultTime() {
 	var d = new Date();
-    var rd = new ilib.Date.GregRataDie();
+    var rd = new GregRataDie();
     
     assertNotNull(rd);
     
@@ -691,7 +691,7 @@ function testGregRataDieGetTimeWithDefaultTime() {
 }
 
 function testGregRataDieOnOrBeforeWithOffset1() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 26,
@@ -705,7 +705,7 @@ function testGregRataDieOnOrBeforeWithOffset1() {
 }
 
 function testGregRataDieOnOrBeforeWithOffset2() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 27,
@@ -719,7 +719,7 @@ function testGregRataDieOnOrBeforeWithOffset2() {
 }
 
 function testGregRataDieOnOrAfterWithOffset1() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 26,
@@ -733,7 +733,7 @@ function testGregRataDieOnOrAfterWithOffset1() {
 }
 
 function testGregRataDieOnOrAfterWithOffset2() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 27,
@@ -747,7 +747,7 @@ function testGregRataDieOnOrAfterWithOffset2() {
 }
 
 function testGregRataDieBeforeWithOffset1() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 27,
@@ -761,7 +761,7 @@ function testGregRataDieBeforeWithOffset1() {
 }
 
 function testGregRataDieBeforeWithOffset2() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 28,
@@ -775,7 +775,7 @@ function testGregRataDieBeforeWithOffset2() {
 }
 
 function testGregRataDieAfterWithOffset1() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 26,
@@ -789,7 +789,7 @@ function testGregRataDieAfterWithOffset1() {
 }
 
 function testGregRataDieAfterWithOffset2() {
-    var rd = new ilib.Date.GregRataDie({
+    var rd = new GregRataDie({
     	year: 2014,
     	month: 4,
     	day: 27,

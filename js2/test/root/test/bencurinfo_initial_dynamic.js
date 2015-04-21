@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var Currency = require("./../lib/Currency.js");
 function testCurrencyConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.Currency();
+		    var fmt = new Currency();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testCurrencyConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				code: "USD"
 			});
 		    assertNotNull(fmt);
@@ -47,7 +48,7 @@ function testCurrencyConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-dynamic-bysign-initial",
 		fn: function () {
-			var fmt = new ilib.Currency({
+			var fmt = new Currency({
 				sign: "$"
 			});
 		    assertNotNull(fmt);

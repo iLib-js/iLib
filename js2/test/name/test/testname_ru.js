@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testRUParseSimpleName() {
-	var parsed = new ilib.Name("Андрей Николаевич", {locale: 'ru-RU'});
+	var parsed = new Name("Андрей Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +32,7 @@ function testRUParseSimpleName() {
 };
 
 function testRUParseTripleName() {
-	var parsed = new ilib.Name("Андрей Микаэль Николаевич", {locale: 'ru-RU'});
+	var parsed = new Name("Андрей Микаэль Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +45,7 @@ function testRUParseTripleName() {
 };
 
 function testRUParseQuadrupleName() {
-	var parsed = new ilib.Name("Андрей Микаэль Григорий Николаевич", {locale: 'ru-RU'});
+	var parsed = new Name("Андрей Микаэль Григорий Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +58,7 @@ function testRUParseQuadrupleName() {
 };
 
 function testRUParseTitle() {
-	var parsed = new ilib.Name("Доктор Андрей Николаевич", {locale: 'ru-RU'});
+	var parsed = new Name("Доктор Андрей Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -69,7 +71,7 @@ function testRUParseTitle() {
 };
 
 function testRUParseHonorific() {
-	var parsed = new ilib.Name("Г-жа Татьяна Ивановна", {locale: 'ru-RU'});
+	var parsed = new Name("Г-жа Татьяна Ивановна", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -82,7 +84,7 @@ function testRUParseHonorific() {
 };
 
 function testRUFamilyName1() {
-	var parsed = new ilib.Name("Pavel Яшкин", {locale: 'ru-RU'});
+	var parsed = new Name("Pavel Яшкин", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -94,7 +96,7 @@ function testRUFamilyName1() {
 };
 
 function testRUFamilyName2() {
-	var parsed = new ilib.Name("Абакумов Pavel", {locale: 'ru-RU'});
+	var parsed = new Name("Абакумов Pavel", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -106,7 +108,7 @@ function testRUFamilyName2() {
 };
 
 function testRUFamilyName3() {
-	var parsed = new ilib.Name("Pavel Андреевич", {locale: 'ru-RU'});
+	var parsed = new Name("Pavel Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -118,7 +120,7 @@ function testRUFamilyName3() {
 };
 
 function testRUName1() {
-	var parsed = new ilib.Name("Иван Иванович Иванов", {locale: 'ru-RU'});
+	var parsed = new Name("Иван Иванович Иванов", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -131,7 +133,7 @@ function testRUName1() {
 };
 
 function testRUName2() {
-	var parsed = new ilib.Name("Иван Иванович", {locale: 'ru-RU'});
+	var parsed = new Name("Иван Иванович", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -143,7 +145,7 @@ function testRUName2() {
 };
 
 function testRUName3() {
-	var parsed = new ilib.Name("Иван Иванов", {locale: 'ru-RU'});
+	var parsed = new Name("Иван Иванов", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -155,7 +157,7 @@ function testRUName3() {
 };
 
 function testRUName4() {
-	var parsed = new ilib.Name("Иванов Иван", {locale: 'ru-RU'});
+	var parsed = new Name("Иванов Иван", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -166,7 +168,7 @@ function testRUName4() {
 };
 
 function testRUName5() {
-	var parsed = new ilib.Name("Владимир Андреевич Филатов", {locale: 'ru-RU'});
+	var parsed = new Name("Владимир Андреевич Филатов", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -178,7 +180,7 @@ function testRUName5() {
 };
 
 function testRUName6() {
-	var parsed = new ilib.Name("Владимир Андреевич", {locale: 'ru-RU'});
+	var parsed = new Name("Владимир Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -188,7 +190,7 @@ function testRUName6() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName7() {
-	var parsed = new ilib.Name("Владимир Филатов", {locale: 'ru-RU'});
+	var parsed = new Name("Владимир Филатов", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -198,7 +200,7 @@ function testRUName7() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName8() {
-	var parsed = new ilib.Name("Филатов Владимир", {locale: 'ru-RU'});
+	var parsed = new Name("Филатов Владимир", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -210,7 +212,7 @@ function testRUName8() {
 
 
 function testRUName10() {
-	var parsed = new ilib.Name("Филатов Андреевич", {locale: 'ru-RU'});
+	var parsed = new Name("Филатов Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -221,7 +223,7 @@ function testRUName10() {
 };
 
 function testRUName11() {
-	var parsed = new ilib.Name("Владимир Андреевич Филатовa", {locale: 'ru-RU'});
+	var parsed = new Name("Владимир Андреевич Филатовa", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -233,7 +235,7 @@ function testRUName11() {
 };
 
 function testRUName12() {
-	var parsed = new ilib.Name("Владимир Андреевич", {locale: 'ru-RU'});
+	var parsed = new Name("Владимир Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -243,7 +245,7 @@ function testRUName12() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName13() {
-	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
+	var parsed = new Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -253,7 +255,7 @@ function testRUName13() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName14() {
-	var parsed = new ilib.Name("Филатова Филатова", {locale: 'ru-RU'});
+	var parsed = new Name("Филатова Филатова", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -264,7 +266,7 @@ function testRUName14() {
 };
 
 function testRUName15() {
-	var parsed = new ilib.Name("Екатерина Таттар", {locale: 'ru-RU'});
+	var parsed = new Name("Екатерина Таттар", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -274,7 +276,7 @@ function testRUName15() {
 	assertObjectContains(expected, parsed);
 };
 function testRUName16() {
-	var parsed = new ilib.Name("Таттар Екатерина", {locale: 'ru-RU'});
+	var parsed = new Name("Таттар Екатерина", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -285,7 +287,7 @@ function testRUName16() {
 };
 
 function testRUName17() {
-	var parsed = new ilib.Name("Валерия Твардовскиая", {locale: 'ru-RU'});
+	var parsed = new Name("Валерия Твардовскиая", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -296,7 +298,7 @@ function testRUName17() {
 };
 
 function testRUName18() {
-	var parsed = new ilib.Name("Твардовскиая Валерия", {locale: 'ru-RU'});
+	var parsed = new Name("Твардовскиая Валерия", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -307,7 +309,7 @@ function testRUName18() {
 };
 
 function testRUName19() {
-	var parsed = new ilib.Name("Анатолы Полищук", {locale: 'ru-RU'});
+	var parsed = new Name("Анатолы Полищук", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -318,7 +320,7 @@ function testRUName19() {
 };
 
 function testRUName20() {
-	var parsed = new ilib.Name("Полищук Анатолы", {locale: 'ru-RU'});
+	var parsed = new Name("Полищук Анатолы", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -328,7 +330,7 @@ function testRUName20() {
 	assertObjectContains(expected, parsed);
 };
 function testRUParseEverything() {
-	var parsed = new ilib.Name("Pavel Андреевич", {locale: 'ru-RU'});
+	var parsed = new Name("Pavel Андреевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 
 	var expected = {
@@ -344,11 +346,11 @@ function testRUParseEverything() {
  */
 
 function testRUFormatSimpleNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -358,11 +360,11 @@ function testRUFormatSimpleNameShort() {
 };
 
 function testRUFormatSimpleNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -372,11 +374,11 @@ function testRUFormatSimpleNameMedium() {
 };
 
 function testRUFormatSimpleNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -386,12 +388,12 @@ function testRUFormatSimpleNameLong() {
 };
 
 function testRUFormatSimpleNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Андрей",
 		//middleName: "Микаэль",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -401,12 +403,12 @@ function testRUFormatSimpleNameFull() {
 };
 
 function testRUFormatComplexNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Доктор",
 		givenName: "Андрей",
 		familyName: "Николаевич",
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -416,12 +418,12 @@ function testRUFormatComplexNameShort() {
 };
 
 function testRUFormatComplexNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Доктор",
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -431,12 +433,12 @@ function testRUFormatComplexNameMedium() {
 };
 
 function testRUFormatComplexNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Доктор",
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -446,12 +448,12 @@ function testRUFormatComplexNameLong() {
 };
 
 function testRUFormatComplexNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "Доктор",
 		givenName: "Андрей",
 		familyName: "Николаевич"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -461,13 +463,13 @@ function testRUFormatComplexNameFull() {
 };
 
 function testRUFormatAsianNameShort() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -477,13 +479,13 @@ function testRUFormatAsianNameShort() {
 };
 
 function testRUFormatAsianNameMedium() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -493,13 +495,13 @@ function testRUFormatAsianNameMedium() {
 };
 
 function testRUFormatAsianNameLong() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 
@@ -509,13 +511,13 @@ function testRUFormatAsianNameLong() {
 };
 
 function testRUFormatAsianNameFull() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
+	var fmt = new NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 

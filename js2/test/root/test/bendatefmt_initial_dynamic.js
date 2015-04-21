@@ -17,11 +17,12 @@
  * limitations under the License.
  */
 
+var DateFmt = require("./../lib/DateFmt.js");
 function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.DateFmt();
+		    var fmt = new DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -33,7 +34,7 @@ function testDateFmtConstructorRealInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -47,7 +48,7 @@ function testDateFmtConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "xx-YY"
 			});
 		    assertNotNull(fmt);
@@ -61,7 +62,7 @@ function testDateFmtConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-otherfile-complex-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "zh-Hant-TW"
 			});
 		    assertNotNull(fmt);
@@ -75,7 +76,7 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-otherfile-options-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new DateFmt({
 				locale: "fr-FR",
 				type: "datetime",
 				date: "dmywg",

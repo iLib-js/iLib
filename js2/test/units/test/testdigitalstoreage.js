@@ -17,9 +17,11 @@
  * limitations under the License.
  */
 
+var DigitalStorageUnit = require("./../lib/DigitalStorageUnit.js");
+
 function testDSDSConstructor() {
 
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "mb",
 		amount: 2
 	});
@@ -28,11 +30,11 @@ function testDSDSConstructor() {
 }
 
 function testDSDSConvertKbToMb() {
-	var m1 = new ilib.Measurement.DigitalStorage({
+	var m1 = new DigitalStorageUnit({
 		unit: "kb",
 		amount: 102400
 	});
-	var m2 = new ilib.Measurement.DigitalStorage({
+	var m2 = new DigitalStorageUnit({
 		unit: "mb",
 		amount: m1
 	});
@@ -44,43 +46,43 @@ function testDSDSConvertKbToMb() {
 }
 
 function testDSStaticConvert1() {
-	var m = ilib.Measurement.DigitalStorage.convert("bit", "kilobits", 12024);
+	var m = DigitalStorageUnit.convert("bit", "kilobits", 12024);
 
 	assertRoughlyEquals(12312576, m, 0.01);
 }
 
 function testDSStaticConvertWithString() {
-	var m = ilib.Measurement.DigitalStorage.convert("gigabyte", "petabyte", "1");
+	var m = DigitalStorageUnit.convert("gigabyte", "petabyte", "1");
 
 	assertRoughlyEquals(1048576, m, 0.001);
 }
 
 function testDSStaticConvert2() {
-	var m = ilib.Measurement.DigitalStorage.convert("tB", "gB", 10240);
+	var m = DigitalStorageUnit.convert("tB", "gB", 10240);
 
 	assertRoughlyEquals(10, m, 1e-8);
 }
 
 function testDSStaticConvert3() {
-	var m = ilib.Measurement.DigitalStorage.convert("mb", "byte", 1048576);
+	var m = DigitalStorageUnit.convert("mb", "byte", 1048576);
 
 	assertRoughlyEquals(8, m, 1e-9);
 }
 
 function testDSStaticConvert4() {
-	var m = ilib.Measurement.DigitalStorage.convert("Pb", "tb", 1024);
+	var m = DigitalStorageUnit.convert("Pb", "tb", 1024);
 
 	assertRoughlyEquals(1, m, 1e-9);
 }
 
 function testDSStaticConvert5() {
-	var m = ilib.Measurement.DigitalStorage.convert("megabyte", "byte", 10);
+	var m = DigitalStorageUnit.convert("megabyte", "byte", 10);
 
 	assertRoughlyEquals(9.536743164e-6, m, 1e-15);
 }
 
 function testDSScale1() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "bit",
 		amount: 1024
 	});
@@ -92,7 +94,7 @@ function testDSScale1() {
 }
 
 function testDSScale2() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "kilobit",
 		amount: 0.125
 	});
@@ -104,7 +106,7 @@ function testDSScale2() {
 }
 
 function testDSScale3() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "bit",
 		amount: 1048576000
 	});
@@ -116,7 +118,7 @@ function testDSScale3() {
 }
 
 function testDSScale4() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "kilobit",
 		amount: 10000000
 	});
@@ -128,7 +130,7 @@ function testDSScale4() {
 }
 
 function testDSScale5() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "petabyte",
 		amount: 9.3132e-8
 	});
@@ -140,7 +142,7 @@ function testDSScale5() {
 }
 
 function testDSScale6() {
-	var m = new ilib.Measurement.DigitalStorage({
+	var m = new DigitalStorageUnit({
 		unit: "MB",
 		amount: 100
 	});
@@ -152,7 +154,7 @@ function testDSScale6() {
 }
 
 function testDSaLocalize1() {
-    var m = new ilib.Measurement.DigitalStorage({
+    var m = new DigitalStorageUnit({
         unit: "petaByte",
         amount: 1000
     });
@@ -164,7 +166,7 @@ function testDSaLocalize1() {
 }
 
 function testDSLocalize2() {
-    var m = new ilib.Measurement.DigitalStorage({
+    var m = new DigitalStorageUnit({
         unit: "Kilobit",
         amount: 1000
     });
@@ -176,7 +178,7 @@ function testDSLocalize2() {
 }
 
 function testDSLocalize3() {
-    var m = new ilib.Measurement.DigitalStorage({
+    var m = new DigitalStorageUnit({
         unit: "Mb",
         amount: 1000
     });
@@ -187,7 +189,7 @@ function testDSLocalize3() {
     assertEquals("megabit", m.unit);
 }
 function testDSGetMeasures() {
-	var measures = ilib.Measurement.DigitalStorage.getMeasures();
+	var measures = DigitalStorageUnit.getMeasures();
 	var expected = [
         "bit",
         "byte",

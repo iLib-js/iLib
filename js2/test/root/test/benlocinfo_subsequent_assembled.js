@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var LocaleInfo = require("./../lib/LocaleInfo.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
@@ -34,13 +36,13 @@ ilib.data.localeinfo_zh = {"clock":"12","language.name":"Chinese","native_numfmt
 ilib.data.localeinfo_TW = {"currency":"TWD","firstDayOfWeek":0,"region.name":"Taiwan","timezone":"Asia/Taipei","locale":"TW"};
 
 function testLocaleInfoConstructorEmptySubsequent(results) {
-	new ilib.LocaleInfo();
+	new LocaleInfo();
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-empty-subsequent",
 		iterations: 100,
 		fn: function () {
-		    var fmt = new ilib.LocaleInfo();	    
+		    var fmt = new LocaleInfo();	    
 		    assertNotNull(fmt);
 		}
 	});
@@ -49,13 +51,13 @@ function testLocaleInfoConstructorEmptySubsequent(results) {
 }
 
 function testLocaleInfoConstructorRealSubsequent(results) {
-	new ilib.LocaleInfo("de-DE");
+	new LocaleInfo("de-DE");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-normal-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("de-DE");
+			var fmt = new LocaleInfo("de-DE");
 		    assertNotNull(fmt);
 		}
 	});
@@ -64,13 +66,13 @@ function testLocaleInfoConstructorRealSubsequent(results) {
 }
 
 function testLocaleInfoConstructorNonexistentSubsequent(results) {
-	new ilib.LocaleInfo("xx-YY");
+	new LocaleInfo("xx-YY");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-nonexistent-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("xx-YY");
+			var fmt = new LocaleInfo("xx-YY");
 		    assertNotNull(fmt);
 		}
 	});
@@ -79,13 +81,13 @@ function testLocaleInfoConstructorNonexistentSubsequent(results) {
 }
 
 function testLocaleInfoConstructorOtherComplexSubsequent(results) {
-	new ilib.LocaleInfo("zh-Hant-TW");
+	new LocaleInfo("zh-Hant-TW");
 	
 	var tt = new TimedTest({
 		name: "LocaleInfo-assembled-otherfile-complex-subsequent",
 		iterations: 100,
 		fn: function () {
-			var fmt = new ilib.LocaleInfo("zh-Hant-TW");
+			var fmt = new LocaleInfo("zh-Hant-TW");
 		    assertNotNull(fmt);
 		}
 	});

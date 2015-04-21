@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var NameFmt = require("./../lib/NameFmt.js");
+var Name = require("./../lib/Name.js");
 function testParseSimpleName_ms_MY() {
-	var parsed = new ilib.Name("Carmen Soo", {locale: 'ms-MY'});
+	var parsed = new Name("Carmen Soo", {locale: 'ms-MY'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -33,7 +35,7 @@ function testParseSimpleName_ms_MY() {
 
 
 function testParseTitle_ms_MY() {
-	var parsed = new ilib.Name("Carmen Soo bersara", {locale: 'ms-MY'});
+	var parsed = new Name("Carmen Soo bersara", {locale: 'ms-MY'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -48,7 +50,7 @@ function testParseTitle_ms_MY() {
 
 
 function testParseTitleWithFamilyOnly_ms_MY() {
-	var parsed = new ilib.Name("cik Soo", {locale: 'ms-MY'});
+	var parsed = new Name("cik Soo", {locale: 'ms-MY'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -62,7 +64,7 @@ function testParseTitleWithFamilyOnly_ms_MY() {
 
 
 function testParseEverything_ms_MY() {
-	var parsed = new ilib.Name("encik dan cik Soo", {locale: 'ms-MY'});
+	var parsed = new Name("encik dan cik Soo", {locale: 'ms-MY'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -74,7 +76,7 @@ function testParseEverything_ms_MY() {
 };
 
 function testParseprefix_ms_MY() {
-	var parsed = new ilib.Name("cik Carmen Soo", {locale: 'ms-MY'});
+	var parsed = new Name("cik Carmen Soo", {locale: 'ms-MY'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -90,11 +92,11 @@ function testParseprefix_ms_MY() {
  */
 
 function testFormatSimpleNameShort_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Carmen",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ms-MY'
 	});
@@ -107,11 +109,11 @@ function testFormatSimpleNameShort_ms_MY() {
 };
 
 function testFormatSimpleNameMedium_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Carmen",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ms-MY'
 	});
@@ -124,12 +126,12 @@ function testFormatSimpleNameMedium_ms_MY() {
 };
 
 function testFormatSimpleNameLong_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		givenName: "Carmen",
 		familyName: "Soo",
 		suffix: "asdf"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ms-MY'
 	});
@@ -144,11 +146,11 @@ function testFormatSimpleNameLong_ms_MY() {
 
 
 function testFormatSurname_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "encik dan cik",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "long", 
 		locale: 'ms-MY'
 	});
@@ -161,13 +163,13 @@ function testFormatSurname_ms_MY() {
 };
 
 function testFormatSimpleNameFull_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "pesuruhjaya",
 		givenName: "Carmen",
 		familyName: "Soo",
 		suffix: "bersara"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full", 
 		locale: 'ms-MY'
 	});
@@ -180,12 +182,12 @@ function testFormatSimpleNameFull_ms_MY() {
 };
 
 function testFormatComplexNameShort_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "pesuruhjaya",
 		givenName: "Carmen",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "short", 
 		locale: 'ms-MY'
 	});
@@ -198,12 +200,12 @@ function testFormatComplexNameShort_ms_MY() {
 };
 
 function testFormatComplexNameMedium_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "pesuruhjaya",
 		givenName: "Carmen",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "medium", 
 		locale: 'ms-MY'
 	});
@@ -216,12 +218,12 @@ function testFormatComplexNameMedium_ms_MY() {
 };
 
 function testFormatComplexNameLong_ms_MY() {
-	var name = new ilib.Name({
+	var name = new Name({
 		prefix: "pesuruhjaya",
 		givenName: "Carmen",
 		familyName: "Soo"
 	});
-	var fmt = new ilib.NameFmt({
+	var fmt = new NameFmt({
 		style: "full",
 		locale: 'ms-MY'
 	});

@@ -17,6 +17,11 @@
  * limitations under the License.
  */
 
+var ilib = require("./../lib/ilib.js");
+var RataDie = require("./../lib/RataDie.js");
+var HanCal = require("./../lib/HanCal.js");
+var Astro = require("./../lib/Astro.js");
+
 var testDatesChineseAstro1 = [
   	// jd			deg					current major ST	han next solar long.	current minor ST	minor ST on or aft
 	[ 1507231.5,	-214193.32337962964,	5.0,	-213920.51787281086,	6.0,	-214176.22370667264],
@@ -56,17 +61,13 @@ var testDatesChineseAstro1 = [
 
 function testDegreesInBeijing() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
-	if (ilib.isDynCode()) {
-		var d = new ilib.Cal.Han();
-		var d = ilib.Date.RataDie({rd: 0});
-	}
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
         var jd = testDatesChineseAstro1[i][0];
-        var deg = ilib.Date._universalFromLocal(jd, ilib.Cal.Han._chineseTZ(jd)) - ilib.Date.RataDie.gregorianEpoch;
+        var deg = Astro._universalFromLocal(jd, HanCal._chineseTZ(jd)) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][1], deg, 1e-9);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -76,17 +77,13 @@ function testDegreesInBeijing() {
 
 function testCurrentMajorSolarTerm() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
-	if (ilib.isDynCode()) {
-		var d = new ilib.Cal.Han();
-		var d = ilib.Date.RataDie({rd: 0});
-	}
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
         var jd = testDatesChineseAstro1[i][0];
-        l = ilib.Cal.Han._currentMajorST(jd);
+        l = HanCal._currentMajorST(jd);
         assertRoughlyEquals("testing current major solar term for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][2], l, 1e-9);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -96,17 +93,13 @@ function testCurrentMajorSolarTerm() {
 
 function testHanNextSolarLongitude() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
-	if (ilib.isDynCode()) {
-		var d = new ilib.Cal.Han();
-		var d = ilib.Date.RataDie({rd: 0});
-	}
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro1.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro1[i][0]);
         //try {
         var jd = testDatesChineseAstro1[i][0];
-        l = ilib.Cal.Han._hanNextSolarLongitude(jd, 30.0) - ilib.Date.RataDie.gregorianEpoch;
+        l = HanCal._hanNextSolarLongitude(jd, 30.0) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing next solar longitude for " + testDatesChineseAstro1[i][0], testDatesChineseAstro1[i][3], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -153,17 +146,13 @@ var testDatesChineseAstro2 = [
 
 function testNewMoonBefore() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
-	if (ilib.isDynCode()) {
-		var d = new ilib.Cal.Han();
-		var d = ilib.Date.RataDie({rd: 0});
-	}
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
         var jd = testDatesChineseAstro2[i][0];
-        l = ilib.Cal.Han._newMoonBefore(jd) - ilib.Date.RataDie.gregorianEpoch;
+        l = HanCal._newMoonBefore(jd) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon before " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][1], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -173,13 +162,13 @@ function testNewMoonBefore() {
 
 function testNewMoonOnOrAfter() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
         var jd = testDatesChineseAstro2[i][0];
-        l = ilib.Cal.Han._newMoonOnOrAfter(jd) - ilib.Date.RataDie.gregorianEpoch;
+        l = HanCal._newMoonOnOrAfter(jd) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing new moon on or after " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][2], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -189,13 +178,13 @@ function testNewMoonOnOrAfter() {
 
 function testNoMajorST() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
         var jd = testDatesChineseAstro2[i][0];
-        l = ilib.Cal.Han._noMajorST(jd);
+        l = HanCal._noMajorST(jd);
         assertEquals("testing no major solar term for " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][3], l);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -205,13 +194,13 @@ function testNoMajorST() {
 
 function testMajorSTOnOrAfter() {
 	var l;
-	ilib.Date.initAstro(true, undefined, undefined);
+	Astro.initAstro(true, undefined, undefined);
 	for (var i = 0; i < testDatesChineseAstro2.length; i++) {
     
         info("testing jd=" + testDatesChineseAstro2[i][0]);
         //try {
         var jd = testDatesChineseAstro2[i][0];
-        l = ilib.Cal.Han._majorSTOnOrAfter(jd) - ilib.Date.RataDie.gregorianEpoch;
+        l = HanCal._majorSTOnOrAfter(jd) - RataDie.gregorianEpoch;
         assertRoughlyEquals("testing major solar term on or after for " + testDatesChineseAstro2[i][0], testDatesChineseAstro2[i][4], l, 1e-5);
     	//} catch (e) {
         //	console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
@@ -220,85 +209,85 @@ function testMajorSTOnOrAfter() {
 }
 
 function testHanGetNumMonths4687() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(13, cal.getNumMonths(4687));
 }
 
 function testHanGetMonLength1() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(1, 4687));
 }
 
 function testHanGetMonLength2() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(2, 4687));
 }
 
 function testHanGetMonLength3() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(3, 4687));
 }
 
 function testHanGetMonLength4() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(4, 4687));
 }
 
 function testHanGetMonLength5() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(5, 4687));
 }
 
 function testHanGetMonLength6() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(6, 4687));
 }
 
 function testHanGetMonLength7() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(7, 4687));
 }
 
 function testHanGetMonLength8() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(8, 4687));
 }
 
 function testHanGetMonLength9() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(29, cal.getMonLength(9, 4687));
 }
 
 function testHanGetMonLength10() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(10, 4687));
 }
 
 function testHanGetMonLength11() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(11, 4687));
 }
 
 function testHanGetMonLength12() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(12, 4687));
 }
 
 function testHanGetMonLength13() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     assertEquals(30, cal.getMonLength(13, 4687));
 }
@@ -376,7 +365,7 @@ var hanLeapYears = [
 ];
 
 function testHanIsLeapYear() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     for (var i = 0; i < hanLeapYears.length; i++) {
     	var n = hanLeapYears[i][0];
@@ -385,7 +374,7 @@ function testHanIsLeapYear() {
 }
 
 function testHanGetNumMonths() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     for (var i = 0; i < hanLeapYears.length; i++) {
     	var n = hanLeapYears[i][0];
@@ -394,7 +383,7 @@ function testHanGetNumMonths() {
 }
 
 function testHanGetLeapMonth() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     for (var i = 0; i < hanLeapYears.length; i++) {
     	var n = hanLeapYears[i][0];
@@ -403,7 +392,7 @@ function testHanGetLeapMonth() {
 }
 
 function testHanNewYears() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     
     for (var i = 0; i < hanLeapYears.length; i++) {
     	var n = hanLeapYears[i][0];
@@ -412,7 +401,7 @@ function testHanNewYears() {
 }
 
 function testHanNewDateInstance() {
-    var cal = new ilib.Cal.Han();
+    var cal = new HanCal();
     var d = cal.newDateInstance({
     	year: 4681,
     	month: 6,

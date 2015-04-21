@@ -17,8 +17,10 @@
  * limitations under the License.
  */
 
+var EnergyUnit = require("./../lib/EnergyUnit.js");
+
 function testEnergyEnergyConstructor() {
-	var m = new ilib.Measurement.Energy({
+	var m = new EnergyUnit({
 	    unit: "kJ",
 	    amount: 2
 	});
@@ -27,11 +29,11 @@ function testEnergyEnergyConstructor() {
 }
 
 function testEnergyEnergyConvertCalorieToJoule() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new EnergyUnit({
 	    unit: "Cal",
 	    amount: 20
 	});
-	var m2 = new ilib.Measurement.Energy({
+	var m2 = new EnergyUnit({
 	    unit: "joule",
 	    amount: m1
 	});
@@ -43,49 +45,49 @@ function testEnergyEnergyConvertCalorieToJoule() {
 }
 
 function testEnergyStaticConvert1() {
-	var m = ilib.Measurement.Energy.convert("gWh", "Cal", 1e+8);
+	var m = EnergyUnit.convert("gWh", "Cal", 1e+8);
 
 	assertRoughlyEquals(0.1163, m, 0.0001);
 }
 
 function testEnergyStaticConvertWithString() {
-	var m = ilib.Measurement.Energy.convert("MegaWh", "Wh", "5e+6");
+	var m = EnergyUnit.convert("MegaWh", "Wh", "5e+6");
 
 	assertEquals(5, m);
 }
 
 function testEnergyStaticConvert2() {
-	var m = ilib.Measurement.Energy.convert("gigajoule", "kJ", 5e+6);
+	var m = EnergyUnit.convert("gigajoule", "kJ", 5e+6);
 
 	assertEquals(5, m);
 }
 
 function testEnergyStaticConvert3() {
-	var m = ilib.Measurement.Energy.convert("MWh", "kJ", 5e+6);
+	var m = EnergyUnit.convert("MWh", "kJ", 5e+6);
 
 	assertRoughlyEquals(1.38889, m, 0.00001);
 }
 
 function testEnergyStaticConvert4() {
-	var m = ilib.Measurement.Energy.convert("cal", "btu", 200);
+	var m = EnergyUnit.convert("cal", "btu", 200);
 
 	assertRoughlyEquals(50.399, m, 0.001);
 }
 
 function testEnergyStaticConvert5() {
-	var m = ilib.Measurement.Energy.convert("joule", "btu", 200);
+	var m = EnergyUnit.convert("joule", "btu", 200);
 
 	assertRoughlyEquals(211011.18, m, 0.01);
 }
 
 function testEnergyStaticConvert6() {
-	var m = ilib.Measurement.Energy.convert("joule", "cal", 50);
+	var m = EnergyUnit.convert("joule", "cal", 50);
 
 	assertEquals(209340, m);
 }
 
 function testEnergyScale1() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new EnergyUnit({
 	    unit: "watt hour",
 	    amount: 10000
 	});
@@ -96,7 +98,7 @@ function testEnergyScale1() {
 }
 
 function testEnergyScale2() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new EnergyUnit({
 	    unit: "kilowatt hour",
 	    amount: 1233453
 	});
@@ -107,7 +109,7 @@ function testEnergyScale2() {
 }
 
 function testEnergyScale3() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new EnergyUnit({
 	    unit: "milli joule",
 	    amount: 5254578
 	});
@@ -118,7 +120,7 @@ function testEnergyScale3() {
 }
 
 function testEnergyScale4() {
-	var m1 = new ilib.Measurement.Energy({
+	var m1 = new EnergyUnit({
 	    unit: "mega joule",
 	    amount: 5254578
 	});
@@ -129,7 +131,7 @@ function testEnergyScale4() {
 }
 
 function testEnergyGetMeasures() {
-	var measures = ilib.Measurement.Energy.getMeasures();
+	var measures = EnergyUnit.getMeasures();
 	var expected = [
 	    "millijoule",
 	    "joule",
