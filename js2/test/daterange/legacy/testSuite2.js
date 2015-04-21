@@ -17,16 +17,16 @@
  * limitations under the License.
  */
 
-var cli = require('./runner.js');
+var TestSuite = require("./TestSuiteModule.js");
 
 function newSuite(path, include) {
-	var suite = new cli.TestSuite("daterange/legacy/" + path);
+	var suite = new TestSuite("daterange/legacy/" + path);
 	suite.include("test/testUtils.js");
 	return suite;
 };
 
 function suite() {
-    var s = new cli.TestSuite();
+    var s = new TestSuite();
     
     var suites = [
 		"testdatefmtrange_ga_IE.js",
