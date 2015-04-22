@@ -20,7 +20,7 @@
 var TestSuite = require("./TestSuiteModule.js");
 
 function newSuite(path, include) {
-	var suite = new TestSuite("units/legacy/" + path);
+	var suite = new TestSuite("units/test/" + path);
 	return suite;
 }
 

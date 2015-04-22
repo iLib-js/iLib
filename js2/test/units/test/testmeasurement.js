@@ -17,16 +17,16 @@
  * limitations under the License.
  */
 
-var Measurement = require("./../lib/Measurement.js");
+var MeasurementFactory = require("./../lib/MeasurementFactory.js");
 
 function testMeasurementConstructor() {
-    var m = new Measurement();
+    var m = MeasurementFactory();
     
     assertNotNull(m);
 }
 
 function testMeasurementNoAmount() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "meter"
     });
     
@@ -37,7 +37,7 @@ function testMeasurementNoAmount() {
 }
 
 function testMeasurementRightMeasureType() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "meter",
     	amount: 2
     });
@@ -48,7 +48,7 @@ function testMeasurementRightMeasureType() {
 }
 
 function testMeasurementUnknownUnitPreserved() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "krunghoonfoop",
     	amount: 2
     });
@@ -60,7 +60,7 @@ function testMeasurementUnknownUnitPreserved() {
 }
 
 function testMeasurementUnknownUnitUnknownMeasureType() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "krunghoonfoop",
     	amount: 2
     });
@@ -71,7 +71,7 @@ function testMeasurementUnknownUnitUnknownMeasureType() {
 }
 
 function testMeasurementMetricScaleMicro() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "micrometer",
     	amount: 2
     });
@@ -83,7 +83,7 @@ function testMeasurementMetricScaleMicro() {
 }
 
 function testMeasurementMetricScaleMilli() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "millimeter",
     	amount: 2
     });
@@ -95,7 +95,7 @@ function testMeasurementMetricScaleMilli() {
 }
 
 function testMeasurementMetricScaleCenti() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "centimeter",
     	amount: 2
     });
@@ -107,7 +107,7 @@ function testMeasurementMetricScaleCenti() {
 }
 
 function testMeasurementMetricScaleDeca() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "decameter",
     	amount: 2
     });
@@ -119,7 +119,7 @@ function testMeasurementMetricScaleDeca() {
 }
 
 function testMeasurementMetricScaleHecto() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "hectometer",
     	amount: 2
     });
@@ -131,7 +131,7 @@ function testMeasurementMetricScaleHecto() {
 }
 
 function testMeasurementMetricScaleKilo() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "kilometer",
     	amount: 2
     });
@@ -143,7 +143,7 @@ function testMeasurementMetricScaleKilo() {
 }
 
 function testMeasurementMetricScaleMega() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "megameter",
     	amount: 2
     });
@@ -155,7 +155,7 @@ function testMeasurementMetricScaleMega() {
 }
 
 function testMeasurementMetricScaleGiga() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "gigameter",
     	amount: 2
     });
@@ -167,7 +167,7 @@ function testMeasurementMetricScaleGiga() {
 }
 
 function testMeasurementMetricScaleSymbolMicro() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "µm",
     	amount: 2
     });
@@ -179,7 +179,7 @@ function testMeasurementMetricScaleSymbolMicro() {
 }
 
 function testMeasurementMetricScaleSymbolMilli() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "mm",
     	amount: 2
     });
@@ -191,7 +191,7 @@ function testMeasurementMetricScaleSymbolMilli() {
 }
 
 function testMeasurementMetricScaleSymbolCenti() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "cm",
     	amount: 2
     });
@@ -203,7 +203,7 @@ function testMeasurementMetricScaleSymbolCenti() {
 }
 
 function testMeasurementMetricScaleSymbolNone() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "m",
     	amount: 2
     });
@@ -215,7 +215,7 @@ function testMeasurementMetricScaleSymbolNone() {
 }
 
 function testMeasurementMetricScaleSymbolDeca() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "dam",
     	amount: 2
     });
@@ -227,7 +227,7 @@ function testMeasurementMetricScaleSymbolDeca() {
 }
 
 function testMeasurementMetricScaleSymbolHecto() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "hm",
     	amount: 2
     });
@@ -239,7 +239,7 @@ function testMeasurementMetricScaleSymbolHecto() {
 }
 
 function testMeasurementMetricScaleSymbolKilo() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "km",
     	amount: 2
     });
@@ -251,7 +251,7 @@ function testMeasurementMetricScaleSymbolKilo() {
 }
 
 function testMeasurementMetricScaleSymbolMega() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "Mm",
     	amount: 2
     });
@@ -263,7 +263,7 @@ function testMeasurementMetricScaleSymbolMega() {
 }
 
 function testMeasurementMetricScaleSymbolGiga() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "Gm",
     	amount: 2
     });
@@ -275,7 +275,7 @@ function testMeasurementMetricScaleSymbolGiga() {
 }
 
 function testMeasurementMetricScaleOriginalUnit() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "kilometer",
     	amount: 2
     });
@@ -286,7 +286,7 @@ function testMeasurementMetricScaleOriginalUnit() {
 }
 
 function testMeasurementAliases1() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "miles",
     	amount: 2
     });
@@ -298,7 +298,7 @@ function testMeasurementAliases1() {
 }
 
 function testMeasurementAliases1OriginalUnit() {
-    var m = new Measurement({
+    var m = MeasurementFactory({
     	unit: "meters",
     	amount: 2
     });
@@ -318,7 +318,7 @@ function testMeasurementAliasesMetric() {
 	];
 	
 	for (var i = 0; i < expected.length; i++) {
-	    var m = new Measurement({
+	    var m = MeasurementFactory({
 	    	unit: expected[i],
 	    	amount: 2
 	    });
@@ -339,7 +339,7 @@ function testMeasurementAliasesUS() {
 	];
 	
 	for (var i = 0; i < expected.length; i++) {
-	    var m = new Measurement({
+	    var m = MeasurementFactory({
 	    	unit: expected[i].alias,
 	    	amount: 2
 	    });
@@ -351,11 +351,11 @@ function testMeasurementAliasesUS() {
 }
 
 function testMeasurementConvert() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "meter",
     	amount: m1
     });
@@ -368,11 +368,11 @@ function testMeasurementConvert() {
 }
 
 function testMeasurementConvertToMetricScale() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "kilometer",
     	amount: m1
     });
@@ -385,11 +385,11 @@ function testMeasurementConvertToMetricScale() {
 }
 
 function testMeasurementConvertToMetricScaleWithAlias() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "mile",
     	amount: 2
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "km",
     	amount: m1
     });
@@ -402,11 +402,11 @@ function testMeasurementConvertToMetricScaleWithAlias() {
 }
 
 function testMeasurementConvertFromMetric() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "meter",
     	amount: 2000
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "mile",
     	amount: m1
     });
@@ -419,11 +419,11 @@ function testMeasurementConvertFromMetric() {
 }
 
 function testMeasurementConvertFromMetricWithScale() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "kilometer",
     	amount: 2
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "mile",
     	amount: m1
     });
@@ -436,11 +436,11 @@ function testMeasurementConvertFromMetricWithScale() {
 }
 
 function testMeasurementConvertFromMetricWithScaleAndAlias() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
     	unit: "km",
     	amount: 2
     });
-    var m2 = new Measurement({
+    var m2 = MeasurementFactory({
     	unit: "mile",
     	amount: m1
     });
@@ -454,11 +454,11 @@ function testMeasurementConvertFromMetricWithScaleAndAlias() {
 
 function testMeasurementCannotConvertBetweenMeasureTypes() {
 	try {
-		var m1 = new Measurement({
+		var m1 = MeasurementFactory({
 	    	unit: "meter",
 	    	amount: 2
 	    });
-	    var m2 = new Measurement({
+	    var m2 = MeasurementFactory({
 	    	unit: "celsius",
 	    	amount: m1
 	    });

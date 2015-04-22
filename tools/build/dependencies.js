@@ -263,11 +263,12 @@ var legacyCalls = {
 	"ilib.Measurement.Length": "LengthUnit",
 	"ilib.Measurement.Mass": "MassUnit",
 	"ilib.Measurement.Velocity": "VelocityUnit",
+	"ilib.Measurement.Speed": "VelocityUnit",
 	"ilib.Measurement.Temperature": "TemperatureUnit",
 	"ilib.Measurement.Time": "TimeUnit",
 	"ilib.Measurement.Unknown": "UnknownUnit",
 	"ilib.Measurement.Volume": "VolumeUnit",
-	"ilib.Measurement": "Measurement",
+	"ilib.Measurement": "MeasurementFactory",
 	"webLoader": "WebLoader",
 	"qmlLoader": "QMLLoader",
 	

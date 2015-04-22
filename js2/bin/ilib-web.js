@@ -37,7 +37,7 @@ var path = {
 			var previousLen;
 			do {
 				previousLen = pathname.length;
-				pathname = pathname.replace(/\/[^/]+\/\.\./g, "").replace(/\/\.\//g, "/").replace(/^\.\//, "");
+				pathname = pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+\/\.\./g, "").replace(/^\.\//, "");
 			} while (pathname.length < previousLen);
 		}
 		return pathname;

@@ -32,7 +32,7 @@ var Path = {
 	},
 	
 	normalize: function(pathname) {
-		return pathname && pathname.replace(/\/[^/]+\/\.\./, "").replace(/\/\.\//, "/").replace(/^\.\//, "");
+		return pathname && pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+\/\.\./, "").replace(/^\.\//, "");
 	}
 };
 

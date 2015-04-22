@@ -18,10 +18,10 @@
  */
 
 var UnitFmt = require("./../lib/UnitFmt.js");
-var Measurement = require("./../lib/Measurement.js");
+var MeasurementFactory = require("./../lib/MeasurementFactory.js");
 
 function testUnitFormat1() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		amount: 10,
 		unit: "micrometer"
 	});
@@ -31,7 +31,7 @@ function testUnitFormat1() {
 }
 
 function testUnitFormatWithScale1() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		amount: 3000,
 		unit: "meter"
 	});
@@ -41,7 +41,7 @@ function testUnitFormatWithScale1() {
 }
 
 function testUnitFormatWithoutScale1() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		amount: 3000,
 		unit: "meter"
 	});
@@ -51,7 +51,7 @@ function testUnitFormatWithoutScale1() {
 }
 
 function testUnitFormatWithScale2() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "bit",
 		amount: 1024
 	});
@@ -62,7 +62,7 @@ function testUnitFormatWithScale2() {
 }
 
 function testUnitFormatWithoutScale2() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "bit",
 		amount: 1048576000
 	});
@@ -73,7 +73,7 @@ function testUnitFormatWithoutScale2() {
 }
 
 function testUnitFormatWithScale3() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "mcg",
 		amount: 10000000
 	});
@@ -84,7 +84,7 @@ function testUnitFormatWithScale3() {
 }
 
 function testUnitFormatWithoutScale3() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "mcg",
 		amount: 10000000
 	});
@@ -95,7 +95,7 @@ function testUnitFormatWithoutScale3() {
 }
 
 function testUnitFormatWithMeasurementSystem3() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "mcg",
 		amount: 10000000
 	});
@@ -110,7 +110,7 @@ function testUnitFormatWithMeasurementSystem3() {
 }
 
 function testUnitFormatWithScale4() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "hectare",
 		amount: 100
 	});
@@ -120,7 +120,7 @@ function testUnitFormatWithScale4() {
 }
 
 function testUnitFormatWithoutScale4() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "hectare",
 		amount: 100
 	});
@@ -131,7 +131,7 @@ function testUnitFormatWithoutScale4() {
 }
 
 function testUnitFormatWithMeasurementSystem4() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "square meter",
 		amount: 10000
 	});
@@ -146,7 +146,7 @@ function testUnitFormatWithMeasurementSystem4() {
 }
 
 function testUnitFormatWithScale5() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "watt hour",
 		amount: 10000
 	});
@@ -156,7 +156,7 @@ function testUnitFormatWithScale5() {
 }
 
 function testUnitFormatWithoutScale5() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "kilowatt hour",
 		amount: 1233453
 	});
@@ -167,7 +167,7 @@ function testUnitFormatWithoutScale5() {
 }
 
 function testUnitFormatWithMeasurementSystem5() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "kilowatt hour",
 		amount: 1233453
 	});
@@ -182,7 +182,7 @@ function testUnitFormatWithMeasurementSystem5() {
 }
 
 function testUnitFormatWithScale6() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "km/h",
 		amount: 6000
 	});
@@ -192,7 +192,7 @@ function testUnitFormatWithScale6() {
 }
 
 function testUnitFormatWithoutScale6() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "km/h",
 		amount: 36
 	});
@@ -203,7 +203,7 @@ function testUnitFormatWithoutScale6() {
 }
 
 function testUnitFormatWithMeasurementSystem6() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "feet/sec",
 		amount: 10
 	});
@@ -218,7 +218,7 @@ function testUnitFormatWithMeasurementSystem6() {
 }
 
 function testUnitFormatWithScale7() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "ms",
 		amount: 12000
 	});
@@ -229,7 +229,7 @@ function testUnitFormatWithScale7() {
 }
 
 function testUnitFormatWithoutScale7() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "ms",
 		amount: 12000
 	});
@@ -240,7 +240,7 @@ function testUnitFormatWithoutScale7() {
 }
 
 function testUnitFormatWithScale8() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "Milliliter",
 		amount: 1500
 	});
@@ -251,7 +251,7 @@ function testUnitFormatWithScale8() {
 }
 
 function testUnitFormatWithoutScale8() {
-	var m = new Measurement({
+	var m = MeasurementFactory({
 		unit: "Milliliter",
 		amount: 1500
 	});
@@ -262,7 +262,7 @@ function testUnitFormatWithoutScale8() {
 }
 
 function testUnitFormatWithMeasurementSystem8() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "ounce",
 		amount: 100
 	});
@@ -277,7 +277,7 @@ function testUnitFormatWithMeasurementSystem8() {
 }
 
 function testUnitFormatWithScale9() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "km/liter",
 		amount:5000
 	});
@@ -288,7 +288,7 @@ function testUnitFormatWithScale9() {
 }
 
 function testUnitFormatWithScale10() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "kelvin",
 		amount: 285.3
 	});
@@ -299,7 +299,7 @@ function testUnitFormatWithScale10() {
 }
 
 function testUnitFormatWithScale11() {
-	var m1 = new Measurement({
+	var m1 = MeasurementFactory({
 		unit: "krunghoonfoop",
 		amount: 2
 	});
@@ -311,7 +311,7 @@ function testUnitFormatWithScale11() {
 /*Area*/
 
 function testUnitFormatArea1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 2
     });
@@ -322,7 +322,7 @@ function testUnitFormatArea1() {
 }
 
 function testUnitFormatArea2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 2
     });
@@ -333,7 +333,7 @@ function testUnitFormatArea2() {
 }
 
 function testUnitFormatArea3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -344,7 +344,7 @@ function testUnitFormatArea3() {
 }
 
 function testUnitFormatArea4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -355,7 +355,7 @@ function testUnitFormatArea4() {
 }
 
 function testUnitFormatArea5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -366,7 +366,7 @@ function testUnitFormatArea5() {
 }
 
 function testUnitFormatArea5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -377,7 +377,7 @@ function testUnitFormatArea5DE() {
 }
 
 function testUnitFormatArea6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "acre",
         amount: 2
     });
@@ -388,7 +388,7 @@ function testUnitFormatArea6() {
 }
 
 function testUnitFormatArea7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 2
     });
@@ -399,7 +399,7 @@ function testUnitFormatArea7() {
 }
 
 function testUnitFormatArea8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "hectare",
         amount: 1000
     });
@@ -410,7 +410,7 @@ function testUnitFormatArea8() {
 }
 
 function testUnitFormatArea9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square yard",
         amount: 1000
     });
@@ -421,7 +421,7 @@ function testUnitFormatArea9() {
 }
 
 function testUnitFormatArea10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square yard",
         amount: 1000
     });
@@ -434,7 +434,7 @@ function testUnitFormatArea10() {
 
 /*DigitalStorage*/
 function testUnitFormatDigitalStorage1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 2
     });
@@ -445,7 +445,7 @@ function testUnitFormatDigitalStorage1() {
 }
 
 function testUnitFormatDigitalStorage2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 2
     });
@@ -456,7 +456,7 @@ function testUnitFormatDigitalStorage2() {
 }
 
 function testUnitFormatDigitalStorage4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 1000
     });
@@ -467,7 +467,7 @@ function testUnitFormatDigitalStorage4() {
 }
 
 function testUnitFormatDigitalStorage5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 1000
     });
@@ -478,7 +478,7 @@ function testUnitFormatDigitalStorage5() {
 }
 
 function testUnitFormatDigitalStorage5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 1000
     });
@@ -489,7 +489,7 @@ function testUnitFormatDigitalStorage5DE() {
 }
 
 function testUnitFormatDigitalStorage6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gigabit",
         amount: 2
     });
@@ -500,7 +500,7 @@ function testUnitFormatDigitalStorage6() {
 }
 
 function testUnitFormatDigitalStorage7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gigabit",
         amount: 2
     });
@@ -511,7 +511,7 @@ function testUnitFormatDigitalStorage7() {
 }
 
 function testUnitFormatDigitalStorage8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "bit",
         amount: 1000
     });
@@ -522,7 +522,7 @@ function testUnitFormatDigitalStorage8() {
 }
 
 function testUnitFormatDigitalStorage9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gigabit",
         amount: 1000
     });
@@ -533,7 +533,7 @@ function testUnitFormatDigitalStorage9() {
 }
 
 function testUnitFormatDigitalStorage10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gigabit",
         amount: 1000
     });
@@ -545,7 +545,7 @@ function testUnitFormatDigitalStorage10() {
 
 
 function testUnitFormatEnergy1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 2
     });
@@ -556,7 +556,7 @@ function testUnitFormatEnergy1() {
 }
 
 function testUnitFormatEnergy2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 2
     });
@@ -567,7 +567,7 @@ function testUnitFormatEnergy2() {
 }
 
 function testUnitFormatEnergy3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 1000
     });
@@ -578,7 +578,7 @@ function testUnitFormatEnergy3() {
 }
 
 function testUnitFormatEnergy4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 1000
     });
@@ -589,7 +589,7 @@ function testUnitFormatEnergy4() {
 }
 
 function testUnitFormatEnergy5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 1000
     });
@@ -600,7 +600,7 @@ function testUnitFormatEnergy5() {
 }
 
 function testUnitFormatEnergy6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilowatt hour",
         amount: 2
     });
@@ -611,7 +611,7 @@ function testUnitFormatEnergy6() {
 }
 
 function testUnitFormatEnergy7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilowatt hour",
         amount: 2
     });
@@ -622,7 +622,7 @@ function testUnitFormatEnergy7() {
 }
 
 function testUnitFormatEnergy8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "calorie",
         amount: 1000
     });
@@ -633,7 +633,7 @@ function testUnitFormatEnergy8() {
 }
 
 function testUnitFormatEnergy9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gigabit",
         amount: 1000
     });
@@ -644,7 +644,7 @@ function testUnitFormatEnergy9() {
 }
 
 function testUnitFormatEnergy10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "joule",
         amount: 2000
     });
@@ -656,7 +656,7 @@ function testUnitFormatEnergy10() {
 
 
 function testUnitFormatFuelConsumption1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km/liter",
         amount: 2
     });
@@ -667,7 +667,7 @@ function testUnitFormatFuelConsumption1() {
 }
 
 function testUnitFormatFuelConsumption2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mpg",
         amount: 2
     });
@@ -678,7 +678,7 @@ function testUnitFormatFuelConsumption2() {
 }
 
 function testUnitFormatFuelConsumption3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mpg",
         amount: 1000
     });
@@ -689,7 +689,7 @@ function testUnitFormatFuelConsumption3() {
 }
 
 function testUnitFormatFuelConsumption4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km/liter",
         amount: 1000
     });
@@ -700,7 +700,7 @@ function testUnitFormatFuelConsumption4() {
 }
 
 function testUnitFormatFuelConsumption5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mpg",
         amount: 1000
     });
@@ -711,7 +711,7 @@ function testUnitFormatFuelConsumption5() {
 }
 
 function testUnitFormatFuelConsumption5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mpg",
         amount: 1000
     });
@@ -722,7 +722,7 @@ function testUnitFormatFuelConsumption5DE() {
 }
 
 function testUnitFormatLength1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "inch",
         amount: 2
     });
@@ -733,7 +733,7 @@ function testUnitFormatLength1() {
 }
 
 function testUnitFormatLength2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "inch",
         amount: 2
     });
@@ -744,7 +744,7 @@ function testUnitFormatLength2() {
 }
 
 function testUnitFormatLength3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "meter",
         amount: 1000
     });
@@ -755,7 +755,7 @@ function testUnitFormatLength3() {
 }
 
 function testUnitFormatLength4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "meter",
         amount: 1000
     });
@@ -766,7 +766,7 @@ function testUnitFormatLength4() {
 }
 
 function testUnitFormatLength5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "meter",
         amount: 1000
     });
@@ -777,7 +777,7 @@ function testUnitFormatLength5() {
 }
 
 function testUnitFormatLength5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "meter",
         amount: 1234.45
     });
@@ -788,7 +788,7 @@ function testUnitFormatLength5DE() {
 }
 
 function testUnitFormatLength6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mile",
         amount: 2000
     });
@@ -799,7 +799,7 @@ function testUnitFormatLength6() {
 }
 
 function testUnitFormatLength7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "mile",
         amount: 2
     });
@@ -810,7 +810,7 @@ function testUnitFormatLength7() {
 }
 
 function testUnitFormatLength8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "centimeter",
         amount: 1000
     });
@@ -821,7 +821,7 @@ function testUnitFormatLength8() {
 }
 
 function testUnitFormatLength9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "centimeter",
         amount: 1000
     });
@@ -832,7 +832,7 @@ function testUnitFormatLength9() {
 }
 
 function testUnitFormatLength10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "centimeter",
         amount: 1000
     });
@@ -843,7 +843,7 @@ function testUnitFormatLength10() {
 }
 
 function testUnitFormatMass1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 2
     });
@@ -854,7 +854,7 @@ function testUnitFormatMass1() {
 }
 
 function testUnitFormatMass2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 2
     });
@@ -865,7 +865,7 @@ function testUnitFormatMass2() {
 }
 
 function testUnitFormatMass3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 1000
     });
@@ -876,7 +876,7 @@ function testUnitFormatMass3() {
 }
 
 function testUnitFormatMass4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 1000
     });
@@ -887,7 +887,7 @@ function testUnitFormatMass4() {
 }
 
 function testUnitFormatMass5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 1000
     });
@@ -898,7 +898,7 @@ function testUnitFormatMass5() {
 }
 
 function testUnitFormatMass6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "pound",
         amount: 2000
     });
@@ -909,7 +909,7 @@ function testUnitFormatMass6() {
 }
 
 function testUnitFormatMass5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "microgram",
         amount: 1000
     });
@@ -920,7 +920,7 @@ function testUnitFormatMass5DE() {
 }
 
 function testUnitFormatMass6DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "pound",
         amount: 2000
     });
@@ -931,7 +931,7 @@ function testUnitFormatMass6DE() {
 }
 
 function testUnitFormatMass7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "stone",
         amount: 2
     });
@@ -942,7 +942,7 @@ function testUnitFormatMass7() {
 }
 
 function testUnitFormatMass8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "metric ton",
         amount: 1000
     });
@@ -953,7 +953,7 @@ function testUnitFormatMass8() {
 }
 
 function testUnitFormatMass9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "metric ton",
         amount: 1000
     });
@@ -964,7 +964,7 @@ function testUnitFormatMass9() {
 }
 
 function testUnitFormatMass10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gram",
         amount: 1000
     });
@@ -976,7 +976,7 @@ function testUnitFormatMass10() {
 
 
 function testUnitFormatSpeed1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilometer/hour",
         amount: 2
     });
@@ -987,7 +987,7 @@ function testUnitFormatSpeed1() {
 }
 
 function testUnitFormatSpeed2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilometer/hour",
         amount: 2
     });
@@ -998,7 +998,7 @@ function testUnitFormatSpeed2() {
 }
 
 function testUnitFormatSpeed3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilometer/hour",
         amount: 1000
     });
@@ -1009,7 +1009,7 @@ function testUnitFormatSpeed3() {
 }
 
 function testUnitFormatSpeed4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "feet/second",
         amount: 1000
     });
@@ -1020,7 +1020,7 @@ function testUnitFormatSpeed4() {
 }
 
 function testUnitFormatSpeed5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 1000
     });
@@ -1031,7 +1031,7 @@ function testUnitFormatSpeed5() {
 }
 
 function testUnitFormatSpeed5DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 1000
     });
@@ -1042,7 +1042,7 @@ function testUnitFormatSpeed5DE() {
 }
 
 function testUnitFormatSpeed6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "meters/second",
         amount: 2000
     });
@@ -1053,7 +1053,7 @@ function testUnitFormatSpeed6() {
 }
 
 function testUnitFormatSpeed7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 2
     });
@@ -1064,7 +1064,7 @@ function testUnitFormatSpeed7() {
 }
 
 function testUnitFormatSpeed8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "knot",
         amount: 1000
     });
@@ -1075,7 +1075,7 @@ function testUnitFormatSpeed8() {
 }
 
 function testUnitFormatSpeed9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 1000
     });
@@ -1086,7 +1086,7 @@ function testUnitFormatSpeed9() {
 }
 
 function testUnitFormatSpeed10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 1000
     });
@@ -1097,7 +1097,7 @@ function testUnitFormatSpeed10() {
 }
 
 function testUnitFormatSpeed10DE() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "miles/hour",
         amount: 1000
     });
@@ -1108,7 +1108,7 @@ function testUnitFormatSpeed10DE() {
 }
 
 function testUnitFormatTemperature1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "celsius",
         amount: 2
     });
@@ -1119,7 +1119,7 @@ function testUnitFormatTemperature1() {
 }
 
 function testUnitFormatTemperature2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "Celsius",
         amount: 2
     });
@@ -1130,7 +1130,7 @@ function testUnitFormatTemperature2() {
 }
 
 function testUnitFormatTemperature3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "Celsius",
         amount: 1000
     });
@@ -1141,7 +1141,7 @@ function testUnitFormatTemperature3() {
 }
 
 function testUnitFormatTemperature4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kelvin",
         amount: 1000
     });
@@ -1152,7 +1152,7 @@ function testUnitFormatTemperature4() {
 }
 
 function testUnitFormatTemperature5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kelvin",
         amount: 1000
     });
@@ -1163,7 +1163,7 @@ function testUnitFormatTemperature5() {
 }
 
 function testUnitFormatTemperature6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "fahrenheit",
         amount: 2000
     });
@@ -1174,7 +1174,7 @@ function testUnitFormatTemperature6() {
 }
 
 function testUnitFormatTemperature7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "fahrenheit",
         amount: 2
     });
@@ -1185,7 +1185,7 @@ function testUnitFormatTemperature7() {
 }
 
 function testUnitFormatTemperature8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kelvin",
         amount: 1000
     });
@@ -1196,7 +1196,7 @@ function testUnitFormatTemperature8() {
 }
 
 function testUnitFormatTemperature9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "fahrenheit",
         amount: 1000
     });
@@ -1207,7 +1207,7 @@ function testUnitFormatTemperature9() {
 }
 
 function testUnitFormatTemperature10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "celsius",
         amount: 1000
     });
@@ -1218,7 +1218,7 @@ function testUnitFormatTemperature10() {
 }
 
 function testUnitFormatTime1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "nanosecond",
         amount: 2
     });
@@ -1229,7 +1229,7 @@ function testUnitFormatTime1() {
 }
 
 function testUnitFormatTime2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "nanoseconds",
         amount: 2
     });
@@ -1240,7 +1240,7 @@ function testUnitFormatTime2() {
 }
 
 function testUnitFormatTime3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "nanoseconds",
         amount: 1000
     });
@@ -1251,7 +1251,7 @@ function testUnitFormatTime3() {
 }
 
 function testUnitFormatTime4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "millisecond",
         amount: 1000
     });
@@ -1262,7 +1262,7 @@ function testUnitFormatTime4() {
 }
 
 function testUnitFormatTime5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "millisecond",
         amount: 1000
     });
@@ -1273,7 +1273,7 @@ function testUnitFormatTime5() {
 }
 
 function testUnitFormatTime6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "week",
         amount: 2000
     });
@@ -1284,7 +1284,7 @@ function testUnitFormatTime6() {
 }
 
 function testUnitFormatTime7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "year",
         amount: 2
     });
@@ -1295,7 +1295,7 @@ function testUnitFormatTime7() {
 }
 
 function testUnitFormatTime8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "minute",
         amount: 1000
     });
@@ -1306,7 +1306,7 @@ function testUnitFormatTime8() {
 }
 
 function testUnitFormatTime9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "minute",
         amount: 1000
     });
@@ -1317,7 +1317,7 @@ function testUnitFormatTime9() {
 }
 
 function testUnitFormatTime10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "month",
         amount: 1000
     });
@@ -1328,7 +1328,7 @@ function testUnitFormatTime10() {
 }
 
 function testUnitFormatVolume1() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "tsp",
         amount: 2
     });
@@ -1339,7 +1339,7 @@ function testUnitFormatVolume1() {
 }
 
 function testUnitFormatVolume2() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "tsp",
         amount: 2
     });
@@ -1350,7 +1350,7 @@ function testUnitFormatVolume2() {
 }
 
 function testUnitFormatVolume3() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "ounce",
         amount: 1000
     });
@@ -1361,7 +1361,7 @@ function testUnitFormatVolume3() {
 }
 
 function testUnitFormatVolume4() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "millisecond",
         amount: 1000
     });
@@ -1372,7 +1372,7 @@ function testUnitFormatVolume4() {
 }
 
 function testUnitFormatVolume5() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "liter",
         amount: 1000
     });
@@ -1383,7 +1383,7 @@ function testUnitFormatVolume5() {
 }
 
 function testUnitFormatVolume6() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "liter",
         amount: 2000
     });
@@ -1394,7 +1394,7 @@ function testUnitFormatVolume6() {
 }
 
 function testUnitFormatVolume7() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gallon",
         amount: 1
     });
@@ -1405,7 +1405,7 @@ function testUnitFormatVolume7() {
 }
 
 function testUnitFormatVolume8() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "gallon",
         amount: 1000
     });
@@ -1416,7 +1416,7 @@ function testUnitFormatVolume8() {
 }
 
 function testUnitFormatVolume9() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cubic foot",
         amount: 1000
     });
@@ -1427,7 +1427,7 @@ function testUnitFormatVolume9() {
 }
 
 function testUnitFormatVolume10() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cubic foot",
         amount: 1000
     });
@@ -1438,7 +1438,7 @@ function testUnitFormatVolume10() {
 }
 
 function testUnitFormatVolume11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cubic foot",
         amount: 1000
     });
@@ -1449,7 +1449,7 @@ function testUnitFormatVolume11() {
 }
 
 function testUnitFormatVolume12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cubic foot",
         amount: 1000
     });
@@ -1460,7 +1460,7 @@ function testUnitFormatVolume12() {
 }
 
 function testUnitFormatArea11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -1471,7 +1471,7 @@ function testUnitFormatArea11() {
 }
 
 function testUnitFormatArea12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "square centimeter",
         amount: 1000
     });
@@ -1482,7 +1482,7 @@ function testUnitFormatArea12() {
 }
 
 function testUnitFormatDigitalStorage11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 1000
     });
@@ -1493,7 +1493,7 @@ function testUnitFormatDigitalStorage11() {
 }
 
 function testUnitFormatDigitalStorage12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilobyte",
         amount: 1000
     });
@@ -1503,7 +1503,7 @@ function testUnitFormatDigitalStorage12() {
     assertEquals("1,000 kB", str);
 }
 function testUnitFormatEnergy11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilowatt hour",
         amount: 1000
     });
@@ -1514,7 +1514,7 @@ function testUnitFormatEnergy11() {
 }
 
 function testUnitFormatEnergy12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilowatt hour",
         amount: 1000
     });
@@ -1525,7 +1525,7 @@ function testUnitFormatEnergy12() {
 }
 
 function testUnitFormatFuelConsumption11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km/liter",
         amount: 1000
     });
@@ -1536,7 +1536,7 @@ function testUnitFormatFuelConsumption11() {
 }
 
 function testUnitFormatFuelConsumption12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km/liter",
         amount: 1000
     });
@@ -1546,7 +1546,7 @@ function testUnitFormatFuelConsumption12() {
     assertEquals("1,000 km/l", str);
 }
 function testUnitFormatLength11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "decimeter",
         amount: 1000
     });
@@ -1557,7 +1557,7 @@ function testUnitFormatLength11() {
 }
 
 function testUnitFormatLength12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "decimeter",
         amount: 1000
     });
@@ -1567,7 +1567,7 @@ function testUnitFormatLength12() {
     assertEquals("1,000 dm", str);
 }
 function testUnitFormatSpeed11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilometer/second",
         amount: 1000
     });
@@ -1578,7 +1578,7 @@ function testUnitFormatSpeed11() {
 }
 
 function testUnitFormatSpeed12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "kilometer/second",
         amount: 1000
     });
@@ -1588,7 +1588,7 @@ function testUnitFormatSpeed12() {
     assertEquals("1,000  km/s", str);
 }
 function testUnitFormatTemperature11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "fahrenheit",
         amount: 1000
     });
@@ -1599,7 +1599,7 @@ function testUnitFormatTemperature11() {
 }
 
 function testUnitFormatTemperature12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "fahrenheit",
         amount: 1000
     });
@@ -1609,7 +1609,7 @@ function testUnitFormatTemperature12() {
     assertEquals("1,000°F", str);
 }
 function testUnitFormatTime11() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "millisecond",
         amount: 1000
     });
@@ -1620,7 +1620,7 @@ function testUnitFormatTime11() {
 }
 
 function testUnitFormatTime12() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "millisecond",
         amount: 1000
     });
@@ -1631,7 +1631,7 @@ function testUnitFormatTime12() {
 }
 
 function testUnitFormatLength13() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km",
         amount: 12345000000000000000000000000.0
     });
@@ -1648,7 +1648,7 @@ function testUnitFormatLength13() {
 }
 
 function testUnitFormatLength14() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "km",
         amount: 1.7453
     });
@@ -1664,7 +1664,7 @@ function testUnitFormatLength14() {
 }
 
 function testUnitFormatLength15() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "m",
         amount: 1.74475
     });
@@ -1680,7 +1680,7 @@ function testUnitFormatLength15() {
 }
 
 function testUnitFormatLength16() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "m",
         amount: 1.74475
     });
@@ -1696,7 +1696,7 @@ function testUnitFormatLength16() {
 }
 
 function testUnitFormatLength17() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "m",
         amount: 1.74475
     });
@@ -1712,7 +1712,7 @@ function testUnitFormatLength17() {
 }
 
 function testUnitFormatUseNativeFalse() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cm",
         amount: 1000
     });
@@ -1723,7 +1723,7 @@ function testUnitFormatUseNativeFalse() {
 }
 
 function testUnitFormatUseNativeTrue() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cm",
         amount: 1000
     });
@@ -1734,7 +1734,7 @@ function testUnitFormatUseNativeTrue() {
 }
 
 function testUnitFormatUseNativeDefault() {
-    var m1 = new Measurement({
+    var m1 = MeasurementFactory({
         unit: "cm",
         amount: 1000
     });

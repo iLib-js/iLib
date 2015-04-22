@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-var Measurement = require("./../lib/Measurement.js");
+var MeasurementFactory = require("./../lib/MeasurementFactory.js");
 
 function testMeasurementLength1() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "kilometers"
 	});
@@ -30,7 +30,7 @@ function testMeasurementLength1() {
 }
 
 function testMeasurementLength2() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "miles"
 	});
@@ -40,7 +40,7 @@ function testMeasurementLength2() {
 }
 
 function testMeasurementSpeed1() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "miles/hour"
 	});
@@ -50,7 +50,7 @@ function testMeasurementSpeed1() {
 }
 
 function testMeasurementSpeed2() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "meters/s"
 	});
@@ -60,7 +60,7 @@ function testMeasurementSpeed2() {
 }
 
 function testMeasurementTemperature1() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "C"
 	});
@@ -70,7 +70,7 @@ function testMeasurementTemperature1() {
 }
 
 function testMeasurementTemperature2() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 5,
 		unit: "F"
 	});
@@ -80,7 +80,7 @@ function testMeasurementTemperature2() {
 }
 
 function testMeasurementDigitalStorage1() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 100,
 		unit: "mb"
 	});
@@ -90,7 +90,7 @@ function testMeasurementDigitalStorage1() {
 }
 
 function testMeasurementDigitalStorage2() {
-	var measurement = new Measurement({
+	var measurement = MeasurementFactory({
 		amount: 1204,
 		unit: "tB"
 	});
@@ -119,7 +119,7 @@ function testMeasurementConstructorLengths() {
 	];
 
 	for (var measure in measures) {
-		var measurement = new Measurement({
+		var measurement = MeasurementFactory({
 			amount: 100,
 			unit: measures[measure]
 		});
@@ -141,7 +141,7 @@ function testMeasurementConstructorSpeeds() {
 	];
 
 	for (var measure in measures) {
-		var measurement = new Measurement({
+		var measurement = MeasurementFactory({
 			amount: 100,
 			unit: measures[measure]
 		});
@@ -161,7 +161,7 @@ function testMeasurementConstructorTemperature() {
 	];
 
 	for (var measure in measures) {
-		var measurement = new Measurement({
+		var measurement = MeasurementFactory({
 			amount: 100,
 			unit: measures[measure]
 		});
@@ -190,7 +190,7 @@ function testMeasurementConstructorDigitalStorage() {
 	];
 
 	for (var measure in measures) {
-		var measurement = new Measurement({
+		var measurement = MeasurementFactory({
 			amount: 100,
 			unit: measures[measure]
 		});
@@ -219,7 +219,7 @@ function testMeasurementConstructorDigitalStorageCaseInsensitive() {
 	];
 
 	for (var measure in measures) {
-		var measurement = new Measurement({
+		var measurement = MeasurementFactory({
 			amount: 100,
 			unit: measures[measure]
 		});
