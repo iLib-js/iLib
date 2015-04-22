@@ -177,8 +177,10 @@ TestSuite.prototype = {
 				util: util,
 				global: global,
 				path: this.path,
-				module: new mod(this.path, module.parent.filename)
+				module: new mod(module.id, module.parent)
 			};
+			//console.log("contextInit.module is " + util.inspect(contextInit.module));
+			
 			this.merge(contextInit, this.contextBits);
 			this.context = vm.createContext(contextInit);
 			if (this.setupCode) {

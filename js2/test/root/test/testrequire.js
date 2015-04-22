@@ -22,6 +22,14 @@
 
 var ilib = require("./../lib/ilib.js");
 
+// make sure it thinks the current module's dir is the same as in the 
+// nodejs tests so these require tests will be operating in the same
+// environment and therefore will work properly
+if (ilib._getPlatform() === "browser") {
+	var i = r.root.lastIndexOf('/');
+	r.root = r.root.substring(0, i) + "/test";
+}
+
 function testRequireSingleFile() {
 	if (!ilib.isDynCode()) {
 		// can't test the require function unless you're 

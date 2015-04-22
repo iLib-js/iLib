@@ -19,13 +19,10 @@
 
 var ilib = require("./../lib/ilib.js");
 var NormString = require("./../lib/NormString.js");
+var normtests = require("./strings-ext/test/normdata.js");
 
 function setUp() {
 	NormString.init();
-
-	if (typeof(normtests) === 'undefined') {
-		var normtests = require("./strings-ext/test/normdata.js");
-	}
 }
 
 function toHexString(string) {

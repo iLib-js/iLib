@@ -82,7 +82,7 @@ requireClass.prototype.setRoot = function() {
 requireClass.prototype.cacheObjectForPath = function(pathname, obj) {
 	this.setRoot();
 	if (pathname.charAt(0) !== '/') {
-		pathname = this.root + "/" + pathname;
+		pathname = path.join(this.root, pathname);
 	}
 	
 	pathname = path.normalize(pathname);
@@ -96,7 +96,7 @@ requireClass.prototype.require = function(pathname) {
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
 	if (pathname.charAt(0) !== '/') {
-		pathname = this.root + "/" + pathname;
+		pathname = path.join(this.root, pathname);
 	}
 	
 	pathname = path.normalize(pathname);
@@ -142,5 +142,5 @@ if (typeof(window.module) === 'undefined') {
 
 require("./ilib-stubs-dyn.js");
 
-// now the enyo code should create an enyo loadeer and set it in to ilib
+// now the enyo code should create an enyo loader and set it in to ilib
 // with ilib.setLoaderCallback()

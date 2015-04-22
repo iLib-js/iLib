@@ -101,7 +101,8 @@ requireClass.prototype.require = function(pathname) {
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
 	
 	if (pathname.charAt(0) !== '/') {
-		pathname = this.root + "/" + pathname;
+		// make the current path be relative to the parent's path, otherwise use the root
+		pathname = path.join((module && module.filename) ? path.dirname(module.filename) : this.root, pathname);
 	}
 	
 	pathname = path.normalize(pathname);
@@ -125,7 +126,7 @@ requireClass.prototype.require = function(pathname) {
 	var match, replacement;
 	
 	if (text) {
-		text = 'var module={exports:{},filename:"' + pathname + '"};' + text;
+		text = 'module.filename="' + pathname + '";\n' + text;
 		while ((match = this.updateRequire.exec(text)) !== null) {
 			replacement = '"' + dirname + '/" + ' + match[1];
 			text = text.replace(new RegExp(match[1], "g"), replacement);
@@ -143,6 +144,13 @@ requireClass.prototype.require = function(pathname) {
 	return undefined;
 };
 
+if (typeof(window.module) === 'undefined') {
+	window.module = {
+		exports: {},
+		filename: null
+	};
+}
+
 var r = new requireClass();
 var require = requireClass.prototype.require.bind(r);
 
@@ -154,9 +162,3 @@ ilib.setLoaderCallback(new WebLoader(ilib));
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
 require("../lib/ilib-stubs-dyn.js");
-
-if (typeof(window.module) === 'undefined') {
-	var module = {
-		exports: {}
-	};
-}
