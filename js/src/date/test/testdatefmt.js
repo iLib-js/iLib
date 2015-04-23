@@ -2800,3 +2800,53 @@ function testDateFmtAltCalPersianInEnglish() {
     
     assertEquals("Tir 12, 1393 8:45pm", fmt.format(date));
 };
+
+function testDateFmtGetMeridiemsRange() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
+    assertEquals(5, fmt.length);
+    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("05:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+    assertEquals(2, fmt.length);
+    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("11:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+    assertEquals(5, fmt.length);
+    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("05:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+    assertEquals(2, fmt.length);
+    assertEquals("上午", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("11:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+    assertEquals(2, fmt.length);
+    assertEquals("上午", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("11:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+    assertEquals(7, fmt.length);
+    assertEquals("凌晨", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("05:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
+    assertEquals(2, fmt.length);
+    assertEquals("am", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("11:59", fmt[0].end);
+
+    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "ko-KR"});
+    assertEquals(2, fmt.length);
+    assertEquals("오전", fmt[0].name);
+    assertEquals("00:00", fmt[0].start);
+    assertEquals("11:59", fmt[0].end);
+}
