@@ -37,7 +37,7 @@ var path = {
 			var previousLen;
 			do {
 				previousLen = pathname.length;
-				pathname = pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+\/\.\./g, "").replace(/^\.\//, "");
+				pathname = pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+[^\.]\/\.\./g, "").replace(/^\.\//, "").replace(/\/\//g, "/");
 			} while (pathname.length < previousLen);
 		}
 		return pathname;
@@ -48,20 +48,20 @@ var path = {
 var requireClass = function() {
 	this.cache = {};
 	this.loading = {};
-	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
+	this.updateRequire = /\brequire\s*\(\s*"([^/][^"+]*)"/g;
 	
 	var pos;
 	var scripts = document.getElementsByTagName("script");
 
-	this.protocol = "file:";
+	this.protocol = "file://";
 	this.root = ".";
 	
 	for (var i = 0; i < scripts.length; i++) {
 		var source = scripts[i].src;
 		if (source && (pos = source.search(/ilib-web\.js$/)) !== -1) {
 			var colon = source.indexOf('://');
-			this.protocol = source.substring(0,colon+1);
-			this.root = source.substring(colon+1, pos-1);
+			this.protocol = source.substring(0,colon+3);
+			this.root = source.substring(colon+3, pos-1);
 			break;
 		}
 	}
@@ -126,18 +126,25 @@ requireClass.prototype.require = function(pathname) {
 	var match, replacement;
 	
 	if (text) {
-		text = 'module.filename="' + pathname + '";\n' + text;
+		var tmp = module.filename;
+		module.filename = pathname;
+		module.exports = null;
+		
 		while ((match = this.updateRequire.exec(text)) !== null) {
-			replacement = '"' + dirname + '/" + ' + match[1];
-			text = text.replace(new RegExp(match[1], "g"), replacement);
-			this.updateRequire.lastIndex = match.index + replacement.length;
+			replacement = path.normalize(path.join(dirname, match[1]));
+			text = text.replace(new RegExp('"' + match[1] + '"', "g"), '"' + replacement + '"');
+			this.updateRequire.lastIndex = match.index + replacement.length + 2;
 		}
 		// console.log("text is " + text);
-		eval(text);
+		try {
+			eval(text);
 		
-		this.cache[pathname] = module.exports;
-		this.loading[pathname] = undefined;
-	
+			this.cache[pathname] = module.exports;
+		} finally {
+			this.loading[pathname] = undefined;
+			module.filename = tmp;
+		}
+		
 		return module.exports;
 	}
 
@@ -162,3 +169,4 @@ ilib.setLoaderCallback(new WebLoader(ilib));
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
 require("../lib/ilib-stubs-dyn.js");
+

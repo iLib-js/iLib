@@ -101,7 +101,7 @@ var AddressFmt = function(options) {
 	// console.log("Creating formatter for region: " + this.locale.region);
 	Utils.loadData({
 		name: "address.json",
-		object: Address, 
+		object: AddressFmt, 
 		locale: this.locale,
 		sync: this.sync, 
 		loadParams: this.loadParams, 
@@ -110,7 +110,7 @@ var AddressFmt = function(options) {
 				// load the "unknown" locale instead
 				Utils.loadData({
 					name: "address.json",
-					object: Address, 
+					object: AddressFmt, 
 					locale: new Locale("XX"),
 					sync: this.sync, 
 					loadParams: this.loadParams, 

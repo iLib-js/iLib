@@ -47,7 +47,7 @@ module.exports = function (ilib) {
 		this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
 		
 		// ... else fall back to see if we're in a check-out dir of ilib
-		this._exists(path.join(this.base, "data", "locale"), "localeinfo.json");
+		// this._exists(path.join(this.base, "data", "locale"), "localeinfo.json");
 		
 		// console.log("NodeLoader: include path is now " + JSON.stringify(this.includePath));
 	};

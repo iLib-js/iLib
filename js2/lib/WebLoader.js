@@ -58,7 +58,7 @@ var WebLoader = function(ilib, sync, onLoad) {
 	this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
 	
 	// if all else fails, try a check-out dir of ilib
-	this._exists(path.join(this.base, "locale"), "localeinfo.json");
+	// this._exists(path.join(this.base, "locale"), "localeinfo.json");
 };
 
 WebLoader.prototype = new Loader();

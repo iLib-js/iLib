@@ -200,17 +200,15 @@ var Address = function (freeformAddress, options) {
 	this.lines = address.split(/[,，\n]/g);
 	this.removeEmptyLines(this.lines);
 	
-	Address.shared = Address.shared || {}; 
-	if (typeof(Address.ctry) === 'undefined') {
-		Address.ctry = {}; // make sure not to conflict with the address info
-	}
 	isAscii._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
 		isIdeo._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
 			isDigit._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
 				if (typeof(ilib.data.nativecountries) === 'undefined') {
 					Utils.loadData({
+						object: Address,
 						name: "nativecountries.json", // countries in their own language 
 						locale: "-", // only need to load the root file 
+						nonlocale: true,
 						sync: this.sync, 
 						loadParams: this.loadParams, 
 						callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(nativecountries) {
@@ -234,8 +232,10 @@ Address.prototype = {
 	_loadCountries: function(onLoad) {
 		if (typeof(ilib.data.countries) === 'undefined') {
 			Utils.loadData({
+				object: Address,
 				name: "countries.json", // countries in English
 				locale: "-", // only need to load the root file
+				nonlocale: true,
 				sync: this.sync, 
 				loadParams: this.loadParams, 
 				callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(countries) {
@@ -254,8 +254,8 @@ Address.prototype = {
 	_loadCtrynames: function(onLoad) {
 		Utils.loadData({
 			name: "ctrynames.json", 
-			object: Address.ctry, 
-			locale: this.locale, 
+			object: Address, 
+			locale: this.locale,
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ctrynames) {

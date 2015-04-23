@@ -21,6 +21,13 @@ limitations under the License.
 <head>
 <script language="JavaScript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript" src="../../../bin/ilib-web.js"></script>
+<script language="JavaScript">
+if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+	// work-around for Opera, which only puts the language "en" into the navigator.language 
+	// instead of the whole locale "en-US" which the unit tests expect
+	navigator.language = "en-US";
+}
+</script>
 <script type="text/javascript" src="testtoupper.js"></script>
 <script type="text/javascript" src="testtolower.js"></script>
 </head>

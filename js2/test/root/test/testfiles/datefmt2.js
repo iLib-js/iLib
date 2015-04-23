@@ -1,6 +1,6 @@
 // !dependencies: false
 
-Locale2 = require("./locale2.js");
+var Locale2 = require("./locale2.js");
 
 DateFmt2 = function(options) {
 	// console.log("DateFmt2: options is " + JSON.stringify(options));

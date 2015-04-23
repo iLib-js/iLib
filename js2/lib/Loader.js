@@ -100,7 +100,10 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		
 		for (var i = 0; i < paths.length; i++) {
 			var text = this._loadFileAlongIncludePath(includePath, path.normalize(paths[i]));
-			ret.push(text ? JSON.parse(text) : undefined); 
+			ret.push(text ? JSON.parse(text) : undefined);
+			if (params && params.returnOne && text) {
+				break;
+			}
 		};
 
 		// only call the callback at the end of the chain of files
