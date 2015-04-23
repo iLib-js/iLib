@@ -17,7 +17,7 @@
  * limitations under the License.
  */
  
-function testFormatStyle0() {
+function testFormatNZStyle0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -34,7 +34,7 @@ function testFormatStyle0() {
 	
 };
 
-function testFormatStyle1() {
+function testFormatNZStyle1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -51,7 +51,7 @@ function testFormatStyle1() {
 	
 };
 
-function testFormatInternational() {
+function testFormatNZInternational() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "+",
@@ -69,7 +69,7 @@ function testFormatInternational() {
 	
 };
 
-function testFormatInternationalAccessCode() {
+function testFormatNZInternationalAccessCode() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "00",
@@ -87,7 +87,7 @@ function testFormatInternationalAccessCode() {
 	
 };
 
-function testFormatLongNumber() {
+function testFormatNZLongNumber() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -105,7 +105,7 @@ function testFormatLongNumber() {
 };
 
 
-function testFormatMobile() {
+function testFormatNZMobile() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -122,7 +122,7 @@ function testFormatMobile() {
 	
 };
 
-function testFormatMobileInternational() {
+function testFormatNZMobileInternational() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "+",
@@ -141,7 +141,7 @@ function testFormatMobileInternational() {
 	
 };
 
-function testFormatService() {
+function testFormatNZService() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -158,7 +158,7 @@ function testFormatService() {
 	
 };
 
-function testFormatIEIDD() {
+function testFormatNZIEIDD() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "+",
@@ -177,7 +177,7 @@ function testFormatIEIDD() {
 	
 };
 
-function testFormatStyle0Partial0() {
+function testFormatNZStyle0Partial0() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0"
@@ -191,7 +191,7 @@ function testFormatStyle0Partial0() {
 	
 	
 };
-function testFormatStyle0Partial1() {
+function testFormatNZStyle0Partial1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -206,7 +206,7 @@ function testFormatStyle0Partial1() {
 	
 	
 };
-function testFormatStyle0Partial2() {
+function testFormatNZStyle0Partial2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -222,7 +222,7 @@ function testFormatStyle0Partial2() {
 	
 	
 };
-function testFormatStyle0Partial3() {
+function testFormatNZStyle0Partial3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -238,7 +238,7 @@ function testFormatStyle0Partial3() {
 	
 	
 };
-function testFormatStyle0Partial4() {
+function testFormatNZStyle0Partial4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -254,7 +254,7 @@ function testFormatStyle0Partial4() {
 	
 	
 };
-function testFormatStyle0Partial5() {
+function testFormatNZStyle0Partial5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -270,7 +270,7 @@ function testFormatStyle0Partial5() {
 	
 	
 };
-function testFormatStyle0Partial6() {
+function testFormatNZStyle0Partial6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -286,7 +286,7 @@ function testFormatStyle0Partial6() {
 	
 	
 };
-function testFormatStyle0Partial7() {
+function testFormatNZStyle0Partial7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -302,7 +302,7 @@ function testFormatStyle0Partial7() {
 	
 	
 };
-function testFormatStyle0Partial8() {
+function testFormatNZStyle0Partial8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -318,7 +318,7 @@ function testFormatStyle0Partial8() {
 	
 	
 };
-function testFormatStyle0Partial9() {
+function testFormatNZStyle0Partial9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -334,7 +334,7 @@ function testFormatStyle0Partial9() {
 	
 	
 };
-function testFormatStyle0Partial10() {
+function testFormatNZStyle0Partial10() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
@@ -351,7 +351,7 @@ function testFormatStyle0Partial10() {
 	
 };
 
-function testFormatStyle0PartialLocal1() {
+function testFormatNZStyle0PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4"
@@ -365,7 +365,7 @@ function testFormatStyle0PartialLocal1() {
 	
 	
 };
-function testFormatStyle0PartialLocal2() {
+function testFormatNZStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45"
@@ -379,7 +379,7 @@ function testFormatStyle0PartialLocal2() {
 	
 	
 };
-function testFormatStyle0PartialLocal3() {
+function testFormatNZStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456"
@@ -393,7 +393,7 @@ function testFormatStyle0PartialLocal3() {
 	
 	
 };
-function testFormatStyle0PartialLocal4() {
+function testFormatNZStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563"
@@ -407,7 +407,7 @@ function testFormatStyle0PartialLocal4() {
 	
 	
 };
-function testFormatStyle0PartialLocal5() {
+function testFormatNZStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634"
@@ -421,7 +421,7 @@ function testFormatStyle0PartialLocal5() {
 	
 	
 };
-function testFormatStyle0PartialLocal6() {
+function testFormatNZStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345"
@@ -435,7 +435,7 @@ function testFormatStyle0PartialLocal6() {
 	
 	
 };
-function testFormatStyle0PartialLocal7() {
+function testFormatNZStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563453"
@@ -449,7 +449,7 @@ function testFormatStyle0PartialLocal7() {
 	
 	
 };
-function testFormatStyle0PartialLocal8() {
+function testFormatNZStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634535"
@@ -463,7 +463,7 @@ function testFormatStyle0PartialLocal8() {
 	
 	
 };
-function testFormatStyle0PartialLocal9() {
+function testFormatNZStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345352"	// too long
@@ -478,7 +478,7 @@ function testFormatStyle0PartialLocal9() {
 	
 };
 
-function testFormatStyle1PartialLocal1() {
+function testFormatNZStyle1PartialLocal1() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4"
@@ -492,7 +492,7 @@ function testFormatStyle1PartialLocal1() {
 	
 	
 };
-function testFormatStyle1PartialLocal2() {
+function testFormatNZStyle1PartialLocal2() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45"
@@ -506,7 +506,7 @@ function testFormatStyle1PartialLocal2() {
 	
 	
 };
-function testFormatStyle1PartialLocal3() {
+function testFormatNZStyle1PartialLocal3() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456"
@@ -520,7 +520,7 @@ function testFormatStyle1PartialLocal3() {
 	
 	
 };
-function testFormatStyle1PartialLocal4() {
+function testFormatNZStyle1PartialLocal4() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563"
@@ -534,7 +534,7 @@ function testFormatStyle1PartialLocal4() {
 	
 	
 };
-function testFormatStyle1PartialLocal5() {
+function testFormatNZStyle1PartialLocal5() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634"
@@ -548,7 +548,7 @@ function testFormatStyle1PartialLocal5() {
 	
 	
 };
-function testFormatStyle1PartialLocal6() {
+function testFormatNZStyle1PartialLocal6() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345"
@@ -562,7 +562,7 @@ function testFormatStyle1PartialLocal6() {
 	
 	
 };
-function testFormatStyle1PartialLocal7() {
+function testFormatNZStyle1PartialLocal7() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563453"
@@ -576,7 +576,7 @@ function testFormatStyle1PartialLocal7() {
 	
 	
 };
-function testFormatStyle1PartialLocal8() {
+function testFormatNZStyle1PartialLocal8() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634534"
@@ -590,7 +590,7 @@ function testFormatStyle1PartialLocal8() {
 	
 	
 };
-function testFormatStyle1PartialLocal9() {
+function testFormatNZStyle1PartialLocal9() {
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345345"	// too long

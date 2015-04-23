@@ -19,7 +19,7 @@
  
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneFmt = require("./../lib/PhoneFmt.js");
-function testFormatStyle0() {
+function testFormatJPStyle0() {
 	var formatted;
 	var parsed = new PhoneNumber("0358412047", {locale:"ja-JP"});
 	var expected = "03-5841-2047";
@@ -30,7 +30,7 @@ function testFormatStyle0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1() {
+function testFormatJPStyle1() {
 	var formatted;
 	var parsed = new PhoneNumber("0668795111", {locale: "ja-JP"});
 	var expected = "06-6879-5111";
@@ -41,7 +41,7 @@ function testFormatStyle1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternational() {
+function testFormatJPInternational() {
 	var formatted;
 	var parsed = new PhoneNumber("+8166877511", {locale: "ja-JP"});
 	
@@ -53,7 +53,7 @@ function testFormatInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternationalAccessCode() {
+function testFormatJPInternationalAccessCode() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		iddPrefix: "010",
@@ -69,7 +69,7 @@ function testFormatInternationalAccessCode() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLongAreaCode() {
+function testFormatJPLongAreaCode() {
 	var formatted;
 	var parsed = new PhoneNumber("0152410670", {locale:"ja-JP"});
 	var expected = "0152-41-0670";
@@ -80,7 +80,7 @@ function testFormatLongAreaCode() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatMobile() {
+function testFormatJPMobile() {
 	var formatted;
 	var parsed = new PhoneNumber("09017901357", {locale: "ja-JP"});
 	var expected = "090-1790-1357";
@@ -91,7 +91,7 @@ function testFormatMobile() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatMobileInternational() {
+function testFormatJPMobileInternational() {
 	var formatted;
 	var parsed = new PhoneNumber("+819012345678");
 	var expected = "+81 90 1234 5678";
@@ -102,7 +102,7 @@ function testFormatMobileInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatService() {
+function testFormatJPService() {
 	var formatted;
 	var parsed = new PhoneNumber("0301234567", {locale: "ja-JP"});
 	var expected = "030-123-4567";
@@ -113,7 +113,7 @@ function testFormatService() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEmergency1() {
+function testFormatJPEmergency1() {
 	var formatted;
 	var parsed = new PhoneNumber("116", {locale: "ja-JP"});
 	var expected = "116 ";
@@ -124,7 +124,7 @@ function testFormatEmergency1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEmergency2() {
+function testFormatJPEmergency2() {
 	var formatted;
 	var parsed = new PhoneNumber("136", {locale: "ja-JP"});
 	var expected = "136 ";
@@ -135,7 +135,7 @@ function testFormatEmergency2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatIEIDD() {
+function testFormatJPIEIDD() {
 	var formatted;
 	var parsed = new PhoneNumber("+35311234567", {locale: "ja-JP"});
 	var expected = "+353 1 123 4567";
@@ -146,7 +146,7 @@ function testFormatIEIDD() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial0() {
+function testFormatJPStyle0Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber("0", {locale:"ja-JP"});
 	
@@ -157,7 +157,7 @@ function testFormatStyle0Partial0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial1() {
+function testFormatJPStyle0Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("04", {locale:"ja-JP"});
 	var expected = "04-";
@@ -167,7 +167,7 @@ function testFormatStyle0Partial1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial2() {
+function testFormatJPStyle0Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("047", {locale:"ja-JP"});
 	var expected = "047-";
@@ -177,7 +177,7 @@ function testFormatStyle0Partial2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial3() {
+function testFormatJPStyle0Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0475", {locale:"ja-JP"});
 	var expected = "0475-";
@@ -187,7 +187,7 @@ function testFormatStyle0Partial3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial4() {
+function testFormatJPStyle0Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("047512", {locale: "ja-JP"});
 	var expected = "0475-12";
@@ -197,7 +197,7 @@ function testFormatStyle0Partial4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial5() {
+function testFormatJPStyle0Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("0475123", {locale: "ja-JP"});
 	var expected = "0475-123";
@@ -207,7 +207,7 @@ function testFormatStyle0Partial5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial6() {
+function testFormatJPStyle0Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("04751234", {locale: "ja-JP"});
 	var expected = "0475-123-4";
@@ -217,7 +217,7 @@ function testFormatStyle0Partial6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial7() {
+function testFormatJPStyle0Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("047512345", {locale: "ja-JP"});
 	var expected = "0475-123-45";
@@ -227,7 +227,7 @@ function testFormatStyle0Partial7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial8() {
+function testFormatJPStyle0Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("0475123456", {locale: "ja-JP"});
 	var expected = "0475-123-456";
@@ -237,7 +237,7 @@ function testFormatStyle0Partial8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial9() {
+function testFormatJPStyle0Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("04751234567", {locale: "ja-JP"});
 	var expected = "0475-123-4567";
@@ -247,7 +247,7 @@ function testFormatStyle0Partial9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Partial10() {
+function testFormatJPStyle0Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("047512345678", {locale: "ja-JP"});
 	var expected = "0475-1234-5678";
@@ -258,7 +258,7 @@ function testFormatStyle0Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial11() {
+function testFormatJPStyle0Partial11() {
 	var formatted;
 	var parsed = new PhoneNumber("0475123456789", {locale: "ja-JP"});
 	var expected = "0475123456789";
@@ -269,7 +269,7 @@ function testFormatStyle0Partial11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole0() {
+function testFormatJPStyle0Whole0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -281,7 +281,7 @@ function testFormatStyle0Whole0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole1() {
+function testFormatJPStyle0Whole1() {
 	var formatted;
 	var parsed = new PhoneNumber("04", {locale: "ja-JP"});
 	var expected = "04-";
@@ -291,7 +291,7 @@ function testFormatStyle0Whole1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole2() {
+function testFormatJPStyle0Whole2() {
 	var formatted;
 	var parsed = new PhoneNumber("075", {locale: "ja-JP"});
 	var expected = "075-";
@@ -301,7 +301,7 @@ function testFormatStyle0Whole2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole3() {
+function testFormatJPStyle0Whole3() {
 	var formatted;
 	var parsed = new PhoneNumber("0751", {locale: "ja-JP"});
 	var expected = "075-1";
@@ -311,7 +311,7 @@ function testFormatStyle0Whole3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole4() {
+function testFormatJPStyle0Whole4() {
 	var formatted;
 	var parsed = new PhoneNumber("07512", {locale: "ja-JP"});
 		
@@ -322,7 +322,7 @@ function testFormatStyle0Whole4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole5() {
+function testFormatJPStyle0Whole5() {
 	var formatted;
 	var parsed = new PhoneNumber("075123", {locale: "ja-JP"});
 	var expected = "075-123";
@@ -332,7 +332,7 @@ function testFormatStyle0Whole5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole6() {
+function testFormatJPStyle0Whole6() {
 	var formatted;
 	var parsed = new PhoneNumber("0751234", {locale: "ja-JP"});
 	var expected = "075-1234";
@@ -342,7 +342,7 @@ function testFormatStyle0Whole6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole7() {
+function testFormatJPStyle0Whole7() {
 	var formatted;
 	var parsed = new PhoneNumber("07512345", {locale: "ja-JP"});
 	var expected = "075-12-345";
@@ -352,7 +352,7 @@ function testFormatStyle0Whole7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole8() {
+function testFormatJPStyle0Whole8() {
 	var formatted;
 	var parsed = new PhoneNumber("075123456", {locale: "ja-JP"});
 	var expected = "075-12-3456";
@@ -362,7 +362,7 @@ function testFormatStyle0Whole8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole9() {
+function testFormatJPStyle0Whole9() {
 	var formatted;
 	var parsed = new PhoneNumber("0751234567", {locale: "ja-JP"});
 	var expected = "075-123-4567";
@@ -372,7 +372,7 @@ function testFormatStyle0Whole9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0Whole10() {
+function testFormatJPStyle0Whole10() {
 	var formatted;
 	var parsed = new PhoneNumber("07512345678", {locale: "ja-JP"});
 	var expected = "075-1234-5678";
@@ -383,7 +383,7 @@ function testFormatStyle0Whole10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole11() {
+function testFormatJPStyle0Whole11() {
 	var formatted;
 	var parsed = new PhoneNumber("075123456789", {locale: "ja-JP"});
 	var expected = "075123456789";
@@ -394,7 +394,7 @@ function testFormatStyle0Whole11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial0() {
+function testFormatJPStyle1Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -406,7 +406,7 @@ function testFormatStyle1Partial0() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial1() {
+function testFormatJPStyle1Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale: "ja-JP"});
 	var expected = "(03) ";
@@ -416,7 +416,7 @@ function testFormatStyle1Partial1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial2() {
+function testFormatJPStyle1Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("075", {locale: "ja-JP"});
 	var expected = "(075) ";
@@ -426,7 +426,7 @@ function testFormatStyle1Partial2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial3() {
+function testFormatJPStyle1Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0751", {locale: "ja-JP"});
 	var expected = "(075) 1";
@@ -436,7 +436,7 @@ function testFormatStyle1Partial3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial4() {
+function testFormatJPStyle1Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("07512", {locale: "ja-JP"});
 	var expected = "(075) 12";
@@ -446,7 +446,7 @@ function testFormatStyle1Partial4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial5() {
+function testFormatJPStyle1Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("075123", {locale: "ja-JP"});
 	var expected = "(075) 123";
@@ -456,7 +456,7 @@ function testFormatStyle1Partial5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial6() {
+function testFormatJPStyle1Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("0751234", {locale: "ja-JP"});
 	var expected = "(075) 123-4";
@@ -466,7 +466,7 @@ function testFormatStyle1Partial6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial7() {
+function testFormatJPStyle1Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("07512345", {locale: "ja-JP"});
 	var expected = "(075) 12-345";
@@ -476,7 +476,7 @@ function testFormatStyle1Partial7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial8() {
+function testFormatJPStyle1Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("075123456", {locale: "ja-JP"});
 	var expected = "(075) 12-3456";
@@ -486,7 +486,7 @@ function testFormatStyle1Partial8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial9() {
+function testFormatJPStyle1Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("0751234567", {locale: "ja-JP"});
 	var expected = "(075) 123-4567";
@@ -496,7 +496,7 @@ function testFormatStyle1Partial9() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle1Partial10() {
+function testFormatJPStyle1Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("07512345678", {locale: "ja-JP"});
 	var expected = "(075) 1234-5678";
@@ -507,7 +507,7 @@ function testFormatStyle1Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal1() {
+function testFormatJPStyle0PartialLocal1() {
 	var formatted;
 	var parsed = new PhoneNumber("7", {locale: "ja-JP"});
 	var expected = "7";
@@ -517,7 +517,7 @@ function testFormatStyle0PartialLocal1() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal2() {
+function testFormatJPStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new PhoneNumber("73", {locale: "ja-JP"});
 	var expected = "73";
@@ -527,7 +527,7 @@ function testFormatStyle0PartialLocal2() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal3() {
+function testFormatJPStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new PhoneNumber("738", {locale: "ja-JP"});
 	var expected = "738";
@@ -537,7 +537,7 @@ function testFormatStyle0PartialLocal3() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal4() {
+function testFormatJPStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new PhoneNumber("7380", {locale: "ja-JP"});
 	var expected = "738-0";
@@ -547,7 +547,7 @@ function testFormatStyle0PartialLocal4() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal5() {
+function testFormatJPStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new PhoneNumber("73803", {locale: "ja-JP"});
 	var expected = "738-03";
@@ -557,7 +557,7 @@ function testFormatStyle0PartialLocal5() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal6() {
+function testFormatJPStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new PhoneNumber("738034", {locale: "ja-JP"});
 	var expected = "738-034";
@@ -567,7 +567,7 @@ function testFormatStyle0PartialLocal6() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal7() {
+function testFormatJPStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new PhoneNumber("7380343", {locale: "ja-JP"});
 	var expected = "738-0343";
@@ -577,7 +577,7 @@ function testFormatStyle0PartialLocal7() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal8() {
+function testFormatJPStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new PhoneNumber("73553433", {locale: "ja-JP"});
 	var expected = "7355-3433";
@@ -587,7 +587,7 @@ function testFormatStyle0PartialLocal8() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatStyle0PartialLocal9() {
+function testFormatJPStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new PhoneNumber("735534331", {locale: "ja-JP"});
 	var expected = "735534331";	// use last resort rule

@@ -19,7 +19,7 @@
  
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneFmt = require("./../lib/PhoneFmt.js");
-function testFormatStyle0() {
+function testFormatNLLUStyle0() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
@@ -34,7 +34,7 @@ function testFormatStyle0() {
 	
 };
 
-function testFormatStyle1() {
+function testFormatNLLUStyle1() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
@@ -48,7 +48,7 @@ function testFormatStyle1() {
 	
 	
 };
-function testFormatStyle2() {
+function testFormatNLLUStyle2() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "223456"
@@ -63,7 +63,7 @@ function testFormatStyle2() {
 	
 };
 
-function testFormatInternational() {
+function testFormatNLLUInternational() {
 	var formatted,
 		parsed = new PhoneNumber({
 			iddPrefix: "+",
@@ -80,7 +80,7 @@ function testFormatInternational() {
 	
 };
 
-function testFormatInternationalAccessCode() {
+function testFormatNLLUInternationalAccessCode() {
 	var formatted,
 		parsed = new PhoneNumber({
 			iddPrefix: "00",
@@ -97,7 +97,7 @@ function testFormatInternationalAccessCode() {
 	
 };
 
-function testFormatMobile() {
+function testFormatNLLUMobile() {
 	var formatted,
 		parsed = new PhoneNumber({
 			mobilePrefix: "661",
@@ -113,7 +113,7 @@ function testFormatMobile() {
 	
 };
 
-function testFormatMobileInternational() {
+function testFormatNLLUMobileInternational() {
 	var formatted,
 		parsed = new PhoneNumber({
 			iddPrefix: "+",
@@ -132,7 +132,7 @@ function testFormatMobileInternational() {
 };
 
 
-function testFormatWithParamsSMSPartial() {
+function testFormatNLLUWithParamsSMSPartial() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "8765"
@@ -147,7 +147,7 @@ function testFormatWithParamsSMSPartial() {
 	
 };
 
-function testFormatWithParamsSMSWhole() {
+function testFormatNLLUWithParamsSMSWhole() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "8765"
@@ -162,7 +162,7 @@ function testFormatWithParamsSMSWhole() {
 	
 };
 
-function testFormatPremium() {
+function testFormatNLLUPremium() {
 	var formatted,
 		parsed = new PhoneNumber({
 			serviceCode: "901",
@@ -177,7 +177,7 @@ function testFormatPremium() {
 	
 	
 };
-function testFormatBlock() {
+function testFormatNLLUBlock() {
 	var formatted,
 		parsed = new PhoneNumber({
 			serviceCode: "116",
@@ -195,7 +195,7 @@ function testFormatBlock() {
 
 
 
-function testFormatStyle0Partial1() {
+function testFormatNLLUStyle0Partial1() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5"
@@ -209,7 +209,7 @@ function testFormatStyle0Partial1() {
 	
 	
 };
-function testFormatStyle0Partial2() {
+function testFormatNLLUStyle0Partial2() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50"
@@ -223,7 +223,7 @@ function testFormatStyle0Partial2() {
 	
 	
 };
-function testFormatStyle0Partial3() {
+function testFormatNLLUStyle0Partial3() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501"
@@ -237,7 +237,7 @@ function testFormatStyle0Partial3() {
 	
 	
 };
-function testFormatStyle0Partial4() {
+function testFormatNLLUStyle0Partial4() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
@@ -251,7 +251,7 @@ function testFormatStyle0Partial4() {
 	
 	
 };
-function testFormatStyle0Partial5() {
+function testFormatNLLUStyle0Partial5() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
@@ -265,7 +265,7 @@ function testFormatStyle0Partial5() {
 	
 	
 };
-function testFormatStyle0Partial6() {
+function testFormatNLLUStyle0Partial6() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
@@ -279,7 +279,7 @@ function testFormatStyle0Partial6() {
 	
 	
 };
-function testFormatStyle0Partial7() {
+function testFormatNLLUStyle0Partial7() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012345" // too long
@@ -295,7 +295,7 @@ function testFormatStyle0Partial7() {
 };
 
 
-function testFormatStyle1Partial1() {
+function testFormatNLLUStyle1Partial1() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5"
@@ -309,7 +309,7 @@ function testFormatStyle1Partial1() {
 	
 	
 };
-function testFormatStyle1Partial2() {
+function testFormatNLLUStyle1Partial2() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50"
@@ -323,7 +323,7 @@ function testFormatStyle1Partial2() {
 	
 	
 };
-function testFormatStyle1Partial3() {
+function testFormatNLLUStyle1Partial3() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501"
@@ -337,7 +337,7 @@ function testFormatStyle1Partial3() {
 	
 	
 };
-function testFormatStyle1Partial4() {
+function testFormatNLLUStyle1Partial4() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
@@ -351,7 +351,7 @@ function testFormatStyle1Partial4() {
 	
 	
 };
-function testFormatStyle1Partial5() {
+function testFormatNLLUStyle1Partial5() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
@@ -365,7 +365,7 @@ function testFormatStyle1Partial5() {
 	
 	
 };
-function testFormatStyle1Partial6() {
+function testFormatNLLUStyle1Partial6() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
@@ -379,7 +379,7 @@ function testFormatStyle1Partial6() {
 	
 	
 };
-function testFormatStyle1Partial7() {
+function testFormatNLLUStyle1Partial7() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012345"
@@ -395,7 +395,7 @@ function testFormatStyle1Partial7() {
 };
 
 
-function testFormatStyle2Partial1() {
+function testFormatNLLUStyle2Partial1() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5"
@@ -409,7 +409,7 @@ function testFormatStyle2Partial1() {
 	
 	
 };
-function testFormatStyle2Partial2() {
+function testFormatNLLUStyle2Partial2() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50"
@@ -423,7 +423,7 @@ function testFormatStyle2Partial2() {
 	
 	
 };
-function testFormatStyle2Partial3() {
+function testFormatNLLUStyle2Partial3() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501"
@@ -437,7 +437,7 @@ function testFormatStyle2Partial3() {
 	
 	
 };
-function testFormatStyle2Partial4() {
+function testFormatNLLUStyle2Partial4() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012"
@@ -451,7 +451,7 @@ function testFormatStyle2Partial4() {
 	
 	
 };
-function testFormatStyle2Partial5() {
+function testFormatNLLUStyle2Partial5() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "50123"
@@ -465,7 +465,7 @@ function testFormatStyle2Partial5() {
 	
 	
 };
-function testFormatStyle2Partial6() {
+function testFormatNLLUStyle2Partial6() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "501234"
@@ -479,7 +479,7 @@ function testFormatStyle2Partial6() {
 	
 	
 };
-function testFormatStyle2Partial7() {
+function testFormatNLLUStyle2Partial7() {
 	var formatted,
 		parsed = new PhoneNumber({
 			subscriberNumber: "5012345" // too long

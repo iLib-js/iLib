@@ -18,28 +18,29 @@
  */
 
 var PhoneNumber = require("./../lib/PhoneNumber.js");
-function testIDDPrefix() {
+
+function testBRIDDPrefix() {
 	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({locale: 'pt-BR'})); 
 };
 
-function testIDDPrefixAlreadyPlus() {
+function testBRIDDPrefixAlreadyPlus() {
 	var parsed = new PhoneNumber("+31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({locale: 'pt-BR'})); 
 };
 
-function testWithNoLocale() {
+function testBRWithNoLocale() {
 	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
-function testNoHints() {
+function testBRNoHints() {
 	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});
 	var expected = "+3155345343";
 	
@@ -47,7 +48,7 @@ function testNoHints() {
 };
 
 
-function testLDNumberUsingBRRMCC() {
+function testBRLDNumberUsingBRRMCC() {
 	var parsed = new PhoneNumber("62-312-3456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724"
@@ -57,7 +58,7 @@ function testLDNumberUsingBRRMCC() {
 	assertEquals(expected, parsed.normalize(hints)); 
 };
 
-function testLDNumberUsingBRMCCOtherLocale() {
+function testBRLDNumberUsingBRMCCOtherLocale() {
 	var parsed = new PhoneNumber("98-912-3456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
@@ -68,7 +69,7 @@ function testLDNumberUsingBRMCCOtherLocale() {
 	assertEquals(expected, parsed.normalize(hints)); 
 };
 
-function testLDNumberUsingBRMCC() {
+function testBRLDNumberUsingBRMCC() {
 	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "724" 
@@ -78,7 +79,7 @@ function testLDNumberUsingBRMCC() {
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
 };
 
-function testAreaCodeFromHint() {
+function testBRAreaCodeFromHint() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
 	var hints = {
 		defaultAreaCode: "21"
@@ -88,7 +89,7 @@ function testAreaCodeFromHint() {
 	assertEquals(expected, parsed.normalize(hints)); 
 };
 
-function testAreaCodeIgnoreHint() {
+function testBRAreaCodeIgnoreHint() {
 	var parsed = new PhoneNumber("98-212-3456", {locale: 'pt-BR'});
 	var hints = {
 		defaultAreaCode: "21"
@@ -98,14 +99,14 @@ function testAreaCodeIgnoreHint() {
 	assertEquals(expected, parsed.normalize(hints)); 
 };
 
-function testNoAreaCodeAndNoCountry() {
+function testBRNoAreaCodeAndNoCountry() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'pt-BR'});
 	var expected = "2123456";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
-function testAssistedDialingLocalToLocalUMTS() {
+function testBRAssistedDialingLocalToLocalUMTS() {
 	var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
@@ -118,7 +119,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
-function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
+function testBRAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
 	var phone = new PhoneNumber("+55 21 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
@@ -130,7 +131,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
 	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
-function testAssistedDialingLocalToLocalCDMA() {
+function testBRAssistedDialingLocalToLocalCDMA() {
 	var phone = new PhoneNumber("2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
@@ -143,7 +144,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
+function testBRAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
 	var phone = new PhoneNumber("+55 62 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "724",
@@ -156,7 +157,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingIntlToLocalUMTS() {
+function testBRAssistedDialingIntlToLocalUMTS() {
 	var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France
@@ -169,7 +170,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingIntlToLDUMTS() {
+function testBRAssistedDialingIntlToLDUMTS() {
 	var phone = new PhoneNumber("079 32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France
@@ -182,7 +183,7 @@ function testAssistedDialingIntlToLDUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
-function testAssistedDialingIntlToLocalCDMA() {
+function testBRAssistedDialingIntlToLocalCDMA() {
 	var phone = new PhoneNumber("32012325", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "505", // From Australia
@@ -195,7 +196,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); 	
 };
 
-function testAssistedDialingIntlToLDCDMA() {
+function testBRAssistedDialingIntlToLDCDMA() {
 	var phone = new PhoneNumber("099 2123456", {locale: 'pt-BR'});
 	var hints = {
 		mcc: "208", // from France

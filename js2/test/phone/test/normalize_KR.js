@@ -18,42 +18,43 @@
  */
 
 var PhoneNumber = require("./../lib/PhoneNumber.js");
-function testIDDPrefix() {
+
+function testKRIDDPrefix() {
 	var parsed = new PhoneNumber("001 31 456 3453434", {locale: 'ko-KR'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ko-KR'})); // 'ko-KR'
 };
 
-function testIDDPrefixAlreadyPlus() {
+function testKRIDDPrefixAlreadyPlus() {
 	var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ko-KR'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ko-KR'})); // 'ko-KR'
 };
 
-function testWithNoLocale() {
+function testKRWithNoLocale() {
 	var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
-function testNoHints() {
+function testKRNoHints() {
 	var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'ko-KR'
 };
 
-function testWithNoHintsNoLocale() {
+function testKRWithNoHintsNoLocale() {
 	var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
-function testLDNumberUsingKRMCC() {
+function testKRLDNumberUsingKRMCC() {
 	var parsed = new PhoneNumber("02-312-3456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450"
@@ -63,7 +64,7 @@ function testLDNumberUsingKRMCC() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ko-KR'
 };
 
-function testLDNumberUsingKRMCCOtherLocale() {
+function testKRLDNumberUsingKRMCCOtherLocale() {
 	var parsed = new PhoneNumber("02 312 3456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -74,7 +75,7 @@ function testLDNumberUsingKRMCCOtherLocale() {
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
 };
 
-function testLDNumberUsingKRMCC() {
+function testKRLDNumberUsingKRMCC() {
 	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "450" //ko-KR
@@ -84,7 +85,7 @@ function testLDNumberUsingKRMCC() {
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
 };
 
-function testAreaCodeFromHint() {
+function testKRAreaCodeFromHint() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'ko-KR'});
 	var hints = {
 		defaultAreaCode: "51"
@@ -94,7 +95,7 @@ function testAreaCodeFromHint() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ko-KR'
 };
 
-function testAreaCodeIgnoreHint() {
+function testKRAreaCodeIgnoreHint() {
 	var parsed = new PhoneNumber("051-212-3456", {locale: 'ko-KR'});
 	var hints = {
 		defaultAreaCode: "650"
@@ -104,14 +105,14 @@ function testAreaCodeIgnoreHint() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ko-KR'
 };
 
-function testNoAreaCodeAndNoCountry() {
+function testKRNoAreaCodeAndNoCountry() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'ko-KR'});
 	var expected = "2123456";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
-function testAssistedDialingLocalToLocalUMTS() {
+function testKRAssistedDialingLocalToLocalUMTS() {
 	var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -124,7 +125,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ko-KR'	
 };
 
-function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
+function testKRAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	var phone = new PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -136,7 +137,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ko-KR'	
 };
 
-function testAssistedDialingLocalToLocalCDMA() {
+function testKRAssistedDialingLocalToLocalCDMA() {
 	var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -149,7 +150,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
+function testKRAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 	var phone = new PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "450",
@@ -162,7 +163,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingIntlToLocalUMTS() {
+function testKRAssistedDialingIntlToLocalUMTS() {
 	var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "208", // from France
@@ -175,7 +176,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingIntlToLDUMTS() {
+function testKRAssistedDialingIntlToLDUMTS() {
 	var phone = new PhoneNumber("051 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "208", // from France
@@ -188,7 +189,7 @@ function testAssistedDialingIntlToLDUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ko-KR'	
 };
 
-function testAssistedDialingIntlToLocalCDMA() {
+function testKRAssistedDialingIntlToLocalCDMA() {
 	var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "505", // From Australia
@@ -201,7 +202,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ko-KR'	
 };
 
-function testAssistedDialingIntlToLDCDMA() {
+function testKRAssistedDialingIntlToLDCDMA() {
 	var phone = new PhoneNumber("051 2123456", {locale: 'ko-KR'});
 	var hints = {
 		mcc: "208", // from France

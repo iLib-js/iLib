@@ -18,42 +18,43 @@
  */
 
 var PhoneNumber = require("./../lib/PhoneNumber.js");
-function testIDDPrefix() {
+
+function testRUIDDPrefix() {
 	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ru-RU'})); // 'ru-RU'
 };
 
-function testIDDPrefixAlreadyPlus() {
+function testRUIDDPrefixAlreadyPlus() {
 	var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'ru-RU'})); // 'ru-RU'
 };
 
-function testWithNoLocale() {
+function testRUWithNoLocale() {
 	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
-function testNoHints() {
+function testRUNoHints() {
 	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'ru-RU'
 };
 
-function testWithNoHintsNoLocale() {
+function testRUWithNoHintsNoLocale() {
 	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
-function testLDNumberUsingRUMCC() {
+function testRULDNumberUsingRUMCC() {
 	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250"
@@ -62,7 +63,7 @@ function testLDNumberUsingRUMCC() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ru-RU'
 };
 
-function testLDNumberUsingRUMCCOtherLocale() {
+function testRULDNumberUsingRUMCCOtherLocale() {
 	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
@@ -73,7 +74,7 @@ function testLDNumberUsingRUMCCOtherLocale() {
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
 };
 
-function testLDNumberUsingRUMCC() {
+function testRULDNumberUsingRUMCC() {
 	var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "250" //ru-RU
@@ -83,7 +84,7 @@ function testLDNumberUsingRUMCC() {
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
 };
 
-function testAreaCodeFromHint() {
+function testRUAreaCodeFromHint() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
 	var hints = {
 		defaultAreaCode: "8332"
@@ -92,7 +93,7 @@ function testAreaCodeFromHint() {
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'ru-RU'
 };
-function testAreaCodeIgnoreHint() {
+function testRUAreaCodeIgnoreHint() {
 	var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
 	var hints = {
 		defaultAreaCode: "877"
@@ -102,14 +103,14 @@ function testAreaCodeIgnoreHint() {
 	assertEquals(expected, parsed.normalize(hints)); // 'ko-KR'
 };
 
-function testNoAreaCodeAndNoCountry() {
+function testRUNoAreaCodeAndNoCountry() {
 	var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
 	var expected = "2123456";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
-function testAssistedDialingLocalToLocalUMTSRU() {
+function testRUAssistedDialingLocalToLocalUMTSRU() {
 	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
@@ -122,7 +123,7 @@ function testAssistedDialingLocalToLocalUMTSRU() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
-function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
+function testRUAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
@@ -134,7 +135,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
-function testAssistedDialingLocalToLocalCDMA() {
+function testRUAssistedDialingLocalToLocalCDMA() {
 	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
@@ -147,7 +148,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testAssistedDialingRULocalToLocalCDMAAddTrunkOpen() {
+function testRUAssistedDialingRULocalToLocalCDMAAddTrunkOpen() {
 	var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "250",
@@ -160,7 +161,7 @@ function testAssistedDialingRULocalToLocalCDMAAddTrunkOpen() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testRUAssistedDialingIntlToLocalUMTS() {
+function testRURUAssistedDialingIntlToLocalUMTS() {
 	var phone = new PhoneNumber("22-33-44", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France
@@ -173,7 +174,7 @@ function testRUAssistedDialingIntlToLocalUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); 
 };
 
-function testRUAssistedDialingIntlToLDUMTS() {
+function testRURUAssistedDialingIntlToLDUMTS() {
 	var phone = new PhoneNumber("83022 212345", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France
@@ -186,7 +187,7 @@ function testRUAssistedDialingIntlToLDUMTS() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
-function testAssistedDialingIntlToLocalCDMARU() {
+function testRUAssistedDialingIntlToLocalCDMARU() {
 	var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "505", // From Australia
@@ -199,7 +200,7 @@ function testAssistedDialingIntlToLocalCDMARU() {
 	assertEquals(expectedString, phone.normalize(hints)); // 'ru-RU'	
 };
 
-function testAssistedDialingIntlToLDCDMARU() {
+function testRUAssistedDialingIntlToLDCDMARU() {
 	var phone = new PhoneNumber("84952123456", {locale: 'ru-RU'});
 	var hints = {
 		mcc: "208", // from France

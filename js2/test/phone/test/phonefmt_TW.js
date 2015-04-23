@@ -19,7 +19,7 @@
  
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneFmt = require("./../lib/PhoneFmt.js");
-function testFormatStyle0() {
+function testFormatTWStyle0() {
 	var formatted;
 	var parsed = new PhoneNumber("039606537", {locale:"zh-TW"});
 	var expected = "(039) 606-537";
@@ -30,7 +30,7 @@ function testFormatStyle0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1() {
+function testFormatTWStyle1() {
 	var formatted;
 	var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "039 606 537";
@@ -41,7 +41,7 @@ function testFormatStyle1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2() {
+function testFormatTWStyle2() {
 	var formatted;
 	var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "039-606-537";
@@ -52,7 +52,7 @@ function testFormatStyle2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3() {
+function testFormatTWStyle3() {
 	var formatted;
 	var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
 	var expected = "(039) 606537";
@@ -63,7 +63,7 @@ function testFormatStyle3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternational() {
+function testFormatTWInternational() {
 	var formatted;
 	var parsed = new PhoneNumber("+886233663366", {locale: "zh-TW"});
 	
@@ -75,7 +75,7 @@ function testFormatInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatInternationalAccessCode() {
+function testFormatTWInternationalAccessCode() {
 	var formatted;
 
 	var parsed = new PhoneNumber("00214084567890", {locale: "zh-TW"});
@@ -88,7 +88,7 @@ function testFormatInternationalAccessCode() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatLongAreaCode() {
+function testFormatTWLongAreaCode() {
 	var formatted;
 	var parsed = new PhoneNumber("04582410670", {locale:"zh-TW"});
 	var expected = "(0458) 241-0670";
@@ -99,7 +99,7 @@ function testFormatLongAreaCode() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatMobile() {
+function testFormatTWMobile() {
 	var formatted;
 	var parsed = new PhoneNumber("0912-345-678", {locale: "zh-TW"});
 	var expected = "0912-345-678";
@@ -110,7 +110,7 @@ function testFormatMobile() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatMobileInternational() {
+function testFormatTWMobileInternational() {
 	var formatted;
 	var parsed = new PhoneNumber("+886912345678");
 	var expected = "+886 912 345 678";
@@ -121,7 +121,7 @@ function testFormatMobileInternational() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatService() {
+function testFormatTWService() {
 	var formatted;
 	var parsed = new PhoneNumber("0800011765", {locale: "zh-TW"});
 	var expected = "0800-011-765";
@@ -132,7 +132,7 @@ function testFormatService() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEmergency1() {
+function testFormatTWEmergency1() {
 	var formatted;
 	var parsed = new PhoneNumber("166", {locale: "zh-TW"});
 	var expected = "166 ";
@@ -143,7 +143,7 @@ function testFormatEmergency1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEmergency2() {
+function testFormatTWEmergency2() {
 	var formatted;
 	var parsed = new PhoneNumber("110", {locale: "zh-TW"});
 	var expected = "110 ";
@@ -154,7 +154,7 @@ function testFormatEmergency2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatIEIDD() {
+function testFormatTWIEIDD() {
 	var formatted;
 	var parsed = new PhoneNumber("+35311234567", {locale: "zh-TW"});
 	var expected = "+353 1 123 4567";
@@ -165,7 +165,7 @@ function testFormatIEIDD() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial0() {
+function testFormatTWStyle0Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber("0", {locale:"zh-TW"});
 	
@@ -177,7 +177,7 @@ function testFormatStyle0Partial0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial1() {
+function testFormatTWStyle0Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale:"zh-TW"});
 	var expected = "(03) ";
@@ -188,7 +188,7 @@ function testFormatStyle0Partial1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial2() {
+function testFormatTWStyle0Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("039", {locale:"zh-TW"});
 	var expected = "(039) ";
@@ -199,7 +199,7 @@ function testFormatStyle0Partial2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial3() {
+function testFormatTWStyle0Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0396", {locale:"zh-TW"});
 	var expected = "(039) 6";
@@ -210,7 +210,7 @@ function testFormatStyle0Partial3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial4() {
+function testFormatTWStyle0Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "(039) 61";
@@ -221,7 +221,7 @@ function testFormatStyle0Partial4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial5() {
+function testFormatTWStyle0Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "(039) 612";
@@ -232,7 +232,7 @@ function testFormatStyle0Partial5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial6() {
+function testFormatTWStyle0Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "(039) 612-3";
@@ -243,7 +243,7 @@ function testFormatStyle0Partial6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial7() {
+function testFormatTWStyle0Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "(039) 612-34";
@@ -254,7 +254,7 @@ function testFormatStyle0Partial7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial8() {
+function testFormatTWStyle0Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "(039) 612-345";
@@ -265,7 +265,7 @@ function testFormatStyle0Partial8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial9() {
+function testFormatTWStyle0Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "(039) 612-3456";
@@ -276,7 +276,7 @@ function testFormatStyle0Partial9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial10() {
+function testFormatTWStyle0Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "(039) 6123-4567";
@@ -287,7 +287,7 @@ function testFormatStyle0Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Partial11() {
+function testFormatTWStyle0Partial11() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
@@ -298,7 +298,7 @@ function testFormatStyle0Partial11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole0() {
+function testFormatTWStyle0Whole0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -311,7 +311,7 @@ function testFormatStyle0Whole0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole1() {
+function testFormatTWStyle0Whole1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "(03) ";
@@ -322,7 +322,7 @@ function testFormatStyle0Whole1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole2() {
+function testFormatTWStyle0Whole2() {
 	var formatted;
 	var parsed = new PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "(039) ";
@@ -333,7 +333,7 @@ function testFormatStyle0Whole2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole3() {
+function testFormatTWStyle0Whole3() {
 	var formatted;
 	var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "(039) 6";
@@ -344,7 +344,7 @@ function testFormatStyle0Whole3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole4() {
+function testFormatTWStyle0Whole4() {
 	var formatted;
 	var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
 		
@@ -356,7 +356,7 @@ function testFormatStyle0Whole4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole5() {
+function testFormatTWStyle0Whole5() {
 	var formatted;
 	var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "(039) 612";
@@ -367,7 +367,7 @@ function testFormatStyle0Whole5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole6() {
+function testFormatTWStyle0Whole6() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "(039) 612-3";
@@ -378,7 +378,7 @@ function testFormatStyle0Whole6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole7() {
+function testFormatTWStyle0Whole7() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "(039) 612-34";
@@ -389,7 +389,7 @@ function testFormatStyle0Whole7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole8() {
+function testFormatTWStyle0Whole8() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "(039) 612-345";
@@ -400,7 +400,7 @@ function testFormatStyle0Whole8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole9() {
+function testFormatTWStyle0Whole9() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "(039) 612-3456";
@@ -411,7 +411,7 @@ function testFormatStyle0Whole9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole10() {
+function testFormatTWStyle0Whole10() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "(039) 6123-4567";
@@ -422,7 +422,7 @@ function testFormatStyle0Whole10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0Whole11() {
+function testFormatTWStyle0Whole11() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
@@ -433,7 +433,7 @@ function testFormatStyle0Whole11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial0() {
+function testFormatTWStyle1Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -446,7 +446,7 @@ function testFormatStyle1Partial0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial1() {
+function testFormatTWStyle1Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "03 ";
@@ -457,7 +457,7 @@ function testFormatStyle1Partial1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial2() {
+function testFormatTWStyle1Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "039 ";
@@ -468,7 +468,7 @@ function testFormatStyle1Partial2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial3() {
+function testFormatTWStyle1Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "039 6";
@@ -479,7 +479,7 @@ function testFormatStyle1Partial3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial4() {
+function testFormatTWStyle1Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "039 61";
@@ -490,7 +490,7 @@ function testFormatStyle1Partial4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial5() {
+function testFormatTWStyle1Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "039 612";
@@ -501,7 +501,7 @@ function testFormatStyle1Partial5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial6() {
+function testFormatTWStyle1Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "039 612 3";
@@ -512,7 +512,7 @@ function testFormatStyle1Partial6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial7() {
+function testFormatTWStyle1Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "039 612 34";
@@ -523,7 +523,7 @@ function testFormatStyle1Partial7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial8() {
+function testFormatTWStyle1Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "039 612 345";
@@ -534,7 +534,7 @@ function testFormatStyle1Partial8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial9() {
+function testFormatTWStyle1Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "039 612 3456";
@@ -545,7 +545,7 @@ function testFormatStyle1Partial9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial10() {
+function testFormatTWStyle1Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "039 6123 4567";
@@ -556,7 +556,7 @@ function testFormatStyle1Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle1Partial11() {
+function testFormatTWStyle1Partial11() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
@@ -567,7 +567,7 @@ function testFormatStyle1Partial11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial0() {
+function testFormatTWStyle2Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -580,7 +580,7 @@ function testFormatStyle2Partial0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial1() {
+function testFormatTWStyle2Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "03-";
@@ -591,7 +591,7 @@ function testFormatStyle2Partial1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial2() {
+function testFormatTWStyle2Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "039-";
@@ -602,7 +602,7 @@ function testFormatStyle2Partial2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial3() {
+function testFormatTWStyle2Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "039-6";
@@ -613,7 +613,7 @@ function testFormatStyle2Partial3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial4() {
+function testFormatTWStyle2Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "039-61";
@@ -624,7 +624,7 @@ function testFormatStyle2Partial4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial5() {
+function testFormatTWStyle2Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "039-612";
@@ -635,7 +635,7 @@ function testFormatStyle2Partial5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial6() {
+function testFormatTWStyle2Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "039-612-3";
@@ -646,7 +646,7 @@ function testFormatStyle2Partial6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial7() {
+function testFormatTWStyle2Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "039-612-34";
@@ -657,7 +657,7 @@ function testFormatStyle2Partial7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial8() {
+function testFormatTWStyle2Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "039-612-345";
@@ -668,7 +668,7 @@ function testFormatStyle2Partial8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial9() {
+function testFormatTWStyle2Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "039-612-3456";
@@ -679,7 +679,7 @@ function testFormatStyle2Partial9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial10() {
+function testFormatTWStyle2Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "039-6123-4567";
@@ -690,7 +690,7 @@ function testFormatStyle2Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle2Partial11() {
+function testFormatTWStyle2Partial11() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
@@ -701,7 +701,7 @@ function testFormatStyle2Partial11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial0() {
+function testFormatTWStyle3Partial0() {
 	var formatted;
 	var parsed = new PhoneNumber({
 		trunkAccess: "0"
@@ -714,7 +714,7 @@ function testFormatStyle3Partial0() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial1() {
+function testFormatTWStyle3Partial1() {
 	var formatted;
 	var parsed = new PhoneNumber("03", {locale: "zh-TW"});
 	var expected = "(03) ";
@@ -725,7 +725,7 @@ function testFormatStyle3Partial1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial2() {
+function testFormatTWStyle3Partial2() {
 	var formatted;
 	var parsed = new PhoneNumber("039", {locale: "zh-TW"});
 	var expected = "(039) ";
@@ -736,7 +736,7 @@ function testFormatStyle3Partial2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial3() {
+function testFormatTWStyle3Partial3() {
 	var formatted;
 	var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
 	var expected = "(039) 6";
@@ -747,7 +747,7 @@ function testFormatStyle3Partial3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial4() {
+function testFormatTWStyle3Partial4() {
 	var formatted;
 	var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
 	var expected = "(039) 61";
@@ -758,7 +758,7 @@ function testFormatStyle3Partial4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial5() {
+function testFormatTWStyle3Partial5() {
 	var formatted;
 	var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
 	var expected = "(039) 612";
@@ -769,7 +769,7 @@ function testFormatStyle3Partial5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial6() {
+function testFormatTWStyle3Partial6() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
 	var expected = "(039) 6123";
@@ -780,7 +780,7 @@ function testFormatStyle3Partial6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial7() {
+function testFormatTWStyle3Partial7() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
 	var expected = "(039) 61234";
@@ -791,7 +791,7 @@ function testFormatStyle3Partial7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial8() {
+function testFormatTWStyle3Partial8() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
 	var expected = "(039) 612345";
@@ -802,7 +802,7 @@ function testFormatStyle3Partial8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial9() {
+function testFormatTWStyle3Partial9() {
 	var formatted;
 	var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
 	var expected = "(039) 6123456";
@@ -813,7 +813,7 @@ function testFormatStyle3Partial9() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial10() {
+function testFormatTWStyle3Partial10() {
 	var formatted;
 	var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
 	var expected = "(039) 61234567";
@@ -824,7 +824,7 @@ function testFormatStyle3Partial10() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle3Partial11() {
+function testFormatTWStyle3Partial11() {
 	var formatted;
 	var parsed = new PhoneNumber("039612345678", {locale: "zh-TW"});
 	var expected = "039612345678";
@@ -835,7 +835,7 @@ function testFormatStyle3Partial11() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal1() {
+function testFormatTWStyle0PartialLocal1() {
 	var formatted;
 	var parsed = new PhoneNumber("2", {locale: "zh-TW"});
 	var expected = "2";
@@ -846,7 +846,7 @@ function testFormatStyle0PartialLocal1() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal2() {
+function testFormatTWStyle0PartialLocal2() {
 	var formatted;
 	var parsed = new PhoneNumber("27", {locale: "zh-TW"});
 	var expected = "27";
@@ -857,7 +857,7 @@ function testFormatStyle0PartialLocal2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal3() {
+function testFormatTWStyle0PartialLocal3() {
 	var formatted;
 	var parsed = new PhoneNumber("271", {locale: "zh-TW"});
 	var expected = "271";
@@ -868,7 +868,7 @@ function testFormatStyle0PartialLocal3() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal4() {
+function testFormatTWStyle0PartialLocal4() {
 	var formatted;
 	var parsed = new PhoneNumber("2712", {locale: "zh-TW"});
 	var expected = "271-2";
@@ -879,7 +879,7 @@ function testFormatStyle0PartialLocal4() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal5() {
+function testFormatTWStyle0PartialLocal5() {
 	var formatted;
 	var parsed = new PhoneNumber("27123", {locale: "zh-TW"});
 	var expected = "271-23";
@@ -890,7 +890,7 @@ function testFormatStyle0PartialLocal5() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal6() {
+function testFormatTWStyle0PartialLocal6() {
 	var formatted;
 	var parsed = new PhoneNumber("271234", {locale: "zh-TW"});
 	var expected = "271-234";
@@ -901,7 +901,7 @@ function testFormatStyle0PartialLocal6() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal7() {
+function testFormatTWStyle0PartialLocal7() {
 	var formatted;
 	var parsed = new PhoneNumber("2712345", {locale: "zh-TW"});
 	var expected = "271-2345";
@@ -912,7 +912,7 @@ function testFormatStyle0PartialLocal7() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal8() {
+function testFormatTWStyle0PartialLocal8() {
 	var formatted;
 	var parsed = new PhoneNumber("27123456", {locale: "zh-TW"});
 	var expected = "2712-3456";
@@ -923,7 +923,7 @@ function testFormatStyle0PartialLocal8() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatStyle0PartialLocal9() {
+function testFormatTWStyle0PartialLocal9() {
 	var formatted;
 	var parsed = new PhoneNumber("271234567", {locale: "zh-TW"});
 	var expected = "271234567";	// use last resort rule
