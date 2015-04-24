@@ -23,7 +23,7 @@
 var fs = require('fs');
 var util = require('util');
 var common = require('../cldr/common');
-var path = require('path');
+var path = require('../../js2/lib/Path.js');
 
 function usage() {
 	util
