@@ -22,7 +22,7 @@
 var fs = require('fs');
 var util = require('util');
 var common = require('../cldr/common');
-var path = require('path');
+var path = require('path').posix;
 
 function usage() {
 	util.print("Usage: mkmf.js [-h] source_dir\n" +
