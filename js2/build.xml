@@ -292,7 +292,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-ut-dyn.js" 
 			srcfilename="${build.src}/ilib-ut-inc.js" 
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -348,7 +348,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-standard-dyn.js" 
 			srcfilename="${build.src}/ilib-standard-inc.js" 
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -375,7 +375,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-core-dyn.js" 
 			srcfilename="${build.src}/ilib-core-inc.js" 
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -402,7 +402,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-full-dyn.js" 
 			srcfilename="${build.src}/ilib-full-inc.js" 
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -445,7 +445,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-lg-dyn.js" 
 			srcfilename="ilib-lg-inc.js"
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose"
 			debug="true"

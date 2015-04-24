@@ -26,6 +26,8 @@ var WebLoader = function(ilib, sync, onLoad) {
 
 	this.parent.call(this, ilib);
 	
+	this._loadFile = (navigator.userAgent.indexOf(" .NET") > -1) ? this._ieLoadFile : this._regularLoadFile;
+	
 	// for use from within a check-out of ilib
 	var base, root, pos;
 	
@@ -66,7 +68,40 @@ WebLoader.prototype.parent = Loader;
 WebLoader.prototype.constructor = WebLoader;
 
 WebLoader.prototype.name = "WebLoader";
-WebLoader.prototype._loadFile = function (pathname, sync, cb) {
+WebLoader.prototype._ieLoadFile = function(pathname, sync, cb) {
+	// special case for IE because it has a @#$%ed up XMLHttpRequest implementation
+	var req = new ActiveXObject("MSXML2.XMLHTTP");
+	var text = undefined;
+		
+	req.open("GET", this.protocol + pathname, !sync);
+	
+	if (!sync) {
+		req.onreadystatechange = function() {
+			if (req.readyState === 4) {
+				text = req.responseText;
+				if (typeof(cb) === 'function') {
+					cb(text);
+				}
+			}
+		};
+	}
+	
+	try {
+		req.send();
+	
+		text = req.responseText;
+	} catch (e) {
+		text = undefined;
+	}
+	if (sync) {
+		if (typeof(cb) === 'function') {
+			cb(text);
+		}
+	}
+	
+	return text;
+};
+WebLoader.prototype._regularLoadFile = function (pathname, sync, cb) {
 	// use normal web techniques
 	var req = new XMLHttpRequest();
 	var text = undefined;

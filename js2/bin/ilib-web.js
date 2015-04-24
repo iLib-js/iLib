@@ -66,36 +66,19 @@ var requireClass = function() {
 		}
 	}
 };
-requireClass.prototype.loadFile = function(pathname, sync, success, failure) {
-	// use normal web techniques
-	var req = new XMLHttpRequest();
-	var text = undefined;
+
+requireClass.prototype.loadFile = function(pathname) {
+	// special case for IE because it has a @#$%ed up XMLHttpRequest implementation
+	var req = (navigator.userAgent.indexOf(" .NET") > -1) ? 
+		new ActiveXObject("MSXML2.XMLHTTP") :
+		new XMLHttpRequest();
 		
-	//req.open("GET", "file:" + path.resolve(file), false);
-	req.open("GET", this.protocol + pathname, !sync);
-	//req.responseType = "text";
-	req.onload = function(e) {
-		text = req.response;
-		if (!sync && typeof(success) === 'function') {
-			success(text);
-		}
-	};
-	req.onerror = !sync ? failure : function(err) {
-		// file is not there or could not be loaded
-		text = undefined;
-	};
+	req.open("GET", this.protocol + pathname, false);
+	req.send();
 	
-	//console.log("url is " + JSON.stringify(req._url, undefined, 4));
-	//try {
-		req.send();
-	//} catch (e) {
-		// could not load the file
-		//console.log("loadFile warning: could not load file " + pathname);
-		//text = undefined;
-	//}
-	
-	return text;
+	return req.responseText;
 };
+
 requireClass.prototype.require = function(pathname) {
 	
 	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
@@ -121,7 +104,7 @@ requireClass.prototype.require = function(pathname) {
 
 	this.loading[pathname] = true;
 
-	var text = this.loadFile(pathname, true);
+	var text = this.loadFile(pathname);
 	var dirname = path.dirname(pathname);
 	var match, replacement;
 	

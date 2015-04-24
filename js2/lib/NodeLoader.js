@@ -36,7 +36,8 @@ module.exports = function (ilib) {
 				path.join(path.dirname(module.filename), "..") :
 				this.root;
 		
-		// console.log("base is defined as " + this.base + "\n");
+		//console.log("module.filename is " + module.filename + "\n");
+		//console.log("base is defined as " + this.base + "\n");
 		
 		this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 		
@@ -80,9 +81,9 @@ module.exports = function (ilib) {
 	
 	NodeLoader.prototype._exists = function(dir, file) {
 		var fullpath = path.normalize(path.join(dir, file));
-		// console.log("NodeLoader._exists: checking for the existence of " + dir);
+		//console.log("NodeLoader._exists: checking for the existence of " + dir);
 		if (fs.existsSync(fullpath)) {
-			// console.log("NodeLoader._exists: found");
+			//console.log("NodeLoader._exists: found");
 			this.includePath.push(dir);
 		}
 	};

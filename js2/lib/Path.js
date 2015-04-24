@@ -19,6 +19,7 @@
 
 var Path = {
 	dirname: function(pathname) {
+		pathname = pathname.replace(/\\/g, "/");
 		var i = pathname.lastIndexOf("/");
 		return i !== -1 ? pathname.substring(0,i) : pathname;
 	},
