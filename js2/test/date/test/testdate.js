@@ -248,7 +248,7 @@ function testDateToIlibDateWithBogusObject() {
     assertEquals(now.getDate(), date.day);
     assertEquals(now.getHours(), date.hour);
     assertEquals(now.getMinutes(), date.minute);
-    assertEquals(now.getSeconds(), date.second);
+    assertTrue(date.second - now.getSeconds() <= 1);
 }
 
 function testDateToIlibDate() {
