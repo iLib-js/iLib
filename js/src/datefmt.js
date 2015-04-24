@@ -552,6 +552,36 @@ ilib.DateFmt.weekDayLenMap = {
 	"full":   "EEEE"
 };
 
+/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+	 * @param {string} components Format components to search
+	 * @param {string} length Length of the requested format
+	 * @return {string|undefined} the requested format
+	 */
+
+/**
+* @static
+* @public
+* The options may contain any of the following properties:
+*
+* <ul>
+* <li><i>locale</i> - locale to use when formatting the date/time. If the locale is
+* not specified, then the default locale of the app or web page will be used.
+* 
+* <li><i>meridiems</i> - string that specifies what style of meridiems to use with this 
+* format. The choices are "default", "gregorian", "ethiopic", and "chinese". The "default" 
+* style is often the simple Gregorian AM/PM, but the actual style is chosen by the locale. 
+* (For almost all locales, the Gregorian AM/PM style is most frequently used.)
+* The "ethiopic" style uses 5 different meridiems for "morning", "noon", "afternoon", 
+* "evening", and "night". The "chinese" style uses 7 different meridiems corresponding 
+* to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
+* when formatting dates in the Gregorian calendar.
+* </ul>
+*
+* @param {Object} options options governing the way this date formatter instance works for getting meridiems range
+* @return {Array.<{name:string,start:string,end:string}>}
+*/
 ilib.DateFmt.getMeridiemsRange = function (options) {
 	options = options || {};
 	var args = {};
@@ -854,7 +884,7 @@ ilib.DateFmt.prototype = {
 	},
 	/**
 	 * Return the meridiems range in current locale. 
-	 * @return {array} [{name: "am", start: "00:00", end:"11:59"}, ...]
+	 * @return {Array.<{name:string,start:string,end:string}>}
 	 */
 	getMeridiemsRange: function () {
 		var result;

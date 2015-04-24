@@ -2801,52 +2801,225 @@ function testDateFmtAltCalPersianInEnglish() {
     assertEquals("Tir 12, 1393 8:45pm", fmt.format(date));
 };
 
-function testDateFmtGetMeridiemsRange() {
+function testDateFmtGetMeridiemsRangeLength_with_am_ET_locale() {
     var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
+    assertNotNull(fmt);
+
     assertEquals(5, fmt.length);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_am_ET_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
+    assertNotNull(fmt);
+
     assertEquals("ጠዋት", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("05:59", fmt[0].end);
+};
 
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+};
+
+function testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
+    assertNotNull(fmt);
+
+    assertEquals("05:59", fmt[0].end);
+};
+
+function testDateFmtGetMeridiemsRangeLength_with_am_ET_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
     assertEquals(2, fmt.length);
+}
+
+function testDateFmtGetMeridiemsRangeName_with_am_ET_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
     assertEquals("ጠዋት", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("11:59", fmt[0].end);
+}
 
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
-    assertEquals(5, fmt.length);
-    assertEquals("ጠዋት", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("05:59", fmt[0].end);
+function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+    assertNotNull(fmt);
 
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
-    assertEquals(2, fmt.length);
-    assertEquals("上午", fmt[0].name);
     assertEquals("00:00", fmt[0].start);
-    assertEquals("11:59", fmt[0].end);
+}
 
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
-    assertEquals(2, fmt.length);
-    assertEquals("上午", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("11:59", fmt[0].end);
+function testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
+    assertNotNull(fmt);
 
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
-    assertEquals(7, fmt.length);
-    assertEquals("凌晨", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("05:59", fmt[0].end);
-
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
-    assertEquals(2, fmt.length);
-    assertEquals("am", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
-    assertEquals("11:59", fmt[0].end);
-
-    fmt = ilib.DateFmt.getMeridiemsRange({ locale: "ko-KR"});
-    assertEquals(2, fmt.length);
-    assertEquals("오전", fmt[0].name);
-    assertEquals("00:00", fmt[0].start);
     assertEquals("11:59", fmt[0].end);
 }
+
+function testDateFmtGetMeridiemsRangeLength_with_am_ET_locale_ethiopic_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+    assertNotNull(fmt);
+
+    assertEquals(5, fmt.length);
+}
+
+function testDateFmtGetMeridiemsRangeName_with_am_ET_locale_ethiopic_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+    assertNotNull(fmt);
+
+    assertEquals("ጠዋት", fmt[0].name);
+}
+
+function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_ethiopic_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+}
+
+function testDateFmtGetMeridiemsRangeEnd_with_am_ET_locale_ethiopic_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
+    assertNotNull(fmt);
+
+    assertEquals("05:59", fmt[0].end);
+}
+
+function testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+    assertNotNull(fmt);
+
+    assertEquals(2, fmt.length);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_zh_CN_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+    assertNotNull(fmt);
+
+    assertEquals("上午", fmt[0].name);
+};
+
+function testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+};
+
+function testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN"});
+    assertNotNull(fmt);
+
+    assertEquals("11:59", fmt[0].end);
+};
+
+function testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
+    assertEquals(2, fmt.length);
+}
+
+function testDateFmtGetMeridiemsRangeName_with_zh_CN_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
+    assertEquals("上午", fmt[0].name);
+}
+
+function testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+}
+
+function testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale_gregorian_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "gregorian"});
+    assertNotNull(fmt);
+
+    assertEquals("11:59", fmt[0].end);
+}
+
+function testDateFmtGetMeridiemsRangeLength_with_zh_CN_locale_chinese_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+    assertNotNull(fmt);
+
+    assertEquals(7, fmt.length);
+}
+
+function testDateFmtGetMeridiemsRangeName_with_zh_CN_locale_chinese_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+    assertNotNull(fmt);
+
+    assertEquals("凌晨", fmt[0].name);
+}
+
+function testDateFmtGetMeridiemsRangeStart_with_zh_CN_locale_chinese_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+}
+
+function testDateFmtGetMeridiemsRangeEnd_with_zh_CN_locale_chinese_meridiems() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "zh-CN", meridiems: "chinese"});
+    assertNotNull(fmt);
+
+    assertEquals("05:59", fmt[0].end);
+}
+
+function testDateFmtGetMeridiemsRangeLength_with_en_US_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
+    assertNotNull(fmt);
+
+    assertEquals(2, fmt.length);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_en_US_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
+    assertNotNull(fmt);
+
+    assertEquals("am", fmt[0].name);
+};
+
+function testDateFmtGetMeridiemsRangeStart_with_en_US_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
+    assertNotNull(fmt);
+
+    assertEquals("00:00", fmt[0].start);
+};
+
+function testDateFmtGetMeridiemsRangeEnd_with_en_US_locale() {
+    var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
+    assertNotNull(fmt);
+
+    assertEquals("11:59", fmt[0].end);
+};
+
+function testDateFmtGetMeridiemsRange_with_noArgument() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+
+    var mdRange = fmt.getMeridiemsRange();
+    // if locale is not specified, DateFmt takes default locale.
+    assertTrue("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+};
+
+function testDateFmtGetMeridiemsRange_with_undefined_locale() {
+    var fmt = new ilib.DateFmt({ locale: undefined });
+    assertNotNull(fmt);
+
+    var mdRange = fmt.getMeridiemsRange();
+    // if locale is not specified, DateFmt takes default locale.
+    assertTrue("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+};
+
+function testDateFmtGetMeridiemsRange_with_wrong_locale() {
+    var fmt = new ilib.DateFmt({ locale: "wrong" });
+    assertNotNull(fmt);
+
+    var mdRange = fmt.getMeridiemsRange();
+    // if locale is specified wrong value, DateFmt takes default locale.
+    assertTrue("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+};
