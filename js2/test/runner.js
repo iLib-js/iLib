@@ -21,7 +21,7 @@ var mod = require("module");
 var fs = require('fs');
 var vm = require('vm');
 var util = require("util");
-var path = require("path");
+var path = require("../lib/Path.js");
 
 var TestSuite = require("./TestSuiteModule.js");
 

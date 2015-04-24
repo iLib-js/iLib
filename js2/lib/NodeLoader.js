@@ -18,7 +18,7 @@
  */
 
 module.exports = function (ilib) {
-	var path = require("path"),
+	var path = require("./Path.js"),
 		fs = require("fs"),
 		util = require("util"),
 		Loader = require("./Loader.js");

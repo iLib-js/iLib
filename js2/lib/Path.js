@@ -23,16 +23,29 @@ var Path = {
 		return i !== -1 ? pathname.substring(0,i) : pathname;
 	},
 	
+	normalize: function(pathname) {
+		if (pathname) {
+			pathname = pathname.replace(/\\/g, "/");
+			pathname = pathname.replace(/\/\//g, "/");
+			pathname = pathname.replace(/\/[^/]*[^\./]\/\.\./g, "/.");
+			pathname = pathname.replace(/\/\//g, "/");
+			pathname = pathname.replace(/\/\.\//g, "/");
+			pathname = pathname.replace(/^\.\//, "");
+			pathname = pathname.replace(/\/\//g, "/");
+			pathname = pathname.replace(/\/\.$/, "/");
+			pathname = pathname.replace(/\/\//g, "/");
+			if (pathname.length > 1) pathname = pathname.replace(/\/$/, "");
+			if (pathname.length === 0) pathname = '.';
+		}
+		return pathname;
+	},
+	
 	join: function() {
 		var arr = [];
 		for (var i = 0; i < arguments.length; i++) {
-			arr.push(arguments[i]);
+			arr.push(arguments[i] && arguments[i].length > 0 ? arguments[i] : ".");
 		}
-		return arr.join("/");
-	},
-	
-	normalize: function(pathname) {
-		return pathname && pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+\/\.\./, "").replace(/^\.\//, "");
+		return Path.normalize(arr.join("/"));
 	}
 };
 

@@ -18,7 +18,7 @@
  */
 
 var util = require("util");
-var path = require("path");
+var path = require("../lib/Path.js");
 
 var TestSuite = require("./TestSuiteModule.js");
 var TestRunner = require("./runner.js");
