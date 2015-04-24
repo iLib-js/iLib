@@ -19,6 +19,7 @@
 
 var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneHandlerFactory = require("./../lib/PhoneHandlerFactory.js");
 
 function testNumberMatchFRDepartments1(){
 	var left = new PhoneNumber({
@@ -1097,7 +1098,7 @@ function testPhoneNumLookaheadRoot() {
 	var regionData = {
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^04", regionData, {sync: true});
@@ -1116,7 +1117,7 @@ function testPhoneNumLookaheadSubleaf1() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^045", regionData, {sync: true});
@@ -1135,7 +1136,7 @@ function testPhoneNumLookaheadSubleaf2() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^0456", regionData, {sync: true});
@@ -1154,7 +1155,7 @@ function testPhoneNumLookaheadSubleaf3() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^046555", regionData, {sync: true});
@@ -1174,7 +1175,7 @@ function testPhoneNumLookaheadFallback1() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^047", regionData, {sync: true});
@@ -1195,7 +1196,7 @@ function testPhoneNumLookaheadFallback2() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^046", regionData, {sync: true});
@@ -1216,7 +1217,7 @@ function testPhoneNumLookaheadFallback3() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^04655", regionData, {sync: true});
@@ -1237,7 +1238,7 @@ function testPhoneNumLookaheadFallback4() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^0457", regionData, {sync: true});
@@ -1258,7 +1259,7 @@ function testPhoneNumLookaheadFallback5() {
 	var regionData = { 
 		stateData: lookAheadStates,
 		plan: left.plan,
-		handler: ilib._handlerFactory(left.locale, left.plan)
+		handler: PhoneHandlerFactory(left.locale, left.plan)
 	};
 	
 	left._parseNumber("^0477", regionData, {sync: true});

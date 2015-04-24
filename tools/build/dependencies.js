@@ -47,7 +47,7 @@ function usage() {
 	process.exit(1);
 }
 
-var startDir = ".";
+var startDir = [];
 var includes = [];
 var convert = false;
 var verbose = false;
@@ -84,16 +84,22 @@ for (var i = 2; i < process.argv.length; i++) {
 			util.print("Unrecognized option: " + process.argv[i] + "\n");
 			usage();
 		}
-		startDir = process.argv[i];
+		startDir.push(process.argv[i]);
 		break;
 	}
 }
 
+if (startDir.length === 0) {
+	startDir.push(".");
+}
+
 verbose && util.print("Start dir: " + startDir + "\n");
 
-if (!fs.existsSync(startDir)) {
-	util.print("Could not access start directory " + startDir + "\n");
-	usage();
+for (i = 0; i < startDir.length; i++) {
+	if (!fs.existsSync(startDir[i])) {
+		util.print("Could not access start directory " + startDir[i] + "\n");
+		usage();
+	}
 }
 
 for (i = 0; i < includes.length; i++) {
@@ -150,6 +156,7 @@ var legacyCalls = {
 	"ilib.merge": "JSUtils.merge",
 	"ilib.isEmpty": "JSUtils.isEmpty",
 	"ilib.hashCode": "JSUtils.hashCode",
+	"ilib._handlerFactory": "PhoneHandlerFactory",
 
 	"ilib.signum": "MathUtils.signum",
 	"ilib._roundFnc.floor": "MathUtils.floor",
@@ -175,6 +182,7 @@ var legacyCalls = {
 	"ilib.AddressFmt": "AddressFmt",
 	"ilib.Address": "Address",
 	"ilib.Calendar": "Calendar",
+	"ilib.CodePointSource": "CodePointSource",
 	"ilib.Collator": "Collator",
 	"ilib.CType.isAlnum": "isAlnum",
 	"ilib.CType.isAlpha": "isAlpha",
@@ -196,6 +204,7 @@ var legacyCalls = {
 	"ilib.DateFmt": "DateFmt",
 	"ilib.DateRngFmt": "DateRngFmt",
 	"ilib.DurFmt": "DurationFmt",
+	"ilib.ElementIterator": "ElementIterator",
 	"ilib.GlyphString": "GlyphString",
 	"ilib.JulianDay": "JulianDay",
 	"ilib.LocaleInfo": "LocaleInfo",
@@ -207,7 +216,7 @@ var legacyCalls = {
 	"ilib.NodeLoader": "NodeLoader",
 	"ilib.NormString": "NormString",
 	"ilib.NumFmt": "NumFmt",
-	"ilib.Number": "Number",
+	"ilib.Number": "INumber",
 	"ilib.Path": "Path",
 	"ilib.ResBundle": "ResBundle",
 	"ilib.ScriptInfo": "ScriptInfo",
@@ -229,10 +238,9 @@ var legacyCalls = {
 	"ilib.Date.JulDate": "JulianDate",
 	"ilib.Cal.Julian": "JulianCal",
 	"ilib.Date.PersDate": "PersianDate",
-	"ilib.Cal.Persian": "PersianCal",
 	"ilib.Date.PersAlgoDate": "PersianAlgoDate",
 	"ilib.Cal.PersianAlgo": "PersianAlgoCal",
-	"ilib.Date.RataDie": "RataDie",
+	"ilib.Cal.Persian": "PersianCal",
 	"ilib.Date.ThaiSolarDate": "ThaiSolarDate",
 	"ilib.Cal.ThaiSolar": "ThaiSolarCal",
 
@@ -245,6 +253,7 @@ var legacyCalls = {
 	"ilib.Date.JulianRataDie": "JulianRataDie",
 	"ilib.Date.PersAlgoRataDie": "PersAlgoRataDie",
 	"ilib.Date.PersAstroRataDie": "PersRataDie",
+	"ilib.Date.RataDie": "RataDie",
 	
 	"ilib.Date.newInstance": "DateFactory",
 	"ilib.Cal.newInstance": "CalendarFactory",
@@ -275,7 +284,11 @@ var legacyCalls = {
 	"cli.TestSuite": "TestSuite",
 
 	"ilib.Date": "DateFactory",
-	"ilib.Cal": "CalendarFactory"
+	"ilib.Cal": "CalendarFactory",
+	
+	// for the unit tests
+	"cli.TestSuite": "TestSuite",
+	"cli.TestRunner": "TestRunner"
 };
 
 var reExports = new RegExp("module\\.exports\\s*=\\s*(\\S+);", "g");
@@ -308,14 +321,20 @@ function processFile(dir, file, update) {
 			if (reSlashSlashNoDependencies.test(text)) {
 				verbose && util.print("  Found a 'dependencies: false' comment. Skipping this file.\n");
 			} else {
+				var uses = [];
+				var requires = [];
+				var i, j, changes = 0;
+				
 				if (convert) {
 					var len = text.length;
 					// first convert old ilib namespace calls to the modular classes
 					for (var name in legacyCalls) {
+						util.print("  trying " + name + "\n");
 						text = text.replace(new RegExp(name, "g"), legacyCalls[name]);
 						if (text.length !== len) {
 							verbose && util.print("  Replaced legacy call " + name + " with call to module " + legacyCalls[name] + "\n");
 							len = text.length;
+							changes++;
 						}
 					}
 				}
@@ -323,10 +342,6 @@ function processFile(dir, file, update) {
 				// avoid searching the comments for references to modules by removing the comments first
 				var cleaned = text.replace(reSlashStarComments, "");
 				cleaned = cleaned.replace(reSlashSlashComments, "");
-				
-				var uses = [];
-				var requires = [];
-				var i, j, changes = 0;
 				
 				for (var mod in modules) {
 					// don't search the file that defines a module for usages of that same module
@@ -345,17 +360,13 @@ function processFile(dir, file, update) {
 					requires.push(result[1]);
 				}
 				
-				var updated = undefined;
+				var updated = text.split("\n");
 				
 				for (i = 0; i < uses.length; i++) {
 					if (requires.indexOf(uses[i]) === -1) {
 						verbose && util.print("  Need to add require('" + uses[i] + "')\n");
 						changes++;
 						
-						if (!updated) {
-							updated = text.split("\n");
-						}
-
 						j = 0; 
 
 						// skip initial empty lines
@@ -439,6 +450,13 @@ for (i = 0; i < includes.length; i++) {
 }
 
 // now update the source files in the start dir
-walk(startDir, false);
+for (i = 0; i < startDir.length; i++) {
+	var stat = fs.statSync(startDir[i]);
+	if (stat && stat.isDirectory()) {
+		walk(startDir[i], false);
+	} else {
+		processFile("", startDir[i], false);
+	}
+}
 
 util.print("Done. " + filesUpdated + " files updated.\n");

@@ -819,7 +819,7 @@ limitations under the License.
 		</exec>
 	</target>
 
-	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
+	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
 			description="run the tests">
 	</target>
 

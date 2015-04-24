@@ -18,47 +18,46 @@
  */
 
 var ilib = require("./../lib/ilib.js");
-var ilib = require("./../lib/ilib.js");
 var ElementIterator = require("./../lib/ElementIterator.js");
 var Collator = require("./../lib/Collator.js");
 var CodePointSource = require("./../lib/CodePointSource.js");
 
 function testCodePointSourceConstructor() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 }
 
 function testCodePointSourcePeek4() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
 	assertEquals("abcd", cps.peek(4));
 }
 function testCodePointSourcePeek3() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
 	assertEquals("abc", cps.peek(3));
 }
 function testCodePointSourcePeek2() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
 	assertEquals("ab", cps.peek(2));
 }
 function testCodePointSourcePeek1() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
 	assertEquals("a", cps.peek(1));
 }
 function testCodePointSourceConsume1() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
@@ -67,7 +66,7 @@ function testCodePointSourceConsume1() {
 	assertEquals("b", cps.peek(1));
 }
 function testCodePointSourceConsume2() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
@@ -76,7 +75,7 @@ function testCodePointSourceConsume2() {
 	assertEquals("cd", cps.peek(2));
 }
 function testCodePointSourceConsume3() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
@@ -85,7 +84,7 @@ function testCodePointSourceConsume3() {
 	assertEquals("def", cps.peek(3));
 }
 function testCodePointSourceConsume4() {
-	var cps = new ilib.CodePointSource("abcdefghi");
+	var cps = new CodePointSource("abcdefghi");
 
 	assertNotUndefined(cps);
 
@@ -95,14 +94,14 @@ function testCodePointSourceConsume4() {
 }
 
 function testCodePointSourcePeekWithSurrogates() {
-	var cps = new ilib.CodePointSource("a\uD800\uDF02b\uD800\uDC00");
+	var cps = new CodePointSource("a\uD800\uDF02b\uD800\uDC00");
 
 	assertNotUndefined(cps);
 
 	assertEquals("a\uD800\uDF02", cps.peek(2));
 }
 function testCodePointSourceConsumeWithSurrogates() {
-	var cps = new ilib.CodePointSource("a\uD800\uDF02b\uD800\uDC00");
+	var cps = new CodePointSource("a\uD800\uDF02b\uD800\uDC00");
 
 	assertNotUndefined(cps);
 
@@ -112,7 +111,7 @@ function testCodePointSourceConsumeWithSurrogates() {
 }
 function testCodePointSourcePeekWithCombiningAccents() {
 	// this is A with 2 combining accents
-	var cps = new ilib.CodePointSource("aẬa");
+	var cps = new CodePointSource("aẬa");
 
 	assertNotUndefined(cps);
 
@@ -122,7 +121,7 @@ function testCodePointSourcePeekWithCombiningAccents() {
 }
 function testCodePointSourceConsumeWithCombiningAccents() {
 	// this is A with 2 combining accents
-	var cps = new ilib.CodePointSource("aẬaẬaa");
+	var cps = new CodePointSource("aẬaẬaa");
 
 	assertNotUndefined(cps);
 
@@ -134,21 +133,21 @@ function testCodePointSourceConsumeWithCombiningAccents() {
 }
 
 function testCodePointSourcePeekNotEnough() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 
 	assertUndefined(cps.peek(4));
 }
 function testCodePointSourcePeekJustEnough() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 
 	assertEquals("abc", cps.peek(3));
 }
 function testCodePointSourceIterateToEmpty() {
-	var cps = new ilib.CodePointSource("abcdef");
+	var cps = new CodePointSource("abcdef");
 
 	assertNotUndefined(cps);
 	assertEquals("abc", cps.peek(3));
@@ -166,14 +165,14 @@ function testCodePointSourceIterateToEmpty() {
 	assertUndefined(cps.peek(1));
 }
 function testCodePointSourcePeekZero() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 
 	assertUndefined(cps.peek(0));
 }
 function testCodePointSourceConsumeZero() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 
@@ -182,7 +181,7 @@ function testCodePointSourceConsumeZero() {
 	assertEquals("a", cps.peek(1));
 }
 function testCodePointSourceConsumeAllRemaining() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 
 	assertNotUndefined(cps);
 
@@ -194,7 +193,7 @@ function testCodePointSourceConsumeAllRemaining() {
 	assertUndefined(cps.peek(1));
 }
 function testCodePointSourceConsumeWithoutPeek() {
-	var cps = new ilib.CodePointSource("abcdef");
+	var cps = new CodePointSource("abcdef");
 
 	assertNotUndefined(cps);
 	cps.consume(3);
@@ -203,7 +202,7 @@ function testCodePointSourceConsumeWithoutPeek() {
 
 
 function testElementIteratorConstructor() {
-	var cps = new ilib.CodePointSource("abcdef");
+	var cps = new CodePointSource("abcdef");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -212,13 +211,13 @@ function testElementIteratorConstructor() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 
 	assertNotUndefined(ei);
 }
 
 function testElementIteratorHasNext() {
-	var cps = new ilib.CodePointSource("abcdef");
+	var cps = new CodePointSource("abcdef");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -227,13 +226,13 @@ function testElementIteratorHasNext() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
 }
 function testElementIteratorHasNextStringDone() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -243,13 +242,13 @@ function testElementIteratorHasNextStringDone() {
 			"f": [5]
 	};
 	cps.consume(3);
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertFalse(ei.hasNext());
 }
 function testElementIteratorNext() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -258,7 +257,7 @@ function testElementIteratorNext() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
@@ -270,7 +269,7 @@ function testElementIteratorNext() {
 	assertFalse(ei.hasNext());
 }
 function testElementIteratorNextExhaustCodePoints() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -279,7 +278,7 @@ function testElementIteratorNextExhaustCodePoints() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
@@ -291,7 +290,7 @@ function testElementIteratorNextExhaustCodePoints() {
 }
 
 function testElementIteratorExpansions() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 	var map = {
 			"a": [0,1],
 			"b": [1],
@@ -300,7 +299,7 @@ function testElementIteratorExpansions() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
@@ -313,7 +312,7 @@ function testElementIteratorExpansions() {
 	assertUndefined(ei.next());
 }
 function testElementIteratorContractions() {
-	var cps = new ilib.CodePointSource("abc");
+	var cps = new CodePointSource("abc");
 	var map = {
 			"ab": [0],
 			"b": [1],  // ab should take precendence over plain b
@@ -322,7 +321,7 @@ function testElementIteratorContractions() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
@@ -332,7 +331,7 @@ function testElementIteratorContractions() {
 	assertUndefined(ei.next());
 }
 function testElementIteratorContractions2() {
-	var cps = new ilib.CodePointSource("aẬbAÂaa");
+	var cps = new CodePointSource("aẬbAÂaa");
 	var map = {
 			"a": [0],
 			"A": [4],
@@ -344,7 +343,7 @@ function testElementIteratorContractions2() {
 			"e": [32],
 			"f": [40]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 6);
+	var ei = new ElementIterator(cps, map, 6);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());
@@ -360,7 +359,7 @@ function testElementIteratorContractions2() {
 }
 
 function testElementIteratorHasNextEmptyString() {
-	var cps = new ilib.CodePointSource("");
+	var cps = new CodePointSource("");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -369,13 +368,13 @@ function testElementIteratorHasNextEmptyString() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertFalse(ei.hasNext());
 }
 function testElementIteratorNextEmptyString() {
-	var cps = new ilib.CodePointSource("");
+	var cps = new CodePointSource("");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -384,14 +383,14 @@ function testElementIteratorNextEmptyString() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertUndefined(ei.next());
 }
 
 function testElementIteratorNonMapCharacter() {
-	var cps = new ilib.CodePointSource("abcq");
+	var cps = new CodePointSource("abcq");
 	var map = {
 			"a": [0],
 			"b": [1],
@@ -400,7 +399,7 @@ function testElementIteratorNonMapCharacter() {
 			"e": [4],
 			"f": [5]
 	};
-	var ei = new ilib.ElementIterator(cps, map, 3);
+	var ei = new ElementIterator(cps, map, 3);
 	assertNotUndefined(ei);
 
 	assertTrue(ei.hasNext());

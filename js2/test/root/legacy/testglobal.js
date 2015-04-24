@@ -17,6 +17,65 @@
  * limitations under the License.
  */
 
+function testStubsDefinedInLegacy() {
+	// make sure the stubs are defined in the legacy tests
+	assertNotUndefined(ilib.CType);
+	assertNotUndefined(ilib._roundFnc);
+	assertNotUndefined(ilib.Date);
+	assertNotUndefined(ilib.Cal);
+	assertNotUndefined(ilib.Measurement);
+	assertNotUndefined(ilib.shallowCopy);
+	assertNotUndefined(ilib.deepCopy);
+	assertNotUndefined(ilib.mapString);
+	assertNotUndefined(ilib.indexOf);
+	assertNotUndefined(ilib.toHexString);
+	assertNotUndefined(ilib.isDate);
+	assertNotUndefined(ilib.merge);
+	assertNotUndefined(ilib.isEmpty);
+	assertNotUndefined(ilib.hashCode);
+	assertNotUndefined(ilib.Locale);
+	assertNotUndefined(ilib.mergeLocData);
+	assertNotUndefined(ilib.getLocFiles);
+	assertNotUndefined(ilib.loadData);
+	assertNotUndefined(ilib.LocaleInfo);
+	assertNotUndefined(ilib.signum);
+	assertNotUndefined(ilib.mod);
+	assertNotUndefined(ilib.amod);
+	assertNotUndefined(ilib.String);
+	assertNotUndefined(ilib.JulianDay);
+	assertNotUndefined(ilib.TimeZone);
+	assertNotUndefined(ilib.bsearch);
+	assertNotUndefined(ilib.bisectionSearch);
+	assertNotUndefined(ilib.ResBundle);
+	assertNotUndefined(ilib.DateFmt);
+	assertNotUndefined(ilib.DateRngFmt);
+	assertNotUndefined(ilib.Currency);
+	assertNotUndefined(ilib.Number);
+	assertNotUndefined(ilib.NumFmt);
+	assertNotUndefined(ilib.DurFmt);
+	assertNotUndefined(ilib.ScriptInfo);
+	assertNotUndefined(ilib.Name);
+	assertNotUndefined(ilib.NameFmt);
+	assertNotUndefined(ilib.Address);
+	assertNotUndefined(ilib.AddressFmt);
+	assertNotUndefined(ilib.GlyphString);
+	assertNotUndefined(ilib.NormString);
+	assertNotUndefined(ilib.CodePointSource);
+	assertNotUndefined(ilib.ElementIterator);
+	assertNotUndefined(ilib.Collator);
+	assertNotUndefined(ilib.LocaleMatcher);
+	assertNotUndefined(ilib.CaseMapper);
+	assertNotUndefined(ilib.NumPlan);
+	assertNotUndefined(ilib.PhoneLoc);
+	assertNotUndefined(ilib.StateHandler);
+	assertNotUndefined(ilib._handlerFactory);
+	assertNotUndefined(ilib.PhoneNumber);
+	assertNotUndefined(ilib.PhoneFmt);
+	assertNotUndefined(ilib.GeoLocator);
+	assertNotUndefined(ilib.Measurement);
+	assertNotUndefined(ilib.UnitFmt);
+}
+
 function testGetLocaleDefault() {
     assertEquals("en-US", ilib.getLocale());
 }

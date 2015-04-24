@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+var ilib = require("../lib/ilib.js")
 var LocaleInfo = require("./../lib/LocaleInfo.js");
 
 function testLocaleInfoConstructor() {

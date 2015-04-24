@@ -68,10 +68,11 @@ function testLoaderListAvailableFilesRightContents() {
     
     var files = loader.listAvailableFiles();
     
-    // files should only have one property at this point
+    var found = false;
     for (var list in files) {
-    	assertTrue(files[list].indexOf("und/US/localeinfo.json") !== -1);
+    	if (files[list].indexOf("und/US/localeinfo.json") !== -1) found = true;
     }
+    assertTrue(found);
 }
 
 function testLoaderLoadFilesSingle() {

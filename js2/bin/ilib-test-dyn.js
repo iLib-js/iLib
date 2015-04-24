@@ -1,7 +1,7 @@
 /* jshint node: true */
 /*
- * ilib-test.js - glue code for node to load local assembled ilib code 
- * statically and the data dynamically 
+ * ilib-test-dyn.js - glue code for node to load both code 
+ * and the data dynamically 
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -20,11 +20,10 @@
  */
 
 var NodeLoader = require("../lib/NodeLoader.js");
+var ilib = require("../lib/ilib.js");
 ilib.setLoaderCallback(NodeLoader(ilib));
 
-//initialize some things statically because the constructors do not load 
-//the locale-independent data
-CType._init(true);
-NormString.init();
+ilib._dyncode = true; // indicate that we are using dynamically loaded code
 
 module.exports = ilib;
+

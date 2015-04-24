@@ -17,123 +17,125 @@
  * limitations under the License.
  */
 
+var PersianAlgoCal = require("./../lib/PersianAlgoCal.js");
+
 function testPersianAlgoGetNumMonths() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(12, cal.getNumMonths(1392));
 }
 
 function testPersianAlgoGetMonLength1() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(1, 1392));
 }
 
 function testPersianAlgoGetMonLength2() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(2, 1392));
 }
 
 function testPersianAlgoGetMonLength3() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(3, 1392));
 }
 
 function testPersianAlgoGetMonLength4() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(4, 1392));
 }
 
 function testPersianAlgoGetMonLength5() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(5, 1392));
 }
 
 function testPersianAlgoGetMonLength6() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(31, cal.getMonLength(6, 1392));
 }
 
 function testPersianAlgoGetMonLength7() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(7, 1392));
 }
 
 function testPersianAlgoGetMonLength8() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(8, 1392));
 }
 
 function testPersianAlgoGetMonLength9() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(9, 1392));
 }
 
 function testPersianAlgoGetMonLength10() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(10, 1392));
 }
 
 function testPersianAlgoGetMonLength11() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(11, 1392));
 }
 
 function testPersianAlgoGetMonLength12() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(29, cal.getMonLength(12, 1392));
 }
 
 function testPersianAlgoGetMonLength12LeapYear() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertEquals(30, cal.getMonLength(12, 1391));
 }
 
 
 function testPersianAlgoIsLeapYear() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertTrue(cal.isLeapYear(1391));
 }
 
 function testPersianAlgoIsLeapYearNot() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertFalse(cal.isLeapYear(1392));
 }
 
 function testPersianAlgoIsLeapYear1() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertFalse(cal.isLeapYear(1393));
 }
 
 function testPersianAlgoIsLeapYear2() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertFalse(cal.isLeapYear(1394));
 }
 
 function testPersianAlgoIsLeapYear3() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     
     assertTrue(cal.isLeapYear(1395));
 }
 
 function testPersianAlgoNewDateInstance() {
-    var cal = new ilib.Cal.PersianAlgo();
+    var cal = new PersianAlgoCal();
     var d = cal.newDateInstance({
     	year: 1392,
     	month: 6,

@@ -17,35 +17,37 @@
  * limitations under the License.
  */
 
+var INumber = require("./../lib/INumber.js");
+
 function testNumberConstructorDefault() {
-    var num = new ilib.Number("3.4");
+    var num = new INumber("3.4");
     assertNotNull(num);
 }
 
 function testNumberConstructorWithPrimitiveNumber() {
-    var num = new ilib.Number(3.4);
+    var num = new INumber(3.4);
     assertNotNull(num);
 }
 
 function testNumberConstructorWithNumber() {
-    var num = new ilib.Number(new Number(3.4));
+    var num = new INumber(new Number(3.4));
     assertNotNull(num);
 }
 
 function testNumberConstructorWithIlibNumber() {
-    var num = new ilib.Number(new ilib.Number("3.4"));
+    var num = new INumber(new INumber("3.4"));
     assertNotNull(num);
 }
 
 function testNumberGetLocaleDefault() {
-    var num = new ilib.Number("3.4");
+    var num = new INumber("3.4");
     assertNotNull(num);
     
     assertEquals("en-US", num.getLocale().getSpec());
 }
 
 function testNumberGetLocaleOther() {
-    var num = new ilib.Number("3.4", {
+    var num = new INumber("3.4", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -54,77 +56,77 @@ function testNumberGetLocaleOther() {
 }
 
 function testNumberFloat() {
-    var num = new ilib.Number("3.4");
+    var num = new INumber("3.4");
     assertNotNull(num);
     
     assertEquals(3.4, num.valueOf());
 }
 
 function testNumberFloatWithPrimitiveNumber() {
-    var num = new ilib.Number(3.4);
+    var num = new INumber(3.4);
     assertNotNull(num);
     
     assertEquals(3.4, num.valueOf());
 }
 
 function testNumberFloatWithNumberObject() {
-    var num = new ilib.Number(new Number(3.4));
+    var num = new INumber(new Number(3.4));
     assertNotNull(num);
     
     assertEquals(3.4, num.valueOf());
 }
 
 function testNumberFloatWithIlibNumberObject() {
-    var num = new ilib.Number(new ilib.Number(3.4));
+    var num = new INumber(new INumber(3.4));
     assertNotNull(num);
     
     assertEquals(3.4, num.valueOf());
 }
 
 function testNumberFloatThousands() {
-    var num = new ilib.Number("1,233.4");
+    var num = new INumber("1,233.4");
     assertNotNull(num);
     
     assertEquals(1233.4, num.valueOf());
 }
 
 function testNumberFloatNegative() {
-    var num = new ilib.Number("-1233.4");
+    var num = new INumber("-1233.4");
     assertNotNull(num);
     
     assertEquals(-1233.4, num.valueOf());
 }
 
 function testNumberFloatIgnoreInternalDashes() {
-    var num = new ilib.Number("123-33.4");
+    var num = new INumber("123-33.4");
     assertNotNull(num);
     
     assertEquals(12333.4, num.valueOf());
 }
 
 function testNumberFloatIgnoreInternalDashesNegative() {
-    var num = new ilib.Number("-123-33.4");
+    var num = new INumber("-123-33.4");
     assertNotNull(num);
     
     assertEquals(-12333.4, num.valueOf());
 }
 
 function testNumberFloatThousandsNoFormatting() {
-    var num = new ilib.Number("1233.4");
+    var num = new INumber("1233.4");
     assertNotNull(num);
     
     assertEquals(1233.4, num.valueOf());
 }
 
 function testNumberFloatThousandsBogusFormatting() {
-    var num = new ilib.Number("1,2,3,3,.4");
+    var num = new INumber("1,2,3,3,.4");
     assertNotNull(num);
     
     assertEquals(1233.4, num.valueOf());
 }
 
 function testNumberFloatInvalid() {
-    var num = new ilib.Number("1.A4");
+    var num = new INumber("1.A4");
     assertNotNull(num);
     
     // just parse what you can and ignore the rest
@@ -132,28 +134,28 @@ function testNumberFloatInvalid() {
 }
 
 function testNumberFloatStartsWithDecimal() {
-    var num = new ilib.Number(".4342");
+    var num = new INumber(".4342");
     assertNotNull(num);
     
     assertEquals(0.4342, num.valueOf());
 }
 
 function testNumberFloatStartsWithZero() {
-    var num = new ilib.Number("0.4342");
+    var num = new INumber("0.4342");
     assertNotNull(num);
     
     assertEquals(0.4342, num.valueOf());
 }
 
 function testNumberFloatStartsWithDecimalNegative() {
-    var num = new ilib.Number("-.4342");
+    var num = new INumber("-.4342");
     assertNotNull(num);
     
     assertEquals(-0.4342, num.valueOf());
 }
 
 function testNumberFloatStartsWithZeroNegative() {
-    var num = new ilib.Number("-0.4342");
+    var num = new INumber("-0.4342");
     assertNotNull(num);
     
     assertEquals(-0.4342, num.valueOf());
@@ -161,77 +163,77 @@ function testNumberFloatStartsWithZeroNegative() {
 
 
 function testNumberInt() {
-    var num = new ilib.Number("123");
+    var num = new INumber("123");
     assertNotNull(num);
     
     assertEquals(123, num.valueOf());
 }
 
 function testNumberIntThousands() {
-    var num = new ilib.Number("123,456");
+    var num = new INumber("123,456");
     assertNotNull(num);
     
     assertEquals(123456, num.valueOf());
 }
 
 function testNumberInvalid() {
-    var num = new ilib.Number("123.234.234");
+    var num = new INumber("123.234.234");
     assertNotNull(num);
     
     assertEquals(123.234, num.valueOf());
 }
 
 function testNumberEmpty() {
-    var num = new ilib.Number("");
+    var num = new INumber("");
     assertNotNull(num);
     
     assertEquals(0, num.valueOf());
 }
 
 function testNumberPercentage() {
-    var num = new ilib.Number("58.3%", {type: "percentage"});
+    var num = new INumber("58.3%", {type: "percentage"});
     assertNotNull(num);
     
     assertEquals(0.583, num.valueOf());
 }
 
 function testNumberPercentageNegative() {
-    var num = new ilib.Number("-58.3%", {type: "percentage"});
+    var num = new INumber("-58.3%", {type: "percentage"});
     assertNotNull(num);
     
     assertEquals(-0.583, num.valueOf());
 }
 
 function testNumberPercentageNoTypeSpecified() {
-    var num = new ilib.Number("58.3%");
+    var num = new INumber("58.3%");
     assertNotNull(num);
     
     assertEquals(58.3, num.valueOf());
 }
 
 function testNumberCurrencyValue() {
-    var num = new ilib.Number("$5.80", {type: "currency"});
+    var num = new INumber("$5.80", {type: "currency"});
     assertNotNull(num);
     
     assertEquals(5.80, num.valueOf());
 }
 
 function testNumberCurrencyValueNegative1() {
-    var num = new ilib.Number("$-5.80", {type: "currency"});
+    var num = new INumber("$-5.80", {type: "currency"});
     assertNotNull(num);
     
     assertEquals(-5.80, num.valueOf());
 }
 
 function testNumberCurrencyValueNegative2() {
-    var num = new ilib.Number("-$5.80", {type: "currency"});
+    var num = new INumber("-$5.80", {type: "currency"});
     assertNotNull(num);
     
     assertEquals(-5.80, num.valueOf());
 }
 
 function testNumberCurrencyType() {
-    var num = new ilib.Number("$5.80", {type: "currency"});
+    var num = new INumber("$5.80", {type: "currency"});
     assertNotNull(num);
     
     var cur = num.getCurrency();
@@ -240,7 +242,7 @@ function testNumberCurrencyType() {
 }
 
 function testNumberCurrencyTypeUsingISOCode() {
-    var num = new ilib.Number("USD 5.80", {type: "currency"});
+    var num = new INumber("USD 5.80", {type: "currency"});
     assertNotNull(num);
     
     var cur = num.getCurrency();
@@ -249,7 +251,7 @@ function testNumberCurrencyTypeUsingISOCode() {
 }
 
 function testNumberCurrencyNotForLocale() {
-    var num = new ilib.Number("£5.80", {type: "currency"});
+    var num = new INumber("£5.80", {type: "currency"});
     assertNotNull(num);
     
     var cur = num.getCurrency();
@@ -258,7 +260,7 @@ function testNumberCurrencyNotForLocale() {
 }
 
 function testNumberCurrencyForLocale() {
-    var num = new ilib.Number("£5.80", {locale: "ar-EG", type: "currency"});
+    var num = new INumber("£5.80", {locale: "ar-EG", type: "currency"});
     assertNotNull(num);
     
     var cur = num.getCurrency();
@@ -267,7 +269,7 @@ function testNumberCurrencyForLocale() {
 }
 
 function testNumberFloatDE() {
-    var num = new ilib.Number("3,4", {
+    var num = new INumber("3,4", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -276,7 +278,7 @@ function testNumberFloatDE() {
 }
 
 function testNumberFloatDENegative() {
-    var num = new ilib.Number("-3,4", {
+    var num = new INumber("-3,4", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -285,7 +287,7 @@ function testNumberFloatDENegative() {
 }
 
 function testNumberFloatDEThousands() {
-    var num = new ilib.Number("1.233,4", {
+    var num = new INumber("1.233,4", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -294,7 +296,7 @@ function testNumberFloatDEThousands() {
 }
 
 function testNumberFloatDEThousandsNegative() {
-    var num = new ilib.Number("-1.233,4", {
+    var num = new INumber("-1.233,4", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -303,7 +305,7 @@ function testNumberFloatDEThousandsNegative() {
 }
 
 function testNumberFloatDEWithDashForZeros() {
-    var num = new ilib.Number("3,-", {
+    var num = new INumber("3,-", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -312,7 +314,7 @@ function testNumberFloatDEWithDashForZeros() {
 }
 
 function testNumberFloatDEStartsWithDecimal() {
-    var num = new ilib.Number(",4342", {
+    var num = new INumber(",4342", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -321,7 +323,7 @@ function testNumberFloatDEStartsWithDecimal() {
 }
 
 function testNumberFloatDEStartsWithZero() {
-    var num = new ilib.Number("0,4342", {
+    var num = new INumber("0,4342", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -330,7 +332,7 @@ function testNumberFloatDEStartsWithZero() {
 }
 
 function testNumberFloatDEStartsWithDecimalNegative() {
-    var num = new ilib.Number("-,4342", {
+    var num = new INumber("-,4342", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -339,7 +341,7 @@ function testNumberFloatDEStartsWithDecimalNegative() {
 }
 
 function testNumberFloatDEStartsWithZeroNegative() {
-    var num = new ilib.Number("-0,4342", {
+    var num = new INumber("-0,4342", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -348,7 +350,7 @@ function testNumberFloatDEStartsWithZeroNegative() {
 }
 
 function testNumberFloatDEStartsWithPeriodIgnore() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -357,7 +359,7 @@ function testNumberFloatDEStartsWithPeriodIgnore() {
 }
 
 function testNumberFloatDEWithMDashForZeros() {
-    var num = new ilib.Number("3,—", {
+    var num = new INumber("3,—", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -366,7 +368,7 @@ function testNumberFloatDEWithMDashForZeros() {
 }
 
 function testNumberIntDE() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -375,7 +377,7 @@ function testNumberIntDE() {
 }
 
 function testNumberIntDEThousands() {
-    var num = new ilib.Number("123.456", {
+    var num = new INumber("123.456", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -384,7 +386,7 @@ function testNumberIntDEThousands() {
 }
 
 function testNumberInvalidDE() {
-    var num = new ilib.Number("123,234,234", {
+    var num = new INumber("123,234,234", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -393,7 +395,7 @@ function testNumberInvalidDE() {
 }
 
 function testNumberEmptyDE() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -402,7 +404,7 @@ function testNumberEmptyDE() {
 }
 
 function testNumberPercentageDE() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "de-DE",
     	type: "percentage"
     });
@@ -412,7 +414,7 @@ function testNumberPercentageDE() {
 }
 
 function testNumberPercentageDENoTypeSpecified() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -421,7 +423,7 @@ function testNumberPercentageDENoTypeSpecified() {
 }
 
 function testNumberCurrencyDEValue() {
-    var num = new ilib.Number("5,84 €", {
+    var num = new INumber("5,84 €", {
     	locale: "de-DE",
     	type: "currency"
     });
@@ -431,7 +433,7 @@ function testNumberCurrencyDEValue() {
 }
 
 function testNumberCurrencyDEType() {
-    var num = new ilib.Number("5,84 €", {
+    var num = new INumber("5,84 €", {
     	locale: "de-DE",
     	type: "currency"
     });
@@ -443,7 +445,7 @@ function testNumberCurrencyDEType() {
 }
 
 function testNumberCurrencyDENoTypeSpecified() {
-    var num = new ilib.Number("5,84 €", {
+    var num = new INumber("5,84 €", {
     	locale: "de-DE"
     });
     assertNotNull(num);
@@ -452,7 +454,7 @@ function testNumberCurrencyDENoTypeSpecified() {
 }
 
 function testNumberCurrencyDETypeUsingISOCode() {
-    var num = new ilib.Number("5,84 EUR", {
+    var num = new INumber("5,84 EUR", {
     	locale: "de-DE",
     	type: "currency"
     });
@@ -464,7 +466,7 @@ function testNumberCurrencyDETypeUsingISOCode() {
 }
 
 function testNumberZH() {
-    var num = new ilib.Number("12,3234", {
+    var num = new INumber("12,3234", {
     	locale: "zh-CN"	
     });
     assertNotNull(num);
@@ -473,7 +475,7 @@ function testNumberZH() {
 }
 
 function testNumberZHDecimal() {
-    var num = new ilib.Number("12,3234.324", {
+    var num = new INumber("12,3234.324", {
     	locale: "zh-CN"	
     });
     assertNotNull(num);
@@ -484,7 +486,7 @@ function testNumberZHDecimal() {
 
 function testNumberParseAsync() {
 	var callbackCalled = false;
-    new ilib.Number("-0,4342", {
+    new INumber("-0,4342", {
     	locale: "de-DE",
     	sync: false,
     	onLoad: function (num) {
@@ -499,7 +501,7 @@ function testNumberParseAsync() {
 
 function testNumberParseAsyncCurrency() {
 	var callbackCalled = false;
-    new ilib.Number("5,84 EUR", {
+    new INumber("5,84 EUR", {
     	locale: "de-DE",
     	type: "currency",
     	sync: false,
@@ -517,7 +519,7 @@ function testNumberParseAsyncCurrency() {
 
 /*Test cases for Afrikaans*/
 function testNumberFloatAF() {
-    var num = new ilib.Number("3,4", {
+    var num = new INumber("3,4", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -526,7 +528,7 @@ function testNumberFloatAF() {
 }
 
 function testNumberFloatAFNegative() {
-    var num = new ilib.Number("-3,4", {
+    var num = new INumber("-3,4", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -535,7 +537,7 @@ function testNumberFloatAFNegative() {
 }
 
 function testNumberFloatAFThousands() {
-    var num = new ilib.Number("1.233,4", {
+    var num = new INumber("1.233,4", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -544,7 +546,7 @@ function testNumberFloatAFThousands() {
 }
 
 function testNumberFloatAFThousandsNegative() {
-    var num = new ilib.Number("-1.233,4", {
+    var num = new INumber("-1.233,4", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -553,7 +555,7 @@ function testNumberFloatAFThousandsNegative() {
 }
 
 function testNumberFloatAFWithDashForZeros() {
-    var num = new ilib.Number("3,-", {
+    var num = new INumber("3,-", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -562,7 +564,7 @@ function testNumberFloatAFWithDashForZeros() {
 }
 
 function testNumberFloatAFStartsWithDecimal() {
-    var num = new ilib.Number(",4342", {
+    var num = new INumber(",4342", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -571,7 +573,7 @@ function testNumberFloatAFStartsWithDecimal() {
 }
 
 function testNumberFloatAFStartsWithZero() {
-    var num = new ilib.Number("0,4342", {
+    var num = new INumber("0,4342", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -580,7 +582,7 @@ function testNumberFloatAFStartsWithZero() {
 }
 
 function testNumberFloatAFStartsWithDecimalNegative() {
-    var num = new ilib.Number("-,4342", {
+    var num = new INumber("-,4342", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -589,7 +591,7 @@ function testNumberFloatAFStartsWithDecimalNegative() {
 }
 
 function testNumberFloatAFStartsWithZeroNegative() {
-    var num = new ilib.Number("-0,4342", {
+    var num = new INumber("-0,4342", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -598,7 +600,7 @@ function testNumberFloatAFStartsWithZeroNegative() {
 }
 
 function testNumberFloatAFStartsWithPeriodIgnore() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -607,7 +609,7 @@ function testNumberFloatAFStartsWithPeriodIgnore() {
 }
 
 function testNumberFloatAFWithMDashForZeros() {
-    var num = new ilib.Number("3,—", {
+    var num = new INumber("3,—", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -616,7 +618,7 @@ function testNumberFloatAFWithMDashForZeros() {
 }
 
 function testNumberIntAF() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -625,7 +627,7 @@ function testNumberIntAF() {
 }
 
 function testNumberIntAFThousands() {
-    var num = new ilib.Number("123.456", {
+    var num = new INumber("123.456", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -634,7 +636,7 @@ function testNumberIntAFThousands() {
 }
 
 function testNumberInvalidAF() {
-    var num = new ilib.Number("123,234,234", {
+    var num = new INumber("123,234,234", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -643,7 +645,7 @@ function testNumberInvalidAF() {
 }
 
 function testNumberEmptyAF() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -652,7 +654,7 @@ function testNumberEmptyAF() {
 }
 
 function testNumberPercentageAF() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "af-ZA",
     	type: "percentage"
     });
@@ -662,7 +664,7 @@ function testNumberPercentageAF() {
 }
 
 function testNumberPercentageAFNoTypeSpecified() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -671,7 +673,7 @@ function testNumberPercentageAFNoTypeSpecified() {
 }
 
 function testNumberCurrencyAFValue() {
-    var num = new ilib.Number("R5,84", {
+    var num = new INumber("R5,84", {
     	locale: "af-ZA",
     	type: "currency"
     });
@@ -681,7 +683,7 @@ function testNumberCurrencyAFValue() {
 }
 
 function testNumberCurrencyAFType() {
-    var num = new ilib.Number("R5,84", {
+    var num = new INumber("R5,84", {
     	locale: "af-ZA",
     	type: "currency"
     });
@@ -693,7 +695,7 @@ function testNumberCurrencyAFType() {
 }
 
 function testNumberCurrencyAFNoTypeSpecified() {
-    var num = new ilib.Number("5,84 €", {
+    var num = new INumber("5,84 €", {
     	locale: "af-ZA"
     });
     assertNotNull(num);
@@ -702,7 +704,7 @@ function testNumberCurrencyAFNoTypeSpecified() {
 }
 
 function testNumberCurrencyAFTypeUsingISOCode() {
-    var num = new ilib.Number("5,84 ZAR", {
+    var num = new INumber("5,84 ZAR", {
     	locale: "af-ZA",
     	type: "currency"
     });
@@ -715,7 +717,7 @@ function testNumberCurrencyAFTypeUsingISOCode() {
 /*Nambian*/
 /*Test cases for Afrikaans*/
 function testNumberFloatNA() {
-    var num = new ilib.Number("3,4", {
+    var num = new INumber("3,4", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -724,7 +726,7 @@ function testNumberFloatNA() {
 }
 
 function testNumberFloatNANegative() {
-    var num = new ilib.Number("-3,4", {
+    var num = new INumber("-3,4", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -733,7 +735,7 @@ function testNumberFloatNANegative() {
 }
 
 function testNumberFloatNAThousands() {
-    var num = new ilib.Number("1.233,4", {
+    var num = new INumber("1.233,4", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -742,7 +744,7 @@ function testNumberFloatNAThousands() {
 }
 
 function testNumberFloatNAThousandsNegative() {
-    var num = new ilib.Number("-1.233,4", {
+    var num = new INumber("-1.233,4", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -751,7 +753,7 @@ function testNumberFloatNAThousandsNegative() {
 }
 
 function testNumberFloatNAWithDashForZeros() {
-    var num = new ilib.Number("3,-", {
+    var num = new INumber("3,-", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -760,7 +762,7 @@ function testNumberFloatNAWithDashForZeros() {
 }
 
 function testNumberFloatNAStartsWithDecimal() {
-    var num = new ilib.Number(",4342", {
+    var num = new INumber(",4342", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -769,7 +771,7 @@ function testNumberFloatNAStartsWithDecimal() {
 }
 
 function testNumberFloatNAStartsWithZero() {
-    var num = new ilib.Number("0,4342", {
+    var num = new INumber("0,4342", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -778,7 +780,7 @@ function testNumberFloatNAStartsWithZero() {
 }
 
 function testNumberFloatNAStartsWithDecimalNegative() {
-    var num = new ilib.Number("-,4342", {
+    var num = new INumber("-,4342", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -787,7 +789,7 @@ function testNumberFloatNAStartsWithDecimalNegative() {
 }
 
 function testNumberFloatNAStartsWithZeroNegative() {
-    var num = new ilib.Number("-0,4342", {
+    var num = new INumber("-0,4342", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -796,7 +798,7 @@ function testNumberFloatNAStartsWithZeroNegative() {
 }
 
 function testNumberFloatNAStartsWithPeriodIgnore() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -805,7 +807,7 @@ function testNumberFloatNAStartsWithPeriodIgnore() {
 }
 
 function testNumberFloatNAWithMDashForZeros() {
-    var num = new ilib.Number("3,—", {
+    var num = new INumber("3,—", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -814,7 +816,7 @@ function testNumberFloatNAWithMDashForZeros() {
 }
 
 function testNumberIntNA() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -823,7 +825,7 @@ function testNumberIntNA() {
 }
 
 function testNumberIntNAThousands() {
-    var num = new ilib.Number("123.456", {
+    var num = new INumber("123.456", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -832,7 +834,7 @@ function testNumberIntNAThousands() {
 }
 
 function testNumberInvalidNA() {
-    var num = new ilib.Number("123,234,234", {
+    var num = new INumber("123,234,234", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -841,7 +843,7 @@ function testNumberInvalidNA() {
 }
 
 function testNumberEmptyNA() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -850,7 +852,7 @@ function testNumberEmptyNA() {
 }
 
 function testNumberPercentageNA() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "af-NA",
     	type: "percentage"
     });
@@ -860,7 +862,7 @@ function testNumberPercentageNA() {
 }
 
 function testNumberPercentageNANoTypeSpecified() {
-    var num = new ilib.Number("58,4 %", {
+    var num = new INumber("58,4 %", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -869,7 +871,7 @@ function testNumberPercentageNANoTypeSpecified() {
 }
 
 function testNumberCurrencyNAValue() {
-    var num = new ilib.Number("5,84 $", {
+    var num = new INumber("5,84 $", {
     	locale: "af-NA",
     	type: "currency"
     });
@@ -879,7 +881,7 @@ function testNumberCurrencyNAValue() {
 }
 
 function testNumberCurrencyNAType() {
-    var num = new ilib.Number("$5,84", {
+    var num = new INumber("$5,84", {
     	locale: "af-NA",
     	type: "currency"
     });
@@ -891,7 +893,7 @@ function testNumberCurrencyNAType() {
 }
 
 function testNumberCurrencyNANoTypeSpecified() {
-    var num = new ilib.Number("5,84 $", {
+    var num = new INumber("5,84 $", {
     	locale: "af-NA"
     });
     assertNotNull(num);
@@ -900,7 +902,7 @@ function testNumberCurrencyNANoTypeSpecified() {
 }
 
 function testNumberCurrencyNATypeUsingISOCode() {
-    var num = new ilib.Number("5,84 NAD", {
+    var num = new INumber("5,84 NAD", {
     	locale: "af-NA",
     	type: "currency"
     });
@@ -913,7 +915,7 @@ function testNumberCurrencyNATypeUsingISOCode() {
 
 // number parsing test cases for Hausa
 function testNumberFloat_ha_Latn_NG() {
-    var num = new ilib.Number("3.4", {
+    var num = new INumber("3.4", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -922,7 +924,7 @@ function testNumberFloat_ha_Latn_NG() {
 }
 
 function testNumberFloat_ha_Latn_NG_Negative() {
-    var num = new ilib.Number("-3.4", {
+    var num = new INumber("-3.4", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -931,7 +933,7 @@ function testNumberFloat_ha_Latn_NG_Negative() {
 }
 
 function testNumberFloat_ha_Latn_NG_Thousands() {
-    var num = new ilib.Number("1,233.4", {
+    var num = new INumber("1,233.4", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -940,7 +942,7 @@ function testNumberFloat_ha_Latn_NG_Thousands() {
 }
 
 function testNumberFloat_ha_Latn_NG_ThousandsNegative() {
-    var num = new ilib.Number("-1,233.4", {
+    var num = new INumber("-1,233.4", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -949,7 +951,7 @@ function testNumberFloat_ha_Latn_NG_ThousandsNegative() {
 }
 
 function testNumberFloat_ha_Latn_NG_WithDashForZeros() {
-    var num = new ilib.Number("3.-", {
+    var num = new INumber("3.-", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -958,7 +960,7 @@ function testNumberFloat_ha_Latn_NG_WithDashForZeros() {
 }
 
 function testNumberFloat_ha_Latn_NG_StartsWithDecimal() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -967,7 +969,7 @@ function testNumberFloat_ha_Latn_NG_StartsWithDecimal() {
 }
 
 function testNumberFloat_ha_Latn_NG_StartsWithZero() {
-    var num = new ilib.Number("0.4342", {
+    var num = new INumber("0.4342", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -976,7 +978,7 @@ function testNumberFloat_ha_Latn_NG_StartsWithZero() {
 }
 
 function testNumberFloat_ha_Latn_NG_StartsWithDecimalNegative() {
-    var num = new ilib.Number("-.4342", {
+    var num = new INumber("-.4342", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -985,7 +987,7 @@ function testNumberFloat_ha_Latn_NG_StartsWithDecimalNegative() {
 }
 
 function testNumberFloat_ha_Latn_NG_StartsWithZeroNegative() {
-    var num = new ilib.Number("-0.4342", {
+    var num = new INumber("-0.4342", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -994,7 +996,7 @@ function testNumberFloat_ha_Latn_NG_StartsWithZeroNegative() {
 }
 
 function testNumberFloat_ha_Latn_NG_StartsWithPeriodIgnore() {
-    var num = new ilib.Number(",4342", {
+    var num = new INumber(",4342", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1003,7 +1005,7 @@ function testNumberFloat_ha_Latn_NG_StartsWithPeriodIgnore() {
 }
 
 function testNumberFloat_ha_Latn_NG_WithMDashForZeros() {
-    var num = new ilib.Number("3.—", {
+    var num = new INumber("3.—", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1012,7 +1014,7 @@ function testNumberFloat_ha_Latn_NG_WithMDashForZeros() {
 }
 
 function testNumberInt_ha_Latn_NG_() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1021,7 +1023,7 @@ function testNumberInt_ha_Latn_NG_() {
 }
 
 function testNumberInt_ha_Latn_NG_Thousands() {
-    var num = new ilib.Number("123,456", {
+    var num = new INumber("123,456", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1030,7 +1032,7 @@ function testNumberInt_ha_Latn_NG_Thousands() {
 }
 
 function testNumberInvalid_ha_Latn_NG_() {
-    var num = new ilib.Number("123.234.234", {
+    var num = new INumber("123.234.234", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1039,7 +1041,7 @@ function testNumberInvalid_ha_Latn_NG_() {
 }
 
 function testNumberEmpty_ha_Latn_NG_() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1048,7 +1050,7 @@ function testNumberEmpty_ha_Latn_NG_() {
 }
 
 function testNumberPercentage_ha_Latn_NG_() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "ha-Latn-NG",
     	type: "percentage"
     });
@@ -1058,7 +1060,7 @@ function testNumberPercentage_ha_Latn_NG_() {
 }
 
 function testNumberPercentage_ha_Latn_NG_NoTypeSpecified() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1067,7 +1069,7 @@ function testNumberPercentage_ha_Latn_NG_NoTypeSpecified() {
 }
 
 function testNumberCurrency_ha_Latn_NG_Value() {
-    var num = new ilib.Number("5.84 ₦", {
+    var num = new INumber("5.84 ₦", {
     	locale: "ha-Latn-NG",
     	type: "currency"
     });
@@ -1077,7 +1079,7 @@ function testNumberCurrency_ha_Latn_NG_Value() {
 }
 
 function testNumberCurrency_ha_Latn_NG_Type() {
-    var num = new ilib.Number("5.84 ₦", {
+    var num = new INumber("5.84 ₦", {
     	locale: "ha-Latn-NG",
     	type: "currency"
     });
@@ -1089,7 +1091,7 @@ function testNumberCurrency_ha_Latn_NG_Type() {
 }
 
 function testNumberCurrency_ha_Latn_NG_NoTypeSpecified() {
-    var num = new ilib.Number("5.84 ₦", {
+    var num = new INumber("5.84 ₦", {
     	locale: "ha-Latn-NG"
     });
     assertNotNull(num);
@@ -1098,7 +1100,7 @@ function testNumberCurrency_ha_Latn_NG_NoTypeSpecified() {
 }
 
 function testNumberCurrency_ha_Latn_NG_TypeUsingISOCode() {
-    var num = new ilib.Number("5.84 NGN", {
+    var num = new INumber("5.84 NGN", {
     	locale: "ha-Latn-NG",
     	type: "currency"
     });
@@ -1111,7 +1113,7 @@ function testNumberCurrency_ha_Latn_NG_TypeUsingISOCode() {
 
 // number parsing test cases for Oriya
 function testNumberFloat_or_IN() {
-    var num = new ilib.Number("3.4", {
+    var num = new INumber("3.4", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1120,7 +1122,7 @@ function testNumberFloat_or_IN() {
 }
 
 function testNumberFloat_or_INNegative() {
-    var num = new ilib.Number("-3.4", {
+    var num = new INumber("-3.4", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1129,7 +1131,7 @@ function testNumberFloat_or_INNegative() {
 }
 
 function testNumberFloat_or_IN_Thousands() {
-    var num = new ilib.Number("1,233.4", {
+    var num = new INumber("1,233.4", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1138,7 +1140,7 @@ function testNumberFloat_or_IN_Thousands() {
 }
 
 function testNumberFloat_or_IN_ThousandsNegative() {
-    var num = new ilib.Number("-1,233.4", {
+    var num = new INumber("-1,233.4", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1147,7 +1149,7 @@ function testNumberFloat_or_IN_ThousandsNegative() {
 }
 
 function testNumberFloat_or_IN_WithDashForZeros() {
-    var num = new ilib.Number("3.-", {
+    var num = new INumber("3.-", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1156,7 +1158,7 @@ function testNumberFloat_or_IN_WithDashForZeros() {
 }
 
 function testNumberFloat_or_IN_StartsWithDecimal() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1165,7 +1167,7 @@ function testNumberFloat_or_IN_StartsWithDecimal() {
 }
 
 function testNumberFloat_or_IN_StartsWithZero() {
-    var num = new ilib.Number("0.4342", {
+    var num = new INumber("0.4342", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1174,7 +1176,7 @@ function testNumberFloat_or_IN_StartsWithZero() {
 }
 
 function testNumberFloat_or_IN_StartsWithDecimalNegative() {
-    var num = new ilib.Number("-.4342", {
+    var num = new INumber("-.4342", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1183,7 +1185,7 @@ function testNumberFloat_or_IN_StartsWithDecimalNegative() {
 }
 
 function testNumberFloat_or_IN_StartsWithZeroNegative() {
-    var num = new ilib.Number("-0.4342", {
+    var num = new INumber("-0.4342", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1192,7 +1194,7 @@ function testNumberFloat_or_IN_StartsWithZeroNegative() {
 }
 
 function testNumberFloat_or_IN_StartsWithPeriodIgnore() {
-    var num = new ilib.Number(",4342", {
+    var num = new INumber(",4342", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1201,7 +1203,7 @@ function testNumberFloat_or_IN_StartsWithPeriodIgnore() {
 }
 
 function testNumberFloat_or_IN_WithMDashForZeros() {
-    var num = new ilib.Number("3.—", {
+    var num = new INumber("3.—", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1210,7 +1212,7 @@ function testNumberFloat_or_IN_WithMDashForZeros() {
 }
 
 function testNumberInt_or_IN_() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1219,7 +1221,7 @@ function testNumberInt_or_IN_() {
 }
 
 function testNumberInt_or_IN_Thousands() {
-    var num = new ilib.Number("123,456", {
+    var num = new INumber("123,456", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1228,7 +1230,7 @@ function testNumberInt_or_IN_Thousands() {
 }
 
 function testNumberInvalid_or_IN_() {
-    var num = new ilib.Number("123.234.234", {
+    var num = new INumber("123.234.234", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1237,7 +1239,7 @@ function testNumberInvalid_or_IN_() {
 }
 
 function testNumberEmpty_or_IN_() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1246,7 +1248,7 @@ function testNumberEmpty_or_IN_() {
 }
 
 function testNumberPercentage_or_IN_() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "or-IN",
     	type: "percentage"
     });
@@ -1256,7 +1258,7 @@ function testNumberPercentage_or_IN_() {
 }
 
 function testNumberPercentage_or_IN_NoTypeSpecified() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1265,7 +1267,7 @@ function testNumberPercentage_or_IN_NoTypeSpecified() {
 }
 
 function testNumberCurrency_or_IN_Value() {
-    var num = new ilib.Number("5.84 ₹", {
+    var num = new INumber("5.84 ₹", {
     	locale: "or-IN",
     	type: "currency"
     });
@@ -1275,7 +1277,7 @@ function testNumberCurrency_or_IN_Value() {
 }
 
 function testNumberCurrency_or_IN_Type() {
-    var num = new ilib.Number("5.84 ₹", {
+    var num = new INumber("5.84 ₹", {
     	locale: "or-IN",
     	type: "currency"
     });
@@ -1287,7 +1289,7 @@ function testNumberCurrency_or_IN_Type() {
 }
 
 function testNumberCurrency_or_IN_NoTypeSpecified() {
-    var num = new ilib.Number("5.84 ₹", {
+    var num = new INumber("5.84 ₹", {
     	locale: "or-IN"
     });
     assertNotNull(num);
@@ -1296,7 +1298,7 @@ function testNumberCurrency_or_IN_NoTypeSpecified() {
 }
 
 function testNumberCurrency_or_IN_TypeUsingISOCode() {
-    var num = new ilib.Number("5.84 IND", {
+    var num = new INumber("5.84 IND", {
     	locale: "or-IN",
     	type: "currency"
     });
@@ -1308,7 +1310,7 @@ function testNumberCurrency_or_IN_TypeUsingISOCode() {
 }
 /*Amharic test cases */
 function testNumberFloatET() {
-    var num = new ilib.Number("3.4", {
+    var num = new INumber("3.4", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1317,7 +1319,7 @@ function testNumberFloatET() {
 }
 
 function testNumberFloatETNegative() {
-    var num = new ilib.Number("-3.4", {
+    var num = new INumber("-3.4", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1326,7 +1328,7 @@ function testNumberFloatETNegative() {
 }
 
 function testNumberFloatETThousands() {
-    var num = new ilib.Number("1.233.4", {
+    var num = new INumber("1.233.4", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1335,7 +1337,7 @@ function testNumberFloatETThousands() {
 }
 
 function testNumberFloatETThousandsNegative() {
-    var num = new ilib.Number("-1.2334", {
+    var num = new INumber("-1.2334", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1344,7 +1346,7 @@ function testNumberFloatETThousandsNegative() {
 }
 
 function testNumberFloatETWithDashForZeros() {
-    var num = new ilib.Number("3.-", {
+    var num = new INumber("3.-", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1353,7 +1355,7 @@ function testNumberFloatETWithDashForZeros() {
 }
 
 function testNumberFloatETStartsWithDecimal() {
-    var num = new ilib.Number(".4342", {
+    var num = new INumber(".4342", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1362,7 +1364,7 @@ function testNumberFloatETStartsWithDecimal() {
 }
 
 function testNumberFloatETStartsWithZero() {
-    var num = new ilib.Number("0.4342", {
+    var num = new INumber("0.4342", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1371,7 +1373,7 @@ function testNumberFloatETStartsWithZero() {
 }
 
 function testNumberFloatETStartsWithDecimalNegative() {
-    var num = new ilib.Number("-.4342", {
+    var num = new INumber("-.4342", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1380,7 +1382,7 @@ function testNumberFloatETStartsWithDecimalNegative() {
 }
 
 function testNumberFloatETStartsWithZeroNegative() {
-    var num = new ilib.Number("-0.4342", {
+    var num = new INumber("-0.4342", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1389,7 +1391,7 @@ function testNumberFloatETStartsWithZeroNegative() {
 }
 
 function testNumberFloatETStartsWithPeriodIgnore() {
-    var num = new ilib.Number("4342", {
+    var num = new INumber("4342", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1398,7 +1400,7 @@ function testNumberFloatETStartsWithPeriodIgnore() {
 }
 
 function testNumberFloatETWithMDashForZeros() {
-    var num = new ilib.Number("3.—", {
+    var num = new INumber("3.—", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1407,7 +1409,7 @@ function testNumberFloatETWithMDashForZeros() {
 }
 
 function testNumberIntET() {
-    var num = new ilib.Number("123", {
+    var num = new INumber("123", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1416,7 +1418,7 @@ function testNumberIntET() {
 }
 
 function testNumberIntETThousands() {
-    var num = new ilib.Number("123,456", {
+    var num = new INumber("123,456", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1425,7 +1427,7 @@ function testNumberIntETThousands() {
 }
 
 function testNumberInvalidET() {
-    var num = new ilib.Number("123.234.234", {
+    var num = new INumber("123.234.234", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1434,7 +1436,7 @@ function testNumberInvalidET() {
 }
 
 function testNumberEmptyET() {
-    var num = new ilib.Number("", {
+    var num = new INumber("", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1443,7 +1445,7 @@ function testNumberEmptyET() {
 }
 
 function testNumberPercentageET() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "am-ET",
     	type: "percentage"
     });
@@ -1453,7 +1455,7 @@ function testNumberPercentageET() {
 }
 
 function testNumberPercentageETNoTypeSpecified() {
-    var num = new ilib.Number("58.4 %", {
+    var num = new INumber("58.4 %", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1462,7 +1464,7 @@ function testNumberPercentageETNoTypeSpecified() {
 }
 
 function testNumberCurrencyETValue() {
-    var num = new ilib.Number("5.84 Br", {
+    var num = new INumber("5.84 Br", {
     	locale: "am-ET",
     	type: "currency"
     });
@@ -1472,7 +1474,7 @@ function testNumberCurrencyETValue() {
 }
 
 function testNumberCurrencyETType() {
-    var num = new ilib.Number("Br 5.84", {
+    var num = new INumber("Br 5.84", {
     	locale: "am-ET",
     	type: "currency"
     });
@@ -1484,7 +1486,7 @@ function testNumberCurrencyETType() {
 }
 
 function testNumberCurrencyETNoTypeSpecified() {
-    var num = new ilib.Number("5.84 €", {
+    var num = new INumber("5.84 €", {
     	locale: "am-ET"
     });
     assertNotNull(num);
@@ -1493,7 +1495,7 @@ function testNumberCurrencyETNoTypeSpecified() {
 }
 
 function testNumberCurrencyETTypeUsingISOCode() {
-    var num = new ilib.Number("5.84 ETB", {
+    var num = new INumber("5.84 ETB", {
     	locale: "am-ET",
     	type: "currency"
     });

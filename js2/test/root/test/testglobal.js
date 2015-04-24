@@ -20,6 +20,65 @@
 var ilib = require("./../lib/ilib.js");
 var Locale = require("./../lib/Locale.js");
 
+function testNoStubsInModular() {
+	// make sure we don't have stubs defined in the modular tests
+	assertUndefined(ilib.CType);
+	assertUndefined(ilib._roundFnc);
+	assertUndefined(ilib.Date);
+	assertUndefined(ilib.Cal);
+	assertUndefined(ilib.Measurement);
+	assertUndefined(ilib.shallowCopy);
+	assertUndefined(ilib.deepCopy);
+	assertUndefined(ilib.mapString);
+	assertUndefined(ilib.indexOf);
+	assertUndefined(ilib.toHexString);
+	assertUndefined(ilib.isDate);
+	assertUndefined(ilib.merge);
+	assertUndefined(ilib.isEmpty);
+	assertUndefined(ilib.hashCode);
+	assertUndefined(ilib.Locale);
+	assertUndefined(ilib.mergeLocData);
+	assertUndefined(ilib.getLocFiles);
+	assertUndefined(ilib.loadData);
+	assertUndefined(ilib.LocaleInfo);
+	assertUndefined(ilib.signum);
+	assertUndefined(ilib.mod);
+	assertUndefined(ilib.amod);
+	assertUndefined(ilib.String);
+	assertUndefined(ilib.JulianDay);
+	assertUndefined(ilib.TimeZone);
+	assertUndefined(ilib.bsearch);
+	assertUndefined(ilib.bisectionSearch);
+	assertUndefined(ilib.ResBundle);
+	assertUndefined(ilib.DateFmt);
+	assertUndefined(ilib.DateRngFmt);
+	assertUndefined(ilib.Currency);
+	assertUndefined(ilib.Number);
+	assertUndefined(ilib.NumFmt);
+	assertUndefined(ilib.DurFmt);
+	assertUndefined(ilib.ScriptInfo);
+	assertUndefined(ilib.Name);
+	assertUndefined(ilib.NameFmt);
+	assertUndefined(ilib.Address);
+	assertUndefined(ilib.AddressFmt);
+	assertUndefined(ilib.GlyphString);
+	assertUndefined(ilib.NormString);
+	assertUndefined(ilib.CodePointSource);
+	assertUndefined(ilib.ElementIterator);
+	assertUndefined(ilib.Collator);
+	assertUndefined(ilib.LocaleMatcher);
+	assertUndefined(ilib.CaseMapper);
+	assertUndefined(ilib.NumPlan);
+	assertUndefined(ilib.PhoneLoc);
+	assertUndefined(ilib.StateHandler);
+	assertUndefined(ilib._handlerFactory);
+	assertUndefined(ilib.PhoneNumber);
+	assertUndefined(ilib.PhoneFmt);
+	assertUndefined(ilib.GeoLocator);
+	assertUndefined(ilib.Measurement);
+	assertUndefined(ilib.UnitFmt);
+}
+
 function testGetLocaleDefault() {
     assertEquals("en-US", ilib.getLocale());
 }

@@ -29,9 +29,8 @@ var dir = (i !== -1 ? url.substring(0, i+1) : url);
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
-    calSuite.addTestPage(dir + "test/testSuite.html");
+    calSuite.addTestPage(dir + "root/test/testSuite.html");
     calSuite.addTestPage(dir + "name/test/testSuite.html");
-    calSuite.addTestPage(dir + "test/testSuite.html");
     calSuite.addTestPage(dir + "date/test/testSuite.html");
     calSuite.addTestPage(dir + "daterange/test/testSuite.html");
     calSuite.addTestPage(dir + "durfmt/test/testSuite.html");
