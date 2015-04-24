@@ -185,6 +185,9 @@ for (s in suite) {
 	
 	if (assembly === "dynamic") {
 		ts.include("../bin/ilib-test-dyn.js");
+		if (set === "legacy") {
+			ts.include("../lib/ilib-stubs-dyn.js");
+		}
 	} else {
 		inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc);
