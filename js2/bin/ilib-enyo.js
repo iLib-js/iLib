@@ -112,16 +112,26 @@ requireClass.prototype.require = function(pathname) {
 	var match, replacement;
 	
 	if (text) {
-		text = 'var module={exports:{},filename:"' + pathname + '"};' + text;
+		var tmp = module.filename;
+		module.filename = pathname;
+		module.exports = null;
+
 		while ((match = this.updateRequire.exec(text)) !== null) {
 			replacement = '"' + dirname + '/" + ' + match[1];
 			text = text.replace(new RegExp(match[1], "g"), replacement);
 			this.updateRequire.lastIndex = match.index + replacement.length;
 		}
+		text = text + "\n//# sourceURL=" + pathname + "\n";
 		// console.log("text is " + text);
-		eval(text);
+		try {
+			eval(text);
 		
-		this.cache[pathname] = module.exports;
+			this.cache[pathname] = module.exports;
+		} finally {
+			this.loading[pathname] = undefined;
+			module.filename = tmp;
+		}
+		
 		return module.exports;
 	}
 

@@ -1,9 +1,13 @@
 import QtQuick 2.0
-import "./runner.js" as JsUnit
+import "./TestSuiteModule.js" as TestSuiteModule
+import "./runner.js" as TestRunnerModule
 
 QtObject {
     Component.onCompleted: {
-		var runner = new JsUnit.TestRunner("../..");
+    	var TestSuite = TestSuiteModule.TestSuite;
+    	var TestRunner = TestRunnerModule.TestRunner;
+    	
+		var runner = new TestRunner("../..");
 		
 		var suiteDefinitions = {
 			"core": {
@@ -55,8 +59,9 @@ QtObject {
 		var assembly = "dynamic";
 		var compilation = "uncompiled";
 		var size = "full";
+		var set = "modular";
 		var suite = suiteDefinitions.full;
-		// var suite = ["strings-ext/test/testSuite.js"];
+		//var suite = ["util/test/testSuite.js"];
 		
 		console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(Object.keys(suite)) + "\n");
 		
@@ -64,12 +69,25 @@ QtObject {
 		for (s in suite) {
 			var inc, ts;
 			
-			ts = new JsUnit.TestSuite(suite[s]);
+			ts = new TestSuite(suite[s]);
+			
+			if (assembly === "dynamic") {
+				//ts.include("../bin/ilib-test-dyn.js");
+				if (set === "legacy") {
+					ts.include("../lib/ilib-stubs-dyn.js");
+				}
+			} else {
+				inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+				ts.include(inc);
+				ts.include("../bin/ilib-test.js");
+				ts.include(set === "legacy" ? "../lib/ilib-stubs.js" : "../lib/ilib-stubs-map.js");
+			}
+			
 			runner.addSuite(ts);
-			//console.log("Adding suite " + suite[s]);
+			// console.log("Adding suite " + suite[s]);
 		}
 		
-		//console.log("Running all tests");
+		// console.log("Running all tests");
 		runner.runTests();
     }
 }

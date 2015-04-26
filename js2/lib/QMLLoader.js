@@ -50,9 +50,7 @@ var QMLLoader = function(fr) {
 	// ... else fall back to see if we're in a check-out dir of ilib
 	// this._exists(path.join(this.root, "data", "locale"), "localeinfo.json");
 	
-	// console.log("QMLLoader: include path is now " + JSON.stringify(this.includePath));
-	//console.log("QMLLoader base: " + this.base);
-	//console.log("QMLLoader code: " + this.code);
+	//console.log("QMLLoader: include path is now " + JSON.stringify(this.includePath));
 };
 
 QMLLoader.prototype = new Loader();
@@ -78,9 +76,9 @@ QMLLoader.prototype._loadFile = function (pathname, sync, success, failure) {
 
 QMLLoader.prototype._exists = function(dir, file) {
 	var fullpath = path.normalize(path.join(dir, file));
-	// console.log("QMLLoader._exists: checking for the existence of " + dir);
-	if (this.fr.exists(pathname)) {
-		// console.log("QMLLoader._exists: found");
+	//console.log("QMLLoader._exists: checking for the existence of " + dir);
+	if (this.fr.exists(fullpath)) {
+		//console.log("QMLLoader._exists: found");
 		this.includePath.push(dir);
 	}
 };

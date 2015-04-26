@@ -40,9 +40,18 @@ var requireClass = function() {
 	this.cache = {};
 	this.loading = {};
 	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
+	
+	this.root = Qt.resolvedUrl(".").toString();
+	if (this.root[this.root.length-1] === '/') {
+		this.root = this.normalize(this.root.substring(0,this.root.length-1) + "/..");
+	}
+	if (this.root.substring(0,7) === "file://") {
+		this.root = this.root.substring(7);
+	}
 };
 
 requireClass.prototype.dirname = function(pathname) {
+	pathname = pathname.replace("\\", "/");
 	var i = pathname.lastIndexOf("/");
 	return i !== -1 ? pathname.substring(0,i) : pathname;
 };
@@ -50,9 +59,16 @@ requireClass.prototype.dirname = function(pathname) {
 requireClass.prototype.normalize = function(pathname) {
 	if (pathname) {
 		var previousLen;
+		pathname = pathname.replace(/\\/g, "/");
 		do {
 			previousLen = pathname.length;
-			pathname = pathname.replace(/\/\.\//g, "/").replace(/\/[^/]+\/\.\./g, "").replace(/^\.\//, "");
+			pathname = pathname.replace(/\/\//g, "/");
+			pathname = pathname.replace(/\/[^/]*[^\./]\/\.\./g, "/.");
+			pathname = pathname.replace(/\/\.\//g, "/");
+			pathname = pathname.replace(/^\.\//, "");
+			pathname = pathname.replace(/\/\.$/, "/");
+			if (pathname.length > 1) pathname = pathname.replace(/\/$/, "");
+			if (pathname.length === 0) pathname = '.';
 		} while (pathname.length < previousLen);
 	}
 	return pathname;
@@ -60,23 +76,18 @@ requireClass.prototype.normalize = function(pathname) {
 	
 requireClass.prototype.require = function(pathname) {
 	//console.log("------------------------\nrequire: called with " + pathname);
-	if (!this.root) {
-		this.root = Qt.resolvedUrl(".").toString();
-		if (this.root[this.root.length-1] === '/') {
-			this.root = this.root.substring(0,this.root.length-1);
-		}
-		if (this.root.substring(0,7) === "file://") {
-			this.root = this.root.substring(7);
-		}
-	}
-	
+
 	if (pathname === "./runner.js") {
 		// special case to redirect to the qt runner instead
 		pathname = "../../qt/UnitTest/runner.js";
 	}
+	if (pathname === "./TestSuiteModule.js") {
+		// special case to redirect to qt instead
+		pathname = "../../qt/UnitTest/TestSuiteModule.js";
+	}
 	
-	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
-	//console.log("require: module.filename is " + module.filename);
+	console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	console.log("require: module.filename is " + module.filename);
 	
 	var base = module.filename ? this.dirname(module.filename) : this.root;
 
@@ -129,5 +140,3 @@ var QmlLoader = require("../lib/QMLLoader.js");
 var ilib = require("../lib/ilib.js");
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
-
-require("./ilib-stubs-dyn.js");

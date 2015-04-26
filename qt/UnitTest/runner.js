@@ -17,84 +17,6 @@
  * limitations under the License.
  */
 
-function TestSuite(pathname) {
-	this.tests = [];
-	this.subSuites = [];
-	this.includes = [];
-	this.contextBits = {};
-	
-	//console.log("new test suite " + pathname);
-	this.path = pathname;
-};
-
-TestSuite.prototype = {
-	include: function (pathname) {
-		this.includes.push(pathname);
-	},
-
-	applyIncludes: function (includes) {
-		this.includes = this.includes.concat(includes);
-	},
-
-	/**
-	 * Add the given subsuite, and run it for the given number of
-	 * iterations. If iterations is not specified or if it is a number
-	 * less than 0, iterations will assumed to be 1.
-	 * 
-	 * @param suite {TestSuite} suite to add
-	 * @param iterations {number|undefined} number of times to run the suite
-	 */
-	addSuite: function (suite, iterations) {
-		this.subSuites.push({
-			tests: suite,
-			iterations: (typeof(iterations) === 'number' && iterations > 0) ? iterations : 1
-		});
-	},
-	
-	addTest: function (test) {
-		this.tests.push(test);
-	},
-	
-	getTests: function() {
-		return this.tests;
-	},
-	
-	addSetup: function(code) {
-		this.setupCode = code;
-	},
-	
-	merge: function(to, from) {
-		for (var p in from) {
-			if (typeof(from[p]) !== 'undefined') {
-				to[p] = from[p];
-			}
-		}
-	},
-	
-	addToContext: function(obj) {
-		this.merge(this.contextBits, obj);
-	},
-	
-	runTests: function(results, root) {
-		//console.log("runTests: for suite " + this.path);
-		var suiteComponent = Qt.createComponent("../../qt/UnitTest/TestEnvironment.qml");
-		if (suiteComponent.status != Component.Ready) {
-		    if (suiteComponent.status == Component.Error)
-		        console.debug("Error: "+ suiteComponent.errorString());
-		    return; // or maybe throw
-		}
-		var suiteRunner = suiteComponent.createObject(null, {
-        	path: this.path,
-        	root: root,
-        	includes: this.includes,
-        	results: results
-        });
-        if (suiteRunner == null) {
-        	console.log("failed to run test suite " + this.path);
-        }
-	}
-};
-
 /**
  * Create a new test runner instance. This class runs the actual tests and
  * collects the results, and summarizes them when it is done. 
@@ -135,6 +57,7 @@ TestRunner.prototype = {
 		var start = new Date();
 		
 		this.subSuites.forEach(function (suite) {
+			//console.log("TestRunner: running suite " + suite.path);
 			suite.runTests(this.results, this.root);
 		}.bind(this));
 		
@@ -246,10 +169,4 @@ if (!module) {
 	};
 }
 
-module.exports.TestSuite = TestSuite;
-module.exports.TestRunner = TestRunner;
-
-//var require = function(path) {
-//	console.log("runner.require called with " + path);
-//	return module.exports;
-//};
+module.exports = TestRunner;

@@ -118,6 +118,9 @@ requireClass.prototype.require = function(pathname) {
 			text = text.replace(new RegExp('"' + match[1] + '"', "g"), '"' + replacement + '"');
 			this.updateRequire.lastIndex = match.index + replacement.length + 2;
 		}
+		// for debugging in chrome with nice file names instead of random ids like "VM (2342)"
+		text = text + "\n//# sourceURL=" + pathname + "\n";
+		
 		// console.log("text is " + text);
 		try {
 			eval(text);

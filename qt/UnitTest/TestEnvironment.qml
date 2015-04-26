@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import FS 1.0 as FS
-import "../../js/src/ilib-qt.js" as QtIlib
+import "../../js2/bin/ilib-qt.js" as QtIlib
 import "./runtests.js" as TestRunner
 
 QtObject {
