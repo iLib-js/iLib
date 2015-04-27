@@ -30,6 +30,8 @@ calendar/thaisolar.js
 calendar/thaisolardate.js
 calendar/persianastro.js
 calendar/persianastrodate.js
+calendar/ethiopic.js
+calendar/ethiopicdate.js
 numprs.js
 numfmt.js
 julianday.js

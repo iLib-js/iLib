@@ -724,7 +724,8 @@ function testGetDayOfWeekSimple1() {
     	timezone: "Etc/UTC",
     	year: 1, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -737,7 +738,8 @@ function testGetDayOfWeekGregorianDay1() {
     	timezone: "Etc/UTC",
     	year: 544,
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -761,7 +763,8 @@ function testGetDayOfWeekSimple2() {
     	timezone: "Etc/UTC",
     	year: 0,
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -774,7 +777,8 @@ function testGetDayOfWeekSimple3() {
     	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
-    	day: 2
+    	day: 2,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -787,7 +791,8 @@ function testGetDayOfWeekSimple4() {
     	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
-    	day: 3
+    	day: 3,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -800,7 +805,8 @@ function testGetDayOfWeekSimple5() {
     	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
-    	day: 4
+    	day: 4,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -813,7 +819,8 @@ function testGetDayOfWeek1() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 9, 
-    	day: 30
+    	day: 30,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -842,7 +849,8 @@ function testGetDayOfWeek2() {
     	timezone: "Etc/UTC",
     	year: 2191, 
     	month: 6, 
-    	day: 10
+    	day: 10,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -855,7 +863,8 @@ function testGetDayOfWeek3() {
     	timezone: "Etc/UTC",
     	year: 1733, 
     	month: 3, 
-    	day: 23
+    	day: 23,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -868,7 +877,8 @@ function testGetDayOfWeek4() {
     	timezone: "Etc/UTC",
     	year: -43, 
     	month: 7, 
-    	day: 24
+    	day: 24,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(td);
@@ -976,7 +986,8 @@ function testThaiSolarDateOnOrBeforeSun() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -992,7 +1003,8 @@ function testThaiSolarDateOnOrBeforeMon() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1007,7 +1019,8 @@ function testThaiSolarDateOnOrBeforeTue() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1022,7 +1035,8 @@ function testThaiSolarDateOnOrBeforeWed() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1037,7 +1051,8 @@ function testThaiSolarDateOnOrBeforeThu() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1052,7 +1067,8 @@ function testThaiSolarDateOnOrBeforeFri() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1067,7 +1083,8 @@ function testThaiSolarDateOnOrBeforeSat() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1100,7 +1117,8 @@ function testThaiSolarDateOnOrAfterSun() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1116,7 +1134,8 @@ function testThaiSolarDateOnOrAfterSunDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1134,7 +1153,8 @@ function testThaiSolarDateOnOrAfterMon() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1149,7 +1169,8 @@ function testThaiSolarDateOnOrAfterMonDate() {
     	timezone: "Etc/UTC",
     	year: 2553,
     	month: 1,
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1166,7 +1187,8 @@ function testThaiSolarDateOnOrAfterTue() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1181,7 +1203,8 @@ function testThaiSolarDateOnOrAfterWed() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1196,7 +1219,8 @@ function testThaiSolarDateOnOrAfterThu() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1211,7 +1235,8 @@ function testThaiSolarDateOnOrAfterThuDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1228,7 +1253,8 @@ function testThaiSolarDateOnOrAfterFri() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1243,7 +1269,8 @@ function testThaiSolarDateOnOrAfterFriDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1260,7 +1287,8 @@ function testThaiSolarDateOnOrAfterSat() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1275,7 +1303,8 @@ function testThaiSolarDateBeforeSun() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1291,7 +1320,8 @@ function testThaiSolarDateBeforeSunDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1309,7 +1339,8 @@ function testThaiSolarDateBeforeMon() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1324,7 +1355,8 @@ function testThaiSolarDateBeforeTue() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1339,7 +1371,8 @@ function testThaiSolarDateBeforeWed() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1354,7 +1387,8 @@ function testThaiSolarDateBeforeThu() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1369,7 +1403,8 @@ function testThaiSolarDateBeforeThuDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1387,7 +1422,8 @@ function testThaiSolarDateBeforeFri() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1402,7 +1438,8 @@ function testThaiSolarDateBeforeFriDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1420,7 +1457,8 @@ function testThaiSolarDateBeforeSat() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1435,7 +1473,8 @@ function testThaiSolarDateAfterSun() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1451,7 +1490,8 @@ function testThaiSolarDateAfterSunDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1469,7 +1509,8 @@ function testThaiSolarDateAfterMon() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1484,7 +1525,8 @@ function testThaiSolarDateAfterTue() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
      });
     assertNotNull(td);
     
@@ -1499,7 +1541,8 @@ function testThaiSolarDateAfterWed() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1514,7 +1557,8 @@ function testThaiSolarDateAfterThu() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1529,7 +1573,8 @@ function testThaiSolarDateAfterFri() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1544,7 +1589,8 @@ function testThaiSolarDateAfterFriDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1562,7 +1608,8 @@ function testThaiSolarDateAfterSat() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1577,7 +1624,8 @@ function testThaiSolarDateAfterSatDate() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1595,7 +1643,8 @@ function testThaiSolarDateTestGetWeekOfYearThisYear() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 7
+    	day: 7,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1607,7 +1656,8 @@ function testThaiSolarDateTestGetWeekOfYearThisYear2() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
-    	day: 25
+    	day: 25,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1619,7 +1669,8 @@ function testThaiSolarDateTestGetWeekOfYearThisYear3() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 10, 
-    	day: 19
+    	day: 19,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1647,7 +1698,8 @@ function testThaiSolarDateTestGetWeekOfYearPreviousYear() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1659,7 +1711,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekLeap() {
     	timezone: "Etc/UTC",
     	year: 2552, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1671,7 +1724,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular1() {
     	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1683,7 +1737,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular2() {
     	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1695,7 +1750,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular3() {
     	timezone: "Etc/UTC",
     	year: 2550, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1707,7 +1763,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular4() {
     	timezone: "Etc/UTC",
     	year: 2549, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1719,7 +1776,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular5() {
     	timezone: "Etc/UTC",
     	year: 2548, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1731,7 +1789,8 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular6() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1743,7 +1802,8 @@ function testThaiSolarDateGetDayOfYearFirstDay() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1755,7 +1815,8 @@ function testThaiSolarDateGetDayOfYearPaddysDay() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 3, 
-    	day: 17
+    	day: 17,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1767,7 +1828,8 @@ function testThaiSolarDateGetDayOfYearPaddysDayLeapYear() {
     	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 3, 
-    	day: 17
+    	day: 17,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1779,7 +1841,8 @@ function testThaiSolarDateGetDayOfYearLastDay() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1791,7 +1854,8 @@ function testThaiSolarDateGetDayOfYearLastDayLeapYear() {
     	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1803,7 +1867,8 @@ function testThaiSolarDateGetWeekOfMonth0() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1815,7 +1880,8 @@ function testThaiSolarDateGetWeekOfMonth1() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 2
+    	day: 2,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1827,7 +1893,8 @@ function testThaiSolarDateGetWeekOfMonth2() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 11
+    	day: 11,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1839,7 +1906,8 @@ function testThaiSolarDateGetWeekOfMonth3() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 20
+    	day: 20,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1851,7 +1919,8 @@ function testThaiSolarDateGetWeekOfMonth4() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 29
+    	day: 29,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1863,7 +1932,8 @@ function testThaiSolarDateGetWeekOfMonth5() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
-    	day: 30
+    	day: 30,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1875,7 +1945,8 @@ function testThaiSolarDateGetWeekOfMonth6() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 9, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1887,7 +1958,8 @@ function testThaiSolarDateGetWeekOfMonth7() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 8, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1899,7 +1971,8 @@ function testThaiSolarDateGetWeekOfMonth8() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 7, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1911,7 +1984,8 @@ function testThaiSolarDateGetWeekOfMonth9() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 6, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1923,7 +1997,8 @@ function testThaiSolarDateGetWeekOfMonthUS() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1935,7 +2010,8 @@ function testThaiSolarDateGetWeekOfMonthDE() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1949,7 +2025,8 @@ function testThaiSolarDateGetEraCE() {
     	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1961,7 +2038,8 @@ function testThaiSolarDateGetEraBCE() {
     	timezone: "Etc/UTC",
     	year: -46, 
     	month: 5, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1973,7 +2051,8 @@ function testThaiSolarDateGetEraCEYear1() {
     	timezone: "Etc/UTC",
     	year: 1, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1985,7 +2064,8 @@ function testThaiSolarDateGetEraCEYear0() {
     	timezone: "Etc/UTC",
     	year: 0, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     

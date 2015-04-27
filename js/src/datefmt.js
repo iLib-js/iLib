@@ -552,6 +552,52 @@ ilib.DateFmt.weekDayLenMap = {
 	"full":   "EEEE"
 };
 
+/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+	 * @param {string} components Format components to search
+	 * @param {string} length Length of the requested format
+	 * @return {string|undefined} the requested format
+	 */
+
+/**
+* @static
+* @public
+* The options may contain any of the following properties:
+*
+* <ul>
+* <li><i>locale</i> - locale to use when formatting the date/time. If the locale is
+* not specified, then the default locale of the app or web page will be used.
+* 
+* <li><i>meridiems</i> - string that specifies what style of meridiems to use with this 
+* format. The choices are "default", "gregorian", "ethiopic", and "chinese". The "default" 
+* style is often the simple Gregorian AM/PM, but the actual style is chosen by the locale. 
+* (For almost all locales, the Gregorian AM/PM style is most frequently used.)
+* The "ethiopic" style uses 5 different meridiems for "morning", "noon", "afternoon", 
+* "evening", and "night". The "chinese" style uses 7 different meridiems corresponding 
+* to the various parts of the day. N.B. Even for the Chinese locales, the default is "gregorian"
+* when formatting dates in the Gregorian calendar.
+* </ul>
+*
+* @param {Object} options options governing the way this date formatter instance works for getting meridiems range
+* @return {Array.<{name:string,start:string,end:string}>}
+*/
+ilib.DateFmt.getMeridiemsRange = function (options) {
+	options = options || {};
+	var args = {};
+	if (options.locale) {
+		args.locale = options.locale;
+	}
+
+	if (options.meridiems) {
+		args.meridiems = options.meridiems;
+	}
+
+	var fmt = new ilib.DateFmt(args);
+
+	return fmt.getMeridiemsRange();
+};
+
 ilib.DateFmt.prototype = {
 	/**
 	 * @protected
@@ -835,6 +881,103 @@ ilib.DateFmt.prototype = {
 	 */
 	getClock: function () {
 		return this.clock || this.locinfo.getClock();
+	},
+	/**
+	 * Return the meridiems range in current locale. 
+	 * @return {Array.<{name:string,start:string,end:string}>}
+	 */
+	getMeridiemsRange: function () {
+		var result;
+		var _getSysString = function (key) {
+			return (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)).toString();
+		};
+
+		switch (this.meridiems) {
+		case "chinese":
+			result = [
+				{
+					name: _getSysString.call(this, "azh0"),
+					start: "00:00",
+					end: "05:59"
+				},
+				{
+					name: _getSysString.call(this, "azh1"),
+					start: "06:00",
+					end: "08:59"
+				},
+				{
+					name: _getSysString.call(this, "azh2"),
+					start: "09:00",
+					end: "11:59"
+				},
+				{
+					name: _getSysString.call(this, "azh3"),
+					start: "12:00",
+					end: "12:59"
+				},
+				{
+					name: _getSysString.call(this, "azh4"),
+					start: "13:00",
+					end: "17:59"
+				},
+				{
+					name: _getSysString.call(this, "azh5"),
+					start: "18:00",
+					end: "20:59"
+				},
+				{
+					name: _getSysString.call(this, "azh6"),
+					start: "21:00",
+					end: "23:59"
+				}
+			];
+			break;
+		case "ethiopic":
+			result = [
+				{
+					name: _getSysString.call(this, "a0-ethiopic"),
+					start: "00:00",
+					end: "05:59"
+				},
+				{
+					name: _getSysString.call(this, "a1-ethiopic"),
+					start: "06:00",
+					end: "06:00"
+				},
+				{
+					name: _getSysString.call(this, "a2-ethiopic"),
+					start: "06:01",
+					end: "11:59"
+				},
+				{
+					name: _getSysString.call(this, "a3-ethiopic"),
+					start: "12:00",
+					end: "17:59"
+				},
+				{
+					name: _getSysString.call(this, "a4-ethiopic"),
+					start: "18:00",
+					end: "23:59"
+				}
+			];
+			break;
+		default:
+			result = [
+				{
+					name: _getSysString.call(this, "a0"),
+					start: "00:00",
+					end: "11:59"
+				},
+				{
+					name: _getSysString.call(this, "a1"),
+					start: "12:00",
+					end: "23:59"
+				}
+			];
+			break;
+		}
+
+		return result;
 	},
 	
 	/**

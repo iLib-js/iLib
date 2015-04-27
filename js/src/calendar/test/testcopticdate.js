@@ -31,7 +31,8 @@ function testCopticRataDieConstructorComponents() {
 		hour: 0,
 		minute: 0,
 		second: 0,
-		millisecond: 0
+		millisecond: 0,
+		timezone: "Etc/UTC"
 	});
 	
 	assertNotNull(crd);
@@ -47,7 +48,8 @@ function testCopticRataDieConstructorComponentsBig() {
 		hour: 12,
 		minute: 30,
 		second: 12,
-		millisecond: 0
+		millisecond: 0,
+		timezone: "Etc/UTC"
 	});
 	
 	assertNotNull(crd);
@@ -568,7 +570,8 @@ function testCopticDateConstructorFull() {
 		hour: 16,
 		minute: 7,
 		second: 12,
-		millisecond: 123
+		millisecond: 123,
+		timezone: "Etc/UTC"
 	});
 	
 	assertNotNull(cd);
@@ -590,7 +593,8 @@ function testCopticDateConstructorFullWithStrings() {
 		hour: "16", 
 		minute: "7", 
 		second: "12", 
-		millisecond: "123"
+		millisecond: "123",
+		timezone: "Etc/UTC"
 	});
 	
 	assertNotNull(cd);
@@ -612,7 +616,8 @@ function testCopticDateConstructorCopy() {
         hour: 16, 
         minute: 7, 
         second: 12, 
-        millisecond: 123
+        millisecond: 123,
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(cd);

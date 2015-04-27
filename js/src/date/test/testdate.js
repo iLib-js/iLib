@@ -249,7 +249,8 @@ function testDateToIlibDate() {
         day: 13,
         hour: 13,
         minute: 37,
-        second: 35
+        second: 35,
+        timezone: "America/Los_Angeles"
     });
     var fmt = new ilib.DateFmt({length: "full"});
     assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(datMyBday)));
@@ -263,7 +264,8 @@ function testDateToIlibString() {
         day: 13,
         hour: 13,
         minute: 37,
-        second: 35
+        second: 35,
+        timezone: "America/Los_Angeles"
     });
     var fmt = new ilib.DateFmt({length: "full"});
     assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(strMyBday)));

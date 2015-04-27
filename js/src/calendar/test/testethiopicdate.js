@@ -31,7 +31,8 @@ function testEthiopicRataDieConstructorComponents() {
         hour: 0,
         minute: 0,
         second: 0,
-        millisecond: 0
+        millisecond: 0,
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(erd);
@@ -47,7 +48,8 @@ function testEthiopicRataDieConstructorComponentsBig() {
         hour: 12,
         minute: 30,
         second: 12,
-        millisecond: 0
+        millisecond: 0,
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(erd);
@@ -567,7 +569,8 @@ function testEthiopicDateConstructorFull() {
         hour: 16,
         minute: 7,
         second: 12,
-        millisecond: 123
+        millisecond: 123,
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(ed);
@@ -589,7 +592,8 @@ function testEthiopicDateConstructorFullWithStrings() {
         hour: "16", 
         minute: "7", 
         second: "12", 
-        millisecond: "123"
+        millisecond: "123",
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(ed);
@@ -611,7 +615,8 @@ function testEthiopicDateConstructorCopy() {
         hour: 16, 
         minute: 7, 
         second: 12, 
-        millisecond: 123
+        millisecond: 123,
+		timezone: "Etc/UTC"
     });
     
     assertNotNull(ed);

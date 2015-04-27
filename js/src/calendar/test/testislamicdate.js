@@ -273,7 +273,8 @@ function testGetDayOfWeek1() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 11,
-		day: 2
+		day: 2,
+    	timezone: "Etc/UTC"
 	});
     
     assertNotNull(id);
@@ -333,7 +334,8 @@ function testIslamicDateTestGetTimeTooEarly() {
     var id = new ilib.Date.IslamicDate({
 		year: 1389,
 		month: 10,
-		day: 21
+		day: 21,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -344,7 +346,8 @@ function testIslamicDateTestGetTimeTooLate() {
     var id = new ilib.Date.IslamicDate({
 		year: 1459,
 		month: 12,
-		day: 13
+		day: 13,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -356,7 +359,8 @@ function testIslamicDateOnOrBeforeSun() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -371,7 +375,8 @@ function testIslamicDateOnOrBeforeMon() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -385,7 +390,8 @@ function testIslamicDateOnOrBeforeTue() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -399,7 +405,8 @@ function testIslamicDateOnOrBeforeWed() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -413,7 +420,8 @@ function testIslamicDateOnOrBeforeThu() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -427,7 +435,8 @@ function testIslamicDateOnOrBeforeFri() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -441,7 +450,8 @@ function testIslamicDateOnOrBeforeSat() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -455,7 +465,8 @@ function testIslamicDateOnOrAfterSun() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -470,7 +481,8 @@ function testIslamicDateOnOrAfterMon() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -484,7 +496,8 @@ function testIslamicDateOnOrAfterTue() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -498,7 +511,8 @@ function testIslamicDateOnOrAfterWed() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -512,7 +526,8 @@ function testIslamicDateOnOrAfterThu() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -526,7 +541,8 @@ function testIslamicDateOnOrAfterFri() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -540,7 +556,8 @@ function testIslamicDateOnOrAfterSat() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -554,7 +571,8 @@ function testIslamicDateBeforeSun() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -569,7 +587,8 @@ function testIslamicDateBeforeMon() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -583,7 +602,8 @@ function testIslamicDateBeforeTue() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -597,7 +617,8 @@ function testIslamicDateBeforeWed() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -611,7 +632,8 @@ function testIslamicDateBeforeThu() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -625,7 +647,8 @@ function testIslamicDateBeforeFri() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -639,7 +662,8 @@ function testIslamicDateBeforeSat() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -653,7 +677,8 @@ function testIslamicDateAfterSun() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -668,7 +693,8 @@ function testIslamicDateAfterMon() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -682,7 +708,8 @@ function testIslamicDateAfterTue() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -696,7 +723,8 @@ function testIslamicDateAfterWed() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -710,7 +738,8 @@ function testIslamicDateAfterThu() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -724,7 +753,8 @@ function testIslamicDateAfterFri() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -738,7 +768,8 @@ function testIslamicDateAfterSat() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -752,7 +783,8 @@ function testIslamicDateTestGetWeekOfYearThisYear() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 2,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -763,7 +795,8 @@ function testIslamicDateTestGetWeekOfYearThisYear2() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 3,
-		day: 19
+		day: 19,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -774,7 +807,8 @@ function testIslamicDateTestGetWeekOfYearThisYear3() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -800,7 +834,8 @@ function testIslamicDateTestGetWeekOfYearPreviousYear() {
     var id = new ilib.Date.IslamicDate({
 		year: 1428,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -811,7 +846,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekLeap() {
     var id = new ilib.Date.IslamicDate({
 		year: 1429,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -822,7 +858,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular1() {
     var id = new ilib.Date.IslamicDate({
 		year: 1428,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -833,7 +870,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular2() {
     var id = new ilib.Date.IslamicDate({
 		year: 1427,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -844,7 +882,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular3() {
     var id = new ilib.Date.IslamicDate({
 		year: 1426,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -855,7 +894,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular4() {
     var id = new ilib.Date.IslamicDate({
 		year: 1425,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -866,7 +906,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular5() {
     var id = new ilib.Date.IslamicDate({
 		year: 1424,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -877,7 +918,8 @@ function testIslamicDateTestGetWeekOfYearLastWeekRegular6() {
     var id = new ilib.Date.IslamicDate({
 		year: 1423,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -888,7 +930,8 @@ function testIslamicDateGetDayOfYearFirstDay() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -899,7 +942,8 @@ function testIslamicDateGetDayOfYearMidYear() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 3,
-		day: 17
+		day: 17,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -910,7 +954,8 @@ function testIslamicDateGetDayOfYearLastDay() {
     var id = new ilib.Date.IslamicDate({
 		year: 1430,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -921,7 +966,8 @@ function testIslamicDateGetDayOfYearLastDayLeapYear() {
     var id = new ilib.Date.IslamicDate({
 		year: 1431,
 		month: 12,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -932,7 +978,8 @@ function testIslamicDateGetWeekOfMonth0() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -943,7 +990,8 @@ function testIslamicDateGetWeekOfMonth1() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 2
+		day: 2,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -954,7 +1002,8 @@ function testIslamicDateGetWeekOfMonth2() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 11
+		day: 11,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -965,7 +1014,8 @@ function testIslamicDateGetWeekOfMonth3() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 20
+		day: 20,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -976,7 +1026,8 @@ function testIslamicDateGetWeekOfMonth4() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -987,7 +1038,8 @@ function testIslamicDateGetWeekOfMonth5() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 3,
-		day: 30
+		day: 30,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -998,7 +1050,8 @@ function testIslamicDateGetWeekOfMonth6() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 4,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1009,7 +1062,8 @@ function testIslamicDateGetWeekOfMonth7() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 5,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1020,7 +1074,8 @@ function testIslamicDateGetWeekOfMonth8() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 6,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1031,7 +1086,8 @@ function testIslamicDateGetWeekOfMonth9() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 7,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1042,7 +1098,8 @@ function testIslamicDateGetWeekOfMonthUS() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 8,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1053,7 +1110,8 @@ function testIslamicDateGetWeekOfMonthDE() {
     var id = new ilib.Date.IslamicDate({
 		year: 1432,
 		month: 8,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1066,7 +1124,8 @@ function testIslamicDateGetEraAH() {
     var id = new ilib.Date.IslamicDate({
 		year: 2011,
 		month: 5,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1092,7 +1151,8 @@ function testIslamicDateGetEraAHYear1() {
     var id = new ilib.Date.IslamicDate({
 		year: 1,
 		month: 1,
-		day: 1
+		day: 1,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -1103,7 +1163,8 @@ function testIslamicDateGetEraBAHYear0() {
     var id = new ilib.Date.IslamicDate({
 		year: 0,
 		month: 12,
-		day: 29
+		day: 29,
+    	timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     

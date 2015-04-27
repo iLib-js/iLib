@@ -2,7 +2,7 @@
  * testdatefmtrange_gu_in.js - test the date range formatter object in Gujrati/India
  * 
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-function testDateRngFmtinRangeinDayShort() {
+function testDateRngFmtgu_INRangeinDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -40,9 +40,10 @@ function testDateRngFmtinRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી – 02:30 બપોર પછી 31/12/11", fmt.format(start, end));
+	
+    assertEquals("01:45 PM – 02:30 PM 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayMedium() {
+function testDateRngFmtgu_INRangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -64,9 +65,9 @@ function testDateRngFmtinRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી – 02:30 બપોર પછી 31 12, 2011", fmt.format(start, end));
+    assertEquals("01:45 PM – 02:30 PM 31 12, 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayLong() {
+function testDateRngFmtgu_INRangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -88,9 +89,9 @@ function testDateRngFmtinRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી – 02:30 બપોર પછી 31, ડિસે 2011", fmt.format(start, end));
+    assertEquals("01:45 PM – 02:30 PM 31, ડિસે 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayFull() {
+function testDateRngFmtgu_INRangeinDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -112,10 +113,10 @@ function testDateRngFmtinRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી – 02:30 બપોર પછી 31 ડિસેમ્બર, 2011", fmt.format(start, end));
+    assertEquals("01:45 PM – 02:30 PM 31 ડિસેમ્બર, 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextDayShort() {
+function testDateRngFmtgu_INRangeNextDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -137,9 +138,9 @@ function testDateRngFmtinRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી 30/12/11 – 02:30 બપોર પછી 31/12/11", fmt.format(start, end));
+    assertEquals("01:45 PM 30/12/11 – 02:30 PM 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayMedium() {
+function testDateRngFmtgu_INRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -161,9 +162,9 @@ function testDateRngFmtinRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી 30/12/2011 – 02:30 બપોર પછી 31/12/2011", fmt.format(start, end));
+    assertEquals("01:45 PM 30/12/2011 – 02:30 PM 31/12/2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayLong() {
+function testDateRngFmtgu_INRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -185,9 +186,9 @@ function testDateRngFmtinRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી 30 – 02:30 બપોર પછી 31 ડિસે,2011", fmt.format(start, end));
+    assertEquals("01:45 PM 30 – 02:30 PM 31 ડિસે,2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayFull() {
+function testDateRngFmtgu_INRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -209,10 +210,10 @@ function testDateRngFmtinRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 બપોર પછી 30 – 02:30 બપોર પછી 31 ડિસેમ્બર,2011", fmt.format(start, end));
+    assertEquals("01:45 PM 30 – 02:30 PM 31 ડિસેમ્બર,2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiDayShort() {
+function testDateRngFmtgu_INRangeMultiDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -236,7 +237,7 @@ function testDateRngFmtinRangeMultiDayShort() {
 	});
     assertEquals("20/12/11 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayMedium() {
+function testDateRngFmtgu_INRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -260,7 +261,7 @@ function testDateRngFmtinRangeMultiDayMedium() {
 	});
     assertEquals("20/12/2011 – 31/12/2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayLong() {
+function testDateRngFmtgu_INRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -284,7 +285,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 	});
     assertEquals("20 – 31 ડિસે,2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayFull() {
+function testDateRngFmtgu_INRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -309,7 +310,7 @@ function testDateRngFmtinRangeMultiDayFull() {
     assertEquals("20 – 31 ડિસેમ્બર,2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextMonthShort() {
+function testDateRngFmtgu_INRangeNextMonthShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -333,7 +334,7 @@ function testDateRngFmtinRangeNextMonthShort() {
 	});
     assertEquals("20/11/11 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthMedium() {
+function testDateRngFmtgu_INRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -357,7 +358,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 	});
     assertEquals("20/11/2011 – 31/12/2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthLong() {
+function testDateRngFmtgu_INRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -381,7 +382,7 @@ function testDateRngFmtinRangeNextMonthLong() {
 	});
     assertEquals("20 નવે – 31 ડિસે 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthFull() {
+function testDateRngFmtgu_INRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -406,7 +407,7 @@ function testDateRngFmtinRangeNextMonthFull() {
     assertEquals("20 નવેમ્બર – 31 ડિસેમ્બર 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextYearShort() {
+function testDateRngFmtgu_INRangeNextYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -430,7 +431,7 @@ function testDateRngFmtinRangeNextYearShort() {
 	});
     assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearMedium() {
+function testDateRngFmtgu_INRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -454,7 +455,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 	});
     assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearLong() {
+function testDateRngFmtgu_INRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -478,7 +479,7 @@ function testDateRngFmtinRangeNextYearLong() {
 	});
     assertEquals("20 નવે,2011 – 31 જાન્યુ,2012", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearFull() {
+function testDateRngFmtgu_INRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -503,7 +504,7 @@ function testDateRngFmtinRangeNextYearFull() {
     assertEquals("20 નવેમ્બર,2011 – 31 જાન્યુઆરી,2012", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiYearShort() {
+function testDateRngFmtgu_INRangeMultiYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -527,7 +528,7 @@ function testDateRngFmtinRangeMultiYearShort() {
 	});
     assertEquals("11/11 – 01/14", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearMedium() {
+function testDateRngFmtgu_INRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -551,7 +552,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 	});
     assertEquals("11/2011 – 01/2014", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearLong() {
+function testDateRngFmtgu_INRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -575,7 +576,7 @@ function testDateRngFmtinRangeMultiYearLong() {
 	});
     assertEquals("નવે 2011 – જાન્યુ 2014", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearFull() {
+function testDateRngFmtgu_INRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -599,7 +600,7 @@ function testDateRngFmtinRangeMultiYearFull() {
 	});
     assertEquals("નવેમ્બર 2011 – જાન્યુઆરી 2014", fmt.format(start, end));
 }
-function testDateRngFmtinManyYearsFull() {
+function testDateRngFmtgu_INManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "gu-IN", length: "full"});
     assertNotNull(fmt);
     

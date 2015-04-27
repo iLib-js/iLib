@@ -595,7 +595,8 @@ function testGetDayOfWeek1() {
     var pd = new ilib.Date.PersDate({
 		year: 1393,
 		month: 3,
-		day: 16
+		day: 16,
+		timezone: "Etc/UTC"
 	});
     
     assertNotNull(pd);
@@ -610,7 +611,8 @@ function testGetDayOfWeekWithTime() {
 		day: 16,
 		hour: 8,
 		minute: 39,
-		second: 34
+		second: 34,
+		timezone: "Etc/UTC"
 	});
     
     assertNotNull(pd);
@@ -655,7 +657,8 @@ function testPersDateAstroTestGetTimeTooEarly() {
     var pd = new ilib.Date.PersDate({
 		year: 1348,
 		month: 10,
-		day: 10
+		day: 10,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -666,7 +669,8 @@ function testPersDateAstroTestGetTimeTooLate() {
     var pd = new ilib.Date.PersDate({
 		year: 1416,
 		month: 11,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -678,7 +682,8 @@ function testPersDateAstroOnOrBeforeSun() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -693,7 +698,8 @@ function testPersDateAstroOnOrBeforeMon() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -707,7 +713,8 @@ function testPersDateAstroOnOrBeforeTue() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -721,7 +728,8 @@ function testPersDateAstroOnOrBeforeWed() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -735,7 +743,8 @@ function testPersDateAstroOnOrBeforeThu() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -749,7 +758,8 @@ function testPersDateAstroOnOrBeforeFri() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -763,7 +773,8 @@ function testPersDateAstroOnOrBeforeSat() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -777,7 +788,8 @@ function testPersDateAstroOnOrAfterSun() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -792,7 +804,8 @@ function testPersDateAstroOnOrAfterMon() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -806,7 +819,8 @@ function testPersDateAstroOnOrAfterTue() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -820,7 +834,8 @@ function testPersDateAstroOnOrAfterWed() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -834,7 +849,8 @@ function testPersDateAstroOnOrAfterThu() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -848,7 +864,8 @@ function testPersDateAstroOnOrAfterFri() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -862,7 +879,8 @@ function testPersDateAstroOnOrAfterSat() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -876,7 +894,8 @@ function testPersDateAstroBeforeSun() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -891,7 +910,8 @@ function testPersDateAstroBeforeMon() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -905,7 +925,8 @@ function testPersDateAstroBeforeTue() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -919,7 +940,8 @@ function testPersDateAstroBeforeWed() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -933,7 +955,8 @@ function testPersDateAstroBeforeThu() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -947,7 +970,8 @@ function testPersDateAstroBeforeFri() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -961,7 +985,8 @@ function testPersDateAstroBeforeSat() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -975,7 +1000,8 @@ function testPersDateAstroAfterSun() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -990,7 +1016,8 @@ function testPersDateAstroAfterMon() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1004,7 +1031,8 @@ function testPersDateAstroAfterTue() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1018,7 +1046,8 @@ function testPersDateAstroAfterWed() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1032,7 +1061,8 @@ function testPersDateAstroAfterThu() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1046,7 +1076,8 @@ function testPersDateAstroAfterFri() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1060,7 +1091,8 @@ function testPersDateAstroAfterSat() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 27
+		day: 27,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1074,7 +1106,8 @@ function testPersDateAstroTestGetWeekOfYearThisYear() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 2,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1085,7 +1118,8 @@ function testPersDateAstroTestGetWeekOfYearThisYear2() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 19
+		day: 19,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1096,7 +1130,8 @@ function testPersDateAstroTestGetWeekOfYearThisYear3() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1122,7 +1157,8 @@ function testPersDateAstroTestGetWeekOfYearPreviousYear() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1133,7 +1169,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekLeap() {
     var pd = new ilib.Date.PersDate({
 		year: 1383,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1144,7 +1181,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular1() {
     var pd = new ilib.Date.PersDate({
 		year: 1389,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1155,7 +1193,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular2() {
     var pd = new ilib.Date.PersDate({
 		year: 1390,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1166,7 +1205,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular3() {
     var pd = new ilib.Date.PersDate({
 		year: 1391,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1177,7 +1217,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular4() {
     var pd = new ilib.Date.PersDate({
 		year: 1392,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1188,7 +1229,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular5() {
     var pd = new ilib.Date.PersDate({
 		year: 1393,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1199,7 +1241,8 @@ function testPersDateAstroTestGetWeekOfYearLastWeekRegular6() {
     var pd = new ilib.Date.PersDate({
 		year: 1394,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1210,7 +1253,8 @@ function testPersDateAstroGetDayOfYearFirstDay() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1221,7 +1265,8 @@ function testPersDateAstroGetDayOfYearMidYear() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 17
+		day: 17,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1232,7 +1277,8 @@ function testPersDateAstroGetDayOfYearLastDay() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1243,7 +1289,8 @@ function testPersDateAstroGetDayOfYearLastDayLeapYear() {
     var pd = new ilib.Date.PersDate({
 		year: 1387,
 		month: 12,
-		day: 30
+		day: 30,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1254,7 +1301,8 @@ function testPersDateAstroGetWeekOfMonth0() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1265,7 +1313,8 @@ function testPersDateAstroGetWeekOfMonth1() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 4
+		day: 4,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1276,7 +1325,8 @@ function testPersDateAstroGetWeekOfMonth2() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 11
+		day: 11,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1287,7 +1337,8 @@ function testPersDateAstroGetWeekOfMonth3() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 20
+		day: 20,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1298,7 +1349,8 @@ function testPersDateAstroGetWeekOfMonth4() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1309,7 +1361,8 @@ function testPersDateAstroGetWeekOfMonth5() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 31
+		day: 31,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1320,7 +1373,8 @@ function testPersDateAstroGetWeekOfMonth6() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 4,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1331,7 +1385,8 @@ function testPersDateAstroGetWeekOfMonth7() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1342,7 +1397,8 @@ function testPersDateAstroGetWeekOfMonth8() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 6,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1353,7 +1409,8 @@ function testPersDateAstroGetWeekOfMonth9() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 7,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1364,7 +1421,8 @@ function testPersDateAstroGetWeekOfMonthIR0() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1375,7 +1433,8 @@ function testPersDateAstroGetWeekOfMonthIR1() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 4
+		day: 4,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1386,7 +1445,8 @@ function testPersDateAstroGetWeekOfMonthIR2() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 11
+		day: 11,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1397,7 +1457,8 @@ function testPersDateAstroGetWeekOfMonthIR3() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 20
+		day: 20,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1408,7 +1469,8 @@ function testPersDateAstroGetWeekOfMonthIR4() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1419,7 +1481,8 @@ function testPersDateAstroGetWeekOfMonthIR5() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 3,
-		day: 31
+		day: 31,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1430,7 +1493,8 @@ function testPersDateAstroGetWeekOfMonthIR6() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 4,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1441,7 +1505,8 @@ function testPersDateAstroGetWeekOfMonthIR7() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1452,7 +1517,8 @@ function testPersDateAstroGetWeekOfMonthIR8() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 6,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1463,7 +1529,8 @@ function testPersDateAstroGetWeekOfMonthIR9() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 7,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1474,7 +1541,8 @@ function testPersDateAstroGetWeekOfMonthIR10() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1485,7 +1553,8 @@ function testPersDateAstroGetWeekOfMonthIR11() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 9,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1496,7 +1565,8 @@ function testPersDateAstroGetWeekOfMonthIR12() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 10,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1507,7 +1577,8 @@ function testPersDateAstroGetWeekOfMonthIR13() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 11,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1518,7 +1589,8 @@ function testPersDateAstroGetWeekOfMonthIR14() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 12,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1529,7 +1601,8 @@ function testPersDateAstroGetWeekOfMonthUS() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1540,7 +1613,8 @@ function testPersDateAstroGetWeekOfMonthDE() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 8,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1553,7 +1627,8 @@ function testPersDateAstroGetEraAP() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
 		month: 5,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1579,7 +1654,8 @@ function testPersDateAstroGetEraAPYear1() {
     var pd = new ilib.Date.PersDate({
 		year: 1,
 		month: 1,
-		day: 1
+		day: 1,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     
@@ -1590,7 +1666,8 @@ function testPersDateAstroGetEraBAPYear0() {
     var pd = new ilib.Date.PersDate({
 		year: 0,
 		month: 12,
-		day: 29
+		day: 29,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(pd);
     

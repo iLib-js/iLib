@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ga_IE.js - test the date formatter object in Irish Gaelic
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ function testDateFmtSimpleShort_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_ga_IE() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 MFómh 29", fmt.format(date));
+    assertEquals("29 MFómh 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_ga_IE() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11-9-29", fmt.format(date));
+    assertEquals("13:45 29/9/11", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ga_IE() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 MFómh 29", fmt.format(date));
+    assertEquals("13:45 29 MFómh 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ga_IE() {
@@ -228,6 +228,23 @@ function testDateFmtDateTimeSimpleFull_ga_IE() {
     assertEquals("13:45 29 Meán Fómhair 2011", fmt.format(date));
 }
 
+function testDateFmtDateTimeFullwithUseNativeFalse_ga_IE() {
+    var fmt= new ilib.DateFmt({locale:"ga-IE",length: "full", type:"datetime", date: "dmwy", time:"hma", useNative:false});
+
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "ga-IE",
+		year: 2015,
+		month: 4,
+		day: 8,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("13:45 Dé Céadaoin, 8 Aib 2015 ", fmt.format(date));
+}
 
 function testDateFmtTemplateCalendar_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", calendar: "julian", template: "yyyy-MM-dd"});
@@ -469,7 +486,7 @@ function testDateFmtShortDateComponentsDM_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-29", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_ga_IE() {
@@ -486,7 +503,7 @@ function testDateFmtShortDateComponentsMY_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ga_IE() {
@@ -503,7 +520,7 @@ function testDateFmtShortDateComponentsDMY_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ga_IE() {
@@ -520,7 +537,7 @@ function testDateFmtShortDateComponentsWDM_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 9-29", fmt.format(date));
+    assertEquals("5, 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ga_IE() {
@@ -537,7 +554,7 @@ function testDateFmtShortDateComponentsWDMY_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 11-9-29", fmt.format(date));
+    assertEquals("5, 29/9/11", fmt.format(date));
 }
 
 
@@ -657,7 +674,7 @@ function testDateFmtFullDateComponentsWDM_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Déardaoin MFómh 29", fmt.format(date));
+    assertEquals("Déardaoin 29 MFómh", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_ga_IE() {
@@ -674,7 +691,7 @@ function testDateFmtFullDateComponentsWDMY_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Déardaoin, 2011 MFómh 29", fmt.format(date));
+    assertEquals("Déardaoin, 29 MFómh 2011 ", fmt.format(date));
 }
 
 

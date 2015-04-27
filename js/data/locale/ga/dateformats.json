@@ -3,19 +3,19 @@
         "order": "{time} {date}",
         "date": {
             "dm": {
-                "s": "M-d",
+                "s": "d/M",
                 "m": "d MMM",
-                "l": "MMM d"
+                "l": "d MMM"
             },
             "dmy": {
-                "s": "yy-M-d",
+                "s": "d/M/yy",
                 "m": "d MMM yy",
-                "l": "yyyy MMM d"
+                "l": "d MMM yyyy"
             },
             "my": {
-                "s": "yy-M",
+                "s": "M/yy",
                 "m": "MMM yy",
-                "l": "yyyy MMM"
+                "l": "MMM yyyy"
             },
             "m": {
                 "f": "MMM"
@@ -27,16 +27,16 @@
                 "m": "d"
             },
             "dmwy": {
-                "s": "E, yy-M-d",
-                "m": "EE, yy-M-d",
-                "l": "EEE, yyyy MMM d",
-                "f": "EEEE, yyyy MMM d"
+                "s": "E, d/M/yy",
+                "m": "EE, d M yy",
+                "l": "EEE, d MMM yyyy ",
+                "f": "EEEE, d MMM yyyy "
             },
             "dmw": {
-                "s": "E, M-d",
-                "m": "EE, M-d",
-                "l": "EEEE MMM d",
-                "f": "EEEE MMM d"
+                "s": "E, d/M",
+                "m": "EE, d/M",
+                "l": "EEEE d MMM",
+                "f": "EEEE d MMM"
             },
             "n": {
                 "m": "N"
