@@ -28,11 +28,11 @@ var requireClass = function() {
 	this.updateRequire = /require\(("[^/][^"+]*")\)/g;
 	
 	this.root = Qt.resolvedUrl(".").toString();
-	if (this.root[this.root.length-1] === '/') {
-		this.root = this.normalize(this.root.substring(0,this.root.length-1));
-	}
 	if (this.root.substring(0,7) === "file://") {
 		this.root = this.root.substring(7);
+	}
+	if (this.root[this.root.length-1] === '/') {
+		this.root = this.normalize(this.root.substring(0,this.root.length-1));
 	}
 };
 
@@ -65,23 +65,28 @@ requireClass.prototype.require = function(parent, pathname) {
 
 	if (pathname === "./runner.js") {
 		// special case to redirect to the qt runner instead
-		pathname = "../../qt/UnitTest/runner.js";
-	}
-	if (pathname === "./TestSuiteModule.js") {
+		pathname = this.root + "/../../qt/UnitTest/runner.js";
+	} else if (pathname === "./TestSuiteModule.js") {
 		// special case to redirect to qt instead
-		pathname = "../../qt/UnitTest/TestSuiteModule.js";
-	}
+		pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
+	} else {
+		
+		if (parent && parent.charAt(0) !== '/') {
+			// take care of relative parents (aren't all parents relatives? haha)
+			parent = this.root + '/' + parent;
+		}
+		
+		//console.log("this.root is " + this.root + " and pathname before was " + pathname);
+		//console.log("require: module.filename is " + module.filename);
+		//console.log("require: parent is " + parent);
+		
+		var base = parent || (module.filename && this.dirname(module.filename)) || this.root;
 	
-	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
-	//console.log("require: module.filename is " + module.filename);
-	//console.log("require: parent is " + parent);
-	
-	var base = parent || (module.filename && this.dirname(module.filename)) || this.root;
-
-	//console.log("require: base is " + base);
-	
-	if (pathname.charAt(0) !== '/') {
-		pathname = base + "/" + pathname;
+		//console.log("require: base is " + base);
+		
+		if (pathname.charAt(0) !== '/') {
+			pathname = base + "/" + pathname;
+		}
 	}
 	
 	pathname = this.normalize(pathname);

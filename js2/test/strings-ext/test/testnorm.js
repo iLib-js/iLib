@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
-var NormString = require("./../lib/NormString.js");
-var normtests = require("./strings-ext/test/normdata.js");
+var ilib = require("../lib/ilib.js");
+var NormString = require("../lib/NormString.js");
+var normtests = require("../test/strings-ext/test/normdata.js");
 
 function setUp() {
 	NormString.init();
