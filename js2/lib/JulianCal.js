@@ -155,7 +155,7 @@ JulianCal.prototype.getType = function() {
  * @return {IDate} a date appropriate for this calendar type
  */
 JulianCal.prototype.newDateInstance = function (options) {
-	var JulianDate = require("./JulianDate.js");
+	var JulianDate = module.require("./JulianDate.js");
 	return new JulianDate(options);
 };
 

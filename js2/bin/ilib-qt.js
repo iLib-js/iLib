@@ -43,7 +43,7 @@ var requireClass = function() {
 	
 	this.root = Qt.resolvedUrl(".").toString();
 	if (this.root[this.root.length-1] === '/') {
-		this.root = this.normalize(this.root.substring(0,this.root.length-1) + "/..");
+		this.root = this.normalize(this.root.substring(0,this.root.length-1));
 	}
 	if (this.root.substring(0,7) === "file://") {
 		this.root = this.root.substring(7);
@@ -74,7 +74,7 @@ requireClass.prototype.normalize = function(pathname) {
 	return pathname;
 };
 	
-requireClass.prototype.require = function(pathname) {
+requireClass.prototype.require = function(parent, pathname) {
 	//console.log("------------------------\nrequire: called with " + pathname);
 
 	if (pathname === "./runner.js") {
@@ -86,10 +86,11 @@ requireClass.prototype.require = function(pathname) {
 		pathname = "../../qt/UnitTest/TestSuiteModule.js";
 	}
 	
-	console.log("this.root is " + this.root + " and pathname before was " + pathname);
-	console.log("require: module.filename is " + module.filename);
+	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	//console.log("require: module.filename is " + module.filename);
+	//console.log("require: parent is " + parent);
 	
-	var base = module.filename ? this.dirname(module.filename) : this.root;
+	var base = parent || (module.filename && this.dirname(module.filename)) || this.root;
 
 	//console.log("require: base is " + base);
 	
@@ -116,24 +117,30 @@ requireClass.prototype.require = function(pathname) {
 	var tmp = module.filename;
 	module.filename = pathname;
 	this.loading[pathname] = true;
-	
+	module.require = requireClass.prototype.require.bind(r, this.dirname(pathname));
+
 	var s = Qt.include(pathname);
 	
 	module.filename = tmp;
 	this.loading[pathname] = undefined;
 	
 	if (s.status === s.OK) {
+		module.exports.module = {
+			filename: pathname,
+			require: requireClass.prototype.require.bind(r, this.dirname(pathname))
+		};
 		this.cache[pathname] = module.exports;
 		return module.exports;
 	}
 	
 	console.log("exception was " + JSON.stringify(s.status, undefined, 4));
 	console.log("Failed loading " + pathname);
+	console.trace();
 	return undefined;
 };
 
 var r = new requireClass();
-var require = requireClass.prototype.require.bind(r);
+var require = requireClass.prototype.require.bind(r, undefined);
 
 var QmlLoader = require("../lib/QMLLoader.js");
 

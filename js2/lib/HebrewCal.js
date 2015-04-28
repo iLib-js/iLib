@@ -227,7 +227,7 @@ HebrewCal.prototype.getType = function() {
  * @returns {HebrewDate} a date appropriate for this calendar type
  */
 HebrewCal.prototype.newDateInstance = function (options) {
-	var HebrewDate = require("./HebrewDate.js");
+	var HebrewDate = module.require("./HebrewDate.js");
 	return new HebrewDate(options);
 };
 

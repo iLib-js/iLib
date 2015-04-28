@@ -52,7 +52,7 @@ CopticCal.prototype.constructor = CopticCal;
  * @return {IDate} a date appropriate for this calendar type
  */
 CopticCal.prototype.newDateInstance = function (options) {
-	var CopticDate = require("./CopticDate.js");
+	var CopticDate = module.require("./CopticDate.js");
 	return new CopticDate(options);
 };
 

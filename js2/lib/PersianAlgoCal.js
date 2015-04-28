@@ -131,7 +131,7 @@ PersianAlgoCal.prototype.getType = function() {
  * @return {IDate} a date appropriate for this calendar type
  */
 PersianAlgoCal.prototype.newDateInstance = function (options) {
-	var PersianAlgoDate = require("./PersianAlgoDate.js");
+	var PersianAlgoDate = module.require("./PersianAlgoDate.js");
 	return new PersianAlgoDate(options);
 };
 

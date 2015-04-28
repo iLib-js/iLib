@@ -129,7 +129,7 @@ IslamicCal.prototype.getType = function() {
  * @return {IslamicDate} a date appropriate for this calendar type
  */
 IslamicCal.prototype.newDateInstance = function (options) {
-	var IslamicDate = require("./IslamicDate.js");
+	var IslamicDate = module.require("./IslamicDate.js");
 	return new IslamicDate(options);
 };
 

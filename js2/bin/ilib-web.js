@@ -112,6 +112,7 @@ requireClass.prototype.require = function(pathname) {
 		var tmp = module.filename;
 		module.filename = pathname;
 		module.exports = null;
+		module.require = requireClass.prototype.require.bind(r);
 		
 		while ((match = this.updateRequire.exec(text)) !== null) {
 			replacement = path.normalize(path.join(dirname, match[1]));

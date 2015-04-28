@@ -339,7 +339,7 @@ HanCal.prototype.getType = function() {
  * @return {HanDate} a date appropriate for this calendar type
  */
 HanCal.prototype.newDateInstance = function (options) {
-	var HanDate = require("./HanDate.js");
+	var HanDate = module.require("./HanDate.js");
 	return new HanDate(options);
 };
 

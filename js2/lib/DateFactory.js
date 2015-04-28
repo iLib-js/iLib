@@ -173,7 +173,7 @@ DateFactory._dynLoadDate = function (name) {
 	if (!IDate._constructors[name]) {
 		var entry = DateFactory._dynMap[name];
 		if (entry) {
-			IDate._constructors[name] = require("./" + entry + "Date.js");
+			IDate._constructors[name] = module.require("./" + entry + "Date.js");
 		}
 	}
 	return IDate._constructors[name];

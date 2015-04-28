@@ -96,7 +96,7 @@ EthiopicCal.prototype.getType = function() {
  * @return {IDate} a date appropriate for this calendar type
  */
 EthiopicCal.prototype.newDateInstance = function (options) {
-	var EthiopicDate = require("./EthiopicDate.js");
+	var EthiopicDate = module.require("./EthiopicDate.js");
 	return new EthiopicDate(options);
 };
 

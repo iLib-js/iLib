@@ -64,7 +64,7 @@ ThaiSolarCal.prototype.isLeapYear = function(year) {
  * @return {IDate} a date appropriate for this calendar type
  */
 ThaiSolarCal.prototype.newDateInstance = function (options) {
-	var ThaiSolarDate = require("./ThaiSolarDate.js");
+	var ThaiSolarDate = module.require("./ThaiSolarDate.js");
 	return new ThaiSolarDate(options);
 };
 
