@@ -84,7 +84,6 @@ var MeasurementFactory = function(options) {
 		return undefined;
 	}
 
-	this.amount = options.amount || 0;
 	var measure = undefined;
 
 	for (var c in Measurement._constructors) {

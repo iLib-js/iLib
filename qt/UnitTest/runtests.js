@@ -104,8 +104,8 @@ function runTests(path, root, includes, results) {
 		Qt.include(root + "/tools/jsunit/app/jsUnitCore.js");
 		//console.log("JsUnit.AssertionArgumentError is " + typeof(JsUnit.AssertionArgumentError)); // JSON.stringify(JsUnit.Util, undefined, 4)); // 
 		includes.forEach(function (inc) {
-			//console.log("TestRunner.runTests: now including file " + root + "/js/lib/" + inc);
-			Qt.include(root + "/js2/lib/" + inc);
+			console.log("TestRunner.runTests: now including file " + root + "/js2/test/" + inc);
+			Qt.include(root + "/js2/test/" + inc);
 		}.bind(this));
 		//console.log("TestRunner.runTests: Running " + root + "/js2/test/" + path);
 		var tmp = module.filename;
