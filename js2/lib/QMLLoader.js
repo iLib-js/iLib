@@ -57,19 +57,15 @@ QMLLoader.prototype = new Loader();
 QMLLoader.prototype.parent = Loader;
 QMLLoader.prototype.constructor = QMLLoader;
 
-QMLLoader.prototype._loadFile = function (pathname, sync, success, failure) {
+QMLLoader.prototype._loadFile = function (pathname, sync, cb) {
 	//console.log("_loadFile: attempting to load " + pathname);
 	// use the FileReader plugin to access the local disk synchronously
 	if (this.fr.exists(pathname)) {
 		var text = this.fr.read(pathname);
-		if (text) {
-			success && typeof(success) === 'function' && success(text);
-		} else {
-			failure && typeof(failure) === 'function' && failure();
-		}
+		cb && typeof(cb) === 'function' && cb(text);
 		return text;
 	} else {
-		failure && typeof(failure) === 'function' && failure();
+		cb && typeof(cb) === 'function' && cb();
 		return undefined;
 	}
 };

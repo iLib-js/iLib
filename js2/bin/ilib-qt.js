@@ -22,20 +22,6 @@ var module = {
 	filename:null
 };
 
-function loadFile(pathname, sync, success, failure) {
-	if (sync) {
-		return Qt.include(pathname);
-	} else {
-		Qt.include(pathname, function(obj) {
-			if (obj) {
-				success(obj);
-			} else {
-				failure();
-			}
-		});
-	}
-}
-
 var requireClass = function() {
 	this.cache = {};
 	this.loading = {};
