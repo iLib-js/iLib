@@ -30,11 +30,10 @@ var Calendar = require("./Calendar.js");
  * Construct a new Gregorian calendar object. This class encodes information about
  * a Gregorian calendar.<p>
  * 
- * Depends directive: !depends gregorian.js
  * 
  * @constructor
  * @param {{noinstance:boolean}=} options
- * @implements Calendar
+ * @extends {Calendar}
  */
 var GregorianCal = function(options) {
 	if (!options || !options.noinstance) {

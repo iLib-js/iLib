@@ -84,7 +84,6 @@ var HebrewRataDie = require("./HebrewRataDie.js");
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
- * Depends directive: !depends HebrewDate.js
  * 
  * @constructor
  * @extends IDate

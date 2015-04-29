@@ -68,7 +68,6 @@ var IString = require("./IString.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * Depends directive: !depends AddressFmt.js
  * 
  * @constructor
  * @param {Object} options options that configure how this formatter should work

@@ -54,7 +54,6 @@ var Locale = require("./Locale.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * Depends directive: !depends LocaleMatcher.js
  * 
  * @constructor
  * @param {Object} options parameters to initialize this matcher 

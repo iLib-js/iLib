@@ -17,6 +17,13 @@
  * limitations under the License.
  */
 
+/**
+ * @class
+ * Implementation of Loader for nodejs.
+ * 
+ * @constructor
+ * @private
+ */
 module.exports = function (ilib) {
 	var path = require("./Path.js"),
 		fs = require("fs"),

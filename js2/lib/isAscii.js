@@ -28,7 +28,6 @@ var IString = require("./IString.js");
 /**
  * Return whether or not the first character is in the ASCII range.<p>
  * 
- * Depends directive: !depends isAscii.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is in the ASCII range.

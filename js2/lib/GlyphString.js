@@ -95,7 +95,6 @@ var CType = require("./CType.js");
  * </ul>
  * 
  * 
- * Depends directive: !depends GlyphString.js
  * 
  * @constructor
  * @param {string|IString=} str initialize this instance with this string 

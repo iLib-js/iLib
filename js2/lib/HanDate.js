@@ -114,7 +114,6 @@ var RataDie = require("./RataDie.js");
  * specified in the params, it is assumed that they have the smallest possible
  * value in the range for the property (zero or one).<p>
  * 
- * Depends directive: !depends HanDate.js
  * 
  * @constructor
  * @extends Date

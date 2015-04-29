@@ -61,7 +61,6 @@ var Locale = require("./Locale.js");
  * If the onLoad option is not given, this class will only attempt to load any
  * missing locale data synchronously.
  * 
- * Depends directive: !depends LocaleInfo.js
  * 
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback

@@ -102,7 +102,6 @@ var IString = require("./IString.js");
  * When the freeformAddress is another Address, this will act like a copy
  * constructor.<p>
  * 
- * Depends directive: !depends Address.js
  * 
  * @constructor
  * @param {string|Address} freeformAddress free-form address to parse, or a

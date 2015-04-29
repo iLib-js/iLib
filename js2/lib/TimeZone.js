@@ -132,7 +132,6 @@ var IString = require("./IString.js");
  * but it would entail a much larger set of time zone data that would have to be
  * loaded.  
  * 
- * Depends directive: !depends TimeZone.js
  * 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance

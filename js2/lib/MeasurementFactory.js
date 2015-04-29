@@ -51,7 +51,6 @@ var VolumeUnit = require("./VolumeUnit.js");
 var Measurement = require("./Measurement.js");
 
 /**
- * @class
  * Create a measurement subclass instance based on a particular measure
  * required. The measurement is immutable once
  * it is created, but it can be converted to other measurements later.<p>
@@ -76,7 +75,37 @@ var Measurement = require("./Measurement.js");
  * commonly used scale of grams. 
  * </ul>
  *
- * @constructor
+ * Here are some examples of converting a length into new units. 
+ * The first method is via this factory function by passing the old measurement 
+ * in as the "amount" property.<p>
+ * 
+ * <pre>
+ * var measurement1 = MeasurementFactory({
+ *   amount: 5,
+ *   units: "kilometers"
+ * });
+ * var measurement2 = MeasurementFactory({
+ *   amount: measurement1,
+ *   units: "miles"
+ * });
+ * </pre>
+ * 
+ * The value in measurement2 will end up being about 3.125 miles.<p>
+ * 
+ * The second method uses the convert method.<p>
+ * 
+ * <pre>
+ * var measurement1 = MeasurementFactory({
+ *   amount: 5,
+ *   units: "kilometers"
+ * });
+ * var measurement2 = measurement1.convert("miles");
+ * });
+ * </pre>
+ *
+ * The value in measurement2 will again end up being about 3.125 miles.
+ * 
+ * @static
  * @param {Object=} options options that control the construction of this instance
  */
 var MeasurementFactory = function(options) {

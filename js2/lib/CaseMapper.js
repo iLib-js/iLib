@@ -41,7 +41,6 @@ var IString = require("./IString.js");
  * Default if not specified is "toupper".
  * </ul>
  * 
- * Depends directive: !depends caseMapper.js
  * 
  * @constructor
  * @param {Object=} options options to initialize this mapper 

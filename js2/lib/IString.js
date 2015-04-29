@@ -28,13 +28,17 @@ var Locale = require("./Locale.js");
 
 /**
  * @class
- * Create a new string instance. This string inherits from the Javascript
- * String class, and adds two more methods, fmt and fmtChoice. It can be
- * used anywhere that a normal Javascript string is used. The formatting
- * methods are of course most useful when localizing strings in an app
- * or web site in combination with the ResBundle class.<p>
+ * Create a new ilib string instance. This string inherits from and
+ * extends the Javascript String class. It can be
+ * used almost anywhere that a normal Javascript string is used, though in
+ * some instances you will need to call the {@link #toString} method when
+ * a built-in Javascript string is needed. The formatting methods are 
+ * methods that are not in the intrinsic String class and are most useful
+ * when localizing strings in an app or web site in combination with 
+ * the ResBundle class.<p>
  * 
- * Depends directive: !depends IString.js
+ * This class is named IString ("ilib string") so as not to conflict with the 
+ * built-in Javascript String class.
  * 
  * @constructor
  * @param {string|IString=} string initialize this instance with this string 

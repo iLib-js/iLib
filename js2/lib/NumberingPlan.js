@@ -62,10 +62,8 @@ var Locale = require("./Locale.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * Depends directive: !depends NumPlan.js
- * 
+ * @private
  * @constructor
- * @package
  * @param {Object} options options governing the way this plan is loaded
  */
 var NumberingPlan = function (options) {

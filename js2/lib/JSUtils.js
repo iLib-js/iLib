@@ -28,7 +28,6 @@ var JSUtils = {};
  * copies the assignments of the source properties to the target properties, 
  * but not recursively from there.<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @static
  * @param {Object} source the source object to copy properties from
@@ -172,7 +171,6 @@ JSUtils.isDate = function(object) {
  * 
  * Name1 and name2 are for creating debug output only. They are not necessary.<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @static
  * @param {*} object1 the object to merge into
@@ -217,7 +215,6 @@ JSUtils.merge = function (object1, object2, replace, name1, name2) {
 /**
  * Return true if the given object has no properties.<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @static
  * @param {Object} obj the object to check

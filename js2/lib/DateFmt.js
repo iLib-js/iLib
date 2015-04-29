@@ -295,7 +295,6 @@ var GregorianCal = require("./GregorianCal.js");
  * All other options will be ignored and their corresponding getter methods will
  * return the empty string.<p>
  * 
- * Depends directive: !depends DateFmt.js
  * 
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works

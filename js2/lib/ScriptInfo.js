@@ -51,7 +51,6 @@ var Utils = require("./Utils.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * Depends directive: !depends ScriptInfo.js
  * 
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script

@@ -92,7 +92,8 @@ var Currency = require("./Currency.js");
  * </ul>
  * <p>
  * 
- * Depends directive: !depends INumber.js
+ * This class is named INumber ("ilib number") so as not to conflict with the 
+ * built-in Javascript Number class.
  * 
  * @constructor
  * @param {string|number|INumber|Number|undefined} str a string to parse as a number, or a number value

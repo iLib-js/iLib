@@ -27,7 +27,6 @@ var isDigit = require("./isDigit.js");
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
  * 
- * Depends directive: !depends isAlnum.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is alphabetic or numeric

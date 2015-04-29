@@ -20,8 +20,6 @@
 
 /**
  * @class
- * [Need Comments] globals console PhoneLocale 
- *
  * @private
  * @constructor
  */
@@ -524,6 +522,7 @@ PhoneHandler.prototype = {
 /**
  * @class
  * @private
+ * @extends PhoneHandler
  * @constructor
  */
 var CSStateHandler = function () {
@@ -555,6 +554,7 @@ CSStateHandler.prototype.special = function (number, currentChar, fields, region
 /**
  * @class
  * @private
+ * @extends PhoneHandler
  * @constructor
  */
 var USStateHandler = function () {
@@ -577,7 +577,12 @@ USStateHandler.prototype.vsc = function (number, currentChar, fields, regionSett
 };
 
 /**
+ * Creates a phone handler instance that is correct for the locale. Phone handlers are
+ * used to handle parsing of the various fields in a phone number.
+ * 
+ * @protected
  * @static
+ * @return {PhoneHandler} the correct phone handler for the locale
  */
 var PhoneHandlerFactory = function (locale, plan) {
 	if (plan.getContextFree() !== undefined && typeof(plan.getContextFree()) === 'boolean' && plan.getContextFree() === false) {

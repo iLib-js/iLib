@@ -73,6 +73,7 @@ var Calendar = require("./Calendar.js");
  * the locale are specified, then the calendar for the default locale will
  * be used. 
  * 
+ * @static
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
  * @return {Calendar} an instance of a calendar object of the appropriate type

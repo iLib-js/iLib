@@ -30,10 +30,9 @@ var Calendar = require("./Calendar.js");
  * Construct a new Ethiopic calendar object. This class encodes information about
  * a Ethiopic calendar.<p>
  * 
- * Depends directive: !depends ethiopic.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var EthiopicCal = function() {
 	this.type = "ethiopic";

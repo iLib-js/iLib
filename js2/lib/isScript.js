@@ -31,7 +31,6 @@ var IString = require("./IString.js");
  * in the given script. The script is given as the 4-letter ISO
  * 15924 script code.<p>
  * 
- * Depends directive: !depends isScript.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @param {string} script the 4-letter ISO 15924 to query against

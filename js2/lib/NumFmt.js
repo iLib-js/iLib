@@ -139,7 +139,6 @@ var INumber = require("./INumber.js");
  * </ul>
  * <p>
  *
- * Depends directive: !depends NumFmt.js
  *
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave

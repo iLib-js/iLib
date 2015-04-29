@@ -29,7 +29,6 @@ var IString = require("./IString.js");
 /**
  * Return whether or not the first character is a whitespace character.<p>
  * 
- * Depends directive: !depends isSpace.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a whitespace character.

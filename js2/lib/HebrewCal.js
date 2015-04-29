@@ -38,10 +38,9 @@ var Calendar = require("./Calendar.js");
  * a calendar based on calculations rather than observations to determine the 
  * beginning of lunar months, and therefore the dates of holidays.<p>
  * 
- * Depends directive: !depends hebrew.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var HebrewCal = function() {
 	this.type = "hebrew";

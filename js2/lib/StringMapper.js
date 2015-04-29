@@ -67,7 +67,6 @@ var IString = require("./IString.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * Depends directive: !depends Mapper.js
  * 
  * @constructor
  * @param {Object=} options options to initialize this string mapper 

@@ -101,7 +101,6 @@ var ResBundle = require("./ResBundle.js");
  * </ul>
  * <p>
  * 
- * Depends directive: !depends DurFmt.js
  * 
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works

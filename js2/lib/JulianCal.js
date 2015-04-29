@@ -29,10 +29,9 @@ var Calendar = require("./Calendar.js");
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
- * Depends directive: !depends julian.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var JulianCal = function() {
 	this.type = "julian";

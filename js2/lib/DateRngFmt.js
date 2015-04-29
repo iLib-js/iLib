@@ -125,7 +125,6 @@ var GregorianCal = require("./GregorianCal.js");
  * </ul>
  * <p>
  * 
- * Depends directive: !depends DateRngFmt.js
  * 
  * @constructor
  * @param {Object} options options governing the way this date range formatter instance works

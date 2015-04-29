@@ -30,7 +30,7 @@ var NormString = require("./NormString.js");
  * characters are skipped.
  * 
  * @constructor
- * @protected
+ * @private
  * @param {NormString|string} str a string to get code points from
  * @param {boolean} ignorePunctuation whether or not to ignore punctuation
  * characters

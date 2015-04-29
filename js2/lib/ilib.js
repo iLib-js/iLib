@@ -44,7 +44,7 @@ ilib.getVersion = function () {
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	/** @type {Object|null} */
+	/** @type {{ccc,nfd,nfc,nfkd,nfkc}|null} */
     norm: null,
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
@@ -91,6 +91,7 @@ ilib.setAsPseudoLocale = function (localename) {
 
 /**
  * Reset the list of pseudo locales back to the default single locale of zxx-XX.
+ * @static
  */
 ilib.clearPseudoLocales = function() {
 	ilib.pseudoLocales = [
@@ -162,7 +163,7 @@ ilib._getBrowser = function () {
 
 /**
  * Return true if the global variable is defined on this platform.
- * @protected
+ * @private
  * @static
  * @param {string} name the name of the variable to check
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
@@ -191,7 +192,6 @@ ilib._isGlobal = function(name) {
  * environment it is running in, if it can find that. If not, it will
  * default to the locale "en-US".<p>
  * 
- * Depends directive: !depends ilib.js
  * 
  * @static
  * @param {string|undefined|null} spec the locale specifier for the default locale
@@ -212,7 +212,6 @@ ilib.setLocale = function (spec) {
  * environment it is running in, if it can find that. If not, it will
  * default to the locale "en-US".<p>
  * 
- * Depends directive: !depends ilib.js 
  * 
  * @static
  * @return {string} the locale specifier for the default locale
@@ -280,7 +279,6 @@ ilib.getLocale = function () {
  * environment it is running in, if it can find that. If not, it will
  * default to the the UTC zone "Etc/UTC".<p>
  * 
- * Depends directive: !depends ilib.js
  * 
  * @static
  * @param {string} tz the name of the time zone to set as the default time zone
@@ -297,7 +295,6 @@ ilib.setTimeZone = function (tz) {
  * environment it is running in, if it can find that. If not, it will
  * default to the the zone "local".<p>
  * 
- * Depends directive: !depends ilib.js
  * 
  * @static
  * @return {string} the default time zone for ilib
@@ -502,6 +499,7 @@ ilib.setLoaderCallback = function(loader) {
  * Return the custom Loader instance currently in use with this instance 
  * of ilib. If there is no loader, this method returns undefined.
  * 
+ * @protected
  * @static
  * @return {ilib.Loader|undefined} the loader instance currently in use, or 
  * undefined if there is no such loader

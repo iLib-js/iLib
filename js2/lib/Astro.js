@@ -49,6 +49,7 @@ var Astro = {};
 /**
  * Load in all the data needed for astrological calculations.
  * 
+ * @private
  * @param {boolean} sync
  * @param {*} loadParams
  * @param {function(*)|undefined} callback

@@ -21,6 +21,13 @@ var path = require("./Path.js");
 var ilib = require("./ilib.js");
 var Loader = require("./Loader.js");
 
+/**
+ * @class
+ * An implementation of the Loader class to load locale web pages.
+ * 
+ * @constructor
+ * @private
+ */
 var WebLoader = function(ilib, sync, onLoad) {
 	console.log("new WebLoader instance\n");
 

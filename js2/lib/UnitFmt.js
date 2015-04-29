@@ -117,7 +117,6 @@ var NumFmt = require("./NumFmt.js");
  * Here is an example of how you might use the unit formatter to format a string with
  * the correct units.<p>
  * 
- * Depends directive: !depends UnitFmt.js
  *  
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works

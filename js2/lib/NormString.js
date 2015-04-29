@@ -31,7 +31,6 @@ var GlyphString = require("./GlyphString.js");
  * the GlyphString class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
- * Depends directive: !depends NormString.js
  * 
  * @constructor
  * @param {string|IString=} str initialize this instance with this string 

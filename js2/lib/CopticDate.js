@@ -87,7 +87,6 @@ var CopticRataDie = require("./CopticRataDie.js");
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
- * Depends directive: !depends CopticDate.js
  * 
  * @constructor
  * @extends EthiopicDate

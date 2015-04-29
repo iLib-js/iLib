@@ -28,7 +28,6 @@ var IString = require("./IString.js");
 /**
  * Return whether or not the first character is a blank character.<p>
  * 
- * Depends directive: !depends isBlank.js
  * 
  * ie. a space or a tab.
  * @param {string|IString|number} ch character or code point to examine

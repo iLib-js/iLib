@@ -211,7 +211,6 @@ var IString = require("./IString.js");
  * has occurred, and the number you see at the end of the string tells you 
  * how many characters were truncated.<p>
  * 
- * Depends directive: !depends ResBundle.js
  * 
  * @constructor
  * @param {?Object} options Options controlling how the bundle is created

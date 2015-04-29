@@ -30,10 +30,9 @@ var GregorianCal = require("./GregorianCal.js");
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
  * 
- * Depends directive: !depends thaisolar.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var ThaiSolarCal = function() {
 	this.type = "thaisolar";

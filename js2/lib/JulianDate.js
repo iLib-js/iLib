@@ -97,7 +97,6 @@ var JulianCal = require("./JulianCal.js");
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
- * Depends directive: !depends JulianDate.js
  * 
  * @constructor
  * @extends IDate

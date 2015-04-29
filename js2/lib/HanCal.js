@@ -42,11 +42,10 @@ var GregRataDie = require("./GregRataDie.js");
  * Construct a new Han algorithmic calendar object. This class encodes information about
  * a Han algorithmic calendar.<p>
  * 
- * Depends directive: !depends han.js
  * 
  * @constructor
  * @param {Object=} params optional parameters to load the calendrical data
- * @implements Calendar
+ * @extends {Calendar}
  */
 var HanCal = function(params) {
 	this.type = "han";

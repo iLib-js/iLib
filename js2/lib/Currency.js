@@ -86,7 +86,6 @@ var LocaleInfo = require("./LocaleInfo.js");
  * and only the code property used. If the locale is given, but it is not a known
  * locale, this class will default to the default locale instead.<p>
  * 
- * Depends directive: !depends Currency.js
  * 
  * @constructor
  * @param options {Object} a set of properties to govern how this instance is constructed.

@@ -20,7 +20,13 @@
 var path = require("./Path.js");
 var ilib = require("./ilib.js");
 
-/** @interface */
+/** 
+ * @class
+ * Superclass of the loader classes that contains shared functionality.
+ * 
+ * @private
+ * @constructor
+ */
 var Loader = function(ilib) {
 	// console.log("new Loader instance");
 

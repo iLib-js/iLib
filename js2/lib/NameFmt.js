@@ -121,7 +121,6 @@ var isPunct = require("./isPunct.js");
  * all auxillary words.   
  * </ul>
  * 
- * Depends directive: !depends NameFmt.js
  * 
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave

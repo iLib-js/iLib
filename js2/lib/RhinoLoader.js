@@ -1,5 +1,5 @@
 /*
- * QMLLoader.js - loader implementation for Qt/QML apps. 
+ * RhinoLoader.js - loader implementation for Rhino-based apps. 
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -23,26 +23,23 @@ var Loader = require("./Loader.js");
 
 /**
  * @class
- * QML implemenation of a Loader class.
+ * An implementation of the Loader class for Rhino.
  * 
  * @private
- * @extends Loader
- * @param {Object} fr the Qt FileReader instance
+ * @constructor
  */
-var QMLLoader = function(fr) {
-	//console.log("new QMLLoader instance called with " + fr);
-	this.fr = fr;
+var RhinoLoader = function() {
+	//console.log("new RhinoLoader instance called with " + fr);
 	
 	this.parent.call(this, ilib);
 	
-	this.root = module.filename ? path.dirname(path.join(module.filename, "..")) : Qt.resolvedUrl("..").toString();
+	this.root = module.filename ? path.dirname(path.join(module.filename, "..")) : environment["user.dir"];
 	this.root = this.root.replace("file://", "");
-	//console.log("QMLLoader using root: " + root);
+	//console.log("RhinoLoader using root: " + root);
 	
 	if (this.root[this.root.length-1] === '/') {
 		this.root = this.root.substring(0, this.root.length-1);
 	}
-	
 
 	this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 	
@@ -55,38 +52,30 @@ var QMLLoader = function(fr) {
 	// ... else fall back to see if we're in a check-out dir of ilib
 	// this._exists(path.join(this.root, "data", "locale"), "localeinfo.json");
 	
-	//console.log("QMLLoader: include path is now " + JSON.stringify(this.includePath));
+	//console.log("RhinoLoader: include path is now " + JSON.stringify(this.includePath));
 };
 
-QMLLoader.prototype = new Loader();
-QMLLoader.prototype.parent = Loader;
-QMLLoader.prototype.constructor = QMLLoader;
+RhinoLoader.prototype = new Loader();
+RhinoLoader.prototype.parent = Loader;
+RhinoLoader.prototype.constructor = RhinoLoader;
 
-QMLLoader.prototype._loadFile = function (pathname, sync, cb) {
-	//console.log("_loadFile: attempting to load " + pathname);
-	// use the FileReader plugin to access the local disk synchronously
-	if (this.fr.exists(pathname)) {
-		var text = this.fr.read(pathname);
+RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
+	console.log("RhinoLoader._loadFile: attempting to load " + pathname);
+	var text = undefined;
+	try {
+		text = readFile(pathname);
+	} catch (e) {
+		// ignore
+	} finally {
 		cb && typeof(cb) === 'function' && cb(text);
-		return text;
-	} else {
-		cb && typeof(cb) === 'function' && cb();
-		return undefined;
 	}
+	return text;
 };
 
-QMLLoader.prototype._exists = function(dir, file) {
+RhinoLoader.prototype._exists = function(dir, file) {
 	var fullpath = path.normalize(path.join(dir, file));
-	//console.log("QMLLoader._exists: checking for the existence of " + dir);
-	if (this.fr.exists(fullpath)) {
-		//console.log("QMLLoader._exists: found");
-		this.includePath.push(dir);
-	}
+	console.log("RhinoLoader._exists: checking for the existence of " + dir);
+	return this._loadFile(fullpath) !== undefined;
 };
 
-
-QMLLoader.prototype.getTarget = function () {
-	return this.ilibobj;
-};
-
-module.exports = QMLLoader;
+module.exports = RhinoLoader;

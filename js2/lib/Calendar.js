@@ -18,12 +18,14 @@
  */
 
 /**
- * Interface that all calendars must implement.
+ * @class
+ * Superclass for all calendar subclasses that contains shared 
+ * functionality. This class is never instantiated on its own. Instead,
+ * you should use the {@link CalendarFactory} function to manufacture a new
+ * instance of a subclass of Calendar. 
  * 
- * Depends directive: !depends Calendar.js
- * 
- * @interface
- * @protected
+ * @private
+ * @constructor
  */
 var Calendar = function() {
 };

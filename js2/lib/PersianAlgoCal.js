@@ -29,10 +29,9 @@ var Calendar = require("./Calendar.js");
  * Construct a new Persian algorithmic calendar object. This class encodes information about
  * a Persian algorithmic calendar.<p>
  * 
- * Depends directive: !depends persian.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var PersianAlgoCal = function() {
 	this.type = "persian-algo";

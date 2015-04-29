@@ -24,7 +24,6 @@
  * Do not confuse it with a date in the Julian calendar, which it has very
  * little in common with. The naming is unfortunately close, and comes from history.<p>
  * 
- * Depends directive: !depends JulianDay.js
  * 
  * @constructor
  * @param {number} num the Julian Day expressed as a floating point number 

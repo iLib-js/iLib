@@ -250,7 +250,6 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>noncharacters</i>
  * </ul><p>
  * 
- * Depends directive: !depends CType.js
  * 
  * @protected
  * @param {string|IString|number} ch character or code point to examine

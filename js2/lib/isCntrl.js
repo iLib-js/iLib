@@ -28,7 +28,6 @@ var IString = require("./IString.js");
 /**
  * Return whether or not the first character is a control character.<p>
  * 
- * Depends directive: !depends isCntrl.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a control character.

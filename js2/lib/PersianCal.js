@@ -40,10 +40,9 @@ var PersRataDie = require("./PersRataDie.js");
  * astronomical observations of the sun in Teheran, instead of calculating
  * the leap years based on a regular cyclical rhythm algorithm.<p>
  * 
- * Depends directive: !depends persianastro.js
  * 
  * @constructor
- * @implements Calendar
+ * @extends {Calendar}
  */
 var PersianCal = function() {
 	this.type = "persian";

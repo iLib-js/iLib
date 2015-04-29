@@ -122,7 +122,6 @@ MathUtils.halfodd = function (num) {
  * division algorithm where the remainder of any division, whether the dividend
  * is negative or not, is always a positive number in the range [0, modulus).<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @static
  * @param {number} dividend the number being divided
@@ -145,7 +144,6 @@ MathUtils.mod = function (dividend, modulus) {
  * modulo function differs from the regular modulo function in that when the remainder is
  * zero, the modulus should be returned instead.<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @static
  * @param {number} dividend the number being divided

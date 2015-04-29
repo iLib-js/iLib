@@ -26,7 +26,6 @@ var isCntrl = require("./isCntrl.js");
  * Return whether or not the first character is any printable character,
  * including space.<p>
  * 
- * Depends directive: !depends isPrint.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is printable.

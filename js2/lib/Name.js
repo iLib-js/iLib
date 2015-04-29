@@ -100,7 +100,6 @@ var isSpace = require("./isSpace.js");
  * When formatting the short version of such names, only the paternal family name will
  * be used.
  *
- * Depends directive: !depends Name.js
  *
  * @constructor
  * @param {string|Name=} name the name to parse

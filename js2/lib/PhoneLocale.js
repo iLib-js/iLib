@@ -32,8 +32,12 @@ var Locale = require("./Locale.js");
 
 /**
  * @class
+ * Extension of the locale class that has extra methods to map various numbers
+ * related to phone number parsing.
  *
  * @param {Object} options Options that govern how this phone locale works
+ * 
+ * @private
  * @constructor
  * @extends Locale
  */

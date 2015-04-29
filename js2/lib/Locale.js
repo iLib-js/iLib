@@ -60,7 +60,6 @@ var JSUtils = require("./JSUtils.js");
  * Without any arguments to the constructor, this function returns the locale of
  * the host Javascript engine.<p>
  * 
- * Depends directive: !depends Locale.js
  * 
  * @constructor
  * @param {?string|Locale=} language the ISO 639 2-letter code for the language, or a full 

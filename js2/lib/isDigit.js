@@ -29,7 +29,6 @@ var IString = require("./IString.js");
  * Return whether or not the first character is a digit character in the
  * Latin script.<p>
  * 
- * Depends directive: !depends isDigit.js
  * 
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a digit character in the

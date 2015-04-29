@@ -84,7 +84,6 @@ var IslamicCal = require("./IslamicCal.js");
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
- * Depends directive: !depends IslamicDate.js
  * 
  * @constructor
  * @extends IDate
