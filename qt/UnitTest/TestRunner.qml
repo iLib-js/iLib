@@ -72,14 +72,14 @@ QtObject {
 			ts = new TestSuite(suite[s]);
 			
 			if (assembly === "dynamic") {
-				//ts.include("../bin/ilib-test-dyn.js");
+				//ts.include("../lib/ilib-test-dyn.js");
 				if (set === "legacy") {
 					ts.include("../lib/ilib-stubs-dyn.js");
 				}
 			} else {
 				inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 				ts.include(inc);
-				ts.include("../bin/ilib-test.js");
+				ts.include("../lib/ilib-test.js");
 				ts.include(set === "legacy" ? "../lib/ilib-stubs.js" : "../lib/ilib-stubs-map.js");
 			}
 			
