@@ -21,6 +21,7 @@
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var IString = require("./IString.js");
 var GlyphString = require("./GlyphString.js");
@@ -33,6 +34,7 @@ var GlyphString = require("./GlyphString.js");
  * 
  * 
  * @constructor
+ * @extends GlyphString
  * @param {string|IString=} str initialize this instance with this string 
  */
 var NormString = function (str) {
@@ -90,25 +92,27 @@ NormString.init = function(options) {
 		"nfkd": ["nfkd", "nfd"],
 		"nfkc": ["nfkd", "nfd"]
 	};
-	var files = ["norm.json"];
+	var files = ["normdata.json"];
 	var forms = formDependencies[form];
 	for (var f in forms) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
-	//console.log("loading files " + JSON.stringify(files));
-	Utils._callLoadData(files, sync, loadParams, function(arr) {
-		ilib.data.norm = arr[0];
-		for (var i = 1; i < arr.length; i++) {
-			if (typeof(arr[i]) !== 'undefined') {
-				ilib.data.norm[forms[i-1]] = arr[i];
+	if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
+		//console.log("loading files " + JSON.stringify(files));
+		Utils._callLoadData(files, sync, loadParams, function(arr) {
+			ilib.extend(ilib.data.norm, arr[0]);
+			for (var i = 1; i < arr.length; i++) {
+				if (typeof(arr[i]) !== 'undefined') {
+					ilib.extend(ilib.data.norm[forms[i-1]], arr[i]);
+				}
 			}
-		}
-		
-		if (onLoad) {
-			onLoad(arr);
-		}
-	});
+			
+			if (onLoad) {
+				onLoad(arr);
+			}
+		});
+	}
 };
 
 /**

@@ -94,9 +94,8 @@ var CType = require("./CType.js");
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
- * 
- * 
  * @constructor
+ * @extends IString
  * @param {string|IString=} str initialize this instance with this string 
  * @param {Object=} options options governing the way this instance works
  */
@@ -123,12 +122,12 @@ var GlyphString = function (str, options) {
 			Utils.loadData({
 				object: GlyphString, 
 				locale: "-", 
-				name: "norm.json",
+				name: "normdata.json",
 				nonlocale: true,
 				sync: sync, 
 				loadParams: loadParams, 
 				callback: ilib.bind(this, function (norm) {
-					ilib.data.norm = norm;
+					ilib.extend(ilib.data.norm, norm);
 					if (options && typeof(options.onLoad) === 'function') {
 						options.onLoad(this);
 					}

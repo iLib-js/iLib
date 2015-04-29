@@ -37,15 +37,21 @@ ilib._ver = function() {
  */
 ilib.getVersion = function () {
 	// TODO: need some way of getting the version number under dynamic load code
-    return ilib._ver() || "10.0"; 
+    return ilib._ver() || "11.0"; 
 };
 
 /**
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	/** @type {{ccc,nfd,nfc,nfkd,nfkc}|null} */
-    norm: null,
+	/** @type {{ccc:Object.<string,number>,nfd:Object.<string,string>,nfc:Object.<string,string>,nfkd:Object.<string,string>,nfkc:Object.<string,string>}} */
+    norm: {
+    	ccc: {},
+    	nfd: {},
+    	nfc: {},
+    	nfkd: {},
+    	nfkc: {}
+    },
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
@@ -533,25 +539,27 @@ ilib.isArray = function(object) {
  * 
  * @static
  * @param {Object} object1 the target object to extend
- * @param {Object} object2 the object to mix in to object1
+ * @param {Object=} object2 the object to mix in to object1
  * @return {Object} returns object1
  */
 ilib.extend = function (object1, object2) {
 	var prop = undefined;
-	for (prop in object2) {
-		if (prop && typeof(object2[prop]) !== 'undefined') {
-			if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
-				//console.log("Merging array prop " + prop);
-				object1[prop] = object1[prop].concat(object2[prop]);
-			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-				//console.log("Merging object prop " + prop);
-				if (prop !== "ilib") {
-					object1[prop] = ilib.extend(object1[prop], object2[prop]);
+	if (object2) {
+		for (prop in object2) {
+			if (prop && typeof(object2[prop]) !== 'undefined') {
+				if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
+					//console.log("Merging array prop " + prop);
+					object1[prop] = object1[prop].concat(object2[prop]);
+				} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+					//console.log("Merging object prop " + prop);
+					if (prop !== "ilib") {
+						object1[prop] = ilib.extend(object1[prop], object2[prop]);
+					}
+				} else {
+					//console.log("Copying prop " + prop);
+					// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+					object1[prop] = object2[prop];
 				}
-			} else {
-				//console.log("Copying prop " + prop);
-				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-				object1[prop] = object2[prop];
 			}
 		}
 	}
