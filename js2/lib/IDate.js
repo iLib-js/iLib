@@ -24,10 +24,14 @@ var LocaleInfo = require("./LocaleInfo.js");
 
 /**
  * @class
- * Construct a new date object. 
+ * Superclass for all the calendar date classes that contains shared 
+ * functionality. This class is never instantiated on its own. Instead,
+ * you should use the {@link DateFactory} function to manufacture a new
+ * instance of a subclass of IDate. This class is called IDate for "ilib
+ * date" so that it does not conflict with the built-in Javascript Date
+ * class.
  * 
- * Depends directive: !depends IDate.js
- * 
+ * @private
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */
@@ -114,6 +118,9 @@ IDate.prototype = {
 	},
 	getMilliseconds: function() {
 		return this.millisecond;
+	},
+	getEra: function() {
+		return (this.year < 1) ? -1 : 1;
 	},
 
 	setDays: function(day) {
