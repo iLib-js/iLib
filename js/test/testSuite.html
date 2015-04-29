@@ -1,0 +1,67 @@
+<!--
+testSuite.js - Run all tests
+
+Copyright © 2012-2015, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html>
+<head>
+<script type="text/javascript" src="../../tools/jsunit/app/jsUnitCore.js"></script>
+<script language="JavaScript">
+var iframes = parent.document.getElementsByName("testFrame");
+var url = iframes[0].contentDocument.location.href;
+var i = url.lastIndexOf("/");
+var dir = (i !== -1 ? url.substring(0, i+1) : url);
+
+function suite() {
+    var calSuite = new JsUnitTestSuite();
+    
+//     calSuite.addTestPage(dir + "root/test/testSuite.html");
+//     calSuite.addTestPage(dir + "name/test/testSuite.html");
+//     calSuite.addTestPage(dir + "date/test/testSuite.html");
+//     calSuite.addTestPage(dir + "daterange/test/testSuite.html");
+//     calSuite.addTestPage(dir + "durfmt/test/testSuite.html");
+//     calSuite.addTestPage(dir + "phone/test/testSuite.html");
+//     calSuite.addTestPage(dir + "ctype/test/testSuite.html");
+//     calSuite.addTestPage(dir + "collate/test/testSuite.html");
+//     calSuite.addTestPage(dir + "number/test/testSuite.html");
+//     calSuite.addTestPage(dir + "units/test/testSuite.html");
+//     calSuite.addTestPage(dir + "maps/test/testSuite.html");
+//     calSuite.addTestPage(dir + "strings-ext/test/testSuite.html");
+//     calSuite.addTestPage(dir + "util/test/testSuite.html");
+//     calSuite.addTestPage(dir + "calendar/test/testSuite.html");
+//     calSuite.addTestPage(dir + "address/test/testSuite.html");
+    
+    calSuite.addTestPage(dir + "root/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "name/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "date/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "daterange/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "durfmt/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "phone/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "ctype/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "collate/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "number/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "units/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "maps/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "strings-ext/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "util/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "calendar/legacy/testSuite.html");
+    calSuite.addTestPage(dir + "address/legacy/testSuite.html");
+    return calSuite;
+}
+</script>
+</head>
+</html>
