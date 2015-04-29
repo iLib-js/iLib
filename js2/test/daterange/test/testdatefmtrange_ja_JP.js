@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ja_JP.js - test the date range formatter object in Japanese/Japan
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

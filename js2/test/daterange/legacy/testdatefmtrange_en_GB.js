@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_en_GB.js - test the date range formatter object english/Great Britain
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed unenr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -20,7 +20,7 @@
 /*
  * testdatefmtrange_en_GB.js - test the date range formatter object in German/Germany
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed unenr the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

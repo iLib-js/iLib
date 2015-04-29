@@ -1,7 +1,7 @@
 /*
  * testname_sl_SI.js - test the name object in slovenian
  * 
- * Copyright © 2013, JEGSoft
+ * Copyright © 2013-2015, JEGSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

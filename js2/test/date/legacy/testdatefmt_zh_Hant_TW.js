@@ -1,7 +1,7 @@
 /*
  * testdatefmt_zh_Hant_TW.js - test the date formatter object in Chinese (traditional) for Taiwan
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

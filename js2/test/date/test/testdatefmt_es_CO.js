@@ -1,7 +1,7 @@
 /*
  * testdatefmt_es_CO.js - tCOST the date formatter object in spainish Columbia
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

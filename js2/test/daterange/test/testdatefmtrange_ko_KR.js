@@ -2,7 +2,7 @@
  * testdatefmtrange_ko_KR.js - test the date range formatter object in Korean/Korea
  * 
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tkos file except in compliance with the License.

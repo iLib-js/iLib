@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_kk-Cyrl_KZ.js - test the date range formatter object in Kazakh/Kazakhstan
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance wkk-Cyrlh the License.

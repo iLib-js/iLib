@@ -1,7 +1,7 @@
 /*
  * testname_sk_SK.js - test the name object in slovak
  * 
- * Copyright © 2013, JEPánSoft
+ * Copyright © 2013-2015, JEPánSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

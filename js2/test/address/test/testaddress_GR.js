@@ -1,7 +1,7 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file e18, Heracleous St., Kifissia, 145 64 Athens,GREECEcept in compliance with the License.

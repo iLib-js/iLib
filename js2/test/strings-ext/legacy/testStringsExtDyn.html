@@ -27,6 +27,9 @@ if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
 	// instead of the whole locale "en-US" which the unit tests expect
 	navigator.language = "en-US";
 }
+
+//squeak this mapping in so that require will return the right thing for the tests
+require.moduleMap["normdata.js"] = normtests;
 </script>
 <script language="JavaScript" src="testglyphstr.js"></script>
 <script language="JavaScript" src="normdata.js"></script>

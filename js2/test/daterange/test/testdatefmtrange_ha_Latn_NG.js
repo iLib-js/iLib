@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_Latn_NG.js - test the date range formatter object Ha for Latin script
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed unuzr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.

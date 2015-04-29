@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sr-Latn_RS.js - test the date range formatter object Serbian/Serbia for Latin
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed unsr-Latnr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -22,7 +22,7 @@ var DateRngFmt = require("./../lib/DateRngFmt.js");
 /*
  * testdatefmtrange_sr-Latn_RS.js - test the date range formatter object in German/Germany
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed unsr-Latnr the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

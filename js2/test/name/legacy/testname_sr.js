@@ -1,7 +1,7 @@
 /*
  * testname_sr_Cyrl_RS.js - test the name object in Serbian
  * 
- * Copyright © 2013, JEгосподинSoft
+ * Copyright © 2013-2015, JEгосподинSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

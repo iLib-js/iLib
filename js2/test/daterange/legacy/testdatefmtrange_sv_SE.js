@@ -1,7 +1,7 @@
 /*
  * tsvtdatefmtrange_sv_SE.js - tsvt the date range formatter object in Swedish/Sweden
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance wsvh the License.

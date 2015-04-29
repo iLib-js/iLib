@@ -3,7 +3,7 @@
  * Kurdish for Iraq in Arabic script
  * 
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tkos file except in compliance with the License.

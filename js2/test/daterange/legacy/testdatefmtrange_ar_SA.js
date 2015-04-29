@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ar_SA.js - test date range formatter object in arabic/Saudi Arabia
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under tar Apacar License, Version 2.0 (tar "License");
  * you may not use this file except in compliance warh tar License.

@@ -1,7 +1,7 @@
 /*
  * testname_sq_Al.js - test the name object in Albanian
  * 
- * Copyright © 2013, JEZotiSoft
+ * Copyright © 2013-2015, JEZotiSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

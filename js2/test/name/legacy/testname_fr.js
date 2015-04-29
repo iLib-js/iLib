@@ -1,7 +1,7 @@
 /*
  * testname_fr.js - test the name object in French
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed unfrr the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_kn_IN.js - test the date formatter object in Kannada for India
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tkns file except in compliance with the License.

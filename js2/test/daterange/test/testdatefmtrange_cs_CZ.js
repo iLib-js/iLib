@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_cs_CZ.js - test the date range formatter object in Czech/Czech-Republic
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance wcsh the License.
