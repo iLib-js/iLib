@@ -20,6 +20,5 @@
 // !depends JSUtils.js nfkd/Zyyy.js
 // !depends nfd/Armn.js
 // !data norm nfkd/Armn
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Armn);
 ilib.data.nfkd_Armn = undefined;

@@ -20,6 +20,5 @@
 // !depends JSUtils.js nfkd/Zyyy.js
 // !depends nfd/Hang.js
 // !data norm nfkd/Hang
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Hang);
 ilib.data.nfkd_Hang = undefined;

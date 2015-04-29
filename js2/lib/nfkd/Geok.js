@@ -20,6 +20,5 @@
 // !depends JSUtils.js nfkd/Zyyy.js
 // !depends nfd/Geok.js
 // !data norm nfkd/Geok
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Geok);
 ilib.data.nfkd_Geok = undefined;

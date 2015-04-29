@@ -20,6 +20,5 @@
 // !depends JSUtils.js nfkd/Zyyy.js
 // !depends nfd/Hani.js
 // !data norm nfkd/Hani
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Hani);
 ilib.data.nfkd_Hani = undefined;

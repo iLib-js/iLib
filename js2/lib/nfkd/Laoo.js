@@ -20,6 +20,5 @@
 // !depends JSUtils.js nfkd/Zyyy.js
 // !depends nfd/Laoo.js
 // !data norm nfkd/Laoo
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_Laoo);
 ilib.data.nfkd_Laoo = undefined;

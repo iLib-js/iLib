@@ -20,6 +20,5 @@
 // !depends JSUtils.js 
 // !depends nfd/all.js
 // !data norm nfkd/all
-ilib.data.norm = ilib.data.norm || {};
 ilib.data.norm.nfkd = JSUtils.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_all);
 ilib.data.nfkd_all = undefined;

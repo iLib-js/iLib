@@ -262,7 +262,7 @@ function genCode(script, form) {
 	switch (form) {
 		case 'nfd':
 			str += "// !data norm nfd/" + script + "\n" +
-				"ilib.data.norm = ilib.data.norm || {};\n" +
+				//"ilib.data.norm = ilib.data.norm || {};\n" +
 				"ilib.data.norm.nfd = ilib.merge(ilib.data.norm.nfd || {}, ilib.data.nfd_" + script + ");\n" +
 				"ilib.data.nfd_" + script + " = undefined;";
 			break;
@@ -273,7 +273,7 @@ function genCode(script, form) {
 		case 'nfkd':
 			str += "// !depends nfd/" + script + ".js\n" +
 				"// !data norm nfkd/" + script + "\n" +
-				"ilib.data.norm = ilib.data.norm || {};\n" +
+				//"ilib.data.norm = ilib.data.norm || {};\n" +
 				"ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_" + script + ");\n" +
 				"ilib.data.nfkd_" + script + " = undefined;";
 			break;
