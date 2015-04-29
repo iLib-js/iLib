@@ -1,9 +1,0 @@
-{
-    "generated": true,
-    "numfmt": {
-        "exponential": "E",
-        "currencyFormats": {
-            "commonNegative": "({s}{n})"
-        }
-    }
-}

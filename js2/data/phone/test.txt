@@ -1,9 +1,0 @@
-// This is a file used to generate the states table for the unit tests
-
-
-^0	trunk
-
-4	area	One	Area Code 1
-456	area	Two	Area Code 2
-45	area	Three	Area Code 3
-46555	area	Four	Area Code 4
