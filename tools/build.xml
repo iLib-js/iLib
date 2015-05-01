@@ -110,43 +110,4 @@ limitations under the License.
 			</fileset>
 		</copy>
 	</target>
-	
-	<!-- target name="dist" depends="assemble,doc" description="Distribute all built objects in preparation for running">
-		<zip destfile="${build.dist}/ilib-${version}.zip"
-			basedir="${build.src}"
-			includes="iliball.js,iliball-compiled.js"/>
-		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
-			basedir="${build.jsdoc}"/>
-		<zip destfile="${build.dist}/ilib-${version}-src.zip">
-			<zipfileset 
-				dir="${build.base}" 
-				prefix="js"
-				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
-				excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"/>
-			<zipfileset 
-				dir="../tools" 
-				prefix="tools"
-				includes="jsdoc*/**"/>
-		</zip>
-		<tar destfile="${build.dist}/ilib-${version}.tgz"
-			basedir="${build.src}"
-			includes="iliball.js,iliball-compiled.js"
-			compression="gzip"/>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz"
-			basedir="${build.jsdoc}"
-			compression="gzip"/>
-		<tar destfile="${build.dist}/ilib-${version}-src.tgz"
-			basedir="${build.base}"
-			includes="src/**,data/locale/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
-			excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"
-			compression="gzip"/>	
-		<checksum>
-			<fileset dir="${build.dist}">
-				<include name="*.tgz"/>
-				<include name="*.zip"/>
-				<include name="*.jar"/>
-			</fileset>
-		</checksum>
-	</target-->
-	
 </project>

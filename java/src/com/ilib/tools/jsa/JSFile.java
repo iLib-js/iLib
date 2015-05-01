@@ -64,8 +64,8 @@ public class JSFile
         dataPatterns.add(Pattern.compile("/\\*\\s*!data\\s*([^\\*]+)\\*/"));
         dataPatterns.add(Pattern.compile("\\/\\/\\s*!data\\s*([^\\n]+)"));
         
-        macroPatterns.add(Pattern.compile("/\\*\\s*!macro\\s*([^\\*]+)\\*/"));
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
+        macroPatterns.add(Pattern.compile("\"!macro\\s*(\\S*)\""));
         
         deletePatterns.add(Pattern.compile("var\\s[^;]*=[^;]*require[^;]*;\\n"));
         deletePatterns.add(Pattern.compile("if \\(!ilib[^;]*require[^;]*;"));

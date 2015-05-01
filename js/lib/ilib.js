@@ -20,6 +20,8 @@
 /**
  * @namespace The global namespace that contains general ilib functions useful
  * to all of ilib
+ * 
+ * @version // !macro ilibVersion
  */
 var ilib = ilib || {};
 

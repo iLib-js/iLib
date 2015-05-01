@@ -113,6 +113,7 @@ limitations under the License.
 		<delete file="${build.locale.src}/jsoncompress.stamp"/>
 		<delete file="${build.demo}/demo.tgz"/>
 		<delete file="${build.demo}/scripts/ilib-demo.js"/>
+		<delete file="${build.base}/package.json"/>
 		<delete dir="${build.locale}"/>
 	</target>
 
@@ -460,7 +461,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -574,66 +575,6 @@ limitations under the License.
 		</tar>
 	</target>
 	
-	<!-- target name="dist" depends="export,doc" description="Distribute all built objects in preparation for running">
-		<zip destfile="${build.dist}/ilib-${version}.zip"
-			basedir="${build.export}/js"
-			includes="ilib-*.js"/>
-		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
-			basedir="${build.jsdoc}"/>
-		<zip destfile="${build.dist}/ilib-${version}-src.zip">
-			<zipfileset 
-				dir="${build.base}" 
-				prefix="js"
-				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
-				excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"/>
-			<zipfileset 
-				dir="${build.base}" 
-				prefix="js"
-				includes="src/ilib-*-inc.js"/>
-			<zipfileset 
-				dir="../tools" 
-				prefix="tools"
-				includes="jsdoc*/**,build/**"/>
-		</zip>
-		<tar destfile="${build.dist}/ilib-${version}.tgz"
-			basedir="${build.export}/js"
-			includes="ilib-*.js"
-			compression="gzip"/>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz"
-			basedir="${build.jsdoc}"
-			compression="gzip"/>
-		<tar destfile="${build.dist}/ilib-${version}-src.tgz"
-			basedir="${build.base}"
-			includes="src/**,data/locale/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
-			excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"
-			compression="gzip">
-			<tarfileset
-				dir="${build.base}" 
-				prefix="js"
-				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
-				excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"/>
-			<tarfileset 
-				dir="${build.base}" 
-				prefix="js"
-				includes="src/ilib-*-inc.js"/>
-			<tarfileset 
-				dir="../tools" 
-				prefix="tools"
-				includes="jsdoc*/**"/>
-			<tarfileset 
-				dir="../tools"
-				prefix="tools"
-				includes="build/**"/>
-		</tar>
-		<checksum>
-			<fileset dir="${build.dist}">
-				<include name="*.tgz"/>
-				<include name="*.zip"/>
-				<include name="*.jar"/>
-			</fileset>
-		</checksum>
-	</target -->
-
 	<macrodef name="runtests">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -863,7 +804,7 @@ limitations under the License.
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
 			<jvmarg value="-Xmx1024m"/>
-			<jvmarg value="-XX:MaxPermSize=128m"/>
+			<jvmarg value="-XX:MaxPermSize=96m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
@@ -958,5 +899,13 @@ limitations under the License.
 		<run dir="${build.lib}"
 			script="${build.tools.build}/mkstubs.js" 
 			args="${build.output.js}/ilib-full-dyn.js"/>
+	</target>
+	
+	<target name="update.package.json">
+		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
+			<filterset>
+				<filter token="fullversion" value="${version}.${minorVersion}"/>
+			</filterset>
+		</copy>
 	</target>
 </project>
