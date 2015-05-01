@@ -904,7 +904,7 @@ limitations under the License.
 	<target name="update.package.json">
 		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
 			<filterset>
-				<filter token="fullversion" value="${version}.${minorVersion}"/>
+				<filter token="fullversion" value="${version}"/>
 			</filterset>
 		</copy>
 	</target>
