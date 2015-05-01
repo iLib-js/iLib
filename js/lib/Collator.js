@@ -174,7 +174,7 @@ var ElementIterator = require("./ElementIterator.js");
  * <code>
  * <pre>
  * var arr = ["ö", "oe", "ü", "o", "a", "ae", "u", "ß", "ä"];
- * var collator = Collator({locale: 'de-DE', style: "dictionary"});
+ * var collator = new Collator({locale: 'de-DE', style: "dictionary"});
  * arr.sort(collator.getComparator());
  * console.log(JSON.stringify(arr));
  * </pre>
