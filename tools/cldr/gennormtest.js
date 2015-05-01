@@ -102,7 +102,7 @@ for (var i = 0; i < len; i++ ) {
 	]);
 }
 
-fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests, true, 4) + ";", function (err) {
+fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests, true, 4) + ";\nmodule.exports=normtests;", function (err) {
 	if (err) {
 		throw err;
 	}

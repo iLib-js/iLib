@@ -270,7 +270,7 @@ JsUnitTestManager.prototype._handleNewSuite = function () {
 * This function handles cloning of a jsUnitTestSuite object.  This was added to replace the clone method of the jsUnitTestSuite class due to an IE bug in cross frame scripting. (See also jsunit bug 1522271)
 **/
 JsUnitTestManager.prototype._cloneTestSuite = function(suite) {
-	var clone = new jsUnitTestSuite();
+	var clone = new JsUnitTestSuite();
 	clone._testPages = suite._testPages.concat(new Array(0));
 	return clone;
 }

@@ -36,9 +36,9 @@ public class JSONFile
     protected Logger logger = Logger.getLogger(this.getClass());
     protected String baseName = null;
     
-	public JSONFile(File file, String baseName)
+	public JSONFile(File root, File file, String baseName)
 	{
-		super(file);
+		super(root, file);
 		this.baseName = baseName;
 	}
 	
@@ -56,7 +56,7 @@ public class JSONFile
 			throws Exception 
 	{
         int i, j;
-        String thisPath = getPath();
+        String thisPath = file.getPath();
         
         for ( i = 0; i < visited.size(); i++ ) {
             if ( thisPath.equals(visited.get(i)) ) {
@@ -87,7 +87,7 @@ public class JSONFile
 			throws Exception 
 	{
         int i;
-        String thisPath = getPath();
+        String thisPath = file.getPath();
         
         if ( isWritten() ) {
             // already did this one
@@ -114,7 +114,7 @@ public class JSONFile
 
         StringBuffer str;
     
-        logger.debug("Now writing out file " + getPath());
+        logger.debug("Now writing out file " + file.getPath());
         
         try {
             str = readFile();

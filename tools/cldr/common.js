@@ -249,7 +249,6 @@ exports.coelesce = function coelesce(ranges, skip) {
  * 
  * Name1 and name2 are for creating debug output only. They are not necessary.<p>
  * 
- * Depends directive: !depends utils.js
  * 
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
@@ -314,10 +313,14 @@ exports.getLocale = function () {
                     exports.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
                 }
             }
-        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+        } else if (typeof(PalmSystem) !== 'undefined') {
             // webOS
-            if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
-                exports.locale = PalmSystem.locales.UI;
+            if (typeof(PalmSystem.locales) !== 'undefined' && 
+            		typeof(PalmSystem.locales.UI) != 'undefined' && 
+            		PalmSystem.locales.UI.length > 0) {
+                ilib.locale = PalmSystem.locales.UI;
+            } else if (typeof(PalmSystem.locale) !== 'undefined') {
+            	ilib.locale = PalmSystem.locale;
             }
         } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
             // running under rhino
@@ -381,7 +384,6 @@ exports.getLocale = function () {
  * Without any arguments to the constructor, this function returns the locale of
  * the host Javascript engine.<p>
  * 
- * Depends directive: !depends locale.js
  * 
  * @constructor
  * @param {?string=} language the ISO 639 2-letter code for the language, or a full 

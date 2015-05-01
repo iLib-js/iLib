@@ -18,8 +18,8 @@
  */
 
 var util = require("util");
-var common = require("../../../tools/cldr/common.js");
-var TranslationUnit = require("../../../tools/loctool/translationunit.js");
+var common = require("../../tools/cldr/common.js");
+var TranslationUnit = require("../../tools/loctool/translationunit.js");
 
 function testTUConstructor() {
     var tu = new TranslationUnit({

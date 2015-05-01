@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+build.xml - build the Qt/QML parts
+
+Copyright © 2015, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- ======================================================================= -->
+<!-- Main build file for the ilib qt bits            -->
+<!-- ======================================================================= -->
+<project name="ilib" default="all">
+	<!-- =================================================================== -->
+	<!-- properties                                                          -->
+	<!-- =================================================================== -->
+
+	<!-- Give user a chance to override properties without editing this file -->
+	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="build.properties"/>
+	<property file="../build.properties"/>
+	<property file="../js/build.properties"/>
+	
+	<!-- Properties that can be overridden -->
+	<!-- directories -->
+	<property name="build.base"						value="${basedir}"/>
+
+	<property name="build.dist"						value="${build.base}/../dist"/>
+	<property name="build.export"					value="${build.base}/../export"/>
+	<property name="build.demo"						value="${build.base}/../doc/demo"/>
+	<property name="build.tools"					value="${build.base}/../tools/build"/>
+	<property name="build.js"						value="${build.base}/../js"/>	
+	
+	<property name="build.lib"						value="${build.base}/lib"/>
+	<property name="build.output"					value="${build.base}/output"/>
+	<property name="build.output.qt"				value="${build.output}/qt"/>
+	
+	<property name="build.filereader"				value="${build.base}/FileReader"/>
+	<property name="build.unittest"					value="${build.base}/UnitTest"/>
+
+	<!-- =================================================================== -->
+	<!-- Class paths                                                         -->
+	<!-- =================================================================== -->
+	<path id="project.class.path.base">
+		<fileset dir="${build.lib}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement path="${build.config}"/>
+	</path>
+
+	<!-- =================================================================== -->
+	<!-- Implement the standard targets                                      -->
+	<!-- =================================================================== -->
+	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
+
+	<target name="clean" description="Remove all generated files to start from scratch">
+		<delete dir="${build.output}"/>
+		<delete dir="${build.export}/qt"/>
+		<sequential>
+			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg line="clean"/>
+			</exec>
+			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg line="clean"/>
+			</exec>
+			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+				<arg line="clean"/>
+			</exec>
+		</sequential>
+	</target>
+
+	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
+		<mkdir dir="${build.output.qt}"/>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create the core jar file                                            -->
+	<!-- =================================================================== -->
+	<target name="filereader" depends="prepare" description="Build the file reader plugin">
+		<sequential>
+			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+			</exec>
+			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+			</exec>
+			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+			</exec>
+		</sequential>
+	</target>
+	
+	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
+		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
+		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
+			<fileset dir="${build.base}/build-filereader">
+				<include name="libFileReader.so"/>
+				<include name="qmldir"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/src/qt/FileReader"/>
+		<copy todir="${build.export}/src/qt/FileReader">
+			<fileset dir="${build.filereader}">
+				<include name="*"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="test.qt" depends="" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+		<sequential>
+			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/UnitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="TestRunner.qml"/>
+			</exec>
+			<exec osfamily="mac" executable="${QTBIN}/qmlscene" dir="${build.base}/UnitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="TestRunner.qml"/>
+			</exec>
+			<exec osfamily="windows" executable="${QTBIN}/qmlscene.exe" dir="${build.base}/UnitTest" failifexecutionfails="true"  failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="TestRunner.qml"/>
+			</exec>
+		</sequential>
+	</target>
+		
+	<!-- Should not run the tests from an automated build, because qmlscene doesn't exit at the end. They should
+	     only be run by hand. -->
+	<target name="test" depends="" description="Run all tests and build all reports" />
+
+	<target name="doc" />
+	
+</project>

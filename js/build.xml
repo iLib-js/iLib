@@ -2,7 +2,7 @@
 <!--
 build.xml - build the javascript parts
 
-Copyright © 2012-2014, JEDLSoft
+Copyright © 2012-2015, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -38,16 +38,19 @@ limitations under the License.
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.demo"						value="${build.base}/../doc/demo"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
+	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
 	
+	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
 	<property name="build.output.reports"			value="${build.output}/reports"/>
 	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
-	<property name="build.src"						value="${build.base}/src"/>
+	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
-	<property name="build.locale"					value="${build.data}/locale"/>
-	<property name="build.localetemp"				value="${build.data}/localetemp"/>
+	<property name="build.test"						value="${build.base}/test"/>
+	<property name="build.locale.src"				value="${build.data}/locale"/>
+	<property name="build.locale"					value="${build.base}/locale"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 
@@ -91,7 +94,7 @@ limitations under the License.
 
 	<taskdef name="jscomp" 
 		classname="com.google.javascript.jscomp.ant.CompileTask" 
-		classpath="${build.lib}/google-closure-compiler.r1918/compiler.jar"/>
+		classpath="${build.tools}/google-closure-compiler.r1918/compiler.jar"/>
 	
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
@@ -102,24 +105,20 @@ limitations under the License.
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
 		<delete>
-			<fileset dir="${build.src}">
-			    <include name="ilib-*.js"/>
-				<include name="*-compiled.js"/>
-				<exclude name="ilib-*-inc.js"/>
-			</fileset>
-			<fileset dir="${build.locale}">
+			<fileset dir="${build.locale.src}">
 			    <include name="**/localeinfo.json"/>
 			</fileset>
 		</delete>
-		<delete file="${build.locale}/localeinfo.stamp"/>
-		<delete file="${build.locale}/jsoncompress.stamp"/>
+		<delete file="${build.locale.src}/localeinfo.stamp"/>
+		<delete file="${build.locale.src}/jsoncompress.stamp"/>
 		<delete file="${build.demo}/demo.tgz"/>
 		<delete file="${build.demo}/scripts/ilib-demo.js"/>
-		<delete dir="${build.localetemp}"/>
+		<delete dir="${build.locale}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.reports}"/>
+		<mkdir dir="${build.output.js}"/>
 	</target>
 
 	<!-- =================================================================== -->
@@ -130,351 +129,373 @@ limitations under the License.
         <attribute name="srcfilename"/>
         <attribute name="locales"/>
 		<sequential>
-			<java dir="${build.src}" fork="true" classname="com.ilib.tools.jsa.JSAssemble" classpathref="project.classpath.jsa">
+			<java dir="${build.lib}" fork="true" classname="com.ilib.tools.jsa.JSAssemble" classpathref="project.classpath.jsa">
 				<arg value="-I"/>
-				<arg value="${build.localetemp}"/>
+				<arg value="${build.locale}"/>
 				<arg value="-I"/>
-				<arg value="${build.src}"/>
+				<arg value="${build.lib}"/>
 				<arg value="-o"/>
-				<arg value="${build.src}/@{tgtfilename}"/>
+				<arg value="@{tgtfilename}"/>
 				<arg value="-l"/>
 				<arg value="@{locales}"/>
 				<arg value="-v"/>
 				<arg value="${version}"/>
-				<arg value="${build.src}/@{srcfilename}"/>
+				<arg value="@{srcfilename}"/>
 			</java>
 		</sequential>
 	</macrodef>
 	
 	<target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
-		<uptodate property="core.ilib.core.not.needed" targetfile="${build.src}/ilib-core-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/ilib-core-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+			<srcfiles dir="${build.lib}" includes="ilib-core-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
 	<target name="assemble.core" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
-			tgtfilename="ilib-core.js" 
-			srcfilename="ilib-core-inc.js" 
+			tgtfilename="${build.output.js}/ilib-core.js" 
+			srcfilename="${build.lib}/ilib-core-inc.js" 
 			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-core-compiled.js"
+			output="${build.output.js}/ilib-core-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-core.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.datesonly" description="test whether or not the ilib-datesonly single file needs to be rebuilt">
-		<uptodate property="datesonly.ilib.datesonly.not.needed" targetfile="${build.src}/ilib-datesonly-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.src}" includes="ilib-datesonly-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		<uptodate property="datesonly.ilib.datesonly.not.needed" targetfile="${build.output.js}/ilib-datesonly-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+			<srcfiles dir="${build.lib}" includes="ilib-datesonly-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
 	<target name="assemble.datesonly" depends="prepare,gen.manifest.locale,testilib.datesonly" unless="datesonly.ilib.datesonly.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
-			tgtfilename="ilib-datesonly.js" 
-			srcfilename="ilib-datesonly-inc.js" 
+			tgtfilename="${build.output.js}/ilib-datesonly.js" 
+			srcfilename="${build.lib}/ilib-datesonly-inc.js" 
 			locales="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,kn-IN,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,ta-IN,ta-SG,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-datesonly-compiled.js"
+			output="${build.output.js}/ilib-datesonly-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-datesonly.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.standard" description="test whether or not the ilib-standard single file needs to be rebuilt">
-		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.src}/ilib-standard-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.output.js}/ilib-standard-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+			<srcfiles dir="${build.lib}" includes="ilib-standard-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
 	<target name="assemble.standard" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
-			tgtfilename="ilib-standard.js" 
-			srcfilename="ilib-standard-inc.js" 
+			tgtfilename="${build.output.js}/ilib-standard.js" 
+			srcfilename="${build.lib}/ilib-standard-inc.js" 
 			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-standard-compiled.js"
+			output="${build.output.js}/ilib-standard-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-standard.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
-		<uptodate property="core.ilib.full.not.needed" targetfile="${build.src}/ilib-full-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/ilib-full-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+			<srcfiles dir="${build.lib}" includes="ilib-full-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
 	<target name="assemble.full" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
-			tgtfilename="ilib-full.js" 
-			srcfilename="ilib-full-inc.js" 
+			tgtfilename="${build.output.js}/ilib-full.js" 
+			srcfilename="${build.lib}/ilib-full-inc.js" 
 			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-full-compiled.js"
+			output="${build.output.js}/ilib-full-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-full.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
-		<uptodate property="ilib-ut.not.needed" targetfile="${build.src}/ilib-ut-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
-			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-ut-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 	
 	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
-			tgtfilename="ilib-ut.js" 
-			srcfilename="ilib-ut-inc.js" 
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PE,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-NP,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-Hant-MO,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			tgtfilename="${build.output.js}/ilib-ut.js" 
+			srcfilename="${build.lib}/ilib-ut-inc.js" 
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PE,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-NP,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-Hans-MO,zh-Hant-MO,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-ut-compiled.js"
+			output="${build.output.js}/ilib-ut-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-ut.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.dyn.ut" description="test whether or not the ilib-dyn-ut single file needs to be rebuilt">
-		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.src}/ilib-dyn-ut.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
-			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.output.js}/ilib-ut-dyn.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-ut-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 	
-	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
-			tgtfilename="ilib-dyn-ut.js" 
-			srcfilename="ilib-ut-inc.js" 
-			locales=""/>
+			tgtfilename="${build.output.js}/ilib-ut-dyn.js" 
+			srcfilename="${build.lib}/ilib-ut-inc.js" 
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-dyn-ut-compiled.js"
+			output="${build.output.js}/ilib-ut-dyn-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
-				<file name="ilib-dyn-ut.js"/>
+			<sources dir="${build.output.js}">
+				<file name="ilib-ut-dyn.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
+	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
+
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
-		<uptodate property="ilib-demo.not.needed" targetfile="${build.src}/ilib-demo-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.src}" includes="**/ilib-full-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="**/ilib-full-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
 	<target name="assemble.demo" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
-			tgtfilename="ilib-demo.js" 
-			srcfilename="ilib-full-inc.js" 
+			tgtfilename="${build.output.js}/ilib-demo.js" 
+			srcfilename="${build.lib}/ilib-full-inc.js" 
 			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hant-HK,zh-Hans-MO,zh-Hans-SG,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-demo-compiled.js"
+			output="${build.output.js}/ilib-demo-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-demo.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.dyn.standard" description="test whether or not the standard-sized ilib file needs to be rebuilt">
-		<uptodate property="ilib.dyn.standard.not.needed" targetfile="${build.src}/ilib-dyn-standard-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib.dyn.standard.not.needed" targetfile="${build.output.js}/ilib-standard-dyn-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-standard-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
 	<target name="assemble.dyn.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
-			tgtfilename="ilib-dyn-standard.js" 
-			srcfilename="ilib-standard-inc.js" 
-			locales=""/>
+			tgtfilename="${build.output.js}/ilib-standard-dyn.js" 
+			srcfilename="${build.lib}/ilib-standard-inc.js" 
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-dyn-standard-compiled.js"
+			output="${build.output.js}/ilib-standard-dyn-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
-				<file name="ilib-dyn-standard.js"/>
+			<sources dir="${build.output.js}">
+				<file name="ilib-standard-dyn.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.dyn.core" description="test whether or not the ilib-core file needs to be rebuilt">
-		<uptodate property="ilib.dyn.core.not.needed" targetfile="${build.src}/ilib-dyn-core-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib.dyn.core.not.needed" targetfile="${build.output.js}/ilib-core-dyn-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-core-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
 	<target name="assemble.dyn.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
 		<runassemble 
-			tgtfilename="ilib-dyn-core.js" 
-			srcfilename="ilib-core-inc.js" 
-			locales=""/>
+			tgtfilename="${build.output.js}/ilib-core-dyn.js" 
+			srcfilename="${build.lib}/ilib-core-inc.js" 
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-dyn-core-compiled.js"
+			output="${build.output.js}/ilib-core-dyn-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
-				<file name="ilib-dyn-core.js"/>
+			<sources dir="${build.output.js}">
+				<file name="ilib-core-dyn.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.dyn.full" description="test whether or not the ilib-full file needs to be rebuilt">
-		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.src}/ilib-dyn-full-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.output.js}/ilib-full-dyn-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-full-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
 	<target name="assemble.dyn.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble 
-			tgtfilename="ilib-dyn-full.js" 
-			srcfilename="ilib-full-inc.js" 
-			locales=""/>
+			tgtfilename="${build.output.js}/ilib-full-dyn.js" 
+			srcfilename="${build.lib}/ilib-full-inc.js" 
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-dyn-full-compiled.js"
+			output="${build.output.js}/ilib-full-dyn-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
-				<file name="ilib-dyn-full.js"/>
+			<sources dir="${build.output.js}">
+				<file name="ilib-full-dyn.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
-		<uptodate property="ilib-lg.not.needed" targetfile="${build.src}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-standard-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
 	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
-			tgtfilename="ilib-lg.js" 
-			srcfilename="ilib-lg-inc.js"
+			tgtfilename="${build.output.js}/ilib-lg.js" 
+			srcfilename="${build.lib}/ilib-standard-inc.js"
 			locales="en-US,en-GB,de-DE,es-ES,it-IT,fr-FR,fr-CA,pt-BR,ko-KR,zh-Hans-CN,ja-JP,ru-RU"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-lg-compiled.js"
+			output="${build.output.js}/ilib-lg-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.output.js}">
 				<file name="ilib-lg.js"/>
 			</sources>
 		</jscomp>
 		<runassemble 
 			tgtfilename="ilib-lg-dyn.js" 
 			srcfilename="ilib-lg-inc.js"
-			locales=""/>
+			locales=" "/>
 		<jscomp compilationlevel="simple" 
-			warning="verbose" 
+			warning="verbose"
 			debug="true"
-			output="${build.src}/ilib-lg-dyn-compiled.js"
+			output="${build.output.js}/ilib-lg-dyn-compiled.js"
 			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
+			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
-			<sources dir="${build.src}">
+			<sources dir="${build.lib}">
 				<file name="ilib-lg-dyn.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo" description="Create all objects and export them to the top level dir for packaging">
-		<mkdir dir="${build.export}/js"/>
-		<copy todir="${build.export}/js">
-			<fileset dir="${build.src}">
+		<mkdir dir="${build.export}/js/assembled"/>
+		<copy todir="${build.export}/js/assembled">
+			<fileset dir="${build.output.js}">
 				<include name="ilib-core.js"/>
 				<include name="ilib-core-compiled.js"/>
 				<include name="ilib-standard.js"/>
 				<include name="ilib-standard-compiled.js"/>
 				<include name="ilib-full.js"/>
 				<include name="ilib-full-compiled.js"/>
-				<include name="ilib-dyn-core.js"/>
-				<include name="ilib-dyn-core-compiled.js"/>
-				<include name="ilib-dyn-standard.js"/>
-				<include name="ilib-dyn-standard-compiled.js"/>
-				<include name="ilib-dyn-full.js"/>
-				<include name="ilib-dyn-full-compiled.js"/>
+				<include name="ilib-core-dyn.js"/>
+				<include name="ilib-core-dyn-compiled.js"/>
+				<include name="ilib-standard-dyn.js"/>
+				<include name="ilib-standard-dyn-compiled.js"/>
+				<include name="ilib-full-dyn.js"/>
+				<include name="ilib-full-dyn-compiled.js"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/js/dyncode"/>
+		<copy todir="${build.export}/js/dyncode">
+			<fileset dir="${build.lib}">
+				<include name="**/*.js"/>
+				<include name="src/**/*.js"/>
+				<exclude name="**/test/**"/>
+				<exclude name="runner.js"/>
+				<exclude name="**/*-inc.js"/>
+				<exclude name="externs.js"/>
+				<exclude name="**/bench*"/>
+				<exclude name="nfc/**"/>
+				<exclude name="nfd/**"/>
+				<exclude name="nfkc/**"/>
+				<exclude name="nkkd/**"/>
+				<exclude name="ilib-test.js"/>
+				<exclude name="ilib-test-dyn.js"/>
+				<exclude name="testSuite.js"/>
+				<exclude name="datefmtstr.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -492,15 +513,15 @@ limitations under the License.
 				<include name="data/locale/**/*.json"/>
 				<include name="bin/**"/>
 				<include name="lib/google-closure*/**"/>
+				<exclude name="runner.js"/>
 				<exclude name="**/test/**"/>
 				<exclude name="**/*.html"/>
 				<exclude name="src/ilib-*-inc.js"/>
-				<exclude name="userSettings.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/locale"/>
 		<copy todir="${build.export}/locale">
-			<fileset dir="${build.localetemp}">
+			<fileset dir="${build.locale}">
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
@@ -511,14 +532,25 @@ limitations under the License.
 				<include name="README.md"/>
 			</fileset>
 		</copy>
-		<copy todir="${build.export}/package">
-			<fileset dir="${build.src}">
-				<include name="nodeglue.js"/>
-				<include name="ilib-dyn-full-compiled.js"/>
+		<mkdir dir="${build.export}/package/lib"/>
+		<copy todir="${build.export}/package/lib">
+			<fileset dir="${build.export}/js/dyncode">
+				<include name="**/*"/>
+				<exclude name="QMLLoader.js"/>
+				<exclude name="WebLoader.js"/>
+				<exclude name="RhinoLoader.js"/>
+				<exclude name="ilib-web.js"/>
+				<exclude name="ilib-qt.js"/>
+				<exclude name="ilib-rhino.js"/>
+				<exclude name="ilib-enyo.js"/>
+			</fileset>
+			<fileset dir="${build.export}/js/assembled">
+				<include name="ilib-full-dyn.js"/>
+				<include name="ilib-full-dyn-compiled.js"/>
 			</fileset>
 		</copy>
 		<copy todir="${build.export}/package/locale">
-			<fileset dir="${build.localetemp}">
+			<fileset dir="${build.locale}">
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
@@ -526,7 +558,7 @@ limitations under the License.
 	
 	<target name="demo" depends="assemble.demo" description="Copy all things needed for the demo site to the right place">
 		<copy todir="${build.demo}/scripts">
-			<fileset dir="${build.src}">
+			<fileset dir="${build.output.js}">
 				<include name="ilib-demo.js"/>
 			</fileset>
 		</copy>
@@ -606,195 +638,198 @@ limitations under the License.
         <attribute name="assembly"/>
         <attribute name="compilation"/>
         <attribute name="suite"/>
+		<attribute name="set"/>
 		<sequential>
-			<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{set}"/>
 			</exec>
-			<exec os="Mac OS X" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
 				<arg value="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{set}"/>
 			</exec>
-			<exec osfamily="windows" executable="node.exe" dir="${build.src}" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="true"  failonerror="true">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{set}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+	
+	<macrodef name="run">
+        <attribute name="script"/>
+        <attribute name="args"/>
+		<attribute name="dir"/>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+				<arg line="@{script}"/>
+				<arg line="@{args}"/>
+			</exec>
+			<exec osfamily="mac" executable="node" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+				<arg line="@{script}"/>
+				<arg line="@{args}"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="@{dir}" failifexecutionfails="true"  failonerror="true">
+				<arg line="@{script}"/>
+				<arg line="@{args}"/>
 			</exec>
 		</sequential>
 	</macrodef>
 
-	<target depends="assemble.dyn.unittest" name="test.util">
-		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.util">
+		<runtests suite="util" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.root">
-		<runtests suite="." assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.root">
+		<runtests suite="." assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.calendar">
-		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.calendar">
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.date">
-		<runtests suite="date1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date3" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.date">
+		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="date3" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.daterange">
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.daterange">
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.durfmt">
-		<runtests suite="durfmt" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.durfmt">
+		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.number">
-		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.number">
+		<runtests suite="number" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.maps">
-		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.maps">
+		<runtests suite="maps" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.ctype">
-		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.ctype">
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.strings-ext">
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.strings-ext">
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="legacy"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.phone">
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.phone">
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.units">
-		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.units">
+		<runtests suite="units" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.name">
-		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.name">
+		<runtests suite="name" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.address">
-		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.address">
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="legacy"/>
 	</target>
-	<target depends="assemble.dyn.unittest" name="test.collate">
-		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
+	<target depends="assemble.dyncode.unittest" name="test.collate">
+		<runtests suite="collate" assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
-	
+
+	<macrodef name="runallsuites">
+        <attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="set"/>
+		<sequential>
+			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+		</sequential>
+	</macrodef>
+
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<runtests suite="util" assembly="assembled" compilation="compiled"/>
-		<runtests suite="." assembly="assembled" compilation="compiled"/>
-		<runtests suite="calendar" assembly="assembled" compilation="compiled"/>
-		<runtests suite="date1" assembly="assembled" compilation="compiled"/>
-		<runtests suite="date2" assembly="assembled" compilation="compiled"/>
-		<runtests suite="date3" assembly="assembled" compilation="compiled"/>
-		<runtests suite="daterange1" assembly="assembled" compilation="compiled"/>
-		<runtests suite="daterange2" assembly="assembled" compilation="compiled"/>
-		<runtests suite="daterange3" assembly="assembled" compilation="compiled"/>
-		<runtests suite="durfmt" assembly="assembled" compilation="compiled"/>
-		<runtests suite="number" assembly="assembled" compilation="compiled"/>
-		<runtests suite="maps" assembly="assembled" compilation="compiled"/>
-		<runtests suite="ctype" assembly="assembled" compilation="compiled"/>
-		<runtests suite="strings-ext" assembly="assembled" compilation="compiled"/>
-		<runtests suite="phone1" assembly="assembled" compilation="compiled"/>
-		<runtests suite="phone2" assembly="assembled" compilation="compiled"/>
-		<runtests suite="phone3" assembly="assembled" compilation="compiled"/>
-		<runtests suite="units" assembly="assembled" compilation="compiled"/>
-		<runtests suite="name" assembly="assembled" compilation="compiled"/>
-		<runtests suite="address1" assembly="assembled" compilation="compiled"/>
-		<runtests suite="address2" assembly="assembled" compilation="compiled"/>
-		<runtests suite="address3" assembly="assembled" compilation="compiled"/>
-		<runtests suite="collate" assembly="assembled" compilation="compiled"/>
+		<runallsuites assembly="assembled" compilation="compiled" set="modular"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<runtests suite="util" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="." assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="calendar" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="date1" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="date2" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="date3" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="daterange1" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="daterange2" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="daterange3" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="durfmt" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="number" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="maps" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="ctype" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="strings-ext" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="phone1" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="phone2" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="phone3" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="units" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="name" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="address1" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="address2" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="address3" assembly="assembled" compilation="uncompiled"/>
-		<runtests suite="collate" assembly="assembled" compilation="uncompiled"/>
+		<runallsuites assembly="assembled" compilation="uncompiled" set="modular"/>
 	</target>
 
-	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
-		<runtests suite="util" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="." assembly="dynamic" compilation="compiled"/>
-		<runtests suite="calendar" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="date3" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="durfmt" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="number" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="maps" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="ctype" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="units" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="name" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address1" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled"/>
-		<runtests suite="collate" assembly="dynamic" compilation="compiled"/>
+	<target name="test.dynamic.uncompiled">
+		<runallsuites assembly="dynamic" compilation="uncompiled" set="modular"/>
 	</target>
 
-	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
-		<runtests suite="util" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="." assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="calendar" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="date1" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="date2" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="date3" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="daterange1" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="durfmt" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="number" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="maps" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="ctype" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="strings-ext" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="phone1" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="units" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="name" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="address1" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="address2" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="address3" assembly="dynamic" compilation="uncompiled"/>
-		<runtests suite="collate" assembly="dynamic" compilation="uncompiled"/>
+	<target name="test.dynamic.compiled">
+		<runallsuites assembly="dynamic" compilation="compiled" set="modular"/>
 	</target>
 
-	<target name="bench.core" depends="assemble.unittest,assemble.dyn.unittest"
+	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled">
+		<runallsuites assembly="dynamicdata" compilation="compiled" set="modular"/>
+	</target>
+
+	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled">
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="modular"/>
+	</target>
+
+	<target depends="assemble.unittest" name="test.assembled.compiled.legacy">
+		<runallsuites assembly="assembled" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target depends="assemble.unittest" name="test.assembled.uncompiled.legacy">
+		<runallsuites assembly="assembled" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamic.uncompiled.legacy">
+		<runallsuites assembly="dynamic" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamic.compiled.legacy">
+		<runallsuites assembly="dynamic" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled.legacy">
+		<runallsuites assembly="dynamicdata" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled.legacy">
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="bench.core" depends="assemble.unittest,assemble.dyndata.unittest"
 			description="run the benchmarking tests">
 		<echo>Benchmarking the code</echo>
-		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+		<exec executable="node" dir="${build.lib}" failifexecutionfails="true" failonerror="true">
 			<arg line="benchSuite.js"/>
 		</exec>
 	</target>
 
-	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
+	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
 			description="run the tests">
 	</target>
 
@@ -813,7 +848,7 @@ limitations under the License.
 		<uptodate
                 property="core.jsdoc.not.needed"
                 targetfile="${build.jsdoc}/index.html">
-			<srcfiles dir="${build.src}" includes="**/*.js"/>
+			<srcfiles dir="${build.lib}" includes="**/*.js"/>
 		</uptodate>
 	</target>
 
@@ -824,22 +859,22 @@ limitations under the License.
 		<delete dir="${build.jsdoc}"/>
 		<mkdir dir="${build.jsdoc}"/>
 		<echo>Executing jsdoc ... </echo>
-		<java dir="${build.src}" jar="${JSDOCDIR}/jsrun.jar" fork="true">
+		<java dir="${build.lib}" jar="${JSDOCDIR}/jsrun.jar" fork="true">
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
 			<jvmarg value="-Xmx1024m"/>
-			<jvmarg value="-XX:MaxPermSize=256m"/>
+			<jvmarg value="-XX:MaxPermSize=128m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
 			<arg value="--encoding=utf-8"/>
-			<arg value="ilib-dyn-full.js"/>
+			<arg value="${build.output.js}/ilib-full-dyn.js"/>
 		</java>
 	</target>
 	
 	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
-		<uptodate property="info.not.needed" targetFile="${build.locale}/localeinfo.stamp">
-			<srcfiles dir="${build.locale}" includes="**/*.jf"/>
+		<uptodate property="info.not.needed" targetFile="${build.locale.src}/localeinfo.stamp">
+			<srcfiles dir="${build.locale.src}" includes="**/*.jf"/>
 		</uptodate>
 	</target>
 	
@@ -847,21 +882,21 @@ limitations under the License.
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
 			unless="info.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale}">
-			<arg value="${build.tools}/build/mkli.js"/>
+		<exec os="Linux" executable="node" dir="${build.locale.src}">
+			<arg value="${build.tools.build}/mkli.js"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.locale}">
-			<arg value="${build.tools}/build/mkli.js"/>
+		<exec os="Mac OS X" executable="node" dir="${build.locale.src}">
+			<arg value="${build.tools.build}/mkli.js"/>
 		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
-			<arg value="${build.tools}/build/mkli.js"/>
+		<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
+			<arg value="${build.tools.build}/mkli.js"/>
 		</exec>
-		<touch file="${build.locale}/localeinfo.stamp"/>
+		<touch file="${build.locale.src}/localeinfo.stamp"/>
 	</target>
 	
 	<target name="testlocalejson" description="test whether or not the json files need to compressed">
-		<uptodate property="json.compress.not.needed" targetFile="${build.locale}/jsoncompress.stamp">
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		<uptodate property="json.compress.not.needed" targetFile="${build.locale.src}/jsoncompress.stamp">
+			<srcfiles dir="${build.locale.src}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
@@ -869,27 +904,27 @@ limitations under the License.
 			depends="geninfo,testlocalejson"
 			description="compresses the json files"
 			unless="json.compress.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
+		<exec os="Linux" executable="node" dir="${build.locale.src}" failifexecutionfails="true" failonerror="true">
+			<arg value="${build.tools.build}/jsoncompress.js"/>
 			<arg value="."/>
-			<arg value="${build.localetemp}"/>
+			<arg value="${build.locale}"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.locale}">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
+		<exec os="Mac OS X" executable="node" dir="${build.locale.src}">
+			<arg value="${build.tools.build}/jsoncompress.js"/>
 			<arg value="."/>
-			<arg value="${build.localetemp}"/>
+			<arg value="${build.locale}"/>
 		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
+		<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
+			<arg value="${build.tools.build}/jsoncompress.js"/>
 			<arg value="."/>
-			<arg value="${build.localetemp}"/>
+			<arg value="${build.locale}"/>
 		</exec>
-		<touch file="${build.locale}/jsoncompress.stamp"/>
+		<touch file="${build.locale.src}/jsoncompress.stamp"/>
 	</target>
 
 	<target name="test.locale.manifest" description="test whether or not the locale manifest needs to be regenerated">
-		<uptodate property="locale.manifest.not.needed" targetFile="${build.localetemp}/ilibmanifest.json">
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		<uptodate property="locale.manifest.not.needed" targetFile="${build.locale}/ilibmanifest.json">
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
@@ -897,14 +932,31 @@ limitations under the License.
 			depends="compress.locale.json,test.locale.manifest"
 			description="produces the ilibmanifest.json file"
 			unless="locale.manifest.not.needed">
-		<exec os="Linux" executable="node" dir="${build.localetemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
+		<exec os="Linux" executable="node" dir="${build.locale}">
+			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.localetemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.localetemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
+		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
+	</target>
+
+	<target name="teststubs" description="test whether or not the ilib-stubs.js file needs to be rebuilt">
+		<uptodate
+                property="stubs.not.needed"
+                targetfile="${build.lib}/ilib-stubs.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="output/**,ilib-*.js,**/test/**,runner.js" />
+		</uptodate>
+	</target>
+
+	<target name="gen.stubs" 
+			depends="teststubs,assemble.dyn.full"
+			description="Generate the ilib function and class stubs file"
+			unless="stubs.not.needed">
+		<run dir="${build.lib}"
+			script="${build.tools.build}/mkstubs.js" 
+			args="${build.output.js}/ilib-full-dyn.js"/>
 	</target>
 </project>

@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var common = require("../../../tools/cldr/common.js");
-var TreeLocale = require("../../../tools/loctool/treelocale.js");
+var common = require("../../tools/cldr/common.js");
+var TreeLocale = require("../../tools/loctool/treelocale.js");
 var util = require("util");
 var fs = require("fs");
 

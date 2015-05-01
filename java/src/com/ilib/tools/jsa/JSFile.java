@@ -1,7 +1,7 @@
 /*
  * JSFile.java - 
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,12 @@ package com.ilib.tools.jsa;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -49,10 +52,11 @@ public class JSFile
     protected ArrayList<Pattern> dataPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> macroPatterns = new ArrayList<Pattern>();
     protected JSONObject zonetab = null;
+    protected ArrayList<Pattern> deletePatterns = new ArrayList<Pattern>();
     
-    public JSFile(File file)
+    public JSFile(File root, File file)
     {
-        super(file);
+        super(root, file);
         
         dependsPatterns.add(Pattern.compile("/\\*\\s*!depends\\s*([^\\*]+)\\*/"));
         dependsPatterns.add(Pattern.compile("\\/\\/\\s*!depends\\s*([^\\n]+)"));
@@ -62,6 +66,10 @@ public class JSFile
         
         macroPatterns.add(Pattern.compile("/\\*\\s*!macro\\s*([^\\*]+)\\*/"));
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
+        
+        deletePatterns.add(Pattern.compile("var\\s[^;]*=[^;]*require[^;]*;\\n"));
+        deletePatterns.add(Pattern.compile("if \\(!ilib[^;]*require[^;]*;"));
+        deletePatterns.add(Pattern.compile("module.exports = [^;]*;"));
     }
     
     /**
@@ -77,11 +85,13 @@ public class JSFile
         throws Exception
     {
         int i = 0;
-        File newFile = new File(includePath.get(i), fileName);
+        File root = includePath.get(i);
+        File newFile = new File(root, fileName);
         JSFile jsf;
            
         while ( !newFile.canRead() && i < includePath.size() ) {
-            newFile = new File(includePath.get(i++), fileName);
+        	root = includePath.get(i++);
+            newFile = new File(root, fileName);
         }
         
         if ( !newFile.canRead() ) {
@@ -92,7 +102,7 @@ public class JSFile
             return allFiles.get(newFile.getPath());
         }
         
-        jsf = new JSFile(newFile);
+        jsf = new JSFile(root, newFile);
         allFiles.put(newFile.getPath(), jsf);
         
         return jsf;
@@ -109,12 +119,14 @@ public class JSFile
     protected JSONFile locate(ArrayList<File> includePath, String baseName, String fileName, HashMap<String, AssemblyFile> allFiles)
     {
         int i = 0;
-        File newFile = new File(includePath.get(i), fileName);
+        File root = includePath.get(i);
+        File newFile = new File(root, fileName);
         JSONFile json = null;
         
         while ( !newFile.canRead() && i < includePath.size() ) {
             logger.debug("Checking path " + newFile.getPath());
-            newFile = new File(includePath.get(i++), fileName);
+            root = includePath.get(i++);
+            newFile = new File(root, fileName);
         }
         
         if ( newFile.canRead() ) {
@@ -122,7 +134,7 @@ public class JSFile
         	if ( allFiles.containsKey(newFile.getPath()) ) {
             	json = (JSONFile) allFiles.get(newFile.getPath());
             } else {
-            	json = new JSONFile(newFile, baseName);
+            	json = new JSONFile(root, newFile, baseName);
             	allFiles.put(newFile.getPath(), json);
             }
         	dependencies.add(json);
@@ -268,6 +280,7 @@ public class JSFile
     	throws Exception
     {
     	File dir = null;
+    	File root = null;
     	
     	logger.debug("Creating dependencies on zoneinfo files");
     	
@@ -277,6 +290,7 @@ public class JSFile
 			File f = new File(dir, "zonetab.json");
 			if ( f.exists() ) {
 				try (Reader rdr = new InputStreamReader(new FileInputStream(f), "utf-8")) {
+					root = includePath.get(i);
 					tokenizer = new JSONTokener(rdr);
 					zonetab = new JSONObject(tokenizer);
 					logger.debug("Successfully read in the zonetab.json file");
@@ -317,7 +331,7 @@ public class JSFile
 	                	if ( allFiles.containsKey(files[i].getPath()) ) {
 	                    	json = (JSONFile) allFiles.get(files[i].getPath());
 	                    } else {
-	                    	json = new JSONFile(files[i], "zoneinfo[\"" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
+	                    	json = new JSONFile(root, files[i], "zoneinfo[\"" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
 	                    	allFiles.put(files[i].getPath(), json);
 	                    }
 	                	dependencies.add(json);
@@ -337,7 +351,7 @@ public class JSFile
 	                	if ( allFiles.containsKey(files[i].getPath()) ) {
 	                    	json = (JSONFile) allFiles.get(files[i].getPath());
 	                    } else {
-	                    	json = new JSONFile(files[i], 
+	                    	json = new JSONFile(root, files[i], 
 	                    		"zoneinfo[\"Etc/" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
 	                    	allFiles.put(files[i].getPath(), json);
 	                    }
@@ -393,7 +407,7 @@ public class JSFile
                         
                         if ( fileName.length() > 0 ) {
                             AssemblyFile jsfile = find(includePath, fileName, allFiles);
-                            logger.debug("Found dependency: " + file.getPath() + " -> " + jsfile.getPath());
+                            logger.debug("Found dependency: " + file.getPath() + " -> " + jsfile.getFile().getPath());
                             
                             dependencies.add(jsfile);
                             jsfile.addParent(this);
@@ -460,7 +474,7 @@ public class JSFile
         throws Exception
     {
         int i, j;
-        String thisPath = getPath();
+        String thisPath = file.getPath();
         
         for ( i = 0; i < visited.size(); i++ ) {
             if ( thisPath.equals(visited.get(i)) ) {
@@ -486,6 +500,35 @@ public class JSFile
         writeDependencies(out, new ArrayList<String>(), locales);
     }
     
+    /*
+     * Return the difference between the current file and the root
+     */
+    protected String pathDiff()
+    {
+    	if (root == null) {
+    		try {
+				return file.getCanonicalPath();
+			} catch (IOException e) {
+				return file.getPath();
+			}
+    	} else {
+    		String rootpath, thispath;
+    		try {
+				thispath = file.getCanonicalPath();
+				rootpath = root.getCanonicalPath();
+			} catch (IOException e) {
+				thispath = file.getPath();
+				rootpath = root.getPath();
+			}
+    		
+    		Path pathAbsolute = Paths.get(thispath);
+            Path pathRoot = Paths.get(rootpath);
+            Path pathRelative = pathRoot.relativize(pathAbsolute);
+
+            return pathRelative.toString();
+    	}
+    }
+    
     /* (non-Javadoc)
      * @see com.ilib.tools.jsa.AssemblyFile#writeDependencies(java.io.Writer, java.util.ArrayList)
      */
@@ -493,7 +536,7 @@ public class JSFile
         throws Exception
     {
         int i;
-        String thisPath = getPath();
+        String thisPath = file.getPath();
         
         if ( isWritten() ) {
             // already did this one
@@ -520,16 +563,26 @@ public class JSFile
 
         StringBuffer str;
     
-        logger.debug("Now writing out file " + getPath());
+        logger.debug("Now writing out file " + file.getPath());
         
         try {
             int groupEnd, nameStart;
             String macroName;
+            Matcher matcher;
             
         	str = readFile();
         	
+        	// remove the parts that are not needed for assembled files
+        	for ( int p = 0; p < deletePatterns.size(); p++ ) {
+        		matcher = deletePatterns.get(p).matcher(str);
+                while ( matcher.find() ) {
+	        		str = str.replace(matcher.start(), matcher.end(), "");
+				matcher.reset();
+	        	}
+        	}
+        	
             for ( int p = 0; p < macroPatterns.size(); p++ ) {
-                Matcher matcher = macroPatterns.get(p).matcher(str);
+                matcher = macroPatterns.get(p).matcher(str);
                 while ( matcher.find() ) {
                     i = matcher.start(1);
                     groupEnd = matcher.end(1);
@@ -567,6 +620,7 @@ public class JSFile
                 }
             }
 
+            out.write("/*< " + pathDiff() + " */\n");
         	out.write(str.toString());
             out.append('\n'); // in case the file doesn't end with one
             setWritten(true);
