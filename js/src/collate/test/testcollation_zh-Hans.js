@@ -1529,18 +1529,18 @@ function testCollatorHanziTones_zh_Hans() {
     input.sort(col.getComparator());
 
     var expected = [
-   		"帮", // "bāng"
+   		"把", // "bǎ"
 		"白", // "bái"
-		"把", // "bǎ"
 		"办", // "bàn"
+   		"帮", // "bāng"
 		"报", // "bào"
-		"崩", // "bēng"
 		"被", // "bèi"
 		"笨", // "bèn"
+		"崩", // "bēng"
 		"逼", // "bī"
+		"别", // "bié"
 		"鬓", // "bìn"
 		"病", // "bìng"
-		"别", // "bié"
 		"伯", // "bó"  
 		"捕", // "bǔ"
 		"耳", // "Ěr"
@@ -1554,8 +1554,8 @@ function testCollatorHanziTones_zh_Hans() {
 		"勇", // "yǒng"
 		"有", // "yǒu"
 		"鱼", // "yú" 
-		"孕", // "yùn"
-		"月"  // "yuè"
+		"月", // "yuè"
+		"孕"  // "yùn"
 	];
 
     assertArrayEquals(expected, input);
