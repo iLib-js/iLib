@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Collator = require("./../lib/Collator.js");
+var Collator = require("../lib/Collator.js");
 
 function testJSCollatorQuatUpper_lv() {
 	var col = new Collator({

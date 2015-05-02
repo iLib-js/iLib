@@ -2,7 +2,7 @@
  * gencoll.js - ilib tool to generate the json UCA data from the Unicode 
  * data files
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -260,7 +260,7 @@ WeightVector.prototype = {
 				return i;
 			}
 		}
-		return -1;
+		return 4;
 	},
 	
 	clone: function() {
@@ -310,6 +310,12 @@ util.print("Attaching script codes to DUCET code points\n");
 var elementsByScript = {};
 var range;
 
+var scriptMap = {
+	"Hira": ["Jpan","Hrkt"],
+	"Kana": ["Jpan","Hrkt"],
+	"Hani": ["Jpan","Kore"],
+	"Hang": ["Kore"]
+};
 for (var name in ducet) {
 	if (name && name.length > 0) {
 		// for multi-character codepoints, only get the script of the first character -- don't have to worry 
@@ -325,6 +331,15 @@ for (var name in ducet) {
 				elementsByScript[scriptName] = [];
 			}
 			elementsByScript[scriptName].push(name);
+			if (scriptMap[scriptName]) {
+				var aliases = scriptMap[scriptName];
+				for (var j = 0; j < aliases.length; j++) {
+					if (typeof(elementsByScript[aliases[j]]) === 'undefined') {
+						elementsByScript[aliases[j]] = [];
+					}
+					elementsByScript[aliases[j]].push(name);
+				}
+			}
 		}
 		//util.print("\n");
 		ducet[name].script = scriptName;
@@ -332,7 +347,49 @@ for (var name in ducet) {
 }
 
 
-util.print("Ducet table for Latin is: " + JSON.stringify(elementsByScript["Latn"]) + "\n");
+var scriptName = "Hrkt";
+var elements = elementsByScript[scriptName];
+
+function compareByWeights(left, right) {
+	var l = ducet[left];
+	var r = ducet[right];
+	return l.weights[0].compare(r.weights[0]);
+}
+
+// elements.sort(compareByWeights);
+
+util.print("Ducet table for " + scriptName + " is: " + JSON.stringify(elements) + "\n");
+
+var i = 0;
+var lastChar;
+var operators = [
+    "<",
+    "<<",
+    "<<<",
+    "<<<<",
+    "="
+];
+
+for (i = 0; i < elements.length; i++) {
+	ch = elements[i];
+	if (ch && ch.length > 0) {
+		var row = ducet[ch];
+		if (!row) {
+			util.print("Not sure how this happened, but there is a char not in the ducet: " + ch + "\n");
+		} else {
+			if (lastChar) {
+				util.print("comparing " + JSON.stringify(lastChar) + " and " + JSON.stringify(row.weights[0]) + "\n");
+				var diff = lastChar.compare(row.weights[0]);
+				util.print(operators[diff] + " " + ch + "\n");
+			} else {
+				util.print(ch + "\n");
+			}
+			lastChar = row.weights[0];
+		}
+	}
+}
+
+process.exit(0);
 
 util.print("Ducet table is: \n");
 
@@ -344,8 +401,6 @@ for (ch in ducet) {
 		i++;
 	}
 }
-
-process.exit(0);
 
 function compareWeightArray(left, right) {
 	var i = 0; 

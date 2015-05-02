@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
-var ElementIterator = require("./../lib/ElementIterator.js");
-var Collator = require("./../lib/Collator.js");
-var CodePointSource = require("./../lib/CodePointSource.js");
+var ilib = require("../lib/ilib.js");
+var ElementIterator = require("../lib/ElementIterator.js");
+var Collator = require("../lib/Collator.js");
+var CodePointSource = require("../lib/CodePointSource.js");
 
 function testCodePointSourceConstructor() {
 	var cps = new CodePointSource("abc");
@@ -449,7 +449,7 @@ function testCollatorDefaultCase() {
 		assertTrue("A < a", col.compare("A", "a") < 0);
 		assertTrue("B < b", col.compare("B", "b") < 0);
 		assertTrue("a < Z", col.compare("a", "Z") < 0);
-		assertTrue("a < Á", col.compare("a", "Á") < 0); // accent is more important than case
+		assertTrue("Á < a", col.compare("A", "a") < 0); // accent is more important than case
 	}
 }
 
@@ -500,9 +500,10 @@ function testCollatorGetComparatorWorksWithCase() {
 		assertTrue("A < a", func("A", "a") < 0);
 		assertTrue("B < b", func("B", "b") < 0);
 		assertTrue("a < Z", func("a", "Z") < 0);
-		assertTrue("a < Á", func("a", "Á") < 0); // accent is more important than case
+		assertTrue("Á < a", func("A", "a") < 0); // accent is more important than case
 	}
 }
+
 
 function testCollatorConstructorJS() {
 	var col = new Collator({useNative: false});
@@ -668,7 +669,7 @@ function testCollatorGetSortKeyWorks() {
 
 
 function testCollatorWithSort() {
-	var col = new Collator();
+	var col = new Collator({useNative: false});
 	assertNotUndefined(col);
 
 	var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -682,7 +683,8 @@ function testCollatorWithSort() {
 
 function testCollatorWithSortUpperFirst() {
 	var col = new Collator({
-		upperFirst: true
+		upperFirst: true, 
+		useNative: false
 	});
 	assertNotUndefined(col);
 
@@ -705,7 +707,8 @@ function testCollatorWithSortUpperFirst() {
 
 function testCollatorWithSortUpperNotFirst() {
 	var col = new Collator({
-		upperFirst: false
+		upperFirst: false, 
+		useNative: false
 	});
 	assertNotUndefined(col);
 
@@ -839,323 +842,6 @@ function testCollatorNativeIsNative() {
 		assertNotUndefined(col.collator);
 	}
 }
-
-/*
-function testCollatorNativefrFRCase() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "fr-FR",
-			sensitivity: "case"
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-	        "déjà",
-			"Meme",
-			"deja",
-			"même",
-			"dejà",
-			"bpef",
-			"bœg",
-			"Boef",
-			"Mémé",
-			"boef",
-			"bnef",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
-			"pêché"
-		];
-
-	    input.sort(col.getComparator());
-
-	    var expected = [
-			"bnef",
-			"Boef",
-			"boef",
-			"bœg",
-			"bpef",
-			"déjà",
-			"deja",
-			"dejà",
-			"Meme",
-			"Mémé",
-			"même",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
-			"pêché"
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
-
-function testCollatorNativefrFRVariant() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "fr-FR",
-			sensitivity: "variant",
-			frenchAccents: true
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-	        "déjà",
-			"Meme",
-			"pèche",
-			"deja",
-			"même",
-			"dejà",
-			"pêche",
-			"bpef",
-			"bœg",
-			"pèché",
-			"Boef",
-			"Mémé",
-			"bœf",
-			"pêchê",
-			"boef",
-			"bnef",
-			"pêché"
-		];
-
-	    input.sort(col.getComparator());
-
-	    // does not deal with french accents properly yet
-	    var expected = [
-			"bnef",
-			"Boef",
-			"boef",
-			"bœf",
-			"bœg",
-			"bpef",
-			"deja",
-			"dejà",
-			"déjà",
-			"Meme",
-			"Mémé",
-			"même",
-			"pèche",
-			"pèché",
-			"pêche",
-			"pêché",
-			"pêchê"
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
-
-function testCollatorNativefrCACase() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "fr-CA",
-			sensitivity: "case"
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-	        "déjà",
-			"Meme",
-			"deja",
-			"même",
-			"dejà",
-			"bpef",
-			"bœg",
-			"Boef",
-			"Mémé",
-			"boef",
-			"bnef",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
-			"pêché"
-		];
-
-	    input.sort(col.getComparator());
-
-	    var expected = [
-			"bnef",
-			"Boef",
-			"boef",
-			"bœg",
-			"bpef",
-			"déjà",
-			"deja",
-			"dejà",
-			"Meme",
-			"Mémé",
-			"même",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
-			"pêché"
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
-
-function testCollatorNativefrCAVariant() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "fr-CA",
-			sensitivity: "variant"
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-	        "déjà",
-			"Meme",
-			"deja",
-			"même",
-			"dejà",
-			"bpef",
-			"bœg",
-			"Boef",
-			"Mémé",
-			"bœf",
-			"boef",
-			"bnef",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
-			"pêché"
-		];
-
-	    input.sort(col.getComparator());
-
-	    var expected = [
-			"bnef",
-			"Boef",
-			"boef",
-			"bœf",
-			"bœg",
-			"bpef",
-			"deja",
-			"dejà",
-			"déjà",
-			"Meme",
-			"même",
-			"Mémé",
-			"pêche",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêché"
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
-
-function testCollatorNativedeDECase() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "de-DE",
-			sensitivity: "case"
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-	        "Montags",
-  			"Sonntag",
-  			"Flüsse",
-  			"fuße",
- 			"Montag",
- 			"Dienstag",
- 			"Januar",
- 			"Februar",
- 			"März",
- 			"Fuße",
- 			"Flusse",
- 			"flusse",
- 			"flüsse"
- 		];
-
-	    input.sort(col.getComparator());
-
-	    var expected = [
-			"Dienstag",
-			"Februar",
-			"flusse",
-			"Flusse",
-			"flüsse",
-			"Flüsse",
-			"fuße",
-			"Fuße",
-			"Januar",
-			"März",
-			"Montag",
-			"Montags",
-			"Sonntag"	                    
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
-
-function testCollatorNativedeDEVariant() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "de-DE",
-			sensitivity: "variant",
-			upperFirst: true
-		});
-	    assertNotUndefined(col);
-
-	    var input = [
-  			"Sonntag",
- 			"Montags",
- 			"Dienstag",
- 			"Januar",
- 			"Februar",
- 			"März",
- 			"Fuße",
- 			"Fluße",
- 			"Flusse",
- 			"flusse",
- 			"Montag",
- 			"fluße",
- 			"flüße",
- 			"flüsse"
- 		];
-
-	    input.sort(col.getComparator());
-
-	    var expected = [
-			"Dienstag",
-			"Februar",
-			"Flusse",
-			"Fluße",
-			"flusse",
-			"fluße",
-			"flüsse",
-			"flüße",
-			"Fuße",
-			"Januar",
-			"März",
-			"Montag",
- 			"Montags",
-			"Sonntag"	                    
-		];
-
-	    assertArrayEquals(expected, input);
-	}
-}
- */
 
 function testJSCollatorPrimaryEqual() {
 	var col = new Collator({
@@ -2619,30 +2305,30 @@ function testCollatorJSWithSortWithSortKeys() {
 	assertNotUndefined(col);
 
 	var input = [
-	             col.sortKey("Strïng"), 
-	             col.sortKey("strïng"), 
-	             col.sortKey("String"), 
-	             col.sortKey("StrinG"), 
-	             col.sortKey("Strïng"), 
-	             col.sortKey("string"), 
-	             col.sortKey("str"), 
-	             col.sortKey("strïng"), 
-	             col.sortKey("strïnG")
-	             ];
+         col.sortKey("Strïng"), 
+         col.sortKey("strïng"), 
+         col.sortKey("String"), 
+         col.sortKey("StrinG"), 
+         col.sortKey("Strïng"), 
+         col.sortKey("string"), 
+         col.sortKey("str"), 
+         col.sortKey("strïng"), 
+         col.sortKey("strïnG")
+     ];
 
 	input.sort();  // use generic non-locale-sensitive sort!
 
 	var expected = [
-	                col.sortKey("StrinG"),
-	                col.sortKey("String"),
-	                col.sortKey("Strïng"),
-	                col.sortKey("Strïng"),
-	                col.sortKey("str"),
-	                col.sortKey("string"),
-	                col.sortKey("strïnG"),
-	                col.sortKey("strïng"),
-	                col.sortKey("strïng")
-	                ];
+		col.sortKey("StrinG"),
+		col.sortKey("String"),
+		col.sortKey("Strïng"),
+		col.sortKey("Strïng"),
+		col.sortKey("str"),
+		col.sortKey("string"),
+		col.sortKey("strïnG"),
+		col.sortKey("strïng"),
+		col.sortKey("strïng")
+    ];
 
 	assertArrayEquals(expected, input);
 }
@@ -2970,4 +2656,20 @@ function testJSCollatorNumericSortKeyBig() {
 	assertNotUndefined(col);
 
 	assertEquals("00000fadaa62dfa1", col.sortKey("17238562365345"));
+}
+
+function testJSCollatorBogusStyle() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "case",
+		style: "foobarfoo" // doesn't exist
+	});
+
+	assertNotUndefined(col);
+
+	// should use the default standard latin collation
+	assertTrue("A < a", col.compare("A", "a") < 0);
+	assertTrue("a < Ä", col.compare("a", "Ä") < 0);
+	assertTrue("Ä < ä", col.compare("Ä", "ä") < 0);
+	assertTrue("ä < B", col.compare("ä", "B") < 0);
 }

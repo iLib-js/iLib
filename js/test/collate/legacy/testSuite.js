@@ -1,5 +1,5 @@
 /*
- * testSuiteDates.js - test suite for the date tests
+ * testSuite.js - test suite for the collation tests
  * 
  * Copyright © 2014-2015, JEDLSoft
  *
@@ -29,12 +29,29 @@ function suite() {
     var s = new TestSuite();
     
     var suites = [
+  		"testcollation_cs.js",
+		"testcollation_da.js",
 		"testcollation_de.js",
+		"testcollation_el.js",
 		"testcollation_es.js",
 		"testcollation_et.js",
+		"testcollation_fi.js",
+		"testcollation_fo.js",
+		"testcollation_general.js",
+		"testcollation_he.js",
+		"testcollation_ja.js",
 		"testcollation.js",
+		"testcollation_ko.js",
 		"testcollation_lt.js",
-		"testcollation_lv.js"
+		"testcollation_lv.js",
+		"testcollation_nb.js",
+		"testcollation_nn.js",
+		"testcollation_no.js",
+		"testcollation_ru.js",
+		"testcollation_sv.js",
+		"testcollation_tr.js",
+		"testcollation_zh-Hans.js",
+		"testcollation_zh-Hant.js"
 	];
 
     suites.forEach(function (path) {

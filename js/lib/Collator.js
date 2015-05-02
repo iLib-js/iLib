@@ -42,6 +42,7 @@ var isPunct = require("./isPunct.js");
 var NormString = require("./NormString.js");
 var CodePointSource = require("./CodePointSource.js");
 var ElementIterator = require("./ElementIterator.js");
+var GlyphString = require("./GlyphString.js");
 
 /**
  * @class
@@ -316,7 +317,7 @@ var Collator = function(options) {
 	/** @private */
 	this.numeric = false;
 	/** @private */
-	this.style = "standard";
+	this.style = "default";
 	/** @private */
 	this.ignorePunctuation = false;
 	
@@ -332,13 +333,13 @@ var Collator = function(options) {
 					this.level = 1;
 					break;
 				case 'secondary':
-				case 'case':
-					this.sensitivity = "case";
+				case 'accent':
+					this.sensitivity = "accent";
 					this.level = 2;
 					break;
 				case 'tertiary':
-				case 'accent':
-					this.sensitivity = "accent";
+				case 'case':
+					this.sensitivity = "case";
 					this.level = 3;
 					break;
 				case 'quaternary':
@@ -409,7 +410,6 @@ var Collator = function(options) {
 			object: Collator, 
 			locale: this.locale, 
 			name: "collation.json",
-			replace: true,
 			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
@@ -447,22 +447,27 @@ Collator.prototype = {
 	 * @private
 	 * Bit pack an array of values into a single number
 	 * @param {number|null|Array.<number>} arr array of values to bit pack
+	 * @param {number} offset offset for the start of this map
 	 */
-	_pack: function (arr) {
+	_pack: function (arr, offset) {
 		var value = 0;
 		if (arr) {
 			if (typeof(arr) === 'number') {
 				arr = [ arr ];
 			}
 			for (var i = 0; i < this.level; i++) {
+				var thisLevel = (typeof(arr[i]) !== "undefined" ? arr[i] : 0);
+				if (i === 0) {
+					thisLevel += offset;
+				}
 				if (i > 0) {
 					value <<= this.collation.bits[i];	
 				}
 				if (i === 2 && this.caseFirst === "lower") {
 					// sort the lower case first instead of upper
-					value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+					value = value | (1 - thisLevel);
 				} else {
-					value = value | arr[i];
+					value = value | thisLevel;
 				}
 			}
 		}
@@ -473,42 +478,101 @@ Collator.prototype = {
 	 * @private
 	 * Return the rule packed into an array of collation elements.
 	 * @param {Array.<number|null|Array.<number>>} rule
+	 * @param {number} offset
 	 * @return {Array.<number>} a bit-packed array of numbers
 	 */
-	_packRule: function(rule) {
+	_packRule: function(rule, offset) {
 		if (ilib.isArray(rule[0])) {
 			var ret = [];
 			for (var i = 0; i < rule.length; i++) {
-				ret.push(this._pack(rule[i]));
+				ret.push(this._pack(rule[i], offset));
 			}
 			return ret;
 		} else {
-			return [ this._pack(rule) ];
+			return [ this._pack(rule, offset) ];
 		}
 	},
+    
+	/**
+	 * @private
+	 */
+	_addChars: function (str, offset) {
+		var gs = new GlyphString(str);
+		var it = gs.charIterator();
+		var c;
+		
+		while (it.hasNext()) {
+			c = it.next();
+			if (c === "'") {
+				// escape a sequence of chars as one collation element
+				c = "";
+				var x = "";
+				while (it.hasNext() && x !== "'") {
+					c += x;
+					x = it.next();
+				}
+			}
+			this.lastMap++;
+			this.map[c] = this._packRule([this.lastMap], offset);
+		}
+	},
+	
+	/**
+	 * @private
+	 */
+	_addRules: function(rules, start) {
+		var p;
+    	for (var r in rules.map) {
+    		if (r) {
+    			this.map[r] = this._packRule(rules.map[r], start);
+    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0]; 
+    			this.lastMap = Math.max(p + start, this.lastMap);
+    		}
+    	}
     	
+    	if (typeof(rules.ranges) !== 'undefined') {
+    		// for each range, everything in the range goes in primary sequence from the start
+    		for (var i = 0; i < rules.ranges.length; i++) {
+    			var range = rules.ranges[i];
+    			
+    			this.lastMap = range.start;
+    			if (typeof(range.chars) === "string") {
+    				this._addChars(range.chars, start);
+    			} else {
+    				for (var k = 0; k < range.chars.length; k++) {
+    					this._addChars(range.chars[k], start);
+    				}
+    			}
+    		}
+    	}
+	},
+	
 	/**
      * @private
      */
     _init: function(rules) {
+    	var rule = this.style;
+    	while (typeof(rule) === 'string') {
+    		rule = rules[rule] || "default";
+    	}
     	/** 
     	 * @private
     	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
     	 */
-    	this.collation = rules[this.style];
+    	this.collation = rule;
     	this.map = {};
-    	this.keysize = 0;
-    	for (var i = 0; i < this.level; i++) {
-    		this.keysize += this.collation.bits[i];
-    	}
-    	var remainder = MathUtils.mod(this.keysize, 4);
-    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
+    	this.lastMap = 0;
+    	this.keysize = this.collation.keysize[this.level-1];
     	
-    	for (var r in this.collation.map) {
-    		if (r) {
-    			this.map[r] = this._packRule(this.collation.map[r]);
+    	if (typeof(this.collation.inherit) !== 'undefined') {
+    		for (var i = 0; i < this.collation.inherit.length; i++) {
+    			rule = this.collation.inherit[i].name;
+    			if (rules[rule]) {
+        			this._addRules(rules[rule], this.collation.inherit[i].start);
+    			}
     		}
     	}
+    	this._addRules(this.collation, this.lastMap);
     },
     
     /**

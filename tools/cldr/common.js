@@ -791,3 +791,92 @@ exports.bind = function(scope, method/*, bound arguments*/){
 	}
 	return undefined;
 };
+
+/**
+ * Create a new weight vector instance.
+ * 
+ * @param {Array.<number>|string|number?} primary
+ * @param {string|number?} secondary
+ * @param {string|number?} tertiary
+ * @param {string|number?} quaternary
+ */
+var WeightVector = function(primary, secondary, tertiary, quaternary) {
+	this.weights = [0, 0, 0, 0];
+	
+	if (typeof(primary) === 'object') {
+		this.weights = primary.concat(this.weights.slice(primary.length));
+	} else if (typeof(primary) === 'string') {
+		var str = primary.replace(/\]/g, '');
+		str = str.replace(/\[/g, '').trim();
+		
+		if (str.charAt(0) === '.' || str.charAt(0) === '*') {
+			// alternate char... what to do about these?
+			str = str.substring(1);
+			this.alt = true; // what does this mean?
+		}
+		
+		var weights = str.split(/\./g);
+		for (var i = 0; i < weights.length; i++) {
+			this.weights[i] = (weights[i] && weights[i].length > 0) ? parseInt(weights[i], 16) : 0;
+		}
+	} else if (typeof(primary) !== 'undefined') {
+		this.weights[0] = primary;
+		this.weights[1] = secondary;
+		this.weights[2] = tertiary;
+		this.weights[3] = quaternary;
+	}
+};
+
+WeightVector.prototype = {
+	set: function(position, amount) {
+		this.weights[position] = amount;
+	},
+	
+	get: function(position) {
+		return this.weights[position];
+	},
+	
+	add: function(position, amount) {
+		this.weights[position] += amount;
+		for (var i = position + 1; i < 4; i++) {
+			this.weights[i] = 0;
+		}
+	},
+	
+	increment: function(position) {
+		this.add(position, 1);
+	},
+	
+	addPrimary: function(amount) {
+		this.add(0, amount);
+	},
+
+	addSecondary: function(amount) {
+		this.add(1, amount);
+	},
+
+	addTertiary: function(amount) {
+		this.add(2, amount);
+	},
+
+	addQuaternary: function(amount) {
+		this.add(3, amount);
+	},
+	
+	compare: function(otherVector) {
+		for (var i = 0; i < 4; i++) {
+			if (this.weights[i] !== otherVector.weights[i]) {
+				return i;
+			}
+		}
+		return -1;
+	},
+	
+	clone: function() {
+		return new WeightVector(this.weights);
+	},
+	
+	toString: function() {
+		return JSON.stringify(this.weights);
+	}
+};

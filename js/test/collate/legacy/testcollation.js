@@ -444,7 +444,7 @@ function testCollatorDefaultCase() {
 		assertTrue("A < a", col.compare("A", "a") < 0);
 		assertTrue("B < b", col.compare("B", "b") < 0);
 		assertTrue("a < Z", col.compare("a", "Z") < 0);
-		assertTrue("a < Á", col.compare("a", "Á") < 0); // accent is more important than case
+		assertTrue("Á < a", col.compare("A", "a") < 0); // accent is more important than case
 	}
 }
 
@@ -495,9 +495,10 @@ function testCollatorGetComparatorWorksWithCase() {
 		assertTrue("A < a", func("A", "a") < 0);
 		assertTrue("B < b", func("B", "b") < 0);
 		assertTrue("a < Z", func("a", "Z") < 0);
-		assertTrue("a < Á", func("a", "Á") < 0); // accent is more important than case
+		assertTrue("Á < a", func("A", "a") < 0); // accent is more important than case
 	}
 }
+
 
 function testCollatorConstructorJS() {
 	var col = new ilib.Collator({useNative: false});
@@ -663,7 +664,7 @@ function testCollatorGetSortKeyWorks() {
 
 
 function testCollatorWithSort() {
-	var col = new ilib.Collator();
+	var col = new ilib.Collator({useNative: false});
 	assertNotUndefined(col);
 
 	var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -677,7 +678,8 @@ function testCollatorWithSort() {
 
 function testCollatorWithSortUpperFirst() {
 	var col = new ilib.Collator({
-		upperFirst: true
+		upperFirst: true, 
+		useNative: false
 	});
 	assertNotUndefined(col);
 
@@ -700,7 +702,8 @@ function testCollatorWithSortUpperFirst() {
 
 function testCollatorWithSortUpperNotFirst() {
 	var col = new ilib.Collator({
-		upperFirst: false
+		upperFirst: false, 
+		useNative: false
 	});
 	assertNotUndefined(col);
 
@@ -2614,30 +2617,30 @@ function testCollatorJSWithSortWithSortKeys() {
 	assertNotUndefined(col);
 
 	var input = [
-	             col.sortKey("Strïng"), 
-	             col.sortKey("strïng"), 
-	             col.sortKey("String"), 
-	             col.sortKey("StrinG"), 
-	             col.sortKey("Strïng"), 
-	             col.sortKey("string"), 
-	             col.sortKey("str"), 
-	             col.sortKey("strïng"), 
-	             col.sortKey("strïnG")
-	             ];
+         col.sortKey("Strïng"), 
+         col.sortKey("strïng"), 
+         col.sortKey("String"), 
+         col.sortKey("StrinG"), 
+         col.sortKey("Strïng"), 
+         col.sortKey("string"), 
+         col.sortKey("str"), 
+         col.sortKey("strïng"), 
+         col.sortKey("strïnG")
+     ];
 
 	input.sort();  // use generic non-locale-sensitive sort!
 
 	var expected = [
-	                col.sortKey("StrinG"),
-	                col.sortKey("String"),
-	                col.sortKey("Strïng"),
-	                col.sortKey("Strïng"),
-	                col.sortKey("str"),
-	                col.sortKey("string"),
-	                col.sortKey("strïnG"),
-	                col.sortKey("strïng"),
-	                col.sortKey("strïng")
-	                ];
+		col.sortKey("StrinG"),
+		col.sortKey("String"),
+		col.sortKey("Strïng"),
+		col.sortKey("Strïng"),
+		col.sortKey("str"),
+		col.sortKey("string"),
+		col.sortKey("strïnG"),
+		col.sortKey("strïng"),
+		col.sortKey("strïng")
+    ];
 
 	assertArrayEquals(expected, input);
 }
@@ -2965,4 +2968,20 @@ function testJSCollatorNumericSortKeyBig() {
 	assertNotUndefined(col);
 
 	assertEquals("00000fadaa62dfa1", col.sortKey("17238562365345"));
+}
+
+function testJSCollatorBogusStyle() {
+	var col = new ilib.Collator({
+		useNative: false,
+		sensitivity: "case",
+		style: "foobarfoo" // doesn't exist
+	});
+
+	assertNotUndefined(col);
+
+	// should use the default standard latin collation
+	assertTrue("A < a", col.compare("A", "a") < 0);
+	assertTrue("a < Ä", col.compare("a", "Ä") < 0);
+	assertTrue("Ä < ä", col.compare("Ä", "ä") < 0);
+	assertTrue("ä < B", col.compare("ä", "B") < 0);
 }
