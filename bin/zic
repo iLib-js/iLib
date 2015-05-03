@@ -18,7 +18,7 @@
 
 if [ "$ILIB_HOME" = "" ]
 then
-	export ILIB_HOME=$HOME/src/ilib
+	export ILIB_HOME=$(dirname $0)/..
 fi
 if [ "$JAVA_HOME" = "" ]
 then

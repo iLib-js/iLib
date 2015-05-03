@@ -1217,7 +1217,7 @@ function testDateFmtWithTimeZoneAndNoDST_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAST", fmt.format(date));
+    assertEquals("13:45:37 ULAT", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_mn_Cyrl_MN() {

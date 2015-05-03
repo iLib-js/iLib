@@ -868,7 +868,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
         locale: "cop-EG", 
         type: "time", 
         time: "hmz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -882,7 +882,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EAT", fmt.format(date));
+    assertEquals("1:45 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
@@ -890,7 +890,7 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
         locale: "cop-EG", 
         type: "time", 
         time: "hmaz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -904,7 +904,7 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 م EAT", fmt.format(date));
+    assertEquals("1:45 م EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_cop_EG() {
@@ -929,7 +929,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
         locale: "cop-EG", 
         type: "time", 
         time: "hmsz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -943,7 +943,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
@@ -951,7 +951,7 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
         locale: "cop-EG", 
         type: "time", 
         time: "hmsaz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -965,7 +965,7 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 م EAT", fmt.format(date));
+    assertEquals("1:45:37 م EEST", fmt.format(date));
 }
 
 
@@ -1094,7 +1094,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
         type: "time", 
         length: "full", 
         time: "hmz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -1108,7 +1108,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EAT", fmt.format(date));
+    assertEquals("1:45 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
@@ -1117,7 +1117,7 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
         type: "time", 
         length: "full", 
         time: "hmaz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -1131,7 +1131,7 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 م EAT", fmt.format(date));
+    assertEquals("1:45 م EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_cop_EG() {
@@ -1157,7 +1157,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
         type: "time", 
         length: "full", 
         time: "hmsz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -1171,7 +1171,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
@@ -1180,7 +1180,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
         type: "time", 
         length: "full", 
         time: "hmsaz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -1194,7 +1194,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 م EAT", fmt.format(date));
+    assertEquals("1:45:37 م EEST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
@@ -1203,7 +1203,7 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
         type: "time", 
         length: "full", 
         time: "hmsz", 
-        timezone: "Africa/Addis_Ababa"
+        timezone: "Africa/Cairo"
     });
     assertNotNull(fmt);
     
@@ -1218,7 +1218,7 @@ function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
 		millisecond: 0
 	});
     // does not observe DST, so no difference in the TZ spec
-    assertEquals("1:45:37 EAT", fmt.format(date));
+    assertEquals("1:45:37 EEST", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_cop_EG() {
