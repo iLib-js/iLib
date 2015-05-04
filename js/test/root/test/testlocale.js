@@ -539,3 +539,19 @@ function testLocaleGetRegionAlpha3NoRegion() {
     
     assertUndefined(loc.getRegionAlpha3());
 }
+
+function testLocaleGetAvailableLocalesDefault() {
+	var locales = Locale.getAvailableLocales();
+	assertNotUndefined(locales);
+	assertTrue(locales.length > 0);
+}
+
+function testLocaleGetAvailableLocalesCallback() {
+	var callbackcalled = false;
+	Locale.getAvailableLocales(true, function(locales) {
+		callbackcalled = true;
+		assertNotUndefined(locales);
+		assertTrue(locales.length > 0);
+	});
+	assertTrue(callbackcalled);
+}

@@ -841,16 +841,57 @@ Locale.locales = [
 ];
 
 /**
- * Return the list of available locales that this iLib file was assembled
- * with. The list that this file was assembled with may be much smaller
+ * Return the list of available locales that this iLib file supports.
+ * If this copy of ilib is pre-assembled with locale data, then the 
+ * list locales may be much smaller
  * than the list of all available locales in the iLib repository. The
- * assembly tool will automatically fill in the list.
+ * assembly tool will automatically fill in the list for an assembled
+ * copy of iLib. If this copy is being used with dynamically loaded 
+ * data, then you 
+ * can load any locale that iLib supports. You can form a locale with any 
+ * combination of a language and region tags that exist in the locale
+ * data directory. Language tags are in the root of the locale data dir,
+ * and region tags can be found underneath the "und" directory. (The 
+ * region tags are separated into a different dir because the region names 
+ * conflict with language names on file systems that are case-insensitive.) 
+ * If you have culled the locale data directory to limit the size of
+ * your app, then this function should return only those files that actually exist
+ * according to the ilibmanifest.json file in the root of that locale
+ * data dir. Make sure your ilibmanifest.json file is up-to-date with
+ * respect to the list of files that exist in the locale data dir.
  * 
+ * @param {boolean} sync if false, load the list of available files from disk
+ * asynchronously, otherwise load them synchronously. (Default: true/synchronously)
+ * @param {Function} onLoad a callback function to call if asynchronous
+ * load was requested and the list of files have been loaded.
  * @return {Array.<string>} this is an array of locale specs for which 
  * this iLib file has locale data for
  */
-Locale.getAvailableLocales = function () {
-	return Locale.locales;
+Locale.getAvailableLocales = function (sync, onLoad) {
+	var locales = [];
+	if (Locale.locales.length || typeof(ilib._load.listAvailableFiles) !== 'function') {
+		locales = Locale.locales;
+	} else {
+		if (typeof(sync) === 'undefined') {
+			sync = true;
+		}
+		ilib._load.listAvailableFiles(sync, function(manifest) {
+			if (manifest) {
+				for (var dir in manifest) {
+					var filelist = manifest[dir];
+					for (var i = 0; i < filelist.length; i++) {
+						if (filelist[i].length > 15 && filelist[i].substr(-15) === "localeinfo.json") {
+							locales.push(filelist[i].substring(0,filelist[i].length-16).replace(/\//g, "-"));
+						}
+					}
+				}
+			}
+			if (onLoad && typeof(onLoad) === 'function') {
+				onLoad(locales);
+			}
+		});
+	}
+	return locales;
 };
 
 module.exports = Locale;
