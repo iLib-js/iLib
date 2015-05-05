@@ -191,7 +191,7 @@ for (s in suite) {
 	} else {
 		inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc);
-		ts.include("../lib/ilib-test.js");
+		ts.include(assembly === "assembled" ? "../lib/ilib-test.js" : "../lib/ilib-test-dyndata.js");
 		ts.include(set === "legacy" ? "../lib/ilib-stubs.js" : "../lib/ilib-stubs-map.js");
 	}
 	runner.addSuite(ts);

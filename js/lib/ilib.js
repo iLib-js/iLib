@@ -65,7 +65,8 @@ ilib.data = {
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_p: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
-    /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null
+    /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null,
+    /** @type {null|Array.<string>} */ timezones: []
 };
 
 /*
@@ -189,7 +190,11 @@ ilib._isGlobal = function(name) {
         case "qt":
         	return false;
         default:
-            return typeof(window[name]) !== 'undefined';
+        	try {
+        		return window && typeof(window[name]) !== 'undefined';
+        	} catch (e) {
+        		return false;
+        	}
     }
 };
 
@@ -267,7 +272,7 @@ ilib.getLocale = function () {
             // the LANG variable on unix is in the form "lang_REGION.CHARSET"
             // where language and region are the correct ISO codes separated by
             // an underscore. This translate it back to the BCP-47 form.
-            if (lang && lang !== 'undefined') {
+            if (lang && typeof(lang) !== 'undefined') {
                 ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
             }
         } else if (typeof(Qt) !== 'undefined') {
@@ -629,3 +634,21 @@ ilib._dyncode = false;
 ilib.isDynCode = function() {
 	return ilib._dyncode;
 };
+
+/**
+ * @private
+ */
+ilib._dyndata = false;
+
+/**
+ * Return true if this copy of ilib is using dynamically loaded locale data. It returns
+ * false for pre-assembled data.
+ * 
+ * @static
+ * @return {boolean} true if this ilib uses dynamically loaded locale data, and false otherwise
+ */
+ilib.isDynData = function() {
+	return ilib._dyndata;
+};
+
+ilib._loadtime = new Date().getTime();

@@ -126,5 +126,6 @@ var require = requireClass.prototype.require.bind(r, undefined);
 var RhinoLoader = require("../lib/RhinoLoader.js");
 var ilib = require("../lib/ilib.js");
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
+ilib._dyndata = true;
 
 ilib.setLoaderCallback(new RhinoLoader());

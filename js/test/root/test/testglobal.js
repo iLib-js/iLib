@@ -158,162 +158,90 @@ function testGetTimeZoneNodejs() {
 }
 
 function testGetTimeZoneRhino() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
+	if (ilib._getPlatform() !== "rhino") {
+		// only test this in rhino
 		return;
 	}
-	ilib._platform = undefined;
 	ilib.tz = undefined;
-	if (ilib._isGlobal("navigator")) {
-		// this won't work in a browser
-		navigator = undefined;
-	}
-	if (ilib._isGlobal("navigator") || ilib._isGlobal("PalmSystem")) {
-		// can't test on these systems because you can't unset these
-		return;
-	}
 	
-	if (typeof(environment) === 'undefined') {
-		environment = {
-			user: {}
-		};
-	}
 	environment.user.timezone = "America/New_York";
-	
+
 	assertEquals("America/New_York", ilib.getTimeZone());
-	
-	environment = undefined;
 }
 
 function testGetTimeZoneWebOS() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
+	if (ilib._getPlatform() !== "webos") {
+		// only test this in webos
 		return;
 	}
-	ilib._platform = undefined;
 	ilib.tz = undefined;
-
-	if (ilib._isGlobal("navigator") || ilib._isGlobal("PalmSystem")) {
-		// can't test on these systems because you can't unset these
-		return;
-	}
-	
-	PalmSystem = {
-		timezone: "Europe/London"
-	};
+	PalmSystem.timezone = "Europe/London";
 		
 	assertEquals("Europe/London", ilib.getTimeZone());
-	
-	PalmSystem = undefined;
 }
 
 function testGetLocaleNodejs1() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
-		return;
-	}
 	if (ilib._getPlatform() !== "nodejs") {
+		// only test this in node
 		return;
 	}
 	
-	ilib._platform = undefined;
 	ilib.locale = undefined;
-	if (typeof(process) === 'undefined') {
-		process = {
-			env: {}
-		};
-	}
+
 	process.env.LANG = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
 	process.env.LANG = "";
+	ilib.locale = undefined;
 }
 
 function testGetLocaleNodejs2() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
-		return;
-	}
 	if (ilib._getPlatform() !== "nodejs") {
+		// only test this in node
 		return;
 	}
 	
-	ilib._platform = undefined;
 	ilib.locale = undefined;
-	if (typeof(process) === 'undefined') {
-		process = {
-			env: {}
-		};
-	}
+
 	process.env.LC_ALL = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
 	process.env.LC_ALL = "";
+	ilib.locale = undefined;
 }
 
 function testGetLocaleRhino() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
-		return;
-	}
-	// can only simulate this on node
-	if (ilib._getPlatform() !== "nodejs") {
+	if (ilib._getPlatform() !== "rhino") {
+		// only test this in node
 		return;
 	}
 	
-	ilib._platform = undefined;
 	ilib.locale = undefined;
-	if (typeof(environment) === 'undefined') {
-		environment = {
-			user: {}
-		};
-	}
 
 	environment.user.language = "de";
 	environment.user.country = "AT";
 	
 	assertEquals("de-AT", ilib.getLocale());
 	
-	environment = {};
+	environment.user.language = undefined;
+	environment.user.country = undefined;
 }
 
 function testGetLocaleWebOS() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
+	if (ilib._getPlatform() !== "webos") {
+		// only test this in node
 		return;
 	}
 	
-	// can only simulate this on node
-	if (ilib._getPlatform() !== "nodejs") {
-		return;
-	}
-	
-	ilib._platform = undefined;
 	ilib.locale = undefined;
-	if (typeof(PalmSystem) === 'undefined') {
-		PalmSystem = {
-			locale: ""
-		};
-	}
+
 	PalmSystem.locale = "ru-RU";
 	
 	assertEquals("ru-RU", ilib.getLocale());
 	
-	PalmSystem = undefined;
+	PalmSystem.locale = undefined;
 }
 
 function testGetLocaleNotString() {
@@ -324,7 +252,6 @@ function testGetLocaleNotString() {
 		return;
 	}
 	ilib._platform = undefined;
-	PalmSystem = undefined;
 	ilib.locale = new Locale("it-IT");
 	
 	// should remove the locale object and make it into a string
@@ -332,60 +259,28 @@ function testGetLocaleNotString() {
 }
 
 function testGetTimeZoneBrowser() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
+	if (ilib._getPlatform() !== "browser") {
+		// only test this in node
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
-	}
-
-	ilib._platform = undefined;
 	ilib.tz = undefined;
-	navigator = {
-		timezone: 'America/Los_Angeles'             
-	};
+	navigator.timezone = 'America/Los_Angeles';             
 	
+	// make sure we are simulating the right thing
+	assertEquals("browser", ilib._getPlatform());
+		
 	assertEquals("America/Los_Angeles", ilib.getTimeZone());
-	
-	navigator = undefined;
 }
 
 function testGetLocaleBrowser() {
-	if (ilib.isDynCode()) {
-		// can't test this with dynamically loaded code because the global context
-		// is different for each module and we cannot set global variables, so we 
-		// cannot simulate the conditions where this code would work
+	if (ilib._getPlatform() !== "browser") {
+		// only test this in node
 		return;
 	}
-	if (ilib._isGlobal("navigator")) {
-		navigator = undefined; // this won't work on a browser, so we have to check again
-		if (typeof(navigator) !== 'undefined') {
-			// can't test setting things up for the browser when you are testing within the 
-			// the browser already -- navigator.language is already set up and overrides
-			// everything else
-			return;
-		}
-	}
-	
-	ilib._platform = undefined;
-	ilib.locale = undefined;
-	if (typeof(navigator) === 'undefined') {
-		navigator = {};
-	}
+	ilib.tz = undefined;
 	navigator.language = 'ja-JP';
 	
 	assertEquals("ja-JP", ilib.getLocale());
-	
-	navigator = undefined;
 }
 
 function testIsArrayNewArrayObj() {

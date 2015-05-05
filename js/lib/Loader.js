@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var path = require("./Path.js");
+var Path = require("./Path.js");
 var ilib = require("./ilib.js");
 
 /** 
@@ -43,9 +43,9 @@ Loader.prototype.constructor = Loader;
 Loader.prototype._loadFile = function (pathname, sync, cb) {};
 
 Loader.prototype._exists = function(dir, file) {
-	var fullpath = path.normalize(path.join(dir, file));
+	var fullpath = Path.normalize(Path.join(dir, file));
 	if (this.protocol !== "http://") {
-		text = this._loadFile(fullpath, true);
+		var text = this._loadFile(fullpath, true);
 		if (text) {
 			this.includePath.push(dir);
 		}
@@ -66,7 +66,7 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
 	for (var i = 0; i < includePath.length; i++) {
 		var manifest = this.manifest[includePath[i]];
 		if (!manifest || Loader.indexOf(manifest, pathname) > -1) {
-			var filepath = path.join(includePath[i], pathname);
+			var filepath = Path.join(includePath[i], pathname);
 			//console.log("Loader._loadFileAlongIncludePath: attempting sync load " + filepath);
 			var text = this._loadFile(filepath, true);
 			if (text) {
@@ -116,7 +116,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		this._loadManifests(true);
 		
 		for (var i = 0; i < paths.length; i++) {
-			var text = this._loadFileAlongIncludePath(includePath, path.normalize(paths[i]));
+			var text = this._loadFileAlongIncludePath(includePath, Path.normalize(paths[i]));
 			ret.push(text ? JSON.parse(text) : undefined);
 			if (params && params.returnOne && text) {
 				break;
@@ -148,7 +148,7 @@ Loader.prototype._loadFilesAsyncAlongIncludePath = function (includes, filename,
 		
 		var manifest = this.manifest[root];
 		if (!manifest || Loader.indexOf(manifest, filename) > -1) {
-			var filepath = path.join(root, filename);
+			var filepath = Path.join(root, filename);
 			this._loadFile(filepath, false, ilib.bind(this, function(t) {
 				//console.log("Loader._loadFilesAsyncAlongIncludePath: loading " + (t ? " success" : " failed"));
 				if (t) {
@@ -187,7 +187,7 @@ Loader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 Loader.prototype._loadManifestFile = function(i, sync, cb) {
 	//console.log("Loader._loadManifestFile: Checking include path " + i + " " + this.includePath[i]);
 	if (i < this.includePath.length) {
-		var filepath = path.join(this.includePath[i], "ilibmanifest.json");
+		var filepath = Path.join(this.includePath[i], "ilibmanifest.json");
 		//console.log("Loader._loadManifestFile: Loading manifest file " + filepath);
 		var text = this._loadFile(filepath, sync, ilib.bind(this, function(text) {
 			if (text) {

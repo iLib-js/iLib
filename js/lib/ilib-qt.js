@@ -138,3 +138,4 @@ var QmlLoader = require("../lib/QMLLoader.js");
 var ilib = require("../lib/ilib.js");
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
+ilib._dyndata = true;

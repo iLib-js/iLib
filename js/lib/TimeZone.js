@@ -276,8 +276,6 @@ TimeZone.prototype._initZone = function() {
 	}
 };
 
-ilib.data.timezone = {};
-
 /** @private */
 TimeZone._marshallIds = function (country, sync, callback) {
 	var tz, ids = [];
@@ -285,9 +283,9 @@ TimeZone._marshallIds = function (country, sync, callback) {
 	if (!country) {
 		// local is a special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
-		for (tz in ilib.data.timezone.list) {
-			if (ilib.data.timezone.list[tz]) {
-				ids.push(ilib.data.timezone.list[tz]);
+		for (tz in ilib.data.timezones) {
+			if (ilib.data.timezones[tz]) {
+				ids.push(ilib.data.timezones[tz]);
 			}
 		}
 		if (typeof(callback) === 'function') {
@@ -341,8 +339,7 @@ TimeZone.getAvailableIds = function (country, sync, onLoad) {
 		sync = true;
 	}
 	
-	if (!ilib.data.timezone.list || ilib.data.timezone.list.length === 0) {
-		ilib.data.timezone.list = [];
+	if (ilib.data.timezones.length === 0) {
 		if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
 			ilib._load.listAvailableFiles(sync, function(hash) {
 				for (var dir in hash) {
@@ -350,7 +347,7 @@ TimeZone.getAvailableIds = function (country, sync, onLoad) {
 					if (ilib.isArray(files)) {
 						files.forEach(function (filename) {
 							if (filename && filename.match(/^zoneinfo/)) {
-								ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+								ilib.data.timezones.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
 							}
 						});
 					}
@@ -360,7 +357,7 @@ TimeZone.getAvailableIds = function (country, sync, onLoad) {
 		} else {
 			for (tz in ilib.data.zoneinfo) {
 				if (ilib.data.zoneinfo[tz]) {
-					ilib.data.timezone.list.push(tz);
+					ilib.data.timezones.push(tz);
 				}
 			}
 			ids = TimeZone._marshallIds(country, sync, onLoad);

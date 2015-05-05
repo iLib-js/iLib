@@ -19,12 +19,15 @@
  * limitations under the License.
  */
 
-var NodeLoader = require("../lib/NodeLoader.js");
-ilib.setLoaderCallback(NodeLoader(ilib));
+// var NodeLoader = require("../lib/NodeLoader.js");
+// ilib.setLoaderCallback(NodeLoader(ilib));
 
 //initialize some things statically because the constructors do not load 
 //the locale-independent data
 CType._init(true);
 NormString.init();
+
+ilib._dyncode = false;
+ilib._dyndata = false;
 
 module.exports = ilib;
