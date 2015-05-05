@@ -770,7 +770,7 @@ limitations under the License.
 		</exec>
 	</target>
 
-	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
+	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled,test.assembled.compiled.legacy,test.assembled.uncompiled.legacy,test.dynamicdata.compiled.legacy,test.dynamicdata.uncompiled.legacy,test.dynamic.compiled.legacy,test.dynamic.uncompiled.legacy" 
 			description="run the tests">
 	</target>
 

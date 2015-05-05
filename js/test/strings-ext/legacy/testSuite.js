@@ -21,7 +21,7 @@ var TestSuite = require("./TestSuiteModule.js");
 
 function newSuite(path, include) {
 	var suite = new TestSuite("strings-ext/legacy/" + path);
-	suite.include("strings-ext/test/normdata.js");
+	//suite.include("strings-ext/test/normdata.js");
 	suite.include("test/testUtils.js");
 	return suite;
 };

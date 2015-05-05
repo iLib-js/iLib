@@ -19,12 +19,15 @@
 
 if (ilib.isDynCode()) {
 	new ilib.NormString("foo"); // cause the code to be loaded
-	ilib.NormString.init();
-
-	if (typeof(normtests) === 'undefined') {
-		var normtests = require("../test/strings-ext/test/normdata.js");
-	}
 }
+
+if (ilib.isDynData()) {
+	ilib.NormString.init();
+}
+if (typeof(normtests) === 'undefined') {
+	var normtests = require("../test/strings-ext/test/normdata.js");
+}
+
 
 function toHexString(string) {
 	var i, result = ""; 

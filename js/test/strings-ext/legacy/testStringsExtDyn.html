@@ -21,18 +21,15 @@ limitations under the License.
 <head>
 <script type="text/javascript" src="../../../../tools/jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript" src="../../../lib/ilib-web.js"></script>
+<script language="JavaScript" src="normdata.js"></script>
 <script language="JavaScript">
 if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
 	// work-around for Opera, which only puts the language "en" into the navigator.language 
 	// instead of the whole locale "en-US" which the unit tests expect
 	navigator.language = "en-US";
 }
-
-//squeak this mapping in so that require will return the right thing for the tests
-require.moduleMap["normdata.js"] = normtests;
 </script>
 <script language="JavaScript" src="testglyphstr.js"></script>
-<script language="JavaScript" src="normdata.js"></script>
 <script language="JavaScript" src="testnorm.js"></script>
 </head>
 </html>

@@ -260,27 +260,23 @@ function testGetLocaleNotString() {
 
 function testGetTimeZoneBrowser() {
 	if (ilib._getPlatform() !== "browser") {
-		// only test this in node
+		// only test this in a real browser
 		return;
 	}
 	ilib.tz = undefined;
 	navigator.timezone = 'America/Los_Angeles';             
 	
-	// make sure we are simulating the right thing
-	assertEquals("browser", ilib._getPlatform());
-		
 	assertEquals("America/Los_Angeles", ilib.getTimeZone());
 }
 
 function testGetLocaleBrowser() {
 	if (ilib._getPlatform() !== "browser") {
-		// only test this in node
+		// only test this in a real browser
 		return;
 	}
-	ilib.tz = undefined;
-	navigator.language = 'ja-JP';
+	ilib.locale = undefined;
 	
-	assertEquals("ja-JP", ilib.getLocale());
+	assertEquals(navigator.language, ilib.getLocale());
 }
 
 function testIsArrayNewArrayObj() {

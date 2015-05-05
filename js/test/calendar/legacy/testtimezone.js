@@ -836,7 +836,7 @@ function testGetAvailableTimeZonesWithLoader() {
 	ilib.setLoaderCallback(new getAvailableMocker());
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
 	ilib.TimeZone.cache = {}; // clear the cache
-	ilib.data.timezone.list = undefined; // clear the timezone list cache
+	ilib.data.timezones = []; // clear the timezone list cache
 	
 	try {
 		var zones = ilib.TimeZone.getAvailableIds();
@@ -846,7 +846,7 @@ function testGetAvailableTimeZonesWithLoader() {
 		// clean up
 		ilib.LocaleInfo.cache = {}; // clear the locale info cache
 		ilib.TimeZone.cache = {}; // clear the cache
-		ilib.data.timezone.list = undefined; // clear the timezone list cache
+		ilib.data.timezones = []; // clear the timezone list cache
 		ilib._load = temp;
 	}
 }
