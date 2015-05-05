@@ -871,6 +871,9 @@ Locale.getAvailableLocales = function (sync, onLoad) {
 	var locales = [];
 	if (Locale.locales.length || typeof(ilib._load.listAvailableFiles) !== 'function') {
 		locales = Locale.locales;
+		if (onLoad && typeof(onLoad) === 'function') {
+			onLoad(locales);
+		}
 	} else {
 		if (typeof(sync) === 'undefined') {
 			sync = true;
