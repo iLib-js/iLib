@@ -2859,3 +2859,372 @@ function testJSCollatorBogusStyle() {
 	assertTrue("Ä < ä", col.compare("Ä", "ä") < 0);
 	assertTrue("ä < B", col.compare("ä", "B") < 0);
 }
+
+function testJSCollatorCompareAsciiPunctuationTer() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "tertiary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("\\t < \\n", col.compare("\t", "\n") < 0);
+	assertTrue("\\n < \\u000C", col.compare("\n", "\u000C") < 0);
+	assertTrue("\\u000C < ' '", col.compare("\u000C", " ") < 0);
+	assertTrue("' '  < !", col.compare(" ", "!") < 0);
+	assertTrue("! < \"", col.compare("!", "\"") < 0);
+	assertTrue("\" < #", col.compare("\"", "#") < 0);
+	assertTrue("# < $", col.compare("#", "$") < 0);
+	assertTrue("$ < %", col.compare("$", "%") < 0);
+	assertTrue("% < &", col.compare("%", "&") < 0);
+	assertTrue("& < '", col.compare("&", "'") < 0);
+	assertTrue("' < (", col.compare("'", "(") < 0);
+	assertTrue("( < )", col.compare("(", ")") < 0);
+	assertTrue(") < *", col.compare(")", "*") < 0);
+	assertTrue("* < +", col.compare("*", "+") < 0);
+	assertTrue("+ < ,", col.compare("+", ",") < 0);
+	assertTrue(", < -", col.compare(",", "-") < 0);
+	assertTrue("- < .", col.compare("-", ".") < 0);
+	assertTrue(". < /", col.compare(".", "/") < 0);
+	assertTrue("/ < 0", col.compare("/", "0") < 0);
+	assertTrue("0 < 1", col.compare("0", "1") < 0);
+	assertTrue("1 < 2", col.compare("1", "2") < 0);
+	assertTrue("2 < 3", col.compare("2", "3") < 0);
+	assertTrue("3 < 4", col.compare("3", "4") < 0);
+	assertTrue("4 < 5", col.compare("4", "5") < 0);
+	assertTrue("5 < 6", col.compare("5", "6") < 0);
+	assertTrue("6 < 7", col.compare("6", "7") < 0);
+	assertTrue("7 < 8", col.compare("7", "8") < 0);
+	assertTrue("8 < 9", col.compare("8", "9") < 0);
+	assertTrue("9 < :", col.compare("9", ":") < 0);
+	assertTrue(": < ;", col.compare(":", ";") < 0);
+	assertTrue("; < <", col.compare(";", "<") < 0);
+	assertTrue("< < =", col.compare("<", "=") < 0);
+	assertTrue("= < >", col.compare("=", ">") < 0);
+	assertTrue("> < ?", col.compare(">", "?") < 0);
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < [", col.compare("@", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+	assertTrue("\\ < ]", col.compare("\\", "]") < 0);
+	assertTrue("] < ^", col.compare("]", "^") < 0);
+	assertTrue("^ < _", col.compare("^", "_") < 0);
+	assertTrue("_ < `", col.compare("_", "`") < 0);
+	assertTrue("` < {", col.compare("`", "{") < 0);
+	assertTrue("{ < |", col.compare("{", "|") < 0);
+	assertTrue("| < }", col.compare("|", "}") < 0);
+	assertTrue("} < ~", col.compare("}", "~") < 0);
+	assertTrue("~ < ", col.compare("~", "") < 0);
+}
+
+function testJSCollatorCompareAsciiPunctuationSec() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "secondary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("\\t < \\n", col.compare("\t", "\n") < 0);
+	assertTrue("\\n < \\u000C", col.compare("\n", "\u000C") < 0);
+	assertTrue("\\u000C < ' '", col.compare("\u000C", " ") < 0);
+	assertTrue("' '  < !", col.compare(" ", "!") < 0);
+	assertTrue("! < \"", col.compare("!", "\"") < 0);
+	assertTrue("\" < #", col.compare("\"", "#") < 0);
+	assertTrue("# < $", col.compare("#", "$") < 0);
+	assertTrue("$ < %", col.compare("$", "%") < 0);
+	assertTrue("% < &", col.compare("%", "&") < 0);
+	assertTrue("& < '", col.compare("&", "'") < 0);
+	assertTrue("' < (", col.compare("'", "(") < 0);
+	assertTrue("( < )", col.compare("(", ")") < 0);
+	assertTrue(") < *", col.compare(")", "*") < 0);
+	assertTrue("* < +", col.compare("*", "+") < 0);
+	assertTrue("+ < ,", col.compare("+", ",") < 0);
+	assertTrue(", < -", col.compare(",", "-") < 0);
+	assertTrue("- < .", col.compare("-", ".") < 0);
+	assertTrue(". < /", col.compare(".", "/") < 0);
+	assertTrue("/ < 0", col.compare("/", "0") < 0);
+	assertTrue("0 < 1", col.compare("0", "1") < 0);
+	assertTrue("1 < 2", col.compare("1", "2") < 0);
+	assertTrue("2 < 3", col.compare("2", "3") < 0);
+	assertTrue("3 < 4", col.compare("3", "4") < 0);
+	assertTrue("4 < 5", col.compare("4", "5") < 0);
+	assertTrue("5 < 6", col.compare("5", "6") < 0);
+	assertTrue("6 < 7", col.compare("6", "7") < 0);
+	assertTrue("7 < 8", col.compare("7", "8") < 0);
+	assertTrue("8 < 9", col.compare("8", "9") < 0);
+	assertTrue("9 < :", col.compare("9", ":") < 0);
+	assertTrue(": < ;", col.compare(":", ";") < 0);
+	assertTrue("; < <", col.compare(";", "<") < 0);
+	assertTrue("< < =", col.compare("<", "=") < 0);
+	assertTrue("= < >", col.compare("=", ">") < 0);
+	assertTrue("> < ?", col.compare(">", "?") < 0);
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < [", col.compare("@", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+	assertTrue("\\ < ]", col.compare("\\", "]") < 0);
+	assertTrue("] < ^", col.compare("]", "^") < 0);
+	assertTrue("^ < _", col.compare("^", "_") < 0);
+	assertTrue("_ < `", col.compare("_", "`") < 0);
+	assertTrue("` < {", col.compare("`", "{") < 0);
+	assertTrue("{ < |", col.compare("{", "|") < 0);
+	assertTrue("| < }", col.compare("|", "}") < 0);
+	assertTrue("} < ~", col.compare("}", "~") < 0);
+	assertTrue("~ < ", col.compare("~", "") < 0);
+}
+
+function testJSCollatorCompareAsciiPunctuationPri() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("\\t = \\n", col.compare("\t", "\n") === 0);
+	assertTrue("\\n = \\u000C", col.compare("\n", "\u000C") === 0);
+	assertTrue("\\u000C = ' '", col.compare("\u000C", " ") === 0);
+	assertTrue("' '  < !", col.compare(" ", "!") < 0);
+	assertTrue("! < \"", col.compare("!", "\"") < 0);
+	assertTrue("\" < #", col.compare("\"", "#") < 0);
+	assertTrue("# < $", col.compare("#", "$") < 0);
+	assertTrue("$ < %", col.compare("$", "%") < 0);
+	assertTrue("% < &", col.compare("%", "&") < 0);
+	assertTrue("& < '", col.compare("&", "'") < 0);
+	assertTrue("' < (", col.compare("'", "(") < 0);
+	assertTrue("( < )", col.compare("(", ")") < 0);
+	assertTrue(") < *", col.compare(")", "*") < 0);
+	assertTrue("* < +", col.compare("*", "+") < 0);
+	assertTrue("+ < ,", col.compare("+", ",") < 0);
+	assertTrue(", < -", col.compare(",", "-") < 0);
+	assertTrue("- < .", col.compare("-", ".") < 0);
+	assertTrue(". < /", col.compare(".", "/") < 0);
+	assertTrue("/ < 0", col.compare("/", "0") < 0);
+	assertTrue("0 < 1", col.compare("0", "1") < 0);
+	assertTrue("1 < 2", col.compare("1", "2") < 0);
+	assertTrue("2 < 3", col.compare("2", "3") < 0);
+	assertTrue("3 < 4", col.compare("3", "4") < 0);
+	assertTrue("4 < 5", col.compare("4", "5") < 0);
+	assertTrue("5 < 6", col.compare("5", "6") < 0);
+	assertTrue("6 < 7", col.compare("6", "7") < 0);
+	assertTrue("7 < 8", col.compare("7", "8") < 0);
+	assertTrue("8 < 9", col.compare("8", "9") < 0);
+	assertTrue("9 < :", col.compare("9", ":") < 0);
+	assertTrue(": < ;", col.compare(":", ";") < 0);
+	assertTrue("; < <", col.compare(";", "<") < 0);
+	assertTrue("< < =", col.compare("<", "=") < 0);
+	assertTrue("= < >", col.compare("=", ">") < 0);
+	assertTrue("> < ?", col.compare(">", "?") < 0);
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < [", col.compare("@", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+	assertTrue("\\ < ]", col.compare("\\", "]") < 0);
+	assertTrue("] < ^", col.compare("]", "^") < 0);
+	assertTrue("^ < _", col.compare("^", "_") < 0);
+	assertTrue("_ < `", col.compare("_", "`") < 0);
+	assertTrue("` < {", col.compare("`", "{") < 0);
+	assertTrue("{ < |", col.compare("{", "|") < 0);
+	assertTrue("| < }", col.compare("|", "}") < 0);
+	assertTrue("} < ~", col.compare("}", "~") < 0);
+	assertTrue("~ < ", col.compare("~", "") < 0);
+}
+
+function testJSCollatorCompareLatinPunctuationTer() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "tertiary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < A", col.compare("@", "A") < 0);
+	assertTrue("A < a", col.compare("A", "a") < 0);
+	assertTrue("a < B", col.compare("a", "B") < 0);
+	assertTrue("B < b", col.compare("B", "b") < 0);
+	assertTrue("b < C", col.compare("b", "C") < 0);
+	assertTrue("C < c", col.compare("C", "c") < 0);
+	assertTrue("c < D", col.compare("c", "D") < 0);
+	assertTrue("D < d", col.compare("D", "d") < 0);
+	assertTrue("d < E", col.compare("d", "E") < 0);
+	assertTrue("E < e", col.compare("E", "e") < 0);
+	assertTrue("e < F", col.compare("e", "F") < 0);
+	assertTrue("F < f", col.compare("F", "f") < 0);
+	assertTrue("f < G", col.compare("f", "G") < 0);
+	assertTrue("G < g", col.compare("G", "g") < 0);
+	assertTrue("g < H", col.compare("g", "H") < 0);
+	assertTrue("H < h", col.compare("H", "h") < 0);
+	assertTrue("h < I", col.compare("h", "I") < 0);
+	assertTrue("I < i", col.compare("I", "i") < 0);
+	assertTrue("i < J", col.compare("i", "J") < 0);
+	assertTrue("J < j", col.compare("J", "j") < 0);
+	assertTrue("j < K", col.compare("j", "K") < 0);
+	assertTrue("K < k", col.compare("K", "k") < 0);
+	assertTrue("k < L", col.compare("k", "L") < 0);
+	assertTrue("L < l", col.compare("L", "l") < 0);
+	assertTrue("l < M", col.compare("l", "M") < 0);
+	assertTrue("M < m", col.compare("M", "m") < 0);
+	assertTrue("m < N", col.compare("m", "N") < 0);
+	assertTrue("N < n", col.compare("N", "n") < 0);
+	assertTrue("n < O", col.compare("n", "O") < 0);
+	assertTrue("O < o", col.compare("O", "o") < 0);
+	assertTrue("o < P", col.compare("o", "P") < 0);
+	assertTrue("P < p", col.compare("P", "p") < 0);
+	assertTrue("p < Q", col.compare("p", "Q") < 0);
+	assertTrue("Q < q", col.compare("Q", "q") < 0);
+	assertTrue("q < R", col.compare("q", "R") < 0);
+	assertTrue("R < r", col.compare("R", "r") < 0);
+	assertTrue("r < S", col.compare("r", "S") < 0);
+	assertTrue("S < s", col.compare("S", "s") < 0);
+	assertTrue("s < T", col.compare("s", "T") < 0);
+	assertTrue("T < t", col.compare("T", "t") < 0);
+	assertTrue("t < U", col.compare("t", "U") < 0);
+	assertTrue("U < u", col.compare("U", "u") < 0);
+	assertTrue("u < V", col.compare("u", "V") < 0);
+	assertTrue("V < v", col.compare("V", "v") < 0);
+	assertTrue("v < W", col.compare("v", "W") < 0);
+	assertTrue("W < w", col.compare("W", "w") < 0);
+	assertTrue("w < X", col.compare("w", "X") < 0);
+	assertTrue("X < x", col.compare("X", "x") < 0);
+	assertTrue("x < Y", col.compare("x", "Y") < 0);
+	assertTrue("Y < y", col.compare("Y", "y") < 0);
+	assertTrue("y < Z", col.compare("y", "Z") < 0);
+	assertTrue("Z < z", col.compare("Z", "z") < 0);
+	assertTrue("z < [", col.compare("z", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+}
+
+function testJSCollatorCompareLatinPunctuationSec() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "secondary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < A", col.compare("@", "A") < 0);
+	assertTrue("A = a", col.compare("A", "a") === 0);
+	assertTrue("a < B", col.compare("a", "B") < 0);
+	assertTrue("B = b", col.compare("B", "b") === 0);
+	assertTrue("b < C", col.compare("b", "C") < 0);
+	assertTrue("C = c", col.compare("C", "c") === 0);
+	assertTrue("c < D", col.compare("c", "D") < 0);
+	assertTrue("D = d", col.compare("D", "d") === 0);
+	assertTrue("d < E", col.compare("d", "E") < 0);
+	assertTrue("E = e", col.compare("E", "e") === 0);
+	assertTrue("e < F", col.compare("e", "F") < 0);
+	assertTrue("F = f", col.compare("F", "f") === 0);
+	assertTrue("f < G", col.compare("f", "G") < 0);
+	assertTrue("G = g", col.compare("G", "g") === 0);
+	assertTrue("g < H", col.compare("g", "H") < 0);
+	assertTrue("H = h", col.compare("H", "h") === 0);
+	assertTrue("h < I", col.compare("h", "I") < 0);
+	assertTrue("I = i", col.compare("I", "i") === 0);
+	assertTrue("i < J", col.compare("i", "J") < 0);
+	assertTrue("J = j", col.compare("J", "j") === 0);
+	assertTrue("j < K", col.compare("j", "K") < 0);
+	assertTrue("K = k", col.compare("K", "k") === 0);
+	assertTrue("k < L", col.compare("k", "L") < 0);
+	assertTrue("L = l", col.compare("L", "l") === 0);
+	assertTrue("l < M", col.compare("l", "M") < 0);
+	assertTrue("M = m", col.compare("M", "m") === 0);
+	assertTrue("m < N", col.compare("m", "N") < 0);
+	assertTrue("N = n", col.compare("N", "n") === 0);
+	assertTrue("n < O", col.compare("n", "O") < 0);
+	assertTrue("O = o", col.compare("O", "o") === 0);
+	assertTrue("o < P", col.compare("o", "P") < 0);
+	assertTrue("P = p", col.compare("P", "p") === 0);
+	assertTrue("p < Q", col.compare("p", "Q") < 0);
+	assertTrue("Q = q", col.compare("Q", "q") === 0);
+	assertTrue("q < R", col.compare("q", "R") < 0);
+	assertTrue("R = r", col.compare("R", "r") === 0);
+	assertTrue("r < S", col.compare("r", "S") < 0);
+	assertTrue("S = s", col.compare("S", "s") === 0);
+	assertTrue("s < T", col.compare("s", "T") < 0);
+	assertTrue("T = t", col.compare("T", "t") === 0);
+	assertTrue("t < U", col.compare("t", "U") < 0);
+	assertTrue("U = u", col.compare("U", "u") === 0);
+	assertTrue("u < V", col.compare("u", "V") < 0);
+	assertTrue("V = v", col.compare("V", "v") === 0);
+	assertTrue("v < W", col.compare("v", "W") < 0);
+	assertTrue("W = w", col.compare("W", "w") === 0);
+	assertTrue("w < X", col.compare("w", "X") < 0);
+	assertTrue("X = x", col.compare("X", "x") === 0);
+	assertTrue("x < Y", col.compare("x", "Y") < 0);
+	assertTrue("Y = y", col.compare("Y", "y") === 0);
+	assertTrue("y < Z", col.compare("y", "Z") < 0);
+	assertTrue("Z = z", col.compare("Z", "z") === 0);
+	assertTrue("z < [", col.compare("z", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+}
+
+function testJSCollatorCompareLatinPunctuationPri() {
+	var col = new Collator({
+		useNative: false,
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	assertTrue("? < @", col.compare("?", "@") < 0);
+	assertTrue("@ < A", col.compare("@", "A") < 0);
+	assertTrue("A = a", col.compare("A", "a") === 0);
+	assertTrue("a < B", col.compare("a", "B") < 0);
+	assertTrue("B = b", col.compare("B", "b") === 0);
+	assertTrue("b < C", col.compare("b", "C") < 0);
+	assertTrue("C = c", col.compare("C", "c") === 0);
+	assertTrue("c < D", col.compare("c", "D") < 0);
+	assertTrue("D = d", col.compare("D", "d") === 0);
+	assertTrue("d < E", col.compare("d", "E") < 0);
+	assertTrue("E = e", col.compare("E", "e") === 0);
+	assertTrue("e < F", col.compare("e", "F") < 0);
+	assertTrue("F = f", col.compare("F", "f") === 0);
+	assertTrue("f < G", col.compare("f", "G") < 0);
+	assertTrue("G = g", col.compare("G", "g") === 0);
+	assertTrue("g < H", col.compare("g", "H") < 0);
+	assertTrue("H = h", col.compare("H", "h") === 0);
+	assertTrue("h < I", col.compare("h", "I") < 0);
+	assertTrue("I = i", col.compare("I", "i") === 0);
+	assertTrue("i < J", col.compare("i", "J") < 0);
+	assertTrue("J = j", col.compare("J", "j") === 0);
+	assertTrue("j < K", col.compare("j", "K") < 0);
+	assertTrue("K = k", col.compare("K", "k") === 0);
+	assertTrue("k < L", col.compare("k", "L") < 0);
+	assertTrue("L = l", col.compare("L", "l") === 0);
+	assertTrue("l < M", col.compare("l", "M") < 0);
+	assertTrue("M = m", col.compare("M", "m") === 0);
+	assertTrue("m < N", col.compare("m", "N") < 0);
+	assertTrue("N = n", col.compare("N", "n") === 0);
+	assertTrue("n < O", col.compare("n", "O") < 0);
+	assertTrue("O = o", col.compare("O", "o") === 0);
+	assertTrue("o < P", col.compare("o", "P") < 0);
+	assertTrue("P = p", col.compare("P", "p") === 0);
+	assertTrue("p < Q", col.compare("p", "Q") < 0);
+	assertTrue("Q = q", col.compare("Q", "q") === 0);
+	assertTrue("q < R", col.compare("q", "R") < 0);
+	assertTrue("R = r", col.compare("R", "r") === 0);
+	assertTrue("r < S", col.compare("r", "S") < 0);
+	assertTrue("S = s", col.compare("S", "s") === 0);
+	assertTrue("s < T", col.compare("s", "T") < 0);
+	assertTrue("T = t", col.compare("T", "t") === 0);
+	assertTrue("t < U", col.compare("t", "U") < 0);
+	assertTrue("U = u", col.compare("U", "u") === 0);
+	assertTrue("u < V", col.compare("u", "V") < 0);
+	assertTrue("V = v", col.compare("V", "v") === 0);
+	assertTrue("v < W", col.compare("v", "W") < 0);
+	assertTrue("W = w", col.compare("W", "w") === 0);
+	assertTrue("w < X", col.compare("w", "X") < 0);
+	assertTrue("X = x", col.compare("X", "x") === 0);
+	assertTrue("x < Y", col.compare("x", "Y") < 0);
+	assertTrue("Y = y", col.compare("Y", "y") === 0);
+	assertTrue("y < Z", col.compare("y", "Z") < 0);
+	assertTrue("Z = z", col.compare("Z", "z") === 0);
+	assertTrue("z < [", col.compare("z", "[") < 0);
+	assertTrue("[ < \\", col.compare("[", "\\") < 0);
+}

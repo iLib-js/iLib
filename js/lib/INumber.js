@@ -161,7 +161,7 @@ var INumber = function (str, options) {
 							} // else ignore
 						}
 						// record what we actually parsed
-						this.str = this.str.substring(0, lastNumericChar+1);
+						this.parsed = this.str.substring(0, lastNumericChar+1);
 						this.value = parseFloat(stripped);
 						break;
 					case 'number':

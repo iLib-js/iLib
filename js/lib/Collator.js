@@ -597,8 +597,8 @@ Collator.prototype = {
 					return diff;
 				} else {
 					// skip the numeric part and compare the rest lexically
-					l = new NormString(left.substring(lvalue.str.length));
-					r = new NormString(right.substring(rvalue.str.length));
+					l = new NormString(left.substring(lvalue.parsed.length));
+					r = new NormString(right.substring(rvalue.parsed.length));
 				}
 			}
 			// else if they aren't both numbers, then let the code below take care of the lexical comparison instead
