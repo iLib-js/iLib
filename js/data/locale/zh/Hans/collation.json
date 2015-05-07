@@ -5,10 +5,7 @@
 		"bits":[16,4,1,2],
 		"keysize":[16,20,24,24],
 		"inherit": [
-			{
-				"name": "pinyin-latin",
-				"start": 0
-			}
+			"pinyin-latin"
 		],
 		"ranges":[
 			{

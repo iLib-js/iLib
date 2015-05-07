@@ -39,6 +39,7 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var INumber = require("./INumber.js");
 var isPunct = require("./isPunct.js");
+var isDigit = require("./isDigit.js");
 var NormString = require("./NormString.js");
 var CodePointSource = require("./CodePointSource.js");
 var ElementIterator = require("./ElementIterator.js");
@@ -561,59 +562,63 @@ Collator.prototype = {
     	 */
     	this.collation = rule;
     	this.map = {};
-    	this.lastMap = 0;
+    	this.lastMap = -1;
     	this.keysize = this.collation.keysize[this.level-1];
     	
     	if (typeof(this.collation.inherit) !== 'undefined') {
     		for (var i = 0; i < this.collation.inherit.length; i++) {
-    			rule = this.collation.inherit[i].name;
+    			var col = this.collation.inherit[i];
+    			rule = typeof(col) === 'object' ? col.name : col;
     			if (rules[rule]) {
-        			this._addRules(rules[rule], this.collation.inherit[i].start);
+    				this._addRules(rules[rule], col.start || this.lastMap+1);
     			}
     		}
     	}
-    	this._addRules(this.collation, this.lastMap);
+    	this._addRules(this.collation, this.lastMap+1);
     },
     
     /**
      * @private
      */
     _basicCompare: function(left, right) {
+		var l = (left instanceof NormString) ? left : new NormString(left),
+			r = (right instanceof NormString) ? right : new NormString(right),
+			lchar, 
+			rchar,
+			lelements,
+			relements;
+		
 		if (this.numeric) {
 			var lvalue = new INumber(left, {locale: this.locale});
 			var rvalue = new INumber(right, {locale: this.locale});
-			if (isNaN(lvalue.valueOf())) {
-				if (isNaN(rvalue.valueOf())) {
-					return 0;
-				}
-				return 1;
-			} else if (isNaN(rvalue.valueOf())) {
-				return -1;
-			}
-			return lvalue.valueOf() - rvalue.valueOf();
-		} else {
-			var l = (left instanceof NormString) ? left : new NormString(left),
-				r = (right instanceof NormString) ? right : new NormString(right),
-				lelements,
-				relements;
-				
-			// if the reverse sort is on, switch the char sources so that the result comes out swapped
-			lelements = new ElementIterator(new CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
-			relements = new ElementIterator(new CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
-			
-			while (lelements.hasNext() && relements.hasNext()) {
-				var diff = lelements.next() - relements.next();
+			if (!isNaN(lvalue.valueOf()) && !isNaN(rvalue.valueOf())) {
+				var diff = lvalue.valueOf() - rvalue.valueOf();
 				if (diff) {
 					return diff;
+				} else {
+					// skip the numeric part and compare the rest lexically
+					l = new NormString(left.substring(lvalue.str.length));
+					r = new NormString(right.substring(rvalue.str.length));
 				}
 			}
-			if (!lelements.hasNext() && !relements.hasNext()) {
-				return 0;
-			} else if (lelements.hasNext()) {
-				return 1;
-			} else {
-				return -1;
+			// else if they aren't both numbers, then let the code below take care of the lexical comparison instead
+		}
+			
+		lelements = new ElementIterator(new CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
+		relements = new ElementIterator(new CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
+		
+		while (lelements.hasNext() && relements.hasNext()) {
+			var diff = lelements.next() - relements.next();
+			if (diff) {
+				return diff;
 			}
+		}
+		if (!lelements.hasNext() && !relements.hasNext()) {
+			return 0;
+		} else if (lelements.hasNext()) {
+			return 1;
+		} else {
+			return -1;
 		}
     },
     
@@ -721,6 +726,7 @@ Collator.prototype = {
 			while (lelements.hasNext()) {
 				element = lelements.next();
 				if (this.reverse) {
+					// for reverse, take the bitwise inverse
 					element = (1 << this.keysize) - element;
 				}
 				ret += pad(element.toString(16), this.keysize/4);	

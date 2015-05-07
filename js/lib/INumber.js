@@ -142,20 +142,26 @@ var INumber = function (str, options) {
 						// stripping should work for all locales, because you just ignore all the
 						// formatting except the decimal char
 						var unary = true; // looking for the unary minus still?
+						var lastNumericChar = 0;
 						this.str = str || "0";
 						i = 0;
 						for (i = 0; i < this.str.length; i++) {
 							if (unary && this.str.charAt(i) === '-') {
 								unary = false;
 								stripped += this.str.charAt(i);
+								lastNumericChar = i;
 							} else if (isDigit(this.str.charAt(i))) {
 								stripped += this.str.charAt(i);
 								unary = false;
+								lastNumericChar = i;
 							} else if (this.str.charAt(i) === this.decimal) {
 								stripped += "."; // always convert to period
 								unary = false;
+								lastNumericChar = i;
 							} // else ignore
 						}
+						// record what we actually parsed
+						this.str = this.str.substring(0, lastNumericChar+1);
 						this.value = parseFloat(stripped);
 						break;
 					case 'number':

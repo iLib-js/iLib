@@ -72,7 +72,8 @@
             },
             "This string should not be extracted either.": {
                 "source": "This string should not be extracted either.",
-                "status": "new"
+                "translation": "Dieser String sollte nicht extrahierte werden.",
+                "status": "edit"
             },
             "String 1 with slash dot translator's comment.": {
                 "source": "String 1 with slash dot translator's comment.",

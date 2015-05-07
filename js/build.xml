@@ -901,7 +901,16 @@ limitations under the License.
 			args="${build.output.js}/ilib-full-dyn.js"/>
 	</target>
 	
-	<target name="update.package.json">
+	<target name="testpackagejson" description="test whether or not the package.json file needs to be rebuilt">
+		<uptodate
+                property="package.json.not.needed"
+                targetfile="${build.base}/package.json">
+			<srcfiles dir="${build.base}" file="package.json.template" />
+			<srcfiles dir="${build.base}/.." file="build.properties" />
+		</uptodate>
+	</target>
+
+	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed">
 		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
 			<filterset>
 				<filter token="fullversion" value="${version}"/>

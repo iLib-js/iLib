@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.2">
+  <file datatype="javascript" source-language="en-US">
+    <body>
+      <trans-unit x-status="new">
+        <source>This is a new string.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string should not be extracted either.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 1 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 2 with slash dot translator's comment.</source>
+        <note>This is a multiline slash dot translator's comment with the return characters removed.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 3 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with stars at the beginning of the lines.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 1 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears later on the same line</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 2 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string has no translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string should be extracted too.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 4 with slash dot translator's comment.</source>
+        <note>Translator's comment on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 5 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with a slash double dot.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 6 with slash dot translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 7 with slash dot translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 3 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before with no space after the slashes</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 4 with a slash slash translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file datatype="javascript" source-language="en-US" target-language="de-DE">
+    <body>
+      <trans-unit x-status="new">
+        <source>This string should not be extracted either.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 1 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 2 with slash dot translator's comment.</source>
+        <note>This is a multiline slash dot translator's comment with the return characters removed.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 3 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with stars at the beginning of the lines.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 1 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears later on the same line</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 2 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string has no translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string should be extracted too.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 4 with slash dot translator's comment.</source>
+        <note>Translator's comment on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 5 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with a slash double dot.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 6 with slash dot translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 7 with slash dot translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 3 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before with no space after the slashes</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 4 with a slash slash translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file datatype="javascript" source-language="en-US" target-language="fr-FR">
+    <body>
+      <trans-unit x-status="new">
+        <source>This is a new string.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string should not be extracted either.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 1 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 2 with slash dot translator's comment.</source>
+        <note>This is a multiline slash dot translator's comment with the return characters removed.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 3 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with stars at the beginning of the lines.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 1 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears later on the same line</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 2 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string has no translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This string should be extracted too.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 4 with slash dot translator's comment.</source>
+        <note>Translator's comment on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 5 with slash dot translator's comment.</source>
+        <note>This is a slash dot translator's comment with a slash double dot.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 6 with slash dot translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>String 7 with slash dot translator's comment.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 3 with a slash slash translator's comment.</source>
+        <note>this translator's comment appears on the line before with no space after the slashes</note>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This is string 4 with a slash slash translator's comment.</source>
+        <note>This one appears on the same line.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -2,13 +2,11 @@
 	"default": "hebrew",
 	"hebrew": {
 		"scripts":["Hebr","Latn"],
-		"bits":[6,3,1,2],
-		"keysize":[8,12,12,12],
+		"bits":[7,3,1,2],
+		"keysize":[8,12,12,16],
 		"inherit": [
-			{
-				"name": "latin",
-				"start": 0
-			}
+			"ascii",
+			"latin"
 		],
 		"map": {
 

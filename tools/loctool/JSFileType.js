@@ -52,7 +52,8 @@ JSFileType.prototype.getName = function(filename) {
 };
 
 JSFileType.prototype.isFileType = function(filename) {
-	return filename.match(/\.js$/);
+	// use upper-case because of case-insensitive Windows file names
+	return filename && filename.toUpperCase().match(/\.JS$/);
 };
 
 JSFileType.prototype.newFile = function(filename) {
