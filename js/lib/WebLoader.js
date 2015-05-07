@@ -47,7 +47,7 @@ var WebLoader = function(ilib, sync, onLoad) {
 	
 	for (var i = 0; i < scripts.length; i++) {
 		var source = scripts[i].src;
-		if (source && (pos = source.search(/ilib-web\.js$/)) !== -1 || (pos = source.search(/ilib-ut-dyn\.js$/)) !== -1) {
+		if (source && (pos = source.search(/\/ilib-[a-z\-]*\.js$/)) !== -1) {
 			colon = source.indexOf('://');
 			this.protocol = source.substring(0,colon+3);
 			base = Path.join(source.substring(colon+3, pos-1), "..");

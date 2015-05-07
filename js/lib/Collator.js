@@ -554,8 +554,19 @@ Collator.prototype = {
     _init: function(rules) {
     	var rule = this.style;
     	while (typeof(rule) === 'string') {
-    		rule = rules[rule] || "default";
+    		rule = rules[rule];
     	}
+    	if (!rule) {
+    		rule = "default";
+        	while (typeof(rule) === 'string') {
+        		rule = rules[rule];
+        	}
+    	}
+    	if (!rule) {
+    		this.map = {};
+    		return;
+    	}
+    	
     	/** 
     	 * @private
     	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
