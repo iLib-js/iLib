@@ -588,14 +588,14 @@ function testCollatorGetSortKeySimpleUpper() {
 
 	assertNotUndefined(col);
 
-	assertEquals("0000200400600800a0", col.sortKey("ABCDEF"));
+	assertEquals("4204404604804a04c0", col.sortKey("ABCDEF"));
 }
 function testCollatorGetSortKeySimpleLower() {
 	var col = new ilib.Collator({useNative: false});
 
 	assertNotUndefined(col);
 
-	assertEquals("0020220420620820a2", col.sortKey("abcdef"));
+	assertEquals("4224424624824a24c2", col.sortKey("abcdef"));
 }
 
 function testCollatorGetSortKeyMixed() {
@@ -603,7 +603,7 @@ function testCollatorGetSortKeyMixed() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221021a20c2", col.sortKey("String"));
+	assertEquals("6606826425225c24e2", col.sortKey("String"));
 }
 
 function testCollatorGetSortKeyWithExpansion() {
@@ -612,7 +612,7 @@ function testCollatorGetSortKeyWithExpansion() {
 	assertNotUndefined(col);
 
 	// has 2 collation elements for "a" and "e"
-	assertEquals("01e082", col.sortKey("æ"));
+	assertEquals("43e4a2", col.sortKey("æ"));
 }
 
 function testCollatorGetSortKeyWithContraction() {
@@ -624,7 +624,7 @@ function testCollatorGetSortKeyWithContraction() {
 	// accent character. Together, they should have only 1 
 	// collation element because they are normalized to an 
 	// a-grave character first.
-	assertEquals("007", col.sortKey("à"));
+	assertEquals("427", col.sortKey("à"));
 }
 
 function testCollatorGetSortKeyEmpty() {
@@ -1303,7 +1303,7 @@ function testJSCollatorGetSortKeyPrimary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2422622221021a20c2", col.sortKey("string"));
+	assertEquals("6626826425225c24e2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
@@ -1314,7 +1314,7 @@ function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
+	assertEquals("6606826425335c24e2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWorks() {
@@ -1486,7 +1486,7 @@ function testJSCollatorGetSortKeySecondary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2422622221021a20c2", col.sortKey("string"));
+	assertEquals("6626826425225c24e2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
@@ -1497,7 +1497,7 @@ function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
+	assertEquals("6606826425335c24e2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeySecondaryWorks() {
@@ -1668,7 +1668,7 @@ function testJSCollatorGetSortKeyTertiary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2422622221021a20c2", col.sortKey("string"));
+	assertEquals("6626826425225c24e2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
@@ -1679,7 +1679,7 @@ function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
+	assertEquals("6606826425335c24e2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWorks() {
@@ -1861,7 +1861,7 @@ function testJSCollatorSearchGetSortKeyPrimary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("121311080d06", col.sortKey("string"));
+	assertEquals("333432292e27", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
@@ -1873,7 +1873,7 @@ function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("121311080d06", col.sortKey("Strïng"));
+	assertEquals("333432292e27", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWorks() {
@@ -2057,7 +2057,7 @@ function testJSCollatorSearchGetSortKeySecondary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("909888406830", col.sortKey("string"));
+	assertEquals("1981a0190148170138", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
@@ -2069,7 +2069,7 @@ function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("909888446830", col.sortKey("Strïng"));
+	assertEquals("1981a019014c170138", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWorks() {
@@ -2253,7 +2253,7 @@ function testJSCollatorSearchGetSortKeyTertiary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("1211311110810d1061", col.sortKey("string"));
+	assertEquals("3313413212912e1271", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
@@ -2265,7 +2265,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("1201311110890d1061", col.sortKey("Strïng"));
+	assertEquals("3303413212992e1271", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWorks() {
@@ -2449,7 +2449,7 @@ function testJSCollatorSearchGetSortKeyQuaternary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2422622221021a20c2", col.sortKey("string"));
+	assertEquals("6626826425225c24e2", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
@@ -2461,7 +2461,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
+	assertEquals("6606826425335c24e2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
@@ -2687,7 +2687,7 @@ function testJSCollatorSortGetSortKeyReversePrimary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("eeedeff8f3fa", col.sortKey("string"));
+	assertEquals("cdccced7d2d9", col.sortKey("string"));
 }
 
 function testJSCollatorSortGetSortKeyReverseQuaternary() {
@@ -2700,7 +2700,7 @@ function testJSCollatorSortGetSortKeyReverseQuaternary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("dbed9eddeefee5ef3e", col.sortKey("string"));
+	assertEquals("99e97e9beadea3eb1e", col.sortKey("string"));
 }
 
 function testCollatorJSWithSortWithSortKeysReverse() {
@@ -2774,7 +2774,7 @@ function testJSCollatorIgnorePunctuationSortKey() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402622221021a20c2", col.sortKey("-@#%St-ring-#@%"));
+	assertEquals("6606826425225c24e2", col.sortKey("-@#%St-ring-#@%"));
 }
 
 function testJSCollatorNumeric() {
@@ -2798,7 +2798,7 @@ function testJSCollatorNumericNoNumbers() {
 
 	assertNotUndefined(col);
 
-	assertEquals(0, col.compare("asdf", "fooo"));
+	assertTrue(col.compare("asdf", "foo") < 0);
 }
 
 function testJSCollatorNumericLeftNumber() {
@@ -2810,7 +2810,7 @@ function testJSCollatorNumericLeftNumber() {
 
 	assertNotUndefined(col);
 
-	assertTrue(col.compare("1", "fooo") < 0);
+	assertTrue(col.compare("1", "foo") < 0);
 }
 
 function testJSCollatorNumericRightNumber() {
