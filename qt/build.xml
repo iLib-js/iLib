@@ -43,7 +43,7 @@ limitations under the License.
 	
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
-	<property name="build.output.qt"				value="${build.output}/qt"/>
+	<property name="build.output.qt"				value="${build.base}/build-filereader"/>
 	
 	<property name="build.filereader"				value="${build.base}/FileReader"/>
 	<property name="build.unittest"					value="${build.base}/UnitTest"/>
@@ -64,6 +64,7 @@ limitations under the License.
 	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
 
 	<target name="clean" description="Remove all generated files to start from scratch">
+		<delete dir="${build.output.qt}"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.export}/qt"/>
 		<sequential>
@@ -87,14 +88,19 @@ limitations under the License.
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
 	<target name="filereader" depends="prepare" description="Build the file reader plugin">
-		<sequential>
-			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-			</exec>
-			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-			</exec>
-			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-			</exec>
-		</sequential>
+		<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="mac" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+		</exec>
+
+		<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+		</exec>
 	</target>
 	
 	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
