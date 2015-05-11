@@ -46,6 +46,7 @@ limitations under the License.
 	<property name="build.output.reports"			value="${build.output}/reports"/>
 	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
 	<property name="build.output.js"				value="${build.output}/js"/>
+	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.test"						value="${build.base}/test"/>
@@ -120,6 +121,7 @@ limitations under the License.
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
+		<mkdir dir="${build.output.dyncode}"/>
 	</target>
 
 	<!-- =================================================================== -->
@@ -307,7 +309,7 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
+	
 	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
 
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
@@ -345,7 +347,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyndata.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-standard-dyn.js" 
 			srcfilename="${build.lib}/ilib-standard-inc.js" 
@@ -372,7 +374,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
+	<target name="assemble.dyndata.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-core-dyn.js" 
 			srcfilename="${build.lib}/ilib-core-inc.js" 
@@ -399,7 +401,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
+	<target name="assemble.dyndata.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-full-dyn.js" 
 			srcfilename="${build.lib}/ilib-full-inc.js" 
@@ -418,9 +420,70 @@ limitations under the License.
 		</jscomp>
 	</target>
 
+	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale,install.uglify" description="compresses/minifies the dynamic load code files">
+		<!-- handle ilib.js as a special case so we can replace the version number in it -->
+		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
+		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
+		    <fileset dir="${build.output.js}" includes="ilib.js"/>
+		</replace>
+		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<arg value="${build.output.js}/ilib.js"/>
+			<arg value="-o"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="-m"/>
+		</exec>
+		<exec osfamily="mac" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<arg value="${build.output.js}/ilib.js"/>
+			<arg value="-o"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="-m"/>
+		</exec>
+		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<arg value="${build.output.js}/ilib.js"/>
+			<arg value="-o"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="-m"/>
+		</exec>
+
+		<!-- then do all the rest of them -->
+		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<srcfile/>
+			<arg value="-o"/>
+			<targetfile/>
+			<arg value="-m"/>
+			<fileset dir="${build.lib}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="mac" executable="node" dest="${build.output.dyncode}" parallel="false">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<srcfile/>
+			<arg value="-o"/>
+			<targetfile/>
+			<arg value="-m"/>
+			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false">
+			<arg value="${uglify.location}/bin/uglifyjs"/>
+			<srcfile/>
+			<arg value="-o"/>
+			<targetfile/>
+			<arg value="-m"/>
+			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+	</target>
+
 	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
 		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib.js,ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
 			<srcfiles dir="${build.lib}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
@@ -461,7 +524,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -481,22 +544,8 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
 		<copy todir="${build.export}/js/dyncode">
-			<fileset dir="${build.lib}">
+			<fileset dir="${build.output.dyncode}">
 				<include name="**/*.js"/>
-				<include name="src/**/*.js"/>
-				<exclude name="**/test/**"/>
-				<exclude name="runner.js"/>
-				<exclude name="**/*-inc.js"/>
-				<exclude name="externs.js"/>
-				<exclude name="**/bench*"/>
-				<exclude name="nfc/**"/>
-				<exclude name="nfd/**"/>
-				<exclude name="nfkc/**"/>
-				<exclude name="nkkd/**"/>
-				<exclude name="ilib-test.js"/>
-				<exclude name="ilib-test-dyn.js"/>
-				<exclude name="testSuite.js"/>
-				<exclude name="datefmtstr.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -794,7 +843,7 @@ limitations under the License.
 	</target>
 
 	<target name="doc"
-            depends="assemble.dyn.full,testjsdoc"
+            depends="assemble.dyndata.full,testjsdoc"
             description="creates jsdoc for all local java files in this project"
             unless="core.jsdoc.not.needed">
 		<delete dir="${build.jsdoc}"/>
@@ -823,10 +872,10 @@ limitations under the License.
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
 			unless="info.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale.src}">
+		<exec osfamily="unix" executable="node" dir="${build.locale.src}">
 			<arg value="${build.tools.build}/mkli.js"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.locale.src}">
+		<exec osfamily="mac" executable="node" dir="${build.locale.src}">
 			<arg value="${build.tools.build}/mkli.js"/>
 		</exec>
 		<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
@@ -845,12 +894,12 @@ limitations under the License.
 			depends="geninfo,testlocalejson"
 			description="compresses the json files"
 			unless="json.compress.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale.src}" failifexecutionfails="true" failonerror="true">
+		<exec osfamily="unix" executable="node" dir="${build.locale.src}" failifexecutionfails="true" failonerror="true">
 			<arg value="${build.tools.build}/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.locale}"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.locale.src}">
+		<exec osfamily="mac" executable="node" dir="${build.locale.src}">
 			<arg value="${build.tools.build}/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.locale}"/>
@@ -873,10 +922,10 @@ limitations under the License.
 			depends="compress.locale.json,test.locale.manifest"
 			description="produces the ilibmanifest.json file"
 			unless="locale.manifest.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale}">
+		<exec osfamily="unix" executable="node" dir="${build.locale}">
 			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+		<exec osfamily="mac" executable="node" dir="${build.locale}">
 			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
 		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
@@ -893,7 +942,7 @@ limitations under the License.
 	</target>
 
 	<target name="gen.stubs" 
-			depends="teststubs,assemble.dyn.full"
+			depends="teststubs,assemble.dyndata.full"
 			description="Generate the ilib function and class stubs file"
 			unless="stubs.not.needed">
 		<run dir="${build.lib}"
@@ -916,5 +965,60 @@ limitations under the License.
 				<filter token="fullversion" value="${version}"/>
 			</filterset>
 		</copy>
+	</target>
+	
+    <target name="testuglifyinstalled">
+    	<exec osfamily="unix" executable="npm" dir="${build.base}" failifexecutionfails="true" failonerror="true">
+			<arg value="config"/>
+    		<arg value="set"/>
+    		<arg value="parseable"/>
+    		<arg value="true"/>
+		</exec>
+		<exec osfamily="mac" executable="npm" dir="${build.base}" failifexecutionfails="true" failonerror="true">
+			<arg value="config"/>
+    		<arg value="set"/>
+    		<arg value="parseable"/>
+    		<arg value="true"/>
+		</exec>
+		<exec osfamily="windows" executable="npm.exe" dir="${build.base}" failifexecutionfails="true" failonerror="true">
+			<arg value="config"/>
+    		<arg value="set"/>
+    		<arg value="parseable"/>
+    		<arg value="true"/>
+		</exec>
+    	<echo>Testing if uglify is already installed.</echo>
+    	<exec osfamily="unix" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="-c"/>
+			<arg value="npm list uglify-js | tail -1"/>
+		</exec>
+		<exec osfamily="mac" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="-c"/>
+			<arg value="npm list uglify-js | tail -1"/>
+		</exec>
+		<exec osfamily="windows" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="/c"/>
+			<arg value="npm list uglify-js | tail -1"/>
+		</exec>
+    	<condition property="uglify.installed">
+    	    <equals arg1="${uglify.result}" arg2="0"/>
+    	</condition>
+    	<echo>Uglify installed: ${uglify.installed} at location ${uglify.location}</echo>
+    </target>
+
+	<target name="install.uglify" unless="uglify.installed" depends="testuglifyinstalled">
+		<echo>Installing uglify</echo>
+    	<exec osfamily="unix" outputproperty="uglify.install.output" executable="npm" dir="${build.base}" failifexecutionfails="true">
+			<arg value="install"/>
+    		<arg value="uglify-js"/>
+		</exec>
+		<exec osfamily="mac" outputproperty="uglify.install.output" executable="npm" dir="${build.base}" failifexecutionfails="true">
+			<arg value="install"/>
+    		<arg value="uglify-js"/>
+		</exec>
+		<exec osfamily="windows" outputproperty="uglify.install.output" executable="npm.exe" dir="${build.base}" failifexecutionfails="true">
+			<arg value="install"/>
+    		<arg value="uglify-js"/>
+		</exec>
+		<echo>Done.</echo>
 	</target>
 </project>
