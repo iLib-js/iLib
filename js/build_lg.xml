@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+build_lg.xml - iLib build run iLib build differently depends on the platform
+
+Copyright © 2014-2015, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<!-- ======================================================================= -->
+<!-- Main build file for the ilib java bits            -->
+<!-- ======================================================================= -->
+<project name="ilib.build.lg" default="build.lg.tv" basedir=".">
+	<!-- =================================================================== -->
+	<!-- properties                                                          -->
+	<!-- =================================================================== -->
+
+	<!-- Give user a chance to override properties without editing this file -->
+	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="build.properties"/>
+
+	<!-- Properties that can be overridden -->
+	<!-- directories -->
+	<property name="build.base"						value="${basedir}"/>
+	<property name="build.dist"						value="${build.base}/../dist"/>
+	<property name="build.export"					value="${build.base}/../export"/>
+	<property name="build.tools"					value="${build.base}/../tools"/>
+	<property name="build.src"						value="${build.base}/src"/>
+	<property name="build.lib"						value="${build.base}/lib"/>
+	<property name="build.data"						value="${build.base}/data"/>
+	<property name="build.locale"					value="${build.data}/locale"/>
+	<property name="build.customlocale.tv"			value="${build.data}/customlocale/tv"/>
+	<property name="build.customlocale.w2"			value="${build.data}/customlocale/w2"/>
+	<property name="build.localetemp"				value="${build.data}/localetemp"/>
+	<property name="build.customlocaletemp"				value="${build.data}/customlocaletemp"/>
+
+	<!-- =================================================================== -->
+	<!-- Implement the standard targets                                      -->
+	<!-- =================================================================== -->
+	<macrodef name="runassemble">
+        <attribute name="tgtfilename"/>
+        <attribute name="srcfilename"/>
+        <attribute name="locales"/>
+		<sequential>
+			<java dir="${build.src}" fork="true" classname="com.ilib.tools.jsa.JSAssemble" classpathref="project.classpath.jsa">
+				<arg value="-I"/>
+				<arg value="${build.localetemp}"/>
+				<arg value="-I"/>
+				<arg value="${build.src}"/>
+				<arg value="-o"/>
+				<arg value="${build.src}/@{tgtfilename}"/>
+				<arg value="-l"/>
+				<arg value="@{locales}"/>
+				<arg value="-v"/>
+				<arg value="${version}"/>
+				<arg value="${build.src}/@{srcfilename}"/>
+			</java>
+		</sequential>
+	</macrodef>
+
+	<path id="project.classpath.jsa">
+		<fileset dir="../java/output/release">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../java/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="../java/config"/>
+	</path>
+
+	<path id="project.class.path.base">
+		<fileset dir="${build.lib}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement path="${build.config}"/>
+	</path>
+
+	<taskdef name="jscomp"
+		classname="com.google.javascript.jscomp.ant.CompileTask"
+		classpath="${build.lib}/google-closure-compiler.r1918/compiler.jar"/>
+
+	<target name="delete.tempdir" description="delete the temprary customlocaletemp directory">
+		<delete dir="${build.customlocaletemp}"/>
+	</target>
+
+	<target name="build.lg.tv" depends="delete.tempdir,gen.manifest.locale.tv, update.customdata" description="assembles the set of the js files and locales that LG needs into a single file">
+		<runassemble
+			tgtfilename="ilib-dyn-full.js"
+			srcfilename="ilib-full-inc.js"
+			locales=""/>
+		<jscomp compilationlevel="simple"
+			warning="verbose"
+			debug="true"
+			output="${build.src}/ilib-dyn-full-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn-full.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="build.lg.w2" depends="delete.tempdir, gen.manifest.locale.w2, update.customdata" description="assembles the set of the js files and locales that LG needs into a single file">
+		<runassemble
+			tgtfilename="ilib-dyn-full.js"
+			srcfilename="ilib-w2-inc.js"
+			locales=""/>
+		<jscomp compilationlevel="simple"
+			warning="verbose"
+			debug="true"
+			output="${build.src}/ilib-dyn-full-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn-full.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="gen.manifest.locale.tv"
+			depends="compress.locale.json.tv"
+			description="produces the ilibmanifest.json file">
+		<exec os="Linux" executable="node" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+	</target>
+
+	<target name="gen.manifest.locale.w2"
+			depends="compress.locale.json.w2"
+			description="produces the ilibmanifest.json file">
+		<exec os="Linux" executable="node" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.customlocaletemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+	</target>
+
+	<target name="geninfo"
+			depends="testinfo"
+			description="generates the localeinfo.json files out of the *.jf files"
+			unless="info.not.needed">
+		<exec os="Linux" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
+		<touch file="${build.locale}/localeinfo.stamp"/>
+	</target>
+
+	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
+		<uptodate property="info.not.needed" targetFile="${build.locale}/localeinfo.stamp">
+			<srcfiles dir="${build.locale}" includes="**/*.jf"/>
+		</uptodate>
+	</target>
+
+	<target name="compress.locale.json.tv"
+			depends="geninfo"
+			description="compresses the json files"
+			unless="json.compress.not.needed">
+		<exec os="Linux" executable="node" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.tv}"/>
+			<arg value="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,kn-IN,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,ta-IN,ta-SG,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,af-ZA,am-ET,ha-Latn-NG,or-IN"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.tv}"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.tv}"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.tv}"/>
+		</exec>
+		<touch file="${build.locale}/jsoncompress.stamp"/>
+	</target>
+
+	<target name="compress.locale.json.w2"
+			depends="geninfo"
+			description="compresses the json files"
+			unless="json.compress.not.needed">
+		<exec os="Linux" executable="node" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.w2}"/>
+			<arg value="de-DE, en-US, en-GB, es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, ru-RU, zh-CN, zh-TW, zh-HK"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.w2}"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.w2}"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/customjsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.customlocaletemp}"/>
+			<arg value="${build.customlocale.w2}"/>
+		</exec>
+		<touch file="${build.locale}/jsoncompress.stamp"/>
+	</target>
+
+
+	<target name="update.customdata" description="Create all objects and export them to the top level dir for packaging">
+		<mkdir dir="${build.export}/js"/>
+		<copy todir="${build.export}/js">
+			<fileset dir="${build.src}">
+				<include name="ilib-core.js"/>
+				<include name="ilib-core-compiled.js"/>
+				<include name="ilib-standard.js"/>
+				<include name="ilib-standard-compiled.js"/>
+				<include name="ilib-full.js"/>
+				<include name="ilib-full-compiled.js"/>
+				<include name="ilib-dyn-core.js"/>
+				<include name="ilib-dyn-core-compiled.js"/>
+				<include name="ilib-dyn-standard.js"/>
+				<include name="ilib-dyn-standard-compiled.js"/>
+				<include name="ilib-dyn-full.js"/>
+				<include name="ilib-dyn-full-compiled.js"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/src/js"/>
+		<copy todir="${build.export}/src/js">
+			<fileset dir="${build.base}">
+				<include name="src/**"/>
+				<include name="build.xml"/>
+				<include name="build.properties"/>
+				<include name="data/locale/**/*.json"/>
+				<include name="bin/**"/>
+				<include name="lib/google-closure*/**"/>
+				<exclude name="**/test/**"/>
+				<exclude name="**/*.html"/>
+				<exclude name="src/ilib-*-inc.js"/>
+				<exclude name="userSettings.js"/>
+			</fileset>
+		</copy>
+		<delete dir="${build.export}/locale"/>
+		<mkdir dir="${build.export}/locale"/>
+		<copy todir="${build.export}/locale">
+			<fileset dir="${build.customlocaletemp}">
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/package/locale"/>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.base}">
+				<include name="package.json"/>
+				<include name="README.md"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package">
+			<fileset dir="${build.src}">
+				<include name="nodeglue.js"/>
+				<include name="ilib-dyn-full-compiled.js"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/package/locale">
+			<fileset dir="${build.localetemp}">
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+	</target>
+</project>
