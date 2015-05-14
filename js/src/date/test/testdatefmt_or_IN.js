@@ -37,7 +37,7 @@ function testDateFmtINSimpleShort_or_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_or_IN() {
@@ -71,7 +71,7 @@ function testDateFmtINSimpleLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 ସେପ୍ଟେମ୍ବର 29", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
 }
 
 function testDateFmtINSimpleFull_or_IN() {
@@ -190,7 +190,7 @@ function testDateFmtINDateTimeSimpleShort_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 11-9-29", fmt.format(date));
+    assertEquals("1:45 pm 29-9-11", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_or_IN() {
@@ -224,7 +224,7 @@ function testDateFmtINDateTimeSimpleLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 2011 ସେପ୍ଟେମ୍ବର 29", fmt.format(date));
+    assertEquals("1:45 pm 29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_or_IN() {
@@ -414,7 +414,7 @@ function testDateFmtINTypeDate_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtINTypeTime_or_IN() {
@@ -448,7 +448,7 @@ function testDateFmtINTypeDateTime_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 11-9-29", fmt.format(date));
+    assertEquals("1:45 pm 29-9-11", fmt.format(date));
 }
 
 
@@ -568,7 +568,7 @@ function testDateFmtINShortDateComponentsDMY_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_or_IN() {

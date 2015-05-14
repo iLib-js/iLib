@@ -9,8 +9,8 @@
 				"f": "yyyy年MMMM月d日（EEEE）"
 			},
 			"dmy": {
-				"s": "yy/MM/d",
-				"m": "yyyy/MM/d",
+				"s": "yy/MM/dd",
+				"m": "yyyy/MM/dd",
 				"l": "yyyy年MMM月d日",
 				"f": "yyyy年MMMM月d日"
 			},
@@ -21,8 +21,8 @@
 				"f": "MMMM月d日（EEEE）"
 			},
 			"dm": {
-				"s": "MM/d",
-				"m": "MM/d",
+				"s": "MM/dd",
+				"m": "MM/dd",
 				"l": "MMM月d日",
 				"f": "MMMM月d日"
 			},
