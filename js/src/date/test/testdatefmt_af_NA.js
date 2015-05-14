@@ -37,7 +37,7 @@ function testDateFmtSimpleShort_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("11-09-29", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_af_NA() {
@@ -271,7 +271,7 @@ function testDateFmtSimpleLong_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011", fmt.format(date));
+    assertEquals("29 September 11", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_af_NA() {
@@ -373,7 +373,7 @@ function testDateFmtDateTimeSimpleShort_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 9/29/11", fmt.format(date));
+    assertEquals("1:45 nm. 11-09-29", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_af_NA() {
@@ -407,7 +407,7 @@ function testDateFmtDateTimeSimpleLong_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 29 Sep 2011", fmt.format(date));
+    assertEquals("1:45 nm. 29 September 11", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_af_NA() {
@@ -598,7 +598,7 @@ function testDateFmtTypeDate_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("11-09-29", fmt.format(date));
 }
 
 function testDateFmtTypeTime_af_NA() {
@@ -632,7 +632,7 @@ function testDateFmtTypeDateTime_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 9/29/11", fmt.format(date));
+    assertEquals("1:45 nm. 11-09-29", fmt.format(date));
 }
 
 
@@ -768,7 +768,7 @@ function testDateFmtShortDateComponentsDMY_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("11-09-29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_af_NA() {
