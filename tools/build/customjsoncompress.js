@@ -22,7 +22,7 @@
 var fs = require('fs');
 var util = require('util');
 var common = require('../cldr/common');
-var path = require('path');
+var path = require('../../js/lib/Path.js');
 
 function usage() {
 	util.print("Usage: customjsoncompress.js [-h] [source_dir] [target_dir] [custom_dir] [locale_list]\n" +
