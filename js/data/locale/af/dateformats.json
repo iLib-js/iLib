@@ -9,8 +9,9 @@
                 "f": "MMMM d"
             },
             "dmy": {
-                "s": "M/d/yy",
+                "s": "yy-MM-dd",
                 "m": "dd MMM yy",
+                "l": "dd MMMM yy",
                 "f": "dd MMMM yyyy"
             },
             "my": {
