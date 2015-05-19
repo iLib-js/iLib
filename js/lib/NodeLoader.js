@@ -28,6 +28,7 @@ module.exports = function (ilib) {
 	var path = require("./Path.js"),
 		fs = require("fs"),
 		util = require("util"),
+		ZoneInfoFile = require("./ZoneInfo.js"),
 		Loader = require("./Loader.js");
 	
 	var NodeLoader = function (ilib) {
@@ -45,6 +46,7 @@ module.exports = function (ilib) {
 		
 		//console.log("module.filename is " + module.filename + "\n");
 		//console.log("base is defined as " + this.base + "\n");
+		//console.log("root is defined as " + this.root + "\n");
 		
 		this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 		
@@ -57,6 +59,12 @@ module.exports = function (ilib) {
 		// ... else fall back to see if we're in a check-out dir of ilib
 		// this._exists(path.join(this.base, "data", "locale"), "localeinfo.json");
 		
+		if (fs.existsSync("/usr/share/zoneinfo")) {
+			//console.log("_createZoneFile: Loading zone info from the system\n");
+			this.useSystemZoneInfo = true;
+		} else {
+			//console.log("_createZoneFile: using ilib zone info\n");
+		}
 		// console.log("NodeLoader: include path is now " + JSON.stringify(this.includePath));
 	};
 		
@@ -73,7 +81,12 @@ module.exports = function (ilib) {
 			// on node, just secret load everything synchronously, even when asynchronous 
 			// load is requested, or else you will get crazy results where files are not read 
 			// until a long time later when the run queue is free
-			text = fs.readFileSync(pathname, "utf-8");
+			util.print("TIMEZONE: " + this.useSystemZoneInfo + " index: " + pathname.indexOf("zoneinfo") + "\n");
+			if (this.useSystemZoneInfo && pathname.indexOf("zoneinfo") !== -1) {
+				util.print("NodeLoader.__loadFile: loading zoneinfo path " + pathname + "\n");
+				text = this._createZoneFile(pathname);
+			} else
+				text = fs.readFileSync(pathname, "utf-8");
 			if (typeof(cb) === 'function') {
 				cb(text);
 			}
@@ -84,6 +97,26 @@ module.exports = function (ilib) {
 			}
 		}
 		return text;
+	};
+
+	NodeLoader.prototype._createZoneFile = function (path) {
+		var zone = path.substring(path.indexOf("zoneinfo"));
+
+		// remove the .json suffix to get the name of the zone
+		zone = zone.substring(0, zone.length-5);
+
+		try {
+			util.print("NodeLoader._createZoneFile: /usr/share/" + zone + "\n");
+			var zif = new ZoneInfoFile("/usr/share/" + zone);
+
+			// only get the info for this year. Later we can get the info
+			// for any historical or future year too
+			ret =  zif.getIlibZoneInfo(new Date());
+			return JSON.stringify(ret);
+		} catch (e) {
+			console.log("NodeLoader._createZoneFile: error: "+e);
+			return undefined;
+		}
 	};
 	
 	NodeLoader.prototype._exists = function(dir, file) {
