@@ -989,15 +989,15 @@ limitations under the License.
     	<echo>Testing if uglify is already installed.</echo>
     	<exec osfamily="unix" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
     		<arg value="-c"/>
-			<arg value="npm list -g uglify-js | tail -1"/>
+			<arg value="npm list uglify-js | tail -1"/>
 		</exec>
 		<exec osfamily="mac" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
     		<arg value="-c"/>
-			<arg value="npm list -g uglify-js | tail -1"/>
+			<arg value="npm list uglify-js | tail -1"/>
 		</exec>
 		<exec osfamily="windows" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
     		<arg value="/c"/>
-			<arg value="npm list -g uglify-js | tail -1"/>
+			<arg value="npm list uglify-js | tail -1"/>
 		</exec>
     	<condition property="uglify.installed">
     	    <equals arg1="${uglify.result}" arg2="0"/>
