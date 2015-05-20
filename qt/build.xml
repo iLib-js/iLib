@@ -80,7 +80,18 @@ limitations under the License.
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
-		<mkdir dir="${build.output.qt}"/>
+		<mkdir dir="${build.output}"/>
+		<sequential>
+			<exec osfamily="unix" executable="${QTBIN}/qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+			<exec osfamily="mac" executable="${QTBIN}/qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+			<exec osfamily="windows" executable="${QTBIN}/qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+		</sequential>
 	</target>
 
 	<!-- =================================================================== -->
@@ -100,15 +111,11 @@ limitations under the License.
 	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
 		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
-			<fileset dir="${build.base}/build-filereader">
-				<include name="libFileReader.so"/>
-				<include name="qmldir"/>
-			</fileset>
-		</copy>
-		<mkdir dir="${build.export}/src/qt/FileReader"/>
-		<copy todir="${build.export}/src/qt/FileReader">
-			<fileset dir="${build.filereader}">
+			<fileset dir="${build.output.qt}">
 				<include name="*"/>
+			</fileset>
+			<fileset dir="${build.filereader}">
+				<include name="qmldir"/>
 			</fileset>
 		</copy>
 	</target>
