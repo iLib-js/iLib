@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9. 11", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_cs_CZ() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9. 2011", fmt.format(date));
+    assertEquals("29. září 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_cs_CZ() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. 9. 11", fmt.format(date));
+    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_cs_CZ() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. 9. 2011", fmt.format(date));
+    assertEquals("29. 9. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_cs_CZ() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. 9. 2011", fmt.format(date));
+    assertEquals("29. září 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_cs_CZ() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. září 2011", fmt.format(date));
+    assertEquals("29. září 2011 13:45", fmt.format(date));
 }
 
 
@@ -472,7 +472,7 @@ function testDateFmtShortDateComponentsDM_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9.", fmt.format(date));
+    assertEquals("29.09.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_cs_CZ() {
@@ -489,7 +489,7 @@ function testDateFmtShortDateComponentsMY_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_cs_CZ() {
@@ -506,7 +506,7 @@ function testDateFmtShortDateComponentsDMY_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9. 11", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_cs_CZ() {
@@ -523,7 +523,7 @@ function testDateFmtShortDateComponentsWDM_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Č, 29. 9.", fmt.format(date));
+    assertEquals("Č 29.09.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_cs_CZ() {
@@ -540,7 +540,7 @@ function testDateFmtShortDateComponentsWDMY_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Č, 29. 9. 11", fmt.format(date));
+    assertEquals("Č 29.09.11", fmt.format(date));
 }
 
 
@@ -660,7 +660,7 @@ function testDateFmtFullDateComponentsWDM_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("čtvrtek, 29. 9.", fmt.format(date));
+    assertEquals("čtvrtek 29. září", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_cs_CZ() {
@@ -677,7 +677,7 @@ function testDateFmtFullDateComponentsWDMY_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("čtvrtek, 29. 9. 2011", fmt.format(date));
+    assertEquals("čtvrtek 29. září 2011", fmt.format(date));
 }
 
 
@@ -1121,7 +1121,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cs_CZ() {
 	});
     assertEquals("za 30 sekund", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinMinuteBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinMinuteBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1145,8 +1145,8 @@ function testDateFmtFormatRelativeWithinMinuteAfter_cs_CZ() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+    assertEquals("pre 30 sekund", fmt.formatRelative(reference, date));
+}
 function testDateFmtFormatRelativeWithinHourAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
@@ -1173,7 +1173,7 @@ function testDateFmtFormatRelativeWithinHourAfter_cs_CZ() {
 	});
     assertEquals("za 10 minut", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinHourBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinHourBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1197,8 +1197,8 @@ function testDateFmtFormatRelativeWithinHourAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+    assertEquals("pre 10 minut", fmt.formatRelative(reference, date));
+}
 function testDateFmtFormatRelativeWithinDayAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
@@ -1225,7 +1225,7 @@ function testDateFmtFormatRelativeWithinDayAfter_cs_CZ() {
 	});
     assertEquals("za 4 hodiny", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinDayBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinDayBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1249,9 +1249,9 @@ function testDateFmtFormatRelativeWithinDayAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 4 hodiny", fmt.formatRelative(reference, date));
 }
-*/
+
 function testDateFmtFormatRelativeWithinFortnightAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
@@ -1278,7 +1278,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cs_CZ() {
 	});
     assertEquals("za 4 dny", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinFortnightBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinFortnightBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1302,8 +1302,8 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+    assertEquals("pre 4 dny", fmt.formatRelative(reference, date));
+}
 
 function testDateFmtFormatRelativeWithinQuarterAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
@@ -1331,7 +1331,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cs_CZ() {
 	});
     assertEquals("za 9 týdnů", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinQuarterBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinQuarterBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1355,8 +1355,8 @@ function testDateFmtFormatRelativeWithinQuarterAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+    assertEquals("pre 9 týdnů", fmt.formatRelative(reference, date));
+}
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
@@ -1384,7 +1384,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cs_CZ() {
 	});
     assertEquals("za 16 měsíců", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinTwoYearsBefore_cs_CZ() {
+function testDateFmtFormatRelativeWithinTwoYearsBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1408,8 +1408,8 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+    assertEquals("pre 14 měsíců", fmt.formatRelative(reference, date));
+}
 
 function testDateFmtFormatRelativeYearsAfter_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
@@ -1437,7 +1437,7 @@ function testDateFmtFormatRelativeYearsAfter_cs_CZ() {
 	});
     assertEquals("za 14 let", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeYearsBefore_cs_CZ() {
+function testDateFmtFormatRelativeYearsBefore_cs_CZ() {
     var fmt = new DateFmt({locale: "cs-CZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1461,7 +1461,5 @@ function testDateFmtFormatRelativeYearsAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 21 let", fmt.formatRelative(reference, date));
 }
-*/
-

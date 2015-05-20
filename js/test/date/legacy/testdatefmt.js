@@ -403,7 +403,7 @@ function testDateFmtGetTemplateDateComponents() {
     var fmt = new ilib.DateFmt({date: "wdm"});
     assertNotNull(fmt);
     
-    assertEquals("EE M/d", fmt.getTemplate());
+    assertEquals("EE, M/d", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTimeComponents() {
@@ -2363,7 +2363,7 @@ function testDateFmtesES() {
 		millisecond: 0
 	});
     
-    assertEquals("martes 20 de septiembre 2011 13:45", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
 };
 
 function testDateFmtesMX() {
@@ -2387,7 +2387,7 @@ function testDateFmtesMX() {
 		millisecond: 0
 	});
     
-    assertEquals("martes 20 de septiembre 2011 13:45", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
 };
 
 function testDateFmtesAR() {
@@ -2411,7 +2411,7 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes 20 de septiembre 2011 13h45", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13h45", fmt.format(date));
 };
 
 function testDateFmttrTR() {
@@ -2507,7 +2507,7 @@ function testDateFmttrDA() {
 		millisecond: 0
 	});
     
-    assertEquals("torsdag den 20. oktober 2011 13.45", fmt.format(date));
+    assertEquals("torsdag den 20. oktober 2011 kl. 13.45", fmt.format(date));
 };
 
 function testDateFmtGetDefault() {

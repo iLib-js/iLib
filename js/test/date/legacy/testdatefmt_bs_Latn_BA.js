@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29. sep. 2011.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_bs_Latn_BA() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. sep 2011.", fmt.format(date));
+    assertEquals("29. septembar 2011.", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_bs_Latn_BA() {
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. septembar 2011", fmt.format(date));
+    assertEquals("29. septembar 2011.", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_bs_Latn_BA() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11.", fmt.format(date));
+    assertEquals("29.09.11. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_bs_Latn_BA() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+    assertEquals("29. sep. 2011. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_bs_Latn_BA() {
@@ -208,7 +208,8 @@ function testDateFmtDateTimeSimpleLong_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. sep 2011.", fmt.format(date));
+    
+    assertEquals("29. septembar 2011. u 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_bs_Latn_BA() {
@@ -225,7 +226,7 @@ function testDateFmtDateTimeSimpleFull_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. septembar 2011", fmt.format(date));
+    assertEquals("29. septembar 2011. u 13:45", fmt.format(date));
 }
 
 
@@ -433,7 +434,7 @@ function testDateFmtTypeDateTime_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11.", fmt.format(date));
+    assertEquals("29.09.11. 13:45", fmt.format(date));
 }
 
 
@@ -622,7 +623,7 @@ function testDateFmtFullDateComponentsM_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("sep", fmt.format(date));
+    assertEquals("septembar", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_bs_Latn_BA() {
@@ -673,7 +674,7 @@ function testDateFmtFullDateComponentsMY_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("septembar 2011", fmt.format(date));
+    assertEquals("septembar 2011.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_bs_Latn_BA() {
@@ -690,7 +691,7 @@ function testDateFmtFullDateComponentsDMY_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. septembar 2011", fmt.format(date));
+    assertEquals("29. septembar 2011.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_bs_Latn_BA() {
@@ -707,7 +708,7 @@ function testDateFmtFullDateComponentsWDM_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("četvrtak, 29. sep", fmt.format(date));
+    assertEquals("četvrtak, 29. septembar", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_bs_Latn_BA() {
@@ -724,7 +725,7 @@ function testDateFmtFullDateComponentsWDMY_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("četvrtak, 29. sep 2011.", fmt.format(date));
+    assertEquals("četvrtak, 29. septembar 2011.", fmt.format(date));
 }
 
 
@@ -1195,7 +1196,7 @@ function testDateFmtWithTimeZoneAndNoDST_bs_Latn_BA() {
     assertEquals("13:45:37 CET", fmt.format(date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_bs_Latn_BA() {
+function testDateFmtFormatRelativeWithinMinuteAfter_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
     assertNotNull(fmt);
     
@@ -1219,7 +1220,7 @@ function testDateFmtWithTimeZoneAndNoDST_bs_Latn_BA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 30 sekundi", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1245,7 +1246,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bs_Latn_BA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 30 sekundi", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1271,7 +1272,7 @@ function testDateFmtFormatRelativeWithinHourAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 10 minuta", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1297,7 +1298,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 10 minuta", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1323,7 +1324,7 @@ function testDateFmtFormatRelativeWithinDayAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 4 sata", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1349,7 +1350,7 @@ function testDateFmtFormatRelativeWithinDayBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 4 sata", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_bs_Latn_BA() {
@@ -1376,7 +1377,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 4 dana", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1402,7 +1403,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 4 dana", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_bs_Latn_BA() {
@@ -1429,7 +1430,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 9 nedelja", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1455,7 +1456,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 9 nedelja", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Latn_BA() {
@@ -1482,7 +1483,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 16 meseci", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1508,7 +1509,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 14 meseci", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_bs_Latn_BA() {
@@ -1535,7 +1536,7 @@ function testDateFmtFormatRelativeYearsAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("za 14 godina", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1561,6 +1562,6 @@ function testDateFmtFormatRelativeYearsBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("y", fmt.formatRelative(reference, date));
+    assertEquals("pre 21 godina", fmt.formatRelative(reference, date));
 }
-*/
+

@@ -1,5 +1,11 @@
 {
     "gregorian": {
+        "order": {
+			"f": "{date} {time}",
+			"l": "{date} {time}",
+			"m": "{date} {time}",
+			"s": "{date} {time}"
+        },
         "time": {
             "12": {
                 "ah": "hh a"

@@ -58,7 +58,7 @@ function testDateFmtUSSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/2011", fmt.format(date));
+    assertEquals("Sep 29, 2011", fmt.format(date));
 }
 
 function testDateFmtUSSimpleLong() {
@@ -186,7 +186,7 @@ function testDateFmtUSDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/2011 1:45pm", fmt.format(date));
+    assertEquals("Sep 29, 2011 1:45pm", fmt.format(date));
 }
 
 function testDateFmtUSDateTimeSimpleLong() {
@@ -562,7 +562,7 @@ function testDateFmtUSShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 9/29", fmt.format(date));
+    assertEquals("Th, 9/29", fmt.format(date));
 }
 
 function testDateFmtUSShortDateComponentsWDMY() {
@@ -578,7 +578,7 @@ function testDateFmtUSShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 9/29/11", fmt.format(date));
+    assertEquals("Th, 9/29/11", fmt.format(date));
 }
 
 
@@ -691,7 +691,7 @@ function testDateFmtUSFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday September 29", fmt.format(date));
+    assertEquals("Thursday, September 29", fmt.format(date));
 }
 
 function testDateFmtUSFullDateComponentsWDMY() {
@@ -707,7 +707,7 @@ function testDateFmtUSFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday September 29, 2011", fmt.format(date));
+    assertEquals("Thursday, September 29, 2011", fmt.format(date));
 }
 
 
@@ -1178,7 +1178,7 @@ function testDateFmtUSIslamic() {
 	});
     
     // should format with English transliterations of the month names
-    assertEquals("yawn as-sabt Šha'bān 24, 1433", fmt.format(date));
+    assertEquals("yawn as-sabt, Šha'bān 24, 1433", fmt.format(date));
 }
 
 function testDateFmtUSHebrew() {
@@ -1197,7 +1197,7 @@ function testDateFmtUSHebrew() {
 	});
     
     // should format with English transliterations of the month names
-    assertEquals("yom sheni Ḥeshvan 24, 5772", fmt.format(date));
+    assertEquals("yom sheni, Ḥeshvan 24, 5772", fmt.format(date));
 }
 
 /*

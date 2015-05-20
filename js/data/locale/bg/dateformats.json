@@ -1,45 +1,52 @@
 {
     "gregorian": {
-        "order": "{time} {date}",
+        "order": "{date} {time}",
         "date": {
             "dm": {
-                "s": "d.M",
-                "m": "dd.MM"
+                "s": "d.MM",
+                "m": "d.MM",
+                "l": "d MMMM",
+                "f": "d MMMM"
             },
             "dmy": {
-                "s": "dd.MM.yy",
-                "m": "dd.MM.yy",
-                "l": "dd MMM yyyy",
-                "f": "dd MMMM yyyy"
+                "s": "d.MM.yy 'г'.",
+                "m": "d.MM.yyyy 'г'.",
+                "l": "d MMMM yyyy 'г'.",
+                "f": "d MMMM yyyy 'г'."
             },
             "my": {
-                "s": "M.yy 'г'.",
-                "m": "MM.yyyy",
-                "l": "MMM yyyy 'г'."
+                "s": "MM.yy 'г'.",
+                "m": "MM.yyyy 'г'.",
+                "l": "MMMM yyyy 'г'.",
+                "f": "MMMM yyyy 'г'."
             },
             "m": {
-                "s": "MM"
+                "s": "MM",
+                "l": "MMMM"
             },
             "d": {
                 "s": "d",
-                "f": "dd",
-                "l": "dd",
-                "m": "dd"
+                "f": "d",
+                "l": "d",
+                "m": "d"
             },
             "y": {
-                "m": "yy"
+            	"s": "yy",
+                "m": "yyyy",
+                "l": "yyyy",
+                "f": "yyyy"
             },
             "dmwy": {
                 "s": "E, d.MM.yy 'г'.",
-                "m": "EE, d.MM.yy 'г'.",
-                "l": "EEE, d MMM yyyy 'г'.",
-                "f": "EEEE, d MMM yyyy 'г'."
+                "m": "EE, d.MM.yyyy 'г'.",
+                "l": "EEE, d MMMM yyyy 'г'.",
+                "f": "EEEE, d MMMM yyyy 'г'."
             },
             "dmw": {
                 "s": "E, d.MM",
                 "m": "EE, d.MM",
-                "l": "d MMM, EEEE",
-                "f": "d MMM, EEEE"
+                "l": "EEEE, d MMMM",
+                "f": "EEEE, d MMMM"
             },
             "n": {
                 "m": "N"

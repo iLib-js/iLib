@@ -90,7 +90,7 @@
     "durationMediumYears": "one#{num} rok|few#{num} ro|#{num} let",
     "1#1 yr|#{num} yrs": "one#{num} rok|few#{num} roky|#{num} let",
     "1#1 year|#{num} years": "one#{num} rok|few#{num} roky|#{num} let",
-    "{duration} ago": "-{duration}",
+    "{duration} ago": "pre {duration}",
     "in {duration}": "za {duration}",
     "finalSeparatorFull": " a ",
     "separatorLong": " "
