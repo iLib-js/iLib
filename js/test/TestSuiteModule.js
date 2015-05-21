@@ -94,6 +94,7 @@ TestSuite.prototype = {
 	
 	_runAllTests: function() {
 		var tests = [];
+		var util = require("util");
 		
 		for (var func in this) {
 			if (func && this[func] && typeof(this[func]) === 'function' && func.substring(0,4) === "test") {
@@ -170,19 +171,21 @@ TestSuite.prototype = {
 				navigator: {
 					userAgent: "Nodejs"
 				},
-				console: console,
 				require: require,
 				results: results,
-				process: process,
-				util: util,
-				global: global,
-				path: this.path,
-				module: new mod(module.id, module.parent)
+				path: this.path
 			};
 			//console.log("contextInit.module is " + util.inspect(contextInit.module));
 			
 			this.merge(contextInit, this.contextBits);
 			this.context = vm.createContext(contextInit);
+			this.context.module = {id: module.id, parent: module.parent, exports:{}};
+			try {
+    			if (typeof(process) !== 'undefined') {
+    				this.context.process = process;
+    			}
+			} catch (e) {}
+			// console.log("Context is: " + util.inspect(this.context));
 			if (this.setupCode) {
 				// allow arbitrary set up before the includes and running the tests
 				vm.runInContext(this.setupCode, this.context);

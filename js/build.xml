@@ -967,25 +967,31 @@ limitations under the License.
 		</copy>
 	</target>
 	
-    <target name="testuglifyinstalled">
-    	<exec osfamily="unix" executable="npm" dir="${build.base}" failifexecutionfails="true" failonerror="true">
-			<arg value="config"/>
-    		<arg value="set"/>
-    		<arg value="parseable"/>
-    		<arg value="true"/>
-		</exec>
-		<exec osfamily="mac" executable="npm" dir="${build.base}" failifexecutionfails="true" failonerror="true">
-			<arg value="config"/>
-    		<arg value="set"/>
-    		<arg value="parseable"/>
-    		<arg value="true"/>
-		</exec>
-		<exec osfamily="windows" executable="npm.exe" dir="${build.base}" failifexecutionfails="true" failonerror="true">
-			<arg value="config"/>
-    		<arg value="set"/>
-    		<arg value="parseable"/>
-    		<arg value="true"/>
-		</exec>
+	<macrodef name="npm">
+        <attribute name="command"/>
+        <attribute name="args"/>
+		<attribute name="dir"/>
+		<sequential>
+			<exec osfamily="unix" executable="npm" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+				<arg line="@{command}"/>
+				<arg line="@{args}"/>
+			</exec>
+			<exec osfamily="mac" executable="npm" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+				<arg line="@{command}"/>
+				<arg line="@{args}"/>
+			</exec>
+			<exec osfamily="windows" executable="npm.exe" dir="@{dir}" failifexecutionfails="true"  failonerror="true">
+				<arg line="@{command}"/>
+				<arg line="@{args}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target name="npm.set.parseable.true">
+		<npm command="config" args="set parseable true" dir="${build.base}"/>
+	</target>
+
+	<target name="testuglifyinstalled" depends="npm.set.parseable.true">
     	<echo>Testing if uglify is already installed.</echo>
     	<exec osfamily="unix" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
     		<arg value="-c"/>
@@ -1007,18 +1013,147 @@ limitations under the License.
 
 	<target name="install.uglify" unless="uglify.installed" depends="testuglifyinstalled">
 		<echo>Installing uglify</echo>
-    	<exec osfamily="unix" outputproperty="uglify.install.output" executable="npm" dir="${build.base}" failifexecutionfails="true">
-			<arg value="install"/>
-    		<arg value="uglify-js"/>
-		</exec>
-		<exec osfamily="mac" outputproperty="uglify.install.output" executable="npm" dir="${build.base}" failifexecutionfails="true">
-			<arg value="install"/>
-    		<arg value="uglify-js"/>
-		</exec>
-		<exec osfamily="windows" outputproperty="uglify.install.output" executable="npm.exe" dir="${build.base}" failifexecutionfails="true">
-			<arg value="install"/>
-    		<arg value="uglify-js"/>
-		</exec>
+		<npm command="install" args="uglify-js" dir="${build.base}"/>
 		<echo>Done.</echo>
+	</target>
+
+	<target name="location.trireme">
+    	<exec osfamily="unix" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="-c"/>
+			<arg value="npm list trireme | tail -1"/>
+		</exec>
+		<exec osfamily="mac" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="-c"/>
+			<arg value="npm list trireme | tail -1"/>
+		</exec>
+		<exec osfamily="windows" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
+    		<arg value="/c"/>
+			<arg value="npm list trireme | tail -1"/>
+		</exec>
+	</target>
+	
+	<target name="testtriremeinstalled" depends="npm.set.parseable.true,location.trireme">
+    	<condition property="trireme.installed">
+    		<and>
+    	    	<equals arg1="${trireme.result}" arg2="0"/>
+    			<length string="${trireme.location}" trim="true" when="greater" length="0" />
+    	    </and>
+    	</condition>
+    	<echo>trireme installed: ${trireme.installed} at location ${trireme.location}</echo>
+    </target>
+
+	<target name="install.trireme" unless="trireme.installed" depends="testtriremeinstalled">
+		<echo>Installing trireme</echo>
+		<npm command="install" args="trireme" dir="${build.base}"/>
+		<echo>Done.</echo>
+	</target>
+
+	<macrodef name="runtests.rhino">
+		<attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="suite"/>
+		<attribute name="set"/>
+		<sequential>
+			<java	dir="${build.test}"
+					classname="io.apigee.trireme.shell.Main"
+					fork="true"					
+					maxmemory="4096m">
+				<jvmarg value="-XX:MaxPermSize=96m"/>
+				<jvmarg value="-Xms256m"/>
+				<jvmarg value="-Xmx2048m"/>
+				<arg value="./testSuite.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+				<arg line="@{set}"/>
+				<classpath>
+					<pathelement path="${trireme.location}/lib/*"/>
+					<pathelement path="${trireme.location}/lib"/>
+					<pathelement path="${java.class.path}"/>
+				</classpath>
+			</java>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="runallsuites.rhino">
+        <attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="set"/>
+		<sequential>
+			<runtests.rhino suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+		</sequential>
+	</macrodef>
+
+	<target name="test.assembled.compiled.rhino" depends="assemble.unittest,location.trireme">
+		<runallsuites.rhino assembly="assembled" compilation="compiled" set="modular"/>
+	</target>
+
+	<target name="test.assembled.uncompiled.rhino" depends="assemble.unittest,location.trireme">
+		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="modular"/>
+	</target>
+
+	<target name="test.dynamic.uncompiled.rhino" depends="location.trireme">
+		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="modular"/>
+	</target>
+
+	<target name="test.dynamic.compiled.rhino" depends="location.trireme">
+		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="modular"/>
+	</target>
+
+	<target name="test.dynamicdata.compiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
+		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="modular"/>
+	</target>
+
+	<target name="test.dynamicdata.uncompiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
+		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="modular"/>
+	</target>
+
+	<target name="test.assembled.compiled.legacy.rhino" depends="assemble.unittest,location.trireme">
+		<runallsuites.rhino assembly="assembled" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target name="test.assembled.uncompiled.legacy.rhino" depends="assemble.unittest,location.trireme">
+		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamic.uncompiled.legacy.rhino" depends="location.trireme">
+		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamic.compiled.legacy.rhino" depends="location.trireme">
+		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamicdata.compiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
+		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="legacy"/>
+	</target>
+
+	<target name="test.dynamicdata.uncompiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
+		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="legacy"/>
+	</target>
+
+	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino,test.assembled.compiled.legacy.rhino,test.assembled.uncompiled.legacy.rhino,test.dynamic.uncompiled.legacy.rhino,test.dynamic.compiled.legacy.rhino,test.dynamicdata.compiled.legacy.rhino,test.dynamicdata.uncompiled.legacy.rhino">
 	</target>
 </project>

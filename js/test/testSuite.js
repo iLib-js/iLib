@@ -131,7 +131,7 @@ var size = "full";
 var suite = suiteDefinitions.modular.full;
 var set = "modular";
 
-// Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection]]]
+// Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [set]]]]
 if (process.argv.length > 2) {
 	if (process.argv.length > 3) {
 		if (process.argv.length > 4) {
