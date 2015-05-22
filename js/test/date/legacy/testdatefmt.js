@@ -2511,6 +2511,7 @@ function testDateFmttrDA() {
 };
 
 function testDateFmtGetDefault() {
+    ilib.DateFmt.cache = undefined;
     var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
     

@@ -2520,6 +2520,7 @@ function testDateFmttrDA() {
 };
 
 function testDateFmtGetDefault() {
+	DateFmt.cache = undefined;
     var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
     
