@@ -1154,6 +1154,11 @@ limitations under the License.
 		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="legacy"/>
 	</target>
 
+	<target name="test.calendar.rhino" depends="location.trireme,gen.manifest.locale">
+		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="legacy"/>
+		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="modular"/>
+	</target>
+
 	<target name="test.units.rhino" depends="location.trireme,gen.manifest.locale">
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="legacy"/>
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular"/>
