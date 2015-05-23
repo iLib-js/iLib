@@ -157,6 +157,7 @@ function testSpeedLocalize3() {
 }
 
 function testSpeedGetMeasures() {
+	var m = new ilib.Measurement.Speed({unit: "kmh", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Speed.getMeasures();
 	var expected = [
 	    "kilometer/hour",

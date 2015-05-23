@@ -121,9 +121,14 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-        if (typeof(environment) !== 'undefined') {
-            ilib._platform = "rhino";
-        } else if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
+    	try {
+    		if (typeof(java.lang.Object) !== 'undefined') {
+    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+    			return ilib._platform;
+    		}
+    	} catch (e) {}
+    	
+        if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
         	ilib._platform = "qt";
@@ -185,6 +190,7 @@ ilib._isGlobal = function(name) {
             })();
             return typeof(top[name]) !== 'undefined';
         case "nodejs":
+        case "trireme":
             var root = typeof(global) !== 'undefined' ? global : this;
             return root && typeof(root[name]) !== 'undefined';
         case "qt":
@@ -232,55 +238,71 @@ ilib.setLocale = function (spec) {
  */
 ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
-        if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
-        	// running in a browser
-            ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
-            if (!ilib.locale) {
-                // IE on Windows
-                var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
-                    navigator.browserLanguage : 
-                    (typeof(navigator.userLanguage) !== 'undefined' ? 
-                        navigator.userLanguage : 
-                        (typeof(navigator.systemLanguage) !== 'undefined' ?
-                            navigator.systemLanguage :
-                            undefined));
-                if (typeof(lang) !== 'undefined' && lang) {
-                    // for some reason, MS uses lower case region tags
-                    ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+    	var plat = ilib._getPlatform();
+    	switch (plat) {
+    		case 'browser':
+            	// running in a browser
+                ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
+                if (!ilib.locale) {
+                    // IE on Windows
+                    var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                        navigator.browserLanguage :
+                        (typeof(navigator.userLanguage) !== 'undefined' ? 
+                            navigator.userLanguage :
+                            (typeof(navigator.systemLanguage) !== 'undefined' ?
+                                navigator.systemLanguage :
+                                undefined));
+                    if (typeof(lang) !== 'undefined' && lang) {
+                        // for some reason, MS uses lower case region tags
+                        ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                    }
                 }
-            }
-        } else if (typeof(PalmSystem) !== 'undefined') {
-            // webOS
-            if (typeof(PalmSystem.locales) !== 'undefined' && 
-            		typeof(PalmSystem.locales.UI) != 'undefined' && 
-            		PalmSystem.locales.UI.length > 0) {
-                ilib.locale = PalmSystem.locales.UI;
-            } else if (typeof(PalmSystem.locale) !== 'undefined') {
-            	ilib.locale = PalmSystem.locale;
-            }
-        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-            // running under rhino
-            if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
-                ilib.locale = environment.user.language;
-                if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
-                    ilib.locale += '-' + environment.user.country;
+                break;
+    		case 'webos':
+                // webOS
+                if (typeof(PalmSystem.locales) !== 'undefined' && 
+                		typeof(PalmSystem.locales.UI) != 'undefined' && 
+                		PalmSystem.locales.UI.length > 0) {
+                    ilib.locale = PalmSystem.locales.UI;
+                } else if (typeof(PalmSystem.locale) !== 'undefined') {
+                	ilib.locale = PalmSystem.locale;
                 }
-            }
-        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-            // running under nodejs
-            var lang = process.env.LANG || process.env.LC_ALL;
-            // the LANG variable on unix is in the form "lang_REGION.CHARSET"
-            // where language and region are the correct ISO codes separated by
-            // an underscore. This translate it back to the BCP-47 form.
-            if (lang && typeof(lang) !== 'undefined') {
-                ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
-            }
-        } else if (typeof(Qt) !== 'undefined') {
-        	// running in the Javascript engine under Qt/QML
-        	var locobj = Qt.locale();
-        	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
-        }
-             
+    			break;
+    		case 'rhino':
+                if (typeof(environment) !== 'undefined' && environment.user && typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
+                	// running under plain rhino
+                    ilib.locale = environment.user.language;
+                    if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
+                        ilib.locale += '-' + environment.user.country;
+                    }
+                }
+                break;
+    		case "trireme":
+            	// under trireme on rhino emulating nodejs
+            	var lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
+                // the LANG variable on unix is in the form "lang_REGION.CHARSET"
+                // where language and region are the correct ISO codes separated by
+                // an underscore. This translate it back to the BCP-47 form.
+                if (lang && typeof(lang) !== 'undefined') {
+                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+                }
+            	break;
+    		case 'nodejs':
+                // running under nodejs
+                var lang = process.env.LANG || process.env.LC_ALL;
+                // the LANG variable on unix is in the form "lang_REGION.CHARSET"
+                // where language and region are the correct ISO codes separated by
+                // an underscore. This translate it back to the BCP-47 form.
+                if (lang && typeof(lang) !== 'undefined') {
+                    ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+                }
+    			break;
+    		case 'qt':
+            	// running in the Javascript engine under Qt/QML
+            	var locobj = Qt.locale();
+            	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+    			break;
+    	}
         ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
     }
     return ilib.locale;
@@ -332,7 +354,7 @@ ilib.getTimeZone = function() {
             }
         } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
             // running in nodejs
-            if (process.env.TZ && process.env.TZ !== "undefined") {
+            if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
                 ilib.tz = process.env.TZ;
             }
         }

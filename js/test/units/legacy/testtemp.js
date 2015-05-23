@@ -345,6 +345,7 @@ function testTemperatureAliasKelvin2() {
 }
 
 function testGetMeasures() {
+	var m = new ilib.Measurement.Temperature({unit: "celcius", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Temperature.getMeasures();
 	var expected = [
 	    "celsius",

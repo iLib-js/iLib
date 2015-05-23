@@ -17,6 +17,12 @@
  * limitations under the License.
  */
 
+(function(){
+	// preload the code so that the tests that call the static functions
+	// first still work properly.
+	var cal = new ilib.Cal.Hebrew();
+})();
+
 function testHebrewGetNumMonths() {
     var cal = new ilib.Cal.Hebrew();
     

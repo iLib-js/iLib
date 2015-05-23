@@ -1000,9 +1000,13 @@ function testHashCodeEqualFunction() {
 }
 
 function testHashCodeEqualFunctionDifferentSpacing() {
-	if (ilib._getPlatform() === "qt") {
+	var plat = ilib._getPlatform(); 
+	if (plat === "qt" || plat === "rhino" || plat === "trireme") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
-		// functions should have the same hash
+		// functions should have the same hash. On Rhino, you can see the code, but the white
+		// space is all normalized nicely to the same thing, so logically equivalent functions
+		// that only differ in white space compare the same. (This seems the most logical to 
+		// me out of all of these!)
 		assertEquals(JSUtils.hashCode(function a () { 
 			return "a"; 
 		}), JSUtils.hashCode(function a(){return "a";}));

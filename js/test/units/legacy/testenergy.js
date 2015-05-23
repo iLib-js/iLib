@@ -129,6 +129,7 @@ function testEnergyScale4() {
 }
 
 function testEnergyGetMeasures() {
+	var m = new ilib.Measurement.Energy({unit: "joule", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Energy.getMeasures();
 	var expected = [
 	    "millijoule",

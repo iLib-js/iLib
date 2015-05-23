@@ -17,6 +17,10 @@
  * limitations under the License.
  */
 
+if (ilib.isDynCode()) {
+	var si = new ilib.ScriptInfo();
+}
+
 function testScriptConstructor() {
     var si = new ilib.ScriptInfo();
     assertNotNull(si);
@@ -145,7 +149,7 @@ function testScriptGetUnknown() {
 }
 
 function testScriptGetAllScripts() {
-    var scripts = new ilib.ScriptInfo.getAllScripts();
+    var scripts = ilib.ScriptInfo.getAllScripts();
     assertNotNull(scripts);
     
     assertEquals("Afak", scripts[0]);

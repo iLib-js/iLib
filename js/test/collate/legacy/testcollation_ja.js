@@ -3732,7 +3732,7 @@ function testJSCollatorKatakanaIterationMarksTer_ja() {
 }
 
 function testJSCollatorKatakanaIterationMarksSec_ja() {
-	var col = new Collator({
+	var col = new ilib.Collator({
 		locale: "ja-JP",
 		useNative: false,
 		sensitivity: "secondary",

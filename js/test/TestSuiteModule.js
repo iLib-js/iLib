@@ -185,6 +185,11 @@ TestSuite.prototype = {
     				this.context.process = process;
     			}
 			} catch (e) {}
+			try {
+    			if (typeof(environment) !== 'undefined') {
+    				this.context.environment = environment;
+    			}
+			} catch (e) {}
 			// console.log("Context is: " + util.inspect(this.context));
 			if (this.setupCode) {
 				// allow arbitrary set up before the includes and running the tests

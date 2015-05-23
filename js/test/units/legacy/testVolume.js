@@ -762,6 +762,7 @@ function testVolumeLocalize5() {
 }
 
 function testVolumeGetMeasures() {
+	var m = new ilib.Measurement.Volume({unit: "liter", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Volume.getMeasures();
 	var expected = [
 	    "gallon",

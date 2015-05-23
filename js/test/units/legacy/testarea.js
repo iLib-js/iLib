@@ -268,6 +268,7 @@ function testAreaLocalize3() {
     assertEquals("square mile", m.unit);
 }
 function testAreaGetMeasures() {
+	var m = new ilib.Measurement.Area({unit: "hectare", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Area.getMeasures();
 	var expected = [
         "square centimeter",

@@ -247,6 +247,7 @@ function testMassLocalize5() {
 }
 
 function testMassGetMeasures() {
+	var m = new ilib.Measurement.Mass({unit: "kg", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Mass.getMeasures();
 	var expected = [
 	    "microgram",
