@@ -18,6 +18,7 @@ public:
     Q_INVOKABLE QString type(QString path) const;
     Q_INVOKABLE QVariantMap info(QString path) const;
     Q_INVOKABLE QString read(QString path) const;
+    Q_INVOKABLE QVariantList readBinary(QString path) const;
     Q_INVOKABLE QVariantList list(QString path) const;
 };
 

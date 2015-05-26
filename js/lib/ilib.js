@@ -126,7 +126,7 @@ ilib._getPlatform = function () {
         } else if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-        	ilib._platform = "qt";
+            ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
@@ -258,6 +258,8 @@ ilib.getLocale = function () {
             } else if (typeof(PalmSystem.locale) !== 'undefined') {
             	ilib.locale = PalmSystem.locale;
             }
+        } else if (typeof(Qt) !== 'undefined' && typeof(Qt.locale) !== 'undefined') {
+            ilib.locale = Qt.locale().name;
         } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
             // running under rhino
             if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {

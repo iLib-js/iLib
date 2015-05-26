@@ -6,6 +6,7 @@
 #include <QFileInfoList>
 #include <QTextStream>
 #include <QDateTime>
+#include <QByteArray>
 
 FileReader::FileReader(QQuickItem *parent):
     QQuickItem(parent)
@@ -63,6 +64,21 @@ QString FileReader::read(QString path) const {
         return "";
     QTextStream in(&file);
     return in.readAll();
+}
+
+QVariantList FileReader::readBinary(QString path) const {
+    QVariantList arrayBuffer;
+    QFile file(path);
+    QByteArray blob;
+
+    if (!file.open(QIODevice::ReadOnly))
+        return arrayBuffer;
+    blob = file.readAll();
+    for (int i=0; i < blob.size(); i++) {
+        char s = blob[i];
+        arrayBuffer.push_back(QVariant(*reinterpret_cast<unsigned char*>(&s)));
+    }
+    return arrayBuffer;
 }
 
 QVariantList FileReader::list(QString path) const {
