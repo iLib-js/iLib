@@ -94,7 +94,7 @@ QMLLoader.prototype._createZoneFile = function (path) {
 	zone = zone.substring(0, zone.length-5);
 
 	try {
-		console.log("QMLLoader._createZoneFile: /usr/share/" + zone + "\n");
+		//console.log("QMLLoader._createZoneFile: /usr/share/" + zone + "\n");
 		var zif = new ZoneInfoFile("/usr/share/" + zone);
 
 		// only get the info for this year. Later we can get the info
@@ -102,7 +102,7 @@ QMLLoader.prototype._createZoneFile = function (path) {
 		var ret =  zif.getIlibZoneInfo(new Date());
 		return JSON.stringify(ret);
 	} catch (e) {
-		console.log("QMLLoader._createZoneFile: error: "+e);
+		//console.log("QMLLoader._createZoneFile: error: "+e);
 		return undefined;
 	}
 };

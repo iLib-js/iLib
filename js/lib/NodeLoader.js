@@ -81,9 +81,9 @@ module.exports = function (ilib) {
 			// on node, just secret load everything synchronously, even when asynchronous 
 			// load is requested, or else you will get crazy results where files are not read 
 			// until a long time later when the run queue is free
-			util.print("TIMEZONE: " + this.useSystemZoneInfo + " index: " + pathname.indexOf("zoneinfo") + "\n");
+			//util.print("TIMEZONE: " + this.useSystemZoneInfo + " index: " + pathname.indexOf("zoneinfo") + "\n");
 			if (this.useSystemZoneInfo && pathname.indexOf("zoneinfo") !== -1) {
-				util.print("NodeLoader.__loadFile: loading zoneinfo path " + pathname + "\n");
+				//util.print("NodeLoader.__loadFile: loading zoneinfo path " + pathname + "\n");
 				text = this._createZoneFile(pathname);
 			} else
 				text = fs.readFileSync(pathname, "utf-8");
@@ -106,7 +106,7 @@ module.exports = function (ilib) {
 		zone = zone.substring(0, zone.length-5);
 
 		try {
-			util.print("NodeLoader._createZoneFile: /usr/share/" + zone + "\n");
+			//util.print("NodeLoader._createZoneFile: /usr/share/" + zone + "\n");
 			var zif = new ZoneInfoFile("/usr/share/" + zone);
 
 			// only get the info for this year. Later we can get the info
