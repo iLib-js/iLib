@@ -1147,3 +1147,399 @@ function testPromoteRecursivelyBreadthFirst() {
 	
 	assertEquals("en-Fooo-CA", group.data.locale);
 }
+
+function testPruneNormal() {
+	var group = {
+		data: {
+			"locale": "en",
+			"gregorian": {
+				"order": "{date} {time}",
+				"date": {
+					"dmy": {
+						"s": "dd/MM/yy",
+						"m": "dd/MM/yyyy",
+						"l": "dd MMM yyyy",
+						"f": "dd MMMM yyyy"
+					}
+				}
+			}
+		},
+		"US": {
+			data: {
+				"locale": "en-US",
+    			"gregorian": {
+					"order": "{time} {date}",
+					"date": {
+						"dmy": {
+							"s": "M/dd/yy",
+							"m": "M/dd/yyyy",
+							"l": "MMM d, yyyy",
+							"f": "MMMM d, yyyy"
+						}
+					}
+				}
+			}
+		},
+		"GB": {
+			data: {
+				"locale": "en-GB",
+    			"gregorian": {
+    				"order": "{date} {time}",
+    				"date": {
+    					"dmy": {
+    						"s": "dd/MM/yy",
+    						"m": "dd/MM/yyyy",
+    						"l": "d MMM yyyy",
+    						"f": "d MMMM yyyy"
+    					}
+    				}
+    			}
+			}
+		},
+		"CA" : {
+			data: {
+				"locale": "en-CA",
+    			"gregorian": {
+    				"order": "{date} {time}",
+    				"date": {
+    					"dmy": {
+    						"s": "dd/MM/yy",
+    						"m": "d/MM/yyyy",
+    						"l": "d MMM yyyy",
+    						"f": "d MMMM yyyy"
+    					}
+    				}
+    			}
+			}
+		},
+		"AU" : {
+			data: {
+				"locale": "en-AU",
+    			"gregorian": {
+    				"order": "{date} {time}",
+    				"date": {
+    					"dmy": {
+    						"s": "d/MM/yy",
+    						"m": "d/MM/yyyy",
+    						"l": "dd MMM yyyy",
+    						"f": "dd MMMM yyyy"
+    					}
+    				}
+    			}
+			}
+		}
+	};
+    
+	var expected = {
+		data: {
+			"locale": "en",
+			"gregorian": {
+				"order": "{date} {time}",
+				"date": {
+					"dmy": {
+						"s": "dd/MM/yy",
+						"m": "dd/MM/yyyy",
+						"l": "dd MMM yyyy",
+						"f": "dd MMMM yyyy"
+					}
+				}
+			}
+		},
+		"US": {
+			data: {
+				"locale": "en-US",
+    			"gregorian": {
+					"order": "{time} {date}",
+					"date": {
+						"dmy": {
+							"s": "M/dd/yy",
+							"m": "M/dd/yyyy",
+							"l": "MMM d, yyyy",
+							"f": "MMMM d, yyyy"
+						}
+					}
+				}
+			}
+		},
+		"GB": {
+			data: {
+				"locale": "en-GB",
+    			"gregorian": {
+    				"date": {
+    					"dmy": {
+    						"l": "d MMM yyyy",
+    						"f": "d MMMM yyyy"
+    					}
+    				}
+    			}
+			}
+		},
+		"CA" : {
+			data: {
+				"locale": "en-CA",
+    			"gregorian": {
+    				"date": {
+    					"dmy": {
+    						"m": "d/MM/yyyy",
+    						"l": "d MMM yyyy",
+    						"f": "d MMMM yyyy"
+    					}
+    				}
+    			}
+			}
+		},
+		"AU" : {
+			data: {
+				"locale": "en-AU",
+    			"gregorian": {
+    				"date": {
+    					"dmy": {
+    						"s": "d/MM/yy",
+    						"m": "d/MM/yyyy"
+    					}
+    				}
+    			}
+			}
+		}
+	};
+	
+	aux.pruneFormats(group);
+	
+	assertObjectEquals(expected, group);
+}
+
+
+function testMergeOverrideObjectWithString() {
+	var left = {
+		a: {b: true, c: "tawasvas"}
+	};
+	var right = {
+		a: "string"
+	};
+	
+	left = common.merge(left, right);
+    assertEquals("string", left.a);
+}
+
+function testMergeOverrideArrayWithString() {
+	var left = {
+		a: ["a", "b", "c", "d"]
+	};
+	var right = {
+		a: "string"
+	};
+	
+	left = common.merge(left, right);
+    assertEquals("string", left.a);
+}
+
+function testMergeFormatsOverrideArrayWithString() {
+	var formats = {
+		data: {
+			"order": "{date} {time}",
+            "dmy": {
+                "s": "d/M/yy",
+                "m": "d/MM/yyyy",
+                "l": "d MMM yyyy",
+                "f": "d MMMM yyyy"
+            }
+		},
+		"zh": {
+    		data: {
+    	        "order": {
+    	            "s": "{date} {time}",
+    	            "m": "{date} {time}",
+    	            "l": "{date}{time}",
+    	            "f": "{date}{time}"
+    	        }
+    		},
+    		"Hant": {
+        		data: {
+        			"order": "{date}{time}"
+        		},
+        		"TW": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"HK": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"US": {
+        			data: {
+        				"order": "{time} {date}",
+        			}
+        		}
+    		}
+    	}
+	};
+	
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	
+    assertEquals("{date}{time}", formats.zh.Hant.data.order);
+    assertEquals("{date} {time}", formats.zh.Hant.TW.data.order);
+    assertEquals("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+}
+
+function testMergePromote() {
+	var formats = {
+		data: {
+			"order": "{date} {time}",
+            "dmy": {
+                "s": "d/M/yy",
+                "m": "d/MM/yyyy",
+                "l": "d MMM yyyy",
+                "f": "d MMMM yyyy"
+            }
+		},
+		"zh": {
+    		data: {
+    	        "order": {
+    	            "s": "{date} {time}",
+    	            "m": "{date} {time}",
+    	            "l": "{date}{time}",
+    	            "f": "{date}{time}"
+    	        }
+    		},
+    		"Hant": {
+        		data: {
+        			"order": "{date}{time}"
+        		},
+        		"TW": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"HK": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"US": {
+        			data: {
+        				"order": "{time} {date}",
+        			}
+        		}
+    		}
+    	}
+	};
+	
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	aux.promoteFormats(formats.zh);
+	
+    assertEquals("{date} {time}", formats.zh.Hant.data.order);
+    assertEquals("{date} {time}", formats.zh.Hant.TW.data.order);
+    assertEquals("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+}
+
+function testMergePromoteMerge() {
+	var formats = {
+		data: {
+			"order": "{date} {time}",
+            "dmy": {
+                "s": "d/M/yy",
+                "m": "d/MM/yyyy",
+                "l": "d MMM yyyy",
+                "f": "d MMMM yyyy"
+            }
+		},
+		"zh": {
+    		data: {
+    	        "order": {
+    	            "s": "{date} {time}",
+    	            "m": "{date} {time}",
+    	            "l": "{date}{time}",
+    	            "f": "{date}{time}"
+    	        }
+    		},
+    		"Hant": {
+        		data: {
+        			"order": "{date}{time}"
+        		},
+        		"TW": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"HK": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"US": {
+        			data: {
+        				"order": "{time} {date}",
+        			}
+        		}
+    		}
+    	}
+	};
+	
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	aux.promoteFormats(formats.zh);
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	
+    assertEquals("{date} {time}", formats.zh.Hant.data.order);
+    assertEquals("{date} {time}", formats.zh.Hant.TW.data.order);
+    assertEquals("d/M/yy", formats.zh.Hant.TW.data.dmy.s);
+}
+
+function testMergePromoteMergePrune() {
+	var formats = {
+		data: {
+			"order": "{date} {time}",
+            "dmy": {
+                "s": "d/M/yy",
+                "m": "d/MM/yyyy",
+                "l": "d MMM yyyy",
+                "f": "d MMMM yyyy"
+            }
+		},
+		"zh": {
+    		data: {
+    	        "order": {
+    	            "s": "{date} {time}",
+    	            "m": "{date} {time}",
+    	            "l": "{date}{time}",
+    	            "f": "{date}{time}"
+    	        }
+    		},
+    		"Hant": {
+        		data: {
+        			"order": "{date}{time}"
+        		},
+        		"TW": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"HK": {
+        			data: {
+        				"order": "{date} {time}",
+        			}
+        		},
+        		"US": {
+        			data: {
+        				"order": "{time} {date}",
+        			}
+        		}
+    		}
+    	}
+	};
+	
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	aux.promoteFormats(formats.zh);
+	aux.mergeFormats(formats, formats.zh, ["zh"]);
+	aux.pruneFormats(formats);
+	
+	 // pruned out
+	assertNotUndefined(formats.zh.data.order);
+	assertEquals("{date}{time}", formats.zh.data.order.f);
+	assertNotUndefined(formats.zh.Hant.data.order);
+	assertEquals("{date} {time}", formats.zh.Hant.data.order);
+    assertUndefined(formats.zh.Hant.TW.data.order);
+    assertUndefined(formats.zh.Hant.TW.data.dmy);
+}
+

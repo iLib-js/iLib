@@ -152,14 +152,20 @@ for (var language in systemResources) {
 	}
 }
 
+/*
 util.print("\n\nMerging formats forward again ...\n");
 
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
+*/
 
 util.print("\n\nPruning duplicated formats ...\n");
 
-// aux.pruneFormats(dateFormats, dateFormats, []);
+// Don't prune the root. Iterate through the first level so we can
+// skip the root and only prune the "language" level of the locale 
+// spec. (And recursively everything under it of course.)
+aux.pruneFormats(dateFormats);
+aux.pruneFormats(systemResources);
 
 util.print("\n\nWriting out final files ...\n");
 

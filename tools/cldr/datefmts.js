@@ -23,10 +23,9 @@ var fs = require('fs');
 var util = require('util');
 var path = require('path');
 
-var common = require('./common');
+var common = require('./common.js');
 var merge = common.merge;
 var Locale = common.Locale;
-var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 function loadFile(path) {
@@ -197,22 +196,6 @@ function scanForLastChars(string, set) {
 		i--;
 	}
 	return -1;
-}
-
-/**
- * Test whether an object in an javascript array. 
- * 
- * @param {*} object The object to test
- * @return {boolean} return true if the object is an array
- * and false otherwise
- */
-function isArray(object) {
-	var o;
-	if (typeof(object) === 'object') {
-		o = /** @type {Object|null|undefined} */ object;
-		return Object.prototype.toString.call(o) === '[object Array]';
-	}
-	return false; 
 }
 
 module.exports = {
@@ -624,9 +607,9 @@ module.exports = {
     	var prop, differences = 0;
     	
     	if (typeof(left) === "object") {
-    		if (isArray(left)) {
+    		if (common.isArray(left)) {
     			var min = 0;
-    			if (isArray(right)) {
+    			if (common.isArray(right)) {
     				differences += Math.abs(left.length - right.length);
     				min = Math.min(left.length, right.length);
     			} else {
@@ -750,13 +733,39 @@ module.exports = {
 		group.data = group[totals[0].name].data;
     },
     
+    pruneFormatsChild: function(parent, child) {
+    	// first recursively prune all the grandchildren before pruning the child or else the child 
+    	// will be too sparse to prune the grandchildren
+    	for (var localebit in child) {
+    		if (localebit !== "und" && localebit !== "data") {
+    			module.exports.pruneFormatsChild(child, child[localebit]);
+    		}
+    	}
+
+    	// now we can prune the child
+    	child.data = common.prune(parent.data, child.data);
+    },
+    
+    pruneFormats: function(parent) {
+    	for (var localebit in parent) {
+    		if (localebit !== "und" && localebit !== "data") {
+    			module.exports.pruneFormatsChild(parent, parent[localebit]);
+    		}
+    	}
+    },
+    
     writeFormats: function(outputDir, outfile, group, localeComponents) {
     	var dir = path.join.apply(undefined, [outputDir].concat(localeComponents));
     	var filename = path.join(dir, outfile);
+    	var contents = JSON.stringify(group.data, undefined, 4);
     	
-    	util.print(filename + " ...\n");
-    	makeDirs(dir);
-    	fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
+    	// don't write out empty files!
+    	if (contents !== "{}") {
+        	util.print(filename + " ...\n");
+        	
+        	makeDirs(dir);
+        	fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
+    	}
     	
     	for (var comp in group) {
     		if (comp && comp !== "data") {

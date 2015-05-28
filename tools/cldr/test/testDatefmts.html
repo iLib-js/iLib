@@ -21,16 +21,24 @@ limitations under the License.
 <head>
 <script language="JavaScript">
 var module = {
-	exports: {}
+	exports: {},
+	children: {}
 };
 var exports = module.exports;
-function require(dummy) {
-	return module.exports;
+function require(name) {
+	var filename = name.substring(name.lastIndexOf("/")+1);
+	return module.children[filename];
 }
 </script>
 <script type="text/javascript" src="../../jsunit/app/jsUnitCore.js"></script>
 <script language="JavaScript" src="../common.js"></script>
+<script language="JavaScript">
+module.children["common.js"] = module.exports;
+</script>
 <script language="JavaScript" src="../datefmts.js"></script>
+<script language="JavaScript">
+module.children["datefmts.js"] = module.exports;
+</script>
 <script language="JavaScript" src="testdatefmts.js"></script>
 </head>
 </html>

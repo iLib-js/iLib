@@ -20,6 +20,22 @@
 var fs = require('fs');
 var util = require('util');
 
+/**
+ * Test whether an object in an javascript array. 
+ * 
+ * @param {*} object The object to test
+ * @return {boolean} return true if the object is an array
+ * and false otherwise
+ */
+exports.isArray = function (object) {
+	var o;
+	if (typeof(object) === 'object') {
+		o = /** @type {Object|null|undefined} */ object;
+		return Object.prototype.toString.call(o) === '[object Array]';
+	}
+	return false; 
+};
+
 /*
  * The 32-bit Unicode value:
  * 000u uuuu xxxx   xxxx xxxx xxxx
@@ -266,9 +282,8 @@ exports.merge = function merge(object1, object2, name1, name2) {
 	}
 	for (prop in object2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
-			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
-				newObj[prop] = new Array();
-				newObj[prop] = newObj[prop].concat(object1[prop]);
+			if (exports.isArray(object1[prop]) && exports.isArray(object2[prop])) {
+				newObj[prop] = [].concat(object1[prop]);
 				newObj[prop] = newObj[prop].concat(object2[prop]);
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
 				newObj[prop] = exports.merge(object1[prop], object2[prop]);
@@ -687,14 +702,19 @@ exports.prune = function prune(parent, child) {
 			if (prop === 'generated') {
 				ret[prop] = child[prop];
 			} else if (typeof(parent[prop]) === 'object') {
-				var obj = exports.prune(parent[prop], child[prop]);
-				if (!exports.isEmpty(obj)) {
-					ret[prop] = obj;
-				}
-			} else if (typeof(parent[prop]) === 'undefined') {
-				if (prop !== child[prop]) {
+				if (typeof(child[prop]) === 'object') {
+    				var obj = exports.prune(parent[prop], child[prop]);
+    				if (!exports.isEmpty(obj)) {
+    					ret[prop] = obj;
+    				}
+				} else {
+					// overriding an object with an non-object
 					ret[prop] = child[prop];
 				}
+			//} else if (typeof(parent[prop]) === 'undefined') {
+				//if (prop !== child[prop]) {
+					//ret[prop] = child[prop];
+				//}
 			} else if (parent[prop] !== child[prop] && child[prop].toString().length > 0) {
 				ret[prop] = child[prop];
 			}
