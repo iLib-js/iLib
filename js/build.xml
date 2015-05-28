@@ -147,7 +147,32 @@ limitations under the License.
 			</java>
 		</sequential>
 	</macrodef>
-	
+
+	<target name="testilib.web.async" description="test whether or not the ilib-web-async.js file needs to be rebuilt">
+		<uptodate property="core.ilib.web.async.not.needed" targetfile="${build.output.js}/ilib-web-async.js">
+			<srcfiles dir="${build.lib}" includes="Loader.js,Path.js,WebLoader.js,ilib-web-async-inc.js"/>
+		</uptodate>
+	</target>
+
+	<target name="assemble.web.async" depends="prepare,testilib.web.async" unless="core.ilib.web.async.not.needed" description="assembles the ilib-web-async.js file">
+		<runassemble 
+			tgtfilename="${build.output.js}/ilib-web-async.js" 
+			srcfilename="${build.lib}/ilib-web-async-inc.js" 
+			locales=""/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.output.js}/ilib-web-async-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.lib}">
+				<file name="ilib-web-async-externs.js"/>
+			</externs>
+			<sources dir="${build.output.js}">
+				<file name="ilib-web-async.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
 	<target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
 		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/ilib-core-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -524,7 +549,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.web.async,assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -540,6 +565,8 @@ limitations under the License.
 				<include name="ilib-standard-dyn-compiled.js"/>
 				<include name="ilib-full-dyn.js"/>
 				<include name="ilib-full-dyn-compiled.js"/>
+				<include name="ilib-web-async.js"/>
+				<include name="ilib-web-async-compiled.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>

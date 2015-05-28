@@ -84,9 +84,4 @@ QMLLoader.prototype._exists = function(dir, file) {
 	}
 };
 
-
-QMLLoader.prototype.getTarget = function () {
-	return this.ilibobj;
-};
-
 module.exports = QMLLoader;

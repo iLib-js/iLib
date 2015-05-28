@@ -27,10 +27,9 @@ var ilib = require("./ilib.js");
  * @private
  * @constructor
  */
-var Loader = function(ilib) {
+var Loader = function() {
 	// console.log("new Loader instance");
 
-	this.ilibobj = ilib;
 	this.protocol = "file://";
 	this.includePath = [];
 };
