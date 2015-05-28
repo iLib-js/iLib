@@ -31,6 +31,7 @@ function suite() {
     var s = new TestSuite();
     
     var suites = [
+        "testdatefmts.js",
    	    "testcommon.js",
 	    "testunifile.js",
 	    "testunidata.js"

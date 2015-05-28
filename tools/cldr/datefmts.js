@@ -199,6 +199,22 @@ function scanForLastChars(string, set) {
 	return -1;
 }
 
+/**
+ * Test whether an object in an javascript array. 
+ * 
+ * @param {*} object The object to test
+ * @return {boolean} return true if the object is an array
+ * and false otherwise
+ */
+function isArray(object) {
+	var o;
+	if (typeof(object) === 'object') {
+		o = /** @type {Object|null|undefined} */ object;
+		return Object.prototype.toString.call(o) === '[object Array]';
+	}
+	return false; 
+}
+
 module.exports = {
 	loadFile: loadFile,
     getFormatGroup: getFormatGroup,
@@ -595,6 +611,143 @@ module.exports = {
     	}
     	
     	return formats;
+    },
+
+    /**
+     * Find the distance between two objects in terms of number of properties that
+     * are missing or have different values.
+     * @param {Object} left
+     * @param {Object} right
+     * @return {number} the number of difference between the objects
+     */
+    distance: function(left, right) {
+    	var prop, differences = 0;
+    	
+    	if (typeof(left) === "object") {
+    		if (isArray(left)) {
+    			var min = 0;
+    			if (isArray(right)) {
+    				differences += Math.abs(left.length - right.length);
+    				min = Math.min(left.length, right.length);
+    			} else {
+    				differences += left.length + 1; // +one because the type is different
+    			}
+				for (var i = 0; i < min; i++) {
+					differences += module.exports.distance(left[i], right && right[i]);
+				}
+    		} else {
+    			if (typeof(right) !== "object") {
+    				// +1 because the type is different
+    				differences++;
+    			}
+    			
+            	// find things in left that are not in right or have a different value
+            	for (prop in left) {
+            		if (prop && left[prop]) {
+        				differences += module.exports.distance(left[prop], typeof(right) === "object" ? right[prop] : undefined);
+            		}
+            	}
+            	
+            	if (typeof(right) === "object") {
+                	// now find things in right that are missing in left
+                	for (prop in right) {
+                		if (prop && right[prop] && typeof(left[prop]) === "undefined") {
+                			differences++;
+                		}
+                	}
+            	}
+    		}
+    	} else if (typeof(right) === "object") {
+    		// switch the params around so that we iterate through the object on the left
+    		differences = module.exports.distance(right, left);
+    	} else {
+    		// simple types can be compared with ===
+    		differences = (left !== right) ? 1: 0;
+    	}
+    	
+    	return differences;
+    },
+    
+    promoteFormats: function(group) {
+    	var left, right;
+    	var distances = {};
+    	var totals = [];
+    	var children = 0;
+
+    	for (left in group) {
+    		if (left && left !== "data" && group[left]) {
+    			children++;
+    			
+    			// promote the grandchildren first before comparing the children
+    			module.exports.promoteFormats(group[left]);
+    		}
+    	}
+    	
+    	// only need to promote a child if there are more than 1 children and the root
+    	// already has data
+    	if (group.data && children < 2) {
+    		return;
+    	}
+    	
+    	// check all the children for the distances from each other
+    	for (left in group) {
+    		if (left && left !== "data" && group[left]) {
+    			if (!distances[left]) distances[left] = {};
+    			for (right in group) {
+    				if (right && right !== "data" && left !== right && group[right]) {
+    					// check if this comparison has already been done or not
+    	    			if (typeof(distances[left][right]) === "undefined") {
+    	    				distances[left][right] = module.exports.distance(group[left].data, group[right].data);
+    	    				if (!distances[right]) distances[right] = {};
+    	    				// distance is reflexive
+    	    				distances[right][left] = distances[left][right]; 
+    	    			}
+    				}
+    			}
+    		}
+    	}
+    	
+    	if (group.data) {
+    		// finally do the root as well, as it might be minimum already. If there is no root
+    		// data, promote the most likely child, no matter how many there are
+        	if (!distances["root"]) distances["root"] = {};
+    		for (right in group) {
+    			if (right && right !== "data" && "root" !== right && group[right]) {
+        			if (typeof(distances["root"][right]) === "undefined") {
+        				distances["root"][right] = module.exports.distance(group.data || {}, group[right].data);
+        				if (!distances[right]) distances[right] = {};
+        				// distance is reflexive
+        				distances[right]["root"] = distances["root"][right]; 
+        			}
+    			}
+    		}
+    	}
+		
+		// now sum the distances to find the one with the least distance to all its siblings
+		for (left in distances) {
+			var totalDistance = 0;
+			for (right in distances[left]) {
+				totalDistance += distances[left][right];
+			}
+			totals.push({
+				name: left,
+				total: totalDistance
+			});
+		}
+		
+		// sort to find the minimum distance
+		totals.sort(function (l, r) {
+			return l.total - r.total;
+		});
+		
+		// now totals[0] has the child with the minimum total distance, which may be the root too
+		if (totals[0].name === "root") {
+			// already the minimum, so we don't need to do anything
+			return;
+		}
+		
+		// promote a child as the new root, dropping the current root
+		group.data = group[totals[0].name].data;
     },
     
     writeFormats: function(outputDir, outfile, group, localeComponents) {

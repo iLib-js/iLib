@@ -139,9 +139,18 @@ list.forEach(function (file) {
 	}
 });
 
-util.print("\n\nPromoting sublocales to shared format status ...\n");
+util.print("\n\nPromoting sublocales ...\n");
 
-// aux.promoteFormats(dateFormats, []);
+for (var language in dateFormats) {
+	if (language !== "und" && language !== "data") {
+		aux.promoteFormats(dateFormats[language]);
+	}
+}
+for (var language in systemResources) {
+	if (language !== "und" && language !== "data") {
+		aux.promoteFormats(systemResources[language]);
+	}
+}
 
 util.print("\n\nMerging formats forward again ...\n");
 
