@@ -132,10 +132,26 @@ function dateOrder2(fmt) {
 	}
 }
 
+function timeOrder(fmt) {
+	var stripped = fmt.replace(/'[^']*'/g, "");
+	if (stripped.match(/H.*z/) || stripped.match(/h.*a.*z/)) {
+		return "haz";
+	} else if (stripped.match(/z.*H/) || stripped.match(/z.*a.*h/)) {
+		return "zah";
+	} else if (stripped.match(/a.*h/)) {
+		return "ahz";
+	} else if (stripped.match(/h.*a/)) {
+		return "haz";
+	} else {
+		util.print("WARNING: unknown time order: " + fmt + "\n");
+	}
+}
+
 function getDateFormat(calendar, length) {
 	var ret = "";
 	if (calendar.dateFormats && calendar.dateFormats[length]) {
 		ret = typeof(calendar.dateFormats[length]) === "string" ? calendar.dateFormats[length] : calendar.dateFormats[length]._value;
+		ret = ret ? ret.replace(/ *G/, "") : ret;
 	}
 	return ret;
 }
@@ -220,7 +236,7 @@ module.exports = {
     				try {
     					obj = loadFile(sourcePath);
     					if (obj) {
-    						util.print("reading " + sourcePath + " ...\n");
+    						util.print(dir + " ");
     						
     						addDateFormat(formats, locale, obj);
     					}
@@ -239,6 +255,7 @@ module.exports = {
     mergeFormats: function(formats, group, localeComponents) {
     	if (localeComponents.length) {
     		var parent = getFormatGroup(formats, localeComponents.slice(0, -1)); 
+    		group.data.generated = undefined;
     		group.data = merge(parent.data || {}, group.data || {});
     	}
     	
@@ -256,7 +273,7 @@ module.exports = {
     	
     	for (var calendarName in cldrData) {
     		cldrCalendar = cldrData[calendarName];
-        	calendar = formats[calendarName] = {};
+    		calendar = formats[calendarName] = {};
         	
         	var lengths = ["full", "long", "medium", "short"];
         	
@@ -360,17 +377,17 @@ module.exports = {
         	if (y["full"] !== y["long"]) {
         		longPlus = longPlus.replace(y["long"], y["full"]);
         	}
-        	util.print("Search for '" + longPlus + "' in '" + cldrFormats["full"] + "'\n");
+        	// util.print("Search for '" + longPlus + "' in '" + cldrFormats["full"] + "'\n");
         	i = cldrFormats["full"].indexOf(longPlus);
         	if (i > -1) {
             	tmp = cldrFormats["full"].replace(longPlus, "{date}");
-            	util.print("tmp is " + tmp + "\n");
+            	// util.print("tmp is " + tmp + "\n");
         		wTemplate = tmp;
         	} else {
         		// didn't work. Next attempt: try searching for the w components and see if the dmy parts come before
         		// or after it in the format. If it comes before, take after the the first "d", "M", or "y" as the "dmy"
         		// part. If it comes after take everything up to the first "d", "M", or "y" as the "dmy" part.
-        		util.print("Not found. Trying positional method\n");
+        		// util.print("Not found. Trying positional method\n");
         		
         		// strip out the quoted parts so we don't accidentally match the characters inside the quotes
         		var full = cldrFormats["full"];
@@ -397,12 +414,12 @@ module.exports = {
         			}
         			wTemplate = "{date}" + full.substring(i+1);
         			longPlus = full.substring(0, i);
-        		} else {
+        		//} else {
         			// the w is in the middle of the dmy... not sure what to do about that!
-        			util.print("failed. Using fallback.\n");
+        			// util.print("failed. Using fallback.\n");
         		}
         	}
-        	util.print("wTemplate is " + wTemplate + "\n");
+        	// util.print("wTemplate is " + wTemplate + "\n");
             
         	calendar.date.dmwy["f"] = correctedYear(cldrFormats["full"]);
         	calendar.date.dmy["f"] = correctedYear(longPlus);
@@ -436,24 +453,24 @@ module.exports = {
         		// the long format
         		switch (orders[len]) {
             		case "dmy":
-            			util.print("Length " + len + " order dmy\n");
+            			// util.print("Length " + len + " order dmy\n");
             			calendar.date.my[lenAbbr] = dmy.substring(scanForChars(dmy, "M"));
             			calendar.date.dm[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "M"));
             			break;
             		case "mdy":
-            			util.print("Length " + len + " order mdy\n");
+            			// util.print("Length " + len + " order mdy\n");
             			calendar.date.my[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "M")) + 
             				dmy.substring(scanForLastChars(dmy, "d"));
             			calendar.date.dm[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "d"));
             			break;
             		case "ymd":
-            			util.print("Length " + len + " order ymd\n");
+            			// util.print("Length " + len + " order ymd\n");
             			calendar.date.dm[lenAbbr] = dmy.substring(scanForChars(dmy, "M"));
             			calendar.date.my[lenAbbr] = dmy.substring(0, scanForChars(dmy, "d"));
             			break;
 
             		case "ydm":
-            			util.print("Length " + len + " order ydm\n");
+            			// util.print("Length " + len + " order ydm\n");
             			calendar.date.dm[lenAbbr] = dmy.substring(scanForChars(dmy, "d"));
             			calendar.date.my[lenAbbr] = dmy.substring(0, scanForChars(dmy, "d")) +
             				dmy.substring(scanForChars(dmy, "M"));
@@ -475,20 +492,20 @@ module.exports = {
         		
         		switch (dateOrder2(dmw)) {
             		case "dmw":
-            			util.print("Length " + len + " dw order dmw\n");
+            			// util.print("Length " + len + " dw order dmw\n");
             			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForChars(dmw, "M")) +
             				dmw.substring(scanForChars(dmw, "Ec"));
             			break;
             		case "wdm":
-            			util.print("Length " + len + " dw order wdm\n");
+            			// util.print("Length " + len + " dw order wdm\n");
             			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForLastChars(dmw, "d"));
             			break;
             		case "mdw":
-            			util.print("Length " + len + " dw order mdw\n");
+            			// util.print("Length " + len + " dw order mdw\n");
             			calendar.date.dw[lenAbbr] = dmw.substring(scanForChars(dmw, "d"));
             			break;
             		case "wmd":
-            			util.print("Length " + len + " dw order wmd\n");
+            			// util.print("Length " + len + " dw order wmd\n");
             			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForChars(dmw, "M")) +
             				dmw.substring(scanForChars(dmw, "d"));
             			break;
@@ -502,75 +519,230 @@ module.exports = {
         	
         	var available = cldrCalendar.dateTimeFormats.availableFormats;
 
-        	if (available["Hms"]) {
-        		calendar.time["24"]["hms"] = calendar.time["24"]["ahms"] = available["Hms"];
-        	}
-        	
-        	if (available["Hm"]) {
-        		calendar.time["24"]["hm"] = calendar.time["24"]["ahm"] = available["Hm"];
-        		calendar.time["24"]["h"] = calendar.time["24"]["ah"] = available["Hm"].replace(/[^H]/g, "");
-        	}
-
-        	if (available["ms"]) {
-        		calendar.time["24"]["ms"] = calendar.time["12"]["ms"] = available["ms"];
-        		calendar.time["24"]["m"] = calendar.time["12"]["m"] = available["ms"].replace(/[^m]/g, "");
-        		calendar.time["24"]["s"] = calendar.time["12"]["s"] = available["ms"].replace(/[^s]/g, "");
-        	}
-        	
-        	if (available["hms"]) {
-        		calendar.time["12"]["ahms"] = calendar.time["12"]["hms"] = available["hms"];
-        	}
-
-        	if (available["hm"]) {
-        		calendar.time["12"]["ahm"] = calendar.time["12"]["hm"] = available["hm"];
-        	}
-        	
-        	if (available["h"]) {
-        		calendar.time["12"]["ah"] = available["h"];
-        		calendar.time["12"]["h"] = available["h"].replace(/[^h]/g, "");
-        	}
-        	
         	if (cldrCalendar.timeFormats && cldrCalendar.timeFormats["long"]) {
-        		var longtime = cldrCalendar.timeFormats["long"];
+        		var longtime = cldrCalendar.timeFormats["long"].replace(/z+/, "z");
+        		var mediumtime = cldrCalendar.timeFormats["medium"];
+        		var shorttime = cldrCalendar.timeFormats["short"];
+        		var strippedLongTime = longtime.replace(/'[^']*'/g, "");
+        		var begin, end;
+        		var zTemplate, aTemplate, order;
+        		var H, h;
+        		
         		if (longtime.indexOf("H") > -1) {
-        			util.print("24-hour locale\n");
-        			calendar.time["24"]["ahmsz"] = calendar.time["24"]["hmsz"] = longtime.replace(/z+/, "z");
-        			calendar.time["12"]["ahmsz"] = calendar.time["24"]["ahmsz"].replace(calendar.time["24"]["ahms"], calendar.time["12"]["ahms"]); 
+        			// util.print("24-hour locale. Longtime: " + longtime + "\n");
+        			calendar.time["24"]["h"] = strippedLongTime.replace(/[^H]/g, "");
+        			calendar.time["24"]["m"] = strippedLongTime.replace(/[^m]/g, "");
+        			calendar.time["24"]["s"] = strippedLongTime.replace(/[^s]/g, "");
+        			
+        			calendar.time["24"]["ah"] = calendar.time["24"]["h"];
+        			calendar.time["24"]["hm"] = shorttime;
+        			
+        			begin = scanForChars(mediumtime, "m");
+    				end = scanForLastChars(mediumtime, "s");
+
+        			calendar.time["24"]["ms"] = mediumtime.substring(begin, end);
+        			
+        			calendar.time["24"]["ahm"] = calendar.time["24"]["hm"];
+        			calendar.time["24"]["hms"] = mediumtime;
+        			
+        			order = timeOrder(longtime);
+        			switch (order) {
+        				case 'ahz':
+            			case 'haz':
+            				begin = scanForLastChars(longtime, "s");
+                			end = scanForChars(longtime, "z");
+                			
+                			i = end;
+                			while (longtime.charAt(i) !== ' ' && i > begin) {
+                				i--;
+                			}
+               				zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
+                			break;
+                			
+            			case 'zah':
+            				begin = scanForChars(longtime, "H");
+            				
+            				zTemplate = longtime.substring(0, begin) + "{time}";
+                			break;
+        			}
+
+        			calendar.time["24"]["hmz"] = zTemplate.replace(/\{time\}/, calendar.time["24"]["hm"]);
+        			
+        			calendar.time["24"]["ahmz"] = calendar.time["24"]["hmz"];
+        			calendar.time["24"]["ahms"] = calendar.time["24"]["hms"];
+        			calendar.time["24"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["24"]["hms"]);
+        			
+        			calendar.time["24"]["ahmsz"] = calendar.time["24"]["hmsz"]; 
+
+        			switch (order) {
+            			case 'haz':
+            				end = scanForChars(available["h"], "a");
+        					i = end;
+                			while (available["h"].charAt(i) !== ' ' && i > 0) {
+                				i--;
+                			}
+                			i = i < 1 ? end : i;
+               				aTemplate = "{time}" + available["h"].substring(i);
+            				break;
+            				
+            			case 'ahz':
+            			case 'zah':
+            				begin = scanForChars(available["h"], "hK");
+               				aTemplate = available["h"].substring(begin) + "{time}";
+            				break;
+        			}
+        			h = available["h"].replace(/[^h]/g, "");
+        			
+        			calendar.time["12"]["h"] = h;
+        			calendar.time["12"]["m"] = calendar.time["24"]["m"];
+        			calendar.time["12"]["s"] = calendar.time["24"]["s"];
+
+        			calendar.time["12"]["ah"] = available["h"];
+        			calendar.time["12"]["hm"] = calendar.time["24"]["hm"].replace(/H+/, h);
+        			calendar.time["12"]["ms"] = calendar.time["24"]["ms"];
+        			
+        			calendar.time["12"]["ahm"] = aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]);
+        			calendar.time["12"]["hms"] = calendar.time["24"]["hms"].replace(/H+/, h);
+        			calendar.time["12"]["hmz"] = calendar.time["24"]["hmz"].replace(/H+/, h);
+        			
+        			calendar.time["12"]["ahmz"] = zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]));
+        			calendar.time["12"]["ahms"] = aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
+        			calendar.time["12"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
+        			
+        			calendar.time["12"]["ahmsz"] = zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]));
         		} else {
-        			util.print("12-hour locale\n");
-        			calendar.time["12"]["ahmsz"] = longtime.replace(/z+/, "z");
-        			calendar.time["24"]["ahmsz"] = calendar.time["12"]["ahmsz"].replace(calendar.time["12"]["ahms"], calendar.time["24"]["ahms"]);
-        			calendar.time["24"]["hmsz"] = calendar.time["24"]["ahmsz"].replace(/ a /, " ").replace(/a/, "");
+        			// util.print("12-hour locale. Longtime: " + longtime + "\n");
+        			order = timeOrder(longtime);
+    				
+        			calendar.time["12"]["h"] = longtime.replace(/[^h]/g, "");
+        			calendar.time["12"]["m"] = longtime.replace(/[^m]/g, "");
+        			calendar.time["12"]["s"] = longtime.replace(/[^s]/g, "");
+
+        			calendar.time["12"]["ah"] = available["h"];
+        			
+        			switch (order) {
+        				case 'ahz':
+            				begin = scanForChars(shorttime, "h");
+            				aTemplate = shorttime.substring(0, begin) + "{time}";
+            				
+            				calendar.time["12"]["hm"] = shorttime.substring(begin);
+            				
+            				begin = scanForLastChars(longtime, "s");
+            				end = scanForChars(longtime, "z");
+                			i = end;
+                			while (longtime.charAt(i) !== ' ' && i > begin) {
+                				i--;
+                			}
+               				zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
+            				break;
+                    		
+        				case 'zah':
+            				begin = scanForChars(shorttime, "h");
+            				aTemplate = shorttime.substring(0, begin) + "{time}";
+            				
+            				calendar.time["12"]["hm"] = shorttime.substring(begin);
+            				
+            				begin = scanForChars(longtime, "a");
+            				zTemplate = longtime.substring(0, begin) + "{time}";
+               				break;
+                			
+            			case 'haz':
+            				begin = scanForLastChars(shorttime, "m");
+            				end = scanForChars(shorttime, "a");
+        					i = end;
+                			while (shorttime.charAt(i) !== ' ' && i > begin) {
+                				i--;
+                			}
+                			i = i < begin ? end : i;
+               				aTemplate = "{time}" + shorttime.substring(i);
+            				
+            				calendar.time["12"]["hm"] = shorttime.substring(0, i).trim();
+            				
+            				begin = scanForLastChars(longtime, "a");
+            				end = scanForChars(longtime, "z");
+                			i = end;
+                			while (longtime.charAt(i) !== ' ' && i > begin) {
+                				i--;
+                			}
+                			i = i < begin ? end : i;
+               				zTemplate = "{time}" + longtime.substring(i);
+            				break;
+        			}
+
+        			begin = scanForChars(mediumtime, "m");
+    				end = scanForLastChars(mediumtime, "s");
+
+        			calendar.time["12"]["ms"] = mediumtime.substring(begin, end);
+        			
+        			calendar.time["12"]["ahm"] = shorttime;
+        			
+        			switch (order) {
+        				case 'zah':
+        				case 'ahz':
+            				begin = scanForChars(mediumtime, "h");
+            				calendar.time["12"]["hms"] = mediumtime.substring(begin).trim();
+                			break;
+
+        				case 'haz':
+            				begin = scanForChars(mediumtime, "a");
+            				calendar.time["12"]["hms"] = mediumtime.substring(0, begin).trim();
+               				break;
+        			}
+  
+        			calendar.time["12"]["hmz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]);
+        			
+        			calendar.time["12"]["ahmz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["ahm"]);
+        			calendar.time["12"]["ahms"] = mediumtime;
+        			calendar.time["12"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
+        			
+        			calendar.time["12"]["ahmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["ahms"]);
+        			
+        			H = available["H"].replace(/[^H]/g, "");
+        			
+        			calendar.time["24"]["h"] = available["H"];
+        			calendar.time["24"]["m"] = calendar.time["12"]["m"];
+        			calendar.time["24"]["s"] = calendar.time["12"]["s"];
+
+        			calendar.time["24"]["ah"] = calendar.time["24"]["h"];
+        			calendar.time["24"]["hm"] = calendar.time["12"]["hm"].replace(/h+/, H);
+        			calendar.time["24"]["ms"] = calendar.time["12"]["ms"];
+        			
+        			calendar.time["24"]["ahm"] = calendar.time["24"]["hm"].replace(/h+/, H);
+        			calendar.time["24"]["hms"] = calendar.time["12"]["hms"].replace(/h+/, H);
+        			calendar.time["24"]["hmz"] = calendar.time["12"]["hmz"].replace(/h+/, H);
+        			
+        			calendar.time["24"]["ahmz"] = calendar.time["24"]["hmz"];
+        			calendar.time["24"]["ahms"] = calendar.time["24"]["hms"];
+        			calendar.time["24"]["hmsz"] = calendar.time["12"]["hmsz"].replace(/h+/, H);
+        			
+        			calendar.time["24"]["ahmsz"] = calendar.time["24"]["hmsz"];
         		}
         	}
-        	
-			calendar.time["12"]["hmsz"] = calendar.time["12"]["ahmsz"].replace(/ a /, " ").replace(/a/, "");
-
-			calendar.time["12"]["ahmz"] = calendar.time["12"]["ahmsz"].replace(calendar.time["12"]["ahms"], calendar.time["12"]["ahm"]);
-        	calendar.time["12"]["hmz"] = calendar.time["12"]["ahmz"].replace(/ a /, " ").replace(/a/, "");
-
-        	calendar.time["24"]["ahmz"] = calendar.time["24"]["ahmsz"].replace(calendar.time["24"]["ahms"], calendar.time["24"]["ahm"]);
-        	calendar.time["24"]["hmz"] = calendar.time["24"]["ahmz"].replace(/ a /, " ").replace(/a/, "");
     	}
     	return formats;
     },
     
     createSystemResources: function (cldrData) {
-    	var formats = {},
+    	var formats,
     		cldrCalendar,
-    		calendar;
+    		calendarNameSuffix,
+    		prop;
+    	
+    	var dayNumbers = {
+            "sun": 0,
+            "mon": 1,
+            "tue": 2,
+            "wed": 3,
+            "thu": 4,
+            "fri": 5,
+            "sat": 6
+    	};
     	
     	for (var calendarName in cldrData) {
     		cldrCalendar = cldrData[calendarName];
-        	calendar = formats[calendarName] = {};
+        	formats = {};
         	
-        	var lengths = ["full", "long", "medium", "short"];
-        	
-        	// glean the lengths of the various parts
-        	var cldrFormats = {},
-        		h = {},
-        		m = {},
-        		y = {};
+        	calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
         	
         	// Determine whether or not this locale distinguishes between stand-alone month or day-of-week 
         	// names and in-format month or day-of-week names. The stand-alone months are typically used
@@ -591,6 +763,50 @@ module.exports = {
         			break;
         		} 
         	}
+        	
+        	// now generate all the month names
+        	var part = cldrCalendar.months.format;
+        	for (prop in part.wide) {
+        		formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
+        		formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
+        		formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+        		formats["N" + prop + calendarNameSuffix] = part.narrow[prop];
+        	}
+        	if (usesStandAlone) {
+            	part = cldrCalendar.months["stand-alone"];
+            	for (prop in part.wide) {
+            		formats["LLLL" + prop + calendarNameSuffix] = part.wide[prop];
+            		formats["LLL" + prop + calendarNameSuffix] = part.abbreviated[prop];
+            		formats["LL" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+            		formats["L" + prop + calendarNameSuffix] = part.narrow[prop];
+            	}
+        	}
+        	
+        	// now generate the names of the days of the week
+        	var part = cldrCalendar.days.format;
+        	for (prop in part.wide) {
+        		formats["EEEE" + dayNumbers[prop] + calendarNameSuffix] = part.wide[prop];
+        		formats["EEE" + dayNumbers[prop] + calendarNameSuffix] = part.abbreviated[prop];
+        		formats["EE" + dayNumbers[prop] + calendarNameSuffix] = part.short[prop];
+        		formats["E" + dayNumbers[prop] + calendarNameSuffix] = part.narrow[prop];
+        	}
+        	if (usesStandAlone) {
+            	part = cldrCalendar.days["stand-alone"];
+            	for (prop in part.wide) {
+            		formats["cccc" + dayNumbers[prop] + calendarNameSuffix] = part.wide[prop];
+            		formats["ccc" + dayNumbers[prop] + calendarNameSuffix] = part.abbreviated[prop];
+            		formats["cc" + dayNumbers[prop] + calendarNameSuffix] = part.short[prop];
+            		formats["c" + dayNumbers[prop] + calendarNameSuffix] = part.narrow[prop];
+            	}
+        	}
+        	
+        	part = cldrCalendar.dayPeriods.format.wide;
+        	formats["a0" + calendarNameSuffix] = part.am;
+    		formats["a1" + calendarNameSuffix] = part.pm;
+    		
+    		part = cldrCalendar.eras.eraNarrow;
+        	formats["G-1" + calendarNameSuffix] = part["0-alt-variant"];
+    		formats["G1" + calendarNameSuffix] = part["1-alt-variant"];
     	}
     	
     	return formats;
@@ -609,33 +825,37 @@ module.exports = {
     	if (typeof(left) === "object") {
     		if (common.isArray(left)) {
     			var min = 0;
-    			if (common.isArray(right)) {
+    			if (right && common.isArray(right)) {
     				differences += Math.abs(left.length - right.length);
     				min = Math.min(left.length, right.length);
     			} else {
-    				differences += left.length + 1; // +one because the type is different
+    				differences += left.length;
+    				if (typeof(right) !== "undefined" && typeof(right) !== "object") {
+        				// +1 because the type is different
+        				differences++;
+        			}
     			}
 				for (var i = 0; i < min; i++) {
 					differences += module.exports.distance(left[i], right && right[i]);
 				}
     		} else {
-    			if (typeof(right) !== "object") {
+    			if (typeof(right) !== "undefined" && typeof(right) !== "object") {
     				// +1 because the type is different
     				differences++;
     			}
     			
             	// find things in left that are not in right or have a different value
             	for (prop in left) {
-            		if (prop && left[prop]) {
-        				differences += module.exports.distance(left[prop], typeof(right) === "object" ? right[prop] : undefined);
+            		if (typeof(prop) !== "undefined" && typeof(left[prop]) !== "undefined") {
+        				differences += module.exports.distance(left[prop], typeof(right) === "object" && right !== null ? right[prop] : undefined);
             		}
             	}
             	
             	if (typeof(right) === "object") {
                 	// now find things in right that are missing in left
                 	for (prop in right) {
-                		if (prop && right[prop] && typeof(left[prop]) === "undefined") {
-                			differences++;
+                		if (typeof(prop) !== "undefined" && typeof(right[prop]) !== "undefined" && typeof(left[prop]) === "undefined") {
+                			differences += module.exports.distance(undefined, right[prop]);
                 		}
                 	}
             	}
@@ -657,6 +877,8 @@ module.exports = {
     	var totals = [];
     	var children = 0;
 
+    	util.print(".");
+    	
     	for (left in group) {
     		if (left && left !== "data" && group[left]) {
     			children++;
@@ -734,6 +956,8 @@ module.exports = {
     },
     
     pruneFormatsChild: function(parent, child) {
+    	util.print(".");
+    	
     	// first recursively prune all the grandchildren before pruning the child or else the child 
     	// will be too sparse to prune the grandchildren
     	for (var localebit in child) {
@@ -744,6 +968,27 @@ module.exports = {
 
     	// now we can prune the child
     	child.data = common.prune(parent.data, child.data);
+    	/*
+    	var childdata = common.prune(parent.data, child.data);
+
+		var parentPreDiff = module.exports.distance(parent.data, child.data),
+    		parentPostDiff = module.exports.distance(parent.data, childdata),
+    		childDiff = module.exports.distance(child.data, childdata);
+    	
+    	if (parentPreDiff + childDiff !== parentPostDiff ) {
+    		console.log("prune didn't work.\n" +
+    			"Total parentPreDiff: " + parentPreDiff + "\n" +
+    			"Total parentPost   Diff: " + parentPostDiff +  "\n" +
+    			"Total childDiff: " + childDiff + "\n" +
+    			"\nparent.data:\n" + 
+    			JSON.stringify(parent.data, undefined, 4) + 
+    			"\n\nand original child.data:\n\n" + 
+    			JSON.stringify(child.data, undefined, 4) +
+    			"\n\nand child.data after pruning:\n\n" + 
+    			JSON.stringify(childdata, undefined, 4));
+    	}
+    	child.data = childdata;
+		*/
     },
     
     pruneFormats: function(parent) {
@@ -761,7 +1006,7 @@ module.exports = {
     	
     	// don't write out empty files!
     	if (contents !== "{}") {
-        	util.print(filename + " ...\n");
+        	util.print(localeComponents.join("-") + " ");
         	
         	makeDirs(dir);
         	fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');

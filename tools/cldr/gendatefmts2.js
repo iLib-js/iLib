@@ -83,18 +83,24 @@ util.print("\n\nReading existing locale data ...\n");
 var dateFormats = {};
 var systemResources = {};
 
+util.print("dateformats.json: ");
 aux.walkLocaleDir(dateFormats, /dateformats\.json$/, localeDirName, "");
+util.print("\n\n");
+util.print("sysres.json: ");
 aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
 
+/*
 util.print("\n\nMerging formats forward ...\n");
 
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
+*/
 
 util.print("\n\nReading CLDR data ...\n");
 
 var dir = path.join(cldrDirName, "main");
 var list = fs.readdirSync(dir);
+// var list = ["as"];
 
 list.forEach(function (file) {
 	var locale = file ? new Locale(file) : undefined;
@@ -104,7 +110,7 @@ list.forEach(function (file) {
 	}
 	
 	var sourcePath = path.join(dir, file);
-	util.print(sourcePath + " ...\n");
+	util.print(file + " ");
 	var stat = fs.statSync(sourcePath);
 	if (stat && stat.isDirectory()) {
 		var localeComponents = [];
@@ -112,32 +118,75 @@ list.forEach(function (file) {
 		var language = locale.getLanguage(),
 			script = locale.getScript(),
 			region = locale.getRegion();
+		var cal, newFormats, group;
 		
 		if (language) localeComponents.push(language);
 		if (script) localeComponents.push(script);
 		if (region) localeComponents.push(region);
 		
 		if (language === "fa") {
+			// add the settings for the persian calendar as well
+			cal = aux.loadFile(path.join(sourcePath, "ca-persian.json"));
+			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+			group = aux.getFormatGroup(dateFormats, localeComponents);
+			group.data = merge(group.data || {}, newFormats);
+			
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+			group = aux.getFormatGroup(systemResources, localeComponents);
+			group.data = merge(group.data || {}, newFormats);
 			
 		} else if (language === "am") {
-			
-		} else if (language === "th") {
-			
-		} else {
-			// regular gregorian
-			var greg = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-			var newFormats = aux.createDateFormats(greg.main[file].dates.calendars);
-			util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			var group = aux.getFormatGroup(dateFormats, localeComponents);
+			// add the settings for the ethiopic calendar as well
+			cal = aux.loadFile(path.join(sourcePath, "ca-ethiopic.json"));
+			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(greg.main[file].dates.calendars);
-			util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			var group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
+		} else if (language === "th") {
+			// format is the same as gregorian, so load and rename the gregorian settings
+			cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
+			var cals = cal.main[file].dates.calendars;
+			cals.thaisolar = cals.gregorian;
+			// util.print("cals is " + JSON.stringify(cals, undefined, 4) + "\n");
+			newFormats = aux.createDateFormats(cals);
+
+			group = aux.getFormatGroup(dateFormats, localeComponents);
+			group.data = merge(group.data || {}, newFormats);
+			
+			newFormats = aux.createSystemResources(cals);
+			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+			group = aux.getFormatGroup(systemResources, localeComponents);
+			group.data = merge(group.data || {}, newFormats);
 		}
+		
+		// do regular gregorian for all locales
+		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
+		newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		group = aux.getFormatGroup(dateFormats, localeComponents);
+		group.data = merge(group.data || {}, newFormats);
+		
+		newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		group = aux.getFormatGroup(systemResources, localeComponents);
+		group.data = merge(group.data || {}, newFormats);
 	}
 });
+
+util.print("\n\nMerging formats forward ...\n");
+
+// Need to merge forward because some of the locales added from CLDR are new and are
+// not fully merged yet. Promoting and pruning do not work so well when the tree is
+// not fully merged.
+aux.mergeFormats(dateFormats, dateFormats, []);
+aux.mergeFormats(systemResources, systemResources, []);
 
 util.print("\n\nPromoting sublocales ...\n");
 
@@ -152,24 +201,27 @@ for (var language in systemResources) {
 	}
 }
 
-/*
-util.print("\n\nMerging formats forward again ...\n");
-
-aux.mergeFormats(dateFormats, dateFormats, []);
-aux.mergeFormats(systemResources, systemResources, []);
-*/
-
 util.print("\n\nPruning duplicated formats ...\n");
 
 // Don't prune the root. Iterate through the first level so we can
 // skip the root and only prune the "language" level of the locale 
 // spec. (And recursively everything under it of course.)
 aux.pruneFormats(dateFormats);
+
+// util.print("System resources before:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
+// fs.writeFileSync("pre.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
 aux.pruneFormats(systemResources);
+// util.print("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
+// fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
 
 util.print("\n\nWriting out final files ...\n");
 
+util.print("dateformats.json: ");
 aux.writeFormats(tmpDirName, "dateformats.json", dateFormats, []);
+util.print("\n\n");
+util.print("sysres.json: ");
 aux.writeFormats(tmpDirName, "sysres.json", systemResources, []);
+util.print("\n");
 
+util.print("Done.");
 process.exit(0);
