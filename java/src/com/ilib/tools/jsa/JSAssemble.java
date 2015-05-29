@@ -59,7 +59,7 @@ public class JSAssemble
         	               "                      Javascript files.");
     }
     
-    public static void findAllJS(File dir, ArrayList<AssemblyFile> jsFiles)
+    public static void findAllJS(File root, File dir, ArrayList<AssemblyFile> jsFiles)
     {
         int i;
         
@@ -68,9 +68,9 @@ public class JSAssemble
         if ( files != null ) {
             for ( i = 0; i < files.length; i++ ) {
                 if (files[i].isDirectory()) {
-                    findAllJS(files[i], jsFiles);
+                    findAllJS(root, files[i], jsFiles);
                 } else {
-                    jsFiles.add(new JSFile(files[i]));
+                    jsFiles.add(new JSFile(root, files[i]));
                 }
             }
         }
@@ -85,6 +85,7 @@ public class JSAssemble
         Writer out = null;
         String localesString = null;
         ArrayList<IlibLocale> locales = new ArrayList<IlibLocale>();
+        File currentDir = new File(".");
         
         logger = Logger.getLogger(JSAssemble.class.toString());
         
@@ -138,10 +139,10 @@ public class JSAssemble
             } else if ( lower.charAt(0) != '-' ) {
                 File f = new File(args[i]);
                 if ( f.isFile() ) {
-                    files.add(new JSFile(f));
+                	files.add(new JSFile(f.isAbsolute() ? null : currentDir, f));
                 } else {
                     // recursively search any directory parameters
-                    findAllJS(f, files);
+                    findAllJS(f, f, files);
                 }
             } else {
                 logger.warn("Warning: unrecognized argument " + args[i] + ". Ignoring...");
@@ -154,10 +155,11 @@ public class JSAssemble
         
         if ( files.size() == 0 ) {
             // search for js files instead
-            findAllJS(new File("."), files);
+        	File root = new File(".");
+            findAllJS(root, root, files);
         }
         
-        if (localesString != null && localesString.length() > 0) {
+        if (localesString != null && localesString.trim().length() > 0) {
         	String[] locs = localesString.split(",");
         	for ( i = 0; i < locs.length; i++ ) {
         		locales.add(new IlibLocale(locs[i]));
@@ -168,7 +170,7 @@ public class JSAssemble
            // now process each file
             for ( i = 0; i < files.size(); i++ ) {
                 file = files.get(i);
-                logger.info("Reading dependencies for file " + file.getPath());
+                logger.info("Reading dependencies for file " + file.getFile().getPath());
                 file.process(ipath, locales, jsFiles);
             }
             
@@ -176,7 +178,7 @@ public class JSAssemble
             
             for ( i = 0; i < files.size(); i++ ) {
                 file = files.get(i);
-                logger.info("Writing dependencies for file " + file.getPath());
+                logger.info("Writing dependencies for file " + file.getFile().getPath());
                 file.writeParents(out, new ArrayList<String>(), locales);
             }
         } catch ( Exception e ) {

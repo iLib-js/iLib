@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.2">
+  <file datatype="javascript" source-language="en-US">
+    <body>
+      <trans-unit x-status="new">
+        <source>Writing strings for the javascript file type.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>JS output file written to {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Json output file written to {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>verbose</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>v</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Verbose mode.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>help</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>h</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>This help.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>output</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>o</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Dir where the results should go. Default "./resources"</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>source</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>s</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Dir where the source files should be read from. Default "."</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>locales</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>l</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Comma-separated list of BCP-47 style locale names to localize to. Default is all locales that already exist in the strings database.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>status</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>t</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Status to set or search for, depending on the command.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>advance</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>a</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Automatically advance the workflow status of each translation unit to the next level in the workflow as it is imported.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>split</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>p</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>For the export comand, produce multiple xliff files split one language per file.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>command</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>The command to run. This is one of "localize", "extract", "import", or "export".</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Tool to extract and localize strings from software or web sites.</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: output argument requires an output dir to follow it.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: source argument requires an source dir to follow it.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: status argument requires a status to follow it.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>One of:</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: unrecognized command: {cmd}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Doing command {cmd}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Loctool was run with options:\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: Could not access source directory {dir}</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Could not access or create target directory {dir}\nError: {errstring}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Error: Could not access the file {filename} to import it.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>source dir: {dir}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>target dir: {dir}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Scanning dir {dir}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Ignoring dir {dir}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>File {path} is not readable or does not contain valid source.\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>All strings extracted. Now writing output files...\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Strings database saved to {path}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Could not write to output file for file type {filetype}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Extracted strings file written to {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>New strings file written to {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Splitting by language\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Wrote to {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Successfully imported {filename}\n</source>
+      </trans-unit>
+      <trans-unit x-status="new">
+        <source>Warning: no translation set at {filename} yet. Creating a new one...\n</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

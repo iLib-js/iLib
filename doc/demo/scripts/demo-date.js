@@ -18,7 +18,7 @@
  */
 
 function setCalendarValues(cal) {
-	var calendarList = ilib.Cal.getCalendars(),
+	var calendarList = CalendarFactory.getCalendars(),
 		calName = $("#calendarName");
 	
 	calName.empty();
@@ -32,7 +32,7 @@ function setCalendarValues(cal) {
 };
 
 function setTimeZoneValues(element, tz) {
-	var tzs = ilib.TimeZone.getAvailableIds();
+	var tzs = TimeZone.getAvailableIds();
 
 	tzs.sort();
 	
@@ -60,11 +60,11 @@ function setupFormatPicker() {
 function setMonthValues(element, month, year) {
 	var calName = $("#calendarName").val(),
 		locale = $('#localeControl').val() || "en",
-		cal = ilib.Cal.newInstance({
+		cal = CalendarFactory({
 			type: calName,
 			locale: locale
 		}),
-		sysres = new ilib.ResBundle({
+		sysres = new ResBundle({
 			name: "sysres",
 			locale: locale
 		}),
@@ -85,12 +85,12 @@ function setMonthValues(element, month, year) {
 function setDayValues(element, day, month, year) {
 	var calName = $("#calendarName").val(),
 		locale = $('#localeControl').val() || "en",
-		cal = ilib.Cal.newInstance({
+		cal = CalendarFactory({
 			type: calName,
 			locale: locale
 		}),
 		days = cal.getMonLength(month, year),
-		fmt = new ilib.DateFmt({
+		fmt = new DateFmt({
 			calendar: calName,
 			locale: locale,
 			type: "date",
@@ -119,12 +119,12 @@ function setHourValues(element, hour) {
 	var locale = $('#localeControl').val() || "en",
 		i,
 		calName = $("#calendarName").val(),
-		cal = ilib.Cal.newInstance({
+		cal = CalendarFactory({
 			type: calName,
 			locale: locale,
 			calendar: calName
 		}),
-		fmt = new ilib.DateFmt({
+		fmt = new DateFmt({
 			calendar: calName,
 			locale: locale,
 			type: "time",
@@ -163,13 +163,13 @@ function setMinutesSecondsValues(minuteElement, secondElement, minute, second) {
 };
 
 function setScriptValues(element) {
-	var scripts = ilib.ScriptInfo.getAllScripts(),
+	var scripts = ScriptInfo.getAllScripts(),
 		info,
 		i;
 	
 	element.empty();
 	for (i = 0; i < scripts.length; i++) {
-		info = new ilib.ScriptInfo(scripts[i]);
+		info = new ScriptInfo(scripts[i]);
 		element.append($("<option></option>").attr({
 			"value": scripts[i]
 		}).text(info.getName()));
@@ -190,7 +190,7 @@ function setupCalendarPicker() {
 		year,
 		tzElement = $("#timezone");
 	
-	cal = ilib.Cal.newInstance({
+	cal = CalendarFactory({
 		locale: locale
 	});
 	today = cal.newDateInstance();
@@ -216,7 +216,7 @@ function setupCalendarPicker() {
 			year = parseInt(yearElement.val());
 
 		$('#cycle').val(Math.floor((year - 1) / 60));
-		$('#cycleYear').val(ilib.amod(year, 60));
+		$('#cycleYear').val(MathUtils.amod(year, 60));
 
 		setMonthValues(monthElement, month, year);
 		setDayValues(dayElement, day, month, year);
@@ -248,7 +248,7 @@ function setupCalendarPicker() {
 			} else {
 				$('#chineseCyclesPicker').hide();
 			}
-			cal = ilib.Cal.newInstance({
+			cal = CalendarFactory({
 				type: name,
 				locale: locale
 			});
@@ -276,7 +276,7 @@ function setupCalendarPicker() {
 		
 		$('#year').val(year);
 		$('#cycle').val(Math.floor((year - 1) / 60));
-		$('#cycleYear').val(ilib.amod(year, 60));
+		$('#cycleYear').val(MathUtils.amod(year, 60));
 	});
 	
 	monthElement.change(function() {
@@ -308,7 +308,7 @@ function datePicker() {
 		today,
 		year;
 
-	cal = ilib.Cal.newInstance({
+	cal = CalendarFactory({
 		type: "gregorian",
 		locale: locale
 	});
@@ -376,7 +376,7 @@ function setupRangePicker(startname, endname, jdname, utname) {
 	calName.append($("<option></option>").attr("value", "julianday").text(jdname));
 	calName.append($("<option></option>").attr("value", "unixtime").text(utname));
 
-	cal = ilib.Cal.newInstance({
+	cal = CalendarFactory({
 		type: "gregorian",
 		locale: locale
 	});
@@ -432,7 +432,7 @@ function setupRangePicker(startname, endname, jdname, utname) {
 			$('#calendarPane').show();
 			$('#rangePicker').show();
 			
-			cal = ilib.Cal.newInstance({
+			cal = CalendarFactory({
 				type: name,
 				locale: locale
 			});
@@ -516,9 +516,9 @@ function setDefaultNumFmtStyleValues(style, res) {
 
 function setupCurrencyValues(element) {
 	var i, 
-		currencies = ilib.Currency.getAvailableCurrencies(),
+		currencies = Currency.getAvailableCurrencies(),
 		locale = $('#localeControl').val() || "en-US",
-		li = new ilib.LocaleInfo(locale);
+		li = new LocaleInfo(locale);
 	
 	element.empty();
 	
@@ -537,7 +537,7 @@ function setupNumPicker() {
 		stylePicker = $("#numStylePicker"),
 		currency = $("#currencyPicker"),
 		locale = $('#localeControl').val() || "en",
-		res = new ilib.ResBundle({
+		res = new ResBundle({
 			name: "sysres",
 			locale: locale
 		});
@@ -605,7 +605,7 @@ function setupCalendarInfoPicker() {
 	
 	setCalendarValues();
 	
-	cal = ilib.Cal.newInstance({
+	cal = CalendarFactory({
 		type: "gregorian"
 	});
 	today = cal.newDateInstance();
@@ -620,7 +620,7 @@ function setupCalendarInfoPicker() {
 		var name = calName.val(),
 			locale = $('#localeControl').val() || "en";
 		
-		cal = ilib.Cal.newInstance({
+		cal = CalendarFactory({
 			type: name,
 			locale: locale
 		});
@@ -720,7 +720,7 @@ function setupPhonePicker(locale) {
 	    }
 	});
 	
-	var fmt = new ilib.PhoneFmt({locale: locale});
+	var fmt = new PhoneFmt({locale: locale});
 	var styles = fmt.getAvailableStyles();
 	
 	if (styles.length > 0) {
@@ -743,7 +743,7 @@ function setupPhonePicker(locale) {
 };
 
 function setMeasurementValues(element, u) {
-	var units = ilib.Measurement.getAvailableUnits();
+	var units = MeasurementFactory.getAvailableUnits();
 	units.sort();
 	$.each(units, function(key, value) {
 		element.append($("<option></option>").attr({
@@ -768,8 +768,8 @@ function fromUnitSelected() {
     var toUnitElement = $('#tUnit');
     toUnitElement.find('option').remove().end();
     var measurement;
-    for (var c in ilib.Measurement._constructors) {
-        measurement = ilib.Measurement._constructors[c];
+    for (var c in Measurement._constructors) {
+        measurement = Measurement._constructors[c];
         if (typeof(measurement.aliases[unit]) !== 'undefined') {                
                 break;
         }

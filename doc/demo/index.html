@@ -38,8 +38,7 @@ $(function() {
     var postFmtData;
     var fmt;
     var rangeFmt;
-	var durFmt;
-    var rangeData;
+	var rangeData;
     var durationData;
     var localeName;
     var convertName;
@@ -50,21 +49,21 @@ $(function() {
     var localeElement = $('#localeControl');
     
     var localeMap = [],
-        locales = ilib.Locale.getAvailableLocales();
+        locales = Locale.getAvailableLocales();
     
     // assume localized text display by default
-    res = new ilib.ResBundle({
+    res = new ResBundle({
         name: "ilibTutorial"
     });
 
     $.each(locales, function(i,locale) {
     	name = res.getString(locale);
     	if (!name || name === locale) {
-	    	var li = new ilib.LocaleInfo(locale);
+	    	var li = new LocaleInfo(locale);
 			name = li.getLanguageName();
 	        var script = li.getLocale().getScript();
 	        if (script) {
-	            var si = new ilib.ScriptInfo(script);
+	            var si = new ScriptInfo(script);
 	            name += " - " + si.getName(); 
 	        }
 			if (li.getRegionName()) {
@@ -198,7 +197,7 @@ $(function() {
 		$.collectOptions(options);
 		options.locale = localeName;
 		// assume localized text display by default
-		res = new ilib.ResBundle({
+		res = new ResBundle({
 			   locale: localeName,
 			   name: "ilibTutorial"
 	    });
@@ -225,7 +224,7 @@ $(function() {
             };
             
             var date,
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
                 });
@@ -269,7 +268,7 @@ $(function() {
                     break;
             }
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             postFmtData = fmt.format(date);
 			var str1;
 			str1 = res.getString("The date is {date}");
@@ -300,7 +299,7 @@ $(function() {
                 output,
                 timezone = $('#timezone').val() || "local";
                 
-            cal = ilib.Cal.newInstance({
+            cal = CalendarFactory({
                 locale: localeName,
                 type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
             });
@@ -333,7 +332,7 @@ $(function() {
             }
             
             
-            calendarList = ilib.Cal.getCalendars();
+            calendarList = CalendarFactory.getCalendars();
             calendarList.sort();
         
             output = res.getString('Julian Day: {jd} <br/>').format({
@@ -347,11 +346,11 @@ $(function() {
 			});
             
             $.each(calendarList, function(key, calendar) {
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 });
-                fmtLong = new ilib.DateFmt({
+                fmtLong = new DateFmt({
                     type: "datetime",
                     calendar: calendar,
                     locale: localeName,
@@ -360,7 +359,7 @@ $(function() {
                     time: "hms",
                     timezone: timezone
                 });
-                fmtShort = new ilib.DateFmt({
+                fmtShort = new DateFmt({
                     type: "date",
                     calendar: calendar,
                     locale: localeName,
@@ -388,7 +387,7 @@ $(function() {
 
         case 'DayOfWeek':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -428,7 +427,7 @@ $(function() {
                 timezone: timezone
             };
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             output = res.getString('The date is a {dayofweek}').format({
                 dayofweek: fmt.format(date)
             });
@@ -441,7 +440,7 @@ $(function() {
 
         case 'DateFmtRange':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -486,7 +485,7 @@ $(function() {
                 timezone: "local"
             };
             
-            fmt = new ilib.DateRngFmt(options);
+            fmt = new DateRngFmt(options);
             output = res.getString('The date range is "{range}"').format({
                 range: fmt.format(sdate, edate)
             });
@@ -499,7 +498,7 @@ $(function() {
 
         case 'RelativeDate':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -543,7 +542,7 @@ $(function() {
                 timezone: "local"
             };
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             output = res.getString('The relative date is "{rel}"').format({
                 rel: fmt.formatRelative(sdate, edate)
             });
@@ -576,7 +575,7 @@ $(function() {
                 millisecond: $('#dmillisecond').val()
             }
             
-            fmt = new ilib.DurFmt(options);
+            fmt = new DurationFmt(options);
             postFmtData = fmt.format(duration);
             var str1 = res.getString("The duration is {duration}");
             output = str1.format({
@@ -588,17 +587,17 @@ $(function() {
             
 		case 'LocaleInfo':
             var output = "",
-                dowFmt = new ilib.DateFmt({
+                dowFmt = new DateFmt({
                     template: "EEEE"
                 }),
                 date;
-			li = new ilib.LocaleInfo(localeName);
+			li = new LocaleInfo(localeName);
             
             output += res.getString("Clock: ") + li.getClock() + "<br/>";
             output += res.getString("Locale: ") + li.getLocale().getSpec() + "<br/>";
             output += res.getString("Units: ") + li.getUnits() + "<br/>";
             output += res.getString("Calendar: ") + li.getCalendar() + "<br/>";
-            date = new ilib.Date.GregDate().onOrAfter(li.getFirstDayOfWeek());
+            date = new GregorianDate().onOrAfter(li.getFirstDayOfWeek());
             output += res.getString("First Day of Week: ") + dowFmt.format(date) + "<br/>";
             output += res.getString("Default Time Zone: ") + li.getTimeZone() + "<br/>";
             output += res.getString("Decimal Char: ") + li.getDecimalSeparator() + "<br/>";
@@ -620,7 +619,7 @@ $(function() {
             var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 		    var output = "";
-		    li = new ilib.LocaleInfo(localeName);
+		    li = new LocaleInfo(localeName);
 		    
 		    var firstDay = li.getFirstDayOfWeek();
 		    var weekendStart = li.getWeekEndStart();
@@ -631,7 +630,7 @@ $(function() {
 		    output += res.getString("Weekend End: ") + weeks[weekendEnd] + "<br/>";
 		
 		    var calendar = $('#calendarName').val(),
-				    cal = ilib.Cal.newInstance({
+				    cal = CalendarFactory({
 					locale: localeName,
 					type: calendar
 			    }),
@@ -664,7 +663,7 @@ $(function() {
 			    timezone: timezone
 			};
 			
-			fmt = new ilib.DateFmt(options);
+			fmt = new DateFmt(options);
 			
 			var dateEntered = fmt.format(date);
 			
@@ -675,7 +674,7 @@ $(function() {
 			    timezone: timezone
 			};
 			
-			fmt = new ilib.DateFmt(options);
+			fmt = new DateFmt(options);
 			var dayOfWeek = fmt.format(date);
 			var index = weeks.indexOf(dayOfWeek);
 			
@@ -693,7 +692,7 @@ $(function() {
             	code: currency
             };
 
-            ci = new ilib.Currency(options);
+            ci = new Currency(options);
             
             output += res.getString("Code: ") + ci.getCode() + "<br/>";
             output += res.getString("Name in English: ") + ci.getName() + "<br/>";
@@ -705,7 +704,7 @@ $(function() {
 
         case 'WorldTime':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -744,14 +743,14 @@ $(function() {
                 });
             }
             
-            sourceFmt = new ilib.DateFmt({
+            sourceFmt = new DateFmt({
                 calendar: calendar,
                 locale: localeName,
                 length: "full",
                 type: "datetime",
                 timezone: timezone
             });
-            targetFmt = new ilib.DateFmt({
+            targetFmt = new DateFmt({
                 calendar: calendar,
                 locale: localeName,
                 length: "full",
@@ -770,14 +769,14 @@ $(function() {
             
         case 'TimeZone':
             var targettz = $('#targettz').val(),
-                tz = new ilib.TimeZone({
+                tz = new TimeZone({
                     locale: localeName,
                     id: targettz
                 }),
-                today = new ilib.Date.GregDate(),
+                today = new GregorianDate(),
                 startDate,
                 endDate,
-                fmt = new ilib.DateFmt({
+                fmt = new DateFmt({
                     locale: localeName,
                     type: "datetime",
                     length: "full",
@@ -794,11 +793,11 @@ $(function() {
                     hours: res.getString("1#1 hour|#{h} hours").formatChoice(offset.h || 0, {h: offset.h || 0}),
                     minutes: res.getString("1#1 minute|#{m} minutes").formatChoice(offset.m || 0, {m: offset.m || 0})
                 });
-                startDate = new ilib.Date.GregDate({
+                startDate = new GregorianDate({
                     rd: tz._calcRuleStart(tz.zone.s, today.year),
                     timezone: "Etc/UTC"
                 })
-				endDate = new ilib.Date.GregDate({
+				endDate = new GregorianDate({
                 	rd: tz._calcRuleStart(tz.zone.e, today.year),
                     timezone: "Etc/UTC"
                 });
@@ -825,7 +824,7 @@ $(function() {
             
             	str = res.getString('<p>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
         	    
-        	    startDate = new ilib.Date.GregDate({
+        	    startDate = new GregorianDate({
                     year: today.year,
                     month: 1,
                     day: 1,
@@ -853,7 +852,7 @@ $(function() {
 			};
 			
 			if (!pseudorb || pseudorb.getType() !== type || pseudorb.getLocale().getSpec() !== localeName) {
-	        	pseudorb = new ilib.ResBundle(options);
+	        	pseudorb = new ResBundle(options);
 			}
 			pseudoStr = pseudorb.getString(str);
 			pseudoStr = pseudorb.escapeXml(pseudoStr.toString());
@@ -864,26 +863,26 @@ $(function() {
             var str = $('#sampleText').val();
             
             $('.testSubject').html(
-                "is alpha numeric: " + ilib.CType.isAlnum(str) + "<br>" +
-                "is alphabetic: " + ilib.CType.isAlpha(str) + "<br>" +
-                "is ASCII: " + ilib.CType.isAscii(str) + "<br>" +
-                "is blank: " + ilib.CType.isBlank(str) + "<br>" +
-                "is control: " + ilib.CType.isCntrl(str) + "<br>" +
-                "is digit: " + ilib.CType.isDigit(str) + "<br>" +
-                "is graphical: " + ilib.CType.isGraph(str) + "<br>" +
-                "is ideographic: " + ilib.CType.isIdeo(str) + "<br>" +
-                "is lower case: " + ilib.CType.isLower(str) + "<br>" +
-                "is printable: " +  ilib.CType.isPrint(str) + "<br>" +
-                "is punctuation: " + ilib.CType.isPunct(str) + "<br>" +
-                "is whitespace char: " + ilib.CType.isSpace(str) + "<br>" +
-                "is upper case: " + ilib.CType.isUpper(str) + "<br>" +
-                "is hex digit: " + ilib.CType.isXdigit(str)
+                "is alpha numeric: " + isAlnum(str) + "<br>" +
+                "is alphabetic: " + isAlpha(str) + "<br>" +
+                "is ASCII: " + isAscii(str) + "<br>" +
+                "is blank: " + isBlank(str) + "<br>" +
+                "is control: " + isCntrl(str) + "<br>" +
+                "is digit: " + isDigit(str) + "<br>" +
+                "is graphical: " + isGraph(str) + "<br>" +
+                "is ideographic: " + isIdeo(str) + "<br>" +
+                "is lower case: " + isLower(str) + "<br>" +
+                "is printable: " +  isPrint(str) + "<br>" +
+                "is punctuation: " + isPunct(str) + "<br>" +
+                "is whitespace char: " + isSpace(str) + "<br>" +
+                "is upper case: " + isUpper(str) + "<br>" +
+                "is hex digit: " + isXdigit(str)
             );
             break;
             
         case 'ISOWeek':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -925,7 +924,7 @@ $(function() {
                 options.timezone = timezone;
             }
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             output = res.getString('The date {date} is in ISO week {week}').format({
                 date: fmt.format(date),
                 week: date.getWeekOfYear()
@@ -935,7 +934,7 @@ $(function() {
             break;
         case 'ISOWeekOfMonth':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -974,7 +973,7 @@ $(function() {
                 timezone: timezone
             };
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             output = res.getString('The date {date} is in ISO week {week} of the month').format({
                 date: fmt.format(date),
                 week: date.getWeekOfMonth(localeName)
@@ -984,7 +983,7 @@ $(function() {
             break;
         case 'DayOfYear':
             var calendar = $('#calendarName').val(),
-                cal = ilib.Cal.newInstance({
+                cal = CalendarFactory({
                     locale: localeName,
                     type: calendar
                 }),
@@ -1023,7 +1022,7 @@ $(function() {
                 timezone: timezone
             };
             
-            fmt = new ilib.DateFmt(options);
+            fmt = new DateFmt(options);
             output = res.getString('The date {date} is day {day} of the year').format({
                 date: fmt.format(date),
                 day: date.getDayOfYear()
@@ -1033,7 +1032,7 @@ $(function() {
             break;
         
         case 'NumFmt':
-            var num = new ilib.Number($('#sampleText').val()),
+            var num = new INumber($('#sampleText').val()),
             	type = $('[name="numFmtType"]:checked').val(),
                 max = $('#maxFrac').val(),
                 min = $('#minFrac').val(),
@@ -1067,7 +1066,7 @@ $(function() {
             	break;
             }
             
-            fmt = new ilib.NumFmt(options);
+            fmt = new NumFmt(options);
             
             output = fmt.format(num);
             
@@ -1083,7 +1082,7 @@ $(function() {
                 type: type
             };
             
-            var num = new ilib.Number(numStr, options);
+            var num = new INumber(numStr, options);
             output = res.getString("Number is: ");
             output += num;
             output += '<br />';
@@ -1098,7 +1097,7 @@ $(function() {
             	locale: localeName
             };
             
-            var name = new ilib.Name(nameStr, options);
+            var name = new Name(nameStr, options);
             output = res.getString("Parsed name is:") + "<br>";
             if (name.prefix) {
             	output += res.getString("Prefix: ") + name.prefix + "<br>";
@@ -1148,8 +1147,8 @@ $(function() {
                 locale: localeName
             }
             
-            var name = new ilib.Name(n);
-            var fmt = new ilib.NameFmt(options);
+            var name = new Name(n);
+            var fmt = new NameFmt(options);
             
             var str1 = res.getString("The name is {name}");
             output = str1.format({name: fmt.format(name)});
@@ -1164,7 +1163,7 @@ $(function() {
             	locale: localeName
             };
             
-            var address = new ilib.Address(addressStr, options);
+            var address = new Address(addressStr, options);
             output = res.getString("Parsed address is:") + "<br>";
             if (address.streetAddress) {
             	output += res.getString("streetAddress: ") + address.streetAddress + "<br>";
@@ -1203,8 +1202,8 @@ $(function() {
                 locale: localeName
             }
             
-            var address = new ilib.Address(n);
-            var fmt = new ilib.AddressFmt(options);
+            var address = new Address(n);
+            var fmt = new AddressFmt(options);
             
             var str1 = res.getString("The address is:<p>{address}");
             output = str1.format({address: fmt.format(address)});
@@ -1220,7 +1219,7 @@ $(function() {
             	mcc: $('#mcc').val()
             };
             
-            var phone = new ilib.PhoneNumber(phoneStr, options);
+            var phone = new PhoneNumber(phoneStr, options);
             output = res.getString("Parsed phone number is:") + "<br>";
             if (phone.vsc) {
             	output += res.getString("Vertical Service Code: ") + phone.vsc + "<br>";
@@ -1261,7 +1260,7 @@ $(function() {
             output += '<br />';
             if (phone.emergency || phone.mobilePrefix || phone.serviceCode || phone.areaCode) {
             	output += res.getString("The geo-location of this phone number is:") + "<br>";
-            	var locator = new ilib.GeoLocator(options);
+            	var locator = new PhoneGeoLocator(options);
             	var location = locator.locate(phone);
             	if (location.country) {
             		output += res.getString("Country: ") + location.country.ln + "<br>" + res.getString("Country ISO Code: ") + locator.country(phone) + "<br>";
@@ -1288,7 +1287,7 @@ $(function() {
             	}
             	return undefined;
             }
-            var pn = new ilib.PhoneNumber({
+            var pn = new PhoneNumber({
 	            vsc: getValue("vsc"),
 	        	iddPrefix: getValue("iddPrefix"),
 	        	countryCode: getValue("countryCode"),
@@ -1302,7 +1301,7 @@ $(function() {
 	        	extension: getValue("extension")
             }, options);
 
-            var fmt = new ilib.PhoneFmt(options);
+            var fmt = new PhoneFmt(options);
             
             var str1 = res.getString("The phone number is:<p>{num}");
             output = str1.format({num: fmt.format(pn, options)});
@@ -1322,7 +1321,7 @@ $(function() {
             	type: calName
             };
 
-            ci = ilib.Cal.newInstance(options);
+            ci = CalendarFactory(options);
             
             output += res.getString("Name: ") + ci.getType() + "<br/>";
 			output += res.getString("Number of Months in {y}: ").format({y: year}) + ci.getNumMonths(year) + "<br/>";
@@ -1335,7 +1334,7 @@ $(function() {
         case 'ScriptInfo':
             var output = "",
                 script = $('#script').val(),
-                si = new ilib.ScriptInfo(script);
+                si = new ScriptInfo(script);
             
             options = {
                 locale: localeName,
@@ -1370,21 +1369,21 @@ $(function() {
             	options.minFractionDigits = parseInt(min);
             }
             
-            var m = new ilib.Measurement({
+            var m = MeasurementFactory({
                 amount: $('#amount').val(),
                 unit: $('#unit').val()
             });
-            var uf = new ilib.UnitFmt(options);
+            var uf = new UnitFmt(options);
             var output = uf.format(m);
             $('.testSubject').html(output);
             break;
             
         case 'UnitConv':
-            var m1 = new ilib.Measurement({
+            var m1 = MeasurementFactory({
                 unit: $('#fUnit').val(),
                 amount: $('#fromAmount').val()
             });
-            var m2 = new ilib.Measurement({
+            var m2 = MeasurementFactory({
                 unit: $('#tUnit').val(),
                 amount: m1
             });

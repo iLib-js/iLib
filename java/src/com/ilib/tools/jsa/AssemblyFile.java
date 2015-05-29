@@ -35,6 +35,7 @@ import com.ilib.IlibLocale;
  */
 public abstract class AssemblyFile 
 {
+	protected File root;
 	protected File file;
     protected ArrayList<AssemblyFile> dependencies = new ArrayList<AssemblyFile>();
     protected ArrayList<AssemblyFile> parents = new ArrayList<AssemblyFile>();
@@ -47,8 +48,9 @@ public abstract class AssemblyFile
      * 
      * @param file
      */
-    protected AssemblyFile(File file)
+    protected AssemblyFile(File root, File file)
     {
+    	this.root = root;
         this.file = file;
     }
 
@@ -57,11 +59,22 @@ public abstract class AssemblyFile
      * 
      * @return the path to the current node's file in the file system
      */
-    public String getPath()
+    public File getFile()
     {
-        return file.getPath();
+        return file;
     }
-    
+
+    /**
+     * If this file was created from a relative path, this function returns the 
+     * root directory that the relative path was relative to.
+     * 
+     * @return the root path that this file is relative to
+     */
+    public File getRoot()
+    {
+        return root;
+    }
+
     /**
      * Add a parent to the list of parents for this node.
      * 

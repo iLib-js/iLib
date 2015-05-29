@@ -17,10 +17,11 @@
  * limitations under the License.
  */
 
-var JsUnit = require("../../js/src/testcli/runner.js");
+var TestRunner = require("../../js/test/runner.js");
+var TestSuite = require("../../js/test/TestSuiteModule.js");
 
-var runner = new JsUnit.TestRunner("../..");
+var runner = new TestRunner("../..");
 
-runner.addSuite(new JsUnit.TestSuite("test/testSuite.js"));
+runner.addSuite(new TestSuite("test/testSuite.js"));
 
 runner.runTests();

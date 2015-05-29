@@ -52,7 +52,7 @@ JsUnit.PRIMITIVE_EQUALITY_PREDICATES = {
     'Date':     JsUnit.TRIPLE_EQUALITY_PREDICATE,
     'RegExp':   JsUnit.TO_STRING_EQUALITY_PREDICATE,
     'Function': JsUnit.TO_STRING_EQUALITY_PREDICATE
-}
+};
 
 /**
  * Hack for NS62 bug
@@ -73,8 +73,9 @@ JsUnit._fixTop = function() {
     try {
         window.top = tempTop;
     } catch (e) {
+    	console.log("Error: " + e);
     }
-}
+};
 
 JsUnit._fixTop();
 
@@ -131,7 +132,7 @@ JsUnit._trueTypeOf = function(something) {
         result = result.substr(0, 1).toUpperCase() + result.substr(1);
         return result;
     }
-}
+};
 
 /**
  * @private
@@ -142,14 +143,14 @@ JsUnit._displayStringForValue = function(aVar) {
         result += ' (' + JsUnit._trueTypeOf(aVar) + ')';
     }
     return result;
-}
+};
 
 /**
  * @private
  */
 JsUnit._argumentsIncludeComments = function(expectedNumberOfNonCommentArgs, args) {
     return args.length == expectedNumberOfNonCommentArgs + 1;
-}
+};
 /**
  * @private
  */
@@ -158,7 +159,7 @@ JsUnit._commentArg = function(expectedNumberOfNonCommentArgs, args) {
         return args[0];
 
     return null;
-}
+};
 /**
  * @private
  */
@@ -166,7 +167,7 @@ JsUnit._nonCommentArg = function(desiredNonCommentArgIndex, expectedNumberOfNonC
     return JsUnit._argumentsIncludeComments(expectedNumberOfNonCommentArgs, args) ?
            args[desiredNonCommentArgIndex] :
            args[desiredNonCommentArgIndex - 1];
-}
+};
 
 /**
  * @private
@@ -175,28 +176,28 @@ JsUnit._validateArguments = function(expectedNumberOfNonCommentArgs, args) {
     if (!( args.length == expectedNumberOfNonCommentArgs ||
            (args.length == expectedNumberOfNonCommentArgs + 1 && (typeof(args[0]) == 'string') || args[0] == null)))
         throw new JsUnit.AssertionArgumentError('Incorrect arguments passed to assert function');
-}
+};
 
 /**
  * @private
  */
 JsUnit._checkEquals = function(var1, var2) {
     return var1 === var2;
-}
+};
 
 /**
  * @private
  */
 JsUnit._checkNotUndefined = function(aVar) {
     return aVar !== JSUNIT_UNDEFINED_VALUE;
-}
+};
 
 /**
  * @private
  */
 JsUnit._checkNotNull = function(aVar) {
     return aVar !== null;
-}
+};
 
 /**
  * All assertions ultimately go through this method.
@@ -205,7 +206,7 @@ JsUnit._checkNotNull = function(aVar) {
 JsUnit._assert = function(comment, booleanValue, failureMessage) {
     if (!booleanValue)
         throw new JsUnit.Failure(comment, failureMessage);
-}
+};
 
 /**
  * Checks that the given boolean value is true.
@@ -617,12 +618,12 @@ JsUnit.Failure = function(comment, message) {
      * The stack trace at the point at which the failure was encountered
      */
     this.stackTrace = JsUnit.Util.getStackTrace();
-}
+};
 
 /**
  * @deprecated
  */
-JsUnitFailure = JsUnit.Failure;
+//JsUnitFailure = JsUnit.Failure;
 
 /**
  * @class
@@ -638,12 +639,12 @@ JsUnit.Error = function(description) {
      * The stack trace at the point at which the error was encountered
      */
     this.stackTrace = JsUnit.Util.getStackTrace();
-}
+};
 
 /**
  * @deprecated
  */
-JsUnitError = JsUnit.Error;
+//JsUnitError = JsUnit.Error;
 
 /**
  * @class
@@ -656,7 +657,7 @@ JsUnit.AssertionArgumentError = function(description) {
      * A description of the argument error
      */
     this.description = description;
-}
+};
 
 function isLoaded() {
     return isTestPageLoaded;
@@ -728,7 +729,7 @@ function JsUnitTestSuite() {
  */
 JsUnitTestSuite.prototype.addTestPage = function (page) {
     this._testPages[this._testPages.length] = page;
-}
+};
 
 /**
  * Adds a Test Suite to the suite
@@ -738,28 +739,28 @@ JsUnitTestSuite.prototype.addTestPage = function (page) {
 JsUnitTestSuite.prototype.addTestSuite = function (suite) {
     for (var i = 0; i < suite._testPages.length; i++)
         this.addTestPage(suite._testPages[i]);
-}
+};
 
 /**
  * Whether the suite contains any Test Pages
  */
 JsUnitTestSuite.prototype.containsTestPages = function () {
     return this._testPages.length > 0;
-}
+};
 
 /**
  * Moves the suite on to its next Test Page
  */
 JsUnitTestSuite.prototype.nextPage = function () {
     return this._testPages[this._pageIndex++];
-}
+};
 
 /**
  * Whether the suite has more Test Pages
  */
 JsUnitTestSuite.prototype.hasMorePages = function () {
     return this._pageIndex < this._testPages.length;
-}
+};
 
 /**
  * Produces a copy of the suite
@@ -768,49 +769,54 @@ JsUnitTestSuite.prototype.clone = function () {
     var clone = new JsUnitTestSuite();
     clone._testPages = this._testPages;
     return clone;
-}
+};
 
 //For legacy support - JsUnitTestSuite used to be called jsUnitTestSuite
-jsUnitTestSuite = JsUnitTestSuite;
+// jsUnitTestSuite = JsUnitTestSuite;
 
 function setJsUnitTracer(aJsUnitTracer) {
-    top.tracer = aJsUnitTracer;
+	if (top) {
+		top.tracer = aJsUnitTracer;
+	}
 }
 
 function jsUnitGetParm(name) {
-    return top.params.get(name);
+    return top && top.params.get(name);
 }
 
 JsUnit._newOnLoadEvent = function() {
     isTestPageLoaded = true;
-}
+};
 
 JsUnit._setOnLoad = function(windowRef, onloadHandler) {
-    var isKonqueror = navigator.userAgent.indexOf('Konqueror/') != -1;
+	if (typeof(windowRef) !== 'undefined') {
+	    var isKonqueror = navigator.userAgent.indexOf('Konqueror/') != -1;
+	
+	    if (typeof(windowRef.attachEvent) != 'undefined') {
+	        // Internet Explorer, Opera
+	        windowRef.attachEvent("onload", onloadHandler);
+	    } else if (typeof(windowRef.addEventListener) != 'undefined' && !isKonqueror) {
+	        // Mozilla
+	        // exclude Konqueror due to load issues
+	        windowRef.addEventListener("load", onloadHandler, false);
+	    } else if (typeof(windowRef.document.addEventListener) != 'undefined' && !isKonqueror) {
+	        // DOM 2 Events
+	        // exclude Mozilla, Konqueror due to load issues
+	        windowRef.document.addEventListener("load", onloadHandler, false);
+	    } else if (typeof(windowRef.onload) != 'undefined' && windowRef.onload) {
+	        windowRef.jsunit_original_onload = windowRef.onload;
+	        windowRef.onload = function() {
+	            windowRef.jsunit_original_onload();
+	            onloadHandler();
+	        };
+	    } else {
+	        // browsers that do not support windowRef.attachEvent or
+	        // windowRef.addEventListener will override a page's own onload event
+	        windowRef.onload = onloadHandler;
+	    }
+	}
+};
 
-    if (typeof(windowRef.attachEvent) != 'undefined') {
-        // Internet Explorer, Opera
-        windowRef.attachEvent("onload", onloadHandler);
-    } else if (typeof(windowRef.addEventListener) != 'undefined' && !isKonqueror) {
-        // Mozilla
-        // exclude Konqueror due to load issues
-        windowRef.addEventListener("load", onloadHandler, false);
-    } else if (typeof(windowRef.document.addEventListener) != 'undefined' && !isKonqueror) {
-        // DOM 2 Events
-        // exclude Mozilla, Konqueror due to load issues
-        windowRef.document.addEventListener("load", onloadHandler, false);
-    } else if (typeof(windowRef.onload) != 'undefined' && windowRef.onload) {
-        windowRef.jsunit_original_onload = windowRef.onload;
-        windowRef.onload = function() {
-            windowRef.jsunit_original_onload();
-            onloadHandler();
-        };
-    } else {
-        // browsers that do not support windowRef.attachEvent or
-        // windowRef.addEventListener will override a page's own onload event
-        windowRef.onload = onloadHandler;
-    }
-}
 
 /**
  * @class
@@ -828,7 +834,7 @@ JsUnit.Util.standardizeHTML = function(html) {
     var translator = document.createElement("DIV");
     translator.innerHTML = html;
     return JsUnit.Util.trim(translator.innerHTML);
-}
+};
 
 /**
  * Returns whether the given string is blank after being trimmed of whitespace
@@ -836,7 +842,7 @@ JsUnit.Util.standardizeHTML = function(html) {
  */
 JsUnit.Util.isBlank = function(string) {
     return JsUnit.Util.trim(string) == '';
-}
+};
 
 /**
  * Implemented here because the JavaScript Array.push(anObject) and Array.pop() functions are not available in IE 5.0
@@ -845,7 +851,7 @@ JsUnit.Util.isBlank = function(string) {
  */
 JsUnit.Util.push = function(anArray, anObject) {
     anArray[anArray.length] = anObject;
-}
+};
 
 /**
  * Implemented here because the JavaScript Array.push(anObject) and Array.pop() functions are not available in IE 5.0
@@ -856,7 +862,7 @@ JsUnit.Util.pop = function pop(anArray) {
         delete anArray[anArray.length - 1];
         anArray.length--;
     }
-}
+};
 
 /**
  * Returns the name of the given function, or 'anonymous' if it has no name
@@ -868,7 +874,7 @@ JsUnit.Util.getFunctionName = function(aFunction) {
             return regexpResult[2];
     }
     return 'anonymous';
-}
+};
 
 /**
  * Returns the current stack trace
@@ -902,7 +908,7 @@ JsUnit.Util.getStackTrace = function() {
     }
 
     return result;
-}
+};
 
 /**
  * Returns an array of stack trace elements from the given exception
@@ -934,7 +940,7 @@ JsUnit.Util.parseErrorStack = function(exception) {
         stack.length = stack.length - 1;
     }
     return stack;
-}
+};
 
 /**
  * Strips whitespace from either end of the given string
@@ -958,20 +964,22 @@ JsUnit.Util.trim = function(string) {
         return '';
 
     return string.substring(startingIndex, endingIndex + 1);
-}
+};
 
 JsUnit.Util.getKeys = function(obj) {
     var keys = [];
-    for (var key in obj) {
-        JsUnit.Util.push(keys, key);
+    if (obj) {
+	    for (var key in obj) {
+	        JsUnit.Util.push(keys, key);
+	    }
     }
     return keys;
-}
+};
 
 JsUnit.Util.inherit = function(superclass, subclass) {
     var x = function() {};
     x.prototype = superclass.prototype;
     subclass.prototype = new x();
-}
+};
 
 JsUnit._setOnLoad(window, JsUnit._newOnLoadEvent);

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var common = require("../../../tools/cldr/common.js");
+var common = require("../../tools/cldr/common.js");
 var util = require("util");
 
 function testUTFToCodePoint() {

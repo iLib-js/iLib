@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 /* 
  * loctool.js - ilib tool to extract translatable strings from JS files
  * and generate json translation files
@@ -166,16 +167,34 @@ if (verbose) {
 	util.print(rb.getString("target dir: {dir}\n").format({dir: targetdir}));
 }
 
-var stringsdb = new TranslationSet({
-	path: "."
-});
-var extracted = new TranslationSet();
+
+var configFileName = path.join(sourcedir, "loctool.json");
+var config = {};
+
+if (fs.existsSync(configFileName)) {
+	try {
+		var tmp = fs.readFileSync(configFileName, "utf-8");
+		config = JSON.parse(config);
+	} catch (e) {
+		util.print(rb.getString("Error reading config file {filename}.\n").format({filename: configFileName}));
+		util.print(e);
+		process.exit(3);
+	}
+}
 
 if (!locales) {
-	locales = stringsdb.getAllLocales();
+	if (typeof(config.locales) === 'object' && config.locales instanceof Array && config.locales.length > 0) {
+		locales = config.locales;
+	} else {
+		locales = stringsdb.getAllLocales();
+	}
 }
 
 var fileTypes = [];
+
+if (typeof(config.fileTypes) === 'object' && config.fileTypes instanceof Array && config.fileTypes.length > 0) {
+	fileTypesToLoad = config.fileTypes;
+}
 
 for (var i = 0; i < fileTypesToLoad.length; i++) {
 	var type = require("./" + fileTypesToLoad[i] + ".js");
@@ -186,6 +205,20 @@ for (var i = 0; i < fileTypesToLoad.length; i++) {
 		locales: locales
 	}));
 }
+
+if (typeof(config.ignoreDirs) === 'object' && config.ignoreDirs instanceof Array && config.ignoreDirs.length > 0) {
+	ignoreDirs = config.ignoreDirs;
+}
+
+if (typeof(config.statusList) === 'object' && config.statusList instanceof Array && config.statusList.length > 0) {
+	statii = config.statusList;
+}
+
+
+var stringsdb = new TranslationSet({
+	path: "."
+});
+var extracted = new TranslationSet();
 
 
 function saveTransUnit(tu) {

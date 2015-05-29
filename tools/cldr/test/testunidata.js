@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var common = require("../../../tools/cldr/common.js");
-var unidata = require("../../../tools/cldr/uniData.js");
+var common = require("../../tools/cldr/common.js");
+var unidata = require("../../tools/cldr/uniData.js");
 
 var sampleData =
 	"0041;LATIN CAPITAL LETTER A;Lu;0;L;;;;;N;;;;0061;\n" +

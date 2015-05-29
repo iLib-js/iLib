@@ -20,10 +20,10 @@
 var util = require("util");
 var fs = require("fs");
 
-var common = require("../../../tools/cldr/common.js");
-var TranslationSet = require("../../../tools/loctool/translationset.js");
-var TranslationUnit = require("../../../tools/loctool/translationunit.js");
-var JSFile = require("../../../tools/loctool/JSFile.js");
+var common = require("../../tools/cldr/common.js");
+var TranslationSet = require("../../tools/loctool/translationset.js");
+var TranslationUnit = require("../../tools/loctool/translationunit.js");
+var JSFile = require("../../tools/loctool/JSFile.js");
 
 function testJSFileConstructorWithOptions() {
     var jsf = new JSFile({

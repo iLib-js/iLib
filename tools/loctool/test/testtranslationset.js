@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var common = require("../../../tools/cldr/common.js");
-var TranslationSet = require("../../../tools/loctool/translationset.js");
-var TranslationUnit = require("../../../tools/loctool/translationunit.js");
+var common = require("../../tools/cldr/common.js");
+var TranslationSet = require("../../tools/loctool/translationset.js");
+var TranslationUnit = require("../../tools/loctool/translationunit.js");
 var util = require("util");
 var fs = require("fs");
 

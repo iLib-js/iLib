@@ -42,7 +42,8 @@ JsonFileType.prototype.getName = function(filename) {
 };
 
 JsonFileType.prototype.isFileType = function(filename) {
-	return filename.match(/\.json$/);
+	// use upper-case because of case-insensitive Windows file names
+	return filename && filename.toUpperCase().match(/\.JSON$/);
 };
 
 JsonFileType.prototype.newFile = function(filename) {

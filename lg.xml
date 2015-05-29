@@ -34,6 +34,7 @@ limitations under the License.
 	<!-- directories -->
 	<property name="build.base"						value="."/>
 	<property name="build.export"					value="export"/>
+	<property name="build.export.js"				value="export/js"/>
 	<property name="build.dist"						value="dist"/>
 
 	<!-- =================================================================== -->
@@ -41,13 +42,22 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="export.ilib.webapp" description="Export the build to ilib-webapp">
 		<subant target="assemble.lg" buildpath="js" />
-		<copy todir="../ilib-webapp/js">
-			<fileset dir="${build.export}/js">
+		<copy todir="../ilib-webapp/lib">
+			<fileset dir="${build.export.js}/dyncode">
 				<include name="*.js"/>
 			</fileset>
-			<fileset dir="js/src/">
+			<fileset dir="${build.export.js}/assembled">
 				<include name="ilib-lg.js"/>
 				<include name="ilib-lg-compiled.js"/>
+			</fileset>
+			<fileset dir="${build.export}/package">
+				<include name="package.json"/>
+			</fileset>
+		</copy>
+
+		<copy todir="../ilib-webapp">
+			<fileset dir="${build.export}/package">
+				<include name="package.json"/>
 			</fileset>
 		</copy>
 		<sync todir="../ilib-webapp/locale">
