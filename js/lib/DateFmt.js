@@ -1207,19 +1207,27 @@ DateFmt.prototype = {
 				case 'NN':
 				case 'MMM':
 				case 'MMMM':
+				case 'L':
+				case 'LL':
+				case 'LLL':
+				case 'LLLL':
 					key = templateArr[i] + (date.month || 1);
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
-
+					
 				case 'E':
 				case 'EE':
 				case 'EEE':
 				case 'EEEE':
+				case 'c':
+				case 'cc':
+				case 'ccc':
+				case 'cccc':
 					key = templateArr[i] + date.getDayOfWeek();
 					//console.log("finding " + key + " in the resources");
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
-					
+
 				case 'a':
 					switch (this.meridiems) {
 					case "chinese":
