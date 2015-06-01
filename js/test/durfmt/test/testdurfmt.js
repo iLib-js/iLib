@@ -1220,7 +1220,7 @@ function testDurFmtDAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1å 1må 1u 1d 1.01.01", duration.toString());
+    assertEquals("1å 1må 1u 1d 01.01.01", duration.toString());
 };
 
 function testDurFmtDAFormatMedium() {

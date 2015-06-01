@@ -115,7 +115,7 @@
 			"c03": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
-				"l": "{sd} {sm} {sy} kl. {st} - {ed} {em} {ey} {et}",
+				"l": "{sd} {sm} {sy} kl. {st} - {ed} {em} {ey} kl. {et}",
 				"f": "{sd} den {sm} {sy} kl. {st} - {ed} den {em} {ey} kl. {et}"
 			},
 			"c10": {
@@ -125,8 +125,8 @@
 				"f": "{sd} - {ed} {sm} {sy}"
 			},
 			"c11": {
-				"s": "{sd}/{sm} - {ed}/{em} {ey}",
-				"m": "{sd}/{sm} - {ed}/{em} {ey}",
+				"s": "{sd}/{sm} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm} - {ed}/{em}/{ey}",
 				"l": "{sd} {sm} - {ed} {em} {sy}",
 				"f": "{sd} {sm} - {ed} {em} {sy}"
 			},
