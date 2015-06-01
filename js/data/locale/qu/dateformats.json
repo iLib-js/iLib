@@ -1,0 +1,80 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "E, dd/MM/yyyy",
+                "m": "EE, yyyy MMM d",
+                "l": "EEE, yyyy MMMM d",
+                "f": "EEEE, d MMMM, yyyy"
+            },
+            "dmy": {
+                "s": "dd/MM/yyyy",
+                "m": "yyyy MMM d",
+                "l": "yyyy MMMM d",
+                "f": "d MMMM, yyyy"
+            },
+            "dmw": {
+                "s": "E, dd/MM",
+                "m": "EE, MMM d",
+                "l": "EEE, MMMM d",
+                "f": "EEEE, d MMMM"
+            },
+            "dm": {
+                "s": "dd/MM",
+                "m": "MMM d",
+                "l": "MMMM d"
+            },
+            "my": {
+                "s": "MM/yyyy",
+                "m": "yyyy MMM ",
+                "l": "yyyy MMMM ",
+                "f": "MMMM, yyyy"
+            },
+            "dw": {
+                "s": "E, dd",
+                "m": "EE, d",
+                "l": "EEE, d",
+                "f": "EEEE, d"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "dd"
+            },
+            "m": {
+                "s": "MM",
+                "m": "MMM",
+                "l": "MMMM"
+            },
+            "y": {
+                "s": "yyyy"
+            }
+        },
+        "time": {
+            "12": {
+                "ahmsz": "hh:mm:ss a a z",
+                "ahms": "hh:mm:ss a a",
+                "hmsz": "hh:mm:ss a z",
+                "hms": "hh:mm:ss a",
+                "ahmz": "hh:mm a a z",
+                "ahm": "hh:mm a a",
+                "hmz": "hh:mm a z",
+                "ah": "h a",
+                "hm": "hh:mm a"
+            },
+            "24": {
+                "ahmsz": "hh:mm:ss a z",
+                "ahms": "hh:mm:ss a",
+                "hmsz": "hh:mm:ss a z",
+                "hms": "hh:mm:ss a",
+                "ahmz": "hh:mm a z",
+                "ahm": "hh:mm a",
+                "hmz": "hh:mm a z",
+                "ah": "HH",
+                "hm": "hh:mm a",
+                "h": "HH"
+            }
+        }
+    }
+}

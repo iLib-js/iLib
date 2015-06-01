@@ -1726,6 +1726,142 @@ function testDateFmtEraBCEBoundary() {
     assertEquals("BCE", fmt.format(date));
 };
 
+function testDateFmtStandAloneMonthFull() {
+    var fmt = new DateFmt({template: "LLLL", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("joulukuu", fmt.format(date));
+};
+
+function testDateFmtStandAloneMonthLong() {
+    var fmt = new DateFmt({template: "LLL", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("jou", fmt.format(date));
+};
+
+function testDateFmtStandAloneMonthMedium() {
+    var fmt = new DateFmt({template: "LL", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("jo", fmt.format(date));
+};
+
+function testDateFmtStandAloneMonthMedium() {
+    var fmt = new DateFmt({template: "L", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("j", fmt.format(date));
+};
+
+function testDateFmtInFormatMonthFull() {
+    var fmt = new DateFmt({template: "MMMM", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("joulukuuta", fmt.format(date));
+};
+
+function testDateFmtInFormatMonthFull() {
+    var fmt = new DateFmt({template: "MMM", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("jou", fmt.format(date));
+};
+
+function testDateFmtInFormatMonthMedium() {
+    var fmt = new DateFmt({template: "MM", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("jo", fmt.format(date));
+};
+
+function testDateFmtInFormatMonthMedium() {
+    var fmt = new DateFmt({template: "M", locale: "fi-FI"});
+    assertNotNull(fmt);
+    
+    var date = new GregorianDate({
+		locale: "fi-FI",
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("j", fmt.format(date));
+};
+
 /*
 exception does not happen any more because we always convert
 the argument to the format method to an DateFactory first now.

@@ -1,0 +1,23 @@
+{
+    "gregorian": {
+        "date": {
+            "my": {
+                "m": "yyyy LLL ",
+                "l": "yyyy LLLL ",
+                "f": "yyyy LLLL "
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "MM"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
+            }
+        }
+    }
+}

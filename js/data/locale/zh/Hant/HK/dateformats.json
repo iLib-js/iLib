@@ -1,60 +1,70 @@
 {
-	"gregorian": {
-		"date": {
-			"dmwy": {
-				"s": "dd.MM.yy(E)",
-				"m": "dd.MM.yyyy(EE)"
-			},
-			"dmy": {
-				"s": "dd.MM.yy",
-				"m": "dd.MM.yyyy"
-			},
-			"dmw": {
-				"s": "dd.MM(E)",
-				"m": "dd.MM(EE)"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM"
-			},
-			"my": {
-				"s": "MM.yy",
-				"m": "MM.yyyy"
-			}
-		},
-		"range": {
-			"c00": {
-				"s": "{sd}.{sm}.{sy} {st}至{et}",
-				"m": "{sd}.{sm}.{sy} {st}至{et}"
-			},
-			"c01": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c02": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c03": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c10": {
-				"s": "{sd}至{ed}.{sm}.{sy}",
-				"m": "{sd}至{ed}.{sm}.{sy}"
-			},
-			"c11": {
-				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
-				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
-			},
-			"c12": {
-				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
-			},
-			"c20": {
-				"s": "{sm}.{sy}至{em}.{ey}",
-				"m": "{sm}.{sy}至{em}.{ey}"
-			}
-		}
-	}
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "d/M/yyE",
+                "m": "yyyy年M月d日EE",
+                "l": "yyyy年M月d日EEE",
+                "f": "yyyy年M月d日EEEE"
+            },
+            "dmy": {
+                "s": "d/M/yy"
+            },
+            "dmw": {
+                "s": "d/ME",
+                "m": "M月d日EE",
+                "l": "M月d日EEE",
+                "f": "M月d日EEEE"
+            },
+            "dm": {
+                "s": "d/M"
+            },
+            "my": {
+                "s": "M/yy"
+            },
+            "dw": {
+                "s": "d/E",
+                "m": "d日EE",
+                "l": "d日EEE",
+                "f": "d日EEEE"
+            },
+            "y": {
+                "s": "yy"
+            }
+        },
+        "range": {
+            "c00": {
+                "s": "{sd}.{sm}.{sy} {st}至{et}",
+                "m": "{sd}.{sm}.{sy} {st}至{et}"
+            },
+            "c01": {
+                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+            },
+            "c02": {
+                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+            },
+            "c03": {
+                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+            },
+            "c10": {
+                "s": "{sd}至{ed}.{sm}.{sy}",
+                "m": "{sd}至{ed}.{sm}.{sy}"
+            },
+            "c11": {
+                "s": "{sd}.{sm}至{ed}.{em}.{sy}",
+                "m": "{sd}.{sm}至{ed}.{em}.{sy}"
+            },
+            "c12": {
+                "s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
+                "m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
+            },
+            "c20": {
+                "s": "{sm}.{sy}至{em}.{ey}",
+                "m": "{sm}.{sy}至{em}.{ey}"
+            }
+        }
+    }
 }

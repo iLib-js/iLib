@@ -1,0 +1,73 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "E, d.M.yy",
+                "m": "EE, d.M.yyyy",
+                "l": "EEE, d. MMMM yyyy",
+                "f": "EEEE, d. MMMM yyyy"
+            },
+            "dmy": {
+                "s": "d.M.yy",
+                "m": "d.M.yyyy",
+                "l": "d. MMMM yyyy",
+                "f": "d. MMMM yyyy"
+            },
+            "dmw": {
+                "s": "E, d.M",
+                "m": "EE, d.M",
+                "l": "EEE, d. MMMM",
+                "f": "EEEE, d. MMMM"
+            },
+            "dm": {
+                "s": "d.M",
+                "m": "d.M",
+                "l": "d. MMMM",
+                "f": "d. MMMM"
+            },
+            "my": {
+                "s": "M.yy",
+                "m": "M.yyyy",
+                "l": "LLLL yyyy",
+                "f": "LLLL yyyy"
+            },
+            "dw": {
+                "s": "E, d",
+                "m": "EE, d",
+                "l": "EEE, d",
+                "f": "EEEE, d"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "m": {
+                "m": "M",
+                "l": "MMMM"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "M",
+                "s": "M"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
+            }
+        },
+        "time": {
+            "12": {
+                "ahmsz": "h:mm:ss a z",
+                "ahms": "h:mm:ss a",
+                "ahmz": "h:mm a z",
+                "ahm": "h:mm a",
+                "ah": "h a"
+            }
+        }
+    }
+}

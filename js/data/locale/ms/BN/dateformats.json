@@ -1,10 +1,64 @@
 {
     "gregorian": {
+        "order": "{time} {date}",
         "date": {
+            "dmwy": {
+                "s": "E, d/M/yy",
+                "m": "EE, d/M/yy",
+                "l": "EEE, d MMM yyyy",
+                "f": "EEEE, d MMM yyyy"
+            },
             "dmy": {
+                "s": "d/M/yy",
+                "m": "dd/MM/yyyy",
+                "l": "d MMM yyyy",
                 "f": "dd MMMM yyyy"
+            },
+            "dmw": {
+                "s": "E, d-M",
+                "m": "EE, d-M",
+                "l": "EEEE, d MMM",
+                "f": "EEEE, d MMM"
+            },
+            "dm": {
+                "s": "d-M",
+                "m": "dd/MM",
+                "l": "d MMM"
+            },
+            "my": {
+                "s": "M-yy",
+                "m": "MM/yyyy",
+                "l": "MMM yyyy"
+            },
+            "dw": {
+                "s": "EE d",
+                "m": "EE d",
+                "l": "EEE d",
+                "f": "EEEE d"
+            },
+            "d": {
+                "f": "dd",
+                "l": "dd",
+                "m": "dd"
+            },
+            "m": {
+                "m": "MM",
+                "l": "MMM"
+            }
+        },
+        "time": {
+            "24": {
+                "ahmsz": "H:mm:ss z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "hms": "H:mm:ss",
+                "ahmz": "H:mm z",
+                "ahm": "H:mm",
+                "hmz": "H:mm z",
+                "ah": "H",
+                "hm": "H:mm",
+                "h": "H"
             }
         }
-    },
-    "generated": true
+    }
 }
