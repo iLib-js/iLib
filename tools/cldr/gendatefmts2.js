@@ -89,12 +89,12 @@ util.print("\n\n");
 util.print("sysres.json: ");
 aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
 
-/*
 util.print("\n\nMerging formats forward ...\n");
 
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
-*/
+
+util.print("en-CA before cldr and merge is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 util.print("\n\nReading CLDR data ...\n");
 
@@ -102,10 +102,18 @@ var dir = path.join(cldrDirName, "main");
 var list = fs.readdirSync(dir);
 // var list = ["as"];
 
+// these locales have the wrong data in CLDR and need to be skipped for now
+var skipList = ["en-CA"];
+
 list.forEach(function (file) {
 	var locale = file ? new Locale(file) : undefined;
 	if (locale.getVariant()) {
 		// ignore locales with variants for now
+		return;
+	}
+	
+	if (skipList.indexOf(file) > -1) {
+		// skip these, as the CLDR data has problems
 		return;
 	}
 	
@@ -188,16 +196,18 @@ util.print("\n\nMerging formats forward ...\n");
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
+util.print("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
+
 util.print("\n\nPromoting sublocales ...\n");
 
 for (var language in dateFormats) {
 	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(dateFormats[language]);
+		aux.promoteFormats(dateFormats[language], language, "dateformats.json");
 	}
 }
 for (var language in systemResources) {
 	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(systemResources[language]);
+		aux.promoteFormats(systemResources[language], language, "sysres.json");
 	}
 }
 

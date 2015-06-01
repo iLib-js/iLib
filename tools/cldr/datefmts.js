@@ -255,7 +255,7 @@ module.exports = {
     mergeFormats: function(formats, group, localeComponents) {
     	if (localeComponents.length) {
     		var parent = getFormatGroup(formats, localeComponents.slice(0, -1)); 
-    		group.data.generated = undefined;
+    		if (group.data) group.data.generated = undefined;
     		group.data = merge(parent.data || {}, group.data || {});
     	}
     	
@@ -871,20 +871,18 @@ module.exports = {
     	return differences;
     },
     
-    promoteFormats: function(group) {
+    promoteFormats: function(group, parentName, filename) {
     	var left, right;
     	var distances = {};
     	var totals = [];
     	var children = 0;
 
-    	util.print(".");
-    	
     	for (left in group) {
     		if (left && left !== "data" && group[left]) {
     			children++;
     			
     			// promote the grandchildren first before comparing the children
-    			module.exports.promoteFormats(group[left]);
+    			module.exports.promoteFormats(group[left], left);
     		}
     	}
     	
@@ -951,6 +949,7 @@ module.exports = {
 			return;
 		}
 		
+		util.print("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
 		// promote a child as the new root, dropping the current root
 		group.data = group[totals[0].name].data;
     },
