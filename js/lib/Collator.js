@@ -711,6 +711,7 @@ Collator.prototype = {
 	 * @return {string} a sort key string for the given string
 	 */
 	sortKey: function (str) {
+		var ret = "";
 		if (!str) {
 			return "";
 		}

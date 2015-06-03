@@ -266,7 +266,6 @@ Name.defaultInfo = ilib.data.name ||  {
         "van den": 1,
         "de": 1,
         "di": 1,
-	    "de": 1,
 		"la": 1,
 		"lo": 1,
         "des": 1,
