@@ -169,7 +169,7 @@ function testDateFmtDateTimeSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ‏٢٩/٩/١١", fmt.format(date));
+    assertEquals("‏٢٩/٩/١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ar_SA() {
@@ -186,7 +186,7 @@ function testDateFmtDateTimeSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ‏٢٩/٠٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩/٠٩/٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ar_SA() {
@@ -203,7 +203,7 @@ function testDateFmtDateTimeSimpleLong_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ‏٢٩ سبتمبر، ٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩ سبتمبر، ٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ar_SA() {
@@ -220,7 +220,7 @@ function testDateFmtDateTimeSimpleFull_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ‏٢٩ سبتمبر، ٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩ سبتمبر، ٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 
@@ -427,7 +427,7 @@ function testDateFmtTypeDateTime_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ‏٢٩/٩/١١", fmt.format(date));
+    assertEquals("‏٢٩/٩/١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 
@@ -1752,7 +1752,7 @@ function testDateFmtNativeDateTimeSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏1:45 م ‏29/9/11", fmt.format(date));
+    assertEquals("‏29/9/11 ‏1:45 م", fmt.format(date));
 }
 
 function testDateFmtNativeDateTimeSimpleMedium_ar_SA() {
@@ -1769,7 +1769,7 @@ function testDateFmtNativeDateTimeSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏1:45 م ‏29/09/2011", fmt.format(date));
+    assertEquals("‏29/09/2011 ‏1:45 م", fmt.format(date));
 }
 
 function testDateFmtNativeDateTimeSimpleLong_ar_SA() {
@@ -1786,7 +1786,7 @@ function testDateFmtNativeDateTimeSimpleLong_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏1:45 م ‏29 سبتمبر، 2011", fmt.format(date));
+    assertEquals("‏29 سبتمبر، 2011 ‏1:45 م", fmt.format(date));
 }
 
 function testDateFmtNativeDateTimeSimpleFull_ar_SA() {
@@ -1803,5 +1803,5 @@ function testDateFmtNativeDateTimeSimpleFull_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏1:45 م ‏29 سبتمبر، 2011", fmt.format(date));
+    assertEquals("‏29 سبتمبر، 2011 ‏1:45 م", fmt.format(date));
 }

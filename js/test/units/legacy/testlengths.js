@@ -284,6 +284,7 @@ function testLengthLocalize3() {
 }
 
 function testLengthGetMeasures() {
+	var m = new ilib.Measurement.Length({unit: "meter", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Length.getMeasures();
 	var expected = [
 	    "micrometer",

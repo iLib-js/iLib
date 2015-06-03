@@ -133,6 +133,7 @@ function testTimeScaling5() {
 }
 
 function testTimeGetMeasures() {
+	var m = new ilib.Measurement.Time({unit: "second", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.Time.getMeasures();
 	var expected = [
 	    "nanosecond",

@@ -149,11 +149,12 @@ function testGetTimeZoneNodejs() {
 				env: {}
 			};
 		}
+		var tmp = process.env.TZ;
 		process.env.TZ = "America/Phoenix";
 		
 		assertEquals("America/Phoenix", ilib.getTimeZone());
 		
-		process.env.TZ = "";
+		process.env.TZ = tmp;
 	}
 }
 
@@ -163,8 +164,14 @@ function testGetTimeZoneRhino() {
 		return;
 	}
 	ilib.tz = undefined;
-	
-	environment.user.timezone = "America/New_York";
+
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+		environment.user.timezone = "America/New_York";
+	} else {
+		// under trireme on rhino emulating nodejs
+		process.env.TZ = "America/New_York";
+	}
 
 	assertEquals("America/New_York", ilib.getTimeZone());
 }
@@ -219,14 +226,25 @@ function testGetLocaleRhino() {
 	}
 	
 	ilib.locale = undefined;
-
-	environment.user.language = "de";
-	environment.user.country = "AT";
+	
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+    	environment.user.language = "de";
+    	environment.user.country = "AT";
+	} else {
+		// under trireme on rhino emulating nodejs
+		process.env.LANG = "de_AT.UTF8";
+	}
 	
 	assertEquals("de-AT", ilib.getLocale());
 	
-	environment.user.language = undefined;
-	environment.user.country = undefined;
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+    	environment.user.language = undefined;
+    	environment.user.country = undefined;
+	} else {
+    	process.env.LANG = "en_US.UTF8";
+	}
 }
 
 function testGetLocaleWebOS() {

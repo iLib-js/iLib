@@ -3,7 +3,7 @@ var ilib = require("../../../../lib/ilib.js");
 // this is an alternate definition of Locale2
 
 ilib.Locale2 = function(spec) {
-	console.log("Locale2: spec is " + spec);
+	// console.log("Locale2: spec is " + spec);
 
 	var parts = spec.split("-");
 	this.language = parts[0];

@@ -9,7 +9,7 @@
         {
             "name": "locality",
             "line": "startAtLast",
-            "pattern": "[AaBbCcČčDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsŠšTtUuVvZzŽž-\\s']+"
+            "pattern": "[AaBbCcČčDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsŠšTtUuVvZzŽž\\-\\s']+"
         },
         {
             "name": "postalCode",

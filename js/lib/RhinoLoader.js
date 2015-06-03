@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+importPackage(java.io);
+
 var ilib = require("./ilib.js");
 var path = require("./Path.js");
 var Loader = require("./Loader.js");
@@ -60,13 +62,25 @@ RhinoLoader.prototype.parent = Loader;
 RhinoLoader.prototype.constructor = RhinoLoader;
 
 RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
+	// ignore sync flag -- always load synchronously
 	console.log("RhinoLoader._loadFile: attempting to load " + pathname);
-	var text = undefined;
+	var text = "";
+	var reader;
 	try {
-		text = readFile(pathname);
+		reader = new BufferedReader(new InputStreamReader(new FileInputStream(pathname), "utf-8"));
+		var tmp;
+		while ((tmp = reader.readLine()) !== null) {
+			text += tmp + '\n';
+		}
 	} catch (e) {
 		// ignore
+		text = undefined;
 	} finally {
+		if (reader) {
+			try {
+				reader.close();
+			} catch (e2) {}
+		}
 		cb && typeof(cb) === 'function' && cb(text);
 	}
 	return text;
@@ -74,8 +88,12 @@ RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
 
 RhinoLoader.prototype._exists = function(dir, file) {
 	var fullpath = path.normalize(path.join(dir, file));
-	console.log("RhinoLoader._exists: checking for the existence of " + dir);
-	return this._loadFile(fullpath) !== undefined;
+	console.log("RhinoLoader._exists: checking for the existence of " + fullpath);
+	var f = new File(fullpath);
+	if (f.exists() && f.canRead()) {
+		console.log("RhinoLoader._exists: found");
+		this.includePath.push(dir);
+	}
 };
 
 module.exports = RhinoLoader;

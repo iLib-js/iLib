@@ -187,6 +187,7 @@ function testDSLocalize3() {
     assertEquals("megabit", m.unit);
 }
 function testDSGetMeasures() {
+	var m = new ilib.Measurement.DigitalStorage({unit: "byte", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.DigitalStorage.getMeasures();
 	var expected = [
         "bit",

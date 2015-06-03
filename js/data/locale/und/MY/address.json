@@ -41,7 +41,7 @@
             {
                 "name": "locality",
                 "line": "last",
-                "pattern": "[A-Za-z.-\\s]+"
+                "pattern": "[A-Za-z.\\-\\s]+"
             },
             {
                 "name": "postalCode",

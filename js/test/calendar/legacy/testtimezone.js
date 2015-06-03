@@ -1311,6 +1311,8 @@ function testTZGetTimeZoneForLocale() {
 }
 
 function testTZGetTimeZoneForLocaleUnknown() {
+    ilib.TimeZone.cache = undefined;
+	ilib.LocaleInfo.cache = undefined;
     var tz = new ilib.TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
     

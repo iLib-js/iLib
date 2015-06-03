@@ -1319,6 +1319,8 @@ function testTZGetTimeZoneForLocale() {
 }
 
 function testTZGetTimeZoneForLocaleUnknown() {
+	TimeZone.cache = undefined;
+	LocaleInfo.cache = undefined;
     var tz = new TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
     

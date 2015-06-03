@@ -33,11 +33,7 @@ function newSandbox() {
 		},
 		navigator : {
 			userAgent : "Nodejs"
-		},
-		console : console,
-		require : require,
-		global: global,
-		process: process
+		}
 	};
 };
 

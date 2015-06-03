@@ -208,7 +208,7 @@ function testDateFmtDADKDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. sep. 2011 13.45", fmt.format(date));
+    assertEquals("29. sep. 2011 kl. 13.45", fmt.format(date));
 }
 
 function testDateFmtDADKDateTimeSimpleFull() {
@@ -225,7 +225,7 @@ function testDateFmtDADKDateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. september 2011 13.45", fmt.format(date));
+    assertEquals("29. september 2011 kl. 13.45", fmt.format(date));
 }
 
 
@@ -483,7 +483,7 @@ function testDateFmtDADKShortDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtDADKShortDateComponentsN() {

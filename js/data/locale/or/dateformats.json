@@ -13,7 +13,7 @@
                 "m": "d MMM yy",
                 "l": "d MMMM yy",
                 "f": "d MMMM yyyy"
-            },  
+            },
             "my": {
                 "s": "yy-M",
                 "m": "MM-yyyy",

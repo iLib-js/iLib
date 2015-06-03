@@ -807,8 +807,9 @@ IString.prototype = {
 	 * @return {IString} the requested substring 
 	 */
 	substr: function(start, length) {
-		if (ilib._getPlatform() === "qt") {
-			// qt's JS engine has a broken implementation of substr(), so
+		var plat = ilib._getPlatform();
+		if (plat === "qt" || plat === "rhino" || plat === "trireme") {
+			// qt and rhino have a broken implementation of substr(), so
 			// work around it
 			if (typeof(length) === "undefined") {
 				length = this.str.length - start;

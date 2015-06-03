@@ -9,7 +9,7 @@
         {
             "name": "locality",
             "line": "startAtLast",
-          "pattern": "(([BbCcČčDdĎďFfGgHhJjKkLlĹĺĽľMmNnŇňPpQqRrŔŕSsŠšTtŤťVvWwXxZzŽžAaÁáÄäEeÉéIiÍíOoÓóÔôUuÚúYyÝý-])?[BbCcČčDdĎďFfGgHhJjKkLlĹĺĽľMmNnŇňPpQqRrŔŕSsŠšTtŤťVvWwXxZzŽžAaÁáÄäEeÉéIiÍíOoÓóÔôUuÚúYyÝý-\\s']+([0-9])?)$",
+          "pattern": "(([BbCcČčDdĎďFfGgHhJjKkLlĹĺĽľMmNnŇňPpQqRrŔŕSsŠšTtŤťVvWwXxZzŽžAaÁáÄäEeÉéIiÍíOoÓóÔôUuÚúYyÝý\\-])?[BbCcČčDdĎďFfGgHhJjKkLlĹĺĽľMmNnŇňPpQqRrŔŕSsŠšTtŤťVvWwXxZzŽžAaÁáÄäEeÉéIiÍíOoÓóÔôUuÚúYyÝý\\-\\s']+([0-9])?)$",
 	  "matchGroup": 1
         },
         {

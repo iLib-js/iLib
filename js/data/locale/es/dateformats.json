@@ -1,55 +1,60 @@
 {
 	"gregorian": {
-		"order": "{date} {time}",
+		"order": {
+			"f": "{date}, {time}",
+			"l": "{date}, {time}",
+			"m": "{date} {time}",
+			"s": "{date} {time}"
+		},
 		"date": {
 			"dmwy": {
-				"s": "EE dd/MM/yy",
-				"m": "EEE dd/MM/yyyy",
-				"l": "EEE dd 'de' MMM yyyy",
-				"f": "EEEE dd 'de' MMMM yyyy"
+				"s": "EE d/M/yy",
+				"m": "EEE d 'de' MMM 'de' yyyy",
+				"l": "EEE d 'de' MMM 'de' yyyy",
+				"f": "EEEE, d 'de' MMMM 'de' yyyy"
 			},
 			"dmy": {
-				"s": "dd/MM/yy",
-				"m": "dd/MM/yyyy",
-				"l": "dd 'de' MMM yyyy",
-				"f": "dd 'de' MMMM yyyy"
+				"s": "d/M/yy",
+				"m": "d 'de' MMM 'de' yyyy",
+				"l": "d 'de' MMM 'de' yyyy",
+				"f": "d 'de' MMMM 'de' yyyy"
 			},
 			"dmw": {
-				"s": "EE dd/MM",
-				"m": "EE dd/MM",
-				"l": "EEE dd 'de' MMM",
-				"f": "EEEE dd 'de' MMMM"
+				"s": "EE d/M",
+				"m": "EE d 'de' MMM",
+				"l": "EEE d 'de' MMM",
+				"f": "EEEE, d 'de' MMMM"
 			},
 			"dm": {
-				"s": "dd/MM",
-				"m": "dd/MM",
-				"l": "dd 'de' MMM",
-				"f": "dd 'de' MMMM"
+				"s": "d/M",
+				"m": "d 'de' MMM",
+				"l": "d 'de' MMM",
+				"f": "d 'de' MMMM"
 			},
 			"my": {
-				"s": "MM/yy",
-				"m": "MM/yyyy",
-				"l": "MMM yy",
-				"f": "MMMM yyyy"
+				"s": "M/yy",
+				"m": "MMM 'de' yyyy",
+				"l": "MMM 'de' yyyy",
+				"f": "MMMM 'de' yyyy"
 			},
 			"dw": {
-				"s": "EE dd",
-				"m": "EEE dd",
-				"l": "EEE dd",
-				"f": "EEEE dd"
+				"s": "EE d",
+				"m": "EEE d",
+				"l": "EEE d",
+				"f": "EEEE, d"
 			},
-			"d": "dd",
+			"d": "d",
 			"m": {
 				"s": "M",
-				"m": "MM",
+				"m": "MMM",
 				"l": "MMM",
 				"f": "MMMM"
 			},
 			"y": {
 				"s": "yy",
-				"m": "yy",
+				"m": "yyyy",
 				"l": "yyyy",
-				"f": "yyyy G"
+				"f": "yyyy"
 			},
 			"n": {
 				"s": "N",

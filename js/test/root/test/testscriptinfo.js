@@ -147,7 +147,7 @@ function testScriptGetUnknown() {
 }
 
 function testScriptGetAllScripts() {
-    var scripts = new ScriptInfo.getAllScripts();
+    var scripts = ScriptInfo.getAllScripts();
     assertNotNull(scripts);
     
     assertEquals("Afak", scripts[0]);

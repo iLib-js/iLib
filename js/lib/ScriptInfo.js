@@ -103,17 +103,13 @@ var ScriptInfo = function(script, options) {
 };
 
 /**
- * Return an array of all ISO 15924 4-letter identifier script identifiers that
- * this copy of ilib knows about.
- * @static
- * @return {Array.<string>} an array of all script identifiers that this copy of
- * ilib knows about
+ * @private
  */
-ScriptInfo.getAllScripts = function() {
+ScriptInfo._getScriptsArray = function() {
 	var ret = [],
 		script = undefined,
 		scripts = ilib.data.scripts;
-	
+
 	for (script in scripts) {
 		if (script && scripts[script]) {
 			ret.push(script);
@@ -121,6 +117,37 @@ ScriptInfo.getAllScripts = function() {
 	}
 	
 	return ret;
+};
+
+/**
+ * Return an array of all ISO 15924 4-letter identifier script identifiers that
+ * this copy of ilib knows about.
+ * @static
+ * @param {boolean} sync whether to find the available ids synchronously (true) or asynchronously (false)
+ * @param {Object} loadParams arbitrary object full of properties to pass to the loader
+ * @param {function(Array.<string>)} onLoad callback function to call when the data is finished loading
+ * @return {Array.<string>} an array of all script identifiers that this copy of
+ * ilib knows about
+ */
+ScriptInfo.getAllScripts = function(sync, loadParams, onLoad) {
+	if (!ilib.data.scripts) {
+		Utils.loadData({
+			object: ScriptInfo, 
+			locale: "-", 
+			name: "scripts.json", 
+			sync: sync, 
+			loadParams: loadParams, 
+			callback: ilib.bind(this, function (info) {
+				ilib.data.scripts = info;
+				
+				if (typeof(onLoad) === 'function') {
+					onLoad(ScriptInfo._getScriptsArray());
+				}
+			})
+		});
+	}
+	
+	return ScriptInfo._getScriptsArray();
 };
 
 ScriptInfo.prototype = {

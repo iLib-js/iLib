@@ -175,6 +175,7 @@ function testFuelConsumptionLocalize5() {
 }
 
 function testFuelConsumptionGetMeasures() {
+	var m = new ilib.Measurement.FuelConsumption({unit: "mpg", amount: 1}); // preload for dynamic tests
 	var measures = ilib.Measurement.FuelConsumption.getMeasures();
 	var expected = [
         "liter/100km",

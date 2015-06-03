@@ -1,40 +1,42 @@
 {
     "gregorian": {
-        "order": "{time} {date}",
+        "order": "{date} {time}",
         "date": {
             "dm": {
-                "s": "d. M.",
-                "m": "d. M",
-                "l": "d. M.",
+                "s": "dd.MM.",
+                "m": "d. M.",
+                "l": "d. MMMM",
                 "f": "d. MMMM"
             },
             "dmy": {
-                "s": "d. M. yy",
+                "s": "dd.MM.yy",
                 "m": "d. M. yyyy",
-                "l": "d. M. yyyy",
+                "l": "d. MMMM yyyy",
                 "f": "d. MMMM yyyy"
             },
             "my": {
+            	"s": "MM.yy",
                 "m": "M. yyyy",
-                "l": "MMMM yyyy"
+                "l": "MMMM yyyy",
+                "f": "MMMM yyyy"
             },
             "d": {
-                "s": "d",
+                "s": "dd",
                 "f": "d",
                 "l": "d",
                 "m": "d"
             },
             "dmwy": {
-                "s": "E, d. M. yy",
-                "m": "EE, d. M. yy",
-                "l": "EEE, d. M. yyyy",
-                "f": "EEEE, d. M. yyyy"
+                "s": "E dd.MM.yy",
+                "m": "EE d. M. yyyy",
+                "l": "EEE d. MMMM yyyy",
+                "f": "EEEE d. MMMM yyyy"
             },
             "dmw": {
-                "s": "E, d. M.",
-                "m": "EE, d. M.",
-                "l": "EEEE, d. M.",
-                "f": "EEEE, d. M."
+                "s": "E dd.MM.",
+                "m": "EE d. M.",
+                "l": "EEEE d. MMMM",
+                "f": "EEEE d. MMMM"
             },
             "n": {
                 "m": "N"

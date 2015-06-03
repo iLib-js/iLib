@@ -3,35 +3,39 @@
         "order": "{time} {date}",
         "date": {
             "dmwy": {
-                "s": "E yy/M/d",
-                "m": "EE yy/M/d",
-                "f": "EEEE d MMM yyyy"
+                "s": "E yyyy/M/d",
+                "m": "EE d MMM yyyy",
+                "l": "EEEE d MMMM yyyy",
+                "f": "EEEE d MMMM yyyy"
             },
             "dmy": {
-                "s": "‏yy/M/d",
-                "m": "‏yy/M/d",
-                "l": "‏d MMM yyyy",
+                "s": "‏yyyy/M/d",
+                "m": "‏d MMM yyyy",
+                "l": "‏d MMMM yyyy",
                 "f": "‏d MMMM yyyy"
             },
             "dmw": {
                 "s": "E M/d",
-                "m": "EE M/d",
-                "l": "EEEE d MMM",
-                "f": "EEEE d MMM"
+                "m": "EE d MMM",
+                "l": "EEEE d MMMM",
+                "f": "EEEE d MMMM"
             },
             "dm": {
                 "s": "‏M/d",
-                "m": "‏M/d",
-                "l": "‏d MMM",
+                "m": "‏d MMM",
+                "l": "‏d MMMM",
                 "f": "‏d MMMM"
             },
             "my": {
-                "s": "‏yy/M",
-                "m": "‏yy/M"
+                "s": "‏yyyy/M",
+                "m": "‏MMM yyyy",
+                "l": "‏MMMM yyyy",
+                "f": "‏MMMM yyyy"
             },
             "n": {
                 "m": "N"
-            }
+            },
+            "y": "yyyy"
         },
         "time": {
             "12": {

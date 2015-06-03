@@ -1,5 +1,7 @@
 /*
- * ilib-rhino.js - glue code for rhino apps to load local ilib code and data 
+ * ilib-rhino.js - glue code for rhino apps to load local ilib code and 
+ * data in a plain rhino environment. If you are using ringojs, use the
+ * ilib-ringo.js loader instead.
  * 
  * Copyright © 2015, JEDLSoft
  *
@@ -64,60 +66,101 @@ requireClass.prototype.normalize = function(pathname) {
 	}
 	return pathname;
 };
+
+requireClass.prototype._loadFile = function (pathname) {
+	console.log("requireClass._loadFile: attempting to load " + pathname);
+	var text = "";
+	var reader;
+	try {
+		reader = new BufferedReader(new InputStreamReader(new FileInputStream(pathname), "utf-8"));
+		var tmp;
+		while ((tmp = reader.readLine()) !== null) {
+			text += tmp + '\n';
+		}
+	} catch (e) {
+		// ignore
+		text = undefined;
+	} finally {
+		if (reader) {
+			try {
+				reader.close();
+			} catch (e2) {}
+		}
+		cb && typeof(cb) === 'function' && cb(text);
+	}
+	return text;
+};
 	
 requireClass.prototype.require = function(parent, pathname) {
-	//console.log("------------------------\nrequire: called with " + pathname);
+	console.log("------------------------\nrequire: called with " + pathname);
 
-	//console.log("this.root is " + this.root + " and pathname before was " + pathname);
-	//console.log("require: module.filename is " + module.filename);
-	//console.log("require: parent is " + parent);
+	console.log("this.root is " + this.root + " and pathname before was " + pathname);
+	console.log("require: module.filename is " + module.filename);
+	console.log("require: parent is " + parent);
 	
 	var base = parent || (module.filename && this.dirname(module.filename)) || this.root;
 
-	//console.log("require: base is " + base);
+	console.log("require: base is " + base);
 	
 	if (pathname.charAt(0) !== '/') {
 		pathname = base + "/" + pathname;
 	}
 	
 	pathname = this.normalize(pathname);
-	//console.log("require: pathname after is " + pathname);
+	console.log("require: pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
-		//console.log("require: cache hit");
+		console.log("require: cache hit");
 		return this.cache[pathname];
 	}
 	
 	// don't try to load things that are currently in the process of loading
 	if (this.loading[pathname]) {
-		//console.log("require: already loading...");
+		console.log("require: already loading...");
 		return {};
 	}
-	//console.log("require: loading the file");
+	console.log("require: loading the file");
 	
-	// communicate the current dir to the included js file
-	var tmp = module.filename;
-	module.filename = pathname;
-	this.loading[pathname] = true;
-	module.require = requireClass.prototype.require.bind(r, this.dirname(pathname));
-
 	try {
-		load(pathname);
-		
-		module.filename = tmp;
-		this.loading[pathname] = undefined;
-		
-		module.exports.module = {
-			filename: pathname,
-			require: requireClass.prototype.require.bind(r, this.dirname(pathname))
-		};
-		this.cache[pathname] = module.exports;
-		return module.exports;
-	} catch (e) {
-		console.log("Failed loading " + pathname);
-		console.log("exception was " + e);
-		return undefined;
-	}
+    	var text = this._loadFile(pathname);
+    	var dirname = path.dirname(pathname);
+    	var match, replacement;
+    	
+    	if (text) {
+    		var tmp = module.filename;
+    		module.filename = pathname;
+    		module.exports = null;
+    		this.loading[pathname] = true;
+    		module.require = requireClass.prototype.require.bind(r, this.dirname(pathname));
+    		
+    		while ((match = this.updateRequire.exec(text)) !== null) {
+    			replacement = path.normalize(path.join(dirname, match[1]));
+    			text = text.replace(new RegExp('"' + match[1] + '"', "g"), '"' + replacement + '"');
+    			this.updateRequire.lastIndex = match.index + replacement.length + 2;
+    		}
+    		
+    		// console.log("text is " + text);
+    		try {
+    			eval(text);
+    		
+    			this.cache[pathname] = module.exports;
+    	    	module.exports.module = {
+    				filename: pathname,
+    				require: requireClass.prototype.require.bind(r, this.dirname(pathname))
+    			};
+    		} finally {
+    			this.loading[pathname] = undefined;
+    			module.filename = tmp;
+    		}
+    		
+    		return module.exports;
+    	}
+    } catch (e) {
+    	console.log("Failed loading " + pathname);
+    	console.log("exception was " + e);
+    }
+
+    return undefined;
 };
 
 var r = new requireClass();
