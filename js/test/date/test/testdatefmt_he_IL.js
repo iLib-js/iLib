@@ -34,7 +34,7 @@ function testDateFmtSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.11", fmt.format(date));
+    assertEquals("‏29.9.2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_he_IL() {
@@ -51,7 +51,7 @@ function testDateFmtSimpleMedium_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.2011", fmt.format(date));
+    assertEquals("‏29 בספט׳ 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_he_IL() {
@@ -68,7 +68,7 @@ function testDateFmtSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29 ספט 2011", fmt.format(date));
+    assertEquals("‏29 בספטמבר 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_he_IL() {
@@ -170,7 +170,7 @@ function testDateFmtDateTimeSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.11 13:45", fmt.format(date));
+    assertEquals("‏29.9.2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_he_IL() {
@@ -187,7 +187,7 @@ function testDateFmtDateTimeSimpleMedium_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.2011 13:45", fmt.format(date));
+    assertEquals("‏29 בספט׳ 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_he_IL() {
@@ -204,7 +204,7 @@ function testDateFmtDateTimeSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29 ספט 2011 13:45", fmt.format(date));
+    assertEquals("‏29 בספטמבר 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_he_IL() {
@@ -395,7 +395,7 @@ function testDateFmtTypeDate_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.11", fmt.format(date));
+    assertEquals("‏29.9.2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_he_IL() {
@@ -429,7 +429,7 @@ function testDateFmtTypeDateTime_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.11 13:45", fmt.format(date));
+    assertEquals("‏29.9.2011 13:45", fmt.format(date));
 }
 
 
@@ -447,7 +447,7 @@ function testDateFmtShortDateComponentsY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_he_IL() {
@@ -464,7 +464,7 @@ function testDateFmtShortDateComponentsM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_he_IL() {
@@ -481,7 +481,7 @@ function testDateFmtShortDateComponentsN_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_he_IL() {
@@ -515,7 +515,7 @@ function testDateFmtShortDateComponentsDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09", fmt.format(date));
+    assertEquals("‏29.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_he_IL() {
@@ -532,7 +532,7 @@ function testDateFmtShortDateComponentsMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏09.11", fmt.format(date));
+    assertEquals("‏9.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_he_IL() {
@@ -549,7 +549,7 @@ function testDateFmtShortDateComponentsDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.09.11", fmt.format(date));
+    assertEquals("‏29.9.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_he_IL() {
@@ -566,7 +566,7 @@ function testDateFmtShortDateComponentsWDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה', 29.09", fmt.format(date));
+    assertEquals("ה׳, 29.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_he_IL() {
@@ -583,7 +583,7 @@ function testDateFmtShortDateComponentsWDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה', 29.09.11", fmt.format(date));
+    assertEquals("ה׳, 29.9.2011", fmt.format(date));
 }
 
 

@@ -39,7 +39,7 @@ function testDateFmtINSimpleShort_ml_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_ml_IN() {
@@ -56,7 +56,7 @@ function testDateFmtINSimpleMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11, സെപ്റ്റം 29", fmt.format(date));
+    assertEquals("2011, സെപ്റ്റം 29", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_ml_IN() {
@@ -73,7 +73,7 @@ function testDateFmtINSimpleLong_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 സെപ്റ്റം 29", fmt.format(date));
+    assertEquals("2011, സെപ്റ്റംബർ 29", fmt.format(date));
 }
 
 function testDateFmtINSimpleFull_ml_IN() {
@@ -416,7 +416,7 @@ function testDateFmtINTypeDate_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/11", fmt.format(date));
 }
 
 /*function testDateFmtINTypeTime_ml_IN() {
@@ -502,7 +502,7 @@ function testDateFmtINShortDateComponentsN_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("സ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_ml_IN() {
@@ -536,7 +536,7 @@ function testDateFmtINShortDateComponentsDM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("29/09", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_ml_IN() {
@@ -553,7 +553,7 @@ function testDateFmtINShortDateComponentsMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-11", fmt.format(date));
+    assertEquals("09/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_ml_IN() {
@@ -570,7 +570,7 @@ function testDateFmtINShortDateComponentsDMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_ml_IN() {
@@ -587,7 +587,7 @@ function testDateFmtINShortDateComponentsWDM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29, വ്യാ", fmt.format(date));
+    assertEquals("29/09, വ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_ml_IN() {
@@ -604,7 +604,7 @@ function testDateFmtINShortDateComponentsWDMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29-9-11, വ്യാ", fmt.format(date));
+    assertEquals("29/09/11, വ", fmt.format(date));
 }
 
 
@@ -690,7 +690,7 @@ function testDateFmtINFullDateComponentsMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("സെപ്റ്റംബർ 2011", fmt.format(date));
+    assertEquals("2011, സെപ്റ്റംബർ ", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsDMY_ml_IN() {
@@ -724,7 +724,7 @@ function testDateFmtINFullDateComponentsWDM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("സെപ്റ്റം 29, വ്യാഴാഴ്ച", fmt.format(date));
+    assertEquals("സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDMY_ml_IN() {
@@ -741,7 +741,7 @@ function testDateFmtINFullDateComponentsWDMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 സെപ്റ്റം 29, വ്യാഴാഴ്ച", fmt.format(date));
+    assertEquals("2011, സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച", fmt.format(date));
 }
 
 

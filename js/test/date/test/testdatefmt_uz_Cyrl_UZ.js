@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("11/09/29", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_uz_Cyrl_UZ() {
@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11 Сен 29", fmt.format(date));
+    assertEquals("2011 Сен 29", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_uz_Cyrl_UZ() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 Сен 29", fmt.format(date));
+    assertEquals("2011 Сентябр 29", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_uz_Cyrl_UZ() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11-9-29", fmt.format(date));
+    assertEquals("11/09/29 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_uz_Cyrl_UZ() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11 Сен 29", fmt.format(date));
+    assertEquals("2011 Сен 29 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_uz_Cyrl_UZ() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 Сен 29", fmt.format(date));
+    assertEquals("2011 Сентябр 29 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_uz_Cyrl_UZ() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 Сентябр 29", fmt.format(date));
+    assertEquals("2011 Сентябр 29 13:45", fmt.format(date));
 }
 
 
@@ -401,7 +401,7 @@ function testDateFmtTypeDate_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("11/09/29", fmt.format(date));
 }
 
 function testDateFmtTypeTime_uz_Cyrl_UZ() {
@@ -435,7 +435,7 @@ function testDateFmtTypeDateTime_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11-9-29", fmt.format(date));
+    assertEquals("11/09/29 13:45", fmt.format(date));
 }
 
 
@@ -470,7 +470,7 @@ function testDateFmtShortDateComponentsM_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_uz_Cyrl_UZ() {
@@ -487,7 +487,7 @@ function testDateFmtShortDateComponentsN_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("С", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_uz_Cyrl_UZ() {
@@ -521,7 +521,7 @@ function testDateFmtShortDateComponentsDM_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-29", fmt.format(date));
+    assertEquals("09/29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_uz_Cyrl_UZ() {
@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsMY_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9", fmt.format(date));
+    assertEquals("11/09/", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_uz_Cyrl_UZ() {
@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsDMY_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("11/09/29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_uz_Cyrl_UZ() {
@@ -572,7 +572,7 @@ function testDateFmtShortDateComponentsWDM_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("П, 9-29", fmt.format(date));
+    assertEquals("П, 09/29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_uz_Cyrl_UZ() {
@@ -589,7 +589,7 @@ function testDateFmtShortDateComponentsWDMY_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("П, 11-9-29", fmt.format(date));
+    assertEquals("П, 11/09/29", fmt.format(date));
 }
 
 
@@ -624,7 +624,7 @@ function testDateFmtFullDateComponentsM_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Сен", fmt.format(date));
+    assertEquals("Сентябр", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_uz_Cyrl_UZ() {
@@ -709,7 +709,7 @@ function testDateFmtFullDateComponentsWDM_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пайшанба Сен 29", fmt.format(date));
+    assertEquals("пайшанба, Сентябр 29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_uz_Cyrl_UZ() {
@@ -726,7 +726,7 @@ function testDateFmtFullDateComponentsWDMY_uz_Cyrl_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пайшанба, 2011 Сен 29", fmt.format(date));
+    assertEquals("пайшанба, 2011 Сентябр 29", fmt.format(date));
 }
 
 

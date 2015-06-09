@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09. 29", fmt.format(date));
+    assertEquals("11. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_ko_KR() {
@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 09. 29", fmt.format(date));
+    assertEquals("2011. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ko_KR() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09. 29 오후 1:45", fmt.format(date));
+    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ko_KR() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 09. 29 오후 1:45", fmt.format(date));
+    assertEquals("2011. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ko_KR() {
@@ -418,7 +418,7 @@ function testDateFmtTypeDate_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09. 29", fmt.format(date));
+    assertEquals("11. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtTypeTime_ko_KR() {
@@ -452,7 +452,7 @@ function testDateFmtTypeDateTime_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09. 29 오후 1:45", fmt.format(date));
+    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 
@@ -504,7 +504,7 @@ function testDateFmtShortDateComponentsN_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("9월", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_ko_KR() {
@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09. 29", fmt.format(date));
+    assertEquals("9. 29.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_ko_KR() {
@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09.", fmt.format(date));
+    assertEquals("11. 9.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ko_KR() {
@@ -572,7 +572,7 @@ function testDateFmtShortDateComponentsDMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 09. 29", fmt.format(date));
+    assertEquals("11. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ko_KR() {
@@ -589,7 +589,7 @@ function testDateFmtShortDateComponentsWDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("목, 09. 29", fmt.format(date));
+    assertEquals("9. 29. 목", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ko_KR() {
@@ -606,7 +606,7 @@ function testDateFmtShortDateComponentsWDMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("목, 11. 09. 29", fmt.format(date));
+    assertEquals("11. 9. 29. 목", fmt.format(date));
 }
 
 function testDateFmtLongDateComponentsWDM_ko_KR() {
@@ -623,7 +623,7 @@ function testDateFmtLongDateComponentsWDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("목요일, 9월 29일", fmt.format(date));
+    assertEquals("9월 29일 목", fmt.format(date));
 }
 
 
@@ -658,7 +658,7 @@ function testDateFmtFullDateComponentsM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("구", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ko_KR() {
@@ -709,7 +709,7 @@ function testDateFmtFullDateComponentsMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 9월", fmt.format(date));
+    assertEquals("2011년 9월 ", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ko_KR() {
@@ -743,7 +743,7 @@ function testDateFmtFullDateComponentsWDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9월 29일 (목요일)", fmt.format(date));
+    assertEquals("9월 29일 목요일", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_ko_KR() {
@@ -760,7 +760,7 @@ function testDateFmtFullDateComponentsWDMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 9월 29일 (목요일)", fmt.format(date));
+    assertEquals("2011년 9월 29일 목요일", fmt.format(date));
 }
 
 
@@ -778,7 +778,7 @@ function testDateFmtShortTimeComponentsS_ko_KR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("37", fmt.format(date));
+    assertEquals("45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsM_ko_KR() {
@@ -1003,7 +1003,7 @@ function testDateFmtFullTimeComponentsS_ko_KR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("37", fmt.format(date));
+    assertEquals("45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsM_ko_KR() {

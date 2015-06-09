@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Σεπ 11", fmt.format(date));
+    assertEquals("29 Σεπ 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_el_GR() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Σεπ 2011", fmt.format(date));
+    assertEquals("29 Σεπτεμβρίου 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_el_GR() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 μ.μ. 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 1:45 μ.μ.", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_el_GR() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 μ.μ. 29 Σεπ 11", fmt.format(date));
+    assertEquals("29 Σεπ 2011 1:45 μ.μ.", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_el_GR() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 μ.μ. 29 Σεπ 2011", fmt.format(date));
+    assertEquals("29 Σεπτεμβρίου 2011 1:45 μ.μ.", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_el_GR() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 μ.μ. 29 Σεπτεμβρίου 2011", fmt.format(date));
+    assertEquals("29 Σεπτεμβρίου 2011 1:45 μ.μ.", fmt.format(date));
 }
 
 
@@ -421,7 +421,7 @@ function testDateFmtShortDateComponentsM_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_el_GR() {
@@ -438,7 +438,7 @@ function testDateFmtShortDateComponentsN_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("Σ", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_el_GR() {
@@ -626,7 +626,7 @@ function testDateFmtFullDateComponentsMY_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Σεπτεμβρίου 2011", fmt.format(date));
+    assertEquals("Σεπτέμβριος 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_el_GR() {
@@ -660,7 +660,7 @@ function testDateFmtFullDateComponentsWDM_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Πέμπτη, 29 Σεπ", fmt.format(date));
+    assertEquals("Πέμπτη, 29 Σεπτεμβρίου", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_el_GR() {
@@ -677,7 +677,7 @@ function testDateFmtFullDateComponentsWDMY_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Πέμπτη, 29 Σεπ 2011", fmt.format(date));
+    assertEquals("Πέμπτη, 29 Σεπτεμβρίου 2011", fmt.format(date));
 }
 
 

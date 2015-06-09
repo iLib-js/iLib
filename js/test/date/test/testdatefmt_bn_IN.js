@@ -57,7 +57,7 @@ function testDateFmtINSimpleMedium_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২৯ সেপ্টেম্বর, ১১", fmt.format(date));
+    assertEquals("২৯ সেপ্টেম্বর, ২০১১", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_bn_IN() {
@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ২৯/৯/১১", fmt.format(date));
+    assertEquals("২৯/৯/১১ ১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_bn_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ২৯ সেপ্টেম্বর, ১১", fmt.format(date));
+    assertEquals("২৯ সেপ্টেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_bn_IN() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleLong_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ২৯ সেপ্টেম্বর, ২০১১", fmt.format(date));
+    assertEquals("২৯ সেপ্টেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_bn_IN() {
@@ -244,7 +244,7 @@ function testDateFmtINDateTimeSimpleFull_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ২৯ সেপ্টেম্বর, ২০১১", fmt.format(date));
+    assertEquals("২৯ সেপ্টেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
 
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ২৯/৯/১১", fmt.format(date));
+    assertEquals("২৯/৯/১১ ১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
 
@@ -486,7 +486,7 @@ function testDateFmtINShortDateComponentsM_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("০৯", fmt.format(date));
+    assertEquals("৯", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_bn_IN() {
@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("সে", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_bn_IN() {
@@ -588,7 +588,7 @@ function testDateFmtINShortDateComponentsWDM_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("বৃ, ২৯-৯", fmt.format(date));
+    assertEquals("বৃ, ২৯/৯", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_bn_IN() {
@@ -691,7 +691,7 @@ function testDateFmtINFullDateComponentsMY_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("সেপ্টেম্বর ২০১১", fmt.format(date));
+    assertEquals("সেপ্টেম্বর, ২০১১", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsDMY_bn_IN() {
@@ -725,7 +725,7 @@ function testDateFmtINFullDateComponentsWDM_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("বৃহষ্পতিবার ২৯ সেপ্টেম্বর", fmt.format(date));
+    assertEquals("বৃহস্পতিবার, ২৯ সেপ্টেম্বর", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDMY_bn_IN() {
@@ -742,7 +742,7 @@ function testDateFmtINFullDateComponentsWDMY_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("বৃহষ্পতিবার, ২৯ সেপ্টেম্বর, ২০১১", fmt.format(date));
+    assertEquals("বৃহস্পতিবার, ২৯ সেপ্টেম্বর, ২০১১", fmt.format(date));
 }
 
 
