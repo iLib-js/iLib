@@ -64,22 +64,10 @@ limitations under the License.
 			<fileset dir="${build.export}/locale"/>
 		</sync>
 	</target>
-		<target name="export.enyo.ilib" description="Export the build to enyo-ilib">
-		<subant target="dist" buildpath="."/>
-		<copy todir="../enyo-ilib/ilib/js">
-			<fileset dir="${build.export}/js">
-				<include name="ilib-dyn*.js"/>
-				<exclude name="*compiled*"/>
-			</fileset>
-		</copy>
-		<sync todir="../enyo-ilib/ilib/locale">
-			<fileset dir="${build.export}/locale"/>
-		</sync>
-		<copy todir="../enyo-ilib/ilib/js">
-			<fileset dir="${build.export}/js">
-				<include name="ilib-dyn-core.js"/>
-				<include name="ilib-dyn-full.js"/>
-				<include name="ilib-dyn-standard.js"/>
+	<target name="export.enyo.ilib" description="Export the build to enyo-ilib">
+		<copy todir="../enyo-ilib/ilib/lib">
+			<fileset dir="${build.export.js}/dyncode">
+				<include name="*.js"/>
 			</fileset>
 		</copy>
 		<sync todir="../enyo-ilib/ilib/locale">
