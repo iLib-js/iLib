@@ -89,7 +89,7 @@ function testDateRngFmtCARangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 déc 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31 décembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCARangeInDayFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});
@@ -186,7 +186,7 @@ function testDateRngFmtCARangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 déc - 14:30 31 déc 2011", fmt.format(start, end));
+    assertEquals("13:45 30 décembre - 14:30 31 décembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCARangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});
@@ -283,7 +283,7 @@ function testDateRngFmtCARangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 déc 2011", fmt.format(start, end));
+    assertEquals("20-31 décembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCARangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});
@@ -380,7 +380,7 @@ function testDateRngFmtCARangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 nov - 31 déc 2011", fmt.format(start, end));
+    assertEquals("20 novembre - 31 décembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCARangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});
@@ -477,7 +477,7 @@ function testDateRngFmtCARangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 nov 2011 - 31 janv 2012", fmt.format(start, end));
+    assertEquals("20 novembre 2011 - 31 janvier 2012", fmt.format(start, end));
 }
 function testDateRngFmtCARangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});
@@ -574,7 +574,7 @@ function testDateRngFmtCARangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("nov 2011 - janv 2014", fmt.format(start, end));
+    assertEquals("novembre 2011 - janvier 2014", fmt.format(start, end));
 }
 function testDateRngFmtCARangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "full"});

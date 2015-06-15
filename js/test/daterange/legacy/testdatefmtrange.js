@@ -323,7 +323,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
+    	    assertEquals("12:20 PM - 4:35 PM 2/20/13", fmt.format(start, end));
     	}
     });
     ilib.setLoaderCallback(undefined);

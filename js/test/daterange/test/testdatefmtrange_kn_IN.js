@@ -42,7 +42,7 @@ function testDateRngFmtinRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ – 2:30 ಮಧ್ಯಾಹ್ನ 31/12/11", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ – 02:30 ಅಪರಾಹ್ನ 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtinRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ – 2:30 ಮಧ್ಯಾಹ್ನ 31 12 2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ – 02:30 ಅಪರಾಹ್ನ 31 ಡಿಸೆಂ 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtinRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ – 2:30 ಮಧ್ಯಾಹ್ನ 31, ಡಿಸೆಂಬರ್, 2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ – 02:30 ಅಪರಾಹ್ನ 31, ಡಿಸೆಂಬರ್, 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtinRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ – 2:30 ಮಧ್ಯಾಹ್ನ 31 ಡಿಸೆಂಬರ್ 2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ – 02:30 ಅಪರಾಹ್ನ 31 ಡಿಸೆಂಬರ್ 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtinRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtinRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ 30/12/11 – 2:30 ಮಧ್ಯಾಹ್ನ 31/12/11", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ 30/12/11 – 02:30 ಅಪರಾಹ್ನ 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtinRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ 30/12/2011 – 2:30 ಮಧ್ಯಾಹ್ನ 31/12/2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ 30/ಡಿಸೆಂ/2011 – 02:30 ಅಪರಾಹ್ನ 31/ಡಿಸೆಂ/2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtinRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ 30 ಡಿಸೆಂಬರ್ – 2:30 ಮಧ್ಯಾಹ್ನ 31 2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ 30 ಡಿಸೆಂಬರ್ – 02:30 ಅಪರಾಹ್ನ 31 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtinRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ 30 ಡಿಸೆಂಬರ್ – 2:30 ಮಧ್ಯಾಹ್ನ 31 2011", fmt.format(start, end));
+    assertEquals("01:45 ಅಪರಾಹ್ನ 30 ಡಿಸೆಂಬರ್ – 02:30 ಅಪರಾಹ್ನ 31 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtinRangeMultiDayShort() {
@@ -260,7 +260,7 @@ function testDateRngFmtinRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/ಡಿಸೆಂ/2011 – 31/ಡಿಸೆಂ/2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});
@@ -357,7 +357,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/ನವೆಂ/2011 – 31/ಡಿಸೆಂ/2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});
@@ -430,7 +430,7 @@ function testDateRngFmtinRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "medium"});
@@ -454,7 +454,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
+    assertEquals("20/ನವೆಂ/2011 – 31/ಜನ/2012", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});
@@ -527,7 +527,7 @@ function testDateRngFmtinRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 01/14", fmt.format(start, end));
+    assertEquals("11/11 – 1/14", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "medium"});
@@ -551,7 +551,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
+    assertEquals("ನವೆಂ/2011 – ಜನ/2014", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "long"});

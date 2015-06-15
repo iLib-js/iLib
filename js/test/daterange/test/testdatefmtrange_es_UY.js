@@ -550,7 +550,7 @@ function testDateRngFmtUYRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 - 01/14", fmt.format(start, end));
+    assertEquals("nov./2011 - ene./2014", fmt.format(start, end));
 }
 function testDateRngFmtUYRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "es-UY", length: "long"});
@@ -574,7 +574,7 @@ function testDateRngFmtUYRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("nov 2011 - ene 2014", fmt.format(start, end));
+    assertEquals("noviembre 2011 - enero 2014", fmt.format(start, end));
 }
 function testDateRngFmtUYRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "es-UY", length: "full"});
@@ -598,7 +598,7 @@ function testDateRngFmtUYRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("noviembre 2011 d.C. - enero 2014 d.C.", fmt.format(start, end));
+    assertEquals("noviembre 2011 - enero 2014", fmt.format(start, end));
 }
 function testDateRngFmtUYManyYearsFull() {
     var fmt = new DateRngFmt({locale: "es-UY", length: "full"});
@@ -622,5 +622,5 @@ function testDateRngFmtUYManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 d.C. - 2064 d.C.", fmt.format(start, end));
+    assertEquals("2011 - 2064", fmt.format(start, end));
 }

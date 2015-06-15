@@ -42,7 +42,7 @@ function testDateRngFmtinRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 – सायं 2:30 31-12-11", fmt.format(start, end));
+    assertEquals("1:45 म.उ. – 2:30 म.उ. 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtinRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 – सायं 2:30 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. – 2:30 म.उ. 31 डिसें 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtinRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 – सायं 2:30 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. – 2:30 म.उ. 31 डिसेंबर 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtinRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 – सायं 2:30 31 डिसेंबर 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. – 2:30 म.उ. 31 डिसेंबर 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtinRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtinRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 30 – सायं 2:30 31-12-11", fmt.format(start, end));
+    assertEquals("1:45 म.उ. 30 – 2:30 म.उ. 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtinRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 30 – सायं 2:30 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. 30 – 2:30 म.उ. 31 डिसें 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtinRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 30 – सायं 2:30 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. 30 – 2:30 म.उ. 31 डिसेंबर 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtinRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("सायं 1:45 30 – सायं 2:30 31 डिसेंबर 2011", fmt.format(start, end));
+    assertEquals("1:45 म.उ. 30 – 2:30 म.उ. 31 डिसेंबर 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtinRangeMultiDayShort() {
@@ -284,7 +284,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("20 – 31 डिसेंबर 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -381,7 +381,7 @@ function testDateRngFmtinRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नोव्हें – 31 डिसें 2011", fmt.format(start, end));
+    assertEquals("20 नोव्हेंबर – 31 डिसेंबर 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -478,7 +478,7 @@ function testDateRngFmtinRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नोव्हें 2011 – 31 जाने 2012", fmt.format(start, end));
+    assertEquals("20 नोव्हेंबर 2011 – 31 जानेवारी 2012", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -575,7 +575,7 @@ function testDateRngFmtinRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("नोव्हें 2011 – जाने 2014", fmt.format(start, end));
+    assertEquals("नोव्हेंबर 2011 – जानेवारी 2014", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});

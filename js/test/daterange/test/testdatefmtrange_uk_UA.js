@@ -108,7 +108,7 @@ function testDateRngFmtUARangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 груд. 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 грудня 2011", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
@@ -205,7 +205,7 @@ function testDateRngFmtUARangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 – 14:30 31 груд. 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 грудня 2011", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
@@ -302,7 +302,7 @@ function testDateRngFmtUARangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 груд. 2011", fmt.format(start, end));
+    assertEquals("20 – 31 грудня 2011", fmt.format(start, end));
 }
 function testDateRngFmtUARangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
@@ -399,7 +399,7 @@ function testDateRngFmtUARangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 лист. – 31 груд. 2011", fmt.format(start, end));
+    assertEquals("20 листопада – 31 грудня 2011", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
@@ -496,7 +496,7 @@ function testDateRngFmtUARangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 лист. 2011 – 31 січ. 2012", fmt.format(start, end));
+    assertEquals("20 листопада 2011 – 31 січня 2012", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
@@ -593,7 +593,7 @@ function testDateRngFmtUARangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("лист. 2011 – січ. 2014", fmt.format(start, end));
+    assertEquals("листопада 2011 – січня 2014", fmt.format(start, end));
 }
 function testDateRngFmtUARangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});
