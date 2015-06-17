@@ -1,62 +1,52 @@
 {
     "gregorian": {
-        "order": {
-            "s": "{date} {time}",
-            "m": "{date} {time}",
-            "l": "{date}{time}",
-            "f": "{date}{time}"
-        },
         "date": {
             "dmwy": {
-                "s": "yyyy-MM-dd(E)",
-                "m": "yyyy-MM-dd(EE)",
-                "l": "yyyy年MMM月d日(EEE)",
-                "f": "yyyy年MMMM月d日(EEEE)"
+                "s": "yy/M/dE",
+                "m": "yyyy年M月d日EE",
+                "l": "yyyy年M月d日EEE",
+                "f": "yyyy年M月d日EEEE"
             },
             "dmy": {
-                "s": "yyyy-MM-dd",
-                "m": "yyyy-MM-dd",
-                "l": "yyyy年MMM月d日",
-                "f": "yyyy年MMMM月d日"
+                "s": "yy/M/d",
+                "m": "yyyy年M月d日",
+                "l": "yyyy年M月d日",
+                "f": "yyyy年M月d日"
             },
             "dmw": {
-                "s": "MM-dd(E)",
-                "m": "MM-dd(EE)",
-                "l": "MMM月d日(EEE)",
-                "f": "MMMM月d日(EEEE)"
+                "s": "M/dE",
+                "m": "M月d日EE",
+                "l": "M月d日EEE",
+                "f": "M月d日EEEE"
             },
             "dm": {
-                "s": "MM-dd",
-                "m": "MM-dd",
-                "l": "MMM月d日",
-                "f": "MMMM月d日"
+                "s": "M/d",
+                "m": "M月d日",
+                "l": "M月d日",
+                "f": "M月d日"
             },
             "my": {
-                "s": "yyyy-MM",
-                "m": "yyyy-MM",
-                "l": "yyyy年MMM月",
-                "f": "yyyy年MMMM月"
+                "s": "yy/M",
+                "m": "yyyy年M",
+                "l": "yyyy年M",
+                "f": "yyyy年M"
             },
             "dw": {
-                "s": "d日(E)",
-                "m": "d日(EE)",
-                "l": "d日(EEE)",
-                "f": "d日(EEEE)"
+                "s": "dE",
+                "m": "d日EE",
+                "l": "d日EEE",
+                "f": "d日EEEE"
             },
             "d": {
                 "s": "d",
-                "m": "dd",
-                "l": "d日",
-                "f": "d日"
+                "m": "d",
+                "l": "d",
+                "f": "d"
             },
             "m": {
-                "l": "MMM月",
-                "f": "MMMM月"
-            },
-            "y": {
-                "s": "yyyy",
-                "l": "yyyy年",
-                "f": "yyyy年"
+                "m": "M",
+                "l": "M",
+                "f": "M"
             },
             "n": {
                 "l": "MMM月",
@@ -65,28 +55,21 @@
         },
         "time": {
             "12": {
-                "ahmsz": "ahh:mm:ssz",
-                "ahms": "ahh:mm:ss",
-                "hmsz": "hh:mm:ssz",
-                "hms": "hh:mm:ss",
-                "ahmz": "ahh:mmz",
-                "ahm": "ahh:mm",
-                "hmz": "hh:mmz",
-                "ah": "ahh",
-                "hm": "hh:mm",
-                "h": "hh"
+                "ahmsz": "zah:mm:ss",
+                "ahms": "ah:mm:ss",
+                "hmsz": "zh:mm:ss",
+                "ahmz": "zah:mm",
+                "ahm": "ah:mm",
+                "hmz": "zh:mm",
+                "ah": "ah时"
             },
             "24": {
-                "ahmsz": "HH:mm:ssz",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ssz",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mmz",
-                "ahm": "HH:mm",
-                "hmz": "HH:mmz",
-                "ah": "HH",
-                "hm": "HH:mm",
-                "h": "HH"
+                "ahmsz": "zH:mm:ss",
+                "hmsz": "zH:mm:ss",
+                "ahmz": "zH:mm",
+                "hmz": "zH:mm",
+                "ah": "H时",
+                "h": "H时"
             }
         },
         "range": {

@@ -26,8 +26,8 @@
             },
             "my": {
                 "s": "MM/yyyy",
-                "m": "yyyy MMM ",
-                "l": "yyyy MMMM ",
+                "m": "yyyy MMM",
+                "l": "yyyy MMMM",
                 "f": "MMMM, yyyy"
             },
             "dw": {

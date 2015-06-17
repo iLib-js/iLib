@@ -26,9 +26,9 @@
                 "f": "d-'a' 'de' MMMM"
             },
             "my": {
-                "s": "yy-MM-",
-                "m": "yyyy-MMM-",
-                "l": "yyyy-MMMM-"
+                "s": "yy-MM",
+                "m": "yyyy-MMM",
+                "l": "yyyy-MMMM"
             },
             "dw": {
                 "s": "E, dd",

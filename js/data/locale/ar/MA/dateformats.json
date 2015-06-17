@@ -6,20 +6,20 @@
                 "m": "EE، yyyy/MM/dd"
             },
             "dmy": {
-                "s": "yyyy/M/d",
-                "m": "yyyy/MM/dd"
+                "s": "‏yyyy/M/d",
+                "m": "‏yyyy/MM/dd"
             },
             "dmw": {
-                "s": "E، M/d",
-                "m": "EE، MM/dd"
+                "s": "E، ‏M/d",
+                "m": "EE، ‏MM/dd"
             },
             "dm": {
-                "s": "M/d",
-                "m": "MM/dd"
+                "s": "‏M/d",
+                "m": "‏MM/dd"
             },
             "my": {
-                "s": "yyyy/M/",
-                "m": "yyyy/MM/"
+                "s": "‏yyyy/M",
+                "m": "‏yyyy/MM"
             }
         },
         "range": {

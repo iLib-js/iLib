@@ -26,9 +26,10 @@
                 "f": "MMMM "
             },
             "my": {
-                "s": "yy/M/",
-                "m": "yyyy, MMM ",
-                "l": "yyyy, MMMM "
+                "s": "yy/M",
+                "m": "yyyy, MMM",
+                "l": "yyyy, MMMM",
+                "f": "yyyy 'сыл' MMMM"
             },
             "dw": {
                 "s": "d 'күнэ', E",

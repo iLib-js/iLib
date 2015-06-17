@@ -135,7 +135,7 @@ list.forEach(function (file) {
 		if (language === "fa") {
 			// add the settings for the persian calendar as well
 			cal = aux.loadFile(path.join(sourcePath, "ca-persian.json"));
-			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -148,7 +148,7 @@ list.forEach(function (file) {
 		} else if (language === "am") {
 			// add the settings for the ethiopic calendar as well
 			cal = aux.loadFile(path.join(sourcePath, "ca-ethiopic.json"));
-			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -163,7 +163,7 @@ list.forEach(function (file) {
 			var cals = cal.main[file].dates.calendars;
 			cals.thaisolar = cals.gregorian;
 			// util.print("cals is " + JSON.stringify(cals, undefined, 4) + "\n");
-			newFormats = aux.createDateFormats(cals);
+			newFormats = aux.createDateFormats(language, script, cals);
 
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -176,7 +176,7 @@ list.forEach(function (file) {
 		
 		// do regular gregorian for all locales
 		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-		newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+		newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(dateFormats, localeComponents);
 		group.data = merge(group.data || {}, newFormats);

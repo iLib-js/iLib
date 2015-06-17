@@ -26,9 +26,10 @@
                 "f": "MMMM "
             },
             "my": {
-                "s": "yyyy-MM-",
-                "m": "yyyy ལོ་འི་MMMཙེས་",
-                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཙེས་"
+                "s": "yyyy-MM",
+                "m": "yyyy ལོ་འི་MMM",
+                "l": "སྤྱི་ལོ་yyyy MMMM",
+                "f": "yyyy MMMM"
             },
             "dw": {
                 "s": "dd, E",

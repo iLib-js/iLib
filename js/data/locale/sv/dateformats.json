@@ -22,7 +22,7 @@
                 "l": "d MMMM"
             },
             "my": {
-                "s": "yyyy-MM-",
+                "s": "yyyy-MM",
                 "m": "LLL yyyy",
                 "l": "LLLL yyyy",
                 "f": "LLLL yyyy"

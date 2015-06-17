@@ -28,6 +28,79 @@ var merge = common.merge;
 var Locale = common.Locale;
 var makeDirs = common.makeDirs;
 
+var rtlLanguages = [
+    "ae",
+    "arc",
+    "ar",
+    "az",
+    "bal",
+    "bej",
+    "bft",
+    "cja",
+    "ckb",
+    "cop",
+    "doi",
+    "dv",
+    "dyo",
+    "emk",
+    "fa",
+    "gba",
+    "grc",
+    "ha",
+    "he",
+    "jpr",
+    "jrb",
+    "ks",
+    "ky",
+    "lad",
+    "lah",
+    "lki",
+    "myz",
+    "nqo",
+    "otk",
+    "pal",
+    "phn",
+    "prd",
+    "ps",
+    "sam",
+    "sdh",
+    "sd",
+    "swb",
+    "syr",
+    "tg",
+    "tk",
+    "ug",
+    "ur",
+    "uz",
+    "xld",
+    "xpr",
+    "xsa",
+    "yi",
+    "zza"
+];
+
+var rtlScripts = [
+    "Arab",
+    "Armi",
+    "Avst",
+    "Cprt",
+    "Hebr",
+    "Khar",
+    "Lydi",
+    "Mand",
+    "Merc",
+    "Mero",
+    "Nkoo",
+    "Orkh",
+    "Phli",
+    "Phnx",
+    "Prti",
+    "Samr",
+    "Sarb",
+    "Syrc",
+    "Thaa",
+];
+
 function loadFile(path) {
     var ret = undefined;
     if (fs.existsSync(path)) {
@@ -151,7 +224,7 @@ function getDateFormat(calendar, length) {
 	var ret = "";
 	if (calendar.dateFormats && calendar.dateFormats[length]) {
 		ret = typeof(calendar.dateFormats[length]) === "string" ? calendar.dateFormats[length] : calendar.dateFormats[length]._value;
-		ret = ret ? ret.replace(/ *G/, "") : ret;
+		ret = ret ? ret.replace(/ *G+/, "") : ret;
 	}
 	return ret;
 }
@@ -266,10 +339,40 @@ module.exports = {
     	}
     },
 
-    createDateFormats: function (cldrData) {
+    createDateFormats: function (language, script, cldrData) {
     	var formats = {},
     		cldrCalendar,
-    		calendar;
+    		calendar,
+    		isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
+    		rtlify = isRtl ? function(format) {
+    			var f = format.replace(/\u200F/g, "");
+    			
+        		switch(f.charAt(0)) {
+        	    	case 'd':
+        	    	case 'y':
+        	    	case 'h':
+        	    	case 'H':
+        	    	case 'N':
+        	    		return "\u200F" + f;
+    
+        	    	case 'M':
+        	    		var i = 1;
+        	    		while (f.charAt(i) === "M") {
+        	    			i++;
+        	    		}
+        	    		if (i < 3) {
+        	    			// 1 and 2 M's are numeric, whereas 3 and 4 M's are letters
+        	    			return "\u200F" + f;
+        	    		}
+        	    		return f;
+    
+        	    	default:
+        	    		return f;
+        		}
+        	} : function(format) {
+        		return format;
+        	};
+
     	
     	for (var calendarName in cldrData) {
     		cldrCalendar = cldrData[calendarName];
@@ -421,8 +524,8 @@ module.exports = {
         	}
         	// util.print("wTemplate is " + wTemplate + "\n");
             
-        	calendar.date.dmwy["f"] = correctedYear(cldrFormats["full"]);
-        	calendar.date.dmy["f"] = correctedYear(longPlus);
+        	calendar.date.dmwy["f"] = rtlify(correctedYear(cldrFormats["full"]));
+        	calendar.date.dmy["f"] = rtlify(correctedYear(longPlus));
         	
         	for (i = 1; i < lengths.length; i++) {
         		var len = lengths[i];
@@ -431,8 +534,8 @@ module.exports = {
         		tmp = tmp.replace(/[Ec]+/, w[len]);
         		tmp = correctedYear(tmp);
         		 
-        		calendar.date.dmwy[lenAbbr] = tmp;
-        		calendar.date.dmy[lenAbbr] = correctedYear(cldrFormats[len]);
+        		calendar.date.dmwy[lenAbbr] = rtlify(tmp);
+        		calendar.date.dmy[lenAbbr] = rtlify(correctedYear(cldrFormats[len]));
         	}
         	
         	var orders = {};
@@ -441,9 +544,9 @@ module.exports = {
         		var len = lengths[i];
         		var lenAbbr = len.charAt(0);
         		calendar.date.w[lenAbbr] = w[len];
-        		calendar.date.d[lenAbbr] = d[len];
-        		calendar.date.m[lenAbbr] = m[len];
-        		calendar.date.y[lenAbbr] = correctedYear(y[len]);
+        		calendar.date.d[lenAbbr] = rtlify(d[len]);
+        		calendar.date.m[lenAbbr] = rtlify(m[len]);
+        		calendar.date.y[lenAbbr] = rtlify(correctedYear(y[len]));
         		
         		orders[len] = dateOrder(cldrFormats[len]);
         		
@@ -454,26 +557,26 @@ module.exports = {
         		switch (orders[len]) {
             		case "dmy":
             			// util.print("Length " + len + " order dmy\n");
-            			calendar.date.my[lenAbbr] = dmy.substring(scanForChars(dmy, "M"));
-            			calendar.date.dm[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "M"));
+            			calendar.date.my[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
+            			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")));
             			break;
             		case "mdy":
             			// util.print("Length " + len + " order mdy\n");
-            			calendar.date.my[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "M")) + 
-            				dmy.substring(scanForLastChars(dmy, "d"));
-            			calendar.date.dm[lenAbbr] = dmy.substring(0, scanForLastChars(dmy, "d"));
+            			calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")) + 
+            				dmy.substring(scanForLastChars(dmy, "d")));
+            			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "d")));
             			break;
             		case "ymd":
             			// util.print("Length " + len + " order ymd\n");
-            			calendar.date.dm[lenAbbr] = dmy.substring(scanForChars(dmy, "M"));
-            			calendar.date.my[lenAbbr] = dmy.substring(0, scanForChars(dmy, "d"));
+            			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
+            			calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")));
             			break;
 
             		case "ydm":
             			// util.print("Length " + len + " order ydm\n");
-            			calendar.date.dm[lenAbbr] = dmy.substring(scanForChars(dmy, "d"));
-            			calendar.date.my[lenAbbr] = dmy.substring(0, scanForChars(dmy, "d")) +
-            				dmy.substring(scanForChars(dmy, "M"));
+            			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "d")));
+            			calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForChars(dmy, "d")) +
+            				dmy.substring(scanForChars(dmy, "M")));
             			break;
         		}
         		
@@ -493,21 +596,21 @@ module.exports = {
         		switch (dateOrder2(dmw)) {
             		case "dmw":
             			// util.print("Length " + len + " dw order dmw\n");
-            			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForChars(dmw, "M")) +
-            				dmw.substring(scanForChars(dmw, "Ec"));
+            			calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForChars(dmw, "M")) +
+            				dmw.substring(scanForChars(dmw, "Ec")));
             			break;
             		case "wdm":
             			// util.print("Length " + len + " dw order wdm\n");
-            			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForLastChars(dmw, "d"));
+            			calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForLastChars(dmw, "d")));
             			break;
             		case "mdw":
             			// util.print("Length " + len + " dw order mdw\n");
-            			calendar.date.dw[lenAbbr] = dmw.substring(scanForChars(dmw, "d"));
+            			calendar.date.dw[lenAbbr] = rtlify(dmw.substring(scanForChars(dmw, "d")));
             			break;
             		case "wmd":
             			// util.print("Length " + len + " dw order wmd\n");
-            			calendar.date.dw[lenAbbr] = dmw.substring(0, scanForChars(dmw, "M")) +
-            				dmw.substring(scanForChars(dmw, "d"));
+            			calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForChars(dmw, "M")) +
+            				dmw.substring(scanForChars(dmw, "d")));
             			break;
         		}
         	}
@@ -534,16 +637,16 @@ module.exports = {
         			calendar.time["24"]["m"] = strippedLongTime.replace(/[^m]/g, "");
         			calendar.time["24"]["s"] = strippedLongTime.replace(/[^s]/g, "");
         			
-        			calendar.time["24"]["ah"] = calendar.time["24"]["h"];
-        			calendar.time["24"]["hm"] = shorttime;
+        			calendar.time["24"]["ah"] = rtlify(calendar.time["24"]["h"]);
+        			calendar.time["24"]["hm"] = rtlify(shorttime);
         			
         			begin = scanForChars(mediumtime, "m");
     				end = scanForLastChars(mediumtime, "s");
 
-        			calendar.time["24"]["ms"] = mediumtime.substring(begin, end);
+        			calendar.time["24"]["ms"] = rtlify(mediumtime.substring(begin, end));
         			
-        			calendar.time["24"]["ahm"] = calendar.time["24"]["hm"];
-        			calendar.time["24"]["hms"] = mediumtime;
+        			calendar.time["24"]["ahm"] = rtlify(calendar.time["24"]["hm"]);
+        			calendar.time["24"]["hms"] = rtlify(mediumtime);
         			
         			order = timeOrder(longtime);
         			switch (order) {
@@ -566,13 +669,13 @@ module.exports = {
                 			break;
         			}
 
-        			calendar.time["24"]["hmz"] = zTemplate.replace(/\{time\}/, calendar.time["24"]["hm"]);
+        			calendar.time["24"]["hmz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["24"]["hm"]));
         			
-        			calendar.time["24"]["ahmz"] = calendar.time["24"]["hmz"];
-        			calendar.time["24"]["ahms"] = calendar.time["24"]["hms"];
-        			calendar.time["24"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["24"]["hms"]);
+        			calendar.time["24"]["ahmz"] = rtlify(calendar.time["24"]["hmz"]);
+        			calendar.time["24"]["ahms"] = rtlify(calendar.time["24"]["hms"]);
+        			calendar.time["24"]["hmsz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["24"]["hms"]));
         			
-        			calendar.time["24"]["ahmsz"] = calendar.time["24"]["hmsz"]; 
+        			calendar.time["24"]["ahmsz"] = rtlify(calendar.time["24"]["hmsz"]); 
 
         			switch (order) {
             			case 'haz':
@@ -597,19 +700,19 @@ module.exports = {
         			calendar.time["12"]["m"] = calendar.time["24"]["m"];
         			calendar.time["12"]["s"] = calendar.time["24"]["s"];
 
-        			calendar.time["12"]["ah"] = available["h"];
-        			calendar.time["12"]["hm"] = calendar.time["24"]["hm"].replace(/H+/, h);
-        			calendar.time["12"]["ms"] = calendar.time["24"]["ms"];
+        			calendar.time["12"]["ah"] = rtlify(available["h"]);
+        			calendar.time["12"]["hm"] = rtlify(calendar.time["24"]["hm"].replace(/H+/, h));
+        			calendar.time["12"]["ms"] = rtlify(calendar.time["24"]["ms"]);
         			
-        			calendar.time["12"]["ahm"] = aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]);
-        			calendar.time["12"]["hms"] = calendar.time["24"]["hms"].replace(/H+/, h);
-        			calendar.time["12"]["hmz"] = calendar.time["24"]["hmz"].replace(/H+/, h);
+        			calendar.time["12"]["ahm"] = rtlify(aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]));
+        			calendar.time["12"]["hms"] = rtlify(calendar.time["24"]["hms"].replace(/H+/, h));
+        			calendar.time["12"]["hmz"] = rtlify(calendar.time["24"]["hmz"].replace(/H+/, h));
         			
-        			calendar.time["12"]["ahmz"] = zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]));
-        			calendar.time["12"]["ahms"] = aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
-        			calendar.time["12"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
+        			calendar.time["12"]["ahmz"] = rtlify(zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hm"])));
+        			calendar.time["12"]["ahms"] = rtlify(aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]));
+        			calendar.time["12"]["hmsz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]));
         			
-        			calendar.time["12"]["ahmsz"] = zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]));
+        			calendar.time["12"]["ahmsz"] = rtlify(zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"])));
         		} else {
         			// util.print("12-hour locale. Longtime: " + longtime + "\n");
         			order = timeOrder(longtime);
@@ -618,14 +721,14 @@ module.exports = {
         			calendar.time["12"]["m"] = longtime.replace(/[^m]/g, "");
         			calendar.time["12"]["s"] = longtime.replace(/[^s]/g, "");
 
-        			calendar.time["12"]["ah"] = available["h"];
+        			calendar.time["12"]["ah"] = rtlify(available["h"]);
         			
         			switch (order) {
         				case 'ahz':
             				begin = scanForChars(shorttime, "h");
             				aTemplate = shorttime.substring(0, begin) + "{time}";
             				
-            				calendar.time["12"]["hm"] = shorttime.substring(begin);
+            				calendar.time["12"]["hm"] = rtlify(shorttime.substring(begin));
             				
             				begin = scanForLastChars(longtime, "s");
             				end = scanForChars(longtime, "z");
@@ -640,7 +743,7 @@ module.exports = {
             				begin = scanForChars(shorttime, "h");
             				aTemplate = shorttime.substring(0, begin) + "{time}";
             				
-            				calendar.time["12"]["hm"] = shorttime.substring(begin);
+            				calendar.time["12"]["hm"] = rtlify(shorttime.substring(begin));
             				
             				begin = scanForChars(longtime, "a");
             				zTemplate = longtime.substring(0, begin) + "{time}";
@@ -656,7 +759,7 @@ module.exports = {
                 			i = i < begin ? end : i;
                				aTemplate = "{time}" + shorttime.substring(i);
             				
-            				calendar.time["12"]["hm"] = shorttime.substring(0, i).trim();
+            				calendar.time["12"]["hm"] = rtlify(shorttime.substring(0, i).trim());
             				
             				begin = scanForLastChars(longtime, "a");
             				end = scanForChars(longtime, "z");
@@ -672,30 +775,30 @@ module.exports = {
         			begin = scanForChars(mediumtime, "m");
     				end = scanForLastChars(mediumtime, "s");
 
-        			calendar.time["12"]["ms"] = mediumtime.substring(begin, end);
+        			calendar.time["12"]["ms"] = rtlify(mediumtime.substring(begin, end));
         			
-        			calendar.time["12"]["ahm"] = shorttime;
+        			calendar.time["12"]["ahm"] = rtlify(shorttime);
         			
         			switch (order) {
         				case 'zah':
         				case 'ahz':
             				begin = scanForChars(mediumtime, "h");
-            				calendar.time["12"]["hms"] = mediumtime.substring(begin).trim();
+            				calendar.time["12"]["hms"] = rtlify(mediumtime.substring(begin).trim());
                 			break;
 
         				case 'haz':
             				begin = scanForChars(mediumtime, "a");
-            				calendar.time["12"]["hms"] = mediumtime.substring(0, begin).trim();
+            				calendar.time["12"]["hms"] = rtlify(mediumtime.substring(0, begin).trim());
                				break;
         			}
   
-        			calendar.time["12"]["hmz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]);
+        			calendar.time["12"]["hmz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["12"]["hm"]));
         			
-        			calendar.time["12"]["ahmz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["ahm"]);
-        			calendar.time["12"]["ahms"] = mediumtime;
-        			calendar.time["12"]["hmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]);
+        			calendar.time["12"]["ahmz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["12"]["ahm"]));
+        			calendar.time["12"]["ahms"] = rtlify(mediumtime);
+        			calendar.time["12"]["hmsz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["12"]["hms"]));
         			
-        			calendar.time["12"]["ahmsz"] = zTemplate.replace(/\{time\}/, calendar.time["12"]["ahms"]);
+        			calendar.time["12"]["ahmsz"] = rtlify(zTemplate.replace(/\{time\}/, calendar.time["12"]["ahms"]));
         			
         			H = available["H"].replace(/[^H]/g, "");
         			
@@ -703,19 +806,19 @@ module.exports = {
         			calendar.time["24"]["m"] = calendar.time["12"]["m"];
         			calendar.time["24"]["s"] = calendar.time["12"]["s"];
 
-        			calendar.time["24"]["ah"] = calendar.time["24"]["h"];
-        			calendar.time["24"]["hm"] = calendar.time["12"]["hm"].replace(/h+/, H);
-        			calendar.time["24"]["ms"] = calendar.time["12"]["ms"];
+        			calendar.time["24"]["ah"] = rtlify(calendar.time["24"]["h"]);
+        			calendar.time["24"]["hm"] = rtlify(calendar.time["12"]["hm"].replace(/h+/, H));
+        			calendar.time["24"]["ms"] = rtlify(calendar.time["12"]["ms"]);
         			
-        			calendar.time["24"]["ahm"] = calendar.time["24"]["hm"].replace(/h+/, H);
-        			calendar.time["24"]["hms"] = calendar.time["12"]["hms"].replace(/h+/, H);
-        			calendar.time["24"]["hmz"] = calendar.time["12"]["hmz"].replace(/h+/, H);
+        			calendar.time["24"]["ahm"] = rtlify(calendar.time["24"]["hm"].replace(/h+/, H));
+        			calendar.time["24"]["hms"] = rtlify(calendar.time["12"]["hms"].replace(/h+/, H));
+        			calendar.time["24"]["hmz"] = rtlify(calendar.time["12"]["hmz"].replace(/h+/, H));
         			
-        			calendar.time["24"]["ahmz"] = calendar.time["24"]["hmz"];
-        			calendar.time["24"]["ahms"] = calendar.time["24"]["hms"];
-        			calendar.time["24"]["hmsz"] = calendar.time["12"]["hmsz"].replace(/h+/, H);
+        			calendar.time["24"]["ahmz"] = rtlify(calendar.time["24"]["hmz"]);
+        			calendar.time["24"]["ahms"] = rtlify(calendar.time["24"]["hms"]);
+        			calendar.time["24"]["hmsz"] = rtlify(calendar.time["12"]["hmsz"].replace(/h+/, H));
         			
-        			calendar.time["24"]["ahmsz"] = calendar.time["24"]["hmsz"];
+        			calendar.time["24"]["ahmsz"] = rtlify(calendar.time["24"]["hmsz"]);
         		}
         	}
     	}

@@ -26,10 +26,10 @@
                 "f": "M월 d일"
             },
             "my": {
-                "s": "yy. M. ",
-                "m": "yyyy. M. ",
-                "l": "yyyy년 M월 ",
-                "f": "yyyy년 M월 "
+                "s": "yy. M",
+                "m": "yyyy. M",
+                "l": "yyyy년 M",
+                "f": "yyyy년 M"
             },
             "dw": {
                 "s": "d. E",

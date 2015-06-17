@@ -110,13 +110,12 @@
     "ethiopic": {
         "date": {
             "dmwy": {
-                "s": "E፣ dd/MM/yyyyGGGG",
+                "s": "E፣ dd/MM/yyyy",
                 "m": "EE፣ d MMM yyyy",
                 "l": "EEE፣ d MMMM yyyy",
                 "f": "EEEE፣ MMMM d ቀን yyyy"
             },
             "dmy": {
-                "s": "dd/MM/yyyyGGGG",
                 "l": "d MMMM yyyy",
                 "f": "MMMM d ቀን yyyy"
             },
@@ -132,7 +131,6 @@
                 "l": "d MMMM"
             },
             "my": {
-                "s": "MM/yyyyGGGG",
                 "l": "MMMM yyyy",
                 "f": "MMMM ቀን yyyy"
             },

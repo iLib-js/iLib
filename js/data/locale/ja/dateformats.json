@@ -26,10 +26,10 @@
                 "f": "M月d日"
             },
             "my": {
-                "s": "yyyy/MM/",
-                "m": "yyyy/MM/",
-                "l": "yyyy年M月",
-                "f": "yyyy年M月"
+                "s": "yyyy/MM",
+                "m": "yyyy/MM",
+                "l": "yyyy年M",
+                "f": "yyyy年M"
             },
             "dw": {
                 "s": "ddE",

@@ -2,9 +2,9 @@
     "gregorian": {
         "date": {
             "my": {
-                "m": "yyyy LLL ",
-                "l": "yyyy LLLL ",
-                "f": "yyyy LLLL "
+                "m": "yyyy LLL",
+                "l": "yyyy LLLL",
+                "f": "yyyy LLLL"
             },
             "l": {
                 "f": "LLLL",

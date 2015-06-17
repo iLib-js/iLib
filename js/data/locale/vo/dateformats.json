@@ -26,10 +26,10 @@
                 "f": "MMMM ddd"
             },
             "my": {
-                "s": "yyyy-MM-",
-                "m": "yyyy MMM. ",
-                "l": "yyyy MMMM ",
-                "f": "yyyy MMMM "
+                "s": "yyyy-MM",
+                "m": "yyyy MMM",
+                "l": "yyyy MMMM",
+                "f": "yyyy MMMM"
             },
             "dw": {
                 "s": "E dd",

@@ -1,28 +1,87 @@
 {
     "gregorian": {
+        "order": {
+            "s": "{date} {time}",
+            "m": "{date} {time}",
+            "l": "{date}{time}",
+            "f": "{date}{time}"
+        },
         "date": {
             "dmwy": {
                 "s": "dd.MM.yy(E)",
-                "m": "dd.MM.yyyy(EE)"
+                "m": "dd.MM.yyyy(EE)",
+                "l": "yyyy年MMM月d日(EEE)",
+                "f": "yyyy年MMMM月d日(EEEE)"
             },
             "dmy": {
                 "s": "dd.MM.yy",
-                "m": "dd.MM.yyyy"
+                "m": "dd.MM.yyyy",
+                "l": "yyyy年MMM月d日",
+                "f": "yyyy年MMMM月d日"
             },
             "dmw": {
                 "s": "dd.MM(E)",
-                "m": "dd.MM(EE)"
+                "m": "dd.MM(EE)",
+                "l": "MMM月d日(EEE)",
+                "f": "MMMM月d日(EEEE)"
             },
             "dm": {
                 "s": "dd.MM",
-                "m": "dd.MM"
+                "m": "dd.MM",
+                "l": "MMM月d日",
+                "f": "MMMM月d日"
             },
             "my": {
                 "s": "MM.yy",
-                "m": "MM.yyyy"
+                "m": "MM.yyyy",
+                "l": "yyyy年MMM月",
+                "f": "yyyy年MMMM月"
+            },
+            "dw": {
+                "s": "d日(E)",
+                "m": "d日(EE)",
+                "l": "d日(EEE)",
+                "f": "d日(EEEE)"
+            },
+            "d": {
+                "m": "dd",
+                "l": "d日",
+                "f": "d日"
+            },
+            "m": {
+                "m": "MM",
+                "l": "MMM月",
+                "f": "MMMM月"
             },
             "y": {
-                "s": "yy"
+                "l": "yyyy年",
+                "f": "yyyy年"
+            }
+        },
+        "time": {
+            "12": {
+                "ahmsz": "ahh:mm:ssz",
+                "ahms": "ahh:mm:ss",
+                "hmsz": "hh:mm:ssz",
+                "hms": "hh:mm:ss",
+                "ahmz": "ahh:mmz",
+                "ahm": "ahh:mm",
+                "hmz": "hh:mmz",
+                "ah": "ahh",
+                "hm": "hh:mm",
+                "h": "hh"
+            },
+            "24": {
+                "ahmsz": "HH:mm:ssz",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ssz",
+                "hms": "HH:mm:ss",
+                "ahmz": "HH:mmz",
+                "ahm": "HH:mm",
+                "hmz": "HH:mmz",
+                "ah": "HH",
+                "hm": "HH:mm",
+                "h": "HH"
             }
         },
         "range": {

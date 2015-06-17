@@ -32,10 +32,10 @@
                 "f": "MM 'сарын' d"
             },
             "my": {
-                "s": "yyyy-MM-",
-                "m": "yyyy MMM ",
-                "l": "yyyy 'оны' MM 'сарын' ",
-                "f": "yyyy 'оны' MM 'сарын' "
+                "s": "yyyy-MM",
+                "m": "yyyy MMM",
+                "l": "yyyy 'оны' MM",
+                "f": "yyyy 'оны' MM"
             },
             "dw": {
                 "s": "E, dd",

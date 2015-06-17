@@ -24,8 +24,8 @@
                 "m": "MM-dd"
             },
             "my": {
-                "s": "yy-MM-",
-                "m": "yyyy-MM-",
+                "s": "yy-MM",
+                "m": "yyyy-MM",
                 "l": "MMMM yyyy",
                 "f": "MMMM yyyy"
             },

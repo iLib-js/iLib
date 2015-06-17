@@ -29,7 +29,8 @@
             "my": {
                 "s": "MM.yy",
                 "m": "LLL, yyyyթ.",
-                "l": "LLLL, yyyyթ."
+                "l": "LLLL, yyyyթ.",
+                "f": "yyyyթ. LLLL"
             },
             "dw": {
                 "s": "dd.E",
