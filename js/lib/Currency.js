@@ -25,6 +25,7 @@ var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
+var ResBundle = require("./ResBundle.js");
 
 /**
  * @class
