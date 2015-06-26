@@ -76,40 +76,40 @@
         },
         "range": {
             "c00": {
-                "s": "{st} - {et} {sd}{sm}.{sy}",
-                "m": "{st} - {et} {sd}{sm}.{sy}",
+                "s": "{st} - {et} {sd}.{sm}.{sy}",
+                "m": "{st} - {et} {sd}.{sm}.{sy}",
                 "l": "{st} - {et} {sd} {sm} {sy}",
                 "f": "{st} - {et} {sd} {sm} {sy}"
             },
             "c01": {
-                "s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-                "m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
+                "s": "{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}",
+                "m": "{st} {sd}.{sm} - {et} {ed}.{em}.{sy}",
                 "l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
                 "f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
             },
             "c02": {
-                "s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-                "m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
+                "s": "{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}",
+                "m": "{st} {sd}.{sm} - {et} {ed}.{em}.{sy}",
                 "l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
                 "f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
             },
             "c03": {
-                "s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-                "m": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
+                "s": "{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}",
+                "m": "{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}",
                 "l": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}",
                 "f": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"
             },
             "c10": {
-                "s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-                "m": "{sd}{sm}.{sy} - {ed}{em}.{ey}"
+                "s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+                "m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}"
             },
             "c11": {
-                "s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-                "m": "{sd}{sm} - {ed}{em} {sy}"
+                "s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+                "m": "{sd}.{sm} - {ed}.{em} {sy}"
             },
             "c12": {
-                "s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-                "m": "{sd}{sm}.{sy} - {ed}{em}.{ey}"
+                "s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+                "m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}"
             },
             "c20": {
                 "s": "{sm}.{sy} - {em}.{ey}",

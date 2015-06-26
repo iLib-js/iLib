@@ -113,7 +113,7 @@ function testDateRngFmtESRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 31 diciembre 2011 d.C.", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 31 diciembre 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtESRangeNextDayShort() {
@@ -210,7 +210,7 @@ function testDateRngFmtESRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13:45 - 31 14:30, diciembre 2011 d.C.", fmt.format(start, end));
+    assertEquals("30 13:45 - 31 14:30, diciembre 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtESRangeMultiDayShort() {
@@ -307,7 +307,7 @@ function testDateRngFmtESRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 diciembre 2011 d.C.", fmt.format(start, end));
+    assertEquals("20-31 diciembre 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtESRangeNextMonthShort() {
@@ -404,7 +404,7 @@ function testDateRngFmtESRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 noviembre - 31 diciembre 2011 d.C.", fmt.format(start, end));
+    assertEquals("20 noviembre - 31 diciembre 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtESRangeNextYearShort() {
@@ -501,7 +501,7 @@ function testDateRngFmtESRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 noviembre 2011 d.C. - 31 enero 2012 d.C.", fmt.format(start, end));
+    assertEquals("20 noviembre 2011 - 31 enero 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtESRangeMultiYearShort() {

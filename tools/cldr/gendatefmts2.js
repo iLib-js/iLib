@@ -91,6 +91,13 @@ aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
 
 util.print("\n\nMerging formats forward ...\n");
 
+// root is a special case -- if a calendar names another calendar, then it shares the formats with that
+// calendar. Need to copy the formats over in that case, or else the merge will not work correctly.
+for (var cal in dateFormats) {
+	if (typeof(dateFormats[cal]) === "string" && typeof(dateFormats[dateFormats[cal]]) === "object") {
+		dateFormats[cal] = dateFormats[dateFormats[cal]];
+	} 
+}
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
@@ -196,7 +203,7 @@ util.print("\n\nMerging formats forward ...\n");
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
-util.print("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
+// util.print("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 util.print("\n\nPromoting sublocales ...\n");
 

@@ -19,24 +19,6 @@
                 "s": "MM.yy",
                 "m": "yyyy LLL",
                 "l": "yyyy LLLL"
-            },
-            "d": {
-                "s": "dd",
-                "f": "d",
-                "l": "d",
-                "m": "d"
-            },
-            "m": {
-                "s": "MM"
-            },
-            "y": {
-                "s": "yy",
-                "m": "yyyy",
-                "l": "yyyy",
-                "f": "yyyy"
-            },
-            "l": {
-                "s": "MM"
             }
         },
         "time": {

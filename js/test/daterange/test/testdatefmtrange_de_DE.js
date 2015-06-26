@@ -41,7 +41,7 @@ function testDateRngFmtDERangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 3112.11", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtDERangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "de-DE", length: "medium"});

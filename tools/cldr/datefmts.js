@@ -405,9 +405,11 @@ module.exports = {
 
         		cldrFormats[len] = getDateFormat(cldrCalendar, len);
         		
-        		d[len] = cldrFormats[len].replace(/[^d]/g, "");
-        		m[len] = cldrFormats[len].replace(/[^M]/g, "");
-        		y[len] = cldrFormats[len].replace(/[^y]/g, ""); 
+        		var stripped = cldrFormats[len].replace(/'[^']*'/g, "");
+        		
+        		d[len] = stripped.replace(/[^d]/g, "");
+        		m[len] = stripped.replace(/[^M]/g, "");
+        		y[len] = stripped.replace(/[^y]/g, ""); 
         	};
 
         	calendar.date = {
@@ -544,9 +546,9 @@ module.exports = {
         		var len = lengths[i];
         		var lenAbbr = len.charAt(0);
         		calendar.date.w[lenAbbr] = w[len];
-        		calendar.date.d[lenAbbr] = rtlify(d[len]);
-        		calendar.date.m[lenAbbr] = rtlify(m[len]);
-        		calendar.date.y[lenAbbr] = rtlify(correctedYear(y[len]));
+        		calendar.date.d[lenAbbr] = d[len];
+        		calendar.date.m[lenAbbr] = m[len];
+        		calendar.date.y[lenAbbr] = correctedYear(y[len]);
         		
         		orders[len] = dateOrder(cldrFormats[len]);
         		

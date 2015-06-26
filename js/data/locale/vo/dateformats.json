@@ -11,19 +11,19 @@
                 "s": "yyyy-MM-dd",
                 "m": "yyyy MMM. d",
                 "l": "yyyy MMMM d",
-                "f": "yyyy MMMM ddd"
+                "f": "yyyy MMMM d"
             },
             "dmw": {
                 "s": "E MM-dd",
                 "m": "EE MMM. d",
                 "l": "EEE MMMM d",
-                "f": "EEEE MMMM ddd"
+                "f": "EEEE MMMM d"
             },
             "dm": {
                 "s": "MM-dd",
                 "m": "MMM. d",
                 "l": "MMMM d",
-                "f": "MMMM ddd"
+                "f": "MMMM d"
             },
             "my": {
                 "s": "yyyy-MM",
@@ -32,12 +32,11 @@
                 "f": "yyyy MMMM"
             },
             "dw": {
-                "s": "E dd",
-                "f": "EEEE ddd"
+                "s": "E dd"
             },
             "d": {
                 "s": "dd",
-                "f": "ddd",
+                "f": "d",
                 "l": "d",
                 "m": "d"
             },
