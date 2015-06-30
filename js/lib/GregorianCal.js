@@ -121,7 +121,7 @@ GregorianCal.prototype.getType = function() {
  * @return {IDate} a date appropriate for this calendar type
  */
 GregorianCal.prototype.newDateInstance = function (options) {
-	var GregorianDate = module.require("./GregorianDate.js");
+	var GregorianDate = require("./GregorianDate.js");
 	return new GregorianDate(options);
 };
 

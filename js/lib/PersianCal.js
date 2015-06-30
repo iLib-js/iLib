@@ -146,7 +146,7 @@ PersianCal.prototype.getType = function() {
  * @return {IDate} a date appropriate for this calendar type
  */
 PersianCal.prototype.newDateInstance = function (options) {
-	var PersianDate = module.require("./PersianDate.js");
+	var PersianDate = require("./PersianDate.js");
 	return new PersianDate(options);
 };
 
