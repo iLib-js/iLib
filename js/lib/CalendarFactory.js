@@ -147,7 +147,7 @@ CalendarFactory._dynLoadCalendar = function (name) {
 	if (!Calendar._constructors[name]) {
 		var entry = CalendarFactory._dynMap[name];
 		if (entry) {
-			Calendar._constructors[name] = module.require("./" + entry + "Cal.js");
+			Calendar._constructors[name] = require("./" + entry + "Cal.js");
 		}
 	}
 	return Calendar._constructors[name];
