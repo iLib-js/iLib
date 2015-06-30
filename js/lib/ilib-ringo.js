@@ -1,5 +1,5 @@
 /*
- * ilib-rhino.js - glue code for rhino apps to load inside of an app server
+ * ilib-ringo.js - glue code for rhino apps to load inside of an app server
  * using ringojs
  * 
  * Copyright © 2015, JEDLSoft
