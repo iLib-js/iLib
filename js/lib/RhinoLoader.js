@@ -89,10 +89,16 @@ RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
 RhinoLoader.prototype._exists = function(dir, file) {
 	var fullpath = path.normalize(path.join(dir, file));
 	// console.log("RhinoLoader._exists: checking for the existence of " + fullpath);
-	var f = new File(fullpath);
-	if (f.exists() && f.canRead()) {
-		// console.log("RhinoLoader._exists: found");
-		this.includePath.push(dir);
+	try {
+    	var f = new File(fullpath);
+    	if (f.exists() && f.canRead()) {
+    		// console.log("RhinoLoader._exists: found");
+    		this.includePath.push(dir);
+    	}
+	} catch (e) {
+		// ignore errors -- that means we have a permission problem and shouldn't add 
+		// the dir to the include path anyways
+		console.log(e);
 	}
 };
 
