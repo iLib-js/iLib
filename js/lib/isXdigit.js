@@ -30,7 +30,7 @@ var IString = require("./IString.js");
  * Return whether or not the first character is a hexadecimal digit written
  * in the Latin script. (0-9 or A-F)<p>
  * 
- * 
+ * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a hexadecimal digit written
  * in the Latin script.

@@ -31,7 +31,7 @@ var IString = require("./IString.js");
  * in the given script. The script is given as the 4-letter ISO
  * 15924 script code.<p>
  * 
- * 
+ * @static
  * @param {string|IString|number} ch character or code point to examine
  * @param {string} script the 4-letter ISO 15924 to query against
  * @return {boolean} true if the first character is in the given script, and
