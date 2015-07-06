@@ -42,7 +42,7 @@ var PersRataDie = require("./PersRataDie.js");
  * 
  * 
  * @constructor
- * @extends {Calendar}
+ * @extends Calendar
  */
 var PersianCal = function() {
 	this.type = "persian";
@@ -144,6 +144,7 @@ PersianCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 PersianCal.prototype.newDateInstance = function (options) {
 	var PersianDate = require("./PersianDate.js");

@@ -1045,7 +1045,9 @@ DateFmt.prototype = {
 		}
 		
 		if (!date) {
-			date = this.cal.newDateInstance();
+			date = DateFactory({
+				calendar: this.cal.getType()
+			});
 		}
 
 		monthCount = this.cal.getNumMonths(date.getYears());

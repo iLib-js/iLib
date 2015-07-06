@@ -40,7 +40,7 @@ var Calendar = require("./Calendar.js");
  * 
  * 
  * @constructor
- * @extends {Calendar}
+ * @extends Calendar
  */
 var HebrewCal = function() {
 	this.type = "hebrew";
@@ -224,6 +224,7 @@ HebrewCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @returns {HebrewDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 HebrewCal.prototype.newDateInstance = function (options) {
 	var HebrewDate = require("./HebrewDate.js");

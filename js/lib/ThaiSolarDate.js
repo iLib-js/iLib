@@ -168,7 +168,7 @@ ThaiSolarDate.prototype.getRataDie = function() {
  * @return {IDate} the date being sought
  */
 ThaiSolarDate.prototype.before = function (dow) {
-	return this.cal.newDateInstance({
+	return new ThaiSolarDate({
 		rd: this.rd.before(dow, this.offset) + 198327,
 		timezone: this.timezone
 	});
@@ -183,7 +183,7 @@ ThaiSolarDate.prototype.before = function (dow) {
  * @return {IDate} the date being sought
  */
 ThaiSolarDate.prototype.after = function (dow) {
-	return this.cal.newDateInstance({
+	return new ThaiSolarDate({
 		rd: this.rd.after(dow, this.offset) + 198327,
 		timezone: this.timezone
 	});
@@ -198,7 +198,7 @@ ThaiSolarDate.prototype.after = function (dow) {
  * @return {IDate} the date being sought
  */
 ThaiSolarDate.prototype.onOrBefore = function (dow) {
-	return this.cal.newDateInstance({
+	return new ThaiSolarDate({
 		rd: this.rd.onOrBefore(dow, this.offset) + 198327,
 		timezone: this.timezone
 	});
@@ -213,7 +213,7 @@ ThaiSolarDate.prototype.onOrBefore = function (dow) {
  * @return {IDate} the date being sought
  */
 ThaiSolarDate.prototype.onOrAfter = function (dow) {
-	return this.cal.newDateInstance({
+	return new ThaiSolarDate({
 		rd: this.rd.onOrAfter(dow, this.offset) + 198327,
 		timezone: this.timezone
 	});

@@ -162,7 +162,7 @@ IDate.prototype = {
 	 * @return {IDate} the date being sought
 	 */
 	before: function (dow) {
-		return this.cal.newDateInstance({
+		return new this.constructor({
 			rd: this.rd.before(dow, this.offset),
 			timezone: this.timezone
 		});
@@ -177,7 +177,7 @@ IDate.prototype = {
 	 * @return {IDate} the date being sought
 	 */
 	after: function (dow) {
-		return this.cal.newDateInstance({
+		return new this.constructor({
 			rd: this.rd.after(dow, this.offset),
 			timezone: this.timezone
 		});
@@ -192,7 +192,7 @@ IDate.prototype = {
 	 * @return {IDate} the date being sought
 	 */
 	onOrBefore: function (dow) {
-		return this.cal.newDateInstance({
+		return new this.constructor({
 			rd: this.rd.onOrBefore(dow, this.offset),
 			timezone: this.timezone
 		});
@@ -207,7 +207,7 @@ IDate.prototype = {
 	 * @return {IDate} the date being sought
 	 */
 	onOrAfter: function (dow) {
-		return this.cal.newDateInstance({
+		return new this.constructor({
 			rd: this.rd.onOrAfter(dow, this.offset),
 			timezone: this.timezone
 		});

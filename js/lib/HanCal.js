@@ -45,7 +45,7 @@ var GregRataDie = require("./GregRataDie.js");
  * 
  * @constructor
  * @param {Object=} params optional parameters to load the calendrical data
- * @extends {Calendar}
+ * @extends Calendar
  */
 var HanCal = function(params) {
 	this.type = "han";
@@ -336,6 +336,7 @@ HanCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {HanDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 HanCal.prototype.newDateInstance = function (options) {
 	var HanDate = require("./HanDate.js");

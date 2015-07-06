@@ -31,7 +31,7 @@ var Calendar = require("./Calendar.js");
  * 
  * 
  * @constructor
- * @extends {Calendar}
+ * @extends Calendar
  */
 var JulianCal = function() {
 	this.type = "julian";
@@ -152,6 +152,7 @@ JulianCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 JulianCal.prototype.newDateInstance = function (options) {
 	var JulianDate = require("./JulianDate.js");

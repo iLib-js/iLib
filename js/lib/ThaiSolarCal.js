@@ -1,6 +1,6 @@
 /*
  * thaisolar.js - Represent a Thai solar calendar object.
- * 
+ *
  * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,10 +29,10 @@ var GregorianCal = require("./GregorianCal.js");
  * @class
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
- * 
- * 
+ *
+ *
  * @constructor
- * @extends {Calendar}
+ * @extends Calendar
  */
 var ThaiSolarCal = function() {
 	this.type = "thaisolar";
@@ -58,9 +58,10 @@ ThaiSolarCal.prototype.isLeapYear = function(year) {
 /**
  * Return a date instance for this calendar type using the given
  * options.
- * @param {Object} options options controlling the construction of 
+ * @param {Object} options options controlling the construction of
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 ThaiSolarCal.prototype.newDateInstance = function (options) {
 	var ThaiSolarDate = require("./ThaiSolarDate.js");
