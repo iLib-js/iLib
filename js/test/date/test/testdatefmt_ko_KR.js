@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 9.", fmt.format(date));
+    assertEquals("11. 9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ko_KR() {

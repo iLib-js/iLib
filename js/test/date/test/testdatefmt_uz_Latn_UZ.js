@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsMY_uz_Latn_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9", fmt.format(date));
+    assertEquals("11/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_uz_Latn_UZ() {
@@ -675,7 +675,7 @@ function testDateFmtFullDateComponentsMY_uz_Latn_UZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 Sentyabr", fmt.format(date));
+    assertEquals("2011 Sentabr", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_uz_Latn_UZ() {

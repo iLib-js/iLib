@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9.2011", fmt.format(date));
+    assertEquals("2011-09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY() {
@@ -692,7 +692,7 @@ function testDateFmtFullDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 09 сарын ", fmt.format(date));
+    assertEquals("2011 оны 09", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY() {

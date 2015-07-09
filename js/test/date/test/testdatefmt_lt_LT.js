@@ -540,7 +540,7 @@ function testDateFmtShortDateComponentsMY_lt_LT() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-09", fmt.format(date));
+    assertEquals("2011-09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_lt_LT() {
@@ -557,7 +557,7 @@ function testDateFmtShortDateComponentsDMY_lt_LT() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9-29", fmt.format(date));
+    assertEquals("2011-09-29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_lt_LT() {

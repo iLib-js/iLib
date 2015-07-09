@@ -690,7 +690,7 @@ function testDateFmtINFullDateComponentsMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011, സെപ്റ്റംബർ ", fmt.format(date));
+    assertEquals("2011, സെപ്റ്റംബർ", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsDMY_ml_IN() {

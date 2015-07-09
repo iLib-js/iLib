@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsMY_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/09", fmt.format(date));
+    assertEquals("2011/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ja_JP() {
@@ -692,7 +692,7 @@ function testDateFmtFullDateComponentsMY_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年9月", fmt.format(date));
+    assertEquals("2011年9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ja_JP() {

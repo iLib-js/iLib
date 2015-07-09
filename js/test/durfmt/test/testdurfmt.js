@@ -2050,7 +2050,7 @@ function testDurFmtGAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1y 1m 1w 1d 1:01:01", duration.toString());
+    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
 };
 
 function testDurFmtGAFormatMedium() {
@@ -2168,7 +2168,7 @@ function testDurFmtHEFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ש 1ח 1ש ‏1 יום 01:01:01", duration.toString());
+    assertEquals("1ש 1ח 1ש ‏1 יום ‏01:01:01", duration.toString());
 };
 
 function testDurFmtHEFormatMedium() {

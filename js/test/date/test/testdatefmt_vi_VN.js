@@ -674,7 +674,7 @@ function testDateFmtFullDateComponentsY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("năm 2011", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM_vi_VN() {

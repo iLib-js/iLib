@@ -554,7 +554,7 @@ function testDateFmtShortDateComponentsMY_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-09", fmt.format(date));
+    assertEquals("2011/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_zh_Hant_TW() {
@@ -691,7 +691,7 @@ function testDateFmtFullDateComponentsMY_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年9月", fmt.format(date));
+    assertEquals("2011年9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_zh_Hant_TW() {

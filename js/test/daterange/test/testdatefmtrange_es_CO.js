@@ -89,7 +89,7 @@ function testDateRngFmtCORangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, ddd diciembre 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 31 diciembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtCORangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, ddd diciembre 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 31 diciembre 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtCORangeNextDayShort() {
@@ -186,7 +186,7 @@ function testDateRngFmtCORangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13:45 - 31 14:30, dic 2011", fmt.format(start, end));
+    assertEquals("30 13:45 - 31 14:30, diciembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
@@ -283,7 +283,7 @@ function testDateRngFmtCORangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 dic 2011", fmt.format(start, end));
+    assertEquals("20-31 diciembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
@@ -380,7 +380,7 @@ function testDateRngFmtCORangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 nov - 31 dic 2011", fmt.format(start, end));
+    assertEquals("20 noviembre - 31 diciembre 2011", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
@@ -477,7 +477,7 @@ function testDateRngFmtCORangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 nov 2011 - 31 ene 2012", fmt.format(start, end));
+    assertEquals("20 noviembre 2011 - 31 enero 2012", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});

@@ -554,7 +554,7 @@ function testDateFmtfrCAShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/2011", fmt.format(date));
+    assertEquals("11-09", fmt.format(date));
 }
 
 function testDateFmtfrCAShortDateComponentsDMY() {

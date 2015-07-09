@@ -162,7 +162,7 @@ function testDateRngFmtDERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12 - 14:30 31.12 2011", fmt.format(start, end));
+    assertEquals("13:45 30.12 - 14:30 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtDERangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "de-DE", length: "long"});

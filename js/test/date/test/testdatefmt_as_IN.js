@@ -588,7 +588,7 @@ function testDateFmtINShortDateComponentsWDM_as_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৫, ৯-২৯", fmt.format(date));
+    assertEquals("T, ২৯-৯", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_as_IN() {
@@ -605,7 +605,7 @@ function testDateFmtINShortDateComponentsWDMY_as_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৫, ১১-৯-২৯", fmt.format(date));
+    assertEquals("T, ২৯-৯-২০১১", fmt.format(date));
 }
 
 
