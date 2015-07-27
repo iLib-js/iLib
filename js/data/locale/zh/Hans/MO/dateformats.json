@@ -1,10 +1,6 @@
 {
     "gregorian": {
         "order": {
-            "s": "{date} {time}",
-            "m": "{date} {time}",
-            "l": "{date}{time}",
-            "f": "{date}{time}",
             "full": "{date}{time}",
             "long": "{date}{time}",
             "medium": "{date} {time}",
@@ -32,36 +28,28 @@
         },
         "range": {
             "c00": {
-                "s": "{sd}.{sm}.{sy} {st}至{et}",
-                "m": "{sd}.{sm}.{sy} {st}至{et}"
+                "s": "{sd}/{sm}/{sy} {st}至{et}"
             },
             "c01": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
             },
             "c10": {
-                "s": "{sd}至{ed}.{sm}.{sy}",
-                "m": "{sd}至{ed}.{sm}.{sy}"
+                "s": "{sd}至{ed}/{sm}/{sy}"
             },
             "c11": {
-                "s": "{sd}.{sm}至{ed}.{em}.{sy}",
-                "m": "{sd}.{sm}至{ed}.{em}.{sy}"
+                "s": "{sd}/{sm}至{ed}/{em}/{sy}"
             },
             "c12": {
-                "s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
+                "s": "{sd}/{sm}/{sy}至{ed}/{em}/{ey}"
             },
             "c20": {
-                "s": "{sm}.{sy}至{em}.{ey}",
-                "m": "{sm}.{sy}至{em}.{ey}"
+                "s": "{sm}/{sy}至{em}/{ey}"
             }
         }
     }

@@ -41,7 +41,7 @@ function testDateRngFmtIDRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/11 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31/12/11 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtIDRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/Des/2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31 Des 2011 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "long"});
@@ -113,7 +113,7 @@ function testDateRngFmtIDRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 Desember 2011 13:45 – 14:30 ", fmt.format(start, end));
+    assertEquals("31 Desember 2011 13.45 – 14.30 ", fmt.format(start, end));
 }
 
 function testDateRngFmtIDRangeNextDayShort() {
@@ -162,7 +162,7 @@ function testDateRngFmtIDRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/Des 13.45 – 31/Des 14.30, 2011", fmt.format(start, end));
+    assertEquals("30 Des 13.45 – 31 Des 14.30, 2011", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "long"});
@@ -259,7 +259,7 @@ function testDateRngFmtIDRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/Des/2011 – 31/Des/2011", fmt.format(start, end));
+    assertEquals("20 Des 2011 – 31 Des 2011", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "long"});
@@ -356,7 +356,7 @@ function testDateRngFmtIDRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/Nov/2011 – 31/Des/2011", fmt.format(start, end));
+    assertEquals("20/Nov/2011 – 31 Des 2011", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "long"});

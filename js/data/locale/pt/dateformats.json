@@ -88,31 +88,32 @@
         },
         "range": {
             "c00": {
-                "s": "{sd}/{sm}/{sy} {st} - {et}",
-                "m": "{sd}/{sm}/{sy} {st} - {et}",
-                "l": "{sd}/{sm}/{sy} {st} - {et}",
-                "f": "{sd} de {sm} de {sy} {st} - {et}"
+                "s": "{sd}/{sm}/{sy}, {st} - {et}",
+                "m": "{sd}/{sm}/{sy}, {st} - {et}",
+                "l": "{sd} de {sm} de {sy} às {st} - {et}",
+                "f": "{sd} de {sm} de {sy} às {st} - {et}"
             },
             "c01": {
-                "f": "{sd} {st} - {ed} {et},  de {sm} {sy}"
+                "l": "{sd} às {st} - {ed} às {et}, de {sm} de {sy}",
+                "f": "{sd} às {st} - {ed} às {et}, de {sm} de {sy}"
             },
             "c02": {
-                "l": "{sd} de {sm} {st} - {ed} de {em} {et}, {sy}",
-                "f": "{sd} de {sm} {st} - {ed} de {em} {et}, {sy}"
+                "l": "{sd} de {sm} às {st} - {ed} de {em} de {sy} às {et}",
+                "f": "{sd} de {sm} às {st} - {ed} de {em} de {sy} às {et}"
             },
             "c03": {
-                "l": "{sd} de {sm} de {sy} {st} - {ed} de {em} de {ey} {et}",
-                "f": "{sd} de {sm} de {sy} {st} - {ed} de {em} de {ey} {et}"
+                "l": "{sd} de {sm} de {sy} às {st} - {ed} de {em} de {ey} às {et}",
+                "f": "{sd} de {sm} de {sy} às {st} - {ed} de {em} de {ey} às {et}"
             },
             "c10": {
                 "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+                "m": "{sd}-{ed} de {sm} de {sy}",
                 "l": "{sd}-{ed} de {sm} de {sy}",
                 "f": "{sd}-{ed} de {sm} de {sy}"
             },
             "c11": {
                 "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+                "m": "{sd} de {sm} - {ed} de {em} de {sy}",
                 "l": "{sd} de {sm} - {ed} de {em} de {sy}",
                 "f": "{sd} de {sm} - {ed} de {em} de {sy}"
             },

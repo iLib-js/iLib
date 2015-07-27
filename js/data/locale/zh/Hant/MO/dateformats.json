@@ -59,36 +59,28 @@
         },
         "range": {
             "c00": {
-                "s": "{sd}.{sm}.{sy} {st}至{et}",
-                "m": "{sd}.{sm}.{sy} {st}至{et}"
+                "s": "{sy}年{sm}月{sd}日 {st}至{et}"
             },
             "c01": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sy}年{sm}月{sd}日{st}至{ed}日{et}"
             },
             "c02": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sy}年{sm}月{sd}日{st}至{em}月{ed}日{et}"
             },
             "c03": {
-                "s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+                "s": "{sy}年{sm}月{sd}日{st}至{ey}年{em}月{ed}日{et}"
             },
             "c10": {
-                "s": "{sd}至{ed}.{sm}.{sy}",
-                "m": "{sd}至{ed}.{sm}.{sy}"
+                "s": "{sy}年{sm}月{sd}日至{ed}日"
             },
             "c11": {
-                "s": "{sd}.{sm}至{ed}.{em}.{sy}",
-                "m": "{sd}.{sm}至{ed}.{em}.{sy}"
+                "s": "{sy}年{sm}月{sd}日至{em}月{ed}日"
             },
             "c12": {
-                "s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
+                "s": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日"
             },
             "c20": {
-                "s": "{sm}.{sy}至{em}.{ey}",
-                "m": "{sm}.{sy}至{em}.{ey}"
+                "s": "{sy}年{sm}月至{ey}年{em}月"
             }
         }
     }

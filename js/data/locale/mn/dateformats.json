@@ -82,52 +82,52 @@
         },
         "range": {
             "c00": {
-                "s": "{sm}.{sd}.{sy} {st}-{et}",
-                "m": "{sm}.{sd}.{sy} {st} - {et}",
-                "l": "{sy} оны {sm}-р сар {sd} {st} - {et}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} {st} - {et}"
+                "s": "{sy}-{sm}-{sd}, {st}-{et}",
+                "m": "{sy} {sm} {sd} {st} - {et}",
+                "l": "{sy} оны {sm} сарын {sd} {st} - {et}",
+                "f": "{sy} оны {sm} сарын {sd}, {st} - {et}"
             },
             "c01": {
-                "s": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "m": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "l": "{sy} оны {sm}-р сар {sd} {st} - {ed} {et}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} {st} - {ed} {et}"
+                "s": "{sy}-{sm}-{sd}, {st} - {ey}-{em}-{ed}, {et}",
+                "m": "{sy} {sm} {sd} {st} - {ed} {et}",
+                "l": "{sy} оны {sm} сарын {sd} {st} - {ed} {et}",
+                "f": "{sy} оны {sm} сарын {sd}, {st} - {ed}, {et}"
             },
             "c02": {
-                "s": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "m": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "l": "{sy} оны {sm}-р сар {sd} {st} - {em}-р сар {ed} {et}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} {st} - {em} дугаар сарын {ed} {et}"
+                "s": "{sy}-{sm}-{sd}, {st} - {ey}-{em}-{ed}, {et}",
+                "m": "{sy} {sm} {sd} {st} - {em} {ed} {et}",
+                "l": "{sy} оны {sm} сарын {sd} {st} - {em} сарын {ed} {et}",
+                "f": "{sy} оны {sm} сарын {sd}, {st} - {em} сарын {ed}, {et}"
             },
             "c03": {
-                "s": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "m": "{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}",
-                "l": "{sy} оны {sm}-р сар {sd} {st} - {ey} оны {em}-р сар {ed} {et}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} {st} - {ey} оны {em} дугаар сарын {ed} {et}"
+                "s": "{sy}-{sm}-{sd}, {st} - {ey}-{em}-{ed}, {et}",
+                "m": "{sy} {sm} {sd} {st} - {ey} {em} {ed} {et}",
+                "l": "{sy} оны {sm} сарын {sd} {st} - {ey} оны {em} сарын {ed} {et}",
+                "f": "{sy} оны {sm} сарын {sd}, {st} - {ey} оны {em} сарын {ed}, {et}"
             },
             "c10": {
-                "s": "{sm}.{sd} - {em}.{ed}.{ey}",
-                "m": "{sm}.{sd} - {em}.{ed}.{ey}",
-                "l": "{sy} оны {sm}-р сар {sd} - {ed}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} - {ed}"
+                "s": "{sm}-{sd} - {ey}-{em}-{ed}",
+                "m": "{sy} {sm} {sd} - {ed}",
+                "l": "{sy} оны {sm} сарын {sd} - {ed}",
+                "f": "{sy} оны {sm} сарын {sd} - {ed}"
             },
             "c11": {
-                "s": "{sm}.{sd} - {em}.{ed}.{ey}",
-                "m": "{sm}.{sd} - {em}.{ed}.{ey}",
-                "l": "{sy} оны {sm}-р сар {sd} - {em}-р сар {ed}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} - {em} дугаар сарын {ed}"
+                "s": "{sy}-{sm}-{sd} - {em}-{ed}",
+                "m": "{sy} {sm} {sd} - {em} {ed}",
+                "l": "{sy} оны {sm} сарын {sd} - {em} сарын {ed}",
+                "f": "{sy} оны {sm} сарын {sd} - {em} сарын {ed}"
             },
             "c12": {
-                "s": "{sm}.{sd}.{sy} - {em}.{ed}.{ey}",
-                "m": "{sm}.{sd}.{sy} - {em}.{ed}.{ey}",
-                "l": "{sy} оны {sm}-р сар {sd} - {ey} оны {em}-р сар {ed}",
-                "f": "{sy} оны {sm} дугаар сарын {sd} - {ey} оны {em} дугаар сарын {ed}"
+                "s": "{sy}-{sm}-{sd} - {ey}-{em}-{ed}",
+                "m": "{sy} {sm} {sd} - {ey} {em} {ed}",
+                "l": "{sy} оны {sm} сарын {sd} - {ey} оны {em} сарын {ed}",
+                "f": "{sy} оны {sm} сарын {sd} - {ey} оны {em} сарын {ed}"
             },
             "c20": {
-                "s": "{sm}.{sy} - {em}.{ey}",
-                "m": "{sm}.{sy} - {em}.{ey}",
-                "l": "{sy} оны {sm}-р сар - {ey} оны {em}-р сар",
-                "f": "{sy} оны {sm} дугаар сарын - {ey} оны {em} дугаар сарын"
+                "s": "{sy}-{sm} - {ey}-{em}",
+                "m": "{sy} {sm} - {ey} {em}",
+                "l": "{sy} оны {sm} сарын - {ey} оны {em} сарын",
+                "f": "{sy} оны {sm} сарын - {ey} оны {em} сарын"
             }
         }
     }
