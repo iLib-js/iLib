@@ -988,7 +988,8 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed">
+	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed"
+			description="Update the package.json file to insert the version number into it automatically.">
 		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
 			<filterset>
 				<filter token="fullversion" value="${version}"/>
