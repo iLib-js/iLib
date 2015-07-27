@@ -470,7 +470,7 @@ function testDateFmtShortDateComponentsY_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011", fmt.format(date));
+    assertEquals("2011年", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_ja_JP() {
@@ -487,7 +487,7 @@ function testDateFmtShortDateComponentsM_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("09月", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ja_JP() {
@@ -521,7 +521,7 @@ function testDateFmtShortDateComponentsD_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("29日", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_ja_JP() {
@@ -624,7 +624,7 @@ function testDateFmtFullDateComponentsY_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011", fmt.format(date));
+    assertEquals("2011年", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM_ja_JP() {
@@ -641,7 +641,7 @@ function testDateFmtFullDateComponentsM_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("9月", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ja_JP() {
@@ -658,7 +658,7 @@ function testDateFmtFullDateComponentsD_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("29日", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_ja_JP() {
@@ -692,7 +692,7 @@ function testDateFmtFullDateComponentsMY_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年9", fmt.format(date));
+    assertEquals("2011年9月", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ja_JP() {

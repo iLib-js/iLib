@@ -470,7 +470,7 @@ function testDateFmtShortDateComponentsY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("11년", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_ko_KR() {
@@ -487,7 +487,7 @@ function testDateFmtShortDateComponentsM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("9월", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ko_KR() {
@@ -504,7 +504,7 @@ function testDateFmtShortDateComponentsN_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9월", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_ko_KR() {
@@ -521,7 +521,7 @@ function testDateFmtShortDateComponentsD_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("29일", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_ko_KR() {
@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 9", fmt.format(date));
+    assertEquals("11. 9.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ko_KR() {
@@ -641,7 +641,7 @@ function testDateFmtFullDateComponentsY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011", fmt.format(date));
+    assertEquals("2011년", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM_ko_KR() {
@@ -658,7 +658,7 @@ function testDateFmtFullDateComponentsM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("9월", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ko_KR() {
@@ -675,7 +675,7 @@ function testDateFmtFullDateComponentsD_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("29일", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_ko_KR() {
@@ -709,7 +709,7 @@ function testDateFmtFullDateComponentsMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 9월 ", fmt.format(date));
+    assertEquals("2011년 9월", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ko_KR() {

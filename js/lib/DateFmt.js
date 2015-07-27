@@ -788,10 +788,12 @@ DateFmt.prototype = {
 	// stand-alone of m (month) is t
 	// stand-alone of d (day) is a
 	// stand-alone of w (weekday) is l
+	// stand-alone of y (year) is r
 	_standAlones: {
 		"m": "t",
 		"d": "a",
-		"w": "l"
+		"w": "l",
+		"y": "r"
 	},
 	
 	/**
