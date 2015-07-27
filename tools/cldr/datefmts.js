@@ -493,6 +493,7 @@ module.exports = {
         	if (isAsianLang(language)) {
         		calendar.date.a = {};
         		calendar.date.t = {};
+        		calendar.date.r = {};
         	}
         	
         	var w;
@@ -647,8 +648,9 @@ module.exports = {
         		}
         		
         		if (isAsianLang(language)) {
-        			calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, d[len]);
-        			calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, m[len]);
+        			calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
+        			calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+        			calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
         		}
         		
     			tmp = wTemplate.replace(/\{date\}/, calendar.date.dm[lenAbbr]);
