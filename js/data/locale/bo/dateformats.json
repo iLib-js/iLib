@@ -11,19 +11,19 @@
                 "s": "yyyy-MM-dd",
                 "m": "yyyy ལོ་འི་MMMཙེས་d",
                 "l": "སྤྱི་ལོ་yyyy MMMMའི་ཙེས་dད",
-                "f": "yyyy MMMM "
+                "f": "yyyy MMMM d"
             },
             "dmw": {
                 "s": "MM-dd, E",
                 "m": "MMMཙེས་d, EE",
                 "l": "MMMMའི་ཙེས་dད, EEE",
-                "f": "MMMM , EEEE"
+                "f": "MMMM d, EEEE"
             },
             "dm": {
                 "s": "MM-dd",
                 "m": "MMMཙེས་d",
                 "l": "MMMMའི་ཙེས་dད",
-                "f": "MMMM "
+                "f": "MMMM d"
             },
             "my": {
                 "s": "yyyy-MM",
@@ -34,7 +34,8 @@
             "dw": {
                 "s": "dd, E",
                 "m": "d, EE",
-                "l": "dད, EEE"
+                "l": "dད, EEE",
+                "f": "d, EEEE"
             },
             "d": {
                 "s": "dd",

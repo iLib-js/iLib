@@ -90,7 +90,7 @@ function testDateFmtINSimpleFull_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 సెప్టెంబర్ 2011", fmt.format(date));
+    assertEquals("29, సెప్టెంబర్ 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeShort_te_IN() {
@@ -243,7 +243,7 @@ function testDateFmtINDateTimeSimpleFull_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29, సెప్టెంబర్  1:45 [PM]", fmt.format(date));
+    assertEquals("29, సెప్టెంబర్ 2011 1:45 [PM]", fmt.format(date));
 }
 
 
@@ -707,7 +707,7 @@ function testDateFmtINFullDateComponentsDMY_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 సెప్టెంబర్ 2011", fmt.format(date));
+    assertEquals("29, సెప్టెంబర్ 2011", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDM_te_IN() {

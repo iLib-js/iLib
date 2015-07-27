@@ -101,6 +101,12 @@ var rtlScripts = [
     "Thaa",
 ];
 
+var asianLangs = [
+    "ko",
+    "zh",
+    "ja"
+];
+
 function loadFile(path) {
     var ret = undefined;
     if (fs.existsSync(path)) {
@@ -237,6 +243,19 @@ function getTimeFormat(calendar, length) {
 	return ret;
 }
 
+function getAvailableFormat(calendar, code) {
+	var ret = "";
+	if (calendar.dateTimeFormats && calendar.dateTimeFormats.availableFormats && calendar.dateTimeFormats.availableFormats[code]) {
+		ret = calendar.dateTimeFormats.availableFormats[code];
+		ret = ret ? ret.replace(/ *G+/, "") : ret;
+	}
+	return ret;
+}
+
+function isAsianLang(lang) {
+	return asianLangs.indexOf(lang) > -1;
+}
+
 /**
  * Return the index of the first occurrence of a character from set
  * in the string that is not inside of quotes.
@@ -285,6 +304,46 @@ function scanForLastChars(string, set) {
 		i--;
 	}
 	return -1;
+}
+
+/**
+ * Determine whether or not this locale distinguishes between stand-alone month or day-of-week 
+ * names and in-format month or day-of-week names. The stand-alone months are typically used
+ * when combined with the date. eg. The in-format format for "5th of November" would have 
+ * "November" written in the genitive case, where as "November" at the top of a calendar would
+ * be written in in the nominative case.
+ * 
+ * @param calendar
+ * @returns {Boolean}
+ */
+function standAlone(calendar) {
+    var monthNamesFormat = calendar.months.format.wide,
+    	monthNamesStandAlone = calendar.months["stand-alone"].wide;
+
+    for (var month in monthNamesFormat) {
+        if (	month && 
+        		monthNamesFormat[month] && 
+        		monthNamesStandAlone[month] && 
+        		monthNamesFormat[month] !== monthNamesStandAlone[month]) {
+        	return true;
+        } 
+    }
+    return false;
+}
+
+/**
+ * Compare the non-date component parts of formats to see if they
+ * are different.
+ * 
+ * @param left first format to test
+ * @param right second format to test
+ * @returns {Boolean} true if the two formats are different, false otherwise
+ */
+function compareFormats(left, right) {
+	var l = left.replace(/[dMy]+/, ""),
+		r = right.replace(/[dMy]+/, "");
+	
+	return l !== r;
 }
 
 module.exports = {
@@ -393,7 +452,9 @@ module.exports = {
         			"short": convertOrderFormat(cldrCalendar.dateTimeFormats["short"])
         		};
         	}
-        	
+
+        	var usesStandAlone = standAlone(cldrCalendar);
+
         	// glean the lengths of the various parts
         	var cldrFormats = {},
         		d = {},
@@ -404,13 +465,12 @@ module.exports = {
         		var len = lengths[i];
 
         		cldrFormats[len] = getDateFormat(cldrCalendar, len);
-        		
         		var stripped = cldrFormats[len].replace(/'[^']*'/g, "");
         		
-        		d[len] = stripped.replace(/[^d]/g, "");
+    			d[len] = stripped.replace(/[^d]/g, "");
         		m[len] = stripped.replace(/[^M]/g, "");
-        		y[len] = stripped.replace(/[^y]/g, ""); 
-        	};
+        		y[len] = stripped.replace(/[^y]/g, "");
+        	}
 
         	calendar.date = {
         		"dmwy": {},
@@ -425,28 +485,16 @@ module.exports = {
         		"y": {}
         	};
 
-        	// Determine whether or not this locale distinguishes between stand-alone month or day-of-week 
-        	// names and in-format month or day-of-week names. The stand-alone months are typically used
-        	// when combined with the date. eg. The in-format format for "5th of November" would have 
-        	// "November" written in the genitive case, where as "November" at the top of a calendar would
-        	// be written in in the nominative case.
-        	
-        	var monthNamesFormat = cldrCalendar.months.format.wide,
-        		monthNamesStandAlone = cldrCalendar.months["stand-alone"].wide,
-        		usesStandAlone = false;
-
-        	for (var month in monthNamesFormat) {
-        		if (	month && 
-        				monthNamesFormat[month] && 
-        				monthNamesStandAlone[month] && 
-        				monthNamesFormat[month] !== monthNamesStandAlone[month]) {
-        			usesStandAlone = true;
-        			calendar.date.l = {};
-        			calendar.date.e = {};
-        			break;
-        		} 
+        	if (usesStandAlone) {
+    			calendar.date.l = {};
+    			calendar.date.e = {};
         	}
-
+        	
+        	if (isAsianLang(language)) {
+        		calendar.date.a = {};
+        		calendar.date.t = {};
+        	}
+        	
         	var w;
         	
         	i = scanForChars(cldrFormats["full"], "Ec");
@@ -502,6 +550,7 @@ module.exports = {
         		if (scanForLastChars(full, "E") < min) {
         			wTemplate = full.substring(0, min) + "{date}";
         			longPlus = full.substring(min);
+        			// util.print("language " + language + " E found before date. Using wtemplate " + wTemplate + "\n");        			
         		} else if (scanForChars(full, "E") > max) {
         			// scan backwards to find the last dmy char
         			i = full.length-1;
@@ -518,7 +567,8 @@ module.exports = {
         				i--;
         			}
         			wTemplate = "{date}" + full.substring(i+1);
-        			longPlus = full.substring(0, i);
+        			longPlus = full.substring(0, i+1);
+        			// util.print("language " + language + " E found after date. Using wtemplate " + wTemplate + " and longPlus is " + longPlus + "\n");        			
         		//} else {
         			// the w is in the middle of the dmy... not sure what to do about that!
         			// util.print("failed. Using fallback.\n");
@@ -571,7 +621,15 @@ module.exports = {
             		case "ymd":
             			// util.print("Length " + len + " order ymd\n");
             			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
-            			calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")));
+            			if (isAsianLang(language)) {
+            				var firstd = scanForChars(dmy, "d");
+            				if (dmy.charAt(firstd-1) == '/') {
+            					firstd--;
+            				}
+            				calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, firstd).trim());
+            			} else {
+            				calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")));
+            			}
             			break;
 
             		case "ydm":
@@ -584,9 +642,13 @@ module.exports = {
         		
         		if (usesStandAlone) {
         			calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
-        			calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
-        			
+        			calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
         			calendar.date.e[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
+        		}
+        		
+        		if (isAsianLang(language)) {
+        			calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, d[len]);
+        			calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, m[len]);
         		}
         		
     			tmp = wTemplate.replace(/\{date\}/, calendar.date.dm[lenAbbr]);
@@ -827,7 +889,7 @@ module.exports = {
     	return formats;
     },
     
-    createSystemResources: function (cldrData) {
+    createSystemResources: function (cldrData, language) {
     	var formats,
     		cldrCalendar,
     		calendarNameSuffix,
@@ -849,33 +911,26 @@ module.exports = {
         	
         	calendarNameSuffix = (calendarName !== "gregorian") ? "-" + calendarName : "";
         	
-        	// Determine whether or not this locale distinguishes between stand-alone month or day-of-week 
-        	// names and in-format month or day-of-week names. The stand-alone months are typically used
-        	// when combined with the date. eg. The in-format format for "5th of November" would have 
-        	// "November" written in the genitive case, where as "November" at the top of a calendar would
-        	// be written in in the nominative case.
-        	
-        	var monthNamesFormat = cldrCalendar.months.format.wide,
-        		monthNamesStandAlone = cldrCalendar.months["stand-alone"].wide,
-        		usesStandAlone = false;
-
-        	for (var month in monthNamesFormat) {
-        		if (	month && 
-        				monthNamesFormat[month] && 
-        				monthNamesStandAlone[month] && 
-        				monthNamesFormat[month] !== monthNamesStandAlone[month]) {
-        			usesStandAlone = true;
-        			break;
-        		} 
-        	}
+        	var usesStandAlone = standAlone(cldrCalendar);
         	
         	// now generate all the month names
         	var part = cldrCalendar.months.format;
-        	for (prop in part.wide) {
-        		formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
-        		formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
-        		formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-        		formats["N" + prop + calendarNameSuffix] = part.narrow[prop];
+        	var isAsian = isAsianLang(language);
+        	if (isAsianLang(language)) {
+            	for (prop in part.wide) {
+            		formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
+            		formats["N" + prop + calendarNameSuffix] = 
+            			formats["NN" + prop + calendarNameSuffix] = 
+            				formats["MMM" + prop + calendarNameSuffix] = 
+            					part.abbreviated[prop].substring(0, part.abbreviated[prop].length-1);
+            	}
+        	} else {
+            	for (prop in part.wide) {
+            		formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
+            		formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
+            		formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+            		formats["N" + prop + calendarNameSuffix] = part.narrow[prop];
+            	}
         	}
         	if (usesStandAlone) {
             	part = cldrCalendar.months["stand-alone"];

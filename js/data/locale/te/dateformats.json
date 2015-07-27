@@ -11,7 +11,7 @@
                 "s": "dd-MM-yy",
                 "m": "d MMM, yyyy",
                 "l": "d MMMM, yyyy",
-                "f": "d, MMMM "
+                "f": "d, MMMM yyyy"
             },
             "dmw": {
                 "s": "dd-MM, E",
@@ -28,8 +28,7 @@
             "my": {
                 "s": "MM-yy",
                 "m": "MMM, yyyy",
-                "l": "MMMM, yyyy",
-                "f": "MMMM "
+                "l": "MMMM, yyyy"
             },
             "dw": {
                 "s": "dd-E",

@@ -11,19 +11,19 @@
                 "s": "yy/M/d",
                 "m": "yyyy, MMM d",
                 "l": "yyyy, MMMM d",
-                "f": "yyyy 'сыл' MMMM "
+                "f": "yyyy 'сыл' MMMM d"
             },
             "dmw": {
                 "s": "M/d 'күнэ', E",
                 "m": "MMM d 'күнэ', EE",
                 "l": "MMMM d 'күнэ', EEE",
-                "f": "MMMM  'күнэ', EEEE"
+                "f": "MMMM d 'күнэ', EEEE"
             },
             "dm": {
                 "s": "M/d",
                 "m": "MMM d",
                 "l": "MMMM d",
-                "f": "MMMM "
+                "f": "MMMM d"
             },
             "my": {
                 "s": "yy/M",
@@ -34,7 +34,8 @@
             "dw": {
                 "s": "d 'күнэ', E",
                 "m": "d 'күнэ', EE",
-                "l": "d 'күнэ', EEE"
+                "l": "d 'күнэ', EEE",
+                "f": "d 'күнэ', EEEE"
             },
             "d": {
                 "s": "d",

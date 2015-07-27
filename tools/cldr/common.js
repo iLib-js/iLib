@@ -701,7 +701,7 @@ exports.prune = function prune(parent, child) {
 		if (prop && typeof(child[prop]) !== 'undefined') {
 			if (prop === 'generated') {
 				ret[prop] = child[prop];
-			} else if (typeof(parent[prop]) === 'object') {
+			} else if (parent && typeof(parent[prop]) === 'object') {
 				if (typeof(child[prop]) === 'object') {
     				var obj = exports.prune(parent[prop], child[prop]);
     				if (!exports.isEmpty(obj)) {
@@ -715,7 +715,7 @@ exports.prune = function prune(parent, child) {
 				//if (prop !== child[prop]) {
 					//ret[prop] = child[prop];
 				//}
-			} else if (parent[prop] !== child[prop] && child[prop].toString().length > 0) {
+			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length > 0)) {
 				ret[prop] = child[prop];
 			}
 		}

@@ -12,19 +12,19 @@
                 "s": "dd.MM.yy",
                 "m": "dd MMM, yyyyթ.",
                 "l": "dd MMMM, yyyyթ.",
-                "f": "yyyyթ. MMMM "
+                "f": "yyyyթ. MMMM d"
             },
             "dmw": {
                 "s": "dd.MM, E",
                 "m": "dd MMM, EE",
                 "l": "dd MMMM, EEE",
-                "f": "MMMM , EEEE"
+                "f": "MMMM d, EEEE"
             },
             "dm": {
                 "s": "dd.MM",
                 "m": "dd MMM",
                 "l": "dd MMMM",
-                "f": "MMMM "
+                "f": "MMMM d"
             },
             "my": {
                 "s": "MM.yy",
@@ -35,7 +35,8 @@
             "dw": {
                 "s": "dd.E",
                 "m": "dd EE",
-                "l": "dd EEE"
+                "l": "dd EEE",
+                "f": "d, EEEE"
             },
             "d": {
                 "s": "dd",
@@ -55,7 +56,7 @@
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
-                "s": "MM"
+                "s": "LL"
             },
             "e": {
                 "f": "cccc",

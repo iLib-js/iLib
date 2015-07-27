@@ -11,25 +11,25 @@
                 "s": "yyyy/M/d",
                 "m": "d MMM yyyy",
                 "l": "d نچی MMMM yyyy",
-                "f": "yyyy نچی ییل d نچی MMM"
+                "f": "yyyy نچی ییل d نچی MMMM"
             },
             "dmw": {
                 "s": "M/d E کونی",
                 "m": "d MMM EE کونی",
                 "l": "d نچی MMMM EEE کونی",
-                "f": "d نچی MMM EEEE کونی"
+                "f": "d نچی MMMM EEEE کونی"
             },
             "dm": {
                 "s": "M/d",
                 "m": "d MMM",
                 "l": "d نچی MMMM",
-                "f": "d نچی MMM"
+                "f": "d نچی MMMM"
             },
             "my": {
                 "s": "yyyy/M",
                 "m": "MMM yyyy",
                 "l": "MMMM yyyy",
-                "f": "yyyy نچی ییل MMM"
+                "f": "yyyy نچی ییل MMMM"
             },
             "dw": {
                 "s": "d E کونی",

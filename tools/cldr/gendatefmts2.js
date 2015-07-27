@@ -101,7 +101,7 @@ for (var cal in dateFormats) {
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
-util.print("en-CA before cldr and merge is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
+// util.print("en-CA before cldr and merge is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 util.print("\n\nReading CLDR data ...\n");
 
@@ -147,7 +147,7 @@ list.forEach(function (file) {
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -160,7 +160,7 @@ list.forEach(function (file) {
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			var group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -175,7 +175,7 @@ list.forEach(function (file) {
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cals);
+			newFormats = aux.createSystemResources(cals, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -188,7 +188,7 @@ list.forEach(function (file) {
 		group = aux.getFormatGroup(dateFormats, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
 		
-		newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+		newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
