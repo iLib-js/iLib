@@ -61,7 +61,7 @@ module.exports = function (ilib) {
 		
 		if (fs.existsSync("/usr/share/zoneinfo")) {
 			//console.log("_createZoneFile: Loading zone info from the system\n");
-			this.useSystemZoneInfo = true;
+			this.useSystemZoneInfo = false;
 		} else {
 			//console.log("_createZoneFile: using ilib zone info\n");
 		}
