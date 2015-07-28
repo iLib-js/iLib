@@ -251,6 +251,8 @@ var ResBundle = function (options) {
 				this.missing = options.missing;
 			}
 		}
+	} else {
+		options = {};
 	}
 	
 	this.map = {};
@@ -294,7 +296,7 @@ var ResBundle = function (options) {
 					})
 				});
 			} else {
-				if (options && typeof(options.onLoad) === 'function') {
+				if (typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
 			}

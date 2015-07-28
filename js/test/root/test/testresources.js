@@ -1582,3 +1582,17 @@ function testClearResetToDefaults() {
     loc = new Locale("zxx-Hebr-XX");
     assertTrue(loc.isPseudo());
 }
+
+function testResBundleWithDefaultLocaleBeingPseudo() {
+	ilib.clearPseudoLocales();
+	var tmp = ilib.getLocale();
+	
+	ilib.setLocale("zxx-XX"); // pseudo-locale
+	
+	// this used to throw an exception:
+	var rb = new ResBundle();
+	
+	assertEquals("ţŕàñšľàţíõñ", rb.getStringJS("translation"));
+	
+	ilib.setLocale(tmp);
+}

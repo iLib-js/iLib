@@ -31,7 +31,7 @@ var IString = require("./IString.js");
  * characters in scripts that do not make a distinction between upper- and 
  * lower-case, this function always returns true.<p>
  * 
- * 
+ * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is upper-case.
  */

@@ -46,7 +46,7 @@ function testDateRngFmtIRRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -159,7 +159,7 @@ function testDateRngFmtIRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ ۱۱/۱۲/۳۱ - ‏۱۳:۴۵ ۱۱/۱۲/۳۰", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ ۲۰۱۱/۱۲/۳۱ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -272,7 +272,7 @@ function testDateRngFmtIRRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۲/۳۱ - ۱۱/۱۲/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -385,7 +385,7 @@ function testDateRngFmtIRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۲/۳۱ - ۱۱/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -498,7 +498,7 @@ function testDateRngFmtIRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۲/۱/۳۱ - ۱۱/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰۱۲/۱/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -611,7 +611,7 @@ function testDateRngFmtIRRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴/۱ - ۱۱/۱۱", fmt.format(start, end));
+    assertEquals("‏۲۰۱۴/۱ - ۲۰۱۱/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -754,7 +754,7 @@ function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۹۳/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -867,7 +867,7 @@ function testDateRngFmtPersRangeNextDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ ۹۳/۱۲/۳۱ - ‏۱۳:۴۵ ۹۳/۱۲/۳۰", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ ۱۳۹۳/۱۲/۳۱ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -980,7 +980,7 @@ function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۹۳/۱۲/۳۱ - ۹۳/۱۲/۲۰", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۲/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1093,7 +1093,7 @@ function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۹۳/۱۲/۳۱ - ۹۳/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1206,7 +1206,7 @@ function testDateRngFmtPersRangeNextYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۹۴/۱/۳۱ - ۹۳/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۱۳۹۴/۱/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1319,7 +1319,7 @@ function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۹۶/۱ - ۹۳/۱۱", fmt.format(start, end));
+    assertEquals("‏۱۳۹۶/۱ - ۱۳۹۳/۱۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
     var fmt = new ilib.DateRngFmt({

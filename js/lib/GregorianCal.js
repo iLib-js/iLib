@@ -33,7 +33,7 @@ var Calendar = require("./Calendar.js");
  * 
  * @constructor
  * @param {{noinstance:boolean}=} options
- * @extends {Calendar}
+ * @extends Calendar
  */
 var GregorianCal = function(options) {
 	if (!options || !options.noinstance) {
@@ -119,9 +119,10 @@ GregorianCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 GregorianCal.prototype.newDateInstance = function (options) {
-	var GregorianDate = module.require("./GregorianDate.js");
+	var GregorianDate = require("./GregorianDate.js");
 	return new GregorianDate(options);
 };
 

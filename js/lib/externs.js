@@ -22,4 +22,5 @@
 function console(str){};
 function JSON(str){};
 console.log = function (str){};
-var PalmSystem, process, require, module, environment, exports, global, Intl, Qt;
+var PalmSystem, require, module, environment, exports, global, Intl, Qt;
+var process = {env: {LANG: "", LANGUAGE: "", LC_ALL:""}};

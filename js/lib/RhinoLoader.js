@@ -35,9 +35,9 @@ var RhinoLoader = function() {
 	
 	this.parent.call(this, ilib);
 	
-	this.root = module.filename ? path.dirname(path.join(module.filename, "..")) : environment["user.dir"];
+	this.root = module.resolve("..") || environment["user.dir"];
 	this.root = this.root.replace("file://", "");
-	//console.log("RhinoLoader using root: " + root);
+	// console.log("RhinoLoader using root: " + this.root);
 	
 	if (this.root[this.root.length-1] === '/') {
 		this.root = this.root.substring(0, this.root.length-1);
@@ -63,7 +63,7 @@ RhinoLoader.prototype.constructor = RhinoLoader;
 
 RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
 	// ignore sync flag -- always load synchronously
-	console.log("RhinoLoader._loadFile: attempting to load " + pathname);
+	// console.log("RhinoLoader._loadFile: attempting to load " + pathname);
 	var text = "";
 	var reader;
 	try {
@@ -88,11 +88,17 @@ RhinoLoader.prototype._loadFile = function (pathname, sync, cb) {
 
 RhinoLoader.prototype._exists = function(dir, file) {
 	var fullpath = path.normalize(path.join(dir, file));
-	console.log("RhinoLoader._exists: checking for the existence of " + fullpath);
-	var f = new File(fullpath);
-	if (f.exists() && f.canRead()) {
-		console.log("RhinoLoader._exists: found");
-		this.includePath.push(dir);
+	// console.log("RhinoLoader._exists: checking for the existence of " + fullpath);
+	try {
+    	var f = new File(fullpath);
+    	if (f.exists() && f.canRead()) {
+    		// console.log("RhinoLoader._exists: found");
+    		this.includePath.push(dir);
+    	}
+	} catch (e) {
+		// ignore errors -- that means we have a permission problem and shouldn't add 
+		// the dir to the include path anyways
+		console.log(e);
 	}
 };
 

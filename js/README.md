@@ -49,11 +49,34 @@ Since language settings are separate from region settings, the arbitrary combina
 into the thousands. For those classes of information where CLDR does not have info yet (such as phone formats), there is a 
 much smaller set of locales that are supported, but for all classes, the top most used locales on the Internet are represented.
 
-Example of Using iLib Under Nodejs
+Where Does it Run?
+-------
+
+ILib has been tested in the following environments:
+
+* nodejs 0.10
+* Browsers:
+    * Chrome 28+
+    * Firefox 35+
+    * Opera 12.16+
+    * Safari 
+    * Internet Explorer 8+
+* Rhino on JDK 1.7 and 1.8 with Trireme (0.8.5)
+* RingoJS 0.11
+* Qt 5.4
+
+Those environments have been tested on the following platforms where possible:
+
+* Ubuntu 12.04+
+* Windows 7 & 8
+* Mac OSX
+
+Example of Using iLib Under NodeJS or RingoJS
 -------
 
 iLib is a regular node module and can therefore be loaded using the built-in nodejs require() function.
-Here is an example of using iLib to format the current date/time for Berlin, Germany.
+Here is an example of using iLib to format the current date/time for Berlin, Germany. This same example
+works equally well with ringojs running on rhino in a Java-based app server. 
 
 ~~~~~
 var ilib=require("ilib");
@@ -84,6 +107,12 @@ For node, you can simply install it using npm:
 
 ~~~~~
 npm install ilib
+~~~~~
+
+For ringojs, you can install it with the ringo package manager:
+
+~~~~~
+rp install ilib
 ~~~~~
 
 ILib is also available on sourceforge.net from the svn repository at https://sourceforge.net/p/i18nlib/code/HEAD/tree/

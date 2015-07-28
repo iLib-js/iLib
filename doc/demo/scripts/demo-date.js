@@ -97,7 +97,8 @@ function setDayValues(element, day, month, year) {
 			date: "d",
 			timezone: "Etc/UTC"
 		}),
-		date = cal.newDateInstance({
+		date = DateFactory({
+			calendar: calName,
 			locale: locale,
 			year: year,
 			month: month,
@@ -131,7 +132,9 @@ function setHourValues(element, hour) {
 			time: "ah",
 			timezone: "Etc/UTC"
 		}),
-		date = cal.newDateInstance({
+		date = DateFactory({
+			calendar: calName,
+			locale: locale,
 			hour: 0,
 			timezone: "Etc/UTC"
 		});
@@ -193,7 +196,9 @@ function setupCalendarPicker() {
 	cal = CalendarFactory({
 		locale: locale
 	});
-	today = cal.newDateInstance();
+	today = DateFactory({
+		calendar: cal.getType()
+	});
 
 	setCalendarValues(cal.getType());
 	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
@@ -253,8 +258,11 @@ function setupCalendarPicker() {
 				locale: locale
 			});
 			
-			var today = cal.newDateInstance(),
-				yearElement = $('#year');
+			var today = DateFactory({
+				calendar: name,
+				locale: locale
+			});
+			var yearElement = $('#year');
 			
 			if (name === "han") {
 				$('#cycle').val(today.getCycles());
@@ -312,7 +320,10 @@ function datePicker() {
 		type: "gregorian",
 		locale: locale
 	});
-	today = cal.newDateInstance();
+	today = DateFactory({
+		calendar: "gregorian",
+		locale: locale
+	});
 
 	year = parseInt(yearElement.val());
 	
@@ -380,7 +391,10 @@ function setupRangePicker(startname, endname, jdname, utname) {
 		type: "gregorian",
 		locale: locale
 	});
-	today = cal.newDateInstance();
+	today = DateFactory({
+		type: "gregorian",
+		locale: locale
+	});
 	
 	setMinutesSecondsValues(startMinuteElement, startSecondElement, today.minute, today.second);
 	setMinutesSecondsValues(endMinuteElement, endSecondElement, today.minute, today.second);
@@ -437,7 +451,10 @@ function setupRangePicker(startname, endname, jdname, utname) {
 				locale: locale
 			});
 			
-			var today = cal.newDateInstance();
+			var today = DateFactory({
+				type: name,
+				locale: locale
+			});
 	
 			startYearElement.val(today.year);
 			endYearElement.val(today.year);
@@ -608,7 +625,10 @@ function setupCalendarInfoPicker() {
 	cal = CalendarFactory({
 		type: "gregorian"
 	});
-	today = cal.newDateInstance();
+	today = DateFactory({
+		type: "gregorian",
+		locale: locale
+	});
 
 	$('#localeControl').change(function () {
 		var month = parseInt(monthElement.val()),
@@ -625,7 +645,10 @@ function setupCalendarInfoPicker() {
 			locale: locale
 		});
 		
-		var today = cal.newDateInstance();
+		var today = DateFactory({
+			type: name,
+			locale: locale
+		});
 
 		yearElement.val(today.year);
 		setMonthValues(monthElement, today.month, today.year);

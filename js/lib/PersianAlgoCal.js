@@ -31,7 +31,7 @@ var Calendar = require("./Calendar.js");
  * 
  * 
  * @constructor
- * @extends {Calendar}
+ * @extends Calendar
  */
 var PersianAlgoCal = function() {
 	this.type = "persian-algo";
@@ -128,9 +128,10 @@ PersianAlgoCal.prototype.getType = function() {
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 PersianAlgoCal.prototype.newDateInstance = function (options) {
-	var PersianAlgoDate = module.require("./PersianAlgoDate.js");
+	var PersianAlgoDate = require("./PersianAlgoDate.js");
 	return new PersianAlgoDate(options);
 };
 

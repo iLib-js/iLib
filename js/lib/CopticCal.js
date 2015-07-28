@@ -33,7 +33,7 @@ var EthiopicCal = require("./EthiopicCal.js");
  * 
  * 
  * @constructor
- * @extends {EthiopicCal}
+ * @extends EthiopicCal
  */
 var CopticCal = function() {
 	this.type = "coptic";
@@ -49,9 +49,10 @@ CopticCal.prototype.constructor = CopticCal;
  * @param {Object} options options controlling the construction of 
  * the date instance
  * @return {IDate} a date appropriate for this calendar type
+ * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
  */
 CopticCal.prototype.newDateInstance = function (options) {
-	var CopticDate = module.require("./CopticDate.js");
+	var CopticDate = require("./CopticDate.js");
 	return new CopticDate(options);
 };
 
