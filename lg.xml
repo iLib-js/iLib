@@ -85,7 +85,9 @@ limitations under the License.
 			</fileset>
 		</copy>
 		<sync todir="../enyo-ilib/ilib/locale">
-			<fileset dir="${build.export}/locale"/>
+			<fileset dir="${build.export}/locale">
+				<include name="**/*.json"/>
+			</fileset>
 		</sync>
 	</target>
 </project>
