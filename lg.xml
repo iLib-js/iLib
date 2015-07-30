@@ -44,7 +44,10 @@ limitations under the License.
 		<subant target="assemble.lg" buildpath="js" />
 		<copy todir="../ilib-webapp/lib">
 			<fileset dir="${build.export.js}/dyncode">
-				<include name="*.js"/>
+				<include name="**/*.js"/>
+				<exclude name="ilib-rhino.js"/>
+				<exclude name="ilib-ringo.js"/>
+				<exclude name="RhinoLoader.js"/>
 			</fileset>
 			<fileset dir="${build.export.js}/assembled">
 				<include name="ilib-lg.js"/>
@@ -61,13 +64,24 @@ limitations under the License.
 			</fileset>
 		</copy>
 		<sync todir="../ilib-webapp/locale">
-			<fileset dir="${build.export}/locale"/>
+			<fileset dir="${build.export}/locale">
+				<include name="**/*.json"/>
+			</fileset>
 		</sync>
 	</target>
 	<target name="export.enyo.ilib" description="Export the build to enyo-ilib">
 		<copy todir="../enyo-ilib/ilib/lib">
 			<fileset dir="${build.export.js}/dyncode">
-				<include name="*.js"/>
+				<include name="**/*.js"/>
+				<exclude name="ilib-rhino.js"/>
+				<exclude name="ilib-ringo.js"/>
+				<exclude name="RhinoLoader.js"/>
+				<exclude name="ilib-node-all.js"/>
+				<exclude name="ilib-node-assembled.js"/>
+				<exclude name="ilib-node.js"/>
+				<exclude name="ilib-qt.js"/>
+				<exclude name="ilib-web.js"/>
+				<exclude name="ilib-stubs*.js"/>
 			</fileset>
 		</copy>
 		<sync todir="../enyo-ilib/ilib/locale">
