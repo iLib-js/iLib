@@ -40,6 +40,7 @@ limitations under the License.
 	<property name="build.lib"				value="${build.base}/lib"/>
 	<property name="build.output"				value="${build.base}/output"/>
 	<property name="build.output.js"			value="${build.output}/js"/>
+	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.data"				value="${build.base}/data"/>
 	<property name="build.locale"				value="${build.base}/locale"/>
 	<property name="build.locale.src"			value="${build.data}/locale"/>
@@ -282,22 +283,8 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
 		<copy todir="${build.export}/js/dyncode">
-			<fileset dir="${build.lib}">
+			<fileset dir="${build.output.dyncode}">
 				<include name="**/*.js"/>
-				<include name="src/**/*.js"/>
-				<exclude name="**/test/**"/>
-				<exclude name="runner.js"/>
-				<exclude name="**/*-inc.js"/>
-				<exclude name="externs.js"/>
-				<exclude name="**/bench*"/>
-				<exclude name="nfc/**"/>
-				<exclude name="nfd/**"/>
-				<exclude name="nfkc/**"/>
-				<exclude name="nkkd/**"/>
-				<exclude name="ilib-test.js"/>
-				<exclude name="ilib-test-dyn.js"/>
-				<exclude name="testSuite.js"/>
-				<exclude name="datefmtstr.js"/>
 			</fileset>
 		</copy>
 		<delete dir="${build.export}/locale"/>
