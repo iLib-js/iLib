@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/media/images/favicon.ico" />
+		
+		<title>DataTables example</title>
+		<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="scripts/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="scripts/ilib-demo.js"></script>
+		<style type="text/css" title="currentStyle">
+			@import "style/demo_page.css";
+			@import "style/demo_table.css";
+		</style>
+		
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#example').dataTable( {
+					"sPaginationType": "full_numbers"
+				} );
+			} );
+			ilib.setLocale("en-GB")
+			var currentLocale = ilib.getLocale();
+
+			$(function(){
+				var locale = "en-GB"
+				var li = new LocaleInfo(currentLocale);
+				var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+				$('#systemLocale').text(currentLocale);
+				$('#localedescription').text(li.getLanguageName() + " , " + li.getRegionName() + " (" + li.getScript() + ")");
+				
+				$('#defaultCalendar').text(li.getCalendar());
+				$('#clock').text(li.getClock());
+				$('#defaultCurrency').text(li.getCurrency());
+				$('#weekStart').text(weeks[li.getFirstDayOfWeek()]);
+				$('#weekendStart').text(weeks[li.getWeekEndStart()]);
+				$('#weekendEnd').text(weeks[li.getWeekEndEnd()]);
+
+				var date =[];
+				var fmt =[];
+				var value =[];
+				var nameOfDay=[];
+				var nameOfMonth=[];
+				var monthID = [];
+				var weekID = [];
+				var fmtArray = [];
+				var length = ["full", "long", "medium", "short"];
+				var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec"];
+				var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
+
+				var dayCount = 0, monthCount = 0, fmtArrayCount;
+
+				for (i=0; i<7; i++) {
+					date[i] = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: i+2});
+					for (j=0; j < 4; j++) {
+						fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
+						value[i] = fmt[j].format(date[i]);
+						nameOfDay[dayCount] = value[i];
+						weekID[dayCount] = week[i]+length[j]
+						dayCount++;
+					}
+				}
+				for (i=0; i<12; i++) {
+					date[i] = new GregorianDate({locale: currentLocale, month: i+1});
+					for (j=0; j < 4; j++) {
+						fmt[j] = new DateFmt({locale: currentLocale, date:"m", length: length[j], timezone: 'local'});
+						value[i] = fmt[j].format(date[i]);
+						nameOfMonth[monthCount] = value[i]
+						monthID[monthCount] = month[i]+length[j]
+						monthCount++;
+					}
+				}
+				for (i=0; i < weekID.length +1; i++) {
+					$("#"+weekID[i]).text(nameOfDay[i]);
+				}
+
+				for (i=0; i < monthID.length+1; i++) {
+					$("#"+monthID[i]).text(nameOfMonth[i]);	
+				}
+
+				var fmt = DateFmt.getMeridiemsRange({locale: currentLocale});
+				$("#rangea0").text(fmt[0].start + " ~ " + fmt[0].end);
+				$("#stringa0").text(fmt[0].name);
+				$("#rangea1").text(fmt[1].start + " ~ " + fmt[1].end)
+				$("#stringa1").text(fmt[1].name)
+
+
+				var date = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: 5, hour: 13, minute: 45, second: 0,millisecond: 0});
+
+				//DateTime				
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+					
+					fmt[i] = new DateFmt({locale: currentLocale, type: "datetime", length: length[i], timezone: 'local'});
+					
+					fmtArray[fmtArrayCount] = fmt[i];
+					//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
+					
+					$("#dt"+length[i]).text(length[i]);
+					$("#dt"+length[i]+"Fmt").text(fmtArray[i].template);
+					$("#dt"+length[i]+"Sample").text(fmtArray[i].format(date));
+				}
+				
+				//Date
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+					
+					fmt[i] = new DateFmt({locale: currentLocale, type: "date", date:"dmwy", length: length[i], timezone: 'local'});
+					
+					fmtArray[fmtArrayCount] = fmt[i];
+					//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
+					
+					$("#date"+length[i]).text(length[i]);
+					$("#date"+length[i]+"Fmt").text(fmtArray[i].template);
+					$("#date"+length[i]+"Sample").text(fmtArray[i].format(date));
+				}
+
+				//Time
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+					
+					fmt[i] = new DateFmt({locale: currentLocale, type: "time", time:"ahmsz", length: length[i], timezone: 'local'});
+					
+					fmtArray[fmtArrayCount] = fmt[i];
+					//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
+					
+					$("#time"+length[i]).text(length[i]);
+					$("#time"+length[i]+"Fmt").text(fmtArray[i].template);
+					$("#time"+length[i]+"Sample").text(fmtArray[i].format(date));
+				}
+
+				//Date Range
+				var start = new GregorianDate({year: 2011,month: 11,day: 20,hour: 13,minute: 45,second: 0,millisecond: 0});
+    			var end = new GregorianDate({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,millisecond: 0});
+
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+					fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});					
+					fmtArray[fmtArrayCount] = fmt[i];
+					//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
+					$("#daterng"+length[i]).text(length[i]);
+					$("#daterng"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+				}
+
+				// Date Duration
+				var durationDate = {year: 1,month: 1,week: 1,day: 1};
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+					fmt[i] = new DurationFmt({locale: currentLocale, style:"text", length: length[i]});
+					fmtArray[fmtArrayCount] = fmt[i];
+					//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
+					$("#datedur"+length[i]).text(length[i]);
+					$("#datedur"+length[i]+"Sample").text(fmtArray[i].format(durationDate).toString());
+				}
+
+				var durationTime = {hour: 1,minute: 1,second: 1, millisecond: 1};
+				for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {					
+					fmt[i] = new DurationFmt({locale: currentLocale, style:"colok", length: length[i]});
+					fmtArray[fmtArrayCount] = fmt[i];
+					$("#timedur"+length[i]).text(length[i]);
+					$("#timedur"+length[i]+"Sample").text(fmtArray[i].format(durationTime).toString());
+				}
+
+
+				// Date Duration
+				var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
+				$("#numDecimalSymbol").text(li.getDecimalSeparator());
+				$("#numDecimal").text(fmt.format(1.73));
+
+				var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
+				$("#numPercentSymbol").text(li.getPercentageSymbol());
+				$("#numPercent").text(fmt.format(34));
+
+				var fmt = new NumFmt({locale: currentLocale, type: "currency", currency:li.getCurrency()});
+				$("#numCurrencySymbol").text(fmt.sign);
+				$("#numCurrency").text(fmt.format(57.05));
+
+				var fmt = new NumFmt({locale: currentLocale});
+				$("#numPlus").text(fmt.format(+572));
+				$("#numMinus").text(fmt.format(-37));
+
+
+				//PhoneNumber 
+				var parsed = [];
+				var numlength =0;;
+				var extractNumber = [];
+				var numberFmt = [];
+				//local, international, mobile, service,
+				var phoneNumberSample =["02034523434", "+33112345678", "03001234567"];
+				var fmt = new PhoneFmt({locale: currentLocale});
+				for (i=0; i<3;i++) {
+					for(j=0;j<phoneNumberSample[i].length; j++) {						
+						extractNumber[j] = phoneNumberSample[i].substring(0,j+1);
+						if (i === 0) {
+							$("#localpartial"+j).text(extractNumber[j]);
+							parsed[j] = new PhoneNumber(extractNumber[j], {locale:currentLocale});
+							numberFmt[j] = fmt.format(parsed[j]);
+							$("#localpartialfmt"+j).text(numberFmt[j]);
+							//console.log("extractNumber : ", numberFmt[j]);
+						} else if (i === 1) {
+							$("#intlpartial"+j).text(extractNumber[j]);
+							parsed[j] = new PhoneNumber(extractNumber[j], {locale:currentLocale});
+							numberFmt[j] = fmt.format(parsed[j]);
+							$("#intlpartialfmt"+j).text(numberFmt[j]);
+							//console.log("extractNumber : ", numberFmt[j]);
+						} else if(i === 2) {
+							$("#svrpartial"+j).text(extractNumber[j]);
+							parsed[j] = new PhoneNumber(extractNumber[j], {locale:currentLocale});
+							numberFmt[j] = fmt.format(parsed[j]);
+							$("#svrpartialfmt"+j).text(numberFmt[j]);
+							console.log("extractNumber : ", numberFmt[j]);
+						}
+					}					
+				}
+			});
+
+		</script>
+	</head>
+	<body id="dt_example" class="example_alt_pagination">
+		<div id="container">
+			<div class="full_width big" align="center">webOS 3.0 Locale Reference</div>
+			<h1>Basic Information</h1>
+			
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Subject</th><th>Info</th></tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA"><td>System Locale</td><td id="systemLocale" /></tr>
+			<tr class="gradeA"><td>Locale Description</td><td id="localedescription" /></tr>
+			<tr class="gradeA"><td>Default Calendar</td><td  id="defaultCalendar"></tr>
+			<tr class="gradeA"><td>Clock</td><td id="clock" /></tr>
+			<tr class="gradeA"><td>Currency</td><td id="defaultCurrency" /></tr>
+			<tr class="gradeA"><td>Week Start at</td><td id="weekStart" /></tr>
+			<tr class="gradeA"><td>Weekend Start at</td><td id="weekendStart" /></tr>
+			<tr class="gradeA"><td>Weekend End at</td><td id="weekendEnd" /></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Names of the Day and Months</h1>
+	<table cellpadding="0" cellspacing="0" border="1" class="display" >
+		<thead>
+			<tr>
+				<th>Days and Months</th><th>delimiter</th><th>Full</th><th>Long</th><th>Medium</th><th>Short</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA">
+				<td rowspan="7">Weekday</td><td>1</td><td id="monfull" /><td id="monlong"/><td id="monmedium"/><td id="monshort"/>
+			</tr>
+			<tr class="gradeA"><td>2</td><td id="tuefull" /><td id="tuelong"/><td id="tuemedium"/><td id="tueshort"/></tr>
+			<tr class="gradeA"><td>3</td><td id="wedfull" /><td id="wedlong"/><td id="wedmedium"/><td id="wedshort"/></tr>
+			<tr class="gradeA"><td>4</td><td id="thufull" /><td id="thulong"/><td id="thumedium"/><td id="thushort"/></tr>
+			<tr class="gradeA"><td>5</td><td id="frifull" /><td id="frilong"/><td id="frimedium"/><td id="frishort"/></tr>
+			<tr class="gradeA"><td>6</td><td id="satfull" /><td id="satlong"/><td id="satmedium"/><td id="satshort"/></tr>
+			<tr class="gradeA"><td>0</td><td id="sunfull" /><td id="sunlong"/><td id="sunmedium"/><td id="sunshort"/></tr>
+			<tr class="gradeA"><td rowspan="12">Month</td><td>1</td><td id="janfull"/><td id="janlong"/><td id="janmedium"/><td id="janshort"/></tr>
+			<tr class="gradeA"><td>2</td><td id="febfull"/><td id="feblong"/><td id="febmedium"/><td id="febshort"/></tr>
+			<tr class="gradeA"><td>3</td><td id="marfull"/><td id="marlong"/><td id="marmedium"/><td id="marshort"/></tr>
+			<tr class="gradeA"><td>4</td><td id="aprfull"/><td id="aprlong"/><td id="aprmedium"/><td id="aprshort"/>
+			<tr class="gradeA"><td>5</td><td id="mayfull"/><td id="maylong"/><td id="maymedium"/><td id="mayshort"/></tr>
+			<tr class="gradeA"><td>6</td><td id="junfull"/><td id="junlong"/><td id="junmedium"/><td id="junshort"/></tr>
+			<tr class="gradeA"><td>7</td><td id="julfull"/><td id="jullong"/><td id="julmedium"/><td id="julshort"/></tr>
+			<tr class="gradeA"><td>8</td><td id="augfull"/><td id="auglong"/><td id="augmedium"/><td id="augshort"/></tr>
+			<tr class="gradeA"><td>9</td><td id="sepfull"/><td id="seplong"/><td id="sepmedium"/><td id="sepshort"/></tr>
+			<tr class="gradeA"><td>10</td><td id="octfull"/><td id="octlong"/><td id="octmedium"/><td id="octshort"/></tr>
+			<tr class="gradeA"><td>11</td><td id="novfull"/><td id="novlong"/><td id="novmedium"/><td id="novshort"/></tr>
+			<tr class="gradeA"><td>12</td><td id="decfull"/><td id="declong"/><td id="decmedium"/><td id="decshort"/></tr>
+		</tbody>
+	</table>
+	<h1>Range of the Meridiem Units</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Time Range</th><th>Meridiem</th></tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA"><td id="rangea0"/><td id = "stringa0"/></tr>
+			<tr class="gradeA"><td id="rangea1"/><td id="stringa1" /></tr>
+		</tbody>
+	</table>
+	<h1>Data Format: Date/Time</h1>
+	<table cellpadding="0" cellspacing="0" border="1" class="display"  >
+		<thead>
+			<tr><th>Date / Time</th><th>length</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA">
+				<td rowspan="4">Date / Time</td><td id="dtfull"/><td id="dtfullFmt"/><td id="dtfullSample"/>
+			</tr>
+			<tr class="gradeA"><td id="dtlong"/><td id="dtlongFmt"/><td id="dtlongSample"/></tr>
+			<tr class="gradeA"><td id="dtmedium"/><td id="dtmediumFmt"/><td id="dtmediumSample"/></tr>
+			<tr class="gradeA"><td id="dtshort"/><td id="dtshortFmt"/><td id="dtshortSample"/></tr>
+			<tr class="gradeA"><td rowspan="4">Date </td><td id="datefull"/><td id="datefullFmt"/><td id="datefullSample"/>
+			</tr>
+			<tr class="gradeA"><td id="datelong"/><td id="datelongFmt"/><td id="datelongSample"/></tr>
+			<tr class="gradeA"><td id="datemedium"/><td id="datemediumFmt"/><td id="datemediumSample"/></tr>
+			<tr class="gradeA"><td id="dateshort"/><td id="dateshortFmt"/><td id="dateshortSample"/></tr>
+			<tr class="gradeA"><td rowspan="4">Time </td><td id="timefull"/><td id="timefullFmt"/><td id="timefullSample"/></tr>
+			<tr class="gradeA"><td id="timelong"/><td id="timelongFmt"/><td id="timelongSample"/></tr>
+			<tr class="gradeA"><td id="timemedium"/><td id="timemediumFmt"/><td id="timemediumSample"/></tr>
+			<tr class="gradeA"><td id="timeshort"/><td id="timeshortFmt"/><td id="timeshortSample"/></tr>
+		</tbody>
+	</table>
+	<h1>Data Format: Date/Time Range Duration</h1>
+	<table cellpadding="0" cellspacing="0" border="1" class="display">
+		<thead><tr><th>Date / Time</th><th>length</th><th>Example</th></tr></thead>
+		<tbody>
+			<tr class="gradeA"><td rowspan="4">Date Range </td><td id="daterngfull"/><td id="daterngfullSample"/></tr>
+			<tr class="gradeA"><td id="daternglong"/><td id="daternglongSample"/></tr>
+			<tr class="gradeA"><td id="daterngmedium"/><td id="daterngmediumSample"/></tr>
+			<tr class="gradeA"><td id="daterngshort"/><td id="daterngshortSample"/></tr>
+			<tr class="gradeA"><td rowspan="4">Date Duration </td><td id="datedurfull"/><td id="datedurfullSample"/></tr>
+			<tr class="gradeA"><td id="datedurlong"/><td id="datedurlongSample"/></tr>
+			<tr class="gradeA"><td id="datedurmedium"/><td id="datedurmediumSample"/></tr>
+			<tr class="gradeA"><td id="datedurshort"/><td id="datedurshortSample"/></tr>
+			<tr class="gradeA"><td rowspan="4">Time Duration </td><td id="timedurfull"/><td id="timedurfullSample"/></tr>
+			<tr class="gradeA"><td id="timedurlong"/><td id="timedurlongSample"/></tr>
+			<tr class="gradeA"><td id="timedurmedium"/><td id="timedurmediumSample"/></tr>
+			<tr class="gradeA"><td id="timedurshort"/><td id="timedurshortSample"/></tr>
+		</tbody>
+		</table>
+	</table>
+	<h1>Data Format: Number</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display"  >
+		<thead>
+			<tr><th>Number</th><th>Symbol</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA"><td>Decimal Seperator</td><td id="numDecimalSymbol"/><td id="numDecimal"/></tr>
+			<tr class="gradeA"><td>Percent</td><td id="numPercentSymbol"/><td id="numPercent"/></tr>
+			<tr class="gradeA"><td>Currency</td><td id="numCurrencySymbol" /><td id="numCurrency" /></tr>
+			<tr class="gradeA"><td>Plus</td><td>+</td><td id="numPlus" /></tr>
+			<tr class="gradeA"><td>Minus</td><td>-</td><td id="numMinus" /></tr>
+		</tbody>
+	</table>
+	<h1>Data Format: Phone Number</h1>
+	<table cellpadding="0" cellspacing="0" border="1" class="display"  >
+		<thead>
+			<tr><th>Phone Number</th><th>Input</th><th>Output</th></tr>
+		</thead>
+		<tbody>
+			<tr class="gradeA"><td rowspan="11">Local<td id="localpartial0"/><td id="localpartialfmt0"/></tr>
+			<tr class="gradeA"><td id="localpartial1"/><td id="localpartialfmt1"/></tr>
+			<tr class="gradeA"><td id="localpartial2"/><td id="localpartialfmt2"/></tr>
+			<tr class="gradeA"><td id="localpartial3"/><td id="localpartialfmt3"/></tr>
+			<tr class="gradeA"><td id="localpartial4"/><td id="localpartialfmt4"/></tr>
+			<tr class="gradeA"><td id="localpartial5"/><td id="localpartialfmt5"/></tr>
+			<tr class="gradeA"><td id="localpartial6"/><td id="localpartialfmt6"/></tr>
+			<tr class="gradeA"><td id="localpartial7"/><td id="localpartialfmt7"/></tr>
+			<tr class="gradeA"><td id="localpartial8"/><td id="localpartialfmt8"/></tr>
+			<tr class="gradeA"><td id="localpartial9"/><td id="localpartialfmt9"/></tr>
+			<tr class="gradeA"><td id="localpartial10"/><td id="localpartialfmt10"/></tr>
+			<tr class="gradeA"><td rowspan="12">International</td><td id="intlpartial0"/><td id="intlpartialfmt0"/></tr>
+			<tr class="gradeA"><td id="intlpartial1"/><td id="intlpartialfmt1"/></tr>
+			<tr class="gradeA"><td id="intlpartial2"/><td id="intlpartialfmt2"/></tr>
+			<tr class="gradeA"><td id="intlpartial3"/><td id="intlpartialfmt3"/></tr>
+			<tr class="gradeA"><td id="intlpartial4"/><td id="intlpartialfmt4"/></tr>
+			<tr class="gradeA"><td id="intlpartial5"/><td id="intlpartialfmt5"/></tr>
+			<tr class="gradeA"><td id="intlpartial6"/><td id="intlpartialfmt6"/></tr>
+			<tr class="gradeA"><td id="intlpartial7"/><td id="intlpartialfmt7"/></tr>
+			<tr class="gradeA"><td id="intlpartial8"/><td id="intlpartialfmt8"/></tr>
+			<tr class="gradeA"><td id="intlpartial9"/><td id="intlpartialfmt9"/></tr>
+			<tr class="gradeA"><td id="intlpartial10"/><td id="intlpartialfmt10"/></tr>
+			<tr class="gradeA"><td id="intlpartial11"/><td id="intlpartialfmt11"/></tr>
+			<tr class="gradeA"><td rowspan="11">Service</td><td id="svrpartial0"/><td id="svrpartialfmt0"/></tr>
+			<tr class="gradeA"><td id="svrpartial1"/><td id="svrpartialfmt1"/></tr>
+			<tr class="gradeA"><td id="svrpartial2"/><td id="svrpartialfmt2"/></tr>
+			<tr class="gradeA"><td id="svrpartial3"/><td id="svrpartialfmt3"/></tr>
+			<tr class="gradeA"><td id="svrpartial4"/><td id="svrpartialfmt4"/></tr>
+			<tr class="gradeA"><td id="svrpartial5"/><td id="svrpartialfmt5"/></tr>
+			<tr class="gradeA"><td id="svrpartial6"/><td id="svrpartialfmt6"/></tr>
+			<tr class="gradeA"><td id="svrpartial7"/><td id="svrpartialfmt7"/></tr>
+			<tr class="gradeA"><td id="svrpartial8"/><td id="svrpartialfmt8"/></tr>
+			<tr class="gradeA"><td id="svrpartial9"/><td id="svrpartialfmt9"/></tr>
+			<tr class="gradeA"><td id="svrpartial10"/><td id="svrpartialfmt10"/></tr>
+		</tbody>
+	</table>
+	<div id="footer" class="clear" style="text-align:center;">
+		<span style="font-size:10px;">
+			DataTables designed and created by <a href="http://www.sprymedia.co.uk">Allan Jardine</a> &copy; 2007-2011<br>
+			DataTables is dual licensed under the <a href="http://www.datatables.net/license_gpl2">GPL v2 license</a> or a <a href="http://www.datatables.net/license_bsd">BSD (3-point) license</a>.
+		</span>
+	</div>		
+	</body>
+</html>
