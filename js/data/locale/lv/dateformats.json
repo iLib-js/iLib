@@ -93,13 +93,13 @@
                 "f": "{sy}. gada {sd}. {sm} {st} - {et}"
             },
             "c01": {
-                "s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et} ",
+                "s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
                 "m": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}",
                 "l": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}",
                 "f": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}"
             },
             "c02": {
-                "s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et} ",
+                "s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
                 "m": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}",
                 "l": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}",
                 "f": "{sy}. gada {sd}. {sm} {st} - {ed}. {em} {et}"

@@ -162,7 +162,7 @@ function testDateRngFmtKZRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.2011 - 14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 2011, 30-желт. - 14:30 2011, 31-желт.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
