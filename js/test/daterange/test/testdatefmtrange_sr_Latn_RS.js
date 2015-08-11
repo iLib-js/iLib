@@ -617,7 +617,7 @@ function testDateRngFmtRSRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–novembar - 2014–januar", fmt.format(start, end));
+    assertEquals("2011 novembar - 2014 januar", fmt.format(start, end));
 }
 function testDateRngFmtRSManyYearsFull() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "full"});

@@ -89,7 +89,7 @@ function testDateRngFmtLTRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 gruodžio 31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 2011 m. gruodžio 31 d.", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "full"});

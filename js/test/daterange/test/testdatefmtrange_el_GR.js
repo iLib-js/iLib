@@ -41,7 +41,7 @@ function testDateRngFmtGRInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. - 2:00 μ.μ. 31/12/11", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. - 2:30 μ.μ. 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayMedium() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtGRInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. - 2:00 μ.μ. 31 Δεκ 2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. - 2:30 μ.μ. 31 Δεκ 2011", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayLong() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtGRInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. - 2:00 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. - 2:30 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayFull() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtGRInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. - 2:00 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. - 2:30 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtGRNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtGRNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30/12/11 - 2:00 μ.μ. 31/12/11", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. 30/12/11 - 2:30 μ.μ. 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayMedium() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtGRNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30/Δεκ/2011 - 2:00 μ.μ. 31/Δεκ/2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. 30/Δεκ/2011 - 2:30 μ.μ. 31/Δεκ/2011", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayLong() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtGRNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. 30 - 2:30 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayFull() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtGRNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
+    assertEquals("1:45 μ.μ. 30 - 2:30 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtGRMultiDayShort() {

@@ -89,7 +89,7 @@ function testDateRngFmtDKRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 december 2011 kl. 13.45 - 14.30", fmt.format(start, end));
+    assertEquals("31. december 2011 kl. 13.45 - 14.30", fmt.format(start, end));
 }
 function testDateRngFmtDKRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "da-DK", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtDKRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 den december 2011 kl. 13.45 - 14.30", fmt.format(start, end));
+    assertEquals("den 31. december 2011 kl. 13.45 - 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtDKRangeNextDayShort() {

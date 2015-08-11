@@ -360,7 +360,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/നവം/2011 - 31/ഡിസം/2011", fmt.format(start, end));
+    assertEquals("20 നവം 2011 - 31 ഡിസം 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
@@ -457,7 +457,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/നവം/2011 - 31/ജനു/2012", fmt.format(start, end));
+    assertEquals("20 നവം 2011 - 31 ജനു 2012", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
@@ -554,7 +554,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("നവം/2011 - ജനു/2014", fmt.format(start, end));
+    assertEquals("നവം 2011 - ജനു 2014", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});

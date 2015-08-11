@@ -42,7 +42,7 @@ function testDateRngFmtinRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 म.उ. – 2:30 म.उ. 31-12-11", fmt.format(start, end));
+    assertEquals("1:45 म.उ. – 2:30 म.उ. 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "medium"});

@@ -65,7 +65,7 @@ function testDateRngFmtNLRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31-dec.-2011 13:45-14:30", fmt.format(start, end));
+    assertEquals("31 dec. 2011 13:45 14:30", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});
@@ -162,7 +162,7 @@ function testDateRngFmtNLRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30-dec.-2011 13:45 - 31-dec.-2011 14:30", fmt.format(start, end));
+    assertEquals("30 dec. 2011 13:45 - 31 dec. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});
@@ -259,7 +259,7 @@ function testDateRngFmtNLRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-dec.-2011 - 31-dec.-2011", fmt.format(start, end));
+    assertEquals("20 dec. 2011 - 31 dec. 2011", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});
@@ -356,7 +356,7 @@ function testDateRngFmtNLRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-nov.-2011 - 31-dec.-2011", fmt.format(start, end));
+    assertEquals("20 nov. 2011 - 31 dec. 2011", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});
@@ -453,7 +453,7 @@ function testDateRngFmtNLRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-nov.-2011 - 31-jan.-2012", fmt.format(start, end));
+    assertEquals("20 nov. 2011 - 31 jan. 2012", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});
@@ -550,7 +550,7 @@ function testDateRngFmtNLRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("nov.-2011 - jan.-2014", fmt.format(start, end));
+    assertEquals("nov. 2011 - jan. 2014", fmt.format(start, end));
 }
 function testDateRngFmtNLRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "nl-NL", length: "long"});

@@ -65,7 +65,7 @@ function testDateRngFmtInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm - 2:30 pm, 31/Dec/2011", fmt.format(start, end));
+    assertEquals("1:45 pm - 2:30 pm, 31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtInDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
@@ -162,7 +162,7 @@ function testDateRngFmtNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/Dec 1:45 pm - 31/Dec 2:30 pm, 2011", fmt.format(start, end));
+    assertEquals("30 Dec 1:45 pm - 31 Dec 2:30 pm, 2011", fmt.format(start, end));
 }
 function testDateRngFmtNextDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
@@ -259,7 +259,7 @@ function testDateRngFmtMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31/Dec/2011", fmt.format(start, end));
+    assertEquals("20-31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtMultiDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
@@ -356,7 +356,7 @@ function testDateRngFmtNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/Nov - 31/Dec 2011", fmt.format(start, end));
+    assertEquals("20 Nov - 31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtNextMonthLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
@@ -453,7 +453,7 @@ function testDateRngFmtNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/Nov/2011 - 31/Jan/2012", fmt.format(start, end));
+    assertEquals("20 Nov 2011 - 31 Jan 2012", fmt.format(start, end));
 }
 function testDateRngFmtNextYearLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
@@ -550,7 +550,7 @@ function testDateRngFmtMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Nov/2011 - Jan/2014", fmt.format(start, end));
+    assertEquals("Nov 2011 - Jan 2014", fmt.format(start, end));
 }
 function testDateRngFmtMultiYearLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});

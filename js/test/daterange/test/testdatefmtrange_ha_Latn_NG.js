@@ -43,7 +43,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 11-12-31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 11/12/31", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -91,7 +91,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Disamba 31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 Disamba, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeInDayFull() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "full"});

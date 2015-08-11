@@ -259,7 +259,7 @@ function testDateRngFmtPTRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 de 12 de 2011", fmt.format(start, end));
+    assertEquals("20-31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtPTRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "pt-PT", length: "long"});
@@ -356,7 +356,7 @@ function testDateRngFmtPTRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 de 11 - 31 de 12 de 2011", fmt.format(start, end));
+    assertEquals("20/11 - 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtPTRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "pt-PT", length: "long"});

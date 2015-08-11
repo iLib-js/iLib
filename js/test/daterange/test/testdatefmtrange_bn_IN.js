@@ -163,7 +163,7 @@ function testDateRngFmtinRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ৩০/ডিসেম্বর/২০১১ – ২:৩০ অপরাহ্ণ ৩১/ডিসেম্বর/২০১১", fmt.format(start, end));
+    assertEquals("১:৪৫ অপরাহ্ণ ৩০ ডিসেম্বর, ২০১১ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "long"});
@@ -260,7 +260,7 @@ function testDateRngFmtinRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২০/ডিসেম্বর/২০১১ – ৩১/ডিসেম্বর/২০১১", fmt.format(start, end));
+    assertEquals("২০ ডিসেম্বর ২০১১ – ৩১ ডিসেম্বর ২০১১", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "long"});
@@ -357,7 +357,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২০/নভেম্বর/২০১১ – ৩১/ডিসেম্বর/২০১১", fmt.format(start, end));
+    assertEquals("২০ নভেম্বর ২০১১ – ৩১ ডিসেম্বর ২০১১", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "long"});
@@ -454,7 +454,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২০/নভেম্বর/২০১১ – ৩১/জানুয়ারী/২০১২", fmt.format(start, end));
+    assertEquals("২০ নভেম্বর ২০১১ – ৩১ জানুয়ারী ২০১২", fmt.format(start, end));
 }
 function testDateRngFmtinRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "long"});
@@ -551,7 +551,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("নভেম্বর/২০১১ – জানুয়ারী/২০১৪", fmt.format(start, end));
+    assertEquals("নভেম্বর ২০১১ – জানুয়ারী ২০১৪", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "long"});

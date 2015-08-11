@@ -66,7 +66,7 @@ function testDateRngFmtinRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ ২০১১ ১২ ৩১", fmt.format(start, end));
+    assertEquals("১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ ২০১১-১২-৩১", fmt.format(start, end));
 }
 function testDateRngFmtinRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "long"});

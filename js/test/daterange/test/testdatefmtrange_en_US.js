@@ -66,7 +66,7 @@ function testDateRngFmtInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 PM - 2:30 PM, Dec/31/2011", fmt.format(start, end));
+    assertEquals("1:45 PM - 2:30 PM, Dec 31, 2011", fmt.format(start, end));
 }
 function testDateRngFmtInDayLong() {
     var fmt = new DateRngFmt({length: "long"});
