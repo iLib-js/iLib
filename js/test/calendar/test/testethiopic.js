@@ -235,7 +235,7 @@ function testEthiopicIsLeapYearOnQuadCentennial() {
     assertTrue(cal.isLeapYear(2003));
 }
 
-function testEthiopicNewDateInstance() {
+/*function testEthiopicNewDateInstance() {
     var cal = new EthiopicCal();
     var d = cal.newDateInstance({
     	year: 20,
@@ -246,3 +246,4 @@ function testEthiopicNewDateInstance() {
     assertNotUndefined(d);
     assertEquals("ethiopic", d.cal.type);
 }
+*/

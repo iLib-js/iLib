@@ -156,7 +156,7 @@ function testJulianIsLeapYearOnQuadCentennial() {
     assertTrue(cal.isLeapYear(2000));
 }
 
-function testJulianNewDateInstance() {
+/*function testJulianNewDateInstance() {
     var cal = new ilib.Cal.Julian();
     var d = cal.newDateInstance({
     	year: 20,
@@ -168,3 +168,4 @@ function testJulianNewDateInstance() {
     assertNotUndefined(d.cal);
     assertEquals("julian", d.cal.type);
 }
+*/

@@ -411,7 +411,7 @@ function testHanNewYears() {
     }
 }
 
-function testHanNewDateInstance() {
+/*function testHanNewDateInstance() {
     var cal = new ilib.Cal.Han();
     var d = cal.newDateInstance({
     	year: 4681,
@@ -422,3 +422,4 @@ function testHanNewDateInstance() {
     assertNotUndefined(d);
     assertEquals("han", d.cal.type);
 }
+*/

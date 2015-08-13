@@ -140,7 +140,7 @@ function testGregorianIsLeapYearOnQuadCentennial() {
     assertTrue(cal.isLeapYear(2000));
 }
 
-function testGregorianNewDateInstance() {
+/*function testGregorianNewDateInstance() {
     var cal = new GregorianCal();
     var d = cal.newDateInstance({
     	year: 2012,
@@ -152,4 +152,4 @@ function testGregorianNewDateInstance() {
     assertNotUndefined(d.cal);
     assertEquals("gregorian", d.cal.type);
 }
-
+*/

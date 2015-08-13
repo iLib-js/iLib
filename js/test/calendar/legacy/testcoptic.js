@@ -203,7 +203,7 @@ function testCopticIsLeapYearOnQuadCentennial() {
     assertTrue(cal.isLeapYear(2003));
 }
 
-function testCopticNewDateInstance() {
+/*function testCopticNewDateInstance() {
     var cal = new ilib.Cal.Coptic();
     var d = cal.newDateInstance({
     	year: 20,
@@ -214,3 +214,4 @@ function testCopticNewDateInstance() {
     assertNotUndefined(d);
     assertEquals("coptic", d.cal.type);
 }
+*/
