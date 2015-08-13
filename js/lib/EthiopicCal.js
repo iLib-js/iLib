@@ -113,18 +113,6 @@ EthiopicCal.prototype.getType = function() {
 	return this.type;
 };
 
-/**
- * Return a date instance for this calendar type using the given
- * options.
- * @param {Object} options options controlling the construction of 
- * the date instance
- * @return {IDate} a date appropriate for this calendar type
- * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
- */
-EthiopicCal.prototype.newDateInstance = function (options) {
-	var EthiopicDate = require("./EthiopicDate.js");
-	return new EthiopicDate(options);
-};
 
 /* register this calendar for the factory method */
 Calendar._constructors["ethiopic"] = EthiopicCal;

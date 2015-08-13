@@ -264,7 +264,7 @@ function testIslamicIsLeapYear30() {
     assertFalse(cal.isLeapYear(30));
 }
 
-function testIslamicNewDateInstance() {
+/*function testIslamicNewDateInstance() {
     var cal = new ilib.Cal.Islamic();
     var d = cal.newDateInstance({
     	year: 20,
@@ -276,3 +276,4 @@ function testIslamicNewDateInstance() {
     assertNotUndefined(d.cal);
     assertEquals("islamic", d.cal.type);
 }
+*/
