@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date}မှာ {time}",
-            "long": "{date} {time}",
-            "medium": "{date} {time}",
-            "short": "{date} {time}"
+            "f": "{date}မှာ {time}",
+            "l": "{date} {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
         },
         "date": {
             "dmwy": {

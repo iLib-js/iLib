@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} 'kl.' {time}",
-            "long": "{date} 'kl.' {time}",
-            "medium": "{date}, {time}",
-            "short": "{date}, {time}"
+            "f": "{date} 'kl.' {time}",
+            "l": "{date} 'kl.' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "date": {
             "dmwy": {

@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-function testDateRngFmtinRangeinDayShort() {
+function testDateRngFmtRangeinDayShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -42,7 +42,7 @@ function testDateRngFmtinRangeinDayShort() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 11-12-31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayMedium() {
+function testDateRngFmtRangeinDayMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -66,7 +66,7 @@ function testDateRngFmtinRangeinDayMedium() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31 12 11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayLong() {
+function testDateRngFmtRangeinDayLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -90,7 +90,7 @@ function testDateRngFmtinRangeinDayLong() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 2011 ਦਸੰਬਰ 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayFull() {
+function testDateRngFmtRangeinDayFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -115,7 +115,7 @@ function testDateRngFmtinRangeinDayFull() {
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31 ਦਸੰਬਰ 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextDayShort() {
+function testDateRngFmtRangeNextDayShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -139,7 +139,7 @@ function testDateRngFmtinRangeNextDayShort() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ 11–12–30 – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayMedium() {
+function testDateRngFmtRangeNextDayMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -163,7 +163,7 @@ function testDateRngFmtinRangeNextDayMedium() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ 11–12–30 – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayLong() {
+function testDateRngFmtRangeNextDayLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -187,7 +187,7 @@ function testDateRngFmtinRangeNextDayLong() {
 	});
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ 2011–ਦਸੰਬਰ–30 – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayFull() {
+function testDateRngFmtRangeNextDayFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -212,7 +212,7 @@ function testDateRngFmtinRangeNextDayFull() {
     assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ 2011–ਦਸੰਬਰ–30 – 2:30 ਬਾਅਦ ਦੁਪਹਿਰ 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiDayShort() {
+function testDateRngFmtRangeMultiDayShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -236,7 +236,7 @@ function testDateRngFmtinRangeMultiDayShort() {
 	});
     assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayMedium() {
+function testDateRngFmtRangeMultiDayMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -260,7 +260,7 @@ function testDateRngFmtinRangeMultiDayMedium() {
 	});
     assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayLong() {
+function testDateRngFmtRangeMultiDayLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -284,7 +284,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 	});
     assertEquals("2011–ਦਸੰਬਰ–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayFull() {
+function testDateRngFmtRangeMultiDayFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -309,7 +309,7 @@ function testDateRngFmtinRangeMultiDayFull() {
     assertEquals("2011–ਦਸੰਬਰ–20 – 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextMonthShort() {
+function testDateRngFmtRangeNextMonthShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -333,7 +333,7 @@ function testDateRngFmtinRangeNextMonthShort() {
 	});
     assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthMedium() {
+function testDateRngFmtRangeNextMonthMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -357,7 +357,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 	});
     assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthLong() {
+function testDateRngFmtRangeNextMonthLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -381,7 +381,7 @@ function testDateRngFmtinRangeNextMonthLong() {
 	});
     assertEquals("2011–ਨਵੰਬਰ–20 – ਦਸੰਬਰ–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthFull() {
+function testDateRngFmtRangeNextMonthFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -406,7 +406,7 @@ function testDateRngFmtinRangeNextMonthFull() {
     assertEquals("2011–ਨਵੰਬਰ–20 – ਦਸੰਬਰ–31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextYearShort() {
+function testDateRngFmtRangeNextYearShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -430,7 +430,7 @@ function testDateRngFmtinRangeNextYearShort() {
 	});
     assertEquals("11–11–20 – 12–1–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearMedium() {
+function testDateRngFmtRangeNextYearMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -454,7 +454,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 	});
     assertEquals("11–11–20 – 12–01–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearLong() {
+function testDateRngFmtRangeNextYearLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -478,7 +478,7 @@ function testDateRngFmtinRangeNextYearLong() {
 	});
     assertEquals("2011–ਨਵੰਬਰ–20 – 2012–ਜਨਵਰੀ–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearFull() {
+function testDateRngFmtRangeNextYearFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -503,7 +503,7 @@ function testDateRngFmtinRangeNextYearFull() {
     assertEquals("2011–ਨਵੰਬਰ–20 – 2012–ਜਨਵਰੀ–31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiYearShort() {
+function testDateRngFmtRangeMultiYearShort_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -527,7 +527,7 @@ function testDateRngFmtinRangeMultiYearShort() {
 	});
     assertEquals("11–11 – 14–1", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearMedium() {
+function testDateRngFmtRangeMultiYearMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -551,7 +551,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 	});
     assertEquals("11–11 – 14–01", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearLong() {
+function testDateRngFmtRangeMultiYearLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -575,7 +575,7 @@ function testDateRngFmtinRangeMultiYearLong() {
 	});
     assertEquals("2011–ਨਵੰਬਰ – 2014–ਜਨਵਰੀ", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearFull() {
+function testDateRngFmtRangeMultiYearFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -599,7 +599,7 @@ function testDateRngFmtinRangeMultiYearFull() {
 	});
     assertEquals("2011–ਨਵੰਬਰ – 2014–ਜਨਵਰੀ", fmt.format(start, end));
 }
-function testDateRngFmtinManyYearsFull() {
+function testDateRngFmtManyYearsFull_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     

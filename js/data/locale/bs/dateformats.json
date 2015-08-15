@@ -4,11 +4,7 @@
             "f": "{date} 'u' {time}",
             "l": "{date} 'u' {time}",
             "m": "{date} {time}",
-            "s": "{date} {time}",
-            "full": "{date} 'u' {time}",
-            "long": "{date} 'u' {time}",
-            "medium": "{date} {time}",
-            "short": "{date} {time}"
+            "s": "{date} {time}"
         },
         "date": {
             "dmwy": {

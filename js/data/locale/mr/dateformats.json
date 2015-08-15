@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} 'रोजी' {time}",
-            "long": "{date} 'रोजी' {time}",
-            "medium": "{date}, {time}",
-            "short": "{date}, {time}"
+            "f": "{date} 'रोजी' {time}",
+            "l": "{date} 'रोजी' {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "date": {
             "dmwy": {

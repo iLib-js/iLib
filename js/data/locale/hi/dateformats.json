@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} को {time}",
-            "long": "{date} को {time}",
-            "medium": "{date}, {time}",
-            "short": "{date}, {time}"
+            "f": "{date} को {time}",
+            "l": "{date} को {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "date": {
             "dmwy": {

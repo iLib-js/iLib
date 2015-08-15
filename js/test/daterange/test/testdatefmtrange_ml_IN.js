@@ -23,7 +23,7 @@
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
 //needs translation for a.m.-p.m.
-/*function testDateRngFmtinRangeinDayShort() {
+function testDateRngFmtRangeinDayShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -47,7 +47,7 @@ var DateRngFmt = require("./../lib/DateRngFmt.js");
 	});
     assertEquals("1:45 X - 2:30 X 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayMedium() {
+function testDateRngFmtRangeinDayMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -71,7 +71,7 @@ function testDateRngFmtinRangeinDayMedium() {
 	});
     assertEquals("1:45 X - 2:30 X 11, 12 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayLong() {
+function testDateRngFmtRangeinDayLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -95,7 +95,7 @@ function testDateRngFmtinRangeinDayLong() {
 	});
     assertEquals("1:45 X - 2:30 X 2011 ഡിസം 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayFull() {
+function testDateRngFmtRangeinDayFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -120,7 +120,7 @@ function testDateRngFmtinRangeinDayFull() {
     assertEquals("1:45 X - 2:30 X 2011, ഡിസംബർ 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextDayShort() {
+function testDateRngFmtRangeNextDayShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -144,7 +144,7 @@ function testDateRngFmtinRangeNextDayShort() {
 	});
     assertEquals("1:45 X 30/12/11 - 2:30 X 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayMedium() {
+function testDateRngFmtRangeNextDayMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -168,7 +168,7 @@ function testDateRngFmtinRangeNextDayMedium() {
 	});
     assertEquals("1:45 X 30/12/11 - 2:30 X 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayLong() {
+function testDateRngFmtRangeNextDayLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -192,7 +192,7 @@ function testDateRngFmtinRangeNextDayLong() {
 	});
     assertEquals("1:45 X 2011 ഡിസം 30 - 2:30 X 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayFull() {
+function testDateRngFmtRangeNextDayFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -216,8 +216,8 @@ function testDateRngFmtinRangeNextDayFull() {
 	});
     assertEquals("1:45 X 2011 ഡിസംബർ 30 - 2:30 X 31", fmt.format(start, end));
 }
-*/
-function testDateRngFmtinRangeMultiDayShort() {
+
+function testDateRngFmtRangeMultiDayShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -241,7 +241,7 @@ function testDateRngFmtinRangeMultiDayShort() {
 	});
     assertEquals("20/12/11 - 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayMedium() {
+function testDateRngFmtRangeMultiDayMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -265,7 +265,7 @@ function testDateRngFmtinRangeMultiDayMedium() {
 	});
     assertEquals("20/ഡിസം/2011 - 31/ഡിസം/2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayLong() {
+function testDateRngFmtRangeMultiDayLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -289,7 +289,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 	});
     assertEquals("2011 ഡിസംബർ 20 - 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayFull() {
+function testDateRngFmtRangeMultiDayFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -314,7 +314,7 @@ function testDateRngFmtinRangeMultiDayFull() {
     assertEquals("2011 ഡിസംബർ 20 - 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextMonthShort() {
+function testDateRngFmtRangeNextMonthShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -338,7 +338,7 @@ function testDateRngFmtinRangeNextMonthShort() {
 	});
     assertEquals("20/11/11 - 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthMedium() {
+function testDateRngFmtRangeNextMonthMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -362,7 +362,7 @@ function testDateRngFmtinRangeNextMonthMedium() {
 	});
     assertEquals("20 നവം 2011 - 31 ഡിസം 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthLong() {
+function testDateRngFmtRangeNextMonthLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -386,7 +386,7 @@ function testDateRngFmtinRangeNextMonthLong() {
 	});
     assertEquals("2011 നവംബർ 20 - ഡിസംബർ 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthFull() {
+function testDateRngFmtRangeNextMonthFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -411,7 +411,7 @@ function testDateRngFmtinRangeNextMonthFull() {
     assertEquals("2011 നവംബർ 20 - ഡിസംബർ 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextYearShort() {
+function testDateRngFmtRangeNextYearShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -435,7 +435,7 @@ function testDateRngFmtinRangeNextYearShort() {
 	});
     assertEquals("20/11/11 - 31/01/12", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearMedium() {
+function testDateRngFmtRangeNextYearMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -459,7 +459,7 @@ function testDateRngFmtinRangeNextYearMedium() {
 	});
     assertEquals("20 നവം 2011 - 31 ജനു 2012", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearLong() {
+function testDateRngFmtRangeNextYearLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -483,7 +483,7 @@ function testDateRngFmtinRangeNextYearLong() {
 	});
     assertEquals("2011 നവംബർ 20 - 2012 ജനുവരി 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearFull() {
+function testDateRngFmtRangeNextYearFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -508,7 +508,7 @@ function testDateRngFmtinRangeNextYearFull() {
     assertEquals("2011 നവംബർ 20 - 2012 ജനുവരി 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiYearShort() {
+function testDateRngFmtRangeMultiYearShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -532,7 +532,7 @@ function testDateRngFmtinRangeMultiYearShort() {
 	});
     assertEquals("11/11 - 01/14", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearMedium() {
+function testDateRngFmtRangeMultiYearMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -556,7 +556,7 @@ function testDateRngFmtinRangeMultiYearMedium() {
 	});
     assertEquals("നവം 2011 - ജനു 2014", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearLong() {
+function testDateRngFmtRangeMultiYearLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -580,7 +580,7 @@ function testDateRngFmtinRangeMultiYearLong() {
 	});
     assertEquals("2011 നവംബർ - 2014 ജനുവരി", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearFull() {
+function testDateRngFmtRangeMultiYearFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -604,7 +604,7 @@ function testDateRngFmtinRangeMultiYearFull() {
 	});
     assertEquals("2011–നവംബർ - 2014–ജനുവരി", fmt.format(start, end));
 }
-function testDateRngFmtinManyYearsFull() {
+function testDateRngFmtManyYearsFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     

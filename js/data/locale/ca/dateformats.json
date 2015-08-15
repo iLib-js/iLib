@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} 'a les' {time}",
-            "long": "{date}, {time}",
-            "medium": "{date} , {time}",
-            "short": "{date} {time}"
+            "f": "{date} 'a les' {time}",
+            "l": "{date}, {time}",
+            "m": "{date} , {time}",
+            "s": "{date} {time}"
         },
         "date": {
             "dmwy": {
@@ -65,8 +65,8 @@
         "range": {
             "c00": {
                 "m": "{st} - {et} {sd}/{sm}/{sy}",
-                "l": "{st} - {et} {sd} {sm} {sy}",
-                "f": "{st} - {et} {sm} de {sy}"
+                "l": "{st} - {et} {sd} {sm} de {sy}",
+                "f": "{st} - {et} {sd} {sm} de {sy}"
             },
             "c01": {
                 "s": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",

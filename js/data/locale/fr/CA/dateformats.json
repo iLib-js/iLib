@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} 'à' {time}",
-            "long": "{date} 'à' {time}",
-            "medium": "{date} {time}",
-            "short": "{date} {time}"
+            "f": "{date} 'à' {time}",
+            "l": "{date} 'à' {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
         },
         "date": {
             "dmwy": {
@@ -44,6 +44,48 @@
             "l": {
                 "s": "MM"
             }
-        }
+        },
+        "range": {
+	        "c00": {
+	            "s": "{sy}-{sm}-{sd} {st} - {et}",
+	            "m": "{sy}-{sm}-{sd} {st} - {et}",
+	            "l": "{sd} {sm} {sy} à {st} - {et}",
+	            "f": "{sd} {sm} {sy} à {st} - {et}"
+	        },
+	        "c01": {
+	            "s": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "m": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "l": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}",
+	            "f": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}"
+	        },
+	        "c02": {
+	            "s": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "m": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "l": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}",
+	            "f": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}"
+	        },
+	        "c03": {
+	            "s": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "m": "{sy}-{sm}-{sd} {st} - {ey}-{em}-{ed} {et}",
+	            "l": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}",
+	            "f": "{sd} {sm} {sy} à {st} - {ed} {em} {ey} à {et}"
+	        },
+	        "c10": {
+	            "s": "{sy}-{sm}-{sd} - {ed}",
+	            "m": "{sy}-{sm}-{sd} - {ed}"
+	        },
+	        "c11": {
+	            "s": "{sy}-{sm}-{sd} - {em}-{sd}",
+	            "m": "{sy}-{sm}-{sd} - {em}-{sd}"
+	        },
+	        "c12": {
+	            "s": "{sy}-{sm}-{sd} - {ey}-{em}-{ed}",
+	            "m": "{sy}-{sm}-{sd} - {ey}-{em}-{ed}"
+	        },
+	        "c20": {
+	            "s": "{sy}-{sm} - {ey}-{em}",
+	            "m": "{sy}-{sm} - {ey}-{em}"
+	        }
+         }
     }
 }

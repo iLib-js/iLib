@@ -26,7 +26,7 @@ function testDateRngFmtGRInDayShort() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -35,7 +35,7 @@ function testDateRngFmtGRInDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -50,7 +50,7 @@ function testDateRngFmtGRInDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -59,7 +59,7 @@ function testDateRngFmtGRInDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -74,7 +74,7 @@ function testDateRngFmtGRInDayLong() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -83,7 +83,7 @@ function testDateRngFmtGRInDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -98,7 +98,7 @@ function testDateRngFmtGRInDayFull() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -107,7 +107,7 @@ function testDateRngFmtGRInDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -123,7 +123,7 @@ function testDateRngFmtGRNextDayShort() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -132,7 +132,7 @@ function testDateRngFmtGRNextDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -147,7 +147,7 @@ function testDateRngFmtGRNextDayMedium() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -156,7 +156,7 @@ function testDateRngFmtGRNextDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -171,7 +171,7 @@ function testDateRngFmtGRNextDayLong() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -180,7 +180,7 @@ function testDateRngFmtGRNextDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -195,7 +195,7 @@ function testDateRngFmtGRNextDayFull() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -204,7 +204,7 @@ function testDateRngFmtGRNextDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -220,7 +220,7 @@ function testDateRngFmtGRMultiDayShort() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -229,7 +229,7 @@ function testDateRngFmtGRMultiDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -244,7 +244,7 @@ function testDateRngFmtGRMultiDayMedium() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -253,7 +253,7 @@ function testDateRngFmtGRMultiDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -268,7 +268,7 @@ function testDateRngFmtGRMultiDayLong() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -277,7 +277,7 @@ function testDateRngFmtGRMultiDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -292,7 +292,7 @@ function testDateRngFmtGRMultiDayFull() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -301,7 +301,7 @@ function testDateRngFmtGRMultiDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -317,7 +317,7 @@ function testDateRngFmtGRNextMonthShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -326,7 +326,7 @@ function testDateRngFmtGRNextMonthShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -341,7 +341,7 @@ function testDateRngFmtGRNextMonthMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -350,7 +350,7 @@ function testDateRngFmtGRNextMonthMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -365,7 +365,7 @@ function testDateRngFmtGRNextMonthLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -374,7 +374,7 @@ function testDateRngFmtGRNextMonthLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -389,7 +389,7 @@ function testDateRngFmtGRNextMonthFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -398,7 +398,7 @@ function testDateRngFmtGRNextMonthFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -414,7 +414,7 @@ function testDateRngFmtGRNextYearShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -423,7 +423,7 @@ function testDateRngFmtGRNextYearShort() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -438,7 +438,7 @@ function testDateRngFmtGRNextYearMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -447,7 +447,7 @@ function testDateRngFmtGRNextYearMedium() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -462,7 +462,7 @@ function testDateRngFmtGRNextYearLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -471,7 +471,7 @@ function testDateRngFmtGRNextYearLong() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -486,7 +486,7 @@ function testDateRngFmtGRNextYearFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -495,7 +495,7 @@ function testDateRngFmtGRNextYearFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -511,7 +511,7 @@ function testDateRngFmtGRMultiYearShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -520,7 +520,7 @@ function testDateRngFmtGRMultiYearShort() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -535,7 +535,7 @@ function testDateRngFmtGRMultiYearMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -544,7 +544,7 @@ function testDateRngFmtGRMultiYearMedium() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -559,7 +559,7 @@ function testDateRngFmtGRMultiYearLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -568,7 +568,7 @@ function testDateRngFmtGRMultiYearLong() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -583,7 +583,7 @@ function testDateRngFmtGRMultiYearFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -592,7 +592,7 @@ function testDateRngFmtGRMultiYearFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -607,7 +607,7 @@ function testDateRngFmtGRManyYearsFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mGRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -616,7 +616,7 @@ function testDateRngFmtGRManyYearsFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mGRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});

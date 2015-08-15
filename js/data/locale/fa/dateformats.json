@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date}، ساعت {time}",
-            "long": "{date}، ساعت {time}",
-            "medium": "{date}،‏ {time}",
-            "short": "{date}،‏ {time}"
+            "f": "{date}، ساعت {time}",
+            "l": "{date}، ساعت {time}",
+            "m": "{date}،‏ {time}",
+            "s": "{date}،‏ {time}"
         },
         "date": {
             "dmwy": {
@@ -146,10 +146,10 @@
     },
     "persian": {
         "order": {
-            "full": "{date}، ساعت {time}",
-            "long": "{date}، ساعت {time}",
-            "medium": "{date}،‏ {time}",
-            "short": "{date}،‏ {time}"
+            "f": "{date}، ساعت {time}",
+            "l": "{date}، ساعت {time}",
+            "m": "{date}،‏ {time}",
+            "s": "{date}،‏ {time}"
         },
         "date": {
             "dmwy": {

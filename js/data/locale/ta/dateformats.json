@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} ’அன்று’ {time}",
-            "long": "{date} ’அன்று’ {time}",
-            "medium": "{date}, {time}",
-            "short": "{date}, {time}"
+            "f": "{date} ’அன்று’ {time}",
+            "l": "{date} ’அன்று’ {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "date": {
             "dmwy": {

@@ -1,10 +1,10 @@
 {
     "gregorian": {
         "order": {
-            "full": "{date} בשעה {time}",
-            "long": "{date} בשעה {time}",
-            "medium": "{date}, {time}",
-            "short": "{date}, {time}"
+            "f": "{date} בשעה {time}",
+            "l": "{date} בשעה {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
         },
         "date": {
             "dmwy": {

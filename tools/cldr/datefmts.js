@@ -446,10 +446,10 @@ module.exports = {
         		calendar.order = convertOrderFormat(order);
         	} else {
         		calendar.order = {
-        			"full": convertOrderFormat(order),
-        			"long": convertOrderFormat(cldrCalendar.dateTimeFormats["long"]),
-        			"medium": convertOrderFormat(cldrCalendar.dateTimeFormats["medium"]),
-        			"short": convertOrderFormat(cldrCalendar.dateTimeFormats["short"])
+        			"f": convertOrderFormat(order),
+        			"l": convertOrderFormat(cldrCalendar.dateTimeFormats["long"]),
+        			"m": convertOrderFormat(cldrCalendar.dateTimeFormats["medium"]),
+        			"s": convertOrderFormat(cldrCalendar.dateTimeFormats["short"])
         		};
         	}
 
