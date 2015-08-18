@@ -214,7 +214,7 @@ function testDateFmtDateTimeSimpleShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۹/۲۹ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_fa_IR() {
@@ -236,7 +236,7 @@ function testDateFmtDateTimeSimpleMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۹ سپتامبر ۲۰۱۱ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۹ سپتامبر ۲۰۱۱،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_fa_IR() {
@@ -258,7 +258,7 @@ function testDateFmtDateTimeSimpleLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۹ سپتامبر ۲۰۱۱ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_fa_IR() {
@@ -280,7 +280,7 @@ function testDateFmtDateTimeSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۹ سپتامبر ۲۰۱۱ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۹ سپتامبر ۲۰۱۱، ساعت ‏۱۳:۴۵", fmt.format(date));
 }
 
 
@@ -539,7 +539,7 @@ function testDateFmtTypeDateTime_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۹/۲۹ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۰۱۱/۹/۲۹،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 
@@ -2076,7 +2076,7 @@ function testDateFmtPersDateTimeSimpleShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۲/۹/۲۱ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۱۳۹۲/۹/۲۱،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
@@ -2098,7 +2098,7 @@ function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۱ آذر ۱۳۹۲،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtPersDateTimeSimpleLong_fa_IR() {
@@ -2120,7 +2120,7 @@ function testDateFmtPersDateTimeSimpleLong_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۱ آذر ۱۳۹۲، ساعت ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtPersDateTimeSimpleFull_fa_IR() {
@@ -2142,5 +2142,5 @@ function testDateFmtPersDateTimeSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۲۱ آذر ۱۳۹۲، ساعت ‏۱۳:۴۵", fmt.format(date));
 }

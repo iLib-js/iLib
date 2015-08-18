@@ -108,7 +108,7 @@ function testDateFmtINSimpleTimeShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeMedium() {
@@ -125,7 +125,7 @@ function testDateFmtINSimpleTimeMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeLong() {
@@ -142,7 +142,7 @@ function testDateFmtINSimpleTimeLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeFull() {
@@ -159,7 +159,7 @@ function testDateFmtINSimpleTimeFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleShort() {
@@ -176,7 +176,7 @@ function testDateFmtINDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 1:45 pm", fmt.format(date));
+    assertEquals("29/09/11 1:45pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium() {
@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29-Sep-2011 1:45 pm", fmt.format(date));
+    assertEquals("29-Sep-2011 1:45pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("29 September 2011 1:45pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("29 September 2011 1:45pm", fmt.format(date));
 }
 
 
@@ -433,7 +433,7 @@ function testDateFmtINTypeTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINTypeDateTime() {
@@ -450,7 +450,7 @@ function testDateFmtINTypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 1:45 pm", fmt.format(date));
+    assertEquals("29/09/11 1:45pm", fmt.format(date));
 }
 
 
@@ -468,7 +468,7 @@ function testDateFmtINShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsM() {
@@ -861,7 +861,7 @@ function testDateFmtINShortTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMZ() {
@@ -883,7 +883,7 @@ function testDateFmtINShortTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm IST", fmt.format(date));
+    assertEquals("1:45pm IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMAZ() {
@@ -905,7 +905,7 @@ function testDateFmtINShortTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm IST", fmt.format(date));
+    assertEquals("1:45pm IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSA() {
@@ -922,7 +922,7 @@ function testDateFmtINShortTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm", fmt.format(date));
+    assertEquals("1:45:37pm", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSZ() {
@@ -944,7 +944,7 @@ function testDateFmtINShortTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm IST", fmt.format(date));
+    assertEquals("1:45:37pm IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSAZ() {
@@ -966,7 +966,7 @@ function testDateFmtINShortTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm IST", fmt.format(date));
+    assertEquals("1:45:37pm IST", fmt.format(date));
 }
 
 
@@ -1052,7 +1052,7 @@ function testDateFmtINFullTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMS() {
@@ -1069,7 +1069,7 @@ function testDateFmtINFullTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm", fmt.format(date));
+    assertEquals("1:45:37pm", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMA() {
@@ -1086,7 +1086,7 @@ function testDateFmtINFullTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm", fmt.format(date));
+    assertEquals("1:45pm", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMZ() {
@@ -1109,7 +1109,7 @@ function testDateFmtINFullTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm IST", fmt.format(date));
+    assertEquals("1:45pm IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMAZ() {
@@ -1132,7 +1132,7 @@ function testDateFmtINFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm IST", fmt.format(date));
+    assertEquals("1:45pm IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSA() {
@@ -1149,7 +1149,7 @@ function testDateFmtINFullTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm", fmt.format(date));
+    assertEquals("1:45:37pm", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSZ() {
@@ -1172,7 +1172,7 @@ function testDateFmtINFullTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm IST", fmt.format(date));
+    assertEquals("1:45:37pm IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSAZ() {
@@ -1195,7 +1195,7 @@ function testDateFmtINFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm IST", fmt.format(date));
+    assertEquals("1:45:37pm IST", fmt.format(date));
 }
 
 function testDateFmtINWithTimeZoneAndNoDST() {
@@ -1218,6 +1218,6 @@ function testDateFmtINWithTimeZoneAndNoDST() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 pm IST", fmt.format(date));
+    assertEquals("1:45:37pm IST", fmt.format(date));
 }
 

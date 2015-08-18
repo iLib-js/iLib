@@ -398,7 +398,7 @@ function testDateFmtGetTemplateTypeDateTime() {
     var fmt = new DateFmt({type: "datetime"});
     assertNotNull(fmt);
     
-    assertEquals("M/d/yy h:mm a", fmt.getTemplate());
+    assertEquals("M/d/yy, h:mm a", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTypeTime() {
@@ -2229,7 +2229,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/09/2011 6:45 am AEST", fmt.format(date));
+    assertEquals("21/09/2011 6:45am AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
@@ -2337,7 +2337,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, September 20, 2011 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -2361,7 +2361,7 @@ function testDateFmtenPH() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, September 20, 2011 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPK() {
@@ -2385,7 +2385,7 @@ function testDateFmtenPK() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
 };
 
 function testDateFmtenAU() {
@@ -2409,7 +2409,7 @@ function testDateFmtenAU() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, 20 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45pm", fmt.format(date));
 };
 
 function testDateFmtenZA() {
@@ -2433,7 +2433,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtesES() {
@@ -2842,7 +2842,7 @@ function testDateFmtAltCalThaiInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Karakadakhom 3, 2557 8:45 PM", fmt.format(date));
+    assertEquals("Karakadakhom 3, 2557 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalHebrewInEnglish() {
@@ -2860,7 +2860,7 @@ function testDateFmtAltCalHebrewInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Tammuz 6, 5774 8:45 PM", fmt.format(date));
+    assertEquals("Tammuz 6, 5774 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalIslamicInEnglish() {
@@ -2878,7 +2878,7 @@ function testDateFmtAltCalIslamicInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Ramaḍān 5, 1435 8:45 PM", fmt.format(date));
+    assertEquals("Ramaḍān 5, 1435 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalPersianInEnglish() {
@@ -2896,7 +2896,7 @@ function testDateFmtAltCalPersianInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Tir 12, 1393 8:45 PM", fmt.format(date));
+    assertEquals("Tir 12, 1393 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtGetMeridiemsRangeLength_with_am_ET_locale() {
