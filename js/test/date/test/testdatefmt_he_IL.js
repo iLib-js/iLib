@@ -170,7 +170,7 @@ function testDateFmtDateTimeSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011 ‏13:45", fmt.format(date));
+    assertEquals("‏29.9.2011, ‏13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_he_IL() {
@@ -187,7 +187,7 @@ function testDateFmtDateTimeSimpleMedium_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29 בספט׳ 2011 ‏13:45", fmt.format(date));
+    assertEquals("‏29 בספט׳ 2011, ‏13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_he_IL() {
@@ -204,7 +204,7 @@ function testDateFmtDateTimeSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29 בספטמבר 2011 ‏13:45", fmt.format(date));
+    assertEquals("29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_he_IL() {
@@ -221,7 +221,7 @@ function testDateFmtDateTimeSimpleFull_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29 בספטמבר 2011 ‏13:45", fmt.format(date));
+    assertEquals("29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
 }
 
 
@@ -429,7 +429,7 @@ function testDateFmtTypeDateTime_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011 ‏13:45", fmt.format(date));
+    assertEquals("‏29.9.2011, ‏13:45", fmt.format(date));
 }
 
 

@@ -176,7 +176,7 @@ function testDateFmtPLDateTimeSimpleShort_pl_PL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011 13:45", fmt.format(date));
+    assertEquals("29.09.2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtPLDateTimeSimpleMedium_pl_PL() {
@@ -193,7 +193,7 @@ function testDateFmtPLDateTimeSimpleMedium_pl_PL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 wrz 2011 13:45", fmt.format(date));
+    assertEquals("29 wrz 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtPLDateTimeSimpleLong_pl_PL() {
@@ -432,7 +432,7 @@ function testDateFmtPLTypeDateTime_pl_PL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011 13:45", fmt.format(date));
+    assertEquals("29.09.2011, 13:45", fmt.format(date));
 }
 
 

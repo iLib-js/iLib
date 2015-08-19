@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-09-29 13:45", fmt.format(date));
+    assertEquals("2011-09-29, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_mn_Cyrl_MN() {
@@ -452,7 +452,7 @@ function testDateFmtTypeDateTime_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-09-29 13:45", fmt.format(date));
+    assertEquals("2011-09-29, 13:45", fmt.format(date));
 }
 
 

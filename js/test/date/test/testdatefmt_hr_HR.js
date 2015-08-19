@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. rujna 2011. 13:45", fmt.format(date));
+    assertEquals("29. rujna 2011. u 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_hr_HR() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. rujna 2011. 13:45", fmt.format(date));
+    assertEquals("29. rujna 2011. u 13:45", fmt.format(date));
 }
 
 

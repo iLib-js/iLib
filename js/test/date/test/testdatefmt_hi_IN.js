@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 अपराह्न", fmt.format(date));
+    assertEquals("29/9/11, 1:45 अपराह्न", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_hi_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 1:45 अपराह्न", fmt.format(date));
+    assertEquals("29/09/2011, 1:45 अपराह्न", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_hi_IN() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleLong_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सितंबर 2011 1:45 अपराह्न", fmt.format(date));
+    assertEquals("29 सितंबर 2011 को 1:45 अपराह्न", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_hi_IN() {
@@ -244,7 +244,7 @@ function testDateFmtINDateTimeSimpleFull_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सितंबर 2011 1:45 अपराह्न", fmt.format(date));
+    assertEquals("29 सितंबर 2011 को 1:45 अपराह्न", fmt.format(date));
 }
 
 
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 अपराह्न", fmt.format(date));
+    assertEquals("29/9/11, 1:45 अपराह्न", fmt.format(date));
 }
 
 

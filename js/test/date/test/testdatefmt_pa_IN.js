@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 ਬਾ.ਦੁ.", fmt.format(date));
+    assertEquals("29/9/11, 1:45 ਬਾ.ਦੁ.", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_pa_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ਸਤੰ 2011 1:45 ਬਾ.ਦੁ.", fmt.format(date));
+    assertEquals("29 ਸਤੰ 2011, 1:45 ਬਾ.ਦੁ.", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_pa_IN() {
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 ਬਾ.ਦੁ.", fmt.format(date));
+    assertEquals("29/9/11, 1:45 ਬਾ.ਦੁ.", fmt.format(date));
 }
 
 

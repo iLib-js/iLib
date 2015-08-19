@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_nb_NO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011 13.45", fmt.format(date));
+    assertEquals("29.09.2011, 13.45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_nb_NO() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_nb_NO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. sep. 2011 13.45", fmt.format(date));
+    assertEquals("29. sep. 2011, 13.45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_nb_NO() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_nb_NO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. september 2011 13.45", fmt.format(date));
+    assertEquals("29. september 2011 kl. 13.45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_nb_NO() {
@@ -435,7 +435,7 @@ function testDateFmtTypeDateTime_nb_NO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011 13.45", fmt.format(date));
+    assertEquals("29.09.2011, 13.45", fmt.format(date));
 }
 
 

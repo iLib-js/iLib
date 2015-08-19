@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11 1:45 pasdite", fmt.format(date));
+    assertEquals("29.9.11, 1:45 pasdite", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_sq_AL() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sht 2011 1:45 pasdite", fmt.format(date));
+    assertEquals("29 Sht 2011, 1:45 pasdite", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_sq_AL() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleLong_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 shtator 2011 1:45 pasdite", fmt.format(date));
+    assertEquals("29 shtator 2011 në 1:45 pasdite", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_sq_AL() {
@@ -244,7 +244,7 @@ function testDateFmtINDateTimeSimpleFull_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 shtator 2011 1:45 pasdite", fmt.format(date));
+    assertEquals("29 shtator 2011 në 1:45 pasdite", fmt.format(date));
 }
 
 
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11 1:45 pasdite", fmt.format(date));
+    assertEquals("29.9.11, 1:45 pasdite", fmt.format(date));
 }
 
 

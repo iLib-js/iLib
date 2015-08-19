@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 म.उ.", fmt.format(date));
+    assertEquals("29/9/11, 1:45 म.उ.", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_mr_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सप्टें, 2011 1:45 म.उ.", fmt.format(date));
+    assertEquals("29 सप्टें, 2011, 1:45 म.उ.", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_mr_IN() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सप्टेंबर, 2011 1:45 म.उ.", fmt.format(date));
+    assertEquals("29 सप्टेंबर, 2011 रोजी 1:45 म.उ.", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_mr_IN() {
@@ -244,7 +244,7 @@ function testDateFmtINDateTimeSimpleFull_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सप्टेंबर, 2011 1:45 म.उ.", fmt.format(date));
+    assertEquals("29 सप्टेंबर, 2011 रोजी 1:45 म.उ.", fmt.format(date));
 }
 
 function testDateFmtINTemplateCalendar_mr_IN() {
@@ -450,7 +450,7 @@ function testDateFmtINTypeDateTime_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45 म.उ.", fmt.format(date));
+    assertEquals("29/9/11, 1:45 म.उ.", fmt.format(date));
 }
 
 
