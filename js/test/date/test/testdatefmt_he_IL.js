@@ -204,7 +204,7 @@ function testDateFmtDateTimeSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
+    assertEquals("‏29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_he_IL() {
@@ -221,7 +221,7 @@ function testDateFmtDateTimeSimpleFull_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
+    assertEquals("‏29 בספטמבר 2011 בשעה ‏13:45", fmt.format(date));
 }
 
 
