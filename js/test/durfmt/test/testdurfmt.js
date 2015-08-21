@@ -4439,8 +4439,6 @@ function testDurFmtKOFormatFull() {
     assertEquals("1년, 1개월, 1주, 1일, 1시간, 1분, 1초 및 1밀리초", duration.toString());
 };
 
-
-/*
 function testDurFmtKUFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
     	locale: "ku-Arab-IQ",
@@ -4556,7 +4554,6 @@ function testDurFmtKUFormatFull() {
     });
     assertEquals("1 ساڵ , 1 مانگ, 1 حهفته , 1 رۆژ, 1 كاژێر, 1 خولەک, و 1 چرکه", duration.toString());
 };
-*/
 
 //test cases for lt-LT
 
@@ -4915,7 +4912,6 @@ function testDurFmtMKFormatFull() {
 
 //test cases for mn-Cyrl-MN
 
-/*
 function testDurFmtMNFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
     	locale: "mn-Cyrl-MN",
@@ -5031,8 +5027,6 @@ function testDurFmtMNFormatFull() {
     });
     assertEquals("", duration.toString());
 };
-
-*/
 
 //test cases for ms-MY
 
@@ -6440,7 +6434,7 @@ function testDurFmtUKUAFormatFull() {
 };
 
 //test cases for uz-Cyrl-UZ
-/*
+
 function testDurFmtUZFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
     	locale: "uz-Cyrl-UZ",
@@ -6674,8 +6668,6 @@ function testDurFmtUZLATNFormatFull() {
     });
     assertEquals("", duration.toString());
 };
-
-*/
 
 //test cases for vietnemese
 

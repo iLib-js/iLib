@@ -3,7 +3,7 @@
         "date": {
             "dmwy": {
                 "s": "E d/M/yyyy",
-                "m": "EE dd MMM,yyyy",
+                "m": "EE dd MMM, yyyy",
                 "l": "EEE dd MMMM yyyy",
                 "f": "EEEE dd MMMM yyyy"
             },
@@ -38,6 +38,7 @@
                 "f": "EEEE dd"
             },
             "d": {
+                "s": "d",
                 "f": "dd",
                 "l": "dd",
                 "m": "dd"

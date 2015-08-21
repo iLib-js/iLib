@@ -712,13 +712,13 @@ limitations under the License.
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.date">
-		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 		<runtests suite="date3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.daterange">
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.durfmt">
@@ -734,12 +734,12 @@ limitations under the License.
 		<runtests suite="ctype" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.strings-ext">
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.phone">
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 		<runtests suite="phone3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.units">
@@ -749,11 +749,11 @@ limitations under the License.
 		<runtests suite="name" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.address">
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="legacy" failquit="false"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="legacy" failquit="false"/>
 		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.collate">

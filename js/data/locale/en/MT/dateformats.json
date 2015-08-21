@@ -34,12 +34,14 @@
             "dw": {
                 "s": "E, dd",
                 "m": "EE, dd",
-                "l": "EEE, dd"
+                "l": "EEE, dd",
+                "f": "EEEE, d"
             },
             "d": {
-                "l": "dd",
+                "s": "dd",
                 "m": "dd",
-                "s": "dd"
+                "l": "dd",
+                "f": "d"
             },
             "m": {
                 "s": "MM",

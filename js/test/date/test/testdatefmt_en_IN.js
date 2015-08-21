@@ -656,7 +656,7 @@ function testDateFmtINFullDateComponentsD() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("", fmt.format(date));
+    assertEquals("29", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsDM() {
