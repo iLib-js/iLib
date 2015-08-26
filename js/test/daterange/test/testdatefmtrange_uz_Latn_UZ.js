@@ -43,7 +43,7 @@ function testDateRngFmtLatn_UZRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 11/12/31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 11-12-31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -140,7 +140,7 @@ function testDateRngFmtLatn_UZRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11/12/30 – 14:30 31", fmt.format(start, end));
+    assertEquals("13:45 11–12–30 – 14:30 31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -237,7 +237,7 @@ function testDateRngFmtLatn_UZRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/12/20 – 31", fmt.format(start, end));
+    assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -334,7 +334,7 @@ function testDateRngFmtLatn_UZRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11/20 – 12/31", fmt.format(start, end));
+    assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -431,7 +431,7 @@ function testDateRngFmtLatn_UZRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11/20 – 12/01/31", fmt.format(start, end));
+    assertEquals("11–11–20 – 12–01–31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -528,7 +528,7 @@ function testDateRngFmtLatn_UZRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 14/01", fmt.format(start, end));
+    assertEquals("11–11 – 14–01", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});

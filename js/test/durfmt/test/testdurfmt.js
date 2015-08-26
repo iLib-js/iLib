@@ -4455,7 +4455,7 @@ function testDurFmtKUFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1س 1م 1w 1ر 1ک 1خ 1چ", duration.toString());
 };
 
 function testDurFmtKUFormatShortText() {
@@ -4475,7 +4475,7 @@ function testDurFmtKUFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1س 1م 1w 1ر 1ک 1خ 1چ", duration.toString());
 };
 
 function testDurFmtKUFormatShortClock() {
@@ -4495,7 +4495,7 @@ function testDurFmtKUFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1س 1م 1w 1ر 01:01:01", duration.toString());
 };
 
 function testDurFmtKUFormatMedium() {
@@ -4514,7 +4514,7 @@ function testDurFmtKUFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 سا 1 ما 1 we 1 رۆ 1 घं. 1 خو 1 چر", duration.toString());
 };
 
 function testDurFmtKUFormatLong() {
@@ -4533,7 +4533,7 @@ function testDurFmtKUFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 ساڵ 1 مانگ 1 wee 1 رۆژ 1 घंटा 1 خول 1 چرک", duration.toString());
 };
 
 function testDurFmtKUFormatFull() {
@@ -4552,7 +4552,7 @@ function testDurFmtKUFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ساڵ , 1 مانگ, 1 حهفته , 1 رۆژ, 1 كاژێر, 1 خولەک, و 1 چرکه", duration.toString());
+    assertEquals("1 ساڵ, 1 महीना, 1 weeks, 1 رۆژ, 1 घंटा, 1 خولەک,  1 چرکە", duration.toString());
 };
 
 //test cases for lt-LT
@@ -4928,7 +4928,7 @@ function testDurFmtMNFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1ж 1с 1w 1х 1ц 1м 1с", duration.toString());
 };
 
 function testDurFmtMNFormatShortText() {
@@ -4948,7 +4948,7 @@ function testDurFmtMNFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1ж 1с 1w 1х 1ц 1м 1с", duration.toString());
 };
 
 function testDurFmtMNFormatShortClock() {
@@ -4968,7 +4968,7 @@ function testDurFmtMNFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1ж 1с 1w 1х 01:01:01", duration.toString());
 };
 
 function testDurFmtMNFormatMedium() {
@@ -4987,7 +4987,7 @@ function testDurFmtMNFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 жи 1 са 1 до 1 хо 1 ца 1 ми 1 се", duration.toString());
 };
 
 function testDurFmtMNFormatLong() {
@@ -5006,7 +5006,7 @@ function testDurFmtMNFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 жил 1 сар 1 дол 1 хон 1 цаг 1 мин 1 сек", duration.toString());
 };
 
 function testDurFmtMNFormatFull() {
@@ -5025,7 +5025,7 @@ function testDurFmtMNFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 жил, 1 сар, 1 долоо хоног, 1 хоног, 1 цаг, 1 минут,  1 секунд", duration.toString());
 };
 
 //test cases for ms-MY
@@ -6451,7 +6451,7 @@ function testDurFmtUZFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
 };
 
 function testDurFmtUZFormatShortText() {
@@ -6471,7 +6471,7 @@ function testDurFmtUZFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
 };
 
 function testDurFmtUZFormatShortClock() {
@@ -6491,7 +6491,7 @@ function testDurFmtUZFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1:01:01", duration.toString());
+    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
 };
 
 function testDurFmtUZFormatMedium() {
@@ -6510,7 +6510,7 @@ function testDurFmtUZFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se", duration.toString());
 };
 
 function testDurFmtUZFormatLong() {
@@ -6529,7 +6529,7 @@ function testDurFmtUZFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 y 1 m 1 w 1 d 1 h 1 min 1 s", duration.toString());
 };
 
 function testDurFmtUZFormatFull() {
@@ -6548,7 +6548,7 @@ function testDurFmtUZFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 //test cases for uz-Latn-UZ
@@ -6569,7 +6569,7 @@ function testDurFmtUZLATNFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
 };
 
 function testDurFmtUZLATNFormatShortText() {
@@ -6589,7 +6589,7 @@ function testDurFmtUZLATNFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
 };
 
 function testDurFmtUZLATNFormatShortClock() {
@@ -6609,7 +6609,7 @@ function testDurFmtUZLATNFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
 };
 
 function testDurFmtUZLATNFormatMedium() {
@@ -6628,7 +6628,7 @@ function testDurFmtUZLATNFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se", duration.toString());
 };
 
 function testDurFmtUZLATNFormatLong() {
@@ -6647,7 +6647,7 @@ function testDurFmtUZLATNFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 y 1 m 1 w 1 d 1 h 1 min 1 s", duration.toString());
 };
 
 function testDurFmtUZLATNFormatFull() {
@@ -6666,7 +6666,7 @@ function testDurFmtUZLATNFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 //test cases for vietnemese

@@ -186,7 +186,7 @@ function testDateRngFmtDERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 Dezember - 14:30 31 Dezember 2011", fmt.format(start, end));
+    assertEquals("13:45 30. Dezember - 14:30 31. Dezember 2011", fmt.format(start, end));
 }
 function testDateRngFmtDERangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "de-DE", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtDERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 Dezember - 14:30 31 Dezember 2011", fmt.format(start, end));
+    assertEquals("13:45 30. Dezember - 14:30 31. Dezember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtDERangeMultiDayShort() {

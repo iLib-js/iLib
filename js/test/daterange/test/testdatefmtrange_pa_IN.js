@@ -42,7 +42,7 @@ function testDateRngFmtRangeinDayShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ. 11/12/31", fmt.format(start, end));
+    assertEquals("1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ. 11-12-31", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -139,7 +139,7 @@ function testDateRngFmtRangeNextDayShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ਬਾ.ਦੁ. 11/12/30 – 2:30 ਬਾ.ਦੁ. 31", fmt.format(start, end));
+    assertEquals("1:45 ਬਾ.ਦੁ. 11–12–30 – 2:30 ਬਾ.ਦੁ. 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -236,7 +236,7 @@ function testDateRngFmtRangeMultiDayShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/12/20 – 31", fmt.format(start, end));
+    assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -333,7 +333,7 @@ function testDateRngFmtRangeNextMonthShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11/20 – 12/31", fmt.format(start, end));
+    assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -430,7 +430,7 @@ function testDateRngFmtRangeNextYearShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11/20 – 12/1/31", fmt.format(start, end));
+    assertEquals("11–11–20 – 12–1–31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -527,7 +527,7 @@ function testDateRngFmtRangeMultiYearShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 14/1", fmt.format(start, end));
+    assertEquals("11–11 – 14–1", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearMedium_pa_IN() {
     var fmt = new DateRngFmt({locale: "pa-IN", length: "medium"});

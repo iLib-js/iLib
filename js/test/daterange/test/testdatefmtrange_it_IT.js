@@ -41,7 +41,7 @@ function testDateRngFmtITRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31/12/11", fmt.format(start, end));
+    assertEquals("31/12/11, 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtITRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 dic 2011", fmt.format(start, end));
+    assertEquals("31 dic 2011, 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtITRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 dicembre 2011", fmt.format(start, end));
+    assertEquals("31 dicembre 2011 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtITRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 dicembre 2011", fmt.format(start, end));
+    assertEquals("31 dicembre 2011 13:45 - 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtITRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtITRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/11 13:45 - 31/12/11 14:30", fmt.format(start, end));
+    assertEquals("30/12/11, 13:45 - 31/12/11, 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtITRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 dic 13:45 - 31 dic 14:30 2011", fmt.format(start, end));
+    assertEquals("30 dic 2011, 13:45 - 31 dic 2011, 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtITRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13:45 - 31 14:30 dicembre 2011", fmt.format(start, end));
+    assertEquals("30 dicembre 2011 13:45 - 31 dicembre 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtITRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13:45 - 31 14:30 dicembre 2011", fmt.format(start, end));
+    assertEquals("30 dicembre 2011 13:45 - 31 dicembre 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtITRangeMultiDayShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtITRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11-31/12 11", fmt.format(start, end));
+    assertEquals("20/11-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "it-IT", length: "medium"});
