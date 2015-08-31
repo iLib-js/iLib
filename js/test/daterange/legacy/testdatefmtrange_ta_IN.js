@@ -258,7 +258,7 @@ function testDateRngFmtRangeMultiDayMedium_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/டிச./2011 – 31/டிச./2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayLong_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "long"});
@@ -282,7 +282,7 @@ function testDateRngFmtRangeMultiDayLong_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 டிச, 2011", fmt.format(start, end));
+    assertEquals("20 – 31 டிசம்பர், 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayFull_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "full"});
@@ -355,7 +355,7 @@ function testDateRngFmtRangeNextMonthMedium_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/நவ./2011 – 31/டிச./2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "long"});
@@ -379,7 +379,7 @@ function testDateRngFmtRangeNextMonthLong_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 நவ – 31 டிச, 2011", fmt.format(start, end));
+    assertEquals("20 நவம்பர் – 31 டிசம்பர், 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthFull_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "full"});
@@ -428,7 +428,7 @@ function testDateRngFmtRangeNextYearShort_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearMedium_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "medium"});
@@ -452,7 +452,7 @@ function testDateRngFmtRangeNextYearMedium_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
+    assertEquals("20/நவ./2011 – 31/ஜன./2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearLong_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "long"});
@@ -476,7 +476,7 @@ function testDateRngFmtRangeNextYearLong_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 நவ, 2011 – 31 ஜன, 2012", fmt.format(start, end));
+    assertEquals("20 நவம்பர், 2011 – 31 ஜனவரி, 2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearFull_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "full"});
@@ -525,7 +525,7 @@ function testDateRngFmtRangeMultiYearShort_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 01/14", fmt.format(start, end));
+    assertEquals("11/11 – 1/14", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearMedium_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "medium"});
@@ -549,7 +549,7 @@ function testDateRngFmtRangeMultiYearMedium_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
+    assertEquals("நவ./2011 – ஜன./2014", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearLong_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "long"});
@@ -573,7 +573,7 @@ function testDateRngFmtRangeMultiYearLong_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("நவ 2011 – ஜன 2014", fmt.format(start, end));
+    assertEquals("நவம்பர் 2011 – ஜனவரி 2014", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearFull_ta_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ta-IN", length: "full"});
