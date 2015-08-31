@@ -56,7 +56,7 @@ function testDateFmtSimpleMedium_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+	    assertEquals("29 вер. 2011 р.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_uk_UA() {
@@ -73,7 +73,7 @@ function testDateFmtSimpleLong_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 вер. 2011", fmt.format(date));
+	    assertEquals("29 вересня 2011 р.", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_uk_UA() {
@@ -90,7 +90,7 @@ function testDateFmtSimpleFull_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 вересня 2011", fmt.format(date));
+	    assertEquals("29 вересня 2011 р.", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_uk_UA() {
@@ -175,7 +175,7 @@ function testDateFmtDateTimeSimpleShort_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+	    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_uk_UA() {
@@ -192,7 +192,7 @@ function testDateFmtDateTimeSimpleMedium_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+    assertEquals("29 вер. 2011 р. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_uk_UA() {
@@ -209,7 +209,7 @@ function testDateFmtDateTimeSimpleLong_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 вер. 2011", fmt.format(date));
+	    assertEquals("29 вересня 2011 р. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_uk_UA() {
@@ -226,7 +226,7 @@ function testDateFmtDateTimeSimpleFull_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 вересня 2011", fmt.format(date));
+	    assertEquals("29 вересня 2011 р. 13:45", fmt.format(date));
 }
 
 
@@ -433,7 +433,7 @@ function testDateFmtTypeDateTime_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+	    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 
@@ -485,7 +485,7 @@ function testDateFmtShortDateComponentsN_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+	    assertEquals("В", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_uk_UA() {
@@ -673,7 +673,7 @@ function testDateFmtFullDateComponentsMY_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("вересня 2011", fmt.format(date));
+	    assertEquals("Вересень 2011 р.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_uk_UA() {
@@ -690,7 +690,7 @@ function testDateFmtFullDateComponentsDMY_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 вересня 2011", fmt.format(date));
+	    assertEquals("29 вересня 2011 р.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_uk_UA() {
@@ -707,7 +707,7 @@ function testDateFmtFullDateComponentsWDM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Четвер, 29 вер.", fmt.format(date));
+	    assertEquals("четвер, 29 вересня", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_uk_UA() {
@@ -724,7 +724,7 @@ function testDateFmtFullDateComponentsWDMY_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Четвер, 29 вер. 2011", fmt.format(date));
+	    assertEquals("четвер, 29 вересня 2011 р.", fmt.format(date));
 }
 
 

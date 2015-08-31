@@ -785,7 +785,7 @@ function testDateFmtShortDateComponentsWDM_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("So, 09-29", fmt.format(date));
+	    assertEquals("S, 09-29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_af_ZA() {
@@ -802,7 +802,7 @@ function testDateFmtShortDateComponentsWDMY_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("So, 2554-09-29", fmt.format(date));
+	    assertEquals("S, 2554-09-29", fmt.format(date));
 }
 
 

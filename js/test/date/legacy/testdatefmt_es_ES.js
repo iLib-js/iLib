@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 de sep de 2011", fmt.format(date));
+    assertEquals("29 de sept. de 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_es_ES() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 de sep de 2011", fmt.format(date));
+    assertEquals("29 de septiembre de 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_es_ES() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 de sep de 2011 13:45", fmt.format(date));
+	    assertEquals("29 de sept. de 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_es_ES() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 de sep de 2011, 13:45", fmt.format(date));
+	    assertEquals("29 de septiembre de 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_es_ES() {
@@ -586,7 +586,7 @@ function testDateFmtShortDateComponentsWDM_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ju 29/9", fmt.format(date));
+	    assertEquals("J, 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_es_ES() {
@@ -603,7 +603,7 @@ function testDateFmtShortDateComponentsWDMY_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ju 29/9/11", fmt.format(date));
+	    assertEquals("J, 29/9/11", fmt.format(date));
 }
 
 
@@ -689,7 +689,7 @@ function testDateFmtFullDateComponentsMY_es_ES() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("septiembre de 2011", fmt.format(date));
+	    assertEquals("Septiembre de 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_es_ES() {
