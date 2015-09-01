@@ -88,7 +88,7 @@ function testDateRngFmtRangeinDayLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 डिसें, 2011, 1:45 म.उ. – 2:30 म.उ.", fmt.format(start, end));
+    assertEquals("31 डिसेंबर, 2011 'रोजी' 1:45 म.उ. – 2:30 म.उ.", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});
@@ -185,7 +185,7 @@ function testDateRngFmtRangeNextDayLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 डिसें, 1:45 म.उ. – 31 डिसें, 2011, 2:30 म.उ.", fmt.format(start, end));
+    assertEquals("30 डिसेंबर, 1:45 म.उ. – 31 डिसेंबर, 2011 'रोजी' 2:30 म.उ.", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});
@@ -282,7 +282,7 @@ function testDateRngFmtRangeMultiDayLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 डिसें, 2011", fmt.format(start, end));
+    assertEquals("20 – 31 डिसेंबर, 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});
@@ -379,7 +379,7 @@ function testDateRngFmtRangeNextMonthLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नोव्हें – 31 डिसें, 2011", fmt.format(start, end));
+    assertEquals("20 नोव्हेंबर – 31 डिसेंबर, 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});
@@ -476,7 +476,7 @@ function testDateRngFmtRangeNextYearLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नोव्हें, 2011 – 31 जाने, 2012", fmt.format(start, end));
+    assertEquals("20 नोव्हेंबर, 2011 – 31 जानेवारी, 2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});
@@ -573,7 +573,7 @@ function testDateRngFmtRangeMultiYearLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("नोव्हें, 2011 – जाने, 2014", fmt.format(start, end));
+    assertEquals("नोव्हेंबर, 2011 – जानेवारी, 2014", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearFull_mr_IN() {
     var fmt = new ilib.DateRngFmt({locale: "mr-IN", length: "full"});

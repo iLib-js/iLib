@@ -164,7 +164,7 @@ function testDateRngFmtRangeNextDayMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/11 1:45 PM - 31/12/11 2:30 PM", fmt.format(start, end));
+    assertEquals("2011, ഡിസം 30 1:45 PM - ഡിസം 31 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});
@@ -261,7 +261,7 @@ function testDateRngFmtRangeMultiDayMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31/12/11", fmt.format(start, end));
+    assertEquals("2011, ഡിസം 20 - 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});
@@ -358,7 +358,7 @@ function testDateRngFmtRangeNextMonthMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11-31/12/11", fmt.format(start, end));
+    assertEquals("2011, നവം 20 - ഡിസം 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});
@@ -455,7 +455,7 @@ function testDateRngFmtRangeNextYearMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11-31/01/12", fmt.format(start, end));
+    assertEquals("2011, നവം 20 - 2012, ജനു 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});
@@ -552,7 +552,7 @@ function testDateRngFmtRangeMultiYearMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11-01/14", fmt.format(start, end));
+    assertEquals("2011, നവം - 2014, ജനു", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});

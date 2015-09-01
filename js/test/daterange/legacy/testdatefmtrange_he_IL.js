@@ -233,7 +233,7 @@ function testDateRngFmtILRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20.דצמ׳.2011 – 31.דצמ׳.2011", fmt.format(start, end));
+    assertEquals("‏20.12.2011 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtILRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "he-IL", length: "medium"});
@@ -330,7 +330,7 @@ function testDateRngFmtILRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20.נוב׳.2011 – 31.דצמ׳.2011", fmt.format(start, end));
+    assertEquals("‏20.11.2011 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtILRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "he-IL", length: "medium"});

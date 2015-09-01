@@ -160,7 +160,7 @@ function testDateRngFmtRangeNextDayMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30-12-11 1:45 pm – 31-12-11 2:30 pm", fmt.format(start, end));
+    assertEquals("30 ଡିସେମ୍ବର 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -257,7 +257,7 @@ function testDateRngFmtRangeMultiDayMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31-12-11", fmt.format(start, end));
+    assertEquals("20–31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -354,7 +354,7 @@ function testDateRngFmtRangeNextMonthMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11 – 31-12-11", fmt.format(start, end));
+    assertEquals("20 ନଭେମ୍ବର – 31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -451,7 +451,7 @@ function testDateRngFmtRangeNextYearMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11-11 – 31-1-12", fmt.format(start, end));
+    assertEquals("20 ନଭେମ୍ବର 2011 – 31 ଜାନୁଆରୀ 2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -548,7 +548,7 @@ function testDateRngFmtRangeMultiYearMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-11 – 1-14", fmt.format(start, end));
+    assertEquals("ନଭେମ୍ବର 2011 – ଜାନୁଆରୀ 2014", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});

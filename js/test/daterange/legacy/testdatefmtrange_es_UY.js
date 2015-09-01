@@ -233,7 +233,7 @@ function testDateRngFmtUYRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 de dic. de 2011", fmt.format(start, end));
+    assertEquals("20-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtUYRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "es-UY", length: "medium"});

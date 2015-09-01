@@ -257,7 +257,7 @@ function testDateRngFmtLVRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. - 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. - 31. dec.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "lv-LV", length: "long"});
@@ -354,7 +354,7 @@ function testDateRngFmtLVRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. novembris - 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. nov. - 31. dec.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "lv-LV", length: "long"});
@@ -451,7 +451,7 @@ function testDateRngFmtLVRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. novembris - 2012. gada 31. janvāris", fmt.format(start, end));
+    assertEquals("2011. gada 20. nov. - 2012. gada 31. janv.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "lv-LV", length: "long"});
@@ -548,7 +548,7 @@ function testDateRngFmtLVRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada novembris - 2014. gada janvāris", fmt.format(start, end));
+    assertEquals("2011. gada nov. - 2014. gada janv.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "lv-LV", length: "long"});

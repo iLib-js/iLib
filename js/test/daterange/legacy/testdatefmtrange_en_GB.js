@@ -252,7 +252,7 @@ function testDateRngFmtGBRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 December 2011", fmt.format(start, end));
+    assertEquals("20-31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtGBRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "en-GB", length: "medium"});
@@ -276,7 +276,7 @@ function testDateRngFmtGBRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 December 2011", fmt.format(start, end));
+    assertEquals("20-31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtGBRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "en-GB", length: "long"});
@@ -373,7 +373,7 @@ function testDateRngFmtGBRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November - 31 December 2011", fmt.format(start, end));
+    assertEquals("20 Nov - 31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtGBRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "en-GB", length: "long"});
@@ -470,7 +470,7 @@ function testDateRngFmtGBRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November 2011 - 31 January 2012", fmt.format(start, end));
+    assertEquals("20 Nov 2011 - 31 Jan 2012", fmt.format(start, end));
 }
 function testDateRngFmtGBRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "en-GB", length: "long"});
@@ -567,7 +567,7 @@ function testDateRngFmtGBRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("November 2011 - January 2014", fmt.format(start, end));
+    assertEquals("Nov 2011 - Jan 2014", fmt.format(start, end));
 }
 function testDateRngFmtGBRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "en-GB", length: "long"});

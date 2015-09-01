@@ -63,7 +63,7 @@ function testDateRngFmtITRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/11, 13:45 - 14:30", fmt.format(start, end));
+    assertEquals("31 dic 2011, 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmtITRangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "long"});
@@ -233,7 +233,7 @@ function testDateRngFmtITRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 dicembre 2011", fmt.format(start, end));
+    assertEquals("20-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtITRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtITRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 dicembre 2011", fmt.format(start, end));
+    assertEquals("20-31 dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtITRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "long"});
@@ -354,7 +354,7 @@ function testDateRngFmtITRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 novembre - 31 dicembre 2011", fmt.format(start, end));
+    assertEquals("20 nov - 31 dic 2011", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "long"});
@@ -451,7 +451,7 @@ function testDateRngFmtITRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 novembre 2011 - 31 gennaio 2012", fmt.format(start, end));
+    assertEquals("20 nov 2011 - 31 gen 2012", fmt.format(start, end));
 }
 function testDateRngFmtITRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "long"});
@@ -548,7 +548,7 @@ function testDateRngFmtITRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("novembre 2011 - gennaio 2014", fmt.format(start, end));
+    assertEquals("nov 2011 - gen 2014", fmt.format(start, end));
 }
 function testDateRngFmtITRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "it-IT", length: "long"});
