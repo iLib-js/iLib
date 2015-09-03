@@ -18,7 +18,7 @@ enyo.kind({
 						{name:"searchImg", kind: "Image", src: "assets/search-input-search.png", style: "float:right;margin-top: 5px !important;;width: 20px; height: 20px;"}
 					]}
 				]},
-				{name:"list", kind: "List", style:"width:300px;height:99%", fit: true, ontap: "itemTap",count: 394, /*touch: true,*/ onSetupItem: "setupItem", components: [
+				{name:"list", kind: "List", style:"width:300px;height:99%", fit: true, ontap: "itemTap",count: 406, /*touch: true,*/ onSetupItem: "setupItem", components: [
 					{name: "item", style: "padding: 10px;", components: [
 						{name: "title", classes: "list-item-font"}
 					]}
@@ -27,11 +27,12 @@ enyo.kind({
 			{name:"targetDocument", classes:"right-iframe", fit:true}
 		]}
 	],
-	listCount : 394,
+	listCount : 406,
 	renewList : [],
 	create: function () {
 		this.inherited(arguments);
 		this.getLocaleArray();
+		//console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
 		this.getCurrentDate();
 	},
 	rendered: enyo.inherit(function(sup) {
@@ -53,8 +54,12 @@ enyo.kind({
 	getCurrentDate: function() {
 		var monthTranalate = ["Januarary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		var d = new Date();
+		//var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
+
 		var year, month, date;
-		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
+		var month  = 8;
+		var date  = 3;
+		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
 	},
@@ -253,7 +258,14 @@ enyo.kind({
 			"English - Vanuatu":"en-VU", 
 			"English - South Africa":"en-ZA", 
 			"English - Zambia":"en-ZM", 
-			"English - Zimbabwe":"en-ZW", 
+			"English - Zimbabwe":"en-ZW",
+			"English - Armeniaen" : "en-AM",
+			"English - Iceland":"en-IS",
+			"English - Myanmar":"en-MM",
+			"English - Georgia":"en-GE",
+			"English - China":"en-CN",
+			"English - Mexico":"en-MX",
+			"English - Taiwan":"en-TW",
 			"Spanish - Argentina":"es-AR", 
 			"Spanish - Bolivia":"es-BO", 
 			"Spanish - Chile":"es-CL", 
@@ -278,7 +290,8 @@ enyo.kind({
 			"Spanish - El Salvador":"es-SV", 
 			"Spanish - United States":"es-US", 
 			"Spanish - Uraguay":"es-UY", 
-			"Spanish - Venezuela":"es-VE", 
+			"Spanish - Venezuela":"es-VE",
+			"Spanish - Canada":"es-CA",
 			"Estonian - Estonia":"et-EE", 
 			"Basque - Spain":"eu-ES", 
 			"Farsi - Afghanistan":"fa-AF", 
@@ -443,6 +456,7 @@ enyo.kind({
 			"Russian - Moldova":"ru-MD", 
 			"Russian - Russia":"ru-RU", 
 			"Russian - Turkmenistan":"ru-TM", 
+			"Russian - Ukraine":"ru-UA",
 			"Sindhi - India":"sd-IN", 
 			"Sinhala - Sri Lanka":"si-LK", 
 			"Slovak - Serbia":"sk-RS", 
@@ -453,7 +467,8 @@ enyo.kind({
 			"Samoan - Samoa":"sm-WS", 
 			"Albanian - Albania":"sq-AL", 
 			"Albanian - Former Yugoslav Republic of Macedonia":"sq-ME", 
-			"Albanian - Serbia":"sq-RS", 
+			"Albanian - Serbia":"sq-RS",
+			"Albanian - Montenegro":"sq-ME",
 			"Serbian - Bosnia and Herzegovina":"sr-BA", 
 			"Serbian - Romania":"sr-RO", 
 			"Serbian - Serbia":"sr-RS", 
@@ -477,7 +492,9 @@ enyo.kind({
 			"Tagalog - Philippines":"tl-PH", 
 			"Tongan - Tonga":"to-TO", 
 			"Turkish - Cyprus":"tr-CY", 
-			"Turkish - Turkey":"tr-TR", 
+			"Turkish - Turkey":"tr-TR",
+			"Turkish - Armenia":"tr-AM", 
+			"Turkish - Azerbajian":"tr-AZ", 
 			"Tahitian - French Polynesia":"ty-PF", 
 			"Uyghur - China":"ug-CN", 
 			"Ukranian - Moldova":"uk-MD", 
