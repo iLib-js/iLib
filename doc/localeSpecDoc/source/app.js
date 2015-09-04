@@ -32,7 +32,7 @@ enyo.kind({
 	create: function () {
 		this.inherited(arguments);
 		this.getLocaleArray();
-		console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
+		//console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
 		this.getCurrentDate();
 	},
 	rendered: enyo.inherit(function(sup) {
