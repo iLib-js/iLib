@@ -38,12 +38,12 @@ cp -rf localePage/ publish-tool/contents
 cp -rf source/ publish-tool/contents
 cp index.html publish-tool/contents
 cp package.js publish-tool/contents
-cp ../../js/output/js/ilib-demo.js localePage/scripts/ilib-demo.js 
+cp ../../js/output/js/ilib-demo-lg.js localePage/scripts/ilib-demo-lg.js
 
 rm publish-tool/contents/source/app.js
 rm publish-tool/contents/localePage/scripts/localeScript.js
 
-echo -e "Copying files to deploy directory..... : done." 
+echo -e "Copying files to deploy directory..... : done."
 
 
 echo -e "Starting to update contents to webostools.lge.com"
