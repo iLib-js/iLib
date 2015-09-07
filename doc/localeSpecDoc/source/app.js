@@ -32,7 +32,7 @@ enyo.kind({
 	create: function () {
 		this.inherited(arguments);
 		this.getLocaleArray();
-		//console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
+		console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
 		this.getCurrentDate();
 	},
 	rendered: enyo.inherit(function(sup) {
@@ -58,7 +58,7 @@ enyo.kind({
 
 		var year, month, date;
 		var month  = 8;
-		var date  = 4;
+		var date  = 7;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
@@ -125,7 +125,7 @@ enyo.kind({
 			"German - Luxembourg":"de-LU",
 			"Greek - Cyprus":"el-CY",
 			"Greek - Greece":"el-GR",
-			"English - Armeniaen" : "en-AM",
+			"English - Armenia" : "en-AM",
 			"English - Australia":"en-AU",
 			"English - Azerbaijan":"en-AZ",
 			"English - Canada":"en-CA",
@@ -224,7 +224,7 @@ enyo.kind({
 			"Telugu - India":"te-IN",
 			"Thai - Thailand":"th-TH",
 			"Turkish - Armenia":"tr-AM",
-			"Turkish - Azerbajian":"tr-AZ",
+			"Turkish - Azerbaijan":"tr-AZ",
 			"Turkish - Cyprus":"tr-CY",
 			"Turkish - Turkey":"tr-TR",
 			"Ukranian - Ukraine":"uk-UA",
