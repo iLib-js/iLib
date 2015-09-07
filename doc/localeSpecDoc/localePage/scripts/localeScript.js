@@ -121,7 +121,7 @@ $(function(){
 	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,millisecond: 0,type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});					
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i], useNative: false});
 		fmtArray[fmtArrayCount] = fmt[i];
 		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
 		$("#daterng"+length[i]).text(length[i]);
@@ -131,7 +131,7 @@ $(function(){
 	// Date Duration
 	var durationDate = {year: 1,month: 1,week: 1,day: 1};
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		fmt[i] = new DurationFmt({locale: currentLocale, style:"text", length: length[i]});
+		fmt[i] = new DurationFmt({locale: currentLocale, style:"text", length: length[i],useNative: false});
 		fmtArray[fmtArrayCount] = fmt[i];
 		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
 		$("#datedur"+length[i]).text(length[i]);
@@ -140,7 +140,7 @@ $(function(){
 
 	var durationTime = {hour: 1,minute: 1,second: 1, millisecond: 1};
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {					
-		fmt[i] = new DurationFmt({locale: currentLocale, style:"colok", length: length[i]});
+		fmt[i] = new DurationFmt({locale: currentLocale, style:"colok", length: length[i], useNative: false});
 		fmtArray[fmtArrayCount] = fmt[i];
 		$("#timedur"+length[i]).text(length[i]);
 		$("#timedur"+length[i]+"Sample").text(fmtArray[i].format(durationTime).toString());
