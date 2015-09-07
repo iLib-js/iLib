@@ -278,7 +278,6 @@ enyo.kind({
 			"French - Congo":"fr-CG",
 			"French - Ivory Coast":"fr-CI",
 			"French - Cameroon":"fr-CM",
-			"French - Cameroon":"fr-CM",
 			"French - Djibouti":"fr-DJ",
 			"French - Algeria":"fr-DZ",
 			"French - Gabon":"fr-GA",
