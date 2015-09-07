@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>DataTables example</title>
+		<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="scripts/ilib-demo-lg.js"></script>
+		<!--<script type="text/javascript" language="javascript" src="scripts/localeScript.js"></script>-->
+		<script type="text/javascript" language="javascript" src="scripts/localeScript-compiled.js"></script>
+		
+		<link href="style/localeRef.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="utf-8">
+
+		</script>
+	</head>
+	<body id="dt_example">
+		<div id="container">
+			
+			<h1>Basic Information</h1>
+			
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Subject</th><th>Info</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="table-border-underine" >System Locale</td><td id="systemLocale" /></tr>
+			<tr><td>Locale Description</td><td id="localedescription" /></tr>
+			<tr><td>Default Calendar</td><td  id="defaultCalendar"></tr>
+			<tr><td>Clock</td><td id="clock" /></tr>
+			<tr><td>Currency</td><td id="defaultCurrency" /></tr>
+			<tr><td>Week Start at</td><td id="weekStart" /></tr>
+			<tr><td>Weekend Start at</td><td id="weekendStart" /></tr>
+			<tr><td>Weekend End at</td><td id="weekendEnd" /></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Names of the Day and Months</h1>
+	<table cellpadding="0" cellspacing="0" class="display" >
+		<thead>
+			<tr>
+				<th>Days and Months</th><th>delimiter</th><th>Full</th><th>Long</th><th>Medium</th><th>Short</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="7">Weekday</td><td>1</td><td id="monfull" /><td id="monlong"/><td id="monmedium"/><td id="monshort"/>
+			</tr>
+			<tr><td>2</td><td id="tuefull" /><td id="tuelong"/><td id="tuemedium"/><td id="tueshort"/></tr>
+			<tr><td>3</td><td id="wedfull" /><td id="wedlong"/><td id="wedmedium"/><td id="wedshort"/></tr>
+			<tr><td>4</td><td id="thufull" /><td id="thulong"/><td id="thumedium"/><td id="thushort"/></tr>
+			<tr><td>5</td><td id="frifull" /><td id="frilong"/><td id="frimedium"/><td id="frishort"/></tr>
+			<tr><td>6</td><td id="satfull" /><td id="satlong"/><td id="satmedium"/><td id="satshort"/></tr>
+			<tr><td>0</td><td id="sunfull" /><td id="sunlong"/><td id="sunmedium"/><td id="sunshort"/></tr>
+			<tr><td rowspan="12">Month</td><td>1</td><td id="janfull"/><td id="janlong"/><td id="janmedium"/><td id="janshort"/></tr>
+			<tr><td>2</td><td id="febfull"/><td id="feblong"/><td id="febmedium"/><td id="febshort"/></tr>
+			<tr><td>3</td><td id="marfull"/><td id="marlong"/><td id="marmedium"/><td id="marshort"/></tr>
+			<tr><td>4</td><td id="aprfull"/><td id="aprlong"/><td id="aprmedium"/><td id="aprshort"/>
+			<tr><td>5</td><td id="mayfull"/><td id="maylong"/><td id="maymedium"/><td id="mayshort"/></tr>
+			<tr><td>6</td><td id="junfull"/><td id="junlong"/><td id="junmedium"/><td id="junshort"/></tr>
+			<tr><td>7</td><td id="julfull"/><td id="jullong"/><td id="julmedium"/><td id="julshort"/></tr>
+			<tr><td>8</td><td id="augfull"/><td id="auglong"/><td id="augmedium"/><td id="augshort"/></tr>
+			<tr><td>9</td><td id="sepfull"/><td id="seplong"/><td id="sepmedium"/><td id="sepshort"/></tr>
+			<tr><td>10</td><td id="octfull"/><td id="octlong"/><td id="octmedium"/><td id="octshort"/></tr>
+			<tr><td>11</td><td id="novfull"/><td id="novlong"/><td id="novmedium"/><td id="novshort"/></tr>
+			<tr><td>12</td><td id="decfull"/><td id="declong"/><td id="decmedium"/><td id="decshort"/></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Range of the Meridiem Units</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Time Range</th><th>Meridiem</th></tr>
+		</thead>
+		<tbody id="meridiemTable">
+			<!--<tr><td id="rangea0"/><td id = "stringa0"/></tr>
+			<tr><td id="rangea1"/><td id="stringa1" /></tr>-->
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Date/Time</h1>
+	<table cellpadding="0" cellspacing="0" class="display"  >
+		<thead>
+			<tr><th>Date / Time</th><th>length</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="4">Date / Time</td><td id="dtfull"/><td id="dtfullFmt"/><td id="dtfullSample"/>
+			</tr>
+			<tr><td id="dtlong"/><td id="dtlongFmt"/><td id="dtlongSample"/></tr>
+			<tr><td id="dtmedium"/><td id="dtmediumFmt"/><td id="dtmediumSample"/></tr>
+			<tr><td id="dtshort"/><td id="dtshortFmt"/><td id="dtshortSample"/></tr>
+			<tr><td rowspan="4">Date </td><td id="datefull"/><td id="datefullFmt"/><td id="datefullSample"/>
+			</tr>
+			<tr><td id="datelong"/><td id="datelongFmt"/><td id="datelongSample"/></tr>
+			<tr><td id="datemedium"/><td id="datemediumFmt"/><td id="datemediumSample"/></tr>
+			<tr><td id="dateshort"/><td id="dateshortFmt"/><td id="dateshortSample"/></tr>
+			<tr><td rowspan="4">Time </td><td id="timefull"/><td id="timefullFmt"/><td id="timefullSample"/></tr>
+			<tr><td id="timelong"/><td id="timelongFmt"/><td id="timelongSample"/></tr>
+			<tr><td id="timemedium"/><td id="timemediumFmt"/><td id="timemediumSample"/></tr>
+			<tr><td id="timeshort"/><td id="timeshortFmt"/><td id="timeshortSample"/></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Date/Time Range Duration</h1>
+	<table cellpadding="0" cellspacing="0" class="display">
+		<thead><tr><th>Date / Time</th><th>length</th><th>Example</th></tr></thead>
+		<tbody>
+			<tr><td rowspan="4">Date Range </td><td id="daterngfull"/><td id="daterngfullSample"/></tr>
+			<tr><td id="daternglong"/><td id="daternglongSample"/></tr>
+			<tr><td id="daterngmedium"/><td id="daterngmediumSample"/></tr>
+			<tr><td id="daterngshort"/><td id="daterngshortSample"/></tr>
+			<tr><td rowspan="4">Date Duration </td><td id="datedurfull"/><td id="datedurfullSample"/></tr>
+			<tr><td id="datedurlong"/><td id="datedurlongSample"/></tr>
+			<tr><td id="datedurmedium"/><td id="datedurmediumSample"/></tr>
+			<tr><td id="datedurshort"/><td id="datedurshortSample"/></tr>
+			<tr><td rowspan="4">Time Duration </td><td id="timedurfull"/><td id="timedurfullSample"/></tr>
+			<tr><td id="timedurlong"/><td id="timedurlongSample"/></tr>
+			<tr><td id="timedurmedium"/><td id="timedurmediumSample"/></tr>
+			<tr><td id="timedurshort"/><td id="timedurshortSample"/></tr>
+		</tbody>
+		</table>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Number</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display"  >
+		<thead>
+			<tr><th>Number</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>Decimal Seperator</td><td id="numDecimalSymbol"/><td id="numDecimal"/></tr>
+			<tr><td>Number Grouping</td><td /><td id="numGroupFmt"/></tr>
+			<tr><td>Percent</td><td id="numPercentSymbol"/><td id="numPercent"/></tr>
+			<tr><td>Currency</td><td id="numCurrencySymbol" /><td id="numCurrency" /></tr>
+			<tr><td>Plus</td><td>+</td><td id="numPlus" /></tr>
+			<tr><td>Minus</td><td>-</td><td id="numMinus" /></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Phone Number</h1>
+	<table id="phonenumTable" cellpadding="0" cellspacing="0" class="display">
+		<thead>
+			<tr><th>Phone Number Category </th><th>Input</th><th>Output-partial number</th><th>Output-whole number </th></tr>
+		</thead>
+		<tbody id="phoneNumTable">
+		</tbody>
+	</table>
+
+	<div id="footer" class="clear" style="text-align:center;">
+		<span style="font-size:10px;">Data tables provided by LG Electronics © 2015<br></span>
+	</div>		
+	</body>
+</html>
