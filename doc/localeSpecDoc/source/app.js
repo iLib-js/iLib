@@ -4,7 +4,7 @@ enyo.kind({
 	classes: 'enyo-fit',
 	components: [
 		{kind:"FittableColumns", classes:"left-layout", components:[
-			{name:"logoImg", kind: "Image", style:"width:360px;", src: "assets/localespec_weboslogo.png"},
+			{name:"logoImg", kind: "Image", style:"width:360px;", src: "assets/localespec_weboslogo_4.0.png"},
 			{kind:"onyx.Button", style:"visibility:hidden;", fit:true},
 			{style:"float:right;", components:[
 				{name:"headerDate", classes:"left-header-date", content: "Generated on August 15, 2015"}
@@ -32,7 +32,7 @@ enyo.kind({
 	create: function () {
 		this.inherited(arguments);
 		this.getLocaleArray();
-		console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
+		//console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
 		this.getCurrentDate();
 	},
 	rendered: enyo.inherit(function(sup) {
@@ -58,7 +58,7 @@ enyo.kind({
 
 		var year, month, date;
 		var month  = 8;
-		var date  = 7;
+		var date  = 8;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
