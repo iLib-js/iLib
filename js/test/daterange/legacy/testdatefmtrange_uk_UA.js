@@ -17,24 +17,6 @@
  * limitations unukr the License.
  */
 
-/*
- * testdatefmtrange_uk_UA.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2015, JEDLSoft
- *
- * Licensed unukr the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unukr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unukr the License.
- */
 
 function testDateRngFmtUARangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "short"});
@@ -82,7 +64,7 @@ function testDateRngFmtUARangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 груд. 2011 р. 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "long"});
@@ -155,7 +137,7 @@ function testDateRngFmtUARangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.11 11 – 31.12.11 14:30", fmt.format(start, end));
+    assertEquals("30.12.11 13:45 – 31.12.11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});
@@ -179,7 +161,7 @@ function testDateRngFmtUARangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.11 11 – 31.12.11 14:30", fmt.format(start, end));
+    assertEquals("30 груд. 13:45 – 31 груд. 2011 р. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "long"});
@@ -203,7 +185,7 @@ function testDateRngFmtUARangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 грудня 2011 р. 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
+    assertEquals("30 грудня 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "full"});
@@ -227,7 +209,7 @@ function testDateRngFmtUARangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 грудня 2011 р. 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
+    assertEquals("30 грудня 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtUARangeMultiDayShort() {
@@ -276,7 +258,7 @@ function testDateRngFmtUARangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31 груд. 2011 р.", fmt.format(start, end));
 }
 function testDateRngFmtUARangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "long"});
@@ -349,7 +331,7 @@ function testDateRngFmtUARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 лист. – 31 груд. 2011 р.", fmt.format(start, end));
+    assertEquals("20.11.11 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});
@@ -446,7 +428,7 @@ function testDateRngFmtUARangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 лист. 2011 р. – 31 січ. 2012 р.", fmt.format(start, end));
+    assertEquals("20.11.11 – 31.01.12", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});
@@ -543,7 +525,7 @@ function testDateRngFmtUARangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("лист. 2011 р. – січ. 2014 р.", fmt.format(start, end));
+    assertEquals("11.11 – 01.14", fmt.format(start, end));
 }
 function testDateRngFmtUARangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});

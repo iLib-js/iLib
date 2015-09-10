@@ -37,6 +37,12 @@
                 "f": "EEEE, d"
             },
             "d": {
+                "s": "yy",
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy"
+            },
+            "d": {
                 "s": "dd",
                 "f": "d",
                 "l": "d",
@@ -92,13 +98,19 @@
                 "f": "{sd} {sm} {sy} р. {st} – {et}"
             },
             "c01": {
-                "s": "{sd}.{sm}.{sy} {sy} – {ed}.{em}.{ey} {et}",
-                "m": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
-                "l": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
-                "f": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}"
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "l": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "f": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}"
             },
             "c02": {
-                "s": "{sd}.{sm}.{sy} {sy} – {ed}.{em}.{ey} {et}",
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "l": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "f": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}"
+            },
+            "c03": {
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
                 "m": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
                 "l": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
                 "f": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}"

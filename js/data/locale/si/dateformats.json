@@ -49,7 +49,10 @@
                 "l": "MMMM"
             },
             "y": {
-                "s": "yyyy"
+                "s": "yyyy",
+                "m": "yyyy",
+                "l": "yyyy",
+                "f": "yyyy"
             },
             "n": {
                 "m": "N"
@@ -90,16 +93,22 @@
                 "f": "{sy} {sm} {sd} {st} – {et}"
             },
             "c01": {
-                "s": "{sy}–{sm}–{sd} {st} – {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ed} {et}",
-                "f": "{sy} {sm} {sd} {st} – {ed} {et}"
+                "s": "{sy}–{sm}–{sd} {st} – {ey}–{em}–{ed} {et}",
+                "m": "{sy} {sm} {sd} {st} – {em} {ed} {et}",
+                "l": "{sy} {sm} {sd} {st} – {em} {ed} {et}",
+                "f": "{sy} {sm} {sd} {st} – {em} {ed} {et}"
             },
             "c02": {
                 "s": "{sy}–{sm}–{sd} {st} – {ey}–{em}–{ed} {et}",
                 "m": "{sy} {sm} {sd} {st} – {em} {ed} {et}",
                 "l": "{sy} {sm} {sd} {st} – {em} {ed} {et}",
                 "f": "{sy} {sm} {sd} {st} – {em} {ed} {et}"
+            },
+            "c03": {
+                "s": "{sy}–{sm}–{sd} {st} – {ey}–{em}–{ed} {et}",
+                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}"
             },
             "c10": {
                 "s": "{sy}-{sm}-{sd} – {ed}",

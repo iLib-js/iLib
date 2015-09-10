@@ -19,24 +19,6 @@
 
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
-/*
- * testdatefmtrange_sr-Latn_RS.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2015, JEDLSoft
- *
- * Licensed unsr-Latnr the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unsr-Latnr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unsr-Latnr the License.
- */
 
 function testDateRngFmtRSRangeInDayShort() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});
@@ -60,7 +42,7 @@ function testDateRngFmtRSRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 - 14.30 31. 12. 11.", fmt.format(start, end));
+    assertEquals("13.45 - 14.30 31.12.11.", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "medium"});
@@ -84,7 +66,7 @@ function testDateRngFmtRSRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 - 14.30 31.12.2011", fmt.format(start, end));
+    assertEquals("13.45 - 14.30 31.12.2011.", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "long"});
@@ -132,7 +114,7 @@ function testDateRngFmtRSRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 - 14.30 31. decembar 2011", fmt.format(start, end));
+    assertEquals("13.45 - 14.30 31. decembar 2011.", fmt.format(start, end));
 }
 
 function testDateRngFmtRSRangeNextDayShort() {
@@ -205,7 +187,7 @@ function testDateRngFmtRSRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 30. - 14.30 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("13.45 30. decembar - 14.30 31. decembar 2011.", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "full"});
@@ -229,7 +211,7 @@ function testDateRngFmtRSRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 30. - 14.30 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("13.45 30. decembar - 14.30 31. decembar 2011.", fmt.format(start, end));
 }
 
 function testDateRngFmtRSRangeMultiDayShort() {
@@ -545,7 +527,7 @@ function testDateRngFmtRSRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11 - 1.14", fmt.format(start, end));
+    assertEquals("11.11. - 1.14.", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "medium"});
@@ -569,7 +551,7 @@ function testDateRngFmtRSRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.2011 - 01.2014", fmt.format(start, end));
+    assertEquals("11.2011. - 01.2014.", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "long"});
@@ -617,7 +599,7 @@ function testDateRngFmtRSRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–novembar - 2014–januar", fmt.format(start, end));
+    assertEquals("novembar 2011. - januar 2014.", fmt.format(start, end));
 }
 function testDateRngFmtRSManyYearsFull() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "full"});

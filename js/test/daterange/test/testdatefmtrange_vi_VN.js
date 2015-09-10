@@ -113,7 +113,7 @@ function testDateRngFmtVNRangeInDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});           
+	});
 	assertEquals("vào lúc 13:45 – 14:30 31 tháng 12 2011", fmt.format(start, end));
 }
 

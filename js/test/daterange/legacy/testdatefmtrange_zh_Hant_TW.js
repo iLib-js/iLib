@@ -63,7 +63,7 @@ function testDateRngFmtTWRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/31 下午1:45至下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月31日 下午1:45至下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -160,7 +160,7 @@ function testDateRngFmtTWRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/30 下午1:45至2011/12/31 下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月30日下午1:45至31日下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -257,7 +257,7 @@ function testDateRngFmtTWRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/20至31", fmt.format(start, end));
+    assertEquals("2011年12月20日至31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -354,7 +354,7 @@ function testDateRngFmtTWRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/11/20至12/31", fmt.format(start, end));
+    assertEquals("2011年11月20日至12月31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});

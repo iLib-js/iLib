@@ -161,7 +161,7 @@ function testDateRngFmtRangeNextDayMedium_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ਬਾ.ਦੁ. 11–12–30 – 2:30 ਬਾ.ਦੁ. 31", fmt.format(start, end));
+    assertEquals("1:45 ਬਾ.ਦੁ. 2011–ਦਸੰ–30 – 2:30 ਬਾ.ਦੁ. 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "long"});
@@ -234,7 +234,7 @@ function testDateRngFmtRangeMultiDayShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–ਦਸੰ–20 – 31", fmt.format(start, end));
+    assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});
@@ -331,7 +331,7 @@ function testDateRngFmtRangeNextMonthShort_pa_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–ਨਵੰ–20 – ਦਸੰ–31", fmt.format(start, end));
+    assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_pa_IN() {
     var fmt = new ilib.DateRngFmt({locale: "pa-IN", length: "medium"});

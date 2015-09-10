@@ -120,8 +120,8 @@
             },
             "c12": {
                 "s": "‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "‏‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}",
-                "l": "‏‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}",
+                "m": "‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}",
+                "l": "‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}",
                 "f": "‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}"
             },
             "c20": {

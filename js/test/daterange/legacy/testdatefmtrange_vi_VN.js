@@ -17,25 +17,6 @@
  * limitations unvir the License.
  */
 
-/*
- * testdatefmtrange_vi_VN.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2015, JEDLSoft
- *
- * Licensed unvir the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unvir the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unvir the License.
- */
-
 function testDateRngFmtVNRangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "vi-VN", length: "short"});
     assertNotNull(fmt);
@@ -130,7 +111,7 @@ function testDateRngFmtVNRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vào lúc 13:45 – 14:30 31 tháng 12 2011", fmt.format(start, end));
+	assertEquals("vào lúc 13:45 – 14:30 31 tháng 12 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeNextDayShort() {
@@ -252,7 +233,7 @@ function testDateRngFmtVNRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31-12-2011", fmt.format(start, end));
+    assertEquals("20 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "vi-VN", length: "medium"});
@@ -349,7 +330,7 @@ function testDateRngFmtVNRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11 – 31-12-2011", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "vi-VN", length: "medium"});
@@ -446,7 +427,7 @@ function testDateRngFmtVNRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11-2011 – 31-01-2012", fmt.format(start, end));
+    assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "vi-VN", length: "medium"});
@@ -543,7 +524,7 @@ function testDateRngFmtVNRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-2011 – 01-2014", fmt.format(start, end));
+    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "vi-VN", length: "medium"});
