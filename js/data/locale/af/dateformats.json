@@ -56,8 +56,13 @@
                 "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "ahmz": "h:mm a z",
+                "hmsz": "h:mm:ss z",
                 "ahm": "h:mm a",
-                "ah": "h a"
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ah": "h a",
+                "hm": "h:mm",
+                "h": "h"
             },
             "24": {
                 "ahmsz": "HH:mm:ss z",

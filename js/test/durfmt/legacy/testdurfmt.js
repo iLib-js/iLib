@@ -1699,7 +1699,7 @@ function testDurFmtESFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1a 1me 1sm 1d 01:01:01", duration.toString());
+    assertEquals("1a 1me 1sm 1d 1:01:01", duration.toString());
 };
 
 function testDurFmtESFormatMedium() {
@@ -8145,7 +8145,7 @@ function testDurFmtSQFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1v 1m 1j 1d 1:01:01", duration.toString());
+    assertEquals("1v 1m 1j 1d 01:01:01", duration.toString());
 };
 
 function testDurFmtSQFormatMedium() {
@@ -8251,7 +8251,7 @@ function testDurFmtSQFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1v 1m 1j 1d 1:01:01", duration.toString());
+    	    assertEquals("1v 1m 1j 1d 01:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });

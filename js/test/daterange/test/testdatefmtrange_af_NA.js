@@ -41,7 +41,7 @@ function testDateRngFmtAFNAFRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. – 2:30 nm. 2011-12-31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtAFNAFRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. – 2:30 nm. 31 Des 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 Des 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtAFNAFRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 Desember 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtAFNAFRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 Desember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAFNAFRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtAFNAFRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 2011-12-30 – 2:30 nm. 2011-12-31", fmt.format(start, end));
+    assertEquals("13:45 2011-12-30 – 14:30 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtAFNAFRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Des 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 Des 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtAFNAFRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 Desember 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtAFNAFRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 Desember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAFNAFRangeMultiDayShort() {

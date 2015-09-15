@@ -2505,7 +2505,7 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de setiembre de 2011, 13:45", fmt.format(date));
+    assertEquals("martes, 20 de setiembre de 2011, 1:45 p. m.", fmt.format(date));
 };
 
 function testDateFmttrTR() {

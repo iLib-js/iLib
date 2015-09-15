@@ -382,28 +382,28 @@ function testDateFmtGetTemplateLength() {
     var fmt = new ilib.DateFmt({length: "long"});
     assertNotNull(fmt);
     
-	    assertEquals("MMMM d, yyyy", fmt.getTemplate());
+    assertEquals("MMMM d, yyyy", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTypeDateTime() {
     var fmt = new ilib.DateFmt({type: "datetime"});
     assertNotNull(fmt);
     
-	    assertEquals("M/d/yy, h:mm a", fmt.getTemplate());
+    assertEquals("M/d/yy, h:mm a", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTypeTime() {
     var fmt = new ilib.DateFmt({type: "time"});
     assertNotNull(fmt);
     
-	    assertEquals("h:mm a", fmt.getTemplate());
+    assertEquals("h:mm a", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateDateComponents() {
     var fmt = new ilib.DateFmt({date: "wdm"});
     assertNotNull(fmt);
     
-	    assertEquals("E, M/d", fmt.getTemplate());
+    assertEquals("E, M/d", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTimeComponents() {
@@ -417,7 +417,7 @@ function testDateFmtGetTemplateTypeTime24() {
     var fmt = new ilib.DateFmt({type: "time", clock: "24"});
     assertNotNull(fmt);
     
-	    assertEquals("HH:mm", fmt.getTemplate());
+    assertEquals("HH:mm", fmt.getTemplate());
 };
 
 function testDateFmtPad2lt10() {
@@ -674,7 +674,7 @@ function testDateFmtFormatJSDate1() {
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
     var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
-	    assertEquals("1:37 PM", fmt.format(datMyBday));
+    assertEquals("1:37 PM", fmt.format(datMyBday));
 };
 
 function testDateFmtFormatJSDateRightTimeZone1() {
@@ -751,7 +751,7 @@ function testDateFmtFormatJSDate2() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-	    assertEquals("1:37 PM", fmt.format(398119055000));
+    assertEquals("1:37 PM", fmt.format(398119055000));
 };
 
 function testDateFmtFormatJSDateRightTimeZone5() {
@@ -782,7 +782,7 @@ function testDateFmtFormatJSDate3() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-	    assertEquals("1:37 PM", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700"));
+    assertEquals("1:37 PM", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700"));
 };
 
 function testDateFmtFormatJSDateRightTimeZone6() {
@@ -2110,7 +2110,7 @@ function testDateFmtConvertToGMT() {
 		locale: "en-US"
 	});
     
-	    assertEquals("20/09/2011 21:45 GMT/BST", fmt.format(date));
+    assertEquals("20/09/2011 21:45 GMT/BST", fmt.format(date));
 };
 
 function testDateFmtConvertToOtherTimeZone() {
@@ -2135,7 +2135,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-	    assertEquals("21/09/2011 6:45am AEST", fmt.format(date));
+    assertEquals("21/09/2011 6:45am AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
@@ -2243,7 +2243,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-	    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -2411,7 +2411,7 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de setiembre de 2011, 13:45", fmt.format(date));
+    assertEquals("martes, 20 de setiembre de 2011, 1:45 p. m.", fmt.format(date));
 };
 
 function testDateFmttrTR() {
@@ -2711,7 +2711,7 @@ function testDateFmtTransitionFromDSTRightBefore() {
 		unixtime: 1414918740000 // this is 11/2/2014 at 1:59am
 	});
     
-	    assertEquals("1:59 AM PDT", fmt.format(date));
+    assertEquals("1:59 AM PDT", fmt.format(date));
 };
 
 function testDateFmtTransitionFromDSTRightAfter() {
@@ -2729,7 +2729,7 @@ function testDateFmtTransitionFromDSTRightAfter() {
 	});
     
     // 2 minutes later
-	    assertEquals("1:01 AM PST", fmt.format(date));
+    assertEquals("1:01 AM PST", fmt.format(date));
 };
 
 
@@ -2748,7 +2748,7 @@ function testDateFmtAltCalThaiInEnglish() {
     	unixtime: 1404445524043
 	});
     
-	    assertEquals("Karakadakhom 3, 2557 at 8:45 PM", fmt.format(date));
+    assertEquals("Karakadakhom 3, 2557 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalHebrewInEnglish() {
@@ -2766,7 +2766,7 @@ function testDateFmtAltCalHebrewInEnglish() {
     	unixtime: 1404445524043
 	});
     
-	    assertEquals("Tammuz 6, 5774 at 8:45 PM", fmt.format(date));
+    assertEquals("Tammuz 6, 5774 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalIslamicInEnglish() {
@@ -2784,7 +2784,7 @@ function testDateFmtAltCalIslamicInEnglish() {
     	unixtime: 1404445524043
 	});
     
-	    assertEquals("Ramaḍān 5, 1435 at 8:45 PM", fmt.format(date));
+    assertEquals("Ramaḍān 5, 1435 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalPersianInEnglish() {

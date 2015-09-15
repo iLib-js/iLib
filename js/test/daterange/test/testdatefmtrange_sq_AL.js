@@ -19,24 +19,6 @@
 
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
-/*
- * testdatefmtrange_sq_AL.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2015, JEDLSoft
- *
- * Licensed unsqr the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unsqr the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unsqr the License.
- */
 
 function testDateRngFmtALRangeInDayShort() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "short"});
@@ -60,7 +42,7 @@ function testDateRngFmtALRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite – 2:30 pasdite 11-12-31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 11-12-31", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "medium"});
@@ -84,7 +66,7 @@ function testDateRngFmtALRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite – 2:30 pasdite 2011-Dhj-31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 2011-Dhj-31", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "long"});
@@ -108,7 +90,7 @@ function testDateRngFmtALRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite – 2:30 pasdite 2011 dhjetor 31", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 2011 dhjetor 31", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "full"});
@@ -132,7 +114,7 @@ function testDateRngFmtALRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite – 2:30 pasdite 31 dhjetor 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 dhjetor 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtALRangeNextDayShort() {
@@ -157,7 +139,7 @@ function testDateRngFmtALRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite 11–12–30 – 2:30 pasdite 31", fmt.format(start, end));
+    assertEquals("13:45 11–12–30 – 14:30 31", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "medium"});
@@ -181,7 +163,7 @@ function testDateRngFmtALRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite 2011–Dhj–30 – 2:30 pasdite 31", fmt.format(start, end));
+    assertEquals("13:45 2011–Dhj–30 – 14:30 31", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "long"});
@@ -205,7 +187,7 @@ function testDateRngFmtALRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite 30 – 2:30 pasdite 31 dhjetor 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 dhjetor 2011", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "full"});
@@ -229,7 +211,7 @@ function testDateRngFmtALRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pasdite 30 – 2:30 pasdite 31 dhjetor 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 dhjetor 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtALRangeMultiDayShort() {

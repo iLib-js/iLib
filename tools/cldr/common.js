@@ -403,11 +403,11 @@ exports.getLocale = function () {
  * @constructor
  * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format
+ * @param {string=} script the ISO 15924 code of the script for this locale, if any
  * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
- * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
-exports.Locale = function(language, region, variant, script) {
+exports.Locale = function(language, script, region, variant) {
 	if (typeof(region) === 'undefined') {
 		var spec = language || exports.getLocale();
 		var parts = spec.split('-');
