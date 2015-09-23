@@ -75,7 +75,7 @@ $(function(){
 		count++;
 	}
 
-	var date = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: 5, hour: 13, minute: 45, second: 0,millisecond: 0});
+	var date = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: 5, hour: 13, minute: 45, second: 0});
 
 	//DateTime				
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
@@ -117,8 +117,8 @@ $(function(){
 	}
 
 	//Date Range
-	var start = new DateFactory({year: 2011,month: 11,day: 20,hour: 13,minute: 45,second: 0,millisecond: 0,type:li.getCalendar()});
-	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,millisecond: 0,type:li.getCalendar()});
+	var start = new DateFactory({year: 2011,month: 11,day: 20,hour: 13,minute: 45,second: 0,type:li.getCalendar()});
+	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i], useNative: false});
@@ -138,7 +138,7 @@ $(function(){
 		$("#datedur"+length[i]+"Sample").text(fmtArray[i].format(durationDate).toString());
 	}
 
-	var durationTime = {hour: 1,minute: 1,second: 1, millisecond: 1};
+	var durationTime = {hour: 1,minute: 1,second: 1};
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {					
 		fmt[i] = new DurationFmt({locale: currentLocale, style:"colok", length: length[i], useNative: false});
 		fmtArray[fmtArrayCount] = fmt[i];
