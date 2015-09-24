@@ -5,6 +5,7 @@
         "groupChar": ",",
         "currencyFormats": {
             "common": "{s}{n}"
-        }
+        },
+        "pctFmt": "{n}%"
     }
 }

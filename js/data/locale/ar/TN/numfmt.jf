@@ -8,14 +8,12 @@
         "exponential": "اس",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "{s} {n}-"
+            "common": "{s} {n}"
         },
-        "negativenumFmt": "{n}-",
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
-		"useNative": true,
-        "digits": "٠١٢٣٤٥٦٧٨٩"
+        "digits": "٠١٢٣٤٥٦٧٨٩",
+        "useNative": true
     },
     "numfmt": {
         "script": "Latn",
@@ -23,9 +21,9 @@
         "groupChar": ".",
         "pctChar": "%",
         "exponential": "E",
-        "useNative": false,
         "currencyFormats": {
             "common": "{s}{n}"
-        }
+        },
+        "useNative": false
     }
 }

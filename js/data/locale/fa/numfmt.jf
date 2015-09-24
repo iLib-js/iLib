@@ -1,16 +1,15 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "Arab",
+        "script": "arabext",
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
         "exponential": "×۱۰^",
         "currencyFormats": {
-            "common": "‎{s}{n}",
-            "commonNegative": "‎({s}{n})"
+            "common": "‎{s}{n}"
         },
-		"useNative": true,
-        "digits": "۰۱۲۳۴۵۶۷۸۹"
+        "digits": "۰۱۲۳۴۵۶۷۸۹",
+        "useNative": true
     }
 }

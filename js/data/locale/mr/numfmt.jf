@@ -1,24 +1,12 @@
 {
-    "native_numfmt": {
+    "generated": true,
+    "numfmt": {
         "script": "Deva",
-        "decimalChar": ".",
-        "groupChar": ",",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "common": "{s}{n}"
         },
-		"useNative": true,
-        "digits": "०१२३४५६७८९"
-    },
-    "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
-		"secgroupSize": 2,
-        "useNative": false,
-        "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "-{s} {n})"
-        }
+        "digits": "०१२३४५६७८९",
+        "useNative": true
     }
 }

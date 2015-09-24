@@ -1,24 +1,25 @@
 {
+    "generated": true,
     "native_numfmt": {
         "script": "Mlym",
         "decimalChar": ".",
         "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}",
-		    "commonNegative": "-{s} {n}"
+            "common": "{s}{n}"
         },
-		"useNative": true,
-        "digits": "൦൧൨൩൪൫൬൭൮൯"
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "൦൧൨൩൪൫൬൭൮൯",
+        "useNative": true
     },
     "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
         "secgroupSize": 2,
-        "useNative": false,
         "currencyFormats": {
-            "common": "{s} {n}",
-	    	"commonNegative": "-{s} {n}"
+            "common": "{s}{n}"
         }
     }
 }

@@ -1,6 +1,7 @@
 {
     "generated": true,
     "numfmt": {
+        "decimalChar": ",",
         "groupChar": " ",
         "exponential": "Е",
         "currencyFormats": {

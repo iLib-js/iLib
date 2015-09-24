@@ -1,25 +1,25 @@
 {
-  
+    "generated": true,
     "native_numfmt": {
         "script": "Telu",
         "decimalChar": ".",
         "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "common": "{s}{n}"
         },
-        "useNative": true,
-        "digits": "౦౧౨౩౪౫౬౭౮౯"
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "౦౧౨౩౪౫౬౭౮౯",
+        "useNative": true
     },
     "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
         "secgroupSize": 2,
-        "useNative": false,
         "currencyFormats": {
-        	"common": "{s} {n}",
-        	"commonNegative": "-{s} {n}"
+            "common": "{s}{n}"
         }
     }
 }
