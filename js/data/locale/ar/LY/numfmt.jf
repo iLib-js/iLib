@@ -1,0 +1,26 @@
+{
+    "generated": true,
+    "native_numfmt": {
+        "script": "Arab",
+        "decimalChar": "٫",
+        "groupChar": "٬",
+        "pctChar": "٪",
+        "exponential": "اس",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "٠١٢٣٤٥٦٧٨٩",
+        "useNative": true
+    },
+    "numfmt": {
+        "script": "Latn",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "pctChar": "%",
+        "exponential": "E",
+        "useNative": false
+    }
+}
