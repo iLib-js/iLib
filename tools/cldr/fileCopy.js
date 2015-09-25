@@ -61,7 +61,7 @@ function walk(root, dir) {
 			if (file.match(/\.jf$/)) {
 				var fullPath = targetDir+temp;
 				if (!fs.existsSync(fullPath)) {
-					//Added newly created.
+					//In order to see which one is newly created.
 					console.log("fullPath : " + fullPath);
 				}
 				try {
