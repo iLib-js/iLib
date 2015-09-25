@@ -51,7 +51,6 @@ function walk(root, dir) {
 		var sourcePath = path.join(root, sourcePathRelative);
 		
 		var count = sourcePath.length - sourcePathRelative.length;
-		//address.
 		var temp = sourcePath.slice(parseInt(count)-1,sourcePath.length);
 
 		var stat = fs.statSync(sourcePath);
@@ -62,10 +61,11 @@ function walk(root, dir) {
 			if (file.match(/\.jf$/)) {
 				var fullPath = targetDir+temp;
 				if (!fs.existsSync(fullPath)) {
+					//Added newly created.
 					console.log("fullPath : " + fullPath);
 				}
 				try {
-						fse.copySync(sourcePath, targetDir + temp);
+					fse.copySync(sourcePath, targetDir + temp);
 				} catch (err) {
 					console.log("err!!! " + err)
 					//process.exit(2);
