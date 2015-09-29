@@ -576,7 +576,8 @@ ilib.extend = function (object1, object2) {
 	var prop = undefined;
 	if (object2) {
 		for (prop in object2) {
-			if (prop && typeof(object2[prop]) !== 'undefined') {
+			// don't extend object with undefined or functions
+			if (prop && typeof(object2[prop]) !== 'undefined' && typeof(object2[prop]) !== "function") {
 				if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
 					//console.log("Merging array prop " + prop);
 					object1[prop] = object1[prop].concat(object2[prop]);
