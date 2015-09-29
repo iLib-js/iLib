@@ -49,7 +49,9 @@ var RhinoLoader = function() {
 	this._exists(path.join(this.root, "locale"), "localeinfo.json");
 	
 	// try the standard install directories
-	this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
+	// this won't work under a web server because /usr is out
+	// of the context that the web app is allowed to access
+	//this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
 	
 	// ... else fall back to see if we're in a check-out dir of ilib
 	// this._exists(path.join(this.root, "data", "locale"), "localeinfo.json");
