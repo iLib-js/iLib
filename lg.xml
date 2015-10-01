@@ -80,7 +80,6 @@ limitations under the License.
 					<exclude name="nfd/**"/>
 					<exclude name="nfkc/**"/>
 					<exclude name="nkkd/**"/>
-					<exclude name="nfkd/**"/>
 					<exclude name="ilib-test.js"/>
 					<exclude name="ilib-test-dyn.js"/>
 					<exclude name="ilib-qt.js"/>
