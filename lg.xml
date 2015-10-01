@@ -35,6 +35,7 @@ limitations under the License.
 	<property name="build.base"						value="."/>
 	<property name="build.export"					value="export"/>
 	<property name="build.export.js"				value="export/js"/>
+	<property name="build.js.lib"					value="js/lib"/>
 	<property name="build.dist"						value="dist"/>
 
 	<!-- =================================================================== -->
@@ -71,17 +72,26 @@ limitations under the License.
 	</target>
 	<target name="export.enyo.ilib" description="Export the build to enyo-ilib">
 		<copy todir="../enyo-ilib/ilib/lib">
-			<fileset dir="${build.export.js}/dyncode">
-				<include name="**/*.js"/>
-				<exclude name="ilib-rhino.js"/>
-				<exclude name="ilib-ringo.js"/>
-				<exclude name="RhinoLoader.js"/>
-				<exclude name="ilib-node-all.js"/>
-				<exclude name="ilib-node-assembled.js"/>
-				<exclude name="ilib-node.js"/>
-				<exclude name="ilib-qt.js"/>
-				<exclude name="ilib-web.js"/>
-				<exclude name="ilib-stubs*.js"/>
+			<fileset dir="${build.js.lib}">
+					<include name="**/*.js"/>
+					<exclude name="**/*-inc.js"/>
+					<exclude name="externs.js"/>
+					<exclude name="nfc/**"/>
+					<exclude name="nfd/**"/>
+					<exclude name="nfkc/**"/>
+					<exclude name="nkkd/**"/>
+					<exclude name="nfkd/**"/>
+					<exclude name="ilib-test.js"/>
+					<exclude name="ilib-test-dyn.js"/>
+					<exclude name="ilib-qt.js"/>
+					<exclude name="ilib-enyo.js"/>
+					<exclude name="ilib-rhino.js"/>
+					<exclude name="ilib-web.js"/>
+					<exclude name="ilib-ringo.js"/>
+					<exclude name="QMLLoader.js"/>
+					<exclude name="RhinoLoader.js"/>
+					<exclude name="WebLoader.js"/>
+					<exclude name="datefmtstr.js"/>
 			</fileset>
 		</copy>
 		<sync todir="../enyo-ilib/ilib/locale">
