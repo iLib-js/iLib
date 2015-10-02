@@ -26,6 +26,11 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
     ],
+    "author": {
+    	"name": "Edwin Hoogerbeets",
+    	"web": "http://www.jedlsoft.com/",
+    	"email": "edwin@translationcircle.com"
+    },
     "contributors": [
         {
             "name": "Edwin Hoogerbeets",
@@ -46,5 +51,9 @@
             "type": "svn",
             "url": "svn://svn.code.sf.net/p/i18nlib/code/trunk"
         }
-    ]
+    ],
+    "engines": {
+        "ringojs": ">=0.9",
+        "nodejs": "<= 0.10.*"
+    }
 }
