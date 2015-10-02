@@ -882,7 +882,7 @@ function testDateFmtShortTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EEST", fmt.format(date));
+    assertEquals("1:45 EET", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
@@ -904,7 +904,7 @@ function testDateFmtShortTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 م EEST", fmt.format(date));
+    assertEquals("1:45 م EET", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_cop_EG() {
@@ -943,7 +943,7 @@ function testDateFmtShortTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EEST", fmt.format(date));
+    assertEquals("1:45:37 EET", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
@@ -965,7 +965,7 @@ function testDateFmtShortTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 م EEST", fmt.format(date));
+    assertEquals("1:45:37 م EET", fmt.format(date));
 }
 
 
@@ -1108,7 +1108,7 @@ function testDateFmtFullTimeComponentsHMZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EEST", fmt.format(date));
+    assertEquals("1:45 EET", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
@@ -1131,7 +1131,7 @@ function testDateFmtFullTimeComponentsHMAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 م EEST", fmt.format(date));
+    assertEquals("1:45 م EET", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_cop_EG() {
@@ -1171,7 +1171,7 @@ function testDateFmtFullTimeComponentsHMSZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EEST", fmt.format(date));
+    assertEquals("1:45:37 EET", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
@@ -1194,7 +1194,7 @@ function testDateFmtFullTimeComponentsHMSAZ_cop_EG() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 م EEST", fmt.format(date));
+    assertEquals("1:45:37 م EET", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_cop_EG() {
