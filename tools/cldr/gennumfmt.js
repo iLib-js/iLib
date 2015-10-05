@@ -1,5 +1,5 @@
 /* 
- * gennumfmts2.js - ilib tool to generate the  number json fragments from
+ * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
  * Copyright © 2013-2015, LGE
@@ -282,7 +282,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 	var symbol_format = data.numbers[symbol_number_system];
 	var decimal_format = data.numbers[decimal_number_system]["standard"];
 	var percent_format = data.numbers[percentage_number_system]["standard"];
-	var currency_format = data.numbers[currency_number_system]["standard"];
+	var currency_format = data.numbers[currency_number_system]["accounting"];
 	var symbol_format_data = {};
 
 	var decimal_separator = data.numbers[symbol_number_system]["decimal"];
