@@ -5,7 +5,8 @@
         "groupChar": " ",
         "exponential": "Е",
         "currencyFormats": {
-            "common": "{n} {s}"
+            "common": "{n}{s}",
+            "commonNegative": "({n}{s})"
         }
     }
 }

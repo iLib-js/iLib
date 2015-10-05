@@ -4,7 +4,8 @@
         "script": "Beng",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{n}{s}"
+            "common": "{n}{s}",
+            "commonNegative": "({n}{s})"
         },
         "digits": "০১২৩৪৫৬৭৮৯",
         "useNative": true

@@ -8,7 +8,8 @@
         "exponential": "اس",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
@@ -21,9 +22,6 @@
         "groupChar": ".",
         "pctChar": "%",
         "exponential": "E",
-        "currencyFormats": {
-            "common": "{s}{n}"
-        },
         "useNative": false
     }
 }

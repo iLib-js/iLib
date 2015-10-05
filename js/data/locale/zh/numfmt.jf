@@ -8,11 +8,18 @@
         "exponential": "E",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
         "digits": "〇一二三四五六七八九",
         "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
+        }
     }
 }

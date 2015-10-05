@@ -2,9 +2,6 @@
     "generated": true,
     "numfmt": {
         "decimalChar": ",",
-        "groupChar": ".",
-        "currencyFormats": {
-            "common": "{n} {s}"
-        }
+        "groupChar": "."
     }
 }

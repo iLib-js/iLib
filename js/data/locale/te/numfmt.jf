@@ -9,7 +9,8 @@
         "prigroupSize": 3,
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s}{n}"
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
@@ -19,7 +20,8 @@
     "numfmt": {
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s}{n}"
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
         }
     }
 }
