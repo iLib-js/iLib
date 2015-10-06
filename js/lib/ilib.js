@@ -597,6 +597,31 @@ ilib.extend = function (object1, object2) {
 	return object1;
 };
 
+ilib.extend2 = function (object1, object2) {
+	var prop = undefined;
+	if (object2) {
+		for (prop in object2) {
+			// don't extend object with undefined or functions
+			if (prop && typeof(object2[prop]) !== 'undefined') {
+				if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
+					//console.log("Merging array prop " + prop);
+					object1[prop] = object1[prop].concat(object2[prop]);
+				} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+					//console.log("Merging object prop " + prop);
+					if (prop !== "ilib") {
+						object1[prop] = ilib.extend2(object1[prop], object2[prop]);
+					}
+				} else {
+					//console.log("Copying prop " + prop);
+					// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+					object1[prop] = object2[prop];
+				}
+			}
+		}
+	}
+	return object1;
+};
+
 /**
  * If Function.prototype.bind does not exist in this JS engine, this
  * function reimplements it in terms of older JS functions.

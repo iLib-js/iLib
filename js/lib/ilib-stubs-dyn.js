@@ -21,27 +21,27 @@
 // !dependencies: false
 
 var ilib=require("../lib/ilib.js");
-if(!ilib.CType)ilib.CType={};if(!ilib._roundFnc)ilib._roundFnc={};
+if(!ilib.CType)ilib.CType=require("../lib/CType.js");if(!ilib._roundFnc)ilib._roundFnc={};
 if(!ilib.Date)ilib.Date=require("../lib/DateFactory.js");
 if(!ilib.Cal)ilib.Cal=require("../lib/CalendarFactory.js");
 if(!ilib.Measurement)ilib.Measurement=require("../lib/MeasurementFactory.js");
-if(!ilib.shallowCopy){ilib.shallowCopy=function(source, target){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.shallowCopy(source, target);};ilib.shallowCopy.stub=true;}
-if(!ilib.deepCopy){ilib.deepCopy=function(from, to){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.deepCopy(from, to);};ilib.deepCopy.stub=true;}
-if(!ilib.mapString){ilib.mapString=function(str, map){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.mapString(str, map);};ilib.mapString.stub=true;}
-if(!ilib.indexOf){ilib.indexOf=function(array, obj){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.indexOf(array, obj);};ilib.indexOf.stub=true;}
-if(!ilib.toHexString){ilib.toHexString=function(string, limit){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.toHexString(string, limit);};ilib.toHexString.stub=true;}
-if(!ilib.isDate){ilib.isDate=function(object){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.isDate(object);};ilib.isDate.stub=true;}
-if(!ilib.merge){ilib.merge=function(object1, object2, replace, name1, name2){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.merge(object1, object2, replace, name1, name2);};ilib.merge.stub=true;}
-if(!ilib.isEmpty){ilib.isEmpty=function(obj){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.isEmpty(obj);};ilib.isEmpty.stub=true;}
-if(!ilib.hashCode){ilib.hashCode=function(obj){ilib.extend(ilib, require("../lib/JSUtils.js"));return ilib.hashCode(obj);};ilib.hashCode.stub=true;}
+if(!ilib.shallowCopy){ilib.shallowCopy=function(source, target){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.shallowCopy(source, target);};ilib.shallowCopy.stub=true;}
+if(!ilib.deepCopy){ilib.deepCopy=function(from, to){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.deepCopy(from, to);};ilib.deepCopy.stub=true;}
+if(!ilib.mapString){ilib.mapString=function(str, map){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.mapString(str, map);};ilib.mapString.stub=true;}
+if(!ilib.indexOf){ilib.indexOf=function(array, obj){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.indexOf(array, obj);};ilib.indexOf.stub=true;}
+if(!ilib.toHexString){ilib.toHexString=function(string, limit){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.toHexString(string, limit);};ilib.toHexString.stub=true;}
+if(!ilib.isDate){ilib.isDate=function(object){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.isDate(object);};ilib.isDate.stub=true;}
+if(!ilib.merge){ilib.merge=function(object1, object2, replace, name1, name2){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.merge(object1, object2, replace, name1, name2);};ilib.merge.stub=true;}
+if(!ilib.isEmpty){ilib.isEmpty=function(obj){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.isEmpty(obj);};ilib.isEmpty.stub=true;}
+if(!ilib.hashCode){ilib.hashCode=function(obj){ilib.extend2(ilib, require("../lib/JSUtils.js"));return ilib.hashCode(obj);};ilib.hashCode.stub=true;}
 if(!ilib.Locale){ilib.Locale=function(language, region, variant, script){ilib.Locale=require("../lib/Locale.js");return new ilib.Locale(language, region, variant, script);};ilib.Locale.stub=true;}
-if(!ilib.mergeLocData){ilib.mergeLocData=function(prefix, locale, replaceArrays, returnOne){ilib.extend(ilib, require("../lib/Utils.js"));return ilib.mergeLocData(prefix, locale, replaceArrays, returnOne);};ilib.mergeLocData.stub=true;}
-if(!ilib.getLocFiles){ilib.getLocFiles=function(locale, name){ilib.extend(ilib, require("../lib/Utils.js"));return ilib.getLocFiles(locale, name);};ilib.getLocFiles.stub=true;}
-if(!ilib.loadData){ilib.loadData=function(params){ilib.extend(ilib, require("../lib/Utils.js"));return ilib.loadData(params);};ilib.loadData.stub=true;}
+if(!ilib.mergeLocData){ilib.mergeLocData=function(prefix, locale, replaceArrays, returnOne){ilib.extend2(ilib, require("../lib/Utils.js"));return ilib.mergeLocData(prefix, locale, replaceArrays, returnOne);};ilib.mergeLocData.stub=true;}
+if(!ilib.getLocFiles){ilib.getLocFiles=function(locale, name){ilib.extend2(ilib, require("../lib/Utils.js"));return ilib.getLocFiles(locale, name);};ilib.getLocFiles.stub=true;}
+if(!ilib.loadData){ilib.loadData=function(params){ilib.extend2(ilib, require("../lib/Utils.js"));return ilib.loadData(params);};ilib.loadData.stub=true;}
 if(!ilib.LocaleInfo){ilib.LocaleInfo=function(locale, options){ilib.LocaleInfo=require("../lib/LocaleInfo.js");return new ilib.LocaleInfo(locale, options);};ilib.LocaleInfo.stub=true;}
-if(!ilib.signum){ilib.signum=function(num){ilib.extend(ilib, require("../lib/MathUtils.js"));return ilib.signum(num);};ilib.signum.stub=true;}
-if(!ilib.mod){ilib.mod=function(dividend, modulus){ilib.extend(ilib, require("../lib/MathUtils.js"));return ilib.mod(dividend, modulus);};ilib.mod.stub=true;}
-if(!ilib.amod){ilib.amod=function(dividend, modulus){ilib.extend(ilib, require("../lib/MathUtils.js"));return ilib.amod(dividend, modulus);};ilib.amod.stub=true;}
+if(!ilib.signum){ilib.signum=function(num){ilib.extend2(ilib, require("../lib/MathUtils.js"));return ilib.signum(num);};ilib.signum.stub=true;}
+if(!ilib.mod){ilib.mod=function(dividend, modulus){ilib.extend2(ilib, require("../lib/MathUtils.js"));return ilib.mod(dividend, modulus);};ilib.mod.stub=true;}
+if(!ilib.amod){ilib.amod=function(dividend, modulus){ilib.extend2(ilib, require("../lib/MathUtils.js"));return ilib.amod(dividend, modulus);};ilib.amod.stub=true;}
 if(!ilib.String){ilib.String=function(string){ilib.String=require("../lib/IString.js");return new ilib.String(string);};ilib.String.stub=true;}
 if(!ilib.Cal.newInstance){ilib.Cal.newInstance=function(options){ilib.Cal.newInstance=require("../lib/CalendarFactory.js");return ilib.Cal.newInstance(options);};ilib.Cal.newInstance.stub=true;}
 if(!ilib.Cal.getCalendars){ilib.Cal.getCalendars=function(){ilib.Cal.getCalendars=require("../lib/CalendarFactory.js").getCalendars;return ilib.Cal.getCalendars();};ilib.Cal.getCalendars.stub=true;}
@@ -51,8 +51,8 @@ if(!ilib.Date.RataDie){ilib.Date.RataDie=function(params){ilib.Date.RataDie=requ
 if(!ilib.Date.GregRataDie){ilib.Date.GregRataDie=function(params){ilib.Date.GregRataDie=require("../lib/GregRataDie.js");return new ilib.Date.GregRataDie(params);};ilib.Date.GregRataDie.stub=true;}
 if(!ilib.TimeZone){ilib.TimeZone=function(options){ilib.TimeZone=require("../lib/TimeZone.js");return new ilib.TimeZone(options);};ilib.TimeZone.stub=true;}
 if(!ilib.TimeZone.getAvailableIds){ilib.TimeZone.getAvailableIds=function(country, sync, onLoad){ilib.TimeZone=require("../lib/TimeZone.js");return ilib.TimeZone.getAvailableIds(country, sync, onLoad);};ilib.TimeZone.getAvailableIds.stub=true;}
-if(!ilib.bsearch){ilib.bsearch=function(target, arr, comparator){ilib.extend(ilib, require("../lib/SearchUtils.js"));return ilib.bsearch(target, arr, comparator);};ilib.bsearch.stub=true;}
-if(!ilib.bisectionSearch){ilib.bisectionSearch=function(target, low, high, precision, func){ilib.extend(ilib, require("../lib/SearchUtils.js"));return ilib.bisectionSearch(target, low, high, precision, func);};ilib.bisectionSearch.stub=true;}
+if(!ilib.bsearch){ilib.bsearch=function(target, arr, comparator){ilib.extend2(ilib, require("../lib/SearchUtils.js"));return ilib.bsearch(target, arr, comparator);};ilib.bsearch.stub=true;}
+if(!ilib.bisectionSearch){ilib.bisectionSearch=function(target, low, high, precision, func){ilib.extend2(ilib, require("../lib/SearchUtils.js"));return ilib.bisectionSearch(target, low, high, precision, func);};ilib.bisectionSearch.stub=true;}
 if(!ilib.Date.GregDate){ilib.Date.GregDate=function(params){ilib.Date.GregDate=require("../lib/GregorianDate.js");return new ilib.Date.GregDate(params);};ilib.Date.GregDate.stub=true;}
 if(!ilib.Date.newInstance){ilib.Date.newInstance=function(options){ilib.Date.newInstance=require("../lib/DateFactory.js");return ilib.Date.newInstance(options);};ilib.Date.newInstance.stub=true;}
 if(!ilib.Date._dateToIlib){ilib.Date._dateToIlib=function(dateLike){ilib.Date._dateToIlib=require("../lib/DateFactory.js")._dateToIlib;return ilib.Date._dateToIlib(dateLike);};ilib.Date.newInstance.stub=true;}
@@ -67,7 +67,7 @@ if(!ilib.Cal.Julian){ilib.Cal.Julian=function(){ilib.Cal.Julian=require("../lib/
 if(!ilib.Date.JulDate){ilib.Date.JulDate=function(params){ilib.Date.JulDate=require("../lib/JulianDate.js");return new ilib.Date.JulDate(params);};ilib.Date.JulDate.stub=true;}
 if(!ilib.Cal.ThaiSolar){ilib.Cal.ThaiSolar=function(){ilib.Cal.ThaiSolar=require("../lib/ThaiSolarCal.js");return new ilib.Cal.ThaiSolar();};ilib.Cal.ThaiSolar.stub=true;}
 if(!ilib.Date.ThaiSolarDate){ilib.Date.ThaiSolarDate=function(params){ilib.Date.ThaiSolarDate=require("../lib/ThaiSolarDate.js");return new ilib.Date.ThaiSolarDate(params);};ilib.Date.ThaiSolarDate.stub=true;}
-if(!ilib.Date.initAstro){ilib.Date.initAstro=function(sync, loadParams, callback){ilib.extend(ilib.Date, require("../lib/Astro.js"));return ilib.Date.initAstro(sync, loadParams, callback);};ilib.Date.initAstro.stub=true;}
+if(!ilib.Date.initAstro){ilib.Date.initAstro=function(sync, loadParams, callback){ilib.extend2(ilib.Date, require("../lib/Astro.js"));return ilib.Date.initAstro(sync, loadParams, callback);};ilib.Date.initAstro.stub=true;}
 if(!ilib.Date.PersAstroRataDie){ilib.Date.PersAstroRataDie=function(params){ilib.Date.PersAstroRataDie=require("../lib/PersRataDie.js");return new ilib.Date.PersAstroRataDie(params);};ilib.Date.PersAstroRataDie.stub=true;}
 if(!ilib.Cal.Persian){ilib.Cal.Persian=function(){ilib.Cal.Persian=require("../lib/PersianCal.js");return new ilib.Cal.Persian();};ilib.Cal.Persian.stub=true;}
 if(!ilib.Date.PersDate){ilib.Date.PersDate=function(params){ilib.Date.PersDate=require("../lib/PersianDate.js");return new ilib.Date.PersDate(params);};ilib.Date.PersDate.stub=true;}
