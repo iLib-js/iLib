@@ -1811,7 +1811,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_kn_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ೧,೦೦,೧೧೦.೫೭", fmt.format(-100110.57));
+    assertEquals("(₹೧೦೦,೧೧೦.೫೭)", fmt.format(-100110.57));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kn_IN() {
@@ -1899,7 +1899,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_gu_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ૧,૦૦,૧૧૦.૫૭", fmt.format(-100110.57));
+    assertEquals("(₹૧,૦૦,૧૧૦.૫૭)", fmt.format(-100110.57));
 }
 
 
@@ -1989,7 +1989,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ta_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ௧,௦௦,௧௧௦.௫௭", fmt.format(-100110.57));
+    assertEquals("(₹௧,௦௦,௧௧௦.௫௭)", fmt.format(-100110.57));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ta_IN() {
@@ -2228,7 +2228,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ml_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ൧,൦൦,൧൧൦.൫൭", fmt.format(-100110.57));
+    assertEquals("(₹൧,൦൦,൧൧൦.൫൭)", fmt.format(-100110.57));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ml_IN() {
@@ -2316,7 +2316,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_te_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ౧,౦౦,౧౧౦.౫౭", fmt.format(-100110.57));
+    assertEquals("(₹౧,౦౦,౧౧౦.౫౭)", fmt.format(-100110.57));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_te_IN() {
@@ -4000,7 +4000,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
     
     assertNotNull(fmt);
     
-    assertEquals("ƒ 100.110,57-", fmt.format(-100110.57));
+    assertEquals("(ƒ 100.110,57)", fmt.format(-100110.57));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
@@ -4036,7 +4036,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
     
     assertNotNull(fmt);
     
-    assertEquals("(100 110,57 €)", fmt.format(-100110.57));
+    assertEquals("(100 110,57 €)", fmt.format(-100110.57));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
