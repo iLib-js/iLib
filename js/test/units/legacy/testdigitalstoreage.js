@@ -84,11 +84,11 @@ function testDSScale1() {
 		unit: "bit",
 		amount: 1024
 	});
-        
-        m = m.scale();
-        
-        assertEquals(1,m.amount);
-        assertEquals("kilobit",m.unit);
+
+	m = m.scale();
+
+	assertEquals(1,m.amount);
+	assertEquals("kilobit",m.unit);
 }
 
 function testDSScale2() {
@@ -96,11 +96,12 @@ function testDSScale2() {
 		unit: "kilobit",
 		amount: 0.125
 	});
-        
-        m = m.scale();
-        
-        assertEquals(16,m.amount);
-        assertEquals("byte",m.unit);
+
+	m = m.scale();
+
+	// stays in the bit system
+	assertEquals(128,m.amount);
+	assertEquals("bit",m.unit);
 }
 
 function testDSScale3() {
@@ -108,11 +109,12 @@ function testDSScale3() {
 		unit: "bit",
 		amount: 1048576000
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(125, m.amount, 0.1);
-        assertEquals("megabyte",m.unit);
+
+	m = m.scale();
+
+	// stays in the bit system
+	assertRoughlyEquals(1000, m.amount, 0.1);
+	assertEquals("megabit",m.unit);
 }
 
 function testDSScale4() {
@@ -120,11 +122,11 @@ function testDSScale4() {
 		unit: "kilobit",
 		amount: 10000000
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(1.192, m.amount, 0.001);
-        assertEquals("gigabyte",m.unit);
+
+	m = m.scale();
+
+	assertRoughlyEquals(9.536743163, m.amount, 0.001);
+	assertEquals("gigabit",m.unit);
 }
 
 function testDSScale5() {
@@ -132,11 +134,11 @@ function testDSScale5() {
 		unit: "petabyte",
 		amount: 9.3132e-8
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(100, m.amount, 0.001);
-        assertEquals("megabyte",m.unit);
+
+	m = m.scale();
+
+	assertRoughlyEquals(100, m.amount, 0.001);
+	assertEquals("megabyte",m.unit);
 }
 
 function testDSScale6() {
@@ -145,10 +147,9 @@ function testDSScale6() {
 		amount: 100
 	});
         
-        m = m.scale();
-        
-        assertEquals(100, m.amount);
-        assertEquals("megabyte",m.unit);
+	m = m.scale();
+
+	assertEquals(100, m.amount);
 }
 
 function testDSaLocalize1() {
@@ -157,10 +158,10 @@ function testDSaLocalize1() {
         amount: 1000
     });
 
-    m = m.localize("en-IN");
+	m = m.localize("en-IN");
 
-    assertRoughlyEquals(1000, m.amount, 0.01);
-    assertEquals("petabyte", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.01);
+	assertEquals("petabyte", m.unit);
 }
 
 function testDSLocalize2() {
@@ -169,10 +170,10 @@ function testDSLocalize2() {
         amount: 1000
     });
 
-    m = m.localize("en-US");
+	m = m.localize("en-US");
 
-    assertRoughlyEquals(1000, m.amount, 0.001);
-    assertEquals("kilobit", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.001);
+	assertEquals("kilobit", m.unit);
 }
 
 function testDSLocalize3() {
@@ -181,10 +182,10 @@ function testDSLocalize3() {
         amount: 1000
     });
 
-    m = m.localize("en-US");
+	m = m.localize("en-US");
 
-    assertRoughlyEquals(1000, m.amount, 0.001);
-    assertEquals("megabit", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.001);
+	assertEquals("megabit", m.unit);
 }
 function testDSGetMeasures() {
 	var m = new ilib.Measurement.DigitalStorage({unit: "byte", amount: 1}); // preload for dynamic tests
