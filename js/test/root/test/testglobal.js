@@ -110,7 +110,7 @@ function testSetLocaleEmpty() {
 }
 
 function testGetVersion() {
-    assertEquals("11.0", ilib.getVersion().substring(0,4));
+    assertEquals("12.0", ilib.getVersion().substring(0,4));
 }
 
 function testGetTimeZoneDefault() {

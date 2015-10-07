@@ -39,7 +39,7 @@ ilib._ver = function() {
  */
 ilib.getVersion = function () {
 	// TODO: need some way of getting the version number under dynamic load code
-    return ilib._ver() || "11.0"; 
+    return ilib._ver() || "12.0"; 
 };
 
 /**
