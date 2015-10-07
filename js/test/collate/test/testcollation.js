@@ -693,9 +693,9 @@ function testCollatorWithSortUpperFirst() {
 	input.sort(col.getComparator());
 
 	var expected;
-	// netscape and ie do not work properly
+	// ie does not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie") {
+	if (browser === "ie") {
 		// should compare lower-case first within a base character
 		expected = ["e", "E", "i", "I", "o", "p", "q", "r", "T", "U"];
 	} else {
