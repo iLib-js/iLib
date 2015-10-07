@@ -2482,7 +2482,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
+    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
@@ -2508,7 +2508,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
     
     assertNotNull(fmt);
    
-    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
+    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
 }
 
 
@@ -2983,7 +2983,7 @@ function testNumFmtPercentageFormatRegular_es_ES() {
     
     assertNotNull(fmt);
     
-    assertEquals("57 %", fmt.format(57.0));
+    assertEquals("57 %", fmt.format(57.0));
 }
 //test cases for es-CO
 function testNumFmt_es_CO() {
@@ -3016,7 +3016,7 @@ function testNumFmtPercentageFormatRegular_es_CO() {
     
     assertNotNull(fmt);
     
-    assertEquals("57 %", fmt.format(57.0));
+    assertEquals("57 %", fmt.format(57.0));
 }
 //test cases for ja-JP
 function testNumFmt_ja_JP() {
@@ -3073,7 +3073,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_it_IT() {
     
     assertNotNull(fmt);
     
-    assertEquals("100.110,57 €", fmt.format(100110.57));
+    assertEquals("100.110,57 €", fmt.format(100110.57));
 }
 
 function testNumFmtPercentageFormatRegular_it_IT() {
@@ -3420,7 +3420,7 @@ function testNumFmt_ar_SA() {
     
     assertNotNull(fmt);
     
-    assertEquals("١٢٣٬٤٥٦٫٧٨-", fmt.format(-123456.785));
+    assertEquals("-١٢٣٬٤٥٦٫٧٨", fmt.format(-123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ar_SA() {
@@ -3499,7 +3499,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
     
     assertNotNull(fmt);
     
-    assertEquals("100.110,57 КМ", fmt.format(100110.57));
+    assertEquals("100.110,57 КМ", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_bs_Latn_BA() {
     var fmt = new NumFmt({
@@ -3566,7 +3566,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
     
     assertNotNull(fmt);
     
-    assertEquals("100 110,57 €", fmt.format(100110.57));
+    assertEquals("100 110,57 €", fmt.format(100110.57));
 }
 
 
@@ -3822,7 +3822,7 @@ function testNumFmtPercentageFormatRegular_lt_LT() {
     });
     
     assertNotNull(fmt);
-    assertEquals("57,8 %", fmt.format(57.8));
+    assertEquals("57,8 %", fmt.format(57.8));
 }
 
 //test cases for lv-LV
@@ -4000,7 +4000,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
     
     assertNotNull(fmt);
     
-    assertEquals("(ƒ 100.110,57)", fmt.format(-100110.57));
+    assertEquals("(ƒ 100.110,57)", fmt.format(-100110.57));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
@@ -4036,7 +4036,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
     
     assertNotNull(fmt);
     
-    assertEquals("(100 110,57 €)", fmt.format(-100110.57));
+    assertEquals("(100 110,57 €)", fmt.format(-100110.57));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
@@ -4461,7 +4461,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
     
     assertNotNull(fmt);
     
-    assertEquals("(₨100,110.57)", fmt.format(-100110.57));
+    assertEquals("(₨1,00,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-PH
@@ -4776,7 +4776,7 @@ function testNumFmtPercentageFormatRegular_es_CR() {
     
     assertNotNull(fmt);
     
-    assertEquals("57,8 %", fmt.format(57.8));
+    assertEquals("57,8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
@@ -4813,7 +4813,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
     
     assertNotNull(fmt);
     
-    assertEquals("100,110.57 $", fmt.format(100110.57));
+    assertEquals("100,110.57 $", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_DO() {
     var fmt = new NumFmt({
@@ -4823,7 +4823,7 @@ function testNumFmtPercentageFormatRegular_es_DO() {
     
     assertNotNull(fmt);
     
-    assertEquals("57.8 %", fmt.format(57.8));
+    assertEquals("57.8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
@@ -4861,7 +4861,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
     
     assertNotNull(fmt);
     
-    assertEquals("100,110.57 $", fmt.format(100110.57));
+    assertEquals("100,110.57 $", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_SV() {
     var fmt = new NumFmt({
@@ -4871,7 +4871,7 @@ function testNumFmtPercentageFormatRegular_es_SV() {
     
     assertNotNull(fmt);
     
-    assertEquals("57.8 %", fmt.format(57.8));
+    assertEquals("57.8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
@@ -4918,7 +4918,7 @@ function testNumFmtPercentageFormatRegular_es_GQ() {
     
     assertNotNull(fmt);
     
-    assertEquals("57,8 %", fmt.format(57.8));
+    assertEquals("57,8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
@@ -4954,7 +4954,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
     
     assertNotNull(fmt);
     
-    assertEquals("100,110.57 Q", fmt.format(100110.57));
+    assertEquals("100,110.57 Q", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_GT() {
     var fmt = new NumFmt({
@@ -4964,7 +4964,7 @@ function testNumFmtPercentageFormatRegular_es_GT() {
     
     assertNotNull(fmt);
     
-    assertEquals("57.8 %", fmt.format(57.8));
+    assertEquals("57.8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
@@ -5001,7 +5001,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
     
     assertNotNull(fmt);
     
-    assertEquals("100,110.57 L", fmt.format(100110.57));
+    assertEquals("100,110.57 L", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_HN() {
     var fmt = new NumFmt({
@@ -5011,7 +5011,7 @@ function testNumFmtPercentageFormatRegular_es_HN() {
     
     assertNotNull(fmt);
     
-    assertEquals("57.8 %", fmt.format(57.8));
+    assertEquals("57.8 %", fmt.format(57.8));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
@@ -5048,7 +5048,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
     
     assertNotNull(fmt);
     
-    assertEquals("100,110.57 $", fmt.format(100110.57));
+    assertEquals("100,110.57 $", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_MX() {
     var fmt = new NumFmt({
