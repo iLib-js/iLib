@@ -1,111 +1,145 @@
 {
     "gregorian": {
-        "order": "{time} {date}",
         "date": {
-            "dm": {
-                "s": "dd.MM",
-                "m": "dd.MM"
+            "dmwy": {
+                "s": "E, dd.MM.yy",
+                "m": "EE, d MMM yyyy 'р'.",
+                "l": "EEE, d MMMM yyyy 'р'.",
+                "f": "EEEE, d MMMM yyyy 'р'."
             },
             "dmy": {
                 "s": "dd.MM.yy",
-                "m": "dd.MM.yy"
-            },
-            "my": {
-                "s": "MM.yy",
-                "m": "MM.yy"
-            },
-            "m": {
-                "s": "MM"
-            },
-            "d": {
-                "s": "d",
-                "f": "dd",
-                "l": "dd",
-                "m": "dd"
-            },
-            "y": {
-                "m": "yy"
-            },
-            "dmwy": {
-                "s": "E, dd.MM.yy",
-                "m": "EE, dd.MM.yyyy",
-                "l": "EEE, d MMM yyyy",
-                "f": "EEEE, d MMM yyyy"
+                "m": "d MMM yyyy 'р'.",
+                "l": "d MMMM yyyy 'р'.",
+                "f": "d MMMM yyyy 'р'."
             },
             "dmw": {
                 "s": "E, dd.MM",
-                "m": "EE, dd.MM",
-                "l": "EEEE, d MMM",
-                "f": "EEEE, d MMM"
+                "m": "EE, d MMM",
+                "l": "EEE, d MMMM",
+                "f": "EEEE, d MMMM"
+            },
+            "dm": {
+                "s": "dd.MM",
+                "m": "d MMM",
+                "l": "d MMMM"
+            },
+            "my": {
+                "s": "MM.yy",
+                "m": "LLL yyyy 'р'.",
+                "l": "LLLL yyyy 'р'.",
+                "f": "LLLL yyyy 'р'."
+            },
+            "dw": {
+                "s": "E, dd",
+                "m": "EE, d",
+                "l": "EEE, d",
+                "f": "EEEE, d"
+            },
+            "d": {
+                "s": "yy",
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy"
+            },
+            "d": {
+                "s": "dd",
+                "f": "d",
+                "l": "d",
+                "m": "d"
+            },
+            "m": {
+                "s": "MM",
+                "m": "MMM",
+                "l": "MMMM"
             },
             "n": {
                 "m": "N"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {
             "12": {
                 "ahmsz": "h:mm:ss a z",
-                "hmsz": "h:mm:ss z",
                 "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss",
                 "ahmz": "h:mm a z",
                 "ahm": "h:mm a",
-                "hm": "h:mm",
-                "hmz": "h:mm z",
                 "ah": "h a"
             },
             "24": {
                 "ahmsz": "HH:mm:ss z",
+                "ahms": "HH:mm:ss",
                 "hmsz": "HH:mm:ss z",
+                "hms": "HH:mm:ss",
                 "ahmz": "HH:mm z",
-                "hmz": "HH:mm z"
+                "ahm": "HH:mm",
+                "hmz": "HH:mm z",
+                "ah": "HH",
+                "hm": "HH:mm",
+                "h": "HH"
             }
         },
         "range": {
             "c00": {
-                "s": "{st} – {et} {sd}.{sm}.{sy}",
-                "m": "{st} – {et} {sd}.{sm}.{sy}",
-                "l": "{st} – {et} {sd} {sm} {sy}",
-                "f": "{st} – {et} {sd} {sm} {sy}"
+                "s": "{sd}.{sm}.{sy} {st} – {et}",
+                "m": "{sd} {sm} {sy} р. {st} – {et}",
+                "l": "{sd} {sm} {sy} р. {st} – {et}",
+                "f": "{sd} {sm} {sy} р. {st} – {et}"
             },
             "c01": {
-                "s": "{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}",
-                "l": "{st} {sd} – {et} {ed} {em} {ey}",
-                "m": "{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}",
-                "f": "{st} {sd} – {et} {ed} {em} {ey}"
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "l": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "f": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}"
             },
             "c02": {
-                "s": "{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}",
-                "l": "{st} {sd} {sm} – {et} {ed} {em} {ey}",
-                "f": "{st} {sd} {sm} – {et} {ed} {em} {ey}",
-                "m": "{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "l": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}",
+                "f": "{sd} {sm} {st} – {ed} {em} {ey} р. {et}"
+            },
+            "c03": {
+                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "m": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
+                "l": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}",
+                "f": "{sd} {sm} {sy} р. {st} – {ed} {em} {ey} р. {et}"
             },
             "c10": {
-                "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} – {ed} {em} {ey}",
-                "f": "{sd} – {ed} {em} {ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}"
+                "s": "{sd} – {ed}.{em}.{ey}",
+                "m": "{sd} – {ed} {em} {ey} р.",
+                "l": "{sd} – {ed} {em} {ey} р.",
+                "f": "{sd} – {ed} {em} {ey} р."
             },
             "c11": {
                 "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} {sm} – {ed} {em} {ey}",
-                "f": "{sd} {sm} – {ed} {em} {ey}"
+                "m": "{sd} {sm} – {ed} {em} {ey} р.",
+                "l": "{sd} {sm} – {ed} {em} {ey} р.",
+                "f": "{sd} {sm} – {ed} {em} {ey} р."
             },
             "c12": {
                 "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
-                "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
-                "f": "{sd} {sm} {sy} – {ed} {em} {ey}"
+                "m": "{sd} {sm} {sy} р. – {ed} {em} {ey} р.",
+                "l": "{sd} {sm} {sy} р. – {ed} {em} {ey} р.",
+                "f": "{sd} {sm} {sy} р. – {ed} {em} {ey} р."
             },
             "c20": {
                 "s": "{sm}.{sy} – {em}.{ey}",
-                "m": "{sm}.{sy} – {em}.{ey}",
-                "l": "{sm} {sy} – {em} {ey}",
-                "f": "{sm} {sy} – {em} {ey}"
+                "m": "{sm} {sy} р. – {em} {ey} р.",
+                "l": "{sm} {sy} р. – {em} {ey} р.",
+                "f": "{sm} {sy} р. – {em} {ey} р."
             },
-            "c30": "{sy} – {ey}"
+            "c30": "{sy} р. – {ey} р."
         }
-    },
-    "generated": true
+    }
 }

@@ -1,0 +1,40 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "m": "EE, dd. MMM yyyy",
+                "l": "EEE, dd. MMMM yyyy",
+                "f": "EEEE, dd. MMMM yyyy"
+            },
+            "dmy": {
+                "m": "dd. MMM yyyy",
+                "l": "dd. MMMM yyyy",
+                "f": "dd. MMMM yyyy"
+            },
+            "dmw": {
+                "m": "EE, dd. MMM",
+                "l": "EEE, dd. MMMM",
+                "f": "EEEE, dd. MMMM"
+            },
+            "dm": {
+                "m": "dd. MMM",
+                "l": "dd. MMMM",
+                "f": "dd. MMMM"
+            },
+            "my": {
+                "m": "MMM yyyy"
+            },
+            "dw": {
+                "l": "EEE, dd",
+                "f": "EEEE, dd"
+            },
+            "d": {
+                "f": "dd",
+                "l": "dd"
+            },
+            "m": {
+                "m": "MMM"
+            }
+        }
+    }
+}

@@ -770,7 +770,32 @@ DateFmt.prototype = {
 		}
 		return arr;
 	},
-                          
+    
+	/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+	 * @param {string} components Format components to search
+	 * @param {string} length Length of the requested format
+	 * @return {string|undefined} the requested format
+	 */
+	_getFormatInternal: function getFormatInternal(obj, components, length) {
+		if (typeof(components) !== 'undefined' && obj && obj[components]) {
+			return this._getLengthFormat(obj[components], length);
+		}
+		return undefined;
+	},
+
+	// stand-alone of m (month) is t
+	// stand-alone of d (day) is a
+	// stand-alone of w (weekday) is l
+	// stand-alone of y (year) is r
+	_standAlones: {
+		"m": "t",
+		"d": "a",
+		"w": "l",
+		"y": "r"
+	},
+	
 	/**
 	 * @protected
 	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
@@ -779,10 +804,16 @@ DateFmt.prototype = {
 	 * @return {string|undefined} the requested format
 	 */
 	_getFormat: function getFormat(obj, components, length) {
-		if (typeof(components) !== 'undefined' && obj && obj[components]) {
-			return this._getLengthFormat(obj[components], length);
+		// handle some special cases for stand-alone formats
+		if (components && this._standAlones[components]) {
+    		var tmp = this._getFormatInternal(obj, this._standAlones[components], length);
+    		if (tmp) {
+    			return tmp;
+    		}
 		}
-		return undefined;
+		
+		// if no stand-alone format is available, fall back to the regular format
+		return this._getFormatInternal(obj, components, length);
 	},
 
 	/**
@@ -1209,19 +1240,27 @@ DateFmt.prototype = {
 				case 'NN':
 				case 'MMM':
 				case 'MMMM':
+				case 'L':
+				case 'LL':
+				case 'LLL':
+				case 'LLLL':
 					key = templateArr[i] + (date.month || 1);
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
-
+					
 				case 'E':
 				case 'EE':
 				case 'EEE':
 				case 'EEEE':
+				case 'c':
+				case 'cc':
+				case 'ccc':
+				case 'cccc':
 					key = templateArr[i] + date.getDayOfWeek();
 					//console.log("finding " + key + " in the resources");
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
-					
+
 				case 'a':
 					switch (this.meridiems) {
 					case "chinese":

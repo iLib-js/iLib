@@ -330,7 +330,7 @@ function testDateRngFmtBARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11. – 31.12.11.", fmt.format(start, end));
+    assertEquals("20.11.11. – 31.12.11.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "bs-Latn-BA", length: "medium"});

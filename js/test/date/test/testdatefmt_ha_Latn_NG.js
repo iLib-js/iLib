@@ -57,7 +57,7 @@ function testDateFmtSimpleMedium_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sat, 11", fmt.format(date));
+    assertEquals("29 Sat, 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ha_Latn_Jan() {
@@ -274,7 +274,7 @@ function testDateFmtSimpleLong_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Satumba, 11", fmt.format(date));
+    assertEquals("29 Satumba, 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_ha_Latn() {
@@ -308,7 +308,7 @@ function testDateFmtSimpleTimeShort_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45", fmt.format(date));
+    assertEquals("01:45", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium_ha_Latn() {
@@ -376,7 +376,7 @@ function testDateFmtDateTimeSimpleShort_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ha_Latn() {
@@ -393,7 +393,7 @@ function testDateFmtDateTimeSimpleMedium_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 Sat, 11", fmt.format(date));
+    assertEquals("29 Sat, 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ha_Latn() {
@@ -410,7 +410,7 @@ function testDateFmtDateTimeSimpleLong_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 Satumba, 11", fmt.format(date));
+    assertEquals("29 Satumba, 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ha_Latn() {
@@ -427,7 +427,7 @@ function testDateFmtDateTimeSimpleFull_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 Satumba, 2011", fmt.format(date));
+    assertEquals("29 Satumba, 2011 13:45", fmt.format(date));
 }
 
 
@@ -635,7 +635,7 @@ function testDateFmtTypeDateTime_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 
@@ -737,7 +737,7 @@ function testDateFmtShortDateComponentsDM_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_ha_Latn() {
@@ -788,7 +788,7 @@ function testDateFmtShortDateComponentsDMW_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("L, 9/29", fmt.format(date));
+    assertEquals("L, 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMWY_ha_Latn() {
@@ -805,7 +805,7 @@ function testDateFmtShortDateComponentsDMWY_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("L, 9/29/54", fmt.format(date));
+    assertEquals("L, 29/9/54", fmt.format(date));
 }
 
 
@@ -874,7 +874,7 @@ function testDateFmtFullDateComponentsDM_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Satumba 29", fmt.format(date));
+    assertEquals("29 Satumba", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_ha_Latn() {
@@ -891,7 +891,7 @@ function testDateFmtFullDateComponentsMY_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Satumba 2011", fmt.format(date));
+    assertEquals("Satumba, 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ha_Latn() {
@@ -925,7 +925,7 @@ function testDateFmtFullDateComponentsDMW_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Alhamis, Fab 19", fmt.format(date));
+    assertEquals("Alhamis, 19 Faburairu", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMWY_ha_Latn() {
@@ -942,7 +942,7 @@ function testDateFmtFullDateComponentsDMWY_ha_Latn() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Alhamis, Fab 19, 2015", fmt.format(date));
+    assertEquals("Alhamis, 19 Faburairu, 2015", fmt.format(date));
 }
 
 

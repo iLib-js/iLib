@@ -57,7 +57,7 @@ function testDateFmtINSimpleMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_or_IN() {
@@ -74,7 +74,7 @@ function testDateFmtINSimpleLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleFull_or_IN() {
@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 29-9-11", fmt.format(date));
+    assertEquals("29-9-11 1:45 pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_or_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_or_IN() {
@@ -227,7 +227,7 @@ function testDateFmtINDateTimeSimpleLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 29 ସେପ୍ଟେମ୍ବର 11", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_or_IN() {
@@ -244,7 +244,7 @@ function testDateFmtINDateTimeSimpleFull_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 29 ସେପ୍ଟେମ୍ବର 2011", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm", fmt.format(date));
 }
 
 
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 pm 29-9-11", fmt.format(date));
+    assertEquals("29-9-11 1:45 pm", fmt.format(date));
 }
 
 
@@ -486,7 +486,7 @@ function testDateFmtINShortDateComponentsM_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_or_IN() {
@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("ସେ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_or_IN() {
@@ -537,7 +537,7 @@ function testDateFmtINShortDateComponentsDM_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-29", fmt.format(date));
+    assertEquals("29-9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_or_IN() {
@@ -554,7 +554,7 @@ function testDateFmtINShortDateComponentsMY_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9", fmt.format(date));
+    assertEquals("9-11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_or_IN() {
@@ -588,7 +588,7 @@ function testDateFmtINShortDateComponentsWDM_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ଗୁ, 9-29", fmt.format(date));
+    assertEquals("ଗୁ, 29-9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_or_IN() {
@@ -605,7 +605,7 @@ function testDateFmtINShortDateComponentsWDMY_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ଗୁ, 11-9-29", fmt.format(date));
+    assertEquals("ଗୁ, 29-9-11", fmt.format(date));
 }
 
 
@@ -674,7 +674,7 @@ function testDateFmtINFullDateComponentsDM_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ସେପ୍ଟେମ୍ବର 29", fmt.format(date));
+    assertEquals("29 ସେପ୍ଟେମ୍ବର", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsMY_or_IN() {
@@ -725,7 +725,7 @@ function testDateFmtINFullDateComponentsWDM_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ଗୁରୁବାର ସେପ୍ଟେମ୍ବର 29", fmt.format(date));
+    assertEquals("ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDMY_or_IN() {
@@ -742,7 +742,7 @@ function testDateFmtINFullDateComponentsWDMY_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ଗୁରୁବାର, 2011 ସେପ୍ଟେମ୍ବର 29", fmt.format(date));
+    assertEquals("ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର 2011", fmt.format(date));
 }
 
 

@@ -41,7 +41,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 11-12-31", fmt.format(start, end));
+    assertEquals("31/12/11 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 12, 2011", fmt.format(start, end));
+    assertEquals("31 Dis, 2011 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Dis 31", fmt.format(start, end));
+    assertEquals("31 Disamba, 2011 13:45 - 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmt_ha_Latn_NG_RangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 Disamba, 2011", fmt.format(start, end));
+    assertEquals("31 Disamba, 2011 13:45 - 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmt_ha_Latn_NG_RangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11–12–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30/12/11 13:45 - 31/12/11 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–12–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Dis, 2011 13:45 - 31 Dis, 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–Dis–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Disamba, 2011 13:45 - 31 Disamba, 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–Disamba–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Disamba, 2011 13:45 - 31 Disamba, 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11–12–20 – 31", fmt.format(start, end));
+    assertEquals("20-31/12/11", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–12–20 – 31", fmt.format(start, end));
+    assertEquals("20-31 Dis, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Dis–20 – 31", fmt.format(start, end));
+    assertEquals("20-31 Disamba, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Disamba–20 – 31", fmt.format(start, end));
+    assertEquals("20-31 Disamba, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmt_ha_Latn_NG_RangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11–11–20 – 12–31", fmt.format(start, end));
+    assertEquals("20/11-31/12 11", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11–20 – 12–31", fmt.format(start, end));
+    assertEquals("20 Nuw - 31 Dis, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -380,7 +380,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuw–20 – Dis–31", fmt.format(start, end));
+    assertEquals("20 Nuwamba - 31 Disamba, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -404,7 +404,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuwamba–20 – Disamba–31", fmt.format(start, end));
+    assertEquals("20 Nuwamba - 31 Disamba, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmt_ha_Latn_NG_RangeNextYearShort() {
@@ -429,7 +429,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11–11–20 – 12–1–31", fmt.format(start, end));
+    assertEquals("20/11/11-31/1/12", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -453,7 +453,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11–20 – 2012–01–31", fmt.format(start, end));
+    assertEquals("20 Nuw, 2011 - 31 Jan, 2012", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -477,7 +477,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuw–20 – 2012–Jan–31", fmt.format(start, end));
+    assertEquals("20 Nuwamba, 2011 - 31 Janairu, 2012", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -501,7 +501,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuwamba–20 – 2012–Janairu–31", fmt.format(start, end));
+    assertEquals("20 Nuwamba, 2011 - 31 Janairu, 2012", fmt.format(start, end));
 }
 
 function testDateRngFmt_ha_Latn_NG_RangeMultiYearShort() {
@@ -526,7 +526,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11–11 – 14–1", fmt.format(start, end));
+    assertEquals("11/11-1/14", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -550,7 +550,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11 – 2014–01", fmt.format(start, end));
+    assertEquals("Nuw, 2011 - Jan, 2014", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -574,7 +574,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuw – 2014–Jan", fmt.format(start, end));
+    assertEquals("Nuwamba, 2011 - Janairu, 2014", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -598,7 +598,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Nuwamba – 2014–Janairu", fmt.format(start, end));
+    assertEquals("Nuwamba, 2011 - Janairu, 2014", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_ManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "ha-Latn-NG", length: "full"});
@@ -622,5 +622,5 @@ function testDateRngFmt_ha_Latn_NG_ManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 – 2064", fmt.format(start, end));
+    assertEquals("2011 - 2064", fmt.format(start, end));
 }

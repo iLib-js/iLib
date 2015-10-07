@@ -656,22 +656,23 @@ limitations under the License.
         <attribute name="compilation"/>
         <attribute name="suite"/>
 		<attribute name="set"/>
+		<attribute name="failquit"/>
 		<sequential>
-			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
 				<arg line="@{set}"/>
 			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg value="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
 				<arg line="@{set}"/>
 			</exec>
-			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -702,140 +703,141 @@ limitations under the License.
 	</macrodef>
 
 	<target depends="assemble.dyncode.unittest" name="test.util">
-		<runtests suite="util" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="util" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.root">
-		<runtests suite="." assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="." assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.calendar">
-		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.date">
-		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="date3" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="date3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.daterange">
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.durfmt">
-		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.number">
-		<runtests suite="number" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="number" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.maps">
-		<runtests suite="maps" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="maps" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.ctype">
-		<runtests suite="ctype" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.strings-ext">
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.phone">
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.units">
-		<runtests suite="units" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="units" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.name">
-		<runtests suite="name" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="name" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.address">
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="modular"/>
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="legacy"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="legacy"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" set="legacy" failquit="false"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" set="legacy" failquit="false"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.collate">
-		<runtests suite="collate" assembly="dynamic" compilation="compiled" set="modular"/>
+		<runtests suite="collate" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<macrodef name="runallsuites">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
         <attribute name="set"/>
+		<attribute name="failquit"/>
 		<sequential>
-			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
 		</sequential>
 	</macrodef>
 
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<runallsuites assembly="assembled" compilation="compiled" set="modular"/>
+		<runallsuites assembly="assembled" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<runallsuites assembly="assembled" compilation="uncompiled" set="modular"/>
+		<runallsuites assembly="assembled" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.uncompiled">
-		<runallsuites assembly="dynamic" compilation="uncompiled" set="modular"/>
+		<runallsuites assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.compiled">
-		<runallsuites assembly="dynamic" compilation="compiled" set="modular"/>
+		<runallsuites assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 	</target>
 
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled">
-		<runallsuites assembly="dynamicdata" compilation="compiled" set="modular"/>
+		<runallsuites assembly="dynamicdata" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled">
-		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="modular"/>
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.compiled.legacy">
-		<runallsuites assembly="assembled" compilation="compiled" set="legacy"/>
+		<runallsuites assembly="assembled" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled.legacy">
-		<runallsuites assembly="assembled" compilation="uncompiled" set="legacy"/>
+		<runallsuites assembly="assembled" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.uncompiled.legacy">
-		<runallsuites assembly="dynamic" compilation="uncompiled" set="legacy"/>
+		<runallsuites assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.compiled.legacy">
-		<runallsuites assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runallsuites assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled.legacy">
-		<runallsuites assembly="dynamicdata" compilation="compiled" set="legacy"/>
+		<runallsuites assembly="dynamicdata" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled.legacy">
-		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="legacy"/>
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="bench.core" depends="assemble.unittest,assemble.dyndata.unittest"
@@ -986,7 +988,8 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed">
+	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed"
+			description="Update the package.json file to insert the version number into it automatically.">
 		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
 			<filterset>
 				<filter token="fullversion" value="${version}"/>
@@ -1080,11 +1083,13 @@ limitations under the License.
         <attribute name="compilation"/>
         <attribute name="suite"/>
 		<attribute name="set"/>
+		<attribute name="failquit"/>
 		<sequential>
 			<java	dir="${build.test}"
 					classname="io.apigee.trireme.shell.Main"
 					fork="true"					
-					maxmemory="4096m">
+					maxmemory="4096m"
+				 	failifexecutionfails="@{failquit}">
 				<jvmarg value="-XX:MaxPermSize=96m"/>
 				<jvmarg value="-Xms256m"/>
 				<jvmarg value="-Xmx2048m"/>
@@ -1106,89 +1111,90 @@ limitations under the License.
         <attribute name="assembly"/>
         <attribute name="compilation"/>
         <attribute name="set"/>
+		<attribute name="failquit"/>
 		<sequential>
-			<runtests.rhino suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
-			<runtests.rhino suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}"/>
+			<runtests.rhino suite="util" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="." assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="calendar" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="date1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="date2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="date3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="number" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="maps" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="ctype" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="phone1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="phone2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="phone3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="units" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="name" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="address1" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="address2" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="address3" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
+			<runtests.rhino suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
 		</sequential>
 	</macrodef>
 
 	<target name="test.assembled.compiled.rhino" depends="assemble.unittest,location.trireme">
-		<runallsuites.rhino assembly="assembled" compilation="compiled" set="modular"/>
+		<runallsuites.rhino assembly="assembled" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.assembled.uncompiled.rhino" depends="assemble.unittest,location.trireme">
-		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="modular"/>
+		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.uncompiled.rhino" depends="location.trireme,prepare,gen.manifest.locale">
-		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="modular"/>
+		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.compiled.rhino" depends="location.trireme,prepare,gen.manifest.locale">
-		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="modular"/>
+		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamicdata.compiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="modular"/>
+		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.dynamicdata.uncompiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="modular"/>
+		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.assembled.compiled.legacy.rhino" depends="assemble.unittest,location.trireme">
-		<runallsuites.rhino assembly="assembled" compilation="compiled" set="legacy"/>
+		<runallsuites.rhino assembly="assembled" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.assembled.uncompiled.legacy.rhino" depends="assemble.unittest,location.trireme">
-		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="legacy"/>
+		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.uncompiled.legacy.rhino" depends="location.trireme,prepare,gen.manifest.locale">
-		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="legacy"/>
+		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamic.compiled.legacy.rhino" depends="location.trireme,prepare,gen.manifest.locale">
-		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="legacy"/>
+		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamicdata.compiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="legacy"/>
+		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.dynamicdata.uncompiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="legacy"/>
+		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 
 	<target name="test.calendar.rhino" depends="location.trireme,gen.manifest.locale">
-		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="legacy"/>
-		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="modular"/>
+		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
+		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.units.rhino" depends="location.trireme,gen.manifest.locale">
-		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="legacy"/>
-		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular"/>
+		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
+		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino,test.assembled.compiled.legacy.rhino,test.assembled.uncompiled.legacy.rhino,test.dynamic.uncompiled.legacy.rhino,test.dynamic.compiled.legacy.rhino,test.dynamicdata.compiled.legacy.rhino,test.dynamicdata.uncompiled.legacy.rhino">

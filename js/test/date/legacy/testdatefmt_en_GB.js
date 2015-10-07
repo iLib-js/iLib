@@ -38,7 +38,7 @@ function testDateFmtGBSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtGBSimpleMedium() {
@@ -55,7 +55,7 @@ function testDateFmtGBSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011", fmt.format(date));
+    assertEquals("29 Sep 2011", fmt.format(date));
 }
 
 function testDateFmtGBSimpleLong() {
@@ -72,7 +72,7 @@ function testDateFmtGBSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011", fmt.format(date));
+    assertEquals("29 September 2011", fmt.format(date));
 }
 
 function testDateFmtGBSimpleFull() {
@@ -174,7 +174,7 @@ function testDateFmtGBDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("29/09/2011 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleMedium() {
@@ -191,7 +191,7 @@ function testDateFmtGBDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13:45", fmt.format(date));
+    assertEquals("29 Sep 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleLong() {
@@ -208,7 +208,7 @@ function testDateFmtGBDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("29 September 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleFull() {
@@ -414,7 +414,7 @@ function testDateFmtGBTypeDate() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtGBTypeTime() {
@@ -448,7 +448,7 @@ function testDateFmtGBTypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("29/09/2011 13:45", fmt.format(date));
 }
 
 
@@ -466,7 +466,7 @@ function testDateFmtGBShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsM() {
@@ -483,7 +483,7 @@ function testDateFmtGBShortDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsN() {
@@ -534,7 +534,7 @@ function testDateFmtGBShortDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("29/09", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsMY() {
@@ -551,7 +551,7 @@ function testDateFmtGBShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("09/2011", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsDMY() {
@@ -568,7 +568,7 @@ function testDateFmtGBShortDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsWDM() {
@@ -585,7 +585,7 @@ function testDateFmtGBShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9", fmt.format(date));
+    assertEquals("T, 29/09", fmt.format(date));
 }
 
 function testDateFmtGBShortDateComponentsWDMY() {
@@ -602,7 +602,7 @@ function testDateFmtGBShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9/11", fmt.format(date));
+    assertEquals("T, 29/09/2011", fmt.format(date));
 }
 
 
@@ -722,7 +722,7 @@ function testDateFmtGBFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September", fmt.format(date));
+    assertEquals("Thursday, 29 September", fmt.format(date));
 }
 
 function testDateFmtGBFullDateComponentsWDMY() {
@@ -739,7 +739,7 @@ function testDateFmtGBFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September 2011", fmt.format(date));
+    assertEquals("Thursday, 29 September 2011", fmt.format(date));
 }
 
 

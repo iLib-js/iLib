@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/2011", fmt.format(date));
+    assertEquals("29 ก.ย. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_th_TH() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ก.ย. 2011", fmt.format(date));
+	    assertEquals("29 กันยายน 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_th_TH() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+	    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_th_TH() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/2011", fmt.format(date));
+	    assertEquals("29 ก.ย. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_th_TH() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 ก.ย. 2011", fmt.format(date));
+	    assertEquals("29 กันยายน 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_th_TH() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 กันยายน 2011", fmt.format(date));
+	    assertEquals("29 กันยายน 2011 13:45", fmt.format(date));
 }
 
 
@@ -433,7 +433,7 @@ function testDateFmtTypeDateTime_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+	    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 
@@ -485,7 +485,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ก", fmt.format(date));
+	    assertEquals("ก.ย.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
@@ -570,7 +570,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พ 29/9", fmt.format(date));
+	    assertEquals("พฤที่ 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
@@ -587,7 +587,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พ 29/9/54", fmt.format(date));
+	    assertEquals("พฤที่ 29/9/54", fmt.format(date));
 }
 
 
@@ -707,7 +707,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("วันพฤหัสบดี 29 กันยายน", fmt.format(date));
+	    assertEquals("วันพฤหัสบดีที่ 29 กันยายน", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_th_TH() {
@@ -724,7 +724,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("วันพฤหัสบดี 29 กันยายน 2554", fmt.format(date));
+	    assertEquals("วันพฤหัสบดีที่ 29 กันยายน 2554", fmt.format(date));
 }
 
 

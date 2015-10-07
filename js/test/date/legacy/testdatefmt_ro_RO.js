@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29.09.2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_ro_RO() {
@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011", fmt.format(date));
+    assertEquals("29 sept. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ro_RO() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 sept. 2011", fmt.format(date));
+	    assertEquals("29 septembrie 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_ro_RO() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+	    assertEquals("29.09.2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ro_RO() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.2011", fmt.format(date));
+	    assertEquals("29 sept. 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ro_RO() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 sept. 2011", fmt.format(date));
+	    assertEquals("29 septembrie 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ro_RO() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 septembrie 2011", fmt.format(date));
+	    assertEquals("29 septembrie 2011, 13:45", fmt.format(date));
 }
 
 
@@ -401,7 +401,7 @@ function testDateFmtTypeDate_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29.09.2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_ro_RO() {
@@ -435,7 +435,7 @@ function testDateFmtTypeDateTime_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.11", fmt.format(date));
+	    assertEquals("29.09.2011, 13:45", fmt.format(date));
 }
 
 
@@ -453,7 +453,7 @@ function testDateFmtShortDateComponentsY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+	    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_ro_RO() {
@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsMY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.11", fmt.format(date));
+	    assertEquals("09.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ro_RO() {
@@ -555,7 +555,7 @@ function testDateFmtShortDateComponentsDMY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29.09.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ro_RO() {
@@ -589,7 +589,7 @@ function testDateFmtShortDateComponentsWDMY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("J, 29.09.11", fmt.format(date));
+	    assertEquals("J, 29.09.2011", fmt.format(date));
 }
 
 
@@ -675,7 +675,7 @@ function testDateFmtFullDateComponentsMY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("septembrie 2011", fmt.format(date));
+	    assertEquals("Septembrie 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ro_RO() {
@@ -709,7 +709,7 @@ function testDateFmtFullDateComponentsWDM_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("joi, 29 sept.", fmt.format(date));
+	    assertEquals("joi, 29 septembrie", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_ro_RO() {
@@ -726,7 +726,7 @@ function testDateFmtFullDateComponentsWDMY_ro_RO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("joi, 29 sept. 2011", fmt.format(date));
+	    assertEquals("joi, 29 septembrie 2011", fmt.format(date));
 }
 
 
