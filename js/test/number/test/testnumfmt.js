@@ -1559,8 +1559,6 @@ function testNumFmtasIN() {
 }
 
 
-
-
 /***************** test cases written by Birendra 3/6/2013 *******************************************/
 //test acses for hi-IN
 function testNumFmthi_IN() {
@@ -1590,8 +1588,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "hi-IN",
-	    useNative: true,
-	    currency: "INR"
+        useNative: true,
+        currency: "INR"
     });
    
     assertNotNull(fmt);
@@ -2757,9 +2755,9 @@ function testNumFmtPercentageFormatRegular_zh_Hans_CN() {
 
 //test cases for honk-kong
 
-function testNumFmt_zh_Hans_HK() {
+function testNumFmt_zh_Hant_HK() {
     var fmt = new NumFmt({
-        locale: "zh-Hans-HK",
+        locale: "zh-Hant-HK",
         maxFractionDigits: 2
     });
     
@@ -2768,10 +2766,10 @@ function testNumFmt_zh_Hans_HK() {
     assertEquals("-123,456.78", fmt.format(-123456.785));
 }
 
-function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hans_HK() {
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_HK() {
     var fmt = new NumFmt({
         type: "currency",
-        locale: "zh-Hans-HK",
+        locale: "zh-Hant-HK",
 	style: "iso",
         currency: "HKD"
     });
@@ -2780,9 +2778,9 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hans_HK() {
     
     assertEquals("HKD100,110.57", fmt.format(100110.57));
 }
-function testNumFmtPercentageFormatRegular_zh_Hans_HK() {
+function testNumFmtPercentageFormatRegular_zh_Hant_HK() {
     var fmt = new NumFmt({
-	locale: "zh-Hans-HK",
+	locale: "zh-Hant-HK",
         type: "percentage"
     });
     
