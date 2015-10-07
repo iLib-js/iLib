@@ -294,7 +294,17 @@ function testGetLocaleBrowser() {
 	}
 	ilib.locale = undefined;
 	
-	assertEquals(navigator.language, ilib.getLocale());
+	var loc = "";
+	
+	if (navigator.language.length > 5) {
+		var l = navigator.language;
+		loc = l.substring(0,3) + l.charAt(3).toUpperCase() + l.substring(4,8).toLowerCase() + l.substring(8).toUpperCase();
+	} else if (navigator.language.length > 2) {
+		loc = navigator.language.substring(0,3) + navigator.language.substring(3).toUpperCase();	
+	} else {
+		loc = navigator.language;
+	}
+	assertEquals(loc, ilib.getLocale());
 }
 
 function testIsArrayNewArrayObj() {

@@ -146,11 +146,12 @@ function testGetTimeZoneNodejs() {
 				env: {}
 			};
 		}
+		var tmp = process.env.TZ;
 		process.env.TZ = "America/Phoenix";
 		
 		assertEquals("America/Phoenix", ilib.getTimeZone());
 		
-		process.env.TZ = "";
+		process.env.TZ = tmp;
 	}
 }
 
@@ -160,8 +161,14 @@ function testGetTimeZoneRhino() {
 		return;
 	}
 	ilib.tz = undefined;
-	
-	environment.user.timezone = "America/New_York";
+
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+		environment.user.timezone = "America/New_York";
+	} else {
+		// under trireme on rhino emulating nodejs
+		process.env.TZ = "America/New_York";
+	}
 
 	assertEquals("America/New_York", ilib.getTimeZone());
 }
@@ -216,14 +223,25 @@ function testGetLocaleRhino() {
 	}
 	
 	ilib.locale = undefined;
-
-	environment.user.language = "de";
-	environment.user.country = "AT";
+	
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+    	environment.user.language = "de";
+    	environment.user.country = "AT";
+	} else {
+		// under trireme on rhino emulating nodejs
+		process.env.LANG = "de_AT.UTF8";
+	}
 	
 	assertEquals("de-AT", ilib.getLocale());
 	
-	environment.user.language = undefined;
-	environment.user.country = undefined;
+	if (typeof(process) === 'undefined') {
+		// under plain rhino
+    	environment.user.language = undefined;
+    	environment.user.country = undefined;
+	} else {
+    	process.env.LANG = "en_US.UTF8";
+	}
 }
 
 function testGetLocaleWebOS() {
@@ -273,7 +291,17 @@ function testGetLocaleBrowser() {
 	}
 	ilib.locale = undefined;
 	
-	assertEquals(navigator.language, ilib.getLocale());
+	var loc = "";
+	
+	if (navigator.language.length > 5) {
+		var l = navigator.language;
+		loc = l.substring(0,3) + l.charAt(3).toUpperCase() + l.substring(4,8).toLowerCase() + l.substring(8).toUpperCase();
+	} else if (navigator.language.length > 2) {
+		loc = navigator.language.substring(0,3) + navigator.language.substring(3).toUpperCase();	
+	} else {
+		loc = navigator.language;
+	}
+	assertEquals(loc, ilib.getLocale());
 }
 
 function testIsArrayNewArrayObj() {
