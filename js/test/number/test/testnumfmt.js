@@ -2063,7 +2063,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_or_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ୧,୦୦,୧୧୦.୫୭", fmt.format(100110.57));
+    assertEquals("₹୧,୦୦,୧୧୦.୫୭", fmt.format(100110.57));
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
@@ -2076,7 +2076,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹-୧,୦୦,୧୧୦.୫୭", fmt.format(-100110.57));
+    assertEquals("(₹୧,୦୦,୧୧୦.୫୭)", fmt.format(-100110.57));
 }
 
 
@@ -2089,7 +2089,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+    assertEquals("₹1,00,110.57", fmt.format(100110.57));
 }
 
 
@@ -2151,7 +2151,7 @@ function testNumFmtCurrencyFormatNegativeCurrencyForLocale_ha_Latn_NG1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₦-100,110.57", fmt.format(-100110.57));
+    assertEquals("(₦100,110.57)", fmt.format(-100110.57));
 }
 
 
@@ -2390,7 +2390,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_pa_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ੧,੦੦,੧੧੦.੫੭", fmt.format(100110.57));
+    assertEquals("₹੧,੦੦,੧੧੦.੫੭", fmt.format(100110.57));
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_pa_IN1() {
@@ -2403,7 +2403,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_pa_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ੧,੦੦,੧੧੦.੫੭", fmt.format(-100110.57));
+    assertEquals("(₹੧,੦੦,੧੧੦.੫੭)", fmt.format(-100110.57));
 }
 
 
@@ -2416,7 +2416,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pa_IN() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+    assertEquals("₹1,00,110.57", fmt.format(100110.57));
 }
 
 
@@ -2480,7 +2480,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
+    assertEquals("₹۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
@@ -2493,7 +2493,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ۱٬۰۰٬۱۱۰٫۵۷", fmt.format(-100110.57));
+    assertEquals("(₹۱,۰۰,۱۱۰.۵۷)", fmt.format(-100110.57));
 }
 
 
@@ -2506,7 +2506,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
     
     assertNotNull(fmt);
    
-    assertEquals("₹ ۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
+    assertEquals("₹۱,۰۰,۱۱۰.۵۷", fmt.format(100110.57));
 }
 
 
@@ -2571,7 +2571,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_as_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
+    assertEquals("₹১,০০,১১০.৫৭", fmt.format(100110.57));
 }
 
 function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
@@ -2584,7 +2584,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₹ ১,০০,১১০.৫৭", fmt.format(-100110.57));
+    assertEquals("(₹১,০০,১১০.৫৭)", fmt.format(-100110.57));
 }
 
 function testNumFmtPercentageFormatRegular_as_IN() {
@@ -3151,7 +3151,7 @@ function testNumFmtPercentageFormatRegular_fi_FI() {
     assertEquals("57 %", fmt.format(57.0));
 }
 //test cases for cs-CZ
-function testNumFmt_csCZ() {
+function testNumFmt_cs_CZ() {
     var fmt = new NumFmt({
         locale: "cs-CZ",
         maxFractionDigits: 2
@@ -3261,7 +3261,7 @@ function testNumFmt_nl_NL() {
     assertEquals("-123.456,78", fmt.format(-123456.785));
 }
 
-function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_nl_NL() {
+function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_nl_NL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "nl-NL",
@@ -3270,7 +3270,7 @@ function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_nl_NL() {
     
     assertNotNull(fmt);
     
-    assertEquals("ƒ 100.110,57", fmt.format(100110.57));
+    assertEquals("ƒ100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_nl_NL() {
     var fmt = new NumFmt({
@@ -3406,7 +3406,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_as_IN() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
+    assertEquals("₹১,০০,১১০.৫৭", fmt.format(100110.57));
 }
 
 //test cases for ar-SA
@@ -3568,7 +3568,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
 }
 
 
-function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
+function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_cs_CZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
@@ -3577,7 +3577,7 @@ function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
     
     assertNotNull(fmt);
     
-    assertEquals("Kč-100 110,57", fmt.format(-100110.57));
+    assertEquals("(Kč100 110,57)", fmt.format(-100110.57));
 }
 function testNumFmtPercentageFormatRegular_et_EE() {
     var fmt = new NumFmt({
@@ -3877,7 +3877,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mk_MK() {
     
     assertNotNull(fmt);
     
-    assertEquals("ден 100.110,57", fmt.format(100110.57));
+    assertEquals("ден100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_mk_MK() {
     var fmt = new NumFmt({
@@ -3943,7 +3943,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
     
     assertNotNull(fmt);
     
-    assertEquals("kr 100 110,57", fmt.format(100110.57));
+    assertEquals("kr100 110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_nb_NO() {
     var fmt = new NumFmt({
@@ -4786,7 +4786,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
     
     assertNotNull(fmt);
     
-    assertEquals("₡-100.110,57", fmt.format(-100110.57));
+    assertEquals("(₡100.110,57)", fmt.format(-100110.57));
 }
 
 //test cases for es-DO
@@ -4833,7 +4833,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
     
     assertNotNull(fmt);
     
-    assertEquals("$-100,110.57", fmt.format(-100110.57));
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
 }
 
 
@@ -4881,7 +4881,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
     
     assertNotNull(fmt);
     
-    assertEquals("$-100,110.57", fmt.format(-100110.57));
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for es-GQ
@@ -4928,7 +4928,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
     
     assertNotNull(fmt);
     
-    assertEquals("Fr-100.111", fmt.format(-100110.57));
+    assertEquals("(Fr100.111)", fmt.format(-100110.57));
 }
 //test cases for es-GT
 
@@ -4974,7 +4974,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
     
     assertNotNull(fmt);
     
-    assertEquals("Q-100,110.57", fmt.format(-100110.57));
+    assertEquals("(Q100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for es-HN
@@ -5021,7 +5021,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
     
     assertNotNull(fmt);
     
-    assertEquals("L-100,110.57", fmt.format(-100110.57));
+    assertEquals("(L100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for es-MX
@@ -5068,7 +5068,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
     
     assertNotNull(fmt);
     
-    assertEquals("$-100,110.57", fmt.format(-100110.57));
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
 }
 /******************************** End of test cases****************************************************/
 function testNumFmt_en_GB() {
