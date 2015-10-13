@@ -4334,7 +4334,7 @@ function testDurFmtKOFormatShortDefaultStyle() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년 1개 1주 1일 1시 1분 1초 1리초", duration.toString());
+    assertEquals("1년 1개월 1주 1일 1시 1분 1초 1밀리초", duration.toString());
 };
 
 function testDurFmtKOFormatShortText() {
@@ -4355,7 +4355,7 @@ function testDurFmtKOFormatShortText() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년 1개 1주 1일 1시 1분 1초 1리초", duration.toString());
+    assertEquals("1년 1개월 1주 1일 1시 1분 1초 1밀리초", duration.toString());
 };
 
 function testDurFmtKOFormatShortClock() {
@@ -4376,7 +4376,7 @@ function testDurFmtKOFormatShortClock() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년 1개 1주 1일 1:01:01", duration.toString());
+    assertEquals("1년 1개월 1주 1일 1:01:01", duration.toString());
 };
 
 function testDurFmtKOFormatMedium() {
@@ -4396,7 +4396,7 @@ function testDurFmtKOFormatMedium() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년 1개월 1주 1일 1시간 1분 1초 1리초", duration.toString());
+    assertEquals("1년 1개월 1주 1일 1시간 1분 1초 1밀리초", duration.toString());
 };
 
 function testDurFmtKOFormatLong() {
@@ -4416,7 +4416,7 @@ function testDurFmtKOFormatLong() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년, 1개월, 1주, 1일, 1시간, 1분, 1초, 1리초", duration.toString());
+    assertEquals("1년, 1개월, 1주, 1일, 1시간, 1분, 1초, 1밀리초", duration.toString());
 };
 
 function testDurFmtKOFormatFull() {
