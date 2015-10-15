@@ -542,7 +542,6 @@ Locale.a1toa3langmap = {
 	"sl": "slv",
 	"so": "som",
 	"st": "sot",
-	"az": "azb",
 	"es": "spa",
 	"su": "sun",
 	"sw": "swa",

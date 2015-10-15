@@ -58,6 +58,7 @@ ilib.data = {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
     },
+    /** @type {Object.<string,{to:Object.<string,string>,from:Object.<string,number>}>} */ charmaps: {},
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_c: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_l: null,
@@ -176,6 +177,39 @@ ilib._getBrowser = function () {
 };
 
 /**
+ * Return the value of a global variable given its name in a way that works 
+ * correctly for the current platform.
+ * @private
+ * @static
+ * @param {string} name the name of the variable to return
+ * @return {*} the global variable, or undefined if it does not exist
+ */
+ilib._global = function(name) {
+    switch (ilib._getPlatform()) {
+        case "rhino":
+            var top = (function() {
+              return (typeof global === 'object') ? global : this;
+            })();
+            break;
+        case "nodejs":
+        case "trireme":
+            top = typeof(global) !== 'undefined' ? global : this;
+            //console.log("ilib._global: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
+            break;
+        case "qt":
+        	return undefined;
+        default:
+        	top = window;
+        	break;
+    }
+    try {
+		return top[name];
+	} catch (e) {
+		return undefined;
+	}
+};
+
+/**
  * Return true if the global variable is defined on this platform.
  * @private
  * @static
@@ -183,25 +217,7 @@ ilib._getBrowser = function () {
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
-    switch (ilib._getPlatform()) {
-        case "rhino":
-            var top = (function() {
-              return (typeof global === 'object') ? global : this;
-            })();
-            return typeof(top[name]) !== 'undefined';
-        case "nodejs":
-        case "trireme":
-            var root = typeof(global) !== 'undefined' ? global : this;
-            return root && typeof(root[name]) !== 'undefined';
-        case "qt":
-        	return false;
-        default:
-        	try {
-        		return window && typeof(window[name]) !== 'undefined';
-        	} catch (e) {
-        		return false;
-        	}
-    }
+	return typeof(ilib._global(name)) !== 'undefined';
 };
 
 /**
@@ -545,7 +561,7 @@ ilib.getLoader = function() {
 };
 
 /**
- * Test whether an object in an javascript array. 
+ * Test whether an object is an javascript array. 
  * 
  * @static
  * @param {*} object The object to test
@@ -553,10 +569,8 @@ ilib.getLoader = function() {
  * and false otherwise
  */
 ilib.isArray = function(object) {
-	var o;
 	if (typeof(object) === 'object') {
-		o = /** @type {Object|null|undefined} */ object;
-		return Object.prototype.toString.call(o) === '[object Array]';
+		return Object.prototype.toString.call(object) === '[object Array]';
 	}
 	return false; 
 };

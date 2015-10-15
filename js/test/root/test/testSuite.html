@@ -28,20 +28,22 @@ var dir = (i !== -1 ? url.substring(0, i+1) : url);
 
 function suite() {
     var s = new JsUnitTestSuite();
-    
+
     s.addTestPage(dir + "testLocale.html");
     s.addTestPage(dir + "testLocaleInfo.html");
     s.addTestPage(dir + "testResources.html");
     s.addTestPage(dir + "testStrings.html");
     s.addTestPage(dir + "testGlobal.html");
     s.addTestPage(dir + "testScriptInfo.html");
-    
+    s.addTestPage(dir + "testCharset.html");
+
     s.addTestPage(dir + "testLocaleCompiled.html");
     s.addTestPage(dir + "testLocaleInfoCompiled.html");
     s.addTestPage(dir + "testResourcesCompiled.html");
     s.addTestPage(dir + "testStringsCompiled.html");
     s.addTestPage(dir + "testGlobalCompiled.html");
     s.addTestPage(dir + "testScriptInfoCompiled.html");
+    s.addTestPage(dir + "testCharsetCompiled.html");
 
     return s;
 }

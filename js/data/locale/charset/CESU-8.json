@@ -1,0 +1,7 @@
+{
+	"description": "Compatibility Encoding Scheme for Unicode UTF-16",
+	"min": 1,
+	"max": 6,
+	"scripts": ["*"],
+	"locales": ["*"]
+}

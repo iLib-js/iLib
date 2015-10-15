@@ -221,6 +221,16 @@ DateFactory._dateToIlib = function(inDate, timezone, locale) {
 	if (inDate instanceof IDate) {
 		return inDate;
 	}
+	if (typeof(inDate) === 'number') {
+		return DateFactory({
+			unixtime: inDate,
+			timezone: timezone,
+			locale: locale
+		});
+	}
+	if (typeof(inDate) === 'string') {
+		inDate = new Date(inDate);
+	}
 	if (JSUtils.isDate(inDate)) {
 		return DateFactory({
 			unixtime: inDate.getTime(),
@@ -235,18 +245,8 @@ DateFactory._dateToIlib = function(inDate, timezone, locale) {
 			locale: locale
 		});
 	}
-	if (typeof(inDate) === 'number') {
-		return DateFactory({
-			unixtime: inDate,
-			timezone: timezone,
-			locale: locale
-		});
-	}
 	if (typeof(inDate) === 'object') {
 		return DateFactory(inDate);
-	}
-	if (typeof(inDate) === 'string') {
-		inDate = new Date(inDate);
 	}
 	return DateFactory({
 		unixtime: inDate.getTime(),

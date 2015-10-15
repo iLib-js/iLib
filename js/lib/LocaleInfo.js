@@ -73,36 +73,33 @@ var LocaleInfo = function(locale, options) {
 	var sync = true,
 	    loadParams = undefined;
 	
-	/* these are all the defaults. Essentially, en-US */
 	/**
 	  @private 
 	  @type {{
-		scripts:Array.<string>,
-		timezone:string,
-		units:string,
 		calendar:string,
 		clock:string,
 		currency:string,
+		delimiter: {quotationStart:string,quotationEnd:string,alternateQuotationStart:string,alternateQuotationEnd:string},
 		firstDayOfWeek:number,
-		weekendStart:number,
-		weekendEnd:number,
 		meridiems:string,
-		unitfmt: {long:string,short:string},
-		numfmt:Object.<{
-			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
-			script:string,
+		numfmt:{
+			currencyFormats:{common:string,commonNegative:string,iso:string,isoNegative:string},
 			decimalChar:string,
+			exponential:string,
 			groupChar:string,
-			prigroupSize:number,
-			secgroupSize:number,
 			negativenumFmt:string,
-			pctFmt:string,
 			negativepctFmt:string,
 			pctChar:string,
+			pctFmt:string,
+			prigroupSize:number,
 			roundingMode:string,
-			exponential:string,
-			digits:string
-		}>
+			script:string,
+			secgroupSize:number
+		},
+		timezone:string,
+		units:string,
+		weekendEnd:number,
+		weekendStart:number
 	  }}
 	*/
 	this.info = LocaleInfo.defaultInfo;
@@ -154,67 +151,42 @@ var LocaleInfo = function(locale, options) {
 	});
 };
 
-LocaleInfo.defaultInfo = /** @type {{
-	scripts:Array.<string>,
-	timezone:string,
-	units:string,
-	calendar:string,
-	clock:string,
-	currency:string,
-	firstDayOfWeek:number,
-	weekendStart:number,
-	weekendEnd:number,
-	meridiems:string,
-	unitfmt: {long:string,short:string},
-	numfmt:Object.<{
-		currencyFormats:Object.<{
-			common:string,
-			commonNegative:string,
-			iso:string,
-			isoNegative:string
-		}>,
-		script:string,
-		decimalChar:string,
-		groupChar:string,
-		prigroupSize:number,
-		secgroupSize:number,
-		negativenumFmt:string,
-		pctFmt:string,
-		negativepctFmt:string,
-		pctChar:string,
-		roundingMode:string,
-		exponential:string,
-		digits:string
-	}>
-}}*/ ilib.data.localeinfo;
+LocaleInfo.defaultInfo = ilib.data.localeinfo;
 LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
-	"scripts": ["Latn"],
-    "timezone": "Etc/UTC",
-    "units": "metric",
-    "calendar": "gregorian",
-    "clock": "24",
-    "currency": "USD",
+	"calendar": "gregorian",
+	"clock": "24",
+	"currency": "USD",
+	"delimiter": {
+    	"quotationStart": "“",
+    	"quotationEnd": "”",
+    	"alternateQuotationStart": "‘",
+    	"alternateQuotationEnd": "’"
+    },
     "firstDayOfWeek": 1,
     "meridiems": "gregorian",
     "numfmt": {
-        "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "{s}-{n}",
-            "iso": "{s}{n}",
-            "isoNegative": "{s}-{n}"
-        },
-        "script": "Latn",
-        "decimalChar": ",",
-        "groupChar": ".",
-        "prigroupSize": 3,
-        "secgroupSize": 0,
-        "pctFmt": "{n}%",
-        "negativepctFmt": "-{n}%",
-        "pctChar": "%",
-        "roundingMode": "halfdown",
-        "exponential": "e",
-        "digits": ""
-    }
+    	"currencyFormats": {
+    		"common": "{s}{n}",
+    		"commonNegative": "{s}-{n}",
+    		"iso": "{s}{n}",
+    		"isoNegative": "{s}-{n}"
+    	},
+    	"decimalChar": ",",
+    	"exponential": "e",
+    	"groupChar": ".",
+    	"negativenumFmt": "-{n}",
+    	"negativepctFmt": "-{n}%",
+    	"pctChar": "%",
+    	"pctFmt": "{n}%",
+    	"prigroupSize": 3,
+    	"roundingMode": "halfdown",
+    	"script": "Latn",
+    	"secgroupSize": 0
+    },
+    "timezone": "Etc/UTC",
+    "units": "metric",
+    "weekendStart": 6,
+    "weekendEnd": 0
 };
 
 LocaleInfo.prototype = {
@@ -263,10 +235,6 @@ LocaleInfo.prototype = {
 	getUnits: function () {
 		return this.info.units;
 	},
-        
-        getUnitFormat: function () {
-                return this.info.unitfmt;
-        },
 	
 	/**
 	 * Return the name of the calendar that is commonly used in the given locale.

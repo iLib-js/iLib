@@ -95,7 +95,7 @@ limitations under the License.
 
 	<taskdef name="jscomp" 
 		classname="com.google.javascript.jscomp.ant.CompileTask" 
-		classpath="${build.tools}/google-closure-compiler.r1918/compiler.jar"/>
+		classpath="${CLOSURECOMP}/compiler.jar"/>
 	
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
@@ -163,7 +163,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-web-async-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="ilib-web-async-externs.js"/>
 			</externs>
@@ -190,7 +191,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-core-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -217,7 +219,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-datesonly-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -244,7 +247,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-standard-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -271,7 +275,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-full-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -281,6 +286,64 @@ limitations under the License.
 		</jscomp>
 	</target>
 
+	<target name="testilibut.maps" description="test whether or not the ilib-ut-maps single file needs to be rebuilt">
+		<uptodate property="ilib-ut-maps.not.needed" targetfile="${build.output.js}/ilib-ut-maps-compiled.js">
+			<srcfiles dir="${build.lib}" includes="**/charmaps/*.js,Charset.js,Charmap*.js,ISO2022.js,UTF*.js,ilib.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-ut-maps-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+	
+	<target name="assemble.unittest.maps" depends="prepare,gen.manifest.locale,testilibut.maps" unless="ilib-ut-maps.not.needed" description="assembles only the locales needed for the maps unit tests">
+		<runassemble 
+			tgtfilename="${build.output.js}/ilib-ut-maps.js" 
+			srcfilename="${build.lib}/ilib-ut-maps-inc.js" 
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-JP,en-KE,en-KR,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TW,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PE,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-Hans-MO,zh-Hant-MO,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.output.js}/ilib-ut-maps-compiled.js"
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
+			<externs dir="${build.lib}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.output.js}">
+				<file name="ilib-ut-maps.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="testilib.dyn.ut.maps" description="test whether or not the ilib-dyn-ut-maps single file needs to be rebuilt">
+		<uptodate property="ilib-dyn-ut-maps.not.needed" targetfile="${build.output.js}/ilib-ut-maps-dyn.js">
+			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-ut-maps-inc.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+	
+	<target name="assemble.dyndata.unittest.maps" depends="prepare,gen.manifest.locale,testilib.dyn.ut.maps" unless="ilib-dyn-ut-maps.not.needed" description="assembles only the locales needed for the maps unit tests">
+		<runassemble 
+			tgtfilename="${build.output.js}/ilib-ut-maps-dyn.js" 
+			srcfilename="${build.lib}/ilib-ut-maps-inc.js" 
+			locales=" "/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.output.js}/ilib-ut-maps-dyn-compiled.js"
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
+			<externs dir="${build.lib}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.output.js}">
+				<file name="ilib-ut-maps-dyn.js"/>
+			</sources>
+		</jscomp>
+	</target>
+	
+	<target name="assemble.dyncode.unittest.maps" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the maps unit tests"/>
+
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -289,7 +352,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-ut.js" 
 			srcfilename="${build.lib}/ilib-ut-inc.js" 
@@ -298,7 +361,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-ut-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -316,7 +380,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,assemble.dyndata.unittest.maps,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="${build.output.js}/ilib-ut-dyn.js" 
 			srcfilename="${build.lib}/ilib-ut-inc.js" 
@@ -325,7 +389,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-ut-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -354,7 +419,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-demo-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -381,7 +447,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-standard-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -408,7 +475,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-core-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -435,7 +503,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-full-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -523,7 +592,8 @@ limitations under the License.
 			warning="verbose" 
 			debug="true"
 			output="${build.output.js}/ilib-lg-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>
@@ -539,7 +609,8 @@ limitations under the License.
 			warning="verbose"
 			debug="true"
 			output="${build.output.js}/ilib-lg-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
+			description="Use the google closure compiler to compress code"
+			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
 			</externs>

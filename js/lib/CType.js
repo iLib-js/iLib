@@ -305,7 +305,7 @@ CType._load = function (name, sync, loadParams, onLoad) {
 			nonlocale: true,
 			sync: sync,
 			loadParams: loadParams, 
-			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ct) {
+			callback: ilib.bind(this, function(ct) {
 				ilib.data[name] = ct;
 				if (onLoad && typeof(onLoad) === 'function') {
 					onLoad(ilib.data[name]);

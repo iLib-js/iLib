@@ -189,7 +189,7 @@ for (s in suite) {
 			ts.include("../lib/ilib-stubs-dyn.js");
 		}
 	} else {
-		inc = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+		inc = "../output/js/ilib-ut" + (set === "modular" && s === "maps" ? "-maps" : "") + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
 		ts.include(inc);
 		ts.include(assembly === "assembled" ? "../lib/ilib-test.js" : "../lib/ilib-test-dyndata.js");
 		ts.include(set === "legacy" ? "../lib/ilib-stubs.js" : "../lib/ilib-stubs-map.js");

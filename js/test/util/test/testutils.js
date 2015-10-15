@@ -1906,3 +1906,101 @@ function testToHexStringChinese() {
 function testToHexStringComplex() {
 	assertEquals("006135C00E080C13", JSUtils.toHexString("a㗀จఓ"));
 }
+
+function testPad2lt10() {
+    assertEquals("01", JSUtils.pad(1, 2));
+};
+
+function testPad2lt0() {
+    assertEquals("-01", JSUtils.pad(-1, 2));
+};
+
+function testPad2gt10() {
+    assertEquals("11", JSUtils.pad(11, 2));
+};
+
+function testPad2ltMinus10() {
+    assertEquals("-11", JSUtils.pad(-11, 2));
+};
+
+function testPad2gt100() {
+    assertEquals("111", JSUtils.pad(111, 2));
+};
+
+function testPad2ltMinus100() {
+    assertEquals("-111", JSUtils.pad(-111, 2));
+};
+
+function testPad0() {
+    assertEquals("1", JSUtils.pad(1, 0));
+    assertEquals("10", JSUtils.pad(10, 0));
+};
+
+function testPad0Neg() {
+    assertEquals("-1", JSUtils.pad(-1, 0));
+    assertEquals("-10", JSUtils.pad(-10, 0));
+};
+
+function testPad4_1() {
+    assertEquals("0006", JSUtils.pad(6, 4));
+};
+
+function testPad4_2() {
+    assertEquals("0067", JSUtils.pad(67, 4));
+};
+
+function testPad4_3() {
+    assertEquals("0679", JSUtils.pad(679, 4));
+};
+
+function testPad4_4() {
+    assertEquals("6792", JSUtils.pad(6792, 4));
+};
+
+function testPad4_5() {
+    assertEquals("67925", JSUtils.pad(67925, 4));
+};
+
+function testPad4_6() {
+    assertEquals("-0001", JSUtils.pad(-1, 4));
+};
+
+function testPad4_7() {
+    assertEquals("-0010", JSUtils.pad(-10, 4));
+};
+
+function testPad4_8() {
+    assertEquals("-0112", JSUtils.pad(-112, 4));
+};
+
+function testPad4_9() {
+    assertEquals("-1123", JSUtils.pad(-1123, 4));
+};
+
+function testPad4_10() {
+    assertEquals("-11233", JSUtils.pad(-11233, 4));
+};
+
+function testPad2lt10String() {
+    assertEquals("01", JSUtils.pad("1", 2));
+};
+
+function testPad2gt10String() {
+    assertEquals("11", JSUtils.pad("11", 2));
+};
+
+function testPad2gt100String() {
+    assertEquals("111", JSUtils.pad("111", 2));
+};
+
+function testPadRightSide4() {
+    assertEquals("123000", JSUtils.pad("123", 6, true));
+};
+
+function testPadRightSide4Decimal() {
+    assertEquals("1.0000", JSUtils.pad("1.0", 6, true));
+};
+
+function testPadRightSideEnough() {
+    assertEquals("1.234323", JSUtils.pad("1.234323", 4, true));
+};

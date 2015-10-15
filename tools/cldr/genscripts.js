@@ -72,6 +72,7 @@ if (process.argv.length > 5) {
 util.print("genscripts - generate scripts data.\n" +
 		"Copyright (c) 2012 JEDLSoft\n");
 
+// TODO: these should call fs.existsSync instead
 fs.exists(iso15924FileName, function (exists) {
 	if (!exists) {
 		util.error("Could not access file " + iso15924FileName);

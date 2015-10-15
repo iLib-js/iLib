@@ -1,0 +1,6 @@
+{
+	"description": "ISO-2022 Russian switched",
+	"min": 1,
+	"max": 1,
+	"scripts": ["Cyrl","Latn"]
+}

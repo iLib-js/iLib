@@ -498,3 +498,24 @@ function testExtendNumbersAddZero() {
     ilib.extend(object1, object2);
     assertObjectEquals({"a": 1, "b": 2, "c": 0}, object1);
 }
+
+
+/*
+var testGlobalNumber = 42;
+
+function testIsGlobal() {
+    assertTrue(ilib._isGlobal("testGlobalNumber"));
+}
+
+function testIsGlobalNot() {
+    assertFalse(ilib._isGlobal("asdfasdfasdf"));
+}
+
+function testGlobal() {
+    assertEquals(42, ilib._global("testGlobalNumber"));
+}
+
+function testGlobalUndefined() {
+    assertUndefined(ilib._global("testGlobalNumber2"));
+}
+*/
