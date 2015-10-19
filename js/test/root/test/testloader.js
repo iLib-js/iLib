@@ -150,13 +150,12 @@ function testLoaderLoadFilesMultipleRightContents() {
 	    assertEquals(1, files[0].firstDayOfWeek);
 	    assertEquals("Etc/UTC", files[0].timezone);
 	    assertEquals("metric", files[0].units);
+	    assertEquals(".", files[0].numfmt.decimalChar);
+	    assertEquals(",", files[0].numfmt.groupChar);
 	
 	    assertEquals("12", files[1].clock);
-	    assertEquals(".", files[1].numfmt.decimalChar);
-	    assertEquals(",", files[1].numfmt.groupChar);
 	    assertEquals("English", files[1]["language.name"]);
 	    assertEquals("en", files[1].locale);
-	
 	    assertEquals("USD", files[2].currency);
 	    assertEquals(0, files[2].firstDayOfWeek);
 	    assertEquals("United States", files[2]["region.name"]);
@@ -200,15 +199,13 @@ function testLoaderLoadFilesMultipleMissingFileRightContents() {
 	    assertEquals(1, files[0].firstDayOfWeek);
 	    assertEquals("Etc/UTC", files[0].timezone);
 	    assertEquals("metric", files[0].units);
-	
+	    assertEquals(".", files[0].numfmt.decimalChar);
+		assertEquals(",", files[0].numfmt.groupChar);
+
 	    assertEquals("12", files[1].clock);
-	    assertEquals(".", files[1].numfmt.decimalChar);
-	    assertEquals(",", files[1].numfmt.groupChar);
 	    assertEquals("English", files[1]["language.name"]);
 	    assertEquals("en", files[1].locale);
-	    
 	    assertUndefined(files[2]);
-	
 	    assertEquals("USD", files[3].currency);
 	    assertEquals(0, files[3].firstDayOfWeek);
 	    assertEquals("United States", files[3]["region.name"]);

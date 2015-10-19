@@ -165,23 +165,24 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
     "firstDayOfWeek": 1,
     "meridiems": "gregorian",
     "numfmt": {
-    	"currencyFormats": {
-    		"common": "{s}{n}",
-    		"commonNegative": "{s}-{n}",
-    		"iso": "{s}{n}",
-    		"isoNegative": "{s}-{n}"
-    	},
-    	"decimalChar": ",",
-    	"exponential": "e",
-    	"groupChar": ".",
-    	"negativenumFmt": "-{n}",
-    	"negativepctFmt": "-{n}%",
-    	"pctChar": "%",
-    	"pctFmt": "{n}%",
-    	"prigroupSize": 3,
-    	"roundingMode": "halfdown",
-    	"script": "Latn",
-    	"secgroupSize": 0
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})",
+            "iso": "{s}{n}",
+            "isoNegative": "({s}{n})"
+        },
+        "decimalChar": ".",
+        "exponential": "E",
+        "groupChar": ",",
+        "negativenumFmt": "-{n}",
+        "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "pctFmt": "{n}%",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
+        "script": "Latn",
+        "secgroupSize": 0,
+        "useNative": false
     },
     "timezone": "Etc/UTC",
     "units": "metric",
