@@ -2212,7 +2212,7 @@ function testDateFmtenPH() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, September 20, 2011 at 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPK() {
