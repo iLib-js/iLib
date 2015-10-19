@@ -117,10 +117,9 @@ var IString = require("./IString.js");
  * If the onLoad option is not given, this class will only attempt to load any
  * missing data synchronously.
  * 
- * Depends directive: !depends maps/charmap.js
- * 
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback instance
+ * @extends Charmap
  * @param {Object=} options options which govern the construction of this instance
  */
 var CharmapTable = function(options) {
