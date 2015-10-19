@@ -19,8 +19,5 @@
 
 // !dependencies: false
 
-function console(str){};
 console.log = function (str){};
-function JSON(str){};
-JSON.parse = function(str){};
-var PalmSystem, process, require, module, environment, exports, global, Intl, Qt, ilib;
+var PalmSystem, process, require, module, environment, exports, global, Qt;
