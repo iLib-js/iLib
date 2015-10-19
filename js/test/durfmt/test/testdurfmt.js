@@ -2366,8 +2366,10 @@ function testDurFmtMRFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1व 1म 1आ 1द 1त 1म 1स", duration.toString());
+    assertEquals("१व १म १आ १द १त १म १स", duration.toString());
 };
+
+
 
 function testDurFmtMRFormatShortText() {
     var fmt = new DurationFmt({
@@ -2386,7 +2388,7 @@ function testDurFmtMRFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1व 1म 1आ 1द 1त 1म 1स", duration.toString());
+    assertEquals("१व १म १आ १द १त १म १स", duration.toString());
 };
 
 function testDurFmtMRFormatShortClock() {
@@ -2406,7 +2408,7 @@ function testDurFmtMRFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1व 1म 1आ 1द 1:01:01", duration.toString());
+    assertEquals("१व १म १आ १द १:०१:०१", duration.toString());
 };
 
 function testDurFmtMRFormatMedium() {
@@ -2425,7 +2427,7 @@ function testDurFmtMRFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 वर 1 मह 1 आठ 1 दि 1 तास 1 मि 1 से", duration.toString());
+    assertEquals("१ वर १ मह १ आठ १ दि १ तास १ मि १ से", duration.toString());
 };
 
 function testDurFmtMRFormatLong() {
@@ -2444,7 +2446,7 @@ function testDurFmtMRFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 वर्ष 1 महि 1 आठव 1 दिवस 1 तास 1 मिन 1 सेक", duration.toString());
+    assertEquals("१ वर्ष १ महि १ आठव १ दिवस १ तास १ मिन १ सेक", duration.toString());
 };
 
 function testDurFmtMRFormatFull() {
@@ -2463,7 +2465,7 @@ function testDurFmtMRFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 वर्ष, 1 महिना, 1 आठवडा, 1 दिवस, 1 तास, 1 मिनिट आणि 1 सेकंद", duration.toString());
+    assertEquals("१ वर्ष, १ महिना, १ आठवडा, १ दिवस, १ तास, १ मिनिट आणि १ सेकंद", duration.toString());
 };
 
 
