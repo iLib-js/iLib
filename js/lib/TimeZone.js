@@ -228,9 +228,10 @@ var TimeZone = function(options) {
  * }
  */
 TimeZone.prototype._loadtzdata = function () {
+	var zoneName = this.id.replace(/-/g, "m").replace(/\+/g, "p");
 	// console.log("id is: " + JSON.stringify(this.id));
-	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[this.id]));
-	if (!ilib.data.zoneinfo[this.id] && typeof(this.offset) === 'undefined') {
+	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[zoneName]));
+	if (!ilib.data.zoneinfo[zoneName] && typeof(this.offset) === 'undefined') {
 		Utils.loadData({
 			object: TimeZone, 
 			nonlocale: true,	// locale independent 
@@ -239,22 +240,22 @@ TimeZone.prototype._loadtzdata = function () {
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
 				if (tzdata && !JSUtils.isEmpty(tzdata)) {
-					ilib.data.zoneinfo[this.id] = tzdata;
+					ilib.data.zoneinfo[zoneName] = tzdata;
 				}
-				this._initZone();
+				this._initZone(zoneName);
 			})
 		});
 	} else {
-		this._initZone();
+		this._initZone(zoneName);
 	}
 };
 
-TimeZone.prototype._initZone = function() {
+TimeZone.prototype._initZone = function(zoneName) {
 	/** 
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
-	this.zone = ilib.data.zoneinfo[this.id];
+	this.zone = ilib.data.zoneinfo[zoneName];
 	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
 		this.zone = ilib.data.zoneinfo[this.id];

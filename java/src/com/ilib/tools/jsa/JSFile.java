@@ -267,6 +267,10 @@ public class JSFile
         }
     }
 
+    protected String escapeZoneName(String name) {
+    	return name.replaceAll("\\.json$", "").replaceAll("-", "m").replaceAll("\\+", "p");
+    }
+    
     /**
      * Load in the zoneinfo files that are relevant to all the given locales. Basically, this looks up each
      * locale's country in the zonetab.json file, and adds all time zones it finds there.
@@ -309,9 +313,10 @@ public class JSFile
     		if ( zones != null ) {
     			for ( int i = 0; i < zones.length(); i++ ) {
     				String zone = zones.getString(i);
+    				String zoneName = escapeZoneName(zone);
     				logger.debug("Creating dependency on zoneinfo " + zone);
     				locate(includePath, 
-    						"zoneinfo[\"" + zone + "\"]", 
+    						"zoneinfo[\"" + zoneName + "\"]", 
     						"zoneinfo/" + zone + ".json", 
     						allFiles);
     			}
@@ -331,7 +336,8 @@ public class JSFile
 	                	if ( allFiles.containsKey(files[i].getPath()) ) {
 	                    	json = (JSONFile) allFiles.get(files[i].getPath());
 	                    } else {
-	                    	json = new JSONFile(root, files[i], "zoneinfo[\"" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
+	                    	String zoneName = escapeZoneName(files[i].getName());
+	                    	json = new JSONFile(root, files[i], "zoneinfo[\"" + zoneName + "\"]");
 	                    	allFiles.put(files[i].getPath(), json);
 	                    }
 	                	dependencies.add(json);
@@ -351,8 +357,9 @@ public class JSFile
 	                	if ( allFiles.containsKey(files[i].getPath()) ) {
 	                    	json = (JSONFile) allFiles.get(files[i].getPath());
 	                    } else {
+	                    	String zoneName = escapeZoneName("Etc/" + files[i].getName());
 	                    	json = new JSONFile(root, files[i], 
-	                    		"zoneinfo[\"Etc/" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
+	                    		"zoneinfo[\"" + zoneName + "\"]");
 	                    	allFiles.put(files[i].getPath(), json);
 	                    }
 	                	dependencies.add(json);
