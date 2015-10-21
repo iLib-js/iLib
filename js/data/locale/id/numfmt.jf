@@ -1,6 +1,10 @@
 {
     "generated": true,
     "numfmt": {
-        "exponential": "E"
+        "decimalChar": ",",
+        "groupChar": ".",
+        "currencyFormats": {
+            "common": "{s}{n}"
+        }
     }
 }

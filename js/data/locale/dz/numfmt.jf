@@ -2,12 +2,12 @@
     "generated": true,
     "numfmt": {
         "script": "Tibt",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
         "secgroupSize": 2,
+        "currencyFormats": {
+            "common": "{s}{n}"
+        },
         "pctFmt": "{n} %",
-        "useNative": true,
-        "digits": "༠༡༢༣༤༥༦༧༨༩"
+        "digits": "༠༡༢༣༤༥༦༧༨༩",
+        "useNative": true
     }
 }

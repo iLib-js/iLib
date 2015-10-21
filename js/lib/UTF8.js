@@ -29,6 +29,7 @@ var IString = require("./IString.js");
  * @class
  * Create a new UTF-8 mapping instance
  * @constructor
+ * @extends Charmap
  */
 var UTF8 = function (options) {
 	this.charset = new Charset({name: "UTF-8"});

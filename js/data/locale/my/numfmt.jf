@@ -2,13 +2,7 @@
     "generated": true,
     "numfmt": {
         "script": "Mymr",
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
-        "currencyFormats": {
-            "common": "{s} {n}"
-        },
-        "useNative": true,
-        "digits": "၀၁၂၃၄၅၆၇၈၉"
+        "digits": "၀၁၂၃၄၅၆၇၈၉",
+        "useNative": true
     }
 }

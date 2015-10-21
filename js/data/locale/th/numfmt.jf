@@ -13,15 +13,12 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
-		"useNative": true,
-        "digits": "๐๑๒๓๔๕๖๗๘๙"
+        "digits": "๐๑๒๓๔๕๖๗๘๙",
+        "useNative": true
     },
     "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
-        "useNative": false,
         "currencyFormats": {
+            "common": "{s}{n}",
             "commonNegative": "({s}{n})"
         }
     }
