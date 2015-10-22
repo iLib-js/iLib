@@ -32,6 +32,7 @@ TimeZone.js
 GregorianCal.js
 JSUtils.js
 Utils.js
+ISet.js
 */
 
 // !data dateformats sysres
@@ -52,6 +53,8 @@ var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
 var TimeZone = require("./TimeZone.js");
 var GregorianCal = require("./GregorianCal.js");
+
+var ISet = require("./ISet.js");
 
 /**
  * @class
@@ -145,7 +148,12 @@ var GregorianCal = require("./GregorianCal.js");
  * <li><i>y</i> - format only the year
  * </ul>
  * Default components, if this property is not specified, is "dmy". This property may be specified
- * but has no affect if the current formatter is for times only.
+ * but has no affect if the current formatter is for times only.<p>
+ * 
+ * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you 
+ * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>. 
+ * It will not extract the length from the skeleton so you still need to pass the length property, 
+ * but it will extract the date components.
  * 
  * <li><i>time</i> - This property gives which components of a time format to use. The time will be formatted 
  * correctly for the locale with only the time components requested. For example, a clock might only display 
@@ -179,7 +187,12 @@ var GregorianCal = require("./GregorianCal.js");
  * of minutes to exceed 59 if, for example, you were displaying the length of
  * a movie of 198 minutes.<p>
  * 
- * Default value if this property is not specified is "hma".
+ * Default value if this property is not specified is "hma".<p>
+ * 
+ * As of ilib 12.0, you can now pass ICU style skeletons in this option similar to the ones you 
+ * get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>. 
+ * It will not extract the length from the skeleton so you still need to pass the length property, 
+ * but it will extract the time components.
  * 
  * <li><i>clock</i> - specify that the time formatter should use a 12 or 24 hour clock. 
  * Valid values are "12" and "24".<p>
@@ -338,35 +351,50 @@ var DateFmt = function(options) {
 		
 		if (options.date) {
 			arr = options.date.split("");
-			arr.sort(function (left, right) {
-				return (left < right) ? -1 : ((right < left) ? 1 : 0);
-			});
+			var dateComps = new ISet();
 			bad = false;
 			for (i = 0; i < arr.length; i++) {
-				if (arr[i] !== 'd' && arr[i] !== 'm' && arr[i] !== 'y' && arr[i] !== 'w' && arr[i] !== 'n') {
-					bad = true;
-					break;
+				var c = arr[i].toLowerCase();
+				if (c === "e") c = "w"; // map ICU -> ilib
+				if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'n') {
+					// ignore time components and the era
+					if (c !== 'h' && c !== 'm'  && c !== 's' && c !== 'a' && c !== 'z' && c !== 'g') {
+    					bad = true;
+    					break;
+					}
+				} else {
+    				dateComps.add(c);
 				}
 			}
 			if (!bad) {
-				this.dateComponents = arr.join("");
+				var comps = dateComps.asArray().sort(function (left, right) {
+					return (left < right) ? -1 : ((right < left) ? 1 : 0);
+				});
+				this.dateComponents = comps.join("");
 			}
 		}
 
 		if (options.time) {
 			arr = options.time.split("");
-			arr.sort(function (left, right) {
-				return (left < right) ? -1 : ((right < left) ? 1 : 0);
-			});
+			var timeComps = new ISet();
 			this.badTime = false;
 			for (i = 0; i < arr.length; i++) {
-				if (arr[i] !== 'h' && arr[i] !== 'm' && arr[i] !== 's' && arr[i] !== 'a' && arr[i] !== 'z') {
-					this.badTime = true;
-					break;
+				var c = arr[i].toLowerCase();
+				if (c !== 'h' && c !== 'm' && c !== 's' && c !== 'a' && c !== 'z') {
+					// ignore the date components
+					if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'e' && c !== 'n' && c !== 'g') {
+    					this.badTime = true;
+    					break;
+					}
+				} else {
+					timeComps.add(c);
 				}
 			}
 			if (!this.badTime) {
-				this.timeComponents = arr.join("");
+				var comps = timeComps.asArray().sort(function (left, right) {
+					return (left < right) ? -1 : ((right < left) ? 1 : 0);
+				});
+				this.timeComponents = comps.join("");
 			}
 		}
 		

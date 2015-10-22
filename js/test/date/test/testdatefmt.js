@@ -174,6 +174,36 @@ function testDateFmtGetTimeComponentsBogus() {
     assertEquals("ahm", fmt.getTimeComponents());
 };
 
+function testDateFmtGetTimeComponentsICUSkeleton1() {
+    var fmt = new DateFmt({time: "EHm"});
+    assertNotNull(fmt);
+    
+    assertEquals("hm", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton2() {
+    var fmt = new DateFmt({time: "Hms"});
+    assertNotNull(fmt);
+    
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton3() {
+    var fmt = new DateFmt({time: "Ehms"});
+    assertNotNull(fmt);
+    
+    // ignore the non-time components
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton3() {
+    var fmt = new DateFmt({time: "yMdhms"});
+    assertNotNull(fmt);
+    
+    // ignore the non-time components
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
 function testDateFmtGetDateComponentsDefault() {
     var fmt = new DateFmt();
     assertNotNull(fmt);
@@ -201,6 +231,50 @@ function testDateFmtGetDateComponentsBogus() {
     
     // use the default
     assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton1() {
+    var fmt = new DateFmt({date: "yMMMMd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton2() {
+    var fmt = new DateFmt({date: "yMMd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton3() {
+    var fmt = new DateFmt({date: "yMMMM"});
+    assertNotNull(fmt);
+    
+    assertEquals("my", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton4() {
+    var fmt = new DateFmt({date: "MMMEd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmw", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton5() {
+    var fmt = new DateFmt({date: "GyMMMEd"});
+    assertNotNull(fmt);
+    
+    // ignore the era
+    assertEquals("dmwy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton6() {
+    var fmt = new DateFmt({date: "MMddhms"});
+    assertNotNull(fmt);
+    
+    // ignore the time components
+    assertEquals("dm", fmt.getDateComponents());
 };
 
 function testDateFmtGetClockDefaultUS() {
@@ -415,8 +489,22 @@ function testDateFmtGetTemplateDateComponents() {
     assertEquals("E, M/d", fmt.getTemplate());
 };
 
+function testDateFmtGetTemplateDateComponentsWithICUSkeleton() {
+    var fmt = new DateFmt({date: "MMMEd"});
+    assertNotNull(fmt);
+    
+    assertEquals("E, M/d", fmt.getTemplate());
+};
+
 function testDateFmtGetTemplateTimeComponents() {
     var fmt = new DateFmt({type: "time", time: "hm"});
+    assertNotNull(fmt);
+    
+    assertEquals("h:mm", fmt.getTemplate());
+};
+
+function testDateFmtGetTemplateTimeComponentsWithICUSkeleton() {
+    var fmt = new DateFmt({type: "time", time: "Hm"});
     assertNotNull(fmt);
     
     assertEquals("h:mm", fmt.getTemplate());
