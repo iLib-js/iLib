@@ -135,6 +135,8 @@ enyo.kind({
 			"English - Ireland":"en-IE",
 			"English - India":"en-IN",
 			"English - Iceland":"en-IS",
+			"English - Japan":"en-JP",
+			"English - Republic of Korea":"en-KR",
 			"English - Kenya":"en-KE",
 			"English - Sri Lanka":"en-LK",
 			"English - Myanmar":"en-MM",
