@@ -57,8 +57,8 @@ enyo.kind({
 		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
 		var year, month, date;
-		var month  = 8;
-		var date  = 23;
+		var month  = 9;
+		var date  = 21;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
@@ -135,6 +135,8 @@ enyo.kind({
 			"English - Ireland":"en-IE",
 			"English - India":"en-IN",
 			"English - Iceland":"en-IS",
+			"English - Japan":"en-JP",
+			"English - Republic of Korea":"en-KR",
 			"English - Kenya":"en-KE",
 			"English - Sri Lanka":"en-LK",
 			"English - Myanmar":"en-MM",
