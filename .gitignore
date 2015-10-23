@@ -5,6 +5,9 @@
 doc/demo/demo.tgz
 doc/demo/scripts/ilib-demo.js
 export/
+js/node_modules
+qt/output
+js/.ant-targets-build_lg.xml
 java/classes/
 java/output/
 js/data/locale/aa/localeinfo.json
