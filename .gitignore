@@ -4,6 +4,7 @@
 *.temp
 doc/demo/demo.tgz
 doc/demo/scripts/ilib-demo.js
+doc/localeSpecDoc/publish-tool/get-pip.py.1
 export/
 js/node_modules
 qt/output
