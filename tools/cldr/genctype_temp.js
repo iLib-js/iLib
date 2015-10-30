@@ -128,6 +128,19 @@ for (letter in map) {
 	}
 }*/
 
+var blockNameMapping = {
+	"basic latin": "latin",
+	"latin-1 supplement": "latin",
+	"latin extended-a": "latin",
+	"latin extended-b": "latin",
+	"latin extended additional": "latin",
+	"latin extended-c": "latin",
+	"latin extended-d": "latin",
+	"latin extended-e": "latin",
+
+}
+
+
 
 uf = new UnicodeFile({path: unicodeBlockFile});
 len = uf.length();
@@ -137,6 +150,7 @@ for (var i = 0; i < len; i++) {
 
 	rangeName = row[1].trim().toLowerCase();
 
+	// Note. Temporarily code for checking names. This colde will be replaced with not using if/else statement.
 	if (rangeName.indexOf('latin') !== -1) {
 		rangeName = "latin" 
 		// basic latin,latin-1 supplement,latin extended-a,latin extended-b,latin extended additional,latin extended-c,latin extended-d,latin extended-e
@@ -183,6 +197,221 @@ for (var i = 0; i < len; i++) {
 		rangeName = "canadian"
 		//devanagari,devanagari extended"
 	}
+	else if (rangeName.indexOf('combining') !== -1) {
+		rangeName = "combining"
+		//combining diacritical marks,combining diacritical marks extended,combining diacritical marks supplement,combining diacritical marks for symbols
+	}
+	else if (rangeName.indexOf('arrows') !== -1) {
+		rangeName = "arrows"
+		//arrows,supplemental arrows-a,supplemental arrows-b,miscellaneous symbols and arrows,supplemental arrows-c
+	}
+	else if (rangeName.indexOf('cjk compatibility') !== -1) {
+		rangeName = "cjkcompatibility"
+		//cjk compatibility,cjk compatibility ideographs,cjk compatibility forms,cjk compatibility ideographs supplement
+	}
+	else if (rangeName === 'ideographic description characters'
+			 || rangeName === 'cjk symbols and punctuation'
+			 || rangeName === 'cjk strokes'			 
+			 || rangeName === 'cjk unified ideographs extension a'
+			 || rangeName === 'cjk unified ideographs'
+			 || rangeName === 'cjk unified ideographs extension b'
+			 || rangeName === 'cjk unified ideographs extension c'
+			 || rangeName === 'cjk unified ideographs extension d'
+			 || rangeName === 'cjk unified ideographs extension e'
+			 ) {
+
+		rangeName = "cjk"
+		/*
+			ideographic description characters : include currently in cjk		
+			cjk symbols and punctuation ??
+			cjk strokes
+			cjk unified ideographs extension a
+			cjk unified ideographs			
+			cjk unified ideographs extension b
+			cjk unified ideographs extension c
+			cjk unified ideographs extension d
+			cjk unified ideographs extension e
+		*/
+	}
+	else if (rangeName === 'miscellaneous mathematical symbols-a'
+			 || rangeName === 'miscellaneous mathematical symbols-b'
+			 || rangeName === 'mathematical alphanumeric symbols'	
+			 ) {
+		rangeName = "mathematical"
+		/*
+			miscellaneous mathematical symbols-a
+			miscellaneous mathematical symbols-b
+			mathematical alphanumeric symbols
+		*/
+	}
+	else if (rangeName === 'private use area'
+			 || rangeName === 'supplementary private use area-a'
+			 || rangeName === 'supplementary private use area-b'	
+			 ) {
+		rangeName = "privateuse"
+		/*
+			private use area
+			supplementary private use area-a
+			supplementary private use area-b
+		*/
+	}
+	else if (rangeName.indexOf('variation') !== -1) {
+		rangeName = "variations"
+		//variation selectors, variation selectors supplement
+	}
+	else if (rangeName.indexOf('bamum') !== -1) {
+		rangeName = "bamum"
+		//bamum,bamum supplement
+	}
+	else if (rangeName.indexOf('georgian') !== -1) {
+		rangeName = "georgian"
+		//georgian,georgian supplement
+	}
+	else if (rangeName === 'general punctuation'
+			 || rangeName === 'supplemental punctuation' 
+			 ) {
+		rangeName = "punctuation"
+		/*
+			general punctuation
+			supplemental punctuation
+		*/
+	}
+	else if (rangeName.indexOf('kana') !== -1) {
+		rangeName = "katakana"
+		//katakana,katakana phonetic extensions,kana supplement
+	}
+	else if (rangeName.indexOf('bopomofo') !== -1) {
+		rangeName = "bopomofo"
+		//bopomofo,bopomofo extended
+	}
+	else if (rangeName === 'enclosed alphanumerics'
+			 || rangeName === 'enclosed alphanumeric supplement' 
+			 ) {
+		rangeName = "enclosedalpha"
+		/*
+			enclosed alphanumerics
+			enclosed alphanumeric supplement
+		*/
+	}
+	else if (rangeName === 'cjk radicals supplement'
+			 || rangeName === 'kangxi radicals' 
+			 ) {
+		rangeName = "cjkradicals"
+		/*
+			cjk radicals supplement
+			kangxi radicals
+		*/
+	}
+	else if (rangeName === 'yi syllables'
+			 || rangeName === 'yi radicals' 
+			 ) {
+		rangeName = "yi"
+		/*
+			yi syllables
+			yi radicals
+		*/
+	}
+	else if (rangeName.indexOf('linear b') !== -1) {
+		rangeName = "linearb"
+		//linear b syllabary ,linear b ideograms
+	}
+	else if (rangeName === 'enclosed cjk letters and months'
+			 || rangeName === 'enclosed ideographic supplement' 
+			 ) {
+		rangeName = "enclosedcjk"
+		/*
+			enclosed cjk letters and months
+			enclosed ideographic supplement
+		*/
+	}
+	else if (rangeName === 'spacing') {
+		rangeName = "spacing"
+		//spacing modifier letters
+	}
+	else if (rangeName === 'sinhala'
+			 || rangeName === 'sinhala archaic numbers' 
+			 ) {
+		rangeName = "sinhala"
+		/*
+			sinhala
+			sinhala archaic numbers
+		*/
+	}
+	else if (rangeName === 'cherokee'
+			 || rangeName === 'cherokee supplement' 
+			 ) {
+		rangeName = "cherokee"
+		/*
+			cherokee
+			cherokee supplement
+		*/
+	}
+	else if (rangeName === 'khmer symbols') {
+		rangeName = "khmersymbols"
+		/*
+			khmer symbols
+		*/
+	}
+	else if (rangeName === 'tai le') {
+		rangeName = "taile"
+		/*
+			tai le
+		*/
+	}
+	else if (rangeName === 'new tai lue') {
+		rangeName = "newtailue"
+		/*
+			new tai lue
+		*/
+	}
+	else if (rangeName === 'tai tham') {
+		rangeName = "taitham"
+		/*
+			tai tham
+		*/
+	}
+	else if (rangeName === 'sundanese'
+			 || rangeName === 'sundanese supplement' 
+			 ) {
+		rangeName = "sundanese"
+		/*
+			sundanese
+			sundanese supplement
+		*/
+	}
+	else if (rangeName === 'ol chiki') {
+		rangeName = "olchiki"
+		/*
+			ol chiki
+		*/
+	}
+	else if (rangeName === 'vedic extensions') {
+		rangeName = "vedic"
+		/*
+			vedic extensions
+		*/
+	}
+	else if (rangeName === 'superscripts and subscripts') {
+		rangeName = "supersub"
+		/*
+			superscripts and subscripts
+		*/
+	}
+	else if (rangeName === 'currency symbols') {
+		rangeName = "currency"
+		/*
+			currency symbols
+		*/
+	}
+	else if (rangeName === 'letterlike symbols') {
+		rangeName = "letterlike"
+		/*
+			letterlike symbols
+		*/
+	}
+
+
+	//rangeName = convert_map[rangeName];
 
 	rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
 	rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
