@@ -52,7 +52,6 @@ process.argv.forEach(function (val, index, array) {
 });
 
 
-
 if (process.argv.length < 3) {
 	util.error('Error: not enough arguments');
 	usage();
@@ -86,6 +85,10 @@ fs.exists(toDir, function (exists) {
 	}
 });
 
+
+/*
+ *	For creating ctype_*.json
+*/
 var map = {};
 
 var uf = new UnicodeFile({path: unicodeFileName});
@@ -94,7 +97,7 @@ var row;
 var range, rangeName, rangeStart, rangeEnd;
 var rangeLetter;
 
-/*for (var i = 0; i < len; i++ ) {
+for (var i = 0; i < len; i++ ) {
 	row = uf.get(i);
 
 	rangeName = row[1].trim();
@@ -126,8 +129,16 @@ for (letter in map) {
 			}
 		});
 	}
-}*/
+}
 
+/*
+ *	For creating ctype.json
+*/
+
+/*
+ *	List for updating blockName for ctype.json.
+ *	Some names don't need to be re-named. 
+*/
 var blockNameMapping = {
 	"basic latin": "latin",
 	"latin-1 supplement": "latin",
@@ -137,9 +148,247 @@ var blockNameMapping = {
 	"latin extended-c": "latin",
 	"latin extended-d": "latin",
 	"latin extended-e": "latin",
-
+	"ancient greek musical notation": "greekmusic",
+	"ancient greek numbers": "greeknumbers",
+	"greek extended": "greek",
+	"greek and coptic": "greek",
+	"ipa extensions": "ipa",
+	"phonetic extensions": "ipa",
+	"phonetic extensions supplement": "ipa",
+	"mathematical operators": "operators",
+	"supplemental mathematical operators": "operators",
+	"cyrillic": "cyrillic",
+	"cyrillic supplement": "cyrillic",
+	"cyrillic extended-a": "cyrillic",
+	"cyrillic extended-b": "cyrillic",
+	"arabic": "arabic",
+	"arabic supplement": "arabic",
+	"arabic extended-a": "arabic",
+	"arabic presentation forms-a": "arabic",
+	"arabic presentation forms-b": "arabic",
+	"arabic mathematical alphabetic symbols": "arabic",
+	"devanagari": "devanagari",
+	"devanagari extended": "devanagari",
+	"myanmar": "myanmar",
+	"myanmar extended-a": "myanmar",
+	"myanmar extended-b": "myanmar",
+	"hangul jamo": "hangul",  // ideograph
+	"hangul compatibility jamo": "hangul",
+	"hangul jamo extended-a": "hangul",
+	"hangul jamo extended-b": "hangul",
+	"hangul syllables": "hangul",
+	"ethiopic": "ethiopic",
+	"ethiopic supplement": "ethiopic",
+	"ethiopic extended": "ethiopic",
+	"ethiopic extended-a": "ethiopic",
+	"unified canadian aboriginal syllabics": "canadian",
+	"unified canadian aboriginal syllabics extended": "canadian",
+	"combining diacritical marks": "combining",
+	"combining diacritical marks extended": "combining",
+	"combining diacritical marks supplement": "combining",
+	"combining diacritical marks for symbols": "combining",
+	"arrows": "arrows",
+	"supplemental arrows-a": "arrows",
+	"supplemental arrows-b": "arrows",
+	"miscellaneous symbols and arrows": "arrows",
+	"supplemental arrows-c": "arrows",
+	"cjk compatibility": "cjkcompatibility",
+	"cjk compatibility ideographs": "cjkcompatibility",
+	"cjk compatibility forms": "cjkcompatibility",
+	"cjk compatibility ideographs supplement": "cjkcompatibility",
+	"ideographic description characters": "cjk",
+	"cjk unified ideographs extension a": "cjk",
+	"cjk unified ideographs": "cjk",
+	"cjk unified ideographs extension b": "cjk",
+	"cjk unified ideographs extension c": "cjk",
+	"cjk unified ideographs extension d": "cjk",
+	"cjk unified ideographs extension e": "cjk",
+	"miscellaneous mathematical symbols-a": "mathematical",
+	"miscellaneous mathematical symbols-b": "mathematical",
+	"mathematical alphanumeric symbols": "mathematical",
+	"private use area": "privateuse",
+	"supplementary private use area-a": "privateuse",
+	"supplementary private use area-b": "privateuse",
+	"variation selectors": "variations",
+	"variation selectors supplement": "variations",
+	"bamum": "bamum",
+	"bamum supplement": "bamum",
+	"georgian": "georgian",
+	"georgian supplement": "georgian",
+	"general punctuation": "punctuation",
+	"supplemental punctuation": "punctuation",
+	"katakana": "katakana",
+	"katakana phonetic extensions": "katakana",
+	"kana supplement": "katakana",
+	"bopomofo": "bopomofo",
+	"bopomofo extended": "bopomofo",
+	"enclosed alphanumerics": "enclosedalpha",
+	"enclosed alphanumeric supplement": "enclosedalpha",
+	"cjk radicals supplement": "cjkradicals",
+	"kangxi radicals": "cjkradicals",
+	"yi syllables": "yi",
+	"yi radicals": "yi",
+	"linear b syllabary": "linearb",
+	"linear b ideograms": "linearb",
+	"enclosed cjk letters and months": "enclosedcjk",
+	"enclosed ideographic supplement": "enclosedcjk",
+	"spacing modifier letters": "spacing",
+	"sinhala": "sinhala",
+	"sinhala archaic numbers": "sinhala",
+	"cherokee": "cherokee",
+	"cherokee supplement": "cherokee",
+	"khmer symbols": "khmersymbols",
+	"tai le": "taile",
+	"new tai lue": "newtailue",
+	"tai tham": "taitham",
+	"sundanese": "sundanese",
+	"sundanese supplement": "sundanese",
+	"ol chiki": "olchiki",
+	"vedic extensions": "vedic",
+	"superscripts and subscripts": "supersub",
+	"currency symbols": "currency",
+	"letterlike symbols": "letterlike",
+	"number forms": "numbers",
+	"miscellaneous technical": "misc",
+	"control pictures": "controlpictures",
+	"optical character recognition": "ocr",
+	"box drawing": "box",
+	"block elements": "block",
+	"geometric shapes": "geometric",
+	"geometric shapes extended": "geometric",
+	"miscellaneous symbols": "miscsymbols",
+	"braille patterns": "braille",
+	"cjk symbols and punctuation": "cjkpunct",
+	"yijing hexagram symbols": "yijing",
+	"cjk strokes": "cjkstrokes",
+	"modifier tone letters": "modifiertone",
+	"syloti nagri": "sylotinagri",
+	"common indic number forms": "indicnumber",
+	"phags-pa": "phagspa",
+	"kayah li": "kayahli",
+	"tai viet": "taiviet",
+	"meetei mayek": "meeteimayek",
+	"meetei mayek extensions": "meeteimayek",
+	"alphabetic presentation forms": "presentation",
+	"vertical forms": "vertical",
+	"combining half marks": "halfmarks",
+	"small form variants": "small",
+	"halfwidth and fullwidth forms": "width",
+	"aegean numbers": "aegean",
+	"ancient symbols": "ancient",
+	"phaistos disc": "phaistosdisc",
+	"old italic": "olditalic",
+	"old persian": "oldpersian",
+	"cypriot syllabary": "cypriot",
+	"imperial aramaic": "aramaic",
+	"old south arabian": "oldsoutharabian",
+	"inscriptional parthian": "parthian",
+	"inscriptional pahlavi": "pahlavi",
+	"psalter pahlavi": "pahlavi",
+	"old turkic": "oldturkic",
+	"rumi numeral symbols": "ruminumerals",
+	"cuneiform": "cuneiform",
+	"early dynastic cuneiform": "cuneiform",
+	"cuneiform numbers and punctuation": "cuneiformnumbers",
+	"meroitic hieroglyphs": "hieroglyphs",
+	"egyptian hieroglyphs": "hieroglyphs",
+	"anatolian hieroglyphs": "hieroglyphs",
+	"byzantine musical symbols": "byzantine musical",
+	"tai xuan jing symbols": "taixuanjing",
+	"counting rod numerals": "rodnumerals",
+	"mahjong tiles": "mahjong",
+	"domino tiles": "domino",
+	"playing cards": "playingcards",
+	"transport and map symbols": "mapsymbols",
+	"alchemical symbols": "alchemic",
+	// newly added manually since UCD 8.0
+	"coptic epact numbers": "copticnumber",
+	"old permic": "oldpermic",
+	"caucasian albanian": "albanian",
+	"linear a": "lineara",
+	"meroitic cursive": "meroitic",
+	"old north arabian": "oldnortharabian",
+	"high surrogates": "highsurrogates",
+	"high private use surrogates": "highsurrogates",
+	"low surrogates": "lowsurrogates",
+	"old hungarian": "oldhungarian",
+	"sora sompeng": "sorasompeng",
+	"warang citi": "warangciti",
+	"pau cin hau": "paucinhau",
+	"bassa vah": "bassavah",
+	"pahawh hmong": "pahawhhmong",
+	"shorthand format controls": "shorthandformat",
+	"sutton signwriting": "suttonsignwriting",
+	"miscellaneous symbols and pictographs": "pictographs",
+	"supplemental symbols and pictographs": "pictographs",
+	"ornamental dingbats": "ornamentaldingbats"
 }
 
+
+/*
+ *	List for manually handled
+ *	as Reference: http://www.cplusplus.com/reference/cctype/
+*/
+var ctypeMap = {
+		"ideograph": [
+		[4352,4607], //hangul jamo double
+		[12353,12447],
+		[12449,12543],
+		[12549,12589],
+		[12593,12686],
+		[12704,12727], //bopomofo partial
+		[12784,12799], //katakana
+		[13312,19893], //cjk partial
+		[19968,40907], //cjk partial
+		[40960,42124], //yi
+		[43360,43388], //hangul
+		[44032,55203], //hangul
+		[55216,55291], //hangul
+		[63744,64217], //cjkcompatibility
+		[65382,65437],
+		[65440,65500]
+	],
+	
+	"ideoother": [
+		[12294,12294], //Ideographic Closing Mark
+		[12348,12348],
+		[12352,12352], //hiragana
+		[12448,12448], //katakana
+		[12544,12548], //bopomofo
+		[12590,12591],
+		[12592,12592], //hangul
+		[12687,12687], //hangul
+		[12800,13055], //enclosedcjk
+		[13056,13183], //cjkcompatibility
+		[13184,13311], //cjkcompatibility
+		[40908,40959],
+		[42125,42191],
+		[43389,43391],
+		[55292,55295],
+		[64218,64255]
+	],
+	"ascii": [
+		[32, 127]
+	],
+	"digit": [ 
+	    [48, 57]
+	],
+	"xdigit": [ 
+	    [48, 57],
+	    [65, 70],
+	    [97, 102]
+	],
+	"blank": [ 
+  	    [9, 9],
+	    [32, 32]
+	],	
+	"space": [
+  		[9, 13],
+		[32, 32], 
+        [133], 
+		[8232, 8233] //Line Separator, Paragraph Separator
+	]
+};
 
 
 uf = new UnicodeFile({path: unicodeBlockFile});
@@ -149,269 +398,11 @@ for (var i = 0; i < len; i++) {
 	row = uf.get(i);
 
 	rangeName = row[1].trim().toLowerCase();
+	updateRangeName = blockNameMapping[rangeName];
 
-	// Note. Temporarily code for checking names. This colde will be replaced with not using if/else statement.
-	if (rangeName.indexOf('latin') !== -1) {
-		rangeName = "latin" 
-		// basic latin,latin-1 supplement,latin extended-a,latin extended-b,latin extended additional,latin extended-c,latin extended-d,latin extended-e
-	} else if (rangeName === 'ancient greek musical notation') {
-		rangeName = "greekmusic"
+	if (updateRangeName !== undefined) {
+		rangeName = updateRangeName;
 	}
-	else if (rangeName === 'ancient greek numbers') {
-		rangeName = "greeknumbers"
-	}
-	else if (rangeName === 'greek extended' || rangeName === 'greek and coptic') {
-		rangeName = "greek"
-	}
-	else if (rangeName === 'ipa extensions' || rangeName === 'phonetic extensions' || rangeName === 'phonetic extensions supplement') {
-		rangeName = "ipa"
-	}
-	else if (rangeName === 'mathematical operators' || rangeName === 'supplemental mathematical operators') {
-		rangeName = "operators"
-	}
-	else if (rangeName.indexOf('cyrillic') !== -1) {
-		rangeName = "cyrillic"
-		// cyrillic, cyrillic supplement, cyrillic extended-a, cyrillic extended-b
-	}
-	else if (rangeName.indexOf('arabic') !== -1) {
-		rangeName = "arabic"
-		//arabic,arabic supplement,arabic extended-a,arabic presentation forms-a,arabic presentation forms-b,arabic mathematical alphabetic symbols
-	}
-	else if (rangeName.indexOf('devanagari') !== -1) {
-		rangeName = "devanagari"
-		//devanagari,devanagari extended"
-	}
-	else if (rangeName.indexOf('myanmar') !== -1) {
-		rangeName = "myanmar"
-		//myanmar,myanmar extended-b,myanmar extended-a
-	}
-	else if (rangeName.indexOf('hangul') !== -1) {
-		rangeName = "hangul"
-		//hangul jamo,hangul compatibility jamo,hangul jamo extended-a,hangul syllables,hangul jamo extended-b
-	}
-	else if (rangeName.indexOf('ethiopic') !== -1) {
-		rangeName = "ethiopic"
-		//ethiopic,ethiopic supplement,ethiopic extended,ethiopic extended-a
-	}
-	else if (rangeName.indexOf('canadian') !== -1) {
-		rangeName = "canadian"
-		//devanagari,devanagari extended"
-	}
-	else if (rangeName.indexOf('combining') !== -1) {
-		rangeName = "combining"
-		//combining diacritical marks,combining diacritical marks extended,combining diacritical marks supplement,combining diacritical marks for symbols
-	}
-	else if (rangeName.indexOf('arrows') !== -1) {
-		rangeName = "arrows"
-		//arrows,supplemental arrows-a,supplemental arrows-b,miscellaneous symbols and arrows,supplemental arrows-c
-	}
-	else if (rangeName.indexOf('cjk compatibility') !== -1) {
-		rangeName = "cjkcompatibility"
-		//cjk compatibility,cjk compatibility ideographs,cjk compatibility forms,cjk compatibility ideographs supplement
-	}
-	else if (rangeName === 'ideographic description characters'
-			 || rangeName === 'cjk symbols and punctuation'
-			 || rangeName === 'cjk strokes'			 
-			 || rangeName === 'cjk unified ideographs extension a'
-			 || rangeName === 'cjk unified ideographs'
-			 || rangeName === 'cjk unified ideographs extension b'
-			 || rangeName === 'cjk unified ideographs extension c'
-			 || rangeName === 'cjk unified ideographs extension d'
-			 || rangeName === 'cjk unified ideographs extension e'
-			 ) {
-
-		rangeName = "cjk"
-		/*
-			ideographic description characters : include currently in cjk		
-			cjk symbols and punctuation ??
-			cjk strokes
-			cjk unified ideographs extension a
-			cjk unified ideographs			
-			cjk unified ideographs extension b
-			cjk unified ideographs extension c
-			cjk unified ideographs extension d
-			cjk unified ideographs extension e
-		*/
-	}
-	else if (rangeName === 'miscellaneous mathematical symbols-a'
-			 || rangeName === 'miscellaneous mathematical symbols-b'
-			 || rangeName === 'mathematical alphanumeric symbols'	
-			 ) {
-		rangeName = "mathematical"
-		/*
-			miscellaneous mathematical symbols-a
-			miscellaneous mathematical symbols-b
-			mathematical alphanumeric symbols
-		*/
-	}
-	else if (rangeName === 'private use area'
-			 || rangeName === 'supplementary private use area-a'
-			 || rangeName === 'supplementary private use area-b'	
-			 ) {
-		rangeName = "privateuse"
-		/*
-			private use area
-			supplementary private use area-a
-			supplementary private use area-b
-		*/
-	}
-	else if (rangeName.indexOf('variation') !== -1) {
-		rangeName = "variations"
-		//variation selectors, variation selectors supplement
-	}
-	else if (rangeName.indexOf('bamum') !== -1) {
-		rangeName = "bamum"
-		//bamum,bamum supplement
-	}
-	else if (rangeName.indexOf('georgian') !== -1) {
-		rangeName = "georgian"
-		//georgian,georgian supplement
-	}
-	else if (rangeName === 'general punctuation'
-			 || rangeName === 'supplemental punctuation' 
-			 ) {
-		rangeName = "punctuation"
-		/*
-			general punctuation
-			supplemental punctuation
-		*/
-	}
-	else if (rangeName.indexOf('kana') !== -1) {
-		rangeName = "katakana"
-		//katakana,katakana phonetic extensions,kana supplement
-	}
-	else if (rangeName.indexOf('bopomofo') !== -1) {
-		rangeName = "bopomofo"
-		//bopomofo,bopomofo extended
-	}
-	else if (rangeName === 'enclosed alphanumerics'
-			 || rangeName === 'enclosed alphanumeric supplement' 
-			 ) {
-		rangeName = "enclosedalpha"
-		/*
-			enclosed alphanumerics
-			enclosed alphanumeric supplement
-		*/
-	}
-	else if (rangeName === 'cjk radicals supplement'
-			 || rangeName === 'kangxi radicals' 
-			 ) {
-		rangeName = "cjkradicals"
-		/*
-			cjk radicals supplement
-			kangxi radicals
-		*/
-	}
-	else if (rangeName === 'yi syllables'
-			 || rangeName === 'yi radicals' 
-			 ) {
-		rangeName = "yi"
-		/*
-			yi syllables
-			yi radicals
-		*/
-	}
-	else if (rangeName.indexOf('linear b') !== -1) {
-		rangeName = "linearb"
-		//linear b syllabary ,linear b ideograms
-	}
-	else if (rangeName === 'enclosed cjk letters and months'
-			 || rangeName === 'enclosed ideographic supplement' 
-			 ) {
-		rangeName = "enclosedcjk"
-		/*
-			enclosed cjk letters and months
-			enclosed ideographic supplement
-		*/
-	}
-	else if (rangeName === 'spacing') {
-		rangeName = "spacing"
-		//spacing modifier letters
-	}
-	else if (rangeName === 'sinhala'
-			 || rangeName === 'sinhala archaic numbers' 
-			 ) {
-		rangeName = "sinhala"
-		/*
-			sinhala
-			sinhala archaic numbers
-		*/
-	}
-	else if (rangeName === 'cherokee'
-			 || rangeName === 'cherokee supplement' 
-			 ) {
-		rangeName = "cherokee"
-		/*
-			cherokee
-			cherokee supplement
-		*/
-	}
-	else if (rangeName === 'khmer symbols') {
-		rangeName = "khmersymbols"
-		/*
-			khmer symbols
-		*/
-	}
-	else if (rangeName === 'tai le') {
-		rangeName = "taile"
-		/*
-			tai le
-		*/
-	}
-	else if (rangeName === 'new tai lue') {
-		rangeName = "newtailue"
-		/*
-			new tai lue
-		*/
-	}
-	else if (rangeName === 'tai tham') {
-		rangeName = "taitham"
-		/*
-			tai tham
-		*/
-	}
-	else if (rangeName === 'sundanese'
-			 || rangeName === 'sundanese supplement' 
-			 ) {
-		rangeName = "sundanese"
-		/*
-			sundanese
-			sundanese supplement
-		*/
-	}
-	else if (rangeName === 'ol chiki') {
-		rangeName = "olchiki"
-		/*
-			ol chiki
-		*/
-	}
-	else if (rangeName === 'vedic extensions') {
-		rangeName = "vedic"
-		/*
-			vedic extensions
-		*/
-	}
-	else if (rangeName === 'superscripts and subscripts') {
-		rangeName = "supersub"
-		/*
-			superscripts and subscripts
-		*/
-	}
-	else if (rangeName === 'currency symbols') {
-		rangeName = "currency"
-		/*
-			currency symbols
-		*/
-	}
-	else if (rangeName === 'letterlike symbols') {
-		rangeName = "letterlike"
-		/*
-			letterlike symbols
-		*/
-	}
-
-
-	//rangeName = convert_map[rangeName];
 
 	rangeStart = parseInt(row[0].match(/^[A-F0-9]+/)[0],16);
 	rangeEnd = row[0].match(/\.\.[A-F0-9]+/);
@@ -423,11 +414,11 @@ for (var i = 0; i < len; i++) {
 		range = [rangeStart];
 	}
 
-	if (typeof(map[rangeName]) === 'undefined') {
-		map[rangeName] = [];
+	if (typeof(ctypeMap[rangeName]) === 'undefined') {
+		ctypeMap[rangeName] = [];
 	}
 
-	map[rangeName].push(range);
+	ctypeMap[rangeName].push(range);
 }
 
-fs.writeFile(toDir + "/ctype.json", JSON.stringify(map, true, 4))
+fs.writeFile(toDir + "/ctype.json", JSON.stringify(ctypeMap, true, 4))
