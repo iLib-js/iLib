@@ -70,21 +70,15 @@ if (process.argv.length > 3) {
 util.print("genctype - generate ctype data.\n" +
 		"Copyright (c) 2012 - 2015 JEDLSoft\n");
 
+if (!fs.existsSync(unicodeFileName)) {
+	util.error("Could not access file " + unicodeFileName);
+	usage();
+}
 
-fs.exists(unicodeFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + unicodeFileName);
-		usage();
-	}
-});
-
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
-
+if (!fs.existsSync(toDir)) {
+	util.error("Could not access target directory " + toDir);
+	usage();
+}
 
 /*
  *	For creating ctype_*.json
@@ -324,19 +318,18 @@ var blockNameMapping = {
 	"ornamental dingbats": "ornamentaldingbats"
 }
 
-
 /*
  *	List for manually handled
  *	as Reference: http://www.cplusplus.com/reference/cctype/
 */
-var ctypeMap = {
-		"ideograph": [
+var manuallyHandleRange = {
+/*		"ideograph": [
 		[4352,4607], //hangul jamo double
 		[12353,12447],
 		[12449,12543],
 		[12549,12589],
 		[12593,12686],
-		[12704,12727], //bopomofo partial
+		[12704,12727], //bopomofo 
 		[12784,12799], //katakana
 		[13312,19893], //cjk partial
 		[19968,40907], //cjk partial
@@ -348,7 +341,6 @@ var ctypeMap = {
 		[65382,65437],
 		[65440,65500]
 	],
-	
 	"ideoother": [
 		[12294,12294], //Ideographic Closing Mark
 		[12348,12348],
@@ -366,7 +358,7 @@ var ctypeMap = {
 		[43389,43391],
 		[55292,55295],
 		[64218,64255]
-	],
+	],*/
 	"ascii": [
 		[32, 127]
 	],
@@ -390,6 +382,18 @@ var ctypeMap = {
 	]
 };
 
+function sortKeys(x) {
+    var keys = Object.keys(x);
+    keys.sort();
+    var y = {};
+
+    for (var i = 0; i < keys.length; i++) {
+        y[keys[i]] = x[keys[i]];
+    }
+    return y;
+}
+
+var ctypeMap = {};
 
 uf = new UnicodeFile({path: unicodeBlockFile});
 len = uf.length();
@@ -416,9 +420,30 @@ for (var i = 0; i < len; i++) {
 
 	if (typeof(ctypeMap[rangeName]) === 'undefined') {
 		ctypeMap[rangeName] = [];
+	} else {		
+		var length = ctypeMap[rangeName].length;
+		if (ctypeMap[rangeName][length-1][1] === range[0] -1) {
+			ctypeMap[rangeName][length-1][1] = range[1];
+			range = null;
+		}
 	}
-
-	ctypeMap[rangeName].push(range);
+	if (range !== null) {
+		ctypeMap[rangeName].push(range);	
+	}
 }
 
-fs.writeFile(toDir + "/ctype.json", JSON.stringify(ctypeMap, true, 4))
+ctypeMap["ideograph"] = [];
+var ideograph = ["bopomofo", "katakana", "cjk", "yi", "hangul","cjkcompatibility"];
+var ideoother = ["hiragana", "katakana", "bopomofo", "hangul", "cjkcompatibility"];
+
+for (i=0; i < ideograph.length; i++) {
+	for (j=0; j< ctypeMap[ideograph[i]].length ;j++) {
+		ctypeMap["ideograph"].push(ctypeMap[ideograph[i]][j]);
+		console.log("i: " + i + " j: " + j + " value: " + ctypeMap[ideograph[i]][j] )
+	}
+}
+
+var sortedCtype = sortKeys(ctypeMap)
+var merged = common.merge(manuallyHandleRange, sortedCtype);
+
+fs.writeFile(toDir + "/ctype.json", JSON.stringify(merged, true, 4))
