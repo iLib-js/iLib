@@ -323,42 +323,6 @@ var blockNameMapping = {
  *	as Reference: http://www.cplusplus.com/reference/cctype/
 */
 var manuallyHandleRange = {
-/*		"ideograph": [
-		[4352,4607], //hangul jamo double
-		[12353,12447],
-		[12449,12543],
-		[12549,12589],
-		[12593,12686],
-		[12704,12727], //bopomofo 
-		[12784,12799], //katakana
-		[13312,19893], //cjk partial
-		[19968,40907], //cjk partial
-		[40960,42124], //yi
-		[43360,43388], //hangul
-		[44032,55203], //hangul
-		[55216,55291], //hangul
-		[63744,64217], //cjkcompatibility
-		[65382,65437],
-		[65440,65500]
-	],
-	"ideoother": [
-		[12294,12294], //Ideographic Closing Mark
-		[12348,12348],
-		[12352,12352], //hiragana
-		[12448,12448], //katakana
-		[12544,12548], //bopomofo
-		[12590,12591],
-		[12592,12592], //hangul
-		[12687,12687], //hangul
-		[12800,13055], //enclosedcjk
-		[13056,13183], //cjkcompatibility
-		[13184,13311], //cjkcompatibility
-		[40908,40959],
-		[42125,42191],
-		[43389,43391],
-		[55292,55295],
-		[64218,64255]
-	],*/
 	"ascii": [
 		[32, 127]
 	],
@@ -413,7 +377,6 @@ function createKeys (keyTitle, keyList){
 	for (i=0; i < list.length; i++) {
 		for (j=0; j< ctypeMap[list[i]].length ;j++) {
 			ctypeMap[keyTitle].push(ctypeMap[list[i]][j]);
-			console.log("i: " + i + " j: " + j + " value: " + ctypeMap[list[i]][j] )
 		}
 	}
 }
@@ -461,7 +424,10 @@ for (var i = 0; i < len; i++) {
 ctypeMap["ideograph"] = [];
 ctypeMap["ideoother"] = [];
 var ideographGroup = ["bopomofo", "cjk", "katakana",  "yi", "hangul","cjkcompatibility"];
-var ideootherGroup = ["bopomofo", "katakana", "hangul", "hiragana", "cjkcompatibility"];
+var ideootherGroup = ["bopomofo", "katakana", "hangul", 
+					  "hiragana", "cjkcompatibility", "cjkradicals",
+					  "cjkpunct", "cjkstrokes"
+					  ];
 
 createKeys("ideograph", ideographGroup)
 listMap = ctypeMap["ideograph"];
