@@ -2,7 +2,6 @@ $(function(){
 	var transferredLocale = parent.document.all["iframeName"].value || "en-GB";
 	console.log("transferredLocale: ", transferredLocale);
 
-	//transferredLocale = "am-ET"
 	ilib.setLocale(transferredLocale);
 	var currentLocale = ilib.getLocale();
 
@@ -28,7 +27,7 @@ $(function(){
 	var weekID = [];
 	var fmtArray = [];
 	var length = ["full", "long", "medium", "short"];
-	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec"];
+	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec", "etc"];
 	var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
 
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
@@ -43,8 +42,11 @@ $(function(){
 			dayCount++;
 		}
 	}
-	for (i=0; i<12; i++) {
-		date[i] = new GregorianDate({locale: currentLocale, month: i+1});
+
+	var loopLength = (currentLocale === "am-ET") ? 13 : 12;
+	
+	for (i=0; i < loopLength; i++) {
+		date[i] = new DateFactory({month: i+1, type:li.getCalendar()});
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"m", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
@@ -61,7 +63,10 @@ $(function(){
 		$("#"+monthID[i]).text(nameOfMonth[i]);	
 	}
 
-
+	if (currentLocale === "am-ET") {
+		$("#extraLength").text("13");	
+	}
+	
 	var row = [];
 	var count = 0;
 
