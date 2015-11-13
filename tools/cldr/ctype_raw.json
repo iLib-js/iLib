@@ -1,0 +1,1574 @@
+{
+    "basic latin": [
+        [
+            0,
+            127
+        ]
+    ],
+    "latin-1 supplement": [
+        [
+            128,
+            255
+        ]
+    ],
+    "latin extended-a": [
+        [
+            256,
+            383
+        ]
+    ],
+    "latin extended-b": [
+        [
+            384,
+            591
+        ]
+    ],
+    "ipa extensions": [
+        [
+            592,
+            687
+        ]
+    ],
+    "spacing modifier letters": [
+        [
+            688,
+            767
+        ]
+    ],
+    "combining diacritical marks": [
+        [
+            768,
+            879
+        ]
+    ],
+    "greek and coptic": [
+        [
+            880,
+            1023
+        ]
+    ],
+    "cyrillic": [
+        [
+            1024,
+            1279
+        ]
+    ],
+    "cyrillic supplement": [
+        [
+            1280,
+            1327
+        ]
+    ],
+    "armenian": [
+        [
+            1328,
+            1423
+        ]
+    ],
+    "hebrew": [
+        [
+            1424,
+            1535
+        ]
+    ],
+    "arabic": [
+        [
+            1536,
+            1791
+        ]
+    ],
+    "syriac": [
+        [
+            1792,
+            1871
+        ]
+    ],
+    "arabic supplement": [
+        [
+            1872,
+            1919
+        ]
+    ],
+    "thaana": [
+        [
+            1920,
+            1983
+        ]
+    ],
+    "nko": [
+        [
+            1984,
+            2047
+        ]
+    ],
+    "samaritan": [
+        [
+            2048,
+            2111
+        ]
+    ],
+    "mandaic": [
+        [
+            2112,
+            2143
+        ]
+    ],
+    "arabic extended-a": [
+        [
+            2208,
+            2303
+        ]
+    ],
+    "devanagari": [
+        [
+            2304,
+            2431
+        ]
+    ],
+    "bengali": [
+        [
+            2432,
+            2559
+        ]
+    ],
+    "gurmukhi": [
+        [
+            2560,
+            2687
+        ]
+    ],
+    "gujarati": [
+        [
+            2688,
+            2815
+        ]
+    ],
+    "oriya": [
+        [
+            2816,
+            2943
+        ]
+    ],
+    "tamil": [
+        [
+            2944,
+            3071
+        ]
+    ],
+    "telugu": [
+        [
+            3072,
+            3199
+        ]
+    ],
+    "kannada": [
+        [
+            3200,
+            3327
+        ]
+    ],
+    "malayalam": [
+        [
+            3328,
+            3455
+        ]
+    ],
+    "sinhala": [
+        [
+            3456,
+            3583
+        ]
+    ],
+    "thai": [
+        [
+            3584,
+            3711
+        ]
+    ],
+    "lao": [
+        [
+            3712,
+            3839
+        ]
+    ],
+    "tibetan": [
+        [
+            3840,
+            4095
+        ]
+    ],
+    "myanmar": [
+        [
+            4096,
+            4255
+        ]
+    ],
+    "georgian": [
+        [
+            4256,
+            4351
+        ]
+    ],
+    "hangul jamo": [
+        [
+            4352,
+            4607
+        ]
+    ],
+    "ethiopic": [
+        [
+            4608,
+            4991
+        ]
+    ],
+    "ethiopic supplement": [
+        [
+            4992,
+            5023
+        ]
+    ],
+    "cherokee": [
+        [
+            5024,
+            5119
+        ]
+    ],
+    "unified canadian aboriginal syllabics": [
+        [
+            5120,
+            5759
+        ]
+    ],
+    "ogham": [
+        [
+            5760,
+            5791
+        ]
+    ],
+    "runic": [
+        [
+            5792,
+            5887
+        ]
+    ],
+    "tagalog": [
+        [
+            5888,
+            5919
+        ]
+    ],
+    "hanunoo": [
+        [
+            5920,
+            5951
+        ]
+    ],
+    "buhid": [
+        [
+            5952,
+            5983
+        ]
+    ],
+    "tagbanwa": [
+        [
+            5984,
+            6015
+        ]
+    ],
+    "khmer": [
+        [
+            6016,
+            6143
+        ]
+    ],
+    "mongolian": [
+        [
+            6144,
+            6319
+        ]
+    ],
+    "unified canadian aboriginal syllabics extended": [
+        [
+            6320,
+            6399
+        ]
+    ],
+    "limbu": [
+        [
+            6400,
+            6479
+        ]
+    ],
+    "tai le": [
+        [
+            6480,
+            6527
+        ]
+    ],
+    "new tai lue": [
+        [
+            6528,
+            6623
+        ]
+    ],
+    "khmer symbols": [
+        [
+            6624,
+            6655
+        ]
+    ],
+    "buginese": [
+        [
+            6656,
+            6687
+        ]
+    ],
+    "tai tham": [
+        [
+            6688,
+            6831
+        ]
+    ],
+    "combining diacritical marks extended": [
+        [
+            6832,
+            6911
+        ]
+    ],
+    "balinese": [
+        [
+            6912,
+            7039
+        ]
+    ],
+    "sundanese": [
+        [
+            7040,
+            7103
+        ]
+    ],
+    "batak": [
+        [
+            7104,
+            7167
+        ]
+    ],
+    "lepcha": [
+        [
+            7168,
+            7247
+        ]
+    ],
+    "ol chiki": [
+        [
+            7248,
+            7295
+        ]
+    ],
+    "sundanese supplement": [
+        [
+            7360,
+            7375
+        ]
+    ],
+    "vedic extensions": [
+        [
+            7376,
+            7423
+        ]
+    ],
+    "phonetic extensions": [
+        [
+            7424,
+            7551
+        ]
+    ],
+    "phonetic extensions supplement": [
+        [
+            7552,
+            7615
+        ]
+    ],
+    "combining diacritical marks supplement": [
+        [
+            7616,
+            7679
+        ]
+    ],
+    "latin extended additional": [
+        [
+            7680,
+            7935
+        ]
+    ],
+    "greek extended": [
+        [
+            7936,
+            8191
+        ]
+    ],
+    "general punctuation": [
+        [
+            8192,
+            8303
+        ]
+    ],
+    "superscripts and subscripts": [
+        [
+            8304,
+            8351
+        ]
+    ],
+    "currency symbols": [
+        [
+            8352,
+            8399
+        ]
+    ],
+    "combining diacritical marks for symbols": [
+        [
+            8400,
+            8447
+        ]
+    ],
+    "letterlike symbols": [
+        [
+            8448,
+            8527
+        ]
+    ],
+    "number forms": [
+        [
+            8528,
+            8591
+        ]
+    ],
+    "arrows": [
+        [
+            8592,
+            8703
+        ]
+    ],
+    "mathematical operators": [
+        [
+            8704,
+            8959
+        ]
+    ],
+    "miscellaneous technical": [
+        [
+            8960,
+            9215
+        ]
+    ],
+    "control pictures": [
+        [
+            9216,
+            9279
+        ]
+    ],
+    "optical character recognition": [
+        [
+            9280,
+            9311
+        ]
+    ],
+    "enclosed alphanumerics": [
+        [
+            9312,
+            9471
+        ]
+    ],
+    "box drawing": [
+        [
+            9472,
+            9599
+        ]
+    ],
+    "block elements": [
+        [
+            9600,
+            9631
+        ]
+    ],
+    "geometric shapes": [
+        [
+            9632,
+            9727
+        ]
+    ],
+    "miscellaneous symbols": [
+        [
+            9728,
+            9983
+        ]
+    ],
+    "dingbats": [
+        [
+            9984,
+            10175
+        ]
+    ],
+    "miscellaneous mathematical symbols-a": [
+        [
+            10176,
+            10223
+        ]
+    ],
+    "supplemental arrows-a": [
+        [
+            10224,
+            10239
+        ]
+    ],
+    "braille patterns": [
+        [
+            10240,
+            10495
+        ]
+    ],
+    "supplemental arrows-b": [
+        [
+            10496,
+            10623
+        ]
+    ],
+    "miscellaneous mathematical symbols-b": [
+        [
+            10624,
+            10751
+        ]
+    ],
+    "supplemental mathematical operators": [
+        [
+            10752,
+            11007
+        ]
+    ],
+    "miscellaneous symbols and arrows": [
+        [
+            11008,
+            11263
+        ]
+    ],
+    "glagolitic": [
+        [
+            11264,
+            11359
+        ]
+    ],
+    "latin extended-c": [
+        [
+            11360,
+            11391
+        ]
+    ],
+    "coptic": [
+        [
+            11392,
+            11519
+        ]
+    ],
+    "georgian supplement": [
+        [
+            11520,
+            11567
+        ]
+    ],
+    "tifinagh": [
+        [
+            11568,
+            11647
+        ]
+    ],
+    "ethiopic extended": [
+        [
+            11648,
+            11743
+        ]
+    ],
+    "cyrillic extended-a": [
+        [
+            11744,
+            11775
+        ]
+    ],
+    "supplemental punctuation": [
+        [
+            11776,
+            11903
+        ]
+    ],
+    "cjk radicals supplement": [
+        [
+            11904,
+            12031
+        ]
+    ],
+    "kangxi radicals": [
+        [
+            12032,
+            12255
+        ]
+    ],
+    "ideographic description characters": [
+        [
+            12272,
+            12287
+        ]
+    ],
+    "cjk symbols and punctuation": [
+        [
+            12288,
+            12351
+        ]
+    ],
+    "hiragana": [
+        [
+            12352,
+            12447
+        ]
+    ],
+    "katakana": [
+        [
+            12448,
+            12543
+        ]
+    ],
+    "bopomofo": [
+        [
+            12544,
+            12591
+        ]
+    ],
+    "hangul compatibility jamo": [
+        [
+            12592,
+            12687
+        ]
+    ],
+    "kanbun": [
+        [
+            12688,
+            12703
+        ]
+    ],
+    "bopomofo extended": [
+        [
+            12704,
+            12735
+        ]
+    ],
+    "cjk strokes": [
+        [
+            12736,
+            12783
+        ]
+    ],
+    "katakana phonetic extensions": [
+        [
+            12784,
+            12799
+        ]
+    ],
+    "enclosed cjk letters and months": [
+        [
+            12800,
+            13055
+        ]
+    ],
+    "cjk compatibility": [
+        [
+            13056,
+            13311
+        ]
+    ],
+    "cjk unified ideographs extension a": [
+        [
+            13312,
+            19903
+        ]
+    ],
+    "yijing hexagram symbols": [
+        [
+            19904,
+            19967
+        ]
+    ],
+    "cjk unified ideographs": [
+        [
+            19968,
+            40959
+        ]
+    ],
+    "yi syllables": [
+        [
+            40960,
+            42127
+        ]
+    ],
+    "yi radicals": [
+        [
+            42128,
+            42191
+        ]
+    ],
+    "lisu": [
+        [
+            42192,
+            42239
+        ]
+    ],
+    "vai": [
+        [
+            42240,
+            42559
+        ]
+    ],
+    "cyrillic extended-b": [
+        [
+            42560,
+            42655
+        ]
+    ],
+    "bamum": [
+        [
+            42656,
+            42751
+        ]
+    ],
+    "modifier tone letters": [
+        [
+            42752,
+            42783
+        ]
+    ],
+    "latin extended-d": [
+        [
+            42784,
+            43007
+        ]
+    ],
+    "syloti nagri": [
+        [
+            43008,
+            43055
+        ]
+    ],
+    "common indic number forms": [
+        [
+            43056,
+            43071
+        ]
+    ],
+    "phags-pa": [
+        [
+            43072,
+            43135
+        ]
+    ],
+    "saurashtra": [
+        [
+            43136,
+            43231
+        ]
+    ],
+    "devanagari extended": [
+        [
+            43232,
+            43263
+        ]
+    ],
+    "kayah li": [
+        [
+            43264,
+            43311
+        ]
+    ],
+    "rejang": [
+        [
+            43312,
+            43359
+        ]
+    ],
+    "hangul jamo extended-a": [
+        [
+            43360,
+            43391
+        ]
+    ],
+    "javanese": [
+        [
+            43392,
+            43487
+        ]
+    ],
+    "myanmar extended-b": [
+        [
+            43488,
+            43519
+        ]
+    ],
+    "cham": [
+        [
+            43520,
+            43615
+        ]
+    ],
+    "myanmar extended-a": [
+        [
+            43616,
+            43647
+        ]
+    ],
+    "tai viet": [
+        [
+            43648,
+            43743
+        ]
+    ],
+    "meetei mayek extensions": [
+        [
+            43744,
+            43775
+        ]
+    ],
+    "ethiopic extended-a": [
+        [
+            43776,
+            43823
+        ]
+    ],
+    "latin extended-e": [
+        [
+            43824,
+            43887
+        ]
+    ],
+    "cherokee supplement": [
+        [
+            43888,
+            43967
+        ]
+    ],
+    "meetei mayek": [
+        [
+            43968,
+            44031
+        ]
+    ],
+    "hangul syllables": [
+        [
+            44032,
+            55215
+        ]
+    ],
+    "hangul jamo extended-b": [
+        [
+            55216,
+            55295
+        ]
+    ],
+    "high surrogates": [
+        [
+            55296,
+            56191
+        ]
+    ],
+    "high private use surrogates": [
+        [
+            56192,
+            56319
+        ]
+    ],
+    "low surrogates": [
+        [
+            56320,
+            57343
+        ]
+    ],
+    "private use area": [
+        [
+            57344,
+            63743
+        ]
+    ],
+    "cjk compatibility ideographs": [
+        [
+            63744,
+            64255
+        ]
+    ],
+    "alphabetic presentation forms": [
+        [
+            64256,
+            64335
+        ]
+    ],
+    "arabic presentation forms-a": [
+        [
+            64336,
+            65023
+        ]
+    ],
+    "variation selectors": [
+        [
+            65024,
+            65039
+        ]
+    ],
+    "vertical forms": [
+        [
+            65040,
+            65055
+        ]
+    ],
+    "combining half marks": [
+        [
+            65056,
+            65071
+        ]
+    ],
+    "cjk compatibility forms": [
+        [
+            65072,
+            65103
+        ]
+    ],
+    "small form variants": [
+        [
+            65104,
+            65135
+        ]
+    ],
+    "arabic presentation forms-b": [
+        [
+            65136,
+            65279
+        ]
+    ],
+    "halfwidth and fullwidth forms": [
+        [
+            65280,
+            65519
+        ]
+    ],
+    "specials": [
+        [
+            65520,
+            65535
+        ]
+    ],
+    "linear b syllabary": [
+        [
+            65536,
+            65663
+        ]
+    ],
+    "linear b ideograms": [
+        [
+            65664,
+            65791
+        ]
+    ],
+    "aegean numbers": [
+        [
+            65792,
+            65855
+        ]
+    ],
+    "ancient greek numbers": [
+        [
+            65856,
+            65935
+        ]
+    ],
+    "ancient symbols": [
+        [
+            65936,
+            65999
+        ]
+    ],
+    "phaistos disc": [
+        [
+            66000,
+            66047
+        ]
+    ],
+    "lycian": [
+        [
+            66176,
+            66207
+        ]
+    ],
+    "carian": [
+        [
+            66208,
+            66271
+        ]
+    ],
+    "coptic epact numbers": [
+        [
+            66272,
+            66303
+        ]
+    ],
+    "old italic": [
+        [
+            66304,
+            66351
+        ]
+    ],
+    "gothic": [
+        [
+            66352,
+            66383
+        ]
+    ],
+    "old permic": [
+        [
+            66384,
+            66431
+        ]
+    ],
+    "ugaritic": [
+        [
+            66432,
+            66463
+        ]
+    ],
+    "old persian": [
+        [
+            66464,
+            66527
+        ]
+    ],
+    "deseret": [
+        [
+            66560,
+            66639
+        ]
+    ],
+    "shavian": [
+        [
+            66640,
+            66687
+        ]
+    ],
+    "osmanya": [
+        [
+            66688,
+            66735
+        ]
+    ],
+    "elbasan": [
+        [
+            66816,
+            66863
+        ]
+    ],
+    "caucasian albanian": [
+        [
+            66864,
+            66927
+        ]
+    ],
+    "linear a": [
+        [
+            67072,
+            67455
+        ]
+    ],
+    "cypriot syllabary": [
+        [
+            67584,
+            67647
+        ]
+    ],
+    "imperial aramaic": [
+        [
+            67648,
+            67679
+        ]
+    ],
+    "palmyrene": [
+        [
+            67680,
+            67711
+        ]
+    ],
+    "nabataean": [
+        [
+            67712,
+            67759
+        ]
+    ],
+    "hatran": [
+        [
+            67808,
+            67839
+        ]
+    ],
+    "phoenician": [
+        [
+            67840,
+            67871
+        ]
+    ],
+    "lydian": [
+        [
+            67872,
+            67903
+        ]
+    ],
+    "meroitic hieroglyphs": [
+        [
+            67968,
+            67999
+        ]
+    ],
+    "meroitic cursive": [
+        [
+            68000,
+            68095
+        ]
+    ],
+    "kharoshthi": [
+        [
+            68096,
+            68191
+        ]
+    ],
+    "old south arabian": [
+        [
+            68192,
+            68223
+        ]
+    ],
+    "old north arabian": [
+        [
+            68224,
+            68255
+        ]
+    ],
+    "manichaean": [
+        [
+            68288,
+            68351
+        ]
+    ],
+    "avestan": [
+        [
+            68352,
+            68415
+        ]
+    ],
+    "inscriptional parthian": [
+        [
+            68416,
+            68447
+        ]
+    ],
+    "inscriptional pahlavi": [
+        [
+            68448,
+            68479
+        ]
+    ],
+    "psalter pahlavi": [
+        [
+            68480,
+            68527
+        ]
+    ],
+    "old turkic": [
+        [
+            68608,
+            68687
+        ]
+    ],
+    "old hungarian": [
+        [
+            68736,
+            68863
+        ]
+    ],
+    "rumi numeral symbols": [
+        [
+            69216,
+            69247
+        ]
+    ],
+    "brahmi": [
+        [
+            69632,
+            69759
+        ]
+    ],
+    "kaithi": [
+        [
+            69760,
+            69839
+        ]
+    ],
+    "sora sompeng": [
+        [
+            69840,
+            69887
+        ]
+    ],
+    "chakma": [
+        [
+            69888,
+            69967
+        ]
+    ],
+    "mahajani": [
+        [
+            69968,
+            70015
+        ]
+    ],
+    "sharada": [
+        [
+            70016,
+            70111
+        ]
+    ],
+    "sinhala archaic numbers": [
+        [
+            70112,
+            70143
+        ]
+    ],
+    "khojki": [
+        [
+            70144,
+            70223
+        ]
+    ],
+    "multani": [
+        [
+            70272,
+            70319
+        ]
+    ],
+    "khudawadi": [
+        [
+            70320,
+            70399
+        ]
+    ],
+    "grantha": [
+        [
+            70400,
+            70527
+        ]
+    ],
+    "tirhuta": [
+        [
+            70784,
+            70879
+        ]
+    ],
+    "siddham": [
+        [
+            71040,
+            71167
+        ]
+    ],
+    "modi": [
+        [
+            71168,
+            71263
+        ]
+    ],
+    "takri": [
+        [
+            71296,
+            71375
+        ]
+    ],
+    "ahom": [
+        [
+            71424,
+            71487
+        ]
+    ],
+    "warang citi": [
+        [
+            71840,
+            71935
+        ]
+    ],
+    "pau cin hau": [
+        [
+            72384,
+            72447
+        ]
+    ],
+    "cuneiform": [
+        [
+            73728,
+            74751
+        ]
+    ],
+    "cuneiform numbers and punctuation": [
+        [
+            74752,
+            74879
+        ]
+    ],
+    "early dynastic cuneiform": [
+        [
+            74880,
+            75087
+        ]
+    ],
+    "egyptian hieroglyphs": [
+        [
+            77824,
+            78895
+        ]
+    ],
+    "anatolian hieroglyphs": [
+        [
+            82944,
+            83583
+        ]
+    ],
+    "bamum supplement": [
+        [
+            92160,
+            92735
+        ]
+    ],
+    "mro": [
+        [
+            92736,
+            92783
+        ]
+    ],
+    "bassa vah": [
+        [
+            92880,
+            92927
+        ]
+    ],
+    "pahawh hmong": [
+        [
+            92928,
+            93071
+        ]
+    ],
+    "miao": [
+        [
+            93952,
+            94111
+        ]
+    ],
+    "kana supplement": [
+        [
+            110592,
+            110847
+        ]
+    ],
+    "duployan": [
+        [
+            113664,
+            113823
+        ]
+    ],
+    "shorthand format controls": [
+        [
+            113824,
+            113839
+        ]
+    ],
+    "byzantine musical symbols": [
+        [
+            118784,
+            119039
+        ]
+    ],
+    "musical symbols": [
+        [
+            119040,
+            119295
+        ]
+    ],
+    "ancient greek musical notation": [
+        [
+            119296,
+            119375
+        ]
+    ],
+    "tai xuan jing symbols": [
+        [
+            119552,
+            119647
+        ]
+    ],
+    "counting rod numerals": [
+        [
+            119648,
+            119679
+        ]
+    ],
+    "mathematical alphanumeric symbols": [
+        [
+            119808,
+            120831
+        ]
+    ],
+    "sutton signwriting": [
+        [
+            120832,
+            121519
+        ]
+    ],
+    "mende kikakui": [
+        [
+            124928,
+            125151
+        ]
+    ],
+    "arabic mathematical alphabetic symbols": [
+        [
+            126464,
+            126719
+        ]
+    ],
+    "mahjong tiles": [
+        [
+            126976,
+            127023
+        ]
+    ],
+    "domino tiles": [
+        [
+            127024,
+            127135
+        ]
+    ],
+    "playing cards": [
+        [
+            127136,
+            127231
+        ]
+    ],
+    "enclosed alphanumeric supplement": [
+        [
+            127232,
+            127487
+        ]
+    ],
+    "enclosed ideographic supplement": [
+        [
+            127488,
+            127743
+        ]
+    ],
+    "miscellaneous symbols and pictographs": [
+        [
+            127744,
+            128511
+        ]
+    ],
+    "emoticons": [
+        [
+            128512,
+            128591
+        ]
+    ],
+    "ornamental dingbats": [
+        [
+            128592,
+            128639
+        ]
+    ],
+    "transport and map symbols": [
+        [
+            128640,
+            128767
+        ]
+    ],
+    "alchemical symbols": [
+        [
+            128768,
+            128895
+        ]
+    ],
+    "geometric shapes extended": [
+        [
+            128896,
+            129023
+        ]
+    ],
+    "supplemental arrows-c": [
+        [
+            129024,
+            129279
+        ]
+    ],
+    "supplemental symbols and pictographs": [
+        [
+            129280,
+            129535
+        ]
+    ],
+    "cjk unified ideographs extension b": [
+        [
+            131072,
+            173791
+        ]
+    ],
+    "cjk unified ideographs extension c": [
+        [
+            173824,
+            177983
+        ]
+    ],
+    "cjk unified ideographs extension d": [
+        [
+            177984,
+            178207
+        ]
+    ],
+    "cjk unified ideographs extension e": [
+        [
+            178208,
+            183983
+        ]
+    ],
+    "cjk compatibility ideographs supplement": [
+        [
+            194560,
+            195103
+        ]
+    ],
+    "tags": [
+        [
+            917504,
+            917631
+        ]
+    ],
+    "variation selectors supplement": [
+        [
+            917760,
+            917999
+        ]
+    ],
+    "supplementary private use area-a": [
+        [
+            983040,
+            1048575
+        ]
+    ],
+    "supplementary private use area-b": [
+        [
+            1048576,
+            1114111
+        ]
+    ]
+}
