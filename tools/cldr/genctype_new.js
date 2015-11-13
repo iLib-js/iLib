@@ -29,6 +29,7 @@ var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var charIterator = common.charIterator;
 var isMember = common.isMember;
+var coelesce = common.coelesce;
 
 function usage() {
 	util.print("Usage: genctype [-h] UCD_dir [toDir]\n" +
@@ -406,18 +407,17 @@ for (var i = 0; i < len; i++) {
 		range = [rangeStart];
 	}
 
-	if (typeof(ctypeMap[rangeName]) === 'undefined') {
-		ctypeMap[rangeName] = [];
-	} else {	
-		//merge range if it could be coalesce 
-		var length = ctypeMap[rangeName].length;
-		if (ctypeMap[rangeName][length-1][1] === range[0] -1) {
-			ctypeMap[rangeName][length-1][1] = range[1];
-			range = null;
-		}
+	if (!ctypeMap[rangeName]) {
+		ctypeMap[rangeName] = [range];
+	} else {
+		ctypeMap[rangeName].push(range);
 	}
-	if (range !== null) {
-		ctypeMap[rangeName].push(range);	
+
+}
+
+for (rangeName in ctypeMap) {
+	if (rangeName && ctypeMap[rangeName]) {
+		ctypeMap[rangeName] = coelesce(ctypeMap[rangeName], 0);
 	}
 }
 
@@ -439,5 +439,4 @@ sortObject(listMap2);
 
 var sortedCtype = sortKeys(ctypeMap)
 var merged = common.merge(manuallyHandleRange, sortedCtype);
-
 fs.writeFile(toDir + "/ctype.json", JSON.stringify(merged, true, 4))
