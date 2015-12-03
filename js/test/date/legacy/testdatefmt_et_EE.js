@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. sept 2011", fmt.format(date));
+	    assertEquals("29. september 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_et_EE() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. sept 2011 13:45", fmt.format(date));
+    assertEquals("29. september 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_et_EE() {

@@ -13,7 +13,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
- * See the License for the specific firstdayofweek governing permissions and
+ * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 /*
@@ -26,6 +26,7 @@ var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
+var path = require("path");
 
 function usage() {
 	util.print("Usage: genDayofWeek [-h] CLDR_dir [toDir]\n" +
@@ -54,97 +55,81 @@ if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 util.print("genDayofWeek - generate the localeinfo firstdayofweek.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2013-2015 JEDLSoft\n");
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("output dir: " + toDir + "\n");
-languageDataFileName = cldrDir + "/supplemental/weekData.json";
-fs.exists(languageDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + languageDataFileName);
-		usage();
-	}
-});
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
+languageDataFileName = path.join(cldrDir, "supplemental/weekData.json");
+if (!fs.existsSync(languageDataFileName)) {
+	util.error("Could not access CLDR supplemental data file " + languageDataFileName);
+	usage();
+}
+if (!fs.existsSync(toDir)) {
+	util.error("Could not access target directory " + toDir);
+	usage();
+}
 
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var dayProperties = {"sun":0, "mon":1, "tue":2, "wed":3, "thu":4, "fri":5, "sat":6};
 var supplementalData = JSON.parse(languageDataString);
 var firstDayOfWeekData = supplementalData.supplemental.weekData.firstDay;
 var fstOfWeek = {};
-for (var firstdayofweek in firstDayOfWeekData) {
-	var filename;	
-	if (firstdayofweek && firstDayOfWeekData[firstdayofweek]) {
-		if (firstdayofweek.length < 9) {
-			if (firstdayofweek == 001) {
+//util.print("data is "+ JSON.stringify(firstDayOfWeekData));
+for (var locale in firstDayOfWeekData) {
+	var filename;
+	//util.print("day of the week is :"+locale+"\n");
+	//util.print("firstDayOfWeekData  is "+firstDayOfWeekData[locale]);
+	if (locale && firstDayOfWeekData[locale]) {
+		if (locale.length < 9) {
+			if (locale == "001") {
 				filename = toDir;
 			} else {
-				filename = toDir + '/' + 'und/' + firstdayofweek;
+				filename = path.join(toDir, 'und', locale);
 			}
 			if (!fs.existsSync(filename)) {
 				mkdirs(filename);
 			}
-			fstOfWeek.firstDayOfWeek = dayProperties[firstDayOfWeekData[firstdayofweek]];
+			fstOfWeek.firstDayOfWeek = dayProperties[firstDayOfWeekData[locale]];
 			fstOfWeek.generated = true;
-			fs.writeFile(filename + "/firstdayofweek.jf", JSON.stringify(fstOfWeek, true, 4), function (err) {
-				if (err) {
-				console.log(err);
-				throw err;
-				}
-			});
+			var fn = path.join(filename, "firstdayofweek.jf");
+			fs.writeFileSync(fn, JSON.stringify(fstOfWeek, true, 4), "utf-8");
 		}
 	}
 }
 
 var weekendStart = {};
 var weekendStartData = supplementalData.supplemental.weekData.weekendStart;
-for (var wkendStart in weekendStartData) {
+for (var locale in weekendStartData) {
 	var filename;	
-	if (wkendStart == 001) {
+	if (locale == 001) {
 		filename = toDir;
 	} else {
-		filename = toDir + '/' + 'und/' + wkendStart;
+		filename = path.join(toDir, 'und', locale);
 	}
 	if (!fs.existsSync(filename)) {
 		mkdirs(filename);
 	}
 
-	weekendStart.weekendStart = dayProperties[weekendStartData[wkendStart]];
+	weekendStart.weekendStart = dayProperties[weekendStartData[locale]];
 	weekendStart.generated = true;
-	fs.writeFile(filename + "/weekendstart.jf", JSON.stringify(weekendStart, true, 4), function (err) {
-		if (err) {
-		console.log(err);
-		throw err;
-		}
-	});
+	var fn = path.join(filename, "weekendstart.jf");
+	fs.writeFileSync(fn, JSON.stringify(weekendStart, true, 4), "utf-8");
 }
 
 var weekendEnd = {};
 weekendEnd.generated = true;
 var weekendEndData = supplementalData.supplemental.weekData.weekendEnd;
-for (var wkendEnd in weekendEndData) {
+for (var locale in weekendEndData) {
 	var filename;	
-	if (wkendEnd == 001) {
+	if (locale == 001) {
 		filename = toDir;
 	} else {
-		filename = toDir + '/' + 'und/' + wkendEnd;
+		filename = path.join(toDir, 'und', locale);
 	}
 	if (!fs.existsSync(filename)) {
 		mkdirs(filename);
 	}	
-	weekendEnd.weekendEnd = dayProperties[weekendEndData[wkendEnd]];
+	weekendEnd.weekendEnd = dayProperties[weekendEndData[locale]];
 	weekendEnd.generated = true;
-	fs.writeFile(filename + "/weekendend.jf", JSON.stringify(weekendEnd, true, 4), function (err) {
-		if (err) {
-		console.log(err);
-		throw err;
-		}
-	});
+	var fn = path.join(filename, "weekendend.jf");
+	fs.writeFileSync(fn, JSON.stringify(weekendEnd, true, 4), "utf-8");
 }
-
-
-

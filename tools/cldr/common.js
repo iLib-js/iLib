@@ -403,11 +403,11 @@ exports.getLocale = function () {
  * @constructor
  * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format
+ * @param {string=} script the ISO 15924 code of the script for this locale, if any
  * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
- * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
-exports.Locale = function(language, region, variant, script) {
+exports.Locale = function(language, script, region, variant) {
 	if (typeof(region) === 'undefined') {
 		var spec = language || exports.getLocale();
 		var parts = spec.split('-');
@@ -701,7 +701,7 @@ exports.prune = function prune(parent, child) {
 		if (prop && typeof(child[prop]) !== 'undefined') {
 			if (prop === 'generated') {
 				ret[prop] = child[prop];
-			} else if (typeof(parent[prop]) === 'object') {
+			} else if (parent && typeof(parent[prop]) === 'object') {
 				if (typeof(child[prop]) === 'object') {
     				var obj = exports.prune(parent[prop], child[prop]);
     				if (!exports.isEmpty(obj)) {
@@ -715,7 +715,7 @@ exports.prune = function prune(parent, child) {
 				//if (prop !== child[prop]) {
 					//ret[prop] = child[prop];
 				//}
-			} else if (parent[prop] !== child[prop] && child[prop].toString().length > 0) {
+			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length > 0)) {
 				ret[prop] = child[prop];
 			}
 		}
@@ -899,4 +899,118 @@ WeightVector.prototype = {
 	toString: function() {
 		return JSON.stringify(this.weights);
 	}
+};
+
+/**
+ * @private
+ * @constructor
+ * @class
+ */
+var TrieNode = function (obj) {
+	this.obj = obj;
+};
+
+/**
+ * Create a new, empty trie instance.
+ * 
+ * @class
+ * @constructor
+ */
+exports.Trie = function () {
+	this.nodes = {};
+};
+
+/**
+ * Add a node to the trie that maps from the given array
+ * to the given object.
+ * 
+ * @param {Array.<string>} from
+ * @param {Object} to
+ */
+exports.Trie.prototype.add = function(from, to) {
+	//util.print("from length is " + from.length + "\n");
+	var trienode = this.nodes;
+	var dest = new TrieNode(to);
+	
+	for (var j = 0; j < from.length-1; j++) {
+		
+		switch (typeof(trienode[from[j]])) {
+			case 'number':
+			case 'string':
+				//util.print("existing leaf node " + from[j] + "\n");
+				// context-sensitive?
+				var temp = {
+					"__leaf": trienode[from[j]]
+				};
+				trienode[from[j]] = temp;
+				break;
+
+			case 'object':
+				if (trienode[from[j]] instanceof TrieNode) {
+					//util.print("existing leaf node " + from[j] + "\n");
+					// context-sensitive? We have more to add, but
+					// there is a leaf here already. Push it down as
+					// a leaf and go on.
+					var temp = {
+						"__leaf": trienode[from[j]]
+					};
+					trienode[from[j]] = temp;
+				}
+				break;
+			
+			case 'undefined':
+				//util.print("new node " + from[j] + "\n");
+				trienode[from[j]] = {};
+				break;
+		}
+		
+		trienode = trienode[from[j]];
+	}
+	
+	//util.print("setting node " + from[j] + " to " + to + "\n");
+	if (!exports.isEmpty(trienode[from[j]])) {
+		//util.print("Add existing node leaf " + from[j] + "\n");
+		// context-sensitive?
+		trienode[from[j]].__leaf = dest;
+	} else {
+		//util.print("Adding new node " + from[j] + "\n");
+		trienode[from[j]] = dest;
+	}
+};
+
+/**
+ * @private
+ * @param {Object} node
+ * @returns {Object}
+ */
+exports.Trie.prototype._clean = function (node) {
+	var json = {};
+	
+	for (var prop in node) {
+		switch (typeof(node[prop])) {
+			case 'undefined':
+				// ignore
+				break;
+			case 'object':
+				if (node[prop] instanceof TrieNode) {
+					if (typeof(node[prop].obj) === 'object' && node[prop].obj instanceof Array && node[prop].obj.length === 1) {
+						json[prop] = node[prop].obj[0];
+					} else {
+						json[prop] = node[prop].obj;
+					}
+				} else {
+					json[prop] = this._clean(node[prop]);
+				}
+				break;
+		}
+	}
+	
+	return json;
+};
+
+/**
+ * Return the clean form of the trie.
+ */
+exports.Trie.prototype.cleanForm = function() {
+	return this._clean(this.nodes);
 };

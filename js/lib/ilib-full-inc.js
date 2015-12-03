@@ -102,4 +102,11 @@ AreaUnit.js
 FuelConsumptionUnit.js
 VolumeUnit.js	
 EnergyUnit.js
+Charset.js
+Charmap.js
+CharmapFactory.js
+CharmapTable.js
+UTF8.js
+UTF16BE.js
+UTF16LE.js
 */

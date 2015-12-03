@@ -110,7 +110,7 @@ function testSetLocaleEmpty() {
 }
 
 function testGetVersion() {
-    assertEquals("11.0", ilib.getVersion().substring(0,4));
+    assertEquals("12.0", ilib.getVersion().substring(0,4));
 }
 
 function testGetTimeZoneDefault() {
@@ -294,7 +294,17 @@ function testGetLocaleBrowser() {
 	}
 	ilib.locale = undefined;
 	
-	assertEquals(navigator.language, ilib.getLocale());
+	var loc = "";
+	
+	if (navigator.language.length > 5) {
+		var l = navigator.language;
+		loc = l.substring(0,3) + l.charAt(3).toUpperCase() + l.substring(4,8).toLowerCase() + l.substring(8).toUpperCase();
+	} else if (navigator.language.length > 2) {
+		loc = navigator.language.substring(0,3) + navigator.language.substring(3).toUpperCase();	
+	} else {
+		loc = navigator.language;
+	}
+	assertEquals(loc, ilib.getLocale());
 }
 
 function testIsArrayNewArrayObj() {
@@ -488,3 +498,24 @@ function testExtendNumbersAddZero() {
     ilib.extend(object1, object2);
     assertObjectEquals({"a": 1, "b": 2, "c": 0}, object1);
 }
+
+
+/*
+var testGlobalNumber = 42;
+
+function testIsGlobal() {
+    assertTrue(ilib._isGlobal("testGlobalNumber"));
+}
+
+function testIsGlobalNot() {
+    assertFalse(ilib._isGlobal("asdfasdfasdf"));
+}
+
+function testGlobal() {
+    assertEquals(42, ilib._global("testGlobalNumber"));
+}
+
+function testGlobalUndefined() {
+    assertUndefined(ilib._global("testGlobalNumber2"));
+}
+*/

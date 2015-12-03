@@ -113,6 +113,7 @@ IString.fromCodePoint = function (codepoint) {
  * index into the intrinsic Javascript string to a Unicode 
  * UCS-4 code point.
  * 
+ * @static
  * @param {string} str string to get the code point from
  * @param {number} index index into the string
  * @return {number} code point of the character at the
@@ -160,7 +161,7 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 			locale: loc,
 			sync: sync,
 			loadParams: loadParams,
-			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(plurals) {
+			callback: ilib.bind(this, function(plurals) {
 				if (!plurals) {
 					IString.cache[spec] = {};
 				}
@@ -222,7 +223,7 @@ IString._fncs = {
 	matchRangeContinuous: function(n, range) {
 		for (var num in range) {
 			if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
-				var obj = /** @type {Object|null|undefined} */ range[num];
+				var obj = range[num];
 				if (typeof(obj) === 'number') {
 					if (n === range[num]) {
 						return true;

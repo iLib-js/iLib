@@ -1,26 +1,38 @@
 {
     "gregorian": {
-        "order": "{time} {date}",
+        "order": "{date}, {time}",
         "date": {
-            "dm": {
-                "s": "M-d",
-                "m": "d MMM",
-                "l": "MMM d"
+            "dmwy": {
+                "s": "E ທີ d/M/yyyy",
+                "m": "EE ທີ d MMM yyyy",
+                "l": "EEE ທີ d MMMM yyyy",
+                "f": "EEEE ທີ d MMMM yyyy"
             },
             "dmy": {
-                "s": "yy-M-d",
-                "m": "d MMM yy",
-                "l": "yyyy MMM d",
-                "f": "d MMMM G yyyy"
+                "s": "d/M/yyyy",
+                "m": "d MMM yyyy",
+                "l": "d MMMM yyyy"
+            },
+            "dmw": {
+                "s": "E ທີ d/M",
+                "m": "EE ທີ d MMM",
+                "l": "EEE ທີ d MMMM",
+                "f": "EEEE ທີ d MMMM"
+            },
+            "dm": {
+                "m": "d MMM",
+                "l": "d MMMM"
             },
             "my": {
-                "s": "yy-M",
-                "m": "MMM yy",
-                "l": "yyyy MMM",
-                "f": "MMMM G yyyy"
+                "s": "M/yyyy",
+                "m": "MMM yyyy",
+                "l": "MMMM yyyy"
             },
-            "m": {
-                "f": "MMM"
+            "dw": {
+                "s": "E ທີ d",
+                "m": "EE ທີ d",
+                "l": "EEE ທີ d",
+                "f": "EEEE ທີ d"
             },
             "d": {
                 "s": "d",
@@ -28,17 +40,12 @@
                 "l": "d",
                 "m": "d"
             },
-            "dmwy": {
-                "s": "E, yy-M-d",
-                "m": "EE, yy-M-d",
-                "l": "EEE, yyyy MMM d",
-                "f": "EEEE, yyyy MMM d"
+            "m": {
+                "m": "MMM",
+                "l": "MMMM"
             },
-            "dmw": {
-                "s": "E, M-d",
-                "m": "EE, M-d",
-                "l": "EEEE MMM d",
-                "f": "EEEE MMM d"
+            "y": {
+                "s": "yyyy"
             },
             "n": {
                 "m": "N"
@@ -46,21 +53,15 @@
         },
         "time": {
             "12": {
-                "ahmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "hmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss",
-                "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "ahm": "h:mm a",
-                "hm": "h:mm",
-                "hmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "ah": "h ໂມງa"
+                "ahmsz": "h:mm:ss ໂມງa z",
+                "ahms": "h:mm:ss ໂມງa",
+                "ahmz": "h:mm ໂມງa z",
+                "ahm": "h:mm ໂມງa",
+                "ah": "h ໂມງa",
+                "m": "m"
             },
             "24": {
-                "ahmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "hmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "hmz": "H ໂມງ m ນາທີ ss ວິນາທີ z"
+                "m": "m"
             }
         },
         "range": {
@@ -72,21 +73,21 @@
             },
             "c01": {
                 "s": "{st} {sy}–{sm}–{sd} – {et} {ed}",
-                "l": "{st} {sy}–{sm}–{sd} – {et} {ed}",
                 "m": "{st} {sy}–{sm}–{sd} – {et} {ed}",
+                "l": "{st} {sy}–{sm}–{sd} – {et} {ed}",
                 "f": "{st} {sy}–{sm}–{sd} – {et} {ed}"
             },
             "c02": {
                 "s": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
+                "m": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
                 "l": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
-                "f": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
-                "m": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"
+                "f": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"
             },
             "c10": {
                 "s": "{sy}–{sm}–{sd} – {ed}",
+                "m": "{sy}–{sm}–{sd} – {ed}",
                 "l": "{sy}–{sm}–{sd} – {ed}",
-                "f": "{sy}–{sm}–{sd} – {ed}",
-                "m": "{sy}–{sm}–{sd} – {ed}"
+                "f": "{sy}–{sm}–{sd} – {ed}"
             },
             "c11": {
                 "s": "{sy}–{sm}–{sd} – {em}–{ed}",
@@ -108,6 +109,5 @@
             },
             "c30": "{sy} – {ey}"
         }
-    },
-    "generated": true
+    }
 }

@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29-9-11", fmt.format(date));
+    assertEquals("29.9.11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_mk_MK() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 септ. 29", fmt.format(date));
+    assertEquals("29 септември 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_mk_MK() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29-9-11", fmt.format(date));
+    assertEquals("29.9.11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_mk_MK() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.2011", fmt.format(date));
+    assertEquals("29.9.2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_mk_MK() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 септ. 29", fmt.format(date));
+    assertEquals("29 септември 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_mk_MK() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 септември 2011", fmt.format(date));
+    assertEquals("29 септември 2011 13:45", fmt.format(date));
 }
 
 
@@ -438,7 +438,7 @@ function testDateFmtShortDateComponentsN_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("с", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_mk_MK() {
@@ -472,7 +472,7 @@ function testDateFmtShortDateComponentsDM_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-29", fmt.format(date));
+    assertEquals("29.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_mk_MK() {
@@ -489,7 +489,7 @@ function testDateFmtShortDateComponentsMY_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-9", fmt.format(date));
+    assertEquals("9.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_mk_MK() {
@@ -506,7 +506,7 @@ function testDateFmtShortDateComponentsDMY_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29-9-11", fmt.format(date));
+    assertEquals("29.9.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_mk_MK() {
@@ -523,7 +523,7 @@ function testDateFmtShortDateComponentsWDM_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ч, 9-29", fmt.format(date));
+    assertEquals("ч, 29.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_mk_MK() {
@@ -540,7 +540,7 @@ function testDateFmtShortDateComponentsWDMY_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ч, 11-9-29", fmt.format(date));
+    assertEquals("ч, 29.9.11", fmt.format(date));
 }
 
 
@@ -609,7 +609,7 @@ function testDateFmtFullDateComponentsDM_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("септември 29", fmt.format(date));
+    assertEquals("29 септември", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_mk_MK() {
@@ -660,7 +660,7 @@ function testDateFmtFullDateComponentsWDM_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("четврток септ. 29", fmt.format(date));
+    assertEquals("четврток, 29 септември", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_mk_MK() {
@@ -677,7 +677,7 @@ function testDateFmtFullDateComponentsWDMY_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("четврток, 2011 септ. 29", fmt.format(date));
+    assertEquals("четврток, 29 септември 2011", fmt.format(date));
 }
 
 

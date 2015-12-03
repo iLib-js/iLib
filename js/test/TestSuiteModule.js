@@ -173,7 +173,10 @@ TestSuite.prototype = {
 				},
 				require: require,
 				results: results,
-				path: this.path
+				path: this.path,
+				Uint8Array: Uint8Array,
+				Buffer: Buffer
+				// , console: console
 			};
 			//console.log("contextInit.module is " + util.inspect(contextInit.module));
 			

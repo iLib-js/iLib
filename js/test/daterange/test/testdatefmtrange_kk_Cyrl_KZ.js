@@ -41,7 +41,7 @@ function testDateRngFmtKZRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 11-12-31", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtKZRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 2011, 31-желт.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtKZRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 2011 желт. 31", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31 желтоқсан 2011", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtKZRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 желт. 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31 желтоқсан 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtKZRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.11 - 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("13:45 30/12/11 - 14:30 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtKZRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.2011 - 14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 2011, 30-желт. - 14:30 2011, 31-желт.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtKZRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 желтоқсан 2011", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtKZRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 желтоқсан 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtKZRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11 - 31.12.11", fmt.format(start, end));
+    assertEquals("20/12/11 - 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtKZRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.2011 - 31.12.2011", fmt.format(start, end));
+    assertEquals("2011, 20-желт. - 2011, 31-желт.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtKZRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 - 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("20 - 31 желтоқсан 2011", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtKZRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 - 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("20 - 31 желтоқсан 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtKZRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 - 31.12.11", fmt.format(start, end));
+    assertEquals("20/11/11 - 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtKZRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011 - 31.12.2011", fmt.format(start, end));
+    assertEquals("2011, 20-қар. - 2011, 31-желт.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -380,7 +380,7 @@ function testDateRngFmtKZRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 қар. - 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("20 қараша - 31 желтоқсан 2011", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -404,7 +404,7 @@ function testDateRngFmtKZRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 қар. - 31 желт. 2011 ж.", fmt.format(start, end));
+    assertEquals("20 қараша - 31 желтоқсан 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeNextYearShort() {
@@ -429,7 +429,7 @@ function testDateRngFmtKZRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 - 31.1.12", fmt.format(start, end));
+    assertEquals("20/11/11 - 31/01/12", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -453,7 +453,7 @@ function testDateRngFmtKZRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011 - 31.01.2012", fmt.format(start, end));
+    assertEquals("2011, 20-қар. - 2012, 31-қаң.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -477,7 +477,7 @@ function testDateRngFmtKZRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 қар. 2011 ж. - 31 қаң. 2012 ж.", fmt.format(start, end));
+    assertEquals("20 қараша 2011 - 31 қаңтар 2012", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -501,7 +501,7 @@ function testDateRngFmtKZRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 қар. 2011 ж. - 31 қаң. 2012 ж.", fmt.format(start, end));
+    assertEquals("20 қараша 2011 - 31 қаңтар 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeMultiYearShort() {
@@ -526,7 +526,7 @@ function testDateRngFmtKZRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11 - 1.14", fmt.format(start, end));
+    assertEquals("11/11 - 01/14", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -550,7 +550,7 @@ function testDateRngFmtKZRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.2011 - 01.2014", fmt.format(start, end));
+    assertEquals("2011, қар. - 2014, қаң.", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -574,7 +574,7 @@ function testDateRngFmtKZRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("қар. 2011 ж. - қаң. 2014 ж.", fmt.format(start, end));
+    assertEquals("қараша 2011 - қаңтар 2014", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -598,7 +598,7 @@ function testDateRngFmtKZRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–қар. - 2014–қаң.", fmt.format(start, end));
+    assertEquals("қараша 2011 - қаңтар 2014", fmt.format(start, end));
 }
 function testDateRngFmtKZManyYearsFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});

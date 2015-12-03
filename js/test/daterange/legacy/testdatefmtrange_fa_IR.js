@@ -74,7 +74,7 @@ function testDateRngFmtIRRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayLong() {
     var fmt = new ilib.DateRngFmt({
@@ -187,7 +187,7 @@ function testDateRngFmtIRRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ ۲۰۱۱/۱۲/۳۱ - ‏۱۳:۴۵ ۲۰۱۱/۱۲/۳۰", fmt.format(start, end));
+    assertEquals("‏۱۳:۴۵ ۳۰ تا ‏۱۴:۳۰ ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({
@@ -300,7 +300,7 @@ function testDateRngFmtIRRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۲/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ تا ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({
@@ -413,7 +413,7 @@ function testDateRngFmtIRRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۱۲/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ نوامبر تا ۳۱ دسامبر ۲۰۱۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({
@@ -526,7 +526,7 @@ function testDateRngFmtIRRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۲/۰۱/۳۱ - ۲۰۱۱/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ نوامبر ۲۰۱۱ تا ۳۱ ژانویهٔ ۲۰۱۲", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({
@@ -639,7 +639,7 @@ function testDateRngFmtIRRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۴/۰۱ - ۲۰۱۱/۱۱", fmt.format(start, end));
+    assertEquals("نوامبر ۲۰۱۱ تا ژانویهٔ ۲۰۱۴", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({
@@ -782,7 +782,7 @@ function testDateRngFmtPersRangeinDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۴:۳۰ - ‏۱۳:۴۵ ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -895,7 +895,7 @@ function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۴:۳۰ ۱۳۹۳/۱۲/۳۱ - ‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۰", fmt.format(start, end));
+    assertEquals("‏۱۳:۴۵ ۳۰ تا ‏۱۴:۳۰ ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1008,7 +1008,7 @@ function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۲/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ تا ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1121,7 +1121,7 @@ function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۲/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ بهمن تا ۳۱ اسفند ۱۳۹۳", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1234,7 +1234,7 @@ function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۴/۰۱/۳۱ - ۱۳۹۳/۱۱/۲۰", fmt.format(start, end));
+    assertEquals("‏۲۰ بهمن ۱۳۹۳ تا ۳۱ فروردین ۱۳۹۴", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({
@@ -1347,7 +1347,7 @@ function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۶/۰۱ - ۱۳۹۳/۱۱", fmt.format(start, end));
+    assertEquals("بهمن ۱۳۹۳ تا فروردین ۱۳۹۶", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearLong_fa_IR() {
     var fmt = new ilib.DateRngFmt({

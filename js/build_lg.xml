@@ -93,7 +93,7 @@ limitations under the License.
 
 	<taskdef name="jscomp"
 		classname="com.google.javascript.jscomp.ant.CompileTask"
-		classpath="${build.tools}/google-closure-compiler.r1918/compiler.jar"/>
+		classpath="${build.tools}/google-closure-compiler.r20150920/compiler.jar"/>
 
 	<target name="delete.tempdir" description="delete the temprary customlocaletemp directory">
 		<delete dir="${build.customlocaletemp}"/>

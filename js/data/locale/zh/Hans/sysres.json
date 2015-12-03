@@ -1,0 +1,18 @@
+{
+    "azh3": "中午",
+    "durationShortMinutes": "#{num}分钟",
+    "#{num}h": "#{num}小时",
+    "#{num}w": "#{num}周",
+    "durationShortMonths": "#{num}个月",
+    "1#1 mi|#{num} min": "#{num}分钟",
+    "durationMediumHours": "#{num}小时",
+    "1#1 mo|#{num} mos": "#{num}个月",
+    "1#1 min|#{num} min": "#{num}分钟",
+    "1#1 hr|#{num} hrs": "#{num}小时",
+    "1#1 wk|#{num} wks": "#{num}周",
+    "1#1 mon|#{num} mons": "#{num}个月",
+    "1#1 minute|#{num} minutes": "#{num}分钟",
+    "1#1 hour|#{num} hours": "#{num}小时",
+    "1#1 week|#{num} weeks": "#{num}周",
+    "1#1 month|#{num} months": "#{num}个月"
+}

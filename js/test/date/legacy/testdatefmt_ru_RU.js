@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011", fmt.format(date));
+	    assertEquals("29 сент. 2011 г.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ru_RU() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 сент. 2011", fmt.format(date));
+	    assertEquals("29 сентября 2011 г.", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_ru_RU() {
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 сентября 2011 г.", fmt.format(date));
+	    assertEquals("29 сентября 2011 г.", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_ru_RU() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11 13:45", fmt.format(date));
+	    assertEquals("29.09.11, 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ru_RU() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011 13:45", fmt.format(date));
+	    assertEquals("29 сент. 2011 г., 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ru_RU() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 сент. 2011 13:45", fmt.format(date));
+	    assertEquals("29 сентября 2011 г., 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ru_RU() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 сентября 2011 г. 13:45", fmt.format(date));
+	    assertEquals("29 сентября 2011 г., 13:45", fmt.format(date));
 }
 
 
@@ -449,7 +449,7 @@ function testDateFmtTypeDateTime_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11 13:45", fmt.format(date));
+	    assertEquals("29.09.11, 13:45", fmt.format(date));
 }
 
 
@@ -586,7 +586,7 @@ function testDateFmtShortDateComponentsWDM_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Ч, 29.09", fmt.format(date));
+	    assertEquals("чт, 29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ru_RU() {
@@ -603,7 +603,7 @@ function testDateFmtShortDateComponentsWDMY_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Ч, 29.09.11", fmt.format(date));
+	    assertEquals("чт, 29.09.11", fmt.format(date));
 }
 
 
@@ -689,7 +689,7 @@ function testDateFmtFullDateComponentsMY_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("сентября 2011 г.", fmt.format(date));
+	    assertEquals("сентябрь 2011 г.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ru_RU() {
@@ -706,7 +706,7 @@ function testDateFmtFullDateComponentsDMY_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 сентября 2011 г.", fmt.format(date));
+	    assertEquals("29 сентября 2011 г.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_ru_RU() {
@@ -740,7 +740,7 @@ function testDateFmtFullDateComponentsWDMY_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("четверг, 29 сентября 2011 г.", fmt.format(date));
+	    assertEquals("четверг, 29 сентября 2011 г.", fmt.format(date));
 }
 
 

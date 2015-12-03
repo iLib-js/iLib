@@ -38,7 +38,6 @@ Loader.prototype = new ilib.Loader();
 Loader.prototype.parent = ilib.Loader;
 Loader.prototype.constructor = Loader;
 
-/** @abstract */
 Loader.prototype._loadFile = function (pathname, sync, cb) {};
 
 Loader.prototype._exists = function(dir, file) {

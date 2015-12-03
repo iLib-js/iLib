@@ -39,7 +39,9 @@ public class JSONFile
 	public JSONFile(File root, File file, String baseName)
 	{
 		super(root, file);
-		this.baseName = baseName;
+		
+		// escape the base name to comply with Javascript identifier syntax
+		this.baseName = baseName.replaceAll("[-:\\+\\.\\(\\)\\\\]", "_");
 	}
 	
 	@Override

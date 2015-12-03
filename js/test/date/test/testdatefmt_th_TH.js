@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/2011", fmt.format(date));
+    assertEquals("29 ก.ย. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_th_TH() {
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ก.ย. 2011", fmt.format(date));
+    assertEquals("29 กันยายน 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_th_TH() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_th_TH() {
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/2011", fmt.format(date));
+    assertEquals("29 ก.ย. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_th_TH() {
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 ก.ย. 2011", fmt.format(date));
+    assertEquals("29 กันยายน 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_th_TH() {
@@ -228,7 +228,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 กันยายน 2011", fmt.format(date));
+    assertEquals("29 กันยายน 2011 13:45", fmt.format(date));
 }
 
 
@@ -436,7 +436,7 @@ function testDateFmtTypeDateTime_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 
@@ -488,7 +488,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ก", fmt.format(date));
+    assertEquals("ก.ย.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
@@ -573,7 +573,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พ 29/9", fmt.format(date));
+    assertEquals("พฤที่ 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
@@ -590,7 +590,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พ 29/9/54", fmt.format(date));
+    assertEquals("พฤที่ 29/9/54", fmt.format(date));
 }
 
 
@@ -710,7 +710,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("วันพฤหัสบดี 29 กันยายน", fmt.format(date));
+    assertEquals("วันพฤหัสบดีที่ 29 กันยายน", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_th_TH() {
@@ -727,7 +727,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("วันพฤหัสบดี 29 กันยายน 2554", fmt.format(date));
+    assertEquals("วันพฤหัสบดีที่ 29 กันยายน 2554", fmt.format(date));
 }
 
 
@@ -1567,3 +1567,411 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
     assertEquals("21 ปี ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
+
+function testDateFmtShortDMWY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmwy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤที่ 29/9/54", fmt.format(date));
+}
+
+function testDateFmtMediumDMWY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmwy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29 ก.ย. 2554", fmt.format(date));
+}
+
+function testDateFmtLongDMWY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmwy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29 กันยายน 2554", fmt.format(date));
+}
+
+function testDateFmtFullDMWY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmwy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("วันพฤหัสบดีที่ 29 กันยายน 2554", fmt.format(date));
+}
+
+function testDateFmtShortDMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29/9/11", fmt.format(date));
+}
+
+function testDateFmtMediumDMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 ก.ย. 2011", fmt.format(date));
+}
+
+function testDateFmtLongDMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 กันยายน 2011", fmt.format(date));
+}
+
+function testDateFmtFullDMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 กันยายน 2011", fmt.format(date));
+}
+
+function testDateFmtShortDMW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤที่ 29/9", fmt.format(date));
+}
+
+function testDateFmtMediumDMW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29 ก.ย.", fmt.format(date));
+}
+
+function testDateFmtLongDMW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29 กันยายน", fmt.format(date));
+}
+
+function testDateFmtFullDMW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("วันพฤหัสบดีที่ 29 กันยายน", fmt.format(date));
+}
+
+function testDateFmtShortDMW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dm"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29/9", fmt.format(date));
+}
+
+function testDateFmtMediumDM_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dm"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 ก.ย.", fmt.format(date));
+}
+
+function testDateFmtLongDM_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dm"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 กันยายน", fmt.format(date));
+}
+
+function testDateFmtFullDM_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("29 กันยายน", fmt.format(date));
+}
+
+function testDateFmtShortMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "my"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("9/54", fmt.format(date));
+}
+
+function testDateFmtMediumMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "my"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("ก.ย. 2554", fmt.format(date));
+}
+
+function testDateFmtLongMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "my"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("กันยายน 2554", fmt.format(date));
+}
+
+function testDateFmtFullMY_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("กันยายน 2554", fmt.format(date));
+}
+
+function testDateFmtShortDW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤที่ 29", fmt.format(date));
+}
+
+function testDateFmtMediumDW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29", fmt.format(date));
+}
+
+function testDateFmtLongDW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("พฤ.ที่ 29", fmt.format(date));
+}
+
+function testDateFmtFullDW_th_TH() {
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dw"});
+    assertNotNull(fmt);
+    
+    var date = new ThaiSolarDate({
+		locale: "th-TH",
+		year: 2554,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("วันพฤหัสบดีที่ 29", fmt.format(date));
+}

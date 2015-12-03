@@ -20,7 +20,7 @@
 
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
-function testDateRngFmtinRangeinDayShort() {
+function testDateRngFmtRangeinDayShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -42,9 +42,9 @@ function testDateRngFmtinRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం – 2:30 మధ్యాహ్నం 31/12/11", fmt.format(start, end));
+    assertEquals("1:45 [PM] – 2:30 [PM] 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayMedium() {
+function testDateRngFmtRangeinDayMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -66,9 +66,9 @@ function testDateRngFmtinRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం – 2:30 మధ్యాహ్నం 31 12 2011", fmt.format(start, end));
+    assertEquals("1:45 [PM] – 2:30 [PM] 31 డిసెం 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayLong() {
+function testDateRngFmtRangeinDayLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -90,9 +90,9 @@ function testDateRngFmtinRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం – 2:30 మధ్యాహ్నం 31, డిసెంబర్ 2011", fmt.format(start, end));
+    assertEquals("1:45 [PM] – 2:30 [PM] 31, డిసెంబర్ 2011", fmt.format(start, end));
 }
-function testDateRngFmtinRangeinDayFull() {
+function testDateRngFmtRangeinDayFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -114,10 +114,10 @@ function testDateRngFmtinRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం – 2:30 మధ్యాహ్నం 31 డిసెంబర్ 2011", fmt.format(start, end));
+    assertEquals("1:45 [PM] – 2:30 [PM] 31 డిసెంబర్ 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextDayShort() {
+function testDateRngFmtRangeNextDayShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -139,9 +139,9 @@ function testDateRngFmtinRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం 11–12–30 – 2:30 మధ్యాహ్నం 31", fmt.format(start, end));
+    assertEquals("1:45 [PM] 11–12–30 – 2:30 [PM] 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayMedium() {
+function testDateRngFmtRangeNextDayMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -163,9 +163,9 @@ function testDateRngFmtinRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం 2011–12–30 – 2:30 మధ్యాహ్నం 31", fmt.format(start, end));
+    assertEquals("1:45 [PM] 2011–డిసెం–30 – 2:30 [PM] 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayLong() {
+function testDateRngFmtRangeNextDayLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -187,9 +187,9 @@ function testDateRngFmtinRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం 2011–డిసెంబర్–30 – 2:30 మధ్యాహ్నం 31", fmt.format(start, end));
+    assertEquals("1:45 [PM] 2011–డిసెంబర్–30 – 2:30 [PM] 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextDayFull() {
+function testDateRngFmtRangeNextDayFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -211,10 +211,10 @@ function testDateRngFmtinRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 మధ్యాహ్నం 2011–డిసెంబర్–30 – 2:30 మధ్యాహ్నం 31", fmt.format(start, end));
+    assertEquals("1:45 [PM] 2011–డిసెంబర్–30 – 2:30 [PM] 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiDayShort() {
+function testDateRngFmtRangeMultiDayShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -238,7 +238,7 @@ function testDateRngFmtinRangeMultiDayShort() {
 	});
     assertEquals("11–12–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayMedium() {
+function testDateRngFmtRangeMultiDayMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -260,9 +260,9 @@ function testDateRngFmtinRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–12–20 – 31", fmt.format(start, end));
+    assertEquals("2011–డిసెం–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayLong() {
+function testDateRngFmtRangeMultiDayLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -286,7 +286,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 	});
     assertEquals("2011–డిసెంబర్–20 – 31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiDayFull() {
+function testDateRngFmtRangeMultiDayFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -311,7 +311,7 @@ function testDateRngFmtinRangeMultiDayFull() {
     assertEquals("2011–డిసెంబర్–20 – 31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextMonthShort() {
+function testDateRngFmtRangeNextMonthShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -335,7 +335,7 @@ function testDateRngFmtinRangeNextMonthShort() {
 	});
     assertEquals("11–11–20 – 12–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthMedium() {
+function testDateRngFmtRangeNextMonthMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -357,9 +357,9 @@ function testDateRngFmtinRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11–20 – 12–31", fmt.format(start, end));
+    assertEquals("2011–నవం–20 – డిసెం–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthLong() {
+function testDateRngFmtRangeNextMonthLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -383,7 +383,7 @@ function testDateRngFmtinRangeNextMonthLong() {
 	});
     assertEquals("2011–నవంబర్–20 – డిసెంబర్–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextMonthFull() {
+function testDateRngFmtRangeNextMonthFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -408,7 +408,7 @@ function testDateRngFmtinRangeNextMonthFull() {
     assertEquals("2011–నవంబర్–20 – డిసెంబర్–31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeNextYearShort() {
+function testDateRngFmtRangeNextYearShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -432,7 +432,7 @@ function testDateRngFmtinRangeNextYearShort() {
 	});
     assertEquals("11–11–20 – 12–01–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearMedium() {
+function testDateRngFmtRangeNextYearMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -454,9 +454,9 @@ function testDateRngFmtinRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11–20 – 2012–01–31", fmt.format(start, end));
+    assertEquals("2011–నవం–20 – 2012–జన–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearLong() {
+function testDateRngFmtRangeNextYearLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -478,9 +478,9 @@ function testDateRngFmtinRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–నవంబర్–20 – 2012–జన–31", fmt.format(start, end));
+    assertEquals("2011–నవంబర్–20 – 2012–జనవరి–31", fmt.format(start, end));
 }
-function testDateRngFmtinRangeNextYearFull() {
+function testDateRngFmtRangeNextYearFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -505,7 +505,7 @@ function testDateRngFmtinRangeNextYearFull() {
     assertEquals("2011–నవంబర్–20 – 2012–జనవరి–31", fmt.format(start, end));
 }
 
-function testDateRngFmtinRangeMultiYearShort() {
+function testDateRngFmtRangeMultiYearShort_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
     assertNotNull(fmt);
     
@@ -529,7 +529,7 @@ function testDateRngFmtinRangeMultiYearShort() {
 	});
     assertEquals("11/11 – 01/14", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearMedium() {
+function testDateRngFmtRangeMultiYearMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
     assertNotNull(fmt);
     
@@ -551,9 +551,9 @@ function testDateRngFmtinRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
+    assertEquals("నవం/2011 – జన/2014", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearLong() {
+function testDateRngFmtRangeMultiYearLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
     assertNotNull(fmt);
     
@@ -575,9 +575,9 @@ function testDateRngFmtinRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("నవంబర్ 2011 – జన 2014", fmt.format(start, end));
+    assertEquals("నవంబర్ 2011 – జనవరి 2014", fmt.format(start, end));
 }
-function testDateRngFmtinRangeMultiYearFull() {
+function testDateRngFmtRangeMultiYearFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -601,7 +601,7 @@ function testDateRngFmtinRangeMultiYearFull() {
 	});
     assertEquals("నవంబర్ 2011 – జనవరి 2014", fmt.format(start, end));
 }
-function testDateRngFmtinManyYearsFull() {
+function testDateRngFmtManyYearsFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
     assertNotNull(fmt);
     

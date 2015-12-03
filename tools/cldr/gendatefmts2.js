@@ -89,12 +89,19 @@ util.print("\n\n");
 util.print("sysres.json: ");
 aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
 
-/*
 util.print("\n\nMerging formats forward ...\n");
 
+// root is a special case -- if a calendar names another calendar, then it shares the formats with that
+// calendar. Need to copy the formats over in that case, or else the merge will not work correctly.
+for (var cal in dateFormats) {
+	if (typeof(dateFormats[cal]) === "string" && typeof(dateFormats[dateFormats[cal]]) === "object") {
+		dateFormats[cal] = dateFormats[dateFormats[cal]];
+	} 
+}
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
-*/
+
+// util.print("en-CA before cldr and merge is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 util.print("\n\nReading CLDR data ...\n");
 
@@ -102,10 +109,18 @@ var dir = path.join(cldrDirName, "main");
 var list = fs.readdirSync(dir);
 // var list = ["as"];
 
+// these locales have the wrong data in CLDR and need to be skipped for now
+var skipList = ["en-CA"];
+
 list.forEach(function (file) {
 	var locale = file ? new Locale(file) : undefined;
 	if (locale.getVariant()) {
 		// ignore locales with variants for now
+		return;
+	}
+	
+	if (skipList.indexOf(file) > -1) {
+		// skip these, as the CLDR data has problems
 		return;
 	}
 	
@@ -127,12 +142,12 @@ list.forEach(function (file) {
 		if (language === "fa") {
 			// add the settings for the persian calendar as well
 			cal = aux.loadFile(path.join(sourcePath, "ca-persian.json"));
-			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -140,12 +155,12 @@ list.forEach(function (file) {
 		} else if (language === "am") {
 			// add the settings for the ethiopic calendar as well
 			cal = aux.loadFile(path.join(sourcePath, "ca-ethiopic.json"));
-			newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+			newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			var group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -155,12 +170,12 @@ list.forEach(function (file) {
 			var cals = cal.main[file].dates.calendars;
 			cals.thaisolar = cals.gregorian;
 			// util.print("cals is " + JSON.stringify(cals, undefined, 4) + "\n");
-			newFormats = aux.createDateFormats(cals);
+			newFormats = aux.createDateFormats(language, script, cals);
 
 			group = aux.getFormatGroup(dateFormats, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
 			
-			newFormats = aux.createSystemResources(cals);
+			newFormats = aux.createSystemResources(cals, language);
 			// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 			group = aux.getFormatGroup(systemResources, localeComponents);
 			group.data = merge(group.data || {}, newFormats);
@@ -168,12 +183,12 @@ list.forEach(function (file) {
 		
 		// do regular gregorian for all locales
 		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-		newFormats = aux.createDateFormats(cal.main[file].dates.calendars);
+		newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
 		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(dateFormats, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
 		
-		newFormats = aux.createSystemResources(cal.main[file].dates.calendars);
+		newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
 		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
@@ -188,16 +203,18 @@ util.print("\n\nMerging formats forward ...\n");
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
+// util.print("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
+
 util.print("\n\nPromoting sublocales ...\n");
 
 for (var language in dateFormats) {
 	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(dateFormats[language]);
+		aux.promoteFormats(dateFormats[language], language, "dateformats.json");
 	}
 }
 for (var language in systemResources) {
 	if (language !== "und" && language !== "data") {
-		aux.promoteFormats(systemResources[language]);
+		aux.promoteFormats(systemResources[language], language, "sysres.json");
 	}
 }
 

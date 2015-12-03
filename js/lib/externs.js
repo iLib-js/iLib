@@ -19,8 +19,6 @@
 
 // !dependencies: false
 
-function console(str){};
-function JSON(str){};
 console.log = function (str){};
-var PalmSystem, require, module, environment, exports, global, Intl, Qt;
+var PalmSystem, require, module, environment, exports, global, Qt, Buffer;
 var process = {env: {LANG: "", LANGUAGE: "", LC_ALL:""}};

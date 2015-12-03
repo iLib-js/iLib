@@ -71,6 +71,25 @@ fs.exists(targetdir, function (exists) {
 util.print("source dir: " + sourcedir + "\n");
 util.print("target dir: " + targetdir + "\n");
 
+//escape some of these Unicode characters because Google Closure Compiler doesn't like them
+function escape(str) {
+	var output = "";
+	
+	for (var i = 0; i < str.length; i++) {
+		var ch = str.charAt(i);
+		var c = str.charCodeAt(i);
+		if ((c >= 0x2028 && c <= 0x2030) ||  // punct
+			(c >= 0xDC00 && c <= 0xDFFF) ||  // high surrogates
+			(c >= 0xD800 && c <= 0xDB7F)) {  // low surrogates
+			output += "\\u" + common.toHexString(ch);
+		} else {
+			output += ch;
+		}
+	}
+	
+	return output;
+}
+
 function walk(root, dir) {
 	var results = [];
 	var list = fs.readdirSync(path.join(root, dir));
@@ -99,7 +118,7 @@ function walk(root, dir) {
 						common.makeDirs(targetDir);
 						
 						//util.print("writing file " + targetPath + "\n");
-						fs.writeFileSync(targetPath, JSON.stringify(obj), 'utf8');
+						fs.writeFileSync(targetPath, escape(JSON.stringify(obj)), 'utf8');
 					}
 				} catch (err) {
 					util.print("File " + sourcePath + " is not readable or does not contain valid JSON.\n");

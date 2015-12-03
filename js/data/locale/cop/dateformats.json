@@ -13,7 +13,7 @@
                 "m": "‏d MMM yyyy",
                 "l": "‏d MMMM، yyyy",
                 "f": "‏d MMMM، yyyy"
-             },
+            },
             "my": {
                 "s": "‏MM/yyyy",
                 "m": "MMM، yy",
@@ -74,7 +74,6 @@
                 "hm": "h:mm",
                 "hmz": "h:mm z",
                 "ah": "h a",
-                "hm": "h:mm",
                 "ms": "mm:ss",
                 "h": "h",
                 "m": "mm",

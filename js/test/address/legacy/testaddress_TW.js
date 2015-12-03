@@ -54,7 +54,7 @@ function testParseAddressTWTWLatinNoCountry() {
 };
 
 function testParseAddressTWTWAsianNormal() {
-	var parsedAddress = new ilib.Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
+	var parsedAddress = new ilib.Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressTWTWAsianNormal() {
 };
 
 function testParseAddressTWTWAsianNoZip() {
-	var parsedAddress = new ilib.Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-TW'});
+	var parsedAddress = new ilib.Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("南港區經貿二路66號10樓", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressTWTWAsianNoZip() {
 };
 
 function testParseAddressTWTWAsianNoCountry() {
-	var parsedAddress = new ilib.Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-TW'});
+	var parsedAddress = new ilib.Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路 6 號 26 樓", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressTWTWAsianNoCountry() {
 };
 
 function testParseAddressTWTWAsianWithRegion() {
-	var parsedAddress = new ilib.Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
+	var parsedAddress = new ilib.Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressTWTWAsianWithRegion() {
 };
 
 function testParseAddressTWTWAsianZipAtEnd() {
-	var parsedAddress = new ilib.Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-TW'});
+	var parsedAddress = new ilib.Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
@@ -212,10 +212,10 @@ function testFormatAddressTWTWAsian() {
 		country: "中華民國",
 		countryCode: "TW",
 		format: "asian"
-	}, {locale: 'zh-TW'});
+	}, {locale: 'zh-Hant-TW'});
 	
 	var expected = "中華民國\n台灣省高雄市苓雅區四維三路6號18樓A80212";
-	var formatter = new ilib.AddressFmt({locale: 'zh-TW'});
+	var formatter = new ilib.AddressFmt({locale: 'zh-Hant-TW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

@@ -28,7 +28,14 @@ function suite() {
     
     var suites = [
 	    "testtoupper.js",
-	    "testtolower.js"
+	    "testtolower.js",
+	    "testcharmap.js",
+	    "testcm_ISO-8859-1.js",
+	    "testcm_UTF-16.js",
+	    "testcm_UTF-8.js",
+	    "testcm_CN.js",
+	    "testcm_JP.js",
+	    "testcm_KR.js"
 	];
 
     suites.forEach(function (path) {
@@ -37,4 +44,3 @@ function suite() {
     
     return s;
 }
-
