@@ -24,9 +24,9 @@
 # i.e) ../../enyo/tools/lessc.sh package.js
 
 
-java -jar ../../tools/google-closure-compiler.r1918/compiler.jar --js source/app.js --js_output_file source/app-compiled.js
+java -jar ../../tools/google-closure-compiler.r20150920/compiler.jar --js source/app.js --js_output_file source/app-compiled.js
 
-java -jar ../../tools/google-closure-compiler.r1918/compiler.jar --js localePage/scripts/localeScript.js --js_output_file localePage/scripts/localeScript-compiled.js
+java -jar ../../tools/google-closure-compiler.r20150920/compiler.jar --js localePage/scripts/localeScript.js --js_output_file localePage/scripts/localeScript-compiled.js
 
 echo -e "Minifying sources...... : done."
 
