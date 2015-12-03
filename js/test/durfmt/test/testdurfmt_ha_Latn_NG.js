@@ -74,7 +74,7 @@ function testDurFmtHAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1y 1m 1w 1d 1:01:01", duration.toString());
+    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
 };
 
 function testDurFmtHAFormatMedium() {
@@ -180,7 +180,7 @@ function testDurFmtHAFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1y 1m 1w 1d 1:01:01", duration.toString());
+    	    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });

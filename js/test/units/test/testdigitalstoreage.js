@@ -86,11 +86,11 @@ function testDSScale1() {
 		unit: "bit",
 		amount: 1024
 	});
-        
-        m = m.scale();
-        
-        assertEquals(1,m.amount);
-        assertEquals("kilobit",m.unit);
+
+	m = m.scale();
+
+	assertEquals(1,m.amount);
+	assertEquals("kilobit",m.unit);
 }
 
 function testDSScale2() {
@@ -98,11 +98,12 @@ function testDSScale2() {
 		unit: "kilobit",
 		amount: 0.125
 	});
-        
-        m = m.scale();
-        
-        assertEquals(16,m.amount);
-        assertEquals("byte",m.unit);
+
+	m = m.scale();
+
+	// stays in the bit system
+	assertEquals(128,m.amount);
+	assertEquals("bit",m.unit);
 }
 
 function testDSScale3() {
@@ -110,11 +111,12 @@ function testDSScale3() {
 		unit: "bit",
 		amount: 1048576000
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(125, m.amount, 0.1);
-        assertEquals("megabyte",m.unit);
+
+	m = m.scale();
+
+	// stays in the bit system
+	assertRoughlyEquals(1000, m.amount, 0.1);
+	assertEquals("megabit",m.unit);
 }
 
 function testDSScale4() {
@@ -122,11 +124,11 @@ function testDSScale4() {
 		unit: "kilobit",
 		amount: 10000000
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(1.192, m.amount, 0.001);
-        assertEquals("gigabyte",m.unit);
+
+	m = m.scale();
+
+	assertRoughlyEquals(9.536743163, m.amount, 0.001);
+	assertEquals("gigabit",m.unit);
 }
 
 function testDSScale5() {
@@ -134,11 +136,11 @@ function testDSScale5() {
 		unit: "petabyte",
 		amount: 9.3132e-8
 	});
-        
-        m = m.scale();
-        
-        assertRoughlyEquals(100, m.amount, 0.001);
-        assertEquals("megabyte",m.unit);
+
+	m = m.scale();
+
+	assertRoughlyEquals(100, m.amount, 0.001);
+	assertEquals("megabyte",m.unit);
 }
 
 function testDSScale6() {
@@ -146,47 +148,101 @@ function testDSScale6() {
 		unit: "MB",
 		amount: 100
 	});
-        
-        m = m.scale();
-        
-        assertEquals(100, m.amount);
-        assertEquals("megabyte",m.unit);
+
+	m = m.scale();
+
+	assertEquals(100, m.amount);
+	assertEquals("megabyte",m.unit);
+}
+
+function testDSScale7() {
+	// This test case is the most likely scenario. That is, the OS will 
+	// give you bytes, and it is up to the autoscaler to scale to the 
+	// right size
+	var m = new DigitalStorageUnit({
+		unit: "byte",
+		amount: 1200
+	});
+
+	m = m.scale();
+
+	assertEquals(1.171875, m.amount);
+	assertEquals("kilobyte",m.unit);
+}
+
+function testDSScale8() {
+	// This test case is the most likely scenario. That is, the OS will 
+	// give you bytes, and it is up to the autoscaler to scale to the 
+	// right size
+	var m = new DigitalStorageUnit({
+		unit: "byte",
+		amount: 123456789
+	});
+
+	m = m.scale();
+
+	assertRoughlyEquals(117.73756885528564, m.amount, 0.000000001);
+	assertEquals("megabyte",m.unit);
+}
+
+function testDSScaleScaleDown() {
+	var m = new DigitalStorageUnit({
+		unit: "megabyte",
+		amount: 0.002
+	});
+
+	m = m.scale();
+
+	assertEquals(2.048, m.amount);
+	assertEquals("kilobyte",m.unit);
+}
+
+function testDSScaleNoScale() {
+	var m = new DigitalStorageUnit({
+		unit: "byte",
+		amount: 123
+	});
+
+	m = m.scale();
+
+	assertEquals(123, m.amount);
+	assertEquals("byte",m.unit);
 }
 
 function testDSaLocalize1() {
-    var m = new DigitalStorageUnit({
-        unit: "petaByte",
-        amount: 1000
-    });
+	var m = new DigitalStorageUnit({
+		unit: "petaByte",
+		amount: 1000
+	});
 
-    m = m.localize("en-IN");
+	m = m.localize("en-IN");
 
-    assertRoughlyEquals(1000, m.amount, 0.01);
-    assertEquals("petabyte", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.01);
+	assertEquals("petabyte", m.unit);
 }
 
 function testDSLocalize2() {
-    var m = new DigitalStorageUnit({
-        unit: "Kilobit",
-        amount: 1000
-    });
+	var m = new DigitalStorageUnit({
+		unit: "Kilobit",
+		amount: 1000
+	});
 
-    m = m.localize("en-US");
+	m = m.localize("en-US");
 
-    assertRoughlyEquals(1000, m.amount, 0.001);
-    assertEquals("kilobit", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.001);
+	assertEquals("kilobit", m.unit);
 }
 
 function testDSLocalize3() {
-    var m = new DigitalStorageUnit({
-        unit: "Mb",
-        amount: 1000
-    });
+	var m = new DigitalStorageUnit({
+		unit: "Mb",
+		amount: 1000
+	});
 
-    m = m.localize("en-US");
+	m = m.localize("en-US");
 
-    assertRoughlyEquals(1000, m.amount, 0.001);
-    assertEquals("megabit", m.unit);
+	assertRoughlyEquals(1000, m.amount, 0.001);
+	assertEquals("megabit", m.unit);
 }
 function testDSGetMeasures() {
 	var measures = DigitalStorageUnit.getMeasures();

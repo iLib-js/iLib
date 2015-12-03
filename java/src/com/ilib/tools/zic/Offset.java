@@ -248,7 +248,11 @@ public class Offset
             Rule startRule = null, endRule = null;
             for ( i = 0; i < rulesList.size(); i++ ) {
             	rule = rulesList.get(i);
-            	if ( rule.getStartYear() <= year && year <= rule.getEndYear() ) {
+            	// check year-1 against the end year to take care of the 
+            	// southern hemisphere where the end rule happens before 
+            	// the start rule each year, so the start rule corresponding
+            	// to this year's end rule was in the year previous (year-1)
+            	if ( rule.getStartYear() <= year && year-1 <= rule.getEndYear() ) {
             		// found an applicable rule
             		if ( rule.hasSavings() ) {
             			startRule = rule;

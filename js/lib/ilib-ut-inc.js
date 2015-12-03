@@ -103,4 +103,17 @@ AreaUnit.js
 FuelConsumptionUnit.js
 VolumeUnit.js	
 EnergyUnit.js
+Charset.js
+*/
+
+/* !data
+charset/ISO-10646-UCS-2
+charset/UTF-16BE
+charset/UTF-16
+charset/UTF-16LE
+charset/UTF-8
+charset/ISO-8859-1
+charset/EUC-JP
+charset/Shift_JIS
+charset/ISO-8859-15
 */

@@ -1683,7 +1683,6 @@ function testDurFmtKOFormatShortClockAsync() {
     assertTrue(callbackCalled);
 };
 
-/*
 function testDurFmtKUAsyncWithLocale() {
 	var callbackCalled = false;
     new DurationFmt({
@@ -1735,7 +1734,6 @@ function testDurFmtKUFormatShortClockAsync() {
     });
     assertTrue(callbackCalled);
 };
-*/
 
 //test cases for lt-LT
 
@@ -1901,7 +1899,6 @@ function testDurFmtMKFormatShortClockAsync() {
 
 //test cases for mn-Cyrl-MN
 
-/*
 function testDurFmtMNAsyncWithLocale() {
 	var callbackCalled = false;
     new DurationFmt({
@@ -1953,7 +1950,6 @@ function testDurFmtMNFormatShortClockAsync() {
     });
     assertTrue(callbackCalled);
 };
-*/
 
 //test cases for ms-MY
 
@@ -2575,7 +2571,6 @@ function testDurFmtUKUAFormatShortClockAsync() {
 };
 
 //test cases for uz-Cyrl-UZ
-/*
 function testDurFmtUZAsyncWithLocale() {
 	var callbackCalled = false;
     new DurationFmt({
@@ -2679,7 +2674,6 @@ function testDurFmtUZLATNFormatShortClockAsync() {
     });
     assertTrue(callbackCalled);
 };
-*/
 
 function testDurFmtVIAsyncWithLocale() {
 	var callbackCalled = false;

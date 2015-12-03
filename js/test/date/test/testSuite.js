@@ -29,6 +29,7 @@ function suite() {
     var s = new TestSuite();
     
     var suites = [
+		"testdatefmt.js",
 		"testdatefmt_af_NA.js",
 		"testdatefmt_af_ZA.js",
         "testdatefmt_am_ET.js",

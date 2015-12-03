@@ -486,7 +486,7 @@ function testDateFmtShortDateComponentsN_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+	    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_bs_Latn_BA() {
@@ -520,7 +520,7 @@ function testDateFmtShortDateComponentsDM_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.", fmt.format(date));
+	    assertEquals("29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_bs_Latn_BA() {
@@ -571,7 +571,7 @@ function testDateFmtShortDateComponentsWDM_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 29.09.", fmt.format(date));
+	    assertEquals("Č, 29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_bs_Latn_BA() {
@@ -588,7 +588,7 @@ function testDateFmtShortDateComponentsWDMY_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 29.09.11.", fmt.format(date));
+	    assertEquals("Č, 29.09.11.", fmt.format(date));
 }
 
 

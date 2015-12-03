@@ -603,7 +603,7 @@ function tCOSTDateFmtFullDateComponentsY_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 d.C.", fmt.format(date));
+	    assertEquals("2011", fmt.format(date));
 }
 
 function tCOSTDateFmtFullDateComponentsM_es_CO() {

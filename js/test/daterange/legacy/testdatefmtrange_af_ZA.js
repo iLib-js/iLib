@@ -160,7 +160,7 @@ function testDateRngFmtAFRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Des 2011", fmt.format(start, end));
+    assertEquals("1:45 nm. 30 Des – 2:30 nm. 31 Des 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "af-ZA", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtAFRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("1:45 nm. 30 Desember – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "af-ZA", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtAFRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 nm. 30 – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
+    assertEquals("1:45 nm. 30 Desember – 2:30 nm. 31 Desember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAFRangeMultiDayShort() {

@@ -39,7 +39,7 @@ function testDateFmtSimpleShort_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11.", fmt.format(date));
+	    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_lv_LV() {
@@ -56,7 +56,7 @@ function testDateFmtSimpleMedium_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. gada 29. sept.", fmt.format(date));
+	    assertEquals("2011. gada 29. sept.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_lv_LV() {
@@ -73,7 +73,7 @@ function testDateFmtSimpleLong_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. g. 29. sept.", fmt.format(date));
+	    assertEquals("2011. gada 29. septembris", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_lv_LV() {
@@ -175,7 +175,7 @@ function testDateFmtDateTimeSimpleShort_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11.", fmt.format(date));
+	    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_lv_LV() {
@@ -192,7 +192,7 @@ function testDateFmtDateTimeSimpleMedium_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11. gada 29. sept.", fmt.format(date));
+	    assertEquals("2011. gada 29. sept. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_lv_LV() {
@@ -209,7 +209,7 @@ function testDateFmtDateTimeSimpleLong_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011. g. 29. sept.", fmt.format(date));
+	    assertEquals("2011. gada 29. septembris 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_lv_LV() {
@@ -226,7 +226,7 @@ function testDateFmtDateTimeSimpleFull_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011. gada 29. septembris", fmt.format(date));
+	    assertEquals("2011. gada 29. septembris 13:45", fmt.format(date));
 }
 
 
@@ -399,7 +399,7 @@ function testDateFmtTypeDate_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11.", fmt.format(date));
+	    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtTypeTime_lv_LV() {
@@ -433,7 +433,7 @@ function testDateFmtTypeDateTime_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11.", fmt.format(date));
+	    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 
@@ -519,7 +519,7 @@ function testDateFmtShortDateComponentsDM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.", fmt.format(date));
+	    assertEquals("29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_lv_LV() {
@@ -536,7 +536,7 @@ function testDateFmtShortDateComponentsMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.11.", fmt.format(date));
+	    assertEquals("09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_lv_LV() {
@@ -553,7 +553,7 @@ function testDateFmtShortDateComponentsDMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11.", fmt.format(date));
+	    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_lv_LV() {
@@ -570,7 +570,7 @@ function testDateFmtShortDateComponentsWDM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("C, 29.09.", fmt.format(date));
+	    assertEquals("C, 29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_lv_LV() {
@@ -587,7 +587,7 @@ function testDateFmtShortDateComponentsWDMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("C, 29.9.11.", fmt.format(date));
+	    assertEquals("C, 29.09.11", fmt.format(date));
 }
 
 
@@ -673,7 +673,7 @@ function testDateFmtFullDateComponentsMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. g. septembris", fmt.format(date));
+	    assertEquals("2011. gada Septembris", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_lv_LV() {
@@ -707,7 +707,7 @@ function testDateFmtFullDateComponentsWDM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ceturtdiena, 29. sept.", fmt.format(date));
+	    assertEquals("ceturtdiena, 29. septembris", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_lv_LV() {
@@ -724,7 +724,7 @@ function testDateFmtFullDateComponentsWDMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ceturtdiena, 2011. g. 29. sept.", fmt.format(date));
+	    assertEquals("ceturtdiena, 2011. gada 29. septembris", fmt.format(date));
 }
 
 

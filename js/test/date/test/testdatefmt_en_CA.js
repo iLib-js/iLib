@@ -469,7 +469,7 @@ function testDateFmtenCAShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsM() {
@@ -486,7 +486,7 @@ function testDateFmtenCAShortDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsN() {
@@ -554,7 +554,7 @@ function testDateFmtenCAShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("09/2011", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsDMY() {

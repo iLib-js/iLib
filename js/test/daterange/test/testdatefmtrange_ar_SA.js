@@ -41,7 +41,7 @@ function testDateRngFmtSARangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١/١٢/١١", fmt.format(start, end));
+    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -138,7 +138,7 @@ function testDateRngFmtSARangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ٣٠/١٢/١١ – ‏٢:٣٠ م ٣١/١٢/١١", fmt.format(start, end));
+    assertEquals("‏١:٤٥ م ٣٠/١٢/٢٠١١ – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -235,7 +235,7 @@ function testDateRngFmtSARangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١٢/١١ – ٣١/١٢/١١", fmt.format(start, end));
+    assertEquals("‏٢٠/١٢/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -332,7 +332,7 @@ function testDateRngFmtSARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/١١ – ٣١/١٢/١١", fmt.format(start, end));
+    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -429,7 +429,7 @@ function testDateRngFmtSARangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/١١ – ٣١/٠١/١٢", fmt.format(start, end));
+    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/١/٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -526,7 +526,7 @@ function testDateRngFmtSARangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١١/١١ – ٠١/١٤", fmt.format(start, end));
+    assertEquals("‏١١/٢٠١١ – ١/٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});

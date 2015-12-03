@@ -1,0 +1,72 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "yyyy/M/d E کونی",
+                "m": "d MMM yyyy EE کونی",
+                "l": "d نچی MMMM yyyy EEE کونی",
+                "f": "yyyy نچی ییل d نچی MMMM EEEE کونی"
+            },
+            "dmy": {
+                "s": "yyyy/M/d",
+                "m": "d MMM yyyy",
+                "l": "d نچی MMMM yyyy",
+                "f": "yyyy نچی ییل d نچی MMMM"
+            },
+            "dmw": {
+                "s": "M/d E کونی",
+                "m": "d MMM EE کونی",
+                "l": "d نچی MMMM EEE کونی",
+                "f": "d نچی MMMM EEEE کونی"
+            },
+            "dm": {
+                "s": "M/d",
+                "m": "d MMM",
+                "l": "d نچی MMMM",
+                "f": "d نچی MMMM"
+            },
+            "my": {
+                "s": "yyyy/M",
+                "m": "MMM yyyy",
+                "l": "MMMM yyyy",
+                "f": "yyyy نچی ییل MMMM"
+            },
+            "dw": {
+                "s": "d E کونی",
+                "m": "d EE کونی",
+                "l": "d نچی EEE کونی",
+                "f": "d نچی EEEE کونی"
+            },
+            "d": {
+                "s": "d",
+                "f": "d"
+            },
+            "m": {
+                "s": "M"
+            },
+            "y": {
+                "s": "yyyy"
+            }
+        },
+        "time": {
+            "12": {
+                "ahmsz": "h:mm:ss a (z)",
+                "hmsz": "h:mm:ss (z)",
+                "ahmz": "h:mm a (z)",
+                "hmz": "h:mm (z)"
+            },
+            "24": {
+                "ahmsz": "H:mm:ss (z)",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss (z)",
+                "hms": "H:mm:ss",
+                "ahmz": "H:mm (z)",
+                "ahm": "H:mm",
+                "hmz": "H:mm (z)",
+                "ah": "H",
+                "hm": "H:mm",
+                "h": "H"
+            }
+        }
+    }
+}

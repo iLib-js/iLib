@@ -382,28 +382,28 @@ function testDateFmtGetTemplateLength() {
     var fmt = new ilib.DateFmt({length: "long"});
     assertNotNull(fmt);
     
-    assertEquals("MMM d, yyyy", fmt.getTemplate());
+    assertEquals("MMMM d, yyyy", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTypeDateTime() {
     var fmt = new ilib.DateFmt({type: "datetime"});
     assertNotNull(fmt);
     
-    assertEquals("M/d/yy h:mma", fmt.getTemplate());
+    assertEquals("M/d/yy, h:mm a", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTypeTime() {
     var fmt = new ilib.DateFmt({type: "time"});
     assertNotNull(fmt);
     
-    assertEquals("h:mma", fmt.getTemplate());
+    assertEquals("h:mm a", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateDateComponents() {
     var fmt = new ilib.DateFmt({date: "wdm"});
     assertNotNull(fmt);
     
-    assertEquals("EE, M/d", fmt.getTemplate());
+    assertEquals("E, M/d", fmt.getTemplate());
 };
 
 function testDateFmtGetTemplateTimeComponents() {
@@ -417,156 +417,7 @@ function testDateFmtGetTemplateTypeTime24() {
     var fmt = new ilib.DateFmt({type: "time", clock: "24"});
     assertNotNull(fmt);
     
-    assertEquals("H:mm", fmt.getTemplate());
-};
-
-function testDateFmtPad2lt10() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("01", fmt._pad(1, 2));
-};
-
-function testDateFmtPad2lt0() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-01", fmt._pad(-1, 2));
-};
-
-function testDateFmtPad2gt10() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("11", fmt._pad(11, 2));
-};
-
-function testDateFmtPad2ltMinus10() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-11", fmt._pad(-11, 2));
-};
-
-function testDateFmtPad2gt100() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("111", fmt._pad(111, 2));
-};
-
-function testDateFmtPad2ltMinus100() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-111", fmt._pad(-111, 2));
-};
-
-function testDateFmtPad0() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("1", fmt._pad(1, 0));
-    assertEquals("10", fmt._pad(10, 0));
-};
-
-function testDateFmtPad0Neg() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-1", fmt._pad(-1, 0));
-    assertEquals("-10", fmt._pad(-10, 0));
-};
-
-function testDateFmtPad4_1() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("0006", fmt._pad(6, 4));
-};
-
-function testDateFmtPad4_2() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("0067", fmt._pad(67, 4));
-};
-
-function testDateFmtPad4_3() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("0679", fmt._pad(679, 4));
-};
-
-function testDateFmtPad4_4() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("6792", fmt._pad(6792, 4));
-};
-
-function testDateFmtPad4_5() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("67925", fmt._pad(67925, 4));
-};
-
-function testDateFmtPad4_6() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-0001", fmt._pad(-1, 4));
-};
-
-function testDateFmtPad4_7() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-0010", fmt._pad(-10, 4));
-};
-
-function testDateFmtPad4_8() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-0112", fmt._pad(-112, 4));
-};
-
-function testDateFmtPad4_9() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-1123", fmt._pad(-1123, 4));
-};
-
-function testDateFmtPad4_10() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("-11233", fmt._pad(-11233, 4));
-};
-
-function testDateFmtPad2lt10String() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("01", fmt._pad("1", 2));
-};
-
-function testDateFmtPad2gt10String() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("11", fmt._pad("11", 2));
-};
-
-function testDateFmtPad2gt100String() {
-    var fmt = new ilib.DateFmt();
-    assertNotNull(fmt);
-    
-    assertEquals("111", fmt._pad("111", 2));
+    assertEquals("HH:mm", fmt.getTemplate());
 };
 
 function testDateFmtTokenizeSimple() {
@@ -674,7 +525,7 @@ function testDateFmtFormatJSDate1() {
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
     var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
-    assertEquals("1:37pm", fmt.format(datMyBday));
+    assertEquals("1:37 PM", fmt.format(datMyBday));
 };
 
 function testDateFmtFormatJSDateRightTimeZone1() {
@@ -751,7 +602,7 @@ function testDateFmtFormatJSDate2() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    assertEquals("1:37pm", fmt.format(398119055000));
+    assertEquals("1:37 PM", fmt.format(398119055000));
 };
 
 function testDateFmtFormatJSDateRightTimeZone5() {
@@ -782,7 +633,7 @@ function testDateFmtFormatJSDate3() {
     
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
-    assertEquals("1:37pm", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700"));
+    assertEquals("1:37 PM", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700"));
 };
 
 function testDateFmtFormatJSDateRightTimeZone6() {
@@ -2110,7 +1961,7 @@ function testDateFmtConvertToGMT() {
 		locale: "en-US"
 	});
     
-    assertEquals("20/9/11 21:45 GMT/BST", fmt.format(date));
+    assertEquals("20/09/2011 21:45 GMT/BST", fmt.format(date));
 };
 
 function testDateFmtConvertToOtherTimeZone() {
@@ -2135,7 +1986,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/9/11 6:45AM AEST", fmt.format(date));
+    assertEquals("21/09/2011 6:45am AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
@@ -2243,7 +2094,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -2267,7 +2118,7 @@ function testDateFmtenPH() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday, September 20, 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtenPK() {
@@ -2291,7 +2142,7 @@ function testDateFmtenPK() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
 };
 
 function testDateFmtenAU() {
@@ -2315,7 +2166,7 @@ function testDateFmtenAU() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45pm", fmt.format(date));
 };
 
 function testDateFmtenZA() {
@@ -2339,7 +2190,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtesES() {
@@ -2387,7 +2238,7 @@ function testDateFmtesMX() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011 13:45", fmt.format(date));
 };
 
 function testDateFmtesAR() {
@@ -2411,7 +2262,7 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de septiembre de 2011, 13h45", fmt.format(date));
+    assertEquals("martes, 20 de setiembre de 2011, 1:45 p. m.", fmt.format(date));
 };
 
 function testDateFmttrTR() {
@@ -2435,7 +2286,7 @@ function testDateFmttrTR() {
 		millisecond: 0
 	});
     
-    assertEquals("20 eylül 2011 Salı 13:45", fmt.format(date));
+    assertEquals("20 Eylül 2011 Salı 13:45", fmt.format(date));
 };
 
 function testDateFmttrSV() {
@@ -2459,7 +2310,7 @@ function testDateFmttrSV() {
 		millisecond: 0
 	});
     
-    assertEquals("torsdag, 2011 oktober 20 13:45", fmt.format(date));
+    assertEquals("torsdag 20 oktober 2011 13:45", fmt.format(date));
 };
 
 function testDateFmttrNO() {
@@ -2642,7 +2493,7 @@ function testDateFmtTransitionToDSTRightBefore() {
 		unixtime: 1394359140000 // this is 3/9/2014 at 1:59am
 	});
     
-    assertEquals("1:59am PST", fmt.format(date));
+    assertEquals("1:59 AM PST", fmt.format(date));
 };
 
 function testDateFmtTransitionToDSTRightAfter() {
@@ -2660,7 +2511,7 @@ function testDateFmtTransitionToDSTRightAfter() {
 	});
     
     // 2 minutes later
-    assertEquals("3:01am PDT", fmt.format(date));
+    assertEquals("3:01 AM PDT", fmt.format(date));
 };
 
 function testDateFmtTransitionFromDSTDayBefore() {
@@ -2677,7 +2528,7 @@ function testDateFmtTransitionFromDSTDayBefore() {
 		unixtime: 1414828740000 // this is 11/1/2014 at 0:59am
 	});
     
-    assertEquals("12:59am PDT", fmt.format(date));
+    assertEquals("12:59 AM PDT", fmt.format(date));
 };
 
 function testDateFmtTransitionFromDSTWellBefore() {
@@ -2694,7 +2545,7 @@ function testDateFmtTransitionFromDSTWellBefore() {
 		unixtime: 1414915140000 // this is 11/2/2014 at 0:59am
 	});
     
-    assertEquals("12:59am PDT", fmt.format(date));
+    assertEquals("12:59 AM PDT", fmt.format(date));
 };
 
 function testDateFmtTransitionFromDSTRightBefore() {
@@ -2711,7 +2562,7 @@ function testDateFmtTransitionFromDSTRightBefore() {
 		unixtime: 1414918740000 // this is 11/2/2014 at 1:59am
 	});
     
-    assertEquals("1:59am PDT", fmt.format(date));
+    assertEquals("1:59 AM PDT", fmt.format(date));
 };
 
 function testDateFmtTransitionFromDSTRightAfter() {
@@ -2729,7 +2580,7 @@ function testDateFmtTransitionFromDSTRightAfter() {
 	});
     
     // 2 minutes later
-    assertEquals("1:01am PST", fmt.format(date));
+    assertEquals("1:01 AM PST", fmt.format(date));
 };
 
 
@@ -2748,7 +2599,7 @@ function testDateFmtAltCalThaiInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Karakadakhom 3, 2557 8:45pm", fmt.format(date));
+    assertEquals("Karakadakhom 3, 2557 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalHebrewInEnglish() {
@@ -2766,7 +2617,7 @@ function testDateFmtAltCalHebrewInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Tammuz 6, 5774 8:45pm", fmt.format(date));
+    assertEquals("Tammuz 6, 5774 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalIslamicInEnglish() {
@@ -2784,7 +2635,7 @@ function testDateFmtAltCalIslamicInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Ramaḍān 5, 1435 8:45pm", fmt.format(date));
+    assertEquals("Ramaḍān 5, 1435 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtAltCalPersianInEnglish() {
@@ -2802,7 +2653,7 @@ function testDateFmtAltCalPersianInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("Tir 12, 1393 8:45pm", fmt.format(date));
+    assertEquals("Tir 12, 1393 at 8:45 PM", fmt.format(date));
 };
 
 function testDateFmtGetMeridiemsRangeLength_with_am_ET_locale() {
@@ -2816,7 +2667,7 @@ function testDateFmtGetMeridiemsRangeName_with_am_ET_locale() {
     var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET"});
     assertNotNull(fmt);
 
-    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("ጥዋት", fmt[0].name);
 };
 
 function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale() {
@@ -2844,7 +2695,7 @@ function testDateFmtGetMeridiemsRangeName_with_am_ET_locale_gregorian_meridiems(
     var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "gregorian"});
     assertNotNull(fmt);
 
-    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("ጥዋት", fmt[0].name);
 }
 
 function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_gregorian_meridiems() {
@@ -2872,7 +2723,7 @@ function testDateFmtGetMeridiemsRangeName_with_am_ET_locale_ethiopic_meridiems()
     var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "am-ET", meridiems: "ethiopic"});
     assertNotNull(fmt);
 
-    assertEquals("ጠዋት", fmt[0].name);
+    assertEquals("ጥዋት", fmt[0].name);
 }
 
 function testDateFmtGetMeridiemsRangeStart_with_am_ET_locale_ethiopic_meridiems() {
@@ -2984,7 +2835,7 @@ function testDateFmtGetMeridiemsRangeName_with_en_US_locale() {
     var fmt = ilib.DateFmt.getMeridiemsRange({ locale: "en-US"});
     assertNotNull(fmt);
 
-    assertEquals("am", fmt[0].name);
+    assertEquals("AM", fmt[0].name);
 };
 
 function testDateFmtGetMeridiemsRangeStart_with_en_US_locale() {

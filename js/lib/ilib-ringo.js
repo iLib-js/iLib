@@ -28,3 +28,5 @@ ilib._dyncode = true; // indicate that we are using dynamically loaded code
 ilib._dyndata = true;
 
 ilib.setLoaderCallback(new RhinoLoader());
+
+module.exports = ilib;

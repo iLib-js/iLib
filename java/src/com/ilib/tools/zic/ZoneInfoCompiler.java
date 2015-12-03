@@ -130,7 +130,7 @@ public class ZoneInfoCompiler
 	        ZoneWriter zw = ZoneWriter.getInstance(format, outputDir);
 	        zw.writeZones(zones, currentOnly);
         } catch (Exception e) {
-        	logger.fatal(e.getMessage());
+        	e.printStackTrace();
         }
     }
 }

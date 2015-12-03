@@ -1,0 +1,23 @@
+{
+    "persian": {
+        "date": {
+            "my": {
+                "f": "LLLL yyyy",
+                "l": "LLLL yyyy",
+                "m": "LLL yyyy"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "L"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
+            }
+        }
+    }
+}

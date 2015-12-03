@@ -451,7 +451,7 @@ function testDateRngFmtAMRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ሐምሌ 2011 – 30 መስከረም 2012", fmt.format(start, end));
+    assertEquals("20 ሐምሌ 2011 – 30 መስከ 2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -548,7 +548,7 @@ function testDateRngFmtAMRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ሐምሌ 2011 – መስከረም 2014", fmt.format(start, end));
+    assertEquals("ሐምሌ 2011 – መስከ 2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});

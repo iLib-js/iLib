@@ -1,16 +1,25 @@
 {
     "gregorian": {
         "date": {
-            "dm": {
-                "s": "M/d",
-                "m": "MM/dd"
+            "dmwy": {
+                "s": "E، yyyy/M/d",
+                "m": "EE، yyyy/MM/dd"
             },
             "dmy": {
-                "m": "yyyy/MM/dd"
+                "s": "‏yyyy/M/d",
+                "m": "‏yyyy/MM/dd"
+            },
+            "dmw": {
+                "s": "E، ‏M/d",
+                "m": "EE، ‏MM/dd"
+            },
+            "dm": {
+                "s": "‏M/d",
+                "m": "‏MM/dd"
             },
             "my": {
-                "s": "yy/M",
-                "m": "yyyy/MM"
+                "s": "‏yyyy/M",
+                "m": "‏yyyy/MM"
             }
         },
         "range": {
@@ -18,6 +27,5 @@
                 "m": "{st} – {et} {sy}/{sm}/{sd}"
             }
         }
-    },
-    "generated": true
+    }
 }

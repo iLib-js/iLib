@@ -1,0 +1,24 @@
+{
+    "gregorian": {
+        "date": {
+            "dmwy": {
+                "s": "E፡ dd/MM/yy",
+                "m": "EE፡ dd-MMM-yyyy",
+                "l": "EEE፡ dd MMMM yyyy",
+                "f": "EEEE፡ dd MMMM መዓልቲ yyyy"
+            },
+            "dmw": {
+                "s": "E፡ dd/MM",
+                "m": "EE፡ dd-MMM",
+                "l": "EEE፡ dd MMMM",
+                "f": "EEEE፡ dd MMMM"
+            },
+            "dw": {
+                "s": "E፡ dd",
+                "m": "EE፡ dd",
+                "l": "EEE፡ dd",
+                "f": "EEEE፡ dd"
+            }
+        }
+    }
+}

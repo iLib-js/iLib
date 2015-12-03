@@ -1,0 +1,63 @@
+{
+    "gregorian": {
+        "order": "{date} {time}",
+        "date": {
+            "dmwy": {
+                "m": "EE, d 'de' MMM 'de' yyyy"
+            },
+            "dmy": {
+                "m": "d 'de' MMM 'de' yyyy"
+            },
+            "dmw": {
+                "m": "EE, d 'de' MMM"
+            },
+            "dm": {
+                "m": "d 'de' MMM"
+            },
+            "my": {
+                "m": "MMM 'de' yyyy",
+                "l": "MMMM 'de' yyyy",
+                "f": "MMMM 'de' yyyy"
+            },
+            "dw": {
+                "m": "EE, d"
+            },
+            "d": {
+                "m": "d"
+            },
+            "m": {
+                "m": "MMM"
+            },
+            "l": {
+                "m": "MM",
+                "s": "MM"
+            }
+        },
+        "range": {
+            "c00": {
+                "m": "{sd} de {sm} de {sy}, {st} - {et}"
+            },
+            "c01": {
+                "m": "{sd} de {sm}, {st} - {ed} de {em} de {ey}, {et}"
+            },
+            "c02": {
+                "m": "{sd} de {sm}, {st} - {ed} de {em} de {ey}, {et}"
+            },
+            "c03": {
+                "m": "{sd} de {sm} de {sy}, {st} - {ed} de {em} de {ey}, {et}"
+            },
+            "c10": {
+                "m": "{sd}-{ed} de {sm} de {sy}"
+            },
+            "c11": {
+                "m": "{sd} de {sm} - {ed} de {em} de {sy}"
+            },
+            "c12": {
+                "m": "{sd} de {sm} de {sy} - {ed} de {em} de {ey}"
+            },
+            "c20": {
+                "m": "{sm} de {sy} - {em} de {ey}"
+            }
+        }
+    }
+}

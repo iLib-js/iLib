@@ -33,7 +33,9 @@ function newSandbox() {
 		},
 		navigator : {
 			userAgent : "Nodejs"
-		}
+		},
+		Uint8Array: Uint8Array,
+		Buffer: Buffer
 	};
 };
 
