@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the likelylocales.json files from 
  * the CLDR data files
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013 - 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 util.print("gendatefmts - generate date formats information files.\n" +
-		"Copyright (c) 2013 JEDLSoft\n");
+		"Copyright (c) 2013-2015 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
@@ -90,17 +90,18 @@ try {
 }
 
 var likelylocales = {};
+var likeySubtagsList = likelySubtags.supplemental.likelySubtags;
 
-for (var partial in likelySubtags.likelySubtags) {
-	if (partial && likelySubtags.likelySubtags[partial]) {
-		var partloc = new Locale(partial.replace(/und_/g, "").replace(/_/g, '-'));
-		var full = new Locale(likelySubtags.likelySubtags[partial].replace(/_/g, '-'));
+for (var partial in likeySubtagsList) {
+	if (partial && likeySubtagsList[partial]
+		 && partial.search(/[0-9]/) === -1) { // eleminate locale style with number (i.e und-002, und-005 etc. )
+		var partloc = new Locale(partial.replace(/^und-/g, ""));
+		var full = new Locale(likeySubtagsList[partial]);
 		likelylocales[partloc.getSpec()] = full.getSpec(); 
 	}
 }
 
 util.print("Writing likelylocales.json...\n");
-
 // now write out the system resources
 
 var filename = localeDirName + "/likelylocales.json";

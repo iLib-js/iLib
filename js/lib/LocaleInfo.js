@@ -99,7 +99,8 @@ var LocaleInfo = function(locale, options) {
 		timezone:string,
 		units:string,
 		weekendEnd:number,
-		weekendStart:number
+		weekendStart:number,
+		paperSizes:{regular:string}
 	  }}
 	*/
 	this.info = LocaleInfo.defaultInfo;
@@ -543,7 +544,28 @@ LocaleInfo.prototype = {
 	 */
 	getMeridiemsStyle: function () {
 		return this.info.meridiems || "gregorian";
-	}	
+	},	
+	/**
+	 * Return the default PaperSize information in this locale.
+	 * @returns {string} default PaperSize in this locale
+	 */
+	getPaperSize: function () {
+		return this.info.paperSizes.regular;
+	},
+	/**
+	 * Return the default Delimiter QuotationStart information in this locale.
+	 * @returns {string} default QuotationStart in this locale
+	 */
+	getDelimiterQuotationStart: function () {
+		return this.info.delimiter.quotationStart;
+	},
+	/**
+	 * Return the default Delimiter QuotationEnd information in this locale.
+	 * @returns {string} default QuotationEnd in this locale
+	 */
+	getDelimiterQuotationEnd: function () {
+		return this.info.delimiter.quotationEnd;
+	}
 };
 
 module.exports = LocaleInfo;
