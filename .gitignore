@@ -1001,6 +1001,15 @@ js/data/locale/zu/localeinfo.json
 js/data/locale/zun/localeinfo.json
 js/data/locale/zxx/localeinfo.json
 js/data/locale/zza/localeinfo.json
+js/data/locale/en/BZ/localeinfo.json
+js/data/locale/en/DG/localeinfo.json
+js/data/locale/en/FK/localeinfo.json
+js/data/locale/en/IO/localeinfo.json
+js/data/locale/en/MO/localeinfo.json
+js/data/locale/en/SH/localeinfo.json
+js/data/locale/en/VG/localeinfo.json
+js/data/locale/lkt/localeinfo.json
+js/data/locale/und/XK/localeinfo.json
 js/locale/
 js/output/
 js/package.json
