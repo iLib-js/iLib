@@ -82,6 +82,7 @@ $(function(){
 
 	var date = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: 5, hour: 13, minute: 45, second: 0});
 
+	
 	//DateTime				
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 					
@@ -92,10 +93,13 @@ $(function(){
 		
 		$("#dt"+length[i]).text(length[i]);
 		$("#dt"+length[i]+"Fmt").text(fmtArray[i].template);
+
 		$("#dt"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 				
 	//Date
+	var templateText = [];
+
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		
 		fmt[i] = new DateFmt({locale: currentLocale, type: "date", date:"dmwy", length: length[i], useNative: false, timezone: 'local'});
@@ -104,10 +108,37 @@ $(function(){
 		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
 		
 		$("#date"+length[i]).text(length[i]);
-		$("#date"+length[i]+"Fmt").text(fmtArray[i].template);
+		
+		templateText[i] = fmtArray[i].template;
+		$("#date"+length[i]+"Fmt").text(templateText[i]);
+		var mCount = 0;
+		for (j=0;j < templateText[i].length; j++) {
+			if (templateText[i][j] === 'M') {
+				mCount++;
+			}
+			
+		}
+		switch(mCount) {
+			case 4:
+				$("#date"+length[i]+"Fmt").css("color","red");
+			break;
+			case 3:
+				$("#date"+length[i]+"Fmt").css("color","#DAA520"); //GoldenRod 
+			break;
+			case 2:
+				$("#date"+length[i]+"Fmt").css("color","green");
+			break;
+			case 1:
+				$("#date"+length[i]+"Fmt").css("color","blue");
+			break;
+			default:
+				$("#date"+length[i]+"Fmt").css("color","#4B0082"); //Indigo  
+		}
+		
 		$("#date"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 
+	
 	//Time
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		
@@ -118,6 +149,14 @@ $(function(){
 		
 		$("#time"+length[i]).text(length[i]);
 		$("#time"+length[i]+"Fmt").text(fmtArray[i].template);
+
+		if (length[i] === 'full') {
+			if(fmtArray[i].template.indexOf("H") !== -1) { //24hours
+				$("#time"+length[i]+"Fmt").css("color", "#FF1493"); //#DeepPink 
+			} else { // 12hours
+				$("#time"+length[i]+"Fmt").css("color", "#00BFFF"); //DeepSkyBlue 
+			}
+		}
 		$("#time"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 
