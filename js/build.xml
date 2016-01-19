@@ -521,21 +521,21 @@ limitations under the License.
 		    <fileset dir="${build.output.js}" includes="ilib.js"/>
 		</replace>
 		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
 		</exec>
 		<exec osfamily="mac" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
 		</exec>
 		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
@@ -544,7 +544,7 @@ limitations under the License.
 
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
@@ -554,7 +554,7 @@ limitations under the License.
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 		<apply osfamily="mac" executable="node" dest="${build.output.dyncode}" parallel="false">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
@@ -564,7 +564,7 @@ limitations under the License.
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false">
-			<arg value="${uglify.location}../../../../local/bin/uglifyjs"/>
+			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
