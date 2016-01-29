@@ -2,49 +2,54 @@
     "ethiopic": {
         "date": {
             "dmwy": {
-                "f": "EEEE፣ MMMM d ቀን yyyy ዓ.ም"
+                "f": "EEEE፣ MMMM d ቀን yyyy ዓ.ም",
+                "l": "EEE፣ d MMMM yyyy",
+                "m": "EE፣ d MMM yyyy",
+                "s": "E፣ dd/MM/yyyy"
             },
             "dmy": {
-                "f": "MMMM d ቀን yyyy ዓ.ም"
+                "f": "MMMM d ቀን yyyy ዓ.ም",
+                "l": "d MMMM yyyy"
             },
             "my": {
-                "f": "MMMM ቀን yyyy ዓ.ም"
-			}
+                "f": "MMMM ቀን yyyy ዓ.ም",
+                "l": "MMMM yyyy"
+            }
         },
-		"time": {
-			"12": {
-				"ahmsz": "a h:mm:ss z",
-				"ahms": "a h:mm:ss",
-				"ahmz": "a h:mm z",
-				"ahm": "a h:mm",
-				"ah": "a h"
-			}
-		},
+        "time": {
+            "12": {
+                "ahmsz": "a h:mm:ss z",
+                "ahms": "a h:mm:ss",
+                "ahmz": "a h:mm z",
+                "ahm": "a h:mm",
+                "ah": "a h"
+            }
+        },
         "range": {
-			"c00": {
-				"f": "{st} – {et} {sm} {sd} ቀን {sy} ዓ.ም"
-			},
-			"c01": {
-				"f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
-			},
-			"c02": {
-				"f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
-			},
-			"c03": {
-				"f": "{st} {sm} {sd} ቀን {sy} – {et} {em} {ed} ቀን {ey} ዓ.ም"
-			},
-			"c10": {
-				"f": "{sm} {sd}–{ed} ቀን {sy} ዓ.ም"
-			},
-			"c11": {
-				"f": "{sm} {sd} – {em} {ed} ቀን {sy} ዓ.ም"
-			},
-			"c12": {
-				"f": "{sm} {sd} ቀን {sy}  ዓ.ም – {em} {ed} ቀን {ey} ዓ.ም"
-			},
-			"c20": {
-				"f": "{sm} ቀን {sy} ዓ.ም  – {em} ቀን {ey} ዓ.ም"
-			}
-		}
+            "c00": {
+                "f": "{st} – {et} {sm} {sd} ቀን {sy} ዓ.ም"
+            },
+            "c01": {
+                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
+            },
+            "c02": {
+                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
+            },
+            "c03": {
+                "f": "{st} {sm} {sd} ቀን {sy} – {et} {em} {ed} ቀን {ey} ዓ.ም"
+            },
+            "c10": {
+                "f": "{sm} {sd}–{ed} ቀን {sy} ዓ.ም"
+            },
+            "c11": {
+                "f": "{sm} {sd} – {em} {ed} ቀን {sy} ዓ.ም"
+            },
+            "c12": {
+                "f": "{sm} {sd} ቀን {sy}  ዓ.ም – {em} {ed} ቀን {ey} ዓ.ም"
+            },
+            "c20": {
+                "f": "{sm} ቀን {sy} ዓ.ም  – {em} ቀን {ey} ዓ.ም"
+            }
+        }
     }
 }
