@@ -1401,7 +1401,7 @@ function testDateFmtTimeMeridiem1_am_ET() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("6:00 ከሰዓት", fmt.format(date));
+    assertEquals("6:00 ቀትር", fmt.format(date));
 }
 
 function testDateFmtTimeMeridiem2_am_ET() {
