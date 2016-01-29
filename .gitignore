@@ -8,7 +8,10 @@ doc/localeSpecDoc/publish-tool/get-pip.py.1
 export/
 js/node_modules
 qt/output
+js/package.json
 js/.ant-targets-build_lg.xml
+js/.ant-targets-build.xml
+js/data/customlocaletemp/
 java/classes/
 java/output/
 js/data/locale/aa/localeinfo.json
@@ -1012,7 +1015,6 @@ js/data/locale/lkt/localeinfo.json
 js/data/locale/und/XK/localeinfo.json
 js/locale/
 js/output/
-js/package.json
 qt/FileReader/Makefile*
 qt/FileReader/debug
 qt/FileReader/release
