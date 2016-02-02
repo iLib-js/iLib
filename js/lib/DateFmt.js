@@ -1241,11 +1241,14 @@ DateFmt.prototype = {
 				case 'NN':
 				case 'MMM':
 				case 'MMMM':
+					key = templateArr[i] + (date.month || 1);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+					break;
 				case 'L':
 				case 'LL':
 				case 'LLL':
 				case 'LLLL':
-					key = templateArr[i] + (date.month || 1);
+					key = templateArr[i] + (date.day || 1);
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 					

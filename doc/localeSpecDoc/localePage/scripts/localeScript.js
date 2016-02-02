@@ -197,6 +197,7 @@ $(function(){
 	$("#numDecimal").text(fmt.format(1.73));
 
 	var fmt = new NumFmt({locale: currentLocale,style: "standard"});
+	$("#numGroupSymbol").text(li.getGroupingSeparator());
 	$("#numGroupFmt").text(fmt.format(123456789.4));
 
 	var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
