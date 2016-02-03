@@ -654,7 +654,7 @@ module.exports = {
         		}
         		
         		if (isAsianLang(language)) {
-                                calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
+                               calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
              		        calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
 	                        calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
         		}
