@@ -1,5 +1,5 @@
 enyo.depends(
-	//"app.js",
+//	"app.js",
 	"app-compiled.js",
 	"start.js"
 );
