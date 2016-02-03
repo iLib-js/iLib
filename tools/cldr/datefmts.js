@@ -485,9 +485,15 @@ module.exports = {
         		"y": {}
         	};
 
+                /*
+                 * stand-alone of m (month) is t
+                 * stand-alone of d (day) is a
+                 * stand-alone of w (weekday) is l
+                 * stand-alone of y (year) is r
+                 */
         	if (usesStandAlone) {
+    			calendar.date.t = {};
     			calendar.date.l = {};
-    			calendar.date.e = {};
         	}
         	
         	if (isAsianLang(language)) {
@@ -637,20 +643,20 @@ module.exports = {
             			// util.print("Length " + len + " order ydm\n");
             			calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "d")));
             			calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForChars(dmy, "d")) +
-            				dmy.substring(scanForChars(dmy, "M")));
+           			dmy.substring(scanForChars(dmy, "M")));
             			break;
         		}
         		
         		if (usesStandAlone) {
-        			calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
-        			calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
-        			calendar.date.e[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
+	                        calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
+           	                calendar.date.l[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c"); //"l: stand."
+		                calendar.date.t[lenAbbr] = calendar.date.w[lenAbbr].replace(/M/g, "L");
         		}
         		
         		if (isAsianLang(language)) {
-        			calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
-        			calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
-        			calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
+                                calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
+             		        calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+	                        calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
         		}
         		
     			tmp = wTemplate.replace(/\{date\}/, calendar.date.dm[lenAbbr]);
