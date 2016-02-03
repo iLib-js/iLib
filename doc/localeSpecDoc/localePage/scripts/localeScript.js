@@ -33,7 +33,7 @@ $(function(){
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
 
 	for (i=0; i<7; i++) {
-		date[i] = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: i+2});
+		date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
