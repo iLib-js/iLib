@@ -134,6 +134,7 @@ list.forEach(function (file) {
 			script = locale.getScript(),
 			region = locale.getRegion();
 		var cal, newFormats, group;
+		var units;
 		
 		if (language) localeComponents.push(language);
 		if (script) localeComponents.push(script);
@@ -184,12 +185,19 @@ list.forEach(function (file) {
 		// do regular gregorian for all locales
 		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
 		newFormats = aux.createDateFormats(language, script, cal.main[file].dates.calendars);
-		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		//util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(dateFormats, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
 		
 		newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
-		// util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		//util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		group = aux.getFormatGroup(systemResources, localeComponents);
+		group.data = merge(group.data || {}, newFormats);
+
+		// date/time duration.
+		units = aux.loadFile(path.join(sourcePath, "units.json"));
+		newFormats = aux.createDurationResources(units.main[file].units, language);
+		//util.print("Duration data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
 	}
