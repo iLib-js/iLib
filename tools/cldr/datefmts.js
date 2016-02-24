@@ -1118,43 +1118,20 @@ module.exports = {
         var sepKey, fullSepKey;
 
         var listProperties = {
-            "Full" : {
-                "separatorFull": "middle",
-                "finalSeparatorFull": "end"
-            },
-            "Long" : {
-                "separatorLong": "middle",
-                "finalSeparatorLong": "end"
-            },
-            "Medium" : {
-                "separatorMedium": "middle",
-                "finalSeparatorMedium": "end"
-            },
-            "Short" : {
-                "separatorShort": "middle",
-                "finalSeparatorShort": "end"
-            }
-        };
+            "Full" :"listPattern-type-unit",
+            "Long" : "listPattern-type-unit-short",
+            "Medium" : "listPattern-type-unit-short",
+            "Short" : "listPattern-type-unit-narrow"
+        }
 
         cldrListData = cldrData;
 
         for (prop in listProperties) {
-            switch(prop) {
-                case "Full":
-                    seperatorData = cldrListData["listPattern-type-unit"];
-                break;
-                case "Long":
-                case "Medium":
-                    seperatorData = cldrListData["listPattern-type-unit-short"];
-                    break;
-                break;
-                case "Short":
-                    seperatorData = cldrListData["listPattern-type-unit-narrow"];
-                break;
-            }
 
             sepKey = "seperator" + prop;
             fullSepKey = "finalSeperator" + prop;
+
+            seperatorData = cldrListData[listProperties[[prop]]];
 
             mergedSeperatorRes[sepKey] = seperatorData["middle"].replace(/\{.\}/g, "");
             mergedSeperatorRes[fullSepKey] = seperatorData["end"].replace(/\{.\}/g, "");
