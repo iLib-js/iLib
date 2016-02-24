@@ -111,8 +111,12 @@ function loadFile(path) {
     var ret = undefined;
     if (fs.existsSync(path)) {
         json = fs.readFileSync(path, "utf-8");
-        // before parsing, first remove comments which are not valid in real json
-        json = json.replace(/\/\/[^\n]*\n/g, "\n").replace(/\/\*(\*[^\/]|[^\*])*\*\//g, "");
+        /* before parsing, first remove comments which are not valid in real json
+         *
+         * note. eu/dateFields.json, eu-ES/dateFields.json. 
+         * There're "displayName": "AM//PM" value. which shouldn't be removed".
+        */
+        json = json.replace(/\/\*(\*[^\/]|[^\*])*\*\//g, "");
         ret = JSON.parse(json);
     }
     return ret;
@@ -979,11 +983,13 @@ module.exports = {
         
         return formats;
     },
-    createDurationResourceDetail: function (cldrUnitData, durationObject, length, language) {
+    createDurationResourceDetail: function (sourcePath, cldrUnitData, durationObject, length, language) {
         var durationSysres = {};
         var durationSysresTest = {};
+        var cldrDateFieldData = {};
         var dataLength = length;
-
+        var day, cldrDayPast, cldrDayFuture;
+        
         for(duration in durationObject) {
             var durationKey = "duration-" + duration;
             var temp;
@@ -1007,17 +1013,27 @@ module.exports = {
                     } else {
                         fullStr += name +"#" + temp;    
                     }
+
+                    if (length === "full" && name === 'other' && duration === 'day') {
+                        day = cldrUnitData[durationKey][nameValue];
+                        cldrDateFieldData = loadFile(path.join(sourcePath, "dateFields.json"));
+
+                        if (cldrDateFieldData && typeof(cldrDateFieldData.main[language]) !== 'undefined') {
+                            cldrDayPast =  cldrDateFieldData.main[language]["dates"]["fields"]["day"]["relativeTime-type-past"]["relativeTimePattern-count-other"];
+                            cldrDayFuture = cldrDateFieldData.main[language]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];    
+        
+                            durationSysres["in {duration}"] = cldrDayFuture.replace(day, "{duration}").toLowerCase();    
+                            durationSysres["{duration} ago"] = cldrDayPast.replace(day, "{duration}").toLowerCase();    
+                        }
+                    }
                 }
-            }
-            
+            }            
             durationSysres[durationObject[duration]] = fullStr;
-            
         }
 
         return durationSysres;
-       
     },
-    createDurationResources: function (cldrData, language) {
+    createDurationResources: function (sourcePath, cldrData, language) {
         var durationObject = {
             "durationPropertiesFull" : {
                 "millisecond": "1#1 millisecond|#{num} milliseconds",
@@ -1064,28 +1080,28 @@ module.exports = {
         table = cldrData;
         sysres = [];
         var mergedSysres = {};
-       
+        
         for (var prop in durationObject) {
             
             switch(prop) {
                 case "durationPropertiesFull":
                     unit = table.long;
-                    result = module.exports.createDurationResourceDetail(unit,durationObject[prop], "full", language);
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "full", language);
                     sysres.push(result);
                 break;
                 case "durationPropertiesLong":
                     unit = table.narrow;
-                    result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "long", language);
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "long", language);
                     sysres.push(result);
                 break;
                 case "durationPropertiesMedium":
                     unit = table.narrow;
-                    result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "medium", language);
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "medium", language);
                     sysres.push(result);
                 break;
                 case "durationPropertiesShort":
                     unit = table.short;
-                    result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "short", language);
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "short", language);
                     sysres.push(result);
                 break;
             }
@@ -1097,6 +1113,55 @@ module.exports = {
         return mergedSysres;
     },
 
+    createSeperatorResources: function (sourcePath, cldrData, language) {
+        var mergedSeperatorRes = {};
+        var sepKey, fullSepKey;
+
+        var listProperties = {
+            "Full" : {
+                "separatorFull": "middle",
+                "finalSeparatorFull": "end"
+            },
+            "Long" : {
+                "separatorLong": "middle",
+                "finalSeparatorLong": "end"
+            },
+            "Medium" : {
+                "separatorMedium": "middle",
+                "finalSeparatorMedium": "end"
+            },
+            "Short" : {
+                "separatorShort": "middle",
+                "finalSeparatorShort": "end"
+            }
+        };
+
+        cldrListData = cldrData;
+
+        for (prop in listProperties) {
+            switch(prop) {
+                case "Full":
+                    seperatorData = cldrListData["listPattern-type-unit"];
+                break;
+                case "Long":
+                case "Medium":
+                    seperatorData = cldrListData["listPattern-type-unit-short"];
+                    break;
+                break;
+                case "Short":
+                    seperatorData = cldrListData["listPattern-type-unit-narrow"];
+                break;
+            }
+
+            sepKey = "seperator" + prop;
+            fullSepKey = "finalSeperator" + prop;
+
+            mergedSeperatorRes[sepKey] = seperatorData["middle"].replace(/\{.\}/g, "");
+            mergedSeperatorRes[fullSepKey] = seperatorData["end"].replace(/\{.\}/g, "");
+        }
+
+        return mergedSeperatorRes;
+    },
 
     /**
      * Find the distance between two objects in terms of number of properties that

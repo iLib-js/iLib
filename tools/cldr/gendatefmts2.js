@@ -196,10 +196,18 @@ list.forEach(function (file) {
 
 		// date/time duration.
 		units = aux.loadFile(path.join(sourcePath, "units.json"));
-		newFormats = aux.createDurationResources(units.main[file].units, language);
+		newFormats = aux.createDurationResources(sourcePath, units.main[file].units, language);
 		//util.print("Duration data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
+
+		// separator
+		seperator = aux.loadFile(path.join(sourcePath, "listPatterns.json"));
+		newFormats = aux.createSeperatorResources(sourcePath, seperator.main[file].listPatterns, language);
+		//util.print("listPattern data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		group = aux.getFormatGroup(systemResources, localeComponents);
+		group.data = merge(group.data || {}, newFormats);
+
 	}
 });
 
