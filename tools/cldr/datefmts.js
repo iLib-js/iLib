@@ -654,7 +654,7 @@ module.exports = {
                 if (usesStandAlone) {
                         calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
                         calendar.date.l[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c"); //"l: stand."
-                        calendar.date.t[lenAbbr] = calendar.date.w[lenAbbr].replace(/M/g, "L");
+                        calendar.date.t[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
                 }
                 
                 if (isAsianLang(language)) {
@@ -1013,14 +1013,16 @@ module.exports = {
                     } else {
                         fullStr += name +"#" + temp;    
                     }
-
+                    
                     if (length === "full" && name === 'other' && duration === 'day') {
                         day = cldrUnitData[durationKey][nameValue];
                         cldrDateFieldData = loadFile(path.join(sourcePath, "dateFields.json"));
-
-                        if (cldrDateFieldData && typeof(cldrDateFieldData.main[language]) !== 'undefined') {
-                            cldrDayPast =  cldrDateFieldData.main[language]["dates"]["fields"]["day"]["relativeTime-type-past"]["relativeTimePattern-count-other"];
-                            cldrDayFuture = cldrDateFieldData.main[language]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];    
+                        sourcePathSplit = sourcePath.split("/");
+                        fileName = sourcePathSplit[sourcePathSplit.length -1];
+                        
+                        if (cldrDateFieldData) {
+                            cldrDayPast =  cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-past"]["relativeTimePattern-count-other"];
+                            cldrDayFuture = cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];    
         
                             durationSysres["in {duration}"] = cldrDayFuture.replace(day, "{duration}").toLowerCase();    
                             durationSysres["{duration} ago"] = cldrDayPast.replace(day, "{duration}").toLowerCase();    
