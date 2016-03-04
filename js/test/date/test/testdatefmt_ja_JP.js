@@ -1247,7 +1247,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ja_JP() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒で", fmt.formatRelative(reference, date));
+    assertEquals("30 秒後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1273,7 +1273,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ja_JP() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒前", fmt.formatRelative(reference, date));
+    assertEquals("30 秒前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1299,7 +1299,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分で", fmt.formatRelative(reference, date));
+    assertEquals("10 分後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1325,7 +1325,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分前", fmt.formatRelative(reference, date));
+    assertEquals("10 分前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1351,7 +1351,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4時間で", fmt.formatRelative(reference, date));
+    assertEquals("4 時間後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1377,7 +1377,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4時間前", fmt.formatRelative(reference, date));
+    assertEquals("4 時間前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ja_JP() {
@@ -1404,7 +1404,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4日で", fmt.formatRelative(reference, date));
+    assertEquals("4 時間前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1430,7 +1430,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4日前", fmt.formatRelative(reference, date));
+    assertEquals("4 日前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ja_JP() {
@@ -1457,7 +1457,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9週間で", fmt.formatRelative(reference, date));
+    assertEquals("9 週間後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1483,7 +1483,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9週間前", fmt.formatRelative(reference, date));
+    assertEquals("9 週間前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ja_JP() {
@@ -1510,7 +1510,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16ヶ月で", fmt.formatRelative(reference, date));
+    assertEquals("16 か月後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1536,7 +1536,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14ヶ月前", fmt.formatRelative(reference, date));
+    assertEquals("14 か月前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_ja_JP() {
@@ -1563,7 +1563,7 @@ function testDateFmtFormatRelativeYearsAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14年で", fmt.formatRelative(reference, date));
+    assertEquals("14 年後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
@@ -1589,6 +1589,6 @@ function testDateFmtFormatRelativeYearsBefore_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21年前", fmt.formatRelative(reference, date));
+    assertEquals("21 年前", fmt.formatRelative(reference, date));
 }
 

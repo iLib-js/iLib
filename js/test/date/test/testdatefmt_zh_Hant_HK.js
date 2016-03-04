@@ -1561,7 +1561,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_zh_Hant_HK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒后", fmt.formatRelative(reference, date));
+    assertEquals("30 秒后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1587,7 +1587,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_zh_Hant_HK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒前", fmt.formatRelative(reference, date));
+    assertEquals("30 秒前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1613,7 +1613,7 @@ function testDateFmtFormatRelativeWithinHourAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分鐘后", fmt.formatRelative(reference, date));
+    assertEquals("10 分鐘后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1639,7 +1639,7 @@ function testDateFmtFormatRelativeWithinHourBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分鐘前", fmt.formatRelative(reference, date));
+    assertEquals("10 分鐘前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1665,7 +1665,7 @@ function testDateFmtFormatRelativeWithinDayAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小時后", fmt.formatRelative(reference, date));
+    assertEquals("4 小時后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1691,7 +1691,7 @@ function testDateFmtFormatRelativeWithinDayBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小時前", fmt.formatRelative(reference, date));
+    assertEquals("4 小時前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_zh_Hant_HK() {

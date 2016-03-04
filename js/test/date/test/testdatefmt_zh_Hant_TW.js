@@ -1798,7 +1798,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9週前", fmt.formatRelative(reference, date));
+    assertEquals("9 週前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_zh_Hant_TW() {
@@ -1825,7 +1825,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16個月后", fmt.formatRelative(reference, date));
+    assertEquals("16 個月后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_zh_Hant_TW() {
     var fmt = new DateFmt({locale: "zh-Hant-TW", length: "full"});
@@ -1851,7 +1851,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14個月前", fmt.formatRelative(reference, date));
+    assertEquals("14 個月前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_zh_Hant_TW() {
@@ -1878,7 +1878,7 @@ function testDateFmtFormatRelativeYearsAfter_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14年后", fmt.formatRelative(reference, date));
+    assertEquals("14 年后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_zh_Hant_TW() {
     var fmt = new DateFmt({locale: "zh-Hant-TW", length: "full"});
@@ -1904,6 +1904,6 @@ function testDateFmtFormatRelativeYearsBefore_zh_Hant_TW() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21年前", fmt.formatRelative(reference, date));
+    assertEquals("21 年前", fmt.formatRelative(reference, date));
 }
 
