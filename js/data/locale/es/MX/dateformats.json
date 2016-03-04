@@ -3,55 +3,52 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "E, dd/MM/yy",
-                "m": "EE, dd/MM/yyyy"
+                "m": "EE, dd/MM/yyyy",
+                "s": "E, dd/MM/yy"
             },
             "dmy": {
-                "s": "dd/MM/yy",
-                "m": "dd/MM/yyyy"
+                "m": "dd/MM/yyyy",
+                "s": "dd/MM/yy"
             },
             "dmw": {
-                "s": "E, dd/MM",
-                "m": "EE, dd/MM"
+                "m": "EE, dd/MM",
+                "s": "E, dd/MM"
             },
             "dm": {
-                "s": "dd/MM",
-                "m": "dd/MM"
+                "m": "dd/MM",
+                "s": "dd/MM"
             },
             "my": {
-                "s": "MM/yy",
-                "m": "MM/yyyy",
+                "f": "MMMM 'de' yyyy",
                 "l": "MMMM 'de' yyyy",
-                "f": "MMMM 'de' yyyy"
+                "m": "MM/yyyy",
+                "s": "MM/yy"
             },
             "dw": {
-                "s": "E, dd",
-                "m": "EE, dd"
+                "m": "EE, dd",
+                "s": "E, dd"
             },
             "d": {
                 "m": "dd",
                 "s": "dd"
             },
             "m": {
-                "s": "MM",
-                "m": "MM"
-            },
-            "l": {
-                "s": "M"
+                "m": "MM",
+                "s": "MM"
             }
         },
         "time": {
             "24": {
-                "ahmsz": "H:mm:ss z",
-                "ahms": "H:mm:ss",
-                "hmsz": "H:mm:ss z",
-                "hms": "H:mm:ss",
-                "ahmz": "H:mm z",
-                "ahm": "H:mm",
-                "hmz": "H:mm z",
+                "h": "H",
                 "ah": "H",
                 "hm": "H:mm",
-                "h": "H"
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm z",
+                "ahmz": "H:mm z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "ahmsz": "H:mm:ss z"
             }
         }
     }

@@ -6,13 +6,13 @@
                 "l": "LLLL yyyy",
                 "m": "LLL yyyy"
             },
-            "l": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "L"
+            "t": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
-            "e": {
+            "l": {
                 "f": "cccc",
                 "l": "ccc",
                 "m": "cc",

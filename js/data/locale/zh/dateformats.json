@@ -1,56 +1,66 @@
 {
     "gregorian": {
+        "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "yy/M/dE",
-                "m": "yyyy年M月d日EE",
+                "f": "yyyy年M月d日EEEE",
                 "l": "yyyy年M月d日EEE",
-                "f": "yyyy年M月d日EEEE"
+                "m": "yyyy年M月d日EE",
+                "s": "yy/M/dE"
             },
             "dmy": {
-                "s": "yy/M/d",
-                "m": "yyyy年M月d日",
+                "f": "yyyy年M月d日",
                 "l": "yyyy年M月d日",
-                "f": "yyyy年M月d日"
+                "m": "yyyy年M月d日",
+                "s": "yy/M/d"
             },
             "dmw": {
-                "s": "M/dE",
-                "m": "M月d日EE",
+                "f": "M月d日EEEE",
                 "l": "M月d日EEE",
-                "f": "M月d日EEEE"
+                "m": "M月d日EE",
+                "s": "M/dE"
             },
             "dm": {
-                "s": "M/d",
-                "m": "M月d日",
+                "f": "M月d日",
                 "l": "M月d日",
-                "f": "M月d日"
+                "m": "M月d日",
+                "s": "M/d"
             },
             "my": {
-                "s": "yy/M",
-                "m": "yyyy年M月",
+                "f": "yyyy年M月",
                 "l": "yyyy年M月",
-                "f": "yyyy年M月"
+                "m": "yyyy年M月",
+                "s": "yy/M"
             },
             "dw": {
-                "s": "dE",
-                "m": "d日EE",
+                "f": "d日EEEE",
                 "l": "d日EEE",
-                "f": "d日EEEE"
+                "m": "d日EE",
+                "s": "dE"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
-                "s": "d",
-                "m": "d",
+                "f": "d",
                 "l": "d",
-                "f": "d"
+                "m": "d",
+                "s": "d"
             },
             "m": {
-                "m": "M",
+                "f": "M",
                 "l": "M",
-                "f": "M"
+                "m": "M",
+                "s": "M"
             },
-            "n": {
-                "l": "MMM月",
-                "f": "MMMM月"
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             },
             "a": {
                 "f": "d日",
@@ -64,12 +74,6 @@
                 "m": "M月",
                 "s": "M月"
             },
-            "y": {
-                "s": "yy",
-                "m": "yyyy",
-                "l": "yyyy",
-                "f": "yyyy"
-            },
             "r": {
                 "f": "yyyy年",
                 "l": "yyyy年",
@@ -79,21 +83,34 @@
         },
         "time": {
             "12": {
-                "ahmsz": "zah:mm:ss",
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
+                "ah": "ah时",
+                "hm": "h:mm",
+                "ms": "mm:ss",
+                "ahm": "ah:mm",
+                "hms": "h:mm:ss",
+                "hmz": "zh:mm",
+                "ahmz": "zah:mm",
                 "ahms": "ah:mm:ss",
                 "hmsz": "zh:mm:ss",
-                "ahmz": "zah:mm",
-                "ahm": "ah:mm",
-                "hmz": "zh:mm",
-                "ah": "ah时"
+                "ahmsz": "zah:mm:ss"
             },
             "24": {
-                "ahmsz": "zH:mm:ss",
-                "hmsz": "zH:mm:ss",
-                "ahmz": "zH:mm",
-                "hmz": "zH:mm",
+                "h": "H时",
+                "m": "mm",
+                "s": "ss",
                 "ah": "H时",
-                "h": "H时"
+                "hm": "H:mm",
+                "ms": "mm:ss",
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "zH:mm",
+                "ahmz": "zH:mm",
+                "ahms": "H:mm:ss",
+                "hmsz": "zH:mm:ss",
+                "ahmsz": "zH:mm:ss"
             }
         },
         "range": {

@@ -2,28 +2,28 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "yyyy/M/d E",
-                "m": "yyyy年M月d日 EE",
+                "f": "yyyy年M月d日 EEEE",
                 "l": "yyyy年M月d日 EEE",
-                "f": "yyyy年M月d日 EEEE"
+                "m": "yyyy年M月d日 EE",
+                "s": "yyyy/M/d E"
             },
             "dmy": {
                 "s": "yyyy/M/d"
             },
             "dmw": {
-                "s": "M/d E",
-                "m": "M月d日 EE",
+                "f": "M月d日 EEEE",
                 "l": "M月d日 EEE",
-                "f": "M月d日 EEEE"
+                "m": "M月d日 EE",
+                "s": "M/d E"
             },
             "my": {
                 "s": "yyyy/M"
             },
             "dw": {
-                "s": "d E",
-                "m": "d日 EE",
+                "f": "d日 EEEE",
                 "l": "d日 EEE",
-                "f": "d日 EEEE"
+                "m": "d日 EE",
+                "s": "d E"
             },
             "y": {
                 "s": "yyyy"
@@ -34,19 +34,19 @@
         },
         "time": {
             "12": {
-                "ahmsz": "ah:mm:ss [z]",
-                "hmsz": "h:mm:ss [z]",
-                "ahmz": "ah:mm [z]",
+                "ah": "ah時",
                 "hmz": "h:mm [z]",
-                "ah": "ah時"
+                "ahmz": "ah:mm [z]",
+                "hmsz": "h:mm:ss [z]",
+                "ahmsz": "ah:mm:ss [z]"
             },
             "24": {
-                "ahmsz": "H:mm:ss [z]",
-                "hmsz": "H:mm:ss [z]",
-                "ahmz": "H:mm [z]",
-                "hmz": "H:mm [z]",
+                "h": "H時",
                 "ah": "H時",
-                "h": "H時"
+                "hmz": "H:mm [z]",
+                "ahmz": "H:mm [z]",
+                "hmsz": "H:mm:ss [z]",
+                "ahmsz": "H:mm:ss [z]"
             }
         }
     }

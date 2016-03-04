@@ -9,5 +9,6 @@
     "a0": "AM",
     "a1": "PM",
     "G-1": "AEC",
-    "G1": "EC"
+    "G1": "EC",
+    "#{num}s": "one#{num} seg|#{num} seg"
 }

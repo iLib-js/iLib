@@ -2,33 +2,33 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E'en' 'den' dd-MM-yyyy",
-                "m": "EE'en' 'den' d MMM yyyy",
+                "f": "EEEE'en' 'den' d:'e' MMMM yyyy",
                 "l": "EEE'en' 'den' d MMMM yyyy",
-                "f": "EEEE'en' 'den' d:'e' MMMM yyyy"
+                "m": "EE'en' 'den' d MMM yyyy",
+                "s": "E'en' 'den' dd-MM-yyyy"
             },
             "dmy": {
-                "s": "dd-MM-yyyy",
-                "f": "d:'e' MMMM yyyy"
+                "f": "d:'e' MMMM yyyy",
+                "s": "dd-MM-yyyy"
             },
             "dmw": {
-                "s": "E'en' 'den' dd-MM",
-                "m": "EE'en' 'den' d MMM",
+                "f": "EEEE'en' 'den' d:'e' MMMM",
                 "l": "EEE'en' 'den' d MMMM",
-                "f": "EEEE'en' 'den' d:'e' MMMM"
+                "m": "EE'en' 'den' d MMM",
+                "s": "E'en' 'den' dd-MM"
             },
             "dm": {
-                "s": "dd-MM",
-                "f": "d:'e' MMMM"
+                "f": "d:'e' MMMM",
+                "s": "dd-MM"
             },
             "my": {
                 "s": "MM-yyyy"
             },
             "dw": {
-                "s": "E'en' 'den' dd",
-                "m": "EE'en' 'den' d",
+                "f": "EEEE'en' 'den' d",
                 "l": "EEE'en' 'den' d",
-                "f": "EEEE'en' 'den' d"
+                "m": "EE'en' 'den' d",
+                "s": "E'en' 'den' dd"
             }
         }
     }

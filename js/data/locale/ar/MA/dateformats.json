@@ -2,24 +2,24 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E، yyyy/M/d",
-                "m": "EE، yyyy/MM/dd"
+                "m": "EE، yyyy/MM/dd",
+                "s": "E، yyyy/M/d"
             },
             "dmy": {
-                "s": "‏yyyy/M/d",
-                "m": "‏yyyy/MM/dd"
+                "m": "‏yyyy/MM/dd",
+                "s": "‏yyyy/M/d"
             },
             "dmw": {
-                "s": "E، ‏M/d",
-                "m": "EE، ‏MM/dd"
+                "m": "EE، ‏MM/dd",
+                "s": "E، ‏M/d"
             },
             "dm": {
-                "s": "‏M/d",
-                "m": "‏MM/dd"
+                "m": "‏MM/dd",
+                "s": "‏M/d"
             },
             "my": {
-                "s": "‏yyyy/M",
-                "m": "‏yyyy/MM"
+                "m": "‏yyyy/MM",
+                "s": "‏yyyy/M"
             }
         },
         "range": {

@@ -2,45 +2,45 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "yy年M月d日E",
-                "m": "yyyy年M月d日EE",
+                "f": "yyyy年MM月dd日EEEE",
                 "l": "yyyy年MM月dd日EEE",
-                "f": "yyyy年MM月dd日EEEE"
+                "m": "yyyy年M月d日EE",
+                "s": "yy年M月d日E"
             },
             "dmy": {
-                "s": "yy年M月d日",
+                "f": "yyyy年MM月dd日",
                 "l": "yyyy年MM月dd日",
-                "f": "yyyy年MM月dd日"
+                "s": "yy年M月d日"
             },
             "dmw": {
-                "s": "M月d日E",
-                "m": "M月d日EE",
+                "f": "MM月dd日EEEE",
                 "l": "MM月dd日EEE",
-                "f": "MM月dd日EEEE"
+                "m": "M月d日EE",
+                "s": "M月d日E"
             },
             "dm": {
-                "s": "M月d日",
+                "f": "MM月dd日",
                 "l": "MM月dd日",
-                "f": "MM月dd日"
+                "s": "M月d日"
             },
             "my": {
-                "s": "yy年M月",
+                "f": "yyyy年MM月",
                 "l": "yyyy年MM月",
-                "f": "yyyy年MM月"
+                "s": "yy年M月"
             },
             "dw": {
-                "s": "d日E",
-                "m": "d日EE",
+                "f": "dd日EEEE",
                 "l": "dd日EEE",
-                "f": "dd日EEEE"
+                "m": "d日EE",
+                "s": "d日E"
             },
             "d": {
-                "l": "dd",
-                "f": "dd"
+                "f": "dd",
+                "l": "dd"
             },
             "m": {
-                "l": "MM",
-                "f": "MM"
+                "f": "MM",
+                "l": "MM"
             },
             "y": {
                 "s": "yy"

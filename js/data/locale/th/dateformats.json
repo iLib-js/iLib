@@ -1,123 +1,36 @@
 {
     "gregorian": {
-        "date": {
-            "dmwy": {
-                "s": "Eที่ d/M/yy",
-                "m": "EEที่ d MMM yyyy",
-                "l": "EEEที่ d MMMM yyyy",
-                "f": "EEEEที่ d MMMM yyyy"
-            },
-            "dmy": {
-                "m": "d MMM yyyy",
-                "l": "d MMMM yyyy"
-            },
-            "dmw": {
-                "s": "Eที่ d/M",
-                "m": "EEที่ d MMM",
-                "l": "EEEที่ d MMMM",
-                "f": "EEEEที่ d MMMM"
-            },
-            "dm": {
-                "m": "d MMM",
-                "l": "d MMMM"
-            },
-            "my": {
-                "m": "MMM yyyy",
-                "l": "MMMM yyyy"
-            },
-            "dw": {
-                "s": "Eที่ d",
-                "m": "EEที่ d",
-                "l": "EEEที่ d",
-                "f": "EEEEที่ d"
-            },
-            "d": {
-                "f": "d",
-                "l": "d",
-                "m": "d",
-                "s": "d"
-            },
-            "m": {
-                "m": "MMM",
-                "l": "MMMM"
-            }
-        },
-        "time": {
-            "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
-                "ahm": "h:mm a",
-                "ah": "h a"
-            },
-            "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
-                "hm": "HH:mm"
-            }
-        }
-    },
-    "thaisolar": {
         "order": "{date} {time}",
         "date": {
-            "dm": {
-                "s": "d/M",
-                "m": "d MMM",
-                "l": "d MMMM",
-                "f": "d MMMM"
+            "dmwy": {
+                "f": "EEEEที่ d MMMM yyyy",
+                "l": "EEEที่ d MMMM yyyy",
+                "m": "EEที่ d MMM yyyy",
+                "s": "Eที่ d/M/yy"
             },
             "dmy": {
-                "s": "d/M/yy",
-                "m": "d MMM yyyy",
+                "f": "d MMMM yyyy",
                 "l": "d MMMM yyyy",
-                "f": "d MMMM yyyy"
-            },
-            "my": {
-                "s": "M/yy",
-                "m": "MMM yyyy",
-                "l": "MMMM yyyy",
-                "f": "MMMM yyyy"
-            },
-            "m": {
-                "s": "M",
-                "m": "MMM",
-                "l": "MMMM",
-                "f": "MMMM"
-            },
-            "d": {
-                "s": "d",
-                "f": "d",
-                "l": "d",
-                "m": "d"
-            },
-            "y": {
-                "s": "yy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "f": "yyyy"
-            },
-            "dmwy": {
-                "s": "Eที่ d/M/yy",
-                "m": "EEที่ d MMM yyyy",
-                "l": "EEEที่ d MMMM yyyy",
-                "f": "EEEEที่ d MMMM yyyy"
+                "m": "d MMM yyyy",
+                "s": "d/M/yy"
             },
             "dmw": {
-                "s": "Eที่ d/M",
-                "m": "EEที่ d MMM",
+                "f": "EEEEที่ d MMMM",
                 "l": "EEEที่ d MMMM",
-                "f": "EEEEที่ d MMMM"
+                "m": "EEที่ d MMM",
+                "s": "Eที่ d/M"
             },
-            "n": {
-                "s": "N",
-                "m": "N",
-                "l": "MMM",
-                "f": "MMMM"
+            "dm": {
+                "f": "d MMMM",
+                "l": "d MMMM",
+                "m": "d MMM",
+                "s": "d/M"
+            },
+            "my": {
+                "f": "MMMM yyyy",
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy",
+                "s": "M/yy"
             },
             "dw": {
                 "f": "EEEEที่ d",
@@ -130,84 +43,154 @@
                 "l": "EEE",
                 "m": "EE",
                 "s": "E"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "m": {
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "M"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "hmsz": "h:mm:ss z",
-                "hms": "h:mm:ss",
-                "ahmz": "h:mm a z",
-                "ahm": "h:mm a",
-                "hmz": "h:mm z",
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
                 "ah": "h a",
                 "hm": "h:mm",
                 "ms": "mm:ss",
-                "h": "h",
-                "m": "mm",
-                "s": "ss"
+                "ahm": "h:mm a",
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
             },
             "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
+                "h": "H",
+                "m": "mm",
+                "s": "ss",
                 "ah": "H",
                 "hm": "HH:mm",
                 "ms": "mm:ss",
-                "h": "H",
-                "m": "mm",
-                "s": "ss"
+                "ahm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmz": "HH:mm z",
+                "ahmz": "HH:mm z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
+            }
+        }
+    },
+    "thaisolar": {
+        "order": "{date} {time}",
+        "date": {
+            "dmwy": {
+                "f": "EEEEที่ d MMMM yyyy",
+                "l": "EEEที่ d MMMM yyyy",
+                "m": "EEที่ d MMM yyyy",
+                "s": "Eที่ d/M/yy"
+            },
+            "dmy": {
+                "f": "d MMMM yyyy",
+                "l": "d MMMM yyyy",
+                "m": "d MMM yyyy",
+                "s": "d/M/yy"
+            },
+            "dmw": {
+                "f": "EEEEที่ d MMMM",
+                "l": "EEEที่ d MMMM",
+                "m": "EEที่ d MMM",
+                "s": "Eที่ d/M"
+            },
+            "dm": {
+                "f": "d MMMM",
+                "l": "d MMMM",
+                "m": "d MMM",
+                "s": "d/M"
+            },
+            "my": {
+                "f": "MMMM yyyy",
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy",
+                "s": "M/yy"
+            },
+            "dw": {
+                "f": "EEEEที่ d",
+                "l": "EEEที่ d",
+                "m": "EEที่ d",
+                "s": "Eที่ d"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "m": {
+                "f": "MMMM",
+                "l": "MMMM",
+                "m": "MMM",
+                "s": "M"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
-        "range": {
-            "c00": {
-                "s": "{st} - {et} {sd}/{sm}/{sy}",
-                "m": "{st} - {et} {sd}/{sm}/{sy}",
-                "l": "{st} - {et} {sd} {sm} {sy}",
-                "f": "{st} - {et} {sd} {sm} {sy}"
+        "time": {
+            "12": {
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
+                "ah": "h a",
+                "hm": "h:mm",
+                "ms": "mm:ss",
+                "ahm": "h:mm a",
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
             },
-            "c01": {
-                "s": "{st} {sd} - {et} {ed}/{em}/{ey}",
-                "m": "{st} {sd} - {et} {ed}/{em}/{ey}",
-                "l": "{st} {sd} - {et} {ed} {em} {ey}",
-                "f": "{st} {sd} - {et} {ed} {em} {ey}"
-            },
-            "c02": {
-                "s": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",
-                "m": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",
-                "l": "{st} {sd} {sm} - {et} {ed} {em} {ey}",
-                "f": "{st} {sd} {sm} - {et} {ed} {em} {ey}"
-            },
-            "c10": {
-                "s": "{sd} - {ed}/{em}/{ey}",
-                "m": "{sd} - {ed}/{em}/{ey}",
-                "l": "{sd} - {ed} {em} {ey}",
-                "f": "{sd} - {ed} {em} {ey}"
-            },
-            "c11": {
-                "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "l": "{sd} {sm} - {ed} {em} {ey}",
-                "f": "{sd} {sm} - {ed} {em} {ey}"
-            },
-            "c12": {
-                "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
-                "l": "{sd} {sm} {sy} - {ed} {em} {ey}",
-                "f": "{sd} {sm} {sy} - {ed} {em} {ey}"
-            },
-            "c20": {
-                "s": "{sm}/{sy} - {em}/{ey}",
-                "m": "{sm}/{sy} - {em}/{ey}",
-                "l": "{sm} {sy} - {em} {ey}",
-                "f": "{sm} {sy} - {em} {ey}"
-            },
-            "c30": "{sy} - {ey}"
+            "24": {
+                "h": "H",
+                "m": "mm",
+                "s": "ss",
+                "ah": "H",
+                "hm": "HH:mm",
+                "ms": "mm:ss",
+                "ahm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmz": "HH:mm z",
+                "ahmz": "HH:mm z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
+            }
         }
     }
 }
