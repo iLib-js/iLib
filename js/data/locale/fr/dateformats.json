@@ -63,10 +63,10 @@
                 "s": "yyyy"
             },
             "t": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             },
             "l": {
                 "f": "cccc",

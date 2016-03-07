@@ -82,6 +82,8 @@
     "1#1 second|#{num} seconds": "one#{num} сония|#{num} сония",
     "1#1 minute|#{num} minutes": "one#{num} дақиқа|#{num} дақиқа",
     "1#1 hour|#{num} hours": "one#{num} соат|#{num} соат",
+    "in {duration}": "{duration}дан сўнг",
+    "{duration} ago": "{duration} олдин",
     "1#1 day|#{num} days": "one#{num} кун|#{num} кун",
     "1#1 week|#{num} weeks": "one#{num} ҳафта|#{num} ҳафта",
     "1#1 month|#{num} months": "one#{num} ой|#{num} ой",

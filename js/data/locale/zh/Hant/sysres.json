@@ -31,6 +31,7 @@
     "1#1 second|#{num} seconds": "#{num} 秒",
     "1#1 minute|#{num} minutes": "#{num} 分鐘",
     "1#1 hour|#{num} hours": "#{num} 小時",
+    "in {duration}": "{duration}後",
     "1#1 day|#{num} days": "#{num} 日",
     "1#1 week|#{num} weeks": "#{num}星期",
     "1#1 month|#{num} months": "#{num} 個月",
