@@ -1404,7 +1404,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 時間前", fmt.formatRelative(reference, date));
+    assertEquals("4 日後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ja_JP() {
     var fmt = new DateFmt({locale: "ja-JP", length: "full"});
