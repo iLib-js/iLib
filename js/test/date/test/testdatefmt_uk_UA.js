@@ -471,7 +471,7 @@ function testDateFmtShortDateComponentsM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("BE", fmt.format(date));
+    assertEquals("Ве", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_uk_UA() {

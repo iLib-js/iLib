@@ -99,6 +99,57 @@
                 "hmsz": "‏H:mm:ss (z)",
                 "ahmsz": "‏H:mm:ss (z)"
             }
+        },
+        "range": {
+            "c00": {
+                "s": "{et} - {st} {sy}/{sm}/{sd}",
+                "m": "{et} - {st} {sd} {sm} {sy}",
+                "l": "{et} - {st} {sd} {sm} {sy}",
+                "f": "{et} - {st} {sd} {sm} {sy}"
+            },
+            "c01": {
+                "s": "{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}",
+                "m": "{st} {sd} تا {et} {ed} {em} {ey}",
+                "l": "{st} {sd} تا {et} {ed} {em} {ey}",
+                "f": "{st} {sd} تا {et} {ed} {em} {ey}"
+            },
+            "c02": {
+                "s": "{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}",
+                "m": "{st} {sd} {sm} تا {et} {ed} {em} {ey}",
+                "l": "{st} {sd} {sm} تا {et} {ed} {em} {ey}",
+                "f": "{st} {sd} {sm} تا {et} {ed} {em} {ey}"
+            },
+            "c03": {
+                "s": "{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}",
+                "m": "‏{sd} {sm} {sy} {st} تا {ed} {em} {ey} {et}",
+                "l": "‏{sd} {sm} {sy} {st} تا {ed} {em} {ey} {et}",
+                "f": "‏{sd} {sm} {sy} {st} تا {ed} {em} {ey} {et}"
+            },
+            "c10": {
+                "s": "‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}",
+                "m": "‏{sd} تا {ed} {em} {ey}",
+                "l": "‏{sd} تا {ed} {em} {ey}",
+                "f": "‏{sd} تا {ed} {em} {ey}"
+            },
+            "c11": {
+                "s": "‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}",
+                "m": "‏{sd} {sm} تا {ed} {em} {ey}",
+                "l": "‏{sd} {sm} تا {ed} {em} {ey}",
+                "f": "‏{sd} {sm} تا {ed} {em} {ey}"
+            },
+            "c12": {
+                "s": "‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}",
+                "m": "‏{sd} {sm} {sy} تا {ed} {em} {ey}",
+                "l": "‏{sd} {sm} {sy} تا {ed} {em} {ey}",
+                "f": "‏{sd} {sm} {sy} تا {ed} {em} {ey}"
+            },
+            "c20": {
+                "s": "‏{ey}/{em} - {sy}/{sm}",
+                "m": "{sm} {sy} تا {em} {ey}",
+                "l": "{sm} {sy} تا {em} {ey}",
+                "f": "{sm} {sy} تا {em} {ey}"
+            },
+            "c30": "‏{ey} - {sy}"
         }
     },
     "gregorian": {
@@ -170,10 +221,10 @@
                 "s": "yyyy"
             },
             "t": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "L"
             },
             "l": {
                 "f": "cccc",

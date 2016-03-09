@@ -94,6 +94,43 @@
                 "hmsz": "H:mm:ss z",
                 "ahmsz": "H:mm:ss z"
             }
+        },
+        "range": {
+            "c00": {
+                "m": "{st} – {et} {sd} {sm} {sy}",
+                "l": "{st} – {et} {sd} {sm} {sy}",
+                "f": "{st} – {et} {sm} {sd} ቀን {sy}"
+            },
+            "c01": {
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
+                "m": "{st} {sd} {sm} – {et} {ed} {em} {sy}",
+                "l": "{st} {sd} – {et} {ed} {sm} {sy}",
+                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy}"
+            },
+            "c02": {
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
+                "m": "{st} {sd} {sm} – {et} {ed} {em} {sy}",
+                "l": "{st} {sd} {sm} – {et} {ed} {em} {sy}",
+                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy}"
+            },
+            "c03": {
+                "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
+                "m": "{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}",
+                "l": "{st} {sd} {sm} {sy} – {et} {ed} {em} {ey}",
+                "f": "{st} {sm} {sd} ቀን {sy} – {et} {em} {ed} ቀን {ey}"
+            },
+            "c10": {
+                "f": "{sm} {sd}–{ed} ቀን {sy}"
+            },
+            "c11": {
+                "f": "{sm} {sd} – {em} {ed} ቀን {sy}"
+            },
+            "c12": {
+                "f": "{sm} {sd} ቀን {sy} – {em} {ed} ቀን {ey}"
+            },
+            "c20": {
+                "f": "{sm} ቀን {sy} – {em} ቀን {ey}"
+            }
         }
     },
     "gregorian": {

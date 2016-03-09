@@ -1377,7 +1377,7 @@ function testDateFmtFormatRelativeWithinDayBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 цагийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("4 цаг өмнө", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_mn_Cyrl_MN() {

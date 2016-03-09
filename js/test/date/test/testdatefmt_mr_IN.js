@@ -1192,7 +1192,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_mr_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 सेकंदात", fmt.formatRelative(reference, date));
+    assertEquals("30 सेकंदांमध्ये", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteBefore_mr_IN() {
@@ -1219,7 +1219,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_mr_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 सेकंदापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("30 सेकंदांपूर्वी", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1245,7 +1245,7 @@ function testDateFmtFormatRelativeWithinHourAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 मिनिटेात", fmt.formatRelative(reference, date));
+    assertEquals("10 मिनिटेांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1271,7 +1271,7 @@ function testDateFmtFormatRelativeWithinHourBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 मिनिटेापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("10 मिनिटेांपूर्वी", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWithinDayAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 तासात", fmt.formatRelative(reference, date));
+    assertEquals("4 तासांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1323,7 +1323,7 @@ function testDateFmtFormatRelativeWithinDayBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 तासापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("4 तासांपूर्वी", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_mr_IN() {
@@ -1350,7 +1350,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 दिवसात", fmt.formatRelative(reference, date));
+    assertEquals("4 दिवसांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1376,7 +1376,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 दिवसापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("4 दिवसांपूर्वी", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_mr_IN() {
@@ -1403,7 +1403,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 आठवडेात", fmt.formatRelative(reference, date));
+    assertEquals("9 आठवडेांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1429,7 +1429,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 आठवडेापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("9 आठवडेांपूर्वी", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_mr_IN() {
@@ -1456,7 +1456,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 महिनेात", fmt.formatRelative(reference, date));
+    assertEquals("16 महिनेांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1482,7 +1482,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 महिनेापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("14 महिनेांपूर्वी", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_mr_IN() {
@@ -1509,7 +1509,7 @@ function testDateFmtFormatRelativeYearsAfter_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 वर्षेात", fmt.formatRelative(reference, date));
+    assertEquals("14 वर्षेांमध्ये", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_mr_IN() {
     var fmt = new DateFmt({locale: "mr-IN", length: "full"});
@@ -1535,7 +1535,7 @@ function testDateFmtFormatRelativeYearsBefore_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 वर्षेापूर्वी", fmt.formatRelative(reference, date));
+    assertEquals("21 वर्षेांपूर्वी", fmt.formatRelative(reference, date));
 }
 
 

@@ -83,7 +83,7 @@
     "1#1 second|#{num} seconds": "one#{num} സെക്കൻഡ്|#{num} സെക്കൻഡ്",
     "1#1 minute|#{num} minutes": "one#{num} മിനിറ്റ്|#{num} മിനിറ്റ്",
     "1#1 hour|#{num} hours": "one#{num} മണിക്കൂർ|#{num} മണിക്കൂർ",
-    "in {duration}": "{0} ദിവസത്തിൽ",
+    "in {duration}": "{duration} ശേഷം",
     "{duration} ago": "{duration} മുമ്പ്",
     "1#1 day|#{num} days": "one#{num} ദിവസം|#{num} ദിവസം",
     "1#1 week|#{num} weeks": "one#{num} ആഴ്ച|#{num} ആഴ്ച",
