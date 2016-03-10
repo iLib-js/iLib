@@ -983,18 +983,21 @@ module.exports = {
         
         return formats;
     },
-    createDurationResourceDetail: function (sourcePath, cldrUnitData, durationObject, length, language) {
+    createDurationResourceDetail: function (sourcePath, cldrUnitData, durationObject, length, language, script) {
         var durationSysres = {};
         var durationSysresTest = {};
         var cldrDateFieldData = {};
         var dataLength = length;
         var day, cldrDayPast, cldrDayFuture;
+
+        var isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
+
         
         for(duration in durationObject) {
             var durationKey = "duration-" + duration;
             var temp;
-           
             var fullStr = "";
+
             var unitNames = ["zero", "one", "two", "few", "many", "other"];
 
             for (var j = 0; j < unitNames.length; j++){
@@ -1022,8 +1025,13 @@ module.exports = {
                         
                         if (cldrDateFieldData) {
                             cldrDayPast =  cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-past"]["relativeTimePattern-count-other"];
-                            cldrDayFuture = cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];    
-        
+                            cldrDayFuture = cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];
+                            
+                            if (isRtl) {
+                                cldrDayPast = "\u200F" + cldrDayPast;
+                                cldrDayFuture = "\u200F" + cldrDayFuture;
+                            }
+
                             durationSysres["in {duration}"] = cldrDayFuture.replace(day, "{duration}").toLowerCase();    
                             durationSysres["{duration} ago"] = cldrDayPast.replace(day, "{duration}").toLowerCase();    
                         }
@@ -1035,7 +1043,7 @@ module.exports = {
 
         return durationSysres;
     },
-    createDurationResources: function (sourcePath, cldrData, language) {
+    createDurationResources: function (sourcePath, cldrData, language, script) {
         var durationObject = {
             "durationPropertiesFull" : {
                 "millisecond": "1#1 millisecond|#{num} milliseconds",
@@ -1088,22 +1096,22 @@ module.exports = {
             switch(prop) {
                 case "durationPropertiesFull":
                     unit = table.long;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "full", language);
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "full", language, script);
                     sysres.push(result);
                 break;
                 case "durationPropertiesLong":
-                    unit = table.narrow;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "long", language);
+                    unit = table.short;
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "long", language, script);
                     sysres.push(result);
                 break;
                 case "durationPropertiesMedium":
-                    unit = table.narrow;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "medium", language);
+                    unit = table.short;
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "medium", language, script);
                     sysres.push(result);
                 break;
                 case "durationPropertiesShort":
-                    unit = table.short;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "short", language);
+                    unit = table.narrow;
+                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "short", language, script);
                     sysres.push(result);
                 break;
             }
@@ -1120,8 +1128,8 @@ module.exports = {
         var sepKey, fullSepKey;
 
         var listProperties = {
-            "Full" :"listPattern-type-unit",
-            "Long" : "listPattern-type-unit-short",
+            "Full" :"listPattern-type-standard",
+            "Long" : "listPattern-type-unit",
             "Medium" : "listPattern-type-unit-short",
             "Short" : "listPattern-type-unit-narrow"
         }

@@ -196,7 +196,7 @@ list.forEach(function (file) {
 
 		// date/time duration.
 		units = aux.loadFile(path.join(sourcePath, "units.json"));
-		newFormats = aux.createDurationResources(sourcePath, units.main[file].units, language);
+		newFormats = aux.createDurationResources(sourcePath, units.main[file].units, language, script);
 		//util.print("Duration data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
