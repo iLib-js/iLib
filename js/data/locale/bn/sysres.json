@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num} মাস|#{num} মাস",
     "#{num}y": "one#{num} বছর|#{num} বছর",
     "seperatorFull": ", ",
-    "finalSeperatorFull": ", ",
+    "finalSeperatorFull": ", এবং ",
     "seperatorLong": ", ",
     "finalSeperatorLong": ", ",
     "seperatorMedium": ", ",

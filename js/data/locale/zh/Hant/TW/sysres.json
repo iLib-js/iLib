@@ -1,20 +1,14 @@
 {
     "1#1 day|#{num} days": "#{num} 天",
     "1#1 week|#{num} weeks": "#{num} 週",
-    "#{num} ms": "#{num} 毫秒",
-    "1#1 sec|#{num} sec": "#{num} 秒",
-    "1#1 min|#{num} min": "#{num} 分鐘",
-    "1#1 hr|#{num} hrs": "#{num} 小時",
     "durationLongDays": "#{num} 天",
-    "1#1 wk|#{num} wks": "#{num} 週",
-    "1#1 mon|#{num} mons": "#{num} 個月",
-    "1#1 yr|#{num} yrs": "#{num} 年",
-    "1#1 se|#{num} sec": "#{num} 秒",
-    "1#1 mi|#{num} min": "#{num} 分鐘",
-    "durationMediumHours": "#{num} 小時",
     "1#1 dy|#{num} dys": "#{num} 天",
-    "durationMediumWeeks": "#{num} 週",
-    "1#1 mo|#{num} mos": "#{num} 個月",
-    "durationMediumYears": "#{num} 年",
-    "#{num}d": "#{num} 天"
+    "durationShortMillis": "#{num} 毫秒",
+    "#{num}s": "#{num} 秒",
+    "durationShortMinutes": "#{num} 分鐘",
+    "#{num}h": "#{num} 小時",
+    "#{num}d": "#{num} 天",
+    "#{num}w": "#{num} 週",
+    "durationShortMonths": "#{num} 個月",
+    "#{num}y": "#{num} 年"
 }

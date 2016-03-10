@@ -189,7 +189,7 @@
     "durationShortMonths": "one#{num} muaj|#{num} muaj",
     "#{num}y": "one#{num} vit|#{num} vjet",
     "seperatorFull": ", ",
-    "finalSeperatorFull": " e ",
+    "finalSeperatorFull": " dhe ",
     "seperatorLong": ", ",
     "finalSeperatorLong": " e ",
     "seperatorMedium": ", ",
