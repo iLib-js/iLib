@@ -1138,8 +1138,8 @@ module.exports = {
 
         for (prop in listProperties) {
 
-            sepKey = "seperator" + prop;
-            fullSepKey = "finalSeperator" + prop;
+            sepKey = "separator" + prop;
+            fullSepKey = "finalSeparator" + prop;
 
             seperatorData = cldrListData[listProperties[[prop]]];
 
