@@ -188,12 +188,12 @@
     "#{num}w": "one#{num} ε|#{num} ε",
     "durationShortMonths": "one#{num} μ|#{num} μ",
     "#{num}y": "one#{num} έ|#{num} έ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " και ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " και ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " και ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " και ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

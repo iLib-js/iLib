@@ -112,12 +112,12 @@
     "#{num}w": "one#kɔsiɖa {num}|#kɔsiɖa {num}",
     "durationShortMonths": "one#ɣleti {num}|#ɣleti {num}",
     "#{num}y": "one#ƒe {num}|#ƒe {num}",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", kple ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", kple ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", kple ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", kple "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", kple ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", kple ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", kple ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", kple "
 }

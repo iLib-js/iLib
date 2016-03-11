@@ -1,5 +1,6 @@
 {
     "a0": "am",
     "a1": "pm",
-    "finalSeperatorFull": " and "
+    "finalSeparatorFull": " and ",
+    "finalSeparatorLong": " and "
 }

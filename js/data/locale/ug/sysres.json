@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} ھەپتە|#{num} ھەپتە",
     "durationShortMonths": "one#{num} ئاي|#{num} ئاي",
     "#{num}y": "one#{num} يىل|#{num} يىل",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", and ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", and ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", and ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", and "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", and ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", and ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", and ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", and "
 }

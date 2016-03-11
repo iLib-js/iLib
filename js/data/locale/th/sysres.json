@@ -192,12 +192,12 @@
     "#{num}w": "#{num}สัปดาห์",
     "durationShortMonths": "#{num}เดือน",
     "#{num}y": "#{num}ปี",
-    "seperatorFull": " ",
-    "finalSeperatorFull": " และ",
-    "seperatorLong": " ",
-    "finalSeperatorLong": " และ ",
-    "seperatorMedium": " ",
-    "finalSeperatorMedium": " และ ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": " ",
+    "finalSeparatorFull": " และ",
+    "separatorLong": " ",
+    "finalSeparatorLong": " และ ",
+    "separatorMedium": " ",
+    "finalSeparatorMedium": " และ ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

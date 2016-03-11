@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} сед.|#{num} сед.",
     "durationShortMonths": "one#{num} мес.|#{num} мес.",
     "#{num}y": "one#{num} год.|#{num} год.",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " и ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " и ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " и ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " и "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " и ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " и ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " и ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " и "
 }

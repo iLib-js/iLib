@@ -108,8 +108,8 @@
     "#{num}w": "one#{num} n|few#{num} n|#{num} n",
     "durationShortMonths": "one#{num} m|few#{num} m|#{num} m",
     "#{num}y": "one#{num} g|few#{num} g|#{num} g",
-    "finalSeperatorFull": " i ",
-    "finalSeperatorLong": " i ",
-    "finalSeperatorMedium": " i ",
-    "finalSeperatorShort": " i "
+    "finalSeparatorFull": " i ",
+    "finalSeparatorLong": " i ",
+    "finalSeparatorMedium": " i ",
+    "finalSeparatorShort": " i "
 }

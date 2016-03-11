@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} haft|#{num} haft",
     "durationShortMonths": "one#{num} oy|#{num} oy",
     "#{num}y": "one#{num} y|#{num} y",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " va ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " va ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

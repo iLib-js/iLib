@@ -188,12 +188,12 @@
     "#{num}w": "one#{num} aste|#{num} aste",
     "durationShortMonths": "one#{num} hil.|#{num} hil.",
     "#{num}y": "one#{num} urte|#{num} urte",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " eta ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " eta ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " eta ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " eta "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " eta ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " eta ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " eta ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " eta "
 }

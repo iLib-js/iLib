@@ -112,12 +112,12 @@
     "#{num}w": "#{num} ອທ.",
     "durationShortMonths": "#{num} ດ.",
     "#{num}y": "#{num} ປ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

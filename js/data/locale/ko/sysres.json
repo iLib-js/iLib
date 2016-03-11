@@ -113,12 +113,12 @@
     "#{num}w": "#{num}주",
     "durationShortMonths": "#{num}개월",
     "#{num}y": "#{num}년",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " 및 ",
-    "seperatorLong": " ",
-    "finalSeperatorLong": " ",
-    "seperatorMedium": " ",
-    "finalSeperatorMedium": " ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " 및 ",
+    "separatorLong": " ",
+    "finalSeparatorLong": " ",
+    "separatorMedium": " ",
+    "finalSeparatorMedium": " ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

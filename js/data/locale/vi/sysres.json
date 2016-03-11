@@ -188,12 +188,12 @@
     "#{num}w": "#{num} tuần",
     "durationShortMonths": "#{num} tháng",
     "#{num}y": "#{num} năm",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " và ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " và ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

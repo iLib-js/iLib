@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} हप्ता|#{num} हप्ता",
     "durationShortMonths": "one#{num} महिना|#{num} महिना",
     "#{num}y": "one#{num} वर्ष|#{num} वर्ष",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " र ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " र ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " "
 }

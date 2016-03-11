@@ -188,12 +188,12 @@
     "#{num}w": "one#{num} javë|#{num} javë",
     "durationShortMonths": "one#{num} muaj|#{num} muaj",
     "#{num}y": "one#{num} vit|#{num} vjet",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " dhe ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " e ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " e ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " e "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " dhe ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " e ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " e ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " e "
 }

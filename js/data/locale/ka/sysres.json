@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} კვრ|#{num} კვრ",
     "durationShortMonths": "one#{num} თვე|#{num} თვე",
     "#{num}y": "one#{num} წ|#{num} წ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " და ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " და ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

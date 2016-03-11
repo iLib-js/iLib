@@ -188,12 +188,12 @@
     "#{num}w": "one#{num} வா|#{num} வா",
     "durationShortMonths": "one#{num} மா|#{num} மா",
     "#{num}y": "one#{num} ஆ|#{num} ஆ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " மற்றும் ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " மற்றும் ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

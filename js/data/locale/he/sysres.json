@@ -112,12 +112,12 @@
     "#{num}w": "one#שבוע {num}|two#{num} שבועות|many#{num} שבועות|#{num} שבועות",
     "durationShortMonths": "one#חודש {num}|two#{num} ח׳|many#{num} ח׳|#{num} ח׳",
     "#{num}y": "one#שנה {num}|two#{num} שנים|many#{num} שנים|#{num} שנים",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " ו",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " ו",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " ו",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " ו"
+    "separatorFull": ", ",
+    "finalSeparatorFull": " ו",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " ו",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " ו",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " ו"
 }

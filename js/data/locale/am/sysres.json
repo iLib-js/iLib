@@ -197,12 +197,12 @@
     "#{num}w": "one#{num} ሳምንት|#{num} ሳምንት",
     "durationShortMonths": "one#{num} ወር|#{num} ወር",
     "#{num}y": "one#{num} ዓመት|#{num} ዓ",
-    "seperatorFull": "፣ ",
-    "finalSeperatorFull": ", እና ",
-    "seperatorLong": "፣ ",
-    "finalSeperatorLong": ", እና ",
-    "seperatorMedium": "፣ ",
-    "finalSeperatorMedium": ", እና ",
-    "seperatorShort": "፣ ",
-    "finalSeperatorShort": ", እና "
+    "separatorFull": "፣ ",
+    "finalSeparatorFull": ", እና ",
+    "separatorLong": "፣ ",
+    "finalSeparatorLong": ", እና ",
+    "separatorMedium": "፣ ",
+    "finalSeparatorMedium": ", እና ",
+    "separatorShort": "፣ ",
+    "finalSeparatorShort": ", እና "
 }

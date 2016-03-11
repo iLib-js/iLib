@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} সপ্তাহ|#{num} সপ্তাহ",
     "durationShortMonths": "one#{num} মাস|#{num} মাস",
     "#{num}y": "one#{num} বছর|#{num} বছর",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", এবং ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", এবং ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

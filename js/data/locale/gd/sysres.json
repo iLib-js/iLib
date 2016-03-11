@@ -188,12 +188,12 @@
     "#{num}w": "one#{num}s|two#{num}s|few#{num}s|#{num}s",
     "durationShortMonths": "one#{num}m|two#{num}m|few#{num}m|#{num}m",
     "#{num}y": "one#{num}bl|two#{num}bl|few#{num}bl|#{num}bl",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " agus ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " agus ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " ‘s ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " agus ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " agus ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " ‘s ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

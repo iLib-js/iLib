@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} ہفتہ|#{num} ہفتے",
     "durationShortMonths": "one#{num} مہینہ|#{num} مہینے",
     "#{num}y": "one#{num} سال|#{num} سال",
-    "seperatorFull": "، ",
-    "finalSeperatorFull": "، اور ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": "، اور ",
-    "seperatorMedium": "، ",
-    "finalSeperatorMedium": "، اور ",
-    "seperatorShort": "، ",
-    "finalSeperatorShort": "، اور "
+    "separatorFull": "، ",
+    "finalSeparatorFull": "، اور ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": "، اور ",
+    "separatorMedium": "، ",
+    "finalSeparatorMedium": "، اور ",
+    "separatorShort": "، ",
+    "finalSeparatorShort": "، اور "
 }

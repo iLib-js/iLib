@@ -112,8 +112,8 @@
     "#{num}w": "one#{num} нед|few#{num} нед|#{num} нед",
     "durationShortMonths": "one#{num} мес|few#{num} мес|#{num} мес",
     "#{num}y": "one#{num} год|few#{num} год|#{num} год",
-    "finalSeperatorFull": " и ",
-    "finalSeperatorLong": " и ",
-    "finalSeperatorMedium": " и ",
-    "finalSeperatorShort": " и "
+    "finalSeparatorFull": " и ",
+    "finalSeparatorLong": " и ",
+    "finalSeparatorMedium": " и ",
+    "finalSeparatorShort": " и "
 }

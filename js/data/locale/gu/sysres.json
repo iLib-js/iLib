@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} અઠ.|#{num} અઠ.",
     "durationShortMonths": "one#{num} મ|#{num} મ",
     "#{num}y": "one#{num} વ|#{num} વ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " અને ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " અને ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

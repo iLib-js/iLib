@@ -112,12 +112,12 @@
     "#{num}w": "#okó {num}",
     "durationShortMonths": "#Wí {num}",
     "#{num}y": "#ómakȟa {num}",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", "
 }

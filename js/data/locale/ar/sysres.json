@@ -112,12 +112,12 @@
     "#{num}w": "zero#{num} أسبوع|one#{num} أسبوع|two#{num} أسبوع|few#{num} أسبوع|many#{num} أسبوع|#{num} أسبوع",
     "durationShortMonths": "zero#{num} شهر|one#{num} شهر|two#{num} شهر|few#{num} شهر|many#{num} شهر|#{num} شهر",
     "#{num}y": "zero#{num} سنة|one#{num} سنة|two#{num} سنة|few#{num} سنة|many#{num} سنة|#{num} سنة",
-    "seperatorFull": "، ",
-    "finalSeperatorFull": "، و ",
-    "seperatorLong": "، ",
-    "finalSeperatorLong": "، و ",
-    "seperatorMedium": "، ",
-    "finalSeperatorMedium": "، و ",
-    "seperatorShort": "، ",
-    "finalSeperatorShort": "، و "
+    "separatorFull": "، ",
+    "finalSeparatorFull": "، و ",
+    "separatorLong": "، ",
+    "finalSeparatorLong": "، و ",
+    "separatorMedium": "، ",
+    "finalSeparatorMedium": "، و ",
+    "separatorShort": "، ",
+    "finalSeparatorShort": "، و "
 }

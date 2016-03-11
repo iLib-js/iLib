@@ -112,12 +112,12 @@
     "#{num}w": "one#{num}ವಾರ|#{num}ವಾರ",
     "durationShortMonths": "one#{num}ತಿಂ.|#{num}ತಿಂ.",
     "#{num}y": "one#{num}ವ|#{num}ವ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", ಮತ್ತು ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", ಮತ್ತು ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", ಮತ್ತು ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", ಮತ್ತು "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", ಮತ್ತು ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", ಮತ್ತು ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", ಮತ್ತು ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", ಮತ್ತು "
 }

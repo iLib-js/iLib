@@ -112,12 +112,12 @@
     "#{num}w": "#{num}ပတ်",
     "durationShortMonths": "#{num}လ",
     "#{num}y": "#{num} y",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", နှင့်",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", နှင့်",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", နှင့်",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", နှင့်"
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", နှင့်",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", နှင့်",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", နှင့်",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", နှင့်"
 }

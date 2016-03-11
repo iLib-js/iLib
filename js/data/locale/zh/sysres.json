@@ -120,12 +120,12 @@
     "#{num}w": "#{num}周",
     "durationShortMonths": "#{num}个月",
     "#{num}y": "#{num}年",
-    "seperatorFull": "、",
-    "finalSeperatorFull": "和",
-    "seperatorLong": "",
-    "finalSeperatorLong": "",
-    "seperatorMedium": "",
-    "finalSeperatorMedium": "",
-    "seperatorShort": "",
-    "finalSeperatorShort": ""
+    "separatorFull": "、",
+    "finalSeparatorFull": "和",
+    "separatorLong": "",
+    "finalSeparatorLong": "",
+    "separatorMedium": "",
+    "finalSeparatorMedium": "",
+    "separatorShort": "",
+    "finalSeparatorShort": ""
 }

@@ -2,6 +2,6 @@
     "a0": "am",
     "a1": "pm",
     "durationShortMillis": "one#{num} ms|#{num} ms",
-    "finalSeperatorFull": " and ",
-    "finalSeperatorLong": " and "
+    "finalSeparatorFull": " and ",
+    "finalSeparatorLong": " and "
 }

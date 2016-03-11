@@ -266,12 +266,12 @@
     "#{num}w": "one#{num} هفته|#{num} هفته",
     "durationShortMonths": "one#{num} ماه|#{num} ماه",
     "#{num}y": "one#{num} سال|#{num} سال",
-    "seperatorFull": "،‏ ",
-    "finalSeperatorFull": "، و ",
-    "seperatorLong": "،‏ ",
-    "finalSeperatorLong": "، و ",
-    "seperatorMedium": "،‏ ",
-    "finalSeperatorMedium": "،‏ ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": "،‏ ",
+    "finalSeparatorFull": "، و ",
+    "separatorLong": "،‏ ",
+    "finalSeparatorLong": "، و ",
+    "separatorMedium": "،‏ ",
+    "finalSeparatorMedium": "،‏ ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

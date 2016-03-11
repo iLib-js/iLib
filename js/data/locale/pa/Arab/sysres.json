@@ -112,5 +112,5 @@
     "#{num}w": "#{num} w",
     "durationShortMonths": "#{num} m",
     "#{num}y": "#{num} y",
-    "finalSeperatorFull": ", "
+    "finalSeparatorFull": ", "
 }

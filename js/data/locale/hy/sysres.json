@@ -188,12 +188,12 @@
     "#{num}w": "one#{num} շ.|#{num} շ.",
     "durationShortMonths": "one#{num} ա.|#{num} ա.",
     "#{num}y": "one#{num}տ.|#{num}տ.",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " և ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " և ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " և ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " և "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " և ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " և ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " և ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " և "
 }

@@ -112,12 +112,12 @@
     "#{num}w": "one#{num} hét|#{num} hét",
     "durationShortMonths": "one#{num} h.|#{num} h.",
     "#{num}y": "one#{num} év|#{num} év",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " és ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": " és ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": " és ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": " és "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " és ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": " és ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": " és ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": " és "
 }

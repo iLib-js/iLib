@@ -112,12 +112,12 @@
     "#{num}w": "#{num} សប្ដាហ៍",
     "durationShortMonths": "#{num} ខែ",
     "#{num}y": "#{num} ឆ្នាំ",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": " ",
-    "seperatorLong": " ",
-    "finalSeperatorLong": " និង ",
-    "seperatorMedium": " ",
-    "finalSeperatorMedium": " ",
-    "seperatorShort": " ",
-    "finalSeperatorShort": " "
+    "separatorFull": ", ",
+    "finalSeparatorFull": " ",
+    "separatorLong": " ",
+    "finalSeparatorLong": " និង ",
+    "separatorMedium": " ",
+    "finalSeparatorMedium": " ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

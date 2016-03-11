@@ -112,12 +112,12 @@
     "#{num}w": "one#ස {num}|#ස {num}",
     "durationShortMonths": "one#මා {num}|#මා {num}",
     "#{num}y": "one#ව {num}|#ව {num}",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", සහ ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", සහ ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", සහ ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", සහ "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", සහ ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", සහ ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", සහ ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", සහ "
 }

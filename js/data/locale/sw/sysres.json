@@ -112,12 +112,12 @@
     "#{num}w": "one#wiki {num}|#wiki {num}",
     "durationShortMonths": "one#mwezi {num}|#miezi {num}",
     "#{num}y": "one#mwaka {num}|#miaka {num}",
-    "seperatorFull": ", ",
-    "finalSeperatorFull": ", na ",
-    "seperatorLong": ", ",
-    "finalSeperatorLong": ", na ",
-    "seperatorMedium": ", ",
-    "finalSeperatorMedium": ", na ",
-    "seperatorShort": ", ",
-    "finalSeperatorShort": ", na "
+    "separatorFull": ", ",
+    "finalSeparatorFull": ", na ",
+    "separatorLong": ", ",
+    "finalSeparatorLong": ", na ",
+    "separatorMedium": ", ",
+    "finalSeparatorMedium": ", na ",
+    "separatorShort": ", ",
+    "finalSeparatorShort": ", na "
 }
