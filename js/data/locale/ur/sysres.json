@@ -105,7 +105,7 @@
     "1#1 mo|#{num} mos": "one#{num} مہینہ|#{num} مہینے",
     "durationMediumYears": "one#{num} سال|#{num} سال",
     "durationShortMillis": "one#{num} ms|#{num} ms",
-    "#{num}s": "one#{num}s|#{num}s",
+    "#{num}s": "one#{num}س|#{num}س",
     "durationShortMinutes": "one#{num} منٹ|#{num} منٹ",
     "#{num}h": "one#{num} گھنٹہ|#{num} گھنٹے",
     "#{num}d": "one#{num} دن|#{num} دن",

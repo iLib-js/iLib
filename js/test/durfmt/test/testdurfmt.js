@@ -1636,7 +1636,7 @@ function testDurFmtFAFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ه ۱ر ۱س ۱د ۱ث", duration.toString());
+    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatShortText() {
@@ -1656,7 +1656,7 @@ function testDurFmtFAFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ه ۱ر ۱س ۱د ۱ث", duration.toString());
+    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatShortClock() {
@@ -1676,7 +1676,7 @@ function testDurFmtFAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ه ۱ر ‏۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtFAFormatMedium() {
@@ -1695,7 +1695,7 @@ function testDurFmtFAFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ ثانیه", duration.toString());
+    assertEquals("۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatLong() {
@@ -1714,7 +1714,7 @@ function testDurFmtFAFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ ثانیه", duration.toString());
+    assertEquals("۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatFull() {
@@ -2096,7 +2096,7 @@ function testDurFmtGAFormatFull() {
 function testDurFmtHEFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
     	locale: "he-IL",
-    	length: "short"
+    	length: "short",
     });
     assertNotNull(fmt);
     
@@ -2109,7 +2109,7 @@ function testDurFmtHEFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ש 1ח 1ש ‏1 יום 1ש 1ד 1ש", duration.toString());
+    assertEquals("שנה 1, חודש 1, שבוע 1, י׳, שעה, דקה, שניה", duration.toString());
 };
 
 function testDurFmtHEFormatShortText() {
@@ -2129,7 +2129,7 @@ function testDurFmtHEFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ש 1ח 1ש ‏1 יום 1ש 1ד 1ש", duration.toString());
+    assertEquals("שנה 1, חודש 1, שבוע 1, י׳, שעה, דקה, שניה", duration.toString());
 };
 
 function testDurFmtHEFormatShortClock() {
@@ -2149,7 +2149,7 @@ function testDurFmtHEFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ש 1ח 1ש ‏1 יום ‏01:01:01", duration.toString());
+    assertEquals("שנה 1, חודש 1, שבוע 1, י׳, ‏01:01:01", duration.toString());
 };
 
 function testDurFmtHEFormatMedium() {
@@ -2168,7 +2168,7 @@ function testDurFmtHEFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 שנה 1 חו 1 שב 1 יום 1 שעה 1 דק׳ 1 שנ׳", duration.toString());
+    assertEquals("שנה, חודש, שבוע 1, יום, שעה, דקה, שנ׳", duration.toString());
 };
 
 function testDurFmtHEFormatLong() {
@@ -2187,7 +2187,7 @@ function testDurFmtHEFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 שנה 1 חודש 1 שבוע ‏1 יום 1 שעה 1 דקה 1 שניה", duration.toString());
+    assertEquals("שנה, חודש, שבוע 1, יום, שעה, דקה, שנ׳", duration.toString());
 };
 
 function testDurFmtHEFormatFull() {
@@ -2206,7 +2206,7 @@ function testDurFmtHEFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 שנה, 1 חודש, 1 שבוע, ‏1 יום, 1 שעה, 1 דקה ו1 שניה", duration.toString());
+    assertEquals("שנה, חודש, שבוע, יום, שעה, דקה ושניה", duration.toString());
 };
 
 
@@ -3478,7 +3478,7 @@ function testDurFmtURFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ہ ۱د ۱گ ۱م ۱س", duration.toString());
+    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
 };
 
 function testDurFmtURFormatShortText() {
@@ -3498,7 +3498,7 @@ function testDurFmtURFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ہ ۱د ۱گ ۱م ۱س", duration.toString());
+    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
 };
 
 function testDurFmtURFormatShortTextWestern() {
@@ -3519,7 +3519,7 @@ function testDurFmtURFormatShortTextWestern() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1س 1م 1ہ 1د 1گ 1م 1س", duration.toString());
+    assertEquals("1 سال 1 مہینہ 1 ہفتہ 1 دن 1 گھنٹہ 1 منٹ 1س", duration.toString());
 };
 
 function testDurFmtURFormatShortClock() {
@@ -3539,7 +3539,7 @@ function testDurFmtURFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ہ ۱د ‏۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtURFormatMedium() {
@@ -3558,7 +3558,7 @@ function testDurFmtURFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ مہ ۱ ہف ۱ دن ۱ گھ ۱ منٹ ۱ سی", duration.toString());
+    assertEquals("۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، ۱ سیکنڈ", duration.toString());
 };
 
 function testDurFmtURFormatLong() {
@@ -3577,7 +3577,7 @@ function testDurFmtURFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ مہی ۱ ہفتہ ۱ دن ۱ گھن ۱ منٹ ۱ سیک", duration.toString());
+    assertEquals("۱ سال, ۱ مہینہ, ۱ ہفتہ, ۱ دن, ۱ گھنٹہ, ۱ منٹ, ۱ سیکنڈ", duration.toString());
 };
 
 function testDurFmtURFormatFull() {
@@ -4151,7 +4151,7 @@ function testDurFmtJAFormatMedium() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1ミリ秒", duration.toString());
+    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1 ミリ秒", duration.toString());
 };
 
 function testDurFmtJAFormatLong() {
@@ -4171,7 +4171,7 @@ function testDurFmtJAFormatLong() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1ミリ秒", duration.toString());
+    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1 ミリ秒", duration.toString());
 };
 
 function testDurFmtJAFormatFull() {

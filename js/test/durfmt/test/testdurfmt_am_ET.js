@@ -500,7 +500,7 @@ function testDurFmtAMAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
+    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -526,7 +526,7 @@ function testDurFmtAMAsyncWithLocale1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
+    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });
