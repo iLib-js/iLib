@@ -490,19 +490,19 @@ module.exports = {
             };
 
                 /*
-                 * stand-alone of m (month) is t
+                 * stand-alone of m (month) is l
                  * stand-alone of d (day) is a
-                 * stand-alone of w (weekday) is l
+                 * stand-alone of w (weekday) is e
                  * stand-alone of y (year) is r
                  */
             if (usesStandAlone) {
-                calendar.date.t = {};
+                calendar.date.e = {};
                 calendar.date.l = {};
             }
             
             if (isAsianLang(language)) {
                 calendar.date.a = {};
-                calendar.date.t = {};
+                calendar.date.l = {};
                 calendar.date.r = {};
             }
             
@@ -653,13 +653,13 @@ module.exports = {
                 
                 if (usesStandAlone) {
                         calendar.date.my[lenAbbr] = calendar.date.my[lenAbbr].replace(/MMMM/, "LLLL").replace(/MMM/, "LLL");
-                        calendar.date.l[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c"); //"l: stand."
-                        calendar.date.t[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
+                        calendar.date.e[lenAbbr] = calendar.date.w[lenAbbr].replace(/E/g, "c");
+                        calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
                 }
                 
                 if (isAsianLang(language)) {
                         calendar.date.a[lenAbbr] = getAvailableFormat(cldrCalendar, "d").replace(/d+/, calendar.date.d[lenAbbr]);
-                        calendar.date.t[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+                        calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
                         calendar.date.r[lenAbbr] = getAvailableFormat(cldrCalendar, "y").replace(/y+/, calendar.date.y[lenAbbr]);
                 }
                 
@@ -991,7 +991,6 @@ module.exports = {
         var day, cldrDayPast, cldrDayFuture;
 
         var isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
-
         
         for(duration in durationObject) {
             var durationKey = "duration-" + duration;
