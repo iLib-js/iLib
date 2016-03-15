@@ -6,17 +6,17 @@
                 "l": "yyyy LLLL",
                 "m": "yyyy LLL"
             },
-            "t": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "l": {
+            "e": {
                 "f": "cccc",
                 "l": "ccc",
                 "m": "cc",
                 "s": "c"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             }
         }
     }

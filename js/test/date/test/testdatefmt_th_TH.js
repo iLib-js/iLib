@@ -475,7 +475,7 @@ function testDateFmtShortDateComponentsM_th_TH() {
 }
 
 function testDateFmtShortDateComponentsN_th_TH() {
-    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "n"});
+    var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m", length:"full"});
     assertNotNull(fmt);
     
     var date = new ThaiSolarDate({
@@ -488,7 +488,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ก.ย.", fmt.format(date));
+    assertEquals("กันยายน", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
