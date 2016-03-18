@@ -1,11 +1,8 @@
 {
     "generated": true,
     "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
         "currencyFormats": {
-            "commonNegative": "-{n}{s}"
+            "common": "{s}{n}"
         }
     }
 }

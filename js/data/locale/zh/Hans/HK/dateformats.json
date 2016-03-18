@@ -1,31 +1,7 @@
 {
     "gregorian": {
-        "order": {
-            "f": "{date}{time}",
-            "l": "{date}{time}",
-            "m": "{date} {time}",
-            "s": "{date} {time}"
-        },
         "date": {
-            "dmwy": {
-                "s": "d/M/yyE"
-            },
-            "dmy": {
-                "s": "d/M/yy"
-            },
-            "dmw": {
-                "s": "d/ME"
-            },
-            "dm": {
-                "s": "d/M"
-            },
-            "my": {
-                "s": "M/yy"
-            },
-            "dw": {
-                "s": "d/E"
-            },
-            "t": {
+            "l": {
                 "f": "L",
                 "l": "L",
                 "m": "L",

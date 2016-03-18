@@ -1021,3 +1021,4 @@ qt/FileReader/release
 qt/FileReader/.moc
 qt/FileReader/.obj/
 qt/FileReader/libFileReader.so
+qt/build.properties

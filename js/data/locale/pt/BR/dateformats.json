@@ -15,9 +15,9 @@
                 "m": "d 'de' MMM"
             },
             "my": {
-                "m": "MMM 'de' yyyy",
+                "f": "MMMM 'de' yyyy",
                 "l": "MMMM 'de' yyyy",
-                "f": "MMMM 'de' yyyy"
+                "m": "MMM 'de' yyyy"
             },
             "dw": {
                 "m": "EE, d"
@@ -27,10 +27,6 @@
             },
             "m": {
                 "m": "MMM"
-            },
-            "l": {
-                "m": "MM",
-                "s": "MM"
             }
         },
         "range": {

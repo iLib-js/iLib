@@ -2,13 +2,13 @@
     "numfmt": {
         "currencyFormats": {
             "common": "{s}{n}",
-            "commonNegative": "{s}-{n}",
+            "commonNegative": "({s}{n})",
             "iso": "{s}{n}",
-            "isoNegative": "{s}-{n}"
+            "isoNegative": "({s}{n})"
         },
-        "decimalChar": ",",
-        "exponential": "e",
-        "groupChar": ".",
+        "decimalChar": ".",
+        "exponential": "E",
+        "groupChar": ",",
         "negativenumFmt": "-{n}",
         "negativepctFmt": "-{n}%",
         "pctChar": "%",
@@ -16,6 +16,7 @@
         "prigroupSize": 3,
         "roundingMode": "halfdown",
         "script": "Latn",
-        "secgroupSize": 0
+        "secgroupSize": 0,
+        "useNative": false
     }
 }

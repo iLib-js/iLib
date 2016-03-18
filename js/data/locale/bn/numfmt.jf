@@ -1,14 +1,13 @@
 {
+    "generated": true,
     "numfmt": {
         "script": "Beng",
-        "decimalChar": ".",
-        "groupChar": ",",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "common": "{n}{s}",
+            "commonNegative": "({n}{s})"
         },
-		"useNative": true,
-        "digits": "০১২৩৪৫৬৭৮৯"
+        "digits": "০১২৩৪৫৬৭৮৯",
+        "useNative": true
     }
 }

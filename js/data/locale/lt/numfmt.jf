@@ -1,10 +1,12 @@
 {
     "generated": true,
     "numfmt": {
+        "decimalChar": ",",
         "groupChar": " ",
-        "exponential": "E",
+        "exponential": "×10^",
         "currencyFormats": {
             "common": "{n} {s}"
-        }
+        },
+        "pctFmt": "{n} %"
     }
 }

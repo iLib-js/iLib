@@ -1,4 +1,8 @@
 {
     "EEEE1": "پیر",
-    "EEE1": "پیر"
+    "EEE1": "پیر",
+    "finalSeparatorLong": "، ",
+    "finalSeparatorMedium": "، ",
+    "separatorShort": " ",
+    "finalSeparatorShort": " "
 }

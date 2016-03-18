@@ -27,7 +27,8 @@ function suite() {
     var s = new TestSuite();
     
     var suites = [
-	    "testutils.js"
+	    "testutils.js",
+	    "testset.js"
 	];
 
     suites.forEach(function (path) {

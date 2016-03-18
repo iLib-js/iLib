@@ -973,7 +973,7 @@ function testRuleGetValueInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(IString._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1007,7 +1007,7 @@ function testRuleGetValueInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertFalse(IString._fncs.getValue(rule, 1));
+	assertTrue(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueInRangeIntegersTrue() {
@@ -1021,7 +1021,7 @@ function testRuleGetValueInRangeIntegersTrue() {
 	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
-function testRuleGetValueInRangeIntegersFalseNotInteger() {
+function testRuleGetValueInRangeIntegersTrueNotInteger() {
 	var rule = {
 		inrange: [
 		    "n",
@@ -1029,7 +1029,7 @@ function testRuleGetValueInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(IString._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueInRangeIntegersTrueMany() {
@@ -1195,7 +1195,7 @@ function testRuleGetValueNotInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(IString._fncs.getValue(rule, 0.5));
+	assertFalse(IString._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1229,7 +1229,7 @@ function testRuleGetValueNotInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertTrue(IString._fncs.getValue(rule, 1));
+	assertFalse(IString._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueNotInRangeIntegersTrue() {
@@ -1251,7 +1251,7 @@ function testRuleGetValueNotInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(IString._fncs.getValue(rule, 0.5));
+	assertFalse(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueNotInRangeIntegersTrueMany() {
@@ -1451,7 +1451,7 @@ function testRuleGetValueWithinFalseBetween() {
 		]
 	};
 	
-	assertFalse(IString._fncs.getValue(rule, 1.876));
+	assertTrue(IString._fncs.getValue(rule, 1.876));
 }
 
 function testRuleGetValueWithinITrue() {
@@ -1465,7 +1465,7 @@ function testRuleGetValueWithinITrue() {
 	assertTrue(IString._fncs.getValue(rule, 2));
 }
 
-function testRuleGetValueWithinIntegersFalseNotInteger() {
+function testRuleGetValueWithinIntegersTrueNotInteger() {
 	var rule = {
 		within: [
 		    "n",
@@ -1473,7 +1473,7 @@ function testRuleGetValueWithinIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(IString._fncs.getValue(rule, 0.5));
+	assertTrue(IString._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueWithinIntegersTrueMany() {
@@ -1844,12 +1844,12 @@ function testRuleComplex4() {
         ]
     };
 	
-	assertFalse(IString._fncs.getValue(rule, 3.5));
+	assertTrue(IString._fncs.getValue(rule, 3.5));
 	assertFalse(IString._fncs.getValue(rule, 13.5));
-	assertFalse(IString._fncs.getValue(rule, 23.5));
-	assertFalse(IString._fncs.getValue(rule, 103.5));
+	assertTrue(IString._fncs.getValue(rule, 23.5));
+	assertTrue(IString._fncs.getValue(rule, 103.5));
 	assertFalse(IString._fncs.getValue(rule, 113.5));
-	assertFalse(IString._fncs.getValue(rule, 123.5));
+	assertTrue(IString._fncs.getValue(rule, 123.5));
 }
 
 function testStringGetLocaleDefault() {
@@ -1995,6 +1995,16 @@ function testStringFormatChoiceCharClasses12() {
     assertEquals("Default items", str.formatChoice(5));
 }
 
+function testStringFormatChoiceCharClasses13() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("ar-SA");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(30));
+}
+
+
 function testStringFormatChoiceCharClassesComplex1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
@@ -2083,4 +2093,130 @@ function testStringFormatChoiceCharClassesComplex10() {
     assertNotNull(str);
     
     assertEquals("The items are many", str.formatChoice(10));
+}
+
+function testStringFormatChoiceDecimal1() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("ar-EG");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(8.0));
+}
+
+function testStringFormatChoiceDecimal2() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("hy-AM");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(3.5));
+}
+
+function testStringFormatChoiceDecimal3() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("hr-HR");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(2.3));
+}
+
+function testStringFormatChoiceDecimal4() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("hr-HR");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(10.1));
+}
+
+function testStringFormatChoiceDecimal5() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("hr-HR");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(2.5));
+}
+
+function testStringFormatChoiceDecimal6() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("he-IL");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(10.0));
+}
+
+function testStringFormatChoiceDecimal7() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("ga-IE");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(1.6));
+}
+
+function testStringFormatChoiceDecimal8() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("ga-IE");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(5.2));
+}
+
+function testStringFormatChoiceDecimal9() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("lv-LV");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(1.9));
+}
+
+function testStringFormatChoiceDecimal10() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("lv-LV");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(1.1));
+}
+
+function testStringFormatChoiceDecimal11() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("lt-LT");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(1.7));
+}
+
+function testStringFormatChoiceDecimal12() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("fa-IR");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(2.6));
+}
+
+function testStringFormatChoiceDecimal13() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("fa-IR");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(0.04));
+}
+
+function testStringFormatChoiceDecimal14() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("sk-KS");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(1.5));
 }
