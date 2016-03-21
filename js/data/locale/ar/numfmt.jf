@@ -5,6 +5,7 @@
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
+        "pctFmt": "{n}٪",
         "exponential": "اس",
         "currencyFormats": {
             "common": "{s}{n}",

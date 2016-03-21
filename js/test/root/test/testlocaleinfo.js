@@ -1161,7 +1161,7 @@ function testLocaleInfoGetPercentageFormat_ar_AE() {
 	var info = new LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_AE() {

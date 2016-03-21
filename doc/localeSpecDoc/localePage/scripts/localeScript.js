@@ -192,9 +192,9 @@ $(function(){
 
 
 	// Number Formatting
-	var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
+	var fmt = new NumFmt({locale: currentLocale,type: "standard"});
 	$("#numDecimalSymbol").text(li.getDecimalSeparator());
-	$("#numDecimal").text(fmt.format(1.73));
+	$("#numDecimal").text(fmt.format(1.734));
 
 	var fmt = new NumFmt({locale: currentLocale,style: "standard"});
 	$("#numGroupSymbol").text(li.getGroupingSeparator());

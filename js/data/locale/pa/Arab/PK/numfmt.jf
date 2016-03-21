@@ -5,6 +5,7 @@
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
+        "pctFmt": "{n}٪",
         "exponential": "×۱۰^",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true

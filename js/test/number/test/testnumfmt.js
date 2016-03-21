@@ -3434,13 +3434,13 @@ function testNumFmt_ar_SA() {
 }*/
 function testNumFmtPercentageFormatRegular_ar_SA() {
     var fmt = new NumFmt({
-    locale: "ar-SA",
+        locale: "ar-SA",
         type: "percentage"
     });
 
     assertNotNull(fmt);
 
-    assertEquals("٥٧٫٨%", fmt.format(57.8));
+    assertEquals("٥٧٫٨٪", fmt.format(57.8));
 }
 
 //test cases for bg-BG
@@ -3459,7 +3459,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "bg-BG",
-    currency: "BGN"
+        currency: "BGN"
     });
 
     assertNotNull(fmt);
@@ -3468,7 +3468,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
 }
 function testNumFmtPercentageFormatRegular_bg_BG() {
     var fmt = new NumFmt({
-    locale: "bg-BG",
+        locale: "bg-BG",
         type: "percentage"
     });
 
@@ -3572,7 +3572,7 @@ function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_cs_CZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
-    currency: "CZK"
+        currency: "CZK"
     });
 
     assertNotNull(fmt);
