@@ -5,12 +5,12 @@
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
-        "pctFmt": "{n}٪",
         "exponential": "اس",
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "({s}{n})"
         },
+        "pctFmt": "{n}٪",
         "digits": "٠١٢٣٤٥٦٧٨٩",
         "useNative": true
     }

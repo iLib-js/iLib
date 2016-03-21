@@ -3620,7 +3620,7 @@ function testNumFmtPercentageFormatRegular_fa_IR() {
 
     assertNotNull(fmt);
 
-    assertEquals("۵۷٫۸%", fmt.format(57.8));
+    assertEquals("۵۷٫۸٪", fmt.format(57.8));
 }
 
 //test cases for ga-IE

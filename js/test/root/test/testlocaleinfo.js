@@ -1941,7 +1941,7 @@ function testLocaleInfoGetPercentageFormat_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa() {
@@ -1991,7 +1991,7 @@ function testLocaleInfoGetPercentageFormat_fa_AF() {
 	var info = new LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa_AF() {
@@ -3259,7 +3259,7 @@ function testLocaleInfoGetPercentageFormat_ks_IN_Arab() {
 	var info = new LocaleInfo("ks-IN-Arab");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ks_IN_Arab() {
@@ -4270,7 +4270,7 @@ function testLocaleInfoGetPercentageFormat_pa() {
 	var info = new LocaleInfo("pa-PK-Arab");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_pa() {
@@ -6083,7 +6083,7 @@ function testLocaleInfoGetPercentageFormat_ur_AF_Arab() {
 	var info = new LocaleInfo("uz-AF-Arab");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ur_AF_Arab() {

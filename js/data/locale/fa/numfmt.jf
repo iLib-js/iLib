@@ -10,6 +10,7 @@
             "common": "‎{s}{n}",
             "commonNegative": "‎({s}{n})"
         },
+        "pctFmt": "{n}٪",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }

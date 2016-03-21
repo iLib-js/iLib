@@ -9,6 +9,7 @@
         "currencyFormats": {
             "common": "{n} {s}"
         },
+        "pctFmt": "{n}٪",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }

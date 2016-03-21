@@ -375,16 +375,32 @@ function getNumberFormats_num_system(def_num_system, data) {
 		index_of_semi_colon = percent_format.indexOf(";");
 		var negative_pct_format = percent_format.substring(index_of_semi_colon + 1, percent_format.length);
 		var pctfmtnegative = negative_pct_format.replace(/[0#,\.]+/, "{n}");
-		symbol_format_data["negativepctFmt"] = pctfmtnegative;
 
 		var positive_pct_format = percent_format.substring(0, index_of_semi_colon - 1);
 		pctFmt = positive_pct_format.replace(/[0#,\.]+/, "{n}");
-		//pctFmt=pctFmt.replace(/¤/g,"{s}"); 
-		symbol_format_data["pctFmt"] = pctFmt;
+
+		if (symbol_format_data["pctChar"] !== "%") {
+			newpctfmtnegative = pctfmtnegative.replace("%", symbol_format["percentSign"]);
+			newpctFmt = pctFmt.replace("%", symbol_format["percentSign"]);
+
+			symbol_format_data["negativepctFmt"] = newpctfmtnegative;
+			symbol_format_data["pctFmt"] = newpctFmt;
+
+		} else {
+			symbol_format_data["negativepctFmt"] = pctfmtnegative;
+			symbol_format_data["pctFmt"] = pctFmt;
+		}
+
 	} else {
 		pctFmt = percent_format.replace(/[0#,\.]+/, "{n}");
-		//pctFmt=pctFmt.replace(/¤/g,"{s}"); 
-		symbol_format_data["pctFmt"] = pctFmt;
+
+		if (symbol_format["percentSign"] !== "%") {
+			newpctFmt = pctFmt.replace("%", symbol_format["percentSign"]);i
+			symbol_format_data["pctFmt"] = newpctFmt;
+
+		} else {
+			symbol_format_data["pctFmt"] = pctFmt;
+		}
 	}
 
 	symbol_format_data["roundingMode"] = "halfdown";
