@@ -220,17 +220,17 @@
                 "m": "yyyy",
                 "s": "yyyy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
-            "l": {
+            "t": {
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
                 "s": "L"
+            },
+            "l": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
             }
         },
         "time": {

@@ -33,7 +33,12 @@ $(function(){
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
 
 	for (i=0; i<7; i++) {
-		date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
+		if (currentLocale === "am-ET") {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});	
+		} else {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});	
+		}
+		
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
@@ -43,7 +48,12 @@ $(function(){
 		}
 	}
 
-	var loopLength = (currentLocale === "am-ET") ? 13 : 12;
+	var loopLength;
+	if (currentLocale === "am-ET" || currentLocale === "en-ET") {
+		loopLength = 13;
+	} else {
+		loopLength = 12;
+	}
 	
 	for (i=0; i < loopLength; i++) {
 		date[i] = new DateFactory({month: i+1, type:li.getCalendar()});
@@ -63,7 +73,7 @@ $(function(){
 		$("#"+monthID[i]).text(nameOfMonth[i]);	
 	}
 
-	if (currentLocale === "am-ET") {
+	if (currentLocale === "am-ET" || currentLocale === "en-ET" ) {
 		$("#extraLength").text("13");	
 	}
 	

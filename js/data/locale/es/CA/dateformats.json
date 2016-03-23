@@ -1,0 +1,18 @@
+{
+    "gregorian": {
+        "time": {
+            "24": {
+                "h": "H",
+                "ah": "H",
+                "hm": "H:mm",
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm z",
+                "ahmz": "H:mm z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "ahmsz": "H:mm:ss z"
+            }
+        }
+    }
+}
