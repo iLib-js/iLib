@@ -1,0 +1,8 @@
+{
+    "ethiopic": {
+        "order": {
+            "f": "{date} 'at' {time}",
+            "l": "{date} 'at' {time}"
+        }
+    }
+}
