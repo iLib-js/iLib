@@ -2,19 +2,19 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E, MM-d-yy"
+                "s": "E, yyyy-MM-dd"
             },
             "dmy": {
-                "s": "MM-d-yy"
+                "s": "yyyy-MM-dd"
             },
             "dmw": {
-                "s": "E, MM-d"
+                "s": "E, MM-dd"
             },
             "dm": {
-                "s": "MM-d"
+                "s": "MM-dd"
             },
             "my": {
-                "s": "MM-yy"
+                "s": "yyyy-MM"
             },
             "m": {
                 "s": "MM"

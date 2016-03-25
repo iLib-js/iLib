@@ -248,8 +248,8 @@ function testDurFmtFormatFullSingle() {
     	minute: 1,
     	second: 1,
     	millisecond: 1
-    });
-    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond", duration.toString());
+    }); 
+    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond", duration.toString());
 };
 
 function testDurFmtFormatFullSingle_en_GB() {
@@ -284,7 +284,7 @@ function testDurFmtFormatFullSingleNotAllFields() {
     	day: 1,
     	minute: 1
     });
-    assertEquals("1 year, 1 week, 1 day and 1 minute", duration.toString());
+    assertEquals("1 year, 1 week, 1 day, and 1 minute", duration.toString());
 };
 
 function testDurFmtFormatFullSingleNotAllFields_en_GB() {
@@ -302,26 +302,6 @@ function testDurFmtFormatFullSingleNotAllFields_en_GB() {
     });
     assertEquals("1 year, 1 week, 1 day and 1 minute", duration.toString());
 };
-
-function testDurFmtFormatFullSingle() {
-    var fmt = new DurationFmt({
-    	length: "full"
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1,
-    	millisecond: 1
-    });
-    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond", duration.toString());
-};
-
 
 function testDurFmtFormatLongPlural() {
     var fmt = new DurationFmt({
@@ -358,7 +338,7 @@ function testDurFmtFormatFullPlural() {
     	second: 2,
     	millisecond: 2
     });
-    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds and 2 milliseconds", duration.toString());
+    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, and 2 milliseconds", duration.toString());
 };
 
 function testDurFmtFormatFullPlural_en_GB() {
