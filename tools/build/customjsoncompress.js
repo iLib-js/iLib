@@ -46,6 +46,7 @@ var sourcedir = ".",
     targetdir = "compressed",
     localedir = ".";
     regiondir = [];
+    scriptdir = {};
     languagedir = {};
 
 if (process.argv.length > 2) {
@@ -99,6 +100,10 @@ function localeParsing(localeinfo) {
             if(regiondir.indexOf(tempcode[2]) < 0) {
                 regiondir.push(tempcode[2]);
             }
+            if(scriptdir[tempcode[2]] === undefined) {
+                scriptdir[tempcode[2]] = {};
+            }
+            scriptdir[tempcode[2]][tempcode[0]] = tempcode[1];
             languagedir[tempcode[0]].push(tempcode[2]);
         } else {
             if(regiondir.indexOf(tempcode[1]) < 0) {
@@ -131,7 +136,11 @@ function walk(root, dir) {
                     temp = languagedir[file];
                     for(var i = 0; i < temp.length ; i++) {
                         try {
-                            fs.accessSync(path.join(sourcePath, temp[i]), fs.F_OK);
+                            if(scriptdir[temp[i]] !== undefined) {
+                                fs.accessSync(path.join(sourcePath, scriptdir[temp[i]][file], temp[i]), fs.F_OK);
+                            } else {
+                                fs.accessSync(path.join(sourcePath, temp[i]), fs.F_OK);
+                            }
                         } catch (e) {
                             walkException(root, path.join(sourcePath, temp[i]));
                         }
@@ -159,7 +168,7 @@ function walk(root, dir) {
                             for (i=0; i < length; i++) {
                                 obj[keys[i]] = customObj[keys[i]];
                             }
-                            util.print(file + "ovverrided");
+                            util.print(file + "-> ovverrided\n");
                         } catch (e) {
                             // util.print("No date to be overide\n");
                         }
@@ -188,7 +197,12 @@ function walk(root, dir) {
 
 function walkException(root, expath) {
     var results = [];
-    var list = fs.readdirSync(path.join(customdir, expath));
+    try {
+        var list = fs.readdirSync(path.join(customdir, expath));
+    } catch (err) {
+        util.print("No need to override this path: "+ path.join(customdir, expath) +"\n");
+        return;
+    }
     list.forEach(function (file) {
         var sourcePathRelative = path.join(expath, file);
         var sourcePath = path.join(root, sourcePathRelative);
@@ -212,7 +226,7 @@ function walkException(root, expath) {
                         obj = JSON.parse(data);
                         var targetPath = path.join(targetdir, sourcePathRelative);
 
-                        util.print("compress " + sourcePath + " -> " + targetPath + "\n");
+                        util.print("compress + ovverrided " + sourcePath + " -> " + targetPath + "\n");
 
                         var targetDir = path.dirname(targetPath);
                         //util.print("dirname is " + targetDir + "\n");
