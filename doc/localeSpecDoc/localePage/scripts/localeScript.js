@@ -410,6 +410,12 @@ $(function(){
 			$("#timedurFmtLength"+length[j] + "num" +i).text(length[j]);
 			durationDateSample = {year: selectedSampleNum[i],month: selectedSampleNum[i],week: selectedSampleNum[i],day: selectedSampleNum[i]};
 			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationDateSample).toString());
+
+			if (length[j] === 'medium' || length[j] === 'long') {
+				console.log("medium or long :" + length[j]);
+				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
+			}
 		}
 	}
 
