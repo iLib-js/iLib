@@ -47,7 +47,7 @@ echo -e "Copying files to deploy directory..... : done."
 
 
 echo -e "Starting to update contents to webostools.lge.com"
-python publish-tool/publish.py publish-tool/contents webostools.lge.com /var/www/locale/webos40
+python publish-tool/publish.py publish-tool/contents webostools.lge.com /var/www/locale/ilibbuild
 
 echo - "Upload latest contents......: done"
 

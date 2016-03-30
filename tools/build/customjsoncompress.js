@@ -135,15 +135,19 @@ function walk(root, dir) {
                 if(languagedir[file] !== undefined) {
                     temp = languagedir[file];
                     for(var i = 0; i < temp.length ; i++) {
-                        try {
                             if(scriptdir[temp[i]] !== undefined) {
-                                fs.accessSync(path.join(sourcePath, scriptdir[temp[i]][file], temp[i]), fs.F_OK);
+                                try{
+                                    fs.accessSync(path.join(sourcePath, scriptdir[temp[i]][file], temp[i]), fs.F_OK);
+                                } catch(e) {
+                                    walkException(root, path.join(sourcePath, scriptdir[temp[i]][file], temp[i]));
+                                }
                             } else {
-                                fs.accessSync(path.join(sourcePath, temp[i]), fs.F_OK);
+                                try {
+                                    fs.accessSync(path.join(sourcePath, temp[i]), fs.F_OK);
+                                } catch(e) {
+                                    walkException(root, path.join(sourcePath, temp[i]));
+                                }
                             }
-                        } catch (e) {
-                            walkException(root, path.join(sourcePath, temp[i]));
-                        }
                     }
                 }
                 walk(root, sourcePathRelative);
