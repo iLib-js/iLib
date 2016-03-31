@@ -153,6 +153,8 @@ function walk(root, dir) {
                 walk(root, sourcePathRelative);
             } else if (regiondir.indexOf(sourcePathParse[1]) >-1) {
                 walk(root, sourcePathRelative);
+            } else if (sourcePath === 'nfkd' || sourcePath === 'zoneinfo') {
+                walk(root, sourcePathRelative);
             }
         } else {
             var obj;
