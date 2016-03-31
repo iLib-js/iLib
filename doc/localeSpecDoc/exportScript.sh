@@ -10,7 +10,7 @@
 # layout- List.js
 
 # i.e)  
-# java -jar ../../../../../tools/google-closure-compiler.r1918/compiler.jar --js lib/layout/fittable/sourc    e/FittableLayout.js lib/layout/fittable/source/FittableRows.js lib/layout/fittable/source/FittableColumns.    js lib/layout/list/source/FlyweightRepeater.js lib/layout/list/source/List.js --js_output_file export/lib/    enyo-layout-library-compiled.js
+# java -jar ../../../../../tools/google-closure-compiler.r1918/compiler.jar --js lib/layout/fittable/source/FittableLayout.js lib/layout/fittable/source/FittableRows.js lib/layout/fittable/source/FittableColumns.js lib/layout/list/source/FlyweightRepeater.js lib/layout/list/source/List.js --js_output_file export/lib/  enyo-layout-library-compiled.js
 
 # onyx- Button.js
 # onyx- InputDecorator.js
@@ -18,7 +18,7 @@
 # onyx- Toolbar.js
 
 # i.e)
-#java -jar ../../../../../tools/google-closure-compiler.r1918/compiler.jar --js Button.js InputDecorator.j    s Input.js Toolbar.js --js_output_file export/lib/enyo-onyx-library-compiled.js
+#java -jar ../../../../../tools/google-closure-compiler.r1918/compiler.jar --js Button.js InputDecorator.js Input.js Toolbar.js --js_output_file export/lib/enyo-onyx-library-compiled.js
 
 # creat onyx.css from onyx.less
 # i.e) ../../enyo/tools/lessc.sh package.js

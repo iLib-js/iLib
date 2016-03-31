@@ -179,7 +179,7 @@ $(function(){
 	}
 
 	durationNumberSample = {
-		"af-Za" : [1,2],
+		"af-ZA" : [1,2],
 		"sq-AL" : [1,16],
 		"sq-ME" : [1,17],
 		"am-ET" : [1,18],
@@ -408,14 +408,29 @@ $(function(){
 			timedurfmtArray[fmtArrayCount] = rangefmt[j];
 
 			$("#timedurFmtLength"+length[j] + "num" +i).text(length[j]);
-			durationDateSample = {year: selectedSampleNum[i],month: selectedSampleNum[i],week: selectedSampleNum[i],day: selectedSampleNum[i]};
-			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationDateSample).toString());
+			durationTimeSample = {hour: selectedSampleNum[i],minute: selectedSampleNum[i],second: selectedSampleNum[i]};
+			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
 
 			if (length[j] === 'medium' || length[j] === 'long') {
 				console.log("medium or long :" + length[j]);
 				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
+			} else if (length[j] === 'short') {
+				console.log("full :" + length[j]);
+				
+				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
+				$("#durFmtLength"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#durFmtResult"+length[j]+"num"+i).css("border-color","black");
+				$("#durFmtResult"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#timedurFmtLength"+length[j]+"num"+i).css("border-color","black");
+				$("#timedurFmtLength"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#timedurFmtResult"+length[j]+"num"+i).css("border-color","black");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("border-width","2px");
 			}
+
 		}
 	}
 
