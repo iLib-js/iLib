@@ -206,7 +206,6 @@ function walkException(root, expath) {
     try {
         var list = fs.readdirSync(path.join(customdir, expath));
     } catch (err) {
-        util.print("No need to override this path: "+ path.join(customdir, expath) +"\n");
         return;
     }
     list.forEach(function (file) {
