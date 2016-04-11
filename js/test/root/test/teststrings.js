@@ -1994,34 +1994,6 @@ function testStringFormatChoiceCharClasses12() {
     
     assertEquals("Default items", str.formatChoice(5));
 }
-
-function testStringFormatChoiceCharClasses13() {
-    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-    str.setLocale("ar-SA");
-
-    assertNotNull(str);
-
-    assertEquals("The items are many", str.formatChoice(30));
-}
-
-function testStringFormatChoiceCharClasses14() {
-    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-    str.setLocale("az-Latn-AZ");
-
-    assertNotNull(str);
-
-    assertEquals("Default items", str.formatChoice(30));
-}
-
-function testStringFormatChoiceCharClasses15() {
-    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-    str.setLocale("az-Latn-AZ");
-
-    assertNotNull(str);
-
-    assertEquals("There items are one", str.formatChoice(1));
-}
-
 function testStringFormatChoiceCharClassesComplex1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");
@@ -2110,12 +2082,4 @@ function testStringFormatChoiceCharClassesComplex10() {
     assertNotNull(str);
     
     assertEquals("The items are many", str.formatChoice(10));
-}
-function testStringFormatChoiceCharClassesComplex11() {
-    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
-    str.setLocale("az-Latn-AZ");
-
-    assertNotNull(str);
-
-    assertEquals("Default items", str.formatChoice(10));
 }
