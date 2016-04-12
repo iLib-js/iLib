@@ -6493,7 +6493,7 @@ function testLocaleInfoGetCurrencyFormat_az_Latn_AZ() {
     var info = new LocaleInfo("az-Latn-AZ");
     assertNotNull(info);
 
-    assertEquals("{s} {n}", info.getCurrencyFormats().common);
+    assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_az_Latn_AZ() {
