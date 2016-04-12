@@ -553,8 +553,9 @@ function testDurFmtARAsync2() {
     	    	hour: 2,
     	    	minute: 2,
     	    	second: 2
-    	    });
+    	    }); //سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان
     	    assertEquals("سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
+
     	    callbackCalled = true;
     	}
     });
@@ -737,7 +738,7 @@ function testDurFmtARFormatWesternShortDefaultStyle1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 سنة، 1 شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
+    assertEquals("‏1 سنة، 1 شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
 };
 
 function testDurFmtARFormatWesternShortText1() {
@@ -758,7 +759,7 @@ function testDurFmtARFormatWesternShortText1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 سنة، 1 شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
+    assertEquals("‏1 سنة، 1 شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
 };
 
 function testDurFmtARFormatWesternShortClock1() {
@@ -779,7 +780,7 @@ function testDurFmtARFormatWesternShortClock1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 سنة، 1 شهر، 1 أسبوع، 1 يوم، ‏1:01:01", duration.toString());
+    assertEquals("‏1 سنة، 1 شهر، 1 أسبوع، 1 يوم، ‏1:01:01", duration.toString());
 };
 
 function testDurFmtARFormatWesternMedium1() {
@@ -799,7 +800,7 @@ function testDurFmtARFormatWesternMedium1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("سنة، شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
+    assertEquals("‏سنة، شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
 };
 
 function testDurFmtARFormatWesternLong1() {
@@ -819,7 +820,7 @@ function testDurFmtARFormatWesternLong1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("سنة، شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
+    assertEquals("‏سنة، شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
 };
 
 function testDurFmtARFormatWesternFull1() {
@@ -839,7 +840,7 @@ function testDurFmtARFormatWesternFull1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("سنة، شهر، أسبوع، يوم، ساعة، 1 دقيقة، و ثانية", duration.toString());
+    assertEquals("‏سنة، شهر، أسبوع، يوم، ساعة، 1 دقيقة، و ثانية", duration.toString());
 };
 
 
@@ -862,7 +863,7 @@ function testDurFmtARAsync2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
+    	    assertEquals("‏سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -889,7 +890,7 @@ function testDurFmtARAsyncWithLocale2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
+    	    assertEquals("‏سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -917,7 +918,7 @@ function testDurFmtARFormatWesternShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 سنة، 1 شهر، 1 أسبوع، 1 يوم، ‏1:01:01", duration.toString());
+    	    assertEquals("‏1 سنة، 1 شهر، 1 أسبوع، 1 يوم، ‏1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
