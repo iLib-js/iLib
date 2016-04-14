@@ -384,7 +384,7 @@ DurationFmt.prototype.format = function (components) {
 		str += fmt._formatTemplate(components, fmt.templateArr);
 	}
 
-	if (!this.useNative && this.scriptDirection === 'rtl') {
+	if (this.scriptDirection === 'rtl') {
 		str = "\u200F" + str;
 	}
 	return new IString(str);

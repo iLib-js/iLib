@@ -171,7 +171,7 @@ $(function(){
 	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i], useNative: false});
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
 		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
 		$("#daterng"+length[i]).text(length[i]);
@@ -205,7 +205,7 @@ $(function(){
 		"as-IN" : [1,2],
 		"bn-IN" : [1,18],
 		"bs-BA" : [1,4,5],
-		"bs-ME" : [1,2,21],
+		"bs-ME" : [1,2,20],
 		"bg-BG" : [1,2],
 		"zh-Hans-CN" : [1],
 		"zh-Hans-MY" : [15],
@@ -214,7 +214,7 @@ $(function(){
 		"zh-Hant-TW" : [1],
 		"hr-HR" : [1,2,5],
 		"hr-ME" : [1,4,19],
-		"cs-CZ" : [1,2],
+		"cs-CZ" : [1,2,5],
 		"da-DK" : [1,2],
 		"nl-BE" : [1,2],
 		"nl-NL" : [1,2],
@@ -291,7 +291,7 @@ $(function(){
 		"el-GR" : [1,17],
 		"gu-IN" : [1,2],
 		"ha-Latn-NG" : [1,2],
-		"he-IL" : [1,2],
+		"he-IL" : [1,2,20,19],
 		"hi-IN" : [1,2],
 		"hu-HU" : [1,17],
 		"id-ID" : [1,2],
@@ -397,14 +397,14 @@ $(function(){
 
 	for (i=0; i < selectedSampleNum.length; i++) {
 		for (j=0,fmtArrayCount=0; j <4; j++, fmtArrayCount++) {
-			rangefmt[j] = new DurationFmt({locale: currentLocale, style:"text", length: length[j],useNative: false});
+			rangefmt[j] = new DurationFmt({locale: currentLocale, style:"text", length: length[j]});
 			durfmtArray[fmtArrayCount] = rangefmt[j];
 
 			$("#durFmtLength"+length[j] + "num" +i).text(length[j]);
 			durationDateSample = {year: selectedSampleNum[i],month: selectedSampleNum[i],week: selectedSampleNum[i],day: selectedSampleNum[i]};
 			$("#durFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationDateSample).toString());
 
-			timerangefmt[j] = new DurationFmt({locale: currentLocale, style:"clock", length: length[j],useNative: false});
+			timerangefmt[j] = new DurationFmt({locale: currentLocale, style:"clock", length: length[j]});
 			timedurfmtArray[fmtArrayCount] = rangefmt[j];
 
 			$("#timedurFmtLength"+length[j] + "num" +i).text(length[j]);
@@ -412,12 +412,11 @@ $(function(){
 			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
 
 			if (length[j] === 'medium' || length[j] === 'long') {
-				console.log("medium or long :" + length[j]);
+				//console.log("medium or long :" + length[j]);
 				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 			} else if (length[j] === 'short') {
-				console.log("full :" + length[j]);
-				
+				//console.log("full :" + length[j]);
 				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
 				$("#durFmtLength"+length[j]+"num"+i).css("border-width","2px");
 
