@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6467,6 +6467,55 @@ function testLocaleInfoRoundingMode_zh_MY() {
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
+//test cases for az-Latn-AZ
+
+function testLocaleInfoGetDecimalSeparatorfor_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+    assertEquals(",", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals(3, info.getPrimaryGroupingDigits());
+}
+
+function testLocaleInfoGetSecondaryGroupingDigits_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals(0, info.getSecondaryGroupingDigits());
+}
+
+function testLocaleInfoRoundingMode_az_Latn_AZ() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
 
 /************************************************end 04-JUN-2013**********************************************************/
 

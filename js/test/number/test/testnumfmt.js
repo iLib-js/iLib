@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5100,6 +5100,54 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
     
     assertEquals("$-100,110.57", fmt.format(-100110.57));
 }
+
+// test case for az-Latn-AZ
+function testNumFmt_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        locale: "az-Latn-AZ",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "az-Latn-AZ",
+        currency: "AZN",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("AZN 100.110,57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_az_Latn_AZ() {
+    var fmt = new NumFmt({
+    locale: "az-Latn-AZ",
+        type: "percentage"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("57%", fmt.format(57.0));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "az-Latn-AZ",
+        currency: "AZN"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("AZN -100.110,57", fmt.format(-100110.57));
+}
+
 /******************************** End of test cases****************************************************/
 function testNumFmtenGB() {
     var fmt = new NumFmt({

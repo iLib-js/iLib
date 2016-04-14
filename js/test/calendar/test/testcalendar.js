@@ -1,7 +1,7 @@
 /*
  * testcalendar.js - test the calendar routines
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,13 @@ function testCalendarFactoryDefaultForLocale() {
     var cal = CalendarFactory({locale: "ar-AE"});
     assertNotUndefined(cal);
     
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocale_AZ() {
+    var cal = CalendarFactory({locale: "az-Latn-AZ"});
+    assertNotUndefined(cal);
+
     assertEquals("gregorian", cal.getType());
 }
 
