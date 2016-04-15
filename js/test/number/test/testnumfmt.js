@@ -5145,7 +5145,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_az_Latn_AZ() {
 
     assertNotNull(fmt);
 
-    assertEquals("AZN -100.110,57", fmt.format(-100110.57));
+    assertEquals("-AZN 100.110,57", fmt.format(-100110.57));
 }
 
 /******************************** End of test cases****************************************************/
