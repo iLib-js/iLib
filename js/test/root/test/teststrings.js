@@ -1994,7 +1994,6 @@ function testStringFormatChoiceCharClasses12() {
     
     assertEquals("Default items", str.formatChoice(5));
 }
-
 function testStringFormatChoiceCharClassesComplex1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
     str.setLocale("pl-PL");

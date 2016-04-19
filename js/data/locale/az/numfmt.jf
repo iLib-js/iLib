@@ -3,7 +3,8 @@
     "numfmt": {
         "exponential": "E",
         "currencyFormats": {
-            "common": "{s} {n}"
-        }
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        }   
     }
 }
