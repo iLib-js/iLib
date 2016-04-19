@@ -5991,7 +5991,7 @@ function testDurFmtKOFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1년 1개 1주 1일 1:01:01", duration.toString());
+    	    assertEquals("1년 1개월 1주 1일 1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
