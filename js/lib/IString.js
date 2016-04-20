@@ -473,11 +473,25 @@ IString._fncs = {
 	neq: function(rule, n) {
 		var valueLeft = IString._fncs.getValue(rule[0], n);
 		var valueRight;
+		var leftRange;
+		var rightRange;
 
 		if (typeof(rule[0]) === 'string') {
 			valueRight = n[rule[0]];
 			if (typeof(rule[1])=== 'number'){
 				valueRight = IString._fncs.getValue(rule[1], n);
+			} else if (typeof(rule[1]) === 'object') {
+				leftRange = rule[1][0];
+				rightRange =  rule[1][1];
+				if (typeof(leftRange) === 'number' &&
+					typeof(rightRange) === 'number'){
+
+					if (valueLeft >= leftRange && valueRight <= rightRange) {
+						return false
+					} else {
+						return true;
+					}
+				}
 			}
 		} else {
 			if (IString._fncs.firstPropRule(rule[1]) === "inrange") { // mod

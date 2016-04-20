@@ -645,6 +645,26 @@ function testDurFmtFormatFullZH() {
     assertEquals("1年、1个月、1周、1天、1小时、1分钟、1秒钟和1毫秒", duration.toString());
 };
 
+function testDurFmtFormatFullzh_Hans_MY() {
+    var fmt = new DurationFmt({
+        locale: "zh-Hans-MY",
+        length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 1,
+        month: 1,
+        week: 1,
+        day: 1,
+        hour: 1,
+        minute: 1,
+        second: 1,
+        millisecond: 1
+    });
+    assertEquals("", duration.toString());
+};
+
 function testDurFmtFormatShortFRDefaultStyle() {
     var fmt = new DurationFmt({
     	locale: "fr-FR",
@@ -1616,7 +1636,7 @@ function testDurFmtFAFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
+    assertEquals("‏۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatShortText() {
@@ -1636,7 +1656,7 @@ function testDurFmtFAFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
+    assertEquals("‏۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatShortClock() {
@@ -1656,7 +1676,7 @@ function testDurFmtFAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ‏۱:۰۱:۰۱", duration.toString());
+    assertEquals("‏۱ سال ۱ ماه ۱ هفته ۱ روز ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtFAFormatMedium() {
@@ -1675,7 +1695,7 @@ function testDurFmtFAFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
+    assertEquals("‏۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatLong() {
@@ -1694,7 +1714,7 @@ function testDurFmtFAFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
+    assertEquals("‏۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه،‏ ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatFull() {
@@ -1713,7 +1733,7 @@ function testDurFmtFAFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه، و ۱ ثانیه", duration.toString());
+    assertEquals("‏۱ سال،‏ ۱ ماه،‏ ۱ هفته،‏ ۱ روز،‏ ۱ ساعت،‏ ۱ دقیقه، و ۱ ثانیه", duration.toString());
 };
 
 //test cases for fi-FI
@@ -1912,7 +1932,7 @@ function testDurFmtFRCAFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 an, 1 m, 1 sem., 1 j, 1 h, 1 min, 1 s", duration.toString());
+    assertEquals("1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtFRCAFormatLong() {
@@ -1931,7 +1951,7 @@ function testDurFmtFRCAFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 an, 1 m, 1 sem., 1 j, 1 h, 1 min, 1 s", duration.toString());
+    assertEquals("1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtFRCAFormatFull() {
@@ -3458,7 +3478,7 @@ function testDurFmtURFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
+    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
 };
 
 function testDurFmtURFormatShortText() {
@@ -3478,7 +3498,7 @@ function testDurFmtURFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
+    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
 };
 
 function testDurFmtURFormatShortTextWestern() {
@@ -3519,7 +3539,7 @@ function testDurFmtURFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ‏۱:۰۱:۰۱", duration.toString());
+    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtURFormatMedium() {
@@ -3538,7 +3558,7 @@ function testDurFmtURFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، ۱ سیکنڈ", duration.toString());
+    assertEquals("‏۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، ۱ سیکنڈ", duration.toString());
 };
 
 function testDurFmtURFormatLong() {
@@ -3557,7 +3577,7 @@ function testDurFmtURFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال, ۱ مہینہ, ۱ ہفتہ, ۱ دن, ۱ گھنٹہ, ۱ منٹ, ۱ سیکنڈ", duration.toString());
+    assertEquals("‏۱ سال, ۱ مہینہ, ۱ ہفتہ, ۱ دن, ۱ گھنٹہ, ۱ منٹ, ۱ سیکنڈ", duration.toString());
 };
 
 function testDurFmtURFormatFull() {
@@ -3576,7 +3596,7 @@ function testDurFmtURFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، اور ۱ سیکنڈ", duration.toString());
+    assertEquals("‏۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، اور ۱ سیکنڈ", duration.toString());
 };
 
 //test cases for croation
