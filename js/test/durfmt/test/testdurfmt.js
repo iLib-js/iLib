@@ -645,7 +645,7 @@ function testDurFmtFormatFullZH() {
     assertEquals("1年、1个月、1周、1天、1小时、1分钟、1秒钟和1毫秒", duration.toString());
 };
 
-function testDurFmtFormatFullzh_Hans_MY() {
+/*function testDurFmtFormatFullzh_Hans_MY() {
     var fmt = new DurationFmt({
         locale: "zh-Hans-MY",
         length: "full"
@@ -663,7 +663,7 @@ function testDurFmtFormatFullzh_Hans_MY() {
         millisecond: 1
     });
     assertEquals("", duration.toString());
-};
+};*/
 
 function testDurFmtFormatShortFRDefaultStyle() {
     var fmt = new DurationFmt({
