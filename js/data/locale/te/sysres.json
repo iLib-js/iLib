@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num}నె|#{num}నె",
     "#{num}y": "one#{num}సం|#{num}సం",
     "separatorFull": ", ",
-    "finalSeparatorFull": " మరియు ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

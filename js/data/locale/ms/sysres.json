@@ -113,7 +113,7 @@
     "durationShortMonths": "#{num} bln",
     "#{num}y": "#{num} thn",
     "separatorFull": ", ",
-    "finalSeparatorFull": " dan ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

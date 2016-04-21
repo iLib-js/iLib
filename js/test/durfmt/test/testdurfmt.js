@@ -249,7 +249,7 @@ function testDurFmtFormatFullSingle() {
     	second: 1,
     	millisecond: 1
     }); 
-    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond", duration.toString());
+    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second, 1 millisecond", duration.toString());
 };
 
 function testDurFmtFormatFullSingle_en_GB() {
@@ -284,7 +284,7 @@ function testDurFmtFormatFullSingleNotAllFields() {
     	day: 1,
     	minute: 1
     });
-    assertEquals("1 year, 1 week, 1 day, and 1 minute", duration.toString());
+    assertEquals("1 year, 1 week, 1 day, 1 minute", duration.toString());
 };
 
 function testDurFmtFormatFullSingleNotAllFields_en_GB() {
@@ -338,7 +338,7 @@ function testDurFmtFormatFullPlural() {
     	second: 2,
     	millisecond: 2
     });
-    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, and 2 milliseconds", duration.toString());
+    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, 2 milliseconds", duration.toString());
 };
 
 function testDurFmtFormatFullPlural_en_GB() {
@@ -642,10 +642,10 @@ function testDurFmtFormatFullZH() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1年、1个月、1周、1天、1小时、1分钟、1秒钟和1毫秒", duration.toString());
+    assertEquals("1年1个月1周1天1小时1分钟1秒钟1毫秒", duration.toString());
 };
 
-/*function testDurFmtFormatFullzh_Hans_MY() {
+function testDurFmtFormatFullzh_Hans_MY() {
     var fmt = new DurationFmt({
         locale: "zh-Hans-MY",
         length: "full"
@@ -662,8 +662,8 @@ function testDurFmtFormatFullZH() {
         second: 1,
         millisecond: 1
     });
-    assertEquals("", duration.toString());
-};*/
+    assertEquals("1年1个月1周1天1小时1分钟1秒钟1毫秒", duration.toString());
+};
 
 function testDurFmtFormatShortFRDefaultStyle() {
     var fmt = new DurationFmt({
@@ -1615,7 +1615,7 @@ function testDurFmtETFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 aasta, 1 kuu, 1 nädal, 1 ööpäev, 1 tund, 1 minut ja 1 sekund", duration.toString());
+    assertEquals("1 aasta, 1 kuu, 1 nädal, 1 ööpäev, 1 tund, 1 minut, 1 sekund", duration.toString());
 };
 
 //test cases for fa-IR
@@ -2565,7 +2565,7 @@ function testDurFmtTEFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 సంవత్సరం, 1 నెల, 1 వారం, 1 రోజు, 1 గంట, 1 నిమిషం మరియు 1 సెకను", duration.toString());
+    assertEquals("1 సంవత్సరం, 1 నెల, 1 వారం, 1 రోజు, 1 గంట, 1 నిమిషం, 1 సెకను", duration.toString());
 };
 
 
@@ -2802,7 +2802,7 @@ function testDurFmtTAFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம் மற்றும் 1 விநாடி", duration.toString());
+    assertEquals("1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம், 1 விநாடி", duration.toString());
 };
 
 //test cases for Malaylam(ml-IN)
@@ -2920,7 +2920,7 @@ function testDurFmtMLFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 വർഷം, 1 മാസം, 1 ആഴ്ച, 1 ദിവസം, 1 മണിക്കൂർ, 1 മിനിറ്റ്,  എന്നിവ1 സെക്കൻഡ്", duration.toString());
+    assertEquals("1 വർഷം, 1 മാസം, 1 ആഴ്ച, 1 ദിവസം, 1 മണിക്കൂർ, 1 മിനിറ്റ്, 1 സെക്കൻഡ്", duration.toString());
 };
 
 //test cases for Gujrati(gu-IN)
@@ -3038,7 +3038,7 @@ function testDurFmtGUFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 વર્ષ, 1 મહિનો, 1 અઠવાડિયું, 1 દિવસ, 1 કલાક, 1 મિનિટ અને 1 સેકંડ", duration.toString());
+    assertEquals("1 વર્ષ, 1 મહિનો, 1 અઠવાડિયું, 1 દિવસ, 1 કલાક, 1 મિનિટ, 1 સેકંડ", duration.toString());
 };
 
 
@@ -3219,7 +3219,7 @@ function testDurFmtBNFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘন্টা, ১ মিনিট, এবং ১ সেকেন্ড", duration.toString());
+    assertEquals("১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘন্টা, ১ মিনিট, ১ সেকেন্ড", duration.toString());
 };
 
 
@@ -3457,7 +3457,7 @@ function testDurFmtPAFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1 ਘੰਟਾ, 1 ਮਿੰਟ ਅਤੇ 1 ਸਕਿੰਟ", duration.toString());
+    assertEquals("1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ, 1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ", duration.toString());
 };
 
 //test cases for Urdu(ur-IN)
@@ -3478,7 +3478,7 @@ function testDurFmtURFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
+    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱s", duration.toString());
 };
 
 function testDurFmtURFormatShortText() {
@@ -3498,7 +3498,7 @@ function testDurFmtURFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱س", duration.toString());
+    assertEquals("‏۱ سال ۱ مہینہ ۱ ہفتہ ۱ دن ۱ گھنٹہ ۱ منٹ ۱s", duration.toString());
 };
 
 function testDurFmtURFormatShortTextWestern() {
@@ -3519,7 +3519,7 @@ function testDurFmtURFormatShortTextWestern() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏1 سال 1 مہینہ 1 ہفتہ 1 دن 1 گھنٹہ 1 منٹ 1س", duration.toString());
+    assertEquals("‏1 سال 1 مہینہ 1 ہفتہ 1 دن 1 گھنٹہ 1 منٹ 1s", duration.toString());
 };
 
 function testDurFmtURFormatShortClock() {
@@ -3577,7 +3577,7 @@ function testDurFmtURFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏۱ سال, ۱ مہینہ, ۱ ہفتہ, ۱ دن, ۱ گھنٹہ, ۱ منٹ, ۱ سیکنڈ", duration.toString());
+    assertEquals("‏۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، ۱ سیکنڈ", duration.toString());
 };
 
 function testDurFmtURFormatFull() {
@@ -3596,7 +3596,7 @@ function testDurFmtURFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏۱ سال، ۱ مہینہ، ۱ ہفتہ، ۱ دن، ۱ گھنٹہ، ۱ منٹ، اور ۱ سیکنڈ", duration.toString());
+    assertEquals("‏۱ سال, ۱ مہینہ, ۱ ہفتہ, ۱ دن, ۱ گھنٹہ, ۱ منٹ، ۱ سیکنڈ", duration.toString());
 };
 
 //test cases for croation
@@ -3949,7 +3949,7 @@ function testDurFmtIDFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 tahun, 1 bulan, 1 minggu, 1 hari, 1 jam, 1 menit, dan 1 detik", duration.toString());
+    assertEquals("1 tahun, 1 bulan, 1 minggu, 1 hari, 1 jam, 1 menit, 1 detik", duration.toString());
 };
 
 //test cases for Italy
@@ -4417,7 +4417,7 @@ function testDurFmtKOFormatFull() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1년, 1개월, 1주, 1일, 1시간, 1분, 1초 및 1밀리초", duration.toString());
+    assertEquals("1년 1개월 1주 1일 1시간 1분 1초 1밀리초", duration.toString());
 };
 
 function testDurFmtKUFormatShortDefaultStyle() {
@@ -4651,7 +4651,7 @@ function testDurFmtLTFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 metai, 1 mėnuo, 1 savaitė, 1 diena, 1 valanda, 1 minutė ir 1 sekundė", duration.toString());
+    assertEquals("1 metai 1 mėnuo 1 savaitė 1 diena 1 valanda 1 minutė ir 1 sekundė", duration.toString());
 };
 
 //test cases for lv-LV
@@ -5124,7 +5124,7 @@ function testDurFmtMSFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 tahun, 1 bulan, 1 minggu, 1 hari, 1 jam, 1 minit dan 1 saat", duration.toString());
+    assertEquals("1 tahun, 1 bulan, 1 minggu, 1 hari, 1 jam, 1 minit, 1 saat", duration.toString());
 };
 
 
@@ -5362,7 +5362,7 @@ function testDurFmtNLFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 jaar, 1 maand, 1 week, 1 dag, 1 uur, 1 minuut en 1 seconde", duration.toString());
+    assertEquals("1 jaar, 1 maand, 1 week, 1 dag, 1 uur, 1 minuut, 1 seconde", duration.toString());
 };
 
 //test cases for pl-PL
@@ -5719,7 +5719,7 @@ function testDurFmtROFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 an, 1 lună, 1 săptămână, 1 zi, 1 oră, 1 minut și 1 secundă", duration.toString());
+    assertEquals("1 an, 1 lună, 1 săptămână, 1 zi, 1 oră, 1 minut, 1 secundă", duration.toString());
 };
 
 //test cases for ru-RU
@@ -5956,7 +5956,7 @@ function testDurFmtSKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 rok, 1 mesiac, 1 týždeň, 1 deň, 1 hodina, 1 minúta a 1 sekunda", duration.toString());
+    assertEquals("1 rok, 1 mesiac, 1 týždeň, 1 deň, 1 hodina, 1 minúta, 1 sekunda", duration.toString());
 };
 
 //test cases for sq-AL
@@ -6074,7 +6074,7 @@ function testDurFmtSQFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 vit, 1 muaj, 1 javë, 1 ditë, 1 orë, 1 minutë dhe 1 sekondë", duration.toString());
+    assertEquals("1 vit, 1 muaj, 1 javë, 1 ditë, 1 orë, 1 minutë e 1 sekondë", duration.toString());
 };
 
 
@@ -6293,7 +6293,7 @@ function testDurFmtTHFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ปี 1 เดือน 1 สัปดาห์ 1 วัน 1 ชั่วโมง 1 นาที และ1 วินาที", duration.toString());
+    assertEquals("1 ปี 1 เดือน 1 สัปดาห์ 1 วัน 1 ชั่วโมง 1 นาที และ 1 วินาที", duration.toString());
 };
 
 //test cases for uk-UA
@@ -6647,7 +6647,7 @@ function testDurFmtUZLATNFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 yil, 1 oy, 1 hafta, 1 kun, 1 soat, 1 daqiqa va 1 soniya", duration.toString());
+    assertEquals("1 yil, 1 oy, 1 hafta, 1 kun, 1 soat, 1 daqiqa, 1 soniya", duration.toString());
 };
 
 //test cases for vietnemese
@@ -6765,7 +6765,7 @@ function testDurFmtVIFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút và 1 giây", duration.toString());
+    assertEquals("1 năm, 1 tháng, 1 tuần, 1 ngày, 1 giờ, 1 phút, 1 giây", duration.toString());
 };
 
 //test cases for zh-Hant-TW
@@ -6884,7 +6884,7 @@ function testDurFmtZHFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年、1 個月、1 週、1 天、1 小時、1 分鐘和1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 //test cases for zh-Hank-HK
@@ -7003,7 +7003,7 @@ function testDurFmtZHHKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年、1 個月、1星期、1 日、1 小時、1 分鐘和1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1星期 1 日 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 //test cases for tr-TR
@@ -7121,7 +7121,7 @@ function testDurFmtTRFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 yıl, 1 ay, 1 hafta, 1 gün, 1 saat, 1 dakika ve 1 saniye", duration.toString());
+    assertEquals("1 yıl 1 ay 1 hafta 1 gün 1 saat 1 dakika 1 saniye", duration.toString());
 };
 
 //test cases for swedish
@@ -7239,7 +7239,7 @@ function testDurFmtSVFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 år, 1 månad, 1 vecka, 1 dygn, 1 timme, 1 minut och 1 sekund", duration.toString());
+    assertEquals("1 år, 1 månad, 1 vecka, 1 dygn, 1 timme, 1 minut, 1 sekund", duration.toString());
 };
 
 //test cases for sl-SI

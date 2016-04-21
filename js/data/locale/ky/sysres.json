@@ -189,7 +189,7 @@
     "durationShortMonths": "one#{num} ай|#{num} ай",
     "#{num}y": "one#{num} ж.|#{num} ж.",
     "separatorFull": ", ",
-    "finalSeparatorFull": " жана ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

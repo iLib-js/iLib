@@ -56,6 +56,8 @@
     "#{num}d": "#{num}日",
     "#{num}w": "#{num}週",
     "durationShortMonths": "#{num}個月",
+    "separatorFull": " ",
+    "finalSeparatorFull": " ",
     "separatorLong": " ",
     "finalSeparatorLong": " ",
     "separatorMedium": " ",

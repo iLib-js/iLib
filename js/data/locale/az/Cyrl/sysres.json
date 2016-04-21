@@ -91,6 +91,5 @@
     "#{num}w": "#{num} w",
     "durationShortMonths": "#{num} m",
     "#{num}y": "#{num} y",
-    "finalSeparatorFull": ", ",
-    "finalSeparatorLong": ", "
+    "finalSeparatorFull": ", "
 }

@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num} M|#{num} M",
     "#{num}y": "one#{num} J|#{num} J",
     "separatorFull": ", ",
-    "finalSeparatorFull": " a(n) ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

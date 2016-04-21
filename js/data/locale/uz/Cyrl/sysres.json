@@ -110,6 +110,5 @@
     "#{num}d": "one#{num} к|#{num} к",
     "#{num}w": "one#{num} ҳафт|#{num} ҳафт",
     "durationShortMonths": "one#{num} ой|#{num} ой",
-    "#{num}y": "one#{num} й|#{num} й",
-    "finalSeparatorFull": ", "
+    "#{num}y": "one#{num} й|#{num} й"
 }

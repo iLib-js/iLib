@@ -1130,8 +1130,8 @@ module.exports = {
         var sepKey, fullSepKey;
 
         var listProperties = {
-            "Full" :"listPattern-type-standard",
-            "Long" : "listPattern-type-unit",
+            "Full" :"listPattern-type-unit",
+            "Long" : "listPattern-type-unit-short",
             "Medium" : "listPattern-type-unit-short",
             "Short" : "listPattern-type-unit-narrow"
         }
@@ -1144,7 +1144,7 @@ module.exports = {
             fullSepKey = "finalSeparator" + prop;
 
             seperatorData = cldrListData[listProperties[[prop]]];
-
+            
             mergedSeperatorRes[sepKey] = seperatorData["middle"].replace(/\{.\}/g, "");
             mergedSeperatorRes[fullSepKey] = seperatorData["end"].replace(/\{.\}/g, "");
         }

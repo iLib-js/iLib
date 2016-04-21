@@ -189,7 +189,7 @@
     "durationShortMonths": "#{num} tháng",
     "#{num}y": "#{num} năm",
     "separatorFull": ", ",
-    "finalSeparatorFull": " và ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

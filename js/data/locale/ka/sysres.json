@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num} თვე|#{num} თვე",
     "#{num}y": "one#{num} წ|#{num} წ",
     "separatorFull": ", ",
-    "finalSeparatorFull": " და ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

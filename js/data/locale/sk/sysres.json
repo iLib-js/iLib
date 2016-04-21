@@ -189,7 +189,7 @@
     "durationShortMonths": "one#{num} m.|few#{num} m.|many#{num} m.|#{num} m.",
     "#{num}y": "one#{num} r.|few#{num} r.|many#{num} r.|#{num} r.",
     "separatorFull": ", ",
-    "finalSeparatorFull": " a ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

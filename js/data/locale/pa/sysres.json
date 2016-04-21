@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num} ਮਹੀਨਾ|#{num} ਮਹੀਨੇ",
     "#{num}y": "one#{num} ਸਾਲ|#{num} ਸਾਲ",
     "separatorFull": ", ",
-    "finalSeparatorFull": " ਅਤੇ ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

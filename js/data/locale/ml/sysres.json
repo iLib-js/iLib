@@ -113,7 +113,7 @@
     "durationShortMonths": "one#{num} മാ|#{num} മാ",
     "#{num}y": "one#{num} വ|#{num} വ",
     "separatorFull": ", ",
-    "finalSeparatorFull": ",  എന്നിവ",
+    "finalSeparatorFull": ", ",
     "separatorLong": ", ",
     "finalSeparatorLong": ", ",
     "separatorMedium": ", ",

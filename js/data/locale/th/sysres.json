@@ -193,7 +193,7 @@
     "durationShortMonths": "#{num}เดือน",
     "#{num}y": "#{num}ปี",
     "separatorFull": " ",
-    "finalSeparatorFull": " และ",
+    "finalSeparatorFull": " และ ",
     "separatorLong": " ",
     "finalSeparatorLong": " และ ",
     "separatorMedium": " ",

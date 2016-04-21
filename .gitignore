@@ -1013,6 +1013,17 @@ js/data/locale/en/SH/localeinfo.json
 js/data/locale/en/VG/localeinfo.json
 js/data/locale/lkt/localeinfo.json
 js/data/locale/und/XK/localeinfo.json
+js/data/locale/ar/LY/localeinfo.json
+js/data/locale/az/Cyrl/AZ/localeinfo.json
+js/data/locale/en/150/localeinfo.json
+js/data/locale/en/PK/localeinfo.json
+js/data/locale/es/419/localeinfo.json
+js/data/locale/qu/BO/localeinfo.json
+js/data/locale/uz/Cyrl/UZ/localeinfo.json
+js/data/locale/zgh/localeinfo.json
+js/data/locale/zh/Hans/HK/localeinfo.json
+js/data/locale/zh/Hans/MO/localeinfo.json
+js/data/locale/zh/Hans/SG/localeinfo.json
 js/locale/
 js/output/
 qt/FileReader/Makefile*
