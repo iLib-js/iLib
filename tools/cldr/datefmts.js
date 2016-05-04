@@ -350,6 +350,20 @@ function compareFormats(left, right) {
     return l !== r;
 }
 
+function replaceFormates(str, org, replace) {
+    var repString = str;
+
+    if (typeof(org) === 'object') {
+        for (var x in org) {
+            repString = repString.replace(new RegExp(x),org[x]);
+        }
+        return repString;
+    } else {
+            return repString.replace(org,replace);    
+    }
+    return repString;
+}
+
 module.exports = {
     loadFile: loadFile,
     getFormatGroup: getFormatGroup,
@@ -897,7 +911,303 @@ module.exports = {
                     calendar.time["24"]["ahmsz"] = rtlify(calendar.time["24"]["hmsz"]);
                 }
             }
+
+            
+            //calendar.date[dmyOrder][lenAbbr] dd/MM/yy
+            //calendar.date[dmyOrder][lenAbbr].replace(/M+/,"{sm}");
+            /*var dateRangeTemplate = {
+                {"c01":""}
+            }*/
+
+            //calendar.order.replace(/{date}/,rtlify(calendar.date["dmy"]).replace(/{time}/, "{st} - {et}");
+            //var datetimeOrder = calendar.order.replace(/ /, "");
+            var startTime = {
+                "y+":"{sy}",
+                "M+":"{sm}",
+                "d+":"{sd}",
+            };
+            calendar.range = {
+                "c00": {},
+                "c01": {},
+                "c02": {},
+                "c03": {},
+                "c10": {},
+                "c11": {},
+                "c12": {},
+                "c20": {},
+                "c30": {}
+            };
+
+            if (language === 'lt') {
+                console.log("stopstopstop");
+            }
+
+            for (i = 0; i < lengths.length; i++) {
+                var len = lengths[i];
+                var lenAbbr = len.charAt(0);
+                var dateRangeTemplateOrder;
+                console.log("lengths!! " + lengths[i]);
+                if (typeof(calendar.order) === 'object'){
+                    dateRangeTemplateOrder = calendar.order[lenAbbr] + " – " + calendar.order[lenAbbr];
+                } else {
+                    dateRangeTemplateOrder = calendar.order + " – " + calendar.order;
+                }
+                var dateTimeOrder = dateRangeTemplateOrder.indexOf("{date}") === 0 ? true: false;    
+                
+                var dmyiLib = "dmy"
+                var dmyOrder;
+                var dateRangeTemplate = dateRangeTemplateOrder;
+                var cFmt0, cFmt1, cFmt2, cFmt3, cFmt10, cFmt11, cFmt12, cFmt20, cFmt30;
+                
+                dmyOrdercldr = dateOrder(cldrFormats[len]);
+
+                if (calendar.date[dmyiLib] !== undefined && calendar.date[dmyiLib][lenAbbr] !== undefined) {
+                    dateRangeTemplate = replaceFormates(dateRangeTemplate, "{date}", calendar.date[dmyiLib][lenAbbr]);
+
+                    if (dateTimeOrder) { //{date}{time}
+                        switch(dmyOrdercldr) { 
+                            case "dmy":
+                                console.log("dt,dmy");
+
+                                cFmt0 = dateRangeTemplate;
+                                cFmt0 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
+                                cFmt0 = replaceFormates(cFmt0,"{date}", "");
+                                cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
+                                calendar.range["c00"][lenAbbr] = cFmt0;
+                                
+                                cFmt1 = dateRangeTemplate;
+                                cFmt1 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt1 = replaceFormates(cFmt1,"{time}", "{st}");
+                                cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                
+                                cFmt1 = cFmt1.replace(/\by+\b/,"{ey}").replace(/\bM+\b/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                calendar.range["c01"][lenAbbr] = cFmt1;
+                                calendar.range["c02"][lenAbbr] = cFmt1;
+                                calendar.range["c03"][lenAbbr] = cFmt1;
+
+                                cFmt10 = dateRangeTemplate;
+                                cFmt10 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt10 = cFmt10.replace(/[\s\-\.\/]{sy}/,"").replace(/[\s\-\.\/]{sm}/, "").replace(/\s{time}/g, "");
+                                cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt10 = cFmt10.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt10 = replaceFormates(cFmt10,"{time}", "");
+                                calendar.range["c10"][lenAbbr] = cFmt10;
+
+                                cFmt11 = dateRangeTemplate;
+                                cFmt11 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt11 = cFmt11.replace(/[\s\-\.\/]{sy}/,"").replace(/\s{time}/g, "");
+                                cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt11 = cFmt11.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                calendar.range["c11"][lenAbbr] = cFmt11;
+
+                                cFmt12 = dateRangeTemplate;
+                                cFmt12 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt12 = cFmt12.replace(" {time}", "");
+                                cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt12 = cFmt12.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt12 = replaceFormates(cFmt12,"{time}", "");
+                                calendar.range["c12"][lenAbbr] = cFmt12;
+
+                                cFmt20 = dateRangeTemplate;
+                                cFmt20 = cFmt20.replace(/d+[\s\-\.\/]/,"").replace(/ {time}/g, "");
+                                cFmt20 = cFmt20.replace(/M+/,"{sm}").replace(/y+/, "{sy}");
+                                cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/d+[s\s\-\.\/]/,"");
+                                calendar.range["c20"][lenAbbr] = cFmt20;
+
+                                cFmt30 = "{sy} – {ey}";
+                                calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
+
+
+                            break;
+                            case "mdy":
+                                console.log("{date}{time}, mdy");
+
+                                cFmt0 = dateRangeTemplate;
+                                cFmt0 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
+                                cFmt0 = replaceFormates(cFmt0,"{date}", "");
+                                cFmt0 = replaceFormates(cFmt0," {time}", "{et}");
+                                calendar.range["c00"][lenAbbr] = cFmt0;
+
+                                cFmt1 = dateRangeTemplate;
+                                cFmt1 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt1 = replaceFormates(cFmt1,"{time}", "{st}");
+                                cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt1 = cFmt1.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\s^\-^\.^\/]d+/,"{ed}");
+                                cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                calendar.range["c01"][lenAbbr] = cFmt1;
+                                calendar.range["c02"][lenAbbr] = cFmt1;
+                                calendar.range["c03"][lenAbbr] = cFmt1;
+
+                                cFmt10 = dateRangeTemplate;
+
+                                if (lenAbbr === 's') {
+                                    cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                    cFmt10 = replaceFormates(dateRangeTemplate, startTime);
+                                    cFmt10 = replaceFormates(cFmt10,"{time}", "");
+                                    cFmt10 = cFmt10.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\s^\-^\.^\/]d+/,"{ed}");
+                                    cFmt10 = replaceFormates(cFmt10,"{time}", "");
+                                    
+                                } else {
+                                    cFmt10 = replaceFormates(dateRangeTemplate, startTime);
+                                    cFmt10 = cFmt10.replace(/ {sy}/,"").replace(/ {time}/g,"");
+                                    cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                    cFmt10 = cFmt10.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "").replace(/[^s^\s^\-^\.^\/]d+/,"{ed}");
+                                    cFmt10 = cFmt10.replace(/}, –/, "} –");
+                                    
+                                }
+                                calendar.range["c10"][lenAbbr] = cFmt10;
+
+                                cFmt11 = dateRangeTemplate;
+                                cFmt11 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt11 = cFmt11.replace(/[\,][s\s\-\.\/]{sy}/,"").replace(/\s{time}/g,"");
+                                cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt11 = cFmt11.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\s^\-^\.^\/]d+/,"{ed}");
+                                calendar.range["c11"][lenAbbr] = cFmt11;
+
+                                cFmt12 = dateRangeTemplate;
+                                cFmt12 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt12 = cFmt12.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\s^\-^\.^\/]d+/,"{ed}");
+                                cFmt12 = cFmt12.replace(/ {time}/g,"");
+                                calendar.range["c12"][lenAbbr] = cFmt12;
+
+                                cFmt20 = dateRangeTemplate;
+                                cFmt20 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt20 = cFmt20.replace(/ {sd}/,"").replace(/ {time}/g,"");
+                                cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\-^\.^\/]d+/,"");
+                                calendar.range["c20"][lenAbbr] = cFmt20;
+
+                                
+                                cFmt30 = "{sy} – {ey}";
+                                calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
+
+
+                            break;
+                            case "ymd":
+                                console.log("dt,ymd");
+
+                                cFmt0 = dateRangeTemplate;
+                                cFmt0 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
+                                cFmt0 = replaceFormates(cFmt0,"{date}", "");
+                                cFmt0 = replaceFormates(cFmt0," {time}", "{et}");
+                                calendar.range["c00"][lenAbbr] = cFmt0;
+                                
+                                cFmt1 = dateRangeTemplate;
+                                cFmt1 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt1 = replaceFormates(cFmt1,"{time}", "{st}");
+                                cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                
+                                if (isAsianLang(language)) {
+                                    cFmt1 = cFmt1.replace(/y+[^s\s\-\.\/^\}]/,"").replace(/M+\W/, "").replace(/\bd+\b/,"{ed}")
+                                } else {
+                                    cFmt1 = cFmt1.replace(/y+[^s\s\-\.\/^\}]/,"").replace(/[\s\-\.\/]M+/, "").replace(/[\s\-\.\/]d+/,"{ed}")
+                                }
+
+                                cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                calendar.range["c01"][lenAbbr] = cFmt1;
+
+                                cFmt2 = dateRangeTemplate;
+                                cFmt2 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt2 = replaceFormates(cFmt2,"{time}", "{st}");
+                                cFmt2 = replaceFormates(cFmt2,"{date}", calendar.date["dm"][lenAbbr]);
+                                
+
+                                /*if (isAsianLang(language)) {
+                                    cFmt2 = cFmt2.replace(/y+[^s\s\-\.\/^\}]/,"").replace(/M+\W/, "").replace(/\bd+\b/,"{ed}")
+                                } 
+                                else if(language === 'lt') {
+                                    cFmt2 = cFmt2.replace(/[^s^\s^\-^\.^\/]y+/,"").replace(/[\s\-\.\/]M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                }else {
+                                    cFmt2 = cFmt2.replace(/[^s^\s^\-^\.^\/]y+/,"").replace(/[\s\-\.\/]M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                }*/
+                                if (isAsianLang(language)) {
+                                    cFmt2 = cFmt2.replace(/M+\W/, "").replace(/\bd+\b/,"{ed}")
+                                } 
+                                else if(language === 'lt') {
+                                    cFmt2 = cFmt2.replace(/[\s\-\.\/]M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                }else {
+                                    cFmt2 = cFmt2.replace(/[\s\-\.\/]M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                }
+
+
+                                cFmt2 = replaceFormates(cFmt2, "{time}", "{et}");
+                                calendar.range["c02"][lenAbbr] = cFmt2;
+
+                                cFmt3 = dateRangeTemplate;
+                                cFmt3 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt3 = replaceFormates(cFmt3,"{time}", "{st}");
+                                cFmt3 = replaceFormates(cFmt3,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt3 = cFmt3.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt3 = replaceFormates(cFmt3, "{time}", "{et}");
+                                calendar.range["c03"][lenAbbr] = cFmt3;
+
+                                cFmt10 = dateRangeTemplate;
+                                cFmt10 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt10 = cFmt10.replace(/\s{time}/g, "");
+                                cFmt10 = cFmt10.replace(/{date}/, "{ed}");
+                                calendar.range["c10"][lenAbbr] = cFmt10;
+
+                                cFmt11 = dateRangeTemplate;
+                                cFmt11 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt11 = cFmt11.replace(/\s{time}/g, "");
+                                cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt11 = cFmt11.replace(/y+[\s\-\.\/]/,"").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                calendar.range["c11"][lenAbbr] = cFmt11;
+
+                                cFmt12 = dateRangeTemplate;
+                                cFmt12 = replaceFormates(dateRangeTemplate, startTime);
+                                cFmt12 = cFmt12.replace(/\s{time}/g, "");
+                                cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt12 = cFmt12.replace(/\sy+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt12 = replaceFormates(cFmt12,"{time}", "");
+                                calendar.range["c12"][lenAbbr] = cFmt12;
+
+                                cFmt20 = dateRangeTemplate;
+                                cFmt20 = cFmt20.replace(/[\s\-\.\/]d+/,"").replace(/\s{time}/g, "");
+                                cFmt20 = cFmt20.replace(/M+/,"{sm}").replace(/y+/, "{sy}");
+                                cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
+                                cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/]y+/,"{ey}").replace(/M+/, "{em}").replace(/[s\s\-\.\/]d+/,"");
+                                calendar.range["c20"][lenAbbr] = cFmt20;
+
+                                cFmt30 = "{sy} – {ey}";
+                                calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
+
+
+
+                            break;
+                            default:
+                                console.log("Wrong format!");
+                            break;
+                        }
+                    } else { //{time}{date}
+                        switch (dmyOrder) {
+                            case "dmy":
+                                console.log("td,dmy");
+                            break;
+                            case "mdy":
+                                console.log("td,dmy");
+                            break;
+                            case "ymd":
+                                console.log("td,ymd");
+                            break;
+                            default:
+                                console.log("Wrong format!");
+                            break;
+                        }
+                    }
+                }
+            }
         }
+        if (formats.gregorian) {
+            console.log(JSON.stringify(formats.gregorian.range, undefined, 4));    
+        }
+        
         return formats;
     },
     
@@ -916,9 +1226,7 @@ module.exports = {
             "fri": 5,
             "sat": 6
         };
-        if (language === "pt") {
-            console.log("!!!!")
-        }
+        
         
         for (var calendarName in cldrData) {
             cldrCalendar = cldrData[calendarName];
