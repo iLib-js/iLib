@@ -938,7 +938,7 @@ module.exports = {
                 "c30": {}
             };
 
-            if (language === 'bs' /*&& script === 'Cyrl' && region === 'MO'*/) {
+            if (language === 'zh' /*&& script === 'Cyrl' && region === 'MO'*/) {
                 console.log("language: " + language + "\n");
             }
 
@@ -1021,10 +1021,14 @@ module.exports = {
                                     cFmt10 = cFmt10.replace(/\by+\b/, "{sy}").replace(/M+/, "{sm}").replace(/\bd+\b/,"{sd}");
                                     cFmt10 = cFmt10.replace(/[\s\-\.\/]{sy}/,"").replace(/[\s\-\.\/\,]{sm}[\,]/, "");
                                 } else { 
-
                                     cFmt10 = replaceFormates(cFmt10, startTime);
-                                    //cFmt10 = cFmt10.replace(/[\s\-\.\/]{sy}/,"").replace(/[\s\-\.\/]{sm}/, "");
                                     cFmt10 = cFmt10.replace(/[\s\-\.\/]{sy}/,"").replace(/[\s\-\.\/]{sm}/, "");
+                                }
+
+                                if ((cFmt10.search("'de' 'de'") !== -1) ||
+                                    (cFmt10.search("..") !== -1) ||
+                                    (cFmt10.search(",,") !== -1)) {
+                                    cFmt10 = cFmt10.replace(/'de' 'de'/, "'de'").replace(/\.\./, ".").replace(/\,\,/, ",");
                                 }
                                 
                                 cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
@@ -1045,7 +1049,7 @@ module.exports = {
                                     cFmt11 = cFmt11.replace(/[\s\-\.\/]{sy}[\,]/,"");
                                 } else {
                                     cFmt11 = replaceFormates(cFmt11, startTime);
-                                    cFmt11 = cFmt11.replace(/[\s\-\.\/]{sy}/,"").replace(/\s{time}/g, "");
+                                    cFmt11 = cFmt11.replace(/[\s\-\.\/]{sy}/,"");
                                 }
                                 
                                 cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
@@ -1187,6 +1191,13 @@ module.exports = {
                                
                                 if (language === 'lt' && (lenAbbr === 'f' || lenAbbr === 'l' )) { //"yyyy 'm'. MMMM d 'd'."
                                     cFmt1 = cFmt1.replace(/[^'^s^]d+/, " {ed}");
+                                } else if ((language === 'ja' || language === 'ko') && (lenAbbr === 's' || lenAbbr === 'm')) {
+                                    if (language === 'ja') {
+                                        cFmt1 = cFmt1.replace(/[^s^e^\s]d+\W/, calendar.date["dm"][lenAbbr]).replace(/M+\W/,"")
+                                    } else {
+                                        cFmt1 = cFmt1.replace(/[^s^e]d+\W/, calendar.date["dm"][lenAbbr]).replace(/M+\W/,"")
+                                    } 
+                                    cFmt1 = cFmt1.replace(/\bd+\b/, "{ed}");
                                 } else {
                                     cFmt1 = cFmt1.replace(/\bd+\b/, "{ed}")
                                 }
