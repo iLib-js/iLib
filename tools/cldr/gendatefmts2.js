@@ -184,7 +184,6 @@ list.forEach(function (file) {
 		
 		// do regular gregorian for all locales
 		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-		console.log("sourcePath: ", sourcePath);
 		newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
 		//util.print("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
 		group = aux.getFormatGroup(dateFormats, localeComponents);
