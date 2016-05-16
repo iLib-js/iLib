@@ -929,8 +929,11 @@ module.exports = {
                 "c30": {}
             };
 
-            if (language === 'zh' /*&& script === 'Cyrl' && region === 'MO'*/) {
-                console.log("language: " + language + "\n");
+            if (language === 'es' /*&& script === 'Cyrl' && region === 'MO'*/) {
+                if (region === 'PA' || region === "PR") {
+                    console.log("language: " + language + "\n");
+                }
+                
             }
 
             for (i = 0; i < lengths.length; i++) {
@@ -1133,9 +1136,10 @@ module.exports = {
 
                                 cFmt20 = dateOnlyTemplate;
                                 cFmt20 = replaceFormates(cFmt20, startTime);
-                                cFmt20 = cFmt20.replace(/ {sd}/,"");
+                                
+                                cFmt20 = cFmt20.replace(/[\W\s]{sd}/,"");
                                 cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
-                                cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/[^s^\-^\.^\/]d+/,"");
+                                cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/[\W]d+/,"");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
                                 
                                 cFmt30 = "{sy} – {ey}";
@@ -1516,7 +1520,7 @@ module.exports = {
                                 cFmt12 = cFmt12.replace(/M+/, "{sm}").replace(/\bd+\b/,"{sd}").replace(/\by+\b/,"{sy}");
                                 cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
 
-                                if (lenAbbr === 's') { 
+                                if (lenAbbr === 's') {
                                     cFmt12 = cFmt12.replace(/\by+\b/,"{ey}").replace(/M+/,"{em}").replace(/\bd+\b/,"{ed}");
                                 } else {
                                     cFmt12 = cFmt12.replace(/[^s]y+/,"{ey}").replace(/M+/,"{em}").replace(/\bd+\b/,"{ed}");
