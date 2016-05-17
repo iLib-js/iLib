@@ -41,7 +41,7 @@ function testDateRngFmtAMRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
+    assertEquals("30/12/2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtAMRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("30 ነሐሴ 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtAMRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("30 ነሐሴ 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtAMRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+    assertEquals("ነሐሴ 30 ቀን 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtAMRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29/12/2011 – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
+    assertEquals("29/12/2011 1:45 ከምሽቱ – 30/12/2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtAMRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29 ነሐሴ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("29 ነሐሴ 2011 1:45 ከምሽቱ – 30 ነሐሴ 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
@@ -235,7 +235,7 @@ function testDateRngFmtAMRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30/12/2011", fmt.format(start, end));
+    assertEquals("20 – 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtAMRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("20 – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtAMRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("20 – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtAMRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ነሐሴ 20–30 ቀን 2011", fmt.format(start, end));
+    assertEquals("ነሐሴ 20 – 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextMonthShort() {
@@ -429,7 +429,7 @@ function testDateRngFmtAMRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011–30/01/2012", fmt.format(start, end));
+    assertEquals("20/11/2011 – 30/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
@@ -526,7 +526,7 @@ function testDateRngFmtAMRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011–01/2014", fmt.format(start, end));
+    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});

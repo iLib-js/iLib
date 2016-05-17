@@ -112,8 +112,8 @@ function testDateRngFmtIDRangeInDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("31 Desember 2011 13.45 – 14.30 ", fmt.format(start, end));
+	});           
+    assertEquals("31 Desember 2011 13.45 – 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtIDRangeNextDayShort() {
@@ -622,5 +622,5 @@ function testDateRngFmtIDManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–2064", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

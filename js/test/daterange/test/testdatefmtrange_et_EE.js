@@ -235,7 +235,7 @@ function testDateRngFmtEERangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});

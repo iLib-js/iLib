@@ -236,7 +236,7 @@ function testDateRngFmtRangeMultiDayShort_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_hi_IN() {
     var fmt = new DateRngFmt({locale: "hi-IN", length: "medium"});
@@ -260,7 +260,7 @@ function testDateRngFmtRangeMultiDayMedium_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31/12/2011", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayLong_hi_IN() {
     var fmt = new DateRngFmt({locale: "hi-IN", length: "long"});

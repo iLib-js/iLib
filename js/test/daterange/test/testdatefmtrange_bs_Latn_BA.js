@@ -380,7 +380,7 @@ function testDateRngFmtBARangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. novembar – 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("20. novembar. – 31. decembar 2011.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "full"});
@@ -622,5 +622,5 @@ function testDateRngFmtBAManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. – 2064.", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

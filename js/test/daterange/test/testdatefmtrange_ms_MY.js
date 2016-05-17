@@ -236,7 +236,7 @@ function testDateRngFmtMYRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -260,7 +260,7 @@ function testDateRngFmtMYRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 Dis 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Dis 2011", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "ms-MY", length: "long"});
@@ -284,7 +284,7 @@ function testDateRngFmtMYRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 Disember 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Disember 2011", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "ms-MY", length: "full"});
@@ -308,7 +308,7 @@ function testDateRngFmtMYRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 Disember 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Disember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtMYRangeNextMonthShort() {

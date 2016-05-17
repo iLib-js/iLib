@@ -236,7 +236,7 @@ function testDateRngFmtRangeMultiDayShort_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("12/20/11 – 12/31/11", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_kn_IN() {
     var fmt = new DateRngFmt({locale: "kn-IN", length: "medium"});
