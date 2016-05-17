@@ -107,6 +107,20 @@ var asianLangs = [
     "ja"
 ];
 
+var  formatText = [
+    "'at'",
+    "'de'",
+    "'u'",
+    "'a les'", //ca
+    "'am'",
+    "'kl.'", //da
+    "'um'", //de
+    "''",
+    "''",
+    "''",
+    "''",
+];
+
 function loadFile(path) {
     var ret = undefined;
     if (fs.existsSync(path)) {
@@ -929,10 +943,10 @@ module.exports = {
                 "c30": {}
             };
 
-            if (language === 'es' /*&& script === 'Cyrl' && region === 'MO'*/) {
-                if (region === 'PA' || region === "PR") {
+            if (language === 'ca' /*&& script === 'Cyrl' && region === 'MO'*/) {
+                //if (region === 'PA' || region === "PR") {
                     console.log("language: " + language + "\n");
-                }
+                //}
                 
             }
 
@@ -982,6 +996,7 @@ module.exports = {
                                 
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
                                 
                                 cFmt1 = dateRangeTemplate;
@@ -997,6 +1012,7 @@ module.exports = {
                                 
                                 cFmt1 = cFmt1.replace(/\by+\b/,"{ey}").replace(/\bM+\b/, "{em}").replace(/\bd+\b/,"{ed}");
                                 cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
                                 calendar.range["c02"][lenAbbr] = cFmt1;
                                 calendar.range["c03"][lenAbbr] = cFmt1;
@@ -1014,8 +1030,9 @@ module.exports = {
 
                                 if ((cFmt10.search("'de' 'de'") !== -1) ||
                                     (cFmt10.search("..") !== -1) ||
+                                    (cFmt10.search("'di' 'di'") !== -1) ||
                                     (cFmt10.search(",,") !== -1)) {
-                                    cFmt10 = cFmt10.replace(/'de' 'de'/, "'de'").replace(/\.\./, ".").replace(/\,\,/, ",");
+                                    cFmt10 = cFmt10.replace(/'de' 'de'/, "'de'").replace(/\.\./, ".").replace(/\,\,/, ",").replace(/'di' 'di'/, "'di'");
                                 }
                                 
                                 cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
@@ -1027,6 +1044,7 @@ module.exports = {
                                     cFmt10 = cFmt10.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                     
                                 }
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
 
                                 cFmt11 = dateOnlyTemplate;
@@ -1040,6 +1058,7 @@ module.exports = {
                                 
                                 cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt11 = cFmt11.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}"); 
+                                cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 cFmt12 = dateOnlyTemplate;
@@ -1052,6 +1071,7 @@ module.exports = {
 
                                 cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt12 = cFmt12.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt12 = cFmt12.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c12"][lenAbbr] = cFmt12;
 
 
@@ -1080,7 +1100,7 @@ module.exports = {
                                 } else {
                                     cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/d+[s\s\-\.\/]/,"");
                                 }
-
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
 
                                 cFmt30 = "{sy} – {ey}";
@@ -1094,6 +1114,7 @@ module.exports = {
                                 cFmt0 = replaceFormates(cFmt0, startTime);
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
 
                                 cFmt1 = dateRangeTemplate;
@@ -1102,6 +1123,7 @@ module.exports = {
                                 cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt1 = cFmt1.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                 cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
                                 calendar.range["c02"][lenAbbr] = cFmt1;
                                 calendar.range["c03"][lenAbbr] = cFmt1;
@@ -1119,6 +1141,7 @@ module.exports = {
                                     cFmt10 = cFmt10.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "").replace(/\bd+\b/,"{ed}");
                                     cFmt10 = cFmt10.replace(/}, –/, "} –");
                                 }
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
 
                                 cFmt11 = dateOnlyTemplate;
@@ -1126,12 +1149,14 @@ module.exports = {
                                 cFmt11 = cFmt11.replace(/[\,][s\s\-\.\/^\u200f]{sy}/,"");
                                 cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt11 = cFmt11.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 cFmt12 = dateOnlyTemplate;
                                 cFmt12 = replaceFormates(cFmt12, startTime);
                                 cFmt12 = replaceFormates(cFmt12,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt12 = cFmt12.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt12 = cFmt12.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c12"][lenAbbr] = cFmt12;
 
                                 cFmt20 = dateOnlyTemplate;
@@ -1140,6 +1165,7 @@ module.exports = {
                                 cFmt20 = cFmt20.replace(/[\W\s]{sd}/,"");
                                 cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/[\W]d+/,"");
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
                                 
                                 cFmt30 = "{sy} – {ey}";
@@ -1153,6 +1179,7 @@ module.exports = {
                                 cFmt0 = replaceFormates(cFmt0, startTime);
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
                                 
                                 cFmt1 = dateRangeTemplate;
@@ -1179,6 +1206,7 @@ module.exports = {
                                 }
                                 
                                 cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
 
                                 cFmt2 = dateRangeTemplate;
@@ -1196,6 +1224,7 @@ module.exports = {
                                 }
 
                                 cFmt2 = replaceFormates(cFmt2, "{time}", "{et}");
+                                cFmt2 = cFmt2.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c02"][lenAbbr] = cFmt2;
 
                                 cFmt3 = dateRangeTemplate;
@@ -1211,6 +1240,7 @@ module.exports = {
                                 }
                                 
                                 cFmt3 = replaceFormates(cFmt3, "{time}", "{et}");
+                                cFmt3 = cFmt3.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c03"][lenAbbr] = cFmt3;
 
 
@@ -1230,7 +1260,7 @@ module.exports = {
                                 } else {
                                     cFmt10 = cFmt10.replace(/{date}/, "{ed}");
                                 }
-                                
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
 
                                 cFmt11 = dateOnlyTemplate;
@@ -1246,7 +1276,7 @@ module.exports = {
                                 } else {
                                     cFmt11 = cFmt11.replace(/[^s^\s^\u200f]y+\W+/,"").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                 }
-                                
+                                cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 cFmt12 = dateOnlyTemplate;
@@ -1259,7 +1289,7 @@ module.exports = {
                                 } else {
                                     cFmt12 = cFmt12.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                 }
-
+                                cFmt12 = cFmt12.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c12"][lenAbbr] = cFmt12;
 
                                 cFmt20 = dateOnlyTemplate;
@@ -1307,7 +1337,7 @@ module.exports = {
                                 } else {
                                     cFmt20 = cFmt20.replace(/[^s^\s^\-^\.^\/^\u200f]y+/,"{ey}").replace(/M+/, "{em}").replace(/[s\s\-\.\/]d+/,"");
                                 }
-                                
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
 
                                 cFmt30 = "{sy} – {ey}";
@@ -1321,6 +1351,7 @@ module.exports = {
                                 cFmt0 = cFmt0.replace(/\by+\b/,"{sy}").replace(/M+/, "{sm}").replace(/\bd+\b/,"{sd}");
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
 
                                 //{sy} {sd}{sm} {st} - {ey} {ed}{em} {et}
@@ -1330,6 +1361,7 @@ module.exports = {
                                 cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt1 = cFmt1.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                 cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
                                 calendar.range["c02"][lenAbbr] = cFmt1;
                                 calendar.range["c03"][lenAbbr] = cFmt1;
@@ -1339,6 +1371,7 @@ module.exports = {
                                 cFmt10 = cFmt10.replace(/\by+\b/,"{sy}").replace(/M+/, "{sm}").replace(/\bd+\b/,"{sd}");
                                 cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt10 = cFmt10.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
                                 calendar.range["c11"][lenAbbr] = cFmt10;
                                 calendar.range["c12"][lenAbbr] = cFmt10;
@@ -1348,6 +1381,7 @@ module.exports = {
                                 cFmt20 = cFmt20.replace(/{sd}\W/,"");
                                 cFmt20 = replaceFormates(cFmt20,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt20 = cFmt20.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\W/,"");
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
                                 
                                 cFmt30 = "{sy} – {ey}";
@@ -1368,6 +1402,7 @@ module.exports = {
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
                                 cFmt0 = replaceFormates(cFmt0, "{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt0 = cFmt0.replace(/\b\wy+\b/,"{sy}").replace(/\bd+\b/,"{sd}").replace(/\bM+\b/,"{sm}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
 
                                 cFmt1 = dateRangeTemplate;
@@ -1382,6 +1417,7 @@ module.exports = {
                                         cFmt1 = cFmt1.replace(/\by+\b/,"{ey}").replace(/\bM+\b/, "{em}").replace(/\bd+\b/,"{ed}");
                                     } 
                                 }
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
                                 calendar.range["c02"][lenAbbr] = cFmt1;
                                 calendar.range["c03"][lenAbbr] = cFmt1;
@@ -1405,6 +1441,7 @@ module.exports = {
 
                                     }
                                 }
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
 
                                 //{sd}{sm} - {ed}{em}{ey}
@@ -1415,6 +1452,7 @@ module.exports = {
                                     cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date["dmy"][lenAbbr]);
                                     cFmt11 = cFmt11.replace(/\bd+\b/, "{ed}").replace(/\bM+\b/, "{em}").replace(/\b\wy+\b/, "{ey}");
                                 }
+                                cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 cFmt12 = dateOnlyTemplate;
@@ -1430,6 +1468,7 @@ module.exports = {
                                         cFmt12 = cFmt12.replace(/\bd+\b/, "{ed}").replace(/\bM+\b/, "{em}").replace(/\b\y+\b/, "{ey}");
                                     }
                                 }
+                                cFmt12 = cFmt12.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c12"][lenAbbr] = cFmt12;
 
                                 cFmt20 = dateOnlyTemplate;
@@ -1457,7 +1496,7 @@ module.exports = {
                                         cFmt20 = cFmt20.replace(/M+/,"{em}").replace(/\by+\b/, "{ey}");
                                     }
                                 }
-
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
 
                                 cFmt30 = "{sy} – {ey}";
@@ -1471,6 +1510,7 @@ module.exports = {
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{et}");
                                 cFmt0 = replaceFormates(cFmt0, "{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt0 = cFmt0.replace(/\by+\b/,"{sy}").replace(/\bd+\b/,"{sd}").replace(/\bM+\b/,"{sm}");
+                                cFmt0 = cFmt0.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c00"][lenAbbr] = cFmt0;
 
                                 cFmt1 = dateRangeTemplate;
@@ -1479,6 +1519,7 @@ module.exports = {
                                 cFmt1 = replaceFormates(cFmt1,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt1 = cFmt1.replace(/\by+\b/,"{ey}").replace(/M+/, "{em}").replace(/\bd+\b/,"{ed}");
                                 cFmt1 = replaceFormates(cFmt1, "{time}", "{et}");
+                                cFmt1 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c01"][lenAbbr] = cFmt1;
                                 calendar.range["c02"][lenAbbr] = cFmt1;
                                 calendar.range["c03"][lenAbbr] = cFmt1;
@@ -1497,7 +1538,7 @@ module.exports = {
                                     cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                     cFmt10 = cFmt10.replace(/[^s]y+/,"{ey}").replace(/M+/,"").replace(/\bd+\b/,"{ed}");
                                 }
-
+                                cFmt10 = cFmt10.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c10"][lenAbbr] = cFmt10;
 
                                 //md - mdy
@@ -1511,7 +1552,7 @@ module.exports = {
                                     cFmt11 = cFmt11.replace(/[^s]y+/,"{ey}").replace(/M+/,"{em}").replace(/\bd+\b/,"{ed}");
                                 }
 
-                                
+                                cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c11"][lenAbbr] = cFmt11;
 
                                 //mdy - mdy
@@ -1526,7 +1567,7 @@ module.exports = {
                                     cFmt12 = cFmt12.replace(/[^s]y+/,"{ey}").replace(/M+/,"{em}").replace(/\bd+\b/,"{ed}");
                                 }
 
-                                
+                                cFmt12 = cFmt1.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c12"][lenAbbr] = cFmt12;
 
                                 //my - my
@@ -1540,7 +1581,7 @@ module.exports = {
                                 } else {
                                     cFmt20 = cFmt20.replace(/[^s^\s]y+/,"{ey}").replace(/M+/,"{em}");
                                 }
-
+                                cFmt20 = cFmt20.replace(/\'/g,"").replace(/\s\s/g," ");
                                 calendar.range["c20"][lenAbbr] = cFmt20;
 
                                 cFmt30 = "{sy} – {ey}";
