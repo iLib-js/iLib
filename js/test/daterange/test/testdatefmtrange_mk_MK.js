@@ -41,7 +41,7 @@ function testDateRngFmtMKRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31-12-11", fmt.format(start, end));
+    assertEquals("31.12.11 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "mk-MK", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtMKRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("31.12.2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "mk-MK", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtMKRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 декември 31", fmt.format(start, end));
+    assertEquals("31 декември 2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "mk-MK", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtMKRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 декември 2011", fmt.format(start, end));
+    assertEquals("31 декември 2011 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtMKRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtMKRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.11 – 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("30.12.11 13:45 – 31.12.11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "mk-MK", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtMKRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.2011 – 14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("30.12.2011 13:45 – 31.12.2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "mk-MK", length: "long"});

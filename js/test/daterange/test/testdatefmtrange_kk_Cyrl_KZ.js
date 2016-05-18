@@ -41,7 +41,7 @@ function testDateRngFmtKZRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31/12/11", fmt.format(start, end));
+    assertEquals("31/12/11 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtKZRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011, 31-желт.", fmt.format(start, end));
+    assertEquals("2011, 31-желт. 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtKZRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 желтоқсан 2011", fmt.format(start, end));
+    assertEquals("31 желтоқсан 2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtKZRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 желтоқсан 2011", fmt.format(start, end));
+    assertEquals("31 желтоқсан 2011 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtKZRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtKZRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30/12/11 – 14:30 31/12/11", fmt.format(start, end));
+    assertEquals("30/12/11 13:45 – 31/12/11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtKZRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011, 30-желт. – 14:30 2011, 31-желт.", fmt.format(start, end));
+    assertEquals("2011, 30-желт. 13:45 – 2011, 31-желт. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});

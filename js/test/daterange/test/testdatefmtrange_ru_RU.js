@@ -43,7 +43,7 @@ function testDateRngFmtRURangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11, 13:45-14:30", fmt.format(start, end));
+    assertEquals("31.12.11, 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -67,7 +67,7 @@ function testDateRngFmtRURangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 дек. 2011 г., 13:45-14:30", fmt.format(start, end));
+    assertEquals("31 дек. 2011 г., 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeInDayLong() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "long"});
@@ -91,7 +91,7 @@ function testDateRngFmtRURangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 декабря 2011 г., 13:45-14:30", fmt.format(start, end));
+    assertEquals("31 декабря 2011 г., 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeInDayFull() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "full"});
@@ -115,7 +115,7 @@ function testDateRngFmtRURangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 декабря 2011 г., 13:45-14:30", fmt.format(start, end));
+    assertEquals("31 декабря 2011 г., 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtRURangeNextDayShort() {
@@ -261,7 +261,7 @@ function testDateRngFmtRURangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 дек. 2011 г.", fmt.format(start, end));
+    assertEquals("20 – 31 дек. 2011 г.", fmt.format(start, end));
 }
 function testDateRngFmtRURangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "long"});
@@ -285,7 +285,7 @@ function testDateRngFmtRURangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 декабря 2011 г.", fmt.format(start, end));
+    assertEquals("20 – 31 декабря 2011 г.", fmt.format(start, end));
 }
 function testDateRngFmtRURangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "full"});
@@ -309,7 +309,7 @@ function testDateRngFmtRURangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 декабря 2011 г.", fmt.format(start, end));
+    assertEquals("20 – 31 декабря 2011 г.", fmt.format(start, end));
 }
 
 function testDateRngFmtRURangeNextMonthShort() {
@@ -624,5 +624,5 @@ function testDateRngFmtRUManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-2064", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

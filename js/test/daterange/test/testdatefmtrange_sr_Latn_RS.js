@@ -42,7 +42,7 @@ function testDateRngFmtRSRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 – 14.30 31.12.11.", fmt.format(start, end));
+    assertEquals("31.12.11. 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtRSRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 – 14.30 31.12.2011.", fmt.format(start, end));
+    assertEquals("31.12.2011. 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtRSRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 – 14.30 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("31. decembar 2011. 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtRSRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 – 14.30 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("31. decembar 2011. 13.45 – 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtRSRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtRSRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 30.12.11. – 14.30 31.12.11.", fmt.format(start, end));
+    assertEquals("30.12.11. 13.45 – 31.12.11. 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtRSRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 30.12.2011. – 14.30 31.12.2011.", fmt.format(start, end));
+    assertEquals("30.12.2011. 13.45 – 31.12.2011. 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtRSRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45 30. decembar – 14.30 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("30. decembar 2011. 13.45 – 31. decembar 2011. 14.30", fmt.format(start, end));
 }
 function testDateRngFmtRSRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "full"});

@@ -60,7 +60,7 @@ function testDateRngFmtCyrl_UZRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 11/12/31", fmt.format(start, end));
+    assertEquals("11/12/31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtCyrl_UZRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "medium"});
@@ -84,7 +84,7 @@ function testDateRngFmtCyrl_UZRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Дек 31", fmt.format(start, end));
+    assertEquals("2011 Дек 31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtCyrl_UZRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "long"});
@@ -108,7 +108,7 @@ function testDateRngFmtCyrl_UZRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Декабр 31", fmt.format(start, end));
+    assertEquals("2011 Декабр 31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtCyrl_UZRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "uz-Cyrl-UZ", length: "full"});
@@ -132,7 +132,7 @@ function testDateRngFmtCyrl_UZRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Декабр 31", fmt.format(start, end));
+    assertEquals("2011 Декабр 31 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtCyrl_UZRangeNextDayShort() {

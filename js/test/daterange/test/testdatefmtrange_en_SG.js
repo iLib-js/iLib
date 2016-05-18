@@ -259,7 +259,7 @@ function testDateRngFmtSGMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 Dec 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Dec 2011", fmt.format(start, end));
 }
 function testDateRngFmtSGMultiDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
