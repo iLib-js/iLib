@@ -100,4 +100,5 @@ if (!module) {
 		exports: {}
 	};
 }
+var module = {};
 module.exports = TestSuite;
