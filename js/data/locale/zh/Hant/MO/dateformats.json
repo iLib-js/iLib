@@ -59,28 +59,28 @@
         },
         "range": {
             "c00": {
-                "s": "{sy}年{sm}月{sd}日 {st}至{et}"
+                "s": "{sy}年{sm}月{sd}日 {st} – {et}"
             },
             "c01": {
-                "s": "{sy}年{sm}月{sd}日{st}至{ed}日{et}"
+                "s": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}"
             },
             "c02": {
-                "s": "{sy}年{sm}月{sd}日{st}至{em}月{ed}日{et}"
+                "s": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}"
             },
             "c03": {
-                "s": "{sy}年{sm}月{sd}日{st}至{ey}年{em}月{ed}日{et}"
+                "s": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}"
             },
             "c10": {
-                "s": "{sy}年{sm}月{sd}日至{ed}日"
+                "s": "{sy}年{sm}月{sd}日 – {ed}日"
             },
             "c11": {
-                "s": "{sy}年{sm}月{sd}日至{em}月{ed}日"
+                "s": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日"
             },
             "c12": {
-                "s": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日"
+                "s": "{sy}年{sm}月{sd}日 – {ey}年{em}月{ed}日"
             },
             "c20": {
-                "s": "{sy}年{sm}月至{ey}年{em}月"
+                "s": "{sy}年{sm}月 – {ey}年{em}月"
             }
         }
     }

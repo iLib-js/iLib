@@ -99,6 +99,62 @@
                 "hmsz": "‏HH:mm:ss z",
                 "ahmsz": "‏HH:mm:ss z"
             }
+        },
+        "range": {
+            "c00": {
+                "f": "‏{sd}טן {sm} {sy} {st} – {et}",
+                "l": "‏{sd}טן {sm} {sy} {st} – {et}",
+                "m": "‏{sd}טן {sm} {sy}, {st} – {et}",
+                "s": "‏{sd}/{sm}/{sy}, {st} – {et}"
+            },
+            "c01": {
+                "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
+                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+            },
+            "c02": {
+                "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
+                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+            },
+            "c03": {
+                "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
+                "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
+                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+            },
+            "c10": {
+                "f": "‏{sd} – ‏{ed}טן {em} {ey}",
+                "l": "‏{sd} – ‏{ed}טן {em} {ey}",
+                "m": "‏{sd} – ‏{ed}טן {em} {ey}",
+                "s": "‏{sd} – ‏{ed}/{em}/{ey}"
+            },
+            "c11": {
+                "f": "‏{sd}טן {sm} – ‏{ed}טן {em} {ey}",
+                "l": "‏{sd}טן {sm} – ‏{ed}טן {em} {ey}",
+                "m": "‏{sd}טן {sm} – ‏{ed}טן {em} {ey}",
+                "s": "‏{sd}/{sm} – ‏{ed}/{em}/{ey}"
+            },
+            "c12": {
+                "f": "‏{sd}טן {sm} {sy} – ‏{ed}טן {em} {ey}",
+                "l": "‏{sd}טן {sm} {sy} – ‏{ed}טן {em} {ey}",
+                "m": "‏{sd}טן {sm} {sy} – ‏{ed}טן {em} {ey}",
+                "s": "‏{sd}/{sm}/{sy} – ‏{ed}/{em}/{ey}"
+            },
+            "c20": {
+                "f": "{sm} {sy} – {em} {ey}",
+                "l": "{sm} {sy} – {em} {ey}",
+                "m": "{sm} {sy} – {em} {ey}",
+                "s": "‏{sm}/{sy} – ‏{em}/{ey}"
+            },
+            "c30": {
+                "f": "‏{sy} – {ey}",
+                "l": "‏{sy} – {ey}",
+                "m": "‏{sy} – {ey}",
+                "s": "‏{sy} – {ey}"
+            }
         }
     }
 }

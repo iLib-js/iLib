@@ -68,6 +68,40 @@
                 "hmsz": "HH:mm:ss z",
                 "ahmsz": "HH:mm:ss z"
             }
+        },
+        "range": {
+            "c00": {
+                "m": "{sy}-{sm}-{sd} {st} – {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {et}"
+            },
+            "c01": {
+                "m": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+            },
+            "c02": {
+                "m": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+            },
+            "c03": {
+                "m": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+            },
+            "c10": {
+                "m": "{sy}-{sm}-{sd} – {ed}",
+                "s": "{sy}-{sm}-{sd} – {ed}"
+            },
+            "c11": {
+                "m": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
+            },
+            "c12": {
+                "m": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
+            },
+            "c20": {
+                "m": "{sy}-{sm} – {ey}-{em}",
+                "s": "{sy}-{sm} – {ey}-{em}"
+            }
         }
     }
 }

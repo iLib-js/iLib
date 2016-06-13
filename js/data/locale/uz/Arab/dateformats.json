@@ -67,6 +67,48 @@
                 "hmsz": "H:mm:ss (z)",
                 "ahmsz": "H:mm:ss (z)"
             }
+        },
+        "range": {
+            "c00": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} {st} – {et}",
+                "l": "{sd} نچی {sm} {sy} {st} – {et}",
+                "m": "{sd} {sm} {sy} {st} – {et}"
+            },
+            "c01": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} {st} – {ey} نچی ییل {ed} نچی {em} {et}",
+                "l": "{sd} نچی {sm} {sy} {st} – {ed} نچی {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+            },
+            "c02": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} {st} – {ey} نچی ییل {ed} نچی {em} {et}",
+                "l": "{sd} نچی {sm} {sy} {st} – {ed} نچی {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+            },
+            "c03": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} {st} – {ey} نچی ییل {ed} نچی {em} {et}",
+                "l": "{sd} نچی {sm} {sy} {st} – {ed} نچی {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+            },
+            "c10": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} – {ed} نچی {em}",
+                "l": "{sd} – {ed} نچی {em} {ey}",
+                "m": "{sd} – {ed} {em} {ey}"
+            },
+            "c11": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} – {ey} نچی ییل {ed} نچی {em}",
+                "l": "{sd} نچی {sm} – {ed} نچی {em} {ey}",
+                "m": "{sd} {sm} – {ed} {em} {ey}"
+            },
+            "c12": {
+                "f": "{sy} نچی ییل {sd} نچی {sm} – {ey} نچی ییل {ed} نچی {em}",
+                "l": "{sd} نچی {sm} {sy} – {ed} نچی {em} {ey}",
+                "m": "{sd} {sm} {sy} – {ed} {em} {ey}"
+            },
+            "c20": {
+                "f": "{sy} نچی ییل نچی {sm} – {ey} نچی ییل نچی {em}",
+                "l": "{sm} {sy} – {em} {ey}",
+                "m": "{sm} {sy} – {em} {ey}"
+            }
         }
     }
 }

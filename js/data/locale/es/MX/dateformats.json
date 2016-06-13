@@ -50,6 +50,40 @@
                 "hmsz": "H:mm:ss z",
                 "ahmsz": "H:mm:ss z"
             }
+        },
+        "range": {
+            "c00": {
+                "f": "{sd} de {sm} de {sy} {st} – {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {et}",
+                "m": "{sd}/{sm}/{sy} {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c02": {
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c03": {
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c10": {
+                "m": "{sd} – {ed}/{em}/{ey}"
+            },
+            "c11": {
+                "m": "{sd}/{sm} – {ed}/{em}/{ey}"
+            },
+            "c12": {
+                "m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
+            },
+            "c20": {
+                "m": "{sm}/{sy} – {em}/{ey}"
+            }
         }
     }
 }

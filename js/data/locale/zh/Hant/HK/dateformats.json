@@ -37,28 +37,31 @@
         },
         "range": {
             "c00": {
-                "s": "{sd}/{sm}/{sy} {st}至{et}"
+                "s": "{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
-                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "s": "{sd}/{sm}/{sy} {st}至{ed}/{em}/{ey} {et}"
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c10": {
-                "s": "{sd}至{ed}/{sm}/{sy}"
+                "s": "{sd} – {ed}/{em}/{ey}"
             },
             "c11": {
-                "s": "{sd}/{sm}至{ed}/{em}/{sy}"
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
             },
             "c12": {
-                "s": "{sd}/{sm}/{sy}至{ed}/{em}/{ey}"
+                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c20": {
-                "s": "{sm}/{sy}至{em}/{ey}"
+                "s": "{sm}/{sy} – {em}/{ey}"
+            },
+            "c30": {
+                "s": "{sy} – {ey}"
             }
         }
     }
