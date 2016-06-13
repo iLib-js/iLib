@@ -185,8 +185,8 @@ function testDateRngFmtCORangeNextDayLong() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("30 de diciembre, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
+	})
+    assertEquals("30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "full"});
@@ -209,8 +209,8 @@ function testDateRngFmtCORangeNextDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("30 de diciembre, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
+	});           
+    assertEquals("30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
 }
 
 function testDateRngFmtCORangeMultiDayShort() {

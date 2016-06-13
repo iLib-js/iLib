@@ -198,10 +198,8 @@ function testDateRngFmtGetDefaultFormat() {
     	minute: 35,
     	second: 0
     });
-    
     assertEquals("20/2/13 12:20 – 16:35", fmt.format(start, end));
 }
-
 
 function mockLoader(paths, sync, params, callback) {
 	var data = [];

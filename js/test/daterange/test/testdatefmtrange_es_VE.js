@@ -162,7 +162,7 @@ function testDateRngFmtVERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 de dic. 1:45 p. m. – 31 de dic. de 2011 2:30 p. m.", fmt.format(start, end));
+    assertEquals("30 de dic. de 2011 1:45 p. m. – 31 de dic. de 2011 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtVERangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "es-VE", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtVERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 de diciembre, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
+    assertEquals("30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtVERangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "es-VE", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtVERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 de diciembre, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
+    assertEquals("30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.", fmt.format(start, end));
 }
 
 function testDateRngFmtVERangeMultiDayShort() {

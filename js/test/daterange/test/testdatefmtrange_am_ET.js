@@ -186,7 +186,7 @@ function testDateRngFmtAMRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29 – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("29 ነሐሴ 2011 1:45 ከምሽቱ – 30 ነሐሴ 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
@@ -209,8 +209,8 @@ function testDateRngFmtAMRangeNextDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("1:45 ከምሽቱ ነሐሴ 29 – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ነሐሴ 29 ቀን 2011 1:45 ከምሽቱ – ነሐሴ 30 ቀን 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeMultiDayShort() {
@@ -306,8 +306,8 @@ function testDateRngFmtAMRangeMultiDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("ነሐሴ 20 – 30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ነሐሴ 20 ቀን – 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtAMRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 30/12/2011", fmt.format(start, end));
+    assertEquals("20/11 – 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
@@ -403,8 +403,8 @@ function testDateRngFmtAMRangeNextMonthFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("ሐምሌ 20 – ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ሐምሌ 20 ቀን 2011 – ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextYearShort() {

@@ -139,7 +139,7 @@ function testDateRngFmtKRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 12. 30. 오후 1:45 – 31. 오후 2:30", fmt.format(start, end));
+    assertEquals("11. 12. 30. 오후 1:45 – 11. 12. 31. 오후 2:30", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtKRRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 12. 30. 오후 1:45 – 31. 오후 2:30", fmt.format(start, end));
+    assertEquals("2011. 12. 30. 오후 1:45 – 2011. 12. 31. 오후 2:30", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtKRRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 30일 오후 1:45 – 31일 오후 2:30", fmt.format(start, end));
+    assertEquals("2011년 12월 30일 오후 1:45 – 2011년 12월 31일 오후 2:30", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtKRRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 30일 오후 1:45 – 31일 오후 2:30", fmt.format(start, end));
+    assertEquals("2011년 12월 30일 오후 1:45 – 2011년 12월 31일 오후 2:30", fmt.format(start, end));
 }
 
 function testDateRngFmtKRRangeMultiDayShort() {
@@ -333,7 +333,7 @@ function testDateRngFmtKRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 11. 20. – 12. 31.", fmt.format(start, end));
+    assertEquals("11. 11. 20. – 11. 12. 31.", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -357,7 +357,7 @@ function testDateRngFmtKRRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 11. 20. – 12. 31.", fmt.format(start, end));
+    assertEquals("2011. 11. 20. – 2011. 12. 31.", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
@@ -551,7 +551,7 @@ function testDateRngFmtKRRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 11.에서 2014. 1.까지", fmt.format(start, end));
+    assertEquals("2011. 11. – 2014. 1.", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "long"});
@@ -575,7 +575,7 @@ function testDateRngFmtKRRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 11월에서 2014년 1월까지", fmt.format(start, end));
+    assertEquals("2011년 11월 – 2014년 1월", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
@@ -599,7 +599,7 @@ function testDateRngFmtKRRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 11월에서 2014년 1월까지", fmt.format(start, end));
+    assertEquals("2011년 11월 – 2014년 1월", fmt.format(start, end));
 }
 function testDateRngFmtKRManyYearsFull() {
     var fmt = new DateRngFmt({locale: "ko-KR", length: "full"});
@@ -623,5 +623,5 @@ function testDateRngFmtKRManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년에서 2064년까지", fmt.format(start, end));
+    assertEquals("2011년 – 2064년", fmt.format(start, end));
 }

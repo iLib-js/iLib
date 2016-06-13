@@ -137,7 +137,7 @@ function testDateRngFmtJPRangeNextDayShort() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
+	});           
     assertEquals("2011/12/30 13:45 – 2011/12/31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeNextDayMedium() {
@@ -186,7 +186,7 @@ function testDateRngFmtJPRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月30日 13:45 – 31日 14:30", fmt.format(start, end));
+    assertEquals("2011年12月30日 13:45 – 2011年12月31日 14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "ja-JP", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtJPRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月30日 13:45 – 31日 14:30", fmt.format(start, end));
+    assertEquals("2011年12月30日 13:45 – 2011年12月31日 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtJPRangeMultiDayShort() {
@@ -622,5 +622,5 @@ function testDateRngFmtJPManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 – 2064", fmt.format(start, end));
+    assertEquals("2011年 – 2064年", fmt.format(start, end));
 }

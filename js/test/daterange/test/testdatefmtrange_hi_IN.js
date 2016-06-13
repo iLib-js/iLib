@@ -90,7 +90,7 @@ function testDateRngFmtRangeinDayLong_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 दिसंबर 2011 को1:45 अपराह्न – 2:30 अपराह्न", fmt.format(start, end));
+    assertEquals("31 दिसंबर 2011 को 1:45 अपराह्न – 2:30 अपराह्न", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayFull_hi_IN() {
     var fmt = new DateRngFmt({locale: "hi-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtRangeinDayFull_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 दिसंबर 2011 को1:45 अपराह्न – 2:30 अपराह्न", fmt.format(start, end));
+    assertEquals("31 दिसंबर 2011 को 1:45 अपराह्न – 2:30 अपराह्न", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeNextDayShort_hi_IN() {
@@ -187,7 +187,7 @@ function testDateRngFmtRangeNextDayLong_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 दिसंबर 2011 को1:45 अपराह्न – 31 दिसंबर 2011 को2:30 अपराह्न", fmt.format(start, end));
+    assertEquals("30 दिसंबर 2011 को 1:45 अपराह्न – 31 दिसंबर 2011 को 2:30 अपराह्न", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_hi_IN() {
     var fmt = new DateRngFmt({locale: "hi-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtRangeNextDayFull_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 दिसंबर 2011 को1:45 अपराह्न – 31 दिसंबर 2011 को2:30 अपराह्न", fmt.format(start, end));
+    assertEquals("30 दिसंबर 2011 को 1:45 अपराह्न – 31 दिसंबर 2011 को 2:30 अपराह्न", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_hi_IN() {

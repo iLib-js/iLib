@@ -138,7 +138,7 @@ function testDateRngFmtAFNAFRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011-12-30 – 14:30 2011-12-31", fmt.format(start, end));
+    assertEquals("2011-12-30 13:45 – 2011-12-31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtAFNAFRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 Des – 14:30 31 Des 2011", fmt.format(start, end));
+    assertEquals("30 Des 2011 13:45 – 31 Des 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtAFNAFRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 Desember – 14:30 31 Desember 2011", fmt.format(start, end));
+    assertEquals("30 Desember 2011 13:45 – 31 Desember 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "full"});
@@ -210,13 +210,13 @@ function testDateRngFmtAFNAFRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 Desember – 14:30 31 Desember 2011", fmt.format(start, end));
+    assertEquals("30 Desember 2011 13:45 – 31 Desember 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtAFNAFRangeMultiDayShort() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "short"});
     assertNotNull(fmt);
-    
+
     var start = new GregorianDate({
 		year: 2011,
 		month: 12,
@@ -235,7 +235,7 @@ function testDateRngFmtAFNAFRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-20 – 2011-12-31", fmt.format(start, end));
+    assertEquals("2011-12-20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtAFNAFRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "af-NA", length: "medium"});

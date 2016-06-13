@@ -162,7 +162,7 @@ function testDateRngFmtLVRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 30. dec. 13:45 – 31. dec. 14:30", fmt.format(start, end));
+    assertEquals("2011. gada 30. dec. 13:45 – 2011. gada 31. dec. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtLVRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 30. decembris 13:45 – 31. decembris 14:30", fmt.format(start, end));
+    assertEquals("2011. gada 30. decembris 13:45 – 2011. gada 31. decembris 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtLVRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 30. decembris 13:45 – 31. decembris 14:30", fmt.format(start, end));
+    assertEquals("2011. gada 30. decembris 13:45 – 2011. gada 31. decembris 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtLVRangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtLVRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11 – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtLVRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. – 31. dec.", fmt.format(start, end));
+    assertEquals("2011. gada 20. dec. – 31. dec.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtLVRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. – 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. decembris – 31. decembris", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtLVRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. – 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. decembris – 31. decembris", fmt.format(start, end));
 }
 
 function testDateRngFmtLVRangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtLVRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 – 31.12.11", fmt.format(start, end));
+    assertEquals("20.11 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtLVRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. nov. – 31. dec.", fmt.format(start, end));
+    assertEquals("2011. gada 20. nov. – 2011. gada 31. dec.", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "long"});
@@ -380,7 +380,7 @@ function testDateRngFmtLVRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. novembris – 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. novembris – 2011. gada 31. decembris", fmt.format(start, end));
 }
 function testDateRngFmtLVRangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "lv-LV", length: "full"});
@@ -404,7 +404,7 @@ function testDateRngFmtLVRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. gada 20. novembris – 31. decembris", fmt.format(start, end));
+    assertEquals("2011. gada 20. novembris – 2011. gada 31. decembris", fmt.format(start, end));
 }
 
 function testDateRngFmtLVRangeNextYearShort() {

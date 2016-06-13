@@ -138,7 +138,7 @@ function testDateRngFmtIERangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–12–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30/12/2011 13:45 – 31/12/2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtIERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–Noll–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Noll 2011 13:45 – 31 Noll 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtIERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–Nollaig–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Nollaig 2011 13:45 – 31 Nollaig 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtIERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011–Nollaig–30 – 14:30 31", fmt.format(start, end));
+    assertEquals("30 Nollaig 2011 13:45 – 31 Nollaig 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtIERangeMultiDayShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtIERangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–11–20 – 12–31", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtIERangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Samh–20 – Noll–31", fmt.format(start, end));
+    assertEquals("20 Samh – 31 Noll 2011", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "long"});
@@ -380,7 +380,7 @@ function testDateRngFmtIERangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Samhain–20 – Nollaig–31", fmt.format(start, end));
+    assertEquals("20 Samhain – 31 Nollaig 2011", fmt.format(start, end));
 }
 function testDateRngFmtIERangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "ga-IE", length: "full"});
@@ -404,7 +404,7 @@ function testDateRngFmtIERangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–Samhain–20 – Nollaig–31", fmt.format(start, end));
+    assertEquals("20 Samhain – 31 Nollaig 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtIERangeNextYearShort() {

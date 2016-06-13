@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_mr_in.js - test the date range formatter object in Marathi/India
+ * testdatefmtrange_mr_IN.js - test the date range formatter object in Marathi/India
  * 
  * 
  * Copyright © 2012-2015, JEDLSoft
@@ -90,7 +90,7 @@ function testDateRngFmtRangeinDayLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("३१ डिसेंबर, २०११ 'रोजी' १:४५ म.उ. – २:३० म.उ.", fmt.format(start, end));
+    assertEquals("३१ डिसेंबर, २०११ रोजी १:४५ म.उ. – २:३० म.उ.", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayFull_mr_IN() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtRangeinDayFull_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("३१ डिसेंबर, २०११ 'रोजी' १:४५ म.उ. – २:३० म.उ.", fmt.format(start, end));
+    assertEquals("३१ डिसेंबर, २०११ रोजी १:४५ म.उ. – २:३० म.उ.", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeNextDayShort_mr_IN() {
@@ -163,7 +163,7 @@ function testDateRngFmtRangeNextDayMedium_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("३० डिसें, १:४५ म.उ. – ३१ डिसें, २०११, २:३० म.उ.", fmt.format(start, end));
+    assertEquals("३० डिसें, २०११, १:४५ म.उ. – ३१ डिसें, २०११, २:३० म.उ.", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_mr_IN() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtRangeNextDayLong_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("३० डिसेंबर, १:४५ म.उ. – ३१ डिसेंबर, २०११ 'रोजी' २:३० म.उ.", fmt.format(start, end));
+    assertEquals("३० डिसेंबर, २०११ रोजी १:४५ म.उ. – ३१ डिसेंबर, २०११ रोजी २:३० म.उ.", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_mr_IN() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtRangeNextDayFull_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("३० डिसेंबर, १:४५ म.उ. – ३१ डिसेंबर, २०११ 'रोजी' २:३० म.उ.", fmt.format(start, end));
+    assertEquals("३० डिसेंबर, २०११ रोजी १:४५ म.उ. – ३१ डिसेंबर, २०११ रोजी २:३० म.उ.", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_mr_IN() {
@@ -333,7 +333,7 @@ function testDateRngFmtRangeNextMonthShort_mr_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("२०/११/११ – ३१/१२/११", fmt.format(start, end));
+    assertEquals("२०/११ – ३१/१२/११", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_mr_IN() {
     var fmt = new DateRngFmt({locale: "mr-IN", length: "medium"});

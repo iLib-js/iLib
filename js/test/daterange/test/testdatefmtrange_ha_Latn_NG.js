@@ -237,7 +237,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "medium"});
@@ -261,7 +261,7 @@ function testDateRngFmt_ha_Latn_NG_RangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 Dis, 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Dis, 2011", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "long"});
@@ -334,7 +334,7 @@ function testDateRngFmt_ha_Latn_NG_RangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11 – 31/12 11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmt_ha_Latn_NG_RangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "medium"});

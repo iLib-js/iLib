@@ -138,7 +138,7 @@ function testDateRngFmtTHRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 – 14:30 31/12/11", fmt.format(start, end));
+    assertEquals("30/12/11 13:45 – 31/12/11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtTHRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 – 14:30 31/ธ.ค./2011", fmt.format(start, end));
+    assertEquals("30 ธ.ค. 2011 13:45 – 31 ธ.ค. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -185,8 +185,8 @@ function testDateRngFmtTHRangeNextDayLong() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("13:45 30 – 14:30 31 ธันวาคม 2011", fmt.format(start, end));
+	});          
+    assertEquals("30 ธันวาคม 2011 13:45 – 31 ธันวาคม 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtTHRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 – 14:30 31 ธันวาคม 2011", fmt.format(start, end));
+    assertEquals("30 ธันวาคม 2011 13:45 – 31 ธันวาคม 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeMultiDayShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtTHRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtTHRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/พ.ย./2011 – 31/ธ.ค./2011", fmt.format(start, end));
+    assertEquals("20 พ.ย. – 31 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});

@@ -185,8 +185,8 @@ function testDateRngFmtCZRangeNextDayLong() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("13:45 30. – 14:30 31. prosince. 2011", fmt.format(start, end));
+	});           
+    assertEquals("30. prosince 2011 13:45 – 31. prosince 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtCZRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30. – 14:30 31. prosince. 2011", fmt.format(start, end));
+    assertEquals("30. prosince 2011 13:45 – 31. prosince 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtCZRangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtCZRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11 – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtCZRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.2011 – 31.12.2011", fmt.format(start, end));
+    assertEquals("20 – 31. 12. 2011", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtCZRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("20. – 31. prosince 2011", fmt.format(start, end));
+    assertEquals("20 – 31. prosince 2011", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtCZRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("20. – 31. prosince 2011", fmt.format(start, end));
+    assertEquals("20 – 31. prosince 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtCZRangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtCZRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 – 31.12.11", fmt.format(start, end));
+    assertEquals("20.11 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtCZRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011 – 31.12.2011", fmt.format(start, end));
+    assertEquals("20. 11 – 31. 12. 2011", fmt.format(start, end));
 }
 function testDateRngFmtCZRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "cs-CZ", length: "long"});

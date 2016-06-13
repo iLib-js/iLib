@@ -332,7 +332,7 @@ function testDateRngFmtCARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-11-20 – 12-31", fmt.format(start, end));
+    assertEquals("11-11-20 – 11-12-31", fmt.format(start, end));
 }
 function testDateRngFmtCARangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtCARangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-11-20 – 12-31", fmt.format(start, end));
+    assertEquals("2011-11-20 – 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtCARangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "fr-CA", length: "long"});

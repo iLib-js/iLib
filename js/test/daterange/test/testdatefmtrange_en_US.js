@@ -163,7 +163,7 @@ function testDateRngFmtNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Dec 30, 1:45 PM – Dec 31, 2011, 2:30 PM", fmt.format(start, end));
+    assertEquals("Dec 30, 2011, 1:45 PM – Dec 31, 2011, 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtNextDayLong() {
     var fmt = new DateRngFmt({length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("December 30 at 1:45 PM – December 31, 2011 at 2:30 PM", fmt.format(start, end));
+    assertEquals("December 30, 2011 at 1:45 PM – December 31, 2011 at 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtNextDayFull() {
     var fmt = new DateRngFmt({length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("December 30 at 1:45 PM – December 31, 2011 at 2:30 PM", fmt.format(start, end));
+    assertEquals("December 30, 2011 at 1:45 PM – December 31, 2011 at 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtMultiDayShort() {
@@ -333,7 +333,7 @@ function testDateRngFmtNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/20 – 12/31/11", fmt.format(start, end));
+    assertEquals("11/20/11 – 12/31/11", fmt.format(start, end));
 }
 function testDateRngFmtNextMonthMedium() {
     var fmt = new DateRngFmt({length: "medium"});
@@ -727,7 +727,7 @@ function testDateRngFmtRangeShortWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("5/2 – 11/19/11", fmt.format(date1, date2));    
+    assertEquals("5/2/11 – 11/19/11", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeShortWithinDecade() {
@@ -835,7 +835,7 @@ function testDateRngFmtRangeLongConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("November 18 at 2:00 PM – November 19, 2011 at 8:00 AM", fmt.format(date1, date2));    
+    assertEquals("November 18, 2011 at 2:00 PM – November 19, 2011 at 8:00 AM", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeLongWithinMonth() {
@@ -1003,7 +1003,7 @@ function testDateRngFmtRangeFullConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("November 18 at 2:00 PM – November 19, 2011 at 8:00 AM", fmt.format(date1, date2));    
+    assertEquals("November 18, 2011 at 2:00 PM – November 19, 2011 at 8:00 AM", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeFullWithinMonth() {

@@ -283,7 +283,7 @@ function testDateRngFmtDKRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. december 2011", fmt.format(start, end));
+    assertEquals("20 – 31. december 2011", fmt.format(start, end));
 }
 function testDateRngFmtDKRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "da-DK", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtDKRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. december 2011", fmt.format(start, end));
+    assertEquals("20 – 31. december 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtDKRangeNextMonthShort() {

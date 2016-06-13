@@ -162,7 +162,7 @@ function testDateRngFmtIDRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13.45 – 31 14.30, Des 2011", fmt.format(start, end));
+    assertEquals("30 Des 2011 13.45 – 31 Des 2011 14.30", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtIDRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13.45 – 31 14.30, Desember 2011", fmt.format(start, end));
+    assertEquals("30 Desember 2011 13.45 – 31 Desember 2011 14.30", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtIDRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 13.45 – 31 14.30, Desember 2011", fmt.format(start, end));
+    assertEquals("30 Desember 2011 13.45 – 31 Desember 2011 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtIDRangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtIDRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "medium"});
@@ -332,7 +332,7 @@ function testDateRngFmtIDRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtIDRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "id-ID", length: "medium"});

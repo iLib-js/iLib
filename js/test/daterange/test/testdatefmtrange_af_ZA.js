@@ -138,7 +138,7 @@ function testDateRngFmtAFRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-30 1:45 nm. – 31 2:30 nm.", fmt.format(start, end));
+    assertEquals("2011-12-30 1:45 nm. – 2011-12-31 2:30 nm.", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "af-ZA", length: "medium"});
@@ -235,7 +235,7 @@ function testDateRngFmtAFRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-20 – 2011-12-31", fmt.format(start, end));
+    assertEquals("2011-12-20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "af-ZA", length: "medium"});

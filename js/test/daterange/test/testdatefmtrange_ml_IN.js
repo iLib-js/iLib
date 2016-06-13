@@ -166,7 +166,7 @@ function testDateRngFmtRangeNextDayMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011, ഡിസം 30 1:45 PM – ഡിസം 31 2:30 PM", fmt.format(start, end));
+    assertEquals("2011, ഡിസം 30 1:45 PM – 2011, ഡിസം 31 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
@@ -190,7 +190,7 @@ function testDateRngFmtRangeNextDayLong_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011, ഡിസംബർ 30 1:45 PM – ഡിസംബർ 31 2:30 PM", fmt.format(start, end));
+    assertEquals("2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "full"});
@@ -214,7 +214,7 @@ function testDateRngFmtRangeNextDayFull_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011, ഡിസംബർ 30 1:45 PM – ഡിസംബർ 31 2:30 PM", fmt.format(start, end));
+    assertEquals("2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_ml_IN() {
@@ -336,10 +336,10 @@ function testDateRngFmtRangeNextMonthShort_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11-31/12/11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_ml_IN() {
-    var fmt = new DateRngFmt({locale: "ml – IN", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ml–IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new GregorianDate({
@@ -360,7 +360,7 @@ function testDateRngFmtRangeNextMonthMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011, നവം 20 – ഡിസം 31", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});
