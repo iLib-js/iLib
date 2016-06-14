@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_am_ET.js - test the date range formatter object Amharic/Ethiopia
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.

@@ -1,8 +1,8 @@
 /*
- * testdatefmtrange_kn_in.js - test the date range formatter object in Kannada/india
+ * testdatefmtrange_kn_IN.js - test the date range formatter object in Kannada/india
  * 
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

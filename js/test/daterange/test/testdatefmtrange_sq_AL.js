@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sq_AL.js - test the date range formatter object Albanian/Albania
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed unsqr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
