@@ -14,7 +14,8 @@
 }
 
 #dt_example #container {
-	width: 800px;
+	/*width: 800px;*/
+	width: 980px;
 	margin: 30px auto;
 	padding: 0;
 }

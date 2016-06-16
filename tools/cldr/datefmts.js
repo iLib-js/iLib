@@ -1079,6 +1079,7 @@ module.exports = {
                                 cFmt30 = "{sy} – {ey}";
                                 calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
 
+
                             break;
                             case "mdy":
                                 //console.log("{date}{time}, mdy");
@@ -1451,6 +1452,7 @@ module.exports = {
 
                                 cFmt30 = "{sy} – {ey}";
                                 calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
+
                             break;
                             case "mdy":
                                 cFmt0 = opcFmt0;
@@ -1534,8 +1536,6 @@ module.exports = {
 
                                 cFmt30 = "{sy} – {ey}";
                                 calendar.range["c30"][lenAbbr] = isRtl? "\u200F" + cFmt30 : cFmt30;
-                                calendar.range["c30"][lenAbbr] = cFmt30;
-                                
 
                             break;
                             case "ymd":

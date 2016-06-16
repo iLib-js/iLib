@@ -27,6 +27,7 @@ $(function(){
 	var weekID = [];
 	var fmtArray = [];
 	var length = ["full", "long", "medium", "short"];
+	var abbrLength = ["f", "l", "m", "s"];
 	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec", "etc"];
 	var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
 
@@ -151,8 +152,6 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateFmt({locale: currentLocale, type: "time", time:"ahmsz", length: length[i], useNative: false, timezone: 'local'});
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		
 		$("#time"+length[i]).text(length[i]);
 		$("#time"+length[i]+"Fmt").text(fmtArray[i].template);
 
@@ -167,15 +166,229 @@ $(function(){
 	}
 
 	//Date Range
-	var start = new DateFactory({year: 2011,month: 11,day: 20,hour: 13,minute: 45,second: 0,type:li.getCalendar()});
-	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,type:li.getCalendar()});
+	var start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	var end = new DateFactory({year: 2011,month: 6,day: 20, hour: 15, minute: 30, second: 0, type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		$("#daterng"+length[i]).text(length[i]);
-		$("#daterng"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+		$("#cfmt0"+length[i]).text(length[i]);
+		$("#cfmt0"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c00"][abbrLength[i]]);
+		$("#cfmt0"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt0"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt0"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt0"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt0"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt0"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt0"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt0"+length[i]+"Fmt").css("color","green");
+			$("#cfmt0"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+    start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 6, day: 22, hour: 15, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt1"+length[i]).text(length[i]);
+		$("#cfmt1"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c01"][abbrLength[i]]);
+		$("#cfmt1"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt1"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt1"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt1"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt1"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt1"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt1"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt1"+length[i]+"Fmt").css("color","green");
+			$("#cfmt1"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 7, day: 1, hour: 9, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt2"+length[i]).text(length[i]);
+		$("#cfmt2"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c02"][abbrLength[i]]);
+		$("#cfmt2"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt2"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt2"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt2"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt2"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt2"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt2"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt2"+length[i]+"Fmt").css("color","green");
+			$("#cfmt2"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+    start = new DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2012, month: 1, day: 1, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt3"+length[i]).text(length[i]);
+		$("#cfmt3"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c03"][abbrLength[i]]);
+		$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt3"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt3"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt3"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt3"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt3"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt3"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt3"+length[i]+"Fmt").css("color","green");
+			$("#cfmt3"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 6, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt10"+length[i]).text(length[i]);
+		$("#cfmt10"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c10"][abbrLength[i]]);
+		$("#cfmt10"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt10"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt10"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt10"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt10"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt10"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt10"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt10"+length[i]+"Fmt").css("color","green");
+			$("#cfmt10"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 11, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt11"+length[i]).text(length[i]);
+		$("#cfmt11"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c11"][abbrLength[i]]);
+		$("#cfmt11"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt11"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt11"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt11"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt11"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt11"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt11"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt11"+length[i]+"Fmt").css("color","green");
+			$("#cfmt11"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2012, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt12"+length[i]).text(length[i]);
+		$("#cfmt12"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c12"][abbrLength[i]]);
+		$("#cfmt12"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt12"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt12"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt12"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt12"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt12"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt12"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt12"+length[i]+"Fmt").css("color","green");
+			$("#cfmt12"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2016, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt20"+length[i]).text(length[i]);
+		$("#cfmt20"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c20"][abbrLength[i]]);
+		$("#cfmt20"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt20"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt20"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt20"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt20"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt20"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt20"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt20"+length[i]+"Fmt").css("color","green");
+			$("#cfmt20"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2032, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt30"+length[i]).text(length[i]);
+		$("#cfmt30"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c30"][abbrLength[i]]);
+		$("#cfmt30"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt30"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt30"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt30"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt30"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt30"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt30"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt30"+length[i]+"Fmt").css("color","green");
+			$("#cfmt30"+length[i]+"Sample").css("color","green");
+		}
 	}
 
 	durationNumberSample = {
