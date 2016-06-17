@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_or_IN.js - test the date range formatter object in Oriya/India
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,7 +160,7 @@ function testDateRngFmtRangeNextDayMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 ଡିସେମ୍ବର 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
+    assertEquals("30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtRangeNextDayLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 ଡିସେମ୍ବର 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
+    assertEquals("30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtRangeNextDayFull_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 ଡିସେମ୍ବର 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
+    assertEquals("30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_or_IN() {
@@ -233,7 +233,7 @@ function testDateRngFmtRangeMultiDayShort_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31-12-11", fmt.format(start, end));
+    assertEquals("20 – 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtRangeMultiDayMedium_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
+    assertEquals("20 – 31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayLong_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "long"});
@@ -281,7 +281,7 @@ function testDateRngFmtRangeMultiDayLong_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
+    assertEquals("20 – 31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayFull_or_IN() {
     var fmt = new ilib.DateRngFmt({locale: "or-IN", length: "full"});
@@ -305,7 +305,7 @@ function testDateRngFmtRangeMultiDayFull_or_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
+    assertEquals("20 – 31 ଡିସେମ୍ବର 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeNextMonthShort_or_IN() {

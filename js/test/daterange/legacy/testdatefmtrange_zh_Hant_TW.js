@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_zh_Hant_TW.js - test the date range formatter object in Chinese/Taiwan
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ function testDateRngFmtTWRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/31 下午1:45至下午2:30", fmt.format(start, end));
+    assertEquals("2011/12/31 下午1:45 – 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtTWRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月31日 下午1:45至下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月31日 下午1:45 – 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtTWRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月31日 下午1:45至下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月31日 下午1:45 – 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtTWRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月31日 下午1:45至下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月31日 下午1:45 – 下午2:30", fmt.format(start, end));
 }
 
 function testDateRngFmtTWRangeNextDayShort() {
@@ -136,7 +136,7 @@ function testDateRngFmtTWRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/30 下午1:45至2011/12/31 下午2:30", fmt.format(start, end));
+    assertEquals("2011/12/30 下午1:45 – 2011/12/31 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtTWRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月30日下午1:45至31日下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月30日 下午1:45 – 2011年12月31日 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -183,8 +183,8 @@ function testDateRngFmtTWRangeNextDayLong() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("2011年12月30日下午1:45至31日下午2:30", fmt.format(start, end));
+	});           
+    assertEquals("2011年12月30日 下午1:45 – 2011年12月31日 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtTWRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月30日下午1:45至31日下午2:30", fmt.format(start, end));
+    assertEquals("2011年12月30日 下午1:45 – 2011年12月31日 下午2:30", fmt.format(start, end));
 }
 
 function testDateRngFmtTWRangeMultiDayShort() {
@@ -233,7 +233,7 @@ function testDateRngFmtTWRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/20至31", fmt.format(start, end));
+    assertEquals("2011/12/20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtTWRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月20日至31日", fmt.format(start, end));
+    assertEquals("2011年12月20日 – 31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -281,7 +281,7 @@ function testDateRngFmtTWRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月20日至31日", fmt.format(start, end));
+    assertEquals("2011年12月20日 – 31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -305,7 +305,7 @@ function testDateRngFmtTWRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年12月20日至31日", fmt.format(start, end));
+    assertEquals("2011年12月20日 – 31日", fmt.format(start, end));
 }
 
 function testDateRngFmtTWRangeNextMonthShort() {
@@ -330,7 +330,7 @@ function testDateRngFmtTWRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/11/20至12/31", fmt.format(start, end));
+    assertEquals("2011/11/20 – 2011/12/31", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -354,7 +354,7 @@ function testDateRngFmtTWRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至12月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 2011年12月31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -378,7 +378,7 @@ function testDateRngFmtTWRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至12月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 12月31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -402,7 +402,7 @@ function testDateRngFmtTWRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至12月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 12月31日", fmt.format(start, end));
 }
 
 function testDateRngFmtTWRangeNextYearShort() {
@@ -427,7 +427,7 @@ function testDateRngFmtTWRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/11/20至2012/1/31", fmt.format(start, end));
+    assertEquals("2011/11/20 – 2012/1/31", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -451,7 +451,7 @@ function testDateRngFmtTWRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至2012年1月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 2012年1月31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -475,7 +475,7 @@ function testDateRngFmtTWRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至2012年1月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 2012年1月31日", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -499,7 +499,7 @@ function testDateRngFmtTWRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月20日至2012年1月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日 – 2012年1月31日", fmt.format(start, end));
 }
 
 function testDateRngFmtTWRangeMultiYearShort() {
@@ -524,7 +524,7 @@ function testDateRngFmtTWRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/11至2014/1", fmt.format(start, end));
+    assertEquals("2011/11 – 2014/1", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
@@ -548,7 +548,7 @@ function testDateRngFmtTWRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月至2014年1月", fmt.format(start, end));
+    assertEquals("2011年11月 – 2014年1月", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "long"});
@@ -572,7 +572,7 @@ function testDateRngFmtTWRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月至2014年1月", fmt.format(start, end));
+    assertEquals("2011年11月 – 2014年1月", fmt.format(start, end));
 }
 function testDateRngFmtTWRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -596,7 +596,7 @@ function testDateRngFmtTWRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年11月至2014年1月", fmt.format(start, end));
+    assertEquals("2011年11月 – 2014年1月", fmt.format(start, end));
 }
 function testDateRngFmtTWManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-TW", length: "full"});
@@ -620,5 +620,5 @@ function testDateRngFmtTWManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年至2064年", fmt.format(start, end));
+    assertEquals("2011年 – 2064年", fmt.format(start, end));
 }

@@ -193,7 +193,7 @@ function testDateRngFmtGetDefaultFormat() {
     	second: 0
     });
     
-    assertEquals("20/2/13 12:20 - 16:35", fmt.format(start, end));
+    assertEquals("20/2/13 12:20 – 16:35", fmt.format(start, end));
 }
 
 
