@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_az_Latn_AZ.js - test the date range formatter object in Azerbaijani
+ * testdatefmtrange_km_KH.js - test the date range formatter object in Cambodian
  *
  * Copyright © 2016, JEDLSoft
  *
@@ -19,8 +19,8 @@
 
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
-function testDateRngFmtAZRangeInDayShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
+function testDateRngFmtKHRangeInDayShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -41,10 +41,10 @@ function testDateRngFmtAZRangeInDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11-12-31 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31/12/11, 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeInDayMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
+function testDateRngFmtKHRangeInDayMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -65,10 +65,10 @@ function testDateRngFmtAZRangeInDayMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31 dek, 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011, 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeInDayLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+function testDateRngFmtKHRangeInDayLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -89,10 +89,10 @@ function testDateRngFmtAZRangeInDayLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31 dekabr, 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeInDayFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeInDayFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -113,35 +113,11 @@ function testDateRngFmtAZRangeInDayFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31, dekabr, 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
 }
 
-function testDateRngFmtAZRangeNextDayShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
-    assertNotNull(fmt);
-
-    var start = new GregorianDate({
-        year: 2011,
-        month: 12,
-        day: 30,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    var end = new GregorianDate({
-        year: 2011,
-        month: 12,
-        day: 31,
-        hour: 14,
-        minute: 30,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("11–12–30 13:45 – 31 14:30", fmt.format(start, end));
-}
-function testDateRngFmtAZRangeNextDayMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
+function testDateRngFmtKHRangeNextDayShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -162,10 +138,10 @@ function testDateRngFmtAZRangeNextDayMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dek–30 13:45 – 31 14:30", fmt.format(start, end));
+    assertEquals("30/12/11, 1:45 ល្ងាច – 31/12/11, 2:30 ល្ងាច", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextDayLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+function testDateRngFmtKHRangeNextDayMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -186,10 +162,10 @@ function testDateRngFmtAZRangeNextDayLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dekabr–30 13:45 – 31 14:30", fmt.format(start, end));
+    assertEquals("30 ធ្នូ 2011, 1:45 ល្ងាច – 31 ធ្នូ 2011, 2:30 ល្ងាច", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextDayFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeNextDayLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -210,11 +186,35 @@ function testDateRngFmtAZRangeNextDayFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dekabr–30 13:45 – 31 14:30", fmt.format(start, end));
+    assertEquals("30 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 31 ធ្នូ 2011 នៅ 2:30 ល្ងាច", fmt.format(start, end));
+}
+function testDateRngFmtKHRangeNextDayFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
+    assertNotNull(fmt);
+
+    var start = new GregorianDate({
+        year: 2011,
+        month: 12,
+        day: 30,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 12,
+        day: 31,
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("30 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 31 ធ្នូ 2011 នៅ 2:30 ល្ងាច", fmt.format(start, end));
 }
 
-function testDateRngFmtAZRangeMultiDayShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
+function testDateRngFmtKHRangeMultiDayShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -235,10 +235,10 @@ function testDateRngFmtAZRangeMultiDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11–12–20 – 31", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiDayMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
+function testDateRngFmtKHRangeMultiDayMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -259,10 +259,10 @@ function testDateRngFmtAZRangeMultiDayMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dek–20 – 31", fmt.format(start, end));
+    assertEquals("20 – 31 ធ្នូ 2011", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiDayLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+function testDateRngFmtKHRangeMultiDayLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -283,10 +283,10 @@ function testDateRngFmtAZRangeMultiDayLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dekabr–20 – 31", fmt.format(start, end));
+    assertEquals("20 – 31 ធ្នូ 2011", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiDayFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeMultiDayFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -307,59 +307,11 @@ function testDateRngFmtAZRangeMultiDayFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–dekabr–20 – 31", fmt.format(start, end));
+    assertEquals("20 – 31 ធ្នូ 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtAZRangeNextMonthShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
-    assertNotNull(fmt);
-
-    var start = new GregorianDate({
-        year: 2011,
-        month: 11,
-        day: 20,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    var end = new GregorianDate({
-        year: 2011,
-        month: 12,
-        day: 31,
-        hour: 14,
-        minute: 30,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("11–11–20 – 12–31", fmt.format(start, end));
-}
-function testDateRngFmtAZRangeNextMonthMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
-    assertNotNull(fmt);
-
-    var start = new GregorianDate({
-        year: 2011,
-        month: 11,
-        day: 20,
-        hour: 13,
-        minute: 45,
-        second: 0,
-        millisecond: 0
-    });
-    var end = new GregorianDate({
-        year: 2011,
-        month: 12,
-        day: 31,
-        hour: 14,
-        minute: 30,
-        second: 0,
-        millisecond: 0
-    });
-    assertEquals("2011–noy–20 – dek–31", fmt.format(start, end));
-}
-function testDateRngFmtAZRangeNextMonthLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+function testDateRngFmtKHRangeNextMonthShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -380,10 +332,10 @@ function testDateRngFmtAZRangeNextMonthLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr–20 – dekabr–31", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextMonthFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeNextMonthMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -404,11 +356,10 @@ function testDateRngFmtAZRangeNextMonthFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr–20 – dekabr–31", fmt.format(start, end));
+    assertEquals("20 វិច្ឆិកា – 31 ធ្នូ 2011", fmt.format(start, end));
 }
-
-function testDateRngFmtAZRangeNextYearShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
+function testDateRngFmtKHRangeNextMonthLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -421,18 +372,18 @@ function testDateRngFmtAZRangeNextYearShort() {
         millisecond: 0
     });
     var end = new GregorianDate({
-        year: 2012,
-        month: 1,
+        year: 2011,
+        month: 12,
         day: 31,
         hour: 14,
         minute: 30,
         second: 0,
         millisecond: 0
     });
-    assertEquals("11–11–20 – 12–01–31", fmt.format(start, end));
+    assertEquals("20 វិច្ឆិកា – 31 ធ្នូ 2011", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextYearMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
+function testDateRngFmtKHRangeNextMonthFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -445,18 +396,19 @@ function testDateRngFmtAZRangeNextYearMedium() {
         millisecond: 0
     });
     var end = new GregorianDate({
-        year: 2012,
-        month: 1,
+        year: 2011,
+        month: 12,
         day: 31,
         hour: 14,
         minute: 30,
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noy–20 – 2012–yan–31", fmt.format(start, end));
+    assertEquals("20 វិច្ឆិកា – 31 ធ្នូ 2011", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextYearLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+
+function testDateRngFmtKHRangeNextYearShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -477,10 +429,10 @@ function testDateRngFmtAZRangeNextYearLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr–20 – 2012–yanvar–31", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeNextYearFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeNextYearMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -501,11 +453,59 @@ function testDateRngFmtAZRangeNextYearFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr–20 – 2012–yanvar–31", fmt.format(start, end));
+    assertEquals("20 វិច្ឆិកា 2011 – 31 មករា 2012", fmt.format(start, end));
+}
+function testDateRngFmtKHRangeNextYearLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
+    assertNotNull(fmt);
+
+    var start = new GregorianDate({
+        year: 2011,
+        month: 11,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2012,
+        month: 1,
+        day: 31,
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20 វិច្ឆិកា 2011 – 31 មករា 2012", fmt.format(start, end));
+}
+function testDateRngFmtKHRangeNextYearFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
+    assertNotNull(fmt);
+
+    var start = new GregorianDate({
+        year: 2011,
+        month: 11,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2012,
+        month: 1,
+        day: 31,
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20 វិច្ឆិកា 2011 – 31 មករា 2012", fmt.format(start, end));
 }
 
-function testDateRngFmtAZRangeMultiYearShort() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "short"});
+function testDateRngFmtKHRangeMultiYearShort() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "short"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -526,10 +526,10 @@ function testDateRngFmtAZRangeMultiYearShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11–11 – 14–01", fmt.format(start, end));
+    assertEquals("11/11 – 1/14", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiYearMedium() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "medium"});
+function testDateRngFmtKHRangeMultiYearMedium() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -550,10 +550,10 @@ function testDateRngFmtAZRangeMultiYearMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noy – 2014–yan", fmt.format(start, end));
+    assertEquals("វិច្ឆិកា 2011 – មករា 2014", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiYearLong() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "long"});
+function testDateRngFmtKHRangeMultiYearLong() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -574,10 +574,10 @@ function testDateRngFmtAZRangeMultiYearLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr – 2014–yanvar", fmt.format(start, end));
+    assertEquals("វិច្ឆិកា 2011 – មករា 2014", fmt.format(start, end));
 }
-function testDateRngFmtAZRangeMultiYearFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHRangeMultiYearFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
@@ -598,10 +598,10 @@ function testDateRngFmtAZRangeMultiYearFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("2011–noyabr – 2014–yanvar", fmt.format(start, end));
+    assertEquals("វិច្ឆិកា 2011 – មករា 2014", fmt.format(start, end));
 }
-function testDateRngFmtAZManyYearsFull() {
-    var fmt = new DateRngFmt({locale: "az-Latn-AZ", length: "full"});
+function testDateRngFmtKHManyYearsFull() {
+    var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
     assertNotNull(fmt);
 
     var start = new GregorianDate({
