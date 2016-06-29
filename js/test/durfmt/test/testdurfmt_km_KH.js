@@ -1,5 +1,5 @@
 /*
- * testdurfmt_az-Latn-AZ.js - test the duration formatter object
+ * testdurfmt_km-KH.js - test the duration formatter object
  *
  * Copyright © 2016, JEDLSoft
  *
@@ -18,9 +18,9 @@
  */
 
 var DurationFmt = require("./../lib/DurationFmt.js");
-function testDurFmtAZFormatShortDefaultStyle() {
+function testDurFmtKHFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "short"
     });
     assertNotNull(fmt);
@@ -34,12 +34,12 @@ function testDurFmtAZFormatShortDefaultStyle() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 1s 1d 1s", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី", duration.toString());
 };
 
-function testDurFmtAZFormatShortText() {
+function testDurFmtKHFormatShortText() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "short",
         style: "text"
     });
@@ -54,12 +54,12 @@ function testDurFmtAZFormatShortText() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 1s 1d 1s", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី", duration.toString());
 };
 
-function testDurFmtAZFormatShortClock() {
+function testDurFmtKHFormatShortClock() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "short",
         style: "clock"
     });
@@ -74,12 +74,12 @@ function testDurFmtAZFormatShortClock() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 01:01:01", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1:01:01", duration.toString());
 };
 
-function testDurFmtAZFormatMedium() {
+function testDurFmtKHFormatMedium() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "medium"
     });
     assertNotNull(fmt);
@@ -93,12 +93,12 @@ function testDurFmtAZFormatMedium() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 il 1 ay 1 həf 1 gün 1 saat 1 dəq 1 san", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី", duration.toString());
 };
 
-function testDurFmtAZFormatLong() {
+function testDurFmtKHFormatLong() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "long"
     });
     assertNotNull(fmt);
@@ -112,12 +112,12 @@ function testDurFmtAZFormatLong() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 il 1 ay 1 həf 1 gün 1 saat 1 dəq 1 san", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី", duration.toString());
 };
 
-function testDurFmtAZFormatFull() {
+function testDurFmtKHFormatFull() {
     var fmt = new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "full"
     });
     assertNotNull(fmt);
@@ -131,14 +131,14 @@ function testDurFmtAZFormatFull() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə, 1 saniyə", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី និង 1 វិនាទី", duration.toString());
 };
 
 
-function testDurFmtAZAsyncWithLocale() {
+function testDurFmtKHAsyncWithLocale() {
     var callbackCalled = false;
     new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "full",
         sync: false,
         onLoad: function (fmt) {
@@ -153,7 +153,7 @@ function testDurFmtAZAsyncWithLocale() {
                 minute: 2,
                 second: 2
             });
-            assertEquals("2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə, 2 saniyə", duration.toString());
+            assertEquals("2 ឆ្នាំ 2 ខែ 2 សប្ដាហ៍ 2 ថ្ងៃ 2 ម៉ោង 2 នាទី និង 2 វិនាទី", duration.toString());
             callbackCalled = true;
         }
     });
@@ -161,10 +161,10 @@ function testDurFmtAZAsyncWithLocale() {
     assertTrue(callbackCalled);
 };
 
-function testDurFmtAZFormatShortClockAsync() {
+function testDurFmtKHFormatShortClockAsync() {
     var callbackCalled = false;
     new DurationFmt({
-        locale: "az-Latn-AZ",
+        locale: "km-KH",
         length: "short",
         style: "clock",
         sync: false,
@@ -180,7 +180,7 @@ function testDurFmtAZFormatShortClockAsync() {
                 minute: 1,
                 second: 1
             });
-            assertEquals("1i 1a 1h 1g 01:01:01", duration.toString());
+            assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1:01:01", duration.toString());
             callbackCalled = true;
         }
     });
