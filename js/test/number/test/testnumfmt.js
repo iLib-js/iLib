@@ -5145,7 +5145,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_az_Latn_AZ() {
 
     assertNotNull(fmt);
 
-    assertEquals("-AZN 100.110,57", fmt.format(-100110.57));
+    assertEquals("(AZN 100.110,57)", fmt.format(-100110.57));
 }
 
 // test case for km-KH
@@ -5192,7 +5192,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_km_KH() {
 
     assertNotNull(fmt);
 
-    assertEquals("-៛100.110,57", fmt.format(-100110.57));
+    assertEquals("(៛100.110,57)", fmt.format(-100110.57));
 }
 
 /******************************** End of test cases****************************************************/
