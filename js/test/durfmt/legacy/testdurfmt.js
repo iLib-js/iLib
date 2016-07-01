@@ -9478,7 +9478,7 @@ function testDurFmtZHHKFormatMedium() {
     	minute: 1,
     	second: 1
     });           
-    assertEquals("1年 1個月 1週 1日 1小時 1分 1秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatLong() {
