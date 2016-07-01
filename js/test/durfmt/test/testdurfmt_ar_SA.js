@@ -95,7 +95,7 @@ function testDurFmtARFormatMedium1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏سنة، شهر، ١ أسبوع، ١ يوم، ١ س، ١ د، ١ ث", duration.toString());
+    assertEquals("‏سنة، شهر، أسبوع، يوم، ساعة، دقيقة، ثانية", duration.toString());
 };
 
 function testDurFmtARFormatLong1() {
@@ -211,7 +211,7 @@ function testDurFmtARFormatMedium2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("‏سنتان، شهران، أسبوعان، يومان، ٢ س، ٢ د، ٢ ث", duration.toString());
+    assertEquals("‏سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، ثانيتان", duration.toString());
 };
 
 function testDurFmtARFormatLong2() {
@@ -327,7 +327,7 @@ function testDurFmtARFormatMedium3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("‏٣ سنة، ٣ أشهر، ٣ أسابيع، ٣ أيام، ٣ س، ٣ د، ٣ ث", duration.toString());
+    assertEquals("‏٣ سنوات، ٣ أشهر، ٣ أسابيع، ٣ أيام، ٣ ساعات، ٣ دقائق، ٣ ثوان", duration.toString());
 };
 
 function testDurFmtARFormatLong3() {
@@ -443,7 +443,7 @@ function testDurFmtARFormatMedium11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("‏١١ سنة، ١١ شهرًا، ١١ أسبوعًا، ١١ يومًا، ١١ س، ١١ د، ١١ ث", duration.toString());
+    assertEquals("‏١١ سنة، ١١ شهر، ١١ أسبوع، ١١ يوم، ١١ ساعة، ١١ دقيقة، ١١ ثانية", duration.toString());
 };
 
 function testDurFmtARFormatLong11() {
@@ -800,7 +800,7 @@ function testDurFmtARFormatWesternMedium1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("‏سنة، شهر، 1 أسبوع، 1 يوم، 1 س، 1 د، 1 ث", duration.toString());
+    assertEquals("‏سنة، شهر، أسبوع، يوم، ساعة، دقيقة، ثانية", duration.toString());
 };
 
 function testDurFmtARFormatWesternLong1() {
