@@ -5221,7 +5221,7 @@ function testLocaleInfoGetPercentageFormat_sr_Cyrl_BA() {
 }
 
 function testLocaleInfoGetCurrencyFormat_sr_Cyrl_BA() {
-	var info = new LocaleInfo("sr-BA-Cyrl");
+	var info = new LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
@@ -6673,7 +6673,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 			assertNotUndefined(li);
 			callbackCalled = true;
 			// should return the shared data only
-			assertEquals("{s}{n}", li.getCurrencyFormats().common);
+			assertEquals("{s} {n}", li.getCurrencyFormats().common);
 			assertEquals(1, li.getFirstDayOfWeek());
 			assertEquals("%", li.getPercentageSymbol());
 		}
@@ -6696,7 +6696,7 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
 			assertNotUndefined(li);
 			callbackCalled = true;
 			// should return the shared data only
-			assertEquals("{s}{n}", li.getCurrencyFormats().common);
+			assertEquals("{s} {n}", li.getCurrencyFormats().common);
 			assertEquals(1, li.getFirstDayOfWeek());
 			assertEquals("%", li.getPercentageSymbol());
 		}
@@ -6724,7 +6724,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 	
 	assertNotUndefined(li);
 	// should return the shared data only
-	assertEquals("{s}{n}", li.getCurrencyFormats().common);
+	assertEquals("{s} {n}", li.getCurrencyFormats().common);
 	assertEquals(1, li.getFirstDayOfWeek());
 	assertEquals("%", li.getPercentageSymbol());
 	ilib.setLoaderCallback(undefined);

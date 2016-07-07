@@ -167,10 +167,10 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
     "meridiems": "gregorian",
     "numfmt": {
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})",
-            "iso": "{s}{n}",
-            "isoNegative": "({s}{n})"
+            "common": "{s} {n}",
+            "commonNegative": "({s} {n})",
+            "iso": "{s} {n}",
+            "isoNegative": "({s} {n})"
         },
         "decimalChar": ".",
         "exponential": "E",

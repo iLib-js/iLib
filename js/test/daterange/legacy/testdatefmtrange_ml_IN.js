@@ -358,7 +358,7 @@ function testDateRngFmtRangeNextMonthMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
+    assertEquals("2011, നവം 20 – 2011, ഡിസം 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_ml_IN() {
     var fmt = new ilib.DateRngFmt({locale: "ml-IN", length: "long"});

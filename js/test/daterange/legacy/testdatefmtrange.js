@@ -251,7 +251,7 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
-    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     ilib.setLoaderCallback(undefined);
 }
 
@@ -286,7 +286,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
-    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     ilib.setLoaderCallback(undefined);
 }
 
@@ -323,7 +323,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
     ilib.setLoaderCallback(undefined);
@@ -360,7 +360,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
     ilib.setLoaderCallback(undefined);

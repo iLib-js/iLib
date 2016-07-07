@@ -339,7 +339,7 @@ function testDateRngFmtRangeNextMonthShort_ml_IN() {
     assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_ml_IN() {
-    var fmt = new DateRngFmt({locale: "ml–IN", length: "medium"});
+    var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new GregorianDate({
@@ -360,7 +360,7 @@ function testDateRngFmtRangeNextMonthMedium_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
+    assertEquals("2011, നവം 20 – 2011, ഡിസം 31", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthLong_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "long"});

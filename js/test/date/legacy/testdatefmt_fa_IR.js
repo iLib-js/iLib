@@ -578,7 +578,7 @@ function testDateFmtShortDateComponentsM_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("۹", fmt.format(date));
+    assertEquals("س", fmt.format(date));
 }
 
 
