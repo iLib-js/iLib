@@ -2185,7 +2185,7 @@ function testDateFmtForTZWithNonWholeOffset1() {
     	timezone: "Etc/UTC"
 	});
     
-    assertEquals("7:28PM", fmt.format(date));
+    assertEquals("7:28 PM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset2() {
@@ -2209,7 +2209,7 @@ function testDateFmtForTZWithNonWholeOffset2() {
 	});
     
     // St. John's is -3:30 from UTC, plus 1 hour DST
-    assertEquals("7:28PM", fmt.format(date));
+    assertEquals("7:28 PM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffsetQuarterHour() {
@@ -2227,7 +2227,7 @@ function testDateFmtForTZWithNonWholeOffsetQuarterHour() {
 	});
 
     // Kathmandu is 5:45 ahead of UTC, no DST
-    assertEquals("3:43AM", fmt.format(date));
+    assertEquals("3:43 AM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffsetQuarterHour2() {
@@ -2251,7 +2251,7 @@ function testDateFmtForTZWithNonWholeOffsetQuarterHour2() {
 	});
     
     // Kathmandu is 5:45 ahead of UTC, no DST
-    assertEquals("3:43AM", fmt.format(date));
+    assertEquals("3:43 AM", fmt.format(date));
 };
 
 // test locales that are tier 2 and below by doing a single test to see that it basically works

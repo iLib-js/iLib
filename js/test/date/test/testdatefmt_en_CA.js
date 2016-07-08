@@ -41,7 +41,7 @@ function testDateFmtenCASimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("2011-09-29", fmt.format(date));
 }
 
 function testDateFmtenCASimpleMedium() {
@@ -58,7 +58,7 @@ function testDateFmtenCASimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011", fmt.format(date));
+    assertEquals("Sep 29, 2011", fmt.format(date));
 }
 
 function testDateFmtenCASimpleLong() {
@@ -75,7 +75,7 @@ function testDateFmtenCASimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep, 2011", fmt.format(date));
+    assertEquals("September 29, 2011", fmt.format(date));
 }
 
 function testDateFmtenCASimpleFull() {
@@ -92,7 +92,7 @@ function testDateFmtenCASimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September, 2011", fmt.format(date));
+    assertEquals("September 29, 2011", fmt.format(date));
 }
 
 function testDateFmtenCASimpleTimeShort() {
@@ -109,7 +109,7 @@ function testDateFmtenCASimpleTimeShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCASimpleTimeMedium() {
@@ -126,7 +126,7 @@ function testDateFmtenCASimpleTimeMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCASimpleTimeLong() {
@@ -143,7 +143,7 @@ function testDateFmtenCASimpleTimeLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCASimpleTimeFull() {
@@ -160,7 +160,7 @@ function testDateFmtenCASimpleTimeFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCADateTimeSimpleShort() {
@@ -177,7 +177,7 @@ function testDateFmtenCADateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45PM", fmt.format(date));
+    assertEquals("2011-09-29, 1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCADateTimeSimpleMedium() {
@@ -194,7 +194,7 @@ function testDateFmtenCADateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 1:45PM", fmt.format(date));
+    assertEquals("Sep 29, 2011, 1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCADateTimeSimpleLong() {
@@ -211,7 +211,7 @@ function testDateFmtenCADateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep, 2011 1:45PM", fmt.format(date));
+    assertEquals("September 29, 2011 at 1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCADateTimeSimpleFull() {
@@ -228,7 +228,7 @@ function testDateFmtenCADateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September, 2011 1:45PM", fmt.format(date));
+    assertEquals("September 29, 2011 at 1:45 PM", fmt.format(date));
 }
 
 
@@ -417,7 +417,7 @@ function testDateFmtenCATypeDate() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("2011-09-29", fmt.format(date));
 }
 
 function testDateFmtenCATypeTime() {
@@ -434,7 +434,7 @@ function testDateFmtenCATypeTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCATypeDateTime() {
@@ -451,7 +451,7 @@ function testDateFmtenCATypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 1:45PM", fmt.format(date));
+    assertEquals("2011-09-29, 1:45 PM", fmt.format(date));
 }
 
 
@@ -469,7 +469,7 @@ function testDateFmtenCAShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011", fmt.format(date));
+    assertEquals("11", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsM() {
@@ -486,7 +486,7 @@ function testDateFmtenCAShortDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsN() {
@@ -537,7 +537,7 @@ function testDateFmtenCAShortDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("09-29", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsMY() {
@@ -554,7 +554,7 @@ function testDateFmtenCAShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("2011-09", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsDMY() {
@@ -571,7 +571,7 @@ function testDateFmtenCAShortDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("2011-09-29", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsWDM() {
@@ -588,7 +588,7 @@ function testDateFmtenCAShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9", fmt.format(date));
+    assertEquals("T, 09-29", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsWDMY() {
@@ -605,7 +605,7 @@ function testDateFmtenCAShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9/11", fmt.format(date));
+    assertEquals("T, 2011-09-29", fmt.format(date));
 }
 
 
@@ -674,7 +674,7 @@ function testDateFmtenCAFullDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September", fmt.format(date));
+    assertEquals("September 29", fmt.format(date));
 }
 
 function testDateFmtenCAFullDateComponentsMY() {
@@ -691,7 +691,7 @@ function testDateFmtenCAFullDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September 2011", fmt.format(date));
+    assertEquals("September, 2011", fmt.format(date));
 }
 
 function testDateFmtenCAFullDateComponentsDMY() {
@@ -708,7 +708,7 @@ function testDateFmtenCAFullDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September, 2011", fmt.format(date));
+    assertEquals("September 29, 2011", fmt.format(date));
 }
 
 function testDateFmtenCAFullDateComponentsWDM() {
@@ -725,7 +725,7 @@ function testDateFmtenCAFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September", fmt.format(date));
+    assertEquals("Thursday, September 29", fmt.format(date));
 }
 
 function testDateFmtenCAFullDateComponentsWDMY() {
@@ -742,7 +742,7 @@ function testDateFmtenCAFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September, 2011", fmt.format(date));
+    assertEquals("Thursday, September 29, 2011", fmt.format(date));
 }
 
 
@@ -862,7 +862,7 @@ function testDateFmtenCAShortTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCAShortTimeComponentsHMZ() {
@@ -908,7 +908,7 @@ function testDateFmtenCAShortTimeComponentsHMAZ() {
 		millisecond: 0, 
         timezone: "America/Toronto"
 	});
-    assertEquals("1:45PM EDT", fmt.format(date));
+    assertEquals("1:45 PM EDT", fmt.format(date));
 }
 
 function testDateFmtenCAShortTimeComponentsHMSA() {
@@ -926,7 +926,7 @@ function testDateFmtenCAShortTimeComponentsHMSA() {
 		millisecond: 0, 
         timezone: "America/Toronto"
 	});
-    assertEquals("1:45:37PM", fmt.format(date));
+    assertEquals("1:45:37 PM", fmt.format(date));
 }
 
 function testDateFmtenCAShortTimeComponentsHMSZ() {
@@ -972,7 +972,7 @@ function testDateFmtenCAShortTimeComponentsHMSAZ() {
 		millisecond: 0, 
         timezone: "America/Toronto"
 	});
-    assertEquals("1:45:37PM EDT", fmt.format(date));
+    assertEquals("1:45:37 PM EDT", fmt.format(date));
 }
 
 
@@ -1093,7 +1093,7 @@ function testDateFmtenCAFullTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45 PM", fmt.format(date));
 }
 
 function testDateFmtenCAFullTimeComponentsHMZ() {
@@ -1139,7 +1139,7 @@ function testDateFmtenCAFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM EDT", fmt.format(date));
+    assertEquals("1:45 PM EDT", fmt.format(date));
 }
 
 function testDateFmtenCAFullTimeComponentsHMSA() {
@@ -1156,7 +1156,7 @@ function testDateFmtenCAFullTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37PM", fmt.format(date));
+    assertEquals("1:45:37 PM", fmt.format(date));
 }
 
 function testDateFmtenCAFullTimeComponentsHMSZ() {
@@ -1202,7 +1202,7 @@ function testDateFmtenCAFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37PM EDT", fmt.format(date));
+    assertEquals("1:45:37 PM EDT", fmt.format(date));
 }
 
 function testDateFmtenCAWithTimeZoneAndNoDST() {
