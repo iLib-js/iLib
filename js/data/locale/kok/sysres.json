@@ -97,6 +97,7 @@
     "1#1 wk|#{num} wks": "#{num} w",
     "1#1 mon|#{num} mons": "#{num} m",
     "1#1 yr|#{num} yrs": "#{num} y",
+    "durationMediumMillis": "#{num} ms",
     "1#1 se|#{num} sec": "#{num} s",
     "1#1 mi|#{num} min": "#{num} min",
     "durationMediumHours": "#{num} h",
