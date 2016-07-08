@@ -483,7 +483,7 @@ function testDateFmtINShortDateComponentsM_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("S", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_sq_AL() {
@@ -637,7 +637,7 @@ function testDateFmtINFullDateComponentsM_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("shtator", fmt.format(date));
+    assertEquals("Shtator", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsD_sq_AL() {

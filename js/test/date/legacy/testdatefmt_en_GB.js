@@ -174,7 +174,7 @@ function testDateFmtGBDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13:45", fmt.format(date));
+    assertEquals("29/09/2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleMedium() {
@@ -191,7 +191,7 @@ function testDateFmtGBDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("29 Sep 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleLong() {
@@ -208,7 +208,7 @@ function testDateFmtGBDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 13:45", fmt.format(date));
+    assertEquals("29 September 2011 at 13:45", fmt.format(date));
 }
 
 function testDateFmtGBDateTimeSimpleFull() {
@@ -225,7 +225,7 @@ function testDateFmtGBDateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 13:45", fmt.format(date));
+    assertEquals("29 September 2011 at 13:45", fmt.format(date));
 }
 
 
@@ -448,7 +448,7 @@ function testDateFmtGBTypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13:45", fmt.format(date));
+    assertEquals("29/09/2011, 13:45", fmt.format(date));
 }
 
 

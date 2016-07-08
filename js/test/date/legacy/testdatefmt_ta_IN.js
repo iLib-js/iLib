@@ -483,7 +483,7 @@ function testDateFmtINShortDateComponentsM_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9", fmt.format(date));
+    assertEquals("செ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_ta_IN() {
