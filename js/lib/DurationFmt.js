@@ -40,6 +40,7 @@ var LocaleInfo = require("./LocaleInfo.js");
 var DateFmt = require("./DateFmt.js");
 var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
+var ScriptInfo = require("./ScriptInfo.js");
 
 /**
  * @class
@@ -175,7 +176,7 @@ var DurationFmt = function(options) {
 						hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
 						minute: sysres.getString("1#1 mi|#{num} min"),
 						second: sysres.getString("1#1 se|#{num} sec"),
-						millisecond: sysres.getString("#{num} ms"),
+						millisecond: sysres.getString("#{num} ms", "durationMediumMillis"),
 						separator: sysres.getString(" ", "separatorMedium"),
 						finalSeparator: "" // not used at this length
 					};
@@ -297,6 +298,9 @@ DurationFmt.prototype._mapDigits = function(str) {
  */
 DurationFmt.prototype._init = function(locinfo, onLoad) {
 	var digits;
+	var scriptInfo = new ScriptInfo(locinfo.getScript());
+	this.scriptDirection = scriptInfo.getScriptDirection();
+
 	if (typeof(this.useNative) === 'boolean') {
 		// if the caller explicitly said to use native or not, honour that despite what the locale data says...
 		if (this.useNative) {
@@ -377,7 +381,10 @@ DurationFmt.prototype.format = function (components) {
 		}
 		str += fmt._formatTemplate(components, fmt.templateArr);
 	}
-	
+
+	if (this.scriptDirection === 'rtl') {
+		str = "\u200F" + str;
+	}
 	return new IString(str);
 };
 

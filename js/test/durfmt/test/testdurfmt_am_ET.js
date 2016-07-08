@@ -93,7 +93,7 @@ function testDurFmtAMFormatMedium1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ዓመት፣ 1 ወራት፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ", duration.toString());
+    assertEquals("1 ዓመ፣ 1 ወራ፣ 1 ሳም፣ 1 ቀና፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong1() {
@@ -209,7 +209,7 @@ function testDurFmtAMFormatMedium2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓ፣ 2 ደቂቃ፣ 2 ሰከ", duration.toString());
+    assertEquals("2 ዓመ፣ 2 ወራ፣ 2 ሳም፣ 2 ቀና፣ 2 ሰዓ፣ 2 ደቂ፣ 2 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong2() {
@@ -325,7 +325,7 @@ function testDurFmtAMFormatMedium3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓ፣ 3 ደቂቃ፣ 3 ሰከ", duration.toString());
+    assertEquals("3 ዓመ፣ 3 ወራ፣ 3 ሳም፣ 3 ቀና፣ 3 ሰዓ፣ 3 ደቂ፣ 3 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong3() {
@@ -441,7 +441,7 @@ function testDurFmtAMFormatMedium11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓ፣ 11 ደቂቃ፣ 11 ሰከ", duration.toString());
+    assertEquals("11 ዓመ፣ 11 ወራ፣ 11 ሳም፣ 11 ቀና፣ 11 ሰዓ፣ 11 ደቂ፣ 11 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong11() {
