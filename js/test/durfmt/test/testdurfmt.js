@@ -210,8 +210,8 @@ function testDurFmtFormatMedium() {
     	minute: 1,
     	second: 1,
     	millisecond: 1
-    });
-    assertEquals("1y, 1m, 1w, 1d, 1h, 1m, 1s, 1 ms", duration.toString());
+    });  
+    assertEquals("1y, 1m, 1w, 1d, 1h, 1m, 1s, 1ms", duration.toString());
 };
 
 function testDurFmtFormatLongSingle() {
@@ -4151,7 +4151,7 @@ function testDurFmtJAFormatMedium() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1年 1ヶ月 1週間 1日 1時間 1分 1秒 1 ミリ秒", duration.toString());
+    assertEquals("1年 1ヶ月 1週間 1日 1時間 1分 1秒 1ミリ秒", duration.toString());
 };
 
 function testDurFmtJAFormatLong() {

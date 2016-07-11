@@ -177,7 +177,7 @@ var DurationFmt = function(options) {
 						hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
 						minute: sysres.getString("1#1 mi|#{num} min"),
 						second: sysres.getString("1#1 se|#{num} sec"),
-						millisecond: sysres.getString("#{num} ms"),
+						millisecond: sysres.getString("#{num} ms", "durationMediumMillis"),
 						separator: sysres.getString(" ", "separatorMedium"),
 						finalSeparator: "" // not used at this length
 					};
