@@ -6,11 +6,13 @@ $(function(){
 	var currentLocale = ilib.getLocale();
 
 	var li = new LocaleInfo(currentLocale);
+	var scinfo = new ScriptInfo(li.getScript());
+
 	var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 	$('#systemLocale').text(currentLocale);
 	$('#localedescription').text(li.getLanguageName() + " , " + li.getRegionName() + " (" + li.getScript() + ")");
-				
+	$('#scriptDirection').text(scinfo.getScriptDirection());
 	$('#defaultCalendar').text(li.getCalendar());
 	$('#clock').text(li.getClock());
 	$('#defaultCurrency').text(li.getCurrency());
@@ -624,11 +626,15 @@ $(function(){
 			durationTimeSample = {hour: selectedSampleNum[i],minute: selectedSampleNum[i],second: selectedSampleNum[i]};
 			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
 
-			if (length[j] === 'medium' || length[j] === 'long') {
+			if (length[j] === 'medium') {
 				//console.log("medium or long :" + length[j]);
 				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
-			} else if (length[j] === 'short') {
+			} else if (length[j] === 'long') {
+				$("#durFmtResult"+length[j]+"num"+i).css("color","green");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("color","green");
+			}
+			else if (length[j] === 'short') {
 				//console.log("full :" + length[j]);
 				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
 				$("#durFmtLength"+length[j]+"num"+i).css("border-width","2px");

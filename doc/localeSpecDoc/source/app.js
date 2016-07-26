@@ -57,8 +57,8 @@ enyo.kind({
 		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
 		var year, month, date;
-		var month  = 5;
-		var date  = 16;
+		var month  = 6;
+		var date  = 25;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
@@ -89,7 +89,6 @@ enyo.kind({
 	setupItem: function(inSender, inEvent) {
 		var i = inEvent.index;
 		this.sortedList = Object.keys(this.localeList).sort();
-
 		//this.localeList = Object.keys(this.localeList);
 		this.$.item.addRemoveClass("onyx-selected", inSender.isSelected(inEvent.index));
 		if (inSender.count !== this.listCount ) {
