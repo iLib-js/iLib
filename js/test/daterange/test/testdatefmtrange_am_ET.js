@@ -624,3 +624,106 @@ function testDateRngFmtAMManyYearsFull() {
 	});
     assertEquals("2011 – 2064", fmt.format(start, end));
 }
+
+//// Testcase for en-ET //////////////////
+
+function testDateRngFmtenETinDayShort() {
+    var fmt = new DateRngFmt({locale: "en-ET", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("6/20/11, 1:45 PM – 4:30 PM", fmt.format(start, end));
+}
+
+function testDateRngFmtenETinDayMedium() {
+    var fmt = new DateRngFmt({locale: "en-ET", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("Yak 20, 2011, 1:45 PM – 4:30 PM", fmt.format(start, end));
+}
+
+function testDateRngFmtenETinDayLong() {
+    var fmt = new DateRngFmt({locale: "en-ET", length: "long"});
+    assertNotNull(fmt);
+    
+    var start = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("Yakatit 20, 2011 at 1:45 PM – 4:30 PM", fmt.format(start, end));
+}
+
+function testDateRngFmtenETinDayFull() {
+    var fmt = new DateRngFmt({locale: "en-ET", length: "full"});
+    assertNotNull(fmt);
+    
+    var start = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new EthiopicDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("Yakatit 20, 2011 at 1:45 PM – 4:30 PM", fmt.format(start, end));
+}
+

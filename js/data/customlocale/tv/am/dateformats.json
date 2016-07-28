@@ -38,19 +38,19 @@
                 "s": "{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
                 "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "f": "{sm} {sd} ቀን {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
                 "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {ey} ዓ.ም {et}",
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
                 "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"

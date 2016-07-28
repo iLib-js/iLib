@@ -56,11 +56,11 @@
                 "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
             },
             "c10": {
-                "m": "{sm}/{sd}/{sy} – /{ed}/{ey}",
+                "m": "{sm}/{sd} – {ed}/{ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c11": {
-                "m": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}",
+                "m": "{sm}/{sd} – {em}/{ed}/{ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c12": {
