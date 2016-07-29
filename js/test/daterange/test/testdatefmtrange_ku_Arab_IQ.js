@@ -91,7 +91,7 @@ function testDateRngFmtKuRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏31 کانونی یەکەم 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -115,7 +115,7 @@ function testDateRngFmtKuRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏31 کانونی یەکەم 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/31 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtKuRangeNextDayShort() {
@@ -188,7 +188,7 @@ function testDateRngFmtKuRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏30 کانونی یەکەم 2011 13:45 – 31 کانونی یەکەم 2011 14:30", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/30 13:45 – 2011/کانونی یەکەم/31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -212,7 +212,7 @@ function testDateRngFmtKuRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏30 کانونی یەکەم 2011 13:45 – 31 کانونی یەکەم 2011 14:30", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/30 13:45 – 2011/کانونی یەکەم/31 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtKuRangeMultiDayShort() {
@@ -237,7 +237,7 @@ function testDateRngFmtKuRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/12/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("‏20 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
@@ -261,7 +261,7 @@ function testDateRngFmtKuRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/12/2011 –  31/12/2011", fmt.format(start, end));
+    assertEquals("‏20 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
@@ -285,7 +285,7 @@ function testDateRngFmtKuRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 – 31 کانونی یەکەم 2011", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -309,7 +309,7 @@ function testDateRngFmtKuRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 – 31 کانونی یەکەم 2011", fmt.format(start, end));
+    assertEquals("‏2011/کانونی یەکەم/20 – 31", fmt.format(start, end));
 }
 
 function testDateRngFmtKuRangeNextMonthShort() {
@@ -334,7 +334,7 @@ function testDateRngFmtKuRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/11/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("‏20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
@@ -358,7 +358,7 @@ function testDateRngFmtKuRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/11/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("‏20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
@@ -382,7 +382,7 @@ function testDateRngFmtKuRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی یەکەم 2011", fmt.format(start, end));
+    assertEquals("‏2011/تشرینی دووەم/20 – کانونی یەکەم/31", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -405,8 +405,8 @@ function testDateRngFmtKuRangeNextMonthFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی یەکەم 2011", fmt.format(start, end));
+	}); 
+    assertEquals("‏2011/تشرینی دووەم/20 – کانونی یەکەم/31", fmt.format(start, end));
 }
 
 function testDateRngFmtKuRangeNextYearShort() {
@@ -479,7 +479,7 @@ function testDateRngFmtKuRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی دووەم 2012", fmt.format(start, end));
+    assertEquals("‏2011/تشرینی دووەم/20 – 2012/کانونی دووەم/31", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -503,7 +503,7 @@ function testDateRngFmtKuRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی دووەم 2012", fmt.format(start, end));
+    assertEquals("‏2011/تشرینی دووەم/20 – 2012/کانونی دووەم/31", fmt.format(start, end));
 }
 
 function testDateRngFmtKuRangeMultiYearShort() {
@@ -528,7 +528,7 @@ function testDateRngFmtKuRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/11/2011 – 31/1/2014", fmt.format(start, end));
+    assertEquals("‏11/2011 – 1/2014", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
@@ -552,7 +552,7 @@ function testDateRngFmtKuRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20/11/2011 – 31/01/2014", fmt.format(start, end));
+    assertEquals("‏11/2011 – 01/2014", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
@@ -576,7 +576,7 @@ function testDateRngFmtKuRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی دووەم 2014", fmt.format(start, end));
+    assertEquals("‏2011/تشرینی دووەم – 2014/کانونی دووەم", fmt.format(start, end));
 }
 function testDateRngFmtKuRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -599,8 +599,8 @@ function testDateRngFmtKuRangeMultiYearFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("‏20 تشرینی دووەم 2011 – 31 کانونی دووەم 2014", fmt.format(start, end));
+	}); 
+    assertEquals("‏2011/تشرینی دووەم – 2014/کانونی دووەم", fmt.format(start, end));
 }
 function testDateRngFmtKuManyYearsFull() {
     var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});

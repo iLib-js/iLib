@@ -620,5 +620,5 @@ function testDateRngFmtBGManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 – 2064", fmt.format(start, end));
+    assertEquals("2011 г. – 2064 г.", fmt.format(start, end));
 }

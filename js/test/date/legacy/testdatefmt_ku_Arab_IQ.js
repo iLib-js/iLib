@@ -635,7 +635,7 @@ function testDateFmtFullDateComponentsDM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29/ئەیلول", fmt.format(date));
+    assertEquals("‏ئەیلول/29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_ku_Arab_IQ() {
@@ -652,7 +652,7 @@ function testDateFmtFullDateComponentsMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏09/2011", fmt.format(date));
+    assertEquals("‏2011/ئەیلول", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ku_Arab_IQ() {

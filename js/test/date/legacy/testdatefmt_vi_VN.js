@@ -534,7 +534,7 @@ function testDateFmtShortDateComponentsM_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th", fmt.format(date));
+    assertEquals("Th 9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_vi_VN() {
