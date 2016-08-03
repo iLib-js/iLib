@@ -58,7 +58,7 @@ enyo.kind({
 
 		var year, month, date;
 		var month  = 7;
-		var date  = 1;
+		var date  = 3;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 

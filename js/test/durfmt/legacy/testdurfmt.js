@@ -523,7 +523,7 @@ function testDurFmtFormatFullDEPlural() {
 
 function testDurFmtFormatShortZHDefaultStyle() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "short"
     });
     assertNotNull(fmt);
@@ -543,7 +543,7 @@ function testDurFmtFormatShortZHDefaultStyle() {
 
 function testDurFmtFormatShortZHText() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "short",
     	style: "text"
     });
@@ -564,7 +564,7 @@ function testDurFmtFormatShortZHText() {
 
 function testDurFmtFormatShortZHClock() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "short",
     	style: "clock"
     });
@@ -585,7 +585,7 @@ function testDurFmtFormatShortZHClock() {
 
 function testDurFmtFormatMediumZH() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "medium"
     });
     assertNotNull(fmt);
@@ -599,13 +599,13 @@ function testDurFmtFormatMediumZH() {
     	minute: 1,
     	second: 1,
     	millisecond: 1
-    });
-    assertEquals("1年1個月1周1天1小時1分鐘1秒1毫秒", duration.toString());
+    });          
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
 };
 
 function testDurFmtFormatLongZH() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "long"
     });
     assertNotNull(fmt);
@@ -625,7 +625,7 @@ function testDurFmtFormatLongZH() {
 
 function testDurFmtFormatFullZH() {
     var fmt = new ilib.DurFmt({
-    	locale: "zh-CN",
+    	locale: "zh-Hans-CN",
     	length: "full"
     });
     assertNotNull(fmt);
@@ -640,7 +640,7 @@ function testDurFmtFormatFullZH() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+    assertEquals("1年1个月1周1天1小时1分钟1秒钟1毫秒", duration.toString());
 };
 
 function testDurFmtFormatShortFRDefaultStyle() {
@@ -5561,7 +5561,7 @@ function testDurFmtJAFormatFull() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 年、1 か月、1 週間、1 日、1 時間、1 分、1 秒、1 ミリ秒", duration.toString());
+    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1 ミリ秒", duration.toString());
 };
 
 
@@ -5584,7 +5584,7 @@ function testDurFmtJAAsyncWithLocale() {
     	    	second: 2,
     			millisecond: 2
     	    });
-    	    assertEquals("2 年、2 か月、2 週間、2 日、2 時間、2 分、2 秒、2 ミリ秒", duration.toString());
+    	    assertEquals("2 年 2 か月 2 週間 2 日 2 時間 2 分 2 秒 2 ミリ秒", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -9305,7 +9305,7 @@ function testDurFmtZHFormatMedium() {
     	minute: 1,
     	second: 1
     });          
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHFormatLong() {
@@ -9324,7 +9324,7 @@ function testDurFmtZHFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHFormatFull() {
@@ -9343,7 +9343,7 @@ function testDurFmtZHFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 
@@ -9365,7 +9365,7 @@ function testDurFmtZHAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 年 2 個月 2 週 2 天 2 小時 2 分鐘 2 秒", duration.toString());
+    	    assertEquals("2 年2 個月2 週2 天2 小時2 分鐘2 秒", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -9477,8 +9477,8 @@ function testDurFmtZHHKFormatMedium() {
     	hour: 1,
     	minute: 1,
     	second: 1
-    });           
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    });
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatLong() {
@@ -9495,8 +9495,9 @@ function testDurFmtZHHKFormatLong() {
     	day: 1,
     	hour: 1,
     	minute: 1,
-    	second: 1 });
-    assertEquals("1 年 1 個月 1 週 1 日 1 小時 1 分鐘 1 秒", duration.toString());
+    	second: 1
+    });
+    assertEquals("1 年1 個月1 週1 日1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatFull() {
@@ -9515,7 +9516,7 @@ function testDurFmtZHHKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1星期 1 日 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1星期1 日1 小時1 分鐘1 秒", duration.toString());
 };
 
 
@@ -9537,7 +9538,7 @@ function testDurFmtZHHKAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 年 2 個月 2星期 2 日 2 小時 2 分鐘 2 秒", duration.toString());
+    	    assertEquals("2 年2 個月2星期2 日2 小時2 分鐘2 秒", duration.toString());
     	    callbackCalled = true;
     	}
     });

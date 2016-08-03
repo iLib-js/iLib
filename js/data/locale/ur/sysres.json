@@ -114,11 +114,11 @@
     "durationShortMonths": "one#{num} مہینہ|#{num} مہینے",
     "#{num}y": "one#{num} سال|#{num} سال",
     "separatorFull": ", ",
-    "finalSeparatorFull": "، اور ",
+    "finalSeparatorFull": "‏، اور ",
     "separatorLong": "، ",
-    "finalSeparatorLong": "، اور ",
+    "finalSeparatorLong": "‏، اور ",
     "separatorMedium": "، ",
-    "finalSeparatorMedium": "، اور ",
+    "finalSeparatorMedium": "‏، اور ",
     "separatorShort": "، ",
-    "finalSeparatorShort": "، اور "
+    "finalSeparatorShort": "‏، اور "
 }

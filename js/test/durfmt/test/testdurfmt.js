@@ -2209,6 +2209,157 @@ function testDurFmtHEFormatFull() {
     assertEquals("‏שנה, חודש, שבוע, יום, שעה, דקה ושניה", duration.toString());
 };
 
+function testDurFmtHEFormatShortManyNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 20,
+        month: 20,
+        week: 20,
+        day: 20,
+        hour: 20,
+        minute: 20,
+        second: 20
+    });
+    assertEquals("‏20 שנים, 20 ח׳, 20 שבועות, 20 י׳, 20 שע׳, 20 דק׳, 20 שנ׳", duration.toString());
+};
+
+function testDurFmtHEFormatMediumManyNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 20,
+        month: 20,
+        week: 20,
+        day: 20,
+        hour: 20,
+        minute: 20,
+        second: 20
+    });
+    assertEquals("‏20 שנ, 20 חו, 20 שב, 20 ימ, 20 שע, 20 דק׳, 20 שנ׳", duration.toString());
+};
+
+function testDurFmtHEFormatLongManyNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 20,
+        month: 20,
+        week: 20,
+        day: 20,
+        hour: 20,
+        minute: 20,
+        second: 20
+    });
+    assertEquals("‏20 שנה, 20 ח׳, 20 שבועות, 20 ימ׳, 20 שע׳, 20 דק׳, 20 שנ׳", duration.toString());
+};
+
+function testDurFmtHEFormatFullManyNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 20,
+        month: 20,
+        week: 20,
+        day: 20,
+        hour: 20,
+        minute: 20,
+        second: 20
+    });
+    assertEquals("‏20 שנה, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו‏20 שניות", duration.toString());
+};
+
+function testDurFmtHEFormatShortOtherNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 19,
+        month: 19,
+        week: 19,
+        day: 19,
+        hour: 19,
+        minute: 19,
+        second: 19
+    });
+    assertEquals("‏19 שנים, 19 ח׳, 19 שבועות, 19 י׳, 19 שע׳, 19 דק׳, 19 שנ׳", duration.toString());
+};
+
+function testDurFmtHEFormatMediumOtherNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 19,
+        month: 19,
+        week: 19,
+        day: 19,
+        hour: 19,
+        minute: 19,
+        second: 19
+    });
+    assertEquals("‏19 שנ, 19 חו, 19 שב, 19 ימ, 19 שע, 19 דק׳, 19 שנ", duration.toString());
+};
+
+function testDurFmtHEFormatLongOtherNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 19,
+        month: 19,
+        week: 19,
+        day: 19,
+        hour: 19,
+        minute: 19,
+        second: 19
+    });
+    assertEquals("‏19 שנים, 19 ח׳, 19 שבועות, 19 ימ׳, 19 שע׳, 19 דק׳, 19 שנ׳", duration.toString());
+};
+
+function testDurFmtHEFormatFullOtherNumber() {
+    var fmt = new DurationFmt({
+        locale: "he-IL",
+        length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+        year: 19,
+        month: 19,
+        week: 19,
+        day: 19,
+        hour: 19,
+        minute: 19,
+        second: 19
+    });
+    assertEquals("‏19 שנים, 19 חודשים, 19 שבועות, 19 ימים, 19 שעות, 19 דקות ו19 שניות", duration.toString());
+};
 
 //test cases for hi-IN
 
@@ -4191,7 +4342,7 @@ function testDurFmtJAFormatFull() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 年、1 か月、1 週間、1 日、1 時間、1 分、1 秒、1 ミリ秒", duration.toString());
+    assertEquals("1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1 ミリ秒", duration.toString());
 };
 
 
@@ -6846,7 +6997,7 @@ function testDurFmtZHFormatMedium() {
     	minute: 1,
     	second: 1
     });          
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHFormatLong() {
@@ -6865,7 +7016,7 @@ function testDurFmtZHFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHFormatFull() {
@@ -6884,7 +7035,7 @@ function testDurFmtZHFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 //test cases for zh-Hank-HK
@@ -6964,8 +7115,8 @@ function testDurFmtZHHKFormatMedium() {
     	hour: 1,
     	minute: 1,
     	second: 1
-    });           
-    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
+    });
+    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatLong() {
@@ -6984,7 +7135,7 @@ function testDurFmtZHHKFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1 週 1 日 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1 週1 日1 小時1 分鐘1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatFull() {
@@ -7003,7 +7154,7 @@ function testDurFmtZHHKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年 1 個月 1星期 1 日 1 小時 1 分鐘 1 秒", duration.toString());
+    assertEquals("1 年1 個月1星期1 日1 小時1 分鐘1 秒", duration.toString());
 };
 
 //test cases for tr-TR

@@ -2105,6 +2105,15 @@ function testStringFormatChoiceCharClassesComplex11() {
     assertEquals("The items are many", str.formatChoice(20));
 }
 
+function testStringFormatChoiceCharheILClassesComplex12() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("he-IL");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(19));
+}
+
 
 function testStringFormatChoiceDecimal1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
