@@ -107,20 +107,6 @@ var asianLangs = [
     "ja"
 ];
 
-var  formatText = [
-    "'at'",
-    "'de'",
-    "'u'",
-    "'a les'", //ca
-    "'am'",
-    "'kl.'", //da
-    "'um'", //de
-    "''",
-    "''",
-    "''",
-    "''",
-];
-
 function loadFile(path) {
     var ret = undefined;
     if (fs.existsSync(path)) {
@@ -1551,7 +1537,7 @@ module.exports = {
             }
         }
         if (formats.gregorian) {
-            console.log(JSON.stringify(formats.gregorian.range, undefined, 4));    
+            // console.log(JSON.stringify(formats.gregorian.range, undefined, 4));
         }
         
         return formats;
@@ -1672,6 +1658,8 @@ module.exports = {
                     } else {
                         fullStr += name +"#" + temp;    
                     }
+
+
                     
                     if (length === "full" && name === 'other' && duration === 'day') {
                         day = cldrUnitData[durationKey][nameValue];
@@ -1693,9 +1681,11 @@ module.exports = {
                         }
                     }
                 }
-            }            
+            }
             durationSysres[durationObject[duration]] = fullStr;
+
         }
+        // console.log(JSON.stringify(formats.gregorian.range, undefined, 4));
 
         return durationSysres;
     },
@@ -1722,7 +1712,7 @@ module.exports = {
                 "year": "1#1 yr|#{num} yrs"
             },
             "durationPropertiesMedium" : {
-                "millisecond": "#{num} ms",
+                "millisecond": "durationMediumMillis",
                 "second": "1#1 se|#{num} sec",
                 "minute": "1#1 mi|#{num} min",
                 "hour": "durationMediumHours",
@@ -1776,6 +1766,7 @@ module.exports = {
         for (i=0; i< sysres.length; i++) {
             mergedSysres = common.merge(mergedSysres, sysres[i]);
         }
+        //console.log(JSON.stringify(mergedSysres, undefined, 4));
         return mergedSysres;
     },
 
