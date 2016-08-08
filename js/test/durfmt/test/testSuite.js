@@ -32,7 +32,6 @@ function suite() {
 		"testdurfmt.js",
 		"testdurfmt_am_ET.js",
 		"testdurfmt_ar_SA.js",
-		"testdurfmt_az_Latn_AZ.js",
 		"testdurfmt_ha_Latn_NG.js",
 		"testdurfmt_or_IN.js",
 		"testdurfmt_km_KH.js"
