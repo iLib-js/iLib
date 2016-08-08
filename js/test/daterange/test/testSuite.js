@@ -1,6 +1,6 @@
 /*
  * testSuiteDates.js - test suite for the date tests
- * 
+ *
  * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,13 +27,14 @@ function newSuite(path, include) {
 
 function suite() {
     var s = new TestSuite();
-    
+
     var suites = [
 		"testdatefmtrange_af_ZA.js",
 		"testdatefmtrange_af_NA.js",
-        "testdatefmtrange_am_ET.js",                  
+        "testdatefmtrange_am_ET.js",
 		"testdatefmtrange_ar_SA.js",
 		"testdatefmtrange_as_IN.js",
+		"testdatefmtrange_az_Latn_AZ.js",
 		"testdatefmtrange_bg_BG.js",
 		"testdatefmtrange_bn_IN.js",
 		"testdatefmtrange_bs_Latn_BA.js",
@@ -52,13 +53,14 @@ function suite() {
 		"testdatefmtrange_fa_IR.js",
 		"testdatefmtrange_fi_FI.js",
 		"testdatefmtrange_fr_CA.js",
-		"testdatefmtrange_fr_FR.js"
+		"testdatefmtrange_fr_FR.js",
+		"testdatefmtrange_km_KH.js"
 	];
 
     suites.forEach(function (path) {
     	s.addSuite(newSuite(path));
     });
-    
+
     return s;
 }
 
