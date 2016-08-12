@@ -34,7 +34,7 @@ function testDurFmtHAFormatShortDefaultStyle() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtHAFormatShortText() {
@@ -54,7 +54,7 @@ function testDurFmtHAFormatShortText() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtHAFormatShortClock() {
@@ -74,7 +74,7 @@ function testDurFmtHAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 01:01:01", duration.toString());
 };
 
 function testDurFmtHAFormatMedium() {
@@ -93,7 +93,7 @@ function testDurFmtHAFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtHAFormatLong() {
@@ -112,7 +112,7 @@ function testDurFmtHAFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 y 1 m 1 w 1 d 1 h 1 min 1 s", duration.toString());
+    assertEquals("1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s", duration.toString());
 };
 
 function testDurFmtHAFormatFull() {
@@ -180,7 +180,7 @@ function testDurFmtHAFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1y 1m 1w 1d 01:01:01", duration.toString());
+    	    assertEquals("1 y, 1 m, 1 w, 1 d, 01:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });

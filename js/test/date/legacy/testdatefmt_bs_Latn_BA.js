@@ -1246,7 +1246,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bs_Latn_BA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("pre 30 sekundi", fmt.formatRelative(reference, date));
+    assertEquals("prije 30 sekundi", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1298,7 +1298,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 10 minuta", fmt.formatRelative(reference, date));
+    assertEquals("prije 10 minuta", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1350,7 +1350,7 @@ function testDateFmtFormatRelativeWithinDayBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 4 sata", fmt.formatRelative(reference, date));
+    assertEquals("prije 4 sata", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_bs_Latn_BA() {
@@ -1403,7 +1403,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 4 dana", fmt.formatRelative(reference, date));
+    assertEquals("prije 4 dana", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_bs_Latn_BA() {
@@ -1430,7 +1430,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 9 nedelja", fmt.formatRelative(reference, date));
+    assertEquals("za 9 sedmica", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1456,7 +1456,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 9 nedelja", fmt.formatRelative(reference, date));
+    assertEquals("prije 9 sedmica", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Latn_BA() {
@@ -1483,7 +1483,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 16 meseci", fmt.formatRelative(reference, date));
+    assertEquals("za 16 mjeseci", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Latn_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Latn-BA", length: "full"});
@@ -1509,7 +1509,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 14 meseci", fmt.formatRelative(reference, date));
+    assertEquals("prije 14 mjeseci", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_bs_Latn_BA() {
@@ -1562,6 +1562,6 @@ function testDateFmtFormatRelativeYearsBefore_bs_Latn_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("pre 21 godina", fmt.formatRelative(reference, date));
+    assertEquals("prije 21 godina", fmt.formatRelative(reference, date));
 }
 

@@ -1,5 +1,6 @@
 {
     "azh3": "中午",
+    "1#1 second|#{num} seconds": "#{num}秒钟",
     "durationShortMinutes": "#{num}分钟",
     "#{num}h": "#{num}小时",
     "#{num}w": "#{num}周",

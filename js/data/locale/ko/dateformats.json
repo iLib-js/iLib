@@ -1,41 +1,48 @@
 {
     "gregorian": {
+        "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "yy. M. d. E",
-                "m": "yyyy. M. d. EE",
+                "f": "yyyy년 M월 d일 EEEE",
                 "l": "yyyy년 M월 d일 EEE",
-                "f": "yyyy년 M월 d일 EEEE"
+                "m": "yyyy. M. d. EE",
+                "s": "yy. M. d. E"
             },
             "dmy": {
-                "s": "yy. M. d.",
-                "m": "yyyy. M. d.",
+                "f": "yyyy년 M월 d일",
                 "l": "yyyy년 M월 d일",
-                "f": "yyyy년 M월 d일"
+                "m": "yyyy. M. d.",
+                "s": "yy. M. d."
             },
             "dmw": {
-                "s": "M. d. E",
-                "m": "M. d. EE",
+                "f": "M월 d일 EEEE",
                 "l": "M월 d일 EEE",
-                "f": "M월 d일 EEEE"
+                "m": "M. d. EE",
+                "s": "M. d. E"
             },
             "dm": {
-                "s": "M. d.",
-                "m": "M. d.",
+                "f": "M월 d일",
                 "l": "M월 d일",
-                "f": "M월 d일"
+                "m": "M. d.",
+                "s": "M. d."
             },
             "my": {
-                "s": "yy. M.",
-                "m": "yyyy. M.",
+                "f": "yyyy년 M월",
                 "l": "yyyy년 M월",
-                "f": "yyyy년 M월"
+                "m": "yyyy. M.",
+                "s": "yy. M."
             },
             "dw": {
-                "s": "d. E",
-                "m": "d. EE",
+                "f": "d일 EEEE",
                 "l": "d일 EEE",
-                "f": "d일 EEEE"
+                "m": "d. EE",
+                "s": "d. E"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
                 "f": "d",
@@ -44,9 +51,16 @@
                 "s": "d"
             },
             "m": {
-                "m": "M",
+                "f": "M",
                 "l": "M",
-                "f": "M"
+                "m": "M",
+                "s": "M"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             },
             "a": {
                 "f": "d일",
@@ -54,7 +68,7 @@
                 "m": "d일",
                 "s": "d일"
             },
-            "t": {
+            "l": {
                 "f": "M월",
                 "l": "M월",
                 "m": "M월",
@@ -69,71 +83,91 @@
         },
         "time": {
             "12": {
-                "ahmsz": "a h:mm:ss z",
-                "ahms": "a h:mm:ss",
-                "ahmz": "a h:mm z",
-                "ahm": "a h:mm",
-                "ah": "a h시",
+                "h": "h",
                 "m": "m",
-                "s": "s"
+                "s": "s",
+                "ah": "a h시",
+                "hm": "h:mm",
+                "ms": "mm:ss",
+                "ahm": "a h:mm",
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "a h:mm z",
+                "ahms": "a h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "a h:mm:ss z"
             },
             "24": {
-                "ah": "H시",
                 "h": "H시",
                 "m": "m",
-                "s": "s"
+                "s": "s",
+                "ah": "H시",
+                "hm": "H:mm",
+                "ms": "mm:ss",
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm z",
+                "ahmz": "H:mm z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "ahmsz": "H:mm:ss z"
             }
         },
         "range": {
             "c00": {
-                "s": "{sy}. {sm}. {sd} {st}에서 {et}까지",
-                "m": "{sy}. {sm}. {sd} {st}에서 {et}까지",
-                "l": "{sy}년 {sm}월 {sd}일 {st}에서 {et}까지",
-                "f": "{sy}년 {sm}월 {sd}일 {st}에서 {et}까지"
+                "f": "{sy}년 {sm}월 {sd}일 {st} – {et}",
+                "l": "{sy}년 {sm}월 {sd}일 {st} – {et}",
+                "m": "{sy}. {sm}. {sd}. {st} – {et}",
+                "s": "{sy}. {sm}. {sd}. {st} – {et}"
             },
             "c01": {
-                "s": "{sy}. {sm}. {sd} {st}에서 {ed} {et}까지",
-                "m": "{sy}. {sm}. {sd} {st}에서 {ed} {et}까지",
-                "l": "{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지",
-                "f": "{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지"
+                "f": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "l": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "m": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}",
+                "s": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}"
             },
             "c02": {
-                "s": "{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지",
-                "m": "{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지",
-                "l": "{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지",
-                "f": "{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지"
+                "f": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "l": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "m": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}",
+                "s": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}"
             },
             "c03": {
-                "s": "{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지",
-                "m": "{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지",
-                "l": "{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지",
-                "f": "{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지"
+                "f": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "l": "{sy}년 {sm}월 {sd}일 {st} – {ey}년 {em}월 {ed}일 {et}",
+                "m": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}",
+                "s": "{sy}. {sm}. {sd}. {st} – {ey}. {em}. {ed}. {et}"
             },
             "c10": {
-                "s": "{sy}. {sm}. {sd}에서 {ed}까지",
-                "m": "{sy}. {sm}. {sd}에서 {ed}까지",
-                "l": "{sy}년 {sm}월 {sd}일에서 {ed}일까지",
-                "f": "{sy}년 {sm}월 {sd}일에서 {ed}일까지"
+                "f": "{sy}년 {sm}월 {sd}일 – {ed}일",
+                "l": "{sy}년 {sm}월 {sd}일 – {ed}일",
+                "m": "{sy}. {sm}. {sd}. – {ed}",
+                "s": "{sy}. {sm}. {sd}. – {ed}"
             },
             "c11": {
-                "s": "{sy}. {sm}. {sd}에서 {em}. {ed}까지",
-                "m": "{sy}. {sm}. {sd}에서 {em}. {ed}까지",
-                "l": "{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지",
-                "f": "{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지"
+                "f": "{sy}년 {sm}월 {sd}일 – {em}월 {ed}일",
+                "l": "{sy}년 {sm}월 {sd}일 – {em}월 {ed}일",
+                "m": "{sy}. {sm}. {sd}. – {ey}. {em}. {ed}.",
+                "s": "{sy}. {sm}. {sd}. – {ey}. {em}. {ed}."
             },
             "c12": {
-                "s": "{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지",
-                "m": "{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지",
-                "l": "{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지",
-                "f": "{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지"
+                "f": "{sy}년 {sm}월 {sd}일 – {ey}년 {em}월 {ed}일",
+                "l": "{sy}년 {sm}월 {sd}일 – {ey}년 {em}월 {ed}일",
+                "m": "{sy}. {sm}. {sd}. – {ey}. {em}. {ed}.",
+                "s": "{sy}. {sm}. {sd}. – {ey}. {em}. {ed}."
             },
             "c20": {
-                "s": "{sy}. {sm}.에서 {ey}. {em}.까지",
-                "m": "{sy}. {sm}.에서 {ey}. {em}.까지",
-                "l": "{sy}년 {sm}월에서 {ey}년 {em}월까지",
-                "f": "{sy}년 {sm}월에서 {ey}년 {em}월까지"
+                "f": "{sy}년 {sm}월 – {ey}년 {em}월",
+                "l": "{sy}년 {sm}월 – {ey}년 {em}월",
+                "m": "{sy}. {sm}. – {ey}. {em}.",
+                "s": "{sy}. {sm}. – {ey}. {em}."
             },
-            "c30": "{sy}년에서 {ey}년까지"
+            "c30": {
+                "f": "{sy}년 – {ey}년",
+                "l": "{sy}년 – {ey}년",
+                "m": "{sy}년 – {ey}년",
+                "s": "{sy}년 – {ey}년"
+            }
         }
     }
 }

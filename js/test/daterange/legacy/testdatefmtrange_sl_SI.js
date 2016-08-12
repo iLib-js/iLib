@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sl_SI.js - test the date range formatter object in Slovenian/Slovenia
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -233,7 +233,7 @@ function testDateRngFmtSIRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. 12. 11", fmt.format(start, end));
+    assertEquals("20 – 31. 12. 11", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtSIRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. dec. 2011", fmt.format(start, end));
+    assertEquals("20 – 31. dec. 2011", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "long"});
@@ -281,7 +281,7 @@ function testDateRngFmtSIRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. december 2011", fmt.format(start, end));
+    assertEquals("20 – 31. december 2011", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "full"});
@@ -305,7 +305,7 @@ function testDateRngFmtSIRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. december 2011", fmt.format(start, end));
+    assertEquals("20 – 31. december 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtSIRangeNextMonthShort() {
@@ -330,7 +330,7 @@ function testDateRngFmtSIRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. 11. – 31. 12. 11", fmt.format(start, end));
+    assertEquals("20. 11 – 31. 12. 11", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "medium"});

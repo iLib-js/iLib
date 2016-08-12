@@ -2,30 +2,64 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E d/MM/yy",
-                "m": "EE d-MMM-yyyy"
+                "m": "EE d-MMM-yyyy",
+                "s": "E d/MM/yy"
             },
             "dmy": {
-                "s": "d/MM/yy",
-                "m": "d-MMM-yyyy"
+                "m": "d-MMM-yyyy",
+                "s": "d/MM/yy"
             },
             "dmw": {
-                "s": "E d/MM",
-                "m": "EE d-MMM"
+                "m": "EE d-MMM",
+                "s": "E d/MM"
             },
             "dm": {
-                "s": "d/MM",
-                "m": "d-MMM"
+                "m": "d-MMM",
+                "s": "d/MM"
             },
             "my": {
-                "s": "MM/yy",
-                "m": "LLL-yyyy"
+                "m": "LLL-yyyy",
+                "s": "MM/yy"
             },
             "dw": {
                 "s": "E d"
             },
             "d": {
                 "s": "d"
+            }
+        },
+        "range": {
+            "c00": {
+                "m": "{sd}-{sm}-{sy} {st} – {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {et}"
+            },
+            "c01": {
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c02": {
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c03": {
+                "m": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
+            },
+            "c10": {
+                "m": "{sd} – {ed}-{em}-{ey}",
+                "s": "{sd} – {ed}/{em}/{ey}"
+            },
+            "c11": {
+                "m": "{sd}-{sm} – {ed}-{em}-{ey}",
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
+            },
+            "c12": {
+                "m": "{sd}-{sm}-{sy} – {ed}-{em}-{ey}",
+                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
+            },
+            "c20": {
+                "m": "{sm}-{sy} – {em}-{ey}",
+                "s": "{sm}/{sy} – {em}/{ey}"
             }
         }
     }

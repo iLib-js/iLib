@@ -421,7 +421,7 @@ function testDateFmtShortDateComponentsM_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("Σ", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_el_GR() {
@@ -575,7 +575,7 @@ function testDateFmtFullDateComponentsM_el_GR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Σεπτεμβρίου", fmt.format(date));
+    assertEquals("Σεπτέμβριος", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_el_GR() {

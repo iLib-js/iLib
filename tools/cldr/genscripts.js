@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013 - 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ if (process.argv.length > 5) {
 }
 
 util.print("genscripts - generate scripts data.\n" +
-		"Copyright (c) 2012 JEDLSoft\n");
+		"Copyright (c) 2012 - 2015 JEDLSoft\n");
 
 // TODO: these should call fs.existsSync instead
 fs.exists(iso15924FileName, function (exists) {

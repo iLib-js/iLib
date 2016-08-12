@@ -1216,7 +1216,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ml_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 സെക്കന്റ് മുമ്പ്", fmt.formatRelative(reference, date));
+    assertEquals("30 സെക്കൻഡ് മുമ്പ്", fmt.formatRelative(reference, date));
 }
 /*function testDateFmtFormatRelativeWithinHourAfter_ml_IN() {
     var fmt = new ilib.DateFmt({locale: "ml-IN", length: "full"});
@@ -1268,7 +1268,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 മിനിട്ട് മുമ്പ്", fmt.formatRelative(reference, date));
+    assertEquals("10 മിനിറ്റ് മുമ്പ്", fmt.formatRelative(reference, date));
 }
 /*function testDateFmtFormatRelativeWithinDayAfter_ml_IN() {
     var fmt = new ilib.DateFmt({locale: "ml-IN", length: "full"});

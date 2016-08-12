@@ -175,7 +175,7 @@ function testUnitFormatWithMeasurementSystem5() {
                 autoConvert:false
 	}); 
 	var str = uf.format(m1);	
-	assertEquals("1.233453 gigawatt hour", str);
+	assertEquals("1.233453 gigawatt hours", str);
 }
 
 function testUnitFormatWithScale6() {
@@ -185,7 +185,7 @@ function testUnitFormatWithScale6() {
 	});
 	var uf = new ilib.UnitFmt({autoConvert:false}); 
 	var str = uf.format(m);
-	assertEquals("1.666668 kilometer per second", str);
+	assertEquals("1.666668 kilometers per second", str);
 }
 
 function testUnitFormatWithoutScale6() {
@@ -244,7 +244,7 @@ function testUnitFormatWithScale8() {
 
 	var uf = new ilib.UnitFmt({autoConvert:false}); 
 	var str = uf.format(m1);
-	assertEquals("1.5 liter", str);
+	assertEquals("1.5 liters", str);
 }
 
 function testUnitFormatWithoutScale8() {
@@ -1673,7 +1673,7 @@ function testUnitFormatLength15() {
 	roundingMode: "up"       
     });
     var str = uf.format(m1);
-    assertEquals("1.75 meter", str);
+    assertEquals("1.75 meters", str);
 }
 
 function testUnitFormatLength16() {
@@ -1689,7 +1689,7 @@ function testUnitFormatLength16() {
 	roundingMode: "down" 
     });
     var str = uf.format(m1);
-    assertEquals("1.74 meter", str);
+    assertEquals("1.74 meters", str);
 }
 
 function testUnitFormatLength17() {
@@ -1705,7 +1705,7 @@ function testUnitFormatLength17() {
 	maxFractionDigits: 3
     });
     var str = uf.format(m1);
-    assertEquals("1.745 meter", str);
+    assertEquals("1.745 meters", str);
 }
 
 function testUnitFormatUseNativeFalse() {

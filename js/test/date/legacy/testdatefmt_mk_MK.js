@@ -1220,7 +1220,7 @@ function testDateFmtFormatRelativeWithinDayAfter_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("за 4 часови", fmt.formatRelative(reference, date));
+    assertEquals("за 4 часа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_mk_MK() {
     var fmt = new ilib.DateFmt({locale: "mk-MK", length: "full"});
@@ -1246,7 +1246,7 @@ function testDateFmtFormatRelativeWithinDayBefore_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пред 4 часови", fmt.formatRelative(reference, date));
+    assertEquals("пред 4 часа", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_mk_MK() {
@@ -1273,7 +1273,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("за 4 денови", fmt.formatRelative(reference, date));
+    assertEquals("за 4 дена", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_mk_MK() {
     var fmt = new ilib.DateFmt({locale: "mk-MK", length: "full"});
@@ -1299,7 +1299,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пред 4 денови", fmt.formatRelative(reference, date));
+    assertEquals("пред 4 дена", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_mk_MK() {
@@ -1326,7 +1326,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("за 9 недели", fmt.formatRelative(reference, date));
+    assertEquals("за 9 седмици", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_mk_MK() {
     var fmt = new ilib.DateFmt({locale: "mk-MK", length: "full"});
@@ -1352,7 +1352,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пред 9 недели", fmt.formatRelative(reference, date));
+    assertEquals("пред 9 седмици", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_mk_MK() {

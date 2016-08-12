@@ -1414,7 +1414,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("преди 4 дена", fmt.formatRelative(reference, date));
+    assertEquals("преди 4 дни", fmt.formatRelative(reference, date));
 }
 
 /*function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {

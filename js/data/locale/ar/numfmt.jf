@@ -7,11 +7,11 @@
         "pctChar": "٪",
         "exponential": "اس",
         "currencyFormats": {
-            "common": "{s} {n}",
-            "commonNegative": "{s} {n}-"
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
         },
-        "negativenumFmt": "{n}-",
-		"useNative": true,
-        "digits": "٠١٢٣٤٥٦٧٨٩"
+        "pctFmt": "{n}٪",
+        "digits": "٠١٢٣٤٥٦٧٨٩",
+        "useNative": true
     }
 }

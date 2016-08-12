@@ -418,7 +418,7 @@ function testDateFmtShortDateComponentsM_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("ru", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_hr_HR() {
@@ -572,7 +572,7 @@ function testDateFmtFullDateComponentsM_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("rujna", fmt.format(date));
+    assertEquals("rujan", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_hr_HR() {

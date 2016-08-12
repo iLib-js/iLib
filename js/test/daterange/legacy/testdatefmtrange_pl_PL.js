@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_pl_PL.js - test the date range formatter object in Polish/Poland
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed unPLr the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,7 +160,7 @@ function testDateRngFmtPLRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 gru, 13:45 – 31 gru 2011, 14:30", fmt.format(start, end));
+    assertEquals("30 gru 2011, 13:45 – 31 gru 2011, 14:30", fmt.format(start, end));
 }
 function testDateRngFmtPLRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "pl-PL", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtPLRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 grudnia 13:45 – 31 grudnia 2011 14:30", fmt.format(start, end));
+    assertEquals("30 grudnia 2011 13:45 – 31 grudnia 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtPLRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "pl-PL", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtPLRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 grudnia 13:45 – 31 grudnia 2011 14:30", fmt.format(start, end));
+    assertEquals("30 grudnia 2011 13:45 – 31 grudnia 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtPLRangeMultiDayShort() {

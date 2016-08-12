@@ -468,7 +468,7 @@ function testDateFmtShortDateComponentsM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("Ве", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_uk_UA() {
@@ -622,7 +622,7 @@ function testDateFmtFullDateComponentsM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("вересня", fmt.format(date));
+    assertEquals("Вересень", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_uk_UA() {

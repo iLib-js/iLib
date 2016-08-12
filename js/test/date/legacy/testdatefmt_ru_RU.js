@@ -484,7 +484,7 @@ function testDateFmtShortDateComponentsM_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("се", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ru_RU() {
@@ -638,7 +638,7 @@ function testDateFmtFullDateComponentsM_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("сентября", fmt.format(date));
+    assertEquals("сентябрь", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ru_RU() {

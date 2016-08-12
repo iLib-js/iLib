@@ -174,6 +174,36 @@ function testDateFmtGetTimeComponentsBogus() {
     assertEquals("ahm", fmt.getTimeComponents());
 };
 
+function testDateFmtGetTimeComponentsICUSkeleton1() {
+    var fmt = new DateFmt({time: "EHm"});
+    assertNotNull(fmt);
+    
+    assertEquals("hm", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton2() {
+    var fmt = new DateFmt({time: "Hms"});
+    assertNotNull(fmt);
+    
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton3() {
+    var fmt = new DateFmt({time: "Ehms"});
+    assertNotNull(fmt);
+    
+    // ignore the non-time components
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
+function testDateFmtGetTimeComponentsICUSkeleton3() {
+    var fmt = new DateFmt({time: "yMdhms"});
+    assertNotNull(fmt);
+    
+    // ignore the non-time components
+    assertEquals("hms", fmt.getTimeComponents());
+};
+
 function testDateFmtGetDateComponentsDefault() {
     var fmt = new DateFmt();
     assertNotNull(fmt);
@@ -201,6 +231,50 @@ function testDateFmtGetDateComponentsBogus() {
     
     // use the default
     assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton1() {
+    var fmt = new DateFmt({date: "yMMMMd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton2() {
+    var fmt = new DateFmt({date: "yMMd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton3() {
+    var fmt = new DateFmt({date: "yMMMM"});
+    assertNotNull(fmt);
+    
+    assertEquals("my", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton4() {
+    var fmt = new DateFmt({date: "MMMEd"});
+    assertNotNull(fmt);
+    
+    assertEquals("dmw", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton5() {
+    var fmt = new DateFmt({date: "GyMMMEd"});
+    assertNotNull(fmt);
+    
+    // ignore the era
+    assertEquals("dmwy", fmt.getDateComponents());
+};
+
+function testDateFmtGetDateComponentsICUSkeleton6() {
+    var fmt = new DateFmt({date: "MMddhms"});
+    assertNotNull(fmt);
+    
+    // ignore the time components
+    assertEquals("dm", fmt.getDateComponents());
 };
 
 function testDateFmtGetClockDefaultUS() {
@@ -415,8 +489,22 @@ function testDateFmtGetTemplateDateComponents() {
     assertEquals("E, M/d", fmt.getTemplate());
 };
 
+function testDateFmtGetTemplateDateComponentsWithICUSkeleton() {
+    var fmt = new DateFmt({date: "MMMEd"});
+    assertNotNull(fmt);
+    
+    assertEquals("E, M/d", fmt.getTemplate());
+};
+
 function testDateFmtGetTemplateTimeComponents() {
     var fmt = new DateFmt({type: "time", time: "hm"});
+    assertNotNull(fmt);
+    
+    assertEquals("h:mm", fmt.getTemplate());
+};
+
+function testDateFmtGetTemplateTimeComponentsWithICUSkeleton() {
+    var fmt = new DateFmt({type: "time", time: "Hm"});
     assertNotNull(fmt);
     
     assertEquals("h:mm", fmt.getTemplate());
@@ -2055,7 +2143,7 @@ function testDateFmtConvertToGMT() {
 		locale: "en-US"
 	});
     
-    assertEquals("20/09/2011 21:45 GMT/BST", fmt.format(date));
+    assertEquals("20/09/2011, 21:45 GMT/BST", fmt.format(date));
 };
 
 function testDateFmtConvertToOtherTimeZone() {
@@ -2080,7 +2168,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/09/2011 6:45am AEST", fmt.format(date));
+    assertEquals("21/09/2011 6:45 am AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
@@ -2097,7 +2185,7 @@ function testDateFmtForTZWithNonWholeOffset1() {
     	timezone: "Etc/UTC"
 	});
     
-    assertEquals("7:28PM", fmt.format(date));
+    assertEquals("7:28 PM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset2() {
@@ -2121,7 +2209,7 @@ function testDateFmtForTZWithNonWholeOffset2() {
 	});
     
     // St. John's is -3:30 from UTC, plus 1 hour DST
-    assertEquals("7:28PM", fmt.format(date));
+    assertEquals("7:28 PM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffsetQuarterHour() {
@@ -2139,7 +2227,7 @@ function testDateFmtForTZWithNonWholeOffsetQuarterHour() {
 	});
 
     // Kathmandu is 5:45 ahead of UTC, no DST
-    assertEquals("3:43AM", fmt.format(date));
+    assertEquals("3:43 AM", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffsetQuarterHour2() {
@@ -2163,7 +2251,7 @@ function testDateFmtForTZWithNonWholeOffsetQuarterHour2() {
 	});
     
     // Kathmandu is 5:45 ahead of UTC, no DST
-    assertEquals("3:43AM", fmt.format(date));
+    assertEquals("3:43 AM", fmt.format(date));
 };
 
 // test locales that are tier 2 and below by doing a single test to see that it basically works
@@ -2188,7 +2276,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday, September 20, 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -2236,7 +2324,7 @@ function testDateFmtenPK() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 at 1:45 pm", fmt.format(date));
 };
 
 function testDateFmtenAU() {
@@ -2260,7 +2348,7 @@ function testDateFmtenAU() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, 20 September 2011 1:45pm", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 1:45 pm", fmt.format(date));
 };
 
 function testDateFmtenZA() {
@@ -2284,7 +2372,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtesES() {

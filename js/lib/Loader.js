@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+/* !depends ilib.js Path.js */
+
 var Path = require("./Path.js");
 var ilib = require("./ilib.js");
 
