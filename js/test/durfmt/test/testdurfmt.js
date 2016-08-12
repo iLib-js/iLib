@@ -7116,7 +7116,7 @@ function testDurFmtZHHKFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatLong() {
@@ -7135,7 +7135,7 @@ function testDurFmtZHHKFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1 週1 日1 小時1 分鐘1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 日 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatFull() {
@@ -7154,7 +7154,7 @@ function testDurFmtZHHKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1星期1 日1 小時1 分鐘1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1星期 1 日 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 //test cases for tr-TR

@@ -9478,7 +9478,7 @@ function testDurFmtZHHKFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1 週1 天1 小時1 分鐘1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 天 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatLong() {
@@ -9497,7 +9497,7 @@ function testDurFmtZHHKFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1 週1 日1 小時1 分鐘1 秒", duration.toString());
+    assertEquals("1 年 1 個月 1 週 1 日 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 function testDurFmtZHHKFormatFull() {
@@ -9516,60 +9516,7 @@ function testDurFmtZHHKFormatFull() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 年1 個月1星期1 日1 小時1 分鐘1 秒", duration.toString());
-};
-
-
-function testDurFmtZHHKAsyncWithLocale() {
-	var callbackCalled = false;
-    new ilib.DurFmt({
-    	locale: "zh-Hant-HK",
-    	length: "full",
-    	sync: false,
-    	onLoad: function (fmt) {
-    		assertNotNull(fmt);
-    	    
-    	    var duration = fmt.format({
-    	    	year: 2,
-    	    	month: 2,
-    	    	week: 2,
-    	    	day: 2,
-    	    	hour: 2,
-    	    	minute: 2,
-    	    	second: 2
-    	    });
-    	    assertEquals("2 年2 個月2星期2 日2 小時2 分鐘2 秒", duration.toString());
-    	    callbackCalled = true;
-    	}
-    });
-    
-    assertTrue(callbackCalled);
-};
-
-function testDurFmtZHHKFormatShortClockAsync() {
-	var callbackCalled = false;
-    new ilib.DurFmt({
-    	locale: "zh-Hant-HK",
-    	length: "short",
-    	style: "clock",
-    	sync: false,
-    	onLoad: function (fmt) {
-    		assertNotNull(fmt);
-    	    
-    	    var duration = fmt.format({
-    	    	year: 1,
-    	    	month: 1,
-    	    	week: 1,
-    	    	day: 1,
-    	    	hour: 1,
-    	    	minute: 1,
-    	    	second: 1
-    	    });
-    	    assertEquals("1年1個月1週1日1:01:01", duration.toString());
-    	    callbackCalled = true;
-    	}
-    });
-    assertTrue(callbackCalled);
+    assertEquals("1 年 1 個月 1星期 1 日 1 小時 1 分鐘 1 秒", duration.toString());
 };
 
 
