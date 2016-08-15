@@ -1244,7 +1244,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_mn_Cyrl_MN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 секундд", fmt.formatRelative(reference, date));
+    assertEquals("30 секунд дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1270,7 +1270,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_mn_Cyrl_MN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 секундийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("30 секунд өмнө", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1296,7 +1296,7 @@ function testDateFmtFormatRelativeWithinHourAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 минутд", fmt.formatRelative(reference, date));
+    assertEquals("10 минут дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1322,7 +1322,7 @@ function testDateFmtFormatRelativeWithinHourBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 минутийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("10 минут өмнө", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1348,7 +1348,7 @@ function testDateFmtFormatRelativeWithinDayAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 цагд", fmt.formatRelative(reference, date));
+    assertEquals("4 цаг дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1374,7 +1374,7 @@ function testDateFmtFormatRelativeWithinDayBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 цагийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("4 цаг өмнө", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_mn_Cyrl_MN() {
@@ -1401,7 +1401,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 хоногд", fmt.formatRelative(reference, date));
+    assertEquals("4 өдөр дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1427,7 +1427,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 хоногийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("4 өдөр өмнө", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_mn_Cyrl_MN() {
@@ -1454,7 +1454,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 долоо хоногд", fmt.formatRelative(reference, date));
+    assertEquals("9 долоо хоног дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1480,7 +1480,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 долоо хоногийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("9 долоо хоног өмнө", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_mn_Cyrl_MN() {
@@ -1507,7 +1507,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 сард", fmt.formatRelative(reference, date));
+    assertEquals("16 сар дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1533,7 +1533,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 сарийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("14 сар өмнө", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_mn_Cyrl_MN() {
@@ -1560,7 +1560,7 @@ function testDateFmtFormatRelativeYearsAfter_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 жилд", fmt.formatRelative(reference, date));
+    assertEquals("14 жил дараа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -1586,6 +1586,6 @@ function testDateFmtFormatRelativeYearsBefore_mn_Cyrl_MN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 жилийн өмнө", fmt.formatRelative(reference, date));
+    assertEquals("21 жил өмнө", fmt.formatRelative(reference, date));
 }
 

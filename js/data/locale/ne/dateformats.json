@@ -8,78 +8,96 @@
         },
         "date": {
             "dmwy": {
-                "s": "yyyy-MM-dd, E",
-                "m": "yyyy MMM d, EE",
+                "f": "yyyy MMMM d, EEEE",
                 "l": "yyyy MMMM d, EEE",
-                "f": "yyyy MMMM d, EEEE"
+                "m": "yyyy MMM d, EE",
+                "s": "yyyy-MM-dd, E"
             },
             "dmy": {
-                "s": "yyyy-MM-dd",
-                "m": "yyyy MMM d",
+                "f": "yyyy MMMM d",
                 "l": "yyyy MMMM d",
-                "f": "yyyy MMMM d"
+                "m": "yyyy MMM d",
+                "s": "yyyy-MM-dd"
             },
             "dmw": {
-                "s": "MM-dd, E",
-                "m": "MMM d, EE",
+                "f": "MMMM d, EEEE",
                 "l": "MMMM d, EEE",
-                "f": "MMMM d, EEEE"
+                "m": "MMM d, EE",
+                "s": "MM-dd, E"
             },
             "dm": {
-                "s": "MM-dd",
-                "m": "MMM d",
+                "f": "MMMM d",
                 "l": "MMMM d",
-                "f": "MMMM d"
+                "m": "MMM d",
+                "s": "MM-dd"
             },
             "my": {
-                "s": "yyyy-MM",
-                "m": "yyyy MMM",
+                "f": "yyyy MMMM",
                 "l": "yyyy MMMM",
-                "f": "yyyy MMMM"
+                "m": "yyyy MMM",
+                "s": "yyyy-MM"
             },
             "dw": {
-                "s": "dd, E",
-                "m": "d, EE",
+                "f": "d, EEEE",
                 "l": "d, EEE",
-                "f": "d, EEEE"
+                "m": "d, EE",
+                "s": "dd, E"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
-                "s": "dd",
                 "f": "d",
                 "l": "d",
-                "m": "d"
+                "m": "d",
+                "s": "dd"
             },
             "m": {
-                "s": "MM",
+                "f": "MMMM",
+                "l": "MMMM",
                 "m": "MMM",
-                "l": "MMMM"
+                "s": "MM"
             },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
-            },
-            "n": {
-                "m": "N"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
+                "ah": "h a",
+                "hm": "h:mm",
+                "ms": "mm:ss",
                 "ahm": "h:mm a",
-                "ah": "h a"
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
             },
             "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
+                "h": "HH",
+                "m": "mm",
+                "s": "ss",
                 "ah": "HH",
                 "hm": "HH:mm",
-                "h": "HH"
+                "ms": "mm:ss",
+                "ahm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmz": "HH:mm z",
+                "ahmz": "HH:mm z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
             }
         },
         "range": {

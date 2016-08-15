@@ -2,19 +2,19 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "d/M/yyE",
-                "m": "yyyy年M月d日EE",
+                "f": "yyyy年M月d日EEEE",
                 "l": "yyyy年M月d日EEE",
-                "f": "yyyy年M月d日EEEE"
+                "m": "yyyy年M月d日EE",
+                "s": "d/M/yyE"
             },
             "dmy": {
                 "s": "d/M/yy"
             },
             "dmw": {
-                "s": "d/ME",
-                "m": "M月d日EE",
+                "f": "M月d日EEEE",
                 "l": "M月d日EEE",
-                "f": "M月d日EEEE"
+                "m": "M月d日EE",
+                "s": "d/ME"
             },
             "dm": {
                 "s": "d/M"
@@ -23,10 +23,10 @@
                 "s": "M/yy"
             },
             "dw": {
-                "s": "d/E",
-                "m": "d日EE",
+                "f": "d日EEEE",
                 "l": "d日EEE",
-                "f": "d日EEEE"
+                "m": "d日EE",
+                "s": "d/E"
             },
             "y": {
                 "s": "yy"

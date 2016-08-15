@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("2011. 9. 29.", fmt.format(date));
+    assertEquals("2011. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ko_KR() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
+    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ko_KR() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("2011. 9. 29. 오후 1:45", fmt.format(date));
+    assertEquals("2011. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ko_KR() {
@@ -415,7 +415,7 @@ function testDateFmtTypeDate_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11. 9. 29.", fmt.format(date));
+    assertEquals("11. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtTypeTime_ko_KR() {
@@ -449,7 +449,7 @@ function testDateFmtTypeDateTime_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
+    assertEquals("11. 9. 29. 오후 1:45", fmt.format(date));
 }
 
 
@@ -467,7 +467,7 @@ function testDateFmtShortDateComponentsY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11년", fmt.format(date));
+    assertEquals("11년", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_ko_KR() {
@@ -484,7 +484,7 @@ function testDateFmtShortDateComponentsM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9월", fmt.format(date));
+    assertEquals("9월", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ko_KR() {
@@ -569,7 +569,7 @@ function testDateFmtShortDateComponentsDMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11. 9. 29.", fmt.format(date));
+    assertEquals("11. 9. 29.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ko_KR() {
@@ -586,7 +586,7 @@ function testDateFmtShortDateComponentsWDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9. 29. 목", fmt.format(date));
+    assertEquals("9. 29. 목", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ko_KR() {
@@ -603,7 +603,7 @@ function testDateFmtShortDateComponentsWDMY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11. 9. 29. 목", fmt.format(date));
+    assertEquals("11. 9. 29. 목", fmt.format(date));
 }
 
 function testDateFmtLongDateComponentsWDM_ko_KR() {
@@ -620,7 +620,7 @@ function testDateFmtLongDateComponentsWDM_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9월 29일 목", fmt.format(date));
+    assertEquals("9월 29일 목", fmt.format(date));
 }
 
 
@@ -638,7 +638,7 @@ function testDateFmtFullDateComponentsY_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("2011년", fmt.format(date));
+    assertEquals("2011년", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM_ko_KR() {
@@ -1261,7 +1261,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ko_KR() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30초에", fmt.formatRelative(reference, date));
+    assertEquals("30초 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1287,7 +1287,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ko_KR() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30초전", fmt.formatRelative(reference, date));
+    assertEquals("30초 전", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1313,7 +1313,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10분에", fmt.formatRelative(reference, date));
+    assertEquals("10분 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1339,7 +1339,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10분전", fmt.formatRelative(reference, date));
+    assertEquals("10분 전", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1365,7 +1365,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4시간에", fmt.formatRelative(reference, date));
+    assertEquals("4시간 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1391,7 +1391,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4시간전", fmt.formatRelative(reference, date));
+    assertEquals("4시간 전", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ko_KR() {
@@ -1418,7 +1418,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4일에", fmt.formatRelative(reference, date));
+    assertEquals("4일 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1444,7 +1444,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4일전", fmt.formatRelative(reference, date));
+    assertEquals("4일 전", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ko_KR() {
@@ -1471,7 +1471,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9주에", fmt.formatRelative(reference, date));
+    assertEquals("9주 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1497,7 +1497,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9주전", fmt.formatRelative(reference, date));
+    assertEquals("9주 전", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ko_KR() {
@@ -1524,7 +1524,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16개월에", fmt.formatRelative(reference, date));
+    assertEquals("16개월 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1550,7 +1550,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14개월전", fmt.formatRelative(reference, date));
+    assertEquals("14개월 전", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_ko_KR() {
@@ -1577,7 +1577,7 @@ function testDateFmtFormatRelativeYearsAfter_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14년에", fmt.formatRelative(reference, date));
+    assertEquals("14년 후", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_ko_KR() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1603,6 +1603,6 @@ function testDateFmtFormatRelativeYearsBefore_ko_KR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21년전", fmt.formatRelative(reference, date));
+    assertEquals("21년 전", fmt.formatRelative(reference, date));
 }
 

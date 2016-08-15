@@ -1,11 +1,5 @@
 {
     "gregorian": {
-        "order": {
-            "f": "{date}{time}",
-            "l": "{date}{time}",
-            "m": "{date} {time}",
-            "s": "{date} {time}"
-        },
         "date": {
             "dmwy": {
                 "s": "dd/MM/yyE"
@@ -40,19 +34,19 @@
         },
         "time": {
             "12": {
-                "ahmsz": "ah:mm:ssz",
-                "hmsz": "h:mm:ssz",
-                "ahmz": "ahh:mmz",
+                "h": "hh",
+                "hm": "hh:mm",
                 "ahm": "ahh:mm",
                 "hmz": "hh:mmz",
-                "hm": "hh:mm",
-                "h": "hh"
+                "ahmz": "ahh:mmz",
+                "hmsz": "h:mm:ssz",
+                "ahmsz": "ah:mm:ssz"
             },
             "24": {
-                "ahmsz": "H:mm:ssz",
-                "hmsz": "H:mm:ssz",
+                "hmz": "H:mmz",
                 "ahmz": "H:mmz",
-                "hmz": "H:mmz"
+                "hmsz": "H:mm:ssz",
+                "ahmsz": "H:mm:ssz"
             }
         }
     }

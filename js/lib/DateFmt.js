@@ -831,14 +831,14 @@ DateFmt.prototype = {
 		return undefined;
 	},
 
-	// stand-alone of m (month) is t
+	// stand-alone of m (month) is l
 	// stand-alone of d (day) is a
-	// stand-alone of w (weekday) is l
+	// stand-alone of w (weekday) is e
 	// stand-alone of y (year) is r
 	_standAlones: {
-		"m": "t",
+		"m": "l",
 		"d": "a",
-		"w": "l",
+		"w": "e",
 		"y": "r"
 	},
 	

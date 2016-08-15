@@ -1,0 +1,5 @@
+{
+  "1#1 mon|#{num} mons": "one#{num} m.|#{num} m.",
+  "1#1 mo|#{num} mos": "one#{num} m.|#{num} m."
+}
+
