@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_am_ET.js - test the date range formatter object Amharic/Ethiopia
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -39,7 +39,7 @@ function testDateRngFmtAMRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
+    assertEquals("30/12/2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtAMRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("30 ነሐሴ 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtAMRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("30 ነሐሴ 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtAMRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+    assertEquals("ነሐሴ 30 ቀን 2011 1:45 ከምሽቱ – 2:30 ከምሽቱ", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextDayShort() {
@@ -136,7 +136,7 @@ function testDateRngFmtAMRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29/12/2011 – 2:30 ከምሽቱ 30/12/2011", fmt.format(start, end));
+    assertEquals("29/12/2011 1:45 ከምሽቱ – 30/12/2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtAMRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29 ነሐሴ – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("29 ነሐሴ 2011 1:45 ከምሽቱ – 30 ነሐሴ 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtAMRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 ከምሽቱ 29 – 2:30 ከምሽቱ 30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("29 ነሐሴ 2011 1:45 ከምሽቱ – 30 ነሐሴ 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -207,8 +207,8 @@ function testDateRngFmtAMRangeNextDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("1:45 ከምሽቱ ነሐሴ 29 – 2:30 ከምሽቱ ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ነሐሴ 29 ቀን 2011 1:45 ከምሽቱ – ነሐሴ 30 ቀን 2011 2:30 ከምሽቱ", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeMultiDayShort() {
@@ -233,7 +233,7 @@ function testDateRngFmtAMRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30/12/2011", fmt.format(start, end));
+    assertEquals("20 – 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtAMRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("20 – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "long"});
@@ -281,7 +281,7 @@ function testDateRngFmtAMRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20–30 ነሐሴ 2011", fmt.format(start, end));
+    assertEquals("20 – 30 ነሐሴ 2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "full"});
@@ -304,8 +304,8 @@ function testDateRngFmtAMRangeMultiDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("ነሐሴ 20–30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ነሐሴ 20 ቀን – 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextMonthShort() {
@@ -330,7 +330,7 @@ function testDateRngFmtAMRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 30/12/2011", fmt.format(start, end));
+    assertEquals("20/11 – 30/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -401,8 +401,8 @@ function testDateRngFmtAMRangeNextMonthFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("ሐምሌ 20 – ነሐሴ 30 ቀን 2011", fmt.format(start, end));
+	});           
+    assertEquals("ሐምሌ 20 ቀን 2011 – ነሐሴ 30 ቀን 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtAMRangeNextYearShort() {
@@ -427,7 +427,7 @@ function testDateRngFmtAMRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011–30/01/2012", fmt.format(start, end));
+    assertEquals("20/11/2011 – 30/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});
@@ -524,7 +524,7 @@ function testDateRngFmtAMRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011–01/2014", fmt.format(start, end));
+    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
 }
 function testDateRngFmtAMRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "am-ET", length: "medium"});

@@ -2,7 +2,7 @@
  * gennorm.js - ilib tool to generate the json UNA normalization data from the Unicode 
  * data files
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -237,7 +237,7 @@ function genCode(script, form) {
 		"/*\n" +
 		" * " + script + ".js - include file for normalization data for a particular script\n" +
 		" * \n" +
-		" * Copyright © 2013, JEDLSoft\n" +
+		" * Copyright © 2013 - 2015, JEDLSoft\n" +
 		" *\n" +
 		" * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
 		" * you may not use this file except in compliance with the License.\n" +

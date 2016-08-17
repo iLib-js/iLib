@@ -1219,7 +1219,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_bs_Cyrl_BA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("за 30 секунди", fmt.formatRelative(reference, date));
+    assertEquals("за 30 секунда", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1245,7 +1245,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bs_Cyrl_BA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("пре 30 секунди", fmt.formatRelative(reference, date));
+    assertEquals("пре 30 секунда", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1271,7 +1271,7 @@ function testDateFmtFormatRelativeWithinHourAfter_bs_Cyrl_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("за 10 минута", fmt.formatRelative(reference, date));
+    assertEquals("за 10 минут", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bs_Cyrl_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пре 10 минута", fmt.formatRelative(reference, date));
+    assertEquals("пре 10 минут", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1482,7 +1482,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Cyrl_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("за 16 месеци", fmt.formatRelative(reference, date));
+    assertEquals("за 16 месец", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1508,7 +1508,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Cyrl_BA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пре 14 месеци", fmt.formatRelative(reference, date));
+    assertEquals("пре 14 месец", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_bs_Cyrl_BA() {

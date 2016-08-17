@@ -151,9 +151,12 @@ function testScriptGetUnknown() {
 function testScriptGetAllScripts() {
     var scripts = ilib.ScriptInfo.getAllScripts();
     assertNotNull(scripts);
+   
+    assertEquals(177, scripts.length);
     
-    assertEquals("Afak", scripts[0]);
-    assertEquals("Aghb", scripts[1]);
-    assertEquals("Arab", scripts[2]);
+    assertEquals("Adlm", scripts[0]);
+    assertEquals("Afak", scripts[1]);
+    assertEquals("Aghb", scripts[2]);
+    assertEquals("Arab", scripts[4]);
     assertEquals("Zzzz", scripts[scripts.length-1]);
 }

@@ -503,7 +503,7 @@ function testLocaleInfoGetPercentageFormat_es_ES() {
 	var info = new ilib.LocaleInfo("es-ES");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_es_ES() {
@@ -532,7 +532,7 @@ function testLocaleInfoGetPercentageFormat_es_CO() {
 	var info = new ilib.LocaleInfo("es-CO");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_es_CO() {
@@ -626,7 +626,7 @@ function testLocaleInfoGetCurrencyFormat_it_IT() {
 	var info = new ilib.LocaleInfo("it-IT");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 //test cases for sv-SE
@@ -742,7 +742,7 @@ function testLocaleInfoGetCurrencyFormat_el_GR() {
 	var info = new ilib.LocaleInfo("el-GR");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 //test cases for hu-HU
@@ -916,7 +916,7 @@ function testLocaleInfoGetCurrencyFormat_aa_DJ() {
 	var info = new ilib.LocaleInfo("aa-DJ");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_aa_DJ() {
@@ -1158,14 +1158,14 @@ function testLocaleInfoGetPercentageFormat_ar_AE() {
 	var info = new ilib.LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_AE() {
 	var info = new ilib.LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_AE() {
@@ -1215,7 +1215,7 @@ function testLocaleInfoGetCurrencyFormat_ar_DZ() {
 	var info = new ilib.LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_DZ() {
@@ -1603,7 +1603,7 @@ function testLocaleInfoGetCurrencyFormat_bn_IN() {
 	var info = new ilib.LocaleInfo("bn-IN");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_bn_IN() {
@@ -1645,14 +1645,14 @@ function testLocaleInfoGetPercentageFormat_br_FR() {
 	var info = new ilib.LocaleInfo("br-FR");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_br_FR() {
 	var info = new ilib.LocaleInfo("br-FR");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_br_FR() {
@@ -1796,7 +1796,7 @@ function testLocaleInfoGetCurrencyFormat_bs_ME() {
 	var info = new ilib.LocaleInfo("bs-ME");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_bs_ME() {
@@ -1845,7 +1845,7 @@ function testLocaleInfoGetCurrencyFormat_ca_FR() {
 	var info = new ilib.LocaleInfo("ca-FR");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ca_FR() {
@@ -1938,7 +1938,7 @@ function testLocaleInfoGetPercentageFormat_fa() {
 	var info = new ilib.LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa() {
@@ -1988,7 +1988,7 @@ function testLocaleInfoGetPercentageFormat_fa_AF() {
 	var info = new ilib.LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa_AF() {
@@ -2077,14 +2077,14 @@ function testLocaleInfoRoundingMode_ff_SN() {
 function testLocaleInfoGetDecimalSeparatorfor_fj_FJ() {
 	var info = new ilib.LocaleInfo("fj-FJ");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_fj_FJ() {
 	var info = new ilib.LocaleInfo("fj-FJ");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_fj_FJ() {
@@ -2098,7 +2098,7 @@ function testLocaleInfoGetCurrencyFormat_fj_FJ() {
 	var info = new ilib.LocaleInfo("fj-FJ");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fj_FJ() {
@@ -2285,7 +2285,7 @@ function testLocaleInfoGetGroupingSeparatorfor_fr_CH() {
 	var info = new ilib.LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("'", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_fr_CH() {
@@ -2299,7 +2299,7 @@ function testLocaleInfoGetCurrencyFormat_fr_CH() {
 	var info = new ilib.LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_CH() {
@@ -2804,7 +2804,7 @@ function testLocaleInfoGetCurrencyFormat_hi_IN() {
 	var info = new ilib.LocaleInfo("hi-IN");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_hi_IN() {
@@ -3009,7 +3009,7 @@ function testLocaleInfoGetCurrencyFormat_it_CH() {
 	var info = new ilib.LocaleInfo("it-CH");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_it_CH() {
@@ -3059,7 +3059,7 @@ function testLocaleInfoGetCurrencyFormat_it_SM() {
 	var info = new ilib.LocaleInfo("it-SM");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_it_SM() {
@@ -3096,7 +3096,7 @@ function testLocaleInfoGetGroupingSeparatorfor_ka_IR() {
 	var info = new ilib.LocaleInfo("ka-IR");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_ka_IR() {
@@ -3237,51 +3237,51 @@ function testLocaleInfoRoundingMode_ko_KR() {
 }
 
 
-//test cases for ks-IN-Arab
+//test cases for ks-Arab-IN
 
-function testLocaleInfoGetDecimalSeparatorfor_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetDecimalSeparatorfor_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 	assertEquals("٫", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetGroupingSeparatorfor_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
 	assertEquals("٬", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetPercentageFormat_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetCurrencyFormat_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetPrimaryGroupingDigits_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoGetSecondaryGroupingDigits_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
 	assertEquals(2, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_ks_IN_Arab() {
-	var info = new ilib.LocaleInfo("ks-IN-Arab");
+function testLocaleInfoRoundingMode_ks_Arab_IN() {
+	var info = new ilib.LocaleInfo("ks-Arab-IN");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -3294,14 +3294,14 @@ function testLocaleInfoRoundingMode_ks_IN_Arab() {
 function testLocaleInfoGetDecimalSeparatorfor_ku() {
 	var info = new ilib.LocaleInfo("ku-IQ");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_ku() {
 	var info = new ilib.LocaleInfo("ku-IQ");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_ku() {
@@ -3315,7 +3315,7 @@ function testLocaleInfoGetCurrencyFormat_ku() {
 	var info = new ilib.LocaleInfo("ku-IQ");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ku() {
@@ -3344,14 +3344,14 @@ function testLocaleInfoRoundingMode_ku() {
 function testLocaleInfoGetDecimalSeparatorfor_ku_IR() {
 	var info = new ilib.LocaleInfo("ku-IR");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_ku_IR() {
 	var info = new ilib.LocaleInfo("ku-IR");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_ku_IR() {
@@ -3365,7 +3365,7 @@ function testLocaleInfoGetCurrencyFormat_ku_IR() {
 	var info = new ilib.LocaleInfo("ku-IR");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ku_IR() {
@@ -3510,7 +3510,7 @@ function testLocaleInfoGetPercentageFormat_lt() {
 	var info = new ilib.LocaleInfo("lt-LT");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_lt() {
@@ -3547,14 +3547,14 @@ function testLocaleInfoRoundingMode_lt() {
 function testLocaleInfoGetDecimalSeparatorfor_mi_CK() {
 	var info = new ilib.LocaleInfo("mi-CK");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_mi_CK() {
 	var info = new ilib.LocaleInfo("mi-CK");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_mi_CK() {
@@ -3568,7 +3568,7 @@ function testLocaleInfoGetCurrencyFormat_mi_CK() {
 	var info = new ilib.LocaleInfo("mi-CK");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_mi_CK() {
@@ -3648,14 +3648,14 @@ function testLocaleInfoRoundingMode_mk() {
 function testLocaleInfoGetDecimalSeparatorfor_mn_CN() {
 	var info = new ilib.LocaleInfo("mn-CN");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_mn_CN() {
 	var info = new ilib.LocaleInfo("mn-CN");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_mn_CN() {
@@ -3669,7 +3669,7 @@ function testLocaleInfoGetCurrencyFormat_mn_CN() {
 	var info = new ilib.LocaleInfo("mn-CN");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_mn_CN() {
@@ -3821,6 +3821,7 @@ function testLocaleInfoGetCurrencyFormat_ne_IN() {
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
+
 
 function testLocaleInfoGetPrimaryGroupingDigits_ne_IN() {
 	var info = new ilib.LocaleInfo("ne-IN");
@@ -4050,7 +4051,7 @@ function testLocaleInfoRoundingMode_nl_SR() {
 function testLocaleInfoGetDecimalSeparatorfor_no_BV() {
 	var info = new ilib.LocaleInfo("no-BV");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_no_BV() {
@@ -4100,7 +4101,7 @@ function testLocaleInfoRoundingMode_no_BV() {
 function testLocaleInfoGetDecimalSeparatorfor_no_SJ() {
 	var info = new ilib.LocaleInfo("no-SJ");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_no_SJ() {
@@ -4202,14 +4203,14 @@ function testLocaleInfoRoundingMode_om_ET() {
 function testLocaleInfoGetDecimalSeparatorfor_os_RU() {
 	var info = new ilib.LocaleInfo("os-RU");
 	assertNotNull(info);
-	assertEquals(".", info.getDecimalSeparator());
+	assertEquals(",", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_os_RU() {
 	var info = new ilib.LocaleInfo("os-RU");
 	assertNotNull(info);
 
-	assertEquals(",", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_os_RU() {
@@ -4248,51 +4249,51 @@ function testLocaleInfoRoundingMode_os_RU() {
 }
 
 
-//test cases for pa-PK-Arab
+//test cases for pa-Arab-PK
 
 function testLocaleInfoGetDecimalSeparatorfor_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 	assertEquals("٫", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
 	assertEquals("٬", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetSecondaryGroupingDigits_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
 	assertEquals(2, info.getSecondaryGroupingDigits());
 }
 
 function testLocaleInfoRoundingMode_pa() {
-	var info = new ilib.LocaleInfo("pa-PK-Arab");
+	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -4853,51 +4854,51 @@ function testLocaleInfoRoundingMode_ru_TM() {
 }
 
 
-//test cases for shi-MA-Tfng
+//test cases for shi-Tfng-MA
 
-function testLocaleInfoGetDecimalSeparatorfor_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetDecimalSeparatorfor_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetGroupingSeparatorfor_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals(" ", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetPercentageFormat_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetCurrencyFormat_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetPrimaryGroupingDigits_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoGetSecondaryGroupingDigits_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_shi_MA_Tfng() {
-	var info = new ilib.LocaleInfo("shi-MA-Tfng");
+function testLocaleInfoRoundingMode_shi_Tfng_MA() {
+	var info = new ilib.LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -4929,7 +4930,7 @@ function testLocaleInfoGetCurrencyFormat_si() {
 	var info = new ilib.LocaleInfo("si");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_si() {
@@ -4943,7 +4944,7 @@ function testLocaleInfoGetSecondaryGroupingDigits_si() {
 	var info = new ilib.LocaleInfo("si");
 	assertNotNull(info);
 
-	assertEquals(2, info.getSecondaryGroupingDigits());
+	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
 function testLocaleInfoRoundingMode_si() {
@@ -5030,7 +5031,7 @@ function testLocaleInfoGetCurrencyFormat_sl() {
 	var info = new ilib.LocaleInfo("sl-SI");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sl() {
@@ -5175,7 +5176,7 @@ function testLocaleInfoGetCurrencyFormat_sq_MK() {
 	var info = new ilib.LocaleInfo("sq-MK");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sq_MK() {
@@ -5200,201 +5201,201 @@ function testLocaleInfoRoundingMode_sq_MK() {
 }
 
 
-//test cases for sr-BA-Cyrl
+//test cases for sr-Cyrl-BA
 
-function testLocaleInfoGetDecimalSeparatorfor_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetDecimalSeparatorfor_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetGroupingSeparatorfor_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetPercentageFormat_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetCurrencyFormat_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetPrimaryGroupingDigits_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoGetSecondaryGroupingDigits_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_sr_BA_Cyrl() {
-	var info = new ilib.LocaleInfo("sr-BA-Cyrl");
+function testLocaleInfoRoundingMode_sr_Cyrl_BA() {
+	var info = new ilib.LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for sr-BA-Latn
+//test cases for sr-Latn-BA
 
-function testLocaleInfoGetDecimalSeparatorfor_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetDecimalSeparatorfor_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetGroupingSeparatorfor_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetPercentageFormat_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetCurrencyFormat_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_sr_BA_Latn() {
-	var info = new ilib.LocaleInfo("sr-BA-Latn");
+function testLocaleInfoRoundingMode_sr_Latn_BA() {
+	var info = new ilib.LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for sr-ME-Latn
+//test cases for sr-Latn-ME
 
-function testLocaleInfoGetDecimalSeparatorfor_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetDecimalSeparatorfor_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetGroupingSeparatorfor_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetPercentageFormat_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetCurrencyFormat_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-ME-Latn");
+function testLocaleInfoRoundingMode_sr_Latn_ME() {
+	var info = new ilib.LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for sr-RS-Latn
+//test cases for sr-Latn-RS
 
-function testLocaleInfoGetDecimalSeparatorfor_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetDecimalSeparatorfor_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetGroupingSeparatorfor_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetPercentageFormat_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetCurrencyFormat_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_sr_RS_Latn() {
-	var info = new ilib.LocaleInfo("sr-RS-Latn");
+function testLocaleInfoRoundingMode_sr_Latn_RS() {
+	var info = new ilib.LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -5508,7 +5509,7 @@ function testLocaleInfoRoundingMode_ss_ZA() {
 function testLocaleInfoGetDecimalSeparatorfor_st_LS() {
 	var info = new ilib.LocaleInfo("st-LS");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_st_LS() {
@@ -5529,7 +5530,7 @@ function testLocaleInfoGetCurrencyFormat_st_LS() {
 	var info = new ilib.LocaleInfo("st-LS");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_st_LS() {
@@ -5684,7 +5685,7 @@ function testLocaleInfoGetCurrencyFormat_ta_LK() {
 	var info = new ilib.LocaleInfo("ta-LK");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_LK() {
@@ -5734,7 +5735,7 @@ function testLocaleInfoGetCurrencyFormat_ta_MY() {
 	var info = new ilib.LocaleInfo("ta-MY");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_MY() {
@@ -5784,7 +5785,7 @@ function testLocaleInfoGetCurrencyFormat_ta_SG() {
 	var info = new ilib.LocaleInfo("ta-SG");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_SG() {
@@ -5887,7 +5888,7 @@ function testLocaleInfoGetCurrencyFormat_uk_UA() {
 	var info = new ilib.LocaleInfo("uk-UA");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_uk_UA() {
@@ -5937,7 +5938,7 @@ function testLocaleInfoGetCurrencyFormat_ur() {
 	var info = new ilib.LocaleInfo("ur");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur() {
@@ -5966,14 +5967,14 @@ function testLocaleInfoRoundingMode_ur() {
 function testLocaleInfoGetDecimalSeparatorfor_ur_IN() {
 	var info = new ilib.LocaleInfo("ur-IN");
 	assertNotNull(info);
-	assertEquals("٫", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_ur_IN() {
 	var info = new ilib.LocaleInfo("ur-IN");
 	assertNotNull(info);
 
-	assertEquals("٬", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_ur_IN() {
@@ -6037,7 +6038,7 @@ function testLocaleInfoGetCurrencyFormat_ur_PK() {
 	var info = new ilib.LocaleInfo("ur-PK");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur_PK() {
@@ -6061,51 +6062,51 @@ function testLocaleInfoRoundingMode_ur_PK() {
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for uz-AF-Arab
+//test cases for uz-Arab-AF
 
-function testLocaleInfoGetDecimalSeparatorfor_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetDecimalSeparatorfor_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 	assertEquals("٫", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetGroupingSeparatorfor_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
 	assertEquals("٬", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetPercentageFormat_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}٪", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetCurrencyFormat_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetPrimaryGroupingDigits_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoGetSecondaryGroupingDigits_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_ur_AF_Arab() {
-	var info = new ilib.LocaleInfo("uz-AF-Arab");
+function testLocaleInfoRoundingMode_ur_Arab_AF() {
+	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -6113,48 +6114,48 @@ function testLocaleInfoRoundingMode_ur_AF_Arab() {
 
 //test cases for uz-UZ
 
-function testLocaleInfoGetDecimalSeparatorfor_uz_UZ_Latn() {
+function testLocaleInfoGetDecimalSeparatorfor_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
-	assertEquals(".", info.getDecimalSeparator());
+	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_uz_UZ_Latn() {
+function testLocaleInfoGetGroupingSeparatorfor_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
-	assertEquals(",", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_uz_UZ_Latn() {
+function testLocaleInfoGetPercentageFormat_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_uz_UZ_Latn() {
+function testLocaleInfoGetCurrencyFormat_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_uz_UZ_Latn() {
+function testLocaleInfoGetPrimaryGroupingDigits_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_uz_UZ_Latn() {
+function testLocaleInfoGetSecondaryGroupingDigits_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_uz_UZ_Latn() {
+function testLocaleInfoRoundingMode_uz_Latn_UZ() {
 	var info = new ilib.LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
@@ -6162,51 +6163,51 @@ function testLocaleInfoRoundingMode_uz_UZ_Latn() {
 }
 
 
-//test cases for vai-LR-Latn
+//test cases for vai-Latn-LR
 
-function testLocaleInfoGetDecimalSeparatorfor_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetDecimalSeparatorfor_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 	assertEquals(".", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetGroupingSeparatorfor_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals(",", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetPercentageFormat_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetCurrencyFormat_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetPrimaryGroupingDigits_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoGetSecondaryGroupingDigits_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_vai_LR_Latn() {
-	var info = new ilib.LocaleInfo("vai-LR-Latn");
+function testLocaleInfoRoundingMode_vai_Latn_LR() {
+	var info = new ilib.LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -6264,151 +6265,151 @@ function testLocaleInfoRoundingMode_vi() {
 }
 
 
-//test cases for zh-SG-Hans
+//test cases for zh-Hans-SG
 
-function testLocaleInfoGetDecimalSeparatorfor_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetDecimalSeparatorfor_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 	assertEquals(".", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetGroupingSeparatorfor_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals(",", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetPercentageFormat_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetCurrencyFormat_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetPrimaryGroupingDigits_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoGetSecondaryGroupingDigits_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_zh_SG_Hans() {
-	var info = new ilib.LocaleInfo("zh-SG-Hans");
+function testLocaleInfoRoundingMode_zh_Hans_SG() {
+	var info = new ilib.LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for zh-MO-Hant
+//test cases for zh-Hant-MO
 
-function testLocaleInfoGetDecimalSeparatorfor_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetDecimalSeparatorfor_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 	assertEquals(".", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetGroupingSeparatorfor_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals(",", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetPercentageFormat_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetCurrencyFormat_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoGetSecondaryGroupingDigits_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_zh_MO_Hant() {
-	var info = new ilib.LocaleInfo("zh-MO-Hant");
+function testLocaleInfoRoundingMode_zh_Hant_MO() {
+	var info = new ilib.LocaleInfo("zh-Hant-MO");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for zh-US-Hant
+//test cases for zh-Hant-US
 
-function testLocaleInfoGetDecimalSeparatorfor_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetDecimalSeparatorfor_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 	assertEquals(".", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetGroupingSeparatorfor_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals(",", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetPercentageFormat_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetCurrencyFormat_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
-function testLocaleInfoGetPrimaryGroupingDigits_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoGetSecondaryGroupingDigits_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_zh_US_Hant() {
-	var info = new ilib.LocaleInfo("zh-US-Hant");
+function testLocaleInfoRoundingMode_zh_Hant_US() {
+	var info = new ilib.LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());
@@ -6502,7 +6503,7 @@ function testLocaleInfoGetGroupingDigits2() {
 }
 
 function testLocaleInfoGetGroupingDigits3() {
-	var info = new ilib.LocaleInfo("zh-CN");
+	var info = new ilib.LocaleInfo("zh-Hans-CN");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
@@ -6555,7 +6556,9 @@ function mockLoader(paths, sync, params, callback) {
 	        "exponential": "e",
 	        "currencyFormats": {
 	            "common": "{s}{n}",
-	            "commonNegative": "{s}-{n}"
+          	"commonNegative": "({s}{n})",
+            	"iso": "{s}{n}",
+            	"isoNegative": "({s}{n})"
 	        }
 	    },
 	    "timezone": "Etc/UTC",
@@ -6669,6 +6672,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
+
 		return;
 	}
 	var callbackCalled = false;
@@ -6680,7 +6684,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 			assertNotUndefined(li);
 			callbackCalled = true;
 			// should return the shared data only
-			assertEquals("{s}{n}", li.getCurrencyFormats().common);
+			assertEquals("{s} {n}", li.getCurrencyFormats().common);
 			assertEquals(1, li.getFirstDayOfWeek());
 			assertEquals("%", li.getPercentageSymbol());
 		}
@@ -6688,33 +6692,6 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 	assertNotNull(info);
 	assertTrue(callbackCalled);
 	ilib.setLoaderCallback(undefined);
-}
-
-function testLocaleInfoMissingDataSynchNoDataNoLoader() {
-	var temp = ilib._load;
-	
-	ilib._load = undefined;  // no loader
-	var callbackCalled = false;
-	ilib.LocaleInfo.cache = {}; // empty the cache
-	
-	var info = new ilib.LocaleInfo("xxx-QQ", {
-		sync: true,
-		onLoad: function (li) {
-			assertNotUndefined(li);
-			callbackCalled = true;
-			// should return the shared data only
-			assertEquals("{s}{n}", li.getCurrencyFormats().common);
-			assertEquals(1, li.getFirstDayOfWeek());
-			assertEquals("%", li.getPercentageSymbol());
-		}
-	});
-	assertNotNull(info);
-	assertTrue(callbackCalled);
-	
-	// clean up
-	ilib._load = undefined;  // no loader
-	ilib.LocaleInfo.cache = {}; // empty the cache
-	ilib._load = temp;
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
@@ -6731,7 +6708,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 	
 	assertNotUndefined(li);
 	// should return the shared data only
-	assertEquals("{s}{n}", li.getCurrencyFormats().common);
+	assertEquals("{s} {n}", li.getCurrencyFormats().common);
 	assertEquals(1, li.getFirstDayOfWeek());
 	assertEquals("%", li.getPercentageSymbol());
 	ilib.setLoaderCallback(undefined);

@@ -968,7 +968,7 @@ function testRuleGetValueInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1002,7 +1002,7 @@ function testRuleGetValueInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertTrue(ilib.String._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueInRangeIntegersTrue() {
@@ -1024,7 +1024,7 @@ function testRuleGetValueInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueInRangeIntegersTrueMany() {
@@ -1190,7 +1190,7 @@ function testRuleGetValueNotInRangeFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
 }
 
 
@@ -1224,7 +1224,7 @@ function testRuleGetValueNotInRangeFalseIntegersBetween() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
 }
 
 function testRuleGetValueNotInRangeIntegersTrue() {
@@ -1246,7 +1246,7 @@ function testRuleGetValueNotInRangeIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueNotInRangeIntegersTrueMany() {
@@ -1446,7 +1446,7 @@ function testRuleGetValueWithinFalseBetween() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 1.876));
+	assertTrue(ilib.String._fncs.getValue(rule, 1.876));
 }
 
 function testRuleGetValueWithinITrue() {
@@ -1468,7 +1468,7 @@ function testRuleGetValueWithinIntegersFalseNotInteger() {
 		]
 	};
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
 }
 
 function testRuleGetValueWithinIntegersTrueMany() {
@@ -1839,12 +1839,12 @@ function testRuleComplex4() {
         ]
     };
 	
-	assertFalse(ilib.String._fncs.getValue(rule, 3.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 3.5));
 	assertFalse(ilib.String._fncs.getValue(rule, 13.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 23.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 103.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 23.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 103.5));
 	assertFalse(ilib.String._fncs.getValue(rule, 113.5));
-	assertFalse(ilib.String._fncs.getValue(rule, 123.5));
+	assertTrue(ilib.String._fncs.getValue(rule, 123.5));
 }
 
 function testStringGetLocaleDefault() {

@@ -133,8 +133,8 @@ function testPersianAlgoIsLeapYear3() {
     
     assertTrue(cal.isLeapYear(1395));
 }
-
-/*function testPersianAlgoNewDateInstance() {
+/*
+function testPersianAlgoNewDateInstance() {
     var cal = new PersianAlgoCal();
     var d = cal.newDateInstance({
     	year: 1392,
@@ -144,5 +144,4 @@ function testPersianAlgoIsLeapYear3() {
     
     assertNotUndefined(d);
     assertEquals("persian-algo", d.cal.type);
-}
-*/
+}*/

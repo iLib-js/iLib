@@ -33,7 +33,7 @@ function testDurFmtAMFormatShortDefaultStyle1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1ሰዓ 1ደ 1ሰከ", duration.toString());
+    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1 ሰ፣ 1 ደ፣ 1 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortText1() {
@@ -53,7 +53,7 @@ function testDurFmtAMFormatShortText1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1ሰዓ 1ደ 1ሰከ", duration.toString());
+    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1 ሰ፣ 1 ደ፣ 1 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortClock1() {
@@ -73,7 +73,7 @@ function testDurFmtAMFormatShortClock1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1:01:01", duration.toString());
+    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01", duration.toString());
 };
 
 function testDurFmtAMFormatMedium1() {
@@ -92,7 +92,7 @@ function testDurFmtAMFormatMedium1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ዓመ 1 ወራ 1 ሳም 1 ቀና 1 ሰዓ 1 ደቂ 1 ሰከ", duration.toString());
+    assertEquals("1 ዓመ፣ 1 ወራ፣ 1 ሳም፣ 1 ቀና፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong1() {
@@ -111,7 +111,7 @@ function testDurFmtAMFormatLong1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ዓመታ፣ 1 ወራት፣ 1 ሳምን፣ 1 ቀናት፣ 1 ሰዓቶ፣ 1 ደቂቃ፣ 1 ሰከን", duration.toString());
+    assertEquals("1 ዓመት፣ 1 ወራት፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatFull1() {
@@ -130,7 +130,7 @@ function testDurFmtAMFormatFull1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
+    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
 };
 
 function testDurFmtAMFormatShortDefaultStyle2() {
@@ -149,7 +149,7 @@ function testDurFmtAMFormatShortDefaultStyle2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2ዓ 2ወ 2ሳ 2ቀ 2ሰዓ 2ደ 2ሰከ", duration.toString());
+    assertEquals("2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2 ሰ፣ 2 ደ፣ 2 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortText2() {
@@ -169,7 +169,7 @@ function testDurFmtAMFormatShortText2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2ዓ 2ወ 2ሳ 2ቀ 2ሰዓ 2ደ 2ሰከ", duration.toString());
+    assertEquals("2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2 ሰ፣ 2 ደ፣ 2 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortClock2() {
@@ -189,7 +189,7 @@ function testDurFmtAMFormatShortClock2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2ዓ 2ወ 2ሳ 2ቀ 2:02:02", duration.toString());
+    assertEquals("2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2:02:02", duration.toString());
 };
 
 function testDurFmtAMFormatMedium2() {
@@ -208,7 +208,7 @@ function testDurFmtAMFormatMedium2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2 ዓመ 2 ወራ 2 ሳም 2 ቀና 2 ሰዓ 2 ደቂ 2 ሰከ", duration.toString());
+    assertEquals("2 ዓመ፣ 2 ወራ፣ 2 ሳም፣ 2 ቀና፣ 2 ሰዓ፣ 2 ደቂ፣ 2 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong2() {
@@ -227,7 +227,7 @@ function testDurFmtAMFormatLong2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2 ዓመታ፣ 2 ወራት፣ 2 ሳምን፣ 2 ቀናት፣ 2 ሰዓቶ፣ 2 ደቂቃ፣ 2 ሰከን", duration.toString());
+    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓ፣ 2 ደቂቃ፣ 2 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatFull2() {
@@ -246,7 +246,7 @@ function testDurFmtAMFormatFull2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
+    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች", duration.toString());
 };
 
 function testDurFmtAMFormatShortDefaultStyle3() {
@@ -265,7 +265,7 @@ function testDurFmtAMFormatShortDefaultStyle3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3ዓ 3ወ 3ሳ 3ቀ 3ሰዓ 3ደ 3ሰከ", duration.toString());
+    assertEquals("3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3 ሰ፣ 3 ደ፣ 3 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortText3() {
@@ -285,7 +285,7 @@ function testDurFmtAMFormatShortText3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3ዓ 3ወ 3ሳ 3ቀ 3ሰዓ 3ደ 3ሰከ", duration.toString());
+    assertEquals("3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3 ሰ፣ 3 ደ፣ 3 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortClock3() {
@@ -305,7 +305,7 @@ function testDurFmtAMFormatShortClock3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3ዓ 3ወ 3ሳ 3ቀ 3:03:03", duration.toString());
+    assertEquals("3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3:03:03", duration.toString());
 };
 
 function testDurFmtAMFormatMedium3() {
@@ -324,7 +324,7 @@ function testDurFmtAMFormatMedium3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3 ዓመ 3 ወራ 3 ሳም 3 ቀና 3 ሰዓ 3 ደቂ 3 ሰከ", duration.toString());
+    assertEquals("3 ዓመ፣ 3 ወራ፣ 3 ሳም፣ 3 ቀና፣ 3 ሰዓ፣ 3 ደቂ፣ 3 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong3() {
@@ -343,7 +343,7 @@ function testDurFmtAMFormatLong3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3 ዓመታ፣ 3 ወራት፣ 3 ሳምን፣ 3 ቀናት፣ 3 ሰዓቶ፣ 3 ደቂቃ፣ 3 ሰከን", duration.toString());
+    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓ፣ 3 ደቂቃ፣ 3 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatFull3() {
@@ -362,7 +362,7 @@ function testDurFmtAMFormatFull3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ እና 3 ሰከንዶች", duration.toString());
+    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች", duration.toString());
 };
 
 function testDurFmtAMFormatShortDefaultStyle11() {
@@ -381,7 +381,7 @@ function testDurFmtAMFormatShortDefaultStyle11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11ዓ 11ወ 11ሳ 11ቀ 11ሰዓ 11ደ 11ሰከ", duration.toString());
+    assertEquals("11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11 ሰ፣ 11 ደ፣ 11 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortText11() {
@@ -401,7 +401,7 @@ function testDurFmtAMFormatShortText11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11ዓ 11ወ 11ሳ 11ቀ 11ሰዓ 11ደ 11ሰከ", duration.toString());
+    assertEquals("11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11 ሰ፣ 11 ደ፣ 11 ሰ", duration.toString());
 };
 
 function testDurFmtAMFormatShortClock11() {
@@ -421,7 +421,7 @@ function testDurFmtAMFormatShortClock11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11ዓ 11ወ 11ሳ 11ቀ 11:11:11", duration.toString());
+    assertEquals("11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11:11:11", duration.toString());
 };
 
 function testDurFmtAMFormatMedium11() {
@@ -440,7 +440,7 @@ function testDurFmtAMFormatMedium11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11 ዓመ 11 ወራ 11 ሳም 11 ቀና 11 ሰዓ 11 ደቂ 11 ሰከ", duration.toString());
+    assertEquals("11 ዓመ፣ 11 ወራ፣ 11 ሳም፣ 11 ቀና፣ 11 ሰዓ፣ 11 ደቂ፣ 11 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatLong11() {
@@ -459,7 +459,7 @@ function testDurFmtAMFormatLong11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11 ዓመታ፣ 11 ወራት፣ 11 ሳምን፣ 11 ቀናት፣ 11 ሰዓቶ፣ 11 ደቂቃ፣ 11 ሰከን", duration.toString());
+    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓ፣ 11 ደቂቃ፣ 11 ሰከ", duration.toString());
 };
 
 function testDurFmtAMFormatFull11() {
@@ -478,7 +478,7 @@ function testDurFmtAMFormatFull11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ እና 11 ሰከንዶች", duration.toString());
+    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች", duration.toString());
 };
 
 function testDurFmtAMAsync1() {
@@ -499,7 +499,7 @@ function testDurFmtAMAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
+    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -525,7 +525,7 @@ function testDurFmtAMAsyncWithLocale1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወራት፣ 1 ሳምንታት፣ 1 ቀናት፣ 1 ሰዓቶች፣ 1 ደቂቃዎች፣ እና 1 ሰከንዶች", duration.toString());
+    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -603,7 +603,7 @@ function testDurFmtAMAsync3() {
     	    	minute: 3,
     	    	second: 3
     	    });
-    	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ እና 3 ሰከንዶች", duration.toString());
+    	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -629,7 +629,7 @@ function testDurFmtAMAsyncWithLocale3() {
     	    	minute: 3,
     	    	second: 3
     	    });
-    	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ እና 3 ሰከንዶች", duration.toString());
+    	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -655,7 +655,7 @@ function testDurFmtAMAsync11() {
     	    	minute: 11,
     	    	second: 11
     	    });
-    	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ እና 11 ሰከንዶች", duration.toString());
+    	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -681,7 +681,7 @@ function testDurFmtAMAsyncWithLocale11() {
     	    	minute: 11,
     	    	second: 11
     	    });
-    	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ እና 11 ሰከንዶች", duration.toString());
+    	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -708,7 +708,7 @@ function testDurFmtAMFormatShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1:01:01", duration.toString());
+    	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -734,7 +734,7 @@ function testDurFmtAMAsync2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
+    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -761,7 +761,7 @@ function testDurFmtAMAsyncWithLocale2() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
+    	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -789,7 +789,7 @@ function testDurFmtAMFormatWesternShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1ዓ 1ወ 1ሳ 1ቀ 1:01:01", duration.toString());
+    	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });

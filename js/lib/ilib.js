@@ -132,7 +132,7 @@ ilib._getPlatform = function () {
         if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-            ilib._platform = "qt";
+        	ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {

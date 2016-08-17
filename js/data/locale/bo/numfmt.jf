@@ -12,16 +12,7 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
-		"useNative": true,
-        "digits": "༠༡༢༣༤༥༦༧༨༩"
-    },
-    "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
-        "useNative": false,
-        "currencyFormats": {
-            "common": "{s} {n}"
-        }
+        "digits": "༠༡༢༣༤༥༦༧༨༩",
+        "useNative": true
     }
 }

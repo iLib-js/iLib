@@ -3,7 +3,6 @@
     "delimiter": {
         "quotationStart": "„",
         "quotationEnd": "“",
-        "alternateQuotationStart": "‚",
         "alternateQuotationEnd": "‘"
     }
 }

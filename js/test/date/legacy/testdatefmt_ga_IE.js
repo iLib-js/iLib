@@ -1133,7 +1133,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ga_IE() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("+30 s", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 30 soicind", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1159,7 +1159,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ga_IE() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("-30 s", fmt.formatRelative(reference, date));
+    assertEquals("30 soicind ó shin", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1185,7 +1185,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+10 min", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 10 nóiméad", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1211,7 +1211,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-10 min", fmt.formatRelative(reference, date));
+    assertEquals("10 nóiméad ó shin", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1237,7 +1237,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+4 h", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 4 huaire", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1263,7 +1263,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-4 h", fmt.formatRelative(reference, date));
+    assertEquals("4 huaire ó shin", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ga_IE() {
@@ -1290,7 +1290,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+4 d", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 4 lá", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1316,7 +1316,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-4 d", fmt.formatRelative(reference, date));
+    assertEquals("4 lá ó shin", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ga_IE() {
@@ -1343,7 +1343,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+9 w", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 9 seachtaine", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1369,7 +1369,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-9 w", fmt.formatRelative(reference, date));
+    assertEquals("9 seachtaine ó shin", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ga_IE() {
@@ -1396,7 +1396,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+16 m", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 16 mí", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1422,7 +1422,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-14 m", fmt.formatRelative(reference, date));
+    assertEquals("14 mí ó shin", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_ga_IE() {
@@ -1449,7 +1449,7 @@ function testDateFmtFormatRelativeYearsAfter_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("+14 y", fmt.formatRelative(reference, date));
+    assertEquals("i gceann 14 bliain", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_ga_IE() {
     var fmt = new ilib.DateFmt({locale: "ga-IE", length: "full"});
@@ -1475,7 +1475,7 @@ function testDateFmtFormatRelativeYearsBefore_ga_IE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("-21 y", fmt.formatRelative(reference, date));
+    assertEquals("21 bliain ó shin", fmt.formatRelative(reference, date));
 }
 
 

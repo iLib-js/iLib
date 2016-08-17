@@ -29,6 +29,7 @@ var Charmap = require("./Charmap.js");
  * @class
  * Create a new UTF-16LE mapping instance
  * @constructor
+ * @extends Charmap
  */
 var UTF16LE = function (options) {
 	this.charset = new Charset({name: "UTF-16LE"});

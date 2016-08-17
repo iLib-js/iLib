@@ -189,7 +189,7 @@ function testToUpper_fr_FR() {
 	var mapper = new ilib.CaseMapper({
 		locale: "fr-FR"
 	});
-    assertEquals("TETE-A-TETE", mapper.map("Tête-à-tête"));
+    assertEquals("TÊTE-À-TÊTE", mapper.map("Tête-à-tête"));
 }
 
 /* French Canadian tests */

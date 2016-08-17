@@ -1,7 +1,7 @@
 /*
  * genpapersizes.js - ilib tool to generate the json data about paper sizes
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013 - 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ function usage() {
 	process.exit(1);
 }
 
-var cldrDir, languageDataFileName;
+var cldrDirName, measurementDataFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -53,74 +53,83 @@ if (process.argv.length < 3) {
 	usage();
 }
 
-cldrDir = process.argv[2];
+cldrDirName = process.argv[2];
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
 util.print("genpapersizes - generate the localeinfo papersize.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2013-2015 JEDLSoft\n");
 
-util.print("CLDR dir: " + cldrDir + "\n");
+util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("output dir: " + toDir + "\n");
 
-languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
+if (!fs.existsSync(cldrDirName)) {
+	util.error("Could not access CLDR dir " + cldrDirName);
+	usage();
+}
 
-fs.exists(languageDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + languageDataFileName);
-		usage();
-	}
-});
+if (!fs.existsSync(toDir)) {
+	util.error("Could not access target directory " + toDir);
+	usage();
+}
 
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
+try {
+	filename = cldrDirName + "/supplemental/measurementData.json";
+	json = fs.readFileSync(filename, "utf-8");
+	suppData = JSON.parse(json);
 
-var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
-var supplementalData = JSON.parse(languageDataString);
-var paperSizeData = supplementalData.measurementData.paperSize;
-//util.print("paperSize data is " + JSON.stringify(paperSizeData));
+	measurementData = suppData.supplemental.measurementData;
+} catch (e) {
+	util.print("Error: Could not load file " + filename + "\n");
+	process.exit(2);
+}
+
+var paperSizeData = measurementData.paperSize;
+
 var paperSizes = {};
 var papersize = {};
-var territories_US_Letter = paperSizeData["US-Letter"]["@territories"].split(" ");
 
-for (var territories in territories_US_Letter) {
-	var filename;
-	
-	filename = toDir + 'und/' + territories_US_Letter[territories];
-	util.print(filename + "\n");
-	paperSizes["regular"] = "8x11";
-	if (!fs.existsSync(filename)) {
-		mkdirs(filename);
-		util.print(territories + "\n");
-	}
-	papersize["paperSizes"] = paperSizes;
-	papersize.generated = true;
-	fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
-		util.print(filename + "papersizes.jf\n");
-		if (err) {
-			console.log(err);
-			throw err;
+for (var territories in paperSizeData) {
+	var territories_US_Letter,
+		directory, filename;
+	if (paperSizeData[territories] === "US-Letter") {
+		filename = toDir + 'und/' + territories;
+		//util.print(filename + "\n");
+		paperSizes["regular"] = "8x11";
+
+		if (!fs.existsSync(filename)) {
+			mkdirs(filename);
+			//util.print(territories + "\n");
 		}
-	});
-}
-
-var filename = toDir;
-if (!fs.existsSync(filename)) {
-	fs.mkdirSync(filename);
-//}
-paperSizes["regular"] = "A4";
-papersize["paperSizes"] = paperSizes;
-papersize.generated = true;
-fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
-	if (err) {
-		console.log(err);
-		throw err;
+		papersize["paperSizes"] = paperSizes;
+		papersize.generated = true;
+		
+		fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
+			
+			if (err) {
+				console.log(err);
+			throw err;
+			}
+		});
+		util.print(filename + "/papersizes.jf\n");
 	}
-});
+	else {
+		// deal with "001": "A4". - code 001 indicates World.
+
+		filename = toDir;
+		if (!fs.existsSync(filename)) {
+			fs.mkdirSync(filename);
+		}
+		paperSizes["regular"] = "A4";
+		papersize["paperSizes"] = paperSizes;
+		papersize.generated = true;
+		fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
+			if (err) {
+				console.log(err);
+			throw err;
+			}
+		});
+		util.print(filename + "papersizes.jf\n");
+	}
 }
-//}

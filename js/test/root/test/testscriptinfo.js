@@ -150,8 +150,50 @@ function testScriptGetAllScripts() {
     var scripts = ScriptInfo.getAllScripts();
     assertNotNull(scripts);
     
-    assertEquals("Afak", scripts[0]);
-    assertEquals("Aghb", scripts[1]);
-    assertEquals("Arab", scripts[2]);
+    assertEquals(177, scripts.length);
+
+    assertEquals("Adlm", scripts[0]);
+    assertEquals("Afak", scripts[1]);
+    assertEquals("Aghb", scripts[2]);
+    assertEquals("Arab", scripts[4]);
     assertEquals("Zzzz", scripts[scripts.length-1]);
+}
+
+function testScriptGetDefaultLongCodeKits() {
+    var si = new ScriptInfo("Kits");
+    assertNotNull(si);
+    
+    assertEquals("Kits", si.getCode());
+    assertEquals(288, si.getCodeNumber());
+    assertEquals("Khitan small script", si.getName());
+    assertEquals("Khitan_small_script", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGetDefaultLongCodePauc() {
+    var si = new ScriptInfo("Pauc");
+    assertNotNull(si);
+    
+    assertEquals("Pauc", si.getCode());
+    assertEquals(263, si.getCodeNumber());
+    assertEquals("Pau Cin Hau", si.getName());
+    assertEquals("Pau_Cin_Hau", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGetDefaultLongCodeMend() {
+    var si = new ScriptInfo("Mend");
+    assertNotNull(si);
+    
+    assertEquals("Mend", si.getCode());
+    assertEquals(438, si.getCodeNumber());
+    assertEquals("Mende Kikakui", si.getName());
+    assertEquals("Mende_Kikakui", si.getLongCode());
+    assertEquals("rtl", si.getScriptDirection());
+    assertTrue(si.getNeedsIME());
+    assertFalse(si.getCasing());
 }

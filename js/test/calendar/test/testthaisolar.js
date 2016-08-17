@@ -138,8 +138,8 @@ function testThaiSolarIsLeapYearOnQuadCentennial() {
     
     assertTrue(cal.isLeapYear(2543));
 }
-
-/*function testThaiSolarNewDateInstance() {
+/*
+function testThaiSolarNewDateInstance() {
     var cal = new ThaiSolarCal();
     var d = cal.newDateInstance({
     	year: 2555,
@@ -150,5 +150,4 @@ function testThaiSolarIsLeapYearOnQuadCentennial() {
     assertNotUndefined(d);
     assertEquals("thaisolar", d.cal.type);
 }
-
 */

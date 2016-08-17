@@ -487,7 +487,7 @@ function testDateFmtShortDateComponentsM_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("се", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ru_RU() {
@@ -641,7 +641,7 @@ function testDateFmtFullDateComponentsM_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("сентября", fmt.format(date));
+    assertEquals("сентябрь", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ru_RU() {
@@ -1512,6 +1512,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ru_RU() {
 	});
     assertEquals("через 16 месяцев", fmt.formatRelative(reference, date));
 }
+
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ru_RU() {
     var fmt = new DateFmt({locale: "ru-RU", length: "full"});
     assertNotNull(fmt);

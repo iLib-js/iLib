@@ -1,8 +1,8 @@
 /*
- * testdatefmtrange_bn_in.js - test the date range formatter object in Bengali/india
+ * testdatefmtrange_bn_IN.js - test the date range formatter object in Bengali/india
  * 
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,8 +39,8 @@ function testDateRngFmtRangeinDayShort_bn_IN() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ ৩১/১২/১১", fmt.format(start, end));
+	});           
+    assertEquals("৩১/১২/১১ ১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayMedium_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "medium"});
@@ -64,7 +64,7 @@ function testDateRngFmtRangeinDayMedium_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩১ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayLong_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "long"});
@@ -88,7 +88,7 @@ function testDateRngFmtRangeinDayLong_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩১ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayFull_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "full"});
@@ -112,7 +112,7 @@ function testDateRngFmtRangeinDayFull_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩১ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeNextDayShort_bn_IN() {
@@ -137,7 +137,7 @@ function testDateRngFmtRangeNextDayShort_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ৩০/১২/১১ – ২:৩০ অপরাহ্ণ ৩১/১২/১১", fmt.format(start, end));
+    assertEquals("৩০/১২/১১ ১:৪৫ অপরাহ্ণ – ৩১/১২/১১ ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayMedium_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "medium"});
@@ -161,7 +161,7 @@ function testDateRngFmtRangeNextDayMedium_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ৩০ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩০ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ৩১ ডিসেম্বর, ২০১১ ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "long"});
@@ -185,7 +185,7 @@ function testDateRngFmtRangeNextDayLong_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ৩০ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩০ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ৩১ ডিসেম্বর, ২০১১ ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "full"});
@@ -209,7 +209,7 @@ function testDateRngFmtRangeNextDayFull_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপরাহ্ণ ৩০ – ২:৩০ অপরাহ্ণ ৩১ ডিসেম্বর, ২০১১", fmt.format(start, end));
+    assertEquals("৩০ ডিসেম্বর, ২০১১ ১:৪৫ অপরাহ্ণ – ৩১ ডিসেম্বর, ২০১১ ২:৩০ অপরাহ্ণ", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_bn_IN() {
@@ -234,7 +234,7 @@ function testDateRngFmtRangeMultiDayShort_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২০/১২/১১ – ৩১/১২/১১", fmt.format(start, end));
+    assertEquals("২০ – ৩১/১২/১১", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "medium"});
@@ -331,7 +331,7 @@ function testDateRngFmtRangeNextMonthShort_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("২০/১১/১১ – ৩১/১২/১১", fmt.format(start, end));
+    assertEquals("২০/১১ – ৩১/১২/১১", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "medium"});
@@ -549,7 +549,7 @@ function testDateRngFmtRangeMultiYearMedium_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("নভেম্বর ২০১১ – জানুয়ারী ২০১৪", fmt.format(start, end));
+    assertEquals("নভেম্বর, ২০১১ – জানুয়ারী, ২০১৪", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearLong_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "long"});
@@ -573,7 +573,7 @@ function testDateRngFmtRangeMultiYearLong_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("নভেম্বর ২০১১ – জানুয়ারী ২০১৪", fmt.format(start, end));
+    assertEquals("নভেম্বর, ২০১১ – জানুয়ারী, ২০১৪", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearFull_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "full"});
@@ -597,7 +597,7 @@ function testDateRngFmtRangeMultiYearFull_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("নভেম্বর ২০১১ – জানুয়ারী ২০১৪", fmt.format(start, end));
+    assertEquals("নভেম্বর, ২০১১ – জানুয়ারী, ২০১৪", fmt.format(start, end));
 }
 function testDateRngFmtManyYearsFull_bn_IN() {
     var fmt = new ilib.DateRngFmt({locale: "bn-IN", length: "full"});

@@ -6,11 +6,13 @@ $(function(){
 	var currentLocale = ilib.getLocale();
 
 	var li = new LocaleInfo(currentLocale);
+	var scinfo = new ScriptInfo(li.getScript());
+
 	var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 	$('#systemLocale').text(currentLocale);
 	$('#localedescription').text(li.getLanguageName() + " , " + li.getRegionName() + " (" + li.getScript() + ")");
-				
+	$('#scriptDirection').text(scinfo.getScriptDirection());
 	$('#defaultCalendar').text(li.getCalendar());
 	$('#clock').text(li.getClock());
 	$('#defaultCurrency').text(li.getCurrency());
@@ -27,13 +29,19 @@ $(function(){
 	var weekID = [];
 	var fmtArray = [];
 	var length = ["full", "long", "medium", "short"];
+	var abbrLength = ["f", "l", "m", "s"];
 	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec", "etc"];
 	var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
 
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
 
 	for (i=0; i<7; i++) {
-		date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
+		if (currentLocale === "am-ET") {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});	
+		} else {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});	
+		}
+		
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
@@ -43,7 +51,12 @@ $(function(){
 		}
 	}
 
-	var loopLength = (currentLocale === "am-ET") ? 13 : 12;
+	var loopLength;
+	if (currentLocale === "am-ET" || currentLocale === "en-ET") {
+		loopLength = 13;
+	} else {
+		loopLength = 12;
+	}
 	
 	for (i=0; i < loopLength; i++) {
 		date[i] = new DateFactory({month: i+1, type:li.getCalendar()});
@@ -63,7 +76,7 @@ $(function(){
 		$("#"+monthID[i]).text(nameOfMonth[i]);	
 	}
 
-	if (currentLocale === "am-ET") {
+	if (currentLocale === "am-ET" || currentLocale === "en-ET" ) {
 		$("#extraLength").text("13");	
 	}
 	
@@ -116,8 +129,8 @@ $(function(){
 			if (templateText[i][j] === 'M') {
 				mCount++;
 			}
-			
 		}
+
 		switch(mCount) {
 			case 4:
 				$("#date"+length[i]+"Fmt").css("color","red");
@@ -134,19 +147,13 @@ $(function(){
 			default:
 				$("#date"+length[i]+"Fmt").css("color","#4B0082"); //Indigo  
 		}
-		
 		$("#date"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
-
 	
 	//Time
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		
 		fmt[i] = new DateFmt({locale: currentLocale, type: "time", time:"ahmsz", length: length[i], useNative: false, timezone: 'local'});
-		
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		
 		$("#time"+length[i]).text(length[i]);
 		$("#time"+length[i]+"Fmt").text(fmtArray[i].template);
 
@@ -161,40 +168,515 @@ $(function(){
 	}
 
 	//Date Range
-	var start = new DateFactory({year: 2011,month: 11,day: 20,hour: 13,minute: 45,second: 0,type:li.getCalendar()});
-	var end = new DateFactory({year: 2013,month: 1,day: 31,hour: 14,minute: 30,second: 0,type:li.getCalendar()});
+	var start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	var end = new DateFactory({year: 2011,month: 6,day: 20, hour: 15, minute: 30, second: 0, type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i], useNative: false});
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		$("#daterng"+length[i]).text(length[i]);
-		$("#daterng"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+		$("#cfmt0"+length[i]).text(length[i]);
+		$("#cfmt0"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c00"][abbrLength[i]]);
+		$("#cfmt0"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt0"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt0"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt0"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt0"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt0"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt0"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt0"+length[i]+"Fmt").css("color","green");
+			$("#cfmt0"+length[i]+"Sample").css("color","green");
+		}
 	}
 
-	// Date Duration
-	var durationDate = {year: 1,month: 1,week: 1,day: 1};
+    start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 6, day: 22, hour: 15, minute: 30,second: 0,type: li.getCalendar()});
+
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
-		fmt[i] = new DurationFmt({locale: currentLocale, style:"text", length: length[i],useNative: false});
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		$("#datedur"+length[i]).text(length[i]);
-		$("#datedur"+length[i]+"Sample").text(fmtArray[i].format(durationDate).toString());
+		$("#cfmt1"+length[i]).text(length[i]);
+		$("#cfmt1"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c01"][abbrLength[i]]);
+		$("#cfmt1"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt1"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt1"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt1"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt1"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt1"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt1"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt1"+length[i]+"Fmt").css("color","green");
+			$("#cfmt1"+length[i]+"Sample").css("color","green");
+		}
 	}
 
-	var durationTime = {hour: 1,minute: 1,second: 1};
-	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {					
-		fmt[i] = new DurationFmt({locale: currentLocale, style:"colok", length: length[i], useNative: false});
+	start = new DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 7, day: 1, hour: 9, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
-		$("#timedur"+length[i]).text(length[i]);
-		$("#timedur"+length[i]+"Sample").text(fmtArray[i].format(durationTime).toString());
+		$("#cfmt2"+length[i]).text(length[i]);
+		$("#cfmt2"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c02"][abbrLength[i]]);
+		$("#cfmt2"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt2"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt2"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt2"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt2"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt2"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt2"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt2"+length[i]+"Fmt").css("color","green");
+			$("#cfmt2"+length[i]+"Sample").css("color","green");
+		}
 	}
 
+    start = new DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2012, month: 1, day: 1, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt3"+length[i]).text(length[i]);
+		$("#cfmt3"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c03"][abbrLength[i]]);
+		$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt3"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt3"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt3"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt3"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt3"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt3"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt3"+length[i]+"Fmt").css("color","green");
+			$("#cfmt3"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 6, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt10"+length[i]).text(length[i]);
+		$("#cfmt10"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c10"][abbrLength[i]]);
+		$("#cfmt10"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt10"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt10"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt10"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt10"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt10"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt10"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt10"+length[i]+"Fmt").css("color","green");
+			$("#cfmt10"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2011, month: 11, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt11"+length[i]).text(length[i]);
+		$("#cfmt11"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c11"][abbrLength[i]]);
+		$("#cfmt11"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt11"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt11"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt11"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt11"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt11"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt11"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt11"+length[i]+"Fmt").css("color","green");
+			$("#cfmt11"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2012, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt12"+length[i]).text(length[i]);
+		$("#cfmt12"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c12"][abbrLength[i]]);
+		$("#cfmt12"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt12"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt12"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt12"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt12"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt12"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt12"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt12"+length[i]+"Fmt").css("color","green");
+			$("#cfmt12"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2016, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt20"+length[i]).text(length[i]);
+		$("#cfmt20"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c20"][abbrLength[i]]);
+		$("#cfmt20"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt20"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt20"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt20"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt20"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt20"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt20"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt20"+length[i]+"Fmt").css("color","green");
+			$("#cfmt20"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = new DateFactory({year: 2032, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+
+	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
+		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
+		fmtArray[fmtArrayCount] = fmt[i];
+		$("#cfmt30"+length[i]).text(length[i]);
+		$("#cfmt30"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c30"][abbrLength[i]]);
+		$("#cfmt30"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+
+		if (length[i] === 'full') {
+			$("#cfmt30"+length[i]+"Fmt").css("color","#CC3333");
+			$("#cfmt30"+length[i]+"Sample").css("color","#CC3333");
+
+		} else if (length[i] === 'short') {
+			$("#cfmt30"+length[i]+"Fmt").css("border-color","black");
+			$("#cfmt30"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt30"+length[i]+"Sample").css("border-color","black");
+			$("#cfmt30"+length[i]+"Sample").css("border-width","2px");
+		} else if (length[i] === 'medium') {
+			$("#cfmt30"+length[i]+"Fmt").css("color","green");
+			$("#cfmt30"+length[i]+"Sample").css("color","green");
+		}
+	}
+
+	durationNumberSample = {
+		"af-ZA" : [1,2],
+		"sq-AL" : [1,16],
+		"sq-ME" : [1,17],
+		"am-ET" : [1,18],
+		"ar-DZ" : [1,2,3,11,100],
+		"ar-BH" : [1,2,10,26,102],
+		"ar-DJ" : [1,2,103,26,200],
+		"ar-EG" : [1,2,110,112,202],
+		"ar-IQ" : [1,2,3,11,100],
+		"ar-JO" : [1,2,103,99,300],
+		"ar-KW" : [1,2,3,11,100],
+		"ar-LB" : [1,2,3,11,100],
+		"ar-LY" : [1,2,3,11,100],
+		"ar-MR" : [1,2,3,11,100],
+		"ar-MA" : [1,2,3,11,100],
+		"ar-OM" : [1,2,3,11,100],
+		"ar-QA" : [1,2,3,11,100],
+		"ar-SA" : [1,2,3,11,100],
+		"ar-SD" : [1,2,3,11,100],
+		"ar-SY" : [1,2,3,11,100],
+		"ar-TN" : [1,2,3,11,100],
+		"ar-AE" : [1,2,3,11,100],
+		"ar-YE" : [1,2,3,11,100],
+		"as-IN" : [1,2],
+		"bn-IN" : [1,18],
+		"bs-BA" : [1,4,5],
+		"bs-ME" : [1,2,20],
+		"bg-BG" : [1,2],
+		"zh-Hans-CN" : [1],
+		"zh-Hans-MY" : [15],
+		"zh-Hans-SG" : [16],
+		"zh-Hant-HK" : [2],
+		"zh-Hant-TW" : [1],
+		"hr-HR" : [1,2,5],
+		"hr-ME" : [1,4,19],
+		"cs-CZ" : [1,2,5],
+		"da-DK" : [1,2],
+		"nl-BE" : [1,2],
+		"nl-NL" : [1,2],
+		"en-AM" : [1,2],
+		"en-AU" : [1,16],
+		"en-AZ" : [1,17],
+		"en-CA" : [1,2],
+		"en-CN" : [1,2],
+		"en-ET" : [1,2],
+		"en-GM" : [1,2],
+		"en-GE" : [1,2],
+		"en-GH" : [1,2],
+		"en-GB" : [1,2],
+		"en-HK" : [1,2],
+		"en-IS" : [1,2],
+		"en-IN" : [1,2],
+		"en-IE" : [1,2],
+		"en-JP" : [1,2],
+		"en-KE" : [1,2],
+		"en-LR" : [1,2],
+		"en-MW" : [1,2],
+		"en-MY" : [1,2],
+		"en-MX" : [1,2],
+		"en-MM" : [1,2],
+		"en-NZ" : [1,2],
+		"en-NG" : [1,2],
+		"en-PK" : [1,2],
+		"en-PH" : [1,2],
+		"en-PR" : [1,2],
+		"en-KR" : [1,2],
+		"en-RW" : [1,2],
+		"en-SL" : [1,2],
+		"en-SG" : [1,2],
+		"en-ZA" : [1,2],
+		"en-LK" : [1,2],
+		"en-SD" : [1,2],
+		"en-TW" : [1,2],
+		"en-UG" : [1,2],
+		"en-TZ" : [1,2],
+		"en-US" : [1,2],
+		"en-ZM" : [1,2],
+		"et-EE" : [1,2],
+		"fa-AF" : [1,2],
+		"fa-IR" : [1,18],
+		"fi-FI" : [1,17],
+		"fr-DZ" : [1,2],
+		"fr-BE" : [1,16],
+		"fr-BJ" : [1,17],
+		"fr-BF" : [1,2],
+		"fr-CM" : [1,16],
+		"fr-CA" : [1,17],
+		"fr-CF" : [1,2],
+		"fr-CG" : [1,16],
+		"fr-CD" : [1,17],
+		"fr-DJ" : [1,2],
+		"fr-GQ" : [1,16],
+		"fr-FR" : [1,17],
+		"fr-GA" : [1,2],
+		"fr-GN" : [1,16],
+		"fr-CI" : [1,17],
+		"fr-LB" : [1,2],
+		"fr-LU" : [1,16],
+		"fr-ML" : [1,17],
+		"fr-RW" : [1,2],
+		"fr-SN" : [1,16],
+		"fr-CH" : [1,17],
+		"fr-TG" : [1,2],
+		"ga-IE" : [1,2,3,7,11],
+		"de-AT" : [1,2],
+		"de-DE" : [1,16],
+		"de-LU" : [1,17],
+		"de-CH" : [1,2],
+		"el-CY" : [1,2],
+		"el-GR" : [1,17],
+		"gu-IN" : [1,2],
+		"ha-Latn-NG" : [1,2],
+		"he-IL" : [1,2,20,19],
+		"hi-IN" : [1,2],
+		"hu-HU" : [1,17],
+		"id-ID" : [1,2],
+		"it-IT" : [1,2],
+		"it-CH" : [1,17],
+		"ja-JP" : [1,16],
+		"kn-IN" : [1,2],
+		"kk-KZ" : [1,2],
+		"ko-KR" : [1,2],
+		"ku-Arab-IQ" : [1,2],
+		"lv-LV" : [10,21,9],
+		"lt-LT" : [21,9,11],
+		"mk-MK" : [1,2],
+		"ms-MY" : [1,2],
+		"ms-SG" : [1,2],
+		"ml-IN" : [1,2],
+		"mr-IN" : [1,18],
+		"mn-Cyrl-MN" : [1,2,3],
+		"nb-NO" : [1,2],
+		"or-IN" : [1,17],
+		"pa-IN" : [1,2],
+		"pa-Arab-PK" : [1,18],
+		"pl-PL" : [1,2,5],
+		"pt-AO" : [1,2],
+		"pt-BR" : [1,17],
+		"pt-CV" : [1,18],
+		"pt-GQ" : [1,2],
+		"pt-PT" : [1,17],
+		"ro-RO" : [1,2,20],
+		"ru-BY" : [1,2,5],
+		"ru-GE" : [21,4,19],
+		"ru-KZ" : [31,22,20],
+		"ru-KG" : [41,24,25],
+		"ru-RU" : [31,32,19],
+		"ru-UA" : [1,2,5],
+		"sr-Latn-RS" : [1,2,5],
+		"sr-Cyrl-RS" : [1,4,20],
+		"sk-SK" : [1,2,5],
+		"sl-SI" : [1,2,3,5],
+		"es-AR" : [1,2],
+		"es-BO" : [1,16],
+		"es-CA" : [1,17],
+		"es-CL" : [1,2],
+		"es-CO" : [1,16],
+		"es-CR" : [1,17],
+		"es-DO" : [1,2],
+		"es-EC" : [1,16],
+		"es-SV" : [1,17],
+		"es-GQ" : [1,2],
+		"es-GT" : [1,16],
+		"es-HN" : [1,17],
+		"es-MX" : [1,2],
+		"es-NI" : [1,16],
+		"es-PA" : [1,17],
+		"es-PY" : [1,2],
+		"es-PE" : [1,16],
+		"es-PH" : [1,17],
+		"es-PR" : [1,2],
+		"es-ES" : [1,16],
+		"es-US" : [1,17],
+		"es-UY" : [1,2],
+		"es-VE" : [1,16],
+		"sv-FI" : [1,2],
+		"sv-SE" : [1,17],
+		"ta-IN" : [1,2],
+		"te-IN" : [1,16],
+		"th-TH" : [1,16],
+		"tr-AM" : [1,2],
+		"tr-AZ" : [1,16],
+		"tr-CY" : [1,17],
+		"tr-TR" : [1,2],
+		"uk-UA" : [1,2,5],
+		"ur-IN" : [1,2],
+		"ur-PK" : [1,17],
+		"uz-Latn-UZ" : [1,2],
+		"vi-VN" : [1,2]
+	};
+
+	var selectedSampleNum = durationNumberSample[currentLocale];
+
+	row = [];
+	timeRow = [];
+	for (i=0; i < selectedSampleNum.length; i++) {
+		//rowCount += selectedPhoneList[i].length;
+		var count = 0;
+		for (j=0; j < 4; j++) {
+			row[j] = "<tr class='gradeA'><td id=" + "subject"+ length[j]+ "num" + i + " /><td id="+"durFmtLength"+length[j]+"num" + i+" /><td id="+"durFmtResult"+length[j] +"num" + i + "/>";
+			$('#durationTable').append(row[j]);
+
+			timeRow[j] = "<tr class='gradeA'><td id=" + "timesubject"+ length[j]+ "num" + i + " /><td id="+"timedurFmtLength"+length[j]+"num" + i+" /><td id="+"timedurFmtResult"+length[j] +"num" + i + "/>";
+			$('#durationTimeTable').append(timeRow[j]);
+
+			count++;
+		}
+	}
+
+	durDate =[];
+	rangefmt = [];
+	durfmtArray = [];
+
+	timerangefmt = [];
+	timedurfmtArray = [];
+
+	for (i=0; i < selectedSampleNum.length; i++) {
+		for (j=0,fmtArrayCount=0; j <4; j++, fmtArrayCount++) {
+			rangefmt[j] = new DurationFmt({locale: currentLocale, style:"text", length: length[j]});
+			durfmtArray[fmtArrayCount] = rangefmt[j];
+
+			$("#durFmtLength"+length[j] + "num" +i).text(length[j]);
+			durationDateSample = {year: selectedSampleNum[i],month: selectedSampleNum[i],week: selectedSampleNum[i],day: selectedSampleNum[i]};
+			$("#durFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationDateSample).toString());
+
+			timerangefmt[j] = new DurationFmt({locale: currentLocale, style:"clock", length: length[j]});
+			timedurfmtArray[fmtArrayCount] = rangefmt[j];
+
+			$("#timedurFmtLength"+length[j] + "num" +i).text(length[j]);
+			durationTimeSample = {hour: selectedSampleNum[i],minute: selectedSampleNum[i],second: selectedSampleNum[i]};
+			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
+
+			if (length[j] === 'medium') {
+				//console.log("medium or long :" + length[j]);
+				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
+			} else if (length[j] === 'long') {
+				$("#durFmtResult"+length[j]+"num"+i).css("color","green");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("color","green");
+			}
+			else if (length[j] === 'short') {
+				//console.log("full :" + length[j]);
+				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
+				$("#durFmtLength"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#durFmtResult"+length[j]+"num"+i).css("border-color","black");
+				$("#durFmtResult"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#timedurFmtLength"+length[j]+"num"+i).css("border-color","black");
+				$("#timedurFmtLength"+length[j]+"num"+i).css("border-width","2px");
+
+				$("#timedurFmtResult"+length[j]+"num"+i).css("border-color","black");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("border-width","2px");
+			}
+
+		}
+	}
+
+	$("#subjectfullnum0").attr('rowSpan', selectedSampleNum.length *4);
+	$("#subjectfullnum0").text("Date");
+
+	$("#timesubjectfullnum0").attr('rowSpan', selectedSampleNum.length *4);
+	$("#timesubjectfullnum0").text("Time");
+
+	for(i=1; i< selectedSampleNum.length; i++) {
+		for (j=0; j <4; j++) {
+			//console.log("LOG: " + " #subject"+length[j]+"num" + i);
+			$("#subject"+length[j]+"num" + i).remove();
+			$("#timesubject"+length[j]+"num" + i).remove();
+		}
+	}
+	$("#subjectlongnum0").remove();
+	$("#subjectmediumnum0").remove();
+	$("#subjectshortnum0").remove();
+
+	$("#timesubjectlongnum0").remove();
+	$("#timesubjectmediumnum0").remove();
+	$("#timesubjectshortnum0").remove();
 
 	// Number Formatting
-	var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
+	var fmt = new NumFmt({locale: currentLocale,type: "standard"});
 	$("#numDecimalSymbol").text(li.getDecimalSeparator());
-	$("#numDecimal").text(fmt.format(1.73));
+	$("#numDecimal").text(fmt.format(1.734));
 
 	var fmt = new NumFmt({locale: currentLocale,style: "standard"});
 	$("#numGroupSymbol").text(li.getGroupingSeparator());
@@ -211,6 +693,7 @@ $(function(){
 	var fmt = new NumFmt({locale: currentLocale});
 	$("#numPlus").text(fmt.format(+572));
 	$("#numMinus").text(fmt.format(-37));
+
 
 
 	// local, international, mobile : style:default

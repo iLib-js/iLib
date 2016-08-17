@@ -46,7 +46,6 @@ module.exports = function (ilib) {
 		
 		//console.log("module.filename is " + module.filename + "\n");
 		//console.log("base is defined as " + this.base + "\n");
-		//console.log("root is defined as " + this.root + "\n");
 		
 		this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 		
