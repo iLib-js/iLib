@@ -111,7 +111,16 @@ limitations under the License.
 	
 	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
+		<mkdir dir= "${build.filereader}/imports/FS"/>
 		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
+			<fileset dir="${build.output.qt}">
+				<include name="*"/>
+			</fileset>
+			<fileset dir="${build.filereader}">
+				<include name="qmldir"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.filereader}/imports/FS">
 			<fileset dir="${build.output.qt}">
 				<include name="*"/>
 			</fileset>
