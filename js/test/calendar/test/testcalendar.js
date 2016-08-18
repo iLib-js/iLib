@@ -27,14 +27,14 @@ function testCalendarFactoryDefault() {
 function testCalendarFactoryDefaultRightType() {
     var cal = CalendarFactory();
     assertNotUndefined(cal);
-    
+
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactorySpecific() {
     var cal = CalendarFactory({type: "julian"});
     assertNotUndefined(cal);
-    
+
     assertEquals("julian", cal.getType());
 }
 
@@ -46,7 +46,14 @@ function testCalendarFactoryUnknown() {
 function testCalendarFactoryDefaultForLocale() {
     var cal = CalendarFactory({locale: "ar-AE"});
     assertNotUndefined(cal);
-    
+
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocale_KH() {
+    var cal = CalendarFactory({locale: "km-KH"});
+    assertNotUndefined(cal);
+
     assertEquals("gregorian", cal.getType());
 }
 
@@ -60,14 +67,14 @@ function testCalendarFactoryDefaultForLocale_AZ() {
 function testCalendarFactoryDefaultForLocaleOther() {
     var cal = CalendarFactory({locale: "th-TH"});
     assertNotUndefined(cal);
-    
+
     assertEquals("thaisolar", cal.getType());
 }
 
 function testCalendarFactoryOverrideLocale() {
     var cal = CalendarFactory({locale: "ar-AE", type: "gregorian"});
     assertNotUndefined(cal);
-    
+
     assertEquals("gregorian", cal.getType());
 }
 
@@ -84,6 +91,6 @@ function testGetCalendars() {
         "ethiopic",
         "coptic"
     ];
-    
+
     assertArrayEqualsIgnoringOrder(expected, CalendarFactory.getCalendars());
 }

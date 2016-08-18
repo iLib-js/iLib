@@ -1,6 +1,6 @@
 /*
  * testSuiteDates.js - test suite for the date tests
- * 
+ *
  * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ function newSuite(path, include) {
 
 function suite() {
     var s = new TestSuite();
-    
+
     var suites = [
 		"testdatefmt.js",
 		"testdatefmt_af_NA.js",
@@ -43,7 +43,7 @@ function suite() {
 		"testdatefmt_cs_CZ.js",
 		"testdatefmt_da_DK.js",
 		"testdatefmt_de_DE.js",
-		"testdatefmt_el_GR.js", 
+		"testdatefmt_el_GR.js",
 		"testdatefmt_en_CA.js",
 		"testdatefmt_en_GB.js",
 		"testdatefmt_en_IN.js",
@@ -54,13 +54,13 @@ function suite() {
 		"testdatefmt_fa_IR.js",
 		"testdatefmt_fi_FI.js",
 		"testdatefmt_fr_CA.js",
-		"testdatefmt_fr_FR.js"
+		"testdatefmt_fr_FR.js",
+		"testdatefmt_km_KH.js"
 	];
-
     suites.forEach(function (path) {
     	s.addSuite(newSuite(path));
     });
-    
+
     return s;
 }
 

@@ -5114,7 +5114,55 @@ function testNumFmtNegativeCurrencyFormatForLocale_az_Latn_AZ() {
     });
 
     assertNotNull(fmt);
+
     assertEquals("(AZN 100.110,57)", fmt.format(-100110.57));
+}
+
+// test case for km-KH
+function testNumFmt_km_KH() {
+    var fmt = new NumFmt({
+        locale: "km-KH",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_km_KH() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "km-KH",
+        currency: "KHR",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("៛100.110,57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_km_KH() {
+    var fmt = new NumFmt({
+    locale: "km-KH",
+        type: "percentage"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("57%", fmt.format(57.0));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_km_KH() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "km-KH",
+        currency: "KHR"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("(៛100.110,57)", fmt.format(-100110.57));
 }
 
 /******************************** End of test cases****************************************************/
@@ -5264,7 +5312,6 @@ function testNumFmtAsyncWithLocale() {
             assertEquals("-123.456,78", fmt.format(-123456.785));
             callbackCalled = true;
         }
-
     });
     assertTrue(callbackCalled);
 }
