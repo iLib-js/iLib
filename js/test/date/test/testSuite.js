@@ -35,6 +35,7 @@ function suite() {
         "testdatefmt_am_ET.js",
    		"testdatefmt_ar_SA.js",
 		"testdatefmt_as_IN.js",
+		"testdatefmt_az_Latn_AZ.js",
 		"testdatefmt_bg.js",
 		"testdatefmt_bn_IN.js",
 		"testdatefmt_bs_Cyrl_BA.js",
