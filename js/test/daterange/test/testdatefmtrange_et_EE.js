@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_et_EE.js - test the date range formatter object in Estonia/Estonian
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -162,7 +162,7 @@ function testDateRngFmtEERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. dets 13:45 – 31. dets 2011 14:30", fmt.format(start, end));
+    assertEquals("30. dets 2011 13:45 – 31. dets 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtEERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. detsember 13:45 – 31. detsember 2011 14:30", fmt.format(start, end));
+    assertEquals("30. detsember 2011 13:45 – 31. detsember 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtEERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. detsember 13:45 – 31. detsember 2011 14:30", fmt.format(start, end));
+    assertEquals("30. detsember 2011 13:45 – 31. detsember 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtEERangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtEERangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. dets 2011", fmt.format(start, end));
+    assertEquals("20 – 31. dets 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtEERangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. detsember 2011", fmt.format(start, end));
+    assertEquals("20 – 31. detsember 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtEERangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. detsember 2011", fmt.format(start, end));
+    assertEquals("20 – 31. detsember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeNextMonthShort() {

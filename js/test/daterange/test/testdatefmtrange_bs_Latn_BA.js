@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_bs_Latn_BA.js - test the date range formatter object in Bosnian/Herzegovina
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -235,7 +235,7 @@ function testDateRngFmtBARangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31.12.11.", fmt.format(start, end));
+    assertEquals("20 – 31.12.11.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtBARangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. dec. 2011.", fmt.format(start, end));
+    assertEquals("20 – 31. dec. 2011.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "long"});
@@ -283,7 +283,7 @@ function testDateRngFmtBARangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("20 – 31. decembar 2011.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtBARangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. – 31. decembar 2011.", fmt.format(start, end));
+    assertEquals("20 – 31. decembar 2011.", fmt.format(start, end));
 }
 
 function testDateRngFmtBARangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtBARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11. – 31.12.11.", fmt.format(start, end));
+    assertEquals("20.11 – 31.12.11.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtBARangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. nov. – 31. dec. 2011.", fmt.format(start, end));
+    assertEquals("20. nov – 31. dec. 2011.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "long"});
@@ -622,5 +622,5 @@ function testDateRngFmtBAManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. – 2064.", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

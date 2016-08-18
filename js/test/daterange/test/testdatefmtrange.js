@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange.js - test the date range formatter object
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -198,10 +198,8 @@ function testDateRngFmtGetDefaultFormat() {
     	minute: 35,
     	second: 0
     });
-    
-    assertEquals("20/2/13 12:20 - 16:35", fmt.format(start, end));
+    assertEquals("20/2/13 12:20 – 16:35", fmt.format(start, end));
 }
-
 
 function mockLoader(paths, sync, params, callback) {
 	var data = [];
@@ -257,7 +255,7 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
-    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     ilib.setLoaderCallback(undefined);
 }
 
@@ -292,7 +290,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
-    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     ilib.setLoaderCallback(undefined);
 }
 
@@ -329,7 +327,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
     ilib.setLoaderCallback(undefined);
@@ -366,8 +364,312 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("2/20/13, 12:20 PM - 4:35 PM", fmt.format(start, end));
+    	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
     ilib.setLoaderCallback(undefined);
+}
+
+
+//Miscellaneous UnitTest
+
+function testDateRngFmtesPAMultiDayMedium() {
+    var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 28,
+        hour: 14,
+        minute: 5,
+        second: 30,
+        millisecond: 0
+    });
+    assertEquals("06/20 – 28/2011", fmt.format(start, end));
+}
+
+function testDateRngFmtesPANextMonthMedium() {
+    var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 11,
+        day: 28,
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("06/20 – 11/28/2011", fmt.format(start, end));
+}
+
+function testDateRngFmtesPRMultiDayMedium() {
+    var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 28,
+        hour: 14,
+        minute: 5,
+        second: 30,
+        millisecond: 0
+    });
+    assertEquals("06/20 – 28/2011", fmt.format(start, end));
+}
+
+function testDateRngFmtesPRNextMonthMedium() {
+    var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 11,
+        day: 28,
+        hour: 14,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("06/20 – 11/28/2011", fmt.format(start, end));
+}
+
+function testDateRngFmtptGQNextDayFull() {
+    var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 22,
+        hour: 15,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20 de jun de 2011 13:45 – 22 de jun de 2011 15:30", fmt.format(start, end));
+}
+
+function testDateRngFmtptGQNextDayLong() {
+    var fmt = new DateRngFmt({locale: "pt-GQ", length: "long"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 22,
+        hour: 15,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20 de junho de 2011 13:45 – 22 de junho de 2011 15:30", fmt.format(start, end));
+}
+
+function testDateRngFmtptGQNextDayMedium() {
+    var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 22,
+        hour: 15,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20 de jun de 2011 13:45 – 22 de jun de 2011 15:30", fmt.format(start, end));
+}
+
+function testDateRngFmtptGQNextDayShort() {
+    var fmt = new DateRngFmt({locale: "pt-GQ", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 22,
+        hour: 15,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("20/06/11 13:45 – 22/06/11 15:30", fmt.format(start, end));
+}
+
+
+function testDateRngFmtenCAinDayShort() {
+    var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("11-06-20, 1:45 PM – 4:30 PM", fmt.format(start, end));
+}
+
+function testDateRngFmtenCAMultitDayShort() {
+    var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 26,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("11-06-20 – 26", fmt.format(start, end));
+}
+
+function testDateRngFmtenCANextMonthShort() {
+    var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2011,
+        month: 9,
+        day: 26,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("11-06-20 – 11-09-26", fmt.format(start, end));
+}
+
+function testDateRngFmtenCANextYearShort() {
+    var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new GregorianDate({
+        year: 2011,
+        month: 6,
+        day: 20,
+        hour: 13,
+        minute: 45,
+        second: 0,
+        millisecond: 0
+    });
+    var end = new GregorianDate({
+        year: 2012,
+        month: 5,
+        day: 26,
+        hour: 16,
+        minute: 30,
+        second: 0,
+        millisecond: 0
+    });
+    assertEquals("11-06-20 – 12-05-26", fmt.format(start, end));
 }

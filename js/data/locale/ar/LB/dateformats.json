@@ -25,6 +25,32 @@
             "m": {
                 "m": "MMM"
             }
+        },
+        "range": {
+            "c00": {
+                "m": "{sm} {sd}, {sy} {st} – {et}"
+            },
+            "c01": {
+                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}"
+            },
+            "c02": {
+                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}"
+            },
+            "c03": {
+                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}"
+            },
+            "c10": {
+                "m": "{sm} {sd} – {ed}, {ey}"
+            },
+            "c11": {
+                "m": "{sm} {sd} – {em} {ed}, {ey}"
+            },
+            "c12": {
+                "m": "{sm} {sd}, {sy} – {em} {ed}, {ey}"
+            },
+            "c20": {
+                "m": "{sm}, {sy} – {em}, {ey}"
+            }
         }
     }
 }

@@ -472,7 +472,7 @@ function testDateFmtShortDateComponentsM_th_TH() {
 }
 
 function testDateFmtShortDateComponentsN_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m", length:"full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -485,7 +485,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ก.ย.", fmt.format(date));
+    assertEquals("กันยายน", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
@@ -1245,7 +1245,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 วินาที ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("30 วินาทีที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 นาที ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("10 นาทีที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -1349,7 +1349,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ชั่วโมง ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("4 ชั่วโมงที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
@@ -1402,7 +1402,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 วัน ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("4 วันที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
@@ -1455,7 +1455,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 สัปดาห์ ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("9 สัปดาห์ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
@@ -1508,7 +1508,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 เดือน ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("14 เดือนที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_th_TH() {
@@ -1561,6 +1561,6 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 ปี ที่ผ่านมา", fmt.formatRelative(reference, date));
+    assertEquals("21 ปีที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 

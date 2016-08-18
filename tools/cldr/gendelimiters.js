@@ -2,7 +2,7 @@
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2013, LGE 
+ * Copyright © 2013-2015, LGE 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -21,6 +21,7 @@
  * This code is intended to be run under node.js  
  */
 var fs = require('fs');
+var path = require('path');
 var util = require('util');
 var common = require('./common');
 var merge = common.merge;
@@ -58,37 +59,30 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 util.print("gendelimiters - generate delimiters information files.\n" +
-	"Copyright (c) 2013 LGE\n");
+	"Copyright (c) 2013 - 2015 LGE\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
 
-fs.exists(cldrDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access CLDR dir " + cldrDirName);
-			usage();
-		}
-	});
 
-fs.exists(localeDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access locale data directory " + localeDirName);
-			usage();
-		}
-	});
+if (!fs.existsSync(cldrDirName)) {
+	util.error("Could not access CLDR dir " + cldrDirName);
+	usage();
+}
+
+if (!fs.existsSync(localeDirName)) {
+	util.error("Could not access locale data directory " + localeDirName);
+	usage();
+}
 
 var filename, root, json, suppData, languageData, scripts = {};
 
 try {
-	filename = cldrDirName + "/main/en.json";
-	json = fs.readFileSync(filename, "utf-8");
-	root = JSON.parse(json);
-
-	filename = cldrDirName + "/supplemental/supplementalData.json";
+	filename = cldrDirName + "supplemental/languageData.json";
 	json = fs.readFileSync(filename, "utf-8");
 	suppData = JSON.parse(json);
 
-	languageData = suppData.languageData;
+	languageData = suppData.supplemental.languageData;
 } catch (e) {
 	util.print("Error: Could not load file " + filename + "\n");
 	process.exit(2);
@@ -96,12 +90,12 @@ try {
 
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
-		if (typeof (languageData[locale]["@scripts"]) === 'string') {
+		if (languageData[locale]._scripts !== undefined) {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
 			if (typeof (scripts[language]) === 'undefined') {
 				scripts[language] = [];
 			}
-			var newLangs = languageData[locale]["@scripts"].split(/ /g);
+			var newLangs = languageData[locale]._scripts;
 			if (locale.length <= 3) {
 				// util.print("language " + language + " prepending " + JSON.stringify(newLangs)); 
 				scripts[language] = newLangs.concat(scripts[language]);
@@ -112,6 +106,13 @@ for (var locale in languageData) {
 			}
 		}
 	}
+}
+
+try {
+	localeDirs = fs.readdirSync(path.join(cldrDirName, "main"));
+} catch (e) {
+	util.print("Error: Could not load file " + localeDirs + "\n");
+	process.exit(2);
 }
 
 function loadFile(path) {
@@ -168,11 +169,27 @@ function loadFileNonGenerated(language, script, region) {
 
 var localeData = {};
 
-function getLocaleData(path, language, script, region) {
+function getLocaleData(dirname, locale) {
 	var data;
 	try {
-		filename = cldrDirName + "/main/" + path;
-		data = loadFile(filename);
+		var language = undefined,
+			script = undefined,
+			region = undefined,
+			spec = undefined;
+		
+		if (locale !== undefined)	 {
+			language = locale.getLanguage(),
+			script = locale.getScript(),
+			region = locale.getRegion();
+			spec = locale.getSpec();	
+		} else {
+			spec = "root";
+		}
+
+		var filename = path.join(cldrDirName, "main", dirname, "delimiters.json");
+		var data = loadFile(filename);
+		var numData = data.main[spec];
+		
 
 		if (script) {
 			if (region) {
@@ -185,7 +202,7 @@ function getLocaleData(path, language, script, region) {
 				if (!localeData[language][script][region]) {
 					localeData[language][script][region] = {};
 				}
-				localeData[language][script][region].data = data;
+				localeData[language][script][region].data = numData;
 			}
 		} else if (region) {
 			if (!localeData[language]) {
@@ -194,21 +211,21 @@ function getLocaleData(path, language, script, region) {
 			if (!localeData[language][region]) {
 				localeData[language][region] = {};
 			}
-			localeData[language][region].data = data;
+			localeData[language][region].data = numData;
 		} else if (language) {
 			if (!localeData[language]) {
 				localeData[language] = {};
 			}
-			localeData[language].data = data;
+			localeData[language].data = numData;
 		} else {
 			// root locale 
-			localeData.data = data;
+			localeData.data = numData;
 		}
 	} catch (e) {
 		return undefined;
 	}
 
-	return data;
+	return numData;
 }
 
 function anyProperties(data) {
@@ -275,20 +292,20 @@ function getQuotationChars(language, script, region, data) {
 }
 
 var language, region, script, files;
-files = fs.readdirSync(cldrDirName + "/main/");
+var localeDirs;
+
 
 util.print("Reading locale data into memory...\n");
 
-for (var i = 0; i < files.length; i++) {
-	file = files[i];
-	if (file === "root.json") {
+for (var i = 0; i < localeDirs.length; i++) {
+	var dirname = localeDirs[i];
+	if (dirname === "root") {
 		// special case because "root" is not a valid locale specifier 
-		getLocaleData(file, undefined, undefined, undefined);
+		getLocaleData(dirname, undefined);
 	} else {
-		locale = file.split(/\./)[0].replace(/_/g, "-");
-		var l = new Locale(locale);
-		if(typeof(l.getVariant())==='undefined') {
-		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
+		var locale = new Locale(dirname);
+		if(typeof(locale.getVariant()) === 'undefined') {
+			getLocaleData(dirname, locale);
 		}
 	}
 }

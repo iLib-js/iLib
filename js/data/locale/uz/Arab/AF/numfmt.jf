@@ -1,12 +1,16 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "Arab",
+        "script": "arabext",
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
         "exponential": "×۱۰^",
-		"useNative": true,
-        "digits": "۰۱۲۳۴۵۶۷۸۹"
+        "currencyFormats": {
+            "common": "{n} {s}"
+        },
+        "pctFmt": "{n}٪",
+        "digits": "۰۱۲۳۴۵۶۷۸۹",
+        "useNative": true
     }
 }

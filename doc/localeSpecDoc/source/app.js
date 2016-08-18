@@ -57,7 +57,7 @@ enyo.kind({
 		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
 		var year, month, date;
-		var month  = 1;
+		var month  = 7;
 		var date  = 3;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
@@ -89,7 +89,6 @@ enyo.kind({
 	setupItem: function(inSender, inEvent) {
 		var i = inEvent.index;
 		this.sortedList = Object.keys(this.localeList).sort();
-
 		//this.localeList = Object.keys(this.localeList);
 		this.$.item.addRemoveClass("onyx-selected", inSender.isSelected(inEvent.index));
 		if (inSender.count !== this.listCount ) {
@@ -193,7 +192,7 @@ enyo.kind({
 			"Kazakh - Kazahkstan":"kk-KZ",
 			"Kannada - India":"kn-IN",
 			"Korean - Republic of Korea":"ko-KR",
-			"Kurdish - Iraq":"ku-IQ",
+			"Kurdish - Iraq":"ku-Arab-IQ",
 			"Lithuanian - Lithuania":"lt-LT",
 			"Latvian - Latvia":"lv-LV",
 			"Macedonian - Former Yugoslav Republic of Macedonia":"mk-MK",

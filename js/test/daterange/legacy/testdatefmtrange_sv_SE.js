@@ -1,7 +1,7 @@
 /*
  * tsvtdatefmtrange_sv_SE.js - tsvt the date range formatter object in Swedish/Sweden
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance wsvh the License.
@@ -136,7 +136,7 @@ function testDateRngFmtSERangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-30 13:45 – 12-31 14:30", fmt.format(start, end));
+    assertEquals("2011-12-30 13:45 – 2011-12-31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSERangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtSERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 dec. 13:45 – 31 dec. 2011 14:30", fmt.format(start, end));
+    assertEquals("30 dec. 2011 13:45 – 31 dec. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSERangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtSERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 december 13:45 – 31 december 2011 14:30", fmt.format(start, end));
+    assertEquals("30 december 2011 13:45 – 31 december 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSERangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtSERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 december 13:45 – 31 december 2011 14:30", fmt.format(start, end));
+    assertEquals("30 december 2011 13:45 – 31 december 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtSERangeMultiDayShort() {
@@ -330,7 +330,7 @@ function testDateRngFmtSERangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-11-20 – 12-31", fmt.format(start, end));
+    assertEquals("2011-11-20 – 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtSERangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});

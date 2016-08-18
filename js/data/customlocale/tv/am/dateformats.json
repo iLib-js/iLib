@@ -1,5 +1,6 @@
 {
     "ethiopic": {
+        "order": "{date} {time}",
         "date": {
             "dmwy": {
                 "f": "EEEE፣ MMMM d ቀን yyyy ዓ.ም",
@@ -9,11 +10,15 @@
             },
             "dmy": {
                 "f": "MMMM d ቀን yyyy ዓ.ም",
-                "l": "d MMMM yyyy"
+                "l": "d MMMM yyyy",
+                "m": "d MMM yyyy",
+                "s": "dd/MM/yyyy"
             },
             "my": {
                 "f": "MMMM ቀን yyyy ዓ.ም",
-                "l": "MMMM yyyy"
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy",
+                "s": "MM/yyyy"
             }
         },
         "time": {
@@ -27,28 +32,58 @@
         },
         "range": {
             "c00": {
-                "f": "{st} – {et} {sm} {sd} ቀን {sy} ዓ.ም"
+                "f": "{sm} {sd} ቀን {sy} ዓ.ም {st} – {et} ",
+                "l": "{sd} {sm} {sy} {st} – {et}",
+                "m": "{sd} {sm} {sy} {st} – {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
+                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "f": "{st} {sm} {sd} – {et} {em} {ed} ቀን {sy} ዓ.ም"
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
+                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "f": "{st} {sm} {sd} ቀን {sy} – {et} {em} {ed} ቀን {ey} ዓ.ም"
+                "f": "{sm} {sd} ቀን {sy} {st} – {em} {ed} ቀን {sy} ዓ.ም {et}",
+                "l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "m": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c10": {
-                "f": "{sm} {sd}–{ed} ቀን {sy} ዓ.ም"
+                "f": "{sm} {sd} – {ed} ቀን {sy} ዓ.ም",
+                "l": "{sd} – {ed} {em} {ey}",
+                "m": "{sd} – {ed} {em} {ey}",
+                "s": "{sd} – {ed}/{em}/{ey}"
             },
             "c11": {
-                "f": "{sm} {sd} – {em} {ed} ቀን {sy} ዓ.ም"
+                "f": "{sm} {sd} – {em} {ed} ቀን {sy} ዓ.ም",
+                "l": "{sd} {sm} – {ed} {em} {ey}",
+                "m": "{sd} {sm} – {ed} {em} {ey}",
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
             },
             "c12": {
-                "f": "{sm} {sd} ቀን {sy}  ዓ.ም – {em} {ed} ቀን {ey} ዓ.ም"
+                "f": "{sm} {sd} ቀን {sy}  ዓ.ም – {em} {ed} ቀን {ey} ዓ.ም",
+                "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
+                "m": "{sd} {sm} {sy} – {ed} {em} {ey}",
+                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c20": {
-                "f": "{sm} ቀን {sy} ዓ.ም  – {em} ቀን {ey} ዓ.ም"
+                "f": "{sm} ቀን {sy} ዓ.ም  – {em} ቀን {ey} ዓ.ም",
+                "l": "{sm} {sy} – {em} {ey}",
+                "m": "{sm} {sy} – {em} {ey}",
+                "s": "{sm}/{sy} – {em}/{ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
             }
         }
     }

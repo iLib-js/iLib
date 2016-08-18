@@ -469,7 +469,7 @@ function testDateFmtShortDateComponentsM_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("se", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_sk_SK() {
@@ -623,7 +623,7 @@ function testDateFmtFullDateComponentsM_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("septembra", fmt.format(date));
+    assertEquals("september", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_sk_SK() {
@@ -1220,7 +1220,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_sk_SK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 sekúnd", fmt.formatRelative(reference, date));
+    assertEquals("o 30 sekúnd", fmt.formatRelative(reference, date));
 }
 
 /*function testDateFmtFormatRelativeWithinMinuteBefore_sk_SK() {
@@ -1274,7 +1274,7 @@ function testDateFmtFormatRelativeWithinHourAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 minút", fmt.formatRelative(reference, date));
+    assertEquals("o 10 minút", fmt.formatRelative(reference, date));
 }
 
 /*function testDateFmtFormatRelativeWithinHourBeforer_sk_SK() {
@@ -1330,7 +1330,7 @@ function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 hodiny", fmt.formatRelative(reference, date));
+    assertEquals("o 4 hodiny", fmt.formatRelative(reference, date));
 }
 
 
@@ -1385,7 +1385,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 dni", fmt.formatRelative(reference, date));
+    assertEquals("o 4 dni", fmt.formatRelative(reference, date));
 }
 
 
@@ -1444,7 +1444,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 týždňov", fmt.formatRelative(reference, date));
+    assertEquals("o 9 týždňov", fmt.formatRelative(reference, date));
 }
 
 /*function testDateFmtFormatRelativeWithinQuarterBefore_sk_SK() {
@@ -1500,7 +1500,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 mesiacov", fmt.formatRelative(reference, date));
+    assertEquals("o 16 mesiacov", fmt.formatRelative(reference, date));
 }
 
 /*   function testDateFmtFormatRelativeWithinTwoYearsBefore_sk_SK() { 
@@ -1555,7 +1555,7 @@ function testDateFmtFormatRelativeYearsAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 rokov", fmt.formatRelative(reference, date));
+    assertEquals("o 14 rokov", fmt.formatRelative(reference, date));
 }
 
 /*function testDateFmtFormatRelativeYearsBefore_sk_SK() {

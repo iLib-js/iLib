@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_lt_LT.js - test the date range formatter object in Lithuanian/Lithuania
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance wlth the License.
@@ -186,7 +186,7 @@ function testDateRngFmtLTRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 m. gruodžio 30 d. 13:45 – 31 d. 14:30", fmt.format(start, end));
+    assertEquals("2011 m. gruodžio 30 d. 13:45 – 2011 m. gruodžio 31 d. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtLTRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 m. gruodžio 30 d. 13:45 – 31 d. 14:30", fmt.format(start, end));
+    assertEquals("2011 m. gruodžio 30 d. 13:45 – 2011 m. gruodžio 31 d. 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtLTRangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtLTRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-20–31", fmt.format(start, end));
+    assertEquals("2011-12-20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtLTRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-12-20–31", fmt.format(start, end));
+    assertEquals("2011-12-20 – 31", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "long"});
@@ -332,7 +332,7 @@ function testDateRngFmtLTRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-11-20 – 12-31", fmt.format(start, end));
+    assertEquals("2011-11-20 – 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtLTRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-11-20 – 12-31", fmt.format(start, end));
+    assertEquals("2011-11-20 – 2011-12-31", fmt.format(start, end));
 }
 function testDateRngFmtLTRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "lt-LT", length: "long"});
@@ -622,5 +622,5 @@ function testDateRngFmtLTManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 m. – 2064 m.", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }

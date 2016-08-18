@@ -59,7 +59,7 @@ function testCurrencyGetByCode2() {
     assertEquals("JPY", cur.getCode());
     assertEquals(0, cur.getFractionDigits());
     assertEquals("¥", cur.getSign());
-    assertEquals("Yen", cur.getName());
+    assertEquals("Japanese Yen", cur.getName());
     var locale = cur.getLocale();
     assertEquals("en-US", locale.toString());
 }

@@ -470,7 +470,7 @@ function testDateFmtShortDateComponentsM_fi_FI() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("S", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_fi_FI() {
@@ -624,7 +624,7 @@ function testDateFmtFullDateComponentsM_fi_FI() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("syyskuuta", fmt.format(date));
+    assertEquals("syyskuu", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_fi_FI() {

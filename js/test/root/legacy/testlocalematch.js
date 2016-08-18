@@ -30,7 +30,7 @@ function testLocaleMatcherGetLikelyLocaleByLanguage() {
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
-	assertEquals("uz-Cyrl-UZ", locale.getSpec());
+	assertEquals("uz-Latn-UZ", locale.getSpec());
 }
 
 function testLocaleMatcherGetLikelyLocaleByRegion() {
@@ -40,7 +40,7 @@ function testLocaleMatcherGetLikelyLocaleByRegion() {
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
-	assertEquals("uz-Cyrl-UZ", locale.getSpec());
+	assertEquals("uz-Latn-UZ", locale.getSpec());
 }
 
 function testLocaleMatcherGetLikelyLocaleByScript() {

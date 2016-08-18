@@ -1,4 +1,9 @@
 {
+    "Adlm": {
+        "nb": 166,
+        "nm": "Adlam",
+        "lid": "Adlam"
+    },
     "Afak": {
         "nb": 439,
         "nm": "Afaka",
@@ -7,7 +12,15 @@
     "Aghb": {
         "nb": 239,
         "nm": "Caucasian Albanian",
-        "lid": "Caucasian_Albanian"
+        "lid": "Caucasian_Albanian",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
+    "Ahom": {
+        "nb": 338,
+        "nm": "Ahom, Tai Ahom",
+        "lid": "Ahom"
     },
     "Arab": {
         "nb": 160,
@@ -16,6 +29,11 @@
         "rtl": true,
         "ime": false,
         "casing": false
+    },
+    "Aran": {
+        "nb": 161,
+        "nm": "Arabic (Nastaliq variant)",
+        "lid": "Arabic_(Nastaliq_variant)"
     },
     "Armi": {
         "nb": 124,
@@ -60,7 +78,10 @@
     "Bass": {
         "nb": 259,
         "nm": "Bassa Vah",
-        "lid": "Bassa_Vah"
+        "lid": "Bassa_Vah",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Batk": {
         "nb": 365,
@@ -77,6 +98,11 @@
         "rtl": false,
         "ime": false,
         "casing": false
+    },
+    "Bhks": {
+        "nb": 334,
+        "nm": "Bhaiksuki",
+        "lid": "Bhaiksuki"
     },
     "Blis": {
         "nb": 550,
@@ -216,7 +242,10 @@
     "Dupl": {
         "nb": 755,
         "nm": "Duployan shorthand, Duployan stenography",
-        "lid": "Duployan_shorthand,_Duployan_stenography"
+        "lid": "Duployan",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Egyd": {
         "nb": 70,
@@ -239,7 +268,10 @@
     "Elba": {
         "nb": 226,
         "nm": "Elbasan",
-        "lid": "Elbasan"
+        "lid": "Elbasan",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Ethi": {
         "nb": 430,
@@ -249,6 +281,11 @@
         "ime": true,
         "casing": false
     },
+    "Geok": {
+        "nb": 241,
+        "nm": "Khutsuri (Asomtavruli and Nuskhuri)",
+        "lid": "Georgian"
+    },
     "Geor": {
         "nb": 240,
         "nm": "Georgian (Mkhedruli)",
@@ -256,11 +293,6 @@
         "rtl": false,
         "ime": false,
         "casing": false
-    },
-    "Geok": {
-        "nb": 241,
-        "nm": "Khutsuri (Asomtavruli and Nuskhuri)",
-        "lid": "Georgian"
     },
     "Glag": {
         "nb": 225,
@@ -281,7 +313,10 @@
     "Gran": {
         "nb": 343,
         "nm": "Grantha",
-        "lid": "Grantha"
+        "lid": "Grantha",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Grek": {
         "nb": 200,
@@ -347,6 +382,11 @@
         "ime": true,
         "casing": false
     },
+    "Hatr": {
+        "nb": 127,
+        "nm": "Hatran",
+        "lid": "Hatran"
+    },
     "Hebr": {
         "nb": 125,
         "nm": "Hebrew",
@@ -366,12 +406,15 @@
     "Hluw": {
         "nb": 80,
         "nm": "Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)",
-        "lid": "Anatolian_Hieroglyphs_(Luwian_Hieroglyphs,_Hittite_Hieroglyphs)"
+        "lid": "Anatolian_Hieroglyphs"
     },
     "Hmng": {
         "nb": 450,
         "nm": "Pahawh Hmong",
-        "lid": "Pahawh_Hmong"
+        "lid": "Pahawh_Hmong",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Hrkt": {
         "nb": 412,
@@ -381,7 +424,7 @@
     "Hung": {
         "nb": 176,
         "nm": "Old Hungarian (Hungarian Runic)",
-        "lid": "Old_Hungarian_(Hungarian_Runic)"
+        "lid": "Old_Hungarian"
     },
     "Inds": {
         "nb": 610,
@@ -409,7 +452,7 @@
         "nm": "Japanese (alias for Han + Hiragana + Katakana)",
         "lid": "Japanese_(alias_for_Han_+_Hiragana_+_Katakana)",
         "rtl": false,
-        "ime": false,
+        "ime": true,
         "casing": false
     },
     "Jurc": {
@@ -452,7 +495,20 @@
     "Khoj": {
         "nb": 322,
         "nm": "Khojki",
-        "lid": "Khojki"
+        "lid": "Khojki",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
+    "Kitl": {
+        "nb": 505,
+        "nm": "Khitan large script",
+        "lid": "Khitan_large_script"
+    },
+    "Kits": {
+        "nb": 288,
+        "nm": "Khitan small script",
+        "lid": "Khitan_small_script"
     },
     "Knda": {
         "nb": 345,
@@ -517,6 +573,11 @@
         "ime": false,
         "casing": true
     },
+    "Leke": {
+        "nb": 364,
+        "nm": "Leke",
+        "lid": "Leke"
+    },
     "Lepc": {
         "nb": 335,
         "nm": "Lepcha (Róng)",
@@ -536,7 +597,10 @@
     "Lina": {
         "nb": 400,
         "nm": "Linear A",
-        "lid": "Linear_A"
+        "lid": "Linear_A",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Linb": {
         "nb": 401,
@@ -578,7 +642,10 @@
     "Mahj": {
         "nb": 314,
         "nm": "Mahajani",
-        "lid": "Mahajani"
+        "lid": "Mahajani",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Mand": {
         "nb": 140,
@@ -591,7 +658,15 @@
     "Mani": {
         "nb": 139,
         "nm": "Manichaean",
-        "lid": "Manichaean"
+        "lid": "Manichaean",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
+    "Marc": {
+        "nb": 332,
+        "nm": "Marchen",
+        "lid": "Marchen"
     },
     "Maya": {
         "nb": 90,
@@ -600,8 +675,11 @@
     },
     "Mend": {
         "nb": 438,
-        "nm": "Mende",
-        "lid": "Mende"
+        "nm": "Mende Kikakui",
+        "lid": "Mende_Kikakui",
+        "rtl": true,
+        "ime": true,
+        "casing": false
     },
     "Merc": {
         "nb": 101,
@@ -627,10 +705,13 @@
         "ime": false,
         "casing": false
     },
-    "Moon": {
-        "nb": 218,
-        "nm": "Moon (Moon code, Moon script, Moon type)",
-        "lid": "Moon_(Moon_code,_Moon_script,_Moon_type)"
+    "Modi": {
+        "nb": 324,
+        "nm": "Modi, Moḍī",
+        "lid": "Modi",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Mong": {
         "nb": 145,
@@ -640,10 +721,18 @@
         "ime": false,
         "casing": false
     },
+    "Moon": {
+        "nb": 218,
+        "nm": "Moon (Moon code, Moon script, Moon type)",
+        "lid": "Moon_(Moon_code,_Moon_script,_Moon_type)"
+    },
     "Mroo": {
         "nb": 199,
         "nm": "Mro, Mru",
-        "lid": "Mro,_Mru"
+        "lid": "Mro",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Mtei": {
         "nb": 337,
@@ -652,6 +741,11 @@
         "rtl": false,
         "ime": false,
         "casing": false
+    },
+    "Mult": {
+        "nb": 323,
+        "nm": "Multani",
+        "lid": "Multani"
     },
     "Mymr": {
         "nb": 350,
@@ -664,12 +758,18 @@
     "Narb": {
         "nb": 106,
         "nm": "Old North Arabian (Ancient North Arabian)",
-        "lid": "Old_North_Arabian_(Ancient_North_Arabian)"
+        "lid": "Old_North_Arabian",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Nbat": {
         "nb": 159,
         "nm": "Nabataean",
-        "lid": "Nabataean"
+        "lid": "Nabataean",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Nkgb": {
         "nb": 420,
@@ -721,6 +821,11 @@
         "ime": false,
         "casing": false
     },
+    "Osge": {
+        "nb": 219,
+        "nm": "Osage",
+        "lid": "Osage"
+    },
     "Osma": {
         "nb": 260,
         "nm": "Osmanya",
@@ -732,12 +837,26 @@
     "Palm": {
         "nb": 126,
         "nm": "Palmyrene",
-        "lid": "Palmyrene"
+        "lid": "Palmyrene",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
+    "Pauc": {
+        "nb": 263,
+        "nm": "Pau Cin Hau",
+        "lid": "Pau_Cin_Hau",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Perm": {
         "nb": 227,
         "nm": "Old Permic",
-        "lid": "Old_Permic"
+        "lid": "Old_Permic",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Phag": {
         "nb": 331,
@@ -758,7 +877,10 @@
     "Phlp": {
         "nb": 132,
         "nm": "Psalter Pahlavi",
-        "lid": "Psalter_Pahlavi"
+        "lid": "Psalter_Pahlavi",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Phlv": {
         "nb": 133,
@@ -870,10 +992,21 @@
         "ime": false,
         "casing": false
     },
+    "Sidd": {
+        "nb": 302,
+        "nm": "Siddham, Siddhaṃ, Siddhamātṛkā",
+        "lid": "Siddham",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
     "Sind": {
         "nb": 318,
         "nm": "Khudawadi, Sindhi",
-        "lid": "Khudawadi,_Sindhi"
+        "lid": "Khudawadi",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Sinh": {
         "nb": 348,
@@ -1039,7 +1172,10 @@
     "Tirh": {
         "nb": 326,
         "nm": "Tirhuta",
-        "lid": "Tirhuta"
+        "lid": "Tirhuta",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Ugar": {
         "nb": 40,
@@ -1065,7 +1201,10 @@
     "Wara": {
         "nb": 262,
         "nm": "Warang Citi (Varang Kshiti)",
-        "lid": "Warang_Citi_(Varang_Kshiti)"
+        "lid": "Warang_Citi",
+        "rtl": false,
+        "ime": false,
+        "casing": true
     },
     "Wole": {
         "nb": 480,

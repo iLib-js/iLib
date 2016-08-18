@@ -1,0 +1,62 @@
+{
+    "gregorian": {
+        "order": "{date} {time}",
+        "date": {
+            "dmwy": {
+                "s": "yy/M/dE"
+            },
+            "dmy": {
+                "s": "yy/M/d"
+            },
+            "dmw": {
+                "s": "M/dE"
+            },
+            "dm": {
+                "s": "M/d"
+            },
+            "my": {
+                "s": "yy/M"
+            },
+            "dw": {
+                "s": "dE"
+            }
+        },
+        "range": {
+            "c00": {
+                "f": "{sy}年{sm}月{sd}日 {st} – {et}",
+                "l": "{sy}年{sm}月{sd}日 {st} – {et}",
+                "s": "{sy}/{sm}/{sd} {st} – {et}"
+            },
+            "c01": {
+                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            },
+            "c02": {
+                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            },
+            "c03": {
+                "f": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "l": "{sy}年{sm}月{sd}日 {st} – {ey}年{em}月{ed}日 {et}",
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            },
+            "c10": {
+                "s": "{sy}/{sm}/{sd} – {ed}"
+            },
+            "c11": {
+                "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
+            },
+            "c12": {
+                "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
+            },
+            "c20": {
+                "s": "{sy}/{sm} – {ey}/{em}"
+            },
+            "c30": {
+                "s": "{sy}年 – {ey}年"
+            }
+        }
+    }
+}

@@ -1,8 +1,8 @@
 /*
- * testdatefmtrange_ta_in.js - test the date range formatter object in Tamil/India
+ * testdatefmtrange_ta_IN.js - test the date range formatter object in Tamil/India
  * 
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -139,7 +139,7 @@ function testDateRngFmtRangeNextDayShort_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30-12, 1:45 பிற்பகல் – 31-12-11, 2:30 பிற்பகல்", fmt.format(start, end));
+    assertEquals("30-12-11, 1:45 பிற்பகல் – 31-12-11, 2:30 பிற்பகல்", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayMedium_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtRangeNextDayMedium_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 டிச., 1:45 பிற்பகல் – 31 டிச., 2011, 2:30 பிற்பகல்", fmt.format(start, end));
+    assertEquals("30 டிச., 2011, 1:45 பிற்பகல் – 31 டிச., 2011, 2:30 பிற்பகல்", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtRangeNextDayLong_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 டிசம்பர் ’அன்று’ 1:45 பிற்பகல் – 31 டிசம்பர், 2011 ’அன்று’ 2:30 பிற்பகல்", fmt.format(start, end));
+    assertEquals("30 டிசம்பர், 2011 ’அன்று’ 1:45 பிற்பகல் – 31 டிசம்பர், 2011 ’அன்று’ 2:30 பிற்பகல்", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtRangeNextDayFull_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 டிசம்பர் ’அன்று’ 1:45 பிற்பகல் – 31 டிசம்பர், 2011 ’அன்று’ 2:30 பிற்பகல்", fmt.format(start, end));
+    assertEquals("30 டிசம்பர், 2011 ’அன்று’ 1:45 பிற்பகல் – 31 டிசம்பர், 2011 ’அன்று’ 2:30 பிற்பகல்", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_ta_IN() {
@@ -236,7 +236,7 @@ function testDateRngFmtRangeMultiDayShort_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-12-11 – 31-12-11", fmt.format(start, end));
+    assertEquals("20 – 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiDayMedium_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "medium"});
@@ -333,7 +333,7 @@ function testDateRngFmtRangeNextMonthShort_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11-11 – 31-12-11", fmt.format(start, end));
+    assertEquals("20-11 – 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextMonthMedium_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "medium"});

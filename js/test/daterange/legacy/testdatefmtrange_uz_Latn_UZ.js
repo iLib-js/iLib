@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_Latn_UZ.js - test the date range formatter object Uzbek/Uzbekistan for Latin script
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed unuzr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -41,7 +41,7 @@ function testDateRngFmtLatn_UZRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 11/12/31", fmt.format(start, end));
+    assertEquals("11/12/31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtLatn_UZRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Dek 31", fmt.format(start, end));
+    assertEquals("2011 Dek 31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtLatn_UZRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Dekabr 31", fmt.format(start, end));
+    assertEquals("2011 Dekabr 31 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtLatn_UZRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 2011 Dekabr 31", fmt.format(start, end));
+    assertEquals("2011 Dekabr 31 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtLatn_UZRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtLatn_UZRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 11/12/30 – 14:30 12/31", fmt.format(start, end));
+    assertEquals("11/12/30 13:45 – 11/12/31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtLatn_UZRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 Dek 30 – 14:30 Dek 31", fmt.format(start, end));
+    assertEquals("2011 Dek 30 13:45 – 2011 Dek 31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtLatn_UZRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 Dekabr 30 – 14:30 Dekabr 31", fmt.format(start, end));
+    assertEquals("2011 Dekabr 30 13:45 – 2011 Dekabr 31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtLatn_UZRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 Dekabr 30 – 14:30 Dekabr 31", fmt.format(start, end));
+    assertEquals("2011 Dekabr 30 13:45 – 2011 Dekabr 31 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtLatn_UZRangeMultiDayShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtLatn_UZRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11/20 – 12/31", fmt.format(start, end));
+    assertEquals("11/11/20 – 11/12/31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtLatn_UZRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 Noya 20 – Dek 31", fmt.format(start, end));
+    assertEquals("2011 Noya 20 – 2011 Dek 31", fmt.format(start, end));
 }
 function testDateRngFmtLatn_UZRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "uz-Latn-UZ", length: "long"});

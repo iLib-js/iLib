@@ -13,17 +13,10 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
-        "useNative": true,
-        "digits": "०१२३४५६७८९"
+        "digits": "०१२३४५६७८९",
+        "useNative": true
     },
     "numfmt": {
-        "decimalChar": ".",
-        "groupChar": ",",
-        "exponential": "E",
-        "secgroupSize": 2,
-        "useNative": false,
-        "currencyFormats": {
-            "common": "{s} {n}"
-        }
+        "secgroupSize": 2
     }
 }

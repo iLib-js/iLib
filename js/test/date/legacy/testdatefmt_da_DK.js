@@ -1261,7 +1261,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_da_DK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 sekunder siden", fmt.formatRelative(reference, date));
+    assertEquals("for 30 sekunder siden", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_da_DK() {
     var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
@@ -1313,7 +1313,7 @@ function testDateFmtFormatRelativeWithinHourBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 minutter siden", fmt.formatRelative(reference, date));
+    assertEquals("for 10 minutter siden", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_da_DK() {
     var fmt = new ilib.DateFmt({locale: "da-DK", length: "full"});
@@ -1367,7 +1367,7 @@ function testDateFmtFormatRelativeWithinDayBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 timer siden", fmt.formatRelative(reference, date));
+    assertEquals("for 4 timer siden", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_da_DK() {
@@ -1420,7 +1420,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 dage siden", fmt.formatRelative(reference, date));
+    assertEquals("for 4 dage siden", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_da_DK() {
@@ -1473,7 +1473,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 uger siden", fmt.formatRelative(reference, date));
+    assertEquals("for 9 uger siden", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_da_DK() {
@@ -1526,7 +1526,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 måneder siden", fmt.formatRelative(reference, date));
+    assertEquals("for 14 måneder siden", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_da_DK() {
@@ -1579,6 +1579,6 @@ function testDateFmtFormatRelativeYearsBefore_da_DK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 år siden", fmt.formatRelative(reference, date));
+    assertEquals("for 21 år siden", fmt.formatRelative(reference, date));
 }
 

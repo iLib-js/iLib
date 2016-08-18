@@ -1,0 +1,13 @@
+{
+    "generated": true,
+    "native_numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}"
+        }
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}"
+        }
+    }
+}

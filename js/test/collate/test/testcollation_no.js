@@ -560,8 +560,8 @@ function testJSCollatorNumeric_no() {
 
 	assertNotUndefined(col);
 
-	// period is the thousands separator and comma is the decimal separator
-	assertEquals(0, col.compare("0.012.123,4", "12.123,4"));
-	assertTrue(col.compare("00123,4", "123") > 0);
-	assertTrue(col.compare("00123,4", "124") < 0);
+	// comma is the thousands separator and period is the decimal separator
+	assertEquals(0, col.compare("0,012,123.4", "12,123.4"));
+	assertTrue(col.compare("00123.4", "123") > 0);
+	assertTrue(col.compare("00123.4", "124") < 0);
 }
