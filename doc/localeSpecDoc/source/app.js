@@ -18,7 +18,7 @@ enyo.kind({
 						{name:"searchImg", kind: "Image", src: "assets/search-input-search.png", style: "float:right;margin-top: 5px !important;;width: 20px; height: 20px;"}
 					]}
 				]},
-				{name:"list", kind: "List", style:"width:300px;height:94%", fit: true, ontap: "itemTap",count: 189, /*touch: true,*/ onSetupItem: "setupItem", components: [
+				{name:"list", kind: "List", style:"width:300px;height:94%", fit: true, ontap: "itemTap",count: 191, /*touch: true,*/ onSetupItem: "setupItem", components: [
 					{name: "item", style: "padding: 10px;", components: [
 						{name: "title", classes: "list-item-font"}
 					]}
@@ -27,7 +27,7 @@ enyo.kind({
 			{name:"targetDocument", classes:"right-iframe", fit:true}
 		]}
 	],
-	listCount : 189,
+	listCount : 191,
 	renewList : [],
 	create: function () {
 		this.inherited(arguments);
@@ -58,7 +58,7 @@ enyo.kind({
 
 		var year, month, date;
 		var month  = 7;
-		var date  = 3;
+		var date  = 19;
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
@@ -112,6 +112,7 @@ enyo.kind({
 			"Arabic - Iraq":"ar-IQ",
 			"Arabic - Morocco":"ar-MA",
 			"Assamese - India":"as-IN",
+			"Azerbaijani - Azerbaijan":"az-Latn-AZ",
 			"Bulgarian - Bulgaria":"bg-BG",
 			"Bengali - India":"bn-IN", 
 			"Bosnian - Bosnia and Herzegovina":"bs-BA",
@@ -191,6 +192,7 @@ enyo.kind({
 			"Japanese - Japan":"ja-JP",
 			"Kazakh - Kazahkstan":"kk-KZ",
 			"Kannada - India":"kn-IN",
+			"Khmer - Cambodia":"km-KH",
 			"Korean - Republic of Korea":"ko-KR",
 			"Kurdish - Iraq":"ku-Arab-IQ",
 			"Lithuanian - Lithuania":"lt-LT",
