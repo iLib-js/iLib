@@ -122,6 +122,7 @@ $(function(){
 		
 		$("#date"+length[i]).text(length[i]);
 		
+		
 		templateText[i] = fmtArray[i].template;
 		$("#date"+length[i]+"Fmt").text(templateText[i]);
 		var mCount = 0;
@@ -130,7 +131,7 @@ $(function(){
 				mCount++;
 			}
 		}
-
+		/*
 		switch(mCount) {
 			case 4:
 				$("#date"+length[i]+"Fmt").css("color","red");
@@ -146,7 +147,7 @@ $(function(){
 			break;
 			default:
 				$("#date"+length[i]+"Fmt").css("color","#4B0082"); //Indigo  
-		}
+		}*/
 		$("#date"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 	
@@ -157,13 +158,14 @@ $(function(){
 		$("#time"+length[i]).text(length[i]);
 		$("#time"+length[i]+"Fmt").text(fmtArray[i].template);
 
+		/*
 		if (length[i] === 'full') {
 			if(fmtArray[i].template.indexOf("H") !== -1) { //24hours
 				$("#time"+length[i]+"Fmt").css("color", "#FF1493"); //#DeepPink 
 			} else { // 12hours
 				$("#time"+length[i]+"Fmt").css("color", "#00BFFF"); //DeepSkyBlue 
 			}
-		}
+		}*/
 		$("#time"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 
@@ -178,19 +180,22 @@ $(function(){
 		$("#cfmt0"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c00"][abbrLength[i]]);
 		$("#cfmt0"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		
+		/*if (length[i] === 'full') {
 			$("#cfmt0"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt0"+length[i]+"Sample").css("color","#CC3333");
 
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt0"+length[i]).css("border-color","black");
+			$("#cfmt0"+length[i]).css("border-width","1px");
 			$("#cfmt0"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt0"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt0"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt0"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt0"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt0"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt0"+length[i]+"Fmt").css("color","green");
 			$("#cfmt0"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
     start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -203,19 +208,21 @@ $(function(){
 		$("#cfmt1"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c01"][abbrLength[i]]);
 		$("#cfmt1"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt1"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt1"+length[i]+"Sample").css("color","#CC3333");
 
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt1"+length[i]).css("border-color","black");
+			$("#cfmt1"+length[i]).css("border-width","1px");
 			$("#cfmt1"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt1"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt1"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt1"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt1"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt1"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt1"+length[i]+"Fmt").css("color","green");
 			$("#cfmt1"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -228,19 +235,21 @@ $(function(){
 		$("#cfmt2"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c02"][abbrLength[i]]);
 		$("#cfmt2"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt2"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt2"+length[i]+"Sample").css("color","#CC3333");
 
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt2"+length[i]).css("border-color","black");
+			$("#cfmt2"+length[i]).css("border-width","1px");
 			$("#cfmt2"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt2"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt2"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt2"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt2"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt2"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt2"+length[i]+"Fmt").css("color","green");
 			$("#cfmt2"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
     start = new DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -253,19 +262,20 @@ $(function(){
 		$("#cfmt3"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c03"][abbrLength[i]]);
 		$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt3"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt3"+length[i]+"Sample").css("color","#CC3333");
-
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt3"+length[i]).css("border-color","black");
+			$("#cfmt3"+length[i]).css("border-width","1px");
 			$("#cfmt3"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt3"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt3"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt3"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt3"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt3"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt3"+length[i]+"Fmt").css("color","green");
 			$("#cfmt3"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -278,19 +288,20 @@ $(function(){
 		$("#cfmt10"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c10"][abbrLength[i]]);
 		$("#cfmt10"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt10"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt10"+length[i]+"Sample").css("color","#CC3333");
-
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt10"+length[i]).css("border-color","black");
+			$("#cfmt10"+length[i]).css("border-width","1px");
 			$("#cfmt10"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt10"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt10"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt10"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt10"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt10"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt10"+length[i]+"Fmt").css("color","green");
 			$("#cfmt10"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -303,19 +314,20 @@ $(function(){
 		$("#cfmt11"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c11"][abbrLength[i]]);
 		$("#cfmt11"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt11"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt11"+length[i]+"Sample").css("color","#CC3333");
-
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt11"+length[i]).css("border-color","black");
+			$("#cfmt11"+length[i]).css("border-width","1px");
 			$("#cfmt11"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt11"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt11"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt11"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt11"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt11"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt11"+length[i]+"Fmt").css("color","green");
 			$("#cfmt11"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -328,19 +340,21 @@ $(function(){
 		$("#cfmt12"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c12"][abbrLength[i]]);
 		$("#cfmt12"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt12"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt12"+length[i]+"Sample").css("color","#CC3333");
 
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt12"+length[i]).css("border-color","black");
+			$("#cfmt12"+length[i]).css("border-width","1px");
 			$("#cfmt12"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt12"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt12"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt12"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt12"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt12"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt12"+length[i]+"Fmt").css("color","green");
 			$("#cfmt12"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -353,19 +367,20 @@ $(function(){
 		$("#cfmt20"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c20"][abbrLength[i]]);
 		$("#cfmt20"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt20"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt20"+length[i]+"Sample").css("color","#CC3333");
-
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt20"+length[i]).css("border-color","black");
+			$("#cfmt20"+length[i]).css("border-width","1px");
 			$("#cfmt20"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt20"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt20"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt20"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt20"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt20"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt20"+length[i]+"Fmt").css("color","green");
 			$("#cfmt20"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -378,19 +393,20 @@ $(function(){
 		$("#cfmt30"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c30"][abbrLength[i]]);
 		$("#cfmt30"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		if (length[i] === 'full') {
+		/*if (length[i] === 'full') {
 			$("#cfmt30"+length[i]+"Fmt").css("color","#CC3333");
 			$("#cfmt30"+length[i]+"Sample").css("color","#CC3333");
-
-		} else if (length[i] === 'short') {
+		} else*/ if (length[i] === 'short') {
+			$("#cfmt30"+length[i]).css("border-color","black");
+			$("#cfmt30"+length[i]).css("border-width","1px");
 			$("#cfmt30"+length[i]+"Fmt").css("border-color","black");
-			$("#cfmt30"+length[i]+"Fmt").css("border-width","2px");
+			$("#cfmt30"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt30"+length[i]+"Sample").css("border-color","black");
-			$("#cfmt30"+length[i]+"Sample").css("border-width","2px");
-		} else if (length[i] === 'medium') {
+			$("#cfmt30"+length[i]+"Sample").css("border-width","1px");
+		} /*else if (length[i] === 'medium') {
 			$("#cfmt30"+length[i]+"Fmt").css("color","green");
 			$("#cfmt30"+length[i]+"Sample").css("color","green");
-		}
+		}*/
 	}
 
 	durationNumberSample = {
@@ -417,6 +433,7 @@ $(function(){
 		"ar-TN" : [1,2,3,11,100],
 		"ar-AE" : [1,2,3,11,100],
 		"ar-YE" : [1,2,3,11,100],
+		"az-Latn-AZ" : [1],
 		"as-IN" : [1,2],
 		"bn-IN" : [1,18],
 		"bs-BA" : [1,4,5],
@@ -514,6 +531,7 @@ $(function(){
 		"it-CH" : [1,17],
 		"ja-JP" : [1,16],
 		"kn-IN" : [1,2],
+		"km-KH" : [1],
 		"kk-KZ" : [1,2],
 		"ko-KR" : [1,2],
 		"ku-Arab-IQ" : [1,2],
@@ -626,27 +644,27 @@ $(function(){
 			durationTimeSample = {hour: selectedSampleNum[i],minute: selectedSampleNum[i],second: selectedSampleNum[i]};
 			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
 
-			if (length[j] === 'medium') {
-				//console.log("medium or long :" + length[j]);
+			/*if (length[j] === 'medium') {
+				
 				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
 			} else if (length[j] === 'long') {
 				$("#durFmtResult"+length[j]+"num"+i).css("color","green");
 				$("#timedurFmtResult"+length[j]+"num"+i).css("color","green");
 			}
-			else if (length[j] === 'short') {
+			else */if (length[j] === 'short') {
 				//console.log("full :" + length[j]);
 				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
-				$("#durFmtLength"+length[j]+"num"+i).css("border-width","2px");
+				$("#durFmtLength"+length[j]+"num"+i).css("border-width","1px");
 
 				$("#durFmtResult"+length[j]+"num"+i).css("border-color","black");
-				$("#durFmtResult"+length[j]+"num"+i).css("border-width","2px");
+				$("#durFmtResult"+length[j]+"num"+i).css("border-width","1px");
 
 				$("#timedurFmtLength"+length[j]+"num"+i).css("border-color","black");
-				$("#timedurFmtLength"+length[j]+"num"+i).css("border-width","2px");
+				$("#timedurFmtLength"+length[j]+"num"+i).css("border-width","1px");
 
 				$("#timedurFmtResult"+length[j]+"num"+i).css("border-color","black");
-				$("#timedurFmtResult"+length[j]+"num"+i).css("border-width","2px");
+				$("#timedurFmtResult"+length[j]+"num"+i).css("border-width","1px");
 			}
 
 		}

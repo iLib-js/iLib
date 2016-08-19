@@ -473,7 +473,7 @@ function testDateFmtShortDateComponentsM_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("09", fmt.format(date));
+    assertEquals("se", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_az_Latn_AZ() {
@@ -627,7 +627,7 @@ function testDateFmtFullDateComponentsM_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("sentyabr", fmt.format(date));
+    assertEquals("Sentyabr", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_az_Latn_AZ() {
@@ -1224,7 +1224,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_az_Latn_AZ() {
         second: 30,
         millisecond: 0
     });
-    assertEquals("+30 saniyə", fmt.formatRelative(reference, date));
+    assertEquals("30 saniyə ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1250,7 +1250,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_az_Latn_AZ() {
         second: 30,
         millisecond: 0
     });
-    assertEquals("-30 saniyə", fmt.formatRelative(reference, date));
+    assertEquals("30 saniyə öncə", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1276,7 +1276,7 @@ function testDateFmtFormatRelativeWithinHourAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+10 dəqiqə", fmt.formatRelative(reference, date));
+    assertEquals("10 dəqiqə ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1302,7 +1302,7 @@ function testDateFmtFormatRelativeWithinHourBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-10 dəqiqə", fmt.formatRelative(reference, date));
+    assertEquals("10 dəqiqə öncə", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1328,7 +1328,7 @@ function testDateFmtFormatRelativeWithinDayAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+4 saat", fmt.formatRelative(reference, date));
+    assertEquals("4 saat ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1354,7 +1354,7 @@ function testDateFmtFormatRelativeWithinDayBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-4 saat", fmt.formatRelative(reference, date));
+    assertEquals("4 saat öncə", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_az_Latn_AZ() {
@@ -1381,7 +1381,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+4 gün", fmt.formatRelative(reference, date));
+    assertEquals("4 gün ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1407,7 +1407,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-4 gün", fmt.formatRelative(reference, date));
+    assertEquals("4 gün öncə", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_az_Latn_AZ() {
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+9 həftə", fmt.formatRelative(reference, date));
+    assertEquals("9 həftə ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1460,7 +1460,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-9 həftə", fmt.formatRelative(reference, date));
+    assertEquals("9 həftə öncə", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_az_Latn_AZ() {
@@ -1487,7 +1487,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+16 ay", fmt.formatRelative(reference, date));
+    assertEquals("16 ay ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1513,7 +1513,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-14 ay", fmt.formatRelative(reference, date));
+    assertEquals("14 ay öncə", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_az_Latn_AZ() {
@@ -1540,7 +1540,7 @@ function testDateFmtFormatRelativeYearsAfter_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("+14 il", fmt.formatRelative(reference, date));
+    assertEquals("14 il ərzində", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_az_Latn_AZ() {
     var fmt = new DateFmt({locale: "az-Latn-AZ", length: "full"});
@@ -1566,6 +1566,6 @@ function testDateFmtFormatRelativeYearsBefore_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("-21 il", fmt.formatRelative(reference, date));
+    assertEquals("21 il öncə", fmt.formatRelative(reference, date));
 }
 
