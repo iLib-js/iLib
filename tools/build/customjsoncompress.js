@@ -153,8 +153,8 @@ function walk(root, dir) {
                 walk(root, sourcePathRelative);
             } else if (regiondir.indexOf(sourcePathParse[1]) >-1) {
                 walk(root, sourcePathRelative);
-            } else if (sourcePath === 'nfkd' || sourcePath === 'zoneinfo') {
-                walk(root, sourcePathRelative);
+            } else if (sourcePathRelative=== 'nfkd' || sourcePathRelative === 'zoneinfo') {
+                walkEtc(root, sourcePathRelative);
             }
         } else {
             var obj;
@@ -249,6 +249,42 @@ function walkException(root, expath) {
         }
     });
 
+    return results;
+}
+
+// traverse only nfkd and zoneinfo path
+function walkEtc(root, dir) {
+    var results = [];
+    var list = fs.readdirSync(path.join(root, dir));
+
+    list.forEach(function (file) {
+        var sourcePathRelative = path.join(dir, file);
+        var sourcePath = path.join(root, sourcePathRelative);
+        var stat = fs.statSync(sourcePath);
+        var sourcePathParse = sourcePath.split("/");
+
+        if (stat && stat.isDirectory()) {
+            walkEtc(root, sourcePathRelative);
+        } else {
+            var obj;
+            if (file.match(/\.json$/)) {
+                try {
+                    var data = fs.readFileSync(sourcePath, 'utf8');
+                    if (data.length > 0) {
+                        obj = JSON.parse(data);
+                        var targetPath = path.join(targetdir, sourcePathRelative);
+                        var targetDir = path.dirname(targetPath);
+                        common.makeDirs(targetDir);
+                        fs.writeFileSync(targetPath, JSON.stringify(obj), 'utf8');
+                    }
+                } catch (err) {
+                    util.print("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
+                    util.print(err + "\n");
+                    process.exit(2);
+                }
+            }
+        }
+    });
     return results;
 }
 
