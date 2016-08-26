@@ -217,7 +217,6 @@ function walkException(root, expath) {
 
         var stat = fs.statSync(customPath);
         if (stat && stat.isDirectory()) {
-            //TODO
             walkException(root, sourcePathRelative);
         } else {
             var obj;
