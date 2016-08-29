@@ -258,7 +258,9 @@ ilib.getLocale = function () {
     	switch (plat) {
     		case 'browser':
             	// running in a browser
-                ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
+                if(typeof(navigator.language) !== 'undefined') {
+                    ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit    
+                }
                 if (!ilib.locale) {
                     // IE on Windows
                     var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
