@@ -32,7 +32,7 @@
         },
         "range": {
             "c00": {
-                "f": "{sm} {sd} ቀን {sy} ዓ.ም {st} – {et} ",
+                "f": "{sm} {sd} ቀን {sy} ዓ.ም {st} – {et}",
                 "l": "{sd} {sm} {sy} {st} – {et}",
                 "m": "{sd} {sm} {sy} {st} – {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {et}"
