@@ -42,6 +42,7 @@ limitations under the License.
 	<property name="build.output.js"			value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.data"				value="${build.base}/data"/>
+	<property name="build.test"				value="${build.base}/test"/>
 	<property name="build.locale"				value="${build.base}/locale"/>
 	<property name="build.locale.src"			value="${build.data}/locale"/>
 	<property name="build.customlocaletemp"			value="${build.data}/customlocaletemp"/>
@@ -72,7 +73,28 @@ limitations under the License.
 				<arg value="@{srcfilename}"/>
 			</java>
 		</sequential>
+
 	</macrodef>
+		<macrodef name="runtests">
+        <attribute name="assembly"/>
+        <attribute name="compilation"/>
+        <attribute name="suite"/>
+		<attribute name="set"/>
+		<attribute name="failquit"/>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="testSuite_lg.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+				<arg line="@{suite}"/>
+				<arg line="@{set}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target name="test.dynamic.compiled.lg">
+		<runtests suite="lgSet" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
+	</target>
 
 	<path id="project.classpath.jsa">
 		<fileset dir="../java/output/release">
