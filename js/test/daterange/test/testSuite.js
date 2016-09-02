@@ -54,7 +54,6 @@ function suite() {
 		"testdatefmtrange_fi_FI.js",
 		"testdatefmtrange_fr_CA.js",
 		"testdatefmtrange_fr_FR.js",
-		"testdatefmtrange_km_KH.js"
 	];
 
     suites.forEach(function (path) {

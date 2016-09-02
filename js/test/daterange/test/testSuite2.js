@@ -41,6 +41,7 @@ function suite() {
 		"testdatefmtrange_ja_JP.js",
 		"testdatefmtrange.js",
 		"testdatefmtrange_kk_Cyrl_KZ.js",
+                "testdatefmtrange_km_KH.js",
 		"testdatefmtrange_kn_IN.js",
 		"testdatefmtrange_ko_KR.js",
 		//"testdatefmtrange_ku_Arab_IQ.js",

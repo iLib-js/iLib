@@ -41,6 +41,7 @@ function suite() {
 		"testdatefmt.js",
 		"testdatefmt_kk_Cyrl_KZ.js",
 		"testdatefmt_kn_IN.js",
+                "testdatefmt_km_KH.js",
 		"testdatefmt_ko_KR.js",
 		//"testdatefmt_ku_Arab_IQ.js",
 		"testdatefmt_lt_LT.js",
