@@ -55,8 +55,7 @@ function suite() {
 		"testdatefmt_fa_IR.js",
 		"testdatefmt_fi_FI.js",
 		"testdatefmt_fr_CA.js",
-		"testdatefmt_fr_FR.js",
-		"testdatefmt_km_KH.js"
+		"testdatefmt_fr_FR.js"
 	];
     suites.forEach(function (path) {
     	s.addSuite(newSuite(path));
