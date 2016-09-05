@@ -490,7 +490,7 @@ function testDateFmtShortDateComponentsN_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("9", fmt.format(date));
+    assertEquals("ក", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_km_KH() {

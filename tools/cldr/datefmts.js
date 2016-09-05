@@ -1584,7 +1584,12 @@ module.exports = {
                     formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
                     formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
                     formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-                    formats["N" + prop + calendarNameSuffix] = part.narrow[prop];
+                    formats["N" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                    /* TODO. Some cldr data provide value as number in narrow format which doesn't meet iLib spec.
+                             So I update code to create 'N' format value from abbreviated. 
+                             but I think it's better to reference abbreviated if narrow values are number.
+                             and some cases are haveing same alphabets which are not good.
+                    */
                 }
             }
             if (usesStandAlone) {

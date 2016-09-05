@@ -435,7 +435,7 @@ function testDateFmtShortDateComponentsN_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9", fmt.format(date));
+    assertEquals("z", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_cs_CZ() {

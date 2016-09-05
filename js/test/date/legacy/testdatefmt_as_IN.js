@@ -500,7 +500,7 @@ function testDateFmtINShortDateComponentsN_as_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("৯", fmt.format(date));
+    assertEquals("স", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_as_IN() {

@@ -641,7 +641,7 @@ function testDateFmtShortDateComponentsN_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("ግ", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD() {
