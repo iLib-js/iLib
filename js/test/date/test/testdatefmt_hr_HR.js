@@ -438,7 +438,7 @@ function testDateFmtShortDateComponentsN_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9.", fmt.format(date));
+    assertEquals("r", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_hr_HR() {

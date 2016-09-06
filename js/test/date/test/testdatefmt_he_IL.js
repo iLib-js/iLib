@@ -481,7 +481,7 @@ function testDateFmtShortDateComponentsN_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("ס", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_he_IL() {

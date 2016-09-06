@@ -490,7 +490,7 @@ function testDateFmtShortDateComponentsN_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("9", fmt.format(date));
+    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_az_Latn_AZ() {
