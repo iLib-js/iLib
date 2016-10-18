@@ -1694,7 +1694,7 @@ module.exports = {
 
         return durationSysres;
     },
-    createDurationResources: function (sourcePath, cldrData, language, script) {
+    createDurationResources: function (sourcePath, dateFieldPath, cldrData, language, script) {
         var durationObject = {
             "durationPropertiesFull" : {
                 "millisecond": "1#1 millisecond|#{num} milliseconds",
@@ -1716,7 +1716,7 @@ module.exports = {
                 "month": "1#1 mon|#{num} mons",
                 "year": "1#1 yr|#{num} yrs"
             },
-            "durationPropertiesMedium" : {
+            /*"durationPropertiesMedium" : {
                 "millisecond": "durationMediumMillis",
                 "second": "1#1 se|#{num} sec",
                 "minute": "1#1 mi|#{num} min",
@@ -1725,7 +1725,7 @@ module.exports = {
                 "week": "durationMediumWeeks",
                 "month": "1#1 mo|#{num} mos",
                 "year": "durationMediumYears"
-            },
+            },*/
             "durationPropertiesShort" : {
                 "millisecond": "durationShortMillis",
                 "second": "#{num}s",
@@ -1747,22 +1747,22 @@ module.exports = {
             switch(prop) {
                 case "durationPropertiesFull":
                     unit = table.long;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "full", language, script);
+                    result = module.exports.createDurationResourceDetail(dateFieldPath, unit, durationObject[prop], "full", language, script);
                     sysres.push(result);
                 break;
                 case "durationPropertiesLong":
                     unit = table.short;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "long", language, script);
+                    result = module.exports.createDurationResourceDetail(dateFieldPath, unit, durationObject[prop], "long", language, script);
                     sysres.push(result);
                 break;
-                case "durationPropertiesMedium":
+                /*case "durationPropertiesMedium":
                     unit = table.short;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "medium", language, script);
+                    result = module.exports.createDurationResourceDetail(dateFieldPath, unit, durationObject[prop], "medium", language, script);
                     sysres.push(result);
-                break;
+                break;*/
                 case "durationPropertiesShort":
                     unit = table.narrow;
-                    result = module.exports.createDurationResourceDetail(sourcePath, unit, durationObject[prop], "short", language, script);
+                    result = module.exports.createDurationResourceDetail(dateFieldPath, unit, durationObject[prop], "short", language, script);
                     sysres.push(result);
                 break;
             }

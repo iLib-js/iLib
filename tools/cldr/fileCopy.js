@@ -26,8 +26,8 @@ var util = require('util');
 var common = require('./common.js');
 var merge = common.merge;
 
-localeDir = "/home/goun/Source/i18nlib-code-trunk/tools/cldr/tmp";
-targetDir = "/home/goun/Source/i18nlib-code-trunk/js/data/locale";
+localeDir = "/home/goun/Source/iLib/tools/cldr/tmp";
+targetDir = "/home/goun/Source/iLib/js/data/locale/";
 
 function usage() {
 	util.print("Usage: fileCopy [-h] tool_result_dir locale_data_dir\n" +
@@ -43,8 +43,8 @@ function usage() {
 /*var localeDir = ".",
 	localeDir = ".";
 */
-localeDir = process.argv[2]; //tmp.
-targetDir = process.argv[3]; //origin
+//localeDir = process.argv[2]; //tmp.
+//targetDir = process.argv[3]; //origin
 
 
 util.print("temp locale dir: " + localeDir + "\n");
@@ -68,7 +68,7 @@ function walk(root, targetdir, dir) {
 		} else {
 			var obj;
 			//if (file === 'dateformats.json') {
-			if (file.match(/\.jf$/)) {
+			if (file.match(/\.json$/)) {
 				util.print("targetDir: " + targetdir  + "\n");
 				if (!fs.existsSync(sourcePath)) {
 					//In order to see which one is newly created.
