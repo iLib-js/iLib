@@ -41,7 +41,7 @@ function testDateFmtDADKSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDADKSimpleMedium() {
@@ -58,7 +58,7 @@ function testDateFmtDADKSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011", fmt.format(date));
+    assertEquals("29. sep. 2011", fmt.format(date));
 }
 
 function testDateFmtDADKSimpleLong() {
@@ -177,7 +177,7 @@ function testDateFmtDADKDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 13.45", fmt.format(date));
+    assertEquals("29/09/2011 13.45", fmt.format(date));
 }
 
 function testDateFmtDADKDateTimeSimpleMedium() {
@@ -194,7 +194,7 @@ function testDateFmtDADKDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13.45", fmt.format(date));
+    assertEquals("29. sep. 2011 13.45", fmt.format(date));
 }
 
 function testDateFmtDADKDateTimeSimpleLong() {
@@ -417,7 +417,7 @@ function testDateFmtDADKTypeDate() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDADKTypeTime() {
@@ -451,7 +451,7 @@ function testDateFmtDADKTypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 13.45", fmt.format(date));
+    assertEquals("29/09/2011 13.45", fmt.format(date));
 }
 
 
@@ -469,7 +469,7 @@ function testDateFmtDADKShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtDADKShortDateComponentsM() {
@@ -554,7 +554,7 @@ function testDateFmtDADKShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/11", fmt.format(date));
+    assertEquals("09/2011", fmt.format(date));
 }
 
 function testDateFmtDADKShortDateComponentsDMY() {
@@ -571,7 +571,7 @@ function testDateFmtDADKShortDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDADKShortDateComponentsWDM() {
@@ -605,7 +605,7 @@ function testDateFmtDADKShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("T den 29/09/11", fmt.format(date));
+    assertEquals("T den 29/09/2011", fmt.format(date));
 }
 
 

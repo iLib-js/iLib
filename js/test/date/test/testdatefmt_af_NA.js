@@ -57,7 +57,7 @@ function testDateFmtSimpleMedium_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011", fmt.format(date));
+    assertEquals("29 Sep. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_af_NA_Jan() {
@@ -393,7 +393,7 @@ function testDateFmtDateTimeSimpleMedium_af_NA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("29 Sep. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_af_NA() {

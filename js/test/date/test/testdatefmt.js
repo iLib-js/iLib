@@ -3038,8 +3038,8 @@ function testDateFmtGetMeridiemsRangeName_with_bn_IN_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "bn-IN"});
     assertNotNull(fmt);
 
-    assertEquals("পূর্বাহ্ণ", fmt[0].name);
-    assertEquals("অপরাহ্ণ", fmt[1].name);
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 
 function testDateFmtGetMeridiemsRangeName_with_gu_IN_locale() {
@@ -3095,15 +3095,15 @@ function testDateFmtGetMeridiemsRangeName_with_te_IN_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "te-IN"});
     assertNotNull(fmt);
 
-    assertEquals("[AM]", fmt[0].name);
-    assertEquals("[PM]", fmt[1].name);
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 function testDateFmtGetMeridiemsRangeName_with_ur_IN_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "ur-IN"});
     assertNotNull(fmt);
 
-    assertEquals("قبل دوپہر", fmt[0].name);
-    assertEquals("بعد دوپہر", fmt[1].name);
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 function testDateFmtGetMeridiemsRangeName_with_as_IN_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});

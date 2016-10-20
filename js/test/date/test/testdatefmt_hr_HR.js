@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011.", fmt.format(date));
+    assertEquals("29. 09. 2011.", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_hr_HR() {
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011. 13:45", fmt.format(date));
+    assertEquals("29. 09. 2011. 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_hr_HR() {
@@ -472,7 +472,7 @@ function testDateFmtShortDateComponentsDM_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09", fmt.format(date));
+    assertEquals("29. 09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_hr_HR() {
@@ -489,7 +489,7 @@ function testDateFmtShortDateComponentsMY_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.2011.", fmt.format(date));
+    assertEquals("09. 2011.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_hr_HR() {
@@ -506,7 +506,7 @@ function testDateFmtShortDateComponentsDMY_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011.", fmt.format(date));
+    assertEquals("29. 09. 2011.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_hr_HR() {
@@ -523,7 +523,7 @@ function testDateFmtShortDateComponentsWDM_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Č, 29.09", fmt.format(date));
+    assertEquals("Č, 29. 09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_hr_HR() {
@@ -540,7 +540,7 @@ function testDateFmtShortDateComponentsWDMY_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Č, 29.09.2011.", fmt.format(date));
+    assertEquals("Č, 29. 09. 2011.", fmt.format(date));
 }
 
 

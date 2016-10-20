@@ -40,7 +40,7 @@ function testDateFmtINSimpleShort_kn_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_kn_IN() {
@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("29/9/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_kn_IN() {
@@ -417,7 +417,7 @@ function testDateFmtINTypeDate_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINTypeTime_kn_IN() {
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("29/9/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 
@@ -537,7 +537,7 @@ function testDateFmtINShortDateComponentsDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_kn_IN() {
@@ -571,7 +571,7 @@ function testDateFmtINShortDateComponentsDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_kn_IN() {
@@ -588,7 +588,7 @@ function testDateFmtINShortDateComponentsWDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ಗು, 9/29", fmt.format(date));
+    assertEquals("ಗು, 29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_kn_IN() {
@@ -605,7 +605,7 @@ function testDateFmtINShortDateComponentsWDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ಗು, 9/29/11", fmt.format(date));
+    assertEquals("ಗು, 29/9/11", fmt.format(date));
 }
 
 
