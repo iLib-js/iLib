@@ -485,7 +485,7 @@ function testDateFmtINShortDateComponentsM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_ml_IN() {
@@ -553,7 +553,7 @@ function testDateFmtINShortDateComponentsMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/11", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_ml_IN() {

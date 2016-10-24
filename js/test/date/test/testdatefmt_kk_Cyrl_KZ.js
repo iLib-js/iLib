@@ -539,7 +539,7 @@ function testDateFmtShortDateComponentsWDMY_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Б, 29/09/11", fmt.format(date));
+    assertEquals("29.09.11, Б", fmt.format(date));
 }
 
 
