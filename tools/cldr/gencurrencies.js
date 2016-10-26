@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /*
  * This code is intended to be run under node.js
  */
@@ -59,12 +60,13 @@ function getDecimals(currency, fractions) {
             return Number(fractions[cur]._digits);
         }
     }
-
-    // in CLDR, default _digits value is 2
-    // "DEFAULT": {
-    //      "_rounding": "0",
-    //      "_digits": "2"
-    //}
+/*
+ * in CLDR, default _digits value is 2
+ * "DEFAULT": {
+ *       "_rounding": "0",
+ *       "_digits": "2"
+ * }
+ */
     return 2;
 }
 
@@ -77,7 +79,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
                 arr['sign'] = cldrData[cur]['symbol-alt-narrow'];
             } else if(cldrData[cur]['symbol-alt-variant'] !== undefined && cldrData[cur]['symbol-alt-narrow'] === undefined) {
                 arr['sign'] = cldrData[cur]['symbol-alt-variant'];
-            } else if(cldrData[cur]['symbol-alt-variant'] === undefined && cldrData[cur]['symbol-alt-narrow'] === undefined) {
+            } else if(cldrData[cur]['symbol-alt-variant'] === undefined && cldrData[cur]['symbol-alt-narrow'] === undefined && ilibData[cur]['sign'] !== undefined) {
                 arr['sign'] = ilibData[cur]['sign'];
             } else {
                 arr['sign'] = cldrData[cur]['symbol'];
@@ -119,8 +121,8 @@ console.log("CLDR dir: " + cldrDir + "\n");
 console.log("output dir: " + toDir + "\n");
 
 var ilibDataFileName = "../../js/data/locale/currency.json";
-var currencyDataFileName = path.join(cldrDir, "supplemental/currencyData.json");
-var currencyDisplayFileName = path.join(cldrDir, "main/en-US/currencies.json");
+var currencyDataFileName = path.join(cldrDir, "cldr-core/supplemental/currencyData.json");
+var currencyDisplayFileName = path.join(cldrDir, "cldr-numbers-full/main/en/currencies.json");
 
 if (!fs.existsSync(currencyDataFileName)) {
     console.log("Could not access CLDR supplemental data file " + currencyDataFileName);
@@ -142,7 +144,7 @@ var ilibData = JSON.parse(ilibDataString);
 var supplementalData = JSON.parse(currencyDataString);
 var mainData = JSON.parse(currencyDisplayString);
 var currencyData = supplementalData.supplemental.currencyData;
-var currencyDispData = mainData.main['en-US'].numbers.currencies;
+var currencyDispData = mainData.main['en'].numbers.currencies;
 var currencyObj = {}; // for saving currency.jf in each directory
 var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
