@@ -3369,7 +3369,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ro_RO() {
 
     assertNotNull(fmt);
 
-    assertEquals("100.110,57 L", fmt.format(100110.57));
+    assertEquals("100.110,57 lei", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_ro_RO() {
     var fmt = new NumFmt({
@@ -3806,12 +3806,12 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "lt-LT",
-    currency: "LTL"
+        currency: "EUR"
     });
 
     assertNotNull(fmt);
 
-    assertEquals("100 110,57 Lt", fmt.format(100110.57));
+    assertEquals("100 110,57 €", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_lt_LT() {
     var fmt = new NumFmt({
@@ -4764,7 +4764,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
 
     assertNotNull(fmt);
 
-    assertEquals("₡100.111", fmt.format(100110.57));
+    assertEquals("₡100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_CR() {
     var fmt = new NumFmt({
@@ -4786,7 +4786,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
 
     assertNotNull(fmt);
 
-    assertEquals("(₡ 100.111)", fmt.format(-100110.57));
+    assertEquals("(₡ 100.110,57)", fmt.format(-100110.57));
 }
 
 //test cases for es-DO
