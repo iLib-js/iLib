@@ -490,7 +490,7 @@ function testNumFmtCurrencyFormatZADefault() {
     
     assertNotNull(fmt);
     
-    assertEquals("(R57,00)", fmt.format(-57));
+    assertEquals("-R57,00", fmt.format(-57));
 }
 
 function testNumFmtCurrencyFormatZAGrouping() {
@@ -979,7 +979,7 @@ function testNumFmtCurrencyFormatNADefault() {
     
     assertNotNull(fmt);
     
-    assertEquals("($57,00)", fmt.format(-57));
+    assertEquals("-$57,00", fmt.format(-57));
 }
 
 function testNumFmtCurrencyFormatNAGrouping() {

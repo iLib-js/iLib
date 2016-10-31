@@ -5,10 +5,11 @@
         "decimalChar": ".",
         "groupChar": ",",
         "pctChar": "%",
-        "exponential": "ق",
+        "exponential": "×۱۰^",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "-{s}{n}"
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",

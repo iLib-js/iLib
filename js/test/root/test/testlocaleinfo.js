@@ -535,14 +535,14 @@ function testLocaleInfoGetPercentageFormat_es_CO() {
 	var info = new LocaleInfo("es-CO");
 	assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_es_CO() {
 	var info = new LocaleInfo("es-CO");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 //test cases for ja-JP
@@ -745,7 +745,7 @@ function testLocaleInfoGetCurrencyFormat_el_GR() {
 	var info = new LocaleInfo("el-GR");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 //test cases for hu-HU
@@ -1161,14 +1161,14 @@ function testLocaleInfoGetPercentageFormat_ar_AE() {
 	var info = new LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("{n} ٪؜", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_AE() {
 	var info = new LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_AE() {
@@ -1211,14 +1211,14 @@ function testLocaleInfoGetPercentageFormat_ar_DZ() {
 	var info = new LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}‎%‎", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_DZ() {
 	var info = new LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_DZ() {
@@ -1261,14 +1261,14 @@ function testLocaleInfoGetPercentageFormat_ar_TN() {
 	var info = new LocaleInfo("ar-TN");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}‎%‎", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_TN() {
 	var info = new LocaleInfo("ar-TN");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_TN() {
@@ -1459,14 +1459,14 @@ function testLocaleInfoGetPercentageFormat_be_BY() {
 	var info = new LocaleInfo("be-BY");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_be_BY() {
 	var info = new LocaleInfo("be-BY");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_be_BY() {
@@ -1699,7 +1699,7 @@ function testLocaleInfoGetPercentageFormat_bs_Cyrl_BA() {
 	var info = new LocaleInfo("bs-BA-Cyrl");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_bs_Cyrl_BA() {
@@ -1745,7 +1745,7 @@ function testLocaleInfoGetGroupingSeparatorfor_bs_Cyrl_BA() {
 function testLocaleInfoGetPercentageFormat_bs_Cyrl_BA() {
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 
 }
 
@@ -1792,7 +1792,7 @@ function testLocaleInfoGetPercentageFormat_bs_ME() {
 	var info = new LocaleInfo("bs-ME");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_bs_ME() {
@@ -1883,7 +1883,7 @@ function testLocaleInfoGetGroupingSeparatorfor_de_AT() {
 	var info = new LocaleInfo("de-AT");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_de_AT() {
@@ -1941,14 +1941,14 @@ function testLocaleInfoGetPercentageFormat_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("‎٪ {n}", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("‎{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} ؜{s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fa() {
@@ -1991,14 +1991,14 @@ function testLocaleInfoGetPercentageFormat_fa_AF() {
 	var info = new LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("‎٪ {n}", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa_AF() {
 	var info = new LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("‎{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fa_AF() {
@@ -2151,7 +2151,7 @@ function testLocaleInfoGetCurrencyFormat_fo() {
 	var info = new LocaleInfo("fo");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fo() {
@@ -2295,14 +2295,14 @@ function testLocaleInfoGetPercentageFormat_fr_CH() {
 	var info = new LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fr_CH() {
 	var info = new LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_CH() {
@@ -2649,14 +2649,14 @@ function testLocaleInfoGetPercentageFormat_gl_ES() {
 	var info = new LocaleInfo("gl-ES");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_gl_ES() {
 	var info = new LocaleInfo("gl-ES");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_gl_ES() {
@@ -2756,7 +2756,7 @@ function testLocaleInfoGetCurrencyFormat_he() {
 	var info = new LocaleInfo("he-IL");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("‏{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_he() {
@@ -2895,7 +2895,7 @@ function testLocaleInfoGetGroupingSeparatorfor_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_hy_AZ() {
@@ -2909,14 +2909,14 @@ function testLocaleInfoGetCurrencyFormat_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals(2, info.getPrimaryGroupingDigits());
+	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetSecondaryGroupingDigits_hy_AZ() {
@@ -3012,7 +3012,7 @@ function testLocaleInfoGetCurrencyFormat_it_CH() {
 	var info = new LocaleInfo("it-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_it_CH() {
@@ -3619,7 +3619,7 @@ function testLocaleInfoGetCurrencyFormat_mk() {
 	var info = new LocaleInfo("mk-MK");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_mk() {
@@ -5023,7 +5023,7 @@ function testLocaleInfoGetPercentageFormat_sl() {
 	var info = new LocaleInfo("sl-SI");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_sl() {
@@ -5678,7 +5678,7 @@ function testLocaleInfoGetCurrencyFormat_ta_LK() {
 	var info = new LocaleInfo("ta-LK");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_LK() {
@@ -5728,7 +5728,7 @@ function testLocaleInfoGetCurrencyFormat_ta_MY() {
 	var info = new LocaleInfo("ta-MY");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_MY() {
@@ -5778,7 +5778,7 @@ function testLocaleInfoGetCurrencyFormat_ta_SG() {
 	var info = new LocaleInfo("ta-SG");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_SG() {
@@ -5880,7 +5880,7 @@ function testLocaleInfoGetCurrencyFormat_uk_UA() {
 	var info = new LocaleInfo("uk-UA");
 	assertNotNull(info);
 
-	assertEquals("{n}{s}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_uk_UA() {
@@ -5994,7 +5994,7 @@ function testLocaleInfoGetSecondaryGroupingDigits_ur_IN() {
 	var info = new LocaleInfo("ur-IN");
 	assertNotNull(info);
 
-	assertEquals(2, info.getSecondaryGroupingDigits());
+	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
 function testLocaleInfoRoundingMode_ur_IN() {
@@ -6130,7 +6130,7 @@ function testLocaleInfoGetCurrencyFormat_uz_Latn_UZ() {
 	var info = new LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_uz_Latn_UZ() {
@@ -6232,7 +6232,7 @@ function testLocaleInfoGetCurrencyFormat_vi() {
 	var info = new LocaleInfo("vi-VN");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_vi() {
@@ -6533,7 +6533,7 @@ function testLocaleInfoGetCurrencyFormat_km_KH() {
     var info = new LocaleInfo("km-KH");
     assertNotNull(info);
 
-    assertEquals("{s}{n}", info.getCurrencyFormats().common);
+    assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_km_KH() {

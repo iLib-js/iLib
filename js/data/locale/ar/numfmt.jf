@@ -4,13 +4,13 @@
         "script": "Arab",
         "decimalChar": "٫",
         "groupChar": "٬",
-        "pctChar": "٪",
+        "pctChar": "٪؜",
         "exponential": "اس",
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "common": "{n} {s}",
+            "commonNegative": "-{n} {s}"
         },
-        "pctFmt": "{n}٪",
+        "pctFmt": "{n} ٪؜",
         "digits": "٠١٢٣٤٥٦٧٨٩",
         "useNative": true
     }

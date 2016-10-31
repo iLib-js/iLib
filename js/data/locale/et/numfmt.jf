@@ -6,7 +6,7 @@
         "exponential": "×10^",
         "currencyFormats": {
             "common": "{n} {s}",
-            "commonNegative": "({n} {s})"
+            "commonNegative": "-{n} {s}"
         }
     }
 }

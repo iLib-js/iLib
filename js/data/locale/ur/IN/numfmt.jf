@@ -2,8 +2,7 @@
     "generated": true,
     "numfmt": {
         "script": "arabext",
-        "exponential": "ق",
-        "secgroupSize": 2,
+        "exponential": "×۱۰^",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }

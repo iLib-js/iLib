@@ -3,9 +3,10 @@
     "numfmt": {
         "decimalChar": ",",
         "groupChar": " ",
-        "exponential": "×10^",
+        "exponential": "·10^",
         "currencyFormats": {
-            "common": "{n} {s}"
+            "common": "{n} {s}",
+            "commonNegative": "-{n} {s}"
         },
         "pctFmt": "{n} %"
     }

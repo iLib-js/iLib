@@ -4,7 +4,9 @@
         "decimalChar": ",",
         "groupChar": " ",
         "currencyFormats": {
-            "common": "{s}{n}"
-        }
+            "common": "{n} {s}",
+            "commonNegative": "-{n} {s}"
+        },
+        "pctFmt": "{n} %"
     }
 }

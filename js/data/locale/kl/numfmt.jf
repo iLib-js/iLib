@@ -3,7 +3,6 @@
     "numfmt": {
         "decimalChar": ",",
         "groupChar": ".",
-        "exponential": "×10^",
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "{s}-{n}"

@@ -1,6 +1,11 @@
 {
     "generated": true,
     "numfmt": {
-        "decimalChar": "."
+        "decimalChar": ".",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "{s}-{n}"
+        },
+        "pctFmt": "{n}%"
     }
 }
