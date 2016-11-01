@@ -2452,7 +2452,7 @@ function testNumFmt_ur_IN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-۱,۲۳۴,۵۶۸.۷۸", fmt.format(-1234568.78));
+    assertEquals("‎-‎۱,۲۳۴,۵۶۸.۷۸", fmt.format(-1234568.78));
 }
 
 
@@ -2465,7 +2465,7 @@ function testNumFmtNative_ur_IN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-۱,۲۳۴,۵۶۸.۷۸", fmt.format(-1234568.78));
+    assertEquals("‎-‎۱,۲۳۴,۵۶۸.۷۸", fmt.format(-1234568.78));
 }
 
 function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
@@ -2491,7 +2491,7 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
     
     assertNotNull(fmt);
 
-    assertEquals("-₹ ۱۰۰,۱۱۰.۵۷", fmt.format(-100110.57));
+    assertEquals("‎-‎₹ ۱۰۰,۱۱۰.۵۷", fmt.format(-100110.57));
 }
 
 
@@ -2774,7 +2774,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_HK() {
     
     assertNotNull(fmt);
 
-    assertEquals("HKD100,110.57", fmt.format(100110.57));
+    assertEquals("HKD 100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_zh_Hant_HK() {
     var fmt = new ilib.NumFmt({
@@ -2809,7 +2809,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_TW() {
     
     assertNotNull(fmt);
 
-    assertEquals("TWD100,110.57", fmt.format(100110.57));
+    assertEquals("TWD 100,110.57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_zh_Hant_TW() {
     var fmt = new ilib.NumFmt({
@@ -3066,7 +3066,7 @@ function testNumFmt_sv_SE() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123 456,78", fmt.format(-123456.785));
+    assertEquals("−123 456,78", fmt.format(-123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_sv_SE() {
@@ -3099,7 +3099,7 @@ function testNumFmt_fi_FI() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123 456,78", fmt.format(-123456.785));
+    assertEquals("−123 456,78", fmt.format(-123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fiFI() {
@@ -3391,7 +3391,7 @@ function testNumFmt_ar_SA() {
     
     assertNotNull(fmt);
     
-    assertEquals("-١٢٣٬٤٥٦٫٧٨", fmt.format(-123456.785));
+    assertEquals("؜-١٢٣٬٤٥٦٫٧٨", fmt.format(-123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ar_SA() {
@@ -3525,7 +3525,7 @@ function testNumFmt_et_EE() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111 123 456,78", fmt.format(-111123456.785));
+    assertEquals("−111 123 456,78", fmt.format(-111123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
@@ -3571,7 +3571,7 @@ function testNumFmt_fa_IR() {
     
     assertNotNull(fmt);
     
-    assertEquals("-۱۱۱٬۱۲۳٬۴۵۶٫۷۸", fmt.format(-111123456.785));
+    assertEquals("‎−۱۱۱٬۱۲۳٬۴۵۶٫۷۸", fmt.format(-111123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fa_IR() {
@@ -3638,7 +3638,7 @@ function testNumFmt_he_IL() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+    assertEquals("‎-111,123,456.78", fmt.format(-111123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_he_IL() {
@@ -3772,7 +3772,7 @@ function testNumFmt_lt_LT() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111 123 456,78", fmt.format(-111123456.785));
+    assertEquals("−111 123 456,78", fmt.format(-111123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
@@ -3904,7 +3904,7 @@ function testNumFmt_nb_NO() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111 123 456,78", fmt.format(-111123456.785));
+    assertEquals("−111 123 456,78", fmt.format(-111123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
@@ -4007,7 +4007,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
     
     assertNotNull(fmt);
     
-    assertEquals("-100 110,57 €", fmt.format(-100110.57));
+    assertEquals("−100 110,57 €", fmt.format(-100110.57));
 }
 
 function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {

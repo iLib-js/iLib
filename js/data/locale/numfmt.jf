@@ -9,9 +9,13 @@
         "prigroupSize": 3,
         "currencyFormats": {
             "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "commonNegative": "-{s} {n}",
+            "iso": "{s} {n}",
+            "isoNegative": "({s} {n})"
         },
+        "negativenumFmt": "-{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
         "useNative": false
     }

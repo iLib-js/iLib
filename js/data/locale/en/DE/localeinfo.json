@@ -6,7 +6,8 @@
             "common": "{n} {s}",
             "commonNegative": "-{n} {s}"
         },
-        "pctFmt": "{n} %"
+        "pctFmt": "{n} %",
+        "negativepctFmt": "-{n} %"
     },
     "locale": "en-DE"
 }

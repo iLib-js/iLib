@@ -5,8 +5,10 @@
         "groupChar": ".",
         "currencyFormats": {
             "common": "{n} {s}",
-            "commonNegative": "-{n} {s}"
+            "commonNegative": "−{n} {s}"
         },
-        "pctFmt": "{n} %"
+        "negativenumFmt": "−{n}",
+        "pctFmt": "{n} %",
+        "negativepctFmt": "−{n} %"
     }
 }

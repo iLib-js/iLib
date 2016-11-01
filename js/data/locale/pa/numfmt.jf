@@ -12,7 +12,9 @@
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
+        "negativenumFmt": "-{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
         "digits": "੦੧੨੩੪੫੬੭੮੯",
         "useNative": true

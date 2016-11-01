@@ -8,6 +8,7 @@
             "commonNegative": "-{s}{n}"
         },
         "pctFmt": "{n} %",
+        "negativepctFmt": "-{n} %",
         "digits": "༠༡༢༣༤༥༦༧༨༩",
         "useNative": true
     }

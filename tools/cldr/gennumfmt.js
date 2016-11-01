@@ -273,10 +273,10 @@ function getNumberFormats_num_system(def_num_system, data) {
 	var percentage = "percentFormats-numberSystem-";
 	var currency = "currencyFormats-numberSystem-";
 
-	symbol_number_system = symbol.concat(def_num_system);
-	decimal_number_system = decimal.concat(def_num_system);
-	percentage_number_system = percentage.concat(def_num_system);
-	currency_number_system = currency.concat(def_num_system);
+	var symbol_number_system = symbol.concat(def_num_system);
+	var decimal_number_system = decimal.concat(def_num_system);
+	var percentage_number_system = percentage.concat(def_num_system);
+	var currency_number_system = currency.concat(def_num_system);
 
 	//console.log("the symbol numbering system " + symbol_number_system + "\n");
 	var symbol_format = data.numbers[symbol_number_system];
@@ -287,6 +287,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 
 	var decimal_separator = data.numbers[symbol_number_system]["decimal"];
 	var group_separator = data.numbers[symbol_number_system]["group"];
+	var minus_sign = data.numbers[symbol_number_system]["minusSign"];
 
 	var index_of_decimal = 0;
 	var index_of_group = 0;
@@ -361,7 +362,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 		curFmt = currency_format.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
 		symbol_format_data.currencyFormats.common = curFmt;
-		symbol_format_data.currencyFormats.commonNegative = "-" + curFmt;
+		symbol_format_data.currencyFormats.commonNegative = minus_sign + curFmt;
 	}
 
 		//symbol_format_data["curFmt"]=curFmt; 
@@ -370,6 +371,9 @@ function getNumberFormats_num_system(def_num_system, data) {
 		var negative_num_format = decimal_fmt.substring(index_of_semi_colon + 1, decimal_fmt.length);
 		var numfmtnegative = negative_num_format.replace(/[0#,\.]+/, "{n}");
 		symbol_format_data["negativenumFmt"] = numfmtnegative;
+	} else {
+		var numfmtnegative = decimal_fmt.replace(/[0#,\.]+/, "{n}");
+		symbol_format_data["negativenumFmt"] = minus_sign +  numfmtnegative;
 	}
 
 	if (percent_format.indexOf(";") != -1) {
@@ -398,9 +402,11 @@ function getNumberFormats_num_system(def_num_system, data) {
 		if (symbol_format["percentSign"] !== "%") {
 			newpctFmt = pctFmt.replace("%", symbol_format["percentSign"]);i
 			symbol_format_data["pctFmt"] = newpctFmt;
+			symbol_format_data["negativepctFmt"] = minus_sign + newpctFmt;
 
 		} else {
 			symbol_format_data["pctFmt"] = pctFmt;
+			symbol_format_data["negativepctFmt"] = minus_sign + pctFmt;
 		}
 	}
 

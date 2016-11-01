@@ -9,11 +9,20 @@
         "prigroupSize": 3,
         "currencyFormats": {
             "common": "{s}{n}",
-            "commonNegative": "-{s}{n}"
+            "commonNegative": "‎-‎{s}{n}"
         },
+        "negativenumFmt": "‎-‎{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "‎-‎{n}%",
         "roundingMode": "halfdown",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "commonNegative": "‎-{s} {n}"
+        },
+        "negativenumFmt": "‎-{n}",
+        "negativepctFmt": "‎-{n}%"
     }
 }

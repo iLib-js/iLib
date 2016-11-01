@@ -9,9 +9,11 @@
         "prigroupSize": 3,
         "currencyFormats": {
             "common": "{n} {s}",
-            "commonNegative": "-{n} {s}"
+            "commonNegative": "؜-{n} {s}"
         },
+        "negativenumFmt": "؜-{n}",
         "pctFmt": "{n} ٪؜",
+        "negativepctFmt": "؜-{n} ٪؜",
         "roundingMode": "halfdown",
         "digits": "٠١٢٣٤٥٦٧٨٩",
         "useNative": true
@@ -24,9 +26,11 @@
         "exponential": "E",
         "currencyFormats": {
             "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "commonNegative": "‎-{s} {n}"
         },
+        "negativenumFmt": "‎-{n}",
         "pctFmt": "{n}‎%‎",
+        "negativepctFmt": "‎-{n}‎%‎",
         "useNative": false
     }
 }

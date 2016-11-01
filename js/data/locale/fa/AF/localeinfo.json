@@ -2,7 +2,7 @@
     "numfmt": {
         "currencyFormats": {
             "common": "{s} {n}",
-            "commonNegative": "-{s} {n}"
+            "commonNegative": "‎−{s} {n}"
         }
     },
     "locale": "fa-AF"

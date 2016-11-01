@@ -10,6 +10,7 @@
             "common": "{n} ؜{s}",
             "commonNegative": "؜-{n} ؜{s}"
         },
+        "negativenumFmt": "‎−{n}",
         "negativepctFmt": "‎٪ -{n}",
         "pctFmt": "‎٪ {n}",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
