@@ -504,7 +504,7 @@ function testDateFmtShortDateComponentsN_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("С", fmt.format(date));
+    assertEquals("с", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_ru_RU() {

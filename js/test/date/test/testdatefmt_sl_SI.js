@@ -1379,7 +1379,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sl_SI() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("čez 4 dnevi", fmt.formatRelative(reference, date));
+    assertEquals("čez 4 dni", fmt.formatRelative(reference, date));
 }
 /*function testDateFmtFormatRelativeWithinFortnightBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});

@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleLong_km_KH() {
         millisecond: 0
     });
 
-    assertEquals("29 កញ្ញា 2011 នៅ 1:45 PM", fmt.format(date));
+    assertEquals("29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_km_KH() {
@@ -230,7 +230,7 @@ function testDateFmtDateTimeSimpleFull_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("29 កញ្ញា 2011 នៅ 1:45 PM", fmt.format(date));
+    assertEquals("29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM", fmt.format(date));
 }
 
 
@@ -575,7 +575,7 @@ function testDateFmtShortDateComponentsDMW_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("5 29/9", fmt.format(date));
+    assertEquals("ព 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMWY_km_KH() {
@@ -592,7 +592,7 @@ function testDateFmtShortDateComponentsDMWY_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("5 29/9/11", fmt.format(date));
+    assertEquals("ព 29/9/11", fmt.format(date));
 }
 
 
@@ -1224,7 +1224,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_km_KH() {
         second: 30,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 30 វិនាទី", fmt.formatRelative(reference, date));
+    assertEquals("30 វិនាទីទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1276,7 +1276,7 @@ function testDateFmtFormatRelativeWithinHourAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 10 នាទី", fmt.formatRelative(reference, date));
+    assertEquals("10 នាទីទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1328,7 +1328,7 @@ function testDateFmtFormatRelativeWithinDayAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 4 ម៉ោង", fmt.formatRelative(reference, date));
+    assertEquals("4 ម៉ោងទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1381,7 +1381,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 4 ថ្ងៃ", fmt.formatRelative(reference, date));
+    assertEquals("4 ថ្ងៃទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 9 សប្ដាហ៍", fmt.formatRelative(reference, date));
+    assertEquals("9 សប្ដាហ៍ទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1487,7 +1487,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 16 ខែ", fmt.formatRelative(reference, date));
+    assertEquals("16 ខែទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});
@@ -1540,7 +1540,7 @@ function testDateFmtFormatRelativeYearsAfter_km_KH() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("ក្នុង​រយៈ​ពេល 14 ឆ្នាំ", fmt.formatRelative(reference, date));
+    assertEquals("14 ឆ្នាំទៀត", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_km_KH() {
     var fmt = new DateFmt({locale: "km-KH", length: "full"});

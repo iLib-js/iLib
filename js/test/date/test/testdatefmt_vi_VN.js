@@ -553,7 +553,7 @@ function testDateFmtShortDateComponentsN_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("t", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_vi_VN() {

@@ -420,7 +420,7 @@ function testDateFmtShortDateComponentsM_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("Қы", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_kk_Cyrl_KZ() {
@@ -437,7 +437,7 @@ function testDateFmtShortDateComponentsN_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Қ", fmt.format(date));
+    assertEquals("қ", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_kk_Cyrl_KZ() {
@@ -574,7 +574,7 @@ function testDateFmtFullDateComponentsM_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("қыркүйек", fmt.format(date));
+    assertEquals("Қыркүйек", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_kk_Cyrl_KZ() {

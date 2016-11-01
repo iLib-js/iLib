@@ -503,7 +503,7 @@ function testDateFmtDADKShortDateComponentsN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtDADKShortDateComponentsD() {

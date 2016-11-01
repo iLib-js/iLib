@@ -57,7 +57,7 @@ function testDateFmtINSimpleMedium_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sht 2011", fmt.format(date));
+    assertEquals("29 sht 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_sq_AL() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sht 2011, 13:45", fmt.format(date));
+    assertEquals("29 sht 2011, 13:45", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_sq_AL() {
@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_sq_AL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_sq_AL() {

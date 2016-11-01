@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_bn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("সে", fmt.format(date));
+    assertEquals("স", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_bn_IN() {

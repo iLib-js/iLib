@@ -57,7 +57,7 @@ function testDateFmtINSimpleMedium_ur_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۹ ستمبر، ۲۰۱۱", fmt.format(date));
+    assertEquals("‏۲۰۱۱ ستمبر ۲۹", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_ur_IN() {
@@ -210,7 +210,7 @@ function testDateFmtINDateTimeSimpleMedium_ur_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ PM", fmt.format(date));
+    assertEquals("‏۲۰۱۱ ستمبر ۲۹ ‏۱:۴۵ PM", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_ur_IN() {
@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_ur_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("س", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_ur_IN() {

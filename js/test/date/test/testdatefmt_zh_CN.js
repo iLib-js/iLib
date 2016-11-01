@@ -469,7 +469,7 @@ function testDateFmtShortDateComponentsY_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年", fmt.format(date));
+    assertEquals("2011年", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_zh_Hans_CN() {

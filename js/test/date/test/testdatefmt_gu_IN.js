@@ -1376,7 +1376,7 @@ function testDateFmtFormatRelativeWitgunFortnightBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 દિવસ પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("4 દિવસ પહેલાં", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitgunQuarterAfter_gu_IN() {

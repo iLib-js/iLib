@@ -471,7 +471,7 @@ function testDateFmtShortDateComponentsM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Ве", fmt.format(date));
+    assertEquals("ве", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_uk_UA() {
@@ -488,7 +488,7 @@ function testDateFmtShortDateComponentsN_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("В", fmt.format(date));
+    assertEquals("в", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_uk_UA() {
@@ -625,7 +625,7 @@ function testDateFmtFullDateComponentsM_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Вересень", fmt.format(date));
+    assertEquals("вересень", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_uk_UA() {
@@ -676,7 +676,7 @@ function testDateFmtFullDateComponentsMY_uk_UA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Вересень 2011 р.", fmt.format(date));
+    assertEquals("вересень 2011 р.", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_uk_UA() {

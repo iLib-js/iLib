@@ -58,7 +58,7 @@ function testDateFmtfrCASimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-09-29", fmt.format(date));
+    assertEquals("29 sept. 2011", fmt.format(date));
 }
 
 function testDateFmtfrCASimpleLong() {

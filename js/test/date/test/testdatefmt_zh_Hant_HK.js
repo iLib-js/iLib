@@ -40,7 +40,7 @@ function testDateFmtSimpleShort_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/9/2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_zh_Hant_HK() {
@@ -176,7 +176,7 @@ function testDateFmtDateTimeSimpleShort_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 下午1:45", fmt.format(date));
+    assertEquals("29/9/2011 下午1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_zh_Hant_HK() {
@@ -417,7 +417,7 @@ function testDateFmtTypeDate_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/9/2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_zh_Hant_HK() {
@@ -451,7 +451,7 @@ function testDateFmtTypeDateTime_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 下午1:45", fmt.format(date));
+    assertEquals("29/9/2011 下午1:45", fmt.format(date));
 }
 
 
@@ -469,7 +469,7 @@ function testDateFmtShortDateComponentsY_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年", fmt.format(date));
+    assertEquals("2011年", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_zh_Hant_HK() {
@@ -554,7 +554,7 @@ function testDateFmtShortDateComponentsMY_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("9/2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_zh_Hant_HK() {
@@ -571,7 +571,7 @@ function testDateFmtShortDateComponentsDMY_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("29/9/2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_zh_Hant_HK() {
@@ -605,7 +605,7 @@ function testDateFmtShortDateComponentsWDMY_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11四", fmt.format(date));
+    assertEquals("29/9/2011四", fmt.format(date));
 }
 
 
@@ -1771,7 +1771,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9星期後", fmt.formatRelative(reference, date));
+    assertEquals("9 星期後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1797,7 +1797,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9星期前", fmt.formatRelative(reference, date));
+    assertEquals("9 星期前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_zh_Hant_HK() {
