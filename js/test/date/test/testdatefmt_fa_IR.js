@@ -1966,7 +1966,7 @@ function testDateFmtPersSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲", fmt.format(date));
+    assertEquals("‏۱۳۹۲ آذر ۲۱", fmt.format(date));
 }
 
 function testDateFmtPersSimpleTimeShort_fa_IR() {
@@ -2142,5 +2142,5 @@ function testDateFmtPersDateTimeSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲، ساعت ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۱۳۹۲ آذر ۲۱، ساعت ‏۱۳:۴۵", fmt.format(date));
 }
