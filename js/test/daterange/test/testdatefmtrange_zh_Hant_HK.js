@@ -41,7 +41,7 @@ function testDateRngFmtHKRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/11 下午1:45 – 下午2:30", fmt.format(start, end));
+    assertEquals("31/12/2011 下午1:45 – 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});
@@ -138,7 +138,7 @@ function testDateRngFmtHKRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/11 下午1:45 – 31/12/11 下午2:30", fmt.format(start, end));
+    assertEquals("30/12/2011 下午1:45 – 31/12/2011 下午2:30", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});
@@ -235,7 +235,7 @@ function testDateRngFmtHKRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});
@@ -332,7 +332,7 @@ function testDateRngFmtHKRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20/2011 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});
@@ -429,7 +429,7 @@ function testDateRngFmtHKRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
+    assertEquals("20/11/2011 – 31/1/2012", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});
@@ -526,7 +526,7 @@ function testDateRngFmtHKRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 1/14", fmt.format(start, end));
+    assertEquals("11/2011 – 1/2014", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});

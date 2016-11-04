@@ -41,7 +41,7 @@ function testDateRngFmtKHRangeInDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31/12/11, 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("31/12/11, 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtKHRangeInDayMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31 ធ្នូ 2011, 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011, 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtKHRangeInDayLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtKHRangeInDayFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("31 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("31 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtKHRangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtKHRangeNextDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("30/12/11, 1:45 ល្ងាច – 31/12/11, 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("30/12/11, 1:45 PM – 31/12/11, 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtKHRangeNextDayMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("30 ធ្នូ 2011, 1:45 ល្ងាច – 31 ធ្នូ 2011, 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("30 ធ្នូ 2011, 1:45 PM – 31 ធ្នូ 2011, 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtKHRangeNextDayLong() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("30 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 31 ធ្នូ 2011 នៅ 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("30 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 31 ធ្នូ 2011 នៅ​ម៉ោង 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtKHRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "km-KH", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtKHRangeNextDayFull() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("30 ធ្នូ 2011 នៅ 1:45 ល្ងាច – 31 ធ្នូ 2011 នៅ 2:30 ល្ងាច", fmt.format(start, end));
+    assertEquals("30 ធ្នូ 2011 នៅ​ម៉ោង 1:45 PM – 31 ធ្នូ 2011 នៅ​ម៉ោង 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtKHRangeMultiDayShort() {

@@ -526,7 +526,7 @@ function testDateRngFmtBARangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11. – 01.14.", fmt.format(start, end));
+    assertEquals("11.11. – 1.14.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "medium"});

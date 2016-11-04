@@ -433,7 +433,7 @@ function testDateRngFmtRangeNextYearShort_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});
@@ -530,7 +530,7 @@ function testDateRngFmtRangeMultiYearShort_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11 – 01/14", fmt.format(start, end));
+    assertEquals("11/11 – 1/14", fmt.format(start, end));
 }
 function testDateRngFmtRangeMultiYearMedium_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "medium"});

@@ -41,7 +41,7 @@ function testDateRngFmtCORangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/11 1:45 p. m. – 2:30 p. m.", fmt.format(start, end));
+    assertEquals("31/12/11, 1:45 p. m. – 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtCORangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/2011 1:45 p. m. – 2:30 p. m.", fmt.format(start, end));
+    assertEquals("31/12/2011, 1:45 p. m. – 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtCORangeinDayLong() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "long"});
@@ -162,7 +162,7 @@ function testDateRngFmtCORangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/2011 1:45 p. m. – 31/12/2011 2:30 p. m.", fmt.format(start, end));
+    assertEquals("30/12/2011, 1:45 p. m. – 31/12/2011, 2:30 p. m.", fmt.format(start, end));
 }
 function testDateRngFmtCORangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "es-CO", length: "long"});

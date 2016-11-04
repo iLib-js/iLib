@@ -66,7 +66,7 @@ function testDateRngFmtUARangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 груд. 2011 р. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 груд. 2011 р., 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayLong() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtUARangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 грудня 2011 р. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 грудня 2011 р. о 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayFull() {
     var fmt = new DateRngFmt({locale: "uk-UA", length: "full"});

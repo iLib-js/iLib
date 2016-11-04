@@ -395,7 +395,7 @@ function testDateRngFmtesPAMultiDayMedium() {
         second: 30,
         millisecond: 0
     });
-    assertEquals("06/20 – 28/2011", fmt.format(start, end));
+    assertEquals("20 – 28 jun. 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtesPANextMonthMedium() {
@@ -420,7 +420,7 @@ function testDateRngFmtesPANextMonthMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("06/20 – 11/28/2011", fmt.format(start, end));
+    assertEquals("20 jun. – 28 nov. 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtesPRMultiDayMedium() {
@@ -445,7 +445,7 @@ function testDateRngFmtesPRMultiDayMedium() {
         second: 30,
         millisecond: 0
     });
-    assertEquals("06/20 – 28/2011", fmt.format(start, end));
+    assertEquals("20 – 28 jun. 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtesPRNextMonthMedium() {
@@ -470,7 +470,7 @@ function testDateRngFmtesPRNextMonthMedium() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("06/20 – 11/28/2011", fmt.format(start, end));
+    assertEquals("20 jun. – 28 nov. 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtptGQNextDayFull() {
@@ -570,7 +570,7 @@ function testDateRngFmtptGQNextDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("20/06/11 13:45 – 22/06/11 15:30", fmt.format(start, end));
+    assertEquals("20/06/2011 13:45 – 22/06/2011 15:30", fmt.format(start, end));
 }
 
 
@@ -596,7 +596,7 @@ function testDateRngFmtenCAinDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11-06-20, 1:45 PM – 4:30 PM", fmt.format(start, end));
+    assertEquals("2011-06-20, 1:45 PM – 4:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtenCAMultitDayShort() {
@@ -621,7 +621,7 @@ function testDateRngFmtenCAMultitDayShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11-06-20 – 26", fmt.format(start, end));
+    assertEquals("2011-06-20 – 26", fmt.format(start, end));
 }
 
 function testDateRngFmtenCANextMonthShort() {
@@ -646,7 +646,7 @@ function testDateRngFmtenCANextMonthShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11-06-20 – 11-09-26", fmt.format(start, end));
+    assertEquals("2011-06-20 – 2011-09-26", fmt.format(start, end));
 }
 
 function testDateRngFmtenCANextYearShort() {
@@ -671,5 +671,5 @@ function testDateRngFmtenCANextYearShort() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("11-06-20 – 12-05-26", fmt.format(start, end));
+    assertEquals("2011-06-20 – 2012-05-26", fmt.format(start, end));
 }
