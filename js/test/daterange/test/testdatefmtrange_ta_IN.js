@@ -162,8 +162,8 @@ function testDateRngFmtRangeNextDayMedium_ta_IN() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("30 டிச., 2011, 1:45 பிற்பகல் – 31 டிச., 2011, 2:30 பிற்பகல்", fmt.format(start, end));
+	}); 
+    assertEquals("30 டிச., 2011, பிற்பகல் 1:45 – 31 டிச., 2011, பிற்பகல் 2:30",fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_ta_IN() {
     var fmt = new DateRngFmt({locale: "ta-IN", length: "long"});

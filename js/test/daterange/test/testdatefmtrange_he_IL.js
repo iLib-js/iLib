@@ -550,7 +550,7 @@ function testDateRngFmtILRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏נוב׳ 2011 – ‏ינו׳ 2014", fmt.format(start, end));
+    assertEquals("‏נוב׳ 2011 – ינו׳ 2014", fmt.format(start, end));
 }
 function testDateRngFmtILRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "he-IL", length: "long"});
@@ -574,7 +574,7 @@ function testDateRngFmtILRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏נובמבר 2011 – ‏ינואר 2014", fmt.format(start, end));
+    assertEquals("‏נובמבר 2011 – ינואר 2014", fmt.format(start, end));
 }
 function testDateRngFmtILRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "he-IL", length: "full"});
@@ -598,7 +598,7 @@ function testDateRngFmtILRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏נובמבר 2011 – ‏ינואר 2014", fmt.format(start, end));
+    assertEquals("‏נובמבר 2011 – ינואר 2014", fmt.format(start, end));
 }
 function testDateRngFmtILManyYearsFull() {
     var fmt = new DateRngFmt({locale: "he-IL", length: "full"});

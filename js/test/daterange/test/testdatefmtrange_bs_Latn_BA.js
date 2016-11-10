@@ -428,8 +428,8 @@ function testDateRngFmtBARangeNextYearShort() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("20.11.11. – 31.01.12.", fmt.format(start, end));
+	});           
+    assertEquals("20.11.11. – 31.1.12.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "bs-Latn-BA", length: "medium"});

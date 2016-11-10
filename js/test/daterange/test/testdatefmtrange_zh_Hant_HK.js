@@ -332,7 +332,7 @@ function testDateRngFmtHKRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "zh-Hant-HK", length: "medium"});

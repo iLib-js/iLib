@@ -42,7 +42,7 @@ function testDateRngFmtasINRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("৩১-১২-২০১১ ১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১-১২-৩১ ১:৪৫ অপৰাহ্ণ – ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtasINRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩১-১২-২০১১ ১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিসে ৩১ ১:৪৫ অপৰাহ্ণ – ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtasINRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩১ ডিচেম্বৰ, ২০১১ ১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিচেম্বৰ ৩১ ১:৪৫ অপৰাহ্ণ – ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtasINRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩১ ডিচেম্বৰ, ২০১১ ১.৪৫. অপৰাহ্ণ – ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিচেম্বৰ ৩১ ১:৪৫ অপৰাহ্ণ – ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 
 function testDateRngFmtasINRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtasINRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩০-১২-২০১১ ১.৪৫. অপৰাহ্ণ – ৩১-১২-২০১১ ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১-১২-৩০ ১:৪৫ অপৰাহ্ণ – ২০১১-১২-৩১ ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtasINRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩০-১২-২০১১ ১.৪৫. অপৰাহ্ণ – ৩১-১২-২০১১ ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিসে ৩০ ১:৪৫ অপৰাহ্ণ – ২০১১ ডিসে ৩১ ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtasINRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩০ ডিচেম্বৰ, ২০১১ ১.৪৫. অপৰাহ্ণ – ৩১ ডিচেম্বৰ, ২০১১ ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিচেম্বৰ ৩০ ১:৪৫ অপৰাহ্ণ – ২০১১ ডিচেম্বৰ ৩১ ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 function testDateRngFmtasINRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "as-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtasINRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("৩০ ডিচেম্বৰ, ২০১১ ১.৪৫. অপৰাহ্ণ – ৩১ ডিচেম্বৰ, ২০১১ ২.৩০. অপৰাহ্ণ", fmt.format(start, end));
+    assertEquals("২০১১ ডিচেম্বৰ ৩০ ১:৪৫ অপৰাহ্ণ – ২০১১ ডিচেম্বৰ ৩১ ২:৩০ অপৰাহ্ণ", fmt.format(start, end));
 }
 
 function testDateRngFmtasINRangeMultiDayShort() {

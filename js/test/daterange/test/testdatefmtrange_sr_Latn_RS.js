@@ -210,8 +210,9 @@ function testDateRngFmtRSRangeNextDayFull() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});           
-    assertEquals("30 டிச., 2011, பிற்பகல் 1:45 – 31 டிச., 2011, பிற்பகல் 2:30", fmt.format(start, end));
+	});    
+       
+    assertEquals("30. decembar 2011. 13:45 – 31. decembar 2011. 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtRSRangeMultiDayShort() {
