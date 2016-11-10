@@ -4,7 +4,7 @@
             "f": "{date} {time}",
             "l": "{date} {time}",
             "m": "{date}, {time}",
-            "s": "{date}, {time}"
+            "s": "{date} {time}"
         },
         "date": {
             "dmwy": {
@@ -105,25 +105,25 @@
                 "f": "‏{sd}טן {sm} {sy} {st} – {et}",
                 "l": "‏{sd}טן {sm} {sy} {st} – {et}",
                 "m": "‏{sd}טן {sm} {sy}, {st} – {et}",
-                "s": "‏{sd}/{sm}/{sy}, {st} – {et}"
+                "s": "‏{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
                 "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
-                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+                "s": "‏{sd}/{sm}/{sy} {st} – ‏{ed}/{em}/{ey} {et}"
             },
             "c02": {
                 "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
-                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+                "s": "‏{sd}/{sm}/{sy} {st} – ‏{ed}/{em}/{ey} {et}"
             },
             "c03": {
                 "f": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "l": "‏{sd}טן {sm} {sy} {st} – ‏{ed}טן {em} {ey} {et}",
                 "m": "‏{sd}טן {sm} {sy}, {st} – ‏{ed}טן {em} {ey}, {et}",
-                "s": "‏{sd}/{sm}/{sy}, {st} – ‏{ed}/{em}/{ey}, {et}"
+                "s": "‏{sd}/{sm}/{sy} {st} – ‏{ed}/{em}/{ey} {et}"
             },
             "c10": {
                 "f": "‏{sd} – ‏{ed}טן {em} {ey}",

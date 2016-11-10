@@ -32,7 +32,7 @@ var rtlLanguages = [
     "ae",
     "arc",
     "ar",
-    "az",
+    //"az",
     "bal",
     "bej",
     "bft",

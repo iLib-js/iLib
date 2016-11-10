@@ -1,8 +1,8 @@
 {
     "gregorian": {
         "order": {
-            "f": "{date} 'kl.' {time}",
-            "l": "{date} 'kl.' {time}",
+            "f": "{date} 'kl'. {time}",
+            "l": "{date} 'kl'. {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },

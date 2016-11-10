@@ -71,13 +71,13 @@
                 "ah": "a h",
                 "hm": "h.mm",
                 "ms": "mm.ss",
-                "ahm": "a h.mm",
+                "ahm": "h.mma h",
                 "hms": "h.mm.ss",
                 "hmz": "h.mm z",
-                "ahmz": "a h.mm z",
-                "ahms": "a h.mm.ss",
+                "ahmz": "h.mma h z",
+                "ahms": "h.mm.ssa h",
                 "hmsz": "h.mm.ss z",
-                "ahmsz": "a h.mm.ss z"
+                "ahmsz": "h.mm.ssa h z"
             },
             "24": {
                 "h": "HH",

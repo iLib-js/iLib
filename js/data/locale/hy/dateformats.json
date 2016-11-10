@@ -3,15 +3,15 @@
         "order": "{date}, {time}",
         "date": {
             "dmwy": {
-                "f": "yyyyթ. MMMM d, EEEE",
-                "l": "dd MMMM, yyyyթ., EEE",
-                "m": "dd MMM, yyyyթ., EE",
+                "f": "yyyy թ. MMMM d, EEEE",
+                "l": "dd MMMM, yyyy թ., EEE",
+                "m": "dd MMM, yyyy թ., EE",
                 "s": "dd.MM.yy, E"
             },
             "dmy": {
-                "f": "yyyyթ. MMMM d",
-                "l": "dd MMMM, yyyyթ.",
-                "m": "dd MMM, yyyyթ.",
+                "f": "yyyy թ. MMMM d",
+                "l": "dd MMMM, yyyy թ.",
+                "m": "dd MMM, yyyy թ.",
                 "s": "dd.MM.yy"
             },
             "dmw": {
@@ -27,9 +27,9 @@
                 "s": "dd.MM"
             },
             "my": {
-                "f": "yyyyթ. LLLL",
-                "l": "LLLL, yyyyթ.",
-                "m": "LLL, yyyyթ.",
+                "f": "yyyy թ. LLLL",
+                "l": "LLLL, yyyy թ.",
+                "m": "LLL, yyyy թ.",
                 "s": "MM.yy"
             },
             "dw": {
@@ -92,68 +92,68 @@
                 "ahmsz": "h:mm:ss a z"
             },
             "24": {
-                "h": "H",
+                "h": "HH",
                 "m": "mm",
                 "s": "ss",
-                "ah": "H",
-                "hm": "H:mm",
+                "ah": "HH",
+                "hm": "HH:mm",
                 "ms": "mm:ss",
-                "ahm": "H:mm",
-                "hms": "H:mm:ss",
-                "hmz": "H:mm z",
-                "ahmz": "H:mm z",
-                "ahms": "H:mm:ss",
-                "hmsz": "H:mm:ss z",
-                "ahmsz": "H:mm:ss z"
+                "ahm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmz": "HH:mm z",
+                "ahmz": "HH:mm z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
             }
         },
         "range": {
             "c00": {
-                "f": "{sy}թ. {sm} {sd}, {st} – {et}",
-                "l": "{sd} {sm}, {sy}թ., {st} – {et}",
-                "m": "{sd} {sm}, {sy}թ., {st} – {et}",
+                "f": "{sy} թ. {sm} {sd}, {st} – {et}",
+                "l": "{sd} {sm}, {sy} թ., {st} – {et}",
+                "m": "{sd} {sm}, {sy} թ., {st} – {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sy}թ. {sm} {sd}, {st} – {ey}թ. {em} {ed}, {et}",
-                "l": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
-                "m": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
+                "f": "{sy} թ. {sm} {sd}, {st} – {ey} թ. {em} {ed}, {et}",
+                "l": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
+                "m": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sy}թ. {sm} {sd}, {st} – {ey}թ. {em} {ed}, {et}",
-                "l": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
-                "m": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
+                "f": "{sy} թ. {sm} {sd}, {st} – {ey} թ. {em} {ed}, {et}",
+                "l": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
+                "m": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "{sy}թ. {sm} {sd}, {st} – {ey}թ. {em} {ed}, {et}",
-                "l": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
-                "m": "{sd} {sm}, {sy}թ., {st} – {ed} {em}, {ey}թ., {et}",
+                "f": "{sy} թ. {sm} {sd}, {st} – {ey} թ. {em} {ed}, {et}",
+                "l": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
+                "m": "{sd} {sm}, {sy} թ., {st} – {ed} {em}, {ey} թ., {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c10": {
-                "f": "{sy}թ. {sm} {sd} – {ed}",
-                "l": "{sd} – {ed} {em}, {ey}թ.",
-                "m": "{sd} – {ed} {em}, {ey}թ.",
+                "f": "{sy} թ. {sm} {sd} – {ed}",
+                "l": "{sd} – {ed} {em}, {ey} թ.",
+                "m": "{sd} – {ed} {em}, {ey} թ.",
                 "s": "{sd} – {ed}.{em}.{ey}"
             },
             "c11": {
-                "f": "{sy}թ. {sm} {sd} – {em} {ed}",
-                "l": "{sd} {sm} – {ed} {em}, {ey}թ.",
-                "m": "{sd} {sm} – {ed} {em}, {ey}թ.",
+                "f": "{sy} թ. {sm} {sd} – {em} {ed}",
+                "l": "{sd} {sm} – {ed} {em}, {ey} թ.",
+                "m": "{sd} {sm} – {ed} {em}, {ey} թ.",
                 "s": "{sd}.{sm} – {ed}.{em}.{ey}"
             },
             "c12": {
-                "f": "{sy}թ. {sm} {sd} – {ey}թ. {em} {ed}",
-                "l": "{sd} {sm}, {sy}թ. – {ed} {em}, {ey}թ.",
-                "m": "{sd} {sm}, {sy}թ. – {ed} {em}, {ey}թ.",
+                "f": "{sy} թ. {sm} {sd} – {ey} թ. {em} {ed}",
+                "l": "{sd} {sm}, {sy} թ. – {ed} {em}, {ey} թ.",
+                "m": "{sd} {sm}, {sy} թ. – {ed} {em}, {ey} թ.",
                 "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}"
             },
             "c20": {
-                "f": "{sy}թ. {sm} – {ey}թ. {em}",
-                "l": "{sm}, {sy}թ. – {em}, {ey}թ.",
-                "m": "{sm}, {sy}թ. – {em}, {ey}թ.",
+                "f": "{sy} թ. {sm} – {ey} թ. {em}",
+                "l": "{sm}, {sy} թ. – {em}, {ey} թ.",
+                "m": "{sm}, {sy} թ. – {em}, {ey} թ.",
                 "s": "{sm}.{sy} – {em}.{ey}"
             },
             "c30": {

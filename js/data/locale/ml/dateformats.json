@@ -6,37 +6,37 @@
                 "f": "yyyy, MMMM d, EEEE",
                 "l": "yyyy, MMMM d, EEE",
                 "m": "yyyy, MMM d, EE",
-                "s": "dd/MM/yy, E"
+                "s": "d/M/yy, E"
             },
             "dmy": {
                 "f": "yyyy, MMMM d",
                 "l": "yyyy, MMMM d",
                 "m": "yyyy, MMM d",
-                "s": "dd/MM/yy"
+                "s": "d/M/yy"
             },
             "dmw": {
                 "f": "MMMM d, EEEE",
                 "l": "MMMM d, EEE",
                 "m": "MMM d, EE",
-                "s": "dd/MM, E"
+                "s": "d/M, E"
             },
             "dm": {
                 "f": "MMMM d",
                 "l": "MMMM d",
                 "m": "MMM d",
-                "s": "dd/MM"
+                "s": "d/M"
             },
             "my": {
                 "f": "yyyy, MMMM",
                 "l": "yyyy, MMMM",
                 "m": "yyyy, MMM",
-                "s": "MM/yy"
+                "s": "M/yy"
             },
             "dw": {
                 "f": "d, EEEE",
                 "l": "d, EEE",
                 "m": "d, EE",
-                "s": "dd/E"
+                "s": "d/E"
             },
             "w": {
                 "f": "EEEE",
@@ -48,13 +48,13 @@
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "dd"
+                "s": "d"
             },
             "m": {
                 "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
-                "s": "MM"
+                "s": "M"
             },
             "y": {
                 "f": "yyyy",
