@@ -130,8 +130,8 @@ function testDurFmtAZFormatFull() {
         hour: 1,
         minute: 1,
         second: 1
-    });
-    assertEquals("1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə və 1 saniyə", duration.toString());
+    });           
+    assertEquals("1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə, 1 saniyə", duration.toString());
 };
 
 
@@ -152,8 +152,8 @@ function testDurFmtAZAsyncWithLocale() {
                 hour: 2,
                 minute: 2,
                 second: 2
-            });
-            assertEquals("2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə və 2 saniyə", duration.toString());
+            });           
+            assertEquals("2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə, 2 saniyə", duration.toString());
             callbackCalled = true;
         }
     });
