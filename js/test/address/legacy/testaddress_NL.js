@@ -102,7 +102,7 @@ function testParseAddressNLSpecialChars() {
 };
 
 function testParseAddressNLFromUS() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, The Netherlands", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -111,7 +111,7 @@ function testParseAddressNLFromUS() {
 	assertEquals("Uithoorn", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("2345 GD", parsedAddress.postalCode);
-	assertEquals("The Netherlands", parsedAddress.country);
+	assertEquals("Netherlands", parsedAddress.country);
 	assertEquals("NL", parsedAddress.countryCode);
 };
 

@@ -138,11 +138,11 @@ function testParseAddressTWTWOneLine() {
 };
 
 function testParseAddressTWTWSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Republic of China\n\n\n", {locale: 'en-TW'});
+	var parsedAddress = new ilib.Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Taiwan\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("TW", parsedAddress.countryCode);
-	assertEquals("Republic of China", parsedAddress.country);
+	assertEquals("Taiwan", parsedAddress.country);
 	assertEquals("110", parsedAddress.postalCode);
 	assertEquals("Taiwan", parsedAddress.region);
 	assertEquals("Taipei City", parsedAddress.locality);
@@ -174,7 +174,7 @@ function testParseAddressTWTWSpecialChars() {
 };
 
 function testParseAddressTWTWFromUS() {
-	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nRepublic of China", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nTaiwan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -183,7 +183,7 @@ function testParseAddressTWTWFromUS() {
 	assertEquals("Taipei", parsedAddress.locality);
 	assertEquals("Taiwan", parsedAddress.region);
 	assertEquals("110", parsedAddress.postalCode);
-	assertEquals("Republic of China", parsedAddress.country);
+	assertEquals("Taiwan", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 };
 

@@ -54,14 +54,14 @@ function testParseAddressHKHKLatinDouble() {
 };
 
 function testParseAddressHKHKAsianNormal() {
-	var parsedAddress = new ilib.Address("香港太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-HK'});
+	var parsedAddress = new ilib.Address("中國香港特別行政區太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-Hant-HK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("英皇道1111號太古城中心1期19字樓", parsedAddress.streetAddress);
 	assertEquals("太古城", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("香港", parsedAddress.country);
+	assertEquals("中國香港特別行政區", parsedAddress.country);
 	assertEquals("HK", parsedAddress.countryCode);
 };
 

@@ -104,7 +104,7 @@ function testParseAddressGBNoDelimiters() {
 };
 
 function testParseAddressGBFromDE() {
-	var parsedAddress = new Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nGroßbritannien", {locale: 'de-DE'});
+	var parsedAddress = new Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nVereinigtes Königreich", {locale: 'de-DE'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -113,7 +113,7 @@ function testParseAddressGBFromDE() {
 	assertEquals("London", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("SW1W 9TQ", parsedAddress.postalCode);
-	assertEquals("Großbritannien", parsedAddress.country);
+	assertEquals("Vereinigtes Königreich", parsedAddress.country);
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
