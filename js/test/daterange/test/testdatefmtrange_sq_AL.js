@@ -42,7 +42,7 @@ function testDateRngFmtALRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11, 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31.12.11, 1:45 e pasdites – 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtALRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 dhj 2011, 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 dhj 2011, 1:45 e pasdites – 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtALRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 dhjetor 2011 në 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtALRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 dhjetor 2011 në 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 dhjetor 2011 në 1:45 e pasdites – 2:30 e pasdites", fmt.format(start, end));
 }
 
 function testDateRngFmtALRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtALRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("30.12.11, 13:45 – 31.12.11, 14:30", fmt.format(start, end));
+    assertEquals("30.12.11, 1:45 e pasdites – 31.12.11, 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtALRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 dhj 2011, 13:45 – 31 dhj 2011, 14:30", fmt.format(start, end));
+    assertEquals("30 dhj 2011, 1:45 e pasdites – 31 dhj 2011, 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtALRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 dhjetor 2011 në 13:45 – 31 dhjetor 2011 në 14:30", fmt.format(start, end));
+    assertEquals("30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites", fmt.format(start, end));
 }
 function testDateRngFmtALRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "sq-AL", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtALRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("30 dhjetor 2011 në 13:45 – 31 dhjetor 2011 në 14:30", fmt.format(start, end));
+    assertEquals("30 dhjetor 2011 në 1:45 e pasdites – 31 dhjetor 2011 në 2:30 e pasdites", fmt.format(start, end));
 }
 
 function testDateRngFmtALRangeMultiDayShort() {

@@ -2372,7 +2372,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, 20 September 2011 at 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 13:45", fmt.format(date));
 };
 
 function testDateFmtesES() {
@@ -2444,7 +2444,7 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de septiembre de 2011, 1:45 p. m.", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
                   
 };
 
@@ -3125,8 +3125,8 @@ function testDateFmtGetMeridiemsRangeName_with_ur_PK_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "ur-PK"});
     assertNotNull(fmt);
 
-    assertEquals("ﻖﺒﻟ ﺩﻭپہﺭ", fmt[0].name);
-    assertEquals("ﺐﻋﺩ ﺩﻭپہﺭ", fmt[1].name);
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 
 function testDateFmtGetMeridiemsRange_with_noArgument() {

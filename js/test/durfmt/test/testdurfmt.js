@@ -6168,7 +6168,7 @@ function testDurFmtSQFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 vit, 1 muaj, 1 javë, 1 ditë, 01:01:01", duration.toString());
+    assertEquals("1 vit, 1 muaj, 1 javë, 1 ditë, 1:01:01", duration.toString());
 };
 
 function testDurFmtSQFormatMedium() {

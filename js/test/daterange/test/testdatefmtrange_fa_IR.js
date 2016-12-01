@@ -759,7 +759,7 @@ function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۲/۳۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۲‏/۳۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeinDayMedium_fa_IR() {
     var fmt = new DateRngFmt({
@@ -872,7 +872,7 @@ function testDateRngFmtPersRangeNextDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۲/۳۰،‏ ‏۱۳:۴۵ – ‏۱۳۹۳/۱۲/۳۱،‏ ‏۱۴:۳۰", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۲‏/۳۰،‏ ‏۱۳:۴۵ – ‏۱۳۹۳‏/۱۲‏/۳۱،‏ ‏۱۴:۳۰", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
     var fmt = new DateRngFmt({
@@ -985,7 +985,7 @@ function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۲/۲۰ – ۳۱", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۲‏/۲۰ – ۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
     var fmt = new DateRngFmt({
@@ -1098,7 +1098,7 @@ function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۱/۲۰ – ‏۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۱‏/۲۰ – ‏۱۳۹۳‏/۱۲‏/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
     var fmt = new DateRngFmt({
@@ -1211,7 +1211,7 @@ function testDateRngFmtPersRangeNextYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۱/۲۰ – ‏۱۳۹۴/۱/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۱‏/۲۰ – ‏۱۳۹۴‏/۱‏/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
     var fmt = new DateRngFmt({
@@ -1324,7 +1324,7 @@ function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۳/۱۱ – ‏۱۳۹۶/۱", fmt.format(start, end));
+    assertEquals("‏۱۳۹۳‏/۱۱ – ‏۱۳۹۶‏/۱", fmt.format(start, end));
 }
 function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
     var fmt = new DateRngFmt({
