@@ -146,17 +146,19 @@ function getLocaleData(dirname, locale) {
 		var numData = data.main[spec];
 
 		if (script) {
+			if (!localeData[language]) {
+				localeData[language] = {};
+			}
+			if (!localeData[language][script]) {
+				localeData[language][script] = {};
+			}
+			if (!localeData[language][script][region]) {
+				localeData[language][script][region] = {};
+			}
 			if (region) {
-				if (!localeData[language]) {
-					localeData[language] = {};
-				}
-				if (!localeData[language][script]) {
-					localeData[language][script] = {};
-				}
-				if (!localeData[language][script][region]) {
-					localeData[language][script][region] = {};
-				}
 				localeData[language][script][region].data = numData;
+			} else {
+				localeData[language][script].data = numData;
 			}
 		} else if (region) {
 			if (!localeData[language]) {
