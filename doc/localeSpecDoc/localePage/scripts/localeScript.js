@@ -7,6 +7,7 @@ $(function(){
 
 	var li = new LocaleInfo(currentLocale);
 	var scinfo = new ScriptInfo(li.getScript());
+	var direction = scinfo.getScriptDirection();
 
 	var weeks = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -719,7 +720,25 @@ $(function(){
         var fmt = new NumFmt({locale: currentLocale});
 	$("#numPlus").text(fmt.format(+572));
 	$("#numMinus").text(fmt.format(-37));
-
+	
+	// direction switch
+	if (direction == "rtl") {
+		$("#numDecimal").attr("dir", "rtl");
+		$("#numGroupFmt").attr("dir", "rtl");
+		$("#numPercent").attr("dir", "rtl");
+		$("#numNegativePercent").attr("dir", "rtl");
+		$("#numCurrency").attr("dir", "rtl");
+		$("#numNegativeCurrency").attr("dir", "rtl");
+		$("#numPlus").attr("dir", "rtl");
+		$("#numMinus").attr("dir", "rtl");
+	}/* else {
+                $("#numPercent").attr("dir", "ltr");
+                $("#numNegativePercent").attr("dir", "ltr");
+                $("#numCurrency").attr("dir", "ltr");
+                $("#numNegativeCurrency").attr("dir", "ltr");
+                $("#numPlus").attr("dir", "ltr");
+                $("#numMinus").attr("dir", "ltr");
+	}*/
 
 
 	// local, international, mobile : style:default
