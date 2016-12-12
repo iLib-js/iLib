@@ -37,9 +37,12 @@ $(function(){
 
 	for (i=0; i<7; i++) {
 		if (currentLocale === "am-ET") {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});	
-		} else {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});	
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});
+		} else if (currentLocale === "th-TH") {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+4, type:li.getCalendar()});
+		}
+		else {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
 		}
 		
 		for (j=0; j < 4; j++) {

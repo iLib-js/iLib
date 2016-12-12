@@ -1,8 +1,8 @@
 /*
- * gendatefmts.js - ilib tool to generate the dateformats.json files from
+ * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -139,7 +139,8 @@ var list = fs.readdirSync(dateDir); //list will be same regardless package.
 // var list = ["as"];
 
 // these locales have the wrong data in CLDR and need to be skipped for now
-var skipList = ["en-CA"];
+//var skipList = ["en-CA"];
+var skipList = [""];
 
 list.forEach(function (file) {
 	var locale = file ? new Locale(file) : undefined;
@@ -250,14 +251,14 @@ util.print("\n\nMerging formats forward ...\n");
 // Need to merge forward because some of the locales added from CLDR are new and are
 // not fully merged yet. Promoting and pruning do not work so well when the tree is
 // not fully merged.
-aux.mergeFormats(dateFormats, dateFormats, []);
-aux.mergeFormats(systemResources, systemResources, []);
+///aux.mergeFormats(dateFormats, dateFormats, []);
+///aux.mergeFormats(systemResources, systemResources, []);
 
 // util.print("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 util.print("\n\nPromoting sublocales ...\n");
 
-for (var language in dateFormats) {
+/*for (var language in dateFormats) {
 	if (language !== "und" && language !== "data") {
 		aux.promoteFormats(dateFormats[language], language, "dateformats.json");
 	}
@@ -266,18 +267,18 @@ for (var language in systemResources) {
 	if (language !== "und" && language !== "data") {
 		aux.promoteFormats(systemResources[language], language, "sysres.json");
 	}
-}
+}*/
 
 util.print("\n\nPruning duplicated formats ...\n");
 
 // Don't prune the root. Iterate through the first level so we can
 // skip the root and only prune the "language" level of the locale 
 // spec. (And recursively everything under it of course.)
-aux.pruneFormats(dateFormats);
+///aux.pruneFormats(dateFormats);
 
 // util.print("System resources before:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
 // fs.writeFileSync("pre.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
-aux.pruneFormats(systemResources);
+///aux.pruneFormats(systemResources);
 // util.print("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
 // fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
 
