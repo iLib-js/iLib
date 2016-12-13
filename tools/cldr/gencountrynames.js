@@ -199,7 +199,7 @@ function anyProperties(data) {
         if (prop && data[prop]) {
             count++;
         }
-        if (count > 1) {
+        if (count >= 1) {
             return true;
         }
     }
@@ -215,7 +215,7 @@ function writeCountryNameResources(language, script, region, data) {
         //data = sortObject(data);
         fs.writeFileSync(path.join(pathname, "ctrynames.json"), JSON.stringify(data, true, 4), "utf-8");
     } else {
-        // console.log("Skipping empty " + pathname + "\n");
+        console.log("Skipping empty " + pathname + "\n");
     }
 }
 
