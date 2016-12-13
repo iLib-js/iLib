@@ -124,17 +124,20 @@ function getRegionNames(localeData, pathname, locale) {
         }
         
         if (script) {
+            
+            if (!localeData[language]) {
+                localeData[language] = {};
+            }
+            if (!localeData[language][script]) {
+                localeData[language][script] = {};
+            }
+            if (!localeData[language][script][region]) {
+                localeData[language][script][region] = {};
+            }
             if (region) {
-                if (!localeData[language]) {
-                    localeData[language] = {};
-                }
-                if (!localeData[language][script]) {
-                    localeData[language][script] = {};
-                }
-                if (!localeData[language][script][region]) {
-                    localeData[language][script][region] = {};
-                }
                 localeData[language][script][region].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+            } else {
+                localeData[language][script].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
             }
         } else if (region) {
             if (!localeData[language]) {
