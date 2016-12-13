@@ -2004,6 +2004,33 @@ function testStringFormatChoiceCharClasses13() {
     assertEquals("The items are many", str.formatChoice(30));
 }
 
+function testStringFormatChoiceCharClasses14() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("as-IN");
+    
+    assertNotNull(str);
+    
+    assertEquals("There are no items.", str.formatChoice(0));
+}
+
+function testStringFormatChoiceCharClasses15() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("as-IN");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(1));
+}
+
+function testStringFormatChoiceCharClasses16() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("as-IN");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(13));
+}
+
 
 function testStringFormatChoiceCharClassesComplex1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
