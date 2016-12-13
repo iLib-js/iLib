@@ -192,7 +192,7 @@ function anyProperties(data) {
 		if (prop && data[prop]) {
 			count++;
 		}
-		if (count > 1) {
+		if (count >= 1) {
 			return true;
 		}
 	}
