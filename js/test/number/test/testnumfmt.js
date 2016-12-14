@@ -4771,7 +4771,7 @@ function testNumFmt_en_PK() {
 
     assertNotNull(fmt);
 
-    assertEquals("-11,11,23,456.78", fmt.format(-111123456.785));
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
 }
 
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
@@ -4783,7 +4783,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
 
     assertNotNull(fmt);
 
-    assertEquals("Rs1,00,111", fmt.format(100110.57));
+    assertEquals("Rs100,111", fmt.format(100110.57));
 }
 
 function testNumFmtPercentageFormatRegular_en_PK() {
@@ -4806,7 +4806,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
 
     assertNotNull(fmt);
 
-    assertEquals("-Rs1,00,111", fmt.format(-100110.57));
+    assertEquals("-Rs100,111", fmt.format(-100110.57));
 }
 
 //test cases for en-PH

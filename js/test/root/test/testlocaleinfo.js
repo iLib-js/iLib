@@ -1470,7 +1470,7 @@ function testLocaleInfoGetCurrencyFormat_af_NA() {
 	var info = new LocaleInfo("af-NA");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_af_NA() {
@@ -2515,7 +2515,7 @@ function testLocaleInfoGetPercentageFormat_bs_Cyrl_BA() {
 	var info = new LocaleInfo("bs-BA-Cyrl");
 	assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_bs_Cyrl_BA() {
@@ -2536,7 +2536,7 @@ function testLocaleInfoGetNegativePercentageFormat_bs_Cyrl_BA() {
 	var info = new LocaleInfo("bs-BA-Cyrl");
 	assertNotNull(info);
 
-	assertEquals("-{n} %", info.getNegativePercentageFormat());
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_bs_Cyrl_BA() {
@@ -3279,7 +3279,7 @@ function testLocaleInfoGetGroupingSeparatorfor_fr_BE() {
 	var info = new LocaleInfo("fr-BE");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_fr_BE() {
@@ -6163,21 +6163,21 @@ function testLocaleInfoGetNegativeNumberFormat_pa() {
 	var info = new LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{n}", info.getNegativeNumberFormat());
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
 }
 
 function testLocaleInfoGetNegativePercentageFormat_pa() {
 	var info = new LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{n}%", info.getNegativePercentageFormat());
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_pa() {
 	var info = new LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pa() {
@@ -7575,7 +7575,7 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_BA() {
 	var info = new LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_sr_Latn_BA() {
@@ -7646,7 +7646,7 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_ME() {
 	var info = new LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_sr_Latn_ME() {
@@ -7717,7 +7717,7 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_RS() {
 	var info = new LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_sr_Latn_RS() {
@@ -8717,28 +8717,28 @@ function testLocaleInfoGetCurrencyFormat_ur_Arab_AF() {
 	var info = new LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_ur_Arab_AF() {
 	var info = new LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n}", info.getNegativeNumberFormat());
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
 }
 
 function testLocaleInfoGetNegativePercentageFormat_ur_Arab_AF() {
 	var info = new LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n}%", info.getNegativePercentageFormat());
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_ur_Arab_AF() {
 	var info = new LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur_Arab_AF() {
