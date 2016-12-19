@@ -1206,6 +1206,36 @@ function testWithinRangeOrnamentaldingbats() {
     assertTrue(CType.withinRange(str, "ornamentaldingbats"));
 }
 
+function testWithinRangeCyrillic() {
+    var str = IString.fromCodePoint(0x1c80);
+    assertTrue(CType.withinRange(str, "cyrillic"));
+}
+
+function testWithinRangeMongolian() {
+    var str = IString.fromCodePoint(0x11660);
+    assertTrue(CType.withinRange(str, "mongolian"));
+}
+
+function testWithinRangeTangut1() {
+    var str = IString.fromCodePoint(0x16fe0);
+    assertTrue(CType.withinRange(str, "tangut"));
+}
+
+function testWithinRangeTangut2() {
+    var str = IString.fromCodePoint(0x17000);
+    assertTrue(CType.withinRange(str, "tangut"));
+}
+
+function testWithinRangeTangut3() {
+    var str = IString.fromCodePoint(0x18800);
+    assertTrue(CType.withinRange(str, "tangut"));
+}
+
+function testWithinRangeGlagolitic() {
+    var str = IString.fromCodePoint(0x1e000);
+    assertTrue(CType.withinRange(str, "glagolitic"));
+}
+
 
 function testIsScriptTrue() {
 	assertTrue("testing Latn", isScript("a", "Latn"));
