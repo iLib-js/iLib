@@ -114,11 +114,11 @@
     "separatorShort": ", ",
     "finalSeparatorShort": " i ",
     "durationMediumMillis": "one#{num} ms|few#{num} ms|#{num} ms",
-    "1#1 se|#{num} sec": "one#{num} sek|few#{num} sek|#{num} sek",
-    "1#1 mi|#{num} min": "one#{num} min|few#{num} min|#{num} min",
+    "1#1 se|#{num} sec": "one#{num} h|few#{num} h|#{num} h",
+    "1#1 mi|#{num} min": "one#{num} m|few#{num} m|#{num} m",
     "durationMediumHours": "one#{num} sat|few#{num} sat|#{num} sat",
-    "1#1 dy|#{num} dys": "one#{num} dan|few#{num} dan|#{num} dan",
-    "durationMediumWeeks": "one#{num} sedm|few#{num} sedm|#{num} sedm",
+    "1#1 dy|#{num} dys": "one#{num} d.|few#{num} d.|#{num} d.",
+    "durationMediumWeeks": "one#{num} sedm.|few#{num} sedm.|#{num} sedm.",
     "1#1 mo|#{num} mos": "one#{num} mj.|few#{num} mj.|#{num} mj.",
-    "durationMediumYears": "one#{num} god|few#{num} god|#{num} god"
+    "durationMediumYears": "one#{num} god.|few#{num} god.|#{num} god."
 }

@@ -112,5 +112,7 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "1#1 se|#{num} sec": "one#{num}s.|#{num}s.",
+    "1#1 mi|#{num} min": "one#{num}min.|#{num}min."
 }

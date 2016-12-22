@@ -112,5 +112,6 @@
     "separatorMedium": " ",
     "finalSeparatorMedium": " ",
     "separatorShort": "",
-    "finalSeparatorShort": ""
+    "finalSeparatorShort": "",
+    "1#1 dy|#{num} dys": "#{num} 日"
 }
