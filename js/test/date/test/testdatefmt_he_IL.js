@@ -34,7 +34,7 @@ function testDateFmtSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011", fmt.format(date));
+    assertEquals("‏29‏.9‏.2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_he_IL() {
@@ -170,7 +170,7 @@ function testDateFmtDateTimeSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011, ‏13:45", fmt.format(date));
+    assertEquals("‏29‏.9‏.2011, ‏13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_he_IL() {
@@ -395,7 +395,7 @@ function testDateFmtTypeDate_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011", fmt.format(date));
+    assertEquals("‏29‏.9‏.2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_he_IL() {
@@ -429,7 +429,7 @@ function testDateFmtTypeDateTime_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011, ‏13:45", fmt.format(date));
+    assertEquals("‏29‏.9‏.2011, ‏13:45", fmt.format(date));
 }
 
 
@@ -515,7 +515,7 @@ function testDateFmtShortDateComponentsDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9", fmt.format(date));
+    assertEquals("‏29‏.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_he_IL() {
@@ -532,7 +532,7 @@ function testDateFmtShortDateComponentsMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏9.2011", fmt.format(date));
+    assertEquals("‏9‏.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_he_IL() {
@@ -549,7 +549,7 @@ function testDateFmtShortDateComponentsDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29.9.2011", fmt.format(date));
+    assertEquals("‏29‏.9‏.2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_he_IL() {
@@ -566,7 +566,7 @@ function testDateFmtShortDateComponentsWDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה׳, ‏29.9", fmt.format(date));
+    assertEquals("ה׳, ‏29‏.9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_he_IL() {
@@ -583,7 +583,7 @@ function testDateFmtShortDateComponentsWDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה׳, 29.9.2011", fmt.format(date));
+    assertEquals("ה׳, 29‏.9‏.2011", fmt.format(date));
 }
 
 
