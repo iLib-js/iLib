@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013 - 2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,12 +58,12 @@ if (process.argv.length > 3) {
 }
 
 util.print("genlangscripts - generate the localeinfo script.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2013 - 2016 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("output dir: " + toDir + "\n");
 
-languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
+languageDataFileName = cldrDir + "/supplemental/languageData.json";
 
 fs.exists(languageDataFileName, function (exists) {
 	if (!exists) {
@@ -84,22 +84,42 @@ var supplementalData = JSON.parse(languageDataString);
 
 var scripts = {};
 var scripts_name = {};
-var languageData = supplementalData.languageData;
+var languageData = supplementalData.supplemental.languageData;
+
+function anyProperties(data) {
+	var count = 0;
+	for (var prop in data) {
+		if (prop && data[prop]) {
+			count++;
+		}
+		if (count >= 1) {
+			return true;
+		}
+	}
+	return false;
+}
 
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
-		if (typeof (languageData[locale]["@scripts"]) === 'string') {
+		if (typeof (languageData[locale]["_scripts"]) === 'object') {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
 			if (typeof (scripts[language]) === 'undefined') {
 				scripts[language] = [];
 			}
-			var newLangs = languageData[locale]["@scripts"].split(/ /g);
+			var newLangs = languageData[locale]["_scripts"];
+
 			if (locale.length <= 3) {
 				console.log("language " + language + " prepending " + JSON.stringify(newLangs));
-				scripts[language] = newLangs.concat(scripts[language]);
+				scripts[language] = newLangs;
 			} else {
 				console.log("language " + language + " appending " + JSON.stringify(newLangs));
-				scripts[language] = scripts[language].concat(newLangs);
+				if (anyProperties(scripts[language])) {
+					for (i=0; i < newLangs.length; i++) {
+						scripts[language].push(newLangs[i]);
+					}
+				} else {
+					scripts[language] = newLangs;
+				}
 			}
 		}
 	}
