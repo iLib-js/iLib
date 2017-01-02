@@ -3493,11 +3493,11 @@ function testDurFmtASFormatFull() {
 };
 */
 
-//test cases for Punjabi(pa-IN)
+//test cases for Punjabi(pa-Guru-IN)
 
 function testDurFmtPAFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "short"
     });
     assertNotNull(fmt);
@@ -3516,7 +3516,7 @@ function testDurFmtPAFormatShortDefaultStyle() {
 
 function testDurFmtPAFormatShortText() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "short",
     	style: "text"
     });
@@ -3536,7 +3536,7 @@ function testDurFmtPAFormatShortText() {
 
 function testDurFmtPAFormatShortClock() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "short",
     	style: "clock"
     });
@@ -3556,7 +3556,7 @@ function testDurFmtPAFormatShortClock() {
 
 function testDurFmtPAFormatMedium() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "medium"
     });
     assertNotNull(fmt);
@@ -3575,7 +3575,7 @@ function testDurFmtPAFormatMedium() {
 
 function testDurFmtPAFormatLong() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "long"
     });
     assertNotNull(fmt);
@@ -3594,7 +3594,7 @@ function testDurFmtPAFormatLong() {
 
 function testDurFmtPAFormatFull() {
     var fmt = new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "full"
     });
     assertNotNull(fmt);
@@ -5160,11 +5160,11 @@ function testDurFmtMNFormatFull() {
     assertEquals("1 жил, 1 сар, 1 долоо хоног, 1 өдөр, 1 цаг, 1 минут, 1 секунд", duration.toString());
 };
 
-//test cases for ms-MY
+//test cases for ms-Latn-MY
 
 function testDurFmtMSFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "short"
     });
     assertNotNull(fmt);
@@ -5183,7 +5183,7 @@ function testDurFmtMSFormatShortDefaultStyle() {
 
 function testDurFmtMSFormatShortText() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "short",
     	style: "text"
     });
@@ -5203,7 +5203,7 @@ function testDurFmtMSFormatShortText() {
 
 function testDurFmtMSFormatShortClock() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "short",
     	style: "clock"
     });
@@ -5223,7 +5223,7 @@ function testDurFmtMSFormatShortClock() {
 
 function testDurFmtMSFormatMedium() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "medium"
     });
     assertNotNull(fmt);
@@ -5242,7 +5242,7 @@ function testDurFmtMSFormatMedium() {
 
 function testDurFmtMSFormatLong() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "long"
     });
     assertNotNull(fmt);
@@ -5261,7 +5261,7 @@ function testDurFmtMSFormatLong() {
 
 function testDurFmtMSFormatFull() {
     var fmt = new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "full"
     });
     assertNotNull(fmt);
