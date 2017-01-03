@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@ function testScriptGetDefaultLongCodeOrya() {
     
     assertEquals("Orya", si.getCode());
     assertEquals(327, si.getCodeNumber());
-    assertEquals("Oriya", si.getName());
+    assertEquals("Oriya (Odia)", si.getName());
     assertEquals("Oriya", si.getLongCode());
     assertEquals("ltr", si.getScriptDirection());
     assertFalse(si.getNeedsIME());
@@ -150,7 +150,7 @@ function testScriptGetAllScripts() {
     var scripts = ScriptInfo.getAllScripts();
     assertNotNull(scripts);
     
-    assertEquals(177, scripts.length);
+    assertEquals(189, scripts.length);
 
     assertEquals("Adlm", scripts[0]);
     assertEquals("Afak", scripts[1]);
