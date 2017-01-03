@@ -291,7 +291,7 @@ enyo.kind({
 			"French - Rwanda":"fr-RW",
 			"French - Senegal":"fr-SN",
 			"French - Togo":"fr-TG",
-			"Malay - Singapore":"ms-SG",
+			"Malay - Singapore":"ms-Latn-SG",
 			"Panjabi - Pakistan":"pa-Arab-PK",
 			"Portuguese - Angola":"pt-AO",
 			"Portuguese - Equitorial Guinea":"pt-GQ",

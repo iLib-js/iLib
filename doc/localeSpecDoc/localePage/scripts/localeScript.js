@@ -538,7 +538,7 @@ $(function(){
 		"lt-LT" : [21,9,11],
 		"mk-MK" : [1,2],
 		"ms-Latn-MY" : [1,2],
-		"ms-SG" : [1,2],
+		"ms-Latn-SG" : [1,2],
 		"ml-IN" : [1,2],
 		"mr-IN" : [1,18],
 		"mn-Cyrl-MN" : [1,2,3],
