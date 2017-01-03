@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013 - 2015, JEDLSoft
+ * Copyright © 2013 - 2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: genscripts [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
+	util.print("Usage: genscripts [-h] ISO-15924-file.txt ScriptMetadata.txt UCD-dir  [toDir]\n" +
 			"Generate the normalization data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
@@ -63,14 +63,15 @@ if (process.argv.length < 4) {
 }
 
 iso15924FileName = process.argv[2];
-ucdDir = process.argv[3];
-cldrDir = process.argv[4];
+scriptMetaDataFileName = process.argv[3];
+ucdDir = process.argv[4];
+
 if (process.argv.length > 5) {
 	toDir = process.argv[5];
 }
 
 util.print("genscripts - generate scripts data.\n" +
-		"Copyright (c) 2012 - 2015 JEDLSoft\n");
+		"Copyright (c) 2012 - 2016 JEDLSoft\n");
 
 // TODO: these should call fs.existsSync instead
 fs.exists(iso15924FileName, function (exists) {
@@ -79,15 +80,17 @@ fs.exists(iso15924FileName, function (exists) {
 		usage();
 	}
 });
+
 fs.exists(ucdDir, function (exists) {
 	if (!exists) {
 		util.error("Could not access UCD directory " + ucdDir);
 		usage();
 	}
 });
-fs.exists(cldrDir, function (exists) {
+
+fs.exists(scriptMetaDataFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access CLDR directory " + cldrDir);
+		util.error("Could not access file " + scriptMetaDataFileName);
 		usage();
 	}
 });
@@ -104,15 +107,6 @@ scriptFileName = ucdDir + "/Scripts.txt";
 fs.exists(scriptFileName, function (exists) {
 	if (!exists) {
 		util.error("Could not access file " + scriptFileName);
-		usage();
-	}
-});
-
-scriptMetaDataFileName = cldrDir + "/common/properties/scriptMetadata.txt";
-
-fs.exists(scriptMetaDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + scriptMetaDataFileName);
 		usage();
 	}
 });
