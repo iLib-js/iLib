@@ -1,6 +1,7 @@
 {
     "scripts": [
-        "Latn"
+        "Latn",
+        "Elba"
     ],
     "generated": true
 }

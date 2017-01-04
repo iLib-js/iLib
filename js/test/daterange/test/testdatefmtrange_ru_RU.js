@@ -43,7 +43,7 @@ function testDateRngFmtRURangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11, 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31.12.2011, 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -140,7 +140,7 @@ function testDateRngFmtRURangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.11, 13:45 – 31.12.11, 14:30", fmt.format(start, end));
+    assertEquals("30.12.2011, 13:45 – 31.12.2011, 14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -237,7 +237,7 @@ function testDateRngFmtRURangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31.12.11", fmt.format(start, end));
+    assertEquals("20 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtRURangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -334,7 +334,7 @@ function testDateRngFmtRURangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11 – 31.12.11", fmt.format(start, end));
+    assertEquals("20.11 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtRURangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -431,7 +431,7 @@ function testDateRngFmtRURangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 – 31.01.12", fmt.format(start, end));
+    assertEquals("20.11.2011 – 31.01.2012", fmt.format(start, end));
 }
 function testDateRngFmtRURangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});
@@ -528,7 +528,7 @@ function testDateRngFmtRURangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11 – 01.14", fmt.format(start, end));
+    assertEquals("11.2011 – 01.2014", fmt.format(start, end));
 }
 function testDateRngFmtRURangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "ru-RU", length: "medium"});

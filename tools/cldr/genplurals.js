@@ -2,7 +2,7 @@
  * genplurals.js - ilib tool to generate plurals json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2015, LGE 
+ * Copyright © 2015-2016, LGE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -294,7 +294,7 @@ function anyProperties(data) {
 		if (prop && data[prop]) {
 			count++;
 		}
-		if (count > 1) {
+		if (count >= 1) {
 			return true;
 		}
 	}
@@ -323,7 +323,9 @@ for (var language in pluralsObject) {
 	if (language && pluralsObject[language]) {
 		pluralsData = create_rule(pluralsObject[language]);
 
-		var locale = new Locale(language);
-		writePluralsData(locale, pluralsData);
+		if (anyProperties(pluralsData)) {
+			var locale = new Locale(language);
+			writePluralsData(locale, pluralsData);
+		}
 	}	
 }

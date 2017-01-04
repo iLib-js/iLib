@@ -2,7 +2,10 @@
     "Adlm": {
         "nb": 166,
         "nm": "Adlam",
-        "lid": "Adlam"
+        "lid": "Adlam",
+        "rtl": true,
+        "ime": false,
+        "casing": true
     },
     "Afak": {
         "nb": 439,
@@ -20,7 +23,10 @@
     "Ahom": {
         "nb": 338,
         "nm": "Ahom, Tai Ahom",
-        "lid": "Ahom"
+        "lid": "Ahom",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Arab": {
         "nb": 160,
@@ -93,7 +99,7 @@
     },
     "Beng": {
         "nb": 325,
-        "nm": "Bengali",
+        "nm": "Bengali (Bangla)",
         "lid": "Bengali",
         "rtl": false,
         "ime": false,
@@ -102,7 +108,10 @@
     "Bhks": {
         "nb": 334,
         "nm": "Bhaiksuki",
-        "lid": "Bhaiksuki"
+        "lid": "Bhaiksuki",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Blis": {
         "nb": 550,
@@ -187,7 +196,7 @@
         "lid": "Cherokee",
         "rtl": false,
         "ime": false,
-        "casing": false
+        "casing": true
     },
     "Cirt": {
         "nb": 291,
@@ -230,6 +239,11 @@
         "rtl": false,
         "ime": false,
         "casing": false
+    },
+    "Dogr": {
+        "nb": 328,
+        "nm": "Dogra",
+        "lid": "Dogra"
     },
     "Dsrt": {
         "nb": 250,
@@ -288,7 +302,7 @@
     },
     "Geor": {
         "nb": 240,
-        "nm": "Georgian (Mkhedruli)",
+        "nm": "Georgian (Mkhedruli and Mtavruli)",
         "lid": "Georgian",
         "rtl": false,
         "ime": false,
@@ -301,6 +315,16 @@
         "rtl": false,
         "ime": false,
         "casing": true
+    },
+    "Gong": {
+        "nb": 312,
+        "nm": "Gunjala Gondi",
+        "lid": "Gunjala_Gondi"
+    },
+    "Gonm": {
+        "nb": 313,
+        "nm": "Masaram Gondi",
+        "lid": "Masaram_Gondi"
     },
     "Goth": {
         "nb": 206,
@@ -340,6 +364,14 @@
         "lid": "Gurmukhi",
         "rtl": false,
         "ime": false,
+        "casing": false
+    },
+    "Hanb": {
+        "nb": 503,
+        "nm": "Han with Bopomofo (alias for Han + Bopomofo)",
+        "lid": "Han_with_Bopomofo_(alias_for_Han_+_Bopomofo)",
+        "rtl": false,
+        "ime": true,
         "casing": false
     },
     "Hang": {
@@ -385,7 +417,10 @@
     "Hatr": {
         "nb": 127,
         "nm": "Hatran",
-        "lid": "Hatran"
+        "lid": "Hatran",
+        "rtl": true,
+        "ime": false,
+        "casing": false
     },
     "Hebr": {
         "nb": 125,
@@ -406,7 +441,10 @@
     "Hluw": {
         "nb": 80,
         "nm": "Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)",
-        "lid": "Anatolian_Hieroglyphs"
+        "lid": "Anatolian_Hieroglyphs",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Hmng": {
         "nb": 450,
@@ -424,7 +462,10 @@
     "Hung": {
         "nb": 176,
         "nm": "Old Hungarian (Hungarian Runic)",
-        "lid": "Old_Hungarian"
+        "lid": "Old_Hungarian",
+        "rtl": true,
+        "ime": false,
+        "casing": true
     },
     "Inds": {
         "nb": 610,
@@ -437,6 +478,14 @@
         "lid": "Old_Italic",
         "rtl": false,
         "ime": false,
+        "casing": false
+    },
+    "Jamo": {
+        "nb": 284,
+        "nm": "Jamo (alias for Jamo subset of Hangul)",
+        "lid": "Jamo_(alias_for_Jamo_subset_of_Hangul)",
+        "rtl": false,
+        "ime": true,
         "casing": false
     },
     "Java": {
@@ -647,6 +696,11 @@
         "ime": false,
         "casing": false
     },
+    "Maka": {
+        "nb": 366,
+        "nm": "Makasar",
+        "lid": "Makasar"
+    },
     "Mand": {
         "nb": 140,
         "nm": "Mandaic, Mandaean",
@@ -666,12 +720,20 @@
     "Marc": {
         "nb": 332,
         "nm": "Marchen",
-        "lid": "Marchen"
+        "lid": "Marchen",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Maya": {
         "nb": 90,
         "nm": "Mayan hieroglyphs",
         "lid": "Mayan_hieroglyphs"
+    },
+    "Medf": {
+        "nb": 265,
+        "nm": "Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)",
+        "lid": "Medefaidrin_(Oberi_Okaime,_Oberi_Ɔkaimɛ)"
     },
     "Mend": {
         "nb": 438,
@@ -727,7 +789,7 @@
         "lid": "Moon_(Moon_code,_Moon_script,_Moon_type)"
     },
     "Mroo": {
-        "nb": 199,
+        "nb": 264,
         "nm": "Mro, Mru",
         "lid": "Mro",
         "rtl": false,
@@ -745,7 +807,10 @@
     "Mult": {
         "nb": 323,
         "nm": "Multani",
-        "lid": "Multani"
+        "lid": "Multani",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Mymr": {
         "nb": 350,
@@ -768,6 +833,14 @@
         "nm": "Nabataean",
         "lid": "Nabataean",
         "rtl": true,
+        "ime": false,
+        "casing": false
+    },
+    "Newa": {
+        "nb": 333,
+        "nm": "Newa, Newar, Newari, Nepāla lipi",
+        "lid": "Newa",
+        "rtl": false,
         "ime": false,
         "casing": false
     },
@@ -815,7 +888,7 @@
     },
     "Orya": {
         "nb": 327,
-        "nm": "Oriya",
+        "nm": "Oriya (Odia)",
         "lid": "Oriya",
         "rtl": false,
         "ime": false,
@@ -824,7 +897,10 @@
     "Osge": {
         "nb": 219,
         "nm": "Osage",
-        "lid": "Osage"
+        "lid": "Osage",
+        "rtl": false,
+        "ime": false,
+        "casing": true
     },
     "Osma": {
         "nb": 260,
@@ -903,6 +979,11 @@
         "ime": false,
         "casing": false
     },
+    "Piqd": {
+        "nb": 293,
+        "nm": "Klingon (KLI pIqaD)",
+        "lid": "Klingon_(KLI_pIqaD)"
+    },
     "Prti": {
         "nb": 130,
         "nm": "Inscriptional Parthian",
@@ -974,7 +1055,10 @@
     "Sgnw": {
         "nb": 95,
         "nm": "SignWriting",
-        "lid": "SignWriting"
+        "lid": "SignWriting",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Shaw": {
         "nb": 281,
@@ -1023,6 +1107,11 @@
         "rtl": false,
         "ime": false,
         "casing": false
+    },
+    "Soyo": {
+        "nb": 329,
+        "nm": "Soyombo",
+        "lid": "Soyombo"
     },
     "Sund": {
         "nb": 362,
@@ -1106,7 +1195,10 @@
     "Tang": {
         "nb": 520,
         "nm": "Tangut",
-        "lid": "Tangut"
+        "lid": "Tangut",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Tavt": {
         "nb": 359,
@@ -1235,6 +1327,11 @@
         "ime": true,
         "casing": false
     },
+    "Zanb": {
+        "nb": 339,
+        "nm": "Zanabazar Square (Zanabazarin Dörböljin Useg, Xewtee Dörböljin Bicig, Horizontal Square Script)",
+        "lid": "Zanabazar_Square_(Zanabazarin_Dörböljin_Useg,_Xewtee_Dörböljin_Bicig,_Horizontal_Square_Script)"
+    },
     "Zinh": {
         "nb": 994,
         "nm": "Code for inherited script",
@@ -1247,6 +1344,11 @@
         "nb": 995,
         "nm": "Mathematical notation",
         "lid": "Mathematical_notation"
+    },
+    "Zsye": {
+        "nb": 993,
+        "nm": "Symbols (Emoji variant)",
+        "lid": "Symbols_(Emoji_variant)"
     },
     "Zsym": {
         "nb": 996,

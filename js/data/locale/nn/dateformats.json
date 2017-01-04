@@ -2,7 +2,7 @@
     "gregorian": {
         "order": {
             "f": "{date} {time}",
-            "l": "{date} 'kl.' {time}",
+            "l": "{date} 'kl'. {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },

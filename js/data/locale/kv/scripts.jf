@@ -1,7 +1,7 @@
 {
     "scripts": [
         "Cyrl",
-        "Latn"
+        "Perm"
     ],
     "generated": true
 }

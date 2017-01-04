@@ -1,6 +1,11 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} 'da' {time}",
+            "l": "{date} 'da' {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "date": {
             "dmwy": {
                 "f": "yyyy MMMM d, EEEE",
@@ -97,26 +102,26 @@
         },
         "range": {
             "c00": {
-                "f": "{sy} {sm} {sd} {st} – {et}",
-                "l": "{sy} {sm} {sd} {st} – {et}",
+                "f": "{sy} {sm} {sd} da {st} – {et}",
+                "l": "{sy} {sm} {sd} da {st} – {et}",
                 "m": "{sy} {sm} {sd} {st} – {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {et}"
             },
             "c01": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
+                "l": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
                 "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c02": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
+                "l": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
                 "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c03": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
+                "l": "{sy} {sm} {sd} da {st} – {ey} {em} {ed} da {et}",
                 "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },

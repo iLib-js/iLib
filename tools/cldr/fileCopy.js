@@ -26,8 +26,8 @@ var util = require('util');
 var common = require('./common.js');
 var merge = common.merge;
 
-localeDir = "/home/goun/Source/i18nlib-code-trunk/tools/cldr/tmp";
-targetDir = "/home/goun/Source/i18nlib-code-trunk/js/data/locale";
+localeDir = "/home/goun/Source/iLib_branch/iLib/tools/cldr/tmp";
+targetDir = "/home/goun/Source/iLib_branch/iLib/js/data/locale/";
 
 function usage() {
 	util.print("Usage: fileCopy [-h] tool_result_dir locale_data_dir\n" +
@@ -43,8 +43,8 @@ function usage() {
 /*var localeDir = ".",
 	localeDir = ".";
 */
-localeDir = process.argv[2]; //tmp.
-targetDir = process.argv[3]; //origin
+//localeDir = process.argv[2]; //tmp.
+//targetDir = process.argv[3]; //origin
 
 
 util.print("temp locale dir: " + localeDir + "\n");
@@ -68,7 +68,7 @@ function walk(root, targetdir, dir) {
 		} else {
 			var obj;
 			//if (file === 'dateformats.json') {
-			if (file.match(/\.jf$/)) {
+			if (file.match(/\.json$/)) {
 				util.print("targetDir: " + targetdir  + "\n");
 				if (!fs.existsSync(sourcePath)) {
 					//In order to see which one is newly created.
@@ -99,15 +99,38 @@ function walk(root, targetdir, dir) {
 							for (i=0; i < length; i++) {
 								newneworiginData[keys[i]] = newData[keys[i]];
 							}
-							if (file === 'dateformats.json') {
+							// if (file === 'dateformats.json') {
+							// 	if (typeof(originData) !== undefined &&
+							// 		typeof(originData["gregorian"]["range"]) !== undefined ) {
+							// 		newneworiginData["gregorian"]["range"] = {};
+							// 		//newneworiginData["gregorian"]["range"] = merge(newneworiginData, originData["gregorian"]["range"]);
+							// 		newneworiginData["gregorian"]["range"] = originData["gregorian"]["range"];
+							// 	}
+							// } 
+							if (file === 'sysres.json') {
 								if (typeof(originData) !== undefined &&
-									typeof(originData["gregorian"]["range"]) !== undefined ) {
-									newneworiginData["gregorian"]["range"] = {};
-									//newneworiginData["gregorian"]["range"] = merge(newneworiginData, originData["gregorian"]["range"]);
-									newneworiginData["gregorian"]["range"] = originData["gregorian"]["range"];
-								}
-							} 
+									typeof(originData["durationMediumMillis"]) !== undefined ) {
+									//newneworiginData["gregorian"]["range"] = {};
+									newneworiginData["durationMediumMillis"] = {};
+									newneworiginData["1#1 se|#{num} sec"] = {};
+									newneworiginData["1#1 mi|#{num} min"] = {};
+									newneworiginData["durationMediumHours"] = {};
+									newneworiginData["1#1 dy|#{num} dys"] = {};
+									newneworiginData["durationMediumWeeks"] = {};
+									newneworiginData["1#1 mo|#{num} mos"] = {};
+									newneworiginData["durationMediumYears"] = {};
 							
+									
+									newneworiginData["durationMediumMillis"] = originData["durationMediumMillis"];
+									newneworiginData["1#1 se|#{num} sec"] = originData["1#1 se|#{num} sec"];
+									newneworiginData["1#1 mi|#{num} min"] = originData["1#1 mi|#{num} min"];
+									newneworiginData["durationMediumHours"] = originData["durationMediumHours"];
+									newneworiginData["1#1 dy|#{num} dys"] = originData["1#1 dy|#{num} dys"];
+									newneworiginData["durationMediumWeeks"] = originData["durationMediumWeeks"];
+									newneworiginData["1#1 mo|#{num} mos"] = originData["1#1 mo|#{num} mos"];
+									newneworiginData["durationMediumYears"] = originData["durationMediumYears"];
+								}
+							}	
 						} catch(err) {
 						//util.print("Error\n");
 						}

@@ -57,8 +57,9 @@ enyo.kind({
 		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
 
 		var year, month, date;
-		var month  = 11;
-		var date  = 8;
+		var month  = 0;
+		var date  = 3;
+
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 
@@ -200,11 +201,11 @@ enyo.kind({
 			"Macedonian - Former Yugoslav Republic of Macedonia":"mk-MK",
 			"Malayalam - India":"ml-IN",
 			"Marathi - India":"mr-IN",
-			"Malay - Malaysia":"ms-MY",
+			"Malay - Malaysia":"ms-Latn-MY",
 			"Norwegian - Norway":"nb-NO",
 			"Dutch - Belgium":"nl-BE",
 			"Dutch - Netherlands":"nl-NL",
-			"Panjabi - India":"pa-IN",
+			"Panjabi - India":"pa-Guru-IN",
 			"Polish - Poland":"pl-PL",
 			"Portuguese - Brazil":"pt-BR",
 			"Portuguese - Portugal":"pt-PT",
@@ -291,7 +292,7 @@ enyo.kind({
 			"French - Rwanda":"fr-RW",
 			"French - Senegal":"fr-SN",
 			"French - Togo":"fr-TG",
-			"Malay - Singapore":"ms-SG",
+			"Malay - Singapore":"ms-Latn-SG",
 			"Panjabi - Pakistan":"pa-Arab-PK",
 			"Portuguese - Angola":"pt-AO",
 			"Portuguese - Equitorial Guinea":"pt-GQ",

@@ -131,7 +131,7 @@ function testDurFmtKHFormatFull() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី និង 1 វិនាទី", duration.toString());
+    assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1 ម៉ោង 1 នាទី 1 វិនាទី", duration.toString());
 };
 
 
@@ -153,7 +153,7 @@ function testDurFmtKHAsyncWithLocale() {
                 minute: 2,
                 second: 2
             });
-            assertEquals("2 ឆ្នាំ 2 ខែ 2 សប្ដាហ៍ 2 ថ្ងៃ 2 ម៉ោង 2 នាទី និង 2 វិនាទី", duration.toString());
+            assertEquals("2 ឆ្នាំ 2 ខែ 2 សប្ដាហ៍ 2 ថ្ងៃ 2 ម៉ោង 2 នាទី 2 វិនាទី", duration.toString());
             callbackCalled = true;
         }
     });

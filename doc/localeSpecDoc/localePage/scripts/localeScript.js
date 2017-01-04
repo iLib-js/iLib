@@ -38,9 +38,12 @@ $(function(){
 
 	for (i=0; i<7; i++) {
 		if (currentLocale === "am-ET") {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});	
-		} else {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});	
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});
+		} else if (currentLocale === "th-TH") {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+4, type:li.getCalendar()});
+		}
+		else {
+			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
 		}
 		
 		for (j=0; j < 4; j++) {
@@ -58,7 +61,7 @@ $(function(){
 	} else {
 		loopLength = 12;
 	}
-	
+
 	for (i=0; i < loopLength; i++) {
 		date[i] = new DateFactory({month: i+1, type:li.getCalendar()});
 		for (j=0; j < 4; j++) {
@@ -96,34 +99,30 @@ $(function(){
 
 	var date = new GregorianDate({locale: currentLocale, year: 2015, month: 8, day: 5, hour: 13, minute: 45, second: 0});
 
-	
+
 	//DateTime				
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 					
 		fmt[i] = new DateFmt({locale: currentLocale, type: "datetime", length: length[i], useNative: false, timezone: 'local'});
 		
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
-		
+		if (direction === "rtl") {
+			$("#dt"+length[i]+"Sample").attr("dir", "rtl");
+		}
 		$("#dt"+length[i]).text(length[i]);
 		$("#dt"+length[i]+"Fmt").text(fmtArray[i].template);
-
 		$("#dt"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
-				
+
 	//Date
 	var templateText = [];
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		
 		fmt[i] = new DateFmt({locale: currentLocale, type: "date", date:"dmwy", length: length[i], useNative: false, timezone: 'local'});
-		
 		fmtArray[fmtArrayCount] = fmt[i];
-		//console.log("  fmtArray : ", fmtArray[fmtArrayCount]);
 		
 		$("#date"+length[i]).text(length[i]);
-		
-		
 		templateText[i] = fmtArray[i].template;
 		$("#date"+length[i]+"Fmt").text(templateText[i]);
 		var mCount = 0;
@@ -149,6 +148,9 @@ $(function(){
 			default:
 				$("#date"+length[i]+"Fmt").css("color","#4B0082"); //Indigo  
 		}*/
+		if (direction === "rtl") {
+			$("#date"+length[i]+"Sample").attr("dir", "rtl");
+		}
 		$("#date"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 	
@@ -167,6 +169,9 @@ $(function(){
 				$("#time"+length[i]+"Fmt").css("color", "#00BFFF"); //DeepSkyBlue 
 			}
 		}*/
+		if (direction === "rtl") {
+			$("#time"+length[i]+"Sample").attr("dir", "rtl");
+		}
 		$("#time"+length[i]+"Sample").text(fmtArray[i].format(date));
 	}
 
@@ -177,26 +182,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt0"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt0"+length[i]).text(length[i]);
 		$("#cfmt0"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c00"][abbrLength[i]]);
 		$("#cfmt0"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		
-		/*if (length[i] === 'full') {
-			$("#cfmt0"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt0"+length[i]+"Sample").css("color","#CC3333");
-
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt0"+length[i]).css("border-color","black");
 			$("#cfmt0"+length[i]).css("border-width","1px");
 			$("#cfmt0"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt0"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt0"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt0"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt0"+length[i]+"Fmt").css("color","green");
-			$("#cfmt0"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
     start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -205,25 +207,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt1"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt1"+length[i]).text(length[i]);
 		$("#cfmt1"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c01"][abbrLength[i]]);
 		$("#cfmt1"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt1"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt1"+length[i]+"Sample").css("color","#CC3333");
-
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt1"+length[i]).css("border-color","black");
 			$("#cfmt1"+length[i]).css("border-width","1px");
 			$("#cfmt1"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt1"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt1"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt1"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt1"+length[i]+"Fmt").css("color","green");
-			$("#cfmt1"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -232,51 +232,55 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt2"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt2"+length[i]).text(length[i]);
 		$("#cfmt2"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c02"][abbrLength[i]]);
 		$("#cfmt2"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt2"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt2"+length[i]+"Sample").css("color","#CC3333");
-
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt2"+length[i]).css("border-color","black");
 			$("#cfmt2"+length[i]).css("border-width","1px");
 			$("#cfmt2"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt2"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt2"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt2"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt2"+length[i]+"Fmt").css("color","green");
-			$("#cfmt2"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
     start = new DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+    amStart = new DateFactory({year: 2011,month: 13, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+
 	end = new DateFactory({year: 2012, month: 1, day: 1, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt3"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt3"+length[i]).text(length[i]);
 		$("#cfmt3"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c03"][abbrLength[i]]);
-		$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(start, end));
-
-		/*if (length[i] === 'full') {
-			$("#cfmt3"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt3"+length[i]+"Sample").css("color","#CC3333");
-		} else*/ if (length[i] === 'short') {
+		
+		if (currentLocale === "am-ET") {
+			$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(amStart, end));
+		} else {
+			$("#cfmt3"+length[i]+"Sample").text(fmtArray[i].format(start, end));
+		}
+		
+		if (length[i] === 'short') {
 			$("#cfmt3"+length[i]).css("border-color","black");
 			$("#cfmt3"+length[i]).css("border-width","1px");
 			$("#cfmt3"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt3"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt3"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt3"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt3"+length[i]+"Fmt").css("color","green");
-			$("#cfmt3"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -285,24 +289,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt10"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt10"+length[i]).text(length[i]);
 		$("#cfmt10"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c10"][abbrLength[i]]);
 		$("#cfmt10"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt10"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt10"+length[i]+"Sample").css("color","#CC3333");
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt10"+length[i]).css("border-color","black");
 			$("#cfmt10"+length[i]).css("border-width","1px");
 			$("#cfmt10"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt10"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt10"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt10"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt10"+length[i]+"Fmt").css("color","green");
-			$("#cfmt10"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -311,24 +314,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt11"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt11"+length[i]).text(length[i]);
 		$("#cfmt11"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c11"][abbrLength[i]]);
 		$("#cfmt11"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt11"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt11"+length[i]+"Sample").css("color","#CC3333");
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt11"+length[i]).css("border-color","black");
 			$("#cfmt11"+length[i]).css("border-width","1px");
 			$("#cfmt11"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt11"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt11"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt11"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt11"+length[i]+"Fmt").css("color","green");
-			$("#cfmt11"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -337,25 +339,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt12"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt12"+length[i]).text(length[i]);
 		$("#cfmt12"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c12"][abbrLength[i]]);
 		$("#cfmt12"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt12"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt12"+length[i]+"Sample").css("color","#CC3333");
-
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt12"+length[i]).css("border-color","black");
 			$("#cfmt12"+length[i]).css("border-width","1px");
 			$("#cfmt12"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt12"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt12"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt12"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt12"+length[i]+"Fmt").css("color","green");
-			$("#cfmt12"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -364,24 +364,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt20"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt20"+length[i]).text(length[i]);
 		$("#cfmt20"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c20"][abbrLength[i]]);
 		$("#cfmt20"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt20"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt20"+length[i]+"Sample").css("color","#CC3333");
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt20"+length[i]).css("border-color","black");
 			$("#cfmt20"+length[i]).css("border-width","1px");
 			$("#cfmt20"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt20"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt20"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt20"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt20"+length[i]+"Fmt").css("color","green");
-			$("#cfmt20"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
@@ -390,24 +389,23 @@ $(function(){
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
 		fmtArray[fmtArrayCount] = fmt[i];
+
+		if (direction === "rtl") {
+			$("#cfmt30"+length[i]+"Sample").attr("dir", "rtl");
+		}
+
 		$("#cfmt30"+length[i]).text(length[i]);
 		$("#cfmt30"+length[i]+"Fmt").text(fmtArray[i].dateFmt.formats.range["c30"][abbrLength[i]]);
 		$("#cfmt30"+length[i]+"Sample").text(fmtArray[i].format(start, end));
 
-		/*if (length[i] === 'full') {
-			$("#cfmt30"+length[i]+"Fmt").css("color","#CC3333");
-			$("#cfmt30"+length[i]+"Sample").css("color","#CC3333");
-		} else*/ if (length[i] === 'short') {
+		if (length[i] === 'short') {
 			$("#cfmt30"+length[i]).css("border-color","black");
 			$("#cfmt30"+length[i]).css("border-width","1px");
 			$("#cfmt30"+length[i]+"Fmt").css("border-color","black");
 			$("#cfmt30"+length[i]+"Fmt").css("border-width","1px");
 			$("#cfmt30"+length[i]+"Sample").css("border-color","black");
 			$("#cfmt30"+length[i]+"Sample").css("border-width","1px");
-		} /*else if (length[i] === 'medium') {
-			$("#cfmt30"+length[i]+"Fmt").css("color","green");
-			$("#cfmt30"+length[i]+"Sample").css("color","green");
-		}*/
+		}
 	}
 
 	durationNumberSample = {
@@ -434,7 +432,7 @@ $(function(){
 		"ar-TN" : [1,2,3,11,100],
 		"ar-AE" : [1,2,3,11,100],
 		"ar-YE" : [1,2,3,11,100],
-		"az-Latn-AZ" : [1],
+		"az-Latn-AZ" : [1,19],
 		"as-IN" : [1,2],
 		"bn-IN" : [1,18],
 		"bs-BA" : [1,4,5],
@@ -532,21 +530,21 @@ $(function(){
 		"it-CH" : [1,17],
 		"ja-JP" : [1,16],
 		"kn-IN" : [1,2],
-		"km-KH" : [1],
+		"km-KH" : [1,23],
 		"kk-KZ" : [1,2],
 		"ko-KR" : [1,2],
 		"ku-Arab-IQ" : [1,2],
 		"lv-LV" : [10,21,9],
 		"lt-LT" : [21,9,11],
 		"mk-MK" : [1,2],
-		"ms-MY" : [1,2],
-		"ms-SG" : [1,2],
+		"ms-Latn-MY" : [1,2],
+		"ms-Latn-SG" : [1,2],
 		"ml-IN" : [1,2],
 		"mr-IN" : [1,18],
 		"mn-Cyrl-MN" : [1,2,3],
 		"nb-NO" : [1,2],
 		"or-IN" : [1,17],
-		"pa-IN" : [1,2],
+		"pa-Guru-IN" : [1,2],
 		"pa-Arab-PK" : [1,18],
 		"pl-PL" : [1,2,5],
 		"pt-AO" : [1,2],
@@ -645,16 +643,7 @@ $(function(){
 			durationTimeSample = {hour: selectedSampleNum[i],minute: selectedSampleNum[i],second: selectedSampleNum[i]};
 			$("#timedurFmtResult"+length[j]+"num"+i).text(durfmtArray[j].format(durationTimeSample).toString());
 
-			/*if (length[j] === 'medium') {
-				
-				$("#durFmtResult"+length[j]+"num"+i).css("color","#CC3333");
-				$("#timedurFmtResult"+length[j]+"num"+i).css("color","#CC3333");
-			} else if (length[j] === 'long') {
-				$("#durFmtResult"+length[j]+"num"+i).css("color","green");
-				$("#timedurFmtResult"+length[j]+"num"+i).css("color","green");
-			}
-			else */if (length[j] === 'short') {
-				//console.log("full :" + length[j]);
+			if (length[j] === 'short') {
 				$("#durFmtLength"+length[j]+"num"+i).css("border-color","black");
 				$("#durFmtLength"+length[j]+"num"+i).css("border-width","1px");
 
@@ -668,6 +657,10 @@ $(function(){
 				$("#timedurFmtResult"+length[j]+"num"+i).css("border-width","1px");
 			}
 
+			if (direction === "rtl") {
+				$("#durFmtResult"+length[j]+"num"+i).attr("dir", "rtl");
+				$("#timedurFmtResult"+length[j]+"num"+i).attr("dir", "rtl");
+			}
 		}
 	}
 
@@ -679,7 +672,6 @@ $(function(){
 
 	for(i=1; i< selectedSampleNum.length; i++) {
 		for (j=0; j <4; j++) {
-			//console.log("LOG: " + " #subject"+length[j]+"num" + i);
 			$("#subject"+length[j]+"num" + i).remove();
 			$("#timesubject"+length[j]+"num" + i).remove();
 		}
@@ -720,7 +712,7 @@ $(function(){
         var fmt = new NumFmt({locale: currentLocale});
 	$("#numPlus").text(fmt.format(+572));
 	$("#numMinus").text(fmt.format(-37));
-	
+
 	// direction switch
 	if (direction == "rtl") {
 		$("#numDecimal").attr("dir", "rtl");
@@ -731,15 +723,7 @@ $(function(){
 		$("#numNegativeCurrency").attr("dir", "rtl");
 		$("#numPlus").attr("dir", "rtl");
 		$("#numMinus").attr("dir", "rtl");
-	}/* else {
-                $("#numPercent").attr("dir", "ltr");
-                $("#numNegativePercent").attr("dir", "ltr");
-                $("#numCurrency").attr("dir", "ltr");
-                $("#numNegativeCurrency").attr("dir", "ltr");
-                $("#numPlus").attr("dir", "ltr");
-                $("#numMinus").attr("dir", "ltr");
-	}*/
-
+	}
 
 	// local, international, mobile : style:default
 	phoneNumberList = {
@@ -750,9 +734,9 @@ $(function(){
 		"en-HK" : ["61234567", "00133112345678", "61234567"],
 		"en-IE" : ["040412345678", "0033112345678", "0851234567"],
 		"en-IN" : ["01112345678", "00911112345678", "9127654321"],
-		"en-NZ" : ["033452343", "006431234567", "0211234567"],					
+		"en-NZ" : ["033452343", "006431234567", "0211234567"],
 		"en-SG" : ["61234567", "00133112345678", "81234567"],
-		"en-US" : ["4563453434", "01133112345678"],					
+		"en-US" : ["4563453434", "01133112345678"],
 		"es-ES" : ["912123456", "0034957123456", "616846357"],
 		"es-MX" : ["015512345678", "0033112345678", "04412345678"],
 		"fr-FR" : ["0412345678", "0033112345678", "0612345678"],
@@ -762,7 +746,7 @@ $(function(){
 		"nl-BE" : ["0601234567", "003221234567", "0491234567"],
 		"nl-NL" : ["0255123456", "0031201234567", "0612345678"],
 		"pt-BR" : ["0211123456789", "004114084567890", "923456789"],
-		"ru-RU" : ["88122345678", "81014084567890", "89012345678"],				
+		"ru-RU" : ["88122345678", "81014084567890", "89012345678"],
 		"zh-Hans-CN" : ["010 12345678", "0033112345678", "15005179573"],
 		"zh-CN" : ["010 12345678", "0033112345678", "15005179573"],
 		"zh-Hant-TW" : ["039606537", "00214084567890", "0912345678"],

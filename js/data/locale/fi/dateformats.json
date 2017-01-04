@@ -1,6 +1,11 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} 'klo' {time}",
+            "l": "{date} 'klo' {time}",
+            "m": "{date} 'klo' {time}",
+            "s": "{date} {time}"
+        },
         "date": {
             "dmwy": {
                 "f": "cccc d. MMMM yyyy",
@@ -109,27 +114,27 @@
         },
         "range": {
             "c00": {
-                "f": "{sd}. {sm} {sy} {st} – {et}",
-                "l": "{sd}. {sm} {sy} {st} – {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {et}",
+                "f": "{sd}. {sm} {sy} klo {st} – {et}",
+                "l": "{sd}. {sm} {sy} klo {st} – {et}",
+                "m": "{sd}.{sm}.{sy} klo {st} – {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c02": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c03": {
-                "f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
-                "m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+                "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
+                "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
                 "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
             },
             "c10": {

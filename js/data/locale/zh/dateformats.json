@@ -6,13 +6,13 @@
                 "f": "yyyy年M月d日EEEE",
                 "l": "yyyy年M月d日EEE",
                 "m": "yyyy年M月d日EE",
-                "s": "yy/M/dE"
+                "s": "yyyy/M/dE"
             },
             "dmy": {
                 "f": "yyyy年M月d日",
                 "l": "yyyy年M月d日",
                 "m": "yyyy年M月d日",
-                "s": "yy/M/d"
+                "s": "yyyy/M/d"
             },
             "dmw": {
                 "f": "M月d日EEEE",
@@ -30,7 +30,7 @@
                 "f": "yyyy年M月",
                 "l": "yyyy年M月",
                 "m": "yyyy年M月",
-                "s": "yy/M"
+                "s": "yyyy/M"
             },
             "dw": {
                 "f": "d日EEEE",
@@ -60,7 +60,7 @@
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
-                "s": "yy"
+                "s": "yyyy"
             },
             "a": {
                 "f": "d日",
@@ -78,7 +78,7 @@
                 "f": "yyyy年",
                 "l": "yyyy年",
                 "m": "yyyy年",
-                "s": "yy年"
+                "s": "yyyy年"
             }
         },
         "time": {
@@ -91,11 +91,11 @@
                 "ms": "mm:ss",
                 "ahm": "ah:mm",
                 "hms": "h:mm:ss",
-                "hmz": "zh:mm",
-                "ahmz": "zah:mm",
+                "hmz": "z h:mm",
+                "ahmz": "z ah:mm",
                 "ahms": "ah:mm:ss",
-                "hmsz": "zh:mm:ss",
-                "ahmsz": "zah:mm:ss"
+                "hmsz": "z h:mm:ss",
+                "ahmsz": "z ah:mm:ss"
             },
             "24": {
                 "h": "H时",
@@ -106,11 +106,11 @@
                 "ms": "mm:ss",
                 "ahm": "H:mm",
                 "hms": "H:mm:ss",
-                "hmz": "zH:mm",
-                "ahmz": "zH:mm",
+                "hmz": "z H:mm",
+                "ahmz": "z H:mm",
                 "ahms": "H:mm:ss",
-                "hmsz": "zH:mm:ss",
-                "ahmsz": "zH:mm:ss"
+                "hmsz": "z H:mm:ss",
+                "ahmsz": "z H:mm:ss"
             }
         },
         "range": {

@@ -1,8 +1,8 @@
 {
     "scripts": [
-        "Tfng",
         "Arab",
-        "Latn"
+        "Latn",
+        "Tfng"
     ],
     "generated": true
 }
