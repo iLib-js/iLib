@@ -4,14 +4,16 @@
         "script": "Arab",
         "decimalChar": "٫",
         "groupChar": "٬",
-        "pctChar": "٪",
+        "pctChar": "٪؜",
         "exponential": "اس",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "common": "{n} {s}",
+            "commonNegative": "؜-{n} {s}"
         },
-        "pctFmt": "{n}٪",
+        "negativenumFmt": "؜-{n}",
+        "pctFmt": "{n} ٪؜",
+        "negativepctFmt": "؜-{n} ٪؜",
         "roundingMode": "halfdown",
         "digits": "٠١٢٣٤٥٦٧٨٩",
         "useNative": true
@@ -20,9 +22,15 @@
         "script": "Latn",
         "decimalChar": ".",
         "groupChar": ",",
-        "pctChar": "%",
+        "pctChar": "‎%‎",
         "exponential": "E",
-        "pctFmt": "{n}%",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "‎-{s} {n}"
+        },
+        "negativenumFmt": "‎-{n}",
+        "pctFmt": "{n}‎%‎",
+        "negativepctFmt": "‎-{n}‎%‎",
         "useNative": false
     }
 }

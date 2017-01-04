@@ -1,6 +1,6 @@
 {
     "generated": true,
     "numfmt": {
-        "secgroupSize": 2
+        "exponential": "e"
     }
 }

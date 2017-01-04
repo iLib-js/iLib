@@ -1,0 +1,13 @@
+{
+    "numfmt": {
+        "decimalChar": ",",
+        "groupChar": ".",
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        },
+        "pctFmt": "{n} %",
+        "negativepctFmt": "-{n} %"
+    },
+    "locale": "en-AT"
+}

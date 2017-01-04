@@ -694,16 +694,36 @@ $(function(){
 	$("#numGroupFmt").text(fmt.format(123456789.4));
 
 	var fmt = new NumFmt({locale: currentLocale,type: "percentage"});
-	$("#numPercentSymbol").text(li.getPercentageSymbol());
+	$("#numPercentFmt").text(li.getPercentageFormat());
 	$("#numPercent").text(fmt.format(34));
+	$("#numNegativePercentFmt").text(li.getNegativePercentageFormat());
+	$("#numNegativePercent").text(fmt.format(-34));
+
 
 	var fmt = new NumFmt({locale: currentLocale, type: "currency", currency:li.getCurrency()});
-	$("#numCurrencySymbol").text(fmt.sign);
+	$("#numCurrencyFmt").text(li.getCurrencyFormats().common);
 	$("#numCurrency").text(fmt.format(57.05));
+	$("#numNegativeCurrencyFmt").text(li.getCurrencyFormats().commonNegative);
+	$("#numNegativeCurrency").text(fmt.format(-57.05));
 
-	var fmt = new NumFmt({locale: currentLocale});
+	$("#numFmt").text("{n}");
+	$("#numNegativeFmt").text(li.getNegativeNumberFormat());
+	
+        var fmt = new NumFmt({locale: currentLocale});
 	$("#numPlus").text(fmt.format(+572));
 	$("#numMinus").text(fmt.format(-37));
+
+	// direction switch
+	if (direction == "rtl") {
+		$("#numDecimal").attr("dir", "rtl");
+		$("#numGroupFmt").attr("dir", "rtl");
+		$("#numPercent").attr("dir", "rtl");
+		$("#numNegativePercent").attr("dir", "rtl");
+		$("#numCurrency").attr("dir", "rtl");
+		$("#numNegativeCurrency").attr("dir", "rtl");
+		$("#numPlus").attr("dir", "rtl");
+		$("#numMinus").attr("dir", "rtl");
+	}
 
 	// local, international, mobile : style:default
 	phoneNumberList = {

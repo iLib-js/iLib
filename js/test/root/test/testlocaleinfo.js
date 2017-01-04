@@ -255,6 +255,27 @@ function testLocaleInfoGetCurrencyFormat_en_GB() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_en_GB() {
+	var info = new LocaleInfo("en-GB");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_en_GB() {
+	var info = new LocaleInfo("en-GB");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_en_GB() {
+	var info = new LocaleInfo("en-GB");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for ko-KR number format
 
 function testLocaleInfoGetDecimalSeparatorfor_ko_KR() {
@@ -282,6 +303,27 @@ function testLocaleInfoGetCurrencyFormat_ko_KR() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for zh-CN-Hans number format
@@ -313,6 +355,27 @@ function testLocaleInfoGetCurrencyFormat_zh_CN_Hans() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_zh_CN_Hans() {
+	var info = new LocaleInfo("zh-CN-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_CN_Hans() {
+	var info = new LocaleInfo("zh-CN-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_CN_Hans() {
+	var info = new LocaleInfo("zh-CN-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for zh-HK-Hans
 
 function testLocaleInfoGetDecimalSeparatorfor_zh_HK_Hans() {
@@ -340,6 +403,26 @@ function testLocaleInfoGetCurrencyFormat_zh_HK_Hans() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_zh_HK_Hans() {
+	var info = new LocaleInfo("zh-HK-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_HK_Hans() {
+	var info = new LocaleInfo("zh-HK-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+function testLocaleInfoGetNegativeCurrencyFormat_zh_HK_Hans() {
+	var info = new LocaleInfo("zh-HK-Hans");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases fot zh-TW-Hant
@@ -371,6 +454,27 @@ function testLocaleInfoGetCurrencyFormat_zh_TW_Hant() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_zh_TW_Hant() {
+	var info = new LocaleInfo("zh-TW-Hant");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_TW_Hant() {
+	var info = new LocaleInfo("zh-TW-Hant");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_TW_Hant() {
+	var info = new LocaleInfo("zh-TW-Hant");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for fr-FR number format
 
 function testLocaleInfoGetDecimalSeparatorfor_fr_FR() {
@@ -398,6 +502,27 @@ function testLocaleInfoGetCurrencyFormat_fr_FR() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_fr_FR() {
+	var info = new LocaleInfo("fr-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_FR() {
+	var info = new LocaleInfo("fr-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_FR() {
+	var info = new LocaleInfo("fr-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for fr-CA unmber format
@@ -429,6 +554,27 @@ function testLocaleInfoGetCurrencyFormat_fr_CA() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_CA() {
+	var info = new LocaleInfo("fr-CA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_CA() {
+	var info = new LocaleInfo("fr-CA");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_CA() {
+	var info = new LocaleInfo("fr-CA");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for pt_BR numberformat
 
 function testLocaleInfoGetDecimalSeparatorfor_pt_BR() {
@@ -458,6 +604,26 @@ function testLocaleInfoGetCurrencyFormat_pt_BR() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pt_BR() {
+	var info = new LocaleInfo("pt-BR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_BR() {
+	var info = new LocaleInfo("pt-BR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_BR() {
+	var info = new LocaleInfo("pt-BR");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
 //test cases for pt_PT
 
 function testLocaleInfoGetDecimalSeparatorfor_pt_PT() {
@@ -485,6 +651,27 @@ function testLocaleInfoGetCurrencyFormat_pt_PT() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for es_ES number format
@@ -516,6 +703,27 @@ function testLocaleInfoGetCurrencyFormat_es_ES() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_es_ES() {
+	var info = new LocaleInfo("es-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_es_ES() {
+	var info = new LocaleInfo("es-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_es_ES() {
+	var info = new LocaleInfo("es-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test case for es_Co
 
 function testLocaleInfoGetDecimalSeparatorfor_es_CO() {
@@ -535,14 +743,35 @@ function testLocaleInfoGetPercentageFormat_es_CO() {
 	var info = new LocaleInfo("es-CO");
 	assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_es_CO() {
 	var info = new LocaleInfo("es-CO");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_es_CO() {
+	var info = new LocaleInfo("es-CO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_es_CO() {
+	var info = new LocaleInfo("es-CO");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_es_CO() {
+	var info = new LocaleInfo("es-CO");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for ja-JP
@@ -574,6 +803,26 @@ function testLocaleInfoGetCurrencyFormat_ja_JP() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ja_JP() {
+	var info = new LocaleInfo("ja-JP");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ja_JP() {
+	var info = new LocaleInfo("ja-JP");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ja_JP() {
+	var info = new LocaleInfo("ja-JP");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
 //test cases for de-DE
 
 function testLocaleInfoGetDecimalSeparatorfor_de_DE() {
@@ -601,6 +850,27 @@ function testLocaleInfoGetCurrencyFormat_de_DE() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_de_DE() {
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_de_DE() {
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_de_DE() {
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for it-IT
@@ -632,6 +902,27 @@ function testLocaleInfoGetCurrencyFormat_it_IT() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_it_IT() {
+	var info = new LocaleInfo("it-IT");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_it_IT() {
+	var info = new LocaleInfo("it-IT");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_it_IT() {
+	var info = new LocaleInfo("it-IT");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for sv-SE
 
 function testLocaleInfoGetDecimalSeparatorfor_sv_SE() {
@@ -659,6 +950,27 @@ function testLocaleInfoGetCurrencyFormat_sv_SE() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sv_SE() {
+	var info = new LocaleInfo("sv-SE");
+	assertNotNull(info);
+
+	assertEquals("−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sv_SE() {
+	var info = new LocaleInfo("sv-SE");
+	assertNotNull(info);
+
+	assertEquals("−{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sv_SE() {
+	var info = new LocaleInfo("sv-SE");
+	assertNotNull(info);
+
+	assertEquals("−{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for fi-FI
@@ -690,6 +1002,27 @@ function testLocaleInfoGetCurrencyFormat_fi_FI() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fi_FI() {
+	var info = new LocaleInfo("fi-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fi_FI() {
+	var info = new LocaleInfo("fi-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fi_FI() {
+	var info = new LocaleInfo("fi-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for cs_CZ
 
 function testLocaleInfoGetDecimalSeparatorfor_cs_CZ() {
@@ -719,6 +1052,27 @@ function testLocaleInfoGetCurrencyFormat_cs_CZ() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_cs_CZ() {
+	var info = new LocaleInfo("cs-CZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_cs_CZ() {
+	var info = new LocaleInfo("cs-CZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_cs_CZ() {
+	var info = new LocaleInfo("cs-CZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for el_GR
 
 function testLocaleInfoGetDecimalSeparatorfor_el_GR() {
@@ -745,7 +1099,28 @@ function testLocaleInfoGetCurrencyFormat_el_GR() {
 	var info = new LocaleInfo("el-GR");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_el_GR() {
+	var info = new LocaleInfo("el-GR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_el_GR() {
+	var info = new LocaleInfo("el-GR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_el_GR() {
+	var info = new LocaleInfo("el-GR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for hu-HU
@@ -777,6 +1152,27 @@ function testLocaleInfoGetCurrencyFormat_hu_HU() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_hu_HU() {
+	var info = new LocaleInfo("hu-HU");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_hu_HU() {
+	var info = new LocaleInfo("hu-HU");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_hu_HU() {
+	var info = new LocaleInfo("hu-HU");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for nl_NL
 
 function testLocaleInfoGetDecimalSeparatorfor_nl_NL() {
@@ -804,6 +1200,27 @@ function testLocaleInfoGetCurrencyFormat_nl_NL() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_nl_NL() {
+	var info = new LocaleInfo("nl-NL");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_nl_NL() {
+	var info = new LocaleInfo("nl-NL");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_nl_NL() {
+	var info = new LocaleInfo("nl-NL");
+	assertNotNull(info);
+
+	assertEquals("{s} -{n}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for pl_PL
@@ -835,6 +1252,27 @@ function testLocaleInfoGetCurrencyFormat_pl_PL() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pl_PL() {
+	var info = new LocaleInfo("pl-PL");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pl_PL() {
+	var info = new LocaleInfo("pl-PL");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pl_PL() {
+	var info = new LocaleInfo("pl-PL");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for da-DK
 
 function testLocaleInfoGetDecimalSeparatorfor_da_Dk() {
@@ -862,6 +1300,27 @@ function testLocaleInfoGetCurrencyFormat_da_Dk() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_da_Dk() {
+	var info = new LocaleInfo("da-DK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_da_Dk() {
+	var info = new LocaleInfo("da-DK");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_da_Dk() {
+	var info = new LocaleInfo("da-DK");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 //test cases for roRO
@@ -893,6 +1352,27 @@ function testLocaleInfoGetCurrencyFormat_ro_RO() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ro_RO() {
+	var info = new LocaleInfo("ro-RO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ro_RO() {
+	var info = new LocaleInfo("ro-RO");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ro_RO() {
+	var info = new LocaleInfo("ro-RO");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 //test cases for aa-DJ
 
 function testLocaleInfoGetDecimalSeparatorfor_aa_DJ() {
@@ -920,6 +1400,27 @@ function testLocaleInfoGetCurrencyFormat_aa_DJ() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_aa_DJ() {
+	var info = new LocaleInfo("aa-DJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_aa_DJ() {
+	var info = new LocaleInfo("aa-DJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_aa_DJ() {
+	var info = new LocaleInfo("aa-DJ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_aa_DJ() {
@@ -969,7 +1470,28 @@ function testLocaleInfoGetCurrencyFormat_af_NA() {
 	var info = new LocaleInfo("af-NA");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_af_NA() {
+	var info = new LocaleInfo("af-NA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_af_NA() {
+	var info = new LocaleInfo("af-NA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_af_NA() {
+	var info = new LocaleInfo("af-NA");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_af_NA() {
@@ -1022,6 +1544,27 @@ function testLocaleInfoGetCurrencyFormat_agq_CM() {
 	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_agq_CM() {
+	var info = new LocaleInfo("agq-CM");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_agq_CM() {
+	var info = new LocaleInfo("agq-CM");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_agq_CM() {
+	var info = new LocaleInfo("agq-CM");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_agq_CM() {
 	var info = new LocaleInfo("agq-CM");
 	assertNotNull(info);
@@ -1070,6 +1613,27 @@ function testLocaleInfoGetCurrencyFormat_ak_GH() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ak_GH() {
+	var info = new LocaleInfo("ak-GH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ak_GH() {
+	var info = new LocaleInfo("ak-GH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ak_GH() {
+	var info = new LocaleInfo("ak-GH");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ak_GH() {
@@ -1121,6 +1685,27 @@ function testLocaleInfoGetCurrencyFormat_am_ET() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_am_ET() {
+	var info = new LocaleInfo("am-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_am_ET() {
+	var info = new LocaleInfo("am-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_am_ET() {
+	var info = new LocaleInfo("am-ET");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_am_ET() {
 	var info = new LocaleInfo("am-ET");
 	assertNotNull(info);
@@ -1161,14 +1746,35 @@ function testLocaleInfoGetPercentageFormat_ar_AE() {
 	var info = new LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("{n} ٪؜", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_AE() {
 	var info = new LocaleInfo("ar-AE");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ar_AE() {
+	var info = new LocaleInfo("ar-AE");
+	assertNotNull(info);
+
+	assertEquals("؜-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ar_AE() {
+	var info = new LocaleInfo("ar-AE");
+	assertNotNull(info);
+
+	assertEquals("؜-{n} ٪؜", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ar_AE() {
+	var info = new LocaleInfo("ar-AE");
+	assertNotNull(info);
+
+	assertEquals("؜-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_AE() {
@@ -1211,14 +1817,35 @@ function testLocaleInfoGetPercentageFormat_ar_DZ() {
 	var info = new LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}‎%‎", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_DZ() {
 	var info = new LocaleInfo("ar-DZ");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ar_DZ() {
+	var info = new LocaleInfo("ar-DZ");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ar_DZ() {
+	var info = new LocaleInfo("ar-DZ");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}‎%‎", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ar_DZ() {
+	var info = new LocaleInfo("ar-DZ");
+	assertNotNull(info);
+
+	assertEquals("‎-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_DZ() {
@@ -1261,14 +1888,35 @@ function testLocaleInfoGetPercentageFormat_ar_TN() {
 	var info = new LocaleInfo("ar-TN");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n}‎%‎", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_ar_TN() {
 	var info = new LocaleInfo("ar-TN");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ar_TN() {
+	var info = new LocaleInfo("ar-TN");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ar_TN() {
+	var info = new LocaleInfo("ar-TN");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}‎%‎", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ar_TN() {
+	var info = new LocaleInfo("ar-TN");
+	assertNotNull(info);
+
+	assertEquals("‎-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ar_TN() {
@@ -1320,6 +1968,27 @@ function testLocaleInfoGetCurrencyFormat_as_IN() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_as_IN() {
+	var info = new LocaleInfo("as-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_as_IN() {
+	var info = new LocaleInfo("as-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_as_IN() {
+	var info = new LocaleInfo("as-IN");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_as_IN() {
 	var info = new LocaleInfo("as-IN");
 	assertNotNull(info);
@@ -1367,6 +2036,27 @@ function testLocaleInfoGetCurrencyFormat_asa_TZ() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_asa_TZ() {
+	var info = new LocaleInfo("asa-TZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_asa_TZ() {
+	var info = new LocaleInfo("asa-TZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_asa_TZ() {
+	var info = new LocaleInfo("asa-TZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_asa_TZ() {
@@ -1419,6 +2109,27 @@ function testLocaleInfoGetCurrencyFormat_az_AZ() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_az_AZ() {
+	var info = new LocaleInfo("az-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_az_AZ() {
+	var info = new LocaleInfo("az-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_az_AZ() {
+	var info = new LocaleInfo("az-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_az_AZ() {
 	var info = new LocaleInfo("az-AZ");
 	assertNotNull(info);
@@ -1459,14 +2170,35 @@ function testLocaleInfoGetPercentageFormat_be_BY() {
 	var info = new LocaleInfo("be-BY");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_be_BY() {
 	var info = new LocaleInfo("be-BY");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_be_BY() {
+	var info = new LocaleInfo("be-BY");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_be_BY() {
+	var info = new LocaleInfo("be-BY");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_be_BY() {
+	var info = new LocaleInfo("be-BY");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_be_BY() {
@@ -1518,6 +2250,27 @@ function testLocaleInfoGetCurrencyFormat_bg_BG() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_bg_BG() {
+	var info = new LocaleInfo("bg-BG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_bg_BG() {
+	var info = new LocaleInfo("bg-BG");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bg_BG() {
+	var info = new LocaleInfo("bg-BG");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_bg_BG() {
 	var info = new LocaleInfo("bg-BG");
 	assertNotNull(info);
@@ -1559,6 +2312,27 @@ function testLocaleInfoGetCurrencyFormat_bm_ML() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_bm_ML() {
+	var info = new LocaleInfo("bm-ML");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_bm_ML() {
+	var info = new LocaleInfo("bm-ML");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bm_ML() {
+	var info = new LocaleInfo("bm-ML");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_bm_ML() {
@@ -1609,6 +2383,27 @@ function testLocaleInfoGetCurrencyFormat_bn_IN() {
 	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_bn_IN() {
+	var info = new LocaleInfo("bn-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_bn_IN() {
+	var info = new LocaleInfo("bn-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bn_IN() {
+	var info = new LocaleInfo("bn-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_bn_IN() {
 	var info = new LocaleInfo("bn-IN");
 	assertNotNull(info);
@@ -1656,6 +2451,27 @@ function testLocaleInfoGetCurrencyFormat_br_FR() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_br_FR() {
+	var info = new LocaleInfo("br-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_br_FR() {
+	var info = new LocaleInfo("br-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_br_FR() {
+	var info = new LocaleInfo("br-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_br_FR() {
@@ -1709,6 +2525,27 @@ function testLocaleInfoGetCurrencyFormat_bs_Cyrl_BA() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_bs_Cyrl_BA() {
+	var info = new LocaleInfo("bs-BA-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_bs_Cyrl_BA() {
+	var info = new LocaleInfo("bs-BA-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bs_Cyrl_BA() {
+	var info = new LocaleInfo("bs-BA-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_bs_Cyrl_BA() {
 	var info = new LocaleInfo("bs-BA-Cyrl");
 	assertNotNull(info);
@@ -1730,41 +2567,60 @@ function testLocaleInfoRoundingMode_bs_Cyrl_BA() {
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-function testLocaleInfoGetDecimalSeparatorfor_bs_Cyrl_BA() {
+function testLocaleInfoGetDecimalSeparatorfor_bs_BS() {
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_bs_Cyrl_BA() {
+function testLocaleInfoGetGroupingSeparatorfor_bs_BS() {
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
 	assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_bs_Cyrl_BA() {
+function testLocaleInfoGetPercentageFormat_bs_BS() {
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 
 }
 
+function testLocaleInfoGetNegativeNumberFormat_bs_BS() {
+	var info = new LocaleInfo("bs-BS");
+	assertNotNull(info);
 
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
 
-function testLocaleInfoGetPrimaryGroupingDigits_bs_Cyrl_BA() {
+function testLocaleInfoGetNegativePercentageFormat_bs_BS() {
+	var info = new LocaleInfo("bs-BS");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bs_BS() {
+	var info = new LocaleInfo("bs-BS");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_bs_BS() {
 
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_bs_Cyrl_BA() {
+function testLocaleInfoGetSecondaryGroupingDigits_bs_BS() {
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
-function testLocaleInfoRoundingMode_bs_Cyrl_BA() {
+function testLocaleInfoRoundingMode_bs_BS() {
 
 	var info = new LocaleInfo("bs-BS");
 	assertNotNull(info);
@@ -1792,7 +2648,7 @@ function testLocaleInfoGetPercentageFormat_bs_ME() {
 	var info = new LocaleInfo("bs-ME");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_bs_ME() {
@@ -1802,6 +2658,26 @@ function testLocaleInfoGetCurrencyFormat_bs_ME() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_bs_ME() {
+	var info = new LocaleInfo("bs-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_bs_ME() {
+	var info = new LocaleInfo("bs-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_bs_ME() {
+	var info = new LocaleInfo("bs-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
 function testLocaleInfoGetPrimaryGroupingDigits_bs_ME() {
 	var info = new LocaleInfo("bs-ME");
 	assertNotNull(info);
@@ -1851,6 +2727,26 @@ function testLocaleInfoGetCurrencyFormat_ca_FR() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ca_FR() {
+	var info = new LocaleInfo("ca-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ca_FR() {
+	var info = new LocaleInfo("ca-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ca_FR() {
+	var info = new LocaleInfo("ca-FR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
 function testLocaleInfoGetPrimaryGroupingDigits_ca_FR() {
 	var info = new LocaleInfo("ca-FR");
 	assertNotNull(info);
@@ -1883,7 +2779,7 @@ function testLocaleInfoGetGroupingSeparatorfor_de_AT() {
 	var info = new LocaleInfo("de-AT");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_de_AT() {
@@ -1900,6 +2796,26 @@ function testLocaleInfoGetCurrencyFormat_de_AT() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_de_AT() {
+	var info = new LocaleInfo("de-AT");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_de_AT() {
+	var info = new LocaleInfo("de-AT");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_de_AT() {
+	var info = new LocaleInfo("de-AT");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
 function testLocaleInfoGetPrimaryGroupingDigits_de_AT() {
 	var info = new LocaleInfo("de-AT");
 	assertNotNull(info);
@@ -1941,16 +2857,36 @@ function testLocaleInfoGetPercentageFormat_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("‎٪ {n}", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
 
-	assertEquals("‎{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} ؜{s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fa() {
+	var info = new LocaleInfo("fa-IR");
+	assertNotNull(info);
+
+	assertEquals("‎−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fa() {
+	var info = new LocaleInfo("fa-IR");
+	assertNotNull(info);
+
+	assertEquals("‎٪ -{n}", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fa() {
+	var info = new LocaleInfo("fa-IR");
+	assertNotNull(info);
+
+	assertEquals("؜-{n} ؜{s}", info.getCurrencyFormats().commonNegative);
+}
 function testLocaleInfoGetPrimaryGroupingDigits_fa() {
 	var info = new LocaleInfo("fa-IR");
 	assertNotNull(info);
@@ -1991,14 +2927,35 @@ function testLocaleInfoGetPercentageFormat_fa_AF() {
 	var info = new LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("{n}٪", info.getPercentageFormat());
+	assertEquals("‎٪ {n}", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fa_AF() {
 	var info = new LocaleInfo("fa-AF");
 	assertNotNull(info);
 
-	assertEquals("‎{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_fa_AF() {
+	var info = new LocaleInfo("fa-AF");
+	assertNotNull(info);
+
+	assertEquals("‎−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fa_AF() {
+	var info = new LocaleInfo("fa-AF");
+	assertNotNull(info);
+
+	assertEquals("‎٪ -{n}", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fa_AF() {
+	var info = new LocaleInfo("fa-AF");
+	assertNotNull(info);
+
+	assertEquals("‎−{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fa_AF() {
@@ -2052,6 +3009,27 @@ function testLocaleInfoGetCurrencyFormat_ff_SN() {
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
+function testLocaleInfoGetNegativeNumberFormat_ff_SN() {
+	var info = new LocaleInfo("ff-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ff_SN() {
+	var info = new LocaleInfo("ff-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ff_SN() {
+	var info = new LocaleInfo("ff-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 
 function testLocaleInfoGetPrimaryGroupingDigits_ff_SN() {
 	var info = new LocaleInfo("ff-SN");
@@ -2104,6 +3082,27 @@ function testLocaleInfoGetCurrencyFormat_fj_FJ() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fj_FJ() {
+	var info = new LocaleInfo("fj-FJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fj_FJ() {
+	var info = new LocaleInfo("fj-FJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fj_FJ() {
+	var info = new LocaleInfo("fj-FJ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_fj_FJ() {
 	var info = new LocaleInfo("fj-FJ");
 	assertNotNull(info);
@@ -2151,7 +3150,28 @@ function testLocaleInfoGetCurrencyFormat_fo() {
 	var info = new LocaleInfo("fo");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_fo() {
+	var info = new LocaleInfo("fo");
+	assertNotNull(info);
+
+	assertEquals("−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fo() {
+	var info = new LocaleInfo("fo");
+	assertNotNull(info);
+
+	assertEquals("−{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fo() {
+	var info = new LocaleInfo("fo");
+	assertNotNull(info);
+
+	assertEquals("−{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fo() {
@@ -2205,6 +3225,27 @@ function testLocaleInfoGetCurrencyFormat_fr_AD() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_AD() {
+	var info = new LocaleInfo("fr-AD");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_AD() {
+	var info = new LocaleInfo("fr-AD");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_AD() {
+	var info = new LocaleInfo("fr-AD");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_fr_AD() {
 	var info = new LocaleInfo("fr-AD");
 	assertNotNull(info);
@@ -2238,7 +3279,7 @@ function testLocaleInfoGetGroupingSeparatorfor_fr_BE() {
 	var info = new LocaleInfo("fr-BE");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_fr_BE() {
@@ -2254,6 +3295,27 @@ function testLocaleInfoGetCurrencyFormat_fr_BE() {
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
+function testLocaleInfoGetNegativeNumberFormat_fr_BE() {
+	var info = new LocaleInfo("fr-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_BE() {
+	var info = new LocaleInfo("fr-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_BE() {
+	var info = new LocaleInfo("fr-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_BE() {
 	var info = new LocaleInfo("fr-BE");
@@ -2291,18 +3353,39 @@ function testLocaleInfoGetGroupingSeparatorfor_fr_CH() {
 	assertEquals(" ", info.getGroupingSeparator());
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_CH() {
+	var info = new LocaleInfo("fr-CH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_CH() {
+	var info = new LocaleInfo("fr-CH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_CH() {
+	var info = new LocaleInfo("fr-CH");
+	assertNotNull(info);
+
+	assertEquals("{s}-{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPercentageFormat_fr_CH() {
 	var info = new LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fr_CH() {
 	var info = new LocaleInfo("fr-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_CH() {
@@ -2355,6 +3438,27 @@ function testLocaleInfoGetCurrencyFormat_fr_DZ() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_DZ() {
+	var info = new LocaleInfo("fr-DZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_DZ() {
+	var info = new LocaleInfo("fr-DZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_DZ() {
+	var info = new LocaleInfo("fr-DZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_fr_DZ() {
 	var info = new LocaleInfo("fr-DZ");
 	assertNotNull(info);
@@ -2403,6 +3507,27 @@ function testLocaleInfoGetCurrencyFormat_fr_LU() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_fr_LU() {
+	var info = new LocaleInfo("fr-LU");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_LU() {
+	var info = new LocaleInfo("fr-LU");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_LU() {
+	var info = new LocaleInfo("fr-LU");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_LU() {
@@ -2455,6 +3580,27 @@ function testLocaleInfoGetCurrencyFormat_fr_MG() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_MG() {
+	var info = new LocaleInfo("fr-MG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_MG() {
+	var info = new LocaleInfo("fr-MG");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_MG() {
+	var info = new LocaleInfo("fr-MG");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_fr_MG() {
 	var info = new LocaleInfo("fr-MG");
 	assertNotNull(info);
@@ -2505,6 +3651,27 @@ function testLocaleInfoGetCurrencyFormat_fr_SN() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_fr_SN() {
+	var info = new LocaleInfo("fr-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_SN() {
+	var info = new LocaleInfo("fr-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_SN() {
+	var info = new LocaleInfo("fr-SN");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_fr_SN() {
 	var info = new LocaleInfo("fr-SN");
 	assertNotNull(info);
@@ -2553,6 +3720,27 @@ function testLocaleInfoGetCurrencyFormat_fr_YT() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_fr_YT() {
+	var info = new LocaleInfo("fr-YT");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_fr_YT() {
+	var info = new LocaleInfo("fr-YT");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_fr_YT() {
+	var info = new LocaleInfo("fr-YT");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_fr_YT() {
@@ -2607,6 +3795,27 @@ function testLocaleInfoGetCurrencyFormat_ga_IE() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ga_IE() {
+	var info = new LocaleInfo("ga-IE");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ga_IE() {
+	var info = new LocaleInfo("ga-IE");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ga_IE() {
+	var info = new LocaleInfo("ga-IE");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ga_IE() {
 	var info = new LocaleInfo("ga-IE");
 	assertNotNull(info);
@@ -2649,14 +3858,35 @@ function testLocaleInfoGetPercentageFormat_gl_ES() {
 	var info = new LocaleInfo("gl-ES");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_gl_ES() {
 	var info = new LocaleInfo("gl-ES");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_gl_ES() {
+	var info = new LocaleInfo("gl-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_gl_ES() {
+	var info = new LocaleInfo("gl-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_gl_ES() {
+	var info = new LocaleInfo("gl-ES");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_gl_ES() {
@@ -2709,6 +3939,27 @@ function testLocaleInfoGetCurrencyFormat_ha_NG_Latn() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ha_NG_Latn() {
+	var info = new LocaleInfo("ha-NG-Latn");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ha_NG_Latn() {
+	var info = new LocaleInfo("ha-NG-Latn");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ha_NG_Latn() {
+	var info = new LocaleInfo("ha-NG-Latn");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ha_NG_Latn() {
 	var info = new LocaleInfo("ha-NG-Latn");
 	assertNotNull(info);
@@ -2756,7 +4007,28 @@ function testLocaleInfoGetCurrencyFormat_he() {
 	var info = new LocaleInfo("he-IL");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("‏{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_he() {
+	var info = new LocaleInfo("he-IL");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_he() {
+	var info = new LocaleInfo("he-IL");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_he() {
+	var info = new LocaleInfo("he-IL");
+	assertNotNull(info);
+
+	assertEquals("‏-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_he() {
@@ -2810,6 +4082,27 @@ function testLocaleInfoGetCurrencyFormat_hi_IN() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_hi_IN() {
+	var info = new LocaleInfo("hi-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_hi_IN() {
+	var info = new LocaleInfo("hi-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_hi_IN() {
+	var info = new LocaleInfo("hi-IN");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_hi_IN() {
 	var info = new LocaleInfo("hi-IN");
 	assertNotNull(info);
@@ -2861,6 +4154,27 @@ function testLocaleInfoGetCurrencyFormat_hr_HR() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_hr_HR() {
+	var info = new LocaleInfo("hr-HR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_hr_HR() {
+	var info = new LocaleInfo("hr-HR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_hr_HR() {
+	var info = new LocaleInfo("hr-HR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_hr_HR() {
 	var info = new LocaleInfo("hr-HR");
 	assertNotNull(info);
@@ -2895,7 +4209,7 @@ function testLocaleInfoGetGroupingSeparatorfor_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_hy_AZ() {
@@ -2909,14 +4223,35 @@ function testLocaleInfoGetCurrencyFormat_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_hy_AZ() {
+	var info = new LocaleInfo("hy-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_hy_AZ() {
+	var info = new LocaleInfo("hy-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_hy_AZ() {
+	var info = new LocaleInfo("hy-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_hy_AZ() {
 	var info = new LocaleInfo("hy-AZ");
 	assertNotNull(info);
 
-	assertEquals(2, info.getPrimaryGroupingDigits());
+	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetSecondaryGroupingDigits_hy_AZ() {
@@ -2963,6 +4298,27 @@ function testLocaleInfoGetCurrencyFormat_id_MY() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_id_MY() {
+	var info = new LocaleInfo("id-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_id_MY() {
+	var info = new LocaleInfo("id-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_id_MY() {
+	var info = new LocaleInfo("id-MY");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_id_MY() {
@@ -3012,7 +4368,28 @@ function testLocaleInfoGetCurrencyFormat_it_CH() {
 	var info = new LocaleInfo("it-CH");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_it_CH() {
+	var info = new LocaleInfo("it-CH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_it_CH() {
+	var info = new LocaleInfo("it-CH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_it_CH() {
+	var info = new LocaleInfo("it-CH");
+	assertNotNull(info);
+
+	assertEquals("{s}-{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_it_CH() {
@@ -3063,6 +4440,27 @@ function testLocaleInfoGetCurrencyFormat_it_SM() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_it_SM() {
+	var info = new LocaleInfo("it-SM");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_it_SM() {
+	var info = new LocaleInfo("it-SM");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_it_SM() {
+	var info = new LocaleInfo("it-SM");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_it_SM() {
@@ -3116,6 +4514,27 @@ function testLocaleInfoGetCurrencyFormat_ka_IR() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ka_IR() {
+	var info = new LocaleInfo("ka-IR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ka_IR() {
+	var info = new LocaleInfo("ka-IR");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ka_IR() {
+	var info = new LocaleInfo("ka-IR");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ka_IR() {
 	var info = new LocaleInfo("ka-IR");
 	assertNotNull(info);
@@ -3165,6 +4584,27 @@ function testLocaleInfoGetCurrencyFormat_kk_KZ_Cyrl() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_kk_KZ_Cyrl() {
+	var info = new LocaleInfo("kk-KZ-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_kk_KZ_Cyrl() {
+	var info = new LocaleInfo("kk-KZ-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_kk_KZ_Cyrl() {
+	var info = new LocaleInfo("kk-KZ-Cyrl");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_kk_KZ_Cyrl() {
@@ -3218,6 +4658,27 @@ function testLocaleInfoGetCurrencyFormat_ko_KR() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ko_KR() {
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ko_KR() {
 	var info = new LocaleInfo("ko-KR");
 	assertNotNull(info);
@@ -3267,6 +4728,27 @@ function testLocaleInfoGetCurrencyFormat_ks_Arab_IN() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ks_Arab_IN() {
+	var info = new LocaleInfo("ks-Arab-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ks_Arab_IN() {
+	var info = new LocaleInfo("ks-Arab-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ks_Arab_IN() {
+	var info = new LocaleInfo("ks-Arab-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ks_Arab_IN() {
@@ -3319,6 +4801,27 @@ function testLocaleInfoGetCurrencyFormat_ku() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ku() {
+	var info = new LocaleInfo("ku-IQ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ku() {
+	var info = new LocaleInfo("ku-IQ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ku() {
+	var info = new LocaleInfo("ku-IQ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ku() {
 	var info = new LocaleInfo("ku-IQ");
 	assertNotNull(info);
@@ -3367,6 +4870,27 @@ function testLocaleInfoGetCurrencyFormat_ku_IR() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ku_IR() {
+	var info = new LocaleInfo("ku-IR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ku_IR() {
+	var info = new LocaleInfo("ku-IR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ku_IR() {
+	var info = new LocaleInfo("ku-IR");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ku_IR() {
@@ -3420,6 +4944,27 @@ function testLocaleInfoGetCurrencyFormat_lg_UG() {
 	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_lg_UG() {
+	var info = new LocaleInfo("lg-UG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_lg_UG() {
+	var info = new LocaleInfo("lg-UG");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_lg_UG() {
+	var info = new LocaleInfo("lg-UG");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_lg_UG() {
 	var info = new LocaleInfo("lg-UG");
 	assertNotNull(info);
@@ -3468,6 +5013,27 @@ function testLocaleInfoGetCurrencyFormat_ln_CF() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ln_CF() {
+	var info = new LocaleInfo("ln-CF");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ln_CF() {
+	var info = new LocaleInfo("ln-CF");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ln_CF() {
+	var info = new LocaleInfo("ln-CF");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ln_CF() {
@@ -3521,6 +5087,27 @@ function testLocaleInfoGetCurrencyFormat_lt() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_lt() {
+	var info = new LocaleInfo("lt-LT");
+	assertNotNull(info);
+
+	assertEquals("−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_lt() {
+	var info = new LocaleInfo("lt-LT");
+	assertNotNull(info);
+
+	assertEquals("−{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_lt() {
+	var info = new LocaleInfo("lt-LT");
+	assertNotNull(info);
+
+	assertEquals("−{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_lt() {
 	var info = new LocaleInfo("lt-LT");
 	assertNotNull(info);
@@ -3572,6 +5159,27 @@ function testLocaleInfoGetCurrencyFormat_mi_CK() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_mi_CK() {
+	var info = new LocaleInfo("mi-CK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_mi_CK() {
+	var info = new LocaleInfo("mi-CK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_mi_CK() {
+	var info = new LocaleInfo("mi-CK");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_mi_CK() {
 	var info = new LocaleInfo("mi-CK");
 	assertNotNull(info);
@@ -3619,7 +5227,28 @@ function testLocaleInfoGetCurrencyFormat_mk() {
 	var info = new LocaleInfo("mk-MK");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_mk() {
+	var info = new LocaleInfo("mk-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_mk() {
+	var info = new LocaleInfo("mk-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_mk() {
+	var info = new LocaleInfo("mk-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_mk() {
@@ -3673,6 +5302,27 @@ function testLocaleInfoGetCurrencyFormat_mn_CN() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_mn_CN() {
+	var info = new LocaleInfo("mn-CN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_mn_CN() {
+	var info = new LocaleInfo("mn-CN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_mn_CN() {
+	var info = new LocaleInfo("mn-CN");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_mn_CN() {
 	var info = new LocaleInfo("mn-CN");
 	assertNotNull(info);
@@ -3721,6 +5371,27 @@ function testLocaleInfoGetCurrencyFormat_ms() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ms() {
+	var info = new LocaleInfo("ms-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ms() {
+	var info = new LocaleInfo("ms-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ms() {
+	var info = new LocaleInfo("ms-MY");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ms() {
@@ -3773,6 +5444,27 @@ function testLocaleInfoGetCurrencyFormat_ms_BN() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ms_BN() {
+	var info = new LocaleInfo("ms-BN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ms_BN() {
+	var info = new LocaleInfo("ms-BN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ms_BN() {
+	var info = new LocaleInfo("ms-BN");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ms_BN() {
 	var info = new LocaleInfo("ms-BN");
 	assertNotNull(info);
@@ -3821,6 +5513,27 @@ function testLocaleInfoGetCurrencyFormat_ne_IN() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ne_IN() {
+	var info = new LocaleInfo("ne-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ne_IN() {
+	var info = new LocaleInfo("ne-IN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ne_IN() {
+	var info = new LocaleInfo("ne-IN");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ne_IN() {
@@ -3873,6 +5586,27 @@ function testLocaleInfoGetCurrencyFormat_nl_BE() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_nl_BE() {
+	var info = new LocaleInfo("nl-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_nl_BE() {
+	var info = new LocaleInfo("nl-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_nl_BE() {
+	var info = new LocaleInfo("nl-BE");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_nl_BE() {
 	var info = new LocaleInfo("nl-BE");
 	assertNotNull(info);
@@ -3921,6 +5655,27 @@ function testLocaleInfoGetCurrencyFormat_nl_CW() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_nl_CW() {
+	var info = new LocaleInfo("nl-CW");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_nl_CW() {
+	var info = new LocaleInfo("nl-CW");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_nl_CW() {
+	var info = new LocaleInfo("nl-CW");
+	assertNotNull(info);
+
+	assertEquals("{s} -{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_nl_CW() {
@@ -3973,6 +5728,27 @@ function testLocaleInfoGetCurrencyFormat_nl_GF() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_nl_GF() {
+	var info = new LocaleInfo("nl-GF");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_nl_GF() {
+	var info = new LocaleInfo("nl-GF");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_nl_GF() {
+	var info = new LocaleInfo("nl-GF");
+	assertNotNull(info);
+
+	assertEquals("{s} -{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_nl_GF() {
 	var info = new LocaleInfo("nl-GF");
 	assertNotNull(info);
@@ -4021,6 +5797,27 @@ function testLocaleInfoGetCurrencyFormat_nl_SR() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_nl_SR() {
+	var info = new LocaleInfo("nl-SR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_nl_SR() {
+	var info = new LocaleInfo("nl-SR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_nl_SR() {
+	var info = new LocaleInfo("nl-SR");
+	assertNotNull(info);
+
+	assertEquals("{s} -{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_nl_SR() {
@@ -4075,6 +5872,27 @@ function testLocaleInfoGetCurrencyFormat_no_BV() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_no_BV() {
+	var info = new LocaleInfo("no-BV");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_no_BV() {
+	var info = new LocaleInfo("no-BV");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_no_BV() {
+	var info = new LocaleInfo("no-BV");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_no_BV() {
 	var info = new LocaleInfo("no-BV");
 	assertNotNull(info);
@@ -4125,6 +5943,27 @@ function testLocaleInfoGetCurrencyFormat_no_SJ() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_no_SJ() {
+	var info = new LocaleInfo("no-SJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_no_SJ() {
+	var info = new LocaleInfo("no-SJ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_no_SJ() {
+	var info = new LocaleInfo("no-SJ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_no_SJ() {
 	var info = new LocaleInfo("no-SJ");
 	assertNotNull(info);
@@ -4160,6 +5999,27 @@ function testLocaleInfoGetGroupingSeparatorfor_om_ET() {
 	assertNotNull(info);
 
 	assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetNegativeNumberFormat_om_ET() {
+	var info = new LocaleInfo("om-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_om_ET() {
+	var info = new LocaleInfo("om-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_om_ET() {
+	var info = new LocaleInfo("om-ET");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPercentageFormat_om_ET() {
@@ -4227,6 +6087,27 @@ function testLocaleInfoGetCurrencyFormat_os_RU() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_os_RU() {
+	var info = new LocaleInfo("os-RU");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_os_RU() {
+	var info = new LocaleInfo("os-RU");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_os_RU() {
+	var info = new LocaleInfo("os-RU");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_os_RU() {
 	var info = new LocaleInfo("os-RU");
 	assertNotNull(info);
@@ -4276,6 +6157,27 @@ function testLocaleInfoGetCurrencyFormat_pa() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pa() {
+	var info = new LocaleInfo("pa-Arab-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pa() {
+	var info = new LocaleInfo("pa-Arab-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pa() {
+	var info = new LocaleInfo("pa-Arab-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pa() {
@@ -4328,6 +6230,27 @@ function testLocaleInfoGetCurrencyFormat_pt_AO() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pt_AO() {
+	var info = new LocaleInfo("pt-AO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_AO() {
+	var info = new LocaleInfo("pt-AO");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_AO() {
+	var info = new LocaleInfo("pt-AO");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_pt_AO() {
 	var info = new LocaleInfo("pt-AO");
 	assertNotNull(info);
@@ -4376,6 +6299,27 @@ function testLocaleInfoGetCurrencyFormat_pt_CV() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pt_CV() {
+	var info = new LocaleInfo("pt-CV");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_CV() {
+	var info = new LocaleInfo("pt-CV");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_CV() {
+	var info = new LocaleInfo("pt-CV");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pt_CV() {
@@ -4428,6 +6372,27 @@ function testLocaleInfoGetCurrencyFormat_pt_GW() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pt_GW() {
+	var info = new LocaleInfo("pt-GW");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_GW() {
+	var info = new LocaleInfo("pt-GW");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_GW() {
+	var info = new LocaleInfo("pt-GW");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_pt_GW() {
 	var info = new LocaleInfo("pt-GW");
 	assertNotNull(info);
@@ -4476,6 +6441,27 @@ function testLocaleInfoGetCurrencyFormat_pt_MO() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pt_MO() {
+	var info = new LocaleInfo("pt-MO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_MO() {
+	var info = new LocaleInfo("pt-MO");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_MO() {
+	var info = new LocaleInfo("pt-MO");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pt_MO() {
@@ -4528,6 +6514,27 @@ function testLocaleInfoGetCurrencyFormat_pt_MZ() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pt_MZ() {
+	var info = new LocaleInfo("pt-MZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_MZ() {
+	var info = new LocaleInfo("pt-MZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_MZ() {
+	var info = new LocaleInfo("pt-MZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_pt_MZ() {
 	var info = new LocaleInfo("pt-MZ");
 	assertNotNull(info);
@@ -4576,6 +6583,27 @@ function testLocaleInfoGetCurrencyFormat_pt_PT() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_PT() {
+	var info = new LocaleInfo("pt-PT");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pt_PT() {
@@ -4628,6 +6656,27 @@ function testLocaleInfoGetCurrencyFormat_pt_ST() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_pt_ST() {
+	var info = new LocaleInfo("pt-ST");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_ST() {
+	var info = new LocaleInfo("pt-ST");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_ST() {
+	var info = new LocaleInfo("pt-ST");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_pt_ST() {
 	var info = new LocaleInfo("pt-ST");
 	assertNotNull(info);
@@ -4676,6 +6725,27 @@ function testLocaleInfoGetCurrencyFormat_pt_TL() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_pt_TL() {
+	var info = new LocaleInfo("pt-TL");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_pt_TL() {
+	var info = new LocaleInfo("pt-TL");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_pt_TL() {
+	var info = new LocaleInfo("pt-TL");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pt_TL() {
@@ -4730,6 +6800,27 @@ function testLocaleInfoGetCurrencyFormat_ro_RS() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ro_RS() {
+	var info = new LocaleInfo("ro-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ro_RS() {
+	var info = new LocaleInfo("ro-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ro_RS() {
+	var info = new LocaleInfo("ro-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ro_RS() {
 	var info = new LocaleInfo("ro-RS");
 	assertNotNull(info);
@@ -4781,6 +6872,27 @@ function testLocaleInfoGetCurrencyFormat_ru_KZ() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ru_KZ() {
+	var info = new LocaleInfo("ru-KZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ru_KZ() {
+	var info = new LocaleInfo("ru-KZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ru_KZ() {
+	var info = new LocaleInfo("ru-KZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ru_KZ() {
 	var info = new LocaleInfo("ru-KZ");
 	assertNotNull(info);
@@ -4829,6 +6941,27 @@ function testLocaleInfoGetCurrencyFormat_ru_TM() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ru_TM() {
+	var info = new LocaleInfo("ru-TM");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ru_TM() {
+	var info = new LocaleInfo("ru-TM");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ru_TM() {
+	var info = new LocaleInfo("ru-TM");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ru_TM() {
@@ -4882,6 +7015,27 @@ function testLocaleInfoGetCurrencyFormat_shi_Tfng_MA() {
 	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_shi_Tfng_MA() {
+	var info = new LocaleInfo("shi-Tfng-MA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_shi_Tfng_MA() {
+	var info = new LocaleInfo("shi-Tfng-MA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_shi_Tfng_MA() {
+	var info = new LocaleInfo("shi-Tfng-MA");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_shi_Tfng_MA() {
 	var info = new LocaleInfo("shi-Tfng-MA");
 	assertNotNull(info);
@@ -4930,6 +7084,27 @@ function testLocaleInfoGetCurrencyFormat_si() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_si() {
+	var info = new LocaleInfo("si");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_si() {
+	var info = new LocaleInfo("si");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_si() {
+	var info = new LocaleInfo("si");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_si() {
@@ -4983,6 +7158,27 @@ function testLocaleInfoGetCurrencyFormat_sk_SK() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_sk_SK() {
+	var info = new LocaleInfo("sk-SK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sk_SK() {
+	var info = new LocaleInfo("sk-SK");
+	assertNotNull(info);
+
+	assertEquals("-{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sk_SK() {
+	var info = new LocaleInfo("sk-SK");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_sk_SK() {
 	var info = new LocaleInfo("sk-SK");
 	assertNotNull(info);
@@ -5023,7 +7219,7 @@ function testLocaleInfoGetPercentageFormat_sl() {
 	var info = new LocaleInfo("sl-SI");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_sl() {
@@ -5031,6 +7227,27 @@ function testLocaleInfoGetCurrencyFormat_sl() {
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sl() {
+	var info = new LocaleInfo("sl-SI");
+	assertNotNull(info);
+
+	assertEquals("–{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sl() {
+	var info = new LocaleInfo("sl-SI");
+	assertNotNull(info);
+
+	assertEquals("–{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sl() {
+	var info = new LocaleInfo("sl-SI");
+	assertNotNull(info);
+
+	assertEquals("–{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sl() {
@@ -5073,6 +7290,27 @@ function testLocaleInfoGetCurrencyFormat_so_ET() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_so_ET() {
+	var info = new LocaleInfo("so-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_so_ET() {
+	var info = new LocaleInfo("so-ET");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_so_ET() {
+	var info = new LocaleInfo("so-ET");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_so_ET() {
@@ -5123,6 +7361,27 @@ function testLocaleInfoGetCurrencyFormat_so_SO() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_so_SO() {
+	var info = new LocaleInfo("so-SO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_so_SO() {
+	var info = new LocaleInfo("so-SO");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_so_SO() {
+	var info = new LocaleInfo("so-SO");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_so_SO() {
@@ -5176,6 +7435,27 @@ function testLocaleInfoGetCurrencyFormat_sq_MK() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_sq_MK() {
+	var info = new LocaleInfo("sq-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sq_MK() {
+	var info = new LocaleInfo("sq-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sq_MK() {
+	var info = new LocaleInfo("sq-MK");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_sq_MK() {
 	var info = new LocaleInfo("sq-MK");
 	assertNotNull(info);
@@ -5227,6 +7507,27 @@ function testLocaleInfoGetCurrencyFormat_sr_Cyrl_BA() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_sr_Cyrl_BA() {
+	var info = new LocaleInfo("sr-Cyrl-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sr_Cyrl_BA() {
+	var info = new LocaleInfo("sr-Cyrl-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sr_Cyrl_BA() {
+	var info = new LocaleInfo("sr-Cyrl-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_sr_Cyrl_BA() {
 	var info = new LocaleInfo("sr-Cyrl-BA");
 	assertNotNull(info);
@@ -5274,7 +7575,28 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_BA() {
 	var info = new LocaleInfo("sr-Latn-BA");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sr_Latn_BA() {
+	var info = new LocaleInfo("sr-Latn-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sr_Latn_BA() {
+	var info = new LocaleInfo("sr-Latn-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_BA() {
+	var info = new LocaleInfo("sr-Latn-BA");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_BA() {
@@ -5324,7 +7646,28 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_ME() {
 	var info = new LocaleInfo("sr-Latn-ME");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sr_Latn_ME() {
+	var info = new LocaleInfo("sr-Latn-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sr_Latn_ME() {
+	var info = new LocaleInfo("sr-Latn-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_ME() {
+	var info = new LocaleInfo("sr-Latn-ME");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_ME() {
@@ -5374,7 +7717,28 @@ function testLocaleInfoGetCurrencyFormat_sr_Latn_RS() {
 	var info = new LocaleInfo("sr-Latn-RS");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sr_Latn_RS() {
+	var info = new LocaleInfo("sr-Latn-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sr_Latn_RS() {
+	var info = new LocaleInfo("sr-Latn-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_RS() {
+	var info = new LocaleInfo("sr-Latn-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_RS() {
@@ -5427,6 +7791,27 @@ function testLocaleInfoGetCurrencyFormat_sr_RS() {
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_sr_RS() {
+	var info = new LocaleInfo("sr-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sr_RS() {
+	var info = new LocaleInfo("sr-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sr_RS() {
+	var info = new LocaleInfo("sr-RS");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_sr_RS() {
 	var info = new LocaleInfo("sr-RS");
 	assertNotNull(info);
@@ -5475,6 +7860,27 @@ function testLocaleInfoGetCurrencyFormat_ss_ZA() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ss_ZA() {
+	var info = new LocaleInfo("ss-ZA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ss_ZA() {
+	var info = new LocaleInfo("ss-ZA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ss_ZA() {
+	var info = new LocaleInfo("ss-ZA");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ss_ZA() {
@@ -5528,6 +7934,27 @@ function testLocaleInfoGetCurrencyFormat_st_LS() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_st_LS() {
+	var info = new LocaleInfo("st-LS");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_st_LS() {
+	var info = new LocaleInfo("st-LS");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_st_LS() {
+	var info = new LocaleInfo("st-LS");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_st_LS() {
 	var info = new LocaleInfo("st-LS");
 	assertNotNull(info);
@@ -5571,11 +7998,32 @@ function testLocaleInfoGetPercentageFormat_sv_FI() {
 	assertEquals("{n} %", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetCurrencyFormat_sv() {
+function testLocaleInfoGetCurrencyFormat_sv_FI() {
 	var info = new LocaleInfo("sv-FI");
 	assertNotNull(info);
 
 	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sv_FI() {
+	var info = new LocaleInfo("sv-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sv_FI() {
+	var info = new LocaleInfo("sv-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n} %", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sv_FI() {
+	var info = new LocaleInfo("sv-FI");
+	assertNotNull(info);
+
+	assertEquals("−{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sv_FI() {
@@ -5629,6 +8077,27 @@ function testLocaleInfoGetCurrencyFormat_sw_UG() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_sw_UG() {
+	var info = new LocaleInfo("sw-UG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sw_UG() {
+	var info = new LocaleInfo("sw-UG");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sw_UG() {
+	var info = new LocaleInfo("sw-UG");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_sw_UG() {
 	var info = new LocaleInfo("sw-UG");
 	assertNotNull(info);
@@ -5678,7 +8147,28 @@ function testLocaleInfoGetCurrencyFormat_ta_LK() {
 	var info = new LocaleInfo("ta-LK");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ta_LK() {
+	var info = new LocaleInfo("ta-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ta_LK() {
+	var info = new LocaleInfo("ta-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ta_LK() {
+	var info = new LocaleInfo("ta-LK");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_LK() {
@@ -5728,7 +8218,28 @@ function testLocaleInfoGetCurrencyFormat_ta_MY() {
 	var info = new LocaleInfo("ta-MY");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ta_MY() {
+	var info = new LocaleInfo("ta-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ta_MY() {
+	var info = new LocaleInfo("ta-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ta_MY() {
+	var info = new LocaleInfo("ta-MY");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_MY() {
@@ -5778,7 +8289,28 @@ function testLocaleInfoGetCurrencyFormat_ta_SG() {
 	var info = new LocaleInfo("ta-SG");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ta_SG() {
+	var info = new LocaleInfo("ta-SG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ta_SG() {
+	var info = new LocaleInfo("ta-SG");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ta_SG() {
+	var info = new LocaleInfo("ta-SG");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ta_SG() {
@@ -5832,6 +8364,27 @@ function testLocaleInfoGetCurrencyFormat_th() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_th() {
+	var info = new LocaleInfo("th-TH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_th() {
+	var info = new LocaleInfo("th-TH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_th() {
+	var info = new LocaleInfo("th-TH");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_th() {
 	var info = new LocaleInfo("th-TH");
 	assertNotNull(info);
@@ -5880,7 +8433,28 @@ function testLocaleInfoGetCurrencyFormat_uk_UA() {
 	var info = new LocaleInfo("uk-UA");
 	assertNotNull(info);
 
-	assertEquals("{n}{s}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_uk_UA() {
+	var info = new LocaleInfo("uk-UA");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_uk_UA() {
+	var info = new LocaleInfo("uk-UA");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_uk_UA() {
+	var info = new LocaleInfo("uk-UA");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_uk_UA() {
@@ -5933,6 +8507,27 @@ function testLocaleInfoGetCurrencyFormat_ur() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ur() {
+	var info = new LocaleInfo("ur");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ur() {
+	var info = new LocaleInfo("ur");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ur() {
+	var info = new LocaleInfo("ur");
+	assertNotNull(info);
+
+	assertEquals("‎-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ur() {
 	var info = new LocaleInfo("ur");
 	assertNotNull(info);
@@ -5983,6 +8578,27 @@ function testLocaleInfoGetCurrencyFormat_ur_IN() {
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_ur_IN() {
+	var info = new LocaleInfo("ur-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ur_IN() {
+	var info = new LocaleInfo("ur-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ur_IN() {
+	var info = new LocaleInfo("ur-IN");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_ur_IN() {
 	var info = new LocaleInfo("ur-IN");
 	assertNotNull(info);
@@ -5994,7 +8610,7 @@ function testLocaleInfoGetSecondaryGroupingDigits_ur_IN() {
 	var info = new LocaleInfo("ur-IN");
 	assertNotNull(info);
 
-	assertEquals(2, info.getSecondaryGroupingDigits());
+	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
 function testLocaleInfoRoundingMode_ur_IN() {
@@ -6031,6 +8647,27 @@ function testLocaleInfoGetCurrencyFormat_ur_PK() {
 	assertNotNull(info);
 
 	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ur_PK() {
+	var info = new LocaleInfo("ur-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ur_PK() {
+	var info = new LocaleInfo("ur-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ur_PK() {
+	var info = new LocaleInfo("ur-PK");
+	assertNotNull(info);
+
+	assertEquals("‎-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur_PK() {
@@ -6080,7 +8717,28 @@ function testLocaleInfoGetCurrencyFormat_ur_Arab_AF() {
 	var info = new LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_ur_Arab_AF() {
+	var info = new LocaleInfo("uz-Arab-AF");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_ur_Arab_AF() {
+	var info = new LocaleInfo("uz-Arab-AF");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_ur_Arab_AF() {
+	var info = new LocaleInfo("uz-Arab-AF");
+	assertNotNull(info);
+
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur_Arab_AF() {
@@ -6130,7 +8788,28 @@ function testLocaleInfoGetCurrencyFormat_uz_Latn_UZ() {
 	var info = new LocaleInfo("uz-Latn-UZ");
 	assertNotNull(info);
 
-	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_uz_Latn_UZ() {
+	var info = new LocaleInfo("uz-Latn-UZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_uz_Latn_UZ() {
+	var info = new LocaleInfo("uz-Latn-UZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_uz_Latn_UZ() {
+	var info = new LocaleInfo("uz-Latn-UZ");
+	assertNotNull(info);
+
+	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_uz_Latn_UZ() {
@@ -6184,6 +8863,27 @@ function testLocaleInfoGetCurrencyFormat_vai_Latn_LR() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_vai_Latn_LR() {
+	var info = new LocaleInfo("vai-Latn-LR");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_vai_Latn_LR() {
+	var info = new LocaleInfo("vai-Latn-LR");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_vai_Latn_LR() {
+	var info = new LocaleInfo("vai-Latn-LR");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_vai_Latn_LR() {
 	var info = new LocaleInfo("vai-Latn-LR");
 	assertNotNull(info);
@@ -6232,7 +8932,28 @@ function testLocaleInfoGetCurrencyFormat_vi() {
 	var info = new LocaleInfo("vi-VN");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_vi() {
+	var info = new LocaleInfo("vi-VN");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_vi() {
+	var info = new LocaleInfo("vi-VN");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_vi() {
+	var info = new LocaleInfo("vi-VN");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_vi() {
@@ -6286,6 +9007,27 @@ function testLocaleInfoGetCurrencyFormat_zh_Hans_SG() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_zh_Hans_SG() {
+	var info = new LocaleInfo("zh-Hans-SG");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_Hans_SG() {
+	var info = new LocaleInfo("zh-Hans-SG");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_Hans_SG() {
+	var info = new LocaleInfo("zh-Hans-SG");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_zh_Hans_SG() {
 	var info = new LocaleInfo("zh-Hans-SG");
 	assertNotNull(info);
@@ -6334,6 +9076,27 @@ function testLocaleInfoGetCurrencyFormat_zh_Hant_MO() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_zh_Hant_MO() {
+	var info = new LocaleInfo("zh-Hant-MO");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_Hant_MO() {
+	var info = new LocaleInfo("zh-Hant-MO");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_Hant_MO() {
+	var info = new LocaleInfo("zh-Hant-MO");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_MO() {
@@ -6386,6 +9149,27 @@ function testLocaleInfoGetCurrencyFormat_zh_Hant_US() {
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_zh_Hant_US() {
+	var info = new LocaleInfo("zh-Hant-US");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_Hant_US() {
+	var info = new LocaleInfo("zh-Hant-US");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_Hant_US() {
+	var info = new LocaleInfo("zh-Hant-US");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_US() {
 	var info = new LocaleInfo("zh-Hant-US");
 	assertNotNull(info);
@@ -6434,6 +9218,27 @@ function testLocaleInfoGetCurrencyFormat_zh_MY() {
 	assertNotNull(info);
 
 	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_zh_MY() {
+	var info = new LocaleInfo("zh-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_zh_MY() {
+	var info = new LocaleInfo("zh-MY");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_zh_MY() {
+	var info = new LocaleInfo("zh-MY");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_zh_MY() {
@@ -6486,6 +9291,27 @@ function testLocaleInfoGetCurrencyFormat_az_Latn_AZ() {
     assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
+function testLocaleInfoGetNegativeNumberFormat_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+}
+
 function testLocaleInfoGetPrimaryGroupingDigits_az_Latn_AZ() {
     var info = new LocaleInfo("az-Latn-AZ");
     assertNotNull(info);
@@ -6533,7 +9359,28 @@ function testLocaleInfoGetCurrencyFormat_km_KH() {
     var info = new LocaleInfo("km-KH");
     assertNotNull(info);
 
-    assertEquals("{s}{n}", info.getCurrencyFormats().common);
+    assertEquals("{n}{s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_km_KH() {
@@ -6557,6 +9404,7 @@ function testLocaleInfoRoundingMode_km_KH() {
     assertEquals("halfdown", info.getRoundingMode());
 }
 /************************************************end 04-JUN-2013**********************************************************/
+/** Add negative format test cases (08-NOV-2016) **/
 
 function testLocaleInfoGetGroupingSeparator1() {
 	var info = new LocaleInfo();

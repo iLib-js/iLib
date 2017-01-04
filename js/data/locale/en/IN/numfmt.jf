@@ -1,6 +1,10 @@
 {
     "generated": true,
     "numfmt": {
-        "secgroupSize": 2
+        "secgroupSize": 2,
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
+        }
     }
 }

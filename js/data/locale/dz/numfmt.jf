@@ -4,9 +4,11 @@
         "script": "Tibt",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s}{n}"
+            "common": "{s}{n}",
+            "commonNegative": "-{s}{n}"
         },
         "pctFmt": "{n} %",
+        "negativepctFmt": "-{n} %",
         "digits": "༠༡༢༣༤༥༦༧༨༩",
         "useNative": true
     }

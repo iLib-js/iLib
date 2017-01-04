@@ -99,6 +99,7 @@ js/data/locale/br/localeinfo.json
 js/data/locale/bra/localeinfo.json
 js/data/locale/brx/localeinfo.json
 js/data/locale/bs/Cyrl/BA/localeinfo.json
+js/data/locale/bs/Cyrl/localeinfo.json
 js/data/locale/bs/localeinfo.json
 js/data/locale/bss/localeinfo.json
 js/data/locale/btk/localeinfo.json
@@ -525,6 +526,7 @@ js/data/locale/ota/localeinfo.json
 js/data/locale/otk/localeinfo.json
 js/data/locale/oto/localeinfo.json
 js/data/locale/pa/Arab/PK/localeinfo.json
+js/data/locale/pa/Arab/localeinfo.json
 js/data/locale/pa/localeinfo.json
 js/data/locale/paa/localeinfo.json
 js/data/locale/pag/localeinfo.json
@@ -957,6 +959,7 @@ js/data/locale/unx/localeinfo.json
 js/data/locale/ur/IN/localeinfo.json
 js/data/locale/ur/localeinfo.json
 js/data/locale/uz/Arab/AF/localeinfo.json
+js/data/locale/uz/Arab/localeinfo.json
 js/data/locale/uz/localeinfo.json
 js/data/locale/vai/localeinfo.json
 js/data/locale/ve/localeinfo.json

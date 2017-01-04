@@ -7,7 +7,7 @@ enyo.kind({
 			{name:"logoImg", kind: "Image", style:"width:360px;", src: "assets/localespec_weboslogo_4.0.png"},
 			{kind:"onyx.Button", style:"visibility:hidden;", fit:true},
 			{style:"float:right;", components:[
-				{name:"headerDate", classes:"left-header-date", content: "Generated on August 15, 2015"}
+				{name:"headerDate", classes:"left-header-date", content: "Generated on November 8, 2016"}
 			]}
 		]},
 		{kind: "FittableColumns", fit:true, components: [
@@ -59,6 +59,7 @@ enyo.kind({
 		var year, month, date;
 		var month  = 0;
 		var date  = 3;
+
 		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
 

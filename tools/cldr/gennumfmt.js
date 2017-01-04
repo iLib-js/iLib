@@ -2,7 +2,7 @@
  * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2015, LGE
+ * Copyright © 2013-2016, LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ var makeDirs = common.makeDirs;
 var isEmpty = common.isEmpty;
 
 function usage() {
-	util.print("Usage: gennumfmts [-h] CLDR_json_dir locale_data_dir\n" +
+	console.log("Usage: gennumfmts [-h] CLDR_json_dir locale_data_dir\n" +
 		"Generate number formats information files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
@@ -59,11 +59,11 @@ if (process.argv.length < 4) {
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
-util.print("gennumfmts - generate number formats information files.\n" +
+console.log("gennumfmts - generate number formats information files.\n" +
 	"Copyright (c) 2013-2015 LGE\n");
 
-util.print("CLDR dir: " + cldrDirName + "\n");
-util.print("locale dir: " + localeDirName + "\n");
+console.log("CLDR dir: " + cldrDirName + "\n");
+console.log("locale dir: " + localeDirName + "\n");
 
 fs.exists(cldrDirName, function (exists) {
 	if (!exists) {
@@ -83,9 +83,9 @@ var filename, root, json, suppData, languageData, numberingSystemsData, digitsDa
 var localeDirs;
 
 try {
-	localeDirs = fs.readdirSync(path.join(cldrDirName, "main"));	
+	localeDirs = fs.readdirSync(path.join(cldrDirName, "cldr-numbers-full/main"));	
 } catch (e) {
-	util.print("Error: Could not load file " + filename + "\n");
+	console.log("Error: Could not load file " + filename + "\n");
 	process.exit(2);
 }
 
@@ -111,13 +111,13 @@ function calcLocalePath(language, script, region, filename) {
 		path += region + "/";
 	}
 	path += filename;
-	util.print("path: ", path);
+	console.log("path: ", path);
 	return path;
 }
 
 function loadFileNonGenerated(language, script, region) {
 	var path = calcLocalePath(language, script, region, "numfmt.jf");
-	util.print("loadFileNonGenerated: " + path + "\n");
+	console.log("loadFileNonGenerated: " + path + "\n");
 	var obj = loadFile(path);
 	//var obj = loadFile(path);
 	if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
@@ -141,22 +141,24 @@ function getLocaleData(dirname, locale) {
 			spec = "root";
 		}
 
-		var filename = path.join(cldrDirName, "main", dirname, "numbers.json");		
+		var filename = path.join(cldrDirName, "cldr-numbers-full/main", dirname, "numbers.json");		
 		var data = loadFile(filename);
 		var numData = data.main[spec];
 
 		if (script) {
+			if (!localeData[language]) {
+				localeData[language] = {};
+			}
+			if (!localeData[language][script]) {
+				localeData[language][script] = {};
+			}
+			if (!localeData[language][script][region]) {
+				localeData[language][script][region] = {};
+			}
 			if (region) {
-				if (!localeData[language]) {
-					localeData[language] = {};
-				}
-				if (!localeData[language][script]) {
-					localeData[language][script] = {};
-				}
-				if (!localeData[language][script][region]) {
-					localeData[language][script][region] = {};
-				}
 				localeData[language][script][region].data = numData;
+			} else {
+				localeData[language][script].data = numData;
 			}
 		} else if (region) {
 			if (!localeData[language]) {
@@ -176,9 +178,9 @@ function getLocaleData(dirname, locale) {
 			localeData.data = numData;
 		}
 
-		//util.print("dirname: " + dirname + "  data: ", numData + "\n");		
+		//console.log("dirname: " + dirname + "  data: ", numData + "\n");		
 	} catch (e) {
-		util.print("Error: Could not load file " + e + "\n");
+		console.log("Error: Could not load file " + e + "\n");
 	}
 
 	return numData;
@@ -190,7 +192,7 @@ function anyProperties(data) {
 		if (prop && data[prop]) {
 			count++;
 		}
-		if (count > 1) {
+		if (count >= 1) {
 			return true;
 		}
 	}
@@ -199,19 +201,19 @@ function anyProperties(data) {
 
 function writeNumberFormats(language, script, region, data) {
 	var path = calcLocalePath(language, script, region, "");
-	//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+	//console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
 	if (data.generated) {
 		if (anyProperties(data)) {
-			util.print("Writing " + path + "\n");
+			console.log("Writing " + path + "\n");
 
 			var empty_data_default = data["numfmt"];
 			var empty_data_native = data["native_numfmt"];
 			if (isEmpty(empty_data_default) && isEmpty(empty_data_native)) {
-				//util.print("no need to create the file " + "\n");
+				//console.log("no need to create the file " + "\n");
 				return;
 			}
 
-			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
+			//console.log("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
 			if (!isEmpty(data)) {
 				data.generated = true;
 				makeDirs(path);
@@ -224,10 +226,10 @@ function writeNumberFormats(language, script, region, data) {
 			}*/
 			//fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(data), "utf-8");
 		} else {
-			util.print("Skipping empty " + path + "\n");
+			console.log("Skipping empty " + path + "\n");
 		}
 	} else {
-		util.print("Skipping existing " + path + "\n");
+		console.log("Skipping existing " + path + "\n");
 	}
 }
 function getNumberFormats(language, script, region, data) {
@@ -235,8 +237,8 @@ function getNumberFormats(language, script, region, data) {
 	var numbers = loadFileNonGenerated(language, script, region);
 
 	if (numbers) {
-		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "numfmt.jf") + "\n");
-		//util.print("\nLoaded existing resources data " + JSON.stringify(numbers) + "\n");
+		console.log("\nLoaded existing resources from " + calcLocalePath(language, script, region, "numfmt.jf") + "\n");
+		//console.log("\nLoaded existing resources data " + JSON.stringify(numbers) + "\n");
 		numbers.generated = false;
 		return numbers;
 	}
@@ -273,20 +275,21 @@ function getNumberFormats_num_system(def_num_system, data) {
 	var percentage = "percentFormats-numberSystem-";
 	var currency = "currencyFormats-numberSystem-";
 
-	symbol_number_system = symbol.concat(def_num_system);
-	decimal_number_system = decimal.concat(def_num_system);
-	percentage_number_system = percentage.concat(def_num_system);
-	currency_number_system = currency.concat(def_num_system);
+	var symbol_number_system = symbol.concat(def_num_system);
+	var decimal_number_system = decimal.concat(def_num_system);
+	var percentage_number_system = percentage.concat(def_num_system);
+	var currency_number_system = currency.concat(def_num_system);
 
-	//util.print("the symbol numbering system " + symbol_number_system + "\n");
+	//console.log("the symbol numbering system " + symbol_number_system + "\n");
 	var symbol_format = data.numbers[symbol_number_system];
 	var decimal_format = data.numbers[decimal_number_system]["standard"];
 	var percent_format = data.numbers[percentage_number_system]["standard"];
-	var currency_format = data.numbers[currency_number_system]["accounting"];
+	var currency_format = data.numbers[currency_number_system]["standard"];
 	var symbol_format_data = {};
 
 	var decimal_separator = data.numbers[symbol_number_system]["decimal"];
 	var group_separator = data.numbers[symbol_number_system]["group"];
+	var minus_sign = data.numbers[symbol_number_system]["minusSign"];
 
 	var index_of_decimal = 0;
 	var index_of_group = 0;
@@ -348,7 +351,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 	if (currency_format.indexOf(";") != -1) {
 		index_of_semi_colon = currency_format.indexOf(";");
 		var cur_fmt = currency_format.substring(0, index_of_semi_colon);
-		//util.print("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
+		//console.log("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
 		var curFmt = cur_fmt.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
 		symbol_format_data.currencyFormats.common = curFmt;
@@ -361,6 +364,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 		curFmt = currency_format.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
 		symbol_format_data.currencyFormats.common = curFmt;
+		symbol_format_data.currencyFormats.commonNegative = minus_sign + curFmt;
 	}
 
 		//symbol_format_data["curFmt"]=curFmt; 
@@ -369,6 +373,9 @@ function getNumberFormats_num_system(def_num_system, data) {
 		var negative_num_format = decimal_fmt.substring(index_of_semi_colon + 1, decimal_fmt.length);
 		var numfmtnegative = negative_num_format.replace(/[0#,\.]+/, "{n}");
 		symbol_format_data["negativenumFmt"] = numfmtnegative;
+	} else {
+		var numfmtnegative = decimal_fmt.replace(/[0#,\.]+/, "{n}");
+		symbol_format_data["negativenumFmt"] = minus_sign +  numfmtnegative;
 	}
 
 	if (percent_format.indexOf(";") != -1) {
@@ -397,9 +404,11 @@ function getNumberFormats_num_system(def_num_system, data) {
 		if (symbol_format["percentSign"] !== "%") {
 			newpctFmt = pctFmt.replace("%", symbol_format["percentSign"]);i
 			symbol_format_data["pctFmt"] = newpctFmt;
+			symbol_format_data["negativepctFmt"] = minus_sign + newpctFmt;
 
 		} else {
 			symbol_format_data["pctFmt"] = pctFmt;
+			symbol_format_data["negativepctFmt"] = minus_sign + pctFmt;
 		}
 	}
 
@@ -424,25 +433,26 @@ function getNumberFormats_num_system(def_num_system, data) {
 function getNativeDigits(script) {
 	//var digits=[];
 
-	//util.print("script for native digits " + script + "\n");
-	var numberingSystemsfile = cldrDirName + "/supplemental/numberingSystems.json";
+	//console.log("script for native digits " + script + "\n");
+	var numberingSystemsfile = path.join(cldrDirName, "cldr-core/supplemental", "numberingSystems.json");
+	// var numberingSystemsfile = cldrDirName + "/supplemental/numberingSystems.json";
 	json = fs.readFileSync(numberingSystemsfile, "utf-8");
 	numberingSystemsData = JSON.parse(json);
 	
 	digitsData = numberingSystemsData.supplemental["numberingSystems"]
 	digits_script = digitsData[script];
 	
-	//util.print("digits for script are:" + JSON.stringify(digits_script) + "\n");
+	//console.log("digits for script are:" + JSON.stringify(digits_script) + "\n");
 	if (typeof (digits_script) != 'undefined' && digits_script !== "latn") {
 		if (digits_script["_type"] == "numeric") {
 			var digits = digits_script["_digits"];
-			//util.print("digits for script are:" + JSON.stringify(digits) + "\n");
+			//console.log("digits for script are:" + JSON.stringify(digits) + "\n");
 			return digits;
 		}
 	}
 }
 
-util.print("Reading locale data into memory...\n");
+console.log("Reading locale data into memory...\n");
 
 for (var i = 0; i < localeDirs.length; i++) {
 	var dirname = localeDirs[i];
@@ -458,11 +468,11 @@ for (var i = 0; i < localeDirs.length; i++) {
 	}
 }
 
-util.print("\n");
-util.print("Merging and pruning locale data...\n");
+console.log("\n");
+console.log("Merging and pruning locale data...\n");
 
 mergeAndPrune(localeData);
-util.print("Extracting number formats...\n");
+console.log("Extracting number formats...\n");
 
 var resources = {};
 resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data);
@@ -470,7 +480,7 @@ resources.data = getNumberFormats(undefined, undefined, undefined, localeData.da
 for (language in localeData) {
 	if (language && localeData[language] && language !== 'data' && language !== 'merged') {
 		resources[language] = resources[language] || {};
-		//util.print(language + " ");
+		//console.log(language + " ");
 		for (var subpart in localeData[language]) {
 			if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
 				resources[language][subpart] = resources[language][subpart] || {};
@@ -490,11 +500,11 @@ for (language in localeData) {
 	}
 }
 
-util.print("\nMerging and pruning formats...\n");
+console.log("\nMerging and pruning formats...\n");
 
 mergeAndPrune(resources);
 
-util.print("\nWriting formats...\n");
+console.log("\nWriting formats...\n");
 
 for (language in resources) {
 	if (language && resources[language] && language !== 'data' && language !== 'merged') {
