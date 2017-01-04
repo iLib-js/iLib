@@ -42,7 +42,7 @@ function testDateRngFmtRangeinDayShort_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31-12-11 1:45 [PM] – 2:30 [PM]", fmt.format(start, end));
+    assertEquals("31-12-11 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtRangeinDayMedium_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 డిసెం, 2011 1:45 [PM] – 2:30 [PM]", fmt.format(start, end));
+    assertEquals("31 డిసెం, 2011 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtRangeinDayLong_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 డిసెంబర్, 2011 1:45 [PM] – 2:30 [PM]", fmt.format(start, end));
+    assertEquals("31 డిసెంబర్, 2011 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeinDayFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtRangeinDayFull_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31, డిసెంబర్ 2011 1:45 [PM] – 2:30 [PM]", fmt.format(start, end));
+    assertEquals("31, డిసెంబర్ 2011 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeNextDayShort_te_IN() {
@@ -139,7 +139,7 @@ function testDateRngFmtRangeNextDayShort_te_IN() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("30-12-11 1:45 [PM] – 31-12-11 2:30 [PM]", fmt.format(start, end));
+    assertEquals("30-12-11 1:45 PM – 31-12-11 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayMedium_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtRangeNextDayMedium_te_IN() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("30 డిసెం, 2011 1:45 [PM] – 31 డిసెం, 2011 2:30 [PM]", fmt.format(start, end));
+    assertEquals("30 డిసెం, 2011 1:45 PM – 31 డిసెం, 2011 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayLong_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtRangeNextDayLong_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 డిసెంబర్, 2011 1:45 [PM] – 31 డిసెంబర్, 2011 2:30 [PM]", fmt.format(start, end));
+    assertEquals("30 డిసెంబర్, 2011 1:45 PM – 31 డిసెంబర్, 2011 2:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextDayFull_te_IN() {
     var fmt = new DateRngFmt({locale: "te-IN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtRangeNextDayFull_te_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30, డిసెంబర్ 2011 1:45 [PM] – 31, డిసెంబర్ 2011 2:30 [PM]", fmt.format(start, end));
+    assertEquals("30, డిసెంబర్ 2011 1:45 PM – 31, డిసెంబర్ 2011 2:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiDayShort_te_IN() {

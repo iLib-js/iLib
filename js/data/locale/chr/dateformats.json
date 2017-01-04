@@ -1,6 +1,11 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} ᎤᎾᎢ {time}",
+            "l": "{date} ᎤᎾᎢ {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "date": {
             "dmwy": {
                 "f": "EEEE, MMMM d, yyyy",
@@ -97,28 +102,28 @@
         },
         "range": {
             "c00": {
-                "f": "{sm} {sd}, {sy} {st} – {et}",
-                "l": "{sm} {sd}, {sy} {st} – {et}",
-                "m": "{sm} {sd}, {sy} {st} – {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {et}"
+                "f": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {et}",
+                "l": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {et}",
+                "m": "{sm} {sd}, {sy}, {st} – {et}",
+                "s": "{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "l": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "l": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "f": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "l": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "m": "{sm} {sd}, {sy} {st} – {em} {ed}, {ey} {et}",
-                "s": "{sm}/{sd}/{sy} {st} – {em}/{ed}/{ey} {et}"
+                "f": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "l": "{sm} {sd}, {sy} ᎤᎾᎢ {st} – {em} {ed}, {ey} ᎤᎾᎢ {et}",
+                "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
+                "s": "{sm}/{sd}/{sy}, {st} – {em}/{ed}/{ey}, {et}"
             },
             "c10": {
                 "f": "{sm} {sd} – {ed}, {ey}",

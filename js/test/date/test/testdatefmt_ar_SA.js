@@ -35,7 +35,7 @@ function testDateFmtSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩‏/٩‏/٢٠١١", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_ar_SA() {
@@ -52,7 +52,7 @@ function testDateFmtSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٠٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩‏/٠٩‏/٢٠١١", fmt.format(date));
     
 }
 
@@ -172,7 +172,7 @@ function testDateFmtDateTimeSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٩/٢٠١١ ‏١:٤٥ م", fmt.format(date));
+    assertEquals("‏٢٩‏/٩‏/٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ar_SA() {
@@ -189,7 +189,7 @@ function testDateFmtDateTimeSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٠٩/٢٠١١ ‏١:٤٥ م", fmt.format(date));
+    assertEquals("‏٢٩‏/٠٩‏/٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ar_SA() {
@@ -396,7 +396,7 @@ function testDateFmtTypeDate_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩‏/٩‏/٢٠١١", fmt.format(date));
 }
 
 function testDateFmtTypeTime_ar_SA() {
@@ -430,7 +430,7 @@ function testDateFmtTypeDateTime_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٩/٢٠١١ ‏١:٤٥ م", fmt.format(date));
+    assertEquals("‏٢٩‏/٩‏/٢٠١١ ‏١:٤٥ م", fmt.format(date));
 }
 
 
@@ -533,7 +533,7 @@ function testDateFmtShortDateComponentsMY_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٩‏/٢٠١١", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ar_SA() {
@@ -550,7 +550,7 @@ function testDateFmtShortDateComponentsDMY_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٩/٩/٢٠١١", fmt.format(date));
+    assertEquals("‏٢٩‏/٩‏/٢٠١١", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ar_SA() {
@@ -567,7 +567,7 @@ function testDateFmtShortDateComponentsWDM_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خ، ‏٢٩/٩", fmt.format(date));
+    assertEquals("خ، ‏٢٩‏/٩", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ar_SA() {
@@ -584,7 +584,7 @@ function testDateFmtShortDateComponentsWDMY_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خ، ٢٩/٩/٢٠١١", fmt.format(date));
+    assertEquals("خ، ٢٩‏/٩‏/٢٠١١", fmt.format(date));
 }
 
 
@@ -1220,7 +1220,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_ar_SA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("خلال 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 30 ثانية", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinMinuteBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1249,7 +1249,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ar_SA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("قبل 30 ثانية من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 30 ثانية", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinHourAfter_ar_SA() {
     var fmt = new DateFmt({
@@ -1278,7 +1278,7 @@ function testDateFmtFormatRelativeWithinHourAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 10 دقائق", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinHourBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1307,7 +1307,7 @@ function testDateFmtFormatRelativeWithinHourBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 10 دقائق من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 10 دقائق", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinDayAfter_ar_SA() {
     var fmt = new DateFmt({
@@ -1336,7 +1336,7 @@ function testDateFmtFormatRelativeWithinDayAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 4 ساعات", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinDayBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1365,7 +1365,7 @@ function testDateFmtFormatRelativeWithinDayBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 4 ساعات من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 4 ساعات", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtFormatRelativeWithinFortnightAfter_ar_SA() {
@@ -1395,7 +1395,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 4 أيام من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 4 أيام", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinFortnightBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1424,7 +1424,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 4 أيام من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 4 أيام", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtFormatRelativeWithinQuarterAfter_ar_SA() {
@@ -1454,7 +1454,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 9 أسابيع", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeWithinQuarterBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1483,7 +1483,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 9 أسابيع من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 9 أسابيع", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_ar_SA() {
@@ -1513,7 +1513,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 16 شهرًا من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 16 شهرًا", fmt.formatRelative(reference, date));
                   
 };
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ar_SA() {
@@ -1543,7 +1543,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 14 شهرًا من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 14 شهرًا", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtFormatRelativeYearsAfter_ar_SA() {
@@ -1573,7 +1573,7 @@ function testDateFmtFormatRelativeYearsAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 14 سنة من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏خلال 14 سنة", fmt.formatRelative(reference, date));
 };
 function testDateFmtFormatRelativeYearsBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1602,7 +1602,7 @@ function testDateFmtFormatRelativeYearsBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 21 سنة من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("‏قبل 21 سنة", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtNativeSimpleShort_ar_SA() {
@@ -1619,7 +1619,7 @@ function testDateFmtNativeSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29/9/2011", fmt.format(date));
+    assertEquals("‏29‏/9‏/2011", fmt.format(date));
 }
 
 function testDateFmtNativeSimpleMedium_ar_SA() {
@@ -1636,7 +1636,7 @@ function testDateFmtNativeSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29/09/2011", fmt.format(date));
+    assertEquals("‏29‏/09‏/2011", fmt.format(date));
     
 }
 
@@ -1756,7 +1756,7 @@ function testDateFmtNativeDateTimeSimpleShort_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29/9/2011 ‏1:45 م", fmt.format(date));
+    assertEquals("‏29‏/9‏/2011 ‏1:45 م", fmt.format(date));
 }
 
 function testDateFmtNativeDateTimeSimpleMedium_ar_SA() {
@@ -1773,7 +1773,7 @@ function testDateFmtNativeDateTimeSimpleMedium_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏29/09/2011 ‏1:45 م", fmt.format(date));
+    assertEquals("‏29‏/09‏/2011 ‏1:45 م", fmt.format(date));
 }
 
 function testDateFmtNativeDateTimeSimpleLong_ar_SA() {

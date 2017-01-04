@@ -6,37 +6,37 @@
                 "f": "yyyy('e')'ko' MMMM d, EEEE",
                 "l": "yyyy('e')'ko' MMMM d, EEE",
                 "m": "yyyy MMM d, EE",
-                "s": "yyyy/MM/dd, E"
+                "s": "yy/M/d, E"
             },
             "dmy": {
                 "f": "yyyy('e')'ko' MMMM d",
                 "l": "yyyy('e')'ko' MMMM d",
                 "m": "yyyy MMM d",
-                "s": "yyyy/MM/dd"
+                "s": "yy/M/d"
             },
             "dmw": {
                 "f": "MMMM d, EEEE",
                 "l": "MMMM d, EEE",
                 "m": "MMM d, EE",
-                "s": "MM/dd, E"
+                "s": "M/d, E"
             },
             "dm": {
                 "f": "MMMM d",
                 "l": "MMMM d",
                 "m": "MMM d",
-                "s": "MM/dd"
+                "s": "M/d"
             },
             "my": {
                 "f": "yyyy('e')'ko' LLLL",
                 "l": "yyyy('e')'ko' LLLL",
                 "m": "yyyy LLL",
-                "s": "yyyy/MM"
+                "s": "yy/M"
             },
             "dw": {
                 "f": "d, EEEE",
                 "l": "d, EEE",
                 "m": "d, EE",
-                "s": "dd, E"
+                "s": "d, E"
             },
             "w": {
                 "f": "EEEE",
@@ -48,19 +48,19 @@
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "dd"
+                "s": "d"
             },
             "m": {
                 "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
-                "s": "MM"
+                "s": "M"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
-                "s": "yyyy"
+                "s": "yy"
             },
             "e": {
                 "f": "cccc",
@@ -72,7 +72,7 @@
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
-                "s": "LL"
+                "s": "L"
             }
         },
         "time": {

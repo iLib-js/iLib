@@ -1,8 +1,8 @@
 {
     "gregorian": {
         "order": {
-            "f": "{date} 'रोजी' {time}",
-            "l": "{date} 'रोजी' {time}",
+            "f": "{date} रोजी {time}",
+            "l": "{date} रोजी {time}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },

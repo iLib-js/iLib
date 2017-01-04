@@ -678,7 +678,7 @@ function testDateFmtFullDateComponentsMY_az_Latn_AZ() {
         second: 0,
         millisecond: 0
     });
-    assertEquals("sentyabr 2011", fmt.format(date));
+    assertEquals("Sentyabr 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_az_Latn_AZ() {
