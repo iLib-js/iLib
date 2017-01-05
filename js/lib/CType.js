@@ -117,9 +117,9 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>latin</i> - Latin, Latin Extended Additional, Latin-1 supplement, Latin Extended-C, Latin Extended-D, Latin Extended-E
  * <li><i>armenian</i>
  * <li><i>greek</i> - Greek, Greek Extended
- * <li><i>cyrillic</i> - Cyrillic, Cyrillic Extended-A, Cyrillic Extended-B, Cyrillic Supplement
+ * <li><i>cyrillic</i> - Cyrillic, Cyrillic Extended-A, Cyrillic Extended-B, Cyrillic Extended-C, Cyrillic Supplement
  * <li><i>georgian</i> - Georgian, Georgian Supplement
- * <li><i>glagolitic</i>
+ * <li><i>glagolitic</i> - Glagolitic, Glagolitic Supplement
  * <li><i>gothic</i>
  * <li><i>ogham</i>
  * <li><i>oldpersian</i>
@@ -161,6 +161,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>saurashtra</i>
  * <li><i>sinhala</i>
  * <li><i>sylotinagri</i> - Syloti Nagri
+ * <li><i>tangut</i>
  * <li><i>tamil</i>
  * <li><i>telugu</i>
  * <li><i>thaana</i>
