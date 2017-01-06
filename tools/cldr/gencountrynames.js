@@ -93,7 +93,7 @@ function loadFile(pathname) {
 
 function filterRegions(regions, territories) {
     for (var region in territories) {
-        if (region && territories[region]) {
+        if (region && territories[region] && (region !== territories[region])) {
             if (Locale.isRegionCode(region)) {
                 regions[territories[region]] = region;
             }
@@ -252,13 +252,11 @@ console.log("Loading locale data...\n");
 // get the information about scripts if necessary
 for (var i = 0; i < localeDirs.length; i++) {
 // for (var i = 0; i < 6; i++) {
-    var dirname = localeDirs[i];    
-    var localeSpec = dirname.replace(/_/g, "-");
-    console.log("dirname: " + dirname + " Locale: " + localeSpec + "\n");
+    var localeSpec = localeDirs[i];    
     var locale = new Locale(localeSpec);
     
-    if (dirname !== "root") {
-        getRegionNames(localeData, dirname, locale);
+    if (localeSpec !== "root") {
+        getRegionNames(localeData, localeSpec, locale);
     }
 }
 
