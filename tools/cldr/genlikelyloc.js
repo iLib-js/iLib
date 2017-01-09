@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the likelylocales.json files from 
  * the CLDR data files
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ fs.exists(localeDirName, function (exists) {
 	}
 });
 
-var likelySubtags, filename, json;
+var likelySubtags, likelySubtagsData, filename, json;
 
 util.print("Reading supplemental/likelySubtags.json\n");
 
@@ -90,12 +90,15 @@ try {
 }
 
 var likelylocales = {};
+likelySubtagsData = likelySubtags.supplemental;
 
-for (var partial in likelySubtags.likelySubtags) {
-	if (partial && likelySubtags.likelySubtags[partial]) {
-		var partloc = new Locale(partial.replace(/und_/g, "").replace(/_/g, '-'));
-		var full = new Locale(likelySubtags.likelySubtags[partial].replace(/_/g, '-'));
+for (var partial in likelySubtagsData.likelySubtags) {
+	if (partial.search(/[0-9]/g) == -1) {
+		if (partial && likelySubtagsData.likelySubtags[partial]) {
+		var partloc = new Locale(partial.replace(/und-/g, ""));
+		var full = new Locale(likelySubtagsData.likelySubtags[partial]);
 		likelylocales[partloc.getSpec()] = full.getSpec(); 
+		}
 	}
 }
 
