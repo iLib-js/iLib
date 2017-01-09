@@ -54,14 +54,14 @@ function testParseAddressSGSGLatinNoCountry() {
 };
 
 function testParseAddressSGSGAsianNormal() {
-	var parsedAddress = new ilib.Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
+	var parsedAddress = new ilib.Address("新加坡159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("麟記路4＃06-07/08矽統科技大廈", parsedAddress.streetAddress);
 	assertEquals("新加坡", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("159088", parsedAddress.postalCode);
-	assertEquals("新加坡共和國", parsedAddress.country);
+	assertEquals("新加坡", parsedAddress.country);
 	assertEquals("SG", parsedAddress.countryCode);
 };
 
@@ -90,7 +90,7 @@ function testParseAddressSGSGAsianNoCountry() {
 };
 
 function testParseAddressSGSGManyLines() {
-	var parsedAddress = new ilib.Address("Blk 111\nAng Mo Kio Avenue 4\nSingapore\n560111\nRepublic of Singapore\n\n", {locale: 'en-SG'});
+	var parsedAddress = new ilib.Address("Blk 111\nAng Mo Kio Avenue 4\nSingapore\n560111\nSingapore\n\n", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Blk 111, Ang Mo Kio Avenue 4", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressSGSGManyLines() {
 };
 
 function testParseAddressSGSGOneLine() {
-	var parsedAddress = new ilib.Address("152 Beach Rd., #16-00 Gateway East, Singapore 189721, The Republic of Singapore", {locale: 'en-SG'});
+	var parsedAddress = new ilib.Address("152 Beach Rd., #16-00 Gateway East, Singapore 189721, Singapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("152 Beach Rd., #16-00 Gateway East", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testParseAddressSGSGSuperfluousWhitespace() {
 };
 
 function testParseAddressSGSGNoDelimiters() {
-	var parsedAddress = new ilib.Address("152 Beach Rd. #16-00 Gateway East Singapore 189721 The Republic of Singapore", {locale: 'en-SG'});
+	var parsedAddress = new ilib.Address("152 Beach Rd. #16-00 Gateway East Singapore 189721 Singapore", {locale: 'en-SG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("152 Beach Rd. #16-00 Gateway East", parsedAddress.streetAddress);
