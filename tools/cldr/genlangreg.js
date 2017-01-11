@@ -2,7 +2,7 @@
  * genlangreg.js - ilib tool to generate the langname and regionname json fragments from the CLDR
  * data files
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 util.print("genlangreg - generate language and region name data.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2013-2017 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
@@ -75,26 +75,37 @@ fs.exists(localeDirName, function (exists) {
 	}
 });
 
-var english;
+function loadFile(pathname) {
+    var ret = undefined;
+    
+    if (fs.existsSync(pathname)) {
+        json = fs.readFileSync(pathname, "utf-8");
+        ret = JSON.parse(json);
+    }
+    
+    return ret;
+}
+
+var languagesData, regionData;
+var languages, region, script;
 var language_name = {
 	generated: true
 };
 var region_name = {
 	generated: true
 };
+
+var filename = cldrDirName + "/main/en/languages.json";
+
 try {
-	var enData = fs.readFileSync(cldrDirName + "/main/en.json", "utf-8");
-	english = JSON.parse(enData);
+	languagesData = loadFile(filename);
+	languages = languagesData.main.en.localeDisplayNames.languages;
 } catch (e) {
-	util.print("Error: Could not load file " + cldrDirName + "/main/en.json\n");
-	process.exist(2);
+	util.print("Error: Could not load file " + cldrDirName + "/main/en/languages.json\n");
+	process.exit(2);
 }
 
 util.print("Generating language name data\n");
-
-var lang, region, script, 
-	languages = english.localeDisplayNames.languages,
-	regions = english.localeDisplayNames.territories;
 
 for (var lang in languages) {
 	if (lang.search(/[_-]/) === -1) {
@@ -108,6 +119,16 @@ for (var lang in languages) {
 	}
 }
 
+try {
+	var rgData = fs.readFileSync(cldrDirName + "/main/en/territories.json", "utf-8");
+	regionsData = JSON.parse(rgData);
+	
+} catch (e) {
+	util.print("Error: Could not load file " + cldrDirName + "/main/en/territories.json\n");
+	process.exit(2);
+}
+regions = regionsData.main.en.localeDisplayNames.territories;
+
 for (region in regions) {
 	if (region.search(/[_\-0123456789]/) === -1) {
 		var regdir = localeDirName + "/und/" + region;
@@ -119,4 +140,3 @@ for (region in regions) {
 		fs.writeFileSync(filename, JSON.stringify(region_name, true, 4), "utf-8");
 	}
 }
-
