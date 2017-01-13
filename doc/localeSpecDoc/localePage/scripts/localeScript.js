@@ -20,6 +20,8 @@ $(function(){
 	$('#weekStart').text(weeks[li.getFirstDayOfWeek()]);
 	$('#weekendStart').text(weeks[li.getWeekEndStart()]);
 	$('#weekendEnd').text(weeks[li.getWeekEndEnd()]);
+	$('#delimiterStart').text(li.getDelimiterQuotationStart());
+	$('#delimiterEnd').text(li.getDelimiterQuotationEnd());
 
 	var date =[];
 	var fmt =[];
