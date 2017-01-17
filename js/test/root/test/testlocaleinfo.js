@@ -10280,3 +10280,19 @@ function testLocaleInfoQuotation_kk_KZ() {
 	assertEquals("«", info.getDelimiterQuotationStart());
 	assertEquals("»", info.getDelimiterQuotationEnd());
 }
+
+function testLocaleInfoQuotation_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_de_CH() {
+	var info = new LocaleInfo("de-CH");
+	assertNotNull(info);
+
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("“", info.getDelimiterQuotationEnd());
+}
