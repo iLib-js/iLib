@@ -132,7 +132,7 @@ enyo.kind({
 			"English - Canada":"en-CA",
 			"English - United Kingdom":"en-GB",
 			"English - Ghana":"en-GH",
-			"English -  Hong Kong SAR China":"en-HK",
+			"English - Hong Kong SAR China":"en-HK",
 			"English - Ireland":"en-IE",
 			"English - India":"en-IN",
 			"English - Iceland":"en-IS",
