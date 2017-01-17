@@ -1,7 +1,7 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ function testParseAddressSGSGManyLines() {
 	assertEquals("Singapore", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("560111", parsedAddress.postalCode);
-	assertEquals("Republic of Singapore", parsedAddress.country);
+	assertEquals("Singapore", parsedAddress.country);
 	assertEquals("SG", parsedAddress.countryCode);
 };
 
@@ -109,7 +109,7 @@ function testParseAddressSGSGOneLine() {
 	assertEquals("Singapore", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("189721", parsedAddress.postalCode);
-	assertEquals("The Republic of Singapore", parsedAddress.country);
+	assertEquals("Singapore", parsedAddress.country);
 	assertEquals("SG", parsedAddress.countryCode);
 };
 
@@ -133,7 +133,7 @@ function testParseAddressSGSGNoDelimiters() {
 	assertEquals("Singapore", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("189721", parsedAddress.postalCode);
-	assertEquals("The Republic of Singapore", parsedAddress.country);
+	assertEquals("Singapore", parsedAddress.country);
 	assertEquals("SG", parsedAddress.countryCode);
 };
 

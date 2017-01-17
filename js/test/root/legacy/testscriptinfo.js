@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,7 +94,7 @@ function testScriptGetDefaultLongCodeOrya() {
     
     assertEquals("Orya", si.getCode());
     assertEquals(327, si.getCodeNumber());
-    assertEquals("Oriya", si.getName());
+    assertEquals("Oriya (Odia)", si.getName());
     assertEquals("Oriya", si.getLongCode());
     assertEquals("ltr", si.getScriptDirection());
     assertFalse(si.getNeedsIME());
@@ -151,12 +151,51 @@ function testScriptGetUnknown() {
 function testScriptGetAllScripts() {
     var scripts = ilib.ScriptInfo.getAllScripts();
     assertNotNull(scripts);
-   
-    assertEquals(177, scripts.length);
     
+    assertEquals(189, scripts.length);
+
     assertEquals("Adlm", scripts[0]);
     assertEquals("Afak", scripts[1]);
     assertEquals("Aghb", scripts[2]);
     assertEquals("Arab", scripts[4]);
     assertEquals("Zzzz", scripts[scripts.length-1]);
+}
+
+function testScriptGetDefaultLongCodeKits() {
+    var si = new ilib.ScriptInfo("Kits");
+    assertNotNull(si);
+    
+    assertEquals("Kits", si.getCode());
+    assertEquals(288, si.getCodeNumber());
+    assertEquals("Khitan small script", si.getName());
+    assertEquals("Khitan_small_script", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGetDefaultLongCodePauc() {
+    var si = new ilib.ScriptInfo("Pauc");
+    assertNotNull(si);
+    
+    assertEquals("Pauc", si.getCode());
+    assertEquals(263, si.getCodeNumber());
+    assertEquals("Pau Cin Hau", si.getName());
+    assertEquals("Pau_Cin_Hau", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGetDefaultLongCodeMend() {
+    var si = new ilib.ScriptInfo("Mend");
+    assertNotNull(si);
+    
+    assertEquals("Mend", si.getCode());
+    assertEquals(438, si.getCodeNumber());
+    assertEquals("Mende Kikakui", si.getName());
+    assertEquals("Mende_Kikakui", si.getLongCode());
+    assertEquals("rtl", si.getScriptDirection());
+    assertTrue(si.getNeedsIME());
+    assertFalse(si.getCasing());
 }

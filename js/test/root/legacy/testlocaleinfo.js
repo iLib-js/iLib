@@ -2533,7 +2533,7 @@ function testLocaleInfoGetNegativePercentageFormat_bs_Cyrl_BA() {
 	var info = new ilib.LocaleInfo("bs-BA-Cyrl");
 	assertNotNull(info);
 
-	assertEquals("-{n} %", info.getNegativePercentageFormat());
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_bs_Cyrl_BA() {
@@ -6162,21 +6162,21 @@ function testLocaleInfoGetNegativeNumberFormat_pa() {
 	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{n}", info.getNegativeNumberFormat());
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
 }
 
 function testLocaleInfoGetNegativePercentageFormat_pa() {
 	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{n}%", info.getNegativePercentageFormat());
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_pa() {
 	var info = new ilib.LocaleInfo("pa-Arab-PK");
 	assertNotNull(info);
 
-	assertEquals("-{s} {n}", info.getCurrencyFormats().commonNegative);
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_pa() {
@@ -8718,28 +8718,28 @@ function testLocaleInfoGetCurrencyFormat_ur_Arab_AF() {
 	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetNegativeNumberFormat_ur_Arab_AF() {
 	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n}", info.getNegativeNumberFormat());
+	assertEquals("‎-‎{n}", info.getNegativeNumberFormat());
 }
 
 function testLocaleInfoGetNegativePercentageFormat_ur_Arab_AF() {
 	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n}%", info.getNegativePercentageFormat());
+	assertEquals("‎-‎{n}٪", info.getNegativePercentageFormat());
 }
 
 function testLocaleInfoGetNegativeCurrencyFormat_ur_Arab_AF() {
 	var info = new ilib.LocaleInfo("uz-Arab-AF");
 	assertNotNull(info);
 
-	assertEquals("-{n} {s}", info.getCurrencyFormats().commonNegative);
+	assertEquals("‎-‎{s} {n}", info.getCurrencyFormats().commonNegative);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_ur_Arab_AF() {
