@@ -63,7 +63,7 @@ function testDateRngFmtFIRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31.12.2011 klo 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtFIRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "fi-FI", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtFIRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. joulukuuta 2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. joulukuuta 2011 klo 13.45 – 14.30", fmt.format(start, end));
 }
 function testDateRngFmtFIRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "fi-FI", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtFIRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});           
-    assertEquals("31. joulukuuta 2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. joulukuuta 2011 klo 13.45 – 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtFIRangeNextDayShort() {
@@ -160,7 +160,7 @@ function testDateRngFmtFIRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.2011 13.45 – 31.12.2011 14.30", fmt.format(start, end));
+    assertEquals("30.12.2011 klo 13.45 – 31.12.2011 klo 14.30", fmt.format(start, end));
 }
 function testDateRngFmtFIRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "fi-FI", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtFIRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. joulukuuta 2011 13.45 – 31. joulukuuta 2011 14.30", fmt.format(start, end));
+    assertEquals("30. joulukuuta 2011 klo 13.45 – 31. joulukuuta 2011 klo 14.30", fmt.format(start, end));
 }
 function testDateRngFmtFIRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "fi-FI", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtFIRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. joulukuuta 2011 13.45 – 31. joulukuuta 2011 14.30", fmt.format(start, end));
+    assertEquals("30. joulukuuta 2011 klo 13.45 – 31. joulukuuta 2011 klo 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtFIRangeMultiDayShort() {

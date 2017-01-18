@@ -39,7 +39,7 @@ function testDateRngFmtSARangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
+    assertEquals("‏٣١‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtSARangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
+    assertEquals("‏٣١‏/١٢/‏٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -136,7 +136,7 @@ function testDateRngFmtSARangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
+    assertEquals("‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtSARangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
+    assertEquals("‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -233,7 +233,7 @@ function testDateRngFmtSARangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠ – ‏٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtSARangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠ – ‏٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -330,7 +330,7 @@ function testDateRngFmtSARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١ – ‏٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -354,7 +354,7 @@ function testDateRngFmtSARangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١ – ‏٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -428,7 +428,7 @@ function testDateRngFmtSARangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ‏٣١/١/٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/١‏/٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -452,7 +452,7 @@ function testDateRngFmtSARangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ‏٣١/٠١/٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/٠١‏/٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -525,7 +525,7 @@ function testDateRngFmtSARangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١١/٢٠١١ – ‏١/٢٠١٤", fmt.format(start, end));
+    assertEquals("‏١١‏/٢٠١١ – ‏١‏/٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -549,7 +549,7 @@ function testDateRngFmtSARangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١١/٢٠١١ – ‏٠١/٢٠١٤", fmt.format(start, end));
+    assertEquals("‏١١‏/٢٠١١ – ‏٠١‏/٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "long"});
@@ -573,7 +573,7 @@ function testDateRngFmtSARangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏نوفمبر، ٢٠١١ – ‏يناير، ٢٠١٤", fmt.format(start, end));
+    assertEquals("نوفمبر، ٢٠١١ – يناير، ٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "full"});
@@ -597,7 +597,7 @@ function testDateRngFmtSARangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏نوفمبر، ٢٠١١ – ‏يناير، ٢٠١٤", fmt.format(start, end));
+    assertEquals("نوفمبر، ٢٠١١ – يناير، ٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSAManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "ar-SA", length: "full"});

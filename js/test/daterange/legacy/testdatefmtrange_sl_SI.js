@@ -39,7 +39,7 @@ function testDateRngFmtSIRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. 12. 11 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. 12. 11 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtSIRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. dec. 2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. dec. 2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtSIRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. december 2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. december 2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtSIRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. december 2011 13.45 – 14.30", fmt.format(start, end));
+    assertEquals("31. december 2011 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtSIRangeNextDayShort() {
@@ -136,7 +136,7 @@ function testDateRngFmtSIRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. 12. 11 13.45 – 31. 12. 11 14.30", fmt.format(start, end));
+    assertEquals("30. 12. 11 13:45 – 31. 12. 11 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtSIRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. dec. 2011 13.45 – 31. dec. 2011 14.30", fmt.format(start, end));
+    assertEquals("30. dec. 2011 13:45 – 31. dec. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtSIRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. december 2011 13.45 – 31. december 2011 14.30", fmt.format(start, end));
+    assertEquals("30. december 2011 13:45 – 31. december 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtSIRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SI", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtSIRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. december 2011 13.45 – 31. december 2011 14.30", fmt.format(start, end));
+    assertEquals("30. december 2011 13:45 – 31. december 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtSIRangeMultiDayShort() {

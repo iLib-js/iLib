@@ -37,7 +37,7 @@ function testDateFmtINSimpleShort_ta_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-	    assertEquals("29-9-11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_ta_IN() {
@@ -414,7 +414,7 @@ function testDateFmtINTypeDate_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29-9-11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 /*function testDateFmtINTypeTime_ta_IN() {
@@ -483,7 +483,7 @@ function testDateFmtINShortDateComponentsM_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("செ", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_ta_IN() {
@@ -500,7 +500,7 @@ function testDateFmtINShortDateComponentsN_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("செ", fmt.format(date));
+    assertEquals("ச", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_ta_IN() {
@@ -534,7 +534,7 @@ function testDateFmtINShortDateComponentsDM_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29-9", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_ta_IN() {
@@ -551,7 +551,7 @@ function testDateFmtINShortDateComponentsMY_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9-11", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_ta_IN() {
@@ -568,7 +568,7 @@ function testDateFmtINShortDateComponentsDMY_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29-9-11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_ta_IN() {
@@ -585,7 +585,7 @@ function testDateFmtINShortDateComponentsWDM_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("வி, 29-9", fmt.format(date));
+    assertEquals("வி, 29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_ta_IN() {
@@ -602,7 +602,7 @@ function testDateFmtINShortDateComponentsWDMY_ta_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("வி, 29-9-11", fmt.format(date));
+    assertEquals("வி, 29/9/11", fmt.format(date));
 }
 
 

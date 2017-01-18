@@ -466,7 +466,7 @@ function testDateFmtenCAShortDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtenCAShortDateComponentsM() {

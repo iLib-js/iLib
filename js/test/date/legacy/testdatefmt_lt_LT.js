@@ -486,7 +486,7 @@ function testDateFmtShortDateComponentsN_lt_LT() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("R", fmt.format(date));
+    assertEquals("r", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_lt_LT() {

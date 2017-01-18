@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_hr_HR.js - test the date range formatter object in Croation/Croatia
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ function testDateRngFmtHRRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.2011. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31. 12. 2011. 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});
@@ -136,7 +136,7 @@ function testDateRngFmtHRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.2011. 13:45 – 31.12.2011. 14:30", fmt.format(start, end));
+    assertEquals("30. 12. 2011. 13:45 – 31. 12. 2011. 14:30", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});
@@ -233,7 +233,7 @@ function testDateRngFmtHRRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31.12.2011.", fmt.format(start, end));
+    assertEquals("20 – 31. 12. 2011.", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});
@@ -330,7 +330,7 @@ function testDateRngFmtHRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11 – 31.12.2011.", fmt.format(start, end));
+    assertEquals("20. 11 – 31. 12. 2011.", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});
@@ -427,7 +427,7 @@ function testDateRngFmtHRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011. – 31.01.2012.", fmt.format(start, end));
+    assertEquals("20. 11. 2011. – 31. 01. 2012.", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});
@@ -524,7 +524,7 @@ function testDateRngFmtHRRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.2011. – 01.2014.", fmt.format(start, end));
+    assertEquals("11. 2011. – 01. 2014.", fmt.format(start, end));
 }
 function testDateRngFmtHRRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "hr-HR", length: "medium"});

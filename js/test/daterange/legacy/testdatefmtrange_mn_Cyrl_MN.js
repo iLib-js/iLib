@@ -87,7 +87,7 @@ function testDateRngFmtMNRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 12 сарын 31 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("2011оны Арван хоёрдугаар сарсарын 31өдөр 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeinDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -184,7 +184,7 @@ function testDateRngFmtMNRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 12 сарын 30 13:45 – 2011 оны 12 сарын 31 14:30", fmt.format(start, end));
+    assertEquals("2011оны Арван хоёрдугаар сарсарын 30өдөр 13:45 – 2011оны Арван хоёрдугаар сарсарын 31өдөр 14:30", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -281,7 +281,7 @@ function testDateRngFmtMNRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 12 сарын 20 – 31", fmt.format(start, end));
+    assertEquals("2011оны Арван хоёрдугаар сарсарын 20өдөр – 31", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -378,7 +378,7 @@ function testDateRngFmtMNRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 11 сарын 20 – 12 сарын 31", fmt.format(start, end));
+    assertEquals("2011оны Арван нэгдүгээр сарсарын 20өдөр – Арван хоёрдугаар сарсарын 31өдөр", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -475,7 +475,7 @@ function testDateRngFmtMNRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 11 сарын 20 – 2012 оны 01 сарын 31", fmt.format(start, end));
+    assertEquals("2011оны Арван нэгдүгээр сарсарын 20өдөр – 2012оны Нэгдүгээр сарсарын 31өдөр", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});
@@ -572,7 +572,7 @@ function testDateRngFmtMNRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 оны 11 – 2014 оны 01", fmt.format(start, end));
+    assertEquals("2011оны Арван нэгдүгээр сар – 2014оны Нэгдүгээр сар", fmt.format(start, end));
 }
 function testDateRngFmtMNRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "mn-Cyrl-MN", length: "full"});

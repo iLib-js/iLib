@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29-09-2011", fmt.format(date));
+    assertEquals("29 thg 9, 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_vi_VN() {
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Ngày 29 tháng 09 năm 2011", fmt.format(date));
+    assertEquals("29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_vi_VN() {
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29 tháng 9 năm 2011", fmt.format(date));
+    assertEquals("29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtAllComponentsShort_vi_VN() {
@@ -106,7 +106,7 @@ function testDateFmtAllComponentsShort_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("T5, ngày 29/09/2011", fmt.format(date));
+    assertEquals("T5, 29/09/2011", fmt.format(date));
 }
 
 function testDateFmtAllComponentsMedium_vi_VN() {
@@ -123,7 +123,7 @@ function testDateFmtAllComponentsMedium_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("T5, ngày 29-09-2011", fmt.format(date));
+    assertEquals("T5, 29 thg 9, 2011", fmt.format(date));
 }
 
 function testDateFmtAllComponentsLong_vi_VN() {
@@ -140,7 +140,7 @@ function testDateFmtAllComponentsLong_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Th 5, ngày Ngày 29 tháng 09 năm 2011", fmt.format(date));
+    assertEquals("Th 5, 29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtAllComponentsFull_vi_VN() {
@@ -157,7 +157,7 @@ function testDateFmtAllComponentsFull_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Thứ Năm, ngày 29 tháng 9 năm 2011", fmt.format(date));
+    assertEquals("Thứ Năm, 29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_vi_VN() {
@@ -242,7 +242,7 @@ function testDateFmtDateTimeSimpleShort_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("13:45 29/09/2011", fmt.format(date));
+    assertEquals("13:45, 29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_vi_VN() {
@@ -259,7 +259,7 @@ function testDateFmtDateTimeSimpleMedium_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("13:45 29-09-2011", fmt.format(date));
+    assertEquals("13:45, 29 thg 9, 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_vi_VN() {
@@ -276,7 +276,7 @@ function testDateFmtDateTimeSimpleLong_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("13:45 Ngày 29 tháng 09 năm 2011", fmt.format(date));
+    assertEquals("13:45 29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_vi_VN() {
@@ -293,7 +293,7 @@ function testDateFmtDateTimeSimpleFull_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("13:45 29 tháng 9 năm 2011", fmt.format(date));
+    assertEquals("13:45 29 tháng 9, 2011", fmt.format(date));
 }
 
 
@@ -499,7 +499,7 @@ function testDateFmtTypeDateTime_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("13:45 29/09/2011", fmt.format(date));
+    assertEquals("13:45, 29/09/2011", fmt.format(date));
 }
 
 
@@ -551,7 +551,7 @@ function testDateFmtShortDateComponentsN_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("t", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_vi_VN() {
@@ -636,7 +636,7 @@ function testDateFmtShortDateComponentsWDM_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("T5, ngày 29/09", fmt.format(date));
+    assertEquals("T5, 29/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_vi_VN() {
@@ -653,7 +653,7 @@ function testDateFmtShortDateComponentsWDMY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("T5, ngày 29/09/2011", fmt.format(date));
+    assertEquals("T5, 29/09/2011", fmt.format(date));
 }
 
 
@@ -739,7 +739,7 @@ function testDateFmtFullDateComponentsMY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Tháng 9 năm 2011", fmt.format(date));
+    assertEquals("Tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_vi_VN() {
@@ -756,7 +756,7 @@ function testDateFmtFullDateComponentsDMY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29 tháng 9 năm 2011", fmt.format(date));
+    assertEquals("29 tháng 9, 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_vi_VN() {
@@ -773,7 +773,7 @@ function testDateFmtFullDateComponentsWDM_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Thứ Năm, ngày 29 tháng 9", fmt.format(date));
+    assertEquals("Thứ Năm, 29 tháng 9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_vi_VN() {
@@ -790,7 +790,7 @@ function testDateFmtFullDateComponentsWDMY_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Thứ Năm, ngày 29 tháng 9 năm 2011", fmt.format(date));
+    assertEquals("Thứ Năm, 29 tháng 9, 2011", fmt.format(date));
 }
 
 
@@ -1286,7 +1286,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_vi_VN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("trong 30 giây nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 30 giây nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
@@ -1313,7 +1313,7 @@ function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 10 phút nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 10 phút nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
@@ -1340,7 +1340,7 @@ function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 4 giờ nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 4 giờ nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
@@ -1367,7 +1367,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 4 ngày nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 4 ngày nữa", fmt.formatRelative(reference, date));
 }
 
 
@@ -1395,7 +1395,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 9 tuần nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 9 tuần nữa", fmt.formatRelative(reference, date));
 }
 
 
@@ -1423,7 +1423,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 16 tháng nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 16 tháng nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_vi_VN() {
@@ -1450,7 +1450,7 @@ function testDateFmtFormatRelativeYearsAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 14 năm nữa", fmt.formatRelative(reference, date));
+    assertEquals("sau 14 năm nữa", fmt.formatRelative(reference, date));
 }
 
 

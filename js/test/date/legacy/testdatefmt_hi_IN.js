@@ -500,7 +500,7 @@ function testDateFmtINShortDateComponentsN_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("सि", fmt.format(date));
+    assertEquals("स", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_hi_IN() {

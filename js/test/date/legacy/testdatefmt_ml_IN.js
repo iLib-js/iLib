@@ -37,7 +37,7 @@ function testDateFmtINSimpleShort_ml_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-	    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_ml_IN() {
@@ -414,7 +414,7 @@ function testDateFmtINTypeDate_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 /*function testDateFmtINTypeTime_ml_IN() {
@@ -483,7 +483,7 @@ function testDateFmtINShortDateComponentsM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_ml_IN() {
@@ -534,7 +534,7 @@ function testDateFmtINShortDateComponentsDM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29/09", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_ml_IN() {
@@ -551,7 +551,7 @@ function testDateFmtINShortDateComponentsMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("09/11", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_ml_IN() {
@@ -568,7 +568,7 @@ function testDateFmtINShortDateComponentsDMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_ml_IN() {
@@ -585,7 +585,7 @@ function testDateFmtINShortDateComponentsWDM_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29/09, വ", fmt.format(date));
+    assertEquals("29/9, വ്യാ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_ml_IN() {
@@ -602,7 +602,7 @@ function testDateFmtINShortDateComponentsWDMY_ml_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29/09/11, വ", fmt.format(date));
+    assertEquals("29/9/11, വ്യാ", fmt.format(date));
 }
 
 

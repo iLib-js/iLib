@@ -566,7 +566,7 @@ function testDateFmtPLShortDateComponentsWDM_pl_PL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("C, 29.09", fmt.format(date));
+    assertEquals("c, 29.09", fmt.format(date));
 }
 
 function testDateFmtPLShortDateComponentsWDMY_pl_PL() {
@@ -583,7 +583,7 @@ function testDateFmtPLShortDateComponentsWDMY_pl_PL() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("C, 29.09.2011", fmt.format(date));
+    assertEquals("c, 29.09.2011", fmt.format(date));
 }
 
 

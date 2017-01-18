@@ -55,7 +55,7 @@ function testDateFmtSimpleMedium_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 ግንቦ 2011", fmt.format(date));
+    assertEquals("29 ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_am_ET() {
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("29 ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_am_ET() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29 ግንቦ 2011 1:45 ከምሽቱ", fmt.format(date));
+    assertEquals("29 ግንቦት 2011 1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_am_ET() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ግንቦት 29 ቀን 2011 1:45 ከምሽቱ", fmt.format(date));
+    assertEquals("29 ግንቦት 2011 1:45 ከምሽቱ", fmt.format(date));
 }
 
 function testDateFmtjTemplateMorning_am_ET() {
@@ -809,7 +809,7 @@ function testDateFmtFullDateComponentsDM_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29", fmt.format(date));
+    assertEquals("29 ግንቦት", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_am_ET() {
@@ -826,7 +826,7 @@ function testDateFmtFullDateComponentsMY_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት ቀን 2011", fmt.format(date));
+    assertEquals("ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_am_ET() {
@@ -843,7 +843,7 @@ function testDateFmtFullDateComponentsDMY_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("29 ግንቦት 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_am_ET() {
@@ -860,7 +860,7 @@ function testDateFmtFullDateComponentsWDM_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓርብ፣ ግንቦት 29", fmt.format(date));
+    assertEquals("ዓርብ፣ 29 ግንቦት", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_am_ET() {
@@ -877,7 +877,7 @@ function testDateFmtFullDateComponentsWDMY_am_ET() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ዓርብ፣ ግንቦት 29 ቀን 2011", fmt.format(date));
+    assertEquals("ዓርብ፣ 29 ግንቦት 2011", fmt.format(date));
 }
 
 

@@ -1216,7 +1216,7 @@ function testDateFmtFormatRelativeWitgunMinuteBefore_gu_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 સેકંડ પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("30 સેકંડ પહેલાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunHourAfter_gu_IN() {
     var fmt = new ilib.DateFmt({locale: "gu-IN", length: "full"});
@@ -1268,7 +1268,7 @@ function testDateFmtFormatRelativeWitgunHourBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 મિનિટ પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("10 મિનિટ પહેલાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunDayAfter_gu_IN() {
     var fmt = new ilib.DateFmt({locale: "gu-IN", length: "full"});
@@ -1320,7 +1320,7 @@ function testDateFmtFormatRelativeWitgunDayBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 કલાક પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("4 કલાક પહેલાં", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitgunFortnightAfter_gu_IN() {
@@ -1373,7 +1373,7 @@ function testDateFmtFormatRelativeWitgunFortnightBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 દિવસ પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("4 દિવસ પહેલાં", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitgunQuarterAfter_gu_IN() {
@@ -1426,7 +1426,7 @@ function testDateFmtFormatRelativeWitgunQuarterBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 અઠવાડિયા પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("9 અઠવાડિયા પહેલાં", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitgunTwoYearsAfter_gu_IN() {
@@ -1479,7 +1479,7 @@ function testDateFmtFormatRelativeWitgunTwoYearsBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 મહિના પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("14 મહિના પહેલાં", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_gu_IN() {
@@ -1532,7 +1532,7 @@ function testDateFmtFormatRelativeYearsBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 વર્ષ પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("21 વર્ષ પહેલાં", fmt.formatRelative(reference, date));
 }
 
 

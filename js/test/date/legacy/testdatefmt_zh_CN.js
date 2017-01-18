@@ -37,7 +37,7 @@ function testDateFmtSimpleShort_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29", fmt.format(date));
+    assertEquals("2011/9/29", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_zh_Hans_CN() {
@@ -173,7 +173,7 @@ function testDateFmtDateTimeSimpleShort_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29 下午1:45", fmt.format(date));
+    assertEquals("2011/9/29 下午1:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_zh_Hans_CN() {
@@ -414,7 +414,7 @@ function testDateFmtTypeDate_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29", fmt.format(date));
+    assertEquals("2011/9/29", fmt.format(date));
 }
 
 function testDateFmtTypeTime_zh_Hans_CN() {
@@ -448,7 +448,7 @@ function testDateFmtTypeDateTime_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29 下午1:45", fmt.format(date));
+    assertEquals("2011/9/29 下午1:45", fmt.format(date));
 }
 
 
@@ -466,7 +466,7 @@ function testDateFmtShortDateComponentsY_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11年", fmt.format(date));
+    assertEquals("2011年", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_zh_Hans_CN() {
@@ -551,7 +551,7 @@ function testDateFmtShortDateComponentsMY_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9", fmt.format(date));
+    assertEquals("2011/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_zh_Hans_CN() {
@@ -568,7 +568,7 @@ function testDateFmtShortDateComponentsDMY_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29", fmt.format(date));
+    assertEquals("2011/9/29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_zh_Hans_CN() {
@@ -602,7 +602,7 @@ function testDateFmtShortDateComponentsWDMY_zh_Hans_CN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("11/9/29四", fmt.format(date));
+    assertEquals("2011/9/29四", fmt.format(date));
 }
 
 
@@ -881,7 +881,7 @@ function testDateFmtShortTimeComponentsHMZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST1:45", fmt.format(date));
+    assertEquals("CST 1:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_zh_Hans_CN() {
@@ -903,7 +903,7 @@ function testDateFmtShortTimeComponentsHMAZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST下午1:45", fmt.format(date));
+    assertEquals("CST 下午1:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_zh_Hans_CN() {
@@ -942,7 +942,7 @@ function testDateFmtShortTimeComponentsHMSZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST1:45:37", fmt.format(date));
+    assertEquals("CST 1:45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_zh_Hans_CN() {
@@ -964,7 +964,7 @@ function testDateFmtShortTimeComponentsHMSAZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST下午1:45:37", fmt.format(date));
+    assertEquals("CST 下午1:45:37", fmt.format(date));
 }
 
 
@@ -1107,7 +1107,7 @@ function testDateFmtFullTimeComponentsHMZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST1:45", fmt.format(date));
+    assertEquals("CST 1:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_zh_Hans_CN() {
@@ -1130,7 +1130,7 @@ function testDateFmtFullTimeComponentsHMAZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST下午1:45", fmt.format(date));
+    assertEquals("CST 下午1:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_zh_Hans_CN() {
@@ -1170,7 +1170,7 @@ function testDateFmtFullTimeComponentsHMSZ_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST1:45:37", fmt.format(date));
+    assertEquals("CST 1:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_zh_CN() {
@@ -1193,7 +1193,7 @@ function testDateFmtFullTimeComponentsHMSAZ_zh_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST下午1:45:37", fmt.format(date));
+    assertEquals("CST 下午1:45:37", fmt.format(date));
 }
 
 function testDateFmtTimeFrameDefaultWeeHours_zh_Hans_CN() {
@@ -1531,7 +1531,7 @@ function testDateFmtWithTimeZoneAndNoDST_zh_CN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("CST1:45:37", fmt.format(date));
+    assertEquals("CST 1:45:37", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_zh_Hans_CN() {

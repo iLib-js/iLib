@@ -63,7 +63,7 @@ function testDateRngFmtESRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 de dic. de 2011 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 dic. 2011 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtESRangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
@@ -160,7 +160,7 @@ function testDateRngFmtESRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 de dic. de 2011 13:45 – 31 de dic. de 2011 14:30", fmt.format(start, end));
+    assertEquals("30 dic. 2011 13:45 – 31 dic. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtESRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
@@ -257,7 +257,7 @@ function testDateRngFmtESRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 de dic. de 2011", fmt.format(start, end));
+    assertEquals("20 – 31 dic. 2011", fmt.format(start, end));
 }
 function testDateRngFmtESRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
@@ -354,7 +354,7 @@ function testDateRngFmtESRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 de nov. – 31 de dic. de 2011", fmt.format(start, end));
+    assertEquals("20 nov. – 31 dic. 2011", fmt.format(start, end));
 }
 function testDateRngFmtESRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
@@ -451,7 +451,7 @@ function testDateRngFmtESRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 de nov. de 2011 – 31 de ene. de 2012", fmt.format(start, end));
+    assertEquals("20 nov. 2011 – 31 ene. 2012", fmt.format(start, end));
 }
 function testDateRngFmtESRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
@@ -548,7 +548,7 @@ function testDateRngFmtESRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("nov. de 2011 – ene. de 2014", fmt.format(start, end));
+    assertEquals("nov. 2011 – ene. 2014", fmt.format(start, end));
 }
 function testDateRngFmtESRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "es-ES", length: "long"});
