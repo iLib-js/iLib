@@ -990,7 +990,7 @@ function testNumFmtCurrencyFormatNAGrouping() {
     
     assertNotNull(fmt);
     
-    assertEquals("$ 123 456 788,00", fmt.format(123456788));
+    assertEquals("$123 456 788,00", fmt.format(123456788));
 }
 
 
