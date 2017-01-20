@@ -196,10 +196,14 @@ GlyphString._isJamoT = function (n) {
  */
 GlyphString._isJamoLV = function (n) {
 	var syllableBase = 0xAC00;
-	var syllableCount = 11172;
+	var leadingJamoCount = 19;
+	var vowelJamoCount = 21;
 	var trailingJamoCount = 28;
+	var syllableCount = leadingJamoCount * vowelJamoCount * trailingJamoCount;
 	var syllableIndex = n - syllableBase;
+	// Check if n is a precomposed Hangul
 	if (0 <= syllableIndex && syllableIndex < syllableCount) {
+	// Check if n is a LV Jamo character
 		if((syllableIndex % trailingJamoCount) == 0) {
 			return true;
 		}
