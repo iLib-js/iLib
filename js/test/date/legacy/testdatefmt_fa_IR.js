@@ -1899,7 +1899,7 @@ function testDateFmtPersSimpleShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۲/۹/۲۱", fmt.format(date));
+    assertEquals("‏۱۳۹۲‏/۹‏/۲۱", fmt.format(date));
 };
 
 function testDateFmtPersSimpleMedium_fa_IR() {
@@ -1962,7 +1962,7 @@ function testDateFmtPersSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲", fmt.format(date));
+    assertEquals("‏۱۳۹۲ آذر ۲۱", fmt.format(date));
 }
 
 function testDateFmtPersSimpleTimeShort_fa_IR() {
@@ -2072,7 +2072,7 @@ function testDateFmtPersDateTimeSimpleShort_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳۹۲/۹/۲۱،‏ ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۱۳۹۲‏/۹‏/۲۱،‏ ‏۱۳:۴۵", fmt.format(date));
 }
 
 function testDateFmtPersDateTimeSimpleMedium_fa_IR() {
@@ -2138,5 +2138,5 @@ function testDateFmtPersDateTimeSimpleFull_fa_IR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۱ آذر ۱۳۹۲، ساعت ‏۱۳:۴۵", fmt.format(date));
+    assertEquals("‏۱۳۹۲ آذر ۲۱، ساعت ‏۱۳:۴۵", fmt.format(date));
 }

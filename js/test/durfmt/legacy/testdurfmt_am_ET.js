@@ -130,7 +130,7 @@ function testDurFmtAMFormatFull1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
+    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
 };
 
 function testDurFmtAMFormatShortDefaultStyle2() {
@@ -499,7 +499,7 @@ function testDurFmtAMAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
+    	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -524,8 +524,8 @@ function testDurFmtAMAsyncWithLocale1() {
     	    	hour: 1,
     	    	minute: 1,
     	    	second: 1
-    	    });
-    	    assertEquals("1 ዓመታት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
+    	    });          
+    	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
     	    callbackCalled = true;
     	}
     });

@@ -38,7 +38,7 @@ function testDateFmtSimpleShort_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29. 9. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_sk_SK() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29.09.11 13:45", fmt.format(date));
+    assertEquals("29. 9. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_sk_SK() {
@@ -397,7 +397,7 @@ function testDateFmtTypeDate_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29. 9. 2011", fmt.format(date));
 }
 
 function testDateFmtTypeTime_sk_SK() {
@@ -431,7 +431,7 @@ function testDateFmtTypeDateTime_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29.09.11 13:45", fmt.format(date));
+    assertEquals("29. 9. 2011 13:45", fmt.format(date));
 }
 
 
@@ -449,7 +449,7 @@ function testDateFmtShortDateComponentsY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_sk_SK() {
@@ -466,7 +466,7 @@ function testDateFmtShortDateComponentsM_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("se", fmt.format(date));
+    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_sk_SK() {
@@ -517,7 +517,7 @@ function testDateFmtShortDateComponentsDM_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29.09", fmt.format(date));
+    assertEquals("29. 9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_sk_SK() {
@@ -534,7 +534,7 @@ function testDateFmtShortDateComponentsMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("09.11", fmt.format(date));
+    assertEquals("9. 2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_sk_SK() {
@@ -551,7 +551,7 @@ function testDateFmtShortDateComponentsDMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("29.09.11", fmt.format(date));
+    assertEquals("29. 9. 2011", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_sk_SK() {
@@ -568,7 +568,7 @@ function testDateFmtShortDateComponentsWDM_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Š, 29.09", fmt.format(date));
+    assertEquals("š, 29. 9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_sk_SK() {
@@ -585,7 +585,7 @@ function testDateFmtShortDateComponentsWDMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("Š, 29.09.11", fmt.format(date));
+    assertEquals("š, 29. 9. 2011", fmt.format(date));
 }
 
 

@@ -2,7 +2,7 @@
  * gendelimiters.js - ilib tool to generate delimiters json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2013-2015, LGE 
+ * Copyright © 2013-2017, LGE 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -59,7 +59,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 util.print("gendelimiters - generate delimiters information files.\n" +
-	"Copyright (c) 2013 - 2015 LGE\n");
+	"Copyright (c) 2013 - 2017 LGE\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
@@ -75,45 +75,31 @@ if (!fs.existsSync(localeDirName)) {
 	usage();
 }
 
-var filename, root, json, suppData, languageData, scripts = {};
-
-try {
-	filename = cldrDirName + "supplemental/languageData.json";
-	json = fs.readFileSync(filename, "utf-8");
-	suppData = JSON.parse(json);
-
-	languageData = suppData.supplemental.languageData;
-} catch (e) {
-	util.print("Error: Could not load file " + filename + "\n");
-	process.exit(2);
-}
-
-for (var locale in languageData) {
-	if (locale && languageData[locale]) {
-		if (languageData[locale]._scripts !== undefined) {
-			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
-			if (typeof (scripts[language]) === 'undefined') {
-				scripts[language] = [];
-			}
-			var newLangs = languageData[locale]._scripts;
-			if (locale.length <= 3) {
-				// util.print("language " + language + " prepending " + JSON.stringify(newLangs)); 
-				scripts[language] = newLangs.concat(scripts[language]);
-
-			} else {
-				// util.print("language " + language + " appending " + JSON.stringify(newLangs)); 
-				scripts[language] = scripts[language].concat(newLangs);
-			}
-		}
-	}
-}
-
+var language, region, script, files;
+var localeDirs;
+var localeData = {};
 try {
 	localeDirs = fs.readdirSync(path.join(cldrDirName, "main"));
 } catch (e) {
 	util.print("Error: Could not load file " + localeDirs + "\n");
 	process.exit(2);
 }
+
+util.print("Reading locale data into memory...\n");
+
+for (var i = 0; i < localeDirs.length; i++) {
+	var dirname = localeDirs[i];
+	if (dirname === "root") {
+		// special case because "root" is not a valid locale specifier 
+		getLocaleData(dirname, undefined);
+	} else {
+		var locale = new Locale(dirname);
+		if(typeof(locale.getVariant()) === 'undefined') {
+			getLocaleData(dirname, locale);
+		}
+	}
+}
+util.print("\n");
 
 function loadFile(path) {
 	var ret = undefined;
@@ -167,8 +153,6 @@ function loadFileNonGenerated(language, script, region) {
 	return undefined;
 }
 
-var localeData = {};
-
 function getLocaleData(dirname, locale) {
 	var data;
 	try {
@@ -188,8 +172,7 @@ function getLocaleData(dirname, locale) {
 
 		var filename = path.join(cldrDirName, "main", dirname, "delimiters.json");
 		var data = loadFile(filename);
-		var numData = data.main[spec];
-		
+		var numData = data.main[spec].delimiters;
 
 		if (script) {
 			if (region) {
@@ -280,7 +263,7 @@ function getQuotationChars(language, script, region, data) {
 	delimiters = {
 		generated: true
 	};
-	var delimiter_chars=data["delimiters"];
+	var delimiter_chars=data;
 	delimiter_symbol["quotationStart"]=delimiter_chars["quotationStart"];
 	delimiter_symbol["quotationEnd"]=delimiter_chars["quotationEnd"];
 	delimiter_symbol["alternateQuotationStart"]=delimiter_chars["alternateQuotationStart"];
@@ -290,26 +273,6 @@ function getQuotationChars(language, script, region, data) {
 	delimiters["delimiter"]=delimiter_symbol;
 	return delimiters;
 }
-
-var language, region, script, files;
-var localeDirs;
-
-
-util.print("Reading locale data into memory...\n");
-
-for (var i = 0; i < localeDirs.length; i++) {
-	var dirname = localeDirs[i];
-	if (dirname === "root") {
-		// special case because "root" is not a valid locale specifier 
-		getLocaleData(dirname, undefined);
-	} else {
-		var locale = new Locale(dirname);
-		if(typeof(locale.getVariant()) === 'undefined') {
-			getLocaleData(dirname, locale);
-		}
-	}
-}
-util.print("\n");
 
 util.print("Merging and pruning locale data...\n");
 

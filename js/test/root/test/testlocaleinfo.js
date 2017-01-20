@@ -10224,3 +10224,75 @@ function testLocaleInfoQuotation_ur_IN() {
 	assertEquals("\"", info.getDelimiterQuotationStart());
 	assertEquals("\"", info.getDelimiterQuotationEnd());
 }
+
+function testLocaleInfoQuotation_fr_CA() {
+	var info = new LocaleInfo("fr-CA");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_he_IL() {
+	var info = new LocaleInfo("he-IL");
+	assertNotNull(info);
+	
+	assertEquals("”", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_uz_Latn_UZ() {
+	var info = new LocaleInfo("uz-Latn-UZ");
+	assertNotNull(info);
+	
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_ro_RO() {
+	var info = new LocaleInfo("ro-RO");
+	assertNotNull(info);
+	
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_bs_BA() {
+	var info = new LocaleInfo("bs-BA");
+	assertNotNull(info);
+	
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_el_CY() {
+	var info = new LocaleInfo("el-CY");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_kk_KZ() {
+	var info = new LocaleInfo("kk-KZ");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_de_CH() {
+	var info = new LocaleInfo("de-CH");
+	assertNotNull(info);
+
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("“", info.getDelimiterQuotationEnd());
+}

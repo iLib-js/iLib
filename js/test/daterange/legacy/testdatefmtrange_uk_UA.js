@@ -40,7 +40,7 @@ function testDateRngFmtUARangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31.12.11, 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});
@@ -64,7 +64,7 @@ function testDateRngFmtUARangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 груд. 2011 р. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 груд. 2011 р., 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "long"});
@@ -88,7 +88,7 @@ function testDateRngFmtUARangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 грудня 2011 р. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 грудня 2011 р. о 13:45 – 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "full"});
@@ -112,7 +112,7 @@ function testDateRngFmtUARangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 грудня 2011 р. 13:45 – 14:30", fmt.format(start, end));
+    assertEquals("31 грудня 2011 р. о 13:45 – 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtUARangeNextDayShort() {
@@ -137,7 +137,7 @@ function testDateRngFmtUARangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30.12.11 13:45 – 31.12.11 14:30", fmt.format(start, end));
+    assertEquals("30.12.11, 13:45 – 31.12.11, 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "medium"});
@@ -161,7 +161,7 @@ function testDateRngFmtUARangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 груд. 2011 р. 13:45 – 31 груд. 2011 р. 14:30", fmt.format(start, end));
+    assertEquals("30 груд. 2011 р., 13:45 – 31 груд. 2011 р., 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "long"});
@@ -185,7 +185,7 @@ function testDateRngFmtUARangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 грудня 2011 р. 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
+    assertEquals("30 грудня 2011 р. о 13:45 – 31 грудня 2011 р. о 14:30", fmt.format(start, end));
 }
 function testDateRngFmtUARangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "uk-UA", length: "full"});
@@ -209,7 +209,7 @@ function testDateRngFmtUARangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	}); 
-    assertEquals("30 грудня 2011 р. 13:45 – 31 грудня 2011 р. 14:30", fmt.format(start, end));
+    assertEquals("30 грудня 2011 р. о 13:45 – 31 грудня 2011 р. о 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtUARangeMultiDayShort() {

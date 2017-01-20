@@ -468,7 +468,7 @@ function testDateFmtShortDateComponentsM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Se", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_lv_LV() {
@@ -485,7 +485,7 @@ function testDateFmtShortDateComponentsN_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("s", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_lv_LV() {
@@ -622,7 +622,7 @@ function testDateFmtFullDateComponentsM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Septembris", fmt.format(date));
+    assertEquals("septembris", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_lv_LV() {
@@ -673,7 +673,7 @@ function testDateFmtFullDateComponentsMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("2011. gada Septembris", fmt.format(date));
+    assertEquals("2011. gada septembris", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_lv_LV() {
