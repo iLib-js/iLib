@@ -55,14 +55,7 @@ enyo.kind({
 		var monthTranalate = ["Januarary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 		var d = new Date();
 		var string = "Generated on " + monthTranalate[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()
-
-		var year, month, date;
-		var month  = 0;
-		var date  = 23;
-
-		var string = "Generated on " + monthTranalate[month] + " " + date + ", " + d.getFullYear()
 		this.$.headerDate.setContent(string);
-
 	},
 	removeINode: function() {
 		var list = document.getElementById(this.$.targetDocument.getId()); 
