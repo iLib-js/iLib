@@ -125,8 +125,8 @@ function testDateFmtGetMeridiemsRangeName_with_ur_PK_locale() {
     var fmt = DateFmt.getMeridiemsRange({locale: "ur-PK"});
     assertNotNull(fmt);
 
-    assertEquals("ﻖﺒﻟ ﺩﻭپہﺭ", fmt[0].name);
-    assertEquals("ﺐﻋﺩ ﺩﻭپہﺭ", fmt[1].name);
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 
 function testDateFmtSimpleFullOveride_am_ET() {
