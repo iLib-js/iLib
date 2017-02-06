@@ -211,7 +211,7 @@ enyo.kind({
 			"Russian - Georgia":"ru-GE",
 			"Russian - Russia":"ru-RU",
 			"Russian - Ukraine":"ru-UA",
-			"Sinhalese - Sri Lanka":"si-LK",
+			"Sinhala - Sri Lanka":"si-LK",
 			"Slovak - Slovakia":"sk-SK",
 			"Slovene - Slovenia":"sl-SI",
 			"Albanian - Albania":"sq-AL", 
