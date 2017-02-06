@@ -2067,6 +2067,24 @@ function testStringFormatChoiceCharClasses20() {
     assertEquals("Default items", str.formatChoice(13));
 }
 
+function testStringFormatChoiceCharClasses21() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("si-LK");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(1));
+}
+
+function testStringFormatChoiceCharClasses22() {
+    var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("si-LK");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(13));
+}
+
 
 function testStringFormatChoiceCharClassesComplex1() {
     var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
