@@ -9403,6 +9403,78 @@ function testLocaleInfoRoundingMode_km_KH() {
 
     assertEquals("halfdown", info.getRoundingMode());
 }
+
+//test cases for si-LK
+
+function testLocaleInfoGetDecimalSeparatorfor_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(3, info.getPrimaryGroupingDigits());
+}
+
+function testLocaleInfoGetSecondaryGroupingDigits_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(0, info.getSecondaryGroupingDigits());
+}
+
+function testLocaleInfoRoundingMode_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
+
 /************************************************end 04-JUN-2013**********************************************************/
 /** Add negative format test cases (08-NOV-2016) **/
 

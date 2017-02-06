@@ -35,7 +35,8 @@ function suite() {
 		"testdurfmt_az_Latn_AZ.js",
 		"testdurfmt_ha_Latn_NG.js",
 		"testdurfmt_or_IN.js",
-		"testdurfmt_km_KH.js"
+		"testdurfmt_km_KH.js",
+		"testdurfmt_si_LK.js"
 	];
 
     suites.forEach(function (path) {

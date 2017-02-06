@@ -64,6 +64,13 @@ function testCalendarFactoryDefaultForLocale_AZ() {
     assertEquals("gregorian", cal.getType());
 }
 
+function testCalendarFactoryDefaultForLocale_LK() {
+    var cal = CalendarFactory({locale: "si-LK"});
+    assertNotUndefined(cal);
+
+    assertEquals("gregorian", cal.getType());
+}
+
 function testCalendarFactoryDefaultForLocaleOther() {
     var cal = CalendarFactory({locale: "th-TH"});
     assertNotUndefined(cal);
