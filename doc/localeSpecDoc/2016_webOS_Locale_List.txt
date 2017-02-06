@@ -136,6 +136,9 @@
 "Amharic - Ethiopia":"am-ET", 
 "Hausa - Nigeria":"ha-Latn-NG",
 "Odia - India":"or-IN",
+"Azerbaijani - Azerbaijan":"az-Latn-AZ",
+"Khmer - Cambodia":"km-KH",
+"Sinhala - Sri Lanka":"si-LK",
 
 //UI Disable
 "Arabic - United Arab Emirates":"ar-AE",
