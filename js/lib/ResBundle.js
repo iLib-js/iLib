@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,15 +47,16 @@ var IString = require("./IString.js");
  * base name is "resources".
  * 
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
- * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
+ * "xml", "html", "text", "c", or "raw". The default is "text". If the type is "xml" or "html",
  * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
  * HTML character entities are translated to their corresponding characters in a source
  * string before looking that string up in the translations. Also, the characters "<", ">",
  * and "&" are converted to entities again in the output, but characters are left as they
  * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
  * are not pseudo-translated as well so that the output can be used for formatting with 
- * the IString class. If the type is raw, all characters are pseudo-translated, 
- * including replacement parameters as well as XML/HTML tags and entities.
+ * the IString class. If the type is "c" then all C language style printf replacement
+ * parameters (eg. "%s" and "%d") are skipped automatically. If the type is raw, all characters 
+ * are pseudo-translated, including replacement parameters as well as XML/HTML tags and entities.
  * 
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
@@ -375,6 +376,8 @@ ResBundle.prototype = {
 		return this.type;
 	},
 
+	percentRE: new RegExp("%(\\d+\\$)?([\\-#\\+ 0,\\(])?(\\d+)?(\\.\\d+)?[bBhHsScCdoxXeEfgGaAtT%n]"),
+
 	/**
 	 * @private
 	 * Pseudo-translate a string
@@ -392,18 +395,25 @@ ResBundle.prototype = {
 						while (i < str.length && str.charAt(i) !== '>') {
 							ret += str.charAt(i++);
 						}
-						if (i < str.length) {
-							ret += str.charAt(i++);
-						}
 					} else if (str.charAt(i) === '&') {
 						ret += str.charAt(i++);
 						while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
 							ret += str.charAt(i++);
 						}
-						if (i < str.length) {
-							ret += str.charAt(i++);
+					} else if (str.charAt(i) === '\\' && str.charAt(i+1) === "u") {
+						ret += str.substring(i, i+6);
+						i += 6;
+					}
+				} else if (this.type === "c") {
+					if (str.charAt(i) === "%") {
+						var m = this.percentRE.exec(str.substring(i));
+						if (m && m.length) {
+							// console.log("Match found: " + JSON.stringify(m[0].replace("%", "%%")));
+							ret += m[0];
+							i += m[0].length;
 						}
 					}
+
 				}
 				if (i < str.length) { 
 					if (str.charAt(i) === '{') {
