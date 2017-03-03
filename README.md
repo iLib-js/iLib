@@ -3,8 +3,9 @@
 iLib
 ==== 
 
-iLib is an internationalization library written in pure Javascript. It does not require any other libraries to function,
-and can run equally well in various browsers on various OS's (including mobile), nodejs, webOS, Qt/QML, or rhino.
+iLib is an internationalization library written in pure ES4 Javascript. It does not require any other libraries to function,
+and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
+RingoJS, React/Enact, or rhino.
 
 What Can iLib Do?
 ------
@@ -54,7 +55,7 @@ Where Does it Run?
 
 ILib has been tested in the following environments:
 
-* nodejs 0.10
+* nodejs 0.10+
 * Browsers:
     * Chrome 28+
     * Firefox 35+
@@ -115,7 +116,7 @@ For ringojs, you can install it with the ringo package manager:
 rp install ilib
 ~~~~~
 
-ILib is also available on sourceforge.net from the svn repository at https://sourceforge.net/p/i18nlib/code/HEAD/tree/
+ILib is also available on github at https://github.com/iLib-js/iLib
 or official iLib builds in tar balls at http://sourceforge.net/projects/i18nlib/files/
 
 If you want to create your own version of ilib with a smaller set of classes than the big list above, you'll have to
@@ -124,7 +125,7 @@ get the source and build it yourself. This will require that you install java 1.
 Copyright and License
 -------
 
-Copyright &copy; 2011-2015, JEDLSoft
+Copyright &copy; 2011-2017, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -144,7 +145,7 @@ More Information
 
 Please point your browser to the following places to get more documentation:
 
-- JSDocs: http://docs.jedlsoft.com/ilib/jsdoc/
-- Wiki: https://sourceforge.net/p/i18nlib/wiki/iLib%20-%20an%20internationalization%20library%20written%20in%20Javascript/
-- Source: https://sourceforge.net/p/i18nlib/code/HEAD/tree/
+- JSDocs: http://www.translationcircle.com/ilib/jsdoc/
+- More Docs: 
+- Github: git clone git@github.com:iLib-js/iLib.git
 - Builds: http://sourceforge.net/projects/i18nlib/files/
