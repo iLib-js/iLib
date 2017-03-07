@@ -1,4 +1,4 @@
-Handling Phone Number in iLib
+Handling Phone Numbers in iLib
 =============================
 
 As of 8.0, iLib includes the ability to represent and manipulate phone numbers. Here are the things it can do:
