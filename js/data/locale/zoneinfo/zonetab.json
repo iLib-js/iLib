@@ -25,15 +25,15 @@
     ],
     "AQ": [
         "Antarctica/McMurdo",
-        "Antarctica/Rothera",
-        "Antarctica/Palmer",
-        "Antarctica/Mawson",
-        "Antarctica/Davis",
         "Antarctica/Casey",
-        "Antarctica/Vostok",
+        "Antarctica/Davis",
         "Antarctica/DumontDUrville",
+        "Antarctica/Mawson",
+        "Antarctica/Palmer",
+        "Antarctica/Rothera",
         "Antarctica/Syowa",
-        "Antarctica/Troll"
+        "Antarctica/Troll",
+        "Antarctica/Vostok"
     ],
     "AR": [
         "America/Argentina/Buenos_Aires",
@@ -166,11 +166,11 @@
         "America/Thunder_Bay",
         "America/Iqaluit",
         "America/Pangnirtung",
-        "America/Resolute",
         "America/Atikokan",
-        "America/Rankin_Inlet",
         "America/Winnipeg",
         "America/Rainy_River",
+        "America/Resolute",
+        "America/Rankin_Inlet",
         "America/Regina",
         "America/Swift_Current",
         "America/Edmonton",
@@ -182,8 +182,7 @@
         "America/Fort_Nelson",
         "America/Vancouver",
         "America/Whitehorse",
-        "America/Dawson",
-        "America/Montreal"
+        "America/Dawson"
     ],
     "CC": [
         "Indian/Cocos"
@@ -209,6 +208,7 @@
     ],
     "CL": [
         "America/Santiago",
+        "America/Punta_Arenas",
         "Pacific/Easter"
     ],
     "CM": [
@@ -216,10 +216,7 @@
     ],
     "CN": [
         "Asia/Shanghai",
-        "Asia/Harbin",
-        "Asia/Chongqing",
-        "Asia/Urumqi",
-        "Asia/Kashgar"
+        "Asia/Urumqi"
     ],
     "CO": [
         "America/Bogota"
@@ -240,7 +237,8 @@
         "Indian/Christmas"
     ],
     "CY": [
-        "Asia/Nicosia"
+        "Asia/Nicosia",
+        "Asia/Famagusta"
     ],
     "CZ": [
         "Europe/Prague"
@@ -465,6 +463,7 @@
         "Asia/Qyzylorda",
         "Asia/Aqtobe",
         "Asia/Aqtau",
+        "Asia/Atyrau",
         "Asia/Oral"
     ],
     "LA": [
@@ -529,7 +528,7 @@
         "Africa/Bamako"
     ],
     "MM": [
-        "Asia/Rangoon"
+        "Asia/Yangon"
     ],
     "MN": [
         "Asia/Ulaanbaatar",
@@ -574,7 +573,6 @@
         "America/Ojinaga",
         "America/Hermosillo",
         "America/Tijuana",
-        "America/Santa_Isabel",
         "America/Bahia_Banderas"
     ],
     "MY": [
@@ -689,10 +687,16 @@
         "Europe/Moscow",
         "Europe/Simferopol",
         "Europe/Volgograd",
+        "Europe/Kirov",
+        "Europe/Astrakhan",
+        "Europe/Saratov",
+        "Europe/Ulyanovsk",
         "Europe/Samara",
         "Asia/Yekaterinburg",
         "Asia/Omsk",
         "Asia/Novosibirsk",
+        "Asia/Barnaul",
+        "Asia/Tomsk",
         "Asia/Novokuznetsk",
         "Asia/Krasnoyarsk",
         "Asia/Irkutsk",
@@ -700,9 +704,9 @@
         "Asia/Yakutsk",
         "Asia/Khandyga",
         "Asia/Vladivostok",
-        "Asia/Sakhalin",
         "Asia/Ust-Nera",
         "Asia/Magadan",
+        "Asia/Sakhalin",
         "Asia/Srednekolymsk",
         "Asia/Kamchatka",
         "Asia/Anadyr"
@@ -830,7 +834,6 @@
         "Africa/Kampala"
     ],
     "UM": [
-        "Pacific/Johnston",
         "Pacific/Midway",
         "Pacific/Wake"
     ],
@@ -856,10 +859,10 @@
         "America/Boise",
         "America/Phoenix",
         "America/Los_Angeles",
-        "America/Metlakatla",
         "America/Anchorage",
         "America/Juneau",
         "America/Sitka",
+        "America/Metlakatla",
         "America/Yakutat",
         "America/Nome",
         "America/Adak",
