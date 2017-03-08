@@ -342,6 +342,51 @@ function testResBundleGetStringOtherBundlePsuedoHtml() {
     assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
 }
 
+function testResBundleGetStringOtherBundlePsuedoHtmlWithTags() {
+    var rb = new ResBundle({
+        name: "tester",
+        locale: "zxx-XX",
+        type: "html"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm <span class=\"foo\">{country}</span>", rb.getString("Hello from <span class=\"foo\">{country}</span>").toString());
+    assertEquals("Ħëľľõ fŕõm <span class=\"foo\">{city}</span>", rb.getString("Hello from <span class=\"foo\">{city}</span>").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm <span class=\"foo\">{city}</span> íñ <span class=\"foo\">{country}</span>", rb.getString("Greetings from <span class=\"foo\">{city}</span> in <span class=\"foo\">{country}</span>").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoHtmlWithMultipleTags() {
+    var rb = new ResBundle({
+        name: "tester",
+        locale: "zxx-XX",
+        type: "html"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm <div><span class=\"foo\">{country}</span></div>", rb.getString("Hello from <div><span class=\"foo\">{country}</span></div>").toString());
+    assertEquals("Ħëľľõ fŕõm <div><span class=\"foo\">{city}</span></div>", rb.getString("Hello from <div><span class=\"foo\">{city}</span></div>").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm <div><span class=\"foo\">{city}</span></div> íñ <div><span class=\"foo\">{country}</span></div>", rb.getString("Greetings from <div><span class=\"foo\">{city}</span></div> in <div><span class=\"foo\">{country}</span></div>").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoHtmlWithTagsAndEntities() {
+    var rb = new ResBundle({
+        name: "tester",
+        locale: "zxx-XX",
+        type: "html"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm &amp;<span class=\"foo\">{country}</span>&mdash;", rb.getString("Hello from &amp;<span class=\"foo\">{country}</span>&mdash;").toString());
+    assertEquals("Ħëľľõ fŕõm &amp;<span class=\"foo\">{city}</span>&mdash;", rb.getString("Hello from &amp;<span class=\"foo\">{city}</span>&mdash;").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm &amp;<span class=\"foo\">{city}</span>&mdash; íñ &amp;<span class=\"foo\">{country}</span>&mdash;", rb.getString("Greetings from &amp;<span class=\"foo\">{city}</span>&mdash; in &amp;<span class=\"foo\">{country}</span>&mdash;").toString());
+}
+
 function testResBundleGetStringOtherBundlePsuedoXml() {
     var rb = new ResBundle({
         name: "tester",
@@ -355,6 +400,59 @@ function testResBundleGetStringOtherBundlePsuedoXml() {
     assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
     assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
     assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoC() {
+    var rb = new ResBundle({
+        name: "tester",
+        locale: "zxx-XX",
+        type: "c",
+        lengthen: true
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the C style replacement parameters
+	assertEquals("àçţüàľ %s 43210", rb.getStringJS("actual %s "));
+	assertEquals("àçţüàľ %b 43210", rb.getStringJS("actual %b "));
+	assertEquals("àçţüàľ %h 43210", rb.getStringJS("actual %h "));
+	assertEquals("àçţüàľ %c 43210", rb.getStringJS("actual %c "));
+	assertEquals("àçţüàľ %d 43210", rb.getStringJS("actual %d "));
+	assertEquals("àçţüàľ %o 43210", rb.getStringJS("actual %o "));
+	assertEquals("àçţüàľ %x 43210", rb.getStringJS("actual %x "));
+	assertEquals("àçţüàľ %e 43210", rb.getStringJS("actual %e "));
+	assertEquals("àçţüàľ %f 43210", rb.getStringJS("actual %f "));
+	assertEquals("àçţüàľ %g 43210", rb.getStringJS("actual %g "));
+	assertEquals("àçţüàľ %a 43210", rb.getStringJS("actual %a "));
+	assertEquals("àçţüàľ %t 43210", rb.getStringJS("actual %t "));
+	assertEquals("àçţüàľ %% 43210", rb.getStringJS("actual %% "));
+	assertEquals("àçţüàľ %n 43210", rb.getStringJS("actual %n "));
+	
+	assertEquals("àçţüàľ %S 43210", rb.getStringJS("actual %S "));
+	assertEquals("àçţüàľ %B 43210", rb.getStringJS("actual %B "));
+	assertEquals("àçţüàľ %H 43210", rb.getStringJS("actual %H "));
+	assertEquals("àçţüàľ %C 43210", rb.getStringJS("actual %C "));
+	assertEquals("àçţüàľ %X 43210", rb.getStringJS("actual %X "));
+	assertEquals("àçţüàľ %E 43210", rb.getStringJS("actual %E "));
+	assertEquals("àçţüàľ %G 43210", rb.getStringJS("actual %G "));
+	assertEquals("àçţüàľ %A 43210", rb.getStringJS("actual %A "));
+	assertEquals("àçţüàľ %T 43210", rb.getStringJS("actual %T "));
+	assertEquals("àçţüàľ %% 43210", rb.getStringJS("actual %% "));
+	
+	assertEquals("àçţüàľ %2$s 543210", rb.getStringJS("actual %2$s "));
+	assertEquals("àçţüàľ %-d 543210", rb.getStringJS("actual %-d "));
+	assertEquals("àçţüàľ %#d 543210", rb.getStringJS("actual %#d "));
+	assertEquals("àçţüàľ %+d 543210", rb.getStringJS("actual %+d "));
+	assertEquals("àçţüàľ % d 543210", rb.getStringJS("actual % d "));
+	assertEquals("àçţüàľ %02d 543210", rb.getStringJS("actual %02d "));
+	assertEquals("àçţüàľ %.2d 543210", rb.getStringJS("actual %.2d "));
+	assertEquals("àçţüàľ %(2d 543210", rb.getStringJS("actual %(2d "));
+	assertEquals("àçţüàľ %4$-2.2d 76543210", rb.getStringJS("actual %4$-2.2d "));
+	
+	assertEquals("àçţüàľ %Ň 43210", rb.getStringJS("actual %N "));
+	assertEquals("àçţüàľ %F 43210", rb.getStringJS("actual %F "));
+	assertEquals("àçţüàľ %Ð 43210", rb.getStringJS("actual %D "));
+	assertEquals("àçţüàľ %Ø 43210", rb.getStringJS("actual %O "));
 }
 
 function testResBundleGetStringOtherBundlePsuedoDefault() {
