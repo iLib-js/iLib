@@ -795,8 +795,19 @@ limitations under the License.
 	<target depends="assemble.dyncode.unittest" name="test.durfmt">
 		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest" name="test.number">
+	<target depends="assemble.dyncode.unittest,assemble.dyndata.unittest,assemble.unittest" name="test.number">
 		<runtests suite="number" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="compiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="compiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="uncompiled" set="modular" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="compiled" set="legacy" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="compiled" set="legacy" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" set="legacy" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.maps">
 		<runtests suite="maps" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
