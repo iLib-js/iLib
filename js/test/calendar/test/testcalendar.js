@@ -1,6 +1,6 @@
 /*
  * testcalendar.js - test the calendar routines
- * 
+ *
  * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,14 +27,14 @@ function testCalendarFactoryDefault() {
 function testCalendarFactoryDefaultRightType() {
     var cal = CalendarFactory();
     assertNotUndefined(cal);
-    
+
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactorySpecific() {
     var cal = CalendarFactory({type: "julian"});
     assertNotUndefined(cal);
-    
+
     assertEquals("julian", cal.getType());
 }
 
@@ -46,21 +46,28 @@ function testCalendarFactoryUnknown() {
 function testCalendarFactoryDefaultForLocale() {
     var cal = CalendarFactory({locale: "ar-AE"});
     assertNotUndefined(cal);
-    
+
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocale_AZ() {
+    var cal = CalendarFactory({locale: "az-Latn-AZ"});
+    assertNotUndefined(cal);
+
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactoryDefaultForLocaleOther() {
     var cal = CalendarFactory({locale: "th-TH"});
     assertNotUndefined(cal);
-    
+
     assertEquals("thaisolar", cal.getType());
 }
 
 function testCalendarFactoryOverrideLocale() {
     var cal = CalendarFactory({locale: "ar-AE", type: "gregorian"});
     assertNotUndefined(cal);
-    
+
     assertEquals("gregorian", cal.getType());
 }
 
@@ -77,6 +84,6 @@ function testGetCalendars() {
         "ethiopic",
         "coptic"
     ];
-    
+
     assertArrayEqualsIgnoringOrder(expected, CalendarFactory.getCalendars());
 }
