@@ -1,0 +1,11 @@
+{
+	"files": [
+		"en/strings.json",
+		"es/strings.json",
+		"ko/strings.json",
+		"ko/image.jpg",
+		"ko/KR/image.jpg",
+		"image.jpg",
+		"en/image.jpg"
+	]
+}
