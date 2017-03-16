@@ -525,7 +525,7 @@ function testDateFmtUSShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/2011", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtUSShortDateComponentsDMY() {

@@ -1193,7 +1193,7 @@ function testDateFmtFormatRelativeWitgunMinuteAfter_gu_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 સેકંડ માં", fmt.formatRelative(reference, date));
+    assertEquals("30 સેકંડમાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunMinuteBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1245,7 +1245,7 @@ function testDateFmtFormatRelativeWitgunHourAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 મિનિટ માં", fmt.formatRelative(reference, date));
+    assertEquals("10 મિનિટમાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunHourBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWitgunDayAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 કલાક માં", fmt.formatRelative(reference, date));
+    assertEquals("4 કલાકમાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunDayBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1350,7 +1350,7 @@ function testDateFmtFormatRelativeWitgunFortnightAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 દિવસ માં", fmt.formatRelative(reference, date));
+    assertEquals("4 દિવસમાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunFortnightBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1403,7 +1403,7 @@ function testDateFmtFormatRelativeWitgunQuarterAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 અઠવાડિયા માં", fmt.formatRelative(reference, date));
+    assertEquals("9 અઠવાડિયામાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunQuarterBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1456,7 +1456,7 @@ function testDateFmtFormatRelativeWitgunTwoYearsAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 મહિનો માં", fmt.formatRelative(reference, date));
+    assertEquals("16 મહિનામાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitgunTwoYearsBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});
@@ -1482,7 +1482,7 @@ function testDateFmtFormatRelativeWitgunTwoYearsBefore_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 મહિનો પહેલા", fmt.formatRelative(reference, date));
+    assertEquals("14 મહિના પહેલા", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_gu_IN() {
@@ -1509,7 +1509,7 @@ function testDateFmtFormatRelativeYearsAfter_gu_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 વર્ષ માં", fmt.formatRelative(reference, date));
+    assertEquals("14 વર્ષમાં", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_gu_IN() {
     var fmt = new DateFmt({locale: "gu-IN", length: "full"});

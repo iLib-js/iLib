@@ -3,31 +3,31 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "E, dd/MM/yyyy",
-                "f": "EEEE, dd MMMM yyyy"
+                "f": "EEEE, dd MMMM yyyy",
+                "s": "E, dd/MM/yyyy"
             },
             "dmy": {
-                "s": "dd/MM/yyyy",
-                "f": "dd MMMM yyyy"
+                "f": "dd MMMM yyyy",
+                "s": "dd/MM/yyyy"
             },
             "dmw": {
-                "s": "E, dd/MM",
-                "f": "EEEE, dd MMMM"
+                "f": "EEEE, dd MMMM",
+                "s": "E, dd/MM"
             },
             "dm": {
-                "s": "dd/MM",
-                "f": "dd MMMM"
+                "f": "dd MMMM",
+                "s": "dd/MM"
             },
             "my": {
                 "s": "MM/yyyy"
             },
             "dw": {
-                "s": "E, dd",
-                "f": "EEEE, dd"
+                "f": "EEEE, dd",
+                "s": "E, dd"
             },
             "d": {
-                "s": "dd",
-                "f": "dd"
+                "f": "dd",
+                "s": "dd"
             },
             "m": {
                 "s": "MM"

@@ -2,44 +2,44 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "yyyy/M/d E کونی",
-                "m": "d MMM yyyy EE کونی",
+                "f": "yyyy نچی ییل d نچی MMMM EEEE کونی",
                 "l": "d نچی MMMM yyyy EEE کونی",
-                "f": "yyyy نچی ییل d نچی MMMM EEEE کونی"
+                "m": "d MMM yyyy EE کونی",
+                "s": "yyyy/M/d E کونی"
             },
             "dmy": {
-                "s": "yyyy/M/d",
-                "m": "d MMM yyyy",
+                "f": "yyyy نچی ییل d نچی MMMM",
                 "l": "d نچی MMMM yyyy",
-                "f": "yyyy نچی ییل d نچی MMMM"
+                "m": "d MMM yyyy",
+                "s": "yyyy/M/d"
             },
             "dmw": {
-                "s": "M/d E کونی",
-                "m": "d MMM EE کونی",
+                "f": "d نچی MMMM EEEE کونی",
                 "l": "d نچی MMMM EEE کونی",
-                "f": "d نچی MMMM EEEE کونی"
+                "m": "d MMM EE کونی",
+                "s": "M/d E کونی"
             },
             "dm": {
-                "s": "M/d",
-                "m": "d MMM",
+                "f": "d نچی MMMM",
                 "l": "d نچی MMMM",
-                "f": "d نچی MMMM"
+                "m": "d MMM",
+                "s": "M/d"
             },
             "my": {
-                "s": "yyyy/M",
-                "m": "MMM yyyy",
+                "f": "yyyy نچی ییل MMMM",
                 "l": "MMMM yyyy",
-                "f": "yyyy نچی ییل MMMM"
+                "m": "MMM yyyy",
+                "s": "yyyy/M"
             },
             "dw": {
-                "s": "d E کونی",
-                "m": "d EE کونی",
+                "f": "d نچی EEEE کونی",
                 "l": "d نچی EEE کونی",
-                "f": "d نچی EEEE کونی"
+                "m": "d EE کونی",
+                "s": "d E کونی"
             },
             "d": {
-                "s": "d",
-                "f": "d"
+                "f": "d",
+                "s": "d"
             },
             "m": {
                 "s": "M"
@@ -50,22 +50,22 @@
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a (z)",
-                "hmsz": "h:mm:ss (z)",
+                "hmz": "h:mm (z)",
                 "ahmz": "h:mm a (z)",
-                "hmz": "h:mm (z)"
+                "hmsz": "h:mm:ss (z)",
+                "ahmsz": "h:mm:ss a (z)"
             },
             "24": {
-                "ahmsz": "H:mm:ss (z)",
-                "ahms": "H:mm:ss",
-                "hmsz": "H:mm:ss (z)",
-                "hms": "H:mm:ss",
-                "ahmz": "H:mm (z)",
-                "ahm": "H:mm",
-                "hmz": "H:mm (z)",
+                "h": "H",
                 "ah": "H",
                 "hm": "H:mm",
-                "h": "H"
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm (z)",
+                "ahmz": "H:mm (z)",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss (z)",
+                "ahmsz": "H:mm:ss (z)"
             }
         }
     }

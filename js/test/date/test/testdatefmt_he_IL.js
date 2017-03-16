@@ -1215,7 +1215,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("ב30 שניות", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 30 שניות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1267,7 +1267,7 @@ function testDateFmtFormatRelativeWithinHourAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב10 דקות", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 10 דקות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1319,7 +1319,7 @@ function testDateFmtFormatRelativeWithinDayAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב4 שעות", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 4 שעות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1372,7 +1372,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב4 ימים", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 4 ימים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1425,7 +1425,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב9 שבועות", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 9 שבועות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1478,7 +1478,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב16 חודשים", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 16 חודשים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});
@@ -1531,7 +1531,7 @@ function testDateFmtFormatRelativeYearsAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ב14 שנים", fmt.formatRelative(reference, date));
+    assertEquals("בעוד 14 שנים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_he_IL() {
     var fmt = new DateFmt({locale: "he-IL", length: "full"});

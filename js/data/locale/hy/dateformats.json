@@ -3,75 +3,108 @@
         "order": "{date}, {time}",
         "date": {
             "dmwy": {
-                "s": "dd.MM.yy, E",
-                "m": "dd MMM, yyyyթ., EE",
+                "f": "yyyyթ. MMMM d, EEEE",
                 "l": "dd MMMM, yyyyթ., EEE",
-                "f": "yyyyթ. MMMM d, EEEE"
+                "m": "dd MMM, yyyyթ., EE",
+                "s": "dd.MM.yy, E"
             },
             "dmy": {
-                "s": "dd.MM.yy",
-                "m": "dd MMM, yyyyթ.",
+                "f": "yyyyթ. MMMM d",
                 "l": "dd MMMM, yyyyթ.",
-                "f": "yyyyթ. MMMM d"
+                "m": "dd MMM, yyyyթ.",
+                "s": "dd.MM.yy"
             },
             "dmw": {
-                "s": "dd.MM, E",
-                "m": "dd MMM, EE",
+                "f": "MMMM d, EEEE",
                 "l": "dd MMMM, EEE",
-                "f": "MMMM d, EEEE"
+                "m": "dd MMM, EE",
+                "s": "dd.MM, E"
             },
             "dm": {
-                "s": "dd.MM",
-                "m": "dd MMM",
+                "f": "MMMM d",
                 "l": "dd MMMM",
-                "f": "MMMM d"
+                "m": "dd MMM",
+                "s": "dd.MM"
             },
             "my": {
-                "s": "MM.yy",
-                "m": "LLL, yyyyթ.",
+                "f": "yyyyթ. LLLL",
                 "l": "LLLL, yyyyթ.",
-                "f": "yyyyթ. LLLL"
+                "m": "LLL, yyyyթ.",
+                "s": "MM.yy"
             },
             "dw": {
-                "s": "dd.E",
-                "m": "dd EE",
+                "f": "d, EEEE",
                 "l": "dd EEE",
-                "f": "d, EEEE"
+                "m": "dd EE",
+                "s": "dd.E"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
-                "s": "dd",
                 "f": "d",
                 "l": "dd",
-                "m": "dd"
+                "m": "dd",
+                "s": "dd"
             },
             "m": {
-                "s": "MM",
+                "f": "MMMM",
+                "l": "MMMM",
                 "m": "MMM",
-                "l": "MMMM"
+                "s": "MM"
             },
-            "n": {
-                "m": "N"
-            },
-            "l": {
-                "f": "LLLL",
-                "l": "LLLL",
-                "m": "LLL",
-                "s": "LL"
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             },
             "e": {
                 "f": "cccc",
                 "l": "ccc",
                 "m": "cc",
                 "s": "c"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
+                "ah": "h a",
+                "hm": "h:mm",
+                "ms": "mm:ss",
                 "ahm": "h:mm a",
-                "ah": "h a"
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
+            },
+            "24": {
+                "h": "H",
+                "m": "mm",
+                "s": "ss",
+                "ah": "H",
+                "hm": "H:mm",
+                "ms": "mm:ss",
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm z",
+                "ahmz": "H:mm z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "ahmsz": "H:mm:ss z"
             }
         },
         "range": {

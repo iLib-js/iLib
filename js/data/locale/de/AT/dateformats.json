@@ -2,31 +2,31 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "m": "EE, dd. MMM yyyy",
+                "f": "EEEE, dd. MMMM yyyy",
                 "l": "EEE, dd. MMMM yyyy",
-                "f": "EEEE, dd. MMMM yyyy"
+                "m": "EE, dd. MMM yyyy"
             },
             "dmy": {
-                "m": "dd. MMM yyyy",
+                "f": "dd. MMMM yyyy",
                 "l": "dd. MMMM yyyy",
-                "f": "dd. MMMM yyyy"
+                "m": "dd. MMM yyyy"
             },
             "dmw": {
-                "m": "EE, dd. MMM",
+                "f": "EEEE, dd. MMMM",
                 "l": "EEE, dd. MMMM",
-                "f": "EEEE, dd. MMMM"
+                "m": "EE, dd. MMM"
             },
             "dm": {
-                "m": "dd. MMM",
+                "f": "dd. MMMM",
                 "l": "dd. MMMM",
-                "f": "dd. MMMM"
+                "m": "dd. MMM"
             },
             "my": {
                 "m": "MMM yyyy"
             },
             "dw": {
-                "l": "EEE, dd",
-                "f": "EEEE, dd"
+                "f": "EEEE, dd",
+                "l": "EEE, dd"
             },
             "d": {
                 "f": "dd",

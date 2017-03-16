@@ -3,24 +3,24 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "E, d.M.yy.",
-                "m": "EE, dd.MM.yyyy."
+                "m": "EE, dd.MM.yyyy.",
+                "s": "E, d.M.yy."
             },
             "dmy": {
-                "s": "d.M.yy.",
-                "m": "dd.MM.yyyy."
+                "m": "dd.MM.yyyy.",
+                "s": "d.M.yy."
             },
             "dmw": {
-                "s": "E, d.M",
-                "m": "EE, dd.MM"
+                "m": "EE, dd.MM",
+                "s": "E, d.M"
             },
             "dm": {
-                "s": "d.M",
-                "m": "dd.MM"
+                "m": "dd.MM",
+                "s": "d.M"
             },
             "my": {
-                "s": "M.yy.",
-                "m": "MM.yyyy."
+                "m": "MM.yyyy.",
+                "s": "M.yy."
             },
             "dw": {
                 "s": "E, d"
@@ -29,22 +29,22 @@
                 "s": "d"
             },
             "m": {
-                "s": "M",
-                "m": "MM"
+                "m": "MM",
+                "s": "M"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "hh:mm:ss a z",
-                "ahms": "hh:mm:ss a",
-                "hmsz": "hh:mm:ss z",
-                "hms": "hh:mm:ss",
-                "ahmz": "hh:mm a z",
-                "ahm": "hh:mm a",
-                "hmz": "hh:mm z",
+                "h": "hh",
                 "ah": "hh a",
                 "hm": "hh:mm",
-                "h": "hh"
+                "ahm": "hh:mm a",
+                "hms": "hh:mm:ss",
+                "hmz": "hh:mm z",
+                "ahmz": "hh:mm a z",
+                "ahms": "hh:mm:ss a",
+                "hmsz": "hh:mm:ss z",
+                "ahmsz": "hh:mm:ss a z"
             }
         }
     }

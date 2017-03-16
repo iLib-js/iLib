@@ -21,7 +21,7 @@ var ilib = require("../lib/ilib.js");
 var NormString = require("../lib/NormString.js");
 var normtests = normtests || require("../test/strings-ext/test/normdata.js");
 
-function setUp() {
+if (ilib.isDynData()) {
 	NormString.init();
 }
 

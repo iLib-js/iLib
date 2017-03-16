@@ -1453,7 +1453,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 महीने में", fmt.formatRelative(reference, date));
+    assertEquals("16 माह में", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full"});
@@ -1479,7 +1479,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 महीने पहले", fmt.formatRelative(reference, date));
+    assertEquals("14 माह पहले", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_hi_IN() {
@@ -1506,7 +1506,7 @@ function testDateFmtFormatRelativeYearsAfter_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 साल में", fmt.formatRelative(reference, date));
+    assertEquals("14 वर्ष में", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full"});
@@ -1532,7 +1532,7 @@ function testDateFmtFormatRelativeYearsBefore_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 साल पहले", fmt.formatRelative(reference, date));
+    assertEquals("21 वर्ष पहले", fmt.formatRelative(reference, date));
 }
 
 
