@@ -537,7 +537,7 @@ function testDateFmtShortDateComponentsM_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("Th", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_vi_VN() {
@@ -691,7 +691,7 @@ function testDateFmtFullDateComponentsM_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("tháng 9", fmt.format(date));
+    assertEquals("Tháng 9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_vi_VN() {
@@ -1289,7 +1289,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_vi_VN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("trong 30 giây", fmt.formatRelative(reference, date));
+    assertEquals("trong 30 giây nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
@@ -1316,7 +1316,7 @@ function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 10 phút", fmt.formatRelative(reference, date));
+    assertEquals("trong 10 phút nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
@@ -1343,7 +1343,7 @@ function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 4 giờ", fmt.formatRelative(reference, date));
+    assertEquals("trong 4 giờ nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
@@ -1370,7 +1370,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 4 ngày", fmt.formatRelative(reference, date));
+    assertEquals("trong 4 ngày nữa", fmt.formatRelative(reference, date));
 }
 
 
@@ -1398,7 +1398,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 9 tuần", fmt.formatRelative(reference, date));
+    assertEquals("trong 9 tuần nữa", fmt.formatRelative(reference, date));
 }
 
 
@@ -1426,7 +1426,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 16 tháng", fmt.formatRelative(reference, date));
+    assertEquals("trong 16 tháng nữa", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_vi_VN() {
@@ -1453,7 +1453,7 @@ function testDateFmtFormatRelativeYearsAfter_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("trong 14 năm", fmt.formatRelative(reference, date));
+    assertEquals("trong 14 năm nữa", fmt.formatRelative(reference, date));
 }
 
 

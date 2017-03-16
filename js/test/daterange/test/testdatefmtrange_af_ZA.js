@@ -453,7 +453,7 @@ function testDateRngFmtAFRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 Nov 2011 – 31 Jan 2012", fmt.format(start, end));
+    assertEquals("20 Nov 2011 – 31 Jan. 2012", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "af-ZA", length: "long"});
@@ -550,7 +550,7 @@ function testDateRngFmtAFRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Nov 2011 – Jan 2014", fmt.format(start, end));
+    assertEquals("Nov 2011 – Jan. 2014", fmt.format(start, end));
 }
 function testDateRngFmtAFRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "af-ZA", length: "long"});

@@ -2,22 +2,22 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E፡ dd/MM/yy",
-                "m": "EE፡ dd-MMM-yyyy",
+                "f": "EEEE፡ dd MMMM መዓልቲ yyyy",
                 "l": "EEE፡ dd MMMM yyyy",
-                "f": "EEEE፡ dd MMMM መዓልቲ yyyy"
+                "m": "EE፡ dd-MMM-yyyy",
+                "s": "E፡ dd/MM/yy"
             },
             "dmw": {
-                "s": "E፡ dd/MM",
-                "m": "EE፡ dd-MMM",
+                "f": "EEEE፡ dd MMMM",
                 "l": "EEE፡ dd MMMM",
-                "f": "EEEE፡ dd MMMM"
+                "m": "EE፡ dd-MMM",
+                "s": "E፡ dd/MM"
             },
             "dw": {
-                "s": "E፡ dd",
-                "m": "EE፡ dd",
+                "f": "EEEE፡ dd",
                 "l": "EEE፡ dd",
-                "f": "EEEE፡ dd"
+                "m": "EE፡ dd",
+                "s": "E፡ dd"
             }
         }
     }

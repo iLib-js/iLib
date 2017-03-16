@@ -1513,7 +1513,8 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("خلال 16 شهر من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("خلال 16 شهرًا من الأيام", fmt.formatRelative(reference, date));
+                  
 };
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ar_SA() {
     var fmt = new DateFmt({
@@ -1542,7 +1543,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ar_SA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("قبل 14 شهر من الأيام", fmt.formatRelative(reference, date));
+    assertEquals("قبل 14 شهرًا من الأيام", fmt.formatRelative(reference, date));
 };
 
 function testDateFmtFormatRelativeYearsAfter_ar_SA() {

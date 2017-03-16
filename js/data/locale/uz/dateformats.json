@@ -1,82 +1,98 @@
 {
     "gregorian": {
+        "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "s": "E, yy/MM/dd",
-                "m": "EE, yyyy MMM d",
+                "f": "EEEE, yyyy MMMM dd",
                 "l": "EEE, yyyy MMMM d",
-                "f": "EEEE, yyyy MMMM dd"
+                "m": "EE, yyyy MMM d",
+                "s": "E, yy/MM/dd"
             },
             "dmy": {
-                "s": "yy/MM/dd",
-                "m": "yyyy MMM d",
+                "f": "yyyy MMMM dd",
                 "l": "yyyy MMMM d",
-                "f": "yyyy MMMM dd"
+                "m": "yyyy MMM d",
+                "s": "yy/MM/dd"
             },
             "dmw": {
-                "s": "E, MM/dd",
-                "m": "EE, MMM d",
+                "f": "EEEE, MMMM dd",
                 "l": "EEE, MMMM d",
-                "f": "EEEE, MMMM dd"
+                "m": "EE, MMM d",
+                "s": "E, MM/dd"
             },
             "dm": {
-                "s": "MM/dd",
-                "m": "MMM d",
+                "f": "MMMM dd",
                 "l": "MMMM d",
-                "f": "MMMM dd"
+                "m": "MMM d",
+                "s": "MM/dd"
             },
             "my": {
-                "s": "yy/MM",
-                "m": "yyyy MMM",
+                "f": "yyyy MMMM",
                 "l": "yyyy MMMM",
-                "f": "yyyy MMMM"
+                "m": "yyyy MMM",
+                "s": "yy/MM"
             },
             "dw": {
-                "s": "E, dd",
-                "m": "EE, d",
+                "f": "EEEE, dd",
                 "l": "EEE, d",
-                "f": "EEEE, dd"
+                "m": "EE, d",
+                "s": "E, dd"
             },
-            "y": {
-                "s": "yy",
-                "m": "yyyy",
-                "l": "yyyy",
-                "f": "yyyy"
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
-                "s": "dd",
-                "m": "d",
+                "f": "dd",
                 "l": "d",
-                "f": "dd"
+                "m": "d",
+                "s": "dd"
             },
             "m": {
-                "s": "MM",
+                "f": "MMMM",
+                "l": "MMMM",
                 "m": "MMM",
-                "l": "MMMM"
+                "s": "MM"
             },
-            "n": {
-                "m": "N"
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "ahmz": "h:mm a z",
+                "h": "h",
+                "m": "mm",
+                "s": "ss",
+                "ah": "h a",
+                "hm": "h:mm",
+                "ms": "mm:ss",
                 "ahm": "h:mm a",
-                "ah": "h a"
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
             },
             "24": {
-                "ahmsz": "HH:mm:ss z",
-                "ahms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hms": "HH:mm:ss",
-                "ahmz": "HH:mm z",
-                "ahm": "HH:mm",
-                "hmz": "HH:mm z",
+                "h": "HH",
+                "m": "mm",
+                "s": "ss",
                 "ah": "HH",
                 "hm": "HH:mm",
-                "h": "HH"
+                "ms": "mm:ss",
+                "ahm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmz": "HH:mm z",
+                "ahmz": "HH:mm z",
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
             }
         },
         "range": {

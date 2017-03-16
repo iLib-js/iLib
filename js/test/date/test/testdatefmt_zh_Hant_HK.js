@@ -1561,7 +1561,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_zh_Hant_HK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒后", fmt.formatRelative(reference, date));
+    assertEquals("30 秒後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1587,7 +1587,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_zh_Hant_HK() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30秒前", fmt.formatRelative(reference, date));
+    assertEquals("30 秒前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1613,7 +1613,7 @@ function testDateFmtFormatRelativeWithinHourAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分鐘后", fmt.formatRelative(reference, date));
+    assertEquals("10 分鐘後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1639,7 +1639,7 @@ function testDateFmtFormatRelativeWithinHourBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分鐘前", fmt.formatRelative(reference, date));
+    assertEquals("10 分鐘前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1665,7 +1665,7 @@ function testDateFmtFormatRelativeWithinDayAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小時后", fmt.formatRelative(reference, date));
+    assertEquals("4 小時後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1691,7 +1691,7 @@ function testDateFmtFormatRelativeWithinDayBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小時前", fmt.formatRelative(reference, date));
+    assertEquals("4 小時前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_zh_Hant_HK() {
@@ -1718,7 +1718,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4天后", fmt.formatRelative(reference, date));
+    assertEquals("4 日後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1744,7 +1744,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4天前", fmt.formatRelative(reference, date));
+    assertEquals("4 日前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_zh_Hant_HK() {
@@ -1771,7 +1771,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9週后", fmt.formatRelative(reference, date));
+    assertEquals("9星期後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1797,7 +1797,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9週前", fmt.formatRelative(reference, date));
+    assertEquals("9星期前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_zh_Hant_HK() {
@@ -1824,7 +1824,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16個月后", fmt.formatRelative(reference, date));
+    assertEquals("16 個月後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1850,7 +1850,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14個月前", fmt.formatRelative(reference, date));
+    assertEquals("14 個月前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_zh_Hant_HK() {
@@ -1877,7 +1877,7 @@ function testDateFmtFormatRelativeYearsAfter_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14年后", fmt.formatRelative(reference, date));
+    assertEquals("14 年後", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_zh_Hant_HK() {
     var fmt = new DateFmt({locale: "zh-Hant-HK", length: "full"});
@@ -1903,6 +1903,6 @@ function testDateFmtFormatRelativeYearsBefore_zh_Hant_HK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21年前", fmt.formatRelative(reference, date));
+    assertEquals("21 年前", fmt.formatRelative(reference, date));
 }
 

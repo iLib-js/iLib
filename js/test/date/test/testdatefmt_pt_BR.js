@@ -486,7 +486,7 @@ function testDateFmtBRShortDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("Se", fmt.format(date));
 }
 
 function testDateFmtBRShortDateComponentsN() {
@@ -640,7 +640,7 @@ function testDateFmtBRFullDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("setembro", fmt.format(date));
+    assertEquals("Setembro", fmt.format(date));
 }
 
 function testDateFmtBRFullDateComponentsD() {

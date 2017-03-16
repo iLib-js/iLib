@@ -3,65 +3,96 @@
         "order": "{date}, {time}",
         "date": {
             "dmwy": {
-                "s": "E ທີ d/M/yyyy",
-                "m": "EE ທີ d MMM yyyy",
+                "f": "EEEE ທີ d MMMM yyyy",
                 "l": "EEE ທີ d MMMM yyyy",
-                "f": "EEEE ທີ d MMMM yyyy"
+                "m": "EE ທີ d MMM yyyy",
+                "s": "E ທີ d/M/yyyy"
             },
             "dmy": {
-                "s": "d/M/yyyy",
+                "f": "d MMMM yyyy",
+                "l": "d MMMM yyyy",
                 "m": "d MMM yyyy",
-                "l": "d MMMM yyyy"
+                "s": "d/M/yyyy"
             },
             "dmw": {
-                "s": "E ທີ d/M",
-                "m": "EE ທີ d MMM",
+                "f": "EEEE ທີ d MMMM",
                 "l": "EEE ທີ d MMMM",
-                "f": "EEEE ທີ d MMMM"
+                "m": "EE ທີ d MMM",
+                "s": "E ທີ d/M"
             },
             "dm": {
+                "f": "d MMMM",
+                "l": "d MMMM",
                 "m": "d MMM",
-                "l": "d MMMM"
+                "s": "d/M"
             },
             "my": {
-                "s": "M/yyyy",
+                "f": "MMMM yyyy",
+                "l": "MMMM yyyy",
                 "m": "MMM yyyy",
-                "l": "MMMM yyyy"
+                "s": "M/yyyy"
             },
             "dw": {
-                "s": "E ທີ d",
-                "m": "EE ທີ d",
+                "f": "EEEE ທີ d",
                 "l": "EEE ທີ d",
-                "f": "EEEE ທີ d"
+                "m": "EE ທີ d",
+                "s": "E ທີ d"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
             },
             "d": {
-                "s": "d",
                 "f": "d",
                 "l": "d",
-                "m": "d"
+                "m": "d",
+                "s": "d"
             },
             "m": {
+                "f": "MMMM",
+                "l": "MMMM",
                 "m": "MMM",
-                "l": "MMMM"
+                "s": "M"
             },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
-            },
-            "n": {
-                "m": "N"
             }
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss ໂມງa z",
-                "ahms": "h:mm:ss ໂມງa",
-                "ahmz": "h:mm ໂມງa z",
-                "ahm": "h:mm ໂມງa",
+                "h": "h",
+                "m": "m",
+                "s": "ss",
                 "ah": "h ໂມງa",
-                "m": "m"
+                "hm": "h:mm",
+                "ms": "mm:ss",
+                "ahm": "h:mm ໂມງa",
+                "hms": "h:mm:ss",
+                "hmz": "h:mm z",
+                "ahmz": "h:mm ໂມງa z",
+                "ahms": "h:mm:ss ໂມງa",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss ໂມງa z"
             },
             "24": {
-                "m": "m"
+                "h": "H",
+                "m": "m",
+                "s": "ss",
+                "ah": "H",
+                "hm": "H:mm",
+                "ms": "mm:ss",
+                "ahm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmz": "H:mm z",
+                "ahmz": "H:mm z",
+                "ahms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "ahmsz": "H:mm:ss z"
             }
         },
         "range": {

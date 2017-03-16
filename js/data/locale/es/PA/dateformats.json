@@ -2,36 +2,36 @@
     "gregorian": {
         "date": {
             "dmwy": {
-                "s": "E, MM/dd/yy",
-                "m": "EE, MM/dd/yyyy"
+                "m": "EE, MM/dd/yyyy",
+                "s": "E, MM/dd/yy"
             },
             "dmy": {
-                "s": "MM/dd/yy",
-                "m": "MM/dd/yyyy"
+                "m": "MM/dd/yyyy",
+                "s": "MM/dd/yy"
             },
             "dmw": {
-                "s": "E, MM/dd",
-                "m": "EE, MM/dd"
+                "m": "EE, MM/dd",
+                "s": "E, MM/dd"
             },
             "dm": {
-                "s": "MM/dd",
-                "m": "MM/dd"
+                "m": "MM/dd",
+                "s": "MM/dd"
             },
             "my": {
-                "s": "MM/yy",
-                "m": "MM/yyyy"
+                "m": "MM/yyyy",
+                "s": "MM/yy"
             },
             "dw": {
-                "s": "E, dd",
-                "m": "EE, dd"
+                "m": "EE, dd",
+                "s": "E, dd"
             },
             "d": {
                 "m": "dd",
                 "s": "dd"
             },
             "m": {
-                "s": "MM",
-                "m": "MM"
+                "m": "MM",
+                "s": "MM"
             },
             "l": {
                 "m": "LL",

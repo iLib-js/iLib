@@ -37,7 +37,7 @@ function testDateFmtINSimpleShort_kn_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-	    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("9/29/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_kn_IN() {
@@ -54,7 +54,7 @@ function testDateFmtINSimpleMedium_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂ 29, 2011", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂ 29, 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleLong_kn_IN() {
@@ -71,7 +71,7 @@ function testDateFmtINSimpleLong_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleFull_kn_IN() {
@@ -88,7 +88,7 @@ function testDateFmtINSimpleFull_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeShort_kn_IN() {
@@ -105,7 +105,7 @@ function testDateFmtINSimpleTimeShort_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeShort_kn_IN1() {
@@ -122,7 +122,7 @@ function testDateFmtINSimpleTimeShort_kn_IN1() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeMedium_kn_IN() {
@@ -139,7 +139,7 @@ function testDateFmtINSimpleTimeMedium_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeLong_kn_IN() {
@@ -156,7 +156,7 @@ function testDateFmtINSimpleTimeLong_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINSimpleTimeFull_kn_IN() {
@@ -173,7 +173,7 @@ function testDateFmtINSimpleTimeFull_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleShort_kn_IN() {
@@ -190,7 +190,7 @@ function testDateFmtINDateTimeSimpleShort_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_kn_IN() {
@@ -207,7 +207,7 @@ function testDateFmtINDateTimeSimpleMedium_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleLong_kn_IN() {
@@ -224,7 +224,7 @@ function testDateFmtINDateTimeSimpleLong_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_kn_IN() {
@@ -241,7 +241,7 @@ function testDateFmtINDateTimeSimpleFull_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 
@@ -414,7 +414,7 @@ function testDateFmtINTypeDate_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("9/29/11", fmt.format(date));
 }
 
 function testDateFmtINTypeTime_kn_IN() {
@@ -431,7 +431,7 @@ function testDateFmtINTypeTime_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINTypeDateTime_kn_IN() {
@@ -448,7 +448,7 @@ function testDateFmtINTypeDateTime_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 
@@ -483,7 +483,7 @@ function testDateFmtINShortDateComponentsM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsN_kn_IN() {
@@ -500,7 +500,7 @@ function testDateFmtINShortDateComponentsN_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆ", fmt.format(date));
+    assertEquals("ಸೆ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_kn_IN() {
@@ -534,7 +534,7 @@ function testDateFmtINShortDateComponentsDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9/29", fmt.format(date));
+    assertEquals("9/29", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_kn_IN() {
@@ -568,7 +568,7 @@ function testDateFmtINShortDateComponentsDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("9/29/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_kn_IN() {
@@ -585,7 +585,7 @@ function testDateFmtINShortDateComponentsWDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಗು, 9/29", fmt.format(date));
+    assertEquals("ಗು, 9/29", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_kn_IN() {
@@ -637,7 +637,7 @@ function testDateFmtINFullDateComponentsM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsD_kn_IN() {
@@ -671,7 +671,7 @@ function testDateFmtINFullDateComponentsDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsMY_kn_IN() {
@@ -688,7 +688,7 @@ function testDateFmtINFullDateComponentsMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್, 2011", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್, 2011", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsDMY_kn_IN() {
@@ -705,7 +705,7 @@ function testDateFmtINFullDateComponentsDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
+    assertEquals("ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDM_kn_IN() {
@@ -722,7 +722,7 @@ function testDateFmtINFullDateComponentsWDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಗುರುವಾರ, ಸೆಪ್ಟೆಂಬರ್ 29", fmt.format(date));
+    assertEquals("ಗುರುವಾರ, ಸೆಪ್ಟೆಂಬರ್ 29", fmt.format(date));
 }
 
 function testDateFmtINFullDateComponentsWDMY_kn_IN() {
@@ -739,7 +739,7 @@ function testDateFmtINFullDateComponentsWDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-	    assertEquals("ಗುರುವಾರ, ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
+    assertEquals("ಗುರುವಾರ, ಸೆಪ್ಟೆಂಬರ್ 29, 2011", fmt.format(date));
 }
 
 
@@ -791,7 +791,7 @@ function testDateFmtINShortTimeComponentsH_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01", fmt.format(date));
+    assertEquals("01", fmt.format(date));
 }
 
 
@@ -809,7 +809,7 @@ function testDateFmtINShortTimeComponentsHM_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45", fmt.format(date));
+    assertEquals("01:45", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS_kn_IN() {
@@ -826,7 +826,7 @@ function testDateFmtINShortTimeComponentsHMS_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37", fmt.format(date));
+    assertEquals("01:45:37", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA_kn_IN() {
@@ -843,7 +843,7 @@ function testDateFmtINShortTimeComponentsHMA_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMZ_kn_IN() {
@@ -864,7 +864,7 @@ function testDateFmtINShortTimeComponentsHMZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMAZ_kn_IN() {
@@ -886,7 +886,7 @@ function testDateFmtINShortTimeComponentsHMAZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSA_kn_IN() {
@@ -903,7 +903,7 @@ function testDateFmtINShortTimeComponentsHMSA_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSZ_kn_IN() {
@@ -925,7 +925,7 @@ function testDateFmtINShortTimeComponentsHMSZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSAZ_kn_IN() {
@@ -947,7 +947,7 @@ function testDateFmtINShortTimeComponentsHMSAZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 
@@ -999,7 +999,7 @@ function testDateFmtINFullTimeComponentsH_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01", fmt.format(date));
+    assertEquals("01", fmt.format(date));
 }
 
 
@@ -1018,7 +1018,7 @@ function testDateFmtINFullTimeComponentsHM_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMS_kn_IN() {
@@ -1035,7 +1035,7 @@ function testDateFmtINFullTimeComponentsHMS_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMA_kn_IN() {
@@ -1052,7 +1052,7 @@ function testDateFmtINFullTimeComponentsHMA_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 
@@ -1077,7 +1077,7 @@ function testDateFmtINFullTimeComponentsHMAZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSA_kn_IN() {
@@ -1094,7 +1094,7 @@ function testDateFmtINFullTimeComponentsHMSA_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSZ_kn_IN() {
@@ -1117,7 +1117,7 @@ function testDateFmtINFullTimeComponentsHMSZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSAZ_kn_IN() {
@@ -1140,7 +1140,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtINWithTimeZoneAndNoDST_kn_IN() {
@@ -1163,7 +1163,7 @@ function testDateFmtINWithTimeZoneAndNoDST_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
+    assertEquals("01:45:37 ಅಪರಾಹ್ನ IST", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWitknnMinuteAfter_kn_IN() {
@@ -1190,7 +1190,7 @@ function testDateFmtFormatRelativeWitknnMinuteAfter_kn_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 ಸೆಕೆಂಡುಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("30 ಸೆಕೆಂಡುಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnMinuteBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1216,7 +1216,7 @@ function testDateFmtFormatRelativeWitknnMinuteBefore_kn_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 ಸೆಕೆಂಡುಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("30 ಸೆಕೆಂಡುಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnHourAfter_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1242,7 +1242,7 @@ function testDateFmtFormatRelativeWitknnHourAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 ನಿಮಿಷಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("10 ನಿಮಿಷಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnHourBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1268,7 +1268,7 @@ function testDateFmtFormatRelativeWitknnHourBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 ನಿಮಿಷಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("10 ನಿಮಿಷಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnDayAfter_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1294,7 +1294,7 @@ function testDateFmtFormatRelativeWitknnDayAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ಗಂಟೆಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("4 ಗಂಟೆಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnDayBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1320,7 +1320,7 @@ function testDateFmtFormatRelativeWitknnDayBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ಗಂಟೆಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("4 ಗಂಟೆಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnFortnightAfter_kn_IN() {
@@ -1347,7 +1347,7 @@ function testDateFmtFormatRelativeWitknnFortnightAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ದಿನಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("4 ದಿನಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnFortnightBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1373,7 +1373,7 @@ function testDateFmtFormatRelativeWitknnFortnightBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ದಿನಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("4 ದಿನಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnQuarterAfter_kn_IN() {
@@ -1400,7 +1400,7 @@ function testDateFmtFormatRelativeWitknnQuarterAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 ವಾರಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("9 ವಾರಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnQuarterBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1426,7 +1426,7 @@ function testDateFmtFormatRelativeWitknnQuarterBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 ವಾರಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("9 ವಾರಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnTwoYearsAfter_kn_IN() {
@@ -1453,7 +1453,7 @@ function testDateFmtFormatRelativeWitknnTwoYearsAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 ತಿಂಗಳುಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("16 ತಿಂಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnTwoYearsBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1479,7 +1479,7 @@ function testDateFmtFormatRelativeWitknnTwoYearsBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 ತಿಂಗಳುಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("14 ತಿಂಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_kn_IN() {
@@ -1506,7 +1506,7 @@ function testDateFmtFormatRelativeYearsAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 ವರ್ಷಗಳು ನಂತರ", fmt.formatRelative(reference, date));
+    assertEquals("14 ವರ್ಷಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_kn_IN() {
     var fmt = new ilib.DateFmt({locale: "kn-IN", length: "full"});
@@ -1532,7 +1532,7 @@ function testDateFmtFormatRelativeYearsBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 ವರ್ಷಗಳು ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("21 ವರ್ಷಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 

@@ -785,7 +785,7 @@ function testDateFmtShortDateComponentsWDM_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("So, 09-29", fmt.format(date));
+    assertEquals("S, 09-29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_af_ZA() {
@@ -802,7 +802,7 @@ function testDateFmtShortDateComponentsWDMY_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("So, 2554-09-29", fmt.format(date));
+    assertEquals("S, 2554-09-29", fmt.format(date));
 }
 
 
@@ -1439,7 +1439,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_af_ZA() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("in 30 sekondes", fmt.formatRelative(reference, date));
+    assertEquals("oor 30 sekondes", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1491,7 +1491,7 @@ function testDateFmtFormatRelativeWithinHourAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 10 minute", fmt.formatRelative(reference, date));
+    assertEquals("oor 10 minute", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1543,7 +1543,7 @@ function testDateFmtFormatRelativeWithinDayAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 uur", fmt.formatRelative(reference, date));
+    assertEquals("oor 4 uur", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1596,7 +1596,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 dae", fmt.formatRelative(reference, date));
+    assertEquals("oor 4 dae", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1649,7 +1649,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 9 weke", fmt.formatRelative(reference, date));
+    assertEquals("oor 9 weke", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1702,7 +1702,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 16 maande", fmt.formatRelative(reference, date));
+    assertEquals("oor 16 maande", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
@@ -1755,7 +1755,7 @@ function testDateFmtFormatRelativeYearsAfter_af_ZA() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 14 jaar", fmt.formatRelative(reference, date));
+    assertEquals("oor 14 jaar", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_af_ZA() {
     var fmt = new ilib.DateFmt({locale: "af-ZA", calendar: "gregorian", length: "full"});
