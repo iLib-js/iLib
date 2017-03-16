@@ -677,7 +677,7 @@ limitations under the License.
 		<copy todir="${build.export}/package">
 			<fileset dir="${build.base}">
 				<include name="package.json"/>
-				<include name="README.md"/>
+				<include name="../README.md"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/package/lib"/>
