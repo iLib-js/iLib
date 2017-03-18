@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 build.xml - build the javascript parts
-
 Copyright © 2012-2015, JEDLSoft
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
 http://www.apache.org/licenses/LICENSE-2.0
-
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
@@ -24,22 +19,18 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- properties                                                          -->
 	<!-- =================================================================== -->
-
 	<!-- Give user a chance to override properties without editing this file -->
 	<!-- (and without typing -D each time it compiles it)                    -->
 	<property file="../build.properties"/>
 	<property file="build.properties"/>
-
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
-
 	<property name="build.dist"						value="${build.base}/../dist"/>
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.demo"						value="${build.base}/../doc/demo"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
-
 	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
@@ -54,11 +45,8 @@ limitations under the License.
 	<property name="build.locale"					value="${build.base}/locale"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
-
 	<property name="build.bin"						value="${build.base}/../bin"/>
-
 	<property name="jar.ilib"					    value="ilib.jar"/>
-
 	<!-- =================================================================== -->
 	<!-- Class paths                                                         -->
 	<!-- =================================================================== -->
@@ -68,21 +56,17 @@ limitations under the License.
 		</fileset>
 		<pathelement path="${build.config}"/>
 	</path>
-
 	<path id="project.class.path.release">
 		<pathelement path="${build.classes.release}"/>
 		<path refid="project.class.path.base"/>
 	</path>
-
 	<path id="project.class.path.debug">
 		<pathelement path="${build.classes.debug}"/>
 		<path refid="project.class.path.base"/>
 	</path>
-
 	<path id="project.classpath.junit">
 		<path refid="project.class.path.debug"/>
 	</path>
-
 	<path id="project.classpath.jsa">
 		<fileset dir="../java/output/release">
 			<include name="*.jar"/>
@@ -92,16 +76,13 @@ limitations under the License.
 		</fileset>
 		<pathelement path="../java/config"/>
 	</path>
-
 	<taskdef name="jscomp"
 		classname="com.google.javascript.jscomp.ant.CompileTask"
 		classpath="${CLOSURECOMP}/compiler.jar"/>
-
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
 	<target name="all" depends="export,doc,demo" description="Build everything. This is the target that the build should run."/>
-
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
@@ -117,13 +98,11 @@ limitations under the License.
 		<delete file="${build.base}/package.json"/>
 		<delete dir="${build.locale}"/>
 	</target>
-
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
 	</target>
-
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
@@ -147,13 +126,11 @@ limitations under the License.
 			</java>
 		</sequential>
 	</macrodef>
-
 	<target name="testilib.web.async" description="test whether or not the ilib-web-async.js file needs to be rebuilt">
 		<uptodate property="core.ilib.web.async.not.needed" targetfile="${build.output.js}/ilib-web-async.js">
 			<srcfiles dir="${build.lib}" includes="Loader.js,Path.js,WebLoader.js,ilib-web-async-inc.js"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.web.async" depends="prepare,testilib.web.async" unless="core.ilib.web.async.not.needed" description="assembles the ilib-web-async.js file">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-web-async.js"
@@ -173,7 +150,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
 		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/ilib-core-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -181,7 +157,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
-
 	<target name="assemble.core" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-core.js"
@@ -201,7 +176,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.datesonly" description="test whether or not the ilib-datesonly single file needs to be rebuilt">
 		<uptodate property="datesonly.ilib.datesonly.not.needed" targetfile="${build.output.js}/ilib-datesonly-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -209,7 +183,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
-
 	<target name="assemble.datesonly" depends="prepare,gen.manifest.locale,testilib.datesonly" unless="datesonly.ilib.datesonly.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-datesonly.js"
@@ -229,7 +202,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.standard" description="test whether or not the ilib-standard single file needs to be rebuilt">
 		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.output.js}/ilib-standard-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -237,7 +209,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
-
 	<target name="assemble.standard" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-standard.js"
@@ -257,7 +228,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
 		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/ilib-full-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -265,7 +235,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
-
 	<target name="assemble.full" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-full.js"
@@ -285,7 +254,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilibut.maps" description="test whether or not the ilib-ut-maps single file needs to be rebuilt">
 		<uptodate property="ilib-ut-maps.not.needed" targetfile="${build.output.js}/ilib-ut-maps-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/charmaps/*.js,Charset.js,Charmap*.js,ISO2022.js,UTF*.js,ilib.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -293,7 +261,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.unittest.maps" depends="prepare,gen.manifest.locale,testilibut.maps" unless="ilib-ut-maps.not.needed" description="assembles only the locales needed for the maps unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut-maps.js"
@@ -313,7 +280,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.dyn.ut.maps" description="test whether or not the ilib-dyn-ut-maps single file needs to be rebuilt">
 		<uptodate property="ilib-dyn-ut-maps.not.needed" targetfile="${build.output.js}/ilib-ut-maps-dyn.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -321,7 +287,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.dyndata.unittest.maps" depends="prepare,gen.manifest.locale,testilib.dyn.ut.maps" unless="ilib-dyn-ut-maps.not.needed" description="assembles only the locales needed for the maps unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut-maps-dyn.js"
@@ -341,9 +306,7 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="assemble.dyncode.unittest.maps" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the maps unit tests"/>
-
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -351,7 +314,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut.js"
@@ -371,7 +333,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.dyn.ut" description="test whether or not the ilib-dyn-ut single file needs to be rebuilt">
 		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.output.js}/ilib-ut-dyn.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -379,7 +340,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,assemble.dyndata.unittest.maps,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut-dyn.js"
@@ -399,9 +359,7 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
-
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -409,7 +367,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.demo" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-demo.js"
@@ -429,7 +386,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.dyn.standard" description="test whether or not the standard-sized ilib file needs to be rebuilt">
 		<uptodate property="ilib.dyn.standard.not.needed" targetfile="${build.output.js}/ilib-standard-dyn-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -437,7 +393,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.dyndata.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-standard-dyn.js"
@@ -457,7 +412,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.dyn.core" description="test whether or not the ilib-core file needs to be rebuilt">
 		<uptodate property="ilib.dyn.core.not.needed" targetfile="${build.output.js}/ilib-core-dyn-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -465,7 +419,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.dyndata.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-core-dyn.js"
@@ -485,7 +438,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="testilib.dyn.full" description="test whether or not the ilib-full file needs to be rebuilt">
 		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.output.js}/ilib-full-dyn-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
@@ -493,7 +445,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.dyndata.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-full-dyn.js"
@@ -513,7 +464,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale,install.uglify" description="compresses/minifies the dynamic load code files">
 		<!-- handle ilib.js as a special case so we can replace the version number in it -->
 		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
@@ -541,7 +491,6 @@ limitations under the License.
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
 		</exec>
-
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false">
 			<arg value="${uglify.location}/bin/uglifyjs"/>
@@ -574,7 +523,6 @@ limitations under the License.
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>
-
 	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
 		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib.js,ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
@@ -582,7 +530,6 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-lg.js"
@@ -619,7 +566,6 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-
 	<target name="export" depends="assemble.web.async,assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
@@ -677,7 +623,7 @@ limitations under the License.
 		<copy todir="${build.export}/package">
 			<fileset dir="${build.base}">
 				<include name="package.json"/>
-				<include name="README.md"/>
+				<include name="../README.md"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/package/lib"/>
@@ -703,7 +649,6 @@ limitations under the License.
 			</fileset>
 		</copy>
 	</target>
-
 	<target name="demo" depends="assemble.demo" description="Copy all things needed for the demo site to the right place">
 		<copy todir="${build.demo}/scripts">
 			<fileset dir="${build.output.js}">
@@ -721,7 +666,6 @@ limitations under the License.
 			</fileset>
 		</tar>
 	</target>
-
 	<macrodef name="runtests">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -752,7 +696,6 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</macrodef>
-
 	<macrodef name="run">
         <attribute name="script"/>
         <attribute name="args"/>
@@ -772,7 +715,6 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</macrodef>
-
 	<target depends="assemble.dyncode.unittest" name="test.util">
 		<runtests suite="util" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
@@ -830,7 +772,6 @@ limitations under the License.
 	<target depends="assemble.dyncode.unittest" name="test.collate">
 		<runtests suite="collate" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<macrodef name="runallsuites">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -862,55 +803,42 @@ limitations under the License.
 			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
 		</sequential>
 	</macrodef>
-
 	<target depends="assemble.unittest" name="test.assembled.compiled">
 		<runallsuites assembly="assembled" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
 		<runallsuites assembly="assembled" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.uncompiled">
 		<runallsuites assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.compiled">
 		<runallsuites assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
 	</target>
-
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled">
 		<runallsuites assembly="dynamicdata" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled">
 		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target depends="assemble.unittest" name="test.assembled.compiled.legacy">
 		<runallsuites assembly="assembled" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target depends="assemble.unittest" name="test.assembled.uncompiled.legacy">
 		<runallsuites assembly="assembled" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.uncompiled.legacy">
 		<runallsuites assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.compiled.legacy">
 		<runallsuites assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled.legacy">
 		<runallsuites assembly="dynamicdata" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled.legacy">
 		<runallsuites assembly="dynamicdata" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="bench.core" depends="assemble.unittest,assemble.dyndata.unittest"
 			description="run the benchmarking tests">
 		<echo>Benchmarking the code</echo>
@@ -918,22 +846,18 @@ limitations under the License.
 			<arg line="benchSuite.js"/>
 		</exec>
 	</target>
-
 	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled,test.assembled.compiled.legacy,test.assembled.uncompiled.legacy,test.dynamicdata.compiled.legacy,test.dynamicdata.uncompiled.legacy,test.dynamic.compiled.legacy,test.dynamic.uncompiled.legacy"
 			description="run the tests">
 	</target>
-
 	<target name="core.junit.report" description="Generate a report on the junit tests">
 		<mkdir dir="${build.output.reports}/junit"/>
 	</target>
-
 	<!-- target name="test" depends="test.core"/ -->
 	<target name="test.only" depends="test.core" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
 	<target name="bench" depends="bench.core" description="Run all benchmark tests and build all benchmark reports"/>
-
 	<target name="testjsdoc" description="test whether or not the jsdocs need to be rebuilt">
 		<uptodate
                 property="core.jsdoc.not.needed"
@@ -941,7 +865,6 @@ limitations under the License.
 			<srcfiles dir="${build.lib}" includes="**/*.js"/>
 		</uptodate>
 	</target>
-
 	<target name="doc"
             depends="assemble.dyndata.full,testjsdoc"
             description="creates jsdoc for all local java files in this project"
@@ -961,13 +884,11 @@ limitations under the License.
 			<arg value="${build.output.js}/ilib-full-dyn.js"/>
 		</java>
 	</target>
-
 	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
 		<uptodate property="info.not.needed" targetFile="${build.locale.src}/localeinfo.stamp">
 			<srcfiles dir="${build.locale.src}" includes="**/*.jf"/>
 		</uptodate>
 	</target>
-
 	<target name="geninfo"
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
@@ -983,13 +904,11 @@ limitations under the License.
 		</exec>
 		<touch file="${build.locale.src}/localeinfo.stamp"/>
 	</target>
-
 	<target name="testlocalejson" description="test whether or not the json files need to compressed">
 		<uptodate property="json.compress.not.needed" targetFile="${build.locale.src}/jsoncompress.stamp">
 			<srcfiles dir="${build.locale.src}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="compress.locale.json"
 			depends="geninfo,testlocalejson"
 			description="compresses the json files"
@@ -1011,13 +930,11 @@ limitations under the License.
 		</exec>
 		<touch file="${build.locale.src}/jsoncompress.stamp"/>
 	</target>
-
 	<target name="test.locale.manifest" description="test whether or not the locale manifest needs to be regenerated">
 		<uptodate property="locale.manifest.not.needed" targetFile="${build.locale}/ilibmanifest.json">
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-
 	<target name="gen.manifest.locale"
 			depends="compress.locale.json,test.locale.manifest"
 			description="produces the ilibmanifest.json file"
@@ -1032,7 +949,6 @@ limitations under the License.
 			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
 	</target>
-
 	<target name="teststubs" description="test whether or not the ilib-stubs.js file needs to be rebuilt">
 		<uptodate
                 property="stubs.not.needed"
@@ -1040,7 +956,6 @@ limitations under the License.
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="output/**,ilib-*.js,**/test/**,runner.js" />
 		</uptodate>
 	</target>
-
 	<target name="gen.stubs"
 			depends="teststubs,assemble.dyndata.full"
 			description="Generate the ilib function and class stubs file"
@@ -1049,7 +964,6 @@ limitations under the License.
 			script="${build.tools.build}/mkstubs.js"
 			args="${build.output.js}/ilib-full-dyn.js"/>
 	</target>
-
 	<target name="testpackagejson" description="test whether or not the package.json file needs to be rebuilt">
 		<uptodate
                 property="package.json.not.needed"
@@ -1058,7 +972,6 @@ limitations under the License.
 			<srcfiles dir="${build.base}/.." file="build.properties" />
 		</uptodate>
 	</target>
-
 	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed"
 			description="Update the package.json file to insert the version number into it automatically.">
 		<copy file="${build.base}/package.json.template" toFile="${build.base}/package.json">
@@ -1067,7 +980,6 @@ limitations under the License.
 			</filterset>
 		</copy>
 	</target>
-
 	<macrodef name="npm">
         <attribute name="command"/>
         <attribute name="args"/>
@@ -1087,11 +999,9 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</macrodef>
-
 	<target name="npm.set.parseable.true">
 		<npm command="config" args="set parseable true" dir="${build.base}"/>
 	</target>
-
 	<target name="testuglifyinstalled" depends="npm.set.parseable.true">
     	<echo>Testing if uglify is already installed.</echo>
     	<exec osfamily="unix" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
@@ -1111,13 +1021,11 @@ limitations under the License.
     	</condition>
     	<echo>Uglify installed: ${uglify.installed} at location ${uglify.location}</echo>
     </target>
-
 	<target name="install.uglify" unless="uglify.installed" depends="testuglifyinstalled">
 		<echo>Installing uglify</echo>
 		<npm command="install" args="uglify-js" dir="${build.base}"/>
 		<echo>Done.</echo>
 	</target>
-
 	<target name="location.trireme">
     	<exec osfamily="unix" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
     		<arg value="-c"/>
@@ -1132,7 +1040,6 @@ limitations under the License.
 			<arg value="npm list trireme | tail -1"/>
 		</exec>
 	</target>
-
 	<target name="testtriremeinstalled" depends="npm.set.parseable.true,location.trireme">
     	<condition property="trireme.installed">
     		<and>
@@ -1142,13 +1049,11 @@ limitations under the License.
     	</condition>
     	<echo>trireme installed: ${trireme.installed} at location ${trireme.location}</echo>
     </target>
-
 	<target name="install.trireme" unless="trireme.installed" depends="testtriremeinstalled">
 		<echo>Installing trireme</echo>
 		<npm command="install" args="trireme" dir="${build.base}"/>
 		<echo>Done.</echo>
 	</target>
-
 	<macrodef name="runtests.rhino">
 		<attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -1177,7 +1082,6 @@ limitations under the License.
 			</java>
 		</sequential>
 	</macrodef>
-
 	<macrodef name="runallsuites.rhino">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -1209,65 +1113,50 @@ limitations under the License.
 			<runtests.rhino suite="collate" assembly="@{assembly}" compilation="@{compilation}" set="@{set}" failquit="@{failquit}"/>
 		</sequential>
 	</macrodef>
-
 	<target name="test.assembled.compiled.rhino" depends="assemble.unittest,location.trireme">
 		<runallsuites.rhino assembly="assembled" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.assembled.uncompiled.rhino" depends="assemble.unittest,location.trireme">
 		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.uncompiled.rhino" depends="location.trireme,prepare,gen.manifest.locale">
 		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.compiled.rhino" depends="location.trireme,prepare,gen.manifest.locale">
 		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamicdata.compiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
 		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.dynamicdata.uncompiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
 		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.assembled.compiled.legacy.rhino" depends="assemble.unittest,location.trireme">
 		<runallsuites.rhino assembly="assembled" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.assembled.uncompiled.legacy.rhino" depends="assemble.unittest,location.trireme">
 		<runallsuites.rhino assembly="assembled" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.uncompiled.legacy.rhino" depends="location.trireme,prepare,gen.manifest.locale">
 		<runallsuites.rhino assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamic.compiled.legacy.rhino" depends="location.trireme,prepare,gen.manifest.locale">
 		<runallsuites.rhino assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamicdata.compiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
 		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.dynamicdata.uncompiled.legacy.rhino" depends="assemble.dyndata.unittest,location.trireme">
 		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" set="legacy" failquit="true"/>
 	</target>
-
 	<target name="test.calendar.rhino" depends="location.trireme,gen.manifest.locale">
 		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.units.rhino" depends="location.trireme,gen.manifest.locale">
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="legacy" failquit="true"/>
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
-
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino,test.assembled.compiled.legacy.rhino,test.assembled.uncompiled.legacy.rhino,test.dynamic.uncompiled.legacy.rhino,test.dynamic.compiled.legacy.rhino,test.dynamicdata.compiled.legacy.rhino,test.dynamicdata.uncompiled.legacy.rhino">
 	</target>
 </project>

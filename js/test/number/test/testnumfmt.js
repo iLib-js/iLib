@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,7 +202,7 @@ function testNumFmtNumberStyleStandard() {
 
 function testNumFmtNumberFormatStandardWithMultiGroups() {
     var fmt = new NumFmt({
-    	style: "standard"
+        style: "standard"
     });
     
     assertNotNull(fmt);
@@ -212,7 +212,7 @@ function testNumFmtNumberFormatStandardWithMultiGroups() {
 
 function testNumFmtNumberFormatWithMultiGroupsNegative() {
     var fmt = new NumFmt({
-    	style: "standard"
+        style: "standard"
     });
     
     assertNotNull(fmt);
@@ -437,7 +437,7 @@ function testNumFmtNumberStyleNogroupingFloat() {
 
 function testNumFmtNumberStyleNogroupingWithLocale() {
     var fmt = new NumFmt({
-    	locale: "fa-IR",
+        locale: "fa-IR",
         style: "nogrouping",
         useNative: false
     });
@@ -449,7 +449,7 @@ function testNumFmtNumberStyleNogroupingWithLocale() {
 
 function testNumFmtNumberStyleNogroupingWithNative() {
     var fmt = new NumFmt({
-    	locale: "fa-IR",
+        locale: "fa-IR",
         style: "nogrouping",
         useNative: true
     });
@@ -1379,15 +1379,15 @@ function testNumFmtCurrencyNoCurrencyDefaultForLocale() {
     var fmt;
     
     try {
-    	fmt = new NumFmt({
-	        type: "currency",
-	        locale: "ja-JP"
-	    });
+        fmt = new NumFmt({
+            type: "currency",
+            locale: "ja-JP"
+        });
 
-    	fail();
+        fail();
     } catch (e) {
-    	assertUndefined(fmt);
-    	assertEquals("A currency property is required in the options to the number formatter constructor when the type property is set to currency.", e);
+        assertUndefined(fmt);
+        assertEquals("A currency property is required in the options to the number formatter constructor when the type property is set to currency.", e);
     }
 }
 
@@ -1576,7 +1576,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hi_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "hi-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1650,7 +1650,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_bn_IN() {
 
 function testNumFmtPercentageFormatRegular_bn_IN() {
     var fmt = new NumFmt({
-	locale: "bn-IN",
+    locale: "bn-IN",
         type: "percentage"
     });
     
@@ -1703,7 +1703,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mr_IN() {
         type: "currency",
         locale: "mr-IN",
         useNative: false,
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1715,7 +1715,7 @@ function testNumFmtCurrencyFormatNativeCorrectCurrencyForLocale_mr_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "mr-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1739,7 +1739,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN() {
 
 function testNumFmtPercentageFormatRegular_mr_IN() {
     var fmt = new NumFmt({
-	locale: "mr-IN",
+    locale: "mr-IN",
         type: "percentage"
     });
     
@@ -1750,8 +1750,8 @@ function testNumFmtPercentageFormatRegular_mr_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_mr_IN() {
     var fmt = new NumFmt({
-	locale: "mr-IN",
-	useNative: false,
+    locale: "mr-IN",
+    useNative: false,
         type: "percentage"
     });
     
@@ -1777,7 +1777,7 @@ function testNumFmt_kn_IN() {
 function testNumFmtNative_kn_IN() {
     var fmt = new NumFmt({
         locale: "kn-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -1790,8 +1790,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_kn_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "kn-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1803,8 +1803,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_kn_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "kn-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1826,8 +1826,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kn_IN() {
 
 function testNumFmtPercentageFormatRegular_kn_IN() {
     var fmt = new NumFmt({
-	locale: "kn-IN",
-	useNative: true,
+    locale: "kn-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -1839,7 +1839,7 @@ function testNumFmtPercentageFormatRegular_kn_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_kn_IN() {
     var fmt = new NumFmt({
-	locale: "kn-IN",
+    locale: "kn-IN",
         type: "percentage"
     });
     
@@ -1865,7 +1865,7 @@ function testNumFmt_gu_IN() {
 function testNumFmtNative_gu_IN() {
     var fmt = new NumFmt({
         locale: "gu-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -1878,8 +1878,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_gu_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "gu-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1891,8 +1891,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_gu_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "gu-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1916,8 +1916,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_gu_IN() {
 
 function testNumFmtPercentageFormatRegular_gu_IN() {
     var fmt = new NumFmt({
-	locale: "gu-IN",
-	useNative: true,
+    locale: "gu-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -1929,7 +1929,7 @@ function testNumFmtPercentageFormatRegular_gu_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_gu_IN() {
     var fmt = new NumFmt({
-	locale: "gu-IN",
+    locale: "gu-IN",
         type: "percentage"
     });
     
@@ -1969,7 +1969,7 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ta_IN1() {
         type: "currency",
         locale: "ta-IN",
         useNative: true,
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1981,8 +1981,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ta_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ta-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -1994,7 +1994,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ta_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ta-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2005,8 +2005,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ta_IN() {
 
 function testNumFmtPercentageFormatRegular_ta_IN() {
     var fmt = new NumFmt({
-	locale: "ta-IN",
-	useNative: true,
+    locale: "ta-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2018,7 +2018,7 @@ function testNumFmtPercentageFormatRegular_ta_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_ta_IN() {
     var fmt = new NumFmt({
-	locale: "ta-IN",
+    locale: "ta-IN",
         type: "percentage"
     });
     
@@ -2044,7 +2044,7 @@ function testNumFmt_or_IN() {
 function testNumFmtNative_or_IN() {
     var fmt = new NumFmt({
         locale: "or-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2057,8 +2057,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_or_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2070,8 +2070,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_or_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2084,7 +2084,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "or-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2095,8 +2095,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_or_IN() {
 
 function testNumFmtPercentageFormatRegular_or_IN() {
     var fmt = new NumFmt({
-	locale: "or-IN",
-	useNative: true,
+    locale: "or-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2108,7 +2108,7 @@ function testNumFmtPercentageFormatRegular_or_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_or_IN() {
     var fmt = new NumFmt({
-	locale: "or-IN",
+    locale: "or-IN",
         type: "percentage"
     });
     
@@ -2133,8 +2133,8 @@ function testNumFmt_ha_Latn_NG() {
 function testNumFmtCurrencyFormatCurrencyForLocale_ha_Latn_NG1() {
     var fmt = new NumFmt({
         type: "currency",
-        locale: "ha-Latn-NG",	
-	currency: "NGN"
+        locale: "ha-Latn-NG",    
+    currency: "NGN"
     });
     
     assertNotNull(fmt);
@@ -2146,7 +2146,7 @@ function testNumFmtCurrencyFormatNegativeCurrencyForLocale_ha_Latn_NG1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ha-Latn-NG",
-	currency: "NGN"
+    currency: "NGN"
     });
     
     assertNotNull(fmt);
@@ -2159,7 +2159,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ha_Latn_NG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ha-Latn-NG",
-	currency: "NGN"
+    currency: "NGN"
     });
     
     assertNotNull(fmt);
@@ -2169,7 +2169,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ha_Latn_NG() {
 
 function testNumFmtPercentageFormatRegular_ha_Latn_NG() {
     var fmt = new NumFmt({
-	locale: "ha-Latn-NG",
+    locale: "ha-Latn-NG",
         type: "percentage"
     });
     
@@ -2194,7 +2194,7 @@ function testNumFmt_ml_IN() {
 function testNumFmtNative_ml_IN() {
     var fmt = new NumFmt({
         locale: "ml-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2207,8 +2207,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ml_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2220,8 +2220,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ml_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2233,7 +2233,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ml_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ml-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2243,8 +2243,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ml_IN() {
 
 function testNumFmtPercentageFormatRegular_ml_IN() {
     var fmt = new NumFmt({
-	locale: "ml-IN",
-	useNative: true,
+    locale: "ml-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2256,7 +2256,7 @@ function testNumFmtPercentageFormatRegular_ml_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_ml_IN() {
     var fmt = new NumFmt({
-	locale: "ml-IN",
+    locale: "ml-IN",
         type: "percentage"
     });
     
@@ -2282,7 +2282,7 @@ function testNumFmt_te_IN() {
 function testNumFmtNative_te_IN() {
     var fmt = new NumFmt({
         locale: "te-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2295,8 +2295,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_te_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2308,8 +2308,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_te_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2321,7 +2321,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_te_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "te-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2332,8 +2332,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_te_IN() {
 
 function testNumFmtPercentageFormatRegular_te_IN() {
     var fmt = new NumFmt({
-	locale: "te-IN",
-	useNative: true,
+    locale: "te-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2345,7 +2345,7 @@ function testNumFmtPercentageFormatRegular_te_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_te_IN() {
     var fmt = new NumFmt({
-	locale: "te-IN",
+    locale: "te-IN",
         type: "percentage"
     });
     
@@ -2371,7 +2371,7 @@ function testNumFmt_pa_IN() {
 function testNumFmtNative_pa_IN() {
     var fmt = new NumFmt({
         locale: "pa-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2384,8 +2384,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_pa_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2397,8 +2397,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_pa_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2411,7 +2411,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pa_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pa-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2422,8 +2422,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pa_IN() {
 
 function testNumFmtPercentageFormatRegular_pa_IN() {
     var fmt = new NumFmt({
-	locale: "pa-IN",
-	useNative: true,
+    locale: "pa-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2435,7 +2435,7 @@ function testNumFmtPercentageFormatRegular_pa_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_pa_IN() {
     var fmt = new NumFmt({
-	locale: "pa-IN",
+    locale: "pa-IN",
         type: "percentage"
     });
     
@@ -2461,7 +2461,7 @@ function testNumFmt_ur_IN() {
 function testNumFmtNative_ur_IN() {
     var fmt = new NumFmt({
         locale: "ur-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2474,8 +2474,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_ur_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2487,8 +2487,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2501,7 +2501,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ur-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2512,8 +2512,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN() {
 
 function testNumFmtPercentageFormatRegular_ur_IN() {
     var fmt = new NumFmt({
-	locale: "ur-IN",
-	useNative: true,
+    locale: "ur-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2525,7 +2525,7 @@ function testNumFmtPercentageFormatRegular_ur_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_ur_IN() {
     var fmt = new NumFmt({
-	locale: "ur-IN",
+    locale: "ur-IN",
         type: "percentage"
     });
     
@@ -2552,7 +2552,7 @@ function testNumFmt_as_IN() {
 function testNumFmtNative_as_IN() {
     var fmt = new NumFmt({
         locale: "as-IN",
-	useNative: true,
+    useNative: true,
         maxFractionDigits: 2
     });
     
@@ -2565,8 +2565,8 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_as_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2578,8 +2578,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
-	useNative: true,
-	currency: "INR"
+    useNative: true,
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -2589,8 +2589,8 @@ function testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_as_IN1() {
 
 function testNumFmtPercentageFormatRegular_as_IN() {
     var fmt = new NumFmt({
-	locale: "as-IN",
-	useNative: true,
+    locale: "as-IN",
+    useNative: true,
         type: "percentage"
     });
     
@@ -2602,7 +2602,7 @@ function testNumFmtPercentageFormatRegular_as_IN() {
 
 function testNumFmtPercentageNativeFormatRegular_as_IN() {
     var fmt = new NumFmt({
-	locale: "as-IN",
+    locale: "as-IN",
         type: "percentage"
     });
     
@@ -2628,7 +2628,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_US() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-US",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -2637,7 +2637,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_US() {
 }
 function testNumFmtPercentageFormatRegular_en_US() {
     var fmt = new NumFmt({
-	locale: "en-US",
+    locale: "en-US",
         type: "percentage"
     });
     
@@ -2673,7 +2673,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_GB() {
 }
 function testNumFmtPercentageFormatRegular_en_GB() {
     var fmt = new NumFmt({
-	locale: "en-GB",
+    locale: "en-GB",
         type: "percentage"
     });
     
@@ -2701,7 +2701,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocaleko_KR() {
         type: "currency",
         locale: "ko-KR",
         currency: "KRW",
-	maxFractionDigits: 2
+    maxFractionDigits: 2
     });
     
     assertNotNull(fmt);
@@ -2710,7 +2710,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocaleko_KR() {
 }
 function testNumFmtPercentageFormatRegular_ko_KR() {
     var fmt = new NumFmt({
-	locale: "ko-KR",
+    locale: "ko-KR",
         type: "percentage"
     });
     
@@ -2744,7 +2744,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hans_CN() {
 }
 function testNumFmtPercentageFormatRegular_zh_Hans_CN() {
     var fmt = new NumFmt({
-	locale: "zh-Hans-CN",
+    locale: "zh-Hans-CN",
         type: "percentage"
     });
     
@@ -2770,7 +2770,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_HK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "zh-Hant-HK",
-	style: "iso",
+    style: "iso",
         currency: "HKD"
     });
     
@@ -2780,7 +2780,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_HK() {
 }
 function testNumFmtPercentageFormatRegular_zh_Hant_HK() {
     var fmt = new NumFmt({
-	locale: "zh-Hant-HK",
+    locale: "zh-Hant-HK",
         type: "percentage"
     });
     
@@ -2805,7 +2805,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_TW() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "zh-Hant-TW",
-	style: "iso",
+    style: "iso",
         currency: "TWD"
     });
     
@@ -2815,7 +2815,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_zh_Hant_TW() {
 }
 function testNumFmtPercentageFormatRegular_zh_Hant_TW() {
     var fmt = new NumFmt({
-	locale: "zh-Hant-TW",
+    locale: "zh-Hant-TW",
         type: "percentage"
     });
     
@@ -2851,7 +2851,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fr_FR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "fr-FR",
-	currency: "CAD"
+    currency: "CAD"
     });
     
     assertNotNull(fmt);
@@ -2863,7 +2863,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fr_FR1() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "fr-FR",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -2873,7 +2873,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fr_FR1() {
 
 function testNumFmtPercentageFormatRegular_fr_FR() {
     var fmt = new NumFmt({
-	locale: "fr-FR",
+    locale: "fr-FR",
         type: "percentage"
     });
     
@@ -2897,7 +2897,7 @@ function testNumFmt_pt_BR() {
 
 function testNumFmtPercentageFormatRegular_pt_BR() {
     var fmt = new NumFmt({
-	locale: "pt-BR",
+    locale: "pt-BR",
         type: "percentage"
     });
     
@@ -2909,7 +2909,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pt_BR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pt-BR",
-	currency: "BRL"
+    currency: "BRL"
     });
     
     assertNotNull(fmt);
@@ -2932,7 +2932,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pt_PT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pt-PT",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -2941,7 +2941,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pt_PT() {
 }
 function testNumFmtPercentageFormatRegular_pt_PT() {
     var fmt = new NumFmt({
-	locale: "pt-PT",
+    locale: "pt-PT",
         type: "percentage"
     });
     
@@ -2966,7 +2966,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_ES() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-ES",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -2975,7 +2975,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_ES() {
 }
 function testNumFmtPercentageFormatRegular_es_ES() {
     var fmt = new NumFmt({
-	locale: "es-ES",
+    locale: "es-ES",
         type: "percentage"
     });
     
@@ -2999,7 +2999,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CO() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-CO",
-	currency: "COP"
+    currency: "COP"
     });
     
     assertNotNull(fmt);
@@ -3008,7 +3008,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CO() {
 }
 function testNumFmtPercentageFormatRegular_es_CO() {
     var fmt = new NumFmt({
-	locale: "es-CO",
+    locale: "es-CO",
         type: "percentage"
     });
     
@@ -3032,7 +3032,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ja_JP() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ja-JP",
-	currency: "JPY"
+    currency: "JPY"
     });
     
     assertNotNull(fmt);
@@ -3041,7 +3041,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ja_JP() {
 }
 function testNumFmtPercentageFormatRegular_ja_JP() {
     var fmt = new NumFmt({
-	locale: "ja-JP",
+    locale: "ja-JP",
         type: "percentage"
     });
     
@@ -3066,7 +3066,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_it_IT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "it-IT",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -3076,7 +3076,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_it_IT() {
 
 function testNumFmtPercentageFormatRegular_it_IT() {
     var fmt = new NumFmt({
-	locale: "it-IT",
+    locale: "it-IT",
         type: "percentage"
     });
     
@@ -3100,7 +3100,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_sv_SE() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "sv-SE",
-	currency: "SEK"
+    currency: "SEK"
     });
     
     assertNotNull(fmt);
@@ -3109,7 +3109,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_sv_SE() {
 }
 function testNumFmtPercentageFormatRegular_sv_SE() {
     var fmt = new NumFmt({
-	locale: "sv-SE",
+    locale: "sv-SE",
         type: "percentage"
     });
     
@@ -3142,7 +3142,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fi_FI() {
 }
 function testNumFmtPercentageFormatRegular_fi_FI() {
     var fmt = new NumFmt({
-    	locale: "fi-FI",
+        locale: "fi-FI",
         type: "percentage"
     });
     
@@ -3166,7 +3166,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_cs_CZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
-	currency: "CZK"
+    currency: "CZK"
     });
     
     assertNotNull(fmt);
@@ -3175,7 +3175,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_cs_CZ() {
 }
 function testNumFmtPercentageFormatRegular_cs_CZ() {
     var fmt = new NumFmt({
-	locale: "cs-CZ",
+    locale: "cs-CZ",
         type: "percentage"
     });
     
@@ -3199,7 +3199,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_el_GR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "el-GR",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -3208,7 +3208,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_el_GR() {
 }
 function testNumFmtPercentageFormatRegular_el_GR() {
     var fmt = new NumFmt({
-	locale: "el-GR",
+    locale: "el-GR",
         type: "percentage"
     });
     
@@ -3232,7 +3232,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hu_Hu() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "hu-HU",
-	currency: "HUF"
+    currency: "HUF"
     });
     
     assertNotNull(fmt);
@@ -3241,7 +3241,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hu_Hu() {
 }
 function testNumFmtPercentageFormatRegular_hu_HU() {
     var fmt = new NumFmt({
-	locale: "hu-HU",
+    locale: "hu-HU",
         type: "percentage"
     });
     
@@ -3265,7 +3265,7 @@ function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_nl_NL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "nl-NL",
-	currency: "ANG"
+    currency: "ANG"
     });
     
     assertNotNull(fmt);
@@ -3274,7 +3274,7 @@ function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_nl_NL() {
 }
 function testNumFmtPercentageFormatRegular_nl_NL() {
     var fmt = new NumFmt({
-	locale: "nl-NL",
+    locale: "nl-NL",
         type: "percentage"
     });
     
@@ -3298,7 +3298,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pl_PL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pl-PL",
-	currency: "PLN"
+    currency: "PLN"
     });
     
     assertNotNull(fmt);
@@ -3307,7 +3307,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_pl_PL() {
 }
 function testNumFmtPercentageFormatRegular_pl_PL() {
     var fmt = new NumFmt({
-	locale: "pl-PL",
+    locale: "pl-PL",
         type: "percentage"
     });
     
@@ -3331,7 +3331,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_da_DK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "da-DK",
-	currency: "DKK"
+    currency: "DKK"
     });
     
     assertNotNull(fmt);
@@ -3340,7 +3340,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_da_DK() {
 }
 function testNumFmtPercentageFormatRegular_da_DK() {
     var fmt = new NumFmt({
-	locale: "da-DK",
+    locale: "da-DK",
         type: "percentage"
     });
     
@@ -3364,7 +3364,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ro_RO() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ro-RO",
-	currency: "RON"
+    currency: "RON"
     });
     
     assertNotNull(fmt);
@@ -3373,7 +3373,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ro_RO() {
 }
 function testNumFmtPercentageFormatRegular_ro_RO() {
     var fmt = new NumFmt({
-	locale: "ro-RO",
+    locale: "ro-RO",
         type: "percentage"
     });
     
@@ -3389,7 +3389,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -3401,7 +3401,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_as_IN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "as-IN",
-	currency: "INR"
+    currency: "INR"
     });
     
     assertNotNull(fmt);
@@ -3425,7 +3425,7 @@ function testNumFmt_ar_SA() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ar-SA",
-	currency: "SAR"
+    currency: "SAR"
     });
     
     assertNotNull(fmt);
@@ -3434,7 +3434,7 @@ function testNumFmt_ar_SA() {
 }*/
 function testNumFmtPercentageFormatRegular_ar_SA() {
     var fmt = new NumFmt({
-	locale: "ar-SA",
+    locale: "ar-SA",
         type: "percentage"
     });
     
@@ -3459,7 +3459,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "bg-BG",
-	currency: "BGN"
+    currency: "BGN"
     });
     
     assertNotNull(fmt);
@@ -3468,7 +3468,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
 }
 function testNumFmtPercentageFormatRegular_bg_BG() {
     var fmt = new NumFmt({
-	locale: "bg-BG",
+    locale: "bg-BG",
         type: "percentage"
     });
     
@@ -3492,7 +3492,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "bs-Latn-BA",
-	currency: "BAM"
+    currency: "BAM"
     });
     
     assertNotNull(fmt);
@@ -3501,7 +3501,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
 }
 function testNumFmtPercentageFormatRegular_bs_Latn_BA() {
     var fmt = new NumFmt({
-	locale: "bs-Latn-BA",
+    locale: "bs-Latn-BA",
         type: "percentage"
     });
     
@@ -3525,7 +3525,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "de-DE",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -3534,7 +3534,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
 }
 function testNumFmtPercentageFormatRegular_de_DE() {
     var fmt = new NumFmt({
-	locale: "de-DE",
+    locale: "de-DE",
         type: "percentage"
     });
     
@@ -3559,7 +3559,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "et-EE",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -3572,7 +3572,7 @@ function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_cs_CZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "cs-CZ",
-	currency: "CZK"
+    currency: "CZK"
     });
     
     assertNotNull(fmt);
@@ -3581,7 +3581,7 @@ function testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_cs_CZ() {
 }
 function testNumFmtPercentageFormatRegular_et_EE() {
     var fmt = new NumFmt({
-	locale: "et-EE",
+    locale: "et-EE",
         type: "percentage"
     });
     
@@ -3605,7 +3605,7 @@ function testNumFmt_fa_IR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "fa-IR",
-	currency: "IRR"
+    currency: "IRR"
     });
     
     assertNotNull(fmt);
@@ -3614,7 +3614,7 @@ function testNumFmt_fa_IR() {
 }*/
 function testNumFmtPercentageFormatRegular_fa_IR() {
     var fmt = new NumFmt({
-	locale: "fa-IR",
+    locale: "fa-IR",
         type: "percentage"
     });
     
@@ -3639,7 +3639,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ga_IE() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ga-IE",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -3648,7 +3648,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ga_IE() {
 }
 function testNumFmtPercentageFormatRegular_ga_IE() {
     var fmt = new NumFmt({
-	locale: "ga-IE",
+    locale: "ga-IE",
         type: "percentage"
     });
     
@@ -3672,7 +3672,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_he_IL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "he-IL",
-	currency: "ILS"
+    currency: "ILS"
     });
     
     assertNotNull(fmt);
@@ -3681,7 +3681,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_he_IL() {
 }
 function testNumFmtPercentageFormatRegular_he_IL() {
     var fmt = new NumFmt({
-	locale: "he-IL",
+    locale: "he-IL",
         type: "percentage"
     });
     
@@ -3705,7 +3705,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hr_HR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "hr-HR",
-	currency: "HRK"
+    currency: "HRK"
     });
     
     assertNotNull(fmt);
@@ -3714,7 +3714,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hr_HR() {
 }
 function testNumFmtPercentageFormatRegular_hr_HR() {
     var fmt = new NumFmt({
-	locale: "hr-HR",
+    locale: "hr-HR",
         type: "percentage"
     });
     
@@ -3739,7 +3739,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_id_ID() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "id-ID",
-	currency: "IDR"
+    currency: "IDR"
     });
     
     assertNotNull(fmt);
@@ -3748,7 +3748,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_id_ID() {
 }
 function testNumFmtPercentageFormatRegular_id_ID() {
     var fmt = new NumFmt({
-	locale: "id-ID",
+    locale: "id-ID",
         type: "percentage"
     });
     
@@ -3773,7 +3773,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kk_Cyrl_KZ () {
     var fmt = new NumFmt({
         type: "currency",
         locale: "kk-Cyrl-KZ",
-	currency: "KZT"
+    currency: "KZT"
     });
     
     assertNotNull(fmt);
@@ -3782,7 +3782,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_kk_Cyrl_KZ () {
 }
 function testNumFmtPercentageFormatRegular_kk_Cyrl_KZ () {
     var fmt = new NumFmt({
-	locale: "kk-Cyrl-KZ",
+    locale: "kk-Cyrl-KZ",
         type: "percentage"
     });
     
@@ -3806,7 +3806,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "lt-LT",
-	currency: "LTL"
+    currency: "LTL"
     });
     
     assertNotNull(fmt);
@@ -3815,7 +3815,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lt_LT() {
 }
 function testNumFmtPercentageFormatRegular_lt_LT() {
     var fmt = new NumFmt({
-	locale: "lt-LT",
+    locale: "lt-LT",
         type: "percentage"
     });
     
@@ -3839,7 +3839,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lv_LV() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "lv-LV",
-	currency: "LVL"
+    currency: "LVL"
     });
     
     assertNotNull(fmt);
@@ -3848,7 +3848,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_lv_LV() {
 }
 function testNumFmtPercentageFormatRegular_lv_LV() {
     var fmt = new NumFmt({
-	locale: "lv-LV",
+    locale: "lv-LV",
         type: "percentage"
     });
     
@@ -3872,7 +3872,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mk_MK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "mk-MK",
-	currency: "MKD"
+    currency: "MKD"
     });
     
     assertNotNull(fmt);
@@ -3881,7 +3881,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mk_MK() {
 }
 function testNumFmtPercentageFormatRegular_mk_MK() {
     var fmt = new NumFmt({
-	locale: "mk-MK",
+    locale: "mk-MK",
         type: "percentage"
     });
     
@@ -3905,7 +3905,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ms_MY() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ms-MY",
-	currency: "MNT"
+    currency: "MNT"
     });
     
     assertNotNull(fmt);
@@ -3914,7 +3914,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ms_MY() {
 }
 function testNumFmtPercentageFormatRegular_ms_MY() {
     var fmt = new NumFmt({
-	locale: "ms-MY",
+    locale: "ms-MY",
         type: "percentage"
     });
     
@@ -3938,7 +3938,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "nb-NO",
-	currency: "NOK"
+    currency: "NOK"
     });
     
     assertNotNull(fmt);
@@ -3947,7 +3947,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nb_NO() {
 }
 function testNumFmtPercentageFormatRegular_nb_NO() {
     var fmt = new NumFmt({
-	locale: "nb-NO",
+    locale: "nb-NO",
         type: "percentage"
     });
     
@@ -3970,7 +3970,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ru_RU() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ru-RU",
-	currency: "RUB"
+    currency: "RUB"
     });
     
     assertNotNull(fmt);
@@ -3979,7 +3979,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ru_RU() {
 }
 function testNumFmtPercentageFormatRegular_ru_RU() {
     var fmt = new NumFmt({
-	locale: "ru-RU",
+    locale: "ru-RU",
         type: "percentage"
     });
     
@@ -3993,7 +3993,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "nl-NL",
-	currency: "ANG"
+    currency: "ANG"
     });
     
     assertNotNull(fmt);
@@ -4005,7 +4005,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pl-PL",
-	currency: "PLN"
+    currency: "PLN"
     });
     
     assertNotNull(fmt);
@@ -4017,7 +4017,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_US() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-US",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4029,7 +4029,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "et-EE",
-	currency: "EUR"
+    currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -4041,8 +4041,8 @@ function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ko-KR",
-	currency: "KRW",
-	 maxFractionDigits: 2
+    currency: "KRW",
+     maxFractionDigits: 2
     });
     
     assertNotNull(fmt);
@@ -4054,7 +4054,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_ms_MY() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "ms-MY",
-	currency: "MNT"
+    currency: "MNT"
     });
     
     assertNotNull(fmt);
@@ -4066,7 +4066,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_pt_BR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "pt-BR",
-	currency: "BRL"
+    currency: "BRL"
     });
     
     assertNotNull(fmt);
@@ -4078,7 +4078,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_EC() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-EC",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4103,7 +4103,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SL",
-	currency: "SLL"
+    currency: "SLL"
     });
     
     assertNotNull(fmt);
@@ -4112,7 +4112,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SL() {
 }
 function testNumFmtPercentageFormatRegular_en_SL() {
     var fmt = new NumFmt({
-	locale: "en-SL",
+    locale: "en-SL",
         type: "percentage"
     });
     
@@ -4125,7 +4125,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SL() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SL",
-	currency: "SLL"
+    currency: "SLL"
     });
     
     assertNotNull(fmt);
@@ -4151,7 +4151,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SG",
-	currency: "SGD"
+    currency: "SGD"
     });
     
     assertNotNull(fmt);
@@ -4160,7 +4160,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SG() {
 }
 function testNumFmtPercentageFormatRegular_en_SG() {
     var fmt = new NumFmt({
-	locale: "en-SG",
+    locale: "en-SG",
         type: "percentage"
     });
     
@@ -4173,7 +4173,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SG",
-	currency: "SGD"
+    currency: "SGD"
     });
     
     assertNotNull(fmt);
@@ -4197,7 +4197,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_ZA() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-ZA",
-	currency: "ZAR"
+    currency: "ZAR"
     });
     
     assertNotNull(fmt);
@@ -4206,7 +4206,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_ZA() {
 }
 function testNumFmtPercentageFormatRegular_en_ZA() {
     var fmt = new NumFmt({
-	locale: "en-ZA",
+    locale: "en-ZA",
         type: "percentage"
     });
     
@@ -4219,7 +4219,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_ZA() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-ZA",
-	currency: "ZAR"
+    currency: "ZAR"
     });
     
     assertNotNull(fmt);
@@ -4244,7 +4244,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MY() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-MY",
-	currency: "MYR"
+    currency: "MYR"
     });
     
     assertNotNull(fmt);
@@ -4253,7 +4253,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MY() {
 }
 function testNumFmtPercentageFormatRegular_en_MY() {
     var fmt = new NumFmt({
-	locale: "en-MY",
+    locale: "en-MY",
         type: "percentage"
     });
     
@@ -4266,7 +4266,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MY() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-MY",
-	currency: "MYR"
+    currency: "MYR"
     });
     
     assertNotNull(fmt);
@@ -4291,7 +4291,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MM() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-MM",
-	currency: "MMK"
+    currency: "MMK"
     });
     
     assertNotNull(fmt);
@@ -4300,7 +4300,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MM() {
 }
 function testNumFmtPercentageFormatRegular_en_MM() {
     var fmt = new NumFmt({
-	locale: "en-MM",
+    locale: "en-MM",
         type: "percentage"
     });
     
@@ -4313,7 +4313,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MM() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-MM",
-	currency: "MMK"
+    currency: "MMK"
     });
     
     assertNotNull(fmt);
@@ -4338,7 +4338,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-NZ",
-	currency: "NZD"
+    currency: "NZD"
     });
     
     assertNotNull(fmt);
@@ -4347,7 +4347,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NZ() {
 }
 function testNumFmtPercentageFormatRegular_en_NZ() {
     var fmt = new NumFmt({
-	locale: "en-NZ",
+    locale: "en-NZ",
         type: "percentage"
     });
     
@@ -4360,7 +4360,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_NZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-NZ",
-	currency: "NZD"
+    currency: "NZD"
     });
     
     assertNotNull(fmt);
@@ -4384,7 +4384,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-NG",
-	currency: "NGN"
+    currency: "NGN"
     });
     
     assertNotNull(fmt);
@@ -4393,7 +4393,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NG() {
 }
 function testNumFmtPercentageFormatRegular_en_NG() {
     var fmt = new NumFmt({
-	locale: "en-NG",
+    locale: "en-NG",
         type: "percentage"
     });
     
@@ -4406,7 +4406,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_NG() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-NG",
-	currency: "NGN"
+    currency: "NGN"
     });
     
     assertNotNull(fmt);
@@ -4431,7 +4431,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PK",
-	currency: "PKR"
+    currency: "PKR"
     });
     
     assertNotNull(fmt);
@@ -4441,7 +4441,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
 
 function testNumFmtPercentageFormatRegular_en_PK() {
     var fmt = new NumFmt({
-	locale: "en-PK",
+    locale: "en-PK",
         type: "percentage"
     });
     
@@ -4454,7 +4454,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PK",
-	currency: "PKR"
+    currency: "PKR"
     });
     
     assertNotNull(fmt);
@@ -4479,7 +4479,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PH() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PH",
-	currency: "PHP"
+    currency: "PHP"
     });
     
     assertNotNull(fmt);
@@ -4488,7 +4488,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PH() {
 }
 function testNumFmtPercentageFormatRegular_en_PH() {
     var fmt = new NumFmt({
-	locale: "en-PH",
+    locale: "en-PH",
         type: "percentage"
     });
     
@@ -4501,7 +4501,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PH() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PH",
-	currency: "PHP"
+    currency: "PHP"
     });
     
     assertNotNull(fmt);
@@ -4525,7 +4525,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PR",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4534,7 +4534,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PR() {
 }
 function testNumFmtPercentageFormatRegular_en_PR() {
     var fmt = new NumFmt({
-	locale: "en-PR",
+    locale: "en-PR",
         type: "percentage"
     });
     
@@ -4547,7 +4547,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-PR",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4571,7 +4571,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_RW() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-RW",
-	currency: "RWF"
+    currency: "RWF"
     });
     
     assertNotNull(fmt);
@@ -4580,7 +4580,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_RW() {
 }
 function testNumFmtPercentageFormatRegular_en_RW() {
     var fmt = new NumFmt({
-	locale: "en-RW",
+    locale: "en-RW",
         type: "percentage"
     });
     
@@ -4593,7 +4593,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_RW() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-RW",
-	currency: "RWF"
+    currency: "RWF"
     });
     
     assertNotNull(fmt);
@@ -4618,7 +4618,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_LK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-LK",
-	currency: "LKR"
+    currency: "LKR"
     });
     
     assertNotNull(fmt);
@@ -4627,7 +4627,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_LK() {
 }
 function testNumFmtPercentageFormatRegular_en_LK() {
     var fmt = new NumFmt({
-	locale: "en-LK",
+    locale: "en-LK",
         type: "percentage"
     });
     
@@ -4640,7 +4640,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_LK() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-LK",
-	currency: "LKR"
+    currency: "LKR"
     });
     
     assertNotNull(fmt);
@@ -4665,7 +4665,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SD() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SD",
-	currency: "SDG"
+    currency: "SDG"
     });
     
     assertNotNull(fmt);
@@ -4674,7 +4674,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SD() {
 }
 function testNumFmtPercentageFormatRegular_en_SD() {
     var fmt = new NumFmt({
-	locale: "en-SD",
+    locale: "en-SD",
         type: "percentage"
     });
     
@@ -4687,7 +4687,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SD() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-SD",
-	currency: "SDG"
+    currency: "SDG"
     });
     
     assertNotNull(fmt);
@@ -4712,7 +4712,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_TZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-TZ",
-	currency: "TZS"
+    currency: "TZS"
     });
     
     assertNotNull(fmt);
@@ -4721,7 +4721,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_TZ() {
 }
 function testNumFmtPercentageFormatRegular_en_TZ() {
     var fmt = new NumFmt({
-	locale: "en-TZ",
+    locale: "en-TZ",
         type: "percentage"
     });
     
@@ -4734,7 +4734,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_TZ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "en-TZ",
-	currency: "TZS"
+    currency: "TZS"
     });
     
     assertNotNull(fmt);
@@ -4759,7 +4759,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-CR",
-	currency: "CRC"
+    currency: "CRC"
     });
     
     assertNotNull(fmt);
@@ -4768,7 +4768,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
 }
 function testNumFmtPercentageFormatRegular_es_CR() {
     var fmt = new NumFmt({
-	locale: "es-CR",
+    locale: "es-CR",
         type: "percentage"
     });
     
@@ -4781,7 +4781,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-CR",
-	currency: "CRC"
+    currency: "CRC"
     });
     
     assertNotNull(fmt);
@@ -4806,7 +4806,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-DO",
-	currency: "DOP"
+    currency: "DOP"
     });
     
     assertNotNull(fmt);
@@ -4815,7 +4815,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
 }
 function testNumFmtPercentageFormatRegular_es_DO() {
     var fmt = new NumFmt({
-	locale: "es-DO",
+    locale: "es-DO",
         type: "percentage"
     });
     
@@ -4828,7 +4828,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-DO",
-	currency: "DOP"
+    currency: "DOP"
     });
     
     assertNotNull(fmt);
@@ -4854,7 +4854,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-SV",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4863,7 +4863,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
 }
 function testNumFmtPercentageFormatRegular_es_SV() {
     var fmt = new NumFmt({
-	locale: "es-SV",
+    locale: "es-SV",
         type: "percentage"
     });
     
@@ -4876,7 +4876,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-SV",
-	currency: "USD"
+    currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -4901,7 +4901,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-GQ",
-	currency: "XAF"
+    currency: "XAF"
     });
     
     assertNotNull(fmt);
@@ -4910,7 +4910,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
 }
 function testNumFmtPercentageFormatRegular_es_GQ() {
     var fmt = new NumFmt({
-	locale: "es-GQ",
+    locale: "es-GQ",
         type: "percentage"
     });
     
@@ -4923,7 +4923,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-GQ",
-	currency: "XAF"
+    currency: "XAF"
     });
     
     assertNotNull(fmt);
@@ -4947,7 +4947,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-GT",
-	currency: "GTQ"
+    currency: "GTQ"
     });
     
     assertNotNull(fmt);
@@ -4956,7 +4956,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
 }
 function testNumFmtPercentageFormatRegular_es_GT() {
     var fmt = new NumFmt({
-	locale: "es-GT",
+    locale: "es-GT",
         type: "percentage"
     });
     
@@ -4969,7 +4969,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-GT",
-	currency: "GTQ"
+    currency: "GTQ"
     });
     
     assertNotNull(fmt);
@@ -4994,7 +4994,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-HN",
-	currency: "HNL"
+    currency: "HNL"
     });
     
     assertNotNull(fmt);
@@ -5003,7 +5003,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
 }
 function testNumFmtPercentageFormatRegular_es_HN() {
     var fmt = new NumFmt({
-	locale: "es-HN",
+    locale: "es-HN",
         type: "percentage"
     });
     
@@ -5016,7 +5016,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-HN",
-	currency: "HNL"
+    currency: "HNL"
     });
     
     assertNotNull(fmt);
@@ -5041,7 +5041,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-MX",
-	currency: "MXN"
+    currency: "MXN"
     });
     
     assertNotNull(fmt);
@@ -5050,7 +5050,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
 }
 function testNumFmtPercentageFormatRegular_es_MX() {
     var fmt = new NumFmt({
-	locale: "es-MX",
+    locale: "es-MX",
         type: "percentage"
     });
     
@@ -5063,13 +5063,61 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
     var fmt = new NumFmt({
         type: "currency",
         locale: "es-MX",
-	currency: "MXN"
+    currency: "MXN"
     });
     
     assertNotNull(fmt);
     
     assertEquals("($100,110.57)", fmt.format(-100110.57));
 }
+
+// test case for az-Latn-AZ
+function testNumFmt_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        locale: "az-Latn-AZ",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "az-Latn-AZ",
+        currency: "AZN",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("AZN100.110,57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_az_Latn_AZ() {
+    var fmt = new NumFmt({
+    locale: "az-Latn-AZ",
+        type: "percentage"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("57%", fmt.format(57.0));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_az_Latn_AZ() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "az-Latn-AZ",
+        currency: "AZN"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("(AZN100.110,57)", fmt.format(-100110.57));
+}
+
 /******************************** End of test cases****************************************************/
 function testNumFmt_en_GB() {
     var fmt = new NumFmt({
@@ -5172,52 +5220,51 @@ function testNumFmt_it_IT() {
 }
 
 function testNumFmtAsyncDefaults() {
-	var callbackCalled = false;
+    var callbackCalled = false;
     new NumFmt({
-    	sync: false,
-    	onLoad: function (fmt) {
-    	    assertNotNull(fmt);
+        sync: false,
+        onLoad: function (fmt) {
+            assertNotNull(fmt);
 
-    	    assertEquals("number", fmt.getType());
-    	    assertEquals(-1, fmt.getMaxFractionDigits());
-    	    assertEquals(-1, fmt.getMinFractionDigits());
-    	    assertTrue(fmt.isGroupingUsed());
-    	    assertEquals("halfdown", fmt.getRoundingMode());
-    	    assertUndefined(fmt.getCurrency());
-    	    
-    	    callbackCalled = true;
-    	}
+            assertEquals("number", fmt.getType());
+            assertEquals(-1, fmt.getMaxFractionDigits());
+            assertEquals(-1, fmt.getMinFractionDigits());
+            assertTrue(fmt.isGroupingUsed());
+            assertEquals("halfdown", fmt.getRoundingMode());
+            assertUndefined(fmt.getCurrency());
+            
+            callbackCalled = true;
+        }
     });
     
     assertTrue(callbackCalled);
 }
 
 function testNumFmtAsync() {
-	var callbackCalled = false;
+    var callbackCalled = false;
     new NumFmt({
-    	sync: false,
-    	onLoad: function (fmt) {
-    	    assertNotNull(fmt);
-    	    assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
-    	    callbackCalled = true;
-    	}
+        sync: false,
+        onLoad: function (fmt) {
+            assertNotNull(fmt);
+            assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
+            callbackCalled = true;
+        }
     });
     
     assertTrue(callbackCalled);
 }
 
 function testNumFmtAsyncWithLocale() {
-	var callbackCalled = false;
+    var callbackCalled = false;
     new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2,
-    	sync: false,
-    	onLoad: function (fmt) {
-    	    assertNotNull(fmt);
-    	    assertEquals("-123.456,78", fmt.format(-123456.785));
-    	    callbackCalled = true;
-    	}
-        
+        sync: false,
+        onLoad: function (fmt) {
+            assertNotNull(fmt);
+            assertEquals("-123.456,78", fmt.format(-123456.785));
+            callbackCalled = true;
+        }
     });
     assertTrue(callbackCalled);
 }
