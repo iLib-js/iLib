@@ -21,7 +21,7 @@ var PersianDate = require("./../lib/PersianDate.js");
 var JulianDate = require("./../lib/JulianDate.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateFmt = require("./../lib/DateFmt.js");
-/* First, Gregorian. See the bottom for the Persian calendar tests */
+/* F+۰۳۳۰/+۰۴۳۰, Gregorian. See the bottom for the Persian calendar tests */
 
 function testDateFmtSimpleShort_fa_IR() {
     var fmt = new DateFmt({
@@ -1064,7 +1064,7 @@ function testDateFmtShortTimeComponentsHMZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
@@ -1086,7 +1086,7 @@ function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_fa_IR() {
@@ -1130,7 +1130,7 @@ function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
@@ -1152,7 +1152,7 @@ function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 
@@ -1337,7 +1337,7 @@ function testDateFmtFullTimeComponentsHMZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
@@ -1360,7 +1360,7 @@ function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_fa_IR() {
@@ -1406,7 +1406,7 @@ function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
@@ -1429,7 +1429,7 @@ function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
@@ -1452,7 +1452,7 @@ function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
+    assertEquals("‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_fa_IR() {
