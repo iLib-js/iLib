@@ -263,7 +263,7 @@ function testNumberCurrencyForLocale() {
     
     var cur = num.getCurrency();
     assertNotUndefined(cur);
-    assertEquals("EGP", cur.getCode());
+    assertEquals("GBP", cur.getCode());
 }
 
 function testNumberFloatDE() {

@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
- * 
- * Copyright © 2012-2015, JEDLSoft
+ *
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,14 @@ var Currency = require("./../lib/Currency.js");
 
 function testCurrencyConstructorEmpty() {
     var cur = new Currency();
-    
+
     assertNotNull(cur);
 }
 
 function testCurrencyDefaults() {
     var cur = new Currency();
     assertNotNull(cur);
-    
+
     assertEquals("USD", cur.getCode());
     assertEquals(2, cur.getFractionDigits());
     assertEquals("$", cur.getSign());
@@ -43,7 +43,7 @@ function testCurrencyGetByCode1() {
         code: "EUR"
     });
     assertNotNull(cur);
-    
+
     assertEquals("EUR", cur.getCode());
     assertEquals(2, cur.getFractionDigits());
     assertEquals("€", cur.getSign());
@@ -57,11 +57,11 @@ function testCurrencyGetByCode2() {
         code: "JPY"
     });
     assertNotNull(cur);
-    
+
     assertEquals("JPY", cur.getCode());
     assertEquals(0, cur.getFractionDigits());
     assertEquals("¥", cur.getSign());
-    assertEquals("Yen", cur.getName());
+    assertEquals("Japanese Yen", cur.getName());
     var locale = cur.getLocale();
     assertEquals("en-US", locale.toString());
 }
@@ -82,7 +82,7 @@ function testCurrencyGetBySignUnambiguous() {
         sign: "€"
     });
     assertNotNull(cur);
-    
+
     assertEquals("EUR", cur.getCode());
     assertEquals(2, cur.getFractionDigits());
     assertEquals("€", cur.getSign());
@@ -93,11 +93,11 @@ function testCurrencyGetBySignUnambiguous() {
 
 function testCurrencyGetBySignAmbiguousCurrentLocale() {
     var cur = new Currency({
-    	locale: "en-CA",
+        locale: "en-CA",
         sign: "$"
     });
     assertNotNull(cur);
-    
+
     assertEquals("CAD", cur.getCode());
     assertEquals(2, cur.getFractionDigits());
     assertEquals("$", cur.getSign());
@@ -108,11 +108,11 @@ function testCurrencyGetBySignAmbiguousCurrentLocale() {
 
 function testCurrencyGetBySignAmbiguousNotCurrentLocale() {
     var cur = new Currency({
-    	locale: "en-GB",
+        locale: "en-GB",
         sign: "$"
     });
     assertNotNull(cur);
-    
+
     assertEquals("USD", cur.getCode());
     assertEquals(2, cur.getFractionDigits());
     assertEquals("$", cur.getSign());
@@ -122,24 +122,24 @@ function testCurrencyGetBySignAmbiguousNotCurrentLocale() {
 }
 
 function testCurrencyAsync() {
-	var callbackCalled = false;
+    var callbackCalled = false;
     new Currency({
-    	locale: "en-GB",
+        locale: "en-GB",
         sign: "$",
         sync: false,
         onLoad: function (cur) {
             assertNotNull(cur);
-            
+
             assertEquals("USD", cur.getCode());
             assertEquals(2, cur.getFractionDigits());
             assertEquals("$", cur.getSign());
             assertEquals("US Dollar", cur.getName());
             var locale = cur.getLocale();
             assertEquals("en-GB", locale.toString());
-            
+
             callbackCalled = true;
         }
     });
-    
+
     assertTrue(callbackCalled);
 }
