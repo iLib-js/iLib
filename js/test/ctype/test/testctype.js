@@ -37,7 +37,7 @@ var Currency = require("./../lib/Currency.js");
 var CType = require("./../lib/CType.js");
 var IString = require("./../lib/IString.js");
 
-function setUp() {
+if (ilib.isDynData()) {
 	// now load the data
 	isAlnum._init(true);	
 	isAlpha._init(true);

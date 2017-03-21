@@ -20,4 +20,4 @@
 // !dependencies: false
 
 console.log = function (str){};
-var PalmSystem, process, require, module, environment, exports, global, Qt;
+var PalmSystem, process, require, module, environment, exports, global, Qt, Locale;
