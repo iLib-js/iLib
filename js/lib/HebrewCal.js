@@ -1,7 +1,7 @@
 /*
- * hebrew.js - Represent a Hebrew calendar object.
+ * HebrewCal.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

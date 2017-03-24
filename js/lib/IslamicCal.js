@@ -1,5 +1,5 @@
 /*
- * islamic.js - Represent a Islamic calendar object.
+ * IslamicCal.js - Represent a Islamic calendar object.
  * 
  * Copyright © 2012-2015, JEDLSoft
  *
