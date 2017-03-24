@@ -165,15 +165,23 @@ DateFactory._dynMap = {
 	"thaisolar":    "ThaiSolar"
 };
 
+function circumventWebPackDate(x) {
+	return "./" + x + "Date.js";
+}
+
+function circumventWebPackCal(x) {
+	return "./" + x + "Cal.js";
+}
+
 /**
  * Dynamically load the code for a calendar and calendar class if necessary.
  * @protected
  */
-DateFactory._dynLoadDate = function (name) {
+DateFactory._dynLoadDate = function (name, fnc) {
 	if (!IDate._constructors[name]) {
 		var entry = DateFactory._dynMap[name];
 		if (entry) {
-			IDate._constructors[name] = require("./" + entry + "Date.js");
+			IDate._constructors[name] = require(fnc(entry));
 		}
 	}
 	return IDate._constructors[name];
@@ -187,8 +195,8 @@ DateFactory._init = function(type, options) {
 	var cons;
 	
 	if (ilib.isDynCode()) {
-		DateFactory._dynLoadDate(type);
-		CalendarFactory._dynLoadCalendar(type);
+		DateFactory._dynLoadDate(type, circumventWebPackDate);
+		CalendarFactory._dynLoadCalendar(type, circumventWebPackCal);
 	}
 	
 	cons = IDate._constructors[type];

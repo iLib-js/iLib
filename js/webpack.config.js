@@ -23,7 +23,7 @@ module.exports = function(env) {
     return {
         entry: {
             main: './lib/ilib-standard-webpack.js',
-            vendor: 'ilib'
+            ilib: 'ilib'
         },
         output: {
             filename: '[name].[chunkhash].js',
@@ -31,7 +31,7 @@ module.exports = function(env) {
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
-                names: ['ilib', 'manifest']
+                name: 'ilib'
             })
         ]
     }

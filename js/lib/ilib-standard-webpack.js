@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,35 @@
  */
 
 /*
- * ilib-standard-inc.js - metafile that includes a reasonable set of other js files
+ * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
  */
 
+require.ensure([
+	"./DateRngFmt.js",
+	"./IDate.js",
+	"./DateFactory.js",
+	"./GregorianCal.js",
+	"./GregorianDate.js",
+	"./INumber.js",
+	"./NumFmt.js",
+	"./JulianDay.js",
+	"./DateFmt.js",
+	"./Calendar.js",
+	"./CalendarFactory.js",
+	"./Utils.js",
+	"./Locale.js",
+	"./IString.js",
+	"./DurationFmt.js",
+	"./ResBundle.js",
+	"./LocaleInfo.js",
+	"./DateRngFmt.js",
+	"./ScriptInfo.js",
+	"./CaseMapper.js"
+], function(require) {
+	console.log("foo");
+}, "ilib");
+
+/*
 var DateRngFmt = require("./DateRngFmt.js");
 var IDate = require("./IDate.js");
 var DateFactory = require("./DateFactory.js");
@@ -46,3 +72,4 @@ var LocaleInfo = require("./LocaleInfo.js");
 var DateRngFmt = require("./DateRngFmt.js");
 var ScriptInfo = require("./ScriptInfo.js");
 var CaseMapper = require("./CaseMapper.js");
+*/

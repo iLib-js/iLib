@@ -139,15 +139,19 @@ CalendarFactory._dynMap = {
 	"thaisolar":    "ThaiSolar"
 };
 
+function circumventWebPack(x) {
+	return "./" + x + "Cal.js";
+}
+
 /**
  * Dynamically load the code for a calendar and calendar class if necessary.
  * @protected
  */
-CalendarFactory._dynLoadCalendar = function (name) {
+CalendarFactory._dynLoadCalendar = function (name, fnc) {
 	if (!Calendar._constructors[name]) {
 		var entry = CalendarFactory._dynMap[name];
 		if (entry) {
-			Calendar._constructors[name] = require("./" + entry + "Cal.js");
+			Calendar._constructors[name] = require(fnc(entry));
 		}
 	}
 	return Calendar._constructors[name];
@@ -158,7 +162,7 @@ CalendarFactory._init = function(type, options) {
 	var cons;
 	
 	if (ilib.isDynCode()) {
-		CalendarFactory._dynLoadCalendar(type);
+		CalendarFactory._dynLoadCalendar(type, circumventWebPack);
 	}
 	
 	cons = Calendar._constructors[type];
@@ -179,7 +183,7 @@ CalendarFactory.getCalendars = function () {
 	
 	if (ilib.isDynCode()) {
 		for (c in CalendarFactory._dynMap) {
-			CalendarFactory._dynLoadCalendar(c);
+			CalendarFactory._dynLoadCalendar(c, circumventWebPack);
 		}
 	}
 	
