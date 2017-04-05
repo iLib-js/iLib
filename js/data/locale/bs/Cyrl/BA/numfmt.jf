@@ -1,8 +1,0 @@
-{
-    "generated": true,
-    "numfmt": {
-        "currencyFormats": {
-            "common": "{n} {s}"
-        }
-    }
-}

@@ -9333,894 +9333,831 @@ function testLocaleInfoRoundingMode_az_Latn_AZ() {
     assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for km-KH
+/************************************************end 04-JUN-2013**********************************************************/
 
-function testLocaleInfoGetDecimalSeparatorfor_km_KH() {
-    var info = new LocaleInfo("km-KH");
+function testLocaleInfoGetGroupingSeparator1() {
+    var info = new LocaleInfo();
     assertNotNull(info);
-    assertEquals(",", info.getDecimalSeparator());
-}
 
-function testLocaleInfoGetGroupingSeparatorfor_km_KH() {
-    var info = new LocaleInfo("km-KH");
+    assertEquals(",", info.getGroupingSeparator());
+}
+function testLocaleInfoGetGroupingSeparator2() {
+    var info = new LocaleInfo("de-DE");
     assertNotNull(info);
 
     assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetPercentageFormat_km_KH() {
-    var info = new LocaleInfo("km-KH");
+function testLocaleInfoGetGroupingSeparator3() {
+    var info = new LocaleInfo("fr-FR");
     assertNotNull(info);
 
-    assertEquals("{n}%", info.getPercentageFormat());
+    assertEquals(" ", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetCurrencyFormat_km_KH() {
-    var info = new LocaleInfo("km-KH");
-    assertNotNull(info);
-
-    assertEquals("{n}{s}", info.getCurrencyFormats().common);
-}
-
-function testLocaleInfoGetNegativeNumberFormat_km_KH() {
-	var info = new LocaleInfo("km-KH");
-	assertNotNull(info);
-
-	assertEquals("-{n}", info.getNegativeNumberFormat());
-}
-
-function testLocaleInfoGetNegativePercentageFormat_km_KH() {
-	var info = new LocaleInfo("km-KH");
-	assertNotNull(info);
-
-	assertEquals("-{n}%", info.getNegativePercentageFormat());
-}
-
-function testLocaleInfoGetNegativeCurrencyFormat_km_KH() {
-	var info = new LocaleInfo("km-KH");
-	assertNotNull(info);
-
-	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
-}
-
-function testLocaleInfoGetPrimaryGroupingDigits_km_KH() {
-    var info = new LocaleInfo("km-KH");
+function testLocaleInfoGetGroupingDigits1() {
+    var info = new LocaleInfo();
     assertNotNull(info);
 
     assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetSecondaryGroupingDigits_km_KH() {
-    var info = new LocaleInfo("km-KH");
-    assertNotNull(info);
-
-    assertEquals(0, info.getSecondaryGroupingDigits());
-}
-
-function testLocaleInfoRoundingMode_km_KH() {
-    var info = new LocaleInfo("km-KH");
-    assertNotNull(info);
-
-    assertEquals("halfdown", info.getRoundingMode());
-}
-/************************************************end 04-JUN-2013**********************************************************/
-/** Add negative format test cases (08-NOV-2016) **/
-
-function testLocaleInfoGetGroupingSeparator1() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
-
-	assertEquals(",", info.getGroupingSeparator());
-}
-function testLocaleInfoGetGroupingSeparator2() {
-	var info = new LocaleInfo("de-DE");
-	assertNotNull(info);
-
-	assertEquals(".", info.getGroupingSeparator());
-}
-
-function testLocaleInfoGetGroupingSeparator3() {
-	var info = new LocaleInfo("fr-FR");
-	assertNotNull(info);
-
-	assertEquals(" ", info.getGroupingSeparator());
-}
-
-function testLocaleInfoGetGroupingDigits1() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
-
-	assertEquals(3, info.getPrimaryGroupingDigits());
-}
-
 function testLocaleInfoGetGroupingDigits2() {
-	var info = new LocaleInfo("de-DE");
-	assertNotNull(info);
+    var info = new LocaleInfo("de-DE");
+    assertNotNull(info);
 
-	assertEquals(3, info.getPrimaryGroupingDigits());
+    assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetGroupingDigits3() {
-	var info = new LocaleInfo("zh-Hans-CN");
-	assertNotNull(info);
+    var info = new LocaleInfo("zh-CN");
+    assertNotNull(info);
 
-	assertEquals(3, info.getPrimaryGroupingDigits());
+    assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetPercentageFormat2() {
-	var info = new LocaleInfo("fr-FR");
-	assertNotNull(info);
+    var info = new LocaleInfo("fr-FR");
+    assertNotNull(info);
 
-	assertEquals("{n} %", info.getPercentageFormat());
+    assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetPercentageFormat1() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
+    var info = new LocaleInfo();
+    assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+    assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetPercentageSymbol1() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
+    var info = new LocaleInfo();
+    assertNotNull(info);
 
-	assertEquals("%", info.getPercentageSymbol());
+    assertEquals("%", info.getPercentageSymbol());
 }
 
 function testLocaleInfoGetPercentageSymbol2() {
-	var info = new LocaleInfo("fr-FR");
-	assertNotNull(info);
+    var info = new LocaleInfo("fr-FR");
+    assertNotNull(info);
 
-	assertEquals("%", info.getPercentageSymbol());
+    assertEquals("%", info.getPercentageSymbol());
 }
 
 function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	// for the generic, shared stuff
-	data.push(ilib.data.localeinfo || {
-	    "calendar": "gregorian",
-	    "clock": "24",
-	    "currency": "USD",
-	    "firstDayOfWeek": 1,
-	    "numfmt": {
-	        "script": "Latn",
-	        "decimalChar": ",",
-	        "groupChar": ".",
-	        "prigroupSize": 3,
-	        "pctFmt": "{n}%",
-	        "pctChar": "%",
-	        "roundingMode": "halfdown",
-	        "exponential": "e",
-	        "currencyFormats": {
-	            "common": "{s}{n}",
-	            "commonNegative": "{s}-{n}"
-	        }
-	    },
-	    "timezone": "Etc/UTC",
-	    "units": "metric"
-	});
-	paths.shift();
-	paths.forEach(function (path) {
-		if (path.search("fr/localeinfo.json$") !== -1) {
-			data.push({
-			    "language.name": "French",
-			    "numfmt": {
-			        "groupChar": " ",
-			        "currencyFormats": {
-			            "common": "{n} {s}",
-			            "commonNegative": "({n} {s})"
-			        },
-			        "pctFmt": "{n} %"
-			    },
-			    "paperSizes": {
-			        "regular": "A4",
-			        "photo": "4x6"
-			    },
-			    "scripts": [
-			        "Latn"
-			    ],
-			    "locale": "fr"
-			});
-		} else if (path.search("FR/localeinfo.json$") !== -1) {
-			data.push({
-			    "currency": "EUR",
-			    "firstDayOfWeek": 1,
-			    "region.name": "France",
-			    "timezone": "Europe/Paris",
-			    "locale": "FR"
-			});
-		} else {
-			data.push((path.indexOf('zzz') === -1) ? undefined : {
-				"clock": "24",
-				"units": "metric",
-				"calendar": "hebrew",
-				"firstDayOfWeek": 4,
-				"currency": "JPY",
-				"timezone": "Asia/Tokyo",
-				"numfmt": {
-					"decimalChar": ".",
-					"groupChar": ",",
-					"groupSize": 4,
-					"pctFmt": "{n} %",
-					"pctChar": "%",
-					"currencyFormats": {
-						"common": "common {s} {n}",
-						"iso": "iso {s} {n}"
-					}
-				},
-				"locale": "zzz-ZZ"
-			});
-		}
-	});
-	if (typeof (callback) !== 'undefined') {
-		callback.call(this, data);
-	}
-	return data;
+    var data = [];
+    // for the generic, shared stuff
+    data.push(ilib.data.localeinfo || {
+        "calendar": "gregorian",
+        "clock": "24",
+        "currency": "USD",
+        "firstDayOfWeek": 1,
+        "numfmt": {
+            "script": "Latn",
+            "decimalChar": ",",
+            "groupChar": ".",
+            "prigroupSize": 3,
+            "pctFmt": "{n}%",
+            "pctChar": "%",
+            "roundingMode": "halfdown",
+            "exponential": "e",
+            "currencyFormats": {
+                "common": "{s}{n}",
+                "commonNegative": "{s}-{n}"
+            }
+        },
+        "timezone": "Etc/UTC",
+        "units": "metric"
+    });
+    paths.shift();
+    paths.forEach(function (path) {
+        if (path.search("fr/localeinfo.json$") !== -1) {
+            data.push({
+                "language.name": "French",
+                "numfmt": {
+                    "groupChar": " ",
+                    "currencyFormats": {
+                        "common": "{n} {s}",
+                        "commonNegative": "({n} {s})"
+                    },
+                    "pctFmt": "{n} %"
+                },
+                "paperSizes": {
+                    "regular": "A4",
+                    "photo": "4x6"
+                },
+                "scripts": [
+                    "Latn"
+                ],
+                "locale": "fr"
+            });
+        } else if (path.search("FR/localeinfo.json$") !== -1) {
+            data.push({
+                "currency": "EUR",
+                "firstDayOfWeek": 1,
+                "region.name": "France",
+                "timezone": "Europe/Paris",
+                "locale": "FR"
+            });
+        } else {
+            data.push((path.indexOf('zzz') === -1) ? undefined : {
+                "clock": "24",
+                "units": "metric",
+                "calendar": "hebrew",
+                "firstDayOfWeek": 4,
+                "currency": "JPY",
+                "timezone": "Asia/Tokyo",
+                "numfmt": {
+                    "decimalChar": ".",
+                    "groupChar": ",",
+                    "groupSize": 4,
+                    "pctFmt": "{n} %",
+                    "pctChar": "%",
+                    "currencyFormats": {
+                        "common": "common {s} {n}",
+                        "iso": "iso {s} {n}"
+                    }
+                },
+                "locale": "zzz-ZZ"
+            });
+        }
+    });
+    if (typeof (callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+    return data;
 };
 
 function testLocaleInfoLoadMissingDataAsynch() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	var callbackCalled = false;
-	ilib.setLoaderCallback(mockLoader);
-	LocaleInfo.cache = {}; // empty the cache
-	var info = new LocaleInfo("zzz-ZX", {
-		sync: false,
-		onLoad: function (li) {
-			assertNotNull(li);
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    var callbackCalled = false;
+    ilib.setLoaderCallback(mockLoader);
+    LocaleInfo.cache = {}; // empty the cache
+    var info = new LocaleInfo("zzz-ZX", {
+        sync: false,
+        onLoad: function (li) {
+            assertNotNull(li);
 
-			assertEquals("iso {s} {n}", li.getCurrencyFormats().iso);
-			assertEquals(4, li.getFirstDayOfWeek());
-			assertEquals("%", li.getPercentageSymbol());
-			callbackCalled = true;
-		}
-	});
-	assertNotNull(info);
-	assertTrue(callbackCalled);
-	ilib.setLoaderCallback(undefined);
+            assertEquals("iso {s} {n}", li.getCurrencyFormats().iso);
+            assertEquals(4, li.getFirstDayOfWeek());
+            assertEquals("%", li.getPercentageSymbol());
+            callbackCalled = true;
+        }
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataSync() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	LocaleInfo.cache = {}; // empty the cache
-	ilib.setLoaderCallback(mockLoader);
-	var info = new LocaleInfo("zzz-ZX", {
-		sync: true
-	});
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    LocaleInfo.cache = {}; // empty the cache
+    ilib.setLoaderCallback(mockLoader);
+    var info = new LocaleInfo("zzz-ZX", {
+        sync: true
+    });
 
-	assertNotNull(info);
+    assertNotNull(info);
 
-	assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
-	assertEquals(4, info.getFirstDayOfWeek());
-	assertEquals("%", info.getPercentageSymbol());
-	ilib.setLoaderCallback(undefined);
+    assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
+    assertEquals(4, info.getFirstDayOfWeek());
+    assertEquals("%", info.getPercentageSymbol());
+    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataAsynchNoData() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	var callbackCalled = false;
-	LocaleInfo.cache = {}; // empty the cache
-	ilib.setLoaderCallback(mockLoader);
-	var info = new LocaleInfo("qq-QQ", {
-		sync: false,
-		onLoad: function (li) {
-			assertNotUndefined(li);
-			callbackCalled = true;
-			// should return the shared data only
-			assertEquals("{s} {n}", li.getCurrencyFormats().common);
-			assertEquals(1, li.getFirstDayOfWeek());
-			assertEquals("%", li.getPercentageSymbol());
-		}
-	});
-	assertNotNull(info);
-	assertTrue(callbackCalled);
-	ilib.setLoaderCallback(undefined);
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    var callbackCalled = false;
+    LocaleInfo.cache = {}; // empty the cache
+    ilib.setLoaderCallback(mockLoader);
+    var info = new LocaleInfo("qq-QQ", {
+        sync: false,
+        onLoad: function (li) {
+            assertNotUndefined(li);
+            callbackCalled = true;
+            // should return the shared data only
+            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals(1, li.getFirstDayOfWeek());
+            assertEquals("%", li.getPercentageSymbol());
+        }
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoMissingDataSynchNoDataNoLoader() {
-	var temp = ilib._load;
+    var temp = ilib._load;
 
-	ilib._load = undefined;  // no loader
-	var callbackCalled = false;
-	LocaleInfo.cache = {}; // empty the cache
+    ilib._load = undefined;  // no loader
+    var callbackCalled = false;
+    LocaleInfo.cache = {}; // empty the cache
 
-	var info = new LocaleInfo("xxx-QQ", {
-		sync: true,
-		onLoad: function (li) {
-			assertNotUndefined(li);
-			callbackCalled = true;
-			// should return the shared data only
-			assertEquals("{s} {n}", li.getCurrencyFormats().common);
-			assertEquals(1, li.getFirstDayOfWeek());
-			assertEquals("%", li.getPercentageSymbol());
-		}
-	});
-	assertNotNull(info);
-	assertTrue(callbackCalled);
+    var info = new LocaleInfo("xxx-QQ", {
+        sync: true,
+        onLoad: function (li) {
+            assertNotUndefined(li);
+            callbackCalled = true;
+            // should return the shared data only
+            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals(1, li.getFirstDayOfWeek());
+            assertEquals("%", li.getPercentageSymbol());
+        }
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
 
-	// clean up
-	ilib._load = undefined;  // no loader
-	LocaleInfo.cache = {}; // empty the cache
-	ilib._load = temp;
+    // clean up
+    ilib._load = undefined;  // no loader
+    LocaleInfo.cache = {}; // empty the cache
+    ilib._load = temp;
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	LocaleInfo.cache = {}; // empty the cache
-	ilib.setLoaderCallback(mockLoader);
-	var li = new LocaleInfo("qq-QQ", {
-		sync: true
-	});
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    LocaleInfo.cache = {}; // empty the cache
+    ilib.setLoaderCallback(mockLoader);
+    var li = new LocaleInfo("qq-QQ", {
+        sync: true
+    });
 
-	assertNotUndefined(li);
-	// should return the shared data only
-	assertEquals("{s} {n}", li.getCurrencyFormats().common);
-	assertEquals(1, li.getFirstDayOfWeek());
-	assertEquals("%", li.getPercentageSymbol());
-	ilib.setLoaderCallback(undefined);
+    assertNotUndefined(li);
+    // should return the shared data only
+    assertEquals("{s}{n}", li.getCurrencyFormats().common);
+    assertEquals(1, li.getFirstDayOfWeek());
+    assertEquals("%", li.getPercentageSymbol());
+    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadPreassembledDataAsynch() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	var callbackCalled = false;
-	LocaleInfo.cache = {}; // empty the cache
-	ilib.setLoaderCallback(mockLoader);
-	var info = new LocaleInfo("fr-FR", {
-		sync: false,
-		onLoad: function (li) {
-			assertNotUndefined(li);
-			callbackCalled = true;
-			// should return the shared data only
-			assertEquals("EUR", li.getCurrency());
-			assertEquals(1, li.getFirstDayOfWeek());
-			assertEquals("FR", li.info.locale);
-			assertEquals("Europe/Paris", li.getTimeZone());
-		}
-	});
-	assertNotNull(info);
-	assertTrue(callbackCalled);
-	ilib.setLoaderCallback(undefined);
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    var callbackCalled = false;
+    LocaleInfo.cache = {}; // empty the cache
+    ilib.setLoaderCallback(mockLoader);
+    var info = new LocaleInfo("fr-FR", {
+        sync: false,
+        onLoad: function (li) {
+            assertNotUndefined(li);
+            callbackCalled = true;
+            // should return the shared data only
+            assertEquals("EUR", li.getCurrency());
+            assertEquals(1, li.getFirstDayOfWeek());
+            assertEquals("FR", li.info.locale);
+            assertEquals("Europe/Paris", li.getTimeZone());
+        }
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 // locale with no script
 ilib.data.localeinfo_fr_FR_overseas = {
-	"currency": "USD",
-	"locale": "fr-FR-overseas",
-	"timezone": "Pacific/Tahiti"
+    "currency": "USD",
+    "locale": "fr-FR-overseas",
+    "timezone": "Pacific/Tahiti"
 };
 
 function testLocaleInfoLoadMissingLocaleParts() {
-	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
-		// should not test mixed loading on the dynamic load version because it was not designed for it
-		return;
-	}
-	LocaleInfo.cache = {}; // empty the cache
-	var li = new LocaleInfo("fr-FR-overseas");
-	assertNotUndefined(li);
-	assertEquals("USD", li.getCurrency());
-	assertEquals(1, li.getFirstDayOfWeek());
-	assertEquals("fr-FR-overseas", li.info.locale);
-	assertEquals("Pacific/Tahiti", li.getTimeZone());
+    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+        // should not test mixed loading on the dynamic load version because it was not designed for it
+        return;
+    }
+    LocaleInfo.cache = {}; // empty the cache
+    var li = new LocaleInfo("fr-FR-overseas");
+    assertNotUndefined(li);
+    assertEquals("USD", li.getCurrency());
+    assertEquals(1, li.getFirstDayOfWeek());
+    assertEquals("fr-FR-overseas", li.info.locale);
+    assertEquals("Pacific/Tahiti", li.getTimeZone());
 }
 
 function testLocaleInfoGetAllScriptsSingle() {
-	var li = new LocaleInfo("nl-NL");
-	assertNotUndefined(li);
-	assertArrayEqualsIgnoringOrder(["Latn"], li.getAllScripts());
+    var li = new LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Latn"], li.getAllScripts());
 }
 
 function testLocaleInfoGetAllScriptsMultiple1() {
-	var li = new LocaleInfo("de-DE");
-	assertNotUndefined(li);
-	assertArrayEqualsIgnoringOrder(["Latn", "Runr"], li.getAllScripts());
+    var li = new LocaleInfo("de-DE");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Latn", "Runr"], li.getAllScripts());
 }
 
 function testLocaleInfoGetAllScriptsMultiple2() {
-	var li = new LocaleInfo("uz-UZ");
-	assertNotUndefined(li);
-	assertArrayEqualsIgnoringOrder(["Arab", "Cyrl", "Latn"], li.getAllScripts());
+    var li = new LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Arab", "Cyrl", "Latn"], li.getAllScripts());
 }
 
 function testLocaleInfoGetDefaultScriptSingle() {
-	var li = new LocaleInfo("nl-NL");
-	assertNotUndefined(li);
-	assertEquals("Latn", li.getDefaultScript());
+    var li = new LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertEquals("Latn", li.getDefaultScript());
 }
 
 function testLocaleInfoGetDefaultScriptMultiple() {
-	var li = new LocaleInfo("uz-UZ");
-	assertNotUndefined(li);
-	assertEquals("Arab", li.getDefaultScript());
+    var li = new LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertEquals("Arab", li.getDefaultScript());
 }
 
 function testLocaleInfoGetScriptSingle() {
-	var li = new LocaleInfo("nl-NL");
-	assertNotUndefined(li);
-	assertEquals("Latn", li.getScript());
+    var li = new LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertEquals("Latn", li.getScript());
 }
 
 function testLocaleInfoGetScriptMultiple() {
-	var li = new LocaleInfo("uz-UZ");
-	assertNotUndefined(li);
-	assertEquals("Arab", li.getScript());
+    var li = new LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertEquals("Arab", li.getScript());
 }
 
 function testLocaleInfoGetScriptMultipleLocaleOverride() {
-	var li = new LocaleInfo("uz-Cyrl-UZ");
-	assertNotUndefined(li);
-	assertEquals("Cyrl", li.getScript());
+    var li = new LocaleInfo("uz-Cyrl-UZ");
+    assertNotUndefined(li);
+    assertEquals("Cyrl", li.getScript());
 }
 
 function testLocaleInfoGetLanguageName1() {
-	var li = new LocaleInfo("he-IL");
-	assertNotUndefined(li);
-	assertEquals("Hebrew", li.getLanguageName());
+    var li = new LocaleInfo("he-IL");
+    assertNotUndefined(li);
+    assertEquals("Hebrew", li.getLanguageName());
 }
 
 function testLocaleInfoGetLanguageName2() {
-	var li = new LocaleInfo("es-MX");
-	assertNotUndefined(li);
-	assertEquals("Spanish", li.getLanguageName());
+    var li = new LocaleInfo("es-MX");
+    assertNotUndefined(li);
+    assertEquals("Spanish", li.getLanguageName());
 }
 
 function testLocaleInfoGetLanguageName3() {
-	var li = new LocaleInfo("asa-TZ");
-	assertNotUndefined(li);
-	assertEquals("Asu", li.getLanguageName());
+    var li = new LocaleInfo("asa-TZ");
+    assertNotUndefined(li);
+    assertEquals("Asu", li.getLanguageName());
 }
 
 function testLocaleInfoGetRegionName1() {
-	var li = new LocaleInfo("he-IL");
-	assertNotUndefined(li);
-	assertEquals("Israel", li.getRegionName());
+    var li = new LocaleInfo("he-IL");
+    assertNotUndefined(li);
+    assertEquals("Israel", li.getRegionName());
 }
 
 function testLocaleInfoGetRegionName2() {
-	var li = new LocaleInfo("es-MX");
-	assertNotUndefined(li);
-	assertEquals("Mexico", li.getRegionName());
+    var li = new LocaleInfo("es-MX");
+    assertNotUndefined(li);
+    assertEquals("Mexico", li.getRegionName());
 }
 
 function testLocaleInfoGetRegionName3() {
-	var li = new LocaleInfo("asa-TZ");
-	assertNotUndefined(li);
-	assertEquals("Tanzania", li.getRegionName());
+    var li = new LocaleInfo("asa-TZ");
+    assertNotUndefined(li);
+    assertEquals("Tanzania", li.getRegionName());
 }
 
 function testGetDigitsWestern() {
-	var li = new LocaleInfo("en-US");
-	assertNotUndefined(li);
-	assertUndefined(li.getDigits());
+    var li = new LocaleInfo("en-US");
+    assertNotUndefined(li);
+    assertUndefined(li.getDigits());
 }
 
 function testGetDigitsWesternNative() {
-	var li = new LocaleInfo("en-US");
-	assertNotUndefined(li);
-	assertUndefined(li.getDigits());
+    var li = new LocaleInfo("en-US");
+    assertNotUndefined(li);
+    assertUndefined(li.getDigits());
 }
 
 function testGetDigitsNonWesternOptional() {
-	var li = new LocaleInfo("hi-IN");
-	assertNotUndefined(li);
-	assertUndefined(li.getDigits());
+    var li = new LocaleInfo("hi-IN");
+    assertNotUndefined(li);
+    assertUndefined(li.getDigits());
 }
 
 function testGetDigitsNonWesternNative() {
-	var li = new LocaleInfo("hi-IN");
-	assertNotUndefined(li);
-	assertEquals("०१२३४५६७८९", li.getNativeDigits());
+    var li = new LocaleInfo("hi-IN");
+    assertNotUndefined(li);
+    assertEquals("०१२३४५६७८९", li.getNativeDigits());
 }
 
 function testGetDigitsNonWesternUsual() {
-	var li = new LocaleInfo("bn-IN");
-	assertNotUndefined(li);
-	assertEquals("০১২৩৪৫৬৭৮৯", li.getDigits());
+    var li = new LocaleInfo("bn-IN");
+    assertNotUndefined(li);
+    assertEquals("০১২৩৪৫৬৭৮৯", li.getDigits());
 }
 
 function testGetDigitsNonWesternUsualNative() {
-	var li = new LocaleInfo("bn-IN");
-	assertNotUndefined(li);
-	assertEquals("০১২৩৪৫৬৭৮৯", li.getNativeDigits());
+    var li = new LocaleInfo("bn-IN");
+    assertNotUndefined(li);
+    assertEquals("০১২৩৪৫৬৭৮৯", li.getNativeDigits());
 }
 
 function testGetDigitsStyleWestern() {
-	var li = new LocaleInfo("en-US");
-	assertNotUndefined(li);
-	assertEquals("western", li.getDigitsStyle());
+    var li = new LocaleInfo("en-US");
+    assertNotUndefined(li);
+    assertEquals("western", li.getDigitsStyle());
 }
 
 function testGetDigitsStyleOptional() {
-	var li = new LocaleInfo("hi-IN");
-	assertNotUndefined(li);
-	assertEquals("optional", li.getDigitsStyle());
+    var li = new LocaleInfo("hi-IN");
+    assertNotUndefined(li);
+    assertEquals("optional", li.getDigitsStyle());
 }
 
 function testGetDigitsStyleNative() {
-	var li = new LocaleInfo("bn-IN");
-	assertNotUndefined(li);
-	assertEquals("native", li.getDigitsStyle());
+    var li = new LocaleInfo("bn-IN");
+    assertNotUndefined(li);
+    assertEquals("native", li.getDigitsStyle());
 }
 /*Get weekend Data*/
 function testLocaleInfoGetWeekendUS() {
-	var info = new LocaleInfo("en-US");
-	assertNotNull(info);
+    var info = new LocaleInfo("en-US");
+    assertNotNull(info);
 
-	assertEquals(6, info.getWeekEndStart());
-	assertEquals(0, info.getWeekEndEnd());
+    assertEquals(6, info.getWeekEndStart());
+    assertEquals(0, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendDE() {
-	var info = new LocaleInfo("de-DE");
-	assertNotNull(info);
+    var info = new LocaleInfo("de-DE");
+    assertNotNull(info);
 
-	assertEquals(6, info.getWeekEndStart());
-	assertEquals(0, info.getWeekEndEnd());
+    assertEquals(6, info.getWeekEndStart());
+    assertEquals(0, info.getWeekEndEnd());
 }
 
 
 function testLocaleInfoGetWeekendFR() {
-	var info = new LocaleInfo("fr-FR");
-	assertNotNull(info);
+    var info = new LocaleInfo("fr-FR");
+    assertNotNull(info);
 
-	assertEquals(6, info.getWeekEndStart());
-	assertEquals(0, info.getWeekEndEnd());
+    assertEquals(6, info.getWeekEndStart());
+    assertEquals(0, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendAE() {
-	var info = new LocaleInfo("ar-AE");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-AE");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendBH() {
-	var info = new LocaleInfo("ar-BH");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-BH");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendDZ() {
-	var info = new LocaleInfo("ar-DZ");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-DZ");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendEG() {
-	var info = new LocaleInfo("ar-EG");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-EG");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendIL() {
-	var info = new LocaleInfo("he-IL");
-	assertNotNull(info);
+    var info = new LocaleInfo("he-IL");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendIQ() {
-	var info = new LocaleInfo("ar-IQ");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-IQ");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendJO() {
-	var info = new LocaleInfo("ar-JO");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-JO");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendKW() {
-	var info = new LocaleInfo("ar-KW");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-KW");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendLY() {
-	var info = new LocaleInfo("ar-LY");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-LY");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendMA() {
-	var info = new LocaleInfo("ar-MA");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-MA");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendOM() {
-	var info = new LocaleInfo("ar-OM");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-OM");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendQA() {
-	var info = new LocaleInfo("ar-QA");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-QA");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendSA() {
-	var info = new LocaleInfo("ar-SA");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-SA");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendSD() {
-	var info = new LocaleInfo("ar-SD");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-SD");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendSY() {
-	var info = new LocaleInfo("ar-SY");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-SY");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendTN() {
-	var info = new LocaleInfo("ar-TN");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-TN");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendYE() {
-	var info = new LocaleInfo("ar-YE");
-	assertNotNull(info);
+    var info = new LocaleInfo("ar-YE");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(6, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(6, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendAF() {
-	var info = new LocaleInfo("ps-AF");
-	assertNotNull(info);
+    var info = new LocaleInfo("ps-AF");
+    assertNotNull(info);
 
-	assertEquals(4, info.getWeekEndStart());
-	assertEquals(5, info.getWeekEndEnd());
+    assertEquals(4, info.getWeekEndStart());
+    assertEquals(5, info.getWeekEndEnd());
 }
 
 function testLocaleInfoGetWeekendIR() {
-	var info = new LocaleInfo("fa-IR");
-	assertNotNull(info);
+    var info = new LocaleInfo("fa-IR");
+    assertNotNull(info);
 
-	assertEquals(5, info.getWeekEndStart());
-	assertEquals(5, info.getWeekEndEnd());
+    assertEquals(5, info.getWeekEndStart());
+    assertEquals(5, info.getWeekEndEnd());
 }
 function testLocaleInfoGetWeekendIN() {
-	var info = new LocaleInfo("hi-IN");
-	assertNotNull(info);
+    var info = new LocaleInfo("hi-IN");
+    assertNotNull(info);
 
-	assertEquals(0, info.getWeekEndStart());
-	assertEquals(0, info.getWeekEndEnd());
+    assertEquals(0, info.getWeekEndStart());
+    assertEquals(0, info.getWeekEndEnd());
 }
+function testLocaleInfoGetWeekendIN() {
+    var info = new LocaleInfo("az-Latn-AZ");
+    assertNotNull(info);
 
+    assertEquals(6, info.getWeekEndStart());
+    assertEquals(0, info.getWeekEndEnd());
+}
 
 function testLocaleInfoGetMeridiemsStyleDefault() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
+    var info = new LocaleInfo();
+    assertNotNull(info);
 
-	assertEquals("gregorian", info.getMeridiemsStyle());
+    assertEquals("gregorian", info.getMeridiemsStyle());
 }
 function testLocaleInfoGetMeridiemsStyleUS() {
-	var info = new LocaleInfo("en-US");
-	assertNotNull(info);
+    var info = new LocaleInfo("en-US");
+    assertNotNull(info);
 
-	assertEquals("gregorian", info.getMeridiemsStyle());
+    assertEquals("gregorian", info.getMeridiemsStyle());
 }
 function testLocaleInfoGetMeridiemsStyle_am_ET() {
-	var info = new LocaleInfo("am-ET");
-	assertNotNull(info);
+    var info = new LocaleInfo("am-ET");
+    assertNotNull(info);
 
-	assertEquals("ethiopic", info.getMeridiemsStyle());
+    assertEquals("ethiopic", info.getMeridiemsStyle());
 }
 function testLocaleInfoGetMeridiemsStyle_zh_Hans_CN() {
-	var info = new LocaleInfo("zh-Hans-CN");
-	assertNotNull(info);
+    var info = new LocaleInfo("zh-Hans-CN");
+    assertNotNull(info);
 
-	// Even for the Chinese locales, the default is
-	// Gregorian style. To format with Chinese style,
-	// you have to explicitly request it when constructing
-	// the date formatter instance.
-	assertEquals("gregorian", info.getMeridiemsStyle());
+    // Even for the Chinese locales, the default is
+    // Gregorian style. To format with Chinese style,
+    // you have to explicitly request it when constructing
+    // the date formatter instance.
+    assertEquals("gregorian", info.getMeridiemsStyle());
 }
 
 function testLocaleInfoPaperSizeDefault() {
-	var info = new LocaleInfo();
-	assertNotNull(info);
-	
-	// If locale is not specified, default locale would be return as "en-US".
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo();
+    assertNotNull(info);
+
+    // If locale is not specified, default locale would be return as "en-US".
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_en_US() {
-	var info = new LocaleInfo("en-US");
-	assertNotNull(info);
-	
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo("en-US");
+    assertNotNull(info);
+
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_ko_KR() {
-	var info = new LocaleInfo("ko-KR");
-	assertNotNull(info);
-	
-	assertEquals("A4", info.getPaperSize());
+    var info = new LocaleInfo("ko-KR");
+    assertNotNull(info);
+
+    assertEquals("A4", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_es_MX() {
-	var info = new LocaleInfo("es-MX");
-	assertNotNull(info);
-	
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo("es-MX");
+    assertNotNull(info);
+
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_es_SV() {
-	var info = new LocaleInfo("es-SV");
-	assertNotNull(info);
-	
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo("es-SV");
+    assertNotNull(info);
+
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_es_PR() {
-	var info = new LocaleInfo("es-PR");
-	assertNotNull(info);
-	
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo("es-PR");
+    assertNotNull(info);
+
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_es_VE() {
-	var info = new LocaleInfo("es-VE");
-	assertNotNull(info);
-	
-	assertEquals("8x11", info.getPaperSize());
+    var info = new LocaleInfo("es-VE");
+    assertNotNull(info);
+
+    assertEquals("8x11", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_fr_FR() {
-	var info = new LocaleInfo("fr-FR");
-	assertNotNull(info);
-	
-	assertEquals("A4", info.getPaperSize());
+    var info = new LocaleInfo("fr-FR");
+    assertNotNull(info);
+
+    assertEquals("A4", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_de_DE() {
-	var info = new LocaleInfo("de-DE");
-	assertNotNull(info);
-	
-	assertEquals("A4", info.getPaperSize());
+    var info = new LocaleInfo("de-DE");
+    assertNotNull(info);
+
+    assertEquals("A4", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_it_IT() {
-	var info = new LocaleInfo("it-IT");
-	assertNotNull(info);
-	
-	assertEquals("A4", info.getPaperSize());
+    var info = new LocaleInfo("it-IT");
+    assertNotNull(info);
+
+    assertEquals("A4", info.getPaperSize());
 }
 
 function testLocaleInfoPaperSize_zh_CN() {
-	var info = new LocaleInfo("zh-CN");
-	assertNotNull(info);
-	
-	assertEquals("A4", info.getPaperSize());
+    var info = new LocaleInfo("zh-CN");
+    assertNotNull(info);
+
+    assertEquals("A4", info.getPaperSize());
 }
 
 function testLocaleInfoQuotation_en_US() {
-	var info = new LocaleInfo("en-US");
-	assertNotNull(info);
-	
-	assertEquals("“", info.getDelimiterQuotationStart());
-	assertEquals("”", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("en-US");
+    assertNotNull(info);
+
+    assertEquals("“", info.getDelimiterQuotationStart());
+    assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_ko_KR() {
-	var info = new LocaleInfo("ko-KR");
-	assertNotNull(info);
-	
-	assertEquals("“", info.getDelimiterQuotationStart());
-	assertEquals("”", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("ko-KR");
+    assertNotNull(info);
+
+    assertEquals("“", info.getDelimiterQuotationStart());
+    assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_es_ES() {
-	var info = new LocaleInfo("es-ES");
-	assertNotNull(info);
-	
-	assertEquals("«", info.getDelimiterQuotationStart());
-	assertEquals("»", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("es-ES");
+    assertNotNull(info);
+
+    assertEquals("«", info.getDelimiterQuotationStart());
+    assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_zh_CN() {
-	var info = new LocaleInfo("zh-CN");
-	assertNotNull(info);
-	
-	assertEquals("“", info.getDelimiterQuotationStart());
-	assertEquals("”", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("zh-CN");
+    assertNotNull(info);
+
+    assertEquals("“", info.getDelimiterQuotationStart());
+    assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_fa_IR() {
-	var info = new LocaleInfo("fa-IR");
-	assertNotNull(info);
-	
-	assertEquals("«", info.getDelimiterQuotationStart());
-	assertEquals("»", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("fa-IR");
+    assertNotNull(info);
+
+    assertEquals("«", info.getDelimiterQuotationStart());
+    assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_de_DE() {
-	var info = new LocaleInfo("de-DE");
-	assertNotNull(info);
-	
-	assertEquals("„", info.getDelimiterQuotationStart());
-	assertEquals("“", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("de-DE");
+    assertNotNull(info);
+
+    assertEquals("„", info.getDelimiterQuotationStart());
+    assertEquals("“", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_pt_BR() {
-	var info = new LocaleInfo("pt-BR");
-	assertNotNull(info);
-	
-	assertEquals("“", info.getDelimiterQuotationStart());
-	assertEquals("”", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("pt-BR");
+    assertNotNull(info);
+
+    assertEquals("“", info.getDelimiterQuotationStart());
+    assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_hy_AM() {
-	var info = new LocaleInfo("hy-AM");
-	assertNotNull(info);
-	
-	assertEquals("«", info.getDelimiterQuotationStart());
-	assertEquals("»", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("hy-AM");
+    assertNotNull(info);
+
+    assertEquals("«", info.getDelimiterQuotationStart());
+    assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_ur_IN() {
-	var info = new LocaleInfo("ur-IN");
-	assertNotNull(info);
-	
-	assertEquals("\"", info.getDelimiterQuotationStart());
-	assertEquals("\"", info.getDelimiterQuotationEnd());
+    var info = new LocaleInfo("ur-IN");
+    assertNotNull(info);
+
+    assertEquals("\"", info.getDelimiterQuotationStart());
+    assertEquals("\"", info.getDelimiterQuotationEnd());
 }
+
+
