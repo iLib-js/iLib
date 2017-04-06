@@ -7,8 +7,11 @@
         "pctChar": "٪",
         "exponential": "×۱۰^",
         "currencyFormats": {
-            "common": "{n} {s}"
+            "commonNegative": "‎-‎{s} {n}"
         },
+        "negativenumFmt": "‎-‎{n}",
+        "pctFmt": "{n}٪",
+        "negativepctFmt": "‎-‎{n}٪",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }

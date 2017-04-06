@@ -490,7 +490,7 @@ function testNumFmtCurrencyFormatETDefault() {
     
     assertNotNull(fmt);
     
-    assertEquals("(Br57.00)", fmt.format(-57));
+    assertEquals("-Br57.00", fmt.format(-57));
 }
 
 function testNumFmtCurrencyFormatETGrouping() {

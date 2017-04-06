@@ -5,14 +5,24 @@
         "decimalChar": ".",
         "groupChar": ",",
         "pctChar": "%",
-        "exponential": "ق",
+        "exponential": "×۱۰^",
         "prigroupSize": 3,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s}{n}",
+            "commonNegative": "‎-‎{s}{n}"
         },
+        "negativenumFmt": "‎-‎{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "‎-‎{n}%",
         "roundingMode": "halfdown",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "commonNegative": "‎-{s} {n}"
+        },
+        "negativenumFmt": "‎-{n}",
+        "negativepctFmt": "‎-{n}%"
     }
 }

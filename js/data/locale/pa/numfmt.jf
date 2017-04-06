@@ -9,9 +9,12 @@
         "prigroupSize": 3,
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
         },
+        "negativenumFmt": "-{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
         "digits": "੦੧੨੩੪੫੬੭੮੯",
         "useNative": true
