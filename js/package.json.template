@@ -16,9 +16,9 @@
         "locale",
         "translation"
     ],
-    "homepage": "http://sourceforge.net/p/i18nlib/",
-    "bugs": "https://sourceforge.net/p/i18nlib/tickets/new/",
-    "email": "marketing@jedlsoft.com",
+    "homepage": "https://github.com/iLib-js/iLib",
+    "bugs": "https://github.com/iLib-js/iLib/issues",
+    "email": "marketing@translationcircle.com",
     "license": "apache2",
     "licenses": [
         {
@@ -27,15 +27,23 @@
         }
     ],
     "author": {
-    	"name": "Edwin Hoogerbeets",
-    	"web": "http://www.jedlsoft.com/",
-    	"email": "edwin@translationcircle.com"
+        "name": "Edwin Hoogerbeets",
+        "web": "http://www.translationcircle.com/",
+        "email": "edwin@translationcircle.com"
     },
     "contributors": [
         {
             "name": "Edwin Hoogerbeets",
             "email": "ehoogerbeets@gmail.com" 
-        } 
+        },
+        {
+            "name": "Goun Lee",
+            "email": "goun.lee@lge.com"
+        },
+        {
+            "name": "Syeonghyup Park",
+            "email": "seonghyup.park@lge.com"
+        }
     ],
     "files": [
         "lib",
@@ -43,17 +51,20 @@
         "README.md"
     ],
     "repository": {
-        "type": "svn",
-        "url": "svn://svn.code.sf.net/p/i18nlib/code/trunk"
+        "type": "git",
+        "url": "git@github.com:iLib-js/iLib.git"
     },
     "repositories": [
         {
-            "type": "svn",
-            "url": "svn://svn.code.sf.net/p/i18nlib/code/trunk"
+            "type": "git",
+            "url": "git@github.com:iLib-js/iLib.git"
         }
     ],
     "engines": {
         "ringojs": ">=0.9",
-        "nodejs": "<= 0.10.*"
+        "nodejs": ">= 0.10"
+    },
+    "scripts": {
+       "test": "ant test"
     }
 }
