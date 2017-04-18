@@ -865,7 +865,7 @@ function testDateFmtShortTimeComponentsHMZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 EEST", fmt.format(date));
+	    assertEquals("13:45 +03", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_tr_TR() {
@@ -886,7 +886,7 @@ function testDateFmtShortTimeComponentsHMAZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 EEST", fmt.format(date));
+	    assertEquals("13:45 +03", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_tr_TR() {
@@ -924,7 +924,7 @@ function testDateFmtShortTimeComponentsHMSZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 EEST", fmt.format(date));
+	    assertEquals("13:45:37 +03", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_tr_TR() {
@@ -945,7 +945,7 @@ function testDateFmtShortTimeComponentsHMSAZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 EEST", fmt.format(date));
+	    assertEquals("13:45:37 +03", fmt.format(date));
 }
 
 
@@ -1087,7 +1087,7 @@ function testDateFmtFullTimeComponentsHMZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 EEST", fmt.format(date));
+	    assertEquals("13:45 +03", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_tr_TR() {
@@ -1109,7 +1109,7 @@ function testDateFmtFullTimeComponentsHMAZ_tr_TR() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 EEST", fmt.format(date));
+	    assertEquals("13:45 +03", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_tr_TR() {

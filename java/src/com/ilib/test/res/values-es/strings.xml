@@ -1,0 +1,5 @@
+<resources>
+    <string name="Opt out failed. Try later">Falló la opción de no participar. Intentarlo más tarde.</string>
+    <string name="Done">Aceptar</string>
+    <string name="A verification email was sent to {email}.">Se envió un mensaje de verificación a {email}.</string>
+</resources>

@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,7 +44,7 @@ import org.json.JSONObject;
  */
 public class ResBundle
 {
-	protected static final File PSEUDOROOT 					= new File("js/data/locale");
+	// protected static final File PSEUDOROOT 					= new File("js/data/locale");
 	protected static final String HTML_TYPE 				= "html";
 	protected static final String XML_TYPE 					= "xml";
 	protected static final String RAW_TYPE 					= "raw";
@@ -293,29 +294,28 @@ public class ResBundle
     	}
 
     	String result = null;
-    	File pseudoMapFile = new File(PSEUDOROOT, script.toString() + PSEUDO_JSON);
+    	ClassLoader cl = this.getClass().getClassLoader();
+    	// File pseudoMapFile = new File(PSEUDOROOT, script.toString() + PSEUDO_JSON);
 		try {
-			Scanner scanner = new Scanner(new FileInputStream(pseudoMapFile), "utf-8");
-			result = scanner.useDelimiter("\\A").next();
-	        scanner.close();
-		} catch (FileNotFoundException e1) {
-			
-		}
+	    	InputStream is = cl.getResourceAsStream("locale/" + script.toString() + "/" + PSEUDO_JSON);
+			if (is != null) {
+		    	Scanner scanner = new Scanner(is, "utf-8");
+				result = scanner.useDelimiter("\\A").next();
+		        scanner.close();
 
-		try {
-			JSONObject pseudoJSON = new JSONObject(result);
-			if ( pseudoJSON != null ) {
-	            Iterator<String> it = pseudoJSON.keys();
-	            String p;
-	            while ( it.hasNext() ) {
-	                p = it.next();
-	                pseudoCharacters.put(p, pseudoJSON.getString(p));
-	            }
-	        }
-		} catch (JSONException e) {
+		        JSONObject pseudoJSON = new JSONObject(result);
+				if ( pseudoJSON != null ) {
+		            Iterator<String> it = pseudoJSON.keys();
+		            String p;
+		            while ( it.hasNext() ) {
+		                p = it.next();
+		                pseudoCharacters.put(p, pseudoJSON.getString(p));
+		            }
+		        }
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
     }
 
     /**
@@ -665,6 +665,17 @@ public class ResBundle
     public IString getString(String source)
     {
         return getString(source, null);
+    }
+
+    /**
+     * Return the translation for the given source string in a Java "String" instead of a formattable "IString".
+     * @param source
+     * @return the translation for the given source string as a Java "String"
+     */
+    public String getStringJ(String source)
+    {
+    	IString i = getString(source, null);
+    	return i != null ? i.toString() : null;
     }
 
     /**

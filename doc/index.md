@@ -20,6 +20,7 @@ Hello, and welcome to the iLib project!
 * Architecture and Process
     * [Overall Architecture](Architecture.md)
     * [CommonJS Modularization Support](tutorial/modules.md) as of 11.0
+    * [Updating the time zone information](tutorial/timezone.md)
 * API Reference: 
     * [10.0](http://www.translationcircle.com/ilib/doc/10.0/jsdoc/)
     * [11.0](http://www.translationcircle.com/ilib/doc/11.0/jsdoc/) (latest stable)

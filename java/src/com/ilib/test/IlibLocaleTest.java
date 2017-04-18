@@ -17,9 +17,11 @@
  */
 package com.ilib.test;
 
-import junit.framework.TestCase;
+import java.util.Locale;
 
 import com.ilib.IlibLocale;
+
+import junit.framework.TestCase;
 
 /**
  * @author edwin
@@ -497,4 +499,14 @@ public class IlibLocaleTest extends TestCase
 		assertFalse(loc1.isCompatibleWith(loc2));
 	}
 	*/
+	
+	public void testGetJavaLocale() 
+	{
+		IlibLocale loc = new IlibLocale("en-US");
+		
+		Locale jl = loc.getJavaLocale();
+		
+		assertEquals("en", jl.getLanguage());
+		assertEquals("US", jl.getCountry());
+	}
 }
