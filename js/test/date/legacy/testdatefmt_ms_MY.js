@@ -859,7 +859,7 @@ function testDateFmtShortTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 MYT", fmt.format(date));
+    assertEquals("1:45 +08", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ms_MY() {
@@ -881,7 +881,7 @@ function testDateFmtShortTimeComponentsHMAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG MYT", fmt.format(date));
+    assertEquals("1:45 PTG +08", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_ms_MY() {
@@ -920,7 +920,7 @@ function testDateFmtShortTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 MYT", fmt.format(date));
+    assertEquals("1:45:37 +08", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ms_MY() {
@@ -942,7 +942,7 @@ function testDateFmtShortTimeComponentsHMSAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG MYT", fmt.format(date));
+    assertEquals("1:45:37 PTG +08", fmt.format(date));
 }
 
 
@@ -1085,7 +1085,7 @@ function testDateFmtFullTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 MYT", fmt.format(date));
+    assertEquals("1:45 +08", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ms_MY() {
@@ -1108,7 +1108,7 @@ function testDateFmtFullTimeComponentsHMAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG MYT", fmt.format(date));
+    assertEquals("1:45 PTG +08", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_ms_MY() {
@@ -1148,7 +1148,7 @@ function testDateFmtFullTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 MYT", fmt.format(date));
+    assertEquals("1:45:37 +08", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ms_MY() {
@@ -1171,7 +1171,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG MYT", fmt.format(date));
+    assertEquals("1:45:37 PTG +08", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ms_MY() {
@@ -1194,6 +1194,6 @@ function testDateFmtWithTimeZoneAndNoDST_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 MYT", fmt.format(date));
+    assertEquals("1:45:37 +08", fmt.format(date));
 }
 

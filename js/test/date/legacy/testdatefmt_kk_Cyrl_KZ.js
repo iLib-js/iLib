@@ -799,7 +799,7 @@ function testDateFmtShortTimeComponentsHMZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ALMT", fmt.format(date));
+    assertEquals("13:45 +06", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_kk_Cyrl_KZ() {
@@ -820,7 +820,7 @@ function testDateFmtShortTimeComponentsHMAZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_kk_Cyrl_KZ() {
@@ -858,7 +858,7 @@ function testDateFmtShortTimeComponentsHMSZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_kk_Cyrl_KZ() {
@@ -879,7 +879,7 @@ function testDateFmtShortTimeComponentsHMSAZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 
@@ -1005,7 +1005,7 @@ function testDateFmtFullTimeComponentsHMZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ALMT", fmt.format(date));
+    assertEquals("13:45 +06", fmt.format(date));
 }
 
 
@@ -1045,7 +1045,7 @@ function testDateFmtFullTimeComponentsHMSZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_kk_Cyrl_KZ() {
@@ -1067,7 +1067,7 @@ function testDateFmtFullTimeComponentsHMSAZ_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_kk_Cyrl_KZ() {
@@ -1089,7 +1089,7 @@ function testDateFmtWithTimeZoneAndNoDST_kk_Cyrl_KZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ALMT", fmt.format(date));
+    assertEquals("13:45:37 +06", fmt.format(date));
 }
 
 /*function testDateFmtFormatRelativeWithinMinuteAfter_kk_Cyrl_KZ() {

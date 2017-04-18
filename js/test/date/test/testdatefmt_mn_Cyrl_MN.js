@@ -885,7 +885,7 @@ function testDateFmtShortTimeComponentsHMZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ULAST", fmt.format(date));
+    assertEquals("13:45 +08/+09", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_mn_Cyrl_MN() {
@@ -907,7 +907,7 @@ function testDateFmtShortTimeComponentsHMAZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ULAST", fmt.format(date));
+    assertEquals("13:45 +08/+09", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_mn_Cyrl_MN() {
@@ -946,7 +946,7 @@ function testDateFmtShortTimeComponentsHMSZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAST", fmt.format(date));
+    assertEquals("13:45:37 +08/+09", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_mn_Cyrl_MN() {
@@ -968,7 +968,7 @@ function testDateFmtShortTimeComponentsHMSAZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAST", fmt.format(date));
+    assertEquals("13:45:37 +08/+09", fmt.format(date));
 }
 
 
@@ -1111,7 +1111,7 @@ function testDateFmtFullTimeComponentsHMZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ULAST", fmt.format(date));
+    assertEquals("13:45 +08/+09", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_mn_Cyrl_MN() {
@@ -1134,7 +1134,7 @@ function testDateFmtFullTimeComponentsHMAZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ULAST", fmt.format(date));
+    assertEquals("13:45 +08/+09", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_mn_Cyrl_MN() {
@@ -1174,7 +1174,7 @@ function testDateFmtFullTimeComponentsHMSZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAST", fmt.format(date));
+    assertEquals("13:45:37 +08/+09", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_mn_Cyrl_MN() {
@@ -1197,7 +1197,7 @@ function testDateFmtFullTimeComponentsHMSAZ_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAST", fmt.format(date));
+    assertEquals("13:45:37 +08/+09", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_mn_Cyrl_MN() {
@@ -1220,7 +1220,7 @@ function testDateFmtWithTimeZoneAndNoDST_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAT", fmt.format(date));
+    assertEquals("13:45:37 +08/+09", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_mn_Cyrl_MN() {
