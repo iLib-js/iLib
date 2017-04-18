@@ -48,7 +48,12 @@ limitations under the License.
         </sequential>
 	</macrodef>
 
+	<target name="export" description="Export everything that other subprojects will need to build.">
+		<iterate target="export"/>
+	</target>
+
 	<target name="all" description="Build everything. This is the target that the build should run.">
+		<iterate target="export"/>
 		<iterate target="all"/>
 	</target>
 		
