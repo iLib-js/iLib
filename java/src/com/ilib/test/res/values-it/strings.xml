@@ -1,0 +1,4 @@
+<resources>
+    <string name="Email Sent">E-mail inviato</string>
+    <string name="You must use a valid email address format.">Occorre usare un formato di indirizzo e-mail valido.</string>
+</resources>

@@ -43,6 +43,8 @@ limitations under the License.
 	<property name="build.classes.debug"			value="${build.classes}/debug"/>
 	<property name="build.classes.debug.instrumented"	value="${build.classes.debug}/instrumented"/>
 	<property name="build.classes.release"			value="${build.classes}/release"/>
+	<property name="build.data"						value="${build.base}/data"/>
+	<property name="build.localedata"				value="${build.export}/locale"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.lib.deployer"				value="${build.lib}/apache-tomcat-6.0.16-deployer"/>
 	<property name="build.output"					value="${build.base}/output"/>
@@ -103,6 +105,7 @@ limitations under the License.
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
+		<delete dir="${build.data}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
@@ -121,12 +124,23 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="jars" depends="jars.debug,jars.release" description="Create all jar files"/>
 
-	<target name="jars.debug" depends="jar.ilib.debug" description="Create all jar files in debug mode"/>
-	<target name="jars.release" depends="jar.ilib.release" description="Create all jar files in release mode"/>
+	<target name="jars.debug" depends="data,jar.ilib.debug" description="Create all jar files in debug mode"/>
+	<target name="jars.release" depends="data,jar.ilib.release" description="Create all jar files in release mode"/>
 
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
+	<target name="data">
+		<mkdir dir="${build.data}/locale"/>
+		<copy todir="${build.data}/locale">
+			<fileset dir="${build.localedata}">
+				<include name="**/plurals.json"/>
+				<include name="likelylocales.json"/>
+				<include name="**/pseudomap.json"/>
+			</fileset>
+		</copy>
+	</target>
+	
 	<target name="compile" description="compiles java files into classes in debug or release mode">
 		<!-- compile the source code -->
 		<javac  srcdir="${build.src}"
@@ -135,7 +149,8 @@ limitations under the License.
                 debug="${debugFlag}"
 				encoding="utf-8"
 			    includeAntRuntime="no"
-                optimize="${optimizeFlag}">
+                optimize="${optimizeFlag}"
+				target="1.7">
 			<classpath refid="${classPathRef}"/>
 			<exclude name="**/.svn/**"/>
 		</javac>
@@ -193,10 +208,17 @@ limitations under the License.
 
 	<target name="compile.debug.instrumented" depends="compile.debug,instrument" description="Create versions of the debug objects that are instrumented for use with the emma code coverage tool"/>
 
-	<target name="build.jar.ilib" description="Do the actual work of building ct.jar">
+	<target name="build.jar.ilib" description="Do the actual work of building the ilib jar">
 		<jar    jarfile="${outputDir}/${jar.ilib}"
-                basedir="${classesDir}"
-                compress="on"/>
+                compress="on">
+			<fileset dir="${classesDir}">
+				<include name="**/*.class"/>
+				<include name="**/*.properties"/>
+			</fileset>
+			<fileset dir="${build.data}">
+				<include name="**/*.json"/>
+			</fileset>
+		</jar>
 	</target>
 
 	<target name="jar.ilib.release" depends="compile.release" description="Create the release version of the ct.jar file">
@@ -213,13 +235,16 @@ limitations under the License.
 		</antcall>
 	</target>
 	
-	<target name="dist.debug" depends="jars.debug" description="Distribute the debug versions of the built objects">
+	<target name="dist.debug" depends="jars.debug" description="Create the distribution of the debug versions of the built objects">
 	</target>
 
-	<target name="dist.release" depends="jars.release" description="Distribute the release versions of the built objects">
+	<target name="dist.release" depends="jars.release" description="Create the distribution of the release versions of the built objects">
 	</target>
 	
-	<target name="export" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+	<target name="export" description="export all files that other subprojects may need before building">
+	</target>
+	
+	<target name="dist" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
 		<mkdir dir="${build.export}/java"/>
 		<copy todir="${build.export}/java">
 			<fileset dir="${build.output.release}/">
@@ -252,7 +277,7 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="dist" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+	<target name="package" depends="dist.release,doc" description="Package all objects in the distribution">
 		<copy todir="${build.dist}">
 			<fileset dir="${build.output.release}/">
 				<include name="**/*.jar"/>

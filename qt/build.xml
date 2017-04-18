@@ -102,8 +102,11 @@ limitations under the License.
 		<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
 		</exec>
 	</target>
+
+	<target name="export" description="export all files that other subprojects may need before building">
+	</target>
 	
-	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
+	<target name="dist" depends="filereader" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
 		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
 			<fileset dir="${build.base}/build-filereader">
