@@ -28,9 +28,9 @@ var TestSuite = require("./TestSuiteModule.js");
 function newSandbox() {
 	return {
 		top : {},
-		//window : {
-		//	document : {}
-		//},
+		window : {
+			document : {}
+		},
 		navigator : {
 			userAgent : "Nodejs"
 		},
