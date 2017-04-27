@@ -184,6 +184,14 @@ for (var zone in timezones) {
 	}
 }
 
+// now deal with backwards maps so that they appear in the right country's list of zones
+for (var oldzone in backwardsMap) {
+	var newzone = backwardsMap[oldzone];
+	if (countries[newzone]) {
+		countryToZones[countries[newzone]].push(oldzone);
+	}
+}
+
 var tz;
 
 for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++) {
