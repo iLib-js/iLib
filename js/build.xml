@@ -38,6 +38,7 @@ limitations under the License.
 	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
 	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
+	<property name="build.output.test"				value="${build.output}/test"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.test"						value="${build.base}/test"/>
@@ -103,6 +104,7 @@ limitations under the License.
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output.test}"/>
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -1176,5 +1178,17 @@ limitations under the License.
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino,test.assembled.compiled.legacy.rhino,test.assembled.uncompiled.legacy.rhino,test.dynamic.uncompiled.legacy.rhino,test.dynamic.compiled.legacy.rhino,test.dynamicdata.compiled.legacy.rhino,test.dynamicdata.uncompiled.legacy.rhino">
+	</target>
+	
+	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
+	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
+		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
+		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
 	</target>
 </project>
