@@ -113,5 +113,9 @@ limitations under the License.
 	<target name="doc" description="Extract all the inline documentation.">
 		<iterate target="doc"/>
 	</target>
+
+	<target name="deps" description="Install dependencies for travis-ci">
+		<!-- nothing yet -->
+	</target>
 	
 </project>
