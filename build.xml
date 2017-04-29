@@ -106,7 +106,7 @@ limitations under the License.
 		
 	</target>
 
-	<target name="test" description="Run all tests and build all reports">
+	<target name="test" depends="export" description="Run all tests and build all reports">
 		<iterate target="test"/>
 	</target>
 	
