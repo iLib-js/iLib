@@ -321,7 +321,7 @@ ilib.getLocale = function () {
             	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
     			break;
     	}
-        ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
+        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
     }
     return ilib.locale;
 };

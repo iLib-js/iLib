@@ -504,10 +504,16 @@ var DateFmt = function(options) {
 							sync: sync, 
 							loadParams: loadParams, 
 							callback: ilib.bind(this, function (formats) {
+								var spec = this.locale.getSpec().replace(/-/g, '_');
 								if (!formats) {
 									formats = ilib.data.dateformats || DateFmt.defaultFmt;
-									var spec = this.locale.getSpec().replace(/-/g, '_');
 									DateFmt.cache[spec] = formats;
+								}
+								if (!ilib.data.dateformats) {
+									ilib.data.dateformats = {};
+								}
+								if (!ilib.data.dateformats[spec]) {
+									ilib.data.dateformats[spec] = formats;
 								}
 								if (typeof(this.clock) === 'undefined') {
 									// default to the locale instead
