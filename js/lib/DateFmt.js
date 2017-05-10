@@ -509,12 +509,14 @@ var DateFmt = function(options) {
 									formats = ilib.data.dateformats || DateFmt.defaultFmt;
 									DateFmt.cache[spec] = formats;
 								}
+/*
 								if (!ilib.data.dateformats) {
 									ilib.data.dateformats = {};
 								}
 								if (!ilib.data.dateformats[spec]) {
 									ilib.data.dateformats[spec] = formats;
 								}
+*/
 								if (typeof(this.clock) === 'undefined') {
 									// default to the locale instead
 									this.clock = this.locinfo.getClock();

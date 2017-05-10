@@ -34,8 +34,6 @@ function testLocaleConstructorCurrent() {
 	
     var loc = new Locale(); // gives locale of the host JS engine
     
-    alert("loc is " + JSON.stringify(loc));
-    
     assertNotNull(loc);
 
     assertEquals("en", loc.getLanguage());
