@@ -322,6 +322,9 @@ ilib.getLocale = function () {
     			break;
     	}
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
+        if (ilib.locale === "en") {
+        	ilib.locale = "en-US"; // hack to get various platforms working correctly
+        }
     }
     return ilib.locale;
 };

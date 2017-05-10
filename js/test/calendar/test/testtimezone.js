@@ -1382,7 +1382,7 @@ function mockLoader (paths, sync, params, callback) {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1399,7 +1399,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1420,7 +1420,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1436,7 +1436,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
