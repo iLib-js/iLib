@@ -156,7 +156,7 @@ function testListFmtzhHansCNNumberFormatOne() {
 
     assertNotNull(fmt);
 
-    assertEquals("一"， fmt.format(["一"]));
+    assertEquals("一", fmt.format(["一"]));
 }
 
 function testListFmtzhHansCNNumberFormatTwo() {
@@ -166,7 +166,7 @@ function testListFmtzhHansCNNumberFormatTwo() {
 
     assertNotNull(fmt);
 
-    assertEquals("一和二"， fmt.format(["一"， "二"]));
+    assertEquals("一和二", fmt.format(["一", "二"]));
 }
 
 function testListFmtzhHansCNNumberFormatThree() {
@@ -177,7 +177,7 @@ function testListFmtzhHansCNNumberFormatThree() {
     assertNotNull(fmt);
 
     // oxford comma
-    assertEquals("一， 二和三"， fmt.format(["一"， "二"， "三"]));
+    assertEquals("一， 二和三", fmt.format(["一", "二", "三"]));
 }
 
 function testListFmtzhHansCNNumberFormatFour() {
@@ -188,7 +188,7 @@ function testListFmtzhHansCNNumberFormatFour() {
     assertNotNull(fmt);
 
     // oxford comma
-    assertEquals("一， 二， 三和四"， fmt.format(["一"， "二"， "三"， "四"]));
+    assertEquals("一， 二， 三和四", fmt.format(["一", "二", "三", "四"]));
 }
 
 function testListFmtkoKRNumberFormatOne() {
@@ -198,7 +198,7 @@ function testListFmtkoKRNumberFormatOne() {
 
     assertNotNull(fmt);
 
-    assertEquals("하나"， fmt.format(["하나"]));
+    assertEquals("하나", fmt.format(["하나"]));
 }
 
 function testListFmtkoKRNumberFormatTwo() {
@@ -208,7 +208,7 @@ function testListFmtkoKRNumberFormatTwo() {
 
     assertNotNull(fmt);
 
-    assertEquals("하나 과 둘"， fmt.format(["하나"， "둘"]));
+    assertEquals("하나 과 둘", fmt.format(["하나", "둘"]));
 }
 
 function testListFmtkoKRNumberFormatThree() {
@@ -219,7 +219,7 @@ function testListFmtkoKRNumberFormatThree() {
     assertNotNull(fmt);
 
     // oxford comma
-    assertEquals("하나， 둘，과 셋"， fmt.format(["하나"， "둘"， "셋"]));
+    assertEquals("하나， 둘，과 셋", fmt.format(["하나", "둘", "셋"]));
 }
 
 function testListFmtkoKRNumberFormatFour() {
@@ -230,5 +230,5 @@ function testListFmtkoKRNumberFormatFour() {
     assertNotNull(fmt);
 
     // oxford comma
-    assertEquals("하나, 둘, 셋, 과 넷"， fmt.format(["하나"， "둘"， "셋"， "넷"]));
+    assertEquals("하나, 둘, 셋, 과 넷", fmt.format(["하나", "둘", "셋", "넷"]));
 }
