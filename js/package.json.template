@@ -19,7 +19,7 @@
     "homepage": "https://github.com/iLib-js/iLib",
     "bugs": "https://github.com/iLib-js/iLib/issues",
     "email": "marketing@translationcircle.com",
-    "license": "apache2",
+    "license": "Apache-2.0",
     "licenses": [
         {
             "type": "apache2",
@@ -66,5 +66,8 @@
     },
     "scripts": {
        "test": "ant test"
-    }
+    },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
 }
