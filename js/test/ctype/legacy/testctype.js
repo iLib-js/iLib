@@ -37,7 +37,13 @@ function setUp() {
 		ilib.CType.isXdigit('a');
 		ilib.extend(ilib.CType, require("../lib/CType.js"));
 	}
+}
 
+if (ilib.isDynData()) {
+	if (ilib.isDynCode()) {
+		ilib.CType = {};
+		ilib.extend(ilib.CType, require("../lib/CType.js"));
+	}
 	// now load the data
 	ilib.CType.isAlnum._init(true);	
 	ilib.CType.isAlpha._init(true);
@@ -64,6 +70,7 @@ function testIsAlnumTrue() {
     assertTrue(ilib.CType.isAlnum('0'));
     assertTrue(ilib.CType.isAlnum('1'));
     assertTrue(ilib.CType.isAlnum('8'));
+    assertTrue(ilib.CType.isAlnum('Ꞛ'));
 }
 
 function testIsAlnumFalse() {
@@ -1118,6 +1125,92 @@ function testWithinRangeWidth() {
 function testWithinRangeSpecials() {
 	assertTrue(ilib.CType.withinRange("\uFFFA", "Specials"));
 }
+
+function testWithinRangeCopticnumber() {    
+    var str = IString.fromCodePoint(0x102e0);
+    assertTrue(ilib.CType.withinRange(str, "copticnumber"));
+}
+
+function testWithinRangeOldpermic() {
+    var str = IString.fromCodePoint(0x10350);
+    assertTrue(ilib.CType.withinRange(str, "oldpermic"));
+}
+
+function testWithinRangeAlbanian() {
+    var str = IString.fromCodePoint(0x10530);
+    assertTrue(ilib.CType.withinRange(str, "albanian"));
+}
+
+function testWithinRangeLineara() {
+    var str = IString.fromCodePoint(0x10600);
+    assertTrue(ilib.CType.withinRange(str, "lineara"));
+}
+
+function testWithinRangeMeroitic() {
+    var str = IString.fromCodePoint(0x109a0);
+    assertTrue(ilib.CType.withinRange(str, "meroitic"));
+}
+
+function testWithinRangeLowsurrogates() {
+    var str = IString.fromCodePoint(0xdc00);
+    assertTrue(ilib.CType.withinRange(str, "lowsurrogates"));
+}
+
+function testWithinRangeOldhungarian() {
+    var str = IString.fromCodePoint(0x10c80);
+    assertTrue(ilib.CType.withinRange(str, "oldhungarian"));
+}
+
+function testWithinRangeSorasopeng() {
+    var str = IString.fromCodePoint(0x110d0);
+    assertTrue(ilib.CType.withinRange(str, "sorasompeng"));
+}
+
+function testWithinRangeWarangciti() {
+    var str = IString.fromCodePoint(0x118a0);
+    assertTrue(ilib.CType.withinRange(str, "warangciti"));
+}
+
+function testWithinRangePaucinhau() {
+    var str = IString.fromCodePoint(0x11ac0);
+    assertTrue(ilib.CType.withinRange(str, "paucinhau"));
+}
+
+function testWithinRangeBassavah() {
+    var str = IString.fromCodePoint(0x16ad0);
+    assertTrue(ilib.CType.withinRange(str, "bassavah"));
+}
+
+function testWithinRangePahawhhmong() {
+    var str = IString.fromCodePoint(0x16b00);
+    assertTrue(ilib.CType.withinRange(str, "pahawhhmong"));
+}
+
+function testWithinRangeShorthandformat() {
+    var str = IString.fromCodePoint(0x1bca0);
+    assertTrue(ilib.CType.withinRange(str, "shorthandformat"));
+}
+
+function testWithinRangeSurronsingwriting() {
+    var str = IString.fromCodePoint(0x1d800);
+    assertTrue(ilib.CType.withinRange(str, "suttonsignwriting"));
+}
+
+function testWithinRangePictographs1() {
+    var str = IString.fromCodePoint(0x1f300);
+    assertTrue(ilib.CType.withinRange(str, "pictographs"));
+}
+
+function testWithinRangePictographs2() {
+    var str = IString.fromCodePoint(0x1f9ff);
+    assertTrue(ilib.CType.withinRange(str, "pictographs"));
+}
+
+function testWithinRangeOrnamentaldingbats() {
+    var str = IString.fromCodePoint(0x1f650);
+    assertTrue(ilib.CType.withinRange(str, "ornamentaldingbats"));
+}
+
 
 function testIsScriptTrue() {
 	assertTrue("testing Latn", ilib.CType.isScript("a", "Latn"));
