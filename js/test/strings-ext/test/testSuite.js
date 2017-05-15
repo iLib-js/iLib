@@ -31,7 +31,8 @@ function suite() {
     
     var suites = [
 		"testnorm.js",
-		"testglyphstr.js"
+		"testglyphstr.js",
+		"testlistfmt.js"
 	];
 
     suites.forEach(function (path) {
