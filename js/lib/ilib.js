@@ -177,7 +177,7 @@ ilib._getBrowser = function () {
             if (navigator.userAgent.search(/iPad|iPhone|iPod/) > -1) {
                 // Due to constraints of the iOS platform, 
                 // all browser must be built on top of the WebKit rendering engine
-                browser = "iOS browser";
+                browser = "iOS";
             }
 		}
 	}

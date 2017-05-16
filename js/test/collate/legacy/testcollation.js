@@ -433,7 +433,8 @@ function testCollatorDefaultCase() {
 
 	// netscape and ie do not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" || browser === "Edge") {
+	if (browser === "firefox" || browser === "ie" || 
+		browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", col.compare("a", "A") < 0);
 		assertTrue("b < B", col.compare("b", "B") < 0);
@@ -484,7 +485,8 @@ function testCollatorGetComparatorWorksWithCase() {
 
 	// netscape and ie do not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" || browser === "Edge") {
+	if (browser === "firefox" || browser === "ie" ||
+	    browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", func("a", "A") < 0);
 		assertTrue("b < B", func("b", "B") < 0);
@@ -690,12 +692,8 @@ function testCollatorWithSortUpperFirst() {
 	var expected;
 	// ie does not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "ie") {
-		// should compare lower-case first within a base character
-		expected = ["e", "E", "i", "I", "o", "p", "q", "r", "T", "U"];
-	} else {
-		expected = ["E", "e", "I", "i", "o", "p", "q", "r", "T", "U"];
-	}
+	
+	expected = ["E", "e", "I", "i", "o", "p", "q", "r", "T", "U"];
 
 	assertArrayEquals(expected, input);
 }
