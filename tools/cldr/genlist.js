@@ -129,26 +129,14 @@ locales.forEach(function(locale) {
 	var l = new Locale(locale);
 	var position = localePatterns;
 	
-	if (l.getLanguage()) {
-		if (!position[l.getLanguage()]) {
-			position[l.getLanguage()] = {};
+	[l.getLanguage(), l.getScript(), l.getRegion()].forEach(function(prop) {
+		if (prop) {
+			if (!position[prop]) {
+				position[prop] = {};
+			}
+			position = position[prop];
 		}
-		position = position[l.getLanguage()];
-	}
-
-	if (l.getScript()) {
-		if (!position[l.getScript()]) {
-			position[l.getScript()] = {};
-		}
-		position = position[l.getScript()];
-	}
-
-	if (l.getRegion()) {
-		if (!position[l.getRegion()]) {
-			position[l.getRegion()] = {};
-		}
-		position = position[l.getRegion()];
-	}
+	});
 
 	position.data = patterns;
 });
@@ -173,46 +161,6 @@ console.log("\n\nPruning duplicated formats ...\n");
 
 aux.pruneFormats(localePatterns);
 
+console.log("\n");
 
-function calcLocalePath(language, script, region, filename) {
-	var fullpath = toDir;
-	if (language) {
-		fullpath = path.join(fullpath, language);
-	}
-	if (script) {
-		fullpath = path.join(fullpath, script);
-	}
-	if (region) {
-		fullpath = path.join(fullpath, region);
-	}
-	fullpath = path.join(fullpath, filename);
-	//console.log("path: ", fullpath);
-	return fullpath;
-}
-
-function writeListData(locale, data) {
-	var language = locale.getLanguage(),
-		script = locale.getScript(),
-		region = locale.getRegion();
-
-	var fullpath = calcLocalePath(language, script, region, "");
-
-	if (data) {
-		console.log("Writing " + fullpath + "\n");
-		common.makeDirs(fullpath);
-		fs.writeFileSync(path.join(fullpath, "list.json"), JSON.stringify(data, true, 4), "utf-8");
-	} else {
-		console.log("Skipping empty  " + fullpath + "\n");
-	}
-}
-
-for (var locale in localePatterns) {
-	var listData;
-
-	if (locale && localePatterns[locale]) {
-		listData = localePatterns[locale];
-
-		var loc = new Locale(locale);
-		writeListData(loc, listData);
-	}	
-}
+aux.writeFormats(toDir, "list.json", localePatterns, []);
