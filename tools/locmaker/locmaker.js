@@ -117,7 +117,37 @@ function getLocaleList(locale) {
 	return list;
 }
 
-var classList = ["DateFmt", "LocaleInfo", "NumFmt"];
+var classList = [
+	"DateRngFmt",	
+	"IDate",	
+	"DateFactory",
+	"GregorianCal",	
+	"GregorianDate",
+	"TimeZone",
+	"INumber",
+	"NumFmt",
+	"JulianDay",
+	"DateFmt",
+	"Calendar",
+	"CalendarFactory",
+	"Utils",
+	"Locale",
+	"IString",
+	"DurationFmt",
+	"ResBundle",
+	"LocaleInfo",
+	"DateRngFmt",
+	"ScriptInfo",
+	"CaseMapper",
+	// "Collator",
+	"GlyphString",
+	"isIdeo",
+	"isAlnum",
+	"isSpace",
+	"Measurement",
+	"MeasurementFactory",
+	"UnitFmt"
+];
 var localeList = ["en-US", "zh-Hans-CN", "es-US", "es-ES", "zh-Hant-HK"];
 var fullLocales = {};
 var fullDeps = new Set();
@@ -160,7 +190,9 @@ localeList.forEach(function(locale) {
 	console.log("Writing out " + locale + ".js");
 	
 	fs.writeFileSync(path.join(toDir, locale + ".js"), output, "utf-8");
-})
+});
+
+console.log("Done.");
 
 /*
 var options = clargs([
