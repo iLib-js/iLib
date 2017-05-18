@@ -490,7 +490,7 @@ function testNumFmtCurrencyFormatZADefault() {
     
     assertNotNull(fmt);
     
-    assertEquals("(R57,00)", fmt.format(-57));
+    assertEquals("-R57,00", fmt.format(-57));
 }
 
 function testNumFmtCurrencyFormatZAGrouping() {
@@ -979,7 +979,7 @@ function testNumFmtCurrencyFormatNADefault() {
     
     assertNotNull(fmt);
     
-    assertEquals("($57,00)", fmt.format(-57));
+    assertEquals("-$57,00", fmt.format(-57));
 }
 
 function testNumFmtCurrencyFormatNAGrouping() {
@@ -991,7 +991,7 @@ function testNumFmtCurrencyFormatNAGrouping() {
     
     assertNotNull(fmt);
     
-    assertEquals("$ 123 456 788,00", fmt.format(123456788));
+    assertEquals("$123 456 788,00", fmt.format(123456788));
 }
 
 

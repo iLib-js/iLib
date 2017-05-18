@@ -1,14 +1,11 @@
 package com.ilib;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ScriptInfo {
@@ -23,32 +20,34 @@ public class ScriptInfo {
 	protected static void initLocales() {
 		if (locales != null) return;
 
-		File inputFile = new File("js/data/locale/likelylocales.json");
-    	if (!inputFile.exists()) return;
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+		
+		InputStream is = cl.getResourceAsStream("locale/likelylocales.json");
+		if (is == null) return;
+		
+		// File inputFile = new File("js/data/locale/likelylocales.json");
+    	// if (!inputFile.exists()) return;
     	
     	String result = null;
 		try {
-			Scanner scanner = new Scanner(new FileInputStream(inputFile), "utf-8");
+			// Scanner scanner = new Scanner(new FileInputStream(inputFile), "utf-8");
+			Scanner scanner = new Scanner(is, "utf-8");
 			result = scanner.useDelimiter("\\A").next();
 	        scanner.close();
-		} catch (FileNotFoundException e1) {
-			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or not existed.");
-			return;
-		}
 
-		locales = new HashMap<>();
-		try {
-			JSONObject pseudoJSON = new JSONObject(result);
-			if ( pseudoJSON != null ) {
-	            Iterator<String> it = pseudoJSON.keys();
+	        locales = new HashMap<>();
+			
+	        JSONObject json = new JSONObject(result);
+			if ( json != null ) {
+	            Iterator<String> it = json.keys();
 	            String p;
 
 	            while ( it.hasNext() ) {
 	                p = it.next();
-	                locales.put(p, pseudoJSON.getString(p));
+	                locales.put(p, json.getString(p));
 	            }
 	        }
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

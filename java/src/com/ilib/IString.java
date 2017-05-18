@@ -21,6 +21,7 @@
 package com.ilib;
 
 import java.io.File;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -330,9 +331,11 @@ public class IString
         }
 
         if ( plurals == null ) {
-            File pluralJSON = new File(PluralFormHelper.root,
-            		(locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
-            plurals = PluralFormHelper.getPluralForms(pluralJSON);
+        	ClassLoader cl = this.getClass().getClassLoader();
+        	InputStream is = cl.getResourceAsStream("locale/" + (locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
+            //File pluralJSON = new File(PluralFormHelper.root,
+            //		(locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
+            plurals = PluralFormHelper.getPluralForms(is);
             if (plurals == null) plurals = new HashMap<>(0);
         }
 

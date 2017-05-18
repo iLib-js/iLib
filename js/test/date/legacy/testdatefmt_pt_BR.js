@@ -881,7 +881,7 @@ function testDateFmtBRShortTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 BRT", fmt.format(date));
+	    assertEquals("13:45 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRShortTimeComponentsHMAZ() {
@@ -903,7 +903,7 @@ function testDateFmtBRShortTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 BRT", fmt.format(date));
+	    assertEquals("13:45 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRShortTimeComponentsHMSA() {
@@ -942,7 +942,7 @@ function testDateFmtBRShortTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 BRT", fmt.format(date));
+	    assertEquals("13:45:37 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRShortTimeComponentsHMSAZ() {
@@ -964,7 +964,7 @@ function testDateFmtBRShortTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 BRT", fmt.format(date));
+	    assertEquals("13:45:37 -03/-02", fmt.format(date));
 }
 
 
@@ -1107,7 +1107,7 @@ function testDateFmtBRFullTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 BRT", fmt.format(date));
+	    assertEquals("13:45 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRFullTimeComponentsHMAZ() {
@@ -1130,7 +1130,7 @@ function testDateFmtBRFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45 BRT", fmt.format(date));
+	    assertEquals("13:45 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRFullTimeComponentsHMSA() {
@@ -1170,7 +1170,7 @@ function testDateFmtBRFullTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 BRT", fmt.format(date));
+	    assertEquals("13:45:37 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRFullTimeComponentsHMSAZ() {
@@ -1193,7 +1193,7 @@ function testDateFmtBRFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 BRT", fmt.format(date));
+	    assertEquals("13:45:37 -03/-02", fmt.format(date));
 }
 
 function testDateFmtBRWithTimeZoneAndNoDST() {
@@ -1216,6 +1216,6 @@ function testDateFmtBRWithTimeZoneAndNoDST() {
 		second: 37,
 		millisecond: 0
 	});
-	    assertEquals("13:45:37 BRST", fmt.format(date));
+	    assertEquals("13:45:37 -03/-02", fmt.format(date));
 }
 

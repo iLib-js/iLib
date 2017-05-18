@@ -17,6 +17,8 @@
  */
 package com.ilib;
 
+import java.util.Locale;
+
 /**
  * IlibLocale
  * 
@@ -213,5 +215,13 @@ public class IlibLocale
     public boolean isPseudo()
     {
         return language.equals("zxx");
+    }
+    
+    /**
+     * Return the equivalent Java locale for this ilib locale.
+     * @return the equivalent Java locale
+     */
+    public Locale getJavaLocale() {
+    	return Locale.forLanguageTag(getSpec());
     }
 }

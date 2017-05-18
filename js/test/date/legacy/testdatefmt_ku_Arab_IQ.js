@@ -843,7 +843,7 @@ function testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 AST", fmt.format(date));
+    assertEquals("13:45 +03/+04", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ() {
@@ -864,7 +864,7 @@ function testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 AST", fmt.format(date));
+    assertEquals("13:45 +03/+04", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ() {
@@ -902,7 +902,7 @@ function testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("13:45:37 +03/+04", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ() {
@@ -923,7 +923,7 @@ function testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("13:45:37 +03/+04", fmt.format(date));
 }
 
 
@@ -1065,7 +1065,7 @@ function testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 AST", fmt.format(date));
+    assertEquals("13:45 +03/+04", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ() {
@@ -1087,7 +1087,7 @@ function testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 AST", fmt.format(date));
+    assertEquals("13:45 +03/+04", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ() {
@@ -1126,7 +1126,7 @@ function testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("13:45:37 +03/+04", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ() {
@@ -1148,7 +1148,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("13:45:37 +03/+04", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ() {
@@ -1170,6 +1170,6 @@ function testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("13:45:37 +03/+04", fmt.format(date));
 }
 

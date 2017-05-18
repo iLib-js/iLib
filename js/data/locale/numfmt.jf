@@ -1,22 +1,22 @@
 {
+    "generated": true,
     "numfmt": {
-        "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})",
-            "iso": "{s}{n}",
-            "isoNegative": "({s}{n})"
-        },
-        "decimalChar": ".",
-        "exponential": "E",
-        "groupChar": ",",
-        "negativenumFmt": "-{n}",
-        "negativepctFmt": "-{n}%",
-        "pctChar": "%",
-        "pctFmt": "{n}%",
-        "prigroupSize": 3,
-        "roundingMode": "halfdown",
         "script": "Latn",
-        "secgroupSize": 0,
+        "decimalChar": ".",
+        "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}",
+            "iso": "{s} {n}",
+            "isoNegative": "({s} {n})"
+        },
+        "negativenumFmt": "-{n}",
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "roundingMode": "halfdown",
         "useNative": false
     }
 }

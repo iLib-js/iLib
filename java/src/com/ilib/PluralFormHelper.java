@@ -2,9 +2,9 @@ package com.ilib;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -75,20 +75,17 @@ public class PluralFormHelper {
 	 * @param file
 	 * @return a map containing the plural forms encoded in the file
 	 */
-	public static Map<String, String> getPluralForms(File file) {
+	public static Map<String, String> getPluralForms(InputStream is) {
 		StringBuilder builder = new StringBuilder();
 
 		try (BufferedReader reader = new BufferedReader(
-				new InputStreamReader(new FileInputStream(file), ENCODING)); ) {
+				new InputStreamReader(is, ENCODING)); ) {
 			String currentLine = null;
 			while ( (currentLine = reader.readLine()) != null ) {
 				builder.append(currentLine);
 			}
-		} catch (FileNotFoundException e) {
-			System.err.println("File not found: " + file.getPath());
-			return null;
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println("Could not load plurals file.");
 			return null;
 		}
 
@@ -225,7 +222,7 @@ public class PluralFormHelper {
 				if (params.length == 2)
 					result = String.valueOf( Boolean.valueOf(params[0]) || Boolean.valueOf(params[1]) );
 				break;
-			case "is":
+			case "eq":
 				if (params.length == 2)
 					result = String.valueOf( Integer.valueOf(params[0]) == Integer.valueOf(params[1]) );
 				break;

@@ -38,6 +38,7 @@ limitations under the License.
 	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
 	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
+	<property name="build.output.test"				value="${build.output}/test"/>
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.test"						value="${build.base}/test"/>
@@ -82,7 +83,8 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
-	<target name="all" depends="export,doc,demo" description="Build everything. This is the target that the build should run."/>
+	<target name="all" depends="dist,doc,demo" description="Build everything. This is the target that the build should run."/>
+
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
@@ -102,6 +104,7 @@ limitations under the License.
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
+		<mkdir dir="${build.output.test}"/>
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -566,7 +569,19 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-	<target name="export" depends="assemble.web.async,assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all objects and export them to the top level dir for packaging">
+
+	<target name="export"
+			description="export all files that other subprojects may need before building"
+			depends="prepare,gen.manifest.locale">
+		<mkdir dir="${build.export}/locale"/>
+		<copy todir="${build.export}/locale">
+			<fileset dir="${build.locale}">
+				<include name="**/*.json"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="dist" depends="assemble.web.async,assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -611,12 +626,6 @@ limitations under the License.
 				<exclude name="**/test/**"/>
 				<exclude name="**/*.html"/>
 				<exclude name="src/ilib-*-inc.js"/>
-			</fileset>
-		</copy>
-		<mkdir dir="${build.export}/locale"/>
-		<copy todir="${build.export}/locale">
-			<fileset dir="${build.locale}">
-				<include name="**/*.json"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/package/locale"/>
@@ -1169,5 +1178,17 @@ limitations under the License.
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" set="modular" failquit="true"/>
 	</target>
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino,test.assembled.compiled.legacy.rhino,test.assembled.uncompiled.legacy.rhino,test.dynamic.uncompiled.legacy.rhino,test.dynamic.compiled.legacy.rhino,test.dynamicdata.compiled.legacy.rhino,test.dynamicdata.uncompiled.legacy.rhino">
+	</target>
+	
+	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
+	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
+		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
+		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}/.." failifexecutionfails="true">
+			<arg value="node_modules/http-server/bin/http-server"/>
+		</exec>
 	</target>
 </project>

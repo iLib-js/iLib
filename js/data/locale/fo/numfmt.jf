@@ -3,11 +3,12 @@
     "numfmt": {
         "decimalChar": ",",
         "groupChar": ".",
-        "exponential": "×10^",
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "{s}-{n}"
+            "common": "{n} {s}",
+            "commonNegative": "−{n} {s}"
         },
-        "pctFmt": "{n} %"
+        "negativenumFmt": "−{n}",
+        "pctFmt": "{n} %",
+        "negativepctFmt": "−{n} %"
     }
 }

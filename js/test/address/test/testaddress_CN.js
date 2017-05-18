@@ -32,13 +32,13 @@ function testParseAddressCNLatinNormal() {
 };
 
 function testParseAddressCNLatinNoZip() {
-	var parsedAddress = new Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, People's Republic of China", {locale: 'en-CN'});
+	var parsedAddress = new Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, China", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("No. 1 Zhongguancun East Road, Haidian District", parsedAddress.streetAddress);
 	assertEquals("Beijing", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("People's Republic of China", parsedAddress.country);
+	assertEquals("China", parsedAddress.country);
 	assertEquals("CN", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };

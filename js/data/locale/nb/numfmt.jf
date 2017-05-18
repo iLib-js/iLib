@@ -3,6 +3,11 @@
     "numfmt": {
         "decimalChar": ",",
         "groupChar": " ",
-        "pctFmt": "{n} %"
+        "currencyFormats": {
+            "commonNegative": "−{s} {n}"
+        },
+        "negativenumFmt": "−{n}",
+        "pctFmt": "{n} %",
+        "negativepctFmt": "−{n} %"
     }
 }
