@@ -317,90 +317,91 @@ public class IString
     protected IString getChoice(double reference)
         throws ParseException
     {
-        if ( text == null || text.length() == 0 ) {
-            return null;
-        }
-        
-        int i;
-        IString result = null;
-        double selector;
-        String sel;
+    	if ( text == null || text.length() == 0 ) {
+    		return null;
+    	}
 
-        if ( strings == null ) {
-            parseChoices();
-        }
+    	int i;
+    	IString result = null;
+    	double selector;
+    	String sel;
 
-        if ( plurals == null ) {
-        	ClassLoader cl = this.getClass().getClassLoader();
-        	InputStream is = cl.getResourceAsStream("locale/" + (locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
-            //File pluralJSON = new File(PluralFormHelper.root,
-            //		(locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
-            plurals = PluralFormHelper.getPluralForms(is);
-            if (plurals == null) plurals = new HashMap<>(0);
-        }
+    	if ( strings == null ) {
+    		parseChoices();
+    	}
 
-        for (i = 0; i < selectors.size(); i++) {
-            sel = selectors.get(i);
-            if ( sel.length() > 2 && sel.substring(0,2).equals("<=") ) {                 
-                selector = Double.parseDouble(sel.substring(2));
-                if (reference <= selector) {
-                    result = new IString(strings.get(i));
-                    i = selectors.size();
-                }
-            } else if ( sel.length() > 2 && sel.substring(0,2).equals(">=") ) {
-                selector = Double.parseDouble(sel.substring(2));
-                if (reference >= selector) {
-                    result = new IString(strings.get(i));
-                    i = selectors.size();
-                }
-            } else if ( sel.length() > 1 && sel.charAt(0) == '<' ) {             
-                selector = Double.parseDouble(sel.substring(1));
-                if (reference < selector) {
-                    result = new IString(strings.get(i));
-                    i = selectors.size();
-                }
-            } else if ( sel.length() > 1 && sel.charAt(0) == '>' ) {                
-                selector = Double.parseDouble(sel.substring(1));
-                if (reference > selector) {
-                    result = new IString(strings.get(i));
-                    i = selectors.size();
-                }
-            } else if ( sel.length() > 0 ) {
+    	if ( plurals == null ) {
+    		ClassLoader cl = this.getClass().getClassLoader();
+    		String fileName = "com/ilib/locale/" + (locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON;
+    		System.err.println("File name is " + fileName);
+    		InputStream is = cl.getResourceAsStream(fileName);
+    		//File pluralJSON = new File(PluralFormHelper.root,
+    		//		(locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
+    		plurals = PluralFormHelper.getPluralForms(is);
+    		if (plurals == null) plurals = new HashMap<>(0);
+    	}
 
-            	if ( PluralFormHelper.getPluralKey((int)reference, plurals).equals(sel) ) {
-                	result = new IString(strings.get(i), locale);
-                    i = selectors.size();
-                } else {
-                int value, dash = sel.indexOf("-");
-                if ( dash != -1 ) {                     
-                    // range
-                    String start = sel.substring(0, dash);
-                    String end = sel.substring(dash+1);                   
-                    if (reference >= Long.parseLong(start, 10) && reference <= Long.parseLong(end, 10)) {                       
-                        result = new IString(strings.get(i));
-                        i = selectors.size();
-                    }
-                } else if ( (value = getBooleanSelector(sel)) > -1 ) {
-                    if ( value == reference ) {
-                        result = new IString(strings.get(i));
-                        i = selectors.size();
-                    }
-                    } else if (isNumeric(sel)) {
-                		if ( reference == Long.parseLong(sel, 10) ) {                     
-                    result = new IString(strings.get(i));
-                    i = selectors.size();
-                }
-            }
-        }
+    	for (i = 0; i < selectors.size(); i++) {
+    		sel = selectors.get(i);
+    		if ( sel.length() > 2 && sel.substring(0,2).equals("<=") ) {                 
+    			selector = Double.parseDouble(sel.substring(2));
+    			if (reference <= selector) {
+    				result = new IString(strings.get(i));
+    				i = selectors.size();
+    			}
+    		} else if ( sel.length() > 2 && sel.substring(0,2).equals(">=") ) {
+    			selector = Double.parseDouble(sel.substring(2));
+    			if (reference >= selector) {
+    				result = new IString(strings.get(i));
+    				i = selectors.size();
+    			}
+    		} else if ( sel.length() > 1 && sel.charAt(0) == '<' ) {             
+    			selector = Double.parseDouble(sel.substring(1));
+    			if (reference < selector) {
+    				result = new IString(strings.get(i));
+    				i = selectors.size();
+    			}
+    		} else if ( sel.length() > 1 && sel.charAt(0) == '>' ) {                
+    			selector = Double.parseDouble(sel.substring(1));
+    			if (reference > selector) {
+    				result = new IString(strings.get(i));
+    				i = selectors.size();
+    			}
+    		} else if ( sel.length() > 0 ) {
 
-            }
-        }
+    			if ( PluralFormHelper.getPluralKey((int)reference, plurals).equals(sel) ) {
+    				result = new IString(strings.get(i), locale);
+    				i = selectors.size();
+    			} else {
+    				int value, dash = sel.indexOf("-");
+    				if ( dash != -1 ) {                     
+    					// range
+    					String start = sel.substring(0, dash);
+    					String end = sel.substring(dash+1);                   
+    					if (reference >= Long.parseLong(start, 10) && reference <= Long.parseLong(end, 10)) {                       
+    						result = new IString(strings.get(i));
+    						i = selectors.size();
+    					}
+    				} else if ( (value = getBooleanSelector(sel)) > -1 ) {
+    					if ( value == reference ) {
+    						result = new IString(strings.get(i));
+    						i = selectors.size();
+    					}
+    				} else if (isNumeric(sel)) {
+    					if ( reference == Long.parseLong(sel, 10) ) {                     
+    						result = new IString(strings.get(i));
+    						i = selectors.size();
+    					}
+    				}
+    			}
+    		}
+    	}
 
-        if ( result == null ) {    
-            result = new IString(defaultChoice);
-        }
+    	if ( result == null ) {    
+    		result = new IString(defaultChoice);
+    	}
 
-        return result;
+    	return result;
     }
     
     public static boolean isNumeric(String str)

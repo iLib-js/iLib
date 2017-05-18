@@ -184,13 +184,15 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
  */
 IString._fncs = {
 	/**
+	 * Return the first property in the set of rules.
+	 * 
 	 * @private
-	 * @param {Object} obj
+	 * @param {Object} rules
 	 * @return {string|undefined}
 	 */
-	firstProp: function (obj) {
-		for (var p in obj) {
-			if (p && obj[p]) {
+	firstProp: function (rules) {
+		for (var p in rules) {
+			if (p && rules[p]) {
 				return p;
 			}
 		}
@@ -198,16 +200,18 @@ IString._fncs = {
 	},
 
 	/**
+	 * Return the rule in the first property.
+	 * 
 	 * @private
-	 * @param {Object} obj
+	 * @param {Object} rules
 	 * @return {string|undefined}
 	 */
-	firstPropRule: function (obj) {
-		if (Object.prototype.toString.call(obj) === '[object Array]') {
+	firstPropRule: function (rules) {
+		if (Object.prototype.toString.call(rules) === '[object Array]') {
 			return "inrange";
-		} else if (Object.prototype.toString.call(obj) === '[object Object]') {
-			for (var p in obj) {
-				if (p && obj[p]) {
+		} else if (Object.prototype.toString.call(rules) === '[object Object]') {
+			for (var p in rules) {
+				if (p && rules[p]) {
 					return p;
 				}
 			}
@@ -217,36 +221,42 @@ IString._fncs = {
 	},
 	
 	/**
+	 * Return whether or not the value n conforms to the rule set.
+	 * 
 	 * @private
-	 * @param {Object} obj
-	 * @param {number|Object} n
+	 * @param {Object} rule a rule to check against
+	 * @param {number|Object} n a number of an object containing
+	 * information about a number to check against the rule
 	 * @return {?}
 	 */
-	getValue: function (obj, n) {
-		if (typeof(obj) === 'object') {
-			var subrule = IString._fncs.firstPropRule(obj);
+	getValue: function (rule, n) {
+		if (typeof(rule) === 'object') {
+			var subrule = IString._fncs.firstPropRule(rule);
 			if (subrule === "inrange") {
-				return IString._fncs[subrule](obj, n);
+				return IString._fncs[subrule](rule, n);
 			}
-			return IString._fncs[subrule](obj[subrule], n);
-		} else if (typeof(obj) === 'string') {
-			if (typeof(n) === 'object'){
-				return n[obj];
+			return IString._fncs[subrule](rule[subrule], n);
+		} else if (typeof(rule) === 'string') {
+			if (typeof(n) === 'object') {
+				// return information about the value to check that 
+				// was originally calculated below in calculateNumberDigits()
+				return n[rule];
 			}
 			return n;
 		} else {
-			return obj;
+			return rule;
 		}
 	},
 	
 	/**
 	 * @private
-	 * @param {number|Object} n
-	 * @param {Array.<number|Array.<number>>|Object} range
-	 * @return {boolean}
+	 * @param {number|Object} n number/value to check
+	 * @param {Array.<number|Array.<number>>|Object} range an array of 
+	 * exact values to check against, or pairs of values that define the
+	 * lower and upper bounds of a range to check against
+	 * @return {boolean} true if the value is in one of the ranges
 	 */
-	matchRangeContinuous: function(n, range) {
-		
+	matchRangeContinuous: function(n, range) {		
 		for (var num in range) {
 			if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
 				var obj = range[num];
@@ -267,9 +277,17 @@ IString._fncs = {
 	},
 	
 	/**
+	 * Calculate various types of information about a number to use while checking 
+	 * against rules. The information calculated is the number (n),
+	 * the integer portion of the number (i), the decimal part of the number (f or t),
+	 * and the length of the decimal part of the number (v or w). Each of these types
+	 * of information is used in a rule somewhere in some locale.
+	 * 
 	 * @private
-	 * @param {*} number
-	 * @return {Object}
+	 * @param {*} number number to calculate for
+	 * @return {Object} an object containing information about the number,
+	 * the integer portion of the number, the decimal part of the number,
+	 * and the length of the decimal part of the number
 	 */
 	calculateNumberDigits: function(number) {
 		var numberToString = number.toString();
@@ -308,6 +326,8 @@ IString._fncs = {
 	},
 
 	/**
+	 * Match if the value is in the given range.
+	 * 
 	 * @private
 	 * @param {number|Object} n
 	 * @param {Array.<number|Array.<number>>|Object} range
@@ -340,6 +360,8 @@ IString._fncs = {
 	},
 	
 	/**
+	 * The range operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
@@ -379,6 +401,8 @@ IString._fncs = {
 	},
 	
 	/**
+	 * The modulo operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
@@ -389,6 +413,8 @@ IString._fncs = {
 	},
 	
 	/**
+	 * Return the value of the number to check.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
@@ -399,6 +425,8 @@ IString._fncs = {
 	},
 	
 	/**
+	 * Logical "or" operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
@@ -416,6 +444,8 @@ IString._fncs = {
 		return false;
 	},
 	/**
+	 * Logical "and" operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
@@ -433,6 +463,8 @@ IString._fncs = {
 		return true;
 	},
 	/**
+	 * The equals operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
@@ -465,6 +497,8 @@ IString._fncs = {
 		}
 	},
 	/**
+	 * The not equals operator.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n

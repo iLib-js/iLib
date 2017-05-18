@@ -25,15 +25,18 @@ import junit.framework.TestSuite;
  *
  */
 public class AllTests extends TestCase {
+    public AllTests(String name) {
+        super(name);
+    }
+
 	@SuppressWarnings("rawtypes")
-	public TestSuite suite() {
-		System.out.println("runing tests");
-		Class[] testClasses = { 
-			PluralFormHelperTest.class,
-			IlibLocaleTest.class, 
-			IStringTest.class,
-			ResBundleTest.class
-		};
-		return new TestSuite(testClasses);
+	public static TestSuite suite() {
+		System.out.println("running tests");
+		
+		TestSuite suite = new TestSuite("iLib Java Class Tests");
+        suite.addTestSuite(IlibLocaleTest.class);
+        suite.addTestSuite(IStringTest.class);
+        suite.addTestSuite(ResBundleTest.class);
+        return suite;
 	}
 }
