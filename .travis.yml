@@ -12,3 +12,7 @@ env:
         - gcc-4.8
         - g++-4.8
         - ant-1.9.6
+branches:
+  only:
+    - master
+    - development
