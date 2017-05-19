@@ -1444,7 +1444,46 @@ function testCollatorCaseMixedWithIndexMarkers_zh_Hans() {
 	];
 
     input.sort(col.getComparator());
-
+    var browser = ilib._getBrowser();
+    if (browser === "ie") {
+    	var expected = [
+    	  "\uFDD0APPLE",
+    	  "\uFDD0Apple",
+    	  "\uFDD0Banana",
+    	  "\uFDD0Lemon",
+    	  "\uFDD0ORange",
+    	  "\uFDD0Orange",
+    	  "\uFDD0Peach",
+    	  "\uFDD0RASPBERRY",
+    	  "\uFDD0Raspberry",
+    	  "\uFDD0Yam",
+    	  "啊",
+    	 "波",
+    	  "吃",
+    	  "次",
+    	  "德",
+    	  "额",
+    	  "佛",
+    	  "各",
+    	  "和",
+    	  "记",
+    	  "科",
+    	  "里",
+    	  "摸",
+    	  "那",
+    	  "坡",
+    	  "起",
+    	  "日",
+    	  "食",
+    	  "四",
+    	  "体",
+    	  "吴",
+    	  "西",
+    	  "一",
+    	  "站",
+    	  "子"
+    	]
+    } else {
     var expected = [
         "\uFDD0APPLE",
         "\uFDD0Apple",
@@ -1482,7 +1521,7 @@ function testCollatorCaseMixedWithIndexMarkers_zh_Hans() {
 		"站", // zhàn
 		"子"  // zī
 	];
-
+	}
     assertArrayEquals(expected, input);
 }
 

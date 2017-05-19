@@ -171,6 +171,14 @@ ilib._getBrowser = function () {
 				// already taken care of above
 				browser = "safari";
 			}
+            if (navigator.userAgent.indexOf("Edge") > -1) {                
+                browser = "Edge";
+            }
+            if (navigator.userAgent.search(/iPad|iPhone|iPod/) > -1) {
+                // Due to constraints of the iOS platform, 
+                // all browser must be built on top of the WebKit rendering engine
+                browser = "iOS";
+            }
 		}
 	}
 	return browser;
