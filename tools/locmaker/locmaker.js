@@ -173,7 +173,7 @@ localeList.forEach(function(locale) {
 });
 
 localeList.forEach(function(locale) {
-	var output = "";
+	var output = "import * as ilib from 'ilib/lib/ilib';\n\n";
 	
 	fullDeps.forEach(function(dep) {
 		getLocaleList(locale).forEach(function(sublocale) {
