@@ -20,16 +20,19 @@
  */
 package com.ilib.test;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
-
-import junit.framework.TestCase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.ilib.IString;
+import com.ilib.PluralFormHelper;
+
+import junit.framework.TestCase;
 
 /**
  * IStringTest
@@ -265,6 +268,391 @@ public class IStringTest
             fail();
         }
     }
+
+	public void testArabicConformsToPluralZero()
+	{
+		try {
+			IString str = new IString("", "ar");
+			
+			assertTrue(str.conformsToPlural("zero", 0));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralKey1()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralKey2()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("two", 2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralKeyFew1()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("few", 1003));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralKeyFew2()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("few", 7809));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralKeyMany()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("many", 1072));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testArabicConformsToPluralOther()
+	{
+		try {
+			IString str = new IString("", "ar");
+
+			assertTrue(str.conformsToPlural("other", 9702));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testBelarussianConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "be");
+
+			assertTrue(str.conformsToPlural("one", 3001));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testBelarussianConformsToPluralEleven()
+	{
+		try {
+			IString str = new IString("", "be");
+
+			assertTrue(str.conformsToPlural("many", 311));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testBelarussianConformsToPluralFew()
+	{
+		try {
+			IString str = new IString("", "be");
+
+			assertTrue(str.conformsToPlural("few", 502));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testBelarussianConformsToPluralMany1()
+	{
+		try {
+			IString str = new IString("", "be");
+
+			assertTrue(str.conformsToPlural("many", 514));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testBelarussianConformsToPluralMany2()
+	{
+		try {
+			IString str = new IString("", "be");
+
+			assertTrue(str.conformsToPlural("many", 978000));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testFrenchConformsToPluralZero()
+	{
+		try {
+			IString str = new IString("", "fr");
+
+			assertTrue(str.conformsToPlural("one", 0));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testFrenchConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "fr");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testFrenchConformsToPluralTwo()
+	{
+		try {
+			IString str = new IString("", "fr");
+
+			assertTrue(str.conformsToPlural("other", 2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testFrenchConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "fr");
+
+			assertTrue(str.conformsToPlural("other", 8124));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testGaelicConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "ga");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testGaelicConformsToPlural2()
+	{
+		try {
+			IString str = new IString("", "ga");
+
+			assertTrue(str.conformsToPlural("two", 2));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testGaelicConformsToPluralFew()
+	{
+		try {
+			IString str = new IString("", "ga");
+
+			assertTrue(str.conformsToPlural("few", 4));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testGaelicConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "ga");
+
+			assertTrue(str.conformsToPlural("many", 9));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testGaelicConformsToPluralOther()
+	{
+		try {
+			IString str = new IString("", "ga");
+
+			assertTrue(str.conformsToPlural("other", 179));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testHebrewConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "he");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testHebrewConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "he");
+
+			assertTrue(str.conformsToPlural("many", 4000));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testHebrewConformsToPluralOther()
+	{
+		try {
+			IString str = new IString("", "he");
+
+			assertTrue(str.conformsToPlural("other", 8001));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testMalteseConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "mt");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testMalteseConformsToPluralFew()
+	{
+		try {
+			IString str = new IString("", "mt");
+
+			assertTrue(str.conformsToPlural("few", 11708));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testMalteseConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "mt");
+
+			assertTrue(str.conformsToPlural("many", 416));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testMalteseConformsToPluralUndefined()
+	{
+		try {
+			IString str = new IString("", "mt");
+
+			assertTrue(str.conformsToPlural("other", 8000));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testPolishConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "pl");
+
+			assertTrue(str.conformsToPlural("one", 1));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testPolishConformsToPluralFew()
+	{
+		try {
+			IString str = new IString("", "pl");
+
+			assertTrue(str.conformsToPlural("few", 1742));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testPolishConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "pl");
+
+			assertTrue(str.conformsToPlural("many", 8925));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testRussianConformsToPluralOne()
+	{
+		try {
+			IString str = new IString("", "ru");
+
+			assertTrue(str.conformsToPlural("one", 812371));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testRussianConformsToPluralFew()
+	{
+		try {
+			IString str = new IString("", "ru");
+
+			assertTrue(str.conformsToPlural("few", 932));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testRussianConformsToPluralTwelve()
+	{
+		try {
+			IString str = new IString("", "ru");
+
+			assertTrue(str.conformsToPlural("many", 8925));
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	public void testRussianConformsToPluralMany()
+	{
+		try {
+			IString str = new IString("", "ru");
+
+			assertTrue(str.conformsToPlural("many", 12000));
+		} catch (Exception e) {
+			fail();
+		}
+	}
 
     public void testStringFormatChoiceSimple1() {
         IString str = new IString("1#first string|2#second string");

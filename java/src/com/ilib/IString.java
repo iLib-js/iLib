@@ -20,8 +20,11 @@
  */
 package com.ilib;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +33,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,6 +62,169 @@ public class IString
     
     protected Map<String, String> plurals = null;
 
+    /**
+     * Class to hold fungible values returned from the 
+     * interpretation of plural forms. This is similar
+     * to the type-less values of variables in languages
+     * like Javascript.
+     * 
+     * @author edwin
+     */
+    class Fungible {
+    	protected String type;
+    	protected boolean valueB;
+    	protected double valueN;
+    	protected JSONArray valueA;
+    	protected long valueI;
+    	
+    	public Fungible(boolean value) {
+    		type = "boolean";
+    		valueB = value;
+    	}
+    	
+    	public Fungible(double value) {
+    		type = "number";
+    		valueN = value;
+    	}
+
+    	public Fungible(JSONArray value) {
+    		type = "array";
+    		valueA = value;
+    	}
+    	
+    	public Fungible(long value) {
+    		type = "integer";
+    		valueI = value;
+    	}
+
+    	public String getType() {
+    		return type;
+    	}
+    	
+    	public boolean getBoolean() {
+    		switch (type) {
+	    		case "boolean":
+	    			return valueB;
+	    		
+	    		case "number":
+	    			return valueN != 0.0;
+	    			
+	    		case "integer":
+	    			return valueI != 0;
+	    			
+	    		case "array":
+	    			return valueA.isNull(0);
+    		}
+    		
+    		return false;
+    	}
+    	
+    	public double getDouble() 
+    		throws JSONException
+    	{
+    		switch (type) {
+	    		case "boolean":
+	    			return valueB ? 1.0 : 0.0;
+	    		
+	    		case "number":
+	    			return valueN;
+	    			
+	    		case "integer":
+	    			return (double) valueI;
+	    			
+	    		case "array":
+	    			return valueA.getDouble(0);
+			}
+    		
+    		return 0.0;
+    	}
+
+    	public long getInteger() 
+    		throws JSONException
+    	{
+    		switch (type) {
+	    		case "boolean":
+	    			return valueB ? 1 : 0;
+	    		
+	    		case "number":
+	    			return (long) valueN;
+	    			
+	    		case "integer":
+	    			return valueI;
+	    			
+	    		case "array":
+	    			return valueA.getLong(0);
+			}
+    		
+    		return 0;
+    	}
+
+    	public JSONArray getArray() 
+    		throws JSONException
+    	{
+    		JSONArray arr;
+    		
+    		switch (type) {
+    		case "boolean":
+    			arr = new JSONArray();
+    			arr.put(0, valueB);
+    			arr.put(1, valueB);
+    			break;
+    			
+    		case "number":
+    			arr = new JSONArray();
+    			arr.put(0, valueN);
+    			arr.put(1, valueN);
+    			break;
+    			
+    		case "integer":
+    			arr = new JSONArray();
+    			arr.put(0, valueI);
+    			arr.put(1, valueI);
+    			break;
+    		
+    		default:
+    		case "array":
+    			arr = valueA;
+    			break;
+    		}
+    		
+    		return arr;
+    	}
+    	
+    	public boolean equals(Fungible other) 
+    		throws JSONException
+    	{
+    		switch (type) {
+    		case "boolean":
+    			return valueB == other.getBoolean();
+    			
+    		case "number":
+    			switch (other.getType()) {
+    			case "array":
+    				JSONArray arr = other.getArray();
+    				double start = arr.getDouble(0);
+    				double end = arr.getDouble(1);
+    				
+    				return valueN >= start && valueN <= end;
+
+    			default:
+    				return valueN == other.getDouble();
+    			}
+
+			case "array":
+				// probably never happens
+    			double leftFirst = valueA.getDouble(0);
+    			double leftSecond = valueA.getDouble(1);
+    			
+    			JSONArray otherArr = other.getArray();
+    			return leftFirst == otherArr.getDouble(0) && leftSecond == otherArr.getDouble(1);
+    		}
+    		
+			return false;
+    	}
+    }
+    
     /**
      * Construct a new IString instance with the given text.
      * 
@@ -91,6 +258,217 @@ public class IString
         this.text = text;
         this.locale = locale;
     }
+
+	/**
+	 * 
+	 * @param file
+	 * @return a map containing the plural forms encoded in the file
+	 */
+	public static JSONObject getPluralForms(IlibLocale locale) 
+		throws JSONException
+	{
+		ClassLoader cl = IString.class.getClassLoader();
+		String fileName = "com/ilib/locale/" + (locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON;
+		System.err.println("File name is " + fileName);
+		InputStream is = cl.getResourceAsStream(fileName);
+
+		if (is == null) {
+			fileName = "/com/ilib/locale/" + (locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON;
+			System.err.println("Didn't work. Now trying " + fileName);
+			is = cl.getResourceAsStream(fileName);
+		}
+		
+		if (is != null) {
+			StringBuilder builder = new StringBuilder();
+	
+			try (BufferedReader reader = new BufferedReader(
+					new InputStreamReader(is, "utf-8")); ) {
+				String currentLine = null;
+				while ( (currentLine = reader.readLine()) != null ) {
+					builder.append(currentLine);
+				}
+			} catch (Exception e) {
+				System.err.println("Could not load plurals file.");
+				return null;
+			}
+	
+			return new JSONObject(builder.toString());
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Do a proper modulo function. The Java % operator will give the truncated
+	 * division algorithm, but for many calculations, we need the Euclidean
+	 * division algorithm where the remainder of any division, whether the dividend
+	 * is negative or not, is always a positive number in the range [0, modulus).
+	 * This should be tru for continuous numbers, not just integers. <p>
+	 * 
+	 * @param dividend the number being divided
+	 * @param modulus the number dividing the dividend. This should always be a 
+	 * positive number.
+	 * @return the remainder of dividing the dividend by the modulus.  
+	 */
+	public double mod(double dividend, double modulus) {
+		if (modulus == 0) {
+			return 0;
+		}
+		double x = dividend % modulus;
+		return (x < 0) ? x + modulus : x;
+	}
+
+	public Fungible interpret(Object rule, double number) {
+        String key;
+        Fungible value;
+        boolean b;
+        int i;
+        Fungible left, right;
+
+        try {
+        	if (rule instanceof JSONObject) {
+        		JSONObject json = (JSONObject) rule;
+        		Iterator<String> it = json.keys();
+        		key = it.next();
+        		JSONArray params = json.getJSONArray(key);
+
+        		switch (key) {
+        		case "and":
+        			b = true;
+        			i = 0;
+
+        			while (b && (i < params.length())) {
+        				value = interpret(params.get(i), number);
+
+        				b = b && value.getBoolean();
+        			}
+        			return new Fungible(b);
+
+        		case "or":
+        			b = false;
+        			i = 0;
+
+        			while (!b && (i < params.length())) {
+        				value = interpret(params.get(i), number);
+
+        				b = b || value.getBoolean();
+        			}
+        			return new Fungible(b);
+
+        		case "is":
+        		case "eq":
+        			left = interpret(params.get(0), number);
+        			right = interpret(params.get(1), number);
+        			return new Fungible(left.equals(right));
+
+        		case "isnot":
+        		case "neq":
+        			return new Fungible(!interpret(params.getJSONObject(0), number).equals(interpret(params.getJSONObject(1), number)));
+
+        		case "within":
+        		case "inrange":
+        			value = interpret(params.get(0), number);
+        			Fungible range = interpret(params.get(1), number);
+        			JSONArray r = range.getArray();
+        			return new Fungible(value.getDouble() >= r.getDouble(0) && value.getDouble() <= r.getDouble(1));
+
+        		case "notin":
+        			value = interpret(params.get(0), number);
+        			range = interpret(params.get(1), number);
+        			r = range.getArray();
+        			return new Fungible(value.getDouble() < r.getDouble(0) || value.getDouble() > r.getDouble(1));
+
+        		case "mod":
+        			left = interpret(params.get(0), number);
+        			right = interpret(params.get(1), number);
+        			return new Fungible(mod(left.getDouble(), right.getInteger()));
+
+        		default:
+        			// error! should not happen!
+        			System.err.println("Syntax error in " + this.locale.getLanguage() + "/plurals.json. Found unknown operator " + key);
+        			break;
+        		}
+        	} else if (rule instanceof JSONArray) {
+        		return new Fungible((JSONArray) rule);
+        	} else if (rule instanceof String) {
+        		String tmp = (String) rule;
+        		
+        		switch (tmp) {
+        		case "n":
+        			return new Fungible(number);
+
+        		case "i":
+        			return new Fungible((long) number);
+
+        		case "v":
+        		case "w":
+        			String d = new BigDecimal(number).toString();
+        			String[] parts = d.split("\\.");
+        			long len = 0;
+        			if (parts != null && parts.length == 2) {
+        				len = parts[1].length();
+        			}
+        			return new Fungible(len);
+
+        		case "f":
+        		case "t":
+        			d = new BigDecimal(number).toString();
+        			parts = d.split("\\.");
+        			long decimal = 0;
+        			if (parts != null && parts.length == 2) {
+        				decimal = Long.parseLong(parts[1]);
+        			}
+        			return new Fungible(decimal);
+
+        		default:
+        			// error!
+        			System.err.println("Syntax error in " + this.locale.getLanguage() + "/plurals.json. Found unknown variable " + tmp);
+        			break;
+        		}
+        	} else if (rule instanceof Boolean) {
+        		return new Fungible((boolean) rule);
+        	} else if (rule instanceof Double) {
+        		Double d = (Double) rule;
+        		return new Fungible(d.doubleValue());
+        	} else if (rule instanceof Float) {
+        		Float f = (Float) rule;
+        		return new Fungible(f.doubleValue());
+        	} else if (rule instanceof Integer) {
+        		Integer integer = (Integer) rule;
+        		return new Fungible(integer.longValue());
+        	} else if (rule instanceof Long) {
+        		Long l = (Long) rule;
+        		return new Fungible(l.longValue());
+        	} else {
+        		// else unknown value
+        		System.err.println("Syntax error in " + this.locale.getLanguage() + "/plurals.json. Found unknown json property type");
+        		return new Fungible(0);
+        	}
+        } catch (JSONException e) {
+        	System.err.println(e);
+        } // should not happen
+
+		return new Fungible(false);
+	}
+	
+	public boolean conformsToPlural(String className, float number) {
+		try {
+			// first find the rule for the class of numbers
+			JSONObject rules = IString.getPluralForms(locale);
+			if (rules != null) {
+				JSONObject rule = rules.getJSONObject(className);
+	
+				// now interpret the rule to see if the number is in that class
+	            Fungible result = interpret(rule, number);
+	            return result.getBoolean();
+			} else {
+				return false;
+			}
+		} catch (JSONException e) {
+			System.err.println("Error in plurals.json for locale " + locale);
+		}
+		return false;
+	}
 
     /**
      * Format a string with the given named values.
