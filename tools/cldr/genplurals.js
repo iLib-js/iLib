@@ -94,8 +94,11 @@ try {
 var OPERATORS = ['!=', '=', 'is not', 'is', 'not in', 'in', 'not within', 'within'];
 var OPERATOR_MAP = {
 	'!=': 'neq',
+	'is not': 'isnot',
 	'=': 'eq',
-	'%': 'mod'
+	'%': 'mod',
+	'not in': 'notin',
+	'not within': 'notin'
 };
 var MODS = ['mod', '%'];
 var VALUES = 'niftvw';
@@ -153,7 +156,10 @@ function create_relation(relation_string) {
 
 	temp = relation_string.split(operator);
 	operand = create_expr(temp[0]);
-	ranges= create_range_list(temp[1]);
+	ranges = create_range_list(temp[1]);
+	if (Array.isArray(ranges)) {
+		operator = "in";
+	}
 	relation[operator_keyword(operator)] = [operand, ranges];
 
 	return relation;
@@ -263,7 +269,7 @@ function create_rule(cldr_rule_object) {
 		if (cldr_rule_object.hasOwnProperty(keyword)) {
 			condition_string = extract_condition(cldr_rule_object[keyword]);
 			condition = create_condition(condition_string);
-			if (undefined !== condition) {
+			if (condition) {
 				count = extract_count(keyword);
 				rule[count] = condition;
 			}
