@@ -39,6 +39,7 @@ function suite() {
 		"testdatefmt_it_IT.js",
 		"testdatefmt_ja_JP.js",
 		"testdatefmt_kk_Cyrl_KZ.js",
+		"testdatefmt_km_KH.js",
 		"testdatefmt_kn_IN.js",
 		"testdatefmt_ko_KR.js",
 		"testdatefmt_ku_Arab_IQ.js",
@@ -51,7 +52,10 @@ function suite() {
 		"testdatefmt_ms_MY.js",
 		"testdatefmt_nb_NO.js",
 		"testdatefmt_nl_NL.js",
-		"testdatefmt_or_IN.js"
+		"testdatefmt_or_IN.js",
+                "testdatefmt_km_KH.js",
+                "testdatefmt_si_LK.js",
+                "testdatefmt_sw_KE.js"
 	];
 
     suites.forEach(function (path) {

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_vi_VN.js - test the date range formatter object Vietnamese/Vietnam
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed unvir the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -42,7 +42,7 @@ function testDateRngFmtVNRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31/12/2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30, 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeInDayMedium() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
@@ -66,7 +66,7 @@ function testDateRngFmtVNRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31-12-2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30, 31 thg 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeInDayLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -90,7 +90,7 @@ function testDateRngFmtVNRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 12 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 tháng 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeInDayFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -114,7 +114,7 @@ function testDateRngFmtVNRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-	assertEquals("vào lúc 13:45 – 14:30 31 tháng 12 2011", fmt.format(start, end));
+	assertEquals("13:45 – 14:30 31 tháng 12, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeNextDayShort() {
@@ -139,7 +139,7 @@ function testDateRngFmtVNRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30/12/2011 – 14:30 31/12/2011", fmt.format(start, end));
+    assertEquals("13:45, 30/12/2011 – 14:30, 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "medium"});
@@ -163,7 +163,7 @@ function testDateRngFmtVNRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30-12-2011 – 14:30 31-12-2011", fmt.format(start, end));
+    assertEquals("13:45, 30 thg 12, 2011 – 14:30, 31 thg 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -187,7 +187,7 @@ function testDateRngFmtVNRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 – 14:30 31 12 2011", fmt.format(start, end));
+    assertEquals("13:45 30 tháng 12, 2011 – 14:30 31 tháng 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -211,7 +211,7 @@ function testDateRngFmtVNRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vào lúc 13:45 30 – vào lúc 14:30 31 tháng 12 2011", fmt.format(start, end));
+    assertEquals("13:45 30 tháng 12, 2011 – 14:30 31 tháng 12, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeMultiDayShort() {
@@ -260,7 +260,7 @@ function testDateRngFmtVNRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31-12-2011", fmt.format(start, end));
+    assertEquals("20 – 31 thg 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -284,7 +284,7 @@ function testDateRngFmtVNRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 12 2011", fmt.format(start, end));
+    assertEquals("20 – 31 tháng 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -308,7 +308,7 @@ function testDateRngFmtVNRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 – 31 tháng 12 2011", fmt.format(start, end));
+    assertEquals("20 – 31 tháng 12, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeNextMonthShort() {
@@ -357,7 +357,7 @@ function testDateRngFmtVNRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11 – 31-12-2011", fmt.format(start, end));
+    assertEquals("20 thg 11 – 31 thg 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -381,7 +381,7 @@ function testDateRngFmtVNRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 11 – 31 12 2011", fmt.format(start, end));
+    assertEquals("20 tháng 11 – 31 tháng 12, 2011", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -405,7 +405,7 @@ function testDateRngFmtVNRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 tháng 11 – 31 tháng 12 2011", fmt.format(start, end));
+    assertEquals("20 tháng 11 – 31 tháng 12, 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeNextYearShort() {
@@ -454,7 +454,7 @@ function testDateRngFmtVNRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-11-2011 – 31-01-2012", fmt.format(start, end));
+    assertEquals("20 thg 11, 2011 – 31 thg 1, 2012", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -478,7 +478,7 @@ function testDateRngFmtVNRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 11 2011 – 31 01 2012", fmt.format(start, end));
+    assertEquals("20 tháng 11, 2011 – 31 tháng 1, 2012", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -502,7 +502,7 @@ function testDateRngFmtVNRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 tháng 11 2011 – 31 tháng 1 2012", fmt.format(start, end));
+    assertEquals("20 tháng 11, 2011 – 31 tháng 1, 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtVNRangeMultiYearShort() {
@@ -551,7 +551,7 @@ function testDateRngFmtVNRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-2011 – 01-2014", fmt.format(start, end));
+    assertEquals("thg 11, 2011 – thg 1, 2014", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "long"});
@@ -575,7 +575,7 @@ function testDateRngFmtVNRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11 2011 – 01 2014", fmt.format(start, end));
+    assertEquals("tháng 11, 2011 – tháng 1, 2014", fmt.format(start, end));
 }
 function testDateRngFmtVNRangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
@@ -599,7 +599,7 @@ function testDateRngFmtVNRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("tháng 11 2011 – tháng 1 2014", fmt.format(start, end));
+    assertEquals("tháng 11, 2011 – tháng 1, 2014", fmt.format(start, end));
 }
 function testDateRngFmtVNManyYearsFull() {
     var fmt = new DateRngFmt({locale: "vi-VN", length: "full"});
