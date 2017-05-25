@@ -1168,9 +1168,10 @@ function testUnitFormatTemperature6() {
         amount: 2000
     });
 
-    var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short",maxFractionDigits:11});
+    var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short",maxFractionDigits: 9});
     var str = uf.format(m1);
-    assertEquals("1 093,33333333333 °C", str);
+                   
+    assertEquals("1 093,333333333 °C", str);
 }
 
 function testUnitFormatTemperature7() {
