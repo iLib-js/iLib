@@ -326,16 +326,18 @@ IString._fncs = {
 	},
 
 	/**
-	 * Match if the value is in the given range.
+	 * Match if the value is in the given range:
+	 * range_lower_bound <= n <= range_upper_bound
 	 * 
 	 * @private
 	 * @param {number|Object} n
 	 * @param {Array.<number|Array.<number>>|Object} range
 	 * @return {boolean}
-	 */
+	 *
 	matchRange: function(n, range) {
 		return IString._fncs.matchRangeContinuous(n, range);
 	},
+	*/
 	
 	/**
 	 * @private
@@ -356,17 +358,19 @@ IString._fncs = {
 	 * @return {boolean}
 	 */
 	isnot: function(rule, n) {
-		return IString._fncs.getValue(rule[0], n) != IString._fncs.getValue(rule[1], n);
+		var left = IString._fncs.getValue(rule[0], n);
+		var right = IString._fncs.getValue(rule[1], n);
+		return left != right;
 	},
 	
 	/**
-	 * The range operator.
+	 * The range operator. Check if range_lower_bound <= n <= range_upper_bound
 	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
 	 * @return {boolean}
-	 */
+	 *
 	inrange: function(rule, n) {
 		if (typeof(rule[0]) === 'number') {
 			if(typeof(n) === 'object') {
@@ -380,17 +384,21 @@ IString._fncs = {
 			return IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);	
 		}
 	},
+	*/
+	
 	/**
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
 	 * @return {boolean}
-	 */
+	 *
 	notin: function(rule, n) {
 		return !IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);
 	},
+	*/
 	
 	/**
+	 * Continuous lower_bound <= n <= upper_bound
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
@@ -455,15 +463,17 @@ IString._fncs = {
 		var ruleLength = rule.length;
 		var result, i;
 		for (i=0; i < ruleLength; i++) {
-			result= IString._fncs.getValue(rule[i], n);
+			result = IString._fncs.getValue(rule[i], n);
 			if (!result) {
 				return false;
 			} 
 		}
 		return true;
 	},
+	
 	/**
-	 * The equals operator.
+	 * The equals operator. Return true if n is in the
+	 * range.
 	 * 
 	 * @private
 	 * @param {Object} rule
@@ -477,14 +487,14 @@ IString._fncs = {
 		if (typeof(rule[0]) === 'string') {
 			if (typeof(n) === 'object'){
 				valueRight = n[rule[0]];
-				if (typeof(rule[1])=== 'number'){
+				if (typeof(rule[1]) === 'number'){
 					valueRight = IString._fncs.getValue(rule[1], n);	
-				} else if (typeof(rule[1])=== 'object' && (IString._fncs.firstPropRule(rule[1]) === "inrange" )){
+				} else if (typeof(rule[1]) === 'object' && (IString._fncs.firstPropRule(rule[1]) === "inrange" )){
 					valueRight = IString._fncs.getValue(rule[1], n);	
 				}
 			}
 		} else {
-			if (IString._fncs.firstPropRule(rule[1]) === "inrange") { // mod
+			if (IString._fncs.firstPropRule(rule[1]) === "inrange") {
 				valueRight = IString._fncs.getValue(rule[1], valueLeft);
 			} else {
 				valueRight = IString._fncs.getValue(rule[1], n);
@@ -496,8 +506,10 @@ IString._fncs = {
 			return (valueLeft == valueRight ? true :false);	
 		}
 	},
+	
 	/**
-	 * The not equals operator.
+	 * The not equals operator. Return true if n is not
+	 * in the range.
 	 * 
 	 * @private
 	 * @param {Object} rule
@@ -514,7 +526,7 @@ IString._fncs = {
 				valueRight = IString._fncs.getValue(rule[1], n);
 			}
 		} else {
-			if (IString._fncs.firstPropRule(rule[1]) === "inrange") { // mod
+			if (IString._fncs.firstPropRule(rule[1]) === "inrange") {
 				valueRight = IString._fncs.getValue(rule[1], valueLeft);
 			} else {
 				valueRight = IString._fncs.getValue(rule[1], n);	
