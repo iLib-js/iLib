@@ -207,15 +207,10 @@ IString._fncs = {
 	 * @return {string|undefined}
 	 */
 	firstPropRule: function (rules) {
-		if (Object.prototype.toString.call(rules) === '[object Array]') {
-			return "inrange";
-		} else if (Object.prototype.toString.call(rules) === '[object Object]') {
-			for (var p in rules) {
-				if (p && rules[p]) {
-					return p;
-				}
+		for (var p in rules) {
+			if (p && rules[p]) {
+				return p;
 			}
-
 		}
 		return undefined; // should never get here
 	},
@@ -225,7 +220,7 @@ IString._fncs = {
 	 * 
 	 * @private
 	 * @param {Object} rule a rule to check against
-	 * @param {number|Object} n a number of an object containing
+	 * @param {number|Object} n a number or an object containing
 	 * information about a number to check against the rule
 	 * @return {?}
 	 */
@@ -237,94 +232,12 @@ IString._fncs = {
 			}
 			return IString._fncs[subrule](rule[subrule], n);
 		} else if (typeof(rule) === 'string') {
-			if (typeof(n) === 'object') {
-				// return information about the value to check that 
-				// was originally calculated below in calculateNumberDigits()
-				return n[rule];
-			}
-			return n;
+			return IString._fncs[rule](rule, n);
 		} else {
 			return rule;
 		}
 	},
 	
-	/**
-	 * @private
-	 * @param {number|Object} n number/value to check
-	 * @param {Array.<number|Array.<number>>|Object} range an array of 
-	 * exact values to check against, or pairs of values that define the
-	 * lower and upper bounds of a range to check against
-	 * @return {boolean} true if the value is in one of the ranges
-	 */
-	matchRangeContinuous: function(n, range) {		
-		for (var num in range) {
-			if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
-				var obj = range[num];
-				if (typeof(obj) === 'number') {
-					if (n === range[num]) {
-						return true;
-					} else if (n >= range[0] && n <= range[1]) {
-						return true;
-					}
-				} else if (Object.prototype.toString.call(obj) === '[object Array]') {
-					if (n >= obj[0] && n <= obj[1]) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	},
-	
-	/**
-	 * Calculate various types of information about a number to use while checking 
-	 * against rules. The information calculated is the number (n),
-	 * the integer portion of the number (i), the decimal part of the number (f or t),
-	 * and the length of the decimal part of the number (v or w). Each of these types
-	 * of information is used in a rule somewhere in some locale.
-	 * 
-	 * @private
-	 * @param {*} number number to calculate for
-	 * @return {Object} an object containing information about the number,
-	 * the integer portion of the number, the decimal part of the number,
-	 * and the length of the decimal part of the number
-	 */
-	calculateNumberDigits: function(number) {
-		var numberToString = number.toString();
-		var parts = [];
-		var numberDigits =  {};
-		var operandSymbol =  {};
-		var integerPart, decimalPartLength, decimalPart;
-
-		if (numberToString.indexOf('.') !== -1) { //decimal
-			parts = numberToString.split('.', 2);
-			numberDigits.integerPart = parseInt(parts[0], 10);
-			numberDigits.decimalPartLength = parts[1].length;
-			numberDigits.decimalPart = parseInt(parts[1], 10);
-
-			operandSymbol.n = parseFloat(number);
-			operandSymbol.i = numberDigits.integerPart;
-			operandSymbol.v = numberDigits.decimalPartLength;
-			operandSymbol.w = numberDigits.decimalPartLength;
-			operandSymbol.f = numberDigits.decimalPart;
-			operandSymbol.t = numberDigits.decimalPart;
-
-		} else {
-			numberDigits.integerPart = number;
-			numberDigits.decimalPartLength = 0;
-			numberDigits.decimalPart = 0;
-
-			operandSymbol.n = parseInt(number, 10);
-			operandSymbol.i = numberDigits.integerPart;
-			operandSymbol.v = 0;
-			operandSymbol.w = 0;
-			operandSymbol.f = 0;
-			operandSymbol.t = 0;
-
-		}
-		return operandSymbol
-	},
-
 	/**
 	 * Match if the value is in the given range:
 	 * range_lower_bound <= n <= range_upper_bound
@@ -345,10 +258,9 @@ IString._fncs = {
 	 * @param {number} n
 	 * @return {boolean}
 	 */
-	is: function(rule, n) {
+	eq: function(rule, n) {
 		var left = IString._fncs.getValue(rule[0], n);
-		var right = IString._fncs.getValue(rule[1], n);
-		return left == right;
+		return IString._fncs.getValue(rule[1], left);
 	},
 	
 	/**
@@ -357,26 +269,23 @@ IString._fncs = {
 	 * @param {number} n
 	 * @return {boolean}
 	 */
-	isnot: function(rule, n) {
+	neq: function(rule, n) {
 		var left = IString._fncs.getValue(rule[0], n);
-		var right = IString._fncs.getValue(rule[1], n);
-		return left != right;
+		return !IString._fncs.getValue(rule[1], left);
 	},
 	
 	/**
 	 * The range operator. Check if range_lower_bound <= n <= range_upper_bound
+	 * where n is an integer.
 	 * 
 	 * @private
 	 * @param {Object} rule
-	 * @param {number|Object} n
+	 * @param {number} n
 	 * @return {boolean}
-	 *
+	 */
 	inrange: function(rule, n) {
 		if (typeof(rule[0]) === 'number') {
-			if(typeof(n) === 'object') {
-				return IString._fncs.matchRange(n.n,rule);
-			}
-			return IString._fncs.matchRange(n,rule);	
+			return IString._fncs.matchRange(n, rule);	
 		} else if (typeof(rule[0]) === 'undefined') {
 			var subrule = IString._fncs.firstPropRule(rule);
 			return IString._fncs[subrule](rule[subrule], n);
@@ -384,7 +293,6 @@ IString._fncs = {
 			return IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);	
 		}
 	},
-	*/
 	
 	/**
 	 * @private
@@ -398,18 +306,20 @@ IString._fncs = {
 	*/
 	
 	/**
-	 * Continuous lower_bound <= n <= upper_bound
+	 * Continuous lower_bound <= n <= upper_bound.
+	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
 	 * @return {boolean}
 	 */
 	within: function(rule, n) {
-		return IString._fncs.matchRangeContinuous(IString._fncs.getValue(rule[0], n), rule[1]);		
+		return IString._fncs.getValue(rule[1], IString._fncs.getValue(rule[0], n));		
 	},
 	
 	/**
-	 * The modulo operator.
+	 * The modulo operator. Return the remainder left over when the first parameter
+	 * is divided by the second.
 	 * 
 	 * @private
 	 * @param {Object} rule
@@ -421,17 +331,83 @@ IString._fncs = {
 	},
 	
 	/**
-	 * Return the value of the number to check.
+	 * Return the floating point value of the number.
 	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @return {number}
+	 * @return {number} the floating point number
 	 */
 	n: function(rule, n) {
 		return n;
 	},
-	
+
+	/**
+	 * Return the integral portion of the number.
+	 * 
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @return {number} the integral portion of the number
+	 */
+	i: function(rule, n) {
+		return Math.trunc(n);
+	},
+
+	/**
+	 * Return the number of visible fraction digits in n, with trailing zeros.
+	 * 
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @return {number} the number of visible fraction digits in n, with trailing zeros
+	 */
+	v: function(rule, n) {
+		return IString._fncs.f(rule, n).length;
+	},
+
+	/**
+	 * Return the number of visible fraction digits in n, without trailing zeros.
+	 * 
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @return {number} the number of visible fraction digits in n, without trailing zeros.
+	 */
+	w: function(rule, n) {
+		return IString._fncs.t(rule, n).length;
+	},
+
+	/**
+	 * Return the visible fractional digits in n, with trailing zeros.
+	 * 
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @return {number} the visible fractional digits in n, with trailing zeros
+	 */
+	f: function(rule, n) {
+		n = n + ""; // convert to string first if necessary
+		var parts = n.split(/\./);
+		
+		return parts.length ? parts[1] : "";
+	},
+
+	/**
+	 * Return the number of visible fraction digits in n, without trailing zeros.
+	 * 
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @return {number} the number of visible fraction digits in n, without trailing zeros.
+	 */
+	t: function(rule, n) {
+		var tmp = parseInt(n);
+		tmp = tmp.toString();
+		var parts = tmp.split(/\./);
+		return parts.length ? parts[1] : "";
+	},
+
 	/**
 	 * Logical "or" operator.
 	 * 
@@ -443,7 +419,7 @@ IString._fncs = {
 	or: function(rule, n) {
 		var ruleLength = rule.length;
 		var result, i;
-		for (i=0; i < ruleLength; i++) {
+		for (i = 0; i < ruleLength; i++) {
 			result = IString._fncs.getValue(rule[i], n);
 			if (result) {
 				return true;
@@ -462,7 +438,7 @@ IString._fncs = {
 	and: function(rule, n) {
 		var ruleLength = rule.length;
 		var result, i;
-		for (i=0; i < ruleLength; i++) {
+		for (i = 0; i < ruleLength; i++) {
 			result = IString._fncs.getValue(rule[i], n);
 			if (!result) {
 				return false;
@@ -472,73 +448,33 @@ IString._fncs = {
 	},
 	
 	/**
-	 * The equals operator. Return true if n is in the
-	 * range.
+	 * The "in" operator. Return true if value of the first
+	 * operand is in the range given by the right operand, and
+	 * false otherwise.
 	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
 	 * @return {boolean}
 	 */
-	eq: function(rule, n) {
+	"in": function(rule, n) {
 		var valueLeft = IString._fncs.getValue(rule[0], n);
-		var valueRight;
-
-		if (typeof(rule[0]) === 'string') {
-			if (typeof(n) === 'object'){
-				valueRight = n[rule[0]];
-				if (typeof(rule[1]) === 'number'){
-					valueRight = IString._fncs.getValue(rule[1], n);	
-				} else if (typeof(rule[1]) === 'object' && (IString._fncs.firstPropRule(rule[1]) === "inrange" )){
-					valueRight = IString._fncs.getValue(rule[1], n);	
-				}
-			}
-		} else {
-			if (IString._fncs.firstPropRule(rule[1]) === "inrange") {
-				valueRight = IString._fncs.getValue(rule[1], valueLeft);
-			} else {
-				valueRight = IString._fncs.getValue(rule[1], n);
-			}
-		} 
-		if(typeof(valueRight) === 'boolean') {
-			return (valueRight ? true : false);
-		} else {
-			return (valueLeft == valueRight ? true :false);	
-		}
+		return IString._fncs.getValue(rule[1], valueLeft);
 	},
 	
 	/**
-	 * The not equals operator. Return true if n is not
-	 * in the range.
+	 * The "not in" operator. Return false if value of the first
+	 * operand is in the range given by the right operand, and
+	 * true otherwise.
 	 * 
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
 	 * @return {boolean}
 	 */
-	neq: function(rule, n) {
+	"not in": function(rule, n) {
 		var valueLeft = IString._fncs.getValue(rule[0], n);
-		var valueRight;
-
-		if (typeof(rule[0]) === 'string') {
-			valueRight = n[rule[0]];
-			if (typeof(rule[1])=== 'number'){
-				valueRight = IString._fncs.getValue(rule[1], n);
-			}
-		} else {
-			if (IString._fncs.firstPropRule(rule[1]) === "inrange") {
-				valueRight = IString._fncs.getValue(rule[1], valueLeft);
-			} else {
-				valueRight = IString._fncs.getValue(rule[1], n);	
-			}	
-		}
-
-		if(typeof(valueRight) === 'boolean') {//mod
-			return (valueRight? false : true);
-		} else {
-			return (valueLeft !== valueRight ? true :false);
-		}
-
+		return !IString._fncs.getValue(rule[1], valueLeft);
 	}
 };
 

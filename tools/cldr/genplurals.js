@@ -2,7 +2,7 @@
  * genplurals.js - ilib tool to generate plurals json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2015, LGE 
+ * Copyright © 2015-2017, LGE 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -59,7 +59,7 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 util.print("genplurals - generate plurals information files.\n" +
-	"Copyright (c) 2015 LGE\n");
+	"Copyright (c) 2015-2017 LGE\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
@@ -91,14 +91,14 @@ try {
 	process.exit(2);
 }
 
-var OPERATORS = ['!=', '=', 'is not', 'is', 'not in', 'in', 'not within', 'within'];
+// from longest to shortest so that the longest text matches first
+var OPERATORS = ['not within', 'is not', 'not in', 'within', 'and', 'mod', 'or', 'is', 'in', '!=', '=', ','];
+
+// map old operators to new ones
 var OPERATOR_MAP = {
-	'!=': 'neq',
-	'is not': 'isnot',
 	'=': 'eq',
-	'%': 'mod',
-	'not in': 'notin',
-	'not within': 'notin'
+	'!=': 'neq',
+	'%': 'mod'
 };
 var MODS = ['mod', '%'];
 var VALUES = 'niftvw';
@@ -158,7 +158,10 @@ function create_relation(relation_string) {
 	operand = create_expr(temp[0]);
 	ranges = create_range_list(temp[1]);
 	if (Array.isArray(ranges)) {
-		operator = "in";
+		operator = {
+			'=': 'in',
+			'!=': 'not in'
+		}[operator] || operator;
 	}
 	relation[operator_keyword(operator)] = [operand, ranges];
 
@@ -201,8 +204,11 @@ function create_range_list(ranges_string) {
 	});
 	if (1 === range_list.length)
 		return range_list[0];
-	else
-		return range_list;
+	else {
+		return {
+			or: range_list
+		};
+	}
 }
 
 function create_range(range_string) {
@@ -213,8 +219,12 @@ function create_range(range_string) {
 	if (1 === range_item_list.length) {
 		return parseInt(range_item_list[0].trim());
 	} else {
-		return [parseInt(range_item_list[0].trim()),
-				parseInt(range_item_list[1].trim())];
+		return {
+			inrange: [
+				parseInt(range_item_list[0].trim()),
+				parseInt(range_item_list[1].trim())
+			]
+		};
 	}
 }
 
