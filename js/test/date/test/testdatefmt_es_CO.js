@@ -1229,7 +1229,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_es_CO() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("en 30 segundos", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 30 segundos", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1281,7 +1281,7 @@ function testDateFmtFormatRelativeWithinHourAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 10 minutos", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 10 minutos", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1333,7 +1333,7 @@ function testDateFmtFormatRelativeWithinDayAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 4 horas", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 4 horas", fmt.formatRelative(reference, date));
 }
 
 
@@ -1388,7 +1388,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 4 días", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 4 días", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1441,7 +1441,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 9 semanas", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 9 semanas", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1494,7 +1494,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 16 meses", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 16 meses", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});
@@ -1547,7 +1547,7 @@ function testDateFmtFormatRelativeYearsAfter_es_CO() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("en 14 años", fmt.formatRelative(reference, date));
+    assertEquals("dentro de 14 años", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_es_CO() {
     var fmt = new DateFmt({locale: "es-CO", length: "full"});

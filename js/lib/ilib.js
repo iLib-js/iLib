@@ -129,7 +129,7 @@ ilib._getPlatform = function () {
     		}
     	} catch (e) {}
     	
-        if (typeof(process) !== 'undefined' && typeof(window) === 'undefined' && typeof(module) !== 'undefined') {
+        if (typeof(process) !== 'undefined' && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
         	ilib._platform = "qt";
@@ -329,7 +329,10 @@ ilib.getLocale = function () {
             	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
     			break;
     	}
-        ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
+        ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
+        if (ilib.locale === "en") {
+        	ilib.locale = "en-US"; // hack to get various platforms working correctly
+        }
     }
     return ilib.locale;
 };

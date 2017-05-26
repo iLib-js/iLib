@@ -124,15 +124,15 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="jars" depends="jars.debug,jars.release" description="Create all jar files"/>
 
-	<target name="jars.debug" depends="jar.ilib.debug" description="Create all jar files in debug mode"/>
-	<target name="jars.release" depends="jar.ilib.release" description="Create all jar files in release mode"/>
+	<target name="jars.debug" depends="data,jar.ilib.debug" description="Create all jar files in debug mode"/>
+	<target name="jars.release" depends="data,jar.ilib.release" description="Create all jar files in release mode"/>
 
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
 	<target name="data">
-		<mkdir dir="${todir}/com/ilib/locale"/>
-		<copy todir="${todir}/com/ilib/locale">
+		<mkdir dir="${build.data}/locale"/>
+		<copy todir="${build.data}/locale">
 			<fileset dir="${build.localedata}">
 				<include name="**/plurals.json"/>
 				<include name="likelylocales.json"/>
@@ -147,11 +147,9 @@ limitations under the License.
                 destdir="${classesDir}"
                 failonerror="true"
                 debug="${debugFlag}"
-				encoding="utf-8"
-			    includeAntRuntime="no"
-                optimize="${optimizeFlag}"
-                source="1.7"
-				target="1.7">
+			encoding="utf-8"
+			includeAntRuntime="no"
+                	optimize="${optimizeFlag}">
 			<classpath refid="${classPathRef}"/>
 			<exclude name="**/.svn/**"/>
 		</javac>
@@ -170,9 +168,6 @@ limitations under the License.
 			<param name="debugFlag" value="off"/>
 			<param name="optimizeFlag" value="on"/>
 		</antcall>
-		<antcall target="data">
-			<param name="todir" value="${build.classes.release}"/>
-		</antcall>
 	</target>
 
 	<target name="compile.debug" depends="prepare" description="Compile all java files into objects in debug mode">
@@ -181,9 +176,6 @@ limitations under the License.
 			<param name="classPathRef" value="project.class.path.debug"/>
 			<param name="debugFlag" value="on"/>
 			<param name="optimizeFlag" value="off"/>
-		</antcall>
-		<antcall target="data">
-			<param name="todir" value="${build.classes.debug}"/>
 		</antcall>
 	</target>
 
@@ -221,19 +213,21 @@ limitations under the License.
 			<fileset dir="${classesDir}">
 				<include name="**/*.class"/>
 				<include name="**/*.properties"/>
+			</fileset>
+			<fileset dir="${build.data}">
 				<include name="**/*.json"/>
 			</fileset>
 		</jar>
 	</target>
 
-	<target name="jar.ilib.release" depends="compile.release" description="Create the release version of the ilib jar file">
+	<target name="jar.ilib.release" depends="compile.release" description="Create the release version of the ct.jar file">
 		<antcall target="build.jar.ilib">
 			<param name="classesDir" value="${build.classes.release}"/>
 			<param name="outputDir" value="${build.output.release}"/>
 		</antcall>
 	</target>
 
-	<target name="jar.ilib.debug" depends="compile.debug" description="Create the debug version of the ilib jar file">
+	<target name="jar.ilib.debug" depends="compile.debug" description="Create the debug version of the ct.jar file">
 		<antcall target="build.jar.ilib">
 			<param name="classesDir" value="${build.classes.debug}"/>
 			<param name="outputDir" value="${build.output.debug}"/>

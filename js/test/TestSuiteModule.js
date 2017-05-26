@@ -106,11 +106,11 @@ TestSuite.prototype = {
 			results.runs++;
 			try {
 				if (typeof(this.setUp) === 'function') {
-					setUp(); 
+					this.setUp(); 
 				}
 				this[t](results.timings);
 				if (typeof(this.tearDown) === 'function') {
-					tearDown(); 
+					this.tearDown(); 
 				}
 				// util.print("PASS: " + t + "\n");
 				results.pass++;		
@@ -175,10 +175,11 @@ TestSuite.prototype = {
 				results: results,
 				path: this.path,
 				Uint8Array: Uint8Array,
-				Buffer: Buffer
-				// , console: console
+				Buffer: Buffer,
+				console: console,
+				process: process
 			};
-			//console.log("contextInit.module is " + util.inspect(contextInit.module));
+			// console.log("contextInit.module is " + util.inspect(contextInit.module));
 			
 			this.merge(contextInit, this.contextBits);
 			this.context = vm.createContext(contextInit);

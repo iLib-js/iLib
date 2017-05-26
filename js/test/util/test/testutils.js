@@ -1142,7 +1142,7 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testLoadDataCorrectType() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1168,7 +1168,7 @@ function testLoadDataCorrectType() {
 }
 
 function testLoadDataCorrectItems() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1198,7 +1198,7 @@ function testLoadDataCorrectItems() {
 }
 
 function testLoadDataWithLocale() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1228,7 +1228,7 @@ function testLoadDataWithLocale() {
 }
 
 function testLoadDataWithLocaleMissingParts() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1258,7 +1258,7 @@ function testLoadDataWithLocaleMissingParts() {
 }
 
 function testLoadDataDefaultLocale() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1288,7 +1288,7 @@ function testLoadDataDefaultLocale() {
 
 
 function testLoadDataNonJson() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1316,7 +1316,7 @@ function testLoadDataNonJson() {
 }
 
 function testLoadDataCached() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1350,7 +1350,7 @@ function testLoadDataCached() {
 }
 
 function testLoadDataCachedWithOtherName() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1397,7 +1397,7 @@ function testLoadDataCachedWithOtherName() {
 }
 
 function testLoadDataCachedWithLoadParamsMultipleFiles() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1445,7 +1445,7 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 }
 
 function testLoadDataCachedWithLoadParams() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1495,7 +1495,7 @@ function testLoadDataCachedWithLoadParams() {
 }
 
 function testLoadDataNoCache() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1523,7 +1523,7 @@ function testLoadDataNoCache() {
 }
 
 function testLoadDataNotCachedWithLoadParams() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1570,7 +1570,7 @@ function testLoadDataNotCachedWithLoadParams() {
 }
 
 function testLoadDataAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1600,7 +1600,7 @@ function testLoadDataAsynch() {
 }
 
 function testLoadDataDefaults() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1623,7 +1623,7 @@ function testLoadDataDefaults() {
 }
 
 function testLoadDataNonJson_en_US() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1643,7 +1643,7 @@ function testLoadDataNonJson_en_US() {
 }
 
 function testLoadDataNonJson_de() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1664,7 +1664,7 @@ function testLoadDataNonJson_de() {
 }
 
 function testLoadDataNonJson_de_DE() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1685,7 +1685,7 @@ function testLoadDataNonJson_de_DE() {
 }
 
 function testLoadDataNonJson_DE() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1706,7 +1706,7 @@ function testLoadDataNonJson_DE() {
 }
 
 function testLoadDataNonJsonWithFallbackToLanguage() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1728,7 +1728,7 @@ function testLoadDataNonJsonWithFallbackToLanguage() {
 }
 
 function testLoadDataNonJsonWithFallbackToRoot() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1749,7 +1749,7 @@ function testLoadDataNonJsonWithFallbackToRoot() {
 }
 
 function testLoadDataNonJsonInferFileTypeFromExtension() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1769,7 +1769,7 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 }
 
 function testLoadDataJsonInferFileTypeFromExtension() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
