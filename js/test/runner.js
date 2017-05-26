@@ -1,7 +1,7 @@
 /*
  * runner.js - ilib CLI test framework to run JsUnit tests under nodejs
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@ function newSandbox() {
 		navigator : {
 			userAgent : "Nodejs"
 		},
+		process: process,
+		console: console,
 		Uint8Array: Uint8Array,
 		Buffer: Buffer
 	};

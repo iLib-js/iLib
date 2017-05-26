@@ -308,6 +308,9 @@ function testGetLocaleBrowser() {
 	} else {
 		loc = navigator.language;
 	}
+	if (loc === "en") {
+		loc = "en-US";
+	}
 	assertEquals(loc, ilib.getLocale());
 }
 

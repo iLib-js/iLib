@@ -149,8 +149,7 @@ limitations under the License.
                 debug="${debugFlag}"
 				encoding="utf-8"
 			    includeAntRuntime="no"
-                optimize="${optimizeFlag}"
-				target="1.7">
+                optimize="${optimizeFlag}">
 			<classpath refid="${classPathRef}"/>
 			<exclude name="**/.svn/**"/>
 		</javac>

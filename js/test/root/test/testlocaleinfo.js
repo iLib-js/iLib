@@ -6673,7 +6673,7 @@ function mockLoader(paths, sync, params, callback) {
 };
 
 function testLocaleInfoLoadMissingDataAsynch() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         return;
@@ -6698,7 +6698,7 @@ function testLocaleInfoLoadMissingDataAsynch() {
 }
 
 function testLocaleInfoLoadMissingDataSync() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         return;
@@ -6718,7 +6718,7 @@ function testLocaleInfoLoadMissingDataSync() {
 }
 
 function testLocaleInfoLoadMissingDataAsynchNoData() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         return;
@@ -6770,7 +6770,7 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         return;
@@ -6790,7 +6790,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 }
 
 function testLocaleInfoLoadPreassembledDataAsynch() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         return;
@@ -6823,7 +6823,7 @@ ilib.data.localeinfo_fr_FR_overseas = {
 };
 
 function testLocaleInfoLoadMissingLocaleParts() {
-    if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) !== 'undefined') {
+    if (ilib.isDynData()) {
         // should not test mixed loading on the dynamic load version because it was not designed for it
         return;
     }
