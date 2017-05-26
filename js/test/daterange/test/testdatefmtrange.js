@@ -223,7 +223,7 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testDateRngFmtDynamicLoadSync() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -260,7 +260,7 @@ function testDateRngFmtDynamicLoadSync() {
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -295,7 +295,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
 }
 
 function testDateRngFmtDynamicLoadAsync() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -334,7 +334,7 @@ function testDateRngFmtDynamicLoadAsync() {
 }
 
 function testDateRngFmtDynamicLoadAsyncCached() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;

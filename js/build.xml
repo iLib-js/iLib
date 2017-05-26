@@ -713,14 +713,17 @@ limitations under the License.
 			<exec osfamily="unix" executable="node" dir="@{dir}" failifexecutionfails="true" failonerror="true">
 				<arg line="@{script}"/>
 				<arg line="@{args}"/>
+				<arg line="nodejs"/>
 			</exec>
 			<exec osfamily="mac" executable="node" dir="@{dir}" failifexecutionfails="true" failonerror="true">
 				<arg line="@{script}"/>
 				<arg line="@{args}"/>
+				<arg line="nodejs"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="@{dir}" failifexecutionfails="true"  failonerror="true">
 				<arg line="@{script}"/>
 				<arg line="@{args}"/>
+				<arg line="nodejs"/>
 			</exec>
 		</sequential>
 	</macrodef>

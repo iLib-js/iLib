@@ -26,6 +26,14 @@ var ilib = require("./../lib/ilib.js");
 // nodejs tests so these require tests will be operating in the same
 // environment and therefore will work properly
 if (ilib._getPlatform() === "browser") {
+	console.log("ilib getplatform is " + ilib._getPlatform());
+	console.log("process is ");
+	console.dir(process);
+	console.log("window is");
+	console.dir(window);
+	console.log("module is");
+	console.dir(module);
+	
 	var i = r.root.lastIndexOf('/');
 	r.root = r.root.substring(0, i) + "/test";
 }

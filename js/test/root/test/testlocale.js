@@ -27,6 +27,11 @@ function testLocaleConstructor() {
 }
 
 function testLocaleConstructorCurrent() {
+	if (ilib._getPlatform() === "browser") {
+		// make sure it picks it up from the right place
+		navigator.language = "en-US";
+	}
+	
     var loc = new Locale(); // gives locale of the host JS engine
     
     assertNotNull(loc);
