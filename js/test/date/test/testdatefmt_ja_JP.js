@@ -487,7 +487,7 @@ function testDateFmtShortDateComponentsM_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09月", fmt.format(date));
+    assertEquals("9月", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ja_JP() {

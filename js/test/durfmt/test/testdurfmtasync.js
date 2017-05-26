@@ -1163,12 +1163,12 @@ function testDurFmtASFormatShortClockAsync() {
 };
 */
 
-//test cases for Punjabi(pa-IN)
+//test cases for Punjabi(pa-Guru-IN)
 
 function testDurFmtPAAsyncWithLocale() {
 	var callbackCalled = false;
     new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "full",
     	sync: false,
     	onLoad: function (fmt) {
@@ -1194,7 +1194,7 @@ function testDurFmtPAAsyncWithLocale() {
 function testDurFmtPAFormatShortClockAsync() {
 	var callbackCalled = false;
     new DurationFmt({
-    	locale: "pa-IN",
+    	locale: "pa-Guru-IN",
     	length: "short",
     	style: "clock",
     	sync: false,
@@ -1951,12 +1951,12 @@ function testDurFmtMNFormatShortClockAsync() {
     assertTrue(callbackCalled);
 };
 
-//test cases for ms-MY
+//test cases for ms-Latn-MY
 
 function testDurFmtMSAsyncWithLocale() {
 	var callbackCalled = false;
     new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "full",
     	sync: false,
     	onLoad: function (fmt) {
@@ -1982,7 +1982,7 @@ function testDurFmtMSAsyncWithLocale() {
 function testDurFmtMSFormatShortClockAsync() {
 	var callbackCalled = false;
     new DurationFmt({
-    	locale: "ms-MY",
+    	locale: "ms-Latn-MY",
     	length: "short",
     	style: "clock",
     	sync: false,
