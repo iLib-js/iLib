@@ -8,40 +8,40 @@
         },
         "date": {
             "dmwy": {
-                "f": "EEEE، MMMM d، yyyy",
-                "l": "EEE، MMMM d، yyyy",
-                "m": "EE، MMM d، yyyy",
-                "s": "E، M/d/yy"
+                "f": "‏yyyy d-MMMM، EEEE",
+                "l": "‏d-MMMM، yyyy، EEE",
+                "m": "‏d-MMM، yyyy، EE",
+                "s": "‏yyyy-MM-dd، E"
             },
             "dmy": {
-                "f": "MMMM d، yyyy",
-                "l": "MMMM d، yyyy",
-                "m": "MMM d، yyyy",
-                "s": "‏M/d/yy"
+                "f": "‏yyyy d-MMMM",
+                "l": "‏d-MMMM، yyyy",
+                "m": "‏d-MMM، yyyy",
+                "s": "‏yyyy-MM-dd"
             },
             "dmw": {
-                "f": "EEEE، MMMM d",
-                "l": "EEE، MMMM d",
-                "m": "EE، MMM d",
-                "s": "E، ‏M/d"
+                "f": "‏d-MMMM، EEEE",
+                "l": "‏d-MMMM، EEE",
+                "m": "‏d-MMM، EE",
+                "s": "‏MM-dd، E"
             },
             "dm": {
-                "f": "MMMM d",
-                "l": "MMMM d",
-                "m": "MMM d",
-                "s": "‏M/d"
+                "f": "‏d-MMMM",
+                "l": "‏d-MMMM",
+                "m": "‏d-MMM",
+                "s": "‏MM-dd"
             },
             "my": {
-                "f": "MMMM، yyyy",
+                "f": "‏yyyy MMMM",
                 "l": "MMMM، yyyy",
                 "m": "MMM، yyyy",
-                "s": "‏M/yy"
+                "s": "‏yyyy-MM"
             },
             "dw": {
-                "f": "EEEE، d",
-                "l": "EEE، d",
-                "m": "EE، d",
-                "s": "E، d"
+                "f": "‏d-EEEE",
+                "l": "‏d-EEE",
+                "m": "‏d-EE",
+                "s": "‏dd، E"
             },
             "w": {
                 "f": "EEEE",
@@ -53,19 +53,19 @@
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "d"
+                "s": "dd"
             },
             "m": {
                 "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
-                "s": "M"
+                "s": "MM"
             },
             "y": {
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
-                "s": "yy"
+                "s": "yyyy"
             }
         },
         "time": {
@@ -98,6 +98,62 @@
                 "ahms": "‏HH:mm:ss",
                 "hmsz": "‏HH:mm:ss z",
                 "ahmsz": "‏HH:mm:ss z"
+            }
+        },
+        "range": {
+            "c00": {
+                "f": "‏{sy} {sd}-{sm} {st} – {et}",
+                "l": "‏{sd}-{sm}، {sy} {st} – {et}",
+                "m": "‏{sd}-{sm}، {sy}، {st} – {et}",
+                "s": "‏{sy}-{sm}-{sd}، {st} – {et}"
+            },
+            "c01": {
+                "f": "‏{sy} {sd}-{sm} {st} – ‏{ey} {ed}-{em} {et}",
+                "l": "‏{sd}-{sm}، {sy} {st} – ‏{ed}-{em}، {ey} {et}",
+                "m": "‏{sd}-{sm}، {sy}، {st} – ‏{ed}-{em}، {ey}، {et}",
+                "s": "‏{sy}-{sm}-{sd}، {st} – ‏{ey}-{em}-{ed}، {et}"
+            },
+            "c02": {
+                "f": "‏{sy} {sd}-{sm} {st} – ‏{ey} {ed}-{em} {et}",
+                "l": "‏{sd}-{sm}، {sy} {st} – ‏{ed}-{em}، {ey} {et}",
+                "m": "‏{sd}-{sm}، {sy}، {st} – ‏{ed}-{em}، {ey}، {et}",
+                "s": "‏{sy}-{sm}-{sd}، {st} – ‏{ey}-{em}-{ed}، {et}"
+            },
+            "c03": {
+                "f": "‏{sy} {sd}-{sm} {st} – ‏{ey} {ed}-{em} {et}",
+                "l": "‏{sd}-{sm}، {sy} {st} – ‏{ed}-{em}، {ey} {et}",
+                "m": "‏{sd}-{sm}، {sy}، {st} – ‏{ed}-{em}، {ey}، {et}",
+                "s": "‏{sy}-{sm}-{sd}، {st} – ‏{ey}-{em}-{ed}، {et}"
+            },
+            "c10": {
+                "f": "‏{sy} {sd}-{sm} – ‏{ed}-{em}",
+                "l": "‏{sd} – ‏{ed}-{em}، {ey}",
+                "m": "‏{sd} – ‏{ed}-{em}، {ey}",
+                "s": "‏{sy}-{sm}-{sd} – {ed}"
+            },
+            "c11": {
+                "f": "‏{sy} {sd}-{sm} – ‏{ey} {ed}-{em}",
+                "l": "‏{sd}-{sm} – ‏{ed}-{em}، {ey}",
+                "m": "‏{sd}-{sm} – ‏{ed}-{em}، {ey}",
+                "s": "‏{sy}-{sm}-{sd} – ‏{ey}-{em}-{ed}"
+            },
+            "c12": {
+                "f": "‏{sy} {sd}-{sm} – ‏{ey} {ed}-{em}",
+                "l": "‏{sd}-{sm}، {sy} – ‏{ed}-{em}، {ey}",
+                "m": "‏{sd}-{sm}، {sy} – ‏{ed}-{em}، {ey}",
+                "s": "‏{sy}-{sm}-{sd} – ‏{ey}-{em}-{ed}"
+            },
+            "c20": {
+                "f": "‏{sy} {sm} – ‏{ey} {em}",
+                "l": "{sm}، {sy} – {em}، {ey}",
+                "m": "{sm}، {sy} – {em}، {ey}",
+                "s": "‏{sy}-{sm} – ‏{ey}-{em}"
+            },
+            "c30": {
+                "f": "‏{sy} – {ey}",
+                "l": "‏{sy} – {ey}",
+                "m": "‏{sy} – {ey}",
+                "s": "‏{sy} – {ey}"
             }
         }
     }

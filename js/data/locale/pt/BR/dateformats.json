@@ -31,28 +31,40 @@
         },
         "range": {
             "c00": {
-                "m": "{sd} de {sm} de {sy}, {st} - {et}"
+                "f": "{sd} de {sm} de {sy} {st} – {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {et}",
+                "m": "{sd} de {sm} de {sy} {st} – {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
-                "m": "{sd} de {sm}, {st} - {ed} de {em} de {ey}, {et}"
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "m": "{sd} de {sm}, {st} - {ed} de {em} de {ey}, {et}"
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "m": "{sd} de {sm} de {sy}, {st} - {ed} de {em} de {ey}, {et}"
+                "f": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "l": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "m": "{sd} de {sm} de {sy} {st} – {ed} de {em} de {ey} {et}",
+                "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c10": {
-                "m": "{sd}-{ed} de {sm} de {sy}"
+                "m": "{sd} – {ed} de {em} de {ey}"
             },
             "c11": {
-                "m": "{sd} de {sm} - {ed} de {em} de {sy}"
+                "m": "{sd} de {sm} – {ed} de {em} de {ey}"
             },
             "c12": {
-                "m": "{sd} de {sm} de {sy} - {ed} de {em} de {ey}"
+                "m": "{sd} de {sm} de {sy} – {ed} de {em} de {ey}"
             },
             "c20": {
-                "m": "{sm} de {sy} - {em} de {ey}"
+                "m": "{sm} de {sy} – {em} de {ey}"
             }
         }
     }

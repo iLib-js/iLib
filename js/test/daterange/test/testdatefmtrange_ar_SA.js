@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ar_SA.js - test date range formatter object in arabic/Saudi Arabia
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under tar Apacar License, Version 2.0 (tar "License");
  * you may not use this file except in compliance warh tar License.
@@ -41,7 +41,7 @@ function testDateRngFmtSARangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣١‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtSARangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣١‏/١٢/‏٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtSARangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣١ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeinDayFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtSARangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م – ‏٢:٣٠ م ٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣١ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م", fmt.format(start, end));
 }
 
 function testDateRngFmtSARangeNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtSARangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ٣٠/١٢/٢٠١١ – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtSARangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ٣٠/١٢/٢٠١١ – ‏٢:٣٠ م ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtSARangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ٣٠ – ‏٢:٣٠ م ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣٠ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر، ٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtSARangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١:٤٥ م ٣٠ – ‏٢:٣٠ م ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٣٠ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر، ٢٠١١ ‏٢:٣٠ م", fmt.format(start, end));
 }
 
 function testDateRngFmtSARangeMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtSARangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١٢/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -259,7 +259,7 @@ function testDateRngFmtSARangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١٢/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -282,8 +282,8 @@ function testDateRngFmtSARangeMultiDayLong() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("٢٠ – ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+	});       
+    assertEquals("‏٢٠ – ‏٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiDayFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -307,7 +307,7 @@ function testDateRngFmtSARangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("٢٠ – ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ – ‏٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
 }
 
 function testDateRngFmtSARangeNextMonthShort() {
@@ -332,7 +332,7 @@ function testDateRngFmtSARangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -356,7 +356,7 @@ function testDateRngFmtSARangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/١٢/٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextMonthLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -380,7 +380,8 @@ function testDateRngFmtSARangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("٢٠ نوفمبر – ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ نوفمبر – ‏٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
+
 }
 function testDateRngFmtSARangeNextMonthFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -404,7 +405,7 @@ function testDateRngFmtSARangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("٢٠ نوفمبر – ٣١ ديسمبر ٢٠١١", fmt.format(start, end));
+    assertEquals("‏٢٠ نوفمبر – ‏٣١ ديسمبر، ٢٠١١", fmt.format(start, end));
 }
 
 function testDateRngFmtSARangeNextYearShort() {
@@ -429,7 +430,7 @@ function testDateRngFmtSARangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/١/٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/١‏/٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -453,7 +454,7 @@ function testDateRngFmtSARangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏٢٠/١١/٢٠١١ – ٣١/٠١/٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/٠١‏/٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -477,7 +478,7 @@ function testDateRngFmtSARangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("٢٠ نوفمبر ٢٠١١ – ٣١ يناير ٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠ نوفمبر، ٢٠١١ – ‏٣١ يناير، ٢٠١٢", fmt.format(start, end));
 }
 function testDateRngFmtSARangeNextYearFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -501,7 +502,7 @@ function testDateRngFmtSARangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("٢٠ نوفمبر ٢٠١١ – ٣١ يناير ٢٠١٢", fmt.format(start, end));
+    assertEquals("‏٢٠ نوفمبر، ٢٠١١ – ‏٣١ يناير، ٢٠١٢", fmt.format(start, end));
 }
 
 function testDateRngFmtSARangeMultiYearShort() {
@@ -526,7 +527,7 @@ function testDateRngFmtSARangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١١/٢٠١١ – ١/٢٠١٤", fmt.format(start, end));
+    assertEquals("‏١١‏/٢٠١١ – ‏١‏/٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearMedium() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "medium"});
@@ -550,7 +551,7 @@ function testDateRngFmtSARangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏١١/٢٠١١ – ٠١/٢٠١٤", fmt.format(start, end));
+    assertEquals("‏١١‏/٢٠١١ – ‏٠١‏/٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearLong() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "long"});
@@ -574,7 +575,7 @@ function testDateRngFmtSARangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("نوفمبر ٢٠١١ – يناير ٢٠١٤", fmt.format(start, end));
+    assertEquals("نوفمبر، ٢٠١١ – يناير، ٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSARangeMultiYearFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});
@@ -598,7 +599,7 @@ function testDateRngFmtSARangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("نوفمبر ٢٠١١ – يناير ٢٠١٤", fmt.format(start, end));
+    assertEquals("نوفمبر، ٢٠١١ – يناير، ٢٠١٤", fmt.format(start, end));
 }
 function testDateRngFmtSAManyYearsFull() {
     var fmt = new DateRngFmt({locale: "ar-SA", length: "full"});

@@ -1,7 +1,7 @@
 /*
  * testdatefmtGR_GR_GR.js - test the date GR formatter object GR GRench/GRance
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use tels file except GR compliance with the License.
@@ -40,8 +40,8 @@ function testDateRngFmtGRInDayShort() {
 		minute: 30,
 		second: 0,
 		millisecond: 0
-	});
-    assertEquals("31/12/11 - 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
+	});           
+    assertEquals("31/12/11, 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayMedium() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "medium"});
@@ -65,7 +65,7 @@ function testDateRngFmtGRInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 Δεκ 2011 - 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("31 Δεκ 2011, 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayLong() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "long"});
@@ -89,7 +89,7 @@ function testDateRngFmtGRInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 Δεκεμβρίου 2011, 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("31 Δεκεμβρίου 2011 - 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRInDayFull() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "full"});
@@ -113,7 +113,7 @@ function testDateRngFmtGRInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 Δεκεμβρίου 2011, 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("31 Δεκεμβρίου 2011 - 1:45 μ.μ. – 2:30 μ.μ.", fmt.format(start, end));
 }
 
 function testDateRngFmtGRNextDayShort() {
@@ -138,7 +138,7 @@ function testDateRngFmtGRNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/11 - 1:45 μ.μ. – 31/12/11 - 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("30/12/11, 1:45 μ.μ. – 31/12/11, 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayMedium() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "medium"});
@@ -162,7 +162,7 @@ function testDateRngFmtGRNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 Δεκ - 1:45 μ.μ. – 31 Δεκ 2011 - 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("30 Δεκ 2011, 1:45 μ.μ. – 31 Δεκ 2011, 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayLong() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "long"});
@@ -186,7 +186,7 @@ function testDateRngFmtGRNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 Δεκεμβρίου, 1:45 μ.μ. – 31 Δεκεμβρίου 2011, 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("30 Δεκεμβρίου 2011 - 1:45 μ.μ. – 31 Δεκεμβρίου 2011 - 2:30 μ.μ.", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayFull() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "full"});
@@ -210,7 +210,7 @@ function testDateRngFmtGRNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 Δεκεμβρίου, 1:45 μ.μ. – 31 Δεκεμβρίου 2011, 2:30 μ.μ.", fmt.format(start, end));
+    assertEquals("30 Δεκεμβρίου 2011 - 1:45 μ.μ. – 31 Δεκεμβρίου 2011 - 2:30 μ.μ.", fmt.format(start, end));
 }
 
 function testDateRngFmtGRMultiDayShort() {
@@ -235,7 +235,7 @@ function testDateRngFmtGRMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12 – 31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtGRMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "el-GR", length: "medium"});

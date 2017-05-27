@@ -28,7 +28,7 @@ function testTZAsyncGetAvailableIds() {
 }
 
 function testTZAsyncGetAvailableIdsRightValues() {
-	TimeZone.getAvailableIds(undefined, false, function(zones) {
+    TimeZone.getAvailableIds(undefined, false, function(zones) {
         assertNotUndefined(zones);
         
         //var util = require("util");
@@ -53,20 +53,20 @@ function testTZAsyncGetAvailableIdsByCountryRightLength() {
     TimeZone.getAvailableIds("US", false, function(zones) {
         assertNotUndefined(zones);
         
-        assertEquals(29, zones.length);
+        assertEquals(48, zones.length);
     });
 }
 
 function testTZAsyncGetAvailableIdsWithFilterContainsNoLocal() {
-	try {
-	    TimeZone.getAvailableIds("US", false, function(zones) {
-	        assertNotUndefined(zones);
-	        
-	        assertTrue(zones.indexOf("local") == -1);
-	    });
-	} catch (e) {
-		assertNotUndefined(e);
-	}
+    try {
+        TimeZone.getAvailableIds("US", false, function(zones) {
+            assertNotUndefined(zones);
+            
+            assertTrue(zones.indexOf("local") == -1);
+        });
+    } catch (e) {
+        assertNotUndefined(e);
+    }
 }
 
 function testTZAsyncGetAvailableIdsByCountryRightContents() {
@@ -74,38 +74,57 @@ function testTZAsyncGetAvailableIdsByCountryRightContents() {
         assertNotUndefined(zones);
         
         var expected = [
-			"America/New_York",
-			"America/Detroit",
-			"America/Kentucky/Louisville",
-			"America/Kentucky/Monticello",
-			"America/Indiana/Indianapolis",
-			"America/Indiana/Vincennes",
-			"America/Indiana/Winamac",
-			"America/Indiana/Marengo",
-			"America/Indiana/Petersburg",
-			"America/Indiana/Vevay",
-			"America/Chicago",
-			"America/Indiana/Tell_City",
-			"America/Indiana/Knox",
-			"America/Menominee",
-			"America/North_Dakota/Center",
-			"America/North_Dakota/New_Salem",
-			"America/North_Dakota/Beulah",
-			"America/Denver",
-			"America/Boise",
-			"America/Phoenix",
-			"America/Los_Angeles",
-			"America/Anchorage",
-			"America/Juneau",
-			"America/Sitka",
-			"America/Yakutat",
-			"America/Nome",
-			"America/Adak",
-			"America/Metlakatla",
-			"Pacific/Honolulu"
-	    ];
-	    
-	    assertArrayEqualsIgnoringOrder(expected, zones);
+            "America/New_York",
+            "America/Detroit",
+            "America/Kentucky/Louisville",
+            "America/Kentucky/Monticello",
+            "America/Indiana/Indianapolis",
+            "America/Indiana/Vincennes",
+            "America/Indiana/Winamac",
+            "America/Indiana/Marengo",
+            "America/Indiana/Petersburg",
+            "America/Indiana/Vevay",
+            "America/Chicago",
+            "America/Indiana/Tell_City",
+            "America/Indiana/Knox",
+            "America/Menominee",
+            "America/North_Dakota/Center",
+            "America/North_Dakota/New_Salem",
+            "America/North_Dakota/Beulah",
+            "America/Denver",
+            "America/Boise",
+            "America/Phoenix",
+            "America/Los_Angeles",
+            "America/Anchorage",
+            "America/Juneau",
+            "America/Sitka",
+            "America/Metlakatla",
+            "America/Yakutat",
+            "America/Nome",
+            "America/Adak",
+            "Pacific/Honolulu",
+            "America/Atka",
+            "America/Fort_Wayne",
+            "America/Indianapolis",
+            "America/Knox_IN",
+            "America/Louisville",
+            "America/Shiprock",
+            "Navajo",
+            "Pacific/Johnston",
+            "US/Alaska",
+            "US/Aleutian",
+            "US/Arizona",
+            "US/Central",
+            "US/East-Indiana",
+            "US/Eastern",
+            "US/Hawaii",
+            "US/Indiana-Starke",
+            "US/Michigan",
+            "US/Mountain",
+            "US/Pacific"
+        ];
+        
+        assertArrayEqualsIgnoringOrder(expected, zones);
     });
 }
 
@@ -113,7 +132,7 @@ function testTZAsyncGetAvailableIdsByCountry2RightLength() {
     var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
         assertNotUndefined(zones);
         
-        assertEquals(1, zones.length);
+        assertEquals(2, zones.length);
     });
 }
 
@@ -122,9 +141,10 @@ function testTZAsyncGetAvailableIdsByCountry2RightContents() {
         assertNotUndefined(zones);
         
         var expected = [
-			"Asia/Singapore"
-		];
-	    
-	    assertArrayEqualsIgnoringOrder(expected, zones);
+            "Asia/Singapore",
+            "Singapore"		// legacy tz
+        ];
+        
+        assertArrayEqualsIgnoringOrder(expected, zones);
     });
 }
