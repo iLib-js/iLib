@@ -8,3 +8,5 @@ branches:
   only:
     - master
     - development
+sudo: required
+dist: precise
