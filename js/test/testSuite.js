@@ -26,97 +26,49 @@ var TestRunner = require("./runner.js");
 var runner = new TestRunner("../..");
 
 var suiteDefinitions = {
-	"legacy": {
-		"core": {
-	        "util": "util/legacy/testSuite.js",
-	        ".": "root/legacy/testSuite.js"
-		},
-		"standard": {
-	        "util": "util/legacy/testSuite.js",
-	        ".": "root/legacy/testSuite.js",
-		    "calendar": "calendar/legacy/testSuite.js",
-		    "date1": "date/legacy/testSuite.js",
-		    "date2": "date/legacy/testSuite2.js",
-		    "date3": "date/legacy/testSuite3.js",
-		    "daterange1": "daterange/legacy/testSuite.js",
-		    "daterange2": "daterange/legacy/testSuite2.js",
-		    "daterange3": "daterange/legacy/testSuite3.js",
-		    "durfmt": "durfmt/legacy/testSuite.js",
-		    "number": "number/legacy/testSuite.js",
-		    "maps": "maps/legacy/testSuite.js",
-		    "ctype": "ctype/legacy/testSuite.js"
-		},
-		"full": {
-	        "util": "util/legacy/testSuite.js",
-	        ".": "root/legacy/testSuite.js",
-		    "calendar": "calendar/legacy/testSuite.js",
-		    "date1": "date/legacy/testSuite.js",
-		    "date2": "date/legacy/testSuite2.js",
-		    "date3": "date/legacy/testSuite3.js",
-		    "daterange1": "daterange/legacy/testSuite.js",
-		    "daterange2": "daterange/legacy/testSuite2.js",
-		    "daterange3": "daterange/legacy/testSuite3.js",
-		    "durfmt": "durfmt/legacy/testSuite.js",
-		    "number": "number/legacy/testSuite.js",
-		    "maps": "maps/legacy/testSuite.js",
-		    "ctype": "ctype/legacy/testSuite.js",
-		    "strings-ext": "strings-ext/legacy/testSuite.js",
-		    "phone1": "phone/legacy/testSuite.js",
-		    "phone2": "phone/legacy/testSuite2.js",
-		    "phone3": "phone/legacy/testSuite3.js",
-		    "units": "units/legacy/testSuite.js",
-		    "name": "name/legacy/testSuite.js",
-		    "address1": "address/legacy/testSuite.js",
-		    "address2": "address/legacy/testSuite2.js",
-		    "address3": "address/legacy/testSuite3.js",
-		    "collate": "collate/legacy/testSuite.js",
-		}
+	"core": {
+		"util": "util/test/testSuite.js",
+		".": "root/test/testSuite.js"
 	},
-	"modular": {
-		"core": {
-	        "util": "util/test/testSuite.js",
-	        ".": "root/test/testSuite.js"
-		},
-		"standard": {
-	        "util": "util/test/testSuite.js",
-	        ".": "root/test/testSuite.js",
-		    "calendar": "calendar/test/testSuite.js",
-		    "date1": "date/test/testSuite.js",
-		    "date2": "date/test/testSuite2.js",
-		    "date3": "date/test/testSuite3.js",
-		    "daterange1": "daterange/test/testSuite.js",
-		    "daterange2": "daterange/test/testSuite2.js",
-		    "daterange3": "daterange/test/testSuite3.js",
-		    "durfmt": "durfmt/test/testSuite.js",
-		    "number": "number/test/testSuite.js",
-		    "maps": "maps/test/testSuite.js",
-		    "ctype": "ctype/test/testSuite.js"
-		},
-		"full": {
-	        "util": "util/test/testSuite.js",
-	        ".": "root/test/testSuite.js",
-		    "calendar": "calendar/test/testSuite.js",
-		    "date1": "date/test/testSuite.js",
-		    "date2": "date/test/testSuite2.js",
-		    "date3": "date/test/testSuite3.js",
-		    "daterange1": "daterange/test/testSuite.js",
-		    "daterange2": "daterange/test/testSuite2.js",
-		    "daterange3": "daterange/test/testSuite3.js",
-		    "durfmt": "durfmt/test/testSuite.js",
-		    "number": "number/test/testSuite.js",
-		    "maps": "maps/test/testSuite.js",
-		    "ctype": "ctype/test/testSuite.js",
-		    "strings-ext": "strings-ext/test/testSuite.js",
-		    "phone1": "phone/test/testSuite.js",
-		    "phone2": "phone/test/testSuite2.js",
-		    "phone3": "phone/test/testSuite3.js",
-		    "units": "units/test/testSuite.js",
-		    "name": "name/test/testSuite.js",
-		    "address1": "address/test/testSuite.js",
-		    "address2": "address/test/testSuite2.js",
-		    "address3": "address/test/testSuite3.js",
-		    "collate": "collate/test/testSuite.js"
-		}
+	"standard": {
+		"util": "util/test/testSuite.js",
+		".": "root/test/testSuite.js",
+		"calendar": "calendar/test/testSuite.js",
+		"date1": "date/test/testSuite.js",
+		"date2": "date/test/testSuite2.js",
+		"date3": "date/test/testSuite3.js",
+		"daterange1": "daterange/test/testSuite.js",
+		"daterange2": "daterange/test/testSuite2.js",
+		"daterange3": "daterange/test/testSuite3.js",
+		"durfmt": "durfmt/test/testSuite.js",
+		"number": "number/test/testSuite.js",
+		"maps": "maps/test/testSuite.js",
+		"ctype": "ctype/test/testSuite.js"
+	},
+	"full": {
+		"util": "util/test/testSuite.js",
+		".": "root/test/testSuite.js",
+		"calendar": "calendar/test/testSuite.js",
+		"date1": "date/test/testSuite.js",
+		"date2": "date/test/testSuite2.js",
+		"date3": "date/test/testSuite3.js",
+		"daterange1": "daterange/test/testSuite.js",
+		"daterange2": "daterange/test/testSuite2.js",
+		"daterange3": "daterange/test/testSuite3.js",
+		"durfmt": "durfmt/test/testSuite.js",
+		"number": "number/test/testSuite.js",
+		"maps": "maps/test/testSuite.js",
+		"ctype": "ctype/test/testSuite.js",
+		"strings-ext": "strings-ext/test/testSuite.js",
+		"phone1": "phone/test/testSuite.js",
+		"phone2": "phone/test/testSuite2.js",
+		"phone3": "phone/test/testSuite3.js",
+		"units": "units/test/testSuite.js",
+		"name": "name/test/testSuite.js",
+		"address1": "address/test/testSuite.js",
+		"address2": "address/test/testSuite2.js",
+		"address3": "address/test/testSuite3.js",
+		"collate": "collate/test/testSuite.js"
 	}
 };
 
