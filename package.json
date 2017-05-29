@@ -53,6 +53,6 @@
         "nodejs": ">= 0.10"
     },
     "scripts": {
-       "test": "cd js; ant test"
+       "test": "ant test"
     }
 }

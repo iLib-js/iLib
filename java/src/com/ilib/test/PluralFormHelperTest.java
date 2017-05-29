@@ -1,10 +1,5 @@
 package com.ilib.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.ilib.PluralFormHelper;
 
 import junit.framework.TestCase;
@@ -14,12 +9,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishPluralsNotEmpty()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertFalse(plurals.isEmpty());
+			assertFalse(pfh.getForms().isEmpty());
 		} catch (Exception e) {
 			fail();
 		}
@@ -28,12 +20,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralZero()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("zero", PluralFormHelper.getPluralKey(0, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("zero", pfh.getPluralKey(0));
 		} catch (Exception e) {
 			fail();
 		}
@@ -42,12 +31,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralKey1()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -56,12 +42,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralKey2()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("two", PluralFormHelper.getPluralKey(2, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("two", pfh.getPluralKey(2));
 		} catch (Exception e) {
 			fail();
 		}
@@ -70,12 +53,8 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralKeyFew1()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(1003, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			assertEquals("few", pfh.getPluralKey(1003));
 		} catch (Exception e) {
 			fail();
 		}
@@ -84,12 +63,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralKeyFew2()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(7809, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("few", pfh.getPluralKey(7809));
 		} catch (Exception e) {
 			fail();
 		}
@@ -98,12 +74,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralKeyMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(1072, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("many", pfh.getPluralKey(1072));
 		} catch (Exception e) {
 			fail();
 		}
@@ -112,12 +85,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testArabishGetPluralOther()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ar" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(9702, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("ar-SA");
+			
+			assertEquals("other", pfh.getPluralKey(9702));
 		} catch (Exception e) {
 			fail();
 		}
@@ -126,12 +96,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testBelarussianGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "be" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(3001, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("be-BL");
+			
+			assertEquals("one", pfh.getPluralKey(3001));
 		} catch (Exception e) {
 			fail();
 		}
@@ -140,12 +107,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testBelarussianGetPluralEleven()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "be" + File.separator + PluralFormHelper.pluralsJSON);
-
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(311, plurals));
+			PluralFormHelper pfh = new PluralFormHelper("be-BL");
+			
+			assertEquals("many", pfh.getPluralKey(311));
 		} catch (Exception e) {
 			fail();
 		}
@@ -154,12 +118,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testBelarussianGetPluralFew()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "be" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("be-BL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(502, plurals));
+			assertEquals("few", pfh.getPluralKey(502));
 		} catch (Exception e) {
 			fail();
 		}
@@ -168,12 +129,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testBelarussianGetPluralMany1()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "be" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("be-BL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(514, plurals));
+			assertEquals("many", pfh.getPluralKey(514));
 		} catch (Exception e) {
 			fail();
 		}
@@ -182,12 +140,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testBelarussianGetPluralMany2()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "be" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("be-BL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(978000, plurals));
+			assertEquals("many", pfh.getPluralKey(978000));
 		} catch (Exception e) {
 			fail();
 		}
@@ -196,12 +151,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testFrenchGetPluralZero()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "fr" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("fr-FR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(0, plurals));
+			assertEquals("one", pfh.getPluralKey(0));
 		} catch (Exception e) {
 			fail();
 		}
@@ -210,12 +162,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testFrenchGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "fr" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("fr-FR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -224,12 +173,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testFrenchGetPluralTwo()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "fr" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("fr-FR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(2, plurals));
+			assertEquals("other", pfh.getPluralKey(2));
 		} catch (Exception e) {
 			fail();
 		}
@@ -238,12 +184,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testFrenchGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "fr" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("fr-FR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(8124, plurals));
+			assertEquals("other", pfh.getPluralKey(8124));
 		} catch (Exception e) {
 			fail();
 		}
@@ -252,12 +195,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testGaelicGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ga" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ga-ES");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -266,12 +206,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testGaelicGetPlural2()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ga" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ga-ES");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("two", PluralFormHelper.getPluralKey(2, plurals));
+			assertEquals("two", pfh.getPluralKey(2));
 		} catch (Exception e) {
 			fail();
 		}
@@ -280,12 +217,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testGaelicGetPluralFew()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ga" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ga-ES");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(4, plurals));
+			assertEquals("few", pfh.getPluralKey(4));
 		} catch (Exception e) {
 			fail();
 		}
@@ -294,12 +228,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testGaelicGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ga" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ga-IR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(9, plurals));
+			assertEquals("many", pfh.getPluralKey(9));
 		} catch (Exception e) {
 			fail();
 		}
@@ -308,12 +239,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testGaelicGetPluralOther()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ga" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ga-IR");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(179, plurals));
+			assertEquals("other", pfh.getPluralKey(179));
 		} catch (Exception e) {
 			fail();
 		}
@@ -322,12 +250,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testHebrewGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "he" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("he-IL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -336,12 +261,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testHebrewGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "he" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("he-IL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(4000, plurals));
+			assertEquals("many", pfh.getPluralKey(4000));
 		} catch (Exception e) {
 			fail();
 		}
@@ -350,12 +272,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testHebrewGetPluralOther()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "he" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("he-IL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(8001, plurals));
+			assertEquals("other", pfh.getPluralKey(8001));
 		} catch (Exception e) {
 			fail();
 		}
@@ -364,12 +283,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testMalteseGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "mt" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("mt-MT");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -378,12 +294,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testMalteseGetPluralFew()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "mt" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("mt-MT");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(11708, plurals));
+			assertEquals("few", pfh.getPluralKey(11708));
 		} catch (Exception e) {
 			fail();
 		}
@@ -392,12 +305,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testMalteseGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "mt" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("mt-MT");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(416, plurals));
+			assertEquals("many", pfh.getPluralKey(416));
 		} catch (Exception e) {
 			fail();
 		}
@@ -406,12 +316,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testMalteseGetPluralUndefined()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "mt" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("mt-MT");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("other", PluralFormHelper.getPluralKey(8000, plurals));
+			assertEquals("other", pfh.getPluralKey(8000));
 		} catch (Exception e) {
 			fail();
 		}
@@ -420,12 +327,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testPolishGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "pl" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("pl-PL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(1, plurals));
+			assertEquals("one", pfh.getPluralKey(1));
 		} catch (Exception e) {
 			fail();
 		}
@@ -434,12 +338,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testPolishGetPluralFew()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "pl" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("pl-PL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(1742, plurals));
+			assertEquals("few", pfh.getPluralKey(1742));
 		} catch (Exception e) {
 			fail();
 		}
@@ -448,12 +349,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testPolishGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "pl" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("pl-PL");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(8925, plurals));
+			assertEquals("many", pfh.getPluralKey(8925));
 		} catch (Exception e) {
 			fail();
 		}
@@ -462,12 +360,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testRussianGetPluralOne()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ru" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ru-RU");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("one", PluralFormHelper.getPluralKey(812371, plurals));
+			assertEquals("one", pfh.getPluralKey(812371));
 		} catch (Exception e) {
 			fail();
 		}
@@ -476,12 +371,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testRussianGetPluralFew()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ru" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ru-RU");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("few", PluralFormHelper.getPluralKey(932, plurals));
+			assertEquals("few", pfh.getPluralKey(932));
 		} catch (Exception e) {
 			fail();
 		}
@@ -490,12 +382,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testRussianGetPluralTwelve()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ru" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ru-RU");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(8925, plurals));
+			assertEquals("many", pfh.getPluralKey(8925));
 		} catch (Exception e) {
 			fail();
 		}
@@ -504,12 +393,9 @@ public class PluralFormHelperTest extends TestCase {
 	public void testRussianGetPluralMany()
 	{
 		try {
-			FileInputStream pluralsStream = new FileInputStream(PluralFormHelper.root + File.separator + "ru" + File.separator + PluralFormHelper.pluralsJSON);
+			PluralFormHelper pfh = new PluralFormHelper("ru-RU");
 
-			Map<String, String> plurals = new HashMap<>();
-			plurals = PluralFormHelper.getPluralForms(pluralsStream);
-
-			assertEquals("many", PluralFormHelper.getPluralKey(12000, plurals));
+			assertEquals("many", pfh.getPluralKey(12000));
 		} catch (Exception e) {
 			fail();
 		}
