@@ -2,10 +2,6 @@
     "generated": true,
     "numfmt": {
         "decimalChar": ",",
-        "groupChar": ".",
-        "prigroupSize": 2,
-        "currencyFormats": {
-            "common": "{n} {s}"
-        }
+        "groupChar": " "
     }
 }

@@ -5,7 +5,7 @@
         "groupChar": ".",
         "currencyFormats": {
             "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "commonNegative": "-{s}{n}"
         }
     }
 }
