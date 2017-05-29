@@ -4,7 +4,13 @@ node_js:
   - "6"
 env:
   - CXX=g++-4.8
+install:
+  - npm install uglify-js trireme
+script:
+  - ant test
 branches:
   only:
     - master
     - development
+sudo: required
+dist: precise

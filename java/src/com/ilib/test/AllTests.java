@@ -34,9 +34,9 @@ public class AllTests extends TestCase {
 		System.out.println("running tests");
 		
 		TestSuite suite = new TestSuite("iLib Java Class Tests");
-        suite.addTestSuite(IlibLocaleTest.class);
-        suite.addTestSuite(IStringTest.class);
-        suite.addTestSuite(ResBundleTest.class);
-        return suite;
+        	suite.addTestSuite(IlibLocaleTest.class);
+        	suite.addTestSuite(IStringTest.class);
+        	suite.addTestSuite(ResBundleTest.class);
+        	return suite;
 	}
 }

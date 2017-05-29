@@ -341,7 +341,8 @@ limitations under the License.
 	<target name="test.only" depends="test.core" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report,core.emma.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
-	<target name="test" depends="reports" description="Run all tests and build all reports"/>
+	<!-- target name="test" depends="reports" description="Run all tests and build all reports"/ -->
+	<target name="test" depends="jars"/>
 
 	<target name="testjavadoc" description="test whether or not the javadocs need to be rebuilt">
 		<uptodate
