@@ -21,19 +21,18 @@ limitations under the License.
     <title>Test Suite</title>
     <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
     <script type="text/javascript">
-    	var module = {exports:{}};
+    	var modules = {};
+    	var module = {};
     </script>
     <script src="/output/js/ilib-ut.js"></script>
     <script src="/test/nodeunit/nodeunit.js"></script>
     <script src="testtolower.js"></script>
-	<script>var testToLower = module.exports;</script>
+	<script>modules.testToLower = module.exports;</script>
   </head>
   <body>
     <h1 id="nodeunit-header">Maps Test Suite</h1>
     <script>
-      nodeunit.run({
-        'testToLower': testToLower
-      });
+      nodeunit.run(modules);
     </script>
   </body>
 </html>
