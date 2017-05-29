@@ -1,12 +1,16 @@
-ge: node_js
+language: node_js
 node_js:
-  - "0.10"
   - "4"
   - "6"
-  - "node"
 env:
   - CXX=g++-4.8
 install:
   - npm install uglify-js trireme
 script:
   - ant test
+branches:
+  only:
+    - master
+    - development
+sudo: required
+dist: precise

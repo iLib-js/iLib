@@ -17,7 +17,7 @@
     "RON": {
         "name": "Romanian Leu",
         "decimals": 2,
-        "sign": "L"
+        "sign": "lei"
     },
     "PKR": {
         "name": "Pakistani Rupee",
@@ -35,7 +35,7 @@
         "sign": "Sh"
     },
     "GBP": {
-        "name": "British Pound Sterling",
+        "name": "British Pound",
         "decimals": 2,
         "sign": "£"
     },
@@ -159,9 +159,9 @@
         "decimals": 2,
         "sign": "P"
     },
-    "BYR": {
+    "BYN": {
         "name": "Belarusian Ruble",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "р."
     },
     "BZD": {
@@ -196,7 +196,7 @@
     },
     "CRC": {
         "name": "Costa Rican Colón",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "₡"
     },
     "CUC": {
@@ -272,7 +272,7 @@
     "GEL": {
         "name": "Georgian Lari",
         "decimals": 2,
-        "sign": "ლ"
+        "sign": "₾"
     },
     "GHS": {
         "name": "Ghanaian Cedi",
@@ -335,7 +335,7 @@
         "sign": "Rp"
     },
     "ILS": {
-        "name": "Israeli New Sheqel",
+        "name": "Israeli New Shekel",
         "decimals": 2,
         "sign": "₪"
     },
@@ -433,11 +433,6 @@
         "name": "Lesotho Loti",
         "decimals": 2,
         "sign": "L"
-    },
-    "LTL": {
-        "name": "Lithuanian Litas",
-        "decimals": 2,
-        "sign": "Lt"
     },
     "LYD": {
         "name": "Libyan Dinar",
@@ -555,7 +550,7 @@
         "sign": "B/."
     },
     "PEN": {
-        "name": "Peruvian Nuevo Sol",
+        "name": "Peruvian Sol",
         "decimals": 2,
         "sign": "S/."
     },
@@ -697,7 +692,7 @@
     "TWD": {
         "name": "New Taiwan Dollar",
         "decimals": 2,
-        "sign": "NT$"
+        "sign": "$"
     },
     "TZS": {
         "name": "Tanzanian Shilling",
@@ -720,7 +715,7 @@
         "sign": "$"
     },
     "UZS": {
-        "name": "Uzbekistan Som",
+        "name": "Uzbekistani Som",
         "decimals": 0,
         "sign": "лв"
     },
@@ -745,7 +740,7 @@
         "sign": "T"
     },
     "XAF": {
-        "name": "CFA Franc BEAC",
+        "name": "Central African CFA Franc",
         "decimals": 0,
         "sign": "Fr"
     },
@@ -755,7 +750,7 @@
         "sign": "$"
     },
     "XOF": {
-        "name": "CFA Franc BCEAO",
+        "name": "West African CFA Franc",
         "decimals": 0,
         "sign": "Fr"
     },

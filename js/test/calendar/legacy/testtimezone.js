@@ -855,7 +855,7 @@ function testTZGetAvailableIdsByCountryRightLength() {
     var zones = ilib.TimeZone.getAvailableIds("US");
     assertNotNull(zones);
     
-    assertEquals(29, zones.length);
+    assertEquals(48, zones.length);
 }
 
 function testTZGetAvailableIdsWithFilterContainsNoLocal() {
@@ -898,7 +898,26 @@ function testTZGetAvailableIdsByCountryRightContents() {
 		"America/Nome",
 		"America/Adak",
 		"America/Metlakatla",
-		"Pacific/Honolulu"
+		"Pacific/Honolulu",
+		"America/Atka",
+		"America/Fort_Wayne",
+		"America/Indianapolis",
+		"America/Knox_IN",
+		"America/Louisville",
+		"America/Shiprock",
+		"Navajo",
+		"Pacific/Johnston",
+		"US/Alaska",
+		"US/Aleutian",
+		"US/Arizona",
+		"US/Central",
+		"US/East-Indiana",
+		"US/Eastern",
+		"US/Hawaii",
+		"US/Indiana-Starke",
+		"US/Michigan",
+		"US/Mountain",
+		"US/Pacific"
     ];
     
     assertArrayEqualsIgnoringOrder(expected, zones);
@@ -908,7 +927,7 @@ function testTZGetAvailableIdsByCountry2RightLength() {
     var zones = ilib.TimeZone.getAvailableIds("SG");
     assertNotNull(zones);
     
-    assertEquals(1, zones.length);
+    assertEquals(2, zones.length);
 }
 
 function testTZGetAvailableIdsByCountry2RightContents() {
@@ -916,7 +935,8 @@ function testTZGetAvailableIdsByCountry2RightContents() {
     assertNotNull(zones);
     
     var expected = [
-		"Asia/Singapore"
+		"Asia/Singapore",
+		"Singapore"
 	];
     
     assertArrayEqualsIgnoringOrder(expected, zones);
@@ -926,7 +946,7 @@ function testTZGetAvailableIdsByCountry3RightLength() {
     var zones = ilib.TimeZone.getAvailableIds("IN");
     assertNotNull(zones);
     
-    assertEquals(1, zones.length);
+    assertEquals(2, zones.length);
 }
 
 function testTZGetAvailableIdsByCountry3RightContents() {
@@ -934,7 +954,8 @@ function testTZGetAvailableIdsByCountry3RightContents() {
     assertNotNull(zones);
     
     var expected = [
-		"Asia/Kolkata"
+		"Asia/Kolkata",
+		"Asia/Calcutta"
 	];
     
     assertArrayEqualsIgnoringOrder(expected, zones);
@@ -1353,7 +1374,7 @@ function mockLoader (paths, sync, params, callback) {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1370,7 +1391,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1391,7 +1412,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1407,7 +1428,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;

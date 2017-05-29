@@ -1,7 +1,7 @@
 /*
  * ScriptInfo.js - information about scripts
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ var Utils = require("./Utils.js");
  * 
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script
- * @param {Object} options parameters to initialize this matcher 
+ * @param {Object=} options parameters to initialize this instance 
  */
 var ScriptInfo = function(script, options) {
 	var sync = true,

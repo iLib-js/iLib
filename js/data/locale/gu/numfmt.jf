@@ -10,9 +10,11 @@
         "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "commonNegative": "-{s}{n}"
         },
+        "negativenumFmt": "-{n}",
         "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
         "digits": "૦૧૨૩૪૫૬૭૮૯",
         "useNative": true
@@ -21,7 +23,7 @@
         "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "commonNegative": "-{s}{n}"
         }
     }
 }
