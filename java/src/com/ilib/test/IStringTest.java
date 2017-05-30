@@ -654,6 +654,7 @@ public class IStringTest
 		}
 	}
 
+	/*
     public void testStringFormatChoiceSimple1() {
         IString str = new IString("1#first string|2#second string");
         
@@ -2189,4 +2190,5 @@ public class IStringTest
             fail();
         }
     }
+    */
 }

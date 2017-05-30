@@ -288,7 +288,7 @@ public class IString
 					builder.append(currentLine);
 				}
 			} catch (Exception e) {
-				System.err.println("Could not load plurals file.");
+				System.err.println("Could not load plurals file " + fileName);
 				return null;
 			}
 	
@@ -338,7 +338,7 @@ public class IString
         			i = 0;
 
         			while (b && (i < params.length())) {
-        				value = interpret(params.get(i), number);
+        				value = interpret(params.get(i++), number);
 
         				b = b && value.getBoolean();
         			}
@@ -349,7 +349,7 @@ public class IString
         			i = 0;
 
         			while (!b && (i < params.length())) {
-        				value = interpret(params.get(i), number);
+        				value = interpret(params.get(i++), number);
 
         				b = b || value.getBoolean();
         			}
@@ -363,7 +363,7 @@ public class IString
 
         		case "isnot":
         		case "neq":
-        			return new Fungible(!interpret(params.getJSONObject(0), number).equals(interpret(params.getJSONObject(1), number)));
+        			return new Fungible(!interpret(params.get(0), number).equals(interpret(params.get(1), number)));
 
         		case "within":
         		case "inrange":
@@ -372,11 +372,29 @@ public class IString
         			JSONArray r = range.getArray();
         			return new Fungible(value.getDouble() >= r.getDouble(0) && value.getDouble() <= r.getDouble(1));
 
+        		case "in":
+        			value = interpret(params.get(0), number);
+        			range = interpret(params.get(1), number);
+        			r = range.getArray();
+        			i = 0;
+        			while (i < r.length()) {
+        				if (value.getDouble() == r.getDouble(i)) {
+        					return new Fungible(true);
+        				}
+        			}
+        			return new Fungible(false);
+
         		case "notin":
         			value = interpret(params.get(0), number);
         			range = interpret(params.get(1), number);
         			r = range.getArray();
-        			return new Fungible(value.getDouble() < r.getDouble(0) || value.getDouble() > r.getDouble(1));
+        			i = 0;
+        			while (i < r.length()) {
+        				if (value.getDouble() == r.getDouble(i)) {
+        					return new Fungible(false);
+        				}
+        			}
+        			return new Fungible(true);
 
         		case "mod":
         			left = interpret(params.get(0), number);
@@ -441,7 +459,8 @@ public class IString
         		return new Fungible(l.longValue());
         	} else {
         		// else unknown value
-        		System.err.println("Syntax error in " + this.locale.getLanguage() + "/plurals.json. Found unknown json property type");
+        		System.err.println("Syntax error in " + this.locale.getLanguage() + "/plurals.json. Found unknown json property type " + rule.getClass().toString());
+        		
         		return new Fungible(0);
         	}
         } catch (JSONException e) {
@@ -453,18 +472,42 @@ public class IString
 	
 	public boolean conformsToPlural(String className, float number) {
 		try {
-			// first find the rule for the class of numbers
 			JSONObject rules = IString.getPluralForms(locale);
-			if (rules != null) {
-				JSONObject rule = rules.getJSONObject(className);
-	
-				// now interpret the rule to see if the number is in that class
-	            Fungible result = interpret(rule, number);
-	            return result.getBoolean();
+			JSONObject rule;
+			if (className.equalsIgnoreCase("other")) {
+				// "other" is the default case, so we have to check that 
+				// the number does not belong in all of the other classes first
+				if (rules == null) {
+					return true;
+				}
+				Iterator<String> it = rules.keys();
+				while (it.hasNext()) {
+					String name = it.next();
+					rule = rules.getJSONObject(name);
+					
+					// now interpret the rule to see if the number is in that class
+		            Fungible result = interpret(rule, number);
+		            if (result.getBoolean()) {
+		            	// if another class matched, then the number 
+		            	// does not belong to "other"
+		            	return false;
+		            }
+				}
+				
+				// nothing else matched, so it is "other"
+				return true;
 			} else {
-				return false;
+				// first find the rule for the class of numbers
+				if (rules != null && (rule = rules.getJSONObject(className)) != null) {
+					// now interpret the rule to see if the number is in that class
+		            Fungible result = interpret(rule, number);
+		            return result.getBoolean();
+				} else {
+					return false;
+				}
 			}
 		} catch (JSONException e) {
+			System.err.println(e.getMessage());
 			System.err.println("Error in plurals.json for locale " + locale);
 		}
 		return false;

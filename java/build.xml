@@ -92,7 +92,8 @@ limitations under the License.
 	</path>
 
 	<path id="project.classpath.junit">
-		<path refid="project.class.path.debug"/>
+	    <path refid="project.class.path.base"/>
+		<pathelement location="${build.output.debug}/${jar.ilib}"/>
 	</path>
 
 	<taskdef resource="emma_ant.properties" classpathref="project.class.path.base" />
@@ -131,8 +132,8 @@ limitations under the License.
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
 	<target name="data">
-		<mkdir dir="${build.data}/locale"/>
-		<copy todir="${build.data}/locale">
+		<mkdir dir="${build.data}/com/ilib/locale"/>
+		<copy todir="${build.data}/com/ilib/locale">
 			<fileset dir="${build.localedata}">
 				<include name="**/plurals.json"/>
 				<include name="likelylocales.json"/>
@@ -220,14 +221,14 @@ limitations under the License.
 		</jar>
 	</target>
 
-	<target name="jar.ilib.release" depends="compile.release" description="Create the release version of the ct.jar file">
+	<target name="jar.ilib.release" depends="data,compile.release" description="Create the release version of the ct.jar file">
 		<antcall target="build.jar.ilib">
 			<param name="classesDir" value="${build.classes.release}"/>
 			<param name="outputDir" value="${build.output.release}"/>
 		</antcall>
 	</target>
 
-	<target name="jar.ilib.debug" depends="compile.debug" description="Create the debug version of the ct.jar file">
+	<target name="jar.ilib.debug" depends="data,compile.debug" description="Create the debug version of the ct.jar file">
 		<antcall target="build.jar.ilib">
 			<param name="classesDir" value="${build.classes.debug}"/>
 			<param name="outputDir" value="${build.output.debug}"/>
@@ -341,8 +342,8 @@ limitations under the License.
 	<target name="test.only" depends="test.core" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report,core.emma.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
-	<!-- target name="test" depends="reports" description="Run all tests and build all reports"/ -->
-	<target name="test" depends="jars"/>
+	<target name="test" depends="reports" description="Run all tests and build all reports"/>
+	<!-- target name="test" depends="jars"/ -->
 
 	<target name="testjavadoc" description="test whether or not the javadocs need to be rebuilt">
 		<uptodate
