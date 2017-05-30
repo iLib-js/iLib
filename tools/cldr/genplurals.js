@@ -196,21 +196,24 @@ function create_expr(operand_string) {
 
 function create_range_list(ranges_string) {
 	var range_string_list;
-	var	range_list;
+	var	range_list = [];
 
 	range_string_list = ranges_string.split(',');
-	range_list = range_string_list.map(function(range_string) {
-		return create_range(range_string.trim());
+	range_string_list.map(function(range_string) {
+		var tmp = create_range(range_string.trim());
+		if (tmp) {
+			range_list = range_list.concat(tmp);
+		}
 	});
 	if (1 === range_list.length)
 		return range_list[0];
 	else {
-		return {
-			or: range_list
-		};
+		return range_list;
 	}
 }
 
+//create a range from a discrete range (ie. all integers)
+//Example: 2..4 means 2, 3, or 4
 function create_range(range_string) {
 	var range_item_list;
 
@@ -219,12 +222,13 @@ function create_range(range_string) {
 	if (1 === range_item_list.length) {
 		return parseInt(range_item_list[0].trim());
 	} else {
-		return {
-			inrange: [
-				parseInt(range_item_list[0].trim()),
-				parseInt(range_item_list[1].trim())
-			]
-		};
+		var end = parseInt(range_item_list[1].trim());
+		var ret = [];
+		for (var i = parseInt(range_item_list[0].trim()); i <= end; i++) {
+			ret.push(i);
+		}
+		
+		return ret;
 	}
 }
 
