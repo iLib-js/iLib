@@ -2,12 +2,11 @@ package com.ilib;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PluralFormHelper {
-	public static final File root = new File("js/data/locale");
+	public static final File root = new File("locale");
 	public static final File pluralsJSON = new File("plurals.json");
 	protected static final Pattern commandParser = Pattern.compile("(\\w*)(\\(([^(]+?)\\))");
 	protected static final String VALUE_REPLACER = "(?<=[^\\w\\\\])n(?=(,|\\)))";
@@ -69,7 +68,44 @@ public class PluralFormHelper {
 			return builder.toString();
 		}
 	}
+	
+	protected Map<String,String> forms = null;
 
+	public PluralFormHelper(String localeSpec) {
+		// load the plural forms from the same jar file as this code
+		
+		Locale locale = Locale.forLanguageTag(localeSpec);
+		String language = locale.getLanguage();
+		String path = root + "/" + language + "/" + pluralsJSON;
+		
+		ClassLoader cl = this.getClass().getClassLoader();
+		
+		forms = getPluralForms(cl.getResourceAsStream(path));
+	}
+	
+	public Map<String,String> getForms() {
+		return forms;
+	}
+	
+	public <K> String getPluralKey(int value) {
+		String resultPlural = OTHER_PLURAL;
+		StringBuilder builder = new StringBuilder();
+
+		if ( !forms.isEmpty() ) {
+																																																																																																																																																																																																																																																																																																																																																																																																																											for (String callItem : forms.keySet()) {
+				builder.setLength(0);
+				builder.append(forms.get(callItem).toString().replaceAll(VALUE_REPLACER, String.valueOf(value)));
+
+				matchPluralForm(builder);
+				if ( (builder.toString()).equals(TRUE_VALUE) ) {
+					return callItem;
+				}
+			}
+		}
+
+		return resultPlural;
+	}
+	
 	/**
 	 * 
 	 * @param file

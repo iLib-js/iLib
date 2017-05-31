@@ -2,7 +2,7 @@
  * testdatefmtrange_gu_in.js - test the date range formatter object in Gujrati/India
  * 
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ function testDateRngFmtguINRangeinDayShort() {
 		millisecond: 0
 	});
 	
-    assertEquals("01:45 PM – 02:30 PM 31/12/11", fmt.format(start, end));
+    assertEquals("31/12/11 01:45 PM – 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeinDayMedium() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "medium"});
@@ -67,7 +67,7 @@ function testDateRngFmtguINRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM – 02:30 PM 31 ડિસે, 2011", fmt.format(start, end));
+    assertEquals("31 ડિસે, 2011 01:45 PM – 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeinDayLong() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "long"});
@@ -91,7 +91,7 @@ function testDateRngFmtguINRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM – 02:30 PM 31 ડિસેમ્બર, 2011", fmt.format(start, end));
+    assertEquals("31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeinDayFull() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "full"});
@@ -115,7 +115,7 @@ function testDateRngFmtguINRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM – 02:30 PM 31 ડિસેમ્બર, 2011", fmt.format(start, end));
+    assertEquals("31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtguINRangeNextDayShort() {
@@ -140,7 +140,7 @@ function testDateRngFmtguINRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM 30/12/11 – 02:30 PM 31/12/11", fmt.format(start, end));
+    assertEquals("30/12/11 01:45 PM – 31/12/11 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeNextDayMedium() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "medium"});
@@ -164,7 +164,7 @@ function testDateRngFmtguINRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM 30 – 02:30 PM 31 ડિસે, 2011", fmt.format(start, end));
+    assertEquals("30 ડિસે, 2011 01:45 PM – 31 ડિસે, 2011 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeNextDayLong() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "long"});
@@ -188,7 +188,7 @@ function testDateRngFmtguINRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM 30 – 02:30 PM 31 ડિસેમ્બર, 2011", fmt.format(start, end));
+    assertEquals("30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeNextDayFull() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "full"});
@@ -212,7 +212,7 @@ function testDateRngFmtguINRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45 PM 30 – 02:30 PM 31 ડિસેમ્બર, 2011", fmt.format(start, end));
+    assertEquals("30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM", fmt.format(start, end));
 }
 
 function testDateRngFmtguINRangeMultiDayShort() {
@@ -237,7 +237,7 @@ function testDateRngFmtguINRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeMultiDayMedium() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "medium"});
@@ -334,7 +334,7 @@ function testDateRngFmtguINRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/12/11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtguINRangeNextMonthMedium() {
     var fmt = new DateRngFmt({locale: "gu-IN", length: "medium"});

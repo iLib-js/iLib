@@ -37,6 +37,38 @@
                 "hmsz": "HH:mm:ss z",
                 "ahmsz": "HH:mm:ss z"
             }
+        },
+        "range": {
+            "c00": {
+                "s": "{sm}/{sd}/{sy}، {st} – {et}"
+            },
+            "c01": {
+                "s": "{sm}/{sd}/{sy}، {st} – {em}/{ed}/{ey}، {et}"
+            },
+            "c02": {
+                "s": "{sm}/{sd}/{sy}، {st} – {em}/{ed}/{ey}، {et}"
+            },
+            "c03": {
+                "s": "{sm}/{sd}/{sy}، {st} – {em}/{ed}/{ey}، {et}"
+            },
+            "c10": {
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+            },
+            "c11": {
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+            },
+            "c12": {
+                "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
+            },
+            "c20": {
+                "s": "{sm}/{sy} – {em}/{ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
         }
     }
 }

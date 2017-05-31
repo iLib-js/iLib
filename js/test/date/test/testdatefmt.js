@@ -2168,7 +2168,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/09/2011 6:45 am AEST", fmt.format(date));
+    assertEquals("21/9/11, 6:45 am AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
@@ -2276,7 +2276,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, September 20, 2011 at 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -2300,7 +2300,7 @@ function testDateFmtenPH() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, September 20, 2011 at 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtenPK() {
@@ -2324,7 +2324,7 @@ function testDateFmtenPK() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 at 1:45 pm", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtenAU() {
@@ -2348,7 +2348,7 @@ function testDateFmtenAU() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday, 20 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 1:45 pm", fmt.format(date));
 };
 
 function testDateFmtenZA() {
@@ -2372,7 +2372,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 at 1:45 PM", fmt.format(date));
+    assertEquals("Tuesday, 20 September 2011 at 13:45", fmt.format(date));
 };
 
 function testDateFmtesES() {
@@ -2420,7 +2420,7 @@ function testDateFmtesMX() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de septiembre de 2011 13:45", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
 };
 
 function testDateFmtesAR() {
@@ -2444,7 +2444,8 @@ function testDateFmtesAR() {
 		millisecond: 0
 	});
     
-    assertEquals("martes, 20 de setiembre de 2011, 1:45 p. m.", fmt.format(date));
+    assertEquals("martes, 20 de septiembre de 2011, 13:45", fmt.format(date));
+                  
 };
 
 function testDateFmttrTR() {
@@ -2571,7 +2572,7 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testDateFmtLoadLocaleDataSynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -2589,7 +2590,7 @@ function testDateFmtLoadLocaleDataSynch() {
 };
 
 function testDateFmtLoadLocaleDataSynchCached() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -2606,7 +2607,7 @@ function testDateFmtLoadLocaleDataSynchCached() {
 };
 
 function testDateFmtLoadLocaleDataAsynch() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -2634,7 +2635,7 @@ function testDateFmtLoadLocaleDataAsynch() {
 };
 
 function testDateFmtLoadLocaleDataAsynchCached() {
-	if (typeof(ilib._load) !== 'undefined') {
+	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -3028,10 +3029,104 @@ function testDateFmtGetMeridiemsRangeStart_with_en_US_locale() {
 };
 
 function testDateFmtGetMeridiemsRangeEnd_with_en_US_locale() {
-    var fmt = DateFmt.getMeridiemsRange({ locale: "en-US"});
+    var fmt = DateFmt.getMeridiemsRange({locale: "en-US"});
     assertNotNull(fmt);
 
     assertEquals("11:59", fmt[0].end);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_bn_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "bn-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_gu_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "gu-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_kn_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "kn-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("ಪೂರ್ವಾಹ್ನ", fmt[0].name);
+    assertEquals("ಅಪರಾಹ್ನ", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_ml_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "ml-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_mr_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "mr-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("म.पू.", fmt[0].name);
+    assertEquals("म.उ.", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_or_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "or-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("am", fmt[0].name);
+    assertEquals("pm", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_pa_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "pa-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("ਪੂ.ਦੁ.", fmt[0].name);
+    assertEquals("ਬਾ.ਦੁ.", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_ta_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "ta-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("முற்பகல்", fmt[0].name);
+    assertEquals("பிற்பகல்", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_te_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "te-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_ur_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "ur-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_as_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("পূৰ্বাহ্ণ", fmt[0].name);
+    assertEquals("অপৰাহ্ণ", fmt[1].name);
+};
+function testDateFmtGetMeridiemsRangeName_with_hi_IN_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "hi-IN"});
+    assertNotNull(fmt);
+
+    assertEquals("पूर्वाह्न", fmt[0].name);
+    assertEquals("अपराह्न", fmt[1].name);
+};
+
+function testDateFmtGetMeridiemsRangeName_with_ur_PK_locale() {
+    var fmt = DateFmt.getMeridiemsRange({locale: "ur-PK"});
+    assertNotNull(fmt);
+
+    assertEquals("AM", fmt[0].name);
+    assertEquals("PM", fmt[1].name);
 };
 
 function testDateFmtGetMeridiemsRange_with_noArgument() {

@@ -47,10 +47,19 @@
         "America/Argentina/Mendoza",
         "America/Argentina/San_Luis",
         "America/Argentina/Rio_Gallegos",
-        "America/Argentina/Ushuaia"
+        "America/Argentina/Ushuaia",
+        "America/Argentina/ComodRivadavia",
+        "America/Buenos_Aires",
+        "America/Catamarca",
+        "America/Cordoba",
+        "America/Jujuy",
+        "America/Mendoza",
+        "America/Rosario"
     ],
     "AS": [
-        "Pacific/Pago_Pago"
+        "Pacific/Pago_Pago",
+        "Pacific/Samoa",
+        "US/Samoa"
     ],
     "AT": [
         "Europe/Vienna"
@@ -68,7 +77,18 @@
         "Australia/Adelaide",
         "Australia/Darwin",
         "Australia/Perth",
-        "Australia/Eucla"
+        "Australia/Eucla",
+        "Australia/ACT",
+        "Australia/Canberra",
+        "Australia/LHI",
+        "Australia/NSW",
+        "Australia/North",
+        "Australia/Queensland",
+        "Australia/South",
+        "Australia/Tasmania",
+        "Australia/Victoria",
+        "Australia/West",
+        "Australia/Yancowinna"
     ],
     "AW": [
         "America/Aruba"
@@ -86,7 +106,8 @@
         "America/Barbados"
     ],
     "BD": [
-        "Asia/Dhaka"
+        "Asia/Dhaka",
+        "Asia/Dacca"
     ],
     "BE": [
         "Europe/Brussels"
@@ -137,13 +158,19 @@
         "America/Boa_Vista",
         "America/Manaus",
         "America/Eirunepe",
-        "America/Rio_Branco"
+        "America/Rio_Branco",
+        "America/Porto_Acre",
+        "Brazil/Acre",
+        "Brazil/DeNoronha",
+        "Brazil/East",
+        "Brazil/West"
     ],
     "BS": [
         "America/Nassau"
     ],
     "BT": [
-        "Asia/Thimphu"
+        "Asia/Thimphu",
+        "Asia/Thimbu"
     ],
     "BW": [
         "Africa/Gaborone"
@@ -182,7 +209,18 @@
         "America/Fort_Nelson",
         "America/Vancouver",
         "America/Whitehorse",
-        "America/Dawson"
+        "America/Dawson",
+        "America/Coral_Harbour",
+        "America/Montreal",
+        "Canada/Atlantic",
+        "Canada/Central",
+        "Canada/East-Saskatchewan",
+        "Canada/Eastern",
+        "Canada/Mountain",
+        "Canada/Newfoundland",
+        "Canada/Pacific",
+        "Canada/Saskatchewan",
+        "Canada/Yukon"
     ],
     "CC": [
         "Indian/Cocos"
@@ -201,7 +239,8 @@
         "Europe/Zurich"
     ],
     "CI": [
-        "Africa/Abidjan"
+        "Africa/Abidjan",
+        "Africa/Timbuktu"
     ],
     "CK": [
         "Pacific/Rarotonga"
@@ -209,14 +248,21 @@
     "CL": [
         "America/Santiago",
         "America/Punta_Arenas",
-        "Pacific/Easter"
+        "Pacific/Easter",
+        "Chile/Continental",
+        "Chile/EasterIsland"
     ],
     "CM": [
         "Africa/Douala"
     ],
     "CN": [
         "Asia/Shanghai",
-        "Asia/Urumqi"
+        "Asia/Urumqi",
+        "Asia/Chongqing",
+        "Asia/Chungking",
+        "Asia/Harbin",
+        "Asia/Kashgar",
+        "PRC"
     ],
     "CO": [
         "America/Bogota"
@@ -225,7 +271,8 @@
         "America/Costa_Rica"
     ],
     "CU": [
-        "America/Havana"
+        "America/Havana",
+        "Cuba"
     ],
     "CV": [
         "Atlantic/Cape_Verde"
@@ -270,7 +317,8 @@
         "Europe/Tallinn"
     ],
     "EG": [
-        "Africa/Cairo"
+        "Africa/Cairo",
+        "Egypt"
     ],
     "EH": [
         "Africa/El_Aaiun"
@@ -298,10 +346,14 @@
     "FM": [
         "Pacific/Chuuk",
         "Pacific/Pohnpei",
-        "Pacific/Kosrae"
+        "Pacific/Kosrae",
+        "Pacific/Ponape",
+        "Pacific/Truk",
+        "Pacific/Yap"
     ],
     "FO": [
-        "Atlantic/Faroe"
+        "Atlantic/Faroe",
+        "Atlantic/Faeroe"
     ],
     "FR": [
         "Europe/Paris"
@@ -310,7 +362,10 @@
         "Africa/Libreville"
     ],
     "GB": [
-        "Europe/London"
+        "Europe/London",
+        "Europe/Belfast",
+        "GB",
+        "GB-Eire"
     ],
     "GD": [
         "America/Grenada"
@@ -367,7 +422,8 @@
         "America/Guyana"
     ],
     "HK": [
-        "Asia/Hong_Kong"
+        "Asia/Hong_Kong",
+        "Hongkong"
     ],
     "HN": [
         "America/Tegucigalpa"
@@ -385,19 +441,24 @@
         "Asia/Jakarta",
         "Asia/Pontianak",
         "Asia/Makassar",
-        "Asia/Jayapura"
+        "Asia/Jayapura",
+        "Asia/Ujung_Pandang"
     ],
     "IE": [
-        "Europe/Dublin"
+        "Europe/Dublin",
+        "Eire"
     ],
     "IL": [
-        "Asia/Jerusalem"
+        "Asia/Jerusalem",
+        "Asia/Tel_Aviv",
+        "Israel"
     ],
     "IM": [
         "Europe/Isle_of_Man"
     ],
     "IN": [
-        "Asia/Kolkata"
+        "Asia/Kolkata",
+        "Asia/Calcutta"
     ],
     "IO": [
         "Indian/Chagos"
@@ -406,10 +467,12 @@
         "Asia/Baghdad"
     ],
     "IR": [
-        "Asia/Tehran"
+        "Asia/Tehran",
+        "Iran"
     ],
     "IS": [
-        "Atlantic/Reykjavik"
+        "Atlantic/Reykjavik",
+        "Iceland"
     ],
     "IT": [
         "Europe/Rome"
@@ -418,16 +481,19 @@
         "Europe/Jersey"
     ],
     "JM": [
-        "America/Jamaica"
+        "America/Jamaica",
+        "Jamaica"
     ],
     "JO": [
         "Asia/Amman"
     ],
     "JP": [
-        "Asia/Tokyo"
+        "Asia/Tokyo",
+        "Japan"
     ],
     "KE": [
-        "Africa/Nairobi"
+        "Africa/Nairobi",
+        "Africa/Asmera"
     ],
     "KG": [
         "Asia/Bishkek"
@@ -450,7 +516,8 @@
         "Asia/Pyongyang"
     ],
     "KR": [
-        "Asia/Seoul"
+        "Asia/Seoul",
+        "ROK"
     ],
     "KW": [
         "Asia/Kuwait"
@@ -497,7 +564,8 @@
         "Europe/Riga"
     ],
     "LY": [
-        "Africa/Tripoli"
+        "Africa/Tripoli",
+        "Libya"
     ],
     "MA": [
         "Africa/Casablanca"
@@ -506,7 +574,8 @@
         "Europe/Monaco"
     ],
     "MD": [
-        "Europe/Chisinau"
+        "Europe/Chisinau",
+        "Europe/Tiraspol"
     ],
     "ME": [
         "Europe/Podgorica"
@@ -519,7 +588,8 @@
     ],
     "MH": [
         "Pacific/Majuro",
-        "Pacific/Kwajalein"
+        "Pacific/Kwajalein",
+        "Kwajalein"
     ],
     "MK": [
         "Europe/Skopje"
@@ -528,15 +598,18 @@
         "Africa/Bamako"
     ],
     "MM": [
-        "Asia/Yangon"
+        "Asia/Yangon",
+        "Asia/Rangoon"
     ],
     "MN": [
         "Asia/Ulaanbaatar",
         "Asia/Hovd",
-        "Asia/Choibalsan"
+        "Asia/Choibalsan",
+        "Asia/Ulan_Bator"
     ],
     "MO": [
-        "Asia/Macau"
+        "Asia/Macau",
+        "Asia/Macao"
     ],
     "MP": [
         "Pacific/Saipan"
@@ -573,7 +646,12 @@
         "America/Ojinaga",
         "America/Hermosillo",
         "America/Tijuana",
-        "America/Bahia_Banderas"
+        "America/Bahia_Banderas",
+        "America/Ensenada",
+        "America/Santa_Isabel",
+        "Mexico/BajaNorte",
+        "Mexico/BajaSur",
+        "Mexico/General"
     ],
     "MY": [
         "Asia/Kuala_Lumpur",
@@ -604,10 +682,12 @@
         "Europe/Amsterdam"
     ],
     "NO": [
-        "Europe/Oslo"
+        "Europe/Oslo",
+        "Atlantic/Jan_Mayen"
     ],
     "NP": [
-        "Asia/Kathmandu"
+        "Asia/Kathmandu",
+        "Asia/Katmandu"
     ],
     "NR": [
         "Pacific/Nauru"
@@ -617,7 +697,10 @@
     ],
     "NZ": [
         "Pacific/Auckland",
-        "Pacific/Chatham"
+        "Pacific/Chatham",
+        "Antarctica/South_Pole",
+        "NZ",
+        "NZ-CHAT"
     ],
     "OM": [
         "Asia/Muscat"
@@ -644,7 +727,8 @@
         "Asia/Karachi"
     ],
     "PL": [
-        "Europe/Warsaw"
+        "Europe/Warsaw",
+        "Poland"
     ],
     "PM": [
         "America/Miquelon"
@@ -662,7 +746,8 @@
     "PT": [
         "Europe/Lisbon",
         "Atlantic/Madeira",
-        "Atlantic/Azores"
+        "Atlantic/Azores",
+        "Portugal"
     ],
     "PW": [
         "Pacific/Palau"
@@ -709,7 +794,8 @@
         "Asia/Sakhalin",
         "Asia/Srednekolymsk",
         "Asia/Kamchatka",
-        "Asia/Anadyr"
+        "Asia/Anadyr",
+        "W-SU"
     ],
     "RW": [
         "Africa/Kigali"
@@ -730,7 +816,8 @@
         "Europe/Stockholm"
     ],
     "SG": [
-        "Asia/Singapore"
+        "Asia/Singapore",
+        "Singapore"
     ],
     "SH": [
         "Atlantic/St_Helena"
@@ -802,7 +889,8 @@
         "Asia/Dili"
     ],
     "TM": [
-        "Asia/Ashgabat"
+        "Asia/Ashgabat",
+        "Asia/Ashkhabad"
     ],
     "TN": [
         "Africa/Tunis"
@@ -811,16 +899,19 @@
         "Pacific/Tongatapu"
     ],
     "TR": [
-        "Europe/Istanbul"
+        "Europe/Istanbul",
+        "Turkey"
     ],
     "TT": [
-        "America/Port_of_Spain"
+        "America/Port_of_Spain",
+        "America/Virgin"
     ],
     "TV": [
         "Pacific/Funafuti"
     ],
     "TW": [
-        "Asia/Taipei"
+        "Asia/Taipei",
+        "ROC"
     ],
     "TZ": [
         "Africa/Dar_es_Salaam"
@@ -866,7 +957,26 @@
         "America/Yakutat",
         "America/Nome",
         "America/Adak",
-        "Pacific/Honolulu"
+        "Pacific/Honolulu",
+        "America/Atka",
+        "America/Fort_Wayne",
+        "America/Indianapolis",
+        "America/Knox_IN",
+        "America/Louisville",
+        "America/Shiprock",
+        "Navajo",
+        "Pacific/Johnston",
+        "US/Alaska",
+        "US/Aleutian",
+        "US/Arizona",
+        "US/Central",
+        "US/East-Indiana",
+        "US/Eastern",
+        "US/Hawaii",
+        "US/Indiana-Starke",
+        "US/Michigan",
+        "US/Mountain",
+        "US/Pacific"
     ],
     "UY": [
         "America/Montevideo"
@@ -891,7 +1001,8 @@
         "America/St_Thomas"
     ],
     "VN": [
-        "Asia/Ho_Chi_Minh"
+        "Asia/Ho_Chi_Minh",
+        "Asia/Saigon"
     ],
     "VU": [
         "Pacific/Efate"

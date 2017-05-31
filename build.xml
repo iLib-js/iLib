@@ -2,7 +2,7 @@
 <!--
 build.xml - build everything in the ilib project
 
-Copyright © 2012-2013, JEDLSoft
+Copyright © 2012-2017, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -100,13 +100,22 @@ limitations under the License.
 			</fileset>
 		</checksum>
 	</target>
+	
+	<target name="remote" description="Build and run a test server so that remote testing is possible">
+	    <mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+		
+	</target>
 
-	<target name="test" description="Run all tests and build all reports">
+	<target name="test" depends="export" description="Run all tests and build all reports">
 		<iterate target="test"/>
 	</target>
 	
 	<target name="doc" description="Extract all the inline documentation.">
 		<iterate target="doc"/>
+	</target>
+
+	<target name="deps" description="Install dependencies for travis-ci">
+		<!-- nothing yet -->
 	</target>
 	
 </project>

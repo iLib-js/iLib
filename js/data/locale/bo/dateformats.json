@@ -3,38 +3,38 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "f": "yyyy MMMM d, EEEE",
-                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཙེས་dད, EEE",
-                "m": "yyyy ལོ་འི་MMMཙེས་d, EE",
+                "f": "yyyy MMMMའི་ཚེས་d, EEEE",
+                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d, EEE",
+                "m": "yyyy ལོའི་MMMཚེས་d, EE",
                 "s": "yyyy-MM-dd, E"
             },
             "dmy": {
-                "f": "yyyy MMMM d",
-                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཙེས་dད",
-                "m": "yyyy ལོ་འི་MMMཙེས་d",
+                "f": "yyyy MMMMའི་ཚེས་d",
+                "l": "སྤྱི་ལོ་yyyy MMMMའི་ཚེས་d",
+                "m": "yyyy ལོའི་MMMཚེས་d",
                 "s": "yyyy-MM-dd"
             },
             "dmw": {
-                "f": "MMMM d, EEEE",
-                "l": "MMMMའི་ཙེས་dད, EEE",
-                "m": "MMMཙེས་d, EE",
+                "f": "MMMMའི་ཚེས་d, EEEE",
+                "l": "MMMMའི་ཚེས་d, EEE",
+                "m": "MMMཚེས་d, EE",
                 "s": "MM-dd, E"
             },
             "dm": {
-                "f": "MMMM d",
-                "l": "MMMMའི་ཙེས་dད",
-                "m": "MMMཙེས་d",
+                "f": "MMMMའི་ཚེས་d",
+                "l": "MMMMའི་ཚེས་d",
+                "m": "MMMཚེས་d",
                 "s": "MM-dd"
             },
             "my": {
-                "f": "yyyy MMMM",
-                "l": "སྤྱི་ལོ་yyyy MMMM",
-                "m": "yyyy ལོ་འི་MMM",
+                "f": "yyyy LLLL",
+                "l": "སྤྱི་ལོ་yyyy LLLL",
+                "m": "yyyy ལོའི་LLL",
                 "s": "yyyy-MM"
             },
             "dw": {
                 "f": "d, EEEE",
-                "l": "dད, EEE",
+                "l": "d, EEE",
                 "m": "d, EE",
                 "s": "dd, E"
             },
@@ -61,6 +61,18 @@
                 "l": "yyyy",
                 "m": "yyyy",
                 "s": "yyyy"
+            },
+            "e": {
+                "f": "cccc",
+                "l": "ccc",
+                "m": "cc",
+                "s": "c"
+            },
+            "l": {
+                "f": "LLLL",
+                "l": "LLLL",
+                "m": "LLL",
+                "s": "LL"
             }
         },
         "time": {
@@ -97,48 +109,59 @@
         },
         "range": {
             "c00": {
-                "s": "{st} – {et} {sy}-{sm}-{sd}",
-                "m": "{st} – {et} {sy} ལོ་འི་{sm}ཙེས་{sd}",
-                "l": "{st} – {et} {sy} ལོ་འི་{sm}ཙེས་{sd}",
-                "f": "{st} – {et} སྦྱི་ལོ་{sy} {sm}འི་ཙེས་{sd}ད"
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {et}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – {et}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {et}"
             },
             "c01": {
-                "s": "{st} {sy}–{sm}–{sd} – {et} {ed}",
-                "m": "{st} {sy}–{sm}–{sd} – {et} {ed}",
-                "l": "{st} {sy}–{sm}–{sd} – {et} {ed}",
-                "f": "{st} {sy}–{sm}–{sd} – {et} {ed}"
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ་{ey} {em}འི་ཚེས་{ed} {et}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c02": {
-                "s": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
-                "m": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
-                "l": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
-                "f": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ་{ey} {em}འི་ཚེས་{ed} {et}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
+            },
+            "c03": {
+                "f": "{sy} {sm}འི་ཚེས་{sd} {st} – {ey} {em}འི་ཚེས་{ed} {et}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} {st} – སྤྱི་ལོ{ey} {em}འི་ཚེས་{ed} {et}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} {st} – {ey} ལོའི་{em}ཚེས་{ed} {et}",
+                "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c10": {
-                "s": "{sy}–{sm}–{sd} – {ed}",
-                "m": "{sy}–{sm}–{sd} – {ed}",
-                "l": "{sy}–{sm}–{sd} – {ed}",
-                "f": "{sy}–{sm}–{sd} – {ed}"
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {ed}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – {ed}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ed}",
+                "s": "{sy}-{sm}-{sd} – {ed}"
             },
             "c11": {
-                "s": "{sy}–{sm}–{sd} – {em}–{ed}",
-                "m": "{sy}–{sm}–{sd} – {em}–{ed}",
-                "l": "{sy}–{sm}–{sd} – {em}–{ed}",
-                "f": "{sy}–{sm}–{sd} – {em}–{ed}"
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {em}འི་ཚེས་{ed}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – སྤྱི་ལོ{em}འི་ཚེས་{ed}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c12": {
-                "s": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}",
-                "m": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}",
-                "l": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}",
-                "f": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}"
+                "f": "{sy} {sm}འི་ཚེས་{sd} – {ey} {em}འི་ཚེས་{ed}",
+                "l": "སྤྱི་ལོ་{sy} {sm}འི་ཚེས་{sd} – སྤྱི་ལོ{ey} {em}འི་ཚེས་{ed}",
+                "m": "{sy} ལོའི་{sm}ཚེས་{sd} – {ey} ལོའི་{em}ཚེས་{ed}",
+                "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c20": {
-                "s": "{sy}–{sm} – {ey}–{em}",
-                "m": "{sy}–{sm} – {ey}–{em}",
-                "l": "{sy}–{sm} – {ey}–{em}",
-                "f": "{sy}–{sm} – {ey}–{em}"
+                "f": "{sy} {sm} – {ey} {em}",
+                "l": "སྤྱི་ལོ་{sy} {sm} – སྤྱི་ལོ{ey} {em}",
+                "m": "{sy} ལོའི་{sm} – {ey} ལོའི་{em}",
+                "s": "{sy}-{sm} – {ey}-{em}"
             },
-            "c30": "{sy} – {ey}"
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
         }
     }
 }
