@@ -40,7 +40,7 @@ function testDateFmtINSimpleShort_kn_IN() {
 		minute: 45,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINSimpleMedium_kn_IN() {
@@ -193,7 +193,7 @@ function testDateFmtINDateTimeSimpleShort_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("29/9/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleMedium_kn_IN() {
@@ -417,7 +417,7 @@ function testDateFmtINTypeDate_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINTypeTime_kn_IN() {
@@ -451,7 +451,7 @@ function testDateFmtINTypeDateTime_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
+    assertEquals("29/9/11 01:45 ಅಪರಾಹ್ನ", fmt.format(date));
 }
 
 
@@ -503,7 +503,7 @@ function testDateFmtINShortDateComponentsN_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ಸೆ", fmt.format(date));
+    assertEquals("ಸ", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsD_kn_IN() {
@@ -537,7 +537,7 @@ function testDateFmtINShortDateComponentsDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsMY_kn_IN() {
@@ -571,7 +571,7 @@ function testDateFmtINShortDateComponentsDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/29/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDM_kn_IN() {
@@ -588,7 +588,7 @@ function testDateFmtINShortDateComponentsWDM_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ಗು, 9/29", fmt.format(date));
+    assertEquals("ಗು, 29/9", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsWDMY_kn_IN() {
@@ -605,7 +605,7 @@ function testDateFmtINShortDateComponentsWDMY_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ಗು, 9/29/11", fmt.format(date));
+    assertEquals("ಗು, 29/9/11", fmt.format(date));
 }
 
 
@@ -1193,7 +1193,7 @@ function testDateFmtFormatRelativeWitknnMinuteAfter_kn_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 ಸೆಕೆಂಡುಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("30 ಸೆಕೆಂಡುಗಳು ದಿನಗಳಲ್ಲಿ",fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnMinuteBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1219,7 +1219,7 @@ function testDateFmtFormatRelativeWitknnMinuteBefore_kn_IN() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 ಸೆಕೆಂಡುಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("30 ಸೆಕೆಂಡುಗಳು ದಿನಗಳ ಹಿಂದೆ",fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnHourAfter_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1245,7 +1245,7 @@ function testDateFmtFormatRelativeWitknnHourAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 ನಿಮಿಷಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("10 ನಿಮಿಷಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnHourBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1271,7 +1271,7 @@ function testDateFmtFormatRelativeWitknnHourBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 ನಿಮಿಷಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("10 ನಿಮಿಷಗಳು ದಿನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnDayAfter_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWitknnDayAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ಗಂಟೆಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("4 ಗಂಟೆಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnDayBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1323,7 +1323,7 @@ function testDateFmtFormatRelativeWitknnDayBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ಗಂಟೆಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("4 ಗಂಟೆಗಳು ದಿನಗಳ ಹಿಂದೆ",fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnFortnightAfter_kn_IN() {
@@ -1350,7 +1350,7 @@ function testDateFmtFormatRelativeWitknnFortnightAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ದಿನಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("4 ದಿನಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnFortnightBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1376,7 +1376,7 @@ function testDateFmtFormatRelativeWitknnFortnightBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 ದಿನಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("4 ದಿನಗಳು ದಿನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnQuarterAfter_kn_IN() {
@@ -1403,7 +1403,7 @@ function testDateFmtFormatRelativeWitknnQuarterAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 ವಾರಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("9 ವಾರಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnQuarterBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1429,7 +1429,7 @@ function testDateFmtFormatRelativeWitknnQuarterBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 ವಾರಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("9 ವಾರಗಳು ದಿನಗಳ ಹಿಂದೆ",fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWitknnTwoYearsAfter_kn_IN() {
@@ -1456,7 +1456,7 @@ function testDateFmtFormatRelativeWitknnTwoYearsAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16 ತಿಂಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("16 ತಿಂಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWitknnTwoYearsBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1482,7 +1482,7 @@ function testDateFmtFormatRelativeWitknnTwoYearsBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 ತಿಂಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("14 ತಿಂಗಳು ದಿನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_kn_IN() {
@@ -1509,7 +1509,7 @@ function testDateFmtFormatRelativeYearsAfter_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 ವರ್ಷಗಳು ನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
+    assertEquals("14 ವರ್ಷಗಳು ದಿನಗಳಲ್ಲಿ", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_kn_IN() {
     var fmt = new DateFmt({locale: "kn-IN", length: "full"});
@@ -1535,7 +1535,7 @@ function testDateFmtFormatRelativeYearsBefore_kn_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 ವರ್ಷಗಳು ನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
+    assertEquals("21 ವರ್ಷಗಳು ದಿನಗಳ ಹಿಂದೆ", fmt.formatRelative(reference, date));
 }
 
 

@@ -2,7 +2,7 @@
  * genclockprefs.js - ilib tool to generate the  clock json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2015, LGE
+ * Copyright © 2013-2017, LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -30,7 +29,7 @@ var makeDirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-	util.print("Usage: genclockprefs [-h] CLDR_json_dir locale_data_dir\n" +
+	console.log("Usage: genclockprefs [-h] CLDR_json_dir locale_data_dir\n" +
 		"Generate clock preferences information files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
@@ -48,21 +47,23 @@ process.argv.forEach(function (val, index, array) {
 	}
 });
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
-cldrDirName = process.argv[2];
+cldrDirName = process.argv[2] + "cldr-dates-full/";
 localeDirName = process.argv[3];
-util.print("genclockprefs - generate clock preferences information files.\n" +
-	"Copyright (c) 2013-2015 LGE\n");
-util.print("CLDR dir: " + cldrDirName + "\n");
-util.print("locale dir: " + localeDirName + "\n");
+
+console.log("genclockprefs - generate clock preferences information files.\n" +
+	"Copyright (c) 2013-2017 LGE\n");
+console.log("CLDR dir: " + cldrDirName);
+console.log("locale dir: " + localeDirName);
+
 if (!fs.existsSync(cldrDirName)) {
-	util.error("Could not access CLDR dir " + cldrDirName);
+	console.error("Could not access CLDR dir " + cldrDirName);
 	usage();
 }
 if (!fs.existsSync(localeDirName)) {
-	util.error("Could not access locale data directory " + localeDirName);
+	console.error("Could not access locale data directory " + localeDirName);
 	usage();
 }
 var languageData;
@@ -72,7 +73,7 @@ function loadFile(pathname) {
 	if (fs.existsSync(pathname)) {
 		var json = fs.readFileSync(pathname, "utf-8");
 		ret = JSON.parse(json);
-		//util.print("pathname is :"+pathname+"\n"); 
+		//console.log("pathname is :"+pathname+"\n"); 
 	}
 	return ret;
 }
@@ -147,22 +148,22 @@ function anyProperties(data) {
 
 function writeClockPrefs(language, script, region, data) {
 	var pathname = calcLocalePath(language, script, region, "");
-	//util.print("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
+	//console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
 	if (data.generated) {
 		if (anyProperties(data)) {
-			util.print("Writing " + pathname + "\n");
+			console.log("Writing " + pathname);
 			makeDirs(pathname);
-			//util.print("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data["clock"])+"\n"); 
+			//console.log("data to be written into jf files" + pathname + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data["clock"])+"\n"); 
 			if (typeof (data["clock"]) != 'undefined') {
 				data.generated = true;
 				makeDirs(pathname);
 				fs.writeFileSync(path.join(pathname, "clock.jf"), JSON.stringify(data, true, 4), "utf-8");
 			}
 		} else {
-			util.print("Skipping empty " + pathname + "\n");
+			console.log("Skipping empty " + pathname);
 		}
 	} else {
-		util.print("Skipping existing " + pathname + "\n");
+		console.log("Skipping existing " + pathname);
 	}
 }
 
@@ -179,16 +180,16 @@ function getClockPrefs(locale) {
 	} else if (timeformat.indexOf("h") != -1) {
 		clockprefs["clock"] = "12";
 	} else {
-		util.print("could not find default clock preference for locale " + locale + "\n");
+		console.log("could not find default clock preference for locale " + locale);
 	}
-	//util.print("time format is :"+JSON.stringify(timeformat)+"\n");
-	//util.print("clock preference is :"+JSON.stringify(clockprefs)+"\n");
+	//console.log("time format is :"+JSON.stringify(timeformat)+"\n");
+	//console.log("clock preference is :"+JSON.stringify(clockprefs)+"\n");
 	return clockprefs;
 }
 
 var language, region, script, files;
 files = fs.readdirSync(path.join(cldrDirName, "main"));
-util.print("Reading locale data into memory...\n");
+console.log("Reading locale data into memory...");
 for (var i = 0; i < files.length; i++) {
 	var pref = getClockPrefs(files[i]);
 	if (files[i] === "root") {
@@ -200,8 +201,7 @@ for (var i = 0; i < files.length; i++) {
 	}
 }
 
-util.print("\n");
-util.print("Merging and pruning locale data...\n");
+console.log("Merging and pruning locale data...");
 mergeAndPrune(localeData);
 
 for (language in localeData) {
