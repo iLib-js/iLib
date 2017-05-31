@@ -116,6 +116,10 @@ function testGetVersion() {
 function testGetTimeZoneDefault() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
+
+	if (ilib._getPlatform() === "browser") {
+            navigator.timezone = undefined;
+        }
 	assertEquals("local", ilib.getTimeZone());
 }
 
@@ -303,6 +307,9 @@ function testGetLocaleBrowser() {
 		loc = navigator.language.substring(0,3) + navigator.language.substring(3).toUpperCase();	
 	} else {
 		loc = navigator.language;
+	}
+	if (loc === "en") {
+		loc = "en-US";
 	}
 	assertEquals(loc, ilib.getLocale());
 }

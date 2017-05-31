@@ -1,7 +1,7 @@
 /*
  * testSuite.js - top level test suite
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,6 +130,7 @@ var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.modular.full;
 var set = "modular";
+var environmentName;
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [set]]]]
 if (process.argv.length > 2) {
@@ -137,6 +138,9 @@ if (process.argv.length > 2) {
 		if (process.argv.length > 4) {
 			if (process.argv.length > 5) {
 				set = process.argv[5];
+				if (process.argv.length > 6) {
+					environmentName = process.argv[6];
+				}
 			}
 			
 			size = process.argv[4];
