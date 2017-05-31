@@ -17,6 +17,7 @@
  */
 package com.ilib.test;
 
+import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -26,10 +27,10 @@ import junit.framework.TestSuite;
  */
 public class AllTests extends TestCase {
 	@SuppressWarnings("rawtypes")
-	public TestSuite suite() {
+	public static Test suite() {
 		System.out.println("runing tests");
 		Class[] testClasses = { 
-			PluralFormHelperTest.class,
+			//PluralFormHelperTest.class,
 			IlibLocaleTest.class, 
 			IStringTest.class,
 			ResBundleTest.class
