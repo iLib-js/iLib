@@ -19,8 +19,7 @@
 
 if (typeof(CaseMapper) === "undefined") {
 	var CaseMapper = require("./../lib/CaseMapper.js");
-	test.done();
-},
+};
 
 module.exports = {
 	testToLowerFromLower_default: function(test) {
