@@ -104,6 +104,7 @@ FuelConsumptionUnit.js
 VolumeUnit.js	
 EnergyUnit.js
 Charset.js
+Country.js
 */
 
 /* !data
