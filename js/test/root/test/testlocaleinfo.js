@@ -9548,7 +9548,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
             assertNotUndefined(li);
             callbackCalled = true;
             // should return the shared data only
-            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
             assertEquals("%", li.getPercentageSymbol());
         }
@@ -9571,7 +9571,7 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
             assertNotUndefined(li);
             callbackCalled = true;
             // should return the shared data only
-            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
             assertEquals("%", li.getPercentageSymbol());
         }
@@ -9599,7 +9599,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 
     assertNotUndefined(li);
     // should return the shared data only
-    assertEquals("{s}{n}", li.getCurrencyFormats().common);
+    assertEquals("{s} {n}", li.getCurrencyFormats().common);
     assertEquals(1, li.getFirstDayOfWeek());
     assertEquals("%", li.getPercentageSymbol());
     ilib.setLoaderCallback(undefined);
