@@ -86,7 +86,7 @@ exports.run = function (files, options, callback) {
     };
 
     var fail_text = function (txt) {
-        return bold(error(txt + " (fail) âœ– "));
+        return bold(error(txt + " (fail) ✖ "));
     };
 
     var status_text = function (txt, status) {

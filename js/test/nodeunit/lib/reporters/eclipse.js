@@ -61,10 +61,10 @@ exports.run = function (files, options, callback) {
             tracker.remove(name);
 
             if (!assertions.failures()) {
-                console.log('âœ” ' + name);
+                console.log('✔ ' + name);
             }
             else {
-                console.log('âœ– ' + name + '\n');
+                console.log('✖ ' + name + '\n');
                 assertions.forEach(function (a) {
                     if (a.failed()) {
                         a = utils.betterErrors(a);

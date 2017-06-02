@@ -63,7 +63,7 @@ exports.run = function (files, options, callback) {
         },
         testDone: function (name, assertions) {
             if (assertions.failures()) {
-                console.log(error('âœ– ' + name) + '\n');
+                console.log(error('✖ ' + name) + '\n');
                 assertions.forEach(function (a) {
                     if (a.failed()) {
                         a = utils.betterErrors(a);
@@ -79,10 +79,10 @@ exports.run = function (files, options, callback) {
         },
         moduleDone: function (name, assertions) {
             if (!assertions.failures()) {
-                console.log('âœ” all tests passed');
+                console.log('✔ all tests passed');
             }
             else {
-                console.log(error('âœ– some tests failed'));
+                console.log(error('✖ some tests failed'));
             }
         },
         done: function (assertions) {

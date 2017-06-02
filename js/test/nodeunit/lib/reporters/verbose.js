@@ -82,20 +82,20 @@ exports.run = function (files, options, callback) {
             tracker.remove(name);
 
             if (!assertions.failures()) {
-                console.log('âœ” ' + name);
+                console.log('✔ ' + name);
             }
             else {
-                console.log(error('âœ– ' + name));
+                console.log(error('✖ ' + name));
             }
             // verbose so print everything
             assertions.forEach(function (a) {
               if (a.failed()) {
-                console.log(error('  âœ– ' + a.message));
+                console.log(error('  ✖ ' + a.message));
                 a = utils.betterErrors(a);
                 console.log('  ' + a.error.stack);
               }
               else {
-                console.log('  âœ” ' + a.message);
+                console.log('  ✔ ' + a.message);
               }
             });
         },
