@@ -82,7 +82,7 @@ var Country = function (options) {
 	this.locale = this.locale || new Locale();
 	localeinfo = new LocaleInfo(this.locale);
 	
-	if(localeinfo.getRegionName() === undefined) {
+	if (localeinfo.getRegionName() === undefined) {
 		locale = 'en-US';
 	} else {
 		locale = this.locale;
