@@ -1516,6 +1516,15 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
     }
     return;
 };
+
+assert.roughlyEquals = function(actual, expected, tolerance, message) {
+	if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
+    	fail("Invalid expected argument to roughlyEquals.");
+	} else if (Math.abs(expected - actual) >= tolerance) {
+		fail(actual, expected, message, "roughlyEquals", assert.roughlyEquals);
+    }
+    return;
+};
 })(assert);
 (function(exports){
 /*!
