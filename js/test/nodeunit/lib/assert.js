@@ -423,7 +423,7 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
  * passes. Otherwise, it fails.
  *
  * @example // passing assertion
- * assert.roughlyEquals(5.23456789, 5.2345947, 0.001);
+ * assert.roughlyEqual(5.23456789, 5.2345947, 0.001);
  *
  * @param {Number} actual The actual value
  * @param {Number} expected The expected value
@@ -431,7 +431,7 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
  * @throws ArgumentsError
  * @throws AssertionError
  */
-assert.roughlyEquals = function(actual, expected, tolerance, message) {
+assert.roughlyEqual = function(actual, expected, tolerance, message) {
 	if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
     	fail("Invalid expected argument to roughlyEquals.");
 	} else if (Math.abs(expected - actual) >= tolerance) {

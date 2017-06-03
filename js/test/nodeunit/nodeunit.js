@@ -1517,7 +1517,7 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
     return;
 };
 
-assert.roughlyEquals = function(actual, expected, tolerance, message) {
+assert.roughlyEqual = function(actual, expected, tolerance, message) {
 	if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
     	fail("Invalid expected argument to roughlyEquals.");
 	} else if (Math.abs(expected - actual) >= tolerance) {
