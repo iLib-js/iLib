@@ -157,7 +157,7 @@ var CharmapTable = function(options) {
 	}
 
 	Utils.loadData({
-		object: Charmap, 
+		object: "Charmap", 
 		locale: "-",
 		nonlocale: true,
 		name: "charmaps/" + this.charset.getName() + ".json", 

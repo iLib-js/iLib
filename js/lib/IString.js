@@ -157,7 +157,7 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 	if (!ilib.data["plurals_" + spec]) {
 		Utils.loadData({
 			name: "plurals.json",
-			object: IString,
+			object: "IString",
 			locale: loc,
 			sync: sync,
 			loadParams: loadParams,

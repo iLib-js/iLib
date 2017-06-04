@@ -84,7 +84,7 @@ var LocaleMatcher = function(options) {
 
 	if (typeof(ilib.data.likelylocales) === 'undefined') {
 		Utils.loadData({
-			object: LocaleMatcher, 
+			object: "LocaleMatcher", 
 			locale: "-", 
 			name: "likelylocales.json", 
 			sync: sync, 

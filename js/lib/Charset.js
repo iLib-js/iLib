@@ -104,7 +104,7 @@ var Charset = function(options) {
 	};
 
 	Utils.loadData({
-		object: Charset, 
+		object: "Charset", 
 		locale: "-",
 		nonlocale: true,
 		name: "charsetaliases.json", 
@@ -122,7 +122,7 @@ var Charset = function(options) {
 				this.name = this.originalName;
 			}
 			Utils.loadData({
-				object: Charset, 
+				object: "Charset", 
 				locale: "-",
 				nonlocale: true,
 				name: "charset/" + this.name + ".json", 

@@ -133,7 +133,7 @@ var LocaleInfo = function(locale, options) {
 	}
 
 	Utils.loadData({
-		object: LocaleInfo, 
+		object: "LocaleInfo", 
 		locale: this.locale, 
 		name: "localeinfo.json", 
 		sync: sync, 

@@ -78,7 +78,7 @@ var ScriptInfo = function(script, options) {
 
 	if (!ilib.data.scripts) {
 		Utils.loadData({
-			object: ScriptInfo, 
+			object: "ScriptInfo", 
 			locale: "-", 
 			name: "scripts.json", 
 			sync: sync, 
@@ -132,7 +132,7 @@ ScriptInfo._getScriptsArray = function() {
 ScriptInfo.getAllScripts = function(sync, loadParams, onLoad) {
 	if (!ilib.data.scripts) {
 		Utils.loadData({
-			object: ScriptInfo, 
+			object: "ScriptInfo", 
 			locale: "-", 
 			name: "scripts.json", 
 			sync: sync, 

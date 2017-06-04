@@ -190,7 +190,7 @@ var UnitFmt = function(options) {
     }
 
 	Utils.loadData({
-		object: UnitFmt, 
+		object: "UnitFmt", 
 		locale: this.locale, 
 		name: "unitfmt.json", 
 		sync: sync, 

@@ -120,7 +120,7 @@ var GlyphString = function (str, options) {
 	CType._load("ctype_m", sync, loadParams, function() {
 		if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
 			Utils.loadData({
-				object: GlyphString, 
+				object: "GlyphString", 
 				locale: "-", 
 				name: "normdata.json",
 				nonlocale: true,

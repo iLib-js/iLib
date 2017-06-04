@@ -106,7 +106,7 @@ var StringMapper = function (options) {
 	}
 	
 	Utils.loadData({
-		object: StringMapper, 
+		object: "StringMapper", 
 		locale: this.locale,
 		name: this.name + ".json", 
 		sync: sync,

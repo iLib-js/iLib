@@ -498,7 +498,7 @@ var DateFmt = function(options) {
 					
 					if (!this.template) {
 						Utils.loadData({
-							object: DateFmt, 
+							object: "DateFmt", 
 							locale: this.locale, 
 							name: "dateformats.json", 
 							sync: sync, 

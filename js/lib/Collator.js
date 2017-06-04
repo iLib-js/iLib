@@ -416,7 +416,7 @@ var Collator = function(options) {
 
 		// else implement in pure Javascript
 		Utils.loadData({
-			object: Collator, 
+			object: "Collator", 
 			locale: this.locale, 
 			name: "collation.json",
 			sync: sync,

@@ -67,7 +67,8 @@ ilib.data = {
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
     /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null,
-    /** @type {null|Array.<string>} */ timezones: []
+    /** @type {null|Array.<string>} */ timezones: [],
+    cache: {}
 };
 
 /*

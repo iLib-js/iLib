@@ -186,7 +186,7 @@ var NameFmt = function(options) {
 	
 	isPunct._init(sync, this.loadParams, ilib.bind(this, function() {
 		Utils.loadData({
-			object: Name, 
+			object: "Name", 
 			locale: this.locale, 
 			name: "name.json", 
 			sync: sync, 

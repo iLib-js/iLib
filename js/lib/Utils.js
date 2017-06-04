@@ -318,7 +318,7 @@ Utils._callLoadData = function (files, sync, params, callback) {
  * 
  * <ul>
  * <li><i>name</i> - String. The name of the file being loaded. Default: ResBundle.json
- * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
+ * <li><i>object</i> - String. The name of the class attempting to load data. This is used to differentiate parts of the cache.
  * <li><i>locale</i> - Locale. The locale for which data is loaded. Default is the current locale.
  * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
@@ -336,7 +336,7 @@ Utils._callLoadData = function (files, sync, params, callback) {
  */
 Utils.loadData = function(params) {
 	var name = "resources.json",
-		object = undefined, 
+		object = "generic", 
 		locale = new Locale(ilib.getLocale()), 
 		sync = false, 
 		type = undefined,
@@ -387,7 +387,7 @@ Utils.loadData = function(params) {
 	}
 
 	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(JSUtils.hashCode(loadParams));
-	if (!object || typeof(object.cache[spec]) === 'undefined') {
+	if (!object || !ilib.data.cache[object] || typeof(ilib.data.cache[object][spec]) === 'undefined') {
 		var data, returnOne = (loadParams && loadParams.returnOne);
 		
 		if (type === "json") {
@@ -402,7 +402,10 @@ Utils.loadData = function(params) {
 			if (data) {
 				// console.log("found assembled data");
 				if (object) {
-					object.cache[spec] = data;
+					if (!ilib.data.cache[object]) {
+						ilib.data.cache[object] = {};
+					}
+					ilib.data.cache[object][spec] = data;
 				}
 				callback(data);
 				return;
@@ -427,7 +430,10 @@ Utils.loadData = function(params) {
 					}
 					
 					if (object) {
-						object.cache[spec] = data;
+						if (!ilib.data.cache[object]) {
+							ilib.data.cache[object] = {};
+						}
+						ilib.data.cache[object][spec] = data;
 					}
 					callback(data);
 				} else {
@@ -437,7 +443,10 @@ Utils.loadData = function(params) {
 					}
 					if (i > -1) {
 						if (object) {
-							object.cache[spec] = arr[i];
+							if (!ilib.data.cache[object]) {
+								ilib.data.cache[object] = {};
+							}
+							ilib.data.cache[object][spec] = arr[i];
 						}
 						callback(arr[i]);
 					} else {
@@ -451,12 +460,15 @@ Utils.loadData = function(params) {
 				data = ilib.data[basename];
 			}
 			if (object && data) {
-				object.cache[spec] = data;
+				if (!ilib.data.cache[object]) {
+					ilib.data.cache[object] = {};
+				}
+				ilib.data.cache[object][spec] = data;
 			}
 			callback(data);
 		}
 	} else {
-		callback(object.cache[spec]);
+		callback(ilib.data.cache && ilib.data.cache[object] && ilib.data.cache[object][spec]);
 	}
 };
 

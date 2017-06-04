@@ -265,7 +265,7 @@ var ResBundle = function (options) {
 	lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
 
 	Utils.loadData({
-		object: ResBundle[this.baseName], 
+		object: "ResBundle-" + this.baseName,
 		locale: lookupLocale, 
 		name: this.baseName + ".json", 
 		sync: this.sync, 
@@ -331,7 +331,7 @@ ResBundle.prototype = {
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
 		Utils.loadData({
-			object: ResBundle.pseudomap, 
+			object: "ResBundle", 
 			locale: pseudoLocale, 
 			name: "pseudomap.json", 
 			sync: this.sync, 
