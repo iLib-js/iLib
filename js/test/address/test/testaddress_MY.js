@@ -55,7 +55,8 @@ function testParseAddressMYMYLatinNoCountry() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-/*function testParseAddressMYMYAsianNormal() {
+/*
+function testParseAddressMYMYAsianNormal() {
 	var parsedAddress = new Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +90,8 @@ function testParseAddressMYMYAsianNoCountry() {
 	assertEquals("159088", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("MY", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressMYMYManyLines() {
 	var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
@@ -139,7 +141,8 @@ function testParseAddressMYMYNoDelimiters() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-/*function testParseAddressMYMYSpecialChars() {
+/*
+function testParseAddressMYMYSpecialChars() {
 	var parsedAddress = new Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nMalaysia 159088\n", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -149,7 +152,8 @@ function testParseAddressMYMYNoDelimiters() {
 	assertEquals("159088", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("MY", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressMYMYFromUS() {
 	var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nMalaysia", {locale: 'en-US'});
@@ -180,7 +184,8 @@ function testFormatAddressMYLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-/*function testFormatAddressMYAsian() {
+/*
+function testFormatAddressMYAsian() {
 	var parsedAddress = new Address({
 		streetAddress: "麟記路4＃06-07/08矽統科技大廈",
 		locality: "新加坡",
@@ -193,7 +198,8 @@ function testFormatAddressMYLatin() {
 	var expected = "新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈";
 	var formatter = new AddressFmt({locale: 'zh-MY'});
 	assertEquals(expected, formatter.format(parsedAddress));
-};*/
+};
+*/
 
 function testFormatAddressMYFromUS() {
 	var parsedAddress = new Address({

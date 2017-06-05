@@ -86,7 +86,8 @@ function testParseAddressEGOneLine() {
 };
 
 //needs a more precise regular expression to handle spaces within localities
-/*function testParseAddressEGNoDelimiters() {
+/*
+function testParseAddressEGNoDelimiters() {
 	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين\n الجيزة\n ١٢٤١١ مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -96,7 +97,8 @@ function testParseAddressEGOneLine() {
 	assertEquals("EG", parsedAddress.countryCode);
 	assertEquals("١٢٤١١", parsedAddress.postalCode);
 	assertEquals("مصر", parsedAddress.country);
-};*/
+};
+*/
 
 function testParseAddressEGFromUS() {
 	var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt", {locale: 'en-US'});
