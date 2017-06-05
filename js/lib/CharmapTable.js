@@ -152,10 +152,6 @@ var CharmapTable = function(options) {
 
 	this._calcExpansionFactor();
 	
-	if (!Charmap.cache) {
-		Charmap.cache = {};
-	}
-
 	Utils.loadData({
 		object: "Charmap", 
 		locale: "-",

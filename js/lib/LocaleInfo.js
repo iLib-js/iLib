@@ -94,7 +94,8 @@ var LocaleInfo = function(locale, options) {
 			prigroupSize:number,
 			roundingMode:string,
 			script:string,
-			secgroupSize:number
+			secgroupSize:number,
+			useNative:boolean
 		},
 		timezone:string,
 		units:string,
@@ -128,8 +129,8 @@ var LocaleInfo = function(locale, options) {
 		}
 	}
 
-	if (!LocaleInfo.cache) {
-		LocaleInfo.cache = {};
+	if (!ilib.data.cache.LocaleInfo) {
+		ilib.data.cache.LocaleInfo = {};
 	}
 
 	Utils.loadData({
@@ -142,7 +143,7 @@ var LocaleInfo = function(locale, options) {
 			if (!info) {
 				info = LocaleInfo.defaultInfo;
 				var spec = this.locale.getSpec().replace(/-/g, "_");
-				LocaleInfo.cache[spec] = info;
+				ilib.data.cache.LocaleInfo[spec] = info;
 			}
 			this.info = info;
 			if (options && typeof(options.onLoad) === 'function') {

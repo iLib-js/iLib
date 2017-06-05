@@ -89,10 +89,6 @@ var Charset = function(options) {
 		}
 	}
 
-	if (!Charset.cache) {
-		Charset.cache = {};
-	}
-	
 	// default data. A majority of charsets use this info
 	this.info = {
 		description: "default",

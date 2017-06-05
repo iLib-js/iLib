@@ -377,8 +377,8 @@ Utils.loadData = function(params) {
 	
 	callback = params.callback;
 	
-	if (object && !object.cache) {
-		object.cache = {};
+	if (object && !ilib.data.cache[object]) {
+	    ilib.data.cache[object] = {};
 	}
 	
 	if (!type) {
@@ -402,9 +402,6 @@ Utils.loadData = function(params) {
 			if (data) {
 				// console.log("found assembled data");
 				if (object) {
-					if (!ilib.data.cache[object]) {
-						ilib.data.cache[object] = {};
-					}
 					ilib.data.cache[object][spec] = data;
 				}
 				callback(data);
@@ -430,9 +427,6 @@ Utils.loadData = function(params) {
 					}
 					
 					if (object) {
-						if (!ilib.data.cache[object]) {
-							ilib.data.cache[object] = {};
-						}
 						ilib.data.cache[object][spec] = data;
 					}
 					callback(data);
@@ -443,9 +437,6 @@ Utils.loadData = function(params) {
 					}
 					if (i > -1) {
 						if (object) {
-							if (!ilib.data.cache[object]) {
-								ilib.data.cache[object] = {};
-							}
 							ilib.data.cache[object][spec] = arr[i];
 						}
 						callback(arr[i]);
@@ -460,9 +451,6 @@ Utils.loadData = function(params) {
 				data = ilib.data[basename];
 			}
 			if (object && data) {
-				if (!ilib.data.cache[object]) {
-					ilib.data.cache[object] = {};
-				}
 				ilib.data.cache[object][spec] = data;
 			}
 			callback(data);

@@ -230,6 +230,15 @@ ilib._isGlobal = function(name) {
 };
 
 /**
+ * Clear the file load cache. This is mainly used by the unit tests,
+ * but could be used by regular callers if you want to free up memory
+ * for garbage collecting.
+ */
+ilib.clearCache = function() {
+	ilib.data.cache = {};
+};
+
+/**
  * Sets the default locale for all of ilib. This locale will be used
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
