@@ -1,5 +1,5 @@
 /*
- * testSuite.js - test suite for this directory
+* testSuite.js - test suite for this directory
  * 
  * Copyright © 2014-2015, JEDLSoft
  *
@@ -17,18 +17,25 @@
  * limitations under the License.
  */
 
+var nodeunit = require("nodeunit");
+var modules = {}
 var suites = [
-	"testtoupper.js",
-	"testtolower.js",
-	"testcharmap.js",
-	"testcm_ISO-8859-1.js",
-	"testcm_UTF-16.js",
-	"testcm_UTF-8.js",
-	"testcm_CN.js",
-	"testcm_JP.js",
-	"testcm_KR.js"
+    "testcharmap.js",
+    "testcm_CN.js",
+    "testcm_ISO-8859-1.js",
+    "testcm_JP.js",
+    "testcm_KR.js",
+    "testcm_UTF-16.js",
+    "testcm_UTF-8.js",
+    "testtolower.js",
+    "testtoupper.js",
 ];
 
 suites.forEach(function (path) {
-	
+    var test = require("./" + path);
+    for (var suite in test) {
+        modules[suite] = test[suite];
+    }
 });
+
+nodeunit.run(modules);
