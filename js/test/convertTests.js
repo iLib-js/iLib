@@ -24,7 +24,7 @@ var path = require('path');
 var util = require('util');
 
 var reVar = /^var (\w*) = require\("([^)]*)"\);/;
-var reFunction = /^function (\w*)\(\) \{/;
+var reFunction = /^function\s+(\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 
 var assertMappings = [
