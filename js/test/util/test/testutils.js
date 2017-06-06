@@ -1007,13 +1007,9 @@ function testHashCodeEqualFunctionDifferentSpacing() {
 		// space is all normalized nicely to the same thing, so logically equivalent functions
 		// that only differ in white space compare the same. (This seems the most logical to 
 		// me out of all of these!)
-		assertEquals(JSUtils.hashCode(function a () { 
-			return "a"; 
-		}), JSUtils.hashCode(function a(){return "a";}));
+		assertEquals(JSUtils.hashCode(function a () { return "a"; }), JSUtils.hashCode(function a(){return "a";}));
 	} else {
-		assertNotEquals(JSUtils.hashCode(function a () { 
-			return "a"; 
-		}), JSUtils.hashCode(function a(){return "a";}));
+		assertNotEquals(JSUtils.hashCode(function a () { return "a"; }), JSUtils.hashCode(function a(){return "a";}));
 	}
 }
 
@@ -1185,11 +1181,7 @@ function testLoadDataCorrectItems() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1215,11 +1207,7 @@ function testLoadDataWithLocale() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "a1",
-					"c": "de2",
-					"e": "f"
-				}, results);
+				assertObjectEquals({"a": "a1", "c": "de2", "e": "f"}, results);
 			}
 		});
 	} finally {
@@ -1245,11 +1233,7 @@ function testLoadDataWithLocaleMissingParts() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "fr1",
-					"e": "f"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "fr1", "e": "f"}, results);
 			}
 		});
 	} finally {
@@ -1274,11 +1258,7 @@ function testLoadDataDefaultLocale() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1305,9 +1285,7 @@ function testLoadDataNonJson() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"e": "y"
-				}, results);
+				assertObjectEquals({"e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1335,11 +1313,7 @@ function testLoadDataCached() {
 			callback: function (results) {
 				for (var o in obj.cache) {
 					if (obj.cache.hasOwnProperty(o)) {
-						assertObjectEquals({
-							"a": "b",
-							"c": "m",
-							"e": "y"
-						}, obj.cache[o]);
+						assertObjectEquals({"a": "b", "c": "m", "e": "y"}, obj.cache[o]);
 					}
 				}
 			}
@@ -1368,11 +1342,7 @@ function testLoadDataCachedWithOtherName() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	
@@ -1384,11 +1354,7 @@ function testLoadDataCachedWithOtherName() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "barb",
-					"c": "barm",
-					"e": "bary"
-				}, results);
+				assertObjectEquals({"a": "barb", "c": "barm", "e": "bary"}, results);
 			}
 		});
 	} finally {
@@ -1462,11 +1428,7 @@ function testLoadDataCachedWithLoadParams() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	
@@ -1481,12 +1443,7 @@ function testLoadDataCachedWithLoadParams() {
 			},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"xxx": "yyy",
-					"www": "xyz",
-					"yyy": "vvv",
-					"nnn": "mmm"
-				}, results);
+				assertObjectEquals({"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"}, results);
 			}
 		});
 	} finally {
@@ -1510,11 +1467,7 @@ function testLoadDataNoCache() {
 			sync: true,
 			callback: function (results) {
 				// should not crash
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1538,11 +1491,7 @@ function testLoadDataNotCachedWithLoadParams() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	
@@ -1556,12 +1505,7 @@ function testLoadDataNotCachedWithLoadParams() {
 			},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({
-					"xxx": "yyy",
-					"www": "xyz",
-					"yyy": "vvv",
-					"nnn": "mmm"
-				}, results);
+				assertObjectEquals({"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"}, results);
 			}
 		});
 	} finally {
@@ -1587,11 +1531,7 @@ function testLoadDataAsynch() {
 			loadParams: {},
 			sync: false,
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1610,11 +1550,7 @@ function testLoadDataDefaults() {
 		Utils.loadData({
 			name: "foo.json",
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "b",
-					"c": "m",
-					"e": "y"
-				}, results);
+				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
 			}
 		});
 	} finally {
@@ -1780,11 +1716,7 @@ function testLoadDataJsonInferFileTypeFromExtension() {
 			name: "foo.json",
 			locale: "de-DE",
 			callback: function (results) {
-				assertObjectEquals({
-					"a": "a1",
-					"c": "de2",
-					"e": "f"
-				}, results);
+				assertObjectEquals({"a": "a1", "c": "de2", "e": "f"}, results);
 			}
 		});
 	} finally {

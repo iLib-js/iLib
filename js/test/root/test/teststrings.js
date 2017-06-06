@@ -114,10 +114,7 @@ function testStringFormatWithMultipleArgs() {
 
     assertNotNull(str);
 
-    assertEquals("Format medium string.", str.format({
-        size: "medium",
-        object: "string"
-    }));
+    assertEquals("Format medium string.", str.format({ size: "medium", object: "string" }));
 }
 
 function testStringFormatWithSameArgMultipleTimes() {
@@ -125,9 +122,7 @@ function testStringFormatWithSameArgMultipleTimes() {
 
     assertNotNull(str);
 
-    assertEquals("Format medium when medium is at least medium big.", str.format({
-        size: "medium"
-    }));
+    assertEquals("Format medium when medium is at least medium big.", str.format({ size: "medium" }));
 }
 
 function testStringFormatWithMissingArgs() {
@@ -135,9 +130,7 @@ function testStringFormatWithMissingArgs() {
 
     assertNotNull(str);
 
-    assertEquals("Format {size} string.", str.format({
-        object: "string"
-    }));
+    assertEquals("Format {size} string.", str.format({ object: "string" }));
 }
 
 function testStringFormatWithEmptyArg() {
@@ -169,11 +162,7 @@ function testStringFormatMultipleReplacements() {
 
     assertNotNull(str);
 
-    assertEquals("User edwin has 2 objects in their locker.", str.format({
-        user: "edwin",
-        num: 2,
-        container: "locker"
-    }));
+    assertEquals("User edwin has 2 objects in their locker.", str.format({ user: "edwin", num: 2, container: "locker" }));
 }
 
 
@@ -478,10 +467,7 @@ function testStringFormatChoiceWithMultipleReplacement0() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has no items.", str.formatChoice(0, {
-        name: "johndoe",
-        num: 0
-    }));
+    assertEquals("User johndoe has no items.", str.formatChoice(0, { name: "johndoe", num: 0 }));
 }
 
 function testStringFormatChoiceWithMultipleReplacement1() {
@@ -489,10 +475,7 @@ function testStringFormatChoiceWithMultipleReplacement1() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has 1 item.", str.formatChoice(1, {
-        name: "johndoe",
-        num: 1
-    }));
+    assertEquals("User johndoe has 1 item.", str.formatChoice(1, { name: "johndoe", num: 1 }));
 }
 
 function testStringFormatChoiceWithMultipleReplacement2() {
@@ -500,10 +483,7 @@ function testStringFormatChoiceWithMultipleReplacement2() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has 2 items.", str.formatChoice(2, {
-        name: "johndoe",
-        num: 2
-    }));
+    assertEquals("User johndoe has 2 items.", str.formatChoice(2, { name: "johndoe", num: 2 }));
 }
 
 function testStringDelegateCharAt() {
