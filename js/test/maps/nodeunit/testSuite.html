@@ -1,5 +1,5 @@
-<!-- 
-testSuite.html - run tests in the browser
+<!--
+testSuite.html - browser-based test suite for this directory
 
 Copyright © 2017, JEDLSoft
 
@@ -21,18 +21,29 @@ limitations under the License.
     <title>Test Suite</title>
     <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
     <script>
-    	var modules = {};
-    	var module = {};
+        var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
     <script src="/output/js/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testcharmap.js"></script>
+    <script src="testcm_CN.js"></script>
+    <script src="testcm_ISO-8859-1.js"></script>
+    <script src="testcm_JP.js"></script>
+    <script src="testcm_KR.js"></script>
+    <script src="testcm_UTF-16.js"></script>
+    <script src="testcm_UTF-8.js"></script>
     <script src="testtolower.js"></script>
-	<script>modules.testToLower = module.exports;</script>
+    <script src="testtoupper.js"></script>
   </head>
   <body>
-    <h1 id="nodeunit-header">Maps Test Suite</h1>
+    <h1 id="nodeunit-header">maps Test Suite</h1>
     <script>
-      nodeunit.run(modules);
+     nodeunit.run(module.exports);
     </script>
   </body>
 </html>

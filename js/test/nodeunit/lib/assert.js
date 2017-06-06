@@ -439,3 +439,31 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
     }
     return;
 };
+
+/**
+ * Performs a test to see if the given value is in object. If the
+ * difference between the arguments is within that tolerance, the assertion
+ * passes. Otherwise, it fails.
+ *
+ * @example // passing assertion
+ * assert.contains({a: 2, b: 3}, "b");
+ *
+ * @param {Object} actual The actual value to test which may be an array or an object
+ * @param {*} expected The name of the property that is expected to be within the object in the actual parameter
+ * @throws ArgumentsError
+ * @throws AssertionError
+ */
+assert.contains = function(actual, expected, message) {
+    if (isArray(actual)) {
+		if (actual.indexOf(expected) < 0) {
+			fail(actual, expected, message, "contains", assert.contains);
+		}
+    } else if (typeof(actual) === "object") {
+		if (!actual.hasOwnProperty(expected)) {
+			fail(actual, expected, message, "contains", assert.contains);
+		}
+	} else {
+    	fail("Invalid expected argument to contains.");
+	}
+    return;
+};

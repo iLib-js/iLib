@@ -1525,6 +1525,21 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
     }
     return;
 };
+
+assert.contains = function(actual, expected, message) {
+    if (isArray(actual)) {
+		if (actual.indexOf(expected) < 0) {
+			fail(actual, expected, message, "contains", assert.contains);
+		}
+    } else if (typeof(actual) === "object") {
+		if (!actual.hasOwnProperty(expected)) {
+			fail(actual, expected, message, "contains", assert.contains);
+		}
+	} else {
+    	fail("Invalid expected argument to contains.");
+	}
+    return;
+};
 })(assert);
 (function(exports){
 /*!

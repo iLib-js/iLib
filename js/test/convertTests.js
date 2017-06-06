@@ -28,19 +28,25 @@ var reFunction = /^function (\w*)\(\) \{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 
 var assertMappings = [
-	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
-	{re: /(\s*)assertNotEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.notEqual($6, $2)"},
-	{re: /(\s*)assertUndefined\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: '    $1test.ok(typeof($2) === "undefined")'},
+	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
+    {re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($10, $6, $2)"},
+	{re: /(\s*)assertNotEquals\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.notEqual($6, $2)"},
+	{re: /(\s*)assertUndefined\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: '    $1test.ok(typeof($2) === "undefined")'},
 	{re: /(\s*)assertNotUndefined\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: '    $1test.ok(typeof($2) !== "undefined")'},
-	{re: /(\s*)assertNull\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === null)"},
-	{re: /(\s*)assertNotNull\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== null)"},
-	{re: /(\s*)assertTrue\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2)"},
-	{re: /(\s*)assertFalse\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok(!$2)"},
-	{re: /(\s*)assertNaN\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === NaN)"},
-	{re: /(\s*)assertNotNaN\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== NaN)"},
-	{re: /(\s*)assertObjectEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
-	{re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($6, $2, $10)"},
-	{re: /(\s*)assertArrayEqualsIgnoringOrder\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equalIgnoringOrder($6, $2)"},
+	{re: /(\s*)assertNull\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === null)"},
+	{re: /(\s*)assertNotNull\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== null)"},
+    {re: /(\s*)assertTrue\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2)"},
+    {re: /(\s*)assertTrue\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($6, $2)"},
+	{re: /(\s*)assertFalse\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok(!$2)"},
+    {re: /(\s*)assertFalse\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok(!$6, $2)"},
+	{re: /(\s*)assertNaN\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === NaN)"},
+	{re: /(\s*)assertNotNaN\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== NaN)"},
+	{re: /(\s*)assertObjectEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
+	{re: /(\s*)assertContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
+    {re: /(\s*)assertObjectContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
+    {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($6, $2, $10)"},
+    {re: /(\s*)assertArrayEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
+	{re: /(\s*)assertArrayEqualsIgnoringOrder\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equalIgnoringOrder($6, $2)"},
 	{re: /(\s*)fail\(\)./, replace: "        test.fail()"}
 ];
 
@@ -177,7 +183,7 @@ function generateSuiteJS(dir, tests) {
         '/*',
         '* testSuite.js - test suite for this directory',
         ' * ',
-        ' * Copyright © 2014-2015, JEDLSoft',
+        ' * Copyright © 2017, JEDLSoft',
         ' *',
         ' * Licensed under the Apache License, Version 2.0 (the "License");',
         ' * you may not use this file except in compliance with the License.',
@@ -219,6 +225,61 @@ function generateSuiteJS(dir, tests) {
     fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
 }
 
+function generateSuiteHTML(dir, tests) {
+    var lines = [
+        '<!--',
+        'testSuite.html - browser-based test suite for this directory',
+        '',
+        'Copyright © 2017, JEDLSoft',
+        '',
+        'Licensed under the Apache License, Version 2.0 (the "License");',
+        'you may not use this file except in compliance with the License.',
+        'You may obtain a copy of the License at',
+        '',
+        '    http://www.apache.org/licenses/LICENSE-2.0',
+        '',
+        'Unless required by applicable law or agreed to in writing, software',
+        'distributed under the License is distributed on an "AS IS" BASIS,',
+        'WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.',
+        '',
+        'See the License for the specific language governing permissions and',
+        'limitations under the License.',
+        '-->',
+        '<html>',
+        '  <head>',
+        '    <title>Test Suite</title>',
+        '    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />',
+        '    <script>',
+        '        var module = {};',
+        '    </script>',
+        '    <script src="/test/nodeunit/nodeunit.js"></script>',
+        '    <script src="/output/js/ilib-ut.js"></script>',
+        '    <script>',
+        '        module = {',
+        '            exports: {}',
+        '        };',
+        '    </script>'
+    ];
+        
+    tests.forEach(function(test) {
+        lines.push('    <script src="' + test + '"></script>');
+    });
+    
+    lines = lines.concat([
+        '  </head>',
+        '  <body>',
+        '    <h1 id="nodeunit-header">' + dir + ' Test Suite</h1>',
+        '    <script>',
+        '     nodeunit.run(module.exports);',
+        '    </script>',
+        '  </body>',
+        '</html>'
+    ]);
+    
+    var outFile = path.join(dir, "nodeunit", "testSuite.html");
+    fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
+}
+
 var suites = fs.readdirSync(".");
 var pathName, relPath, included, stat;
 
@@ -241,6 +302,7 @@ suites.forEach(function (dir) {
 			});
 			
 			generateSuiteJS(dir, suite);
+			generateSuiteHTML(dir, suite);
 		}
 	}
 });
