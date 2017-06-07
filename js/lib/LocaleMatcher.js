@@ -78,10 +78,6 @@ var LocaleMatcher = function(options) {
 		}
 	}
 
-	if (!LocaleMatcher.cache) {
-		LocaleMatcher.cache = {};
-	}
-
 	if (typeof(ilib.data.likelylocales) === 'undefined') {
 		Utils.loadData({
 			object: "LocaleMatcher", 
@@ -93,7 +89,7 @@ var LocaleMatcher = function(options) {
 				if (!info) {
 					info = {};
 					var spec = this.locale.getSpec().replace(/-/g, "_");
-					LocaleMatcher.cache[spec] = info;
+					ilib.data.cache.LocaleMatcher[spec] = info;
 				}
 				/** @type {Object.<string,string>} */
 				this.info = info;

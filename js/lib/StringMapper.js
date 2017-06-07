@@ -101,10 +101,6 @@ var StringMapper = function (options) {
 		}
 	}
 	
-	if (!StringMapper.cache) {
-		StringMapper.cache = {};
-	}
-	
 	Utils.loadData({
 		object: "StringMapper", 
 		locale: this.locale,
@@ -114,7 +110,7 @@ var StringMapper = function (options) {
 		callback: ilib.bind(this, function (map) {
 			if (!map) {
 				var spec = this.locale.getSpec().replace(/-/g, "_");
-				StringMapper.cache[spec] = {};
+				ilib.data.cache.StringMapper[spec] = {};
 			}
 			this.mapData = map || {};
 			if (options && typeof(options.onLoad) === 'function') {

@@ -72,10 +72,6 @@ var ScriptInfo = function(script, options) {
 		}
 	}
 
-	if (!ScriptInfo.cache) {
-		ScriptInfo.cache = {};
-	}
-
 	if (!ilib.data.scripts) {
 		Utils.loadData({
 			object: "ScriptInfo", 
@@ -87,7 +83,7 @@ var ScriptInfo = function(script, options) {
 				if (!info) {
 					info = {"Latn":{"nb":215,"nm":"Latin","lid":"Latin","rtl":false,"ime":false,"casing":true}};
 					var spec = this.locale.getSpec().replace(/-/g, "_");
-					ScriptInfo.cache[spec] = info;
+					ilib.data.cache.ScriptInfo[spec] = info;
 				}
 				ilib.data.scripts = info;
 				this.info = script && ilib.data.scripts[script];

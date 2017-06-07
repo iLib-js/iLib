@@ -185,11 +185,7 @@ var UnitFmt = function(options) {
         this.roundingMode = options.roundingMode;
     }
 
-    if (!UnitFmt.cache) {
-    	UnitFmt.cache = {};
-    }
-
-	Utils.loadData({
+    Utils.loadData({
 		object: "UnitFmt", 
 		locale: this.locale, 
 		name: "unitfmt.json", 

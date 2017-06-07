@@ -163,7 +163,7 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 			loadParams: loadParams,
 			callback: ilib.bind(this, function(plurals) {
 				if (!plurals) {
-					IString.cache[spec] = {};
+					ilib.data.cache.IString[spec] = {};
 				}
 				ilib.data["plurals_" + spec] = plurals || {};
 				if (onLoad && typeof(onLoad) === 'function') {
