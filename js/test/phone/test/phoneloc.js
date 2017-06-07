@@ -101,7 +101,6 @@ function testPhoneLocLoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneLocale.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	new PhoneLocale({

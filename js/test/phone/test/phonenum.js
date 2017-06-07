@@ -995,7 +995,6 @@ function testPhoneNumLoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneNumber.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var left = new PhoneNumber({

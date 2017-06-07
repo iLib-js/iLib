@@ -125,7 +125,7 @@ function testTWNumberWithAreaCodeAndCountry1() {
 		}
 	};
 	
-	var locator = new PhoneGeoLocator({locale: 'ko-KO'});
+	var locator = new PhoneGeoLocator({locale: 'ko-KR'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);

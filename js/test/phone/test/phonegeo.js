@@ -1891,7 +1891,6 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		}
 	};
 
-	PhoneGeoLocator.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var locator = new PhoneGeoLocator({locale: 'en-US',

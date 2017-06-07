@@ -98,7 +98,6 @@ function testNumPlanLoadLocaleDataSynch() {
 		return;
 	}
 	
-	NumberingPlan.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	new NumberingPlan({

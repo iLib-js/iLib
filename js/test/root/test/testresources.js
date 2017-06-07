@@ -96,6 +96,32 @@ ilib.data.tester2_de = {
 ilib.data.mock_foobar = ilib.data.strings;
 ilib.data.mock_foobar_de = ilib.data.strings_de;
 
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    function getResName(path) {
+        var last = path.lastIndexOf('/');
+        var base = path.substring(last+1);
+        var dot = base.lastIndexOf('.');
+        base = base.substring(0, dot);
+        var loc = path.substring(0, last).replace(/\//g, '_');
+        var name = "mock_" + base;
+        if (loc && loc.length > 0) {
+            name += '_' + loc;
+        }
+        return name;
+    }
+    
+    for (var i = 0; i < paths.length; i++) {
+        data.push(ilib.data[getResName(paths[i])]);
+    }
+    
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+    return data;
+};
+
 
 function testResBundleConstructorEmpty() {
 	ilib.clearPseudoLocales();
@@ -1098,32 +1124,6 @@ function testResBundleConstructAsynchPreassembledCached() {
     assertTrue(onloadcalled);
 }
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	function getResName(path) {
-		var last = path.lastIndexOf('/');
-		var base = path.substring(last+1);
-		var dot = base.lastIndexOf('.');
-		base = base.substring(0, dot);
-		var loc = path.substring(0, last).replace(/\//g, '_');
-		var name = "mock_" + base;
-		if (loc && loc.length > 0) {
-			name += '_' + loc;
-		}
-		return name;
-	}
-	
-	for (var i = 0; i < paths.length; i++) {
-		data.push(ilib.data[getResName(paths[i])]);
-	}
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);
-	}
-	return data;
-};
-
 function testResBundleConstructAsynchDynamic() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -1131,7 +1131,6 @@ function testResBundleConstructAsynchDynamic() {
 		return;
 	}
 	var onloadcalled = false;
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1159,7 +1158,6 @@ function testResBundleConstructSynchDynamic() {
 		// it via all the other tests already.
 		return;
 	}
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1181,7 +1179,6 @@ function testResBundleConstructAsynchDynamicDefaultName() {
 		return;
 	}
 	var onloadcalled = false;
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "fr-CA-govt",
@@ -1208,7 +1205,6 @@ function testResBundleConstructSynchDynamicDefaultName() {
 		// it via all the other tests already.
 		return;
 	}
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "fr-CA-govt"
@@ -1229,7 +1225,6 @@ function testResBundleConstructAsynchDynamicNoStrings() {
 		return;
 	}
 	var onloadcalled = false;
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1257,7 +1252,6 @@ function testResBundleConstructSynchDynamicNoStrings() {
 		// it via all the other tests already.
 		return;
 	}
-	ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",

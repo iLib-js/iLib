@@ -842,8 +842,6 @@ getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
 function testGetAvailableTimeZonesWithLoader() {
 	var temp = ilib._load;
 	ilib.setLoaderCallback(new getAvailableMocker());
-	LocaleInfo.cache = {}; // clear the locale info cache
-	TimeZone.cache = {}; // clear the cache
 	ilib.data.timezones = []; // clear the timezones cache
 	
 	try {
@@ -852,8 +850,6 @@ function testGetAvailableTimeZonesWithLoader() {
 		assertContains("local", zones);
 	} finally {
 		// clean up
-		LocaleInfo.cache = {}; // clear the locale info cache
-		TimeZone.cache = {}; // clear the cache
 		ilib.data.timezones = []; // clear the timezones cache
 		ilib._load = temp;
 	}
@@ -1340,9 +1336,7 @@ function testTZGetTimeZoneForLocale() {
 }
 
 function testTZGetTimeZoneForLocaleUnknown() {
-	TimeZone.cache = undefined;
-	LocaleInfo.cache = undefined;
-    var tz = new TimeZone({locale: "zz-YY"});
+	var tz = new TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
     
     assertEquals("Etc/UTC", tz.getId());
@@ -1389,9 +1383,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 	}
 	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	LocaleInfo.cache = {}; // clear the locale info cache
-	TimeZone.cache = {}; // clear the cache
-    var tz = new TimeZone({locale: "zz-YY"});
+	var tz = new TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Asia/Tokyo", tz.getId());
@@ -1406,9 +1398,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 	}
 	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	LocaleInfo.cache = {}; // clear the locale info cache
-	TimeZone.cache = {}; // clear the cache
-    new TimeZone({
+	new TimeZone({
     	locale: "zz-YY",
     	sync: false,
     	onLoad: function (tz) {
@@ -1427,8 +1417,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 	}
 	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	LocaleInfo.cache = {}; // clear the locale info cache
-    var tz = new TimeZone({locale: "ww-WW"});
+	var tz = new TimeZone({locale: "ww-WW"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Etc/UTC", tz.getId());
@@ -1443,8 +1432,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 	}
 	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	LocaleInfo.cache = {}; // clear the locale info cache
-    new TimeZone({
+	new TimeZone({
     	locale: "ww-WW",
     	sync: false,
     	onLoad: function (tz) {
@@ -1480,8 +1468,7 @@ function mockLoader2(paths, sync, params, callback) {
 function testTZGetTimeZoneWithLoaderAsynch() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
-	TimeZone.cache = {};
-    new TimeZone({
+	new TimeZone({
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
@@ -1496,8 +1483,7 @@ function testTZGetTimeZoneWithLoaderAsynch() {
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
-	TimeZone.cache = {};
-    new TimeZone({
+	new TimeZone({
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
@@ -1518,8 +1504,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
-	TimeZone.cache = {};
-    new TimeZone({
+	new TimeZone({
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
@@ -1540,8 +1525,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
-	TimeZone.cache = {};
-    new TimeZone({
+	new TimeZone({
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
@@ -1562,8 +1546,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
-	TimeZone.cache = {};
-    new TimeZone({
+	new TimeZone({
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {

@@ -116,7 +116,6 @@ function testIMSILoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneNumber.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var field = [];

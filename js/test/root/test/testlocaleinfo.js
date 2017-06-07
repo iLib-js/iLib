@@ -9496,7 +9496,6 @@ function testLocaleInfoLoadMissingDataAsynch() {
     }
     var callbackCalled = false;
     ilib.setLoaderCallback(mockLoader);
-    LocaleInfo.cache = {}; // empty the cache
     var info = new LocaleInfo("zzz-ZX", {
         sync: false,
         onLoad: function (li) {
@@ -9519,7 +9518,6 @@ function testLocaleInfoLoadMissingDataSync() {
         // it via all the other tests already.
         return;
     }
-    LocaleInfo.cache = {}; // empty the cache
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("zzz-ZX", {
         sync: true
@@ -9540,7 +9538,6 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
         return;
     }
     var callbackCalled = false;
-    LocaleInfo.cache = {}; // empty the cache
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("qq-QQ", {
         sync: false,
@@ -9563,8 +9560,6 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
 
     ilib._load = undefined;  // no loader
     var callbackCalled = false;
-    LocaleInfo.cache = {}; // empty the cache
-
     var info = new LocaleInfo("xxx-QQ", {
         sync: true,
         onLoad: function (li) {
@@ -9581,7 +9576,6 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
 
     // clean up
     ilib._load = undefined;  // no loader
-    LocaleInfo.cache = {}; // empty the cache
     ilib._load = temp;
 }
 
@@ -9591,7 +9585,6 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
         // it via all the other tests already.
         return;
     }
-    LocaleInfo.cache = {}; // empty the cache
     ilib.setLoaderCallback(mockLoader);
     var li = new LocaleInfo("qq-QQ", {
         sync: true
@@ -9612,7 +9605,6 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
         return;
     }
     var callbackCalled = false;
-    LocaleInfo.cache = {}; // empty the cache
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("fr-FR", {
         sync: false,
@@ -9643,7 +9635,6 @@ function testLocaleInfoLoadMissingLocaleParts() {
         // should not test mixed loading on the dynamic load version because it was not designed for it
         return;
     }
-    LocaleInfo.cache = {}; // empty the cache
     var li = new LocaleInfo("fr-FR-overseas");
     assertNotUndefined(li);
     assertEquals("USD", li.getCurrency());

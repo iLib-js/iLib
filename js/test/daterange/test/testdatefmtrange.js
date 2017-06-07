@@ -176,8 +176,6 @@ function testDateRngFmtGetDefaultLocale() {
 }
 
 function testDateRngFmtGetDefaultFormat() {
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
 	var fmt = new DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
@@ -228,8 +226,6 @@ function testDateRngFmtDynamicLoadSync() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new DateRngFmt({
@@ -300,8 +296,6 @@ function testDateRngFmtDynamicLoadAsync() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new GregorianDate({

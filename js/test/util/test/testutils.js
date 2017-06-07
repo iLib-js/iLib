@@ -221,34 +221,38 @@ function testBsearchStringsAfter() {
 }
 
 function testBisectionSearchSimple() {
-    assertRoughlyEquals(5.5, SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
-    	return 2 * x + 5;
-    }), 1e-12);
+    var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
+        return 2 * x + 5;
+    });
+    assertRoughlyEquals(5.5, actual, 1e-12);
 }
 
 function testBisectionSearchMoreComplex() {
-    assertRoughlyEquals(4, SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
-    	return x * x;
-    }), 1e-12);
+    var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
+        return x * x;
+    });
+    assertRoughlyEquals(4, actual, 1e-12);
 }
 
 function testBisectionSearchTrig() {
-    assertRoughlyEquals(30, SearchUtils.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
-    	return Math.sin(x * Math.PI / 180);
-    }), 1e-9);
+    var actual = SearchUtils.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
+        return Math.sin(x * Math.PI / 180);
+    });
+    assertRoughlyEquals(30, actual, 1e-9);
 }
 
 function testBisectionSearchVeryComplex() {
-    assertRoughlyEquals(-0.66666666666666, SearchUtils.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
-    	var coeff = [2, 5, 3];
-    	var xpow = 1;
-    	var ret = 0;
-    	for (var i = 0; i < coeff.length; i++) {
-    		ret += coeff[i] * xpow;
-    		xpow *= x;
-    	}
-    	return ret;
-    }), 1e-13);
+    var actual = SearchUtils.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
+        var coeff = [2, 5, 3];
+        var xpow = 1;
+        var ret = 0;
+        for (var i = 0; i < coeff.length; i++) {
+            ret += coeff[i] * xpow;
+            xpow *= x;
+        }
+        return ret;
+    });
+    assertRoughlyEquals(-0.66666666666666, actual, 1e-13);
 }
 
 function testModSimple() {
@@ -498,11 +502,11 @@ function testShallowCopy() {
     var src = {"a": "b"};
     var tgt = {};
     
-    assertTrue(typeof(tgt.a) === "undefined");
+    assertUndefined(tgt.a);
     
     JSUtils.shallowCopy(src, tgt);
     
-    assertFalse(typeof(tgt.a) === "undefined");
+    assertNotUndefined(tgt.a);
 }
 
 function testShallowCopyRightValues() {
@@ -515,7 +519,7 @@ function testShallowCopyRightValues() {
     };
     var tgt = {};
     
-    assertTrue(typeof(tgt.a) === "undefined");
+    assertUndefined(tgt.a);
     
     JSUtils.shallowCopy(src, tgt);
     
@@ -528,12 +532,12 @@ function testShallowCopyUndefined() {
     var src = undefined;
     var tgt = {};
     
-    assertTrue(typeof(tgt) !== undefined);
+    assertNotUndefined(tgt);
     assertTrue(JSUtils.isEmpty(tgt));
     
     JSUtils.shallowCopy(src, tgt);
     
-    assertTrue(typeof(tgt) !== undefined);
+    assertNotUndefined(tgt);
     assertTrue(JSUtils.isEmpty(tgt));
 }
 
@@ -772,7 +776,7 @@ function testMergeLocDataNoLocale() {
    	};
 
 	var m = Utils.mergeLocData("foobar"); // use the current locale -- en-US
-	assertTrue(typeof(m) !== 'undefined');
+	assertNotUndefined(m);
 	
 	assertEquals("e", m.a);
 	assertEquals("f", m.c);
@@ -1177,7 +1181,7 @@ function testLoadDataCorrectType() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
@@ -1203,7 +1207,7 @@ function testLoadDataCorrectItems() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
@@ -1230,7 +1234,7 @@ function testLoadDataWithLocale() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "de-DE",
 			type: "json",
 			loadParams: {},
@@ -1257,7 +1261,7 @@ function testLoadDataWithLocaleMissingParts() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "fr-Latn-FR",
 			type: "json",
 			loadParams: {},
@@ -1284,7 +1288,7 @@ function testLoadDataDefaultLocale() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			type: "json",
 			loadParams: {},
 			sync: true,
@@ -1311,7 +1315,7 @@ function testLoadDataNonJson() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "other",
 			loadParams: {},
@@ -1338,16 +1342,17 @@ function testLoadDataCached() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				for (var o in obj.cache) {
-					if (obj.cache.hasOwnProperty(o)) {
+			    var cache = ilib.data.cache.obj;
+				for (var o in cache) {
+					if (cache.hasOwnProperty(o)) {
 						var expected = {"a": "b", "c": "m", "e": "y"};
-						assertObjectEquals(expected, obj.cache[o]);
+						assertObjectEquals(expected, cache[o]);
 					}
 				}
 			}
@@ -1370,7 +1375,7 @@ function testLoadDataCachedWithOtherName() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
@@ -1383,7 +1388,7 @@ function testLoadDataCachedWithOtherName() {
 	
 		Utils.loadData({
 			name: "bar.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
@@ -1410,18 +1415,19 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
+			    assertNotUndefined(results);
 			}
 		});
 	
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {
@@ -1430,12 +1436,14 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 			},
 			sync: true,
 			callback: function (results) {
+			    assertNotUndefined(results);
 			}
 		});
 		
 		var count = 0;
-		for (var o in obj.cache) {
-			if (obj.cache.hasOwnProperty(o)) {
+		var cache = ilib.data.cache.obj;
+		for (var o in cache) {
+			if (cache.hasOwnProperty(o)) {
 				count++;
 			}
 		}
@@ -1458,7 +1466,7 @@ function testLoadDataCachedWithLoadParams() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},
@@ -1471,7 +1479,7 @@ function testLoadDataCachedWithLoadParams() {
 	
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {
@@ -1566,7 +1574,7 @@ function testLoadDataAsynch() {
 	try {
 		Utils.loadData({
 			name: "foo.json",
-			object: obj,
+			object: "obj",
 			locale: "en-US",
 			type: "json",
 			loadParams: {},

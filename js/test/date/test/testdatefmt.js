@@ -2545,8 +2545,7 @@ function testDateFmttrDA() {
 };
 
 function testDateFmtGetDefault() {
-	DateFmt.cache = undefined;
-    var fmt = new DateFmt({locale: "zz-ZZ"});
+	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2577,7 +2576,6 @@ function testDateFmtLoadLocaleDataSynch() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
@@ -2612,7 +2610,6 @@ function testDateFmtLoadLocaleDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	var callbackCalled = false;
 	

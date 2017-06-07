@@ -2361,7 +2361,6 @@ function testPhoneFmtUSLoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var phonefmt = new PhoneFmt({
