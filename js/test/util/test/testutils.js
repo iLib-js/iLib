@@ -24,6 +24,90 @@ var MathUtils = require("./../lib/MathUtils.js");
 var Locale = require("./../lib/Locale.js");
 var JSUtils = require("./../lib/JSUtils.js");
 
+function strcmp(left, right) {
+    return left.localeCompare(right);
+}
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+
+    var returnValues = {
+        "none": {
+            "foo.json": {
+                "a": "b",
+                "c": "d",
+                "e": "f"
+            },
+            "en/foo.json": {
+                "c": "x"
+            },
+            "en/US/foo.json": {
+                "e": "y"
+            },
+            "und/US/foo.json": {
+                "c": "m"
+            },
+            "de/foo.json": {
+                "c": "de1"
+            },
+            "de/DE/foo.json": {
+                "a": "a1"
+            },
+            "und/DE/foo.json": {
+                "c": "de2"
+            },
+            "fr/foo.json": {
+                "c": "fr1"
+            },
+            "bar.json": {
+                "a": "barb",
+                "c": "bard",
+                "e": "barf"
+            },
+            "en/bar.json": {
+                "c": "barx"
+            },
+            "en/US/bar.json": {
+                "e": "bary"
+            },
+            "und/US/bar.json": {
+                "c": "barm"
+            },
+            "foo.html": "<html><body>This is the generic, shared foo.</body></html>",
+            "de/foo.html": "<html><body>Diese ist Foo auf Deutsch.</body></html>",
+            "de/DE/foo.html": "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>",
+            "und/DE/foo.html": "<html><body>Diese ist Foo fuer Deutschland.</body></html>",
+            "fr/foo.html": "<html><body>Ceci est foo en francais.</body></html>"
+        },
+        "/usr/share/localization/myapp": {
+            "foo.json": {
+                "xxx": "yyy",
+                "www": "zzz"
+            },
+            "en/foo.json": {
+                "yyy": "vvv"
+            },
+            "en/US/foo.json": {
+                "www": "xyz"
+            },
+            "und/US/foo.json": {
+                "nnn": "mmm"
+            }
+        }
+    };
+    
+    var root = (params && params.root) || "none";
+    for (var i = 0; i < paths.length; i++) {
+        data.push(returnValues[root][paths[i]]);
+    }
+
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);  
+    }
+    
+    return data;
+}
+
+
 function testBsearch() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
     
@@ -85,10 +169,6 @@ function testBsearchMonthEdge() {
     assertEquals(6, SearchUtils.bsearch(182, array));
 }
 
-function strcmp(left, right) {
-    return left.localeCompare(right);
-}
-   
 function testBsearchStrings() {
     var array = [
         "barley", 
@@ -235,7 +315,8 @@ function testMergeSimple() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"c": "C", "d": "D"};
     
-    assertObjectEquals({"a": "A", "b": "B", "c": "C", "d": "D"}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": "B", "c": "C", "d": "D"};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSimpleNoSideEffects() {
@@ -245,126 +326,144 @@ function testMergeSimpleNoSideEffects() {
     var x = JSUtils.merge(object1, object2);
     
     assertNotUndefined(x);
-    assertObjectEquals({"a": "A", "b": "B"}, object1);
+    var expected = {"a": "A", "b": "B"};
+    assertObjectEquals(expected, object1);
 }
 
 function testMergeArrays() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": ["d"]};
 
-    assertObjectEquals({"a": ["b", "c", "d"]}, JSUtils.merge(object1, object2));
+    var expected = {"a": ["b", "c", "d"]};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysDups() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": ["c", "d"]};
     
-    assertObjectEquals({"a": ["b", "c", "c", "d"]}, JSUtils.merge(object1, object2));
+    var expected = {"a": ["b", "c", "c", "d"]};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysEmptySource() {
     var object1 = {"a": []},
         object2 = {"a": ["d"]};
     
-    assertObjectEquals({"a": ["d"]}, JSUtils.merge(object1, object2));
+    var expected = {"a": ["d"]};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysEmptyTarget() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": []};
     
-    assertObjectEquals({"a": ["b", "c"]}, JSUtils.merge(object1, object2));
+    var expected = {"a": ["b", "c"]};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysIncongruentTypes1() {
     var object1 = {"a": ["b", "c"]},
         object2 = {"a": "d"};
     
-    assertObjectEquals({"a": "d"}, JSUtils.merge(object1, object2));
+    var expected = {"a": "d"};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeArraysIncongruentTypes2() {
     var object1 = {"a": "b"},
         object2 = {"a": ["d"]};
     
-    assertObjectEquals({"a": ["d"]}, JSUtils.merge(object1, object2));
+    var expected = {"a": ["d"]};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSimpleProperty() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"b": "X"};
     
-    assertObjectEquals({"a": "A", "b": "X"}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": "X"};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeComplexProperty() {
     var object1 = {"a": "A", "b": {"x": "B"}},
         object2 = {"b": "X"};
     
-    assertObjectEquals({"a": "A", "b": "X"}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": "X"};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjects() {
     var object1 = {"b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N"}};
     
-    assertObjectEquals({"b": {"x": "M", "y": "N"}}, JSUtils.merge(object1, object2));
+    var expected = {"b": {"x": "M", "y": "N"}};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsLeaveObj1PropsUntouched() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
         object2 = {"b": {"x": "M", "y": "N"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsAddProps() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeSubobjectsAddProps() {
     var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
-    assertObjectEquals({"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}}, JSUtils.merge(object1, object2));
+    var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeBooleans() {
     var object1 = {"a": true, "b": true},
         object2 = {"b": false};
     
-    assertObjectEquals({"a": true, "b": false}, JSUtils.merge(object1, object2));
+    var expected = {"a": true, "b": false};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeAddBooleans() {
     var object1 = {"a": true, "b": true},
         object2 = {"c": false};
     
-    assertObjectEquals({"a": true, "b": true, "c": false}, JSUtils.merge(object1, object2));
+    var expected = {"a": true, "b": true, "c": false};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbers() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"b": 3};
     
-    assertObjectEquals({"a": 1, "b": 3}, JSUtils.merge(object1, object2));
+    var expected = {"a": 1, "b": 3};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbersWithZero() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"b": 0};
     
-    assertObjectEquals({"a": 1, "b": 0}, JSUtils.merge(object1, object2));
+    var expected = {"a": 1, "b": 0};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testMergeNumbersAddZero() {
     var object1 = {"a": 1, "b": 2},
         object2 = {"c": 0};
     
-    assertObjectEquals({"a": 1, "b": 2, "c": 0}, JSUtils.merge(object1, object2));
+    var expected = {"a": 1, "b": 2, "c": 0};
+    assertObjectEquals(expected, JSUtils.merge(object1, object2));
 }
 
 function testIsEmptyFalse() {
@@ -996,7 +1095,8 @@ function testHashCodeNotEqualBoolean() {
 }
 
 function testHashCodeEqualFunction() {
-	assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "a"; }));
+	var expected = JSUtils.hashCode(function a() { return "a"; });
+    assertEquals(expected, JSUtils.hashCode(function a() { return "a"; }));
 }
 
 function testHashCodeEqualFunctionDifferentSpacing() {
@@ -1007,9 +1107,11 @@ function testHashCodeEqualFunctionDifferentSpacing() {
 		// space is all normalized nicely to the same thing, so logically equivalent functions
 		// that only differ in white space compare the same. (This seems the most logical to 
 		// me out of all of these!)
-		assertEquals(JSUtils.hashCode(function a () { return "a"; }), JSUtils.hashCode(function a(){return "a";}));
+	    var expected = JSUtils.hashCode(function a () { return "a"; });
+		assertEquals(expected, JSUtils.hashCode(function a(){return "a";}));
 	} else {
-		assertNotEquals(JSUtils.hashCode(function a () { return "a"; }), JSUtils.hashCode(function a(){return "a";}));
+	    var expected = JSUtils.hashCode(function a () { return "a"; });
+		assertNotEquals(expected, JSUtils.hashCode(function a(){return "a";}));
 	}
 }
 
@@ -1017,23 +1119,28 @@ function testHashCodeNotEqualFunctionDifferentNames() {
 	if (ilib._getPlatform() === "qt") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
 		// functions should have the same hash
-		assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function b() { return "a"; }));
+	    var expected = JSUtils.hashCode(function a() { return "a"; });
+		assertEquals(expected, JSUtils.hashCode(function b() { return "a"; }));
 	} else {
-		assertNotEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function b() { return "a"; }));
+	    var expected = JSUtils.hashCode(function a() { return "a"; });
+		assertNotEquals(expected, JSUtils.hashCode(function b() { return "a"; }));
 	}
 }
 function testHashCodeNotEqualFunctionDifferentContents() {
 	if (ilib._getPlatform() === "qt") {
 		// the qt javascript engine doesn't allow you to see the code of a function, so all 
 		// functions should have the same hash
-		assertEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "b"; }));
+	    var expected = JSUtils.hashCode(function a() { return "a"; });
+		assertEquals(expected, JSUtils.hashCode(function a() { return "b"; }));
 	} else {
-		assertNotEquals(JSUtils.hashCode(function a() { return "a"; }), JSUtils.hashCode(function a() { return "b"; }));
+	    var expected = JSUtils.hashCode(function a() { return "a"; });
+		assertNotEquals(expected, JSUtils.hashCode(function a() { return "b"; }));
 	}
 }
 
 function testHashCodeEqualObjects() {
-	assertEquals(JSUtils.hashCode({name: "abcdef"}), JSUtils.hashCode({name: "abcdef"}));
+	var expected = JSUtils.hashCode({name: "abcdef"});
+    assertEquals(expected, JSUtils.hashCode({name: "abcdef"}));
 }
 
 function testHashCodeNotEqualObjectProperties() {
@@ -1049,92 +1156,13 @@ function testHashCodeNotEqualObjectValues() {
 }
 
 function testHashCodeEqualObjectScrambledProperties() {
-	assertEquals(JSUtils.hashCode({name: "abcdef", num: 3, value: "asdf"}), JSUtils.hashCode({value: "asdf", name: "abcdef", num: 3}));
+	var expected = JSUtils.hashCode({name: "abcdef", num: 3, value: "asdf"});
+    assertEquals(expected, JSUtils.hashCode({value: "asdf", name: "abcdef", num: 3}));
 }
 
 function testHashCodeNotEqualObjectValuesComplex() {
-	assertNotEquals(JSUtils.hashCode({num: 3, apple: "jacks", type: false, name: "abcXdef"}), JSUtils.hashCode({name: "abcdef", apple: "jacks", num: 3, type: false}));
-}
-
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-
-	var returnValues = {
-		"none": {
-			"foo.json": {
-				"a": "b",
-				"c": "d",
-				"e": "f"
-			},
-			"en/foo.json": {
-				"c": "x"
-			},
-			"en/US/foo.json": {
-				"e": "y"
-			},
-			"und/US/foo.json": {
-				"c": "m"
-			},
-			"de/foo.json": {
-				"c": "de1"
-			},
-			"de/DE/foo.json": {
-				"a": "a1"
-			},
-			"und/DE/foo.json": {
-				"c": "de2"
-			},
-			"fr/foo.json": {
-				"c": "fr1"
-			},
-			"bar.json": {
-				"a": "barb",
-				"c": "bard",
-				"e": "barf"
-			},
-			"en/bar.json": {
-				"c": "barx"
-			},
-			"en/US/bar.json": {
-				"e": "bary"
-			},
-			"und/US/bar.json": {
-				"c": "barm"
-			},
-			"foo.html": "<html><body>This is the generic, shared foo.</body></html>",
-			"de/foo.html": "<html><body>Diese ist Foo auf Deutsch.</body></html>",
-			"de/DE/foo.html": "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>",
-			"und/DE/foo.html": "<html><body>Diese ist Foo fuer Deutschland.</body></html>",
-			"fr/foo.html": "<html><body>Ceci est foo en francais.</body></html>"
-		},
-		"/usr/share/localization/myapp": {
-			"foo.json": {
-				"xxx": "yyy",
-				"www": "zzz"
-			},
-			"en/foo.json": {
-				"yyy": "vvv"
-			},
-			"en/US/foo.json": {
-				"www": "xyz"
-			},
-			"und/US/foo.json": {
-				"nnn": "mmm"
-			}
-		}
-	};
-	
-	var root = (params && params.root) || "none";
-	for (var i = 0; i < paths.length; i++) {
-		data.push(returnValues[root][paths[i]]);
-	}
-
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	
-	return data;
+    var expected = JSUtils.hashCode({num: 3, apple: "jacks", type: false, name: "abcXdef"});
+	assertNotEquals(expected, JSUtils.hashCode({name: "abcdef", apple: "jacks", num: 3, type: false}));
 }
 
 function testLoadDataCorrectType() {
@@ -1181,7 +1209,8 @@ function testLoadDataCorrectItems() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1207,7 +1236,8 @@ function testLoadDataWithLocale() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "a1", "c": "de2", "e": "f"}, results);
+				var expected = {"a": "a1", "c": "de2", "e": "f"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1233,7 +1263,8 @@ function testLoadDataWithLocaleMissingParts() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "fr1", "e": "f"}, results);
+				var expected = {"a": "b", "c": "fr1", "e": "f"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1258,7 +1289,8 @@ function testLoadDataDefaultLocale() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1285,7 +1317,8 @@ function testLoadDataNonJson() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"e": "y"}, results);
+				var expected = {"e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1313,7 +1346,8 @@ function testLoadDataCached() {
 			callback: function (results) {
 				for (var o in obj.cache) {
 					if (obj.cache.hasOwnProperty(o)) {
-						assertObjectEquals({"a": "b", "c": "m", "e": "y"}, obj.cache[o]);
+						var expected = {"a": "b", "c": "m", "e": "y"};
+						assertObjectEquals(expected, obj.cache[o]);
 					}
 				}
 			}
@@ -1342,7 +1376,8 @@ function testLoadDataCachedWithOtherName() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	
@@ -1354,7 +1389,8 @@ function testLoadDataCachedWithOtherName() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "barb", "c": "barm", "e": "bary"}, results);
+				var expected = {"a": "barb", "c": "barm", "e": "bary"};
+    assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1428,7 +1464,8 @@ function testLoadDataCachedWithLoadParams() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	
@@ -1443,7 +1480,8 @@ function testLoadDataCachedWithLoadParams() {
 			},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"}, results);
+				var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1467,7 +1505,8 @@ function testLoadDataNoCache() {
 			sync: true,
 			callback: function (results) {
 				// should not crash
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1491,7 +1530,8 @@ function testLoadDataNotCachedWithLoadParams() {
 			loadParams: {},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	
@@ -1505,7 +1545,8 @@ function testLoadDataNotCachedWithLoadParams() {
 			},
 			sync: true,
 			callback: function (results) {
-				assertObjectEquals({"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"}, results);
+				var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1531,7 +1572,8 @@ function testLoadDataAsynch() {
 			loadParams: {},
 			sync: false,
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1550,7 +1592,8 @@ function testLoadDataDefaults() {
 		Utils.loadData({
 			name: "foo.json",
 			callback: function (results) {
-				assertObjectEquals({"a": "b", "c": "m", "e": "y"}, results);
+				var expected = {"a": "b", "c": "m", "e": "y"};
+				assertObjectEquals(expected, results);
 			}
 		});
 	} finally {
@@ -1705,114 +1748,115 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 }
 
 function testLoadDataJsonInferFileTypeFromExtension() {
-	if (ilib.isDynData()) {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
-		return;
-	}
-	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			locale: "de-DE",
-			callback: function (results) {
-				assertObjectEquals({"a": "a1", "c": "de2", "e": "f"}, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+    if (ilib.isDynData()) {
+        // don't need to test loading on the dynamic load version because we are testing
+        // it via all the other tests already.
+        return;
+    }
+    ilib.setLoaderCallback(mockLoader);
+    try {
+        Utils.loadData({
+            name: "foo.json",
+            locale: "de-DE",
+            callback: function (results) {
+                var expected = {"a": "a1", "c": "de2", "e": "f"};
+                assertObjectEquals(expected, results);
+            }
+        });
+    } finally {
+        ilib.setLoaderCallback(undefined);
+    }
 }
 
 function testMapStringDigits() {
-	var map = "abcdefghij".split("");
-	
-	assertEquals("jihgfedcba", JSUtils.mapString("9876543210", map));
+    var map = "abcdefghij".split("");
+
+    assertEquals("jihgfedcba", JSUtils.mapString("9876543210", map));
 }
 
 function testMapStringDigitsUnknown() {
-	var map = "abcde".split("");
-	
-	assertEquals("98765edcba", JSUtils.mapString("9876543210", map));
+    var map = "abcde".split("");
+
+    assertEquals("98765edcba", JSUtils.mapString("9876543210", map));
 }
 
 function testMapStringHash() {
-	var map = {
-		"a": "x",
-		"b": "y",
-		"c": "z"
-	};
-	
-	assertEquals("xyzzy", JSUtils.mapString("abccb", map));
+    var map = {
+            "a": "x",
+            "b": "y",
+            "c": "z"
+    };
+
+    assertEquals("xyzzy", JSUtils.mapString("abccb", map));
 }
 
 function testMapStringUndefined() {
-	var map = {
-		"a": "x",
-		"b": "y",
-		"c": "z"
-	};
-	
-	assertUndefined(JSUtils.mapString(undefined, map));
+    var map = {
+            "a": "x",
+            "b": "y",
+            "c": "z"
+    };
+
+    assertUndefined(JSUtils.mapString(undefined, map));
 }
 
 function testMapStringUndefinedMap() {
-	assertEquals("abccb", JSUtils.mapString("abccb", undefined));
+    assertEquals("abccb", JSUtils.mapString("abccb", undefined));
 }
 
 function testMapStringHashUnknown() {
-	var map = {
-		"a": "x",
-		"b": "y",
-		"c": "z"
-	};
-	
-	assertEquals("xyzdefxyz", JSUtils.mapString("abcdefabc", map));
+    var map = {
+            "a": "x",
+            "b": "y",
+            "c": "z"
+    };
+
+    assertEquals("xyzdefxyz", JSUtils.mapString("abcdefabc", map));
 }
 
 function testMapStringHashMulti() {
-	var map = {
-		"a": "xm",
-		"b": "yn",
-		"c": "zo"
-	};
-	
-	assertEquals("xmynzoxmynzo", JSUtils.mapString("abcabc", map));
+    var map = {
+            "a": "xm",
+            "b": "yn",
+            "c": "zo"
+    };
+
+    assertEquals("xmynzoxmynzo", JSUtils.mapString("abcabc", map));
 }
 
 function testIndexOf() {
-	var arr = ["a", "b", "c"];
-	assertEquals(1, JSUtils.indexOf(arr, "b"));
+    var arr = ["a", "b", "c"];
+    assertEquals(1, JSUtils.indexOf(arr, "b"));
 }
 
 function testIndexOfNeg() {
-	var arr = ["a", "b", "c"];
-	assertEquals(-1, JSUtils.indexOf(arr, "d"));
+    var arr = ["a", "b", "c"];
+    assertEquals(-1, JSUtils.indexOf(arr, "d"));
 }
 
 function testIndexOfBeginning() {
-	var arr = ["a", "b", "c"];
-	assertEquals(0, JSUtils.indexOf(arr, "a"));
+    var arr = ["a", "b", "c"];
+    assertEquals(0, JSUtils.indexOf(arr, "a"));
 }
 
 function testIndexOfEnd() {
-	var arr = ["a", "b", "c"];
-	assertEquals(2, JSUtils.indexOf(arr, "c"));
+    var arr = ["a", "b", "c"];
+    assertEquals(2, JSUtils.indexOf(arr, "c"));
 }
 
 function testIndexOfCaseSensitive() {
-	var arr = ["a", "b", "c"];
-	assertEquals(-1, JSUtils.indexOf(arr, "C"));
+    var arr = ["a", "b", "c"];
+    assertEquals(-1, JSUtils.indexOf(arr, "C"));
 }
 
 function testIndexOfWrongObjectType() {
-	var arr = ["a", "b", "c"];
-	assertEquals(-1, JSUtils.indexOf(arr, 2));
+    var arr = ["a", "b", "c"];
+    assertEquals(-1, JSUtils.indexOf(arr, 2));
 }
 
 function testIndexOfUndefinedSearchTerm() {
-	var arr = ["a", "b", "c"];
-	assertEquals(-1, JSUtils.indexOf(arr, undefined));
+    var arr = ["a", "b", "c"];
+    assertEquals(-1, JSUtils.indexOf(arr, undefined));
 }
 
 function testIndexOfUndefinedArray() {

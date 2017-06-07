@@ -24,13 +24,13 @@ var path = require('path');
 var util = require('util');
 
 var reVar = /^var (\w*) = require\("([^)]*)"\);/;
-var reFunction = /^function\s+(\w*)\s*\(\)\s*\{/;
+var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
     {re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($10, $6, $2)"},
-	{re: /(\s*)assertNotEquals\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.notEqual($6, $2)"},
+	{re: /(\s*)assertNotEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.notEqual($6, $2)"},
 	{re: /(\s*)assertUndefined\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: '    $1test.ok(typeof($2) === "undefined")'},
 	{re: /(\s*)assertNotUndefined\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: '    $1test.ok(typeof($2) !== "undefined")'},
 	{re: /(\s*)assertNull\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === null)"},
