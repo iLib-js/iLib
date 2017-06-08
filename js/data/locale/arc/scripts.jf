@@ -1,6 +1,8 @@
 {
     "scripts": [
-        "Armi"
+        "Armi",
+        "Nbat",
+        "Palm"
     ],
     "generated": true
 }

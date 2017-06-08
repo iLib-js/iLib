@@ -1,6 +1,7 @@
 {
     "scripts": [
-        "Cyrl"
+        "Cyrl",
+        "Aghb"
     ],
     "generated": true
 }
