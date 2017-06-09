@@ -1,7 +1,7 @@
 /*
  * genDayofWeek.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
@@ -29,8 +28,8 @@ var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-	util.print("Usage: genDayofWeek [-h] CLDR_dir [toDir]\n" +
-		"Generate the firstdayofweek.jf files for each country.\n\n" +
+	console.log("Usage: genDayofWeek [-h] CLDR_dir [toDir]\n" +
+		"Generate the firstdayofweek.jf files for each country.\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_dir\n" +
@@ -47,24 +46,24 @@ process.argv.forEach(function (val, index, array) {
 	}
 });
 if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
-cldrDir = process.argv[2];
+cldrDir = process.argv[2] + "cldr-core";
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
-util.print("genDayofWeek - generate the localeinfo firstdayofweek.jf files.\n" +
-	"Copyright (c) 2013-2015 JEDLSoft\n");
-util.print("CLDR dir: " + cldrDir + "\n");
-util.print("output dir: " + toDir + "\n");
+console.log("genDayofWeek - generate the localeinfo firstdayofweek.jf files.\n" +
+	"Copyright (c) 2013-2015 JEDLSoft");
+console.log("CLDR dir: " + cldrDir);
+console.log("output dir: " + toDir);
 languageDataFileName = path.join(cldrDir, "supplemental/weekData.json");
 if (!fs.existsSync(languageDataFileName)) {
-	util.error("Could not access CLDR supplemental data file " + languageDataFileName);
+	console.error("Could not access CLDR supplemental data file " + languageDataFileName);
 	usage();
 }
 if (!fs.existsSync(toDir)) {
-	util.error("Could not access target directory " + toDir);
+	console.error("Could not access target directory " + toDir);
 	usage();
 }
 
