@@ -739,6 +739,7 @@ limitations under the License.
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.calendar">
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.date">
 		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
