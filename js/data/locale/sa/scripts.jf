@@ -1,6 +1,9 @@
 {
     "scripts": [
         "Deva",
+        "Gran",
+        "Shrd",
+        "Sidd",
         "Sinh"
     ],
     "generated": true

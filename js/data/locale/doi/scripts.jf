@@ -1,6 +1,7 @@
 {
     "scripts": [
-        "Arab"
+        "Arab",
+        "Takr"
     ],
     "generated": true
 }

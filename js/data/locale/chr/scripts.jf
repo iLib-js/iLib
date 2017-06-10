@@ -1,7 +1,6 @@
 {
     "scripts": [
-        "Cher",
-        "Latn"
+        "Cher"
     ],
     "generated": true
 }
