@@ -155,41 +155,43 @@ var LocaleInfo = function(locale, options) {
 
 LocaleInfo.defaultInfo = ilib.data.localeinfo;
 LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
-	"calendar": "gregorian",
-	"clock": "24",
-	"currency": "USD",
-	"delimiter": {
-    	"quotationStart": "“",
-    	"quotationEnd": "”",
-    	"alternateQuotationStart": "‘",
-    	"alternateQuotationEnd": "’"
+    "calendar": "gregorian",
+    "clock": "24",
+    "currency": "USD",
+    "delimiter": {
+        "quotationStart": "“",
+        "quotationEnd": "”",
+        "alternateQuotationStart": "‘",
+        "alternateQuotationEnd": "’"
     },
     "firstDayOfWeek": 1,
     "meridiems": "gregorian",
     "numfmt": {
-        "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})",
-            "iso": "{s}{n}",
-            "isoNegative": "({s}{n})"
-        },
-        "decimalChar": ".",
-        "exponential": "E",
-        "groupChar": ",",
-        "negativenumFmt": "-{n}",
-        "negativepctFmt": "-{n}%",
-        "pctChar": "%",
-        "pctFmt": "{n}%",
-        "prigroupSize": 3,
-        "roundingMode": "halfdown",
         "script": "Latn",
-        "secgroupSize": 0,
+        "decimalChar": ".",
+        "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}",
+            "iso": "{s} {n}",
+            "isoNegative": "({s} {n})"
+        },
+        "negativenumFmt": "-{n}",
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "roundingMode": "halfdown",
         "useNative": false
+    },
+    "paperSizes": {
+        "regular": "A4"
     },
     "timezone": "Etc/UTC",
     "units": "metric",
-    "weekendStart": 6,
-    "weekendEnd": 0
+    "weekendEnd": 0,
+    "weekendStart": 6
 };
 
 LocaleInfo.prototype = {

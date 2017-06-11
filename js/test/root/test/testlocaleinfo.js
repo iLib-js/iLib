@@ -9333,45 +9333,259 @@ function testLocaleInfoRoundingMode_az_Latn_AZ() {
     assertEquals("halfdown", info.getRoundingMode());
 }
 
-/************************************************end 04-JUN-2013**********************************************************/
+//test cases for km-KH
 
-function testLocaleInfoGetGroupingSeparator1() {
-    var info = new LocaleInfo();
+function testLocaleInfoGetDecimalSeparatorfor_km_KH() {
+    var info = new LocaleInfo("km-KH");
     assertNotNull(info);
-
-    assertEquals(",", info.getGroupingSeparator());
+    assertEquals(",", info.getDecimalSeparator());
 }
-function testLocaleInfoGetGroupingSeparator2() {
-    var info = new LocaleInfo("de-DE");
+
+function testLocaleInfoGetGroupingSeparatorfor_km_KH() {
+    var info = new LocaleInfo("km-KH");
     assertNotNull(info);
 
     assertEquals(".", info.getGroupingSeparator());
 }
 
-function testLocaleInfoGetGroupingSeparator3() {
-    var info = new LocaleInfo("fr-FR");
+function testLocaleInfoGetPercentageFormat_km_KH() {
+    var info = new LocaleInfo("km-KH");
     assertNotNull(info);
 
-    assertEquals(" ", info.getGroupingSeparator());
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_km_KH() {
+    var info = new LocaleInfo("km-KH");
+    assertNotNull(info);
+
+    assertEquals("{n}{s}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_km_KH() {
+	var info = new LocaleInfo("km-KH");
+	assertNotNull(info);
+
+	assertEquals("-{n}{s}", info.getCurrencyFormats().commonNegative);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_km_KH() {
+    var info = new LocaleInfo("km-KH");
+    assertNotNull(info);
+
+    assertEquals(3, info.getPrimaryGroupingDigits());
+}
+
+function testLocaleInfoGetSecondaryGroupingDigits_km_KH() {
+    var info = new LocaleInfo("km-KH");
+    assertNotNull(info);
+
+    assertEquals(0, info.getSecondaryGroupingDigits());
+}
+
+function testLocaleInfoRoundingMode_km_KH() {
+    var info = new LocaleInfo("km-KH");
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
+
+//test cases for si-LK
+
+function testLocaleInfoGetDecimalSeparatorfor_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_si_LK() {
+	var info = new LocaleInfo("si-LK");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(3, info.getPrimaryGroupingDigits());
+}
+
+function testLocaleInfoGetSecondaryGroupingDigits_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals(0, info.getSecondaryGroupingDigits());
+}
+
+function testLocaleInfoRoundingMode_si_LK() {
+    var info = new LocaleInfo("si-LK");
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
+
+//test cases for sw-KE
+
+function testLocaleInfoGetDecimalSeparatorfor_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormats().common);
+}
+
+function testLocaleInfoGetNegativeNumberFormat_sw_KE() {
+	var info = new LocaleInfo("sw-Latn-KE");
+	assertNotNull(info);
+
+	assertEquals("-{n}", info.getNegativeNumberFormat());
+}
+
+function testLocaleInfoGetNegativePercentageFormat_sw_KE() {
+	var info = new LocaleInfo("sw-Latn-KE");
+	assertNotNull(info);
+
+	assertEquals("-{n}%", info.getNegativePercentageFormat());
+}
+
+function testLocaleInfoGetNegativeCurrencyFormat_sw_KE() {
+	var info = new LocaleInfo("sw-Latn-KE");
+	assertNotNull(info);
+
+	assertEquals("-{s}{n}", info.getCurrencyFormats().commonNegative);
+}
+
+function testLocaleInfoGetPrimaryGroupingDigits_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals(3, info.getPrimaryGroupingDigits());
+}
+
+function testLocaleInfoGetSecondaryGroupingDigits_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals(0, info.getSecondaryGroupingDigits());
+}
+
+function testLocaleInfoRoundingMode_sw_KE() {
+    var info = new LocaleInfo("sw-Latn-KE");
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
+
+/************************************************end 04-JUN-2013**********************************************************/
+/** Add negative format test cases (08-NOV-2016) **/
+
+function testLocaleInfoGetGroupingSeparator1() {
+	var info = new LocaleInfo();
+	assertNotNull(info);
+
+	assertEquals(",", info.getGroupingSeparator());
+}
+function testLocaleInfoGetGroupingSeparator2() {
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
+
+	assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparator3() {
+	var info = new LocaleInfo("fr-FR");
+	assertNotNull(info);
+
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetGroupingDigits1() {
-    var info = new LocaleInfo();
-    assertNotNull(info);
+	var info = new LocaleInfo();
+	assertNotNull(info);
 
-    assertEquals(3, info.getPrimaryGroupingDigits());
+	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetGroupingDigits2() {
-    var info = new LocaleInfo("de-DE");
-    assertNotNull(info);
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
 
-    assertEquals(3, info.getPrimaryGroupingDigits());
+	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetGroupingDigits3() {
-    var info = new LocaleInfo("zh-CN");
-    assertNotNull(info);
+	var info = new LocaleInfo("zh-Hans-CN");
+	assertNotNull(info);
 
     assertEquals(3, info.getPrimaryGroupingDigits());
 }
@@ -9545,7 +9759,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
             assertNotUndefined(li);
             callbackCalled = true;
             // should return the shared data only
-            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
             assertEquals("%", li.getPercentageSymbol());
         }
@@ -9566,7 +9780,7 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
             assertNotUndefined(li);
             callbackCalled = true;
             // should return the shared data only
-            assertEquals("{s}{n}", li.getCurrencyFormats().common);
+            assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
             assertEquals("%", li.getPercentageSymbol());
         }
@@ -9592,7 +9806,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 
     assertNotUndefined(li);
     // should return the shared data only
-    assertEquals("{s}{n}", li.getCurrencyFormats().common);
+    assertEquals("{s} {n}", li.getCurrencyFormats().common);
     assertEquals(1, li.getFirstDayOfWeek());
     assertEquals("%", li.getPercentageSymbol());
     ilib.setLoaderCallback(undefined);
@@ -10082,73 +10296,140 @@ function testLocaleInfoPaperSize_zh_CN() {
 function testLocaleInfoQuotation_en_US() {
     var info = new LocaleInfo("en-US");
     assertNotNull(info);
-
-    assertEquals("“", info.getDelimiterQuotationStart());
-    assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_ko_KR() {
-    var info = new LocaleInfo("ko-KR");
-    assertNotNull(info);
-
-    assertEquals("“", info.getDelimiterQuotationStart());
-    assertEquals("”", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("ko-KR");
+	assertNotNull(info);
+	
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_es_ES() {
-    var info = new LocaleInfo("es-ES");
-    assertNotNull(info);
-
-    assertEquals("«", info.getDelimiterQuotationStart());
-    assertEquals("»", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("es-ES");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_zh_CN() {
-    var info = new LocaleInfo("zh-CN");
-    assertNotNull(info);
-
-    assertEquals("“", info.getDelimiterQuotationStart());
-    assertEquals("”", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("zh-CN");
+	assertNotNull(info);
+	
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_fa_IR() {
-    var info = new LocaleInfo("fa-IR");
-    assertNotNull(info);
-
-    assertEquals("«", info.getDelimiterQuotationStart());
-    assertEquals("»", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("fa-IR");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_de_DE() {
-    var info = new LocaleInfo("de-DE");
-    assertNotNull(info);
-
-    assertEquals("„", info.getDelimiterQuotationStart());
-    assertEquals("“", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("de-DE");
+	assertNotNull(info);
+	
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("“", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_pt_BR() {
-    var info = new LocaleInfo("pt-BR");
-    assertNotNull(info);
-
-    assertEquals("“", info.getDelimiterQuotationStart());
-    assertEquals("”", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("pt-BR");
+	assertNotNull(info);
+	
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_hy_AM() {
-    var info = new LocaleInfo("hy-AM");
-    assertNotNull(info);
-
-    assertEquals("«", info.getDelimiterQuotationStart());
-    assertEquals("»", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("hy-AM");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
 }
 
 function testLocaleInfoQuotation_ur_IN() {
-    var info = new LocaleInfo("ur-IN");
-    assertNotNull(info);
-
-    assertEquals("\"", info.getDelimiterQuotationStart());
-    assertEquals("\"", info.getDelimiterQuotationEnd());
+	var info = new LocaleInfo("ur-IN");
+	assertNotNull(info);
+	
+	assertEquals("”", info.getDelimiterQuotationStart());
+	assertEquals("“", info.getDelimiterQuotationEnd());
 }
 
+function testLocaleInfoQuotation_fr_CA() {
+	var info = new LocaleInfo("fr-CA");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
 
+function testLocaleInfoQuotation_he_IL() {
+	var info = new LocaleInfo("he-IL");
+	assertNotNull(info);
+	
+	assertEquals("”", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_uz_Latn_UZ() {
+	var info = new LocaleInfo("uz-Latn-UZ");
+	assertNotNull(info);
+	
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_ro_RO() {
+	var info = new LocaleInfo("ro-RO");
+	assertNotNull(info);
+	
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_bs_BA() {
+	var info = new LocaleInfo("bs-BA");
+	assertNotNull(info);
+	
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_el_CY() {
+	var info = new LocaleInfo("el-CY");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_kk_KZ() {
+	var info = new LocaleInfo("kk-KZ");
+	assertNotNull(info);
+	
+	assertEquals("«", info.getDelimiterQuotationStart());
+	assertEquals("»", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_az_Latn_AZ() {
+	var info = new LocaleInfo("az-Latn-AZ");
+	assertNotNull(info);
+
+	assertEquals("“", info.getDelimiterQuotationStart());
+	assertEquals("”", info.getDelimiterQuotationEnd());
+}
+
+function testLocaleInfoQuotation_de_CH() {
+	var info = new LocaleInfo("de-CH");
+	assertNotNull(info);
+
+	assertEquals("„", info.getDelimiterQuotationStart());
+	assertEquals("“", info.getDelimiterQuotationEnd());
+}

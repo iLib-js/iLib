@@ -1,6 +1,7 @@
 {
     "scripts": [
-        "Latn"
+        "Latn",
+        "Mend"
     ],
     "generated": true
 }
