@@ -114,7 +114,11 @@ limitations under the License.
         <attribute name="srcfilename"/>
         <attribute name="locales"/>
 		<sequential>
-			<java dir="${build.lib}" fork="true" classname="com.ilib.tools.jsa.JSAssemble" classpathref="project.classpath.jsa">
+			<java dir="${build.lib}" 
+					fork="true" 
+					maxmemory="6000m"
+					classname="com.ilib.tools.jsa.JSAssemble" 
+					classpathref="project.classpath.jsa">
 				<arg value="-I"/>
 				<arg value="${build.locale}"/>
 				<arg value="-I"/>
@@ -735,6 +739,7 @@ limitations under the License.
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.calendar">
 		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="modular" failquit="true"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" set="legacy" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.date">
 		<runtests suite="date1" assembly="dynamic" compilation="compiled" set="modular" failquit="false"/>
