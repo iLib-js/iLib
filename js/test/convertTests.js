@@ -50,7 +50,7 @@ var assertMappings = [
 	{re: /(\s*)fail\(\)./, replace: "        test.fail()"}
 ];
 
-function convertFile(dir, fileName) {
+function convertFile(dir, fileName, outFileName) {
 	var testFile = path.join(dir, "test", fileName);
 	var data = fs.readFileSync(testFile, "utf-8");
 	
@@ -167,12 +167,16 @@ function convertFile(dir, fileName) {
 	
 	lines.push('};');
 	
+	if (!outFileName) {
+	    outFileName = fileName;
+	}
+	
 	var outDir = path.join(dir, "nodeunit");
 	if (!fs.existsSync(outDir)) {
 		fs.mkdirSync(outDir);
 	}
 	
-	var outFile = path.join(outDir, fileName);
+	var outFile = path.join(outDir, outFileName);
 	fs.writeFileSync(outFile, lines.join('\n'), "utf-8");
 	
 	console.log(testFile + " -> " + outFile);
@@ -284,6 +288,7 @@ var suites = fs.readdirSync(".");
 var pathName, relPath, included, stat;
 
 suites.forEach(function (dir) {
+    var outFileName;
 	stat = fs.statSync(dir);
 	if (stat && stat.isDirectory()) {
 		var testDir = path.join(dir, "test");
@@ -291,12 +296,13 @@ suites.forEach(function (dir) {
 		    var suite = [];
 		    var tests = fs.readdirSync(testDir);
 			tests.forEach(function(test) {
-				if (test.substr(-3) === ".js" && test.substring(0, 4) === "test" && test.indexOf("uite") === -1) {
+				if (test.substr(-3) === ".js" && (test.substring(0, 4) === "test" || testDir === "phone/test") && test.indexOf("uite") === -1) {
+				    outFileName = (test.substring(0, 4) !== "test") ? "test" + test :  test;
 				    suite.push(test);
 					var full = path.join(testDir, test);
 					stat = fs.statSync(full);
 					if (stat && stat.isFile()) {
-						convertFile(dir, test);
+						convertFile(dir, test, outFileName);
 					}
 				}
 			});
