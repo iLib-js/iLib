@@ -871,7 +871,6 @@ limitations under the License.
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
 			<jvmarg value="-Xmx1024m"/>
-			<jvmarg value="-XX:MaxPermSize=96m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
