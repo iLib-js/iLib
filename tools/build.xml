@@ -98,6 +98,10 @@ limitations under the License.
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 	</target>
 
+	<target name="test" description="Test anything that needs testing"/>
+
+	<target name="doc" description="Generate any documentation"/>
+
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->

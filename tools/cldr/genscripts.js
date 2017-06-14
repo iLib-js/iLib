@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  * 
- * Copyright © 2013 - 2015, JEDLSoft
+ * Copyright © 2013 - 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,14 +22,13 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: genscripts [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
+	console.log("Usage: genscripts [-h] ISO-15924-file.txt ScriptMetadata.txt UCD-dir  [toDir]\n" +
 			"Generate the normalization data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
@@ -58,43 +57,46 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
 iso15924FileName = process.argv[2];
-ucdDir = process.argv[3];
-cldrDir = process.argv[4];
+scriptMetaDataFileName = process.argv[3];
+ucdDir = process.argv[4];
+
 if (process.argv.length > 5) {
 	toDir = process.argv[5];
 }
 
-util.print("genscripts - generate scripts data.\n" +
-		"Copyright (c) 2012 - 2015 JEDLSoft\n");
+console.log("genscripts - generate scripts data.\n" +
+		"Copyright (c) 2012 - 2016 JEDLSoft");
 
 // TODO: these should call fs.existsSync instead
 fs.exists(iso15924FileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + iso15924FileName);
+		console.error("Could not access file " + iso15924FileName);
 		usage();
 	}
 });
+
 fs.exists(ucdDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access UCD directory " + ucdDir);
+		console.error("Could not access UCD directory " + ucdDir);
 		usage();
 	}
 });
-fs.exists(cldrDir, function (exists) {
+
+fs.exists(scriptMetaDataFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access CLDR directory " + cldrDir);
+		console.error("Could not access file " + scriptMetaDataFileName);
 		usage();
 	}
 });
 
 fs.exists(toDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access target directory " + toDir);
+		console.error("Could not access target directory " + toDir);
 		usage();
 	}
 });
@@ -103,16 +105,7 @@ scriptFileName = ucdDir + "/Scripts.txt";
 
 fs.exists(scriptFileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + scriptFileName);
-		usage();
-	}
-});
-
-scriptMetaDataFileName = cldrDir + "/common/properties/scriptMetadata.txt";
-
-fs.exists(scriptMetaDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + scriptMetaDataFileName);
+		console.error("Could not access file " + scriptFileName);
 		usage();
 	}
 });
@@ -151,7 +144,7 @@ var len = scriptMetaData.length();
 for (var i = 0; i < len; i++ ) {
 	row = scriptMetaData.get(i);
 	code = row[0];
-	util.print(code + " isrtl " + row[6] + "\n"	);
+	console.log(code + " isrtl " + row[6]);
 
 	// is this script written right-to-left?
 	scripts[code].rtl = (row[6] === " YES" ? true : false);

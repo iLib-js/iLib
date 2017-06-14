@@ -157,7 +157,7 @@ ilib._getBrowser = function () {
 			if (navigator.userAgent.indexOf("Firefox") > -1) {
 				browser = "firefox";
 			}
-			if (navigator.userAgent.indexOf("Opera") > -1) {
+			if (navigator.userAgent.search(/Opera|OPR/) > -1 ) {
 				browser = "opera";
 			}
 			if (navigator.userAgent.indexOf("Chrome") > -1) {

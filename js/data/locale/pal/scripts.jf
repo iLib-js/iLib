@@ -1,6 +1,7 @@
 {
     "scripts": [
-        "Phli"
+        "Phli",
+        "Phlp"
     ],
     "generated": true
 }

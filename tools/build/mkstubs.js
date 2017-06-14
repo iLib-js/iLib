@@ -26,15 +26,14 @@ var common = require('../cldr/common');
 var path = require('../../js/lib/Path.js');
 
 function usage() {
-	util
-			.print("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n"
-					+ "Create an dynamic-load stub file out of the existing assembled source file.\n\n"
-					+ "-h or --help\n"
-					+ "  this help\n"
-					+ "assembled_source_file\n"
-					+ '  File to scan. Default: "ilib-dyn.js"\n'
-					+ "output_file\n"
-					+ '  File to put output. Default: "ilib-stubs.js"\n');
+	util.print("Usage: mkstubs.js [-h] [assembled_source_file [output_file]]\n"
+			+ "Create an dynamic-load stub file out of the existing assembled source file.\n\n"
+			+ "-h or --help\n"
+			+ "  this help\n"
+			+ "assembled_source_file\n"
+			+ '  File to scan. Default: "ilib-dyn.js"\n'
+			+ "output_file\n"
+			+ '  File to put output. Default: "ilib-stubs.js"\n');
 	process.exit(1);
 }
 
@@ -116,13 +115,14 @@ var legacyMapping = {
 	"HebrewCal" : "ilib.Cal.Hebrew",
 	"IslamicDate" : "ilib.Date.IslamicDate",
 	"IslamicCal" : "ilib.Cal.Islamic",
-	"JulianDate" : "ilib.Date.JulianDate",
+	"JulianDate" : "ilib.Date.JulDate",
 	"JulianCal" : "ilib.Cal.Julian",
 	"PersianDate" : "ilib.Date.PersDate",
 	"PersianCal" : "ilib.Cal.Persian",
 	"PersianAlgoDate" : "ilib.Date.PersAlgoDate",
 	"PersianAlgoCal" : "ilib.Cal.PersianAlgo",
 	"PersRataDie" : "ilib.Date.PersAstroRataDie",
+	"PersAlgoRataDie": "ilib.Date.PersAlgoRataDie",
 	"RataDie" : "ilib.Date.RataDie",
 	"ThaiSolarDate" : "ilib.Date.ThaiSolarDate",
 	"ThaiSolarCal" : "ilib.Cal.ThaiSolar",
