@@ -436,10 +436,14 @@ function testCollatorDefaultCase() {
 
 	assertNotUndefined(col);
 
-	// netscape and ie do not work properly
+
+	// netscape and ie do not work properly on some platforms
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" || 
-	    browser === "Edge" || browser === "iOS") {
+	if ((browser === "firefox" && 
+			navigator && 
+			navigator.userAgent && 
+			navigator.userAgent.indexOf("Android")) || 
+	    browser === "ie" || browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", col.compare("a", "A") < 0);
 		assertTrue("b < B", col.compare("b", "B") < 0);
@@ -490,8 +494,11 @@ function testCollatorGetComparatorWorksWithCase() {
 
 	// netscape and ie do not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" ||
-	    browser === "Edge" || browser === "iOS") {
+	if ((browser === "firefox" && 
+			navigator && 
+			navigator.userAgent && 
+			navigator.userAgent.indexOf("Android")) || 
+	    browser === "ie" || browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", func("a", "A") < 0);
 		assertTrue("b < B", func("b", "B") < 0);
