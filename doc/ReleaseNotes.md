@@ -1,3 +1,22 @@
+Release Notes for Version 13.0
+=============================
+
+Build 000
+-------
+
+New Features:
+
+* Updated most classes to use locale data from CLDR 30.
+  * Updated scripts in the tools/cldr dir to read the new data
+  * Unit tests updated as well
+* Added Country class to contain information about a particular country, especially translations of its name
+* Added support for travis-ci builds for the development and master branches in github.
+* Support for the legacy way of calling ilib through the ilib namespace was deprecated in ilib 11 & 12, and is now removed in ilib 13
+  * That means that code that is upgrading to ilib 13 for example should use DateFmt instead of ilib.DateFmt to get the date formatter class
+  * The ilib-stubs.js file is still there and can map from the old ilib namespace to the CommonJS style classes, but it is no longer being maintained
+  * All legacy unit tests have been removed as well
+
+
 Release Notes for Version 12.0
 =============================
 
