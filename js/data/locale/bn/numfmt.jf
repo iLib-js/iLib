@@ -5,7 +5,7 @@
         "secgroupSize": 2,
         "currencyFormats": {
             "common": "{n}{s}",
-            "commonNegative": "({n}{s})"
+            "commonNegative": "-{n}{s}"
         },
         "digits": "০১২৩৪৫৬৭৮৯",
         "useNative": true

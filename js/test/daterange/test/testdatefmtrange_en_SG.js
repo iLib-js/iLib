@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_en_SG.js - test the date range formatter object in Singapore English
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
-function testDateRngFmtInDayShort() {
+function testDateRngFmtSGInDayShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -41,9 +41,9 @@ function testDateRngFmtInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31/12/11, 1:45 pm - 2:30 pm", fmt.format(start, end));
+    assertEquals("31/12/11, 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtInDayMedium() {
+function testDateRngFmtSGInDayMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -65,9 +65,9 @@ function testDateRngFmtInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 Dec 2011, 1:45 pm - 2:30 pm", fmt.format(start, end));
+    assertEquals("31 Dec 2011, 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtInDayLong() {
+function testDateRngFmtSGInDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -89,9 +89,9 @@ function testDateRngFmtInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 December 2011 at 1:45 pm - 2:30 pm", fmt.format(start, end));
+    assertEquals("31 December 2011 at 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtInDayFull() {
+function testDateRngFmtSGInDayFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -113,10 +113,10 @@ function testDateRngFmtInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 December 2011 at 1:45 pm - 2:30 pm", fmt.format(start, end));
+    assertEquals("31 December 2011 at 1:45 PM – 2:30 PM", fmt.format(start, end));
 }
 
-function testDateRngFmtNextDayShort() {
+function testDateRngFmtSGNextDayShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -138,9 +138,9 @@ function testDateRngFmtNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30/12/11, 1:45 pm - 31/12/11, 2:30 pm", fmt.format(start, end));
+    assertEquals("30/12/11, 1:45 PM – 31/12/11, 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtNextDayMedium() {
+function testDateRngFmtSGNextDayMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -162,9 +162,9 @@ function testDateRngFmtNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 Dec 2011, 1:45 pm - 31 Dec 2011, 2:30 pm", fmt.format(start, end));
+    assertEquals("30 Dec 2011, 1:45 PM – 31 Dec 2011, 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtNextDayLong() {
+function testDateRngFmtSGNextDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -186,9 +186,9 @@ function testDateRngFmtNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 December 2011 at 1:45 pm - 31 December 2011 at 2:30 pm", fmt.format(start, end));
+    assertEquals("30 December 2011 at 1:45 PM – 31 December 2011 at 2:30 PM", fmt.format(start, end));
 }
-function testDateRngFmtNextDayFull() {
+function testDateRngFmtSGNextDayFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -210,10 +210,10 @@ function testDateRngFmtNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30 December 2011 at 1:45 pm - 31 December 2011 at 2:30 pm", fmt.format(start, end));
+    assertEquals("30 December 2011 at 1:45 PM – 31 December 2011 at 2:30 PM", fmt.format(start, end));
 }
 
-function testDateRngFmtMultiDayShort() {
+function testDateRngFmtSGMultiDayShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -235,9 +235,9 @@ function testDateRngFmtMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31/12/11", fmt.format(start, end));
+    assertEquals("20 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtMultiDayMedium() {
+function testDateRngFmtSGMultiDayMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -259,9 +259,9 @@ function testDateRngFmtMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 Dec 2011", fmt.format(start, end));
+    assertEquals("20 – 31 Dec 2011", fmt.format(start, end));
 }
-function testDateRngFmtMultiDayLong() {
+function testDateRngFmtSGMultiDayLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -283,9 +283,9 @@ function testDateRngFmtMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 December 2011", fmt.format(start, end));
+    assertEquals("20 – 31 December 2011", fmt.format(start, end));
 }
-function testDateRngFmtMultiDayFull() {
+function testDateRngFmtSGMultiDayFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -307,10 +307,10 @@ function testDateRngFmtMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 December 2011", fmt.format(start, end));
+    assertEquals("20 – 31 December 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtNextMonthShort() {
+function testDateRngFmtSGNextMonthShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -332,9 +332,9 @@ function testDateRngFmtNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11-31/12 11", fmt.format(start, end));
+    assertEquals("20/11 – 31/12/11", fmt.format(start, end));
 }
-function testDateRngFmtNextMonthMedium() {
+function testDateRngFmtSGNextMonthMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -356,9 +356,9 @@ function testDateRngFmtNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 Nov - 31 Dec 2011", fmt.format(start, end));
+    assertEquals("20 Nov – 31 Dec 2011", fmt.format(start, end));
 }
-function testDateRngFmtNextMonthLong() {
+function testDateRngFmtSGNextMonthLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -380,9 +380,9 @@ function testDateRngFmtNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November - 31 December 2011", fmt.format(start, end));
+    assertEquals("20 November – 31 December 2011", fmt.format(start, end));
 }
-function testDateRngFmtNextMonthFull() {
+function testDateRngFmtSGNextMonthFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -404,10 +404,10 @@ function testDateRngFmtNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November - 31 December 2011", fmt.format(start, end));
+    assertEquals("20 November – 31 December 2011", fmt.format(start, end));
 }
 
-function testDateRngFmtNextYearShort() {
+function testDateRngFmtSGNextYearShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -429,9 +429,9 @@ function testDateRngFmtNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11-31/1/12", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/1/12", fmt.format(start, end));
 }
-function testDateRngFmtNextYearMedium() {
+function testDateRngFmtSGNextYearMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -453,9 +453,9 @@ function testDateRngFmtNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 Nov 2011 - 31 Jan 2012", fmt.format(start, end));
+    assertEquals("20 Nov 2011 – 31 Jan 2012", fmt.format(start, end));
 }
-function testDateRngFmtNextYearLong() {
+function testDateRngFmtSGNextYearLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -477,9 +477,9 @@ function testDateRngFmtNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November 2011 - 31 January 2012", fmt.format(start, end));
+    assertEquals("20 November 2011 – 31 January 2012", fmt.format(start, end));
 }
-function testDateRngFmtNextYearFull() {
+function testDateRngFmtSGNextYearFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -501,10 +501,10 @@ function testDateRngFmtNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 November 2011 - 31 January 2012", fmt.format(start, end));
+    assertEquals("20 November 2011 – 31 January 2012", fmt.format(start, end));
 }
 
-function testDateRngFmtMultiYearShort() {
+function testDateRngFmtSGMultiYearShort() {
     var fmt = new DateRngFmt({length: "short",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -526,9 +526,9 @@ function testDateRngFmtMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11-1/14", fmt.format(start, end));
+    assertEquals("11/11 – 1/14", fmt.format(start, end));
 }
-function testDateRngFmtMultiYearMedium() {
+function testDateRngFmtSGMultiYearMedium() {
     var fmt = new DateRngFmt({length: "medium",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -550,9 +550,9 @@ function testDateRngFmtMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Nov 2011 - Jan 2014", fmt.format(start, end));
+    assertEquals("Nov 2011 – Jan 2014", fmt.format(start, end));
 }
-function testDateRngFmtMultiYearLong() {
+function testDateRngFmtSGMultiYearLong() {
     var fmt = new DateRngFmt({length: "long",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -574,7 +574,7 @@ function testDateRngFmtMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("November 2011 - January 2014", fmt.format(start, end));
+    assertEquals("November 2011 – January 2014", fmt.format(start, end));
 }
 function testDateRngFmtMultiYearFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
@@ -598,9 +598,9 @@ function testDateRngFmtMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("November 2011 - January 2014", fmt.format(start, end));
+    assertEquals("November 2011 – January 2014", fmt.format(start, end));
 }
-function testDateRngFmtManyYearsFull() {
+function testDateRngFmtSGManyYearsFull() {
     var fmt = new DateRngFmt({length: "full",locale: "en-SG"});
     assertNotNull(fmt);
     
@@ -622,11 +622,11 @@ function testDateRngFmtManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 - 2064", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }
 
 /*
-function testDateRngFmtRangeShortWithinDay() {
+function testDateRngFmtSGRangeShortWithinDay() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -649,10 +649,10 @@ function testDateRngFmtRangeShortWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34pm - 5:00pm 11/18/2011");    
+    assertEquals("2:34PM – 5:00PM 11/18/2011");    
 }
 
-function testDateRngFmtRangeShortWithinMonth() {
+function testDateRngFmtSGRangeShortWithinMonth() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -678,7 +678,7 @@ function testDateRngFmtRangeShortWithinMonth() {
     assertEquals("11/2-19, 2011");    
 }
 
-function testDateRngFmtRangeShortConsecutiveDays() {
+function testDateRngFmtSGRangeShortConsecutiveDays() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -701,10 +701,10 @@ function testDateRngFmtRangeShortConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00pm 11/18 - 8:00am 11/19, 2011");    
+    assertEquals("2:00PM 11/18 – 8:00am 11/19, 2011");    
 }
 
-function testDateRngFmtRangeShortWithinYear() {
+function testDateRngFmtSGRangeShortWithinYear() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -727,10 +727,10 @@ function testDateRngFmtRangeShortWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("5/2 - 11/19, 2011");    
+    assertEquals("5/2 – 11/19, 2011");    
 }
 
-function testDateRngFmtRangeShortWithinDecade() {
+function testDateRngFmtSGRangeShortWithinDecade() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -753,10 +753,10 @@ function testDateRngFmtRangeShortWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("9/2001 - 12/2010");
+    assertEquals("9/2001 – 12/2010");
 }
 
-function testDateRngFmtRangeShortLongTime() {
+function testDateRngFmtSGRangeShortLongTime() {
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -779,10 +779,10 @@ function testDateRngFmtRangeShortLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 - 2008");
+    assertEquals("1776 – 2008");
 }
 
-function testDateRngFmtRangeLongWithinDay() {
+function testDateRngFmtSGRangeLongWithinDay() {
     var fmt = new DateRngFmt({
         length: "long"
     });
@@ -807,10 +807,10 @@ function testDateRngFmtRangeLongWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34pm - 5:00pm Nov 18, 2011");    
+    assertEquals("2:34PM – 5:00PM Nov 18, 2011");    
 }
 
-function testDateRngFmtRangeLongConsecutiveDays() {
+function testDateRngFmtSGRangeLongConsecutiveDays() {
     var fmt = new DateRngFmt({
         length: "long"
     });
@@ -835,7 +835,7 @@ function testDateRngFmtRangeLongConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00pm Nov 18 - 8:00am Nov 19, 2011");    
+    assertEquals("2:00PM Nov 18 – 8:00am Nov 19, 2011");    
 }
 
 function testDateRngFmtRangeLongWithinMonth() {
@@ -891,7 +891,7 @@ function testDateRngFmtRangeLongWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("May 2 - Nov 19, 2011");    
+    assertEquals("May 2 – Nov 19, 2011");    
 }
 
 function testDateRngFmtRangeLongWithinDecade() {
@@ -919,7 +919,7 @@ function testDateRngFmtRangeLongWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("Sep 2001 - Dec 2010");
+    assertEquals("Sep 2001 – Dec 2010");
 }
 
 function testDateRngFmtRangeLongLongTime() {
@@ -947,7 +947,7 @@ function testDateRngFmtRangeLongLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 - 2008");
+    assertEquals("1776 – 2008");
 }
 
 function testDateRngFmtRangeFullWithinDay() {
@@ -975,7 +975,7 @@ function testDateRngFmtRangeFullWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34pm - 5:00pm November 18, 2011");    
+    assertEquals("2:34PM – 5:00PM November 18, 2011");    
 }
 
 function testDateRngFmtRangeFullConsecutiveDays() {
@@ -1003,7 +1003,7 @@ function testDateRngFmtRangeFullConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00pm November 18 - 8:00am November 19, 2011");    
+    assertEquals("2:00PM November 18 – 8:00am November 19, 2011");    
 }
 
 function testDateRngFmtRangeFullWithinMonth() {
@@ -1059,7 +1059,7 @@ function testDateRngFmtRangeFullWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("May 2 - November 19, 2011");    
+    assertEquals("May 2 – November 19, 2011");    
 }
 
 function testDateRngFmtRangeFullWithinDecade() {
@@ -1087,7 +1087,7 @@ function testDateRngFmtRangeFullWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("September 2001 - December 2010");
+    assertEquals("September 2001 – December 2010");
 }
 
 function testDateRngFmtRangeFullLongTime() {
@@ -1115,7 +1115,7 @@ function testDateRngFmtRangeFullLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 - 2008");
+    assertEquals("1776 – 2008");
 }
 */
 

@@ -296,6 +296,7 @@ var blockNameMapping = {
 	"playing cards": "playingcards",
 	"transport and map symbols": "mapsymbols",
 	"alchemical symbols": "alchemic",
+	"byzantine musical symbols": "byzantinemusic",
 	// newly added manually since UCD 8.0
 	"coptic epact numbers": "copticnumber",
 	"old permic": "oldpermic",
@@ -316,7 +317,14 @@ var blockNameMapping = {
 	"sutton signwriting": "suttonsignwriting",
 	"miscellaneous symbols and pictographs": "pictographs",
 	"supplemental symbols and pictographs": "pictographs",
-	"ornamental dingbats": "ornamentaldingbats"
+	"ornamental dingbats": "ornamentaldingbats",
+	// newly added manually since UCD 9.0
+	"cyrillic extended-c": "cyrillic",
+	"mongolian supplement":  "mongolian",
+	"ideographic symbols and punctuation": "tangut",
+	"tangut": "tangut",
+	"tangut components": "tangut",
+	"glagolitic supplement": "glagolitic"
 }
 
 /*

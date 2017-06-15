@@ -1,7 +1,6 @@
 {
     "generated": true,
     "delimiter": {
-        "quotationStart": "„",
-        "quotationEnd": "“"
+        "quotationStart": "„"
     }
 }

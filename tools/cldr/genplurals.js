@@ -2,7 +2,7 @@
  * genplurals.js - ilib tool to generate plurals json fragments from  
  * the CLDR data files 
  *  
- * Copyright © 2015, LGE 
+ * Copyright © 2015-2017, LGE
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -22,7 +22,6 @@
  */
 var fs = require('fs');
 var path = require('path');
-var util = require('util');
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -30,8 +29,8 @@ var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 function usage() {
-	util.print("Usage: genplurals [-h] CLDR_json_dir locale_data_dir\n" +
-		"Generate genplurals information files.\n\n" +
+	console.log("Usage: genplurals [-h] CLDR_json_dir locale_data_dir\n" +
+		"Generate genplurals information files.\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_json_dir\n" +
@@ -51,22 +50,22 @@ process.argv.forEach(function (val, index, array) {
 	});
 
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
-cldrDirName = process.argv[2];
+cldrDirName = process.argv[2] + "cldr-core";
 localeDirName = process.argv[3];
 
-util.print("genplurals - generate plurals information files.\n" +
-	"Copyright (c) 2015 LGE\n");
+console.log("genplurals - generate plurals information files.\n" +
+	"Copyright (c) 2015-2017 LGE");
 
-util.print("CLDR dir: " + cldrDirName + "\n");
-util.print("locale dir: " + localeDirName + "\n");
+console.log("CLDR dir: " + cldrDirName);
+console.log("locale dir: " + localeDirName);
 
 
 if (!fs.existsSync(cldrDirName)) {
-	util.error("Could not access CLDR dir " + cldrDirName);
+	console.error("Could not access CLDR dir " + cldrDirName);
 	usage();
 }
 
@@ -74,7 +73,7 @@ if (!fs.existsSync(localeDirName)) {
 	makeDirs(localeDirName);
 	
 	if (!fs.existsSync(localeDirName)) {
-    	util.error("Could not access locale data directory " + localeDirName);
+    	console.error("Could not access locale data directory " + localeDirName);
     	usage();
 	}
 }
@@ -87,7 +86,7 @@ try {
 	suppData = JSON.parse(json);
 	pluralsObject = suppData.supplemental["plurals-type-cardinal"];
 } catch (e) {
-	util.print("Error: Could not load file " + filename + "\n");
+	console.log("Error: Could not load file " + filename);
 	process.exit(2);
 }
 
@@ -284,7 +283,7 @@ function calcLocalePath(language, script, region, filename) {
 		fullpath = path.join(fullpath, region);
 	}
 	fullpath = path.join(fullpath, filename);
-	//util.print("path: ", fullpath);
+	//console.log("path: ", fullpath);
 	return fullpath;
 }
 
@@ -294,7 +293,7 @@ function anyProperties(data) {
 		if (prop && data[prop]) {
 			count++;
 		}
-		if (count > 1) {
+		if (count >= 1) {
 			return true;
 		}
 	}
@@ -309,11 +308,11 @@ function writePluralsData(locale, data) {
 	var fullpath = calcLocalePath(language, script, region, "");
 
 	if (data) {
-		util.print("Writing " + fullpath + "\n");
+		console.log("Writing " + fullpath);
 		makeDirs(fullpath);
 		fs.writeFileSync(path.join(fullpath, "plurals.json"), JSON.stringify(data, true, 4), "utf-8");
 	} else {
-		util.print("Skipping empty  " + fullpath + "\n");
+		console.log("Skipping empty  " + fullpath);
 	}
 }
 
@@ -323,7 +322,9 @@ for (var language in pluralsObject) {
 	if (language && pluralsObject[language]) {
 		pluralsData = create_rule(pluralsObject[language]);
 
-		var locale = new Locale(language);
-		writePluralsData(locale, pluralsData);
+		if (anyProperties(pluralsData)) {
+			var locale = new Locale(language);
+			writePluralsData(locale, pluralsData);
+		}
 	}	
 }

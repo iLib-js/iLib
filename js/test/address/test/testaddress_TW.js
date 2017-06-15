@@ -56,25 +56,25 @@ function testParseAddressTWTWLatinNoCountry() {
 };
 
 function testParseAddressTWTWAsianNormal() {
-	var parsedAddress = new Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
+	var parsedAddress = new Address("台灣高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
 	assertEquals("高雄市", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("802", parsedAddress.postalCode);
-	assertEquals("中華民國", parsedAddress.country);
+	assertEquals("台灣", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
 function testParseAddressTWTWAsianNoZip() {
-	var parsedAddress = new Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-Hant-TW'});
+	var parsedAddress = new Address("台灣台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("南港區經貿二路66號10樓", parsedAddress.streetAddress);
 	assertEquals("台北市", parsedAddress.locality);
 	assertEquals("台灣省", parsedAddress.region);
-	assertEquals("中華民國", parsedAddress.country);
+	assertEquals("台灣", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
@@ -92,26 +92,26 @@ function testParseAddressTWTWAsianNoCountry() {
 };
 
 function testParseAddressTWTWAsianWithRegion() {
-	var parsedAddress = new Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
+	var parsedAddress = new Address("台灣台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
 	assertEquals("台高雄市", parsedAddress.locality);
 	assertEquals("台灣省", parsedAddress.region);
 	assertEquals("802", parsedAddress.postalCode);
-	assertEquals("中華民國", parsedAddress.country);
+	assertEquals("台灣", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
 function testParseAddressTWTWAsianZipAtEnd() {
-	var parsedAddress = new Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-Hant-TW'});
+	var parsedAddress = new Address("台灣\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-Hant-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("苓雅區四維三路6號18樓A", parsedAddress.streetAddress);
 	assertEquals("台高雄市", parsedAddress.locality);
 	assertEquals("台灣省", parsedAddress.region);
 	assertEquals("80245", parsedAddress.postalCode);
-	assertEquals("中華民國", parsedAddress.country);
+	assertEquals("台灣", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
@@ -140,11 +140,11 @@ function testParseAddressTWTWOneLine() {
 };
 
 function testParseAddressTWTWSuperfluousWhitespace() {
-	var parsedAddress = new Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Republic of China\n\n\n", {locale: 'en-TW'});
+	var parsedAddress = new Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Taiwan\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("TW", parsedAddress.countryCode);
-	assertEquals("Republic of China", parsedAddress.country);
+	assertEquals("Taiwan", parsedAddress.country);
 	assertEquals("110", parsedAddress.postalCode);
 	assertEquals("Taiwan", parsedAddress.region);
 	assertEquals("Taipei City", parsedAddress.locality);
@@ -176,7 +176,7 @@ function testParseAddressTWTWSpecialChars() {
 };
 
 function testParseAddressTWTWFromUS() {
-	var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nRepublic of China", {locale: 'en-US'});
+	var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nTaiwan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -185,7 +185,7 @@ function testParseAddressTWTWFromUS() {
 	assertEquals("Taipei", parsedAddress.locality);
 	assertEquals("Taiwan", parsedAddress.region);
 	assertEquals("110", parsedAddress.postalCode);
-	assertEquals("Republic of China", parsedAddress.country);
+	assertEquals("Taiwan", parsedAddress.country);
 	assertEquals("TW", parsedAddress.countryCode);
 };
 

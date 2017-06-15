@@ -34,7 +34,7 @@ function testDurFmtAZFormatShortDefaultStyle() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 1s 1d 1s", duration.toString());
+    assertEquals("1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san", duration.toString());
 };
 
 function testDurFmtAZFormatShortText() {
@@ -54,7 +54,7 @@ function testDurFmtAZFormatShortText() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 1s 1d 1s", duration.toString());
+    assertEquals("1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san", duration.toString());
 };
 
 function testDurFmtAZFormatShortClock() {
@@ -74,7 +74,7 @@ function testDurFmtAZFormatShortClock() {
         minute: 1,
         second: 1
     });
-    assertEquals("1i 1a 1h 1g 01:01:01", duration.toString());
+    assertEquals("1 il, 1 ay, 1 hft, 1 gün, 01:01:01", duration.toString());
 };
 
 function testDurFmtAZFormatMedium() {
@@ -93,7 +93,7 @@ function testDurFmtAZFormatMedium() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 il 1 ay 1 həf 1 gün 1 saat 1 dəq 1 san", duration.toString());
+    assertEquals("1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san", duration.toString());
 };
 
 function testDurFmtAZFormatLong() {
@@ -112,7 +112,7 @@ function testDurFmtAZFormatLong() {
         minute: 1,
         second: 1
     });
-    assertEquals("1 il 1 ay 1 həf 1 gün 1 saat 1 dəq 1 san", duration.toString());
+    assertEquals("1 il, 1 ay, 1 hft, 1 gün, 1 saat, 1 dəq, 1 san", duration.toString());
 };
 
 function testDurFmtAZFormatFull() {
@@ -130,7 +130,7 @@ function testDurFmtAZFormatFull() {
         hour: 1,
         minute: 1,
         second: 1
-    });
+    });           
     assertEquals("1 il, 1 ay, 1 həftə, 1 gün, 1 saat, 1 dəqiqə, 1 saniyə", duration.toString());
 };
 
@@ -152,7 +152,7 @@ function testDurFmtAZAsyncWithLocale() {
                 hour: 2,
                 minute: 2,
                 second: 2
-            });
+            });           
             assertEquals("2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə, 2 saniyə", duration.toString());
             callbackCalled = true;
         }
@@ -180,7 +180,7 @@ function testDurFmtAZFormatShortClockAsync() {
                 minute: 1,
                 second: 1
             });
-            assertEquals("1i 1a 1h 1g 01:01:01", duration.toString());
+            assertEquals("1 il, 1 ay, 1 hft, 1 gün, 01:01:01", duration.toString());
             callbackCalled = true;
         }
     });

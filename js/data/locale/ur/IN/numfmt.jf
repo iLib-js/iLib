@@ -2,8 +2,12 @@
     "generated": true,
     "numfmt": {
         "script": "arabext",
-        "exponential": "ق",
-        "secgroupSize": 2,
+        "exponential": "×۱۰^",
+        "currencyFormats": {
+            "commonNegative": "‎-‎{s} {n}"
+        },
+        "negativenumFmt": "‎-‎{n}",
+        "negativepctFmt": "‎-‎{n}%",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }
