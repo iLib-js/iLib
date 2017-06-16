@@ -268,47 +268,6 @@ IString._fncs = {
 	
 	/**
 	 * @private
-	 * @param {*} number
-	 * @return {Object}
-	 */
-	calculateNumberDigits: function(number) {
-		var numberToString = number.toString();
-		var parts = [];
-		var numberDigits =  {};
-		var operandSymbol =  {};
-		var integerPart, decimalPartLength, decimalPart;
-
-		if (numberToString.indexOf('.') !== -1) { //decimal
-			parts = numberToString.split('.', 2);
-			numberDigits.integerPart = parseInt(parts[0], 10);
-			numberDigits.decimalPartLength = parts[1].length;
-			numberDigits.decimalPart = parseInt(parts[1], 10);
-
-			operandSymbol.n = parseFloat(number);
-			operandSymbol.i = numberDigits.integerPart;
-			operandSymbol.v = numberDigits.decimalPartLength;
-			operandSymbol.w = numberDigits.decimalPartLength;
-			operandSymbol.f = numberDigits.decimalPart;
-			operandSymbol.t = numberDigits.decimalPart;
-
-		} else {
-			numberDigits.integerPart = number;
-			numberDigits.decimalPartLength = 0;
-			numberDigits.decimalPart = 0;
-
-			operandSymbol.n = parseInt(number, 10);
-			operandSymbol.i = numberDigits.integerPart;
-			operandSymbol.v = 0;
-			operandSymbol.w = 0;
-			operandSymbol.f = 0;
-			operandSymbol.t = 0;
-
-		}
-		return operandSymbol
-	},
-
-	/**
-	 * @private
 	 * @param {number|Object} n
 	 * @param {Array.<number|Array.<number>>|Object} range
 	 * @return {boolean}
@@ -358,6 +317,7 @@ IString._fncs = {
 			return IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);	
 		}
 	},
+	
 	/**
 	 * @private
 	 * @param {Object} rule
@@ -389,6 +349,7 @@ IString._fncs = {
 	},
 	
 	/**
+	 * Return the number being tested.
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
@@ -398,7 +359,76 @@ IString._fncs = {
 		return n;
 	},
 	
-	/**
+    /**
+     * Return the integer part of the number being tested.
+     * @private
+     * @param {*} number
+     * @return {number}
+     */
+    i: function(number) {
+        return Math.trunc(number);
+    },
+    
+    /**
+     * Return the length of the decimal part of the number being tested.
+     * @private
+     * @param {*} number
+     * @return {number}
+     */
+    v: function(number) {
+        var numberToString = number.toString();
+        var parts = [];
+        var length = 0;
+        
+        if (numberToString.indexOf('.') !== -1) { //decimal
+            parts = numberToString.split('.', 2);
+            length = parts[1].length;
+        } // else integer
+        
+        return length;
+    },
+
+    /**
+     * Return the length of the decimal part of the number being tested.
+     * @private
+     * @param {*} number
+     * @return {number}
+     */
+    w: function(number) {
+        return IString._fncs.v(number);
+    },
+
+    /**
+     * Return the visible fraction digits in the number being tested.
+     * @private
+     * @param {*} number
+     * @return {number}
+     */
+    f: function(number) {
+        var numberToString = number.toString();
+        var parts;
+        var digits = 0;
+
+        if (numberToString.indexOf('.') !== -1) { //decimal
+            parts = numberToString.split('.', 2);
+            digits = parseInt(parts[1], 10);
+        } else {
+            digits = 0;
+        }
+        return digits;
+    },
+
+    /**
+     * Return the length of the decimal part of the number being tested.
+     * @private
+     * @param {*} number
+     * @return {number}
+     */
+    t: function(number) {
+        return IString._fncs.f(number);
+    },
+
+    /**
 	 * @private
 	 * @param {Object} rule
 	 * @param {number|Object} n
@@ -415,6 +445,7 @@ IString._fncs = {
 		}
 		return false;
 	},
+	
 	/**
 	 * @private
 	 * @param {Object} rule
@@ -432,6 +463,7 @@ IString._fncs = {
 		}
 		return true;
 	},
+	
 	/**
 	 * @private
 	 * @param {Object} rule
@@ -464,6 +496,7 @@ IString._fncs = {
 			return (valueLeft == valueRight ? true :false);	
 		}
 	},
+	
 	/**
 	 * @private
 	 * @param {Object} rule
@@ -681,7 +714,7 @@ IString.prototype = {
 		var result = undefined;
 		var defaultCase = "";
 		var	numberDigits = {};
-		var operandValue = {};
+		// var operandValue = {};
 	
 		if (this.str.length === 0) {
 			// nothing to do
@@ -712,29 +745,30 @@ IString.prototype = {
 			} else {
 				switch (type) {
 					case 'number':
-						operandValue = IString._fncs.calculateNumberDigits(argIndex);
+					    var number = parseFloat(argIndex);
+						// operandValue = IString._fncs.calculateNumberDigits(argIndex);
 											
 						if (limits[i].substring(0,2) === "<=") {						
 							limit = parseFloat(limits[i].substring(2));
-							if (operandValue.n <= limit) {
+							if (number <= limit) {
 								result = new IString(strings[i]);
 								i = limits.length;
 							}
 						} else if (limits[i].substring(0,2) === ">=") {						
 							limit = parseFloat(limits[i].substring(2));
-							if (operandValue.n >= limit) {
+							if (number >= limit) {
 								result = new IString(strings[i]);
 								i = limits.length;
 							}
 						} else if (limits[i].charAt(0) === "<") {						
 							limit = parseFloat(limits[i].substring(1));
-							if (operandValue.n < limit) {
+							if (number < limit) {
 								result = new IString(strings[i]);
 								i = limits.length;
 							}
 						} else if (limits[i].charAt(0) === ">") {						
 							limit = parseFloat(limits[i].substring(1));
-							if (operandValue.n > limit) {
+							if (number > limit) {
 								result = new IString(strings[i]);
 								i = limits.length;
 							}
@@ -750,7 +784,7 @@ IString.prototype = {
 									var ruleset = ilib.data["plurals_" + this.locale.getLanguage()];
 									if (ruleset) {
 										var rule = ruleset[limits[i]];
-										if (IString._fncs.getValue(rule, operandValue)) {
+										if (IString._fncs.getValue(rule, number)) {
 											result = new IString(strings[i]);
 											i = limits.length;
 										}
@@ -762,11 +796,11 @@ IString.prototype = {
 										// range
 										var start = limits[i].substring(0, dash);
 										var end = limits[i].substring(dash+1);							
-										if (operandValue.n >= parseInt(start, 10) && operandValue.n <= parseInt(end, 10)) {								
+										if (number >= parseInt(start, 10) && number <= parseInt(end, 10)) {								
 											result = new IString(strings[i]);
 											i = limits.length;
 										}
-									} else if (operandValue.n === parseInt(limits[i], 10)) {							
+									} else if (number === parseInt(limits[i], 10)) {							
 										// exact amount
 										result = new IString(strings[i]);
 										i = limits.length;
