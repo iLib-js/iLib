@@ -54,7 +54,7 @@ function testListFmtNumberFormatThree() {
 
     assertNotNull(fmt);
 
-    assertEquals("one, two and three", fmt.format(["one", "two", "three"]));
+    assertEquals("one, two, and three", fmt.format(["one", "two", "three"]));
 }
 
 function testListFmtNumberFormatFour() {
@@ -62,7 +62,15 @@ function testListFmtNumberFormatFour() {
 
     assertNotNull(fmt);
 
-    assertEquals("one, two, three and four", fmt.format(["one", "two", "three", "four"]));
+    assertEquals("one, two, three, and four", fmt.format(["one", "two", "three", "four"]));
+}
+
+function testListFmtNumberFormatTen() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+
+    assertEquals("one, two, three, four, five, six, seven, eight, nine, and ten", fmt.format(["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]));
 }
 
 function testListFmtenGBNumberFormatOne() {
@@ -92,8 +100,7 @@ function testListFmtenGBNumberFormatThree() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("one, two, and three", fmt.format(["one", "two", "three"]));
+    assertEquals("one, two and three", fmt.format(["one", "two", "three"]));
 }
 
 function testListFmtenGBNumberFormatFour() {
@@ -103,8 +110,7 @@ function testListFmtenGBNumberFormatFour() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("one, two, three, and four", fmt.format(["one", "two", "three", "four"]));
+    assertEquals("one, two, three and four", fmt.format(["one", "two", "three", "four"]));
 }
 
 function testListFmtdeDENumberFormatOne() {
@@ -134,8 +140,7 @@ function testListFmtdeDENumberFormatThree() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("eins, zwei, und drei", fmt.format(["eins", "zwei", "drei"]));
+    assertEquals("eins, zwei und drei", fmt.format(["eins", "zwei", "drei"]));
 }
 
 function testListFmtdeDENumberFormatFour() {
@@ -145,8 +150,7 @@ function testListFmtdeDENumberFormatFour() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("eins, zwei, drei, und vier", fmt.format(["eins", "zwei", "drei", "vier"]));
+    assertEquals("eins, zwei, drei und vier", fmt.format(["eins", "zwei", "drei", "vier"]));
 }
 
 function testListFmtzhHansCNNumberFormatOne() {
@@ -176,8 +180,7 @@ function testListFmtzhHansCNNumberFormatThree() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("一， 二和三", fmt.format(["一", "二", "三"]));
+    assertEquals("一、二和三", fmt.format(["一", "二", "三"]));
 }
 
 function testListFmtzhHansCNNumberFormatFour() {
@@ -187,9 +190,9 @@ function testListFmtzhHansCNNumberFormatFour() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("一， 二， 三和四", fmt.format(["一", "二", "三", "四"]));
+    assertEquals("一、二、三和四", fmt.format(["一", "二", "三", "四"]));
 }
+
 
 function testListFmtkoKRNumberFormatOne() {
     var fmt = new ListFmt({
@@ -208,7 +211,7 @@ function testListFmtkoKRNumberFormatTwo() {
 
     assertNotNull(fmt);
 
-    assertEquals("하나 과 둘", fmt.format(["하나", "둘"]));
+    assertEquals("하나 및 둘", fmt.format(["하나", "둘"]));
 }
 
 function testListFmtkoKRNumberFormatThree() {
@@ -218,8 +221,7 @@ function testListFmtkoKRNumberFormatThree() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("하나， 둘，과 셋", fmt.format(["하나", "둘", "셋"]));
+    assertEquals("하나, 둘 및 셋", fmt.format(["하나", "둘", "셋"]));
 }
 
 function testListFmtkoKRNumberFormatFour() {
@@ -229,6 +231,49 @@ function testListFmtkoKRNumberFormatFour() {
 
     assertNotNull(fmt);
 
-    // oxford comma
-    assertEquals("하나, 둘, 셋, 과 넷", fmt.format(["하나", "둘", "셋", "넷"]));
+    assertEquals("하나, 둘, 셋 및 넷", fmt.format(["하나", "둘", "셋", "넷"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatOne() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("하나", fmt.format(["하나"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatTwoUnitStyle() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("하나 둘", fmt.format(["하나", "둘"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatThree() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("하나 둘 셋", fmt.format(["하나", "둘", "셋"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatFour() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("하나 둘 셋 넷", fmt.format(["하나", "둘", "셋", "넷"]));
 }

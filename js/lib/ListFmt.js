@@ -24,7 +24,7 @@ Utils.js
 Locale.js 
 */
 
-// !data listfmt
+// !data list
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -42,8 +42,18 @@ var Locale = require("./Locale.js");
  * <li><i>locale</i> locale to use to format this list, or undefined to use the 
  * default locale
  * 
+ * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the 
+ * formatted string.
+ * 
+ * <ul>
+ * <li><i>short</i> 
+ * <li><i>medium</i>  
+ * <li><i>long</i>  
+ * <li><i>full</i>
+ * </ul>
+ *
  * <li><i>style</i> the name of style to use to format the list, or undefined 
- * to use the default style
+ * to use the default "standard" style. another style option is "units".
  *
  * <li><i>onLoad</i> - a callback function to call when the locale data is fully loaded and the address has been 
  * parsed. When the onLoad option is given, the address formatter object 
@@ -68,19 +78,23 @@ var Locale = require("./Locale.js");
  * @param {Object} options properties that control how this formatter behaves
  */
 var ListFmt = function(options) {
+	this.locale = new Locale();
 	this.sync = true;
-	this.styleName = 'default',
+	this.style = "standard";
+	this.length = "short";
 	this.loadParams = {};
-
-	var locale = new Locale();
-
+	
 	if (options) {
 		if (options.locale) {
-			locale = options.locale;
+			this.locale = options.locale;
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
 			this.sync = (options.sync == true);
+		}
+
+		if (options.length) {
+			this.length = options.length;
 		}
 
 		if (options.loadParams) {
@@ -93,7 +107,7 @@ var ListFmt = function(options) {
 	}
 
 	Utils.loadData({
-		name: "listfmt.json",
+		name: "list.json",
 		object: ListFmt,
 		locale: this.locale, 
 		sync: this.sync,
@@ -118,8 +132,40 @@ var ListFmt = function(options) {
  * @returns {String} a string containing the list of items that
  * is grammatically correct for the locale of this formatter
  */
+
 ListFmt.prototype.format = function(items) {
+	var itemCount = items.length;
+	var fmtTemplate, formattedList;
+	var startFmt, middleFmt, endFmt;
+	var i;
 	
+	fmtTemplate = this.fmtdata[this.style][this.length] || this.fmtdata[this.style];
+	startFmt = fmtTemplate["start"];
+	middleFmt = fmtTemplate["middle"];
+	endFmt = fmtTemplate["end"];
+
+	if (itemCount === 1) {
+		formattedList =  items.toString();
+
+	} else if ( itemCount === 2) {
+		fmtTemplate = fmtTemplate["2"];
+		formattedList = fmtTemplate.replace("{0}", items[0]).replace("{1}", items[1]);
+
+	} else {
+		for(i=itemCount; i >= 0 ; i--){
+			if (i == itemCount) {
+				formattedList = endFmt.replace("{0}", items[itemCount-2]).replace("{1}", items[itemCount-1]);
+				i = i-2;
+			} else if (i == 0) {
+				formattedList = startFmt.replace("{0}",items[i]).replace("{1}", formattedList);
+			}
+			 else {
+				formattedList = middleFmt.replace("{0}",items[i]).replace("{1}", formattedList);
+			}
+		}
+	}
+
+	return formattedList;
 };
 
 /**
@@ -128,7 +174,11 @@ ListFmt.prototype.format = function(items) {
  * @returns {String} the locale of this formatter
  */
 ListFmt.prototype.getLocale = function() {
-	
+	return this.locale.getSpec();
+};
+
+ListFmt.prototype.getStyle = function() {
+	return this.style;
 };
 
 module.exports = ListFmt;
