@@ -204,6 +204,7 @@ function generateSuiteJS(dir, tests) {
         ' */',
         '',
         'var nodeunit = require("nodeunit");',
+        'var assert = require("../test/assertSupplement.js");',
         'var modules = {}',
         'var suites = ['
     ];
@@ -257,6 +258,7 @@ function generateSuiteHTML(dir, tests) {
         '        var module = {};',
         '    </script>',
         '    <script src="/test/nodeunit/nodeunit.js"></script>',
+        '    <script src="/test/test/assertSupplement.js"></script>',
         '    <script src="/output/js/ilib-ut.js"></script>',
         '    <script>',
         '        module = {',

@@ -441,9 +441,15 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
 };
 
 /**
- * Performs a test to see if the given value is in object. If the
- * difference between the arguments is within that tolerance, the assertion
- * passes. Otherwise, it fails.
+ * Check the actual result to see that every property that exists in the expected
+ * object also exists in the actual object and that it has the same value. If the
+ * expected object is a string, it names the property that should exist without
+ * giving the value. If the expected object is an array, each item in the expected
+ * array should exist in the actual array. If expected is an object, then the actual
+ * object must have all properties that the expected object has and with the same
+ * value. The actual object may have more properties that do not exist in 
+ * expected, but this function
+ * is used to test for only the properties that the unit test cares about.
  *
  * @example // passing assertion
  * assert.contains({a: 2, b: 3}, "b");
@@ -455,15 +461,53 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
  */
 assert.contains = function(actual, expected, message) {
     if (isArray(actual)) {
-		if (actual.indexOf(expected) < 0) {
-			fail(actual, expected, message, "contains", assert.contains);
-		}
+        if (typeof(expected) === "undefined") {
+            fail("Invalid expected argument to contains.");
+        }
+        
+        if (typeof(expected) === "object") {
+            fail(actual, expected, message + " Expected is object and actual is array.", "contains", assert.contains);
+        } else if (isArray(expected)) {
+            for (var i = 0; i < expected.length; i++) {
+                if (actual.indexOf(expected[i]) < 0) {
+                    fail(actual, expected, message + " Actual array does not contain array index " + i + " of expected.", "contains", assert.contains);
+                }
+            }
+        } else {
+            // primitive type -- check to see if it is in the actual array
+            if (actual.indexOf(expected) < 0) {
+                fail(actual, expected, message + " Expected value " + expected + " is not contained in the array in actual.", "contains", assert.contains);
+            }
+        }
     } else if (typeof(actual) === "object") {
-		if (!actual.hasOwnProperty(expected)) {
-			fail(actual, expected, message, "contains", assert.contains);
-		}
-	} else {
-    	fail("Invalid expected argument to contains.");
-	}
+        if (typeof(expected) === "object") {
+            for (p in expected) {
+                if (p && expected.hasOwnProperty(p)) {
+                    if (typeof(actual[p]) === 'undefined') {
+                        // "actual does not contain expected properties";
+                        fail(actual[p], expected[p], message + " Expected contains property " + p + " and actual does not.", "contains", assert.contains);
+                    } else if (typeof(expected[p]) === 'object') {
+                        if (!_deepEqual(actual[p], expected[p])) {
+                            fail(actual, expected, message, "contains", assert.notDeepEqual);
+                        }
+                    } else {
+                        if (actual[p] != expected[p]) {
+                            fail(actual, expected, message, "contains", assert.notDeepEqual);
+                        }
+                    }
+                }
+            }
+        } else if (isArray(expected)) {
+            fail(actual, expected, message + " Expected is array and actual is object.", "contains", assert.contains);
+        } else if (typeof(expected) === "string") {
+            if (typeof(actual[p]) === "undefined") {
+                fail(actual[p], expected[p], message + " Expected is looking for property " + expected + " and actual does not contain it.", "contains", assert.contains);
+            }
+        } else {
+            fail("Invalid expected argument to contains.");
+        }
+    } else {
+        fail("Invalid expected argument to contains.");
+    }
     return;
 };
