@@ -78,13 +78,13 @@ function isArray(object) {
  */
 assert.equalIgnoringOrder = function(actual, expected, message) {
     if (!isArray(expected)) {
-        fail("Invalid expected argument to equalIgnoringOrder.");
+        assert.fail("Invalid expected argument to equalIgnoringOrder.");
     } else if (isArray(actual)) {
         if (isEqualIgnoringOrder(actual, expected) === false) {
-            fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
+            assert.fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
         }
     } else {
-        fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
+        assert.fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
     }
     return;
 };
@@ -105,9 +105,9 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
  */
 assert.roughlyEqual = function(actual, expected, tolerance, message) {
     if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
-        fail("Invalid expected argument to roughlyEquals.");
+        assert.fail("Invalid expected argument to roughlyEquals.");
     } else if (Math.abs(expected - actual) >= tolerance) {
-        fail(actual, expected, message, "roughlyEquals", assert.roughlyEquals);
+        assert.fail(actual, expected, message, "roughlyEqual", assert.roughlyEqual);
     }
     return;
 };
@@ -128,27 +128,28 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
  *
  * @param {Object} actual The actual value to test which may be an array or an object
  * @param {*} expected The name of the property that is expected to be within the object in the actual parameter
+ * @param {string} message message to print when the assertion fails
  * @throws ArgumentsError
  * @throws AssertionError
  */
 assert.contains = function(actual, expected, message) {
     if (isArray(actual)) {
         if (typeof(expected) === "undefined") {
-            fail("Invalid expected argument to contains.");
+            assert.fail("Invalid expected argument to contains.");
         }
         
         if (typeof(expected) === "object") {
-            fail(actual, expected, message + " Expected is object and actual is array.", "contains", assert.contains);
+            assert.fail(actual, expected, message + " Expected is object and actual is array.", "contains", assert.contains);
         } else if (isArray(expected)) {
             for (var i = 0; i < expected.length; i++) {
                 if (actual.indexOf(expected[i]) < 0) {
-                    fail(actual, expected, message + " Actual array does not contain array index " + i + " of expected.", "contains", assert.contains);
+                    assert.fail(actual, expected, message + " Actual array does not contain array index " + i + " of expected.", "contains", assert.contains);
                 }
             }
         } else {
             // primitive type -- check to see if it is in the actual array
             if (actual.indexOf(expected) < 0) {
-                fail(actual, expected, message + " Expected value " + expected + " is not contained in the array in actual.", "contains", assert.contains);
+                assert.fail(actual, expected, message + " Expected value " + expected + " is not contained in the array in actual.", "contains", assert.contains);
             }
         }
     } else if (typeof(actual) === "object") {
@@ -157,29 +158,29 @@ assert.contains = function(actual, expected, message) {
                 if (p && expected.hasOwnProperty(p)) {
                     if (typeof(actual[p]) === 'undefined') {
                         // "actual does not contain expected properties";
-                        fail(actual[p], expected[p], message + " Expected contains property " + p + " and actual does not.", "contains", assert.contains);
+                        assert.fail(actual[p], expected[p], message + " Expected contains property " + p + " and actual does not.", "contains", assert.contains);
                     } else if (typeof(expected[p]) === 'object') {
                         if (!_deepEqual(actual[p], expected[p])) {
-                            fail(actual, expected, message, "contains", assert.notDeepEqual);
+                            assert.fail(actual, expected, message, "contains", assert.contains);
                         }
                     } else {
                         if (actual[p] != expected[p]) {
-                            fail(actual, expected, message, "contains", assert.notDeepEqual);
+                            assert.fail(actual, expected, message, "contains", assert.contains);
                         }
                     }
                 }
             }
         } else if (isArray(expected)) {
-            fail(actual, expected, message + " Expected is array and actual is object.", "contains", assert.contains);
+            assert.fail(actual, expected, message + " Expected is array and actual is object.", "contains", assert.contains);
         } else if (typeof(expected) === "string") {
             if (typeof(actual[p]) === "undefined") {
-                fail(actual[p], expected[p], message + " Expected is looking for property " + expected + " and actual does not contain it.", "contains", assert.contains);
+                assert.fail(actual[p], expected[p], message + " Expected is looking for property " + expected + " and actual does not contain it.", "contains", assert.contains);
             }
         } else {
-            fail("Invalid expected argument to contains.");
+            assert.fail("Invalid expected argument to contains.");
         }
     } else {
-        fail("Invalid expected argument to contains.");
+        assert.fail("Invalid expected argument to contains.");
     }
     return;
 };

@@ -18,6 +18,7 @@
  */
 
 var nodeunit = require("nodeunit");
+var assert = require("../../test/assertSupplement.js");
 var modules = {}
 var suites = [
     "testcharmap.js",
