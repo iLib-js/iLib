@@ -42,7 +42,7 @@ function isEqualIgnoringOrder(actual, expected) {
         var found = false;
         for (var j = 0; j < actual.length; j++) {
             try {
-                if (_deepEqual(actual[j], expected[i])) {
+                if (actual[j] === expected[i]) {
                     found = true;
                     break;
                 }

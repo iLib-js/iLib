@@ -390,7 +390,7 @@ module.exports.testtolower = {
             locale: "ha-NE"
         });
          test.equal(mapper.map("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ"), "abɓcdɗefghijkƙlmnorstuwyƴz");
-        test.done();
+         test.done();
     },
     
     testToLower_ha_NG1: function(test) {
@@ -400,7 +400,7 @@ module.exports.testtolower = {
             locale: "ha-NG"
         });
          test.equal(mapper.map("ABƁCDƊEFGHIJKƘLMNORSTUWYƳZ"), "abɓcdɗefghijkƙlmnorstuwyƴz");
-        test.done();
+         test.done();
     }
     
 };

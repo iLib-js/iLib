@@ -26,6 +26,7 @@ var util = require('util');
 var reVar = /^var (\w*) = require\("([^)]*)"\);/;
 var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
+var reLoops = /^\s*(for|while|\} catch|\w+\.forEach)\W/;
 
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
@@ -59,8 +60,8 @@ function convertFile(dir, fileName, outFileName) {
 	var lines = data.split("\n");
 	
 	var i = 0, j;
-	var match, firstFunction = true;
-	var numberOfTests, firstLineOfTest;
+	var match, firstFunction = true, foundLoops = false;
+	var numberOfTests, firstLineOfTest, lastAssertion;
 	
 	while (i < lines.length) {
         if (lines[i]) {
@@ -95,15 +96,15 @@ function convertFile(dir, fileName, outFileName) {
 					    '',
                         '    ' + match[1] + ': function(test) {'
 					);
-					numberOfTests = 0;
 					i += 11;
-					firstLineOfTest = i;
 				} else {
 					lines[i] = '    ' + match[1] + ': function(test) {';
-					numberOfTests = 0;
 					i++;
-					firstLineOfTest = i;
 				}
+                numberOfTests = 0;
+                firstLineOfTest = i;
+				foundLoops = false;
+				lastAssertion = -1;
 			} else if (firstFunction) {
 			    match = reCopyright.exec(lines[i]);
 			    if (match !== null) {
@@ -129,9 +130,23 @@ function convertFile(dir, fileName, outFileName) {
 			    }
 			    i++;
             } else if (lines[i][0] === '}') {
-                lines.splice(i, 1, '        test.done();', '    },');
-                lines.splice(firstLineOfTest, 0, '        test.expect(' + numberOfTests + ');');
-                i += 3;
+                if (lastAssertion > -1 && !foundLoops) {
+                    lines[i] = '    },';
+                    var match = /^(\s+)/.exec(lines[lastAssertion]);
+                    var indent = "        ";
+                    if (match !== null) {
+                        var indent = match[1];
+                    }
+                    lines.splice(lastAssertion + 1, 0, indent + 'test.done();');
+                } else {
+                    lines.splice(i, 1, '        test.done();', '    },');
+                }
+                i += 2;
+                
+                if (!foundLoops) {
+                    lines.splice(firstLineOfTest, 0, '        test.expect(' + numberOfTests + ');');
+                    i++;
+                }
 			} else {
 			    var mapped = false;
 				for (j = 0; j < assertMappings.length; j++) {
@@ -141,8 +156,14 @@ function convertFile(dir, fileName, outFileName) {
 						lines[i] = lines[i].replace(re, assertMappings[j].replace);
 						numberOfTests++;
 						mapped = true;
+						lastAssertion = i;
 						break;
 					}
+				}
+				
+				if (reLoops.exec(lines[i]) !== null) {
+				    // when there's a loop, we don't know how many tests to expect, so leave off the test.expect() call
+				    foundLoops = true;
 				}
 				
 				if (!mapped) {
@@ -260,7 +281,6 @@ function generateSuiteHTML(dir, tests) {
         '        var module = {};',
         '    </script>',
         '    <script src="/test/nodeunit/nodeunit.js"></script>',
-        '    <script src="/test/test/assertSupplement.js"></script>',
         '    <script src="/output/js/ilib-ut.js"></script>',
         '    <script>',
         '        module = {',
@@ -302,7 +322,7 @@ suites.forEach(function (dir) {
 			tests.forEach(function(test) {
 				if (test.substr(-3) === ".js" && (test.substring(0, 4) === "test" || testDir === "phone/test") && test.indexOf("uite") === -1) {
 				    outFileName = (test.substring(0, 4) !== "test") ? "test" + test :  test;
-				    suite.push(test);
+				    suite.push(outFileName);
 					var full = path.join(testDir, test);
 					stat = fs.statSync(full);
 					if (stat && stat.isFile()) {
