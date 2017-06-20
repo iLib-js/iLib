@@ -485,7 +485,6 @@ function testDurFmtARFormatFull11() {
 };
 
 function testDurFmtARAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -503,15 +502,11 @@ function testDurFmtARAsync1() {
     	    	second: 1
     	    });
     	    assertEquals("‏سنة، وشهر، وأسبوع، ويوم، وساعة، ودقيقة، وثانية", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsyncWithLocale1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -529,15 +524,11 @@ function testDurFmtARAsyncWithLocale1() {
     	    	second: 1
     	    });
     	    assertEquals("‏سنة، وشهر، وأسبوع، ويوم، وساعة، ودقيقة، وثانية", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsync2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -555,16 +546,11 @@ function testDurFmtARAsync2() {
     	    	second: 2
     	    });
     	    assertEquals("‏سنتان، وشهران، وأسبوعان، ويومان، وساعتان، ودقيقتان، وثانيتان", duration.toString());
-
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsyncWithLocale2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -582,15 +568,11 @@ function testDurFmtARAsyncWithLocale2() {
     	    	second: 2
     	    });
     	    assertEquals("‏سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsync3() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -608,15 +590,11 @@ function testDurFmtARAsync3() {
     	    	second: 3
     	    });
     	    assertEquals("‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوان", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsyncWithLocale3() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -634,15 +612,11 @@ function testDurFmtARAsyncWithLocale3() {
     	    	second: 3
     	    });
     	    assertEquals("‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوان", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsync11() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -660,15 +634,11 @@ function testDurFmtARAsync11() {
     	    	second: 11
     	    });
     	    assertEquals("‏١١ سنة، و١١ شهرًا، و١١ أسبوعًا، و١١ يومًا، و١١ ساعة، و١١ دقيقة، و١١ ثانية", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsyncWithLocale11() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -686,15 +656,11 @@ function testDurFmtARAsyncWithLocale11() {
     	    	second: 11
     	    });
     	    assertEquals("‏١١ سنة، و١١ شهرًا، و١١ أسبوعًا، و١١ يومًا، و١١ ساعة، و١١ دقيقة، و١١ ثانية", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARFormatShortClockAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
@@ -713,10 +679,8 @@ function testDurFmtARFormatShortClockAsync1() {
     	    	second: 1
     	    });
     	    assertEquals("‏١ سنة، ١ شهر، ١ أ، ١ ي، ‏١:٠١:٠١", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };
 
 
@@ -845,7 +809,6 @@ function testDurFmtARFormatWesternFull1() {
 
 
 function testDurFmtARAsync2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -864,15 +827,11 @@ function testDurFmtARAsync2() {
     	    	second: 2
     	    });
     	    assertEquals("‏سنتان، وشهران، وأسبوعان، ويومان، وساعتان، ودقيقتان، وثانيتان", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARAsyncWithLocale2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "full",
@@ -891,15 +850,11 @@ function testDurFmtARAsyncWithLocale2() {
     	    	second: 2
     	    });
     	    assertEquals("‏سنتان، وشهران، وأسبوعان، ويومان، وساعتان، ودقيقتان، وثانيتان", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtARFormatWesternShortClockAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ar-SA",
     	length: "short",
@@ -919,8 +874,6 @@ function testDurFmtARFormatWesternShortClockAsync1() {
     	    	second: 1
     	    });          
     	    assertEquals("‏1 سنة، 1 شهر، 1 أ، 1 ي، ‏1:01:01", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };

@@ -552,11 +552,8 @@ function testLocaleGetAvailableLocalesDefault() {
 }
 
 function testLocaleGetAvailableLocalesCallback() {
-	var callbackcalled = false;
 	Locale.getAvailableLocales(true, function(locales) {
-		callbackcalled = true;
 		assertNotUndefined(locales);
 		assertTrue(locales.length > 0);
 	});
-	assertTrue(callbackcalled);
 }

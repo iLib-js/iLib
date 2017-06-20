@@ -25,6 +25,75 @@ var IString = require("./../lib/IString.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateFactory = require("./../lib/DateFactory.js");
 
+function getAvailableMocker(paths, sync, params, callback) {
+}
+getAvailableMocker.prototype = new ilib.Loader();
+getAvailableMocker.prototype.constructor = getAvailableMocker;
+getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
+    var ret = {"resources": "*"}; 
+    if (typeof(cb) === 'function') {
+        cb(ret);
+    }
+    return ret;
+};
+
+function mockLoader (paths, sync, params, callback) {
+    var data = [];
+    
+    data.push(ilib.data.localeinfo); // for the generic, shared stuff
+    paths.shift();
+    paths.forEach(function (path) {
+        data.push((path.indexOf('zz') === -1) ? undefined : {
+            "clock": "24",
+            "currencyFormats": {
+                "common": "common {s} {n}",
+                "iso": "iso {s} {n}"
+            },
+            "units": "metric",
+            "calendar": "hebrew",
+            "firstDayOfWeek": 4,
+            "currency": "JPY",
+            "timezone": "Asia/Tokyo",
+            "numfmt": {
+                "decimalChar": ".",
+                "groupChar": ",",
+                "groupSize": 4,
+                "pctFmt": "{n} %",
+                "pctChar": "%"
+            },
+            "locale": "zxx-XX"
+        });
+    });
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);  
+    }
+    return data;
+}
+
+function mockLoader2(paths, sync, params, callback) {
+    var data = [];
+    
+    data.push({
+        "o": "-8:0",
+        "f": "{c}",
+        "s": {
+            "c": "PDT",
+            "j": 2456725.9166666665,
+            "v": 60
+        },
+        "e": {
+            "c": "PST",
+            "j": 2456963.875
+        }
+    });
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);  
+    }
+    return data;
+}
+
+
+
 function testTZConstructorEmpty() {
     var tz = new TimeZone();
     assertNotNull(tz);
@@ -827,18 +896,6 @@ function testTZGetAvailableIdsNoFilterContainsLocal() {
     assertTrue(zones.indexOf("local") != -1);
 }
 
-function getAvailableMocker(paths, sync, params, callback) {
-}
-getAvailableMocker.prototype = new ilib.Loader();
-getAvailableMocker.prototype.constructor = getAvailableMocker;
-getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
-	var ret = {"resources": "*"}; 
-	if (typeof(cb) === 'function') {
-		cb(ret);
-	}
-	return ret;
-};
-
 function testGetAvailableTimeZonesWithLoader() {
 	var temp = ilib._load;
 	ilib.setLoaderCallback(new getAvailableMocker());
@@ -1342,39 +1399,6 @@ function testTZGetTimeZoneForLocaleUnknown() {
     assertEquals("Etc/UTC", tz.getId());
 }
 
-function mockLoader (paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.localeinfo); // for the generic, shared stuff
-	paths.shift();
-	paths.forEach(function (path) {
-		data.push((path.indexOf('zz') === -1) ? undefined : {
-			"clock": "24",
-			"currencyFormats": {
-				"common": "common {s} {n}",
-				"iso": "iso {s} {n}"
-			},
-			"units": "metric",
-			"calendar": "hebrew",
-			"firstDayOfWeek": 4,
-			"currency": "JPY",
-			"timezone": "Asia/Tokyo",
-			"numfmt": {
-				"decimalChar": ".",
-				"groupChar": ",",
-				"groupSize": 4,
-				"pctFmt": "{n} %",
-				"pctChar": "%"
-			},
-			"locale": "zxx-XX"
-		});
-	});
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -1443,28 +1467,6 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
     });
 }
 
-function mockLoader2(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push({
-		"o": "-8:0",
-		"f": "{c}",
-		"s": {
-			"c": "PDT",
-			"j": 2456725.9166666665,
-			"v": 60
-		},
-		"e": {
-			"c": "PST",
-			"j": 2456963.875
-		}
-	});
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testTZGetTimeZoneWithLoaderAsynch() {
 	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
@@ -1472,9 +1474,9 @@ function testTZGetTimeZoneWithLoaderAsynch() {
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
+            ilib.setLoaderCallback(oldloader);
     		assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
-    	    ilib.setLoaderCallback(oldloader);
     	}
     });
     ilib.setLoaderCallback(oldloader);
@@ -1487,7 +1489,9 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
-    		assertNotNull(tz);
+    	    ilib.setLoaderCallback(oldloader);
+
+    	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	    ilib.setLoaderCallback(oldloader);
     	    
@@ -1498,7 +1502,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
     	    assertFalse(tz.inDaylightTime(d));
     	}
     });
-    ilib.setLoaderCallback(oldloader);
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
@@ -1508,7 +1511,9 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
-    		assertNotNull(tz);
+    	    ilib.setLoaderCallback(oldloader);
+
+    	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	    ilib.setLoaderCallback(oldloader);
     	    
@@ -1519,7 +1524,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
     	    assertTrue(tz.inDaylightTime(d));
     	}
     });
-    ilib.setLoaderCallback(oldloader);
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
@@ -1550,7 +1554,9 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
     	id: "America/Los_Angeles",
     	sync: false,
     	onLoad: function (tz) {
-    		assertNotNull(tz);
+    	    ilib.setLoaderCallback(oldloader);
+
+    	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	    ilib.setLoaderCallback(oldloader);
 
@@ -1561,7 +1567,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
     	    assertFalse(tz.inDaylightTime(d));
     	}
     });
-    ilib.setLoaderCallback(oldloader);
 }
 
 function testTZGetCountry1() {

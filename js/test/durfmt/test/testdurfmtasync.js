@@ -20,7 +20,6 @@
 var DurationFmt = require("./../lib/DurationFmt.js");
 
 function testDurFmtAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	length: "full",
     	sync: false,
@@ -45,7 +44,6 @@ function testDurFmtAsync() {
 };
 
 function testDurFmtAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fr-FR",
     	length: "full",
@@ -70,7 +68,6 @@ function testDurFmtAsyncWithLocale() {
 };
 
 function testDurFmtFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fr-FR",
     	length: "short",
@@ -95,7 +92,6 @@ function testDurFmtFormatShortClockAsync() {
 };
 
 function testDurFmtBGAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bg-BG",
     	length: "full",
@@ -119,7 +115,6 @@ function testDurFmtBGAsync() {
 };
 
 function testDurFmtBGAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bg-BG",
     	length: "full",
@@ -143,7 +138,6 @@ function testDurFmtBGAsyncWithLocale() {
 };
 
 function testDurFmtBSLatnAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bs-Latn-BA",
     	length: "full",
@@ -167,7 +161,6 @@ function testDurFmtBSLatnAsyncWithLocale() {
 };
 
 function testDurFmtCSAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "cs-CZ",
     	length: "full",
@@ -191,7 +184,6 @@ function testDurFmtCSAsyncWithLocale() {
 };
 
 function testDurFmtDAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "da-DK",
     	length: "full",
@@ -215,7 +207,6 @@ function testDurFmtDAAsyncWithLocale() {
 };
 
 function testDurFmtGRAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "el-GR",
     	length: "full",
@@ -239,7 +230,6 @@ function testDurFmtGRAsyncWithLocale() {
 };
 
 function testDurFmtESAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "es-CO",
     	length: "full",
@@ -263,7 +253,6 @@ function testDurFmtESAsyncWithLocale() {
 };
 
 function testDurFmtETAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "et-EE",
     	length: "full",
@@ -287,7 +276,6 @@ function testDurFmtETAsyncWithLocale() {
 };
 
 function testDurFmtFAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fa-IR",
     	length: "full",
@@ -311,7 +299,6 @@ function testDurFmtFAAsyncWithLocale() {
 };
 
 function testDurFmtFIAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fi-FI",
     	length: "full",
@@ -338,7 +325,6 @@ function testDurFmtFIAsyncWithLocale() {
 //test cases for fr-CA
 
 function testDurFmtFRCAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fr-CA",
     	length: "full",
@@ -362,7 +348,6 @@ function testDurFmtFRCAAsyncWithLocale() {
 };
 
 function testDurFmtFRCAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "fr-CA",
     	length: "short",
@@ -508,7 +493,6 @@ function testDurFmtGAFormatFull() {
 
 
 function testDurFmtGAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ga-IE",
     	length: "full",
@@ -532,7 +516,6 @@ function testDurFmtGAAsyncWithLocale() {
 };
 
 function testDurFmtGAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ga-IE",
     	length: "short",
@@ -558,7 +541,6 @@ function testDurFmtGAFormatShortClockAsync() {
 //test cases for hebrew
 
 function testDurFmtHEAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "he-IL",
     	length: "full",
@@ -582,7 +564,6 @@ function testDurFmtHEAsyncWithLocale() {
 };
 
 function testDurFmtHEFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "he-IL",
     	length: "short",
@@ -609,7 +590,6 @@ function testDurFmtHEFormatShortClockAsync() {
 //test cases for hi-IN
 
 function testDurFmtHIAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hi-IN",
     	length: "full",
@@ -633,7 +613,6 @@ function testDurFmtHIAsyncWithLocale() {
 };
 
 function testDurFmtHIFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hi-IN",
     	length: "short",
@@ -659,7 +638,6 @@ function testDurFmtHIFormatShortClockAsync() {
 //test cases for marathi mr-IN
 
 function testDurFmtMRAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mr-IN",
     	length: "full",
@@ -684,7 +662,6 @@ function testDurFmtMRAsyncWithLocale() {
 
 
 function testDurFmtMRFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mr-IN",
     	length: "short",
@@ -710,7 +687,6 @@ function testDurFmtMRFormatShortClockAsync() {
 //testa cases for Telugu (te-IN)
 
 function testDurFmtTEAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "te-IN",
     	length: "full",
@@ -734,7 +710,6 @@ function testDurFmtTEAsyncWithLocale() {
 };
 
 function testDurFmtTEFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "te-IN",
     	length: "short",
@@ -761,7 +736,6 @@ function testDurFmtTEFormatShortClockAsync() {
 //test cases for kannada(kn-IN)
 
 function testDurFmtKNAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "kn-IN",
     	length: "full",
@@ -785,7 +759,6 @@ function testDurFmtKNAsyncWithLocale() {
 };
 
 function testDurFmtKNFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "kn-IN",
     	length: "short",
@@ -812,7 +785,6 @@ function testDurFmtKNFormatShortClockAsync() {
 //test cases for tamil(ta-IN)
 
 function testDurFmtTAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ta-IN",
     	length: "full",
@@ -836,7 +808,6 @@ function testDurFmtTAAsyncWithLocale() {
 };
 
 function testDurFmtTAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ta-IN",
     	length: "short",
@@ -862,7 +833,6 @@ function testDurFmtTAFormatShortClockAsync() {
 //test cases for Malaylam(ml-IN)
 
 function testDurFmtMLAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ml-IN",
     	length: "full",
@@ -886,7 +856,6 @@ function testDurFmtMLAsyncWithLocale() {
 };
 
 function testDurFmtMLFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ml-IN",
     	length: "short",
@@ -912,7 +881,6 @@ function testDurFmtMLFormatShortClockAsync() {
 //test cases for Gujrati(gu-IN)
 
 function testDurFmtGUAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "gu-IN",
     	length: "full",
@@ -936,7 +904,6 @@ function testDurFmtGUAsyncWithLocale() {
 };
 
 function testDurFmtGUFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "gu-IN",
     	length: "short",
@@ -963,7 +930,6 @@ function testDurFmtGUFormatShortClockAsync() {
 //test cases for Bengali(bn-IN)
 
 function testDurFmtBNAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bn-IN",
     	length: "full",
@@ -987,7 +953,6 @@ function testDurFmtBNAsyncWithLocale() {
 };
 
 function testDurFmtBNFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
@@ -1011,7 +976,6 @@ function testDurFmtBNFormatShortClockAsync() {
 };
 
 function testDurFmtBNFormatShortClockAsyncWestern() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "bn-IN",
     	length: "short",
@@ -1039,7 +1003,6 @@ function testDurFmtBNFormatShortClockAsyncWestern() {
 /*
 
 function testDurFmtASAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "as-IN",
     	length: "full",
@@ -1063,7 +1026,6 @@ function testDurFmtASAsyncWithLocale() {
 };
 
 function testDurFmtASFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "as-IN",
     	length: "short",
@@ -1090,7 +1052,6 @@ function testDurFmtASFormatShortClockAsync() {
 //test cases for Punjabi(pa-Guru-IN)
 
 function testDurFmtPAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pa-Guru-IN",
     	length: "full",
@@ -1114,7 +1075,6 @@ function testDurFmtPAAsyncWithLocale() {
 };
 
 function testDurFmtPAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pa-Guru-IN",
     	length: "short",
@@ -1140,7 +1100,6 @@ function testDurFmtPAFormatShortClockAsync() {
 //test cases for Urdu(ur-IN)
 
 function testDurFmtURAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ur-IN",
     	length: "full",
@@ -1164,7 +1123,6 @@ function testDurFmtURAsyncWithLocale() {
 };
 
 function testDurFmtURAsyncWithLocaleWestern() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ur-IN",
     	length: "full",
@@ -1189,7 +1147,6 @@ function testDurFmtURAsyncWithLocaleWestern() {
 };
 
 function testDurFmtURFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ur-IN",
     	length: "short",
@@ -1215,7 +1172,6 @@ function testDurFmtURFormatShortClockAsync() {
 //test cases for croation
 
 function testDurFmtHRAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hr-HR",
     	length: "full",
@@ -1239,7 +1195,6 @@ function testDurFmtHRAsyncWithLocale() {
 };
 
 function testDurFmtHRFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hr-HR",
     	length: "short",
@@ -1265,7 +1220,6 @@ function testDurFmtHRFormatShortClockAsync() {
 //test cases for hungarian
 
 function testDurFmtHUAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hu-HU",
     	length: "full",
@@ -1289,7 +1243,6 @@ function testDurFmtHUAsyncWithLocale() {
 };
 
 function testDurFmtHUFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "hu-HU",
     	length: "short",
@@ -1316,7 +1269,6 @@ function testDurFmtHUFormatShortClockAsync() {
 //test cases for indonesia
 
 function testDurFmtIDAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "id-ID",
     	length: "full",
@@ -1340,7 +1292,6 @@ function testDurFmtIDAsyncWithLocale() {
 };
 
 function testDurFmtIDFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "id-ID",
     	length: "short",
@@ -1367,7 +1318,6 @@ function testDurFmtIDFormatShortClockAsync() {
 //test cases for Italy
 
 function testDurFmtITAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "it-IT",
     	length: "full",
@@ -1391,7 +1341,6 @@ function testDurFmtITAsyncWithLocale() {
 };
 
 function testDurFmtITFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "it-IT",
     	length: "short",
@@ -1418,7 +1367,6 @@ function testDurFmtITFormatShortClockAsync() {
 //test cases for japanese
 
 function testDurFmtJAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ja-JP",
     	length: "full",
@@ -1443,7 +1391,6 @@ function testDurFmtJAAsyncWithLocale() {
 };
 
 function testDurFmtJAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ja-JP",
     	length: "short",
@@ -1470,7 +1417,6 @@ function testDurFmtJAFormatShortClockAsync() {
 //test cases for kk-Cyrl-KZ
 
 function testDurFmtKKAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "full",
@@ -1494,7 +1440,6 @@ function testDurFmtKKAsyncWithLocale() {
 };
 
 function testDurFmtKKFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "kk-Cyrl-KZ",
     	length: "short",
@@ -1521,7 +1466,6 @@ function testDurFmtKKFormatShortClockAsync() {
 //test cases for ko-KR
 
 function testDurFmtKOAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ko-KR",
     	length: "full",
@@ -1546,7 +1490,6 @@ function testDurFmtKOAsyncWithLocale() {
 };
 
 function testDurFmtKOFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ko-KR",
     	length: "short",
@@ -1570,7 +1513,6 @@ function testDurFmtKOFormatShortClockAsync() {
 };
 
 function testDurFmtKUAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "full",
@@ -1594,7 +1536,6 @@ function testDurFmtKUAsyncWithLocale() {
 };
 
 function testDurFmtKUFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ku-Arab-IQ",
     	length: "short",
@@ -1620,7 +1561,6 @@ function testDurFmtKUFormatShortClockAsync() {
 //test cases for lt-LT
 
 function testDurFmtLTAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "lt-LT",
     	length: "full",
@@ -1644,7 +1584,6 @@ function testDurFmtLTAsyncWithLocale() {
 };
 
 function testDurFmtLTFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "lt-LT",
     	length: "short",
@@ -1670,7 +1609,6 @@ function testDurFmtLTFormatShortClockAsync() {
 //test cases for lv-LV
 
 function testDurFmtLVAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "lv-LV",
     	length: "full",
@@ -1694,7 +1632,6 @@ function testDurFmtLVAsyncWithLocale() {
 };
 
 function testDurFmtLVFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "lv-LV",
     	length: "short",
@@ -1720,7 +1657,6 @@ function testDurFmtLVFormatShortClockAsync() {
 //test cases for mk-MK
 
 function testDurFmtMKAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mk-MK",
     	length: "full",
@@ -1744,7 +1680,6 @@ function testDurFmtMKAsyncWithLocale() {
 };
 
 function testDurFmtMKFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mk-MK",
     	length: "short",
@@ -1770,7 +1705,6 @@ function testDurFmtMKFormatShortClockAsync() {
 //test cases for mn-Cyrl-MN
 
 function testDurFmtMNAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "full",
@@ -1794,7 +1728,6 @@ function testDurFmtMNAsyncWithLocale() {
 };
 
 function testDurFmtMNFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "mn-Cyrl-MN",
     	length: "short",
@@ -1820,7 +1753,6 @@ function testDurFmtMNFormatShortClockAsync() {
 //test cases for ms-Latn-MY
 
 function testDurFmtMSAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ms-Latn-MY",
     	length: "full",
@@ -1844,7 +1776,6 @@ function testDurFmtMSAsyncWithLocale() {
 };
 
 function testDurFmtMSFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ms-Latn-MY",
     	length: "short",
@@ -1870,7 +1801,6 @@ function testDurFmtMSFormatShortClockAsync() {
 //test cases for nb-NO
 
 function testDurFmtNBAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "nb-NO",
     	length: "full",
@@ -1894,7 +1824,6 @@ function testDurFmtNBAsyncWithLocale() {
 };
 
 function testDurFmtNBFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "nb-NO",
     	length: "short",
@@ -1920,7 +1849,6 @@ function testDurFmtNBFormatShortClockAsync() {
 //test cases for nl-NL
 
 function testDurFmtNLAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "nl-NL",
     	length: "full",
@@ -1944,7 +1872,6 @@ function testDurFmtNLAsyncWithLocale() {
 };
 
 function testDurFmtNLFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "nl-NL",
     	length: "short",
@@ -1970,7 +1897,6 @@ function testDurFmtNLFormatShortClockAsync() {
 //test cases for pl-PL
 
 function testDurFmtPLFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pl-PL",
     	length: "short",
@@ -1996,7 +1922,6 @@ function testDurFmtPLFormatShortClockAsync() {
 //test cases for pt-BR
 
 function testDurFmtPTAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pt-BR",
     	length: "full",
@@ -2020,7 +1945,6 @@ function testDurFmtPTAsyncWithLocale() {
 };
 
 function testDurFmtPTFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pt-BR",
     	length: "short",
@@ -2046,7 +1970,6 @@ function testDurFmtPTFormatShortClockAsync() {
 //test cases for ro-RO
 
 function testDurFmtROAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ro-RO",
     	length: "full",
@@ -2070,7 +1993,6 @@ function testDurFmtROAsyncWithLocale() {
 };
 
 function testDurFmtROFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ro-RO",
     	length: "short",
@@ -2096,7 +2018,6 @@ function testDurFmtROFormatShortClockAsync() {
 //test cases for ru-RU
 
 function testDurFmtRUAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ru-RU",
     	length: "full",
@@ -2120,7 +2041,6 @@ function testDurFmtRUAsyncWithLocale() {
 };
 
 function testDurFmtRUFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ru-RU",
     	length: "short",
@@ -2146,7 +2066,6 @@ function testDurFmtRUFormatShortClockAsync() {
 //test cases for sk-SK
 
 function testDurFmtSKAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sk-SK",
     	length: "full",
@@ -2170,7 +2089,6 @@ function testDurFmtSKAsyncWithLocale() {
 };
 
 function testDurFmtSKFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sk-SK",
     	length: "short",
@@ -2196,7 +2114,6 @@ function testDurFmtSKFormatShortClockAsync() {
 //test cases for sq-AL
 
 function testDurFmtSQAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sq-AL",
     	length: "full",
@@ -2220,7 +2137,6 @@ function testDurFmtSQAsyncWithLocale() {
 };
 
 function testDurFmtSQFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sq-AL",
     	length: "short",
@@ -2246,7 +2162,6 @@ function testDurFmtSQFormatShortClockAsync() {
 //test cases for sr-Latn-RS
 
 function testDurFmtSRAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "full",
@@ -2270,7 +2185,6 @@ function testDurFmtSRAsyncWithLocale() {
 };
 
 function testDurFmtSRFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sr-Latn-RS",
     	length: "short",
@@ -2295,7 +2209,6 @@ function testDurFmtSRFormatShortClockAsync() {
 
 
 function testDurFmtTHAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "th-TH",
     	length: "full",
@@ -2319,7 +2232,6 @@ function testDurFmtTHAsyncWithLocale() {
 };
 
 function testDurFmtTHFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "th-TH",
     	length: "short",
@@ -2343,7 +2255,6 @@ function testDurFmtTHFormatShortClockAsync() {
 };
 
 function testDurFmtUKUAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uk-UA",
     	length: "full",
@@ -2367,7 +2278,6 @@ function testDurFmtUKUAAsyncWithLocale() {
 };
 
 function testDurFmtUKUAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uk-UA",
     	length: "short",
@@ -2392,7 +2302,6 @@ function testDurFmtUKUAFormatShortClockAsync() {
 
 //test cases for uz-Cyrl-UZ
 function testDurFmtUZAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "full",
@@ -2416,7 +2325,6 @@ function testDurFmtUZAsyncWithLocale() {
 };
 
 function testDurFmtUZFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uz-Cyrl-UZ",
     	length: "short",
@@ -2440,7 +2348,6 @@ function testDurFmtUZFormatShortClockAsync() {
 };
 
 function testDurFmtUZLATNAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "full",
@@ -2464,7 +2371,6 @@ function testDurFmtUZLATNAsyncWithLocale() {
 };
 
 function testDurFmtUZLATNFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "uz-Latn-UZ",
     	length: "short",
@@ -2488,7 +2394,6 @@ function testDurFmtUZLATNFormatShortClockAsync() {
 };
 
 function testDurFmtVIAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "vi-VN",
     	length: "full",
@@ -2512,7 +2417,6 @@ function testDurFmtVIAsyncWithLocale() {
 };
 
 function testDurFmtVIFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "vi-VN",
     	length: "short",
@@ -2536,7 +2440,6 @@ function testDurFmtVIFormatShortClockAsync() {
 };
 
 function testDurFmtZHAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "full",
@@ -2560,7 +2463,6 @@ function testDurFmtZHAsyncWithLocale() {
 };
 
 function testDurFmtZHFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "zh-Hant-TW",
     	length: "short",
@@ -2584,7 +2486,6 @@ function testDurFmtZHFormatShortClockAsync() {
 };
 
 function testDurFmtZHHKAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "full",
@@ -2608,7 +2509,6 @@ function testDurFmtZHHKAsyncWithLocale() {
 };
 
 function testDurFmtZHHKFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "zh-Hant-HK",
     	length: "short",
@@ -2632,7 +2532,6 @@ function testDurFmtZHHKFormatShortClockAsync() {
 };
 
 function testDurFmtTRAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "tr-TR",
     	length: "full",
@@ -2656,7 +2555,6 @@ function testDurFmtTRAsyncWithLocale() {
 };
 
 function testDurFmtTRFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "tr-TR",
     	length: "short",
@@ -2680,7 +2578,6 @@ function testDurFmtTRFormatShortClockAsync() {
 };
 
 function testDurFmtSVAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sv-SE",
     	length: "full",
@@ -2704,7 +2601,6 @@ function testDurFmtSVAsyncWithLocale() {
 };
 
 function testDurFmtSVFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sv-SE",
     	length: "short",
@@ -2728,7 +2624,6 @@ function testDurFmtSVFormatShortClockAsync() {
 };
 
 function testDurFmtSLAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sl-SI",
     	length: "full",
@@ -2752,7 +2647,6 @@ function testDurFmtSLAsyncWithLocale() {
 };
 
 function testDurFmtSLFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "sl-SI",
     	length: "short",
@@ -2776,7 +2670,6 @@ function testDurFmtSLFormatShortClockAsync() {
 };
 
 function testDurFmtPTPTAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pt-PT",
     	length: "full",
@@ -2800,7 +2693,6 @@ function testDurFmtPTPTAsyncWithLocale() {
 };
 
 function testDurFmtPTPTFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "pt-PT",
     	length: "short",

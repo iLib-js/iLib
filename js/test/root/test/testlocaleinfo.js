@@ -9708,7 +9708,6 @@ function testLocaleInfoLoadMissingDataAsynch() {
         // it via all the other tests already.
         return;
     }
-    var callbackCalled = false;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("zzz-ZX", {
         sync: false,
@@ -9718,11 +9717,9 @@ function testLocaleInfoLoadMissingDataAsynch() {
             assertEquals("iso {s} {n}", li.getCurrencyFormats().iso);
             assertEquals(4, li.getFirstDayOfWeek());
             assertEquals("%", li.getPercentageSymbol());
-            callbackCalled = true;
         }
     });
     assertNotNull(info);
-    assertTrue(callbackCalled);
     ilib.setLoaderCallback(undefined);
 }
 
@@ -9751,13 +9748,11 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
         // it via all the other tests already.
         return;
     }
-    var callbackCalled = false;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("qq-QQ", {
         sync: false,
         onLoad: function (li) {
             assertNotUndefined(li);
-            callbackCalled = true;
             // should return the shared data only
             assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
@@ -9765,7 +9760,6 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
         }
     });
     assertNotNull(info);
-    assertTrue(callbackCalled);
     ilib.setLoaderCallback(undefined);
 }
 
@@ -9773,12 +9767,10 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
     var temp = ilib._load;
 
     ilib._load = undefined;  // no loader
-    var callbackCalled = false;
     var info = new LocaleInfo("xxx-QQ", {
         sync: true,
         onLoad: function (li) {
             assertNotUndefined(li);
-            callbackCalled = true;
             // should return the shared data only
             assertEquals("{s} {n}", li.getCurrencyFormats().common);
             assertEquals(1, li.getFirstDayOfWeek());
@@ -9786,7 +9778,6 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
         }
     });
     assertNotNull(info);
-    assertTrue(callbackCalled);
 
     // clean up
     ilib._load = undefined;  // no loader
@@ -9818,13 +9809,11 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
         // it via all the other tests already.
         return;
     }
-    var callbackCalled = false;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("fr-FR", {
         sync: false,
         onLoad: function (li) {
             assertNotUndefined(li);
-            callbackCalled = true;
             // should return the shared data only
             assertEquals("EUR", li.getCurrency());
             assertEquals(1, li.getFirstDayOfWeek());
@@ -9833,7 +9822,6 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
         }
     });
     assertNotNull(info);
-    assertTrue(callbackCalled);
     ilib.setLoaderCallback(undefined);
 }
 
