@@ -122,7 +122,6 @@ var ListFmt = function(options) {
 	});
 };
 
-
 /**
  * Format a list of strings as grammatical text that is appropriate 
  * for the locale of this formatter.
@@ -152,7 +151,7 @@ ListFmt.prototype.format = function(items) {
 		formattedList = fmtTemplate.replace("{0}", items[0]).replace("{1}", items[1]);
 
 	} else {
-		for(i=itemCount; i >= 0 ; i--){
+		for(i = itemCount; i >= 0 ; i--){
 			if (i == itemCount) {
 				formattedList = endFmt.replace("{0}", items[itemCount-2]).replace("{1}", items[itemCount-1]);
 				i = i-2;
@@ -164,7 +163,6 @@ ListFmt.prototype.format = function(items) {
 			}
 		}
 	}
-
 	return formattedList;
 };
 
@@ -177,6 +175,10 @@ ListFmt.prototype.getLocale = function() {
 	return this.locale.getSpec();
 };
 
+/**
+ * Return the style of names returned by this formatter
+ * @return {string} the style of names returned by this formatter
+ */
 ListFmt.prototype.getStyle = function() {
 	return this.style;
 };
