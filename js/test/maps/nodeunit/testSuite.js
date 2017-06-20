@@ -19,7 +19,8 @@
 
 var nodeunit = require("nodeunit");
 var assert = require("../../test/assertSupplement.js");
-var modules = {}
+var reporter = nodeunit.reporters.default;
+var modules = {};
 var suites = [
     "testcharmap.js",
     "testcm_CN.js",
@@ -39,4 +40,4 @@ suites.forEach(function (path) {
     }
 });
 
-nodeunit.run(modules);
+reporter.run(modules);

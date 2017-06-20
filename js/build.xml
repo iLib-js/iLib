@@ -686,20 +686,66 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="../node_modules/nodeunit/bin/nodeunit"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="../node_modules/nodeunit/bin/nodeunit"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<arg line="../node_modules/nodeunit/bin/nodeunit"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 		</sequential>
 	</macrodef>
 
+	<target depends="assemble.dyncode.unittest" name="test.address.nu">
+		<run-nodeunit suite="address" failquit="true"/>
+	</target>
+	
+	<target depends="assemble.dyncode.unittest" name="test.calendar.nu">
+		<run-nodeunit suite="calendar" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.collate.nu">
+		<run-nodeunit suite="collate" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.ctype.nu">
+		<run-nodeunit suite="ctype" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.date.nu">
+		<run-nodeunit suite="date" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.daterange.nu">
+		<run-nodeunit suite="daterange" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.durfmt.nu">
+		<run-nodeunit suite="durfmt" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.maps.nu">
+		<run-nodeunit suite="maps" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.name.nu">
+		<run-nodeunit suite="name" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.number.nu">
+		<run-nodeunit suite="number" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.phone.nu">
+		<run-nodeunit suite="phone" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.root.nu">
+		<run-nodeunit suite="root" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.strings-ext.nu">
+		<run-nodeunit suite="strings-ext" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.units.nu">
+		<run-nodeunit suite="units" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.util.nu">
+		<run-nodeunit suite="util" failquit="true"/>
+	</target>
+	
+	<target name="test.all.nu" depends="test.address.nu,test.calendar.nu,test.collate.nu,test.ctype.nu,test.date.nu,test.daterange.nu,test.durfmt.nu,test.maps.nu,test.name.nu,test.number.nu,test.phone.nu,test.root.nu,test.strings-ext.nu,test.units.nu,test.util.nu" />
+	
 	<macrodef name="runtests">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -748,10 +794,6 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</macrodef>
-
-	<target depends="assemble.dyncode.unittest" name="test.util.nu">
-		<run-nodeunit suite="util" failquit="true"/>
-	</target>
 
 	<target depends="assemble.dyncode.unittest" name="test.util">
 		<runtests suite="util" assembly="dynamic" compilation="compiled" failquit="true"/>

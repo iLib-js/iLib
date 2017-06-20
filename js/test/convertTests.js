@@ -42,7 +42,7 @@ var assertMappings = [
     {re: /(\s*)assertFalse\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok(!$6, $2)"},
 	{re: /(\s*)assertNaN\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 === NaN)"},
 	{re: /(\s*)assertNotNaN\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== NaN)"},
-	{re: /(\s*)assertObjectEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
+	{re: /(\s*)assertObjectEquals\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
 	{re: /(\s*)assertContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
     {re: /(\s*)assertObjectContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
     {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($10, $6, $14, $2)"},
@@ -228,7 +228,8 @@ function generateSuiteJS(dir, tests) {
         '',
         'var nodeunit = require("nodeunit");',
         'var assert = require("../../test/assertSupplement.js");',
-        'var modules = {}',
+        'var reporter = nodeunit.reporters.default;',
+        'var modules = {};',
         'var suites = ['
     ];
     
@@ -246,7 +247,7 @@ function generateSuiteJS(dir, tests) {
         '    }',
         '});',
         '',
-        'nodeunit.run(modules);'
+        'reporter.run(modules);'
     ]);
     
     var outFile = path.join(dir, "nodeunit", "testSuite.js");
