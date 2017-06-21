@@ -133,6 +133,10 @@ var ListFmt = function(options) {
  */
 
 ListFmt.prototype.format = function(items) {
+	if (!items || (!ilib.isArray(items))) {
+		return "";
+	}
+
 	var itemCount = items.length;
 	var fmtTemplate, formattedList;
 	var startFmt, middleFmt, endFmt;
@@ -143,7 +147,10 @@ ListFmt.prototype.format = function(items) {
 	middleFmt = fmtTemplate["middle"];
 	endFmt = fmtTemplate["end"];
 
-	if (itemCount === 1) {
+	if (itemCount === 0) {
+		return "";
+	}
+	else if (itemCount === 1) {
 		formattedList =  items.toString();
 
 	} else if ( itemCount === 2) {

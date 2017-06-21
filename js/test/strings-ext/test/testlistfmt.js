@@ -39,6 +39,62 @@ function testListFmtDefaultStyle() {
     assertEquals("standard", fmt.getStyle());
 }
 
+function testListFmtTestProperty1() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format([""]));
+}
+
+function testListFmtTestProperty2() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format());
+}
+
+function testListFmtTestProperty3() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(undefined));
+}
+
+function testListFmtTestProperty4() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format("one"));
+}
+
+function testListFmtTestProperty5() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format("one", "two"));
+}
+
+function testListFmtTestProperty6() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(100));
+}
+
+function testListFmtTestProperty7() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(false));
+}
+
+function testListFmtTestProperty8() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("true and false", fmt.format(["true", "false"]));
+}
+
 function testListFmtNumberFormatOne() {
     var fmt = new ListFmt();
 
