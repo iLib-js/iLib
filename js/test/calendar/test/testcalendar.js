@@ -50,8 +50,29 @@ function testCalendarFactoryDefaultForLocale() {
     assertEquals("gregorian", cal.getType());
 }
 
+function testCalendarFactoryDefaultForLocale_KH() {
+    var cal = CalendarFactory({locale: "km-KH"});
+    assertNotUndefined(cal);
+
+    assertEquals("gregorian", cal.getType());
+}
+
 function testCalendarFactoryDefaultForLocale_AZ() {
     var cal = CalendarFactory({locale: "az-Latn-AZ"});
+    assertNotUndefined(cal);
+
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocale_LK() {
+    var cal = CalendarFactory({locale: "si-LK"});
+    assertNotUndefined(cal);
+
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocale_KE() {
+    var cal = CalendarFactory({locale: "sw-Latn-KE"});
     assertNotUndefined(cal);
 
     assertEquals("gregorian", cal.getType());
