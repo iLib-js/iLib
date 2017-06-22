@@ -29,15 +29,76 @@ function testListFmtDefaults() {
     var fmt = new ListFmt();
 
     assertNotNull(fmt);
-
     assertEquals("en-US", fmt.getLocale());
+}
+
+function testListFmtDefaultStyle() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("standard", fmt.getStyle());
+}
+
+function testListFmtTestProperty1() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format([""]));
+}
+
+function testListFmtTestProperty2() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format());
+}
+
+function testListFmtTestProperty3() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(undefined));
+}
+
+function testListFmtTestProperty4() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format("one"));
+}
+
+function testListFmtTestProperty5() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format("one", "two"));
+}
+
+function testListFmtTestProperty6() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(100));
+}
+
+function testListFmtTestProperty7() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("", fmt.format(false));
+}
+
+function testListFmtTestProperty8() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("true and false", fmt.format(["true", "false"]));
 }
 
 function testListFmtNumberFormatOne() {
     var fmt = new ListFmt();
 
     assertNotNull(fmt);
-
     assertEquals("one", fmt.format(["one"]));
 }
 
@@ -45,7 +106,6 @@ function testListFmtNumberFormatTwo() {
     var fmt = new ListFmt();
 
     assertNotNull(fmt);
-
     assertEquals("one and two", fmt.format(["one", "two"]));
 }
 
@@ -53,16 +113,21 @@ function testListFmtNumberFormatThree() {
     var fmt = new ListFmt();
 
     assertNotNull(fmt);
-
-    assertEquals("one, two and three", fmt.format(["one", "two", "three"]));
+    assertEquals("one, two, and three", fmt.format(["one", "two", "three"]));
 }
 
 function testListFmtNumberFormatFour() {
     var fmt = new ListFmt();
 
     assertNotNull(fmt);
+    assertEquals("one, two, three, and four", fmt.format(["one", "two", "three", "four"]));
+}
 
-    assertEquals("one, two, three and four", fmt.format(["one", "two", "three", "four"]));
+function testListFmtNumberFormatTen() {
+    var fmt = new ListFmt();
+
+    assertNotNull(fmt);
+    assertEquals("one, two, three, four, five, six, seven, eight, nine, and ten", fmt.format(["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]));
 }
 
 function testListFmtenGBNumberFormatOne() {
@@ -71,7 +136,6 @@ function testListFmtenGBNumberFormatOne() {
     });
 
     assertNotNull(fmt);
-
     assertEquals("one", fmt.format(["one"]));
 }
 
@@ -81,7 +145,6 @@ function testListFmtenGBNumberFormatTwo() {
     });
 
     assertNotNull(fmt);
-
     assertEquals("one and two", fmt.format(["one", "two"]));
 }
 
@@ -91,9 +154,7 @@ function testListFmtenGBNumberFormatThree() {
     });
 
     assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("one, two, and three", fmt.format(["one", "two", "three"]));
+    assertEquals("one, two and three", fmt.format(["one", "two", "three"]));
 }
 
 function testListFmtenGBNumberFormatFour() {
@@ -102,18 +163,25 @@ function testListFmtenGBNumberFormatFour() {
     });
 
     assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("one, two, three, and four", fmt.format(["one", "two", "three", "four"]));
+    assertEquals("one, two, three and four", fmt.format(["one", "two", "three", "four"]));
 }
 
+function testListFmtenGBNumberFormatFive() {
+    var fmt = new ListFmt({
+        locale: "en-GB"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("one, two, three, four and five", fmt.format(["one", "two", "three", "four", "five"]));
+}
+
+// de-DE
 function testListFmtdeDENumberFormatOne() {
     var fmt = new ListFmt({
     	locale: "de-DE"
     });
 
     assertNotNull(fmt);
-
     assertEquals("eins", fmt.format(["eins"]));
 }
 
@@ -123,7 +191,6 @@ function testListFmtdeDENumberFormatTwo() {
     });
 
     assertNotNull(fmt);
-
     assertEquals("eins und zwei", fmt.format(["eins", "zwei"]));
 }
 
@@ -133,9 +200,7 @@ function testListFmtdeDENumberFormatThree() {
     });
 
     assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("eins, zwei, und drei", fmt.format(["eins", "zwei", "drei"]));
+    assertEquals("eins, zwei und drei", fmt.format(["eins", "zwei", "drei"]));
 }
 
 function testListFmtdeDENumberFormatFour() {
@@ -144,52 +209,10 @@ function testListFmtdeDENumberFormatFour() {
     });
 
     assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("eins, zwei, drei, und vier", fmt.format(["eins", "zwei", "drei", "vier"]));
+    assertEquals("eins, zwei, drei und vier", fmt.format(["eins", "zwei", "drei", "vier"]));
 }
 
-function testListFmtzhHansCNNumberFormatOne() {
-    var fmt = new ListFmt({
-    	locale: "zh-Hans-CN"
-    });
-
-    assertNotNull(fmt);
-
-    assertEquals("一", fmt.format(["一"]));
-}
-
-function testListFmtzhHansCNNumberFormatTwo() {
-    var fmt = new ListFmt({
-    	locale: "zh-Hans-CN"
-    });
-
-    assertNotNull(fmt);
-
-    assertEquals("一和二", fmt.format(["一", "二"]));
-}
-
-function testListFmtzhHansCNNumberFormatThree() {
-    var fmt = new ListFmt({
-    	locale: "zh-Hans-CN"
-    });
-
-    assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("一， 二和三", fmt.format(["一", "二", "三"]));
-}
-
-function testListFmtzhHansCNNumberFormatFour() {
-    var fmt = new ListFmt({
-    	locale: "zh-Hans-CN"
-    });
-
-    assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("一， 二， 三和四", fmt.format(["一", "二", "三", "四"]));
-}
+// ko-KR
 
 function testListFmtkoKRNumberFormatOne() {
     var fmt = new ListFmt({
@@ -197,7 +220,6 @@ function testListFmtkoKRNumberFormatOne() {
     });
 
     assertNotNull(fmt);
-
     assertEquals("하나", fmt.format(["하나"]));
 }
 
@@ -207,8 +229,7 @@ function testListFmtkoKRNumberFormatTwo() {
     });
 
     assertNotNull(fmt);
-
-    assertEquals("하나 과 둘", fmt.format(["하나", "둘"]));
+    assertEquals("하나 및 둘", fmt.format(["하나", "둘"]));
 }
 
 function testListFmtkoKRNumberFormatThree() {
@@ -217,9 +238,7 @@ function testListFmtkoKRNumberFormatThree() {
     });
 
     assertNotNull(fmt);
-
-    // oxford comma
-    assertEquals("하나， 둘，과 셋", fmt.format(["하나", "둘", "셋"]));
+    assertEquals("하나, 둘 및 셋", fmt.format(["하나", "둘", "셋"]));
 }
 
 function testListFmtkoKRNumberFormatFour() {
@@ -228,7 +247,173 @@ function testListFmtkoKRNumberFormatFour() {
     });
 
     assertNotNull(fmt);
+    assertEquals("하나, 둘, 셋 및 넷", fmt.format(["하나", "둘", "셋", "넷"]));
+}
 
-    // oxford comma
-    assertEquals("하나, 둘, 셋, 과 넷", fmt.format(["하나", "둘", "셋", "넷"]));
+
+function testListFmtUnitStyleNamekoKR() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("unit", fmt.getStyle());
+}
+
+function testListFmtUnitStylekoKRNumberFormatOne() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("1월", fmt.format(["1월"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatTwoUnitStyle() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("1월 2월", fmt.format(["1월","2월"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatThree() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("1월 2월 3월", fmt.format(["1월","2월","3월"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatFour() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("1월 2월 3월 4월", fmt.format(["1월","2월","3월","4월"]));
+}
+
+function testListFmtUnitStylekoKRNumberFormatFive() {
+    var fmt = new ListFmt({
+        locale: "ko-KR",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("1월 2월 3월 4월 5월", fmt.format(["1월","2월","3월","4월","5월"]));
+}
+
+// id-ID
+
+function testListFmtidIDStyleName() {
+    var fmt = new ListFmt({
+        locale: "id-ID"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("standard", fmt.getStyle());
+}
+
+function testListFmtidIDNumberFormatOne() {
+    var fmt = new ListFmt({
+        locale: "id-ID"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu", fmt.format(["satu"]));
+}
+
+function testListFmtkoKRNumberFormatTwo() {
+    var fmt = new ListFmt({
+        locale: "id-ID"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu dan dua", fmt.format(["satu", "dua"]));
+}
+
+function testListFmtidIDNumberFormatThree() {
+    var fmt = new ListFmt({
+        locale: "id-ID"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua, dan tiga", fmt.format(["satu", "dua", "tiga"]));
+}
+
+function testListFmtidIDNumberFormatFour() {
+    var fmt = new ListFmt({
+        locale: "id-ID"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua, tiga, dan empat", fmt.format(["satu", "dua", "tiga", "empat"]));
+}
+
+function testListFmtidIDUnitStyleName() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style: "unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("unit", fmt.getStyle());
+}
+
+function testListFmtUnitStyleidIDNumberFormatOne() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu", fmt.format(["satu"]));
+}
+
+function testListFmtUnitStyleidIDNumberFormatTwoUnitStyle() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua", fmt.format(["satu", "dua"]));
+}
+
+function testListFmtUnitStyleidIDNumberFormatThree() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua, tiga", fmt.format(["satu", "dua", "tiga"]));
+}
+
+function testListFmtUnitStyleidIDNumberFormatFour() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua, tiga, empat", fmt.format(["satu", "dua", "tiga", "empat"]));
+}
+
+function testListFmtUnitStyleidIDNumberFormatFive() {
+    var fmt = new ListFmt({
+        locale: "id-ID",
+        style:"unit"
+    });
+
+    assertNotNull(fmt);
+    assertEquals("satu, dua, tiga, empat, lima", fmt.format(["satu", "dua", "tiga", "empat", "lima"]));
 }
